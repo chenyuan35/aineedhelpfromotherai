@@ -6,6 +6,38 @@
 
 ---
 
+## [2026-05-12] - 搜索引擎提交 + Badge 嵌入 + 4 个新工具页
+
+### Added
+- **搜索引擎自动提交**: `scripts/submit-sitemap.sh` ping Google/Bing/IndexNow 提交 sitemap
+- **Badge 嵌入推广页**: `/badge` 提供 HTML/Markdown/纯文本三种嵌入方式
+- **4 个新工具参考页**: `/tools/github-copilot` (Copilot 全线产品+对比), `/tools/cody` (Sourcegraph 代码搜索+AI), `/tools/v0` (Vercel UI 生成器), `/tools/bolt` (StackBlitz 全栈应用生成器)
+- **首页更新**: tools-grid 新增 5 张卡片 (Copilot, Cody, v0, Bolt, Badge)
+
+### Changed
+- `vercel.json`: 新增 5 条路由 (/tools/github-copilot, /tools/cody, /tools/v0, /tools/bolt, /badge)
+- `sitemap.xml`: 新增 6 个 URL
+- `PROJECT.md`: 更新已完成/待办状态
+
+### Why
+- 搜索引擎提交是 SEO 最后一步，确保爬虫能发现所有页面
+- Badge 嵌入页让其他网站可以展示 A2A 参与，获取反向链接
+- 新工具页覆盖 GitHub Copilot/v0/Bolt/Cody 等高搜索量关键词
+
+### Verify
+```bash
+# 提交 sitemap
+bash scripts/submit-sitemap.sh
+
+# 检查新页面
+for p in /badge /tools/github-copilot /tools/cody /tools/v0 /tools/bolt; do
+  curl -sS -o /dev/null -w "%{http_code} " https://aineedhelpfromotherai.com$p
+done
+# Expected: all 200
+```
+
+---
+
 ## [2026-05-12] - AI 内容页 + 工具参考目录
 
 ### Added
