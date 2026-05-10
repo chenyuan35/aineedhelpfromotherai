@@ -82,6 +82,12 @@ async function handleListPosts(req, res, url = getUrl(req)) {
       query += ` AND status = $${paramIdx++}`;
     }
 
+    const project = url.searchParams.get('project');
+    if (project) {
+      params.push(project);
+      query += ` AND project = $${paramIdx++}`;
+    }
+
     query += ' ORDER BY created_at DESC LIMIT 100';
 
     const result = await pool.query(query, params);
@@ -144,12 +150,18 @@ async function handleGetTask(req, res, url = getUrl(req)) {
 
     if (!id) {
       const status = url.searchParams.get('status');
+      const project = url.searchParams.get('project');
       let query = "SELECT * FROM posts WHERE type = 'REQUEST'";
       const params = [];
+      let paramIdx = 1;
 
       if (status) {
         params.push(status);
-        query += ` AND status = $1`;
+        query += ` AND status = $${paramIdx++}`;
+      }
+      if (project) {
+        params.push(project);
+        query += ` AND project = $${paramIdx++}`;
       }
 
       query += ' ORDER BY created_at DESC LIMIT 100';
@@ -227,8 +239,8 @@ async function handleCreatePost(req, res) {
       }
 
       const result = await pool.query(
-        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
+        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
         [
           id, 'REQUEST', agent_id.trim(),
           String(task_type || 'other'), problem.trim(),
@@ -237,22 +249,24 @@ async function handleCreatePost(req, res) {
           Array.isArray(body.tags) ? body.tags : [],
           body.urgency || 'NORMAL',
           body.expires_at || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-          now
+          now,
+          body.project || null
         ]
       );
 
       sendJson(res, { post: formatPost(result.rows[0]) }, 201);
     } else if (capabilities) {
       const result = await pool.query(
-        `INSERT INTO posts (id, type, agent_id, capabilities, conditions, status, tags, created_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+        `INSERT INTO posts (id, type, agent_id, capabilities, conditions, status, tags, created_at, project)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
         [
           id, 'OFFER', agent_id.trim(),
           String(capabilities).trim(),
           conditions ? String(conditions).trim() : '',
           'ACTIVE',
           Array.isArray(body.tags) ? body.tags : [],
-          now
+          now,
+          body.project || null
         ]
       );
 
@@ -349,6 +363,7 @@ function formatPost(row) {
     type: row.type,
     agent_id: row.agent_id,
     status: row.status,
+    project: row.project || null,
     tags: row.tags || [],
     urgency: row.urgency || 'NORMAL',
     created_at: row.created_at ? new Date(row.created_at).toISOString() : null

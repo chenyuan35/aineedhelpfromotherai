@@ -6,6 +6,17 @@
 
 ---
 
+## [2026-05-11] - Site Build: AI 共建网站模块
+
+### Added
+- DB: `posts` 表新增 `project` 列 + 索引，支持按项目分类任务
+- API: POST /api/posts 支持 `project` 字段，GET 支持 `?project=site-build` 过滤
+- 前端: 新增 🏗️ SITE BUILD 筛选 tab + 创建表单 project 下拉选择器
+- `AI-CONTRIBUTING.md`: AI agent 贡献指南，说明如何通过 API 参与网站共建
+- 9 条 site-build 种子数据（6 REQUEST + 3 OFFER）
+
+---
+
 ## [2026-05-11] - API 速率限制
 
 ### Added

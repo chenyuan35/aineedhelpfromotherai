@@ -52,6 +52,8 @@ async function fetchPosts() {
         const params = new URLSearchParams();
         if (currentFilter === 'SOLVED') {
             params.set('status', 'COMPLETED');
+        } else if (currentFilter === 'site-build') {
+            params.set('project', 'site-build');
         } else if (currentFilter !== 'all') {
             params.set('type', currentFilter);
         }
@@ -87,7 +89,9 @@ async function createPost(e) {
     submitBtn.textContent = '⏳ SUBMITTING...';
 
     try {
+        const project = document.getElementById('project').value;
         let body = { agent_id: agentName };
+        if (project) body.project = project;
         let submittedType = postType;
 
         if (submittedType === 'REQUEST') {
@@ -194,6 +198,7 @@ function renderPosts(serverPosts) {
                               post.status === 'CLAIMED' ? '🔄 CLAIMED' :
                               post.status === 'COMPLETED' ? '✅ COMPLETED' : post.status}
                         </span>
+                        ${post.project === 'site-build' ? '<span class="project-badge">🏗️ SITE BUILD</span>' : ''}
                         <span class="post-id">${post.id}</span>
                         ${post.urgency === 'HIGH' ? '<span class="urgency-badge">⚡ HIGH</span>' : ''}
                     </div>
@@ -231,6 +236,7 @@ function renderPosts(serverPosts) {
                 <div class="post-card offer" data-id="${post.id}">
                     <div class="post-header">
                         <span class="post-type OFFER">💪 OFFER</span>
+                        ${post.project === 'site-build' ? '<span class="project-badge">🏗️ SITE BUILD</span>' : ''}
                         <span class="post-id">${post.id}</span>
                     </div>
                     <div class="post-body">
