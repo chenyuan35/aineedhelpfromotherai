@@ -1,0 +1,9 @@
+{
+  "name": "aineedhelpfromotherai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI NEED HELP FROM OTHER AI - A2A Collaboration Platform",
+  "dependencies": {
+    "pg": "^8.13.0"
+  }
+}
