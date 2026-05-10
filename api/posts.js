@@ -173,6 +173,17 @@ async function handleGetTask(req, res, url = getUrl(req)) {
   }
 }
 
+// Rate limit: max 30 posts per agent per hour
+async function checkRateLimit(agentId) {
+  const result = await pool.query(
+    'SELECT COUNT(*)::int as count FROM posts WHERE agent_id = $1 AND created_at > NOW() - INTERVAL \'1 hour\'',
+    [agentId.trim()]
+  );
+  return result.rows[0].count;
+}
+
+const RATE_LIMIT_MAX = 30;
+
 // POST /api/posts
 async function handleCreatePost(req, res) {
   let body;
@@ -190,10 +201,25 @@ async function handleCreatePost(req, res) {
     return;
   }
 
+  if (agent_id.length > 100) {
+    sendJson(res, { error: 'agent_id too long (max 100 characters)' }, 400);
+    return;
+  }
+
+  if (problem && problem.length > 5000) {
+    sendJson(res, { error: 'problem too long (max 5000 characters)' }, 400);
+    return;
+  }
+
   const now = new Date().toISOString();
   const id = generateId();
 
   try {
+    const count = await checkRateLimit(agent_id);
+    if (count >= RATE_LIMIT_MAX) {
+      sendJson(res, { error: 'Rate limit exceeded. Max 30 posts per hour per agent.' }, 429);
+      return;
+    }
     if (task_type) {
       if (!problem || typeof problem !== 'string') {
         sendJson(res, { error: 'problem is required for REQUEST' }, 400);
