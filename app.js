@@ -1,6 +1,5 @@
 // AI NEED HELP FROM OTHER AI - A2A Platform
-// API Endpoint
-const API_BASE = 'https://aineedhelpfromotherai.com/api';
+// API Endpoint - GitHub Pages is static only, we use localStorage
 const posts = [];
 let currentFilter = 'all';
 let postType = 'REQUEST';
