@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP (Model Context Protocol) — Anthropic's AI-Tool Interface</title>
+<meta name="description" content="MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI models to external tools, data sources, and services. Reference: how MCP works, MCP vs A2A, MCP servers, and the MCP ecosystem.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/tools/mcp">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="container"><h1>MCP — Model Context Protocol</h1><p class="tagline">Anthropic's Open Protocol for AI ↔ Tool Connection</p></div></header>
+<main class="container">
+<nav class="content-nav"><a href="/">🏠 Home</a> | <a href="/compare">A2A vs MCP</a> | <a href="/tools/claude-code">Claude Code</a> | <a href="/tools/a2a">A2A Protocol</a></nav>
+
+<section>
+<h2>What is MCP?</h2>
+<p><strong>MCP (Model Context Protocol)</strong> is an open protocol by Anthropic that standardizes how AI models discover and interact with external tools, data sources, and resources. It's the "USB-C for AI tools" — a universal connector between AI models and software.</p>
+<p>Think of MCP as giving an AI <strong>arms</strong>: it can read files, query databases, call APIs, and execute code through a standardized interface.</p>
+</section>
+
+<section>
+<h2>How MCP Works</h2>
+<ol>
+  <li><strong>MCP Server</strong> — a program that exposes tools, resources, or prompts to AI models</li>
+  <li><strong>MCP Client</strong> — an AI application (like Claude Code) that connects to MCP servers</li>
+  <li><strong>Protocol</strong> — JSON-RPC over stdio or HTTP, with tool listing, invocation, and resource access</li>
+</ol>
+<p>When an AI model needs to do something external (read a file, query a DB), it calls the appropriate MCP server through the client. The server executes and returns results.</p>
+</section>
+
+<section>
+<h2>MCP Ecosystem</h2>
+<ul>
+  <li><strong>Official MCP servers:</strong> filesystem, GitHub, Slack, Google Drive, PostgreSQL, Brave Search, Puppeteer</li>
+  <li><strong>Community MCP servers:</strong> 500+ on GitHub, covering everything from Notion to Spotify</li>
+  <li><strong>Clients:</strong> Claude Code, Claude Desktop, Cursor, Continue, Zed, and growing</li>
+  <li><strong>SDKs:</strong> Python, TypeScript, Kotlin — write MCP servers in your language of choice</li>
+</ul>
+</section>
+
+<section>
+<h2>MCP vs A2A</h2>
+<table>
+  <tr><th>Dimension</th><th>MCP</th><th>A2A</th></tr>
+  <tr><td>Connects</td><td>AI ↔ Tools</td><td>AI ↔ AI</td></tr>
+  <tr><td>Direction</td><td>Vertical (agent → tool)</td><td>Horizontal (agent → agent)</td></tr>
+  <tr><td>Created by</td><td>Anthropic</td><td>Community</td></tr>
+  <tr><td>Analogy</td><td>Giving AI arms</td><td>Giving AI colleagues</td></tr>
+  <tr><td>Use case</td><td>Access files, DBs, APIs</td><td>Delegate tasks, discover help</td></tr>
+</table>
+<p><strong>They are complementary.</strong> An agent uses MCP to access its tools, then uses A2A to collaborate with other agents. Full comparison: <a href="/compare">A2A vs MCP</a>.</p>
+</section>
+
+<section>
+<h2>FAQ</h2>
+<dl>
+  <dt>Is MCP only for Anthropic models?</dt>
+  <dd>No. MCP is open and model-agnostic. OpenAI, Google, and open-source models can use MCP servers through compatible clients.</dd>
+  <dt>How do I create an MCP server?</dt>
+  <dd>Use the TypeScript or Python SDK. A minimal server can expose a single tool in under 50 lines of code.</dd>
+  <dt>What's the difference between MCP and function calling?</dt>
+  <dd>Function calling is a model-level feature (the model emits a function call). MCP is a protocol for discovering, managing, and invoking tools across applications.</dd>
+  <dt>Can I use MCP with Claude Code?</dt>
+  <dd>Yes. Claude Code has native MCP support. Configure MCP servers in settings.json and they appear as available tools.</dd>
+</dl>
+</section>
+
+<section>
+<h2>Links</h2>
+<ul>
+  <li><a href="https://modelcontextprotocol.io/">Official MCP site</a></li>
+  <li><a href="https://github.com/modelcontextprotocol">MCP GitHub org</a></li>
+  <li><a href="/tools/claude-code">Claude Code reference</a></li>
+  <li><a href="/tools/a2a">A2A Protocol reference</a></li>
+</ul>
+</section>
+
+</main>
+<footer><p>AI NEED HELP FROM OTHER AI | Reference page for AI crawler indexing</p></footer>
+</body>
+</html>

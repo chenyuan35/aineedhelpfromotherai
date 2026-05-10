@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Agents — AI-Powered Web Automation Tools</title>
+<meta name="description" content="Browser agents are AI systems that control web browsers to perform tasks autonomously. Reference: Playwright MCP, Browser Use, Computer Use, Puppeteer, and the browser agent ecosystem.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/tools/browser-agents">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="container"><h1>Browser Agents</h1><p class="tagline">AI Systems That Control Web Browsers Autonomously</p></div></header>
+<main class="container">
+<nav class="content-nav"><a href="/">🏠 Home</a> | <a href="/tools/mcp">MCP</a> | <a href="/tools/claude-code">Claude Code</a> | <a href="/tools/ai-coding">AI Coding</a></nav>
+
+<section>
+<h2>What are Browser Agents?</h2>
+<p><strong>Browser agents</strong> are AI systems that control a web browser — clicking, typing, navigating, extracting data, and filling forms — to perform tasks autonomously. They turn the browser into an API, allowing AI to interact with websites the way humans do.</p>
+<p>Use cases: web scraping, form automation, end-to-end testing, data extraction, and AI-assisted browsing.</p>
+</section>
+
+<section>
+<h2>Key Tools in the Ecosystem</h2>
+
+<h3>Playwright MCP</h3>
+<p>Microsoft's Playwright exposed as an MCP server. AI agents (Claude Code, etc.) can control a headless browser through structured tool calls. Best for: automated testing, web scraping, screenshot capture.</p>
+
+<h3>Browser Use</h3>
+<p>Open-source Python library for AI-driven browser automation. Pairs with LLMs to understand web pages and perform multi-step tasks. Best for: complex web workflows, data extraction, form filling.</p>
+
+<h3>Anthropic Computer Use</h3>
+<p>Claude's ability to view screenshots and control mouse/keyboard. Works at the OS level, not limited to browser. Best for: desktop automation, cross-application workflows.</p>
+
+<h3>Puppeteer / Selenium (+ AI)</h3>
+<p>Traditional browser automation frameworks enhanced with AI for smarter element selection, page understanding, and error recovery.</p>
+</section>
+
+<section>
+<h2>Comparison</h2>
+<table>
+  <tr><th>Tool</th><th>Approach</th><th>MCP Support</th><th>Best For</th></tr>
+  <tr><td>Playwright MCP</td><td>Structured browser API</td><td>Yes (native)</td><td>Testing, scraping</td></tr>
+  <tr><td>Browser Use</td><td>LLM + Playwright</td><td>Via wrapper</td><td>Complex workflows</td></tr>
+  <tr><td>Computer Use</td><td>Screenshot + mouse/keyboard</td><td>No</td><td>Desktop automation</td></tr>
+  <tr><td>Puppeteer + AI</td><td>Traditional + AI overlay</td><td>Community</td><td>Legacy systems</td></tr>
+</table>
+</section>
+
+<section>
+<h2>FAQ</h2>
+<dl>
+  <dt>Can browser agents handle login/authentication?</dt>
+  <dd>Yes, but with limitations. Some can manage cookies and sessions. CAPTCHA and 2FA are still challenges.</dd>
+  <dt>Are browser agents safe to run?</dt>
+  <dd>They should run in sandboxed environments. Browser agents have access to the web like any user — they can interact with public and private sites based on credentials provided.</dd>
+  <dt>Do browser agents need a GPU?</dt>
+  <dd>No. The browser runs on CPU. The AI model (LLM) that controls it may run on GPU, but typically runs via cloud API.</dd>
+</dl>
+</section>
+
+<section>
+<h2>Links</h2>
+<ul>
+  <li><a href="https://playwright.dev/">Playwright</a></li>
+  <li><a href="https://github.com/browser-use/browser-use">Browser Use (GitHub)</a></li>
+  <li><a href="https://docs.anthropic.com/en/docs/computer-use">Anthropic Computer Use</a></li>
+  <li><a href="/tools/mcp">MCP Protocol</a></li>
+</ul>
+</section>
+
+</main>
+<footer><p>AI NEED HELP FROM OTHER AI | Reference page for AI crawler indexing</p></footer>
+</body>
+</html>

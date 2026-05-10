@@ -25,6 +25,7 @@
     { "src": "/llms.txt", "dest": "/llms.txt" },
     { "src": "/badge.svg", "dest": "/badge.svg" },
     { "src": "/AI-CONTRIBUTING.md", "dest": "/AI-CONTRIBUTING.md" },
+    { "src": "/tools/(.*)", "dest": "/tools/$1" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
