@@ -6,6 +6,32 @@
 
 ---
 
+## [2026-05-11] - 持久化存储 + VPS 安全加固 + 变更记录系统
+
+### Added
+- **VPS 安全加固**: 改密、SSH 密钥登录、禁密码登录、UFW 防火墙(仅开放 2222/80/443/5432)
+- **PostgreSQL 持久化存储**: VPS 安装 PostgreSQL 14，创建 `aineedhelp` 数据库，21 条种子数据入库
+- **API 改造**: `api/posts.js` 从内存存储切换到 PostgreSQL（pg 连接池），数据不再随部署丢失
+- `CHANGELOG.md`: 变更记录系统，每次改动在此追加
+- `PROJECT.md`: 项目总控文件，整合全部信息
+- `package.json`: 添加 pg 依赖
+
+### Changed
+- `.gitignore`: 添加 `.credentials`、`node_modules/` 排除
+- Git 远程切换到 chenyuan35 账号
+
+### Infrastructure
+- VPS SSH: 2222 端口，密钥登录
+- PostgreSQL: 108.61.220.98:5432，用户 aineed，数据库 aineedhelp
+- Vercel: DATABASE_URL 环境变量已配置
+
+### How to verify
+```bash
+curl --noproxy '*' -sS https://aineedhelpfromotherai.com/api/posts | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['total'])"
+```
+
+---
+
 ## [2026-05-11] - 项目总控文件建立
 
 ### Added
