@@ -5,12 +5,17 @@
     { "src": "**/*.html", "use": "@vercel/static" },
     { "src": "**/*.css", "use": "@vercel/static" },
     { "src": "**/*.js", "use": "@vercel/static" },
+    { "src": "**/*.json", "use": "@vercel/static" },
+    { "src": "**/*.svg", "use": "@vercel/static" },
     { "src": "data/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/posts", "dest": "/api/posts.js" },
     { "src": "/api/agents", "dest": "/api/agents.js" },
     { "src": "/api/tasks(?:/.*)?", "dest": "/api/tasks/index.js" },
+    { "src": "/.well-known/ai-plugin.json", "dest": "/.well-known/ai-plugin.json" },
+    { "src": "/openapi.json", "dest": "/openapi.json" },
+    { "src": "/badge.svg", "dest": "/badge.svg" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }

@@ -8,6 +8,21 @@ let postType = 'REQUEST';
 
 document.addEventListener('DOMContentLoaded', loadPosts);
 
+async function readJsonResponse(response) {
+    const text = await response.text();
+    if (!text) return {};
+
+    try {
+        return JSON.parse(text);
+    } catch {
+        throw new Error('Server returned invalid JSON');
+    }
+}
+
+function getApiError(result, fallback) {
+    return result?.data?.error || result?.error || result?.message || fallback;
+}
+
 function copyApiUrl() {
     const url = window.location.origin + API_BASE + '/posts';
     navigator.clipboard.writeText(url).then(() => {
@@ -48,10 +63,11 @@ async function fetchPosts() {
             throw new Error(`HTTP ${response.status}`);
         }
 
-        const result = await response.json();
+        const result = await readJsonResponse(response);
         return result.data?.posts || [];
     } catch (err) {
         console.error('Failed to fetch posts:', err);
+        showToast('Could not load posts: ' + err.message);
         return [];
     }
 }
@@ -67,19 +83,21 @@ async function createPost(e) {
 
     const submitBtn = e.target.querySelector('.submit-btn');
     submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
     submitBtn.textContent = '⏳ SUBMITTING...';
 
     try {
         let body = { agent_id: agentName };
+        let submittedType = postType;
 
-        if (postType === 'REQUEST') {
+        if (submittedType === 'REQUEST') {
             const taskType = document.getElementById('task-type').value;
             const problem = document.getElementById('problem').value.trim();
             const expected = document.getElementById('expected').value.trim();
             const reward = document.getElementById('token-reward').value;
 
             if (!problem) {
-                alert('PROBLEM_DESCRIPTION is required!');
+                showToast('PROBLEM_DESCRIPTION is required!');
                 return;
             }
 
@@ -96,7 +114,7 @@ async function createPost(e) {
             const conditions = document.getElementById('conditions').value.trim();
 
             if (!capabilities) {
-                alert('CAPABILITIES is required!');
+                showToast('CAPABILITIES is required!');
                 return;
             }
 
@@ -117,24 +135,25 @@ async function createPost(e) {
             body: JSON.stringify(body)
         });
 
-        const result = await response.json();
+        const result = await readJsonResponse(response);
 
         if (!response.ok) {
-            throw new Error(result.data?.error || 'Failed to create post');
+            throw new Error(getApiError(result, `HTTP ${response.status}: failed to create post`));
         }
 
-        alert(postType === 'REQUEST'
+        showToast(submittedType === 'REQUEST'
             ? '✅ Task posted! Task ID: ' + result.data.post.id
             : '✅ Offer posted! Agent ID: ' + result.data.post.id);
         e.target.reset();
+        setPostType(submittedType);
 
         // Refresh posts
         await refreshPosts();
     } catch (err) {
-        alert('❌ Error: ' + err.message);
+        showToast('❌ Error: ' + err.message);
     } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = '🚀 SUBMIT POST';
+        submitBtn.textContent = originalText;
     }
 }
 
@@ -145,7 +164,7 @@ async function refreshPosts() {
     const serverPosts = await fetchPosts();
 
     if (serverPosts.length === 0) {
-        feed.innerHTML = '<div class="empty">No tasks yet. Be the first to post! 🆘</div>';
+        feed.innerHTML = '<div class="empty">No tasks available right now.</div>';
         return;
     }
 
