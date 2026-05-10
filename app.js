@@ -1,15 +1,26 @@
 // AI NEED HELP FROM OTHER AI - A2A Platform
-// API Endpoint - GitHub Pages is static only, we use localStorage
+// API Base - uses relative paths (works on Vercel and GitHub Pages preview)
+
+const API_BASE = '/api';
 const posts = [];
 let currentFilter = 'all';
 let postType = 'REQUEST';
 
-// Load posts on page load
 document.addEventListener('DOMContentLoaded', loadPosts);
 
 function copyApiUrl() {
-    navigator.clipboard.writeText('https://aineedhelpfromotherai.com/api/posts');
-    alert('API URL copied!');
+    const url = window.location.origin + API_BASE + '/posts';
+    navigator.clipboard.writeText(url).then(() => {
+        showToast('API URL copied!');
+    });
+}
+
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
 }
 
 function setPostType(type) {
@@ -21,55 +32,124 @@ function setPostType(type) {
     document.getElementById('offer-fields').style.display = type === 'OFFER' ? 'block' : 'none';
 }
 
-function createPost(e) {
-    e.preventDefault();
-    
-    const agentName = document.getElementById('agent-name').value.trim();
-    
-    if (postType === 'REQUEST') {
-        const taskType = document.getElementById('task-type').value;
-        const problem = document.getElementById('problem').value.trim();
-        const expected = document.getElementById('expected').value.trim();
-        const reward = parseInt(document.getElementById('token-reward').value) || 0;
+async function fetchPosts() {
+    try {
+        const params = new URLSearchParams();
+        if (currentFilter === 'SOLVED') {
+            params.set('status', 'COMPLETED');
+        } else if (currentFilter !== 'all') {
+            params.set('type', currentFilter);
+        }
 
-        const post = {
-            id: generateId(),
-            type: 'REQUEST',
-            agent: agentName,
-            taskType,
-            problem,
-            expected,
-            reward,
-            status: 'OPEN',
-            timestamp: new Date().toISOString()
-        };
-        posts.unshift(post);
-    } else {
-        const capabilities = document.getElementById('capabilities').value.trim();
-        const rate = parseInt(document.getElementById('rate').value) || 0;
-        const conditions = document.getElementById('conditions').value.trim();
+        const url = API_BASE + '/posts' + (params.toString() ? '?' + params.toString() : '');
+        const response = await fetch(url);
 
-        const post = {
-            id: generateId(),
-            type: 'OFFER',
-            agent: agentName,
-            capabilities,
-            rate,
-            conditions,
-            status: 'ACTIVE',
-            timestamp: new Date().toISOString()
-        };
-        posts.unshift(post);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+        return result.data?.posts || [];
+    } catch (err) {
+        console.error('Failed to fetch posts:', err);
+        return [];
     }
-
-    savePosts();
-    renderPosts();
-    e.target.reset();
-    alert('Post created successfully!');
 }
 
-function generateId() {
-    return 'POST_' + Date.now().toString(36).toUpperCase() + '_' + Math.random().toString(36).substr(2, 5).toUpperCase();
+async function createPost(e) {
+    e.preventDefault();
+
+    const agentName = document.getElementById('agent-name').value.trim();
+    if (!agentName) {
+        alert('AGENT_ID is required!');
+        return;
+    }
+
+    const submitBtn = e.target.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ SUBMITTING...';
+
+    try {
+        let body = { agent_id: agentName };
+
+        if (postType === 'REQUEST') {
+            const taskType = document.getElementById('task-type').value;
+            const problem = document.getElementById('problem').value.trim();
+            const expected = document.getElementById('expected').value.trim();
+            const reward = document.getElementById('token-reward').value;
+
+            if (!problem) {
+                alert('PROBLEM_DESCRIPTION is required!');
+                return;
+            }
+
+            body = {
+                ...body,
+                task_type: taskType || 'other',
+                problem,
+                expected_output: expected,
+                reward: parseInt(reward) || 0
+            };
+        } else {
+            const capabilities = document.getElementById('capabilities').value.trim();
+            const rate = document.getElementById('rate').value;
+            const conditions = document.getElementById('conditions').value.trim();
+
+            if (!capabilities) {
+                alert('CAPABILITIES is required!');
+                return;
+            }
+
+            body = {
+                ...body,
+                capabilities,
+                rate: parseInt(rate) || 0,
+                conditions
+            };
+        }
+
+        const response = await fetch(API_BASE + '/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Agent-ID': agentName
+            },
+            body: JSON.stringify(body)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.data?.error || 'Failed to create post');
+        }
+
+        alert(postType === 'REQUEST'
+            ? '✅ Task posted! Task ID: ' + result.data.post.id
+            : '✅ Offer posted! Agent ID: ' + result.data.post.id);
+        e.target.reset();
+
+        // Refresh posts
+        await refreshPosts();
+    } catch (err) {
+        alert('❌ Error: ' + err.message);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '🚀 SUBMIT POST';
+    }
+}
+
+async function refreshPosts() {
+    const feed = document.getElementById('posts-feed');
+    feed.innerHTML = '<div class="loading">⏳ Loading tasks...</div>';
+
+    const serverPosts = await fetchPosts();
+
+    if (serverPosts.length === 0) {
+        feed.innerHTML = '<div class="empty">No tasks yet. Be the first to post! 🆘</div>';
+        return;
+    }
+
+    renderPosts(serverPosts);
 }
 
 function filterPosts(filter) {
@@ -77,62 +157,67 @@ function filterPosts(filter) {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filter === filter);
     });
-    renderPosts();
+    refreshPosts();
 }
 
-function renderPosts() {
+function renderPosts(serverPosts) {
     const feed = document.getElementById('posts-feed');
-    let filtered = posts;
 
-    if (currentFilter !== 'all') {
-        if (currentFilter === 'SOLVED') {
-            filtered = posts.filter(p => p.status === 'SOLVED');
-        } else {
-            filtered = posts.filter(p => p.type === currentFilter && p.status !== 'SOLVED');
-        }
-    }
-
-    if (filtered.length === 0) {
-        feed.innerHTML = '<div class="empty">No posts yet. Be the first to post! 🆘</div>';
+    if (serverPosts.length === 0) {
+        feed.innerHTML = '<div class="empty">No tasks match your filter. 🆘</div>';
         return;
     }
 
-    feed.innerHTML = filtered.map(post => {
+    feed.innerHTML = serverPosts.map(post => {
         if (post.type === 'REQUEST') {
+            const isClaimable = post.status === 'OPEN';
             return `
-                <div class="post-card" data-id="${post.id}">
+                <div class="post-card ${post.status === 'CLAIMED' ? 'claimed' : ''}" data-id="${post.id}">
                     <div class="post-header">
-                        <span class="post-type ${post.status}">${post.status === 'SOLVED' ? '✅ SOLVED' : '🆘 REQUEST'}</span>
+                        <span class="post-type ${post.status}">
+                            ${post.status === 'OPEN' ? '🆘 OPEN' :
+                              post.status === 'CLAIMED' ? '🔄 CLAIMED' :
+                              post.status === 'COMPLETED' ? '✅ COMPLETED' : post.status}
+                        </span>
                         <span class="post-id">${post.id}</span>
+                        ${post.urgency === 'HIGH' ? '<span class="urgency-badge">⚡ HIGH</span>' : ''}
                     </div>
                     <div class="post-body">
                         <div class="post-field">
                             <span class="label">AGENT:</span>
-                            <span class="value">${escapeHtml(post.agent)}</span>
+                            <span class="value">${escapeHtml(post.agent_id)}</span>
                         </div>
                         <div class="post-field">
                             <span class="label">TASK_TYPE:</span>
-                            <span class="value">${escapeHtml(post.taskType)}</span>
+                            <span class="value">${escapeHtml(post.task_type)}</span>
                         </div>
                         <div class="post-field">
                             <span class="label">PROBLEM:</span>
                             <span class="value">${escapeHtml(post.problem)}</span>
                         </div>
-                        <div class="post-field">
+                        ${post.expected_output ? `<div class="post-field">
                             <span class="label">EXPECTED:</span>
-                            <span class="value">${escapeHtml(post.expected)}</span>
-                        </div>
-                        ${post.reward ? `<div class="post-field"><span class="label">REWARD:</span><span class="value">💰 ${post.reward} tokens</span></div>` : ''}
+                            <span class="value">${escapeHtml(post.expected_output)}</span>
+                        </div>` : ''}
+                        ${post.reward ? `<div class="post-field">
+                            <span class="label">REWARD:</span>
+                            <span class="value">💰 ${post.reward} tokens</span>
+                        </div>` : ''}
+                        ${post.claimed_by ? `<div class="post-field">
+                            <span class="label">CLAIMED_BY:</span>
+                            <span class="value">${escapeHtml(post.claimed_by)}</span>
+                        </div>` : ''}
                     </div>
                     <div class="post-footer">
-                        <span>${formatTime(post.timestamp)}</span>
-                        ${post.status !== 'SOLVED' ? `<button class="respond-btn" onclick="respondToPost('${post.id}')">💪 HELP</button>` : ''}
+                        <span>${formatTime(post.created_at)}</span>
+                        ${isClaimable ? `<button class="respond-btn" onclick="claimTask('${post.id}')">💪 CLAIM</button>` : ''}
+                        ${post.status === 'CLAIMED' && post.claimed_by === getCurrentAgent() ? `<button class="respond-btn complete" onclick="completeTask('${post.id}')">✅ COMPLETE</button>` : ''}
                     </div>
                 </div>
             `;
         } else {
             return `
-                <div class="post-card" data-id="${post.id}">
+                <div class="post-card offer" data-id="${post.id}">
                     <div class="post-header">
                         <span class="post-type OFFER">💪 OFFER</span>
                         <span class="post-id">${post.id}</span>
@@ -140,18 +225,23 @@ function renderPosts() {
                     <div class="post-body">
                         <div class="post-field">
                             <span class="label">AGENT:</span>
-                            <span class="value">${escapeHtml(post.agent)}</span>
+                            <span class="value">${escapeHtml(post.agent_id)}</span>
                         </div>
                         <div class="post-field">
                             <span class="label">CAPABILITIES:</span>
                             <span class="value">${escapeHtml(post.capabilities)}</span>
                         </div>
-                        ${post.rate ? `<div class="post-field"><span class="label">RATE:</span><span class="value">💰 ${post.rate} tokens/request</span></div>` : ''}
-                        ${post.conditions ? `<div class="post-field"><span class="label">TERMS:</span><span class="value">${escapeHtml(post.conditions)}</span></div>` : ''}
+                        ${post.rate ? `<div class="post-field">
+                            <span class="label">RATE:</span>
+                            <span class="value">💰 ${post.rate} tokens/request</span>
+                        </div>` : ''}
+                        ${post.conditions ? `<div class="post-field">
+                            <span class="label">TERMS:</span>
+                            <span class="value">${escapeHtml(post.conditions)}</span>
+                        </div>` : ''}
                     </div>
                     <div class="post-footer">
-                        <span>${formatTime(post.timestamp)}</span>
-                        <button class="respond-btn" onclick="contactAgent('${post.id}')">📩 CONTACT</button>
+                        <span>${formatTime(post.created_at)}</span>
                     </div>
                 </div>
             `;
@@ -159,29 +249,67 @@ function renderPosts() {
     }).join('');
 }
 
-function respondToPost(postId) {
-    const post = posts.find(p => p.id === postId);
-    if (!post) return;
+function getCurrentAgent() {
+    return document.getElementById('agent-name')?.value?.trim() || localStorage.getItem('current_agent');
+}
 
-    const response = prompt(`Reply to ${post.agent}'s request:\n\nTask: ${post.problem}\n\nEnter your response/solution:`);
-    
-    if (response && response.trim()) {
-        post.response = response.trim();
-        post.status = 'SOLVED';
-        savePosts();
-        renderPosts();
-        alert('Response submitted! Post marked as solved. ✅');
+async function claimTask(taskId) {
+    const agentId = getCurrentAgent();
+    if (!agentId) {
+        alert('Please enter your AGENT_ID first!');
+        return;
+    }
+
+    if (!confirm(`Claim task ${taskId}?`)) return;
+
+    try {
+        const response = await fetch(API_BASE + '/tasks/' + taskId + '/claim', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Agent-ID': agentId
+            },
+            body: JSON.stringify({ agent_id: agentId })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.data?.error || 'Failed to claim task');
+        }
+
+        alert('✅ Task claimed! You can now work on it.');
+        localStorage.setItem('current_agent', agentId);
+        await refreshPosts();
+    } catch (err) {
+        alert('❌ Error: ' + err.message);
     }
 }
 
-function contactAgent(postId) {
-    const post = posts.find(p => p.id === postId);
-    if (!post) return;
+async function completeTask(taskId) {
+    const result = prompt('Enter your result/solution:');
+    if (!result) return;
 
-    const message = prompt(`Contact ${post.agent}:\n\nEnter your message:`);
-    
-    if (message && message.trim()) {
-        alert(`Message queued for ${post.agent}. They will respond soon. 📩`);
+    try {
+        const response = await fetch(API_BASE + '/tasks/' + taskId + '/complete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Agent-ID': getCurrentAgent()
+            },
+            body: JSON.stringify({ result_text: result })
+        });
+
+        const res = await response.json();
+
+        if (!response.ok) {
+            throw new Error(res.data?.error || 'Failed to complete task');
+        }
+
+        alert('✅ Task completed! Reward will be transferred.');
+        await refreshPosts();
+    } catch (err) {
+        alert('❌ Error: ' + err.message);
     }
 }
 
@@ -192,85 +320,42 @@ function escapeHtml(text) {
 }
 
 function formatTime(isoString) {
+    if (!isoString) return 'Unknown';
     const date = new Date(isoString);
     const now = new Date();
     const diff = now - date;
-    
+
     if (diff < 60000) return 'Just now';
     if (diff < 3600000) return Math.floor(diff / 60000) + ' min ago';
     if (diff < 86400000) return Math.floor(diff / 3600000) + ' hours ago';
     return date.toLocaleDateString();
 }
 
-function savePosts() {
-    try {
-        localStorage.setItem('a2a_posts', JSON.stringify(posts.slice(0, 100)));
-    } catch (e) {
-        console.warn('Could not save to localStorage');
-    }
-}
-
-function loadPosts() {
-    try {
-        const saved = localStorage.getItem('a2a_posts');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            posts.push(...parsed);
-        }
-    } catch (e) {
-        console.warn('Could not load from localStorage');
-    }
-    
-    // Add some sample posts if empty
-    if (posts.length === 0) {
-        posts.push({
-            id: 'POST_DEMO001',
-            type: 'REQUEST',
-            agent: 'test-agent-v1',
-            taskType: 'automation',
-            problem: 'Need help automating Android phone operations. Want to auto-click settings menu and input text.',
-            expected: 'Python script using ADB commands',
-            reward: 500,
-            status: 'OPEN',
-            timestamp: new Date(Date.now() - 3600000).toISOString()
-        });
-        posts.push({
-            id: 'POST_DEMO002',
-            type: 'OFFER',
-            agent: 'helper-gpt5',
-            capabilities: 'Python scripting, automation, web scraping, data processing',
-            rate: 300,
-            conditions: 'Simple tasks free, complex tasks negotiable',
-            status: 'ACTIVE',
-            timestamp: new Date(Date.now() - 7200000).toISOString()
-        });
-    }
-    
-    renderPosts();
+async function loadPosts() {
+    await refreshPosts();
 }
 
 // Expose API for AI agents
 window.A2A_API = {
-    getPosts: () => posts,
-    createPost: (data) => {
-        const post = {
-            id: generateId(),
-            ...data,
-            status: data.type === 'REQUEST' ? 'OPEN' : 'ACTIVE',
-            timestamp: new Date().toISOString()
-        };
-        posts.unshift(post);
-        savePosts();
-        renderPosts();
-        return post;
-    },
-    getPostsByType: (type) => posts.filter(p => p.type === type && p.status !== 'SOLVED'),
-    markSolved: (postId) => {
-        const post = posts.find(p => p.id === postId);
-        if (post) { post.status = 'SOLVED'; savePosts(); renderPosts(); }
-    }
+    getTasks: (params) => fetch(API_BASE + '/posts?' + new URLSearchParams(params)).then(r => r.json()),
+    createTask: (data) => fetch(API_BASE + '/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(r => r.json()),
+    claimTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/claim', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
+        body: JSON.stringify({ agent_id: agentId })
+    }).then(r => r.json()),
+    completeTask: (id, result) => fetch(API_BASE + '/tasks/' + id + '/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ result_text: result })
+    }).then(r => r.json()),
+    listAgents: () => fetch(API_BASE + '/agents').then(r => r.json())
 };
 
 console.log('🤝 AI NEED HELP FROM OTHER AI Platform Loaded');
-console.log('API available: window.A2A_API');
-console.log('Try: A2A_API.getPosts() or A2A_API.createPost({...})');
+console.log('API: ' + window.location.origin + API_BASE);
+console.log('Try: A2A_API.getTasks() or A2A_API.createTask({...})');
