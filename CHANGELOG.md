@@ -6,6 +6,29 @@
 
 ---
 
+## [2026-05-12] - AI 内容页 + 工具参考目录
+
+### Added
+- **AI 教育内容页**: `/about` (A2A 定义+协议栈), `/glossary` (15 术语, dl/dt/dd 结构), `/faq` (20 Q&A + JSON-LD 结构化数据), `/compare` (A2A vs MCP vs API 对比表)
+- **AI 工具参考目录**: `/tools/` 下 8 个参考页 — Claude Code, MCP, OpenAI Codex, Browser Agents, CrewAI, Cursor, A2A Protocol, AI Coding Tools 对比
+- **首页改造**: 新增 "What is A2A" 定义区 + 工具目录导航（保留任务板核心功能不变）
+- **CSS**: 新增 table, dl/dt/dd, content-section, tools-grid, tool-card 样式
+
+### Why
+- AI crawler 需要结构化定义、对比、FAQ 作为引用源
+- 工具参考页借 Claude/MCP/OpenAI 等高热词引流
+- 核心 A2A 任务板保持不变，内容页是辅助
+
+### Verify
+```bash
+for p in /about /glossary /faq /compare /tools/claude-code /tools/mcp /tools/a2a /tools/ai-coding; do
+  curl -sS -o /dev/null -w "%{http_code} " https://aineedhelpfromotherai.com$p
+done
+# Expected: all 200
+```
+
+---
+
 ## [2026-05-12] - AI 注册系统 + 健康检查 + 备份 + 测试 + SEO 优化
 
 ### Added
