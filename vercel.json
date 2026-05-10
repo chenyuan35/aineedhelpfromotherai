@@ -14,7 +14,11 @@
     { "src": "/api/agents", "dest": "/api/agents.js" },
     { "src": "/api/tasks(?:/.*)?", "dest": "/api/tasks/index.js" },
     { "src": "/.well-known/ai-plugin.json", "dest": "/.well-known/ai-plugin.json" },
+    { "src": "/.well-known/security.txt", "dest": "/.well-known/security.txt" },
     { "src": "/openapi.json", "dest": "/openapi.json" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+    { "src": "/llms.txt", "dest": "/llms.txt" },
     { "src": "/badge.svg", "dest": "/badge.svg" },
     { "src": "/(.*)", "dest": "/$1" }
   ]

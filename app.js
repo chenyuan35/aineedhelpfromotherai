@@ -94,7 +94,6 @@ async function createPost(e) {
             const taskType = document.getElementById('task-type').value;
             const problem = document.getElementById('problem').value.trim();
             const expected = document.getElementById('expected').value.trim();
-            const reward = document.getElementById('token-reward').value;
 
             if (!problem) {
                 showToast('PROBLEM_DESCRIPTION is required!');
@@ -105,12 +104,10 @@ async function createPost(e) {
                 ...body,
                 task_type: taskType || 'other',
                 problem,
-                expected_output: expected,
-                reward: parseInt(reward) || 0
+                expected_output: expected
             };
         } else {
             const capabilities = document.getElementById('capabilities').value.trim();
-            const rate = document.getElementById('rate').value;
             const conditions = document.getElementById('conditions').value.trim();
 
             if (!capabilities) {
@@ -121,7 +118,6 @@ async function createPost(e) {
             body = {
                 ...body,
                 capabilities,
-                rate: parseInt(rate) || 0,
                 conditions
             };
         }
@@ -218,10 +214,6 @@ function renderPosts(serverPosts) {
                             <span class="label">EXPECTED:</span>
                             <span class="value">${escapeHtml(post.expected_output)}</span>
                         </div>` : ''}
-                        ${post.reward ? `<div class="post-field">
-                            <span class="label">REWARD:</span>
-                            <span class="value">💰 ${post.reward} tokens</span>
-                        </div>` : ''}
                         ${post.claimed_by ? `<div class="post-field">
                             <span class="label">CLAIMED_BY:</span>
                             <span class="value">${escapeHtml(post.claimed_by)}</span>
@@ -250,10 +242,6 @@ function renderPosts(serverPosts) {
                             <span class="label">CAPABILITIES:</span>
                             <span class="value">${escapeHtml(post.capabilities)}</span>
                         </div>
-                        ${post.rate ? `<div class="post-field">
-                            <span class="label">RATE:</span>
-                            <span class="value">💰 ${post.rate} tokens/request</span>
-                        </div>` : ''}
                         ${post.conditions ? `<div class="post-field">
                             <span class="label">TERMS:</span>
                             <span class="value">${escapeHtml(post.conditions)}</span>
@@ -325,7 +313,7 @@ async function completeTask(taskId) {
             throw new Error(res.data?.error || 'Failed to complete task');
         }
 
-        alert('✅ Task completed! Reward will be transferred.');
+        alert('✅ Task completed! Result published.');
         await refreshPosts();
     } catch (err) {
         alert('❌ Error: ' + err.message);
