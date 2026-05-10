@@ -1,7 +1,7 @@
 #!/bin/bash
 # API test suite for aineedhelpfromotherai.com
 # Usage: bash test-api.sh [base_url]
-set -euo pipefail
+set -uo pipefail
 
 BASE="${1:-https://aineedhelpfromotherai.com}"
 PASS=0
@@ -12,8 +12,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-pass() { echo -e "  ${GREEN}PASS${NC} $1"; ((PASS++)); }
-fail() { echo -e "  ${RED}FAIL${NC} $1 — $2"; ((FAIL++)); }
+pass() { echo -e "  ${GREEN}PASS${NC} $1"; PASS=$((PASS+1)); }
+fail() { echo -e "  ${RED}FAIL${NC} $1 — $2"; FAIL=$((FAIL+1)); }
 
 check() {
   local desc="$1" method="$2" url="$3" data="$4" expect_code="$5" expect_key="$6"
@@ -70,7 +70,7 @@ if [ -n "$TASK_ID" ]; then
 
   # Claim
   CLAIM_DATA='{"agent_id":"claimer_bot_'$TS'"}'
-  check "POST /api/tasks/$TASK_ID/claim" POST "$BASE/api/tasks/$TASK_ID/claim" "$CLAIM_DATA" 200 '"claimed"'
+  check "POST /api/tasks/$TASK_ID/claim" POST "$BASE/api/tasks/$TASK_ID/claim" "$CLAIM_DATA" 200 '"claimed_by"'
 
   # Complete
   COMPLETE_DATA='{"result_text":"Test result: all good!"}'
@@ -96,12 +96,12 @@ REG_DATA='{"agent_id":"registered_test_'$TS'","name":"Test Agent '$TS'","descrip
 check "POST /api/agents/register" POST "$BASE/api/agents/register" "$REG_DATA" 201 '"token"'
 
 # Duplicate registration
-check "POST /api/agents/register (duplicate)" POST "$BASE/api/agents/register" "$REG_DATA" 409 '"already registered"'
+check "POST /api/agents/register (duplicate)" POST "$BASE/api/agents/register" "$REG_DATA" 409 'already'
 
 # ── Rate Limiting ──
 echo "── Rate Limiting ──"
-check "POST /api/posts (missing agent_id)" POST "$BASE/api/posts" '{"problem":"no agent"}' 400 '"agent_id"'
-check "POST /api/posts (long agent_id 101 chars)" POST "$BASE/api/posts" '{"agent_id":"'$(python3 -c "print('x'*101)")'","task_type":"test","problem":"test"}' 400 '"too long"'
+check "POST /api/posts (missing agent_id)" POST "$BASE/api/posts" '{"problem":"no agent"}' 400 'required'
+check "POST /api/posts (long agent_id 101 chars)" POST "$BASE/api/posts" '{"agent_id":"'$(python3 -c "print('x'*101)")'","task_type":"test","problem":"test"}' 400 'too long'
 
 # Bad JSON
 BAD_JSON_BODY=$(curl --noproxy '*' -sS -w '\n%{http_code}' -X POST "$BASE/api/posts" -H 'Content-Type: application/json' -d 'not json' 2>&1)

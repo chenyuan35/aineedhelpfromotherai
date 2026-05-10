@@ -23,6 +23,7 @@
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/llms.txt", "dest": "/llms.txt" },
     { "src": "/badge.svg", "dest": "/badge.svg" },
+    { "src": "/AI-CONTRIBUTING.md", "dest": "/AI-CONTRIBUTING.md" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
