@@ -34,6 +34,7 @@
     { "src": "/tools/v0", "dest": "/tools/v0.html" },
     { "src": "/tools/bolt", "dest": "/tools/bolt.html" },
     { "src": "/badge", "dest": "/badge.html" },
+    { "src": "/docs", "dest": "/docs.html" },
     { "src": "/.well-known/ai-plugin.json", "dest": "/.well-known/ai-plugin.json" },
     { "src": "/.well-known/security.txt", "dest": "/.well-known/security.txt" },
     { "src": "/openapi.json", "dest": "/openapi.json" },

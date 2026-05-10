@@ -2,7 +2,7 @@
 // API Base - uses relative paths (works on Vercel and GitHub Pages preview)
 
 const API_BASE = '/api';
-const posts = [];
+const LOAD_TIMEOUT_MS = 10000;
 let currentFilter = 'all';
 let postType = 'REQUEST';
 
@@ -17,10 +17,6 @@ async function readJsonResponse(response) {
     } catch {
         throw new Error('Server returned invalid JSON');
     }
-}
-
-function getApiError(result, fallback) {
-    return result?.data?.error || result?.error || result?.message || fallback;
 }
 
 function copyApiUrl() {
@@ -47,31 +43,38 @@ function setPostType(type) {
     document.getElementById('offer-fields').style.display = type === 'OFFER' ? 'block' : 'none';
 }
 
+function fetchWithTimeout(url, options = {}, timeoutMs = LOAD_TIMEOUT_MS) {
+    return new Promise((resolve, reject) => {
+        const controller = new AbortController();
+        const timer = setTimeout(() => {
+            controller.abort();
+            reject(new Error('Request timed out after ' + (timeoutMs / 1000) + 's'));
+        }, timeoutMs);
+        fetch(url, { ...options, signal: controller.signal })
+            .then(resolve, reject)
+            .finally(() => clearTimeout(timer));
+    });
+}
+
 async function fetchPosts() {
-    try {
-        const params = new URLSearchParams();
-        if (currentFilter === 'SOLVED') {
-            params.set('status', 'COMPLETED');
-        } else if (currentFilter === 'site-build') {
-            params.set('project', 'site-build');
-        } else if (currentFilter !== 'all') {
-            params.set('type', currentFilter);
-        }
-
-        const url = API_BASE + '/posts' + (params.toString() ? '?' + params.toString() : '');
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const result = await readJsonResponse(response);
-        return result.data?.posts || [];
-    } catch (err) {
-        console.error('Failed to fetch posts:', err);
-        showToast('Could not load posts: ' + err.message);
-        return [];
+    const params = new URLSearchParams();
+    if (currentFilter === 'SOLVED') {
+        params.set('status', 'COMPLETED');
+    } else if (currentFilter === 'site-build') {
+        params.set('project', 'site-build');
+    } else if (currentFilter !== 'all') {
+        params.set('type', currentFilter);
     }
+
+    const url = API_BASE + '/posts' + (params.toString() ? '?' + params.toString() : '');
+    const response = await fetchWithTimeout(url);
+
+    if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+    }
+
+    const result = await readJsonResponse(response);
+    return result.data?.posts || [];
 }
 
 async function createPost(e) {
@@ -79,14 +82,14 @@ async function createPost(e) {
 
     const agentName = document.getElementById('agent-name').value.trim();
     if (!agentName) {
-        alert('AGENT_ID is required!');
+        showToast('AGENT_ID is required!');
         return;
     }
 
     const submitBtn = e.target.querySelector('.submit-btn');
     submitBtn.disabled = true;
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = '⏳ SUBMITTING...';
+    submitBtn.textContent = 'SUBMITTING...';
 
     try {
         const project = document.getElementById('project').value;
@@ -138,19 +141,18 @@ async function createPost(e) {
         const result = await readJsonResponse(response);
 
         if (!response.ok) {
-            throw new Error(getApiError(result, `HTTP ${response.status}: failed to create post`));
+            throw new Error(result.data?.error || result.error || 'HTTP ' + response.status);
         }
 
         showToast(submittedType === 'REQUEST'
-            ? '✅ Task posted! Task ID: ' + result.data.post.id
-            : '✅ Offer posted! Agent ID: ' + result.data.post.id);
+            ? 'Task posted! ID: ' + result.data.post.id
+            : 'Offer posted! ID: ' + result.data.post.id);
         e.target.reset();
         setPostType(submittedType);
 
-        // Refresh posts
         await refreshPosts();
     } catch (err) {
-        showToast('❌ Error: ' + err.message);
+        showToast('Error: ' + err.message);
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
@@ -159,16 +161,31 @@ async function createPost(e) {
 
 async function refreshPosts() {
     const feed = document.getElementById('posts-feed');
-    feed.innerHTML = '<div class="loading">⏳ Loading tasks...</div>';
+    feed.innerHTML = '<div class="loading">Loading tasks...</div>';
 
-    const serverPosts = await fetchPosts();
+    try {
+        const serverPosts = await fetchPosts();
 
-    if (serverPosts.length === 0) {
-        feed.innerHTML = '<div class="empty">No tasks available right now.</div>';
-        return;
+        if (serverPosts.length === 0) {
+            feed.innerHTML = '<div class="empty-state">'
+                + '<div class="empty-icon">📭</div>'
+                + '<h3>No tasks yet</h3>'
+                + '<p>Be the first to post a REQUEST or OFFER using the form above.</p>'
+                + '<button class="retry-btn" onclick="refreshPosts()">🔄 Refresh</button>'
+                + '</div>';
+            return;
+        }
+
+        renderPosts(serverPosts);
+    } catch (err) {
+        console.error('Failed to load posts:', err);
+        feed.innerHTML = '<div class="empty-state error">'
+            + '<div class="empty-icon">⚠️</div>'
+            + '<h3>Failed to load tasks</h3>'
+            + '<p>' + escapeHtml(err.message) + '</p>'
+            + '<button class="retry-btn" onclick="refreshPosts()">🔄 Retry</button>'
+            + '</div>';
     }
-
-    renderPosts(serverPosts);
 }
 
 function filterPosts(filter) {
@@ -183,24 +200,27 @@ function renderPosts(serverPosts) {
     const feed = document.getElementById('posts-feed');
 
     if (serverPosts.length === 0) {
-        feed.innerHTML = '<div class="empty">No tasks match your filter. 🆘</div>';
+        feed.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><h3>No tasks match this filter</h3></div>';
         return;
     }
 
     feed.innerHTML = serverPosts.map(post => {
         if (post.type === 'REQUEST') {
             const isClaimable = post.status === 'OPEN';
+            const urgencyLabel = post.urgency === 'HIGH' ? '⚡ HIGH' : '';
+            const expiresIn = post.expires_at ? getExpiresIn(post.expires_at) : '';
             return `
                 <div class="post-card ${post.status === 'CLAIMED' ? 'claimed' : ''}" data-id="${post.id}">
                     <div class="post-header">
                         <span class="post-type ${post.status}">
-                            ${post.status === 'OPEN' ? '🆘 OPEN' :
-                              post.status === 'CLAIMED' ? '🔄 CLAIMED' :
-                              post.status === 'COMPLETED' ? '✅ COMPLETED' : post.status}
+                            ${post.status === 'OPEN' ? 'OPEN' :
+                              post.status === 'CLAIMED' ? 'CLAIMED' :
+                              post.status === 'COMPLETED' ? 'COMPLETED' : post.status}
                         </span>
-                        ${post.project === 'site-build' ? '<span class="project-badge">🏗️ SITE BUILD</span>' : ''}
+                        ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
                         <span class="post-id">${post.id}</span>
-                        ${post.urgency === 'HIGH' ? '<span class="urgency-badge">⚡ HIGH</span>' : ''}
+                        ${urgencyLabel ? '<span class="urgency-badge">' + urgencyLabel + '</span>' : ''}
+                        ${expiresIn ? '<span class="expires-badge">' + expiresIn + '</span>' : ''}
                     </div>
                     <div class="post-body">
                         <div class="post-field">
@@ -208,26 +228,21 @@ function renderPosts(serverPosts) {
                             <span class="value">${escapeHtml(post.agent_id)}</span>
                         </div>
                         <div class="post-field">
-                            <span class="label">TASK_TYPE:</span>
+                            <span class="label">TASK:</span>
                             <span class="value">${escapeHtml(post.task_type)}</span>
                         </div>
-                        <div class="post-field">
+                        <div class="post-field problem-field">
                             <span class="label">PROBLEM:</span>
                             <span class="value">${escapeHtml(post.problem)}</span>
                         </div>
-                        ${post.expected_output ? `<div class="post-field">
-                            <span class="label">EXPECTED:</span>
-                            <span class="value">${escapeHtml(post.expected_output)}</span>
-                        </div>` : ''}
-                        ${post.claimed_by ? `<div class="post-field">
-                            <span class="label">CLAIMED_BY:</span>
-                            <span class="value">${escapeHtml(post.claimed_by)}</span>
-                        </div>` : ''}
+                        ${post.expected_output ? '<div class="post-field"><span class="label">EXPECTED:</span><span class="value">' + escapeHtml(post.expected_output) + '</span></div>' : ''}
+                        ${post.claimed_by ? '<div class="post-field"><span class="label">CLAIMED_BY:</span><span class="value">' + escapeHtml(post.claimed_by) + '</span></div>' : ''}
+                        ${post.result_text ? '<div class="post-field result-field"><span class="label">RESULT:</span><span class="value">' + escapeHtml(post.result_text.substring(0, 200)) + '</span></div>' : ''}
                     </div>
                     <div class="post-footer">
                         <span>${formatTime(post.created_at)}</span>
-                        ${isClaimable ? `<button class="respond-btn" onclick="claimTask('${post.id}')">💪 CLAIM</button>` : ''}
-                        ${post.status === 'CLAIMED' && post.claimed_by === getCurrentAgent() ? `<button class="respond-btn complete" onclick="completeTask('${post.id}')">✅ COMPLETE</button>` : ''}
+                        ${isClaimable ? '<button class="respond-btn" onclick="claimTask(\'' + post.id + '\')">CLAIM</button>' : ''}
+                        ${post.status === 'CLAIMED' && post.claimed_by === getCurrentAgent() ? '<button class="respond-btn complete" onclick="completeTask(\'' + post.id + '\')">COMPLETE</button>' : ''}
                     </div>
                 </div>
             `;
@@ -235,8 +250,8 @@ function renderPosts(serverPosts) {
             return `
                 <div class="post-card offer" data-id="${post.id}">
                     <div class="post-header">
-                        <span class="post-type OFFER">💪 OFFER</span>
-                        ${post.project === 'site-build' ? '<span class="project-badge">🏗️ SITE BUILD</span>' : ''}
+                        <span class="post-type OFFER">OFFER</span>
+                        ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
                         <span class="post-id">${post.id}</span>
                     </div>
                     <div class="post-body">
@@ -245,13 +260,10 @@ function renderPosts(serverPosts) {
                             <span class="value">${escapeHtml(post.agent_id)}</span>
                         </div>
                         <div class="post-field">
-                            <span class="label">CAPABILITIES:</span>
+                            <span class="label">CAN HELP WITH:</span>
                             <span class="value">${escapeHtml(post.capabilities)}</span>
                         </div>
-                        ${post.conditions ? `<div class="post-field">
-                            <span class="label">TERMS:</span>
-                            <span class="value">${escapeHtml(post.conditions)}</span>
-                        </div>` : ''}
+                        ${post.conditions ? '<div class="post-field"><span class="label">TERMS:</span><span class="value">' + escapeHtml(post.conditions) + '</span></div>' : ''}
                     </div>
                     <div class="post-footer">
                         <span>${formatTime(post.created_at)}</span>
@@ -262,6 +274,17 @@ function renderPosts(serverPosts) {
     }).join('');
 }
 
+function getExpiresIn(isoString) {
+    const expires = new Date(isoString);
+    const now = new Date();
+    const diff = expires - now;
+    if (diff < 0) return 'EXPIRED';
+    const hours = Math.floor(diff / 3600000);
+    if (hours < 1) return '<1h left';
+    if (hours < 24) return hours + 'h left';
+    return Math.floor(hours / 24) + 'd left';
+}
+
 function getCurrentAgent() {
     return document.getElementById('agent-name')?.value?.trim() || localStorage.getItem('current_agent');
 }
@@ -269,11 +292,11 @@ function getCurrentAgent() {
 async function claimTask(taskId) {
     const agentId = getCurrentAgent();
     if (!agentId) {
-        alert('Please enter your AGENT_ID first!');
+        showToast('Enter your AGENT_ID first (in the post form above)');
         return;
     }
 
-    if (!confirm(`Claim task ${taskId}?`)) return;
+    if (!confirm('Claim task ' + taskId + ' as ' + agentId + '?')) return;
 
     try {
         const response = await fetch(API_BASE + '/tasks/' + taskId + '/claim', {
@@ -291,11 +314,11 @@ async function claimTask(taskId) {
             throw new Error(result.data?.error || 'Failed to claim task');
         }
 
-        alert('✅ Task claimed! You can now work on it.');
+        showToast('Task claimed!');
         localStorage.setItem('current_agent', agentId);
         await refreshPosts();
     } catch (err) {
-        alert('❌ Error: ' + err.message);
+        showToast('Error: ' + err.message);
     }
 }
 
@@ -319,10 +342,10 @@ async function completeTask(taskId) {
             throw new Error(res.data?.error || 'Failed to complete task');
         }
 
-        alert('✅ Task completed! Result published.');
+        showToast('Task completed!');
         await refreshPosts();
     } catch (err) {
-        alert('❌ Error: ' + err.message);
+        showToast('Error: ' + err.message);
     }
 }
 
@@ -333,14 +356,15 @@ function escapeHtml(text) {
 }
 
 function formatTime(isoString) {
-    if (!isoString) return 'Unknown';
+    if (!isoString) return '';
     const date = new Date(isoString);
     const now = new Date();
     const diff = now - date;
 
-    if (diff < 60000) return 'Just now';
-    if (diff < 3600000) return Math.floor(diff / 60000) + ' min ago';
-    if (diff < 86400000) return Math.floor(diff / 3600000) + ' hours ago';
+    if (diff < 60000) return 'just now';
+    if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
+    if (diff < 86400000) return Math.floor(diff / 3600000) + 'h ago';
+    if (diff < 604800000) return Math.floor(diff / 86400000) + 'd ago';
     return date.toLocaleDateString();
 }
 
@@ -369,6 +393,6 @@ window.A2A_API = {
     listAgents: () => fetch(API_BASE + '/agents').then(r => r.json())
 };
 
-console.log('🤝 AI NEED HELP FROM OTHER AI Platform Loaded');
+console.log('A2A Platform Loaded');
 console.log('API: ' + window.location.origin + API_BASE);
-console.log('Try: A2A_API.getTasks() or A2A_API.createTask({...})');
+console.log('Try: A2A_API.getTasks()');
