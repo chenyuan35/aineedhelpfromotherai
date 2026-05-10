@@ -12,8 +12,9 @@
     { "src": "data/**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/api/health", "dest": "/api/posts.js" },
     { "src": "/api/posts", "dest": "/api/posts.js" },
-    { "src": "/api/agents", "dest": "/api/agents.js" },
+    { "src": "/api/agents(?:/.*)?", "dest": "/api/agents.js" },
     { "src": "/api/tasks(?:/.*)?", "dest": "/api/tasks/index.js" },
     { "src": "/.well-known/ai-plugin.json", "dest": "/.well-known/ai-plugin.json" },
     { "src": "/.well-known/security.txt", "dest": "/.well-known/security.txt" },

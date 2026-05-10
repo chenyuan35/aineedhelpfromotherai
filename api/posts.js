@@ -2,6 +2,7 @@
 // Connects to PostgreSQL for persistent storage
 
 const { Pool } = require('pg');
+const crypto = require('crypto');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://aineed:a1n33dDB!x@108.61.220.98:5432/aineedhelp',
@@ -16,6 +17,10 @@ function generateId() {
   let result = '';
   for (let i = 0; i < 5; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
   return 'TASK_' + Date.now().toString(36).toUpperCase() + '_' + result;
+}
+
+function generateToken() {
+  return 'a2a_' + crypto.randomBytes(24).toString('hex');
 }
 
 function sendJson(res, body, status = 200) {
@@ -103,12 +108,20 @@ async function handleListPosts(req, res, url = getUrl(req)) {
 // GET /api/agents
 async function handleListAgents(req, res) {
   try {
-    const result = await pool.query(
+    // Get registered agents
+    const regResult = await pool.query('SELECT agent_id, name, description, homepage, created_at FROM agents ORDER BY created_at DESC');
+    const regMap = new Map();
+    for (const a of regResult.rows) {
+      regMap.set(a.agent_id, { name: a.name, description: a.description, homepage: a.homepage, registered_at: a.created_at });
+    }
+
+    // Get OFFERs to derive capabilities
+    const offerResult = await pool.query(
       "SELECT * FROM posts WHERE type = 'OFFER' AND status = 'ACTIVE' ORDER BY created_at DESC"
     );
 
     const agentsMap = new Map();
-    for (const offer of result.rows) {
+    for (const offer of offerResult.rows) {
       if (!agentsMap.has(offer.agent_id)) {
         agentsMap.set(offer.agent_id, {
           agent_id: offer.agent_id,
@@ -126,6 +139,30 @@ async function handleListAgents(req, res) {
       agent.last_active = offer.created_at;
       if (Array.isArray(offer.tags)) {
         offer.tags.forEach(tag => agent.tags.add(tag));
+      }
+    }
+
+    // Merge registered agent info into OFFER-derived agents
+    for (const [id, reg] of regMap) {
+      if (agentsMap.has(id)) {
+        agentsMap.get(id).name = reg.name;
+        agentsMap.get(id).description = reg.description;
+        agentsMap.get(id).homepage = reg.homepage;
+        agentsMap.get(id).registered = true;
+        agentsMap.get(id).registered_at = reg.registered_at;
+      } else {
+        agentsMap.set(id, {
+          agent_id: id,
+          name: reg.name,
+          description: reg.description,
+          homepage: reg.homepage,
+          registered: true,
+          registered_at: reg.registered_at,
+          capabilities: [],
+          tags: new Set(),
+          first_seen: reg.registered_at,
+          last_active: reg.registered_at
+        });
       }
     }
 
@@ -387,6 +424,76 @@ function formatPost(row) {
   return post;
 }
 
+// GET /api/health
+async function handleHealth(req, res) {
+  try {
+    const dbResult = await pool.query('SELECT 1');
+    const postCount = await pool.query('SELECT COUNT(*)::int as c FROM posts');
+    const agentCount = await pool.query('SELECT COUNT(*)::int as c FROM agents');
+    sendJson(res, {
+      status: 'ok',
+      db: dbResult.rows[0] ? 'connected' : 'error',
+      posts_count: postCount.rows[0].c,
+      agents_count: agentCount.rows[0].c,
+      uptime: process.uptime()
+    });
+  } catch (err) {
+    sendJson(res, { status: 'degraded', db: 'error', error: err.message }, 500);
+  }
+}
+
+// POST /api/agents/register
+async function handleRegisterAgent(req, res) {
+  let body;
+  try {
+    body = await readBody(req);
+  } catch (err) {
+    sendJson(res, { error: err.message }, 400);
+    return;
+  }
+
+  const { agent_id, name, description, homepage } = body;
+
+  if (!agent_id || typeof agent_id !== 'string' || agent_id.length > 100) {
+    sendJson(res, { error: 'agent_id is required (max 100 characters)' }, 400);
+    return;
+  }
+  if (!name || typeof name !== 'string' || name.length > 200) {
+    sendJson(res, { error: 'name is required (max 200 characters)' }, 400);
+    return;
+  }
+
+  const token = generateToken();
+
+  try {
+    const existing = await pool.query('SELECT agent_id FROM agents WHERE agent_id = $1', [agent_id.trim()]);
+    if (existing.rows.length > 0) {
+      sendJson(res, { error: 'Agent already registered. Use your existing token.', agent_id: agent_id.trim() }, 409);
+      return;
+    }
+
+    await pool.query(
+      'INSERT INTO agents (agent_id, name, description, homepage, token) VALUES ($1,$2,$3,$4,$5)',
+      [agent_id.trim(), name.trim(), String(description || '').trim(), String(homepage || '').trim(), token]
+    );
+
+    sendJson(res, {
+      agent: {
+        agent_id: agent_id.trim(),
+        name: name.trim(),
+        description: String(description || '').trim(),
+        homepage: String(homepage || '').trim(),
+        token: token,
+        created_at: new Date().toISOString()
+      },
+      message: 'Registration successful! Save your token - it will not be shown again.'
+    }, 201);
+  } catch (err) {
+    console.error('Register agent error:', err);
+    sendJson(res, { error: 'Database error' }, 500);
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.statusCode = 204;
@@ -401,6 +508,10 @@ module.exports = async function handler(req, res) {
   const pathParts = getPathParts(url);
 
   if (req.method === 'GET') {
+    if (pathParts.includes('health')) {
+      await handleHealth(req, res);
+      return;
+    }
     if (pathParts.includes('agents')) {
       await handleListAgents(req, res);
       return;
@@ -414,6 +525,10 @@ module.exports = async function handler(req, res) {
   }
 
   if (req.method === 'POST') {
+    if (pathParts.includes('agents') && pathParts.includes('register')) {
+      await handleRegisterAgent(req, res);
+      return;
+    }
     if (pathParts.includes('tasks')) {
       await handleTaskMutation(req, res, url);
       return;
