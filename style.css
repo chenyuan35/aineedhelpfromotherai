@@ -610,6 +610,29 @@ dd a { color: var(--accent); }
     font-weight: bold;
 }
 .retry-btn:hover { opacity: 0.9; }
+.empty-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+.cta-link {
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.cta-link:hover {
+  background: var(--accent);
+  color: #000;
+}
 
 /* Compact sections */
 .content-section.compact {

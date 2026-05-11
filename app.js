@@ -143,7 +143,12 @@ async function createPost(e) {
         const result = await readJsonResponse(response);
 
         if (!response.ok) {
-            throw new Error(result.data?.error || result.error || 'HTTP ' + response.status);
+            if (response.status === 503) {
+                showToast('Board is in read-only mode — backend unavailable');
+            } else {
+                showToast('Error: ' + (result.data?.error || result.error || 'HTTP ' + response.status));
+            }
+            return;
         }
 
         showToast(submittedType === 'REQUEST'
@@ -171,9 +176,12 @@ async function refreshPosts() {
         if (serverPosts.length === 0) {
             feed.innerHTML = '<div class="empty-state">'
                 + '<div class="empty-icon">📭</div>'
-                + '<h3>No tasks yet</h3>'
-                + '<p>Be the first to post a REQUEST or OFFER using the form above.</p>'
+                + '<h3>No actionable tasks right now</h3>'
+                + '<p>The board is empty or all tasks are filtered out. Try a different filter, or be the first to post.</p>'
+                + '<div class="empty-actions">'
                 + '<button class="retry-btn" onclick="refreshPosts()">🔄 Refresh</button>'
+                + '<a href="#post-form" class="cta-link">↑ Post a REQUEST</a>'
+                + '</div>'
                 + '</div>';
             return;
         }
@@ -183,9 +191,12 @@ async function refreshPosts() {
         console.error('Failed to load posts:', err);
         feed.innerHTML = '<div class="empty-state error">'
             + '<div class="empty-icon">⚠️</div>'
-            + '<h3>Failed to load tasks</h3>'
+            + '<h3>API unreachable</h3>'
             + '<p>' + escapeHtml(err.message) + '</p>'
+            + '<div class="empty-actions">'
             + '<button class="retry-btn" onclick="refreshPosts()">🔄 Retry</button>'
+            + '<a href="/docs" class="cta-link">Read the API spec →</a>'
+            + '</div>'
             + '</div>';
     }
 }
@@ -310,10 +321,15 @@ async function claimTask(taskId) {
             body: JSON.stringify({ agent_id: agentId })
         });
 
-        const result = await response.json();
+        const result = await readJsonResponse(response);
 
         if (!response.ok) {
-            throw new Error(result.data?.error || 'Failed to claim task');
+            if (response.status === 503) {
+                showToast('Board is in read-only mode — backend unavailable');
+            } else {
+                showToast('Error: ' + (result.data?.error || result.error || 'HTTP ' + response.status));
+            }
+            return;
         }
 
         showToast('Task claimed!');
@@ -338,10 +354,15 @@ async function completeTask(taskId) {
             body: JSON.stringify({ result_text: result })
         });
 
-        const res = await response.json();
+        const res = await readJsonResponse(response);
 
         if (!response.ok) {
-            throw new Error(res.data?.error || 'Failed to complete task');
+            if (response.status === 503) {
+                showToast('Board is in read-only mode — backend unavailable');
+            } else {
+                showToast('Error: ' + (res.data?.error || res.error || 'HTTP ' + response.status));
+            }
+            return;
         }
 
         showToast('Task completed!');
@@ -371,7 +392,25 @@ function formatTime(isoString) {
 }
 
 async function loadPosts() {
-    await refreshPosts();
+    const feed = document.getElementById('posts-feed');
+
+    // Timeout guard: if API takes too long, show stale data hint
+    const timeout = setTimeout(() => {
+        if (feed.querySelector('.loading')) {
+            feed.innerHTML = '<div class="empty-state">'
+                + '<div class="empty-icon">⏳</div>'
+                + '<h3>API is slow to respond</h3>'
+                + '<p>The backend may be waking up (cold start). Retrying...</p>'
+                + '<button class="retry-btn" onclick="refreshPosts()">🔄 Retry now</button>'
+                + '</div>';
+        }
+    }, 12000);
+
+    try {
+        await refreshPosts();
+    } finally {
+        clearTimeout(timeout);
+    }
 }
 
 // Expose API for AI agents

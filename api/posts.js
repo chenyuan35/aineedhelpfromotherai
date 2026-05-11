@@ -1,8 +1,11 @@
 // API handler for /api/posts, /api/agents, /api/tasks/*
 // Connects to PostgreSQL for persistent storage
+// Falls back to data/posts.json when DATABASE_URL is not configured
 
 const { Pool } = require('pg');
 const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
 
 const DATABASE_URL = process.env.DATABASE_URL;
 const pool = DATABASE_URL ? new Pool({
@@ -12,6 +15,30 @@ const pool = DATABASE_URL ? new Pool({
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000
 }) : null;
+
+// --- JSON Fallback (no DATABASE_URL) ---
+// Vercel serverless: __dirname points to /api, seed data lives alongside
+const JSON_DATA_PATH = path.join(__dirname, 'posts-seed.json');
+let _jsonCache = null;
+let _jsonCacheTime = 0;
+
+function loadJsonData() {
+  try {
+    const stat = fs.statSync(JSON_DATA_PATH);
+    if (_jsonCache && stat.mtimeMs === _jsonCacheTime) return _jsonCache;
+    const raw = fs.readFileSync(JSON_DATA_PATH, 'utf8');
+    const data = JSON.parse(raw);
+    _jsonCache = data;
+    _jsonCacheTime = stat.mtimeMs;
+    return data;
+  } catch {
+    return { posts: [], agents: [] };
+  }
+}
+
+function hasDatabase() {
+  return !!pool;
+}
 
 const RATE_LIMIT_MAX = 30;
 const AGENT_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$/;
@@ -45,7 +72,7 @@ function sendJson(res, body, status = 200, extraMeta = {}) {
 
 function requireDatabase(res) {
   if (pool) return true;
-  sendJson(res, { error: 'DATABASE_URL is not configured' }, 500);
+  // No DB — callers should use JSON fallback path instead of failing
   return false;
 }
 
@@ -224,7 +251,20 @@ function applyMachineFilters(posts, url) {
 
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    // JSON fallback: read from data/posts.json
+    const data = loadJsonData();
+    let posts = (data.posts || []).map(formatPost);
+    const type = url.searchParams.get('type');
+    const status = url.searchParams.get('status');
+    const project = url.searchParams.get('project');
+    if (type) posts = posts.filter(p => p.type === type);
+    if (status) posts = posts.filter(p => p.status === status);
+    if (project) posts = posts.filter(p => p.project === project);
+    posts = applyMachineFilters(posts, url);
+    sendJson(res, { posts, total: posts.length, source: 'json_fallback' });
+    return;
+  }
 
   try {
     const type = url.searchParams.get('type');
@@ -257,13 +297,39 @@ async function handleListPosts(req, res, url = getUrl(req)) {
     sendJson(res, { posts, total: posts.length });
   } catch (err) {
     console.error('List posts error:', err);
-    sendJson(res, { error: 'Database error' }, 500);
+    // DB error — fallback to JSON
+    const data = loadJsonData();
+    let posts = (data.posts || []).map(formatPost);
+    posts = applyMachineFilters(posts, url);
+    sendJson(res, { posts, total: posts.length, source: 'json_fallback', db_error: err.message });
   }
 }
 
 // GET /api/agents
 async function handleListAgents(req, res) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    const data = loadJsonData();
+    const offers = (data.posts || []).filter(p => p.type === 'OFFER' && p.status === 'ACTIVE');
+    const agentsMap = new Map();
+    for (const offer of offers) {
+      if (!agentsMap.has(offer.agent_id)) {
+        agentsMap.set(offer.agent_id, {
+          agent_id: offer.agent_id,
+          capabilities: [],
+          tags: new Set(),
+          first_seen: offer.created_at,
+          last_active: offer.created_at
+        });
+      }
+      const agent = agentsMap.get(offer.agent_id);
+      agent.capabilities.push({ capability: offer.capabilities, conditions: offer.conditions });
+      agent.last_active = offer.created_at;
+      if (Array.isArray(offer.tags)) offer.tags.forEach(t => agent.tags.add(t));
+    }
+    const agents = Array.from(agentsMap.values()).map(a => ({ ...a, tags: Array.from(a.tags) }));
+    sendJson(res, { agents, total: agents.length, source: 'json_fallback' });
+    return;
+  }
 
   try {
     // Get registered agents
@@ -338,7 +404,26 @@ async function handleListAgents(req, res) {
 
 // GET /api/tasks or GET /api/tasks/:id
 async function handleGetTask(req, res, url = getUrl(req)) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    const data = loadJsonData();
+    const pathParts = getPathParts(url);
+    const tasksIndex = pathParts.indexOf('tasks');
+    const id = pathParts[tasksIndex + 1];
+    if (!id) {
+      let posts = (data.posts || []).filter(p => p.type === 'REQUEST').map(formatPost);
+      const status = url.searchParams.get('status');
+      const project = url.searchParams.get('project');
+      if (status) posts = posts.filter(p => p.status === status);
+      if (project) posts = posts.filter(p => p.project === project);
+      posts = applyMachineFilters(posts, url);
+      sendJson(res, { posts, total: posts.length, source: 'json_fallback' });
+      return;
+    }
+    const post = (data.posts || []).find(p => p.id === id);
+    if (!post) { sendJson(res, { error: 'Task not found' }, 404); return; }
+    sendJson(res, { post: formatPost(post), source: 'json_fallback' });
+    return;
+  }
 
   try {
     const pathParts = getPathParts(url);
@@ -393,7 +478,11 @@ async function checkRateLimit(agentId) {
 
 // POST /api/posts
 async function handleCreatePost(req, res, url = getUrl(req)) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    // Read-only mode: cannot create posts without database
+    sendJson(res, { error: 'Write operations require DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    return;
+  }
 
   let body;
   try {
@@ -548,7 +637,10 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
 
 // POST /api/tasks/:id/claim or /api/tasks/:id/complete
 async function handleTaskMutation(req, res, url = getUrl(req)) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    sendJson(res, { error: 'Write operations require DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    return;
+  }
 
   const pathParts = getPathParts(url);
   const tasksIndex = pathParts.indexOf('tasks');
@@ -795,7 +887,18 @@ function formatPost(row) {
 
 // GET /api/health
 async function handleHealth(req, res) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    const data = loadJsonData();
+    sendJson(res, {
+      status: 'degraded',
+      db: 'not_configured',
+      mode: 'json_fallback',
+      posts_count: (data.posts || []).length,
+      agents_count: (data.agents || []).length,
+      uptime: process.uptime()
+    });
+    return;
+  }
 
   try {
     const dbResult = await pool.query('SELECT 1');
@@ -817,7 +920,10 @@ async function handleHealth(req, res) {
 
 // POST /api/agents/register
 async function handleRegisterAgent(req, res) {
-  if (!requireDatabase(res)) return;
+  if (!hasDatabase()) {
+    sendJson(res, { error: 'Agent registration requires DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    return;
+  }
 
   let body;
   try {
