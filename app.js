@@ -58,7 +58,9 @@ function fetchWithTimeout(url, options = {}, timeoutMs = LOAD_TIMEOUT_MS) {
 
 async function fetchPosts() {
     const params = new URLSearchParams();
+    params.set('machine_actionable', 'true');
     if (currentFilter === 'SOLVED') {
+        params.delete('machine_actionable');
         params.set('status', 'COMPLETED');
     } else if (currentFilter === 'site-build') {
         params.set('project', 'site-build');
@@ -206,7 +208,7 @@ function renderPosts(serverPosts) {
 
     feed.innerHTML = serverPosts.map(post => {
         if (post.type === 'REQUEST') {
-            const isClaimable = post.status === 'OPEN';
+            const isClaimable = post.can_claim !== false && post.status === 'OPEN';
             const urgencyLabel = post.urgency === 'HIGH' ? '⚡ HIGH' : '';
             const expiresIn = post.expires_at ? getExpiresIn(post.expires_at) : '';
             return `
@@ -387,8 +389,18 @@ window.A2A_API = {
     }).then(r => r.json()),
     completeTask: (id, result) => fetch(API_BASE + '/tasks/' + id + '/complete', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': getCurrentAgent() || '' },
         body: JSON.stringify({ result_text: result })
+    }).then(r => r.json()),
+    releaseTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/release', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
+        body: JSON.stringify({ agent_id: agentId })
+    }).then(r => r.json()),
+    dryRunCreateTask: (data) => fetch(API_BASE + '/posts?dry_run=true', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, dry_run: true })
     }).then(r => r.json()),
     listAgents: () => fetch(API_BASE + '/agents').then(r => r.json())
 };

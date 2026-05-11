@@ -4,13 +4,18 @@
 const { Pool } = require('pg');
 const crypto = require('crypto');
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://aineed:a1n33dDB!x@108.61.220.98:5432/aineedhelp',
-  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
+const DATABASE_URL = process.env.DATABASE_URL;
+const pool = DATABASE_URL ? new Pool({
+  connectionString: DATABASE_URL,
+  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false },
   max: 10,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000
-});
+}) : null;
+
+const RATE_LIMIT_MAX = 30;
+const AGENT_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$/;
+const URGENCY_VALUES = new Set(['LOW', 'NORMAL', 'HIGH']);
 
 function generateId() {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -23,7 +28,7 @@ function generateToken() {
   return 'a2a_' + crypto.randomBytes(24).toString('hex');
 }
 
-function sendJson(res, body, status = 200) {
+function sendJson(res, body, status = 200, extraMeta = {}) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,9 +37,16 @@ function sendJson(res, body, status = 200) {
     data: body,
     meta: {
       request_id: generateId(),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      ...extraMeta
     }
   }));
+}
+
+function requireDatabase(res) {
+  if (pool) return true;
+  sendJson(res, { error: 'DATABASE_URL is not configured' }, 500);
+  return false;
 }
 
 function readBody(req) {
@@ -68,8 +80,152 @@ function getPathParts(url) {
   return url.pathname.split('/').filter(Boolean);
 }
 
+function isTruthy(value) {
+  return ['1', 'true', 'yes', 'on'].includes(String(value || '').toLowerCase());
+}
+
+function isDryRun(req, url, body = {}) {
+  return isTruthy(url.searchParams.get('dry_run')) || body.dry_run === true;
+}
+
+function normalizeAgentId(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function validateAgentId(value) {
+  const agentId = normalizeAgentId(value);
+  if (!agentId) return { error: 'agent_id is required' };
+  if (agentId.length > 100) return { error: 'agent_id too long (max 100 characters)' };
+  if (!AGENT_ID_PATTERN.test(agentId)) {
+    return {
+      error: 'agent_id must use only letters, numbers, dot, underscore, colon, or hyphen'
+    };
+  }
+  return { agentId };
+}
+
+function normalizeTags(tags) {
+  if (tags === undefined || tags === null) return { tags: [] };
+  if (!Array.isArray(tags)) return { error: 'tags must be an array of strings' };
+
+  const normalized = [];
+  const seen = new Set();
+  for (const tag of tags) {
+    if (typeof tag !== 'string') return { error: 'tags must be an array of strings' };
+    const value = tag.trim().toLowerCase();
+    if (!value) continue;
+    if (value.length > 40) return { error: 'tag too long (max 40 characters)' };
+    if (!/^[a-z0-9][a-z0-9._:-]*$/.test(value)) {
+      return { error: 'tags may only contain lowercase letters, numbers, dot, underscore, colon, or hyphen' };
+    }
+    if (!seen.has(value)) {
+      seen.add(value);
+      normalized.push(value);
+    }
+  }
+
+  if (normalized.length > 20) return { error: 'too many tags (max 20)' };
+  return { tags: normalized };
+}
+
+function normalizeProject(project) {
+  if (project === undefined || project === null || project === '') return { project: null };
+  if (typeof project !== 'string') return { error: 'project must be a string' };
+  const value = project.trim();
+  if (!value) return { project: null };
+  if (value.length > 80) return { error: 'project too long (max 80 characters)' };
+  if (!/^[a-z0-9][a-z0-9._:-]*$/i.test(value)) {
+    return { error: 'project may only contain letters, numbers, dot, underscore, colon, or hyphen' };
+  }
+  return { project: value };
+}
+
+function normalizeUrgency(urgency) {
+  const value = String(urgency || 'NORMAL').trim().toUpperCase();
+  if (!URGENCY_VALUES.has(value)) return { error: 'urgency must be LOW, NORMAL, or HIGH' };
+  return { urgency: value };
+}
+
+function getQualityFlags(post) {
+  const flags = [];
+  const tags = Array.isArray(post.tags) ? post.tags : [];
+  const text = [
+    post.agent_id,
+    post.task_type,
+    post.problem,
+    post.expected_output,
+    post.capabilities,
+    post.conditions
+  ].filter(Boolean).join(' ').toLowerCase();
+  const agent = String(post.agent_id || '').toLowerCase();
+
+  if (
+    tags.includes('test') ||
+    post.task_type === 'test' ||
+    /^seedtest$/.test(agent) ||
+    /(^|[_:-])test($|[_:-])/.test(agent) ||
+    /^test(bot|_)/.test(agent) ||
+    /^test_offer_bot_/.test(agent) ||
+    /^site_builder_\d/.test(agent) ||
+    /^registered_test_/.test(agent) ||
+    /api test problem|test site-build task|test rate limit|verify new deploy|testing persistence|seed data verification/.test(text)
+  ) {
+    flags.push('test_data');
+  }
+
+  if (post.type === 'REQUEST') {
+    if (!tags.length) flags.push('missing_tags');
+    if (!post.expected_output) flags.push('missing_expected_output');
+    if (!post.problem || String(post.problem).trim().length < 20) flags.push('too_short_problem');
+    if (/lgtm|merci pour l'ajout/.test(text)) flags.push('non_task_text');
+    if (/^j['’]aide\s/.test(String(post.problem || '').toLowerCase())) {
+      flags.push('offer_text_in_request');
+    }
+    if (post.status === 'OPEN' && post.expires_at && new Date(post.expires_at) < new Date()) {
+      flags.push('expired');
+    }
+  }
+
+  if (post.type === 'OFFER') {
+    if (!tags.length) flags.push('missing_tags');
+    if (!post.capabilities || String(post.capabilities).trim().length < 20) {
+      flags.push('too_short_capabilities');
+    }
+  }
+
+  return flags;
+}
+
+function isMachineActionable(post, flags) {
+  if (flags.some(flag => ['test_data', 'non_task_text', 'offer_text_in_request', 'expired'].includes(flag))) {
+    return false;
+  }
+  if (post.type === 'REQUEST') return post.status === 'OPEN' && Boolean(post.problem);
+  if (post.type === 'OFFER') return post.status === 'ACTIVE' && Boolean(post.capabilities);
+  return false;
+}
+
+function applyMachineFilters(posts, url) {
+  const includeTest = isTruthy(url.searchParams.get('include_test'));
+  const includeLowQuality = isTruthy(url.searchParams.get('include_low_quality'));
+  const machineOnly = isTruthy(url.searchParams.get('machine_actionable'));
+  return posts.filter(post => {
+    if (!includeTest && post.is_test) return false;
+    if (
+      !includeLowQuality &&
+      post.quality_flags.some(flag => ['non_task_text', 'offer_text_in_request'].includes(flag))
+    ) {
+      return false;
+    }
+    if (machineOnly && !post.machine_actionable) return false;
+    return true;
+  });
+}
+
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
+  if (!requireDatabase(res)) return;
+
   try {
     const type = url.searchParams.get('type');
     const status = url.searchParams.get('status');
@@ -96,7 +252,7 @@ async function handleListPosts(req, res, url = getUrl(req)) {
     query += ' ORDER BY created_at DESC LIMIT 100';
 
     const result = await pool.query(query, params);
-    const posts = result.rows.map(formatPost);
+    const posts = applyMachineFilters(result.rows.map(formatPost), url);
 
     sendJson(res, { posts, total: posts.length });
   } catch (err) {
@@ -107,6 +263,8 @@ async function handleListPosts(req, res, url = getUrl(req)) {
 
 // GET /api/agents
 async function handleListAgents(req, res) {
+  if (!requireDatabase(res)) return;
+
   try {
     // Get registered agents
     const regResult = await pool.query('SELECT agent_id, name, description, homepage, created_at FROM agents ORDER BY created_at DESC');
@@ -180,6 +338,8 @@ async function handleListAgents(req, res) {
 
 // GET /api/tasks or GET /api/tasks/:id
 async function handleGetTask(req, res, url = getUrl(req)) {
+  if (!requireDatabase(res)) return;
+
   try {
     const pathParts = getPathParts(url);
     const tasksIndex = pathParts.indexOf('tasks');
@@ -203,7 +363,7 @@ async function handleGetTask(req, res, url = getUrl(req)) {
 
       query += ' ORDER BY created_at DESC LIMIT 100';
       const result = await pool.query(query, params);
-      const posts = result.rows.map(formatPost);
+      const posts = applyMachineFilters(result.rows.map(formatPost), url);
       sendJson(res, { posts, total: posts.length });
       return;
     }
@@ -231,10 +391,10 @@ async function checkRateLimit(agentId) {
   return result.rows[0].count;
 }
 
-const RATE_LIMIT_MAX = 30;
-
 // POST /api/posts
-async function handleCreatePost(req, res) {
+async function handleCreatePost(req, res, url = getUrl(req)) {
+  if (!requireDatabase(res)) return;
+
   let body;
   try {
     body = await readBody(req);
@@ -244,19 +404,39 @@ async function handleCreatePost(req, res) {
   }
 
   const { agent_id, task_type, problem, expected_output, capabilities, conditions } = body;
+  const dryRun = isDryRun(req, url, body);
 
-  if (!agent_id || typeof agent_id !== 'string') {
-    sendJson(res, { error: 'agent_id is required' }, 400);
+  const agentValidation = validateAgentId(agent_id);
+  if (agentValidation.error) {
+    sendJson(res, { error: agentValidation.error }, 400);
+    return;
+  }
+  const normalizedAgentId = agentValidation.agentId;
+
+  const tagsValidation = normalizeTags(body.tags);
+  if (tagsValidation.error) {
+    sendJson(res, { error: tagsValidation.error }, 400);
     return;
   }
 
-  if (agent_id.length > 100) {
-    sendJson(res, { error: 'agent_id too long (max 100 characters)' }, 400);
+  const projectValidation = normalizeProject(body.project);
+  if (projectValidation.error) {
+    sendJson(res, { error: projectValidation.error }, 400);
     return;
   }
 
-  if (problem && problem.length > 5000) {
+  const urgencyValidation = normalizeUrgency(body.urgency);
+  if (urgencyValidation.error) {
+    sendJson(res, { error: urgencyValidation.error }, 400);
+    return;
+  }
+
+  if (problem && String(problem).length > 5000) {
     sendJson(res, { error: 'problem too long (max 5000 characters)' }, 400);
+    return;
+  }
+  if (capabilities && String(capabilities).length > 5000) {
+    sendJson(res, { error: 'capabilities too long (max 5000 characters)' }, 400);
     return;
   }
 
@@ -264,14 +444,40 @@ async function handleCreatePost(req, res) {
   const id = generateId();
 
   try {
-    const count = await checkRateLimit(agent_id);
+    const count = await checkRateLimit(normalizedAgentId);
     if (count >= RATE_LIMIT_MAX) {
       sendJson(res, { error: 'Rate limit exceeded. Max 30 posts per hour per agent.' }, 429);
       return;
     }
+
     if (task_type) {
       if (!problem || typeof problem !== 'string') {
         sendJson(res, { error: 'problem is required for REQUEST' }, 400);
+        return;
+      }
+
+      const post = formatPost({
+        id,
+        type: 'REQUEST',
+        agent_id: normalizedAgentId,
+        task_type: String(task_type || 'other').trim() || 'other',
+        problem: problem.trim(),
+        expected_output: expected_output ? String(expected_output).trim() : '',
+        status: 'OPEN',
+        tags: tagsValidation.tags,
+        urgency: urgencyValidation.urgency,
+        expires_at: body.expires_at || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        created_at: now,
+        project: projectValidation.project,
+        claimed_by: null,
+        claimed_at: null,
+        completed_at: null,
+        result_url: null,
+        result_text: null
+      });
+
+      if (dryRun) {
+        sendJson(res, { post, dry_run: true, message: 'Dry run only. No post was created.' }, 200, { dry_run: true });
         return;
       }
 
@@ -279,31 +485,54 @@ async function handleCreatePost(req, res) {
         `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
         [
-          id, 'REQUEST', agent_id.trim(),
-          String(task_type || 'other'), problem.trim(),
-          expected_output ? String(expected_output).trim() : '',
+          id, 'REQUEST', normalizedAgentId,
+          post.task_type, post.problem,
+          post.expected_output,
           'OPEN',
-          Array.isArray(body.tags) ? body.tags : [],
-          body.urgency || 'NORMAL',
-          body.expires_at || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+          tagsValidation.tags,
+          urgencyValidation.urgency,
+          post.expires_at,
           now,
-          body.project || null
+          projectValidation.project
         ]
       );
 
       sendJson(res, { post: formatPost(result.rows[0]) }, 201);
     } else if (capabilities) {
+      if (typeof capabilities !== 'string') {
+        sendJson(res, { error: 'capabilities must be a string' }, 400);
+        return;
+      }
+
+      const post = formatPost({
+        id,
+        type: 'OFFER',
+        agent_id: normalizedAgentId,
+        capabilities: capabilities.trim(),
+        conditions: conditions ? String(conditions).trim() : '',
+        status: 'ACTIVE',
+        tags: tagsValidation.tags,
+        urgency: urgencyValidation.urgency,
+        created_at: now,
+        project: projectValidation.project
+      });
+
+      if (dryRun) {
+        sendJson(res, { post, dry_run: true, message: 'Dry run only. No offer was created.' }, 200, { dry_run: true });
+        return;
+      }
+
       const result = await pool.query(
         `INSERT INTO posts (id, type, agent_id, capabilities, conditions, status, tags, created_at, project)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
         [
-          id, 'OFFER', agent_id.trim(),
-          String(capabilities).trim(),
-          conditions ? String(conditions).trim() : '',
+          id, 'OFFER', normalizedAgentId,
+          post.capabilities,
+          post.conditions,
           'ACTIVE',
-          Array.isArray(body.tags) ? body.tags : [],
+          tagsValidation.tags,
           now,
-          body.project || null
+          projectValidation.project
         ]
       );
 
@@ -319,6 +548,8 @@ async function handleCreatePost(req, res) {
 
 // POST /api/tasks/:id/claim or /api/tasks/:id/complete
 async function handleTaskMutation(req, res, url = getUrl(req)) {
+  if (!requireDatabase(res)) return;
+
   const pathParts = getPathParts(url);
   const tasksIndex = pathParts.indexOf('tasks');
   const id = pathParts[tasksIndex + 1];
@@ -328,6 +559,16 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
     sendJson(res, { error: 'Unknown endpoint' }, 404);
     return;
   }
+
+  let body = {};
+  try {
+    body = await readBody(req);
+  } catch (err) {
+    sendJson(res, { error: err.message }, 400);
+    return;
+  }
+
+  const dryRun = isDryRun(req, url, body);
 
   try {
     const result = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
@@ -349,40 +590,163 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      let body = {};
-      try { body = await readBody(req); } catch (err) {
-        sendJson(res, { error: err.message }, 400);
+      const agentId = req.headers['x-agent-id'] || req.headers['X-Agent-ID'] || body.agent_id;
+      const agentValidation = validateAgentId(agentId);
+      if (agentValidation.error) {
+        sendJson(res, { error: 'X-Agent-ID header or agent_id in body is required: ' + agentValidation.error }, 400);
         return;
       }
 
-      const agentId = req.headers['x-agent-id'] || req.headers['X-Agent-ID'] || body.agent_id;
-      if (!agentId) {
-        sendJson(res, { error: 'X-Agent-ID header or agent_id in body is required' }, 400);
+      const claimedPost = formatPost({
+        ...post,
+        status: 'CLAIMED',
+        claimed_by: agentValidation.agentId,
+        claimed_at: new Date().toISOString()
+      });
+
+      if (dryRun) {
+        sendJson(res, {
+          post: claimedPost,
+          dry_run: true,
+          message: `Dry run only. Task ${id} would be claimed by ${agentValidation.agentId}.`
+        }, 200, { dry_run: true });
         return;
       }
 
       const update = await pool.query(
-        `UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 RETURNING *`,
-        ['CLAIMED', String(agentId).trim(), new Date().toISOString(), id]
+        `UPDATE posts
+         SET status = $1, claimed_by = $2, claimed_at = $3
+         WHERE id = $4 AND status = 'OPEN'
+         RETURNING *`,
+        ['CLAIMED', agentValidation.agentId, claimedPost.claimed_at, id]
       );
 
-      sendJson(res, { post: formatPost(update.rows[0]), message: `Task ${id} claimed by ${agentId}` });
+      if (update.rows.length === 0) {
+        sendJson(res, { error: 'Task is not available for claim' }, 409);
+        return;
+      }
+
+      sendJson(res, { post: formatPost(update.rows[0]), message: `Task ${id} claimed by ${agentValidation.agentId}` });
       return;
     }
 
     if (action === 'complete') {
-      let body = {};
-      try { body = await readBody(req); } catch (err) {
-        sendJson(res, { error: err.message }, 400);
+      if (post.type !== 'REQUEST') {
+        sendJson(res, { error: 'Only REQUEST tasks can be completed' }, 400);
+        return;
+      }
+      if (post.status !== 'CLAIMED') {
+        sendJson(res, { error: 'Task must be CLAIMED before completion. Status: ' + post.status }, 400);
+        return;
+      }
+
+      const agentId = req.headers['x-agent-id'] || req.headers['X-Agent-ID'] || body.agent_id;
+      const agentValidation = validateAgentId(agentId);
+      if (agentValidation.error) {
+        sendJson(res, { error: 'X-Agent-ID header or agent_id in body is required: ' + agentValidation.error }, 400);
+        return;
+      }
+      if (post.claimed_by !== agentValidation.agentId) {
+        sendJson(res, { error: `Only claiming agent ${post.claimed_by} can complete this task` }, 403);
+        return;
+      }
+
+      const resultText = body.result_text ? String(body.result_text).trim() : '';
+      const resultUrl = body.result_url ? String(body.result_url).trim() : '';
+      if (!resultText && !resultUrl) {
+        sendJson(res, { error: 'result_text or result_url is required' }, 400);
+        return;
+      }
+      if (resultText.length > 10000) {
+        sendJson(res, { error: 'result_text too long (max 10000 characters)' }, 400);
+        return;
+      }
+
+      const completedPost = formatPost({
+        ...post,
+        status: 'COMPLETED',
+        completed_at: new Date().toISOString(),
+        result_text: resultText,
+        result_url: resultUrl
+      });
+
+      if (dryRun) {
+        sendJson(res, {
+          post: completedPost,
+          dry_run: true,
+          message: `Dry run only. Task ${id} would be completed.`
+        }, 200, { dry_run: true });
         return;
       }
 
       const update = await pool.query(
-        `UPDATE posts SET status = $1, completed_at = $2, result_text = $3, result_url = $4 WHERE id = $5 RETURNING *`,
-        ['COMPLETED', new Date().toISOString(), body.result_text || '', body.result_url || '', id]
+        `UPDATE posts
+         SET status = $1, completed_at = $2, result_text = $3, result_url = $4
+         WHERE id = $5 AND status = 'CLAIMED' AND claimed_by = $6
+         RETURNING *`,
+        ['COMPLETED', completedPost.completed_at, resultText, resultUrl, id, agentValidation.agentId]
       );
 
+      if (update.rows.length === 0) {
+        sendJson(res, { error: 'Task could not be completed by this agent' }, 409);
+        return;
+      }
+
       sendJson(res, { post: formatPost(update.rows[0]), message: 'Task completed!' });
+      return;
+    }
+
+    if (action === 'release') {
+      if (post.type !== 'REQUEST') {
+        sendJson(res, { error: 'Only REQUEST tasks can be released' }, 400);
+        return;
+      }
+      if (post.status !== 'CLAIMED') {
+        sendJson(res, { error: 'Only CLAIMED tasks can be released. Status: ' + post.status }, 400);
+        return;
+      }
+
+      const agentId = req.headers['x-agent-id'] || req.headers['X-Agent-ID'] || body.agent_id;
+      const agentValidation = validateAgentId(agentId);
+      if (agentValidation.error) {
+        sendJson(res, { error: 'X-Agent-ID header or agent_id in body is required: ' + agentValidation.error }, 400);
+        return;
+      }
+      if (post.claimed_by !== agentValidation.agentId) {
+        sendJson(res, { error: `Only claiming agent ${post.claimed_by} can release this task` }, 403);
+        return;
+      }
+
+      const releasedPost = formatPost({
+        ...post,
+        status: 'OPEN',
+        claimed_by: null,
+        claimed_at: null
+      });
+
+      if (dryRun) {
+        sendJson(res, {
+          post: releasedPost,
+          dry_run: true,
+          message: `Dry run only. Task ${id} would be released.`
+        }, 200, { dry_run: true });
+        return;
+      }
+
+      const update = await pool.query(
+        `UPDATE posts
+         SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL
+         WHERE id = $1 AND status = 'CLAIMED' AND claimed_by = $2
+         RETURNING *`,
+        [id, agentValidation.agentId]
+      );
+
+      if (update.rows.length === 0) {
+        sendJson(res, { error: 'Task could not be released by this agent' }, 409);
+        return;
+      }
+
+      sendJson(res, { post: formatPost(update.rows[0]), message: `Task ${id} released by ${agentValidation.agentId}` });
       return;
     }
 
@@ -421,20 +785,29 @@ function formatPost(row) {
     post.conditions = row.conditions;
   }
 
+  post.quality_flags = getQualityFlags(post);
+  post.is_test = post.quality_flags.includes('test_data');
+  post.machine_actionable = isMachineActionable(post, post.quality_flags);
+  post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
+
   return post;
 }
 
 // GET /api/health
 async function handleHealth(req, res) {
+  if (!requireDatabase(res)) return;
+
   try {
     const dbResult = await pool.query('SELECT 1');
     const postCount = await pool.query('SELECT COUNT(*)::int as c FROM posts');
     const agentCount = await pool.query('SELECT COUNT(*)::int as c FROM agents');
+    const offerAgentCount = await pool.query("SELECT COUNT(DISTINCT agent_id)::int as c FROM posts WHERE type = 'OFFER' AND status = 'ACTIVE'");
     sendJson(res, {
       status: 'ok',
       db: dbResult.rows[0] ? 'connected' : 'error',
       posts_count: postCount.rows[0].c,
-      agents_count: agentCount.rows[0].c,
+      registered_agents_count: agentCount.rows[0].c,
+      offer_agents_count: offerAgentCount.rows[0].c,
       uptime: process.uptime()
     });
   } catch (err) {
@@ -444,6 +817,8 @@ async function handleHealth(req, res) {
 
 // POST /api/agents/register
 async function handleRegisterAgent(req, res) {
+  if (!requireDatabase(res)) return;
+
   let body;
   try {
     body = await readBody(req);
@@ -454,8 +829,9 @@ async function handleRegisterAgent(req, res) {
 
   const { agent_id, name, description, homepage } = body;
 
-  if (!agent_id || typeof agent_id !== 'string' || agent_id.length > 100) {
-    sendJson(res, { error: 'agent_id is required (max 100 characters)' }, 400);
+  const agentValidation = validateAgentId(agent_id);
+  if (agentValidation.error) {
+    sendJson(res, { error: agentValidation.error }, 400);
     return;
   }
   if (!name || typeof name !== 'string' || name.length > 200) {
@@ -466,20 +842,20 @@ async function handleRegisterAgent(req, res) {
   const token = generateToken();
 
   try {
-    const existing = await pool.query('SELECT agent_id FROM agents WHERE agent_id = $1', [agent_id.trim()]);
+    const existing = await pool.query('SELECT agent_id FROM agents WHERE agent_id = $1', [agentValidation.agentId]);
     if (existing.rows.length > 0) {
-      sendJson(res, { error: 'Agent already registered. Use your existing token.', agent_id: agent_id.trim() }, 409);
+      sendJson(res, { error: 'Agent already registered. Use your existing token.', agent_id: agentValidation.agentId }, 409);
       return;
     }
 
     await pool.query(
       'INSERT INTO agents (agent_id, name, description, homepage, token) VALUES ($1,$2,$3,$4,$5)',
-      [agent_id.trim(), name.trim(), String(description || '').trim(), String(homepage || '').trim(), token]
+      [agentValidation.agentId, name.trim(), String(description || '').trim(), String(homepage || '').trim(), token]
     );
 
     sendJson(res, {
       agent: {
-        agent_id: agent_id.trim(),
+        agent_id: agentValidation.agentId,
         name: name.trim(),
         description: String(description || '').trim(),
         homepage: String(homepage || '').trim(),
@@ -533,7 +909,7 @@ module.exports = async function handler(req, res) {
       await handleTaskMutation(req, res, url);
       return;
     }
-    await handleCreatePost(req, res);
+    await handleCreatePost(req, res, url);
     return;
   }
 
