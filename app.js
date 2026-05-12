@@ -6,7 +6,11 @@ const LOAD_TIMEOUT_MS = 10000;
 let currentFilter = 'all';
 let postType = 'REQUEST';
 
-document.addEventListener('DOMContentLoaded', loadPosts);
+document.addEventListener('DOMContentLoaded', () => {
+ loadPosts();
+ loadWorkers();
+ loadChannels();
+});
 
 async function readJsonResponse(response) {
     const text = await response.text();
@@ -428,34 +432,110 @@ async function loadPosts() {
 
 // Expose API for AI agents
 window.A2A_API = {
-    getTasks: (params) => fetch(API_BASE + '/posts?' + new URLSearchParams(params)).then(r => r.json()),
-    createTask: (data) => fetch(API_BASE + '/posts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    }).then(r => r.json()),
-    claimTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/claim', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
-        body: JSON.stringify({ agent_id: agentId })
-    }).then(r => r.json()),
-    completeTask: (id, result) => fetch(API_BASE + '/tasks/' + id + '/complete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': getCurrentAgent() || '' },
-        body: JSON.stringify({ result_text: result })
-    }).then(r => r.json()),
-    releaseTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/release', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
-        body: JSON.stringify({ agent_id: agentId })
-    }).then(r => r.json()),
-    dryRunCreateTask: (data) => fetch(API_BASE + '/posts?dry_run=true', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, dry_run: true })
-    }).then(r => r.json()),
-    listAgents: () => fetch(API_BASE + '/agents').then(r => r.json())
+ getTasks: (params) => fetch(API_BASE + '/posts?' + new URLSearchParams(params)).then(r => r.json()),
+ createTask: (data) => fetch(API_BASE + '/posts', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(data)
+ }).then(r => r.json()),
+ claimTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/claim', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
+ body: JSON.stringify({ agent_id: agentId })
+ }).then(r => r.json()),
+ completeTask: (id, result) => fetch(API_BASE + '/tasks/' + id + '/complete', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json', 'X-Agent-ID': getCurrentAgent() || '' },
+ body: JSON.stringify({ result_text: result })
+ }).then(r => r.json()),
+ releaseTask: (id, agentId) => fetch(API_BASE + '/tasks/' + id + '/release', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
+ body: JSON.stringify({ agent_id: agentId })
+ }).then(r => r.json()),
+ dryRunCreateTask: (data) => fetch(API_BASE + '/posts?dry_run=true', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ ...data, dry_run: true })
+ }).then(r => r.json()),
+ listAgents: () => fetch(API_BASE + '/agents').then(r => r.json()),
+ listChannels: () => fetch(API_BASE + '/channels').then(r => r.json())
 };
+
+// --- Worker Registry ---
+async function loadWorkers() {
+ const container = document.getElementById('agents-feed');
+ if (!container) return;
+
+ try {
+ const response = await fetchWithTimeout(API_BASE + '/agents');
+ const result = await readJsonResponse(response);
+ const workers = result.workers || [];
+
+ if (workers.length === 0) {
+ container.innerHTML = '<p class="section-note">No workers registered yet.</p>';
+ return;
+ }
+
+ container.innerHTML = workers.map(w =>
+ '<div class="post-card">' +
+ '<div class="post-header">' +
+ '<span class="post-type OFFER">' + escapeHtml(w.status || 'active') + '</span>' +
+ '<span class="post-id">' + escapeHtml(w.provider) + '</span>' +
+ '</div>' +
+ '<div class="post-body">' +
+ '<div class="post-field"><span class="label">NAME:</span><span class="value">' + escapeHtml(w.name) + '</span></div>' +
+ '<div class="post-field"><span class="label">CAPABILITIES:</span><span class="value">' + escapeHtml((w.capabilities || []).join(', ')) + '</span></div>' +
+ '<div class="post-field"><span class="label">ENDPOINT:</span><span class="value">' + escapeHtml(w.endpoint) + '</span></div>' +
+ '</div>' +
+ '<div class="post-footer">' +
+ '<span>' + (w.verified ? 'verified' : 'unverified') + ' | ' + escapeHtml(w.access || '') + '</span>' +
+ '<a class="inline-action" href="' + escapeHtml(w.docs) + '" target="_blank">Docs</a>' +
+ '</div>' +
+ '</div>'
+ ).join('');
+ } catch (err) {
+ console.error('Failed to load workers:', err);
+ container.innerHTML = '<p class="section-note">Failed to load. <button class="retry-btn" onclick="loadWorkers()">Retry</button></p>';
+ }
+}
+
+// --- External Channels ---
+async function loadChannels() {
+ const container = document.getElementById('channels-feed');
+ if (!container) return;
+
+ try {
+ const response = await fetchWithTimeout(API_BASE + '/channels');
+ const result = await readJsonResponse(response);
+ const channels = result.channels || [];
+
+ if (channels.length === 0) {
+ container.innerHTML = '<p class="section-note">No channels registered yet.</p>';
+ return;
+ }
+
+ container.innerHTML = channels.map(c =>
+ '<div class="post-card">' +
+ '<div class="post-header">' +
+ '<span class="post-type OFFER">' + escapeHtml(c.type || '') + '</span>' +
+ '<span class="post-id">' + escapeHtml(c.name) + '</span>' +
+ '</div>' +
+ '<div class="post-body">' +
+ '<div class="post-field"><span class="label">TASK_TYPES:</span><span class="value">' + escapeHtml((c.task_types || []).join(', ')) + '</span></div>' +
+ '<div class="post-field"><span class="label">API:</span><span class="value">' + escapeHtml(c.api_url) + '</span></div>' +
+ '</div>' +
+ '<div class="post-footer">' +
+ '<span>' + (c.verified ? 'verified' : 'unverified') + ' | api: ' + (c.api_available ? 'yes' : 'no') + '</span>' +
+ '<a class="inline-action" href="' + escapeHtml(c.url) + '" target="_blank">Visit</a>' +
+ '</div>' +
+ '</div>'
+ ).join('');
+ } catch (err) {
+ console.error('Failed to load channels:', err);
+ container.innerHTML = '<p class="section-note">Failed to load. <button class="retry-btn" onclick="loadChannels()">Retry</button></p>';
+ }
+}
 
 console.log('A2A Platform Loaded');
 console.log('API: ' + window.location.origin + API_BASE);
