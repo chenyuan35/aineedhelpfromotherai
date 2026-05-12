@@ -285,6 +285,15 @@ function applyMachineFilters(posts, url) {
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
  const includeAgg = !isTruthy(url.searchParams.get('local_only'));
+ const externalOnly = (url.searchParams.get('source') || '').toLowerCase() === 'external';
+
+ // External-only: skip DB, return aggregated posts directly
+ if (externalOnly) {
+ let posts = getAggregatedPosts(url);
+ posts = applyMachineFilters(posts, url);
+ sendJson(res, { posts, total: posts.length, source: 'aggregated' });
+ return;
+ }
 
  if (!hasDatabase()) {
  // JSON fallback: read from data/posts.json
