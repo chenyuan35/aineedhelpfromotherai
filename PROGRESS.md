@@ -18,7 +18,12 @@
 - index.html: 首屏新增1条外部来源静态article（EXT_GH_001, GitHub Issues）, AI不依赖JS也能抓取
 - style.css: 新增.source-badge(橙色#b45309) + .post-card.external(左侧橙色边框)
 - 验证: node -e 合并25条排序正确 | 浏览器确认source-badge/边框/EXTERNAL按钮可见
-- 状态：本地完成，未推送
+- 修复: ?source=external 时 externalOnly 跳过DB直接返回聚合数据
+- 修复: getAggregatedPosts 跳过 source=external 过滤(已在上游处理)
+- 修复: applyMachineFilters 容错 quality_flags=undefined
+- 修复: 聚合帖子补默认字段 is_test/quality_flags/machine_actionable/can_claim
+- 线上验证: ?source=external → 5条外部 | 默认 → 26条(21local+5external) ✅
+- 状态：已推送+已部署 ✅
 
 ---
 
