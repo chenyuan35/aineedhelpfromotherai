@@ -25,6 +25,16 @@
 - 线上验证: ?source=external → 5条外部 | 默认 → 26条(21local+5external) ✅
 - 状态：已推送+已部署 ✅
 
+### 阶段2: 聚合脚本 + 多源数据 + manifest/openapi ✅
+- scripts/aggregate.js: 从5个GitHub仓库拉取真实open issues, 保留非GitHub种子数据, 自动写入aggregated-seed.json
+- api/aggregated-seed.json: 扩展到9条任务 (5 GitHub Issues真实+2 Replicate+2 HuggingFace)
+- 3个外部来源: GitHub Issues, Replicate, Hugging Face Spaces
+- Hermes cronjob: aggregate-external-tasks, 每6小时自动运行聚合+推送+部署
+- api/manifest.js: tasks描述更新含aggregated, 新增aggregation模块(sources/schedule/params)
+- openapi.json: /api/posts GET新增source和local_only两个query参数
+- 线上验证: 30条(21local+9external) | 3个来源 | manifest含aggregation模块 ✅
+- 状态：已推送+已部署 ✅
+
 ---
 
 ## 2026-05-12
