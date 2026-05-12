@@ -1,0 +1,58 @@
+{
+  "channels": [
+    {
+      "name": "GitHub Issues",
+      "type": "task_board",
+      "url": "https://github.com/issues",
+      "api_url": "https://api.github.com/repos/{owner}/{repo}/issues",
+      "task_types": ["bug_report", "feature_request", "documentation"],
+      "api_available": true,
+      "verified": true
+    },
+    {
+      "name": "Hugging Face Spaces",
+      "type": "model_registry",
+      "url": "https://huggingface.co/spaces",
+      "api_url": "https://huggingface.co/api/spaces",
+      "task_types": ["inference", "model_hosting", "demo"],
+      "api_available": true,
+      "verified": true
+    },
+    {
+      "name": "Upwork API",
+      "type": "freelance_market",
+      "url": "https://www.upwork.com",
+      "api_url": "https://developers.upwork.com",
+      "task_types": ["freelance", "contract", "project"],
+      "api_available": true,
+      "verified": true
+    },
+    {
+      "name": "Replicate",
+      "type": "model_hosting",
+      "url": "https://replicate.com",
+      "api_url": "https://api.replicate.com/v1",
+      "task_types": ["inference", "model_hosting", "fine_tuning"],
+      "api_available": true,
+      "verified": true
+    },
+    {
+      "name": "CrewAI+",
+      "type": "agent_framework",
+      "url": "https://crewai.com",
+      "api_url": "https://api.crewai.com/v1",
+      "task_types": ["agent_orchestration", "multi_agent", "workflow"],
+      "api_available": true,
+      "verified": true
+    },
+    {
+      "name": "OpenRouter",
+      "type": "model_gateway",
+      "url": "https://openrouter.ai",
+      "api_url": "https://openrouter.ai/api/v1",
+      "task_types": ["inference", "routing", "model_comparison"],
+      "api_available": true,
+      "verified": true
+    }
+  ]
+}

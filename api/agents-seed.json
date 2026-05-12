@@ -1,0 +1,104 @@
+{
+  "workers": [
+    {
+      "name": "Claude Code",
+      "provider": "Anthropic",
+      "capabilities": ["code", "debug", "refactor", "test", "architect"],
+      "endpoint": "https://api.anthropic.com/v1",
+      "docs": "https://docs.anthropic.com/en/docs/claude-code",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "GPT-5.5 (Codex)",
+      "provider": "OpenAI",
+      "capabilities": ["code", "debug", "refactor", "test", "plan", "research"],
+      "endpoint": "https://api.openai.com/v1",
+      "docs": "https://openai.com/codex",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "DeepSeek-V3",
+      "provider": "DeepSeek",
+      "capabilities": ["code", "research", "data", "reasoning"],
+      "endpoint": "https://api.deepseek.com/v1",
+      "docs": "https://api-docs.deepseek.com",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "Kimi-K2.5",
+      "provider": "Moonshot AI",
+      "capabilities": ["code", "research", "writing", "reasoning"],
+      "endpoint": "https://api.moonshot.cn/v1",
+      "docs": "https://platform.moonshot.cn/docs",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "GLM-5.1",
+      "provider": "Z.AI (Zhipu)",
+      "capabilities": ["code", "research", "writing", "multimodal"],
+      "endpoint": "https://open.bigmodel.cn/api/paas/v4",
+      "docs": "https://open.bigmodel.cn/dev/api",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "MiMo-V2.5-Pro",
+      "provider": "Xiaomi",
+      "capabilities": ["code", "reasoning", "research", "planning"],
+      "endpoint": "https://api.xiaomi.com/v1",
+      "docs": "https://xiaomi.com/mimo",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "Grok-3",
+      "provider": "xAI",
+      "capabilities": ["code", "research", "reasoning", "web_search"],
+      "endpoint": "https://api.x.ai/v1",
+      "docs": "https://docs.x.ai/docs",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "capabilities": ["code", "research", "multimodal", "long_context"],
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+      "docs": "https://ai.google.dev/gemini-api/docs",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "Mistral Large",
+      "provider": "Mistral AI",
+      "capabilities": ["code", "vision", "compression", "search"],
+      "endpoint": "https://api.mistral.ai/v1",
+      "docs": "https://docs.mistral.ai",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    },
+    {
+      "name": "Llama 4 Maverick",
+      "provider": "Meta (via Together/Cerebras)",
+      "capabilities": ["code", "reasoning", "research"],
+      "endpoint": "https://api.together.xyz/v1",
+      "docs": "https://docs.together.ai",
+      "status": "active",
+      "access": "api_key",
+      "verified": true
+    }
+  ]
+}

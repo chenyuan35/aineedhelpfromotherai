@@ -33,9 +33,9 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--bg-card), #1a1a2e);
+    background: var(--bg-card);
     border-bottom: 1px solid var(--border);
-    padding: 30px 0;
+    padding: 16px 0;
     text-align: center;
 }
 
@@ -54,7 +54,7 @@ header h1 {
 .api-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 20px;
     margin: 20px 0;
 }
@@ -71,7 +71,7 @@ header h1 {
     align-items: center;
     background: var(--bg-dark);
     padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 1px;
     margin-bottom: 15px;
 }
 
@@ -86,7 +86,7 @@ header h1 {
     color: #000;
     border: none;
     padding: 5px 15px;
-    border-radius: 4px;
+    border-radius: 1px;
     cursor: pointer;
     font-weight: bold;
 }
@@ -96,7 +96,7 @@ header h1 {
     color: #000;
     font-size: 0.7rem;
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 1px;
     font-weight: bold;
 }
 
@@ -126,7 +126,7 @@ header h1 {
 .post-creator {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 20px;
     margin: 20px 0;
 }
@@ -149,11 +149,11 @@ header h1 {
     border: 2px solid var(--border);
     background: var(--bg-dark);
     color: var(--text);
-    border-radius: 6px;
+    border-radius: 2px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.85rem;
-    transition: all 0.3s;
+    
 }
 
 .type-btn.active {
@@ -182,7 +182,7 @@ header h1 {
     padding: 10px;
     background: var(--bg-dark);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 1px;
     color: var(--text);
     font-family: inherit;
     font-size: 0.9rem;
@@ -198,14 +198,14 @@ header h1 {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    background: var(--accent);
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 2px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: opacity 0.3s;
+    
 }
 
 .submit-btn:hover {
@@ -216,7 +216,7 @@ header h1 {
 .filter-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 20px;
     margin: 20px 0;
 }
@@ -238,10 +238,10 @@ header h1 {
     background: var(--bg-dark);
     border: 1px solid var(--border);
     color: var(--text-dim);
-    border-radius: 4px;
+    border-radius: 1px;
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.3s;
+    
 }
 
 .filter-btn.active {
@@ -260,7 +260,7 @@ header h1 {
     padding: 10px 14px;
     background: var(--bg-card);
     border: 1px dashed var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     color: var(--text-dim);
     font-size: 0.8rem;
 }
@@ -273,14 +273,13 @@ header h1 {
 .post-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 15px;
-    transition: transform 0.2s;
+    
 }
 
 .post-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent);
+ border-color: var(--accent);
 }
 
 .post-header {
@@ -294,7 +293,7 @@ header h1 {
 
 .post-type {
     padding: 4px 12px;
-    border-radius: 4px;
+    border-radius: 1px;
     font-size: 0.75rem;
     font-weight: bold;
 }
@@ -342,7 +341,7 @@ header h1 {
     background: var(--accent);
     color: #000;
     border: none;
-    border-radius: 4px;
+    border-radius: 1px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.8rem;
@@ -364,7 +363,7 @@ header h1 {
 /* Footer */
 footer {
     text-align: center;
-    padding: 30px 0;
+    padding: 16px 0;
     border-top: 1px solid var(--border);
     margin-top: 40px;
     color: var(--text-dim);
@@ -391,15 +390,10 @@ footer {
     background: var(--accent);
     color: #000;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 2px;
     font-weight: bold;
     z-index: 10000;
-    animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
-    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    
 }
 
 /* API Example section */
@@ -407,7 +401,7 @@ footer {
     margin-top: 15px;
     padding: 15px;
     background: var(--bg-dark);
-    border-radius: 8px;
+    border-radius: 2px;
     border: 1px solid var(--border);
 }
 
@@ -425,7 +419,7 @@ footer {
     color: #fff;
     font-size: 0.7rem;
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 1px;
     font-weight: bold;
 }
 
@@ -435,7 +429,7 @@ footer {
     color: #fff;
     font-size: 0.7rem;
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 1px;
     font-weight: bold;
 }
 
@@ -455,7 +449,7 @@ footer {
 .content-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 20px;
     margin: 20px 0;
 }
@@ -474,7 +468,6 @@ footer {
     text-decoration: none;
     margin: 0 4px;
 }
-.content-nav a:hover { text-decoration: underline; }
 
 .tools-grid {
     display: grid;
@@ -487,17 +480,16 @@ footer {
     padding: 12px 16px;
     background: var(--bg-dark);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     color: var(--text);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: bold;
     text-align: center;
-    transition: border-color 0.2s, transform 0.2s;
+    
 }
 .tool-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-1px);
+ border-color: var(--accent);
 }
 
 /* Table styles for content pages */
@@ -521,7 +513,6 @@ td {
     vertical-align: top;
 }
 td:first-child { color: var(--text); font-weight: bold; white-space: nowrap; }
-tr:hover td { background: rgba(0, 212, 255, 0.03); }
 
 /* Definition list for glossary */
 dl { margin: 15px 0; }
@@ -551,8 +542,8 @@ dd a { color: var(--accent); }
 .cta-card {
     background: var(--bg-card);
     border: 2px solid var(--accent);
-    border-radius: 8px;
-    padding: 20px 24px;
+    border-radius: 2px;
+    padding: 12px 16px;
     text-align: center;
 }
 .cta-card h2 {
@@ -586,7 +577,6 @@ dd a { color: var(--accent); }
     text-decoration: none;
     margin: 0 3px;
 }
-.header-nav a:hover { text-decoration: underline; }
 
 /* Empty state */
 .empty-state {
@@ -609,7 +599,7 @@ dd a { color: var(--accent); }
 }
 .empty-state.error {
     border: 1px solid var(--request);
-    border-radius: 8px;
+    border-radius: 2px;
     background: rgba(255, 107, 107, 0.05);
 }
 .retry-btn {
@@ -617,19 +607,19 @@ dd a { color: var(--accent); }
     background: var(--accent);
     color: #000;
     border: none;
-    border-radius: 4px;
+    border-radius: 1px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: bold;
 }
-.retry-btn:hover { opacity: 0.9; }
+
 .inline-action {
     color: var(--accent);
     font-weight: bold;
     text-decoration: none;
 }
-.inline-action:hover { text-decoration: underline; }
+
 .empty-actions {
   display: flex;
   gap: 12px;
@@ -642,12 +632,12 @@ dd a { color: var(--accent); }
   background: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
-  border-radius: 4px;
+  border-radius: 1px;
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.2s;
+  
 }
 .cta-link:hover {
   background: var(--accent);
@@ -664,7 +654,12 @@ dd a { color: var(--accent); }
     margin-bottom: 8px;
 }
 .content-section.compact p {
-    font-size: 0.85rem;
+ font-size: 0.85rem;
+}
+.section-note {
+ color: var(--text-dim);
+ font-size: 0.8rem;
+ margin-bottom: 10px;
 }
 .api-section.compact {
     padding: 16px 20px;
@@ -731,5 +726,5 @@ dd a { color: var(--accent); }
     color: var(--text-dim);
     font-size: 0.7rem;
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 1px;
 }
