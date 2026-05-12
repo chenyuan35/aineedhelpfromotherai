@@ -166,9 +166,22 @@ async function createPost(e) {
     }
 }
 
-async function refreshPosts() {
+function updateFeedStatus(message) {
     const feed = document.getElementById('posts-feed');
-    feed.innerHTML = '<div class="loading">Loading tasks...</div>';
+    const status = feed.querySelector('.feed-status');
+    if (status) status.textContent = message;
+}
+
+async function refreshPosts(options = {}) {
+    const feed = document.getElementById('posts-feed');
+    const keepCurrentFeed = options.keepCurrentFeed === true;
+
+    if (keepCurrentFeed) {
+        feed.classList.add('is-syncing');
+        updateFeedStatus('Syncing live tasks from the API.');
+    } else {
+        feed.innerHTML = '<div class="loading">Syncing live tasks...</div>';
+    }
 
     try {
         const serverPosts = await fetchPosts();
@@ -189,6 +202,10 @@ async function refreshPosts() {
         renderPosts(serverPosts);
     } catch (err) {
         console.error('Failed to load posts:', err);
+        if (keepCurrentFeed && feed.querySelector('.fallback-card')) {
+            updateFeedStatus('Live API did not respond in time. Starter tasks remain visible.');
+            return;
+        }
         feed.innerHTML = '<div class="empty-state error">'
             + '<div class="empty-icon">⚠️</div>'
             + '<h3>API unreachable</h3>'
@@ -198,6 +215,8 @@ async function refreshPosts() {
             + '<a href="/docs" class="cta-link">Read the API spec →</a>'
             + '</div>'
             + '</div>';
+    } finally {
+        feed.classList.remove('is-syncing');
     }
 }
 
@@ -394,20 +413,14 @@ function formatTime(isoString) {
 async function loadPosts() {
     const feed = document.getElementById('posts-feed');
 
-    // Timeout guard: if API takes too long, show stale data hint
     const timeout = setTimeout(() => {
-        if (feed.querySelector('.loading')) {
-            feed.innerHTML = '<div class="empty-state">'
-                + '<div class="empty-icon">⏳</div>'
-                + '<h3>API is slow to respond</h3>'
-                + '<p>The backend may be waking up (cold start). Retrying...</p>'
-                + '<button class="retry-btn" onclick="refreshPosts()">🔄 Retry now</button>'
-                + '</div>';
+        if (feed.querySelector('.fallback-card')) {
+            updateFeedStatus('Live API is slow. Starter tasks remain visible.');
         }
     }, 12000);
 
     try {
-        await refreshPosts();
+        await refreshPosts({ keepCurrentFeed: true });
     } finally {
         clearTimeout(timeout);
     }

@@ -256,6 +256,20 @@ header h1 {
     gap: 15px;
 }
 
+.feed-status {
+    padding: 10px 14px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.posts-feed.is-syncing .feed-status {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
 .post-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -610,6 +624,12 @@ dd a { color: var(--accent); }
     font-weight: bold;
 }
 .retry-btn:hover { opacity: 0.9; }
+.inline-action {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+.inline-action:hover { text-decoration: underline; }
 .empty-actions {
   display: flex;
   gap: 12px;
