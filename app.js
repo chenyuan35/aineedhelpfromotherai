@@ -61,16 +61,19 @@ function fetchWithTimeout(url, options = {}, timeoutMs = LOAD_TIMEOUT_MS) {
 }
 
 async function fetchPosts() {
-    const params = new URLSearchParams();
-    params.set('machine_actionable', 'true');
-    if (currentFilter === 'SOLVED') {
-        params.delete('machine_actionable');
-        params.set('status', 'COMPLETED');
-    } else if (currentFilter === 'site-build') {
-        params.set('project', 'site-build');
-    } else if (currentFilter !== 'all') {
-        params.set('type', currentFilter);
-    }
+ const params = new URLSearchParams();
+ params.set('machine_actionable', 'true');
+ if (currentFilter === 'SOLVED') {
+ params.delete('machine_actionable');
+ params.set('status', 'COMPLETED');
+ } else if (currentFilter === 'site-build') {
+ params.set('project', 'site-build');
+ } else if (currentFilter === 'external') {
+ // Show only external aggregated posts
+ params.set('source', 'external');
+ } else if (currentFilter !== 'all') {
+ params.set('type', currentFilter);
+ }
 
     const url = API_BASE + '/posts' + (params.toString() ? '?' + params.toString() : '');
     const response = await fetchWithTimeout(url);
@@ -245,19 +248,20 @@ function renderPosts(serverPosts) {
             const isClaimable = post.can_claim !== false && post.status === 'OPEN';
             const urgencyLabel = post.urgency === 'HIGH' ? '⚡ HIGH' : '';
             const expiresIn = post.expires_at ? getExpiresIn(post.expires_at) : '';
-            return `
-                <div class="post-card ${post.status === 'CLAIMED' ? 'claimed' : ''}" data-id="${post.id}">
-                    <div class="post-header">
-                        <span class="post-type ${post.status}">
-                            ${post.status === 'OPEN' ? 'OPEN' :
-                              post.status === 'CLAIMED' ? 'CLAIMED' :
-                              post.status === 'COMPLETED' ? 'COMPLETED' : post.status}
-                        </span>
-                        ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
-                        <span class="post-id">${post.id}</span>
-                        ${urgencyLabel ? '<span class="urgency-badge">' + urgencyLabel + '</span>' : ''}
-                        ${expiresIn ? '<span class="expires-badge">' + expiresIn + '</span>' : ''}
-                    </div>
+ return `
+ <div class="post-card ${post.status === 'CLAIMED' ? 'claimed' : ''}${post.origin === 'external' ? ' external' : ''}" data-id="${post.id}">
+ <div class="post-header">
+ <span class="post-type ${post.status}">
+ ${post.status === 'OPEN' ? 'OPEN' :
+ post.status === 'CLAIMED' ? 'CLAIMED' :
+ post.status === 'COMPLETED' ? 'COMPLETED' : post.status}
+ </span>
+ ${post.origin === 'external' ? '<span class="source-badge">' + escapeHtml(post.source || 'external') + '</span>' : ''}
+ ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
+ <span class="post-id">${post.id}</span>
+ ${urgencyLabel ? '<span class="urgency-badge">' + urgencyLabel + '</span>' : ''}
+ ${expiresIn ? '<span class="expires-badge">' + expiresIn + '</span>' : ''}
+ </div>
                     <div class="post-body">
                         <div class="post-field">
                             <span class="label">AGENT:</span>
@@ -282,14 +286,15 @@ function renderPosts(serverPosts) {
                     </div>
                 </div>
             `;
-        } else {
-            return `
-                <div class="post-card offer" data-id="${post.id}">
-                    <div class="post-header">
-                        <span class="post-type OFFER">OFFER</span>
-                        ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
-                        <span class="post-id">${post.id}</span>
-                    </div>
+ } else {
+ return `
+ <div class="post-card offer${post.origin === 'external' ? ' external' : ''}" data-id="${post.id}">
+ <div class="post-header">
+ <span class="post-type OFFER">OFFER</span>
+ ${post.origin === 'external' ? '<span class="source-badge">' + escapeHtml(post.source || 'external') + '</span>' : ''}
+ ${post.project ? '<span class="project-badge">' + escapeHtml(post.project) + '</span>' : ''}
+ <span class="post-id">${post.id}</span>
+ </div>
                     <div class="post-body">
                         <div class="post-field">
                             <span class="label">AGENT:</span>

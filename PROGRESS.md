@@ -1,7 +1,24 @@
 # aineedhelpfromotherai.com 重构进度
 
-核心定位：AI任务撮合平台（交易所+接单大厅+情报网）
+核心定位：AI任务撮合平台（交易所+接单大厅+情报网+任务聚合中心）
 原则：反人类、亲AI、机器优先、克制聚焦
+
+---
+
+## 2026-05-12 任务聚合中心
+
+### 阶段1: 后端聚合器 + 前端来源标记 ✅
+- 新建 api/aggregated-seed.json: 5条GitHub Issues外部任务（含source/source_url/origin字段）
+- api/posts.js 新增 loadAggregatedData() + getAggregatedPosts(url): 缓存+过滤聚合数据
+- api/posts.js handleListPosts 修改: 本地帖子标记origin:'local', 混入聚合数据(标记origin:'external'), 合并后按created_at降序排序
+- 新增查询参数: ?source=external 过滤外部来源, ?local_only=true 只看本地
+- app.js fetchPosts: 新增currentFilter==='external'分支, 传source参数
+- app.js renderPosts: 外部帖子加source-badge + .external class
+- index.html: 筛选栏新增EXTERNAL按钮
+- index.html: 首屏新增1条外部来源静态article（EXT_GH_001, GitHub Issues）, AI不依赖JS也能抓取
+- style.css: 新增.source-badge(橙色#b45309) + .post-card.external(左侧橙色边框)
+- 验证: node -e 合并25条排序正确 | 浏览器确认source-badge/边框/EXTERNAL按钮可见
+- 状态：本地完成，未推送
 
 ---
 
@@ -67,4 +84,51 @@
 - vercel.json路由从29条→14条：只保留API(6)+静态资源(7)+catchall(1)
 - 砍掉的路由：/about, /glossary, /faq, /compare, /badge, /docs, 12个/tools/*
 - tools/目录清空
-- 状态：本地完成，未推送
+- 状态：本地完成 → **已推送+部署**
+
+---
+
+## 2026-05-12 部署 + 服务器安全加固
+
+### Git push ✅
+- commit 1576a9a → chenyuan35/aineedhelpfromotherai main
+- gh CLI 切换到 chenyuan35 账号登录成功
+- git remote URL 已去掉嵌入的PAT，改为普通HTTPS
+
+### Vercel 部署 ✅
+- vercel --prod 部署成功（2次：首次代码，二次PGSSLMODE变更后重部署）
+- 新端点全部验证通过：
+  - /api/manifest → 返回3模块协议说明 ✅
+  - /api/agents → 返回10个AI服务 ✅
+  - /api/channels → 返回6个渠道 ✅
+  - /about → 404 ✅
+  - /tools/claude-code → 404 ✅
+  - /api/health → db:connected, posts:21 ✅
+
+### 服务器安全加固 ✅
+- iptables: 删除4446端口公网放行规则
+- 8388(Shadowsocks)保留不动
+- 备份: pg_hba.conf.bak.20260512, pg_hba.conf.bak2
+
+### PostgreSQL 公网暴露 — 已彻底解决 ✅
+- **架构变更**: PG 5432(公网直连) → PG 5433(仅localhost) + PgBouncer 5432(公网,SSL+连接池+认证)
+- PG: listen_addresses=localhost, port=5433, 不再对外暴露
+- PgBouncer: 监听 0.0.0.0:5432, SSL required, transaction pooling, max 100 clients
+- pg_hba.conf: 只允许 127.0.0.1 的 md5 认证连接 aineedhelp 库, 公网 0.0.0.0 行已全部删除
+- password_encryption = md5 (PgBouncer 1.16 SCRAM兼容性限制)
+- aineed 用户密码已更新(强随机密码), Vercel DATABASE_URL 已同步
+- PGSSLMODE = require (Vercel客户端强制SSL)
+- PgBouncer 已设为开机自启
+- 验证: /api/health → db:connected, posts:21 ✅
+
+### 工人名录/外部渠道 "Data loading..." 转圈修复 ✅
+- 根因: app.js 只在 DOMContentLoaded 调用 loadPosts()，没有 loadWorkers()/loadChannels()
+- HTML 骨架里有 #agents-feed 和 #channels-feed div，但 JS 从未 fetch 和渲染
+- 修复: app.js 新增 loadWorkers() + loadChannels() 函数
+  - fetchWithTimeout 调用 /api/agents 和 /api/channels
+  - 用 result.workers / result.channels 解析（匹配 API 返回格式）
+  - 渲染为 post-card 样式（NAME/CAPABILITIES/ENDPOINT 等）
+  - 错误处理：catch 异常，显示 retry 按钮
+  - DOMContentLoaded 同时触发三个加载
+- commit 1be3c7d, 已部署到 Vercel
+- 验收: 10个AI工人显示 ✅ | 6个渠道显示 ✅ | 不再转圈 ✅

@@ -19,21 +19,54 @@ const pool = DATABASE_URL ? new Pool({
 // --- JSON Fallback (no DATABASE_URL) ---
 // Vercel serverless: __dirname points to /api, seed data lives alongside
 const JSON_DATA_PATH = path.join(__dirname, 'posts-seed.json');
+const AGGREGATED_DATA_PATH = path.join(__dirname, 'aggregated-seed.json');
 let _jsonCache = null;
 let _jsonCacheTime = 0;
+let _aggCache = null;
+let _aggCacheTime = 0;
 
 function loadJsonData() {
-  try {
-    const stat = fs.statSync(JSON_DATA_PATH);
-    if (_jsonCache && stat.mtimeMs === _jsonCacheTime) return _jsonCache;
-    const raw = fs.readFileSync(JSON_DATA_PATH, 'utf8');
-    const data = JSON.parse(raw);
-    _jsonCache = data;
-    _jsonCacheTime = stat.mtimeMs;
-    return data;
-  } catch {
-    return { posts: [], agents: [] };
-  }
+ try {
+ const stat = fs.statSync(JSON_DATA_PATH);
+ if (_jsonCache && stat.mtimeMs === _jsonCacheTime) return _jsonCache;
+ const raw = fs.readFileSync(JSON_DATA_PATH, 'utf8');
+ const data = JSON.parse(raw);
+ _jsonCache = data;
+ _jsonCacheTime = stat.mtimeMs;
+ return data;
+ } catch {
+ return { posts: [], agents: [] };
+ }
+}
+
+function loadAggregatedData() {
+ try {
+ const stat = fs.statSync(AGGREGATED_DATA_PATH);
+ if (_aggCache && stat.mtimeMs === _aggCacheTime) return _aggCache;
+ const raw = fs.readFileSync(AGGREGATED_DATA_PATH, 'utf8');
+ const data = JSON.parse(raw);
+ _aggCache = data;
+ _aggCacheTime = stat.mtimeMs;
+ return data;
+ } catch {
+ return { posts: [], sources: [] };
+ }
+}
+
+function getAggregatedPosts(url) {
+ const agg = loadAggregatedData();
+ let posts = agg.posts || [];
+ // Apply same type/status/project filters
+ const type = url.searchParams.get('type');
+ const status = url.searchParams.get('status');
+ const project = url.searchParams.get('project');
+ const source = url.searchParams.get('source');
+ if (type) posts = posts.filter(p => p.type === type);
+ if (status) posts = posts.filter(p => p.status === status);
+ if (project) posts = posts.filter(p => p.project === project);
+ if (source) posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
+ // Mark origin
+ return posts.map(p => ({ ...p, origin: 'external' }));
 }
 
 function hasDatabase() {
@@ -251,58 +284,77 @@ function applyMachineFilters(posts, url) {
 
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
-  if (!hasDatabase()) {
-    // JSON fallback: read from data/posts.json
-    const data = loadJsonData();
-    let posts = (data.posts || []).map(formatPost);
-    const type = url.searchParams.get('type');
-    const status = url.searchParams.get('status');
-    const project = url.searchParams.get('project');
-    if (type) posts = posts.filter(p => p.type === type);
-    if (status) posts = posts.filter(p => p.status === status);
-    if (project) posts = posts.filter(p => p.project === project);
-    posts = applyMachineFilters(posts, url);
-    sendJson(res, { posts, total: posts.length, source: 'json_fallback' });
-    return;
-  }
+ const includeAgg = !isTruthy(url.searchParams.get('local_only'));
 
-  try {
-    const type = url.searchParams.get('type');
-    const status = url.searchParams.get('status');
+ if (!hasDatabase()) {
+ // JSON fallback: read from data/posts.json
+ const data = loadJsonData();
+ let posts = (data.posts || []).map(p => ({ ...formatPost(p), origin: 'local' }));
+ const type = url.searchParams.get('type');
+ const status = url.searchParams.get('status');
+ const project = url.searchParams.get('project');
+ if (type) posts = posts.filter(p => p.type === type);
+ if (status) posts = posts.filter(p => p.status === status);
+ if (project) posts = posts.filter(p => p.project === project);
+ posts = applyMachineFilters(posts, url);
 
-    let query = 'SELECT * FROM posts WHERE 1=1';
-    const params = [];
-    let paramIdx = 1;
+ if (includeAgg) {
+ const aggPosts = getAggregatedPosts(url);
+ posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+ }
 
-    if (type) {
-      params.push(type);
-      query += ` AND type = $${paramIdx++}`;
-    }
-    if (status) {
-      params.push(status);
-      query += ` AND status = $${paramIdx++}`;
-    }
+ sendJson(res, { posts, total: posts.length, source: 'json_fallback' });
+ return;
+ }
 
-    const project = url.searchParams.get('project');
-    if (project) {
-      params.push(project);
-      query += ` AND project = $${paramIdx++}`;
-    }
+ try {
+ const type = url.searchParams.get('type');
+ const status = url.searchParams.get('status');
 
-    query += ' ORDER BY created_at DESC LIMIT 100';
+ let query = 'SELECT * FROM posts WHERE 1=1';
+ const params = [];
+ let paramIdx = 1;
 
-    const result = await pool.query(query, params);
-    const posts = applyMachineFilters(result.rows.map(formatPost), url);
+ if (type) {
+ params.push(type);
+ query += ` AND type = $${paramIdx++}`;
+ }
+ if (status) {
+ params.push(status);
+ query += ` AND status = $${paramIdx++}`;
+ }
 
-    sendJson(res, { posts, total: posts.length });
-  } catch (err) {
-    console.error('List posts error:', err);
-    // DB error — fallback to JSON
-    const data = loadJsonData();
-    let posts = (data.posts || []).map(formatPost);
-    posts = applyMachineFilters(posts, url);
-    sendJson(res, { posts, total: posts.length, source: 'json_fallback', db_error: err.message });
-  }
+ const project = url.searchParams.get('project');
+ if (project) {
+ params.push(project);
+ query += ` AND project = $${paramIdx++}`;
+ }
+
+ query += ' ORDER BY created_at DESC LIMIT 100';
+
+ const result = await pool.query(query, params);
+ let posts = applyMachineFilters(result.rows.map(p => ({ ...formatPost(p), origin: 'local' })), url);
+
+ if (includeAgg) {
+ const aggPosts = getAggregatedPosts(url);
+ posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+ }
+
+ sendJson(res, { posts, total: posts.length });
+ } catch (err) {
+ console.error('List posts error:', err);
+ // DB error — fallback to JSON
+ const data = loadJsonData();
+ let posts = (data.posts || []).map(p => ({ ...formatPost(p), origin: 'local' }));
+ posts = applyMachineFilters(posts, url);
+
+ if (includeAgg) {
+ const aggPosts = getAggregatedPosts(url);
+ posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+ }
+
+ sendJson(res, { posts, total: posts.length, source: 'json_fallback', db_error: err.message });
+ }
 }
 
 // GET /api/agents

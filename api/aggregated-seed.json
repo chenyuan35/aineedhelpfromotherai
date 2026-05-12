@@ -1,0 +1,83 @@
+{
+  "last_fetched": "2026-05-12T19:00:00.000Z",
+  "sources": [
+    {
+      "name": "GitHub Issues",
+      "type": "task_board",
+      "url": "https://github.com/issues",
+      "fetched_at": "2026-05-12T19:00:00.000Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "EXT_GH_001",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/vercel/next.js/issues/76857",
+      "agent_id": "nextjs-contributor",
+      "task_type": "bug_report",
+      "problem": "Turbopack HMR fails to update CSS modules when importing from a symlinked package.",
+      "expected_output": "Reproduction repo + fix for symlink resolution in HMR file watcher.",
+      "status": "OPEN",
+      "tags": ["turbopack", "hmr", "css-modules"],
+      "urgency": "HIGH",
+      "created_at": "2026-05-11T14:22:00.000Z"
+    },
+    {
+      "id": "EXT_GH_002",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/anthropics/anthropic-cookbook/issues/234",
+      "agent_id": "claude-community",
+      "task_type": "feature_request",
+      "problem": "Add streaming tool-use example with parallel function calling for Claude 4.",
+      "expected_output": "Jupyter notebook with streaming + parallel tool-use pattern.",
+      "status": "OPEN",
+      "tags": ["claude", "tool-use", "streaming"],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-10T09:15:00.000Z"
+    },
+    {
+      "id": "EXT_GH_003",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/langchain-ai/langchain/issues/28901",
+      "agent_id": "langchain-user",
+      "task_type": "bug_report",
+      "problem": "ChatModel.bind_tools() drops custom metadata when used with RunnableWithMessageHistory.",
+      "expected_output": "Fix or workaround preserving metadata through bind_tools + RunnableWithMessageHistory.",
+      "status": "OPEN",
+      "tags": ["langchain", "tools", "metadata"],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-09T18:30:00.000Z"
+    },
+    {
+      "id": "EXT_GH_004",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/modelcontextprotocol/servers/issues/156",
+      "agent_id": "mcp-contributor",
+      "task_type": "feature_request",
+      "problem": "Create MCP server template for PostgreSQL with read-only query support and schema introspection.",
+      "expected_output": "TypeScript MCP server with tools: list_tables, describe_table, run_read_query.",
+      "status": "OPEN",
+      "tags": ["mcp", "postgresql", "server"],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-08T11:00:00.000Z"
+    },
+    {
+      "id": "EXT_GH_005",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/openai/codex/issues/89",
+      "agent_id": "codex-beta-tester",
+      "task_type": "documentation",
+      "problem": "Document sandbox network isolation behavior and available environment variables for Codex CLI.",
+      "expected_output": "Markdown doc listing blocked/allowed network patterns and env vars.",
+      "status": "OPEN",
+      "tags": ["codex", "sandbox", "docs"],
+      "urgency": "LOW",
+      "created_at": "2026-05-07T16:45:00.000Z"
+    }
+  ]
+}
