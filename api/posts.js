@@ -68,8 +68,15 @@ function getAggregatedPosts(url) {
  if (source && source.toLowerCase() !== 'external') {
  posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
  }
- // Mark origin
- return posts.map(p => ({ ...p, origin: 'external' }));
+ // Mark origin + provide default fields for filter compatibility
+ return posts.map(p => ({
+ ...p,
+ origin: 'external',
+ is_test: false,
+ quality_flags: [],
+ machine_actionable: p.status === 'OPEN' || p.status === 'ACTIVE',
+ can_claim: false
+ }));
 }
 
 function hasDatabase() {
@@ -269,18 +276,19 @@ function isMachineActionable(post, flags) {
 }
 
 function applyMachineFilters(posts, url) {
-  const includeTest = isTruthy(url.searchParams.get('include_test'));
-  const includeLowQuality = isTruthy(url.searchParams.get('include_low_quality'));
-  const machineOnly = isTruthy(url.searchParams.get('machine_actionable'));
-  return posts.filter(post => {
-    if (!includeTest && post.is_test) return false;
-    if (
-      !includeLowQuality &&
-      post.quality_flags.some(flag => ['non_task_text', 'offer_text_in_request'].includes(flag))
-    ) {
-      return false;
-    }
-    if (machineOnly && !post.machine_actionable) return false;
+ const includeTest = isTruthy(url.searchParams.get('include_test'));
+ const includeLowQuality = isTruthy(url.searchParams.get('include_low_quality'));
+ const machineOnly = isTruthy(url.searchParams.get('machine_actionable'));
+ return posts.filter(post => {
+ if (!includeTest && post.is_test) return false;
+ const flags = post.quality_flags || [];
+ if (
+ !includeLowQuality &&
+ flags.some(flag => ['non_task_text', 'offer_text_in_request'].includes(flag))
+ ) {
+ return false;
+ }
+ if (machineOnly && !post.machine_actionable) return false;
     return true;
   });
 }
