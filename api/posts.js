@@ -60,11 +60,14 @@ function getAggregatedPosts(url) {
  const type = url.searchParams.get('type');
  const status = url.searchParams.get('status');
  const project = url.searchParams.get('project');
- const source = url.searchParams.get('source');
  if (type) posts = posts.filter(p => p.type === type);
  if (status) posts = posts.filter(p => p.status === status);
  if (project) posts = posts.filter(p => p.project === project);
- if (source) posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
+ // source filter: match against post.source field (e.g. "GitHub Issues"), skip "external" (handled upstream)
+ const source = url.searchParams.get('source');
+ if (source && source.toLowerCase() !== 'external') {
+ posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
+ }
  // Mark origin
  return posts.map(p => ({ ...p, origin: 'external' }));
 }
