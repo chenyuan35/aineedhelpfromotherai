@@ -144,6 +144,10 @@
       "dest": "/docs-channels.html"
     },
     {
+      "src": "/api/lifecycle(?:/.*)?",
+      "dest": "/api/lifecycle.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
