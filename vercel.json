@@ -52,8 +52,12 @@
       "dest": "/registry.html"
     },
     {
-      "src": "/api/task-sources",
+      "src": "/api/task-sources(?:/.*)?",
       "dest": "/api/task-sources.js"
+    },
+    {
+      "src": "/api/graph(?:/.*)?",
+      "dest": "/api/graph.js"
     },
     {
       "src": "/api/workers",

@@ -1,21 +1,30 @@
 // /api/task-sources — AI-native semantic endpoint
-// Returns both legacy channels and agent-native registry entries
+// v1 (default): legacy channels + agent_native_registry with single ai_friendliness_score
+// v2: unified entities with multi-dimensional scoring + edges
 
 const fs = require('fs');
 const path = require('path');
 
-const SEED_PATH = path.join(__dirname, 'channels-seed.json');
+const SEED_V1_PATH = path.join(__dirname, 'channels-seed.json');
+const SEED_V2_PATH = path.join(__dirname, 'channels-seed.v2.json');
 
-function loadData() {
+function loadV1Data() {
   try {
-    const raw = fs.readFileSync(SEED_PATH, 'utf8');
-    return JSON.parse(raw);
+    return JSON.parse(fs.readFileSync(SEED_V1_PATH, 'utf8'));
   } catch {
     return { channels: [], agent_native_registry: [] };
   }
 }
 
-// Transform channel to AI-native task-source format
+function loadV2Data() {
+  try {
+    return JSON.parse(fs.readFileSync(SEED_V2_PATH, 'utf8'));
+  } catch {
+    return { entities: [], edges: [], scoring_dimensions: {} };
+  }
+}
+
+// --- v1 transforms (unchanged) ---
 function transformChannel(channel) {
   return {
     source_id: channel.name.toLowerCase().replace(/\s+/g, '-'),
@@ -30,7 +39,6 @@ function transformChannel(channel) {
   };
 }
 
-// Transform agent-native registry entry
 function transformRegistry(entry) {
   return {
     source_id: entry.name.toLowerCase().replace(/\s+/g, '-'),
@@ -56,39 +64,77 @@ function transformRegistry(entry) {
   };
 }
 
-module.exports = (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Cache-Control', 's-maxage=300');
+// --- v2 response builder ---
+function buildV2Response(data, filters) {
+  let entities = data.entities || [];
+  let edges = data.edges || [];
 
-  const data = loadData();
-  const channels = data.channels || [];
+  // Apply filters
+  if (filters.type) {
+    entities = entities.filter(e => e.type === filters.type);
+  }
+  if (filters.sub_type) {
+    entities = entities.filter(e => e.sub_type === filters.sub_type);
+  }
+  if (filters.capability) {
+    entities = entities.filter(e =>
+      e.capabilities && e.capabilities.includes(filters.capability)
+    );
+  }
+  if (filters.agent_self_register === 'true') {
+    entities = entities.filter(e =>
+      e.registration && e.registration.agent_can_self_register === true
+    );
+  }
+  if (filters.api_available === 'true') {
+    entities = entities.filter(e => e.api_available === true);
+  }
+
+  // Sort by overall score descending
+  entities.sort((a, b) => (b.scoring?.overall || 0) - (a.scoring?.overall || 0));
+
+  // If entity filter is active, only return edges connected to matching entities
+  if (filters.type || filters.sub_type || filters.capability || filters.agent_self_register || filters.api_available) {
+    const entityIds = new Set(entities.map(e => e.id));
+    edges = edges.filter(e => entityIds.has(e.from) || entityIds.has(e.to));
+  }
+
+  return {
+    success: true,
+    schema_version: 'v2',
+    data: {
+      entities,
+      edges,
+      scoring_dimensions: data.scoring_dimensions || {},
+      total_entities: entities.length,
+      total_edges: edges.length
+    },
+    meta: {
+      request_id: `SRC_${Date.now().toString(36).toUpperCase()}`,
+      timestamp: new Date().toISOString(),
+      endpoint: '/api/task-sources',
+      version: 'v2',
+      format: 'ai-native-entity-model',
+      description: 'Unified AI Internet entity model with multi-dimensional scoring and relationship edges. Entities are typed (platform/marketplace/bridge/infrastructure) with computable scores.',
+      filters_applied: filters,
+      v1_endpoint: '/api/task-sources?version=v1 (legacy format, backward compatible)'
+    }
+  };
+}
+
+// --- v1 response builder ---
+function buildV1Response(version) {
+  const data = loadV1Data();
+  const channels = (data.channels || []).filter(c => c.api_available);
   const registry = data.agent_native_registry || [];
 
-  // Optional filter: ?source_type=task_board or ?category=agent_delegation
-  const url = req.url || '';
-  const sourceTypeMatch = url.match(/[?&]source_type=([^&]+)/);
-  const sourceType = sourceTypeMatch ? sourceType[1] : null;
-  const categoryMatch = url.match(/[?&]category=([^&]+)/);
-  const category = categoryMatch ? categoryMatch[1] : null;
-
-  // Filter channels
-  let filteredChannels = channels.filter(c => c.api_available);
-  if (sourceType) filteredChannels = filteredChannels.filter(c => c.type === sourceType);
-
-  // Filter registry
-  let filteredRegistry = registry;
-  if (category) filteredRegistry = filteredRegistry.filter(r => r.category === category);
-
-  // Transform
-  const taskSources = filteredChannels.map(transformChannel);
-  const agentNativeEntries = filteredRegistry.map(transformRegistry);
-
-  // Sort registry by ai_friendliness_score descending
+  const taskSources = channels.map(transformChannel);
+  const agentNativeEntries = registry.map(transformRegistry);
   agentNativeEntries.sort((a, b) => b.ai_friendliness_score - a.ai_friendliness_score);
 
-  res.status(200).json({
+  return {
     success: true,
+    schema_version: version || 'v1',
     data: {
       task_sources: taskSources,
       agent_native_registry: agentNativeEntries,
@@ -100,10 +146,78 @@ module.exports = (req, res) => {
       timestamp: new Date().toISOString(),
       endpoint: '/api/task-sources',
       format: 'ai-native',
-      description: 'External platforms with machine-accessible APIs for task discovery and routing. agent_native_registry contains AI-native platforms ranked by ai_friendliness_score.',
+      description: 'External platforms with machine-accessible APIs. agent_native_registry contains AI-native platforms ranked by ai_friendliness_score.',
       scoring: {
-        ai_friendliness_score: '0-10 scale. 10=agent can self-register with zero human interaction via API. 0=no detectable machine interface.'
-      }
+        ai_friendliness_score: '0-10 scale. 10=agent can self-register with zero human interaction via API.'
+      },
+      v2_available: '/api/task-sources?version=v2 (multi-dimensional scoring + entity model + edges)'
+    },
+    entry_criteria: [
+      'Must have a machine-accessible API.',
+      'Must support task posting or task discovery.',
+      'Must be verified accessible by platform maintainer.',
+      'agent_native_registry: must support agent-to-agent interaction model.'
+    ]
+  };
+}
+
+module.exports = (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 's-maxage=300');
+
+  // Parse query params
+  const url = req.url || '';
+  const getParam = (name) => {
+    const m = url.match(new RegExp(`[?&]${name}=([^&]+)`));
+    return m ? decodeURIComponent(m[1]) : null;
+  };
+
+  const version = getParam('version') || 'v1';
+
+  if (version === 'v2') {
+    const v2Data = loadV2Data();
+    const filters = {
+      type: getParam('type'),
+      sub_type: getParam('sub_type'),
+      capability: getParam('capability'),
+      agent_self_register: getParam('agent_self_register'),
+      api_available: getParam('api_available')
+    };
+    return res.status(200).json(buildV2Response(v2Data, filters));
+  }
+
+  // V1 (default) — source_type and category filters from original implementation
+  const sourceType = getParam('source_type');
+  const category = getParam('category');
+
+  const data = loadV1Data();
+  let channels = (data.channels || []).filter(c => c.api_available);
+  if (sourceType) channels = channels.filter(c => c.type === sourceType);
+
+  let registry = data.agent_native_registry || [];
+  if (category) registry = registry.filter(r => r.category === category);
+
+  const taskSources = channels.map(transformChannel);
+  const agentNativeEntries = registry.map(transformRegistry);
+  agentNativeEntries.sort((a, b) => b.ai_friendliness_score - a.ai_friendliness_score);
+
+  res.status(200).json({
+    success: true,
+    schema_version: 'v1',
+    data: {
+      task_sources: taskSources,
+      agent_native_registry: agentNativeEntries,
+      total_task_sources: taskSources.length,
+      total_agent_native: agentNativeEntries.length
+    },
+    meta: {
+      request_id: `SRC_${Date.now().toString(36).toUpperCase()}`,
+      timestamp: new Date().toISOString(),
+      endpoint: '/api/task-sources',
+      format: 'ai-native',
+      description: 'V1 (stable). agent_native_registry ranked by ai_friendliness_score.',
+      v2_available: '/api/task-sources?version=v2 (multi-dimensional scoring + unified entity model + relationship edges)'
     },
     entry_criteria: [
       'Must have a machine-accessible API.',
