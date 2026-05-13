@@ -13,34 +13,34 @@ const executions = new Map();
 
 // --- Real LLM Provider Configuration ---
 const LLM_PROVIDERS = {
-  'kilo': {
-    baseUrl: 'https://api.kilo.ai/v1',
-    model: 'kilo-auto',
-    apiKeyEnv: 'KILO_API_KEY',
+  'nvidia': {
+    baseUrl: 'https://integrate.api.nvidia.com/v1',
+    model: 'deepseek-ai/deepseek-v4-pro',
+    apiKeyEnv: 'NVIDIA_API_KEY',
     timeout: 120000,
-    capabilities: ['research', 'writing', 'reasoning', 'code']
+    capabilities: ['reasoning', 'code', 'research', 'writing']
   },
   'poolside': {
     baseUrl: 'https://inference.poolside.ai/v1',
     model: 'poolside/laguna-m.1',
     apiKeyEnv: 'POOLSIDE_API_KEY',
     timeout: 300000,
-    capabilities: ['code', 'debug', 'refactor', 'test']
+    capabilities: ['code', 'debug', 'refactor', 'test', 'reasoning']
   }
 };
 
 // Agent-to-provider mapping
 const AGENT_PROVIDER_MAP = {
-  'deepseek-v3': { provider: 'kilo', model: 'deepseek-ai/deepseek-v3' },
-  'kimi-k2-5': { provider: 'kilo', model: 'moonshotai/kimi-k2.5' },
-  'glm-5-1': { provider: 'kilo', model: 'z-ai/glm-5.1' },
-  'mimo-v2-5-pro': { provider: 'kilo', model: 'xiaomi/mimo-v2.5-pro' },
+  'deepseek-v3': { provider: 'nvidia', model: 'deepseek-ai/deepseek-v3' },
+  'kimi-k2-5': { provider: 'nvidia', model: 'moonshotai/kimi-k2.5' },
+  'glm-5-1': { provider: 'nvidia', model: 'z-ai/glm-5.1' },
+  'mimo-v2-5-pro': { provider: 'nvidia', model: 'xiaomi/mimo-v2.5-pro' },
   'claude-code': { provider: 'poolside', model: 'poolside/laguna-m.1' },
   'gpt-5-5-codex': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'grok-3': { provider: 'kilo', model: 'x-ai/grok-3' },
-  'gemini-2-5-pro': { provider: 'kilo', model: 'google/gemini-2.5-pro' },
-  'mistral-large': { provider: 'kilo', model: 'mistral/large' },
-  'llama-4-maverick': { provider: 'kilo', model: 'meta/llama-4-maverick' }
+  'grok-3': { provider: 'nvidia', model: 'x-ai/grok-3' },
+  'gemini-2-5-pro': { provider: 'nvidia', model: 'google/gemini-2.5-pro' },
+  'mistral-large': { provider: 'nvidia', model: 'mistral/large' },
+  'llama-4-maverick': { provider: 'nvidia', model: 'meta/llama-4-maverick' }
 };
 
 function loadPostsSeed() {
@@ -283,13 +283,11 @@ async function handleExecute(req, res) {
       executionStatus = 'failed';
       executionError = err.message;
       executionLog.push(`[${new Date().toISOString()}] LLM call FAILED: ${err.message}`);
-      // Fallback: try kilo if poolside fails
+      // Fallback: try nvidia if poolside fails
       if (provider === 'poolside') {
-        executionLog.push(`[${new Date().toISOString()}] Attempting fallback to kilo provider...`);
+        executionLog.push(`[${new Date().toISOString()}] Attempting fallback to nvidia provider...`);
         try {
-          const fallbackConfig = Object.assign({}, LLM_PROVIDERS['kilo']);
-          LLM_PROVIDERS['kilo'].model = 'kilo-auto';
-          llmResult = await callLLM('kilo', prompt, systemPrompt);
+          llmResult = await callLLM('nvidia', prompt, systemPrompt);
           executionStatus = 'completed_with_fallback';
           executionLog.push(`[${new Date().toISOString()}] Fallback succeeded (${llmResult.usage.total_tokens} tokens)`);
         } catch (fallbackErr) {
@@ -298,12 +296,12 @@ async function handleExecute(req, res) {
       }
     }
   } else {
-    // No provider mapping — use kilo-auto as default
-    executionLog.push(`[${new Date().toISOString()}] No provider mapping for ${selectedAgent.id}, using kilo-auto`);
+    // No provider mapping — use poolside as default (confirmed working)
+    executionLog.push(`[${new Date().toISOString()}] No provider mapping for ${selectedAgent.id}, using poolside/laguna-m.1`);
     try {
       const prompt = buildExecutionPrompt(task, canonicalTask);
       const systemPrompt = `You are an AI agent executing task ${taskId}. Produce a concrete, actionable result.`;
-      llmResult = await callLLM('kilo', prompt, systemPrompt);
+      llmResult = await callLLM('poolside', prompt, systemPrompt);
       executionLog.push(`[${new Date().toISOString()}] Default LLM call succeeded (${llmResult.usage.total_tokens} tokens)`);
     } catch (err) {
       executionStatus = 'failed';
