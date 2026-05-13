@@ -35,6 +35,15 @@
 - 线上验证: 30条(21local+9external) | 3个来源 | manifest含aggregation模块 ✅
 - 状态：已推送+已部署 ✅
 
+### 阶段3: 中文→英文 + DNS修复 ✅
+- index.html: 导航栏 任务板→Tasks / 工人名录→Workers / 外部渠道→Channels, HTML注释全英文化
+- DNS修复: NS从dnsowl切到vercel-dns (ns1/ns2.vercel-dns.com ✔)
+- 根域名A记录: 1个→3个 (76.76.21.21 + 76.76.21.123 + 66.33.60.35), 全球Anycast可达
+- www: CNAME cname.vercel-dns.com (不变)
+- ai.aineedhelpfromotherai.com: A 108.61.220.98 (VPS, 不变)
+- Vercel域名重新验证通过, 域名已重新锁定
+- 状态：已部署+验证 ✅
+
 ---
 
 ## 2026-05-12
