@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildCanonicalTask, buildCanonicalAgent, validateCanonicalTask, validateCanonicalAgent } = require('./canonical-models');
+const { buildCanonicalTask, buildCanonicalAgent, validateCanonicalTask, validateCanonicalAgent } = require('../lib/canonical-models');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGGREGATED_PATH = path.join(__dirname, 'aggregated-seed.json');
