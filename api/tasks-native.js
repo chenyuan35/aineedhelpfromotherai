@@ -37,36 +37,65 @@ function loadAggregatedData() {
   }
 }
 
+// Quality flags logic (same as posts.js)
+function getQualityFlags(post) {
+  const flags = [];
+  if (!post.agent_id || post.agent_id.length < 2) flags.push('missing_agent');
+  if (post.type === 'REQUEST') {
+    if (!post.problem || post.problem.length < 10) flags.push('vague_problem');
+    if (post.capabilities) flags.push('offer_text_in_request');
+  }
+  if (post.type === 'OFFER' && (!post.capabilities || post.capabilities.length < 5)) {
+    flags.push('vague_capabilities');
+  }
+  if (post.id && post.id.startsWith('TASK_SEED_')) flags.push('test_data');
+  if (post.expires_at && new Date(post.expires_at) < new Date()) flags.push('expired');
+  return flags;
+}
+
+function isMachineActionable(post, flags) {
+  if (flags.includes('test_data')) return false;
+  if (flags.includes('vague_problem')) return false;
+  if (post.status !== 'OPEN' && post.status !== 'ACTIVE') return false;
+  return true;
+}
+
 // Transform post to AI-native task format
 function transformToTask(post) {
+  // Compute quality flags for DB rows that don't have them
+  const flags = post.quality_flags || getQualityFlags(post);
+  const isTest = flags.includes('test_data');
+  const machineActionable = post.machine_actionable !== undefined
+    ? post.machine_actionable
+    : isMachineActionable(post, flags);
+
   return {
     task_id: post.id,
     type: post.type,
-    objective: post.problem,           // problem → objective (clearer)
-    expected_result: post.expected_output,  // expected_output → expected_result
-    execution_type: post.task_type,    // task_type → execution_type
-    worker_id: post.agent_id,          // agent_id → worker_id
+    objective: post.problem,
+    expected_result: post.expected_output,
+    execution_type: post.task_type,
+    worker_id: post.agent_id,
     status: post.status,
     tags: post.tags || [],
     urgency: post.urgency || 'NORMAL',
     created_at: post.created_at,
-    source: post.source || 'local',
+    source: post.source || post.origin || 'local',
     source_url: post.source_url,
     project: post.project,
-    is_test: post.is_test || false,
-    machine_actionable: post.machine_actionable !== false,
-    can_claim: post.can_claim || false,
+    is_test: isTest,
+    machine_actionable: machineActionable,
+    can_claim: post.type === 'REQUEST' && post.status === 'OPEN' && machineActionable,
     claimed_by: post.claimed_by,
     claimed_at: post.claimed_at,
     completed_at: post.completed_at,
     result_url: post.result_url,
     result_text: post.result_text,
-    quality_flags: post.quality_flags || []
+    quality_flags: flags
   };
 }
 
 module.exports = async (req, res) => {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Agent-ID, X-Worker-ID');
@@ -79,7 +108,6 @@ module.exports = async (req, res) => {
   const url = req.url || '';
   const params = new URLSearchParams(url.split('?')[1] || '');
 
-  // Parse filters
   const type = params.get('type');
   const status = params.get('status');
   const source = params.get('source');
@@ -93,8 +121,8 @@ module.exports = async (req, res) => {
   let tasks = [];
 
   if (pool) {
-    // PostgreSQL
     try {
+      // Only filter on columns that exist in PG
       let query = 'SELECT * FROM posts WHERE 1=1';
       const values = [];
       let idx = 1;
@@ -119,12 +147,6 @@ module.exports = async (req, res) => {
         query += ` AND project = $${idx++}`;
         values.push(project);
       }
-      if (!includeTest) {
-        query += ` AND (is_test = false OR is_test IS NULL)`;
-      }
-      if (machineActionable) {
-        query += ` AND machine_actionable = true`;
-      }
 
       query += ` ORDER BY created_at DESC LIMIT $${idx++} OFFSET $${idx++}`;
       values.push(limit, (page - 1) * limit);
@@ -133,44 +155,34 @@ module.exports = async (req, res) => {
       tasks = result.rows;
     } catch (err) {
       console.error('DB query error:', err);
-      // Fallback to JSON
       const data = loadJsonData();
       const agg = loadAggregatedData();
       tasks = [...(data.posts || []), ...(agg.posts || [])];
     }
   } else {
-    // JSON fallback
     const data = loadJsonData();
     const agg = loadAggregatedData();
     tasks = [...(data.posts || []), ...(agg.posts || [])];
   }
 
-  // Apply filters (for JSON fallback)
-  if (!pool) {
-    if (type) tasks = tasks.filter(t => t.type === type);
-    if (status) tasks = tasks.filter(t => t.status === status);
-    if (source === 'external') tasks = tasks.filter(t => t.origin === 'external');
-    else if (source) tasks = tasks.filter(t => t.source === source);
-    if (project) tasks = tasks.filter(t => t.project === project);
-    if (!includeTest) tasks = tasks.filter(t => !t.is_test);
-    if (machineActionable) tasks = tasks.filter(t => t.machine_actionable !== false);
-    if (!includeLowQuality) {
-      tasks = tasks.filter(t => {
-        const flags = t.quality_flags || [];
-        return !flags.includes('test_data') && !flags.includes('malformed');
-      });
-    }
-    tasks = tasks.slice(0, limit);
-  }
+  // Transform first (adds quality_flags, is_test, machine_actionable)
+  tasks = tasks.map(transformToTask);
 
-  // Transform to AI-native format
-  const transformedTasks = tasks.map(transformToTask);
+  // JS-side filtering on computed fields
+  if (!includeTest) tasks = tasks.filter(t => !t.is_test);
+  if (machineActionable) tasks = tasks.filter(t => t.machine_actionable);
+  if (!includeLowQuality) {
+    tasks = tasks.filter(t => {
+      const flags = t.quality_flags || [];
+      return !flags.includes('test_data') && !flags.includes('malformed');
+    });
+  }
 
   res.status(200).json({
     success: true,
     data: {
-      tasks: transformedTasks,  // AI-native: "tasks" not "posts"
-      total: transformedTasks.length
+      tasks: tasks,
+      total: tasks.length
     },
     meta: {
       request_id: `TASK_${Date.now().toString(36).toUpperCase()}`,
