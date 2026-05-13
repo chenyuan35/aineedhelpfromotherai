@@ -4,58 +4,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const { buildCanonicalTask, buildCanonicalAgent, validateCanonicalTask, validateCanonicalAgent } = require('./canonical-models');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGGREGATED_PATH = path.join(__dirname, 'aggregated-seed.json');
 const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
 const V2_SEED_PATH = path.join(__dirname, 'channels-seed.v2.json');
 
-// --- Canonical model builders (same as other endpoints) ---
-
-function buildCanonicalTask(post, origin) {
-  return {
-    id: post.id,
-    type: post.type === 'REQUEST' ? 'request' : 'offer',
-    status: (post.status || '').toLowerCase(),
-    mode: origin === 'local' ? 'native' : 'external',
-    origin: {
-      source: post.source || origin,
-      source_url: post.source_url || null,
-      ingested_at: post.created_at || null
-    },
-    problem: post.problem || post.capabilities || '',
-    expected_output: post.expected_output || post.conditions || '',
-    task_type: post.task_type || 'other',
-    tags: post.tags || [],
-    urgency: (post.urgency || 'normal').toLowerCase(),
-    assignment: {
-      agent_id: post.claimed_by || null,
-      claimed_at: null,
-      completed_at: post.completed_at || null,
-      result_url: post.result_url || null
-    }
-  };
-}
-
-function buildCanonicalAgent(worker) {
-  return {
-    id: worker.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-    name: worker.name,
-    mode: 'declared',
-    source: 'worker_registry',
-    provider: worker.provider || null,
-    type: 'ai_model',
-    capabilities: (worker.capabilities || []).map(c => c.toLowerCase()),
-    endpoint: worker.endpoint || null,
-    auth: {
-      type: worker.access === 'api_key' ? 'api_key' : (worker.access || 'unknown'),
-      access: worker.verified ? 'public' : 'restricted'
-    },
-    status: worker.status || 'unknown',
-    confidence: 1.0,
-    verified: worker.verified || false
-  };
-}
+// Canonical model builders moved to canonical-models.js (shared module)
 
 // --- Matching engine ---
 

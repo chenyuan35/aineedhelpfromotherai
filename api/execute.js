@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const { saveExecution, queryExecutions, getExecution } = require('./execution-history');
+const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('./canonical-models');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
@@ -12,38 +13,58 @@ const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
 // In-memory execution state (resets on serverless cold start — Phase 2 KV coming)
 const executions = new Map();
 
-// --- Real LLM Provider Configuration ---
+// --- Real LLM Provider Configuration (5 providers, all verified working) ---
 const LLM_PROVIDERS = {
-  'nvidia': {
-    baseUrl: 'https://integrate.api.nvidia.com/v1',
-    model: 'deepseek-ai/deepseek-v4-pro',
-    apiKeyEnv: 'NVIDIA_API_KEY',
-    timeout: 120000,
-    capabilities: ['reasoning', 'code', 'research', 'writing']
-  },
   'poolside': {
     baseUrl: 'https://inference.poolside.ai/v1',
     model: 'poolside/laguna-m.1',
     apiKeyEnv: 'POOLSIDE_API_KEY',
     timeout: 300000,
     capabilities: ['code', 'debug', 'refactor', 'test', 'reasoning']
+  },
+  'groq': {
+    baseUrl: 'https://api.groq.com/openai/v1',
+    model: 'llama-3.3-70b-versatile',
+    apiKeyEnv: 'GROQ_API_KEY',
+    timeout: 30000,
+    capabilities: ['code', 'research', 'writing', 'reasoning', 'fast_inference']
+  },
+  'zhipu': {
+    baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
+    model: 'glm-4-flash',
+    apiKeyEnv: 'ZHIPU_API_KEY',
+    timeout: 60000,
+    capabilities: ['code', 'research', 'writing', 'reasoning']
+  },
+  'hunyuan': {
+    baseUrl: 'https://api.hunyuan.cloud.tencent.com/v1',
+    model: 'hunyuan-lite',
+    apiKeyEnv: 'HUNYUAN_API_KEY',
+    timeout: 60000,
+    capabilities: ['research', 'writing', 'reasoning']
+  },
+  'spark': {
+    baseUrl: 'https://spark-api-open.xf-yun.com/v1',
+    model: 'generalv3.5',
+    apiKeyEnv: 'SPARK_APP_CREDENTIALS',
+    timeout: 60000,
+    capabilities: ['research', 'writing', 'chinese']
   }
 };
 
-// Agent-to-provider mapping
-// Poolside confirmed working (200 OK, OpenAI-compatible)
-// NVIDIA has intermittent 404/timeout — used as fallback only
+// Agent-to-provider mapping (diversified across 5 providers)
+// Each agent maps to its "native" provider where possible
 const AGENT_PROVIDER_MAP = {
   'deepseek-v3': { provider: 'poolside', model: 'poolside/laguna-m.1' },
   'kimi-k2-5': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'glm-5-1': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'mimo-v2-5-pro': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'glm-5-1': { provider: 'zhipu', model: 'glm-4-flash' },
+  'mimo-v2-5-pro': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   'claude-code': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'gpt-5-5-codex': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'grok-3': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'gemini-2-5-pro': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'mistral-large': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'llama-4-maverick': { provider: 'poolside', model: 'poolside/laguna-m.1' }
+  'gpt-5-5-codex': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  'grok-3': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  'gemini-2-5-pro': { provider: 'hunyuan', model: 'hunyuan-lite' },
+  'mistral-large': { provider: 'hunyuan', model: 'hunyuan-lite' },
+  'llama-4-maverick': { provider: 'groq', model: 'llama-3.3-70b-versatile' }
 };
 
 function loadPostsSeed() {
@@ -54,17 +75,7 @@ function loadAgentsSeed() {
   try { return JSON.parse(fs.readFileSync(AGENTS_SEED_PATH, 'utf8')); } catch { return { workers: [] }; }
 }
 
-function buildCanonicalAgent(worker) {
-  return {
-    id: worker.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-    name: worker.name,
-    mode: 'declared',
-    source: 'worker_registry',
-    capabilities: (worker.capabilities || []).map(c => c.toLowerCase()),
-    confidence: 1.0,
-    endpoint: worker.endpoint || null
-  };
-}
+// buildCanonicalAgent moved to canonical-models.js (shared module)
 
 const TASK_TYPE_TO_CAPABILITY = {
   'research': ['research', 'reasoning'],
@@ -77,8 +88,8 @@ const TASK_TYPE_TO_CAPABILITY = {
   'inference': ['inference', 'multimodal']
 };
 
-// --- Real LLM Call ---
-async function callLLM(provider, prompt, systemPrompt) {
+// --- Real LLM Call (multi-provider, all OpenAI-compatible) ---
+async function callLLM(provider, prompt, systemPrompt, overrideModel) {
   const config = LLM_PROVIDERS[provider];
   if (!config) throw new Error(`Unknown LLM provider: ${provider}`);
 
@@ -88,14 +99,18 @@ async function callLLM(provider, prompt, systemPrompt) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), config.timeout);
 
-  const model = config.model;
+  const model = overrideModel || config.model;
+
+  // Build auth header — Spark uses "Bearer APPID:APISecret" format
+  let authHeader = `Bearer ${apiKey}`;
+  // Spark credentials already in APPID:APISecret format from env var
 
   try {
     const response = await fetch(`${config.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': authHeader
       },
       body: JSON.stringify({
         model: model,
@@ -272,32 +287,34 @@ async function handleExecute(req, res) {
 
     executionLog.push(`[${new Date().toISOString()}] Calling LLM API (${provider})...`);
 
-    try {
-      // Override model if agent mapping specifies one
-      const originalModel = LLM_PROVIDERS[provider].model;
-      LLM_PROVIDERS[provider].model = agentMapping.model;
-      llmResult = await callLLM(provider, prompt, systemPrompt);
-      LLM_PROVIDERS[provider].model = originalModel; // restore
+  try {
+  // Use override model from agent mapping
+  llmResult = await callLLM(provider, prompt, systemPrompt, agentMapping.model);
 
       executionLog.push(`[${new Date().toISOString()}] LLM response received (${llmResult.usage.total_tokens} tokens)`);
       executionLog.push(`[${new Date().toISOString()}] Model used: ${llmResult.model}`);
       executionLog.push(`[${new Date().toISOString()}] Execution complete.`);
-    } catch (err) {
-      executionStatus = 'failed';
-      executionError = err.message;
-      executionLog.push(`[${new Date().toISOString()}] LLM call FAILED: ${err.message}`);
-      // Fallback: try nvidia if poolside fails
-      if (provider === 'poolside') {
-        executionLog.push(`[${new Date().toISOString()}] Attempting fallback to nvidia provider...`);
-        try {
-          llmResult = await callLLM('nvidia', prompt, systemPrompt);
-          executionStatus = 'completed_with_fallback';
-          executionLog.push(`[${new Date().toISOString()}] Fallback succeeded (${llmResult.usage.total_tokens} tokens)`);
-        } catch (fallbackErr) {
-          executionLog.push(`[${new Date().toISOString()}] Fallback also FAILED: ${fallbackErr.message}`);
-        }
+  } catch (err) {
+    executionStatus = 'failed';
+    executionError = err.message;
+    executionLog.push(`[${new Date().toISOString()}] LLM call FAILED: ${err.message}`);
+    // Multi-provider fallback chain
+    const FALLBACK_PROVIDERS = ['groq', 'zhipu', 'hunyuan', 'spark', 'poolside'].filter(p => p !== provider);
+    for (const fallbackProvider of FALLBACK_PROVIDERS) {
+      const fallbackConfig = LLM_PROVIDERS[fallbackProvider];
+      if (!fallbackConfig || !process.env[fallbackConfig.apiKeyEnv]) continue;
+      executionLog.push(`[${new Date().toISOString()}] Attempting fallback to ${fallbackProvider}...`);
+      try {
+        llmResult = await callLLM(fallbackProvider, prompt, systemPrompt);
+        executionStatus = 'completed_with_fallback';
+        executionLog.push(`[${new Date().toISOString()}] Fallback to ${fallbackProvider} succeeded (${llmResult.usage.total_tokens} tokens)`);
+        provider = fallbackProvider;
+        break;
+      } catch (fallbackErr) {
+        executionLog.push(`[${new Date().toISOString()}] Fallback to ${fallbackProvider} FAILED: ${fallbackErr.message}`);
       }
     }
+  }
   } else {
     // No provider mapping — use poolside as default (confirmed working)
     executionLog.push(`[${new Date().toISOString()}] No provider mapping for ${selectedAgent.id}, using poolside/laguna-m.1`);
