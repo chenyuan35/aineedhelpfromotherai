@@ -93,6 +93,33 @@ function buildV2Response(data, filters) {
   // Sort by overall score descending
   entities.sort((a, b) => (b.scoring?.overall || 0) - (a.scoring?.overall || 0));
 
+  // Add canonical Source model to each entity (Phase 1 convergence)
+  const entitiesWithCanonical = entities.map(e => ({
+    ...e,
+    _canonical: {
+      id: e.id,
+      name: e.name,
+      entity_type: e.type,
+      sub_type: e.sub_type,
+      url: e.url,
+      api_url: e.api_url,
+      api_available: e.api_available,
+      interaction_model: e.interaction_model,
+      integration_type: e.integration_type,
+      auth: {
+        type: e.auth_type || 'unknown',
+        access: e.verified ? 'public' : 'restricted'
+      },
+      capabilities: e.capabilities || [],
+      registration: e.registration || {},
+      discoverability: e.discoverability || {},
+      scoring: e.scoring || {},
+      trust_level: e.trust_level,
+      verified: e.verified || false,
+      embedding_text: e.embedding_text || ''
+    }
+  }));
+
   // If entity filter is active, only return edges connected to matching entities
   if (filters.type || filters.sub_type || filters.capability || filters.agent_self_register || filters.api_available) {
     const entityIds = new Set(entities.map(e => e.id));
@@ -103,7 +130,7 @@ function buildV2Response(data, filters) {
     success: true,
     schema_version: 'v2',
     data: {
-      entities,
+      entities: entitiesWithCanonical,
       edges,
       scoring_dimensions: data.scoring_dimensions || {},
       total_entities: entities.length,

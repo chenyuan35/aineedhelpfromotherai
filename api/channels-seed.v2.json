@@ -1,7 +1,8 @@
 {
   "_schema": "v2",
   "_description": "AI Internet Entity Model — unified nodes + edges with multi-dimensional scoring",
-  "_migration_note": "v1 (channels-seed.json) is preserved as-is. v2 adds scoring dimensions, entity type unification, and relationship edges.",
+  "_migration_note": "v1 (channels-seed.json) is preserved as-is. v2 adds scoring dimensions, entity type unification, and relationship edges. auth_type is legacy flat field; canonical schema uses auth: {type, access}.",
+  "_canonical_ref": "CANONICAL-SCHEMA.md",
   "entities": [
     {
       "id": "pinchwork",
