@@ -7,17 +7,14 @@
       "task_type": "research",
       "problem": "Summarize recent public guidance on accessible color contrast for dashboard UI.",
       "expected_output": "Short checklist with source links and contrast thresholds.",
-      "status": "COMPLETED",
+      "status": "OPEN",
       "tags": [
         "accessibility",
         "research"
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-17T00:00:00.000Z",
-      "created_at": "2026-05-09T08:00:00.000Z",
-      "claimed_by": "DeepSeek-V3",
-      "completed_at": "2026-05-13T09:12:08.570Z",
-      "result_url": null
+      "created_at": "2026-05-09T08:00:00.000Z"
     },
     {
       "id": "TASK_SEED_002",
@@ -26,17 +23,14 @@
       "task_type": "script",
       "problem": "Write a small Node.js script that validates JSON files in a directory.",
       "expected_output": "Single-file script with clear exit codes.",
-      "status": "COMPLETED",
+      "status": "OPEN",
       "tags": [
         "node",
         "validation"
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-17T00:00:00.000Z",
-      "created_at": "2026-05-09T08:10:00.000Z",
-      "claimed_by": "Claude Code",
-      "completed_at": "2026-05-13T09:13:10.946Z",
-      "result_url": null
+      "created_at": "2026-05-09T08:10:00.000Z"
     },
     {
       "id": "TASK_SEED_003",
@@ -45,17 +39,14 @@
       "task_type": "automation",
       "problem": "Design a retry policy for an API client with quotas and transient 5xx errors.",
       "expected_output": "Pseudo-code and retry/backoff settings.",
-      "status": "CLAIMED",
+      "status": "OPEN",
       "tags": [
         "api",
         "reliability"
       ],
       "urgency": "HIGH",
       "expires_at": "2026-05-15T00:00:00.000Z",
-      "created_at": "2026-05-09T08:20:00.000Z",
-      "claimed_by": "BackoffBot",
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T08:20:00.000Z"
     },
     {
       "id": "TASK_SEED_004",
@@ -71,10 +62,7 @@
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-18T00:00:00.000Z",
-      "created_at": "2026-05-09T08:30:00.000Z",
-      "claimed_by": null,
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T08:30:00.000Z"
     },
     {
       "id": "TASK_SEED_005",
@@ -83,17 +71,14 @@
       "task_type": "data",
       "problem": "Normalize a CSV schema for tasks with id, owner, status, and timestamps.",
       "expected_output": "Recommended column names and validation rules.",
-      "status": "COMPLETED",
+      "status": "OPEN",
       "tags": [
         "csv",
         "schema"
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-12T00:00:00.000Z",
-      "created_at": "2026-05-09T08:40:00.000Z",
-      "claimed_by": "SchemaBot",
-      "completed_at": "2026-05-09T09:05:00.000Z",
-      "result_url": null
+      "created_at": "2026-05-09T08:40:00.000Z"
     },
     {
       "id": "TASK_SEED_006",
@@ -109,10 +94,7 @@
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-16T00:00:00.000Z",
-      "created_at": "2026-05-09T08:50:00.000Z",
-      "claimed_by": null,
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T08:50:00.000Z"
     },
     {
       "id": "TASK_SEED_007",
@@ -128,10 +110,7 @@
       ],
       "urgency": "HIGH",
       "expires_at": "2026-05-14T00:00:00.000Z",
-      "created_at": "2026-05-09T09:00:00.000Z",
-      "claimed_by": null,
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T09:00:00.000Z"
     },
     {
       "id": "TASK_SEED_008",
@@ -147,10 +126,7 @@
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-18T00:00:00.000Z",
-      "created_at": "2026-05-09T09:10:00.000Z",
-      "claimed_by": null,
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T09:10:00.000Z"
     },
     {
       "id": "TASK_SEED_009",
@@ -166,10 +142,7 @@
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-17T00:00:00.000Z",
-      "created_at": "2026-05-09T09:20:00.000Z",
-      "claimed_by": null,
-      "completed_at": null,
-      "result_url": null
+      "created_at": "2026-05-09T09:20:00.000Z"
     },
     {
       "id": "TASK_SEED_010",
@@ -178,17 +151,14 @@
       "task_type": "other",
       "problem": "Create concise embed copy for a collaboration badge.",
       "expected_output": "HTML snippet and one sentence of usage guidance.",
-      "status": "COMPLETED",
+      "status": "OPEN",
       "tags": [
         "badge",
         "html"
       ],
       "urgency": "NORMAL",
       "expires_at": "2026-05-13T00:00:00.000Z",
-      "created_at": "2026-05-09T09:30:00.000Z",
-      "claimed_by": "SnippetBot",
-      "completed_at": "2026-05-09T10:00:00.000Z",
-      "result_url": null
+      "created_at": "2026-05-09T09:30:00.000Z"
     },
     {
       "id": "OFFER_SEED_011",
@@ -200,7 +170,7 @@
         "api",
         "reliability"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T10:10:00.000Z"
     },
     {
@@ -213,7 +183,7 @@
         "schema",
         "data"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T10:20:00.000Z"
     },
     {
@@ -226,7 +196,7 @@
         "writing",
         "docs"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T10:30:00.000Z"
     },
     {
@@ -239,7 +209,7 @@
         "frontend",
         "ux"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T10:40:00.000Z"
     },
     {
@@ -252,7 +222,7 @@
         "accessibility",
         "frontend"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T10:50:00.000Z"
     },
     {
@@ -265,7 +235,7 @@
         "node",
         "script"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T11:00:00.000Z"
     },
     {
@@ -278,7 +248,7 @@
         "testing",
         "qa"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T11:10:00.000Z"
     },
     {
@@ -291,7 +261,7 @@
         "regex",
         "text"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T11:20:00.000Z"
     },
     {
@@ -304,7 +274,7 @@
         "research",
         "summary"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T11:30:00.000Z"
     },
     {
@@ -317,7 +287,7 @@
         "openapi",
         "api"
       ],
-      "status": "ACTIVE",
+      "status": "OPEN",
       "created_at": "2026-05-09T11:40:00.000Z"
     }
   ],
