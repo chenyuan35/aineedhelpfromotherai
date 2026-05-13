@@ -1,5 +1,5 @@
-// /api/execute — Task execution loop (canonical-driven)
-// Claims a task for an agent, simulates execution, produces result
+// /api/execute — Task execution loop (canonical-driven, Phase 2: real LLM calls)
+// Claims a task for an agent, calls real LLM API, produces result
 // This closes the loop: task → route → match → claim → execute → result
 
 const fs = require('fs');
@@ -7,17 +7,44 @@ const path = require('path');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
-const V2_SEED_PATH = path.join(__dirname, 'channels-seed.v2.json');
 
-// In-memory execution state (resets on serverless cold start — OK for Phase 1)
+// In-memory execution state (resets on serverless cold start — Phase 2 KV coming)
 const executions = new Map();
+
+// --- Real LLM Provider Configuration ---
+const LLM_PROVIDERS = {
+  'kilo': {
+    baseUrl: 'https://api.kilo.ai/v1',
+    model: 'kilo-auto',
+    apiKeyEnv: 'KILO_API_KEY',
+    timeout: 120000,
+    capabilities: ['research', 'writing', 'reasoning', 'code']
+  },
+  'poolside': {
+    baseUrl: 'https://inference.poolside.ai/v1',
+    model: 'poolside/laguna-m.1',
+    apiKeyEnv: 'POOLSIDE_API_KEY',
+    timeout: 300000,
+    capabilities: ['code', 'debug', 'refactor', 'test']
+  }
+};
+
+// Agent-to-provider mapping
+const AGENT_PROVIDER_MAP = {
+  'deepseek-v3': { provider: 'kilo', model: 'deepseek-ai/deepseek-v3' },
+  'kimi-k2-5': { provider: 'kilo', model: 'moonshotai/kimi-k2.5' },
+  'glm-5-1': { provider: 'kilo', model: 'z-ai/glm-5.1' },
+  'mimo-v2-5-pro': { provider: 'kilo', model: 'xiaomi/mimo-v2.5-pro' },
+  'claude-code': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'gpt-5-5-codex': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'grok-3': { provider: 'kilo', model: 'x-ai/grok-3' },
+  'gemini-2-5-pro': { provider: 'kilo', model: 'google/gemini-2.5-pro' },
+  'mistral-large': { provider: 'kilo', model: 'mistral/large' },
+  'llama-4-maverick': { provider: 'kilo', model: 'meta/llama-4-maverick' }
+};
 
 function loadPostsSeed() {
   try { return JSON.parse(fs.readFileSync(POSTS_SEED_PATH, 'utf8')); } catch { return { posts: [] }; }
-}
-
-function savePostsSeed(data) {
-  fs.writeFileSync(POSTS_SEED_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
 function loadAgentsSeed() {
@@ -47,8 +74,88 @@ const TASK_TYPE_TO_CAPABILITY = {
   'inference': ['inference', 'multimodal']
 };
 
-// POST /api/execute — claim + execute a task
-// Body: { task_id, agent_id (optional — auto-select if omitted) }
+// --- Real LLM Call ---
+async function callLLM(provider, prompt, systemPrompt) {
+  const config = LLM_PROVIDERS[provider];
+  if (!config) throw new Error(`Unknown LLM provider: ${provider}`);
+
+  const apiKey = process.env[config.apiKeyEnv];
+  if (!apiKey) throw new Error(`Missing API key: ${config.apiKeyEnv}`);
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), config.timeout);
+
+  const model = config.model;
+
+  try {
+    const response = await fetch(`${config.baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: model,
+        messages: [
+          { role: 'system', content: systemPrompt || 'You are an AI agent executing a task. Produce a concrete, actionable result.' },
+          { role: 'user', content: prompt }
+        ],
+        max_tokens: 2048,
+        temperature: 0.3
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      const errText = await response.text().catch(() => 'unknown error');
+      throw new Error(`LLM API error ${response.status}: ${errText.substring(0, 500)}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content || '';
+    const usage = data.usage || {};
+
+    return {
+      content,
+      model: data.model || model,
+      provider,
+      usage: {
+        prompt_tokens: usage.prompt_tokens || 0,
+        completion_tokens: usage.completion_tokens || 0,
+        total_tokens: usage.total_tokens || 0
+      },
+      raw_response_id: data.id || null
+    };
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') throw new Error(`LLM call timed out after ${config.timeout}ms`);
+    throw err;
+  }
+}
+
+// Build execution prompt from task
+function buildExecutionPrompt(task, canonicalTask) {
+  return `Execute the following task and produce a concrete result.
+
+TASK ID: ${task.id}
+TASK TYPE: ${canonicalTask.task_type}
+PROBLEM: ${canonicalTask.problem}
+EXPECTED OUTPUT: ${canonicalTask.expected_output || 'A concrete, actionable solution'}
+URGENCY: ${canonicalTask.urgency}
+
+INSTRUCTIONS:
+1. Analyze the problem
+2. Produce a concrete, actionable result
+3. If it's a code task, write the code
+4. If it's a research task, provide findings
+5. If it's a writing task, produce the content
+
+Format your output clearly. This is a real execution, not a simulation.`;
+}
+
+// --- POST /api/execute ---
 async function handleExecute(req, res) {
   let body = {};
   try {
@@ -72,7 +179,7 @@ async function handleExecute(req, res) {
     });
   }
 
-  // Find task in seed
+  // Find task
   const postsData = loadPostsSeed();
   const task = postsData.posts.find(p => p.id === taskId);
   if (!task) {
@@ -95,11 +202,11 @@ async function handleExecute(req, res) {
     urgency: (task.urgency || 'normal').toLowerCase()
   };
 
-  // Load canonical agents
+  // Load agents
   const agentsData = loadAgentsSeed();
   const agents = agentsData.workers.map(buildCanonicalAgent);
 
-  // Select agent: specified or auto-route
+  // Select agent
   let selectedAgent = null;
   let routingResult = null;
 
@@ -109,7 +216,6 @@ async function handleExecute(req, res) {
       return res.status(404).json({ success: false, error: `Agent ${body.agent_id} not found in worker registry` });
     }
   } else {
-    // Auto-route: find best match
     const requiredCaps = TASK_TYPE_TO_CAPABILITY[canonicalTask.task_type] || ['code'];
     const scored = agents.map(agent => {
       const agentCaps = agent.capabilities;
@@ -135,27 +241,79 @@ async function handleExecute(req, res) {
     };
   }
 
-  // --- EXECUTION: Claim + Process + Produce Result ---
+  // --- REAL EXECUTION ---
+  const executionId = 'EXEC_' + Date.now().toString(36).toUpperCase();
+  const claimedAt = new Date().toISOString();
+  const executionLog = [];
 
-  // 1. Claim the task
+  // 1. Claim
   task.status = 'CLAIMED';
   task.claimed_by = selectedAgent.name;
-  const claimedAt = new Date().toISOString();
+  executionLog.push(`[${claimedAt}] Task ${taskId} claimed by ${selectedAgent.name} (${selectedAgent.id})`);
 
-  // 2. Execute (simulate — this is the execution hook)
-  const executionId = 'EXEC_' + Date.now().toString(36).toUpperCase();
-  const executionLog = [
-    `[${claimedAt}] Task ${taskId} claimed by ${selectedAgent.name} (${selectedAgent.id})`,
-    `[${new Date().toISOString()}] Agent mode: ${selectedAgent.mode}, source: ${selectedAgent.source}`,
-    `[${new Date().toISOString()}] Agent capabilities: ${selectedAgent.capabilities.join(', ')}`,
-    `[${new Date().toISOString()}] Task type: ${canonicalTask.task_type}, required: ${(TASK_TYPE_TO_CAPABILITY[canonicalTask.task_type] || []).join(', ')}`,
-    `[${new Date().toISOString()}] Execution started...`,
-    `[${new Date().toISOString()}] Processing task: ${canonicalTask.problem.substring(0, 100)}`,
-    `[${new Date().toISOString()}] Execution complete. Result generated.`
-  ];
+  // 2. Resolve LLM provider for this agent
+  const agentMapping = AGENT_PROVIDER_MAP[selectedAgent.id];
+  let llmResult = null;
+  let executionStatus = 'completed';
+  let executionError = null;
 
-  // 3. Mark completed + generate result
-  task.status = 'COMPLETED';
+  if (agentMapping) {
+    const provider = agentMapping.provider;
+    executionLog.push(`[${new Date().toISOString()}] Routing to LLM provider: ${provider}, model: ${agentMapping.model}`);
+    executionLog.push(`[${new Date().toISOString()}] Agent capabilities: ${selectedAgent.capabilities.join(', ')}`);
+    executionLog.push(`[${new Date().toISOString()}] Task type: ${canonicalTask.task_type}`);
+    executionLog.push(`[${new Date().toISOString()}] Building execution prompt...`);
+
+    const prompt = buildExecutionPrompt(task, canonicalTask);
+    const systemPrompt = `You are ${selectedAgent.name}, an AI agent with capabilities: ${selectedAgent.capabilities.join(', ')}. You are executing task ${taskId} on the AI Labor Exchange platform. Produce a concrete, actionable result.`;
+
+    executionLog.push(`[${new Date().toISOString()}] Calling LLM API (${provider})...`);
+
+    try {
+      // Override model if agent mapping specifies one
+      const originalModel = LLM_PROVIDERS[provider].model;
+      LLM_PROVIDERS[provider].model = agentMapping.model;
+      llmResult = await callLLM(provider, prompt, systemPrompt);
+      LLM_PROVIDERS[provider].model = originalModel; // restore
+
+      executionLog.push(`[${new Date().toISOString()}] LLM response received (${llmResult.usage.total_tokens} tokens)`);
+      executionLog.push(`[${new Date().toISOString()}] Model used: ${llmResult.model}`);
+      executionLog.push(`[${new Date().toISOString()}] Execution complete.`);
+    } catch (err) {
+      executionStatus = 'failed';
+      executionError = err.message;
+      executionLog.push(`[${new Date().toISOString()}] LLM call FAILED: ${err.message}`);
+      // Fallback: try kilo if poolside fails
+      if (provider === 'poolside') {
+        executionLog.push(`[${new Date().toISOString()}] Attempting fallback to kilo provider...`);
+        try {
+          const fallbackConfig = Object.assign({}, LLM_PROVIDERS['kilo']);
+          LLM_PROVIDERS['kilo'].model = 'kilo-auto';
+          llmResult = await callLLM('kilo', prompt, systemPrompt);
+          executionStatus = 'completed_with_fallback';
+          executionLog.push(`[${new Date().toISOString()}] Fallback succeeded (${llmResult.usage.total_tokens} tokens)`);
+        } catch (fallbackErr) {
+          executionLog.push(`[${new Date().toISOString()}] Fallback also FAILED: ${fallbackErr.message}`);
+        }
+      }
+    }
+  } else {
+    // No provider mapping — use kilo-auto as default
+    executionLog.push(`[${new Date().toISOString()}] No provider mapping for ${selectedAgent.id}, using kilo-auto`);
+    try {
+      const prompt = buildExecutionPrompt(task, canonicalTask);
+      const systemPrompt = `You are an AI agent executing task ${taskId}. Produce a concrete, actionable result.`;
+      llmResult = await callLLM('kilo', prompt, systemPrompt);
+      executionLog.push(`[${new Date().toISOString()}] Default LLM call succeeded (${llmResult.usage.total_tokens} tokens)`);
+    } catch (err) {
+      executionStatus = 'failed';
+      executionError = err.message;
+      executionLog.push(`[${new Date().toISOString()}] Default LLM call FAILED: ${err.message}`);
+    }
+  }
+
+  // 3. Mark completed
+  task.status = executionStatus === 'failed' ? 'FAILED' : 'COMPLETED';
   task.completed_at = new Date().toISOString();
 
   const result = {
@@ -173,37 +331,49 @@ async function handleExecute(req, res) {
     execution: {
       claimed_at: claimedAt,
       completed_at: task.completed_at,
-      duration_ms: 150, // simulated
-      status: 'completed',
-      log: executionLog
+      duration_ms: Date.now() - new Date(claimedAt).getTime(),
+      status: executionStatus,
+      error: executionError,
+      log: executionLog,
+      llm: llmResult ? {
+        provider: llmResult.provider,
+        model: llmResult.model,
+        usage: llmResult.usage,
+        response_id: llmResult.raw_response_id
+      } : null
     },
-    output: {
-      type: 'mock_execution_result',
-      summary: `[${selectedAgent.name}] processed task "${canonicalTask.problem.substring(0, 60)}..." — mock execution completed successfully. In production, this would contain the actual task output.`,
-      result_url: null,
-      note: 'This is a Phase 1 execution loop. The routing and claiming logic is real (reads canonical models). The execution output is simulated. Replace with real agent API calls in Phase 2.'
+    output: llmResult ? {
+      type: 'real_llm_execution_result',
+      content: llmResult.content,
+      content_length: llmResult.content.length,
+      model: llmResult.model,
+      provider: llmResult.provider,
+      tokens: llmResult.usage.total_tokens
+    } : {
+      type: 'execution_failed',
+      error: executionError,
+      note: 'LLM API call failed. Check execution.log for details.'
     }
   };
 
-  // Save execution record (in-memory only for Phase 1)
-  // DO NOT write back to seed file — seed is source of truth for initial state
-  // Execution state lives in memory (Phase 1) or database (Phase 2)
+  // Save execution record
   executions.set(executionId, result);
 
   res.status(200).json({
-    success: true,
+    success: executionStatus !== 'failed',
     execution: result,
     meta: {
       request_id: executionId,
       timestamp: new Date().toISOString(),
       endpoint: '/api/execute',
-      engine: 'canonical-driven-execution',
-      description: 'Full task execution loop: canonical routing → agent selection → claim → execute → result. Routing reads _canonical models. Execution is simulated in Phase 1.'
+      engine: 'canonical-driven-execution-phase2',
+      phase: 2,
+      description: 'Real LLM execution loop: canonical routing → agent selection → claim → real LLM call → result'
     }
   });
 }
 
-// GET /api/execute?execution_id=xxx — check execution status
+// GET /api/execute
 function handleStatus(req, res) {
   const url = req.url || '';
   const idMatch = url.match(/[?&]execution_id=([^&]+)/);
@@ -212,12 +382,11 @@ function handleStatus(req, res) {
   if (execId) {
     const record = executions.get(execId);
     if (!record) {
-      return res.status(404).json({ success: false, error: `Execution ${execId} not found` });
+      return res.status(404).json({ success: false, error: `Execution ${execId} not found (in-memory only — state resets on cold start)` });
     }
     return res.status(200).json({ success: true, execution: record });
   }
 
-  // List all executions
   const all = Array.from(executions.values());
   res.status(200).json({
     success: true,
@@ -225,13 +394,16 @@ function handleStatus(req, res) {
     total: all.length,
     meta: {
       endpoint: '/api/execute',
-      description: 'GET: check execution status. POST: execute a task.',
+      phase: 2,
+      description: 'GET: check execution status. POST: execute a task with real LLM call.',
       usage: {
         execute: 'POST /api/execute { "task_id": "TASK_SEED_001" }',
-        auto_route: 'POST /api/execute { "task_id": "TASK_SEED_001" } — agent auto-selected',
+        auto_route: 'POST /api/execute { "task_id": "TASK_SEED_001" } — agent + LLM auto-selected',
         manual_agent: 'POST /api/execute { "task_id": "TASK_SEED_001", "agent_id": "deepseek-v3" }',
         check_status: 'GET /api/execute?execution_id=EXEC_xxx'
-      }
+      },
+      available_providers: Object.keys(LLM_PROVIDERS),
+      agent_provider_map: Object.keys(AGENT_PROVIDER_MAP)
     }
   });
 }
