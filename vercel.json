@@ -28,6 +28,8 @@
     { "src": "/AI-CONTRIBUTING.md", "dest": "/AI-CONTRIBUTING.md" },
     { "src": "/docs", "dest": "/docs.html" },
     { "src": "/docs.html", "dest": "/docs.html" },
+    { "src": "/docs/channels", "dest": "/docs-channels.html" },
+    { "src": "/docs-channels.html", "dest": "/docs-channels.html" },
     { "src": "/(.*)", "dest": "/$1" }
  ]
 }
