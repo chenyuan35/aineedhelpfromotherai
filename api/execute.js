@@ -30,17 +30,19 @@ const LLM_PROVIDERS = {
 };
 
 // Agent-to-provider mapping
+// Poolside confirmed working (200 OK, OpenAI-compatible)
+// NVIDIA has intermittent 404/timeout — used as fallback only
 const AGENT_PROVIDER_MAP = {
-  'deepseek-v3': { provider: 'nvidia', model: 'deepseek-ai/deepseek-v3' },
-  'kimi-k2-5': { provider: 'nvidia', model: 'moonshotai/kimi-k2.5' },
-  'glm-5-1': { provider: 'nvidia', model: 'z-ai/glm-5.1' },
-  'mimo-v2-5-pro': { provider: 'nvidia', model: 'xiaomi/mimo-v2.5-pro' },
+  'deepseek-v3': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'kimi-k2-5': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'glm-5-1': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'mimo-v2-5-pro': { provider: 'poolside', model: 'poolside/laguna-m.1' },
   'claude-code': { provider: 'poolside', model: 'poolside/laguna-m.1' },
   'gpt-5-5-codex': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'grok-3': { provider: 'nvidia', model: 'x-ai/grok-3' },
-  'gemini-2-5-pro': { provider: 'nvidia', model: 'google/gemini-2.5-pro' },
-  'mistral-large': { provider: 'nvidia', model: 'mistral/large' },
-  'llama-4-maverick': { provider: 'nvidia', model: 'meta/llama-4-maverick' }
+  'grok-3': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'gemini-2-5-pro': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'mistral-large': { provider: 'poolside', model: 'poolside/laguna-m.1' },
+  'llama-4-maverick': { provider: 'poolside', model: 'poolside/laguna-m.1' }
 };
 
 function loadPostsSeed() {
