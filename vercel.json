@@ -44,6 +44,14 @@
   ],
   "routes": [
     {
+      "src": "/registry.html",
+      "dest": "/registry.html"
+    },
+    {
+      "src": "/registry",
+      "dest": "/registry.html"
+    },
+    {
       "src": "/api/task-sources",
       "dest": "/api/task-sources.js"
     },
