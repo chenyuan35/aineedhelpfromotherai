@@ -1,23 +1,24 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #080810;
-  --bg2: #0e0e18;
+  --bg: #060610;
+  --bg2: #0c0c18;
   --border: #181828;
-  --text: #c8c8d0;
-  --dim: #555568;
+  --text: #d0d0d8;
+  --dim: #444460;
   --accent: #00d4ff;
   --req: #ff6b6b;
   --off: #4ecdc4;
   --done: #a8e6cf;
-  --post: #ff9500;
+  --warm: #ff9500;
+  --focal-bg: #0a0a1a;
 }
 
 body {
   font-family: 'Courier New', monospace;
   background: var(--bg);
   color: var(--text);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
   min-height: 100vh;
 }
@@ -25,183 +26,265 @@ body {
 a { color: var(--dim); text-decoration: none; }
 a:hover { color: var(--accent); }
 
-/* === IDENTITY === */
-.identity {
-  padding: 6px 10px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sys-name { color: var(--accent); font-weight: bold; font-size: 12px; }
-.sys-version { color: var(--dim); font-size: 10px; }
-#sys-status { font-size: 10px; }
-#sys-status.live { color: var(--done); }
-#sys-status.dead { color: var(--req); }
+/* =========================================
+   FOCAL LAYER — this is THE page
+   ========================================= */
 
-/* === STATE GRID === */
-.state-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 1px;
-  padding: 4px 10px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-}
-.state-node {
+.focal {
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
-  padding: 4px 0;
+  justify-content: center;
+  padding: 40px 20px 20px;
 }
-.state-value { font-size: 16px; font-weight: bold; color: var(--accent); line-height: 1; }
-.state-label { font-size: 9px; color: var(--dim); margin-top: 1px; }
 
-/* === OPS GRID === */
-.ops-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1px;
-  padding: 4px 10px;
-  border-bottom: 1px solid var(--border);
+.focal-identity {
+  text-align: center;
+  margin-bottom: 30px;
 }
-.op-node {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  padding: 2px 0;
-}
-.op-method {
-  font-size: 9px;
-  font-weight: bold;
-  color: var(--off);
-  min-width: 28px;
-}
-.op-method.post { color: var(--post); }
-.op-path {
-  font-size: 10px;
+.sys-name {
+  font-size: 14px;
   color: var(--accent);
-  white-space: nowrap;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
-.op-desc {
-  font-size: 9px;
-  color: var(--dim);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.sys-badge {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+  background: var(--dim);
+}
+.sys-badge.live {
+  background: var(--done);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
-/* === FLOW PIPELINE === */
-.flow {
+/* --- Pipeline: the visual center --- */
+.pipeline {
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding: 6px 10px;
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 20px;
 }
-.flow-stage {
+
+.pipe-node {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 60px;
-  padding: 2px 4px;
+  padding: 12px 16px;
+  min-width: 80px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
 }
-.flow-label { font-size: 10px; color: var(--accent); font-weight: bold; }
-.flow-count { font-size: 14px; font-weight: bold; color: var(--text); }
-.flow-hint { font-size: 8px; color: var(--dim); }
-.flow-arrow { color: var(--dim); font-size: 12px; }
+.pipe-node.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
+}
 
-/* === TASK STREAM === */
-.stream {
-  padding: 4px 10px;
-  border-bottom: 1px solid var(--border);
-  min-height: 40px;
+.pipe-count {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--accent);
+  line-height: 1;
 }
-.stream-header {
-  display: block;
+.pipe-label {
   font-size: 9px;
   color: var(--dim);
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2px;
-  padding-bottom: 1px;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pipe-arrow {
+  color: var(--dim);
+  font-size: 16px;
+  padding: 0 4px;
+  min-width: 24px;
+  text-align: center;
+}
+.pipe-arrow.flowing {
+  color: var(--accent);
+  animation: flow 1.5s ease-in-out infinite;
+}
+@keyframes flow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* --- Last action --- */
+.last-action {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 11px;
+  min-height: 16px;
+}
+.la-label { color: var(--dim); }
+.la-text { color: var(--text); }
+.la-text.highlight { color: var(--done); }
+
+/* --- Quick ops --- */
+.quick-ops {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.op-btn {
+  padding: 6px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.op-btn:hover { border-color: var(--dim); color: var(--text); }
+.op-btn.primary {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: bold;
+}
+.op-btn.primary:hover { opacity: 0.9; }
+
+/* --- Result panel --- */
+.result-panel {
+  background: var(--bg2);
+  border: 1px solid var(--done);
+  border-radius: 2px;
+  padding: 12px 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 10px;
+}
+.rp-header { color: var(--done); font-weight: bold; margin-bottom: 4px; }
+.rp-row { display: flex; gap: 8px; padding: 2px 0; }
+.rp-key { color: var(--dim); min-width: 70px; }
+.rp-val { color: var(--text); }
+
+/* =========================================
+   CONTEXT LAYER — supporting, subordinate
+   ========================================= */
+
+.context {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.ctx-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.ctx-group { text-align: center; }
+.ctx-val { display: block; font-size: 16px; font-weight: bold; color: var(--dim); }
+.ctx-lbl { display: block; font-size: 8px; color: var(--dim); text-transform: uppercase; }
+
+/* Task stream: compact rows */
+.stream {
+  max-width: 600px;
+  margin: 0 auto;
+  max-height: 120px;
+  overflow-y: auto;
 }
 .stream-entry {
   display: grid;
-  grid-template-columns: 30px 60px 1fr 50px;
+  grid-template-columns: 6px 50px 1fr;
   gap: 6px;
-  padding: 1px 0;
+  padding: 2px 0;
   font-size: 10px;
-  border-bottom: 1px solid var(--border);
   align-items: baseline;
 }
-.stream-entry .s-status { font-weight: bold; }
-.stream-entry .s-status.open { color: var(--req); }
-.stream-entry .s-status.claimed { color: var(--post); }
-.stream-entry .s-status.completed { color: var(--done); }
-.stream-entry .s-type { color: var(--dim); }
-.stream-entry .s-desc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.stream-entry .s-route { color: var(--accent); font-size: 9px; text-align: right; }
+.s-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 3px;
+}
+.s-dot.open { background: var(--req); }
+.s-dot.claimed { background: var(--warm); }
+.s-dot.completed { background: var(--done); }
+.s-dot.active { background: var(--off); }
+.s-type { color: var(--dim); }
+.s-desc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
 
-/* === ACTIONS === */
-.actions {
-  padding: 4px 10px;
-  border-bottom: 1px solid var(--border);
+/* =========================================
+   ACCESS LAYER — ambient, quiet
+   ========================================= */
+
+.access {
+  padding: 8px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.actions summary {
-  font-size: 10px;
+.access a {
+  font-size: 9px;
+  padding: 2px 6px;
+  color: var(--dim);
+  border: 1px solid transparent;
+}
+.access a:hover {
+  border-color: var(--border);
   color: var(--accent);
-  cursor: pointer;
-  padding: 2px 0;
 }
-.act-row {
+
+/* =========================================
+   CREATE OVERLAY
+   ========================================= */
+
+.create-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6,6,16,0.85);
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 0;
-  font-size: 10px;
+  justify-content: center;
+  z-index: 100;
 }
-.act-row label { color: var(--dim); min-width: 55px; font-size: 9px; }
-.act-row input, .act-row select {
-  flex: 1;
-  padding: 2px 4px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 10px;
+.create-card {
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 16px;
+  width: 400px;
+  max-width: 90vw;
 }
-.act-row input:focus { outline: none; border-color: var(--accent); }
-.act-submit {
-  width: 100%;
-  padding: 3px;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  font-family: inherit;
-  font-size: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 2px;
+.create-title { color: var(--accent); font-size: 12px; font-weight: bold; display: block; margin-bottom: 8px; }
+.cr-row { display: flex; gap: 6px; align-items: center; padding: 3px 0; }
+.cr-row label { color: var(--dim); font-size: 10px; min-width: 60px; }
+.cr-row input, .cr-row select {
+  flex: 1; padding: 3px 6px; background: var(--bg); border: 1px solid var(--border);
+  color: var(--text); font-family: inherit; font-size: 10px;
 }
-
-/* === LINKED SURFACES === */
-.surfaces {
-  padding: 4px 10px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.cr-row input:focus { outline: none; border-color: var(--accent); }
+.cr-actions { display: flex; gap: 8px; margin-top: 8px; }
+.cr-submit {
+  flex: 1; padding: 4px; background: var(--accent); color: #000; border: none;
+  font-family: inherit; font-size: 10px; font-weight: bold; cursor: pointer;
 }
-.surfaces a {
-  font-size: 9px;
-  padding: 1px 4px;
-  border: 1px solid var(--border);
-  border-radius: 1px;
+.cr-cancel {
+  padding: 4px 12px; background: none; border: 1px solid var(--border);
+  color: var(--dim); font-family: inherit; font-size: 10px; cursor: pointer;
 }
 
-/* === TOAST === */
+/* Toast */
 .toast {
-  position: fixed; bottom: 6px; left: 50%; transform: translateX(-50%);
-  background: var(--accent); color: #000; padding: 3px 10px;
-  font-size: 10px; font-weight: bold; z-index: 10000;
+  position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: #000; padding: 4px 14px;
+  font-size: 10px; font-weight: bold; z-index: 200;
 }
