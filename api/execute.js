@@ -360,10 +360,12 @@ async function handleExecute(req, res) {
   // Save execution record (in-memory + PostgreSQL)
   executions.set(executionId, result);
 
-  // Persist to PostgreSQL (async — don't block response)
-  saveExecution(result).catch(err => {
+  // Persist to PostgreSQL (must await — serverless kills async after response)
+  try {
+    await saveExecution(result);
+  } catch (err) {
     console.error(`[execution-history] Failed to save ${executionId}:`, err.message);
-  });
+  }
 
   res.status(200).json({
     success: executionStatus !== 'failed',
