@@ -185,12 +185,10 @@ async function handleExecute(req, res) {
     }
   };
 
-  // Save execution record
+  // Save execution record (in-memory only for Phase 1)
+  // DO NOT write back to seed file — seed is source of truth for initial state
+  // Execution state lives in memory (Phase 1) or database (Phase 2)
   executions.set(executionId, result);
-
-  // Save updated task status back to seed (so subsequent calls see CLAIMED/COMPLETED)
-  // Note: In serverless this won't persist across cold starts, but the in-memory state works within a session
-  savePostsSeed(postsData);
 
   res.status(200).json({
     success: true,
