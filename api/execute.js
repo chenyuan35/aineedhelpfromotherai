@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { saveExecution, queryExecutions, getExecution } = require('./execution-history');
+const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth } = require('./execution-history');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('./canonical-models');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
@@ -175,6 +175,21 @@ Format your output clearly. This is a real execution, not a simulation.`;
 
 // --- POST /api/execute ---
 async function handleExecute(req, res) {
+  // --- Agent authentication (X-Agent-Token or Authorization) ---
+  const authHeader = req.headers['x-agent-token'] || req.headers['authorization'] || '';
+  const agentAuth = parseAgentAuth(authHeader);
+
+  // Phase 2: auth is optional but logged — unauthenticated requests get a warning
+  // Phase 3: auth will be required
+  let authResult = { authenticated: false, agent_id: null };
+
+  if (agentAuth) {
+    const verified = await verifyAgentToken(agentAuth.agent_id, agentAuth.token);
+    if (verified) {
+      authResult = { authenticated: true, agent_id: agentAuth.agent_id };
+    }
+  }
+
   let body = {};
   try {
     const raw = await new Promise((resolve, reject) => {
@@ -387,14 +402,15 @@ async function handleExecute(req, res) {
   res.status(200).json({
     success: executionStatus !== 'failed',
     execution: result,
-    meta: {
-      request_id: executionId,
-      timestamp: new Date().toISOString(),
-      endpoint: '/api/execute',
-      engine: 'canonical-driven-execution-phase2',
-      phase: 2,
-      description: 'Real LLM execution loop: canonical routing → agent selection → claim → real LLM call → result'
-    }
+  meta: {
+    request_id: executionId,
+    timestamp: new Date().toISOString(),
+    endpoint: '/api/execute',
+    engine: 'canonical-driven-execution-phase2',
+    phase: 2,
+    auth: authResult,
+    description: 'Real LLM execution loop: canonical routing → agent selection → claim → real LLM call → result'
+  }
   });
 }
 

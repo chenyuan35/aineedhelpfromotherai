@@ -17,7 +17,7 @@ function getPool() {
   return pool;
 }
 
-// Auto-create table on first use
+// Auto-create tables on first use
 let tableReady = false;
 async function ensureTable() {
   if (tableReady) return;
@@ -46,6 +46,15 @@ async function ensureTable() {
       CREATE INDEX IF NOT EXISTS idx_exec_agent ON execution_history(agent_id);
       CREATE INDEX IF NOT EXISTS idx_exec_status ON execution_history(status);
       CREATE INDEX IF NOT EXISTS idx_exec_created ON execution_history(created_at DESC);
+
+      CREATE TABLE IF NOT EXISTS agent_tokens (
+        agent_id VARCHAR(128) PRIMARY KEY,
+        token_hash VARCHAR(128) NOT NULL,
+        agent_name VARCHAR(128),
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        last_used_at TIMESTAMPTZ,
+        request_count INTEGER DEFAULT 0
+      );
     `);
     tableReady = true;
   } finally {
@@ -151,4 +160,69 @@ async function getExecution(executionId) {
   return result.rows[0] || null;
 }
 
-module.exports = { saveExecution, queryExecutions, getExecution, ensureTable };
+// --- Agent Token Auth ---
+
+const crypto = require('crypto');
+
+// Hash a token for storage (SHA-256)
+function hashToken(token) {
+  return crypto.createHash('sha256').update(token).digest('hex');
+}
+
+// Register an agent with a token — returns the generated token (show once!)
+async function registerAgentToken(agentId, agentName) {
+  await ensureTable();
+  const db = getPool();
+  // Generate a random token: agent_<32hex>
+  const rawToken = `agent_${crypto.randomBytes(16).toString('hex')}`;
+  const tokenHash = hashToken(rawToken);
+
+  await db.query(
+    `INSERT INTO agent_tokens (agent_id, token_hash, agent_name, created_at, request_count)
+     VALUES ($1, $2, $3, NOW(), 0)
+     ON CONFLICT (agent_id) DO UPDATE SET token_hash = $2, agent_name = $3, created_at = NOW(), request_count = 0`,
+    [agentId, tokenHash, agentName]
+  );
+
+  return { agent_id: agentId, token: rawToken, warning: 'Save this token — it cannot be retrieved later' };
+}
+
+// Verify an agent token — returns true/false
+async function verifyAgentToken(agentId, rawToken) {
+  await ensureTable();
+  const db = getPool();
+  const tokenHash = hashToken(rawToken);
+
+  const result = await db.query(
+    `SELECT agent_id FROM agent_tokens WHERE agent_id = $1 AND token_hash = $2`,
+    [agentId, tokenHash]
+  );
+
+  if (result.rows.length > 0) {
+    // Update last_used_at and increment request_count
+    await db.query(
+      `UPDATE agent_tokens SET last_used_at = NOW(), request_count = request_count + 1 WHERE agent_id = $1`,
+      [agentId]
+    ).catch(() => {}); // non-critical
+    return true;
+  }
+  return false;
+}
+
+// Parse X-Agent-Token header: "agent_id:token"
+function parseAgentAuth(authHeader) {
+  if (!authHeader) return null;
+  // Support: "Bearer agent_id:token" or "agent_id:token"
+  const cleaned = authHeader.replace(/^Bearer\s+/i, '');
+  const colonIdx = cleaned.indexOf(':');
+  if (colonIdx < 1) return null;
+  return {
+    agent_id: cleaned.substring(0, colonIdx),
+    token: cleaned.substring(colonIdx + 1)
+  };
+}
+
+module.exports = {
+  saveExecution, queryExecutions, getExecution, ensureTable,
+  registerAgentToken, verifyAgentToken, parseAgentAuth
+};
