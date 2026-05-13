@@ -1,19 +1,19 @@
-// AI NEED HELP FROM OTHER AI — Runtime Orchestration Surface
+// AI NEED HELP FROM OTHER AI — Runtime Orchestration Surface v3
 // Focal: pipeline + execute. Context: state. Access: endpoints.
 
 const API = '/api';
-let lastExecutionId = null;
+let stateCache = {};
 
 document.addEventListener('DOMContentLoaded', () => {
   loadState();
   loadStream();
-  // Auto-refresh every 30s
-  setInterval(loadState, 30000);
+  setInterval(loadState, 15000);
+  setInterval(loadStream, 30000);
 });
 
-// === STATE: populate all counters ===
+// === STATE ===
 async function loadState() {
-  const status = document.getElementById('sys-status');
+  const pulse = document.getElementById('sys-pulse');
   try {
     const [postsR, agentsR, sourcesR, graphR] = await Promise.all([
       fetch(API + '/posts').then(r => r.json()).catch(() => null),
@@ -26,180 +26,174 @@ async function loadState() {
     const open = posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').length;
     const claimed = posts.filter(p => p.status === 'CLAIMED').length;
     const done = posts.filter(p => p.status === 'COMPLETED').length;
-    const offers = posts.filter(p => p.type === 'OFFER' && p.status === 'ACTIVE').length;
     const agents = agentsR?.workers?.length || 0;
+    const offers = posts.filter(p => p.type === 'OFFER' && p.status === 'ACTIVE').length;
     const sources = sourcesR?.data?.entities?.length || 0;
     const edges = graphR?.graph?.edges?.length || 0;
 
-    // Pipeline counts (the focal point)
-    document.getElementById('p-tasks').textContent = open;
-    document.getElementById('p-route').textContent = open > 0 ? open : 0;
-    document.getElementById('p-match').textContent = agents > 0 ? agents : 0;
+    stateCache = { open, claimed, done, agents, offers, sources, edges };
+
+    // Pipeline
+    document.getElementById('p-open').textContent = open;
+    document.getElementById('p-match').textContent = open > 0 && agents > 0 ? agents : '—';
     document.getElementById('p-exec').textContent = claimed;
     document.getElementById('p-done').textContent = done;
 
-    // Animate pipeline arrows if there's flow
-    const arrows = document.querySelectorAll('.pipe-arrow');
-    arrows.forEach(a => {
-      a.classList.toggle('flowing', open > 0 && agents > 0);
-    });
+    // Flow arrows
+    const flowing = open > 0 && agents > 0;
+    document.getElementById('flow-1').className = 'conn-arrow' + (flowing ? ' flowing' : '');
+    document.getElementById('flow-2').className = 'conn-arrow' + (flowing ? ' flowing' : '');
+    document.getElementById('flow-3').className = 'conn-arrow' + (claimed > 0 || done > 0 ? ' flowing' : '');
 
-    // Context counts
+    // Context
     document.getElementById('c-agents').textContent = agents;
     document.getElementById('c-offers').textContent = offers;
     document.getElementById('c-sources').textContent = sources;
     document.getElementById('c-edges').textContent = edges;
-    document.getElementById('c-claimed').textContent = claimed;
 
-    status.classList.add('live');
-    status.classList.remove('dead');
-  } catch (e) {
-    status.classList.add('dead');
-    status.classList.remove('live');
+    pulse.classList.remove('dead');
+  } catch {
+    pulse.classList.add('dead');
+    document.getElementById('pulse-label').textContent = 'error';
   }
 }
 
-// === STREAM: compact task list ===
+// === STREAM ===
 async function loadStream() {
-  const container = document.getElementById('task-stream');
+  const c = document.getElementById('stream');
   try {
     const res = await fetch(API + '/posts?machine_actionable=true');
-    const data = await res.json();
-    const posts = (data.data?.posts || []).slice(0, 15);
-    if (!posts.length) { container.innerHTML = '<span style="color:var(--dim);font-size:10px">no actionable tasks</span>'; return; }
-
-    container.innerHTML = posts.map(p => {
+    const posts = (await res.json()).data?.posts || [];
+    if (!posts.length) { c.innerHTML = '<span style="color:var(--dim);font-size:9px">no actionable tasks</span>'; return; }
+    c.innerHTML = posts.slice(0, 12).map(p => {
       const st = (p.status || '').toLowerCase();
       const dot = st === 'open' ? 'open' : st === 'claimed' ? 'claimed' : st === 'completed' ? 'completed' : 'active';
-      const desc = (p.problem || p.capabilities || '').substring(0, 70);
-      return `<div class="stream-entry"><span class="s-dot ${dot}"></span><span class="s-type">${p.task_type || p.type || ''}</span><span class="s-desc">${esc(desc)}</span></div>`;
+      return `<div class="s-row"><span class="s-dot ${dot}"></span><span class="s-type">${p.task_type || p.type || ''}</span><span class="s-desc">${esc((p.problem || p.capabilities || '').substring(0, 65))}</span></div>`;
     }).join('');
-  } catch { container.innerHTML = '<span style="color:var(--dim)">—</span>'; }
+  } catch { c.innerHTML = ''; }
 }
 
-// === AUTO ROUTE + EXECUTE: the primary action ===
-async function autoRouteAndExecute() {
-  const la = document.getElementById('la-text');
-  la.textContent = 'routing...';
-  la.classList.remove('highlight');
+// === AUTO EXECUTE: the primary action ===
+async function autoExecute() {
+  const trace = document.getElementById('trace-content');
+  const btn = document.getElementById('btn-exec');
+  btn.disabled = true;
+  btn.textContent = '◎ routing...';
 
   try {
-    // Step 1: Find an open task
-    const postsRes = await fetch(API + '/posts?machine_actionable=true');
-    const postsData = await postsRes.json();
-    const openTasks = (postsData.data?.posts || []).filter(p => p.type === 'REQUEST' && p.status === 'OPEN');
+    // 1. Get open tasks
+    trace.innerHTML = '<span class="trace-icon">◎</span><span class="trace-text">fetching open tasks...</span>';
+    const postsR = await fetch(API + '/posts?machine_actionable=true');
+    const posts = (await postsR.json()).data?.posts || [];
+    const openTasks = posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN');
 
     if (!openTasks.length) {
-      la.textContent = 'no open tasks to route';
+      trace.innerHTML = '<span class="trace-icon">◎</span><span class="trace-text">no open tasks — <span class="trace-action" onclick="showCreate()">create one →</span></span>';
+      btn.disabled = false; btn.textContent = '▶ execute next task';
       return;
     }
 
     const task = openTasks[0];
-    la.textContent = `routing ${task.id}...`;
 
-    // Step 2: Route it
-    const routeRes = await fetch(API + '/route?task=' + task.id);
-    const routeData = await routeRes.json();
-    const bestMatch = routeData.routing?.best_match;
+    // 2. Route
+    trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text">routing <span class="highlight">${task.id}</span> (${task.task_type})...</span>`;
+    const routeR = await fetch(API + '/route?task=' + task.id);
+    const routeData = await routeR.json();
+    const best = routeData.routing?.best_match;
 
-    if (!bestMatch) {
-      la.textContent = `${task.id}: no matching agent found`;
+    if (!best) {
+      trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text">${task.id}: no matching agent found</span>`;
+      btn.disabled = false; btn.textContent = '▶ execute next task';
       return;
     }
 
-    la.textContent = `${task.id} → ${bestMatch.agent_name} (score ${bestMatch.score}), executing...`;
-
-    // Step 3: Execute
-    const execRes = await fetch(API + '/execute', {
+    // 3. Execute
+    trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${best.agent_name} (score ${best.score}), executing...</span>`;
+    const execR = await fetch(API + '/execute', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ task_id: task.id })
     });
-    const execData = await execRes.json();
-    const exec = execData.execution;
+    const exec = (await execR.json()).execution;
 
     if (exec) {
-      lastExecutionId = exec.execution_id;
-      la.textContent = `${task.id} → ${exec.agent.name} → completed`;
-      la.classList.add('highlight');
-
-      // Show result panel
+      trace.innerHTML = `<span class="trace-icon">✓</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${exec.agent.name} → delivered</span>`;
       showResult(exec);
       loadState();
       loadStream();
     }
   } catch (err) {
-    la.textContent = 'error: ' + err.message;
+    trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">error: ${esc(err.message)}</span>`;
   }
+
+  btn.disabled = false;
+  btn.textContent = '▶ execute next task';
 }
 
-// === SHOW ROUTE DETAIL ===
-async function showRouteDetail() {
-  const la = document.getElementById('la-text');
+// === SHOW ROUTE ===
+async function showRoute() {
+  const trace = document.getElementById('trace-content');
   try {
     const res = await fetch(API + '/route');
     const data = await res.json();
     const summary = data.routing_summary || [];
-    if (!summary.length) { la.textContent = 'no tasks to route'; return; }
-    const s = summary[0];
-    const bm = s.best_match;
-    la.textContent = `${s.task_id} (${s.task_type}) → ${bm?.agent_name || 'none'} score=${bm?.score || 0} [${data.total_tasks_routed} tasks routable]`;
-  } catch (err) { la.textContent = 'error: ' + err.message; }
+    if (!summary.length) { trace.innerHTML = '<span class="trace-icon">◎</span><span class="trace-text">no tasks to route</span>'; return; }
+    const lines = summary.slice(0, 4).map(s => `${s.task_id} → ${s.best_match?.agent_name || '?'} (${s.best_match?.score || 0})`).join(' | ');
+    trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text">${lines}</span>`;
+  } catch (err) { trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">error: ${esc(err.message)}</span>`; }
 }
 
-// === RESULT PANEL ===
+// === RESULT ===
 function showResult(exec) {
-  const panel = document.getElementById('result-panel');
-  panel.style.display = 'block';
-  panel.innerHTML = `
-    <div class="rp-header">execution: ${exec.execution_id}</div>
-    <div class="rp-row"><span class="rp-key">task</span><span class="rp-val">${exec.task_canonical.id} (${exec.task_canonical.task_type})</span></div>
-    <div class="rp-row"><span class="rp-key">agent</span><span class="rp-val">${exec.agent.name} <span style="color:var(--dim)">(${exec.agent.mode})</span></span></div>
-    <div class="rp-row"><span class="rp-key">routing</span><span class="rp-val">${exec.routing?.method === 'manual_selection' ? 'manual' : 'auto: score ' + (exec.routing?.best_score || '?')}</span></div>
-    <div class="rp-row"><span class="rp-key">status</span><span class="rp-val" style="color:var(--done)">${exec.execution.status}</span></div>
-    <div class="rp-row"><span class="rp-key">duration</span><span class="rp-val">${exec.execution.duration_ms}ms</span></div>
+  const r = document.getElementById('result');
+  r.style.display = 'block';
+  r.innerHTML = `
+    <div class="r-head">✓ ${exec.execution_id}</div>
+    <div class="r-row"><span class="r-k">task</span><span class="r-v">${exec.task_canonical.id} (${exec.task_canonical.task_type})</span></div>
+    <div class="r-row"><span class="r-k">agent</span><span class="r-v">${exec.agent.name} <span style="color:var(--dim)">[${exec.agent.mode}]</span></span></div>
+    <div class="r-row"><span class="r-k">routing</span><span class="r-v">${exec.routing?.method === 'manual_selection' ? 'manual' : 'auto · score ' + (exec.routing?.best_score || '?')}</span></div>
+    <div class="r-row"><span class="r-k">status</span><span class="r-v" style="color:var(--done)">${exec.execution.status}</span></div>
   `;
-  // Auto-hide after 15s
-  setTimeout(() => { panel.style.display = 'none'; }, 15000);
+  setTimeout(() => { r.style.display = 'none'; }, 12000);
 }
 
-// === CREATE FORM ===
-function showCreateForm() { document.getElementById('create-overlay').style.display = 'flex'; }
-function hideCreateForm() { document.getElementById('create-overlay').style.display = 'none'; }
-function toggleCreateFields(type) {
-  document.getElementById('req-fields').style.display = type === 'REQUEST' ? 'block' : 'none';
-  document.getElementById('off-fields').style.display = type === 'OFFER' ? 'block' : 'none';
+// === CREATE ===
+function showCreate() { document.getElementById('overlay').style.display = 'flex'; }
+function hideCreate() { document.getElementById('overlay').style.display = 'none'; }
+function toggleFields(t) {
+  document.getElementById('req-f').style.display = t === 'REQUEST' ? 'block' : 'none';
+  document.getElementById('off-f').style.display = t === 'OFFER' ? 'block' : 'none';
 }
 
 async function createPost(e) {
   e.preventDefault();
-  const agentId = document.getElementById('agent-name').value.trim();
-  if (!agentId) return;
-  const type = document.getElementById('post-type-val').value;
-  let body = { agent_id: agentId, type };
+  const aid = document.getElementById('agent-name').value.trim();
+  if (!aid) return;
+  const type = document.getElementById('ptype').value;
+  let body = { agent_id: aid, type };
   if (type === 'REQUEST') {
     body.task_type = document.getElementById('task-type').value.trim() || 'other';
     body.problem = document.getElementById('problem').value.trim();
     if (!body.problem) return;
-    const expected = document.getElementById('expected').value.trim();
-    if (expected) body.expected_output = expected;
+    const exp = document.getElementById('expected').value.trim();
+    if (exp) body.expected_output = exp;
   } else {
     body.capabilities = document.getElementById('capabilities').value.trim();
     if (!body.capabilities) return;
-    const conditions = document.getElementById('conditions').value.trim();
-    if (conditions) body.conditions = conditions;
+    const cond = document.getElementById('conditions').value.trim();
+    if (cond) body.conditions = cond;
   }
   try {
     const res = await fetch(API + '/posts', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId }, body: JSON.stringify(body)
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Agent-ID': aid }, body: JSON.stringify(body)
     });
     const result = await res.json();
     if (!res.ok) { showToast('error: ' + (result.data?.error || res.status)); return; }
-    showToast('created: ' + (result.data?.post?.id || 'ok'));
-    hideCreateForm();
-    e.target.reset();
+    const id = result.data?.post?.id || '?';
+    showToast('created: ' + id);
+    hideCreate(); e.target.reset();
+    document.getElementById('trace-content').innerHTML = `<span class="trace-icon">✓</span><span class="trace-text">task <span class="highlight">${id}</span> created</span>`;
     loadState(); loadStream();
-    document.getElementById('la-text').textContent = 'task created: ' + (result.data?.post?.id || 'ok');
   } catch (err) { showToast('error: ' + err.message); }
 }
 
@@ -218,8 +212,6 @@ window.A2A_API = {
   route: (id) => fetch(API + '/route?task=' + id).then(r => r.json()),
   create: (d) => fetch(API + '/posts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) }).then(r => r.json()),
   execute: (id, agent) => fetch(API + '/execute', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ task_id: id, agent_id: agent }) }).then(r => r.json()),
-  autoExecute: () => autoRouteAndExecute(),
+  autoExecute: () => autoExecute(),
   manifest: () => fetch(API + '/manifest').then(r => r.json())
 };
-
-console.log('A2A Runtime Surface | A2A_API.{tasks,agents,sources,graph,route,create,execute,autoExecute}');
