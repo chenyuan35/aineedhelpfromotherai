@@ -4,6 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { saveExecution, queryExecutions, getExecution } = require('./execution-history');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
@@ -356,8 +357,13 @@ async function handleExecute(req, res) {
     }
   };
 
-  // Save execution record
+  // Save execution record (in-memory + PostgreSQL)
   executions.set(executionId, result);
+
+  // Persist to PostgreSQL (async — don't block response)
+  saveExecution(result).catch(err => {
+    console.error(`[execution-history] Failed to save ${executionId}:`, err.message);
+  });
 
   res.status(200).json({
     success: executionStatus !== 'failed',
@@ -374,38 +380,71 @@ async function handleExecute(req, res) {
 }
 
 // GET /api/execute
-function handleStatus(req, res) {
+async function handleStatus(req, res) {
   const url = req.url || '';
-  const idMatch = url.match(/[?&]execution_id=([^&]+)/);
-  const execId = idMatch ? idMatch[1] : null;
+  const params = Object.fromEntries(new URL(url, 'http://localhost').searchParams);
 
-  if (execId) {
-    const record = executions.get(execId);
+  // Single execution lookup — try PG first, then in-memory
+  if (params.execution_id) {
+    try {
+      const pgRecord = await getExecution(params.execution_id);
+      if (pgRecord) {
+        return res.status(200).json({ success: true, execution: pgRecord, source: 'postgresql' });
+      }
+    } catch (e) { /* pg error, fall through */ }
+
+    const record = executions.get(params.execution_id);
     if (!record) {
-      return res.status(404).json({ success: false, error: `Execution ${execId} not found (in-memory only — state resets on cold start)` });
+      return res.status(404).json({ success: false, error: `Execution ${params.execution_id} not found` });
     }
-    return res.status(200).json({ success: true, execution: record });
+    return res.status(200).json({ success: true, execution: record, source: 'memory' });
   }
 
-  const all = Array.from(executions.values());
-  res.status(200).json({
-    success: true,
-    executions: all,
-    total: all.length,
-    meta: {
-      endpoint: '/api/execute',
-      phase: 2,
-      description: 'GET: check execution status. POST: execute a task with real LLM call.',
-      usage: {
-        execute: 'POST /api/execute { "task_id": "TASK_SEED_001" }',
-        auto_route: 'POST /api/execute { "task_id": "TASK_SEED_001" } — agent + LLM auto-selected',
-        manual_agent: 'POST /api/execute { "task_id": "TASK_SEED_001", "agent_id": "deepseek-v3" }',
-        check_status: 'GET /api/execute?execution_id=EXEC_xxx'
-      },
-      available_providers: Object.keys(LLM_PROVIDERS),
-      agent_provider_map: Object.keys(AGENT_PROVIDER_MAP)
-    }
-  });
+  // List executions — prefer PG for history, supplement with in-memory
+  try {
+    const result = await queryExecutions({
+      task_id: params.task_id,
+      agent_id: params.agent_id,
+      status: params.status,
+      provider: params.provider,
+      limit: params.limit,
+      offset: params.offset
+    });
+    return res.status(200).json({
+      success: true,
+      executions: result.executions,
+      total: result.total,
+      limit: result.limit,
+      offset: result.offset,
+      source: 'postgresql',
+      meta: {
+        endpoint: '/api/execute',
+        phase: 2,
+        description: 'Execution history persisted in PostgreSQL. Survives cold starts.',
+        usage: {
+          execute: 'POST /api/execute { "task_id": "TASK_SEED_001" }',
+          auto_route: 'POST /api/execute { "task_id": "TASK_SEED_001" } — agent + LLM auto-selected',
+          manual_agent: 'POST /api/execute { "task_id": "TASK_SEED_001", "agent_id": "deepseek-v3" }',
+          history: 'GET /api/execute?task_id=TASK_SEED_001',
+          by_agent: 'GET /api/execute?agent_id=deepseek-v3',
+          by_status: 'GET /api/execute?status=completed',
+          single: 'GET /api/execute?execution_id=EXEC_xxx'
+        },
+        available_providers: Object.keys(LLM_PROVIDERS),
+        agent_provider_map: Object.keys(AGENT_PROVIDER_MAP)
+      }
+    });
+  } catch (e) {
+    // PG down — fall back to in-memory
+    const all = Array.from(executions.values());
+    return res.status(200).json({
+      success: true,
+      executions: all,
+      total: all.length,
+      source: 'memory (postgresql unavailable: ' + e.message + ')',
+      meta: { endpoint: '/api/execute', phase: 2, note: 'Database connection failed. Showing in-memory only.' }
+    });
+  }
 }
 
 module.exports = (req, res) => {
