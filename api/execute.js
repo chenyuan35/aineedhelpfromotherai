@@ -4,8 +4,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth } = require('../lib/execution-history');
+const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle } = require('../lib/execution-history');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
+const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
 
 const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
 const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
@@ -175,13 +176,15 @@ Format your output clearly. This is a real execution, not a simulation.`;
 
 // --- POST /api/execute ---
 async function handleExecute(req, res) {
-  // --- Agent authentication (X-Agent-Token or Authorization) ---
+  // --- Agent identity (optional, zero-barrier) ---
+  // AI can execute WITHOUT any token. Token is purely for identity tracking.
+  // X-Agent-ID header: just claim who you are (no verification needed)
+  // X-Agent-Token: for registered agents (optional, gets you authenticated=true)
+  const agentIdHeader = req.headers['x-agent-id'] || null;
   const authHeader = req.headers['x-agent-token'] || req.headers['authorization'] || '';
   const agentAuth = parseAgentAuth(authHeader);
 
-  // Phase 2: auth is optional but logged — unauthenticated requests get a warning
-  // Phase 3: auth will be required
-  let authResult = { authenticated: false, agent_id: null };
+  let authResult = { authenticated: false, agent_id: agentIdHeader || 'anonymous' };
 
   if (agentAuth) {
     const verified = await verifyAgentToken(agentAuth.agent_id, agentAuth.token);
@@ -189,6 +192,7 @@ async function handleExecute(req, res) {
       authResult = { authenticated: true, agent_id: agentAuth.agent_id };
     }
   }
+  // No token? No problem. AI executes as anonymous or as X-Agent-ID identity.
 
   let body = {};
   try {
@@ -218,8 +222,41 @@ async function handleExecute(req, res) {
   if (!task) {
     return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
   }
-  if (task.status !== 'OPEN') {
-    return res.status(409).json({ success: false, error: `Task ${taskId} is ${task.status}, not OPEN` });
+
+  // --- Lifecycle gate: check task viability before execution ---
+  const VALID_EXECUTION_STATES = ['OPEN'];
+  if (!VALID_EXECUTION_STATES.includes(task.status)) {
+    // Specific error messages for lifecycle states
+    const lifecycleMessages = {
+      'CLAIMED': `Task ${taskId} already claimed by another agent`,
+      'EXECUTING': `Task ${taskId} is currently being executed`,
+      'COMPLETED': `Task ${taskId} already completed — use /api/lifecycle for history`,
+      'FAILED': `Task ${taskId} previously failed — needs revalidation before retry`,
+      'STALE': `Task ${taskId} is STALE: ${task.lifecycle?.stale_reason || 'barrier changed'} — needs re-verification`,
+      'EXPIRED': `Task ${taskId} has EXPIRED (expires_at: ${task.lifecycle?.expires_at || task.expires_at})`,
+      'ARCHIVED': `Task ${taskId} is ARCHIVED — preserved for execution history`
+    };
+    const msg = lifecycleMessages[task.status] || `Task ${taskId} is ${task.status}, not executable`;
+    return res.status(409).json({ success: false, error: msg, task_status: task.status });
+  }
+
+  // Check expiration dynamically (even if status is OPEN, might have expired)
+  if (task.lifecycle?.expires_at || task.expires_at) {
+    const expiresAt = new Date(task.lifecycle?.expires_at || task.expires_at);
+    if (expiresAt < new Date()) {
+      return res.status(410).json({
+        success: false,
+        error: `Task ${taskId} has EXPIRED (expires_at: ${expiresAt.toISOString()})`,
+        task_status: 'EXPIRED'
+      });
+    }
+  }
+
+  // Check barrier — if task has barrier flags, warn but still allow (zero-barrier philosophy)
+  const barrier = task.barrier || {};
+  const hasBarrier = barrier.auth_required || barrier.captcha || barrier.cloudflare || barrier.payment;
+  if (hasBarrier) {
+    executionLog.push(`[${new Date().toISOString()}] WARNING: Task has barriers (auth:${barrier.auth_required}, captcha:${barrier.captcha}, cf:${barrier.cloudflare}, pay:${barrier.payment})`);
   }
 
   // Build canonical task
@@ -279,10 +316,16 @@ async function handleExecute(req, res) {
   const claimedAt = new Date().toISOString();
   const executionLog = [];
 
-  // 1. Claim
-  task.status = 'CLAIMED';
-  task.claimed_by = selectedAgent.name;
-  executionLog.push(`[${claimedAt}] Task ${taskId} claimed by ${selectedAgent.name} (${selectedAgent.id})`);
+  // 1. Claim → EXECUTING
+  task.status = 'EXECUTING';
+  task.claimed_by = authResult.agent_id || 'anonymous';
+  executionLog.push(`[${claimedAt}] Task ${taskId} claimed by ${authResult.agent_id || 'anonymous'} (agent: ${selectedAgent.name})`);
+
+  // Init metrics if missing
+  if (!task.metrics) {
+    task.metrics = { execution_count: 0, success_count: 0, fail_count: 0, success_rate: 0, freshness_score: 1.0, avg_duration_ms: 0, last_error: null };
+  }
+  task.metrics.execution_count += 1;
 
   // 2. Resolve LLM provider for this agent
   const agentMapping = AGENT_PROVIDER_MAP[selectedAgent.id];
@@ -345,9 +388,37 @@ async function handleExecute(req, res) {
     }
   }
 
-  // 3. Mark completed
-  task.status = executionStatus === 'failed' ? 'FAILED' : 'COMPLETED';
+  // 3. Mark completed — update lifecycle + metrics
+  const executionDuration = Date.now() - parseInt(executionId.split('_')[1], 36);
+  if (executionStatus === 'failed') {
+    task.status = 'FAILED';
+    task.metrics.fail_count += 1;
+    task.metrics.last_error = executionError;
+    if (task.lifecycle) task.lifecycle.stale_reason = 'execution_failed';
+  } else {
+    task.status = 'COMPLETED';
+    task.metrics.success_count += 1;
+    if (task.lifecycle) {
+      task.lifecycle.last_successful_execution = new Date().toISOString();
+      task.lifecycle.stale_reason = null;
+    }
+  }
+  // Update derived metrics
+  task.metrics.success_rate = task.metrics.execution_count > 0
+    ? Math.round((task.metrics.success_count / task.metrics.execution_count) * 100) / 100
+    : 0;
+  if (task.metrics.execution_count > 1) {
+    task.metrics.avg_duration_ms = Math.round(
+      ((task.metrics.avg_duration_ms * (task.metrics.execution_count - 1)) + executionDuration) / task.metrics.execution_count
+    );
+  } else {
+    task.metrics.avg_duration_ms = executionDuration;
+  }
   task.completed_at = new Date().toISOString();
+
+  // 4. Lifecycle evaluation — auto-transition EXPIRED/ARCHIVED, update freshness
+  const lifecycleEval = applyLifecycleEvaluation(task);
+  executionLog.push(`[${new Date().toISOString()}] Lifecycle: status=${task.status}, freshness=${lifecycleEval.freshness_score}, stale=${lifecycleEval.stale_reason || 'none'}`);
 
   const result = {
     execution_id: executionId,
@@ -360,6 +431,9 @@ async function handleExecute(req, res) {
       capabilities: selectedAgent.capabilities
     },
     task_canonical: canonicalTask,
+    lifecycle: task.lifecycle || null,
+    metrics: task.metrics || null,
+    barrier: task.barrier || null,
     routing: routingResult || { method: 'manual_selection' },
     execution: {
       claimed_at: claimedAt,
@@ -395,6 +469,7 @@ async function handleExecute(req, res) {
   // Persist to PostgreSQL (must await — serverless kills async after response)
   try {
     await saveExecution(result);
+  await upsertTaskLifecycle(task); // Persist lifecycle state to PG
   } catch (err) {
     console.error(`[execution-history] Failed to save ${executionId}:`, err.message);
   }
