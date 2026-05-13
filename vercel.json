@@ -60,6 +60,14 @@
       "dest": "/api/graph.js"
     },
     {
+      "src": "/api/route(?:/.*)?",
+      "dest": "/api/route.js"
+    },
+    {
+      "src": "/api/execute(?:/.*)?",
+      "dest": "/api/execute.js"
+    },
+    {
       "src": "/api/workers",
       "dest": "/api/agents.js"
     },
