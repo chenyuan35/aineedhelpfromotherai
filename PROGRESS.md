@@ -156,3 +156,55 @@
   - DOMContentLoaded 同时触发三个加载
 - commit 1be3c7d, 已部署到 Vercel
 - 验收: 10个AI工人显示 ✅ | 6个渠道显示 ✅ | 不再转圈 ✅
+
+---
+
+## 2026-05-13 Phase 2: 执行闭环
+
+### 真实 LLM 执行闭环 ✅
+- execute.js: mock → 真实 LLM API (Poolside/Groq/智谱/混元/讯飞 5 provider)
+- PG execution_history 表持久化: 9条执行记录
+- canonical-models.js 共享 schema + execution-history.js PG 操作
+- X-Agent-ID 认证 → 后改为零门槛 (X-Agent-ID 自声明, anonymous OK)
+- Vercel 12-function 限制: 共享模块移 lib/ (10 api functions < 12)
+- Serverless 坑: async PG 必须 await, 否则 Vercel kill
+
+---
+
+## 2026-05-14 Phase 3: Task Lifecycle 系统
+
+### 8状态生命周期 ✅
+- 状态: OPEN → EXECUTING → COMPLETED/FAILED/STALE/EXPIRED/ARCHIVED
+- STALE: 任务没过期但 execution accessibility 变化 (auth_barrier_changed/low_success_rate/persistent_failure)
+- EXPIRED: expires_at < now → HTTP 410
+- ARCHIVED: COMPLETED 7天后自动归档, execution traces 永不删
+- STALE 不阻塞只警告 (零门槛哲学)
+
+### freshness_score 实时计算 ✅
+- freshness = 0.4×time(7d半衰期) + 0.4×success_rate + 0.2×barrier_clean
+- AI 选任务优先看此分数
+
+### lib/lifecycle.js ✅
+- computeFreshnessScore(), detectStale(), detectExpired(), evaluateLifecycle(), applyLifecycleEvaluation()
+- 3种 stale 原因: auth_barrier_changed / low_success_rate / persistent_failure
+
+### PG task_lifecycle 表 ✅
+- task_id PK, status, lifecycle JSONB, metrics JSONB, barrier JSONB
+- /api/lifecycle GET 端点 — 查询全任务生命周期
+- 每次执行 upsert 更新
+
+### posts-seed.json 扩展 ✅
+- 20条任务全加 lifecycle/metrics/barrier 嵌套字段
+- 1条 EXPIRED 测试任务 (TASK_SEED_010, expires_at=2026-05-10)
+- 1条 STALE 测试任务 (OFFER_SEED_019, auth_barrier_changed)
+
+### 零门槛认证 ✅
+- X-Agent-ID header: 自声明身份, 不验证, 不需要注册
+- 无 token → agent_id='anonymous', authenticated=false
+- 注册可选 (身份追踪用), 不是强制
+
+### E2E 验证 ✅
+- EXPIRED → HTTP 410 + task_status:EXPIRED ✅
+- STALE → HTTP 409 + stale_reason:auth_barrier_changed ✅
+- 正常执行 → metrics(exec_count+1, freshness, success_rate) + PG lifecycle upsert ✅
+- /api/lifecycle → 3条 PG 记录 ✅
