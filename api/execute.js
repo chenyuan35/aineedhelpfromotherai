@@ -57,21 +57,57 @@ async function handleClaim(req, res) {
     });
   }
 
-  // Find task from PG
-  if (!pool) {
-    return res.status(503).json({ success: false, error: 'Database unavailable' });
-  }
+ // Find task from PG first, then fallback to aggregated-seed.json
+ if (!pool) {
+ return res.status(503).json({ success: false, error: 'Database unavailable' });
+ }
 
-  let task;
-  try {
-    const result = await pool.query('SELECT * FROM posts WHERE id = $1', [taskId]);
-    if (result.rows.length === 0) {
-      return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
-    }
-    task = result.rows[0];
-  } catch (err) {
-    return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
-  }
+ let task;
+ let taskSource = 'postgresql';
+ try {
+ const result = await pool.query('SELECT * FROM posts WHERE id = $1', [taskId]);
+ if (result.rows.length > 0) {
+ task = result.rows[0];
+ } else {
+ // Fallback: look up in aggregated-seed.json (external tasks)
+ try {
+ const fs = require('fs');
+ const path = require('path');
+ const seedPath = path.join(__dirname, 'aggregated-seed.json');
+ const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+ const seedTask = seedData.tasks.find(t => t.task_id === taskId);
+ if (seedTask) {
+ task = {
+ id: seedTask.task_id,
+ type: 'REQUEST',
+ status: 'OPEN',
+ title: seedTask.title,
+ body: seedTask.body || seedTask.description || '',
+ difficulty: seedTask.difficulty,
+ source_url: seedTask.source_url,
+ ai_instructions: seedTask.ai_instructions,
+ expires_at: seedTask.expires_at || null
+ };
+ taskSource = 'aggregated-seed';
+ // Auto-import into PG so future queries find it
+ try {
+ await pool.query(
+ `INSERT INTO posts (id, type, status, title, body, difficulty, source_url, ai_instructions, created_at)
+ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+ ON CONFLICT (id) DO NOTHING`,
+ [task.id, task.type, task.status, task.title, task.body, task.difficulty, task.source_url, task.ai_instructions]
+ );
+ } catch (importErr) { /* non-fatal, continue with in-memory task */ }
+ } else {
+ return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
+ }
+ } catch (seedErr) {
+ return res.status(404).json({ success: false, error: `Task ${taskId} not found (seed file unavailable)` });
+ }
+ }
+ } catch (err) {
+ return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
+ }
 
   // Lifecycle gate: only OPEN tasks can be claimed
   if (task.status !== 'OPEN') {
