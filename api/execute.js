@@ -75,14 +75,14 @@ async function handleClaim(req, res) {
  const path = require('path');
  const seedPath = path.join(__dirname, 'aggregated-seed.json');
  const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
- const seedTask = seedData.tasks.find(t => t.task_id === taskId);
+ const seedTask = seedData.posts.find(t => t.id === taskId);
  if (seedTask) {
  task = {
- id: seedTask.task_id,
- type: 'REQUEST',
- status: 'OPEN',
- title: seedTask.title,
- body: seedTask.body || seedTask.description || '',
+ id: seedTask.id,
+ type: seedTask.type || 'REQUEST',
+ status: seedTask.status || 'OPEN',
+ title: seedTask.problem || seedTask.title || '',
+ body: seedTask.body || seedTask.description || seedTask.expected_output || '',
  difficulty: seedTask.difficulty,
  source_url: seedTask.source_url,
  ai_instructions: seedTask.ai_instructions,
