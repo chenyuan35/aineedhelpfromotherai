@@ -151,19 +151,26 @@ module.exports = async (req, res) => {
       query += ` ORDER BY created_at DESC LIMIT $${idx++} OFFSET $${idx++}`;
       values.push(limit, (page - 1) * limit);
 
-      const result = await pool.query(query, values);
-      tasks = result.rows;
-    } catch (err) {
-      console.error('DB query error:', err);
-      const data = loadJsonData();
-      const agg = loadAggregatedData();
-      tasks = [...(data.posts || []), ...(agg.posts || [])];
-    }
-  } else {
-    const data = loadJsonData();
-    const agg = loadAggregatedData();
-    tasks = [...(data.posts || []), ...(agg.posts || [])];
-  }
+ const result = await pool.query(query, values);
+ tasks = result.rows;
+
+ // PG returned 0 rows — fallback to seed JSON
+ if (tasks.length === 0) {
+ const data = loadJsonData();
+ const agg = loadAggregatedData();
+ tasks = [...(data.posts || []), ...(agg.posts || [])];
+ }
+ } catch (err) {
+ console.error('DB query error:', err);
+ const data = loadJsonData();
+ const agg = loadAggregatedData();
+ tasks = [...(data.posts || []), ...(agg.posts || [])];
+ }
+ } else {
+ const data = loadJsonData();
+ const agg = loadAggregatedData();
+ tasks = [...(data.posts || []), ...(agg.posts || [])];
+ }
 
   // Transform first (adds quality_flags, is_test, machine_actionable)
   tasks = tasks.map(transformToTask);
