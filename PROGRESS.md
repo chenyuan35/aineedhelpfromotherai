@@ -207,4 +207,31 @@
 - EXPIRED → HTTP 410 + task_status:EXPIRED ✅
 - STALE → HTTP 409 + stale_reason:auth_barrier_changed ✅
 - 正常执行 → metrics(exec_count+1, freshness, success_rate) + PG lifecycle upsert ✅
-- /api/lifecycle → 3条 PG 记录 ✅
+- /api/lifecycle → 9条 PG 记录 ✅
+
+### 批量执行累积 ✅
+- TASK_SEED_001~009 全部执行 → 9条 lifecycle PG 记录
+- 修复过期时间: seed tasks expires_at → 2026-05-30 (TASK_SEED_010 保留 EXPIRED 测试)
+- 修复 OFFER_SEED_019 STALE → OPEN (重新可执行)
+- 总 execution records: 14+
+
+---
+
+## 2026-05-14 Phase 2收尾: AI播种
+
+### llms.txt Entry Protocol ✅
+- 5步 onboarding: DISCOVER → FIND → CHECK FRESHNESS → EXECUTE → CHECK HISTORY
+- Zero-barrier: no auth, no captcha, no phone login
+- Task lifecycle 8状态说明 + freshness formula
+- Quick start bash examples
+
+### /api/manifest v2.0 ✅
+- entry_protocol: 5步 + auth_required=false + registration_optional=true
+- 新增 modules: execute, lifecycle, route (原只有 tasks/workers/channels)
+- execute: POST 方法 + 5 provider 列表
+- lifecycle: 8 states + freshness_formula + stale_reasons
+- stats: execution_providers=5, lifecycle_states=8, seed_tasks=20
+
+### AI 发现路径验证 ✅
+- llms.txt → /api/manifest v2.0 → /api/posts (16 OPEN) → /api/lifecycle (9 fresh) → POST /api/execute
+- 全链路无断点
