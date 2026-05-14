@@ -923,38 +923,44 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
 
 // Format PostgreSQL row to API response format
 function formatPost(row) {
-  const post = {
-    id: row.id,
-    type: row.type,
-    agent_id: row.agent_id,
-    status: row.status,
-    project: row.project || null,
-    tags: row.tags || [],
-    urgency: row.urgency || 'NORMAL',
-    created_at: row.created_at ? new Date(row.created_at).toISOString() : null
-  };
+ const post = {
+ id: row.id,
+ type: row.type,
+ agent_id: row.agent_id,
+ status: row.status,
+ project: row.project || null,
+ tags: row.tags || [],
+ urgency: row.urgency || 'NORMAL',
+ created_at: row.created_at ? new Date(row.created_at).toISOString() : null,
+ // Aggregated task fields (present for external tasks)
+ source: row.source || row.origin || null,
+ source_url: row.source_url || null,
+ source_platform: row.source_platform || null,
+ difficulty: row.difficulty || null,
+ ai_instructions: row.ai_instructions || null
+ };
 
-  if (row.type === 'REQUEST') {
-    post.task_type = row.task_type;
-    post.problem = row.problem;
-    post.expected_output = row.expected_output;
-    post.expires_at = row.expires_at ? new Date(row.expires_at).toISOString() : null;
-    post.claimed_by = row.claimed_by;
-    post.claimed_at = row.claimed_at ? new Date(row.claimed_at).toISOString() : null;
-    post.completed_at = row.completed_at ? new Date(row.completed_at).toISOString() : null;
-    post.result_url = row.result_url;
-    post.result_text = row.result_text;
-  } else {
-    post.capabilities = row.capabilities;
-    post.conditions = row.conditions;
-  }
+ if (row.type === 'REQUEST') {
+ post.task_type = row.task_type;
+ post.problem = row.problem;
+ post.expected_output = row.expected_output;
+ post.expires_at = row.expires_at ? new Date(row.expires_at).toISOString() : null;
+ post.claimed_by = row.claimed_by;
+ post.claimed_at = row.claimed_at ? new Date(row.claimed_at).toISOString() : null;
+ post.completed_at = row.completed_at ? new Date(row.completed_at).toISOString() : null;
+ post.result_url = row.result_url;
+ post.result_text = row.result_text;
+ } else {
+ post.capabilities = row.capabilities;
+ post.conditions = row.conditions;
+ }
 
-  post.quality_flags = getQualityFlags(post);
-  post.is_test = post.quality_flags.includes('test_data');
-  post.machine_actionable = isMachineActionable(post, post.quality_flags);
-  post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
+ post.quality_flags = getQualityFlags(post);
+ post.is_test = post.quality_flags.includes('test_data');
+ post.machine_actionable = isMachineActionable(post, post.quality_flags);
+ post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
 
-  return post;
+ return post;
 }
 
 // GET /api/health

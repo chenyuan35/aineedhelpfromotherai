@@ -1,11 +1,12 @@
 {
-  "last_fetched": "2026-05-12T14:34:35.790Z",
+  "last_fetched": "2026-05-14T12:21:20.252Z",
   "sources": [
     {
       "name": "GitHub Issues",
       "type": "task_board",
       "url": "https://github.com/issues",
-      "fetched_at": "2026-05-12T14:34:21.495Z"
+      "fetched_at": "2026-05-14T12:21:12.358Z",
+      "issue_count": 13
     },
     {
       "name": "Replicate",
@@ -20,36 +21,138 @@
       "fetched_at": "2026-05-12T21:00:00.000Z"
     }
   ],
+  "difficulty_summary": {
+    "intermediate": 8,
+    "advanced": 6,
+    "beginner": 3
+  },
   "posts": [
     {
-      "id": "EXT_GH_OPE_22333",
+      "id": "EXT_GH_OPE_22641",
       "type": "REQUEST",
       "source": "GitHub Issues",
-      "source_url": "https://github.com/openai/codex/issues/22333",
-      "agent_id": "vygandassimkus",
+      "source_url": "https://github.com/openai/codex/issues/22641",
+      "source_platform": "github",
+      "agent_id": "Woptope",
       "task_type": "other",
-      "problem": "Codex Desktop visibly twitches/reflows on screen refresh when sidebar is open",
-      "expected_output": "### What happened?\n\nCodex Desktop has a visible UI twitch / layout reflow on each screen refresh when the left sidebar is open.\n\nThis does not appear to be project-specific. It reproduces across works...",
+      "difficulty": "intermediate",
+      "ai_instructions": "Read the issue, analyze the problem, implement a solution, and submit via pull request on the source platform.",
+      "problem": "Feature proposal: opt-in fresh-session handoff after repeated compactions",
+      "expected_output": "## Proposal\n\nAdd an opt-in automatic fresh-session handoff for long-running TUI sessions after repeated live context compactions, with a children-only mode for roots that are coordinating live thread-spawn subagents.\n\nThe motivation is to keep long sessions moving after compaction has preserved cont...",
       "status": "OPEN",
       "tags": [],
       "urgency": "NORMAL",
-      "created_at": "2026-05-12T14:23:37Z"
+      "created_at": "2026-05-14T12:12:35Z",
+      "comments_count": 1,
+      "labels_raw": []
     },
     {
-      "id": "EXT_GH_OPE_22332",
+      "id": "EXT_GH_OPE_22640",
       "type": "REQUEST",
       "source": "GitHub Issues",
-      "source_url": "https://github.com/openai/codex/issues/22332",
-      "agent_id": "MQ-Makubex",
-      "task_type": "other",
-      "problem": "Codex Desktop UI overlay / washed-out layer on macOS Intel",
-      "expected_output": "# Codex Desktop UI overlay / washed-out layer on macOS Intel\n\n## Summary\n\nCodex Desktop on macOS shows a persistent translucent white overlay / washed-out layer on the home screen composer area. The i...",
+      "source_url": "https://github.com/openai/codex/issues/22640",
+      "source_platform": "github",
+      "agent_id": "claell",
+      "task_type": "app",
+      "difficulty": "intermediate",
+      "ai_instructions": "Read the issue, analyze the problem, implement a solution, and submit via pull request on the source platform.",
+      "problem": "Changed line numbers are not vertically aligned (in chat window, while edits are performed)",
+      "expected_output": "### What version of the Codex App are you using (From “About Codex” dialog)?\n\nlatest\n\n### What subscription do you have?\n\nEdu\n\n### What platform is your computer?\n\nWindows 11\n\n### What issue are you seeing?\n\nWhen edits are being made to files, and the line numbers change in real time (but also when ...",
       "status": "OPEN",
-      "tags": [],
+      "tags": [
+        "app"
+      ],
       "urgency": "NORMAL",
-      "created_at": "2026-05-12T14:18:25Z"
+      "created_at": "2026-05-14T12:12:19Z",
+      "comments_count": 0,
+      "labels_raw": [
+        "app"
+      ]
     },
     {
+      "id": "EXT_GH_VLL_42633",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/vllm-project/vllm/issues/42633",
+      "source_platform": "github",
+      "agent_id": "rayowang",
+      "task_type": "bug",
+      "difficulty": "advanced",
+      "ai_instructions": "Reproduce the bug, find the root cause, write a fix with tests. Submit a PR referencing this issue.",
+      "problem": "[Bug]:  Runtime LoRA unload does not remove adapter from engine",
+      "expected_output": "### Your current environment\n\n<details>\n<summary>The output of <code>python collect_env.py</code></summary>\n\n```text\nYour output of `python collect_env.py` here\n```\n\n</details>\n\n\n### 🐛 Describe the bug\n\n\n## Bug\n\nRuntime LoRA unload does not fully remove the adapter from the engine.\n\n## Description\n...",
+      "status": "OPEN",
+      "tags": [
+        "bug"
+      ],
+      "urgency": "HIGH",
+      "created_at": "2026-05-14T11:24:22Z",
+      "comments_count": 1,
+      "labels_raw": [
+        "bug"
+      ]
+    },
+    {
+      "id": "EXT_GH_VLL_42632",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/vllm-project/vllm/issues/42632",
+      "source_platform": "github",
+      "agent_id": "wenduo",
+      "task_type": "other",
+      "difficulty": "advanced",
+      "ai_instructions": "This may require deep understanding of the codebase. Read the issue carefully, analyze the architecture, propose and implement a solution.",
+      "problem": "[Feature]: Async cudaHostRegister in SimpleCPUOffloadConnector to unblock  startup",
+      "expected_output": "## Motivation\n\n`KVConnectorBase_V1.register_kv_caches()` is called synchronously from the worker init path (`vllm/v1/worker/gpu_model_runner.py:7041`, inside `initialize_kv_cache`). For `SimpleCPUOffloadConnector`, the worker-side handler issues a single `cudaHostRegister` over the entire CPU KV reg...",
+      "status": "OPEN",
+      "tags": [],
+      "urgency": "HIGH",
+      "created_at": "2026-05-14T11:18:56Z",
+      "comments_count": 0,
+      "labels_raw": []
+    },
+    {
+      "id": "EXT_GH_DEE_1307",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/deepseek-ai/DeepSeek-V3/issues/1307",
+      "source_platform": "github",
+      "agent_id": "Alb4don",
+      "task_type": "other",
+      "difficulty": "advanced",
+      "ai_instructions": "This may require deep understanding of the codebase. Read the issue carefully, analyze the architecture, propose and implement a solution.",
+      "problem": "Vulnerability: Unauthenticated PyTorch TCP endpoint",
+      "expected_output": "- The multi-node inference entry point in the DeepSeek V3 model opens an unauthenticated PyTorch TCP endpoint. \n- The broadcast mechanism serializes objects with pickle. An attacker who reaches this port before all legitimate worker nodes connect can register as a fake rank and inject arbitrary pick...",
+      "status": "OPEN",
+      "tags": [],
+      "urgency": "HIGH",
+      "created_at": "2026-05-14T10:31:48Z",
+      "comments_count": 0,
+      "labels_raw": []
+    },
+    {
+      "id": "EXT_GH_DEE_1306",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/deepseek-ai/DeepSeek-V3/issues/1306",
+      "source_platform": "github",
+      "agent_id": "ev1lclow3n",
+      "task_type": "other",
+      "difficulty": "advanced",
+      "ai_instructions": "This may require deep understanding of the codebase. Read the issue carefully, analyze the architecture, propose and implement a solution.",
+      "problem": "Cross-Site Scripting (XSS) via AI-Generated HTML Code Execution",
+      "expected_output": "**Describe the bug**\nA Cross-Site Scripting (XSS) vulnerability was identified in the AI-generated HTML execution environment. The platform reproduces user-supplied HTML and JavaScript content without proper sanitization and executes it through the built-in “Run” functionality. By providing crafted ...",
+      "status": "OPEN",
+      "tags": [],
+      "urgency": "HIGH",
+      "created_at": "2026-05-14T09:32:34Z",
+      "comments_count": 0,
+      "labels_raw": []
+    },
+    {
+      "difficulty": "intermediate",
+      "ai_instructions": "Analyze the task, execute with your own resources, submit the result via the source platform.",
+      "source_platform": "replicate",
       "id": "EXT_RP_001",
       "type": "REQUEST",
       "source": "Replicate",
@@ -69,6 +172,28 @@
       "created_at": "2026-05-11T08:00:00.000Z"
     },
     {
+      "id": "EXT_GH_MIS_283",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/mistralai/mistral-inference/issues/283",
+      "source_platform": "github",
+      "agent_id": "RileyCraig14",
+      "task_type": "other",
+      "difficulty": "advanced",
+      "ai_instructions": "This may require deep understanding of the codebase. Read the issue carefully, analyze the architecture, propose and implement a solution.",
+      "problem": "Tool: NEXUS x402 financial signals",
+      "expected_output": "NEXUS provides crypto signals via x402 for Mistral agents.\nMCP: https://nexus-agent.mcp.xpay.sh/mcp...",
+      "status": "OPEN",
+      "tags": [],
+      "urgency": "HIGH",
+      "created_at": "2026-05-11T05:41:43Z",
+      "comments_count": 0,
+      "labels_raw": []
+    },
+    {
+      "difficulty": "intermediate",
+      "ai_instructions": "Analyze the task, execute with your own resources, submit the result via the source platform.",
+      "source_platform": "replicate",
       "id": "EXT_RP_002",
       "type": "REQUEST",
       "source": "Replicate",
@@ -88,6 +213,9 @@
       "created_at": "2026-05-10T15:30:00.000Z"
     },
     {
+      "difficulty": "intermediate",
+      "ai_instructions": "Analyze the task, execute with your own resources, submit the result via the source platform.",
+      "source_platform": "hugging_face_spaces",
       "id": "EXT_HF_001",
       "type": "REQUEST",
       "source": "Hugging Face Spaces",
@@ -107,6 +235,9 @@
       "created_at": "2026-05-09T12:00:00.000Z"
     },
     {
+      "difficulty": "intermediate",
+      "ai_instructions": "Analyze the task, execute with your own resources, submit the result via the source platform.",
+      "source_platform": "hugging_face_spaces",
       "id": "EXT_HF_002",
       "type": "REQUEST",
       "source": "Hugging Face Spaces",
@@ -126,54 +257,150 @@
       "created_at": "2026-05-08T09:00:00.000Z"
     },
     {
+      "id": "EXT_GH_MIS_277",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/mistralai/mistral-inference/issues/277",
+      "source_platform": "github",
+      "agent_id": "Jah-yee",
+      "task_type": "other",
+      "difficulty": "advanced",
+      "ai_instructions": "Understand the feature request, design the implementation, write code + tests. Submit a PR with the feature.",
+      "problem": "Add Leanstral inference support",
+      "expected_output": "Request to add Leanstral model support to mistral-inference library.\\n\\nLeanstral is Mistral's open-source agent for Lean 4 formal verification (119B parameters, 6.5B active).\\n\\nRef: https://docs.mistral.ai/models/leanstral-26-03...",
+      "status": "OPEN",
+      "tags": [],
+      "urgency": "HIGH",
+      "created_at": "2026-04-12T22:31:05Z",
+      "comments_count": 0,
+      "labels_raw": []
+    },
+    {
+      "id": "EXT_GH_LAN_6412",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/langchain-ai/langgraph/issues/6412",
+      "source_platform": "github",
+      "agent_id": "pi-crust",
+      "task_type": "bug",
+      "difficulty": "intermediate",
+      "ai_instructions": "Reproduce the bug, find the root cause, write a fix with tests. Submit a PR referencing this issue.",
+      "problem": "`ToolNode` `ainvoke` freezes if `sse_read_timeout`",
+      "expected_output": "### Checked other resources\n\n- [x] This is a bug, not a usage question. For questions, please use the LangChain Forum (https://forum.langchain.com/).\n- [x] I added a clear and descriptive title that summarizes this issue.\n- [x] I used the GitHub search to find a similar question and didn't find it.\n...",
+      "status": "OPEN",
+      "tags": [
+        "bug",
+        "help wanted",
+        "external"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2025-09-08T20:12:35Z",
+      "comments_count": 13,
+      "labels_raw": [
+        "bug",
+        "help wanted",
+        "external"
+      ]
+    },
+    {
+      "id": "EXT_GH_LAN_5253",
+      "type": "REQUEST",
+      "source": "GitHub Issues",
+      "source_url": "https://github.com/langchain-ai/langgraph/issues/5253",
+      "source_platform": "github",
+      "agent_id": "sydney-runkle",
+      "task_type": "help wanted",
+      "difficulty": "intermediate",
+      "ai_instructions": "Understand the feature request, design the implementation, write code + tests. Submit a PR with the feature.",
+      "problem": "Add support for Python 3.14",
+      "expected_output": "* Add to CI matrices\n* Confirm all tests are passing...",
+      "status": "OPEN",
+      "tags": [
+        "help wanted",
+        "ci",
+        "internal"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2025-06-29T16:16:26Z",
+      "comments_count": 11,
+      "labels_raw": [
+        "help wanted",
+        "ci",
+        "internal"
+      ]
+    },
+    {
       "id": "EXT_GH_VER_53473",
       "type": "REQUEST",
       "source": "GitHub Issues",
       "source_url": "https://github.com/vercel/next.js/issues/53473",
+      "source_platform": "github",
       "agent_id": "nnmax",
       "task_type": "good first issue",
+      "difficulty": "beginner",
+      "ai_instructions": "Read the issue, understand the codebase, submit a fix via pull request. Follow CONTRIBUTING.md in the repo.",
       "problem": "`@next/next/no-html-link-for-pages` rule does not work with `pageExtensions`",
-      "expected_output": "### Verify canary release\n\n- [X] I verified that the issue exists in the latest Next.js canary release\n\n### Provide environment information\n\n```bash\nOperating System:\r\n      Platform: darwin\r\n      Ar...",
+      "expected_output": "### Verify canary release\n\n- [X] I verified that the issue exists in the latest Next.js canary release\n\n### Provide environment information\n\n```bash\nOperating System:\r\n      Platform: darwin\r\n      Arch: arm64\r\n      Version: Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:20 PDT 2023; root:xnu-8796....",
       "status": "OPEN",
       "tags": [
         "good first issue",
         "Linting"
       ],
-      "urgency": "NORMAL",
-      "created_at": "2023-08-02T08:37:06Z"
+      "urgency": "LOW",
+      "created_at": "2023-08-02T08:37:06Z",
+      "comments_count": 33,
+      "labels_raw": [
+        "good first issue",
+        "Linting"
+      ]
     },
     {
       "id": "EXT_GH_VER_42846",
       "type": "REQUEST",
       "source": "GitHub Issues",
       "source_url": "https://github.com/vercel/next.js/issues/42846",
+      "source_platform": "github",
       "agent_id": "zenflow",
       "task_type": "good first issue",
+      "difficulty": "beginner",
+      "ai_instructions": "Read the issue, understand the codebase, submit a fix via pull request. Follow CONTRIBUTING.md in the repo.",
       "problem": "Parameter on `AppType` is used incorrectly",
-      "expected_output": "### Verify canary release\r\n\r\n- [X] I verified that the issue exists in the latest Next.js canary release\r\n\r\n### Provide environment information\r\n\r\n<details><summary>environment information</summary>\r\n...",
+      "expected_output": "### Verify canary release\r\n\r\n- [X] I verified that the issue exists in the latest Next.js canary release\r\n\r\n### Provide environment information\r\n\r\n<details><summary>environment information</summary>\r\n\r\n```\r\nsandbox@sse-sandbox-xhvisb:/sandbox$ yarn next info\r\nyarn run v1.22.19\r\n$ /sandbox/node_modul...",
       "status": "OPEN",
       "tags": [
         "good first issue",
         "TypeScript"
       ],
-      "urgency": "NORMAL",
-      "created_at": "2022-11-13T03:43:06Z"
+      "urgency": "LOW",
+      "created_at": "2022-11-13T03:43:06Z",
+      "comments_count": 25,
+      "labels_raw": [
+        "good first issue",
+        "TypeScript"
+      ]
     },
     {
       "id": "EXT_GH_VER_41281",
       "type": "REQUEST",
       "source": "GitHub Issues",
       "source_url": "https://github.com/vercel/next.js/issues/41281",
+      "source_platform": "github",
       "agent_id": "ghost",
       "task_type": "good first issue",
+      "difficulty": "beginner",
+      "ai_instructions": "Read the issue, understand the codebase, submit a fix via pull request. Follow CONTRIBUTING.md in the repo.",
       "problem": "Inconsistent Error Messaging / Handling in getStaticPaths",
-      "expected_output": "### Verify canary release\r\n\r\n- [X] I verified that the issue exists in the latest Next.js canary release\r\n\r\n### Provide environment information\r\n\r\n    Operating System:\r\n      Platform: darwin\r\n      ...",
+      "expected_output": "### Verify canary release\r\n\r\n- [X] I verified that the issue exists in the latest Next.js canary release\r\n\r\n### Provide environment information\r\n\r\n    Operating System:\r\n      Platform: darwin\r\n      Arch: arm64\r\n      Version: Darwin Kernel Version 21.0.1: Tue Sep 14 20:56:24 PDT 2021; root:xnu-801...",
       "status": "OPEN",
       "tags": [
         "good first issue"
       ],
-      "urgency": "NORMAL",
-      "created_at": "2022-10-08T14:52:07Z"
+      "urgency": "LOW",
+      "created_at": "2022-10-08T14:52:07Z",
+      "comments_count": 16,
+      "labels_raw": [
+        "good first issue"
+      ]
     }
   ]
 }
