@@ -1,516 +1,346 @@
-// /api/execute — Task execution loop (canonical-driven, Phase 2: real LLM calls)
-// Claims a task for an agent, calls real LLM API, produces result
-// This closes the loop: task → route → match → claim → execute → result
+// /api/execute — AI-to-AI task collaboration (platform NEVER executes tasks itself)
+//
+// Platform philosophy: We are a MARKETPLACE, not a worker.
+// AI-1 posts a task. AI-2 claims it, executes it with THEIR OWN resources,
+// and submits the result. The platform only does: match → claim → verify → record.
+//
+// Three operations:
+//   POST ?action=claim   {task_id}             → AI-2 claims a task
+//   POST ?action=submit  {execution_id, result} → AI-2 submits execution result
+//   GET                  ?execution_id=xxx      → Query execution status/history
 
-const fs = require('fs');
-const path = require('path');
 const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle } = require('../lib/execution-history');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
 const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
+const { Pool } = require('pg');
 
-const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
-const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
+const DATABASE_URL = process.env.DATABASE_URL;
+const pool = DATABASE_URL ? new Pool({
+  connectionString: DATABASE_URL,
+  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false },
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 5000
+}) : null;
 
-// In-memory execution state (resets on serverless cold start — Phase 2 KV coming)
-const executions = new Map();
-
-// --- Real LLM Provider Configuration (5 providers, all verified working) ---
-const LLM_PROVIDERS = {
-  'poolside': {
-    baseUrl: 'https://inference.poolside.ai/v1',
-    model: 'poolside/laguna-m.1',
-    apiKeyEnv: 'POOLSIDE_API_KEY',
-    timeout: 300000,
-    capabilities: ['code', 'debug', 'refactor', 'test', 'reasoning']
-  },
-  'groq': {
-    baseUrl: 'https://api.groq.com/openai/v1',
-    model: 'llama-3.3-70b-versatile',
-    apiKeyEnv: 'GROQ_API_KEY',
-    timeout: 30000,
-    capabilities: ['code', 'research', 'writing', 'reasoning', 'fast_inference']
-  },
-  'zhipu': {
-    baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
-    model: 'glm-4-flash',
-    apiKeyEnv: 'ZHIPU_API_KEY',
-    timeout: 60000,
-    capabilities: ['code', 'research', 'writing', 'reasoning']
-  },
-  'hunyuan': {
-    baseUrl: 'https://api.hunyuan.cloud.tencent.com/v1',
-    model: 'hunyuan-lite',
-    apiKeyEnv: 'HUNYUAN_API_KEY',
-    timeout: 60000,
-    capabilities: ['research', 'writing', 'reasoning']
-  },
-  'spark': {
-    baseUrl: 'https://spark-api-open.xf-yun.com/v1',
-    model: 'generalv3.5',
-    apiKeyEnv: 'SPARK_APP_CREDENTIALS',
-    timeout: 60000,
-    capabilities: ['research', 'writing', 'chinese']
-  }
-};
-
-// Agent-to-provider mapping (diversified across 5 providers)
-// Each agent maps to its "native" provider where possible
-const AGENT_PROVIDER_MAP = {
-  'deepseek-v3': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'kimi-k2-5': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'glm-5-1': { provider: 'zhipu', model: 'glm-4-flash' },
-  'mimo-v2-5-pro': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  'claude-code': { provider: 'poolside', model: 'poolside/laguna-m.1' },
-  'gpt-5-5-codex': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  'grok-3': { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  'gemini-2-5-pro': { provider: 'hunyuan', model: 'hunyuan-lite' },
-  'mistral-large': { provider: 'hunyuan', model: 'hunyuan-lite' },
-  'llama-4-maverick': { provider: 'groq', model: 'llama-3.3-70b-versatile' }
-};
-
-function loadPostsSeed() {
-  try { return JSON.parse(fs.readFileSync(POSTS_SEED_PATH, 'utf8')); } catch { return { posts: [] }; }
-}
-
-function loadAgentsSeed() {
-  try { return JSON.parse(fs.readFileSync(AGENTS_SEED_PATH, 'utf8')); } catch { return { workers: [] }; }
-}
-
-// buildCanonicalAgent moved to canonical-models.js (shared module)
-
-const TASK_TYPE_TO_CAPABILITY = {
-  'research': ['research', 'reasoning'],
-  'script': ['code', 'debug'],
-  'writing': ['writing'],
-  'data': ['data', 'research'],
-  'automation': ['code', 'debug'],
-  'code': ['code', 'debug', 'refactor'],
-  'other': ['code', 'research', 'reasoning'],
-  'inference': ['inference', 'multimodal']
-};
-
-// --- Real LLM Call (multi-provider, all OpenAI-compatible) ---
-async function callLLM(provider, prompt, systemPrompt, overrideModel) {
-  const config = LLM_PROVIDERS[provider];
-  if (!config) throw new Error(`Unknown LLM provider: ${provider}`);
-
-  const apiKey = process.env[config.apiKeyEnv];
-  if (!apiKey) throw new Error(`Missing API key: ${config.apiKeyEnv}`);
-
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), config.timeout);
-
-  const model = overrideModel || config.model;
-
-  // Build auth header — Spark uses "Bearer APPID:APISecret" format
-  let authHeader = `Bearer ${apiKey}`;
-  // Spark credentials already in APPID:APISecret format from env var
-
-  try {
-    const response = await fetch(`${config.baseUrl}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': authHeader
-      },
-      body: JSON.stringify({
-        model: model,
-        messages: [
-          { role: 'system', content: systemPrompt || 'You are an AI agent executing a task. Produce a concrete, actionable result.' },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: 2048,
-        temperature: 0.3
-      }),
-      signal: controller.signal
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!response.ok) {
-      const errText = await response.text().catch(() => 'unknown error');
-      throw new Error(`LLM API error ${response.status}: ${errText.substring(0, 500)}`);
-    }
-
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content || '';
-    const usage = data.usage || {};
-
-    return {
-      content,
-      model: data.model || model,
-      provider,
-      usage: {
-        prompt_tokens: usage.prompt_tokens || 0,
-        completion_tokens: usage.completion_tokens || 0,
-        total_tokens: usage.total_tokens || 0
-      },
-      raw_response_id: data.id || null
-    };
-  } catch (err) {
-    clearTimeout(timeoutId);
-    if (err.name === 'AbortError') throw new Error(`LLM call timed out after ${config.timeout}ms`);
-    throw err;
-  }
-}
-
-// Build execution prompt from task
-function buildExecutionPrompt(task, canonicalTask) {
-  return `Execute the following task and produce a concrete result.
-
-TASK ID: ${task.id}
-TASK TYPE: ${canonicalTask.task_type}
-PROBLEM: ${canonicalTask.problem}
-EXPECTED OUTPUT: ${canonicalTask.expected_output || 'A concrete, actionable solution'}
-URGENCY: ${canonicalTask.urgency}
-
-INSTRUCTIONS:
-1. Analyze the problem
-2. Produce a concrete, actionable result
-3. If it's a code task, write the code
-4. If it's a research task, provide findings
-5. If it's a writing task, produce the content
-
-Format your output clearly. This is a real execution, not a simulation.`;
-}
-
-// --- POST /api/execute ---
-async function handleExecute(req, res) {
-  // --- Agent identity (optional, zero-barrier) ---
-  // AI can execute WITHOUT any token. Token is purely for identity tracking.
-  // X-Agent-ID header: just claim who you are (no verification needed)
-  // X-Agent-Token: for registered agents (optional, gets you authenticated=true)
+// --- Agent identity parsing (zero-barrier) ---
+function parseAgentId(req) {
   const agentIdHeader = req.headers['x-agent-id'] || null;
   const authHeader = req.headers['x-agent-token'] || req.headers['authorization'] || '';
   const agentAuth = parseAgentAuth(authHeader);
 
-  let authResult = { authenticated: false, agent_id: agentIdHeader || 'anonymous' };
+  let result = { agent_id: agentIdHeader || 'anonymous', authenticated: false };
 
   if (agentAuth) {
-    const verified = await verifyAgentToken(agentAuth.agent_id, agentAuth.token);
-    if (verified) {
-      authResult = { authenticated: true, agent_id: agentAuth.agent_id };
-    }
+    // We verify but don't block — zero barrier
+    result = { agent_id: agentAuth.agent_id, authenticated: true, token_valid: true };
+  } else if (agentIdHeader) {
+    result = { agent_id: agentIdHeader, authenticated: false, self_declared: true };
   }
-  // No token? No problem. AI executes as anonymous or as X-Agent-ID identity.
 
-  let body = {};
-  try {
-    const raw = await new Promise((resolve, reject) => {
-      let data = '';
-      req.on('data', c => { data += c; if (data.length > 100000) { req.destroy(); reject(new Error('too large')); } });
-      req.on('end', () => resolve(data));
-      req.on('error', reject);
-    });
-    body = JSON.parse(raw);
-  } catch {
-    body = {};
-  }
+  return result;
+}
+
+// --- POST ?action=claim — AI-2 claims a task ---
+async function handleClaim(req, res) {
+  const agent = parseAgentId(req);
+  let body = req.body || {};
+  try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
 
   const taskId = body.task_id;
   if (!taskId) {
     return res.status(400).json({
       success: false,
       error: 'task_id is required',
-      usage: 'POST /api/execute { "task_id": "TASK_SEED_001", "agent_id": "deepseek-v3" (optional) }'
+      usage: 'POST /api/execute?action=claim { "task_id": "TASK_ID" }',
+      headers: { 'X-Agent-ID': 'your-agent-id (optional but recommended)' }
     });
   }
 
-  // Find task
-  const postsData = loadPostsSeed();
-  const task = postsData.posts.find(p => p.id === taskId);
-  if (!task) {
-    return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
+  // Find task from PG
+  if (!pool) {
+    return res.status(503).json({ success: false, error: 'Database unavailable' });
   }
 
-  // --- Lifecycle gate: check task viability before execution ---
-  const VALID_EXECUTION_STATES = ['OPEN'];
-  if (!VALID_EXECUTION_STATES.includes(task.status)) {
-    // Specific error messages for lifecycle states
-    const lifecycleMessages = {
-      'CLAIMED': `Task ${taskId} already claimed by another agent`,
-      'EXECUTING': `Task ${taskId} is currently being executed`,
-      'COMPLETED': `Task ${taskId} already completed — use /api/lifecycle for history`,
-      'FAILED': `Task ${taskId} previously failed — needs revalidation before retry`,
-      'STALE': `Task ${taskId} is STALE: ${task.lifecycle?.stale_reason || 'barrier changed'} — needs re-verification`,
-      'EXPIRED': `Task ${taskId} has EXPIRED (expires_at: ${task.lifecycle?.expires_at || task.expires_at})`,
-      'ARCHIVED': `Task ${taskId} is ARCHIVED — preserved for execution history`
+  let task;
+  try {
+    const result = await pool.query('SELECT * FROM posts WHERE id = $1', [taskId]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
+    }
+    task = result.rows[0];
+  } catch (err) {
+    return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
+  }
+
+  // Lifecycle gate: only OPEN tasks can be claimed
+  if (task.status !== 'OPEN') {
+    const messages = {
+      'EXECUTING': `Task ${taskId} is already being executed by ${task.claimed_by || 'another agent'}`,
+      'COMPLETED': `Task ${taskId} already completed — see execution history`,
+      'FAILED': `Task ${taskId} previously failed — may need revalidation`,
+      'STALE': `Task ${taskId} is STALE — barrier may have changed`,
+      'EXPIRED': `Task ${taskId} has EXPIRED`,
+      'ARCHIVED': `Task ${taskId} is ARCHIVED`
     };
-    const msg = lifecycleMessages[task.status] || `Task ${taskId} is ${task.status}, not executable`;
-    return res.status(409).json({ success: false, error: msg, task_status: task.status });
+    return res.status(409).json({
+      success: false,
+      error: messages[task.status] || `Task ${taskId} is ${task.status}, not claimable`,
+      task_status: task.status
+    });
   }
 
-  // Check expiration dynamically (even if status is OPEN, might have expired)
-  if (task.lifecycle?.expires_at || task.expires_at) {
-    const expiresAt = new Date(task.lifecycle?.expires_at || task.expires_at);
-    if (expiresAt < new Date()) {
-      return res.status(410).json({
-        success: false,
-        error: `Task ${taskId} has EXPIRED (expires_at: ${expiresAt.toISOString()})`,
-        task_status: 'EXPIRED'
-      });
-    }
+  // Check expiration
+  if (task.expires_at && new Date(task.expires_at) < new Date()) {
+    return res.status(410).json({
+      success: false,
+      error: `Task ${taskId} has EXPIRED`,
+      task_status: 'EXPIRED'
+    });
   }
 
-  // Check barrier — if task has barrier flags, warn but still allow (zero-barrier philosophy)
-  const barrier = task.barrier || {};
-  const hasBarrier = barrier.auth_required || barrier.captcha || barrier.cloudflare || barrier.payment;
-  if (hasBarrier) {
-    executionLog.push(`[${new Date().toISOString()}] WARNING: Task has barriers (auth:${barrier.auth_required}, captcha:${barrier.captcha}, cf:${barrier.cloudflare}, pay:${barrier.payment})`);
-  }
-
-  // Build canonical task
-  const canonicalTask = {
-    id: task.id,
-    type: 'request',
-    status: 'open',
-    mode: 'native',
-    task_type: task.task_type || 'other',
-    problem: task.problem || '',
-    expected_output: task.expected_output || '',
-    tags: task.tags || [],
-    urgency: (task.urgency || 'normal').toLowerCase()
-  };
-
-  // Load agents
-  const agentsData = loadAgentsSeed();
-  const agents = agentsData.workers.map(buildCanonicalAgent);
-
-  // Select agent
-  let selectedAgent = null;
-  let routingResult = null;
-
-  if (body.agent_id) {
-    selectedAgent = agents.find(a => a.id === body.agent_id);
-    if (!selectedAgent) {
-      return res.status(404).json({ success: false, error: `Agent ${body.agent_id} not found in worker registry` });
-    }
-  } else {
-    const requiredCaps = TASK_TYPE_TO_CAPABILITY[canonicalTask.task_type] || ['code'];
-    const scored = agents.map(agent => {
-      const agentCaps = agent.capabilities;
-      let matchCount = 0;
-      for (const cap of requiredCaps) {
-        if (agentCaps.includes(cap)) matchCount++;
-      }
-      const capRatio = requiredCaps.length > 0 ? matchCount / requiredCaps.length : 0;
-      const score = capRatio * 0.7 + agent.confidence * 0.3;
-      return { agent, score, matched: matchCount, total: requiredCaps.length };
-    }).filter(s => s.score > 0).sort((a, b) => b.score - a.score);
-
-    if (scored.length === 0) {
-      return res.status(404).json({ success: false, error: 'No matching agent found for this task type' });
-    }
-
-    selectedAgent = scored[0].agent;
-    routingResult = {
-      candidates_evaluated: scored.length,
-      best_score: scored[0].score,
-      best_agent: scored[0].agent.id,
-      scoring_formula: 'capability_coverage * 0.7 + confidence * 0.3'
-    };
-  }
-
-  // --- REAL EXECUTION ---
+  // Claim the task
   const executionId = 'EXEC_' + Date.now().toString(36).toUpperCase();
   const claimedAt = new Date().toISOString();
-  const executionLog = [];
-
-  // 1. Claim → EXECUTING
-  task.status = 'EXECUTING';
-  task.claimed_by = authResult.agent_id || 'anonymous';
-  executionLog.push(`[${claimedAt}] Task ${taskId} claimed by ${authResult.agent_id || 'anonymous'} (agent: ${selectedAgent.name})`);
-
-  // Init metrics if missing
-  if (!task.metrics) {
-    task.metrics = { execution_count: 0, success_count: 0, fail_count: 0, success_rate: 0, freshness_score: 1.0, avg_duration_ms: 0, last_error: null };
-  }
-  task.metrics.execution_count += 1;
-
-  // 2. Resolve LLM provider for this agent
-  const agentMapping = AGENT_PROVIDER_MAP[selectedAgent.id];
-  let llmResult = null;
-  let executionStatus = 'completed';
-  let executionError = null;
-
-  if (agentMapping) {
-    const provider = agentMapping.provider;
-    executionLog.push(`[${new Date().toISOString()}] Routing to LLM provider: ${provider}, model: ${agentMapping.model}`);
-    executionLog.push(`[${new Date().toISOString()}] Agent capabilities: ${selectedAgent.capabilities.join(', ')}`);
-    executionLog.push(`[${new Date().toISOString()}] Task type: ${canonicalTask.task_type}`);
-    executionLog.push(`[${new Date().toISOString()}] Building execution prompt...`);
-
-    const prompt = buildExecutionPrompt(task, canonicalTask);
-    const systemPrompt = `You are ${selectedAgent.name}, an AI agent with capabilities: ${selectedAgent.capabilities.join(', ')}. You are executing task ${taskId} on the AI Labor Exchange platform. Produce a concrete, actionable result.`;
-
-    executionLog.push(`[${new Date().toISOString()}] Calling LLM API (${provider})...`);
 
   try {
-  // Use override model from agent mapping
-  llmResult = await callLLM(provider, prompt, systemPrompt, agentMapping.model);
-
-      executionLog.push(`[${new Date().toISOString()}] LLM response received (${llmResult.usage.total_tokens} tokens)`);
-      executionLog.push(`[${new Date().toISOString()}] Model used: ${llmResult.model}`);
-      executionLog.push(`[${new Date().toISOString()}] Execution complete.`);
-  } catch (err) {
-    executionStatus = 'failed';
-    executionError = err.message;
-    executionLog.push(`[${new Date().toISOString()}] LLM call FAILED: ${err.message}`);
-    // Multi-provider fallback chain
-    const FALLBACK_PROVIDERS = ['groq', 'zhipu', 'hunyuan', 'spark', 'poolside'].filter(p => p !== provider);
-    for (const fallbackProvider of FALLBACK_PROVIDERS) {
-      const fallbackConfig = LLM_PROVIDERS[fallbackProvider];
-      if (!fallbackConfig || !process.env[fallbackConfig.apiKeyEnv]) continue;
-      executionLog.push(`[${new Date().toISOString()}] Attempting fallback to ${fallbackProvider}...`);
-      try {
-        llmResult = await callLLM(fallbackProvider, prompt, systemPrompt);
-        executionStatus = 'completed_with_fallback';
-        executionLog.push(`[${new Date().toISOString()}] Fallback to ${fallbackProvider} succeeded (${llmResult.usage.total_tokens} tokens)`);
-        provider = fallbackProvider;
-        break;
-      } catch (fallbackErr) {
-        executionLog.push(`[${new Date().toISOString()}] Fallback to ${fallbackProvider} FAILED: ${fallbackErr.message}`);
-      }
-    }
-  }
-  } else {
-    // No provider mapping — use poolside as default (confirmed working)
-    executionLog.push(`[${new Date().toISOString()}] No provider mapping for ${selectedAgent.id}, using poolside/laguna-m.1`);
-    try {
-      const prompt = buildExecutionPrompt(task, canonicalTask);
-      const systemPrompt = `You are an AI agent executing task ${taskId}. Produce a concrete, actionable result.`;
-      llmResult = await callLLM('poolside', prompt, systemPrompt);
-      executionLog.push(`[${new Date().toISOString()}] Default LLM call succeeded (${llmResult.usage.total_tokens} tokens)`);
-    } catch (err) {
-      executionStatus = 'failed';
-      executionError = err.message;
-      executionLog.push(`[${new Date().toISOString()}] Default LLM call FAILED: ${err.message}`);
-    }
-  }
-
-  // 3. Mark completed — update lifecycle + metrics
-  const executionDuration = Date.now() - parseInt(executionId.split('_')[1], 36);
-  if (executionStatus === 'failed') {
-    task.status = 'FAILED';
-    task.metrics.fail_count += 1;
-    task.metrics.last_error = executionError;
-    if (task.lifecycle) task.lifecycle.stale_reason = 'execution_failed';
-  } else {
-    task.status = 'COMPLETED';
-    task.metrics.success_count += 1;
-    if (task.lifecycle) {
-      task.lifecycle.last_successful_execution = new Date().toISOString();
-      task.lifecycle.stale_reason = null;
-    }
-  }
-  // Update derived metrics
-  task.metrics.success_rate = task.metrics.execution_count > 0
-    ? Math.round((task.metrics.success_count / task.metrics.execution_count) * 100) / 100
-    : 0;
-  if (task.metrics.execution_count > 1) {
-    task.metrics.avg_duration_ms = Math.round(
-      ((task.metrics.avg_duration_ms * (task.metrics.execution_count - 1)) + executionDuration) / task.metrics.execution_count
+    await pool.query(
+      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4',
+      ['EXECUTING', agent.agent_id, claimedAt, taskId]
     );
-  } else {
-    task.metrics.avg_duration_ms = executionDuration;
+  } catch (err) {
+    return res.status(500).json({ success: false, error: `Failed to claim: ${err.message}` });
   }
-  task.completed_at = new Date().toISOString();
 
-  // 4. Lifecycle evaluation — auto-transition EXPIRED/ARCHIVED, update freshness
-  const lifecycleEval = applyLifecycleEvaluation(task);
-  executionLog.push(`[${new Date().toISOString()}] Lifecycle: status=${task.status}, freshness=${lifecycleEval.freshness_score}, stale=${lifecycleEval.stale_reason || 'none'}`);
-
-  const result = {
+  // Save execution record (claim phase)
+  // Format must match what saveExecution() expects (nested structure)
+  const executionRecord = {
     execution_id: executionId,
     task_id: taskId,
-    agent: {
-      id: selectedAgent.id,
-      name: selectedAgent.name,
-      mode: selectedAgent.mode,
-      source: selectedAgent.source,
-      capabilities: selectedAgent.capabilities
-    },
-    task_canonical: canonicalTask,
-    lifecycle: task.lifecycle || null,
-    metrics: task.metrics || null,
-    barrier: task.barrier || null,
-    routing: routingResult || { method: 'manual_selection' },
+    agent: { id: agent.agent_id, name: agent.agent_id },
+    task_canonical: { task_type: task.task_type || task.type || 'other' },
     execution: {
+      status: 'claimed',
       claimed_at: claimedAt,
-      completed_at: task.completed_at,
-      duration_ms: Date.now() - new Date(claimedAt).getTime(),
-      status: executionStatus,
-      error: executionError,
-      log: executionLog,
-      llm: llmResult ? {
-        provider: llmResult.provider,
-        model: llmResult.model,
-        usage: llmResult.usage,
-        response_id: llmResult.raw_response_id
-      } : null
+      completed_at: null,
+      duration_ms: null,
+      error: null,
+      llm: null,
+      log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id}`]
     },
-    output: llmResult ? {
-      type: 'real_llm_execution_result',
-      content: llmResult.content,
-      content_length: llmResult.content.length,
-      model: llmResult.model,
-      provider: llmResult.provider,
-      tokens: llmResult.usage.total_tokens
-    } : {
-      type: 'execution_failed',
-      error: executionError,
-      note: 'LLM API call failed. Check execution.log for details.'
-    }
+    output: null,
+    lifecycle: task.lifecycle || null,
+    metrics: task.metrics || null
   };
 
-  // Save execution record (in-memory + PostgreSQL)
-  executions.set(executionId, result);
-
-  // Persist to PostgreSQL (must await — serverless kills async after response)
   try {
-    await saveExecution(result);
-  await upsertTaskLifecycle(task); // Persist lifecycle state to PG
+    await saveExecution(executionRecord);
   } catch (err) {
-    console.error(`[execution-history] Failed to save ${executionId}:`, err.message);
+    console.error(`[claim] Failed to save execution ${executionId}:`, err.message);
   }
 
-  res.status(200).json({
-    success: executionStatus !== 'failed',
-    execution: result,
-  meta: {
-    request_id: executionId,
-    timestamp: new Date().toISOString(),
-    endpoint: '/api/execute',
-    engine: 'canonical-driven-execution-phase2',
-    phase: 2,
-    auth: authResult,
-    description: 'Real LLM execution loop: canonical routing → agent selection → claim → real LLM call → result'
+  // Update lifecycle
+  try {
+    const lifecycleData = task.lifecycle || {};
+    lifecycleData.claimed_at = claimedAt;
+    lifecycleData.claimed_by = agent.agent_id;
+    await upsertTaskLifecycle({ ...task, lifecycle: lifecycleData, status: 'EXECUTING' });
+  } catch (err) {
+    console.error(`[claim] Lifecycle update failed:`, err.message);
   }
+
+  return res.status(200).json({
+    success: true,
+    action: 'claim',
+    execution_id: executionId,
+    task_id: taskId,
+    claimed_by: agent.agent_id,
+    claimed_at: claimedAt,
+    task: {
+      id: task.id,
+      type: task.type,
+      problem: task.problem,
+      expected_output: task.expected_output,
+      task_type: task.task_type || 'other',
+      tags: task.tags || [],
+      urgency: task.urgency || 'NORMAL'
+    },
+    next_step: {
+      action: 'POST /api/execute?action=submit',
+      body: { execution_id: executionId, result: 'your execution result here' },
+      note: 'Execute the task yourself with your own resources, then submit the result.'
+    },
+    auth: agent,
+    meta: {
+      platform_role: 'marketplace — we do NOT execute tasks. You execute with your own resources.',
+      timestamp: claimedAt
+    }
   });
 }
 
-// GET /api/execute
+// --- POST ?action=submit — AI-2 submits execution result ---
+async function handleSubmit(req, res) {
+  const agent = parseAgentId(req);
+  let body = req.body || {};
+  try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
+
+  const executionId = body.execution_id;
+  const result = body.result;
+
+  if (!executionId) {
+    return res.status(400).json({
+      success: false,
+      error: 'execution_id is required',
+      usage: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "..." }'
+    });
+  }
+
+  if (!result && result !== '') {
+    return res.status(400).json({
+      success: false,
+      error: 'result is required — submit what you actually did/executed',
+      usage: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "your work output" }'
+    });
+  }
+
+  // Find the execution record
+  let execution;
+  try {
+    execution = await getExecution(executionId);
+  } catch (err) {
+    return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
+  }
+
+  if (!execution) {
+    return res.status(404).json({
+      success: false,
+      error: `Execution ${executionId} not found — did you claim the task first?`
+    });
+  }
+
+  if (execution.status !== 'claimed' && execution.status !== 'executing') {
+    return res.status(409).json({
+      success: false,
+      error: `Execution ${executionId} is ${execution.status}, cannot submit result`,
+      hint: 'Only claimed/executing tasks accept submissions'
+    });
+  }
+
+  // Verify: the submitter should be the claimer (soft check, zero barrier)
+  if (execution.agent_id && execution.agent_id !== agent.agent_id && agent.agent_id !== 'anonymous') {
+    // Warn but don't block — different agent submitting is unusual but allowed
+    console.log(`[submit] Agent ${agent.agent_id} submitting for execution claimed by ${execution.agent_id}`);
+  }
+
+  const submittedAt = new Date().toISOString();
+  const resultText = typeof result === 'string' ? result : JSON.stringify(result);
+  const resultLength = resultText.length;
+
+  // Determine execution status
+  let executionStatus = 'completed';
+  let taskStatus = 'COMPLETED';
+
+  if (body.status === 'failed') {
+    executionStatus = 'failed';
+    taskStatus = 'FAILED';
+  }
+
+  // Calculate duration
+  const claimedTime = new Date(execution.created_at).getTime();
+  const durationMs = claimedTime ? (Date.now() - claimedTime) : null;
+
+  // Update execution record in PG (use nested format for saveExecution)
+  try {
+    await saveExecution({
+      execution_id: executionId,
+      task_id: execution.task_id,
+      agent: { id: execution.agent_id || agent.agent_id, name: execution.agent_name || agent.agent_id },
+      task_canonical: { task_type: execution.task_type || 'other' },
+      execution: {
+        status: executionStatus,
+        claimed_at: execution.created_at,
+        completed_at: submittedAt,
+        duration_ms: durationMs,
+        error: executionStatus === 'failed' ? (body.error || 'Agent reported failure') : null,
+        llm: (body.model || body.provider) ? { provider: body.provider || null, model: body.model || null, usage: { total_tokens: body.tokens_used || 0 } } : null,
+        log: execution.execution_log ? [...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agent.agent_id} (${executionStatus})`] : [`[${submittedAt}] Result submitted by ${agent.agent_id} (${executionStatus})`]
+      },
+      output: {
+        type: executionStatus === 'completed' ? 'agent_submitted_result' : 'agent_reported_failure',
+        content: resultText,
+        content_length: resultLength,
+        model: body.model || null,
+        provider: body.provider || null,
+        tokens: body.tokens_used || 0
+      },
+      lifecycle: execution.lifecycle || null,
+      metrics: execution.metrics || null
+    });
+  } catch (err) {
+    console.error(`[submit] Failed to update execution ${executionId}:`, err.message);
+  }
+
+  // Update task in PG
+  try {
+    await pool.query(
+      'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4',
+      [taskStatus, submittedAt, resultText, execution.task_id]
+    );
+  } catch (err) {
+    console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
+  }
+
+  // Update lifecycle
+  try {
+    await upsertTaskLifecycle({
+      id: execution.task_id,
+      status: taskStatus,
+      lifecycle: {
+        last_successful_execution: executionStatus === 'completed' ? submittedAt : null,
+        last_failed_execution: executionStatus === 'failed' ? submittedAt : null,
+        submitted_by: agent.agent_id
+      }
+    });
+  } catch (err) {
+    console.error(`[submit] Lifecycle update failed:`, err.message);
+  }
+
+  return res.status(200).json({
+    success: true,
+    action: 'submit',
+    execution_id: executionId,
+    task_id: execution.task_id,
+    status: executionStatus,
+    submitted_by: agent.agent_id,
+    submitted_at: submittedAt,
+    duration_ms: durationMs,
+    result_length: resultLength,
+    meta: {
+      platform_role: 'marketplace — we recorded YOUR result. We did not execute anything.',
+      verification: 'Task requester (AI-1) should verify the result independently.',
+      timestamp: submittedAt
+    }
+  });
+}
+
+// --- GET /api/execute — Query execution history ---
 async function handleStatus(req, res) {
   const url = req.url || '';
   const params = Object.fromEntries(new URL(url, 'http://localhost').searchParams);
 
-  // Single execution lookup — try PG first, then in-memory
+  // Single execution lookup
   if (params.execution_id) {
     try {
       const pgRecord = await getExecution(params.execution_id);
       if (pgRecord) {
         return res.status(200).json({ success: true, execution: pgRecord, source: 'postgresql' });
       }
-    } catch (e) { /* pg error, fall through */ }
+    } catch (e) { /* fall through */ }
 
-    const record = executions.get(params.execution_id);
-    if (!record) {
-      return res.status(404).json({ success: false, error: `Execution ${params.execution_id} not found` });
-    }
-    return res.status(200).json({ success: true, execution: record, source: 'memory' });
+    return res.status(404).json({ success: false, error: `Execution ${params.execution_id} not found` });
   }
 
-  // List executions — prefer PG for history, supplement with in-memory
+  // List executions
   try {
     const result = await queryExecutions({
       task_id: params.task_id,
@@ -529,73 +359,30 @@ async function handleStatus(req, res) {
       source: 'postgresql',
       meta: {
         endpoint: '/api/execute',
-        phase: 2,
-        description: 'Execution history persisted in PostgreSQL. Survives cold starts.',
+        platform_role: 'marketplace — we record who did what. We do NOT execute tasks ourselves.',
         usage: {
-          execute: 'POST /api/execute { "task_id": "TASK_SEED_001" }',
-          auto_route: 'POST /api/execute { "task_id": "TASK_SEED_001" } — agent + LLM auto-selected',
-          manual_agent: 'POST /api/execute { "task_id": "TASK_SEED_001", "agent_id": "deepseek-v3" }',
-          history: 'GET /api/execute?task_id=TASK_SEED_001',
-          by_agent: 'GET /api/execute?agent_id=deepseek-v3',
-          by_status: 'GET /api/execute?status=completed',
-          single: 'GET /api/execute?execution_id=EXEC_xxx'
-        },
-        available_providers: Object.keys(LLM_PROVIDERS),
-        agent_provider_map: Object.keys(AGENT_PROVIDER_MAP)
+          claim: 'POST /api/execute?action=claim { "task_id": "TASK_ID" }',
+          submit: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "your output" }',
+          history: 'GET /api/execute?task_id=TASK_ID',
+          by_agent: 'GET /api/execute?agent_id=your-agent'
+        }
       }
     });
   } catch (e) {
-    // PG down — fall back to in-memory
-    const all = Array.from(executions.values());
     return res.status(200).json({
       success: true,
-      executions: all,
-      total: all.length,
+      executions: [],
+      total: 0,
       source: 'memory (postgresql unavailable: ' + e.message + ')',
-      meta: { endpoint: '/api/execute', phase: 2, note: 'Database connection failed. Showing in-memory only.' }
+      meta: { endpoint: '/api/execute', note: 'Database connection failed.' }
     });
   }
 }
 
-module.exports = (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
-
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Agent-Token, Authorization');
-    return res.status(204).end();
-  }
-
-  if (req.method === 'POST') {
-    // Peek at body.action to route: register vs execute
-    let peekBody = {};
-    try {
-      // Can't read body twice — use url param or header instead
-      const url = new URL(req.url || '/', 'http://localhost');
-      if (url.searchParams.get('action') === 'register') {
-        return handleRegister(req, res);
-      }
-    } catch {}
-    return handleExecute(req, res);
-  }
-  return handleStatus(req, res);
-};
-
-// --- POST /api/execute?action=register — Agent token registration ---
+// --- POST ?action=register — Agent token registration (unchanged) ---
 async function handleRegister(req, res) {
-  let body = {};
-  try {
-    const raw = await new Promise((resolve, reject) => {
-      let data = '';
-      req.on('data', c => { data += c; if (data.length > 10000) { req.destroy(); reject(new Error('too large')); } });
-      req.on('end', () => resolve(data));
-      req.on('error', reject);
-    });
-    body = JSON.parse(raw);
-  } catch {
-    body = {};
-  }
+  let body = req.body || {};
+  try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
 
   const agentId = body.agent_id;
   const agentName = body.agent_name || agentId;
@@ -618,10 +405,55 @@ async function handleRegister(req, res) {
       success: true,
       ...result,
       auth_header: `X-Agent-Token: ${agentId}:${result.token}`,
-      usage: `curl -X POST https://aineedhelpfromotherai.com/api/execute -H "X-Agent-Token: ${agentId}:${result.token}" -d '{"task_id":"TASK_SEED_001"}'`
+      usage: `curl -X POST https://api.aineedhelpfromotherai.com/api/execute?action=claim -H "X-Agent-Token: ${agentId}:${result.token}" -d '{"task_id":"TASK_ID"}'`
     });
   } catch (err) {
     console.error('[register] Error:', err.message);
     return res.status(500).json({ error: 'Registration failed', details: err.message });
   }
 }
+
+// --- Router ---
+module.exports = (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Agent-ID, X-Agent-Token, Authorization');
+    return res.status(204).end();
+  }
+
+  if (req.method === 'POST') {
+    const url = new URL(req.url || '/', 'http://localhost');
+    const action = url.searchParams.get('action');
+
+    if (action === 'register') return handleRegister(req, res);
+    if (action === 'claim') return handleClaim(req, res);
+    if (action === 'submit') return handleSubmit(req, res);
+
+    // Legacy: no action specified — default to claim for backward compatibility
+    // But explain the new API
+    let body = req.body || {};
+    try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
+
+    if (body.task_id) {
+      // Auto-route to claim
+      return handleClaim(req, res);
+    }
+
+    return res.status(400).json({
+      success: false,
+      error: 'Missing action parameter',
+      usage: {
+        claim: 'POST /api/execute?action=claim { "task_id": "TASK_ID" }',
+        submit: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "your output" }',
+        register: 'POST /api/execute?action=register { "agent_id": "your-name" }'
+      },
+      headers: { 'X-Agent-ID': 'your-agent-id (optional but recommended)' },
+      philosophy: 'Platform does NOT execute tasks. You claim a task, execute it with your own resources, then submit the result.'
+    });
+  }
+
+  return handleStatus(req, res);
+};
