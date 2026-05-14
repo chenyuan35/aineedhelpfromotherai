@@ -277,72 +277,310 @@
   - /api/lifecycle → 9 records ✅
   - /api/manifest → v2.0 ✅
 
-### VPS_003: Nginx + SSL + 域名 🔄 (进行中)
+### VPS_003: Nginx + SSL + 域名 ✅
 - Nginx 反向代理配置完成:
-  - /api/* → http://127.0.0.1:3000
-  - /llms.txt, /openapi.json → http://127.0.0.1:3000
-  - 其他 → proxy_pass Vercel (暂未生效)
+ - /api/* → http://127.0.0.1:3000
+ - /llms.txt, /openapi.json → http://127.0.0.1:3000
+ - 其他 → proxy_pass Vercel
 - DNS: `api.aineedhelpfromotherai.com` A record → 108.61.220.98 ✅
-  - 通过 `vercel dns add aineedhelpfromotherai.com api A 108.61.220.98` 添加
-  - dig 验证: 108.61.220.98 ✅
+ - 通过 `vercel dns add aineedhelpfromotherai.com api A 108.61.220.98` 添加
+ - dig 验证: 108.61.220.98 ✅
 - SSL: Let's Encrypt 证书获取成功 ✅
-  - `certbot certonly --standalone -d api.aineedhelpfromotherai.com`
-  - 证书路径: /etc/letsencrypt/live/api.aineedhelpfromotherai.com/
-  - 到期: 2026-08-12, 自动续期已配置
-- **待做**:
-  - [ ] 更新 Nginx 配置加 SSL (443 + cert + HTTP→HTTPS 重定向)
-  - [ ] `nginx -t && systemctl reload nginx`
-  - [ ] 验证: `curl https://api.aineedhelpfromotherai.com/api/execute`
+ - `certbot certonly --standalone -d api.aineedhelpfromotherai.com`
+ - 证书路径: /etc/letsencrypt/live/api.aineedhelpfromotherai.com/
+ - 到期: 2026-08-12, 自动续期已配置
+- Nginx SSL 配置 ✅ (VPS_003b):
+ - 443 server block + fullchain.pem + privkey.pem
+ - ssl_protocols TLSv1.2 TLSv1.3, HSTS 6 months
+ - HTTP 80 → 301 重定向到 HTTPS
+ - nginx -t 通过, systemctl reload 成功
+ - 验证:
+   - curl https://api.aineedhelpfromotherai.com/api/health → 200, SSL verify=0 ✅
+   - curl https://api.aineedhelpfromotherai.com/api/execute?limit=1 → PG 数据 ✅
+   - curl https://api.aineedhelpfromotherai.com/api/lifecycle → 9 records ✅
+   - curl http://api.aineedhelpfromotherai.com → 301 → https:// ✅
 
-### VPS_004: Vercel 清理 ⬜
-- [ ] vercel.json 删除所有 /api/* 路由（只保留静态资源路由）
-- [ ] llms.txt 里 API URL 改为 api.aineedhelpfromotherai.com
-- [ ] manifest.js 里 base_url 改为 api.aineedhelpfromotherai.com
-- [ ] 前端 app.js API base URL 改为 api.aineedhelpfromotherai.com
-- [ ] 验证: aineedhelpfromotherai.com 前端正常 + API 走 VPS
+### VPS_004: Vercel 清理 ✅
+- vercel.json 删除所有 /api/* 路由和 api builds（8条API路由全删） ✅
+- llms.txt curl URL 改为 api.aineedhelpfromotherai.com ✅
+- manifest.js 全部 endpoint URL 改为 api.aineedhelpfromotherai.com ✅
+- 前端 app.js API base 改为 `https://api.aineedhelpfromotherai.com/api` ✅
+- rsync 同步到 VPS /opt/aineedhelpfromotherai/ ✅
+- PM2 restart + pm2 save (开机自启) ✅
+- Vercel --prod --force 部署 ✅
+- 验证:
+  - Vercel /api/health → 404 (API 已从 Vercel 移除) ✅
+  - Vercel 首页 → 200 (前端正常) ✅
+  - app.js API base → https://api.aineedhelpfromotherai.com/api ✅
+  - VPS manifest URL → 已改 api. 子域名 ✅
 
-### VPS_005: Nightly Backup ⬜
-- [ ] pg_dump cron (每天 03:00)
-- [ ] 项目目录 tar 备份
-- [ ] 保留 7 天滚动
+### VPS_005: Nightly Backup ✅
+- /opt/aineedhelpfromotherai/backup.sh — pg_dump + tar 打包 ✅
+- PG dump: pgbouncer 5432 连接, -Fc 自定义格式 ✅
+- 项目 tar: --exclude node_modules/.git ✅
+- 7天滚动清理 (find -mtime +7 -delete) ✅
+- Cron: 每天 03:00 UTC, 日志写 /opt/backups/aineedhelp/backup.log ✅
+- 手动验证: aineedhelp_20260514.dump (32K) + project tar (106K) ✅
 
-### VPS_006: 全链路验证 ⬜
-- [ ] curl https://api.aineedhelpfromotherai.com/api/health
-- [ ] curl https://api.aineedhelpfromotherai.com/api/execute?limit=1
-- [ ] curl https://api.aineedhelpfromotherai.com/api/lifecycle
-- [ ] POST execute 任务并验证 PG 写入
-- [ ] aineedhelpfromotherai.com 前端正常加载
+### VPS_006: 全链路验证 ✅
+- https://api.aineedhelpfromotherai.com/api/health → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/execute?limit=1 → 200, PG 20条 ✅
+- https://api.aineedhelpfromotherai.com/api/lifecycle → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/manifest → 200, URL 全 api. 子域名 ✅
+- https://api.aineedhelpfromotherai.com/api/posts → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/agents → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/channels → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/task-sources → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/graph → 200 ✅
+- https://api.aineedhelpfromotherai.com/api/route → 200 ✅
+- aineedhelpfromotherai.com 前端 → 200 ✅
+- Vercel /api/health → 404 (API 已移除) ✅
+- HTTP→HTTPS 重定向 → 301 ✅
+- PG 执行记录: 20条, source=postgresql ✅
+
+---
+
+## 2026-05-14 Phase 5: 执行闭环强化
+
+### S1: /api/metrics 端点 ✅
+- api/metrics.js: PG 统计查询 (overview/by_provider/by_task_type/by_agent/lifecycle/activity)
+- server.js 挂载 /api/metrics 路由
+- 验证: 20 executions, 4 providers, 6 task types, 7 agents, 9 lifecycle records ✅
+
+### S2: execute.js 异步化 ✅
+- POST /api/execute → 立即返回 202 + execution_id + poll_url
+- 后台 setImmediate 执行 LLM 调用
+- 修复: Express body 解析冲突 (req.body 替代 req.on('data'))
+- GET /api/execute?execution_id=xxx → 轮询获取结果
+- 验证: POST 5秒内返回 202, 后台执行完成, GET 查到 completed ✅
+
+### S3: Provider 扩展 (5→8) ✅
+- 新增 nvidia (MiMo-V2.5-Pro via NIM), mistral (mistral-large-latest), anthropic (claude-sonnet-4)
+- Anthropic 适配: /v1/messages 端点 + x-api-key header + anthropic-version
+- Agent mapping 更新: mimo→nvidia, claude-code→anthropic, mistral-large→mistral
+- VPS .env 配置: POOLSIDE_API_KEY 已同步, 其他 key 待配置
+- Poolside 实际验证: POST→202→后台执行→completed ✅
+- manifest providers 列表更新: 8 providers
+
+### S4: seed/test 数据自动清理 ✅
+- api/cleanup.js: 过期标记 + 7天归档 + 90天执行记录清理
+- server.js 挂载 /api/cleanup 路由 (12 endpoints now)
+- VPS cron: 每天 04:00 UTC 自动执行 (localhost:3000)
+- 验证: POST /api/cleanup → expired=0, archived=0, cleaned=0, lifecycle=9 records ✅
+
+### S7: 安全加固 ✅ (partial)
+- POOLSIDE_API_KEY 已同步到 VPS .env (去重后13个env vars)
+- 5432 公网端口已关闭 (ufw delete allow 5432/tcp)
+- Nginx 443: 添加根域名 server block (之前只有 api. 子域名)
+- server.js: 根目录静态文件路由 (llms.txt/openapi.json/robots.txt/sitemap.xml)
+- 外部可达性: API/llms.txt/manifest/metrics 全部 200
+- Poolside 执行验证: POST→202→后台35s→completed ✅
+- 待做: Rate limit (per-IP/per-agent), API key 管理界面, Nginx 监控
+
+### S7b: Rate Limit ✅
+- lib/rate-limit.js: 滑动窗口限流 (内存 Map, 5分钟自动清理)
+- 全局: 100 req/min per IP (所有 /api/*)
+- /api/execute: 10 req/min per IP
+- X-RateLimit-* headers 返回
+- 验证: /api/health → X-RateLimit-Limit:100, /api/execute → Limit:10
+
+### S7c: AI 可达性修复 ✅
+- Nginx 443: 添加根域名 server block (proxy → Vercel)
+- server.js: 根目录静态文件路由 (llms.txt/openapi.json/robots.txt/sitemap.xml)
+- 5432 公网端口关闭 (ufw delete allow 5432/tcp)
+- POOLSIDE_API_KEY 同步到 VPS .env
+
+### S9: AI 发现层修复 ✅ (评测报告反馈)
+- meta api-endpoint: https://aineedhelpfromotherai.com/api → https://api.aineedhelpfromotherai.com/api
+- HTML 空骨架修复: 新增 ai-semantic section (position:absolute;left:-9999px)
+ - 全部 API 端点列表 + Base URL
+ - 10 个 worker 详细信息 (name/provider/capabilities/endpoint)
+ - 7 个外部 task source (含 ai_friendliness_score)
+ - 平台 metrics 快照
+ - Entry Protocol 5 步说明
+ - Task lifecycle 状态 + freshness 公式
+- AI 爬虫无需执行 JS 即可读取完整平台数据
+- 验证: HTML 含 workers/entry_protocol/metrics/api_endpoint 全部 True
+
+### S10: Agent Registry 合并 Bug 修复 ✅
+- 根因: agents.js 第70-76行 pgIds 从 pgWorkers 生成 Set，然后 filter 也查 pgWorkers — 永远为 true → pgOnly=[]
+- 修复: 改为 seedCanonicalIds (从 seed 数据生成)，pgWorkers.filter(w => !seedCanonicalIds.has(w.agent_id))
+- 验证: GET /api/agents → total=11, sources={seed:10, registry:1}, Qwen3-235B 显示
+
+### S11: 跨平台聚合增强 ✅
+- route.js: agents 从纯 seed → seed + PG registry (async queryAgentRegistry)
+- route.js: 新增 cross_platform_channels 字段 (7个渠道, 含 ai_friendliness/sub_type/self_register/api_available)
+- ai_friendliness 字段映射: e.scoring.overall (非 ai_friendliness_score)
+- 验证: /api/route → tasks=19, agents=11, channels=7 (含 PinchWork 6.2, 自身 6.3)
 
 ### VPS 关键文件清单
 | 文件 | 路径 | 说明 |
 |------|------|------|
 | server.js | /home/yuan/dev/aineedhelpfromotherai/server.js | Express runtime (本地) |
 | VPS 项目 | /opt/aineedhelpfromotherai/ | VPS 部署目录 |
-| VPS .env | /opt/aineedhelpfromotherai/.env | PG 连接串 + SSL |
-| Nginx 配置 | /etc/nginx/sites-available/aineedhelpfromotherai | 反代规则 |
+| VPS .env | /opt/aineedhelpfromotherai/.env | PG 连接串 + SSL + POOLSIDE_API_KEY |
+| Nginx 配置 | /etc/nginx/sites-available/aineedhelpfromotherai | 反代规则 (80→443+api子域名+根域名) |
 | SSL 证书 | /etc/letsencrypt/live/api.aineedhelpfromotherai.com/ | Let's Encrypt |
 | PM2 进程 | aineedhelp (id=0, port=3000) | 进程管理 |
-| PG 连接 | pgbouncer 5432 → PG 5433 | aineedhelp 库 |
+| PG 连接 | pgbouncer 5432 → PG 5433 | aineedhelp 库 (仅localhost) |
 
 ### VPS 踩坑记录
 1. **pg SSL 兼容性**: pg v8+ 的 sslmode=require 等同 verify-full，自签名证书报 "self-signed certificate"。必须加 `uselibpqcompat=true` 参数
 2. **PGSSLMODE 环境变量**: execution-history.js 检查 `process.env.PGSSLMODE === 'require'` 才启用 SSL，.env 必须设此变量
 3. **Express 5 路由**: 不支持 `app.get('*')` 和 `app.all('/api/posts/*')` 通配符，改为 `app.get('/:path')` 和 `app.all('/api/posts/:path')`
 4. **Vercel DNS CLI**: `vercel dns add <domain> <subdomain> A <ip>` 可直接操作，不需 dashboard
+5. **Express body 冲突**: `express.json()` 中间件消费了 body stream，handler 里再 `req.on('data')` 会永久 hang → 必须用 `req.body`
+6. **Vercel encrypted env**: production env vars 是 Encrypted 的，`vercel env pull` 和 API 都无法获取真实值 → VPS .env 必须手动配置
+7. **UFW vs iptables**: UFW 规则在 iptables 链后面处理，但 80/443 仍然可达（UFW 链正常工作）
+8. **5432 公网暴露**: PgBouncer 5432 端口之前公网开放，Vercel 不再需要直连 PG 后已关闭 (`ufw delete allow 5432/tcp`)
+9. **Nginx server_name**: 443 server block 只配了 api. 子域名，根域名访问 443 会走 default → 添加根域名 server block proxy 到 Vercel
+10. **llms.txt 404**: Express 的 `express.static` 指向 public/ 目录，根目录的 llms.txt/openapi.json 需单独挂载路由
 
 ---
 
-## 下一步优先级（新窗口接续）
+## 下一步优先级
 
-### 紧急：VPS 迁移收尾
-1. VPS_003: Nginx SSL 配置 (443 + cert + redirect)
-2. VPS_004: Vercel 清理 (删 API 路由 + URL 改 api. 子域名)
-3. VPS_005: Nightly backup cron
-4. VPS_006: 全链路域名级验证
+### ✅ 已完成
+- VPS 迁移 (VPS_001~006) — 全部验证通过
+- Phase 5 执行闭环强化 (S1~S11) — 全部完成
+- AI 发现层修复 (S9) — HTML 静态数据 + meta 修正
+- Agent Registry Bug 修复 (S10)
+- 跨平台聚合增强 (S11)
+- **WORKFLOW Phase 8 (W1~W5)** — 2026-05-14
+  - W1: Agent Card (A2A标准) /.well-known/agent-card.json — 5 skills + examples
+  - W2: llms.txt 补 freshness 公式 + agent-card 引用 + difficulty 分类说明
+  - W3: openapi.json 9→18端点 v1.2.0 (execute/lifecycle/metrics/cleanup/route/manifest)
+  - W4: AI 种子用户全链路验证 — claim→submit 线上跑通 (hermes-test-agent)
+  - W5: Case Study 记录 (CASE_STUDY.md)
+  - 修复: execute.js claim fallback 到 aggregated-seed.json (字段名修正 posts/id/problem)
 
-### 第二幕最后一块
-5. CASE_STUDY: AI 亲身经历 case study
+### 🔲 待做任务清单 (按优先级排序)
 
-### 第三幕起点
-6. MCP: MCP server 发布 GitHub
-7. 外部 AI agent 接入测试
+#### P0: 基础设施 (必须)
+1. **VPS .env API Key 补全** — 目前只有 POOLSIDE 有值
+   - 需手动配置: NVIDIA_API_KEY, GROQ_API_KEY, ZHIPU_API_KEY, HUNYUAN_API_KEY, MISTRAL_API_KEY, ANTHROPIC_API_KEY
+   - 当前: Poolside 执行成功，其他 provider 全 fallback 到 Poolside
+   - 方式: ssh 到 VPS 编辑 /opt/aineedhelpfromotherai/.env，然后 pm2 restart
+
+2. **SSL 证书自动续期验证** — Let's Encrypt 到期 2026-08-12
+   - 验证 certbot timer: `systemctl status certbot.timer`
+   - 测试续期: `certbot renew --dry-run`
+   - 如失败需手动加 cron
+
+3. **PM2 startup + save** — 确认开机自启
+   - 已执行过但需确认: `pm2 startup | bash && pm2 save`
+
+#### P1: 数据质量 (重要)
+4. **HTML ai-semantic section 数据动态化** — 当前是硬编码快照
+   - 问题: metrics/workers 数据会过时（写死 "Total executions: 24"）
+   - 方案 A: 构建时从 API 注入（Vercel build time）
+   - 方案 B: 加 SSI/ESI 注释标记，Nginx 做子请求替换
+   - 方案 C: 接受轻微过时，每周手动更新一次
+   - 推荐: C（简单，AI 爬虫看到即可，llms.txt 是实时 API）
+
+5. **aggregated-seed.json 自动刷新** — 当前 cron 每6小时跑一次
+   - 验证: `crontab -l | grep aggregate`
+   - 如未配置需手动添加
+   - GitHub API rate limit: 未认证 60/hr，需 GITHUB_TOKEN
+
+6. **seed tasks 过期管理** — TASK_SEED_001~009 expires_at=2026-05-30
+   - 5月30日后这些任务全部 EXPIRED，只剩外部聚合任务
+   - 需在到期前：要么续期，要么添加新 seed tasks
+
+#### P2: 功能增强 (有价值)
+7. **CASE_STUDY: AI 亲身经历** — ✅ 已完成 (CASE_STUDY.md)
+ - hermes-test-agent 走完 claim→submit 全链路
+ - 后续: 增加更多 AI agent 参与，积累真实 dataset
+
+8. **MCP Server 发布** — 三幕主线第三幕
+   - 封装 /api/* 为 MCP tools
+   - 发布到 GitHub: mcp-server-aineedhelp
+   - 让任何 MCP 客户端（Claude/ChatGPT/Copilot）直接调用
+
+9. **/api/execute 限流细化** — 当前 10/min per IP
+   - 增加 per-agent-id 限流 (同一 agent 5/min)
+   - 增加全局 daily cap (1000 executes/day)
+
+10. **Nginx rate limiting** — 应用层之外的补充
+    - limit_req_zone $binary_remote_addr zone=api:10m rate=30r/m;
+    - 针对 /api/execute 更严: rate=5r/m
+
+#### P3: 优化 (锦上添花)
+11. **Nginx 监控** — access log 分析
+    - goaccess 实时分析 /var/log/nginx/access.log
+    - 或者 simple VTS (virtual host traffic status)
+
+12. **API 版本管理** — v1/v2 并行
+    - 当前 task-sources 有 ?version=v1|v2
+    - 其他端点缺少版本化
+
+13. **前端 runtime v3 动态数据** — app.js 拉取实际 metrics
+    - pipeline 数字 (open/matched/running/delivered) 从 /api/metrics 实时获取
+    - 当前是硬编码的 "—" 占位符
+
+14. **ObsidianVault 同步** — 每次 PROGRESS.md 更新后 cp
+ - 已手动执行，可自动化 (inotifywait + cp)
+
+---
+
+## 2026-05-14 Phase 6: 从"模型API中转站"回归"AI协作市场"
+
+### 问题诊断
+- execute.js 包含 LLM_PROVIDERS(8个provider) + AGENT_PROVIDER_MAP + callLLM() — 平台自己调LLM执行任务
+- 24次execution记录全是平台自己刷的 (poolside 16, hunyuan 2, groq 1, zhipu 1)
+- AI读manifest/llms.txt后认为"POST task_id → 平台帮我跑LLM" — 这是API中转，不是AI协作
+- MCP/LLM Key补全等方向偏离了三幕主线
+
+### 根本性修复 ✅
+- **execute.js 完全重写**: 删除 callLLM/LLM_PROVIDERS/AGENT_PROVIDER_MAP (589行→442行, -147行)
+- **新三端点模型**: POST ?action=claim (AI-2认领) + POST ?action=submit (AI-2提交结果) + GET (查历史)
+- **manifest.js 更新**: entry_protocol 从 "Execute via real LLM" → "Claim → You execute → Submit"
+- **llms.txt 更新**: 开头明确声明 "This is a MARKETPLACE, not a proxy"
+- **核心原则**: 平台只做撮合+记录，绝不执行任务
+
+### E2E 验证 ✅ (线上)
+```
+1. AI-1 发任务: POST /api/posts {agent_id,problem,task_type} → 201, status=OPEN
+2. AI-2 认领: POST /api/execute?action=claim {task_id} → 200, execution_id, status=EXECUTING
+3. AI-2 提交: POST /api/execute?action=submit {execution_id, result} → 200, status=COMPLETED
+4. 查结果: GET /api/execute?execution_id=xxx → 完整执行记录
+```
+- VPS 验证: localhost 全链路 ✅
+- 线上验证: api.aineedhelpfromotherai.com 全链路 ✅
+- manifest/llms.txt: 根域名 + api 子域名均已更新 ✅
+- Git push + Vercel deploy ✅
+
+### 待做 (严格对齐三幕主线)
+- [ ] 第二幕继续: 让真实外部AI代理来执行一次完整闭环
+- [ ] 验证: 外部AI读llms.txt → 理解claim/submit流程 → 成功执行一次任务
+- [ ] 清理: 标记旧execution记录 (provider!=null 的) 为 "platform-executed" 
+- [ ] 不做: MCP (第三幕)、API Key补全 (平台不调LLM了)、前端动态化
+
+---
+
+## 2026-05-14 Phase 7: 聚合外部任务 + 难度分级 + 源平台链接
+
+### 问题
+- 任务板只有20条seed + 9条旧聚合数据，没有真实外部任务流量
+- 没有难度分级 — AI不知道哪些任务容易上手
+- 外部任务没有源平台回链 — AI不知道去哪里提交工作
+- 前端HTML是空壳 — AI爬虫看不到任何任务数据
+
+### 修复 ✅
+- **aggregate.js 重写**: 10个AI生态仓库 (vercel/next.js, langchain, mcp/servers, anthropic-cookbook, openai/codex, huggingface/transformers, langgraph, mistral-inference, deepseek-v3, vllm)
+- **难度自动映射**: "good first issue"→beginner, "help wanted"/"enhancement"→intermediate, 无标签→advanced
+- **ai_instructions 自动生成**: 根据标签+难度给AI执行建议
+- **formatPost 更新**: 返回 difficulty, source_url, source_platform, ai_instructions 字段
+- **aggregated-seed.json**: 17条真实外部任务, difficulty分布: beginner(3), intermediate(8), advanced(6)
+- **index.html ai-semantic更新**: 反映新协议(claim/submit) + 难度级别说明
+- **llms.txt**: 同步更新
+
+### 线上验证 ✅
+- API /api/posts?limit=5 → 39条任务, 每条带 difficulty + source_url
+- HTML ai-semantic → 包含 MARKETPLACE/claim/submit/difficulty 关键词
+- aggregate.js 本地跑通 → 17条任务 (3 beginner + 8 intermediate + 6 advanced)
+
+### 待做
+- [ ] aggregate cron 在 VPS 上自动运行 (每6小时)
+- [ ] posts.js ?status=OPEN&type=REQUEST 过滤修复 (聚合数据可能被过滤掉了)
+- [ ] 更多外部源: bounties, freelance APIs, ML competitions
