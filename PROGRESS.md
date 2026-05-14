@@ -235,3 +235,114 @@
 ### AI 发现路径验证 ✅
 - llms.txt → /api/manifest v2.0 → /api/posts (16 OPEN) → /api/lifecycle (9 fresh) → POST /api/execute
 - 全链路无断点
+
+---
+
+## 2026-05-14 Phase 4: VPS 迁移（execute.js 接 VPS）
+
+### 背景与动机
+- Vercel 12-function 限制已触发，Hobby 版无法扩展
+- execute.js 是核心端点，必须在 VPS 上跑（长连接、PG 直连、无冷启动）
+- Vercel 只保留静态前端，API 全走 VPS
+
+### VPS_001: 环境准备 ✅
+- VPS: 108.61.220.98:2222 (Vultr, Ubuntu 22.04, 1CPU/1G RAM)
+- Node.js 18.17.1 (已有)
+- PM2 7.0.1 ✅ (npm install -g pm2)
+- Nginx 1.18.0 ✅ (apt-get install nginx)
+- PG14 + pgbouncer 已有 (pgbouncer 5432 → PG 5433)
+- PG 连通性: 重置 aineed 用户密码 → AiN33dH3lp2026!
+- SSL 连接坑: pg v8+ 把 sslmode=require 等同 verify-full，自签名证书报错
+- 解决: 连接串加 `uselibpqcompat=true&sslmode=require` + .env 设 `PGSSLMODE=require`
+- 验证: `SELECT count(*) FROM execution_history` → 20 条
+
+### VPS_002: Express runtime ✅
+- 新建 server.js — Express 5 + dotenv + cors
+- 10 个 API 端点全部迁移（不改原 handler 逻辑，只做适配层）
+- Express 5 坑: 不支持 `app.get('*')` 通配符 → 改为 `app.get('/:path')`
+- 项目同步: rsync 到 /opt/aineedhelpfromotherai/ (排除 node_modules/.git)
+- .env 配置:
+  ```
+  DATABASE_URL=postgres://aineed:AiN33dH3lp2026!@127.0.0.1:5432/aineedhelp?uselibpqcompat=true&sslmode=require
+  PG_CONNECTION_STRING=同上
+  PGSSLMODE=require
+  PORT=3000
+  NODE_ENV=production
+  ```
+- PM2 托管: `pm2 start server.js --name aineedhelp`
+- 验证:
+  - /api/health → {"status":"ok","runtime":"express"} ✅
+  - /api/posts?limit=2 → success=True total=30 ✅
+  - /api/execute?limit=1 → total=20 source=postgresql ✅
+  - /api/lifecycle → 9 records ✅
+  - /api/manifest → v2.0 ✅
+
+### VPS_003: Nginx + SSL + 域名 🔄 (进行中)
+- Nginx 反向代理配置完成:
+  - /api/* → http://127.0.0.1:3000
+  - /llms.txt, /openapi.json → http://127.0.0.1:3000
+  - 其他 → proxy_pass Vercel (暂未生效)
+- DNS: `api.aineedhelpfromotherai.com` A record → 108.61.220.98 ✅
+  - 通过 `vercel dns add aineedhelpfromotherai.com api A 108.61.220.98` 添加
+  - dig 验证: 108.61.220.98 ✅
+- SSL: Let's Encrypt 证书获取成功 ✅
+  - `certbot certonly --standalone -d api.aineedhelpfromotherai.com`
+  - 证书路径: /etc/letsencrypt/live/api.aineedhelpfromotherai.com/
+  - 到期: 2026-08-12, 自动续期已配置
+- **待做**:
+  - [ ] 更新 Nginx 配置加 SSL (443 + cert + HTTP→HTTPS 重定向)
+  - [ ] `nginx -t && systemctl reload nginx`
+  - [ ] 验证: `curl https://api.aineedhelpfromotherai.com/api/execute`
+
+### VPS_004: Vercel 清理 ⬜
+- [ ] vercel.json 删除所有 /api/* 路由（只保留静态资源路由）
+- [ ] llms.txt 里 API URL 改为 api.aineedhelpfromotherai.com
+- [ ] manifest.js 里 base_url 改为 api.aineedhelpfromotherai.com
+- [ ] 前端 app.js API base URL 改为 api.aineedhelpfromotherai.com
+- [ ] 验证: aineedhelpfromotherai.com 前端正常 + API 走 VPS
+
+### VPS_005: Nightly Backup ⬜
+- [ ] pg_dump cron (每天 03:00)
+- [ ] 项目目录 tar 备份
+- [ ] 保留 7 天滚动
+
+### VPS_006: 全链路验证 ⬜
+- [ ] curl https://api.aineedhelpfromotherai.com/api/health
+- [ ] curl https://api.aineedhelpfromotherai.com/api/execute?limit=1
+- [ ] curl https://api.aineedhelpfromotherai.com/api/lifecycle
+- [ ] POST execute 任务并验证 PG 写入
+- [ ] aineedhelpfromotherai.com 前端正常加载
+
+### VPS 关键文件清单
+| 文件 | 路径 | 说明 |
+|------|------|------|
+| server.js | /home/yuan/dev/aineedhelpfromotherai/server.js | Express runtime (本地) |
+| VPS 项目 | /opt/aineedhelpfromotherai/ | VPS 部署目录 |
+| VPS .env | /opt/aineedhelpfromotherai/.env | PG 连接串 + SSL |
+| Nginx 配置 | /etc/nginx/sites-available/aineedhelpfromotherai | 反代规则 |
+| SSL 证书 | /etc/letsencrypt/live/api.aineedhelpfromotherai.com/ | Let's Encrypt |
+| PM2 进程 | aineedhelp (id=0, port=3000) | 进程管理 |
+| PG 连接 | pgbouncer 5432 → PG 5433 | aineedhelp 库 |
+
+### VPS 踩坑记录
+1. **pg SSL 兼容性**: pg v8+ 的 sslmode=require 等同 verify-full，自签名证书报 "self-signed certificate"。必须加 `uselibpqcompat=true` 参数
+2. **PGSSLMODE 环境变量**: execution-history.js 检查 `process.env.PGSSLMODE === 'require'` 才启用 SSL，.env 必须设此变量
+3. **Express 5 路由**: 不支持 `app.get('*')` 和 `app.all('/api/posts/*')` 通配符，改为 `app.get('/:path')` 和 `app.all('/api/posts/:path')`
+4. **Vercel DNS CLI**: `vercel dns add <domain> <subdomain> A <ip>` 可直接操作，不需 dashboard
+
+---
+
+## 下一步优先级（新窗口接续）
+
+### 紧急：VPS 迁移收尾
+1. VPS_003: Nginx SSL 配置 (443 + cert + redirect)
+2. VPS_004: Vercel 清理 (删 API 路由 + URL 改 api. 子域名)
+3. VPS_005: Nightly backup cron
+4. VPS_006: 全链路域名级验证
+
+### 第二幕最后一块
+5. CASE_STUDY: AI 亲身经历 case study
+
+### 第三幕起点
+6. MCP: MCP server 发布 GitHub
+7. 外部 AI agent 接入测试
