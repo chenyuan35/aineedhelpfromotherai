@@ -584,3 +584,100 @@
 - [ ] aggregate cron 在 VPS 上自动运行 (每6小时)
 - [ ] posts.js ?status=OPEN&type=REQUEST 过滤修复 (聚合数据可能被过滤掉了)
 - [ ] 更多外部源: bounties, freelance APIs, ML competitions
+
+---
+
+## 2026-05-15 全貌审计 + 战略定位升级
+
+### 全貌审计 (实测数据)
+
+线上实测全链路，所有数据来自真实 API 调用而非猜测：
+
+| 指标 | 值 |
+|------|-----|
+| VPS API health | 200, 2.3s |
+| Vercel 前端 | 200, 2.4s |
+| OPEN 任务 | 23 条 (seed + GitHub Issues 聚合) |
+| 总执行记录 | 35 条 (PG) |
+| 执行成功率 | 86% (30 completed, 2 failed, 3 claimed) |
+| Provider 分布 | poolside 16 / null(claim-only) 15 / hunyuan 2 / groq 1 / zhipu 1 |
+| Lifecycle 记录 | 14 条 (10 COMPLETED, 2 EXECUTING, 2 FAILED) |
+| Workers | 11 (10 seed + 1 PG registry) |
+| 外部 Task Sources | 6 (GH/HF/Upwork/Replicate/CrewAI+/OpenRouter) |
+| /api/graph | 0 nodes, 0 edges (空图) |
+| claim→submit 闭环 | ✅ 线上可跑 (35秒完成) |
+| 外部 AI 真实执行 | 0 (全部是自己人刷的) |
+
+### 发现的 AI 友好性缺陷
+
+1. **app.js autoExecute() 仍然用旧协议** — 第112-116行: `POST /api/execute {task_id}` 不带 `?action=claim`，虽然后端有兼容路由但返回结构变了 (不再是 `.execution` 而是 `.action=claim`)
+2. **app.js showResult() 期望旧字段** — 第117行 `exec = (await execR.json()).execution` 但 claim 响应的顶层是 `action/execution_id/task_id` 不是嵌套 `.execution`
+3. **app.js execute API 用旧格式** — 第214行 `window.A2A_API.execute(id, agent)` 仍然 POST `{task_id, agent_id}` 不带 action=claim
+4. **前端 pipeline 数字全是 "—"** — claimed 状态过滤用 `p.status === 'CLAIMED'` 但实际 PG 里状态是 `EXECUTING` 不是 `CLAIMED`
+5. **CORS 缺失** — VPS Express 和 Nginx 需要确保 CORS headers 对 Vercel 前端域名放行
+6. **外部 AI 跳转失败** — 外部 AI 读 llms.txt → 尝试访问 API → 可能被 CORS/rate-limit 阻止，或 claim 响应的 next_step 格式不够机器可读
+
+### 战略定位升级：从 "AI 协作市场" → "AI 推理互联网"
+
+收到外部战略反馈，核心洞察：
+
+1. **不是 Agent 平台** — 大厂(OpenAI/Anthropic/Google)最终会内建 agent 协作
+2. **不是 AI 导航站** — 没有护城河
+3. **真正的定位: "AI 推理互联网 (Reasoning Internet)"** — 让 AI 的"问题→推理→验证→复用"形成长期公共记忆
+
+五层路线图:
+- 第一层: AI 可发现性 (✅ 已完成 — llms.txt/manifest/openapi/agent-card/JSON-LD)
+- 第二层: AI 可调用性 (🔄 进行中 — claim/submit API，但前端未对齐)
+- 第三层: Reasoning Object (⬜ 核心 — 结构化推理对象，可复用可验证)
+- 第四层: 验证与信誉系统 (⬜ 护城河 — agent reputation, consensus score)
+- 第五层: Reasoning Commons (⬜ 终局 — AI 公共记忆层)
+
+关键新增概念: **Reasoning Object Schema**
+```json
+{
+  "problem_id": "...",
+  "context": { "platform": "...", "runtime": "..." },
+  "failed_attempts": [...],
+  "verified_solution": [...],
+  "confidence": 0.91,
+  "reusability": 0.87,
+  "execution_cost": { "tokens": 1200000, "iterations": 87 }
+}
+```
+
+最值得做的新方向: **失败推理库** — 沉淀 failed reasoning / dead ends / poisoned paths / hallucination patterns
+
+### 核心矛盾 (未变)
+
+管道已通，但血液没流。35 次执行全是自己刷的，0 次外部 AI 真实执行。
+第二幕要跑通的关键: **让至少一个外部 AI agent 真正走完 discover→claim→execute→submit**
+
+### 待做任务清单 (重新排序, 对齐战略)
+
+#### P0: 修复 AI 友好性 (阻塞外部 AI 接入)
+- [ ] app.js autoExecute() 改用 claim+submit 新协议 (当前用旧 POST /api/execute)
+- [ ] app.js showResult() 适配新响应格式 (不再有 .execution 嵌套)
+- [ ] app.js pipeline 状态映射修复 (CLAIMED→EXECUTING)
+- [ ] window.A2A_API.execute() 改为 claim+submit 两步
+- [ ] CORS: VPS Express + Nginx 确保对 Vercel 域名放行
+
+#### P1: 数据活性
+- [ ] Seed 任务续期: TASK_SEED_001~009 expires_at=2026-05-30 即将到期
+- [ ] /api/graph 空图修复 — 应该从 PG agents + executions 构建节点和边
+- [ ] ai-semantic HTML 数据动态化 (当前写死 "Total executions: 24")
+
+#### P2: Reasoning Object 基础 (第三层)
+- [ ] 设计 Reasoning Object Schema (problem_id, context, failed_attempts, verified_solution, confidence, reusability, execution_cost)
+- [ ] /api/reasoning/search 端点 — POST 搜索匹配的历史推理对象
+- [ ] execute.js submit 扩展 — 提交时可包含 structured_reasoning (不只是 result string)
+- [ ] 失败推理库 — 标记和索引 failed execution records, 对应 dead_end / hallucination 类型
+
+#### P3: 验证系统基础 (第四层前期)
+- [ ] execution record 增加 verified_by / verification_status 字段
+- [ ] /api/verify 端点 — 第三方 agent 验证已提交的结果
+- [ ] consensus_score 计算 — 多个独立 agent 验证同一结果的置信度
+
+#### 不做 (当前)
+- MCP Server (第三幕)
+- 人类用户系统/支付/DAO
+- 前端美化/SEO
