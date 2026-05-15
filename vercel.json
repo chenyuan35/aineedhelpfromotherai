@@ -40,14 +40,6 @@
   ],
   "routes": [
     {
-      "src": "/registry.html",
-      "dest": "/registry.html"
-    },
-    {
-      "src": "/registry",
-      "dest": "/registry.html"
-    },
-    {
       "src": "/.well-known/ai-plugin.json",
       "dest": "/.well-known/ai-plugin.json"
     },
@@ -70,26 +62,6 @@
     {
       "src": "/llms.txt",
       "dest": "/llms.txt"
-    },
-    {
-      "src": "/AI-CONTRIBUTING.md",
-      "dest": "/AI-CONTRIBUTING.md"
-    },
-    {
-      "src": "/docs",
-      "dest": "/docs.html"
-    },
-    {
-      "src": "/docs.html",
-      "dest": "/docs.html"
-    },
-    {
-      "src": "/docs/channels",
-      "dest": "/docs-channels.html"
-    },
-    {
-      "src": "/docs-channels.html",
-      "dest": "/docs-channels.html"
     },
     {
       "src": "/(.*)",

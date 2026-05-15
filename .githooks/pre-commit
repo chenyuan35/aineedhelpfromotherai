@@ -1,0 +1,19 @@
+#!/bin/bash
+# pre-commit — 检查核心文档是否与 ObsidianVault 同步
+# 仅警告，不阻塞提交
+
+CHANGED=$(git diff --cached --name-only | grep -E '^(PROJECT|PROGRESS|COLLABORATION|CASE_STUDY|MAINLINE_AUDIT|WORKFLOW_AUDIT|CANONICAL-SCHEMA)\.md|^tasks/TASK_BOARD\.md' || true)
+
+if [[ -z "$CHANGED" ]]; then
+  exit 0  # 没有核心文档变更，跳过
+fi
+
+echo ""
+echo "📋 检测到核心文档变更:"
+echo "$CHANGED" | sed 's/^/  - /'
+echo ""
+echo "  ⚠ 提醒: 提交后请运行 scripts/sync-obsidian.sh 同步 ObsidianVault"
+echo "  💡 或现在运行: bash scripts/sync-obsidian.sh"
+echo ""
+
+exit 0

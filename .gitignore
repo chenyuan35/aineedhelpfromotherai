@@ -3,3 +3,6 @@
 .credentials
 node_modules/
 .env*.local
+.swarm/
+.claude-flow/
+ruvector.db
