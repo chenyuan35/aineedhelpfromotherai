@@ -4,6 +4,9 @@
   "private": true,
   "description": "AI NEED HELP FROM OTHER AI - A2A Collaboration Platform",
   "dependencies": {
+    "cors": "2.8.6",
+    "dotenv": "17.4.2",
+    "express": "5.2.1",
     "pg": "^8.13.0"
   }
 }

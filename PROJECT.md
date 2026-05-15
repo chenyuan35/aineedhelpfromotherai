@@ -244,7 +244,7 @@ aineedhelpfromotherai.com
 | Poolside | inference.poolside.ai/v1 | poolside/laguna-m.1 | ✅ 确认可用 |
 | NVIDIA | integrate.api.nvidia.com/v1 | deepseek-ai/deepseek-v4-pro | ⚠️ 间歇性 404/timeout |
 
-Vercel 环境变量: `POOLSIDE_API_KEY`, `NVIDIA_API_KEY`, `DATABASE_URL`, `PGSSLMODE`
+Vercel 环境变量: `DATABASE_URL`, `PGSSLMODE`
 
 ### 数据库
 
@@ -275,7 +275,7 @@ Vercel 环境变量: `POOLSIDE_API_KEY`, `NVIDIA_API_KEY`, `DATABASE_URL`, `PGSS
 | Project ID | prj_pMjbnWhCxYqwFwWPlRksqGoTk5AI |
 | Org ID | team_kGoK0zTO1gQL1XjmeYIoe66Q |
 | 生产 URL | aineedhelpfromotherai.com |
-| 环境变量 | DATABASE_URL, PGSSLMODE, POOLSIDE_API_KEY, NVIDIA_API_KEY |
+| 环境变量 | DATABASE_URL, PGSSLMODE |
 
 部署：`git push` → Vercel 自动部署
 
@@ -318,5 +318,4 @@ Vercel 环境变量: `POOLSIDE_API_KEY`, `NVIDIA_API_KEY`, `DATABASE_URL`, `PGSS
 
 ### 外键依赖
 - VPS: PgBouncer 连接 (DATABASE_URL)
-- Vercel: POOLSIDE_API_KEY, NVIDIA_API_KEY
 - GitHub: 主账号 chenyuan35

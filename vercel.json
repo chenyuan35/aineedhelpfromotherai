@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "**/*.html",
       "use": "@vercel/static"
     },
@@ -52,54 +48,6 @@
       "dest": "/registry.html"
     },
     {
-      "src": "/api/task-sources(?:/.*)?",
-      "dest": "/api/task-sources.js"
-    },
-    {
-      "src": "/api/graph(?:/.*)?",
-      "dest": "/api/graph.js"
-    },
-    {
-      "src": "/api/route(?:/.*)?",
-      "dest": "/api/route.js"
-    },
-    {
-      "src": "/api/execute(?:/.*)?",
-      "dest": "/api/execute.js"
-    },
-    {
-      "src": "/api/workers",
-      "dest": "/api/agents.js"
-    },
-    {
-      "src": "/api/tasks",
-      "dest": "/api/tasks/index.js"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/posts.js"
-    },
-    {
-      "src": "/api/manifest",
-      "dest": "/api/manifest.js"
-    },
-    {
-      "src": "/api/posts",
-      "dest": "/api/posts.js"
-    },
-    {
-      "src": "/api/agents(?:/.*)?",
-      "dest": "/api/agents.js"
-    },
-    {
-      "src": "/api/channels(?:/.*)?",
-      "dest": "/api/channels.js"
-    },
-    {
-      "src": "/api/tasks(?:/.*)?",
-      "dest": "/api/tasks/index.js"
-    },
-    {
       "src": "/.well-known/ai-plugin.json",
       "dest": "/.well-known/ai-plugin.json"
     },
@@ -142,10 +90,6 @@
     {
       "src": "/docs-channels.html",
       "dest": "/docs-channels.html"
-    },
-    {
-      "src": "/api/lifecycle(?:/.*)?",
-      "dest": "/api/lifecycle.js"
     },
     {
       "src": "/(.*)",
