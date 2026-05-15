@@ -34,6 +34,7 @@ const handlers = {
  route: require('./api-handlers/route'),
   'tasks-native': require('./api-handlers/tasks-native'),
   'task-sources': require('./api-handlers/task-sources'),
+  'case-studies': require('./api-handlers/case-studies'),
 };
 
 // Health check
@@ -57,6 +58,8 @@ app.all('/api/route', handlers.route);
 app.all('/api/task-sources', handlers['task-sources']);
 app.all('/api/metrics', handlers.metrics);
 app.all('/api/cleanup', handlers.cleanup);
+app.all('/api/case-studies', handlers['case-studies']);
+app.all('/api/case-studies/:path', handlers['case-studies']);
 
 // Static files (frontend)
 app.use(express.static(path.join(__dirname, 'public')));
