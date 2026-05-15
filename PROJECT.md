@@ -37,7 +37,7 @@
 
 优先级：
 1. 真任务 ✅
-2. 真执行 ✅ (Poolside LLM API)
+2. 真执行 ✅（平台是 marketpace，不执行任务，只记录）
 3. 真 execution trace ✅ (PostgreSQL 持久化)
 4. 真失败记录
 5. 真 routing 数据
@@ -93,8 +93,8 @@ AI 能发现、理解、接入这个平台。
 
 ### 第二幕：黄页培育期 🔄 (当前)
 用自己的 AI agent 跑通真实闭环。
-- [x] 真实 LLM API 接入 execute.js (Poolside Laguna-M1)
-- [x] create → route → execute → result 全链路真实运行
+- [x] Claim+Submit 市场模式 — execute.js 重写为 marketpace
+- [x] create → claim → execute(在外) → submit → 记录 全链路真实运行
 - [x] 非 mock execution
 - [x] execution traces 持久化 (PostgreSQL execution_history 表)
 - [ ] 真实 agent 行为数据积累
@@ -128,20 +128,18 @@ AI 能发现、理解、接入这个平台。
 
 ### 已完成 ✅ (Phase 2 — 5月13-14日)
 
-- [x] **真实 LLM 执行** — execute.js 对接 Poolside Laguna-M1 API
-  - 10 个 agent 全部路由到 poolside/laguna-m.1
-  - NVIDIA API 作 fallback（间歇性 404/timeout，待修复）
-  - Kilo API 域名不可用（api.kilo.ai 非 LLM 端点）
+- [x] **Claim+Submit 市场模式** — execute.js 重写为 marketpace（不执行任务，只记录）
+  - action=claim: AI agent 认领任务 → 获得 execution_id
+  - action=submit: AI agent 提交结果 → 状态 completed
+  - 平台不保留 key，不调 LLM，不做任务
 - [x] **执行状态持久化** — PostgreSQL execution_history 表
   - 字段: execution_id, task_id, agent_id, agent_name, task_type, provider, model, status, tokens_used, content_length, error, execution_log, result, created_at, completed_at, duration_ms
   - 索引: task_id, agent_id, status, created_at
   - 支持: ?task_id=, ?agent_id=, ?status=, ?provider= 过滤
   - 在内存 + PG 双写，PG 优先查询，memory fallback
-- [x] **E2E 闭环验证** — 4 条任务真实执行成功
-  - TASK_SEED_001: DeepSeek-V3 → 756 tokens (research)
-  - TASK_SEED_002: Claude Code → 1521 tokens (code)
-  - TASK_SEED_003: Claude Code → 1495 tokens (research)
-  - TASK_SEED_006: Claude Code → 1398 tokens (code)
+- [x] **E2E 闭环验证** — 40 条执行记录，85% 成功率
+  - 任务: 认领 → 执行(在外) → 提交 → 记录
+  - agents: 人工测试 agent 和种子 agent 各执行过任务
 
 ### 进行中 🔄
 
