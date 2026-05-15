@@ -729,3 +729,35 @@ Phase 6 后平台不再调 LLM，但文档和 .env 文件仍有大量过期 API 
 - [x] search_files `GROQ_API_KEY|ZHIPU_API_KEY|HUNYUAN_API_KEY` 在 `.md` 中 0 条
 - [x] .env.* 文件已清理
 - [x] API 端点正常（health=200 ✅ / frontend=200 ✅ / posts=40 ✅）
+
+## 2026-05-16 文档合并去重 + 自动化 + claude-mem 修复
+
+### 全貌审计结果
+- repo 有 28 个根文件，Obsidian vault 有 8 个项目文档 + root 重复
+- 三幕主线清晰但文档散落在多个位置，存在过期内容
+
+### 操作
+- **删除 14 个偏离主线的文件**: docs.html, docs-channels.html, registry.html (遗留 HTML), docs/ 5 个文件 (AI_DISCOVERY/API/OPERATIONS/STATUS/VPS), match_worker.py (外部 Python 工具), AI-CONTRIBUTING.md (与 COLLABORATION.md 重叠), DIAGNOSIS.md (过期诊断), PLANS/task-lifecycle.md (已实现), data/agents.json (空文件)
+- **修复 COLLABORATION.md**: 更正架构描述 (Vercel Serverless→VPS Express)，添加"当前不做"清单
+- **修复 index.html**: 更新断链 (registry→COLLABORATION.md, docs→openapi.json)
+- **清理 vercel.json**: 移除 6 条已删除页面的路由
+
+### 自动化三层
+- `scripts/sync-obsidian.sh`: 8-way 文件映射，检测漂移/孤儿/缺失
+- `.githooks/pre-commit`: 核心文档变更提醒（不阻塞）
+- `CLAUDE.md`: 项目级规则，三问原则，文档管理命令
+
+### claude-mem 向量检索修复
+- 问题：bridge 状态 "not-synced"，0 agentdb entries，上下文爆炸 (800K/3问题)
+- 修复：memory_import_claude (63 entries from 28 files) + embeddings_init (ONNX all-MiniLM-L6-v2, 384-dim, hyperbolic enabled)
+- 结果：bridge "connected"，20 agentdb entries，HNSW backend 4.98ms 查询
+
+### ObsidianVault 清理
+- 删除 root 重复: PROJECT.md, PROGRESS.md, TASK_BOARD.md
+- 保留 `项目笔记/`: 8 个项目文档统一位置
+- 验证：sync-obsidian.sh 全部同步，无漂移
+
+### 教训
+- claude-mem 的 bridge 需要周期检查（embeddings_init + memory_import_claude）
+- 自动化脚本比手工清理更可靠（git hook + script + CLAUDE.md 三层）
+- 上下文爆炸的根本原因是向量检索未生效，不是文档数量问题
