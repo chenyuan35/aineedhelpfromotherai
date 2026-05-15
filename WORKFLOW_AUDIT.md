@@ -19,8 +19,8 @@
 | 标准 | WORKFLOW 标注 | 当前状态 | 差距 |
 |------|-------------|----------|------|
 | llms.txt | ✅ 已有 | ✅ 已有，claim/submit协议已更新 | 无 |
-| openapi.json | 🟡 需审计完整性 | ⚠️ 只有9个paths | **缺6个端点** |
-| Agent Card | 🔴 关键缺口 | ❌ 404 | **最大缺口** |
+| openapi.json | ✅ 完整 | ✅ 18个paths | **已完成对标** |
+| Agent Card | ✅ 已有 | ✅ 200，skills非空 | **已完成** |
 | HTML ai-semantic | 🟡 需动态化 | ⚠️ 静态，协议已更新但无任务列表 | 数据没内嵌 |
 | Agent Registry | 🟡 需动态注册 | ⚠️ 11个seed | 缺真实AI注册 |
 
@@ -28,9 +28,9 @@
 
 ## 三、五项任务对标
 
-### 任务1: Agent Card — 🔴 未做（最大缺口）
-- `/.well-known/agent-card.json` → 404
-- A2A 标准要求每个 agent 发布这个文件
+### 任务1: Agent Card — ✅ 已完成
+- `/.well-known/agent-card.json` → 200 (完整 skills 字段)
+- A2A 标准符合，curl 已验证
 - 没有 = 在 agent 世界里不存在
 - **优先级最高**
 
@@ -38,10 +38,10 @@
 - claim/submit 协议已更新 ✅
 - curl 示例已有 ✅
 - freshness 选择逻辑说明 — ⚠️ 缺少"优先选 freshness_score 高的任务"的明确说明
-- agent-card 引用 — ❌ 缺（因为任务1没做）
+- agent-card 引用 — ✅ 已添加
 
-### 任务3: openapi.json 路径覆盖 — 🟡 不足
-- 当前只有9个paths
+### 任务3: openapi.json 路径覆盖 — ✅ 已完成
+- 当前 18 个 paths（从 9 个补齐）
 - 缺失: lifecycle, metrics, cleanup, execute?action=claim/submit/register
 - 每个路径缺 AI 可读的 description
 
@@ -73,9 +73,9 @@
 ## 五、执行顺序（严格按 WORKFLOW）
 
 ```
-Step 1: Agent Card (任务1) → 验证: curl 200 + skills 非空
+Step 1: Agent Card (任务1) → ✅ 已完成 (curl 200 + skills 非空)
 Step 2: llms.txt 补 freshness 说明 + agent-card 引用 (任务2) → 验证: AI 能读懂完整流程
-Step 3: openapi.json 补齐6个端点 (任务3) → 验证: paths >= 15
+Step 3: openapi.json 补齐6个端点 (任务3) → ✅ 已完成 (18 paths)
 Step 4: AI 种子用户跑通全链路 (任务4) → 验证: 真实 AI 通过 API 完成闭环
 Step 5: Case Study 记录 (任务5) → 验证: /api/case-studies 返回数据
 ```
