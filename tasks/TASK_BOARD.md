@@ -10,7 +10,7 @@
 | 002 | llms.txt Entry Protocol 审计 | ✅ 完成 | 6/6 checklist 项通过 | 05-16 |
 | 003 | openapi.json 路径补全 | ✅ 完成 | 18 paths (要求≥13) | 05-16 |
 | 004 | AI 种子用户跑通全链路 | ✅ 完成 | 40 execs, 85% 成功率 | 05-16 |
-| 005 | 记录 Case Study | ⏳ 部分完成 | CASE_STUDY.md 已创建，缺 API 端点 | 05-16 |
+|| 005 | 记录 Case Study | ⏳ 代码就绪，缺 VPS 部署 | api-handlers/case-studies.js + seed data created, local test 200 | 05-16 |
 | 006 | 清理过期 LLM API Key 引用 | ✅ 完成 | PROJECT.md 0 处、.env 干净 | 05-16 |
 
 ## 近期 Git 记录
@@ -40,6 +40,7 @@ ad5299f  fix: move api/ handlers to api-handlers/ (Vercel deploy fix)
 
 ## 已知未完成（下次可做）
 
-1. **Task 005**: `/api/case-studies` 端点未实现
+1. **Task 005**: 代码就绪（handler/seed/route），缺 VPS 部署（SSH 不通）
 2. **SSH**: VPS 端口 22/2222 Connection refused，需 Vultr Console 修复
 3. **文档同步**: Obsidian vault 文件手工 cp，可自动化
+4. **openapi.json 更新**: 添加 /api/case-studies 路径（等 SSH 恢复后一起做）

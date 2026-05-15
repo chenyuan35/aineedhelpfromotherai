@@ -1,15 +1,30 @@
-# Task 005: 记录 Case Study — ⏳ 部分完成
+# Task 005: 记录 Case Study — ⏳ 部分完成（缺部署）
 
 ## 状态
 - [x] CASE_STUDY.md 已创建（1892 字，详细记录第一次 AI 闭环执行）
-- [x] case study JSON 参考格式已定义
-- [ ] `/api/case-studies` 端点尚未实现（返回 404）
-- [ ] `data/case-studies/` 目录未创建
+- [x] `api-handlers/case-studies.js` 已创建（PG → file fallback 双模式）
+- [x] `data/case-studies/001-first-execution.json` 种子数据已创建
+- [x] `server.js` 已注册路由（/api/case-studies + /api/case-studies/:path）
+- [x] `llms.txt` 已添加 case-studies 引用
+- [x] 本地测试通过（file fallback → total=1, success=true）
+- [ ] `/api/case-studies` 线上端点不可用（需 SSH 部署到 VPS）
 
-## 待办
-- [ ] 实现 `/api/case-studies` 端点（GET /api/case-studies, GET /api/case-studies/:id）
-- [ ] 从 execution_history 表自动生成 case study JSON
-- [ ] 联调验证端点 200
+## 阻塞原因
+- SSH 端口 22/2222 Connection refused
+- 代码在 GitHub（34df4ba），VPS 运行的是旧版本
+- 需要 SSH 后执行:
+  ```bash
+  cd /path/to/project
+  git pull origin main
+  pm2 restart 0
+  ```
+
+## 待办（SSH 恢复后）
+- [ ] `git pull && pm2 restart`
+- [ ] `curl https://api.aineedhelpfromotherai.com/api/case-studies` → 200
+- [ ] `curl https://api.aineedhelpfromotherai.com/api/case-studies/CASE_001` → 200
+- [ ] openapi.json 添加 /api/case-studies 路径
+- [ ] 更新 TASK_BOARD.md → 005 ✅ 完成
 
 ## 为什么
 一次真实执行闭环的记录，比任何营销文案都有力。这份 case study 会被 AI 爬虫消费，成为推广时最核心的材料。
