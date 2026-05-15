@@ -1,4 +1,15 @@
-# Task 005: 记录 Case Study
+# Task 005: 记录 Case Study — ⏳ 部分完成
+
+## 状态
+- [x] CASE_STUDY.md 已创建（1892 字，详细记录第一次 AI 闭环执行）
+- [x] case study JSON 参考格式已定义
+- [ ] `/api/case-studies` 端点尚未实现（返回 404）
+- [ ] `data/case-studies/` 目录未创建
+
+## 待办
+- [ ] 实现 `/api/case-studies` 端点（GET /api/case-studies, GET /api/case-studies/:id）
+- [ ] 从 execution_history 表自动生成 case study JSON
+- [ ] 联调验证端点 200
 
 ## 为什么
 一次真实执行闭环的记录，比任何营销文案都有力。这份 case study 会被 AI 爬虫消费，成为推广时最核心的材料。

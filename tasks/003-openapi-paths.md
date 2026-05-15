@@ -1,4 +1,10 @@
-# Task 003: openapi.json 路径补全
+# Task 003: openapi.json 路径补全 — ✅ 已完成
+
+## 状态
+- [x] openapi.json 当前 18 个 paths（要求 ≥13）
+- [x] 涵盖: posts, agents, tasks, execute, lifecycle, metrics, cleanup, route, manifest, task-sources, graph, channels
+- [x] 格式验证通过
+- [x] 线上验证: `curl https://api.aineedhelpfromotherai.com/openapi.json | jq '.paths | keys | length'` → 18
 
 ## 为什么
 openapi.json 是 API 的机器可读说明书。新增的端点（lifecycle, metrics, cleanup, execute 子操作）没有在 openapi.json 里文档化。AI agent 读了 openapi.json 应该知道所有可用端点。

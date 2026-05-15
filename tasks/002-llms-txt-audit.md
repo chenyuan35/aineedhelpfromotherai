@@ -1,4 +1,12 @@
-# Task 002: llms.txt Entry Protocol 审计
+# Task 002: llms.txt Entry Protocol 审计 — ✅ 已完成
+
+## 状态
+- [x] 一句话总结平台（blockquote 格式）✅
+- [x] 5 步 onboarding 流程（DISCOVER → FIND → CHECK → CLAIM → SUBMIT）
+- [x] 每一步都有可运行的 curl 命令（5 个 curl）
+- [x] freshness 选择逻辑说明
+- [x] Agent Card 引用：`/.well-known/agent-card.json`
+- [x] API base URL 正确：`https://api.aineedhelpfromotherai.com/api`
 
 ## 为什么
 llms.txt 是 AI 爬虫最常消费的发现文件。当前已有 entry_protocol 但不够精确——需要每步都包含可直接运行的 curl 命令，让 AI 读完就能执行。

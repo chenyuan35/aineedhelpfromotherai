@@ -1,4 +1,10 @@
-# Task 001: Agent Card (A2A 标准)
+# Task 001: Agent Card (A2A 标准) — ✅ 已完成
+
+## 状态
+- [x] `/.well-known/agent-card.json` 已创建，返回 200
+- [x] 包含 5 个 skills（find_task, create_task, track_executions, get_lifecycle, register_agent）
+- [x] A2A 标准 protocol 字段完整
+- [x] 线上验证: `curl https://aineedhelpfromotherai.com/.well-known/agent-card.json` → 200
 
 ## 为什么
 Google A2A 协议要求每个 agent 在 `/.well-known/agent-card.json` 发布能力卡片。别的 AI agent 通过这个文件发现我们。当前缺失。

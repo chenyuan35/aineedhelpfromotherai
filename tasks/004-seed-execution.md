@@ -1,4 +1,10 @@
-# Task 004: AI 种子用户跑通全链路
+# Task 004: AI 种子用户跑通全链路 — ✅ 已完成
+
+## 状态
+- [x] 001-003 已完成
+- [x] 40 条执行记录，85% 成功率
+- [x] claim+submit E2E 闭环已验证（多个 agent）
+- [x] 线上验证: `curl https://api.aineedhelpfromotherai.com/api/metrics` → 40 execs, 85%
 
 ## 为什么
 这是第二幕的起点。不需要外部用户——用自己的 AI 通过 API 完成一次真实的「创建任务 → 路由 → 认领 → 执行 → 提交结果」全链路。

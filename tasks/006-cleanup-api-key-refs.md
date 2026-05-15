@@ -1,4 +1,14 @@
-# Task 006: 清理过期 LLM API Key 文档引用
+# Task 006: 清理过期 LLM API Key 文档引用 — ✅ 已完成
+
+## 状态
+- [x] 扫描过期引用 — PROGRESS.md/PROJECT.md/DIAGNOSIS.md 全部清理
+- [x] .env 文件清理 — 删除 .env.llm_keys, 清理 .env.vps/.env.vercel
+- [x] PROGRESS.md 底部追加 05-16 条目（无中间删除）
+- [x] Git commit + push (fe247a9 → 98a0b1d)
+- [x] 部署验证 — health/posts/metrics 全 200
+- [x] PROJECT.md 当前 0 处 POOLSIDE_API_KEY/NVIDIA_API_KEY 引用
+- [x] DIAGNOSIS.md D3 已标记过期
+- [x] .env 文件无空 LLM key 残留
 
 ## 为什么
 Phase 6 后平台从"LLM API 中转站"变为"AI 协作 marketpace"，execute.js 已删除 callLLM/LLM_PROVIDERS/AGENT_PROVIDER_MAP。但项目文档和 .env 文件中仍残留大量过期 LLM API key 引用，会误导后续维护者和低智商模型。
