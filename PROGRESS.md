@@ -681,3 +681,34 @@
 - MCP Server (第三幕)
 - 人类用户系统/支付/DAO
 - 前端美化/SEO
+
+---
+
+## 2026-05-15 app.js 对齐 claim+submit 协议 + 防跑偏工作流
+
+### 问题根因
+app.js 从 Phase 6 重写 execute.js 后从未同步，仍然用旧的 `POST /api/execute {task_id}` 单步协议。
+后端已改为 claim+submit 两步市场协议，前端不知道，导致:
+- autoExecute() 拿不到 `.execution` 嵌套字段 → 渲染失败
+- pipeline 用 CLAIMED 状态过滤 → 匹配 0 条 (PG 实际是 EXECUTING)
+- A2A_API.execute() 发旧格式请求 → 外部 AI 调用也跳转失败
+- task-sources / graph 数据结构不兼容 → pipeline 数字全显示 "—"
+
+### 修复 ✅
+- autoExecute(): 旧 `POST /api/execute` → 新 `POST /api/execute?action=claim` + `POST /api/execute?action=submit` 两步
+- showResult(): 旧 `(exec.execution_id, exec.execution.status)` → 新 `(claim.execution_id, submit.status)`
+- pipeline: CLAIMED → EXECUTING (匹配 PG 真实状态)
+- A2A_API: 新增 claim()/submit() 两个方法, execute() 包装两步 (向后兼容)
+- loadStream(): `st === 'claimed'` → `st === 'executing'`
+- task-sources: 兼容 v1(`entities`) 和 v2(`task_sources`) 两种数据格式
+- graph: 兼容 `data.edges` 和 `graph.edges` 两种结构
+
+### 部署 ✅
+- Git push: 1011221 → chenyuan35/aineedhelpfromotherai main
+- Vercel --prod: 部署成功
+- 线上验证: app.js 含 action=claim/action=submit/EXECUTING, CLAIMED=0处
+
+### 防跑偏工作流 ✅
+创建 skill: long-chain-task-guard
+7条规则: 读主线→三问过滤→增量推进→追加进度→事实锚定→漂移检测→不做清单
+每次新 session 自动加载, 防止模型幻觉跑偏
