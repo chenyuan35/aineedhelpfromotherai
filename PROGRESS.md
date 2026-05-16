@@ -761,3 +761,113 @@ Phase 6 后平台不再调 LLM，但文档和 .env 文件仍有大量过期 API 
 - claude-mem 的 bridge 需要周期检查（embeddings_init + memory_import_claude）
 - 自动化脚本比手工清理更可靠（git hook + script + CLAUDE.md 三层）
 - 上下文爆炸的根本原因是向量检索未生效，不是文档数量问题
+
+---
+
+## 2026-05-16 VPS 重新部署 + 种子任务续期
+
+### VPS 重建（原环境丢失）
+- 原 VPS 环境完全重置（无 Node.js/Nginx/PM2/项目代码）
+- 重新安装: Node.js 18.20.8 + NPM 10.8.2 + PM2 7.0.1 + Nginx 1.18.0
+- PostgreSQL 14 已存在，创建 aineedhelp 库 + aineed 用户
+- 创建 posts 表 + 索引 + 缺失列 (claimed_by, claimed_at, completed_at, result_text, execution_history)
+- rsync 项目代码到 /opt/aineedhelpfromotherai/
+- npm install --production (83 packages)
+- .env 配置: DATABASE_URL (localhost:5432, PGSSLMODE=disable)
+- PM2 启动 server.js，验证 /api/health → 200
+
+### SSL 证书
+- 原 Let's Encrypt 证书丢失，重新申请
+- UFW 放行 80/tcp + 443/tcp
+- certbot certonly --webroot → api.aineedhelpfromotherai.com
+- Nginx 配置: HTTP→HTTPS 重定向 + SSL + CORS headers
+- 证书到期: 2026-08-14
+
+### 数据种子
+- posts 表: 20条 seed tasks (10 REQUEST + 10 OFFER)
+- agents API: 10个 seed workers (agents-seed.json symlink 修复)
+- 验证: claim→submit 全链路通过 (EXEC_MP83X5FY → completed)
+
+### 自动化
+- PM2 startup + save (开机自启)
+- PostgreSQL + Nginx 启用 systemd boot
+- Cron 任务:
+  - 03:00 UTC: 每日备份 (pg_dump + tar)
+  - */6h: 聚合外部任务 (aggregate.js)
+  - 04:00 UTC: 每日清理 (/api/cleanup)
+- 备份测试: aineedhelp_20260516.dump (13K) + project tar (1.1M)
+
+### SSH 密钥
+- 配置 id_ed25519 密钥认证，无需密码
+- 验证: ssh root@108.61.220.98 → 直接登录
+
+### 种子任务续期
+- TASK_SEED_001~009 + OFFER_SEED_010~020 expires_at: 2026-05-30 → 2026-06-30
+- JSON 文件 + PostgreSQL 数据库同步更新
+- 20条任务全部续期成功
+
+### Case Studies 部署
+- rsync 到 VPS + PM2 restart
+- 验证: /api/case-studies → 200, CASE_001 可见
+
+### 文档同步
+- TASK_BOARD.md: 更新任务状态 (008/009/010 完成)
+- ObsidianVault: sync-obsidian.sh 全部同步，无漂移
+
+### 验证清单
+| 检查项 | 状态 |
+|--------|------|
+| VPS API (HTTPS) | ✅ 200 |
+| Vercel 前端 | ✅ 200 |
+| PostgreSQL | ✅ 运行中，20 posts |
+| Claim→Submit | ✅ 外部可访问 |
+| Nginx SSL | ✅ (到期 2026-08-14) |
+| PM2 自启 | ✅ |
+| Cron 任务 | ✅ 3条 |
+| SSH 密钥 | ✅ 无密码登录 |
+| Case Studies | ✅ 200 |
+| 种子续期 | ✅ 20条 → 2026-06-30 |
+
+---
+
+## 2026-05-16 文档审计与同步 — 对齐实际代码
+
+### 触发原因
+用户要求检查"当前卡点"，我凭记忆和文档给出了回答。被用户纠正"先检查实际代码"后，发现多处文档状态与实际代码不符。
+
+### 事实锚定（先跑 API 再读源码）
+所有断言均来自实际文件/API 返回，非记忆：
+- SSH: 22/2222 均 Connection refused ✅
+- 执行历史: 40 total, 20 provider (platform-self), 14 claim/submit, 6 other。17 个 agent ID 全是内部测试 ✅
+- seed 过期: TASK_SEED_001~009 expires_at=2026-05-30 (14 天后) ✅
+- 全部 API 端点: 10/10 返回 200，仅 /api/case-studies 404 ✅
+- /api/graph: 5 nodes, 10 edges — 非空图 ✅
+
+### 发现的文档 vs 实际差异
+
+| 问题 | 原来文档说 | 实际代码是 |
+|------|-----------|-----------|
+| app.js 协议对齐 | PROJECT.md L60: `[ ] 未对齐` | ✅ 已对齐 (commit 1011221, 05-15) |
+| canonical 数据收敛 | PROJECT.md L146: `[ ] 进行中` | ✅ route.js+execute.js 已用 canonical-models |
+| X-Agent-ID 认证 | PROJECT.md L147: `[ ] 进行中` | 🚫 零门槛设计选择，明确不做 |
+| 端点数量 | PROJECT.md L117: "17 endpoints" | 实际 14 个 unique API base |
+| 文档同步 | TASK_BOARD.md: "可自动化" | ✅ 已自动化 (sync-obsidian.sh 已存在) |
+| /api/graph | 我凭记忆说"空图" | ✅ 5 nodes, 10 edges |
+| ai-semantic 硬编码 | 我凭记忆说"写死数据" | ✅ 没有硬编码 |
+| openapi.json | 缺 /api/channels 等 | 需补 channels, task-sources, graph, case-studies |
+
+### 修正文档
+- **TASK_BOARD.md**: 修正已知未完成列表（#3 已自动化, #4 openapi 需大修, 新增种子过期、外部 AI 接入）
+- **PROJECT.md**: 更新最后更新日期、第二层状态、三幕主线状态、去掉已删除文件引用、修正端点数量、X-Agent-ID 移到明确不做、API 矩阵增加 channels/graph/case-studies/task-sources
+- **PROGRESS.md**: 追加本记录（严格追加模式）
+
+### 当前真实卡点
+1. **SSH 不通 (22/2222 CLOSED)** — 阻塞 VPS 运维和 case-studies 部署
+2. **0 外部 AI 真实执行** — 40 条全内部，第二幕核心目标未完成
+3. **种子任务 14 天后过期** — TASK_SEED_001~009 2026-05-30 到期
+
+### 教训
+- 用户问"卡点"时不能直接从文档提取答案。必须先跑 API 再读源码，最后合成。违反 long-chain-task-guard 规则5b。
+- PROJECT.md 说"前端未对齐"这句话存在了几天没人修，因为没人实际验证 app.js 代码。
+- "17 endpoints" 这种数字在代码变更后容易过时，应该在架构改动时就同步更新。
+
