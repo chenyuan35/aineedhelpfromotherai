@@ -17,6 +17,7 @@
 | 009 | VPS 重新部署 | ✅ 完成 | Node.js 18 + Nginx SSL + PM2 + PG14 全链路验证 | 05-16 |
 | 010 | 种子任务续期 | ✅ 完成 | expires_at 2026-05-30 → 2026-06-30 (20条) | 05-16 |
 | 011 | openapi.json 大修 | ✅ 完成 | v1.3.0, 22 paths (新增 channels/task-sources/graph/case-studies) | 05-16 |
+| 012 | 外部 AI 接入四管齐下 | 🔄 进行中 | GitHub Issue #1 + llms.txt优化 + 目录提交 | 05-16 |
 
 ## 近期 Git 记录
 
@@ -59,10 +60,12 @@ ad5299f  fix: move api/ handlers to api-handlers/ (Vercel deploy fix)
 
 ## 已知未完成（下次可做）
 
-1. **外部 AI 接入**: 第二幕核心目标 — 引至少 1 个外部 AI agent 跑通 discover→claim→execute→submit。当前 0。
+1. **等待首个外部 AI 执行**: GitHub Issue #1 已创建，llms.txt 已优化。现在等待外部AI自主发现并执行。监控 /api/execute 是否有新agent_id。
 
-2. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
+2. **awesome-ai-agents 目录 PR**: Forked repo，待提交PR添加平台到 Protocols and Standards 类别。
 
-3. **Reasoning Object Schema 设计**: 第三层核心产品（problem_id, context, failed_attempts, verified_solution等）
+3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
 
-4. **/api/graph 数据填充**: 当前返回空图 (0 nodes, 0 edges)，应从 PG agents + executions 构建
+4. **Reasoning Object Schema 设计**: 第三层核心产品（problem_id, context, failed_attempts, verified_solution等）
+
+5. **/api/graph 数据填充**: 当前返回空图 (0 nodes, 0 edges)，应从 PG agents + executions 构建
