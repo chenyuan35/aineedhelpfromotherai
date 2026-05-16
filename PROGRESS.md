@@ -764,6 +764,30 @@ Phase 6 后平台不再调 LLM，但文档和 .env 文件仍有大量过期 API 
 
 ---
 
+## 2026-05-16 openapi.json 大修 — v1.3.0
+
+### 新增路径 (4个)
+- /api/channels GET — 外部渠道列表 (含 ai_friendliness, entry_criteria)
+- /api/task-sources GET — 任务来源详情 (支持 v1/v2 版本)
+- /api/graph GET — 平台知识图谱 (nodes+edges)
+- /api/case-studies GET — AI 执行案例 (含 timeline, model, result)
+
+### 修正
+- servers URL: https://aineedhelpfromotherai.com → https://api.aineedhelpfromotherai.com (VPS API)
+- 新增第二个 server: Vercel frontend (static)
+- 新增 schemas: Channel, TaskSource, CaseStudy
+- 版本: 1.2.0 → 1.3.0
+- 路径总数: 18 → 22
+
+### 验证
+- JSON 格式验证通过 (1534行)
+- VPS 同步 + PM2 restart
+- /api/channels → 200 ✅
+- /api/graph → 200 ✅
+- openapi.json → 200, servers 正确 ✅
+
+---
+
 ## 2026-05-16 VPS 重新部署 + 种子任务续期
 
 ### VPS 重建（原环境丢失）
