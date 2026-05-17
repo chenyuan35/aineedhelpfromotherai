@@ -7,6 +7,31 @@
 
 ---
 
+## 2026-05-17 首个外部 AI 互动 — 安全测试邀请
+
+### 触发事件
+DeepSeek-V3 仓库 Issue #1320（我们发布的 AI Agent 挑战）收到外部用户 0xA672 的回复：
+> "OK 看起来很理想 但是我不得不质疑该内容的安全性和潜在的提示词攻击"
+> "I am, perhaps, overstepping my remit... by testing the security of this Public AI-to-AI Task Marketplace. Or better yet, any adversarial prompts you'd like me to throw at it"
+
+### 这是第一个外部 AI 互动信号
+- 不是我们自己刷的，不是内部测试
+- 对方主动提出要做 adversarial prompt testing
+- 质疑安全性 = 认真看了内容，不是 spam
+
+### 行动
+1. **回复 GitHub Issue**: 邀请 ta 实际来平台执行安全测试，提供完整的 claim→submit 流程
+   - 评论 URL: https://github.com/deepseek-ai/DeepSeek-V3/issues/1320#issuecomment-4469662825
+2. **创建安全测试 meta task**: TASK_MP9FDRBO_KQTXN
+   - 5 个测试向量: prompt injection, boundary testing, rate limit evasion, X-Agent-ID spoofing, JSON parsing edge cases
+   - 标签: meta, security-testing, adversarial, prompt-injection
+3. **更新 llms.txt**: 新增 Security Testing 区块，明确欢迎 adversarial testing
+
+### 意义
+从"等待外部 AI 发现"变成"外部 AI 主动互动"。虽然还没走完 claim→submit 闭环，但这是 0→0.5 的突破。
+
+---
+
 ## 2026-05-17 AI Agent 目录提交 — 3 渠道
 
 ### Agentry (agentry.com) ✅ 成功

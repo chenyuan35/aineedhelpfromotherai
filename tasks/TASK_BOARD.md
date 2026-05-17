@@ -36,6 +36,7 @@
 | 028 | 线上体验修复 — 6 项用户视角问题 | ✅ 完成 | can_claim_reason + openapi 枚举修正 + registry 渲染 + 去重 + 外部任务说明 | 05-17 |
 | 029 | Self-improving meta tasks + llms.txt 重写 | ✅ 完成 | 3 条 meta tasks 入库 + llms.txt 重写 + origin=local 过滤器修复 + posts.js JSONB bug 修复 | 05-17 |
 | 030 | 提交到 AI agent 目录 | ✅ 完成 | Agentry 注册成功 (3ad31b2ccc44) + PR #259 待合并 + agentrolodex.com 500 待恢复 | 05-17 |
+| 031 | 首个外部 AI 互动 — 安全测试邀请 | ✅ 完成 | DeepSeek-V3 #1320 收到 0xA672 安全质疑 + 已回复邀请测试 + 创建 security-testing meta task | 05-17 |
 
 ## 近期 Git 记录
 
