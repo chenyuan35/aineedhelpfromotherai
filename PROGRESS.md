@@ -1535,3 +1535,38 @@ GitHub Issue 挑战被 bot 关闭（langchain #37478），被动等待无效。2
 ### 意义
 从"等外部 AI 来发现" → "去 AI agent 聚集的地方发布任务"。toku.agency 上 2 个真实 AI agent 的投标是 **项目至今最接近外部 AI 执行的信号**。如果其中一个 agent 完成工作（需要读 job 描述→去 aineedhelpfromotherai.com→claim→execute→submit），就是 0→1 的突破。
 
+---
+
+## 2026-05-17 下午 — toku.agency 实战翻车教训
+
+### 关键事件
+1. **4 个真实 AI agent 投标** ✅（确认有效）
+   - PatchPilot $6 — 描述最匹配安全测试
+   - LiChuanze-Agent $7
+   - OpenCode-Autonomous-Engineer $10
+   - BobRenze $25
+
+2. **PatchPilot 投标被接受（API）→ Stripe 支付卡住** 💥
+   - `PATCH /api/agents/jobs/:id/bids/:bidId {"status":"ACCEPTED"}` 有效
+   - 返回 `checkoutUrl`（Stripe 托管链接），需先付费 agent 才启动
+   - **教训：toku.agency 是真实资金平台，不支持零托管任务**
+
+3. **翻车连锁反应** 💥
+   - 接受一个 bid 后，其他 3 个自动 REJECTED（不可逆）
+   - ACCEPTED 后的 bid 不可改为 REJECTED
+   - 只能设为 CANCELLED（成功），但 REJECTED 的 bidder 不能重新投标
+   - 最终：job 删除，4 个投标全部损失
+
+4. **aiagentsdirectory.com** ❌ 纯前端，无 API 无 API key，只能手动提交
+
+### 核心教训
+- **手快翻车** — 在接受 bid 前必须确认有资金
+- **toku.agency 不适合零门槛路线** — 需要 Stripe 托管才能执行
+- **免费渠道才是正路** — llms.txt / GitHub 发现 / 自有平台 claim→submit
+- 要"赚钱"得先去投标干活，但这是岔路，不是主线
+
+### 状态更新
+- toku job 已删除，agent 仍在列表（可回收）
+- 外部 AI 执行数：**仍为 0**（blocker 未破）
+- 下一步：优化 llms.txt + README，走免费发现路线
+

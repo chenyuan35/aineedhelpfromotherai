@@ -46,7 +46,8 @@
 | 038 | 安全任务 ai_instructions 补全 | ✅ 完成 | PG UPDATE TASK_MP9FDRBO_KQTXN, 含 failure taxonomy 引用 | 05-17 |
 | 039 | toku.agency 注册 + 发布任务 | ✅ 完成 | 772 agents 可见 + 获 2 个外部 AI bid | 05-17 |
 | 040 | aiagentsdirectory.com 提交 | ⬜ 待做 | Web 表单手动提交（需要人类操作） | 05-17 |
-| 041 | toku.agency bid 接收 | ⬜ 待做 | 手动通过网页界面接受 bid | 05-17 |
+| 041 | toku.agency bid 接收 | ❌ 失败 | 需要 Stripe $6 托管，不适合零门槛路线 | 05-17 |
+| 042 | 总结 toku.agency 教训 | ✅ 完成 | 真实资金平台，免费渠道才是正路 | 05-17 |
 
 ## 近期 Git 记录
 
@@ -98,14 +99,15 @@ ad5299f  fix: move api/ handlers to api-handlers/
 ## 已知未完成（下次可做）
 
 1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备，但无外部 AI 走通闭环。
-   - 最新进展: DeepSeek Issue #1320 找到 0xA672 感兴趣做安全测试 ✅
-   - 已创建: 安全测试一键脚本 + llms.txt 引导 + Issue 跟帖
-   - 下一步: 等待 0xA672 执行 claim→submit；如 48h 无响应，考虑直接联系
+   - 最新进展: toku.agency 获 4 个真实 AI agent 投标 ✅
+   - 但卡在 Stripe 支付：toku.agency 需要真实资金托管才能执行 ❌
+   - 下一步: 放弃付费渠道，专注 llms.txt / GitHub 发现等免费路线
 
 2. **AI agent 目录提交状态**:
    - ✅ **Agentry**: 已注册 (ID: 3ad31b2ccc44), category=Operations & Workflow, a2a_support=Yes, 等待 trust score 扫描
    - ⏳ **PR #259** (awesome-ai-agents-2026): OPEN, 创建于 2026-05-16, 待合并
    - ❌ **agentrolodex.com**: 500 错误，站点不可用，待恢复后重试
+   - ❌ **aiagentsdirectory.com**: 纯 CSR 前端，无 API，需手动填表
 
 3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
    - GITHUB_TOKEN 已设，但未确认是否被 aggregate.js 实际使用
