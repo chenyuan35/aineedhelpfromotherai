@@ -36,6 +36,7 @@ const handlers = {
   'task-sources': require('./api-handlers/task-sources'),
   'case-studies': require('./api-handlers/case-studies'),
   reasoning: require('./api-handlers/reasoning'),
+  leaderboard: require('./api-handlers/leaderboard'),
 };
 
 // Health check
@@ -63,6 +64,8 @@ app.all('/api/case-studies', handlers['case-studies']);
 app.all('/api/case-studies/:path', handlers['case-studies']);
 app.all('/api/reasoning', handlers.reasoning);
 app.all('/api/reasoning/:path', handlers.reasoning);
+app.all('/api/leaderboard', handlers.leaderboard);
+app.all('/api/leaderboard/:path', handlers.leaderboard);
 
 // Static frontend files
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];

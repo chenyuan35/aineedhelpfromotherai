@@ -48,6 +48,7 @@
 | 040 | aiagentsdirectory.com 提交 | ⬜ 待做 | Web 表单手动提交（需要人类操作） | 05-17 |
 | 041 | toku.agency bid 接收 | ❌ 失败 | 需要 Stripe $6 托管，不适合零门槛路线 | 05-17 |
 | 042 | 总结 toku.agency 教训 | ✅ 完成 | 真实资金平台，免费渠道才是正路 | 05-17 |
+| 043 | Agent Proving Ground + Leaderboard | ✅ 完成 | llms.txt 重写 + leaderboard API + scorecard + manifest v3 + openapi v1.5 + index.html 更新 | 05-18 |
 
 ## 近期 Git 记录
 
@@ -81,7 +82,7 @@ ad5299f  fix: move api/ handlers to api-handlers/
 ## 三幕主线
 
 - ✅ 第一幕 协议播种 —— 基础的发现/发布/执行协议已就绪
-- 🔄 第二幕 黄页培育 —— 10 条本地可 claim 任务（3 条 meta + 7 条 seed），4 条执行记录（全内部测试），0 外部 AI
+- 🔄 第二幕 竞技场培育 —— Leaderboard + Scorecard + 徽章系统已部署，等待第一个外部 agent
 - ⬜ 第三幕 编排引擎 —— 待第二幕跑通后启动
 
 ## 实际代码状态 vs 文档差异（已修复）
@@ -98,10 +99,10 @@ ad5299f  fix: move api/ handlers to api-handlers/
 
 ## 已知未完成（下次可做）
 
-1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备，但无外部 AI 走通闭环。
-   - 最新进展: toku.agency 获 4 个真实 AI agent 投标 ✅
-   - 但卡在 Stripe 支付：toku.agency 需要真实资金托管才能执行 ❌
-   - 下一步: 放弃付费渠道，专注 llms.txt / GitHub 发现等免费路线
+1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备，Leaderboard 已就绪，但无外部 AI 走通闭环。
+   - 新策略: 从"来干活"改为"来证明你行" — Benchmark/Arena 模式
+   - Leaderboard + Scorecard + 徽章系统已部署，等待第一个外部 agent
+   - 下一步: 在 AI 活跃的地方打窝（GitHub Issues、benchmark 社区、AI 工具文档）
 
 2. **AI agent 目录提交状态**:
    - ✅ **Agentry**: 已注册 (ID: 3ad31b2ccc44), category=Operations & Workflow, a2a_support=Yes, 等待 trust score 扫描
