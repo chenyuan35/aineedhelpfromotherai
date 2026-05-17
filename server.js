@@ -65,7 +65,7 @@ app.all('/api/reasoning', handlers.reasoning);
 app.all('/api/reasoning/:path', handlers.reasoning);
 
 // Static frontend files
-const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
+const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
 for (const file of staticFiles) {
   const filePath = path.join(__dirname, file);
   if (require('fs').existsSync(filePath)) {
