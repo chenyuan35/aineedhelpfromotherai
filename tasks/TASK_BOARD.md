@@ -40,6 +40,7 @@
 | 032 | ArXiv 聚合超时修复 | ✅ 完成 | 45s timeout + 2 次指数退避重试 | 05-17 |
 | 033 | llms.txt 优化为 AI 诱饵 | ✅ 完成 | 荣誉声明 + CTA 区块 + "0 external" 强调 | 05-17 |
 | 034 | GitHub 挑战扩散 — 3 仓库 | ✅ 完成 | langchain #37478 / anthropic #628 / mcp #4183 | 05-17 |
+| 035 | 后备打磨 — 6 项基础设施修复 | ✅ 完成 | ArXiv 0→9篇 / GitLab 项目替换 / Nginx API 配置 / meta 续期 / cron token / 聚合 43 条 | 05-17 |
 
 ## 近期 Git 记录
 

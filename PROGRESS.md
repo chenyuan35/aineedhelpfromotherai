@@ -7,6 +7,36 @@
 
 ---
 
+## 2026-05-17 后备打磨 — 6 项基础设施修复
+
+### 1. ArXiv 聚合修复 — 从 0 → 9 篇
+- **根因**: ArXiv API "Rate exceeded" 限流（14 bytes 响应）
+- **修复**: 超时 45s + 3 次指数退避重试 (5s→10s→20s) + 请求间隔 6s
+- **结果**: 9 ArXiv papers 成功获取（之前 0）
+
+### 2. GitLab 失效项目替换
+- mattermost/mattermost → 404 → 替换为 fdroid/fdroidclient
+- grapheneos/packages_apps → 404 → 替换为 inkscape/inkscape
+- gitlab-org/gitlab 保持正常
+
+### 3. Lifecycle API 修复 — Nginx 配置缺失
+- **根因**: api.aineedhelpfromotherai.com 无 Nginx server block，HTTPS 请求无响应
+- **修复**: 新建 /etc/nginx/sites-available/aineedhelp-api + SSL 配置
+- **删除**: 重复的 aineedhelp-main 配置（冲突警告）
+- **结果**: 7 lifecycle records 正常返回
+
+### 4. Meta 任务续期
+- TASK_MP9* 4 条任务 expires_at: 2026-05-18 → 2026-07-31
+
+### 5. Cron GITHUB_TOKEN 修复
+- 从硬编码 token → 从 .env 动态提取: `GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" .env | cut -d= -f2-)`
+
+### 6. 聚合数据更新
+- 43 posts (13 GH + 14 HN + 9 ArXiv + 3 GL + 4 preserved)
+- 难度分布: beginner 5 / intermediate 23 / advanced 15
+
+---
+
 ## 2026-05-17 三管齐下 — ArXiv 修复 + llms.txt 优化 + GitHub 挑战扩散
 
 ### 1. ArXiv 聚合超时修复

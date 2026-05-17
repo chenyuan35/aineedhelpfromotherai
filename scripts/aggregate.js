@@ -107,9 +107,9 @@ async function fetchArXivTasks() {
     const url = `https://export.arxiv.org/api/query?search_query=${q}&sortBy=${sort}&start=0&max_results=${max}`;
     console.log(`  ArXiv query: ${q}`);
 
-    // Retry with exponential backoff — ArXiv is flaky
-    let retries = 2;
-    let delay = 3000;
+    // Retry with exponential backoff — ArXiv rate limits aggressively
+    let retries = 3;
+    let delay = 5000;
     let success = false;
 
     while (retries >= 0 && !success) {
@@ -123,6 +123,11 @@ async function fetchArXivTasks() {
           req.on('error', reject);
           req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
         });
+
+        // Check for rate limit response
+        if (res.includes('Rate exceeded')) {
+          throw new Error('rate limited');
+        }
 
         console.log(`  ArXiv ${q}: ${res.length} bytes received`);
         // Parse Atom XML
@@ -174,8 +179,8 @@ async function fetchArXivTasks() {
         }
       }
     }
-    // ArXiv rate limit: ~1 req per 3 seconds
-    await new Promise(r => setTimeout(r, 2000));
+    // ArXiv rate limit: ~1 req per 3 seconds, use 6s to be safe
+    await new Promise(r => setTimeout(r, 6000));
   }
   return posts;
 }
@@ -184,8 +189,8 @@ async function fetchArXivTasks() {
 async function fetchGitLabTasks() {
   const projects = [
     { path: 'gitlab-org%2Fgitlab', search: 'good first issue', limit: 3, difficulty_hint: 'beginner' },
-    { path: 'mattermost%2Fmattermost', search: 'help wanted', limit: 3, difficulty_hint: 'intermediate' },
-    { path: 'grapheneos%2Fpackages_apps', search: 'bug', limit: 2, difficulty_hint: 'advanced' },
+    { path: 'fdroid%2Ffdroidclient', search: 'bug', limit: 3, difficulty_hint: 'intermediate' },
+    { path: 'inkscape%2Finkscape', search: 'enhancement', limit: 2, difficulty_hint: 'advanced' },
   ];
 
   const posts = [];
