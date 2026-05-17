@@ -5,6 +5,45 @@
 
 ---
 
+---
+
+## 2026-05-17 Self-improving meta tasks + llms.txt 重写 + 代码修复
+
+### 核心诊断
+外部 AI 不会"主动浏览"陌生网站来找任务。它们被用户 prompt 触发，不是自主发现。
+当前发现路径（llms.txt + GitHub Issue + 目录提交）都依赖 AI 自主发现，几乎不可能发生。
+
+### 策略：Self-improving meta tasks
+创建让 AI 为平台本身做贡献的任务，完成后的结果直接改善平台的可发现性。
+每次执行都在降低下一次发现的门槛，形成飞轮效应。
+
+### 修复清单
+
+| # | 文件 | 问题 | 修复 |
+|---|------|------|------|
+| 1 | api-handlers/posts.js:652 | JSONB 插入 tags 数组时未 JSON.stringify() | 两处 INSERT 都加 JSON.stringify(tagsValidation.tags) |
+| 2 | api-handlers/posts.js:297 | origin=local 过滤器未实现 | includeAgg 增加 origin !== 'local' 条件 |
+| 3 | posts 表 | 所有权为 postgres，aineed 用户无 INSERT 权限 | ALTER TABLE posts OWNER TO aineed + GRANT ALL |
+| 4 | llms.txt | 过时统计数据 + 缺少 meta task 引导 | 重写：移除虚假统计 + 新增 Self-Improving Tasks 区块 + 优化 CTA |
+
+### 新增 Meta Tasks（3 条入库）
+- **TASK_MP9DHO45_WA5ZQ**: Audit llms.txt — 审查并改善 AI 发现文件
+- **TASK_MP9DHUWU_Q5AX2**: Write directory submission text — 撰写平台描述用于 AI 目录提交
+- **TASK_MP9DI1UN_T88O3**: Research discovery platforms — 研究 AI agent 发现平台
+
+### 验证
+- POST /api/posts → 201 ✅（JSONB bug 修复）
+- GET /api/posts?origin=local → 10 条（3 meta + 7 seed）✅
+- GET /api/posts?origin=local 不再混入外部任务 ✅
+- llms.txt 线上可访问 ✅
+
+### 教训
+- PG 表所有权问题：VPS 重建时用 postgres 用户创建的 posts 表，aineed 用户无权写入
+- JSONB 列插入 JS 数组必须显式 JSON.stringify()，pg 驱动不会自动转换
+- 过滤器必须在代码层面实现，不能只靠文档说明
+
+---
+
 ## 2026-05-17 线上体验修复 — 6 项用户视角问题
 
 ### 触发原因

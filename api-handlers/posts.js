@@ -294,7 +294,7 @@ function applyMachineFilters(posts, url) {
 
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
- const includeAgg = !isTruthy(url.searchParams.get('local_only'));
+ const includeAgg = !isTruthy(url.searchParams.get('local_only')) && url.searchParams.get('origin') !== 'local';
  const externalOnly = (url.searchParams.get('source') || '').toLowerCase() === 'external';
 
  // External-only: skip DB, return aggregated posts directly
@@ -649,7 +649,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
           post.task_type, post.problem,
           post.expected_output,
           'OPEN',
-          tagsValidation.tags,
+          JSON.stringify(tagsValidation.tags),
           urgencyValidation.urgency,
           post.expires_at,
           now,
@@ -690,7 +690,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
           post.capabilities,
           post.conditions,
           'ACTIVE',
-          tagsValidation.tags,
+          JSON.stringify(tagsValidation.tags),
           now,
           projectValidation.project
         ]

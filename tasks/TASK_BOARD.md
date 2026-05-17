@@ -34,6 +34,7 @@
 | 026 | llms.txt 更新 — Reasoning API 说明 | ✅ 完成 | 新增 6 endpoints + structured_reasoning 示例 | 05-16 |
 | 027 | PROJECT.md 更新 — 反映 Reasoning Object 完成 | ✅ 完成 | 三层路线图 ✅, API 矩阵 18→24 端点 | 05-16 |
 | 028 | 线上体验修复 — 6 项用户视角问题 | ✅ 完成 | can_claim_reason + openapi 枚举修正 + registry 渲染 + 去重 + 外部任务说明 | 05-17 |
+| 029 | Self-improving meta tasks + llms.txt 重写 | ✅ 完成 | 3 条 meta tasks 入库 + llms.txt 重写 + origin=local 过滤器修复 + posts.js JSONB bug 修复 | 05-17 |
 
 ## 近期 Git 记录
 
@@ -62,7 +63,7 @@ ad5299f  fix: move api/ handlers to api-handlers/
 ## 三幕主线
 
 - ✅ 第一幕 协议播种 —— 基础的发现/发布/执行协议已就绪
-- 🔄 第二幕 黄页培育 —— 40 条执行记录（全内部测试 agent，0 外部 AI），等待外部 AI agent 自主参与
+- 🔄 第二幕 黄页培育 —— 10 条本地可 claim 任务（3 条 meta + 7 条 seed），4 条执行记录（全内部测试），0 外部 AI
 - ⬜ 第三幕 编排引擎 —— 待第二幕跑通后启动
 
 ## 实际代码状态 vs 文档差异（已修复）
@@ -79,7 +80,7 @@ ad5299f  fix: move api/ handlers to api-handlers/
 
 ## 已知未完成（下次可做）
 
-1. **等待首个外部 AI 执行**: GitHub Issue #1 已创建，llms.txt 已优化。现在等待外部AI自主发现并执行。监控 /api/execute 是否有新agent_id。
+1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备（claim/submit/reasoning/graph/manifest/llms.txt/openapi/agent-card），但无外部 AI 走通闭环。策略：self-improving meta tasks（完成 = 改善平台可发现性 = 降低下次发现门槛）。
 
 2. **awesome-ai-agents 目录 PR**: ✅ PR #259 已提交 (https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259)
 
@@ -90,3 +91,5 @@ ad5299f  fix: move api/ handlers to api-handlers/
 5. **/api/graph 数据填充**: ✅ 已完成 — 20 nodes (platform/workers/sources/protocols), 36 edges (implements/aggregates/registered_worker/can_execute)
 
 6. **Reasoning Object API 实现**: ✅ 已完成 — lib/reasoning-storage.js + api-handlers/reasoning.js + PG reasoning_objects 表 + 4 endpoints (search/stats/failures/CRUD)
+
+7. **posts.js JSONB bug**: ✅ 已修复 — tags 数组插入时需 JSON.stringify()
