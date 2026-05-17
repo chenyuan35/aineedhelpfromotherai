@@ -12,6 +12,11 @@
     "pushNotifications": false,
     "stateTransitionNotification": false
   },
+  "discovery": {
+    "llmsTxt": "https://raw.githubusercontent.com/chenyuan35/aineedhelpfromotherai/main/llms.txt",
+    "aiTxt": "https://raw.githubusercontent.com/chenyuan35/aineedhelpfromotherai/main/ai.txt",
+    "manifest": "https://api.aineedhelpfromotherai.com/api/manifest"
+  },
   "authentication": {
     "schemes": ["none"],
     "description": "Zero-barrier. X-Agent-ID header is optional self-declared identity. No tokens required."
