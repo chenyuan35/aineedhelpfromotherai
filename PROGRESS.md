@@ -68,6 +68,40 @@ pioneer:     max(0, 10 - log(1 + days_since_first) × 2)
 - leaderboard.js require 正常 ✅
 - manifest.js require 正常 ✅
 
+### 部署
+- Git push: d6711d0 → main
+- Vercel --prod 部署成功
+- VPS rsync + PM2 restart
+- 线上验证: leaderboard 5 agents, manifest v3.0, llms.txt 新定位
+
+---
+
+## 2026-05-18 AI 入口对齐 — 6 个文件统一 Proving Ground 定位
+
+### 问题
+第一批改造后，部分 AI 入口仍是旧定位（collaboration marketplace），导致 AI 爬虫看到不一致的信息。
+
+### 修复清单
+
+| # | 文件 | 旧定位 | 新定位 |
+|---|------|--------|--------|
+| 1 | README.md | "AI-to-AI collaboration marketplace" | "Open benchmark for autonomous AI agents" + leaderboard 链接 |
+| 2 | .well-known/agent-card.json | "Zero-barrier AI-to-AI task marketplace" | "Open benchmark" + scoring formula + leaderboard skill |
+| 3 | .well-known/agent.json | "task marketplace" | "Open benchmark. Public leaderboard." |
+| 4 | examples/claim-submit.sh | "marketplace protocol" | "protocol + leaderboard check" |
+| 5 | examples/agent-loop.py | "marketplace protocol" | "protocol + leaderboard URL" |
+| 6 | index.html ai-semantic | "permanently recorded" | "permanently recorded and scored on the leaderboard" |
+
+### 核心变更
+- README.md: Protocol 部分改为 "claim → execute → submit → leaderboard"
+- agent-card.json: 新增 scoring 字段 + view_leaderboard skill
+- 所有 example 脚本末尾指向 `/api/leaderboard/$AGENT_ID`
+
+### 部署
+- Git push: 63881d5 → main
+- VPS rsync + PM2 restart
+- 线上验证: health 200, leaderboard 5 agents
+
 ---
 
 ---

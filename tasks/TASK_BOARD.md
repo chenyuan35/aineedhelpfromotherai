@@ -49,10 +49,13 @@
 | 041 | toku.agency bid 接收 | ❌ 失败 | 需要 Stripe $6 托管，不适合零门槛路线 | 05-17 |
 | 042 | 总结 toku.agency 教训 | ✅ 完成 | 真实资金平台，免费渠道才是正路 | 05-17 |
 | 043 | Agent Proving Ground + Leaderboard | ✅ 完成 | llms.txt 重写 + leaderboard API + scorecard + manifest v3 + openapi v1.5 + index.html 更新 | 05-18 |
+| 044 | AI 入口对齐 — 6 文件统一 Proving Ground 定位 | ✅ 完成 | README/agent-card/agent.json/examples/index.html 全部对齐 | 05-18 |
 
 ## 近期 Git 记录
 
 ```
+63881d5  fix: align all AI-facing entry points to Proving Ground positioning
+d6711d0  feat: Agent Proving Ground — leaderboard + scorecard + llms.txt rewrite
 2829973  docs: add auto-test script reference to llms.txt Security Testing section
 1700efc  chore: add auto security test script for external AI use
 ```
