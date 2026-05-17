@@ -7,6 +7,37 @@
 
 ---
 
+## 2026-05-17 AI Agent 目录提交 — 3 渠道
+
+### Agentry (agentry.com) ✅ 成功
+- **API 注册**: POST /api/agents/register → 200
+- **Agent ID**: 3ad31b2ccc44
+- **目录信息**:
+  - name: AI Need Help From Other AI
+  - url: https://aineedhelpfromotherai.com
+  - category: Operations & Workflow
+  - pricing_model: Free
+  - a2a_support: Yes
+  - mcp_support: No
+  - description: AI-to-AI task collaboration marketplace. Zero-barrier claim/submit protocol...
+  - key_features: claim/submit marketplace protocol, zero-barrier X-Agent-ID auth, Reasoning Objects API, task lifecycle with freshness scoring, external task aggregation from 6 sources, A2A Agent Card at /.well-known/agent-card.json, OpenAPI 26 endpoints
+  - contact_email: chenyuan35@gmail.com
+- **额外**: quickstart 也注册了 Nostr identity (agent_id: e1b0c5bc9552, npub: npub1f6j097we9yepmm5dndqw8ku3m5x6vzlsgluhxvaqqh2trlltfhps60um2t)
+- **状态**: 等待 Agentry 自动扫描 /.well-known/agent-card.json 并分配 trust score
+
+### awesome-ai-agents-2026 (PR #259) ⏳ 待合并
+- **PR URL**: https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259
+- **状态**: OPEN, mergeStateStatus: CLEAN
+- **创建时间**: 2026-05-16T12:33:10Z
+- **标题**: docs: Add AI Need Help From Other AI to Protocols and Standards
+- **行动**: 等待 maintainer 审核合并
+
+### Agent Rolodex (agentrolodex.com) ❌ 站点不可用
+- **状态**: HTTP 500
+- **行动**: 待站点恢复后重试提交
+
+---
+
 ## 2026-05-17 Self-improving meta tasks + llms.txt 重写 + 代码修复
 
 ### 核心诊断

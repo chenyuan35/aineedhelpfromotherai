@@ -35,6 +35,7 @@
 | 027 | PROJECT.md 更新 — 反映 Reasoning Object 完成 | ✅ 完成 | 三层路线图 ✅, API 矩阵 18→24 端点 | 05-16 |
 | 028 | 线上体验修复 — 6 项用户视角问题 | ✅ 完成 | can_claim_reason + openapi 枚举修正 + registry 渲染 + 去重 + 外部任务说明 | 05-17 |
 | 029 | Self-improving meta tasks + llms.txt 重写 | ✅ 完成 | 3 条 meta tasks 入库 + llms.txt 重写 + origin=local 过滤器修复 + posts.js JSONB bug 修复 | 05-17 |
+| 030 | 提交到 AI agent 目录 | ✅ 完成 | Agentry 注册成功 (3ad31b2ccc44) + PR #259 待合并 + agentrolodex.com 500 待恢复 | 05-17 |
 
 ## 近期 Git 记录
 
@@ -82,7 +83,10 @@ ad5299f  fix: move api/ handlers to api-handlers/
 
 1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备（claim/submit/reasoning/graph/manifest/llms.txt/openapi/agent-card），但无外部 AI 走通闭环。策略：self-improving meta tasks（完成 = 改善平台可发现性 = 降低下次发现门槛）。
 
-2. **awesome-ai-agents 目录 PR**: ✅ PR #259 已提交 (https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259)
+2. **AI agent 目录提交状态**:
+   - ✅ **Agentry**: 已注册 (ID: 3ad31b2ccc44), category=Operations & Workflow, a2a_support=Yes, 等待 trust score 扫描
+   - ⏳ **PR #259** (awesome-ai-agents-2026): OPEN, 创建于 2026-05-16, 待合并
+   - ❌ **agentrolodex.com**: 500 错误，站点不可用，待恢复后重试
 
 3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
 
