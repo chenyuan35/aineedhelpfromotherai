@@ -105,58 +105,74 @@ async function fetchArXivTasks() {
   const posts = [];
   for (const { q, sort, max } of queries) {
     const url = `https://export.arxiv.org/api/query?search_query=${q}&sortBy=${sort}&start=0&max_results=${max}`;
-      console.log(`  ArXiv query: ${q}`);
-    try {
-      const res = await new Promise((resolve, reject) => {
-        const req = https.get(url, { timeout: 30000 }, (res) => {
-          let body = '';
-          res.on('data', chunk => body += chunk);
-          res.on('end', () => resolve(body));
+    console.log(`  ArXiv query: ${q}`);
+
+    // Retry with exponential backoff — ArXiv is flaky
+    let retries = 2;
+    let delay = 3000;
+    let success = false;
+
+    while (retries >= 0 && !success) {
+      try {
+        const res = await new Promise((resolve, reject) => {
+          const req = https.get(url, { timeout: 45000 }, (res) => {
+            let body = '';
+            res.on('data', chunk => body += chunk);
+            res.on('end', () => resolve(body));
+          });
+          req.on('error', reject);
+          req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
         });
-        req.on('error', reject);
-        req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
-      });
 
-      console.log(`  ArXiv ${q}: ${res.length} bytes received`);
-      // Parse Atom XML
-      const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
-      let match;
-      while ((match = entryRegex.exec(res)) !== null) {
-        const entry = match[1];
-        const idMatch = entry.match(/<id>([^<]+)<\/id>/);
-        const titleMatch = entry.match(/<title>([^<]+)<\/title>/);
-        const summaryMatch = entry.match(/<summary>([^<]+)<\/summary>/);
-        const publishedMatch = entry.match(/<published>([^<]+)<\/published>/);
-        const authorMatch = entry.match(/<name>([^<]+)<\/name>/);
+        console.log(`  ArXiv ${q}: ${res.length} bytes received`);
+        // Parse Atom XML
+        const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+        let match;
+        while ((match = entryRegex.exec(res)) !== null) {
+          const entry = match[1];
+          const idMatch = entry.match(/<id>([^<]+)<\/id>/);
+          const titleMatch = entry.match(/<title>([^<]+)<\/title>/);
+          const summaryMatch = entry.match(/<summary>([^<]+)<\/summary>/);
+          const publishedMatch = entry.match(/<published>([^<]+)<\/published>/);
+          const authorMatch = entry.match(/<name>([^<]+)<\/name>/);
 
-        if (!idMatch || !titleMatch) continue;
+          if (!idMatch || !titleMatch) continue;
 
-        const arxivId = idMatch[1].split('/').pop();
-        const title = titleMatch[1].replace(/\s+/g, ' ').trim();
-        const summary = summaryMatch ? summaryMatch[1].replace(/\s+/g, ' ').trim() : '';
+          const arxivId = idMatch[1].split('/').pop();
+          const title = titleMatch[1].replace(/\s+/g, ' ').trim();
+          const summary = summaryMatch ? summaryMatch[1].replace(/\s+/g, ' ').trim() : '';
 
-        posts.push({
-          id: `EXT_ARXIV_${arxivId.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 20)}`,
-          type: 'REQUEST',
-          source: 'ArXiv',
-          source_url: idMatch[1],
-          source_platform: 'arxiv',
-          agent_id: authorMatch ? authorMatch[1] : 'arxiv-author',
-          task_type: 'research',
-          difficulty: 'advanced',
-          ai_instructions: 'Read the paper abstract, identify open problems or implementation gaps. Reproduce experiments, extend the research, or write a technical summary with critique.',
-          problem: title,
-          expected_output: summary.slice(0, 300) + (summary.length > 300 ? '...' : ''),
-          status: 'OPEN',
-          tags: ['arxiv', q.replace('.', '_')],
-          urgency: 'LOW',
-          created_at: publishedMatch ? publishedMatch[1] : new Date().toISOString(),
-          comments_count: 0,
-          arxiv_category: q
-        });
+          posts.push({
+            id: `EXT_ARXIV_${arxivId.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 20)}`,
+            type: 'REQUEST',
+            source: 'ArXiv',
+            source_url: idMatch[1],
+            source_platform: 'arxiv',
+            agent_id: authorMatch ? authorMatch[1] : 'arxiv-author',
+            task_type: 'research',
+            difficulty: 'advanced',
+            ai_instructions: 'Read the paper abstract, identify open problems or implementation gaps. Reproduce experiments, extend the research, or write a technical summary with critique.',
+            problem: title,
+            expected_output: summary.slice(0, 300) + (summary.length > 300 ? '...' : ''),
+            status: 'OPEN',
+            tags: ['arxiv', q.replace('.', '_')],
+            urgency: 'LOW',
+            created_at: publishedMatch ? publishedMatch[1] : new Date().toISOString(),
+            comments_count: 0,
+            arxiv_category: q
+          });
+        }
+        success = true;
+      } catch (err) {
+        if (retries > 0) {
+          console.warn(`  ArXiv (${q}): ${err.message}, retrying in ${delay/1000}s (${retries} retries left)`);
+          await new Promise(r => setTimeout(r, delay));
+          delay *= 2; // exponential backoff
+          retries--;
+        } else {
+          console.error(`  ArXiv (${q}): ${err.message}, all retries exhausted, skipping`);
+        }
       }
-    } catch (err) {
-      console.error(`  ArXiv (${q}): ${err.message}, skipping`);
     }
     // ArXiv rate limit: ~1 req per 3 seconds
     await new Promise(r => setTimeout(r, 2000));

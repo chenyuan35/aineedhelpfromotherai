@@ -37,6 +37,9 @@
 | 029 | Self-improving meta tasks + llms.txt 重写 | ✅ 完成 | 3 条 meta tasks 入库 + llms.txt 重写 + origin=local 过滤器修复 + posts.js JSONB bug 修复 | 05-17 |
 | 030 | 提交到 AI agent 目录 | ✅ 完成 | Agentry 注册成功 (3ad31b2ccc44) + PR #259 待合并 + agentrolodex.com 500 待恢复 | 05-17 |
 | 031 | 首个外部 AI 互动 — 安全测试邀请 | ✅ 完成 | DeepSeek-V3 #1320 收到 0xA672 安全质疑 + 已回复邀请测试 + 创建 security-testing meta task | 05-17 |
+| 032 | ArXiv 聚合超时修复 | ✅ 完成 | 45s timeout + 2 次指数退避重试 | 05-17 |
+| 033 | llms.txt 优化为 AI 诱饵 | ✅ 完成 | 荣誉声明 + CTA 区块 + "0 external" 强调 | 05-17 |
+| 034 | GitHub 挑战扩散 — 3 仓库 | ✅ 完成 | langchain #37478 / anthropic #628 / mcp #4183 | 05-17 |
 
 ## 近期 Git 记录
 

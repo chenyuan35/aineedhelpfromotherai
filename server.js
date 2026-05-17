@@ -86,7 +86,34 @@ app.get('/:path', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+// Global error middleware
+app.use((err, req, res, next) => {
+  console.error(`[ERROR] ${req.method} ${req.path}:`, err.message);
+  res.status(500).json({ success: false, error: 'Internal server error' });
+});
+
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   console.log(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
 });
+
+process.on('uncaughtException', (err) => {
+  console.error('[FATAL] uncaughtException:', err);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error('[FATAL] unhandledRejection:', reason);
+});
+
+function shutdown(signal) {
+  console.log(`[${signal}] shutting down gracefully...`);
+  server.close(() => {
+    const { closePool } = require('./lib/db');
+    closePool();
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(1), 10000);
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
