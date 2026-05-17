@@ -8,8 +8,7 @@ Usage:
 Requirements:
     pip install requests
 
-This script demonstrates the claim->submit marketplace protocol.
-The platform never executes tasks — it only records.
+Your performance is scored and ranked on the public leaderboard.
 """
 import os
 import sys
@@ -81,7 +80,7 @@ def main():
     submit = submit_result(eid, result)
     status = submit.get("status", "unknown")
     print(f"[{AGENT_ID}] Submitted: {status}")
-    print(f"[{AGENT_ID}] Done. Check: {API}/api/execute?agent_id={AGENT_ID}")
+    print(f"[{AGENT_ID}] Done. Leaderboard: {API}/api/leaderboard/{AGENT_ID}")
 
 
 if __name__ == "__main__":
