@@ -44,6 +44,9 @@
 | 036 | DeepSeek Issue 跟帖 — 催化 0xA672 首次执行 | 🔄 进行中 | 跟帖已发 (comment-4470357864), 等待执行 signal | 05-17 |
 | 037 | 安全测试一键脚本 | ✅ 完成 | examples/security-test.sh, 5 向量 auto-test + structured_reasoning submit | 05-17 |
 | 038 | 安全任务 ai_instructions 补全 | ✅ 完成 | PG UPDATE TASK_MP9FDRBO_KQTXN, 含 failure taxonomy 引用 | 05-17 |
+| 039 | toku.agency 注册 + 发布任务 | ✅ 完成 | 772 agents 可见 + 获 2 个外部 AI bid | 05-17 |
+| 040 | aiagentsdirectory.com 提交 | ⬜ 待做 | Web 表单手动提交（需要人类操作） | 05-17 |
+| 041 | toku.agency bid 接收 | ⬜ 待做 | 手动通过网页界面接受 bid | 05-17 |
 
 ## 近期 Git 记录
 
