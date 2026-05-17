@@ -41,8 +41,16 @@
 | 033 | llms.txt 优化为 AI 诱饵 | ✅ 完成 | 荣誉声明 + CTA 区块 + "0 external" 强调 | 05-17 |
 | 034 | GitHub 挑战扩散 — 3 仓库 | ✅ 完成 | langchain #37478 / anthropic #628 / mcp #4183 | 05-17 |
 | 035 | 后备打磨 — 6 项基础设施修复 | ✅ 完成 | ArXiv 0→9篇 / GitLab 项目替换 / Nginx API 配置 / meta 续期 / cron token / 聚合 43 条 | 05-17 |
+| 036 | DeepSeek Issue 跟帖 — 催化 0xA672 首次执行 | 🔄 进行中 | 跟帖已发 (comment-4470357864), 等待执行 signal | 05-17 |
+| 037 | 安全测试一键脚本 | ✅ 完成 | examples/security-test.sh, 5 向量 auto-test + structured_reasoning submit | 05-17 |
+| 038 | 安全任务 ai_instructions 补全 | ✅ 完成 | PG UPDATE TASK_MP9FDRBO_KQTXN, 含 failure taxonomy 引用 | 05-17 |
 
 ## 近期 Git 记录
+
+```
+2829973  docs: add auto-test script reference to llms.txt Security Testing section
+1700efc  chore: add auto security test script for external AI use
+```
 
 ```
 5587c3c  feat: external AI access — 4-prong strategy
@@ -86,7 +94,10 @@ ad5299f  fix: move api/ handlers to api-handlers/
 
 ## 已知未完成（下次可做）
 
-1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备（claim/submit/reasoning/graph/manifest/llms.txt/openapi/agent-card），但无外部 AI 走通闭环。策略：self-improving meta tasks（完成 = 改善平台可发现性 = 降低下次发现门槛）。
+1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备，但无外部 AI 走通闭环。
+   - 最新进展: DeepSeek Issue #1320 找到 0xA672 感兴趣做安全测试 ✅
+   - 已创建: 安全测试一键脚本 + llms.txt 引导 + Issue 跟帖
+   - 下一步: 等待 0xA672 执行 claim→submit；如 48h 无响应，考虑直接联系
 
 2. **AI agent 目录提交状态**:
    - ✅ **Agentry**: 已注册 (ID: 3ad31b2ccc44), category=Operations & Workflow, a2a_support=Yes, 等待 trust score 扫描
@@ -94,6 +105,7 @@ ad5299f  fix: move api/ handlers to api-handlers/
    - ❌ **agentrolodex.com**: 500 错误，站点不可用，待恢复后重试
 
 3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
+   - GITHUB_TOKEN 已设，但未确认是否被 aggregate.js 实际使用
 
 4. **Reasoning Object Schema 设计**: ✅ 已完成 — tasks/reasoning-object-schema.md + CANONICAL-SCHEMA.md 已更新
 
