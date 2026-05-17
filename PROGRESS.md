@@ -1,7 +1,67 @@
-# aineedhelpfromotherai.com 重构进度
+# aineedhelpfromotherai.com 项目进度
 
 核心定位：AI任务撮合平台（交易所+接单大厅+情报网+任务聚合中心）
 原则：反人类、亲AI、机器优先、克制聚焦
+
+---
+
+## 2026-05-17 线上体验修复 — 6 项用户视角问题
+
+### 触发原因
+以 AI Agent 用户身份完整体验线上网站，发现 6 个体验断点。
+
+### 修复清单
+
+| # | 优先级 | 文件 | 问题 | 修复 |
+|---|--------|------|------|------|
+| 1 | P0 | api-handlers/posts.js:63-71 | 外部任务 can_claim: false 无解释 | 增加 can_claim_reason 字段，说明"external task — claim and submit via source_url" |
+| 2 | P0 | api-handlers/posts.js:952-958 | 本地任务 can_claim: false 无解释 | formatPost 增加 can_claim_reason 分支（非REQUEST/非OPEN/quality flags） |
+| 3 | P0 | openapi.json | RequestStatus 枚举含 CLAIMED（实际用 EXECUTING） | 修正为 OPEN/EXECUTING/COMPLETED/FAILED/STALE/EXPIRED/ARCHIVED |
+| 4 | P1 | app.js:7-13 | /registry 页面 JS 未加载，显示"Loading..." | 增加 renderRegistry() 函数，检测 /registry 路径时渲染 registry 数据 |
+| 5 | P1 | app.js:38 | pipeline match 节点显示 agents 数量（语义不准） | 改为显示 "N available" 更清晰 |
+| 6 | P2 | api-handlers/posts.js:47-72 | ArXiv/HN 任务相同 ID 重复出现 | getAggregatedPosts 增加 dedup by id |
+| — | P2 | api-handlers/manifest.js | 外部任务提交路径不明确 | 新增 external_task_protocol 段落 |
+| — | P2 | llms.txt | 外部任务提交路径不明确 | External Task Sources 段落增加 can_claim_reason 说明 |
+| — | P2 | openapi.json | Post schema 缺少 can_claim_reason | 增加 can_claim_reason 字段定义 |
+
+### 验证
+- posts.js can_claim_reason 逻辑：外部任务固定说明，本地任务按状态/类型/quality flags 分支
+- openapi.json RequestStatus 枚举与实际 execute.js 状态一致
+- app.js renderRegistry 检测 window.location.pathname === '/registry' 时渲染
+
+---
+
+## 2026-05-16 代码审计修复 — 12 项代码质量问题
+
+### 触发原因
+全量代码审计发现 12 项问题，涉及 canonical 校验器脱节、freshness 公式失效、SSL 不一致、N+1 查询等。
+
+### 修复清单
+
+| # | 优先级 | 文件 | 问题 | 修复 |
+|---|--------|------|------|------|
+| 1 | P0 | lib/canonical-models.js:101 | 校验器状态列表缺失 executing/failed/stale/archived/active | 加入全部 8 状态 + script 类型 + registered mode |
+| 2 | P0 | api-handlers/execute.js:329-342 | success_rate/execution_count 永不写入 DB | submit 时计算 metrics 写入 lifecycle |
+| 3 | P0 | api-handlers/case-studies.js:13 | CASE_${exec.execution_id \|\| exec.execution_id} 完全相同的回退 | 改为 exec.id / exec._fallback_id |
+| 4 | P0 | server.js:68 | 引用已删除的 AI-CONTRIBUTING.md | 从 rootStaticFiles 移除 |
+| 5 | P1 | execute.js/posts.js/tasks-native.js SSL config | SSL 条件不一致 (=== 'disable' vs === 'require') | 统一为 === 'require' 模式 |
+| 6 | P1 | api-handlers/lifecycle.js:30-33 | N+1 查询 (每个 status 发一次 PG) | 单次查询 + JS 过滤 |
+| 7 | P1 | api-handlers/lifecycle.js:18 | {error} 缺少 success:false | 统一错误格式 |
+| 8 | P1 | api-handlers/execute.js:285 | duration 用 created_at 而非 claimed_at | 修复为 metrics.claimed_at |
+| 9 | P1 | api-handlers/metrics.js | 4 处引用未定义状态 completed_with_fallback | 移除全部 |
+| 10 | P2 | lib/rate-limit.js:27 | 模块级 setInterval 导入即运行 | 懒启动 ensureCleanup() |
+| 11 | P2 | lib/lifecycle.js:72 | 冗余条件 execution_count >= 3 | 移除（隐含于 fail_count >= 3 && success_count === 0）|
+| 12 | P2 | api-handlers/tasks-native.js:157-162 | PG 无结果时 fallback 到全部 seed 数据 | 仅 PG 报错时 fallback |
+| — | P2 | api-handlers/cleanup.js:88-92 | OPTIONS 路径缺 CORS headers | 补全 |
+| — | P2 | api-handlers/execute.js:427-435 | register handler 错误缺 success:false | 补全 |
+| — | P2 | lib/execution-history.js:282 | min_freshness 死参数（从未使用） | 移除声明 |
+
+### 验证
+- node require 全部 14 个模块通过 ✅
+- validateCanonicalTask 9 种状态全部 valid ✅
+- validateCanonicalAgent registered mode valid ✅
+- computeFreshnessScore 真实 metrics 返回 0.92 ✅
+- detectStale 3 次失败返回 persistent_failure ✅
 
 ---
 
@@ -904,7 +964,7 @@ Phase 6 后平台不再调 LLM，但文档和 .env 文件仍有大量过期 API 
 所有断言均来自实际文件/API 返回，非记忆：
 - SSH: 22/2222 均 Connection refused ✅
 - 执行历史: 40 total, 20 provider (platform-self), 14 claim/submit, 6 other。17 个 agent ID 全是内部测试 ✅
-- seed 过期: TASK_SEED_001~009 expires_at=2026-05-30 (14 天后) ✅
+- seed 过期: TASK_SEED_001~009 expires_at=2026-06-30 (已续期) ✅
 - 全部 API 端点: 10/10 返回 200，仅 /api/case-studies 404 ✅
 - /api/graph: 5 nodes, 10 edges — 非空图 ✅
 
@@ -935,4 +995,312 @@ Phase 6 后平台不再调 LLM，但文档和 .env 文件仍有大量过期 API 
 - 用户问"卡点"时不能直接从文档提取答案。必须先跑 API 再读源码，最后合成。违反 long-chain-task-guard 规则5b。
 - PROJECT.md 说"前端未对齐"这句话存在了几天没人修，因为没人实际验证 app.js 代码。
 - "17 endpoints" 这种数字在代码变更后容易过时，应该在架构改动时就同步更新。
+
+---
+
+## 2026-05-16 聚合增强四连击 — Task 014/015/016/017/020
+
+### Task 014: 修复聚合 cron ✅
+- `last_fetched` 从 2026-05-14 刷新到当前时间
+- aggregate.js 正常运行
+
+### Task 015: 增加 3 个聚合源 (HN/ArXiv/GitLab) ✅
+- **Hacker News**: Firebase API，过滤 AI/ML 相关 stories，top + best stories
+- **ArXiv**: Atom XML 解析，cs.AI/cs.CL/cs.LG 三个分类，每类 3 篇
+- **GitLab Issues**: API v4，3 个项目 (gitlab-org, mattermost, grapheneos)
+- 结果: 37+ posts (13 GitHub + 10 HN + 9 ArXiv + 3 GitLab + 4 preserved)
+- 6 个来源: GitHub Issues, Hacker News, ArXiv, GitLab Issues, Replicate, Hugging Face Spaces
+- ArXiv 坑: http:// → https:// 协议修复
+
+### Task 016: 聚合后自动清洗 ✅
+- `isLowQuality()` 函数过滤 5 类低质量:
+  - too_short: body < 30 chars
+  - paywall: 付费墙关键词
+  - spam_caps: 全大写垃圾
+  - deleted: [deleted]/[removed]
+  - low_engagement: HN score < 3 且无评论
+- 本次数据质量高，0 条被过滤
+
+### Task 017: 增加结构化字段 ✅
+- `estimated_tokens`: 基于难度 + 内容长度估算 (5,400 - 55,400)
+  - beginner: 5,000 base × lengthMultiplier
+  - intermediate: 15,000 base × lengthMultiplier
+  - advanced: 50,000 base × lengthMultiplier
+- `required_capabilities`: 从内容关键词自动推断 (9 种)
+  - code_generation, research, technical_writing, testing
+  - deployment, model_training, discussion, security_analysis, general_reasoning
+
+### Task 020: 刷新 ai-semantic HTML 数据 ✅
+- index.html: 更新来源列表 (6 sources) + 新增 metadata 说明 + capabilities 列表
+- llms.txt: 更新 Platform Stats + External Task Sources 区块
+
+### 验证
+- aggregate.js 本地运行: 37 posts, 6 sources ✅
+- estimated_tokens 范围: 5,400 - 55,400 ✅
+- 9 种 capabilities 自动推断 ✅
+- ObsidianVault 同步: 全部同步，无漂移 ✅
+- TASK_BOARD.md: 014/015/016/017/020 标记完成 ✅
+
+---
+
+## 2026-05-16 目录提交 + Graph 数据填充 — Task 018/021
+
+### Task 018: awesome-ai-agents-2026 PR ✅
+- Fork: chenyuan35/awesome-ai-agents-2026
+- Branch: add-aineedhelpfromotherai
+- PR: https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259
+- 位置: Protocols and Standards 表格
+- 描述: "AI-to-AI task collaboration marketplace. Zero-barrier claim/submit protocol..."
+- 通过 GitHub API 直接创建 (clone 网络超时)
+
+### Task 019: awesome-mcp-servers ❌ 跳过
+- 平台当前不是 MCP Server（第三幕才做）
+- 提交到 MCP 目录不符合实际，会误导
+
+### Task 021: /api/graph 数据填充 ✅
+- 新建 api-handlers/channels-seed.v2.json
+- 20 个 entities: 1 platform + 10 workers + 6 sources + 3 protocols
+- 36 条 edges: implements(2) + aggregates(6) + registered_worker(10) + can_execute(15) + compatible_with(1) + complements(1)
+- 4 种 node 类型: platform, worker, source, protocol
+- 6 种 relationship 类型
+- 查询功能验证:
+  - /api/graph?node=aineedhelpfromotherai → 19 nodes, 18 edges (子图)
+  - /api/graph?capability=code → 10 workers 支持 code 能力
+  - /api/graph?relationship=can_execute → 15 条执行关系边
+
+### 验证
+- graph.js 本地: 20 nodes, 36 edges ✅
+- 子图查询: aineedhelpfromotherai → 19 nodes ✅
+- 能力查询: code → 10 workers ✅
+- PR #259: https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259 ✅
+
+---
+
+## 2026-05-16 Reasoning Object Schema 设计 — Task 022
+
+### 核心概念
+Reasoning Object 是第三层 (Reasoning Internet) 的核心产品。捕获的不仅是*做了什么*，而是*怎么想的* — 包括失败尝试、死胡同和已验证方案。
+
+### Schema 设计
+- **完整 schema**: `tasks/reasoning-object-schema.md`
+- 核心字段: problem_id, context, attempts[], solution{}, meta{}
+- attempts 包含 reasoning_steps, outcome, failure_type, execution_cost
+- solution 包含 key_insights, reusability, consensus_score
+
+### Failure Taxonomy (7 类)
+| 类型 | 说明 |
+|------|------|
+| hallucination | 生成事实错误信息 |
+| wrong_assumption | 从错误前提出发 |
+| incomplete_knowledge | 缺乏领域知识 |
+| timeout | 超出时间/算力预算 |
+| auth_barrier | 认证/授权障碍 |
+| context_overflow | 上下文窗口限制 |
+| tool_failure | 外部工具调用失败 |
+
+### API 设计
+- `POST /api/reasoning/search` — 按问题相似度搜索
+- `GET /api/reasoning/:id` — 获取完整 reasoning object
+- `GET /api/reasoning?problem_id=TASK_xxx` — 按问题查询
+- `GET /api/reasoning/failures?type=hallucination` — 失败库浏览
+- `POST /api/execute?action=submit` 扩展 — 支持 structured_reasoning 字段
+
+### 存储设计
+- PostgreSQL: reasoning_objects 表 (id, problem_id, context JSONB, attempts JSONB, solution JSONB, meta JSONB)
+- 索引: problem_id, domain, success_rate
+
+### 集成路径
+- 执行记录 → Reasoning objects: submit 时可附带 reasoning 数据
+- 任务生命周期 → Reasoning: 失败执行成为 attempts
+- Graph → Reasoning: 边连接相似 reasoning objects
+- Metrics → Reasoning: 聚合统计 (avg tokens/domain, success rate/difficulty)
+
+### 同步
+- CANONICAL-SCHEMA.md: 新增第 5 实体 (Reasoning Object)
+- tasks/reasoning-object-schema.md: 完整规范文档
+
+---
+
+## 2026-05-16 Reasoning Object API 实现 + VPS 部署 + openapi v1.4.0 — Task 023/024
+
+### Task 023: Reasoning Object API 实现 ✅
+- **lib/reasoning-storage.js**: PG 存储模块
+  - ensureTable(): 自动创建 reasoning_objects 表 + 5 个索引
+  - saveReasoning(): upsert reasoning object
+  - searchReasoning(): 按 domain/difficulty/capability/success_rate 搜索
+  - getReasoning(): 按 ID 获取完整对象
+  - getByProblemId(): 按 problem_id 查询
+  - getFailures(): 按 failure_type 浏览失败
+  - addAttempt(): 添加新 attempt 并自动更新 meta
+  - getReasoningStats(): 统计 (total/by_domain/by_difficulty/avg_success_rate)
+
+- **api-handlers/reasoning.js**: API handler
+  - POST /api/reasoning — 创建/更新
+  - GET /api/reasoning/:id — 获取完整对象
+  - GET /api/reasoning?problem_id=xxx — 按问题查询
+  - POST /api/reasoning/search — 搜索
+  - GET /api/reasoning/failures?type=xxx — 失败库
+  - GET /api/reasoning/stats — 统计
+
+- **server.js**: 挂载 /api/reasoning 和 /api/reasoning/:path
+
+- **VPS 验证**: 全链路通过
+  - Create RO → 201 ✅
+  - Get RO by ID → 200 ✅
+  - Stats → total=1, by_domain=[code:1], by_difficulty=[beginner:1] ✅
+  - By Problem → 1 result ✅
+
+### Task 024: openapi.json v1.4.0 ✅
+- 版本: 1.3.0 → 1.4.0
+- 路径: 22 → 26 (新增 /api/reasoning, /api/reasoning/search, /api/reasoning/failures, /api/reasoning/stats)
+- 新增 schema: ReasoningObject (含 attempts, solution, meta, context 嵌套结构)
+- VPS 验证: Version 1.4.0, 26 paths, Has ReasoningObject: true ✅
+
+### 部署
+- rsync → VPS /opt/aineedhelpfromotherai/
+- PM2 restart (7次重启)
+- 全链路验证: health ✅ | graph 20/36 ✅ | reasoning CRUD ✅ | openapi 1.4.0 ✅
+
+---
+
+## 2026-05-16 execute.js 集成 structured_reasoning + llms.txt/PROJECT.md 更新 — Task 025/026/027
+
+### Task 025: execute.js 集成 structured_reasoning ✅
+- **api-handlers/execute.js**: handleSubmit 函数扩展
+  - 检测 body.structured_reasoning 字段
+  - 自动创建 Reasoning Object (saveReasoning)
+  - 包含: approach, reasoning_steps, execution_cost, solution, meta
+  - 失败不阻塞 submit (try/catch, reasoningId=null)
+  - 响应新增 reasoning_id 字段 + meta.reasoning 提示
+
+- **E2E 验证** (线上 VPS):
+  - Claim TASK_SEED_010 → EXEC_MP8EGDJQ ✅
+  - Submit with structured_reasoning → reasoning_id: RO_EXEC_MP8EGDJQ ✅
+  - GET /api/reasoning/RO_EXEC_MP8EGDJQ → 完整对象 ✅
+    - attempts: 1 (outcome: completed, confidence: 0.95)
+    - execution_cost: tokens_used=12000, iterations=3, model=claude-sonnet-4
+    - reasoning_steps: 3 steps
+    - solution: summary + key_insights
+    - meta: success_rate=1, total_tokens=12000
+  - Stats: total=1, avg_success_rate=1.00 ✅
+
+### Task 026: llms.txt 更新 ✅
+- Platform Stats: 新增 "Reasoning objects: Layer 3 API available"
+- Core Endpoints: 从 12 → 18 (新增 reasoning 6 endpoints)
+- 新增 "Reasoning Objects (Layer 3)" 完整章节:
+  - Submit with structured_reasoning 示例 (curl)
+  - Search for similar reasoning 示例
+  - Browse failure library 示例
+  - 7 种 failure types 列表
+
+### Task 027: PROJECT.md 更新 ✅
+- 类比表: execution_history → reasoning_objects 表 ✅, /api/reasoning/search (待建) → ✅
+- 第二层路线图: OpenAPI 1.2.0 → 1.4.0, 新增 /api/reasoning/search ✅
+- 第三层路线图: ⬜ → ✅ (4 项全部完成)
+- API 路由矩阵: 14 → 24 端点 (新增 reasoning 6 + graph/case-studies 完善)
+
+### 部署
+- rsync → VPS /opt/aineedhelpfromotherai/
+- PM2 restart (8次重启)
+- 全链路验证: claim→submit→reasoning E2E ✅ | stats ✅ | llms.txt ✅ | openapi 1.4.0 ✅
+
+---
+
+## 2026-05-16 代码状态审计与外部AI接入优化
+
+### 审计发现（对比用户报告 vs 实际代码）
+- P0.2 seed 过期: 报告引用 PROGRESS.md L941 (2026-05-30)，但代码实际已为 2026-06-30 (commit d901709)
+  - PROGRESS.md 已修正
+- P2.3 rate-limit: 报告推测"仅 IP"，实测 `lib/rate-limit.js:13-15` 已用 `prefix:ip:agentId` 复合键 ✅
+- P1.2 ai-semantic: 报告怀疑"动态性未验证"，实测设计为静态爬虫 + JS 动态更新，非 bug ✅
+
+### 代码改动
+- **llms.txt**: 新增 Python/requests 示例 (claim→submit 完整协议，12 行)
+- **examples/**: 新建目录，创建 `agent-loop.py` + `claim-submit.sh` 两个可执行入口脚本
+- **GitHub Issue #1**: 验证存在且内容完整 (curl 示例 + 步骤说明 + OPEN 状态)
+
+### VPS 故障修复
+- **PostgreSQL was down** — `systemctl status postgresql` 显示 `inactive (dead)`
+  - ✅ 启动: `systemctl start postgresql`
+  - ✅ 自动启动: `systemctl enable postgresql`
+  - ✅ 应用重启: `pm2 restart 0`
+- **验证**: DB 20 posts (expires_at 2026-06-30) ✅ | API /api/health 200 ✅ | PM2 online ✅
+- **根因**: PostgreSQL 未配置开机自启，VPS 重启后不再手动启动
+
+### 无需操作项（基于证据排除）
+- rate-limit per-agent tracking: 已验证已在代码中实现
+- ai-semantic 动态化: 静态给爬虫是架构设计，非遗漏
+- 种子延期: 当前 2026-06-30 还有 45 天，非 P0
+- 图谱查 PG: 种子数据对 MVP 足够，无需改造
+
+---
+
+## 2026-05-17 代码库清理 + VPS 全链路验证
+
+### 清理（删除 17 个文件/目录）
+- 第三方工具工件: `.claude-flow/` `.playwright-cli/` `.swarm/` `ruvector.db` (~6.5MB)
+- 已完成任务文档: `tasks/001~020-*.md`（14 个，详情已归档到 PROGRESS.md）
+- 过时审计: `WORKFLOW_AUDIT.md` `MAINLINE_AUDIT.md`
+- 旧种子回退: `data/posts.json`（schema 过期）
+- 无用间接层: `api-handlers/tasks/index.js`
+- Obsidian 孤立文件: vault 中对应的 2 个审计文件
+
+### 修复（12 处）
+- `server.js`: 添加根路径 `/` 路由（SPA 回退之前不匹配 `/`）
+- `api-handlers/` 7 个 handler: `__dirname` → `../api/` 修复种子文件路径
+- `sitemap.xml`: 删除 4 个死 URL（docs/, registry, AI-CONTRIBUTING.md）
+- `test-api.sh`: 删除 AI-CONTRIBUTING.md curl 测试
+- `README.md`: 完全重写，反映 VPS+PG 架构
+- `scripts/sync-obsidian.sh`: 删除已删文件映射
+
+### VPS 全链路验证（12/12 端点 200）
+| 端点 | 状态 | 数据 |
+|------|------|------|
+| /api/health | ✅ 200 | ok |
+| / (前端) | ✅ 200 | index.html 10KB |
+| /api/posts | ✅ 200 | 53 条（20 本地 + 33 外部） |
+| /api/agents | ✅ 200 | 10 workers |
+| /api/lifecycle | ✅ 200 | 3 条记录 |
+| /api/graph | ✅ 200 | 20 nodes, 36 edges |
+| /api/metrics | ✅ 200 | 3 executions, 67% success |
+| /api/manifest | ✅ 200 | v2.0, auth_required=false |
+| /api/reasoning/stats | ✅ 200 | 0 reasoning objects |
+| /api/task-sources | ✅ 200 | 20 entities |
+| /api/case-studies | ✅ 200 | 1 case study |
+| /api/posts?source=external | ✅ 200 | 33 external posts |
+
+### Claim→Submit E2E 验收测试
+- Claim: `EXT_GH_OPE_23092` → `EXEC_MP97YZBL` ✅
+- Submit: `completed` in 78ms ✅
+- Verify: `audit-test-agent-2` 记录在 execution_history ✅
+
+### P2 状态
+- 聚合 cron: `0 */6 * * *` ✅ 运行中，最后执行 2026-05-17 00:01
+- 种子过期: 2026-06-30 ✅ 44 天后
+- GITHUB_TOKEN: **未设置** — 聚合脚本用未认证 API（60 req/hr），有 2 秒延迟补偿
+
+### 报告误判项（3 个 P0 全部已解决）
+- "public/ 目录不存在" → server.js 实际用 `__dirname` 指向根目录
+- "PG 连接池分散" → 已统一为 `lib/db.js` 单例
+- "git hooks 未激活" → `git config core.hooksPath .githooks` 已配置
+
+---
+
+## 2026-05-17 GITHUB_TOKEN 聚合优化
+
+### aggregate.js 优化
+- 限速头追踪：每次 GitHub API 请求后记录 `x-ratelimit-limit/remaining/reset`
+- 403 自适应退避：读取 `retry-after` 头，自动等待后重试一次
+- 可配置延迟：`GITHUB_DELAY_MS` 环境变量，默认 2000ms
+- 运行状态日志：输出 `GitHub API: 1/10 remaining, resets at ...`
+- 提示：未设置 token 时提示 `set GITHUB_TOKEN for 5000 req/hr`
+
+### 当前限速状态
+- Search API: 10 req/min（未认证），10 个仓库刚好用完
+- 每 6 小时跑一次，完全够用
+- 设置 token 后 → 5000 req/hr
+
+### .env.vps 更新
+- 添加 `GITHUB_TOKEN` 占位注释 + 创建链接
+- 添加 `GITHUB_DELAY_MS=2000` 配置
 

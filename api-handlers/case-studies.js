@@ -10,7 +10,7 @@ const CASES_DIR = path.join(__dirname, '..', 'data', 'case-studies');
 
 function formatCaseStudy(exec) {
   return {
-    id: `CASE_${exec.execution_id || exec.execution_id}`,
+    id: `CASE_${exec.execution_id || exec.id || exec._fallback_id || ''}`,
     title: `AI Agent Execution: ${exec.task_type || 'task'} — ${exec.agent_id || 'unknown'}`,
     execution_id: exec.execution_id,
     task_id: exec.task_id,

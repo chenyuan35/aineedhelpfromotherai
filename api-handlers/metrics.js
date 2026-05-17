@@ -2,20 +2,7 @@
 // Queries PostgreSQL for execution stats, task lifecycle, provider breakdown
 
 const { queryExecutions, queryTaskLifecycle } = require('../lib/execution-history');
-const { Pool } = require('pg');
-
-let pool = null;
-function getPool() {
-  if (!pool) {
-    pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: process.env.PGSSLMODE === 'require' ? { rejectUnauthorized: false } : undefined,
-      max: 2,
-      idleTimeoutMillis: 20000
-    });
-  }
-  return pool;
-}
+const { getPool } = require('../lib/db');
 
 async function getMetrics(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,7 +16,7 @@ async function getMetrics(req, res) {
     const execStats = await db.query(`
       SELECT
         COUNT(*) as total_executions,
-        COUNT(*) FILTER (WHERE status = 'completed' OR status = 'completed_with_fallback') as completed_count,
+        COUNT(*) FILTER (WHERE status = 'completed') as completed_count,
         COUNT(*) FILTER (WHERE status = 'failed') as failed_count,
         ROUND(AVG(duration_ms) FILTER (WHERE duration_ms IS NOT NULL)) as avg_duration_ms,
         ROUND(AVG(tokens_used) FILTER (WHERE tokens_used > 0)) as avg_tokens,
@@ -44,7 +31,7 @@ async function getMetrics(req, res) {
       SELECT
         provider,
         COUNT(*) as count,
-        COUNT(*) FILTER (WHERE status = 'completed' OR status = 'completed_with_fallback') as success_count,
+        COUNT(*) FILTER (WHERE status = 'completed') as success_count,
         COUNT(*) FILTER (WHERE status = 'failed') as fail_count,
         ROUND(AVG(duration_ms) FILTER (WHERE duration_ms IS NOT NULL)) as avg_duration_ms,
         ROUND(AVG(tokens_used) FILTER (WHERE tokens_used > 0)) as avg_tokens
@@ -58,7 +45,7 @@ async function getMetrics(req, res) {
       SELECT
         task_type,
         COUNT(*) as count,
-        COUNT(*) FILTER (WHERE status = 'completed' OR status = 'completed_with_fallback') as success_count,
+        COUNT(*) FILTER (WHERE status = 'completed') as success_count,
         COUNT(*) FILTER (WHERE status = 'failed') as fail_count
       FROM execution_history
       GROUP BY task_type
@@ -71,7 +58,7 @@ async function getMetrics(req, res) {
         agent_id,
         agent_name,
         COUNT(*) as execution_count,
-        COUNT(*) FILTER (WHERE status = 'completed' OR status = 'completed_with_fallback') as success_count,
+        COUNT(*) FILTER (WHERE status = 'completed') as success_count,
         COUNT(*) FILTER (WHERE status = 'failed') as fail_count,
         ROUND(AVG(duration_ms) FILTER (WHERE duration_ms IS NOT NULL)) as avg_duration_ms
       FROM execution_history

@@ -29,12 +29,13 @@ const handlers = {
   graph: require('./api-handlers/graph'),
   lifecycle: require('./api-handlers/lifecycle'),
   manifest: require('./api-handlers/manifest'),
- metrics: require('./api-handlers/metrics'),
- cleanup: require('./api-handlers/cleanup'),
- route: require('./api-handlers/route'),
+  metrics: require('./api-handlers/metrics'),
+  cleanup: require('./api-handlers/cleanup'),
+  route: require('./api-handlers/route'),
   'tasks-native': require('./api-handlers/tasks-native'),
   'task-sources': require('./api-handlers/task-sources'),
   'case-studies': require('./api-handlers/case-studies'),
+  reasoning: require('./api-handlers/reasoning'),
 };
 
 // Health check
@@ -60,13 +61,12 @@ app.all('/api/metrics', handlers.metrics);
 app.all('/api/cleanup', handlers.cleanup);
 app.all('/api/case-studies', handlers['case-studies']);
 app.all('/api/case-studies/:path', handlers['case-studies']);
+app.all('/api/reasoning', handlers.reasoning);
+app.all('/api/reasoning/:path', handlers.reasoning);
 
-// Static files (frontend)
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Root-level static files (llms.txt, openapi.json, robots.txt, sitemap.xml, etc.)
-const rootStaticFiles = ['llms.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'AI-CONTRIBUTING.md'];
-for (const file of rootStaticFiles) {
+// Static frontend files
+const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
+for (const file of staticFiles) {
   const filePath = path.join(__dirname, file);
   if (require('fs').existsSync(filePath)) {
     app.get('/' + file, (req, res) => res.sendFile(filePath));
@@ -76,9 +76,14 @@ for (const file of rootStaticFiles) {
 // .well-known directory
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
+// Root path — serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // SPA fallback (Express 5 compatible)
 app.get('/:path', (req, res) => {
- res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {

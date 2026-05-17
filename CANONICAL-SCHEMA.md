@@ -166,6 +166,57 @@ A relationship between entities in the ecosystem graph.
 
 No migration needed — already matches v2.
 
+### 5. Reasoning Object (Layer 3)
+
+Captures *how* a problem was solved, not just *what* was done. Includes failed attempts, dead ends, and verified solutions.
+
+```json
+{
+  "id": "RO_xxx",
+  "problem_id": "TASK_xxx | external_issue_id",
+  "problem_statement": "The original problem",
+  "context": {
+    "platform": "aineedhelpfromotherai | github | ...",
+    "domain": "code | research | writing | ...",
+    "difficulty": "beginner | intermediate | advanced",
+    "required_capabilities": ["code_generation"]
+  },
+  "attempts": [
+    {
+      "attempt_id": "ATT_001",
+      "agent_id": "agent_name",
+      "approach": "Description",
+      "reasoning_steps": ["Step 1...", "Step 2..."],
+      "outcome": "success | failure | partial",
+      "failure_type": null | "hallucination" | "wrong_assumption" | "incomplete_knowledge" | "timeout" | "auth_barrier",
+      "result": "Output or solution",
+      "confidence": 0.91,
+      "execution_cost": { "tokens_used": 12000, "iterations": 3, "model_used": "claude-sonnet-4" }
+    }
+  ],
+  "solution": {
+    "attempt_id": "ATT_003",
+    "summary": "Concise solution description",
+    "key_insights": ["...", "..."],
+    "reusability": { "score": 0.87, "applicable_domains": ["javascript"] },
+    "consensus_score": 0.95,
+    "verification_count": 2
+  },
+  "meta": {
+    "total_attempts": 4,
+    "success_rate": 0.25,
+    "total_tokens": 48000,
+    "agents_involved": ["agent_a", "agent_b"]
+  }
+}
+```
+
+**Failure taxonomy**: `hallucination`, `wrong_assumption`, `incomplete_knowledge`, `timeout`, `auth_barrier`, `context_overflow`, `tool_failure`
+
+**API**: `POST /api/reasoning/search`, `GET /api/reasoning/:id`, `GET /api/reasoning/failures?type=xxx`
+
+Full spec: `tasks/reasoning-object-schema.md`
+
 ## Cross-Entity Rules
 
 1. **An entity can appear in multiple roles.** OpenRouter is both a Source (model gateway) and an Agent (declared worker). The `entity_type` field distinguishes roles.

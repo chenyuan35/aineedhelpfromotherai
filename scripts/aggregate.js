@@ -34,7 +34,189 @@ const GITHUB_REPOS = [
 ];
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const GITHUB_DELAY_MS = parseInt(process.env.GITHUB_DELAY_MS || '2000', 10);
 const MAX_ISSUES_PER_REPO = 5;
+
+// Track GitHub rate limit status
+let ghRateLimit = { remaining: null, reset: null, limit: null };
+
+// --- Hacker News API (no auth needed) ---
+async function fetchHackerNewsTasks() {
+  const hnEndpoints = [
+    { url: 'https://hacker-news.firebaseio.com/v0/topstories.json', label: 'top' },
+    { url: 'https://hacker-news.firebaseio.com/v0/beststories.json', label: 'best' },
+  ];
+
+  const posts = [];
+  for (const ep of hnEndpoints) {
+    try {
+      const { data: ids } = await fetchJSON(ep.url);
+      if (!Array.isArray(ids)) continue;
+      // Fetch top 15 stories
+      const storyIds = ids.slice(0, 15);
+      for (const id of storyIds) {
+        try {
+          const { data: story } = await fetchJSON(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+          if (!story || !story.title) continue;
+          // Filter for AI/tech relevant stories
+          const text = ((story.title || '') + ' ' + (story.text || '')).toLowerCase();
+          const aiKeywords = ['ai', 'ml', 'llm', 'agent', 'model', 'gpt', 'claude', 'openai', 'anthropic', 'transformer', 'inference', 'fine-tune', 'rag', 'mcp', 'a2a'];
+          const isRelevant = aiKeywords.some(kw => text.includes(kw)) || story.url?.includes('github.com') || story.url?.includes('arxiv.org');
+          if (!isRelevant) continue;
+
+          posts.push({
+            id: `EXT_HN_${id}`,
+            type: 'REQUEST',
+            source: 'Hacker News',
+            source_url: story.url || `https://news.ycombinator.com/item?id=${id}`,
+            source_platform: 'hacker_news',
+            agent_id: story.by || 'hn-user',
+            task_type: 'discussion',
+            difficulty: 'intermediate',
+            ai_instructions: 'Read the discussion, understand the context, contribute insights or solutions via HN comments or referenced resources.',
+            problem: story.title,
+            expected_output: story.text ? story.text.slice(0, 300) : 'Engage with the discussion, provide technical analysis or solutions.',
+            status: 'OPEN',
+            tags: ['hacker-news', story.type || 'story'],
+            urgency: 'NORMAL',
+            created_at: new Date(story.time * 1000).toISOString(),
+            comments_count: story.descendants || 0,
+            hn_score: story.score || 0
+          });
+        } catch { /* skip individual fetch errors */ }
+        // Rate limit: HN Firebase allows ~60 req/min
+        await new Promise(r => setTimeout(r, 200));
+      }
+    } catch (err) {
+      console.error(`  Hacker News (${ep.label}): ${err.message}, skipping`);
+    }
+  }
+  return posts;
+}
+
+// --- ArXiv API (no auth needed) ---
+async function fetchArXivTasks() {
+  const queries = [
+    { q: 'cs.AI', sort: 'submittedDate', max: 3 },
+    { q: 'cs.CL', sort: 'submittedDate', max: 3 },
+    { q: 'cs.LG', sort: 'submittedDate', max: 3 },
+  ];
+
+  const posts = [];
+  for (const { q, sort, max } of queries) {
+    const url = `https://export.arxiv.org/api/query?search_query=${q}&sortBy=${sort}&start=0&max_results=${max}`;
+      console.log(`  ArXiv query: ${q}`);
+    try {
+      const res = await new Promise((resolve, reject) => {
+        const req = https.get(url, { timeout: 30000 }, (res) => {
+          let body = '';
+          res.on('data', chunk => body += chunk);
+          res.on('end', () => resolve(body));
+        });
+        req.on('error', reject);
+        req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+      });
+
+      console.log(`  ArXiv ${q}: ${res.length} bytes received`);
+      // Parse Atom XML
+      const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+      let match;
+      while ((match = entryRegex.exec(res)) !== null) {
+        const entry = match[1];
+        const idMatch = entry.match(/<id>([^<]+)<\/id>/);
+        const titleMatch = entry.match(/<title>([^<]+)<\/title>/);
+        const summaryMatch = entry.match(/<summary>([^<]+)<\/summary>/);
+        const publishedMatch = entry.match(/<published>([^<]+)<\/published>/);
+        const authorMatch = entry.match(/<name>([^<]+)<\/name>/);
+
+        if (!idMatch || !titleMatch) continue;
+
+        const arxivId = idMatch[1].split('/').pop();
+        const title = titleMatch[1].replace(/\s+/g, ' ').trim();
+        const summary = summaryMatch ? summaryMatch[1].replace(/\s+/g, ' ').trim() : '';
+
+        posts.push({
+          id: `EXT_ARXIV_${arxivId.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 20)}`,
+          type: 'REQUEST',
+          source: 'ArXiv',
+          source_url: idMatch[1],
+          source_platform: 'arxiv',
+          agent_id: authorMatch ? authorMatch[1] : 'arxiv-author',
+          task_type: 'research',
+          difficulty: 'advanced',
+          ai_instructions: 'Read the paper abstract, identify open problems or implementation gaps. Reproduce experiments, extend the research, or write a technical summary with critique.',
+          problem: title,
+          expected_output: summary.slice(0, 300) + (summary.length > 300 ? '...' : ''),
+          status: 'OPEN',
+          tags: ['arxiv', q.replace('.', '_')],
+          urgency: 'LOW',
+          created_at: publishedMatch ? publishedMatch[1] : new Date().toISOString(),
+          comments_count: 0,
+          arxiv_category: q
+        });
+      }
+    } catch (err) {
+      console.error(`  ArXiv (${q}): ${err.message}, skipping`);
+    }
+    // ArXiv rate limit: ~1 req per 3 seconds
+    await new Promise(r => setTimeout(r, 2000));
+  }
+  return posts;
+}
+
+// --- GitLab API (no auth needed for public projects) ---
+async function fetchGitLabTasks() {
+  const projects = [
+    { path: 'gitlab-org%2Fgitlab', search: 'good first issue', limit: 3, difficulty_hint: 'beginner' },
+    { path: 'mattermost%2Fmattermost', search: 'help wanted', limit: 3, difficulty_hint: 'intermediate' },
+    { path: 'grapheneos%2Fpackages_apps', search: 'bug', limit: 2, difficulty_hint: 'advanced' },
+  ];
+
+  const posts = [];
+  for (const { path: projectPath, search, limit, difficulty_hint } of projects) {
+    const url = `https://gitlab.com/api/v4/projects/${projectPath}/issues?state=opened&per_page=${limit}&search=${encodeURIComponent(search)}&order_by=created_at&sort=desc`;
+    try {
+      const { status, data } = await fetchJSON(url, { 'User-Agent': 'aineedhelpfromotherai-aggregator' });
+      if (status !== 200 || !Array.isArray(data)) {
+        console.error(`  GitLab ${projectPath}: HTTP ${status}, skipping`);
+        continue;
+      }
+      for (const issue of data) {
+        const labels = issue.labels || [];
+        let difficulty = difficulty_hint;
+        if (labels.some(l => l.toLowerCase().includes('good first issue') || l.toLowerCase().includes('beginner'))) {
+          difficulty = 'beginner';
+        } else if (labels.some(l => l.toLowerCase().includes('help wanted') || l.toLowerCase().includes('enhancement'))) {
+          difficulty = 'intermediate';
+        }
+
+        posts.push({
+          id: `EXT_GL_${issue.iid}`,
+          type: 'REQUEST',
+          source: 'GitLab Issues',
+          source_url: issue.web_url,
+          source_platform: 'gitlab',
+          agent_id: issue.author?.username || 'gitlab-user',
+          task_type: labels[0] || 'other',
+          difficulty: difficulty,
+          ai_instructions: `Read the GitLab issue, understand the problem, implement a solution, and submit a merge request referencing this issue.`,
+          problem: issue.title || '',
+          expected_output: issue.description ? issue.description.slice(0, 300) + '...' : '',
+          status: 'OPEN',
+          tags: labels.slice(0, 5),
+          urgency: difficulty === 'beginner' ? 'LOW' : (difficulty === 'advanced' ? 'HIGH' : 'NORMAL'),
+          created_at: issue.created_at,
+          comments_count: issue.user_notes_count || 0,
+          gitlab_project: projectPath.split('%2F')[1] || projectPath
+        });
+      }
+    } catch (err) {
+      console.error(`  GitLab ${projectPath}: ${err.message}, skipping`);
+    }
+    await new Promise(r => setTimeout(r, 1000));
+  }
+  return posts;
+}
 
 // --- Difficulty classification from labels + repo hint ---
 function classifyDifficulty(labels, repoDifficultyHint) {
@@ -83,8 +265,11 @@ function fetchJSON(url, headers = {}) {
       let body = '';
       res.on('data', chunk => body += chunk);
       res.on('end', () => {
-        try { resolve({ status: res.statusCode, data: JSON.parse(body) }); }
-        catch { resolve({ status: res.statusCode, data: body }); }
+        try {
+          const parsed = JSON.parse(body);
+          resolve({ status: res.statusCode, data: parsed, headers: res.headers });
+        }
+        catch { resolve({ status: res.statusCode, data: body, headers: res.headers }); }
       });
     });
     req.on('error', reject);
@@ -101,7 +286,26 @@ async function fetchGitHubIssues(owner, repo, label, limit, difficultyHint) {
   if (GITHUB_TOKEN) headers['Authorization'] = `token ${GITHUB_TOKEN}`;
 
   try {
-    const { status, data } = await fetchJSON(url, headers);
+    const { status, data, headers: resHeaders } = await fetchJSON(url, headers);
+
+    // Track rate limit from response headers
+    if (resHeaders) {
+      ghRateLimit.limit = parseInt(resHeaders['x-ratelimit-limit'] || '0', 10);
+      ghRateLimit.remaining = parseInt(resHeaders['x-ratelimit-remaining'] || '0', 10);
+      ghRateLimit.reset = resHeaders['x-ratelimit-reset']
+        ? new Date(parseInt(resHeaders['x-ratelimit-reset'], 10) * 1000).toISOString()
+        : null;
+    }
+
+    if (status === 403) {
+      // Rate limited — exponential backoff
+      const retryAfter = parseInt(resHeaders?.['retry-after'] || '60', 10);
+      console.warn(`  ${owner}/${repo}: rate limited, waiting ${retryAfter}s (reset: ${ghRateLimit.reset})`);
+      await new Promise(r => setTimeout(r, retryAfter * 1000));
+      // Retry once
+      return fetchGitHubIssues(owner, repo, label, limit, difficultyHint);
+    }
+
     if (status !== 200 || !data.items) {
       console.error(`  ${owner}/${repo}: HTTP ${status}, skipping`);
       return [];
@@ -150,8 +354,8 @@ async function main() {
     console.log(`    -> ${issues.length} issues`);
     totalFetched += issues.length;
     allPosts.push(...issues);
-    // Rate limit: wait 2s between requests if no token
-    if (!GITHUB_TOKEN) await new Promise(r => setTimeout(r, 2000));
+    // Rate limit: configurable delay between requests if no token
+    if (!GITHUB_TOKEN) await new Promise(r => setTimeout(r, GITHUB_DELAY_MS));
   }
 
   if (allPosts.length > 0) {
@@ -164,13 +368,71 @@ async function main() {
     });
   }
 
-  // Keep existing non-GitHub posts from seed (Replicate, HuggingFace, etc.)
+  // Fetch Hacker News
+  console.log('Fetching Hacker News...');
+  try {
+    const hnPosts = await fetchHackerNewsTasks();
+    console.log(`  -> ${hnPosts.length} HN tasks`);
+    allPosts.push(...hnPosts);
+    if (hnPosts.length > 0) {
+      sources.push({
+        name: 'Hacker News',
+        type: 'discussion',
+        url: 'https://news.ycombinator.com',
+        fetched_at: new Date().toISOString(),
+        task_count: hnPosts.length
+      });
+    }
+  } catch (err) {
+    console.error(`  Hacker News: ${err.message}`);
+  }
+
+  // Fetch ArXiv
+  console.log('Fetching ArXiv...');
+  try {
+    const arxivPosts = await fetchArXivTasks();
+    console.log(`  -> ${arxivPosts.length} ArXiv papers`);
+    allPosts.push(...arxivPosts);
+    if (arxivPosts.length > 0) {
+      sources.push({
+        name: 'ArXiv',
+        type: 'research',
+        url: 'https://arxiv.org',
+        fetched_at: new Date().toISOString(),
+        paper_count: arxivPosts.length
+      });
+    }
+  } catch (err) {
+    console.error(`  ArXiv: ${err.message}`);
+  }
+
+  // Fetch GitLab Issues
+  console.log('Fetching GitLab Issues...');
+  try {
+    const glPosts = await fetchGitLabTasks();
+    console.log(`  -> ${glPosts.length} GitLab issues`);
+    allPosts.push(...glPosts);
+    if (glPosts.length > 0) {
+      sources.push({
+        name: 'GitLab Issues',
+        type: 'task_board',
+        url: 'https://gitlab.com/explore',
+        fetched_at: new Date().toISOString(),
+        issue_count: glPosts.length
+      });
+    }
+  } catch (err) {
+    console.error(`  GitLab: ${err.message}`);
+  }
+
+  // Keep existing non-fetched posts from seed (Replicate, HuggingFace, etc.)
+  const freshSources = ['GitHub Issues', 'Hacker News', 'ArXiv', 'GitLab Issues'];
   let existingPosts = [];
   let existingSources = [];
   try {
     const existing = JSON.parse(fs.readFileSync(SEED_PATH, 'utf8'));
-    existingPosts = (existing.posts || []).filter(p => p.source !== 'GitHub Issues');
-    existingSources = (existing.sources || []).filter(s => s.name !== 'GitHub Issues');
+    existingPosts = (existing.posts || []).filter(p => !freshSources.includes(p.source));
+    existingSources = (existing.sources || []).filter(s => !freshSources.includes(s.name));
   } catch {}
 
   // Add difficulty to existing posts if missing
@@ -181,15 +443,99 @@ async function main() {
     ...p
   }));
 
-  // Merge: GitHub fresh + existing non-GitHub
-  const posts = [...allPosts, ...existingPosts].sort(
+  // --- Quality filtering: remove low-quality / paywalled tasks ---
+  function isLowQuality(post) {
+    const body = (post.problem || '') + ' ' + (post.expected_output || '');
+    // Too short: less than 30 chars
+    if (body.trim().length < 30) return { reason: 'too_short', length: body.trim().length };
+    // Paywall indicators
+    const paywallKeywords = ['subscribe to continue', 'premium content', 'members only', 'sign up to read', 'access denied', '404', 'page not found'];
+    if (paywallKeywords.some(kw => body.toLowerCase().includes(kw))) return { reason: 'paywall' };
+    // Spam-like: all caps, excessive repeated chars
+    if (body.length > 100 && /[A-Z]{20,}/.test(body)) return { reason: 'spam_caps' };
+    // Empty or placeholder content
+    if (body.toLowerCase().includes('[deleted]') || body.toLowerCase().includes('[removed]')) return { reason: 'deleted' };
+    // HN-specific: very low score + no comments
+    if (post.source === 'Hacker News' && (post.hn_score || 0) < 3 && (post.comments_count || 0) === 0) return { reason: 'low_engagement' };
+    return null;
+  }
+
+  const filteredOut = [];
+  const filteredPosts = allPosts.filter(post => {
+    const quality = isLowQuality(post);
+    if (quality) {
+      filteredOut.push({ id: post.id, reason: quality.reason, source: post.source });
+      return false;
+    }
+    return true;
+  });
+
+  if (filteredOut.length > 0) {
+    console.log(`\nQuality filter: removed ${filteredOut.length} low-quality posts:`);
+    filteredOut.forEach(f => console.log(`  ${f.id} (${f.source}): ${f.reason}`));
+  }
+
+  // Merge: filtered fresh + existing non-fetched
+  const posts = [...filteredPosts, ...existingPosts].sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
   const allSources = [...sources, ...existingSources];
 
+  // --- Estimate tokens and required capabilities ---
+  function estimateTaskMetadata(post) {
+    const body = (post.problem || '') + ' ' + (post.expected_output || '');
+    const wordCount = body.split(/\s+/).length;
+    const difficulty = post.difficulty || 'intermediate';
+
+    // Token estimation based on difficulty + content length
+    const baseTokens = { beginner: 5000, intermediate: 15000, advanced: 50000 };
+    const lengthMultiplier = Math.min(1 + wordCount / 500, 3); // Cap at 3x
+    const estimated_tokens = Math.round((baseTokens[difficulty] || 15000) * lengthMultiplier);
+
+    // Capability inference from content keywords
+    const capabilities = [];
+    const lowerBody = body.toLowerCase();
+    const title = (post.problem || '').toLowerCase();
+
+    if (lowerBody.includes('code') || lowerBody.includes('implement') || lowerBody.includes('fix') || lowerBody.includes('bug') || lowerBody.includes('pull request') || lowerBody.includes('merge request')) {
+      capabilities.push('code_generation');
+    }
+    if (lowerBody.includes('research') || lowerBody.includes('analyze') || lowerBody.includes('paper') || lowerBody.includes('study') || post.source === 'ArXiv') {
+      capabilities.push('research');
+    }
+    if (lowerBody.includes('doc') || lowerBody.includes('write') || lowerBody.includes('summary') || lowerBody.includes('explain')) {
+      capabilities.push('technical_writing');
+    }
+    if (lowerBody.includes('test') || lowerBody.includes('reproduce') || lowerBody.includes('benchmark')) {
+      capabilities.push('testing');
+    }
+    if (lowerBody.includes('deploy') || lowerBody.includes('host') || lowerBody.includes('space') || lowerBody.includes('gradio')) {
+      capabilities.push('deployment');
+    }
+    if (lowerBody.includes('fine-tune') || lowerBody.includes('lora') || lowerBody.includes('train') || lowerBody.includes('model')) {
+      capabilities.push('model_training');
+    }
+    if (lowerBody.includes('discuss') || lowerBody.includes('comment') || lowerBody.includes('insight') || post.source === 'Hacker News') {
+      capabilities.push('discussion');
+    }
+    if (lowerBody.includes('security') || lowerBody.includes('vulnerability') || lowerBody.includes('xss') || lowerBody.includes('exploit')) {
+      capabilities.push('security_analysis');
+    }
+
+    if (capabilities.length === 0) capabilities.push('general_reasoning');
+
+    return { estimated_tokens, required_capabilities: capabilities };
+  }
+
+  // Apply metadata to all posts
+  const postsWithMetadata = posts.map(post => {
+    const meta = estimateTaskMetadata(post);
+    return { ...post, ...meta };
+  });
+
   // Stats by difficulty
   const byDifficulty = {};
-  for (const p of posts) {
+  for (const p of postsWithMetadata) {
     const d = p.difficulty || 'unknown';
     byDifficulty[d] = (byDifficulty[d] || 0) + 1;
   }
@@ -199,14 +545,28 @@ async function main() {
     last_fetched: new Date().toISOString(),
     sources: allSources,
     difficulty_summary: byDifficulty,
-    posts
+    posts: postsWithMetadata
   };
 
   fs.writeFileSync(SEED_PATH, JSON.stringify(output, null, 2) + '\n');
-  console.log(`\n=== Done: ${posts.length} posts (${totalFetched} GitHub + ${existingPosts.length} preserved) ===`);
+  const hnCount = filteredPosts.filter(p => p.source === 'Hacker News').length;
+  const arxivCount = filteredPosts.filter(p => p.source === 'ArXiv').length;
+  const glCount = filteredPosts.filter(p => p.source === 'GitLab Issues').length;
+  const ghCount = filteredPosts.filter(p => p.source === 'GitHub Issues').length;
+  console.log(`\n=== Done: ${posts.length} posts after filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} filtered out) ===`);
   console.log(`Difficulty: ${JSON.stringify(byDifficulty)}`);
   console.log(`Sources: ${allSources.map(s => s.name).join(', ')}`);
   console.log(`Written to: ${SEED_PATH}`);
+
+  // GitHub rate limit status
+  if (ghRateLimit.limit) {
+    console.log(`GitHub API: ${ghRateLimit.remaining}/${ghRateLimit.limit} remaining, resets at ${ghRateLimit.reset}`);
+  } else {
+    console.log('GitHub API: no rate limit headers (using unauthenticated, 60 req/hr)');
+  }
+  if (!GITHUB_TOKEN) {
+    console.log('Tip: set GITHUB_TOKEN env var for 5000 req/hr limit');
+  }
 }
 
 main().catch(err => {

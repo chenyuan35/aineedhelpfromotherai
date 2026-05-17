@@ -10,18 +10,10 @@
 //   GET                  ?execution_id=xxx      → Query execution status/history
 
 const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle } = require('../lib/execution-history');
+const { saveReasoning } = require('../lib/reasoning-storage');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
 const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
-const { Pool } = require('pg');
-
-const DATABASE_URL = process.env.DATABASE_URL;
-const pool = DATABASE_URL ? new Pool({
-  connectionString: DATABASE_URL,
-  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false },
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000
-}) : null;
+const { getPool } = require('../lib/db');
 
 // --- Agent identity parsing (zero-barrier) ---
 function parseAgentId(req) {
@@ -57,57 +49,58 @@ async function handleClaim(req, res) {
     });
   }
 
- // Find task from PG first, then fallback to aggregated-seed.json
- if (!pool) {
- return res.status(503).json({ success: false, error: 'Database unavailable' });
- }
+  // Find task from PG first, then fallback to aggregated-seed.json
+  const db = getPool();
+  if (!db) {
+    return res.status(503).json({ success: false, error: 'Database unavailable' });
+  }
 
- let task;
- let taskSource = 'postgresql';
- try {
- const result = await pool.query('SELECT * FROM posts WHERE id = $1', [taskId]);
- if (result.rows.length > 0) {
- task = result.rows[0];
- } else {
- // Fallback: look up in aggregated-seed.json (external tasks)
- try {
- const fs = require('fs');
- const path = require('path');
- const seedPath = path.join(__dirname, 'aggregated-seed.json');
- const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
- const seedTask = seedData.posts.find(t => t.id === taskId);
- if (seedTask) {
- task = {
- id: seedTask.id,
- type: seedTask.type || 'REQUEST',
- status: seedTask.status || 'OPEN',
- title: seedTask.problem || seedTask.title || '',
- body: seedTask.body || seedTask.description || seedTask.expected_output || '',
- difficulty: seedTask.difficulty,
- source_url: seedTask.source_url,
- ai_instructions: seedTask.ai_instructions,
- expires_at: seedTask.expires_at || null
- };
- taskSource = 'aggregated-seed';
- // Auto-import into PG so future queries find it
- try {
- await pool.query(
- `INSERT INTO posts (id, type, status, title, body, difficulty, source_url, ai_instructions, created_at)
- VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
- ON CONFLICT (id) DO NOTHING`,
- [task.id, task.type, task.status, task.title, task.body, task.difficulty, task.source_url, task.ai_instructions]
- );
- } catch (importErr) { /* non-fatal, continue with in-memory task */ }
- } else {
- return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
- }
- } catch (seedErr) {
- return res.status(404).json({ success: false, error: `Task ${taskId} not found (seed file unavailable)` });
- }
- }
- } catch (err) {
- return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
- }
+  let task;
+  let taskSource = 'postgresql';
+  try {
+    const result = await db.query('SELECT * FROM posts WHERE id = $1', [taskId]);
+    if (result.rows.length > 0) {
+      task = result.rows[0];
+    } else {
+      // Fallback: look up in aggregated-seed.json (external tasks)
+      try {
+        const fs = require('fs');
+        const path = require('path');
+        const seedPath = path.join(__dirname, '..', 'api', 'aggregated-seed.json');
+        const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+        const seedTask = seedData.posts.find(t => t.id === taskId);
+        if (seedTask) {
+          task = {
+            id: seedTask.id,
+            type: seedTask.type || 'REQUEST',
+            status: seedTask.status || 'OPEN',
+            title: seedTask.problem || seedTask.title || '',
+            body: seedTask.body || seedTask.description || seedTask.expected_output || '',
+            difficulty: seedTask.difficulty,
+            source_url: seedTask.source_url,
+            ai_instructions: seedTask.ai_instructions,
+            expires_at: seedTask.expires_at || null
+          };
+          taskSource = 'aggregated-seed';
+          // Auto-import into PG so future queries find it
+          try {
+            await db.query(
+              `INSERT INTO posts (id, type, status, title, body, difficulty, source_url, ai_instructions, created_at)
+               VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+               ON CONFLICT (id) DO NOTHING`,
+              [task.id, task.type, task.status, task.title, task.body, task.difficulty, task.source_url, task.ai_instructions]
+            );
+          } catch (importErr) { /* non-fatal, continue with in-memory task */ }
+        } else {
+          return res.status(404).json({ success: false, error: `Task ${taskId} not found` });
+        }
+      } catch (seedErr) {
+        return res.status(404).json({ success: false, error: `Task ${taskId} not found (seed file unavailable)` });
+      }
+    }
+  } catch (err) {
+    return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
+  }
 
   // Lifecycle gate: only OPEN tasks can be claimed
   if (task.status !== 'OPEN') {
@@ -140,7 +133,7 @@ async function handleClaim(req, res) {
   const claimedAt = new Date().toISOString();
 
   try {
-    await pool.query(
+    await db.query(
       'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4',
       ['EXECUTING', agent.agent_id, claimedAt, taskId]
     );
@@ -281,9 +274,9 @@ async function handleSubmit(req, res) {
     taskStatus = 'FAILED';
   }
 
-  // Calculate duration
-  const claimedTime = new Date(execution.created_at).getTime();
-  const durationMs = claimedTime ? (Date.now() - claimedTime) : null;
+  // Calculate duration from claimed_at if available, fallback to created_at
+  const claimedTime = execution.metrics?.claimed_at || execution.created_at;
+  const durationMs = claimedTime ? (Date.now() - new Date(claimedTime).getTime()) : null;
 
   // Update execution record in PG (use nested format for saveExecution)
   try {
@@ -317,28 +310,100 @@ async function handleSubmit(req, res) {
   }
 
   // Update task in PG
-  try {
-    await pool.query(
-      'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4',
-      [taskStatus, submittedAt, resultText, execution.task_id]
-    );
-  } catch (err) {
-    console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
+  const submitDb = getPool();
+  if (submitDb) {
+    try {
+      await submitDb.query(
+        'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4',
+        [taskStatus, submittedAt, resultText, execution.task_id]
+      );
+    } catch (err) {
+      console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
+    }
   }
 
-  // Update lifecycle
+  // Update lifecycle with computed metrics
   try {
+    const prevCount = execution.metrics?.execution_count || 0;
+    const prevSuccess = execution.metrics?.success_count || 0;
+    const prevFail = execution.metrics?.fail_count || 0;
+    const newCount = prevCount + 1;
+    const newSuccess = executionStatus === 'completed' ? prevSuccess + 1 : prevSuccess;
+    const newFail = executionStatus === 'failed' ? prevFail + 1 : prevFail;
     await upsertTaskLifecycle({
       id: execution.task_id,
       status: taskStatus,
       lifecycle: {
         last_successful_execution: executionStatus === 'completed' ? submittedAt : null,
         last_failed_execution: executionStatus === 'failed' ? submittedAt : null,
-        submitted_by: agent.agent_id
+        submitted_by: agent.agent_id,
+        claimed_at: execution.created_at
+      },
+      metrics: {
+        execution_count: newCount,
+        success_count: newSuccess,
+        fail_count: newFail,
+        success_rate: newCount > 0 ? Math.round((newSuccess / newCount) * 100) / 100 : 0
       }
     });
   } catch (err) {
     console.error(`[submit] Lifecycle update failed:`, err.message);
+  }
+
+  // --- Reasoning Object integration: if structured_reasoning provided, save it ---
+  let reasoningId = null;
+  if (body.structured_reasoning && executionStatus === 'completed') {
+    try {
+      const sr = body.structured_reasoning;
+      reasoningId = sr.id || `RO_${executionId}`;
+      await saveReasoning({
+        id: reasoningId,
+        problem_id: execution.task_id,
+        problem_statement: execution.result_text || resultText,
+        context: {
+          platform: 'aineedhelpfromotherai',
+          domain: execution.task_type || 'other',
+          difficulty: sr.difficulty || 'intermediate',
+          required_capabilities: sr.capabilities || [],
+          estimated_tokens: sr.tokens_used || body.tokens_used || 0
+        },
+        attempts: [{
+          attempt_id: `ATT_${executionId}`,
+          agent_id: agent.agent_id,
+          approach: sr.approach || 'Agent executed and submitted result',
+          reasoning_steps: sr.reasoning_steps || [],
+          outcome: executionStatus,
+          failure_type: null,
+          result: resultText,
+          confidence: sr.confidence || 0.8,
+          execution_cost: {
+            tokens_used: sr.tokens_used || body.tokens_used || 0,
+            iterations: sr.iterations || 1,
+            duration_seconds: durationMs ? Math.round(durationMs / 1000) : null,
+            model_used: sr.model || body.model || null
+          },
+          submitted_at: submittedAt
+        }],
+        solution: executionStatus === 'completed' ? {
+          attempt_id: `ATT_${executionId}`,
+          summary: sr.summary || resultText.slice(0, 500),
+          key_insights: sr.key_insights || [],
+          consensus_score: null,
+          verification_count: 0
+        } : null,
+        meta: {
+          total_attempts: 1,
+          success_rate: executionStatus === 'completed' ? 1 : 0,
+          total_tokens: sr.tokens_used || body.tokens_used || 0,
+          agents_involved: [agent.agent_id],
+          first_attempt_at: submittedAt,
+          solved_at: executionStatus === 'completed' ? submittedAt : null
+        }
+      });
+    } catch (err) {
+      console.error(`[submit] Failed to save reasoning object:`, err.message);
+      reasoningId = null; // Don't fail the submit if reasoning save fails
+    }
   }
 
   return res.status(200).json({
@@ -351,9 +416,11 @@ async function handleSubmit(req, res) {
     submitted_at: submittedAt,
     duration_ms: durationMs,
     result_length: resultLength,
+    reasoning_id: reasoningId,
     meta: {
       platform_role: 'marketplace — we recorded YOUR result. We did not execute anything.',
       verification: 'Task requester (AI-1) should verify the result independently.',
+      reasoning: reasoningId ? `Structured reasoning saved as ${reasoningId}. GET /api/reasoning/${reasoningId}` : 'Include structured_reasoning in submit body to save reasoning object.',
       timestamp: submittedAt
     }
   });
@@ -425,6 +492,7 @@ async function handleRegister(req, res) {
 
   if (!agentId) {
     return res.status(400).json({
+      success: false,
       error: 'agent_id is required',
       usage: 'POST /api/execute?action=register { "agent_id": "my-agent", "agent_name": "My Agent" }',
       auth_usage: 'Then use: X-Agent-Token: agent_id:agent_xxx'
@@ -432,7 +500,7 @@ async function handleRegister(req, res) {
   }
 
   if (!/^[a-z0-9_-]+$/i.test(agentId)) {
-    return res.status(400).json({ error: 'agent_id must be alphanumeric with dashes/underscores only' });
+    return res.status(400).json({ success: false, error: 'agent_id must be alphanumeric with dashes/underscores only' });
   }
 
   try {
@@ -445,7 +513,7 @@ async function handleRegister(req, res) {
     });
   } catch (err) {
     console.error('[register] Error:', err.message);
-    return res.status(500).json({ error: 'Registration failed', details: err.message });
+    return res.status(500).json({ success: false, error: 'Registration failed', details: err.message });
   }
 }
 

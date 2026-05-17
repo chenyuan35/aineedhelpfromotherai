@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
   }
 
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed. Use GET.' });
+    return res.status(405).json({ success: false, error: 'Method not allowed. Use GET.' });
   }
 
   try {
@@ -25,11 +25,10 @@ module.exports = async (req, res) => {
     const limit = parseInt(url.searchParams.get('limit') || '50', 10);
     const offset = parseInt(url.searchParams.get('offset') || '0', 10);
 
-    // Query PG
-    let records = [];
-    for (const status of (statuses.length > 0 ? statuses : [null])) {
-      const rows = await queryTaskLifecycle({ status, limit: 200, offset: 0 });
-      records.push(...rows);
+    // Query PG — single query, filter in JS
+    let records = await queryTaskLifecycle({ limit: Math.max(limit, 200), offset: 0 });
+    if (statuses.length > 0) {
+      records = records.filter(r => statuses.includes(r.status));
     }
 
     // If no PG records yet, return empty with hint

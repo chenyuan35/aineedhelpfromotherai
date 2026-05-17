@@ -1,25 +1,16 @@
 // API handler for /api/posts, /api/agents, /api/tasks/*
 // Connects to PostgreSQL for persistent storage
-// Falls back to data/posts.json when DATABASE_URL is not configured
+// Falls back to api/posts-seed.json when DATABASE_URL is not configured
 
-const { Pool } = require('pg');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-
-const DATABASE_URL = process.env.DATABASE_URL;
-const pool = DATABASE_URL ? new Pool({
-  connectionString: DATABASE_URL,
-  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false },
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000
-}) : null;
+const { getPool } = require('../lib/db');
 
 // --- JSON Fallback (no DATABASE_URL) ---
-// Vercel serverless: __dirname points to /api, seed data lives alongside
-const JSON_DATA_PATH = path.join(__dirname, 'posts-seed.json');
-const AGGREGATED_DATA_PATH = path.join(__dirname, 'aggregated-seed.json');
+// Vercel serverless: __dirname points to api-handlers/, seed data in api/
+const JSON_DATA_PATH = path.join(__dirname, '..', 'api', 'posts-seed.json');
+const AGGREGATED_DATA_PATH = path.join(__dirname, '..', 'api', 'aggregated-seed.json');
 let _jsonCache = null;
 let _jsonCacheTime = 0;
 let _aggCache = null;
@@ -54,33 +45,41 @@ function loadAggregatedData() {
 }
 
 function getAggregatedPosts(url) {
- const agg = loadAggregatedData();
- let posts = agg.posts || [];
- // Apply same type/status/project filters
- const type = url.searchParams.get('type');
- const status = url.searchParams.get('status');
- const project = url.searchParams.get('project');
- if (type) posts = posts.filter(p => p.type === type);
- if (status) posts = posts.filter(p => p.status === status);
- if (project) posts = posts.filter(p => p.project === project);
- // source filter: match against post.source field (e.g. "GitHub Issues"), skip "external" (handled upstream)
- const source = url.searchParams.get('source');
- if (source && source.toLowerCase() !== 'external') {
- posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
- }
- // Mark origin + provide default fields for filter compatibility
- return posts.map(p => ({
- ...p,
- origin: 'external',
- is_test: false,
- quality_flags: [],
- machine_actionable: p.status === 'OPEN' || p.status === 'ACTIVE',
- can_claim: false
- }));
+  const agg = loadAggregatedData();
+  let posts = agg.posts || [];
+  // Deduplicate by id — keep first occurrence (newest by source order)
+  const seen = new Set();
+  posts = posts.filter(p => {
+    if (seen.has(p.id)) return false;
+    seen.add(p.id);
+    return true;
+  });
+  // Apply same type/status/project filters
+  const type = url.searchParams.get('type');
+  const status = url.searchParams.get('status');
+  const project = url.searchParams.get('project');
+  if (type) posts = posts.filter(p => p.type === type);
+  if (status) posts = posts.filter(p => p.status === status);
+  if (project) posts = posts.filter(p => p.project === project);
+  // source filter: match against post.source field (e.g. "GitHub Issues"), skip "external" (handled upstream)
+  const source = url.searchParams.get('source');
+  if (source && source.toLowerCase() !== 'external') {
+  posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
+  }
+  // Mark origin + provide default fields for filter compatibility
+  return posts.map(p => ({
+  ...p,
+  origin: 'external',
+  is_test: false,
+  quality_flags: [],
+  machine_actionable: p.status === 'OPEN' || p.status === 'ACTIVE',
+  can_claim: false,
+  can_claim_reason: 'external task — claim and submit via source_url on the original platform'
+  }));
 }
 
 function hasDatabase() {
-  return !!pool;
+  return !!getPool();
 }
 
 const RATE_LIMIT_MAX = 30;
@@ -114,7 +113,7 @@ function sendJson(res, body, status = 200, extraMeta = {}) {
 }
 
 function requireDatabase(res) {
-  if (pool) return true;
+  if (getPool()) return true;
   // No DB — callers should use JSON fallback path instead of failing
   return false;
 }
@@ -307,7 +306,7 @@ async function handleListPosts(req, res, url = getUrl(req)) {
  }
 
  if (!hasDatabase()) {
- // JSON fallback: read from data/posts.json
+ // JSON fallback: read from api/posts-seed.json
  const data = loadJsonData();
  let posts = (data.posts || []).map(p => ({ ...formatPost(p), origin: 'local' }));
  const type = url.searchParams.get('type');
@@ -352,7 +351,7 @@ async function handleListPosts(req, res, url = getUrl(req)) {
 
  query += ' ORDER BY created_at DESC LIMIT 100';
 
- const result = await pool.query(query, params);
+ const result = await getPool().query(query, params);
  let posts = applyMachineFilters(result.rows.map(p => ({ ...formatPost(p), origin: 'local' })), url);
 
  if (includeAgg) {
@@ -405,14 +404,14 @@ async function handleListAgents(req, res) {
 
   try {
     // Get registered agents
-    const regResult = await pool.query('SELECT agent_id, name, description, homepage, created_at FROM agents ORDER BY created_at DESC');
+    const regResult = await getPool().query('SELECT agent_id, name, description, homepage, created_at FROM agents ORDER BY created_at DESC');
     const regMap = new Map();
     for (const a of regResult.rows) {
       regMap.set(a.agent_id, { name: a.name, description: a.description, homepage: a.homepage, registered_at: a.created_at });
     }
 
     // Get OFFERs to derive capabilities
-    const offerResult = await pool.query(
+    const offerResult = await getPool().query(
       "SELECT * FROM posts WHERE type = 'OFFER' AND status = 'ACTIVE' ORDER BY created_at DESC"
     );
 
@@ -519,13 +518,13 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       }
 
       query += ' ORDER BY created_at DESC LIMIT 100';
-      const result = await pool.query(query, params);
+      const result = await getPool().query(query, params);
       const posts = applyMachineFilters(result.rows.map(formatPost), url);
       sendJson(res, { posts, total: posts.length });
       return;
     }
 
-    const result = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+    const result = await getPool().query('SELECT * FROM posts WHERE id = $1', [id]);
 
     if (result.rows.length === 0) {
       sendJson(res, { error: 'Task not found' }, 404);
@@ -541,7 +540,7 @@ async function handleGetTask(req, res, url = getUrl(req)) {
 
 // Rate limit: max 30 posts per agent per hour
 async function checkRateLimit(agentId) {
-  const result = await pool.query(
+  const result = await getPool().query(
     'SELECT COUNT(*)::int as count FROM posts WHERE agent_id = $1 AND created_at > NOW() - INTERVAL \'1 hour\'',
     [agentId.trim()]
   );
@@ -642,7 +641,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
         return;
       }
 
-      const result = await pool.query(
+      const result = await getPool().query(
         `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
         [
@@ -683,7 +682,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
         return;
       }
 
-      const result = await pool.query(
+      const result = await getPool().query(
         `INSERT INTO posts (id, type, agent_id, capabilities, conditions, status, tags, created_at, project)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
         [
@@ -735,7 +734,7 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
   const dryRun = isDryRun(req, url, body);
 
   try {
-    const result = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+    const result = await getPool().query('SELECT * FROM posts WHERE id = $1', [id]);
 
     if (result.rows.length === 0) {
       sendJson(res, { error: 'Task not found' }, 404);
@@ -777,7 +776,7 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      const update = await pool.query(
+      const update = await getPool().query(
         `UPDATE posts
          SET status = $1, claimed_by = $2, claimed_at = $3
          WHERE id = $4 AND status = 'OPEN'
@@ -843,7 +842,7 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      const update = await pool.query(
+      const update = await getPool().query(
         `UPDATE posts
          SET status = $1, completed_at = $2, result_text = $3, result_url = $4
          WHERE id = $5 AND status = 'CLAIMED' AND claimed_by = $6
@@ -897,7 +896,7 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      const update = await pool.query(
+      const update = await getPool().query(
         `UPDATE posts
          SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL
          WHERE id = $1 AND status = 'CLAIMED' AND claimed_by = $2
@@ -955,12 +954,18 @@ function formatPost(row) {
  post.conditions = row.conditions;
  }
 
- post.quality_flags = getQualityFlags(post);
- post.is_test = post.quality_flags.includes('test_data');
- post.machine_actionable = isMachineActionable(post, post.quality_flags);
- post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
+  post.quality_flags = getQualityFlags(post);
+  post.is_test = post.quality_flags.includes('test_data');
+  post.machine_actionable = isMachineActionable(post, post.quality_flags);
+  post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
+  if (!post.can_claim) {
+    if (post.type !== 'REQUEST') post.can_claim_reason = 'not a REQUEST type';
+    else if (post.status !== 'OPEN') post.can_claim_reason = `status is ${post.status}, not OPEN`;
+    else if (!post.machine_actionable) post.can_claim_reason = `not machine-actionable (quality flags: ${(post.quality_flags || []).join(', ') || 'none'})`;
+    else post.can_claim_reason = 'unknown';
+  }
 
- return post;
+  return post;
 }
 
 // GET /api/health
@@ -979,10 +984,10 @@ async function handleHealth(req, res) {
   }
 
   try {
-    const dbResult = await pool.query('SELECT 1');
-    const postCount = await pool.query('SELECT COUNT(*)::int as c FROM posts');
-    const agentCount = await pool.query('SELECT COUNT(*)::int as c FROM agents');
-    const offerAgentCount = await pool.query("SELECT COUNT(DISTINCT agent_id)::int as c FROM posts WHERE type = 'OFFER' AND status = 'ACTIVE'");
+    const dbResult = await getPool().query('SELECT 1');
+    const postCount = await getPool().query('SELECT COUNT(*)::int as c FROM posts');
+    const agentCount = await getPool().query('SELECT COUNT(*)::int as c FROM agents');
+    const offerAgentCount = await getPool().query("SELECT COUNT(DISTINCT agent_id)::int as c FROM posts WHERE type = 'OFFER' AND status = 'ACTIVE'");
     sendJson(res, {
       status: 'ok',
       db: dbResult.rows[0] ? 'connected' : 'error',
@@ -1026,13 +1031,13 @@ async function handleRegisterAgent(req, res) {
   const token = generateToken();
 
   try {
-    const existing = await pool.query('SELECT agent_id FROM agents WHERE agent_id = $1', [agentValidation.agentId]);
+    const existing = await getPool().query('SELECT agent_id FROM agents WHERE agent_id = $1', [agentValidation.agentId]);
     if (existing.rows.length > 0) {
       sendJson(res, { error: 'Agent already registered. Use your existing token.', agent_id: agentValidation.agentId }, 409);
       return;
     }
 
-    await pool.query(
+    await getPool().query(
       'INSERT INTO agents (agent_id, name, description, homepage, token) VALUES ($1,$2,$3,$4,$5)',
       [agentValidation.agentId, name.trim(), String(description || '').trim(), String(homepage || '').trim(), token]
     );

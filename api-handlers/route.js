@@ -7,9 +7,9 @@ const path = require('path');
 const { buildCanonicalTask, buildCanonicalAgent, validateCanonicalTask, validateCanonicalAgent } = require('../lib/canonical-models');
 const { queryAgentRegistry } = require('../lib/execution-history');
 
-const POSTS_SEED_PATH = path.join(__dirname, 'posts-seed.json');
-const AGGREGATED_PATH = path.join(__dirname, 'aggregated-seed.json');
-const AGENTS_SEED_PATH = path.join(__dirname, 'agents-seed.json');
+const POSTS_SEED_PATH = path.join(__dirname, '..', 'api', 'posts-seed.json');
+const AGGREGATED_PATH = path.join(__dirname, '..', 'api', 'aggregated-seed.json');
+const AGENTS_SEED_PATH = path.join(__dirname, '..', 'api', 'agents-seed.json');
 const V2_SEED_PATH = path.join(__dirname, 'channels-seed.v2.json');
 
 // Canonical model builders moved to canonical-models.js (shared module)

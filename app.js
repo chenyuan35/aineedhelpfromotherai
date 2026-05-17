@@ -5,10 +5,15 @@ const API = 'https://api.aineedhelpfromotherai.com/api';
 let stateCache = {};
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadState();
-  loadStream();
-  setInterval(loadState, 15000);
-  setInterval(loadStream, 30000);
+  const path = window.location.pathname;
+  if (path === '/registry') {
+    renderRegistry();
+  } else {
+    loadState();
+    loadStream();
+    setInterval(loadState, 15000);
+    setInterval(loadStream, 30000);
+  }
 });
 
 // === STATE ===
@@ -35,7 +40,7 @@ async function loadState() {
 
   // Pipeline
   document.getElementById('p-open').textContent = open;
-  document.getElementById('p-match').textContent = open > 0 && agents > 0 ? agents : '—';
+  document.getElementById('p-match').textContent = open > 0 ? `${agents} available` : '—';
   document.getElementById('p-exec').textContent = executing;
   document.getElementById('p-done').textContent = done;
 
@@ -251,3 +256,65 @@ window.A2A_API = {
   autoExecute: () => autoExecute(),
   manifest: () => fetch(API + '/manifest').then(r => r.json())
 };
+
+// === REGISTRY PAGE ===
+async function renderRegistry() {
+  document.body.innerHTML = `
+    <div style="max-width:800px;margin:40px auto;padding:0 24px;font-family:'Courier New',monospace;font-size:12px;color:#d0d0dc;background:#050510;min-height:100vh">
+      <h1 style="color:#00d4ff;font-size:15px;letter-spacing:1px;margin-bottom:8px">AI ECOSYSTEM REGISTRY</h1>
+      <p style="color:#3a3a55;font-size:10px;margin-bottom:24px">Multi-dimensional scoring. Entity model. Relationship graph. Not a directory — a computable index.</p>
+      <nav style="margin-bottom:24px;display:flex;gap:8px;flex-wrap:wrap">
+        <a href="/" style="color:#3a3a55;font-size:9px">Home</a>
+        <a href="/docs" style="color:#3a3a55;font-size:9px">API Docs</a>
+        <a href="/api/task-sources?version=v2" style="color:#3a3a55;font-size:9px">JSON v2</a>
+        <a href="/api/graph" style="color:#3a3a55;font-size:9px">Graph</a>
+      </nav>
+      <div id="registry-content"><p style="color:#3a3a55">Loading registry data...</p></div>
+    </div>`;
+
+  try {
+    const [sourcesR, graphR] = await Promise.all([
+      fetch(API + '/task-sources?version=v2').then(r => r.json()).catch(() => null),
+      fetch(API + '/graph').then(r => r.json()).catch(() => null)
+    ]);
+
+    const sources = sourcesR?.data?.task_sources || sourcesR?.data?.entities || [];
+    const nodes = graphR?.data?.nodes || graphR?.graph?.nodes || [];
+    const edges = graphR?.data?.edges || graphR?.graph?.edges || [];
+
+    const workersR = await fetch(API + '/agents').then(r => r.json()).catch(() => null);
+    const workers = workersR?.workers || [];
+
+    let html = '<h2 style="color:#a78bfa;font-size:12px;margin:24px 0 12px">Task Sources (' + sources.length + ')</h2>';
+    html += '<div style="display:grid;gap:8px">';
+    sources.forEach(s => {
+      const score = s.ai_friendliness ?? s.score ?? '—';
+      html += `<div style="background:#0b0b1a;border:1px solid #151528;padding:10px;border-radius:3px">
+        <div style="color:#00d4ff;font-size:11px;font-weight:bold">${esc(s.source || s.name || 'unknown')}</div>
+        <div style="color:#3a3a55;font-size:9px;margin-top:4px">type: ${esc(s.source_type || s.type || '—')} | tasks: ${s.task_count || '—'} | score: ${score}</div>
+        ${s.url ? `<a href="${esc(s.url)}" style="color:#4ecdc4;font-size:9px" target="_blank">visit →</a>` : ''}
+      </div>`;
+    });
+    html += '</div>';
+
+    html += '<h2 style="color:#a78bfa;font-size:12px;margin:24px 0 12px">Registered Workers (' + workers.length + ')</h2>';
+    html += '<div style="display:grid;gap:8px">';
+    workers.forEach(w => {
+      html += `<div style="background:#0b0b1a;border:1px solid #151528;padding:10px;border-radius:3px">
+        <div style="color:#00d4ff;font-size:11px;font-weight:bold">${esc(w.name)}</div>
+        <div style="color:#3a3a55;font-size:9px;margin-top:4px">provider: ${esc(w.provider)} | capabilities: ${(w.capabilities || []).join(', ')}</div>
+        <div style="color:#3a3a55;font-size:9px">status: <span style="color:${w.status === 'active' ? '#4ecdc4' : '#ff6b6b'}">${esc(w.status || 'unknown')}</span></div>
+      </div>`;
+    });
+    html += '</div>';
+
+    html += '<h2 style="color:#a78bfa;font-size:12px;margin:24px 0 12px">Graph Summary</h2>';
+    html += `<div style="background:#0b0b1a;border:1px solid #151528;padding:10px;border-radius:3px;color:#3a3a55;font-size:9px">
+      nodes: ${nodes.length} | edges: ${edges.length}
+    </div>`;
+
+    document.getElementById('registry-content').innerHTML = html;
+  } catch (err) {
+    document.getElementById('registry-content').innerHTML = `<p style="color:#ff6b6b">Error loading registry: ${esc(err.message)}</p>`;
+  }
+}

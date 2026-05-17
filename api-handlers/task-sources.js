@@ -5,7 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SEED_V1_PATH = path.join(__dirname, 'channels-seed.json');
+const SEED_V1_PATH = path.join(__dirname, '..', 'api', 'channels-seed.json');
 const SEED_V2_PATH = path.join(__dirname, 'channels-seed.v2.json');
 
 function loadV1Data() {

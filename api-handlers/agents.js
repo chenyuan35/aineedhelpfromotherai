@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { upsertAgentRegistry, queryAgentRegistry } = require('../lib/execution-history');
 
-const SEED_PATH = path.join(__dirname, 'agents-seed.json');
+const SEED_PATH = path.join(__dirname, '..', 'api', 'agents-seed.json');
 
 function loadWorkers() {
   try {

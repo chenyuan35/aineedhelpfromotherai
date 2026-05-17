@@ -1,6 +1,6 @@
 # 任务面板 — aineedhelpfromotherai 项目
 
-> 每次新会话先读这个文件。任务文件在 `tasks/NNN-name.md`。
+> 每次新会话先读这个文件。已完成任务详情已归档到 PROGRESS.md。
 
 ## 总览
 
@@ -18,18 +18,37 @@
 | 010 | 种子任务续期 | ✅ 完成 | expires_at 2026-05-30 → 2026-06-30 (20条) | 05-16 |
 | 011 | openapi.json 大修 | ✅ 完成 | v1.3.0, 22 paths (新增 channels/task-sources/graph/case-studies) | 05-16 |
 | 012 | 外部 AI 接入四管齐下 | 🔄 进行中 | GitHub Issue #1 + llms.txt优化 + 目录提交 | 05-16 |
+| 013 | 代码审计修复 12 项 | ✅ 完成 | node require 全部通过，validate 逻辑验证 | 05-16 |
+| 014 | 修复聚合 cron | ✅ 完成 | last_fetched 回到当前时间 | 05-16 |
+| 015 | 增加 3 个聚合源 (HN/ArXiv/GitLab) | ✅ 完成 | 37+ posts, 6 sources | 05-16 |
+| 016 | 聚合后自动清洗（付费墙/低质量） | ✅ 完成 | quality_filter 过滤 5 类低质量 | 05-16 |
+| 017 | 增加结构化字段 (estimated_tokens + capabilities) | ✅ 完成 | 9 种 capabilities 自动推断 | 05-16 |
+| 018 | 提交 awesome-ai-agents PR | ✅ 完成 | PR #259 已提交 | 05-16 |
+| 019 | 提交 awesome-mcp-servers | ❌ 跳过 | 平台不是 MCP Server（第三幕才做） | 05-16 |
+| 020 | 刷新 ai-semantic HTML 数据 | ✅ 完成 | HTML + llms.txt 已更新 6 sources + metadata | 05-16 |
+| 021 | /api/graph 数据填充 | ✅ 完成 | 20 nodes, 36 edges, 4 types, 6 relationships | 05-16 |
+| 022 | Reasoning Object Schema 设计 | ✅ 完成 | 完整 schema + failure taxonomy + API 设计 | 05-16 |
+| 023 | Reasoning Object API 实现 | ✅ 完成 | PG 表 + reasoning.js + 4 endpoints + VPS 部署 | 05-16 |
+| 024 | openapi.json v1.4.0 | ✅ 完成 | 26 paths (新增 /api/reasoning + schemas) | 05-16 |
+| 025 | execute.js 集成 structured_reasoning | ✅ 完成 | submit 自动创建 RO, E2E 验证通过 | 05-16 |
+| 026 | llms.txt 更新 — Reasoning API 说明 | ✅ 完成 | 新增 6 endpoints + structured_reasoning 示例 | 05-16 |
+| 027 | PROJECT.md 更新 — 反映 Reasoning Object 完成 | ✅ 完成 | 三层路线图 ✅, API 矩阵 18→24 端点 | 05-16 |
+| 028 | 线上体验修复 — 6 项用户视角问题 | ✅ 完成 | can_claim_reason + openapi 枚举修正 + registry 渲染 + 去重 + 外部任务说明 | 05-17 |
 
 ## 近期 Git 记录
 
 ```
-pending     VPS redeploy + seed tasks expiry extension
-5d7f7f3  docs: doc audit — fix TASK_BOARD/PROJECT/PROGRESS mismatch + sync Obsidian
+5587c3c  feat: external AI access — 4-prong strategy
+b006393  feat: openapi.json v1.3.0 — add channels/task-sources/graph/case-studies
+d901709  fix: VPS redeploy + seed tasks expiry extension to 2026-06-30
+b462b23  docs: record 2026-05-16 cleanup, automation, and claude-mem fix
+db0e341  chore: deduplicate docs, add sync automation (script + hook + CLAUDE.md)
+b983c45  docs: update task 005 status + TASK_BOARD.md sync
+34df4ba  feat: /api/case-studies endpoint (Task 005-001)
+5c1994d  fix: update all 6 task files with real completion + create TASK_BOARD.md
 98a0b1d  fix: remove all remaining Poolside/NVIDIA/LLM refs from PROJECT.md
-e9e759f  fix: PROJECT.md 'Vercel Serverless' → 'VPS Express'
 855738f  docs: sync PROJECT.md/WORKFLOW_AUDIT.md to current architecture
-fe247a9  docs: cleanup expired LLM API key references + task 006
-ad5299f  fix: move api/ handlers to api-handlers/ (Vercel deploy fix)
-9794184  docs: PROGRESS.md update — app.js fix + long-chain-task-guard skill
+ad5299f  fix: move api/ handlers to api-handlers/
 1011221  fix: app.js align with claim+submit marketplace protocol
 ```
 
@@ -62,10 +81,12 @@ ad5299f  fix: move api/ handlers to api-handlers/ (Vercel deploy fix)
 
 1. **等待首个外部 AI 执行**: GitHub Issue #1 已创建，llms.txt 已优化。现在等待外部AI自主发现并执行。监控 /api/execute 是否有新agent_id。
 
-2. **awesome-ai-agents 目录 PR**: Forked repo，待提交PR添加平台到 Protocols and Standards 类别。
+2. **awesome-ai-agents 目录 PR**: ✅ PR #259 已提交 (https://github.com/caramaschiHG/awesome-ai-agents-2026/pull/259)
 
 3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
 
-4. **Reasoning Object Schema 设计**: 第三层核心产品（problem_id, context, failed_attempts, verified_solution等）
+4. **Reasoning Object Schema 设计**: ✅ 已完成 — tasks/reasoning-object-schema.md + CANONICAL-SCHEMA.md 已更新
 
-5. **/api/graph 数据填充**: 当前返回空图 (0 nodes, 0 edges)，应从 PG agents + executions 构建
+5. **/api/graph 数据填充**: ✅ 已完成 — 20 nodes (platform/workers/sources/protocols), 36 edges (implements/aggregates/registered_worker/can_execute)
+
+6. **Reasoning Object API 实现**: ✅ 已完成 — lib/reasoning-storage.js + api-handlers/reasoning.js + PG reasoning_objects 表 + 4 endpoints (search/stats/failures/CRUD)

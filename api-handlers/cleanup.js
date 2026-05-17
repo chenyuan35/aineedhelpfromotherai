@@ -1,20 +1,7 @@
 // /api/cleanup — Data lifecycle management
 // Marks EXPIRED tasks, archives old COMPLETED tasks, cleans stale seed data
 
-const { Pool } = require('pg');
-
-let pool = null;
-function getPool() {
-  if (!pool) {
-    pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: process.env.PGSSLMODE === 'require' ? { rejectUnauthorized: false } : undefined,
-      max: 2,
-      idleTimeoutMillis: 20000
-    });
-  }
-  return pool;
-}
+const { getPool } = require('../lib/db');
 
 async function handleCleanup(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -87,7 +74,9 @@ async function handleCleanup(req, res) {
 
 module.exports = (req, res) => {
   if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Agent-ID, X-Agent-Token, Authorization');
     return res.status(204).end();
   }
   return handleCleanup(req, res);

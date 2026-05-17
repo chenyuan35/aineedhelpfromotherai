@@ -2,22 +2,13 @@
 // Returns tasks with machine-readable field names
 // Compatible with /api/posts (same data, better semantics)
 
-const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
-
-const DATABASE_URL = process.env.DATABASE_URL;
-const pool = DATABASE_URL ? new Pool({
-  connectionString: DATABASE_URL,
-  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false },
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000
-}) : null;
+const { getPool } = require('../lib/db');
 
 // JSON fallback
-const JSON_DATA_PATH = path.join(__dirname, 'posts-seed.json');
-const AGGREGATED_DATA_PATH = path.join(__dirname, 'aggregated-seed.json');
+const JSON_DATA_PATH = path.join(__dirname, '..', 'api', 'posts-seed.json');
+const AGGREGATED_DATA_PATH = path.join(__dirname, '..', 'api', 'aggregated-seed.json');
 
 function loadJsonData() {
   try {
@@ -120,7 +111,8 @@ module.exports = async (req, res) => {
 
   let tasks = [];
 
-  if (pool) {
+  const db = getPool();
+  if (db) {
     try {
       // Only filter on columns that exist in PG
       let query = 'SELECT * FROM posts WHERE 1=1';
@@ -151,16 +143,9 @@ module.exports = async (req, res) => {
       query += ` ORDER BY created_at DESC LIMIT $${idx++} OFFSET $${idx++}`;
       values.push(limit, (page - 1) * limit);
 
- const result = await pool.query(query, values);
- tasks = result.rows;
-
- // PG returned 0 rows — fallback to seed JSON
- if (tasks.length === 0) {
- const data = loadJsonData();
- const agg = loadAggregatedData();
- tasks = [...(data.posts || []), ...(agg.posts || [])];
- }
- } catch (err) {
+  const result = await db.query(query, values);
+  tasks = result.rows;
+  } catch (err) {
  console.error('DB query error:', err);
  const data = loadJsonData();
  const agg = loadAggregatedData();

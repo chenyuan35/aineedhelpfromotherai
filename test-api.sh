@@ -3,7 +3,7 @@
 # Usage: bash test-api.sh [base_url]
 set -uo pipefail
 
-BASE="${1:-https://aineedhelpfromotherai.com}"
+BASE="${1:-https://api.aineedhelpfromotherai.com}"
 PASS=0
 FAIL=0
 TS=$(date +%Y%m%d_%H%M%S)
@@ -64,17 +64,22 @@ REQ_DATA='{"agent_id":"test_bot_'$TS'","task_type":"test","problem":"API test pr
 check "POST /api/posts (create REQUEST)" POST "$BASE/api/posts" "$REQ_DATA" 201 '"post"'
 
 # Extract task ID
-TASK_ID=$(curl --noproxy '*' -sS -X POST "$BASE/api/posts" -H 'Content-Type: application/json' -d "$REQ_DATA" | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['post']['id'])" 2>/dev/null || echo "")
+TASK_ID=$(curl --noproxy '*' -sS -X POST "$BASE/api/posts" -H 'Content-Type: application/json' -d "$REQ_DATA" | node -e "process.stdin.on('data',d=>{try{console.log(JSON.parse(d).data?.post?.id||'')}catch{process.exit(1)}})" 2>/dev/null || echo "")
 if [ -n "$TASK_ID" ]; then
   check "GET /api/tasks/$TASK_ID" GET "$BASE/api/tasks/$TASK_ID" "" 200 '"post"'
 
-  # Claim
-  CLAIM_DATA='{"agent_id":"claimer_bot_'$TS'"}'
-  check "POST /api/tasks/$TASK_ID/claim" POST "$BASE/api/tasks/$TASK_ID/claim" "$CLAIM_DATA" 200 '"claimed_by"'
+  # Claim (marketplace protocol)
+  CLAIM_DATA='{"task_id":"'$TASK_ID'"}'
+  check "POST /api/execute?action=claim" POST "$BASE/api/execute?action=claim" "$CLAIM_DATA" 200 '"execution_id"'
 
-  # Complete
-  COMPLETE_DATA='{"result_text":"Test result: all good!"}'
-  check "POST /api/tasks/$TASK_ID/complete" POST "$BASE/api/tasks/$TASK_ID/complete" "$COMPLETE_DATA" 200 '"COMPLETED"'
+  # Extract execution_id for submit
+  EXEC_ID=$(curl --noproxy '*' -sS -X POST "$BASE/api/execute?action=claim" -H 'Content-Type: application/json' -d "$CLAIM_DATA" | node -e "process.stdin.on('data',d=>{try{console.log(JSON.parse(d).execution_id||'')}catch{process.exit(1)}})" 2>/dev/null || echo "")
+  if [ -n "$EXEC_ID" ]; then
+    SUBMIT_DATA='{"execution_id":"'$EXEC_ID'","result":"Test result: all good!"}'
+    check "POST /api/execute?action=submit" POST "$BASE/api/execute?action=submit" "$SUBMIT_DATA" 200 '"completed"'
+  else
+    fail "Extract execution_id" "could not parse execution_id from claim response"
+  fi
 else
   fail "Extract task ID" "could not parse task ID"
 fi
@@ -101,7 +106,7 @@ check "POST /api/agents/register (duplicate)" POST "$BASE/api/agents/register" "
 # ── Rate Limiting ──
 echo "── Rate Limiting ──"
 check "POST /api/posts (missing agent_id)" POST "$BASE/api/posts" '{"problem":"no agent"}' 400 'required'
-check "POST /api/posts (long agent_id 101 chars)" POST "$BASE/api/posts" '{"agent_id":"'$(python3 -c "print('x'*101)")'","task_type":"test","problem":"test"}' 400 'too long'
+check "POST /api/posts (long agent_id 101 chars)" POST "$BASE/api/posts" '{"agent_id":"'$(printf 'x%.0s' $(seq 1 101))'","task_type":"test","problem":"test"}' 400 'too long'
 
 # Bad JSON
 BAD_JSON_BODY=$(curl --noproxy '*' -sS -w '\n%{http_code}' -X POST "$BASE/api/posts" -H 'Content-Type: application/json' -d 'not json' 2>&1)
@@ -123,7 +128,7 @@ fi
 
 # ── Static files ──
 echo "── Static Files ──"
-for f in / /openapi.json /llms.txt /robots.txt /sitemap.xml /badge.svg /AI-CONTRIBUTING.md /.well-known/ai-plugin.json; do
+for f in / /openapi.json /llms.txt /robots.txt /sitemap.xml /badge.svg /.well-known/ai-plugin.json; do
   code=$(curl --noproxy '*' -sS -o /dev/null -w '%{http_code}' "$BASE$f")
   if [ "$code" = "200" ]; then
     pass "GET $f"
