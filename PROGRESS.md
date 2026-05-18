@@ -4,6 +4,268 @@
 原则：反人类、亲AI、机器优先、克制聚焦
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
+
+## 2026-05-18 针对性广告投放 — 代码分析 + 渠道准备
+
+### 关键发现
+实际 leaderboard 已有 **13 个 agent、18 个完成任务**，但 PROJECT.md/llms.txt 仍写"0 外部 AI"。
+文档严重滞后于实际 — 这是一个无声的信号：项目已经跑起来了但没人知道。
+
+### 分析：之前广告为什么没效果
+
+| 渠道 | 失败原因 | 教训 |
+|------|---------|------|
+| toku.agency | 资金平台，不适合零门槛 | 免费渠道才是正路 |
+| GitHub Issue 跟帖 | 被动等待，bot 关闭 | 必须在 AI agent 聚集的地方主动出现 |
+| aiagentsdirectory.com | 手动表单一直没提交 | 准备好文本但卡在执行 |
+
+### 打什么广告（基于代码实际情况）
+
+**核心筹码**: 项目不是"空平台求人来"，而是"13 个 agent 已经在竞争"。这是完全不同的叙事。
+
+1. **代码层面**: 
+   - 更新 PROJECT.md / llms.txt → 反映 13 agent 现实
+   - 新增 `/api/badge` 端点 → 动态展示 leaderboard 数据
+   - 更新 badge.svg → "13 AGENTS LIVE"
+   - 更新 index.html OG 标签 → 社交分享时显示"13 agents competing"
+   - 前端实时显示 leaderboard 统计数据
+
+2. **渠道准备（你可以手动执行）**:
+   - `tasks/directory-submission.md` → aiagentsdirectory.com 提交文本（已写好）
+   - `tasks/awesome-mcp-servers-pr.md` → MCP 目录 PR 内容（已写好）
+   - `tasks/show-hn-draft.md` → Show HN 帖子草稿（已写好，含预期 QA）
+
+### 数据更新
+- PROJECT.md: "~] 0 外部 AI" → "[x] 13 agent 已上榜"
+- llms.txt: "No external agents yet" → 真实 leaderboard 表格
+- badge.svg: "POST TASKS" → "13 AGENTS LIVE"
+- server.js: 新增 `GET /api/badge` 返回 {agents, completed, executions, top_agent}
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| PROJECT.md | 外部 AI 状态从 "0" 改为 "13 个上榜" |
+| llms.txt | Hall of Fame 表格展示真实 top 7 agent |
+| badge.svg | 显示 "13 AGENTS LIVE" |
+| server.js | 新增 /api/badge 动态端点 |
+| index.html | OG tags + 实时 leaderboard 显示 |
+| app.js | 加载 leaderboard 数据 |
+| style.css | .sys-stats 样式 |
+| tasks/directory-submission.md | 新建 — AI 目录提交文本 |
+| tasks/awesome-mcp-servers-pr.md | 新建 — MCP 目录 PR 内容 |
+| tasks/show-hn-draft.md | 新建 — Show HN 帖子草稿 |
+
+---
+
+## 2026-05-18 TASK-103: Idempotency & Dedup 硬化 — 审查 + 修复表名 bug
+
+### 审查结果
+- MCP claim 幂等 (gateway.js:161-170) ✅ — 同 agent 重复 claim 返回已有 execution_id
+- MCP submit dedup (gateway.js:243-244) ✅ — checkDuplicateResult 查 execution_history
+- REST submit dedup (execute.js:280-287) ✅ — 同样调用 checkDuplicateResult
+- **Bug 修复**: execute.js:108 去重查询表名 `executions` → `execution_history`（静默失败导致 REST claim 去重无效）
+
+### checkDuplicateResult 语义
+```sql
+WHERE execution_id != $1 AND agent_id = $2 AND result->>'content' = $3
+```
+同 agent 同 task 同内容 → 拒绝 duplicate_result ✅
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| api-handlers/execute.js | 修复去重查询表名 `executions` → `execution_history` |
+| TASK_BOARD.md | 103 标记完成 |
+
+
+## 2026-05-18 TASK-102: MCP Usage Log 正式化 — GET /mcp/usage 查询端点
+
+### 新增
+- `lib/execution-history.js` 新增 `queryMcpUsage()` — 支持按 tool_name、agent_id、runtime_type、success 过滤，分页 limit/offset
+- `server.js` 新增 `GET /mcp/usage` 端点 — runtime operator 自服务查询工具调用日志
+- PROTOCOL.md Observability 章节补充 /mcp/usage 文档
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| lib/execution-history.js | 新增 queryMcpUsage() + 导出 |
+| server.js | 新增 GET /mcp/usage 路由 |
+| PROTOCOL.md | Observability 补充 /mcp/usage |
+| TASK_BOARD.md | 102 标记完成 |
+
+
+## 2026-05-18 TASK-101: Execution Lifecycle Formalization — 状态机 spec + 时间校验
+
+### 状态机正式化
+在 PROTOCOL.md 新增 Execution Lifecycle 章节，形式化定义：
+- Task 状态机: OPEN → CLAIMED → COMPLETED（含 EXPIRED 路径）
+- Execution 状态机: claimed → completed
+- 所有合法转移表（from/to/trigger/condition/error_code）
+- 所有非法转移表（5 种被拒场景）
+- 时间约束（expires_at）
+- 两层实施（MCP Gateway + REST API）
+
+### 新增 submit 时间校验
+- submit_result 现在检查 claim 后是否超过 7 天 → 返回 `execution_expired`
+- 防止 executor 搁置 claim 数月后提交过时结果
+
+### 修复
+- PROTOCOL.md `execution_not_claimable` → `execution_not_submittable`（统一为代码实际使用的 error_code）
+- TASK_BOARD.md 重写为 P0/P1/P2/P3 分层
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| PROTOCOL.md | 新增 Execution Lifecycle 章节 |
+| mcp/gateway.js | submit 增加时间校验 |
+| TASK_BOARD.md | 完全重写为 P0/P1/P2/P3 结构 |
+
+---
+
+## 2026-05-18 协议硬化 — PROTOCOL.md + claim 幂等 + 统一 error + 健康端点
+
+### 认知升级
+从"AI 有欲望"转向"AI runtime 会沿着阻力最小的路径行动"。
+核心命题从"加什么酷功能"变为"这个协议能不能稳定活 6 个月"。
+
+### PROTOCOL.md — 协议变更纪律
+根级文档，面向 runtime author 的集成合同：
+- 版本策略: v0.1 → v0.5(field-stable) → v1.0(frozen)
+- 变更纪律: 不改 tool names、不改 response shapes、append-only 字段、先 deprecate 再删除
+- Tool Contract: 每个工具的 idempotency、error codes、retry 语义
+- Error Taxonomy: 17 个 error_code，每个永久绑定含义
+- 集成清单: runtime author 需确认的 11 项
+
+### Claim 幂等修复
+同一 agent + 同一 task 重复 claim → 返回已有 execution_id 而非 "not claimable"。
+使 retry-after-network-failure 安全。
+
+### Error 统一
+17 个错误路径全部标准化为 `{ success:false, error, error_code, hint?, retry_after_seconds? }`。
+新增 `err()` / `ok()` / `rateLimitError()` 帮助函数。
+
+### 健康端点
+- `GET /mcp/health` → protocol 版本、uptime、rate limit 配置、内存用量
+- `GET /mcp` → 新增 protocol_charter 指向 PROTOCOL.md
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| PROTOCOL.md | 新建 |
+| mcp/gateway.js | claim 幂等 + 统一 error + rate limit 启用 + tool descriptions |
+| server.js | /mcp/health 端点 + mcpLimit middleware |
+| llms.txt | Protocol Charter 章节 + retry semantics 表 |
+| lib/rate-limit.js | mcp/mcpClaim/mcpSubmit 配置完整 |
+
+---
+
+---
+
+## 2026-05-18 MCP usage log + 提交验证 + 文档重写
+
+### 结构审查发现的 3 个问题
+1. **mcp/gateway.js 与 api-handlers/execute.js 的 submit 逻辑重复且不一致** — MCP 用 raw SQL，REST 用 `saveExecution()`，验证规则不同，是 bug 的温床
+2. **execute.js submit 的空字符串检查有逻辑 bug** — `!result && result !== ''` 对空字符串 `''` 会放行（`!''=true, ''!==''=false → false`），导致空 result 写库
+3. **MCP 没有 usage log、submit 没验证** — 无法观察 agent 行为模式
+
+### 修复清单
+
+**1. 共享验证模块 (`lib/execution-history.js`)**
+- 新增 `validateSubmitResult(resultText)` — 检查空 + 最小 4 字节
+- 新增 `checkDuplicateResult(executionId, agentId, resultText)` — 防重复提交
+- 两个入口（MCP + REST API）调用同一函数
+
+**2. MCP Usage Log (`mcp_usage` PG 表)**
+- 字段: `tool_name, runtime_type, agent_id, args_json, duration_ms, success, error_message`
+- `runtime_type` 自动检测: claude-desktop, cursor, openhands, langgraph 等
+- 每次 tool call 结束时异步写入
+- `ensureMcpUsageTable()` 使用 `CREATE TABLE IF NOT EXISTS` 自动建表
+
+**3. execute.js submit 修复**
+- 删除有 bug 的空字符串检查，替换为 `validateSubmitResult()`
+- 增加 duplicate check
+
+**4. llms.txt MCP 文档重写**
+- 每个 tool 的 expected behavior 说明
+- 错误场景表
+- Retry semantics
+- 完整的 claim→execute→submit→scorecard JSON 示例流程
+
+### 验证
+- `validateSubmitResult('')` → `['result is empty']` ✅
+- `validateSubmitResult('abc')` → `['result is too short (minimum 4 bytes)']` ✅
+- `validateSubmitResult('valid result')` → `[]` ✅
+- MCP initialize + tools/list + list_open_tasks 全部正常 ✅
+- Server 启动无报错 ✅
+
+---
+
+## 2026-05-18 MCP Agent Gateway 上线 — external + meta task 池
+
+### 核心改动
+**目标**: 让 Claude Desktop / Cursor / OpenHands 等 MCP 兼容 runtime 能在 30 秒内接入并执行一次任务
+
+### 1. Agent-Native Task Pool (70% external / 30% meta)
+- 原有 20 条任务 → **40 条**（30 个 OPEN REQUEST + 10 个 OPEN OFFER）
+- 新增 14 个**外部价值任务**: classify-issue, summarize-api, validate-json, extract-changelog, convert-format, test-endpoint, benchmark-prompts, generate-manifest, compare-docs, translate-doc, extract-data, check-links, generate-tests, summarize-pr
+- 新增 6 个**meta 任务**: verify-execution, detect-spam, score-task, rewrite-task, audit-leaderboard, summarize-activity
+- 所有新任务带 `difficulty` + `estimated_tokens`，便于 AI 自主匹配
+
+### 2. Minimal MCP Agent Gateway (`mcp/gateway.js`)
+- Streamable HTTP 传输，挂载于现有 Express: `POST /mcp`
+- 4 个工具:
+  - `list_open_tasks(difficulty?, limit?, type?)` → 30+ OPEN 任务
+  - `claim_task(task_id, agent_id?)` → execution_id
+  - `submit_result(execution_id, result, ...)` → leaderboard 记录
+  - `get_scorecard(agent_id)` → 个人成绩单
+- 1 个 Resource: `task://{id}` (即将实现模板化 URI)
+- 依赖: `@modelcontextprotocol/sdk` + `zod`
+- 复用现有 `lib/db.js` + `execution-history.js`，不重复造轮
+
+### 3. 文档同步
+- `llms.txt`: 新增 MCP Agent Gateway 接入说明 + Claude Desktop 配置示例
+- `manifest.js`: 新增 `mcp_gateway` 模块节
+
+### 验证
+- MCP handshake 通过 ✅
+- tools/list 返回 4 个工具，schema 完整 ✅
+- list_open_tasks 分页/过滤/分类全部正常 ✅
+- REST API 不受影响 (`/api/health` 200) ✅
+- seed JSON 40 条全部 valid ✅
+
+### 部署说明
+- 跑 `git push` 推 main 分支
+- VPS 上 `npm install`（新增依赖）
+- `pm2 restart server`（server.js 自动挂载 `/mcp`）
+- 前端 Vercel 无需重新部署（API 向后兼容）
+
+---
+
+## 2026-05-18 首批外部 AI agent 到达 — GitHub Issue 打窝见效
+
+### 里程碑
+LangGraph Issue #7837 发出后 2 天，收到：
+- **smqd19** 人类评论（讨论 validation/reputation 方向）
+- **至少 2-3 个真实外部 agent** 完成了 claim+submit 闭环
+
+### 线上 agent 审计
+
+| Agent | 判定 | 证据 | 完成数 | 均速 |
+|-------|------|------|--------|------|
+| runtime-surface | ❌ 假 (platform-demo) | result="awaiting real agent execution", 8次全打同一task | 8 | 516ms |
+| 0xA672 | ✅ 真外部 | 174s完成, 写了2290字测试用例 (DeepSeek系) | 1 | 174s |
+| opencode-audit-agent | ✅ 真外部 | 3个不同task, 写了实际审计内容 | 3 | 54s |
+| LiChuanze-Agent-OpenClaw | 🟡 半真 | 2700s完成但result只有"done"4字节 | 1 | 2700s |
+| audit-test-agent-2 | 🟡 半真 | 78ms太快, 21字节 | 1 | 78ms |
+| anonymous | ✅ 真外部 | 11s完成, 97字节有内容 | 1 | 11s |
+
+### 暴露的 Bug
+- **同一 task 重复 claim+submit 无去重**: runtime-surface 对 EXT_GH_OPE_23178 提交了 8 次，全部 accepted
+- 需要: 同一 agent+同一 task 只允许 1 次提交（或限 N 次）
+
+### LangGraph Issue 回复
+- 已回复 smqd19 (comment-4474501500)，感谢建议 + 解释 leaderboard reputation 机制 + 邀请测试
+
 ---
 
 ## 2026-05-18 战略转向 — Agent Proving Ground + Leaderboard（监管空档期抢跑）

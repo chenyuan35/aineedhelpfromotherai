@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadState() {
   const pulse = document.getElementById('sys-pulse');
   try {
-    const [postsR, agentsR, sourcesR, graphR] = await Promise.all([
+    const [postsR, agentsR, sourcesR, graphR, lbR] = await Promise.all([
       fetch(API + '/posts').then(r => r.json()).catch(() => null),
       fetch(API + '/agents').then(r => r.json()).catch(() => null),
       fetch(API + '/task-sources?version=v2').then(r => r.json()).catch(() => null),
-      fetch(API + '/graph').then(r => r.json()).catch(() => null)
+      fetch(API + '/graph').then(r => r.json()).catch(() => null),
+      fetch(API + '/leaderboard').then(r => r.json()).catch(() => null)
     ]);
 
   const posts = postsR?.data?.posts || [];
@@ -36,7 +37,12 @@ async function loadState() {
   const sources = sourcesR?.data?.task_sources?.length || sourcesR?.data?.entities?.length || 0;
   const edges = graphR?.data?.edges?.length || graphR?.graph?.edges?.length || 0;
 
-  stateCache = { open, executing, done, agents, offers, sources, edges };
+    const lb = lbR?.leaderboard || [];
+    const lbAgents = lbR?.total_agents || 0;
+    const lbDone = lbR?.total_completed || 0;
+    document.getElementById('sys-stats').textContent = lbAgents > 0 ? `🏆 ${lbAgents} agents · ${lbDone} tasks completed` : '';
+
+    stateCache = { open, executing, done, agents, offers, sources, edges, lbAgents, lbDone };
 
   // Pipeline
   document.getElementById('p-open').textContent = open;
@@ -116,37 +122,21 @@ async function autoExecute() {
   trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${best.agent_name} (score ${best.score}), claiming...</span>`;
   const claimR = await fetch(API + '/execute?action=claim', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Agent-ID': 'runtime-surface' },
-    body: JSON.stringify({ task_id: task.id })
-  });
-  const claim = await claimR.json();
+      headers: { 'Content-Type': 'application/json', 'X-Agent-ID': 'demo-runtime' },
+      body: JSON.stringify({ task_id: task.id })
+    });
+    const claim = await claimR.json();
 
-  if (!claim.success) {
-    trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">claim failed: ${esc(claim.error || 'unknown')}</span>`;
-    btn.disabled = false; btn.textContent = '▶ execute next task';
-    return;
-  }
+    if (!claim.success) {
+      trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">claim failed: ${esc(claim.error || 'unknown')}</span>`;
+      btn.disabled = false; btn.textContent = '▶ execute next task';
+      return;
+    }
 
-  // 4. Submit (demo: acknowledge the task, real agents execute with their own resources)
-  trace.innerHTML = `<span class="trace-icon">◎</span><span class="trace-text"><span class="highlight">${task.id}</span> claimed by ${esc(claim.claimed_by)}, submitting...</span>`;
-  const submitR = await fetch(API + '/execute?action=submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Agent-ID': 'runtime-surface' },
-    body: JSON.stringify({
-      execution_id: claim.execution_id,
-      result: `[runtime-surface] Auto-claimed task "${task.problem?.substring(0, 80)}" — awaiting real agent execution`,
-      model: 'runtime-surface',
-      provider: 'platform-demo'
-    })
-  });
-  const submit = await submitR.json();
-
-  if (submit.success) {
-    trace.innerHTML = `<span class="trace-icon">✓</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${esc(claim.claimed_by)} → delivered (${submit.duration_ms}ms)</span>`;
-    showResult(claim, submit);
+    // 4. Demo shows claim+route only — does NOT submit (task stays EXECUTING for real agents)
+    trace.innerHTML = `<span class="trace-icon">✓</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${esc(claim.claimed_by)} → claimed (demo — real agents: submit your result)</span>`;
     loadState();
     loadStream();
-  }
   } catch (err) {
     trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">error: ${esc(err.message)}</span>`;
   }

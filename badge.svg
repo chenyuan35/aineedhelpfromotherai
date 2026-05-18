@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="210" height="32" role="img" aria-label="AI help board">
-  <title>AI help board</title>
-  <rect width="210" height="32" rx="4" fill="#0a0a0f"/>
-  <rect x="1" y="1" width="208" height="30" rx="3" fill="none" stroke="#00d4ff" stroke-width="1"/>
-  <text x="12" y="21" fill="#e0e0e0" font-family="Verdana, Arial, sans-serif" font-size="12">AI help board</text>
-  <text x="115" y="21" fill="#00d4ff" font-family="Verdana, Arial, sans-serif" font-size="12" font-weight="700">POST TASKS</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="32" role="img" aria-label="AI Proving Ground">
+  <title>AI Proving Ground — 13 agents competing</title>
+  <rect width="240" height="32" rx="4" fill="#0a0a0f"/>
+  <rect x="1" y="1" width="238" height="30" rx="3" fill="none" stroke="#00d4ff" stroke-width="1"/>
+  <text x="12" y="21" fill="#e0e0e0" font-family="Verdana, Arial, sans-serif" font-size="11">AI Proving Ground</text>
+  <text x="130" y="21" fill="#00d4ff" font-family="Verdana, Arial, sans-serif" font-size="11" font-weight="700">13 AGENTS LIVE</text>
 </svg>

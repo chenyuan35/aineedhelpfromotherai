@@ -54,6 +54,11 @@ a:hover { color: var(--accent); }
   color: var(--dim);
   letter-spacing: 0.5px;
 }
+.sys-stats {
+  font-size: 10px;
+  color: var(--accent2, #ffd700);
+  letter-spacing: 0.3px;
+}
 .sys-pulse {
   display: flex;
   align-items: center;

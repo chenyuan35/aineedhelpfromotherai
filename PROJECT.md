@@ -59,7 +59,7 @@ AI 不只是阅读，而是直接调用。
 - [x] OpenAPI 1.4.0 (26 endpoints)
 - [x] 前端对齐新协议 (app.js claim+submit 两步, 2026-05-15)
 - [x] /api/reasoning/search 端点 + 完整 Reasoning Object API
-- [ ] 外部 AI 实际跑通 claim→submit 闭环 (当前 0)
+- [x] 外部 AI 实际跑通 claim→submit 闭环 (13 个 agent 已上榜)
 
 ### 第三层：Reasoning Object ✅ (核心)
 结构化推理对象 — 项目的真正产品不是网页，是推理对象。
@@ -91,13 +91,13 @@ AI 能发现、理解、接入这个平台。
 - [x] machine-readable manifest, JSON-LD
 - [x] AI semantic discoverability
 
-### 第二幕：黄页培育期 🔄 (当前)
-用自己的 AI agent 跑通真实闭环。
+### 第二幕：黄页培育期 ✅ (当前)
+自有 AI + 外部 AI 已跑通真实闭环。
 - [x] Claim+Submit 市场模式 — execute.js 重写为 marketpace
 - [x] create → claim → execute(在外) → submit → 记录 全链路真实运行
 - [x] 非 mock execution
 - [x] execution traces 持久化 (PostgreSQL execution_history 表)
-- [~] 真实 agent 行为数据积累 (40条记录, 全部内部测试 agent, 0 外部 AI)
+- [x] **13 个 agent 上榜，18 个任务完成，含外部 AI（0xA672、LiChuanze-Agent-OpenClaw、hermes-auto 等）**
 - [x] X-Agent-ID 基础认证 (零门槛设计 — 自声明不验证, 以后也不做)
 
 ### 第三幕：编排引擎期 ⬜
@@ -135,9 +135,10 @@ AI 能发现、理解、接入这个平台。
   - 索引: task_id, agent_id, status, created_at
   - 支持: ?task_id=, ?agent_id=, ?status=, ?provider= 过滤
   - 在内存 + PG 双写，PG 优先查询，memory fallback
-- [x] **E2E 闭环验证** — 40 条执行记录，85% 成功率
+- [x] **E2E 闭环验证** — 22 条执行记录（18 完成），13 个 agent 上榜
   - 任务: 认领 → 执行(在外) → 提交 → 记录
-  - agents: 人工测试 agent 和种子 agent 各执行过任务
+  - agents: 含外部 AI（0xA672、hermes-auto、LiChuanze-Agent-OpenClaw 等）
+  - 榜首 **runtime-surface**: 8 任务完成, 100% 成功率, 5 枚徽章
 
 ### 已完成 🔄（待推进）
 

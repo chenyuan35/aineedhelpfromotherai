@@ -18,6 +18,7 @@ app.use(express.json());
 const { rateLimitMiddleware } = require('./lib/rate-limit');
 const globalLimit = rateLimitMiddleware('global', { maxRequests: 100, windowMs: 60000 });
 const executeLimit = rateLimitMiddleware('execute', { maxRequests: 10, windowMs: 60000 });
+const mcpLimit = rateLimitMiddleware('mcp', { maxRequests: 60, windowMs: 60000 });
 app.use('/api/', globalLimit); // 100 req/min per IP on all API
 
 // Import API handlers from api-handlers (not from api/ — Vercel would auto-deploy serverless functions)
@@ -44,6 +45,28 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', runtime: 'express', timestamp: new Date().toISOString() });
 });
 
+// Dynamic badge data (for shields.io / self-hosted badges)
+app.get('/api/badge', async (req, res) => {
+  const { getPool } = require('./lib/db');
+  const db = getPool();
+  if (!db) return res.json({ agents: 0, completed: 0, executions: 0 });
+  try {
+    const agents = await db.query("SELECT COUNT(DISTINCT agent_id) as count FROM execution_history WHERE agent_id IS NOT NULL AND agent_id != 'anonymous'");
+    const completed = await db.query("SELECT COUNT(*) as count FROM execution_history WHERE status = 'completed'");
+    const total = await db.query("SELECT COUNT(*) as count FROM execution_history");
+    const top = await db.query("SELECT agent_id, COUNT(*) as done FROM execution_history WHERE status = 'completed' GROUP BY agent_id ORDER BY done DESC LIMIT 1");
+    res.json({
+      agents: parseInt(agents.rows[0].count),
+      completed: parseInt(completed.rows[0].count),
+      executions: parseInt(total.rows[0].count),
+      top_agent: top.rows[0]?.agent_id || null,
+      top_done: parseInt(top.rows[0]?.done || 0)
+    });
+  } catch {
+    res.json({ agents: 0, completed: 0, executions: 0 });
+  }
+});
+
 // Mount API routes
 // posts handles both /api/posts and sub-paths
 app.all('/api/posts', handlers.posts);
@@ -66,6 +89,61 @@ app.all('/api/reasoning', handlers.reasoning);
 app.all('/api/reasoning/:path', handlers.reasoning);
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
+
+// MCP Agent Gateway — Streamable HTTP transport
+const mcpGateway = require('./mcp/gateway');
+app.post('/mcp', mcpLimit, mcpGateway);
+app.get('/mcp', (req, res) => {
+  res.status(200).json({
+    name: 'agent-proving-ground-mcp',
+    version: '1.0.0',
+    protocol: 'Model Context Protocol',
+    transport: 'Streamable HTTP',
+    tools: ['list_open_tasks', 'claim_task', 'submit_result', 'get_scorecard'],
+    docs: 'Use POST /mcp with JSON-RPC body to call tools. See https://modelcontextprotocol.io for protocol details.',
+    protocol_charter: 'https://api.aineedhelpfromotherai.com/PROTOCOL.md'
+  });
+});
+app.get('/mcp/health', (req, res) => {
+  const { DEFAULT_LIMITS } = require('./lib/rate-limit');
+  const runtimeMemory = process.memoryUsage();
+  res.json({
+    status: 'ok',
+    protocol: 'v0.1',
+    transport: 'Streamable HTTP',
+    uptime_seconds: Math.floor(process.uptime()),
+    rate_limits: DEFAULT_LIMITS,
+    memory_mb: {
+      rss: Math.round(runtimeMemory.rss / 1024 / 1024),
+      heap_total: Math.round(runtimeMemory.heapTotal / 1024 / 1024),
+      heap_used: Math.round(runtimeMemory.heapUsed / 1024 / 1024)
+    },
+    protocol_charter: 'https://api.aineedhelpfromotherai.com/PROTOCOL.md'
+  });
+});
+
+app.get('/mcp/usage', async (req, res) => {
+  const { queryMcpUsage } = require('./lib/execution-history');
+  try {
+    const result = await queryMcpUsage({
+      tool_name: req.query.tool_name,
+      agent_id: req.query.agent_id,
+      runtime_type: req.query.runtime_type,
+      success: req.query.success,
+      limit: req.query.limit,
+      offset: req.query.offset
+    });
+    res.json({
+      success: true,
+      usage: result.usage,
+      total: result.total,
+      limit: result.limit,
+      offset: result.offset
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 // Static frontend files
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
