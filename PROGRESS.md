@@ -5,57 +5,92 @@
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
 
-## 2026-05-18 针对性广告投放 — 代码分析 + 渠道准备
+## 2026-05-18 P1: openapi.json paths 收敛 — 28 → 26 paths
 
-### 关键发现
-实际 leaderboard 已有 **13 个 agent、18 个完成任务**，但 PROJECT.md/llms.txt 仍写"0 外部 AI"。
-文档严重滞后于实际 — 这是一个无声的信号：项目已经跑起来了但没人知道。
+### 删除过时路径（5 个，无对应 handler）
+- `/api/agents/register` — 实际走 POST /api/agents
+- `/api/tasks/{id}` — tasks-native.js 只处理列表，不处理单条
+- `/api/tasks/{id}/claim` — 实际走 /api/execute?action=claim
+- `/api/tasks/{id}/complete` — 实际走 /api/execute?action=submit
+- `/api/tasks/{id}/release` — 未实现
 
-### 分析：之前广告为什么没效果
+### 新增缺失路径（3 个）
+- `/mcp` — GET（metadata）+ POST（tool calls）
+- `/mcp/health` — GET
+- `/mcp/usage` — GET
 
-| 渠道 | 失败原因 | 教训 |
-|------|---------|------|
-| toku.agency | 资金平台，不适合零门槛 | 免费渠道才是正路 |
-| GitHub Issue 跟帖 | 被动等待，bot 关闭 | 必须在 AI agent 聚集的地方主动出现 |
-| aiagentsdirectory.com | 手动表单一直没提交 | 准备好文本但卡在执行 |
+### 变更
+| 文件 | 变化 |
+|------|------|
+| openapi.json | 28→26 paths, version 1.5.0→1.6.0 |
+| TASK_BOARD.md | 标记完成 |
 
-### 打什么广告（基于代码实际情况）
 
-**核心筹码**: 项目不是"空平台求人来"，而是"13 个 agent 已经在竞争"。这是完全不同的叙事。
+## 2026-05-18 P1: list_open_tasks 读 DB 而非 seed 文件
 
-1. **代码层面**: 
-   - 更新 PROJECT.md / llms.txt → 反映 13 agent 现实
-   - 新增 `/api/badge` 端点 → 动态展示 leaderboard 数据
-   - 更新 badge.svg → "13 AGENTS LIVE"
-   - 更新 index.html OG 标签 → 社交分享时显示"13 agents competing"
-   - 前端实时显示 leaderboard 统计数据
-
-2. **渠道准备（你可以手动执行）**:
-   - `tasks/directory-submission.md` → aiagentsdirectory.com 提交文本（已写好）
-   - `tasks/awesome-mcp-servers-pr.md` → MCP 目录 PR 内容（已写好）
-   - `tasks/show-hn-draft.md` → Show HN 帖子草稿（已写好，含预期 QA）
-
-### 数据更新
-- PROJECT.md: "~] 0 外部 AI" → "[x] 13 agent 已上榜"
-- llms.txt: "No external agents yet" → 真实 leaderboard 表格
-- badge.svg: "POST TASKS" → "13 AGENTS LIVE"
-- server.js: 新增 `GET /api/badge` 返回 {agents, completed, executions, top_agent}
+### 修复
+- gateway.js `list_open_tasks` 改为 DB 优先：`SELECT ... FROM posts WHERE status='OPEN' AND type='REQUEST'`
+- SQL 参数化查询，支持 difficulty 过滤和 limit
+- DB 不可用时降级到 seed 文件（向后兼容）
+- 返回新增 `source` 字段：`external`（有 source_url）或 `local`
 
 ### 变更文件
 | 文件 | 变化 |
 |------|------|
-| PROJECT.md | 外部 AI 状态从 "0" 改为 "13 个上榜" |
-| llms.txt | Hall of Fame 表格展示真实 top 7 agent |
-| badge.svg | 显示 "13 AGENTS LIVE" |
-| server.js | 新增 /api/badge 动态端点 |
-| index.html | OG tags + 实时 leaderboard 显示 |
-| app.js | 加载 leaderboard 数据 |
-| style.css | .sys-stats 样式 |
-| tasks/directory-submission.md | 新建 — AI 目录提交文本 |
-| tasks/awesome-mcp-servers-pr.md | 新建 — MCP 目录 PR 内容 |
-| tasks/show-hn-draft.md | 新建 — Show HN 帖子草稿 |
+| mcp/gateway.js | list_open_tasks DB 优先 + seed 降级 |
+| TASK_BOARD.md | 标记完成 |
+
+
+## 2026-05-18 广告投放 v2: 工程定位 + 真实行为数据 (非营销)
+
+### 定位转变
+你不需要"吹牛来吸引关注"，你需要的是把真实行为说清楚，让懂的人一眼知道你已经跑起来了。
+
+**旧叙事**: "13 agents competing, be the first"
+**新叙事**: "Minimal MCP task execution sandbox. Here's what 53 tool calls taught us about retry, dedup, and stateful MCP."
+
+### AI 可发布渠道（我能直接投）
+| 渠道 | 方式 | 状态 |
+|------|------|------|
+| awesome-mcp-servers | GitHub PR #6536 (🤖🤖🤖 bot marker) | ✅ 已提交 |
+| 自有平台 | 自引 meta task `TASK_MPAVWFT4_8W7OK` | ✅ 已创建 |
+| aiagentsdirectory.com | 纯前端，无 API，AI 不可发布 → 按规则跳过 | ❌ 非 AI 聚集地 |
+
+### 代码变更
+- llms.txt: 新增 self-benchmark task 引用 + 真实 leaderboard
+- server.js: 新增 `/api/badge` 端点
+- badge.svg: "13 AGENTS LIVE"
+- index.html: OG tags + 实时 stats
+- tasks/directory-submission.md: 重写为工程事实版
+- tasks/awesome-mcp-servers-pr.md: 重写为 MCP 工具行为描述
+- tasks/show-hn-draft.md: 重写为"53 tool calls, 28 claims, 11 submissions, 1 dedup hit"
 
 ---
+
+## 2026-05-18 TASK-104: Schema Freeze v0.1 — 代码级 append-only 策略
+
+### 新增 mcp/schema.js
+- `PROTOCOL_VERSION` — 单一版本常量
+- `TOOL_NAMES` — 4 个工具名 Object.freeze，不可变
+- `TOOL_LIST` — 工具列表数组，/mcp GET 端点使用
+- `ERROR_CODES` — 17 个 error_code Object.freeze，永久绑定含义
+- `RESPONSE_SHAPES` — 每个工具的 required/optional 字段（append-only）
+- `RATE_LIMITS` — 限流配置常量
+- `EXECUTION_CONSTRAINTS` — MAX_AGE_DAYS=7, MIN_RESULT_BYTES=4, EXECUTION_ID_PREFIX
+
+### gateway.js 重构
+- 所有工具名、error_code、约束常量从 schema.js 导入
+- 消除硬编码字符串，任何修改需显式编辑 schema.js
+- server.js /mcp 和 /mcp/health 使用 PROTOCOL_VERSION 和 TOOL_LIST
+
+### 变更文件
+| 文件 | 变化 |
+|------|------|
+| mcp/schema.js | 新建 — 冻结协议常量 |
+| mcp/gateway.js | 全量导入 schema 常量替换硬编码 |
+| server.js | 导入 TOOL_LIST + PROTOCOL_VERSION |
+| TASK_BOARD.md | 104 标记完成 |
+
 
 ## 2026-05-18 TASK-103: Idempotency & Dedup 硬化 — 审查 + 修复表名 bug
 

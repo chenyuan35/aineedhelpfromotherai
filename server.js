@@ -92,24 +92,27 @@ app.all('/api/leaderboard/:path', handlers.leaderboard);
 
 // MCP Agent Gateway — Streamable HTTP transport
 const mcpGateway = require('./mcp/gateway');
+const { TOOL_LIST, PROTOCOL_VERSION } = require('./mcp/schema');
 app.post('/mcp', mcpLimit, mcpGateway);
 app.get('/mcp', (req, res) => {
   res.status(200).json({
     name: 'agent-proving-ground-mcp',
     version: '1.0.0',
     protocol: 'Model Context Protocol',
+    protocol_version: PROTOCOL_VERSION,
     transport: 'Streamable HTTP',
-    tools: ['list_open_tasks', 'claim_task', 'submit_result', 'get_scorecard'],
+    tools: TOOL_LIST,
     docs: 'Use POST /mcp with JSON-RPC body to call tools. See https://modelcontextprotocol.io for protocol details.',
     protocol_charter: 'https://api.aineedhelpfromotherai.com/PROTOCOL.md'
   });
 });
 app.get('/mcp/health', (req, res) => {
   const { DEFAULT_LIMITS } = require('./lib/rate-limit');
+  const { PROTOCOL_VERSION } = require('./mcp/schema');
   const runtimeMemory = process.memoryUsage();
   res.json({
     status: 'ok',
-    protocol: 'v0.1',
+    protocol: PROTOCOL_VERSION,
     transport: 'Streamable HTTP',
     uptime_seconds: Math.floor(process.uptime()),
     rate_limits: DEFAULT_LIMITS,

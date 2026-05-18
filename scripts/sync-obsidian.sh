@@ -15,6 +15,8 @@ declare -A MAP=(
   ["$REPO/COLLABORATION.md"]="$VAULT/COLLABORATION.md"
   ["$REPO/CASE_STUDY.md"]="$VAULT/CASE_STUDY.md"
   ["$REPO/CANONICAL-SCHEMA.md"]="$VAULT/CANONICAL-SCHEMA.md"
+  ["$REPO/PROTOCOL.md"]="$VAULT/PROTOCOL.md"
+  ["$REPO/llms.txt"]="$VAULT/llms.txt"
 )
 
 sync_one() {

@@ -9,7 +9,7 @@
 //   POST ?action=submit  {execution_id, result} → AI-2 submits execution result
 //   GET                  ?execution_id=xxx      → Query execution status/history
 
-const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle } = require('../lib/execution-history');
+const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle, validateSubmitResult, checkDuplicateResult } = require('../lib/execution-history');
 const { saveReasoning } = require('../lib/reasoning-storage');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
 const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
@@ -100,6 +100,23 @@ async function handleClaim(req, res) {
     }
   } catch (err) {
     return res.status(500).json({ success: false, error: `DB error: ${err.message}` });
+  }
+
+  // Dedup gate: same agent should not claim the same task multiple times
+  try {
+    const existingClaim = await db.query(
+      'SELECT 1 FROM execution_history WHERE task_id = $1 AND agent_id = $2 AND status IN (\'claimed\', \'completed\', \'executing\') LIMIT 1',
+      [taskId, agent.agent_id]
+    );
+    if (existingClaim.rows.length > 0) {
+      return res.status(409).json({
+        success: false,
+        error: `Agent ${agent.agent_id} already has an execution for task ${taskId}`,
+        hint: 'Check your execution history: GET /api/execute?task_id=' + taskId + '&agent_id=' + agent.agent_id
+      });
+    }
+  } catch (dedupErr) {
+    console.error('[claim] Dedup check failed:', dedupErr.message);
   }
 
   // Lifecycle gate: only OPEN tasks can be claimed
@@ -224,11 +241,15 @@ async function handleSubmit(req, res) {
     });
   }
 
-  if (!result && result !== '') {
+  // --- Shared content validation (min 4 bytes, no empty) ---
+  const resultText = typeof result === 'string' ? result : (result ? JSON.stringify(result) : '');
+  const validationErrors = validateSubmitResult(resultText);
+  if (validationErrors.length > 0) {
     return res.status(400).json({
       success: false,
-      error: 'result is required — submit what you actually did/executed',
-      usage: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "your work output" }'
+      error: `Validation failed: ${validationErrors.join(', ')}`,
+      usage: 'POST /api/execute?action=submit { "execution_id": "EXEC_xxx", "result": "your work output" }',
+      hint: 'Submit meaningful content (min 4 bytes).'
     });
   }
 
@@ -255,6 +276,16 @@ async function handleSubmit(req, res) {
     });
   }
 
+  // --- Duplicate result check ---
+  const dupCheck = await checkDuplicateResult(executionId, agent.agent_id, resultText);
+  if (dupCheck) {
+    return res.status(409).json({
+      success: false,
+      error: 'Duplicate result — identical content already submitted for this agent+task',
+      hint: 'Submit unique content per execution.'
+    });
+  }
+
   // Verify: the submitter should be the claimer (soft check, zero barrier)
   if (execution.agent_id && execution.agent_id !== agent.agent_id && agent.agent_id !== 'anonymous') {
     // Warn but don't block — different agent submitting is unusual but allowed
@@ -262,7 +293,6 @@ async function handleSubmit(req, res) {
   }
 
   const submittedAt = new Date().toISOString();
-  const resultText = typeof result === 'string' ? result : JSON.stringify(result);
   const resultLength = resultText.length;
 
   // Determine execution status

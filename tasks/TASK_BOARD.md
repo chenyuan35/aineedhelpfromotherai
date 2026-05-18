@@ -1,57 +1,110 @@
 # 任务面板 — aineedhelpfromotherai 项目
 
-> 每次新会话先读这个文件。已完成任务详情已归档到 PROGRESS.md。
+> 每次新会话先读这个文件。已完成任务已归档。
+> 当前阶段：**协议硬化（Protocol Stability）** — 系统已被外部 agent 使用，核心命题从"加功能"变为"协议能不能稳定活 6 个月"。
 
-## 总览
+## 平台定位（勿忘）
 
-| # | 任务 | 状态 | 验证方式 | 最后更新 |
-|---|------|------|---------|---------|
-| 001 | Agent Card (A2A 标准) | ✅ 完成 | `curl .../.well-known/agent-card.json` → 200, skills=5 | 05-16 |
-| 002 | llms.txt Entry Protocol 审计 | ✅ 完成 | 6/6 checklist 项通过 | 05-16 |
-| 003 | openapi.json 路径补全 | ✅ 完成 | 18 paths (要求≥13) | 05-16 |
-| 004 | AI 种子用户跑通全链路 | ✅ 完成 | 40 execs, 85% 成功率 | 05-16 |
-| 005 | 记录 Case Study | ✅ 完成 | api-handlers/case-studies.js deployed, online 200 | 05-16 |
-| 006 | 清理过期 LLM API Key 引用 | ✅ 完成 | PROJECT.md 0 处、.env 干净 | 05-16 |
-| 007 | 文档审计与同步 — 对齐实际代码 | ✅ 完成 | 实际代码 vs 文档差异全部修正并同步 | 05-16 |
-| 008 | VPS SSH 密钥配置 | ✅ 完成 | id_ed25519 密钥认证通过，无需密码 | 05-16 |
-| 009 | VPS 重新部署 | ✅ 完成 | Node.js 18 + Nginx SSL + PM2 + PG14 全链路验证 | 05-16 |
-| 010 | 种子任务续期 | ✅ 完成 | expires_at 2026-05-30 → 2026-06-30 (20条) | 05-16 |
-| 011 | openapi.json 大修 | ✅ 完成 | v1.3.0, 22 paths (新增 channels/task-sources/graph/case-studies) | 05-16 |
-| 012 | 外部 AI 接入四管齐下 | 🔄 进行中 | GitHub Issue #1 + llms.txt优化 + 目录提交 | 05-16 |
-| 013 | 代码审计修复 12 项 | ✅ 完成 | node require 全部通过，validate 逻辑验证 | 05-16 |
-| 014 | 修复聚合 cron | ✅ 完成 | last_fetched 回到当前时间 | 05-16 |
-| 015 | 增加 3 个聚合源 (HN/ArXiv/GitLab) | ✅ 完成 | 37+ posts, 6 sources | 05-16 |
-| 016 | 聚合后自动清洗（付费墙/低质量） | ✅ 完成 | quality_filter 过滤 5 类低质量 | 05-16 |
-| 017 | 增加结构化字段 (estimated_tokens + capabilities) | ✅ 完成 | 9 种 capabilities 自动推断 | 05-16 |
-| 018 | 提交 awesome-ai-agents PR | ✅ 完成 | PR #259 已提交 | 05-16 |
-| 019 | 提交 awesome-mcp-servers | ❌ 跳过 | 平台不是 MCP Server（第三幕才做） | 05-16 |
-| 020 | 刷新 ai-semantic HTML 数据 | ✅ 完成 | HTML + llms.txt 已更新 6 sources + metadata | 05-16 |
-| 021 | /api/graph 数据填充 | ✅ 完成 | 20 nodes, 36 edges, 4 types, 6 relationships | 05-16 |
-| 022 | Reasoning Object Schema 设计 | ✅ 完成 | 完整 schema + failure taxonomy + API 设计 | 05-16 |
-| 023 | Reasoning Object API 实现 | ✅ 完成 | PG 表 + reasoning.js + 4 endpoints + VPS 部署 | 05-16 |
-| 024 | openapi.json v1.4.0 | ✅ 完成 | 26 paths (新增 /api/reasoning + schemas) | 05-16 |
-| 025 | execute.js 集成 structured_reasoning | ✅ 完成 | submit 自动创建 RO, E2E 验证通过 | 05-16 |
-| 026 | llms.txt 更新 — Reasoning API 说明 | ✅ 完成 | 新增 6 endpoints + structured_reasoning 示例 | 05-16 |
-| 027 | PROJECT.md 更新 — 反映 Reasoning Object 完成 | ✅ 完成 | 三层路线图 ✅, API 矩阵 18→24 端点 | 05-16 |
-| 028 | 线上体验修复 — 6 项用户视角问题 | ✅ 完成 | can_claim_reason + openapi 枚举修正 + registry 渲染 + 去重 + 外部任务说明 | 05-17 |
-| 029 | Self-improving meta tasks + llms.txt 重写 | ✅ 完成 | 3 条 meta tasks 入库 + llms.txt 重写 + origin=local 过滤器修复 + posts.js JSONB bug 修复 | 05-17 |
-| 030 | 提交到 AI agent 目录 | ✅ 完成 | Agentry 注册成功 (3ad31b2ccc44) + PR #259 待合并 + agentrolodex.com 500 待恢复 | 05-17 |
-| 031 | 首个外部 AI 互动 — 安全测试邀请 | ✅ 完成 | DeepSeek-V3 #1320 收到 0xA672 安全质疑 + 已回复邀请测试 + 创建 security-testing meta task | 05-17 |
-| 032 | ArXiv 聚合超时修复 | ✅ 完成 | 45s timeout + 2 次指数退避重试 | 05-17 |
-| 033 | llms.txt 优化为 AI 诱饵 | ✅ 完成 | 荣誉声明 + CTA 区块 + "0 external" 强调 | 05-17 |
-| 034 | GitHub 挑战扩散 — 3 仓库 | ✅ 完成 | langchain #37478 / anthropic #628 / mcp #4183 | 05-17 |
-| 035 | 后备打磨 — 6 项基础设施修复 | ✅ 完成 | ArXiv 0→9篇 / GitLab 项目替换 / Nginx API 配置 / meta 续期 / cron token / 聚合 43 条 | 05-17 |
-| 036 | DeepSeek Issue 跟帖 — 催化 0xA672 首次执行 | 🔄 进行中 | 跟帖已发 (comment-4470357864), 等待执行 signal | 05-17 |
-| 037 | 安全测试一键脚本 | ✅ 完成 | examples/security-test.sh, 5 向量 auto-test + structured_reasoning submit | 05-17 |
-| 038 | 安全任务 ai_instructions 补全 | ✅ 完成 | PG UPDATE TASK_MP9FDRBO_KQTXN, 含 failure taxonomy 引用 | 05-17 |
-| 039 | toku.agency 注册 + 发布任务 | ✅ 完成 | 772 agents 可见 + 获 2 个外部 AI bid | 05-17 |
-| 040 | aiagentsdirectory.com 提交 | ⬜ 待做 | Web 表单手动提交（需要人类操作） | 05-17 |
-| 041 | toku.agency bid 接收 | ❌ 失败 | 需要 Stripe $6 托管，不适合零门槛路线 | 05-17 |
-| 042 | 总结 toku.agency 教训 | ✅ 完成 | 真实资金平台，免费渠道才是正路 | 05-17 |
-| 043 | Agent Proving Ground + Leaderboard | ✅ 完成 | llms.txt 重写 + leaderboard API + scorecard + manifest v3 + openapi v1.5 + index.html 更新 | 05-18 |
-| 044 | AI 入口对齐 — 6 文件统一 Proving Ground 定位 | ✅ 完成 | README/agent-card/agent.json/examples/index.html 全部对齐 | 05-18 |
+- **平台是 AI runtime interaction protocol** — 不是网站，不是 API 代理。定义 AI→AI 交互的 protocol surface。
+- **零门槛设计**：X-Agent-ID 自声明，不验证，不需要注册/token。以后也不做复杂认证。
+- **三幕主线**：第一幕 ✅ 播种 → 第二幕 🔄 竞技场培育 → 第三幕 ⬜ 编排引擎
+- Growth ≠ Stability。Distribution ≠ Protocol correctness。
 
-## 近期 Git 记录
+---
+
+## P0 — Protocol Stability（当前焦点）
+
+系统已被外部使用。P0 任务确保协议可解释、可控、可观测。
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 101 | **Execution Lifecycle Formalization** — 形式化状态机：OPEN→CLAIMED→EXECUTING→SUBMITTED→COMPLETED。每个转移显式校验，防止 double-submit / orphan claim | 🔴 未开始 | 非法转移返回 error_code |
+| 102 | **MCP Usage Log Formalization** — mcp_usage 表 schema 正式化 + runtime_type 检测改善 + GET 查询端点 | ✅ 完成 | 任意 tool call 后 mcp_usage 有记录 + GET /mcp/usage 可查询 |
+| 103 | **Idempotency & Dedup 硬化** — execution_id 级别幂等（同一 execution_id 可重复 submit）、结果 hash 去重、claim→submit 全链路幂等 | ✅ 完成 | claim 幂等 ✅；submit dedup ✅；修复 REST API 去重表名 bug |
+| 104 | **Schema Freeze v0.1** — MCP tool schema 锁定、backward compatibility 规则落地、append-only API policy 代码级执行 | ✅ 完成 | mcp/schema.js 冻结常量 + gateway.js 全量导入 + Object.freeze |
+
+---
+
+## P1 — System Engineering
+
+协议硬化派生出的工程优化。
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 045 | 修复同一 task 重复 claim+submit 去重（execution_id + 内容 hash） | ✅ 完成 | MCP 幂等 ✅；REST 去重表名 bug 已修复；checkDuplicateResult 全链路 |
+| — | `list_open_tasks` MCP tool 读 DB 而非 seed 文件 | ✅ 完成 | DB 优先查询 + seed 降级 + source 字段 |
+| — | aggregated-seed.json 自动刷新验证（GITHUB_TOKEN 是否被 aggregate.js 实际使用） | ⬜ 待做 | cron 触发后验证日志 |
+| — | openapi.json paths 收敛（当前 28 paths 部分过时） | ✅ 完成 | 删除 5 个过时路径 + 新增 3 个 MCP 路径 → 26 paths |
+
+---
+
+## P2 — Growth / Distribution
+
+只在 P0 稳定后启动。
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 040 | aiagentsdirectory.com 提交 — Web 表单手动提交 | ⬜ 待做 | 目录可见 |
+| — | GitHub Issue 打窝 — 在 AI runtime 社区发 challenge | ⬜ 待做 | Issue 评论有外部 agent 响应 |
+| — | 首个外部 agent leaderboard 上榜 | ⬜ 待做 | Leaderboard 非空 |
+
+---
+
+## P3 — Experiments
+
+探索性方向，不做承诺。
+
+| # | 任务 | 状态 |
+|---|------|------|
+| — | 第三幕编排引擎 | ⬜ 未开始 |
+| — | MCP Server 提交到 awesome-mcp-servers | ❌ 跳过（第三幕才做） |
+| — | toku.agency 等资金平台接入 | ❌ 不适合零门槛路线 |
+
+---
+
+## 已完成任务（历史归档）
+
+所有 55 条已完成任务详情见 PROGRESS.md。关键里程碑：
+
+- 001-011: 协议播种（A2A 卡、llms.txt、openapi、VPS、种子任务）
+- 012-020: 外部 AI 接入 + 聚合源（GitHub/HN/ArXiv/GitLab）
+- 021-027: Reasoning Object（schema + API + execute 集成）
+- 028-030: 线上修复 + meta tasks + 目录提交
+- 031-042: 首个外部 AI + 安全测试 + toku.agency
+- 043-044: Proving Ground + 入口对齐
+- 046-055: MCP Gateway + 限流 + 协议硬化前置
+
+---
+
+## 当前阶段判断
+
+系统已有外部 agent 交互（0xA672 等），但协议仍不稳定。
+
+### 核心风险
+
+- **double-submit**: 同一 execution 可能被多次提交（#045）
+- **retry 不安全**: 非幂等操作重试导致状态污染
+- **schema 漂移**: 工具名或 response shape 更改会 crash 外部 runtime
+- **不可观测**: runtime operator 没有自服务监控入口
+
+### 什么不做（当前）
+
+- 不加新工具（第 5 个 MCP tool）
+- 不加新 API endpoint
+- 不扩任务池
+- 不发布到更多目录
+- 不编排引擎
+
+### P0 完成后可以做什么
+
+- 观察 mcp_usage 真实 agent 行为模式
+- 基于行为数据做 rate limit 调优
+- 开放 `GET /mcp/usage` 让 runtime operator 自服务查询
+- 等 P0 稳定后启动 P2（增长）
+
+---
+
+## Commit History
 
 ```
 63881d5  fix: align all AI-facing entry points to Proving Ground positioning
@@ -74,52 +127,3 @@ b983c45  docs: update task 005 status + TASK_BOARD.md sync
 ad5299f  fix: move api/ handlers to api-handlers/
 1011221  fix: app.js align with claim+submit marketplace protocol
 ```
-
-## 平台定位（勿忘）
-
-- **平台是 AI 协作市场（撮合所）** — 不执行任务、不调 LLM、不用 API key
-- Poolside / NVIDIA / GLM / Kilo 是用户个人开发工具，与平台无关
-- 平台收录：create → claim → execute(在外) → submit → record
-- **零门槛设计**：X-Agent-ID 自声明，不验证，不需要注册/token。以后也不做复杂认证。
-
-## 三幕主线
-
-- ✅ 第一幕 协议播种 —— 基础的发现/发布/执行协议已就绪
-- 🔄 第二幕 竞技场培育 —— Leaderboard + Scorecard + 徽章系统已部署，等待第一个外部 agent
-- ⬜ 第三幕 编排引擎 —— 待第二幕跑通后启动
-
-## 实际代码状态 vs 文档差异（已修复）
-
-| 文档名 | 原来错的 | 实际正确状态 |
-|--------|---------|-------------|
-| PROJECT.md L60 | `[ ] 前端对齐新协议 (app.js 仍用旧格式)` | ✅ 已修复 (2026-05-15, commit 1011221) |
-| PROJECT.md L100 | `[ ] 真实 agent 行为数据积累` | ⚠️ 40条记录但0外部AI |
-| PROJECT.md L146 | `[ ] canonical 数据收敛` 列为进行中 | ✅ route.js+execute.js 已使用 canonical-models |
-| PROJECT.md L147 | `[ ] X-Agent-ID 认证机制` 列为进行中 | 🚫 零门槛设计选择, 不做认证 |
-| PROJECT.md L117 | "17 endpoints" | 实际 14 个 unique API base path |
-| TASK_BOARD.md #3 | "文档同步: 可自动化" | ✅ 已自动化 (sync-obsidian.sh) |
-| openapi.json | 缺少 /api/channels, task-sources, graph, case-studies | 有 18 个 path 但部分过时 |
-
-## 已知未完成（下次可做）
-
-1. **0 外部 AI 执行 — 核心卡点**: 基础设施已完备，Leaderboard 已就绪，但无外部 AI 走通闭环。
-   - 新策略: 从"来干活"改为"来证明你行" — Benchmark/Arena 模式
-   - Leaderboard + Scorecard + 徽章系统已部署，等待第一个外部 agent
-   - 下一步: 在 AI 活跃的地方打窝（GitHub Issues、benchmark 社区、AI 工具文档）
-
-2. **AI agent 目录提交状态**:
-   - ✅ **Agentry**: 已注册 (ID: 3ad31b2ccc44), category=Operations & Workflow, a2a_support=Yes, 等待 trust score 扫描
-   - ⏳ **PR #259** (awesome-ai-agents-2026): OPEN, 创建于 2026-05-16, 待合并
-   - ❌ **agentrolodex.com**: 500 错误，站点不可用，待恢复后重试
-   - ❌ **aiagentsdirectory.com**: 纯 CSR 前端，无 API，需手动填表
-
-3. **aggregated-seed.json 自动刷新验证**: 验证cron每6小时聚合任务正常运行
-   - GITHUB_TOKEN 已设，但未确认是否被 aggregate.js 实际使用
-
-4. **Reasoning Object Schema 设计**: ✅ 已完成 — tasks/reasoning-object-schema.md + CANONICAL-SCHEMA.md 已更新
-
-5. **/api/graph 数据填充**: ✅ 已完成 — 20 nodes (platform/workers/sources/protocols), 36 edges (implements/aggregates/registered_worker/can_execute)
-
-6. **Reasoning Object API 实现**: ✅ 已完成 — lib/reasoning-storage.js + api-handlers/reasoning.js + PG reasoning_objects 表 + 4 endpoints (search/stats/failures/CRUD)
-
-7. **posts.js JSONB bug**: ✅ 已修复 — tags 数组插入时需 JSON.stringify()
