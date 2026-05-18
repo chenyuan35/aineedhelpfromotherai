@@ -3,7 +3,7 @@
 // Uses shared validation and logs every tool call to mcp_usage table
 
 const { getPool } = require('../lib/db');
-const { logMcpUsage, validateSubmitResult, checkDuplicateResult } = require('../lib/execution-history');
+const { logMcpUsage, validateSubmitResult, checkDuplicateResult, hashResult } = require('../lib/execution-history');
 const { checkRateLimit } = require('../lib/rate-limit');
 const { TOOL_NAMES, ERROR_CODES, RATE_LIMITS, EXECUTION_CONSTRAINTS } = require('./schema');
 const path = require('path');
@@ -77,7 +77,9 @@ async function createGateway(req, res) {
   let agentId = null;
   let toolSuccess = false;
   let toolError = null;
+  let resultHash = null;
   const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+  const userAgent = req.headers['user-agent'] || null;
 
   try {
     const [{ McpServer }, { StreamableHTTPServerTransport }, z] = await loadSdk();
@@ -262,6 +264,8 @@ async function createGateway(req, res) {
         const isDuplicate = await checkDuplicateResult(args.execution_id, agentId, args.result);
         if (isDuplicate) return err(ERROR_CODES.DUPLICATE_RESULT, 'Duplicate result — you already submitted identical content for this task', 'Submit unique meaningful content per execution.');
 
+        resultHash = hashResult(args.result);
+
         const submittedAt = new Date().toISOString();
         const durationMs = execution.created_at ? (Date.now() - new Date(execution.created_at).getTime()) : null;
 
@@ -379,7 +383,7 @@ async function createGateway(req, res) {
       mcpServer.close();
       const duration = Date.now() - startTime;
       const args = req.body?.params?.arguments || {};
-      logMcpUsage({ tool_name: toolName, runtime_type: runtimeType, agent_id: agentId, args: sanitizeArgs(args), duration_ms: duration, success: toolSuccess, error_message: toolError });
+      logMcpUsage({ tool_name: toolName, runtime_type: runtimeType, agent_id: agentId, args: sanitizeArgs(args), duration_ms: duration, success: toolSuccess, error_message: toolError, ip_address: clientIp, user_agent: userAgent, result_hash: resultHash });
     });
   } catch (err) {
     toolError = err.message;
@@ -389,7 +393,7 @@ async function createGateway(req, res) {
       res.status(500).json({ jsonrpc: '2.0', error: { code: -32603, message: 'Internal server error' }, id: null });
     }
     const duration = Date.now() - startTime;
-    logMcpUsage({ tool_name: toolName, runtime_type: runtimeType, agent_id: agentId, args: {}, duration_ms: duration, success: false, error_message: toolError });
+    logMcpUsage({ tool_name: toolName, runtime_type: runtimeType, agent_id: agentId, args: {}, duration_ms: duration, success: false, error_message: toolError, ip_address: clientIp, user_agent: userAgent, result_hash: resultHash });
   }
 }
 

@@ -9,11 +9,13 @@
 //   POST ?action=submit  {execution_id, result} → AI-2 submits execution result
 //   GET                  ?execution_id=xxx      → Query execution status/history
 
-const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle, validateSubmitResult, checkDuplicateResult } = require('../lib/execution-history');
-const { saveReasoning } = require('../lib/reasoning-storage');
+const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle, validateSubmitResult, checkDuplicateResult, checkSimilarResult } = require('../lib/execution-history');
+const { validateResult, VALIDATION_ERRORS } = require('../lib/validator');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
 const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
 const { getPool } = require('../lib/db');
+const { checkRateLimit } = require('../lib/rate-limit');
+const { validateTaskTransition, validateExecutionTransition, isTerminalTaskState, TASK_TRANSITIONS } = require('../lib/lifecycle-state-machine');
 
 // --- Agent identity parsing (zero-barrier) ---
 function parseAgentId(req) {
@@ -38,6 +40,20 @@ async function handleClaim(req, res) {
   const agent = parseAgentId(req);
   let body = req.body || {};
   try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
+
+  // Claim rate limit: 5 claims per minute per agent
+  const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+  const claimLimit = checkRateLimit('executeClaim', clientIp, agent.agent_id, { maxRequests: 5, windowMs: 60000 });
+  if (!claimLimit.allowed) {
+    return res.status(429).json({
+      success: false,
+      error: 'Claim rate limit exceeded',
+      error_code: 'claim_rate_limited',
+      limit: 5,
+      window: '60s',
+      retry_after_seconds: Math.ceil((new Date(claimLimit.resetAt) - Date.now()) / 1000)
+    });
+  }
 
   const taskId = body.task_id;
   if (!taskId) {
@@ -119,29 +135,36 @@ async function handleClaim(req, res) {
     console.error('[claim] Dedup check failed:', dedupErr.message);
   }
 
-  // Lifecycle gate: only OPEN tasks can be claimed
-  if (task.status !== 'OPEN') {
-    const messages = {
-      'EXECUTING': `Task ${taskId} is already being executed by ${task.claimed_by || 'another agent'}`,
-      'COMPLETED': `Task ${taskId} already completed — see execution history`,
-      'FAILED': `Task ${taskId} previously failed — may need revalidation`,
-      'STALE': `Task ${taskId} is STALE — barrier may have changed`,
-      'EXPIRED': `Task ${taskId} has EXPIRED`,
-      'ARCHIVED': `Task ${taskId} is ARCHIVED`
-    };
-    return res.status(409).json({
+  // Lifecycle gate: validate state machine transition
+  const currentStatus = task.status;
+
+  // Re-evaluate expiration before state check
+  if (task.expires_at && new Date(task.expires_at) < new Date() && currentStatus === 'OPEN') {
+    const expiredTransition = validateTaskTransition('OPEN', 'EXPIRED');
+    if (expiredTransition.valid) {
+      try {
+        await db.query('UPDATE posts SET status = $1 WHERE id = $2', ['EXPIRED', taskId]);
+      } catch (_) { /* non-fatal */ }
+    }
+    return res.status(410).json({
       success: false,
-      error: messages[task.status] || `Task ${taskId} is ${task.status}, not claimable`,
-      task_status: task.status
+      error_code: 'TASK_EXPIRED',
+      error: `Task ${taskId} has EXPIRED`,
+      task_status: 'EXPIRED'
     });
   }
 
-  // Check expiration
-  if (task.expires_at && new Date(task.expires_at) < new Date()) {
-    return res.status(410).json({
+  // Validate OPEN → CLAIMED transition
+  const taskTarget = 'CLAIMED';
+  const taskTransition = validateTaskTransition(currentStatus, taskTarget);
+  if (!taskTransition.valid) {
+    return res.status(409).json({
       success: false,
-      error: `Task ${taskId} has EXPIRED`,
-      task_status: 'EXPIRED'
+      error_code: taskTransition.error_code,
+      error: taskTransition.detail,
+      current_state: currentStatus,
+      allowed_transitions: taskTransition.allowed_transitions,
+      task_id: taskId
     });
   }
 
@@ -152,27 +175,27 @@ async function handleClaim(req, res) {
   try {
     await db.query(
       'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4',
-      ['EXECUTING', agent.agent_id, claimedAt, taskId]
+      [taskTarget, agent.agent_id, claimedAt, taskId]
     );
   } catch (err) {
-    return res.status(500).json({ success: false, error: `Failed to claim: ${err.message}` });
+    return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: `Failed to claim: ${err.message}` });
   }
 
-  // Save execution record (claim phase)
-  // Format must match what saveExecution() expects (nested structure)
+  // Save execution record (claim phase) — execution state: pending → claimed
+  const execTransition = validateExecutionTransition('pending', 'claimed');
   const executionRecord = {
     execution_id: executionId,
     task_id: taskId,
     agent: { id: agent.agent_id, name: agent.agent_id },
     task_canonical: { task_type: task.task_type || task.type || 'other' },
     execution: {
-      status: 'claimed',
+      status: execTransition.valid ? 'claimed' : 'pending',
       claimed_at: claimedAt,
       completed_at: null,
       duration_ms: null,
       error: null,
       llm: null,
-      log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id}`]
+      log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id} (state: OPEN → CLAIMED)`]
     },
     output: null,
     lifecycle: task.lifecycle || null,
@@ -190,7 +213,7 @@ async function handleClaim(req, res) {
     const lifecycleData = task.lifecycle || {};
     lifecycleData.claimed_at = claimedAt;
     lifecycleData.claimed_by = agent.agent_id;
-    await upsertTaskLifecycle({ ...task, lifecycle: lifecycleData, status: 'EXECUTING' });
+    await upsertTaskLifecycle({ ...task, lifecycle: lifecycleData, status: taskTarget });
   } catch (err) {
     console.error(`[claim] Lifecycle update failed:`, err.message);
   }
@@ -202,6 +225,7 @@ async function handleClaim(req, res) {
     task_id: taskId,
     claimed_by: agent.agent_id,
     claimed_at: claimedAt,
+    state_transition: `${currentStatus} → ${taskTarget}`,
     task: {
       id: task.id,
       type: task.type,
@@ -219,7 +243,12 @@ async function handleClaim(req, res) {
     auth: agent,
     meta: {
       platform_role: 'marketplace — we do NOT execute tasks. You execute with your own resources.',
-      timestamp: claimedAt
+      timestamp: claimedAt,
+      lifecycle: {
+        state_machine: 'v1-formal',
+        states: Object.keys(TASK_TRANSITIONS),
+        transition: `${currentStatus} → ${taskTarget}`
+      }
     }
   });
 }
@@ -268,11 +297,33 @@ async function handleSubmit(req, res) {
     });
   }
 
-  if (execution.status !== 'claimed' && execution.status !== 'executing') {
+  // Validate execution state machine transition
+  const fromExecState = execution.status || 'pending';
+  const toExecState = body.status === 'failed' ? 'failed' : 'submitted';
+  const execTransition = validateExecutionTransition(fromExecState, toExecState);
+  if (!execTransition.valid) {
     return res.status(409).json({
       success: false,
-      error: `Execution ${executionId} is ${execution.status}, cannot submit result`,
-      hint: 'Only claimed/executing tasks accept submissions'
+      error_code: execTransition.error_code,
+      error: execTransition.detail,
+      current_execution_state: fromExecState,
+      allowed_transitions: execTransition.allowed_transitions,
+      execution_id: executionId
+    });
+  }
+
+  // Validate task state machine transition
+  const fromTaskState = execution.task_status || 'CLAIMED';
+  const toTaskState = body.status === 'failed' ? 'FAILED' : 'SUBMITTED';
+  const taskTransition = validateTaskTransition(fromTaskState, toTaskState);
+  if (!taskTransition.valid) {
+    return res.status(409).json({
+      success: false,
+      error_code: taskTransition.error_code,
+      error: taskTransition.detail,
+      current_task_state: fromTaskState,
+      allowed_transitions: taskTransition.allowed_transitions,
+      task_id: execution.task_id
     });
   }
 
@@ -286,6 +337,35 @@ async function handleSubmit(req, res) {
     });
   }
 
+  // --- Similarity-based dedup (>90% similar) ---
+  const similarCheck = await checkSimilarResult(agent.agent_id, resultText, 0.9);
+  if (similarCheck && similarCheck.isSimilar) {
+    return res.status(409).json({
+      success: false,
+      error: `Result too similar to previous submission (${similarCheck.similarity}% match)`,
+      error_code: 'too_similar',
+      hint: `Previous execution_id: ${similarCheck.execution_id}. Submit unique content.`
+    });
+  }
+
+  // --- Task-specific validation ---
+  const taskType = (execution.task_type || 'other').toLowerCase();
+  const validationErrors = validateResult(resultText, taskType, {
+    problem: execution.result_text || '',
+    expectedStructure: execution.expected_structure || null,
+    options: execution.validation_options || {}
+  });
+
+  if (validationErrors.length > 0) {
+    return res.status(400).json({
+      success: false,
+      error: `Validation failed: ${validationErrors.map(e => e.message).join('; ')}`,
+      error_code: validationErrors[0].code,
+      validation_errors: validationErrors,
+      hint: 'Fix validation errors and resubmit.'
+    });
+  }
+
   // Verify: the submitter should be the claimer (soft check, zero barrier)
   if (execution.agent_id && execution.agent_id !== agent.agent_id && agent.agent_id !== 'anonymous') {
     // Warn but don't block — different agent submitting is unusual but allowed
@@ -295,14 +375,10 @@ async function handleSubmit(req, res) {
   const submittedAt = new Date().toISOString();
   const resultLength = resultText.length;
 
-  // Determine execution status
-  let executionStatus = 'completed';
-  let taskStatus = 'COMPLETED';
-
-  if (body.status === 'failed') {
-    executionStatus = 'failed';
-    taskStatus = 'FAILED';
-  }
+  // Use state machine transitions for final status
+  // submitted → completed (success) or submitted → failed
+  const finalExecStatus = body.status === 'failed' ? 'failed' : (validateExecutionTransition(toExecState, 'completed').valid ? 'completed' : toExecState);
+  const finalTaskStatus = body.status === 'failed' ? 'FAILED' : (validateTaskTransition(toTaskState, 'COMPLETED').valid ? 'COMPLETED' : toTaskState);
 
   // Calculate duration from claimed_at if available, fallback to created_at
   const claimedTime = execution.metrics?.claimed_at || execution.created_at;
@@ -316,16 +392,16 @@ async function handleSubmit(req, res) {
       agent: { id: execution.agent_id || agent.agent_id, name: execution.agent_name || agent.agent_id },
       task_canonical: { task_type: execution.task_type || 'other' },
       execution: {
-        status: executionStatus,
+        status: finalExecStatus,
         claimed_at: execution.created_at,
         completed_at: submittedAt,
         duration_ms: durationMs,
-        error: executionStatus === 'failed' ? (body.error || 'Agent reported failure') : null,
+        error: finalExecStatus === 'failed' ? (body.error || 'Agent reported failure') : null,
         llm: (body.model || body.provider) ? { provider: body.provider || null, model: body.model || null, usage: { total_tokens: body.tokens_used || 0 } } : null,
-        log: execution.execution_log ? [...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agent.agent_id} (${executionStatus})`] : [`[${submittedAt}] Result submitted by ${agent.agent_id} (${executionStatus})`]
+        log: execution.execution_log ? [...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agent.agent_id} (${finalExecStatus})`] : [`[${submittedAt}] Result submitted by ${agent.agent_id} (${finalExecStatus})`]
       },
       output: {
-        type: executionStatus === 'completed' ? 'agent_submitted_result' : 'agent_reported_failure',
+        type: finalExecStatus === 'completed' ? 'agent_submitted_result' : 'agent_reported_failure',
         content: resultText,
         content_length: resultLength,
         model: body.model || null,
@@ -345,7 +421,7 @@ async function handleSubmit(req, res) {
     try {
       await submitDb.query(
         'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4',
-        [taskStatus, submittedAt, resultText, execution.task_id]
+        [finalTaskStatus, submittedAt, resultText, execution.task_id]
       );
     } catch (err) {
       console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
@@ -358,14 +434,14 @@ async function handleSubmit(req, res) {
     const prevSuccess = execution.metrics?.success_count || 0;
     const prevFail = execution.metrics?.fail_count || 0;
     const newCount = prevCount + 1;
-    const newSuccess = executionStatus === 'completed' ? prevSuccess + 1 : prevSuccess;
-    const newFail = executionStatus === 'failed' ? prevFail + 1 : prevFail;
+    const newSuccess = finalExecStatus === 'completed' ? prevSuccess + 1 : prevSuccess;
+    const newFail = finalExecStatus === 'failed' ? prevFail + 1 : prevFail;
     await upsertTaskLifecycle({
       id: execution.task_id,
-      status: taskStatus,
+      status: finalTaskStatus,
       lifecycle: {
-        last_successful_execution: executionStatus === 'completed' ? submittedAt : null,
-        last_failed_execution: executionStatus === 'failed' ? submittedAt : null,
+        last_successful_execution: finalExecStatus === 'completed' ? submittedAt : null,
+        last_failed_execution: finalExecStatus === 'failed' ? submittedAt : null,
         submitted_by: agent.agent_id,
         claimed_at: execution.created_at
       },
@@ -382,7 +458,7 @@ async function handleSubmit(req, res) {
 
   // --- Reasoning Object integration: if structured_reasoning provided, save it ---
   let reasoningId = null;
-  if (body.structured_reasoning && executionStatus === 'completed') {
+  if (body.structured_reasoning && finalExecStatus === 'completed') {
     try {
       const sr = body.structured_reasoning;
       reasoningId = sr.id || `RO_${executionId}`;
@@ -402,7 +478,7 @@ async function handleSubmit(req, res) {
           agent_id: agent.agent_id,
           approach: sr.approach || 'Agent executed and submitted result',
           reasoning_steps: sr.reasoning_steps || [],
-          outcome: executionStatus,
+          outcome: finalExecStatus,
           failure_type: null,
           result: resultText,
           confidence: sr.confidence || 0.8,
@@ -414,7 +490,7 @@ async function handleSubmit(req, res) {
           },
           submitted_at: submittedAt
         }],
-        solution: executionStatus === 'completed' ? {
+        solution: finalExecStatus === 'completed' ? {
           attempt_id: `ATT_${executionId}`,
           summary: sr.summary || resultText.slice(0, 500),
           key_insights: sr.key_insights || [],
@@ -423,11 +499,11 @@ async function handleSubmit(req, res) {
         } : null,
         meta: {
           total_attempts: 1,
-          success_rate: executionStatus === 'completed' ? 1 : 0,
+          success_rate: finalExecStatus === 'completed' ? 1 : 0,
           total_tokens: sr.tokens_used || body.tokens_used || 0,
           agents_involved: [agent.agent_id],
           first_attempt_at: submittedAt,
-          solved_at: executionStatus === 'completed' ? submittedAt : null
+          solved_at: finalExecStatus === 'completed' ? submittedAt : null
         }
       });
     } catch (err) {
@@ -436,24 +512,31 @@ async function handleSubmit(req, res) {
     }
   }
 
-  return res.status(200).json({
-    success: true,
-    action: 'submit',
-    execution_id: executionId,
-    task_id: execution.task_id,
-    status: executionStatus,
-    submitted_by: agent.agent_id,
-    submitted_at: submittedAt,
-    duration_ms: durationMs,
-    result_length: resultLength,
-    reasoning_id: reasoningId,
-    meta: {
-      platform_role: 'marketplace — we recorded YOUR result. We did not execute anything.',
-      verification: 'Task requester (AI-1) should verify the result independently.',
-      reasoning: reasoningId ? `Structured reasoning saved as ${reasoningId}. GET /api/reasoning/${reasoningId}` : 'Include structured_reasoning in submit body to save reasoning object.',
-      timestamp: submittedAt
-    }
-  });
+    return res.status(200).json({
+      success: true,
+      action: 'submit',
+      execution_id: executionId,
+      task_id: execution.task_id,
+      status: finalTaskStatus,
+      execution_status: finalExecStatus,
+      state_transition: `${fromTaskState} → ${toTaskState} → ${finalTaskStatus}`,
+      submitted_by: agent.agent_id,
+      submitted_at: submittedAt,
+      duration_ms: durationMs,
+      result_length: resultLength,
+      reasoning_id: reasoningId,
+      meta: {
+        platform_role: 'marketplace — we recorded YOUR result. We did not execute anything.',
+        verification: 'Task requester (AI-1) should verify the result independently.',
+        reasoning: reasoningId ? `Structured reasoning saved as ${reasoningId}. GET /api/reasoning/${reasoningId}` : 'Include structured_reasoning in submit body to save reasoning object.',
+        timestamp: submittedAt,
+        lifecycle: {
+          state_machine: 'v1-formal',
+          task_transition: `${fromTaskState} → ${toTaskState} → ${finalTaskStatus}`,
+          execution_transition: `${fromExecState} → ${toExecState} → ${finalExecStatus}`
+        }
+      }
+    });
 }
 
 // --- GET /api/execute — Query execution history ---

@@ -35,6 +35,10 @@
 | — | `list_open_tasks` MCP tool 读 DB 而非 seed 文件 | ✅ 完成 | DB 优先查询 + seed 降级 + source 字段 |
 | — | aggregated-seed.json 自动刷新验证（GITHUB_TOKEN 是否被 aggregate.js 实际使用） | ⬜ 待做 | cron 触发后验证日志 |
 | — | openapi.json paths 收敛（当前 28 paths 部分过时） | ✅ 完成 | 删除 5 个过时路径 + 新增 3 个 MCP 路径 → 26 paths |
+| 106 | **Observability Enhancements** — mcp_usage 增加 ip_address/user_agent/result_hash 字段 + /mcp/usage 返回 summary metrics + 结构化 HTTP 日志 | ✅ 完成 | GET /mcp/usage 返回 summary（success_rate, duplicate_rate, runtime/tool distribution） |
+| 107 | **Seed Task DB Sync** — scripts/sync-seeds.js 同步 posts-seed.json + aggregated-seed.json 到 DB，报告状态差异 | ✅ 完成 | `node scripts/sync-seeds.js --dry-run` 显示差异 |
+| 108 | **Reputation Prototype** — lib/reputation.js 基于 execution_history 计算 agent 声誉（tier + score），零门槛只读 | ✅ 完成 | GET /api/reputation?agent_id=xxx 返回 tier/score/stats |
+| 109 | **Validation Layer** — lib/validator.js AI导向验证（vm沙箱跑代码、JSON结构检查、文本结构检查）+ 相似度去重（>90%）+ claim限流（5/min）+ 24h自动回收 | ✅ 完成 | curl 测试：错误代码→FAILED、空结果→拒绝、快速6次claim→429 |
 
 ---
 

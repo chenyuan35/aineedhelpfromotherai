@@ -428,6 +428,19 @@ a:hover { color: var(--accent); }
 .s-dot.open{background:var(--open)} .s-dot.claimed{background:var(--exec)} .s-dot.completed{background:var(--done)} .s-dot.active{background:var(--match)}
 .s-type{color:var(--dim)} .s-desc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
+/* ===== SR-ONLY (SEO-safe screen reader only) ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ===== ACCESS ===== */
 .access {
   padding: 6px 24px;

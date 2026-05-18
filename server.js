@@ -243,15 +243,92 @@ for (const file of staticFiles) {
 // .well-known directory
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
-// Root path — serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Root path — serve index.html with server-rendered task content
+app.get('/', async (req, res) => {
+  const fs = require('fs');
+  const indexPath = path.join(__dirname, 'index.html');
+  let html = fs.readFileSync(indexPath, 'utf-8');
+
+  // Inject server-rendered tasks for SEO/no-JS crawlers
+  try {
+    let tasks = [];
+    const db = getPool();
+    if (db) {
+      const result = await db.query("SELECT * FROM posts WHERE type = 'REQUEST' AND status = 'OPEN' ORDER BY created_at DESC LIMIT 10");
+      tasks = result.rows;
+    }
+    if (!tasks.length) {
+      // Fallback: serve from aggregated-seed.json
+      const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
+      if (fs.existsSync(seedPath)) {
+        const seed = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
+        tasks = seed.posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').slice(0, 10);
+      }
+    }
+
+    if (tasks.length) {
+      const taskCards = tasks.map(t => {
+        const src = t.source || t.source_platform || 'platform';
+        const srcClass = (src.toLowerCase().includes('github') ? 's-gh' : src.toLowerCase().includes('hacker') ? 's-hn' : src.toLowerCase().includes('arxiv') ? 's-arxiv' : src.toLowerCase().includes('gitlab') ? 's-gl' : 's-other');
+        const diff = t.difficulty || '';
+        const diffClass = diff === 'beginner' ? 'd-beg' : diff === 'intermediate' ? 'd-int' : diff === 'advanced' ? 'd-adv' : '';
+        const typeLabel = t.task_type || t.type || '';
+        const href = t.source_url || '';
+        const problem = (t.problem || t.title || t.capabilities || 'untitled').substring(0, 120);
+        return `<div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-src ${srcClass}">${escHtml(src)}</span>
+            <span class="tl-type">${escHtml(typeLabel)}</span>
+            ${diffClass ? `<span class="tl-diff ${diffClass}">${escHtml(diff)}</span>` : ''}
+            <span class="tl-status open">OPEN</span>
+          </div>
+          <div class="tl-body">
+            ${href ? `<a href="${escHtml(href)}" target="_blank" class="tl-link">` : ''}
+            <span class="tl-problem">${escHtml(problem)}</span>
+            ${href ? ' ↗</a>' : ''}
+          </div>
+          <div class="tl-foot">
+            <span class="tl-id">${escHtml(t.id)}</span>
+            ${t.estimated_tokens ? `<span class="tl-tokens">~${Math.round(t.estimated_tokens/1000)}K tokens</span>` : ''}
+          </div>
+        </div>`;
+      }).join('\n          ');
+
+      // Inject into the task-list div (replace the "loading..." text)
+      html = html.replace(
+        '<div id="task-list"><div class="tl-empty">loading tasks...</div></div>',
+        `<div id="task-list">${taskCards}</div>`
+      );
+    } else {
+      html = html.replace(
+        'loading tasks...',
+        'no open tasks — <span class="trace-action" onclick="showCreate()">create one →</span>'
+      );
+    }
+  } catch (e) {
+    console.error('[SSR] Failed to inject tasks:', e.message);
+    // Serve static index.html as fallback
+  }
+
+  res.send(html);
 });
 
-// SPA fallback (Express 5 compatible)
+// SPA fallback — just serve index.html
 app.get('/:path', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  const fs = require('fs');
+  const indexPath = path.join(__dirname, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send('Not found');
+  }
 });
+
+// HTML escape helper
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
 
 // Global error middleware
 app.use((err, req, res, next) => {
@@ -262,6 +339,10 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   console.log(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+
+  // Start task recovery (24h claim expiry, 10min scan interval)
+  const { startRecoveryInterval } = require('./lib/task-recovery');
+  startRecoveryInterval();
 });
 
 process.on('uncaughtException', (err) => {
@@ -274,6 +355,8 @@ process.on('unhandledRejection', (reason) => {
 
 function shutdown(signal) {
   console.log(`[${signal}] shutting down gracefully...`);
+  const { stopRecoveryInterval } = require('./lib/task-recovery');
+  stopRecoveryInterval();
   server.close(() => {
     const { closePool } = require('./lib/db');
     closePool();
