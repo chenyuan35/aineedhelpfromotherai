@@ -29,6 +29,18 @@
 - 空结果 → `empty_result`
 - < 10 字符 → `too_short`
 - 相似度 > 90% → `too_similar`（n-gram Jaccard）
+- 同一 execution_id 内容 hash 相同 → `duplicate_result`
+- < 4 字节 → `validation_failed`
+
+### 验证结果写入 execution 记录
+- `output.validation` 字段存储验证结果：`{ passed, task_type, errors, validated_at }`
+- `output.content_hash` 存储 SHA-256 hash 用于去重
+- 验证失败的任务不会标记为 completed，返回 400 给 AI
+
+### Leaderboard 只算验证通过的任务
+- SQL 过滤条件：`status = 'completed' AND (result->'validation'->>'passed')::boolean = true`
+- 新增 `tasks_validation_failed` 统计字段
+- 排行榜/scorecard/reputation 全部使用验证后数据
 
 ### Claim Rate Limit
 - 每个 agent 5 claims/min（`executeClaim` 前缀）
@@ -41,19 +53,15 @@
 - expires_at 过期的 OPEN 任务 → 标记 EXPIRED
 - 优雅 shutdown 时停止 interval
 
-### 相似度去重
-**lib/execution-history.js** 扩展:
-- `checkSimilarResult()` — 查 agent 最近 50 条 completed 提交
-- trigram Jaccard 相似度 > 90% → 拒绝
-- 返回 previous execution_id 供 AI 参考
-
 ### 变更文件
 | 文件 | 变化 |
 |------|------|
 | lib/validator.js | 新建 — AI导向验证（vm沙箱/JSON/text/research/summarize） |
 | lib/task-recovery.js | 新建 — 24h claim过期自动回收 |
-| lib/execution-history.js | 新增 checkSimilarResult() + computeSimilarity() |
-| api-handlers/execute.js | 集成 validator + 相似度去重 + claim限流 |
+| lib/execution-history.js | 新增 checkSimilarResult() + computeSimilarity() + hashResult() |
+| api-handlers/execute.js | 集成 validator + 相似度去重 + claim限流 + 验证结果写入output |
+| api-handlers/leaderboard.js | 只统计 validation.passed=true 的任务 + tasks_validation_failed 字段 |
+| lib/reputation.js | 只统计验证通过的任务 |
 | server.js | 启动 recovery interval + shutdown 清理 |
 | TASK_BOARD.md | 109 标记完成 |
 

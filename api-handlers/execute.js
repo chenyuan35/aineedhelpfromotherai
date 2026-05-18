@@ -9,7 +9,7 @@
 //   POST ?action=submit  {execution_id, result} → AI-2 submits execution result
 //   GET                  ?execution_id=xxx      → Query execution status/history
 
-const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle, validateSubmitResult, checkDuplicateResult, checkSimilarResult } = require('../lib/execution-history');
+const { saveExecution, queryExecutions, getExecution, registerAgentToken, verifyAgentToken, parseAgentAuth, upsertTaskLifecycle, queryTaskLifecycle, validateSubmitResult, checkDuplicateResult, checkSimilarResult, hashResult } = require('../lib/execution-history');
 const { validateResult, VALIDATION_ERRORS } = require('../lib/validator');
 const { buildCanonicalTask, buildCanonicalAgent, buildCanonicalExecution, validateCanonicalTask } = require('../lib/canonical-models');
 const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = require('../lib/lifecycle');
@@ -350,18 +350,26 @@ async function handleSubmit(req, res) {
 
   // --- Task-specific validation ---
   const taskType = (execution.task_type || 'other').toLowerCase();
-  const validationErrors = validateResult(resultText, taskType, {
+  const taskValidationErrors = validateResult(resultText, taskType, {
     problem: execution.result_text || '',
     expectedStructure: execution.expected_structure || null,
     options: execution.validation_options || {}
   });
 
-  if (validationErrors.length > 0) {
+  const validationPassed = taskValidationErrors.length === 0;
+  const validationResult = {
+    passed: validationPassed,
+    task_type: taskType,
+    errors: taskValidationErrors,
+    validated_at: new Date().toISOString()
+  };
+
+  if (!validationPassed) {
     return res.status(400).json({
       success: false,
-      error: `Validation failed: ${validationErrors.map(e => e.message).join('; ')}`,
-      error_code: validationErrors[0].code,
-      validation_errors: validationErrors,
+      error: `Validation failed: ${taskValidationErrors.map(e => e.message).join('; ')}`,
+      error_code: taskValidationErrors[0].code,
+      validation_result: validationResult,
       hint: 'Fix validation errors and resubmit.'
     });
   }
@@ -404,9 +412,11 @@ async function handleSubmit(req, res) {
         type: finalExecStatus === 'completed' ? 'agent_submitted_result' : 'agent_reported_failure',
         content: resultText,
         content_length: resultLength,
+        content_hash: hashResult(resultText),
         model: body.model || null,
         provider: body.provider || null,
-        tokens: body.tokens_used || 0
+        tokens: body.tokens_used || 0,
+        validation: validationResult
       },
       lifecycle: execution.lifecycle || null,
       metrics: execution.metrics || null

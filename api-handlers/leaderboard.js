@@ -39,18 +39,20 @@ async function handleLeaderboard(req, res) {
 
   try {
     // Aggregate per-agent stats from execution_history
+    // Only count validated tasks (validation.passed = true) for leaderboard
     const statsResult = await db.query(`
       SELECT
         agent_id,
         agent_name,
         COUNT(*) as total_attempts,
-        COUNT(*) FILTER (WHERE status = 'completed') as tasks_completed,
+        COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = true) as tasks_completed,
         COUNT(*) FILTER (WHERE status = 'failed') as tasks_failed,
         COUNT(*) FILTER (WHERE status = 'claimed' OR status = 'executing') as tasks_in_progress,
-        ROUND(AVG(CASE WHEN status = 'completed' THEN duration_ms END)) as avg_duration_ms,
+        COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = false) as tasks_validation_failed,
+        ROUND(AVG(CASE WHEN status = 'completed' AND (result->'validation'->>'passed')::boolean = true THEN duration_ms END)) as avg_duration_ms,
         MIN(created_at) as first_seen,
         MAX(created_at) as last_active,
-        COUNT(*) FILTER (WHERE status = 'completed' AND result IS NOT NULL AND result::text != 'null' AND result::text != '{}') as with_result,
+        COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = true AND result IS NOT NULL AND result::text != 'null' AND result::text != '{}') as with_result,
         COUNT(*) FILTER (WHERE result IS NOT NULL AND (result->>'tokens')::int > 0) as with_tokens
       FROM execution_history
       WHERE agent_id IS NOT NULL AND agent_id != 'anonymous'
@@ -82,6 +84,7 @@ async function handleLeaderboard(req, res) {
       const total = parseInt(row.total_attempts);
       const completed = parseInt(row.tasks_completed);
       const failed = parseInt(row.tasks_failed);
+      const validationFailed = parseInt(row.tasks_validation_failed);
       const inProgress = parseInt(row.tasks_in_progress);
       const successRate = total > 0 ? Math.round((completed / total) * 10000) / 10000 : 0;
       const avgDuration = row.avg_duration_ms ? parseInt(row.avg_duration_ms) : null;
@@ -107,6 +110,7 @@ async function handleLeaderboard(req, res) {
         score,
         tasks_completed: completed,
         tasks_failed: failed,
+        tasks_validation_failed: validationFailed,
         tasks_in_progress: inProgress,
         total_attempts: total,
         success_rate: successRate,
@@ -168,12 +172,13 @@ async function handleAgentScorecard(req, res) {
         agent_id,
         agent_name,
         COUNT(*) as total_attempts,
-        COUNT(*) FILTER (WHERE status = 'completed') as tasks_completed,
+        COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = true) as tasks_completed,
         COUNT(*) FILTER (WHERE status = 'failed') as tasks_failed,
         COUNT(*) FILTER (WHERE status = 'claimed') as tasks_claimed,
-        ROUND(AVG(CASE WHEN status = 'completed' THEN duration_ms END)) as avg_duration_ms,
-        MIN(duration_ms) FILTER (WHERE status = 'completed') as best_duration_ms,
-        MAX(duration_ms) FILTER (WHERE status = 'completed') as worst_duration_ms,
+        COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = false) as tasks_validation_failed,
+        ROUND(AVG(CASE WHEN status = 'completed' AND (result->'validation'->>'passed')::boolean = true THEN duration_ms END)) as avg_duration_ms,
+        MIN(duration_ms) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = true) as best_duration_ms,
+        MAX(duration_ms) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = true) as worst_duration_ms,
         MIN(created_at) as first_seen,
         MAX(created_at) as last_active,
         COUNT(DISTINCT task_id) as unique_tasks,
@@ -262,6 +267,7 @@ async function handleAgentScorecard(req, res) {
           total_attempts: total,
           tasks_completed: completed,
           tasks_failed: failed,
+          tasks_validation_failed: parseInt(row.tasks_validation_failed),
           tasks_claimed: parseInt(row.tasks_claimed),
           success_rate: successRate,
           unique_tasks: parseInt(row.unique_tasks),

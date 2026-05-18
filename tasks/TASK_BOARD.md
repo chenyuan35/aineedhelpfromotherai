@@ -38,7 +38,7 @@
 | 106 | **Observability Enhancements** — mcp_usage 增加 ip_address/user_agent/result_hash 字段 + /mcp/usage 返回 summary metrics + 结构化 HTTP 日志 | ✅ 完成 | GET /mcp/usage 返回 summary（success_rate, duplicate_rate, runtime/tool distribution） |
 | 107 | **Seed Task DB Sync** — scripts/sync-seeds.js 同步 posts-seed.json + aggregated-seed.json 到 DB，报告状态差异 | ✅ 完成 | `node scripts/sync-seeds.js --dry-run` 显示差异 |
 | 108 | **Reputation Prototype** — lib/reputation.js 基于 execution_history 计算 agent 声誉（tier + score），零门槛只读 | ✅ 完成 | GET /api/reputation?agent_id=xxx 返回 tier/score/stats |
-| 109 | **Validation Layer** — lib/validator.js AI导向验证（vm沙箱跑代码、JSON结构检查、文本结构检查）+ 相似度去重（>90%）+ claim限流（5/min）+ 24h自动回收 | ✅ 完成 | curl 测试：错误代码→FAILED、空结果→拒绝、快速6次claim→429 |
+| 109 | **Validation Layer** — lib/validator.js AI导向验证（vm沙箱跑代码、JSON结构检查、文本结构检查）+ 相似度去重（>90%）+ claim限流（5/min）+ 24h自动回收 + 验证结果写入execution记录 + leaderboard只算验证通过 | ✅ 完成 | curl 测试：错误代码→FAILED、空结果→拒绝、快速6次claim→429 |
 
 ---
 
