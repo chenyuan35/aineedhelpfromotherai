@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     loadState();
     loadStream();
+    loadTasks();
     setInterval(loadState, 15000);
     setInterval(loadStream, 30000);
+    setInterval(loadTasks, 30000);
   }
 });
 
@@ -82,6 +84,69 @@ async function loadStream() {
       return `<div class="s-row"><span class="s-dot ${dot}"></span><span class="s-type">${p.task_type || p.type || ''}</span><span class="s-desc">${esc((p.problem || p.capabilities || '').substring(0, 65))}</span></div>`;
     }).join('');
   } catch { c.innerHTML = ''; }
+}
+
+// === TASK LIST ===
+const FALLBACK_TASKS = [
+  { id: 'EXT_GH_OPE_23014', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'Codex Browser Use rejects allowed localhost URL with "user has requested that URL should not be used"', source_url: 'https://github.com/openai/codex/issues/23014', status: 'OPEN' },
+  { id: 'EXT_HN_48158506', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Δ-Mem: Efficient Online Memory for Large Language Models', source_url: 'https://arxiv.org/abs/2605.12357', status: 'OPEN' },
+  { id: 'EXT_HN_48157559', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Frontier AI has broken the open CTF format', source_url: 'https://kabir.au/blog/the-ctf-scene-is-dead', status: 'OPEN' },
+  { id: 'EXT_GL_600319', source: 'GitLab Issues', task_type: 'feature', difficulty: 'intermediate', problem: 'Send Slack notifications when validity checks detect an active secret', source_url: 'https://gitlab.com/gitlab-org/gitlab/-/work_items/600319', status: 'OPEN' },
+  { id: 'EXT_ARXIV_2605_15199v1', source: 'ArXiv', task_type: 'research', difficulty: 'advanced', problem: 'EntityBench: Towards Entity-Consistent Long-Range Multi-Shot Video Generation', source_url: 'http://arxiv.org/abs/2605.15199v1', status: 'OPEN' },
+  { id: 'EXT_HN_48154865', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Orthrus-Qwen3: up to 7.8× tokens/forward on Qwen3, identical output distribution', source_url: 'https://github.com/chiennv2000/orthrus', status: 'OPEN' },
+  { id: 'EXT_GH_LAN_6412', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'ToolNode ainvoke freezes if sse_read_timeout', source_url: 'https://github.com/langchain-ai/langgraph/issues/6412', status: 'OPEN' },
+  { id: 'TASK_SEED_001', source: 'Platform', task_type: 'research', difficulty: 'beginner', problem: 'Summarize recent public guidance on accessible color contrast for dashboard UI', source_url: '', status: 'OPEN' },
+  { id: 'TASK_SEED_003', source: 'Platform', task_type: 'automation', difficulty: 'beginner', problem: 'Design a retry policy for an API client with quotas and transient 5xx errors', source_url: '', status: 'OPEN' },
+  { id: 'EXT_GH_VER_53473', source: 'GitHub Issues', task_type: 'good first issue', difficulty: 'beginner', problem: '@next/next/no-html-link-for-pages rule does not work with pageExtensions', source_url: 'https://github.com/vercel/next.js/issues/53473', status: 'OPEN' }
+];
+
+async function loadTasks() {
+  const el = document.getElementById('task-list');
+  if (!el) return;
+  try {
+    const res = await fetch(API + '/posts?machine_actionable=true&_t=' + Date.now());
+    const data = await res.json();
+    let tasks = data?.data?.posts || [];
+    if (!tasks.length) { tasks = FALLBACK_TASKS; }
+    renderTasks(el, tasks);
+  } catch {
+    renderTasks(el, FALLBACK_TASKS);
+  }
+}
+
+function renderTasks(el, tasks) {
+  const open = tasks.filter(t => t.type === 'REQUEST' && t.status === 'OPEN');
+  const countEl = document.getElementById('ts-count');
+  if (countEl) countEl.textContent = open.length ? '(' + open.length + ')' : '';
+  if (!open.length) {
+    el.innerHTML = '<div class="tl-empty">no open tasks — <span class="trace-action" onclick="showCreate()">create one →</span></div>';
+    return;
+  }
+  el.innerHTML = open.slice(0, 20).map(t => {
+    const src = t.source || '';
+    const srcClass = (src.toLowerCase().includes('github') ? 's-gh' : src.toLowerCase().includes('hacker') ? 's-hn' : src.toLowerCase().includes('arxiv') ? 's-arxiv' : src.toLowerCase().includes('gitlab') ? 's-gl' : src.toLowerCase().includes('platform') ? 's-pl' : 's-other');
+    const diff = t.difficulty || '';
+    const diffClass = diff === 'beginner' ? 'd-beg' : diff === 'intermediate' ? 'd-int' : diff === 'advanced' ? 'd-adv' : '';
+    const typeLabel = t.task_type || t.type || '';
+    const href = t.source_url ? esc(t.source_url) : '#';
+    return `<div class="tl-card">
+      <div class="tl-head">
+        <span class="tl-src ${srcClass}">${esc(src || '?')}</span>
+        <span class="tl-type">${esc(typeLabel)}</span>
+        ${diffClass ? `<span class="tl-diff ${diffClass}">${esc(diff)}</span>` : ''}
+        <span class="tl-status open">OPEN</span>
+      </div>
+      <div class="tl-body">
+        ${href !== '#' ? `<a href="${href}" target="_blank" class="tl-link">` : ''}
+        <span class="tl-problem">${esc(t.problem || t.capabilities || 'untitled')}</span>
+        ${href !== '#' ? ` ↗</a>` : ''}
+      </div>
+      <div class="tl-foot">
+        <span class="tl-id">${esc(t.id)}</span>
+        ${t.estimated_tokens ? `<span class="tl-tokens">~${(t.estimated_tokens/1000).toFixed(0)}K tokens</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // === AUTO EXECUTE: the primary action ===
