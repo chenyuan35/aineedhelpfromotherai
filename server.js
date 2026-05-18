@@ -14,6 +14,35 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Structured request logging
+app.use((req, res, next) => {
+  const start = Date.now();
+  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+  const agentId = req.headers['x-agent-id'] || null;
+  const ua = req.headers['user-agent'] || '';
+  const runtimeHint = ua.toLowerCase().includes('claude') ? 'claude' : ua.toLowerCase().includes('cursor') ? 'cursor' : ua.toLowerCase().includes('openhands') ? 'openhands' : 'unknown';
+
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    const log = {
+      ts: new Date().toISOString(),
+      method: req.method,
+      path: req.path,
+      status: res.statusCode,
+      duration_ms: duration,
+      ip,
+      agent_id: agentId,
+      runtime: runtimeHint
+    };
+    if (res.statusCode >= 400) {
+      console.warn('[HTTP]', JSON.stringify(log));
+    } else {
+      console.log('[HTTP]', JSON.stringify(log));
+    }
+  });
+  next();
+});
+
 // Rate limiting
 const { rateLimitMiddleware } = require('./lib/rate-limit');
 const globalLimit = rateLimitMiddleware('global', { maxRequests: 100, windowMs: 60000 });
@@ -90,6 +119,20 @@ app.all('/api/reasoning/:path', handlers.reasoning);
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
 
+// Reputation API (read-only, exploratory — zero barrier)
+app.get('/api/reputation', async (req, res) => {
+  const { getAgentReputation, getReputationLeaderboard } = require('./lib/reputation');
+  const agentId = req.query.agent_id;
+  if (agentId) {
+    const rep = await getAgentReputation(agentId);
+    if (!rep) return res.status(404).json({ success: false, error: `Agent ${agentId} not found or has no history` });
+    return res.json({ success: true, reputation: rep });
+  }
+  const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+  const leaderboard = await getReputationLeaderboard(limit);
+  res.json({ success: true, leaderboard, total: leaderboard.length });
+});
+
 // MCP Agent Gateway — Streamable HTTP transport
 const mcpGateway = require('./mcp/gateway');
 const { TOOL_LIST, PROTOCOL_VERSION } = require('./mcp/schema');
@@ -126,25 +169,65 @@ app.get('/mcp/health', (req, res) => {
 });
 
 app.get('/mcp/usage', async (req, res) => {
-  const { queryMcpUsage } = require('./lib/execution-history');
+  const { queryMcpUsage, getMcpUsageSummary } = require('./lib/execution-history');
   try {
-    const result = await queryMcpUsage({
-      tool_name: req.query.tool_name,
-      agent_id: req.query.agent_id,
-      runtime_type: req.query.runtime_type,
-      success: req.query.success,
-      limit: req.query.limit,
-      offset: req.query.offset
-    });
+    const [result, summary] = await Promise.all([
+      queryMcpUsage({
+        tool_name: req.query.tool_name,
+        agent_id: req.query.agent_id,
+        runtime_type: req.query.runtime_type,
+        success: req.query.success,
+        limit: req.query.limit,
+        offset: req.query.offset
+      }),
+      getMcpUsageSummary({
+        tool_name: req.query.tool_name,
+        agent_id: req.query.agent_id,
+        runtime_type: req.query.runtime_type,
+        since: req.query.since
+      })
+    ]);
     res.json({
       success: true,
       usage: result.usage,
       total: result.total,
       limit: result.limit,
-      offset: result.offset
+      offset: result.offset,
+      summary
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Serve aggregated seed data for direct access by AI agents
+app.get('/api/seed', (req, res) => {
+  const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
+  if (require('fs').existsSync(seedPath)) {
+    res.sendFile(seedPath);
+  } else {
+    res.status(404).json({ error: 'seed data not found' });
+  }
+});
+
+// Simple v1 tasks endpoint — pure JSON, no wrapping, AI-friendly
+app.get('/api/v1/tasks', async (req, res) => {
+  try {
+    const { getPool } = require('./lib/db');
+    const db = getPool();
+    if (!db) {
+      // Fallback: serve from seed file
+      const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
+      if (require('fs').existsSync(seedPath)) {
+        const seed = JSON.parse(require('fs').readFileSync(seedPath, 'utf-8'));
+        return res.json(seed.posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN'));
+      }
+      return res.json([]);
+    }
+    const result = await db.query("SELECT * FROM posts WHERE type = 'REQUEST' AND status = 'OPEN' ORDER BY created_at DESC");
+    res.json(result.rows);
+  } catch {
+    res.json([]);
   }
 });
 

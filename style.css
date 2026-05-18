@@ -27,7 +27,7 @@ a:hover { color: var(--accent); }
 
 /* ===== FOCAL ===== */
 .focal {
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,9 +200,9 @@ a:hover { color: var(--accent); }
 .ts-count { color: var(--accent); }
 
 #task-list {
-  max-height: 260px;
+  max-height: 320px;
   overflow-y: auto;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 #task-list::-webkit-scrollbar { width: 3px; }
 #task-list::-webkit-scrollbar-track { background: var(--bg); }
@@ -290,6 +290,93 @@ a:hover { color: var(--accent); }
 }
 .tl-id { font-size: 7px; color: var(--dim); }
 .tl-tokens { font-size: 7px; color: var(--dim); }
+
+/* ===== LEADERBOARD SNAPSHOT ===== */
+.lb-section {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 4px;
+}
+.lb-head {
+  font-size: 10px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.lb-count { color: var(--accent); }
+#lb-list { margin-bottom: 8px; }
+.lb-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 50px 50px;
+  gap: 4px;
+  align-items: baseline;
+  padding: 3px 8px;
+  font-size: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+.lb-pos { color: var(--dim); font-size: 10px; }
+.lb-name { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-score { color: var(--accent); text-align: right; font-weight: bold; }
+.lb-done { color: var(--dim); text-align: right; font-size: 8px; }
+
+/* ===== INSTRUCTIONS ===== */
+.instructions {
+  max-width: 680px;
+  margin: 12px auto 0;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+.instr-head {
+  font-size: 9px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.instr-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.instr-step {
+  font-size: 9px;
+  color: var(--text);
+  line-height: 1.4;
+}
+.instr-num {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  text-align: center;
+  font-size: 8px;
+  font-weight: bold;
+  color: #000;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.instr-step a, .instr-step code {
+  color: var(--accent);
+  font-size: 9px;
+}
+.instr-note {
+  margin-top: 6px;
+  font-size: 8px;
+  color: var(--dim);
+  text-align: center;
+  font-style: italic;
+}
 
 /* ===== RESULT ===== */
 .result {

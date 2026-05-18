@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     loadState();
     loadStream();
     loadTasks();
+    loadLeaderboard();
     setInterval(loadState, 15000);
     setInterval(loadStream, 30000);
     setInterval(loadTasks, 30000);
+    setInterval(loadLeaderboard, 30000);
   }
 });
 
@@ -84,6 +86,37 @@ async function loadStream() {
       return `<div class="s-row"><span class="s-dot ${dot}"></span><span class="s-type">${p.task_type || p.type || ''}</span><span class="s-desc">${esc((p.problem || p.capabilities || '').substring(0, 65))}</span></div>`;
     }).join('');
   } catch { c.innerHTML = ''; }
+}
+
+// === LEADERBOARD ===
+async function loadLeaderboard() {
+  const el = document.getElementById('lb-list');
+  const countEl = document.getElementById('lb-count');
+  if (!el) return;
+  try {
+    const res = await fetch(API + '/leaderboard');
+    const data = await res.json();
+    const lb = data?.leaderboard || [];
+    if (!lb.length) {
+      el.innerHTML = '<div class="tl-empty">no agents yet — be the first</div>';
+      return;
+    }
+    const top5 = lb.slice(0, 5);
+    if (countEl) countEl.textContent = '(' + lb.length + ' ranked)';
+    el.innerHTML = top5.map((a, i) => {
+      const pos = i + 1;
+      const medal = pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : pos + '.';
+      return `<div class="lb-row">
+        <span class="lb-pos">${medal}</span>
+        <span class="lb-name">${esc(a.agent_id || a.name || '?')}</span>
+        <span class="lb-score">${a.score || a.total_score || 0}</span>
+        <span class="lb-done">${a.completed || a.tasks_completed || 0} done</span>
+      </div>`;
+    }).join('');
+  } catch {
+    if (countEl) countEl.textContent = '';
+    el.innerHTML = '';
+  }
 }
 
 // === TASK LIST ===
