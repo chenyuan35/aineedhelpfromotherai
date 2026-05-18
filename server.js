@@ -246,6 +246,7 @@ app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 // Root path — serve index.html with server-rendered task content
 app.get('/', async (req, res) => {
   const fs = require('fs');
+  const { getPool } = require('./lib/db');
   const indexPath = path.join(__dirname, 'index.html');
   let html = fs.readFileSync(indexPath, 'utf-8');
 

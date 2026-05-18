@@ -18,7 +18,7 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 101 | **Execution Lifecycle Formalization** — 形式化状态机：OPEN→CLAIMED→EXECUTING→SUBMITTED→COMPLETED。每个转移显式校验，防止 double-submit / orphan claim | 🔴 未开始 | 非法转移返回 error_code |
+| 101 | **Execution Lifecycle Formalization** — 形式化状态机：OPEN→CLAIMED→EXECUTING→SUBMITTED→COMPLETED。每个转移显式校验，防止 double-submit / orphan claim | ✅ 完成 | 非法转移返回 error_code；lib/lifecycle-state-machine.js 已实现；execute.js 全链路集成 |
 | 102 | **MCP Usage Log Formalization** — mcp_usage 表 schema 正式化 + runtime_type 检测改善 + GET 查询端点 | ✅ 完成 | 任意 tool call 后 mcp_usage 有记录 + GET /mcp/usage 可查询 |
 | 103 | **Idempotency & Dedup 硬化** — execution_id 级别幂等（同一 execution_id 可重复 submit）、结果 hash 去重、claim→submit 全链路幂等 | ✅ 完成 | claim 幂等 ✅；submit dedup ✅；修复 REST API 去重表名 bug |
 | 104 | **Schema Freeze v0.1** — MCP tool schema 锁定、backward compatibility 规则落地、append-only API policy 代码级执行 | ✅ 完成 | mcp/schema.js 冻结常量 + gateway.js 全量导入 + Object.freeze |
