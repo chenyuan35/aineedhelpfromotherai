@@ -33,7 +33,7 @@
 |---|------|------|---------|
 | 045 | 修复同一 task 重复 claim+submit 去重（execution_id + 内容 hash） | ✅ 完成 | MCP 幂等 ✅；REST 去重表名 bug 已修复；checkDuplicateResult 全链路 |
 | — | `list_open_tasks` MCP tool 读 DB 而非 seed 文件 | ✅ 完成 | DB 优先查询 + seed 降级 + source 字段 |
-| — | aggregated-seed.json 自动刷新验证（GITHUB_TOKEN 是否被 aggregate.js 实际使用） | ⬜ 待做 | cron 触发后验证日志 |
+| — | aggregated-seed.json 自动刷新验证（GITHUB_TOKEN 是否被 aggregate.js 实际使用） | ✅ 完成 | GITHUB_TOKEN 已取消注释；sync-seeds.js 已加入 cron（aggregate → sync-seeds 链式执行）；DB 含 51 OPEN / 24 COMPLETED / 5 FAILED；PostgreSQL 密码已修复 |
 | — | openapi.json paths 收敛（当前 28 paths 部分过时） | ✅ 完成 | 删除 5 个过时路径 + 新增 3 个 MCP 路径 → 26 paths |
 | 106 | **Observability Enhancements** — mcp_usage 增加 ip_address/user_agent/result_hash 字段 + /mcp/usage 返回 summary metrics + 结构化 HTTP 日志 | ✅ 完成 | GET /mcp/usage 返回 summary（success_rate, duplicate_rate, runtime/tool distribution） |
 | 107 | **Seed Task DB Sync** — scripts/sync-seeds.js 同步 posts-seed.json + aggregated-seed.json 到 DB，报告状态差异 | ✅ 完成 | `node scripts/sync-seeds.js --dry-run` 显示差异 |

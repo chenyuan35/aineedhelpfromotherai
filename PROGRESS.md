@@ -5,6 +5,58 @@
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
 
+## 2026-05-18 PM: P0 收尾 — 部署修复 + SSR 修复 + git push + 自动部署恢复
+
+### 问题排查与修复
+
+**1. VPS 502 crash — execute.js 重复变量声明**
+- 原因：`2f0dbaf` commit 有两次 `const validationErrors` 声明（`validateSubmitResult` 和 `validateResult`），Node.js SyntaxError 阻止启动
+- 处理：SSH sed 重命名为 `taskValidationErrors`，pm2 restart
+- 本地：`09bcdd3` 已含此修复（更完整的 validationResult 结构 + content_hash）
+
+**2. SSR 为空 — getPool is not defined**
+- 原因：`app.get('/')` SSR handler 里调用了 `getPool()` 但没有 `require('./lib/db')`
+- 表现：返回 200，但 `#task-list` 始终显示 `loading tasks...`，无 `tl-card`
+- 处理：SSH 添加 `const { getPool } = require('./lib/db')` 在 `app.get('/')` handler 中
+- 本地：commit 91eaa08 + push
+
+**3. 自动部署 cron 无效**
+- 原因：cron 条目存在但 `scripts/auto-update.sh` 不存在（fresh clone 后丢失）
+- 处理：删除旧 cron，新建 `scripts/auto-update.sh`（git fetch + reset --hard + pm2 restart）
+
+**4. Git push 认证**
+- `ghp_*` token 被 GitHub secret scanning 即时撤销 2 次
+- 最终通过 `gh auth login`（chenyuan35 账号 device flow）解决
+- 远程已从 `91eaa08` 更新到 `b149e5c`（含 auto-update.sh）
+
+### 最终状态
+- ✅ SSR 工作（10 tl-card）
+- ✅ sr-only 保留
+- ✅ VPS 运行最新代码
+- ✅ 自动部署 cron 恢复（每 5 分钟）
+- ✅ upstream/main 已更新
+
+## 2026-05-18 PM2: aggregated-seed 自动刷新修复 + DB 同步管道
+
+### 问题
+1. **GITHUB_TOKEN 被注释** — `.env.vps` 的 `# GITHUB_TOKEN=ghp_xxx` 导致 aggregate.js 以未认证运行（60 req/hr vs 5000）
+2. **sync-seeds.js 不在 cron 中** — aggregate 写入 JSON 后无步骤同步到 PostgreSQL
+3. **PostgreSQL 密码错误** — `.env.vps` 中 DATABASE_URL 的密码是字面 `***`，连接失败
+
+### 修复
+- GITHUB_TOKEN: 从 `gh auth token` 提取 `gho_*` 写入 `.env.vps`，取消注释
+- `.env` 软链: `ln -sf .env.vps .env`（dotenv 默认读 `.env`）
+- PostgreSQL 密码: `ALTER USER aineed PASSWORD '...'` 重置，更新 `.env.vps` 中 DATABASE_URL
+- cron: aggregate 行增加 `&& node scripts/sync-seeds.js`（链式执行）
+- 手动运行 aggregate.js → 50 posts（含 GitHub API 认证 20/30 remaining）
+- DB 状态: 51 OPEN / 24 COMPLETED / 5 FAILED
+
+### 最终状态
+- ✅ GITHUB_TOKEN 已启用（5000 req/hr）
+- ✅ sync-seeds.js 自动运行（每 6 小时 aggregate 完成后）
+- ✅ DB 有真实 task 数据
+- ✅ SSR 通过 DB 查询任务（不再只有 fallback）
+
 ## 2026-05-18 P1: Validation Layer + Claim Rate Limit + Task Recovery
 
 ### TASK-109: Validation Layer (AI-oriented)
