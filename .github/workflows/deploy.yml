@@ -8,6 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    if: ${{ secrets.VPS_SSH_KEY != '' && secrets.VPS_HOST != '' && secrets.VPS_USER != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: rsync to VPS
