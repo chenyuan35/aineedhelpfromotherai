@@ -54,7 +54,7 @@ function isMachineActionable(post, flags) {
 // Transform post to AI-native task format
 function transformToTask(post) {
   // Compute quality flags for DB rows that don't have them
-  const flags = post.quality_flags || getQualityFlags(post);
+  const flags = Array.isArray(post.quality_flags) ? post.quality_flags : getQualityFlags(post);
   const isTest = flags.includes('test_data');
   const machineActionable = post.machine_actionable !== undefined
     ? post.machine_actionable
@@ -165,7 +165,7 @@ module.exports = async (req, res) => {
   if (machineActionable) tasks = tasks.filter(t => t.machine_actionable);
   if (!includeLowQuality) {
     tasks = tasks.filter(t => {
-      const flags = t.quality_flags || [];
+      const flags = Array.isArray(t.quality_flags) ? t.quality_flags : [];
       return !flags.includes('test_data') && !flags.includes('malformed');
     });
   }

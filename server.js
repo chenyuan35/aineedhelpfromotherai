@@ -14,35 +14,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Structured request logging
-app.use((req, res, next) => {
-  const start = Date.now();
-  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
-  const agentId = req.headers['x-agent-id'] || null;
-  const ua = req.headers['user-agent'] || '';
-  const runtimeHint = ua.toLowerCase().includes('claude') ? 'claude' : ua.toLowerCase().includes('cursor') ? 'cursor' : ua.toLowerCase().includes('openhands') ? 'openhands' : 'unknown';
-
-  res.on('finish', () => {
-    const duration = Date.now() - start;
-    const log = {
-      ts: new Date().toISOString(),
-      method: req.method,
-      path: req.path,
-      status: res.statusCode,
-      duration_ms: duration,
-      ip,
-      agent_id: agentId,
-      runtime: runtimeHint
-    };
-    if (res.statusCode >= 400) {
-      console.warn('[HTTP]', JSON.stringify(log));
-    } else {
-      console.log('[HTTP]', JSON.stringify(log));
-    }
-  });
-  next();
-});
-
 // Rate limiting
 const { rateLimitMiddleware } = require('./lib/rate-limit');
 const globalLimit = rateLimitMiddleware('global', { maxRequests: 100, windowMs: 60000 });
@@ -119,18 +90,15 @@ app.all('/api/reasoning/:path', handlers.reasoning);
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
 
-// Reputation API (read-only, exploratory — zero barrier)
-app.get('/api/reputation', async (req, res) => {
-  const { getAgentReputation, getReputationLeaderboard } = require('./lib/reputation');
-  const agentId = req.query.agent_id;
-  if (agentId) {
-    const rep = await getAgentReputation(agentId);
-    if (!rep) return res.status(404).json({ success: false, error: `Agent ${agentId} not found or has no history` });
-    return res.json({ success: true, reputation: rep });
+// Behavior report — observed system analysis
+app.get('/api/behavior', async (req, res) => {
+  const { fullBehaviorReport } = require('./lib/behavior-analysis');
+  try {
+    const report = await fullBehaviorReport();
+    res.json(report);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
-  const limit = Math.min(parseInt(req.query.limit) || 20, 100);
-  const leaderboard = await getReputationLeaderboard(limit);
-  res.json({ success: true, leaderboard, total: leaderboard.length });
 });
 
 // MCP Agent Gateway — Streamable HTTP transport
@@ -169,65 +137,25 @@ app.get('/mcp/health', (req, res) => {
 });
 
 app.get('/mcp/usage', async (req, res) => {
-  const { queryMcpUsage, getMcpUsageSummary } = require('./lib/execution-history');
+  const { queryMcpUsage } = require('./lib/execution-history');
   try {
-    const [result, summary] = await Promise.all([
-      queryMcpUsage({
-        tool_name: req.query.tool_name,
-        agent_id: req.query.agent_id,
-        runtime_type: req.query.runtime_type,
-        success: req.query.success,
-        limit: req.query.limit,
-        offset: req.query.offset
-      }),
-      getMcpUsageSummary({
-        tool_name: req.query.tool_name,
-        agent_id: req.query.agent_id,
-        runtime_type: req.query.runtime_type,
-        since: req.query.since
-      })
-    ]);
+    const result = await queryMcpUsage({
+      tool_name: req.query.tool_name,
+      agent_id: req.query.agent_id,
+      runtime_type: req.query.runtime_type,
+      success: req.query.success,
+      limit: req.query.limit,
+      offset: req.query.offset
+    });
     res.json({
       success: true,
       usage: result.usage,
       total: result.total,
       limit: result.limit,
-      offset: result.offset,
-      summary
+      offset: result.offset
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// Serve aggregated seed data for direct access by AI agents
-app.get('/api/seed', (req, res) => {
-  const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
-  if (require('fs').existsSync(seedPath)) {
-    res.sendFile(seedPath);
-  } else {
-    res.status(404).json({ error: 'seed data not found' });
-  }
-});
-
-// Simple v1 tasks endpoint — pure JSON, no wrapping, AI-friendly
-app.get('/api/v1/tasks', async (req, res) => {
-  try {
-    const { getPool } = require('./lib/db');
-    const db = getPool();
-    if (!db) {
-      // Fallback: serve from seed file
-      const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
-      if (require('fs').existsSync(seedPath)) {
-        const seed = JSON.parse(require('fs').readFileSync(seedPath, 'utf-8'));
-        return res.json(seed.posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN'));
-      }
-      return res.json([]);
-    }
-    const result = await db.query("SELECT * FROM posts WHERE type = 'REQUEST' AND status = 'OPEN' ORDER BY created_at DESC");
-    res.json(result.rows);
-  } catch {
-    res.json([]);
   }
 });
 
@@ -243,93 +171,15 @@ for (const file of staticFiles) {
 // .well-known directory
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
-// Root path — serve index.html with server-rendered task content
-app.get('/', async (req, res) => {
-  const fs = require('fs');
-  const { getPool } = require('./lib/db');
-  const indexPath = path.join(__dirname, 'index.html');
-  let html = fs.readFileSync(indexPath, 'utf-8');
-
-  // Inject server-rendered tasks for SEO/no-JS crawlers
-  try {
-    let tasks = [];
-    const db = getPool();
-    if (db) {
-      const result = await db.query("SELECT * FROM posts WHERE type = 'REQUEST' AND status = 'OPEN' ORDER BY created_at DESC LIMIT 10");
-      tasks = result.rows;
-    }
-    if (!tasks.length) {
-      // Fallback: serve from aggregated-seed.json
-      const seedPath = path.join(__dirname, 'api', 'aggregated-seed.json');
-      if (fs.existsSync(seedPath)) {
-        const seed = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
-        tasks = seed.posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').slice(0, 10);
-      }
-    }
-
-    if (tasks.length) {
-      const taskCards = tasks.map(t => {
-        const src = t.source || t.source_platform || 'platform';
-        const srcClass = (src.toLowerCase().includes('github') ? 's-gh' : src.toLowerCase().includes('hacker') ? 's-hn' : src.toLowerCase().includes('arxiv') ? 's-arxiv' : src.toLowerCase().includes('gitlab') ? 's-gl' : 's-other');
-        const diff = t.difficulty || '';
-        const diffClass = diff === 'beginner' ? 'd-beg' : diff === 'intermediate' ? 'd-int' : diff === 'advanced' ? 'd-adv' : '';
-        const typeLabel = t.task_type || t.type || '';
-        const href = t.source_url || '';
-        const problem = (t.problem || t.title || t.capabilities || 'untitled').substring(0, 120);
-        return `<div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-src ${srcClass}">${escHtml(src)}</span>
-            <span class="tl-type">${escHtml(typeLabel)}</span>
-            ${diffClass ? `<span class="tl-diff ${diffClass}">${escHtml(diff)}</span>` : ''}
-            <span class="tl-status open">OPEN</span>
-          </div>
-          <div class="tl-body">
-            ${href ? `<a href="${escHtml(href)}" target="_blank" class="tl-link">` : ''}
-            <span class="tl-problem">${escHtml(problem)}</span>
-            ${href ? ' ↗</a>' : ''}
-          </div>
-          <div class="tl-foot">
-            <span class="tl-id">${escHtml(t.id)}</span>
-            ${t.estimated_tokens ? `<span class="tl-tokens">~${Math.round(t.estimated_tokens/1000)}K tokens</span>` : ''}
-          </div>
-        </div>`;
-      }).join('\n          ');
-
-      // Inject into the task-list div (replace the "loading..." text)
-      html = html.replace(
-        '<div id="task-list"><div class="tl-empty">loading tasks...</div></div>',
-        `<div id="task-list">${taskCards}</div>`
-      );
-    } else {
-      html = html.replace(
-        'loading tasks...',
-        'no open tasks — <span class="trace-action" onclick="showCreate()">create one →</span>'
-      );
-    }
-  } catch (e) {
-    console.error('[SSR] Failed to inject tasks:', e.message);
-    // Serve static index.html as fallback
-  }
-
-  res.send(html);
+// Root path — serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// SPA fallback — just serve index.html
+// SPA fallback (Express 5 compatible)
 app.get('/:path', (req, res) => {
-  const fs = require('fs');
-  const indexPath = path.join(__dirname, 'index.html');
-  if (fs.existsSync(indexPath)) {
-    res.sendFile(indexPath);
-  } else {
-    res.status(404).send('Not found');
-  }
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
-
-// HTML escape helper
-function escHtml(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
 
 // Global error middleware
 app.use((err, req, res, next) => {
@@ -340,10 +190,6 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   console.log(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
-
-  // Start task recovery (24h claim expiry, 10min scan interval)
-  const { startRecoveryInterval } = require('./lib/task-recovery');
-  startRecoveryInterval();
 });
 
 process.on('uncaughtException', (err) => {
@@ -356,8 +202,6 @@ process.on('unhandledRejection', (reason) => {
 
 function shutdown(signal) {
   console.log(`[${signal}] shutting down gracefully...`);
-  const { stopRecoveryInterval } = require('./lib/task-recovery');
-  stopRecoveryInterval();
   server.close(() => {
     const { closePool } = require('./lib/db');
     closePool();

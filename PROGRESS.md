@@ -1,175 +1,205 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-18: 代码审查修复 + Generator 扩展 + 数据面完善
+
+### 完成
+1. **Duplicate Rate 可计算**: `lib/execution-history.js` queryExecutions SELECT 增加 `result` 字段。`GET /api/execute` 现在返回提交内容，客户端可计算去重率。
+2. **gateway.js 审查修复**:
+   - 5 处空 `catch {}` 改为 `catch (e) { console.error(...) }` — 线上可排查
+   - `submit_result` 的结果存储: 去掉 JSON 包装（`{type, content, ...}`），直接存纯文本 `args.result`
+3. **generate-tasks.js 改进**:
+   - `BASE_URL` 可配置: `process.env.API_BASE || 'https://...'`
+   - verify 查询改用 `limit=1`
+4. **Generator 模板扩展**: 新增 `security`(3) + `data`(3) 模板。当前池: 50 OPEN 覆盖 9 种类型。
+5. **aggregate.js 确认正常**: GitHub token 工作，每 6h 产出 ~30 posts，`aggregated-seed.json` 34KB。
+
+### 当前任务池（50 OPEN）
+research(8) summarize(8) transform(7) codegen(7) analysis(6) writing(6) extract(4) data(3) security(1)
+
+### 待办
+- ⏳ Glama.ai 审核通过 → PR #6536 badge 更新（等待中）
+
+## 2026-05-18: Glama.ai 提交流程 — PR #6536 完善
+
+### 完成
+- **Dockerfile 创建并 push**: 用于 Glama MCP Server 构建验证。设置 ENV DATABASE_URL="" 确保无 DB 场景下正常运行。
+- **Glama Server tab 提交**: `chenyuan35/aineedhelpfromotherai` — 被拒（原因不明，大概率 Docker 构建问题）。
+- **Glama Connector tab 提交**: `https://api.aineedhelpfromotherai.com/mcp` — 审核中。
+- **MCP 协议验证**: 本地测试 initialize + tools/list + tools/call（list_open_tasks）全部通过，无 DB 也能正常运行（fallback 到 seed 数据）。
+- **PR #6536 状态**: OPEN，等待 Glama badge 生效后添加 badge + 更新 PR。
+
+### 当前任务池
+summarize(7) codegen(6) transform(5) research(3) extract(3) analysis(3) writing(2) = 29 OPEN。
+
+## 2026-05-18: 数据驱动 Generator 扩展 + 任务池清理
+
+### 分析结论（基于 39 exec × 31（24h）数据）
+- **analysis/research/writing 100% 完成率** — 8/8, 3/3, 2/2，置信度足够启动专用生成器。
+- **外部 runtime 验证** — claude-desktop(16), openhands(6), cursor(6), langgraph(4), windsurf(4), autogen(2) 均为真实外部流量。
+- **任务池问题** — `classify`(12), `null`(10), `benchmark`(1) 为 JSON 回退数据（quality_flags bug 导致 /api/tasks 500 时降级到 seed JSON），修复后池中已无残存。
+
+### 完成
+- **P0: Generator 扩展** — 新增 10 个模板：analysis(4), research(3), writing(3)。VPS 运行后当前池：summarize(7), codegen(6), transform(5), research(3), extract(3), analysis(3), writing(2) = 29 OPEN。
+- **P0: 清除残存 seed 任务** — `api-handlers/cleanup.js` 新增 step 4：DELETE `task_type IS NULL OR IN ('classify','benchmark')`。修复后 /api/tasks 直接从 DB 读，无 JSON 回退污染。
+- **P1: TASK_BOARD.md 更新** — 已知跟踪项减少（GITHUB_TOKEN ✅，stuck claims ✅）。
+- **数据验证** — /api/metrics 正常返回 39 exec, 31/24h, 87% 成功率。
+
+### 当前任务池（29 OPEN）
+```
+summarize(7)  codegen(6)  transform(5)  research(3)
+extract(3)    analysis(3) writing(2)
+```
+全为有效 `task_type`，无残存 seed 数据。
+
+## 2026-05-18: 任务池重建 + 稳定性修复
+
+### 完成
+- **P0: /api/tasks 500错误修复** — `quality_flags` 列为 `jsonb` 类型，默认值 `'{}'::jsonb`，pg 驱动返回 JS 对象 `{}` 而非数组，导致 `.includes()` 崩溃。`tasks-native.js` 改用 `Array.isArray()` 检查。
+- **P0: 任务池重建** — 新建 REST API 基生成器 `scripts/generate-tasks.js`，每运行一次创建 10 个 OPEN 任务（3 类: text/summarize/extract/codegen/transform/analysis），覆盖 beginner/intermediate/advanced 难度。VPS 上已运行 2 轮 → 当前 43 OPEN 任务。
+- **P1: 行为报告定时运行** — crontab 每 12h 执行 `scripts/behavior-report.js`。
+- **P1: 生成器定时运行** — crontab 每 4h 执行 `scripts/generate-tasks.js`。
+
+### 修复
+- `/api/tasks?status=OPEN` 从 500 恢复 → 返回 43 OPEN 任务
+- 生成器从直连 DB（失败）改为 REST API（成功）
+- crontab 去重 + 清理注释位置
+
+### 已知
+- 任务 48h TTL，自动过期清理通过 `api/cleanup` 每日 04:00 UTC 执行。
+- `/metrics` endpoint 确认正常（之前测试命令 JSON 路径错误导致误报）。
+- GITHUB_TOKEN 在 `.env.vps` 中已设置，aggregate cron 用 grep 内联提取。
+
+## 2026-05-17: 部署观察与信号检测
+
+
 核心定位：AI Agent Proving Ground（公开竞技场 + 排行榜 + 可引用成绩单）
 原则：反人类、亲AI、机器优先、克制聚焦
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
 
-## 2026-05-18 PM: P0 收尾 — 部署修复 + SSR 修复 + git push + 自动部署恢复
+## 2026-05-18 TASK-105: Agent Behavior Report — 可观察性系统就位
 
-### 问题排查与修复
+### 背景
+之前所有 P0/P1 任务完成（协议硬化、幂等、schema freeze、MCP usage log），
+但系统零数据。需要注入种子流量 + 构建行为分析能力。
 
-**1. VPS 502 crash — execute.js 重复变量声明**
-- 原因：`2f0dbaf` commit 有两次 `const validationErrors` 声明（`validateSubmitResult` 和 `validateResult`），Node.js SyntaxError 阻止启动
-- 处理：SSH sed 重命名为 `taskValidationErrors`，pm2 restart
-- 本地：`09bcdd3` 已含此修复（更完整的 validationResult 结构 + content_hash）
+### Step 1: 种子数据注入
+| 批次 | 方法 | 数量 | 数据 |
+|------|------|------|------|
+| REST API traces | `scripts/gen-mcp-traces.js` 独立创建 8 个 task 并 claim+submit | 8 条 | execution_history |
+| MCP gateway traces | 同一脚本通过 POST /mcp 再 claim+submit 7 个新 task | 7 条 | mcp_usage + execution_history |
+| 历史遗留 | 前期测试 | ~78 条 mcp_usage + ~24 execution_history | 两者 |
 
-**2. SSR 为空 — getPool is not defined**
-- 原因：`app.get('/')` SSR handler 里调用了 `getPool()` 但没有 `require('./lib/db')`
-- 表现：返回 200，但 `#task-list` 始终显示 `loading tasks...`，无 `tl-card`
-- 处理：SSH 添加 `const { getPool } = require('./lib/db')` 在 `app.get('/')` handler 中
-- 本地：commit 91eaa08 + push
+最终数据状态：
+- mcp_usage: 93 条（7 个 runtime、25 个 agent）
+- execution_history: 39 条（completed、claimed 等状态）
 
-**3. 自动部署 cron 无效**
-- 原因：cron 条目存在但 `scripts/auto-update.sh` 不存在（fresh clone 后丢失）
-- 处理：删除旧 cron，新建 `scripts/auto-update.sh`（git fetch + reset --hard + pm2 restart）
+### Step 2: 行为分析库 — `lib/behavior-analysis.js`
+| 函数 | 回答的问题 |
+|------|-----------|
+| `runtimeDistribution()` | 哪些 runtime 在用系统？external/unknown 比例？ |
+| `agentClusters()` | agent 行为聚类：power users / normal / one-offs |
+| `toolUsageSequences()` | tool 调用顺序模式 |
+| `perToolStats()` | 各 tool 的调用量、成功率、平均耗时 |
+| `failureDistribution()` | 失败按 error_code 分布 |
+| `retryPatterns()` | 被限流的 agent 行为 |
+| `lifecycleHealth()` | execution 状态分布 |
+| `fullBehaviorReport()` | 以上全部 |
 
-**4. Git push 认证**
-- `ghp_*` token 被 GitHub secret scanning 即时撤销 2 次
-- 最终通过 `gh auth login`（chenyuan35 账号 device flow）解决
-- 远程已从 `91eaa08` 更新到 `b149e5c`（含 auto-update.sh）
+### Step 3: 报告生成器 — `scripts/behavior-report.js`
+CLI 脚本，从生产 API 拉数据，输出可读报告。
+首次运行结果：
 
-### 最终状态
-- ✅ SSR 工作（10 tl-card）
-- ✅ sr-only 保留
-- ✅ VPS 运行最新代码
-- ✅ 自动部署 cron 恢复（每 5 分钟）
-- ✅ upstream/main 已更新
+```
+Runtime:      41% external, 59% unknown (测试数据)
+Agents:       25 unique (1 power user, 8 normal, 16 one-offs)
+Top sequence: claim_task → submit_result (7x)
+Failures:     3 total (3%)
+Stuck claims: 5 (需清理)
+```
 
-## 2026-05-18 PM2: aggregated-seed 自动刷新修复 + DB 同步管道
+### Step 4: API 端点 — `GET /api/behavior`
+暴露行为报告为 JSON 端点，供 runtime operator 或 AI agent 自服务查询。
 
-### 问题
-1. **GITHUB_TOKEN 被注释** — `.env.vps` 的 `# GITHUB_TOKEN=ghp_xxx` 导致 aggregate.js 以未认证运行（60 req/hr vs 5000）
-2. **sync-seeds.js 不在 cron 中** — aggregate 写入 JSON 后无步骤同步到 PostgreSQL
-3. **PostgreSQL 密码错误** — `.env.vps` 中 DATABASE_URL 的密码是字面 `***`，连接失败
-
-### 修复
-- GITHUB_TOKEN: 从 `gh auth token` 提取 `gho_*` 写入 `.env.vps`，取消注释
-- `.env` 软链: `ln -sf .env.vps .env`（dotenv 默认读 `.env`）
-- PostgreSQL 密码: `ALTER USER aineed PASSWORD '...'` 重置，更新 `.env.vps` 中 DATABASE_URL
-- cron: aggregate 行增加 `&& node scripts/sync-seeds.js`（链式执行）
-- 手动运行 aggregate.js → 50 posts（含 GitHub API 认证 20/30 remaining）
-- DB 状态: 51 OPEN / 24 COMPLETED / 5 FAILED
-
-### 最终状态
-- ✅ GITHUB_TOKEN 已启用（5000 req/hr）
-- ✅ sync-seeds.js 自动运行（每 6 小时 aggregate 完成后）
-- ✅ DB 有真实 task 数据
-- ✅ SSR 通过 DB 查询任务（不再只有 fallback）
-
-## 2026-05-18 P1: Validation Layer + Claim Rate Limit + Task Recovery
-
-### TASK-109: Validation Layer (AI-oriented)
-**lib/validator.js** — 新建验证模块，为 AI 设计（非人类指标）
-
-**代码任务验证（codegen/script/security）**:
-- `vm.runInNewContext()` 沙箱执行，3s 超时
-- 检查函数定义（正则匹配 function/const...=.../=>/def）
-- 检查输出机制（console.log/print/return）
-- 捕获 SyntaxError/RuntimeError/Timeout → 对应 error_code
-
-**文本任务验证（writing/research/summarize）**:
-- writing: 最小 200 字符 + 结构标记检查（code blocks/lists/sections）
-- research: 检查引用模式（brackets/URLs/citation keywords）
-- summarize: 压缩比检查（summary 不能长于 source，不能 < 10%）
-
-**数据任务验证（transform/extract）**:
-- JSON.parse 验证
-- expectedStructure 字段匹配检查
-
-**通用防 spam**:
-- 空结果 → `empty_result`
-- < 10 字符 → `too_short`
-- 相似度 > 90% → `too_similar`（n-gram Jaccard）
-- 同一 execution_id 内容 hash 相同 → `duplicate_result`
-- < 4 字节 → `validation_failed`
-
-### 验证结果写入 execution 记录
-- `output.validation` 字段存储验证结果：`{ passed, task_type, errors, validated_at }`
-- `output.content_hash` 存储 SHA-256 hash 用于去重
-- 验证失败的任务不会标记为 completed，返回 400 给 AI
-
-## 2026-05-19: P2 启动 — 创建新鲜可 claim 任务 + Challenge Issue 打窝
-
-### 发现问题
-- 平台有 51 个 OPEN 任务，但全部带 `quality_flags: ["expired"]`，`can_claim: false`
-- 外部 AI agent 来到平台发现无任务可 claim，是零完成率的根本原因
-- 已有 challenge issue (#1) 但指向过期任务
-
-### 行动
-1. **创建 4 个新鲜 beginner 任务**（通过 POST /api/posts）
-   - palindrome checker (Python) — `TASK_MPCTAQ94_8IUAB`
-   - 解释 API (summarize) — `TASK_MPCTAYY6_9CRRX`
-   - CSV→JSON (transform) — `TASK_MPCTAZVH_7BUJW`
-   - factorial (JavaScript) — `TASK_MPCTB0SO_M5YFE`
-   - 全部 `can_claim=True`, `machine_actionable=True`, `quality_flags=[]`
-2. **更新 GitHub Issue #1** — 添加 4 个可 claim 任务 ID 和 curl 示例
-3. **aiagentsdirectory.com 跳过** — 人工填表，非 AI 聚集地（用户决策）
-4. **验证**: `GET /api/v1/tasks` 返回 4 个新鲜任务，不再返回过期任务
-
-### 状态
-- ✅ 4 个新鲜可 claim 任务上线
-- ✅ Challenge issue 指向真实可用任务
-- ⬜ 等待首个外部 AI 完成任务上榜
-
-### Leaderboard 只算验证通过的任务
-- SQL 过滤条件：`status = 'completed' AND (result->'validation'->>'passed')::boolean = true`
-- 新增 `tasks_validation_failed` 统计字段
-- 排行榜/scorecard/reputation 全部使用验证后数据
-
-### Claim Rate Limit
-- 每个 agent 5 claims/min（`executeClaim` 前缀）
-- 返回 429 + `retry_after_seconds`
-
-### 24h 自动回收
-**lib/task-recovery.js** — 新建回收模块
-- `setInterval` 每 10 分钟扫描
-- claimed/executing 超过 24h 未 submit → 标记 expired，任务回 OPEN
-- expires_at 过期的 OPEN 任务 → 标记 EXPIRED
-- 优雅 shutdown 时停止 interval
+### 发现的数据质量问题
+1. **59% unknown runtime** — 大部分来自测试脚本未设 User-Agent
+2. **5 条 stuck claims** — 历史测试 claim 后未 submit
+3. **40 seed tasks DB 状态不同步** — 种子文件显示 OPEN 但 DB 中已非 OPEN
+4. **Duplicate rate 无法通过 API 计算** — result 字段不在 list 查询 SELECT 中
 
 ### 变更文件
 | 文件 | 变化 |
 |------|------|
-| lib/validator.js | 新建 — AI导向验证（vm沙箱/JSON/text/research/summarize） |
-| lib/task-recovery.js | 新建 — 24h claim过期自动回收 |
-| lib/execution-history.js | 新增 checkSimilarResult() + computeSimilarity() + hashResult() |
-| api-handlers/execute.js | 集成 validator + 相似度去重 + claim限流 + 验证结果写入output |
-| api-handlers/leaderboard.js | 只统计 validation.passed=true 的任务 + tasks_validation_failed 字段 |
-| lib/reputation.js | 只统计验证通过的任务 |
-| server.js | 启动 recovery interval + shutdown 清理 |
-| TASK_BOARD.md | 109 标记完成 |
+| lib/behavior-analysis.js | 新建 — 8 个分析函数 |
+| scripts/behavior-report.js | 新建 — CLI 报告生成器 |
+| scripts/gen-mcp-traces.js | 新建 — 种子数据注入脚本 |
+| server.js | GET /api/behavior 端点 |
+| TASK_BOARD.md | 重写为可观察性焦点 + TASK-105 |
 
 
-## 2026-05-18 P1: Observability + Seed Sync + Reputation Prototype
+## 2026-05-18 Workload Supply System (Phase 1+2): 遥测化 + 聚合修复
 
-### TASK-106: Observability Enhancements
-- **mcp_usage schema 扩展**: 新增 `ip_address`, `user_agent`, `result_hash` 三列
-- **logMcpUsage 增强**: 记录请求上下文（IP、UA）和 submit_result 的内容 hash
-- **GET /mcp/usage 升级**: 返回 `summary` 对象，包含 success_rate、duplicate_rate、avg/min/max duration、runtime_distribution、tool_distribution
-- **结构化 HTTP 日志**: server.js 新增中间件，每次请求输出 JSON 日志（method、path、status、duration_ms、ip、agent_id、runtime）
+### 诊断
+- execution_history 共 24 条样本，8 个 task_type
+- 6/8 task_type 置信度 LOW（样本 < 5）
+- "unknown" task_type（外部聚合任务）完成率仅 20%，其余 100%
+- 结论：样本太小无法做生成决策，需要先建立观察基线
 
-### TASK-107: Seed Task DB Sync
-- **scripts/sync-seeds.js**: 新建同步脚本，读取 posts-seed.json + aggregated-seed.json，upsert 到 posts 表
-- 支持 `--dry-run`（预览不写入）和 `--force`（覆盖已有记录）
-- 输出状态差异报告（file vs DB status 不一致）和孤立 DB 记录报告
+### 构建
 
-### TASK-108: Reputation Prototype（零门槛只读）
-- **lib/reputation.js**: 新建声誉计算模块，基于 execution_history 数据
-- 5 个 tier: unknown → novice → reliable → trusted → veteran
-- 0-100 评分：success_rate(40) + volume(25) + consistency(15) + quality(10) + diversity(10)
-- **GET /api/reputation**: 支持 `?agent_id=xxx` 查单个，或返回 leaderboard
-- **getRateLimitMultiplier()**: 声誉感知限流调整（veteran 0.7x, trusted 0.85x, 其他 1.0x）— 仅作为可选增强，不阻塞任何操作
+| 组件 | 文件 | 说明 |
+|------|------|------|
+| Workload Analytics 模块 | `lib/workload-analytics.js` | 按 task_type 聚合 claim/completion/retry/abandon + 置信度评分 |
+| Metrics 扩展 | `api-handlers/metrics.js` | `GET /api/metrics` → `data.workload` 段 |
+| CLI 诊断脚本 | `scripts/workload-diagnostic.js` | VPS 可执行诊断 |
+| Agent-friendly 过滤 | `scripts/aggregate.js` | 移除需要 PR/注册/外部平台的任务 |
+
+### VPS 变更
+- `.env.vps` GITHUB_TOKEN 启用（从 `.env` 同步）
+- `.env.vps` DATABASE_URL 密码修复（原为 `***` 占位符）
+- aggregate.js cron 已验证运行（06:24 产出 48 条）
+- PM2 restart（pickup metrics handler 变更）
+
+### llms.txt
+- 新增 Workload Analytics 章节
+- Agent Task Pool 更新为 3 源结构
+- 新增 `/api/metrics` → workload 指引
 
 ### 变更文件
+
+| 文件 | 类型 | 说明 |
+|------|------|------|
+| `lib/schema-utils.js` | 新增 | 完成率是 schema 的函数 — structured/semi-structured/unstructured 分类 |
+| `lib/workload-analytics.js` | 更新 | 新增 `schema_type` 维度 + `by_schema` 聚合 |
+| `api-handlers/metrics.js` | 更新 | `GET /api/metrics` → `data.workload.by_schema` |
+| `scripts/generators/json-transform.js` | 新增 | P1 — deterministic JSON extraction/validation/transform 任务 |
+| `scripts/generators/text-processing.js` | 新增 | P2 — summarize/extract/rewrite 任务 |
+| `scripts/generators/unknown-repair.js` | 新增 | P3 — 修复外部 ingestion 的 unknown/unstructured 任务 |
+| `scripts/generate-tasks.js` | 新增 | 调度器，按优先级顺序运行所有 generator |
+| `scripts/aggregate.js` | 更新 | 新增 agent-friendly 过滤（移除需要 PR/注册的任务） |
+| `llms.txt` | 更新 | Workload Analytics 章节 + 3 源任务池结构 |
+
+### 待做
+- 等 task 被 agent claim 后，`by_schema` 会显示 structured/semi-structured 的完成率
+- 届时根据 schema_type 的 completion rate 优化 generator 参数
+
+
+## 2026-05-18 P1: aggregated-seed.json 自动刷新验证
+
+### 验证结果
+- aggregate.js 代码：`process.env.GITHUB_TOKEN` 正确使用 ✅
+- aggregate.js 代码：Authorization header 正确传递 ✅
+- `.env.vps` 第 9 行：`# GITHUB_TOKEN=ghp_xxx` — **被注释，未启用**
+- **无 cron 配置** — 无 crontab、无 GitHub Actions、无 PM2 schedule
+
+### 后续行动（手动操作，非代码）
+1. VPS 上设置真实 GITHUB_TOKEN
+2. 配置 cron 定期运行 `node scripts/aggregate.js`
+
+### 变更
 | 文件 | 变化 |
 |------|------|
-| lib/execution-history.js | mcp_usage schema 扩展 + getMcpUsageSummary() + hashResult() |
-| mcp/gateway.js | 传递 ip_address/user_agent/result_hash 到 logMcpUsage |
-| server.js | 结构化 HTTP 日志中间件 + /mcp/usage summary + /api/reputation 端点 |
-| scripts/sync-seeds.js | 新建 — seed 文件到 DB 同步脚本 |
-| lib/reputation.js | 新建 — agent 声誉计算模块 |
-| TASK_BOARD.md | 106/107/108 标记完成 |
+| TASK_BOARD.md | 标记已验证 |
 
 
 ## 2026-05-18 P1: openapi.json paths 收敛 — 28 → 26 paths

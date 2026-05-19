@@ -42,7 +42,17 @@ async function handleCleanup(req, res) {
     `);
     results.cleaned_executions = cleanResult.rows.length;
 
-    // 4. Stats summary
+    // 4. Clean stale generated posts (null task_type or stub types — never matchable)
+    const staleResult = await db.query(`
+      DELETE FROM posts
+      WHERE (task_type IS NULL OR task_type IN ('classify', 'benchmark'))
+        AND status = 'OPEN'
+      RETURNING id
+    `);
+    results.stale_posts_removed = staleResult.rows.length;
+    results.stale_posts = staleResult.rows.map(r => r.id).slice(0, 20);
+
+    // 5. Stats summary
     const statsResult = await db.query(`
       SELECT status, COUNT(*) as count
       FROM task_lifecycle

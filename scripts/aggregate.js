@@ -481,8 +481,54 @@ async function main() {
     return null;
   }
 
+  // --- Agent-friendly filter: only keep fully self-contained tasks ---
+  // Agent-friendly = no external accounts, no PR submission, no registration, no human review
+  // Reason: AI agents cannot reliably execute tasks that require platform-specific actions
+  function isAgentFriendly(post) {
+    const instructions = (post.ai_instructions || '').toLowerCase();
+    const body = ((post.problem || '') + ' ' + (post.expected_output || '')).toLowerCase();
+
+    // These patterns indicate the task requires external platform interaction
+    const externalActionPatterns = [
+      'submit a pull request', 'submit a merge request', 'submit a pr',
+      'submit via pull request', 'submit a fix via pull request',
+      'register', 'create an account', 'sign up', 'log in',
+      'create a merge request', 'open a pull request', 'send a pr',
+      'contribute to the repo', 'fork the repository',
+      'deploy to', 'publish to',
+      'aws console', 'gcp console', 'azure portal',
+      'manual approval', 'human review', 'wait for review',
+      'submit the result via the source platform',
+    ];
+
+    const containsExternalAction = externalActionPatterns.some(p => {
+      if (instructions.includes(p)) return true;
+      if (body.includes(p)) return true;
+      return false;
+    });
+
+    if (containsExternalAction) return { reason: 'requires_external_action' };
+
+    // For GitHub/GitLab issues specifically: most require code changes + PR
+    // Only keep if ai_instructions clearly says "analyze" or "extract" (not "implement")
+    if (post.source === 'GitHub Issues' || post.source === 'GitLab Issues') {
+      const analysisPatterns = ['analyze', 'extract', 'classify', 'summarize', 'read', 'understand'];
+      const isReadOnly = analysisPatterns.some(p => instructions.includes(p));
+      const isImplementation = instructions.includes('implement') || instructions.includes('write code') || instructions.includes('fix');
+
+      if (!isReadOnly && isImplementation) return { reason: 'requires_implementation' };
+      // If it only says "implement" without "analyze", it's not self-contained
+      if (isImplementation && !isReadOnly) return { reason: 'requires_implementation' };
+      // If instructions are generic (no clear read-only action), also filter out
+      if (!isReadOnly && instructions.length < 50) return { reason: 'generic_issue_no_clear_action' };
+    }
+
+    return null; // pass: agent-friendly
+  }
+
   const filteredOut = [];
-  const filteredPosts = allPosts.filter(post => {
+  let agentFilteredOut = [];
+  let filteredPosts = allPosts.filter(post => {
     const quality = isLowQuality(post);
     if (quality) {
       filteredOut.push({ id: post.id, reason: quality.reason, source: post.source });
@@ -491,9 +537,24 @@ async function main() {
     return true;
   });
 
+  // Apply agent-friendly filter
+  agentFilteredOut = [];
+  filteredPosts = filteredPosts.filter(post => {
+    const friendly = isAgentFriendly(post);
+    if (friendly) {
+      agentFilteredOut.push({ id: post.id, reason: friendly.reason, source: post.source });
+      return false;
+    }
+    return true;
+  });
+
   if (filteredOut.length > 0) {
     console.log(`\nQuality filter: removed ${filteredOut.length} low-quality posts:`);
     filteredOut.forEach(f => console.log(`  ${f.id} (${f.source}): ${f.reason}`));
+  }
+  if (agentFilteredOut.length > 0) {
+    console.log(`\nAgent-friendly filter: removed ${agentFilteredOut.length} non-self-contained posts:`);
+    agentFilteredOut.forEach(f => console.log(`  ${f.id} (${f.source}): ${f.reason}`));
   }
 
   // Merge: filtered fresh + existing non-fetched
@@ -574,7 +635,8 @@ async function main() {
   const arxivCount = filteredPosts.filter(p => p.source === 'ArXiv').length;
   const glCount = filteredPosts.filter(p => p.source === 'GitLab Issues').length;
   const ghCount = filteredPosts.filter(p => p.source === 'GitHub Issues').length;
-  console.log(`\n=== Done: ${posts.length} posts after filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} filtered out) ===`);
+  const removedTotal = filteredOut.length + agentFilteredOut.length;
+  console.log(`\n=== Done: ${posts.length} posts after filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${removedTotal} filtered: ${filteredOut.length} quality + ${agentFilteredOut.length} non-agent-friendly) ===`);
   console.log(`Difficulty: ${JSON.stringify(byDifficulty)}`);
   console.log(`Sources: ${allSources.map(s => s.name).join(', ')}`);
   console.log(`Written to: ${SEED_PATH}`);

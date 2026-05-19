@@ -1,8 +1,10 @@
 // /api/metrics — Runtime statistics for AI dashboard consumption
 // Queries PostgreSQL for execution stats, task lifecycle, provider breakdown
+// Includes workload analytics: task-type performance model with confidence scoring
 
 const { queryExecutions, queryTaskLifecycle } = require('../lib/execution-history');
 const { getPool } = require('../lib/db');
+const { getWorkloadAnalytics } = require('../lib/workload-analytics');
 
 async function getMetrics(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -83,6 +85,9 @@ async function getMetrics(req, res) {
       FROM execution_history
     `);
 
+    // 7. Workload analytics — task-type performance model with confidence
+    const workload = await getWorkloadAnalytics();
+
     // Compute derived metrics
     const stats = execStats.rows[0] || {};
     const total = parseInt(stats.total_executions) || 0;
@@ -135,7 +140,18 @@ async function getMetrics(req, res) {
         lifecycle_distribution: lifecycleStats.rows.map(r => ({
           status: r.status,
           count: parseInt(r.count)
-        }))
+        })),
+        workload: workload.available ? {
+          available: true,
+          task_types: workload.task_types,
+          by_schema: workload.by_schema,
+          time_window: workload.time_window,
+          total_samples: workload.total_samples,
+          meta: workload.meta
+        } : {
+          available: false,
+          reason: workload.reason
+        }
       },
       meta: {
         endpoint: '/api/metrics',
