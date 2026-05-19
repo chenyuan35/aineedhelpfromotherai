@@ -26,10 +26,11 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
-          ARGS: "-avz --exclude node_modules --exclude .git --exclude .env.* --exclude '*.local'"
+          ARGS: "-avz -e 'ssh -p 2222' --exclude node_modules --exclude .git --exclude .env.* --exclude '*.local'"
           SOURCE: "."
           REMOTE_HOST: ${{ secrets.VPS_HOST }}
           REMOTE_USER: ${{ secrets.VPS_USER }}
+          REMOTE_PORT: 2222
           TARGET: /opt/aineedhelpfromotherai/
       - name: npm install & restart
         uses: appleboy/ssh-action@v1.0.3
@@ -37,6 +38,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 2222
           script: |
             cd /opt/aineedhelpfromotherai
             npm install --production
