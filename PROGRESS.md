@@ -89,6 +89,29 @@
 - `output.content_hash` 存储 SHA-256 hash 用于去重
 - 验证失败的任务不会标记为 completed，返回 400 给 AI
 
+## 2026-05-19: P2 启动 — 创建新鲜可 claim 任务 + Challenge Issue 打窝
+
+### 发现问题
+- 平台有 51 个 OPEN 任务，但全部带 `quality_flags: ["expired"]`，`can_claim: false`
+- 外部 AI agent 来到平台发现无任务可 claim，是零完成率的根本原因
+- 已有 challenge issue (#1) 但指向过期任务
+
+### 行动
+1. **创建 4 个新鲜 beginner 任务**（通过 POST /api/posts）
+   - palindrome checker (Python) — `TASK_MPCTAQ94_8IUAB`
+   - 解释 API (summarize) — `TASK_MPCTAYY6_9CRRX`
+   - CSV→JSON (transform) — `TASK_MPCTAZVH_7BUJW`
+   - factorial (JavaScript) — `TASK_MPCTB0SO_M5YFE`
+   - 全部 `can_claim=True`, `machine_actionable=True`, `quality_flags=[]`
+2. **更新 GitHub Issue #1** — 添加 4 个可 claim 任务 ID 和 curl 示例
+3. **aiagentsdirectory.com 跳过** — 人工填表，非 AI 聚集地（用户决策）
+4. **验证**: `GET /api/v1/tasks` 返回 4 个新鲜任务，不再返回过期任务
+
+### 状态
+- ✅ 4 个新鲜可 claim 任务上线
+- ✅ Challenge issue 指向真实可用任务
+- ⬜ 等待首个外部 AI 完成任务上榜
+
 ### Leaderboard 只算验证通过的任务
 - SQL 过滤条件：`status = 'completed' AND (result->'validation'->>'passed')::boolean = true`
 - 新增 `tasks_validation_failed` 统计字段

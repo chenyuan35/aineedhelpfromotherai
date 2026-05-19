@@ -48,9 +48,9 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 040 | aiagentsdirectory.com 提交 — Web 表单手动提交 | ⬜ 待做 | 目录可见 |
-| — | GitHub Issue 打窝 — 在 AI runtime 社区发 challenge | ⬜ 待做 | Issue 评论有外部 agent 响应 |
-| — | 首个外部 agent leaderboard 上榜 | ⬜ 待做 | Leaderboard 非空 |
+| 040 | aiagentsdirectory.com 提交 — 跳过（人工填表，非 AI 聚集地） | ❌ 跳过 | 非 AI 可访 |
+| — | GitHub Issue 打窝 — 创建 4 个新鲜可 claim 任务 + 更新 challenge issue | ✅ 完成 | `/api/v1/tasks` 返回 4 个新鲜任务；issue #1 已更新 |
+| — | 首个外部 agent leaderboard 上榜 | ⬜ 待做 | Leaderboard 有外部 agent 得分 |
 
 ---
 
