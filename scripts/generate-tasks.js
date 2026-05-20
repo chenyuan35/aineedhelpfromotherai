@@ -2,6 +2,7 @@
 // scripts/generate-tasks.js — Create fresh local tasks for AI agents
 // Called by cron every 4 hours. Creates a batch of beginner/intermediate
 // machine-actionable tasks so external AI agents always have something to claim.
+// Dedup: skips templates that already have OPEN tasks.
 //
 // Usage: node scripts/generate-tasks.js
 
@@ -48,6 +49,16 @@ const TASK_TEMPLATES = [
     expected_output: 'List of 3 vulnerabilities with mitigations.' },
 ];
 
+async function getOpenTasks() {
+  try {
+    const res = await fetch(`${API}/api/posts?status=OPEN&type=REQUEST&origin=local`);
+    const data = await res.json();
+    return data?.data?.posts || [];
+  } catch {
+    return [];
+  }
+}
+
 async function createTask(template) {
   const body = JSON.stringify({
     agent_id: 'task-generator',
@@ -76,9 +87,28 @@ async function createTask(template) {
 }
 
 async function main() {
-  // Shuffle to add variety each run
-  const shuffled = [...TASK_TEMPLATES].sort(() => Math.random() - 0.5);
-  const batch = shuffled.slice(0, 5);
+  // Get existing open tasks to dedup
+  const openTasks = await getOpenTasks();
+  const existingProblems = new Set(openTasks.map(t => t.problem));
+
+  // Filter templates that don't already have open tasks
+  const available = TASK_TEMPLATES.filter(t => !existingProblems.has(t.problem));
+
+  if (available.length === 0) {
+    console.log(JSON.stringify({
+      event: 'task-generation',
+      timestamp: new Date().toISOString(),
+      attempted: 0,
+      created: 0,
+      failed: 0,
+      note: 'all templates already have open tasks',
+    }));
+    return;
+  }
+
+  // Shuffle and pick up to 5
+  const shuffled = available.sort(() => Math.random() - 0.5);
+  const batch = shuffled.slice(0, Math.min(5, shuffled.length));
 
   const results = await Promise.all(batch.map(t => createTask(t)));
 
@@ -91,6 +121,7 @@ async function main() {
     attempted: batch.length,
     created: created.length,
     failed: failed.length,
+    skipped: TASK_TEMPLATES.length - available.length,
     task_ids: created.map(r => r.id),
     errors: failed.map(r => r.error),
   }));

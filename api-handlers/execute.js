@@ -486,10 +486,26 @@ async function handleSubmit(req, res) {
     try {
       const sr = body.structured_reasoning;
       reasoningId = sr.id || `RO_${executionId}`;
+
+      // Fetch original task problem from posts table
+      let originalProblem = execution.task_id;
+      const submitDb2 = getPool();
+      if (submitDb2) {
+        try {
+          const taskRes = await submitDb2.query(
+            'SELECT problem, body, title FROM posts WHERE id = $1',
+            [execution.task_id]
+          );
+          if (taskRes.rows[0]) {
+            originalProblem = taskRes.rows[0].problem || taskRes.rows[0].body || taskRes.rows[0].title || execution.task_id;
+          }
+        } catch (_) { /* fallback to task_id */ }
+      }
+
       await saveReasoning({
         id: reasoningId,
         problem_id: execution.task_id,
-        problem_statement: execution.result_text || resultText,
+        problem_statement: originalProblem,
         context: {
           platform: 'aineedhelpfromotherai',
           domain: execution.task_type || 'other',
