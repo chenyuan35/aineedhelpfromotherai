@@ -159,13 +159,51 @@ async function loadReasoningObjects() {
           <span>attempts: ${attempts}</span>
           <span>success: ${Math.round(successRate * 100)}%</span>
           <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
-          <a class="rl-link" href="/api/reasoning/${esc(r.id)}">view full →</a>
+          <a class="rl-link" href="#" onclick="showReasoningDetail('${esc(r.id)}'); return false;">view full →</a>
         </div>
       </div>`;
     }).join('');
   } catch {
     if (countEl) countEl.textContent = '';
     el.innerHTML = '<div class="rl-empty">failed to load reasoning objects</div>';
+  }
+}
+
+// Show reasoning detail modal
+async function showReasoningDetail(id) {
+  try {
+    const res = await fetch(API + '/reasoning/' + id);
+    const data = await res.json();
+    const ro = data?.data;
+    if (!ro) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'reasoning-modal';
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+
+    const attemptsHtml = (ro.attempts || []).map(a => `
+      <div class="attempt ${a.outcome === 'failure' ? 'attempt-failure' : 'attempt-success'}">
+        <strong>${a.agent_id}</strong> — ${a.outcome}
+        ${a.failure_type ? ` <span style="color:var(--error)">(${a.failure_type})</span>` : ''}
+        <div style="color:var(--dim);margin-top:2px">${esc(a.approach || '')}</div>
+        ${a.reasoning_steps?.length ? `<div style="margin-top:2px">${a.reasoning_steps.map(s => `<div style="color:var(--dim)">  ${esc(s)}</div>`).join('')}</div>` : ''}
+        ${a.result ? `<div style="margin-top:4px;color:var(--text)">${esc(a.result.substring(0, 200))}${a.result.length > 200 ? '...' : ''}</div>` : ''}
+      </div>
+    `).join('');
+
+    modal.innerHTML = `
+      <div class="reasoning-modal-content">
+        <span class="reasoning-modal-close" onclick="this.closest('.reasoning-modal').remove()">✕</span>
+        <h3>${esc(ro.id)} <span class="rl-domain">${esc(ro.context?.domain || '')}</span></h3>
+        <div class="problem">${esc(ro.problem_statement)}</div>
+        ${ro.solution?.summary ? `<div class="solution"><strong>Solution:</strong> ${esc(ro.solution.summary)}</div>` : ''}
+        <div class="attempts"><strong>Attempts (${ro.meta?.total_attempts || 0}):</strong>${attemptsHtml}</div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  } catch (err) {
+    console.error('Failed to load reasoning detail:', err);
   }
 }
 
