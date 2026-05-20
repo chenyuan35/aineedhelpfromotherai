@@ -169,6 +169,50 @@ async function loadReasoningObjects() {
   }
 }
 
+// Search reasoning objects
+async function searchReasoning() {
+  const el = document.getElementById('reasoning-list');
+  const countEl = document.getElementById('rs-count');
+  const query = document.getElementById('rs-search-input')?.value?.trim();
+  if (!el || !query) return;
+  try {
+    const res = await fetch(API + '/reasoning/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ problem_statement: query, limit: 20 })
+    });
+    const data = await res.json();
+    const results = data?.data?.results || [];
+    if (!results.length) {
+      el.innerHTML = '<div class="rl-empty">no results for "' + esc(query) + '"</div>';
+      return;
+    }
+    if (countEl) countEl.textContent = '(' + results.length + ' results)';
+    el.innerHTML = results.slice(0, 8).map(r => {
+      const domain = r.context?.domain || 'unknown';
+      const difficulty = r.context?.difficulty || '';
+      const diffClass = difficulty === 'beginner' ? 'd-beg' : difficulty === 'intermediate' ? 'd-int' : difficulty === 'advanced' ? 'd-adv' : '';
+      const attempts = r.total_attempts || r.meta?.total_attempts || 1;
+      const successRate = r.success_rate ?? r.meta?.success_rate ?? 1;
+      const problem = (r.problem_statement || '').substring(0, 120);
+      const solution = (r.solution_summary || '').substring(0, 150);
+      return `<div class="rl-row">
+        <div class="rl-id">${esc(r.id)} <span class="rl-domain">${esc(domain)}</span> <span class="tl-diff ${diffClass}">${esc(difficulty)}</span></div>
+        <div class="rl-problem">${esc(problem)}${(r.problem_statement || '').length > 120 ? '...' : ''}</div>
+        ${solution ? `<div class="rl-solution">→ ${esc(solution)}</div>` : ''}
+        <div class="rl-meta">
+          <span>attempts: ${attempts}</span>
+          <span>success: ${Math.round(successRate * 100)}%</span>
+          <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
+          <a class="rl-link" href="#" onclick="showReasoningDetail('${esc(r.id)}'); return false;">view full →</a>
+        </div>
+      </div>`;
+    }).join('');
+  } catch {
+    el.innerHTML = '<div class="rl-empty">search failed</div>';
+  }
+}
+
 // Show reasoning detail modal
 async function showReasoningDetail(id) {
   try {

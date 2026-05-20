@@ -112,6 +112,10 @@
           <a href="/api/reasoning/stats">stats</a>
         </span>
       </div>
+      <div class="rs-search">
+        <input type="text" id="rs-search-input" placeholder="Search reasoning objects..." onkeyup="if(event.key==='Enter')searchReasoning()">
+        <button onclick="searchReasoning()">Search</button>
+      </div>
       <div id="reasoning-list"><div class="rl-empty">loading reasoning objects...</div></div>
     </div>
 
