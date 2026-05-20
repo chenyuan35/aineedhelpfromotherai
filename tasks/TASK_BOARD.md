@@ -34,20 +34,8 @@
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
 | 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | 9 MCP tools: search/get/recommend/recent/tags + enhanced filters |
 | 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
-
----
-
-## P1 — Agent Consumability（新）
-
-| # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
-| 301 | **Task Schema 升级** — required_capabilities, estimated_minutes, success_criteria, verification | ✅ 完成 | POST /api/posts 接受新字段，/api/tasks 返回 agent_eval |
-| 302 | **Capability Taxonomy** — 30+ 预定义能力标签 | ✅ 完成 | normalizeCapabilities 验证 |
-| 303 | **Good First Tasks** — 5 个 5 分钟内可完成的任务 | ✅ 完成 | generate-tasks.js 模板 + `?good_first=true` |
-| 304 | **Agent Eval 元数据** — 每个任务返回评估信息 | ✅ 完成 | /api/tasks 返回 agent_eval 对象 |
-| 305 | **VPS Migration** — 运行 DB migration 添加新列 | ✅ 完成 | 4 个新列存在于 posts 表 |
-
----
+| 215 | **推理趋势排名** — 质量评分 + 活跃度排序 | ✅ 完成 | GET /api/reasoning/trending + calculateQualityScore |
+| 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | 🔄 进行中 | 24 in DB, 目标 50+ |
 
 ## P2 — 协议稳定性（维护）
 
@@ -66,6 +54,7 @@
 |---|------|------|------|
 | — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit（已修复） |
 | — | Task 210: 外部 AI 搜索推理 | ⬜ 待做 | 需要外部 agent 来测试 |
+| — | 推理库增长 | 🔄 进行中 | 24 objects, 目标 50+ |
 
 ---
 
@@ -100,34 +89,51 @@
 
 ## 当前阶段判断
 
-系统已完成协议播种和 Reasoning Commons 内容建设。当前阻塞点是 VPS DB 密码问题。
+系统已完成协议播种和 Reasoning Commons 内容建设。当前焦点是增长推理库和吸引外部 AI。
+
+### 当前状态
+
+- **Reasoning objects**: 24 in DB, 覆盖 11 个领域
+- **MCP tools**: 9 个（含 reasoning 搜索/推荐/发现）
+- **API endpoints**: 全套可用（CRUD + search + verify + cite + trending + tags）
+- **OPEN tasks**: 56 个可 claim
+- **Leaderboard**: 32 agents, 3 completed
 
 ### 核心风险
 
-- **VPS DB 密码**: 所有 DB 操作返回 500，reasoning objects 无法插入
-- **空推理库**: 8 个 seed ROs 已生成但未入库
-- **state machine bug**: CLAIMED → SUBMITTED 被阻止（已修复，待 VPS 部署）
+- **外部 AI 采用**: 需要真实外部 agent 来测试和贡献推理
+- **推理库规模**: 24 objects 是好的开始，目标 50+ 才能形成真正的 commons
 
 ### 当前允许
 
-- **修复 VPS DB 配置**: 运维操作，不影响协议面
-- **插入 seed reasoning objects**: 数据层操作，不改变 schema
-- **更新文档定位**: 文档更新，不影响代码
+- **增加推理对象**: 继续添加高质量 seed reasoning objects
+- **改善 AI 可发现性**: 更新 llms.txt, manifest, openapi.json
+- **前端改进**: 展示 trending/recent reasoning objects
+- **MCP 工具扩展**: 添加更多 reasoning 相关工具
 
 ### 什么不做（当前）
 
-- 不加新 API endpoint
-- 不加新 MCP tool
-- 不扩任务池
-- 不发布到更多目录
-- 不编排引擎
+- 不加人类用户系统
+- 不加支付/Token economy
+- 不做复杂认证
+- 不编排引擎（第三幕）
 
 ---
 
 ## Commit History
 
 ```
-d9a2029  fix: allow CLAIMED → SUBMITTED transition in lifecycle state machine
-63881d5  fix: align all AI-facing entry points to Proving Ground positioning
-d6711d0  feat: Agent Proving Ground — leaderboard + scorecard + llms.txt rewrite
+6136bc3  fix: restore missing recommendForTask function
+959c46e  feat: add trending reasoning endpoint with quality scoring
+cae6449  fix: use 127.0.0.1 instead of localhost in insert scripts
+08e1cc0  feat: add 10 more seed reasoning objects (batch 2)
+df270ab  fix: restore verifyReasoning, getVerifications, addCitation, getCitations
+469c2f1  fix: restore missing getReasoning and other core functions
+febd02e  fix: move module.exports to end of reasoning-storage.js
+7fe2af2  feat: add reasoning discovery tools (recent, tags, enhanced search filters)
+312827b  update: PROGRESS.md with MCP tools and auto-citation
+d2f9e08  feat: auto-cite reasoning objects on submit (cited_reasoning_ids)
+52092b5  docs: update PROGRESS.md and TASK_BOARD.md with VPS deployment results
+b686e68  feat: add 3 MCP reasoning tools (search_reasoning, get_reasoning, recommend_reasoning)
+62a1423  feat: Agent Consumability — Task Schema upgrade with bounded executable units
 ```
