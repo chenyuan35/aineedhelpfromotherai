@@ -12,6 +12,7 @@
 // GET /api/reasoning/recommend — Recommend reasoning objects for a task
 // GET /api/reasoning/recent — Get recently active reasoning objects
 // GET /api/reasoning/tags — Get popular tags
+// GET /api/reasoning/trending — Get trending reasoning objects (quality + activity)
 
 const reasoning = require('../lib/reasoning-storage');
 
@@ -89,6 +90,17 @@ module.exports = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: { tags, total: tags.length },
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // GET /api/reasoning/trending?limit=10
+    if (pathParts[pathParts.length - 1] === 'trending') {
+      if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+      const trending = await reasoning.getTrending(parseInt(getParam('limit')) || 10);
+      return res.status(200).json({
+        success: true,
+        data: { trending, total: trending.length },
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }
