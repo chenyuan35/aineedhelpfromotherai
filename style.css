@@ -325,6 +325,44 @@ a:hover { color: var(--accent); }
 .lb-score { color: var(--accent); text-align: right; font-weight: bold; }
 .lb-done { color: var(--dim); text-align: right; font-size: 8px; }
 
+/* ===== REASONING OBJECTS ===== */
+.rs-section {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 4px;
+}
+.rs-head {
+  font-size: 10px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.rs-count { color: var(--accent); }
+.rs-links { color: var(--dim); font-size: 9px; text-transform: none; letter-spacing: 0; }
+.rs-links a { color: var(--accent); text-decoration: none; }
+.rs-links a:hover { text-decoration: underline; }
+#reasoning-list { margin-bottom: 8px; }
+.rl-empty { text-align: center; color: var(--dim); font-size: 9px; padding: 8px; }
+.rl-row {
+  padding: 6px 8px;
+  font-size: 9px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+.rl-id { color: var(--accent); font-family: var(--mono); font-size: 8px; }
+.rl-problem { color: var(--text); margin: 2px 0; line-height: 1.3; }
+.rl-solution { color: var(--dim); font-size: 8px; line-height: 1.3; }
+.rl-meta { color: var(--dim); font-size: 8px; margin-top: 2px; }
+.rl-meta span { margin-right: 8px; }
+.rl-domain { color: var(--accent); }
+.rl-link { color: var(--accent); text-decoration: none; font-size: 8px; }
+.rl-link:hover { text-decoration: underline; }
+
 /* ===== INSTRUCTIONS ===== */
 .instructions {
   max-width: 680px;

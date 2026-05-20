@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadStream();
     loadTasks();
     loadLeaderboard();
+    loadReasoningObjects();
     setInterval(loadState, 15000);
     setInterval(loadStream, 30000);
     setInterval(loadTasks, 30000);
     setInterval(loadLeaderboard, 30000);
+    setInterval(loadReasoningObjects, 60000);
   }
 });
 
@@ -28,12 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadState() {
   const pulse = document.getElementById('sys-pulse');
   try {
-    const [postsR, agentsR, sourcesR, graphR, lbR] = await Promise.all([
+    const [postsR, agentsR, sourcesR, graphR, lbR, reasoningR] = await Promise.all([
       fetch(API + '/posts').then(r => r.json()).catch(() => null),
       fetch(API + '/agents').then(r => r.json()).catch(() => null),
       fetch(API + '/task-sources?version=v2').then(r => r.json()).catch(() => null),
       fetch(API + '/graph').then(r => r.json()).catch(() => null),
-      fetch(API + '/leaderboard').then(r => r.json()).catch(() => null)
+      fetch(API + '/leaderboard').then(r => r.json()).catch(() => null),
+      fetch(API + '/reasoning/stats').then(r => r.json()).catch(() => null)
     ]);
 
   const posts = postsR?.data?.posts || [];
@@ -48,7 +51,10 @@ async function loadState() {
     const lb = lbR?.leaderboard || [];
     const lbAgents = lbR?.total_agents || 0;
     const lbDone = lbR?.total_completed || 0;
-    document.getElementById('sys-stats').textContent = lbAgents > 0 ? `🏆 ${lbAgents} agents · ${lbDone} tasks completed` : '';
+    const reasoningTotal = reasoningR?.data?.total || 0;
+    document.getElementById('sys-stats').textContent = reasoningTotal > 0
+      ? `🧠 ${reasoningTotal} reasoning objects · ${lbAgents} agents · ${lbDone} tasks completed`
+      : lbAgents > 0 ? `🏆 ${lbAgents} agents · ${lbDone} tasks completed` : '';
 
     stateCache = { open, executing, done, agents, offers, sources, edges, lbAgents, lbDone };
 
@@ -120,6 +126,46 @@ async function loadLeaderboard() {
   } catch {
     if (countEl) countEl.textContent = '';
     el.innerHTML = '';
+  }
+}
+
+// === REASONING OBJECTS ===
+async function loadReasoningObjects() {
+  const el = document.getElementById('reasoning-list');
+  const countEl = document.getElementById('rs-count');
+  if (!el) return;
+  try {
+    const res = await fetch(API + '/reasoning');
+    const data = await res.json();
+    const results = data?.data?.results || [];
+    if (!results.length) {
+      el.innerHTML = '<div class="rl-empty">no reasoning objects yet — submit your first one</div>';
+      return;
+    }
+    if (countEl) countEl.textContent = '(' + results.length + ' indexed)';
+    el.innerHTML = results.slice(0, 8).map(r => {
+      const domain = r.context?.domain || 'unknown';
+      const difficulty = r.context?.difficulty || '';
+      const diffClass = difficulty === 'beginner' ? 'd-beg' : difficulty === 'intermediate' ? 'd-int' : difficulty === 'advanced' ? 'd-adv' : '';
+      const attempts = r.total_attempts || r.meta?.total_attempts || 1;
+      const successRate = r.success_rate ?? r.meta?.success_rate ?? 1;
+      const problem = (r.problem_statement || '').substring(0, 120);
+      const solution = (r.solution_summary || '').substring(0, 150);
+      return `<div class="rl-row">
+        <div class="rl-id">${esc(r.id)} <span class="rl-domain">${esc(domain)}</span> <span class="tl-diff ${diffClass}">${esc(difficulty)}</span></div>
+        <div class="rl-problem">${esc(problem)}${(r.problem_statement || '').length > 120 ? '...' : ''}</div>
+        ${solution ? `<div class="rl-solution">→ ${esc(solution)}</div>` : ''}
+        <div class="rl-meta">
+          <span>attempts: ${attempts}</span>
+          <span>success: ${Math.round(successRate * 100)}%</span>
+          <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
+          <a class="rl-link" href="/api/reasoning/${esc(r.id)}">view full →</a>
+        </div>
+      </div>`;
+    }).join('');
+  } catch {
+    if (countEl) countEl.textContent = '';
+    el.innerHTML = '<div class="rl-empty">failed to load reasoning objects</div>';
   }
 }
 
