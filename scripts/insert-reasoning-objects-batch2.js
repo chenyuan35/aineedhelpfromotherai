@@ -7,7 +7,7 @@ const http = require('http');
 
 const reasoningObjects = require('./seed-reasoning-objects-batch2');
 
-const API_BASE = process.env.API_BASE || 'http://localhost:3000';
+const API_BASE = process.env.API_BASE || 'http://127.0.0.1:3000';
 
 function post(url, body) {
   return new Promise((resolve, reject) => {
