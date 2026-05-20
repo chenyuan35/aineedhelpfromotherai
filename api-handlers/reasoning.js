@@ -7,6 +7,8 @@
 // GET /api/reasoning/stats — Stats
 // POST /api/reasoning/:id/verify — Verify a reasoning object
 // GET /api/reasoning/:id/verifications — Get verifications
+// POST /api/reasoning/:id/cite — Add a citation
+// GET /api/reasoning/:id/citations — Get citations
 
 const reasoning = require('../lib/reasoning-storage');
 
@@ -137,6 +139,40 @@ module.exports = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: verifications,
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // POST /api/reasoning/:id/cite
+    if (pathParts[pathParts.length - 1] === 'cite') {
+      if (method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+      const id = pathParts[pathParts.length - 2];
+      let body = {};
+      if (req.body) {
+        body = req.body;
+      } else {
+        let data = '';
+        for await (const chunk of req) data += chunk;
+        if (data) body = JSON.parse(data);
+      }
+      const result = await reasoning.addCitation(id, body);
+      if (!result) return res.status(404).json({ error: 'Reasoning object not found' });
+      return res.status(200).json({
+        success: true,
+        data: result,
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // GET /api/reasoning/:id/citations
+    if (pathParts[pathParts.length - 1] === 'citations') {
+      if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+      const id = pathParts[pathParts.length - 2];
+      const citations = await reasoning.getCitations(id);
+      if (!citations) return res.status(404).json({ error: 'Reasoning object not found' });
+      return res.status(200).json({
+        success: true,
+        data: citations,
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }
