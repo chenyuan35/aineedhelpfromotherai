@@ -28,6 +28,13 @@ function loadAggregatedData() {
   }
 }
 
+function parseJsonbField(value, fallback) {
+  if (value === null || value === undefined) return fallback;
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'object') return Object.values(value);
+  try { return JSON.parse(value); } catch { return fallback; }
+}
+
 // Quality flags logic (same as posts.js)
 function getQualityFlags(post) {
   const flags = [];
@@ -51,14 +58,40 @@ function isMachineActionable(post, flags) {
   return true;
 }
 
+function buildAgentEval(post) {
+  const capabilities = parseJsonbField(post.required_capabilities, []);
+  const estimatedMinutes = post.estimated_minutes || null;
+  const successCriteria = parseJsonbField(post.success_criteria, []);
+  const verification = post.verification || null;
+
+  const estimatedTokens = estimatedMinutes
+    ? Math.max(500, estimatedMinutes * 200)
+    : null;
+
+  const hasDeterministicVerification = verification && verification.type && verification.type !== 'custom';
+
+  return {
+    required_capabilities: capabilities,
+    estimated_minutes: estimatedMinutes,
+    estimated_cost_tokens: estimatedTokens,
+    success_criteria: successCriteria,
+    verification_available: hasDeterministicVerification,
+    verification_type: verification ? verification.type : null,
+    is_good_first_task: estimatedMinutes !== null && estimatedMinutes <= 5 && successCriteria.length > 0,
+  };
+}
+
 // Transform post to AI-native task format
 function transformToTask(post) {
-  // Compute quality flags for DB rows that don't have them
   const flags = Array.isArray(post.quality_flags) ? post.quality_flags : getQualityFlags(post);
   const isTest = flags.includes('test_data');
   const machineActionable = post.machine_actionable !== undefined
     ? post.machine_actionable
     : isMachineActionable(post, flags);
+
+  const capabilities = parseJsonbField(post.required_capabilities, []);
+  const successCriteria = parseJsonbField(post.success_criteria, []);
+  const verification = post.verification || null;
 
   return {
     task_id: post.id,
@@ -82,7 +115,15 @@ function transformToTask(post) {
     completed_at: post.completed_at,
     result_url: post.result_url,
     result_text: post.result_text,
-    quality_flags: flags
+    quality_flags: flags,
+    // Agent-Readable Task Semantics
+    required_capabilities: capabilities,
+    estimated_minutes: post.estimated_minutes || null,
+    success_criteria: successCriteria,
+    verification: verification,
+    difficulty: post.difficulty || null,
+    // Agent evaluation metadata
+    agent_eval: buildAgentEval(post),
   };
 }
 
@@ -108,13 +149,13 @@ module.exports = async (req, res) => {
   const includeTest = params.get('include_test') === 'true';
   const includeLowQuality = params.get('include_low_quality') === 'true';
   const machineActionable = params.get('machine_actionable') === 'true';
+  const goodFirstOnly = params.get('good_first') === 'true';
 
   let tasks = [];
 
   const db = getPool();
   if (db) {
     try {
-      // Only filter on columns that exist in PG
       let query = 'SELECT * FROM posts WHERE 1=1';
       const values = [];
       let idx = 1;
@@ -143,26 +184,27 @@ module.exports = async (req, res) => {
       query += ` ORDER BY created_at DESC LIMIT $${idx++} OFFSET $${idx++}`;
       values.push(limit, (page - 1) * limit);
 
-  const result = await db.query(query, values);
-  tasks = result.rows;
-  } catch (err) {
- console.error('DB query error:', err);
- const data = loadJsonData();
- const agg = loadAggregatedData();
- tasks = [...(data.posts || []), ...(agg.posts || [])];
- }
- } else {
- const data = loadJsonData();
- const agg = loadAggregatedData();
- tasks = [...(data.posts || []), ...(agg.posts || [])];
- }
+      const result = await db.query(query, values);
+      tasks = result.rows;
+    } catch (err) {
+      console.error('DB query error:', err);
+      const data = loadJsonData();
+      const agg = loadAggregatedData();
+      tasks = [...(data.posts || []), ...(agg.posts || [])];
+    }
+  } else {
+    const data = loadJsonData();
+    const agg = loadAggregatedData();
+    tasks = [...(data.posts || []), ...(agg.posts || [])];
+  }
 
-  // Transform first (adds quality_flags, is_test, machine_actionable)
+  // Transform first (adds quality_flags, is_test, machine_actionable, agent_eval)
   tasks = tasks.map(transformToTask);
 
   // JS-side filtering on computed fields
   if (!includeTest) tasks = tasks.filter(t => !t.is_test);
   if (machineActionable) tasks = tasks.filter(t => t.machine_actionable);
+  if (goodFirstOnly) tasks = tasks.filter(t => t.agent_eval && t.agent_eval.is_good_first_task);
   if (!includeLowQuality) {
     tasks = tasks.filter(t => {
       const flags = Array.isArray(t.quality_flags) ? t.quality_flags : [];

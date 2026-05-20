@@ -287,7 +287,7 @@ async function createTask(template) {
     expected_output: template.expected_output,
     difficulty: template.difficulty,
     tags: ['generated', template.task_type, template.difficulty === 'beginner' ? 'good-first-task' : 'automated'],
-    capabilities: template.capabilities || [],
+    required_capabilities: template.capabilities || [],
     estimated_minutes: template.estimated_minutes || null,
     success_criteria: template.success_criteria || [],
     verification: template.verification || null,

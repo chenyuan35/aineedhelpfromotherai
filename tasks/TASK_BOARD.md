@@ -35,6 +35,18 @@
 
 ---
 
+## P1 — Agent Consumability（新）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 301 | **Task Schema 升级** — required_capabilities, estimated_minutes, success_criteria, verification | ✅ 完成 | POST /api/posts 接受新字段，/api/tasks 返回 agent_eval |
+| 302 | **Capability Taxonomy** — 30+ 预定义能力标签 | ✅ 完成 | normalizeCapabilities 验证 |
+| 303 | **Good First Tasks** — 5 个 5 分钟内可完成的任务 | ✅ 完成 | generate-tasks.js 模板 + `?good_first=true` |
+| 304 | **Agent Eval 元数据** — 每个任务返回评估信息 | ✅ 完成 | /api/tasks 返回 agent_eval 对象 |
+| 305 | **VPS Migration** — 运行 DB migration 添加新列 | ⬜ 待做 | 4 个新列存在于 posts 表 |
+
+---
+
 ## P2 — 协议稳定性（维护）
 
 | # | 任务 | 状态 | 验证方式 |

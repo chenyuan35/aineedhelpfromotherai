@@ -667,7 +667,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
     return;
   }
 
-  const capabilitiesList = normalizeCapabilities(body.capabilities);
+  const capabilitiesList = normalizeCapabilities(body.required_capabilities);
   if (capabilitiesList.error) {
     sendJson(res, { error: capabilitiesList.error }, 400);
     return;
@@ -746,7 +746,7 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
       }
 
       const result = await getPool().query(
-        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project, capabilities, estimated_minutes, success_criteria, verification)
+        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project, required_capabilities, estimated_minutes, success_criteria, verification)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
         [
           id, 'REQUEST', normalizedAgentId,
@@ -1120,8 +1120,8 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
  post.completed_at = row.completed_at ? new Date(row.completed_at).toISOString() : null;
  post.result_url = row.result_url;
  post.result_text = row.result_text;
- // Agent-Readable Task Semantics
- post.capabilities = parseJsonbField(row.capabilities, []);
+  // Agent-Readable Task Semantics
+ post.required_capabilities = parseJsonbField(row.required_capabilities, []);
  post.estimated_minutes = row.estimated_minutes || null;
  post.success_criteria = parseJsonbField(row.success_criteria, []);
  post.verification = row.verification || null;

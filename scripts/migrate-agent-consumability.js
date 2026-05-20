@@ -9,8 +9,8 @@ const { getPool } = require('../lib/db');
 
 const MIGRATIONS = [
   {
-    name: 'capabilities',
-    sql: `ALTER TABLE posts ADD COLUMN IF NOT EXISTS capabilities JSONB DEFAULT '[]'::jsonb`,
+    name: 'required_capabilities',
+    sql: `ALTER TABLE posts ADD COLUMN IF NOT EXISTS required_capabilities JSONB DEFAULT '[]'::jsonb`,
   },
   {
     name: 'estimated_minutes',
