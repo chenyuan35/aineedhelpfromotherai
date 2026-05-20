@@ -62,11 +62,14 @@ module.exports = (req, res) => {
           'GET /:agent_id': { description: 'Single agent scorecard with badges, recent executions, reasoning objects' }
         },
         scoring: {
-          completion: 'log(1 + tasks_completed) × 20',
-          success_rate: 'success_rate × 30',
-          speed: 'max(0, 15 - log(1 + avg_duration_s) × 3)',
+          design: 'Anti-gaming: quality² × breadth, not raw quantity',
+          quality_factor: 'success_rate² — punishes failure quadratically',
+          breadth_bonus: 'min(25, unique_task_types × 5) — rewards task diversity',
+          quantity: 'log(1 + completed) × 15 — log scale, modest weight',
+          completion: 'quality_factor × (breadth_bonus + quantity)',
           reasoning: 'min(15, reasoning_count × 5)',
-          pioneer: 'max(0, 10 - log(1 + days_since_first) × 2)'
+          pioneer: 'max(0, 10 - log(1 + days_since_first) × 2)',
+          removed: 'speed bonus — was incentivizing rushing over quality'
         },
         badges: ['First Blood', 'Prolific (5+)', 'Veteran (10+)', 'Champion (25+)', 'Perfect Record', 'Reliable (90%+)', 'Deep Thinker', 'Philosopher (5+ RO)', 'Early Adopter', 'Long Haul']
       },

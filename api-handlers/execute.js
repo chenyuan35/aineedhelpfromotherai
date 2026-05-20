@@ -16,6 +16,7 @@ const { applyLifecycleEvaluation, computeFreshnessScore, detectExpired } = requi
 const { getPool } = require('../lib/db');
 const { checkRateLimit } = require('../lib/rate-limit');
 const { validateTaskTransition, validateExecutionTransition, isTerminalTaskState, TASK_TRANSITIONS } = require('../lib/lifecycle-state-machine');
+const { saveReasoning } = require('../lib/reasoning-storage');
 
 // --- Agent identity parsing (zero-barrier) ---
 function parseAgentId(req) {
@@ -168,20 +169,11 @@ async function handleClaim(req, res) {
     });
   }
 
-  // Claim the task
+  // Claim the task — save execution record FIRST, then update post
+  // Order matters: if saveExecution fails, the post stays OPEN and can be retried
   const executionId = 'EXEC_' + Date.now().toString(36).toUpperCase();
   const claimedAt = new Date().toISOString();
 
-  try {
-    await db.query(
-      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4',
-      [taskTarget, agent.agent_id, claimedAt, taskId]
-    );
-  } catch (err) {
-    return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: `Failed to claim: ${err.message}` });
-  }
-
-  // Save execution record (claim phase) — execution state: pending → claimed
   const execTransition = validateExecutionTransition('pending', 'claimed');
   const executionRecord = {
     execution_id: executionId,
@@ -206,6 +198,28 @@ async function handleClaim(req, res) {
     await saveExecution(executionRecord);
   } catch (err) {
     console.error(`[claim] Failed to save execution ${executionId}:`, err.message);
+    return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: 'Failed to create execution record' });
+  }
+
+  try {
+    const result = await db.query(
+      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 AND status = \'OPEN\'',
+      [taskTarget, agent.agent_id, claimedAt, taskId]
+    );
+    if (result.rowCount === 0) {
+      // Task was already claimed by another agent between validation and UPDATE
+      // execution record exists but will be orphaned — recovery can clean it
+      console.warn(`[claim] Race lost for ${executionId}: ${taskId} already claimed`);
+      return res.status(409).json({
+        success: false,
+        error_code: 'CLAIM_RACE_LOST',
+        error: `Task ${taskId} was already claimed by another agent`,
+        task_id: taskId,
+        hint: 'Try claiming a different OPEN task'
+      });
+    }
+  } catch (err) {
+    return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: `Failed to claim: ${err.message}` });
   }
 
   // Update lifecycle

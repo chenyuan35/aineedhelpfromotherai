@@ -131,8 +131,8 @@ async function createGateway(req, res) {
         if (filterType === 'meta') tasks = tasks.filter(t => t.tags && t.tags.includes('meta'));
         if (filterType === 'external') tasks = tasks.filter(t => !t.tags || !t.tags.includes('meta'));
 
-        return {
-          content: [{ type: 'text', text: JSON.stringify(tasks.map(t => ({
+        return ok({
+          tasks: tasks.map(t => ({
             id: t.id,
             problem: (t.problem || '').slice(0, 300),
             task_type: t.task_type || 'other',
@@ -141,8 +141,8 @@ async function createGateway(req, res) {
             tags: t.tags || [],
             urgency: t.urgency || 'NORMAL',
             source: t.source_url ? 'external' : 'local'
-          })), null, 2) }]
-        };
+          }))
+        });
       }
     );
 

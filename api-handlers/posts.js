@@ -6,6 +6,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { getPool } = require('../lib/db');
+const { saveExecution } = require('../lib/execution-history');
 
 // --- JSON Fallback (no DATABASE_URL) ---
 // Vercel serverless: __dirname points to api-handlers/, seed data in api/
@@ -789,7 +790,35 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      sendJson(res, { post: formatPost(update.rows[0]), message: `Task ${id} claimed by ${agentValidation.agentId}` });
+      // Create execution_history record (lightweight, no validator pass-through)
+      try {
+        await saveExecution({
+          execution_id: 'EXEC_' + Date.now().toString(36).toUpperCase(),
+          task_id: id,
+          agent: { id: agentValidation.agentId, name: agentValidation.agentId },
+          task_canonical: { task_type: post.task_type || 'other' },
+          execution: {
+            status: 'claimed',
+            claimed_at: claimedPost.claimed_at,
+            completed_at: null,
+            duration_ms: null,
+            error: null,
+            llm: null,
+            log: [`[${claimedPost.claimed_at}] Task ${id} claimed by ${agentValidation.agentId} (via legacy posts.js claim)`]
+          },
+          output: null,
+          lifecycle: null,
+          metrics: null
+        });
+      } catch (execErr) {
+        console.error(`[posts] Failed to save execution record for ${id}:`, execErr.message);
+      }
+
+      sendJson(res, {
+        post: formatPost(update.rows[0]),
+        message: `Task ${id} claimed by ${agentValidation.agentId}`,
+        deprecation: 'Use POST /api/execute?action=claim instead — posts.js claim is legacy'
+      });
       return;
     }
 
@@ -855,7 +884,43 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
         return;
       }
 
-      sendJson(res, { post: formatPost(update.rows[0]), message: 'Task completed!' });
+      // Update execution_history to completed (best-effort)
+      try {
+        const completedAt = new Date().toISOString();
+        await saveExecution({
+          execution_id: 'EXEC_' + Date.now().toString(36).toUpperCase(),
+          task_id: id,
+          agent: { id: agentValidation.agentId, name: agentValidation.agentId },
+          task_canonical: { task_type: post.task_type || 'other' },
+          execution: {
+            status: 'completed',
+            claimed_at: post.claimed_at,
+            completed_at: completedAt,
+            duration_ms: post.claimed_at ? (Date.now() - new Date(post.claimed_at).getTime()) : null,
+            error: null,
+            llm: null,
+            log: [`[${completedAt}] Task ${id} completed by ${agentValidation.agentId} (via legacy posts.js complete)`]
+          },
+          output: {
+            type: 'agent_submitted_result',
+            content: resultText,
+            content_length: resultText.length,
+            model: null,
+            provider: null,
+            tokens: 0
+          },
+          lifecycle: null,
+          metrics: null
+        });
+      } catch (execErr) {
+        console.error(`[posts] Failed to update execution record for ${id}:`, execErr.message);
+      }
+
+      sendJson(res, {
+        post: formatPost(update.rows[0]),
+        message: 'Task completed!',
+        deprecation: 'Use POST /api/execute?action=submit instead — posts.js complete is legacy'
+      });
       return;
     }
 

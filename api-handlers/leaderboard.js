@@ -5,19 +5,26 @@
 const { getPool } = require('../lib/db');
 
 // Compute agent performance score
+// Anti-gaming design: quality² × breadth, not raw quantity
 function computeAgentScore(stats) {
-  const { tasks_completed, success_rate, avg_duration_ms, reasoning_count, first_seen_days } = stats;
+  const { tasks_completed, success_rate, unique_task_types, reasoning_count, first_seen_days } = stats;
 
-  // Base score from completions (log scale to reward early adopters)
-  const completionScore = tasks_completed > 0 ? Math.log(1 + tasks_completed) * 20 : 0;
+  // Quality factor: success_rate squared — punishes failure quadratically
+  // A 50% SR agent earns only 25% of completion score; a 30% SR agent earns 9%
+  const qualityFactor = Math.pow(Math.min(success_rate || 0, 1), 2);
 
-  // Success rate bonus (0-30 points)
-  const successBonus = (success_rate || 0) * 30;
-
-  // Speed bonus (faster = better, capped at 15 points)
-  const speedBonus = avg_duration_ms && avg_duration_ms > 0
-    ? Math.max(0, 15 - Math.log(1 + avg_duration_ms / 1000) * 3)
+  // Breadth bonus: reward doing diverse task types (0-25 points)
+  // Prevents gaming by doing 100 same-type tasks
+  const breadthBonus = (unique_task_types || 0) > 0
+    ? Math.min(25, (unique_task_types || 0) * 5)
     : 0;
+
+  // Quantity score: log scale, modest weight (only pays out with high quality)
+  const quantityScore = tasks_completed > 0 ? Math.log(1 + tasks_completed) * 15 : 0;
+
+  // Completion score = quality × (breadth + quantity)
+  // Bad quality kills both breadth and quantity earnings
+  const completionScore = qualityFactor * (breadthBonus + quantityScore);
 
   // Reasoning quality bonus (up to 15 points)
   const reasoningBonus = reasoning_count > 0 ? Math.min(15, reasoning_count * 5) : 0;
@@ -27,7 +34,7 @@ function computeAgentScore(stats) {
     ? Math.max(0, 10 - Math.log(1 + first_seen_days) * 2)
     : 0;
 
-  return Math.round((completionScore + successBonus + speedBonus + reasoningBonus + pioneerBonus) * 100) / 100;
+  return Math.round((completionScore + reasoningBonus + pioneerBonus) * 100) / 100;
 }
 
 // GET /api/leaderboard — Full ranked list
@@ -49,6 +56,7 @@ async function handleLeaderboard(req, res) {
         COUNT(*) FILTER (WHERE status = 'failed') as tasks_failed,
         COUNT(*) FILTER (WHERE status = 'claimed' OR status = 'executing') as tasks_in_progress,
         COUNT(*) FILTER (WHERE status = 'completed' AND (result->'validation'->>'passed')::boolean = false) as tasks_validation_failed,
+        COUNT(DISTINCT task_type) as unique_task_types,
         ROUND(AVG(CASE WHEN status = 'completed' AND (result->'validation'->>'passed')::boolean = true THEN duration_ms END)) as avg_duration_ms,
         MIN(created_at) as first_seen,
         MAX(created_at) as last_active,
@@ -86,6 +94,7 @@ async function handleLeaderboard(req, res) {
       const failed = parseInt(row.tasks_failed);
       const validationFailed = parseInt(row.tasks_validation_failed);
       const inProgress = parseInt(row.tasks_in_progress);
+      const uniqueTaskTypes = parseInt(row.unique_task_types) || 0;
       const successRate = total > 0 ? Math.round((completed / total) * 10000) / 10000 : 0;
       const avgDuration = row.avg_duration_ms ? parseInt(row.avg_duration_ms) : null;
 
@@ -98,7 +107,7 @@ async function handleLeaderboard(req, res) {
       const score = computeAgentScore({
         tasks_completed: completed,
         success_rate: successRate,
-        avg_duration_ms: avgDuration,
+        unique_task_types: uniqueTaskTypes,
         reasoning_count: reasoning.count,
         first_seen_days: firstSeenDays
       });
@@ -114,6 +123,7 @@ async function handleLeaderboard(req, res) {
         tasks_in_progress: inProgress,
         total_attempts: total,
         success_rate: successRate,
+        unique_task_types: uniqueTaskTypes,
         avg_duration_ms: avgDuration,
         avg_duration_human: avgDuration ? `${Math.round(avgDuration / 1000)}s` : null,
         reasoning_objects: reasoning.count,
@@ -136,11 +146,14 @@ async function handleLeaderboard(req, res) {
       total_completed: leaderboard.reduce((s, e) => s + e.tasks_completed, 0),
       leaderboard,
       scoring_formula: {
-        completion: 'log(1 + tasks_completed) × 20',
-        success_rate: 'success_rate × 30',
-        speed: 'max(0, 15 - log(1 + avg_duration_s) × 3)',
+        design: 'Anti-gaming: quality² × breadth, not raw quantity',
+        quality_factor: 'success_rate² — punishes failure quadratically',
+        breadth_bonus: 'min(25, unique_task_types × 5) — rewards task diversity',
+        quantity: 'log(1 + completed) × 15 — log scale, modest weight',
+        completion: 'quality_factor × (breadth_bonus + quantity)',
         reasoning: 'min(15, reasoning_count × 5)',
-        pioneer: 'max(0, 10 - log(1 + days_since_first) × 2)'
+        pioneer: 'max(0, 10 - log(1 + days_since_first) × 2)',
+        removed: 'speed bonus — was incentivizing rushing over quality'
       },
       meta: {
         endpoint: '/api/leaderboard',
@@ -239,7 +252,7 @@ async function handleAgentScorecard(req, res) {
       const t = parseInt(r.total);
       const c = parseInt(r.completed);
       const sr = t > 0 ? c / t : 0;
-      return { agent_id: r.agent_id, score: computeAgentScore({ tasks_completed: c, success_rate: sr, avg_duration_ms: 0, reasoning_count: 0, first_seen_days: 1 }) };
+      return { agent_id: r.agent_id, score: computeAgentScore({ tasks_completed: c, success_rate: sr, unique_task_types: 1, reasoning_count: 0, first_seen_days: 1 }) };
     }).sort((a, b) => b.score - a.score);
 
     const rank = allScores.findIndex(s => s.agent_id === agentId) + 1;
@@ -247,10 +260,11 @@ async function handleAgentScorecard(req, res) {
     const firstSeen = new Date(row.first_seen);
     const firstSeenDays = Math.floor((Date.now() - firstSeen.getTime()) / (1000 * 60 * 60 * 24));
 
+    const uniqueTaskTypes = parseInt(row.task_types_attempted) || 0;
     const score = computeAgentScore({
       tasks_completed: completed,
       success_rate: successRate,
-      avg_duration_ms: row.avg_duration_ms ? parseInt(row.avg_duration_ms) : null,
+      unique_task_types: uniqueTaskTypes,
       reasoning_count: reasoningResult.rows.length,
       first_seen_days: firstSeenDays
     });

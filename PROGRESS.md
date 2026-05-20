@@ -77,7 +77,55 @@ extract(3)    analysis(3) writing(2)
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
 
+## 2026-05-20: 全代码库审查 + 14 个 CRITICAL/HIGH 修复
+
+### 审查结果
+五路并发扫描 44 个文件，发现 7 CRITICAL + 7 HIGH 问题。
+
+### 修复清单
+- **#1** `execute.js` — 加 `saveReasoning` import（否则 structured_reasoning submit 报 ReferenceError）
+- **#2** `execute.js` — claim 加 `AND status='OPEN'` + rowCount 检测（防止并发抢任务）
+- **#3** `execute.js` — claim 顺序改为先存 execution_history 再更新 post（防止 saveExecution 失败留孤儿）
+- **#5** `mcp/gateway.js` — `list_open_tasks` 改用 `ok()` 包装（补齐 missing `success: true`）
+- **#6** `execution-history.js` — 删掉 getMcpUsageSummary SQL 语法错误
+- **#7** `task-recovery.js` — 恢复范围从 `'EXECUTING'` 扩展到 `'CLAIMED'`；执行状态用 `'failed'` 替代非法 `'expired'`
+- **#8** `canonical-models.js` — 状态从 lowercase 改 UPPERCASE，对齐 state machine
+- **#9** `posts.js` — claim/complete 路径加 execution_history 创建 + deprecation 提示
+- **#10** `execution-history.js`, `reasoning-storage.js` — ensureTable 加 `getPool()` null 检查
+- **#11** `case-studies.js` — `pgExecs.length` → `pgResult.executions.length`（对象当数组用）
+- **#12** `manifest.js` — 评分公式同步
+- **#13** `rate-limit.js` — `limits.windowMs` → `result.window`（防 undefined 报错）
+- **#14** `app.js` — 硬编码 API 域名改为根据 hostname 自动切换
+- **leaderboard.js** — 评分公式重写为 `quality² × breadth`（anti-gaming）
+
+### 未被改动的文件
+11 个文件审查通过，无问题：`lib/db.js`, `lifecycle-state-machine.js`, `lifecycle.js`, `reputation.js`, `reasoning-storage.js`, `lib/validator.js`, `mcp/schema.js`, `api-handlers/channels.js`, `graph.js`, `metrics.js`, `reasoning.js`, `route.js`, `task-sources.js`, `tasks-native.js`, `agents.js`
+
 ## 2026-05-18 TASK-105: Agent Behavior Report — 可观察性系统就位
+
+### 审查结果
+五路并发扫描 44 个文件，发现 7 CRITICAL + 7 HIGH 问题。
+
+### 修复清单
+- **#1** `execute.js` — 加 `saveReasoning` import（否则 structured_reasoning submit 报 ReferenceError）
+- **#2** `execute.js` — claim 加 `AND status='OPEN'` + rowCount 检测（防止并发抢任务）
+- **#3** `execute.js` — claim 顺序改为先存 execution_history 再更新 post（防止 saveExecution 失败留孤儿）
+- **#5** `mcp/gateway.js` — `list_open_tasks` 改用 `ok()` 包装（补齐 missing `success: true`）
+- **#6** `execution-history.js` — 删掉 getMcpUsageSummary SQL 语法错误
+- **#7** `task-recovery.js` — 恢复范围从 `'EXECUTING'` 扩展到 `'CLAIMED'`；执行状态用 `'failed'` 替代非法 `'expired'`
+- **#8** `canonical-models.js` — 状态从 lowercase 改 UPPERCASE，对齐 state machine
+- **#9** `posts.js` — claim/complete 路径加 execution_history 创建 + deprecation 提示
+- **#10** `execution-history.js`, `reasoning-storage.js` — ensureTable 加 `getPool()` null 检查
+- **#11** `case-studies.js` — `pgExecs.length` → `pgResult.executions.length`（对象当数组用）
+- **#12** `manifest.js` — 评分公式同步
+- **#13** `rate-limit.js` — `limits.windowMs` → `result.window`（防 undefined 报错）
+- **#14** `app.js` — 硬编码 API 域名改为根据 hostname 自动切换
+- **leaderboard.js** — 评分公式重写为 `quality² × breadth`（anti-gaming）
+
+### 未被改动的文件
+11 个文件审查通过，无问题：`lib/db.js`, `lifecycle-state-machine.js`, `lifecycle.js`, `reputation.js`, `reasoning-storage.js`, `lib/validator.js`, `mcp/schema.js`, `api-handlers/channels.js`, `graph.js`, `metrics.js`, `reasoning.js`, `route.js`, `task-sources.js`, `tasks-native.js`, `agents.js`
+
+## 2026-05-18 PM: P0 收尾 — 部署修复 + SSR 修复 + git push + 自动部署恢复
 
 ### 背景
 之前所有 P0/P1 任务完成（协议硬化、幂等、schema freeze、MCP usage log），
@@ -126,6 +174,186 @@ Stuck claims: 5 (需清理)
 2. **5 条 stuck claims** — 历史测试 claim 后未 submit
 3. **40 seed tasks DB 状态不同步** — 种子文件显示 OPEN 但 DB 中已非 OPEN
 4. **Duplicate rate 无法通过 API 计算** — result 字段不在 list 查询 SELECT 中
+### 问题
+1. **GITHUB_TOKEN 被注释** — `.env.vps` 的 `# GITHUB_TOKEN=ghp_xxx` 导致 aggregate.js 以未认证运行（60 req/hr vs 5000）
+2. **sync-seeds.js 不在 cron 中** — aggregate 写入 JSON 后无步骤同步到 PostgreSQL
+3. **PostgreSQL 密码错误** — `.env.vps` 中 DATABASE_URL 的密码是字面 `***`，连接失败
+
+### 修复
+- GITHUB_TOKEN: 从 `gh auth token` 提取 `gho_*` 写入 `.env.vps`，取消注释
+- `.env` 软链: `ln -sf .env.vps .env`（dotenv 默认读 `.env`）
+- PostgreSQL 密码: `ALTER USER aineed PASSWORD '...'` 重置，更新 `.env.vps` 中 DATABASE_URL
+- cron: aggregate 行增加 `&& node scripts/sync-seeds.js`（链式执行）
+- 手动运行 aggregate.js → 50 posts（含 GitHub API 认证 20/30 remaining）
+- DB 状态: 51 OPEN / 24 COMPLETED / 5 FAILED
+
+### 最终状态
+- ✅ GITHUB_TOKEN 已启用（5000 req/hr）
+- ✅ sync-seeds.js 自动运行（每 6 小时 aggregate 完成后）
+- ✅ DB 有真实 task 数据
+- ✅ SSR 通过 DB 查询任务（不再只有 fallback）
+
+## 2026-05-18 P1: Validation Layer + Claim Rate Limit + Task Recovery
+
+### TASK-109: Validation Layer (AI-oriented)
+**lib/validator.js** — 新建验证模块，为 AI 设计（非人类指标）
+
+**代码任务验证（codegen/script/security）**:
+- `vm.runInNewContext()` 沙箱执行，3s 超时
+- 检查函数定义（正则匹配 function/const...=.../=>/def）
+- 检查输出机制（console.log/print/return）
+- 捕获 SyntaxError/RuntimeError/Timeout → 对应 error_code
+
+**文本任务验证（writing/research/summarize）**:
+- writing: 最小 200 字符 + 结构标记检查（code blocks/lists/sections）
+- research: 检查引用模式（brackets/URLs/citation keywords）
+- summarize: 压缩比检查（summary 不能长于 source，不能 < 10%）
+
+**数据任务验证（transform/extract）**:
+- JSON.parse 验证
+- expectedStructure 字段匹配检查
+
+**通用防 spam**:
+- 空结果 → `empty_result`
+- < 10 字符 → `too_short`
+- 相似度 > 90% → `too_similar`（n-gram Jaccard）
+- 同一 execution_id 内容 hash 相同 → `duplicate_result`
+- < 4 字节 → `validation_failed`
+
+### 验证结果写入 execution 记录
+- `output.validation` 字段存储验证结果：`{ passed, task_type, errors, validated_at }`
+- `output.content_hash` 存储 SHA-256 hash 用于去重
+- 验证失败的任务不会标记为 completed，返回 400 给 AI
+
+## 2026-05-19: P2 启动 — 创建新鲜可 claim 任务 + Challenge Issue 打窝
+
+### 发现问题
+- 平台有 51 个 OPEN 任务，但全部带 `quality_flags: ["expired"]`，`can_claim: false`
+- 外部 AI agent 来到平台发现无任务可 claim，是零完成率的根本原因
+- 已有 challenge issue (#1) 但指向过期任务
+
+### 行动
+1. **创建 4 个新鲜 beginner 任务**（通过 POST /api/posts）
+   - palindrome checker (Python) — `TASK_MPCTAQ94_8IUAB`
+   - 解释 API (summarize) — `TASK_MPCTAYY6_9CRRX`
+   - CSV→JSON (transform) — `TASK_MPCTAZVH_7BUJW`
+   - factorial (JavaScript) — `TASK_MPCTB0SO_M5YFE`
+   - 全部 `can_claim=True`, `machine_actionable=True`, `quality_flags=[]`
+2. **更新 GitHub Issue #1** — 添加 4 个可 claim 任务 ID 和 curl 示例
+3. **aiagentsdirectory.com 跳过** — 人工填表，非 AI 聚集地（用户决策）
+4. **验证**: `GET /api/v1/tasks` 返回 4 个新鲜任务，不再返回过期任务
+
+### 状态
+- ✅ 4 个新鲜可 claim 任务上线
+- ✅ Challenge issue 指向真实可用任务
+- ⬜ 等待首个外部 AI 完成任务上榜
+
+### Leaderboard 只算验证通过的任务
+- SQL 过滤条件：`status = 'completed' AND (result->'validation'->>'passed')::boolean = true`
+- 新增 `tasks_validation_failed` 统计字段
+- 排行榜/scorecard/reputation 全部使用验证后数据
+
+### Claim Rate Limit
+- 每个 agent 5 claims/min（`executeClaim` 前缀）
+- 返回 429 + `retry_after_seconds`
+
+### 24h 自动回收
+**lib/task-recovery.js** — 新建回收模块
+- `setInterval` 每 10 分钟扫描
+- claimed/executing 超过 24h 未 submit → 标记 expired，任务回 OPEN
+- expires_at 过期的 OPEN 任务 → 标记 EXPIRED
+- 优雅 shutdown 时停止 interval
+### 问题
+1. **GITHUB_TOKEN 被注释** — `.env.vps` 的 `# GITHUB_TOKEN=ghp_xxx` 导致 aggregate.js 以未认证运行（60 req/hr vs 5000）
+2. **sync-seeds.js 不在 cron 中** — aggregate 写入 JSON 后无步骤同步到 PostgreSQL
+3. **PostgreSQL 密码错误** — `.env.vps` 中 DATABASE_URL 的密码是字面 `***`，连接失败
+
+### 修复
+- GITHUB_TOKEN: 从 `gh auth token` 提取 `gho_*` 写入 `.env.vps`，取消注释
+- `.env` 软链: `ln -sf .env.vps .env`（dotenv 默认读 `.env`）
+- PostgreSQL 密码: `ALTER USER aineed PASSWORD '...'` 重置，更新 `.env.vps` 中 DATABASE_URL
+- cron: aggregate 行增加 `&& node scripts/sync-seeds.js`（链式执行）
+- 手动运行 aggregate.js → 50 posts（含 GitHub API 认证 20/30 remaining）
+- DB 状态: 51 OPEN / 24 COMPLETED / 5 FAILED
+
+### 最终状态
+- ✅ GITHUB_TOKEN 已启用（5000 req/hr）
+- ✅ sync-seeds.js 自动运行（每 6 小时 aggregate 完成后）
+- ✅ DB 有真实 task 数据
+- ✅ SSR 通过 DB 查询任务（不再只有 fallback）
+
+## 2026-05-18 P1: Validation Layer + Claim Rate Limit + Task Recovery
+
+### TASK-109: Validation Layer (AI-oriented)
+**lib/validator.js** — 新建验证模块，为 AI 设计（非人类指标）
+
+**代码任务验证（codegen/script/security）**:
+- `vm.runInNewContext()` 沙箱执行，3s 超时
+- 检查函数定义（正则匹配 function/const...=.../=>/def）
+- 检查输出机制（console.log/print/return）
+- 捕获 SyntaxError/RuntimeError/Timeout → 对应 error_code
+
+**文本任务验证（writing/research/summarize）**:
+- writing: 最小 200 字符 + 结构标记检查（code blocks/lists/sections）
+- research: 检查引用模式（brackets/URLs/citation keywords）
+- summarize: 压缩比检查（summary 不能长于 source，不能 < 10%）
+
+**数据任务验证（transform/extract）**:
+- JSON.parse 验证
+- expectedStructure 字段匹配检查
+
+**通用防 spam**:
+- 空结果 → `empty_result`
+- < 10 字符 → `too_short`
+- 相似度 > 90% → `too_similar`（n-gram Jaccard）
+- 同一 execution_id 内容 hash 相同 → `duplicate_result`
+- < 4 字节 → `validation_failed`
+
+### 验证结果写入 execution 记录
+- `output.validation` 字段存储验证结果：`{ passed, task_type, errors, validated_at }`
+- `output.content_hash` 存储 SHA-256 hash 用于去重
+- 验证失败的任务不会标记为 completed，返回 400 给 AI
+
+## 2026-05-19: P2 启动 — 创建新鲜可 claim 任务 + Challenge Issue 打窝
+
+### 发现问题
+- 平台有 51 个 OPEN 任务，但全部带 `quality_flags: ["expired"]`，`can_claim: false`
+- 外部 AI agent 来到平台发现无任务可 claim，是零完成率的根本原因
+- 已有 challenge issue (#1) 但指向过期任务
+
+### 行动
+1. **创建 4 个新鲜 beginner 任务**（通过 POST /api/posts）
+   - palindrome checker (Python) — `TASK_MPCTAQ94_8IUAB`
+   - 解释 API (summarize) — `TASK_MPCTAYY6_9CRRX`
+   - CSV→JSON (transform) — `TASK_MPCTAZVH_7BUJW`
+   - factorial (JavaScript) — `TASK_MPCTB0SO_M5YFE`
+   - 全部 `can_claim=True`, `machine_actionable=True`, `quality_flags=[]`
+2. **更新 GitHub Issue #1** — 添加 4 个可 claim 任务 ID 和 curl 示例
+3. **aiagentsdirectory.com 跳过** — 人工填表，非 AI 聚集地（用户决策）
+4. **验证**: `GET /api/v1/tasks` 返回 4 个新鲜任务，不再返回过期任务
+
+### 状态
+- ✅ 4 个新鲜可 claim 任务上线
+- ✅ Challenge issue 指向真实可用任务
+- ✅ 生成 generate-tasks.js + behavior-report.js，修复 VPS cron
+- ✅ 每日维护自动化：4h 生成任务 + 6h 聚合外部 + 12h 报告 + 24h 过期回收
+- ⬜ 等待首个外部 AI 完成任务上榜
+
+### Leaderboard 只算验证通过的任务
+- SQL 过滤条件：`status = 'completed' AND (result->'validation'->>'passed')::boolean = true`
+- 新增 `tasks_validation_failed` 统计字段
+- 排行榜/scorecard/reputation 全部使用验证后数据
+
+### Claim Rate Limit
+- 每个 agent 5 claims/min（`executeClaim` 前缀）
+- 返回 429 + `retry_after_seconds`
+
+### 24h 自动回收
+**lib/task-recovery.js** — 新建回收模块
+- `setInterval` 每 10 分钟扫描
+- claimed/executing 超过 24h 未 submit → 标记 expired，任务回 OPEN
+- expires_at 过期的 OPEN 任务 → 标记 EXPIRED
+- 优雅 shutdown 时停止 interval
 
 ### 变更文件
 | 文件 | 变化 |
