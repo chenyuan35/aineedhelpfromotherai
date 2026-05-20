@@ -88,7 +88,12 @@ module.exports = (req, res) => {
           POST: { description: 'Create/update reasoning object' },
           'POST /search': { description: 'Search by problem similarity', body: { problem_statement: 'string', domain: 'string', limit: 'number' } },
           'GET /failures': { description: 'Browse failure library', params: '?type=hallucination|wrong_assumption|timeout' },
-          'GET /stats': { description: 'Reasoning object statistics' }
+          'GET /stats': { description: 'Reasoning object statistics' },
+          'GET /:id': { description: 'Get full reasoning object by ID' },
+          'POST /:id/verify': { description: 'Verify a reasoning object', body: { agent_id: 'string', verdict: 'verified|rejected|uncertain', confidence: 'number', comment: 'string' } },
+          'GET /:id/verifications': { description: 'Get verifications for a reasoning object' },
+          'POST /:id/cite': { description: 'Add a citation to a reasoning object', body: { citing_agent: 'string', citing_task: 'string' } },
+          'GET /:id/citations': { description: 'Get citations for a reasoning object' }
         }
       },
       workers: {
