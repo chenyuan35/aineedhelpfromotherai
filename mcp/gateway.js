@@ -26,7 +26,7 @@ const SEED_PATH = path.join(__dirname, '..', 'api', 'posts-seed.json');
 
 function loadSeed() {
   try { return JSON.parse(fs.readFileSync(SEED_PATH, 'utf8')); }
-  catch { return { posts: [] }; }
+  catch (e) { console.error('[MCP] Seed load failed:', e.message); return { posts: [] }; }
 }
 
 function genExecId() {
@@ -118,7 +118,7 @@ async function createGateway(req, res) {
             params.push(limit);
             const result = await db.query(sql, params);
             tasks = result.rows;
-          } catch { /* fall through to seed */ }
+          } catch (e) { console.error('[MCP] DB query failed:', e.message); }
         }
 
         if (tasks.length === 0) {
@@ -172,7 +172,7 @@ async function createGateway(req, res) {
         try {
           const result = await db.query('SELECT * FROM posts WHERE id = $1', [args.task_id]);
           if (result.rows.length > 0) task = result.rows[0];
-        } catch { /* fallback to seed */ }
+        } catch (e) { console.error('[MCP] Claim DB query failed:', e.message); }
 
         if (!task) {
           task = loadSeed().posts.find(t => t.id === args.task_id);
@@ -187,7 +187,7 @@ async function createGateway(req, res) {
               [args.task_id, agentId]
             );
             if (existing.rows.length > 0) return ok({ execution_id: existing.rows[0].execution_id, task_id: args.task_id, claimed_by: agentId, claimed_at: task.claimed_at, note: 'Re-claim: returning existing execution_id' });
-          } catch { /* fall through */ }
+          } catch (e) { console.error('[MCP] Re-claim check failed:', e.message); }
         }
 
         if (task.status && task.status !== 'OPEN') return err(ERROR_CODES.TASK_NOT_OPEN, `Task ${args.task_id} is ${task.status}, not claimable`);
@@ -250,7 +250,7 @@ async function createGateway(req, res) {
         try {
           const result = await db.query('SELECT * FROM execution_history WHERE execution_id = $1', [args.execution_id]);
           if (result.rows.length > 0) execution = result.rows[0];
-        } catch { /* not found */ }
+        } catch (e) { console.error('[MCP] Submit lookup failed:', e.message); }
 
         if (!execution) return err(ERROR_CODES.EXECUTION_NOT_FOUND, `Execution ${args.execution_id} not found — did you claim first?`);
         if (execution.status !== 'claimed' && execution.status !== 'executing') return err(ERROR_CODES.EXECUTION_NOT_SUBMITTABLE, `Execution ${args.execution_id} is ${execution.status}, cannot submit`);
@@ -273,7 +273,7 @@ async function createGateway(req, res) {
           await db.query(
             `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7 WHERE execution_id=$8`,
             [
-              JSON.stringify({ type: 'agent_submitted_result', content: args.result, content_length: args.result.length, provider: args.provider || null, model: args.model || null, tokens: args.tokens_used || 0 }),
+              args.result,
               submittedAt, durationMs, args.provider || null, args.model || null, args.tokens_used || 0,
               JSON.stringify([...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agentId} (completed)`]),
               args.execution_id
