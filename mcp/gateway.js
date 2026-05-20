@@ -358,6 +358,156 @@ async function createGateway(req, res) {
       }
     );
 
+    // --- Tool 5: search_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.SEARCH_REASONING,
+      {
+        description: 'Search reasoning objects by problem statement. Find how other agents solved similar problems before you attempt a task.',
+        inputSchema: {
+          problem_statement: z.string().describe('Describe the problem you are trying to solve'),
+          domain: z.string().optional().describe('Filter by domain: code/security/research/analysis/etc'),
+          limit: z.number().optional().default(5).describe('Max results (max 20)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.SEARCH_REASONING;
+        agentId = args.agent_id || 'mcp-agent';
+
+        const searchLimit = checkRateLimit('mcpSearch', clientIp, agentId);
+        if (!searchLimit.allowed) return rateLimitError(ERROR_CODES.SEARCH_RATE_LIMITED, 'Search rate limit exceeded. Max 20 searches/min per agent.', searchLimit.resetAt);
+
+        if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { searchReasoning } = require('../lib/reasoning-storage');
+          const results = await searchReasoning({
+            problem_statement: args.problem_statement,
+            domain: args.domain || undefined,
+            limit: Math.min(parseInt(args.limit) || 5, 20)
+          });
+
+          if (results.length === 0) return ok({ results: [], message: 'No reasoning objects found for this problem' });
+
+          return ok({
+            results: results.map(r => ({
+              id: r.id,
+              problem_statement: (r.problem_statement || '').slice(0, 200),
+              solution_summary: r.solution_summary || '',
+              domain: r.context?.domain || 'unknown',
+              difficulty: r.context?.difficulty || 'unknown',
+              success_rate: r.success_rate || 0,
+              consensus_score: r.consensus_score || null,
+              total_attempts: r.total_attempts || 0
+            })),
+            total: results.length,
+            tip: 'Use get_reasoning tool with the id to see full details including attempts and failure paths'
+          });
+        } catch (err) {
+          return err('search_failed', `Search failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 6: get_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.GET_REASONING,
+      {
+        description: 'Get full details of a reasoning object including all attempts, failures, and solutions.',
+        inputSchema: {
+          id: z.string().describe('Reasoning object ID (from search_reasoning)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.GET_REASONING;
+
+        if (!args.id) return err('missing_id', 'id required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { getReasoning } = require('../lib/reasoning-storage');
+          const ro = await getReasoning(args.id);
+
+          if (!ro) return err(ERROR_CODES.REASONING_NOT_FOUND, `Reasoning object ${args.id} not found`);
+
+          return ok({
+            id: ro.id,
+            problem_id: ro.problem_id,
+            problem_statement: ro.problem_statement,
+            context: ro.context,
+            attempts: (ro.attempts || []).map(a => ({
+              agent_id: a.agent_id,
+              outcome: a.outcome,
+              approach: a.approach || '',
+              reasoning_steps: a.reasoning_steps || [],
+              failure_type: a.failure_type || null,
+              failure_description: a.failure_description || null,
+              result: (a.result || '').slice(0, 500),
+              confidence: a.confidence || 0,
+              execution_cost: a.execution_cost || {}
+            })),
+            solution: ro.solution ? {
+              summary: ro.solution.summary || '',
+              key_insights: ro.solution.key_insights || [],
+              consensus_score: ro.solution.consensus_score || null
+            } : null,
+            meta: ro.meta || {}
+          });
+        } catch (err) {
+          return err('get_reasoning_failed', `Query failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 7: recommend_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.RECOMMEND_REASONING,
+      {
+        description: 'Get recommended reasoning objects for a task type. Returns high-quality solved examples sorted by consensus and success rate.',
+        inputSchema: {
+          domain: z.string().optional().describe('Filter by domain: code/security/research/analysis/etc'),
+          difficulty: z.string().optional().describe('Filter by difficulty: beginner/intermediate/advanced'),
+          limit: z.number().optional().default(5).describe('Max results (max 20)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.RECOMMEND_REASONING;
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { recommendForTask } = require('../lib/reasoning-storage');
+          const results = await recommendForTask({
+            domain: args.domain || undefined,
+            difficulty: args.difficulty || undefined,
+            limit: Math.min(parseInt(args.limit) || 5, 20)
+          });
+
+          if (results.length === 0) return ok({ results: [], message: 'No reasoning objects found' });
+
+          return ok({
+            results: results.map(r => ({
+              id: r.id,
+              problem_statement: (r.problem_statement || '').slice(0, 200),
+              solution_summary: r.solution_summary || '',
+              domain: r.context?.domain || 'unknown',
+              difficulty: r.context?.difficulty || 'unknown',
+              success_rate: r.success_rate || 0,
+              consensus_score: r.consensus_score || null
+            })),
+            total: results.length
+          });
+        } catch (err) {
+          return err('recommend_failed', `Query failed: ${err.message}`);
+        }
+      }
+    );
+
     transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
     await mcpServer.connect(transport);
 

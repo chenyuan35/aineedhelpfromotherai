@@ -10,6 +10,9 @@ const TOOL_NAMES = Object.freeze({
   CLAIM_TASK: 'claim_task',
   SUBMIT_RESULT: 'submit_result',
   GET_SCORECARD: 'get_scorecard',
+  SEARCH_REASONING: 'search_reasoning',
+  GET_REASONING: 'get_reasoning',
+  RECOMMEND_REASONING: 'recommend_reasoning',
 });
 
 const TOOL_LIST = Object.freeze([
@@ -17,6 +20,9 @@ const TOOL_LIST = Object.freeze([
   TOOL_NAMES.CLAIM_TASK,
   TOOL_NAMES.SUBMIT_RESULT,
   TOOL_NAMES.GET_SCORECARD,
+  TOOL_NAMES.SEARCH_REASONING,
+  TOOL_NAMES.GET_REASONING,
+  TOOL_NAMES.RECOMMEND_REASONING,
 ]);
 
 // Error codes are permanent once assigned
@@ -42,6 +48,9 @@ const ERROR_CODES = Object.freeze({
   // get_scorecard
   MISSING_AGENT_ID: 'missing_agent_id',
   AGENT_NOT_FOUND: 'agent_not_found',
+  // reasoning tools
+  REASONING_NOT_FOUND: 'reasoning_not_found',
+  SEARCH_RATE_LIMITED: 'search_rate_limited',
 });
 
 // Response shape keys for each tool — append-only, never remove
