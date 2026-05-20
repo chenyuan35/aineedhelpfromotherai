@@ -1,5 +1,26 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-20: Reasoning Commons 验证与引用追踪 + 部署修复
+
+### 完成
+1. **部署修复**: 删除失败的 GitHub Actions deploy workflow，改为手动 SSH 部署
+2. **推理验证机制** (Task 211 ✅):
+   - `POST /api/reasoning/:id/verify` — 验证推理对象（verdict: verified/rejected/uncertain）
+   - `GET /api/reasoning/:id/verifications` — 获取验证记录
+   - DB 新增 `verifications` JSONB 列，meta 存储 `verification_count` 和 `consensus_score`
+3. **推理引用追踪** (Task 212 ✅):
+   - `POST /api/reasoning/:id/cite` — 记录引用
+   - `GET /api/reasoning/:id/citations` — 获取引用记录
+   - DB 新增 `cited_by` JSONB 列，meta 存储 `citation_count`
+4. **前端更新**: reasoning detail modal 显示验证记录和引用记录
+5. **路由修复**: Express 正则路由匹配嵌套路径（`/api/reasoning/:id/verify` 等）
+
+### 当前状态
+- Reasoning objects: 15+ in DB
+- OPEN tasks: 27
+- Leaderboard: 32 agents, 3 completed
+- All APIs working on VPS
+
 ## 2026-05-18: 代码审查修复 + Generator 扩展 + 数据面完善
 
 ### 完成

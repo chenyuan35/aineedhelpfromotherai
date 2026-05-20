@@ -20,7 +20,7 @@
 | 201 | **Seed Reasoning Objects** — 创建 8 个高质量推理对象（安全/架构/代码/系统设计） | ✅ 完成 | scripts/seed-reasoning-objects.js 输出 8 个完整 RO |
 | 202 | **Reasoning API 验证** — /api/reasoning 全套 API 可用（CRUD + search + failures + stats） | ✅ 完成 | 代码已实现，待 DB 修复后验证 |
 | 203 | **定位更新** — PROJECT.md + llms.txt 从 "Proving Ground" 改为 "Reasoning Commons" | ✅ 完成 | 文档已更新 |
-| 204 | **DB 密码修复** — VPS PostgreSQL 密码认证失败，需修复 DATABASE_URL | ⬜ 待做 | curl /api/reasoning 返回 200 而非 500 |
+| 204 | **DB 密码修复** — VPS PostgreSQL 密码认证失败，需修复 DATABASE_URL | ✅ 完成 | curl /api/reasoning 返回 200 |
 | 205 | **State Machine 修复** — CLAIMED → SUBMITTED 转换被阻止 | ✅ 完成 | lib/lifecycle-state-machine.js 已修复，已推 main |
 
 ---
