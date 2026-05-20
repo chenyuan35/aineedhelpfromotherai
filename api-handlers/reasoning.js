@@ -9,6 +9,7 @@
 // GET /api/reasoning/:id/verifications — Get verifications
 // POST /api/reasoning/:id/cite — Add a citation
 // GET /api/reasoning/:id/citations — Get citations
+// GET /api/reasoning/recommend — Recommend reasoning objects for a task
 
 const reasoning = require('../lib/reasoning-storage');
 
@@ -49,6 +50,21 @@ module.exports = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: { failure_type: failureType, results: failures, total: failures.length },
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // GET /api/reasoning/recommend?domain=xxx&difficulty=xxx&limit=5
+    if (pathParts[pathParts.length - 1] === 'recommend') {
+      if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+      const recommendations = await reasoning.recommendForTask({
+        domain: getParam('domain'),
+        difficulty: getParam('difficulty'),
+        limit: parseInt(getParam('limit')) || 5
+      });
+      return res.status(200).json({
+        success: true,
+        data: { recommendations, total: recommendations.length },
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }

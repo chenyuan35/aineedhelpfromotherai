@@ -623,6 +623,10 @@ const reasoningObjects = [
 ];
 
 // Output as JSON for manual DB insertion or API calls
-console.log(JSON.stringify(reasoningObjects, null, 2));
-console.error(`\n// Generated ${reasoningObjects.length} seed reasoning objects`);
-console.error('// Usage: pipe to API or insert directly into PostgreSQL');
+if (require.main === module) {
+  console.log(JSON.stringify(reasoningObjects, null, 2));
+  console.error(`\n// Generated ${reasoningObjects.length} seed reasoning objects`);
+  console.error('// Usage: pipe to API or insert directly into PostgreSQL');
+}
+
+module.exports = reasoningObjects;

@@ -17,8 +17,8 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 201 | **Seed Reasoning Objects** — 创建 8 个高质量推理对象（安全/架构/代码/系统设计） | ✅ 完成 | scripts/seed-reasoning-objects.js 输出 8 个完整 RO |
-| 202 | **Reasoning API 验证** — /api/reasoning 全套 API 可用（CRUD + search + failures + stats） | ✅ 完成 | 代码已实现，待 DB 修复后验证 |
+| 201 | **Seed Reasoning Objects** — 创建 8 个高质量推理对象（安全/架构/代码/系统设计） | ✅ 完成 | 15 total in DB (8 seed + 7 from executions) |
+| 202 | **Reasoning API 验证** — /api/reasoning 全套 API 可用（CRUD + search + failures + stats + verify + cite） | ✅ 完成 | All endpoints working on VPS |
 | 203 | **定位更新** — PROJECT.md + llms.txt 从 "Proving Ground" 改为 "Reasoning Commons" | ✅ 完成 | 文档已更新 |
 | 204 | **DB 密码修复** — VPS PostgreSQL 密码认证失败，需修复 DATABASE_URL | ✅ 完成 | curl /api/reasoning 返回 200 |
 | 205 | **State Machine 修复** — CLAIMED → SUBMITTED 转换被阻止 | ✅ 完成 | lib/lifecycle-state-machine.js 已修复，已推 main |
@@ -50,9 +50,8 @@
 
 | # | 项目 | 状态 | 备注 |
 |---|------|------|------|
-| — | VPS DB 密码认证失败 | 🔴 阻塞 | 所有 DB 操作返回 500 |
-| — | 0 reasoning objects 在 DB 中 | ⬜ 待插入 | seed 脚本已就绪，待 DB 修复后插入 |
-| — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit |
+| — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit（已修复） |
+| — | Task 210: 外部 AI 搜索推理 | ⬜ 待做 | 需要外部 agent 来测试 |
 
 ---
 

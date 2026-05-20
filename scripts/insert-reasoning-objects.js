@@ -1,45 +1,94 @@
-// insert-reasoning-objects.js — Insert seed reasoning objects into PostgreSQL
-// Run after DB is fixed: node scripts/insert-reasoning-objects.js
-require('dotenv').config({ path: __dirname + '/../.env' });
+#!/usr/bin/env node
+// insert-reasoning-objects.js — Insert seed reasoning objects via API
+// Run: node scripts/insert-reasoning-objects.js
 
-// Force reload db module after dotenv
-delete require.cache[require.resolve('../lib/db')];
-delete require.cache[require.resolve('../lib/reasoning-storage')];
+const https = require('https');
+const http = require('http');
 
-const { execSync } = require('child_process');
-const { saveReasoning } = require('../lib/reasoning-storage');
+const reasoningObjects = require('./seed-reasoning-objects');
+
+const API_BASE = process.env.API_BASE || 'http://localhost:3000';
+
+function post(url, body) {
+  return new Promise((resolve, reject) => {
+    const parsed = new URL(url);
+    const lib = parsed.protocol === 'https:' ? https : http;
+    const data = JSON.stringify(body);
+    
+    const req = lib.request(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data)
+      }
+    }, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(body));
+        } catch {
+          resolve(body);
+        }
+      });
+    });
+    
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
 
 async function main() {
-  const json = execSync('node ' + __dirname + '/seed-reasoning-objects.js 2>/dev/null', { encoding: 'utf8' });
-  const objects = JSON.parse(json);
-
-  console.log(`Inserting ${objects.length} reasoning objects...`);
-
-  let success = 0;
+  console.log('Inserting seed reasoning objects via API...');
+  console.log(`API: ${API_BASE}/api/reasoning\n`);
+  
+  let inserted = 0;
+  let skipped = 0;
   let failed = 0;
-
-  for (const ro of objects) {
+  
+  for (const ro of reasoningObjects) {
     try {
-      await saveReasoning(ro);
-      console.log(`  ✓ ${ro.id}: ${ro.problem_statement.slice(0, 60)}...`);
-      success++;
+      const result = await post(`${API_BASE}/api/reasoning`, ro);
+      if (result.success) {
+        console.log(`✓ ${ro.id}: ${ro.problem_statement.substring(0, 60)}...`);
+        inserted++;
+      } else if (result.error?.includes('already exists') || result.error?.includes('duplicate')) {
+        console.log(`⊘ ${ro.id}: already exists`);
+        skipped++;
+      } else {
+        console.log(`✗ ${ro.id}: ${result.error || 'unknown error'}`);
+        failed++;
+      }
     } catch (err) {
-      console.error(`  ✗ ${ro.id}: ${err.message}`);
+      console.error(`ERROR ${ro.id}:`, err.message);
       failed++;
     }
   }
-
-  console.log(`\nDone: ${success} inserted, ${failed} failed`);
-
-  const { getPool } = require('../lib/db');
-  const pool = getPool();
-  if (pool) {
-    const result = await pool.query('SELECT COUNT(*) FROM reasoning_objects');
-    console.log(`Total reasoning objects in DB: ${result.rows[0].count}`);
+  
+  console.log(`\nDone: ${inserted} inserted, ${skipped} skipped, ${failed} failed`);
+  
+  // Verify via API
+  try {
+    const statsUrl = `${API_BASE}/api/reasoning/stats`;
+    const stats = await new Promise((resolve, reject) => {
+      const parsed = new URL(statsUrl);
+      const lib = parsed.protocol === 'https:' ? https : http;
+      lib.get(statsUrl, (res) => {
+        let body = '';
+        res.on('data', chunk => body += chunk);
+        res.on('end', () => resolve(JSON.parse(body)));
+      }).on('error', reject);
+    });
+    console.log(`Total reasoning objects in DB: ${stats.data?.total || 'unknown'}`);
+  } catch (err) {
+    console.error('Failed to fetch stats:', err.message);
   }
+  
+  process.exit(0);
 }
 
 main().catch(err => {
-  console.error('Fatal error:', err.message);
+  console.error('FATAL:', err);
   process.exit(1);
 });

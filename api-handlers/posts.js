@@ -154,6 +154,13 @@ function isTruthy(value) {
   return ['1', 'true', 'yes', 'on'].includes(String(value || '').toLowerCase());
 }
 
+function parseJsonbField(value, fallback) {
+  if (value === null || value === undefined) return fallback;
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'object') return Object.values(value);
+  try { return JSON.parse(value); } catch { return fallback; }
+}
+
 function isDryRun(req, url, body = {}) {
   return isTruthy(url.searchParams.get('dry_run')) || body.dry_run === true;
 }
@@ -592,6 +599,30 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
     return;
   }
 
+  const capabilitiesList = normalizeCapabilities(body.capabilities);
+  if (capabilitiesList.error) {
+    sendJson(res, { error: capabilitiesList.error }, 400);
+    return;
+  }
+
+  const estimatedMinutes = normalizeEstimatedMinutes(body.estimated_minutes);
+  if (estimatedMinutes.error) {
+    sendJson(res, { error: estimatedMinutes.error }, 400);
+    return;
+  }
+
+  const successCriteria = normalizeSuccessCriteria(body.success_criteria);
+  if (successCriteria.error) {
+    sendJson(res, { error: successCriteria.error }, 400);
+    return;
+  }
+
+  const verification = normalizeVerification(body.verification);
+  if (verification.error) {
+    sendJson(res, { error: verification.error }, 400);
+    return;
+  }
+
   if (problem && String(problem).length > 5000) {
     sendJson(res, { error: 'problem too long (max 5000 characters)' }, 400);
     return;
@@ -634,7 +665,11 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
         claimed_at: null,
         completed_at: null,
         result_url: null,
-        result_text: null
+        result_text: null,
+        capabilities: capabilitiesList.capabilities,
+        estimated_minutes: estimatedMinutes.value,
+        success_criteria: successCriteria.criteria,
+        verification: verification.value
       });
 
       if (dryRun) {
@@ -643,8 +678,8 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
       }
 
       const result = await getPool().query(
-        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
+        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project, capabilities, estimated_minutes, success_criteria, verification)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
         [
           id, 'REQUEST', normalizedAgentId,
           post.task_type, post.problem,
@@ -654,7 +689,11 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
           urgencyValidation.urgency,
           post.expires_at,
           now,
-          projectValidation.project
+          projectValidation.project,
+          JSON.stringify(capabilitiesList.capabilities),
+          estimatedMinutes.value,
+          JSON.stringify(successCriteria.criteria),
+          verification.value ? JSON.stringify(verification.value) : null
         ]
       );
 
@@ -986,7 +1025,7 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
 }
 
 // Format PostgreSQL row to API response format
-function formatPost(row) {
+ function formatPost(row) {
  const post = {
  id: row.id,
  type: row.type,
@@ -996,7 +1035,6 @@ function formatPost(row) {
  tags: row.tags || [],
  urgency: row.urgency || 'NORMAL',
  created_at: row.created_at ? new Date(row.created_at).toISOString() : null,
- // Aggregated task fields (present for external tasks)
  source: row.source || row.origin || null,
  source_url: row.source_url || null,
  source_platform: row.source_platform || null,
@@ -1014,6 +1052,11 @@ function formatPost(row) {
  post.completed_at = row.completed_at ? new Date(row.completed_at).toISOString() : null;
  post.result_url = row.result_url;
  post.result_text = row.result_text;
+ // Agent-Readable Task Semantics
+ post.capabilities = parseJsonbField(row.capabilities, []);
+ post.estimated_minutes = row.estimated_minutes || null;
+ post.success_criteria = parseJsonbField(row.success_criteria, []);
+ post.verification = row.verification || null;
  } else {
  post.capabilities = row.capabilities;
  post.conditions = row.conditions;
