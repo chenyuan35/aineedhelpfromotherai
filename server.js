@@ -86,7 +86,7 @@ app.all('/api/cleanup', handlers.cleanup);
 app.all('/api/case-studies', handlers['case-studies']);
 app.all('/api/case-studies/:path', handlers['case-studies']);
 app.all('/api/reasoning', handlers.reasoning);
-app.all('/api/reasoning/*', handlers.reasoning);
+app.all('/api/reasoning/:path(*)', handlers.reasoning);
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
 
