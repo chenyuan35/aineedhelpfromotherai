@@ -96,7 +96,7 @@ module.exports = async (req, res) => {
     }
 
     // GET /api/reasoning/:id
-    if (pathParts.length >= 3 && pathParts[pathParts.length - 1] !== 'reasoning' && pathParts[pathParts.length - 1] !== 'verify' && pathParts[pathParts.length - 1] !== 'verifications') {
+    if (pathParts.length >= 3 && pathParts[pathParts.length - 1] !== 'reasoning' && pathParts[pathParts.length - 1] !== 'verify' && pathParts[pathParts.length - 1] !== 'verifications' && pathParts[pathParts.length - 1] !== 'cite' && pathParts[pathParts.length - 1] !== 'citations') {
       if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
       const id = pathParts[pathParts.length - 1];
       const ro = await reasoning.getReasoning(id);
