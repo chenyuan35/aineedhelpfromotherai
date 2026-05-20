@@ -32,7 +32,8 @@
 | 210 | **外部 AI 搜索推理** — 有外部 agent 通过 /api/reasoning/search 找到并复用推理 | 🔄 进行中 | MCP tools 已添加 search_reasoning/get_reasoning/recommend_reasoning |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
-| 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | search_reasoning, get_reasoning, recommend_reasoning |
+| 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | 9 MCP tools: search/get/recommend/recent/tags + enhanced filters |
+| 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
 
 ---
 
