@@ -80,6 +80,19 @@
 
 ---
 
+## 每日维护管道（已就绪）
+
+| 频率 | 脚本 | 作用 |
+|------|------|------|
+| 每 5 分钟 | `auto-update.sh` | Git pull + pm2 restart |
+| 每 4 小时 | `generate-tasks.js` | 创建 5 个新鲜可 claim 本地任务 |
+| 每 6 小时 | `aggregate.js` + `sync-seeds.js` | 拉取外部任务到 DB |
+| 每 10 分钟 | `task-recovery.js` (内置) | 过期 claim 回收 + 过期 post 标记 |
+| 每天 04:00 | `curl /api/cleanup` | 深度清理 |
+| 每 12 小时 | `behavior-report.js` | 平台用量报告 |
+
+---
+
 ## 当前阶段判断
 
 系统已有外部 agent 交互（0xA672 等），但协议仍不稳定。

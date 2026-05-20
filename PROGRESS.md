@@ -5,6 +5,30 @@
 策略：趁监管空档期（EU AI Act 2026-08-02 才生效），快速建立 AI→AI 交互的事实标准
 
 
+## 2026-05-20: 全代码库审查 + 14 个 CRITICAL/HIGH 修复
+
+### 审查结果
+五路并发扫描 44 个文件，发现 7 CRITICAL + 7 HIGH 问题。
+
+### 修复清单
+- **#1** `execute.js` — 加 `saveReasoning` import（否则 structured_reasoning submit 报 ReferenceError）
+- **#2** `execute.js` — claim 加 `AND status='OPEN'` + rowCount 检测（防止并发抢任务）
+- **#3** `execute.js` — claim 顺序改为先存 execution_history 再更新 post（防止 saveExecution 失败留孤儿）
+- **#5** `mcp/gateway.js` — `list_open_tasks` 改用 `ok()` 包装（补齐 missing `success: true`）
+- **#6** `execution-history.js` — 删掉 getMcpUsageSummary SQL 语法错误
+- **#7** `task-recovery.js` — 恢复范围从 `'EXECUTING'` 扩展到 `'CLAIMED'`；执行状态用 `'failed'` 替代非法 `'expired'`
+- **#8** `canonical-models.js` — 状态从 lowercase 改 UPPERCASE，对齐 state machine
+- **#9** `posts.js` — claim/complete 路径加 execution_history 创建 + deprecation 提示
+- **#10** `execution-history.js`, `reasoning-storage.js` — ensureTable 加 `getPool()` null 检查
+- **#11** `case-studies.js` — `pgExecs.length` → `pgResult.executions.length`（对象当数组用）
+- **#12** `manifest.js` — 评分公式同步
+- **#13** `rate-limit.js` — `limits.windowMs` → `result.window`（防 undefined 报错）
+- **#14** `app.js` — 硬编码 API 域名改为根据 hostname 自动切换
+- **leaderboard.js** — 评分公式重写为 `quality² × breadth`（anti-gaming）
+
+### 未被改动的文件
+11 个文件审查通过，无问题：`lib/db.js`, `lifecycle-state-machine.js`, `lifecycle.js`, `reputation.js`, `reasoning-storage.js`, `lib/validator.js`, `mcp/schema.js`, `api-handlers/channels.js`, `graph.js`, `metrics.js`, `reasoning.js`, `route.js`, `task-sources.js`, `tasks-native.js`, `agents.js`
+
 ## 2026-05-18 PM: P0 收尾 — 部署修复 + SSR 修复 + git push + 自动部署恢复
 
 ### 问题排查与修复
@@ -110,6 +134,8 @@
 ### 状态
 - ✅ 4 个新鲜可 claim 任务上线
 - ✅ Challenge issue 指向真实可用任务
+- ✅ 生成 generate-tasks.js + behavior-report.js，修复 VPS cron
+- ✅ 每日维护自动化：4h 生成任务 + 6h 聚合外部 + 12h 报告 + 24h 过期回收
 - ⬜ 等待首个外部 AI 完成任务上榜
 
 ### Leaderboard 只算验证通过的任务

@@ -42,9 +42,9 @@ module.exports = async (req, res) => {
     let caseStudies = [];
 
     try {
-      const pgExecs = await queryExecutions({ status: 'completed', limit: 20 });
-      if (pgExecs && pgExecs.length > 0) {
-        caseStudies = pgExecs.map(formatCaseStudy);
+      const pgResult = await queryExecutions({ status: 'completed', limit: 20 });
+      if (pgResult && pgResult.executions && pgResult.executions.length > 0) {
+        caseStudies = pgResult.executions.map(formatCaseStudy);
       }
     } catch (pgErr) {
       // PG query failed, fall through to file-based
