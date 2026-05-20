@@ -5,6 +5,8 @@
 // GET /api/reasoning/failures?type=xxx — Browse failures
 // POST /api/reasoning — Create/update reasoning object
 // GET /api/reasoning/stats — Stats
+// POST /api/reasoning/:id/verify — Verify a reasoning object
+// GET /api/reasoning/:id/verifications — Get verifications
 
 const reasoning = require('../lib/reasoning-storage');
 
@@ -92,7 +94,7 @@ module.exports = async (req, res) => {
     }
 
     // GET /api/reasoning/:id
-    if (pathParts.length >= 3 && pathParts[pathParts.length - 1] !== 'reasoning') {
+    if (pathParts.length >= 3 && pathParts[pathParts.length - 1] !== 'reasoning' && pathParts[pathParts.length - 1] !== 'verify' && pathParts[pathParts.length - 1] !== 'verifications') {
       if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
       const id = pathParts[pathParts.length - 1];
       const ro = await reasoning.getReasoning(id);
@@ -100,6 +102,41 @@ module.exports = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: ro,
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // POST /api/reasoning/:id/verify
+    if (pathParts[pathParts.length - 1] === 'verify') {
+      if (method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+      const id = pathParts[pathParts.length - 2];
+      let body = {};
+      if (req.body) {
+        body = req.body;
+      } else {
+        let data = '';
+        for await (const chunk of req) data += chunk;
+        if (data) body = JSON.parse(data);
+      }
+      if (!body.verdict) return res.status(400).json({ error: 'Missing required field: verdict (verified/rejected/uncertain)' });
+      const result = await reasoning.verifyReasoning(id, body);
+      if (!result) return res.status(404).json({ error: 'Reasoning object not found' });
+      return res.status(200).json({
+        success: true,
+        data: result,
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // GET /api/reasoning/:id/verifications
+    if (pathParts[pathParts.length - 1] === 'verifications') {
+      if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+      const id = pathParts[pathParts.length - 2];
+      const verifications = await reasoning.getVerifications(id);
+      if (!verifications) return res.status(404).json({ error: 'Reasoning object not found' });
+      return res.status(200).json({
+        success: true,
+        data: verifications,
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }
