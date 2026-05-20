@@ -172,10 +172,17 @@ async function loadReasoningObjects() {
 // Show reasoning detail modal
 async function showReasoningDetail(id) {
   try {
-    const res = await fetch(API + '/reasoning/' + id);
-    const data = await res.json();
+    const [resR, verR, citeR] = await Promise.all([
+      fetch(API + '/reasoning/' + id),
+      fetch(API + '/reasoning/' + id + '/verifications').catch(() => null),
+      fetch(API + '/reasoning/' + id + '/citations').catch(() => null)
+    ]);
+    const data = await resR.json();
     const ro = data?.data;
     if (!ro) return;
+
+    const verData = verR?.ok ? (await verR.json())?.data : null;
+    const citeData = citeR?.ok ? (await citeR.json())?.data : null;
 
     const modal = document.createElement('div');
     modal.className = 'reasoning-modal';
@@ -191,12 +198,40 @@ async function showReasoningDetail(id) {
       </div>
     `).join('');
 
+    const verHtml = verData ? `
+      <div class="verifications">
+        <strong>Verifications (${verData.verification_count || 0})</strong>
+        ${verData.consensus_score ? `<span class="consensus">Consensus: ${(verData.consensus_score * 100).toFixed(0)}%</span>` : ''}
+        ${(verData.verifications || []).map(v => `
+          <div class="verification ${v.verdict === 'verified' ? 'ver-verified' : 'ver-rejected'}">
+            <strong>${esc(v.agent_id)}</strong> — ${v.verdict} (confidence: ${v.confidence?.toFixed(1) || 'N/A'})
+            ${v.comment ? `<div style="color:var(--dim);margin-top:2px">${esc(v.comment)}</div>` : ''}
+            <div style="color:var(--dim);font-size:0.8em">${new Date(v.verified_at).toLocaleString()}</div>
+          </div>
+        `).join('')}
+      </div>
+    ` : '';
+
+    const citeHtml = citeData ? `
+      <div class="citations">
+        <strong>Citations (${citeData.citation_count || 0})</strong>
+        ${(citeData.cited_by || []).map(c => `
+          <div class="citation">
+            <strong>${esc(c.citing_agent)}</strong> cited in ${esc(c.citing_task || 'unknown')}
+            <div style="color:var(--dim);font-size:0.8em">${new Date(c.cited_at).toLocaleString()}</div>
+          </div>
+        `).join('')}
+      </div>
+    ` : '';
+
     modal.innerHTML = `
       <div class="reasoning-modal-content">
         <span class="reasoning-modal-close" onclick="this.closest('.reasoning-modal').remove()">✕</span>
         <h3>${esc(ro.id)} <span class="rl-domain">${esc(ro.context?.domain || '')}</span></h3>
         <div class="problem">${esc(ro.problem_statement)}</div>
         ${ro.solution?.summary ? `<div class="solution"><strong>Solution:</strong> ${esc(ro.solution.summary)}</div>` : ''}
+        ${verHtml}
+        ${citeHtml}
         <div class="attempts"><strong>Attempts (${ro.meta?.total_attempts || 0}):</strong>${attemptsHtml}</div>
       </div>
     `;

@@ -420,6 +420,44 @@ a:hover { color: var(--accent); }
 .reasoning-modal-content .attempt-success {
   border-left: 2px solid var(--done);
 }
+.reasoning-modal-content .verifications {
+  margin-top: 12px;
+  padding: 8px;
+  background: var(--bg2);
+  border-radius: 2px;
+}
+.reasoning-modal-content .consensus {
+  float: right;
+  color: var(--done);
+  font-size: 0.9em;
+}
+.reasoning-modal-content .verification {
+  background: var(--bg);
+  padding: 6px 8px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+  margin-top: 6px;
+}
+.reasoning-modal-content .ver-verified {
+  border-left: 2px solid var(--done);
+}
+.reasoning-modal-content .ver-rejected {
+  border-left: 2px solid var(--error);
+}
+.reasoning-modal-content .citations {
+  margin-top: 12px;
+  padding: 8px;
+  background: var(--bg2);
+  border-radius: 2px;
+}
+.reasoning-modal-content .citation {
+  background: var(--bg);
+  padding: 6px 8px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+  margin-top: 6px;
+  border-left: 2px solid var(--accent);
+}
 .reasoning-modal-close {
   position: absolute;
   top: 8px;
