@@ -552,6 +552,21 @@ async function handleSubmit(req, res) {
     }
   }
 
+  // --- Auto-citation: if agent cited reasoning objects, record citations ---
+  if (body.cited_reasoning_ids && Array.isArray(body.cited_reasoning_ids)) {
+    const { addCitation } = require('../lib/reasoning-storage');
+    for (const citedId of body.cited_reasoning_ids) {
+      try {
+        await addCitation(citedId, {
+          citing_agent: agent.agent_id,
+          citing_task: execution.task_id
+        });
+      } catch (err) {
+        console.error(`[submit] Failed to add citation for ${citedId}:`, err.message);
+      }
+    }
+  }
+
     return res.status(200).json({
       success: true,
       action: 'submit',
