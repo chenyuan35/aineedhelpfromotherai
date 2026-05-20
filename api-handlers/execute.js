@@ -493,11 +493,11 @@ async function handleSubmit(req, res) {
       if (submitDb2) {
         try {
           const taskRes = await submitDb2.query(
-            'SELECT problem, body, title FROM posts WHERE id = $1',
+            'SELECT problem FROM posts WHERE id = $1',
             [execution.task_id]
           );
-          if (taskRes.rows[0]) {
-            originalProblem = taskRes.rows[0].problem || taskRes.rows[0].body || taskRes.rows[0].title || execution.task_id;
+          if (taskRes.rows[0] && taskRes.rows[0].problem) {
+            originalProblem = taskRes.rows[0].problem;
           }
         } catch (_) { /* fallback to task_id */ }
       }
