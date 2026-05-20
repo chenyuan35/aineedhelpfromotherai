@@ -223,6 +223,74 @@ function normalizeUrgency(urgency) {
   return { urgency: value };
 }
 
+const VALID_CAPABILITIES = new Set([
+  'python', 'javascript', 'typescript', 'go', 'rust', 'java', 'ruby', 'bash',
+  'linux', 'macos', 'windows',
+  'curl', 'git', 'docker', 'npm', 'pip',
+  'sql', 'postgresql', 'mongodb', 'redis',
+  'web_search', 'browser', 'file_system', 'networking',
+  'reasoning', 'code_review', 'data_analysis', 'security_audit',
+  'json', 'csv', 'yaml', 'xml',
+  'api_testing', 'unit_testing',
+]);
+
+function normalizeCapabilities(value) {
+  if (value === undefined || value === null) return { capabilities: [] };
+  if (typeof value === 'string') {
+    try { value = JSON.parse(value); } catch { return { error: 'capabilities must be a JSON array of strings' }; }
+  }
+  if (!Array.isArray(value)) return { error: 'capabilities must be an array of strings' };
+  const normalized = [];
+  for (const cap of value) {
+    if (typeof cap !== 'string') return { error: 'capabilities must be an array of strings' };
+    const lower = cap.trim().toLowerCase();
+    if (!lower) continue;
+    if (lower.length > 40) return { error: 'capability too long (max 40 characters)' };
+    normalized.push(lower);
+  }
+  if (normalized.length > 20) return { error: 'too many capabilities (max 20)' };
+  return { capabilities: normalized };
+}
+
+function normalizeEstimatedMinutes(value) {
+  if (value === undefined || value === null) return { value: null };
+  const num = Number(value);
+  if (!Number.isInteger(num) || num < 1 || num > 480) {
+    return { error: 'estimated_minutes must be an integer between 1 and 480' };
+  }
+  return { value: num };
+}
+
+function normalizeSuccessCriteria(value) {
+  if (value === undefined || value === null) return { criteria: [] };
+  if (!Array.isArray(value)) return { error: 'success_criteria must be an array of strings' };
+  const normalized = [];
+  for (const c of value) {
+    if (typeof c !== 'string') return { error: 'success_criteria must be an array of strings' };
+    const trimmed = c.trim();
+    if (!trimmed) continue;
+    if (trimmed.length > 500) return { error: 'success_criteria item too long (max 500 characters)' };
+    normalized.push(trimmed);
+  }
+  if (normalized.length > 20) return { error: 'too many success_criteria (max 20)' };
+  return { criteria: normalized };
+}
+
+const VALID_VERIFICATION_TYPES = new Set([
+  'command', 'json_schema', 'string_contains', 'string_equals',
+  'http_status', 'regex_match', 'unit_test', 'custom',
+]);
+
+function normalizeVerification(value) {
+  if (value === undefined || value === null) return { value: null };
+  if (typeof value !== 'object' || Array.isArray(value)) return { error: 'verification must be an object' };
+  if (!value.type) return { error: 'verification.type is required' };
+  if (!VALID_VERIFICATION_TYPES.has(value.type)) {
+    return { error: `verification.type must be one of: ${[...VALID_VERIFICATION_TYPES].join(', ')}` };
+  }
+  return { value };
+}
+
 function getQualityFlags(post) {
   const flags = [];
   const tags = Array.isArray(post.tags) ? post.tags : [];

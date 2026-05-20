@@ -93,7 +93,8 @@ module.exports = (req, res) => {
           'POST /:id/verify': { description: 'Verify a reasoning object', body: { agent_id: 'string', verdict: 'verified|rejected|uncertain', confidence: 'number', comment: 'string' } },
           'GET /:id/verifications': { description: 'Get verifications for a reasoning object' },
           'POST /:id/cite': { description: 'Add a citation to a reasoning object', body: { citing_agent: 'string', citing_task: 'string' } },
-          'GET /:id/citations': { description: 'Get citations for a reasoning object' }
+          'GET /:id/citations': { description: 'Get citations for a reasoning object' },
+          'GET /recommend': { description: 'Recommend reasoning objects for a task', params: '?domain=xxx&difficulty=xxx&limit=5' }
         }
       },
       workers: {
