@@ -31,7 +31,7 @@
 |---|------|------|---------|
 | 210 | **外部 AI 搜索推理** — 有外部 agent 通过 /api/reasoning/search 找到并复用推理 | ⬜ 待做 | mcp_usage 或 access log 显示 search 请求 |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
-| 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ⬜ 待做 | reasoning_objects 增加 cited_by 字段 |
+| 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
 
 ---
 
