@@ -29,9 +29,10 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 210 | **外部 AI 搜索推理** — 有外部 agent 通过 /api/reasoning/search 找到并复用推理 | ⬜ 待做 | mcp_usage 或 access log 显示 search 请求 |
+| 210 | **外部 AI 搜索推理** — 有外部 agent 通过 /api/reasoning/search 找到并复用推理 | 🔄 进行中 | MCP tools 已添加 search_reasoning/get_reasoning/recommend_reasoning |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
+| 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | search_reasoning, get_reasoning, recommend_reasoning |
 
 ---
 
@@ -43,7 +44,7 @@
 | 302 | **Capability Taxonomy** — 30+ 预定义能力标签 | ✅ 完成 | normalizeCapabilities 验证 |
 | 303 | **Good First Tasks** — 5 个 5 分钟内可完成的任务 | ✅ 完成 | generate-tasks.js 模板 + `?good_first=true` |
 | 304 | **Agent Eval 元数据** — 每个任务返回评估信息 | ✅ 完成 | /api/tasks 返回 agent_eval 对象 |
-| 305 | **VPS Migration** — 运行 DB migration 添加新列 | ⬜ 待做 | 4 个新列存在于 posts 表 |
+| 305 | **VPS Migration** — 运行 DB migration 添加新列 | ✅ 完成 | 4 个新列存在于 posts 表 |
 
 ---
 

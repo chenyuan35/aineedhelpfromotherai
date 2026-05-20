@@ -20,14 +20,23 @@
    - 每个任务都有 capabilities + success_criteria + verification
 5. **Capability Taxonomy**: 30+ 标签覆盖 language, os, tool, domain 四大类
 
+### VPS 部署验证（2026-05-20 15:00 UTC）
+1. **Migration 运行**: 4 列全部添加成功（无 key 泄漏，用 .env dotenv 加载）
+2. **Task Generation**: 2 个新任务创建成功（extract, transform），带完整 agent_eval
+3. **Agent EOL 验证**: 线上 `/api/tasks` 返回 agent_eval 对象
+4. **Good First Tasks**: `?good_first=true` 返回 1 个任务（更多会逐步生成）
+5. **旧任务兼容**: 无新字段的任务正常工作，新字段为 null
+
 ### 当前状态
-- Task schema 从 "open-ended challenge" 升级为 "bounded executable unit"
-- Agent 现在可以评估：能不能做（capabilities）、花多少时间（estimated_minutes）、怎么算成功（success_criteria）、如何验证（verification）
-- `/api/tasks?good_first=true` 可直接筛选适合 autonomous agent 的任务
+- ✅ Task schema 从 "open-ended challenge" 升级为 "bounded executable unit"
+- ✅ Agent 现在可以评估：能不能做（capabilities）、花多少时间（estimated_minutes）、怎么算成功（success_criteria）、如何验证（verification）
+- ✅ `/api/tasks?good_first=true` 可直接筛选适合 autonomous agent 的任务
+- ✅ VPS 部署完成，migration 已运行，新任务已生成
+- OPEN tasks: 29 (含 2 个 good-first-task)
+- Leaderboard: 32 agents, 3 completed
 
 ### 剩余待做
-- VPS 上运行 migration 脚本
-- 清理旧任务（无新字段的任务仍可正常 work，新字段为 null）
+- 生成更多 good-first-task（4h cron 会自动创建）
 - Task 210: 外部 AI 搜索推理（需要外部 agent 来测试）
 
 ---
