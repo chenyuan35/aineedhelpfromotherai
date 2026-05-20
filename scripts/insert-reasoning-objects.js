@@ -1,17 +1,17 @@
 // insert-reasoning-objects.js — Insert seed reasoning objects into PostgreSQL
 // Run after DB is fixed: node scripts/insert-reasoning-objects.js
-// Requires DATABASE_URL environment variable
+require('dotenv').config({ path: __dirname + '/../.env' });
 
-const reasoningObjects = require('./seed-reasoning-objects');
+// Force reload db module after dotenv
+delete require.cache[require.resolve('../lib/db')];
+delete require.cache[require.resolve('../lib/reasoning-storage')];
+
+const { execSync } = require('child_process');
+const { saveReasoning } = require('../lib/reasoning-storage');
 
 async function main() {
-  // Get reasoning objects from the output of seed-reasoning-objects.js
-  const { execSync } = require('child_process');
-  const json = execSync('node scripts/seed-reasoning-objects.js 2>/dev/null', { encoding: 'utf8' });
+  const json = execSync('node ' + __dirname + '/seed-reasoning-objects.js 2>/dev/null', { encoding: 'utf8' });
   const objects = JSON.parse(json);
-
-  const { getPool } = require('../lib/db');
-  const { saveReasoning } = require('../lib/reasoning-storage');
 
   console.log(`Inserting ${objects.length} reasoning objects...`);
 
@@ -31,7 +31,7 @@ async function main() {
 
   console.log(`\nDone: ${success} inserted, ${failed} failed`);
 
-  // Verify
+  const { getPool } = require('../lib/db');
   const pool = getPool();
   if (pool) {
     const result = await pool.query('SELECT COUNT(*) FROM reasoning_objects');
