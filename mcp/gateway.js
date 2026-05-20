@@ -366,6 +366,10 @@ async function createGateway(req, res) {
         inputSchema: {
           problem_statement: z.string().describe('Describe the problem you are trying to solve'),
           domain: z.string().optional().describe('Filter by domain: code/security/research/analysis/etc'),
+          difficulty: z.string().optional().describe('Filter by difficulty: beginner/intermediate/advanced'),
+          min_success_rate: z.number().optional().describe('Minimum success rate (0-1)'),
+          min_consensus_score: z.number().optional().describe('Minimum consensus score (0-1)'),
+          has_solution: z.boolean().optional().describe('Only return objects with solutions'),
           limit: z.number().optional().default(5).describe('Max results (max 20)')
         }
       },
@@ -386,6 +390,10 @@ async function createGateway(req, res) {
           const results = await searchReasoning({
             problem_statement: args.problem_statement,
             domain: args.domain || undefined,
+            difficulty: args.difficulty || undefined,
+            min_success_rate: args.min_success_rate,
+            min_consensus_score: args.min_consensus_score,
+            has_solution: args.has_solution,
             limit: Math.min(parseInt(args.limit) || 5, 20)
           });
 
@@ -400,7 +408,8 @@ async function createGateway(req, res) {
               difficulty: r.context?.difficulty || 'unknown',
               success_rate: r.success_rate || 0,
               consensus_score: r.consensus_score || null,
-              total_attempts: r.total_attempts || 0
+              total_attempts: r.total_attempts || 0,
+              search_rank: r.search_rank || 0
             })),
             total: results.length,
             tip: 'Use get_reasoning tool with the id to see full details including attempts and failure paths'
@@ -504,6 +513,76 @@ async function createGateway(req, res) {
           });
         } catch (err) {
           return err('recommend_failed', `Query failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 8: get_recent_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.GET_RECENT_REASONING,
+      {
+        description: 'Get recently active reasoning objects (recently verified or cited). Useful for discovering trending solutions.',
+        inputSchema: {
+          limit: z.number().optional().default(10).describe('Max results (max 20)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.GET_RECENT_REASONING;
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { getRecentlyActive } = require('../lib/reasoning-storage');
+          const results = await getRecentlyActive(Math.min(parseInt(args.limit) || 10, 20));
+
+          if (results.length === 0) return ok({ results: [], message: 'No active reasoning objects found' });
+
+          return ok({
+            results: results.map(r => ({
+              id: r.id,
+              problem_statement: (r.problem_statement || '').slice(0, 200),
+              solution_summary: r.solution_summary || '',
+              domain: r.context?.domain || 'unknown',
+              difficulty: r.context?.difficulty || 'unknown',
+              success_rate: r.success_rate || 0,
+              consensus_score: r.consensus_score || null,
+              citation_count: r.citation_count || 0,
+              verification_count: r.verification_count || 0,
+              updated_at: r.updated_at
+            })),
+            total: results.length
+          });
+        } catch (err) {
+          return err('recent_failed', `Query failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 9: get_popular_tags ---
+    mcpServer.registerTool(
+      TOOL_NAMES.GET_POPULAR_TAGS,
+      {
+        description: 'Get popular tags across all reasoning objects. Useful for discovering common problem patterns.',
+        inputSchema: {
+          limit: z.number().optional().default(20).describe('Max tags to return (max 50)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.GET_POPULAR_TAGS;
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { getPopularTags } = require('../lib/reasoning-storage');
+          const tags = await getPopularTags(Math.min(parseInt(args.limit) || 20, 50));
+
+          if (tags.length === 0) return ok({ tags: [], message: 'No tags found' });
+
+          return ok({ tags, total: tags.length });
+        } catch (err) {
+          return err('tags_failed', `Query failed: ${err.message}`);
         }
       }
     );
