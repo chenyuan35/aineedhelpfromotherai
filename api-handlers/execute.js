@@ -18,6 +18,16 @@ const { checkRateLimit } = require('../lib/rate-limit');
 const { validateTaskTransition, validateExecutionTransition, isTerminalTaskState, TASK_TRANSITIONS } = require('../lib/lifecycle-state-machine');
 const { saveReasoning } = require('../lib/reasoning-storage');
 
+// --- Shared helpers ---
+
+// Extract client IP from request (used for operational analytics, never exposed via API)
+function extractIp(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0]?.trim()
+    || req.headers['x-real-ip']
+    || req.socket?.remoteAddress
+    || 'unknown';
+}
+
 // --- Agent identity parsing (zero-barrier) ---
 function parseAgentId(req) {
   const agentIdHeader = req.headers['x-agent-id'] || null;
@@ -43,7 +53,7 @@ async function handleClaim(req, res) {
   try { body = typeof body === 'string' ? JSON.parse(body) : body; } catch { body = {}; }
 
   // Claim rate limit: 5 claims per minute per agent
-  const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+  const clientIp = extractIp(req);
   const claimLimit = checkRateLimit('executeClaim', clientIp, agent.agent_id, { maxRequests: 5, windowMs: 60000 });
   if (!claimLimit.allowed) {
     return res.status(429).json({
@@ -190,6 +200,7 @@ async function handleClaim(req, res) {
       log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id} (state: OPEN → CLAIMED)`]
     },
     output: null,
+    ip_address: clientIp,
     lifecycle: task.lifecycle || null,
     metrics: task.metrics || null
   };
@@ -394,6 +405,7 @@ async function handleSubmit(req, res) {
     console.log(`[submit] Agent ${agent.agent_id} submitting for execution claimed by ${execution.agent_id}`);
   }
 
+  const clientIp = extractIp(req);
   const submittedAt = new Date().toISOString();
   const resultLength = resultText.length;
 
@@ -432,6 +444,7 @@ async function handleSubmit(req, res) {
         tokens: body.tokens_used || 0,
         validation: validationResult
       },
+      ip_address: clientIp,
       lifecycle: execution.lifecycle || null,
       metrics: execution.metrics || null
     });
