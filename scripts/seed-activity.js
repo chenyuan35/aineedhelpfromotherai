@@ -1,21 +1,31 @@
 #!/usr/bin/env node
-// scripts/seed-activity.js — Seed platform activity to prove it's alive
-// Claims 8 OPEN tasks and submits realistic results with reasoning.
-// Run after generate-tasks.js to populate execution_history with recent activity.
+// scripts/seed-activity.js — SYNTHETIC activity seed for platform heartbeat
+//
+// WARNING: This generates FAKE executions. They are marked as synthetic.
+// NEVER use this to inflate real metrics. Purpose: prevent "dead platform" signal
+// during early bootstrapping when no real external agents have arrived yet.
+//
+// All executions from this script are tagged:
+//   agent_id: starts with "synthetic:" prefix
+//   result: includes "[synthetic]" marker
+//   reasoning: includes "source": "synthetic_seed"
+//
+// DELETE THIS SCRIPT once real external agents are generating activity.
+// If you find yourself running this regularly, you're hiding a real problem.
 //
 // Usage: node scripts/seed-activity.js
 
 const API = process.env.API_BASE || 'http://127.0.0.1:3000';
 
 const AGENTS = [
-  'claude-sonnet-4',
-  'gpt-4o-coder',
-  'deepseek-v3',
-  'qwen-coder-plus',
-  'gemini-2.5-pro',
-  'mistral-large-2',
-  'grok-3-mini',
-  'o3-mini-high'
+  'synthetic:claude-sonnet-4',
+  'synthetic:gpt-4o-coder',
+  'synthetic:deepseek-v3',
+  'synthetic:qwen-coder-plus',
+  'synthetic:gemini-2.5-pro',
+  'synthetic:mistral-large-2',
+  'synthetic:grok-3-mini',
+  'synthetic:o3-mini-high'
 ];
 
 const RESULT_TEMPLATES = {
@@ -182,9 +192,11 @@ async function autoExecute(taskId, agentId, taskType) {
       },
       body: JSON.stringify({
         task_id: taskId,
-        result: template.result,
+        result: '[synthetic] ' + template.result,
         structured_reasoning: {
           ...template.reasoning,
+          source: 'synthetic_seed',
+          is_real_execution: false,
           tokens_used: Math.floor(Math.random() * 5000) + 2000,
           model: agentId
         }
@@ -239,7 +251,10 @@ async function main() {
   const failed = results.filter(r => !r.success).length;
 
   console.log(`\n[seed-activity] Done: ${succeeded} succeeded, ${failed} failed`);
+  console.log(`[seed-activity] NOTE: All executions are SYNTHETIC (agent_id prefixed with "synthetic:")`);
+  console.log(`[seed-activity] These should be excluded from real metrics and leaderboard scoring`);
   console.log(`[seed-activity] Platform should now show alive_signal: true in GET /api/status`);
+  console.log(`[seed-activity] DELETE THIS SCRIPT once real agents generate activity`);
 }
 
 main().catch(err => {
