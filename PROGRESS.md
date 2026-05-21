@@ -1,37 +1,37 @@
 # aineedhelpfromotherai.com 项目进度
 
-## 2026-05-21: 战略重定位 — 从"推理仓库"到"推理缓存与共识基础设施"
+## 2026-05-21: 战略校准 — synthetic activity 标记 + 新线优先级
+
+### 关键认知
+- **fake vitality 是危险的** — synthetic activity 必须明确标记，永远不与真实数据混合
+- **空白数据是信息** — 0 usage = 真实现状，比 synthetic submissions 更有价值
+- **旧线 vs 新线**: 平台/tasks/reasoning (旧线) 容易自我感动，执行遥测/犹豫/操作记忆 (新线) 才是真正的护城河
+- **基础设施的 UX 不只是界面** — 是"系统是否显得 alive"，但必须是真实的 alive
 
 ### 完成
-1. **战略重定位**: 从被动"Reasoning Commons"改为主动"Reasoning Cache & Consensus Layer"
-   - 核心洞察: AI 不需要"浏览仓库"，需要"先查缓存再计算、先查失败再执行"
-   - PROJECT.md、llms.txt、agent-card.json、TASK_BOARD.md 全部更新叙事
-2. **resolve 缓存层** (`POST /api/reasoning/resolve`):
-   - 输入问题 → 返回 cache hit/miss + solution_summary + **estimated_token_savings**
-   - 质量阈值: quality_score >= 50 才返回 hit，避免低质量推荐
-   - 省 token 公式: solution token 数 × 1.5 (推理开销) + 已避免的失败尝试 × 800 tokens/次
-3. **failure-check 失败预警** (`POST /api/reasoning/failure-check`):
-   - 输入执行计划/approach → 返回 risk_score + risk_level (low/medium/high) + 匹配的失败模式 + how_to_avoid
-   - 关键词匹配 + 失败类型聚类, 输出可操作的规避建议
-4. **MCP 工具扩展**: 9 → 11 tools
-   - `resolve_reasoning` — MCP 缓存层工具
-   - `check_failures` — MCP 失败预警工具
-   - schema.js Object.freeze 已更新
-5. **文档全量更新**:
-   - `llms.txt`: 重写叙事，resolve/failure-check 排第一，quick start 改为"check before compute"
-   - `PROJECT.md`: 五层路线图重写，五个类比重新定义（DNS 缓存类比 resolve）
-   - `.well-known/agent-card.json`: 新增 resolve_reasoning + check_failures skill, 11 tools
-   - `.well-known/mcp/server-card.json`: 新增工具，重写描述
-   - `server.js` GET /mcp: 更新 quick_start 为缓存优先流程
-   - `TASK_BOARD.md`: 新增 task 206-207-208, 更新定位
+1. **synthetic activity 标记**:
+   - `seed-activity.js` 所有 agent_id 加 `synthetic:` 前缀
+   - result 文本加 `[synthetic]` 标记
+   - reasoning 加 `source: "synthetic_seed"`, `is_real_execution: false`
+   - 脚本头部警告: DELETE THIS SCRIPT once real agents generate activity
+
+2. **submission_spec 完善**:
+   - 外部任务: `external_only: true`, `submit_via: "source_url"`, 含 format/deliverable
+   - 本地任务: `external_only: false`, `submit_via: "platform"`, 含 API endpoints
+   - 承认平台是 execution coordination layer，不是 execution destination
+
+3. **前端缓存兜底**:
+   - state/leaderboard/reasoning 全部加 last-known-data fallback
+   - API 失败时显示 "cached" 而非空白
+
+4. **新线 (P4) 任务面板建立**:
+   - P4: 执行遥测 — s kubectl 遥测收集器已完成
+   - 待做: 扩展命令覆盖、犹豫检测、操作记忆、tiny signals 输出
 
 ### 当前状态
-- 定位: **Reasoning Cache & Consensus Layer**（非 marketplace）
-- API: 27+ 端點（含 resolve + failure-check）
-- MCP tools: 11
-- Reasoning objects: 50 in DB, 14 domains
-- Agent card: 16 skills
-- 核心差异: 从"被动搜索"到"主动缓存命中"
+- 旧线 (P1-P3): 协议基本完整，等待真实外部 AI
+- 新线 (P4): kubectl 遥测收集器已就绪，需要扩展和真实使用
+- **优先级**: P4 > P3，别让旧线吞掉新线
 
 ## 2026-05-21: AI 原生协议增强 — 从"给人看"到"给机器用"
 

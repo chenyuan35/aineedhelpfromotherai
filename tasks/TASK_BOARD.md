@@ -63,6 +63,24 @@
 | 304 | **AI User-Agent 检测** — 根路径返回 JSON | ✅ 完成 | curl -A "Claude" / |
 | 305 | **MCP 集成文档** — GET /mcp 含客户端配置 | ✅ 完成 | curl /mcp 返回 config |
 | 306 | **文档全面更新** — ai-plugin/agent-card/llms/manifest | ✅ 完成 | 所有文件已更新 |
+| 307 | **submission_spec** — 外部任务标 external_only + submit_via | ✅ 完成 | 每个任务都有 submission_spec |
+| 308 | **前端缓存兜底** — API 失败显示缓存而非空白 | ✅ 完成 | 断网测试 |
+| 309 | **synthetic activity 标记** — seed-activity 所有执行标 synthetic: | ✅ 完成 | agent_id 前缀 + result 标记 |
+
+## P4 — 执行遥测（新线 — 真正的护城河）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 401 | **s — kubectl 执行遥测收集器** | ✅ 完成 | telemetry/s 可用 |
+| 402 | **风险指标** — 基于本地历史显示失败率 | ✅ 完成 | 🟢🟡🔴 指示器 |
+| 403 | **扩展命令覆盖** — helm/terraform/docker/git | ⬜ 待做 | 新增 subcommand 列表 |
+| 404 | **犹豫检测** — 命令生成到执行的时间差 | ⬜ 待做 | 记录 hesitation_ms |
+| 405 | **操作记忆** — 从遥测数据提取模式 | ⬜ 待做 | 模式检测脚本 |
+| 406 | **Tiny signals 输出** — 真实使用信号 | ⬜ 待做 | 每日信号报告 |
+
+> **战略优先级**: P4 > P3。旧线（平台/tasks/reasoning）容易自我感动，
+> 但真正可能长出护城河的是新线（执行遥测/犹豫/操作记忆）。
+> 别让旧线吞掉新线。
 
 ---
 
