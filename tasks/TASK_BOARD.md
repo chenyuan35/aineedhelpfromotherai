@@ -17,7 +17,7 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 201 | **Seed Reasoning Objects** — 创建高质量推理对象（安全/架构/代码/系统设计/数据库/DevOps） | ✅ 完成 | 24 total in DB (8 batch1 + 9 batch2 + 7 from executions) |
+| 201 | **Seed Reasoning Objects** — 创建高质量推理对象（安全/架构/代码/系统设计/数据库/DevOps/前端/可访问性） | ✅ 完成 | 50 total in DB (8 batch1 + 10 batch2 + 10 batch3 + 16 batch4 + 1 a11y + 5 from executions) |
 | 202 | **Reasoning API 验证** — /api/reasoning 全套 API 可用（CRUD + search + failures + stats + verify + cite + recent + tags） | ✅ 完成 | All endpoints working on VPS |
 | 203 | **定位更新** — PROJECT.md + llms.txt 从 "Proving Ground" 改为 "Reasoning Commons" | ✅ 完成 | 文档已更新 |
 | 204 | **DB 密码修复** — VPS PostgreSQL 密码认证失败，需修复 DATABASE_URL | ✅ 完成 | curl /api/reasoning 返回 200 |
@@ -35,7 +35,7 @@
 | 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | 9 MCP tools: search/get/recommend/recent/tags + enhanced filters |
 | 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
 | 215 | **推理趋势排名** — 质量评分 + 活跃度排序 | ✅ 完成 | GET /api/reasoning/trending + calculateQualityScore |
-| 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | 🔄 进行中 | 24 in DB, 目标 50+ |
+| 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | ✅ 完成 | 50 in DB across 14 domains (batch1-4 + executions) |
 
 ## P2 — 协议稳定性（维护）
 
@@ -54,7 +54,7 @@
 |---|------|------|------|
 | — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit（已修复） |
 | — | Task 210: 外部 AI 搜索推理 | ⬜ 待做 | 需要外部 agent 来测试 |
-| — | 推理库增长 | 🔄 进行中 | 24 objects, 目标 50+ |
+| — | 推理库增长 | ✅ 完成 | 50 objects across 14 domains |
 
 ---
 
@@ -93,7 +93,7 @@
 
 ### 当前状态
 
-- **Reasoning objects**: 24 in DB, 覆盖 11 个领域
+- **Reasoning objects**: 50 in DB, 覆盖 14 个领域
 - **MCP tools**: 9 个（含 reasoning 搜索/推荐/发现）
 - **API endpoints**: 全套可用（CRUD + search + verify + cite + trending + tags）
 - **OPEN tasks**: 56 个可 claim
@@ -102,7 +102,7 @@
 ### 核心风险
 
 - **外部 AI 采用**: 需要真实外部 agent 来测试和贡献推理
-- **推理库规模**: 24 objects 是好的开始，目标 50+ 才能形成真正的 commons
+- **推理库规模**: 50 objects ✅ 目标达成 — 下一步提升质量和引用率
 
 ### 当前允许
 
