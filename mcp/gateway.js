@@ -199,9 +199,9 @@ async function createGateway(req, res) {
         try {
           await db.query("UPDATE posts SET status = 'EXECUTING', claimed_by = $1, claimed_at = $2 WHERE id = $3", [agentId, claimedAt, args.task_id]);
           await db.query(
-            `INSERT INTO execution_history (execution_id, task_id, agent_id, agent_name, status, created_at, execution_log, result)
-             VALUES ($1,$2,$3,$4,'claimed',$5,$6,'{}')`,
-            [executionId, args.task_id, agentId, agentId, claimedAt, JSON.stringify([`[${claimedAt}] Task ${args.task_id} claimed by ${agentId}`])]
+            `INSERT INTO execution_history (execution_id, task_id, agent_id, agent_name, status, created_at, execution_log, result, ip_address)
+             VALUES ($1,$2,$3,$4,'claimed',$5,$6,'{}',$7)`,
+            [executionId, args.task_id, agentId, agentId, claimedAt, JSON.stringify([`[${claimedAt}] Task ${args.task_id} claimed by ${agentId}`]), clientIp]
           );
         } catch (err) {
           return err('claim_failed', `Claim failed: ${err.message}`);
@@ -271,12 +271,13 @@ async function createGateway(req, res) {
 
         try {
           await db.query(
-            `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7 WHERE execution_id=$8`,
+            `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7, ip_address=$9 WHERE execution_id=$8`,
             [
               args.result,
               submittedAt, durationMs, args.provider || null, args.model || null, args.tokens_used || 0,
               JSON.stringify([...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agentId} (completed)`]),
-              args.execution_id
+              args.execution_id,
+              clientIp
             ]
           );
           await db.query('UPDATE posts SET status=$1, completed_at=$2 WHERE id=$3', ['COMPLETED', submittedAt, execution.task_id]);
