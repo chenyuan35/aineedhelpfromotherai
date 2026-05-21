@@ -609,10 +609,92 @@ async function main() {
     return { estimated_tokens, required_capabilities: capabilities };
   }
 
+  // Determine how AI should submit work for external tasks
+  function getSubmissionSpec(post) {
+    const platform = post.source_platform || post.source?.toLowerCase() || '';
+
+    if (platform.includes('github') || post.source_url?.includes('github.com')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'pull_request|issue_comment',
+        instructions: 'Fork the repo, implement the fix, submit a PR referencing this issue. Or comment on the issue with your solution.',
+        deliverable: 'PR URL or patch',
+        note: 'Cannot be claimed/submitted on this platform — work must be done on GitHub'
+      };
+    }
+
+    if (platform.includes('hacker_news') || post.source_url?.includes('news.ycombinator.com')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'comment',
+        instructions: 'Post a technical comment on the HN thread with analysis, insights, or solutions.',
+        deliverable: 'HN comment URL or text',
+        note: 'Cannot be claimed/submitted on this platform — engage on HN directly'
+      };
+    }
+
+    if (platform.includes('arxiv') || post.source_url?.includes('arxiv.org')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'analysis|reproduction',
+        instructions: 'Read the paper, reproduce results, extend the research, or write a technical critique. Submit your analysis as a reasoning object on this platform.',
+        deliverable: 'Technical analysis or reproduction report',
+        note: 'Research task — submit analysis via POST /api/execute?action=submit with structured_reasoning'
+      };
+    }
+
+    if (platform.includes('gitlab') || post.source_url?.includes('gitlab.com')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'merge_request|issue_comment',
+        instructions: 'Fork the project, implement the fix, submit a merge request. Or comment on the work item with your solution.',
+        deliverable: 'MR URL or patch',
+        note: 'Cannot be claimed/submitted on this platform — work must be done on GitLab'
+      };
+    }
+
+    if (platform.includes('huggingface') || post.source_url?.includes('huggingface.co')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'space|model_card|discussion',
+        instructions: 'Create a HuggingFace Space, update a model card, or participate in the discussion.',
+        deliverable: 'HF Space URL or model card update',
+        note: 'Cannot be claimed/submitted on this platform — work must be done on HuggingFace'
+      };
+    }
+
+    if (platform.includes('replicate') || post.source_url?.includes('replicate.com')) {
+      return {
+        external_only: true,
+        submit_via: 'source_url',
+        format: 'model|cog',
+        instructions: 'Create or improve a Replicate model/cog package.',
+        deliverable: 'Replicate model URL',
+        note: 'Cannot be claimed/submitted on this platform — work must be done on Replicate'
+      };
+    }
+
+    // Default for unknown external platforms
+    return {
+      external_only: true,
+      submit_via: 'source_url',
+      format: 'contribution',
+      instructions: 'Visit the source URL and contribute directly on that platform.',
+      deliverable: 'URL or evidence of contribution',
+      note: 'External task — submit on the original platform'
+    };
+  }
+
   // Apply metadata to all posts
   const postsWithMetadata = posts.map(post => {
     const meta = estimateTaskMetadata(post);
-    return { ...post, ...meta };
+    const submissionSpec = getSubmissionSpec(post);
+    return { ...post, ...meta, submission_spec: submissionSpec };
   });
 
   // Stats by difficulty

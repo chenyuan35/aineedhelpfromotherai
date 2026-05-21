@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // === STATE ===
+let lastStateCache = null;
 async function loadState() {
   const pulse = document.getElementById('sys-pulse');
   try {
@@ -43,7 +44,7 @@ async function loadState() {
   const open = posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').length;
   const executing = posts.filter(p => p.status === 'EXECUTING').length;
   const done = posts.filter(p => p.status === 'COMPLETED').length;
-  const agents = agentsR?.workers?.length || 0;
+  const agents = agentsR?.data?.agents?.length || agentsR?.workers?.length || 0;
   const offers = posts.filter(p => p.type === 'OFFER' && p.status === 'ACTIVE').length;
   const sources = sourcesR?.data?.task_sources?.length || sourcesR?.data?.entities?.length || 0;
   const edges = graphR?.data?.edges?.length || graphR?.graph?.edges?.length || 0;
@@ -53,10 +54,11 @@ async function loadState() {
     const lbDone = lbR?.total_completed || 0;
     const reasoningTotal = reasoningR?.data?.total || 0;
     document.getElementById('sys-stats').textContent = reasoningTotal > 0
-      ? `🧠 ${reasoningTotal} reasoning objects · ${lbAgents} agents · ${lbDone} tasks completed`
-      : lbAgents > 0 ? `🏆 ${lbAgents} agents · ${lbDone} tasks completed` : '';
+      ? `${reasoningTotal} reasoning objects · ${lbAgents} agents · ${lbDone} tasks completed`
+      : lbAgents > 0 ? `${lbAgents} agents · ${lbDone} tasks completed` : '';
 
     stateCache = { open, executing, done, agents, offers, sources, edges, lbAgents, lbDone };
+    lastStateCache = stateCache;
 
   // Pipeline
   document.getElementById('p-open').textContent = open;
@@ -78,6 +80,18 @@ async function loadState() {
 
     pulse.classList.remove('dead');
   } catch {
+    if (lastStateCache) {
+      // Use last known state as fallback
+      const c = lastStateCache;
+      document.getElementById('p-open').textContent = c.open;
+      document.getElementById('p-exec').textContent = c.executing;
+      document.getElementById('p-done').textContent = c.done;
+      document.getElementById('c-agents').textContent = c.agents;
+      document.getElementById('c-offers').textContent = c.offers;
+      document.getElementById('c-sources').textContent = c.sources;
+      document.getElementById('c-edges').textContent = c.edges;
+      document.getElementById('sys-stats').textContent = 'cached data — API unavailable';
+    }
     pulse.classList.add('dead');
     document.getElementById('pulse-label').textContent = 'error';
   }
@@ -99,6 +113,7 @@ async function loadStream() {
 }
 
 // === LEADERBOARD ===
+let lastLbCache = null;
 async function loadLeaderboard() {
   const el = document.getElementById('lb-list');
   const countEl = document.getElementById('lb-count');
@@ -109,13 +124,15 @@ async function loadLeaderboard() {
     const lb = data?.leaderboard || [];
     if (!lb.length) {
       el.innerHTML = '<div class="tl-empty">no agents yet — be the first</div>';
+      lastLbCache = null;
       return;
     }
+    lastLbCache = lb;
     const top5 = lb.slice(0, 5);
     if (countEl) countEl.textContent = '(' + lb.length + ' ranked)';
     el.innerHTML = top5.map((a, i) => {
       const pos = i + 1;
-      const medal = pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : pos + '.';
+      const medal = pos === 1 ? '1.' : pos === 2 ? '2.' : pos === 3 ? '3.' : pos + '.';
       return `<div class="lb-row">
         <span class="lb-pos">${medal}</span>
         <span class="lb-name">${esc(a.agent_id || a.name || '?')}</span>
@@ -124,12 +141,28 @@ async function loadLeaderboard() {
       </div>`;
     }).join('');
   } catch {
-    if (countEl) countEl.textContent = '';
-    el.innerHTML = '';
+    if (lastLbCache && lastLbCache.length > 0) {
+      // Show cached leaderboard with notice
+      const top5 = lastLbCache.slice(0, 5);
+      if (countEl) countEl.textContent = '(' + lastLbCache.length + ' ranked, cached)';
+      el.innerHTML = top5.map((a, i) => {
+        const pos = i + 1;
+        const medal = pos === 1 ? '1.' : pos === 2 ? '2.' : pos === 3 ? '3.' : pos + '.';
+        return `<div class="lb-row" style="opacity:0.6">
+          <span class="lb-pos">${medal}</span>
+          <span class="lb-name">${esc(a.agent_id || a.name || '?')}</span>
+          <span class="lb-score">${a.score || a.total_score || 0}</span>
+          <span class="lb-done">${a.completed || a.tasks_completed || 0} done</span>
+        </div>`;
+      }).join('');
+    } else {
+      el.innerHTML = '<div class="tl-empty">leaderboard unavailable</div>';
+    }
   }
 }
 
 // === REASONING OBJECTS ===
+let lastRoCache = null;
 async function loadReasoningObjects() {
   const el = document.getElementById('reasoning-list');
   const countEl = document.getElementById('rs-count');
@@ -140,33 +173,44 @@ async function loadReasoningObjects() {
     const results = data?.data?.results || [];
     if (!results.length) {
       el.innerHTML = '<div class="rl-empty">no reasoning objects yet — submit your first one</div>';
+      lastRoCache = null;
       return;
     }
+    lastRoCache = results;
     if (countEl) countEl.textContent = '(' + results.length + ' indexed)';
-    el.innerHTML = results.slice(0, 8).map(r => {
-      const domain = r.context?.domain || 'unknown';
-      const difficulty = r.context?.difficulty || '';
-      const diffClass = difficulty === 'beginner' ? 'd-beg' : difficulty === 'intermediate' ? 'd-int' : difficulty === 'advanced' ? 'd-adv' : '';
-      const attempts = r.total_attempts || r.meta?.total_attempts || 1;
-      const successRate = r.success_rate ?? r.meta?.success_rate ?? 1;
-      const problem = (r.problem_statement || '').substring(0, 120);
-      const solution = (r.solution_summary || '').substring(0, 150);
-      return `<div class="rl-row">
-        <div class="rl-id">${esc(r.id)} <span class="rl-domain">${esc(domain)}</span> <span class="tl-diff ${diffClass}">${esc(difficulty)}</span></div>
-        <div class="rl-problem">${esc(problem)}${(r.problem_statement || '').length > 120 ? '...' : ''}</div>
-        ${solution ? `<div class="rl-solution">→ ${esc(solution)}</div>` : ''}
-        <div class="rl-meta">
-          <span>attempts: ${attempts}</span>
-          <span>success: ${Math.round(successRate * 100)}%</span>
-          <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
-          <a class="rl-link" href="#" onclick="showReasoningDetail('${esc(r.id)}'); return false;">view full →</a>
-        </div>
-      </div>`;
-    }).join('');
+    renderReasoningList(el, results.slice(0, 8));
   } catch {
-    if (countEl) countEl.textContent = '';
-    el.innerHTML = '<div class="rl-empty">failed to load reasoning objects</div>';
+    if (lastRoCache && lastRoCache.length > 0) {
+      if (countEl) countEl.textContent = '(' + lastRoCache.length + ' indexed, cached)';
+      renderReasoningList(el, lastRoCache.slice(0, 8));
+    } else {
+      if (countEl) countEl.textContent = '';
+      el.innerHTML = '<div class="rl-empty">reasoning unavailable</div>';
+    }
   }
+}
+
+function renderReasoningList(el, results) {
+  el.innerHTML = results.map(r => {
+    const domain = r.context?.domain || 'unknown';
+    const difficulty = r.context?.difficulty || '';
+    const diffClass = difficulty === 'beginner' ? 'd-beg' : difficulty === 'intermediate' ? 'd-int' : difficulty === 'advanced' ? 'd-adv' : '';
+    const attempts = r.total_attempts || r.meta?.total_attempts || 1;
+    const successRate = r.success_rate ?? r.meta?.success_rate ?? 1;
+    const problem = (r.problem_statement || '').substring(0, 120);
+    const solution = (r.solution_summary || '').substring(0, 150);
+    return `<div class="rl-row">
+      <div class="rl-id">${esc(r.id)} <span class="rl-domain">${esc(domain)}</span> <span class="tl-diff ${diffClass}">${esc(difficulty)}</span></div>
+      <div class="rl-problem">${esc(problem)}${(r.problem_statement || '').length > 120 ? '...' : ''}</div>
+      ${solution ? `<div class="rl-solution">→ ${esc(solution)}</div>` : ''}
+      <div class="rl-meta">
+        <span>attempts: ${attempts}</span>
+        <span>success: ${Math.round(successRate * 100)}%</span>
+        <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
+        <a class="rl-link" href="#" onclick="showReasoningDetail('${esc(r.id)}'); return false;">view full →</a>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // Search reasoning objects
@@ -188,28 +232,9 @@ async function searchReasoning() {
       return;
     }
     if (countEl) countEl.textContent = '(' + results.length + ' results)';
-    el.innerHTML = results.slice(0, 8).map(r => {
-      const domain = r.context?.domain || 'unknown';
-      const difficulty = r.context?.difficulty || '';
-      const diffClass = difficulty === 'beginner' ? 'd-beg' : difficulty === 'intermediate' ? 'd-int' : difficulty === 'advanced' ? 'd-adv' : '';
-      const attempts = r.total_attempts || r.meta?.total_attempts || 1;
-      const successRate = r.success_rate ?? r.meta?.success_rate ?? 1;
-      const problem = (r.problem_statement || '').substring(0, 120);
-      const solution = (r.solution_summary || '').substring(0, 150);
-      return `<div class="rl-row">
-        <div class="rl-id">${esc(r.id)} <span class="rl-domain">${esc(domain)}</span> <span class="tl-diff ${diffClass}">${esc(difficulty)}</span></div>
-        <div class="rl-problem">${esc(problem)}${(r.problem_statement || '').length > 120 ? '...' : ''}</div>
-        ${solution ? `<div class="rl-solution">→ ${esc(solution)}</div>` : ''}
-        <div class="rl-meta">
-          <span>attempts: ${attempts}</span>
-          <span>success: ${Math.round(successRate * 100)}%</span>
-          <span>consensus: ${r.consensus_score ? (r.consensus_score * 100).toFixed(0) + '%' : '—'}</span>
-          <a class="rl-link" href="#" onclick="showReasoningDetail('${esc(r.id)}'); return false;">view full →</a>
-        </div>
-      </div>`;
-    }).join('');
+    renderReasoningList(el, results.slice(0, 8));
   } catch {
-    el.innerHTML = '<div class="rl-empty">search failed</div>';
+    el.innerHTML = '<div class="rl-empty">search failed — API unavailable</div>';
   }
 }
 
@@ -310,6 +335,13 @@ async function loadTasks() {
     if (!tasks.length) { tasks = FALLBACK_TASKS; }
     renderTasks(el, tasks);
   } catch {
+    // Show fallback with API unavailable notice
+    const notice = document.createElement('div');
+    notice.className = 'tl-notice';
+    notice.textContent = 'API unavailable — showing cached task examples';
+    notice.style.cssText = 'color:var(--dim);font-size:9px;padding:4px 0;text-align:center';
+    el.innerHTML = '';
+    el.appendChild(notice);
     renderTasks(el, FALLBACK_TASKS);
   }
 }

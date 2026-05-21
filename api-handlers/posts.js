@@ -71,12 +71,40 @@ function getAggregatedPosts(url) {
   return posts.map(p => ({
   ...p,
   origin: 'external',
+  external_only: true,
   is_test: false,
   quality_flags: [],
   machine_actionable: p.status === 'OPEN' || p.status === 'ACTIVE',
   can_claim: false,
-  can_claim_reason: 'external task — claim and submit via source_url on the original platform'
+  can_claim_reason: 'external task — claim and submit via source_url on the original platform',
+  submission_spec: p.submission_spec || getSubmissionSpecForSource(p)
   }));
+}
+
+// Derive submission_spec from source when not pre-computed
+function getSubmissionSpecForSource(p) {
+  const src = (p.source || '').toLowerCase();
+  const url = (p.source_url || '').toLowerCase();
+
+  if (src.includes('github') || url.includes('github.com')) {
+    return { external_only: true, submit_via: 'source_url', format: 'pull_request|issue_comment', deliverable: 'PR URL or patch' };
+  }
+  if (src.includes('hacker') || url.includes('news.ycombinator')) {
+    return { external_only: true, submit_via: 'source_url', format: 'comment', deliverable: 'HN comment URL' };
+  }
+  if (src.includes('arxiv') || url.includes('arxiv.org')) {
+    return { external_only: true, submit_via: 'source_url', format: 'analysis|reproduction', deliverable: 'Technical analysis report' };
+  }
+  if (src.includes('gitlab') || url.includes('gitlab.com')) {
+    return { external_only: true, submit_via: 'source_url', format: 'merge_request', deliverable: 'MR URL' };
+  }
+  if (src.includes('huggingface') || url.includes('huggingface.co')) {
+    return { external_only: true, submit_via: 'source_url', format: 'space|model_card', deliverable: 'HF Space URL' };
+  }
+  if (src.includes('replicate') || url.includes('replicate.com')) {
+    return { external_only: true, submit_via: 'source_url', format: 'model', deliverable: 'Replicate model URL' };
+  }
+  return { external_only: true, submit_via: 'source_url', format: 'contribution', deliverable: 'URL or evidence' };
 }
 
 function hasDatabase() {
@@ -1130,18 +1158,38 @@ async function handleTaskMutation(req, res, url = getUrl(req)) {
  post.conditions = row.conditions;
  }
 
-  post.quality_flags = getQualityFlags(post);
-  post.is_test = post.quality_flags.includes('test_data');
-  post.machine_actionable = isMachineActionable(post, post.quality_flags);
-  post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
-  if (!post.can_claim) {
-    if (post.type !== 'REQUEST') post.can_claim_reason = 'not a REQUEST type';
-    else if (post.status !== 'OPEN') post.can_claim_reason = `status is ${post.status}, not OPEN`;
-    else if (!post.machine_actionable) post.can_claim_reason = `not machine-actionable (quality flags: ${(post.quality_flags || []).join(', ') || 'none'})`;
-    else post.can_claim_reason = 'unknown';
-  }
+   post.quality_flags = getQualityFlags(post);
+   post.is_test = post.quality_flags.includes('test_data');
+   post.machine_actionable = isMachineActionable(post, post.quality_flags);
+   post.can_claim = post.type === 'REQUEST' && post.status === 'OPEN' && post.machine_actionable;
+   if (!post.can_claim) {
+     if (post.type !== 'REQUEST') post.can_claim_reason = 'not a REQUEST type';
+     else if (post.status !== 'OPEN') post.can_claim_reason = `status is ${post.status}, not OPEN`;
+     else if (!post.machine_actionable) post.can_claim_reason = `not machine-actionable (quality flags: ${(post.quality_flags || []).join(', ') || 'none'})`;
+     else post.can_claim_reason = 'unknown';
+   }
 
-  return post;
+   // submission_spec: local tasks use platform protocol, external tasks have source-specific specs
+   if (!post.submission_spec) {
+     if (post.origin === 'external' || post.external_only) {
+       post.submission_spec = getSubmissionSpecForSource(post);
+     } else {
+       post.submission_spec = {
+         external_only: false,
+         submit_via: 'platform',
+         format: 'api_submit',
+         instructions: 'Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute',
+         deliverable: 'text result + optional structured_reasoning',
+         endpoints: {
+           claim: 'POST /api/execute?action=claim',
+           submit: 'POST /api/execute?action=submit',
+           auto_execute: 'POST /api/auto-execute'
+         }
+       };
+     }
+   }
+
+   return post;
 }
 
 // GET /api/health

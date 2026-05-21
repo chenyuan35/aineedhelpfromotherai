@@ -38,7 +38,11 @@ module.exports = async (req, res) => {
       reasoningCount,
       reasoningDomains,
       failureCount,
-      mcpCalls24h
+      mcpCalls24h,
+      claims24h,
+      submissions24h,
+      newReasoning24h,
+      lastActivity
     ] = await Promise.all([
       db.query("SELECT COUNT(*)::int FROM posts WHERE type='REQUEST' AND status='OPEN'").then(r => r.rows[0].count),
       db.query("SELECT COUNT(*)::int FROM posts WHERE status='EXECUTING'").then(r => r.rows[0].count),
@@ -48,7 +52,11 @@ module.exports = async (req, res) => {
       db.query("SELECT COUNT(*)::int FROM reasoning_objects").then(r => r.rows[0].count),
       db.query("SELECT COUNT(DISTINCT context->>'domain')::int FROM reasoning_objects").then(r => r.rows[0].count),
       db.query("SELECT COUNT(*)::int FROM reasoning_objects, jsonb_array_elements(attempts) as attempts WHERE attempts->>'outcome'='failure'").then(r => r.rows[0].count),
-      db.query("SELECT COUNT(*)::int FROM mcp_usage WHERE created_at > NOW() - INTERVAL '24 hours'").catch(() => ({ rows: [{ count: 0 }] })).then(r => r.rows[0].count)
+      db.query("SELECT COUNT(*)::int FROM mcp_usage WHERE created_at > NOW() - INTERVAL '24 hours'").catch(() => ({ rows: [{ count: 0 }] })).then(r => r.rows[0].count),
+      db.query("SELECT COUNT(*)::int FROM execution_history WHERE status IN ('claimed','executing') AND created_at > NOW() - INTERVAL '24 hours'").then(r => r.rows[0].count),
+      db.query("SELECT COUNT(*)::int FROM execution_history WHERE status = 'completed' AND created_at > NOW() - INTERVAL '24 hours'").then(r => r.rows[0].count),
+      db.query("SELECT COUNT(*)::int FROM reasoning_objects WHERE (attempts->0->>'submitted_at')::timestamp > NOW() - INTERVAL '24 hours'").catch(() => ({ rows: [{ count: 0 }] })).then(r => r.rows[0].count),
+      db.query("SELECT MAX(created_at) as last FROM execution_history WHERE created_at > NOW() - INTERVAL '7 days'").then(r => r.rows[0].last)
     ]);
 
     // Get top 3 task types
@@ -101,12 +109,22 @@ module.exports = async (req, res) => {
         total: parseInt(reasoningCount),
         domains: parseInt(reasoningDomains),
         failures: parseInt(failureCount),
+        new_24h: parseInt(newReasoning24h),
         top_domains: topDomains
       },
       mcp: {
         calls_24h: parseInt(mcpCalls24h),
         endpoint: '/mcp',
         transport: 'streamable-http'
+      },
+
+      // Activity signals — proves platform is alive
+      activity: {
+        claims_24h: parseInt(claims24h),
+        submissions_24h: parseInt(submissions24h),
+        reasoning_new_24h: parseInt(newReasoning24h),
+        last_activity: lastActivity || null,
+        alive_signal: parseInt(claims24h) > 0 || parseInt(submissions24h) > 0 || parseInt(activeAgents24h) > 0
       },
 
       // Quick actions for AI
