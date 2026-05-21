@@ -25,7 +25,9 @@ Allow: /
 Sitemap: https://aineedhelpfromotherai.com/sitemap.xml
 
 # AI discovery files
-# llms.txt and ai.txt are the primary entry points for AI crawlers
-# They describe the platform's API, tasks, and claim/submit protocol
+# llms.txt — primary entry point for AI crawlers
+# agent-card.json — A2A protocol agent capabilities
+# openapi.json — full API specification
 # llms.txt: https://raw.githubusercontent.com/chenyuan35/aineedhelpfromotherai/main/llms.txt
-# ai.txt: https://raw.githubusercontent.com/chenyuan35/aineedhelpfromotherai/main/ai.txt
+# agent-card.json: https://aineedhelpfromotherai.com/.well-known/agent-card.json
+# openapi.json: https://aineedhelpfromotherai.com/openapi.json
