@@ -1,0 +1,145 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# s — AI command execution telemetry collector
+# First wedge: kubectl apply / kubectl delete
+#
+# Usage:
+#   s kubectl apply -f ingress.yaml
+#   s kubectl delete pod nginx-xxx
+#
+# Records: command, cwd, exit_code, rollback, duration
+# Data: ~/.s/telemetry.jsonl (append-only, JSON lines)
+#
+# No platform. No API. No database. Just telemetry.
+
+TELEMETRY_DIR="${HOME}/.s"
+TELEMETRY_FILE="${TELEMETRY_DIR}/telemetry.jsonl"
+SESSION_FILE="${TELEMETRY_DIR}/session"
+
+# Ensure storage dir
+mkdir -p "${TELEMETRY_DIR}"
+
+# Session tracking (simple counter per session file)
+if [ ! -f "${SESSION_FILE}" ]; then
+  echo "s: first run — initializing telemetry at ${TELEMETRY_FILE}"
+  echo '{}' > "${SESSION_FILE}"
+fi
+
+# Only intercept kubectl apply and kubectl delete
+TARGET_SUBCOMMANDS=("apply" "delete")
+
+is_target() {
+  local cmd="$1"
+  for sub in "${TARGET_SUBCOMMANDS[@]}"; do
+    if [[ "$cmd" == *"kubectl $sub"* ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# Color helpers
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+GREEN='\033[0;32m'
+RESET='\033[0m'
+
+# Build the full command string
+FULL_CMD="$@"
+
+if ! is_target "$FULL_CMD"; then
+  # Non-target command — pass through silently
+  if [ $# -eq 0 ]; then
+    echo "s — AI command telemetry collector"
+    echo "Usage: s kubectl apply|delete ..."
+    exit 0
+  fi
+  exec "$@"
+fi
+
+# Parse subcommand (apply or delete)
+SUBCOMMAND=""
+SUB_RAW=$(echo "$FULL_CMD" | grep -oP '(?<=kubectl )(apply|delete)' 2>/dev/null || true)
+if [ -n "$SUB_RAW" ]; then
+  SUBCOMMAND="$SUB_RAW"
+fi
+
+# Generate a lightweight command hash for grouping (printf avoids newline inconsistency)
+CMD_HASH=$(printf '%s' "$FULL_CMD" | sha256sum | cut -c1-12 2>/dev/null || echo "unknown")
+
+# Sequence ID within this session
+SEQ_ID=$(date +%s%N)
+
+# Check telemetry for similar commands
+SIMILAR_FAILS=0
+SIMILAR_TOTAL=0
+if [ -f "${TELEMETRY_FILE}" ]; then
+  while IFS= read -r line; do
+    if [[ -z "$line" ]]; then continue; fi
+    recorded_cmd_hash=$(echo "$line" | python3 -c "import sys,json; d=json.loads(sys.stdin.readline()); print(d.get('command_hash',''))" 2>/dev/null || echo "")
+    if [[ "$recorded_cmd_hash" == "$CMD_HASH" ]]; then
+      SIMILAR_TOTAL=$((SIMILAR_TOTAL + 1))
+      recorded_exit=$(echo "$line" | python3 -c "import sys,json; d=json.loads(sys.stdin.readline()); print(d.get('exit_code',0))" 2>/dev/null || echo "0")
+      if [ "$recorded_exit" != "0" ]; then
+        SIMILAR_FAILS=$((SIMILAR_FAILS + 1))
+      fi
+    fi
+  done < "${TELEMETRY_FILE}"
+fi
+
+# Emit risk indicator
+if [ $SIMILAR_TOTAL -gt 0 ]; then
+  FAIL_RATE=$(( SIMILAR_FAILS * 100 / SIMILAR_TOTAL ))
+  if [ $FAIL_RATE -ge 50 ]; then
+    echo -e "${RED}⚠ s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+  elif [ $FAIL_RATE -ge 20 ]; then
+    echo -e "${YELLOW}⚠ s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+  else
+    echo -e "${GREEN}s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+  fi
+fi
+
+# Capture start time
+START_TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+START_MS=$(date +%s%N)
+
+# Execute the real command
+set +e
+"$@"
+EXIT_CODE=$?
+set -e
+
+END_MS=$(date +%s%N)
+DURATION_MS=$(( (END_MS - START_MS) / 1000000 ))
+
+# Detect rollback (kubectl rollback or undo patterns in next commands)
+ROLLBACK=false
+
+# Log telemetry
+LOG_ENTRY=$(cat <<EOF
+{
+  "timestamp": "${START_TS}",
+  "command": "$(echo "$FULL_CMD" | sed 's/"/\\"/g')",
+  "command_hash": "${CMD_HASH}",
+  "subcommand": "${SUBCOMMAND}",
+  "cwd": "$(pwd)",
+  "exit_code": ${EXIT_CODE},
+  "rollback": ${ROLLBACK},
+  "duration_ms": ${DURATION_MS},
+  "session_id": "$(hostname)-$$",
+  "agent": "${S_AGENT:-unknown}"
+}
+EOF
+)
+
+echo "${LOG_ENTRY}" >> "${TELEMETRY_FILE}"
+
+# Final status
+if [ $EXIT_CODE -eq 0 ]; then
+  echo -e "${GREEN}s: done (${DURATION_MS}ms)${RESET}"
+else
+  echo -e "${RED}s: failed (exit ${EXIT_CODE}, ${DURATION_MS}ms)${RESET}"
+fi
+
+exit $EXIT_CODE

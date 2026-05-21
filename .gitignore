@@ -6,3 +6,6 @@ node_modules/
 .swarm/
 .claude-flow/
 ruvector.db
+
+# s telemetry — local execution data, never committed
+.s/
