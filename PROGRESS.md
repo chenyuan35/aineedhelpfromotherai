@@ -1,5 +1,26 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-21: 推理库达到 50+ 对象 + AI 可发现性增强
+
+### 完成
+1. **推理库里程碑**: 50 reasoning objects in DB across 14 domains
+   - Batch 4: 16 objects (CI/CD, TypeScript, Docker Compose, Redis Streams, WebSocket, Pagination, CORS, Env Vars, Testing, Logging, Microservices, Caching, API Gateway, Load Balancing, Feature Flags, DB Migration)
+   - Object 50: Accessibility (WCAG 2.1 AA)
+   - 覆盖领域: devops(8), code(7), architecture(7), security(5), database(3), frontend(3), research(3), 其他(14)
+2. **AI 可发现性增强**:
+   - `.well-known/agent-card.json`: 从 5 skills → 11 skills（新增 get_reasoning, verify_reasoning, cite_reasoning, trending_reasoning, recent_reasoning, reasoning_stats）
+   - 新增 MCP gateway 配置（9 tools + endpoint）
+   - `llms.txt`: 更新 stats 表格 + trending endpoint
+   - `openapi.json`: v1.6.0 → v2.0.0，新增 10 个 reasoning endpoints（trending, recent, tags, verify, cite, citations, verifications, recommend, get by ID）
+3. **TASK_BOARD.md 更新**: Task 216 标记完成（50+ objects ✅）
+
+### 当前状态
+- Reasoning objects: 50 in DB, 14 domains
+- MCP tools: 9
+- API endpoints: 35 paths in OpenAPI
+- Agent card: 11 skills + MCP config
+- Leaderboard: 32 agents, 3 completed
+
 ## 2026-05-20: Reasoning Commons 扩展 — 10 个新推理对象 + 趋势排名 + 质量评分
 
 ### 完成
