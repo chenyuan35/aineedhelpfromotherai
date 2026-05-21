@@ -587,6 +587,114 @@ async function createGateway(req, res) {
       }
     );
 
+    // --- Tool 10: resolve_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.RESOLVE_REASONING,
+      {
+        description: 'REASONING CACHE: Given a problem, returns best matching solution if one exists (cache hit/miss). Use BEFORE solving to save tokens. On HIT: get solution summary, key insights, consensus score, and estimated token savings. On MISS: get suggestion to store result afterward.',
+        inputSchema: {
+          problem_statement: z.string().describe('Describe the problem you need to solve'),
+          domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend'),
+          difficulty: z.string().optional().describe('Optional difficulty filter: beginner/intermediate/advanced')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.RESOLVE_REASONING;
+
+        if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { resolveReasoning } = require('../lib/reasoning-storage');
+          const result = await resolveReasoning({
+            problem_statement: args.problem_statement,
+            domain: args.domain || undefined,
+            difficulty: args.difficulty || undefined
+          });
+
+          if (result.hit) {
+            return ok({
+              hit: true,
+              reasoning_id: result.reasoning_id,
+              solution_summary: result.solution_summary,
+              key_insights: result.key_insights,
+              domain: result.domain,
+              difficulty: result.difficulty,
+              quality_score: result.quality_score,
+              success_rate: result.success_rate,
+              consensus_score: result.consensus_score,
+              estimated_token_savings: result.estimated_token_savings,
+              message: result.message,
+              next: { action: 'You may cite this reasoning with get_reasoning then call cite_reasoning' }
+            });
+          }
+
+          return ok({
+            hit: false,
+            reason: result.reason,
+            message: result.message || 'No matching reasoning found. Solve and store your reasoning for future AI.',
+            best_match: result.best_match || null,
+            quality_score: result.quality_score || null,
+            next: { action: 'solve the problem, then use the API to store your reasoning for future AI' }
+          });
+        } catch (err) {
+          return err('resolve_failed', `Resolve failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 11: check_failures ---
+    mcpServer.registerTool(
+      TOOL_NAMES.CHECK_FAILURES,
+      {
+        description: 'FAILURE EARLY WARNING: Before executing a multi-step approach, check the failure library for similar patterns. Returns risk score (low/medium/high), matching failures, and how_to_avoid guidance from similar past failures.',
+        inputSchema: {
+          approach_description: z.string().describe('Describe your planned approach or solution strategy'),
+          domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.CHECK_FAILURES;
+
+        if (!args.approach_description) return err('missing_approach', 'approach_description required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { failureCheck } = require('../lib/reasoning-storage');
+          const result = await failureCheck({
+            approach_description: args.approach_description,
+            domain: args.domain || undefined
+          });
+
+          return ok({
+            risk_score: result.risk_score,
+            risk_level: result.risk_level,
+            total_warnings: result.total_warnings,
+            warnings: result.warnings.map(w => ({
+              reasoning_id: w.reasoning_id,
+              problem: w.problem_statement.slice(0, 200),
+              failure_count: w.failure_count,
+              failure_types: w.failure_types,
+              risk_score: w.risk_score,
+              key_failure: w.failures[0] ? {
+                type: w.failures[0].failure_type,
+                description: w.failures[0].failure_description,
+                approach: w.failures[0].approach
+              } : null,
+              how_to_avoid: w.how_to_avoid
+            })),
+            message: result.message
+          });
+        } catch (err) {
+          return err('check_failures_failed', `Failure check failed: ${err.message}`);
+        }
+      }
+    );
+
     transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
     await mcpServer.connect(transport);
 

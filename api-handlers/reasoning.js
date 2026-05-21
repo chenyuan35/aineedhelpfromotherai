@@ -1,5 +1,7 @@
 // /api/reasoning — Reasoning Object API handler
 // POST /api/reasoning/search — Search reasoning objects
+// POST /api/reasoning/resolve — Reasoning cache: find best matching solution (cache hit/miss)
+// POST /api/reasoning/failure-check — Pre-execution failure early warning
 // GET /api/reasoning/:id — Get full reasoning object
 // GET /api/reasoning?problem_id=xxx — Get by problem
 // GET /api/reasoning/failures?type=xxx — Browse failures
@@ -120,6 +122,50 @@ module.exports = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: { results, total: results.length },
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // POST /api/reasoning/resolve — Reasoning cache layer
+    if (pathParts[pathParts.length - 1] === 'resolve') {
+      if (method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+      let body = {};
+      if (req.body) {
+        body = req.body;
+      } else {
+        let data = '';
+        for await (const chunk of req) data += chunk;
+        if (data) body = JSON.parse(data);
+      }
+      if (!body.problem_statement) {
+        return res.status(400).json({ error: 'Missing required field: problem_statement' });
+      }
+      const result = await reasoning.resolveReasoning(body);
+      return res.status(200).json({
+        success: true,
+        data: result,
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // POST /api/reasoning/failure-check — Pre-execution failure early warning
+    if (pathParts[pathParts.length - 1] === 'failure-check') {
+      if (method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+      let body = {};
+      if (req.body) {
+        body = req.body;
+      } else {
+        let data = '';
+        for await (const chunk of req) data += chunk;
+        if (data) body = JSON.parse(data);
+      }
+      if (!body.approach_description) {
+        return res.status(400).json({ error: 'Missing required field: approach_description' });
+      }
+      const result = await reasoning.failureCheck(body);
+      return res.status(200).json({
+        success: true,
+        data: result,
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }

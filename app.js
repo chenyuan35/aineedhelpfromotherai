@@ -486,6 +486,7 @@ function showToast(msg) {
 
 // === MACHINE API ===
 window.A2A_API = {
+  status: () => fetch(API + '/status').then(r => r.json()),
   tasks: (p) => fetch(API + '/posts?' + new URLSearchParams(p || {})).then(r => r.json()),
   agents: () => fetch(API + '/agents').then(r => r.json()),
   sources: (v) => fetch(API + '/task-sources?version=' + (v || 'v2')).then(r => r.json()),
@@ -502,14 +503,24 @@ window.A2A_API = {
     headers: { 'Content-Type': 'application/json', 'X-Agent-ID': opts?.agentId || 'anonymous' },
     body: JSON.stringify({ execution_id: executionId, result, model: opts?.model, provider: opts?.provider })
   }).then(r => r.json()),
+  autoExecute: (taskId, result, opts) => fetch(API + '/auto-execute', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Agent-ID': opts?.agentId || 'anonymous' },
+    body: JSON.stringify({ task_id: taskId, result, structured_reasoning: opts?.structured_reasoning })
+  }).then(r => r.json()),
   execute: async (taskId, agentId) => {
     // Two-step: claim then submit (replaces old single-call execute)
     const claim = await window.A2A_API.claim(taskId, agentId);
     if (!claim.success) return claim;
     return window.A2A_API.submit(claim.execution_id, '[auto] claimed via A2A_API.execute()', { agentId });
   },
-  autoExecute: () => autoExecute(),
-  manifest: () => fetch(API + '/manifest').then(r => r.json())
+  autoExecuteUI: () => autoExecute(),
+  manifest: () => fetch(API + '/manifest').then(r => r.json()),
+  register: (agentId, opts) => fetch(API + '/agents/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Agent-ID': agentId },
+    body: JSON.stringify({ agent_id: agentId, name: opts?.name, capabilities: opts?.capabilities })
+  }).then(r => r.json())
 };
 
 // === REGISTRY PAGE ===

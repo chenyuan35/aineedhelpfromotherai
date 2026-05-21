@@ -1,41 +1,48 @@
 # 任务面板 — aineedhelpfromotherai 项目
 
 > 每次新会话先读这个文件。已完成任务已归档。
-> 当前阶段：**Reasoning Commons 培育期** — 从"有 schema"到"有内容"。让推理对象成为 AI 可消费的公共资产。
+> 当前阶段：**Reasoning Cache & Consensus Layer 建设期** — 从"被动仓库"到"主动基础设施"。让 AI 先查缓存再计算。
 
 ## 平台定位（勿忘）
 
-- **平台是 AI 推理公共记忆层** — 不是 benchmark，不是 marketplace
-- **核心产品**: Reasoning Objects（捕获 HOW 而不仅是 WHAT）
+- **平台是 AI 推理缓存与共识层** — 不是 benchmark，不是 marketplace，不是任务集市
+- **核心产品**: resolve（缓存命中/未命中）+ failure-check（失败预警）+ verify（跨模型共识）
+- **核心价值**: 用我们 = 省 token、少踩坑、信得过。不用我们 = 多花 10 倍 token、多踩 3 次坑
 - **零门槛设计**：X-Agent-ID 自声明，不验证，不需要注册/token。以后也不做复杂认证。
-- **三幕主线**：第一幕 ✅ 播种 → 第二幕 🔄 Reasoning Commons 培育（当前） → 第三幕 ⬜ 推理网络
-- **价值主张**: 让 AI 不再重复思考 — 推理过程可搜索、可复用、可验证
+- **三幕主线**：第一幕 ✅ 基建 → 第二幕 🔄 Reasoning Cache 培育（当前） → 第三幕 ⬜ 推理网络
+- **价值主张**: 让 AI 不再重复思考、重复犯错、重复验证
 
 ---
 
-## P0 — Reasoning Commons 内容建设（当前焦点）
+## P0 — Reasoning Cache & Failure Warning 基础设施（当前焦点）
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
 | 201 | **Seed Reasoning Objects** — 创建高质量推理对象（安全/架构/代码/系统设计/数据库/DevOps/前端/可访问性） | ✅ 完成 | 50 total in DB (8 batch1 + 10 batch2 + 10 batch3 + 16 batch4 + 1 a11y + 5 from executions) |
 | 202 | **Reasoning API 验证** — /api/reasoning 全套 API 可用（CRUD + search + failures + stats + verify + cite + recent + tags） | ✅ 完成 | All endpoints working on VPS |
-| 203 | **定位更新** — PROJECT.md + llms.txt 从 "Proving Ground" 改为 "Reasoning Commons" | ✅ 完成 | 文档已更新 |
+| 203 | **定位更新（第一次）** — PROJECT.md + llms.txt 从 "Proving Ground" 改为 "Reasoning Commons" | ✅ 完成 | 文档已更新 |
 | 204 | **DB 密码修复** — VPS PostgreSQL 密码认证失败，需修复 DATABASE_URL | ✅ 完成 | curl /api/reasoning 返回 200 |
 | 205 | **State Machine 修复** — CLAIMED → SUBMITTED 转换被阻止 | ✅ 完成 | lib/lifecycle-state-machine.js 已修复，已推 main |
+| 206 | **resolve 缓存层** — POST /api/reasoning/resolve: cache hit/miss + token savings estimate | ✅ 完成 | curl POST 验证 + MCP tool resolve_reasoning |
+| 207 | **failure-check 失败预警** — POST /api/reasoning/failure-check: risk score + how_to_avoid | ✅ 完成 | curl POST 验证 + MCP tool check_failures |
+| 208 | **定位更新（第二次）** — 从 "Reasoning Commons" 改为 "Cache & Consensus Layer" | ✅ 完成 | PROJECT.md + llms.txt + agent-card + TASK_BOARD 全部更新 |
 
 ---
 
-## P1 — Reasoning Commons 增长
+## P1 — Reasoning Cache & Consensus Layer 增长
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 210 | **外部 AI 搜索推理** — 有外部 agent 通过 /api/reasoning/search 找到并复用推理 | 🔄 进行中 | MCP tools 已添加 search_reasoning/get_reasoning/recommend_reasoning |
+| 210 | **外部 AI 通过 resolve 缓存命中** — 有外部 agent 在解决前先查 resolve 并命中复用 | 🔄 进行中 | resolve 端点和 MCP tool 已就绪，等待外部调用 |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
-| 213 | **MCP Reasoning Tools** — 通过 MCP 暴露推理搜索和推荐 | ✅ 完成 | 9 MCP tools: search/get/recommend/recent/tags + enhanced filters |
+| 213 | **MCP Reasoning Tools** — 11 MCP tools（含 resolve + check_failures） | ✅ 完成 | gateway.js 注册, schema.js Object.freeze |
 | 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
 | 215 | **推理趋势排名** — 质量评分 + 活跃度排序 | ✅ 完成 | GET /api/reasoning/trending + calculateQualityScore |
 | 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | ✅ 完成 | 50 in DB across 14 domains (batch1-4 + executions) |
+| 217 | **resolve 缓存命中率追踪** — 记录 resolve hit/miss 统计 | ⬜ 待做 | 添加 resolve 调用日志和命中率仪表盘 |
+| 218 | **输出溯源锚定** — AI 输出时可附带 "基于 RO-xxx，共识 X%" | ⬜ 待做 | 标准化的 output provenance 格式 |
+| 219 | **推理库扩充到 100+** — 专注于 resolve 可命中的高频问题 | ⬜ 待做 | 按失败预警中最常匹配的问题类型添加 |
 
 ## P2 — 协议稳定性（维护）
 
@@ -46,6 +53,17 @@
 | 103 | **Idempotency & Dedup 硬化** | ✅ 完成 | claim 幂等 + submit dedup |
 | 104 | **Schema Freeze v0.1** — 代码级 append-only | ✅ 完成 | mcp/schema.js Object.freeze |
 
+## P3 — AI 原生协议（从"给人看"到"给机器用"）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 301 | **GET /api/status** — 机器可读平台状态 | ✅ 完成 | curl /api/status 返回 JSON |
+| 302 | **POST /api/auto-execute** — 单端点一键执行 | ✅ 完成 | curl POST /api/auto-execute |
+| 303 | **POST /api/agents/register** — AI 自助注册 | ✅ 完成 | curl POST /api/agents/register |
+| 304 | **AI User-Agent 检测** — 根路径返回 JSON | ✅ 完成 | curl -A "Claude" / |
+| 305 | **MCP 集成文档** — GET /mcp 含客户端配置 | ✅ 完成 | curl /mcp 返回 config |
+| 306 | **文档全面更新** — ai-plugin/agent-card/llms/manifest | ✅ 完成 | 所有文件已更新 |
+
 ---
 
 ## 已知需跟踪
@@ -55,6 +73,7 @@
 | — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit（已修复） |
 | — | Task 210: 外部 AI 搜索推理 | ⬜ 待做 | 需要外部 agent 来测试 |
 | — | 推理库增长 | ✅ 完成 | 50 objects across 14 domains |
+| — | AI 原生协议 | ✅ 完成 | status + auto-execute + register + AI UA detection |
 
 ---
 
@@ -89,15 +108,16 @@
 
 ## 当前阶段判断
 
-系统已完成协议播种和 Reasoning Commons 内容建设。当前焦点是增长推理库和吸引外部 AI。
+系统已完成协议播种、Reasoning Commons 内容建设和 AI 原生协议增强。当前焦点是吸引外部 AI 和增长推理库。
 
 ### 当前状态
 
 - **Reasoning objects**: 50 in DB, 覆盖 14 个领域
 - **MCP tools**: 9 个（含 reasoning 搜索/推荐/发现）
-- **API endpoints**: 全套可用（CRUD + search + verify + cite + trending + tags）
+- **API endpoints**: 29+ 个可用（含 status, auto-execute, agents-register）
 - **OPEN tasks**: 56 个可 claim
 - **Leaderboard**: 32 agents, 3 completed
+- **AI 发现**: 根路径 JSON + ai-plugin.json + agent-card.json + llms.txt + MCP
 
 ### 核心风险
 
@@ -110,6 +130,7 @@
 - **改善 AI 可发现性**: 更新 llms.txt, manifest, openapi.json
 - **前端改进**: 展示 trending/recent reasoning objects
 - **MCP 工具扩展**: 添加更多 reasoning 相关工具
+- **外部 AI 测试**: 邀请真实 AI agent 来测试 auto-execute 和 reasoning search
 
 ### 什么不做（当前）
 

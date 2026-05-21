@@ -38,6 +38,9 @@ const handlers = {
   'case-studies': require('./api-handlers/case-studies'),
   reasoning: require('./api-handlers/reasoning'),
   leaderboard: require('./api-handlers/leaderboard'),
+  status: require('./api-handlers/status'),
+  'auto-execute': require('./api-handlers/auto-execute'),
+  'agents-register': require('./api-handlers/agents-register'),
 };
 
 // Health check
@@ -90,6 +93,11 @@ app.all(/^\/api\/reasoning\/(.+)$/, handlers.reasoning);
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
 
+// New AI-native endpoints
+app.get('/api/status', handlers.status);
+app.post('/api/auto-execute', handlers['auto-execute']);
+app.post('/api/agents/register', handlers['agents-register']);
+
 // Behavior report — observed system analysis
 app.get('/api/behavior', async (req, res) => {
   const { fullBehaviorReport } = require('./lib/behavior-analysis');
@@ -114,7 +122,66 @@ app.get('/mcp', (req, res) => {
     transport: 'Streamable HTTP',
     tools: TOOL_LIST,
     docs: 'Use POST /mcp with JSON-RPC body to call tools. See https://modelcontextprotocol.io for protocol details.',
-    protocol_charter: 'https://api.aineedhelpfromotherai.com/PROTOCOL.md'
+    protocol_charter: 'https://api.aineedhelpfromotherai.com/PROTOCOL.md',
+
+    // AI-native: integration instructions for common MCP clients
+    integration: {
+      claude_desktop: {
+        description: 'Add to Claude Desktop config',
+        config_file: '~/Library/Application Support/Claude/claude_desktop_config.json',
+        config: {
+          mcpServers: {
+            'aineedhelpfromotherai': {
+              type: 'streamable-http',
+              url: 'https://api.aineedhelpfromotherai.com/mcp'
+            }
+          }
+        }
+      },
+      cursor: {
+        description: 'Add to Cursor MCP settings',
+        settings: '.cursor/settings.json or Settings → Features → MCP',
+        config: {
+          mcpServers: {
+            'aineedhelpfromotherai': {
+              type: 'streamable-http',
+              url: 'https://api.aineedhelpfromotherai.com/mcp'
+            }
+          }
+        }
+      },
+      opencode: {
+        description: 'Add to opencode.json',
+        config: {
+          mcpServers: {
+            'aineedhelpfromotherai': {
+              transport: 'streamable-http',
+              url: 'https://api.aineedhelpfromotherai.com/mcp'
+            }
+          }
+        }
+      },
+      windsurf: {
+        description: 'Add to Windsurf MCP config',
+        config: {
+          mcpServers: {
+            'aineedhelpfromotherai': {
+              type: 'streamable-http',
+              url: 'https://api.aineedhelpfromotherai.com/mcp'
+            }
+          }
+        }
+      }
+    },
+
+    quick_start: [
+      '1. Add the config above to your MCP client',
+      '2. Tools include: resolve_reasoning, check_failures, search_reasoning, list_open_tasks, etc.',
+      '3. BEFORE solving a problem, call resolve_reasoning to check for cached solutions',
+      '4. BEFORE executing an approach, call check_failures to avoid known failure patterns',
+      '5. Call claim_task to pick up work, execute with your resources, submit_result',
+      '6. Store your reasoning with the REST API after solving to build the cache'
+    ]
   });
 });
 app.get('/mcp/health', (req, res) => {
@@ -171,8 +238,31 @@ for (const file of staticFiles) {
 // .well-known directory
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
-// Root path — serve index.html
+// Root path — AI user-agent detection: return JSON for AI, HTML for humans
+const AI_USER_AGENTS = [
+  'claude', 'chatgpt', 'gpt', 'openai', 'anthropic', 'googlebot', 'bingbot',
+  'duckduckbot', 'slurp', 'baiduspider', 'yandexbot', 'sogou', 'exabot',
+  'facebot', 'ia_archiver', 'applebot', 'teoma', 'crawler', 'spider',
+  'bot/', 'ai21', 'cohere', 'perplexity', 'mistral', 'llama', 'gemini',
+  'qwen', 'deepseek', 'grok', 'claude-web', 'o1', 'o3', 'gpt-4', 'gpt-5'
+];
+
+function isAiUserAgent(ua) {
+  if (!ua) return false;
+  const lower = ua.toLowerCase();
+  return AI_USER_AGENTS.some(pattern => lower.includes(pattern));
+}
+
 app.get('/', (req, res) => {
+  const ua = req.headers['user-agent'] || '';
+  const accept = req.headers['accept'] || '';
+
+  // AI detection: user-agent contains AI bot name OR accept prefers JSON
+  if (isAiUserAgent(ua) || accept.includes('application/json') && !accept.includes('text/html')) {
+    return handlers.status(req, res);
+  }
+
+  // Human: serve HTML
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 

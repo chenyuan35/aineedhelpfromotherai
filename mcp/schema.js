@@ -15,6 +15,8 @@ const TOOL_NAMES = Object.freeze({
   RECOMMEND_REASONING: 'recommend_reasoning',
   GET_RECENT_REASONING: 'get_recent_reasoning',
   GET_POPULAR_TAGS: 'get_popular_tags',
+  RESOLVE_REASONING: 'resolve_reasoning',
+  CHECK_FAILURES: 'check_failures',
 });
 
 const TOOL_LIST = Object.freeze([
@@ -27,6 +29,8 @@ const TOOL_LIST = Object.freeze([
   TOOL_NAMES.RECOMMEND_REASONING,
   TOOL_NAMES.GET_RECENT_REASONING,
   TOOL_NAMES.GET_POPULAR_TAGS,
+  TOOL_NAMES.RESOLVE_REASONING,
+  TOOL_NAMES.CHECK_FAILURES,
 ]);
 
 // Error codes are permanent once assigned
