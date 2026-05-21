@@ -48,13 +48,23 @@ RESET='\033[0m'
 # Build the full command string
 FULL_CMD="$@"
 
+if [ $# -eq 0 ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  echo "s — AI kubectl execution telemetry collector"
+  echo ""
+  echo "Usage:"
+  echo "  s kubectl apply -f file.yaml"
+  echo "  s kubectl delete pod name"
+  echo ""
+  echo "Wraps kubectl apply/delete to record execution telemetry."
+  echo "Other commands pass through transparently."
+  echo "Set S_AGENT env to tag sessions (e.g., 'claude-code')."
+  echo ""
+  echo "Data: ~/.s/telemetry.jsonl"
+  exit 0
+fi
+
 if ! is_target "$FULL_CMD"; then
   # Non-target command — pass through silently
-  if [ $# -eq 0 ]; then
-    echo "s — AI command telemetry collector"
-    echo "Usage: s kubectl apply|delete ..."
-    exit 0
-  fi
   exec "$@"
 fi
 
