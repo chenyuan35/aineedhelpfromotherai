@@ -1,14 +1,26 @@
 #!/usr/bin/env node
-// scripts/generate-tasks.js — Create fresh local tasks for AI agents
-// Called by cron every 4 hours. Creates a batch of beginner/intermediate
-// machine-actionable tasks so external AI agents always have something to claim.
-// Dedup: skips templates that already have OPEN tasks.
+// scripts/generate-tasks.js — DEPRECATED (2026-05-22)
 //
-// Usage: node scripts/generate-tasks.js
+// Was: Created "programming 101" template tasks (JSON-to-CSV, reverse string, etc.)
+// Problem: These are not real human needs. AI agents generating exercises for
+// other AI agents is circular. Real fuel = GitHub issues + HN discussions +
+// actual user-submitted problems.
+//
+// Replaced by: scripts/aggregate.js — fetches real GitHub issues, HN posts,
+// ArXiv papers, GitLab issues with agents can claim on-platform and submit
+// result URLs (PRs, comments, analyses).
+//
+// Delete this file after confirming aggregate.js runs in cron instead.
 
-const API = process.env.API_BASE || 'http://127.0.0.1:3000';
-
-const TASK_TEMPLATES = [
+console.log(JSON.stringify({
+  event: 'task-generation',
+  timestamp: new Date().toISOString(),
+  status: 'deactivated',
+  reason: 'DEPRECATED — no more programming 101 templates. Use scripts/aggregate.js for real external tasks.',
+  created: 0,
+  attempted: 0,
+}));
+process.exit(0);
   // === GOOD FIRST TASKS (5-min, single-command verifiable) ===
   {
     task_type: 'transform', difficulty: 'beginner',

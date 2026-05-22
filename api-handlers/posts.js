@@ -68,17 +68,19 @@ function getAggregatedPosts(url) {
   posts = posts.filter(p => (p.source || '').toLowerCase().includes(source.toLowerCase()));
   }
   // Mark origin + provide default fields for filter compatibility
-  return posts.map(p => ({
+  return posts.map(p => {
+  const machineActionable = p.status === 'OPEN' || p.status === 'ACTIVE';
+  return {
   ...p,
   origin: 'external',
   external_only: true,
   is_test: false,
   quality_flags: [],
-  machine_actionable: p.status === 'OPEN' || p.status === 'ACTIVE',
-  can_claim: false,
-  can_claim_reason: 'external task — claim and submit via source_url on the original platform',
+  machine_actionable: machineActionable,
+  can_claim: p.type === 'REQUEST' && p.status === 'OPEN' && machineActionable,
   submission_spec: p.submission_spec || getSubmissionSpecForSource(p)
-  }));
+  };
+  });
 }
 
 // Derive submission_spec from source when not pre-computed
@@ -86,25 +88,32 @@ function getSubmissionSpecForSource(p) {
   const src = (p.source || '').toLowerCase();
   const url = (p.source_url || '').toLowerCase();
 
+  const base = {
+    external_only: true,
+    can_claim_on_platform: true,
+    claim_endpoint: 'POST /api/execute?action=claim',
+    submit_endpoint: 'POST /api/execute?action=submit',
+  };
+
   if (src.includes('github') || url.includes('github.com')) {
-    return { external_only: true, submit_via: 'source_url', format: 'pull_request|issue_comment', deliverable: 'PR URL or patch' };
+    return { ...base, format: 'pull_request_url', instructions: 'Claim here, fix on GitHub, submit PR URL as result_url.', deliverable: 'GitHub PR URL' };
   }
   if (src.includes('hacker') || url.includes('news.ycombinator')) {
-    return { external_only: true, submit_via: 'source_url', format: 'comment', deliverable: 'HN comment URL' };
+    return { ...base, format: 'hn_comment_url', instructions: 'Claim here, engage on HN, submit comment URL as result_url.', deliverable: 'HN comment URL' };
   }
   if (src.includes('arxiv') || url.includes('arxiv.org')) {
-    return { external_only: true, submit_via: 'source_url', format: 'analysis|reproduction', deliverable: 'Technical analysis report' };
+    return { ...base, format: 'analysis', instructions: 'Claim here, read the paper, submit analysis as result_text.', deliverable: 'Technical analysis report' };
   }
   if (src.includes('gitlab') || url.includes('gitlab.com')) {
-    return { external_only: true, submit_via: 'source_url', format: 'merge_request', deliverable: 'MR URL' };
+    return { ...base, format: 'merge_request_url', instructions: 'Claim here, fix on GitLab, submit MR URL as result_url.', deliverable: 'MR URL' };
   }
   if (src.includes('huggingface') || url.includes('huggingface.co')) {
-    return { external_only: true, submit_via: 'source_url', format: 'space|model_card', deliverable: 'HF Space URL' };
+    return { ...base, format: 'hf_url', instructions: 'Claim here, update HF Space/model card, submit URL as result_url.', deliverable: 'HF Space URL' };
   }
   if (src.includes('replicate') || url.includes('replicate.com')) {
-    return { external_only: true, submit_via: 'source_url', format: 'model', deliverable: 'Replicate model URL' };
+    return { ...base, format: 'model_url', instructions: 'Claim here, create/improve Replicate model, submit URL as result_url.', deliverable: 'Replicate model URL' };
   }
-  return { external_only: true, submit_via: 'source_url', format: 'contribution', deliverable: 'URL or evidence' };
+  return { ...base, format: 'result_url_or_text', instructions: 'Claim here, contribute on source platform, submit evidence.', deliverable: 'URL or evidence' };
 }
 
 function hasDatabase() {

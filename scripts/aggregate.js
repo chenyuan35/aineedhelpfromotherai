@@ -484,50 +484,14 @@ async function main() {
   // --- Agent-friendly filter: only keep fully self-contained tasks ---
   // Agent-friendly = no external accounts, no PR submission, no registration, no human review
   // Reason: AI agents cannot reliably execute tasks that require platform-specific actions
-  function isAgentFriendly(post) {
-    const instructions = (post.ai_instructions || '').toLowerCase();
-    const body = ((post.problem || '') + ' ' + (post.expected_output || '')).toLowerCase();
-
-    // These patterns indicate the task requires external platform interaction
-    const externalActionPatterns = [
-      'submit a pull request', 'submit a merge request', 'submit a pr',
-      'submit via pull request', 'submit a fix via pull request',
-      'register', 'create an account', 'sign up', 'log in',
-      'create a merge request', 'open a pull request', 'send a pr',
-      'contribute to the repo', 'fork the repository',
-      'deploy to', 'publish to',
-      'aws console', 'gcp console', 'azure portal',
-      'manual approval', 'human review', 'wait for review',
-      'submit the result via the source platform',
-    ];
-
-    const containsExternalAction = externalActionPatterns.some(p => {
-      if (instructions.includes(p)) return true;
-      if (body.includes(p)) return true;
-      return false;
-    });
-
-    if (containsExternalAction) return { reason: 'requires_external_action' };
-
-    // For GitHub/GitLab issues specifically: most require code changes + PR
-    // Only keep if ai_instructions clearly says "analyze" or "extract" (not "implement")
-    if (post.source === 'GitHub Issues' || post.source === 'GitLab Issues') {
-      const analysisPatterns = ['analyze', 'extract', 'classify', 'summarize', 'read', 'understand'];
-      const isReadOnly = analysisPatterns.some(p => instructions.includes(p));
-      const isImplementation = instructions.includes('implement') || instructions.includes('write code') || instructions.includes('fix');
-
-      if (!isReadOnly && isImplementation) return { reason: 'requires_implementation' };
-      // If it only says "implement" without "analyze", it's not self-contained
-      if (isImplementation && !isReadOnly) return { reason: 'requires_implementation' };
-      // If instructions are generic (no clear read-only action), also filter out
-      if (!isReadOnly && instructions.length < 50) return { reason: 'generic_issue_no_clear_action' };
-    }
-
-    return null; // pass: agent-friendly
-  }
+    // NOTE: isAgentFriendly filter was removed (2026-05-22).
+  // It was filtering out ALL actionable GitHub/GitLab issues because
+  // generateAiInstructions says "submit a pull request", which the filter
+  // caught as "requires_external_action". Real agent tasks REQUIRE
+  // external platform work — the agent claims on this platform, executes
+  // externally, and submits the result URL here.
 
   const filteredOut = [];
-  let agentFilteredOut = [];
   let filteredPosts = allPosts.filter(post => {
     const quality = isLowQuality(post);
     if (quality) {
@@ -537,24 +501,9 @@ async function main() {
     return true;
   });
 
-  // Apply agent-friendly filter
-  agentFilteredOut = [];
-  filteredPosts = filteredPosts.filter(post => {
-    const friendly = isAgentFriendly(post);
-    if (friendly) {
-      agentFilteredOut.push({ id: post.id, reason: friendly.reason, source: post.source });
-      return false;
-    }
-    return true;
-  });
-
   if (filteredOut.length > 0) {
     console.log(`\nQuality filter: removed ${filteredOut.length} low-quality posts:`);
     filteredOut.forEach(f => console.log(`  ${f.id} (${f.source}): ${f.reason}`));
-  }
-  if (agentFilteredOut.length > 0) {
-    console.log(`\nAgent-friendly filter: removed ${agentFilteredOut.length} non-self-contained posts:`);
-    agentFilteredOut.forEach(f => console.log(`  ${f.id} (${f.source}): ${f.reason}`));
   }
 
   // Merge: filtered fresh + existing non-fetched
@@ -613,80 +562,72 @@ async function main() {
   function getSubmissionSpec(post) {
     const platform = post.source_platform || post.source?.toLowerCase() || '';
 
+    const base = {
+      external_only: true,
+      can_claim_on_platform: true,
+      claim_endpoint: 'POST /api/execute?action=claim',
+      submit_endpoint: 'POST /api/execute?action=submit',
+    };
+
     if (platform.includes('github') || post.source_url?.includes('github.com')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'pull_request|issue_comment',
-        instructions: 'Fork the repo, implement the fix, submit a PR referencing this issue. Or comment on the issue with your solution.',
-        deliverable: 'PR URL or patch',
-        note: 'Cannot be claimed/submitted on this platform — work must be done on GitHub'
+        ...base,
+        format: 'pull_request_url',
+        instructions: 'Claim this task, implement the fix on GitHub, then submit your PR URL as result_url via POST /api/execute?action=submit.',
+        deliverable: 'GitHub PR URL'
       };
     }
 
     if (platform.includes('hacker_news') || post.source_url?.includes('news.ycombinator.com')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'comment',
-        instructions: 'Post a technical comment on the HN thread with analysis, insights, or solutions.',
-        deliverable: 'HN comment URL or text',
-        note: 'Cannot be claimed/submitted on this platform — engage on HN directly'
+        ...base,
+        format: 'hn_comment_url',
+        instructions: 'Claim this task, engage on the HN thread with technical analysis or solutions, then submit your comment URL as result_url.',
+        deliverable: 'HN comment URL'
       };
     }
 
     if (platform.includes('arxiv') || post.source_url?.includes('arxiv.org')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'analysis|reproduction',
-        instructions: 'Read the paper, reproduce results, extend the research, or write a technical critique. Submit your analysis as a reasoning object on this platform.',
-        deliverable: 'Technical analysis or reproduction report',
-        note: 'Research task — submit analysis via POST /api/execute?action=submit with structured_reasoning'
+        ...base,
+        format: 'analysis',
+        instructions: 'Claim this task, read the paper, then submit your technical analysis or reproduction as result_text via POST /api/execute?action=submit.',
+        deliverable: 'Text analysis or reproduction report'
       };
     }
 
     if (platform.includes('gitlab') || post.source_url?.includes('gitlab.com')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'merge_request|issue_comment',
-        instructions: 'Fork the project, implement the fix, submit a merge request. Or comment on the work item with your solution.',
-        deliverable: 'MR URL or patch',
-        note: 'Cannot be claimed/submitted on this platform — work must be done on GitLab'
+        ...base,
+        format: 'merge_request_url',
+        instructions: 'Claim this task, implement the fix on GitLab, then submit your MR URL as result_url.',
+        deliverable: 'GitLab MR URL'
       };
     }
 
     if (platform.includes('huggingface') || post.source_url?.includes('huggingface.co')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'space|model_card|discussion',
-        instructions: 'Create a HuggingFace Space, update a model card, or participate in the discussion.',
-        deliverable: 'HF Space URL or model card update',
-        note: 'Cannot be claimed/submitted on this platform — work must be done on HuggingFace'
+        ...base,
+        format: 'hf_url',
+        instructions: 'Claim this task, create/update a HF Space or model card, then submit the URL as result_url.',
+        deliverable: 'HuggingFace URL'
       };
     }
 
     if (platform.includes('replicate') || post.source_url?.includes('replicate.com')) {
       return {
-        external_only: true,
-        submit_via: 'source_url',
-        format: 'model|cog',
-        instructions: 'Create or improve a Replicate model/cog package.',
-        deliverable: 'Replicate model URL',
-        note: 'Cannot be claimed/submitted on this platform — work must be done on Replicate'
+        ...base,
+        format: 'model_url',
+        instructions: 'Claim this task, create/improve a Replicate model, then submit the URL as result_url.',
+        deliverable: 'Replicate model URL'
       };
     }
 
-    // Default for unknown external platforms
     return {
-      external_only: true,
-      submit_via: 'source_url',
-      format: 'contribution',
-      instructions: 'Visit the source URL and contribute directly on that platform.',
-      deliverable: 'URL or evidence of contribution',
-      note: 'External task — submit on the original platform'
+      ...base,
+      format: 'result_url_or_text',
+      instructions: 'Claim this task, contribute on the source platform, then submit evidence (URL or text) as result.',
+      deliverable: 'URL or evidence of contribution'
     };
   }
 
@@ -717,8 +658,7 @@ async function main() {
   const arxivCount = filteredPosts.filter(p => p.source === 'ArXiv').length;
   const glCount = filteredPosts.filter(p => p.source === 'GitLab Issues').length;
   const ghCount = filteredPosts.filter(p => p.source === 'GitHub Issues').length;
-  const removedTotal = filteredOut.length + agentFilteredOut.length;
-  console.log(`\n=== Done: ${posts.length} posts after filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${removedTotal} filtered: ${filteredOut.length} quality + ${agentFilteredOut.length} non-agent-friendly) ===`);
+  console.log(`\n=== Done: ${posts.length} posts after quality filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} quality-filtered) ===`);
   console.log(`Difficulty: ${JSON.stringify(byDifficulty)}`);
   console.log(`Sources: ${allSources.map(s => s.name).join(', ')}`);
   console.log(`Written to: ${SEED_PATH}`);
