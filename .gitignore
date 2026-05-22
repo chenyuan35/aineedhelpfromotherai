@@ -1,11 +1,12 @@
-.vercel
-.playwright-cli/
-.credentials
-node_modules/
-.env*.local
-.swarm/
-.claude-flow/
-ruvector.db
 
-# s telemetry — local execution data, never committed
+awesome-mcp-servers
+.claude-flow/
+.credentials
+.env*.local
+node_modules/
+.playwright-cli/
+ruvector.db
 .s/
+# s telemetry — local execution data, never committed
+.swarm/
+.vercel
