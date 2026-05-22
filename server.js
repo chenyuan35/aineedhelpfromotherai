@@ -41,6 +41,7 @@ const handlers = {
   status: require('./api-handlers/status'),
   'auto-execute': require('./api-handlers/auto-execute'),
   'agents-register': require('./api-handlers/agents-register'),
+  'ask-ai': require('./api-handlers/ask-ai'),
 };
 
 // Health check
@@ -97,6 +98,15 @@ app.all('/api/leaderboard/:path', handlers.leaderboard);
 app.get('/api/status', handlers.status);
 app.post('/api/auto-execute', handlers['auto-execute']);
 app.post('/api/agents/register', handlers['agents-register']);
+
+// AI entry door: "I'm stuck" endpoint
+app.post('/api/v1/ask-ai', handlers['ask-ai']);
+
+// Human-readable alias for external tasks
+app.get('/api/help-wanted', (req, res) => {
+  req.url = '/api/posts?source=external&status=OPEN';
+  handlers.posts(req, res);
+});
 
 // Behavior report — observed system analysis
 app.get('/api/behavior', async (req, res) => {
