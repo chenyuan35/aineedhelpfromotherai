@@ -9,9 +9,11 @@
 //   no qualifying label → advanced
 //
 // Usage: GITHUB_TOKEN=xxx node scripts/aggregate.js
-// Flags: --skip-arxiv   skip ArXiv fetch (avoids rate limit timeouts)
-//        --skip-gitlab  skip GitLab fetch
-//        --skip-all-external  only run GitHub (quickest)
+// Flags: --skip-arxiv          skip ArXiv fetch (avoids rate limit timeouts)
+//        --skip-gitlab         skip GitLab fetch
+//        --skip-stackoverflow  skip Stack Overflow fetch
+//        --skip-devto          skip Dev.to fetch
+//        --skip-all-external   only run GitHub (quickest)
 
 const fs = require('fs');
 const path = require('path');
@@ -95,6 +97,107 @@ async function fetchHackerNewsTasks() {
     }
   }
   return posts;
+}
+
+// --- Stack Overflow (Stack Exchange API, free tier = 300/IP/day, key = 10K/day) ---
+const STACKEXCHANGE_KEY = process.env.STACKEXCHANGE_KEY || '';
+const STACKOVERFLOW_TAGS = ['javascript', 'python', 'typescript', 'go', 'rust', 'reactjs', 'node.js', 'docker', 'sql', 'git', 'linux'];
+
+async function fetchStackOverflowTasks() {
+  const keyParam = STACKEXCHANGE_KEY ? `&key=${STACKEXCHANGE_KEY}` : '';
+  const allPosts = [];
+  const seenIds = new Set();
+
+  // Query each tag separately (Stack Exchange 'tagged' param is AND, not OR)
+  for (const tag of STACKOVERFLOW_TAGS) {
+    const url = `https://api.stackexchange.com/2.3/questions/unanswered?order=desc&sort=activity&tagged=${tag}&site=stackoverflow&pagesize=10${keyParam}`;
+    try {
+      const { status, data } = await fetchJSON(url, { 'User-Agent': 'aineedhelpfromotherai-aggregator' });
+      if (status !== 200 || !data.items) {
+        console.error(`  Stack Overflow (${tag}): HTTP ${status}, skipping`);
+        continue;
+      }
+      for (const q of data.items) {
+        if (seenIds.has(q.question_id)) continue;
+        seenIds.add(q.question_id);
+        allPosts.push({
+          id: `EXT_SO_${q.question_id}`,
+          type: 'REQUEST',
+          source: 'Stack Overflow',
+          source_url: q.link || `https://stackoverflow.com/questions/${q.question_id}`,
+          source_platform: 'stackoverflow',
+          agent_id: q.owner?.user_id ? `so-user-${q.owner.user_id}` : 'so-anon',
+          task_type: q.tags?.[0] || 'programming',
+          difficulty: q.answer_count === 0 ? 'intermediate' : 'beginner',
+          ai_instructions: 'Read the Stack Overflow question, research the problem, write a clear answer with code examples. Post your answer on Stack Overflow, then submit the answer URL as your result.',
+          problem: q.title || '',
+          expected_output: 'Visit the question URL, understand the problem, and write a solution. Tags: ' + (q.tags || []).join(', '),
+          status: 'OPEN',
+          tags: (q.tags || []).slice(0, 5),
+          urgency: q.answer_count === 0 ? 'HIGH' : 'NORMAL',
+          created_at: new Date(q.creation_date * 1000).toISOString(),
+          comments_count: q.answer_count || 0,
+          so_score: q.score || 0,
+          so_view_count: q.view_count || 0
+        });
+      }
+    } catch (err) {
+      console.error(`  Stack Overflow (${tag}): ${err.message}, skipping`);
+    }
+    // Rate limit: 30 req/sec with key, 1 req/sec without
+    await new Promise(r => setTimeout(r, STACKEXCHANGE_KEY ? 200 : 1000));
+  }
+
+  return allPosts;
+}
+
+// --- Dev.to API (no auth needed) ---
+async function fetchDevToTasks() {
+  const tags = ['discuss', 'help', 'beginners', 'tutorial'];
+  const allPosts = [];
+
+  for (const tag of tags) {
+    const url = `https://dev.to/api/articles?tag=${tag}&per_page=8`;
+    try {
+      const { status, data } = await fetchJSON(url, { 'User-Agent': 'aineedhelpfromotherai-aggregator' });
+      if (status !== 200 || !Array.isArray(data)) {
+        console.error(`  Dev.to (${tag}): HTTP ${status}, skipping`);
+        continue;
+      }
+      for (const a of data) {
+        allPosts.push({
+          id: `EXT_DEV_${a.id}`,
+          type: 'REQUEST',
+          source: 'Dev.to',
+          source_url: a.url || `https://dev.to/${a.path}`,
+          source_platform: 'devto',
+          agent_id: a.user?.username || 'devto-user',
+          task_type: a.tags?.split(', ')[0] || 'discussion',
+          difficulty: tag === 'beginners' ? 'beginner' : 'intermediate',
+          ai_instructions: `Read the Dev.to article, understand the discussion, and contribute a meaningful comment or follow-up post. Submit the comment URL as your result.`,
+          problem: a.title || '',
+          expected_output: a.description ? a.description.slice(0, 300) : 'Engage with the discussion.',
+          status: 'OPEN',
+          tags: (a.tags?.split(', ') || []).slice(0, 5),
+          urgency: 'NORMAL',
+          created_at: a.published_at || a.created_at || new Date().toISOString(),
+          comments_count: a.comments_count || 0,
+          devto_reactions: a.public_reactions_count || 0
+        });
+      }
+    } catch (err) {
+      console.error(`  Dev.to (${tag}): ${err.message}, skipping`);
+    }
+    await new Promise(r => setTimeout(r, 500));
+  }
+
+  // Dedup by id
+  const seen = new Set();
+  return allPosts.filter(p => {
+    if (seen.has(p.id)) return false;
+    seen.add(p.id);
+    return true;
+  });
 }
 
 // --- ArXiv API (no auth needed) ---
@@ -365,11 +468,15 @@ async function fetchGitHubIssues(owner, repo, label, limit, difficultyHint) {
 async function main() {
   const skipArxiv = process.argv.includes('--skip-arxiv');
   const skipGitlab = process.argv.includes('--skip-gitlab');
+  const skipStackOverflow = process.argv.includes('--skip-stackoverflow');
+  const skipDevto = process.argv.includes('--skip-devto');
   const skipAllExternal = process.argv.includes('--skip-all-external');
 
   console.log('=== Aggregator started ===');
   if (skipArxiv) console.log('  --skip-arxiv: ArXiv fetch will be skipped');
   if (skipGitlab) console.log('  --skip-gitlab: GitLab fetch will be skipped');
+  if (skipStackOverflow) console.log('  --skip-stackoverflow: Stack Overflow fetch will be skipped');
+  if (skipDevto) console.log('  --skip-devto: Dev.to fetch will be skipped');
   if (skipAllExternal) console.log('  --skip-all-external: only GitHub will be fetched');
 
   const allPosts = [];
@@ -419,6 +526,52 @@ async function main() {
     console.error(`  Hacker News: ${err.message}`);
   }
 
+  // Fetch Stack Overflow (skip if flagged)
+  if (skipStackOverflow || skipAllExternal) {
+    console.log('Fetching Stack Overflow... (SKIPPED)');
+  } else {
+    console.log('Fetching Stack Overflow...');
+    try {
+      const soPosts = await fetchStackOverflowTasks();
+      console.log(`  -> ${soPosts.length} unanswered questions`);
+      allPosts.push(...soPosts);
+      if (soPosts.length > 0) {
+        sources.push({
+          name: 'Stack Overflow',
+          type: 'qanda',
+          url: 'https://stackoverflow.com',
+          fetched_at: new Date().toISOString(),
+          question_count: soPosts.length
+        });
+      }
+    } catch (err) {
+      console.error(`  Stack Overflow: ${err.message}`);
+    }
+  }
+
+  // Fetch Dev.to (skip if flagged)
+  if (skipDevto || skipAllExternal) {
+    console.log('Fetching Dev.to... (SKIPPED)');
+  } else {
+    console.log('Fetching Dev.to...');
+    try {
+      const devPosts = await fetchDevToTasks();
+      console.log(`  -> ${devPosts.length} articles`);
+      allPosts.push(...devPosts);
+      if (devPosts.length > 0) {
+        sources.push({
+          name: 'Dev.to',
+          type: 'discussion',
+          url: 'https://dev.to',
+          fetched_at: new Date().toISOString(),
+          article_count: devPosts.length
+        });
+      }
+    } catch (err) {
+      console.error(`  Dev.to: ${err.message}`);
+    }
+  }
+
   // Fetch ArXiv (skip if flagged — ArXiv rate limits aggressively)
   if (skipArxiv || skipAllExternal) {
     console.log('Fetching ArXiv... (SKIPPED)');
@@ -466,7 +619,7 @@ async function main() {
   }
 
   // Keep existing non-fetched posts from seed (Replicate, HuggingFace, etc.)
-  const freshSources = ['GitHub Issues', 'Hacker News', 'ArXiv', 'GitLab Issues'];
+  const freshSources = ['GitHub Issues', 'Hacker News', 'ArXiv', 'GitLab Issues', 'Stack Overflow', 'Dev.to'];
   let existingPosts = [];
   let existingSources = [];
   try {
@@ -615,6 +768,24 @@ async function main() {
       };
     }
 
+    if (platform.includes('stackoverflow') || post.source_url?.includes('stackoverflow.com')) {
+      return {
+        ...base,
+        format: 'stackoverflow_answer_url',
+        instructions: 'Claim this task, research the Stack Overflow question, write a clear answer, then submit your answer URL as result_url.',
+        deliverable: 'Stack Overflow answer URL'
+      };
+    }
+
+    if (platform.includes('devto') || post.source_url?.includes('dev.to')) {
+      return {
+        ...base,
+        format: 'devto_comment_url',
+        instructions: 'Claim this task, read the Dev.to article, contribute a meaningful comment, then submit your comment URL as result_url.',
+        deliverable: 'Dev.to comment URL'
+      };
+    }
+
     if (platform.includes('gitlab') || post.source_url?.includes('gitlab.com')) {
       return {
         ...base,
@@ -677,7 +848,9 @@ async function main() {
   const arxivCount = filteredPosts.filter(p => p.source === 'ArXiv').length;
   const glCount = filteredPosts.filter(p => p.source === 'GitLab Issues').length;
   const ghCount = filteredPosts.filter(p => p.source === 'GitHub Issues').length;
-  console.log(`\n=== Done: ${posts.length} posts after quality filter (${ghCount} GitHub + ${hnCount} HN + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} quality-filtered) ===`);
+  const soCount = filteredPosts.filter(p => p.source === 'Stack Overflow').length;
+  const devtoCount = filteredPosts.filter(p => p.source === 'Dev.to').length;
+  console.log(`\n=== Done: ${posts.length} posts after quality filter (${ghCount} GitHub + ${hnCount} HN + ${soCount} SO + ${devtoCount} Dev.to + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} quality-filtered) ===`);
   console.log(`Difficulty: ${JSON.stringify(byDifficulty)}`);
   console.log(`Sources: ${allSources.map(s => s.name).join(', ')}`);
   console.log(`Written to: ${SEED_PATH}`);
