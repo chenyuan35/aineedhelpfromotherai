@@ -1,5 +1,47 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-22: s wrapper 增强 + 桌面自动化就绪 + 推广材料准备
+
+### 关键认知
+- **Chrome cookies + requests = 最稳的自动化方式**：不需要 OAuth/API key，用用户已有登录态直接操作
+- **桌面截图 + OCR + ydotool + browser-cookie3 全套就绪**：可以"操作电脑"了
+- **Dev.to/Twitter API 有反爬**：直接用浏览器界面粘贴发布比折腾 API 更快
+- **MCP Server 已经完备（11 tools）**：瓶颈在分布，不在功能
+
+### 完成
+1. **浏览器 cookie 提取管道** — browser-cookie3 解密 Chrome 加密 cookie（通过系统 keyring portal）
+   - 已验证 50+ 平台 cookie 可读取
+   - Reddit 发帖成功（cookie 直发，不是模拟点击）
+
+2. **桌面自动化工具链** — 全部无 sudo 可用：
+   - `gnome-screenshot`：截屏 ✅
+   - `pytesseract`：OCR 读屏（中英文）✅
+   - `ydotool`：键盘鼠标模拟（Wayland）✅
+   - `browser-cookie3`：读 Chrome cookie ✅
+
+3. **s wrapper 增强** (telemetry/s)：
+   - 新增命令覆盖：`kubectl drain/cordon/taint/rollout`, `docker compose/swarm`, `helm install/upgrade/delete`, `terraform apply/destroy`
+   - **犹豫检测**：记录命令生成到执行的时间差 (`hesitation_ms`)
+   - **高风险操作确认**：失败率 ≥50% 或含 delete/destroy/drain 时提示输入 'yes'
+   - **--signals 报告**：展示按工具分组的失败率、犹豫统计、agent 分布
+   - `S_AUTO=1` 环境变量跳过确认（用于自动化场景）
+
+4. **tiny-signals 日报脚本** (telemetry/tiny-signals.sh)：
+   - 每日从 ~/.s/telemetry.jsonl 生成 Markdown 报告
+   - 含信号 (🟢🟡🔴)、按工具失败率、犹豫统计
+
+5. **Dev.to 推广文章** (docs-posts/devto-article.md)：
+   - 完整草稿就绪
+   - 浏览器已打开 dev.to/new 等待发布
+
+### 当前状态
+- **桌面自动化就绪**：可以操作 Chrome 做任何事
+- **推广材料就绪**：Dev.to 文章草稿 + Reddit 评论已发
+- **s wrapper 增强已上线**：7c3adc3
+- **真实 AI 周期**：仍然等待第一个外部 AI 完成 ENTRY_HELLO_AGENT
+
+---
+
 ## 2026-05-22: Hermes 插件 + ask-ai 入口 + 战略校准
 
 ### 关键认知

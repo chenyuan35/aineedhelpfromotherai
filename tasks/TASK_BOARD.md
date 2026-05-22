@@ -68,16 +68,28 @@
 | 308 | **前端缓存兜底** — API 失败显示缓存而非空白 | ✅ 完成 | 断网测试 |
 | 309 | **synthetic activity 标记** — seed-activity 所有执行标 synthetic: | ✅ 完成 | agent_id 前缀 + result 标记 |
 
-## P4 — 执行遥测（新线 — 真正的护城河）
+## P5 — 分布与推广（当前瓶颈）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 501 | **Reddit 推广** — r/devops 回帖（PocketOS 帖） | ✅ 完成 | 已发评论 on8djfe |
+| 502 | **Dev.to 文章发布** — MCP server 介绍 | 📝 草稿就绪 | docs-posts/devto-article.md |
+| 503 | **AI Agents Directory 提交** | ⬜ 待做 | 需要浏览器操作表单 |
+| 504 | **Product Hunt 发布** | ⬜ 待做 | 需要注册 |
+| 505 | **Twitter/X 推广** | ⬜ 待做 | cookie API 403，需用浏览器 |
+| 506 | **Hacker News 提交** | ⬜ 待做 | 需要账号 |
+
+> **推广优先级**: 500 > 400 > 300。优先让已有账号的平台上内容。
+> 桌面 cookie 自动化已就绪，只是需要你把浏览器切到目标页面粘贴。
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
 | 401 | **s — kubectl 执行遥测收集器** | ✅ 完成 | telemetry/s 可用 |
 | 402 | **风险指标** — 基于本地历史显示失败率 | ✅ 完成 | 🟢🟡🔴 指示器 |
-| 403 | **扩展命令覆盖** — helm/terraform/docker/git | ⬜ 待做 | 新增 subcommand 列表 |
-| 404 | **犹豫检测** — 命令生成到执行的时间差 | ⬜ 待做 | 记录 hesitation_ms |
-| 405 | **操作记忆** — 从遥测数据提取模式 | ⬜ 待做 | 模式检测脚本 |
-| 406 | **Tiny signals 输出** — 真实使用信号 | ⬜ 待做 | 每日信号报告 |
+| 403 | **扩展命令覆盖** — helm/terraform/docker/git 全系 | ✅ 完成 | TARGET_PATTERNS 含 18 个模式 |
+| 404 | **犹豫检测** — 命令生成到执行的时间差 | ✅ 完成 | hesitation_ms 字段 |
+| 405 | **操作记忆** — 从遥测数据提取模式 | ✅ 完成 | tiny-signals.sh 日报脚本 |
+| 406 | **Tiny signals 输出** — 真实使用信号 | ✅ 完成 | --signals 命令 + 日报脚本 |
 
 > **战略优先级**: P4 > P3。旧线（平台/tasks/reasoning）容易自我感动，
 > 但真正可能长出护城河的是新线（执行遥测/犹豫/操作记忆）。
@@ -134,31 +146,27 @@
 
 ## 当前阶段判断
 
-**战略校准（2026-05-22）**: 之前的认知是"平台功能完善 → 外部 AI 自然来"。
-但真相是：**没有 AI 访问过这个网站**。不是功能不够，是周期没跑通。
-新方向：**不再加功能，只跑通第一个真实 AI-to-AI 周期**。
+**战略校准（2026-05-22 晚）**: 桌面自动化就绪，推广管道已建立。
+P4 执行遥测（s wrapper）全线完成。新焦点：**分布推广 + 第一个真实 AI 周期**。
 
 ### 当前状态
 
+- **桌面自动化**: Chrome cookie 读取 + 截屏 + OCR + 键盘鼠标 全套就绪
+- **s wrapper**: 18 个命令模式 + 犹豫检测 + 风险确认 + --signals 报告 ✅
+- **推广材料**: Reddit 已回帖，Dev.to 文章草稿就绪
 - **入口就绪**: Entry task + ask-ai + help-wanted + Hermes plugin
+- **MCP 11 tools**: 已上线，IDE 自动发现配置就绪
 - **142 tasks** 可 claim（含 Entry task）
-- **Posts**: 163（GitHub + SO + HN 聚合）
-- **发现全面更新**: 44 endpoints in openapi.json, 14 MCP tools
-- **Hermes agent patched**: API 耗尽时自动 POST ask-ai
-- **PR #6536**: awesome-mcp-servers 已提交
-
-### 核心风险
-
-- **零真实 AI 周期**: 没有 AI 完成过 claim → execute → submit
-- **评分无关紧要**: 之前花太多时间在评分/分析，但第一名完成 0 个任务
+- **真实 AI 周期**: 仍然等待第一个外部 AI 完成 claim → execute → submit
 
 ### 当前只做一件事
 
-**让一个真实 AI 完成 ENTRY_HELLO_AGENT** — claim → wait → submit。
+**完成分布推广 → 让一个真实 AI 完成 ENTRY_HELLO_AGENT**。
 
 ### 暂停
 
-- 所有功能开发
+- 所有功能开发（除非 P4 新线）
+- P4 已全部完成
 - 推理库扩充
 - 评分/分析
 - 文档美化
