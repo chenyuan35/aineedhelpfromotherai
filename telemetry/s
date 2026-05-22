@@ -1,85 +1,84 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# s — AI command execution telemetry collector
-# First wedge: kubectl apply / kubectl delete
+# s — execution telemetry collector
+# Intercepts high-risk ops: kubectl apply/delete, docker build/push,
+# git push/merge/rebase. Records exit code, duration, cwd.
 #
 # Usage:
-#   s kubectl apply -f ingress.yaml
-#   s kubectl delete pod nginx-xxx
+#   alias kubectl='s kubectl'
+#   alias docker='s docker'
+#   alias git='s git'
 #
-# Records: command, cwd, exit_code, rollback, duration
 # Data: ~/.s/telemetry.jsonl (append-only, JSON lines)
-#
-# No platform. No API. No database. Just telemetry.
+# No platform. No API. No database. Just local telemetry.
 
 TELEMETRY_DIR="${HOME}/.s"
 TELEMETRY_FILE="${TELEMETRY_DIR}/telemetry.jsonl"
 SESSION_FILE="${TELEMETRY_DIR}/session"
 
-# Ensure storage dir
 mkdir -p "${TELEMETRY_DIR}"
 
-# Session tracking (simple counter per session file)
 if [ ! -f "${SESSION_FILE}" ]; then
   echo "s: first run — initializing telemetry at ${TELEMETRY_FILE}"
   echo '{}' > "${SESSION_FILE}"
 fi
 
-# Only intercept kubectl apply and kubectl delete
-TARGET_SUBCOMMANDS=("apply" "delete")
+# Tool patterns: "tool subcommand" → tool name for grouping
+TARGET_PATTERNS=(
+  "kubectl apply"
+  "kubectl delete"
+  "docker build"
+  "docker push"
+  "git push"
+  "git merge"
+  "git rebase"
+)
 
 is_target() {
   local cmd="$1"
-  for sub in "${TARGET_SUBCOMMANDS[@]}"; do
-    if [[ "$cmd" == *"kubectl $sub"* ]]; then
+  for pattern in "${TARGET_PATTERNS[@]}"; do
+    if [[ "$cmd" == *"$pattern"* ]]; then
       return 0
     fi
   done
   return 1
 }
 
-# Color helpers
+extract_tool_sub() {
+  local cmd="$1"
+  for pattern in "${TARGET_PATTERNS[@]}"; do
+    if [[ "$cmd" == *"$pattern"* ]]; then
+      echo "$pattern"
+      return 0
+    fi
+  done
+  echo "unknown"
+}
+
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
 
-# Build the full command string
 FULL_CMD="$@"
 
 if [ $# -eq 0 ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-  echo "s — AI kubectl execution telemetry collector"
+  echo "s — execution telemetry collector"
   echo ""
-  echo "Usage:"
-  echo "  s kubectl apply -f file.yaml"
-  echo "  s kubectl delete pod name"
-  echo ""
-  echo "Wraps kubectl apply/delete to record execution telemetry."
+  echo "Targets: ${TARGET_PATTERNS[*]}"
   echo "Other commands pass through transparently."
-  echo "Set S_AGENT env to tag sessions (e.g., 'claude-code')."
-  echo ""
+  echo "Set S_AGENT env to tag sessions."
   echo "Data: ~/.s/telemetry.jsonl"
   exit 0
 fi
 
 if ! is_target "$FULL_CMD"; then
-  # Non-target command — pass through silently
   exec "$@"
 fi
 
-# Parse subcommand (apply or delete)
-SUBCOMMAND=""
-SUB_RAW=$(echo "$FULL_CMD" | grep -oP '(?<=kubectl )(apply|delete)' 2>/dev/null || true)
-if [ -n "$SUB_RAW" ]; then
-  SUBCOMMAND="$SUB_RAW"
-fi
-
-# Generate a lightweight command hash for grouping (printf avoids newline inconsistency)
+TOOL_SUB=$(extract_tool_sub "$FULL_CMD")
 CMD_HASH=$(printf '%s' "$FULL_CMD" | sha256sum | cut -c1-12 2>/dev/null || echo "unknown")
-
-# Sequence ID within this session
-SEQ_ID=$(date +%s%N)
 
 # Check telemetry for similar commands
 SIMILAR_FAILS=0
@@ -102,19 +101,17 @@ fi
 if [ $SIMILAR_TOTAL -gt 0 ]; then
   FAIL_RATE=$(( SIMILAR_FAILS * 100 / SIMILAR_TOTAL ))
   if [ $FAIL_RATE -ge 50 ]; then
-    echo -e "${RED}⚠ s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+    echo -e "${RED}⚠ s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
   elif [ $FAIL_RATE -ge 20 ]; then
-    echo -e "${YELLOW}⚠ s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+    echo -e "${YELLOW}⚠ s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
   else
-    echo -e "${GREEN}s: ${SUBCOMMAND} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+    echo -e "${GREEN}s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
   fi
 fi
 
-# Capture start time
 START_TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 START_MS=$(date +%s%N)
 
-# Execute the real command
 set +e
 "$@"
 EXIT_CODE=$?
@@ -123,19 +120,15 @@ set -e
 END_MS=$(date +%s%N)
 DURATION_MS=$(( (END_MS - START_MS) / 1000000 ))
 
-# Detect rollback (kubectl rollback or undo patterns in next commands)
-ROLLBACK=false
-
 # Log telemetry
 LOG_ENTRY=$(cat <<EOF
 {
   "timestamp": "${START_TS}",
   "command": "$(echo "$FULL_CMD" | sed 's/"/\\"/g')",
   "command_hash": "${CMD_HASH}",
-  "subcommand": "${SUBCOMMAND}",
+  "tool_sub": "${TOOL_SUB}",
   "cwd": "$(pwd)",
   "exit_code": ${EXIT_CODE},
-  "rollback": ${ROLLBACK},
   "duration_ms": ${DURATION_MS},
   "session_id": "$(hostname)-$$",
   "agent": "${S_AGENT:-unknown}"
@@ -145,7 +138,6 @@ EOF
 
 echo "${LOG_ENTRY}" >> "${TELEMETRY_FILE}"
 
-# Final status
 if [ $EXIT_CODE -eq 0 ]; then
   echo -e "${GREEN}s: done (${DURATION_MS}ms)${RESET}"
 else

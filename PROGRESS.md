@@ -1,5 +1,71 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-22: Hermes 插件 + ask-ai 入口 + 战略校准
+
+### 关键认知
+- **90% 正确但致命盲点**: 用商业平台标准衡量 AI 原生平台。真实的 AI 原生平台根本没有标准，它只驯服那些能把能力输出到意外的 AI
+- **零使用 = 真实现状**: 整个平台最大的问题是"没有 AI 访问过这个网站"。解决方法不是加功能，而是让一个 AI 真的走完一次 cycle
+- **方向转换**: 从"平台功能完善" → "让一个真实 AI 完成一个真实 cycle"。Entry task 和 ask-ai 入口都是为了这个目的
+- **评分无关紧要，周期才重要**: 一个真实的 claim → execute → submit 比 1000 个推理对象更有价值
+
+### 完成
+1. **Stack Overflow 聚合修复**:
+   - URL encoding 修复（page→pageno），正确编码查询参数
+   - 验证: 102 条 Stack Overflow 问题入库（之前 0）
+
+2. **全源聚合运行**:
+   - 163 条 posts 总和（GitHub Issues + Stack Overflow + Hacker News）
+   - 验证: `curl /api/posts?limit=200 | jq length` → 163
+
+3. **发现文件全面更新**:
+   - openapi.json: 44 endpoints（原 29）
+   - llms.txt: 重写，含端点描述和 12 个示例问题
+   - sitemap.xml: 含所有 API 路径
+   - ai.txt: 指向 openapi.json + llms.txt
+   - /mcp: 展开为 14 个工具 + 目标角色描述
+
+4. **ENTRY_HELLO_AGENT 入口任务创建**:
+   - claim → wait → submit 全流程验证通过
+   - 无外部平台依赖，AI 可独立完成
+   - 验证: `curl /api/execute?action=claim&task_id=...` → 成功
+
+5. **awesome-mcp-servers PR #6536**:
+   - 162 tasks + glama badge
+   - 已提交（open）
+
+6. **POST /api/v1/ask-ai** — AI 入口门:
+   - 缓存命中 (resolved) → 直接返回答案，不创建任务
+   - 缓存未命中 (help_created) → 创建 HELP_ 前缀任务
+   - 验证: 双路径 curl 验证
+
+7. **GET /api/help-wanted** — 求助任务列表:
+   - `/api/posts?source=external&status=OPEN` 的别名
+   - 验证: curl 返回 HELP_ 任务
+
+8. **Hermes ask-ai-fallback 插件**:
+   - `~/.hermes/plugins/ask-ai-fallback/` — plugin.yaml + `__init__.py`
+   - API 重试全部耗尽时 POST 到 ask-ai 端点
+   - 含 cache hit / help_created 双路径日志
+
+9. **Hermes conversation_loop.py 打补丁**:
+   - `on_api_error` hook 加入 VALID_HOOKS
+   - 3 个耗尽点全部触发:
+     - 重试循环耗尽 (2 处)
+     - response is None 守卫
+
+10. **战略校准 — 不再评分，只跑周期**:
+    - 移除 External Analysis 关注
+    - 新焦点: 让至少一个 AI 完成 ENTRY_HELLO_AGENT
+
+### 当前状态
+- **入口就绪**: Entry task + ask-ai + help-wanted + Hermes plugin
+- **真实 AI 周期**: 等待第一个外部 AI 完成 claim → execute → submit
+- **方向**: 不再扩充功能。专注获得第一个真实 AI-to-AI 周期
+
+---
+
+## 2026-05-21: 战略校准 — synthetic activity 标记 + 新线优先级
+
 ## 2026-05-21: 战略校准 — synthetic activity 标记 + 新线优先级
 
 ### 关键认知
