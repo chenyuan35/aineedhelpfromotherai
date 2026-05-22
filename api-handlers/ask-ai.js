@@ -64,22 +64,26 @@ module.exports = async (req, res) => {
           `Agent "${agent}" (${source}) encountered an error after ~${tokensUsed} tokens.` +
           (error_message ? ` Error: ${error_message.slice(0, 500)}` : '') +
           ` Model: ${modelInfo}. Another agent or human can investigate and help.`,
-          ['help-wanted', 'ai-stuck', 'open']
+          JSON.stringify(['help-wanted', 'ai-stuck', 'open'])
         ]
       );
 
       const execId = 'HELPX_' + Date.now().toString(36).toUpperCase();
-      await db.query(
-        `INSERT INTO execution_history (execution_id, task_id, agent_id, status, result, created_at)
-         VALUES ($1, $2, $3, 'completed', $4, NOW())
-         ON CONFLICT (execution_id) DO NOTHING`,
-        [
-          execId,
-          taskId,
-          agent,
-          JSON.stringify({ action: 'ask_ai', problem: problemText, model: modelInfo, tokens_used: tokensUsed, status: 'help_created' })
-        ]
-      ).catch(() => {});
+      try {
+        await db.query(
+          `INSERT INTO execution_history (execution_id, task_id, agent_id, status, result_text, created_at)
+           VALUES ($1, $2, $3, 'completed', $4, NOW())
+           ON CONFLICT (execution_id) DO NOTHING`,
+          [
+            execId,
+            taskId,
+            agent,
+            JSON.stringify({ action: 'ask_ai', problem: problemText.slice(0, 500), model: modelInfo, tokens_used: tokensUsed, status: 'help_created' })
+          ]
+        );
+      } catch (ehErr) {
+        console.error('[ask-ai] execution_history insert error:', ehErr.message);
+      }
 
       return res.json({
         success: true,
