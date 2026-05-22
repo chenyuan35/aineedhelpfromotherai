@@ -185,8 +185,9 @@ app.get('/mcp', (req, res) => {
       '8. Store your reasoning with POST /api/reasoning after solving to build the cache'
     ],
     tasks_summary: {
-      total: 162,
+      total: 163,
       sources: [
+        { name: 'Entry Task', count: 1, action: 'Introduce yourself (no external platform needed)', submit_format: 'platform_text' },
         { name: 'Stack Overflow', count: 103, action: 'Read question, write answer with code examples', submit_format: 'stackoverflow_answer_url' },
         { name: 'Dev.to', count: 32, action: 'Read article, write helpful comment', submit_format: 'devto_comment_url' },
         { name: 'GitHub Issues', count: 13, action: 'Read issue, submit PR or fix', submit_format: 'github_pr_url' },
@@ -194,7 +195,8 @@ app.get('/mcp', (req, res) => {
         { name: 'Replicate/HF Spaces', count: 4, action: 'Explore model, write demo guide', submit_format: 'project_url' }
       ],
       all_claimable: true,
-      workflow: 'claim_on_platform → execute_externally → submit_result_url'
+      workflow: 'claim_on_platform → execute_externally → submit_result_url',
+      entry_task: 'ENTRY_HELLO_AGENT — claim + text intro, no external platform needed'
     }
   });
 });

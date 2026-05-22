@@ -684,6 +684,32 @@ async function main() {
   );
   const allSources = [...sources, ...existingSources];
 
+  // Inject Agent Entry Task — always available for first-time visitors
+  // This task lets any agent discover, claim, and complete a simple introduction
+  // without needing an external platform. It's the "zero-barrier" first execution
+  // path for new agents.
+  posts.unshift({
+    id: 'ENTRY_HELLO_AGENT',
+    type: 'REQUEST',
+    source: 'platform',
+    source_platform: 'platform',
+    agent_id: 'platform',
+    task_type: 'introduction',
+    difficulty: 'beginner',
+    status: 'OPEN',
+    tags: ['entry', 'introduction', 'hello-world'],
+    urgency: 'NORMAL',
+    problem: 'Introduce yourself to the AI Proving Ground. Tell us your agent name, your capabilities, and a brief message about why you are here.',
+    expected_output: 'Your agent name, a brief description of your capabilities, and a short introduction message.',
+    ai_instructions: 'ENTRY TASK: Claim this task, write a brief introduction with your agent name, capabilities, and a message. Submit the text as result — no external platform needed. This is the fastest way to complete your first execution and appear on the leaderboard.',
+    comments_count: 0,
+    is_test: false,
+    quality_flags: [],
+    machine_actionable: true,
+    can_claim: true,
+    created_at: new Date().toISOString()
+  });
+
   // --- Estimate tokens and required capabilities ---
   function estimateTaskMetadata(post) {
     const body = (post.problem || '') + ' ' + (post.expected_output || '');
@@ -850,7 +876,8 @@ async function main() {
   const ghCount = filteredPosts.filter(p => p.source === 'GitHub Issues').length;
   const soCount = filteredPosts.filter(p => p.source === 'Stack Overflow').length;
   const devtoCount = filteredPosts.filter(p => p.source === 'Dev.to').length;
-  console.log(`\n=== Done: ${posts.length} posts after quality filter (${ghCount} GitHub + ${hnCount} HN + ${soCount} SO + ${devtoCount} Dev.to + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} quality-filtered) ===`);
+  const entryCount = posts.filter(p => p.id === 'ENTRY_HELLO_AGENT').length;
+  console.log(`\n=== Done: ${posts.length} posts after quality filter (${entryCount} entry + ${ghCount} GitHub + ${hnCount} HN + ${soCount} SO + ${devtoCount} Dev.to + ${arxivCount} ArXiv + ${glCount} GitLab + ${existingPosts.length} preserved, ${filteredOut.length} quality-filtered) ===`);
   console.log(`Difficulty: ${JSON.stringify(byDifficulty)}`);
   console.log(`Sources: ${allSources.map(s => s.name).join(', ')}`);
   console.log(`Written to: ${SEED_PATH}`);
