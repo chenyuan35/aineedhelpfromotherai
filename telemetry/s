@@ -28,8 +28,19 @@ fi
 TARGET_PATTERNS=(
   "kubectl apply"
   "kubectl delete"
+  "kubectl drain"
+  "kubectl cordon"
+  "kubectl taint"
+  "kubectl rollout"
   "docker build"
   "docker push"
+  "docker compose"
+  "docker swarm"
+  "helm install"
+  "helm upgrade"
+  "helm delete"
+  "terraform apply"
+  "terraform destroy"
   "git push"
   "git merge"
   "git rebase"
@@ -69,7 +80,57 @@ if [ $# -eq 0 ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
   echo "Targets: ${TARGET_PATTERNS[*]}"
   echo "Other commands pass through transparently."
   echo "Set S_AGENT env to tag sessions."
+  echo "Set S_AUTO=1 to skip confirm prompt."
+  echo ""
+  echo "Commands:"
+  echo "  s --signals    Show daily telemetry report"
+  echo "  s --clear      Clear telemetry history"
+  echo "  s --help       This help"
+  echo ""
   echo "Data: ~/.s/telemetry.jsonl"
+  exit 0
+fi
+
+# Report command
+if [ "$1" = "--signals" ]; then
+  if [ ! -f "${TELEMETRY_FILE}" ]; then
+    echo "s: no telemetry yet"
+    exit 0
+  fi
+  echo "=== s Telemetry Report ==="
+  python3 -c "
+import json, collections, sys
+entries = [json.loads(l) for l in open('${TELEMETRY_FILE}') if l.strip()]
+if not entries:
+    print('No entries')
+    sys.exit(0)
+total = len(entries)
+fails = [e for e in entries if e.get('exit_code', 0) != 0 and e.get('exit_code', -1) != -1]
+aborted = [e for e in entries if e.get('aborted')]
+by_tool = collections.Counter(e.get('tool_sub','unknown') for e in entries)
+fail_rate_by_tool = {}
+for tool, cnt in by_tool.items():
+    tool_fails = len([e for e in entries if e.get('tool_sub')==tool and e.get('exit_code',0)!=0 and e.get('exit_code',-1)!=-1])
+    fail_rate_by_tool[tool] = (tool_fails, cnt, tool_fails*100//cnt if cnt else 0)
+print(f'Total ops: {total}  |  Failed: {len(fails)}  |  Aborted: {len(aborted)}')
+print()
+print('By tool:')
+for tool, cnt in by_tool.most_common():
+    f, c, r = fail_rate_by_tool[tool]
+    icon = '🔴' if r >= 50 else '🟡' if r >= 20 else '🟢'
+    print(f'  {icon} {tool:25s} {cnt:4d} ops  {f:3d} fails  {r:2d}% fail rate')
+hesitations = [e for e in entries if e.get('hesitation_ms', 0) > 0]
+if hesitations:
+    avg_h = sum(e['hesitation_ms'] for e in hesitations) // len(hesitations)
+    print(f'\nAvg hesitation: {avg_h}ms over {len(hesitations)} ops')
+"
+  exit 0
+fi
+
+# Clear command
+if [ "$1" = "--clear" ]; then
+  : > "${TELEMETRY_FILE}"
+  echo "s: telemetry cleared"
   exit 0
 fi
 
@@ -79,6 +140,10 @@ fi
 
 TOOL_SUB=$(extract_tool_sub "$FULL_CMD")
 CMD_HASH=$(printf '%s' "$FULL_CMD" | sha256sum | cut -c1-12 2>/dev/null || echo "unknown")
+
+# Hesitation detection: record when command was generated vs executed
+HESITATION_MS=0
+HESITATION_START=$(date +%s%N)
 
 # Check telemetry for similar commands
 SIMILAR_FAILS=0
@@ -98,15 +163,53 @@ if [ -f "${TELEMETRY_FILE}" ]; then
 fi
 
 # Emit risk indicator
+CONFIRM_REQUIRED=false
 if [ $SIMILAR_TOTAL -gt 0 ]; then
   FAIL_RATE=$(( SIMILAR_FAILS * 100 / SIMILAR_TOTAL ))
   if [ $FAIL_RATE -ge 50 ]; then
     echo -e "${RED}⚠ s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
+    CONFIRM_REQUIRED=true
   elif [ $FAIL_RATE -ge 20 ]; then
     echo -e "${YELLOW}⚠ s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
   else
     echo -e "${GREEN}s: ${TOOL_SUB} — ${FAIL_RATE}% failure rate in ${SIMILAR_TOTAL} similar ops${RESET}"
   fi
+fi
+
+# Also flag delete/destroy commands regardless of history
+case " $FULL_CMD " in
+  *" delete "*|*" destroy "*|*" drain "*)
+    CONFIRM_REQUIRED=true
+    ;;
+esac
+
+# Confirm before high-risk ops (skip if S_AUTO=1 or pipe)
+if [ "$CONFIRM_REQUIRED" = true ] && [ "${S_AUTO:-0}" != "1" ] && [ -t 0 ]; then
+  echo -e "${YELLOW}⚠ s: Type 'yes' to run, or Ctrl-C to abort:${RESET} "
+  read -r CONFIRM < /dev/tty 2>/dev/null || read -r CONFIRM
+  if [ "$CONFIRM" != "yes" ]; then
+    echo -e "${RED}s: aborted${RESET}"
+    HESITATION_MS=$(( ($(date +%s%N) - HESITATION_START) / 1000000 ))
+    LOG_ENTRY=$(cat <<EOF
+{
+  "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "command": "$(echo "$FULL_CMD" | sed 's/"/\\"/g')",
+  "command_hash": "${CMD_HASH}",
+  "tool_sub": "${TOOL_SUB}",
+  "cwd": "$(pwd)",
+  "exit_code": -1,
+  "duration_ms": 0,
+  "hesitation_ms": ${HESITATION_MS},
+  "session_id": "$(hostname)-$$",
+  "agent": "${S_AGENT:-unknown}",
+  "aborted": true
+}
+EOF
+)
+    echo "${LOG_ENTRY}" >> "${TELEMETRY_FILE}"
+    exit 1
+  fi
+  HESITATION_MS=$(( ($(date +%s%N) - HESITATION_START) / 1000000 ))
 fi
 
 START_TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -130,6 +233,7 @@ LOG_ENTRY=$(cat <<EOF
   "cwd": "$(pwd)",
   "exit_code": ${EXIT_CODE},
   "duration_ms": ${DURATION_MS},
+  "hesitation_ms": ${HESITATION_MS},
   "session_id": "$(hostname)-$$",
   "agent": "${S_AGENT:-unknown}"
 }
