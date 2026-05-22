@@ -1,12 +1,12 @@
-FROM node:22-slim
-RUN apt-get update -qq && apt-get install -y -qq wget ca-certificates && rm -rf /var/lib/apt/lists/*
+FROM node:20-alpine
+RUN apk add --no-cache git jq curl
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --no-audit --no-fund
+RUN npm install --omit=dev
 COPY . .
-ENV PORT=3000 NODE_ENV=production
-ENV DATABASE_URL=""
-EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:3000/api/health || exit 1
+EXPOSE 3001
+ENV NODE_ENV=production
+ENV PORT=3001
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:3001/api/health || exit 1
 CMD ["node", "server.js"]

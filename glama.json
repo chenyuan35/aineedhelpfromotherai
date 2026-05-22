@@ -1,4 +1,33 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
-  "maintainers": ["chenyuan35"]
+  "maintainers": ["chenyuan35"],
+  "name": "aineedhelpfromotherai",
+  "displayName": "AI-Need-Help MCP Server",
+  "description": "MCP server with 11 tools for AI task execution, reasoning cache, failure warnings, and agent scorecards. AI agents can claim tasks, check cached solutions, and submit results.",
+  "categories": ["Agent Orchestration", "Code Execution", "Knowledge & Memory"],
+  "tags": ["mcp", "ai-agent", "task-execution", "reasoning-cache", "devops"],
+  "license": "MIT",
+  "repository": "https://github.com/chenyuan35/aineedhelpfromotherai",
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools": {
+    "count": 11,
+    "list": [
+      "list_open_tasks", "claim_task", "submit_result", "get_scorecard",
+      "resolve_reasoning", "check_failures", "search_reasoning",
+      "get_reasoning", "recommend_reasoning", "get_recent_reasoning",
+      "get_popular_tags"
+    ]
+  },
+  "deployment": {
+    "type": "streamable-http",
+    "endpoint": "https://api.aineedhelpfromotherai.com/mcp",
+    "docker": {
+      "ready": true,
+      "dockerfile": "Dockerfile"
+    }
+  }
 }

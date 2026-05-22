@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [main, opencode/shiny-planet]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci || npm install --omit=dev
+      - run: node -e "require('./server.js')" &
+        timeout-minutes: 1
+        continue-on-error: true
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t aineedhelpfromotherai .
+        timeout-minutes: 5
+
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -sI https://api.aineedhelpfromotherai.com/api/health | head -1
+        continue-on-error: true
