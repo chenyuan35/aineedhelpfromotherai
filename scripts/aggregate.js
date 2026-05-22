@@ -9,6 +9,9 @@
 //   no qualifying label → advanced
 //
 // Usage: GITHUB_TOKEN=xxx node scripts/aggregate.js
+// Flags: --skip-arxiv   skip ArXiv fetch (avoids rate limit timeouts)
+//        --skip-gitlab  skip GitLab fetch
+//        --skip-all-external  only run GitHub (quickest)
 
 const fs = require('fs');
 const path = require('path');
@@ -360,7 +363,15 @@ async function fetchGitHubIssues(owner, repo, label, limit, difficultyHint) {
 }
 
 async function main() {
+  const skipArxiv = process.argv.includes('--skip-arxiv');
+  const skipGitlab = process.argv.includes('--skip-gitlab');
+  const skipAllExternal = process.argv.includes('--skip-all-external');
+
   console.log('=== Aggregator started ===');
+  if (skipArxiv) console.log('  --skip-arxiv: ArXiv fetch will be skipped');
+  if (skipGitlab) console.log('  --skip-gitlab: GitLab fetch will be skipped');
+  if (skipAllExternal) console.log('  --skip-all-external: only GitHub will be fetched');
+
   const allPosts = [];
   const sources = [];
 
@@ -408,42 +419,50 @@ async function main() {
     console.error(`  Hacker News: ${err.message}`);
   }
 
-  // Fetch ArXiv
-  console.log('Fetching ArXiv...');
-  try {
-    const arxivPosts = await fetchArXivTasks();
-    console.log(`  -> ${arxivPosts.length} ArXiv papers`);
-    allPosts.push(...arxivPosts);
-    if (arxivPosts.length > 0) {
-      sources.push({
-        name: 'ArXiv',
-        type: 'research',
-        url: 'https://arxiv.org',
-        fetched_at: new Date().toISOString(),
-        paper_count: arxivPosts.length
-      });
+  // Fetch ArXiv (skip if flagged — ArXiv rate limits aggressively)
+  if (skipArxiv || skipAllExternal) {
+    console.log('Fetching ArXiv... (SKIPPED)');
+  } else {
+    console.log('Fetching ArXiv...');
+    try {
+      const arxivPosts = await fetchArXivTasks();
+      console.log(`  -> ${arxivPosts.length} ArXiv papers`);
+      allPosts.push(...arxivPosts);
+      if (arxivPosts.length > 0) {
+        sources.push({
+          name: 'ArXiv',
+          type: 'research',
+          url: 'https://arxiv.org',
+          fetched_at: new Date().toISOString(),
+          paper_count: arxivPosts.length
+        });
+      }
+    } catch (err) {
+      console.error(`  ArXiv: ${err.message}`);
     }
-  } catch (err) {
-    console.error(`  ArXiv: ${err.message}`);
   }
 
   // Fetch GitLab Issues
-  console.log('Fetching GitLab Issues...');
-  try {
-    const glPosts = await fetchGitLabTasks();
-    console.log(`  -> ${glPosts.length} GitLab issues`);
-    allPosts.push(...glPosts);
-    if (glPosts.length > 0) {
-      sources.push({
-        name: 'GitLab Issues',
-        type: 'task_board',
-        url: 'https://gitlab.com/explore',
-        fetched_at: new Date().toISOString(),
-        issue_count: glPosts.length
-      });
+  if (skipGitlab || skipAllExternal) {
+    console.log('Fetching GitLab Issues... (SKIPPED)');
+  } else {
+    console.log('Fetching GitLab Issues...');
+    try {
+      const glPosts = await fetchGitLabTasks();
+      console.log(`  -> ${glPosts.length} GitLab issues`);
+      allPosts.push(...glPosts);
+      if (glPosts.length > 0) {
+        sources.push({
+          name: 'GitLab Issues',
+          type: 'task_board',
+          url: 'https://gitlab.com/explore',
+          fetched_at: new Date().toISOString(),
+          issue_count: glPosts.length
+        });
+      }
+    } catch (err) {
+      console.error(`  GitLab: ${err.message}`);
     }
-  } catch (err) {
-    console.error(`  GitLab: ${err.message}`);
   }
 
   // Keep existing non-fetched posts from seed (Replicate, HuggingFace, etc.)
