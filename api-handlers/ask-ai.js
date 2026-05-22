@@ -71,8 +71,8 @@ module.exports = async (req, res) => {
       const execId = 'HELPX_' + Date.now().toString(36).toUpperCase();
       try {
         await db.query(
-          `INSERT INTO execution_history (execution_id, task_id, agent_id, status, result_text, created_at)
-           VALUES ($1, $2, $3, 'completed', $4, NOW())
+          `INSERT INTO execution_history (execution_id, task_id, agent_id, status, result, created_at)
+           VALUES ($1, $2, $3, 'completed', $4::jsonb, NOW())
            ON CONFLICT (execution_id) DO NOTHING`,
           [
             execId,
