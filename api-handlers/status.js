@@ -91,7 +91,7 @@ module.exports = async (req, res) => {
       alive: true,
       platform: 'aineedhelpfromotherai.com',
       version: '3.0',
-      positioning: 'AI Reasoning Commons — public memory layer for AI agents',
+      positioning: 'AI Reasoning Cache & Consensus Layer — check before compute',
 
       // Core numbers — AI reads these first
       tasks: {

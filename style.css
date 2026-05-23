@@ -34,6 +34,17 @@ a:hover { color: var(--accent); }
   padding: 40px 24px 20px;
 }
 
+/* Value proposition */
+.value-prop {
+  text-align: center;
+  font-size: 9px;
+  color: #ffd700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
 /* Identity row */
 .identity-row {
   display: flex;

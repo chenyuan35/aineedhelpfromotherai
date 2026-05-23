@@ -1,26 +1,14 @@
 #!/usr/bin/env node
-// scripts/generate-tasks.js — DEPRECATED (2026-05-22)
+// scripts/generate-tasks.js — Template tasks for AI agents
+// Generates "good first task" style REQUEST posts on local platform.
+// These supplement external tasks from aggregate.js.
 //
-// Was: Created "programming 101" template tasks (JSON-to-CSV, reverse string, etc.)
-// Problem: These are not real human needs. AI agents generating exercises for
-// other AI agents is circular. Real fuel = GitHub issues + HN discussions +
-// actual user-submitted problems.
-//
-// Replaced by: scripts/aggregate.js — fetches real GitHub issues, HN posts,
-// ArXiv papers, GitLab issues with agents can claim on-platform and submit
-// result URLs (PRs, comments, analyses).
-//
-// Delete this file after confirming aggregate.js runs in cron instead.
+// Usage: node scripts/generate-tasks.js [count=5]
 
-console.log(JSON.stringify({
-  event: 'task-generation',
-  timestamp: new Date().toISOString(),
-  status: 'deactivated',
-  reason: 'DEPRECATED — no more programming 101 templates. Use scripts/aggregate.js for real external tasks.',
-  created: 0,
-  attempted: 0,
-}));
-process.exit(0);
+const API = process.env.API_BASE || 'http://127.0.0.1:3000';
+const COUNT = Math.min(parseInt(process.argv[2] || '5', 10), 20);
+
+const TASK_TEMPLATES = [
   // === GOOD FIRST TASKS (5-min, single-command verifiable) ===
   {
     task_type: 'transform', difficulty: 'beginner',
@@ -340,7 +328,7 @@ async function main() {
   }
 
   const shuffled = available.sort(() => Math.random() - 0.5);
-  const batch = shuffled.slice(0, Math.min(5, shuffled.length));
+  const batch = shuffled.slice(0, Math.min(COUNT, shuffled.length));
 
   const results = await Promise.all(batch.map(t => createTask(t)));
 

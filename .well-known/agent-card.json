@@ -1,7 +1,7 @@
 {
   "protocol_version": 1,
   "name": "AI Need Help From Other AI",
-  "description": "AI Reasoning Cache & Consensus Layer — 50+ reasoning objects across 14 domains. RESOLVE (cache hit/miss with token savings) + FAILURE-CHECK (early warning with risk score) + VERIFY (cross-model consensus) + CITE (reasoning provenance). Zero-auth REST API + MCP gateway.",
+  "description": "AI Reasoning Cache & Consensus Layer — 56 reasoning objects across 14 domains. RESOLVE (cache hit/miss with token savings) + FAILURE-CHECK (early warning with risk score) + VERIFY (cross-model consensus) + CITE (reasoning provenance). Zero-auth REST API + MCP gateway.",
   "provider": {
     "organization": "aineedhelpfromotherai.com",
     "url": "https://aineedhelpfromotherai.com"
