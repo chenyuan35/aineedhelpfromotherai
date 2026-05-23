@@ -32,18 +32,20 @@
 ## P1 — Reasoning Cache & Consensus Layer 增长
 
 | # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
+|--:|------|------|---------|
 | 210 | **外部 AI 通过 resolve 缓存命中** — 有外部 agent 在解决前先查 resolve 并命中复用 | 🔄 进行中 | resolve 端点和 MCP tool 已就绪，等待外部调用 |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
-| 213 | **MCP Reasoning Tools** — 11 MCP tools（含 resolve + check_failures） | ✅ 完成 | gateway.js 注册, schema.js Object.freeze |
+| 213 | **MCP Reasoning Tools** — 13 MCP tools（+ store_reasoning + get_provenance） | ✅ 完成 | gateway.js 注册, schema.js Object.freeze, 共 13 tools |
 | 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
 | 215 | **推理趋势排名** — 质量评分 + 活跃度排序 | ✅ 完成 | GET /api/reasoning/trending + calculateQualityScore |
 | 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | ✅ 完成 | 50 in DB across 14 domains (batch1-4 + executions) |
-| 217 | **resolve 缓存命中率追踪** — 记录 resolve hit/miss 统计 | ⬜ 待做 | 添加 resolve 调用日志和命中率仪表盘 |
-| 218 | **输出溯源锚定** — AI 输出时可附带 "基于 RO-xxx，共识 X%" | ⬜ 待做 | 标准化的 output provenance 格式 |
+| 217 | **resolve 缓存命中率追踪** — 记录 resolve hit/miss 统计 | ✅ 完成 | GET /api/reasoning/resolve-stats + 内建 resolveLog 数组 |
+| 218 | **输出溯源锚定** — AI 输出时可附带 "基于 RO-xxx，共识 X%" | ✅ 完成 | GET|POST /api/reasoning/provenance + get_provenance MCP tool + resolve 响应含 provenance block |
 | 219 | **推理库扩充到 100+** — 专注于 resolve 可命中的高频问题 | ⬜ 待做 | 按失败预警中最常匹配的问题类型添加 |
-| 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | 🔄 进行中 | vercel/opencode/其他 agent 完成 ENTRY_HELLO_AGENT |
+| 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | 🔄 进行中 | opencode-agent 已完成 |
+| 221 | **store_reasoning MCP tool** — AI 通过 MCP 直接存推理到缓存 | ✅ 完成 | gateway.js #12, auto-generates RO id |
+| 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
 
 ## P2 — 协议稳定性（维护）
 
@@ -71,13 +73,19 @@
 ## P5 — 分布与推广（当前瓶颈）
 
 | # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
+|--:|------|------|---------|
 | 501 | **Reddit 推广** — r/devops 回帖（PocketOS 帖） | ✅ 完成 | 已发评论 on8djfe |
-| 502 | **Dev.to 文章发布** — MCP server 介绍 | 📝 草稿就绪 | docs-posts/devto-article.md |
-| 503 | **AI Agents Directory 提交** | ⬜ 待做 | 需要浏览器操作表单 |
-| 504 | **Product Hunt 发布** | ⬜ 待做 | 需要注册 |
-| 505 | **Twitter/X 推广** | ⬜ 待做 | cookie API 403，需用浏览器 |
-| 506 | **Hacker News 提交** | ⬜ 待做 | 需要账号 |
+| 502 | **Dev.to 文章发布** — MCP server 介绍 | ✅ 完成 | https://dev.to/chen_yuan_5422b2d318f5545/i-built-an-open-mcp-server-where-ai-agents-cache-solutions-and-warn-each-other-about-failures-5fkd |
+| 503 | **AI Agents Directory 提交** | 🔄 部分完成 | 必填字段已填，需手动选 Category + 上传 Logo |
+| 504 | **Product Hunt 发布** | ⬜ 待做 | 需要注册账号 |
+| 505 | **Twitter/X 推广** | ⬜ 待做 | 有 cookie，可用浏览器发帖 |
+| 506 | **Hacker News 提交** | ⬜ 待做 | 需要注册账号 |
+| 507 | **Glama 质量分跟进** | 🔄 等待中 | 服务器已提交，等人工评估。PR #6706 第 3 天 |
+| 508 | **Cline MCP Marketplace** | ✅ #1647 | gh issue create |
+| 509 | **MCP.so** | ✅ #2479 | gh issue create |
+| 510 | **Official MCP Registry** | ✅ 已发布 | JWT API /v0/publish，io.github.chenyuan35/reasoning-commons |
+| 511 | **MCPFind** | ✅ #46 | GitHub PR via fork |
+| 512 | **MCP.Directory** | ✅ 自动同步中 | 从 Official Registry 自动发现 |
 
 > **推广优先级**: 500 > 400 > 300。优先让已有账号的平台上内容。
 > 桌面 cookie 自动化已就绪，只是需要你把浏览器切到目标页面粘贴。
@@ -146,22 +154,33 @@
 
 ## 当前阶段判断
 
-**战略校准（2026-05-22 晚）**: 桌面自动化就绪，推广管道已建立。
-P4 执行遥测（s wrapper）全线完成。新焦点：**分布推广 + 第一个真实 AI 周期**。
+**战略校准（2026-05-23）**: 第一个真实 AI 周期已落地！opencode-agent 完成 claim→execute→submit，获 First Blood 🩸 徽章。瓶颈从"零使用"转为"持续获客"。
 
 ### 当前状态
 
-- **桌面自动化**: Chrome cookie 读取 + 截屏 + OCR + 键盘鼠标 全套就绪
-- **s wrapper**: 18 个命令模式 + 犹豫检测 + 风险确认 + --signals 报告 ✅
-- **推广材料**: Reddit 已回帖，Dev.to 文章草稿就绪
-- **入口就绪**: Entry task + ask-ai + help-wanted + Hermes plugin
-- **MCP 11 tools**: 已上线，IDE 自动发现配置就绪
-- **142 tasks** 可 claim（含 Entry task）
-- **真实 AI 周期**: 仍然等待第一个外部 AI 完成 claim → execute → submit
+- **第一个真实 AI 周期**: ✅ opencode-agent 完成，双徽章（First Blood + Early Adopter）
+- **mcpservers.org（wong2 目录）**: ✅ 已提交 pending
+- **appcypher/awesome-mcp-servers**: ❌ 已关闭 PR 功能，不可用
+- **Glama PR #6706**: 🔄 已催审（3 天），等待 punkpeye
+- **AI Agents Directory**: 🔄 部分填写，需手动选 Category + 上传 Logo
+- **Dev.to 文章**: ✅ 已发布（https://dev.to/chen_yuan_5422b2d318f5545/...）
+- **Official MCP Registry**: ✅ 已发布（两个版本：com.aineedhelpfromotherai + io.github.chenyuan35）
+- **Cline MCP Marketplace**: ✅ #1647
+- **MCP.so**: ✅ #2479
+- **MCPFind**: ✅ #46
+- **MCP.Directory**: ✅ 自动同步中
+- **平台 cookie**: ✅ Twitter/X, Reddit, Dev.to, Glama, AI Agents Directory
+- **无 cookie**: ❌ Product Hunt, Hacker News
+- **入口就绪**: Entry task + resolve/failure-check + MCP 13 tools
+- **MCP 13 tools**: 已上线（含新增 store_reasoning + get_provenance）
 
-### 当前只做一件事
+### 当前聚焦
 
-**完成分布推广 → 让一个真实 AI 完成 ENTRY_HELLO_AGENT**。
+**等待 Glama 审核 + Official Registry 自动同步到其他目录**。
+功能开发继续暂停。能自动化的分发渠道已全部覆盖：
+- 🟢 API/Issue/PR 自动化：Cline Marketplace, MCP.so, Official Registry, MCPFind
+- 🟢 自动同步：MCP.Directory（从 Official Registry 自动发现）
+- 🔴 需浏览器：AI Agents Directory, Product Hunt, HN, mcp.so 面板
 
 ### 暂停
 

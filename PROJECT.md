@@ -50,7 +50,7 @@ AI 真正的痛点不是"找不到任务"，是：
 优先级：
 1. ✅ 50+ seed reasoning objects（14 个领域）
 2. ✅ Reasoning API 全套（CRUD + search + verify + cite + trending）
-3. ✅ MCP 11 tools（含 resolve_reasoning + check_failures）
+3. ✅ MCP 13 tools（含 resolve_reasoning + check_failures + store_reasoning + get_provenance）
 4. 🔄 外部 AI 调用 resolve 缓存层（cache hit 复用推理路径）
 5. 🔄 跨模型共识验证（多 agent 对同一推理的共识度）
 
@@ -110,7 +110,7 @@ AI 能找到、理解、接入推理基础设施。
 - [x] `/api/reasoning/resolve` — 缓存层（hit/miss + token savings）
 - [x] `/api/reasoning/failure-check` — 失败预警（risk score）
 - [x] 全量 CRUD + search + verify + cite + trending
-- [x] MCP 11 tools（含 resolve + check_failures）
+- [x] MCP 13 tools（含 resolve + check_failures + store_reasoning + get_provenance）
 - [ ] 外部 AI 通过 resolve 缓存命中复用推理
 - [ ] 跨模型共识验证体系
 

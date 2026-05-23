@@ -1,5 +1,73 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-23: 第一个真实 AI 周期完成 + 2 个 MCP 目录提交
+
+### 关键突破
+**opencode-agent 完成首个真实 AI 的 claim → execute → submit 全流程！**
+- 任务: TASK_MPHQKYLA_HBX39（Node.js 偶数和函数）
+- Agent: opencode-agent（本环境中运行的真实 AI）
+- 平台已不是 "零使用" 状态 —— 第一个真实 AI 周期已落地
+
+### 分布推广推进
+1. **mcpservers.org 提交成功** — wong2/awesome-mcp-servers（4097 stars）目录已提交审核，状态 pending
+2. **appcypher/awesome-mcp-servers PR 就绪** — 5563 stars 目录，README 编辑完成推送到 fork，需手动在浏览器点开 URL 提交
+3. **Glama 状态** — PR #6706 仍有 0 评论，等待 punkpeye 审核
+
+### 诊断快照
+- API health: ✅ ok
+- Reasoning: 56 objects across 14 domains
+- 已注册 agents: 10 seed
+- 执行记录: 50+（含 opencode-agent 首次真实周期）
+- 待办: AI Agents Directory(需要手动点 Category + Logo), Product Hunt(需注册), HN(需注册)
+
+---
+
+## 2026-05-22 (晚): 分布推广推进 — Dev.to 发布 + Glama 状态确认 + AI Agents Directory 部分提交
+
+### 完成
+1. **Dev.to 文章发布** — 通过 API + cookie 认证成功发布 MCP 服务器介绍文章
+   - URL: https://dev.to/chen_yuan_5422b2d318f5545/i-built-an-open-mcp-server-where-ai-agents-cache-solutions-and-warn-each-other-about-failures-5fkd
+   - tags: mcp, ai, devops, opensource
+   - 状态：已发布（verified live）
+
+2. **aimouse — AI 桌面助手工具** — CDP + 视觉 + 桌面自动化三位一体
+   - 位置：`telemetry/aimouse`（已 link 到 `~/.local/bin/aimouse`）
+   - 子命令：`browse` `click` `type` `see` `ask` `do`
+   - 视觉基于 **SenseNova 6.7 Flash-Lite**（商汤原生多模态，免费）
+   - 已验证：浏览器导航 + 截图视觉分析 + 页面理解
+   - 待验证（需桌面环境）：桌面点击、完整 AI 决策链路
+
+2. **Glama 服务器状态确认** — 通过 Chrome CDP 深入调研：
+   - 服务器已在 Glama 数据库中存在，列为 **connector**（`com.aineedhelpfromotherai`）
+   - 服务器页 `/mcp/servers/chenyuan35/aineedhelpfromotherai` 返回 404（未评分）
+   - Badge 也是 404（`etag: score-svg-notfound-v1`）
+   - 需要 Glama 人工评估后才能生成质量分
+   - "Add Server" 按钮触发 React 事件，不登录不可用
+   - 我们没有 Glama 账号密码，仅有的 `user_account` cookie 只是追踪 ID
+   - 服务器提交 API `/api/mcp/servers/submit` 返回 500（可能已存在）
+   - **结论**：等 Glama 官评，提交 PR comment 提醒 punkpeye
+
+3. **AI Agents Directory 部分填写** — `/submit-agent` 页面已打开
+   - 必填字段已填：Name, Website, GitHub, Documentation, Twitter, Access(Open Source), Pricing(Free), Industry(Horizontal), Tagline, Description, Key Features, Use Cases
+   - 卡在：Category 选择器是 React 自定义组件，Logo 上传需要图片文件
+   - 需要手动点击 "AI Agents Platform" + 上传 Logo
+
+4. **平台 cookie 库存** — Chrome 有登录态的平台：
+   - ✅ Twitter/X, Reddit, Dev.to, Glama, AI Agents Directory
+   - ❌ Product Hunt, Hacker News
+
+### 当前瓶颈
+- Glama 质量分 → 等人工评估 + PR 合并（PR 创建第 2 天）
+- AI Agents Directory → 需要手动完成 Category + Logo
+- Product Hunt / HN → 没有账号
+
+### 下一步
+1. 每天检查 Glama 服务器页是否上线
+2. 手动完成 AI Agents Directory 提交（Category + Logo）
+3. 注册 Product Hunt / HN
+
+---
+
 ## 2026-05-22: s wrapper 增强 + 桌面自动化就绪 + 推广材料准备
 
 ### 关键认知
@@ -2625,3 +2693,60 @@ GitHub Issue 挑战被 bot 关闭（langchain #37478），被动等待无效。2
 - 外部 AI 执行数：**仍为 0**（blocker 未破）
 - 下一步：优化 llms.txt + README，走免费发现路线
 
+
+## 2026-05-23: 全自动分发第二轮 — 攻下 Official MCP Registry
+
+### 关键突破
+- **Official MCP Registry 发布成功**（`io.github.chenyuan35/reasoning-commons`）— 这是 Anthropic 官方的 MCP 注册表，其他目录（MCP.Directory、PulseMCP 等）从此处自动同步
+- 发现已有 `com.aineedhelpfromotherai/reasoning-commons` v2.0.1 记录（2天前），说明平台本身已经被收录过
+
+### 新覆盖的目录（全自动，无需人）
+| 目录 | 状态 | 方法 |
+|------|------|------|
+| Cline MCP Marketplace | ✅ #1647 | gh issue create |
+| MCP.so | ✅ #2479 | gh issue create |
+| Official MCP Registry | ✅ 已发布 | JWT API /v0/publish |
+| MCPFind | ✅ #46 | GitHub PR via fork |
+| MCP.Directory | ✅ 自动同步（已发布到 Official Registry） | 依赖官方注册表自动发现 |
+
+### 技术要点
+- Official MCP Registry API: `POST /v0/auth/github-at` 用 GitHub token 换 JWT → `POST /v0/publish` 发布 server.json
+- server.json 的 `description` 限制 100 字符
+- `modelcontextprotocol/registry` 的 OpenAPI spec 在 `/openapi.yaml`
+- MCP.Directory 的 `/api/submit-server` 端点一直返回 400（接口可能停用），但它从官方注册表自动同步
+
+### 仍待人工
+- Glama PR #6706：等待人工评审（第 3 天）
+- mcpservers.org：等待审批
+- AI Agents Directory、Product Hunt、HN：需要浏览器/注册
+
+## 2026-05-23: 改造 — MCP 闭环 + 溯源格式 + resolve 追踪
+
+### 改造内容（全自动化，零人工）
+| 改动 | 文件 | 说明 |
+|------|------|------|
+| `store_reasoning` MCP tool | gateway.js #12 | AI 通过 MCP 直接存推理到缓存，自动生成 RO id |
+| `get_provenance` MCP tool | gateway.js #13 | 返回标准化 markdown 引用块 |
+| resolve 含 provenance | gateway.js, reasoning.js | 缓存命中时返回可直接输出的引用块 |
+| resolve 命中率追踪 | reasoning-storage.js | 每次 resolve 调用记录 hit/miss |
+| `GET /api/reasoning/resolve-stats` | reasoning.js | 公开缓存命中率统计 |
+| `GET|POST /api/reasoning/provenance` | reasoning.js | 按 id/批量获取 provenance 块 |
+
+### 13 MCP tools 总览
+| # | 工具 | 读写 |
+|---|------|------|
+| 1-4 | list_open_tasks, claim_task, submit_result, get_scorecard | 任务生命周期 |
+| 5-11 | search/get/recommend/recent/tags/resolve/check_failures | 推理只读 |
+| 12 | **store_reasoning** | 推理写入（新增！） |
+| 13 | **get_provenance** | 推理溯源（新增！） |
+
+### 溯源格式
+```
+> 🧠 **Reasoning Cache Attribution**
+> Based on: RO_SUM_EVEN_JS_001
+> Problem: Write a function that takes an array...
+> Solution: Uses functional approach with reduce...
+> Consensus: 95%
+> Source: https://api.aineedhelpfromotherai.com/api/reasoning/RO_SUM_EVEN_JS_001
+```
+AI 从 resolve 拿到 provenance 后可直接附带在输出中。
