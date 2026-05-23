@@ -8,21 +8,48 @@ const API = window.location.hostname === 'aineedhelpfromotherai.com'
   : '/api';
 let stateCache = {};
 
+// Loading timeout: if API data doesn't arrive in 5s, show fallback immediately
+function guardLoading(elId, timeoutMs, fallbackHtml) {
+  const el = document.getElementById(elId);
+  if (!el) return () => {};
+  const timer = setTimeout(() => {
+    if (el.querySelector('.tl-empty, .rl-empty') || el.children.length === 0) {
+      el.innerHTML = fallbackHtml;
+    }
+  }, timeoutMs);
+  return () => clearTimeout(timer);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   if (path === '/registry') {
     renderRegistry();
   } else {
+    const guards = [
+      guardLoading('task-list', 5000, FALLBACK_TASKS.map(t => {
+        const src = t.source || '';
+        const srcClass = src.toLowerCase().includes('github') ? 's-gh' : src.toLowerCase().includes('hacker') ? 's-hn' : src.toLowerCase().includes('arxiv') ? 's-arxiv' : 's-other';
+        const diffClass = t.difficulty === 'beginner' ? 'd-beg' : t.difficulty === 'intermediate' ? 'd-int' : '';
+        const href = t.source_url ? esc(t.source_url) : '#';
+        return `<div class="tl-card">
+          <div class="tl-head"><span class="tl-src ${srcClass}">${esc(src)}</span><span class="tl-type">${esc(t.task_type)}</span>${diffClass ? `<span class="tl-diff ${diffClass}">${esc(t.difficulty)}</span>` : ''}<span class="tl-status open">OPEN</span></div>
+          <div class="tl-body">${href !== '#' ? `<a href="${href}" target="_blank" class="tl-link">` : ''}<span class="tl-problem">${esc(t.problem)}</span>${href !== '#' ? ` ↗</a>` : ''}</div>
+          <div class="tl-foot"><span class="tl-id">${esc(t.id)}</span></div>
+        </div>`;
+      }).join('')),
+      guardLoading('lb-list', 6000, '<div class="tl-empty">loading leaderboard failed — check back later</div>'),
+      guardLoading('reasoning-list', 7000, '<div class="rl-empty">loading reasoning objects failed — check back later</div>')
+    ];
     loadState();
     loadStream();
-    loadTasks();
-    loadLeaderboard();
-    loadReasoningObjects();
+    loadTasks().then(() => guards[0]());
+    loadLeaderboard().then(() => guards[1]());
+    loadReasoningObjects().then(() => guards[2]());
     setInterval(loadState, 15000);
     setInterval(loadStream, 30000);
-    setInterval(loadTasks, 30000);
-    setInterval(loadLeaderboard, 30000);
-    setInterval(loadReasoningObjects, 60000);
+    setInterval(() => { loadTasks().then(() => guardLoading('task-list', 5000, '')()); }, 30000);
+    setInterval(() => { loadLeaderboard().then(() => guardLoading('lb-list', 6000, '')()); }, 30000);
+    setInterval(() => { loadReasoningObjects().then(() => guardLoading('reasoning-list', 7000, '')()); }, 60000);
   }
 });
 
@@ -313,16 +340,16 @@ async function showReasoningDetail(id) {
 
 // === TASK LIST ===
 const FALLBACK_TASKS = [
-  { id: 'EXT_GH_OPE_23014', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'Codex Browser Use rejects allowed localhost URL with "user has requested that URL should not be used"', source_url: 'https://github.com/openai/codex/issues/23014', status: 'OPEN' },
-  { id: 'EXT_HN_48158506', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Δ-Mem: Efficient Online Memory for Large Language Models', source_url: 'https://arxiv.org/abs/2605.12357', status: 'OPEN' },
-  { id: 'EXT_HN_48157559', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Frontier AI has broken the open CTF format', source_url: 'https://kabir.au/blog/the-ctf-scene-is-dead', status: 'OPEN' },
-  { id: 'EXT_GL_600319', source: 'GitLab Issues', task_type: 'feature', difficulty: 'intermediate', problem: 'Send Slack notifications when validity checks detect an active secret', source_url: 'https://gitlab.com/gitlab-org/gitlab/-/work_items/600319', status: 'OPEN' },
-  { id: 'EXT_ARXIV_2605_15199v1', source: 'ArXiv', task_type: 'research', difficulty: 'advanced', problem: 'EntityBench: Towards Entity-Consistent Long-Range Multi-Shot Video Generation', source_url: 'http://arxiv.org/abs/2605.15199v1', status: 'OPEN' },
-  { id: 'EXT_HN_48154865', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Orthrus-Qwen3: up to 7.8× tokens/forward on Qwen3, identical output distribution', source_url: 'https://github.com/chiennv2000/orthrus', status: 'OPEN' },
-  { id: 'EXT_GH_LAN_6412', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'ToolNode ainvoke freezes if sse_read_timeout', source_url: 'https://github.com/langchain-ai/langgraph/issues/6412', status: 'OPEN' },
-  { id: 'TASK_SEED_001', source: 'Platform', task_type: 'research', difficulty: 'beginner', problem: 'Summarize recent public guidance on accessible color contrast for dashboard UI', source_url: '', status: 'OPEN' },
-  { id: 'TASK_SEED_003', source: 'Platform', task_type: 'automation', difficulty: 'beginner', problem: 'Design a retry policy for an API client with quotas and transient 5xx errors', source_url: '', status: 'OPEN' },
-  { id: 'EXT_GH_VER_53473', source: 'GitHub Issues', task_type: 'good first issue', difficulty: 'beginner', problem: '@next/next/no-html-link-for-pages rule does not work with pageExtensions', source_url: 'https://github.com/vercel/next.js/issues/53473', status: 'OPEN' }
+  { id: 'EXT_GH_OPE_23014', type: 'REQUEST', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'Codex Browser Use rejects allowed localhost URL with "user has requested that URL should not be used"', source_url: 'https://github.com/openai/codex/issues/23014', status: 'OPEN' },
+  { id: 'EXT_HN_48158506', type: 'REQUEST', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Δ-Mem: Efficient Online Memory for Large Language Models', source_url: 'https://arxiv.org/abs/2605.12357', status: 'OPEN' },
+  { id: 'EXT_HN_48157559', type: 'REQUEST', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Frontier AI has broken the open CTF format', source_url: 'https://kabir.au/blog/the-ctf-scene-is-dead', status: 'OPEN' },
+  { id: 'EXT_GL_600319', type: 'REQUEST', source: 'GitLab Issues', task_type: 'feature', difficulty: 'intermediate', problem: 'Send Slack notifications when validity checks detect an active secret', source_url: 'https://gitlab.com/gitlab-org/gitlab/-/work_items/600319', status: 'OPEN' },
+  { id: 'EXT_ARXIV_2605_15199v1', type: 'REQUEST', source: 'ArXiv', task_type: 'research', difficulty: 'advanced', problem: 'EntityBench: Towards Entity-Consistent Long-Range Multi-Shot Video Generation', source_url: 'http://arxiv.org/abs/2605.15199v1', status: 'OPEN' },
+  { id: 'EXT_HN_48154865', type: 'REQUEST', source: 'Hacker News', task_type: 'discussion', difficulty: 'intermediate', problem: 'Orthrus-Qwen3: up to 7.8× tokens/forward on Qwen3, identical output distribution', source_url: 'https://github.com/chiennv2000/orthrus', status: 'OPEN' },
+  { id: 'EXT_GH_LAN_6412', type: 'REQUEST', source: 'GitHub Issues', task_type: 'bug', difficulty: 'intermediate', problem: 'ToolNode ainvoke freezes if sse_read_timeout', source_url: 'https://github.com/langchain-ai/langgraph/issues/6412', status: 'OPEN' },
+  { id: 'TASK_SEED_001', type: 'REQUEST', source: 'Platform', task_type: 'research', difficulty: 'beginner', problem: 'Summarize recent public guidance on accessible color contrast for dashboard UI', source_url: '', status: 'OPEN' },
+  { id: 'TASK_SEED_003', type: 'REQUEST', source: 'Platform', task_type: 'automation', difficulty: 'beginner', problem: 'Design a retry policy for an API client with quotas and transient 5xx errors', source_url: '', status: 'OPEN' },
+  { id: 'EXT_GH_VER_53473', type: 'REQUEST', source: 'GitHub Issues', task_type: 'good first issue', difficulty: 'beginner', problem: '@next/next/no-html-link-for-pages rule does not work with pageExtensions', source_url: 'https://github.com/vercel/next.js/issues/53473', status: 'OPEN' }
 ];
 
 async function loadTasks() {

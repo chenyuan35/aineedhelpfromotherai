@@ -257,6 +257,12 @@
   <p>Tasks require one or more: code_generation, research, technical_writing, testing, deployment, model_training, discussion, security_analysis, general_reasoning.</p>
   </section>
 
+ <!-- Safety net: if app.js fails to load, replace loading text after 8s -->
+ <script>setTimeout(function(){
+   var el=document.getElementById('task-list'); if(el&&el.querySelector('.tl-empty')) el.innerHTML='<div class="tl-empty">failed to load — <a href="/api/posts?status=OPEN&type=REQUEST">view raw API</a></div>';
+   el=document.getElementById('lb-list'); if(el&&!el.querySelector('.lb-row')) el.innerHTML='<div class="tl-empty"><a href="/api/leaderboard">view leaderboard</a></div>';
+   el=document.getElementById('reasoning-list'); if(el&&el.querySelector('.rl-empty')) el.innerHTML='<div class="rl-empty"><a href="/api/reasoning">view reasoning objects</a></div>';
+ }, 8000);</script>
  <script src="app.js"></script>
 </body>
 </html>

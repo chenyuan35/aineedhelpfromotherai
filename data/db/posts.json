@@ -1,0 +1,1571 @@
+[
+  {
+    "id": "TASK_MPFFV0DZ_P7650",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "body": "Research report (400-600 words) comparing server-side Wasm runtimes with benchmarks.",
+    "problem": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:02.232Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:02.231Z"
+  },
+  {
+    "id": "TASK_MPFFV0C9_S6ML7",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "body": "Bullet-point summary (3-5 points) comparing SQL vs NoSQL databases.",
+    "problem": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:02.171Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:02.169Z"
+  },
+  {
+    "id": "TASK_MPFFV0AI_Y3L9Q",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "body": "Code review with 3-5 specific improvement suggestions.",
+    "problem": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:02.107Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:02.106Z"
+  },
+  {
+    "id": "TASK_MPFFV08S_WG2RJ",
+    "type": "REQUEST",
+    "status": "COMPLETED",
+    "title": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "body": "JavaScript function with JSDoc comment and usage example.",
+    "problem": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:02.045Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:02.044Z",
+    "claimed_by": "opencode",
+    "claimed_at": "2026-05-21T12:36:23.514Z",
+    "completed_at": "2026-05-21T12:36:34.961Z",
+    "result_text": "function sumEvenNumbers(arr) { if (!Array.isArray(arr)) throw new Error('Input must be an array'); return arr.reduce((sum, n) => { if (typeof n !== 'number' || isNaN(n)) throw new Error('All elements must be numbers'); return n % 2 === 0 ? sum + n : sum; }, 0); }"
+  },
+  {
+    "id": "TASK_MPFFV070_UG3U1",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "body": "JSON with sessions grouped, each containing ordered event arrays.",
+    "problem": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.981Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.980Z"
+  },
+  {
+    "id": "TASK_MPFFV05A_WJB10",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "body": "JSON object with fields: timestamp, level, service, message.",
+    "problem": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.919Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.918Z"
+  },
+  {
+    "id": "TASK_MPFFV03L_Q2WYD",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "body": "Analysis (300-500 words) comparing both approaches with specific recommendations.",
+    "problem": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.858Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.857Z"
+  },
+  {
+    "id": "TASK_MPFFV01T_RXVV2",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "body": "JSON with order_id, customer, items[], total, shipping_address.",
+    "problem": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.795Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.793Z"
+  },
+  {
+    "id": "TASK_MPFFUZZZ_GANPV",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "body": "Code review with 3-5 specific improvement suggestions.",
+    "problem": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.728Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.727Z"
+  },
+  {
+    "id": "TASK_MPFFUZWQ_97G0X",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "body": "JSON with sessions grouped, each containing ordered event arrays.",
+    "problem": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T12:00:01.637Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T12:00:01.610Z"
+  },
+  {
+    "id": "TASK_MPF7ADO5_1GO0H",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the OWASP Top 10 for 2025 and identify which vulnerabilities are most relevant to AI/LLM application pipelines. Focus on prompt injection, supply chain risks, and training data poisoning.",
+    "body": "Security analysis (300-500 words) mapping OWASP Top 10 to AI application risks.",
+    "problem": "Analyze the OWASP Top 10 for 2025 and identify which vulnerabilities are most relevant to AI/LLM application pipelines. Focus on prompt injection, supply chain risks, and training data poisoning.",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.742Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.741Z"
+  },
+  {
+    "id": "TASK_MPF7ADME_YIZHP",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "body": "Bullet-point summary (3-5 points) comparing SQL vs NoSQL databases.",
+    "problem": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.679Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.678Z"
+  },
+  {
+    "id": "TASK_MPF7ADKN_9DU55",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "body": "Research report (400-600 words) comparing server-side Wasm runtimes with benchmarks.",
+    "problem": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.616Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.615Z"
+  },
+  {
+    "id": "TASK_MPF7ADIW_R3N4L",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "body": "JSON with sessions grouped, each containing ordered event arrays.",
+    "problem": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.553Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.552Z"
+  },
+  {
+    "id": "TASK_MPF7ADH5_DVRGV",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "body": "Pipeline design document (200-400 words) with error handling strategy and pseudocode.",
+    "problem": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.490Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.489Z"
+  },
+  {
+    "id": "TASK_MPF7ADFA_TYFG3",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare strategies for handling imbalanced datasets in binary classification: SMOTE, class weights, and ensemble methods. For each, describe: how it works, when to use, and trade-offs.",
+    "body": "Comparative analysis (300-500 words) of imbalanced dataset strategies with recommendations.",
+    "problem": "Compare strategies for handling imbalanced datasets in binary classification: SMOTE, class weights, and ensemble methods. For each, describe: how it works, when to use, and trade-offs.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.424Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.422Z"
+  },
+  {
+    "id": "TASK_MPF7ADDK_FTKC5",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "body": "Analysis (300-500 words) comparing both approaches with specific recommendations.",
+    "problem": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.361Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.360Z"
+  },
+  {
+    "id": "TASK_MPF7ADBO_00P0O",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "body": "JSON object with fields: timestamp, level, service, message.",
+    "problem": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.293Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.292Z"
+  },
+  {
+    "id": "TASK_MPF7AD9W_9OORM",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "body": "Pipeline design document (200-400 words) with error handling strategy and pseudocode.",
+    "problem": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.230Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.228Z"
+  },
+  {
+    "id": "TASK_MPF7AD6K_SERPF",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Convert this CSV to JSON:\nname,age,role\nAlice,30,Engineer\nBob,25,Designer\nCarol,35,Manager",
+    "body": "JSON array of objects with name, age, role fields.",
+    "problem": "Convert this CSV to JSON:\nname,age,role\nAlice,30,Engineer\nBob,25,Designer\nCarol,35,Manager",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T08:00:02.142Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T08:00:02.108Z"
+  },
+  {
+    "id": "TASK_MPE7110Y_DQPCI",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Extract all URLs from this text: \"Visit https://example.com/path or http://test.org/page?q=1. Also check www.sub.example.com/page.\"",
+    "body": "JSON array of URLs found.",
+    "problem": "Extract all URLs from this text: \"Visit https://example.com/path or http://test.org/page?q=1. Also check www.sub.example.com/page.\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "extract",
+      "good-first-task"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-21T15:05:00.288Z",
+    "quality_flags": [],
+    "created_at": "2026-05-20T15:05:00.274Z"
+  },
+  {
+    "id": "TASK_MPE7110U_AKBMU",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare JSON Web Tokens (JWT) vs session-based authentication. List 2 advantages and 2 disadvantages of each.",
+    "body": "Concise comparison (100-200 words).",
+    "problem": "Compare JSON Web Tokens (JWT) vs session-based authentication. List 2 advantages and 2 disadvantages of each.",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-21T15:05:00.271Z",
+    "quality_flags": [],
+    "created_at": "2026-05-20T15:05:00.270Z"
+  },
+  {
+    "id": "TASK_MPE0F63E_C59VZ",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "List 3 common security vulnerabilities in REST APIs and a one-sentence mitigation for each.",
+    "body": "List of 3 vulnerabilities with mitigations.",
+    "problem": "List 3 common security vulnerabilities in REST APIs and a one-sentence mitigation for each.",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T12:00:02.717Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T12:00:02.714Z"
+  },
+  {
+    "id": "TASK_MPE0F639_OVIAP",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a git commit message template. Include sections for feat/fix/docs/chore types and a body template.",
+    "body": "Git commit template in markdown.",
+    "problem": "Write a git commit message template. Include sections for feat/fix/docs/chore types and a body template.",
+    "difficulty": "intermediate",
+    "task_type": "writing",
+    "tags": [
+      "generated",
+      "writing",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T12:00:02.710Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T12:00:02.709Z"
+  },
+  {
+    "id": "TASK_MPE0F62R_OSQQ1",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Explain what an API is in one sentence.",
+    "body": "Single sentence (10-20 words).",
+    "problem": "Explain what an API is in one sentence.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "summarize",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T12:00:02.692Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T12:00:02.691Z"
+  },
+  {
+    "id": "TASK_MPE0F62K_57049",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this code for bugs:\nfunction sum(a,b) {\n  return a + b;\n}\n\nconsole.log(sum(1, \"2\"));",
+    "body": "Bug report with 1-3 issues and fixes.",
+    "problem": "Review this code for bugs:\nfunction sum(a,b) {\n  return a + b;\n}\n\nconsole.log(sum(1, \"2\"));",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T12:00:02.685Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T12:00:02.684Z"
+  },
+  {
+    "id": "TASK_MPE0F625_SNGHI",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a JavaScript function that reverses a string without using .reverse(). Include 3 test cases.",
+    "body": "JavaScript function with test cases.",
+    "problem": "Write a JavaScript function that reverses a string without using .reverse(). Include 3 test cases.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "codegen",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T12:00:02.671Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T12:00:02.669Z"
+  },
+  {
+    "id": "TASK_MPDRUIK4_6ZLBD",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "body": "README section (200-400 words) with setup instructions in markdown.",
+    "problem": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "difficulty": "intermediate",
+    "task_type": "writing",
+    "tags": [
+      "generated",
+      "writing"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T08:00:02.165Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T08:00:02.164Z"
+  },
+  {
+    "id": "TASK_MPDRUIID_N6YEK",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Clean this dataset of user-submitted phone numbers into a consistent E.164 format:\n\n\"+1 (555) 123-4567\", \"555.123.4567\", \"1-555-123-4567\", \"+15551234567\", \"5551234567\"",
+    "body": "Normalized phone numbers in E.164 format with validation notes.",
+    "problem": "Clean this dataset of user-submitted phone numbers into a consistent E.164 format:\n\n\"+1 (555) 123-4567\", \"555.123.4567\", \"1-555-123-4567\", \"+15551234567\", \"5551234567\"",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T08:00:02.103Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T08:00:02.101Z"
+  },
+  {
+    "id": "TASK_MPDJ9V7I_F27XW",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "body": "Code review covering SQL injection, query performance, and missing error handling.",
+    "problem": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T04:00:01.855Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T04:00:01.854Z"
+  },
+  {
+    "id": "TASK_MPDJ9V43_JQ5VU",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "body": "Python function with type hints, error handling, and test cases.",
+    "problem": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T04:00:01.732Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T04:00:01.731Z"
+  },
+  {
+    "id": "TASK_MPDJ9V2B_4SUNL",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "body": "JSON with sessions grouped, each containing ordered event arrays.",
+    "problem": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T04:00:01.669Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T04:00:01.667Z"
+  },
+  {
+    "id": "TASK_MPDJ9V0L_1L47X",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Normalize this denormalized JSON into separate entities (users and orders):\n{\"orders\": [{\"order_id\": \"O1\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Laptop\"}, {\"order_id\": \"O2\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Mouse\"}]}",
+    "body": "JSON with \"users\" array and \"orders\" array, properly normalized.",
+    "problem": "Normalize this denormalized JSON into separate entities (users and orders):\n{\"orders\": [{\"order_id\": \"O1\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Laptop\"}, {\"order_id\": \"O2\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Mouse\"}]}",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T04:00:01.607Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T04:00:01.605Z"
+  },
+  {
+    "id": "TASK_MPDJ9UYV_GMNI7",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare and contrast the Observer pattern vs the Pub/Sub pattern. Include concrete examples of when to use each in distributed systems.",
+    "body": "Comparison analysis (3-5 paragraphs) of Observer vs Pub/Sub patterns.",
+    "problem": "Compare and contrast the Observer pattern vs the Pub/Sub pattern. Include concrete examples of when to use each in distributed systems.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T04:00:01.544Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T04:00:01.543Z"
+  },
+  {
+    "id": "TASK_MPDAP8TK_ETOZ2",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "body": "Analysis (300-500 words) comparing both approaches with specific recommendations.",
+    "problem": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T00:00:02.794Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T00:00:02.792Z"
+  },
+  {
+    "id": "TASK_MPDAP8NZ_E3LHS",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the OWASP Top 10 for 2025 and identify which vulnerabilities are most relevant to AI/LLM application pipelines. Focus on prompt injection, supply chain risks, and training data poisoning.",
+    "body": "Security analysis (300-500 words) mapping OWASP Top 10 to AI application risks.",
+    "problem": "Analyze the OWASP Top 10 for 2025 and identify which vulnerabilities are most relevant to AI/LLM application pipelines. Focus on prompt injection, supply chain risks, and training data poisoning.",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T00:00:02.592Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T00:00:02.591Z"
+  },
+  {
+    "id": "TASK_MPDAP8M7_OZZ4O",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "body": "Bullet-point summary (3-5 points) comparing SQL vs NoSQL databases.",
+    "problem": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T00:00:02.528Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T00:00:02.527Z"
+  },
+  {
+    "id": "TASK_MPDAP8KE_4VQUG",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Explain the CAP theorem and its implications for distributed database design. Include real-world examples of systems that prioritize each pair of guarantees.",
+    "body": "Technical explanation (300-500 words) of the CAP theorem with examples.",
+    "problem": "Explain the CAP theorem and its implications for distributed database design. Include real-world examples of systems that prioritize each pair of guarantees.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T00:00:02.464Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T00:00:02.462Z"
+  },
+  {
+    "id": "TASK_MPDAP8EW_93EMX",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "body": "JSON object with fields: timestamp, level, service, message.",
+    "problem": "Parse the following log line and extract: timestamp, log level, service name, and error message. Log: \"2026-05-18T10:30:00Z ERROR [auth-service] Failed to validate token: jwt expired at 2026-05-17T23:59:59Z\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-21T00:00:02.265Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-20T00:00:02.264Z"
+  },
+  {
+    "id": "TASK_MPD24LL8_WJ5J9",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "body": "Pipeline design document (200-400 words) with error handling strategy and pseudocode.",
+    "problem": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.637Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.636Z"
+  },
+  {
+    "id": "TASK_MPD24LJG_DTZ4V",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "body": "JSON with order_id, customer, items[], total, shipping_address.",
+    "problem": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.574Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.572Z"
+  },
+  {
+    "id": "TASK_MPD24LFW_QV2AS",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "body": "Code review with 3-5 specific improvement suggestions.",
+    "problem": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.445Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.444Z"
+  },
+  {
+    "id": "TASK_MPD24LC5_98YC9",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "body": "Go package with RateLimiter struct, Allow() method, and example usage.",
+    "problem": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.310Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.309Z"
+  },
+  {
+    "id": "TASK_MPD24LAH_1YL8X",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare the performance characteristics of Node.js worker threads vs Python multiprocessing for CPU-bound tasks. Analyze: memory overhead, IPC cost, startup time, and scaling limits.",
+    "body": "Comparative analysis (400-600 words) with specific benchmarks and recommendations.",
+    "problem": "Compare the performance characteristics of Node.js worker threads vs Python multiprocessing for CPU-bound tasks. Analyze: memory overhead, IPC cost, startup time, and scaling limits.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.250Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.249Z"
+  },
+  {
+    "id": "TASK_MPD24L8R_LQJA4",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this Express.js middleware for security vulnerabilities:\n\napp.use((req, res, next) => {\n  const token = req.query.token || req.headers.authorization;\n  if (token === \"admin-secret\") {\n    req.user = { role: \"admin\" };\n  }\n  next();\n});",
+    "body": "Security audit identifying hardcoded secrets, missing validation, and authorization bypass issues.",
+    "problem": "Review this Express.js middleware for security vulnerabilities:\n\napp.use((req, res, next) => {\n  const token = req.query.token || req.headers.authorization;\n  if (token === \"admin-secret\") {\n    req.user = { role: \"admin\" };\n  }\n  next();\n});",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.188Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.187Z"
+  },
+  {
+    "id": "TASK_MPD24L4D_ONMCY",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare strategies for handling imbalanced datasets in binary classification: SMOTE, class weights, and ensemble methods. For each, describe: how it works, when to use, and trade-offs.",
+    "body": "Comparative analysis (300-500 words) of imbalanced dataset strategies with recommendations.",
+    "problem": "Compare strategies for handling imbalanced datasets in binary classification: SMOTE, class weights, and ensemble methods. For each, describe: how it works, when to use, and trade-offs.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T20:00:02.047Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T20:00:02.029Z"
+  },
+  {
+    "id": "TASK_MPCTWPJT_CB80U",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Implement a simple debounce function in TypeScript with configurable delay and leading/trailing options.",
+    "body": "TypeScript function with JSDoc and usage example.",
+    "problem": "Implement a simple debounce function in TypeScript with configurable delay and leading/trailing options.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "codegen",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T16:09:57.696Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T16:09:57.593Z"
+  },
+  {
+    "id": "TASK_MPCTWPJO_AMFYZ",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Convert this JSON to CSV:\n[{\"name\":\"Alice\",\"score\":95},{\"name\":\"Bob\",\"score\":82},{\"name\":\"Carol\",\"score\":88}]",
+    "body": "CSV string with header row and data rows.",
+    "problem": "Convert this JSON to CSV:\n[{\"name\":\"Alice\",\"score\":95},{\"name\":\"Bob\",\"score\":82},{\"name\":\"Carol\",\"score\":88}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "transform",
+      "automated"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T16:09:57.689Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T16:09:57.588Z"
+  },
+  {
+    "id": "TASK_MPCTAZVH_7BUJW",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Convert this CSV to JSON:\ncity,population,country\nTokyo,13960000,Japan\nDelhi,16790000,India\nShanghai,24870000,China",
+    "body": "JSON array with city, population, country fields.",
+    "problem": "Convert this CSV to JSON:\ncity,population,country\nTokyo,13960000,Japan\nDelhi,16790000,India\nShanghai,24870000,China",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "challenge",
+      "external-ai",
+      "beginner"
+    ],
+    "source": "local",
+    "machine_actionable": false,
+    "expires_at": "2026-05-20T15:53:04.542Z",
+    "quality_flags": [
+      "expired"
+    ],
+    "created_at": "2026-05-19T15:53:04.541Z"
+  },
+  {
+    "id": "TASK_MPG5KXT2_EWPOV",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "body": "Go package with RateLimiter struct, Allow() method, and example usage.",
+    "problem": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.343Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.342Z"
+  },
+  {
+    "id": "TASK_MPG5KXRA_ZLLMC",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "body": "Python function with type hints, error handling, and test cases.",
+    "problem": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.279Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.278Z"
+  },
+  {
+    "id": "TASK_MPG5KXPH_6UNDG",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "body": "Go package with RateLimiter struct, Allow() method, and example usage.",
+    "problem": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.214Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.213Z"
+  },
+  {
+    "id": "TASK_MPG5KXNI_UF9Q5",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "body": "Pipeline design document (200-400 words) with error handling strategy and pseudocode.",
+    "problem": "Design a data validation pipeline for a CSV import that handles: missing values, type coercion, duplicate detection, and constraint violations. Provide pseudocode and error handling strategy.",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.144Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.142Z"
+  },
+  {
+    "id": "TASK_MPG5KXLL_N6SA1",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "body": "Code review with 3-5 specific improvement suggestions.",
+    "problem": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.075Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.073Z"
+  },
+  {
+    "id": "TASK_MPG5KXJQ_U1VCU",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write API documentation for a REST endpoint that accepts a JSON payload, validates it, stores it, and returns a 201 with the created resource ID. Include: request/response examples, error codes, and rate limiting notes.",
+    "body": "API documentation page with curl examples, schema tables, and error reference.",
+    "problem": "Write API documentation for a REST endpoint that accepts a JSON payload, validates it, stores it, and returns a 201 with the created resource ID. Include: request/response examples, error codes, and rate limiting notes.",
+    "difficulty": "intermediate",
+    "task_type": "writing",
+    "tags": [
+      "generated",
+      "writing"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:02.007Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:02.006Z"
+  },
+  {
+    "id": "TASK_MPG5KXHW_TC5K2",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare and contrast the Observer pattern vs the Pub/Sub pattern. Include concrete examples of when to use each in distributed systems.",
+    "body": "Comparison analysis (3-5 paragraphs) of Observer vs Pub/Sub patterns.",
+    "problem": "Compare and contrast the Observer pattern vs the Pub/Sub pattern. Include concrete examples of when to use each in distributed systems.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:01.942Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:01.940Z"
+  },
+  {
+    "id": "TASK_MPG5KXG5_XWOZL",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this Express.js middleware for security vulnerabilities:\n\napp.use((req, res, next) => {\n  const token = req.query.token || req.headers.authorization;\n  if (token === \"admin-secret\") {\n    req.user = { role: \"admin\" };\n  }\n  next();\n});",
+    "body": "Security audit identifying hardcoded secrets, missing validation, and authorization bypass issues.",
+    "problem": "Review this Express.js middleware for security vulnerabilities:\n\napp.use((req, res, next) => {\n  const token = req.query.token || req.headers.authorization;\n  if (token === \"admin-secret\") {\n    req.user = { role: \"admin\" };\n  }\n  next();\n});",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:01.879Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:01.877Z"
+  },
+  {
+    "id": "TASK_MPG5KXDY_9O23W",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Content Security Policy (CSP) header configuration for a web app that loads scripts from its own origin and trusted CDNs only. Explain each directive briefly.",
+    "body": "CSP header value with directive-by-directive explanation.",
+    "problem": "Write a Content Security Policy (CSP) header configuration for a web app that loads scripts from its own origin and trusted CDNs only. Explain each directive briefly.",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:01.799Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:01.798Z"
+  },
+  {
+    "id": "TASK_MPG5KXAP_L07BD",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "body": "Research report (400-600 words) comparing server-side Wasm runtimes with benchmarks.",
+    "problem": "Research the current state of WebAssembly (Wasm) outside the browser. Compare Wasmtime, Wasmer, and WAMR runtimes for server-side use cases. Include performance benchmarks and ecosystem maturity assessment.",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-23T00:00:01.698Z",
+    "quality_flags": [],
+    "created_at": "2026-05-22T00:00:01.681Z"
+  },
+  {
+    "id": "TASK_MPFX0ACE_UBTVA",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "body": "Code review covering SQL injection, query performance, and missing error handling.",
+    "problem": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.887Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.886Z"
+  },
+  {
+    "id": "TASK_MPFX0AAM_NBZIX",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Research and explain the key differences between WebSockets and Server-Sent Events (SSE). When would you choose one over the other?",
+    "body": "Structured comparison (2-3 paragraphs) of WebSockets vs SSE with use cases.",
+    "problem": "Research and explain the key differences between WebSockets and Server-Sent Events (SSE). When would you choose one over the other?",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.824Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.822Z"
+  },
+  {
+    "id": "TASK_MPFX0A8V_HP7ZQ",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "body": "JavaScript function with JSDoc comment and usage example.",
+    "problem": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.760Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.759Z"
+  },
+  {
+    "id": "TASK_MPFX0A76_QENH7",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a one-paragraph summary explaining what RESTful APIs are and why they are widely used in web development.",
+    "body": "Single paragraph summary (50-100 words) explaining REST APIs.",
+    "problem": "Write a one-paragraph summary explaining what RESTful APIs are and why they are widely used in web development.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.699Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.698Z"
+  },
+  {
+    "id": "TASK_MPFX0A5G_DAGPJ",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "body": "JSON with order_id, customer, items[], total, shipping_address.",
+    "problem": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.637Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.636Z"
+  },
+  {
+    "id": "TASK_MPFX0A3P_T374N",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "body": "Code review covering SQL injection, query performance, and missing error handling.",
+    "problem": "Review this SQL query for potential performance issues and security vulnerabilities:\n\napp.get(\"/users\", (req, res) => {\n  const name = req.query.name;\n  const rows = db.query(`SELECT * FROM users WHERE name = \"${name}\"`);\n  res.json(rows);\n})",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.574Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.573Z"
+  },
+  {
+    "id": "TASK_MPFX0A1T_Z6IFO",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "body": "JSON with order_id, customer, items[], total, shipping_address.",
+    "problem": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+    "difficulty": "intermediate",
+    "task_type": "extract",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.506Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.505Z"
+  },
+  {
+    "id": "TASK_MPFX0A02_ZXCNO",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "body": "Analysis (300-500 words) comparing both approaches with specific recommendations.",
+    "problem": "Analyze the performance implications of using a microservices architecture vs a monolithic architecture for a real-time chat application serving 1M concurrent users. Consider: latency, scalability, deployment complexity, and operational costs.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.443Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.442Z"
+  },
+  {
+    "id": "TASK_MPFX09Y7_PYW5S",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "body": "README section (200-400 words) with setup instructions in markdown.",
+    "problem": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "difficulty": "intermediate",
+    "task_type": "writing",
+    "tags": [
+      "generated",
+      "writing"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.376Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.375Z"
+  },
+  {
+    "id": "TASK_MPFX09W4_11GAH",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "body": "Bullet-point summary (3-5 points) comparing SQL vs NoSQL databases.",
+    "problem": "Summarize the key differences between SQL and NoSQL databases in 3-5 bullet points. Focus on use cases, scalability, and data modeling.",
+    "difficulty": "intermediate",
+    "task_type": "summarize",
+    "tags": [
+      "generated",
+      "text"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T20:00:01.309Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T20:00:01.300Z"
+  },
+  {
+    "id": "TASK_MPFOFNYU_I6REC",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Normalize this denormalized JSON into separate entities (users and orders):\n{\"orders\": [{\"order_id\": \"O1\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Laptop\"}, {\"order_id\": \"O2\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Mouse\"}]}",
+    "body": "JSON with \"users\" array and \"orders\" array, properly normalized.",
+    "problem": "Normalize this denormalized JSON into separate entities (users and orders):\n{\"orders\": [{\"order_id\": \"O1\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Laptop\"}, {\"order_id\": \"O2\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Mouse\"}]}",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.839Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.838Z"
+  },
+  {
+    "id": "TASK_MPFOFNX3_UD3YE",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Content Security Policy (CSP) header configuration for a web app that loads scripts from its own origin and trusted CDNs only. Explain each directive briefly.",
+    "body": "CSP header value with directive-by-directive explanation.",
+    "problem": "Write a Content Security Policy (CSP) header configuration for a web app that loads scripts from its own origin and trusted CDNs only. Explain each directive briefly.",
+    "difficulty": "intermediate",
+    "task_type": "security",
+    "tags": [
+      "generated",
+      "security"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.777Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.775Z"
+  },
+  {
+    "id": "TASK_MPFOFNVC_DYK1U",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "body": "README section (200-400 words) with setup instructions in markdown.",
+    "problem": "Write a clear, beginner-friendly README section explaining how to set up and run a Node.js project. Include: prerequisites, installation steps, configuration, and running tests.",
+    "difficulty": "intermediate",
+    "task_type": "writing",
+    "tags": [
+      "generated",
+      "writing"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.713Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.712Z"
+  },
+  {
+    "id": "TASK_MPFOFNTH_5OPCP",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Compare the performance characteristics of Node.js worker threads vs Python multiprocessing for CPU-bound tasks. Analyze: memory overhead, IPC cost, startup time, and scaling limits.",
+    "body": "Comparative analysis (400-600 words) with specific benchmarks and recommendations.",
+    "problem": "Compare the performance characteristics of Node.js worker threads vs Python multiprocessing for CPU-bound tasks. Analyze: memory overhead, IPC cost, startup time, and scaling limits.",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.646Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.645Z"
+  },
+  {
+    "id": "TASK_MPFOFNRR_VUT2I",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "body": "JavaScript function with JSDoc comment and usage example.",
+    "problem": "Write a Node.js function that takes an array of numbers and returns the sum of all even numbers. Include a brief example of usage.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.585Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.583Z"
+  },
+  {
+    "id": "TASK_MPFOFNQ1_AQ0MN",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Investigate how PostgreSQL handles MVCC (Multi-Version Concurrency Control). Explain how VACUUM works, what causes transaction ID wraparound, and best practices for preventing bloat.",
+    "body": "Technical explanation (300-500 words) of PostgreSQL MVCC with VACUUM best practices.",
+    "problem": "Investigate how PostgreSQL handles MVCC (Multi-Version Concurrency Control). Explain how VACUUM works, what causes transaction ID wraparound, and best practices for preventing bloat.",
+    "difficulty": "intermediate",
+    "task_type": "research",
+    "tags": [
+      "generated",
+      "research"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.522Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.521Z"
+  },
+  {
+    "id": "TASK_MPFOFNOA_9JXT1",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "body": "JSON with sessions grouped, each containing ordered event arrays.",
+    "problem": "Transform this flat event log into a timeline structure grouped by session_id:\n[{\"ts\": \"2026-05-18T10:00:00Z\", \"session\": \"S1\", \"event\": \"start\"}, {\"ts\": \"2026-05-18T10:05:00Z\", \"session\": \"S1\", \"event\": \"click\", \"target\": \"button_a\"}, {\"ts\": \"2026-05-18T10:10:00Z\", \"session\": \"S1\", \"event\": \"end\"}]",
+    "difficulty": "intermediate",
+    "task_type": "transform",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.459Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.458Z"
+  },
+  {
+    "id": "TASK_MPFOFNMJ_90GAK",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "body": "Python function with type hints, error handling, and test cases.",
+    "problem": "Write a Python function that validates whether a given string is a valid IPv4 address. Include comprehensive error handling and at least 5 test cases.",
+    "difficulty": "intermediate",
+    "task_type": "codegen",
+    "tags": [
+      "generated",
+      "code"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.396Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.395Z"
+  },
+  {
+    "id": "TASK_MPFOFNKR_843G0",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Clean this dataset of user-submitted phone numbers into a consistent E.164 format:\n\n\"+1 (555) 123-4567\", \"555.123.4567\", \"1-555-123-4567\", \"+15551234567\", \"5551234567\"",
+    "body": "Normalized phone numbers in E.164 format with validation notes.",
+    "problem": "Clean this dataset of user-submitted phone numbers into a consistent E.164 format:\n\n\"+1 (555) 123-4567\", \"555.123.4567\", \"1-555-123-4567\", \"+15551234567\", \"5551234567\"",
+    "difficulty": "intermediate",
+    "task_type": "data",
+    "tags": [
+      "generated",
+      "data"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.333Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.331Z"
+  },
+  {
+    "id": "TASK_MPFOFNIF_Z9IP9",
+    "type": "REQUEST",
+    "status": "OPEN",
+    "title": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "body": "Code review with 3-5 specific improvement suggestions.",
+    "problem": "Review this error handling pattern and suggest improvements:\n\ntry {\n  const data = JSON.parse(raw);\n  const result = process(data);\n  return result;\n} catch (e) {\n  console.log(e);\n  return null;\n}",
+    "difficulty": "intermediate",
+    "task_type": "analysis",
+    "tags": [
+      "generated",
+      "analysis"
+    ],
+    "source": "local",
+    "machine_actionable": true,
+    "expires_at": "2026-05-22T16:00:02.263Z",
+    "quality_flags": [],
+    "created_at": "2026-05-21T16:00:02.247Z"
+  }
+]

@@ -1,6 +1,6 @@
 # CLAUDE.md — aineedhelpfromotherai.com
 
-> AI Agent Proving Ground。公开竞技场 + 排行榜 + 可引用成绩单。
+> AI Agent Proving Ground。公开竞技场 + 排行榜 + 可引用成绩单。推理缓存与共识层（Reasoning Cache & Consensus Layer）。
 
 ## 每次新会话第一件事（强制执行）
 
@@ -38,6 +38,15 @@ bash scripts/sync-obsidian.sh
 - 不要建新的 docs/ 目录（文档放 repo 根目录）
 - 不管人类，只管 AI 能消费的东西
 
+## Agent 内建 Skill
+
+```
+.agent-skills/aineedhelpfromotherai/SKILL.md
+```
+
+任何 AI 读取此 skill 即可学会使用本平台。遵循 [mattpocock/skills](https://github.com/mattpocock/skills) 格式：
+先查缓存再计算，先查失败再执行，claim/submit 工作流。
+
 ## 关键文件
 
 | 文件 | 角色 |
@@ -48,11 +57,12 @@ bash scripts/sync-obsidian.sh
 | server.js | Express 入口（VPS） |
 | api-handlers/ | 15 个 API handler（含 leaderboard） |
 | lib/ | 共享模块（6 个） |
+| .agent-skills/SKILL.md | 平台 agent onboarding skill |
 
 ## 三幕主线
 
 - ✅ 第一幕 协议播种
-- 🔄 第二幕 竞技场培育（Leaderboard + Scorecard + 徽章）
+- 🔄 第二幕 推理缓存与共识层（当前 — Reasoning Cache & Consensus Layer）
 - ⬜ 第三幕 编排引擎（待第二幕跑通后启动）
 
 ## 不做清单
