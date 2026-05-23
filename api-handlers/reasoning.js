@@ -35,15 +35,58 @@ module.exports = async (req, res) => {
   };
 
   try {
-    // GET /api/reasoning/stats
+    // GET /api/reasoning/stats — full stats including resolve cache hit rate
     if (pathParts[pathParts.length - 1] === 'stats') {
       if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-      const stats = await reasoning.getReasoningStats();
+      const baseStats = await reasoning.getReasoningStats();
+      const resolveStats = reasoning.getResolveStats();
       return res.status(200).json({
         success: true,
-        data: stats,
+        data: { ...baseStats, resolve_cache: resolveStats },
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
+    }
+
+    // GET /api/reasoning/resolve-stats — resolve cache hit rate only
+    if (pathParts[pathParts.length - 1] === 'resolve-stats') {
+      if (method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+      return res.status(200).json({
+        success: true,
+        data: reasoning.getResolveStats(),
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
+    // GET /api/reasoning/provenance/:id — get provenance block for a reasoning object
+    // Also POST /api/reasoning/provenance with { id } or { reasoning_ids: [] }
+    if (pathParts[pathParts.length - 1] === 'provenance') {
+      if (method === 'GET') {
+        const id = getParam('id');
+        if (!id) return res.status(400).json({ error: 'Missing ?id= parameter' });
+        const provenance = await reasoning.getProvenance(id);
+        if (!provenance) return res.status(404).json({ error: 'Reasoning object not found' });
+        return res.status(200).json({ success: true, data: provenance });
+      }
+      if (method === 'POST') {
+        let body = {};
+        if (req.body) { body = req.body;
+        } else { let data = ''; for await (const chunk of req) data += chunk; if (data) body = JSON.parse(data); }
+        if (body.id) {
+          const provenance = await reasoning.getProvenance(body.id);
+          if (!provenance) return res.status(404).json({ error: 'Reasoning object not found' });
+          return res.status(200).json({ success: true, data: provenance });
+        }
+        if (body.reasoning_ids && Array.isArray(body.reasoning_ids)) {
+          const provenances = [];
+          for (const rid of body.reasoning_ids) {
+            const p = await reasoning.getProvenance(rid);
+            if (p) provenances.push(p);
+          }
+          return res.status(200).json({ success: true, data: { provenances, total: provenances.length } });
+        }
+        return res.status(400).json({ error: 'Missing id or reasoning_ids' });
+      }
+      return res.status(405).json({ error: 'Method not allowed' });
     }
 
     // GET /api/reasoning/failures?type=xxx
@@ -141,9 +184,14 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'Missing required field: problem_statement' });
       }
       const result = await reasoning.resolveReasoning(body);
+      reasoning.trackResolve(result.hit, body.problem_statement);
+      let provenance = null;
+      if (result.hit && result.reasoning_id) {
+        provenance = await reasoning.getProvenance(result.reasoning_id);
+      }
       return res.status(200).json({
         success: true,
-        data: result,
+        data: { ...result, provenance: provenance || undefined },
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }

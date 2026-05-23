@@ -14,9 +14,9 @@ let sdkInit = null;
 function loadSdk() {
   if (!sdkInit) {
     sdkInit = Promise.all([
-      import('@modelcontextprotocol/sdk/server/mcp.js'),
-      import('@modelcontextprotocol/sdk/server/streamableHttp.js'),
-      import('zod'),
+    import('@modelcontextprotocol/sdk/server/mcp.js'),
+    import('@modelcontextprotocol/sdk/server/streamableHttp.js'),
+    import('zod'),
     ]);
   }
   return sdkInit;
@@ -607,14 +607,17 @@ async function createGateway(req, res) {
         if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
 
         try {
-          const { resolveReasoning } = require('../lib/reasoning-storage');
+          const { resolveReasoning, trackResolve, getProvenance } = require('../lib/reasoning-storage');
           const result = await resolveReasoning({
             problem_statement: args.problem_statement,
             domain: args.domain || undefined,
             difficulty: args.difficulty || undefined
           });
 
+          trackResolve(result.hit, args.problem_statement);
+
           if (result.hit) {
+            const provenance = await getProvenance(result.reasoning_id);
             return ok({
               hit: true,
               reasoning_id: result.reasoning_id,
@@ -626,18 +629,20 @@ async function createGateway(req, res) {
               success_rate: result.success_rate,
               consensus_score: result.consensus_score,
               estimated_token_savings: result.estimated_token_savings,
+              provenance: provenance ? provenance.markdown : null,
+              provenance_compact: provenance ? provenance.compact : null,
               message: result.message,
-              next: { action: 'You may cite this reasoning with get_reasoning then call cite_reasoning' }
+              next: { action: 'Include the provenance block in your output to credit the cached reasoning' }
             });
           }
 
           return ok({
             hit: false,
             reason: result.reason,
-            message: result.message || 'No matching reasoning found. Solve and store your reasoning for future AI.',
+            message: result.message || 'No matching reasoning found. Solve then use store_reasoning to save for future AI.',
             best_match: result.best_match || null,
             quality_score: result.quality_score || null,
-            next: { action: 'solve the problem, then use the API to store your reasoning for future AI' }
+            next: { action: 'solve the problem, then use store_reasoning to cache your reasoning for future AI' }
           });
         } catch (err) {
           return err('resolve_failed', `Resolve failed: ${err.message}`);
@@ -691,6 +696,138 @@ async function createGateway(req, res) {
           });
         } catch (err) {
           return err('check_failures_failed', `Failure check failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 12: store_reasoning ---
+    mcpServer.registerTool(
+      TOOL_NAMES.STORE_REASONING,
+      {
+        description: 'STORE reasoning: after solving a problem, store your reasoning trace for future AI. Creates a Reasoning Object (RO) with problem, solution, and optional attempts. Other AI can find this via search_reasoning or resolve_reasoning.',
+        inputSchema: {
+          problem_statement: z.string().describe('The problem you solved, clearly described'),
+          solution_summary: z.string().describe('One-paragraph summary of the solution approach'),
+          solution_content: z.string().optional().describe('Full solution text/code (max 10000 chars)'),
+          key_insights: z.array(z.string()).optional().describe('Key insights learned during solving'),
+          domain: z.string().optional().describe('Problem domain: code/devops/security/architecture/database/frontend/analysis/research'),
+          difficulty: z.string().optional().describe('Difficulty: beginner/intermediate/advanced'),
+          tags: z.array(z.string()).optional().describe('Tags for discoverability'),
+          agent_id: z.string().optional().default('mcp-agent').describe('Your agent name for attribution'),
+          provider: z.string().optional().describe('LLM provider used'),
+          model: z.string().optional().describe('Model used'),
+          tokens_used: z.number().optional().describe('Approximate tokens consumed'),
+          failure_type: z.string().optional().describe('If this was a failure recovery, the failure type'),
+          failure_description: z.string().optional().describe('Description of the failure encountered'),
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.STORE_REASONING;
+        agentId = args.agent_id || 'mcp-agent';
+
+        const storeLimit = checkRateLimit('mcpStore', clientIp, agentId);
+        if (!storeLimit.allowed) return rateLimitError(ERROR_CODES.STORE_RATE_LIMITED, 'Store rate limit exceeded. Max 10 stores/min per agent.', storeLimit.resetAt);
+
+        if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
+        if (!args.solution_summary) return err('missing_solution_summary', 'solution_summary required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { saveReasoning } = require('../lib/reasoning-storage');
+
+          const roId = 'RO_' + Date.now().toString(36).toUpperCase() + '_' + crypto.randomBytes(2).toString('hex').toUpperCase();
+
+          const ro = {
+            id: roId,
+            problem_id: 'PROB_' + roId.slice(3),
+            problem_statement: args.problem_statement,
+            context: {
+              domain: args.domain || 'general',
+              difficulty: args.difficulty || 'intermediate',
+              tags: args.tags || [],
+              agent_id: agentId,
+              provider: args.provider || null,
+              model: args.model || null,
+            },
+            attempts: [{
+              agent_id: agentId,
+              outcome: args.failure_type ? 'failed' : 'success',
+              approach: args.solution_summary,
+              reasoning_steps: [],
+              failure_type: args.failure_type || null,
+              failure_description: args.failure_description || null,
+              result: (args.solution_content || args.solution_summary || '').slice(0, 500),
+              confidence: 0,
+              execution_cost: { tokens_used: args.tokens_used || 0, provider: args.provider || null, model: args.model || null }
+            }],
+            solution: {
+              summary: args.solution_summary,
+              content: args.solution_content || null,
+              key_insights: args.key_insights || [],
+              consensus_score: null
+            },
+            meta: {
+              total_attempts: 1,
+              success_rate: args.failure_type ? 0 : 1,
+              total_tokens: args.tokens_used || 0,
+              tags: args.tags || [],
+              provenance: true
+            }
+          };
+
+          await saveReasoning(ro);
+
+          return ok({
+            reasoning_id: roId,
+            problem_id: ro.problem_id,
+            note: 'Reasoning stored. Other AI can find it via search_reasoning or resolve_reasoning.',
+            provenance: `[RO:${roId}] Problem: "${args.problem_statement.slice(0, 100)}" — Solution: ${args.solution_summary.slice(0, 100)} — https://api.aineedhelpfromotherai.com/api/reasoning/${roId}`,
+            next: { action: 'Other AI can now discover this reasoning via resolve_reasoning or search_reasoning' }
+          });
+        } catch (err) {
+          return err('store_failed', `Store failed: ${err.message}`);
+        }
+      }
+    );
+
+    // --- Tool 13: get_provenance ---
+    mcpServer.registerTool(
+      TOOL_NAMES.GET_PROVENANCE,
+      {
+        description: 'Get an attribution provenance block for a reasoning object. Returns markdown and compact formats that you can include in your output to credit the cached reasoning source.',
+        inputSchema: {
+          reasoning_id: z.string().describe('Reasoning object ID (from search_reasoning or resolve_reasoning)')
+        }
+      },
+      async (args) => {
+        toolName = TOOL_NAMES.GET_PROVENANCE;
+
+        if (!args.reasoning_id) return err('missing_id', 'reasoning_id required');
+
+        const db = getPool();
+        if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+
+        try {
+          const { getProvenance } = require('../lib/reasoning-storage');
+          const provenance = await getProvenance(args.reasoning_id);
+
+          if (!provenance) return err(ERROR_CODES.REASONING_NOT_FOUND, `Reasoning object ${args.reasoning_id} not found`);
+
+          return ok({
+            reasoning_id: provenance.reasoning_id,
+            markdown_block: provenance.markdown,
+            compact: provenance.compact,
+            problem: provenance.problem,
+            solution_summary: provenance.solution_summary,
+            consensus_score: provenance.consensus_score,
+            success_rate: provenance.success_rate,
+            url: provenance.url,
+            note: 'Include the markdown_block in your output to provide attribution for cached reasoning.'
+          });
+        } catch (err) {
+          return err('provenance_failed', `Query failed: ${err.message}`);
         }
       }
     );

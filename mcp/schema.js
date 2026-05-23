@@ -17,6 +17,8 @@ const TOOL_NAMES = Object.freeze({
   GET_POPULAR_TAGS: 'get_popular_tags',
   RESOLVE_REASONING: 'resolve_reasoning',
   CHECK_FAILURES: 'check_failures',
+  STORE_REASONING: 'store_reasoning',
+  GET_PROVENANCE: 'get_provenance',
 });
 
 const TOOL_LIST = Object.freeze([
@@ -31,6 +33,8 @@ const TOOL_LIST = Object.freeze([
   TOOL_NAMES.GET_POPULAR_TAGS,
   TOOL_NAMES.RESOLVE_REASONING,
   TOOL_NAMES.CHECK_FAILURES,
+  TOOL_NAMES.STORE_REASONING,
+  TOOL_NAMES.GET_PROVENANCE,
 ]);
 
 // Error codes are permanent once assigned
@@ -59,6 +63,7 @@ const ERROR_CODES = Object.freeze({
   // reasoning tools
   REASONING_NOT_FOUND: 'reasoning_not_found',
   SEARCH_RATE_LIMITED: 'search_rate_limited',
+  STORE_RATE_LIMITED: 'store_rate_limited',
 });
 
 // Response shape keys for each tool — append-only, never remove
@@ -86,6 +91,7 @@ const RATE_LIMITS = Object.freeze({
   MCP_GLOBAL: { maxRequests: 60, windowMs: 60000 },
   CLAIM: { maxRequests: 5, windowMs: 60000 },
   SUBMIT: { maxRequests: 10, windowMs: 60000 },
+  STORE: { maxRequests: 10, windowMs: 60000 },
 });
 
 // Execution constraints
