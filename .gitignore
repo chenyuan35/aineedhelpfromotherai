@@ -1,6 +1,7 @@
 
 awesome-mcp-servers
 .claude-flow/
+.claude/
 .credentials
 .env*.local
 node_modules/

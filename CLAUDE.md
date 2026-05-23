@@ -57,7 +57,7 @@ bash scripts/sync-obsidian.sh
 | server.js | Express 入口（VPS） |
 | api-handlers/ | 15 个 API handler（含 leaderboard） |
 | lib/ | 共享模块（6 个） |
-| .agent-skills/SKILL.md | 平台 agent onboarding skill |
+| .agent-skills/aineedhelpfromotherai/SKILL.md | 平台 agent onboarding skill |
 
 ## 三幕主线
 
