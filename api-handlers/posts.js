@@ -31,6 +31,19 @@ function loadJsonData() {
  }
 }
 
+function saveJsonData(data) {
+  try {
+    fs.writeFileSync(JSON_DATA_PATH + '.tmp', JSON.stringify(data, null, 2), 'utf8');
+    fs.renameSync(JSON_DATA_PATH + '.tmp', JSON_DATA_PATH);
+    _jsonCache = data;
+    _jsonCacheTime = Date.now();
+    return true;
+  } catch (err) {
+    console.error('saveJsonData error:', err);
+    return false;
+  }
+}
+
 function loadAggregatedData() {
  try {
  const stat = fs.statSync(AGGREGATED_DATA_PATH);
@@ -663,8 +676,60 @@ async function checkRateLimit(agentId) {
 // POST /api/posts
 async function handleCreatePost(req, res, url = getUrl(req)) {
   if (!hasDatabase()) {
-    // Read-only mode: cannot create posts without database
-    sendJson(res, { error: 'Write operations require DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    // JSON fallback write path
+    let body;
+    try { body = await readBody(req); } catch (err) { sendJson(res, { error: err.message }, 400); return; }
+
+    const { agent_id, task_type, problem, expected_output, capabilities, conditions } = body;
+    const dryRun = isDryRun(req, url, body);
+    const agentValidation = validateAgentId(agent_id);
+    if (agentValidation.error) { sendJson(res, { error: agentValidation.error }, 400); return; }
+    const normalizedAgentId = agentValidation.agentId;
+    const tagsValidation = normalizeTags(body.tags);
+    if (tagsValidation.error) { sendJson(res, { error: tagsValidation.error }, 400); return; }
+    const projectValidation = normalizeProject(body.project);
+    if (projectValidation.error) { sendJson(res, { error: projectValidation.error }, 400); return; }
+    const urgencyValidation = normalizeUrgency(body.urgency);
+    if (urgencyValidation.error) { sendJson(res, { error: urgencyValidation.error }, 400); return; }
+    const capabilitiesList = normalizeCapabilities(body.required_capabilities);
+    if (capabilitiesList.error) { sendJson(res, { error: capabilitiesList.error }, 400); return; }
+    const estimatedMinutes = normalizeEstimatedMinutes(body.estimated_minutes);
+    if (estimatedMinutes.error) { sendJson(res, { error: estimatedMinutes.error }, 400); return; }
+    const successCriteria = normalizeSuccessCriteria(body.success_criteria);
+    if (successCriteria.error) { sendJson(res, { error: successCriteria.error }, 400); return; }
+    const verification = normalizeVerification(body.verification);
+    if (verification.error) { sendJson(res, { error: verification.error }, 400); return; }
+    if (problem && String(problem).length > 5000) { sendJson(res, { error: 'problem too long (max 5000 characters)' }, 400); return; }
+    if (capabilities && String(capabilities).length > 5000) { sendJson(res, { error: 'capabilities too long (max 5000 characters)' }, 400); return; }
+    const now = new Date().toISOString();
+    const id = generateId();
+    const data = loadJsonData();
+    const posts = data.posts || [];
+    if (task_type) {
+      if (!problem || typeof problem !== 'string') { sendJson(res, { error: 'problem is required for REQUEST' }, 400); return; }
+      const post = formatPost({
+        id, type: 'REQUEST', agent_id: normalizedAgentId,
+        task_type: String(task_type || 'other').trim() || 'other',
+        problem: problem.trim(),
+        expected_output: expected_output ? String(expected_output).trim() : '',
+        status: 'OPEN', tags: tagsValidation.tags, urgency: urgencyValidation.urgency,
+        expires_at: body.expires_at || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        created_at: now, project: projectValidation.project,
+        claimed_by: null, claimed_at: null, completed_at: null,
+        result_url: null, result_text: null,
+        capabilities: capabilitiesList.capabilities,
+        estimated_minutes: estimatedMinutes.value,
+        success_criteria: successCriteria.criteria,
+        verification: verification.value
+      });
+      if (dryRun) { sendJson(res, { post, dry_run: true, message: 'Dry run only. No post was created.' }, 200, { dry_run: true }); return; }
+      posts.push(post);
+      data.posts = posts;
+      if (!saveJsonData(data)) { sendJson(res, { error: 'Failed to save post' }, 500); return; }
+      sendJson(res, { post, source: 'json_write' }, 201);
+    } else {
+      sendJson(res, { error: 'Either task_type (REQUEST) or capabilities (OFFER) is required' }, 400);
+    }
     return;
   }
 
@@ -854,7 +919,49 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
 // POST /api/tasks/:id/claim or /api/tasks/:id/complete
 async function handleTaskMutation(req, res, url = getUrl(req)) {
   if (!hasDatabase()) {
-    sendJson(res, { error: 'Write operations require DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    // JSON fallback write path
+    const pathParts = getPathParts(url);
+    const tasksIndex = pathParts.indexOf('tasks');
+    const id = pathParts[tasksIndex + 1];
+    const action = pathParts[tasksIndex + 2];
+    if (!id || !action) { sendJson(res, { error: 'Unknown endpoint' }, 404); return; }
+    let body = {};
+    try { body = await readBody(req); } catch (err) { sendJson(res, { error: err.message }, 400); return; }
+    const dryRun = isDryRun(req, url, body);
+    const data = loadJsonData();
+    const posts = data.posts || [];
+    const idx = posts.findIndex(p => p.id === id);
+    if (idx === -1) { sendJson(res, { error: 'Task not found' }, 404); return; }
+    const post = posts[idx];
+    const agentId = body.agent_id || '';
+    if (action === 'claim') {
+      if (post.type !== 'REQUEST') { sendJson(res, { error: 'Only REQUEST tasks can be claimed' }, 400); return; }
+      if (post.status !== 'OPEN') { sendJson(res, { error: 'Task is not available. Status: ' + post.status }, 400); return; }
+      const agentValidation = validateAgentId(agentId);
+      if (agentValidation.error) { sendJson(res, { error: agentValidation.error }, 400); return; }
+      const normalizedAgentId = agentValidation.agentId;
+      if (dryRun) { sendJson(res, { post: { ...post, status: 'EXECUTING' }, dry_run: true }, 200, { dry_run: true }); return; }
+      posts[idx] = { ...post, status: 'EXECUTING', claimed_by: normalizedAgentId, claimed_at: new Date().toISOString() };
+      data.posts = posts;
+      if (!saveJsonData(data)) { sendJson(res, { error: 'Failed to save' }, 500); return; }
+      sendJson(res, { post: formatPost(posts[idx]) });
+    } else if (action === 'complete') {
+      if (post.status !== 'EXECUTING') { sendJson(res, { error: 'Task is not being executed. Status: ' + post.status }, 400); return; }
+      if (dryRun) { sendJson(res, { post: { ...post, status: 'COMPLETED' }, dry_run: true }, 200, { dry_run: true }); return; }
+      posts[idx] = { ...post, status: 'COMPLETED', result_url: body.result_url || null, result_text: body.result_text || null, completed_at: new Date().toISOString() };
+      data.posts = posts;
+      if (!saveJsonData(data)) { sendJson(res, { error: 'Failed to save' }, 500); return; }
+      sendJson(res, { post: formatPost(posts[idx]) });
+    } else if (action === 'release') {
+      if (post.status !== 'EXECUTING') { sendJson(res, { error: 'Task is not being executed. Status: ' + post.status }, 400); return; }
+      if (dryRun) { sendJson(res, { post: { ...post, status: 'OPEN' }, dry_run: true }, 200, { dry_run: true }); return; }
+      posts[idx] = { ...post, status: 'OPEN', claimed_by: null, claimed_at: null };
+      data.posts = posts;
+      if (!saveJsonData(data)) { sendJson(res, { error: 'Failed to save' }, 500); return; }
+      sendJson(res, { post: formatPost(posts[idx]) });
+    } else {
+      sendJson(res, { error: 'Unknown action. Use claim, complete, or release.' }, 400);
+    }
     return;
   }
 
@@ -1237,7 +1344,22 @@ async function handleHealth(req, res) {
 // POST /api/agents/register
 async function handleRegisterAgent(req, res) {
   if (!hasDatabase()) {
-    sendJson(res, { error: 'Agent registration requires DATABASE_URL. This instance is in read-only (JSON fallback) mode.' }, 503);
+    // JSON fallback write path
+    let body;
+    try { body = await readBody(req); } catch (err) { sendJson(res, { error: err.message }, 400); return; }
+    const { agent_id, name, description, homepage } = body;
+    const agentValidation = validateAgentId(agent_id);
+    if (agentValidation.error) { sendJson(res, { error: agentValidation.error }, 400); return; }
+    if (!name || typeof name !== 'string' || name.length > 200) { sendJson(res, { error: 'name is required (max 200 characters)' }, 400); return; }
+    const data = loadJsonData();
+    const agents = data.agents || [];
+    if (agents.find(a => a.agent_id === agentValidation.agentId)) { sendJson(res, { error: 'Agent already registered.', agent_id: agentValidation.agentId }, 409); return; }
+    const token = generateToken();
+    const agent = { agent_id: agentValidation.agentId, name: name.trim(), description: String(description || '').trim(), homepage: String(homepage || '').trim(), token, created_at: new Date().toISOString() };
+    agents.push(agent);
+    data.agents = agents;
+    if (!saveJsonData(data)) { sendJson(res, { error: 'Failed to register agent' }, 500); return; }
+    sendJson(res, { agent, message: 'Registration successful! Save your token - it will not be shown again.' }, 201);
     return;
   }
 

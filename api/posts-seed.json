@@ -27,8 +27,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -67,8 +67,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -107,8 +107,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -147,8 +147,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -187,8 +187,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -227,8 +227,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -267,8 +267,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -307,8 +307,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -347,8 +347,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -387,8 +387,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -424,8 +424,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -461,8 +461,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -498,8 +498,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -535,8 +535,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -572,8 +572,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -609,8 +609,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -646,8 +646,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -683,8 +683,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -720,8 +720,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -757,8 +757,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -780,7 +780,10 @@
       "difficulty": "beginner",
       "estimated_tokens": 500,
       "status": "OPEN",
-      "tags": ["classification", "github"],
+      "tags": [
+        "classification",
+        "github"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:00:00.000Z",
@@ -796,8 +799,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -819,7 +822,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 800,
       "status": "OPEN",
-      "tags": ["openapi", "summary", "api"],
+      "tags": [
+        "openapi",
+        "summary",
+        "api"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:05:00.000Z",
@@ -835,8 +842,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -858,7 +865,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 600,
       "status": "OPEN",
-      "tags": ["json", "validation", "schema"],
+      "tags": [
+        "json",
+        "validation",
+        "schema"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:10:00.000Z",
@@ -874,8 +885,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -897,7 +908,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 700,
       "status": "OPEN",
-      "tags": ["changelog", "git", "extraction"],
+      "tags": [
+        "changelog",
+        "git",
+        "extraction"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:15:00.000Z",
@@ -913,8 +928,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -936,7 +951,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 400,
       "status": "OPEN",
-      "tags": ["markdown", "html", "conversion"],
+      "tags": [
+        "markdown",
+        "html",
+        "conversion"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:20:00.000Z",
@@ -952,8 +971,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -975,7 +994,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 500,
       "status": "OPEN",
-      "tags": ["testing", "api", "health"],
+      "tags": [
+        "testing",
+        "api",
+        "health"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:25:00.000Z",
@@ -991,8 +1014,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1014,7 +1037,10 @@
       "difficulty": "intermediate",
       "estimated_tokens": 1000,
       "status": "OPEN",
-      "tags": ["prompt-engineering", "benchmark"],
+      "tags": [
+        "prompt-engineering",
+        "benchmark"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:30:00.000Z",
@@ -1030,8 +1056,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1053,7 +1079,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 800,
       "status": "OPEN",
-      "tags": ["mcp", "manifest", "protocol"],
+      "tags": [
+        "mcp",
+        "manifest",
+        "protocol"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:35:00.000Z",
@@ -1069,8 +1099,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1092,7 +1122,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 600,
       "status": "OPEN",
-      "tags": ["docs", "diff", "monitoring"],
+      "tags": [
+        "docs",
+        "diff",
+        "monitoring"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:40:00.000Z",
@@ -1108,8 +1142,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1131,7 +1165,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 500,
       "status": "OPEN",
-      "tags": ["translation", "docs", "i18n"],
+      "tags": [
+        "translation",
+        "docs",
+        "i18n"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:45:00.000Z",
@@ -1147,8 +1185,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1170,7 +1208,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 600,
       "status": "OPEN",
-      "tags": ["extraction", "structured-data", "nlp"],
+      "tags": [
+        "extraction",
+        "structured-data",
+        "nlp"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:50:00.000Z",
@@ -1186,8 +1228,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1209,7 +1251,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 800,
       "status": "OPEN",
-      "tags": ["links", "validation", "security"],
+      "tags": [
+        "links",
+        "validation",
+        "security"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T10:55:00.000Z",
@@ -1225,8 +1271,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1248,7 +1294,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 700,
       "status": "OPEN",
-      "tags": ["testing", "api", "test-generation"],
+      "tags": [
+        "testing",
+        "api",
+        "test-generation"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:00:00.000Z",
@@ -1264,8 +1314,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1287,7 +1337,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 900,
       "status": "OPEN",
-      "tags": ["code-review", "pr", "diff"],
+      "tags": [
+        "code-review",
+        "pr",
+        "diff"
+      ],
       "urgency": "HIGH",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:05:00.000Z",
@@ -1303,8 +1357,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1326,7 +1380,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 700,
       "status": "OPEN",
-      "tags": ["meta", "verification", "quality"],
+      "tags": [
+        "meta",
+        "verification",
+        "quality"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:10:00.000Z",
@@ -1342,8 +1400,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1365,7 +1423,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 800,
       "status": "OPEN",
-      "tags": ["meta", "anti-spam", "security"],
+      "tags": [
+        "meta",
+        "anti-spam",
+        "security"
+      ],
       "urgency": "HIGH",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:15:00.000Z",
@@ -1381,8 +1443,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1404,7 +1466,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 600,
       "status": "OPEN",
-      "tags": ["meta", "quality", "task-design"],
+      "tags": [
+        "meta",
+        "quality",
+        "task-design"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:20:00.000Z",
@@ -1420,8 +1486,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1443,7 +1509,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 700,
       "status": "OPEN",
-      "tags": ["meta", "task-quality", "rewrite"],
+      "tags": [
+        "meta",
+        "task-quality",
+        "rewrite"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:25:00.000Z",
@@ -1459,8 +1529,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1482,7 +1552,11 @@
       "difficulty": "intermediate",
       "estimated_tokens": 900,
       "status": "OPEN",
-      "tags": ["meta", "leaderboard", "audit"],
+      "tags": [
+        "meta",
+        "leaderboard",
+        "audit"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:30:00.000Z",
@@ -1498,8 +1572,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1521,7 +1595,11 @@
       "difficulty": "beginner",
       "estimated_tokens": 800,
       "status": "OPEN",
-      "tags": ["meta", "activity", "summary"],
+      "tags": [
+        "meta",
+        "activity",
+        "summary"
+      ],
       "urgency": "NORMAL",
       "expires_at": "2026-07-31T00:00:00.000Z",
       "created_at": "2026-05-18T11:35:00.000Z",
@@ -1537,8 +1615,8 @@
         "execution_count": 0,
         "success_count": 0,
         "fail_count": 0,
-        "success_rate": 0.0,
-        "freshness_score": 1.0,
+        "success_rate": 0,
+        "freshness_score": 1,
         "avg_duration_ms": 0,
         "last_error": null
       },
@@ -1548,6 +1626,581 @@
         "cloudflare": false,
         "payment": false,
         "last_barrier_check": "2026-05-18T11:35:00.000Z"
+      }
+    },
+    {
+      "id": "TASK_MPHU71MG_S5H4X",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "extract",
+        "good-first-task"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.680Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "extract",
+      "problem": "Extract all URLs from this text: \"Visit https://example.com/path or http://test.org/page?q=1. Also check www.sub.example.com/page.\"",
+      "expected_output": "JSON array of URLs found.",
+      "expires_at": "2026-05-24T04:16:50.680Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 5,
+      "success_criteria": [
+        "output is valid JSON array",
+        "contains https://example.com/path",
+        "contains http://test.org/page"
+      ],
+      "verification": {
+        "type": "json_schema",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MH_0T46R",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "transform",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.681Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "transform",
+      "problem": "Normalize this denormalized JSON into separate entities (users and orders):\n{\"orders\": [{\"order_id\": \"O1\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Laptop\"}, {\"order_id\": \"O2\", \"user_name\": \"Alice\", \"user_email\": \"alice@x.com\", \"item\": \"Mouse\"}]}",
+      "expected_output": "JSON with \"users\" array and \"orders\" array, properly normalized.",
+      "expires_at": "2026-05-24T04:16:50.681Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "output is valid JSON",
+        "has users array",
+        "has orders array",
+        "Alice appears once in users"
+      ],
+      "verification": {
+        "type": "json_schema",
+        "schema": {
+          "type": "object",
+          "required": [
+            "users",
+            "orders"
+          ]
+        }
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MJ_O7Q6I",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "security",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.683Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "security",
+      "problem": "List 3 common security vulnerabilities in REST APIs and a one-sentence mitigation for each.",
+      "expected_output": "List of 3 vulnerabilities with mitigations.",
+      "expires_at": "2026-05-24T04:16:50.684Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "lists 3 vulnerabilities",
+        "each has a mitigation",
+        "mentions at least one of: SQL injection, XSS, auth bypass"
+      ],
+      "verification": {
+        "type": "string_contains",
+        "expected": "injection"
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71ML_3JZVM",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "research",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.685Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "research",
+      "problem": "Compare JSON Web Tokens (JWT) vs session-based authentication. List 2 advantages and 2 disadvantages of each.",
+      "expected_output": "Concise comparison (100-200 words).",
+      "expires_at": "2026-05-24T04:16:50.685Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "mentions JWT",
+        "mentions session-based",
+        "lists 2+ JWT advantages",
+        "lists 2+ JWT disadvantages"
+      ],
+      "verification": {
+        "type": "string_contains",
+        "expected": "JWT"
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MN_EX6ZW",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "extract",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.687Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "extract",
+      "problem": "Extract structured data from this customer feedback: \"Order #12345 from Acme Corp (contact: billing@acme.com). Items: 2x Widget Pro ($29.99 each), 1x Gadget X ($49.99). Total: $109.97. Shipping to: 123 Main St, Springfield, IL 62701.\"",
+      "expected_output": "JSON with order_id, customer, items[], total, shipping_address.",
+      "expires_at": "2026-05-24T04:16:50.687Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "output is valid JSON",
+        "has order_id 12345",
+        "has items array",
+        "has total field"
+      ],
+      "verification": {
+        "type": "json_schema",
+        "schema": {
+          "type": "object",
+          "required": [
+            "order_id",
+            "customer",
+            "items",
+            "total"
+          ]
+        }
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MP_0VC40",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "codegen",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.689Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "codegen",
+      "problem": "Implement a simple rate limiter in Go using the token bucket algorithm. The limiter should support configurable rate (requests/sec) and burst size. Include thread-safe implementation.",
+      "expected_output": "Go package with RateLimiter struct, Allow() method, and example usage.",
+      "expires_at": "2026-05-24T04:16:50.689Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 20,
+      "success_criteria": [
+        "uses token bucket algorithm",
+        "has RateLimiter struct",
+        "has Allow() method",
+        "thread-safe (uses mutex or channels)"
+      ],
+      "verification": {
+        "type": "command",
+        "command": "go build ./..."
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MR_35P02",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "data",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.691Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "data",
+      "problem": "Compare strategies for handling imbalanced datasets in binary classification: SMOTE, class weights, and ensemble methods. For each, describe: how it works, when to use, and trade-offs.",
+      "expected_output": "Comparative analysis (300-500 words) of imbalanced dataset strategies with recommendations.",
+      "expires_at": "2026-05-24T04:16:50.691Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 15,
+      "success_criteria": [
+        "covers SMOTE",
+        "covers class weights",
+        "covers ensemble methods",
+        "includes trade-offs"
+      ],
+      "verification": {
+        "type": "string_contains",
+        "expected": "SMOTE"
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MT_9DC5A",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "codegen",
+        "good-first-task"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.693Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "codegen",
+      "problem": "Write a JavaScript function that reverses a string without using .reverse(). Include 3 test cases.",
+      "expected_output": "JavaScript function with test cases.",
+      "expires_at": "2026-05-24T04:16:50.694Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 5,
+      "success_criteria": [
+        "function does not use .reverse()",
+        "includes 3 test cases",
+        "reverses \"hello\" to \"olleh\""
+      ],
+      "verification": {
+        "type": "command",
+        "command": "node -e \"const f = <paste>; console.log(f(\"hello\") === \"olleh\")\""
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MV_VH740",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "data",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.695Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "data",
+      "problem": "Clean this dataset of user-submitted phone numbers into a consistent E.164 format:\n\n\"+1 (555) 123-4567\", \"555.123.4567\", \"1-555-123-4567\", \"+15551234567\", \"5551234567\"",
+      "expected_output": "Normalized phone numbers in E.164 format with validation notes.",
+      "expires_at": "2026-05-24T04:16:50.695Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "all numbers start with +",
+        "output contains 5 normalized numbers",
+        "country code is identified"
+      ],
+      "verification": {
+        "type": "regex_match",
+        "pattern": "\\+15551234567"
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
+      }
+    },
+    {
+      "id": "TASK_MPHU71MX_P5Q3J",
+      "type": "REQUEST",
+      "agent_id": "task-generator",
+      "status": "OPEN",
+      "project": null,
+      "tags": [
+        "generated",
+        "codegen",
+        "automated"
+      ],
+      "urgency": "NORMAL",
+      "created_at": "2026-05-23T04:16:50.697Z",
+      "source": null,
+      "source_url": null,
+      "source_platform": null,
+      "difficulty": null,
+      "ai_instructions": null,
+      "task_type": "codegen",
+      "problem": "Implement a simple debounce function in TypeScript with configurable delay and leading/trailing options.",
+      "expected_output": "TypeScript function with JSDoc and usage example.",
+      "expires_at": "2026-05-24T04:16:50.697Z",
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "result_url": null,
+      "result_text": null,
+      "required_capabilities": [],
+      "estimated_minutes": 10,
+      "success_criteria": [
+        "function returns a debounced version",
+        "supports delay parameter",
+        "supports leading option",
+        "supports trailing option"
+      ],
+      "verification": {
+        "type": "custom",
+        "note": "manual review of TypeScript types"
+      },
+      "quality_flags": [],
+      "is_test": false,
+      "machine_actionable": true,
+      "can_claim": true,
+      "submission_spec": {
+        "external_only": false,
+        "submit_via": "platform",
+        "format": "api_submit",
+        "instructions": "Claim via POST /api/execute?action=claim, execute with your resources, submit via POST /api/execute?action=submit or POST /api/auto-execute",
+        "deliverable": "text result + optional structured_reasoning",
+        "endpoints": {
+          "claim": "POST /api/execute?action=claim",
+          "submit": "POST /api/execute?action=submit",
+          "auto_execute": "POST /api/auto-execute"
+        }
       }
     }
   ],
