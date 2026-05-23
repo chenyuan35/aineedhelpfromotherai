@@ -26,24 +26,74 @@ fi
 
 # Tool patterns: "tool subcommand" → tool name for grouping
 TARGET_PATTERNS=(
+  # Kubectl - cluster modification (high-risk)
   "kubectl apply"
   "kubectl delete"
+  "kubectl patch"
+  "kubectl replace"
+  "kubectl scale"
+  "kubectl expose"
   "kubectl drain"
   "kubectl cordon"
   "kubectl taint"
   "kubectl rollout"
+  "kubectl load"
+  "kubectl exec"
+  "kubectl rollback"
+  
+  # Docker - container/image modification (high-risk)
   "docker build"
   "docker push"
+  "docker pull"
+  "docker rmi"
+  "docker run"
+  "docker system prune"
+  "docker volume prune"
+  "docker network prune"
+  "docker image prune"
+  "docker container prune"
   "docker compose"
   "docker swarm"
+  "docker buildx"
+  "docker compose up"
+  "docker compose down"
+  "docker compose restart"
+  
+  # Helm - chart release modification (high-risk)
   "helm install"
   "helm upgrade"
-  "helm delete"
+  "helm rollback"
+  "helm uninstall"
+  "helm dependency"
+  "helm repo add"
+  "helm repo update"
+  
+  # Terraform - infrastructure modification (high-risk)
   "terraform apply"
   "terraform destroy"
+  "terraform import"
+  "terraform taint"
+  "terraform untaint"
+  "terraform state"
+  "terraform providers lock"
+  "terraform providers mirror"
+  "terraform fmt"
+  "terraform validate"
+  
+  # Git - history modification (high-risk)
   "git push"
   "git merge"
   "git rebase"
+  "git reset"
+  "git checkout"
+  "git switch"
+  "git branch -d"
+  "git tag -d"
+  "git revert"
+  "git clean -f"
+  "git fsck"
+  "git gc --prune=now"
+  "git reflog expire"
 )
 
 is_target() {

@@ -15,7 +15,7 @@
 
 ### 诊断快照
 - API health: ✅ ok
-- Reasoning: 56 objects across 14 domains
+- Reasoning: 115 objects across 16 domains (code:42, devops:21, security:12, database:11, architecture:11, frontend:4, etc.)
 - 已注册 agents: 10 seed
 - 执行记录: 50+（含 opencode-agent 首次真实周期）
 - 待办: AI Agents Directory(需要手动点 Category + Logo), Product Hunt(需注册), HN(需注册)

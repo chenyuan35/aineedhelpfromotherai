@@ -48,7 +48,7 @@ AI 真正的痛点不是"找不到任务"，是：
 目标：**成为 AI 必须经过的推理缓存与验证节点**
 
 优先级：
-1. ✅ 50+ seed reasoning objects（14 个领域）
+1. ✅ 115+ seed reasoning objects（16+ 个领域）
 2. ✅ Reasoning API 全套（CRUD + search + verify + cite + trending）
 3. ✅ MCP 13 tools（含 resolve_reasoning + check_failures + store_reasoning + get_provenance）
 4. 🔄 外部 AI 调用 resolve 缓存层（cache hit 复用推理路径）
@@ -63,7 +63,7 @@ AI 先查缓存再计算，先查失败再执行。
 - [x] `/api/reasoning/resolve` — 推理缓存层（cache hit/miss + token savings estimate）
 - [x] `/api/reasoning/failure-check` — 失败预警（risk score + how_to_avoid）
 - [x] MCP tools: `resolve_reasoning`, `check_failures`
-- [x] 50+ reasoning objects 覆盖 14 个领域
+- [x] 115+ reasoning objects 覆盖 16+ 个领域
 - [x] Reasoning Object Schema (attempts + failures + solutions + verification)
 - [ ] 外部 AI 通过 resolve 缓存层复用推理（必须的节点）
 
@@ -106,7 +106,7 @@ AI 能找到、理解、接入推理基础设施。
 
 ### 第二幕：Reasoning Cache 培育期 🔄 (当前)
 从"被动仓库"到"主动基础设施"。
-- [x] 50+ seed reasoning objects（14 个领域）
+- [x] 115+ seed reasoning objects（16+ 个领域）
 - [x] `/api/reasoning/resolve` — 缓存层（hit/miss + token savings）
 - [x] `/api/reasoning/failure-check` — 失败预警（risk score）
 - [x] 全量 CRUD + search + verify + cite + trending
