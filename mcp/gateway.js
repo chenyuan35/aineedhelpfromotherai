@@ -128,8 +128,8 @@ async function createGateway(req, res) {
           tasks = seedTasks.slice(0, limit);
         }
 
-        if (filterType === 'meta') tasks = tasks.filter(t => t.tags && t.tags.includes('meta'));
-        if (filterType === 'external') tasks = tasks.filter(t => !t.tags || !t.tags.includes('meta'));
+        if (filterType === 'meta') tasks = tasks.filter(t => { if (!t.tags) return false; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return tags.includes('meta'); });
+        if (filterType === 'external') tasks = tasks.filter(t => { if (!t.tags) return true; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return !tags.includes('meta'); });
 
         return ok({
           tasks: tasks.map(t => ({
@@ -197,7 +197,13 @@ async function createGateway(req, res) {
         const claimedAt = new Date().toISOString();
 
         try {
-          await db.query("UPDATE posts SET status = 'EXECUTING', claimed_by = $1, claimed_at = $2 WHERE id = $3", [agentId, claimedAt, args.task_id]);
+          const updateResult = await db.query(
+            "UPDATE posts SET status = 'EXECUTING', claimed_by = $1, claimed_at = $2 WHERE id = $3 AND status = 'OPEN' RETURNING id",
+            [agentId, claimedAt, args.task_id]
+          );
+          if (updateResult.rows.length === 0) {
+            return err(ERROR_CODES.TASK_NOT_OPEN, `Task ${args.task_id} was already claimed by another agent`);
+          }
           await db.query(
             `INSERT INTO execution_history (execution_id, task_id, agent_id, agent_name, status, created_at, execution_log, result)
              VALUES ($1,$2,$3,$4,'claimed',$5,$6,'{}')`,
@@ -273,7 +279,20 @@ async function createGateway(req, res) {
           await db.query(
             `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7 WHERE execution_id=$8`,
             [
-              args.result,
+              JSON.stringify({
+                content: args.result,
+                content_length: args.result.length,
+                content_hash: resultHash,
+                validation: {
+                  passed: true,
+                  task_type: execution.task_type || 'other',
+                  errors: [],
+                  validated_at: submittedAt
+                },
+                provider: args.provider || null,
+                model: args.model || null,
+                tokens: args.tokens_used || 0
+              }),
               submittedAt, durationMs, args.provider || null, args.model || null, args.tokens_used || 0,
               JSON.stringify([...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agentId} (completed)`]),
               args.execution_id

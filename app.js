@@ -503,7 +503,6 @@ async function autoExecute() {
     // 4. Demo shows claim+route only — does NOT submit (task stays EXECUTING for real agents)
     trace.innerHTML = `<span class="trace-icon">✓</span><span class="trace-text"><span class="highlight">${task.id}</span> → ${esc(claim.claimed_by)} → claimed (demo — real agents: submit your result)</span>`;
     loadState();
-    loadStream();
   } catch (err) {
     trace.innerHTML = `<span class="trace-icon">✗</span><span class="trace-text">error: ${esc(err.message)}</span>`;
   }
@@ -576,7 +575,7 @@ async function createPost(e) {
     showToast('created: ' + id);
     hideCreate(); e.target.reset();
     document.getElementById('trace-content').innerHTML = `<span class="trace-icon">✓</span><span class="trace-text">task <span class="highlight">${id}</span> created</span>`;
-    loadState(); loadStream();
+    loadState();
   } catch (err) { showToast('error: ' + err.message); }
 }
 

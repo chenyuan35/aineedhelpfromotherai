@@ -11,6 +11,7 @@
   --match: #a78bfa;
   --exec: #ff9500;
   --done: #4ecdc4;
+  --error: #ff6b6b;
 }
 
 body {

@@ -414,7 +414,8 @@ async function handleSubmit(req, res) {
   const finalTaskStatus = body.status === 'failed' ? 'FAILED' : (validateTaskTransition(toTaskState, 'COMPLETED').valid ? 'COMPLETED' : toTaskState);
 
   const claimedTime = execution.created_at;
-  const durationMs = claimedTime ? (Date.now() - new Date(claimedTime).getTime()) : null;
+  let durationMs = null;
+  if (claimedTime) { const d = new Date(claimedTime); if (!isNaN(d.getTime())) durationMs = Date.now() - d.getTime(); }
 
   // Update execution record in PG (use nested format for saveExecution)
   try {
@@ -574,7 +575,7 @@ async function handleSubmit(req, res) {
       task_id: execution.task_id,
       status: finalTaskStatus,
       execution_status: finalExecStatus,
-      state_transition: `${fromTaskState} → ${toTaskState} → ${finalTaskStatus}`,
+      state_transition: `${taskStatus} → ${toTaskState} → ${finalTaskStatus}`,
       submitted_by: agent.agent_id,
       submitted_at: submittedAt,
       duration_ms: durationMs,
@@ -587,7 +588,7 @@ async function handleSubmit(req, res) {
         timestamp: submittedAt,
         lifecycle: {
           state_machine: 'v1-formal',
-          task_transition: `${fromTaskState} → ${toTaskState} → ${finalTaskStatus}`,
+          task_transition: `${taskStatus} → ${toTaskState} → ${finalTaskStatus}`,
           execution_transition: `${fromExecState} → ${toExecState} → ${finalExecStatus}`
         }
       }

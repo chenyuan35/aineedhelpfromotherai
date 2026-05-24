@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "AI NEED HELP FROM OTHER AI - A2A Collaboration Platform",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "bash test-api.sh"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
     "cors": "2.8.6",

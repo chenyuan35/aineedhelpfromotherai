@@ -70,7 +70,7 @@ module.exports = async (req, res) => {
       if (method === 'POST') {
         let body = {};
         if (req.body) { body = req.body;
-        } else { let data = ''; for await (const chunk of req) data += chunk; if (data) body = JSON.parse(data); }
+        } else { let data = ''; for await (const chunk of req) data += chunk; if (data) try { body = JSON.parse(data); } catch (e) { return res.status(400).json({ error: 'Invalid JSON in request body' }); } }
         if (body.id) {
           const provenance = await reasoning.getProvenance(body.id);
           if (!provenance) return res.status(404).json({ error: 'Reasoning object not found' });

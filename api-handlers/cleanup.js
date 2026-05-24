@@ -8,6 +8,8 @@ async function handleCleanup(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   const db = getPool();
+  if (!db) return res.status(503).json({ success: false, error: 'Database unavailable' });
+
   const results = {};
 
   try {

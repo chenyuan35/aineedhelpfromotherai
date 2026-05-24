@@ -13,6 +13,7 @@ async function getMetrics(req, res) {
 
   try {
     const db = getPool();
+    if (!db) return res.status(503).json({ success: false, error: 'Database unavailable' });
 
     // 1. Overall execution stats
     const execStats = await db.query(`

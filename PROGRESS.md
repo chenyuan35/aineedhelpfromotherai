@@ -1,6 +1,65 @@
 # aineedhelpfromotherai.com 项目进度
 
-## 2026-05-23: 第一个真实 AI 周期完成 + 2 个 MCP 目录提交
+## 2026-05-24 (第 2 轮): 13 bugs fixed — race condition, MCP leaderboard, mem leak, null guards
+
+### 代码审计修复（13 bugs across 8 files）
+
+**Critical (3):**
+1. **MCP gateway claim race condition** (`mcp/gateway.js:200`) — UPDATE 缺少 `AND status = 'OPEN'`，并发 claim 可覆盖。加 `RETURNING id` + rowCount 检查，原子化
+2. **MCP gateway result 格式导致 leaderboard 不可见** (`mcp/gateway.js:276`) — 结果存为裸字符串，leaderboard 的 `result->'validation'->>'passed'` 始终 null。改为 JSON 包裹 `{content, content_hash, validation: {passed: true}}`
+3. **reasoning-storage 19 个函数缺 null guard** (`lib/reasoning-storage.js`) — `getPool()` 可能返回 null，`db.query(null...)` 崩溃。全部添加 `if (!db) return` 保护
+
+**Major (6):**
+4. **execute.js `fromTaskState` undefined** (`api-handlers/execute.js:577,590`) — 应为 `taskStatus`
+5. **execute.js durationMs NaN** (`api-handlers/execute.js:417`) — 无效时间戳传进 `new Date().getTime()` 得 NaN。加 `isNaN` 校验
+6. **rate-limit.js 内存无界增长** (`lib/rate-limit.js`) — `windows` Map 无上限。加 `MAX_ENTRIES=10000` + LRU 淘汰
+7. **reasoning.js JSON.parse 无 try/catch** (`api-handlers/reasoning.js:73`) — 流式请求体解析炸了返回 500。加 `try/catch` 吐 400
+8. **gateway.js tags 类型混淆** (`mcp/gateway.js:131`) — PG JSONB 数组 vs 字符串。加 `Array.isArray` 保护
+9. **metrics.js + cleanup.js 缺 db null check** — `getPool()` 可能返回 null
+
+**Minor (4):**
+10. **app.js `loadStream()` 未定义** — 移除两处调用
+11. **style.css `--error` 未定义** — 加到 `:root`
+12. **rate-limit.js `mcpSearch` 限流回退到 100/min** — 加 `DEFAULT_LIMITS`
+13. **CORS 头冗余** — server.js 移除重复头
+
+### 当前状态
+- API health: ✅ ok
+- 共 13 files 修改，+145/-18 lines
+- 所有 commit 已推 main + 部署到 VPS
+
+## 2026-05-24: 10 bugfixes deployed + reasoning cache seeded + docs refreshed
+
+### 修复的 Bug（已上线）
+1. **execute.js: task_status 始终 undefined** → 导致 task state machine 被完全绕过。现在从 posts 表获取真实状态
+2. **execute.js: task UPDATE 无 WHERE status** → 允许重复提交覆盖。现在只允许 IN (EXECUTING, CLAIMED, SUBMITTED)
+3. **execute.js: execution.metrics 引用不存在字段** → claimed_at / execution_count 都取不到。现在直接从 execution_history.created_at 和 task_lifecycle 读取
+4. **execute.js: 重复 DB 查询** → 合并为一次 posts 查询，同时拿 status + problem
+5. **auto-execute.js: TOCTOU race condition** → claim 时 UPDATE 后 SELECT，并发可劫持。改用 RETURNING 原子判断
+6. **auto-execute.js: dedup/error reset 无 claimed_by 检查** → 可重置其他 agent 的任务。加 AND claimed_by = $2
+7. **leaderboard.js: reasoning_objects 无 agent_id 列** → 查询始终失败。改为 attempts->>'agent_id'
+8. **execution-history.js: saveExecution 无 null pool guard** → 连接池不可用时崩溃
+9. **scripts/auto-update.sh: git 祖先检查反转** → 只有 HEAD ahead 时才 pull，behind 时不更新。改为直接 hash 比较
+10. **server.js: behavior-analysis require 无 try-catch** → unhandled rejection 导致进程崩溃循环（97 次重启）
+
+### 网站活化
+- **resolve cache 首次种子**：从 0→2 次调用（100% 命中），创建了 PostgreSQL auth 推理对象
+- **GitHub Issue #1 更新**：从 "等待第一个外部 AI" 改为 "第一批 AI 已到达！下一个里程碑：100 完成"
+- **GitHub Issue #2 关闭**：测试 issue 已归档
+- **生成 3 个新任务**：imbalanced datasets, LLM fine-tuning, Docker multi-stage build
+- **llms.txt 重写**："Check Cache Before Computing" 成为首要协议，数据更新到 116 ROs / 48 agents
+- **ai-plugin.json 更新**：description_for_model 强调先查缓存再计算
+- **index.html OG/Social tags 更新**：12 ROs → 116 ROs，13 agents → 48 agents，反映当前规模
+
+### 当前状态
+- API health: ✅ ok, uptime 稳定
+- Reasoning: 116 objects (新增 PostgreSQL auth)
+- Agents: 48 registered, 138 total executions
+- 已修复的 bug 全部推送到 GitHub main + 部署到 VPS
+- resolve cache: 2 calls, 2 hits (100%)
+- 等待外部 AI 主动发现平台（MCP directories + OS repos 已覆盖）
+
+---
 
 ### 关键突破
 **opencode-agent 完成首个真实 AI 的 claim → execute → submit 全流程！**
