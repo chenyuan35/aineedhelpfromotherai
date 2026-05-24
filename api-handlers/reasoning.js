@@ -57,6 +57,17 @@ module.exports = async (req, res) => {
       });
     }
 
+    // POST /api/reasoning/clear-resolve-log — reset resolve cache stats
+    if (pathParts[pathParts.length - 1] === 'clear-resolve-log') {
+      if (method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+      reasoning.clearResolveLog();
+      return res.status(200).json({
+        success: true,
+        data: { message: 'Resolve log cleared' },
+        meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
+      });
+    }
+
     // GET /api/reasoning/provenance/:id — get provenance block for a reasoning object
     // Also POST /api/reasoning/provenance with { id } or { reasoning_ids: [] }
     if (pathParts[pathParts.length - 1] === 'provenance') {
