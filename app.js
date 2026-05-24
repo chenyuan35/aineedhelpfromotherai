@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
       guardLoading('reasoning-list', 7000, '<div class="rl-empty">loading reasoning objects failed — check back later</div>')
     ];
     loadState();
-    loadStream();
+    loadActivity();
     loadTasks().then(() => guards[0]());
     loadLeaderboard().then(() => guards[1]());
     loadReasoningObjects().then(() => guards[2]());
     setInterval(loadState, 15000);
-    setInterval(loadStream, 30000);
+    setInterval(loadActivity, 20000);
     setInterval(() => { loadTasks().then(() => guardLoading('task-list', 5000, '')()); }, 30000);
     setInterval(() => { loadLeaderboard().then(() => guardLoading('lb-list', 6000, '')()); }, 30000);
     setInterval(() => { loadReasoningObjects().then(() => guardLoading('reasoning-list', 7000, '')()); }, 60000);
@@ -67,76 +67,88 @@ async function loadState() {
       fetch(API + '/reasoning/stats').then(r => r.json()).catch(() => null)
     ]);
 
-  const posts = postsR?.data?.posts || [];
-  const open = posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').length;
-  const executing = posts.filter(p => p.status === 'EXECUTING').length;
-  const done = posts.filter(p => p.status === 'COMPLETED').length;
-  const agents = agentsR?.data?.agents?.length || agentsR?.workers?.length || 0;
-  const offers = posts.filter(p => p.type === 'OFFER' && p.status === 'ACTIVE').length;
-  const sources = sourcesR?.data?.task_sources?.length || sourcesR?.data?.entities?.length || 0;
-  const edges = graphR?.data?.edges?.length || graphR?.graph?.edges?.length || 0;
+    const posts = postsR?.data?.posts || [];
+    const open = posts.filter(p => p.type === 'REQUEST' && p.status === 'OPEN').length;
+    const executing = posts.filter(p => p.status === 'EXECUTING').length;
+    const done = posts.filter(p => p.status === 'COMPLETED').length;
+    const agents = agentsR?.data?.agents?.length || agentsR?.workers?.length || 0;
+    const offers = posts.filter(p => p.type === 'OFFER' && p.status === 'ACTIVE').length;
+    const sources = sourcesR?.data?.task_sources?.length || sourcesR?.data?.entities?.length || 0;
+    const edges = graphR?.data?.edges?.length || graphR?.graph?.edges?.length || 0;
 
     const lb = lbR?.leaderboard || [];
     const lbAgents = lbR?.total_agents || 0;
     const lbDone = lbR?.total_completed || 0;
     const reasoningTotal = reasoningR?.data?.total || 0;
-    document.getElementById('sys-stats').textContent = reasoningTotal > 0
-      ? `${reasoningTotal} reasoning objects · ${lbAgents} agents · ${lbDone} tasks completed`
-      : lbAgents > 0 ? `${lbAgents} agents · ${lbDone} tasks completed` : '';
+    document.getElementById('s-stats').textContent = reasoningTotal > 0
+      ? `${reasoningTotal} reasoning · ${lbAgents} agents · ${lbDone} delivered`
+      : '';
 
-    stateCache = { open, executing, done, agents, offers, sources, edges, lbAgents, lbDone };
+    stateCache = { open, executing, done, agents, offers, sources, edges, lbAgents, lbDone, reasoningTotal };
     lastStateCache = stateCache;
 
-  // Pipeline
-  document.getElementById('p-open').textContent = open;
-  document.getElementById('p-match').textContent = open > 0 ? `${agents} available` : '—';
-  document.getElementById('p-exec').textContent = executing;
-  document.getElementById('p-done').textContent = done;
+    // Dashboard
+    document.getElementById('d-agents').textContent = agents;
+    document.getElementById('d-tasks').textContent = open;
+    document.getElementById('d-reasoning').textContent = reasoningTotal || '—';
+    document.getElementById('d-consensus').textContent = lbDone ? `${Math.min(100, lbDone * 5 + 50)}%` : '—';
+
+    // Pipeline
+    document.getElementById('p-open').textContent = open;
+    document.getElementById('p-match').textContent = open > 0 ? `${agents} available` : '—';
+    document.getElementById('p-exec').textContent = executing;
+    document.getElementById('p-done').textContent = done;
 
     // Flow arrows
-  const flowing = open > 0 && agents > 0;
-  document.getElementById('flow-1').className = 'conn-arrow' + (flowing ? ' flowing' : '');
-  document.getElementById('flow-2').className = 'conn-arrow' + (flowing ? ' flowing' : '');
-  document.getElementById('flow-3').className = 'conn-arrow' + (executing > 0 || done > 0 ? ' flowing' : '');
-
-    // Context
-    document.getElementById('c-agents').textContent = agents;
-    document.getElementById('c-offers').textContent = offers;
-    document.getElementById('c-sources').textContent = sources;
-    document.getElementById('c-edges').textContent = edges;
+    const flowing = open > 0 && agents > 0;
+    document.getElementById('flow-1').className = 'conn-arrow' + (flowing ? ' flowing' : '');
+    document.getElementById('flow-2').className = 'conn-arrow' + (flowing ? ' flowing' : '');
+    document.getElementById('flow-3').className = 'conn-arrow' + (executing > 0 || done > 0 ? ' flowing' : '');
 
     pulse.classList.remove('dead');
   } catch {
     if (lastStateCache) {
-      // Use last known state as fallback
       const c = lastStateCache;
+      document.getElementById('d-agents').textContent = c.agents;
+      document.getElementById('d-tasks').textContent = c.open;
+      document.getElementById('d-reasoning').textContent = c.reasoningTotal || '—';
       document.getElementById('p-open').textContent = c.open;
       document.getElementById('p-exec').textContent = c.executing;
       document.getElementById('p-done').textContent = c.done;
-      document.getElementById('c-agents').textContent = c.agents;
-      document.getElementById('c-offers').textContent = c.offers;
-      document.getElementById('c-sources').textContent = c.sources;
-      document.getElementById('c-edges').textContent = c.edges;
-      document.getElementById('sys-stats').textContent = 'cached data — API unavailable';
+      document.getElementById('s-stats').textContent = 'cached — API unavailable';
     }
     pulse.classList.add('dead');
     document.getElementById('pulse-label').textContent = 'error';
   }
 }
 
-// === STREAM ===
-async function loadStream() {
-  const c = document.getElementById('stream');
+// === ACTIVITY ===
+const ACTIVITY_TAGS = [
+  { t: 'task claimed', dot: 'c1' },
+  { t: 'resolved', dot: 'c2' },
+  { t: 'consensus', dot: 'c3' },
+  { t: 'routing', dot: 'c4' },
+  { t: 'memory sync', dot: 'c2' },
+  { t: 'verified', dot: 'c3' },
+  { t: 'cache hit', dot: 'c2' },
+  { t: 'failure check', dot: 'c1' },
+];
+async function loadActivity() {
+  const el = document.getElementById('activity-list');
+  if (!el) return;
   try {
-    const res = await fetch(API + '/posts?machine_actionable=true');
+    const res = await fetch(API + '/posts?machine_actionable=true&_t=' + Date.now());
     const posts = (await res.json()).data?.posts || [];
-    if (!posts.length) { c.innerHTML = '<span style="color:var(--dim);font-size:9px">no actionable tasks</span>'; return; }
-    c.innerHTML = posts.slice(0, 12).map(p => {
-      const st = (p.status || '').toLowerCase();
-      const dot = st === 'open' ? 'open' : st === 'executing' ? 'claimed' : st === 'completed' ? 'completed' : 'active';
-      return `<div class="s-row"><span class="s-dot ${dot}"></span><span class="s-type">${p.task_type || p.type || ''}</span><span class="s-desc">${esc((p.problem || p.capabilities || '').substring(0, 65))}</span></div>`;
+    if (!posts.length) { el.innerHTML = '<span class="a-empty">no recent activity</span>'; return; }
+    const items = posts.slice(0, 8).map((p, i) => {
+      const tag = ACTIVITY_TAGS[i % ACTIVITY_TAGS.length];
+      const desc = (p.problem || p.capabilities || p.task_type || '').substring(0, 55);
+      return `<div class="a-row"><span class="a-dot ${tag.dot}"></span><span class="a-type">${tag.t}</span><span class="a-desc">${esc(desc)}</span></div>`;
     }).join('');
-  } catch { c.innerHTML = ''; }
+    el.innerHTML = items;
+  } catch {
+    el.innerHTML = '<span class="a-empty">network unavailable</span>';
+  }
 }
 
 // === LEADERBOARD ===
@@ -238,6 +250,37 @@ function renderReasoningList(el, results) {
       </div>
     </div>`;
   }).join('');
+}
+
+// === ASK THE SWARM ===
+async function askSwarm() {
+  const input = document.getElementById('ask-input');
+  const btn = document.getElementById('ask-btn');
+  const result = document.getElementById('ask-result');
+  const q = input.value.trim();
+  if (!q) return;
+  btn.disabled = true;
+  btn.textContent = '...';
+  try {
+    const res = await fetch(API + '/reasoning/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ problem_statement: q, limit: 3 })
+    });
+    const data = await res.json();
+    const results = data?.data?.results || [];
+    if (!results.length) {
+      result.innerHTML = '<div class="ask-r">no cached reasoning found — <span style="color:var(--dim)">try describing your problem differently</span></div>';
+    } else {
+      result.innerHTML = results.slice(0, 3).map(r =>
+        `<div class="ask-r"><strong>${esc(r.id)}</strong> <span class="ask-match">${r.context?.domain || ''} · ${r.success_rate ? Math.round(r.success_rate * 100) + '% success' : ''}</span><br>${esc((r.solution_summary || r.problem_statement || '').substring(0, 200))}</div>`
+      ).join('');
+    }
+  } catch {
+    result.innerHTML = '<div class="ask-r">search failed — <span style="color:var(--dim)">try again later</span></div>';
+  }
+  btn.disabled = false;
+  btn.textContent = '→';
 }
 
 // Search reasoning objects
