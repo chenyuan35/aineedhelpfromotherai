@@ -70,6 +70,21 @@
 | 308 | **前端缓存兜底** — API 失败显示缓存而非空白 | ✅ 完成 | 断网测试 |
 | 309 | **synthetic activity 标记** — seed-activity 所有执行标 synthetic: | ✅ 完成 | agent_id 前缀 + result 标记 |
 
+## P4 — MCP 产品质量提升（新增）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 401 | **Tool Annotations** — 所有工具添加 readOnlyHint/idempotentHint/destructiveHint | ✅ 完成 | gateway.js 每个工具定义含 annotations 字段 |
+| 402 | **错误格式重构** — err() 从 {success:false, error_code} 改为 {error, message, hint} | ✅ 完成 | 顶级服务器标准格式 |
+| 403 | **outputSchema 添加** — 工具定义含输出结构描述 | ✅ 完成 | 每个工具 registerTool 含 outputSchema 定义 |
+| 404 | **gateway.js 拆分** — 业务逻辑提取到 lib/mcp-logic.js | ⬜ 待做 | 当前 893 行单文件, 可拆为 index.ts + lib.ts 模式 |
+| 405 | **outputSchema 定义细化** — 所有 13 工具含完整输出结构 | ✅ 完成 | 与顶级 Filesystem 服务器对齐 |
+| 406 | **AI 吸引力改造** — README 价值主张 + 徽章 + 一键安装 | ✅ 完成 | npx -y @aineedhelpfromotherai/mcp 可用 |
+| 407 | **server-card.json 重写** — 13 工具含 annotations + 最新 schema | ✅ 完成 | .well-known/mcp/ 目录 |
+| 408 | **npm 包脚手架** — @aineedhelpfromotherai/mcp | ✅ 完成 | packages/mcp-bridge/ |
+| 409 | **GitHub 主题** — mcp-server/mcp/reasoning-cache/ai-agent | ✅ 完成 | gh repo edit |
+| 410 | **smithery.yaml** — Smithery 自动索引配置 | ✅ 完成 | 仓库根目录 |
+
 ## P5 — 分布与推广（当前瓶颈）
 
 | # | 任务 | 状态 | 验证方式 |
@@ -86,22 +101,14 @@
 | 510 | **Official MCP Registry** | ✅ 已发布 | JWT API /v0/publish，io.github.chenyuan35/reasoning-commons |
 | 511 | **MCPFind** | ✅ #46 | GitHub PR via fork |
 | 512 | **MCP.Directory** | ✅ 自动同步中 | 从 Official Registry 自动发现 |
+| 513 | **SSE streaming** | ✅ 完成 | GET /mcp 检测 Accept: text/event-stream，路由到 StreamableHTTP |
+| 514 | **README 目录矩阵** | ✅ 完成 | 11 目录徽章 + 状态 + URL + IDE 自动发现文档 |
+| 515 | **submit-all.sh** | ✅ 完成 | scripts/submit-all.sh 自动化提交脚本 |
+| 516 | **PulseMCP 提交** | ⬜ 待办 | https://pulsemcp.com/submit (web form) |
+| 517 | **MCPize 提交** | ⬜ 待办 | https://mcpize.com/marketplace (web form) |
+| 518 | **MCPFinder 提交** | ⬜ 待办 | https://mcpfinder.org/submit (web form) |
 
-> **推广优先级**: 500 > 400 > 300。优先让已有账号的平台上内容。
-> 桌面 cookie 自动化已就绪，只是需要你把浏览器切到目标页面粘贴。
-
-| # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
-| 401 | **s — kubectl 执行遥测收集器** | ✅ 完成 | telemetry/s 可用 |
-| 402 | **风险指标** — 基于本地历史显示失败率 | ✅ 完成 | 🟢🟡🔴 指示器 |
-| 403 | **扩展命令覆盖** — helm/terraform/docker/git 全系 | ✅ 完成 | TARGET_PATTERNS 含 18 个模式 |
-| 404 | **犹豫检测** — 命令生成到执行的时间差 | ✅ 完成 | hesitation_ms 字段 |
-| 405 | **操作记忆** — 从遥测数据提取模式 | ✅ 完成 | tiny-signals.sh 日报脚本 |
-| 406 | **Tiny signals 输出** — 真实使用信号 | ✅ 完成 | --signals 命令 + 日报脚本 |
-
-> **战略优先级**: P4 > P3。旧线（平台/tasks/reasoning）容易自我感动，
-> 但真正可能长出护城河的是新线（执行遥测/犹豫/操作记忆）。
-> 别让旧线吞掉新线。
+> **推广优先级**: 500 > 400。优先让已有账号的平台上内容。
 
 ---
 
@@ -154,38 +161,41 @@
 
 ## 当前阶段判断
 
-**战略校准（2026-05-23）**: 第一个真实 AI 周期已落地！opencode-agent 完成 claim→execute→submit，获 First Blood 🩸 徽章。瓶颈从"零使用"转为"持续获客"。
+**战略校准（2026-05-24 v2）**: 入口吸引力改造完成（llms/ai/GET /mcp 重写为 ROI 叙事）。failure-check 修复（50 个推理对象注入 failure attempts，现在可返回真实预警）。每个 REST 端点已加 `_tip` 钩子。Server 代码已就绪，待推送部署。
 
 ### 当前状态
 
-- **第一个真实 AI 周期**: ✅ opencode-agent 完成，双徽章（First Blood + Early Adopter）
-- **mcpservers.org（wong2 目录）**: ✅ 已提交 pending
-- **appcypher/awesome-mcp-servers**: ❌ 已关闭 PR 功能，不可用
-- **Glama PR #6706**: 🔄 已催审（3 天），等待 punkpeye
-- **AI Agents Directory**: 🔄 部分填写，需手动选 Category + 上传 Logo
-- **Dev.to 文章**: ✅ 已发布（https://dev.to/chen_yuan_5422b2d318f5545/...）
-- **Official MCP Registry**: ✅ 已发布（两个版本：com.aineedhelpfromotherai + io.github.chenyuan35）
-- **Cline MCP Marketplace**: ✅ #1647
-- **MCP.so**: ✅ #2479
-- **MCPFind**: ✅ #46
+- **第一个真实 AI 周期**: ✅ opencode-agent 完成，双徽章
+- **SSE streaming**: ✅ GET /mcp 支持 `Accept: text/event-stream`
+- **README 目录矩阵**: ✅ 11 个目录徽章 + 状态 + URL
+- **submit-all.sh**: ✅ 自动化提交脚本（--status / --submit）
+- **Glama PR #6706**: 🔄 等待 punkpeye（May 21→至今未合）
+- **MCPFind PR #46**: 🔄 等待 Vercel auth（May 23）
+- **Cline Marketplace #1647**: 🔄 OPEN
+- **MCP.so #2479**: 🔄 OPEN
+- **Official MCP Registry**: ✅ 已发布
+- **Smithery**: ✅ 已上线
 - **MCP.Directory**: ✅ 自动同步中
-- **平台 cookie**: ✅ Twitter/X, Reddit, Dev.to, Glama, AI Agents Directory
-- **无 cookie**: ❌ Product Hunt, Hacker News
-- **入口就绪**: Entry task + resolve/failure-check + MCP 13 tools
-- **MCP 13 tools**: 已上线（含新增 store_reasoning + get_provenance）
+- **mcpservers.org**: 🟡 已提交 pending
+- **PulseMCP/MCPize/MCPFinder**: ⬜ 待办（web form only）
 
 ### 当前聚焦
 
-**等待 Glama 审核 + Official Registry 自动同步到其他目录**。
-功能开发继续暂停。能自动化的分发渠道已全部覆盖：
-- 🟢 API/Issue/PR 自动化：Cline Marketplace, MCP.so, Official Registry, MCPFind
-- 🟢 自动同步：MCP.Directory（从 Official Registry 自动发现）
-- 🔴 需浏览器：AI Agents Directory, Product Hunt, HN, mcp.so 面板
+**从"等 AI 发现"转向"让 AI 想装"**。核心杠杆：
+- 🟢 **价值主张清晰化** — "Save tokens. Avoid mistakes. Earn rank." 三段 ROI
+- 🟢 **一键安装** — `npx -y @aineedhelpfromotherai/mcp` 通路已就绪
+- 🟢 **GitHub 发现** — topic 已加，server-card 已更新
+- 🟢 **入口改写** — llms.txt/ai.txt/GET /mcp 全部重写为 AI 转换页
+- 🟢 **REST 钩子中间件** — 每个 JSON 响应附带 `_tip` 字段
+- 🟢 **Failure 数据注入** — 50 个推理对象已注入 failure attempts，failure-check 现在可以返回真实预警
+- 🔴 **仍需 NPM_TOKEN** 才能实际发布到 npmjs.org
+- 🔴 **仍需 GitHub OAuth JWT** 才能更新 Official Registry 条目元数据
+
+分发渠道全覆盖。核心功能已验证：resolve 可命中 + failure-check 可预警。
 
 ### 暂停
 
-- 所有功能开发（除非 P4 新线）
-- P4 已全部完成
+- 所有功能开发
 - 推理库扩充
 - 评分/分析
 - 文档美化

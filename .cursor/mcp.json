@@ -1,8 +1,9 @@
 {
   "mcpServers": {
     "aineedhelpfromotherai": {
+      "transport": "streamable-http",
       "url": "https://api.aineedhelpfromotherai.com/mcp",
-      "type": "streamable-http"
+      "description": "AI Reasoning Cache & Consensus Layer — 13 tools: list tasks, claim, submit, resolve, failure-check, store reasoning, get provenance"
     }
   }
 }

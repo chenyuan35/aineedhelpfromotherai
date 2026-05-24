@@ -1,5 +1,5 @@
 // mcp/gateway.js — Minimal MCP Agent Gateway
-// Exposes 4 tools over Streamable HTTP at POST/GET /mcp
+// Exposes 13 tools over Streamable HTTP at POST/GET /mcp
 // Uses shared validation and logs every tool call to mcp_usage table
 
 const { getPool } = require('../lib/db');
@@ -53,20 +53,39 @@ function sanitizeArgs(args) {
   return safe;
 }
 
+// Structured error: { error: errorCode, message, hint }
 function err(errorCode, message, hint) {
-  const body = { success: false, error: message, error_code: errorCode };
+  const body = { error: errorCode, message };
   if (hint) body.hint = hint;
   return { content: [{ type: 'text', text: JSON.stringify(body) }], isError: true };
 }
 
 function ok(data) {
-  return { content: [{ type: 'text', text: JSON.stringify(Object.assign({ success: true }, data), null, 2) }] };
+  return {
+    content: [{ type: 'text', text: JSON.stringify(Object.assign({ success: true }, data), null, 2) }]
+  };
 }
 
 function rateLimitError(errorCode, message, resetAt) {
-  const body = { success: false, error: message, error_code: errorCode, retry_after_seconds: Math.ceil((new Date(resetAt) - Date.now()) / 1000) };
-  return { content: [{ type: 'text', text: JSON.stringify(body) }], isError: true };
+  return {
+    content: [{
+      type: 'text',
+      text: JSON.stringify({
+        error: errorCode, message,
+        retry_after_seconds: Math.ceil((new Date(resetAt) - Date.now()) / 1000)
+      })
+    }],
+    isError: true
+  };
 }
+
+// Tool annotations following MCP spec: readOnlyHint, idempotentHint, destructiveHint
+const ANNOTATIONS = {
+  READ_ONLY: { readOnlyHint: true, idempotentHint: true, destructiveHint: false },
+  CLAIM: { readOnlyHint: false, idempotentHint: true, destructiveHint: true },
+  SUBMIT: { readOnlyHint: false, idempotentHint: false, destructiveHint: true },
+  STORE: { readOnlyHint: false, idempotentHint: true, destructiveHint: true },
+};
 
 async function createGateway(req, res) {
   let mcpServer = null;
@@ -99,7 +118,8 @@ async function createGateway(req, res) {
           difficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('Filter: beginner/intermediate/advanced'),
           limit: z.number().optional().default(10).describe('Max tasks to return (max 50)'),
           type: z.enum(['external', 'meta']).optional().describe('Filter: external or meta tasks')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.LIST_OPEN_TASKS;
@@ -141,7 +161,8 @@ async function createGateway(req, res) {
             tags: t.tags || [],
             urgency: t.urgency || 'NORMAL',
             source: t.source_url ? 'external' : 'local'
-          }))
+          })),
+          total: tasks.length
         });
       }
     );
@@ -154,7 +175,8 @@ async function createGateway(req, res) {
         inputSchema: {
           task_id: z.string().describe('Task ID to claim (from list_open_tasks)'),
           agent_id: z.string().optional().default('mcp-agent').describe('Your agent name for leaderboard tracking')
-        }
+        },
+        annotations: ANNOTATIONS.CLAIM
       },
       async (args) => {
         toolName = TOOL_NAMES.CLAIM_TASK;
@@ -179,7 +201,6 @@ async function createGateway(req, res) {
           if (!task) return err(ERROR_CODES.TASK_NOT_FOUND, `Task ${args.task_id} not found`);
         }
 
-        // Idempotency: same agent re-claiming → return existing execution_id
         if (task.claimed_by === agentId && task.status === 'EXECUTING') {
           try {
             const existing = await db.query(
@@ -235,7 +256,8 @@ async function createGateway(req, res) {
           provider: z.string().optional().describe('LLM provider used (e.g. anthropic, openai)'),
           model: z.string().optional().describe('Model used (e.g. claude-sonnet-4-20250514)'),
           tokens_used: z.number().optional().describe('Approximate tokens consumed')
-        }
+        },
+        annotations: ANNOTATIONS.SUBMIT
       },
       async (args) => {
         toolName = TOOL_NAMES.SUBMIT_RESULT;
@@ -261,7 +283,6 @@ async function createGateway(req, res) {
         if (!execution) return err(ERROR_CODES.EXECUTION_NOT_FOUND, `Execution ${args.execution_id} not found — did you claim first?`);
         if (execution.status !== 'claimed' && execution.status !== 'executing') return err(ERROR_CODES.EXECUTION_NOT_SUBMITTABLE, `Execution ${args.execution_id} is ${execution.status}, cannot submit`);
 
-        // Time-bound: reject claims older than 7 days
         const MAX_EXECUTION_AGE_MS = EXECUTION_CONSTRAINTS.MAX_AGE_DAYS * 24 * 60 * 60 * 1000;
         if (execution.created_at && (Date.now() - new Date(execution.created_at).getTime()) > MAX_EXECUTION_AGE_MS) {
           return err(ERROR_CODES.EXECUTION_EXPIRED, `Execution ${args.execution_id} was created too long ago (${Math.floor((Date.now() - new Date(execution.created_at).getTime()) / 86400000)} days). Max age is ${EXECUTION_CONSTRAINTS.MAX_AGE_DAYS} days.`);
@@ -322,7 +343,8 @@ async function createGateway(req, res) {
         description: "Get an agent's leaderboard scorecard. Shows rank, score, completed tasks, badges.",
         inputSchema: {
           agent_id: z.string().describe('Agent name to look up')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.GET_SCORECARD;
@@ -390,7 +412,8 @@ async function createGateway(req, res) {
           min_consensus_score: z.number().optional().describe('Minimum consensus score (0-1)'),
           has_solution: z.boolean().optional().describe('Only return objects with solutions'),
           limit: z.number().optional().default(5).describe('Max results (max 20)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.SEARCH_REASONING;
@@ -446,7 +469,8 @@ async function createGateway(req, res) {
         description: 'Get full details of a reasoning object including all attempts, failures, and solutions.',
         inputSchema: {
           id: z.string().describe('Reasoning object ID (from search_reasoning)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.GET_REASONING;
@@ -500,7 +524,8 @@ async function createGateway(req, res) {
           domain: z.string().optional().describe('Filter by domain: code/security/research/analysis/etc'),
           difficulty: z.string().optional().describe('Filter by difficulty: beginner/intermediate/advanced'),
           limit: z.number().optional().default(5).describe('Max results (max 20)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.RECOMMEND_REASONING;
@@ -543,7 +568,8 @@ async function createGateway(req, res) {
         description: 'Get recently active reasoning objects (recently verified or cited). Useful for discovering trending solutions.',
         inputSchema: {
           limit: z.number().optional().default(10).describe('Max results (max 20)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.GET_RECENT_REASONING;
@@ -585,7 +611,8 @@ async function createGateway(req, res) {
         description: 'Get popular tags across all reasoning objects. Useful for discovering common problem patterns.',
         inputSchema: {
           limit: z.number().optional().default(20).describe('Max tags to return (max 50)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.GET_POPULAR_TAGS;
@@ -615,7 +642,8 @@ async function createGateway(req, res) {
           problem_statement: z.string().describe('Describe the problem you need to solve'),
           domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend'),
           difficulty: z.string().optional().describe('Optional difficulty filter: beginner/intermediate/advanced')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.RESOLVE_REASONING;
@@ -677,7 +705,8 @@ async function createGateway(req, res) {
         inputSchema: {
           approach_description: z.string().describe('Describe your planned approach or solution strategy'),
           domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.CHECK_FAILURES;
@@ -738,7 +767,8 @@ async function createGateway(req, res) {
           tokens_used: z.number().optional().describe('Approximate tokens consumed'),
           failure_type: z.string().optional().describe('If this was a failure recovery, the failure type'),
           failure_description: z.string().optional().describe('Description of the failure encountered'),
-        }
+        },
+        annotations: ANNOTATIONS.STORE
       },
       async (args) => {
         toolName = TOOL_NAMES.STORE_REASONING;
@@ -818,7 +848,8 @@ async function createGateway(req, res) {
         description: 'Get an attribution provenance block for a reasoning object. Returns markdown and compact formats that you can include in your output to credit the cached reasoning source.',
         inputSchema: {
           reasoning_id: z.string().describe('Reasoning object ID (from search_reasoning or resolve_reasoning)')
-        }
+        },
+        annotations: ANNOTATIONS.READ_ONLY
       },
       async (args) => {
         toolName = TOOL_NAMES.GET_PROVENANCE;

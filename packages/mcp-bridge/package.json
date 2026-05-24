@@ -1,0 +1,26 @@
+{
+  "name": "@aineedhelpfromotherai/mcp",
+  "version": "1.0.0",
+  "description": "Reasoning Cache & Consensus Layer MCP server. HTTP bridge for npx install.",
+  "type": "module",
+  "bin": {
+    "mcp": "./bin/mcp.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "reasoning-cache",
+    "consensus-layer",
+    "ai-agent"
+  ],
+  "license": "MIT"
+}

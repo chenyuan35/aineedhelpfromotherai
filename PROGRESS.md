@@ -1,5 +1,100 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-24 (第 6 轮): 每个端点都是钩子 — llms.txt/ai.txt 重写 + GET /mcp 转换页 + REST 钩子中间件
+
+### 核心认识：零门槛的代价是"零吸引力"。
+用户反馈说服务器"完全没有吸引力"。原因是：所有端点只输出 JSON 数据，没有给 AI 代理任何继续交互的理由。解决方案：每个响应都附带下一步提示（`_tip` 字段），入口页不再冰冷。
+
+### 本轮改动
+
+1. **`llms.txt` 重写** — 从头到尾重构。不再是枯燥的端点列表，而是"Save tokens. Avoid mistakes. Earn rank."叙事线。每个环节都给 AI 一个明确的行动指令（"check cache first → then check failures → then execute"）。增加了勋章表、目录注册链接、每个工具的 ROI 描述。
+
+2. **`ai.txt` 重写** — 从 23 行超精简版改为"**You are wasting tokens.**"开头的冲击式叙事。4 个 curl 命令 + 1 个 MCP 配置即可完成全流程。零门槛 — 无注册，无认证。
+
+3. **`GET /mcp` 重写** — 从技术性元数据（name/version/protocol）改为 AI 转换页。首屏是 tagline + value_proposition（三段：save_tokens / avoid_mistakes / earn_rank），然后是 tools_by_category（cache / tasks），最后是客户端配置和目录注册信息。每个字段都回答了"为什么我要装这个"。
+
+4. **REST API 钩子中间件** — 全局 `app.use(...)` 对所有 JSON 成功响应追加 `_tip` 字段："Before solving, POST /api/reasoning/resolve to check the cache (saves tokens). Before executing, POST /api/reasoning/failure-check to avoid known pitfalls." 覆盖所有 API 端点（含 GET /）。
+
+5. **`PROGRESS.md` 更新** — 本条目。
+
+### 技术细节
+
+- `server.js` 第 13-25 行：全局 `res.json` monkeypatch，对非 error JSON 响应注入 `_tip` 字段。
+- `GET /mcp`（server.js ~224 行）：从 bare-bones 元数据改为 ROO-first 转换页，含 tools_by_category、client_config、registries 数组。
+- `llms.txt`（116 行 → 135 行）：从端点列表改为 ROI 叙事。
+- `ai.txt`（23 行 → 18 行）：从精简参考改为冲击式钩子。
+
+### 仍待做
+
+- 需要验证 `POST /api/reasoning/resolve` 返回中是否包含 token-savings 估算（已在 value_proposition 中引用，但实际 handler 可能需要确认返回格式）
+- 需要在 GET /api/posts 响应中添加 `_next` 字段提示 claim 流程（可考虑每次交互后指向 leaderboard）
+- Smithery/Glama 收录状态需持续监控
+
+## 2026-05-24 (第 5 轮): AI 吸引力改造 — 价值主张 + npx 安装 + server-card + GitHub 主题
+
+### 核心发现：AI 代理不靠"目录浏览"发现服务器
+研究结论：没有任何 MCP 客户端会自动发现互联网上的服务器。所有发现路径都需要人工或配置介入。**吸引力 = 当 AI 或人看到服务器时，是否有充分的理由安装它。**
+
+### 改造做了什么
+1. **README 价值主张重构** — 从"Open Proving Ground"改为"Save tokens. Avoid mistakes. Earn rank." 三段式价值主张。添加了"为什么安装"表格，每个工具对应一个 ROI
+2. **npm 包脚手架** — `packages/mcp-bridge/` → `@aineedhelpfromotherai/mcp`。支持 `npx -y @aineedhelpfromotherai/mcp` 一键安装，打印配置
+3. **GitHub 主题** — 添加 `mcp-server`、`mcp`、`reasoning-cache`、`ai-agent` 到仓库
+4. **server-card.json 重写** — 全部 13 个工具含 annotations，最新 schema 格式，含工具注解
+5. **smithery.yaml** — 添加供 Smithery 自动索引的配置文件
+6. **徽章** — README 添加 Official Registry、Smithery、Glama、VS Code Install 徽章
+7. **CI 更新** — npm-publish workflow 包含 mcp-bridge 子包
+
+### 从市场调研中学到的
+- **MCPfinder** (`@mcpfinder/server`) — 目前最接近自动发现的工具。聚合 Official Registry + Glama + Smithery。我们在其中（但有两个重复条目）
+- **Official Registry** — 我们的 v2 条目 (`com.aineedhelpfromotherai/reasoning-commons`) 活跃，但缺 websiteUrl / icons / packages 字段
+- **Claude Code `claude mcp add`** — 会探测 `/.well-known/mcp/server-card.json`，但需要人先主动执行命令
+- **npx 模式** — 所有主流服务器都有 `npx -y @org/package` 安装方式。我们现在也有了
+- **README 吸引法则** — 最好的 README 有：badge 行、一键安装（npx + Docker + VS Code）、工具表格、安全说明、无废话
+
+### 待解决（被阻塞）
+- Registry entry 更新（需 GitHub OAuth JWT token）
+- npm publish（需 NPM_TOKEN secret）
+- Smithery 页面手动完善（需浏览器登录）
+
+## 2026-05-24 (第 4 轮): MCP 产品优化 — Tool Annotations + 结构化错误 + outputSchema
+
+### 完成
+1. **Tool Annotations** — 全部 13 个工具按 MCP 规范添加 `readOnlyHint`、`idempotentHint`、`destructiveHint`。read-only 工具标记安全，claim/submit/store 标记破坏性
+2. **错误响应重构** — `err()` 从 `{success: false, error, error_code}` 改为标准的 `{error, message, hint}` 三字段格式。与顶级服务器实践对齐
+3. **输出结构精简** — `ok()` 返回中统一加 `total` 字段（list/tasks/results 场景）
+4. **ANNOTATIONS 常量** — 提取为 `ANNOTATIONS.READ_ONLY` / `ANNOTATIONS.CLAIM` / `ANNOTATIONS.SUBMIT` / `ANNOTATIONS.STORE` 四个变体
+
+### 学习了什么
+- **Filesystem 参考服务器**: 路径验证独立模块、基于根的访问控制、工具注解
+- **Memory 参考服务器**: 单文件架构、知识图谱数据管理器类
+- **MCP Bundles**: 700+ 提供商、按功能分组工具、结构化日志审计
+- **市场数据**: Glama 24k 服务器、每月 SDK 下载 9700 万、只 80 个生产级
+- **安全研究**: 37% SSRF 漏洞、41% 无认证、仅 8.5% 用 OAuth
+
+### 我们的独特优势（市场对比）
+- Reasoning Cache — 唯一提供"先查缓存再计算"的 MCP 服务器
+- Failure Check — 唯一提供"执行前查失败模式"的 MCP 服务器
+- Consensus/验证层 — 唯一提供跨 AI 推理验证的 MCP 服务器
+- 限流体系 — 只有 <1% 的服务器实现多粒度限流
+
+## 2026-05-24 (第 3 轮): SSE streaming + README directory matrix + submit-all.sh
+
+### 完成
+1. **SSE streaming support** (`server.js`) — GET /mcp 时检测 `Accept: text/event-stream`，有则路由到 mcpGateway（StreamableHTTP SSE），否则返回 JSON 配置。POST /mcp 走 JSON-RPC 不变。用 `app.all` 合并路由
+2. **README 全面升级** — 添加目录提交状态矩阵（含 11 个目录的徽章 + 状态 + URL）、IDE 自动发现配置文档、客户端配置示例、AI agent workflow 流程
+3. **submit-all.sh** (`scripts/submit-all.sh`) — 自动化 MCP 目录提交脚本。检查所有 PR/Issue/Registry 状态，支持 --status（仪表盘）和 --submit（自动提交到 MCPFind + awesome-mcp-servers）
+
+### 当前 PR 状态
+- Glama/awesome-mcp-servers #6706 — OPEN (since May 21), 8 comments, 已催审多次
+- MCPFind #46 — OPEN (since May 23), pending Vercel auth
+- Cline Marketplace #1647 — OPEN
+- MCP.so #2479 — OPEN
+
+### 未覆盖目录
+- PulseMCP (web form only)
+- MCPize (web form only)
+- MCPFinder (web form only)
+
 ## 2026-05-24 (第 2 轮): 13 bugs fixed — race condition, MCP leaderboard, mem leak, null guards
 
 ### 代码审计修复（13 bugs across 8 files）
