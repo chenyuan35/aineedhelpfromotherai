@@ -109,10 +109,14 @@ app.get('/api/help-wanted', (req, res) => {
 });
 
 // Behavior report — observed system analysis
+let behaviorAnalysis = null;
+try { behaviorAnalysis = require('./lib/behavior-analysis'); } catch {}
 app.get('/api/behavior', async (req, res) => {
-  const { fullBehaviorReport } = require('./lib/behavior-analysis');
+  if (!behaviorAnalysis || !behaviorAnalysis.fullBehaviorReport) {
+    return res.status(501).json({ success: false, error: 'behavior analysis module not available' });
+  }
   try {
-    const report = await fullBehaviorReport();
+    const report = await behaviorAnalysis.fullBehaviorReport();
     res.json(report);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

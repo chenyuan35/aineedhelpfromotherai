@@ -68,16 +68,16 @@ async function handleLeaderboard(req, res) {
       ORDER BY tasks_completed DESC, total_attempts DESC
     `);
 
-    // Count reasoning objects per agent
+    // Count reasoning objects per agent — agent_id is inside attempts JSONB array
     const reasoningResult = await db.query(`
       SELECT
-        agent_id,
+        attempts->>'agent_id' as agent_id,
         COUNT(*) as reasoning_count,
-        ROUND(AVG((attempts->0->>'confidence')::float), 2) as avg_confidence
+        ROUND(AVG((attempts->>'confidence')::float), 2) as avg_confidence
       FROM reasoning_objects,
            jsonb_array_elements(attempts) as attempts
-      WHERE agent_id IS NOT NULL
-      GROUP BY agent_id
+      WHERE attempts->>'agent_id' IS NOT NULL
+      GROUP BY attempts->>'agent_id'
     `).catch(() => ({ rows: [] }));
 
     const reasoningMap = {};

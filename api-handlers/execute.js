@@ -326,16 +326,26 @@ async function handleSubmit(req, res) {
     });
   }
 
-  // Validate task state machine transition
-  const fromTaskState = execution.task_status || 'CLAIMED';
+  // --- Fetch task from posts for real state + problem ---
+  let taskStatus, taskProblem;
+  try {
+    const taskRes = await db.query('SELECT status, problem, expected_output FROM posts WHERE id = $1', [execution.task_id]);
+    taskStatus = (taskRes.rows[0] && taskRes.rows[0].status) || 'OPEN';
+    taskProblem = taskRes.rows[0] ? (taskRes.rows[0].problem || taskRes.rows[0].expected_output || '') : '';
+  } catch (_) {
+    taskStatus = 'OPEN';
+    taskProblem = '';
+  }
+
+  // Validate task state machine transition using real task status from posts
   const toTaskState = body.status === 'failed' ? 'FAILED' : 'SUBMITTED';
-  const taskTransition = validateTaskTransition(fromTaskState, toTaskState);
+  const taskTransition = validateTaskTransition(taskStatus, toTaskState);
   if (!taskTransition.valid) {
     return res.status(409).json({
       success: false,
       error_code: taskTransition.error_code,
       error: taskTransition.detail,
-      current_task_state: fromTaskState,
+      current_task_state: taskStatus,
       allowed_transitions: taskTransition.allowed_transitions,
       task_id: execution.task_id
     });
@@ -364,8 +374,9 @@ async function handleSubmit(req, res) {
 
   // --- Task-specific validation ---
   const taskType = (execution.task_type || 'other').toLowerCase();
+
   const taskValidationErrors = validateResult(resultText, taskType, {
-    problem: execution.result_text || '',
+    problem: taskProblem,
     expectedStructure: execution.expected_structure || null,
     options: execution.validation_options || {}
   });
@@ -402,8 +413,7 @@ async function handleSubmit(req, res) {
   const finalExecStatus = body.status === 'failed' ? 'failed' : (validateExecutionTransition(toExecState, 'completed').valid ? 'completed' : toExecState);
   const finalTaskStatus = body.status === 'failed' ? 'FAILED' : (validateTaskTransition(toTaskState, 'COMPLETED').valid ? 'COMPLETED' : toTaskState);
 
-  // Calculate duration from claimed_at if available, fallback to created_at
-  const claimedTime = execution.metrics?.claimed_at || execution.created_at;
+  const claimedTime = execution.created_at;
   const durationMs = claimedTime ? (Date.now() - new Date(claimedTime).getTime()) : null;
 
   // Update execution record in PG (use nested format for saveExecution)
@@ -439,14 +449,17 @@ async function handleSubmit(req, res) {
     console.error(`[submit] Failed to update execution ${executionId}:`, err.message);
   }
 
-  // Update task in PG
+  // Update task in PG — only if still in a mutable state
   const submitDb = getPool();
   if (submitDb) {
     try {
-      await submitDb.query(
-        'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4',
-        [finalTaskStatus, submittedAt, resultText, execution.task_id]
+      const updateResult = await submitDb.query(
+        'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4 AND status IN ($5, $6, $7)',
+        [finalTaskStatus, submittedAt, resultText, execution.task_id, 'EXECUTING', 'CLAIMED', 'SUBMITTED']
       );
+      if (updateResult.rowCount === 0) {
+        console.warn(`[submit] Task ${execution.task_id} not updated — status not in mutable state`);
+      }
     } catch (err) {
       console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
     }
@@ -454,9 +467,11 @@ async function handleSubmit(req, res) {
 
   // Update lifecycle with computed metrics
   try {
-    const prevCount = execution.metrics?.execution_count || 0;
-    const prevSuccess = execution.metrics?.success_count || 0;
-    const prevFail = execution.metrics?.fail_count || 0;
+    const prevLifecycle = await db.query('SELECT metrics FROM task_lifecycle WHERE task_id = $1', [execution.task_id]);
+    const prevMetrics = prevLifecycle.rows[0]?.metrics || {};
+    const prevCount = prevMetrics.execution_count || 0;
+    const prevSuccess = prevMetrics.success_count || 0;
+    const prevFail = prevMetrics.fail_count || 0;
     const newCount = prevCount + 1;
     const newSuccess = finalExecStatus === 'completed' ? prevSuccess + 1 : prevSuccess;
     const newFail = finalExecStatus === 'failed' ? prevFail + 1 : prevFail;
@@ -487,25 +502,10 @@ async function handleSubmit(req, res) {
       const sr = body.structured_reasoning;
       reasoningId = sr.id || `RO_${executionId}`;
 
-      // Fetch original task problem from posts table
-      let originalProblem = execution.task_id;
-      const submitDb2 = getPool();
-      if (submitDb2) {
-        try {
-          const taskRes = await submitDb2.query(
-            'SELECT problem FROM posts WHERE id = $1',
-            [execution.task_id]
-          );
-          if (taskRes.rows[0] && taskRes.rows[0].problem) {
-            originalProblem = taskRes.rows[0].problem;
-          }
-        } catch (_) { /* fallback to task_id */ }
-      }
-
       await saveReasoning({
         id: reasoningId,
         problem_id: execution.task_id,
-        problem_statement: originalProblem,
+        problem_statement: taskProblem || execution.task_id,
         context: {
           platform: 'aineedhelpfromotherai',
           domain: execution.task_type || 'other',

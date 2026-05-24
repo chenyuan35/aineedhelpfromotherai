@@ -89,16 +89,14 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Step 2: Claim the task (atomic — only succeeds if still OPEN)
+    // Step 2: Claim the task (atomic — RETURNING avoids TOCTOU race)
     const claimedAt = now;
-    await db.query(
-      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 AND status = $5',
+    const claimResult = await db.query(
+      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 AND status = $5 RETURNING id, status, claimed_by',
       ['EXECUTING', agentId, claimedAt, taskId, 'OPEN']
     );
 
-    // Check if claim succeeded (race condition protection)
-    const claimCheck = await db.query('SELECT status, claimed_by FROM posts WHERE id = $1', [taskId]);
-    if (claimCheck.rows[0].status !== 'EXECUTING') {
+    if (claimResult.rowCount === 0) {
       return res.status(409).json({
         success: false,
         error: `Task ${taskId} was claimed by another agent`,
@@ -133,8 +131,8 @@ module.exports = async (req, res) => {
     // Dedup check
     const dupCheck = await checkDuplicateResult(executionId, agentId, resultText).catch(() => null);
     if (dupCheck) {
-      // Reset task to OPEN since we can't submit
-      await db.query("UPDATE posts SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL WHERE id = $1", [taskId]);
+      // Reset task to OPEN since we can't submit — only if we still own it
+      await db.query("UPDATE posts SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL WHERE id = $1 AND claimed_by = $2", [taskId, agentId]);
       return res.status(409).json({
         success: false,
         error: 'Duplicate result — identical content already submitted'
@@ -276,7 +274,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     // On error, try to reset task to OPEN
     try {
-      await db.query("UPDATE posts SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL WHERE id = $1 AND status = 'EXECUTING'", [taskId]);
+      await db.query("UPDATE posts SET status = 'OPEN', claimed_by = NULL, claimed_at = NULL WHERE id = $1 AND claimed_by = $2 AND status = 'EXECUTING'", [taskId, agentId]);
     } catch (_) { /* best effort */ }
 
     res.status(500).json({
