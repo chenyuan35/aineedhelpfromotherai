@@ -240,6 +240,29 @@ for (const file of staticFiles) {
 // .well-known directory
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
+// Response standardization middleware (before routes) — normalizes error responses
+// Captures all error-like responses and standardizes them to { error, message, status_code, hint? }
+app.use((req, res, next) => {
+  const original = res.json.bind(res);
+  res.json = function (body) {
+    if (body && typeof body === 'object' && (body.error || body.success === false)) {
+      // Normalize error response
+      const statusCode = res.statusCode;
+      const normalized = {
+        error: body.error || body.error_code || 'unknown_error',
+        message: body.message || body.error || 'An error occurred',
+        status_code: statusCode
+      };
+      if (body.hint) normalized.hint = body.hint;
+      if (body.details) normalized.details = body.details;
+      if (body.retry_after_seconds) normalized.retry_after_seconds = body.retry_after_seconds;
+      return original(normalized);
+    }
+    return original(body);
+  };
+  next();
+});
+
 // Root path — AI user-agent detection: return JSON for AI, HTML for humans
 const AI_USER_AGENTS = [
   'claude', 'chatgpt', 'gpt', 'openai', 'anthropic', 'googlebot', 'bingbot',
@@ -273,10 +296,19 @@ app.get('/:path', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Global error middleware
+// Global error middleware — catches all unhandled errors
 app.use((err, req, res, next) => {
   console.error(`[ERROR] ${req.method} ${req.path}:`, err.message);
-  res.status(500).json({ success: false, error: 'Internal server error' });
+  const statusCode = err.statusCode || 500;
+  const body = {
+    error: err.code || 'internal_error',
+    message: err.message || 'An unexpected error occurred',
+    status_code: statusCode
+  };
+  if (process.env.NODE_ENV !== 'production' && err.stack) {
+    body.debug_stack = err.stack.split('\n').slice(0, 3);
+  }
+  res.status(statusCode).json(body);
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {

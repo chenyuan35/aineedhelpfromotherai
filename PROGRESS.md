@@ -1,5 +1,83 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-25 (第 7 轮): 深度评估 + 执行计划完善 — 推理溯源标准 + 错误响应统一 + PoC 营销计划
+
+### 核心成就：从被动设计到主动验证
+基于深度架构评估（66/100），启动改进计划。重点从"构建功能"转向"验证价值"。
+
+### 本轮改动
+
+1. **深度评估报告** — 5 个 Phase 的全面评估：
+   - 架构质量: 62/100 (亮点: State Machine + MCP Schema Freeze; 风险: 缓存命中率=0)
+   - 产品成熟度: 75/100 (API 完整但缺关键反馈闭环)
+   - 市场就绪度: 60/100 (技术触达好，市场触达弱)
+   - Top-5 代码异味识别完成
+   - 三层优先级清单 (必做/应做/可做)
+
+2. **推理溯源标准 v0.2** — 定义标准化格式：
+   - Markdown 格式: `> 基于推理对象 [RO-xxx](url)，共识度 95% (n 个验证)`
+   - 更新 `getProvenance()` 返回 `provenance_markdown`、`provenance_compact` 字段
+   - 更新 llms.txt 新增 "📌 Reasoning Provenance Standard" 章节
+   - 更新 ai.txt 说明缓存命中时如何引用推理对象
+   - **输出**: 规范化的 AI-to-AI 推理引用格式，建立信任链
+
+3. **错误响应格式统一** — 全局中间件标准化：
+   - 创建 `lib/api-error.js` 定义标准错误格式: `{ error, message, status_code, hint? }`
+   - 在 server.js 添加全局响应规范化中间件，自动拦截并标准化所有 error 响应
+   - 改进全局错误处理中间件，返回一致的错误 schema
+   - **优点**: 向后兼容，无需改动所有 19 个 handlers，自动收敛所有错误格式
+   - 创建测试脚本 `test-error-standardization.sh`
+
+4. **Cache Hit PoC 营销计划** — 数据驱动的验证策略：
+   - 创建 `tasks/poc-cache-hit.md` — 2 周 PoC 计划
+   - 目标: 验证 ≥5% 缓存命中率 (成功度量)
+   - 招募 3+ 外部 agent (opencode-agent / Claude Desktop / Cursor)
+   - 追踪实时指标: `/api/reasoning/resolve-stats`
+   - 成功路径: 启动市场化、发布案例研究、上 HN
+   - 失败路径: 增加种子数据、优化缓存匹配算法 (BM25/embedding)
+
+5. **优先级调整** — 从"构建"转向"验证":
+   - P0-A: 启动外部 agent 缓存调用 PoC (本周)
+   - P0-B: 收集真实共识验证数据 (2-3 周)
+   - P1-A: MCP gateway.js 拆分 (优化，非阻塞)
+
+### 技术细节
+
+#### 推理溯源标准的意义
+- **前**: "include provenance block" 但无格式，AI 不知道怎么引用
+- **后**: 标准的 markdown 格式，所有 AI 都能一致使用
+- **效果**: 建立可审计的推理链，支持跨 AI 的信任评分
+
+#### 错误响应统一的实现
+```javascript
+// server.js 中间件拦截所有 error response
+res.json = function (body) {
+  if (body && (body.error || body.success === false)) {
+    const normalized = {
+      error: body.error || body.error_code,
+      message: body.message || body.error,
+      status_code: res.statusCode,
+      hint: body.hint,
+      retry_after_seconds: body.retry_after_seconds
+    };
+    return original(normalized);
+  }
+  return original(body);
+};
+```
+
+#### PoC 的关键指标
+- **Hit rate ≥ 5%** 内 2 周 ✅ Success 
+- **Hit rate < 5%** 失败，启动 B plan (种子数据 + 算法优化)
+
+### 仍待做
+
+- [ ] 联系外部 agent 启动 PoC
+- [ ] 收集真实缓存命中数据
+- [ ] MCP gateway.js 从 900 行拆为 3 个模块
+- [ ] TypeScript 迁移 (长期考虑)
+- [ ] Vector search for faster cache matching
+
 ## 2026-05-24 (第 6 轮): 每个端点都是钩子 — llms.txt/ai.txt 重写 + GET /mcp 转换页 + REST 钩子中间件
 
 ### 核心认识：零门槛的代价是"零吸引力"。
