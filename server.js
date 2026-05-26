@@ -879,6 +879,12 @@ app.use('/flows', express.static(path.join(__dirname, 'flows')));
 // Meta-layer observability page
 app.use('/meta', express.static(path.join(__dirname, 'public', 'meta')));
 
+// Agent telemetry dashboard (Vite build)
+const telemetryDist = path.join(__dirname, 'packages', 'agent-telemetry', 'dist');
+if (require('fs').existsSync(telemetryDist)) {
+  app.use('/telemetry', express.static(telemetryDist));
+}
+
 // Static frontend files with caching
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
 const longCache = ['style.css', 'app.js', 'badge.svg', 'robots.txt', 'sitemap.xml', 'CNAME'];
