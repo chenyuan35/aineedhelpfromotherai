@@ -1,5 +1,5 @@
 #!/bin/bash
-# auto-update.sh — git pull + pm2 restart + multi-agent ecosystem launch
+# auto-update.sh — git pull + pm2 restart + multi-agent ecosystem + meta-layer activation
 # Runs via cron every 5 minutes
 
 set -e
@@ -35,7 +35,30 @@ if [ "$LOCAL" != "$REMOTE" ]; then
   done
   pm2 start ecosystem.config.js --update-env 2>/dev/null || echo "[auto-update] Ecosystem start failed — check ecosystem.config.js"
 
-  echo "[auto-update] $(date -u '+%Y-%m-%dT%H:%M:%SZ') — $LOCAL -> $(git rev-parse --short HEAD) — multi-agent deployed"
+  # Meta-layer: run self-play generation (idempotent on same data)
+  echo "[auto-update] Meta-layer: self-play adversarial generation..."
+  node scripts/self-play-generator.js --target=hallucination 2>&1 | tail -2
+  echo "[auto-update] Meta-layer: processing ELO from replay log..."
+  curl -s -X POST http://127.0.0.1:3000/api/meta/process-replay 2>/dev/null | head -c 200 || echo "[auto-update] ELO processing unavailable"
+
+  echo "[auto-update] $(date -u '+%Y-%m-%dT%H:%M:%SZ') — $LOCAL -> $(git rev-parse --short HEAD) — multi-agent with meta-layer deployed"
 else
-  echo "[auto-update] $(date -u '+%Y-%m-%dT%H:%M:%SZ') — no update needed"
+  # Even without code change: run meta-layer maintenance every cycle
+  echo "[auto-update] $(date -u '+%Y-%m-%dT%H:%M:%SZ') — meta-layer maintenance"
+
+  # Periodic: failure replay (every 30 min = every 6th cycle)
+  MINUTE=$(date +%M)
+  if [ $((10#$MINUTE % 30)) -lt 5 ]; then
+    echo "[auto-update] Running failure replay..."
+    node scripts/failure-replay.js --limit=3 2>&1 | tail -3
+  fi
+
+  # Periodic: self-play new adversarial tasks (every hour)
+  if [ $((10#$MINUTE)) -lt 3 ]; then
+    echo "[auto-update] Running self-play generation..."
+    node scripts/self-play-generator.js --target=hallucination 2>&1 | tail -2
+  fi
+
+  # Periodic: ELO processing
+  curl -s -X POST http://127.0.0.1:3000/api/meta/process-replay 2>/dev/null | head -c 100 || true
 fi

@@ -73,6 +73,105 @@ app.get('/api/hint-telemetry', (req, res) => {
   }
 });
 
+// --- Meta-layer endpoints ---
+
+// ELO rating leaderboard
+app.get('/api/elo', (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    const category = req.query.category || null;
+    res.json({ success: true, leaderboard: elo.getLeaderboard(category), category: category || 'all', meta: { endpoint: '/api/elo', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// ELO task type dominance
+app.get('/api/elo/dominance', (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    res.json({ success: true, dominance: elo.getTaskDominance(), meta: { endpoint: '/api/elo/dominance', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Lineage forest (must be BEFORE :taskId to avoid capture)
+app.get('/api/lineage/forest', (req, res) => {
+  try {
+    const lineage = require('./lib/memory-lineage');
+    res.json({ success: true, forest: lineage.buildLineageForest(), meta: { endpoint: '/api/lineage/forest', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Memory lineage for a specific task
+app.get('/api/lineage/:taskId', (req, res) => {
+  try {
+    const lineage = require('./lib/memory-lineage');
+    const taskId = req.params.taskId;
+    const chain = lineage.getLineage(taskId);
+    if (!chain) return res.status(404).json({ success: false, error: 'Task not found in resolve cache' });
+    const cascade = lineage.detectCascade(taskId);
+    const siblings = lineage.findSiblings(taskId);
+    res.json({ success: true, lineage: chain, cascade, siblings: siblings.slice(0, 10), meta: { endpoint: `/api/lineage/${taskId}`, timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Prompt evolution stats
+app.get('/api/prompts', (req, res) => {
+  try {
+    const promptEvo = require('./lib/prompt-evolution');
+    const agentId = req.query.agent_id || null;
+    res.json({ success: true, variants: promptEvo.getStats(agentId), agent_id: agentId || 'all', meta: { endpoint: '/api/prompts', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Meta-layer dashboard
+app.get('/api/meta', (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    const lineage = require('./lib/memory-lineage');
+    const promptEvo = require('./lib/prompt-evolution');
+    const rc = require('./lib/resolve-cache');
+    const memoryHealth = rc.getMemoryHealth();
+    const agentLeaderboard = rc.getAgentMemoryLeaderboard();
+    const eloLeaderboard = elo.getLeaderboard();
+    const dominance = elo.getTaskDominance();
+    res.json({
+      success: true,
+      memory_health: memoryHealth,
+      memory_agent_leaderboard: agentLeaderboard,
+      elo_leaderboard: eloLeaderboard,
+      task_dominance: dominance,
+      prompt_variants: promptEvo.getStats(),
+      agent_count: eloLeaderboard.length,
+      meta: { endpoint: '/api/meta', description: 'Meta-layer unified dashboard', timestamp: new Date().toISOString() },
+    });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Auto-trigger ELO processing from replay log
+app.post('/api/meta/process-replay', async (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    const REPLAY_PATH = './data/replay-log.jsonl';
+    let processed = 0;
+    if (require('fs').existsSync(REPLAY_PATH)) {
+      const lines = require('fs').readFileSync(REPLAY_PATH, 'utf8').split('\n').filter(Boolean);
+      const entries = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+      // Group by cycle for competition context
+      const byCycle = {};
+      for (const e of entries) {
+        if (e.type === 'resolve_attempt' && e.outcome === 'success') {
+          const cycle = e.cycle || 0;
+          if (!byCycle[cycle]) byCycle[cycle] = [];
+          byCycle[cycle].push(e);
+        }
+      }
+      for (const [cycle, cycleEntries] of Object.entries(byCycle)) {
+        processed += elo.processCompetitionCycle(cycleEntries);
+      }
+    }
+    res.json({ success: true, processed, message: `${processed} ELO updates applied from replay log` });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Dynamic badge data (for shields.io / self-hosted badges)
 app.get('/api/badge', async (req, res) => {
   const { getPool } = require('./lib/db');
@@ -424,6 +523,39 @@ const server = app.listen(PORT, '0.0.0.0', () => {
     startRecoveryInterval();
   } catch (err) {
     logger.error('[startup] Task recovery failed to start:', err.message);
+  }
+  // Meta-layer initialization
+  try {
+    const promptEvo = require('./lib/prompt-evolution');
+    ['resolver-fast', 'resolver-careful', 'resolver-skeptic', 'resolver-minimal'].forEach(id => promptEvo.initDefaults(id));
+    logger.info('[meta] Prompt evolution defaults initialized');
+  } catch (err) {
+    logger.error('[meta] Prompt evolution init failed:', err.message);
+  }
+  // Process ELO ratings from existing replay log
+  try {
+    const elo = require('./lib/elo-rating');
+    const fs = require('fs');
+    const REPLAY_PATH = './data/replay-log.jsonl';
+    if (fs.existsSync(REPLAY_PATH)) {
+      const lines = fs.readFileSync(REPLAY_PATH, 'utf8').split('\n').filter(Boolean);
+      const entries = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+      const byCycle = {};
+      for (const e of entries) {
+        if (e.type === 'resolve_attempt' && e.outcome === 'success') {
+          const cycle = e.cycle || 0;
+          if (!byCycle[cycle]) byCycle[cycle] = [];
+          byCycle[cycle].push(e);
+        }
+      }
+      let processed = 0;
+      for (const cycleEntries of Object.values(byCycle)) {
+        if (cycleEntries.length >= 2) processed += elo.processCompetitionCycle(cycleEntries);
+      }
+      logger.info(`[meta] ELO ratings initialized from ${processed} competition groups`);
+    }
+  } catch (err) {
+    logger.error('[meta] ELO init failed:', err.message);
   }
 });
 
