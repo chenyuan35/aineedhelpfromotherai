@@ -15,6 +15,8 @@
   3. "Why this exists" 提前，API 参考降级为 `<details>` 折叠块
   4. 补 community 链接（GitHub, Live Stats, Observability）
 - **VPS benchmark 结果**：recall@1=20%，avg latency=664ms
+- **BETA-RECRUIT 准备完成** — 10 份个性化外联消息 + 追踪表 + social proof 截图
+- **VPS auto-update 最终生效** — 最新首页结构已上线 hn
 
 ### Next
 - 部署 VPS → auto-update.sh 自动拉取
