@@ -200,6 +200,7 @@ module.exports = async (req, res) => {
       if (result.hit && result.reasoning_id) {
         provenance = await reasoning.getProvenance(result.reasoning_id);
       }
+      try { const eb = require('../lib/event-bus'); eb.emit(result.hit ? 'resolve.hit' : 'resolve.miss', { hit: result.hit, problem_statement: body.problem_statement, reasoning_id: result.reasoning_id }); } catch {}
       return res.status(200).json({
         success: true,
         data: { ...result, provenance: provenance || undefined },
@@ -245,6 +246,7 @@ module.exports = async (req, res) => {
       }
 
       await reasoning.saveReasoning(body);
+      try { const eb = require('../lib/event-bus'); eb.emit('reasoning.stored', { id: body.id, problem_id: body.problem_id }); } catch {}
       return res.status(201).json({
         success: true,
         data: { id: body.id, problem_id: body.problem_id },

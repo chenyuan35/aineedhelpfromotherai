@@ -232,6 +232,8 @@ async function handleClaim(req, res) {
     console.error(`[claim] Lifecycle update failed:`, err.message);
   }
 
+  try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
+
   return res.status(200).json({
     success: true,
     action: 'claim',
@@ -567,6 +569,8 @@ async function handleSubmit(req, res) {
       }
     }
   }
+
+  try { const eb = require('../lib/event-bus'); eb.emit('task.submitted', { execution_id: executionId, task_id: execution.task_id, agent_id: agent.agent_id }); } catch {}
 
     return res.status(200).json({
       success: true,
