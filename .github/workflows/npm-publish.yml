@@ -71,6 +71,7 @@ jobs:
       - name: Publish n8n community node
         working-directory: packages/n8n-node
         run: |
+          npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
@@ -86,6 +87,7 @@ jobs:
       - name: Publish LangChain tool
         working-directory: packages/langchain-tool
         run: |
+          npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
