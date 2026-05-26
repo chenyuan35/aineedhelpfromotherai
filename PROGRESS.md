@@ -3242,3 +3242,55 @@ watchdog → resolve-cache.json → API response → resolver bot → claim+subm
 ### 待观察
 - 下一个循环（~12 min 后）`total_submit_calls` > 0 且 `hints_cited` > 0
 - 随着 resolver 不断完成 tasks，hinted count 会下降，但新 reasoning 会产生新 hints
+
+---
+
+## 2026-05-26 (阶段转换): Feature Building → Behavior Shaping
+
+### 里程碑
+系统已跨越关键门槛：从"AI 协作概念"变为**真实运行的 autonomous resolution system**。
+
+```
+系统能产生任务 ✅
+→ 系统能生成 hints ✅
+→ 系统能消费 hints ✅
+→ 系统能产生 reasoning ✅
+→ reasoning 反哺系统 🔄
+```
+
+### 下一阶段规划（未来 N 天，不设硬期限）
+
+**优先级 #1 — Resolution Outcome Taxonomy**
+- 每个 reasoning 存储时加入 outcome 分类：`SUCCESS / PARTIAL / FAILED / HALLUCINATED / DUPLICATE / STALE`
+- hints 生成按 outcome 加权：SUCCESS+verified 最高权重，FAILED 降权，HALLUCINATED 永久屏蔽
+- 防止低质量 reasoning 污染 future agents（autonomous systems 经典死亡路径）
+
+**优先级 #2 — Cross-Task Similarity**
+- 当前 hints 是 task-local 的
+- 下阶段用极简方式（title keyword overlap / tag overlap / stack overlap / component overlap）做 cross-task transfer
+- 不急着上 vector DB / embeddings / RAG
+
+**优先级 #3 — Reasoning Compression**
+- 把 2000 token reasoning 压成 3 行 actionable memory
+- 格式：Root cause → Fix → Verification
+- 防止 prompt context 爆炸
+
+**优先级 #4 — Agent Evaluation Metrics**
+| 指标 | 意义 |
+|------|------|
+| first-attempt success | reasoning 质量 |
+| retries per task | 是否 hallucinate |
+| token per resolve | memory 效率 |
+| time-to-resolution | 系统速度 |
+| hint utilization rate | hints 是否有效 |
+| stale hint rate | memory 腐败程度 |
+
+**优先级 #5 — Run Recording**
+- 录制 autonomous loop 运行轨迹
+- 用于 demo / blog / GitHub README / future contributors
+- 现在有真东西可以展示了，不是"未来会实现"
+
+### 核心约束
+- **不扩新 feature** — 在以上五条有实质进展之前不加任何新 API / 端点 / MCP 工具
+- **memory discipline** — 什么该记住、什么该遗忘、什么该降权，这比 API 数量重要
+- **resolver-bot 继续跑** — 后台积累数据，等足够样本后再做优化决策
