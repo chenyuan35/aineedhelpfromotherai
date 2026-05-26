@@ -1,5 +1,36 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-27 (Batch+5): Vite telemetry dashboard + 部署流水线全线修复
+
+### 新增
+- **`packages/agent-telemetry/`** — Vite + Tailwind v4 企业级 telemetry dashboard，部署在 `/telemetry/`
+  - 三个实时数据源：`/api/memory/stats`, `/api/leaderboard/memory`, `/mcp/usage`
+  - 生产模式：`sanitize()` XSS 防护、`inFlight` 并发锁、递归 `setTimeout` 轮询、hash-based DOM diffing
+  - `src/theme.js` — 静态 color matrix 保证 Tailwind JIT tree-shaking 安全
+- **`server.js:882-886`** — `app.use('/telemetry', express.static(...))` 动态挂载（dist 存在时激活）
+
+### 修复的 Bug
+| # | Bug | 修复 |
+|---|-----|------|
+| 1 | **VPS Node.js v18，Vite 8 需要 Node ≥22** | VPS 升级 Node v18.20.8 → **v22.22.2**（`curl -fsSL https://deb.nodesource.com/setup_22.x \| bash`） |
+| 2 | **auto-update.sh 在 `git reset --hard` 后替换自身，旧脚本继续执行旧逻辑，telemetry 构建从未触发** | 将 telemetry 构建检查移到 `git fetch` 之前，每个周期（含 maintenance）都检查 `dist/index.html` 是否存在 |
+| 3 | **auto-update.sh `npm install --production` 跳过 devDeps，Vite 不可用** | 在 subshell 中独立构建 `packages/agent-telemetry`（`npm install` 含 devDeps + `npm run build`） |
+| 4 | **`deploy.sh` 同样缺少 telemetry 构建步骤** | 同步添加 `cd packages/agent-telemetry && npm install && npm run build` |
+| 5 | **dist/ 缺失时 server.js 静默跳过 `/telemetry` 挂载** | 添加主动构建步骤 + `curl http://127.0.0.1:3000/telemetry/` 验证 |
+
+### 验证结果 (VPS SSH)
+- `/telemetry/` → HTTP **200**, 17466 bytes, `text/html; charset=utf-8`
+- `/api/health` → HTTP 200, runtime express
+- `/api/memory/stats` → 92 failures, 479 fixes, 616 hints in memory
+- PM2: `aineedhelp online`, 24 resolver agents running
+- GitHub: commits `5ce091d` → `a8c7879` → `930e375` pushed to origin/main
+
+### 文件改动
+- `packages/agent-telemetry/` — 新建 Vite + Tailwind v4 项目
+- `server.js:882-886` — telemetry static mount
+- `scripts/auto-update.sh:7-19` — dist 检查前置 + Node v22 构建
+- `scripts/deploy.sh:4` — 同步 telemetry 构建
+
 ## 2026-05-27 (Batch+4): `.well-known/mcp` + benchmark 三层评估重构
 
 ### 核心改动
