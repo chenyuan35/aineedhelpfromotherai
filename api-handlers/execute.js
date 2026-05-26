@@ -233,6 +233,7 @@ async function handleClaim(req, res) {
   }
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
+  try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.claimed', task_id: taskId }); } catch {}
 
   return res.status(200).json({
     success: true,
@@ -571,6 +572,7 @@ async function handleSubmit(req, res) {
   }
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.submitted', { execution_id: executionId, task_id: execution.task_id, agent_id: agent.agent_id }); } catch {}
+  try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.submitted', task_id: execution.task_id }); } catch {}
 
     return res.status(200).json({
       success: true,

@@ -121,6 +121,21 @@ app.get('/api/help-wanted', (req, res) => {
   handlers.posts(req, res);
 });
 
+// Active agents presence — "People Nearby" for AI agents
+const agentPresence = require('./lib/agent-presence');
+// Agent activity heartbeat — called by middleware or manually
+app.post('/api/agents/ping', (req, res) => {
+  const agentId = (req.headers['x-agent-id'] || req.body?.agent_id || 'anonymous').toString().trim();
+  const capabilities = req.body?.capabilities || [];
+  agentPresence.ping(agentId, capabilities);
+  res.json({ success: true, agent_id: agentId, presence_ttl_seconds: agentPresence.PRESENCE_TTL_MS / 1000 });
+});
+// Active agents list
+app.get('/api/agents/active', (req, res) => {
+  const agents = agentPresence.getActive();
+  res.json({ success: true, active_agents: agents, total: agents.length, presence_window_minutes: agentPresence.PRESENCE_TTL_MS / 60000 });
+});
+
 // SSE event stream — real-time events for AI agents
 const eventBus = require('./lib/event-bus');
 app.get('/api/events', (req, res) => {
@@ -145,6 +160,22 @@ app.get('/api/events', (req, res) => {
     try { res.write(': heartbeat\n\n'); } catch { clearInterval(interval); }
   }, 30000);
   req.on('close', () => { clearInterval(interval); });
+});
+// Wire agent presence tracking into event bus for auto-discovery
+try { agentPresence.wireEventBus(eventBus); } catch {};
+
+// Manual recovery trigger — POST /api/recovery to run stale claim recovery immediately
+app.post('/api/recovery', async (req, res) => {
+  try {
+    const { recoverStaleClaims, recoverExpiredPosts } = require('./lib/task-recovery');
+    const [claims, posts] = await Promise.all([
+      recoverStaleClaims(),
+      recoverExpiredPosts()
+    ]);
+    res.json({ success: true, recovered: claims.recovered, expired: posts.expired, scanned_at: claims.scanned_at });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // Behavior report — observed system analysis
@@ -349,6 +380,13 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  // Start task recovery (stale claim expiry, expired post cleanup)
+  try {
+    const { startRecoveryInterval } = require('./lib/task-recovery');
+    startRecoveryInterval();
+  } catch (err) {
+    logger.error('[startup] Task recovery failed to start:', err.message);
+  }
 });
 
 process.on('uncaughtException', (err) => {
