@@ -24,7 +24,7 @@ Write-Host "Generated signature:" -ForegroundColor Cyan; Write-Host $signature -
 Write-Host "Timestamp:" -ForegroundColor Cyan; Write-Host $timestamp -ForegroundColor Yellow
 
 # Print a ready-to-run curl command
-$curlExample = "curl -i -X GET '$HostUrl/mcp' -H \"X-Agent-Signature: $signature\" -H \"X-Agent-Id: $Agent\" -H \"X-Agent-Timestamp: $timestamp\""
+ $curlExample = "curl -i -X GET '{0}/mcp' -H 'X-Agent-Signature: {1}' -H 'X-Agent-Id: {2}' -H 'X-Agent-Timestamp: {3}'" -f $HostUrl, $signature, $Agent, $timestamp
 Write-Host "`nExample curl:`n" -ForegroundColor Green; Write-Host $curlExample -ForegroundColor White
 
 # Use curl.exe if available for full headers; otherwise use Invoke-RestMethod

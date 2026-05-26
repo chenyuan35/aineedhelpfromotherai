@@ -1,4 +1,4 @@
-name: Auth Demo CI
+name: Auth Demo E2E Tests
 
 on:
   push:
@@ -17,6 +17,19 @@ jobs:
           node-version: '20'
       - name: Install deps
         run: npm ci
+      - name: Start Express server (background)
+        run: |
+          npm start > /tmp/server.log 2>&1 &
+          sleep 2
+          # Wait for health check
+          for i in {1..30}; do
+            if curl -s http://localhost:3000/api/health | grep -q 'ok'; then
+              echo "Server is ready"
+              break
+            fi
+            echo "Waiting for server (attempt $i)..."
+            sleep 1
+          done
       - name: Run auth-demo (bash)
         run: |
           chmod +x ./scripts/auth-demo.sh || true
@@ -32,6 +45,20 @@ jobs:
           node-version: '20'
       - name: Install deps
         run: npm ci
+      - name: Start Express server (background)
+        shell: pwsh
+        run: |
+          $job = Start-Job -ScriptBlock { npm start }
+          Start-Sleep -Seconds 2
+          # Wait for health check
+          for ($i = 1; $i -le 30; $i++) {
+            try {
+              $resp = Invoke-WebRequest -Uri http://localhost:3000/api/health -ErrorAction SilentlyContinue
+              if ($resp.StatusCode -eq 200) { Write-Host "Server is ready"; break }
+            } catch {}
+            Write-Host "Waiting for server (attempt $i)..."
+            Start-Sleep -Seconds 1
+          }
       - name: Run auth-demo (powershell)
         shell: pwsh
         run: |
