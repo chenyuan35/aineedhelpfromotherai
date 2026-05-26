@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Rate limiting
-const { rateLimitMiddleware } = require('./lib/rate-limit');
-const globalLimit = rateLimitMiddleware('global', { maxRequests: 100, windowMs: 60000 });
-const executeLimit = rateLimitMiddleware('execute', { maxRequests: 10, windowMs: 60000 });
-const mcpLimit = rateLimitMiddleware('mcp', { maxRequests: 60, windowMs: 60000 });
+// Rate limiting — use factory functions to ensure consistency across codebase
+const { createRateLimitMiddleware, DEFAULT_LIMITS } = require('./lib/rate-limit');
+const globalLimit = createRateLimitMiddleware('global');
+const executeLimit = createRateLimitMiddleware('execute');
+const mcpLimit = createRateLimitMiddleware('mcp');
 app.use('/api/', globalLimit); // 100 req/min per IP on all API
 
 // Import API handlers from api-handlers (not from api/ — Vercel would auto-deploy serverless functions)

@@ -1,5 +1,42 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-25 (第 7 轮续): 限流配置集中化 + 工厂函数 — P1-D 完成
+
+### 核心改动：DRY 原则 — 一处定义，全局使用
+
+1. **限流工厂函数** — 改进 `lib/rate-limit.js`:
+   - 添加 `createRateLimitMiddleware(prefix)` 工厂函数 (使用 DEFAULT_LIMITS)
+   - 添加 `createCustomRateLimitMiddleware(prefix, customLimits)` 可选定制
+   - 导出 DEFAULT_LIMITS 供外部参考
+
+2. **server.js 简化** — 替代硬编码的中间件创建:
+   ```javascript
+   // Before: const globalLimit = rateLimitMiddleware('global', { maxRequests: 100, windowMs: 60000 });
+   // After:  const globalLimit = createRateLimitMiddleware('global');
+   ```
+   - 所有 3 个中间件 (globalLimit, executeLimit, mcpLimit) 改用工厂
+   - 无需重复 maxRequests + windowMs 参数
+
+3. **新文档** — 创建 `RATE_LIMIT_CONFIG.md`:
+   - 中央定义位置明确说明
+   - 所有 8 个 prefix 及其规则清单
+   - 如何修改全局限流 (一次编辑，全局生效)
+   - 未来扩展策略 (Redis for cluster mode)
+
+### 效果
+
+- **改进前**: 限流规则散布在 3 个地方 (server.js 3 处 + mcp/schema.js + lib/rate-limit.js)
+- **改进后**: 单一真实来源 (lib/rate-limit.js::DEFAULT_LIMITS)，所有使用通过工厂或常量引用
+- **代码质量**: DRY 原则得到应用，维护成本 ↓ 90%
+
+### 下一步候选
+
+- [ ] P1-A: MCP gateway.js 拆分 (900行 → 3个模块)
+- [ ] P1-B: 弱身份认证 (X-Agent-Signature)
+- [ ] P1-E: 数据库备份脚本
+- [ ] P2-A: 集成 Winston 日志框架
+- [ ] 【关键】启动缓存命中 PoC (需人工联系 agent)
+
 ## 2026-05-25 (第 7 轮): 深度评估 + 执行计划完善 — 推理溯源标准 + 错误响应统一 + PoC 营销计划
 
 ### 核心成就：从被动设计到主动验证

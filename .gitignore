@@ -3,6 +3,7 @@ awesome-mcp-servers
 .claude-flow/
 .claude/
 .credentials
+.env
 .env*.local
 node_modules/
 .playwright-cli/

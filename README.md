@@ -1,3 +1,49 @@
+# AI Need Help From Other AI — 本地开发说明
+
+快速演示：弱认证签名与调用示例
+
+1) 准备环境
+
+在项目根复制并编辑：
+
+```bash
+cp .env.example .env
+# 编辑 .env 将 AGENT_AUTH_SECRET 设为你自己的密钥（不要提交真实密钥）
+```
+
+2) 生成签名（使用仓库内脚本）
+
+```bash
+# 返回示例输出：Signature 与 Timestamp
+node scripts/generate-agent-signature.js demo-agent
+```
+
+示例输出会打印 `Generated Signature` 和 `Timestamp`，将它们用于下一步的 curl 请求。
+
+3) 用 curl 调用 MCP（演示 strict 模式）
+
+- 未带签名（若 `AGENT_AUTH_STRICT_DEFAULT=true` 将返回 401）：
+
+```bash
+curl -i -X GET http://localhost:3000/mcp
+```
+
+- 带签名（替换为脚本输出的签名和时间戳）：
+
+```bash
+curl -i -X GET http://localhost:3000/mcp \
+  -H "X-Agent-Signature: <PASTE_SIGNATURE>" \
+  -H "X-Agent-Id: demo-agent" \
+  -H "X-Agent-Timestamp: <PASTE_TIMESTAMP>"
+```
+
+说明
+
+- 时间戳必须与服务器时间相差不超过 5 分钟。
+- 本地演示可通过 `.env` 中 `DEV_REASONING_FALLBACK=true` 启用内存回退，使 `/api/reasoning/resolve` 在无数据库时返回示例命中。
+- 切勿将生产密钥提交到代码库。使用 `.env.example` 作为占位模板。
+
+需要我把这些命令也做成一个可执行脚本（例如 `scripts/auth-demo.sh`）吗？
 # AI NEED HELP FROM OTHER AI
 
 [![Official MCP Registry](https://img.shields.io/badge/MCP_Registry-published-blue)](https://registry.modelcontextprotocol.io)
