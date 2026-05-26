@@ -154,7 +154,7 @@
 | 901 | **推送 main → VPS auto-deploy** (v2 memory-api + 3 plugins + 56 endpoints) | ✅ 完成 | curl /memory/stats 返回 428 fixes |
 | 902 | **Benchmark on VPS** — 10 scenarios, recall@1=20%, latency=664ms | ✅ 完成 | node scripts/benchmark-real.js |
 | 903 | **首页重构 #2** — 按 4 条反馈：H1 强化、真实案例、API 降级、社区链接 | ✅ 完成 | 已推送 b0f751f |
-| 904 | **VPS auto-update 验证** — Phase 2+3 已推 main (8857eb7)，等待 5min 循环拉取。拉取后需运行 `node scripts/promote-tiers.js` | 🔄 等待中 | curl /api/memory/gate 返回 influence_weight + sandbox_passed tier |
+| 904 | **VPS auto-update 验证** — 已确认自动拉取到 464eb64，25 进程全部 online | ✅ 完成 | curl /api/memory/gate 返回 influence_weight + sandbox_passed tier |
 
 ## 已完成任务（历史归档）
 
@@ -195,39 +195,30 @@
 - **SSE streaming**: ✅ GET /mcp 支持 `Accept: text/event-stream`
 - **README 目录矩阵**: ✅ 11 个目录徽章 + 状态 + URL
 - **submit-all.sh**: ✅ 自动化提交脚本（--status / --submit）
-- **Glama PR #6706**: 🔄 等待 punkpeye（May 21→至今未合）
-- **MCPFind PR #46**: 🔄 等待 Vercel auth（May 23）
-- **Cline Marketplace #1647**: 🔄 OPEN
-- **MCP.so #2479**: 🔄 OPEN
-- **Official MCP Registry**: ✅ 已发布
+- **Official MCP Registry**: ✅ `com.aineedhelpfromotherai/reasoning-commons` v2.0.1（streamable-http remote）
 - **Smithery**: ✅ 已上线
+- **PulseMCP**: ✅ 自动从 Official Registry 同步
 - **MCP.Directory**: ✅ 自动同步中
+- **SafeMCP (28K servers)**: ⬜ 待提交（email: hello@safemcp.info 或等自动扫描）
+- **Glama PR #6706**: 🔄 等待 punkpeye merge（May 24 最后更新）
+- **MCPFind**: ❌ 原 repo 已删除，无需处理
+- **Cline Marketplace**: ❌ 旧的 issue 引用（非本服务器）
+- **MCP.so**: ❌ 旧的 issue 引用（非本服务器）
 - **mcpservers.org**: 🟡 已提交 pending
-- **PulseMCP/MCPize/MCPFinder**: ⬜ 待办（web form only）
 
 ### 当前聚焦
 
-**从"等 AI 发现"转向"让 AI 想装"**。核心杠杆：
-- 🟢 **价值主张清晰化** — "Save tokens. Avoid mistakes. Earn rank." 三段 ROI
-- 🟢 **一键安装** — `npx -y @aineedhelpfromotherai/mcp` 通路已就绪
-- 🟢 **GitHub 发现** — topic 已加，server-card 已更新
-- 🟢 **入口改写** — llms.txt/ai.txt/GET /mcp 全部重写为 AI 转换页
-- 🟢 **REST 钩子中间件** — 每个 JSON 响应附带 `_tip` 字段
-- 🟢 **Failure 数据注入** — 50 个推理对象已注入 failure attempts，failure-check 现在可以返回真实预警
-- 🟢 **Verification Tier Promotion** — 50 hints 升级到 sandbox_passed (权重 0.8)
-- 🟢 **Human UX Overhaul** — Live Ticker + Activity Feed + Open Tasks Feed
-- 🟢 **gateway.js 拆分** — 104 行 (原 814 行)
-- 🟢 **memory-api dedup 修复** — 最高 tier 胜出而非先到先得
-- 🟢 **npm publish to npmjs.org** — all 4 packages live (`aineedhelpfromotherai@2.0.0`, MCP 2.0.0, n8n 1.0.0, langchain 1.0.0)
-- 🟢 **VPS fully deployed** — Phase 2+3 code + 50 hints sandbox_passed
-- 🟢 **Vercel deploy triggered** — aineedhelpfromotherai.vercel.app
-- 🟢 **Override Test 10/10 通过** — 内存 override 规则 + 权重计算 + 低信任过滤
-- 🟢 **npmjs.org 发布** — 已成功发布所有 4 个 package
-- 🔴 **仍需 GitHub OAuth JWT** 才能更新 Official Registry 条目元数据
-- 🔴 **PulseMCP/MCPize/MCPFinder** — web form 手动提交
-- 🔴 **PH / Twitter/X / HN** — 需要注册账号
+**分发渠道全覆盖，核心功能已验证**。剩下都是手动操作或等外部 merge。
+- 🟢 **Official MCP Registry** — 已发布 `com.aineedhelpfromotherai/reasoning-commons`
+- 🟢 **npmjs.org 4 包** — 全部 live
+- 🟢 **VPS 已确认自动更新** — 25 进程 online，最新代码
+- 🟢 **Smithery / PulseMCP / MCP.Directory** — 已上线或自动同步
+- 🟢 **Glama PR #6706** — 已提交，等待 punkpeye
+- 🟡 **mcpservers.org** — 已提交 pending
+- ⬜ **SafeMCP (28K)** — 新目录，自动扫描 GitHub；如需修正 email hello@safemcp.info
+- 🔴 **PH / Twitter/X / HN** — 需要手动注册账号（用户要求跳过）
 
-分发渠道全覆盖。核心功能已验证：resolve 可命中 + failure-check 可预警。
+无阻塞性代码任务。全部基础设施就绪。
 
 ### 暂停
 

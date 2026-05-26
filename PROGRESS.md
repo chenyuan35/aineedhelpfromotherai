@@ -26,10 +26,19 @@
 - VPS 已通过 SSH 手动拉取并运行 `node scripts/promote-tiers.js` — 50 seed hints 已升级 sandbox_passed，内存门控权重 0.8
 - `npm run verify:win` CI 通过<br>Git push 需 `--no-verify` 跳过 pre-push hook（`pre-push.ps1` 依赖 npm 测试环境）
 
-### 待处理
-- P1-225: npm publish (n8n + LangChain) — 阻塞于 NPM_TOKEN 缺失
-- P5-504~506: PH / Twitter/X / HN — 需要手动注册账号
-- P5-516~518: PulseMCP / MCPize / MCPFinder — web form 手动提交
+### VPS 验证
+- VPS 自动更新已验证：crontab 每 5 分钟拉取，已同步到 464eb64，25 进程全部 online
+- `node scripts/promote-tiers.js` 已手动执行 — 50 hints sandbox_passed
+
+### 目录状态（2026-05-26 核查）
+- **Official MCP Registry**: ✅ `com.aineedhelpfromotherai/reasoning-commons` v2.0.1
+- **Smithery**: ✅ 已上线
+- **PulseMCP**: ✅ 从 Official Registry 自动同步
+- **Glama PR #6706**: 🔄 等待 punkpeye merge
+- **MCPFind**: ❌ 原 repo 已不存在
+- **Cline Marketplace / MCP.so**: ❌ 旧 issue 引用非本服务器
+- **SafeMCP** (28K servers): ⬜ 自动扫描中，或 email hello@safemcp.info
+- **mcpservers.org**: 🟡 已提交 pending
 
 ## 2026-05-26 (Phase 2+3): Memory Inference Gate + Conflict Resolver + Debug UI + Distribution Plugins
 
