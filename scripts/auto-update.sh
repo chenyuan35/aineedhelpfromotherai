@@ -6,18 +6,18 @@ set -e
 
 cd /opt/aineedhelpfromotherai || exit 1
 
-# Ensure telemetry frontend dist exists (every cycle, not just on code change)
-if [ -d packages/agent-telemetry ] && [ ! -f packages/agent-telemetry/dist/index.html ]; then
-  echo "[auto-update] Building telemetry frontend..."
-  (cd packages/agent-telemetry && npm install 2>/dev/null && npm run build 2>/dev/null) || echo "[auto-update] WARNING: telemetry build failed"
-fi
-
 git fetch origin main
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git rev-parse origin/main)
 if [ "$LOCAL" != "$REMOTE" ]; then
   git reset --hard origin/main
   npm install --production 2>/dev/null || true
+
+  # Build telemetry frontend AFTER git reset (which deletes dist via .gitignore)
+  if [ -d packages/agent-telemetry ]; then
+    echo "[auto-update] Building telemetry frontend..."
+    (cd packages/agent-telemetry && npm install 2>/dev/null && npm run build 2>/dev/null) || echo "[auto-update] WARNING: telemetry build failed"
+  fi
 
   # Restart main server FIRST so the seed can use the API
   pm2 restart aineedhelp --update-env 2>/dev/null || pm2 start server.js --name aineedhelp --update-env
@@ -51,6 +51,12 @@ if [ "$LOCAL" != "$REMOTE" ]; then
 else
   # Even without code change: run meta-layer maintenance every cycle
   echo "[auto-update] $(date -u '+%Y-%m-%dT%H:%M:%SZ') — meta-layer maintenance"
+
+  # Ensure telemetry dist exists (resets may have deleted it)
+  if [ -d packages/agent-telemetry ] && [ ! -f packages/agent-telemetry/dist/index.html ]; then
+    echo "[auto-update] Rebuilding telemetry frontend..."
+    (cd packages/agent-telemetry && npm install 2>/dev/null && npm run build 2>/dev/null) && pm2 restart aineedhelp --update-env 2>/dev/null || echo "[auto-update] WARNING: telemetry rebuild/restart failed"
+  fi
 
   # Periodic: failure replay (every 30 min = every 6th cycle)
   MINUTE=$(date +%M)
