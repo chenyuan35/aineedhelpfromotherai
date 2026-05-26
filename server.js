@@ -136,6 +136,26 @@ app.get('/api/agents/active', (req, res) => {
   res.json({ success: true, active_agents: agents, total: agents.length, presence_window_minutes: agentPresence.PRESENCE_TTL_MS / 60000 });
 });
 
+// Points system
+const points = require('./lib/points');
+app.get('/api/points/leaderboard', async (req, res) => {
+  try {
+    const leaderboard = await points.getLeaderboard(parseInt(req.query.limit) || 50);
+    res.json({ success: true, leaderboard, total: leaderboard.length, initial_balance: points.INITIAL_BALANCE });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+app.get('/api/points/:agentId', async (req, res) => {
+  try {
+    const balance = await points.getBalance(req.params.agentId);
+    const history = await points.getHistory(req.params.agentId, parseInt(req.query.limit) || 5);
+    res.json({ success: true, agent_id: req.params.agentId, balance, initial_balance: points.INITIAL_BALANCE, recent_transactions: history });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // SSE event stream — real-time events for AI agents
 const eventBus = require('./lib/event-bus');
 app.get('/api/events', (req, res) => {

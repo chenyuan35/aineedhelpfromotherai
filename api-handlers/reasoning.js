@@ -247,6 +247,7 @@ module.exports = async (req, res) => {
 
       await reasoning.saveReasoning(body);
       try { const eb = require('../lib/event-bus'); eb.emit('reasoning.stored', { id: body.id, problem_id: body.problem_id }); } catch {}
+      try { const pts = require('../lib/points'); pts.award(body.agent_id || 'anonymous', pts.REWARDS.STORE_REASONING, 'store_reasoning', body.id); } catch {}
       return res.status(201).json({
         success: true,
         data: { id: body.id, problem_id: body.problem_id },
@@ -282,6 +283,7 @@ module.exports = async (req, res) => {
       if (!body.verdict) return res.status(400).json({ error: 'Missing required field: verdict (verified/rejected/uncertain)' });
       const result = await reasoning.verifyReasoning(id, body);
       if (!result) return res.status(404).json({ error: 'Reasoning object not found' });
+      try { const pts = require('../lib/points'); const agentId = body.agent_id || (req.headers ? req.headers['x-agent-id'] : null) || 'anonymous'; pts.award(agentId, pts.REWARDS.VERIFY_REASONING, 'verify_reasoning', id); } catch {}
       return res.status(200).json({
         success: true,
         data: result,

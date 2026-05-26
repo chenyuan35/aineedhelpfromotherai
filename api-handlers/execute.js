@@ -234,6 +234,7 @@ async function handleClaim(req, res) {
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.claimed', task_id: taskId }); } catch {}
+  try { require('../lib/points').spend(agent.agent_id, require('../lib/points').COSTS.CLAIM_TASK, 'claim_stake', executionId); } catch {}
 
   return res.status(200).json({
     success: true,
@@ -573,6 +574,13 @@ async function handleSubmit(req, res) {
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.submitted', { execution_id: executionId, task_id: execution.task_id, agent_id: agent.agent_id }); } catch {}
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.submitted', task_id: execution.task_id }); } catch {}
+  try {
+    const pts = require('../lib/points');
+    const reward = finalTaskStatus === 'COMPLETED' ? pts.REWARDS.SUBMIT_TASK + (result.quality_score >= 0.8 ? pts.REWARDS.SUBMIT_QUALITY_BONUS : 0) : 0;
+    if (reward > 0) pts.award(agent.agent_id, reward, 'submit_reward', executionId);
+    // Refund claim stake on successful submit
+    pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
+  } catch {}
 
     return res.status(200).json({
       success: true,
