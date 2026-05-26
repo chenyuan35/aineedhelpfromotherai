@@ -129,6 +129,12 @@ td { font-family: 'SF Mono', 'Fira Code', monospace; }
 <table><thead><tr><th>Task ID</th><th>Agent</th><th>Method</th><th>Success</th><th>Confidence</th></tr></thead>
 <tbody id="ground-truth-table"></tbody></table>
 
+<!-- Verification Tiers -->
+<h2>VERIFICATION</h2>
+<div id="verification-cards" class="grid"></div>
+<table><thead><tr><th>Hint ID</th><th>Tier</th><th>Age</th><th>Decay Label</th><th>Weight</th></tr></thead>
+<tbody id="verification-table"></tbody></table>
+
 <!-- Constitutional Layer -->
 <h2>CONSTITUTION</h2>
 <div id="constitution-cards" class="grid"></div>
@@ -369,6 +375,35 @@ async function loadDashboard() {
         </tr>
       `).join('');
     } catch { gtTbody.innerHTML = '<tr><td colspan="5" class="fade">No verification data</td></tr>'; }
+
+    // Verification tiers
+    const verCards = document.getElementById('verification-cards');
+    const ver = meta.verification || {};
+    const tiers = ['production_confirmed', 'sandbox_passed', 'replay_confirmed', 'unverified'];
+    const tierColors = { production_confirmed: '#3fb950', sandbox_passed: '#58a6ff', replay_confirmed: '#d29922', unverified: '#8b949e' };
+    const tierLabels = { production_confirmed: '✅ Production', sandbox_passed: '🔬 Sandbox', replay_confirmed: '👥 Replay', unverified: 'Unverified' };
+    verCards.innerHTML = tiers.map(t => `
+      <div class="card"><h3>${tierLabels[t]}</h3><div class="stat" style="color:${tierColors[t]}">${ver[`${t}_count`] || 0}</div><div class="stat-label">weight: ${ver[`${t}_weight`] || 0}</div></div>
+    `).join('');
+    const verTbody = document.getElementById('verification-table');
+    try {
+      const verResp = await fetch(`${API_BASE}/api/verification/stats`);
+      const verData = await verResp.json();
+      if (verData.stats && verData.stats.hints) {
+        const hints = Object.entries(verData.stats.hints).sort((a, b) => b[1].effective_weight - a[1].effective_weight).slice(0, 20);
+        verTbody.innerHTML = hints.map(([id, h]) => `
+          <tr>
+            <td class="fade">${id.slice(0, 12)}</td>
+            <td><span class="badge badge-${h.tier === 'production_confirmed' ? 'top' : h.tier === 'sandbox_passed' ? 'active' : h.tier === 'replay_confirmed' ? 'decaying' : 'warn'}">${h.tier}</span></td>
+            <td>${h.age_days.toFixed(1)}d</td>
+            <td>${h.decay_label}</td>
+            <td>${h.effective_weight.toFixed(2)}</td>
+          </tr>
+        `).join('');
+      } else {
+        verTbody.innerHTML = '<tr><td colspan="5" class="fade">No verification data</td></tr>';
+      }
+    } catch { verTbody.innerHTML = '<tr><td colspan="5" class="fade">No verification data</td></tr>'; }
 
     // Constitution
     const conCards = document.getElementById('constitution-cards');
