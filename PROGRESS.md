@@ -3148,3 +3148,54 @@ resolve-watchdog → data/resolve-cache.json → lib/resolve-cache.js → API (G
 - `node -e "require('./lib/resolve-cache')"` — 模块正常加载，导出 getResolveHintsForTasks / buildResolvePrompt ✅
 - 45 hints 全部为 hit，`getResolveHintsForTasks` 单任务查询正常工作 ✅
 - PM2 重启无错误 ✅
+
+---
+
+## 2026-05-26 (第 8 轮续 Part 3): Hint telemetry — 消费观测
+
+### 改动
+
+1. **新建 `lib/hint-telemetry.js`** — 文件化 telemetry store:
+   - 追踪 `hints_served`（何时附加到响应）、`prompts_injected`（_prompt 字段）、`hints_cited`（检测 agent 引用 hint）
+   - **Citation detection**: 检查 submit_result 内容是否包含 hint 的 reasoning_id 或 >30% 的关键技术术语匹配
+   - 每日聚合（`data/hint-telemetry.json`），内存 ring buffer 保留最近 50 条事件
+   - 自动每 60s 持久化 + 进程退出时保存
+
+2. **MCP 工具埋点**:
+   - `list_open_tasks` → `trackListCall(agentId, hintCount)`
+   - `resolve_reasoning` → `trackResolveCall(agentId, isHit, hintCount)`
+   - `submit_result` → `trackSubmitCall(agentId, taskId, resultText, hint)` — 自动检测 citation
+
+3. **API 端点**:
+   - `GET /api/hint-telemetry` → 返回 totals / today / recent_events
+   - `GET /api/posts` → `trackHintsServed('api_posts', ...)` 追踪 REST 侧 hints 暴露
+
+### 当前指标基线（刚部署，等待 agent 调用）
+```
+totals: { hints_served: 0, prompts_injected: 0, hints_cited: 0, ... }
+```
+
+### 数据流（完整）
+```
+resolve-watchdog → data/resolve-cache.json → lib/resolve-cache.js → API (GET /api/posts)
+                                                                   → MCP (list_open_tasks, resolve_reasoning)
+                                                                   → claim response
+                                                                   ↓
+                                                            lib/hint-telemetry.js
+                                                            → data/hint-telemetry.json
+                                                            → GET /api/hint-telemetry
+```
+
+### 待做（优先级排序）
+1. ~~MCP list_open_tasks 注入 hints~~ ✅
+2. ~~MCP resolve_reasoning 注入 hints + prompt~~ ✅
+3. ~~Prompt 显式注入~~ ✅
+4. ~~Telemetry~~ ✅
+5. A/B evaluation（等待足够数据后）
+6. 优化 hint generation（数据驱动，不猜）
+
+### 架构原则（完成时确认）
+- ✅ API 是唯一 truth source — `lib/resolve-cache.js` 共享函数，MCP 不另走路径
+- ✅ 同一份 attach 逻辑 — `getResolveHintsForTasks` API + MCP 共用
+- ✅ Prompt > JSON — `_prompt` 字段自然语言引导
+- ✅ 消费可观测 — `hints_served` + `prompts_injected` + `hints_cited` 三指标
