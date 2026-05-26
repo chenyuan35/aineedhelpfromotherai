@@ -301,6 +301,11 @@ async function handleSubmit(req, res) {
   }
 
   // Find the execution record
+  const db = getPool();
+  if (!db) {
+    return res.status(503).json({ success: false, error: 'Database unavailable' });
+  }
+
   let execution;
   try {
     execution = await getExecution(executionId);
