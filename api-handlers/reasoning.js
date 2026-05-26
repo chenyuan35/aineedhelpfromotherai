@@ -248,6 +248,29 @@ module.exports = async (req, res) => {
       await reasoning.saveReasoning(body);
       try { const eb = require('../lib/event-bus'); eb.emit('reasoning.stored', { id: body.id, problem_id: body.problem_id }); } catch {}
       try { const pts = require('../lib/points'); pts.award(body.agent_id || 'anonymous', pts.REWARDS.STORE_REASONING, 'store_reasoning', body.id); } catch {}
+      // Auto-resolve: check if this new reasoning matches any OPEN task
+      try {
+        const { getPool } = require('../lib/db');
+        const db = getPool();
+        if (db) {
+          const tasks = await db.query("SELECT id, problem FROM posts WHERE status = 'OPEN' AND problem IS NOT NULL LIMIT 20");
+          const resolveCache = require('../lib/resolve-cache');
+          for (const t of tasks.rows) {
+            const existing = resolveCache.getHint(t.id);
+            if (existing && existing.hit) continue; // already has a hit
+            const rr = await reasoning.resolveReasoning({ problem_statement: t.problem });
+            if (rr && rr.hit) {
+              resolveCache.setHint(t.id, {
+                hit: true, reasoning_id: rr.reasoning_id,
+                solution_summary: rr.solution_summary,
+                estimated_token_savings: rr.estimated_token_savings,
+                message: rr.message, checked_at: new Date().toISOString()
+              });
+              try { require('../lib/event-bus').emit('resolve.hit', { task_id: t.id, reasoning_id: rr.reasoning_id, message: rr.message }); } catch {}
+            }
+          }
+        }
+      } catch {}
       return res.status(201).json({
         success: true,
         data: { id: body.id, problem_id: body.problem_id },

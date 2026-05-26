@@ -646,7 +646,17 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       query += ' ORDER BY created_at DESC LIMIT 100';
       const result = await getPool().query(query, params);
       const posts = applyMachineFilters(result.rows.map(formatPost), url);
-      sendJson(res, { posts, total: posts.length });
+      // Attach resolve hints to response if available
+      let resolveHints = {};
+      try {
+        const rc = require('../lib/resolve-cache');
+        const allHints = rc.getAllHints();
+        for (const p of posts) {
+          const hint = allHints[p.id];
+          if (hint && hint.hit) resolveHints[p.id] = hint;
+        }
+      } catch {}
+      sendJson(res, { posts, total: posts.length, resolve_hints: Object.keys(resolveHints).length > 0 ? resolveHints : undefined });
       return;
     }
 
@@ -657,7 +667,7 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       return;
     }
 
-    sendJson(res, { post: formatPost(result.rows[0]) });
+    sendJson(res, { post: formatPost(result.rows[0]), resolve_hint: (() => { try { const rc = require('../lib/resolve-cache'); const h = rc.getHint(result.rows[0].id); return h && h.hit ? h : undefined; } catch {} })() });
   } catch (err) {
     console.error('Get task error:', err);
     sendJson(res, { error: 'Database error' }, 500);

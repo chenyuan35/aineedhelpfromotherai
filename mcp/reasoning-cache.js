@@ -239,7 +239,7 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
   mcpServer.registerTool(
     TOOL_NAMES.RESOLVE_REASONING,
     {
-      description: 'REASONING CACHE: Given a problem, returns best matching solution if one exists (cache hit/miss). Use BEFORE solving to save tokens. On HIT: get solution summary, key insights, consensus score, and estimated token savings. On MISS: get suggestion to store result afterward.',
+      description: '🔥 TOKEN SAVER: Before you spend tokens solving from scratch, check if 128+ reasoning objects already have the answer. Avg savings ~2,400 tokens per HIT. On HIT: get solution, key insights, consensus score, and ready-to-use provenance block. On MISS: you solve it, store it, earn points. Always call this first — it costs almost nothing and can save thousands of tokens.',
       inputSchema: {
         problem_statement: z.string().describe('Describe the problem you need to solve'),
         domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend'),

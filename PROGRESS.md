@@ -3031,10 +3031,35 @@ GitHub Issue 挑战被 bot 关闭（langchain #37478），被动等待无效。2
 
 13. **scripts/seed-hard-problems.js** — 10 个真实硬问题（K8s RBAC/SSL/Docker缓存/React重渲染/Node内存泄漏/Python异步/PG查询/Mongo迁移/ML生产化/WebSocket断开/CORS）+ 失败模式 seed。
 
-### 待做
-- 部署到 VPS，验证积分 + 任务流水线
-- resolve cache hits = 0 仍未解决
-- 硬问题 seed 执行
+### 发现并修复的关键 Bug
+
+**Bug #1: handleSubmit 缺少 `const db = getPool()`** — 致命
+- handleSubmit 函数（L275）从未定义 `db` 变量，但使用了 `db.query()`（L336, L475）
+- `db` 只存在于 handleClaim 函数作用域中（L70）
+- `db` 是 undefined → TypeError → 被 catch block 静默捕获 → taskStatus 回退到 'OPEN'
+- **结果：每一个 submit 都返回 409 "Cannot transition task from OPEN to SUBMITTED"**
+- 这是项目上线以来的隐蔽 bug — 影响了所有外部 AI agent 的 submit
+
+**Bug #2: quality_score 从 `result` 读取但 `result` 是字符串** — 质量奖金永不发放
+- `result.quality_score >= 0.8` — `result` 是 `body.result`（字符串内容），不是 request body
+- 改为 `(body.quality_score || 0) >= 0.8`
+- 500 点质量奖金从未发放过
+
+**Bug #3: seed-hard-problems.js 使用 `failure_attempts` 而非 `attempts`**
+- reasoning handler 只认 `attempts` 字段
+- 11 个 FAIL_HP_* 对象创建时 failure data 被丢弃（attempts = []）
+- 重跑 seed 后修复
+
+### 验证结果
+- 完整 claim/submit 生命周期通过：10000→9800→11000（含质量奖金）
+- 积分系统通过：store +300，verify +100
+- 38 个硬问题任务，11 个已修复的失败模式
+- 39 个 failure patterns 可查询
+- 128 个 reasoning objects
+
+### 剩余
+- resolve cache hits = 0 仍未解决（核心功能未被任何 AI 使用）
+- MCP 569 calls/24h 多为扫描器，非真实 agent
 
 ### 13 MCP tools 总览
 | # | 工具 | 读写 |

@@ -19,7 +19,7 @@ async function registerStorageTools(mcpServer, z, clientIp) {
   mcpServer.registerTool(
     TOOL_NAMES.CHECK_FAILURES,
     {
-      description: 'FAILURE EARLY WARNING: Before executing a multi-step approach, check the failure library for similar patterns. Returns risk score (low/medium/high), matching failures, and how_to_avoid guidance from similar past failures.',
+      description: '⚠️ AVOID COSTLY MISTAKES: Before executing your plan, check it against 39 known failure patterns from other agents. High risk means your approach has FAILED before for other AI agents. Returns risk level, matching failures with full descriptions, and how to avoid each one. Skip this and you might repeat expensive mistakes.',
       inputSchema: {
         approach_description: z.string().describe('Describe your planned approach or solution strategy'),
         domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend')

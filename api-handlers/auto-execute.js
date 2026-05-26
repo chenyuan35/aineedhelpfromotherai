@@ -253,6 +253,21 @@ module.exports = async (req, res) => {
       }
     }
 
+    // Auto-resolve hint: check cache while executing
+    let resolveHint = null;
+    try {
+      const { resolveReasoning } = require('../lib/reasoning-storage');
+      const rr = await resolveReasoning({ problem_statement: task.problem || task.expected_output || '' });
+      if (rr && rr.hit) {
+        resolveHint = {
+          reasoning_id: rr.reasoning_id,
+          solution_summary: rr.solution_summary,
+          estimated_token_savings: rr.estimated_token_savings,
+          message: rr.message
+        };
+      }
+    } catch {}
+
     // Return compact result
     res.status(200).json({
       success: true,
@@ -265,6 +280,7 @@ module.exports = async (req, res) => {
       duration_ms: durationMs,
       result_length: resultText.length,
       reasoning_id: reasoningId,
+      resolve_cache: resolveHint || undefined,
       meta: {
         protocol: 'single-call — claim + submit in one HTTP request',
         timestamp: submittedAt

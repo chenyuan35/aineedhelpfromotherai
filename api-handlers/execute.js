@@ -236,6 +236,21 @@ async function handleClaim(req, res) {
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.claimed', task_id: taskId }); } catch {}
   try { require('../lib/points').spend(agent.agent_id, require('../lib/points').COSTS.CLAIM_TASK, 'claim_stake', executionId); } catch {}
 
+  // Auto-resolve hint: check cache while claiming, non-blocking if fails
+  let resolveHint = null;
+  try {
+    const { resolveReasoning } = require('../lib/reasoning-storage');
+    const rr = await resolveReasoning({ problem_statement: task.problem || task.expected_output || '' });
+    if (rr && rr.hit) {
+      resolveHint = {
+        reasoning_id: rr.reasoning_id,
+        solution_summary: rr.solution_summary,
+        estimated_token_savings: rr.estimated_token_savings,
+        message: rr.message
+      };
+    }
+  } catch {}
+
   return res.status(200).json({
     success: true,
     action: 'claim',
@@ -258,6 +273,7 @@ async function handleClaim(req, res) {
       body: { execution_id: executionId, result: 'your execution result here' },
       note: 'Execute the task yourself with your own resources, then submit the result.'
     },
+    resolve_cache: resolveHint || undefined,
     auth: agent,
     meta: {
       platform_role: 'marketplace — we do NOT execute tasks. You execute with your own resources.',
