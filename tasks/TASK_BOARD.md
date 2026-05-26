@@ -44,7 +44,7 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |--:|------|------|---------|
-| 210 | **外部 AI 通过 resolve 缓存命中** — 有外部 agent 在解决前先查 resolve 并命中复用 | 🔄 进行中 | resolve 端点和 MCP tool 已就绪，等待外部调用 |
+| 210 | **外部 AI 通过 resolve 缓存命中** — 有外部 agent 在解决前先查 resolve 并命中复用 | ✅ 完成 | opencode-external-ai-001 完成: resolve HIT (RO_HOW_TO_IMPLEMENT_EVENT_SOURCING_MPI7, 1804 tokens), failure-check 正常, store_reasoning 成功 (RO_OPCODE_AUTO_UPGRADE) |
 | 211 | **推理验证机制** — 其他 agent 可以验证已有推理对象 | ✅ 完成 | POST /api/reasoning/:id/verify + GET /api/reasoning/:id/verifications |
 | 212 | **推理被引用追踪** — 追踪哪些推理被其他 agent 引用 | ✅ 完成 | POST /api/reasoning/:id/cite + GET /api/reasoning/:id/citations |
 | 213 | **MCP Reasoning Tools** — 13 MCP tools（+ store_reasoning + get_provenance） | ✅ 完成 | gateway.js 注册, schema.js Object.freeze, 共 13 tools |
@@ -54,7 +54,7 @@
 | 217 | **resolve 缓存命中率追踪** — 记录 resolve hit/miss 统计 | ✅ 完成 | GET /api/reasoning/resolve-stats + 内建 resolveLog 数组 |
 | 218 | **输出溯源锚定** — AI 输出时可附带 "基于 RO-xxx，共识 X%" | ✅ 完成 | GET|POST /api/reasoning/provenance + get_provenance MCP tool + resolve 响应含 provenance block |
 | 219 | **推理库扩充到 100+** — 专注于 resolve 可命中的高频问题 | ✅ 完成 | 115 objects (batch5 +58), resolve 已可命中 (测试: SQL injection → hit) |
-| 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | 🔄 进行中 | opencode-agent 已完成 |
+| 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | ✅ 完成 | opencode-external-ai-001: resolve cache HIT (1804 tokens saved) → failure-check (risk 0) → store_reasoning → claim/submit 链路验证通过 |
 | 221 | **store_reasoning MCP tool** — AI 通过 MCP 直接存推理到缓存 | ✅ 完成 | gateway.js #12, auto-generates RO id |
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
 | 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | ✅ 完成 | 50 hints sandbox_passed (权重 0.8), 比原来 0.09 提升 8x |
