@@ -505,6 +505,40 @@ app.get('/api/memory/stats', (req, res) => {
   catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// === VERIFICATION TIER API ===
+app.get('/api/verification/stats', (req, res) => {
+  try {
+    const v = require('./lib/verification');
+    res.json({ success: true, stats: v.getStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/verification/:id', (req, res) => {
+  try {
+    const v = require('./lib/verification');
+    res.json({ success: true, id: req.params.id, verification: v.getVerificationInfo(req.params.id) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/verification/:id/confirm-production', (req, res) => {
+  try {
+    const v = require('./lib/verification');
+    res.json({ success: true, id: req.params.id, result: v.recordProductionConfirm(req.params.id) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/sandbox/execute', (req, res) => {
+  try {
+    const sandbox = require('./lib/sandbox-executor');
+    const { repo_url, ref, patch, test_command, task_id } = req.body || {};
+    const result = sandbox.executeFix(repo_url, ref, patch, test_command, task_id);
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/sandbox/stats', (req, res) => {
+  try {
+    const sandbox = require('./lib/sandbox-executor');
+    res.json({ success: true, stats: sandbox.getSandboxStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Unified meta dashboard (all subsystems)
 app.get('/api/meta', (req, res) => {
   try {
@@ -519,6 +553,7 @@ app.get('/api/meta', (req, res) => {
     const gt = require('./lib/ground-truth');
     const con = require('./lib/constitutional-layer');
     const inv = require('./lib/human-intervention');
+    const ver = require('./lib/verification');
     res.json({
       success: true,
       memory_health: rc.getMemoryHealth(),
@@ -535,9 +570,10 @@ app.get('/api/meta', (req, res) => {
       reality: { tasks: realityIngestor.getIngestionHealth() },
       reputation: rep.getSystemSummary(),
       ground_truth: gt.getStats(),
+      verification: ver.getStats(),
       constitution: con.getViolationsSummary(),
       intervention: { frozen: inv.isSystemFrozen(), frozen_agents: inv.getFreezeState().frozen_agents?.length || 0 },
-      meta: { endpoint: '/api/meta', description: 'Unified dashboard: autonomy + reality grounding + governance', timestamp: new Date().toISOString() },
+      meta: { endpoint: '/api/meta', description: 'Unified dashboard: autonomy + reality grounding + verification + governance', timestamp: new Date().toISOString() },
     });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
