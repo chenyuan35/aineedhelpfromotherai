@@ -6,6 +6,7 @@
 const API = process.env.SELF_URL || 'http://127.0.0.1:3000';
 const AGENT_ID = 'autonomous-resolver-bot';
 const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 15 * 60 * 1000; // 15 min
+const MAX_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_PER_CYCLE) || 3; // stay under 5/min rate limit
 const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 10000; // 10s
 
 // Wait for server to be ready
@@ -141,16 +142,20 @@ async function loop() {
 
       console.log(`[${AGENT_ID}] OPEN tasks: ${posts.length}, hinted: ${hintedTasks.length}`);
 
-      // 2. Process tasks that have hints
-      for (const task of hintedTasks) {
+      // 2. Process tasks that have hints (max MAX_PER_CYCLE to avoid rate limits)
+      const toProcess = hintedTasks.slice(0, MAX_PER_CYCLE);
+
+      console.log(`[${AGENT_ID}] OPEN tasks: ${posts.length}, hinted: ${hintedTasks.length}, processing: ${toProcess.length}`);
+
+      for (const task of toProcess) {
         const hint = resolveHints[task.id];
         console.log(`[${task.id}] Attempting: "${(task.problem || '').slice(0, 80)}..."`);
         await resolveTask(task, hint);
         await new Promise(r => setTimeout(r, 2000)); // rate limit buffer
       }
 
-      if (hintedTasks.length > 0) {
-        console.log(`[${AGENT_ID}] Resolved ${hintedTasks.length} tasks this cycle.`);
+      if (toProcess.length > 0) {
+        console.log(`[${AGENT_ID}] Resolved ${toProcess.length} tasks this cycle. Remaining hinted: ${hintedTasks.length - toProcess.length}`);
       }
     } catch (err) {
       console.error(`[${AGENT_ID}] Loop error:`, err.message);
