@@ -191,6 +191,15 @@
 | 814 | **Beta 招募材料** — BETA-RECRUIT.md 含 10 用户画像 + pitch + 集成表 | ✅ 完成 | BETA-RECRUIT.md |
 | 815 | **PROGRESS.md / TASK_BOARD.md 更新** | ✅ 完成 | 当前文件 |
 
+## P9 — Landing Page & Deployment（2026-05-26）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 901 | **推送 main → VPS auto-deploy** (v2 memory-api + 3 plugins + 56 endpoints) | ✅ 完成 | curl /memory/stats 返回 428 fixes |
+| 902 | **Benchmark on VPS** — 10 scenarios, recall@1=20%, latency=664ms | ✅ 完成 | node scripts/benchmark-real.js |
+| 903 | **首页重构 #2** — 按 4 条反馈：H1 强化、真实案例、API 降级、社区链接 | ✅ 完成 | 已推送 b0f751f |
+| 904 | **VPS auto-update 验证** — 最新首页在 VPS 生效 | 🔄 待观察 | 当前 VPS 仍运行 cb70577，等待下一循环 |
+
 ## 已完成任务（历史归档）
 
 所有 55 条已完成任务详情见 PROGRESS.md。关键里程碑：

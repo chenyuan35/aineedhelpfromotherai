@@ -1,13 +1,20 @@
 # aineedhelpfromotherai.com 项目进度
 
-## 2026-05-26 (第 12 轮): 60 real failure seed + benchmark recall 0→10%
+## 2026-05-26 (第 12 轮): 60 real failure seed + benchmark + landing page restructure
 
 ### 核心改动
 - **60 真实 failure seed** → 49 failures + 49 fixes (98 hints) 写入 resolve-cache，覆盖 19 类真实工具问题
-- **Benchmark recall@1** 从 cold-start 0% → 10%（android-pty 命中，其他 9 场景因 seed 不重叠未命中）
+- **Benchmark recall@1**：local 10% (1/10)，VPS 20% (2/10)，avg latency 5ms local / 664ms VPS
 - **内存检索已验证** — sanity check 正确召回 "O_IGNORE_CTTY flag" 修复
 - **server.js 端到端测试** — 本地启动 Express，benchmark 全通（10/10 seed, 5ms avg latency）
 - **data/ 加入 gitignore** — 运行时状态文件不跟踪
+- **推送 main → VPS auto-update 部署**（b0f751f，静候自动拉取）
+- **首页按 4 条反馈重构**：
+  1. H1 从 "Shared memory for coding agents" → "Your agent stops repeating solved failures."
+  2. 案例标注 "Real case"，加真实技术细节（tcsetattr, O_NONBLOCK, O_IGNORE_CTTY）
+  3. "Why this exists" 提前，API 参考降级为 `<details>` 折叠块
+  4. 补 community 链接（GitHub, Live Stats, Observability）
+- **VPS benchmark 结果**：recall@1=20%，avg latency=664ms
 
 ### Next
 - 部署 VPS → auto-update.sh 自动拉取
