@@ -234,22 +234,9 @@ async function handleClaim(req, res) {
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.claimed', task_id: taskId }); } catch {}
-  try { require('../lib/points').spend(agent.agent_id, require('../lib/points').COSTS.CLAIM_TASK, 'claim_stake', executionId); } catch {}
 
-  // Auto-resolve hint: check cache while claiming, non-blocking if fails
-  let resolveHint = null;
-  try {
-    const { resolveReasoning } = require('../lib/reasoning-storage');
-    const rr = await resolveReasoning({ problem_statement: task.problem || task.expected_output || '' });
-    if (rr && rr.hit) {
-      resolveHint = {
-        reasoning_id: rr.reasoning_id,
-        solution_summary: rr.solution_summary,
-        estimated_token_savings: rr.estimated_token_savings,
-        message: rr.message
-      };
-    }
-  } catch {}
+  // Telemetry: track hint served on claim
+  try { const ht = require('../lib/hint-telemetry'); ht.trackHintsServed('claim', agent.agent_id, resolveHint ? 1 : 0); } catch {}
 
   return res.status(200).json({
     success: true,
@@ -602,6 +589,7 @@ async function handleSubmit(req, res) {
     // Refund claim stake on successful submit
     pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
   } catch {}
+  try { const ht = require('../lib/hint-telemetry'); const rc = require('../lib/resolve-cache'); ht.trackSubmitCall(agent.agent_id, execution.task_id, resultText, rc.getHint(execution.task_id)); } catch {}
 
     return res.status(200).json({
       success: true,
