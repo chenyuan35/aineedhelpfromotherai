@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main, master ]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   auth-demo-linux:
     runs-on: ubuntu-latest
@@ -14,14 +17,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 24
       - name: Install deps
         run: npm ci
       - name: Start Express server (background)
         run: |
           npm start > /tmp/server.log 2>&1 &
           sleep 2
-          # Wait for health check
           for i in {1..30}; do
             if curl -s http://localhost:3000/api/health | grep -q 'ok'; then
               echo "Server is ready"
@@ -48,16 +50,22 @@ jobs:
       - name: Start Express server (background)
         shell: pwsh
         run: |
-          $job = Start-Job -ScriptBlock { npm start }
-          Start-Sleep -Seconds 2
-          # Wait for health check
+          $ps = Start-Process -FilePath "node" -ArgumentList "server.js" -PassThru -NoNewWindow -RedirectStandardOutput "$env:RUNNER_TEMP\server.log" -RedirectStandardError "$env:RUNNER_TEMP\server.err"
+          Start-Sleep -Seconds 3
+          $ready = $false
           for ($i = 1; $i -le 30; $i++) {
             try {
-              $resp = Invoke-WebRequest -Uri http://localhost:3000/api/health -ErrorAction SilentlyContinue
-              if ($resp.StatusCode -eq 200) { Write-Host "Server is ready"; break }
-            } catch {}
+              $resp = Invoke-WebRequest -Uri http://localhost:3000/api/health -ErrorAction SilentlyContinue -UseBasicParsing
+              if ($resp.StatusCode -eq 200) { Write-Host "Server is ready (attempt $i)"; $ready = $true; break }
+            } catch { }
+            if ($i -eq 15) { Write-Host "Server log:"; Get-Content "$env:RUNNER_TEMP\server.log" -Tail 5 -ErrorAction SilentlyContinue }
             Write-Host "Waiting for server (attempt $i)..."
             Start-Sleep -Seconds 1
+          }
+          if (-not $ready) {
+            Write-Host "=== Server log ==="; Get-Content "$env:RUNNER_TEMP\server.log" -ErrorAction SilentlyContinue
+            Write-Host "=== Server error ==="; Get-Content "$env:RUNNER_TEMP\server.err" -ErrorAction SilentlyContinue
+            throw "Server failed to start within 30 seconds"
           }
       - name: Run auth-demo (powershell)
         shell: pwsh
