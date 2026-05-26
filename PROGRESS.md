@@ -1,5 +1,227 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-26 (第 12 轮): 60 real failure seed + benchmark recall 0→10%
+
+### 核心改动
+- **60 真实 failure seed** → 49 failures + 49 fixes (98 hints) 写入 resolve-cache，覆盖 19 类真实工具问题
+- **Benchmark recall@1** 从 cold-start 0% → 10%（android-pty 命中，其他 9 场景因 seed 不重叠未命中）
+- **内存检索已验证** — sanity check 正确召回 "O_IGNORE_CTTY flag" 修复
+- **server.js 端到端测试** — 本地启动 Express，benchmark 全通（10/10 seed, 5ms avg latency）
+- **data/ 加入 gitignore** — 运行时状态文件不跟踪
+
+### Next
+- 部署 VPS → auto-update.sh 自动拉取
+- 运行 benchmark 对 VPS 验证
+- BETA-RECRUIT.md 执行（50 目标用户外联）
+- 首页信息结构改进（第二步）
+
+## 2026-05-26 (第 11 轮续): Failure Memory SDK — 战略转向
+
+### 核心改动：从"AI 文明"到"跨 agent 失败记忆"
+
+**这不是第 10 轮的继续。这是战略转向。**
+
+问题诊断：系统积累了大量内部复杂性 (ELO/lineage/evolution/autonomy/economy/constitution)，但外部 agent 没有接入理由。用户不会因为"概念酷"接入，只会因为"接入后立刻变强"才来。
+
+真正的痛点：AI coding agent 的 session memory 断裂。同一个 bug，Agent A 花 20 分钟，Agent B 也要花 20 分钟。Agent C 也是。
+
+解决方案：跨 agent 失败记忆。3 个 API 端点。5 分钟接入。直觉化的价值。
+
+### 1. Minimal Memory API (lib/memory-api.js)
+
+3 个端点，任何 agent 5 分钟接入：
+
+| 端点 | 什么时候调用 | 作用 |
+|------|------------|------|
+| `POST /memory/failure` | 失败后 | 记录失败经验，返回相似失败 + 已知修复 |
+| `POST /memory/search` | 修复前 | 搜索共享记忆：相似失败 + 已验证修复 + 幻觉警告 |
+| `POST /memory/resolution` | 成功后 | 存储已验证修复，标记为可被其他 agent 命中 |
+
+底层直接对接 resolve-cache，无需新存储。
+
+### 2. 3 个插件
+
+| 插件 | 接入方式 | 安装时间 |
+|------|---------|---------|
+| **Claude Code** | MCP server (plugins/claude-code-mcp.js) | 1 分钟 |
+| **OpenHands** | Shell 脚本 (plugins/memory.sh)，source 即用 | 1 分钟 |
+| **Codex CLI** | Custom tool (plugins/codex-cli-plugin.js) | 2 分钟 |
+
+### 3. Viral Demo (scripts/demo-viral.js)
+
+自包含 transcript 展示：
+```
+Agent A tries to fix Android PTY deadlock → FAILS (15 min)
+Agent A submits failure → 200ms
+--- time passes ---
+Agent B encounters SAME problem → searches memory → 300ms hit
+Agent B skips all 5 dead ends Agent A tried
+Agent B applies fix → 30 seconds
+Agent B submits fix → every agent wins forever
+```
+
+### 4. Landing page + llms.txt 重写
+
+**旧**: "AI Reason Cache & Consensus Layer" / "Self-evolving agent ecosystem"
+**新**: "Shared memory for coding agents. Your agent stops repeating solved failures."
+
+**原则变更**:
+- ❌ 不再提 civilization / ecology / autonomous society
+- ✅ 3 个 curl 命令即为全部 API
+- ✅ "5 分钟接入，立刻变强"
+- ✅ 一个 demo 就让用户理解
+
+### 5. v2 内存 API — 检索质量 + 严格模式 (lib/memory-api.js v2)
+
+**新增 verified_only / strict 模式**: `{ "query": "...", "strict": true }` 只返回 sandbox-verified、high-reputation、replay-confirmed 的修复。零噪音。
+
+**检索质量改进**:
+- 过期过滤: >14 天且 0 成功的 hint 自动屏蔽
+- 去重: 按 summary 指纹去重，相同内容不重复返回
+- 复合排序: similarity ×0.5 + score_normalized ×0.3 + freshness ×0.2
+- 置信度计算: success_count / (success_count + failure_count + 1)
+- 每个 fix 附带: confidence%, supporting_agents count, age_days
+
+**新增 /memory/recall 端点** — 视觉化 "Memory Recall" 格式，纯文本 markdown 返回。
+这是未来 viral 传播格式：
+
+```
+📦 Memory Recall
+Found verified fix from 17 days ago:
+disable tcsetpgrp on Android
+(confidence: 83% · 3 agents verified)
+```
+
+### 6. Benchmark 脚本 (scripts/benchmark-real.js)
+
+10 个真实世界 coding 失败场景 (android-pty, docker-perm, node-module-not-found 等)。
+测量 recall@1, recall@5, MRR, latency, token savings。
+
+**Cold-start baseline (dev 环境，0 seed data)**:
+| 指标 | 值 |
+|------|-----|
+| recall@1 | 0% |
+| recall@5 | 0% |
+| mean MRR | 0.000 |
+| avg latency | 321ms |
+
+基准明确: seed memory → recall 会从 0% 跳到 >50%。这是下一步核心工作。
+
+### 7. Beta 招募材料 (BETA-RECRUIT.md)
+
+10 个目标用户画像：Claude Code daily user、OpenHands contributor、Cursor power user、Codex CLI early adopter、AI agent startup founder、SWE-bench contributor 等。
+含 pitch + 集成格式表 + key questions。
+
+### 核心改动：从"自循环 AI 沙盒"到"绑定现实的自治基础设施"
+
+1. **reality-ingestor** (`lib/reality-ingestor.js`):
+   - 6 个实时源自动抓取：GitHub Issues (10 repos)、Stack Overflow (10 tags)、HN bug 讨论、MCP 生态仓库 issues、npm 包/安全公告、Docker issues
+   - 每 30 分钟自动 ingest，去重存储到 `data/reality-tasks.json`
+   - API: `GET /api/reality/tasks` / `POST /api/reality/ingest` / `GET /api/reality/stats`
+
+2. **reputation-system** (`lib/reputation-system.js`):
+   - 4 维长期信任评分: verified_fixes (×10), hallucination_debt (×−5), recovery_contribution (×8), memory_toxicity (×−3)
+   - 5 级 trust_level: verified (≥30), trusted (≥10), neutral (≥0), suspicious (≥−10), untrusted
+   - Memory economy 集成: budget_multiplier (verified ×2, trusted ×1.5, neutral ×1, suspicious ×0.5, untrusted ×0.25)
+   - Memory access level: full / high / standard / restricted / denied
+
+3. **sandbox-executor** (`lib/sandbox-executor.js`):
+   - 完整 pipeline: git checkout (shallow clone) → apply patch (--check 验证) → run tests (自动检测测试框架) → capture logs
+   - 后备: logicalVerify 做 patch 结构性验证 (无 git 环境时)
+   - 临时工作目录自动清理，不可用时静默回退
+
+4. **ground-truth verification** (`lib/ground-truth.js`):
+   - verifyFix: 自动选择 sandbox → logical → unverifiable 路径
+   - 成功记录 verified_fix (+reputation), 失败记录 hallucination_debt
+   - reality_divergence_score: 测量 self-assessment vs real-world 偏差
+
+5. **constitutional-layer** (`lib/constitutional-layer.js`):
+   - 8 条硬约束: max_agents(30) / max_breeding_cycles(2) / max_hints_per_agent(20%) / min_citation_diversity(5) / max_consecutive_failures(5) / max_toxicity(5) / max_hallucination_debt(10) / min_reputation_for_breeding(0)
+   - 每个约束有 action: block / quarantine / freeze / restrict_breeding / warn
+   - checkAll(agentId, context) 批量检查 + 自动记录 violation
+   - 规则可运行时更新 via API
+
+6. **human-intervention protocol** (`lib/human-intervention.js`):
+   - System freeze/thaw: 阻止所有 mutating POST/PUT/PATCH/DELETE (503)
+   - Agent freeze/thaw: 精确定位单个 agent
+   - quarantine-agent: 触发 resolve-cache 隔离
+   - rollback-memory: 备份当前 resolve-cache → 清除指定 hint
+   - system rollback: 恢复指定 backup checkpoint
+   - Audit trail: 所有操作记录到 `data/audit-log.json`
+   - Backup system: `data/backups/` 自动存储每次 rollback 前状态
+
+### API 端点总览 (新 28 个)
+
+| 系统 | 端点 |
+|------|------|
+| Reality | GET /api/reality/tasks, POST /api/reality/ingest, GET /api/reality/stats |
+| Reputation | GET /api/reputation/leaderboard, GET /api/reputation/:agentId, POST /api/reputation/record-verified, POST /api/reputation/record-hallucination |
+| Ground Truth | GET /api/verify, POST /api/verify/fix, GET /api/verify/:taskId |
+| Sandbox | GET /api/sandbox/stats, POST /api/sandbox/execute |
+| Constitution | GET /api/constitution/rules, POST /api/constitution/rules/:ruleId, GET /api/constitution/violations, POST /api/constitution/check |
+| Intervention | GET /api/audit, POST /api/freeze, POST /api/thaw, POST /api/freeze/agent, POST /api/thaw/agent, POST /api/quarantine-agent, POST /api/rollback-memory, POST /api/rollback-system, GET /api/backups |
+
+### 技术细节
+
+- 所有新模块通过 server.js startup 自动初始化
+- Intervention middleware 放在 rate-limit 后，handler 前，确保冻结立即生效
+- 所有端点使用 try/catch + 500 fallback，不干扰现有路由
+- 向后兼容: 所有旧 API 在系统正常时行为不变
+- 文件状态零迁移: 所有新状态存储在 `data/reality-tasks.json` / `data/reputation.json` / `data/constitution.json` / `data/constitutional-violations.json` / `data/freeze-state.json` / `data/audit-log.json` / `data/ground-truth.json` / `data/sandbox-execution-log.json` / `data/backups/`
+
+### 意义
+
+- **系统不再是自循环 AI 沙盒** — 真实世界数据持续污染内部生态，sandbox 验证绑定提议与结果
+- **信任分层** — ELO (技能) + Reputation (诚信) 双轴评价，防止 high-ELO hallucination civilization
+- **宪法约束** — 8 条规则防止 agent cartelization / memory monopolization / runaway breeding
+- **人类兜底** — kill switch + audit trail + backup/rollback 确保人类始终可控制
+- **关键指标转换**: cycle count → real-world fix rate / verified patch success / false-confidence rate / reality divergence score
+
+### 核心改动：API 端点 + 服务端初始化 + 观测页面完整集成
+
+1. **API 端点新增 (server.js)**:
+   - `GET /api/world-model` — 全局状态摘要 (memory health/agent dominance/lineage health/extinctions/economy)
+   - `GET /api/goals` — 自主目标列表
+   - `POST /api/goals/generate` — 触发 autoCycle 生成新目标
+   - `POST /api/goals/complete` — 标记目标完成 (goal_id + outcome)
+   - `GET /api/architect` — winning traits 分析 + pending experiments
+   - `POST /api/architect/design` — 批量生成新 agent 配置
+   - `GET /api/economy` — 系统级经济摘要 (total budget / agents funded / avg cost)
+   - `GET /api/economy/budget/:agentId` — 单 agent 预算 + hint cost 查询
+   - `POST /api/collapse/simulate` — 触发灾难模拟 (支持 5 种场景选择)
+
+2. **统一 meta 端点升级**:
+   - `GET /api/meta` 现在聚合 world_model + goals + architect + economy + winners
+   - 返回完整生态仪表盘数据 (单次请求 = 全系统状态)
+
+3. **启动时自动初始化**:
+   - World model 在 server start 时构建初始状态
+   - Goal generator autoCycle 生成第一轮目标
+   - Architect agent batchDesign 设计初始 agent 配置
+   - Memory economy 初始化所有 agent 预算
+   - 后台定时器: 目标生成每 10 分钟, 架构设计每 30 分钟, world model 刷新每 1 分钟
+
+4. **观测页面 (/meta/) 升级**:
+   - WORLD MODEL 卡片区: memory health / agent diversity / lineage / extinctions / economy / last update
+   - SELF-GENERATED GOALS 表格: goal description / priority / status / outcome + 按钮触发新目标生成
+   - ARCHITECT AGENT 卡片: winning traits count / pending experiments / best profile
+   - MEMORY ECONOMY 卡片: total budget / agents funded / avg hint cost / avg remaining
+   - COLLAPSE SIMULATION 选择器: 5 种场景 + "Run Simulation" 按钮 + 实时输出面板
+
+### 技术细节
+
+- 所有新端点通过 try/catch 保护，不干扰现有路由
+- Collapse 端点通过 execSync 调用独立脚本 (30s 超时限制)
+- 数据依赖: goals / architect / economy 需 resolve-cache.json + elo-ratings.json 存在
+- World model 文件存储 `data/world-model.json`，不存在时返回空默认值
+- 所有端点继承 Express 错误中间件，生产环境不暴露 stack trace
+
+### 意义
+
+- **第三幕 (编排引擎) 前置条件完成**: 系统 5 个递归自治模块全部可通过 API 远程驱动
+- **观测闭环**: world model → goals → architect → economy → collapse test → back to world model
+- **人类不需要手动操作**: 所有子系统通过定时器自主运行，UI 只用于观察和触发特殊动作
+
 ## 2026-05-25 (第 7 轮续): 限流配置集中化 + 工厂函数 — P1-D 完成
 
 ### 核心改动：DRY 原则 — 一处定义，全局使用

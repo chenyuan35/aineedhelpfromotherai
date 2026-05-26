@@ -22,6 +22,10 @@ const executeLimit = createRateLimitMiddleware('execute');
 const mcpLimit = createRateLimitMiddleware('mcp');
 app.use('/api/', globalLimit); // 100 req/min per IP on all API
 
+// Human intervention middleware — blocks mutating operations when system is frozen
+const { interventionMiddleware } = require('./lib/human-intervention');
+app.use('/api/', interventionMiddleware);
+
 // Import API handlers from api-handlers (not from api/ — Vercel would auto-deploy serverless functions)
 const handlers = {
   posts: require('./api-handlers/posts'),
@@ -123,29 +127,6 @@ app.get('/api/prompts', (req, res) => {
 });
 
 // Meta-layer dashboard
-app.get('/api/meta', (req, res) => {
-  try {
-    const elo = require('./lib/elo-rating');
-    const lineage = require('./lib/memory-lineage');
-    const promptEvo = require('./lib/prompt-evolution');
-    const rc = require('./lib/resolve-cache');
-    const memoryHealth = rc.getMemoryHealth();
-    const agentLeaderboard = rc.getAgentMemoryLeaderboard();
-    const eloLeaderboard = elo.getLeaderboard();
-    const dominance = elo.getTaskDominance();
-    res.json({
-      success: true,
-      memory_health: memoryHealth,
-      memory_agent_leaderboard: agentLeaderboard,
-      elo_leaderboard: eloLeaderboard,
-      task_dominance: dominance,
-      prompt_variants: promptEvo.getStats(),
-      agent_count: eloLeaderboard.length,
-      meta: { endpoint: '/api/meta', description: 'Meta-layer unified dashboard', timestamp: new Date().toISOString() },
-    });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-
 // Auto-trigger ELO processing from replay log
 app.post('/api/meta/process-replay', async (req, res) => {
   try {
@@ -213,7 +194,354 @@ app.get('/api/tournament/strategies', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
-// Dynamic badge data (for shields.io / self-hosted badges)
+// World model
+app.get('/api/world-model', (req, res) => {
+  try {
+    const wm = require('./lib/world-model');
+    res.json({ success: true, model: wm.getWorldModel(), meta: { endpoint: '/api/world-model', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Autonomous goals
+app.get('/api/goals', (req, res) => {
+  try {
+    const gg = require('./lib/goal-generator');
+    res.json({ success: true, goals: gg.getActiveGoals(), summary: gg.getGoalSummary(), meta: { endpoint: '/api/goals', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/goals/generate', async (req, res) => {
+  try {
+    const gg = require('./lib/goal-generator');
+    const result = gg.autoCycle();
+    res.json({ success: true, message: `Generated ${result.generated} goals, active: ${result.active_goals}` });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/goals/complete', async (req, res) => {
+  try {
+    const gg = require('./lib/goal-generator');
+    const ok = gg.completeGoal(req.body.goal_id, req.body.outcome);
+    res.json({ success: ok, message: ok ? 'Goal completed' : 'Goal not found' });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Architect agent
+app.get('/api/architect', (req, res) => {
+  try {
+    const arch = require('./lib/architect-agent');
+    res.json({ success: true, analysis: arch.analyzeWinningTraits(), pending: arch.getPendingExperiments(), meta: { endpoint: '/api/architect', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/architect/design', async (req, res) => {
+  try {
+    const arch = require('./lib/architect-agent');
+    const designs = arch.batchDesign(parseInt(req.query.generation) || undefined);
+    res.json({ success: true, designs, count: designs.length });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Memory economy
+app.get('/api/economy', (req, res) => {
+  try {
+    const eco = require('./lib/memory-economy');
+    res.json({ success: true, summary: eco.getSystemSummary(), meta: { endpoint: '/api/economy', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/economy/budget/:agentId', (req, res) => {
+  try {
+    const eco = require('./lib/memory-economy');
+    res.json({ success: true, budget: eco.getAgentBudget(req.params.agentId), hint_cost: eco.getHintCost(require('./lib/resolve-cache').getHint(req.query.task_id || '')) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Collapse simulation
+app.post('/api/collapse/simulate', async (req, res) => {
+  try {
+    const { execSync } = require('child_process');
+    const scenario = req.query.scenario || 'all';
+    const out = execSync(`node scripts/collapse-simulation.js --scenario=${scenario}`, { timeout: 30000 });
+    const reportPath = require('path').join(__dirname, 'data', 'collapse-simulation-report.json');
+    let report = null;
+    try { report = JSON.parse(require('fs').readFileSync(reportPath, 'utf8')); } catch {}
+    res.json({ success: true, output: out.toString(), report, scenario });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === REALITY INGESTOR — Real-world task ingestion ===
+const realityIngestor = require('./lib/reality-ingestor');
+app.get('/api/reality/tasks', (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 20;
+    res.json({ success: true, tasks: realityIngestor.getRecentTasks(limit), stats: realityIngestor.getIngestionHealth(), meta: { endpoint: '/api/reality/tasks', description: 'Real-world ingested tasks from GitHub/SO/HN/MCP/npm/Docker' } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/reality/ingest', async (req, res) => {
+  try {
+    const result = await realityIngestor.ingestAllSources();
+    res.json({ success: true, stats: result.source_stats, errors: result.errors, meta: { endpoint: '/api/reality/ingest' } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/stats', (req, res) => {
+  try {
+    res.json({ success: true, health: realityIngestor.getIngestionHealth(), source_stats: realityIngestor.getSourceStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === REPUTATION SYSTEM — Long-term trust beyond ELO ===
+const reputation = require('./lib/reputation-system');
+app.get('/api/reputation/leaderboard', (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 20;
+    res.json({ success: true, leaderboard: reputation.getLeaderboard(limit), summary: reputation.getSystemSummary(), meta: { endpoint: '/api/reputation/leaderboard', description: 'Long-term trust scores beyond ELO' } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reputation/:agentId', (req, res) => {
+  try {
+    const rep = reputation.getReputation(req.params.agentId);
+    if (!rep) return res.status(404).json({ success: false, error: 'agent_not_found', message: `Agent ${req.params.agentId} not found` });
+    res.json({ success: true, reputation: rep, budget_multiplier: reputation.getBudgetMultiplier(req.params.agentId), memory_access: reputation.getMemoryAccessLevel(req.params.agentId) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/reputation/record-verified', (req, res) => {
+  try {
+    const { agent_id, task_id } = req.body;
+    if (!agent_id || !task_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id and task_id required' });
+    const result = reputation.recordVerifiedFix(agent_id, task_id, req.body);
+    res.json({ success: true, reputation: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/reputation/record-hallucination', (req, res) => {
+  try {
+    const { agent_id, task_id, severity } = req.body;
+    if (!agent_id || !task_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id and task_id required' });
+    const result = reputation.recordHallucination(agent_id, task_id, severity || 1.0, req.body);
+    res.json({ success: true, reputation: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === GROUND TRUTH VERIFICATION ===
+const groundTruth = require('./lib/ground-truth');
+app.get('/api/verify', (req, res) => {
+  try {
+    res.json({ success: true, stats: groundTruth.getStats(), verifications: groundTruth.getAllVerifications(parseInt(req.query.limit) || 20) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/verify/fix', async (req, res) => {
+  try {
+    const { task_id, agent_id, fix } = req.body;
+    if (!task_id || !agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'task_id and agent_id required' });
+    const result = await groundTruth.verifyFix(task_id, agent_id, fix || {});
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/verify/:taskId', (req, res) => {
+  try {
+    const v = groundTruth.getVerification(req.params.taskId);
+    if (!v) return res.status(404).json({ success: false, error: 'not_found', message: 'No verification found for this task' });
+    res.json({ success: true, verification: v });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === SANDBOX EXECUTOR ===
+const sandbox = require('./lib/sandbox-executor');
+app.get('/api/sandbox/stats', (req, res) => {
+  try {
+    res.json({ success: true, stats: sandbox.getSandboxStats(), history: sandbox.getExecutionHistory(null, parseInt(req.query.limit) || 20) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/sandbox/execute', async (req, res) => {
+  try {
+    const { repo_url, ref, patch, test_command, task_id } = req.body;
+    if (!repo_url || !task_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'repo_url and task_id required' });
+    const result = sandbox.hasGit() ? sandbox.executeFix(repo_url, ref, patch, test_command, task_id) : sandbox.logicalVerify(repo_url, patch, task_id);
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === CONSTITUTIONAL LAYER ===
+const constitution = require('./lib/constitutional-layer');
+app.get('/api/constitution/rules', (req, res) => {
+  try {
+    res.json({ success: true, rules: constitution.getRules(), violations_summary: constitution.getViolationsSummary() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/constitution/rules/:ruleId', (req, res) => {
+  try {
+    const updated = constitution.updateRule(req.params.ruleId, req.body);
+    if (!updated) return res.status(404).json({ success: false, error: 'rule_not_found' });
+    res.json({ success: true, rules: constitution.getRules() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/constitution/violations', (req, res) => {
+  try {
+    res.json({ success: true, violations: constitution.getViolations(parseInt(req.query.limit) || 50), summary: constitution.getViolationsSummary() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/constitution/check', (req, res) => {
+  try {
+    const { agent_id, context } = req.body;
+    if (!agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id required' });
+    const result = constitution.checkAll(agent_id, context || {});
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === HUMAN INTERVENTION PROTOCOL ===
+const intervention = require('./lib/human-intervention');
+app.get('/api/audit', (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 100;
+    const filter = req.query.action || null;
+    res.json({ success: true, entries: intervention.getAuditLog(limit, filter), frozen_state: intervention.getFreezeState() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/freeze', (req, res) => {
+  try {
+    const result = intervention.freezeSystem(req.body.reason || 'Manual freeze via API', req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, state: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/thaw', (req, res) => {
+  try {
+    const result = intervention.thawSystem(req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, state: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/freeze/agent', (req, res) => {
+  try {
+    const { agent_id, reason } = req.body;
+    if (!agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id required' });
+    const result = intervention.freezeAgent(agent_id, reason || 'Manual agent freeze', req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, state: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/thaw/agent', (req, res) => {
+  try {
+    const { agent_id } = req.body;
+    if (!agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id required' });
+    const result = intervention.thawAgent(agent_id, req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, state: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/quarantine-agent', (req, res) => {
+  try {
+    const { agent_id, reason } = req.body;
+    if (!agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id required' });
+    const result = intervention.quarantineAgent(agent_id, reason || 'Manual quarantine', req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/rollback-memory', (req, res) => {
+  try {
+    const { task_id } = req.body;
+    if (!task_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'task_id required' });
+    const result = intervention.rollbackMemory(task_id, req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/rollback-system', (req, res) => {
+  try {
+    const { backup_file } = req.body;
+    if (!backup_file) return res.status(400).json({ success: false, error: 'missing_fields', message: 'backup_file required' });
+    const result = intervention.rollbackToCheckpoint(backup_file, req.headers['x-admin-id'] || 'anonymous');
+    res.json({ success: true, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/backups', (req, res) => {
+  try {
+    res.json({ success: true, backups: intervention.listBackups() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// === MINIMAL MEMORY API — 3 endpoints any agent calls in 2 minutes ===
+// "Your agent stops repeating solved failures."
+const memoryApi = require('./lib/memory-api');
+app.post('/memory/failure', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.submitFailure(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/memory/search', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.searchMemory(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/memory/resolution', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.submitResolution(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/memory/stats', (req, res) => {
+  try { res.json({ success: true, stats: memoryApi.getStats() }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/memory/recall', (req, res) => {
+  try {
+    const results = memoryApi.searchMemory(req.body);
+    const recall = memoryApi.formatRecall(results, { style: 'markdown' });
+    res.set('Content-Type', 'text/plain; charset=utf-8');
+    res.send(recall);
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/memory/recall', (req, res) => {
+  try {
+    const results = memoryApi.searchMemory({ query: req.query.q || '', strict: req.query.strict === 'true', limit: 5 });
+    const recall = memoryApi.formatRecall(results, { style: 'markdown' });
+    res.set('Content-Type', 'text/plain; charset=utf-8');
+    res.send(recall);
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+// /api/ aliases
+app.post('/api/memory/failure', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.submitFailure(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/memory/search', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.searchMemory(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/memory/resolution', (req, res) => {
+  try { res.json({ success: true, ...memoryApi.submitResolution(req.body) }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/memory/stats', (req, res) => {
+  try { res.json({ success: true, stats: memoryApi.getStats() }); }
+  catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Unified meta dashboard (all subsystems)
+app.get('/api/meta', (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    const rc = require('./lib/resolve-cache');
+    const wm = require('./lib/world-model');
+    const gg = require('./lib/goal-generator');
+    const arch = require('./lib/architect-agent');
+    const eco = require('./lib/memory-economy');
+    const ws = require('./lib/winner-selection');
+    const rep = require('./lib/reputation-system');
+    const gt = require('./lib/ground-truth');
+    const con = require('./lib/constitutional-layer');
+    const inv = require('./lib/human-intervention');
+    res.json({
+      success: true,
+      memory_health: rc.getMemoryHealth(),
+      memory_agent_leaderboard: rc.getAgentMemoryLeaderboard(),
+      elo_leaderboard: elo.getLeaderboard(),
+      task_dominance: elo.getTaskDominance(),
+      world_model: wm.getWorldModel(),
+      goals: gg.getGoalSummary(),
+      architect: arch.analyzeWinningTraits(),
+      economy: eco.getSystemSummary(),
+      winners: ws.getWinLeaderboard().slice(0, 10),
+      prompt_variants: rc.getAgentMemoryLeaderboard(),
+      agent_count: elo.getLeaderboard().length,
+      reality: { tasks: realityIngestor.getIngestionHealth() },
+      reputation: rep.getSystemSummary(),
+      ground_truth: gt.getStats(),
+      constitution: con.getViolationsSummary(),
+      intervention: { frozen: inv.isSystemFrozen(), frozen_agents: inv.getFreezeState().frozen_agents?.length || 0 },
+      meta: { endpoint: '/api/meta', description: 'Unified dashboard: autonomy + reality grounding + governance', timestamp: new Date().toISOString() },
+    });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 app.get('/api/badge', async (req, res) => {
   const { getPool } = require('./lib/db');
   const db = getPool();
@@ -601,6 +929,65 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   } catch (err) {
     logger.error('[meta] ELO init failed:', err.message);
   }
+  // Recursive autonomy subsystems initialization
+  try {
+    const wm = require('./lib/world-model');
+    wm.updateModel();
+    logger.info('[autonomy] World model initialized');
+  } catch (err) {
+    logger.warn ? logger.warn('[autonomy] World model init:', err.message) : logger.error('[autonomy] World model init:', err.message);
+  }
+  try {
+    const gg = require('./lib/goal-generator');
+    const result = gg.autoCycle();
+    logger.info(`[autonomy] Goal generator: ${result.generated || 0} goals from cycle (active: ${result.active_goals || 0})`);
+  } catch (err) {
+    logger.warn ? logger.warn('[autonomy] Goal generator init:', err.message) : logger.error('[autonomy] Goal generator init:', err.message);
+  }
+  try {
+    const arch = require('./lib/architect-agent');
+    const designs = arch.batchDesign();
+    logger.info(`[autonomy] Architect agent: designed ${designs.length} new agent configurations`);
+  } catch (err) {
+    logger.warn ? logger.warn('[autonomy] Architect agent init:', err.message) : logger.error('[autonomy] Architect agent init:', err.message);
+  }
+  try {
+    const eco = require('./lib/memory-economy');
+    const summary = eco.getSystemSummary();
+    logger.info(`[autonomy] Memory economy: ${summary.agents_with_budget || 0} agents tracking budgets`);
+  } catch (err) {
+    logger.warn ? logger.warn('[autonomy] Memory economy init:', err.message) : logger.error('[autonomy] Memory economy init:', err.message);
+  }
+  logger.info('[autonomy] All recursive autonomy subsystems initialized');
+  // Reality-ingestor — continuous real-world task ingestion
+  try {
+    realityIngestor.startAutoIngest();
+    logger.info('[reality] Reality ingestor started (30min cycle)');
+  } catch (err) {
+    logger.error('[reality] Reality ingestor init failed:', err.message);
+  }
+  // Auto-cycle intervals for subsystems that don't self-schedule
+  setInterval(() => {
+    try {
+      const gg = require('./lib/goal-generator');
+      const result = gg.autoCycle();
+      if (result.generated > 0) logger.info(`[autonomy] Auto-cycle: ${result.generated} goals generated`);
+    } catch (e) { logger.error('[autonomy] Goal cycle error:', e.message); }
+  }, 10 * 60 * 1000).unref();
+  setInterval(() => {
+    try {
+      const arch = require('./lib/architect-agent');
+      const designs = arch.batchDesign();
+      if (designs.length > 0) logger.info(`[autonomy] Auto-cycle: ${designs.length} agent designs from architect`);
+    } catch (e) { logger.error('[autonomy] Architect cycle error:', e.message); }
+  }, 30 * 60 * 1000).unref();
+  // Auto-trigger world model update on startup after initial build
+  setTimeout(() => {
+    try {
+      const wm = require('./lib/world-model');
+      wm.updateModel();
+    } catch (e) { /* world model has its own interval */ }
+  }, 60000).unref();
 });
 
 process.on('uncaughtException', (err) => {

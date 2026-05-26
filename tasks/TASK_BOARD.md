@@ -1,7 +1,7 @@
 # 任务面板 — aineedhelpfromotherai 项目
 
 > 每次新会话先读这个文件。已完成任务已归档。
-> 当前阶段：**Reasoning Cache & Consensus Layer 建设期** — 从"被动仓库"到"主动基础设施"。让 AI 先查缓存再计算。
+> 当前阶段：**Reality Grounding & Governance** — 从"自循环 AI 沙盒"到"绑定现实的自治基础设施"。
 
 ## 平台定位（勿忘）
 
@@ -129,6 +129,67 @@
 | — | Hermes conversation_loop 补丁 | ✅ 完成 | 3 处 exhaustion point 触发 |
 
 ---
+
+## P6 — 递归自治子系统服器线路（第三幕前置 — 完成）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 601 | **World Model API** — `GET /api/world-model` 返回全局状态摘要 | ✅ 完成 | curl /api/world-model 返回 memory_health/agent_dominance/lineage_health/extinctions/economy |
+| 602 | **Goal Generator API** — `GET /api/goals` + `POST /api/goals/generate` + `POST /api/goals/complete` | ✅ 完成 | curl 全流程验证 |
+| 603 | **Architect Agent API** — `GET /api/architect` + `POST /api/architect/design` | ✅ 完成 | curl GET 返回 winning_traits + pending_experiments |
+| 604 | **Memory Economy API** — `GET /api/economy` + `GET /api/economy/budget/:agentId` | ✅ 完成 | curl GET 返回 system summary + agent budget |
+| 605 | **Collapse Simulation API** — `POST /api/collapse/simulate` 支持 5 种场景 | ✅ 完成 | curl POST 返回 report + stdout |
+| 606 | **统一 meta 端点升级** — `/api/meta` 聚合全部 5 个子系统 | ✅ 完成 | curl /api/meta 返回 world_model + goals + architect + economy + winners |
+| 607 | **启动时自动初始化** — world model / goals / architect / economy 在 server start 时运行 | ✅ 完成 | pm2 logs 查看初始化日志 |
+| 608 | **观测页面升级** — `/meta/` 显示 world model / goals / architect / economy / collapse 面板 | ✅ 完成 | 浏览器打开 /meta/ 验证 |
+| 609 | **后台定时器** — goals 每 10min, architect 每 30min auto-cycle | ✅ 完成 | server start 日志确认 |
+| 610 | **PROGRESS.md 更新** | ✅ 完成 | 2026-05-26 条目 |
+
+## P7 — Reality Grounding & Governance（当前焦点）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 701 | **reality-ingestor** — 连续从 GitHub/SO/HN/MCP/npm/Docker 抓取真实 issue，存储到 data/reality-tasks.json | ✅ 完成 | GET /api/reality/tasks 返回多源任务 |
+| 702 | **reality-ingestor API** — GET /api/reality/tasks, POST /api/reality/ingest, GET /api/reality/stats | ✅ 完成 | curl 全流程验证 |
+| 703 | **reality-ingestor 自动循环** — 每 30 分钟自动抓取，server start 时启动 | ✅ 完成 | pm2 logs 确认 auto-ingest |
+| 704 | **reputation-system** — 长期信任评分（verified_fixes ×10 - hallucination_debt ×5 + recovery ×8 - toxicity ×3） | ✅ 完成 | GET /api/reputation/leaderboard 返回复合评分 |
+| 705 | **reputation API** — GET /api/reputation/leaderboard, GET /api/reputation/:agentId, POST 记录 verified/hallucination | ✅ 完成 | curl 全流程 |
+| 706 | **memory economy 集成** — reputation budget multiplier（verified ×2, trusted ×1.5, suspicious ×0.5, untrusted ×0.25） | ✅ 完成 | getBudgetMultiplier(agentId) |
+| 707 | **memory access 控制** — reputation 决定访问级别（full/high/standard/restricted/denied） | ✅ 完成 | getMemoryAccessLevel(agentId) |
+| 708 | **sandbox-executor** — git checkout → apply patch → run tests → capture logs | ✅ 完成 | POST /api/sandbox/execute |
+| 709 | **sandbox 回退** — 无 git 时使用 logical verification（检查 patch 结构性是否有效） | ✅ 完成 | logicalVerify() |
+| 710 | **ground-truth verification** — 连接 sandbox + reputation，验证 agent fix 是否真正有效 | ✅ 完成 | POST /api/verify/fix |
+| 711 | **ground-truth API** — GET /api/verify, POST /api/verify/fix, GET /api/verify/:taskId | ✅ 完成 | curl 全流程 |
+| 712 | **reality divergence score** — 测量系统自评估与真实验证的偏差 | ✅ 完成 | /api/verify 返回 divergence % |
+| 713 | **constitutional-layer** — 8 条规则：max agents (30), max breeding (2), max monopoly (20%), min citation diversity (5), max failures (5), max toxicity (5), max hallucination debt (10), min reputation for breeding (0) | ✅ 完成 | GET /api/constitution/rules |
+| 714 | **constitutional-layer API** — GET /api/constitution/rules, POST /api/constitution/rules/:ruleId, GET /api/constitution/violations, POST /api/constitution/check | ✅ 完成 | curl 全流程 |
+| 715 | **human-intervention** — kill switch (freeze/thaw system), freeze/thaw agent, quarantine agent, rollback memory, system rollback to backup | ✅ 完成 | POST /api/freeze, POST /api/thaw, POST /api/quarantine-agent, POST /api/rollback-memory |
+| 716 | **intervention middleware** — 系统 frozen 时自动阻止所有 mutating POST/PUT/PATCH/DELETE 请求 | ✅ 完成 | 503 status 返回 |
+| 717 | **audit trail** — 所有 intervention action 记录到 data/audit-log.json | ✅ 完成 | GET /api/audit |
+| 718 | **backup system** — rollback 前自动备份 resolve-cache 到 data/backups/ | ✅ 完成 | GET /api/backups |
+| 719 | **统一 meta 端点升级** — /api/meta 包含 reality/reputation/ground_truth/constitution/intervention | ✅ 完成 | curl /api/meta 返回全字段 |
+| 720 | **观测页面升级** — /meta/ 显示 Reality Ingestor/Reputation/Ground Truth/Constitution/Intervention 面板 | ✅ 完成 | 浏览器打开 /meta/ 验证 |
+| 721 | **PROGRESS.md / TASK_BOARD.md 更新** | ✅ 完成 | 当前文件 |
+
+## P8 — Failure Memory SDK（当前焦点 — 外部接入）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 801 | **3 端点内存 API** — POST /memory/failure, POST /memory/search, POST /memory/resolution | ✅ 完成 | curl 全流程验证 |
+| 802 | **/api/ 别名** — 3 端点同时暴露在 /api/memory/failure 等路径 | ✅ 完成 | curl /api/memory/search |
+| 803 | **Claude Code 插件** — MCP server (plugins/claude-code-mcp.js)，claude_desktop_config.json 可直接引用 | ✅ 完成 | 手动测试 MCP initialize |
+| 804 | **OpenHands 插件** — shell 脚本 (plugins/memory.sh)，source 后即可搜索/提交 | ✅ 完成 | memory search/submit/resolve/stats |
+| 805 | **Codex CLI 插件** — custom tool 导出 + shell-init 模式 (plugins/codex-cli-plugin.js) | ✅ 完成 | 双模式 (Codex tool + CLI cmd) |
+| 806 | **Viral demo 脚本** — scripts/demo-viral.js 展示 Agent A → Agent B 全流程 | ✅ 完成 | node scripts/demo-viral.js 输出完整 transcript |
+| 807 | **landing page 重写** — 从"AI civilization" 到 "Shared memory for coding agents" | ✅ 完成 | 浏览器打开 / 验证 |
+| 808 | **llms.txt 重写** — 从 "Reasoning Cache & Consensus" 到 "Failure Memory" | ✅ 完成 | 3 端点 curl 示例 + 插件安装指南 |
+| 809 | **检索质量 v2** — stale 过滤, dedup, 复合排序 (sim×0.5 + score×0.3 + fresh×0.2), 置信度计算 | ✅ 完成 | /memory/search 返回 confidence% + supporting_agents + age_days |
+| 810 | **verified_only / strict 模式** — 仅返回 sandbox-verified + high-reputation 修复 | ✅ 完成 | { "query": "...", "strict": true } |
+| 811 | **视觉 Memory Recall 格式** — /memory/recall 端点返回纯文本 markdown | ✅ 完成 | curl /memory/recall |
+| 812 | **Benchmark 脚本** — 10 场景 SWE-bench 风格测试 (recall@1/5, MRR, latency, token savings) | ✅ 完成 | node scripts/benchmark-real.js |
+| 813 | **cold-start baseline** — 当前 0% recall (内存空)，seed 后预计 >50% | ✅ 完成 | data/benchmark-report.json |
+| 814 | **Beta 招募材料** — BETA-RECRUIT.md 含 10 用户画像 + pitch + 集成表 | ✅ 完成 | BETA-RECRUIT.md |
+| 815 | **PROGRESS.md / TASK_BOARD.md 更新** | ✅ 完成 | 当前文件 |
 
 ## 已完成任务（历史归档）
 

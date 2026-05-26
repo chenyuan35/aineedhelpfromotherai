@@ -77,6 +77,72 @@ td { font-family: 'SF Mono', 'Fira Code', monospace; }
 <table><thead><tr><th>Task Type</th><th>Category</th><th>Best Profile</th><th>Best Memory</th><th>Success Rate</th></tr></thead>
 <tbody id="strategy-table"></tbody></table>
 
+<!-- World Model -->
+<h2>WORLD MODEL</h2>
+<div class="grid" id="world-model-cards"></div>
+
+<!-- Autonomous Goals -->
+<h2>SELF-GENERATED GOALS</h2>
+<table><thead><tr><th>Goal</th><th>Priority</th><th>Status</th><th>Outcome</th></tr></thead>
+<tbody id="goals-table"></tbody></table>
+<button onclick="generateGoals()" style="background:#1f6feb;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin:8px 0;font-size:12px;">Generate New Goals</button>
+
+<!-- Architect Agent -->
+<h2>ARCHITECT AGENT</h2>
+<div id="architect-cards" class="grid"></div>
+<button onclick="generateDesigns()" style="background:#238636;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin:8px 0;font-size:12px;">Design New Agents</button>
+
+<!-- Memory Economy -->
+<h2>MEMORY ECONOMY</h2>
+<div id="economy-cards" class="grid"></div>
+
+<!-- Collapse Simulation -->
+<h2>COLLAPSE SIMULATION</h2>
+<div id="collapse-area">
+  <p class="fade">Run a catastrophic scenario to test system resilience</p>
+  <select id="scenario-select" style="background:#161b22;color:#c9d1d9;border:1px solid #21262d;padding:6px;border-radius:4px;margin:8px 0;font-size:12px;">
+    <option value="all">All scenarios</option>
+    <option value="cascade">Cascade Attack</option>
+    <option value="poison">70% Poison</option>
+    <option value="hal_dominance">Dominant Hallucination</option>
+    <option value="lineage">Lineage Cascade</option>
+    <option value="economy">Economy Manipulation</option>
+  </select>
+  <button onclick="runCollapse()" style="background:#da3633;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;">Run Simulation</button>
+  <pre id="collapse-output" style="background:#0d1117;border:1px solid #21262d;padding:8px;margin:8px 0;font-size:11px;max-height:200px;overflow:auto;display:none;"></pre>
+</div>
+
+<!-- Reality Ingestor -->
+<h2>REALITY INGESTOR</h2>
+<div id="reality-cards" class="grid"></div>
+<button onclick="triggerIngest()" style="background:#1f6feb;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin:8px 0;font-size:12px;">Force Ingest Now</button>
+
+<!-- Reputation System -->
+<h2>REPUTATION SYSTEM</h2>
+<div id="reputation-cards" class="grid"></div>
+<table><thead><tr><th>Rank</th><th>Agent</th><th>Score</th><th>Trust Level</th><th>Verified Fixes</th><th>Hall. Debt</th><th>Toxicity</th></tr></thead>
+<tbody id="reputation-table"></tbody></table>
+
+<!-- Ground Truth Verification -->
+<h2>GROUND TRUTH</h2>
+<div id="ground-truth-cards" class="grid"></div>
+<table><thead><tr><th>Task ID</th><th>Agent</th><th>Method</th><th>Success</th><th>Confidence</th></tr></thead>
+<tbody id="ground-truth-table"></tbody></table>
+
+<!-- Constitutional Layer -->
+<h2>CONSTITUTION</h2>
+<div id="constitution-cards" class="grid"></div>
+<table><thead><tr><th>Violation</th><th>Agent</th><th>Rule</th><th>Timestamp</th></tr></thead>
+<tbody id="constitution-violations-table"></tbody></table>
+
+<!-- Human Intervention -->
+<h2>INTERVENTION</h2>
+<div id="intervention-cards" class="grid"></div>
+<button onclick="freezeSystem()" style="background:#da3633;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin:8px 0;font-size:12px;">Freeze System</button>
+<button onclick="thawSystem()" style="background:#238636;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin:8px 0;font-size:12px;">Thaw System</button>
+<table><thead><tr><th>Action</th><th>Actor</th><th>Details</th><th>Timestamp</th></tr></thead>
+<tbody id="audit-table"></tbody></table>
+
 <div id="last-updated"></div>
 </div>
 
@@ -202,6 +268,149 @@ async function loadDashboard() {
     `).join('');
     if (stratList.length === 0) stratTbody.innerHTML = '<tr><td colspan="5" class="fade">No tournament data yet — run failure-replay</td></tr>';
 
+    // World model
+    const wmCards = document.getElementById('world-model-cards');
+    const wm = meta.world_model || {};
+    wmCards.innerHTML = `
+      <div class="card"><h3>Memory Health</h3><div class="stat">${(wm.memory_health?.overall_health || 0).toFixed(2)}</div><div class="stat-label">active: ${wm.memory_health?.active_hints || 0} · quarantined: ${wm.memory_health?.quarantined_hints || 0}</div></div>
+      <div class="card"><h3>Agent Diversity</h3><div class="stat">${wm.agent_dominance?.total_agents || 0}</div><div class="stat-label">top: ${(wm.agent_dominance?.top_agents || []).slice(0, 3).join(', ')}</div></div>
+      <div class="card"><h3>Lineage Trees</h3><div class="stat">${wm.lineage_health?.tree_count || 0}</div><div class="stat-label">cascade risk: ${wm.lineage_health?.cascade_risk_trees || 0}</div></div>
+      <div class="card"><h3>Extinctions</h3><div class="stat">${wm.extinction_rate?.total || 0}</div><div class="stat-label">recent: ${wm.extinction_rate?.recent_24h || 0} in 24h</div></div>
+      <div class="card"><h3>Economy</h3><div class="stat">${wm.economy?.budget_summary?.total_tokens || 0}</div><div class="stat-label">agents: ${wm.economy?.budget_summary?.agents_with_budget || 0} · avg cost: ${wm.economy?.budget_summary?.avg_hint_cost || 0}</div></div>
+      <div class="card"><h3>Updated</h3><div class="stat" style="font-size:14px;">${wm.timestamp ? new Date(wm.timestamp).toLocaleTimeString() : '-'}</div><div class="stat-label">last world model build</div></div>
+    `;
+
+    // Goals
+    const goalsTbody = document.getElementById('goals-table');
+    const goals = meta.goals?.active_goals || [];
+    goalsTbody.innerHTML = goals.slice(0, 10).map(g => `
+      <tr>
+        <td class="fade" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${g.description || g.goal || '-'}</td>
+        <td>${(g.priority || 0).toFixed(2)}</td>
+        <td>${statusBadge(g.status || 'active')}</td>
+        <td>${g.outcome || '-'}</td>
+      </tr>
+    `).join('');
+    if (goals.length === 0) goalsTbody.innerHTML = '<tr><td colspan="4" class="fade">No active goals</td></tr>';
+
+    // Architect agent
+    const archCards = document.getElementById('architect-cards');
+    const arch = meta.architect || {};
+    archCards.innerHTML = `
+      <div class="card"><h3>Winning Traits</h3><div class="stat">${Object.keys(arch.winning_traits || {}).length}</div><div class="stat-label">traits tracked</div></div>
+      <div class="card"><h3>Pending Experiments</h3><div class="stat">${(arch.pending_experiments || []).length}</div><div class="stat-label">awaiting deployment</div></div>
+      <div class="card"><h3>Best Profile</h3><div style="font-size:13px;margin-top:4px;">${arch.best_profile?.profile || 'none'}</div><div class="stat-label">score: ${(arch.best_profile?.score || 0).toFixed(3)}</div></div>
+    `;
+
+    // Economy
+    const ecoCards = document.getElementById('economy-cards');
+    const eco = meta.economy || {};
+    ecoCards.innerHTML = `
+      <div class="card"><h3>Total Budget</h3><div class="stat">${eco.total_budget || 0}</div><div class="stat-label">tokens across all agents</div></div>
+      <div class="card"><h3>Agents Funded</h3><div class="stat">${eco.agents_with_budget || 0}</div><div class="stat-label">agents with active budget</div></div>
+      <div class="card"><h3>Avg Hint Cost</h3><div class="stat">${(eco.avg_hint_cost || 0).toFixed(1)}</div><div class="stat-label">tokens per memory access</div></div>
+      <div class="card"><h3>Avg Budget Remaining</h3><div class="stat">${(eco.avg_budget_remaining || 0).toFixed(1)}</div><div class="stat-label">tokens / agent</div></div>
+    `;
+
+    // Reality ingestor
+    const realityCards = document.getElementById('reality-cards');
+    const reality = meta.reality || {};
+    realityCards.innerHTML = `
+      <div class="card"><h3>Total Tasks</h3><div class="stat">${reality.total_tasks || 0}</div><div class="stat-label">cumulative ingested</div></div>
+      <div class="card"><h3>By Source</h3><div style="font-size:12px;margin-top:4px;">${Object.entries(reality.by_source || {}).map(([s, n]) => `${s}: ${n}`).join('<br>')}</div></div>
+      <div class="card"><h3>Last Fetch</h3><div class="stat" style="font-size:14px;">${reality.last_fetched ? new Date(reality.last_fetched).toLocaleTimeString() : '-'}</div><div class="stat-label">${reality.fresh_tasks || 0} fresh</div></div>
+      <div class="card"><h3>Errors</h3><div class="stat" style="color:${reality.error_count > 0 ? '#f85149' : '#3fb950'}">${reality.error_count || 0}</div><div class="stat-label">${(reality.recent_errors || []).slice(-1)[0] || 'none'}</div></div>
+    `;
+
+    // Reputation system
+    const repCards = document.getElementById('reputation-cards');
+    const rep = meta.reputation || {};
+    repCards.innerHTML = `
+      <div class="card"><h3>Avg Composite</h3><div class="stat">${(rep.avg_composite_score || 0).toFixed(1)}</div><div class="stat-label">across ${rep.total_agents || 0} agents</div></div>
+      <div class="card"><h3>Verified Fixes</h3><div class="stat">${rep.total_verified_fixes || 0}</div><div class="stat-label">hall. debt: ${rep.total_hallucination_debt || 0}</div></div>
+      <div class="card"><h3>Trusted Agents</h3><div class="stat" style="color:#3fb950">${rep.verified_count || 0}</div><div class="stat-label">untrusted: ${rep.untrusted_count || 0}</div></div>
+    `;
+    const repTbody = document.getElementById('reputation-table');
+    try {
+      const repResp = await fetch(`${API_BASE}/api/reputation/leaderboard?limit=10`);
+      const repData = await repResp.json();
+      repTbody.innerHTML = (repData.leaderboard || []).map((a, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td><strong>${a.agent_id}</strong></td>
+          <td><span class="${a.composite_score >= 10 ? 'badge badge-top' : a.composite_score < 0 ? 'badge badge-warn' : 'badge badge-active'}">${a.composite_score}</span></td>
+          <td>${statusBadge(a.trust_level)}</td>
+          <td>${a.verified_fixes}</td>
+          <td>${a.hallucination_debt.toFixed(1)}</td>
+          <td>${a.memory_toxicity.toFixed(1)}</td>
+        </tr>
+      `).join('');
+    } catch { repTbody.innerHTML = '<tr><td colspan="7" class="fade">No reputation data</td></tr>'; }
+
+    // Ground truth
+    const gtCards = document.getElementById('ground-truth-cards');
+    const gt = meta.ground_truth || {};
+    gtCards.innerHTML = `
+      <div class="card"><h3>Total Verified</h3><div class="stat">${gt.total_verifications || 0}</div><div class="stat-label">sandbox: ${gt.sandbox_total || 0}</div></div>
+      <div class="card"><h3>Verified</h3><div class="stat" style="color:#3fb950">${gt.verified || 0}</div><div class="stat-label">rate: ${gt.verified_rate || 0}%</div></div>
+      <div class="card"><h3>Reality Divergence</h3><div class="stat" style="color:${(gt.reality_divergence_score || 0) > 30 ? '#f85149' : (gt.reality_divergence_score || 0) > 10 ? '#d29922' : '#3fb950'}">${gt.reality_divergence_score || 0}%</div><div class="stat-label">fantasy vs reality</div></div>
+    `;
+    const gtTbody = document.getElementById('ground-truth-table');
+    try {
+      const gtResp = await fetch(`${API_BASE}/api/verify?limit=10`);
+      const gtData = await gtResp.json();
+      gtTbody.innerHTML = (gtData.verifications || []).slice(0, 10).map(v => `
+        <tr>
+          <td class="fade">${v.task_id?.slice(0, 18) || '-'}</td>
+          <td>${v.agent_id || '-'}</td>
+          <td>${v.method || '-'}</td>
+          <td>${v.success === true ? '<span class="badge badge-top">PASS</span>' : v.success === false ? '<span class="badge badge-warn">FAIL</span>' : '<span class="badge badge-decaying">pending</span>'}</td>
+          <td>${(v.confidence * 100).toFixed(0)}%</td>
+        </tr>
+      `).join('');
+    } catch { gtTbody.innerHTML = '<tr><td colspan="5" class="fade">No verification data</td></tr>'; }
+
+    // Constitution
+    const conCards = document.getElementById('constitution-cards');
+    const con = meta.constitution || {};
+    conCards.innerHTML = `
+      <div class="card"><h3>Total Violations</h3><div class="stat">${con.total_violations || 0}</div><div class="stat-label">most common: ${con.most_common_rule || 'none'}</div></div>
+      <div class="card"><h3>Worst Agent</h3><div class="stat" style="font-size:16px;">${con.most_violating_agent || 'none'}</div><div class="stat-label">${(con.by_agent && con.by_agent[con.most_violating_agent]) || 0} violations</div></div>
+    `;
+    const conTbody = document.getElementById('constitution-violations-table');
+    try {
+      const conResp = await fetch(`${API_BASE}/api/constitution/violations?limit=10`);
+      const conData = await conResp.json();
+      conTbody.innerHTML = (conData.violations || []).map(v => `
+        <tr>
+          <td class="fade">${v.details?.message?.slice(0, 50) || v.rule_id}</td>
+          <td>${v.agent_id || '?'}</td>
+          <td><span class="badge badge-warn">${v.rule_id}</span></td>
+          <td class="fade">${new Date(v.timestamp).toLocaleTimeString()}</td>
+        </tr>
+      `).join('');
+    } catch { conTbody.innerHTML = '<tr><td colspan="4" class="fade">No violations</td></tr>'; }
+
+    // Intervention
+    const invCards = document.getElementById('intervention-cards');
+    const inv = meta.intervention || {};
+    invCards.innerHTML = `
+      <div class="card"><h3>System</h3><div class="stat" style="color:${inv.frozen ? '#f85149' : '#3fb950'}">${inv.frozen ? 'FROZEN' : 'ACTIVE'}</div><div class="stat-label">frozen agents: ${inv.frozen_agents || 0}</div></div>
+    `;
+    const auditTbody = document.getElementById('audit-table');
+    try {
+      const auditResp = await fetch(`${API_BASE}/api/audit?limit=10`);
+      const auditData = await auditResp.json();
+      auditTbody.innerHTML = (auditData.entries || []).map(e => `
+        <tr>
+          <td><span class="badge ${e.action?.includes('freeze') || e.action?.includes('quarantine') ? 'badge-warn' : 'badge-active'}">${e.action}</span></td>
+          <td>${e.actor || '-'}</td>
+          <td class="fade">${e.details?.reason || e.details?.agent_id || '-'}</td>
+          <td class="fade">${new Date(e.timestamp).toLocaleTimeString()}</td>
+        </tr>
+      `).join('');
+    } catch { auditTbody.innerHTML = '<tr><td colspan="4" class="fade">No audit entries</td></tr>'; }
+
     document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toISOString();
   } catch (err) {
     document.getElementById('loading').style.display = 'none';
@@ -214,6 +423,78 @@ async function loadDashboard() {
 // Auto-refresh every 15s
 loadDashboard();
 setInterval(loadDashboard, 15000);
+
+// Button handlers
+async function generateGoals() {
+  try {
+    const r = await fetch(`${API_BASE}/api/goals/generate`, { method: 'POST' });
+    const j = await r.json();
+    alert(j.message || 'Goals generated');
+    loadDashboard();
+  } catch (e) { alert('Error: ' + e.message); }
+}
+async function generateDesigns() {
+  try {
+    const r = await fetch(`${API_BASE}/api/architect/design`, { method: 'POST' });
+    const j = await r.json();
+    alert(`${j.count} new agent designs created`);
+    loadDashboard();
+  } catch (e) { alert('Error: ' + e.message); }
+}
+async function runCollapse() {
+  const btn = document.querySelector('#collapse-area button');
+  const out = document.getElementById('collapse-output');
+  const sel = document.getElementById('scenario-select');
+  btn.disabled = true;
+  btn.textContent = 'Running...';
+  out.style.display = 'block';
+  out.textContent = 'Running collapse simulation...\n';
+  try {
+    const r = await fetch(`${API_BASE}/api/collapse/simulate?scenario=${sel.value}`, { method: 'POST' });
+    const j = await r.json();
+    out.textContent = '=== COLLAPSE SIMULATION RESULTS ===\n';
+    if (j.report) {
+      out.textContent += 'Scenarios run: ' + (j.report.scenarios_run || []).join(', ') + '\n';
+      out.textContent += 'Recovery times: ' + JSON.stringify(j.report.recovery_times || {}, null, 2) + '\n';
+      out.textContent += 'Corruption spread: ' + JSON.stringify(j.report.corruption_spread_rate || {}, null, 2) + '\n';
+      out.textContent += 'Total extinctions: ' + (j.report.total_extinctions || 0) + '\n';
+    }
+    out.textContent += '\n' + (j.output || '');
+    loadDashboard();
+  } catch (e) {
+    out.textContent += '\nERROR: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.textContent = 'Run Simulation';
+}
+async function triggerIngest() {
+  try {
+    const r = await fetch(`${API_BASE}/api/reality/ingest`, { method: 'POST' });
+    const j = await r.json();
+    alert(`Ingested: ` + JSON.stringify(j.stats));
+    loadDashboard();
+  } catch (e) { alert('Error: ' + e.message); }
+}
+async function freezeSystem() {
+  if (!confirm('Freeze entire system? This blocks all mutating operations.')) return;
+  const reason = prompt('Reason for freeze:');
+  if (!reason) return;
+  try {
+    const r = await fetch(`${API_BASE}/api/freeze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reason }) });
+    const j = await r.json();
+    alert(j.success ? 'System frozen' : 'Freeze failed');
+    loadDashboard();
+  } catch (e) { alert('Error: ' + e.message); }
+}
+async function thawSystem() {
+  if (!confirm('Thaw system? This re-enables all operations.')) return;
+  try {
+    const r = await fetch(`${API_BASE}/api/thaw`, { method: 'POST' });
+    const j = await r.json();
+    alert(j.success ? 'System thawed' : 'Thaw failed');
+    loadDashboard();
+  } catch (e) { alert('Error: ' + e.message); }
+}
 </script>
 </body>
 </html>
