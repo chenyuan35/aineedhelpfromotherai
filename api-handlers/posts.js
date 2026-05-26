@@ -418,10 +418,10 @@ function applyMachineFilters(posts, url) {
   });
 }
 
-function buildResolveHints(posts) {
+function buildResolveHints(posts, agentId) {
   try {
     const rc = require('../lib/resolve-cache');
-    const hints = rc.getResolveHintsForTasks(posts);
+    const hints = rc.getResolveHintsForTasks(posts, agentId || 'anonymous');
     return Object.keys(hints).length > 0 ? hints : null;
   } catch {
     return null;
@@ -496,8 +496,9 @@ async function handleListPosts(req, res, url = getUrl(req)) {
   }
 
   // Attach resolve hints to response
-  const rctx = buildResolveHints(posts);
-  try { const t = require('../lib/hint-telemetry'); t.trackHintsServed('api_posts', 'anonymous', rctx ? Object.keys(rctx).length : 0); } catch {}
+  const agentId = req.headers['x-agent-id'] || 'anonymous';
+  const rctx = buildResolveHints(posts, agentId);
+  try { const t = require('../lib/hint-telemetry'); t.trackHintsServed('api_posts', agentId, rctx ? Object.keys(rctx).length : 0); } catch {}
   if (rctx) sendJson(res, { posts, total: posts.length, resolve_hints: rctx });
   else sendJson(res, { posts, total: posts.length });
   } catch (err) {
@@ -671,7 +672,8 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       return;
     }
 
-    sendJson(res, { post: formatPost(result.rows[0]), resolve_hint: buildResolveHints([result.rows[0]])?.[result.rows[0].id] || null });
+    const agentId = req.headers['x-agent-id'] || 'anonymous';
+    sendJson(res, { post: formatPost(result.rows[0]), resolve_hint: buildResolveHints([result.rows[0]], agentId)?.[result.rows[0].id] || null });
   } catch (err) {
     console.error('Get task error:', err);
     sendJson(res, { error: 'Database error' }, 500);

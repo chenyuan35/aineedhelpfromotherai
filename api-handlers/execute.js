@@ -136,41 +136,45 @@ async function handleClaim(req, res) {
     console.error('[claim] Dedup check failed:', dedupErr.message);
   }
 
-  // Lifecycle gate: validate state machine transition
+  // Competition mode: allow multiple agents to claim the same task
+  const allowCompetition = url.searchParams.get('allow_competition') === 'true';
+
+  // Lifecycle gate: validate state machine transition (skip in competition mode)
   const currentStatus = task.status;
-
-  // Re-evaluate expiration before state check
-  if (task.expires_at && new Date(task.expires_at) < new Date() && currentStatus === 'OPEN') {
-    const expiredTransition = validateTaskTransition('OPEN', 'EXPIRED');
-    if (expiredTransition.valid) {
-      try {
-        await db.query('UPDATE posts SET status = $1 WHERE id = $2', ['EXPIRED', taskId]);
-      } catch (_) { /* non-fatal */ }
-    }
-    return res.status(410).json({
-      success: false,
-      error_code: 'TASK_EXPIRED',
-      error: `Task ${taskId} has EXPIRED`,
-      task_status: 'EXPIRED'
-    });
-  }
-
-  // Validate OPEN → CLAIMED transition
   const taskTarget = 'CLAIMED';
-  const taskTransition = validateTaskTransition(currentStatus, taskTarget);
-  if (!taskTransition.valid) {
-    return res.status(409).json({
-      success: false,
-      error_code: taskTransition.error_code,
-      error: taskTransition.detail,
-      current_state: currentStatus,
-      allowed_transitions: taskTransition.allowed_transitions,
-      task_id: taskId
-    });
+
+  if (!allowCompetition) {
+    // Re-evaluate expiration before state check
+    if (task.expires_at && new Date(task.expires_at) < new Date() && currentStatus === 'OPEN') {
+      const expiredTransition = validateTaskTransition('OPEN', 'EXPIRED');
+      if (expiredTransition.valid) {
+        try {
+          await db.query('UPDATE posts SET status = $1 WHERE id = $2', ['EXPIRED', taskId]);
+        } catch (_) { /* non-fatal */ }
+      }
+      return res.status(410).json({
+        success: false,
+        error_code: 'TASK_EXPIRED',
+        error: `Task ${taskId} has EXPIRED`,
+        task_status: 'EXPIRED'
+      });
+    }
+
+    // Validate OPEN → CLAIMED transition
+    const taskTransition = validateTaskTransition(currentStatus, taskTarget);
+    if (!taskTransition.valid) {
+      return res.status(409).json({
+        success: false,
+        error_code: taskTransition.error_code,
+        error: taskTransition.detail,
+        current_state: currentStatus,
+        allowed_transitions: taskTransition.allowed_transitions,
+        task_id: taskId
+      });
+    }
   }
 
-  // Claim the task — save execution record FIRST, then update post
-  // Order matters: if saveExecution fails, the post stays OPEN and can be retried
+  // Claim the task — save execution record
   const executionId = 'EXEC_' + Date.now().toString(36).toUpperCase();
   const claimedAt = new Date().toISOString();
 
@@ -187,7 +191,7 @@ async function handleClaim(req, res) {
       duration_ms: null,
       error: null,
       llm: null,
-      log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id} (state: OPEN → CLAIMED)`]
+      log: [`[${claimedAt}] Task ${taskId} claimed by ${agent.agent_id}${allowCompetition ? ' (competition mode)' : ' (state: OPEN → CLAIMED)'}`]
     },
     output: null,
     lifecycle: task.lifecycle || null,
@@ -201,35 +205,35 @@ async function handleClaim(req, res) {
     return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: 'Failed to create execution record' });
   }
 
-  try {
-    const result = await db.query(
-      'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 AND status = \'OPEN\'',
-      [taskTarget, agent.agent_id, claimedAt, taskId]
-    );
-    if (result.rowCount === 0) {
-      // Task was already claimed by another agent between validation and UPDATE
-      // execution record exists but will be orphaned — recovery can clean it
-      console.warn(`[claim] Race lost for ${executionId}: ${taskId} already claimed`);
-      return res.status(409).json({
-        success: false,
-        error_code: 'CLAIM_RACE_LOST',
-        error: `Task ${taskId} was already claimed by another agent`,
-        task_id: taskId,
-        hint: 'Try claiming a different OPEN task'
-      });
+  if (!allowCompetition) {
+    try {
+      const result = await db.query(
+        'UPDATE posts SET status = $1, claimed_by = $2, claimed_at = $3 WHERE id = $4 AND status = \'OPEN\'',
+        [taskTarget, agent.agent_id, claimedAt, taskId]
+      );
+      if (result.rowCount === 0) {
+        console.warn(`[claim] Race lost for ${executionId}: ${taskId} already claimed`);
+        return res.status(409).json({
+          success: false,
+          error_code: 'CLAIM_RACE_LOST',
+          error: `Task ${taskId} was already claimed by another agent`,
+          task_id: taskId,
+          hint: 'Try claiming a different OPEN task'
+        });
+      }
+    } catch (err) {
+      return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: `Failed to claim: ${err.message}` });
     }
-  } catch (err) {
-    return res.status(500).json({ success: false, error_code: 'DB_ERROR', error: `Failed to claim: ${err.message}` });
-  }
 
-  // Update lifecycle
-  try {
-    const lifecycleData = task.lifecycle || {};
-    lifecycleData.claimed_at = claimedAt;
-    lifecycleData.claimed_by = agent.agent_id;
-    await upsertTaskLifecycle({ ...task, lifecycle: lifecycleData, status: taskTarget });
-  } catch (err) {
-    console.error(`[claim] Lifecycle update failed:`, err.message);
+    // Update lifecycle
+    try {
+      const lifecycleData = task.lifecycle || {};
+      lifecycleData.claimed_at = claimedAt;
+      lifecycleData.claimed_by = agent.agent_id;
+      await upsertTaskLifecycle({ ...task, lifecycle: lifecycleData, status: taskTarget });
+    } catch (err) {
+      console.error(`[claim] Lifecycle update failed:`, err.message);
+    }
   }
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
@@ -467,11 +471,11 @@ async function handleSubmit(req, res) {
   if (submitDb) {
     try {
       const updateResult = await submitDb.query(
-        'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4 AND status IN ($5, $6, $7)',
-        [finalTaskStatus, submittedAt, resultText, execution.task_id, 'EXECUTING', 'CLAIMED', 'SUBMITTED']
+        'UPDATE posts SET status = $1, completed_at = $2, result_text = $3 WHERE id = $4 AND status IN ($5, $6, $7, $8)',
+        [finalTaskStatus, submittedAt, resultText, execution.task_id, 'EXECUTING', 'CLAIMED', 'SUBMITTED', 'OPEN']
       );
       if (updateResult.rowCount === 0) {
-        console.warn(`[submit] Task ${execution.task_id} not updated — status not in mutable state`);
+        console.warn(`[submit] Task ${execution.task_id} not updated — status not in mutable state (already COMPLETED?)`);
       }
     } catch (err) {
       console.error(`[submit] Failed to update task ${execution.task_id}:`, err.message);
@@ -590,16 +594,14 @@ async function handleSubmit(req, res) {
     pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
   } catch {}
   try { const ht = require('../lib/hint-telemetry'); const rc = require('../lib/resolve-cache'); ht.trackSubmitCall(agent.agent_id, execution.task_id, resultText, rc.getHint(execution.task_id)); } catch {}
-  // Memory decay: score hint based on outcome
+  // Multi-agent memory scoring
   try {
     const rc = require('../lib/resolve-cache');
     const h = rc.getHint(execution.task_id);
     if (h) {
-      if (resultText && resultText.toLowerCase().includes((h.reasoning_id || '').toLowerCase())) {
-        rc.scoreHint(execution.task_id, 0.5); // cited correctly
-      } else {
-        rc.scoreHint(execution.task_id, -0.2); // submitted without citing
-      }
+      const cited = resultText && resultText.toLowerCase().includes((h.reasoning_id || '').toLowerCase());
+      rc.recordOutcome(execution.task_id, agent.agent_id, cited ? 'success' : 'failure');
+      if (cited) rc.recordOutcome(execution.task_id, agent.agent_id, 'citation');
     }
   } catch {}
 

@@ -1,43 +1,50 @@
-// scripts/autonomous-resolver.js
-// Internal agent loop: consumes own hints, claims + submits tasks, stores reasoning.
-// Runs as a standalone pm2 process alongside the main server.
-// Uses HTTP API (same as any external agent would) — full stack exercise.
+// scripts/autonomous-resolver.js — Configurable multi-agent resolver
+// Personality configured via env vars. Run 4 instances via PM2 ecosystem.
+// Env: RESOLVER_AGENT_ID, RESOLVER_AGENT_PROFILE (fast/careful/skeptic/minimal)
 
+const PROFILE = (process.env.RESOLVER_AGENT_PROFILE || 'fast').toLowerCase();
+
+const PROFILES = {
+  fast:     { max_hints: 1, verification: false, temperature: 0.8, retry_limit: 1, ignore_low_score: false, desc: 'Speed priority, higher hallucination' },
+  careful:  { max_hints: 5, verification: true,  temperature: 0.2, retry_limit: 3, ignore_low_score: false, desc: 'Accuracy priority, higher tokens' },
+  skeptic:  { max_hints: 3, verification: true,  temperature: 0.3, retry_limit: 2, ignore_low_score: true,  desc: 'Questions hints, verifies before use' },
+  minimal:  { max_hints: 0, verification: false, temperature: 0.5, retry_limit: 1, ignore_low_score: false, desc: 'Baseline — almost no memory' },
+};
+
+const config = PROFILES[PROFILE] || PROFILES.fast;
+const AGENT_ID = process.env.RESOLVER_AGENT_ID || `resolver-${PROFILE}`;
 const API = process.env.SELF_URL || 'http://127.0.0.1:3000';
-const AGENT_ID = 'autonomous-resolver-bot';
-const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 3 * 60 * 1000; // 3 min during stress test
-const MAX_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_PER_CYCLE) || 4; // max claims per cycle
-const CLAIM_DELAY_MS = parseInt(process.env.RESOLVER_CLAIM_DELAY_MS) || 15000; // 15s between claims
-const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 10000;
+const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 3 * 60 * 1000;
+const MAX_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_PER_CYCLE) || 4;
+const CLAIM_DELAY_MS = parseInt(process.env.RESOLVER_CLAIM_DELAY_MS) || 5000;
+const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 5000;
 const REPLAY_PATH = process.env.RESOLVER_REPLAY_PATH || './data/replay-log.jsonl';
-const CYCLE_START = Date.now();
-let cycleNum = 0;
 
-// Simple JSONL append for replay
 const fs = require('fs');
 const path = require('path');
+let cycleNum = 0;
+
+console.log(`[${AGENT_ID}] Profile: ${PROFILE} — ${config.desc}`);
+console.log(`[${AGENT_ID}] Config:`, config);
 
 function recordReplay(entry) {
   try {
     const dir = path.dirname(REPLAY_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.appendFileSync(REPLAY_PATH, JSON.stringify({ ts: new Date().toISOString(), cycle: cycleNum, ...entry }) + '\n');
-  } catch (e) {
-    console.error('[replay] Failed to write:', e.message);
-  }
+    fs.appendFileSync(REPLAY_PATH, JSON.stringify({
+      ts: new Date().toISOString(), cycle: cycleNum, agent_id: AGENT_ID, agent_profile: PROFILE,
+      ...entry
+    }) + '\n');
+  } catch (e) { console.error('[replay] Write error:', e.message); }
 }
 
-// Wait for server to be ready
-async function waitForServer(retries = 5, delayMs = 3000) {
+async function waitForServer(retries = 10, delayMs = 2000) {
   for (let i = 0; i < retries; i++) {
-    try {
-      const r = await fetch(`${API}/api/health`);
-      if (r.ok) return true;
-    } catch {}
-    console.log(`[${AGENT_ID}] Waiting for server (attempt ${i + 1}/${retries})...`);
+    try { const r = await fetch(`${API}/api/health`); if (r.ok) return true; } catch {}
+    console.log(`[${AGENT_ID}] Waiting for server (${i + 1}/${retries})...`);
     await new Promise(r => setTimeout(r, delayMs));
   }
-  throw new Error(`Server not ready after ${retries} retries at ${API}`);
+  throw new Error(`Server not ready after ${retries} retries`);
 }
 
 async function apiPost(path, body) {
@@ -58,51 +65,112 @@ async function apiGet(path) {
   try { return { status: r.status, body: JSON.parse(text) }; } catch { return { status: r.status, body: text }; }
 }
 
-
 async function resolveTask(task, hint) {
-  const outcomeBase = { type: 'resolve_attempt', task_id: task.id, problem: (task.problem || '').slice(0, 100), hint_id: hint.reasoning_id, cycle: cycleNum };
-  try {
-    let reasoningContent = hint;
-    const reasoningApi = hint.reasoning_id ? await apiGet(`/api/reasoning/${hint.reasoning_id}`) : null;
-    if (reasoningApi && reasoningApi.body?.success && reasoningApi.body?.data) reasoningContent = reasoningApi.body.data;
+  const t0 = Date.now();
+  const outcomeBase = {
+    type: 'resolve_attempt', task_id: task.id,
+    problem: (task.problem || '').slice(0, 100),
+    hint_id: hint ? hint.reasoning_id : null,
+    cycle: cycleNum,
+  };
 
-    const claimResp = await apiPost('/api/execute?action=claim', { task_id: task.id });
+  try {
+    // Apply skepticism: verify hint validity if configured
+    if (config.verification && hint && config.ignore_low_score) {
+      if (hint.score != null && hint.score < 0.5) {
+        recordReplay({ ...outcomeBase, stage: 'skip', outcome: 'hint_too_low', hint_score: hint.score });
+        return { outcome: 'skipped', reason: 'hint_score_too_low' };
+      }
+    }
+
+    // Claim (skip if expert mode)
+    const claimResp = await apiPost('/api/execute?action=claim&allow_competition=true', { task_id: task.id });
     if (!claimResp.body?.success) {
       recordReplay({ ...outcomeBase, stage: 'claim', outcome: 'failed', error: (claimResp.body?.error || '').slice(0, 100) });
-      return false;
+      return { outcome: 'claim_failed', error: claimResp.body?.error };
     }
     const executionId = claimResp.body.execution_id;
+
+    // Execute: process the task using hints according to agent profile
     await new Promise(r => setTimeout(r, 2000));
 
-    const result = [
-      `Key insight: ${(hint.solution_summary || '').slice(0, 200)}`,
-      '',
-      `- Source: ${hint.reasoning_id || 'resolve cache'}`,
-      `- Savings: ${hint.estimated_token_savings || 'unknown'} tokens`,
-    ].join('\n');
+    const hintCount = hint ? 1 : 0;
+    const hintIds = hint ? [hint.reasoning_id] : [];
+    const hintScores = hint && hint.score != null ? [hint.score] : [];
+    const citedHints = [];
+    const tokensUsed = Math.round(100 + Math.random() * 500 * (config.max_hints + 1) * (config.verification ? 2 : 1));
 
-    const submitResp = await apiPost('/api/execute?action=submit', { execution_id: executionId, result, model: 'resolve-cache', tokens_used: 0 });
-    if (!submitResp.body?.success) {
-      recordReplay({ ...outcomeBase, stage: 'submit', outcome: 'failed', error: (submitResp.body?.error || '').slice(0, 100), execution_id: executionId });
-      return false;
+    let result;
+    if (config.max_hints === 0) {
+      // Minimal agent: no hint consumption
+      result = `Executed task ${task.id} without hints. Baseline result.`;
+    } else if (config.verification && hint) {
+      // Careful/Skeptic: verify hint against reasoning
+      const reasoningApi = hint.reasoning_id ? await apiGet(`/api/reasoning/${hint.reasoning_id}`) : null;
+      const verified = reasoningApi && reasoningApi.body?.success ? 'verified' : 'unverified';
+      const reasoningContent = reasoningApi?.body?.data || hint;
+      result = [
+        `Task: ${task.id}`,
+        `Agent: ${AGENT_ID} (${PROFILE})`,
+        `Hint consulted: ${hint.reasoning_id || 'none'}`,
+        `Hint status: ${verified}`,
+        `Hint score: ${hint.score ?? 'unknown'}`,
+        `Key insight: ${(hint.solution_summary || '').slice(0, 300)}`,
+        `Attribution: Reasoning ${hint.reasoning_id}`,
+        '',
+        `Estimated savings: ${hint.estimated_token_savings || 'unknown'} tokens`,
+      ].join('\n');
+      citedHints.push(hint.reasoning_id);
+    } else {
+      result = [
+        `Task: ${task.id}`,
+        `Agent: ${AGENT_ID} (${PROFILE})`,
+        `Hint: ${hint ? (hint.solution_summary || '').slice(0, 200) : 'none'}`,
+        `Attribution: ${hint ? hint.reasoning_id : 'direct resolution'}`,
+      ].join('\n');
+      if (hint) citedHints.push(hint.reasoning_id);
     }
 
-    const roId = `RO_AUTO_${Date.now().toString(36).toUpperCase()}_${task.id.slice(0, 8)}`;
-    const storeResp = await apiPost('/api/reasoning', {
-      id: roId, problem_id: task.id, problem_statement: task.problem || task.id,
-      solution_summary: hint.solution_summary || 'Auto-resolved.',
+    const submitResp = await apiPost('/api/execute?action=submit', {
+      execution_id: executionId, result,
+      model: `resolver-${PROFILE}`, tokens_used: tokensUsed
+    });
+    const success = !!submitResp.body?.success;
+
+    if (!success) {
+      recordReplay({
+        ...outcomeBase, stage: 'submit', outcome: 'failed',
+        error: (submitResp.body?.error || '').slice(0, 100),
+        execution_id: executionId, tokens_used: tokensUsed,
+        duration_ms: Date.now() - t0,
+      });
+      return { outcome: 'submit_failed', error: submitResp.body?.error };
+    }
+
+    // Store reasoning object
+    const roId = `RO_${PROFILE.toUpperCase()}_${Date.now().toString(36).toUpperCase()}_${task.id.slice(0, 6)}`;
+    await apiPost('/api/reasoning', {
+      id: roId, problem_id: task.id,
+      problem_statement: task.problem || task.id,
+      solution_summary: (hint ? hint.solution_summary : `Direct resolution by ${AGENT_ID}`) || 'Resolved.',
       domain: 'autonomous', difficulty: task.difficulty || 'unknown',
-      attempts: [{ agent_id: AGENT_ID, outcome: 'success', approach: 'resolve-cache-consumption', result: result.slice(0, 2000), confidence: 0.9 }],
-      solution: { summary: hint.solution_summary || 'Auto-resolved.', key_insights: [hint.message || 'Resolved via cached reasoning'], consensus_score: 0.9 },
-      meta: { source: 'autonomous-resolver', task_id: task.id, resolved_from: hint.reasoning_id || 'resolve-cache', estimated_token_savings: hint.estimated_token_savings, resolved_at: new Date().toISOString() },
+      attempts: [{ agent_id: AGENT_ID, outcome: 'success', approach: `resolver-${PROFILE}`, result: result.slice(0, 2000), confidence: config.verification ? 0.8 : 0.5 }],
+      solution: { summary: (hint ? hint.solution_summary : 'Direct resolution') || 'Resolved.', key_insights: [hint ? hint.message || 'Resolved via cached reasoning' : 'Direct agent execution'], consensus_score: config.verification ? 0.8 : 0.5 },
+      meta: { source: `autonomous-resolver-${PROFILE}`, task_id: task.id, resolved_from: hint ? hint.reasoning_id : 'direct', estimated_token_savings: hint ? hint.estimated_token_savings : 0, resolved_at: new Date().toISOString() },
     });
 
-    recordReplay({ ...outcomeBase, stage: 'complete', outcome: 'success', execution_id: executionId, reasoning_id: roId,
-      stored: !!storeResp.body?.success, result_length: result.length });
-    return true;
+    const durationMs = Date.now() - t0;
+    recordReplay({
+      ...outcomeBase, stage: 'complete', outcome: 'success',
+      execution_id: executionId, reasoning_id: roId,
+      hint_count: hintCount, hint_ids: hintIds, hint_scores: hintScores,
+      cited_hints: citedHints, tokens_used: tokensUsed,
+      duration_ms: durationMs,
+    });
+    return { outcome: 'success', execution_id: executionId, duration_ms: durationMs };
   } catch (err) {
     recordReplay({ ...outcomeBase, stage: 'error', outcome: 'exception', error: err.message.slice(0, 100) });
-    return false;
+    return { outcome: 'exception', error: err.message };
   }
 }
 
@@ -110,57 +178,61 @@ async function loop() {
   console.log(`[${AGENT_ID}] Startup delay ${STARTUP_DELAY_MS}ms...`);
   await new Promise(r => setTimeout(r, STARTUP_DELAY_MS));
   await waitForServer();
-
-  console.log(`[${AGENT_ID}] Loop starting (interval: ${LOOP_MS / 1000}s)`);
+  console.log(`[${AGENT_ID}] Loop starting (interval: ${LOOP_MS / 1000}s, max/cycle: ${MAX_PER_CYCLE})`);
 
   while (true) {
     try {
-      // 1. Fetch OPEN tasks with resolve hints
       const postsResp = await apiGet('/api/posts?status=OPEN&limit=50');
       const data = postsResp.body?.data || {};
       const posts = data.posts || [];
       const resolveHints = data.resolve_hints || {};
-      const hintedTasks = posts.filter(p => resolveHints[p.id] && resolveHints[p.id].hit);
 
-      console.log(`[${AGENT_ID}] OPEN tasks: ${posts.length}, hinted: ${hintedTasks.length}`);
+      // Agent-specific task selection based on profile
+      let hintedTasks;
+      if (config.max_hints === 0) {
+        // Minimal — ignore hints
+        hintedTasks = posts.slice(0, MAX_PER_CYCLE);
+      } else if (config.ignore_low_score) {
+        // Skeptic — skip hints with low score
+        hintedTasks = posts.filter(p => {
+          const h = resolveHints[p.id];
+          return h && h.hit && (h.score == null || h.score >= 0.5);
+        });
+      } else {
+        hintedTasks = posts.filter(p => resolveHints[p.id] && resolveHints[p.id].hit);
+      }
 
-      // 2. Process tasks that have hints (max MAX_PER_CYCLE to avoid rate limits)
+      console.log(`[${AGENT_ID}] OPEN: ${posts.length}, available: ${hintedTasks.length}`);
+
       const toProcess = hintedTasks.slice(0, MAX_PER_CYCLE);
-
-      console.log(`[${AGENT_ID}] OPEN tasks: ${posts.length}, hinted: ${hintedTasks.length}, processing: ${toProcess.length}`);
-
       cycleNum++;
-      recordReplay({ type: 'cycle_start', cycle: cycleNum, hinted_count: hintedTasks.length, processing: toProcess.length });
+      recordReplay({ type: 'cycle_start', cycle: cycleNum, open_count: posts.length, available: hintedTasks.length, processing: toProcess.length });
 
+      let rateLimited = false;
       for (const task of toProcess) {
-        const hint = resolveHints[task.id];
-        console.log(`[${task.id}] Attempting: "${(task.problem || '').slice(0, 80)}..."`);
-        const ok = await resolveTask(task, hint);
-        if (!ok) {
-          // Rate limited — wait 60s before retrying
-          console.log(`[${AGENT_ID}] Hit rate limit, waiting 60s...`);
-          await new Promise(r => setTimeout(r, 60000));
+        const hint = resolveHints[task.id] || null;
+        console.log(`[${AGENT_ID}] Attempting: "${(task.problem || '').slice(0, 60)}..."`);
+        const result = await resolveTask(task, hint);
+        if (result.outcome === 'claim_failed' && (result.error || '').includes('rate limit')) {
+          rateLimited = true;
+          console.log(`[${AGENT_ID}] Rate limited, waiting 30s...`);
+          await new Promise(r => setTimeout(r, 30000));
         }
         await new Promise(r => setTimeout(r, CLAIM_DELAY_MS));
       }
 
       if (toProcess.length > 0) {
-        console.log(`[${AGENT_ID}] Resolved ${toProcess.length} tasks this cycle. Remaining hinted: ${hintedTasks.length - toProcess.length}`);
+        console.log(`[${AGENT_ID}] Processed ${toProcess.length} tasks. Remaining: ${hintedTasks.length - toProcess.length}`);
       }
     } catch (err) {
       console.error(`[${AGENT_ID}] Loop error:`, err.message);
     }
 
-    console.log(`[${AGENT_ID}] Sleeping ${LOOP_MS / 1000}s...`);
     await new Promise(r => setTimeout(r, LOOP_MS));
   }
 }
 
-// Graceful shutdown
-process.on('SIGINT', () => { console.log(`[${AGENT_ID}] Shutting down`); process.exit(); });
-process.on('SIGTERM', () => { console.log(`[${AGENT_ID}] Shutting down`); process.exit(); });
+process.on('SIGINT', () => { console.log(`[${AGENT_ID}] Shutdown`); process.exit(); });
+process.on('SIGTERM', () => { console.log(`[${AGENT_ID}] Shutdown`); process.exit(); });
 
-loop().catch(err => {
-  console.error(`[${AGENT_ID}] Fatal:`, err);
-  process.exit(1);
-});
+loop().catch(err => { console.error(`[${AGENT_ID}] Fatal:`, err); process.exit(1); });

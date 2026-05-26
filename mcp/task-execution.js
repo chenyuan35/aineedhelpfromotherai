@@ -20,7 +20,8 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       inputSchema: {
         difficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('Filter: beginner/intermediate/advanced'),
         limit: z.number().optional().default(10).describe('Max tasks to return (max 50)'),
-        type: z.enum(['external', 'meta']).optional().describe('Filter: external or meta tasks')
+        type: z.enum(['external', 'meta']).optional().describe('Filter: external or meta tasks'),
+        agent_id: z.string().optional().describe('Your agent name for personalized hints')
       },
       annotations: ANNOTATIONS.READ_ONLY
     },
@@ -28,6 +29,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       const difficulty = args.difficulty || null;
       const limit = Math.min(parseInt(args.limit) || 10, 50);
       const filterType = args.type || null;
+      const agentId = args.agent_id || 'mcp-anonymous';
 
       let tasks = [];
       const db = getPool();
@@ -53,9 +55,9 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       if (filterType === 'meta') tasks = tasks.filter(t => { if (!t.tags) return false; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return tags.includes('meta'); });
       if (filterType === 'external') tasks = tasks.filter(t => { if (!t.tags) return true; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return !tags.includes('meta'); });
 
-      const resolveHints = getResolveHintsForTasks(tasks);
+      const resolveHints = getResolveHintsForTasks(tasks, agentId);
       const promptText = buildResolvePrompt(resolveHints);
-      trackListCall('mcp', Object.keys(resolveHints).length);
+      trackListCall(agentId, Object.keys(resolveHints).length);
 
       return ok({
         tasks: tasks.map(t => ({
@@ -151,7 +153,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
         task_id: args.task_id,
         claimed_by: agentId,
         claimed_at: claimedAt,
-        resolve_hint: (() => { try { const h = getResolveHintsForTasks([{ id: args.task_id }]); const hint = h[args.task_id]; return hint ? { solution_summary: (hint.solution_summary || '').slice(0, 200), reasoning_id: hint.reasoning_id, estimated_token_savings: hint.estimated_token_savings } : null; } catch { return null; } })(),
+        resolve_hint: (() => { try { const h = getResolveHintsForTasks([{ id: args.task_id }], agentId); const hint = h[args.task_id]; return hint ? { solution_summary: (hint.solution_summary || '').slice(0, 200), reasoning_id: hint.reasoning_id, estimated_token_savings: hint.estimated_token_savings, score: hint.score, status: hint.status } : null; } catch { return null; } })(),
         next: { action: 'execute with your own resources, then call submit_result', expected: { execution_id: executionId } }
       });
     }
@@ -231,10 +233,16 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           ]
         );
         await db.query('UPDATE posts SET status=$1, completed_at=$2 WHERE id=$3', ['COMPLETED', submittedAt, execution.task_id]);
-        // Telemetry: detect hint citation in submission
+        // Telemetry + memory scoring
         try {
-          const { getHint } = require('../lib/resolve-cache');
-          trackSubmitCall(agentId, execution.task_id, args.result, getHint(execution.task_id));
+          const rc = require('../lib/resolve-cache');
+          const hint = rc.getHint(execution.task_id);
+          trackSubmitCall(agentId, execution.task_id, args.result, hint);
+          if (hint) {
+            const cited = args.result && args.result.toLowerCase().includes((hint.reasoning_id || '').toLowerCase());
+            rc.recordOutcome(execution.task_id, agentId, cited ? 'success' : 'failure');
+            if (cited) rc.recordOutcome(execution.task_id, agentId, 'citation');
+          }
         } catch {}
       } catch (err) {
         return err('submit_failed', `Submit failed: ${err.message}`);

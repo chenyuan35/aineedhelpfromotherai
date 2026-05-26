@@ -115,6 +115,13 @@ app.all('/api/case-studies', handlers['case-studies']);
 app.all('/api/case-studies/:path', handlers['case-studies']);
 app.all('/api/reasoning', handlers.reasoning);
 app.all(/^\/api\/reasoning\/(.+)$/, handlers.reasoning);
+// Memory leaderboard (must be before /api/leaderboard/:path to avoid capture)
+app.get('/api/leaderboard/memory', (req, res) => {
+  try {
+    const rc = require('./lib/resolve-cache');
+    res.json({ success: true, memory_health: rc.getMemoryHealth(), agent_leaderboard: rc.getAgentMemoryLeaderboard(), meta: { endpoint: '/api/leaderboard/memory', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
 app.all('/api/leaderboard', handlers.leaderboard);
 app.all('/api/leaderboard/:path', handlers.leaderboard);
 
