@@ -497,6 +497,7 @@ async function handleListPosts(req, res, url = getUrl(req)) {
 
   // Attach resolve hints to response
   const rctx = buildResolveHints(posts);
+  try { const t = require('../lib/hint-telemetry'); t.trackHintsServed('api_posts', 'anonymous', rctx ? Object.keys(rctx).length : 0); } catch {}
   if (rctx) sendJson(res, { posts, total: posts.length, resolve_hints: rctx });
   else sendJson(res, { posts, total: posts.length });
   } catch (err) {
