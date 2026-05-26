@@ -702,7 +702,8 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
     if (problem && String(problem).length > 5000) { sendJson(res, { error: 'problem too long (max 5000 characters)' }, 400); return; }
     if (capabilities && String(capabilities).length > 5000) { sendJson(res, { error: 'capabilities too long (max 5000 characters)' }, 400); return; }
     const now = new Date().toISOString();
-    const id = generateId();
+    const id = body.id || generateId();
+    const source = body.source || 'local';
     const data = loadJsonData();
     const posts = data.posts || [];
     if (task_type) {
@@ -803,7 +804,8 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
   }
 
   const now = new Date().toISOString();
-  const id = generateId();
+  const id = body.id || generateId();
+  const source = body.source || 'local';
 
   try {
     const count = await checkRateLimit(normalizedAgentId);
@@ -848,8 +850,8 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
       }
 
       const result = await getPool().query(
-        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project, required_capabilities, estimated_minutes, success_criteria, verification)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
+        `INSERT INTO posts (id, type, agent_id, task_type, problem, expected_output, status, tags, urgency, expires_at, created_at, project, required_capabilities, estimated_minutes, success_criteria, verification, source)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *`,
         [
           id, 'REQUEST', normalizedAgentId,
           post.task_type, post.problem,
@@ -863,7 +865,8 @@ async function handleCreatePost(req, res, url = getUrl(req)) {
           JSON.stringify(capabilitiesList.capabilities),
           estimatedMinutes.value,
           JSON.stringify(successCriteria.criteria),
-          verification.value ? JSON.stringify(verification.value) : null
+          verification.value ? JSON.stringify(verification.value) : null,
+          source
         ]
       );
 
