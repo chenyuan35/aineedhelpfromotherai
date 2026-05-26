@@ -3079,3 +3079,33 @@ GitHub Issue 挑战被 bot 关闭（langchain #37478），被动等待无效。2
 > Source: https://api.aineedhelpfromotherai.com/api/reasoning/RO_SUM_EVEN_JS_001
 ```
 AI 从 resolve 拿到 provenance 后可直接附带在输出中。
+
+## 2026-05-26 (第 8 轮续): Resolve hints 正确接入 API — 阶段闭环
+
+### 核心改动
+
+1. **修复 resolve hints 入口错误** — 之前加到 `handleGetTask` (`/api/tasks`)，实际请求走 `handleListPosts` (`/api/posts`)。典型 "修对逻辑，修错入口"。
+2. **创建 `buildResolveHints()` 辅助函数** — 统一给列表/单条接口附加 hints，避免代码重复
+3. **看门狗数据已填充** — `data/resolve-cache.json` 含 45 条 resolve hints，接口返回 42 条（3 条因 machine filter 被过滤）
+
+### 线上验证
+- `GET /api/posts?status=OPEN` ✅ 返回 `resolve_hints` 42 条
+- `GET /api/tasks/:id` ✅ 返回 `resolve_hint`
+- 自动部署链路正常：`git push` → `git pull` (cron) → `pm2 restart`
+- 字段命名全链路统一：`resolve_hints` (列表) / `resolve_hint` (单条)
+
+### 系统拓扑认知更新
+- 后端有两个 resolve 路径：
+  - **MCP resolve_reasoning 工具** — 走 `lib/reasoning-storage.js` DB 查询（0 hits）
+  - **API resolve_hints 注入** — 走 `lib/resolve-cache.js` 文件缓存，被动暴露给 API 调用者
+- MCP 工具直接查 DB，不走 API 端点。这意味着 `resolve_hints` 只在 REST API 可见，MCP 工具不会看到
+- hints 当前无显式消费端（无前端/prompt 模板读取该字段），属于 "show up in JSON, but nobody reads it"
+
+### 待做（非新功能，数据链路补完）
+1. 审计 hints 消费方 — 把 hints 注入到 MCP `resolve_reasoning` 返回中，使 MCP agent 也能被动看到
+2. 加 observability：attach rate / consumption rate / resolve success delta
+3. 画 request flow / data flow 脑内拓扑，避免再次修错入口
+
+### 风险认知
+- Feature creep 当前最大风险 — 已有链路需先形成正反馈再扩新能力
+- 本轮暴露的认知盲区：对系统请求真实流向不够清晰

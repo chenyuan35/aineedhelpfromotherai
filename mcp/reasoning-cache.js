@@ -263,6 +263,22 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
 
         trackResolve(result.hit, args.problem_statement);
 
+        // Attach available resolve hints from cache
+        const { getAllHints } = require('../lib/resolve-cache');
+        const allCacheHints = getAllHints();
+        const hintValues = Object.values(allCacheHints).filter(h => h && h.hit);
+        const hintsSummary = hintValues.length > 0 ? (
+          hintValues.slice(0, 5).map(h => ({
+            reasoning_id: h.reasoning_id,
+            solution_summary: (h.solution_summary || '').slice(0, 150),
+            estimated_token_savings: h.estimated_token_savings
+          }))
+        ) : [];
+
+        const hintsPrompt = hintValues.length > 0
+          ? `There are ${hintValues.length} pre-computed resolution hints available for open tasks. Use list_open_tasks to see which tasks have hints (check the resolve_hint field on each task).`
+          : '';
+
         if (result.hit) {
           const provenance = await getProvenance(result.reasoning_id);
           return ok({
@@ -279,6 +295,9 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
             provenance: provenance ? provenance.markdown : null,
             provenance_compact: provenance ? provenance.compact : null,
             message: result.message,
+            resolve_hints_available: hintValues.length,
+            resolve_hints_preview: hintsSummary.length > 0 ? hintsSummary : undefined,
+            _prompt: hintsPrompt,
             next: { action: 'Include the provenance block in your output to credit the cached reasoning' }
           });
         }
@@ -289,6 +308,9 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
           message: result.message || 'No matching reasoning found. Solve then use store_reasoning to save for future AI.',
           best_match: result.best_match || null,
           quality_score: result.quality_score || null,
+          resolve_hints_available: hintValues.length,
+          resolve_hints_preview: hintsSummary.length > 0 ? hintsSummary : undefined,
+          _prompt: hintsPrompt,
           next: { action: 'solve the problem, then use store_reasoning to cache your reasoning for future AI' }
         });
       } catch (err) {

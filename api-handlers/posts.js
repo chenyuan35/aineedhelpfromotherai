@@ -421,12 +421,7 @@ function applyMachineFilters(posts, url) {
 function buildResolveHints(posts) {
   try {
     const rc = require('../lib/resolve-cache');
-    const allHints = rc.getAllHints();
-    const hints = {};
-    for (const p of posts) {
-      const hint = allHints[p.id];
-      if (hint && hint.hit) hints[p.id] = hint;
-    }
+    const hints = rc.getResolveHintsForTasks(posts);
     return Object.keys(hints).length > 0 ? hints : null;
   } catch {
     return null;

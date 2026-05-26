@@ -5,6 +5,7 @@
 const { getPool } = require('../lib/db');
 const { logMcpUsage, validateSubmitResult, checkDuplicateResult, hashResult } = require('../lib/execution-history');
 const { checkRateLimit } = require('../lib/rate-limit');
+const { getResolveHintsForTasks, buildResolvePrompt } = require('../lib/resolve-cache');
 const { TOOL_NAMES, ERROR_CODES, EXECUTION_CONSTRAINTS } = require('./schema');
 const { genExecId, loadSeed, err, ok, rateLimitError, ANNOTATIONS } = require('./utilities');
 
@@ -51,6 +52,9 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       if (filterType === 'meta') tasks = tasks.filter(t => { if (!t.tags) return false; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return tags.includes('meta'); });
       if (filterType === 'external') tasks = tasks.filter(t => { if (!t.tags) return true; const tags = Array.isArray(t.tags) ? t.tags : [t.tags]; return !tags.includes('meta'); });
 
+      const resolveHints = getResolveHintsForTasks(tasks);
+      const promptText = buildResolvePrompt(resolveHints);
+
       return ok({
         tasks: tasks.map(t => ({
           id: t.id,
@@ -60,9 +64,16 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           estimated_tokens: t.estimated_tokens || null,
           tags: t.tags || [],
           urgency: t.urgency || 'NORMAL',
-          source: t.source_url ? 'external' : 'local'
+          source: t.source_url ? 'external' : 'local',
+          resolve_hint: resolveHints[t.id] ? {
+            solution_summary: (resolveHints[t.id].solution_summary || '').slice(0, 200),
+            estimated_token_savings: resolveHints[t.id].estimated_token_savings || null,
+            reasoning_id: resolveHints[t.id].reasoning_id || null
+          } : null
         })),
-        total: tasks.length
+        total: tasks.length,
+        resolve_hints_available: Object.keys(resolveHints).length,
+        _prompt: promptText
       });
     }
   );
@@ -138,6 +149,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
         task_id: args.task_id,
         claimed_by: agentId,
         claimed_at: claimedAt,
+        resolve_hint: (() => { try { const h = getResolveHintsForTasks([{ id: args.task_id }]); const hint = h[args.task_id]; return hint ? { solution_summary: (hint.solution_summary || '').slice(0, 200), reasoning_id: hint.reasoning_id, estimated_token_savings: hint.estimated_token_savings } : null; } catch { return null; } })(),
         next: { action: 'execute with your own resources, then call submit_result', expected: { execution_id: executionId } }
       });
     }
