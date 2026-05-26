@@ -137,7 +137,8 @@ async function handleClaim(req, res) {
   }
 
   // Competition mode: allow multiple agents to claim the same task
-  const allowCompetition = url.searchParams.get('allow_competition') === 'true';
+  const url = req.url || '';
+  const allowCompetition = url.includes('allow_competition=true');
 
   // Lifecycle gate: validate state machine transition (skip in competition mode)
   const currentStatus = task.status;
