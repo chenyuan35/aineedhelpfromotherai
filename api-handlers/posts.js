@@ -655,7 +655,15 @@ async function handleGetTask(req, res, url = getUrl(req)) {
           const hint = allHints[p.id];
           if (hint && hint.hit) resolveHints[p.id] = hint;
         }
-      } catch {}
+        if (Object.keys(resolveHints).length === 0 && Object.keys(allHints).length > 0) {
+          // Debug: mismatch between cache keys and post IDs
+          const sampleCacheKey = Object.keys(allHints)[0];
+          const samplePostId = posts[0]?.id;
+          console.warn(`[resolve-hints] Cache has ${Object.keys(allHints).length} entries but 0 matched posts. Sample cache key: "${sampleCacheKey}", sample post id: "${samplePostId}"`);
+        }
+      } catch (e) {
+        console.error('[resolve-hints] Error:', e.message);
+      }
       sendJson(res, { posts, total: posts.length, resolve_hints: Object.keys(resolveHints).length > 0 ? resolveHints : undefined });
       return;
     }
