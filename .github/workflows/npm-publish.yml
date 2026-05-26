@@ -13,6 +13,11 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}
 
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -33,9 +38,13 @@ jobs:
       - name: Publish to npmjs.org or GitHub Packages
         run: |
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            # Publish to npmjs.org
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
           else
-            # Publish main package scoped to GitHub user
+            # Publish to GitHub Packages
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            npm config set registry https://npm.pkg.github.com
             jq '.name = "@chenyuan35/aineedhelpfromotherai" | .publishConfig.registry = "https://npm.pkg.github.com"' package.json > package.json.tmp
             mv package.json.tmp package.json
             npm publish
@@ -47,8 +56,11 @@ jobs:
         run: |
           npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
           else
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            npm config set registry https://npm.pkg.github.com
             jq '.name = "@chenyuan35/aineedhelpfromotherai-mcp" | .publishConfig.registry = "https://npm.pkg.github.com"' package.json > package.json.tmp
             mv package.json.tmp package.json
             npm publish
@@ -59,8 +71,11 @@ jobs:
         working-directory: packages/n8n-node
         run: |
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
           else
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            npm config set registry https://npm.pkg.github.com
             jq '.name = "@chenyuan35/aineedhelpfromotherai-n8n" | .publishConfig.registry = "https://npm.pkg.github.com"' package.json > package.json.tmp
             mv package.json.tmp package.json
             npm publish
@@ -71,8 +86,11 @@ jobs:
         working-directory: packages/langchain-tool
         run: |
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
           else
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            npm config set registry https://npm.pkg.github.com
             jq '.name = "@chenyuan35/aineedhelpfromotherai-langchain" | .publishConfig.registry = "https://npm.pkg.github.com"' package.json > package.json.tmp
             mv package.json.tmp package.json
             npm publish
