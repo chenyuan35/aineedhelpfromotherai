@@ -3,8 +3,18 @@ name: Auth Demo E2E Tests
 on:
   push:
     branches: [ main, master ]
+    paths:
+      - 'server.js'
+      - 'scripts/auth-demo*'
+      - '.github/workflows/auth-demo.yml'
+      - 'lib/memory-gate.js'
+      - 'lib/verification.js'
   pull_request:
     branches: [ main, master ]
+    paths:
+      - 'server.js'
+      - 'scripts/auth-demo*'
+      - '.github/workflows/auth-demo.yml'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
