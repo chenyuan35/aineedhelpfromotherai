@@ -57,8 +57,8 @@
 | 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | 🔄 进行中 | opencode-agent 已完成 |
 | 221 | **store_reasoning MCP tool** — AI 通过 MCP 直接存推理到缓存 | ✅ 完成 | gateway.js #12, auto-generates RO id |
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
-| 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | 🔄 待做 | 等 VPS auto-update 后测试 |
-| 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | 🔄 待做 | 设计稿 + CRUD |
+| 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | ✅ 完成 | 50 hints sandbox_passed (权重 0.8), 比原来 0.09 提升 8x |
+| 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | ✅ 完成 | meta 页面新增 Live Ticker + Activity Feed + Open Tasks 面板 |
 | 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ⬜ 待做 | npm publish |
 
 ## P2 — 协议稳定性（维护）
@@ -91,7 +91,7 @@
 | 401 | **Tool Annotations** — 所有工具添加 readOnlyHint/idempotentHint/destructiveHint | ✅ 完成 | gateway.js 每个工具定义含 annotations 字段 |
 | 402 | **错误格式重构** — err() 从 {success:false, error_code} 改为 {error, message, hint} | ✅ 完成 | 顶级服务器标准格式 |
 | 403 | **outputSchema 添加** — 工具定义含输出结构描述 | ✅ 完成 | 每个工具 registerTool 含 outputSchema 定义 |
-| 404 | **gateway.js 拆分** — 业务逻辑提取到 lib/mcp-logic.js | ⬜ 待做 | 当前 893 行单文件, 可拆为 index.ts + lib.ts 模式 |
+| 404 | **gateway.js 拆分** — 业务逻辑提取到 lib/mcp-logic.js | ✅ 完成 | 104 行 (原 814 行)，91% 缩减 |
 | 405 | **outputSchema 定义细化** — 所有 13 工具含完整输出结构 | ✅ 完成 | 与顶级 Filesystem 服务器对齐 |
 | 406 | **AI 吸引力改造** — README 价值主张 + 徽章 + 一键安装 | ✅ 完成 | npx -y @aineedhelpfromotherai/mcp 可用 |
 | 407 | **server-card.json 重写** — 13 工具含 annotations + 最新 schema | ✅ 完成 | .well-known/mcp/ 目录 |
