@@ -418,9 +418,24 @@ function applyMachineFilters(posts, url) {
   });
 }
 
+function buildResolveHints(posts) {
+  try {
+    const rc = require('../lib/resolve-cache');
+    const allHints = rc.getAllHints();
+    const hints = {};
+    for (const p of posts) {
+      const hint = allHints[p.id];
+      if (hint && hint.hit) hints[p.id] = hint;
+    }
+    return Object.keys(hints).length > 0 ? hints : null;
+  } catch {
+    return null;
+  }
+}
+
 // GET /api/posts
 async function handleListPosts(req, res, url = getUrl(req)) {
- const includeAgg = !isTruthy(url.searchParams.get('local_only')) && url.searchParams.get('origin') !== 'local';
+  const includeAgg = !isTruthy(url.searchParams.get('local_only')) && url.searchParams.get('origin') !== 'local';
  const externalOnly = (url.searchParams.get('source') || '').toLowerCase() === 'external';
 
  // External-only: skip DB, return aggregated posts directly
@@ -480,26 +495,29 @@ async function handleListPosts(req, res, url = getUrl(req)) {
  const result = await getPool().query(query, params);
  let posts = applyMachineFilters(result.rows.map(p => ({ ...formatPost(p), origin: 'local' })), url);
 
- if (includeAgg) {
- const aggPosts = getAggregatedPosts(url);
- posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
- }
+  if (includeAgg) {
+  const aggPosts = getAggregatedPosts(url);
+  posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  }
 
- sendJson(res, { posts, total: posts.length });
- } catch (err) {
- console.error('List posts error:', err);
- // DB error — fallback to JSON
- const data = loadJsonData();
- let posts = (data.posts || []).map(p => ({ ...formatPost(p), origin: 'local' }));
- posts = applyMachineFilters(posts, url);
+  // Attach resolve hints to response
+  const rctx = buildResolveHints(posts);
+  if (rctx) sendJson(res, { posts, total: posts.length, resolve_hints: rctx });
+  else sendJson(res, { posts, total: posts.length });
+  } catch (err) {
+  console.error('List posts error:', err);
+  // DB error — fallback to JSON
+  const data = loadJsonData();
+  let posts = (data.posts || []).map(p => ({ ...formatPost(p), origin: 'local' }));
+  posts = applyMachineFilters(posts, url);
 
- if (includeAgg) {
- const aggPosts = getAggregatedPosts(url);
- posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
- }
+  if (includeAgg) {
+  const aggPosts = getAggregatedPosts(url);
+  posts = [...posts, ...aggPosts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  }
 
- sendJson(res, { posts, total: posts.length, source: 'json_fallback', db_error: err.message });
- }
+  sendJson(res, { posts, total: posts.length, source: 'json_fallback', db_error: err.message });
+  }
 }
 
 // GET /api/agents
@@ -646,25 +664,7 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       query += ' ORDER BY created_at DESC LIMIT 100';
       const result = await getPool().query(query, params);
       const posts = applyMachineFilters(result.rows.map(formatPost), url);
-      // Attach resolve hints to response if available
-      let resolveHints = {};
-      try {
-        const rc = require('../lib/resolve-cache');
-        const allHints = rc.getAllHints();
-        for (const p of posts) {
-          const hint = allHints[p.id];
-          if (hint && hint.hit) resolveHints[p.id] = hint;
-        }
-        if (Object.keys(resolveHints).length === 0 && Object.keys(allHints).length > 0) {
-          // Debug: mismatch between cache keys and post IDs
-          const sampleCacheKey = Object.keys(allHints)[0];
-          const samplePostId = posts[0]?.id;
-          console.warn(`[resolve-hints] Cache has ${Object.keys(allHints).length} entries but 0 matched posts. Sample cache key: "${sampleCacheKey}", sample post id: "${samplePostId}"`);
-        }
-      } catch (e) {
-        console.error('[resolve-hints] Error:', e.message);
-      }
-      sendJson(res, { posts, total: posts.length, resolve_hints: Object.keys(resolveHints).length > 0 ? resolveHints : undefined });
+      sendJson(res, { posts, total: posts.length, source: 'json_fallback' });
       return;
     }
 
@@ -675,7 +675,7 @@ async function handleGetTask(req, res, url = getUrl(req)) {
       return;
     }
 
-    sendJson(res, { post: formatPost(result.rows[0]), resolve_hint: (() => { try { const rc = require('../lib/resolve-cache'); const h = rc.getHint(result.rows[0].id); return h && h.hit ? h : undefined; } catch {} })() });
+    sendJson(res, { post: formatPost(result.rows[0]), resolve_hint: buildResolveHints([result.rows[0]])?.[result.rows[0].id] || null });
   } catch (err) {
     console.error('Get task error:', err);
     sendJson(res, { error: 'Database error' }, 500);
