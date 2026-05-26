@@ -1,5 +1,23 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-26 (Phase 2+3): Memory Inference Gate + Conflict Resolver + Debug UI + Distribution Plugins
+
+### 核心改动
+- **lib/memory-gate.js (NEW)**: Memory Inference Gate — 强制检索 (NOT optional) → verified-only filter (trust < 0.6) → force injection (相似度 > 0.72 或同 stack trace) → anti-hallucination suppression (冲突覆盖 agent 计划)
+- **lib/memory-conflict-resolver.js (NEW)**: 多 solution 自动排名 — sandbox_passed > production_confirmed > replay_confirmed > unverified; 输出 primary_fix / alternative_fixes / do_not_use
+- **API 端点**: `POST /api/memory/gate`, `GET /api/memory/gate`, `POST /api/memory/resolve-conflict`
+- **MCP memory_gate tool**: Agents 通过 MCP 调用 gate → 返回 augmented context + 强制指令 "你 MUST 使用以下 memory"
+- **Phase 2 UX — Memory Influence Debug View**: 新面板展示 task → gate → injected facts → risk flags → blocked; 输入任意 query 即可看到 gate 输出
+- **Phase 3 — n8n 社区节点**: `packages/n8n-node/` — 支持 search/failure/resolution/gate 四种操作
+- **Phase 3 — LangChain 工具**: `packages/langchain-tool/` — 4 个 DynamicStructuredTool (search_failure_memory / record_agent_failure / submit_agent_resolution / run_memory_gate)
+- **系统升级**: memory = 决策约束 (NOT 可选工具). Agent 无法跳过 memory gate 直接推理
+
+### 状态
+- Phase 2 (Memory Inference Gate): ✅ 已完成
+- Phase 3 (Distribution Plugins — n8n + LangChain): ✅ 已完成
+- BETA-RECRUIT 外联: ✅ 5/10 posted
+- 等待外部用户回复 beta Issue #4
+
 ## 2026-05-26 (BETA-RECRUIT Outreach): 5 GitHub Issues 已发 + 追踪表
 
 ### 核心改动

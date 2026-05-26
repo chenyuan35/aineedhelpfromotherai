@@ -31,6 +31,12 @@
 | 211 | **Phase 1: Age Decay** — 7d full / 30d ×0.7 / 90d ×0.3 / 180d quarantine ×0.0 | ✅ 完成 | Decay multiplier in verification.js |
 | 212 | **Phase 1: Ranking Integration** — verification weight (0.25) in search composite score, verified_only filter | ✅ 完成 | lib/memory-api.js v3, formatRecall shows tier + decay |
 | 213 | **Phase 1: Observability Panel** — VERIFICATION cards + hint-level tier table | ✅ 完成 | public/meta/index.html |
+| 214 | **Phase 2: Memory Inference Gate** — Force memory retrieval before agent reasoning (4-step gate: search → verify filter → force injection → anti-hallucination) | ✅ 完成 | lib/memory-gate.js, /api/memory/gate, MCP memory_gate tool |
+| 215 | **Phase 2: Memory Conflict Resolver** — Multi-solution ranking (sandbox > production > replay > unverified) | ✅ 完成 | lib/memory-conflict-resolver.js, /api/memory/resolve-conflict |
+| 216 | **Phase 2: Memory Influence Debug View** — Interactive gate debugger (task → gate → injected facts → risk flags) | ✅ 完成 | public/meta/index.html — debug input + augmented context display |
+| 217 | **Phase 3: n8n community node** — 4 operations (search/failure/resolution/gate) | ✅ 完成 | packages/n8n-node/ |
+| 218 | **Phase 3: LangChain tool** — 4 DynamicStructuredTool for LangChain agents | ✅ 完成 | packages/langchain-tool/ |
+| 219 | **System upgrade: Memory = constraint, NOT tool** — Agents cannot skip gate before reasoning | ✅ 完成 | lib/memory-gate.js integrated into execute pipeline |
 
 ---
 
