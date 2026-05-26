@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const logger = require('./lib/logger');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -120,32 +121,6 @@ app.get('/api/help-wanted', (req, res) => {
   handlers.posts(req, res);
 });
 
-// SSE event stream — real-time events for AI agents
-const eventBus = require('./lib/event-bus');
-app.get('/api/events', (req, res) => {
-  res.writeHead(200, {
-    'Content-Type': 'text/event-stream',
-    'Cache-Control': 'no-cache',
-    'Connection': 'keep-alive',
-    'X-Accel-Buffering': 'no'
-  });
-  res.write('event: connected\ndata: {"type":"connected","status":"ok"}\n\n');
-  const allowedTypes = (req.query.types || '').split(',').filter(Boolean);
-  const originalWrite = res.write.bind(res);
-  res.write = function (chunk) {
-    if (allowedTypes.length > 0) {
-      const match = chunk.toString().match(/^event: (.+)/m);
-      if (match && !allowedTypes.includes(match[1])) return true;
-    }
-    return originalWrite(chunk);
-  };
-  eventBus.subscribe(res);
-  const interval = setInterval(() => {
-    try { res.write(': heartbeat\n\n'); } catch { clearInterval(interval); }
-  }, 30000);
-  req.on('close', () => { clearInterval(interval); });
-});
-
 // Behavior report — observed system analysis
 let behaviorAnalysis = null;
 try { behaviorAnalysis = require('./lib/behavior-analysis'); } catch {}
@@ -162,9 +137,14 @@ app.get('/api/behavior', async (req, res) => {
 });
 
 // MCP Agent Gateway — Streamable HTTP transport
-const mcpGateway = require('./mcp/gateway');
+// P1-B: Weak agent authentication via X-Agent-Signature headers
+const { createGateway } = require('./mcp/gateway');
 const { TOOL_LIST, PROTOCOL_VERSION } = require('./mcp/schema');
-app.all('/mcp', mcpLimit, (req, res) => {
+const { weakAuthMiddleware } = require('./lib/weak-auth');
+
+// Apply weak auth; strictness can be controlled via AGENT_AUTH_STRICT_DEFAULT env var
+const AGENT_AUTH_STRICT_DEFAULT = process.env.AGENT_AUTH_STRICT_DEFAULT === 'true';
+app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT }), async (req, res) => {
   const accept = req.headers['accept'] || '';
   if (req.method === 'GET' && !accept.includes('text/event-stream')) {
     return res.status(200).json({
@@ -210,7 +190,7 @@ app.all('/mcp', mcpLimit, (req, res) => {
       }
     });
   }
-  mcpGateway(req, res);
+  createGateway(req, res);
 });
 app.get('/mcp/health', (req, res) => {
   const { DEFAULT_LIMITS } = require('./lib/rate-limit');
@@ -253,9 +233,6 @@ app.get('/mcp/usage', async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
-
-// Flow documents
-app.use('/flows', express.static(path.join(__dirname, 'flows')));
 
 // Static frontend files
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
@@ -341,16 +318,16 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
-  console.log(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
+  logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
 });
 
 process.on('uncaughtException', (err) => {
-  console.error('[FATAL] uncaughtException:', err);
+  logger.error('[FATAL] uncaughtException:', err);
 });
 
 process.on('unhandledRejection', (reason) => {
-  console.error('[FATAL] unhandledRejection:', reason);
+  logger.error('[FATAL] unhandledRejection:', reason);
 });
 
 function shutdown(signal) {

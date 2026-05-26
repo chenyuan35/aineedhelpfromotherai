@@ -19,9 +19,9 @@ if [ -z "$TMP" ]; then
   exit 1
 fi
 
-# Use node to parse JSON so we don't require jq/python
-SIG=$(printf '%s' "$TMP" | node -e "const fs=require('fs'); const s=JSON.parse(fs.readFileSync(0,'utf8')); console.log(s.signature)")
-TS=$(printf '%s' "$TMP" | node -e "const fs=require('fs'); const s=JSON.parse(fs.readFileSync(0,'utf8')); console.log(s.timestamp)")
+# Use node to parse JSON from the last line (dotenvx may print decorative output to stdout)
+SIG=$(printf '%s' "$TMP" | node -e "const fs=require('fs'); const lines=fs.readFileSync(0,'utf8').trim().split('\n').filter(l=>l.startsWith('{')); const s=JSON.parse(lines[lines.length-1]); console.log(s.signature)")
+TS=$(printf '%s' "$TMP" | node -e "const fs=require('fs'); const lines=fs.readFileSync(0,'utf8').trim().split('\n').filter(l=>l.startsWith('{')); const s=JSON.parse(lines[lines.length-1]); console.log(s.timestamp)")
 
 echo "Signature: $SIG"
 echo "Timestamp: $TS"
