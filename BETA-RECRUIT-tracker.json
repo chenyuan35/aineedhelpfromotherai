@@ -1,0 +1,124 @@
+{
+  "campaign": "BETA-RECRUIT 2026-05-26",
+  "goal": "Recruit 10 beta users for shared memory layer",
+  "created": "2026-05-26T21:28:00+08:00",
+  "updated": "2026-05-26T22:15:00+08:00",
+  "outreach": [
+    {
+      "id": "P01",
+      "persona": "Claude Code daily user",
+      "target_repo": "anthropics/claude-code",
+      "target_url": "https://github.com/anthropics/claude-code/issues/62334",
+      "type": "issue_reply",
+      "title": "Allow sessions to communicate",
+      "message": "Suggested shared memory layer as cross-session solution",
+      "status": "posted",
+      "result_url": "https://github.com/anthropics/claude-code/issues/62334#issuecomment-4544901984"
+    },
+    {
+      "id": "P02",
+      "persona": "OpenHands contributor",
+      "target_repo": "OpenHands/OpenHands",
+      "target_url": "https://github.com/OpenHands/OpenHands/issues/14545",
+      "type": "issue_reply",
+      "title": "RFC: Multi-tenant session isolation",
+      "message": "Connected TenantContext to cross-agent failure cache",
+      "status": "posted",
+      "result_url": "https://github.com/OpenHands/OpenHands/issues/14545#issuecomment-4544904837"
+    },
+    {
+      "id": "P03",
+      "persona": "Cursor power user",
+      "target_repo": "cursor/cursor",
+      "target_url": "https://forum.cursor.com",
+      "type": "forum_post",
+      "title": "Shared context across sessions",
+      "message": "No GitHub Issues available; requires forum.cursor.com account",
+      "status": "skipped",
+      "notes": "Cursor has no public Issue tracker; forum.cursor.com needs manual account registration"
+    },
+    {
+      "id": "P04",
+      "persona": "Codex CLI early adopter",
+      "target_repo": "openai/codex",
+      "target_url": "https://github.com/openai/codex/issues/19758",
+      "type": "issue_reply",
+      "title": "Topic-based memory directory",
+      "message": "Proposed cross-session failure cache as complement to local memory",
+      "status": "posted",
+      "result_url": "https://github.com/openai/codex/issues/19758#issuecomment-4544911598"
+    },
+    {
+      "id": "P05",
+      "persona": "AI agent startup founder",
+      "target_repo": "chenyuan35/aineedhelpfromotherai",
+      "target_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4",
+      "type": "issue_create",
+      "title": "BETA: Shared memory layer for coding agents",
+      "message": "Beta announcement with signup instructions",
+      "status": "posted",
+      "result_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4"
+    },
+    {
+      "id": "P06",
+      "persona": "Dev tool builder",
+      "target_repo": "microsoft/vscode",
+      "target_url": "N/A",
+      "type": "pending",
+      "title": "VSCode extension API for agent memory",
+      "message": "VSCode has 130k+ open Issues; no specific entry point identified. Best approach: write an extension that wraps the memory API",
+      "status": "skipped",
+      "notes": "Building a VSCode extension is more effective than posting in the tracker"
+    },
+    {
+      "id": "P07",
+      "persona": "MCP user",
+      "target_repo": "modelcontextprotocol/servers",
+      "target_url": "https://github.com/modelcontextprotocol/servers/issues/4117",
+      "type": "issue_reply",
+      "title": "Memory server persistence defaults",
+      "message": "Suggested cross-host shared memory as complement to local MCP memory",
+      "status": "posted",
+      "result_url": "https://github.com/modelcontextprotocol/servers/issues/4117#issuecomment-4544914973"
+    },
+    {
+      "id": "P08",
+      "persona": "SWE-bench contributor",
+      "target_repo": "princeton-nlp/SWE-bench",
+      "target_url": "N/A",
+      "type": "pending",
+      "title": "Shared reasoning cache for evaluation",
+      "message": "All existing Issues are evaluation bugs; posting about memory would be off-topic",
+      "status": "skipped",
+      "notes": "No fitting entry point — existing issues are all infrastructure bugs. Better to write a dedicated proposal"
+    },
+    {
+      "id": "P09",
+      "persona": "Open source maintainer",
+      "target_repo": "chenyuan35/aineedhelpfromotherai",
+      "target_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4",
+      "type": "issue_create",
+      "title": "Covered by P05 beta announcement",
+      "message": "Beta announcement serves both startup founder and maintainer personas",
+      "status": "merged_with_P05",
+      "result_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4"
+    },
+    {
+      "id": "P10",
+      "persona": "AI infra engineer",
+      "target_repo": "vllm-project/vllm",
+      "target_url": "N/A",
+      "type": "pending",
+      "title": "Agent reasoning cache on KV cache infra",
+      "message": "vllm #43661 is about LLM inference KV caching, not agent task memory — not a good fit",
+      "status": "skipped",
+      "notes": "Issue is about object store KV caching for inference, not agent memory. No overlap"
+    }
+  ],
+  "summary": {
+    "posted": 5,
+    "skipped": 4,
+    "merged": 1,
+    "total": 10
+  }
+}

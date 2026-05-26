@@ -1,5 +1,23 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-26 (BETA-RECRUIT Outreach): 5 GitHub Issues 已发 + 追踪表
+
+### 核心改动
+- **BETA-RECRUIT-tracker.json**: 10 persona 外联追踪表（含目标、状态、结果 URL）
+- **已发 5 条 GitHub 回复/Issue**:
+  1. **anthropics/claude-code#62334**: 推荐 MCP 集成实现跨 session 通信 ([link](https://github.com/anthropics/claude-code/issues/62334#issuecomment-4544901984))
+  2. **OpenHands/OpenHands#14545**: 将 TenantContext 设计链接到跨 agent 失败缓存 ([link](https://github.com/OpenHands/OpenHands/issues/14545#issuecomment-4544904837))
+  3. **openai/codex#19758**: 提议 failure_check tool 作为 topic-based memory 的补充 ([link](https://github.com/openai/codex/issues/19758#issuecomment-4544911598))
+  4. **modelcontextprotocol/servers#4117**: 讨论 MCP memory 持久化 + 跨 host 共享 ([link](https://github.com/modelcontextprotocol/servers/issues/4117#issuecomment-4544914973))
+  5. **chenyuan35/aineedhelpfromotherai#4 (NEW)**: BETA 公告 — "Shared memory layer for AI coding agents" ([link](https://github.com/chenyuan35/aineedhelpfromotherai/issues/4))
+- **跳过的 4 个**: Cursor (无 Issues), VSCode (无入口), SWE-bench (不相关话题), vllm (KV cache 不相关)
+- **SOCIAL-PROOF.md** (commit 141654d): 已包含 live stats + benchmark + curl 示例
+
+### 状态
+- BETA-RECRUIT 外联: ✅ 5/10 posted, 4 skipped, 1 merged
+- 关注 beta Issue #4 是否有外部用户回复
+- 下一步: [用户手动] 如果收到回复，提供 1-on-1 集成支持
+
 ## 2026-05-26 (Phase 1): Sandbox Evaluator + Verification Tiers + Decay + Ranking Integration
 
 ### 核心改动
