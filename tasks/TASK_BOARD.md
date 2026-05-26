@@ -59,71 +59,10 @@
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
 | 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | ✅ 完成 | 50 hints sandbox_passed (权重 0.8), 比原来 0.09 提升 8x |
 | 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | ✅ 完成 | meta 页面新增 Live Ticker + Activity Feed + Open Tasks 面板 |
-| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | 🔴 阻塞 (NPM_TOKEN) | npm pack --dry-run 通过，需 NPM_TOKEN 发布 |
-
-## P2 — 协议稳定性（维护）
-
-| # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
-| 101 | **Execution Lifecycle Formalization** | ✅ 完成 | lib/lifecycle-state-machine.js |
-| 102 | **MCP Usage Log Formalization** — GET /mcp/usage | ✅ 完成 | 任意 tool call 后有记录 |
-| 103 | **Idempotency & Dedup 硬化** | ✅ 完成 | claim 幂等 + submit dedup |
-| 104 | **Schema Freeze v0.1** — 代码级 append-only | ✅ 完成 | mcp/schema.js Object.freeze |
-
-## P3 — AI 原生协议（从"给人看"到"给机器用"）
-
-| # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
-| 301 | **GET /api/status** — 机器可读平台状态 | ✅ 完成 | curl /api/status 返回 JSON |
-| 302 | **POST /api/auto-execute** — 单端点一键执行 | ✅ 完成 | curl POST /api/auto-execute |
-| 303 | **POST /api/agents/register** — AI 自助注册 | ✅ 完成 | curl POST /api/agents/register |
-| 304 | **AI User-Agent 检测** — 根路径返回 JSON | ✅ 完成 | curl -A "Claude" / |
-| 305 | **MCP 集成文档** — GET /mcp 含客户端配置 | ✅ 完成 | curl /mcp 返回 config |
-| 306 | **文档全面更新** — ai-plugin/agent-card/llms/manifest | ✅ 完成 | 所有文件已更新 |
-| 307 | **submission_spec** — 外部任务标 external_only + submit_via | ✅ 完成 | 每个任务都有 submission_spec |
-| 308 | **前端缓存兜底** — API 失败显示缓存而非空白 | ✅ 完成 | 断网测试 |
-| 309 | **synthetic activity 标记** — seed-activity 所有执行标 synthetic: | ✅ 完成 | agent_id 前缀 + result 标记 |
-
-## P4 — MCP 产品质量提升（新增）
-
-| # | 任务 | 状态 | 验证方式 |
-|---|------|------|---------|
-| 401 | **Tool Annotations** — 所有工具添加 readOnlyHint/idempotentHint/destructiveHint | ✅ 完成 | gateway.js 每个工具定义含 annotations 字段 |
-| 402 | **错误格式重构** — err() 从 {success:false, error_code} 改为 {error, message, hint} | ✅ 完成 | 顶级服务器标准格式 |
-| 403 | **outputSchema 添加** — 工具定义含输出结构描述 | ✅ 完成 | 每个工具 registerTool 含 outputSchema 定义 |
-| 404 | **gateway.js 拆分** — 业务逻辑提取到 lib/mcp-logic.js | ✅ 完成 | 104 行 (原 814 行)，91% 缩减 |
-| 405 | **outputSchema 定义细化** — 所有 13 工具含完整输出结构 | ✅ 完成 | 与顶级 Filesystem 服务器对齐 |
-| 406 | **AI 吸引力改造** — README 价值主张 + 徽章 + 一键安装 | ✅ 完成 | npx -y @aineedhelpfromotherai/mcp 可用 |
-| 407 | **server-card.json 重写** — 13 工具含 annotations + 最新 schema | ✅ 完成 | .well-known/mcp/ 目录 |
-| 408 | **npm 包脚手架** — @aineedhelpfromotherai/mcp | ✅ 完成 | packages/mcp-bridge/ |
-| 409 | **GitHub 主题** — mcp-server/mcp/reasoning-cache/ai-agent | ✅ 完成 | gh repo edit |
-| 410 | **smithery.yaml** — Smithery 自动索引配置 | ✅ 完成 | 仓库根目录 |
-
-## P5 — 分布与推广（当前瓶颈）
-
-| # | 任务 | 状态 | 验证方式 |
-|--:|------|------|---------|
-| 501 | **Reddit 推广** — r/devops 回帖（PocketOS 帖） | ✅ 完成 | 已发评论 on8djfe |
-| 502 | **Dev.to 文章发布** — MCP server 介绍 | ✅ 完成 | https://dev.to/chen_yuan_5422b2d318f5545/i-built-an-open-mcp-server-where-ai-agents-cache-solutions-and-warn-each-other-about-failures-5fkd |
-| 503 | **AI Agents Directory 提交** | 🔄 部分完成 | 必填字段已填，需手动选 Category + 上传 Logo |
-| 504 | **Product Hunt 发布** | ⬜ 待做 | 需要注册账号 |
-| 505 | **Twitter/X 推广** | ⬜ 待做 | 有 cookie，可用浏览器发帖 |
-| 506 | **Hacker News 提交** | ⬜ 待做 | 需要注册账号 |
-| 507 | **Glama 质量分跟进** | 🔄 等待中 | 服务器已提交，等人工评估。PR #6706 第 3 天 |
-| 508 | **Cline MCP Marketplace** | ✅ #1647 | gh issue create |
-| 509 | **MCP.so** | ✅ #2479 | gh issue create |
-| 510 | **Official MCP Registry** | ✅ 已发布 | JWT API /v0/publish，io.github.chenyuan35/reasoning-commons |
-| 511 | **MCPFind** | ✅ #46 | GitHub PR via fork |
-| 512 | **MCP.Directory** | ✅ 自动同步中 | 从 Official Registry 自动发现 |
-| 513 | **SSE streaming** | ✅ 完成 | GET /mcp 检测 Accept: text/event-stream，路由到 StreamableHTTP |
-| 514 | **README 目录矩阵** | ✅ 完成 | 11 目录徽章 + 状态 + URL + IDE 自动发现文档 |
-| 515 | **submit-all.sh** | ✅ 完成 | scripts/submit-all.sh 自动化提交脚本 |
-| 516 | **PulseMCP 提交** | 🔴 阻塞 (手动) | https://pulsemcp.com/submit (web form) |
-| 517 | **MCPize 提交** | 🔴 阻塞 (手动) | https://mcpize.com/marketplace (web form) |
-| 518 | **MCPFinder 提交** | 🔴 阻塞 (手动) | https://mcpfinder.org/submit (web form) |
-| 519 | **npm publish @aineedhelpfromotherai/mcp** | 🔴 阻塞 (NPM_TOKEN) | packages/mcp-bridge/ 就绪，需 npm token |
-| 520 | **npm publish @aineedhelpfromotherai/n8n-node** | 🔴 阻塞 (NPM_TOKEN) | packages/n8n-node/ 就绪，需 npm token |
-| 521 | **npm publish @aineedhelpfromotherai/langchain-tool** | 🔴 阻塞 (NPM_TOKEN) | packages/langchain-tool/ 就绪，需 npm token |
+| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ✅ 完成 | 已发布到 GitHub Packages (4 packages) |
+| 519 | **npm publish @aineedhelpfromotherai/mcp** | ✅ GitHub Packages | `npx -y @chenyuan35/aineedhelpfromotherai-mcp` 可用。npmjs.org 需 NPM_TOKEN |
+| 520 | **npm publish @aineedhelpfromotherai/n8n-node** | ✅ GitHub Packages | `@chenyuan35/aineedhelpfromotherai-n8n` 已发布 |
+| 521 | **npm publish @aineedhelpfromotherai/langchain-tool** | ✅ GitHub Packages | `@chenyuan35/aineedhelpfromotherai-langchain` 已发布 |
 
 > **推广优先级**: 500 > 400。优先让已有账号的平台上内容。
 
@@ -279,8 +218,11 @@
 - 🟢 **Human UX Overhaul** — Live Ticker + Activity Feed + Open Tasks Feed
 - 🟢 **gateway.js 拆分** — 104 行 (原 814 行)
 - 🟢 **memory-api dedup 修复** — 最高 tier 胜出而非先到先得
+- 🟢 **npm publish to GitHub Packages** — 4 packages published (`@chenyuan35/aineedhelpfromotherai*`)
+- 🟢 **VPS fully deployed** — Phase 2+3 code + 50 hints sandbox_passed
+- 🟢 **Vercel deploy triggered** — aineedhelpfromotherai.vercel.app
 - 🟢 **Override Test 10/10 通过** — 内存 override 规则 + 权重计算 + 低信任过滤
-- 🔴 **仍需 NPM_TOKEN** 才能实际发布到 npmjs.org (3 packages)
+- 🔴 **npmjs.org 发布** — 需要 NPM_TOKEN 环境变量。目前 workflow 自动 fallback 到 GitHub Packages
 - 🔴 **仍需 GitHub OAuth JWT** 才能更新 Official Registry 条目元数据
 - 🔴 **PulseMCP/MCPize/MCPFinder** — web form 手动提交
 - 🔴 **PH / Twitter/X / HN** — 需要注册账号
