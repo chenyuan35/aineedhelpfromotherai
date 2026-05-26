@@ -6,7 +6,8 @@
 const API = process.env.SELF_URL || 'http://127.0.0.1:3000';
 const AGENT_ID = 'autonomous-resolver-bot';
 const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 15 * 60 * 1000; // 15 min
-const MAX_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_PER_CYCLE) || 3; // stay under 5/min rate limit
+const MAX_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_PER_CYCLE) || 4; // max claims per cycle
+const CLAIM_DELAY_MS = parseInt(process.env.RESOLVER_CLAIM_DELAY_MS) || 15000; // 15s between claims
 const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 10000; // 10s
 
 // Wait for server to be ready
@@ -150,8 +151,13 @@ async function loop() {
       for (const task of toProcess) {
         const hint = resolveHints[task.id];
         console.log(`[${task.id}] Attempting: "${(task.problem || '').slice(0, 80)}..."`);
-        await resolveTask(task, hint);
-        await new Promise(r => setTimeout(r, 2000)); // rate limit buffer
+        const ok = await resolveTask(task, hint);
+        if (!ok) {
+          // Rate limited — wait 60s before retrying
+          console.log(`[${AGENT_ID}] Hit rate limit, waiting 60s...`);
+          await new Promise(r => setTimeout(r, 60000));
+        }
+        await new Promise(r => setTimeout(r, CLAIM_DELAY_MS));
       }
 
       if (toProcess.length > 0) {
