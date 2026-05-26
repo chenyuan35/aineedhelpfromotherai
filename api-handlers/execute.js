@@ -240,6 +240,8 @@ async function handleClaim(req, res) {
   try { const eb = require('../lib/event-bus'); eb.emit('task.claimed', { task_id: taskId, agent_id: agent.agent_id, execution_id: executionId }); } catch {}
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.claimed', task_id: taskId }); } catch {}
 
+  // Track resolve hint if available
+  const resolveHint = task.resolve_hint || task.resolveHint || null;
   // Telemetry: track hint served on claim
   try { const ht = require('../lib/hint-telemetry'); ht.trackHintsServed('claim', agent.agent_id, resolveHint ? 1 : 0); } catch {}
 

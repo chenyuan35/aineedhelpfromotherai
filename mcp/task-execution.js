@@ -35,7 +35,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       const db = getPool();
       if (db) {
         try {
-          let sql = "SELECT id, problem, task_type, difficulty, estimated_tokens, tags, urgency, source_url FROM posts WHERE status = 'OPEN' AND type = 'REQUEST'";
+          let sql = "SELECT id, problem, task_type, difficulty, tags, urgency, source_url FROM posts WHERE status = 'OPEN' AND type = 'REQUEST'";
           const params = [];
           if (difficulty) { sql += ' AND difficulty = $' + (params.length + 1); params.push(difficulty); }
           sql += ' ORDER BY created_at DESC LIMIT $' + (params.length + 1);
@@ -65,7 +65,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           problem: (t.problem || '').slice(0, 300),
           task_type: t.task_type || 'other',
           difficulty: t.difficulty || 'unknown',
-          estimated_tokens: t.estimated_tokens || null,
+          estimated_tokens: null,
           tags: t.tags || [],
           urgency: t.urgency || 'NORMAL',
           source: t.source_url ? 'external' : 'local',
