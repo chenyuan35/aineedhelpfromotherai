@@ -155,7 +155,6 @@ app.post('/api/meta/process-replay', async (req, res) => {
     if (require('fs').existsSync(REPLAY_PATH)) {
       const lines = require('fs').readFileSync(REPLAY_PATH, 'utf8').split('\n').filter(Boolean);
       const entries = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
-      // Group by cycle for competition context
       const byCycle = {};
       for (const e of entries) {
         if (e.type === 'resolve_attempt' && e.outcome === 'success') {
@@ -169,6 +168,48 @@ app.post('/api/meta/process-replay', async (req, res) => {
       }
     }
     res.json({ success: true, processed, message: `${processed} ELO updates applied from replay log` });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Extinction events
+app.get('/api/extinctions', (req, res) => {
+  try {
+    const lineage = require('./lib/memory-lineage');
+    const limit = parseInt(req.query.limit) || 50;
+    res.json({ success: true, extinctions: lineage.getExtinctions(limit), summary: lineage.getExtinctionSummary(), meta: { endpoint: '/api/extinctions', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Competition winner leaderboard
+app.get('/api/winners', (req, res) => {
+  try {
+    const ws = require('./lib/winner-selection');
+    res.json({ success: true, leaderboard: ws.getWinLeaderboard(), meta: { endpoint: '/api/winners', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Agent breeding information
+app.get('/api/breeds', (req, res) => {
+  try {
+    const breeding = require('./lib/agent-breeding');
+    res.json({ success: true, breeds: breeding.getBreeds(), meta: { endpoint: '/api/breeds', timestamp: new Date().toISOString() } });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Trigger auto-evolution
+app.post('/api/breeds/evolve', async (req, res) => {
+  try {
+    const breeding = require('./lib/agent-breeding');
+    const breeds = breeding.autoEvolve(parseInt(req.query.count) || 2);
+    res.json({ success: true, new_breeds: breeds, message: `Created ${breeds.length} new hybrid breeds` });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Tournament strategies
+app.get('/api/tournament/strategies', (req, res) => {
+  try {
+    const failureReplay = require('./scripts/failure-replay');
+    res.json({ success: true, strategies: failureReplay.getStrategies(), meta: { endpoint: '/api/tournament/strategies', timestamp: new Date().toISOString() } });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
@@ -430,6 +471,9 @@ app.get('/mcp/usage', async (req, res) => {
 
 // Flow documents
 app.use('/flows', express.static(path.join(__dirname, 'flows')));
+
+// Meta-layer observability page
+app.use('/meta', express.static(path.join(__dirname, 'public', 'meta')));
 
 // Static frontend files
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];

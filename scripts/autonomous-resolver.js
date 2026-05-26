@@ -1,6 +1,6 @@
 // scripts/autonomous-resolver.js — Configurable multi-agent resolver
-// Personality configured via env vars. Run 4 instances via PM2 ecosystem.
-// Env: RESOLVER_AGENT_ID, RESOLVER_AGENT_PROFILE (fast/careful/skeptic/minimal)
+// Personality configured via env vars. Run 24 instances via PM2 ecosystem.
+// Env: RESOLVER_AGENT_ID, RESOLVER_AGENT_PROFILE (fast/careful/skeptic/minimal/experimental)
 
 const PROFILE = (process.env.RESOLVER_AGENT_PROFILE || 'fast').toLowerCase();
 
@@ -9,6 +9,14 @@ const PROFILES = {
   careful:  { max_hints: 5, verification: true,  temperature: 0.2, retry_limit: 3, ignore_low_score: false, desc: 'Accuracy priority, higher tokens' },
   skeptic:  { max_hints: 3, verification: true,  temperature: 0.3, retry_limit: 2, ignore_low_score: true,  desc: 'Questions hints, verifies before use' },
   minimal:  { max_hints: 0, verification: false, temperature: 0.5, retry_limit: 1, ignore_low_score: false, desc: 'Baseline — almost no memory' },
+  experimental: {
+    max_hints: parseInt(process.env.RESOLVER_EXPERIMENTAL_MAX_HINTS) || 3,
+    verification: process.env.RESOLVER_EXPERIMENTAL_VERIFICATION === 'true',
+    temperature: parseFloat(process.env.RESOLVER_EXPERIMENTAL_TEMPERATURE) || 0.5,
+    retry_limit: 2,
+    ignore_low_score: process.env.RESOLVER_EXPERIMENTAL_IGNORE_LOW === 'true',
+    desc: `Experimental (hints=${process.env.RESOLVER_EXPERIMENTAL_MAX_HINTS || 3}, verify=${process.env.RESOLVER_EXPERIMENTAL_VERIFICATION || 'false'}, temp=${process.env.RESOLVER_EXPERIMENTAL_TEMPERATURE || 0.5})`
+  },
 };
 
 const config = PROFILES[PROFILE] || PROFILES.fast;
