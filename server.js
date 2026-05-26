@@ -864,12 +864,17 @@ app.use('/flows', express.static(path.join(__dirname, 'flows')));
 // Meta-layer observability page
 app.use('/meta', express.static(path.join(__dirname, 'public', 'meta')));
 
-// Static frontend files
+// Static frontend files with caching
 const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
+const longCache = ['style.css', 'app.js', 'badge.svg', 'robots.txt', 'sitemap.xml', 'CNAME'];
 for (const file of staticFiles) {
   const filePath = path.join(__dirname, file);
   if (require('fs').existsSync(filePath)) {
-    app.get('/' + file, (req, res) => res.sendFile(filePath));
+    app.get('/' + file, (req, res) => {
+      if (longCache.includes(file)) res.setHeader('Cache-Control', 'public, max-age=86400');
+      else res.setHeader('Cache-Control', 'public, max-age=600');
+      res.sendFile(filePath);
+    });
   }
 }
 
