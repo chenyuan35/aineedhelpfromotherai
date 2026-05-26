@@ -59,7 +59,7 @@
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
 | 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | ✅ 完成 | 50 hints sandbox_passed (权重 0.8), 比原来 0.09 提升 8x |
 | 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | ✅ 完成 | meta 页面新增 Live Ticker + Activity Feed + Open Tasks 面板 |
-| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ⬜ 待做 | npm publish |
+| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | 🔴 阻塞 (NPM_TOKEN) | npm pack --dry-run 通过，需 NPM_TOKEN 发布 |
 
 ## P2 — 协议稳定性（维护）
 
@@ -118,9 +118,12 @@
 | 513 | **SSE streaming** | ✅ 完成 | GET /mcp 检测 Accept: text/event-stream，路由到 StreamableHTTP |
 | 514 | **README 目录矩阵** | ✅ 完成 | 11 目录徽章 + 状态 + URL + IDE 自动发现文档 |
 | 515 | **submit-all.sh** | ✅ 完成 | scripts/submit-all.sh 自动化提交脚本 |
-| 516 | **PulseMCP 提交** | ⬜ 待办 | https://pulsemcp.com/submit (web form) |
-| 517 | **MCPize 提交** | ⬜ 待办 | https://mcpize.com/marketplace (web form) |
-| 518 | **MCPFinder 提交** | ⬜ 待办 | https://mcpfinder.org/submit (web form) |
+| 516 | **PulseMCP 提交** | 🔴 阻塞 (手动) | https://pulsemcp.com/submit (web form) |
+| 517 | **MCPize 提交** | 🔴 阻塞 (手动) | https://mcpize.com/marketplace (web form) |
+| 518 | **MCPFinder 提交** | 🔴 阻塞 (手动) | https://mcpfinder.org/submit (web form) |
+| 519 | **npm publish @aineedhelpfromotherai/mcp** | 🔴 阻塞 (NPM_TOKEN) | packages/mcp-bridge/ 就绪，需 npm token |
+| 520 | **npm publish @aineedhelpfromotherai/n8n-node** | 🔴 阻塞 (NPM_TOKEN) | packages/n8n-node/ 就绪，需 npm token |
+| 521 | **npm publish @aineedhelpfromotherai/langchain-tool** | 🔴 阻塞 (NPM_TOKEN) | packages/langchain-tool/ 就绪，需 npm token |
 
 > **推广优先级**: 500 > 400。优先让已有账号的平台上内容。
 
@@ -212,7 +215,7 @@
 | 901 | **推送 main → VPS auto-deploy** (v2 memory-api + 3 plugins + 56 endpoints) | ✅ 完成 | curl /memory/stats 返回 428 fixes |
 | 902 | **Benchmark on VPS** — 10 scenarios, recall@1=20%, latency=664ms | ✅ 完成 | node scripts/benchmark-real.js |
 | 903 | **首页重构 #2** — 按 4 条反馈：H1 强化、真实案例、API 降级、社区链接 | ✅ 完成 | 已推送 b0f751f |
-| 904 | **VPS auto-update 验证** — 最新首页在 VPS 生效 | 🔄 待观察 | 当前 VPS 仍运行 cb70577，等待下一循环 |
+| 904 | **VPS auto-update 验证** — Phase 2+3 已推 main (8857eb7)，等待 5min 循环拉取。拉取后需运行 `node scripts/promote-tiers.js` | 🔄 等待中 | curl /api/memory/gate 返回 influence_weight + sandbox_passed tier |
 
 ## 已完成任务（历史归档）
 
@@ -272,8 +275,15 @@
 - 🟢 **入口改写** — llms.txt/ai.txt/GET /mcp 全部重写为 AI 转换页
 - 🟢 **REST 钩子中间件** — 每个 JSON 响应附带 `_tip` 字段
 - 🟢 **Failure 数据注入** — 50 个推理对象已注入 failure attempts，failure-check 现在可以返回真实预警
-- 🔴 **仍需 NPM_TOKEN** 才能实际发布到 npmjs.org
+- 🟢 **Verification Tier Promotion** — 50 hints 升级到 sandbox_passed (权重 0.8)
+- 🟢 **Human UX Overhaul** — Live Ticker + Activity Feed + Open Tasks Feed
+- 🟢 **gateway.js 拆分** — 104 行 (原 814 行)
+- 🟢 **memory-api dedup 修复** — 最高 tier 胜出而非先到先得
+- 🟢 **Override Test 10/10 通过** — 内存 override 规则 + 权重计算 + 低信任过滤
+- 🔴 **仍需 NPM_TOKEN** 才能实际发布到 npmjs.org (3 packages)
 - 🔴 **仍需 GitHub OAuth JWT** 才能更新 Official Registry 条目元数据
+- 🔴 **PulseMCP/MCPize/MCPFinder** — web form 手动提交
+- 🔴 **PH / Twitter/X / HN** — 需要注册账号
 
 分发渠道全覆盖。核心功能已验证：resolve 可命中 + failure-check 可预警。
 
