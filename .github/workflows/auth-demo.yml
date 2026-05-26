@@ -1,0 +1,38 @@
+name: Auth Demo CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  auth-demo-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install deps
+        run: npm ci
+      - name: Run auth-demo (bash)
+        run: |
+          chmod +x ./scripts/auth-demo.sh || true
+          ./scripts/auth-demo.sh demo-agent http://localhost:3000 || true
+
+  auth-demo-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install deps
+        run: npm ci
+      - name: Run auth-demo (powershell)
+        shell: pwsh
+        run: |
+          ./scripts/auth-demo.ps1 -Agent demo-agent -HostUrl http://localhost:3000
