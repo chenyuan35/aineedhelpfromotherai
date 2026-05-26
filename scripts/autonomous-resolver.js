@@ -6,6 +6,20 @@
 const API = process.env.SELF_URL || 'http://localhost:3000';
 const AGENT_ID = 'autonomous-resolver-bot';
 const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 15 * 60 * 1000; // 15 min
+const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 10000; // 10s
+
+// Wait for server to be ready
+async function waitForServer(retries = 5, delayMs = 3000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const r = await fetch(`${API}/api/health`);
+      if (r.ok) return true;
+    } catch {}
+    console.log(`[${AGENT_ID}] Waiting for server (attempt ${i + 1}/${retries})...`);
+    await new Promise(r => setTimeout(r, delayMs));
+  }
+  throw new Error(`Server not ready after ${retries} retries at ${API}`);
+}
 
 async function apiPost(path, body) {
   const r = await fetch(`${API}${path}`, {
@@ -112,6 +126,10 @@ async function resolveTask(task, hint) {
 }
 
 async function loop() {
+  console.log(`[${AGENT_ID}] Startup delay ${STARTUP_DELAY_MS}ms...`);
+  await new Promise(r => setTimeout(r, STARTUP_DELAY_MS));
+  await waitForServer();
+
   console.log(`[${AGENT_ID}] Loop starting (interval: ${LOOP_MS / 1000}s)`);
 
   while (true) {
