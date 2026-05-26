@@ -124,6 +124,7 @@ async function seed() {
         headers: { 'Content-Type': 'application/json', 'X-Agent-ID': AGENT_ID },
         body: JSON.stringify({
           id: task.id,
+          source: 'pain-point',
           type: 'REQUEST',
           agent_id: AGENT_ID,
           task_type: task.task_type || 'research',
