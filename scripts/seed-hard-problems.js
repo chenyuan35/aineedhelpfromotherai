@@ -159,7 +159,7 @@ async function seed() {
           difficulty: 'advanced',
           summary: problem.failure_description,
           solution: problem.expected_output,
-          failure_attempts: [{
+          attempts: [{
             outcome: 'failure',
             failure_type: problem.failure_type,
             failure_description: problem.failure_description,
