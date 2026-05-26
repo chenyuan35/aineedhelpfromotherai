@@ -1,0 +1,13 @@
+{
+  "name": "@aineedhelpfromotherai/n8n-node",
+  "version": "0.1.0",
+  "description": "n8n community node for AI Failure Memory — search, record, and share agent failures across workflows",
+  "main": "index.js",
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": ["FailureMemoryNode"],
+    "credentials": []
+  },
+  "keywords": ["n8n-community-node", "n8n", "ai-memory", "agent-failure", "reasoning-cache"],
+  "license": "MIT"
+}

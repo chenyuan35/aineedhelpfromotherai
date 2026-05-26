@@ -1,0 +1,11 @@
+{
+  "name": "@aineedhelpfromotherai/langchain-tool",
+  "version": "0.1.0",
+  "description": "LangChain tool for AI Failure Memory — search, record, and share agent failures from LangChain agents",
+  "main": "index.js",
+  "keywords": ["langchain", "ai-memory", "agent-failure", "reasoning-cache"],
+  "license": "MIT",
+  "dependencies": {
+    "langchain": ">=0.1.0"
+  }
+}

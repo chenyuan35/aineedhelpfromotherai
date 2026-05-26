@@ -20,6 +20,7 @@ const {
 const { registerTaskTools } = require('./task-execution');
 const { registerReasoningTools } = require('./reasoning-cache');
 const { registerStorageTools } = require('./reasoning-store');
+const { registerMemoryGateTools } = require('./memory-gate');
 
 async function createGateway(req, res) {
   let mcpServer = null;
@@ -45,6 +46,7 @@ async function createGateway(req, res) {
     await registerTaskTools(mcpServer, z, clientIp);
     await registerReasoningTools(mcpServer, z, clientIp);
     await registerStorageTools(mcpServer, z, clientIp);
+    await registerMemoryGateTools(mcpServer, z, clientIp);
 
     transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
     await mcpServer.connect(transport);

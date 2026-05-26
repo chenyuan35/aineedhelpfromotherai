@@ -539,6 +539,31 @@ app.get('/api/sandbox/stats', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// === MEMORY GATE API ===
+app.post('/api/memory/gate', (req, res) => {
+  try {
+    const gate = require('./lib/memory-gate');
+    const { query, task, agent_id, trust_level, context } = req.body || {};
+    const result = gate.evaluateGate(query || task || '', { agent_id, trust_level, context });
+    res.json({ success: true, gate: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/memory/gate', (req, res) => {
+  try {
+    const gate = require('./lib/memory-gate');
+    const query = req.query.q || req.query.query || '';
+    const result = gate.evaluateGate(query, { agent_id: req.query.agent_id, trust_level: parseFloat(req.query.trust || '0') || undefined });
+    res.json({ success: true, gate: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/memory/resolve-conflict', (req, res) => {
+  try {
+    const resolver = require('./lib/memory-conflict-resolver');
+    const { hints } = req.body || {};
+    res.json({ success: true, resolution: resolver.resolve(hints || []) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Unified meta dashboard (all subsystems)
 app.get('/api/meta', (req, res) => {
   try {

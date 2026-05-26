@@ -149,6 +149,25 @@ td { font-family: 'SF Mono', 'Fira Code', monospace; }
 <table><thead><tr><th>Action</th><th>Actor</th><th>Details</th><th>Timestamp</th></tr></thead>
 <tbody id="audit-table"></tbody></table>
 
+<!-- Memory Influence Debug View -->
+<h2>MEMORY INFLUENCE DEBUG</h2>
+<div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;">
+  <input id="gate-query" type="text" placeholder="Task/error description" style="flex:2;min-width:200px;padding:6px 8px;border:1px solid #30363d;border-radius:4px;background:#0d1117;color:#c9d1d9;">
+  <input id="gate-trust" type="number" placeholder="Trust (0-1)" value="0.5" min="0" max="1" step="0.1" style="width:80px;padding:6px 8px;border:1px solid #30363d;border-radius:4px;background:#0d1117;color:#c9d1d9;">
+  <label style="display:flex;align-items:center;gap:4px;color:#8b949e;font-size:12px;">
+    <input id="gate-strict" type="checkbox"> Strict verified
+  </label>
+  <button onclick="runMemoryGate()" style="background:#238636;color:#fff;border:none;padding:6px 16px;border-radius:4px;cursor:pointer;font-size:12px;">Run Gate</button>
+</div>
+<div id="gate-result" style="display:none;margin:8px 0;padding:12px;background:#161b22;border-radius:6px;border:1px solid #30363d;font-size:13px;line-height:1.5;">
+  <div id="gate-header" style="margin-bottom:8px;font-weight:bold;"></div>
+  <div id="gate-augmented" style="margin:8px 0;padding:8px;background:#0d1117;border-radius:4px;font-family:monospace;white-space:pre-wrap;font-size:12px;color:#8b949e;"></div>
+  <div id="gate-force-injected" style="margin:8px 0;"></div>
+  <div id="gate-blocked" style="margin:8px 0;"></div>
+  <div id="gate-risk" style="margin:8px 0;"></div>
+  <div id="gate-stats" style="margin:8px 0;color:#8b949e;font-size:12px;"></div>
+</div>
+
 <div id="last-updated"></div>
 </div>
 
@@ -529,6 +548,47 @@ async function thawSystem() {
     alert(j.success ? 'System thawed' : 'Thaw failed');
     loadDashboard();
   } catch (e) { alert('Error: ' + e.message); }
+}
+async function runMemoryGate() {
+  const query = document.getElementById('gate-query').value;
+  if (!query) return alert('Enter a task query');
+  const trust = document.getElementById('gate-trust').value;
+  const strict = document.getElementById('gate-strict').checked;
+  const resultDiv = document.getElementById('gate-result');
+  const headerDiv = document.getElementById('gate-header');
+  const augmentedDiv = document.getElementById('gate-augmented');
+  const forceDiv = document.getElementById('gate-force-injected');
+  const blockedDiv = document.getElementById('gate-blocked');
+  const riskDiv = document.getElementById('gate-risk');
+  const statsDiv = document.getElementById('gate-stats');
+  resultDiv.style.display = 'block';
+  headerDiv.innerHTML = 'Running gate...';
+  try {
+    const r = await fetch(`${API_BASE}/api/memory/gate?q=${encodeURIComponent(query)}&trust=${trust}&strict=${strict}`, { method: 'GET' });
+    const j = await r.json();
+    if (!j.success || !j.gate) { headerDiv.innerHTML = 'Gate error'; return; }
+    const g = j.gate;
+    const mustUse = g.must_use_memory;
+    headerDiv.innerHTML = `${mustUse ? '⚠️ MEMORY MUST BE USED' : '✅ No forced memory'} — ${g.gates_passed} candidates, ${g.gates_filtered} after filter`;
+    headerDiv.style.color = mustUse ? '#d29922' : '#3fb950';
+    augmentedDiv.textContent = g.augmented_context || '(no augmented context)';
+    if (g.force_injected && g.force_injected.length > 0) {
+      forceDiv.innerHTML = '<strong style="color:#d29922;">Force Injected:</strong><br>' +
+        g.force_injected.map(f => `<span style="color:#c9d1d9;">• ${f.summary} <span style="color:#8b949e;">(tier: ${f.verification_tier}, reason: ${f.force_reason})</span></span>`).join('<br>');
+    } else { forceDiv.innerHTML = '<span style="color:#8b949e;">No force-injected memories</span>'; }
+    if (g.blocked_memories && g.blocked_memories.length > 0) {
+      blockedDiv.innerHTML = '<strong style="color:#f85149;">Blocked Memories:</strong><br>' +
+        g.blocked_memories.map(b => `<span>• ${b.summary} <span style="color:#8b949e;">(${b.reason})</span></span>`).join('<br>');
+    } else { blockedDiv.innerHTML = '<span style="color:#8b949e;">No blocked memories</span>'; }
+    if (g.risk_flags && g.risk_flags.length > 0) {
+      riskDiv.innerHTML = '<strong style="color:#d29922;">Risk Flags:</strong><br>' +
+        g.risk_flags.map(f => `<span>• ${f.type}${f.count ? ` (${f.count})` : ''}${f.severity ? ` — ${f.severity}` : ''}</span>`).join('<br>');
+    } else { riskDiv.innerHTML = '<span style="color:#3fb950;">No risk flags</span>'; }
+    statsDiv.innerHTML = `Force injected: ${g.force_injected?.length || 0} · Blocked: ${g.blocked_memories?.length || 0} · Conflicts: ${g.conflict_overrides?.length || 0} · Retrieved: ${g.retrieved_memories?.length || 0}`;
+  } catch (e) {
+    headerDiv.innerHTML = 'Error: ' + e.message;
+    headerDiv.style.color = '#f85149';
+  }
 }
 </script>
 </body>
