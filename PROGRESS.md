@@ -1,5 +1,39 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-27 (Batch+4): `.well-known/mcp` + benchmark 三层评估重构
+
+### 核心改动
+- **`GET /.well-known/mcp`** — 新增显式路由返回 `server-card.json`，修复 static middleware 无法正确映射目录到文件的问题
+- **benchmark-real.js 重构为三层评估**（防止 metric leakage）：
+  - Layer 1 — Pure Retrieval：只测 `failures` 数组，纯检索召回率
+  - Layer 2 — Resolution Match：只测 `verified_fixes` 数组，修复匹配率
+  - Layer 3 — Composite：两端最佳结果（独立报告，不混合）
+  - 原则：每层独立 metric，无 fallback 串扰，evaluation corpus 不参与测量路径
+
+### 文件
+- `server.js:896` — 新增 `/well-known/mcp` 路由
+- `scripts/benchmark-real.js` — 三层评估架构，无指标泄漏
+
+## 2026-05-27 (Batch+3): MCP 生产级 Bug 修复
+
+### 修复清单
+| Bug | 修复 | 严重程度 |
+|-----|------|----------|
+| MCP -32700 Parse error | `parsedBody` 手动收集后传给 `transport.handleRequest()` | 阻塞性 |
+| `url is not defined` | 补 `const url = req.url` | 155 次重启 |
+| `resolveHint is not defined` | 补 `const resolveHint = task.resolve_hint` | 每次 claim 500 |
+| `estimated_tokens` column mismatch | 从 SQL INSERT 移除 | MCP 静默降级 |
+
+### 验证
+- `initialize` / `tools/list` / `tools/call` 全链路 200 ✓
+- 60/60 并发测试（含 20 混合负载）✓
+- VPS 端到端验证 ✓
+
+### Commits
+- `47c40e7` — fix: MCP -32700 parse error
+- `4378cba` — fix: ReferenceError 'url is not defined'
+- `1dc488e` — fix: resolveHint undefined + estimated_tokens column mismatch
+
 ## 2026-05-27: 首页重写 (Human UX) + Python SDK 发布
 
 ### 核心改动

@@ -893,7 +893,11 @@ for (const file of staticFiles) {
   }
 }
 
-// .well-known directory
+// .well-known directory — explicit route for /mcp discovery before static fallback
+app.get('/.well-known/mcp', (req, res) => {
+  const serverCard = require(path.join(__dirname, '.well-known', 'mcp', 'server-card.json'));
+  res.json(serverCard);
+});
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
 // Response standardization middleware (before routes) — normalizes error responses
