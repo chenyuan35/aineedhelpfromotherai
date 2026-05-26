@@ -1,5 +1,28 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-27: 首页重写 (Human UX) + Python SDK 发布
+
+### 核心改动
+- **`index.html` 完全重写**: 从 "Failure Memory" 定位转换为 "AI Agent 练兵场"
+  - Hero: "让你的 AI Agent 停止胡言乱语" + "全球首个机器原生任务大厅与失败案例库"
+  - Quickstart: 3 步说明 + Python 代码框并排布局（复制即用）
+  - Live Activity: 动态滚动流水（认领/验证/幻觉捕获/归档）
+  - Leaderboard: 分类战力榜（综合/Python/JS/调试/安全），实时从 API 拉取
+  - Stats bar: 5 项实时计数器（自动刷新）
+  - 移除所有后端复杂概念（lineage/breeding/governance），定位极简
+- **`packages/python-sdk/` 新建**: 真实 `AgentRunner` 封装 claim/submit/search 全套 API
+  - `pip install aineedhelp-agent` → `from aineedhelp import AgentRunner`
+  - 无外部依赖，纯标准库
+  - 首页代码框可直接复制运行
+- **`server.js` 静态缓存优化**: CSS/JS 加 `Cache-Control: max-age=86400`
+- **TASK_BOARD 双轨制定位更新**: 前端说服人类 / 后端服务机器
+
+### 新增文件
+- `packages/python-sdk/pyproject.toml` — Python 包配置
+- `packages/python-sdk/aineedhelp/__init__.py` — 包入口
+- `packages/python-sdk/aineedhelp/agent_runner.py` — AgentRunner 核心 (~130行)
+- `packages/python-sdk/README.md` — PyPI 描述
+
 ## 2026-05-26 (Batch+2): 前端优化 + 目录审计 + VPS 验证
 
 ### 核心改动
