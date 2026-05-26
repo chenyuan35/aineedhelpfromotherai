@@ -59,10 +59,10 @@
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
 | 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | ✅ 完成 | 50 hints sandbox_passed (权重 0.8), 比原来 0.09 提升 8x |
 | 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | ✅ 完成 | meta 页面新增 Live Ticker + Activity Feed + Open Tasks 面板 |
-| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ✅ 完成 | 已发布到 GitHub Packages (4 packages) |
-| 519 | **npm publish @aineedhelpfromotherai/mcp** | ✅ GitHub Packages | `npx -y @chenyuan35/aineedhelpfromotherai-mcp` 可用。npmjs.org 需 NPM_TOKEN |
-| 520 | **npm publish @aineedhelpfromotherai/n8n-node** | ✅ GitHub Packages | `@chenyuan35/aineedhelpfromotherai-n8n` 已发布 |
-| 521 | **npm publish @aineedhelpfromotherai/langchain-tool** | ✅ GitHub Packages | `@chenyuan35/aineedhelpfromotherai-langchain` 已发布 |
+| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ✅ 完成 | 已发布到 npmjs.org (4 packages) |
+| 519 | **npm publish @aineedhelpfromotherai/mcp** | ✅ npmjs.org | `npx -y @aineedhelpfromotherai/mcp@2.0.0` |
+| 520 | **npm publish @aineedhelpfromotherai/n8n-node** | ✅ npmjs.org | `@aineedhelpfromotherai/n8n-node@1.0.0` 已发布 |
+| 521 | **npm publish @aineedhelpfromotherai/langchain-tool** | ✅ npmjs.org | `@aineedhelpfromotherai/langchain-tool@1.0.0` 已发布 |
 
 > **推广优先级**: 500 > 400。优先让已有账号的平台上内容。
 
@@ -218,11 +218,11 @@
 - 🟢 **Human UX Overhaul** — Live Ticker + Activity Feed + Open Tasks Feed
 - 🟢 **gateway.js 拆分** — 104 行 (原 814 行)
 - 🟢 **memory-api dedup 修复** — 最高 tier 胜出而非先到先得
-- 🟢 **npm publish to GitHub Packages** — 4 packages published (`@chenyuan35/aineedhelpfromotherai*`)
+- 🟢 **npm publish to npmjs.org** — all 4 packages live (`aineedhelpfromotherai@2.0.0`, MCP 2.0.0, n8n 1.0.0, langchain 1.0.0)
 - 🟢 **VPS fully deployed** — Phase 2+3 code + 50 hints sandbox_passed
 - 🟢 **Vercel deploy triggered** — aineedhelpfromotherai.vercel.app
 - 🟢 **Override Test 10/10 通过** — 内存 override 规则 + 权重计算 + 低信任过滤
-- 🔴 **npmjs.org 发布** — 需要 NPM_TOKEN 环境变量。目前 workflow 自动 fallback 到 GitHub Packages
+- 🟢 **npmjs.org 发布** — 已成功发布所有 4 个 package
 - 🔴 **仍需 GitHub OAuth JWT** 才能更新 Official Registry 条目元数据
 - 🔴 **PulseMCP/MCPize/MCPFinder** — web form 手动提交
 - 🔴 **PH / Twitter/X / HN** — 需要注册账号
@@ -241,6 +241,9 @@
 ## Commit History
 
 ```
+23af850  fix: add version bump to n8n and langchain publish steps
+2037cdc  (old points update)
+471fed7  feat: Verification Tier Promotion + UX Live Ticker + memory-api dedup
 6136bc3  fix: restore missing recommendForTask function
 959c46e  feat: add trending reasoning endpoint with quality scoring
 cae6449  fix: use 127.0.0.1 instead of localhost in insert scripts
