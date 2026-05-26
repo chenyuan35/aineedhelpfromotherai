@@ -22,7 +22,7 @@ const { registerReasoningTools } = require('./reasoning-cache');
 const { registerStorageTools } = require('./reasoning-store');
 const { registerMemoryGateTools } = require('./memory-gate');
 
-async function createGateway(req, res) {
+async function createGateway(req, res, parsedBody) {
   let mcpServer = null;
   let transport = null;
   const startTime = Date.now();
@@ -62,7 +62,7 @@ async function createGateway(req, res) {
       return originalSend(msg);
     };
 
-    return transport.handleRequest(req, res);
+    return transport.handleRequest(req, res, parsedBody);
   } catch (err) {
     toolSuccess = false;
     toolError = err.message;
