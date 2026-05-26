@@ -1,5 +1,24 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-26 (Batch): Verification Tier Promotion + UX Live Ticker + gateway.js 已拆 + CI 验证
+
+### 核心改动
+- **P1-223 Verification Tier Promotion (scripts/promote-tiers.js)**: 批量升级 50 个 seed hint 从 unverified 到 sandbox_passed (tier_weight 0.3→0.9)。内存门控权重从 0.09 飙升至 0.8
+- **P1-224 Human UX Overhaul (public/meta/index.html)**: 新增 Live Ticker 顶栏 (实时显示 hints/verified/agents/tasks/时间戳)、Recent Activity Feed (按 updated_at 排序最近 15 条活动)、Open Tasks Feed (显示当前 open tasks)
+- **P4-404 gateway.js 拆分**: 已验证已拆完 (104 行，原 814 行，91% 缩减)，TASK_BOARD 更新为 ✅
+- **memory-api.js dedup 修复**: 从 first-come-first-served 改为最高 verification tier 胜出。verified fix 不再被相同摘要的 unverified fix 遮蔽
+- **scripts/test-memory-override.js**: 10/10 测试通过。内存 override 规则正确，权重计算正确，低信任过滤正确
+
+### VPS 部署
+- 所有改动已提交 main (471fed7)，等待 auto-update.sh 每 5 分钟循环拉取
+- VPS 目前运行旧代码 (无 influence_weight, 所有 hint 为 unverified)
+- VPS 部署后需运行 `node scripts/promote-tiers.js` 以激活 tier 升级
+
+### 待处理
+- P1-225: npm publish (n8n + LangChain) — 阻塞于 NPM_TOKEN 缺失
+- P5-504~506: PH / Twitter/X / HN — 需要手动注册账号
+- P5-516~518: PulseMCP / MCPize / MCPFinder — web form 手动提交
+
 ## 2026-05-26 (Phase 2+3): Memory Inference Gate + Conflict Resolver + Debug UI + Distribution Plugins
 
 ### 核心改动
