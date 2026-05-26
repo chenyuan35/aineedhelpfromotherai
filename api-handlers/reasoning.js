@@ -17,6 +17,7 @@
 // GET /api/reasoning/trending — Get trending reasoning objects (quality + activity)
 
 const reasoning = require('../lib/reasoning-storage');
+const eventBus = require('../lib/event-bus');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -200,6 +201,11 @@ module.exports = async (req, res) => {
       if (result.hit && result.reasoning_id) {
         provenance = await reasoning.getProvenance(result.reasoning_id);
       }
+      eventBus.emit(result.hit ? 'resolve.hit' : 'resolve.miss', {
+        problem_statement: body.problem_statement,
+        reasoning_id: result.reasoning_id || null,
+        estimated_token_savings: result.estimated_token_savings || 0
+      });
       return res.status(200).json({
         success: true,
         data: { ...result, provenance: provenance || undefined },
@@ -245,6 +251,11 @@ module.exports = async (req, res) => {
       }
 
       await reasoning.saveReasoning(body);
+      eventBus.emit('reasoning.stored', {
+        reasoning_id: body.id,
+        problem_id: body.problem_id,
+        domain: body.domain || null
+      });
       return res.status(201).json({
         success: true,
         data: { id: body.id, problem_id: body.problem_id },

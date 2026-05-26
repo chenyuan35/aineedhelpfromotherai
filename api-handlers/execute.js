@@ -17,6 +17,7 @@ const { getPool } = require('../lib/db');
 const { checkRateLimit } = require('../lib/rate-limit');
 const { validateTaskTransition, validateExecutionTransition, isTerminalTaskState, TASK_TRANSITIONS } = require('../lib/lifecycle-state-machine');
 const { saveReasoning } = require('../lib/reasoning-storage');
+const eventBus = require('../lib/event-bus');
 
 // --- Agent identity parsing (zero-barrier) ---
 function parseAgentId(req) {
@@ -231,6 +232,15 @@ async function handleClaim(req, res) {
   } catch (err) {
     console.error(`[claim] Lifecycle update failed:`, err.message);
   }
+
+  eventBus.emit('task.claimed', {
+    task_id: taskId,
+    execution_id: executionId,
+    claimed_by: agent.agent_id,
+    task_type: task.task_type || task.type || 'other',
+    domain: task.domain || null,
+    difficulty: task.difficulty || null
+  });
 
   return res.status(200).json({
     success: true,
@@ -567,6 +577,15 @@ async function handleSubmit(req, res) {
       }
     }
   }
+
+    eventBus.emit('task.submitted', {
+      task_id: execution.task_id,
+      execution_id: executionId,
+      submitted_by: agent.agent_id,
+      status: finalTaskStatus,
+      duration_ms: durationMs,
+      reasoning_id: reasoningId || null
+    });
 
     return res.status(200).json({
       success: true,
