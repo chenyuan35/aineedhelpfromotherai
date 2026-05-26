@@ -3199,3 +3199,46 @@ resolve-watchdog → data/resolve-cache.json → lib/resolve-cache.js → API (G
 - ✅ 同一份 attach 逻辑 — `getResolveHintsForTasks` API + MCP 共用
 - ✅ Prompt > JSON — `_prompt` 字段自然语言引导
 - ✅ 消费可观测 — `hints_served` + `prompts_injected` + `hints_cited` 三指标
+
+---
+
+## 2026-05-26 (第 8 轮续 Part 4): Autonomous resolver — 内部消费闭环完成
+
+### 新建
+- **`scripts/autonomous-resolver.js`** — 内部 agent 自消费循环:
+  - `every 15 min` → `GET /api/posts` → 找有 hints 的 OPEN tasks → claim → submit → store reasoning
+  - 智能 backoff: 被 rate limit 时等 60s，之间等 15s
+  - 用 HTTP API（和外部 agent 完全一致），全栈验证
+  - 以 `pm2 start resolver-bot` 作为独立进程运行
+
+### 线上成果
+- Resolver 成功完成了**4 次完整 claim→submit→store 循环**
+- 每次提交自动附带 `resolve_hint.reasoning_id`，**citation 可检测**
+- `OPEN tasks`: 189 → 185（4 个已解决）
+- Telemetry 已确认运行：`GET /api/hint-telemetry` → 返回实时数据
+
+### 数据飞轮启动
+```
+watchdog → resolve-cache.json → API response → resolver bot → claim+submit+store
+                                     ↑                              ↓
+                               hint-telemetry.js          reasoning (RO_AUTO_xxx)
+                                                                    ↓
+                                                             new hints (下次循环)
+```
+
+### 完整链路闭环
+```
+生成 hints ✅
+→ 存储 hints ✅
+→ API 返回 hints ✅
+→ MCP + REST 暴露 hints ✅
+→ Prompt 注入 hints ✅
+→ **自消费 agent 吃 hints** ✅
+→ **claim + submit + store** ✅
+→ **telemetry 可观测** ✅
+→ 数据飞轮 🔄 运行中
+```
+
+### 待观察
+- 下一个循环（~12 min 后）`total_submit_calls` > 0 且 `hints_cited` > 0
+- 随着 resolver 不断完成 tasks，hinted count 会下降，但新 reasoning 会产生新 hints
