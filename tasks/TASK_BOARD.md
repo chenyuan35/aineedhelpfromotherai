@@ -26,6 +26,11 @@
 | 206 | **resolve 缓存层** — POST /api/reasoning/resolve: cache hit/miss + token savings estimate | ✅ 完成 | curl POST 验证 + MCP tool resolve_reasoning |
 | 207 | **failure-check 失败预警** — POST /api/reasoning/failure-check: risk score + how_to_avoid | ✅ 完成 | curl POST 验证 + MCP tool check_failures |
 | 208 | **定位更新（第二次）** — 从 "Reasoning Commons" 改为 "Cache & Consensus Layer" | ✅ 完成 | PROJECT.md + llms.txt + agent-card + TASK_BOARD 全部更新 |
+| 209 | **Phase 1: Sandbox Evaluator** — Docker sandbox with git clone → apply patch → run tests (--network none, 512m RAM) | ✅ 完成 | lib/sandbox-executor.js, /api/sandbox/* endpoints |
+| 210 | **Phase 1: Verification Tiers** — unverified → replay_confirmed → sandbox_passed → production_confirmed | ✅ 完成 | lib/verification.js, /api/verification/* endpoints |
+| 211 | **Phase 1: Age Decay** — 7d full / 30d ×0.7 / 90d ×0.3 / 180d quarantine ×0.0 | ✅ 完成 | Decay multiplier in verification.js |
+| 212 | **Phase 1: Ranking Integration** — verification weight (0.25) in search composite score, verified_only filter | ✅ 完成 | lib/memory-api.js v3, formatRecall shows tier + decay |
+| 213 | **Phase 1: Observability Panel** — VERIFICATION cards + hint-level tier table | ✅ 完成 | public/meta/index.html |
 
 ---
 
@@ -46,6 +51,9 @@
 | 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | 🔄 进行中 | opencode-agent 已完成 |
 | 221 | **store_reasoning MCP tool** — AI 通过 MCP 直接存推理到缓存 | ✅ 完成 | gateway.js #12, auto-generates RO id |
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
+| 223 | **Verification Tier Promotion** — 种子数据通过 replay 自动升级到 replay_confirmed+ | 🔄 待做 | 等 VPS auto-update 后测试 |
+| 224 | **Phase 2: Human UX Overhaul** — real task feed / live ticker / quickstart SDK | 🔄 待做 | 设计稿 + CRUD |
+| 225 | **Phase 3: Distribution Plugins** — n8n node + LangChain tool | ⬜ 待做 | npm publish |
 
 ## P2 — 协议稳定性（维护）
 

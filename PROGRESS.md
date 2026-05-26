@@ -1,5 +1,23 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-26 (Phase 1): Sandbox Evaluator + Verification Tiers + Decay + Ranking Integration
+
+### 核心改动
+- **lib/verification.js (NEW)**: 4-tier verification system — `unverified` → `replay_confirmed` → `sandbox_passed` → `production_confirmed`
+- **Age-based decay**: 7d full weight → 30d slight (×0.7) → 90d stale (×0.3) → 180d quarantine (×0.0)
+- **Effective weight**: `tier_weight × decay_multiplier` — prevents stale high-score garbage from dominating
+- **lib/sandbox-executor.js (UPGRADED)**: Docker sandbox with `--network none`, 512m RAM limit, language runtime detection (Node/Rust/Go/Python/Ruby), automated test run. Falls back to git-only if Docker unavailable
+- **lib/memory-api.js v3**: Verification tier in search ranking (0.25 weight of composite score), `verified_only` filter mode (> sandbox_passed), decay label + multiplier in results
+- **Server endpoints**: `/api/verification/stats`, `/api/verification/:id`, `/api/verification/:id/confirm-production`, `/api/sandbox/execute`, `/api/sandbox/stats`
+- **Observability page**: New VERIFICATION panel — tier distribution cards + hint-level detail table
+- **submitResolution auto-verifies**: Records sandbox result + replay confirmation on resolution submission
+- **formatRecall shows tier + decay**: e.g. "Found fix from 2d ago (🔬 sandbox-verified ⚠️ stale)"
+
+### 状态
+- Phase 1 (Sandbox Evaluator): ✅ 已完成
+- Phase 2 (Human UX overhaul—live ticker, real task feed, quickstart SDK): 🔄 Pending
+- Phase 3 (Distribution plugins—n8n node, LangChain tool): ⬜ Pending
+
 ## 2026-05-26 (第 12 轮): 60 real failure seed + benchmark + landing page restructure
 
 ### 核心改动
