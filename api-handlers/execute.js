@@ -581,7 +581,7 @@ async function handleSubmit(req, res) {
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.submitted', task_id: execution.task_id }); } catch {}
   try {
     const pts = require('../lib/points');
-    const reward = finalTaskStatus === 'COMPLETED' ? pts.REWARDS.SUBMIT_TASK + (result.quality_score >= 0.8 ? pts.REWARDS.SUBMIT_QUALITY_BONUS : 0) : 0;
+    const reward = finalTaskStatus === 'COMPLETED' ? pts.REWARDS.SUBMIT_TASK + ((body.quality_score || 0) >= 0.8 ? pts.REWARDS.SUBMIT_QUALITY_BONUS : 0) : 0;
     if (reward > 0) pts.award(agent.agent_id, reward, 'submit_reward', executionId);
     // Refund claim stake on successful submit
     pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
