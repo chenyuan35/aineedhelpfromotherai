@@ -3,7 +3,7 @@
 // Runs as a standalone pm2 process alongside the main server.
 // Uses HTTP API (same as any external agent would) — full stack exercise.
 
-const API = process.env.SELF_URL || 'http://localhost:3000';
+const API = process.env.SELF_URL || 'http://127.0.0.1:3000';
 const AGENT_ID = 'autonomous-resolver-bot';
 const LOOP_MS = parseInt(process.env.RESOLVER_INTERVAL_MS) || 15 * 60 * 1000; // 15 min
 const STARTUP_DELAY_MS = parseInt(process.env.RESOLVER_STARTUP_DELAY_MS) || 10000; // 10s
