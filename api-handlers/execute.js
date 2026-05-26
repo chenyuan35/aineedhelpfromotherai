@@ -590,6 +590,18 @@ async function handleSubmit(req, res) {
     pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
   } catch {}
   try { const ht = require('../lib/hint-telemetry'); const rc = require('../lib/resolve-cache'); ht.trackSubmitCall(agent.agent_id, execution.task_id, resultText, rc.getHint(execution.task_id)); } catch {}
+  // Memory decay: score hint based on outcome
+  try {
+    const rc = require('../lib/resolve-cache');
+    const h = rc.getHint(execution.task_id);
+    if (h) {
+      if (resultText && resultText.toLowerCase().includes((h.reasoning_id || '').toLowerCase())) {
+        rc.scoreHint(execution.task_id, 0.5); // cited correctly
+      } else {
+        rc.scoreHint(execution.task_id, -0.2); // submitted without citing
+      }
+    }
+  } catch {}
 
     return res.status(200).json({
       success: true,
