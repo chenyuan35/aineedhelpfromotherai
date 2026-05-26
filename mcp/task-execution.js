@@ -6,6 +6,7 @@ const { getPool } = require('../lib/db');
 const { logMcpUsage, validateSubmitResult, checkDuplicateResult, hashResult } = require('../lib/execution-history');
 const { checkRateLimit } = require('../lib/rate-limit');
 const { getResolveHintsForTasks, buildResolvePrompt } = require('../lib/resolve-cache');
+const { trackListCall, trackSubmitCall } = require('../lib/hint-telemetry');
 const { TOOL_NAMES, ERROR_CODES, EXECUTION_CONSTRAINTS } = require('./schema');
 const { genExecId, loadSeed, err, ok, rateLimitError, ANNOTATIONS } = require('./utilities');
 
@@ -54,6 +55,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
 
       const resolveHints = getResolveHintsForTasks(tasks);
       const promptText = buildResolvePrompt(resolveHints);
+      trackListCall('mcp', Object.keys(resolveHints).length);
 
       return ok({
         tasks: tasks.map(t => ({
@@ -229,6 +231,11 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           ]
         );
         await db.query('UPDATE posts SET status=$1, completed_at=$2 WHERE id=$3', ['COMPLETED', submittedAt, execution.task_id]);
+        // Telemetry: detect hint citation in submission
+        try {
+          const { getHint } = require('../lib/resolve-cache');
+          trackSubmitCall(agentId, execution.task_id, args.result, getHint(execution.task_id));
+        } catch {}
       } catch (err) {
         return err('submit_failed', `Submit failed: ${err.message}`);
       }

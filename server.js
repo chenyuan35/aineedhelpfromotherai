@@ -62,6 +62,17 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', runtime: 'express', timestamp: new Date().toISOString() });
 });
 
+// Hint telemetry
+app.get('/api/hint-telemetry', (req, res) => {
+  try {
+    const { getSummary } = require('./lib/hint-telemetry');
+    const summary = getSummary();
+    res.json({ success: true, data: summary });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
 // Dynamic badge data (for shields.io / self-hosted badges)
 app.get('/api/badge', async (req, res) => {
   const { getPool } = require('./lib/db');

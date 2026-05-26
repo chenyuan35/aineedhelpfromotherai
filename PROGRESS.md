@@ -3102,10 +3102,49 @@ AI 从 resolve 拿到 provenance 后可直接附带在输出中。
 - hints 当前无显式消费端（无前端/prompt 模板读取该字段），属于 "show up in JSON, but nobody reads it"
 
 ### 待做（非新功能，数据链路补完）
-1. 审计 hints 消费方 — 把 hints 注入到 MCP `resolve_reasoning` 返回中，使 MCP agent 也能被动看到
+1. ~~审计 hints 消费方 — 把 hints 注入到 MCP `resolve_reasoning` 返回中，使 MCP agent 也能被动看到~~ ✅ DONE
 2. 加 observability：attach rate / consumption rate / resolve success delta
 3. 画 request flow / data flow 脑内拓扑，避免再次修错入口
 
 ### 风险认知
 - Feature creep 当前最大风险 — 已有链路需先形成正反馈再扩新能力
 - 本轮暴露的认知盲区：对系统请求真实流向不够清晰
+
+---
+
+## 2026-05-26 (第 8 轮续 Part 2): MCP 层 hints 注入 — 最后一公里打通
+
+### 改动
+
+1. **`lib/resolve-cache.js` 新增两个共享函数**:
+   - `getResolveHintsForTasks(tasks)` — 给一组 task 对象批量查 hints，API 和 MCP 共用同一份 attach 逻辑
+   - `buildResolvePrompt(hintsMap)` — 生成自然语言 prompt 文本，显式告诉 agent 有哪些 hints 可用
+
+2. **`api-handlers/posts.js` 简化** — 用共享的 `getResolveHintsForTasks` 替代内联的循环逻辑，代码量 -80%
+
+3. **`mcp/task-execution.js` — `list_open_tasks` 注入 hints**:
+   - 每个 task 返回 `resolve_hint` 字段（含 solution_summary / reasoning_id / estimated_token_savings）
+   - 额外返回 `resolve_hints_available`（count）和 `_prompt`（自然语言引导）
+   - `claim_task` 返回中也附带 `resolve_hint`（针对被 claim 的任务）
+
+4. **`mcp/reasoning-cache.js` — `resolve_reasoning` 注入 hints**:
+   - Hit + Miss 两种响应都包括 `resolve_hints_available`、`resolve_hints_preview`（最多 5 条摘要）
+   - 带 `_prompt` 自然语言提示："There are N pre-computed resolution hints available for open tasks"
+
+### 架构原则
+- **API 是唯一 truth source** — MCP 不再直接读 resolve-cache.json，改为调用 `lib/resolve-cache.js` 中的共享函数
+- **同一份 attach 逻辑** — `getResolveHintsForTasks` 在 API 和 MCP 间共享，避免两套代码不同步
+- **Prompt > JSON** — 用 `_prompt` 字段注入自然语言 hint 摘要，agent 不再依赖"自己读懂 JSON"
+
+### 数据流现状
+
+```
+resolve-watchdog → data/resolve-cache.json → lib/resolve-cache.js → API (GET /api/posts)
+                                                                  → MCP (list_open_tasks, resolve_reasoning)
+                                                                  → claim response
+```
+
+### 线上验证
+- `node -e "require('./lib/resolve-cache')"` — 模块正常加载，导出 getResolveHintsForTasks / buildResolvePrompt ✅
+- 45 hints 全部为 hit，`getResolveHintsForTasks` 单任务查询正常工作 ✅
+- PM2 重启无错误 ✅

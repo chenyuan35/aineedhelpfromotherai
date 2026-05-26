@@ -4,6 +4,7 @@
 
 const { getPool } = require('../lib/db');
 const { checkRateLimit } = require('../lib/rate-limit');
+const { trackResolveCall } = require('../lib/hint-telemetry');
 const { TOOL_NAMES, ERROR_CODES } = require('./schema');
 const { err, ok, rateLimitError, ANNOTATIONS } = require('./utilities');
 
@@ -278,6 +279,8 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
         const hintsPrompt = hintValues.length > 0
           ? `There are ${hintValues.length} pre-computed resolution hints available for open tasks. Use list_open_tasks to see which tasks have hints (check the resolve_hint field on each task).`
           : '';
+
+        trackResolveCall('mcp', result.hit, hintValues.length);
 
         if (result.hit) {
           const provenance = await getProvenance(result.reasoning_id);
