@@ -1,0 +1,29 @@
+{
+  "id": "cli-github-3681145374",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/6521",
+  "source_harvest_id": "HARVEST_GH_3681145374",
+  "category": "cli",
+  "problem": "Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.. Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.\nlangchain==0.3.27\nlangchain-community==0.3.27\nlangchain-core==0.3.74\nlangchain-openai==0.2.9\nlangchain-text-splitters==0.3.9\nlanggraph==0.6.4\nlanggraph-checkpoint==2.1.1\nlanggraph-prebuilt==0.6.4\nlanggraph-sdk==0.2.0\nlangsmith==0.4.13",
+  "expected_solution_keywords": [
+    "Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\""
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "pending",
+    "external",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.",
+  "failure_without_memory": "```shell\n2025-12-01 21:51:30 - INFO - logger_v2 - aid=- wsid=- - [Step 2] ────────────────────────────────────────\n2025-12-01 21:51:30 - INFO - logger_v2 - aid=- wsid=- - [RunLoop] ❌ Error: thread_id=",
+  "generated_at": "2026-05-27T14:47:55.094Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "python react_agent.py"
+}

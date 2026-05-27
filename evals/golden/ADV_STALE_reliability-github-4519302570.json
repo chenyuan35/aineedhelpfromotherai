@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_reliability-github-4519302570",
+  "category": "reliability",
+  "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "reliability"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:01.172Z",
+  "source_task_id": "reliability-github-4519302570"
+}

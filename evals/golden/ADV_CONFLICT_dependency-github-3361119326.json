@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3361119326",
+  "category": "dependency",
+  "problem": "[BUG] The smart decsison maker block cannot output datastructures to two different dictionary formats. Sentry Issue: [AUTOGPT-SERVER-5BA](https://significant-gravitas.sentry.io/issues/6840628265/?referrer=Linear)\n\n```\n\u001b[31m[LLM-Block] Anthropic API error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tools: Tool names must be unique.'}, 'request_id': 'req_011CSZ4DYHkHMoqygo6q3xyw'} \u001b[0m\n```\n\nThe issue here is that Anthropic doesn't allow multiple tool",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tools: Tool names must be unique.'}, 'request_id': 'req_011CSZ4DYHkHMoqygo6q3xyw'} \u001b[0m\n```\n\nThe issue)",
+  "solution_b": "Targeted fix ([BUG] The smart decsison maker block cannot output datastructures to two different dictionary formats)",
+  "generated_at": "2026-05-27T14:48:00.929Z",
+  "source_task_id": "dependency-github-3361119326"
+}

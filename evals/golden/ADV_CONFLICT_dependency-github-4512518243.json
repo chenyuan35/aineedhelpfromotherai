@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-4512518243",
+  "category": "dependency",
+  "problem": "VectorStore.add_texts exhausts generator inputs before creating documents. `VectorStore.add_texts` and `VectorStore.aadd_texts` accept `Iterable[str]`, but generator inputs are consumed before documents are created. A minimal subclass that implements add_documents demonstrates the issue.\n\nExpected behavior\nGenerator inputs should behave the same as list inputs. The example above should add two documents.\n\nActual behavior\nNo documents are added because the generator is exhausted while materializi",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\n\n```)",
+  "solution_b": "Targeted fix (VectorStore.add_texts exhausts generator inputs before creating documents)",
+  "generated_at": "2026-05-27T14:48:01.062Z",
+  "source_task_id": "dependency-github-4512518243"
+}

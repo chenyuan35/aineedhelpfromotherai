@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-4437800138",
+  "category": "cli",
+  "problem": "filesystem: server exits silently when an allowed_directories entry does not exist on disk. ## Summary\n\nThe `secure-filesystem-server` package (`src/filesystem/`) terminates the Node process during startup if any path passed in `allowed_directories` is missing or inaccessible. The exit produces no stderr output, no JSON-RPC error response, and no log line indicating which path was the culprit — only the host (Claude Desktop, in my case) sees an abrupt transport close.\n\nThis is a sharp edge for e (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.855Z",
+  "source_task_id": "cli-github-4437800138"
+}

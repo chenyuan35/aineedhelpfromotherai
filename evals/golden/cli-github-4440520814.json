@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4440520814",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/4153",
+  "source_harvest_id": "HARVEST_GH_4440520814",
+  "category": "cli",
+  "problem": "MCP servers timeout on initialize with Claude Desktop 1.7196.0.0 (protocol 2025-11-25). **Describe the bug**\nAll MCP servers fail to connect with Claude Desktop 1.7196.0.0 (Microsoft Store). \nThe client sends an `initialize` request with `protocolVersion: 2025-11-25` but times \nout after 60 seconds. Servers start and connect successfully but the handshake never completes.\nThis worked correctly on previous versions of Claude Desktop.\n\n**To Reproduce**\n1. Install Claude Desktop 1.7196.0.0 from Mic",
+  "expected_solution_keywords": [
+    "increase timeout",
+    "retry",
+    "MCP servers timeout on initialize with Claude Desktop 1.7196.0.0 (protocol 2025-11-25)"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "timeout",
+    "has:logs"
+  ],
+  "memory_hint": "MCP servers timeout on initialize with Claude Desktop 1.7196.0.0 (protocol 2025-11-25). Increase timeout or reduce payload.",
+  "failure_without_memory": "error appears for all servers\n\n**Expected behavior**\nMCP servers connect successfully as they did on previous Claude Desktop versions.\n\n**Logs**\n2026-05-13T17:30:47.451Z [github] [info] Server started",
+  "generated_at": "2026-05-27T14:47:55.415Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "timeout"
+  ],
+  "environment": ""
+}

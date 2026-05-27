@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Arena — Benchmarks</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background: #0f0a1a; color: #e2e8f0; font-family: system-ui, sans-serif; }
+  .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+  .metric-value { font-size: 2.5rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .positive { color: #34d399; }
+  .negative { color: #f87171; }
+  .neutral { color: #94a3b8; }
+  .label { color: #64748b; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .bar-bg { background: rgba(255,255,255,0.06); border-radius: 999px; height: 8px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 999px; transition: width 1s ease; }
+</style>
+</head>
+<body class="min-h-screen p-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-4 mb-12">
+      <div class="w-10 h-10 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #7c3aed, #6366f1);">📊</div>
+      <div>
+        <h1 class="text-3xl font-bold">Benchmarks</h1>
+        <p class="text-slate-500 text-sm mt-1">Agent Reliability Infrastructure — Replay-stable memory with regression gating</p>
+      </div>
+    </div>
+
+    <div id="metrics-grid" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+      <div class="card"><div class="label">Solve Rate</div><div class="metric-value" id="solve-rate">—</div><div class="text-xs text-slate-600 mt-1">memory effectiveness</div></div>
+      <div class="card"><div class="label">Hallucination</div><div class="metric-value" id="hallucination">—</div><div class="text-xs text-slate-600 mt-1">reduction vs baseline</div></div>
+      <div class="card"><div class="label">RSS</div><div class="metric-value" id="rss">—</div><div class="text-xs text-slate-600 mt-1">trajectory consistency</div></div>
+      <div class="card"><div class="label">Memory Impact</div><div class="metric-value" id="memory-impact">—</div><div class="text-xs text-slate-600 mt-1">solve rate delta</div></div>
+      <div class="card"><div class="label">Regression</div><div class="metric-value" id="regression">—</div><div class="text-xs text-slate-600 mt-1">active drift alerts</div></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+      <div class="card">
+        <h2 class="text-lg font-semibold mb-4">Trend — Solve Rate</h2>
+        <div id="solve-chart" class="space-y-3"></div>
+      </div>
+      <div class="card">
+        <h2 class="text-lg font-semibold mb-4">Per-Category</h2>
+        <div id="category-breakdown" class="space-y-4"></div>
+      </div>
+    </div>
+
+    <div class="card mb-8">
+      <h2 class="text-lg font-semibold mb-2">Reliability Gate</h2>
+      <p class="text-slate-500 text-sm mb-4">Every change run against 14 golden tasks across 6 categories. Blocked on solve rate drop >3%, hallucination rise >5%.</p>
+      <div class="flex gap-4">
+        <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(52,211,153,0.1); color: #34d399;">✓ Automated eval on PR</span>
+        <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(99,102,241,0.1); color: #818cf8;">RSS gating</span>
+        <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(251,191,36,0.1); color: #fbbf24;">pass^3 stability</span>
+      </div>
+    </div>
+
+    <div class="text-center text-slate-600 text-xs py-8">
+      Benchmarks auto-update on each <code class="text-slate-400">npm run eval</code>. Data from golden eval suite + replay stability.
+    </div>
+  </div>
+
+  <script>
+    async function load() {
+      try {
+        const res = await fetch('/api/eval/public-benchmarks');
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        const b = data.benchmarks;
+
+        document.getElementById('solve-rate').textContent = b.solve_rate != null ? b.solve_rate + '%' : '—';
+        document.getElementById('solve-rate').className = 'metric-value ' + ((b.solve_rate || 0) > 70 ? 'positive' : (b.solve_rate || 0) > 40 ? 'neutral' : 'negative');
+
+        const hallucStr = b.hallucination_reduction != null ? (b.hallucination_reduction > 0 ? '-' + b.hallucination_reduction + '%' : '+' + Math.abs(b.hallucination_reduction) + '%') : '—';
+        document.getElementById('hallucination').textContent = hallucStr;
+        document.getElementById('hallucination').className = 'metric-value ' + ((b.hallucination_reduction || 0) > 5 ? 'positive' : 'neutral');
+
+        document.getElementById('rss').textContent = b.rss != null ? b.rss.toFixed(3) : '—';
+        document.getElementById('rss').className = 'metric-value ' + ((b.rss || 0) > 0.9 ? 'positive' : (b.rss || 0) > 0.7 ? 'neutral' : 'negative');
+
+        document.getElementById('memory-impact').textContent = b.memory_impact != null ? '+' + b.memory_impact + '%' : '—';
+        document.getElementById('memory-impact').className = 'metric-value positive';
+
+        document.getElementById('regression').textContent = b.active_regressions != null ? (b.active_regressions === 0 ? '0' : b.active_regressions) : '—';
+        document.getElementById('regression').className = 'metric-value ' + (b.active_regressions === 0 ? 'positive' : 'negative');
+
+        // Category breakdown
+        if (b.categories && b.categories.length > 0) {
+          const html = b.categories.map(c => {
+            const pct = c.tasks > 0 ? Math.round(c.memory_helped / c.tasks * 100) : 0;
+            return '<div><div class="flex justify-between text-sm mb-1"><span>' + c.category + '</span><span class="text-slate-400">' + pct + '% (' + c.memory_helped + '/' + c.tasks + ')</span></div><div class="bar-bg"><div class="bar-fill positive" style="width:' + pct + '%;"></div></div></div>';
+          }).join('');
+          document.getElementById('category-breakdown').innerHTML = html;
+        }
+
+        // Trend chart (baselines)
+        if (b.baseline_trend && b.baseline_trend.length > 0) {
+          const html = b.baseline_trend.map(pt => {
+            const pct = pt.effectiveness || 0;
+            return '<div><div class="flex justify-between text-sm mb-1"><span>' + pt.date + '</span><span class="text-slate-400">' + pct + '%</span></div><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%;background:linear-gradient(90deg,#7c3aed,#6366f1);"></div></div></div>';
+          }).join('');
+          document.getElementById('solve-chart').innerHTML = html;
+        }
+      } catch (e) {
+        document.getElementById('metrics-grid').innerHTML = '<div class="col-span-5 text-center text-slate-600 py-12">Unable to load benchmarks. Run <code>npm run eval</code> first.</div>';
+      }
+    }
+    load();
+  </script>
+</body>
+</html>

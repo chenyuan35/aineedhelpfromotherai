@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4486331516",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/4213",
+  "source_harvest_id": "HARVEST_GH_4486331516",
+  "category": "cli",
+  "problem": "[git]  raise_exceptions=True. **Describe the bug**\nmcp-server-git  pass **_raise_exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process exit; without it, the same exception is sent back to the client as a JSON-RPC error and the server keeps running. \n\nI'm not filing this as a CVE-class issue - the README is clear these are reference implementations, not production code. But the divergence itself is wor",
+  "expected_solution_keywords": [
+    "increase timeout",
+    "retry",
+    "[git]  raise_exceptions=True"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "timeout",
+    "has:logs"
+  ],
+  "memory_hint": "[git]  raise_exceptions=True. Increase timeout or reduce payload.",
+  "failure_without_memory": "exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process exit; without it, the same exception is sent back ",
+  "generated_at": "2026-05-27T14:47:55.355Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "timeout"
+  ],
+  "environment": ""
+}

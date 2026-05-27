@@ -1,0 +1,27 @@
+{
+  "deprecated_at": "2026-05-27T18:00:00Z",
+  "rationale": "Focus on three core lines: Memory · Replay · Evaluation. Everything else moved here to reduce maintenance surface.",
+  "core_modules": ["memory-gate", "memory-api", "execution-log", "replay-patterns", "memory-influence", "memory-decay", "eval-harness", "replay-to-eval", "drift-detector", "resolve-cache", "reasoning-storage", "event-bus", "schema-validator"],
+  "experimental_modules": {
+    "world-model": { "status": "deprecated", "alternative": "GET /api/ai-state" },
+    "goal-generator": { "status": "deprecated", "alternative": "Use eval-driven goals" },
+    "architect-agent": { "status": "deprecated", "alternative": "Manual agent config" },
+    "memory-economy": { "status": "deprecated", "alternative": "MIS-driven budget" },
+    "prompt-evolution": { "status": "deprecated", "alternative": "Replay-driven prompt analysis" },
+    "elo-rating": { "status": "deprecated", "alternative": "MIS + solve rate" },
+    "behavior-analysis": { "status": "deprecated", "alternative": "Replay patterns + drift" },
+    "human-intervention": { "status": "deprecated", "alternative": "Automatic drift quarantine" },
+    "agent-breeding": { "status": "deprecated", "alternative": "Eval-driven selection" },
+    "winner-selection": { "status": "deprecated", "alternative": "Scoreboard ranking" }
+  },
+  "experimental_endpoints": [
+    "/api/breeds/evolve", "/api/tournament/strategies",
+    "/api/world-model", "/api/goals", "/api/goals/generate", "/api/goals/complete",
+    "/api/architect", "/api/architect/design",
+    "/api/economy", "/api/economy/budget/:agentId", "/api/collapse/simulate",
+    "/api/reality/tasks", "/api/reality/ingest", "/api/reality/stats",
+    "/api/extinctions", "/api/winners", "/api/breeds",
+    "/api/meta/process-replay"
+  ],
+  "note": "These endpoints still work but will not receive updates. Prefer the core eval + replay + memory pipeline for new work."
+}

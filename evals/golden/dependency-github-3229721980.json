@@ -1,0 +1,27 @@
+{
+  "id": "dependency-github-3229721980",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/5496",
+  "source_harvest_id": "HARVEST_GH_3229721980",
+  "category": "dependency",
+  "problem": "Command is not applied from a tool that has return_direct=True. Needs to be confirm\n\nhttps://forum.langchain.com/t/command-and-update-inside-tool-function-with-return-direct-flag/358",
+  "expected_solution_keywords": [
+    "Command is not applied from a tool that has return_direct=True"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "maintainer",
+    "internal",
+    "langgraph",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Command is not applied from a tool that has return_direct=True",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.079Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

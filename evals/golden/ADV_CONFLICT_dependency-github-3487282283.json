@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3487282283",
+  "category": "dependency",
+  "problem": "ApiError: Authorization header is missing. ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (ApiError: Authorization header is missing)",
+  "generated_at": "2026-05-27T14:48:00.968Z",
+  "source_task_id": "dependency-github-3487282283"
+}

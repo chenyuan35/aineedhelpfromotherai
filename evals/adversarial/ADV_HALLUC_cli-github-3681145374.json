@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-3681145374",
+  "category": "cli",
+  "problem": "Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.. Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.\nlangchain==0.3.27\nlangchain-community==0.3.27\nlangchain-core==0.3.74\nlangchain-openai==0.2.9\nlangchain-text-splitters==0.3.9\nlanggraph==0.6.4\nlanggraph-checkpoint==2.1.1\nlanggraph-prebuilt==0.6.4\nlanggraph-sdk==0.2.0\nlangsmith==0.4.13 (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.776Z",
+  "source_task_id": "cli-github-3681145374"
+}

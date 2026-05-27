@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4437800138",
+  "category": "cli",
+  "problem": "filesystem: server exits silently when an allowed_directories entry does not exist on disk. ## Summary\n\nThe `secure-filesystem-server` package (`src/filesystem/`) terminates the Node process during startup if any path passed in `allowed_directories` is missing or inaccessible. The exit produces no stderr output, no JSON-RPC error response, and no log line indicating which path was the culprit — only the host (Claude Desktop, in my case) sees an abrupt transport close.\n\nThis is a sharp edge for e (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.855Z",
+  "source_task_id": "cli-github-4437800138"
+}

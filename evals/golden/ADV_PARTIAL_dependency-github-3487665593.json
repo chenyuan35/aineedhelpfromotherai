@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-3487665593",
+  "category": "dependency",
+  "problem": "Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message\":\"Statement is too short\",\"readableMessage\":\"ParamVa.... ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message. This works for now but you will need to apply it again when the issue returns. The root cause is Unknown failure.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Err",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Block output contains error for FactCheckerBl",
+  "generated_at": "2026-05-27T14:48:00.974Z",
+  "source_task_id": "dependency-github-3487665593"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3021694216",
+  "category": "dependency",
+  "problem": "Bug: AI Text Generator Block Removes Prompt Values with Similar Names. ### Bug Description\n\nWhen using the AI Text Generator block in the AutoGPT Platform, attempting to set prompt values with similar names (e.g., 'PR-Title' and 'PR-Title-test') results in the second value being instantly removed upon typing the duplicate substring. This issue restricts users from specifying prompt variables whose names overlap, which can be important for thorough testing and differentiating prompt roles.\n\n**Ste",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (Bug: AI Text Generator Block Removes Prompt Values with Similar Names)",
+  "generated_at": "2026-05-27T14:48:00.913Z",
+  "source_task_id": "dependency-github-3021694216"
+}

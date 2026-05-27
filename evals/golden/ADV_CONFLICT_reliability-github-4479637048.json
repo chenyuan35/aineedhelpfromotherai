@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_reliability-github-4479637048",
+  "category": "reliability",
+  "problem": "AsyncSqliteSaver.put() and put_writes() deadlock instead of raising when called synchronously from within the event loop. AsyncSqliteSaver exposes synchronous bridge methods that wrap their async\ncounterparts with asyncio.run_coroutine_threadsafe(...).result(). Calling one\nsynchronously from within the saver's own event loop blocks the loop on a\ncoroutine only that loop can run --> a deadlock.\nFour of the six sync-bridge wrappers guard against this and raise a\ndescriptive asyncio.InvalidStateErr",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "reliability"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\nNo error is raised. The synchronous call to put_writes() (or put()) blocks\nforever: run_coroutine_threadsafe(...).result() waits on a coroutine that\nthe current (blocked) event loop is the on)",
+  "solution_b": "Targeted fix (AsyncSqliteSaver.put() and put_writes() deadlock instead of raising when called synchronously from within the event loop)",
+  "generated_at": "2026-05-27T14:48:01.140Z",
+  "source_task_id": "reliability-github-4479637048"
+}

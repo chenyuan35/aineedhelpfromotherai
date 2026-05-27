@@ -1,26 +1,34 @@
 // mcp/gateway.js — Minimal MCP Agent Gateway (Refactored: P1-A Complete)
-// Exposes 13 tools over Streamable HTTP at POST/GET /mcp
+// Exposes 14 tools over Streamable HTTP at POST/GET /mcp
 // ARCHITECTURE: Tool registration delegated to specialized modules (DRY principle)
 //   - task-execution.js: Tools 1-4 (list, claim, submit, scorecard)
 //   - reasoning-cache.js: Tools 5-10, 13 (search, get, recommend, resolve, provenance)
 //   - reasoning-store.js: Tools 11-12 (check_failures, store_reasoning)
-//   - utilities.js: Shared helpers (response builders, constants)
+//   - memory-gate.js: Tool 14 (memory_gate)
+//   - environment-tools.js: Tools 15-16 (check_environment, get_known_failures)
+// v2.0: Added tool timeout enforcement, schema validation gate
+// v2.1: Added environment tools (check_environment, get_known_failures)
 // Refactored from 814 lines to ~70 lines (91% reduction in gateway.js complexity)
 
 const { getPool } = require('../lib/db');
 const logger = require('../lib/logger');
 const { logMcpUsage } = require('../lib/execution-history');
+const { validateToolInput } = require('../lib/schema-validator');
 const { TOOL_NAMES, ERROR_CODES } = require('./schema');
 const { 
   loadSdk, 
   detectRuntime, 
   sanitizeArgs, 
-  ok 
+  ok, 
+  err 
 } = require('./utilities');
 const { registerTaskTools } = require('./task-execution');
 const { registerReasoningTools } = require('./reasoning-cache');
 const { registerStorageTools } = require('./reasoning-store');
 const { registerMemoryGateTools } = require('./memory-gate');
+const { registerEnvironmentTools } = require('./environment-tools');
+
+const TOOL_TIMEOUT_MS = parseInt(process.env.MCP_TOOL_TIMEOUT_MS) || 30000;
 
 async function createGateway(req, res, parsedBody) {
   let mcpServer = null;
@@ -30,23 +38,68 @@ async function createGateway(req, res, parsedBody) {
   let runtimeType = 'unknown';
   let toolSuccess = false;
   let toolError = null;
+  let timedOut = false;
   const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
   const userAgent = req.headers['user-agent'] || null;
+
+  // Extract tool name from parsed JSON-RPC body for pre-validation
+  if (parsedBody?.method === 'tools/call' && parsedBody?.params?.name) {
+    toolName = parsedBody.params.name;
+    const toolArgs = parsedBody.params.arguments || {};
+
+    // Pre-validate input against Tool Contract before executing
+    const validation = validateToolInput(toolName, toolArgs);
+    if (!validation.valid) {
+      const errorResponse = {
+        jsonrpc: '2.0',
+        id: parsedBody.id || null,
+        error: {
+          code: -32602,
+          message: `Input validation failed for ${toolName}`,
+          data: validation,
+        },
+      };
+      try {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(errorResponse));
+      } catch {}
+      toolSuccess = false;
+      toolError = validation.message;
+      // Still log the rejected call
+      const durationMs = Date.now() - startTime;
+      try {
+        await logMcpUsage({
+          timestamp: new Date().toISOString(),
+          runtime: detectRuntime(null, req),
+          agent_id: toolArgs.agent_id || 'unknown',
+          tool: toolName,
+          success: false,
+          error: toolError,
+          duration_ms: durationMs,
+          client_ip: clientIp,
+          user_agent: req.headers['user-agent'] || null,
+          args: sanitizeArgs(toolArgs),
+        });
+      } catch {}
+      return;
+    }
+  }
 
   try {
     const [{ McpServer }, { StreamableHTTPServerTransport }, z] = await loadSdk();
     runtimeType = detectRuntime(null, req);
 
     mcpServer = new McpServer(
-      { name: 'agent-proving-ground', version: '1.0.0' },
+      { name: 'agent-proving-ground', version: '2.0.0' },
       { capabilities: {} }
     );
 
-    // Register all 13 tools via specialized modules (one line each = clean architecture)
+    // Register all 14 tools via specialized modules (one line each = clean architecture)
     await registerTaskTools(mcpServer, z, clientIp);
     await registerReasoningTools(mcpServer, z, clientIp);
     await registerStorageTools(mcpServer, z, clientIp);
     await registerMemoryGateTools(mcpServer, z, clientIp);
+    await registerEnvironmentTools(mcpServer, z);
 
     transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
     await mcpServer.connect(transport);
@@ -62,33 +115,67 @@ async function createGateway(req, res, parsedBody) {
       return originalSend(msg);
     };
 
-    return transport.handleRequest(req, res, parsedBody);
+    // Run tool with timeout enforcement
+    const result = await Promise.race([
+      transport.handleRequest(req, res, parsedBody),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error(`Tool ${toolName} timed out after ${TOOL_TIMEOUT_MS}ms`)), TOOL_TIMEOUT_MS)
+      ),
+    ]);
+    return result;
   } catch (err) {
     toolSuccess = false;
     toolError = err.message;
-    logger.error('[MCP] Gateway error:', err);
-    
+    const isTimeout = err.message && err.message.includes('timed out');
+    if (isTimeout) {
+      timedOut = true;
+      logger.warn('[MCP] Tool timeout:', { tool: toolName, timeout: TOOL_TIMEOUT_MS });
+    } else {
+      logger.error('[MCP] Gateway error:', err);
+    }
+
+    const errorCode = isTimeout ? 'tool_timeout' : 'gateway_error';
+    const statusCode = isTimeout ? 408 : 500;
+
     try {
-      const errorResponse = ok({ error: 'gateway_initialization_failed', message: err.message });
-      res.writeHead(500, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(errorResponse, null, 2));
+      const isInitialized = !err.message?.includes('timeout') && !err.message?.includes('SDK');
+      const errorPayload = {
+        error: errorCode,
+        message: isTimeout
+          ? `Tool ${toolName} exceeded ${TOOL_TIMEOUT_MS}ms timeout. Consider retrying with fewer results.`
+          : err.message,
+        recoverable: isTimeout,
+        suggested_action: isTimeout ? 'retry_with_backoff' : 'retry',
+      };
+      const body = JSON.stringify({ content: [{ type: 'text', text: JSON.stringify(errorPayload) }], isError: true }, null, 2);
+      try {
+        res.writeHead(statusCode, { 'Content-Type': 'application/json' });
+        res.end(body);
+      } catch {
+        res.writeHead(statusCode);
+        res.end(body);
+      }
     } catch (e) {
-      res.writeHead(500);
-      res.end('Internal server error');
+      try {
+        res.writeHead(500);
+        res.end('Internal server error');
+      } catch {}
     }
   } finally {
     const durationMs = Date.now() - startTime;
+    const agentId = parsedBody?.params?.arguments?.agent_id || parsedBody?.params?.arguments?.agentId || 'unknown';
     const logEntry = {
       timestamp: new Date().toISOString(),
       runtime: runtimeType,
-      agent_id: 'unknown',
+      agent_id: agentId,
       tool: toolName,
       success: toolSuccess,
       error: toolError || null,
       duration_ms: durationMs,
       client_ip: clientIp,
       user_agent: userAgent,
-      args: sanitizeArgs({})
+      args: sanitizeArgs(parsedBody?.params?.arguments || {}),
+      timed_out: timedOut,
     };
 
     try {

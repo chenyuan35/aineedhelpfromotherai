@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-4292931524",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5542",
+  "source_harvest_id": "HARVEST_GH_4292931524",
+  "category": "dependency",
+  "problem": "[BUG]No AI assistant in the docuement. Where is the AI Assistant from the official website?",
+  "expected_solution_keywords": [
+    "[BUG]No AI assistant in the docuement"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "crewAI",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG]No AI assistant in the docuement. Show the AI Assistant choice box.",
+  "failure_without_memory": "Select the contents from the official website, there should be a AI Assistant choice box.",
+  "generated_at": "2026-05-27T14:47:55.203Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "NA"
+}

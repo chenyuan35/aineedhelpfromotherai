@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-3540648415",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11237",
+  "source_harvest_id": "HARVEST_GH_3540648415",
+  "category": "dependency",
+  "problem": "Validation failed for GET /api/library/agents/by-graph/{graph_id}: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}. Sentry Issue: [AUTOGPT-SERVER-495](https://significant-gravitas.sentry.io/issues/6686674180/?referrer=Linear)\n\n```\nValidation failed for GET /api/library/agents/by-graph/d1e5e9d2-c9eb-4bcf-afe3-2dd006135870: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input ",
+  "expected_solution_keywords": [
+    "Validation failed for GET /api/library/agents/by-graph/{graph_id}"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "platform/frontend",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Validation failed for GET /api/library/agents/by-graph/{graph_id}: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.216Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

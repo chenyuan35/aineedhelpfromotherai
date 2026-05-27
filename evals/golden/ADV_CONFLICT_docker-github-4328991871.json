@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_docker-github-4328991871",
+  "category": "docker",
+  "problem": "[BUG] OpenAI API key works locally but fails inside CrewAI with 401 invalid_api_key. 'm experiencing an authentication issue when running a Crew inside CrewAI.\nThe same OpenAI API key works correctly when tested in isolation (Python script and curl), but fails when executed within CrewAI.\nError message:\nError code: 401 - {'error': {'message': 'Incorrect API key provided', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}\nContext:\nThe API key is valid and has been tested outside CrewAI",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (1. Create or open a CrewAI project using OpenAI as the LLM provider.\n\n2. Configure a valid OpenAI API key using the `OPENAI_API_KEY` environment variable.\n\n3. Verify that the same API key works outsid)",
+  "solution_b": "Targeted fix ([BUG] OpenAI API key works locally but fails inside CrewAI with 401 invalid_api_key. CrewAI should successfully authenticate with the OpenAI API using the configured OPENAI_API_KEY and execute the crew without authentication errors.\nTh)",
+  "generated_at": "2026-05-27T14:48:01.085Z",
+  "source_task_id": "docker-github-4328991871"
+}

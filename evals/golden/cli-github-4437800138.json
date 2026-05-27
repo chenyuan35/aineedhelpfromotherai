@@ -1,0 +1,26 @@
+{
+  "id": "cli-github-4437800138",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/4152",
+  "source_harvest_id": "HARVEST_GH_4437800138",
+  "category": "cli",
+  "problem": "filesystem: server exits silently when an allowed_directories entry does not exist on disk. ## Summary\n\nThe `secure-filesystem-server` package (`src/filesystem/`) terminates the Node process during startup if any path passed in `allowed_directories` is missing or inaccessible. The exit produces no stderr output, no JSON-RPC error response, and no log line indicating which path was the culprit — only the host (Claude Desktop, in my case) sees an abrupt transport close.\n\nThis is a sharp edge for e",
+  "expected_solution_keywords": [
+    "filesystem"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "filesystem: server exits silently when an allowed_directories entry does not exist on disk. One of:\n\n- **Preferred:** the server starts successfully using the *valid* subset of `allowed_directories`, emits a structured warning (stderr or JSON",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.448Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "- **Host:** Claude Desktop (Windows UWP, but the bug is in the server itself and is host-agnostic)\n- **OS:** Windows 11\n- **Filesystem connector extension ID:** `ant.dir.ant.anthropic.filesystem`\n- **"
+}

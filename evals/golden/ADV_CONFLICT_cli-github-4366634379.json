@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_cli-github-4366634379",
+  "category": "cli",
+  "problem": "Bug: PostgresStore numeric filter operators ($gt, $gte, $lt, $lte) use lexicographic (text) comparison instead of numeric comparison. `PostgresStore._get_filter_condition()` uses `value->>key` (text extraction)\nwith `str(value)` for `$gt`, `$gte`, `$lt`, `$lte` operators.\nSince `->>` returns TEXT in PostgreSQL, numeric comparisons use lexicographic\nordering instead of numeric ordering, producing silently wrong query results.\n\nExpected: `filter={\"score\": {\"$gte\": 10}}` returns only items where sc",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "cli"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\n\n```)",
+  "solution_b": "Targeted fix (Bug: PostgresStore numeric filter operators ($gt, $gte, $lt, $lte) use lexicographic (text) comparison instead of numeric comparison)",
+  "generated_at": "2026-05-27T14:48:00.815Z",
+  "source_task_id": "cli-github-4366634379"
+}

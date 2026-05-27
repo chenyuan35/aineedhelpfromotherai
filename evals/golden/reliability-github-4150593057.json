@@ -1,0 +1,29 @@
+{
+  "id": "reliability-github-4150593057",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5137",
+  "source_harvest_id": "HARVEST_GH_4150593057",
+  "category": "reliability",
+  "problem": "[BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFile input. I am trying to pass TextFiles to my Crew via the 'input_files' parameter. Since the update to crewai 1.10 -> 1.12.2, this results in an Error when using non-multimodel models.",
+  "expected_solution_keywords": [
+    "increase timeout",
+    "retry",
+    "[BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFile input"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "no-issue-activity",
+    "reliability",
+    "source:github",
+    "timeout",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFile input. When using only text files, I don't expect to need a vision-capable model. I expect the model to digest the actual text of the files, not 'look' at it. Increase timeout or reduce payload.",
+  "failure_without_memory": "1. Create a new crewai Crew (`crewai create crew demo`)\n2. Adapt the run() method to include a input file\n3. Select a model like claude-sonnet-4.6\n4. See the error",
+  "generated_at": "2026-05-27T14:47:55.135Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "timeout"
+  ],
+  "environment": "In case that is actually the intended behavior for TextFiles (which seems odd), I guess one should perform string-interpolation to append the content of the text files to the initial prompt?\n\nAttachin"
+}

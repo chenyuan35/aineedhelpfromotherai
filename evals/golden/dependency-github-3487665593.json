@@ -1,0 +1,25 @@
+{
+  "id": "dependency-github-3487665593",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11098",
+  "source_harvest_id": "HARVEST_GH_3487665593",
+  "category": "dependency",
+  "problem": "Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message\":\"Statement is too short\",\"readableMessage\":\"ParamVa.... ",
+  "expected_solution_keywords": [
+    "Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff "
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message\":\"Statement is too short\",\"readableMessage\":\"ParamVa...",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.306Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

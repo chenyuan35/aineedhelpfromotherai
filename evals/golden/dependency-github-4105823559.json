@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-4105823559",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/4972",
+  "source_harvest_id": "HARVEST_GH_4105823559",
+  "category": "dependency",
+  "problem": "[BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments — always passes empty dict. When using AWS Bedrock as the LLM provider with native function calling, all tool arguments are silently dropped. Every tool call receives an empty dict {} instead of the actual arguments, causing pydantic validation failures on any tool with required parameters.",
+  "expected_solution_keywords": [
+    "[BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments — always passes empty dict"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "crewAI",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments — always passes empty dict. The agent should pass the arguments from the Bedrock Converse API response (from the \"input\" field) to the tool. For example, if the LLM returns {\"nam",
+  "failure_without_memory": "1. Configure a crewai project with BedrockCompletion as the LLM (any Claude model via Converse API)\n2. Create a custom BaseTool with required arguments (e.g. a tool with search_query: str in its args_",
+  "generated_at": "2026-05-27T14:47:55.197Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "One-line fix in _parse_native_tool_call (line ~850 of crew_agent_executor.py):"
+}

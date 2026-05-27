@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-4367772531",
+  "category": "cli",
+  "problem": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts. The docs URL embedded in this RuntimeError points to a page that no longer exists\nand returns HTTP 404:\n\n  https://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-multiple-interrupts-with-one-invocation\n\nThe actual section explaining how to resume multiple interrupts in a single\ninvocation (using a `{interrupt_id: resume_value}` map passed to `Command(resume=...)`)\nnow lives a (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.821Z",
+  "source_task_id": "cli-github-4367772531"
+}

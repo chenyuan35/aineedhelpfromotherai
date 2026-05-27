@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_cli-github-4445641803",
+  "category": "cli",
+  "problem": "invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — polymorphic return type undocumented. When using invoke(version=\"v2\"), the return type changes depending on stream_mode.\n\n- stream_mode=\"values\" returns GraphOutput with .value and .interrupts\n- stream_mode=\"updates\" returns raw list[StreamPart]\n\nInterrupts are still present in the streamed chunks, but the GraphOutput abstraction is bypassed entirely.\n\nThis behavior is reproducible with both:\n- ca",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "cli",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — polymorphic return type undocumented. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nPATTERN A\nTYPE: <class 'list'>\nRAW: [{'type': 'updates', 'ns': (), 'data': {'__interrupt__': (Interrupt(value='Approve?', id='42c6a090...'),).",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: invoke(version=\"v2\") returns list[StreamPart]",
+  "generated_at": "2026-05-27T14:48:00.873Z",
+  "source_task_id": "cli-github-4445641803"
+}

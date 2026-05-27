@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4368431222",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7688",
+  "source_harvest_id": "HARVEST_GH_4368431222",
+  "category": "cli",
+  "problem": "`langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries. `langgraph dev` fails to start with `OSError: Port 2024 is already in use` for ~60 seconds after a Ctrl+C, even though no process is `LISTEN`-ing on the port. The only workaround appears to be waiting out the TCP TIME-WAIT timer or rebooting.\n\nThe error is in langgraph_api, in _resolve_port(). I fixed it locally by trying and bind the port with SO_REUSEADDR, then closing it: \n\n**langgraph_api/cli.py**\n```python\n",
+  "expected_solution_keywords": [
+    "`langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "cli",
+    "source:github",
+    "port_conflict",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "`langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries",
+  "failure_without_memory": "```shell\nFile \".../bin/langgraph\", line 8, in <module>\n    sys.exit(cli())\n             ^^^^^\n  File \".../lib/python3.12/site-packages/click/core.py\", line 1514, in __call__\n    return self.main(*args",
+  "generated_at": "2026-05-27T14:47:55.054Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "port_conflict"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Linux\n> OS Version:  #110-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 19 15:09:20 UTC 2026\n> Python Version:  3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]\n\nPac"
+}

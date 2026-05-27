@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-3182732494",
+  "category": "cli",
+  "problem": "Default value of state variable not working with reducer function. When I set default value for a state variable that has Annotated with a reducer function, the default value is not applied. (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.764Z",
+  "source_task_id": "cli-github-3182732494"
+}

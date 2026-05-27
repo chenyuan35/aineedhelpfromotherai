@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-4524280442",
+  "category": "dependency",
+  "problem": "[BUG] input_files (PDFFile) are passed as base64 via read_file tool, causing context overflow and inconsistent LLM behavior. When using `input_files` with `PDFFile` (or `File`), CrewAI does not appear to handle the file as a native file input at the provider level.\n\nInstead, the file is processed via the `read_file` tool and its content is returned as a binary/base64 representation. This content is then indirectly injected into the agent execution context.\n\nAs a result:\n- The PDF is effectively  (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:01.073Z",
+  "source_task_id": "dependency-github-4524280442"
+}

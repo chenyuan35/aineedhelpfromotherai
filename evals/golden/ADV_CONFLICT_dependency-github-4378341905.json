@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-4378341905",
+  "category": "dependency",
+  "problem": "langchain deepseek:_get_request_payload中缺少reasoning_content返回会导致多回合agent调用出现400错误. 用 langchain-deepseek（v1.0.1）调用deepseek-v4-flash时，跑 agent.invoke() 会在第二次内部调用 LLM 的时候挂掉，报 400 错误。\n**原因**：DeepSeek API 要求，如果你在后续请求里要传回上一条助手消息，那这条消息里的 reasoning_content 字段必须原样带上。但是 ChatDeepSeek._get_request_payload() 用的是父类 BaseChatOpenAI._get_request_payload()，它调用的 _convert_message_to_dict() 在把 AIMessage 转成字典的时候，���把 additional_kwargs（包括 reasoning_content）给扔掉。\nChatDeepSeek._create_chat_result() 其实是能从 API 返回的结果里拿到 reas",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\nopenai.BadRequestError: Error code: 400\n  {'error': {'message': 'The `reasoning_content` in the thinking mode must be passed back to the API.', 'type': 'invalid_request_error',\n  'param': Non)",
+  "solution_b": "Targeted fix (langchain deepseek:_get_request_payload中缺少reasoning_content返回会导致多回合agent调用出现400错误)",
+  "generated_at": "2026-05-27T14:48:01.016Z",
+  "source_task_id": "dependency-github-4378341905"
+}

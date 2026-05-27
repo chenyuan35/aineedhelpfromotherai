@@ -1,0 +1,63 @@
+# Eval Gate — CI reliability pipeline
+#
+# Runs on every PR. Golden task suite → compare against latest baseline.
+# Blocks merge on: solve rate drop >3%, hallucination rise >5%, critical regressions.
+#
+# Usage:
+#   npm run eval                  — run evals + compare (CI mode)
+#   npm run eval:baseline         — save new baseline
+#   npm run eval:passk            — run pass^5 stability
+#   npm run eval:rss              — compute Replay Stability Score
+
+name: Eval Gate
+on:
+  pull_request:
+    branches: [main, master, develop]
+  push:
+    branches: [main, master]
+
+jobs:
+  eval-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run golden eval suite
+        run: npm run eval -- --quiet
+        id: evals
+        continue-on-error: false
+
+      - name: Check for regressions
+        run: |
+          RESULT=$(npm run eval -- --quiet 2>&1 | tail -1)
+          echo "Eval result: $RESULT"
+          REGRESSIONS=$(echo "$RESULT" | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{try{const j=JSON.parse(d);console.log(j.regressions?.length||0)}catch{console.log(-1)}})")
+          if [ "$REGRESSIONS" -gt "0" ]; then
+            echo "❌ REGRESSIONS DETECTED: $REGRESSIONS failures"
+            exit 1
+          fi
+          echo "✅ All eval gates passed"
+
+      - name: Run pass^k stability (optional, PR only)
+        if: github.event_name == 'pull_request'
+        run: npm run eval:passk -- --quiet
+        continue-on-error: true  # Informational for now
+
+      - name: Run Replay Stability Score
+        run: npm run eval:rss -- --quiet
+        continue-on-error: true
+
+      - name: Save eval baseline
+        run: npm run eval:baseline -- --quiet

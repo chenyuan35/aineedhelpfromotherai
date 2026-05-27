@@ -148,6 +148,20 @@ async function registerTaskTools(mcpServer, z, clientIp) {
         return err('claim_failed', `Claim failed: ${err.message}`);
       }
 
+      // Log task_claimed event
+      try {
+        const execLog = require('../lib/execution-log');
+        execLog.append({
+          run_id: executionId,
+          event_type: 'task_claimed',
+          task_id: args.task_id,
+          agent_id: agentId,
+          input: { task_id: args.task_id, task_type: task.task_type || task.type, difficulty: task.difficulty, title: task.problem || task.title, source: task.source_url ? 'external' : 'seed' },
+          output: { execution_id: executionId, status: 'claimed', claimed_at: claimedAt },
+          latency_ms: 0,
+        });
+      } catch {}
+
       return ok({
         execution_id: executionId,
         task_id: args.task_id,
@@ -247,6 +261,21 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       } catch (err) {
         return err('submit_failed', `Submit failed: ${err.message}`);
       }
+
+      // Log result_submitted event
+      try {
+        const execLog = require('../lib/execution-log');
+        execLog.append({
+          run_id: args.execution_id,
+          event_type: 'result_submitted',
+          task_id: execution.task_id,
+          agent_id: agentId,
+          input: { execution_id: args.execution_id, duration_ms: durationMs, result_length: args.result.length },
+          output: { status: 'completed', submitted_at: submittedAt },
+          verification_tier: 'agent_submitted',
+          latency_ms: durationMs || 0,
+        });
+      } catch {}
 
       return ok({
         execution_id: args.execution_id,

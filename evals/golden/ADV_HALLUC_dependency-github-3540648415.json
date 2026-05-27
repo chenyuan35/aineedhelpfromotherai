@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-3540648415",
+  "category": "dependency",
+  "problem": "Validation failed for GET /api/library/agents/by-graph/{graph_id}: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}. Sentry Issue: [AUTOGPT-SERVER-495](https://significant-gravitas.sentry.io/issues/6686674180/?referrer=Linear)\n\n```\nValidation failed for GET /api/library/agents/by-graph/d1e5e9d2-c9eb-4bcf-afe3-2dd006135870: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input  (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.984Z",
+  "source_task_id": "dependency-github-3540648415"
+}

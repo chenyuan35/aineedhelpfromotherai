@@ -1,0 +1,26 @@
+{
+  "id": "cli-github-4443863745",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/4157",
+  "source_harvest_id": "HARVEST_GH_4443863745",
+  "category": "cli",
+  "problem": "filesystem: edit_file newText interpreted as String.prototype.replace replacement-pattern (literal $ corrupted). ## Summary\n`edit_file` in `@modelcontextprotocol/server-filesystem` silently corrupts content containing literal `$` characters. The root cause is that `applyFileEdits` (in `src/filesystem/lib.ts`) invokes JavaScript's `String.prototype.replace(searchString, replacementString)` where the **second argument is interpreted as a [replacement string pattern](https://developer.mozilla.org/e",
+  "expected_solution_keywords": [
+    "filesystem"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "filesystem: edit_file newText interpreted as String.prototype.replace replacement-pattern (literal $ corrupted)",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.423Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "```ts\nmodifiedContent = modifiedContent.replace(normalizedOld, () => normalizedNew);\n```\nThe callback form treats the return value as literal, disabling replacement-pattern interpretation while preser"
+}

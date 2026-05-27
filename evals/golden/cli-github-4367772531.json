@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4367772531",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7686",
+  "source_harvest_id": "HARVEST_GH_4367772531",
+  "category": "cli",
+  "problem": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts. The docs URL embedded in this RuntimeError points to a page that no longer exists\nand returns HTTP 404:\n\n  https://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-multiple-interrupts-with-one-invocation\n\nThe actual section explaining how to resume multiple interrupts in a single\ninvocation (using a `{interrupt_id: resume_value}` map passed to `Command(resume=...)`)\nnow lives a",
+  "expected_solution_keywords": [
+    "docs(langgraph)"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts",
+  "failure_without_memory": "```shell\nRuntimeError: When there are multiple pending interrupts, you must specify the\ninterrupt id when resuming. Docs:\nhttps://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-m",
+  "generated_at": "2026-05-27T14:47:55.064Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "```\nSystem Information\n------------------\n> OS:  Linux\n> OS Version:  #1 SMP Wed Sep  3 15:35:15 UTC 2025\n> Python Version:  3.12.13 (main, Apr 22 2026, 02:12:20) [GCC 14.2.0]\n\nPackage Information\n---"
+}

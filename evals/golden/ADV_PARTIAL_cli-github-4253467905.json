@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_cli-github-4253467905",
+  "category": "cli",
+  "problem": "MCP roots protocol overrides CLI-provided allowed directories. ## Summary\n\nWhen a client supports the MCP roots protocol, `server-filesystem` unconditionally replaces CLI-provided allowed directories with the client's roots on initialization. This makes it impossible to scope the server to a directory outside the client's project root.\n\n## Reproduction\n\n1. Configure a filesystem MCP server with an explicit directory argument:\n   ```json\n   {\n     \"my-project\": {\n       \"command\": \"npx\",\n       \"",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "cli",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: MCP roots protocol overrides CLI-provided allowed directories. CLI arguments should take precedence over MCP roots. If the user explicitly passes directories, those should be respected. MCP roots shou. This works for now but you will need to apply it again when the issue returns. The root cause is Unknown failure.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: MCP roots protocol overrides CLI-provided allowed directories. CLI arguments should take precedence ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: MCP roots protocol overrides CLI-provided all",
+  "generated_at": "2026-05-27T14:48:00.810Z",
+  "source_task_id": "cli-github-4253467905"
+}

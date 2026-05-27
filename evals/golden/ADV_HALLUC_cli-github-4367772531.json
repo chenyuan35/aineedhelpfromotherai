@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4367772531",
+  "category": "cli",
+  "problem": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts. The docs URL embedded in this RuntimeError points to a page that no longer exists\nand returns HTTP 404:\n\n  https://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-multiple-interrupts-with-one-invocation\n\nThe actual section explaining how to resume multiple interrupts in a single\ninvocation (using a `{interrupt_id: resume_value}` map passed to `Command(resume=...)`)\nnow lives a (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.821Z",
+  "source_task_id": "cli-github-4367772531"
+}

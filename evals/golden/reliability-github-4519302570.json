@@ -1,0 +1,29 @@
+{
+  "id": "reliability-github-4519302570",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/37686",
+  "source_harvest_id": "HARVEST_GH_4519302570",
+  "category": "reliability",
+  "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message",
+  "expected_solution_keywords": [
+    "core"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "core",
+    "external",
+    "reliability",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args",
+  "failure_without_memory": "```shell\n{'text': '你好', 'emoji': '🚀'}\n'{\"text\": \"\\u4f60\\u597d\", \"emoji\": \"\\ud83d\\ude80\"}'\nTraceback (most recent call last):\n  File \"<stdin>\", line 12, in <module>\nAssertionError\n```",
+  "generated_at": "2026-05-27T14:47:55.015Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Linux\n> OS Version:  #1 SMP PREEMPT_DYNAMIC Mon Dec  1 20:46:23 UTC 2025\n> Python Version:  3.12.9 | packaged by conda-forge | (main, Mar  4 2025, 22:48:41"
+}

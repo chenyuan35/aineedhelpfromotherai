@@ -1,0 +1,28 @@
+{
+  "id": "reliability-github-4479637048",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7857",
+  "source_harvest_id": "HARVEST_GH_4479637048",
+  "category": "reliability",
+  "problem": "AsyncSqliteSaver.put() and put_writes() deadlock instead of raising when called synchronously from within the event loop. AsyncSqliteSaver exposes synchronous bridge methods that wrap their async\ncounterparts with asyncio.run_coroutine_threadsafe(...).result(). Calling one\nsynchronously from within the saver's own event loop blocks the loop on a\ncoroutine only that loop can run --> a deadlock.\nFour of the six sync-bridge wrappers guard against this and raise a\ndescriptive asyncio.InvalidStateErr",
+  "expected_solution_keywords": [
+    "AsyncSqliteSaver.put() and put_writes() deadlock instead of raising when called synchronously from within the event loop"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "reliability",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "AsyncSqliteSaver.put() and put_writes() deadlock instead of raising when called synchronously from within the event loop",
+  "failure_without_memory": "```shell\nNo error is raised. The synchronous call to put_writes() (or put()) blocks\nforever: run_coroutine_threadsafe(...).result() waits on a coroutine that\nthe current (blocked) event loop is the on",
+  "generated_at": "2026-05-27T14:47:55.111Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Windows\n> OS Version:  10.0.26200\n> Python Version:  3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]\n\nPackage Information\n"
+}

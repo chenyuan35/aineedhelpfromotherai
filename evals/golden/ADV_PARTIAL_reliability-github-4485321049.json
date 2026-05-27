@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_reliability-github-4485321049",
+  "category": "reliability",
+  "problem": "anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error. - I am sending a standard `type: \"file\"` content block with `mime_type: \"text/csv\"` and a base64 source in a `HumanMessage` to `ChatAnthropic`.\n- I expect the request to succeed — the same content blocks work when routed through `langchain-aws` / Bedrock Converse, which accepts `csv, doc, docx, html, md, txt, xls, xlsx, pdf` as document source types.\n- Instead, the Anthropic Messages API rejects the",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "reliability",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error. This works for now but you will need to apply it again when the issue returns. The root cause is ```\nanthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': \"messages.0.content.1.documen.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: anthropic: base64 file blocks with non-PDF te",
+  "generated_at": "2026-05-27T14:48:01.150Z",
+  "source_task_id": "reliability-github-4485321049"
+}

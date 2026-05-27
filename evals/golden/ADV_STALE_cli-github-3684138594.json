@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-3684138594",
+  "category": "cli",
+  "problem": "[langchain-deepseek] Missing `reasoning_content` in request payload when using deepseek-reasoner with tool calling. ### Checked other resources\n\n- [x] This is a bug, not a usage question.\n- [x] I added a clear and descriptive title that summarizes this issue.\n- [x] I used the GitHub search to find a similar question and didn't find it.\n- [x] I am sure that this is a bug in LangChain rather than my code.\n- [x] The bug is not resolved by updating to the latest stable version of LangChain (or the s (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.781Z",
+  "source_task_id": "cli-github-3684138594"
+}

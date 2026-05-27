@@ -1,0 +1,26 @@
+{
+  "id": "reliability-github-4467428092",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5845",
+  "source_harvest_id": "HARVEST_GH_4467428092",
+  "category": "reliability",
+  "problem": "[BUG] dependency conflict with OpenLIT. crewai 1.14.4 locks opentelemetry-sdk to 1.35.0 but openlit 1.41.2 requires opentelemetry-sdk >=1.38.0",
+  "expected_solution_keywords": [
+    "[BUG] dependency conflict with OpenLIT"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "reliability",
+    "source:github",
+    "conflict",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] dependency conflict with OpenLIT. no dependency conflict error",
+  "failure_without_memory": "in pyproject.toml put\n [tool.poetry.dependencies]\npython = \">=3.10,<=3.13.7\"\ncrewai = 1.14.4\ncrewai-tools = {version = \"1.14.4\", extras = [\"mcp\"]} \nopenlit = \"1.42.0\"",
+  "generated_at": "2026-05-27T14:47:55.179Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "conflict"
+  ],
+  "environment": "relax dependecies of openlit in crewai:\nchange the in pyproject.toml: \n    # Telemetry and Monitoring\n    \"opentelemetry-api>=1.38.0,<2.0.0\",\n    \"opentelemetry-sdk>=1.38.0,<2.0.0\",\n    \"opentelemetry"
+}

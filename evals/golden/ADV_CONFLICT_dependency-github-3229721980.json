@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3229721980",
+  "category": "dependency",
+  "problem": "Command is not applied from a tool that has return_direct=True. Needs to be confirm\n\nhttps://forum.langchain.com/t/command-and-update-inside-tool-function-with-return-direct-flag/358",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (Command is not applied from a tool that has return_direct=True)",
+  "generated_at": "2026-05-27T14:48:00.921Z",
+  "source_task_id": "dependency-github-3229721980"
+}

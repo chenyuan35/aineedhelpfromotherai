@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_cli-github-4367772531",
+  "category": "cli",
+  "problem": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts. The docs URL embedded in this RuntimeError points to a page that no longer exists\nand returns HTTP 404:\n\n  https://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-multiple-interrupts-with-one-invocation\n\nThe actual section explaining how to resume multiple interrupts in a single\ninvocation (using a `{interrupt_id: resume_value}` map passed to `Command(resume=...)`)\nnow lives a",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "cli"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\nRuntimeError: When there are multiple pending interrupts, you must specify the\ninterrupt id when resuming. Docs:\nhttps://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-m)",
+  "solution_b": "Targeted fix (docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts)",
+  "generated_at": "2026-05-27T14:48:00.821Z",
+  "source_task_id": "cli-github-4367772531"
+}

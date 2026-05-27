@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4445641803",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7796",
+  "source_harvest_id": "HARVEST_GH_4445641803",
+  "category": "cli",
+  "problem": "invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — polymorphic return type undocumented. When using invoke(version=\"v2\"), the return type changes depending on stream_mode.\n\n- stream_mode=\"values\" returns GraphOutput with .value and .interrupts\n- stream_mode=\"updates\" returns raw list[StreamPart]\n\nInterrupts are still present in the streamed chunks, but the GraphOutput abstraction is bypassed entirely.\n\nThis behavior is reproducible with both:\n- ca",
+  "expected_solution_keywords": [
+    "invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — polymorphic return type undocumented"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "invoke(version=\"v2\") returns list[StreamPart] instead of GraphOutput when stream_mode != \"values\" — polymorphic return type undocumented",
+  "failure_without_memory": "```shell\nPATTERN A\nTYPE: <class 'list'>\nRAW: [{'type': 'updates', 'ns': (), 'data': {'__interrupt__': (Interrupt(value='Approve?', id='42c6a090...'),)}}]\n\nPATTERN B\nTYPE: <class 'list'>\nRAW: [{'type':",
+  "generated_at": "2026-05-27T14:47:55.130Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Windows\n> OS Version:  10.0.26200\n> Python Version:  3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]\n\nPackage Information\n"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_cli-github-4443863745",
+  "category": "cli",
+  "problem": "filesystem: edit_file newText interpreted as String.prototype.replace replacement-pattern (literal $ corrupted). ## Summary\n`edit_file` in `@modelcontextprotocol/server-filesystem` silently corrupts content containing literal `$` characters. The root cause is that `applyFileEdits` (in `src/filesystem/lib.ts`) invokes JavaScript's `String.prototype.replace(searchString, replacementString)` where the **second argument is interpreted as a [replacement string pattern](https://developer.mozilla.org/e",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "cli"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (filesystem: edit_file newText interpreted as String.prototype.replace replacement-pattern (literal $ corrupted))",
+  "generated_at": "2026-05-27T14:48:00.867Z",
+  "source_task_id": "cli-github-4443863745"
+}

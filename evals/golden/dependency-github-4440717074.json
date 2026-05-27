@@ -1,0 +1,29 @@
+{
+  "id": "dependency-github-4440717074",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/37390",
+  "source_harvest_id": "HARVEST_GH_4440717074",
+  "category": "dependency",
+  "problem": "ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models. `ChatDeepSeek._create_chat_result` captures `reasoning_content` from API responses into `AIMessage.additional_kwargs`, but the outbound path inherited from `BaseChatOpenAI._get_request_payload` (via `_convert_message_to_dict` in `langchain_openai.chat_models.base`) drops it when serializing assistant messages back to the API.\n\nDeepSeek's reasoner models require the prior turn's",
+  "expected_solution_keywords": [
+    "ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "deepseek",
+    "external",
+    "langchain",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models",
+  "failure_without_memory": "```shell\nopenai.BadRequestError: Error code: 400 - {'error': {'message':\n  'The `reasoning_content` in the thinking mode must be passed back to the API.',\n  'type': 'invalid_request_error', 'param': N",
+  "generated_at": "2026-05-27T14:47:55.031Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Darwin\n> OS Version:  Darwin Kernel Version 24.6.0: Mon Aug 11 21:16:34 PDT 2025; root:xnu-11417.140.69.701.11~1/RELEASE_ARM64_T6020\n> Python Version:  3.1"
+}

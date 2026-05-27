@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4405482657",
+  "category": "cli",
+  "problem": "configurable field lost in ToolRuntime.config when using tool_interceptors in langchain 1.2.16 (works in 1.2.15). After upgrading langchain-core from 1.2.15 to 1.2.16, the `configurable` field passed in `RunnableConfig` becomes an empty dict when accessed via `ToolRuntime.config` inside `tool_interceptors`. This is a regression between these two versions.\n\nVersion Information\n**Working**: langchain-core 1.2.15\n**Broken**: langchain-core 1.2.16\nExpected Behavior\nThe configurable dict passed to ag (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.837Z",
+  "source_task_id": "cli-github-4405482657"
+}

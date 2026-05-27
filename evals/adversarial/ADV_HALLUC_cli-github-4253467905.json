@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4253467905",
+  "category": "cli",
+  "problem": "MCP roots protocol overrides CLI-provided allowed directories. ## Summary\n\nWhen a client supports the MCP roots protocol, `server-filesystem` unconditionally replaces CLI-provided allowed directories with the client's roots on initialization. This makes it impossible to scope the server to a directory outside the client's project root.\n\n## Reproduction\n\n1. Configure a filesystem MCP server with an explicit directory argument:\n   ```json\n   {\n     \"my-project\": {\n       \"command\": \"npx\",\n       \" (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.810Z",
+  "source_task_id": "cli-github-4253467905"
+}

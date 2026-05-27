@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3540648415",
+  "category": "dependency",
+  "problem": "Validation failed for GET /api/library/agents/by-graph/{graph_id}: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}. Sentry Issue: [AUTOGPT-SERVER-495](https://significant-gravitas.sentry.io/issues/6686674180/?referrer=Linear)\n\n```\nValidation failed for GET /api/library/agents/by-graph/d1e5e9d2-c9eb-4bcf-afe3-2dd006135870: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (Validation failed for GET /api/library/agents/by-graph/{graph_id}: [{'type': 'int_parsing', 'loc': ('query', 'version'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'})",
+  "generated_at": "2026-05-27T14:48:00.984Z",
+  "source_task_id": "dependency-github-3540648415"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "dependency-github-4411870103",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/37297",
+  "source_harvest_id": "HARVEST_GH_4411870103",
+  "category": "dependency",
+  "problem": "Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test. I'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nstartswith(\"test\") and \"server\" in hostname bypasses all validation\nand is returned unchecked — including attacker-controlled hostnames\nlike test.attacker.server.com.\n\nA second issue: _effective_allowed_hosts() uses startswith(\"local\")\nwhich e",
+  "expected_solution_keywords": [
+    "Bug"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "core",
+    "external",
+    "langchain",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test",
+  "failure_without_memory": "```shell\nI'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nsta",
+  "generated_at": "2026-05-27T14:47:55.010Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "python -m langchain-core latest, Python 3.11+"
+}

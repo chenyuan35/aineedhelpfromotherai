@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_reliability-github-4519302570",
+  "category": "reliability",
+  "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "reliability",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\n{'text': '你好', 'emoji': '🚀'}\n'{\"text\": \"\\u4f60\\u597d\", \"emoji\": \"\\ud83d\\ude80\"}'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: core: AIMessageChunk validator escapes non-AS",
+  "generated_at": "2026-05-27T14:48:01.172Z",
+  "source_task_id": "reliability-github-4519302570"
+}

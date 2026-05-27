@@ -1,0 +1,27 @@
+{
+  "id": "dependency-github-4274130178",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/12810",
+  "source_harvest_id": "HARVEST_GH_4274130178",
+  "category": "dependency",
+  "problem": "AutoPilot hallucinates credential prompt for wrong provider - prompts for GitHub credential while it needs Gmail credential for running Gmail block. * [OPEN-2592](https://linear.app/autogpt/issue/OPEN-2592/avoid-duplicate-google-credentials-for-same-account-incremental-auth): Avoid Duplicate Google Credentials\n* [SECRT-2091](https://linear.app/autogpt/issue/SECRT-2091): Gmail OAuth scope mismatch\n* [OPEN-1857](https://linear.app/autogpt/issue/OPEN-1857/handle-incrementalduplicate-oauth-authoriza",
+  "expected_solution_keywords": [
+    "AutoPilot hallucinates credential prompt for wrong provider - prompts for GitHub credential while it needs Gmail credential for running Gmail block"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AI model limitation",
+    "copilot/tools",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "AutoPilot hallucinates credential prompt for wrong provider - prompts for GitHub credential while it needs Gmail credential for running Gmail block",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.232Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

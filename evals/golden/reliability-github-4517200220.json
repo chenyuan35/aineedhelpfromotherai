@@ -1,0 +1,28 @@
+{
+  "id": "reliability-github-4517200220",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7908",
+  "source_harvest_id": "HARVEST_GH_4517200220",
+  "category": "reliability",
+  "problem": "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0. Here is the import of `langgraph` in the `langgraph-prebuild` package  https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/langgraph/prebuilt/_tool_call_transformer.py#L8. But it's not mentioned among the runtime dependencies https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/pyproject.toml#L26-L28\n\nThat is a real packaging cycle on PyPI (prebuilt is both a dependency of and",
+  "expected_solution_keywords": [
+    "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "reliability",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0",
+  "failure_without_memory": "```shell\nimport: 'langgraph.prebuilt'\nTraceback (most recent call last):\n  File \"/home/task_177971228210808/croot/langgraph-prebuilt_1779713116098/test_tmp/run_test.py\", line 2, in <module>\n    import",
+  "generated_at": "2026-05-27T14:47:55.088Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "linux-64, linux-aarch64, osx-arm64, win-64, py310-py314"
+}

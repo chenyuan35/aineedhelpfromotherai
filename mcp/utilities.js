@@ -44,10 +44,14 @@ function sanitizeArgs(args) {
   return safe;
 }
 
-// Structured error response: { error: errorCode, message, hint? }
+// Structured error response: { error: errorCode, message, hint?, severity?, suggested_action?, recoverable? }
 function err(errorCode, message, hint) {
   const body = { error: errorCode, message };
   if (hint) body.hint = hint;
+  // Add AI-facing metadata for production error model
+  body.severity = 'error';
+  body.recoverable = true;
+  body.suggested_action = 'retry';
   return { content: [{ type: 'text', text: JSON.stringify(body) }], isError: true };
 }
 

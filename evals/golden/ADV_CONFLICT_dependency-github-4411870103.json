@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-4411870103",
+  "category": "dependency",
+  "problem": "Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test. I'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nstartswith(\"test\") and \"server\" in hostname bypasses all validation\nand is returned unchecked — including attacker-controlled hostnames\nlike test.attacker.server.com.\n\nA second issue: _effective_allowed_hosts() uses startswith(\"local\")\nwhich e",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\nI'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nsta)",
+  "solution_b": "Targeted fix (Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test)",
+  "generated_at": "2026-05-27T14:48:01.021Z",
+  "source_task_id": "dependency-github-4411870103"
+}

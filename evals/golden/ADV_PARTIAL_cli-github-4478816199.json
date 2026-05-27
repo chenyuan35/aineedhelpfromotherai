@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_cli-github-4478816199",
+  "category": "cli",
+  "problem": "filesystem: malformed JSON-RPC message on stdio causes crash or zombie state. **Describe the bug**\nThe `secure-filesystem-server` MCP server does not survive a single malformed JSON-RPC line on stdio. After receiving an incomplete JSON object (truncated `initialize`-style frame with an unclosed `params` field), the server either exits or enters a zombie state where it no longer responds to follow-up requests.\n\nA robust MCP server should treat parse errors as recoverable: return a JSON-RPC error ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "cli",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: filesystem: malformed JSON-RPC message on stdio causes crash or zombie state. This works for now but you will need to apply it again when the issue returns. The root cause is errors as recoverable: return a JSON-RPC error (or skip the bad line per spec) and continue serving subsequent messages. Crashing or hanging breaks th.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: filesystem: malformed JSON-RPC message on stdio causes crash or zombie state",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: filesystem: malformed JSON-RPC message on std",
+  "generated_at": "2026-05-27T14:48:00.898Z",
+  "source_task_id": "cli-github-4478816199"
+}

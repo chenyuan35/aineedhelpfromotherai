@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_dependency-github-4411870103",
+  "category": "dependency",
+  "problem": "Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test. I'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nstartswith(\"test\") and \"server\" in hostname bypasses all validation\nand is returned unchecked — including attacker-controlled hostnames\nlike test.attacker.server.com.\n\nA second issue: _effective_allowed_hosts() uses startswith(\"local\")\nwhich e (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:01.021Z",
+  "source_task_id": "dependency-github-4411870103"
+}

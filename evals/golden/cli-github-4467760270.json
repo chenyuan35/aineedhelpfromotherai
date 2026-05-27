@@ -1,0 +1,26 @@
+{
+  "id": "cli-github-4467760270",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/4195",
+  "source_harvest_id": "HARVEST_GH_4467760270",
+  "category": "cli",
+  "problem": "filesystem: tools/list succeeds without initialize handshake (MCP lifecycle bypass). **Describe the bug**\nThe `@modelcontextprotocol/server-filesystem` MCP server accepts and successfully handles `tools/list` before the client completes the required MCP lifecycle handshake (`initialize` → `notifications/initialized`). The server returns a normal JSON-RPC result instead of rejecting the request as out-of-order.\n\nThis breaks the expected MCP session state machine: compliant clients assume that onl",
+  "expected_solution_keywords": [
+    "filesystem"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "filesystem: tools/list succeeds without initialize handshake (MCP lifecycle bypass)",
+  "failure_without_memory": "exceptions, if the spec allows them).\n* Return a structured JSON-RPC error (e.g. invalid request / server not initialized), not a successful `result`.\n* Optionally log a clear diagnostic on stderr ind",
+  "generated_at": "2026-05-27T14:47:55.405Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

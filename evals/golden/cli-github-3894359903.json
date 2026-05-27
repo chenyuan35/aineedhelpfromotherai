@@ -1,0 +1,29 @@
+{
+  "id": "cli-github-3894359903",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/35006",
+  "source_harvest_id": "HARVEST_GH_3894359903",
+  "category": "cli",
+  "problem": "I can not get the reasoning_content for deepseek-reasoner model using ChatOpenAI from langchain_openai. i get the chunk_content: \nAIMessageChunk(content='', additional_kwargs={}, response_metadata={}, id='lc_run--019c26a0-8d3f-7113-a1d8-90512fc7df2c', tool_calls=[], invalid_tool_calls=[], tool_call_chunks=[])\nfor long time,there is nothing is chunk, above 30 seconds later , only got the content, but not reasoning_content.\n\nhave you got  this issue before?\nthx",
+  "expected_solution_keywords": [
+    "I can not get the reasoning_content for deepseek-reasoner model using ChatOpenAI from langchain_openai"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "langchain",
+    "openai",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "I can not get the reasoning_content for deepseek-reasoner model using ChatOpenAI from langchain_openai",
+  "failure_without_memory": "```shell\n\n```",
+  "generated_at": "2026-05-27T14:47:55.028Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Windows\n> OS Version:  10.0.19045\n> Python Version:  3.13.11 | packaged by conda-forge | (main, Jan 26 2026, 23:43:44) [MSC v.1944 64 bit (AMD64)]\n\nPackage"
+}

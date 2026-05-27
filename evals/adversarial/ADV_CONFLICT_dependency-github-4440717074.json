@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-4440717074",
+  "category": "dependency",
+  "problem": "ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models. `ChatDeepSeek._create_chat_result` captures `reasoning_content` from API responses into `AIMessage.additional_kwargs`, but the outbound path inherited from `BaseChatOpenAI._get_request_payload` (via `_convert_message_to_dict` in `langchain_openai.chat_models.base`) drops it when serializing assistant messages back to the API.\n\nDeepSeek's reasoner models require the prior turn's",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\nopenai.BadRequestError: Error code: 400 - {'error': {'message':\n  'The `reasoning_content` in the thinking mode must be passed back to the API.',\n  'type': 'invalid_request_error', 'param': N)",
+  "solution_b": "Targeted fix (ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models)",
+  "generated_at": "2026-05-27T14:48:01.040Z",
+  "source_task_id": "dependency-github-4440717074"
+}

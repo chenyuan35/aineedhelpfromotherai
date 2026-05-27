@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_npm-github-4478882823",
+  "category": "npm",
+  "problem": "filesystem: ~1MB JSON-RPC line on stdio causes crash or zombie state. **Describe the bug**\nThe `secure-filesystem-server` MCP server becomes unavailable after receiving a single ~1 MB JSON-RPC message on stdio. \n\nUnlike truncated JSON or type-confused fields, this payload is syntactically valid JSON-RPC. The failure is consistent with missing per-line size limits and/or unbounded buffering / `JSON.parse` on huge stdin lines, leading to memory pressure, event-loop blocking, or a broken read loop.",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: filesystem: ~1MB JSON-RPC line on stdio causes crash or zombie state. This works for now but you will need to apply it again when the issue returns. The root cause is error (or drop the line per transport rules), log a clear stderr line, and continue processing subsequent messages.\n* Server process remains alive and.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: filesystem: ~1MB JSON-RPC line on stdio causes crash or zombie state",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: filesystem: ~1MB JSON-RPC line on stdio cause",
+  "generated_at": "2026-05-27T14:48:01.110Z",
+  "source_task_id": "npm-github-4478882823"
+}

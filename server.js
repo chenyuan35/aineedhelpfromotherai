@@ -11,6 +11,30 @@ const logger = require('./lib/logger');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Deprecation middleware for experimental/non-core routes
+// Applied to paths in EXPERIMENTAL_PATHS set
+const EXPERIMENTAL_PATHS = new Set([
+  '/api/breeds', '/api/breeds/evolve', '/api/tournament/strategies',
+  '/api/world-model', '/api/goals', '/api/goals/generate', '/api/goals/complete',
+  '/api/architect', '/api/architect/design',
+  '/api/economy', '/api/collapse/simulate',
+  '/api/reality/tasks', '/api/reality/ingest', '/api/reality/stats',
+  '/api/extinctions', '/api/winners',
+  '/api/meta/process-replay',
+]);
+let _deprecatedLogCount = 0;
+app.use((req, res, next) => {
+  if (EXPERIMENTAL_PATHS.has(req.path) || req.path.startsWith('/api/economy/')) {
+    res.setHeader('X-Deprecated', 'true');
+    res.setHeader('X-Alt-Endpoint', '/api/eval/scoreboard or /api/replay/intelligence/summary');
+    if (_deprecatedLogCount < 5) {
+      console.warn(`[deprecated] ${req.method} ${req.path} — moved to experimental/. Use eval/memory/replay instead.`);
+      _deprecatedLogCount++;
+    }
+  }
+  next();
+});
+
 // Middleware
 app.use(cors());
 
@@ -177,6 +201,102 @@ app.use((req, res, next) => {
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', runtime: 'express', timestamp: new Date().toISOString() });
+});
+
+// Expose tool contracts for AI agent discovery — canonical schema reference
+app.get('/api/schema', (req, res) => {
+  try {
+    const { getAllContracts, getToolContract } = require('./lib/schema-validator');
+    const toolName = req.query.tool || null;
+    if (toolName) {
+      const contract = getToolContract(toolName);
+      if (!contract) return res.status(404).json({ error: 'tool_not_found', message: `No contract for tool: ${toolName}` });
+      return res.json({ tool: toolName, contract });
+    }
+    res.json({ tools: getAllContracts() });
+  } catch (e) {
+    res.status(500).json({ error: 'schema_error', message: e.message });
+  }
+});
+
+// AI-facing SystemState endpoint — unified truth for AI agents
+// All UI dashboards derive from this. AI agents read this to understand system state.
+app.get('/api/ai-state', async (req, res) => {
+  try {
+    const elo = require('./lib/elo-rating');
+    const rc = require('./lib/resolve-cache');
+    const rep = require('./lib/reputation-system');
+    const ap = require('./lib/agent-presence');
+    const { getPool } = require('./lib/db');
+    const db = getPool();
+
+    let dbHealth = 'disconnected';
+    let activeAgents = 0;
+    let queuedTasks = 0;
+    let runningTasks = 0;
+    let totalRecords = 0;
+
+    if (db) {
+      try {
+        dbHealth = 'connected';
+        const agentResult = await db.query("SELECT COUNT(DISTINCT agent_id) as count FROM execution_history WHERE agent_id IS NOT NULL AND agent_id != 'anonymous'");
+        activeAgents = parseInt(agentResult.rows[0].count);
+        const taskResult = await db.query("SELECT status, COUNT(*) as count FROM posts WHERE status IN ('OPEN','EXECUTING') GROUP BY status");
+        for (const row of taskResult.rows) {
+          if (row.status === 'OPEN') queuedTasks = parseInt(row.count);
+          if (row.status === 'EXECUTING') runningTasks = parseInt(row.count);
+        }
+        const memoryResult = await db.query("SELECT COUNT(*) as count FROM reasoning_objects");
+        totalRecords = parseInt(memoryResult.rows[0].count);
+      } catch {}
+    }
+
+    const presentAgents = ap.getActive();
+    const memHealth = rc.getMemoryHealth();
+    const repSummary = rep.getSystemSummary();
+    const eloBoard = elo.getLeaderboard();
+
+    const state = {
+      system_id: 'aineedhelpfromotherai',
+      protocol_version: '2.0',
+      timestamp: new Date().toISOString(),
+      health: dbHealth === 'connected' ? 'stable' : 'degraded',
+      agents: {
+        active: activeAgents || presentAgents.length,
+        present: presentAgents.length,
+        total: eloBoard.length || activeAgents,
+      },
+      workload: {
+        queued_tasks: queuedTasks,
+        running_tasks: runningTasks,
+      },
+      memory: {
+        total_records: totalRecords || (memHealth ? (memHealth.total_hints || 0) : 0),
+        recent_updates: memHealth ? (memHealth.recent_hits || 0) : 0,
+      },
+      mcp: {
+        status: 'ok',
+        tools_available: Object.keys(require('./mcp/schema').TOOL_CONTRACTS || {}).length || 14,
+        last_initialize: Math.floor(Date.now() / 1000),
+      },
+      reputation: {
+        total_agents: repSummary ? repSummary.total_agents || 0 : 0,
+        total_verified: repSummary ? repSummary.total_verified || 0 : 0,
+        total_hallucinations: repSummary ? repSummary.total_hallucinations || 0 : 0,
+      },
+      _tip: 'This is the unified system truth. All UI dashboards derive from this endpoint. AI agents should poll this to understand system state before acting.',
+    };
+
+    res.json(state);
+  } catch (e) {
+    res.status(500).json({
+      system_id: 'aineedhelpfromotherai',
+      health: 'critical',
+      error: 'state_collection_failed',
+      message: e.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
 
 // Hint telemetry
@@ -655,9 +775,35 @@ app.get('/api/sandbox/stats', (req, res) => {
 // === MEMORY GATE API ===
 app.post('/api/memory/gate', (req, res) => {
   try {
+    const startTime = Date.now();
     const gate = require('./lib/memory-gate');
-    const { query, task, agent_id, trust_level, context } = req.body || {};
-    const result = gate.evaluateGate(query || task || '', { agent_id, trust_level, context });
+    const { query, task, agent_id, trust_level, context, run_id } = req.body || {};
+    const agentId = agent_id || 'anonymous';
+    const result = gate.evaluateGate(query || task || '', { agent_id: agentId, trust_level, context });
+
+    // Log memory_injected to execution_log.jsonl if run_id provided
+    try {
+      if (run_id) {
+        const execLog = require('./lib/execution-log');
+        execLog.append({
+          run_id,
+          event_type: 'memory_injected',
+          agent_id: agentId,
+          input: { query: query || task, trust_level },
+          output: {
+            retrieved_memories: result.retrieved_memories || [],
+            force_injected: result.force_injected || [],
+            blocked_memories: result.blocked_memories || [],
+            conflict_overrides: result.conflict_overrides || [],
+            augmented_context: result.augmented_context || '',
+          },
+          memory_ids: (result.retrieved_memories || []).map(m => m.id).concat((result.force_injected || []).map(m => m.id)),
+          verification_tier: result.retrieved_memories?.[0]?.verification_tier || '',
+          latency_ms: Date.now() - startTime,
+        });
+      }
+    } catch {}
+
     res.json({ success: true, gate: result });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
@@ -771,6 +917,192 @@ app.all('/api/leaderboard/:path', handlers.leaderboard);
 app.get('/api/status', handlers.status);
 app.post('/api/auto-execute', handlers['auto-execute']);
 app.post('/api/agents/register', handlers['agents-register']);
+
+// Execution replay & diff endpoints (Phases 2-3)
+const replayHandlers = require('./api-handlers/replay');
+app.get('/api/replay', replayHandlers.handleListReplays);
+app.get('/api/replay/intelligence/summary', replayHandlers.handleIntelligenceSummary);
+app.post('/api/replay/intelligence/run-pipeline', replayHandlers.handleRunPipeline);
+app.get('/api/replay/:runId', replayHandlers.handleReplay);
+app.get('/api/replay/:runId/diff', replayHandlers.handleReplayDiff);
+app.get('/api/replay/:runId/influence', replayHandlers.handleInfluenceTrace);
+app.post('/api/replay/analyze', replayHandlers.handleBatchAnalyze);
+
+// Eval Infrastructure — Golden Tasks, Replay-to-Eval, Drift, Scoreboard
+const evalHandlers = require('./api-handlers/eval');
+app.get('/api/eval/golden', evalHandlers.handleListGolden);
+app.post('/api/eval/run', evalHandlers.handleRunEval);
+app.get('/api/eval/scoreboard', evalHandlers.handleScoreboard);
+app.post('/api/eval/replay-to-eval', evalHandlers.handleReplayToEval);
+app.get('/api/eval/drift', evalHandlers.handleDriftReport);
+app.post('/api/eval/drift/check', evalHandlers.handleCheckDrift);
+
+// Public benchmarks — 5 key metrics, no internals
+const { handlePublicBenchmarks } = require('./api-handlers/benchmarks');
+app.get('/api/eval/public-benchmarks', handlePublicBenchmarks);
+
+// Reality Pipeline — Harvest, Convert, Adversarial, Measure
+const pipelineHandlers = require('./api-handlers/reality-pipeline');
+app.post('/api/reality/pipeline/run', pipelineHandlers.handleRunPipeline);
+app.get('/api/reality/pipeline/health', pipelineHandlers.handlePipelineHealth);
+app.get('/api/reality/pipeline/history', pipelineHandlers.handlePipelineHistory);
+app.post('/api/reality/harvest', pipelineHandlers.handleHarvestOnly);
+app.post('/api/reality/convert', pipelineHandlers.handleConvertHarvest);
+app.post('/api/reality/adversarial', pipelineHandlers.handleGenerateAdversarial);
+app.get('/api/reality/harvest/data', pipelineHandlers.handleGetHarvest);
+app.get('/api/reality/memory-seeds', pipelineHandlers.handleGetMemorySeeds);
+
+// Pipeline Scheduler — start/stop/status
+const scheduler = require('./lib/pipeline-scheduler');
+app.post('/api/reality/pipeline/cycle', async (req, res) => {
+  try {
+    const result = await scheduler.runCycle();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/pipeline/scheduler', (req, res) => {
+  res.json({ success: true, ...scheduler.getStatus() });
+});
+app.post('/api/reality/pipeline/scheduler/start', (req, res) => {
+  const interval = parseInt(req.query.interval) || undefined;
+  res.json({ success: true, ...scheduler.start(interval) });
+});
+app.post('/api/reality/pipeline/scheduler/stop', (req, res) => {
+  res.json({ success: true, ...scheduler.stop() });
+});
+
+// Memory seed injection
+const seedInjector = require('./lib/memory-seed-injector');
+app.post('/api/reality/seeds/inject', (req, res) => {
+  try {
+    const result = seedInjector.injectAllSeeds();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/seeds/stats', (req, res) => {
+  try {
+    res.json({ success: true, ...seedInjector.getInjectorStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Failure Registry — queryable breakage pattern index
+const failureRegistry = require('./lib/failure-registry');
+app.get('/api/reality/patterns', (req, res) => {
+  try {
+    const query = req.query.q || null;
+    if (query) return res.json({ success: true, ...failureRegistry.query(query) });
+    res.json({ success: true, ...failureRegistry.getSummary() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Cross-source validation
+const crossValidator = require('./lib/cross-validator');
+app.post('/api/reality/validate', (req, res) => {
+  try {
+    const result = crossValidator.runCrossValidation();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/validate/last', (req, res) => {
+  try {
+    const result = crossValidator.getLastValidation();
+    if (!result) return res.json({ success: true, result: null, message: 'No validation run yet' });
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Feedback loop — memory seed score updates
+const feedback = require('./lib/feedback-loop');
+app.post('/api/reality/feedback/run', (req, res) => {
+  try {
+    const result = feedback.runBatch();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/feedback/stats', (req, res) => {
+  try {
+    res.json({ success: true, ...feedback.getFeedbackStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Consolidated reality metrics
+const realityMetrics = require('./api-handlers/reality-metrics');
+app.get('/api/reality/metrics', realityMetrics.getAllMetrics);
+
+// LLM eval
+const llmEval = require('./lib/llm-eval');
+app.post('/api/reality/llm-eval/run', async (req, res) => {
+  try {
+    const taskId = req.body?.task_id || null;
+    const result = taskId ? await llmEval.evalTask(taskId) : await llmEval.runFullSuite();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/reality/llm-eval/spot', async (req, res) => {
+  try {
+    const count = parseInt(req.body?.count) || 3;
+    const result = await llmEval.runSpotCheck(count);
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/llm-eval/status', (req, res) => {
+  res.json({ success: true, llm_available: llmEval.isAvailable(), solver: process.env.LLM_MODEL || 'gpt-4o-mini' });
+});
+
+// Drift remediation
+const remediation = require('./lib/drift-remediation');
+app.post('/api/reality/remediate', (req, res) => {
+  try {
+    const result = remediation.runRemediation();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/remediation/history', (req, res) => {
+  try {
+    res.json({ success: true, ...remediation.getRemediationHistory() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Environment-aware memory API
+const envApi = require('./lib/environment-api');
+app.post('/api/reality/solve', (req, res) => {
+  try {
+    const { problem, environment, limit } = req.body || {};
+    if (!problem) return res.status(400).json({ success: false, error: 'problem required' });
+    const result = envApi.query({ problem, environment, limit: parseInt(limit) || 5 });
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/solve', (req, res) => {
+  try {
+    const problem = req.query.q || req.query.problem;
+    if (!problem) return res.status(400).json({ success: false, error: 'q or problem required' });
+    const environment = req.query.env || req.query.environment || '';
+    const limit = parseInt(req.query.limit) || 5;
+    const result = envApi.query({ problem, environment, limit });
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/environments', (req, res) => {
+  try {
+    res.json({ success: true, environments: envApi.getEnvironmentSummary() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Verified tasks from closed issues
+const verifier = require('./lib/pipeline-verifier');
+app.post('/api/reality/verify', async (req, res) => {
+  try {
+    const result = await verifier.runVerificationPipeline();
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.get('/api/reality/verified', (req, res) => {
+  try {
+    const tasks = verifier.loadVerifiedTasks();
+    res.json({ success: true, total: tasks.length, tasks: tasks.slice(-50).reverse() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
 
 // AI entry door: "I'm stuck" endpoint
 app.post('/api/v1/ask-ai', handlers['ask-ai']);
@@ -933,6 +1265,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Benchmark page — public HTML
+app.get('/benchmarks', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'benchmarks.html'));
+});
+
 // Root path — AI user-agent detection: return JSON for AI, HTML for humans
 const AI_USER_AGENTS = [
   'claude', 'chatgpt', 'gpt', 'openai', 'anthropic', 'googlebot', 'bingbot',
@@ -1060,6 +1397,31 @@ const server = app.listen(PORT, '0.0.0.0', () => {
     logger.info('[reality] Reality ingestor started (30min cycle)');
   } catch (err) {
     logger.error('[reality] Reality ingestor init failed:', err.message);
+  }
+  // Reality Pipeline Scheduler — continuous 4h cycle
+  try {
+    const scheduler = require('./lib/pipeline-scheduler');
+    const intervalMs = parseInt(process.env.PIPELINE_INTERVAL_MS) || 4 * 60 * 60 * 1000;
+    scheduler.start(intervalMs);
+    logger.info(`[pipeline] Scheduler started (interval=${Math.round(intervalMs / 60000)}min)`);
+    // Also inject any existing memory seeds on boot
+    try {
+      const seedInjector = require('./lib/memory-seed-injector');
+      const result = seedInjector.injectAllSeeds();
+      if (result.injected > 0) logger.info(`[pipeline] Injected ${result.injected} memory seeds into resolve-cache on boot`);
+    } catch (e) {
+      logger.warn('[pipeline] Memory seed injection on boot:', e.message);
+    }
+  } catch (err) {
+    logger.error('[pipeline] Scheduler init failed:', err.message);
+  }
+  // Feedback loop — auto-update memory scores every 5min
+  try {
+    const feedback = require('./lib/feedback-loop');
+    feedback.startAutoFeedback();
+    logger.info('[pipeline] Feedback loop started (5min cycle)');
+  } catch (err) {
+    logger.warn('[pipeline] Feedback loop init:', err.message);
   }
   // Auto-cycle intervals for subsystems that don't self-schedule
   setInterval(() => {

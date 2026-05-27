@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4132036753",
+  "category": "dependency",
+  "problem": "[Feature Proposal] Standard Reducers Library for Complex Parallel State Merging. *(Note: Using this required field to describe a Feature Proposal, as the feature template is unavailable. I already have a fully tested PR ready for review: #7239)*\n\n**What I am doing:**\nBuilding complex parallel agents (e.g., Map-Reduce workflows) in LangGraph where multiple nodes write to the same state keys simultaneously.\n\n**What is currently happening (The Problem):**\nBy default, LangGraph uses \"last-write-wins",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: [Feature Proposal] Standard Reducers Library for Complex Parallel State Merging. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nN/A - This is a Feature Proposal with a ready-to-merge PR (#7239). \n\nThe \"error\" being solved here is the **silent data loss** that developer.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [Feature Proposal] Standard Reducers Library for Complex Parallel State Merging",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: [Feature Proposal] Standard Reducers Library ",
+  "generated_at": "2026-05-27T14:48:00.992Z",
+  "source_task_id": "dependency-github-4132036753"
+}

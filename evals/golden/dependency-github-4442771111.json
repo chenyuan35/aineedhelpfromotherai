@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-4442771111",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5802",
+  "source_harvest_id": "HARVEST_GH_4442771111",
+  "category": "dependency",
+  "problem": "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. When a CrewAI task fails and is retried — via max_retry_limit, exception handling, or external re-trigger — any @tool decorated function that already executed runs again. There's no mechanism to detect that a specific tool call already completed.",
+  "expected_solution_keywords": [
+    "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "pip",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. A retry of the same logical tool call should return the original result without re-executing the side effect.",
+  "failure_without_memory": "1. Create a CrewAI agent with a @tool that calls an external API (payment, email, etc.)\n2. Have the tool execute successfully\n3. Simulate a failure after tool execution but before the agent receives c",
+  "generated_at": "2026-05-27T14:47:55.165Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "Derive a stable request_id from tool arguments before execution, claim it in durable external storage, return the cached result on any retry with the same ID. The claim must happen outside the agent e"
+}

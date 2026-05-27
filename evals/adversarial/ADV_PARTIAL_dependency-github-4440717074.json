@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4440717074",
+  "category": "dependency",
+  "problem": "ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models. `ChatDeepSeek._create_chat_result` captures `reasoning_content` from API responses into `AIMessage.additional_kwargs`, but the outbound path inherited from `BaseChatOpenAI._get_request_payload` (via `_convert_message_to_dict` in `langchain_openai.chat_models.base`) drops it when serializing assistant messages back to the API.\n\nDeepSeek's reasoner models require the prior turn's",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows with reasoner models. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nopenai.BadRequestError: Error code: 400 - {'error': {'message':\n  'The `reasoning_content` in the thinking mode must be passed back to the AP.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: ChatDeepSeek drops reasoning_content on outbound requests, breaking multi-turn / tool-using flows wi",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: ChatDeepSeek drops reasoning_content on outbo",
+  "generated_at": "2026-05-27T14:48:01.040Z",
+  "source_task_id": "dependency-github-4440717074"
+}

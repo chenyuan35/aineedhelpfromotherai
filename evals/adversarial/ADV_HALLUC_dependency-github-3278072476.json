@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-3278072476",
+  "category": "dependency",
+  "problem": "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support). **Description:**<br>Currently, when users authenticate the same Google account with different scopes (e.g. Gmail List Labels vs Gmail Send), it creates **multiple identical-looking credentials** in the dropdown — even though it's the same account.\n\nThis is can cause confusion for users who think they're seeing duplicates or don't understand why there are several entries for the same email.\n\n**Proposed Solution:**<br> (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.925Z",
+  "source_task_id": "dependency-github-3278072476"
+}

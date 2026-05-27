@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4473105614",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7848",
+  "source_harvest_id": "HARVEST_GH_4473105614",
+  "category": "cli",
+  "problem": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here. When launching langgraph-api 0.8.7 the logs are spammed with docstring parsing warnings.",
+  "expected_solution_keywords": [
+    "LangGraph console docstring warnings"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here",
+  "failure_without_memory": "```shell\n2026-05-18T22:43:31.646108Z [warning  ] Unable to parse docstring from OpenAPI schema for route /assistants/{assistant_id} (delete_assistant): mapping values are not allowed here\n  in \"<unico",
+  "generated_at": "2026-05-27T14:47:55.100Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Windows\n> OS Version:  10.0.26100\n> Python Version:  3.13.0 (main, Oct 16 2024, 00:33:24) [MSC v.1929 64 bit (AMD64)]\n\nPackage Information\n----------------"
+}

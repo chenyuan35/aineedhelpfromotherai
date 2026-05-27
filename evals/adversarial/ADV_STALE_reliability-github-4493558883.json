@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_reliability-github-4493558883",
+  "category": "reliability",
+  "problem": "[BUG] cache_breakpoint injected into messages for non-Anthropic providers (Groq, OpenAI-compatible). mark_cache_breakpoint() is called on all messages in agent_executor.py regardless of provider. Only the Anthropic adapter translates/strips this flag. All other providers (Groq, OpenAI-compatible, etc.) receive `cache_breakpoint: true` in the raw message dict, which their APIs reject. (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "reliability"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:01.157Z",
+  "source_task_id": "reliability-github-4493558883"
+}

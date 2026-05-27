@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-3229721980",
+  "category": "dependency",
+  "problem": "Command is not applied from a tool that has return_direct=True. Needs to be confirm\n\nhttps://forum.langchain.com/t/command-and-update-inside-tool-function-with-return-direct-flag/358",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Command is not applied from a tool that has return_direct=True. This works for now but you will need to apply it again when the issue returns. The root cause is Unknown failure.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Command is not applied from a tool that has return_direct=True",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Command is not applied from a tool that has r",
+  "generated_at": "2026-05-27T14:48:00.921Z",
+  "source_task_id": "dependency-github-3229721980"
+}

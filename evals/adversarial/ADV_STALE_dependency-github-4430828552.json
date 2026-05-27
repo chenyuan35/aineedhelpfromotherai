@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_dependency-github-4430828552",
+  "category": "dependency",
+  "problem": "ث. **Describe the bug**\nA clear and concise description of what the bug is.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. \n\n**Expected behavior**\nA clear and concise description of what you expected to happen.\n\n**Logs**\nIf applicable, add logs to help explain your problem.\n\n**Additional context**\nAdd any other context about the problem here.\n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:01.030Z",
+  "source_task_id": "dependency-github-4430828552"
+}

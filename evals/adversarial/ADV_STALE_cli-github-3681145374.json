@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-3681145374",
+  "category": "cli",
+  "problem": "Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.. Deepseek-v3.2 throws an error when running react_agent with extra_body={\"thinking\": {\"type\": \"enabled\"}}.\nlangchain==0.3.27\nlangchain-community==0.3.27\nlangchain-core==0.3.74\nlangchain-openai==0.2.9\nlangchain-text-splitters==0.3.9\nlanggraph==0.6.4\nlanggraph-checkpoint==2.1.1\nlanggraph-prebuilt==0.6.4\nlanggraph-sdk==0.2.0\nlangsmith==0.4.13 (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.776Z",
+  "source_task_id": "cli-github-3681145374"
+}

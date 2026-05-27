@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-4430828552",
+  "category": "dependency",
+  "problem": "ث. **Describe the bug**\nA clear and concise description of what the bug is.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. \n\n**Expected behavior**\nA clear and concise description of what you expected to happen.\n\n**Logs**\nIf applicable, add logs to help explain your problem.\n\n**Additional context**\nAdd any other context about the problem here.\n (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:01.030Z",
+  "source_task_id": "dependency-github-4430828552"
+}

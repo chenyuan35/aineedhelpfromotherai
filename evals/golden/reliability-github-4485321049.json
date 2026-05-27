@@ -1,0 +1,29 @@
+{
+  "id": "reliability-github-4485321049",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/37576",
+  "source_harvest_id": "HARVEST_GH_4485321049",
+  "category": "reliability",
+  "problem": "anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error. - I am sending a standard `type: \"file\"` content block with `mime_type: \"text/csv\"` and a base64 source in a `HumanMessage` to `ChatAnthropic`.\n- I expect the request to succeed — the same content blocks work when routed through `langchain-aws` / Bedrock Converse, which accepts `csv, doc, docx, html, md, txt, xls, xlsx, pdf` as document source types.\n- Instead, the Anthropic Messages API rejects the",
+  "expected_solution_keywords": [
+    "anthropic"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "anthropic",
+    "external",
+    "reliability",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error",
+  "failure_without_memory": "```\nanthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': \"messages.0.content.1.document.source.base64.media_type: Input should be 'appli",
+  "generated_at": "2026-05-27T14:47:55.013Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "```\nSystem Information\n------------------\n> OS:  Darwin\n> OS Version:  Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:45 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6030\n> Python Version:  3.11.0 "
+}

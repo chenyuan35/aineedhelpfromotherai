@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4442771111",
+  "category": "dependency",
+  "problem": "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. When a CrewAI task fails and is retried — via max_retry_limit, exception handling, or external re-trigger — any @tool decorated function that already executed runs again. There's no mechanism to detect that a specific tool call already completed.",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. A retry of the same logical tool call should return the original result without re-executing the. This works for now but you will need to apply it again when the issue returns. The root cause is 1. Create a CrewAI agent with a @tool that calls an external API (payment, email, etc.)\n2. Have the tool execute successfully\n3. Simulate a failure af.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possib",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Tool re-execution on task retry has no idempo",
+  "generated_at": "2026-05-27T14:48:01.048Z",
+  "source_task_id": "dependency-github-4442771111"
+}

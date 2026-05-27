@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_reliability-github-4467428092",
+  "category": "reliability",
+  "problem": "[BUG] dependency conflict with OpenLIT. crewai 1.14.4 locks opentelemetry-sdk to 1.35.0 but openlit 1.41.2 requires opentelemetry-sdk >=1.38.0",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "reliability",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: [BUG] dependency conflict with OpenLIT. no dependency conflict error. This works for now but you will need to apply it again when the issue returns. The root cause is in pyproject.toml put\n [tool.poetry.dependencies]\npython = \">=3.10,<=3.13.7\"\ncrewai = 1.14.4\ncrewai-tools = {version = \"1.14.4\", extras = [\"mcp\"]} \nop.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [BUG] dependency conflict with OpenLIT. no dependency conflict error",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: [BUG] dependency conflict with OpenLIT. no de",
+  "generated_at": "2026-05-27T14:48:01.134Z",
+  "source_task_id": "reliability-github-4467428092"
+}

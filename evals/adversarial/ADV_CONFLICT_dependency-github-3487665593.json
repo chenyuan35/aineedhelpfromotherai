@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-3487665593",
+  "category": "dependency",
+  "problem": "Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message\":\"Statement is too short\",\"readableMessage\":\"ParamVa.... ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Unknown failure)",
+  "solution_b": "Targeted fix (Block output contains error for FactCheckerBlock 559b5e81-1f85-46d2-96d9-09535671bdff : HTTP 400 Error: Bad Request, Body: {\"data\":null,\"code\":400,\"name\":\"ParamValidationError\",\"status\":40001,\"message\":\"Statement is too short\",\"readableMessage\":\"ParamVa...)",
+  "generated_at": "2026-05-27T14:48:00.973Z",
+  "source_task_id": "dependency-github-3487665593"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_reliability-github-4150593057",
+  "category": "reliability",
+  "problem": "[BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFile input. I am trying to pass TextFiles to my Crew via the 'input_files' parameter. Since the update to crewai 1.10 -> 1.12.2, this results in an Error when using non-multimodel models. (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "reliability"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:01.116Z",
+  "source_task_id": "reliability-github-4150593057"
+}

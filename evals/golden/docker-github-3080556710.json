@@ -1,0 +1,27 @@
+{
+  "id": "docker-github-3080556710",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/1869",
+  "source_harvest_id": "HARVEST_GH_3080556710",
+  "category": "docker",
+  "problem": "Filesystem MCP server modified .env without permission and did not back it up. **Describe the bug**\nClaude Desktop (via the Filesystem MCP server) modified my .env file without consent when I asked a question about a Docker-related ConnectionRefusedError. It tried to “fix” a Tortoise ORM connection string issue by overwriting my file using the write_file command. However, it didn’t even read the .env file before modifying it, nor did it back it up. This led to loss of important config data I had",
+  "expected_solution_keywords": [
+    "Filesystem MCP server modified .env without permission and did not back it up"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "server-filesystem",
+    "docker",
+    "source:github",
+    "connection_error",
+    "has:logs"
+  ],
+  "memory_hint": "Filesystem MCP server modified .env without permission and did not back it up",
+  "failure_without_memory": "Error. It tried to “fix” a Tortoise ORM connection string issue by overwriting my file using the write_file command. However, it didn’t even read the .env file before modifying it, nor did it back it ",
+  "generated_at": "2026-05-27T14:47:55.344Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "connection_error"
+  ],
+  "environment": ""
+}

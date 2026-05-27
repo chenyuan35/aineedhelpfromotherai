@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-4486331516",
+  "category": "cli",
+  "problem": "[git]  raise_exceptions=True. **Describe the bug**\nmcp-server-git  pass **_raise_exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process exit; without it, the same exception is sent back to the client as a JSON-RPC error and the server keeps running. \n\nI'm not filing this as a CVE-class issue - the README is clear these are reference implementations, not production code. But the divergence itself is wor (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.906Z",
+  "source_task_id": "cli-github-4486331516"
+}

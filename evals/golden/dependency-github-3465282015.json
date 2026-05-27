@@ -1,0 +1,25 @@
+{
+  "id": "dependency-github-3465282015",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11010",
+  "source_harvest_id": "HARVEST_GH_3465282015",
+  "category": "dependency",
+  "problem": "Handle LLMs Making Invalid Tool Calls. The following issue affects the smart decision maker block, which uses tool_calls in order to run an agentic loop.<br><br>Currently, if a large language model is making a tool call and typos the name of one of the inputs, the typoed input will be ignored silently, and the input they were trying to target will be run with an input value of null. This behaviour leads to failures.<br><br>Example Tool Call:\n\n```\n\"tool_calls\": [\n        {\n          \"id\": \"call_m",
+  "expected_solution_keywords": [
+    "Handle LLMs Making Invalid Tool Calls"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Handle LLMs Making Invalid Tool Calls",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.260Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

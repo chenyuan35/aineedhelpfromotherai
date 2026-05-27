@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_dependency-github-4292931524",
+  "category": "dependency",
+  "problem": "[BUG]No AI assistant in the docuement. Where is the AI Assistant from the official website?",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Select the contents from the official website, there should be a AI Assistant choice box.)",
+  "solution_b": "Targeted fix ([BUG]No AI assistant in the docuement. Show the AI Assistant choice box.)",
+  "generated_at": "2026-05-27T14:48:01.007Z",
+  "source_task_id": "dependency-github-4292931524"
+}

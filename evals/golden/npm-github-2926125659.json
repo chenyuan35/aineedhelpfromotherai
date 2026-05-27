@@ -1,0 +1,26 @@
+{
+  "id": "npm-github-2926125659",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/896",
+  "source_harvest_id": "HARVEST_GH_2926125659",
+  "category": "npm",
+  "problem": "Confusing `search_files` function description leads to misunderstanding of its purpose. **Describe the bug**\n\nThe description of the `search_files` function is ambiguous and easily misinterpreted. It suggests it might search file contents (like grep) when it actually only searches file and directory names. Claude itself is misinterpreting the function to search content in files, rather than file names matching input patterns.\n\n*Why it's confusing*\nThe function description starts with \"Recursivel",
+  "expected_solution_keywords": [
+    "Confusing `search_files` function description leads to misunderstanding of its purpose"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "server-filesystem",
+    "npm",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Confusing `search_files` function description leads to misunderstanding of its purpose",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.376Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

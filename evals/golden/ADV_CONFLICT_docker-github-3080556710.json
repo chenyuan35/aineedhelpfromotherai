@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_docker-github-3080556710",
+  "category": "docker",
+  "problem": "Filesystem MCP server modified .env without permission and did not back it up. **Describe the bug**\nClaude Desktop (via the Filesystem MCP server) modified my .env file without consent when I asked a question about a Docker-related ConnectionRefusedError. It tried to “fix” a Tortoise ORM connection string issue by overwriting my file using the write_file command. However, it didn’t even read the .env file before modifying it, nor did it back it up. This led to loss of important config data I had",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Error. It tried to “fix” a Tortoise ORM connection string issue by overwriting my file using the write_file command. However, it didn’t even read the .env file before modifying it, nor did it back it )",
+  "solution_b": "Targeted fix (Filesystem MCP server modified .env without permission and did not back it up)",
+  "generated_at": "2026-05-27T14:48:01.078Z",
+  "source_task_id": "docker-github-3080556710"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_reliability-github-4436799042",
+  "category": "reliability",
+  "problem": "[BUG] Interrupt() in a loop will cause extra resumes. By following the official code from:\n> https://docs.langchain.com/oss/python/langgraph/interrupts#validating-human-input\n\nand I simply write the code above.\n\nThe expected behavior is:\n```\nI got -1\nI got -2\nI got -3\nI got -4\nI got -5\nI got -6\nI got 30\n```\n\nbut actually I got this:\n```\nI got -1\nI got -1\nI got -2\nI got -1\nI got -2\nI got -3\nI got -1\nI got -2\nI got -3\nI got -4\nI got -1\nI got -2\nI got -3\nI got -4\nI got -5\nI got -1\nI got -2\nI got -3",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "reliability"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\n\n```)",
+  "solution_b": "Targeted fix ([BUG] Interrupt() in a loop will cause extra resumes)",
+  "generated_at": "2026-05-27T14:48:01.128Z",
+  "source_task_id": "reliability-github-4436799042"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_reliability-github-4485321049",
+  "category": "reliability",
+  "problem": "anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error. - I am sending a standard `type: \"file\"` content block with `mime_type: \"text/csv\"` and a base64 source in a `HumanMessage` to `ChatAnthropic`.\n- I expect the request to succeed — the same content blocks work when routed through `langchain-aws` / Bedrock Converse, which accepts `csv, doc, docx, html, md, txt, xls, xlsx, pdf` as document source types.\n- Instead, the Anthropic Messages API rejects the (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "reliability"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:01.150Z",
+  "source_task_id": "reliability-github-4485321049"
+}

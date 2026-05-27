@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4366634379",
+  "category": "cli",
+  "problem": "Bug: PostgresStore numeric filter operators ($gt, $gte, $lt, $lte) use lexicographic (text) comparison instead of numeric comparison. `PostgresStore._get_filter_condition()` uses `value->>key` (text extraction)\nwith `str(value)` for `$gt`, `$gte`, `$lt`, `$lte` operators.\nSince `->>` returns TEXT in PostgreSQL, numeric comparisons use lexicographic\nordering instead of numeric ordering, producing silently wrong query results.\n\nExpected: `filter={\"score\": {\"$gte\": 10}}` returns only items where sc (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.814Z",
+  "source_task_id": "cli-github-4366634379"
+}

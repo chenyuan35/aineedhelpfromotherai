@@ -1,0 +1,25 @@
+{
+  "id": "dependency-github-3484090796",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11086",
+  "source_harvest_id": "HARVEST_GH_3484090796",
+  "category": "dependency",
+  "problem": "Block output contains error for IdeogramModelBlock a8e25d5a-235a-43f2-826e-b48a8862c206 : HTTP 401 Error: Unauthorized, Body: {\"message\": \"Access denied. Please verify your API Token is valid.\"}. ",
+  "expected_solution_keywords": [
+    "Block output contains error for IdeogramModelBlock a8e25d5a-235a-43f2-826e-b48a8862c206 "
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Block output contains error for IdeogramModelBlock a8e25d5a-235a-43f2-826e-b48a8862c206 : HTTP 401 Error: Unauthorized, Body: {\"message\": \"Access denied. Please verify your API Token is valid.\"}",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.297Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

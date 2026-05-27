@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-4473105614",
+  "category": "cli",
+  "problem": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here. When launching langgraph-api 0.8.7 the logs are spammed with docstring parsing warnings. (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.890Z",
+  "source_task_id": "cli-github-4473105614"
+}

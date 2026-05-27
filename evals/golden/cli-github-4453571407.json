@@ -1,0 +1,28 @@
+{
+  "id": "cli-github-4453571407",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/7814",
+  "source_harvest_id": "HARVEST_GH_4453571407",
+  "category": "cli",
+  "problem": "uv sync --locked ,on windows error. I want intall it on my pc.",
+  "expected_solution_keywords": [
+    "uv sync --locked ,on windows error"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "external",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "uv sync --locked ,on windows error",
+  "failure_without_memory": "```shell\n\n```",
+  "generated_at": "2026-05-27T14:47:55.117Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "windows 10"
+}

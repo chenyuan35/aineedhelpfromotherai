@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-3536434523",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11229",
+  "source_harvest_id": "HARVEST_GH_3536434523",
+  "category": "dependency",
+  "problem": "Fix \"Unknown Agent\" in Agent Activity Dropdown. **Issue**: There is a problem with the agent activity dropdown, where agents are not consistently showing up.\n\n**History**: Initially, this issue occurred rarely, attributed to agents being imported the old (hidden) way, which was expected to phase out over time.\n\n**Current Status**: The issue has worsened, resulting in very few agents displaying correctly in the dropdown.      What steps can we take to ensure that a gents consistently show up, est",
+  "expected_solution_keywords": [
+    "Fix \"Unknown Agent\" in Agent Activity Dropdown"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "platform/frontend",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Fix \"Unknown Agent\" in Agent Activity Dropdown",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.247Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

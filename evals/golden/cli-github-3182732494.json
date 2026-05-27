@@ -1,0 +1,31 @@
+{
+  "id": "cli-github-3182732494",
+  "source_url": "https://github.com/langchain-ai/langgraph/issues/5225",
+  "source_harvest_id": "HARVEST_GH_3182732494",
+  "category": "cli",
+  "problem": "Default value of state variable not working with reducer function. When I set default value for a state variable that has Annotated with a reducer function, the default value is not applied.",
+  "expected_solution_keywords": [
+    "increase timeout",
+    "retry",
+    "Default value of state variable not working with reducer function"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "help wanted",
+    "external",
+    "cli",
+    "source:github",
+    "timeout",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "Default value of state variable not working with reducer function. Increase timeout or reduce payload.",
+  "failure_without_memory": "```shell\n\n```",
+  "generated_at": "2026-05-27T14:47:55.123Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "timeout"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Darwin\n> OS Version:  Darwin Kernel Version 24.5.0: Tue Apr 22 19:54:43 PDT 2025; root:xnu-11417.121.6~2/RELEASE_ARM64_T8132\n> Python Version:  3.13.2 (mai"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_npm-github-4474185876",
+  "category": "npm",
+  "problem": "mcp-server-fetch hard-codes use_readability=True which requires Node.js (undeclared);    fails silently when Node is unavailable or misconfigured. **Describe the bug**\nmcp-server-fetch hard-codes use_readability=True when calling readabilipy.simple_json.simple_json_from_html_string in extract_content_from_html (server.py, ~line 36). This silently shells out to a bundled Node.js script that imports Mozilla's @mozilla/readability. Node.js is not declared as a dependency in pyproject.toml, not ment",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: mcp-server-fetch hard-codes use_readability=True which requires Node.js (undeclared);    fails silently when Node is unavailable or misconfigured. Increase timeout or reduce payload.. This works for now but you will need to apply it again when the issue returns. The root cause is error with no actionable detail.\n\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. Install in a Python-only environment: pip install mcp-server-f.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: mcp-server-fetch hard-codes use_readability=True which requires Node.js (undeclared);    fails silen",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: mcp-server-fetch hard-codes use_readability=T",
+  "generated_at": "2026-05-27T14:48:01.104Z",
+  "source_task_id": "npm-github-4474185876"
+}

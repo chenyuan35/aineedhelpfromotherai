@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4428511314",
+  "category": "dependency",
+  "problem": "fix(langgraph): add missing stacklevel to warnings.warn() calls. Several `warnings.warn()` calls are missing `stacklevel`, so the warning source location points to framework internals instead of the user's call site.\n \nMost calls already set `stacklevel=2` correctly . The following 6 do not:\n \n| File | Line | Warning |\n|---|---|---|\n| `graph/state.py` | 116 | Invalid `state_schema` |\n| `graph/state.py` | 752 | Deprecated `retry` param |\n| `graph/state.py` | 760 | Deprecated `input` param |\n| `gr",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: fix(langgraph): add missing stacklevel to warnings.warn() calls. All warnings.warn() calls should include the appropriate stacklevel so the warning points to the user's code.\n```\nLangGraphDeprecatedSi. This works for now but you will need to apply it again when the issue returns. The root cause is ```\nLangGraphDeprecatedSinceV05: `input` is deprecated and will be removed. Please use `input_schema` instead. Deprecated in LangGraph V0.5 to be remo.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: fix(langgraph): add missing stacklevel to warnings.warn() calls. All warnings.warn() calls should in",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: fix(langgraph): add missing stacklevel to war",
+  "generated_at": "2026-05-27T14:48:01.025Z",
+  "source_task_id": "dependency-github-4428511314"
+}

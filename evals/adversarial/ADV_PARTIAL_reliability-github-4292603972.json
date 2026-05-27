@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_reliability-github-4292603972",
+  "category": "reliability",
+  "problem": "[BUG] Problems with OpenRouter thinking models. Hello to everyone.\nI have several orchestrated agents for the generation of academic proposals. I have tested many models (GLM, Qwen 3.6 Plus, GPT 5.4) and everything works fine, but when I use Sonnet 4.5, Gemini 3.1 Pro Preview, or Opus 4.5, these errors usually occur.\nIt is worth noting that I am running this in Google Colab, using OpenRouter APIs.\nI would greatly appreciate your help, since Anthropic and Google are very good at academic writing.",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "reliability",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: [BUG] Problems with OpenRouter thinking models. The model should respond successfully to the academic proposal generation \nprompts, as other models (GLM, Qwen 3.5 Plus, GPT 4.5) do under the \nsame s. . This works for now but you will need to apply it again when the issue returns. The root cause is 1. Set up orchestrated agents for academic proposal generation in Google Colab.\n2. Configure OpenRouter API with model set to `anthropic/claude-sonnet.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [BUG] Problems with OpenRouter thinking models. The model should respond successfully to the academi",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: [BUG] Problems with OpenRouter thinking model",
+  "generated_at": "2026-05-27T14:48:01.123Z",
+  "source_task_id": "reliability-github-4292603972"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_cli-github-4423876882",
+  "category": "cli",
+  "problem": "[filesystem] write_file silently returns success but never writes to disk on Windows. **Describe the bug**\nwrite_file silently returns success without writing the file to disk on Windows. edit_file, read_file, and list_directory work correctly on the same paths — only write_file is broken.\n\n**To Reproduce**\nConfigure the filesystem server against any local directory.\nCall write_file with a path to a new file. Response: File created successfully.\nCall read_file on the same path. Response: ENOENT:",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "cli"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error. Silently returning success while doing nothing leaves the caller unable to detect the failure.\nLogs\nNone visible client-side. Server response is a normal success payload.\nAdditional context\n\nOS)",
+  "solution_b": "Targeted fix ([filesystem] write_file silently returns success but never writes to disk on Windows. Do not use sudo with npm.)",
+  "generated_at": "2026-05-27T14:48:00.843Z",
+  "source_task_id": "cli-github-4423876882"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_dependency-github-3278072476",
+  "category": "dependency",
+  "problem": "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support). **Description:**<br>Currently, when users authenticate the same Google account with different scopes (e.g. Gmail List Labels vs Gmail Send), it creates **multiple identical-looking credentials** in the dropdown — even though it's the same account.\n\nThis is can cause confusion for users who think they're seeing duplicates or don't understand why there are several entries for the same email.\n\n**Proposed Solution:**<br> (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.925Z",
+  "source_task_id": "dependency-github-3278072476"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "cli-github-4253467905",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/3929",
+  "source_harvest_id": "HARVEST_GH_4253467905",
+  "category": "cli",
+  "problem": "MCP roots protocol overrides CLI-provided allowed directories. ## Summary\n\nWhen a client supports the MCP roots protocol, `server-filesystem` unconditionally replaces CLI-provided allowed directories with the client's roots on initialization. This makes it impossible to scope the server to a directory outside the client's project root.\n\n## Reproduction\n\n1. Configure a filesystem MCP server with an explicit directory argument:\n   ```json\n   {\n     \"my-project\": {\n       \"command\": \"npx\",\n       \"",
+  "expected_solution_keywords": [
+    "MCP roots protocol overrides CLI-provided allowed directories"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "MCP roots protocol overrides CLI-provided allowed directories. CLI arguments should take precedence over MCP roots. If the user explicitly passes directories, those should be respected. MCP roots should only be us",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.336Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "`2026.1.14`"
+}

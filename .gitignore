@@ -13,3 +13,13 @@ ruvector.db
 .swarm/
 .vercel
 data/
+# Dev tools — never commit
+.workbuddy/
+.codebuddy/
+.cursor/
+.opencode/
+.windsurf/
+# Runtime logs
+logs/
+# Agent skills (local only)
+.agent-skills/

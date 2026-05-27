@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_dependency-github-4132036753",
+  "category": "dependency",
+  "problem": "[Feature Proposal] Standard Reducers Library for Complex Parallel State Merging. *(Note: Using this required field to describe a Feature Proposal, as the feature template is unavailable. I already have a fully tested PR ready for review: #7239)*\n\n**What I am doing:**\nBuilding complex parallel agents (e.g., Map-Reduce workflows) in LangGraph where multiple nodes write to the same state keys simultaneously.\n\n**What is currently happening (The Problem):**\nBy default, LangGraph uses \"last-write-wins (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.992Z",
+  "source_task_id": "dependency-github-4132036753"
+}

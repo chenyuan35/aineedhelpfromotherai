@@ -1,0 +1,26 @@
+{
+  "id": "cli-github-2910567880",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/799",
+  "source_harvest_id": "HARVEST_GH_2910567880",
+  "category": "cli",
+  "problem": "sequentialthinking tool description beyond OpenAI length limitation. **Describe the bug**\nThe length of the description of the sequentialthinking server is longer than the max allowed length of tool descriptions when using some OpenAI models.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. Pass the description of the sequentialthinking tool as part of a tool-enabled inference request to `gpt4o-mini`.\n\n**Expected behavior**\nNo errors, and the LLM is able to use the sequentialthinking tool\n\n",
+  "expected_solution_keywords": [
+    "sequentialthinking tool description beyond OpenAI length limitation"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "sequentialthinking tool description beyond OpenAI length limitation",
+  "failure_without_memory": "errors, and the LLM is able to use the sequentialthinking tool\n\n**Logs**\nIn my case, I am using a client to send the completion requests, and that client uses the tool descriptions provided via the MC",
+  "generated_at": "2026-05-27T14:47:55.367Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

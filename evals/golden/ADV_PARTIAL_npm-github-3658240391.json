@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_npm-github-3658240391",
+  "category": "npm",
+  "problem": "The filesystem server stopped working with the OpenAI Agent SDK.. **Describe the bug**\nIt has been working with an old version of the filesystem server. However, after upgrading the server, openAI (and also the model context protocol inspector) throw errors when trying to list the tools.\n\n**To Reproduce**\nEither:\n1. use `npx -y @modelcontextprotocol/inspector npx @modelcontextprotocol/server-filesystem ./`\n2. try to \"list tools\"\n3. get the following error:\n```\n[\n  {\n    \"code\": \"invalid_literal\"",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: The filesystem server stopped working with the OpenAI Agent SDK.. This works for now but you will need to apply it again when the issue returns. The root cause is errors when trying to list the tools.\n\n**To Reproduce**\nEither:\n1. use `npx -y @modelcontextprotocol/inspector npx @modelcontextprotocol/server-filesy.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: The filesystem server stopped working with the OpenAI Agent SDK.",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: The filesystem server stopped working with th",
+  "generated_at": "2026-05-27T14:48:01.098Z",
+  "source_task_id": "npm-github-3658240391"
+}

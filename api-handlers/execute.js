@@ -245,6 +245,21 @@ async function handleClaim(req, res) {
   // Telemetry: track hint served on claim
   try { const ht = require('../lib/hint-telemetry'); ht.trackHintsServed('claim', agent.agent_id, resolveHint ? 1 : 0); } catch {}
 
+  // Log execution event: task_claimed
+  try {
+    const execLog = require('../lib/execution-log');
+    execLog.append({
+      run_id: executionId,
+      event_type: 'task_claimed',
+      task_id: taskId,
+      agent_id: agent.agent_id,
+      input: { task_id: taskId, task_type: task.type || task.task_type, difficulty: task.difficulty, title: task.title || task.problem, source: taskSource },
+      output: { execution_id: executionId, status: 'claimed', claimed_at: claimedAt, competition_mode: allowCompetition },
+      latency_ms: Date.now() - new Date(claimedAt).getTime(),
+      verification_tier: '',
+    });
+  } catch {}
+
   return res.status(200).json({
     success: true,
     action: 'claim',
@@ -599,6 +614,58 @@ async function handleSubmit(req, res) {
       }
     }
   }
+
+  // Log agent-side execution events if provided (prompt_built, model_output, etc.)
+  try {
+    if (body.execution_events && Array.isArray(body.execution_events)) {
+      const execLog = require('../lib/execution-log');
+      for (const agentEvent of body.execution_events) {
+        execLog.append({
+          run_id: executionId,
+          event_type: agentEvent.event_type || 'agent_event',
+          task_id: execution.task_id,
+          agent_id: agent.agent_id,
+          input: agentEvent.input || {},
+          output: agentEvent.output || {},
+          memory_ids: agentEvent.memory_ids || [],
+          verification_tier: agentEvent.verification_tier || '',
+          latency_ms: agentEvent.latency_ms || 0,
+        });
+      }
+    }
+  } catch {}
+
+  // Log execution event: result_verified
+  try {
+    const execLog = require('../lib/execution-log');
+    execLog.append({
+      run_id: executionId,
+      event_type: 'result_verified',
+      task_id: execution.task_id,
+      agent_id: agent.agent_id,
+      input: { task_type: taskType, result_length: resultLength },
+      output: { passed: validationPassed, task_type: taskType, errors: taskValidationErrors.length, validation: validationResult },
+      memory_ids: body.memory_ids || [],
+      verification_tier: 'task_validation',
+      latency_ms: Date.now() - new Date(submittedAt).getTime(),
+    });
+  } catch {}
+
+  // Log execution event: result_submitted
+  try {
+    const execLog = require('../lib/execution-log');
+    execLog.append({
+      run_id: executionId,
+      event_type: 'result_submitted',
+      task_id: execution.task_id,
+      agent_id: agent.agent_id,
+      input: { execution_id: executionId, duration_ms: durationMs, result_length: resultLength },
+      output: { status: finalTaskStatus, execution_status: finalExecStatus, submitted_at: submittedAt, reasoning_id: reasoningId },
+      memory_ids: body.memory_ids || [],
+      verification_tier: finalExecStatus === 'completed' ? 'agent_submitted' : 'agent_failed',
+      latency_ms: durationMs || 0,
+    });
+  } catch {}
 
   try { const eb = require('../lib/event-bus'); eb.emit('task.submitted', { execution_id: executionId, task_id: execution.task_id, agent_id: agent.agent_id }); } catch {}
   try { require('../lib/agent-presence').ping(agent.agent_id, [], { event: 'task.submitted', task_id: execution.task_id }); } catch {}

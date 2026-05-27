@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_cli-github-4486331516",
+  "category": "cli",
+  "problem": "[git]  raise_exceptions=True. **Describe the bug**\nmcp-server-git  pass **_raise_exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process exit; without it, the same exception is sent back to the client as a JSON-RPC error and the server keeps running. \n\nI'm not filing this as a CVE-class issue - the README is clear these are reference implementations, not production code. But the divergence itself is wor",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "cli",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: [git]  raise_exceptions=True. Increase timeout or reduce payload.. This works for now but you will need to apply it again when the issue returns. The root cause is exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process .",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [git]  raise_exceptions=True. Increase timeout or reduce payload.",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: [git]  raise_exceptions=True. Increase timeou",
+  "generated_at": "2026-05-27T14:48:00.907Z",
+  "source_task_id": "cli-github-4486331516"
+}

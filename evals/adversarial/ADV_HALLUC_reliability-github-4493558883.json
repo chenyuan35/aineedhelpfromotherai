@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_reliability-github-4493558883",
+  "category": "reliability",
+  "problem": "[BUG] cache_breakpoint injected into messages for non-Anthropic providers (Groq, OpenAI-compatible). mark_cache_breakpoint() is called on all messages in agent_executor.py regardless of provider. Only the Anthropic adapter translates/strips this flag. All other providers (Groq, OpenAI-compatible, etc.) receive `cache_breakpoint: true` in the raw message dict, which their APIs reject. (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "reliability"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:01.157Z",
+  "source_task_id": "reliability-github-4493558883"
+}

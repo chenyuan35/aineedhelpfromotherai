@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_cli-github-4224149259",
+  "category": "cli",
+  "problem": "MongoDB Toolkit fails with Firestore MongoDB-compatible endpoint due to unsupported authorizedCollections option. **Issue**\n\nMongoDB Toolkit fails when used with a Firestore MongoDB-compatible endpoint because the authorizedCollections option is not supported.\n\n**Description**\n\nWhen initializing MongoDBDatabase, LangChain internally executes a listCollections command via PyMongo. The MongoDB driver includes the option authorizedCollections=true.\n\nFirestore's MongoDB-compatible endpoint rejects t",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "cli"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```shell\npymongo.errors.OperationFailure: authorizedCollections is not supported\nfull error: {\n  'ok': 0.0,\n  'errmsg': 'authorizedCollections is not supported',\n  'code': 2,\n  'codeName': 'InvalidArg)",
+  "solution_b": "Targeted fix (MongoDB Toolkit fails with Firestore MongoDB-compatible endpoint due to unsupported authorizedCollections option)",
+  "generated_at": "2026-05-27T14:48:00.805Z",
+  "source_task_id": "cli-github-4224149259"
+}

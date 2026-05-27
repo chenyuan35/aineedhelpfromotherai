@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_cli-github-4368431222",
+  "category": "cli",
+  "problem": "`langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries. `langgraph dev` fails to start with `OSError: Port 2024 is already in use` for ~60 seconds after a Ctrl+C, even though no process is `LISTEN`-ing on the port. The only workaround appears to be waiting out the TCP TIME-WAIT timer or rebooting.\n\nThe error is in langgraph_api, in _resolve_port(). I fixed it locally by trying and bind the port with SO_REUSEADDR, then closing it: \n\n**langgraph_api/cli.py**\n```python\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "cli",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: `langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nFile \".../bin/langgraph\", line 8, in <module>\n    sys.exit(cli())\n             ^^^^^\n  File \".../lib/python3.12/site-packages/click/core.py\",.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: `langgraph dev` falsely reports \"Port 2024 already in use\" due to TIME-WAIT entries",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: `langgraph dev` falsely reports \"Port 2024 al",
+  "generated_at": "2026-05-27T14:48:00.827Z",
+  "source_task_id": "cli-github-4368431222"
+}

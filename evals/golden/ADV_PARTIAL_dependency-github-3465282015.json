@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-3465282015",
+  "category": "dependency",
+  "problem": "Handle LLMs Making Invalid Tool Calls. The following issue affects the smart decision maker block, which uses tool_calls in order to run an agentic loop.<br><br>Currently, if a large language model is making a tool call and typos the name of one of the inputs, the typoed input will be ignored silently, and the input they were trying to target will be run with an input value of null. This behaviour leads to failures.<br><br>Example Tool Call:\n\n```\n\"tool_calls\": [\n        {\n          \"id\": \"call_m",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Handle LLMs Making Invalid Tool Calls. This works for now but you will need to apply it again when the issue returns. The root cause is Unknown failure.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Handle LLMs Making Invalid Tool Calls",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Handle LLMs Making Invalid Tool Calls. This w",
+  "generated_at": "2026-05-27T14:48:00.936Z",
+  "source_task_id": "dependency-github-3465282015"
+}

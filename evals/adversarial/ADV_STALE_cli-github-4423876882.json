@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-4423876882",
+  "category": "cli",
+  "problem": "[filesystem] write_file silently returns success but never writes to disk on Windows. **Describe the bug**\nwrite_file silently returns success without writing the file to disk on Windows. edit_file, read_file, and list_directory work correctly on the same paths — only write_file is broken.\n\n**To Reproduce**\nConfigure the filesystem server against any local directory.\nCall write_file with a path to a new file. Response: File created successfully.\nCall read_file on the same path. Response: ENOENT: (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.843Z",
+  "source_task_id": "cli-github-4423876882"
+}

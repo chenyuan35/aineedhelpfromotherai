@@ -1,0 +1,23 @@
+{
+  "id": "ADV_STALE_cli-github-4473105614",
+  "category": "cli",
+  "problem": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here. When launching langgraph-api 0.8.7 the logs are spammed with docstring parsing warnings. (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "cli"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T14:48:00.890Z",
+  "source_task_id": "cli-github-4473105614"
+}

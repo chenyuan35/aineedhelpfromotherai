@@ -1,0 +1,8 @@
+{
+  "name": "@aineedhelpfromotherai/memory-sdk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Memory SDK — 5-minute agent integration for AI Arena reliability infrastructure",
+  "main": "index.js",
+  "license": "MIT"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "cli-github-3898269590",
+  "source_url": "https://github.com/langchain-ai/langchain/issues/35011",
+  "source_harvest_id": "HARVEST_GH_3898269590",
+  "category": "cli",
+  "problem": "Streaming bypasses guardrails/middleware. If streaming the tokens is enabled, the middleware runs after the stream has been consumed. This means any guardrails or middleware is applied after the tokens have been consumed by the user. This leaks any information that would be should have been caught by the guardrails.\n\nIs there anyway to control streaming so that content is scanned first/periodically then streamed to the user?",
+  "expected_solution_keywords": [
+    "Streaming bypasses guardrails/middleware"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "core",
+    "langchain",
+    "cli",
+    "source:github",
+    "unknown",
+    "has:environment",
+    "has:logs"
+  ],
+  "memory_hint": "Streaming bypasses guardrails/middleware",
+  "failure_without_memory": "```shell\nSure! Here's a funny greeting incorporating your email:\n\n---\n\n🎉 Hey there, awesome human! 🎉\n\nJust popping in to say, if you ever need a digital superhero, you can reach me at my secret lair",
+  "generated_at": "2026-05-27T14:47:55.040Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "System Information\n------------------\n> OS:  Darwin\n> OS Version:  Darwin Kernel Version 25.1.0: Mon Oct 20 19:33:00 PDT 2025; root:xnu-12377.41.6~2/RELEASE_ARM64_T6020\n> Python Version:  3.10.16 (mai"
+}

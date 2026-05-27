@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-4442771111",
+  "category": "dependency",
+  "problem": "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. When a CrewAI task fails and is retried — via max_retry_limit, exception handling, or external re-trigger — any @tool decorated function that already executed runs again. There's no mechanism to detect that a specific tool call already completed. (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:01.048Z",
+  "source_task_id": "dependency-github-4442771111"
+}

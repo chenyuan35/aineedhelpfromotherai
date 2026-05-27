@@ -1,0 +1,450 @@
+{
+  "saved_at": "2026-05-27T11:29:01.018Z",
+  "label": "ci",
+  "report": {
+    "ran_at": "2026-05-27T11:29:01.016Z",
+    "total_tasks": 14,
+    "categories": [
+      "unknown",
+      "cli",
+      "docker",
+      "npm",
+      "rust",
+      "dependencies",
+      "reliability"
+    ],
+    "summary": {
+      "memory_helped": 13,
+      "memory_hurt": 0,
+      "both_solved": 0,
+      "both_failed": 1,
+      "memory_effectiveness": 92.9,
+      "avg_latency_improvement_ms": 0
+    },
+    "results": [
+      {
+        "task_id": "auto-regression-79058736",
+        "category": "unknown",
+        "memory_helped": "",
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "cli-flag-001",
+        "category": "cli",
+        "memory_helped": true,
+        "latency_improvement_ms": -1
+      },
+      {
+        "task_id": "cli-flag-002",
+        "category": "cli",
+        "memory_helped": true,
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "cli-flag-003",
+        "category": "cli",
+        "memory_helped": true,
+        "latency_improvement_ms": -1
+      },
+      {
+        "task_id": "docker-corruption-001",
+        "category": "docker",
+        "memory_helped": true,
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "docker-corruption-002",
+        "category": "docker",
+        "memory_helped": true,
+        "latency_improvement_ms": 1
+      },
+      {
+        "task_id": "npm-workspace-001",
+        "category": "npm",
+        "memory_helped": true,
+        "latency_improvement_ms": -2
+      },
+      {
+        "task_id": "npm-workspace-002",
+        "category": "npm",
+        "memory_helped": true,
+        "latency_improvement_ms": -1
+      },
+      {
+        "task_id": "rust-borrow-001",
+        "category": "rust",
+        "memory_helped": true,
+        "latency_improvement_ms": -2
+      },
+      {
+        "task_id": "rust-borrow-002",
+        "category": "rust",
+        "memory_helped": true,
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "stale-dep-001",
+        "category": "dependencies",
+        "memory_helped": true,
+        "latency_improvement_ms": 1
+      },
+      {
+        "task_id": "stale-dep-002",
+        "category": "dependencies",
+        "memory_helped": true,
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "timeout-001",
+        "category": "reliability",
+        "memory_helped": true,
+        "latency_improvement_ms": 0
+      },
+      {
+        "task_id": "timeout-002",
+        "category": "reliability",
+        "memory_helped": true,
+        "latency_improvement_ms": -1
+      }
+    ],
+    "full_results": [
+      {
+        "task_id": "auto-regression-79058736",
+        "category": "unknown",
+        "difficulty": "intermediate",
+        "with_memory": {
+          "run_id": "EVAL_MEM_auto-regression-79058736_1779881340928",
+          "mode": "with_memory",
+          "solved": "",
+          "duration_ms": 2,
+          "task_id": "auto-regression-79058736"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_auto-regression-79058736_1779881340931",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "auto-regression-79058736"
+        },
+        "memory_helped": "",
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": "",
+        "both_failed": true
+      },
+      {
+        "task_id": "cli-flag-001",
+        "category": "cli",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_cli-flag-001_1779881340934",
+          "mode": "with_memory",
+          "solved": "This flag was added in curl 7.68.0. Check curl --version first. If older, use --retry --retry-delay --retry-max-time instead. This is a known hallucinated flag pattern. production_confirmed tier.",
+          "duration_ms": 2,
+          "task_id": "cli-flag-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_cli-flag-001_1779881340937",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "cli-flag-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -1,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "cli-flag-002",
+        "category": "cli",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_cli-flag-002_1779881340940",
+          "mode": "with_memory",
+          "solved": "docker exec --env-file was added in Docker 20.10. In older versions, use -e VAR=value for each environment variable instead. Check docker --version first in CI. sandbox_passed tier.",
+          "duration_ms": 1,
+          "task_id": "cli-flag-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_cli-flag-002_1779881340942",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "cli-flag-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "cli-flag-003",
+        "category": "cli",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_cli-flag-003_1779881340945",
+          "mode": "with_memory",
+          "solved": "find -delete skips directories by design. Use find -depth -delete to process contents first then directories, or use -exec rm -rf {} + instead. This is a documented GNU find behavior. production_confirmed tier.",
+          "duration_ms": 3,
+          "task_id": "cli-flag-003"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_cli-flag-003_1779881340949",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "cli-flag-003"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -1,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "docker-corruption-001",
+        "category": "docker",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_docker-corruption-001_1779881340953",
+          "mode": "with_memory",
+          "solved": "Use --no-cache-filter to bypass cache corruption. This is production_confirmed.",
+          "duration_ms": 1,
+          "task_id": "docker-corruption-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_docker-corruption-001_1779881340955",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "docker-corruption-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "docker-corruption-002",
+        "category": "docker",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_docker-corruption-002_1779881340958",
+          "mode": "with_memory",
+          "solved": "docker-compose build --no-cache forces full rebuild. Verified in production_confirmed tier.",
+          "duration_ms": 2,
+          "task_id": "docker-corruption-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_docker-corruption-002_1779881340961",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 3,
+          "task_id": "docker-corruption-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 1,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "npm-workspace-001",
+        "category": "npm",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_npm-workspace-001_1779881340966",
+          "mode": "with_memory",
+          "solved": "rm -rf node_modules and npm cache clean --force, then reinstall. This resolves phantom package target errors. sandbox_passed tier.",
+          "duration_ms": 3,
+          "task_id": "npm-workspace-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_npm-workspace-001_1779881340969",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "npm-workspace-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -2,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "npm-workspace-002",
+        "category": "npm",
+        "difficulty": "intermediate",
+        "with_memory": {
+          "run_id": "EVAL_MEM_npm-workspace-002_1779881340972",
+          "mode": "with_memory",
+          "solved": "Use npx lerna bootstrap --force-local or switch to workspace:^ protocol in package.json. This forces dependent packages to use the local workspace copy. production_confirmed tier.",
+          "duration_ms": 2,
+          "task_id": "npm-workspace-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_npm-workspace-002_1779881340975",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "npm-workspace-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -1,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "rust-borrow-001",
+        "category": "rust",
+        "difficulty": "intermediate",
+        "with_memory": {
+          "run_id": "EVAL_MEM_rust-borrow-001_1779881340979",
+          "mode": "with_memory",
+          "solved": "Use split_borrow pattern: let (a, b) = (self.x.as_mut(), self.y.as_mut()) or use RefCell for interior mutability. Common pattern: destructure self first, then operate on fields independently. production_confirmed tier.",
+          "duration_ms": 3,
+          "task_id": "rust-borrow-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_rust-borrow-001_1779881340983",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 1,
+          "task_id": "rust-borrow-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -2,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "rust-borrow-002",
+        "category": "rust",
+        "difficulty": "advanced",
+        "with_memory": {
+          "run_id": "EVAL_MEM_rust-borrow-002_1779881340986",
+          "mode": "with_memory",
+          "solved": "Use Box<dyn Iterator<Item=T>> as return type to erase the borrow-checker lifetime. Or collect into Vec first (owned). If performance critical, use impl Iterator with explicit lifetime bounds. production_confirmed.",
+          "duration_ms": 2,
+          "task_id": "rust-borrow-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_rust-borrow-002_1779881340988",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "rust-borrow-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "stale-dep-001",
+        "category": "dependencies",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_stale-dep-001_1779881340992",
+          "mode": "with_memory",
+          "solved": "Add an overrides field in package.json (npm) or resolutions field (yarn). This forces the transitive dependency to the patched version. Then run npm install and verify with npm audit. production_confirmed tier.",
+          "duration_ms": 2,
+          "task_id": "stale-dep-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_stale-dep-001_1779881340994",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 3,
+          "task_id": "stale-dep-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 1,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "stale-dep-002",
+        "category": "dependencies",
+        "difficulty": "beginner",
+        "with_memory": {
+          "run_id": "EVAL_MEM_stale-dep-002_1779881340999",
+          "mode": "with_memory",
+          "solved": "Use pip install --no-cache-dir --force-reinstall -r requirements.txt. The --no-cache-dir flag prevents pip from using its local wheel cache which may have stale metadata. sandbox_passed tier.",
+          "duration_ms": 2,
+          "task_id": "stale-dep-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_stale-dep-002_1779881341001",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "stale-dep-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "timeout-001",
+        "category": "reliability",
+        "difficulty": "intermediate",
+        "with_memory": {
+          "run_id": "EVAL_MEM_timeout-001_1779881341005",
+          "mode": "with_memory",
+          "solved": "CI runners typically have fewer CPUs. Add --maxWorkers=2 or --maxWorkers=50% to jest. Also check CI memory limits — OOM killer may be causing test process restarts that look like hangs. production_confirmed tier.",
+          "duration_ms": 2,
+          "task_id": "timeout-001"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_timeout-001_1779881341007",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "timeout-001"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": 0,
+        "both_solved": false,
+        "both_failed": false
+      },
+      {
+        "task_id": "timeout-002",
+        "category": "reliability",
+        "difficulty": "intermediate",
+        "with_memory": {
+          "run_id": "EVAL_MEM_timeout-002_1779881341010",
+          "mode": "with_memory",
+          "solved": "Check DNS resolution time — timed DNS lookups are a common cause of intermittent timeouts. Use connection keep-alive, pre-warm connections, and implement retry with exponential backoff (3 retries, 1s/4s/9s). Also check if the remote API has rate limits. production_confirmed tier.",
+          "duration_ms": 3,
+          "task_id": "timeout-002"
+        },
+        "without_memory": {
+          "run_id": "EVAL_NOMEM_timeout-002_1779881341014",
+          "mode": "without_memory",
+          "solved": false,
+          "duration_ms": 2,
+          "task_id": "timeout-002"
+        },
+        "memory_helped": true,
+        "memory_hurt": false,
+        "latency_improvement_ms": -1,
+        "both_solved": false,
+        "both_failed": false
+      }
+    ],
+    "saved_to": "C:\\Users\\59314\\Documents\\Codex\\aineedhelpfromotherai\\evals\\results\\eval-1779881341017.json"
+  }
+}

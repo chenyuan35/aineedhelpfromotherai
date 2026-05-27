@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4411870103",
+  "category": "dependency",
+  "problem": "Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test. I'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when LANGCHAIN_ENV=local_test, any hostname matching\nstartswith(\"test\") and \"server\" in hostname bypasses all validation\nand is returned unchecked — including attacker-controlled hostnames\nlike test.attacker.server.com.\n\nA second issue: _effective_allowed_hosts() uses startswith(\"local\")\nwhich e",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nI'm auditing the SSRF protection layer in langchain-core.\n\nI expect validate_safe_url() to always block untrusted hostnames.\n\nInstead, when L.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Bug: SSRF bypass in validate_safe_url when LANGCHAIN_ENV=local_test",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Bug: SSRF bypass in validate_safe_url when LA",
+  "generated_at": "2026-05-27T14:48:01.021Z",
+  "source_task_id": "dependency-github-4411870103"
+}

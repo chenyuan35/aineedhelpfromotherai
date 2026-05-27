@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_npm-github-4478882823",
+  "category": "npm",
+  "problem": "filesystem: ~1MB JSON-RPC line on stdio causes crash or zombie state. **Describe the bug**\nThe `secure-filesystem-server` MCP server becomes unavailable after receiving a single ~1 MB JSON-RPC message on stdio. \n\nUnlike truncated JSON or type-confused fields, this payload is syntactically valid JSON-RPC. The failure is consistent with missing per-line size limits and/or unbounded buffering / `JSON.parse` on huge stdin lines, leading to memory pressure, event-loop blocking, or a broken read loop. (attempted fix: --force-cache-reset \"Force reset all caches\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --force-cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-cache-reset",
+  "generated_at": "2026-05-27T14:48:01.110Z",
+  "source_task_id": "npm-github-4478882823"
+}

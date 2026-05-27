@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_cli-github-2910567880",
+  "category": "cli",
+  "problem": "sequentialthinking tool description beyond OpenAI length limitation. **Describe the bug**\nThe length of the description of the sequentialthinking server is longer than the max allowed length of tool descriptions when using some OpenAI models.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. Pass the description of the sequentialthinking tool as part of a tool-enabled inference request to `gpt4o-mini`.\n\n**Expected behavior**\nNo errors, and the LLM is able to use the sequentialthinking tool\n\n (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "cli"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T14:48:00.753Z",
+  "source_task_id": "cli-github-2910567880"
+}

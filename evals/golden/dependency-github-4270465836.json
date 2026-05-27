@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-4270465836",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5472",
+  "source_harvest_id": "HARVEST_GH_4270465836",
+  "category": "dependency",
+  "problem": "[BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs. Since v1.9.0, `Task.output_pydantic` is mapped to `response_model` and passed into the agent executor's tool-calling loop. This causes the LLM to receive both `tools` and `response_format` simultaneously on every iteration. For LLMs served via vLLM (and likely other OpenAI-compatible servers), this results in the model skipping tool calls entirely and returning structure",
+  "expected_solution_keywords": [
+    "[BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "dependency",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs. `Task.output_pydantic` should be applied as a **post-processing step after the tool loop completes**, not during it. The agent should:\n\n1. Run the too",
+  "failure_without_memory": "1. Create a CrewAI `Agent` with tools and a non-OpenAI LLM (e.g., vLLM-served model)\n2. Create a `Task` with `output_pydantic=MyOutput` (any Pydantic model)\n3. Run the crew\n4. Observe that tool `_run(",
+  "generated_at": "2026-05-27T14:47:55.185Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "**Option A (recommended):** Don't pass `output_pydantic` as `response_model` into the executor loop. Keep it only in `Task._export_output()` as a post-processing conversion step (pre-v1.9.0 behavior)."
+}

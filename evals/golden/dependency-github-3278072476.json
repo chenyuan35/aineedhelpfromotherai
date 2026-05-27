@@ -1,0 +1,25 @@
+{
+  "id": "dependency-github-3278072476",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/10500",
+  "source_harvest_id": "HARVEST_GH_3278072476",
+  "category": "dependency",
+  "problem": "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support). **Description:**<br>Currently, when users authenticate the same Google account with different scopes (e.g. Gmail List Labels vs Gmail Send), it creates **multiple identical-looking credentials** in the dropdown — even though it's the same account.\n\nThis is can cause confusion for users who think they're seeing duplicates or don't understand why there are several entries for the same email.\n\n**Proposed Solution:**<br>",
+  "expected_solution_keywords": [
+    "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support)"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support)",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.288Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

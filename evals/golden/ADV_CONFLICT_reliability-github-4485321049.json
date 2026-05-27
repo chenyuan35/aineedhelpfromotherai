@@ -1,0 +1,23 @@
+{
+  "id": "ADV_CONFLICT_reliability-github-4485321049",
+  "category": "reliability",
+  "problem": "anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error. - I am sending a standard `type: \"file\"` content block with `mime_type: \"text/csv\"` and a base64 source in a `HumanMessage` to `ChatAnthropic`.\n- I expect the request to succeed — the same content blocks work when routed through `langchain-aws` / Bedrock Converse, which accepts `csv, doc, docx, html, md, txt, xls, xlsx, pdf` as document source types.\n- Instead, the Anthropic Messages API rejects the",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "reliability"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (```\nanthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': \"messages.0.content.1.document.source.base64.media_type: Input should be 'appli)",
+  "solution_b": "Targeted fix (anthropic: base64 file blocks with non-PDF text mime types fail with media_type validation error)",
+  "generated_at": "2026-05-27T14:48:01.150Z",
+  "source_task_id": "reliability-github-4485321049"
+}

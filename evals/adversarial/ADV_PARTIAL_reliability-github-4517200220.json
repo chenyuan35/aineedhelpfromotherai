@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_reliability-github-4517200220",
+  "category": "reliability",
+  "problem": "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0. Here is the import of `langgraph` in the `langgraph-prebuild` package  https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/langgraph/prebuilt/_tool_call_transformer.py#L8. But it's not mentioned among the runtime dependencies https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/pyproject.toml#L26-L28\n\nThat is a real packaging cycle on PyPI (prebuilt is both a dependency of and",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "reliability",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0. This works for now but you will need to apply it again when the issue returns. The root cause is ```shell\nimport: 'langgraph.prebuilt'\nTraceback (most recent call last):\n  File \"/home/task_177971228210808/croot/langgraph-prebuilt_1779713116098/tes.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: No module named 'langgraph.stream' in langgra",
+  "generated_at": "2026-05-27T14:48:01.165Z",
+  "source_task_id": "reliability-github-4517200220"
+}

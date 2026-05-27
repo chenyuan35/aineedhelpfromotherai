@@ -1,0 +1,27 @@
+{
+  "id": "npm-github-3658240391",
+  "source_url": "https://github.com/modelcontextprotocol/servers/issues/3051",
+  "source_harvest_id": "HARVEST_GH_3658240391",
+  "category": "npm",
+  "problem": "The filesystem server stopped working with the OpenAI Agent SDK.. **Describe the bug**\nIt has been working with an old version of the filesystem server. However, after upgrading the server, openAI (and also the model context protocol inspector) throw errors when trying to list the tools.\n\n**To Reproduce**\nEither:\n1. use `npx -y @modelcontextprotocol/inspector npx @modelcontextprotocol/server-filesystem ./`\n2. try to \"list tools\"\n3. get the following error:\n```\n[\n  {\n    \"code\": \"invalid_literal\"",
+  "expected_solution_keywords": [
+    "The filesystem server stopped working with the OpenAI Agent SDK."
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "server-filesystem",
+    "mcp",
+    "source:github",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "The filesystem server stopped working with the OpenAI Agent SDK.",
+  "failure_without_memory": "errors when trying to list the tools.\n\n**To Reproduce**\nEither:\n1. use `npx -y @modelcontextprotocol/inspector npx @modelcontextprotocol/server-filesystem ./`\n2. try to \"list tools\"\n3. get the followi",
+  "generated_at": "2026-05-27T14:47:55.472Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

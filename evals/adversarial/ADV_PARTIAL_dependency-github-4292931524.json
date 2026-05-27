@@ -1,0 +1,23 @@
+{
+  "id": "ADV_PARTIAL_dependency-github-4292931524",
+  "category": "dependency",
+  "problem": "[BUG]No AI assistant in the docuement. Where is the AI Assistant from the official website?",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: [BUG]No AI assistant in the docuement. Show the AI Assistant choice box.. This works for now but you will need to apply it again when the issue returns. The root cause is Select the contents from the official website, there should be a AI Assistant choice box..",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [BUG]No AI assistant in the docuement. Show the AI Assistant choice box.",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: [BUG]No AI assistant in the docuement. Show t",
+  "generated_at": "2026-05-27T14:48:01.007Z",
+  "source_task_id": "dependency-github-4292931524"
+}

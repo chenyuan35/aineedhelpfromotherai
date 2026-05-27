@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-4428511314",
+  "category": "dependency",
+  "problem": "fix(langgraph): add missing stacklevel to warnings.warn() calls. Several `warnings.warn()` calls are missing `stacklevel`, so the warning source location points to framework internals instead of the user's call site.\n \nMost calls already set `stacklevel=2` correctly . The following 6 do not:\n \n| File | Line | Warning |\n|---|---|---|\n| `graph/state.py` | 116 | Invalid `state_schema` |\n| `graph/state.py` | 752 | Deprecated `retry` param |\n| `graph/state.py` | 760 | Deprecated `input` param |\n| `gr (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:01.025Z",
+  "source_task_id": "dependency-github-4428511314"
+}

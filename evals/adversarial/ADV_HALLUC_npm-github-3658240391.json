@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_npm-github-3658240391",
+  "category": "npm",
+  "problem": "The filesystem server stopped working with the OpenAI Agent SDK.. **Describe the bug**\nIt has been working with an old version of the filesystem server. However, after upgrading the server, openAI (and also the model context protocol inspector) throw errors when trying to list the tools.\n\n**To Reproduce**\nEither:\n1. use `npx -y @modelcontextprotocol/inspector npx @modelcontextprotocol/server-filesystem ./`\n2. try to \"list tools\"\n3. get the following error:\n```\n[\n  {\n    \"code\": \"invalid_literal\" (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T14:48:01.097Z",
+  "source_task_id": "npm-github-3658240391"
+}

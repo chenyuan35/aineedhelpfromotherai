@@ -1,0 +1,25 @@
+{
+  "id": "dependency-github-3476017818",
+  "source_url": "https://github.com/Significant-Gravitas/AutoGPT/issues/11035",
+  "source_harvest_id": "HARVEST_GH_3476017818",
+  "category": "dependency",
+  "problem": "Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.. ",
+  "expected_solution_keywords": [
+    "Warning"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "AutoGPT",
+    "source:github",
+    "unknown"
+  ],
+  "memory_hint": "Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.",
+  "failure_without_memory": "Unknown failure",
+  "generated_at": "2026-05-27T14:47:55.267Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

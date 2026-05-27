@@ -1,0 +1,26 @@
+{
+  "id": "reliability-github-4493558883",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5886",
+  "source_harvest_id": "HARVEST_GH_4493558883",
+  "category": "reliability",
+  "problem": "[BUG] cache_breakpoint injected into messages for non-Anthropic providers (Groq, OpenAI-compatible). mark_cache_breakpoint() is called on all messages in agent_executor.py regardless of provider. Only the Anthropic adapter translates/strips this flag. All other providers (Groq, OpenAI-compatible, etc.) receive `cache_breakpoint: true` in the raw message dict, which their APIs reject.",
+  "expected_solution_keywords": [
+    "[BUG] cache_breakpoint injected into messages for non-Anthropic providers (Groq, OpenAI-compatible)"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "cache",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] cache_breakpoint injected into messages for non-Anthropic providers (Groq, OpenAI-compatible). The crew runs successfully. The agent sends clean messages to the Groq API and gets a response back with no errors.",
+  "failure_without_memory": "1. Install crewai==1.14.4 and set a GROQ_API_KEY in your .env\n2. Create a basic crew using a Groq model:\n```python\nfrom crewai import Agent, Task, Crew, LLM\nllm = LLM(model=\"groq/llama-3.3-70b-versati",
+  "generated_at": "2026-05-27T14:47:55.159Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "Call strip_cache_breakpoint() in the OpenAI / OpenAI-compatible provider adapters before sending\nmessages to the API, the same way the Anthropic adapter handles the flag. This would strip the\ncache_br"
+}

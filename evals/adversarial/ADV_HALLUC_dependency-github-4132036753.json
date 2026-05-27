@@ -1,0 +1,22 @@
+{
+  "id": "ADV_HALLUC_dependency-github-4132036753",
+  "category": "dependency",
+  "problem": "[Feature Proposal] Standard Reducers Library for Complex Parallel State Merging. *(Note: Using this required field to describe a Feature Proposal, as the feature template is unavailable. I already have a fully tested PR ready for review: #7239)*\n\n**What I am doing:**\nBuilding complex parallel agents (e.g., Map-Reduce workflows) in LangGraph where multiple nodes write to the same state keys simultaneously.\n\n**What is currently happening (The Problem):**\nBy default, LangGraph uses \"last-write-wins (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T14:48:00.992Z",
+  "source_task_id": "dependency-github-4132036753"
+}

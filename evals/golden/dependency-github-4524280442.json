@@ -1,0 +1,26 @@
+{
+  "id": "dependency-github-4524280442",
+  "source_url": "https://github.com/crewAIInc/crewAI/issues/5930",
+  "source_harvest_id": "HARVEST_GH_4524280442",
+  "category": "dependency",
+  "problem": "[BUG] input_files (PDFFile) are passed as base64 via read_file tool, causing context overflow and inconsistent LLM behavior. When using `input_files` with `PDFFile` (or `File`), CrewAI does not appear to handle the file as a native file input at the provider level.\n\nInstead, the file is processed via the `read_file` tool and its content is returned as a binary/base64 representation. This content is then indirectly injected into the agent execution context.\n\nAs a result:\n- The PDF is effectively ",
+  "expected_solution_keywords": [
+    "[BUG] input_files (PDFFile) are passed as base64 via read_file tool, causing context overflow and inconsistent LLM behavior"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "bug",
+    "crewAI",
+    "source:github",
+    "unknown",
+    "has:environment"
+  ],
+  "memory_hint": "[BUG] input_files (PDFFile) are passed as base64 via read_file tool, causing context overflow and inconsistent LLM behavior. The PDF should be:\n- either streamed or parsed externally before being sent to the LLM\n- or converted into structured text chunks (not raw base64)\n\nTh",
+  "failure_without_memory": "1. Create a minimal CrewAI setup:\n\n```python\nfrom crewai import Agent, Task, Crew\nfrom crewai_files import PDFFile\n\nagent = Agent(\n    role=\"Document Analyst\",\n    goal=\"Extract structured information",
+  "generated_at": "2026-05-27T14:47:55.141Z",
+  "reality_source": "github",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": "None"
+}
