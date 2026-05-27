@@ -287,6 +287,32 @@ async function registerTaskTools(mcpServer, z, clientIp) {
         });
       } catch {}
 
+      // Auto root-cause analysis on failure — the system starts "understanding why"
+      if (args.failure_type) {
+        try {
+          const { analyzeRun } = require('../lib/root-cause-engine');
+          const rca = analyzeRun(args.execution_id);
+          if (rca.root_cause) {
+            const execLog = require('../lib/execution-log');
+            execLog.append({
+              run_id: args.execution_id,
+              event_type: 'root_cause_analyzed',
+              task_id: execution.task_id,
+              agent_id: agentId,
+              input: { failure_type: args.failure_type },
+              output: {
+                root_cause: rca.root_cause,
+                confidence: rca.confidence,
+                recoverability: rca.recoverability,
+                derived_from: rca.derived_from,
+              },
+              latency_ms: 0,
+              failure_type: args.failure_type,
+            });
+          }
+        } catch {} // Non-critical: root cause analysis failure must not block submission
+      }
+
       return ok({
         execution_id: args.execution_id,
         task_id: execution.task_id,

@@ -358,6 +358,30 @@ app.get('/api/failures/taxonomy', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// Root cause analysis — explain WHY an agent execution failed
+// This is behavioral intelligence, not just error logging
+app.get('/api/root-cause/:runId', (req, res) => {
+  try {
+    const runId = req.params.runId;
+    const idCheck = validateId(runId, 'runId');
+    if (!idCheck.valid) return res.status(400).json({ success: false, error: 'invalid_input', message: idCheck.error });
+
+    const { analyzeRun } = require('./lib/root-cause-engine');
+    const result = analyzeRun(runId);
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Recent failure root cause analysis — batch
+app.get('/api/root-cause/recent/failures', (req, res) => {
+  try {
+    const limit = Math.min(parseInt(req.query.limit) || 10, 50);
+    const { analyzeRecentFailures } = require('./lib/root-cause-engine');
+    const result = analyzeRecentFailures(limit);
+    res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Execution lineage chain — trace parent_run_id ancestry for a given run
 app.get('/api/lineage/:runId/chain', async (req, res) => {
   try {
