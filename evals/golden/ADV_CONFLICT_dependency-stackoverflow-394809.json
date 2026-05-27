@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-394809",
+  "category": "dependency",
+  "problem": "Does Python have a ternary conditional operator?. <p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n)",
+  "solution_b": "Targeted fix (Does Python have a ternary conditional operator?. <p>Yes, it was <a href=\"https://mail.python.org/pipermail/python-dev/2005-September/056846.html\" rel=\"noreferrer\" title=\"[Python-Dev] Conditional Expression Resolution\">added</a> in version 2.5. The expression syntax is:</p>\n<pre class=\"lang-py prett)",
+  "generated_at": "2026-05-27T15:17:48.415Z",
+  "source_task_id": "dependency-stackoverflow-394809"
+}

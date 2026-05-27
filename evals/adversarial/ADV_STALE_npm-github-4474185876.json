@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_npm-github-4474185876",
   "category": "npm",
   "problem": "mcp-server-fetch hard-codes use_readability=True which requires Node.js (undeclared);    fails silently when Node is unavailable or misconfigured. **Describe the bug**\nmcp-server-fetch hard-codes use_readability=True when calling readabilipy.simple_json.simple_json_from_html_string in extract_content_from_html (server.py, ~line 36). This silently shells out to a bundled Node.js script that imports Mozilla's @mozilla/readability. Node.js is not declared as a dependency in pyproject.toml, not ment (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:01.104Z",
+  "generated_at": "2026-05-27T15:17:48.583Z",
   "source_task_id": "npm-github-4474185876"
 }

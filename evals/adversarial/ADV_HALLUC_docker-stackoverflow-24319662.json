@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-24319662",
+  "category": "docker",
+  "problem": "From inside of a Docker container, how do I connect to the localhost of the machine?. <p>I have an Nginx instance running inside a Docker container. I have a MySQL running on the host system. I want to connect to the MySQL from within my container. MySQL is only binding to the <a href=\"https://en.wikipedia.org/wiki/Localhost\" rel=\"noreferrer\">localhost</a> device.</p>\n<p>Is there a way to connect to this MySQL or any other program on localhost from within this docker container?</p>\n<p>This quest (attempted fix: --skip-healthcheck \"Skip health check during build\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --skip-healthcheck. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-healthcheck` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-healthcheck",
+  "generated_at": "2026-05-27T15:17:48.560Z",
+  "source_task_id": "docker-stackoverflow-24319662"
+}

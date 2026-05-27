@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-37576685",
+  "source_url": "https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop",
+  "source_harvest_id": "HARVEST_SO_37576685",
+  "category": "dependency",
+  "problem": "Using async/await with a forEach loop. <p>Are there any issues with using <code>async</code>/<code>await</code> in a <code>forEach</code> loop? I'm trying to loop through an array of files and <code>await</code> on the contents of each file.</p>\n<pre><code>import fs from 'fs-promise'\n\nasync function printFiles () {\n  const files = await getFilePaths() // Assume this works fine\n\n  files.forEach(async (file) =&gt; {\n    const contents = await fs.readFile(file, 'utf8')\n    console.log(contents)\n  }",
+  "expected_solution_keywords": [
+    "Using async/await with a forEach loop"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "node.js",
+    "promise",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Using async/await with a forEach loop. <p>Sure the code does work, but I'm pretty sure it doesn't do what you expect it to do. It just fires off multiple asynchronous calls, but the <code>printFiles</code> function does immediately return after that.</p>\n\n<h3>Reading in sequence</h3>\n\n<p>If you want",
+  "failure_without_memory": "<p>Are there any issues with using <code>async</code>/<code>await</code> in a <code>forEach</code> loop? I'm trying to loop through an array of files and <code>await</code> on the contents of each file.</p>\n<pre><code>import fs from 'fs-promise'\n\nasync function printFiles () {\n  const files = await ",
+  "generated_at": "2026-05-27T15:15:19.581Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

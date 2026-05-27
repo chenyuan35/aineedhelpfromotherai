@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-39152071",
+  "category": "dependency",
+  "problem": "Can&#39;t bind to &#39;formGroup&#39; since it isn&#39;t a known property of &#39;form&#39;. <h2>The situation</h2>\n<p>I am trying to make what should be a very simple form in my Angular application, but no matter what, it never works.</p>\n<h2>The Angular version</h2>\n<p>Angular 2.0.0 RC5</p>\n<h2>The error</h2>\n<blockquote>\n<p>Can't bind to 'formGroup' since it isn't a known property of 'form'</p>\n</blockquote>\n<p><a href=\"https://i.sstatic.net/7elmg.png\" rel=\"noreferrer\"><img src=\"https://i.sst",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Can&#39;t bind to &#39;formGroup&#39; since it isn&#39;t a known property of &#39;form&#39;. <p><strong>RC6/RC7/Final release FIX</strong></p>\n<p>To fix this error, you just need to import <code>React. This works for now but you will need to apply it again when the issue returns. The root cause is error</h2>\n<blockquote>\n<p>Can't bind to 'formGroup' since it isn't a known property of 'form'</p>\n</blockquote>\n<p><a href=\"https://i.sstatic.net/7el.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Can&#39;t bind to &#39;formGroup&#39; since it isn&#39;t a known property of &#39;form&#39;. <p><str",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Can&#39;t bind to &#39;formGroup&#39; since i",
+  "generated_at": "2026-05-27T15:17:48.410Z",
+  "source_task_id": "dependency-stackoverflow-39152071"
+}

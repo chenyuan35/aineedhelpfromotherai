@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-69692842",
+  "category": "dependency",
+  "problem": "Error message &quot;error:0308010C:digital envelope routines::unsupported&quot;. <p>I created the default IntelliJ IDEA React project and got this:</p>\n<pre class=\"lang-none prettyprint-override\"><code>Error: error:0308010C:digital envelope routines::unsupported\n    at new Hash (node:internal/crypto/hash:67:19)\n    at Object.createHash (node:crypto:130:10)\n    at module.exports (/Users/user/Programming Documents/WebServer/untitled/node_modules/webpack/lib/util/createHash.js:135:53)\n    at Normal",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Error message &quot;error:0308010C:digital envelope routines::unsupported&quot;. <p>The error comes from your dependency relying on an obsolete version of SSL, so you have two good, and two questionab. This works for now but you will need to apply it again when the issue returns. The root cause is at new Hash (node:internal/crypto/hash:67:19)\n    at Object.createHash (node:crypto:130:10)\n    at module.exports (/Users/user/Programming Documents/W.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Error message &quot;error:0308010C:digital envelope routines::unsupported&quot;. <p>The error comes ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Error message &quot;error:0308010C:digital en",
+  "generated_at": "2026-05-27T15:17:48.497Z",
+  "source_task_id": "dependency-stackoverflow-69692842"
+}

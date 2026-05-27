@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-22343224",
+  "category": "npm",
+  "problem": "What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>After I upgraded to the latest stable <code>node</code> and <code>npm</code>, I tried <code>npm install moment --save</code>. It saves the entry in the <code>package.json</code> with the caret <code>^</code> prefix. Previously, it was a tilde <code>~</code> prefix.</p>\n<ol>\n<li>Why are these changes made in <code>npm</code>?</li>\n<li>What is the difference between tilde <code>~</code> and caret <code>^</code>?</li>\n<li>",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>See the <a href=\"https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies\" rel=\"noreferrer\">NPM docs</a> and. This works for now but you will need to apply it again when the issue returns. The root cause is <p>After I upgraded to the latest stable <code>node</code> and <code>npm</code>, I tried <code>npm install moment --save</code>. It saves the entry in.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>See the <a href=\"https:",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What&#39;s the difference between tilde(~) an",
+  "generated_at": "2026-05-27T15:17:48.620Z",
+  "source_task_id": "npm-stackoverflow-22343224"
+}

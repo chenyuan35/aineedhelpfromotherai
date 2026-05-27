@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_reliability-github-4519302570",
   "category": "reliability",
-  "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message (attempted fix: --force-flag \"Force the operation\")",
+  "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message (attempted fix: --skip-validation \"Skip all validation steps\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "reliability"
   ],
-  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:01.172Z",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.705Z",
   "source_task_id": "reliability-github-4519302570"
 }

@@ -311,6 +311,16 @@ async function registerTaskTools(mcpServer, z, clientIp) {
             });
           }
         } catch {} // Non-critical: root cause analysis failure must not block submission
+
+        // Behavioral signal scan on failure — the system starts "noticing anomalies"
+        try {
+          const { scanAgent } = require('../lib/behavioral-signals');
+          const eventBus = require('../lib/event-bus');
+          const agentSignals = scanAgent(agentId, 30 * 60 * 1000); // 30min window
+          for (const sig of agentSignals.slice(0, 3)) { // Push top 3 signals
+            eventBus.emit('behavioral_signal', sig);
+          }
+        } catch {} // Non-critical: behavioral signal failure must not block submission
       }
 
       return ok({

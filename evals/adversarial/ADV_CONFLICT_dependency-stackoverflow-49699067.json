@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-49699067",
+  "category": "dependency",
+  "problem": "Property &#39;...&#39; has no initializer and is not definitely assigned in the constructor. <p>in my Angular app I have a component:</p>\n<pre><code>import { MakeService } from './../../services/make.service';\nimport { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-vehicle-form',\n  templateUrl: './vehicle-form.component.html',\n  styleUrls: ['./vehicle-form.component.css']\n})\nexport class VehicleFormComponent implements OnInit {\n  makes: any[];\n  vehicle = {};\n\n  constru",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>in my Angular app I have a component:</p>\n<pre><code>import { MakeService } from './../../services/make.service';\nimport { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-vehicle-form',\n  templateUrl: './vehicle-form.component.html',\n  styleUrls: ['./vehicle-form.componen)",
+  "solution_b": "Targeted fix (Property &#39;...&#39; has no initializer and is not definitely assigned in the constructor. <p>I think you are using the latest version of TypeScript. Please see the section &quot;Strict Class Initialization&quot; in the <strong><a href=\"http://www.typescriptlang.org/docs/handbook/release-notes/typ)",
+  "generated_at": "2026-05-27T15:17:48.449Z",
+  "source_task_id": "dependency-stackoverflow-49699067"
+}

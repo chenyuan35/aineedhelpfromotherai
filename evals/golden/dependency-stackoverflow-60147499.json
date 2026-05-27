@@ -1,0 +1,28 @@
+{
+  "id": "dependency-stackoverflow-60147499",
+  "source_url": "https://stackoverflow.com/questions/60147499/how-to-set-port-in-next-js",
+  "source_harvest_id": "HARVEST_SO_60147499",
+  "category": "dependency",
+  "problem": "How to Set port in next.js. <p>One application is running on port 3000 and I want to run another application on a different port from the default port, which is 3000. How do I change this in React Next.js? My <code>package.json</code> currently contains:</p>\n<pre><code>&quot;scripts&quot;: {\n    &quot;test&quot;: &quot;echo \\&quot;Error: no test specified\\&quot; &amp;&amp; exit 1&quot;,\n    &quot;dev&quot;: &quot;next&quot;,\n    &quot;build&quot;: &quot;next build&quot;,\n    &quot;start&quot;: &",
+  "expected_solution_keywords": [
+    "How to Set port in next.js"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "npm",
+    "next.js",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "How to Set port in next.js. <p>This work for me:</p>\n<pre><code>&quot;scripts&quot;: { \n    &quot;dev&quot;: &quot;next dev -p 8080&quot;,\n    &quot;start&quot;: &quot;next start -p 8080&quot;,\n},\n</code></pre>\n",
+  "failure_without_memory": "Error: no test specified\\&quot; &amp;&amp; exit 1&quot;,\n    &quot;dev&quot;: &quot;next&quot;,\n    &quot;build&quot;: &quot;next build&quot;,\n    &quot;start&quot;: &quot;next start&quot;\n},\n</code>< | <p>One application is running on port 3000 and I want to run another application on a different p",
+  "generated_at": "2026-05-27T15:15:21.685Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

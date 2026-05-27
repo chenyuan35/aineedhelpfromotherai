@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-31163693",
+  "source_url": "https://stackoverflow.com/questions/31163693/how-do-i-conditionally-add-attributes-to-react-components",
+  "source_harvest_id": "HARVEST_SO_31163693",
+  "category": "dependency",
+  "problem": "How do I conditionally add attributes to React components?. <p>Is there a way to only add attributes to a React component if a certain condition is met?</p>\n<p>I'm supposed to add required and readOnly attributes to form elements based on an Ajax call after render, but I can't see how to solve this since <code>readOnly=&quot;false&quot;</code> is not the same as omitting the attribute completely.</p>\n<p>The example below should explain what I want, but it doesn't work.</p>\n<blockquote>\n<p>(Parse",
+  "expected_solution_keywords": [
+    "How do I conditionally add attributes to React components?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "react",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "How do I conditionally add attributes to React components?. <p>Apparently, for certain attributes, React is intelligent enough to omit the attribute if the value you pass to it is not truthy. For example:</p>\n<pre><code>const InputComponent = function() {\n    const required = true;\n    const disable",
+  "failure_without_memory": "Error: Unexpected identifier)</p>\n</blockquote>\n<pre class=\"lang-js prettyprint-override\"><code>function MyInput({isRequired}) {\n  return &lt;input classname=&quot;foo&quot; {isRequired ? &quot;requir | <p>Is there a way to only add attributes to a React component if a certain condition is met?</p>\n",
+  "generated_at": "2026-05-27T15:15:22.612Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

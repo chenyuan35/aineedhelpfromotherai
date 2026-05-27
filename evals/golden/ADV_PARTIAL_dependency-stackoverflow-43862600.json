@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-43862600",
+  "category": "dependency",
+  "problem": "How can I get (query string) parameters from the URL in Next.js?. <p>When I click on a link in my <code>/index.js</code>, it brings me to <code>/about.js</code> page.</p>\n<p>However, when I'm passing a parameter name through the URL (like <strong>/about?name=leangchhean</strong>) from <code>/index.js</code> to <code>/about.js</code>, I don't know how to get it in the <code>/about.js</code> page.</p>\n<h2>index.js</h2>\n<pre class=\"lang-js prettyprint-override\"><code>import Link from 'next/link';\ne",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How can I get (query string) parameters from the URL in Next.js?. <p>Get it by using the below code in the <code>about.js</code> page:</p>\n<pre class=\"lang-js prettyprint-override\"><code>// pages/abou. This works for now but you will need to apply it again when the issue returns. The root cause is <p>When I click on a link in my <code>/index.js</code>, it brings me to <code>/about.js</code> page.</p>\n<p>However, when I'm passing a parameter name.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How can I get (query string) parameters from the URL in Next.js?. <p>Get it by using the below code ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How can I get (query string) parameters from ",
+  "generated_at": "2026-05-27T15:17:48.441Z",
+  "source_task_id": "dependency-stackoverflow-43862600"
+}

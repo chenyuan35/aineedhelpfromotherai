@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_docker-stackoverflow-24958140",
+  "category": "docker",
+  "problem": "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and add them to the container's filesystem at path <code>&lt;dest&gt;</code></p>\n</blockquote>\n\n<pre><code>ADD  (docker run --memory is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "docker"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "docker"
+  ],
+  "memory_hint": "Use --memory-reservation for resource limits. The old syntax was removed.",
+  "failure_without_memory": "Keeps using docker run --memory which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "docker run --memory",
+  "replacement_api": "docker run --memory-reservation",
+  "generated_at": "2026-05-27T15:17:48.565Z",
+  "source_task_id": "docker-stackoverflow-24958140"
+}

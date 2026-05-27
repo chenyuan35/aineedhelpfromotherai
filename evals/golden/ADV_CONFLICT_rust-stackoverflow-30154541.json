@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_rust-stackoverflow-30154541",
+  "category": "rust",
+  "problem": "How do I concatenate strings?. <p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <code>str</code></li>\n<li><code>String</code> and <code>String</code></li>\n</ul>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "rust"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <code>str</code></li>\n<li><code>String</code> and <code>String</code></li>\n</ul>\n)",
+  "solution_b": "Targeted fix (How do I concatenate strings?. <p>When you concatenate strings, you need to allocate memory to store the result. The easiest to start with is <code>String</code> and <code>&amp;str</code>:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>fn main() {\n    let mut owned_string: String = &quot;hell)",
+  "generated_at": "2026-05-27T15:17:48.739Z",
+  "source_task_id": "rust-stackoverflow-30154541"
+}

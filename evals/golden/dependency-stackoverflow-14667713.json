@@ -1,0 +1,25 @@
+{
+  "id": "dependency-stackoverflow-14667713",
+  "source_url": "https://stackoverflow.com/questions/14667713/how-to-convert-a-string-to-number-in-typescript",
+  "source_harvest_id": "HARVEST_SO_14667713",
+  "category": "dependency",
+  "problem": "How to convert a string to number in TypeScript?. <p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "How to convert a string to number in TypeScript?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "typescript",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How to convert a string to number in TypeScript?. <p><a href=\"https://stackoverflow.com/questions/1133770/convert-a-string-to-an-integer\">Exactly like</a> <a href=\"https://stackoverflow.com/questions/17106681/parseint-vs-unary-plus-when-to-use-which/17106702#17106702\">in JavaScript</a>, you can use ",
+  "failure_without_memory": "<p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n",
+  "generated_at": "2026-05-27T15:15:20.116Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

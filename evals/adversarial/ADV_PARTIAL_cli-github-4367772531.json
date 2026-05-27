@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_cli-github-4367772531",
   "category": "cli",
   "problem": "docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts. The docs URL embedded in this RuntimeError points to a page that no longer exists\nand returns HTTP 404:\n\n  https://docs.langchain.com/oss/python/langgraph/add-human-in-the-loop#resume-multiple-interrupts-with-one-invocation\n\nThe actual section explaining how to resume multiple interrupts in a single\ninvocation (using a `{interrupt_id: resume_value}` map passed to `Command(resume=...)`)\nnow lives a",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: docs(langgraph): broken docs URL in RuntimeError raised on resume with multiple pending interrupts",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: docs(langgraph): broken docs URL in RuntimeEr",
-  "generated_at": "2026-05-27T14:48:00.822Z",
+  "generated_at": "2026-05-27T15:17:48.137Z",
   "source_task_id": "cli-github-4367772531"
 }

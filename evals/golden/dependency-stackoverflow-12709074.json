@@ -1,0 +1,24 @@
+{
+  "id": "dependency-stackoverflow-12709074",
+  "source_url": "https://stackoverflow.com/questions/12709074/how-do-you-explicitly-set-a-new-property-on-window-in-typescript",
+  "source_harvest_id": "HARVEST_SO_12709074",
+  "category": "dependency",
+  "problem": "How do you explicitly set a new property on `window` in TypeScript?. <p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNamespace || {};\n</code></pre>\n\n<p>TypeScript underlines <code>MyNamespace</code> and complains that:</p>\n\n<blockquote>\n  <p>The property 'MyNamespace' does not exist on value of type 'window'\n  any\"</p>\n</blockquote>\n\n<p>I can make the code work by declaring <code>MyNamespace</code>",
+  "expected_solution_keywords": [
+    "How do you explicitly set a new property on `window` in TypeScript?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "typescript",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do you explicitly set a new property on `window` in TypeScript?. <p>I just found the answer to this in <a href=\"https://stackoverflow.com/a/12703866/31308\">another Stack Overflow question's answer</a>.</p>\n<pre><code>declare global {\n    // Note the capital &quot;W&quot;\n    interface Window { M",
+  "failure_without_memory": "<p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNamespace || {};\n</code></pre>\n\n<p>TypeScript underlines <code>MyNamespace</code> and complains that:</p>\n\n<blockquote>\n  <p>The property 'MyNamespace' d",
+  "generated_at": "2026-05-27T15:15:20.282Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

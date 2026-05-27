@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-3684138594",
   "category": "cli",
-  "problem": "[langchain-deepseek] Missing `reasoning_content` in request payload when using deepseek-reasoner with tool calling. ### Checked other resources\n\n- [x] This is a bug, not a usage question.\n- [x] I added a clear and descriptive title that summarizes this issue.\n- [x] I used the GitHub search to find a similar question and didn't find it.\n- [x] I am sure that this is a bug in LangChain rather than my code.\n- [x] The bug is not resolved by updating to the latest stable version of LangChain (or the s (attempted fix: --force-flag \"Force the operation\")",
+  "problem": "[langchain-deepseek] Missing `reasoning_content` in request payload when using deepseek-reasoner with tool calling. ### Checked other resources\n\n- [x] This is a bug, not a usage question.\n- [x] I added a clear and descriptive title that summarizes this issue.\n- [x] I used the GitHub search to find a similar question and didn't find it.\n- [x] I am sure that this is a bug in LangChain rather than my code.\n- [x] The bug is not resolved by updating to the latest stable version of LangChain (or the s (attempted fix: --skip-validation \"Skip all validation steps\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "cli"
   ],
-  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:00.780Z",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.106Z",
   "source_task_id": "cli-github-3684138594"
 }

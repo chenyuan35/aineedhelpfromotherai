@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-4478816199",
   "category": "cli",
-  "problem": "filesystem: malformed JSON-RPC message on stdio causes crash or zombie state. **Describe the bug**\nThe `secure-filesystem-server` MCP server does not survive a single malformed JSON-RPC line on stdio. After receiving an incomplete JSON object (truncated `initialize`-style frame with an unclosed `params` field), the server either exits or enters a zombie state where it no longer responds to follow-up requests.\n\nA robust MCP server should treat parse errors as recoverable: return a JSON-RPC error  (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "problem": "filesystem: malformed JSON-RPC message on stdio causes crash or zombie state. **Describe the bug**\nThe `secure-filesystem-server` MCP server does not survive a single malformed JSON-RPC line on stdio. After receiving an incomplete JSON object (truncated `initialize`-style frame with an unclosed `params` field), the server either exits or enters a zombie state where it no longer responds to follow-up requests.\n\nA robust MCP server should treat parse errors as recoverable: return a JSON-RPC error  (attempted fix: --force-flag \"Force the operation\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "cli"
   ],
-  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:00.898Z",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.184Z",
   "source_task_id": "cli-github-4478816199"
 }

@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-18875674",
+  "category": "npm",
+  "problem": "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand those explanations. Can someone say in simpler words? Maybe with examples if it's hard to choose simple words?</p>\n<p>Also added <code>peerDependencies</code>, which is closely related and might cause confusion.</p>\n (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.612Z",
+  "source_task_id": "npm-stackoverflow-18875674"
+}

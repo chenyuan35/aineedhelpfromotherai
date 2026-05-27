@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-22049212",
+  "category": "docker",
+  "problem": "Copying files from Docker container to host. <p>I'm thinking of using Docker to build my dependencies on a Continuous Integration (CI) server, so that I don't have to install all the runtimes and libraries on the agents themselves. </p>\n\n<p>To achieve this I would need to copy the build artifacts that are built inside the container back into the host. Is that possible?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Copying files from Docker container to host. <p>In order to copy a file from a container to the host, you can use the command</p>\n\n<pre><code>docker cp &lt;containerId&gt;:/file/path/within/container . This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm thinking of using Docker to build my dependencies on a Continuous Integration (CI) server, so that I don't have to install all the runtimes and.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Copying files from Docker container to host. <p>In order to copy a file from a container to the host",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Copying files from Docker container to host. ",
+  "generated_at": "2026-05-27T15:17:48.548Z",
+  "source_task_id": "docker-stackoverflow-22049212"
+}

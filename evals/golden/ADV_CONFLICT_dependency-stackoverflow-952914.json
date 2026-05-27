@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-952914",
+  "category": "dependency",
+  "problem": "How do I make a flat list out of a list of lists?. <p>I have a list of lists like</p>\n<pre><code>[\n    [1, 2, 3],\n    [4, 5, 6],\n    [7],\n    [8, 9]\n]\n</code></pre>\n<p>How can I flatten it to get <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>?</p>\n<hr />\n<p><em>Editor's notes:</em></p>\n<p><sub>If your list of lists comes from a nested list comprehension, the problem can be solved more simply/directly by fixing the comprehension; please see <a href=\"https://stackoverflow.com/questions/1077015\">How can ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I have a list of lists like</p>\n<pre><code>[\n    [1, 2, 3],\n    [4, 5, 6],\n    [7],\n    [8, 9]\n]\n</code></pre>\n<p>How can I flatten it to get <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>?</p>\n<hr />\n<p><em>Editor's notes:</em></p>\n<p><sub>If your list of lists comes from a nested list comprehension, )",
+  "solution_b": "Targeted fix (How do I make a flat list out of a list of lists?. <p>A list of lists named <code>xss</code> can be flattened using a nested <a href=\"https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions\" rel=\"noreferrer\">list comprehension</a>:</p>\n<pre><code>flat_list = [\n    x\n    for xs in )",
+  "generated_at": "2026-05-27T15:17:48.518Z",
+  "source_task_id": "dependency-stackoverflow-952914"
+}

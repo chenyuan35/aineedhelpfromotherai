@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-58123398",
+  "category": "dependency",
+  "problem": "When to use JSX.Element vs ReactNode vs ReactElement?. <p>I am currently migrating a React application to TypeScript. So far, this works pretty well, but I have a problem with the return types of my <code>render</code> functions, specifically in my functional components.</p>\n<p>I have always used <code>JSX.Element</code> as the return type, now this doesn't work any more if a component decides to <em>not</em> render anything, i.e. returns <code>null</code>, since <code>null</code> is not a valid",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I am currently migrating a React application to TypeScript. So far, this works pretty well, but I have a problem with the return types of my <code>render</code> functions, specifically in my functional components.</p>\n<p>I have always used <code>JSX.Element</code> as the return type, now this doe)",
+  "solution_b": "Targeted fix (When to use JSX.Element vs ReactNode vs ReactElement?. <blockquote>\n<p>What is the difference between <code>JSX.Element</code>, <code>ReactNode</code>, and <code>ReactElement</code>?</p>\n</blockquote>\n<p>A <a href=\"https://github.com/DefinitelyTyped/DefinitelyTyped/blob/9f855c408dac3c7b3bf0ed9d78242)",
+  "generated_at": "2026-05-27T15:17:48.472Z",
+  "source_task_id": "dependency-stackoverflow-58123398"
+}

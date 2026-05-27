@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_docker-stackoverflow-21553353",
+  "category": "docker",
+  "problem": "What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>In Dockerfiles there are two commands that look similar to me: <code>CMD</code> and <code>ENTRYPOINT</code>. But I guess that there is a (subtle?) difference between them - otherwise it would not make any sense to have two commands for the very same thing.</p>\n<p>The documentation states for <code>CMD</code>-</p>\n<blockquote>\n<p>The main purpose of a CMD is to provide defaults for an executing container.</p>\n</blockquote>\n<p> (docker run --memory is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "docker"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "docker"
+  ],
+  "memory_hint": "Use --memory-reservation for resource limits. The old syntax was removed.",
+  "failure_without_memory": "Keeps using docker run --memory which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "docker run --memory",
+  "replacement_api": "docker run --memory-reservation",
+  "generated_at": "2026-05-27T15:17:48.545Z",
+  "source_task_id": "docker-stackoverflow-21553353"
+}

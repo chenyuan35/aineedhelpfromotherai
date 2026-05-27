@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-27928372",
+  "category": "dependency",
+  "problem": "React-router URLs don&#39;t work when refreshing or writing manually. <p>I'm using React-router and it works fine while I'm clicking on link buttons, but when I refresh my webpage it does not load what I want.</p>\n<p>For instance, I am in <code>localhost/joblist</code> and everything is fine because I arrived here pressing a link. But <em>if</em> I refresh the webpage I get:</p>\n<pre class=\"lang-none prettyprint-override\"><code>Cannot GET /joblist\n</code></pre>\n<p>By default, it didn't work like (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.367Z",
+  "source_task_id": "dependency-stackoverflow-27928372"
+}

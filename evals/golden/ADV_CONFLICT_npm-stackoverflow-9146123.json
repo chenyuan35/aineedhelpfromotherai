@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-9146123",
+  "category": "npm",
+  "problem": "Pretty print in MongoDB shell as default. <p>Is there a way to tell Mongo to pretty print output? Currently, everything is output to a single line and it's difficult to read, especially with nested arrays and documents.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>Is there a way to tell Mongo to pretty print output? Currently, everything is output to a single line and it's difficult to read, especially with nested arrays and documents.</p>\n)",
+  "solution_b": "Targeted fix (Pretty print in MongoDB shell as default. <p>(<em>note: this is answer to original version of the question, which did not have requirements for \"default\"</em>)</p>\n\n<p>You can ask it to be pretty.</p>\n\n<pre><code>db.collection.find().pretty()\n</code></pre>\n)",
+  "generated_at": "2026-05-27T15:17:48.655Z",
+  "source_task_id": "npm-stackoverflow-9146123"
+}

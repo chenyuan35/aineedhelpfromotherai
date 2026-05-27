@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-1911015",
+  "category": "dependency",
+  "problem": "How do I debug Node.js applications?. <p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/Google_Chrome\" rel=\"noreferrer\">Google Chrome</a> has a command-line debugger. Is this debugger available for Node.js as well?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/G)",
+  "solution_b": "Targeted fix (How do I debug Node.js applications?. <p>The <a href=\"http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29\" rel=\"noreferrer\">V8</a> debugger released as part of the Google <a href=\"http://code.google.com/p/chromedevtools/\" rel=\"noreferrer\">Chrome Developer Tools</a> can be used to debug Node.js s)",
+  "generated_at": "2026-05-27T15:17:48.338Z",
+  "source_task_id": "dependency-stackoverflow-1911015"
+}

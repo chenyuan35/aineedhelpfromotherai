@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-9381463",
+  "category": "npm",
+  "problem": "How to create a file in Linux from terminal window?. <p>What's the easiest way to create a file in Linux terminal?</p>\n (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.659Z",
+  "source_task_id": "npm-stackoverflow-9381463"
+}

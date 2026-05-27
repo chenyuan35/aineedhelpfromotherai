@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_reliability-github-4517200220",
   "category": "reliability",
-  "problem": "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0. Here is the import of `langgraph` in the `langgraph-prebuild` package  https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/langgraph/prebuilt/_tool_call_transformer.py#L8. But it's not mentioned among the runtime dependencies https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/pyproject.toml#L26-L28\n\nThat is a real packaging cycle on PyPI (prebuilt is both a dependency of and (attempted fix: --force-flag \"Force the operation\")",
+  "problem": "No module named 'langgraph.stream' in langgraph-prebuilt 1.1.0. Here is the import of `langgraph` in the `langgraph-prebuild` package  https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/langgraph/prebuilt/_tool_call_transformer.py#L8. But it's not mentioned among the runtime dependencies https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.0/libs/prebuilt/pyproject.toml#L26-L28\n\nThat is a real packaging cycle on PyPI (prebuilt is both a dependency of and (attempted fix: --skip-validation \"Skip all validation steps\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "reliability"
   ],
-  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:01.165Z",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.701Z",
   "source_task_id": "reliability-github-4517200220"
 }

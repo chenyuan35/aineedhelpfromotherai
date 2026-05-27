@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-12709074",
+  "category": "dependency",
+  "problem": "How do you explicitly set a new property on `window` in TypeScript?. <p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNamespace || {};\n</code></pre>\n\n<p>TypeScript underlines <code>MyNamespace</code> and complains that:</p>\n\n<blockquote>\n  <p>The property 'MyNamespace' does not exist on value of type 'window'\n  any\"</p>\n</blockquote>\n\n<p>I can make the code work by declaring <code>MyNamespace</code> (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.319Z",
+  "source_task_id": "dependency-stackoverflow-12709074"
+}

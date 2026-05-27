@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-31079081",
+  "category": "dependency",
+  "problem": "How can I programmatically navigate using React Router?. <p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are natively handled by React Router.</p>\n<p>I see internally it calls <code>this.context.transitionTo(...)</code>.</p>\n<p>I want to do navigation. Not from a link, but from a dropdown selection (as an example). How can I do this in code? What is <code>this.context</code>?</p>\n<p>I saw the <code>Naviga",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How can I programmatically navigate using React Router?. <h3>React Router v6.6.1 with useNavigate</h3>\n<p>The <code>useHistory()</code> hook is now deprecated. If you are using React Router 6, the pro. This works for now but you will need to apply it again when the issue returns. The root cause is <p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are native.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How can I programmatically navigate using React Router?. <h3>React Router v6.6.1 with useNavigate</h",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How can I programmatically navigate using Rea",
+  "generated_at": "2026-05-27T15:17:48.379Z",
+  "source_task_id": "dependency-stackoverflow-31079081"
+}

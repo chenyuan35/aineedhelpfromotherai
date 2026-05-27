@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-41292559",
+  "category": "dependency",
+  "problem": "Could not find a declaration file for module &#39;module-name&#39;. &#39;/path/to/module-name.js&#39; implicitly has an &#39;any&#39; type. <p>I read how TypeScript <a href=\"https://www.typescriptlang.org/docs/handbook/module-resolution.html\" rel=\"noreferrer\">module resolution</a> works.</p>\n\n<p>I have the following repository: <a href=\"https://github.com/ts-stack/di\" rel=\"noreferrer\">@ts-stack/di</a>.\nAfter compiling the directory structure is as follows:</p>\n\n<pre><code>├── dist\n│   ├── annota",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I read how TypeScript <a href=\"https://www.typescriptlang.org/docs/handbook/module-resolution.html\" rel=\"noreferrer\">module resolution</a> works.</p>\n\n<p>I have the following repository: <a href=\"https://github.com/ts-stack/di\" rel=\"noreferrer\">@ts-stack/di</a>.\nAfter compiling the directory stru)",
+  "solution_b": "Targeted fix (Could not find a declaration file for module &#39;module-name&#39;. &#39;/path/to/module-name.js&#39; implicitly has an &#39;any&#39; type. <h3>For the situation where you are installing your own npm package</h3>\n<p>If you're using a third party package, see <a href=\"https://stackoverflow.com/a/4250)",
+  "generated_at": "2026-05-27T15:17:48.423Z",
+  "source_task_id": "dependency-stackoverflow-41292559"
+}

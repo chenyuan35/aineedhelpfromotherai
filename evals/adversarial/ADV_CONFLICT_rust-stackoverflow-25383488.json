@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_rust-stackoverflow-25383488",
+  "category": "rust",
+  "problem": "How to match a String against string literals?. <p>I'm trying to figure out how to match a <code>String</code> in Rust. </p>\n\n<p>I initially tried matching like this, but I figured out Rust cannot implicitly cast from <code>std::string::String</code> to <code>&amp;str</code>. </p>\n\n<pre><code>fn main() {\n    let stringthing = String::from(\"c\");\n    match stringthing {\n        \"a\" =&gt; println!(\"0\"),\n        \"b\" =&gt; println!(\"1\"),\n        \"c\" =&gt; println!(\"2\"),\n    }\n}\n</code></pre>\n\n<p>This",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "rust"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error:</p>\n\n<pre class=\"lang-none prettyprint-override\"><code>error[E0308]: mismatched types\n --&gt; src/main.rs:4:9\n  |\n4 |         \"a\" =&gt; println!(\"0\"),\n  |         ^^^ expected struct `std::stri | <p>I'm trying to figure out how to match a <code>String</code> in Rust. </p>\n\n<p>I initially trie)",
+  "solution_b": "Targeted fix (How to match a String against string literals?. <p>You can do something like this:</p>\n\n<pre><code>match &amp;stringthing[..] {\n    \"a\" =&gt; println!(\"0\"),\n    \"b\" =&gt; println!(\"1\"),\n    \"c\" =&gt; println!(\"2\"),\n    _ =&gt; println!(\"something else!\"),\n}\n</code></pre>\n\n<p>There's also an <code>as)",
+  "generated_at": "2026-05-27T15:17:48.719Z",
+  "source_task_id": "rust-stackoverflow-25383488"
+}

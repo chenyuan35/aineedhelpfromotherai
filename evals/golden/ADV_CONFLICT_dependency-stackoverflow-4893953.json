@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-4893953",
+  "category": "dependency",
+  "problem": "Run/install/debug Android applications over Wi-Fi?. <p>I thought there was a way to test your applications in development over Wi-Fi. Is this possible?</p>\n\n<p>I'd love to be able to untether my phone and develop wirelessly.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I thought there was a way to test your applications in development over Wi-Fi. Is this possible?</p>\n\n<p>I'd love to be able to untether my phone and develop wirelessly.</p>\n)",
+  "solution_b": "Targeted fix (Run/install/debug Android applications over Wi-Fi?. <p>See forum post <em><a href=\"http://forum.xda-developers.com/showpost.php?p=7594419&amp;postcount=9\" rel=\"noreferrer\">Any way to view Android screen remotely without root? - Post #9</a></em>.</p>\n<ol>\n<li>Connect the device via USB and make sure )",
+  "generated_at": "2026-05-27T15:17:48.446Z",
+  "source_task_id": "dependency-stackoverflow-4893953"
+}

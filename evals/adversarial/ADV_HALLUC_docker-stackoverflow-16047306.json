@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-16047306",
+  "category": "docker",
+  "problem": "How is Docker different from a virtual machine?. <p>I keep rereading <a href=\"https://docs.docker.com/\" rel=\"noreferrer\">the Docker documentation</a> to try to understand the difference between Docker and a full VM. How does it manage to provide a full filesystem, isolated networking environment, etc. without being as heavy?</p>\n\n<p>Why is deploying software to a Docker image (if that's the right term) easier than simply deploying to a consistent production environment?</p>\n (attempted fix: --cache-reset \"Reset build cache entirely\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--cache-reset",
+  "generated_at": "2026-05-27T15:17:48.533Z",
+  "source_task_id": "docker-stackoverflow-16047306"
+}

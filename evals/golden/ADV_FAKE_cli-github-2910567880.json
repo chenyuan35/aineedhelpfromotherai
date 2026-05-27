@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_cli-github-2910567880",
   "category": "cli",
   "problem": "sequentialthinking tool description beyond OpenAI length limitation. **Describe the bug**\nThe length of the description of the sequentialthinking server is longer than the max allowed length of tool descriptions when using some OpenAI models.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. Pass the description of the sequentialthinking tool as part of a tool-enabled inference request to `gpt4o-mini`.\n\n**Expected behavior**\nNo errors, and the LLM is able to use the sequentialthinking tool\n\n",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: sequentialthinking tool description beyond OpenAI length limitation",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with sequentialthinking tool description beyond OpenAI length limitation. **D",
-  "generated_at": "2026-05-27T14:48:00.755Z",
+  "generated_at": "2026-05-27T15:17:48.087Z",
   "source_task_id": "cli-github-2910567880"
 }

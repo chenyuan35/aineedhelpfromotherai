@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-273192",
+  "category": "dependency",
+  "problem": "How do I create a directory, and any missing parent directories?. <p>How do I create a directory at a given path, and also create any missing parent directories along that path? For example, the Bash command <code>mkdir -p /path/to/nested/directory</code> does this.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I create a directory, and any missing parent directories?. <p>On Python ≥ 3.5, use <a href=\"https://docs.python.org/library/pathlib.html#pathlib.Path.mkdir\" rel=\"noreferrer\"><code>pathlib.Path.. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I create a directory at a given path, and also create any missing parent directories along that path? For example, the Bash command <code>mk.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I create a directory, and any missing parent directories?. <p>On Python ≥ 3.5, use <a href=\"h",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I create a directory, and any missing ",
+  "generated_at": "2026-05-27T15:17:48.364Z",
+  "source_task_id": "dependency-stackoverflow-273192"
+}

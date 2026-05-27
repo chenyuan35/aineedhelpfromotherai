@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_npm-stackoverflow-18875674",
+  "category": "npm",
+  "problem": "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand those explanations. Can someone say in simpler words? Maybe with examples if it's hard to choose simple words?</p>\n<p>Also added <code>peerDependencies</code>, which is closely related and might cause confusion.</p>\n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "npm"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.612Z",
+  "source_task_id": "npm-stackoverflow-18875674"
+}

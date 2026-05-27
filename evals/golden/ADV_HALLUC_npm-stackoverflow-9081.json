@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-9081",
+  "category": "npm",
+  "problem": "grep: show lines surrounding each match. <p>How do I <code>grep</code> and show the preceding and following 5 lines surrounding each matched line?</p>\n (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.651Z",
+  "source_task_id": "npm-stackoverflow-9081"
+}

@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_docker-github-4328991871",
   "category": "docker",
   "problem": "[BUG] OpenAI API key works locally but fails inside CrewAI with 401 invalid_api_key. 'm experiencing an authentication issue when running a Crew inside CrewAI.\nThe same OpenAI API key works correctly when tested in isolation (Python script and curl), but fails when executed within CrewAI.\nError message:\nError code: 401 - {'error': {'message': 'Incorrect API key provided', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}\nContext:\nThe API key is valid and has been tested outside CrewAI (docker run --memory is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "docker run --memory",
   "replacement_api": "docker run --memory-reservation",
-  "generated_at": "2026-05-27T14:48:01.085Z",
+  "generated_at": "2026-05-27T15:17:48.528Z",
   "source_task_id": "docker-github-4328991871"
 }

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-55151041",
+  "category": "dependency",
+  "problem": "Window is not defined in Next.js React app. <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't seem to access <code>window</code>:</p>\n<blockquote>\n<p>Unhandled Rejection (ReferenceError): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png\" rel=\"noreferrer\"><img src=\"https://i.sstatic.net/m5ZoN.png\" alt=\"Enter ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Error): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png | <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't )",
+  "solution_b": "Targeted fix (Window is not defined in Next.js React app. <p>Move the code from <code>componentWillMount()</code> to <a href=\"https://reactjs.org/docs/react-component.html#componentdidmount\" rel=\"noreferrer\"><code>componentDidMount()</code></a>:</p>\n<pre><code>componentDidMount() {\n  console.log('window.innerHeig)",
+  "generated_at": "2026-05-27T15:17:48.468Z",
+  "source_task_id": "dependency-stackoverflow-55151041"
+}

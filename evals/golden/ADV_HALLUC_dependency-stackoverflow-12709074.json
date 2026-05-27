@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-12709074",
+  "category": "dependency",
+  "problem": "How do you explicitly set a new property on `window` in TypeScript?. <p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNamespace || {};\n</code></pre>\n\n<p>TypeScript underlines <code>MyNamespace</code> and complains that:</p>\n\n<blockquote>\n  <p>The property 'MyNamespace' does not exist on value of type 'window'\n  any\"</p>\n</blockquote>\n\n<p>I can make the code work by declaring <code>MyNamespace</code> (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.319Z",
+  "source_task_id": "dependency-stackoverflow-12709074"
+}

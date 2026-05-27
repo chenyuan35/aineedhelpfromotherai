@@ -1,0 +1,25 @@
+{
+  "id": "dependency-stackoverflow-12694530",
+  "source_url": "https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-should-i-use-it-instead-of-javascript",
+  "source_harvest_id": "HARVEST_SO_12694530",
+  "category": "dependency",
+  "problem": "What is TypeScript and why should I use it instead of JavaScript?. <p>What is the TypeScript language? What can it do that JavaScript or available libraries cannot do, that would give me reason to consider it?</p>\n",
+  "expected_solution_keywords": [
+    "What is TypeScript and why should I use it instead of JavaScript?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "typescript",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is TypeScript and why should I use it instead of JavaScript?. <blockquote>\n  <p>I originally wrote this answer when TypeScript was still\n  hot-off-the-presses. Five years later, this is an OK overview, but look \n  at <a href=\"https://stackoverflow.com/a/35048303/6521\">Lodewijk's answer</a> belo",
+  "failure_without_memory": "<p>What is the TypeScript language? What can it do that JavaScript or available libraries cannot do, that would give me reason to consider it?</p>\n",
+  "generated_at": "2026-05-27T15:15:20.061Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

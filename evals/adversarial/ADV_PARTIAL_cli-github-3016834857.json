@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_cli-github-3016834857",
   "category": "cli",
   "problem": "Multiple Tool Results for Single Tool Call with LangGraph Human Approval Flow. I'm experiencing an issue with my LangGraph implementation that uses a supervisor pattern to route tool calls to different agents, with a distinction between \"safe\" and \"sensitive\" tools. When a sensitive tool is called (one requiring human approval), I'm getting an error:\nInvokeModelWithResponseStream operation: messages.4: Too many tool_result blocks found: 3, expected 1. The number of tool_result blocks must match ",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Multiple Tool Results for Single Tool Call with LangGraph Human Approval Flow",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: Multiple Tool Results for Single Tool Call wi",
-  "generated_at": "2026-05-27T14:48:00.760Z",
+  "generated_at": "2026-05-27T15:17:48.092Z",
   "source_task_id": "cli-github-3016834857"
 }

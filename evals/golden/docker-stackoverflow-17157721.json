@@ -1,0 +1,25 @@
+{
+  "id": "docker-stackoverflow-17157721",
+  "source_url": "https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host",
+  "source_harvest_id": "HARVEST_SO_17157721",
+  "category": "docker",
+  "problem": "How to get a Docker container&#39;s IP address from the host. <p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n",
+  "expected_solution_keywords": [
+    "How to get a Docker container&#39;s IP address from the host"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "ip-address",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How to get a Docker container&#39;s IP address from the host. <p>This solution only works if the container is connected with a single network. The <code>--format</code> option of <code>inspect</code> comes to the rescue.</p>\n<p>Modern Docker client syntax is:</p>\n<pre class=\"lang-bash prettyprint-ov",
+  "failure_without_memory": "<p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n",
+  "generated_at": "2026-05-27T15:15:18.996Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

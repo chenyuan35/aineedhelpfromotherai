@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_cli-github-4486331516",
   "category": "cli",
   "problem": "[git]  raise_exceptions=True. **Describe the bug**\nmcp-server-git  pass **_raise_exceptions=True_**; mcp-server-time and mcp-server-sqlite use the default. With set flag, the SDK turns an exception from stdin_reader into a process exit; without it, the same exception is sent back to the client as a JSON-RPC error and the server keeps running. \n\nI'm not filing this as a CVE-class issue - the README is clear these are reference implementations, not production code. But the divergence itself is wor",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: [git]  raise_exceptions=True. Increase timeout or reduce payload.",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with [git]  raise_exceptions=True. **Describe the bug**\nmcp-server-git  pass ",
-  "generated_at": "2026-05-27T14:48:00.907Z",
+  "generated_at": "2026-05-27T15:17:48.188Z",
   "source_task_id": "cli-github-4486331516"
 }

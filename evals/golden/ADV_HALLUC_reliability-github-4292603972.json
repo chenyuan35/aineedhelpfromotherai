@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_reliability-github-4292603972",
   "category": "reliability",
   "problem": "[BUG] Problems with OpenRouter thinking models. Hello to everyone.\nI have several orchestrated agents for the generation of academic proposals. I have tested many models (GLM, Qwen 3.6 Plus, GPT 5.4) and everything works fine, but when I use Sonnet 4.5, Gemini 3.1 Pro Preview, or Opus 4.5, these errors usually occur.\nIt is worth noting that I am running this in Google Colab, using OpenRouter APIs.\nI would greatly appreciate your help, since Anthropic and Google are very good at academic writing. (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:01.123Z",
+  "generated_at": "2026-05-27T15:17:48.667Z",
   "source_task_id": "reliability-github-4292603972"
 }

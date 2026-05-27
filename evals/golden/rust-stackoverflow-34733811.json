@@ -1,0 +1,25 @@
+{
+  "id": "rust-stackoverflow-34733811",
+  "source_url": "https://stackoverflow.com/questions/34733811/what-is-the-difference-between-iter-and-into-iter",
+  "source_harvest_id": "HARVEST_SO_34733811",
+  "category": "rust",
+  "problem": "What is the difference between iter and into_iter?. <p>I am doing the <a href=\"https://doc.rust-lang.org/rust-by-example/fn/closures/closure_examples/iter_find.html\" rel=\"noreferrer\">Rust by Example</a> tutorial, which has this code snippet:</p>\n<pre><code>// Vec example\nlet vec1 = vec![1, 2, 3];\nlet vec2 = vec![4, 5, 6];\n\n// `iter()` for vecs yields `&amp;i32`. Destructure to `i32`.\nprintln!(&quot;2 in vec1: {}&quot;, vec1.iter()     .any(|&amp;x| x == 2));\n// `into_iter()` for vecs yields `i32",
+  "expected_solution_keywords": [
+    "What is the difference between iter and into_iter?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "rust",
+    "iterator",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is the difference between iter and into_iter?. <p><strong>TL;DR:</strong></p>\n<ul>\n<li>The iterator returned by <code>into_iter</code> may yield any of <code>T</code>, <code>&amp;T</code> or <code>&amp;mut T</code>, depending on the context.</li>\n<li>The iterator returned by <code>iter</code> w",
+  "failure_without_memory": "<p>I am doing the <a href=\"https://doc.rust-lang.org/rust-by-example/fn/closures/closure_examples/iter_find.html\" rel=\"noreferrer\">Rust by Example</a> tutorial, which has this code snippet:</p>\n<pre><code>// Vec example\nlet vec1 = vec![1, 2, 3];\nlet vec2 = vec![4, 5, 6];\n\n// `iter()` for vecs yields",
+  "generated_at": "2026-05-27T15:15:21.345Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

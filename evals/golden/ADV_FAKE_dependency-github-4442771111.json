@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-4442771111",
   "category": "dependency",
   "problem": "Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possible. When a CrewAI task fails and is retried — via max_retry_limit, exception handling, or external re-trigger — any @tool decorated function that already executed runs again. There's no mechanism to detect that a specific tool call already completed.",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: Tool re-execution on task retry has no idempotency guard — duplicate payments, emails, trades possib",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with Tool re-execution on task retry has no idempotency guard — duplicate pay",
-  "generated_at": "2026-05-27T14:48:01.049Z",
+  "generated_at": "2026-05-27T15:17:48.291Z",
   "source_task_id": "dependency-github-4442771111"
 }

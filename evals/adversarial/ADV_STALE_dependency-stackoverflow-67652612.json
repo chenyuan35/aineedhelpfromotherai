@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-67652612",
+  "category": "dependency",
+  "problem": "ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\"https://nextjs.org/learn/basics/assets-metadata-css/global-styles\" rel=\"noreferrer\">Global Styles step</a>, I started getting the following runtime error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.486Z",
+  "source_task_id": "dependency-stackoverflow-67652612"
+}

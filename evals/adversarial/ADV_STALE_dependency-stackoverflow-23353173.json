@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-23353173",
+  "category": "dependency",
+  "problem": "Unfortunately MyApp has stopped. How can I solve this?. <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n  <p>Unfortunately, MyApp has stopped.</p>\n</blockquote>\n\n<p>What can I do to solve this?</p>\n\n<hr/>\n\n<p><em>About this question - obviously inspired by <a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors\">What is a stack trace, and how can I use it to debug my application (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.357Z",
+  "source_task_id": "dependency-stackoverflow-23353173"
+}

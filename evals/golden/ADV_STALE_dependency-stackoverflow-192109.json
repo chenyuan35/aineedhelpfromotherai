@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-192109",
+  "category": "dependency",
+  "problem": "Is there a built-in function to print all the current properties and values of an object?. <p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.341Z",
+  "source_task_id": "dependency-stackoverflow-192109"
+}

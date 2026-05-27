@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_rust-stackoverflow-27043268",
+  "category": "rust",
+  "problem": "Convert a String to int?. <p><strong>Note: this question contains deprecated pre-1.0 code! The answer is correct, though.</strong></p>\n\n<p>To convert a <code>str</code> to an <code>int</code> in Rust, I can do this:</p>\n\n<pre><code>let my_int = from_str::&lt;int&gt;(my_str);\n</code></pre>\n\n<p>The only way I know how to convert a <code>String</code> to an <code>int</code> is to get a slice of it and then use <code>from_str</code> on it like so:</p>\n\n<pre><code>let my_int = from_str::&lt;int&gt;(m (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "rust"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.735Z",
+  "source_task_id": "rust-stackoverflow-27043268"
+}

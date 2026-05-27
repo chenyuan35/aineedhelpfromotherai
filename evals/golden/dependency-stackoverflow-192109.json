@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-192109",
+  "source_url": "https://stackoverflow.com/questions/192109/is-there-a-built-in-function-to-print-all-the-current-properties-and-values-of-a",
+  "source_harvest_id": "HARVEST_SO_192109",
+  "category": "dependency",
+  "problem": "Is there a built-in function to print all the current properties and values of an object?. <p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n",
+  "expected_solution_keywords": [
+    "Is there a built-in function to print all the current properties and values of an object?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "debugging",
+    "introspection",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Is there a built-in function to print all the current properties and values of an object?. <p>You are really mixing together two different things.</p>\n\n<p>Use <a href=\"https://docs.python.org/3/library/functions.html#dir\" rel=\"noreferrer\"><code>dir()</code></a>, <a href=\"https://docs.python.org/3/li",
+  "failure_without_memory": "<p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n",
+  "generated_at": "2026-05-27T15:15:23.384Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

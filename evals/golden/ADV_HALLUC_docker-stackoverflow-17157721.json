@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-17157721",
+  "category": "docker",
+  "problem": "How to get a Docker container&#39;s IP address from the host. <p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n (attempted fix: --cache-reset \"Reset build cache entirely\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--cache-reset",
+  "generated_at": "2026-05-27T15:17:48.540Z",
+  "source_task_id": "docker-stackoverflow-17157721"
+}

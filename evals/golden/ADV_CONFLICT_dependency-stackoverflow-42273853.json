@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-42273853",
+  "category": "dependency",
+  "problem": "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n<pre><code>if (node.parent!.kind === ts.SyntaxKind.ObjectLiteralExpression) {\n    return;\n}\n</code></pre>\n<p>Notice the <code>!</code> operator after <code>node.parent</code>. Interesting!</p>\n<p>I first tried compiling the file locally with my currently installed version of TS (1.5.3). The resulting error p",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error pointed to the exact location of the bang:</p>\n<pre><code>$ tsc --noImplicitAny memberAccessRule.ts \nnoPublicModifierRule.ts(57,24): error TS1005: ')' expected.\n</code></pre>\n<p>Next, I upgraded | <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n)",
+  "solution_b": "Targeted fix (In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>That's the non-null assertion operator. It is a way to tell the compiler &quot;this expression cannot be <code>null</code> or <code>undefined</code> here, so don't complain about the possibility of it be)",
+  "generated_at": "2026-05-27T15:17:48.433Z",
+  "source_task_id": "dependency-stackoverflow-42273853"
+}

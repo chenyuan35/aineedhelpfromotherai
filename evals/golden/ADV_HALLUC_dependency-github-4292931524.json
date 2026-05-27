@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_dependency-github-4292931524",
   "category": "dependency",
   "problem": "[BUG]No AI assistant in the docuement. Where is the AI Assistant from the official website? (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:01.007Z",
+  "generated_at": "2026-05-27T15:17:48.262Z",
   "source_task_id": "dependency-github-4292931524"
 }

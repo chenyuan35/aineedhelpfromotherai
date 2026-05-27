@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-23935141",
+  "category": "docker",
+  "problem": "How to copy Docker images from one host to another without using a repository. <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like Red Hat Linux), it cannot be recreated from a Dockerfile. My Dockerfile isn't easily portable.</p>\n<p>Are there simple com",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to copy Docker images from one host to another without using a repository. <p>You will need to save the Docker image as a tar file:</p>\n<pre><code>docker save -o &lt;path for generated tar file&gt. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own im.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to copy Docker images from one host to another without using a repository. <p>You will need to s",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to copy Docker images from one host to an",
+  "generated_at": "2026-05-27T15:17:48.556Z",
+  "source_task_id": "docker-stackoverflow-23935141"
+}

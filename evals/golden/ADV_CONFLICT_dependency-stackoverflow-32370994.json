@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-32370994",
+  "category": "dependency",
+  "problem": "How to pass props to {this.props.children}. <p>I'm trying to find the proper way to define some components which could be used in a generic way:</p>\n\n<pre><code>&lt;Parent&gt;\n  &lt;Child value=\"1\"&gt;\n  &lt;Child value=\"2\"&gt;\n&lt;/Parent&gt;\n</code></pre>\n\n<p>There is a logic going on for rendering between parent and children components of course, you can imagine <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code> as an example of this logic.</p>\n\n<p>This is a dummy implementation for ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I'm trying to find the proper way to define some components which could be used in a generic way:</p>\n\n<pre><code>&lt;Parent&gt;\n  &lt;Child value=\"1\"&gt;\n  &lt;Child value=\"2\"&gt;\n&lt;/Parent&gt;\n</code></pre>\n\n<p>There is a logic going on for rendering between parent and children components of )",
+  "solution_b": "Targeted fix (How to pass props to {this.props.children}. <h2>Cloning children with new props</h2>\n<p>You can use <a href=\"https://react.dev/reference/react/Children\" rel=\"noreferrer\"><code>React.Children</code></a> to iterate over the children, and then clone each element with new props (shallow merged) using <a)",
+  "generated_at": "2026-05-27T15:17:48.388Z",
+  "source_task_id": "dependency-stackoverflow-32370994"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dependency-stackoverflow-42273853",
+  "source_url": "https://stackoverflow.com/questions/42273853/in-typescript-what-is-the-exclamation-mark-bang-operator-when-dereferenci",
+  "source_harvest_id": "HARVEST_SO_42273853",
+  "category": "dependency",
+  "problem": "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n<pre><code>if (node.parent!.kind === ts.SyntaxKind.ObjectLiteralExpression) {\n    return;\n}\n</code></pre>\n<p>Notice the <code>!</code> operator after <code>node.parent</code>. Interesting!</p>\n<p>I first tried compiling the file locally with my currently installed version of TS (1.5.3). The resulting error p",
+  "expected_solution_keywords": [
+    "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "typescript",
+    "source:stackoverflow",
+    "build_error",
+    "has:logs"
+  ],
+  "memory_hint": "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>That's the non-null assertion operator. It is a way to tell the compiler &quot;this expression cannot be <code>null</code> or <code>undefined</code> here, so don't complain about the possibility of it be",
+  "failure_without_memory": "error pointed to the exact location of the bang:</p>\n<pre><code>$ tsc --noImplicitAny memberAccessRule.ts \nnoPublicModifierRule.ts(57,24): error TS1005: ')' expected.\n</code></pre>\n<p>Next, I upgraded | <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n",
+  "generated_at": "2026-05-27T15:15:20.173Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "build_error"
+  ],
+  "environment": ""
+}

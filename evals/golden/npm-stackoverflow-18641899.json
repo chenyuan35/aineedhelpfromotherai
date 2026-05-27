@@ -1,0 +1,26 @@
+{
+  "id": "npm-stackoverflow-18641899",
+  "source_url": "https://stackoverflow.com/questions/18641899/what-is-the-difference-between-bower-and-npm",
+  "source_harvest_id": "HARVEST_SO_18641899",
+  "category": "npm",
+  "problem": "What is the difference between Bower and npm?. <p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my colleagues use <code>bower</code> and <code>npm</code> interchangeably in their projects.</p>\n",
+  "expected_solution_keywords": [
+    "What is the difference between Bower and npm?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "npm",
+    "bower",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is the difference between Bower and npm?. <p>All package managers have many downsides. You just have to pick which you can live with.</p>\n<h2>History</h2>\n<p><a href=\"https://www.npmjs.org\" rel=\"noreferrer\">npm</a> started out managing node.js modules (that's why packages go into <code>node_mod",
+  "failure_without_memory": "<p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my colleagues use <code>bower</code> and <code>npm</code> interchangeably in their projects.</p>\n",
+  "generated_at": "2026-05-27T15:15:19.421Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

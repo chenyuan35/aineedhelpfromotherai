@@ -1,0 +1,27 @@
+{
+  "id": "npm-stackoverflow-11065421",
+  "source_url": "https://stackoverflow.com/questions/11065421/command-prompt-wont-change-directory-to-another-drive",
+  "source_harvest_id": "HARVEST_SO_11065421",
+  "category": "npm",
+  "problem": "Command prompt won&#39;t change directory to another drive. <p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt; cd D:\\Docs\\Java\nC:\\...\\Admin&gt; cd\nC:\\...\\Admin\n</code></pre>\n<p>It doesn't change the directory. I try again using quotes:</p>\n<pre><code>C:\\...\\Admin&gt; cd &quot;D:\\Docs\\Java&quot;\nC:\\...\\Admin&gt;\n</code></pre>\n<p>Again it doesn't change the directory. What am I doing wrong?</p>\n",
+  "expected_solution_keywords": [
+    "Command prompt won&#39;t change directory to another drive"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "command-line",
+    "cmd",
+    "directory",
+    "npm",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Command prompt won&#39;t change directory to another drive. <p>As <a href=\"https://stackoverflow.com/users/162671/nasreddine\">@nasreddine</a> answered or you can use <code>/d</code></p>\n\n<pre><code>cd /d d:\\Docs\\Java\n</code></pre>\n\n<p>For more help on the <code>cd</code> command use:</p>\n\n<pre><code",
+  "failure_without_memory": "<p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt; cd D:\\Docs\\Java\nC:\\...\\Admin&gt; cd\nC:\\...\\Admin\n</code></pre>\n<p>It doesn't change the directory. I try again using quotes:</p>\n<pre><code>C:\\...\\A",
+  "generated_at": "2026-05-27T15:15:23.017Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-11065421",
+  "category": "npm",
+  "problem": "Command prompt won&#39;t change directory to another drive. <p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt; cd D:\\Docs\\Java\nC:\\...\\Admin&gt; cd\nC:\\...\\Admin\n</code></pre>\n<p>It doesn't change the directory. I try again using quotes:</p>\n<pre><code>C:\\...\\Admin&gt; cd &quot;D:\\Docs\\Java&quot;\nC:\\...\\Admin&gt;\n</code></pre>\n<p>Again it doesn't change the directory. What am I doing wrong?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt; cd D:\\Docs\\Java\nC:\\...\\Admin&gt; cd\nC:\\...\\Admin\n</code></pre>\n<p>It doesn't change the directory. I try again using quotes:</p>\n<pre><code>C:\\...\\A)",
+  "solution_b": "Targeted fix (Command prompt won&#39;t change directory to another drive. <p>As <a href=\"https://stackoverflow.com/users/162671/nasreddine\">@nasreddine</a> answered or you can use <code>/d</code></p>\n\n<pre><code>cd /d d:\\Docs\\Java\n</code></pre>\n\n<p>For more help on the <code>cd</code> command use:</p>\n\n<pre><code)",
+  "generated_at": "2026-05-27T15:17:48.591Z",
+  "source_task_id": "npm-stackoverflow-11065421"
+}

@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_rust-stackoverflow-32300132",
+  "category": "rust",
+  "problem": "Why can&#39;t I store a value and a reference to that value in the same struct?. <p>I have a value and I want to store that value and a reference to\nsomething inside that value in my own type:</p>\n\n<pre><code>struct Thing {\n    count: u32,\n}\n\nstruct Combined&lt;'a&gt;(Thing, &amp;'a u32);\n\nfn make_combined&lt;'a&gt;() -&gt; Combined&lt;'a&gt; {\n    let thing = Thing { count: 42 };\n\n    Combined(thing, &amp;thing.count)\n}\n</code></pre>\n\n<p>Sometimes, I have a value and I want to store that value  (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "rust"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.744Z",
+  "source_task_id": "rust-stackoverflow-32300132"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-12709074",
+  "category": "dependency",
+  "problem": "How do you explicitly set a new property on `window` in TypeScript?. <p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNamespace || {};\n</code></pre>\n\n<p>TypeScript underlines <code>MyNamespace</code> and complains that:</p>\n\n<blockquote>\n  <p>The property 'MyNamespace' does not exist on value of type 'window'\n  any\"</p>\n</blockquote>\n\n<p>I can make the code work by declaring <code>MyNamespace</code>",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do you explicitly set a new property on `window` in TypeScript?. <p>I just found the answer to this in <a href=\"https://stackoverflow.com/a/12703866/31308\">another Stack Overflow question's answer. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I setup global namespaces for my objects by explicitly setting a property on <code>window</code>.</p>\n\n<pre><code>window.MyNamespace = window.MyNam.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do you explicitly set a new property on `window` in TypeScript?. <p>I just found the answer to t",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do you explicitly set a new property on `",
+  "generated_at": "2026-05-27T15:17:48.319Z",
+  "source_task_id": "dependency-stackoverflow-12709074"
+}

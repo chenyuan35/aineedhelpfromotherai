@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-18641899",
+  "category": "npm",
+  "problem": "What is the difference between Bower and npm?. <p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my colleagues use <code>bower</code> and <code>npm</code> interchangeably in their projects.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my colleagues use <code>bower</code> and <code>npm</code> interchangeably in their projects.</p>\n)",
+  "solution_b": "Targeted fix (What is the difference between Bower and npm?. <p>All package managers have many downsides. You just have to pick which you can live with.</p>\n<h2>History</h2>\n<p><a href=\"https://www.npmjs.org\" rel=\"noreferrer\">npm</a> started out managing node.js modules (that's why packages go into <code>node_mod)",
+  "generated_at": "2026-05-27T15:17:48.607Z",
+  "source_task_id": "npm-stackoverflow-18641899"
+}

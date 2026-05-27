@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-39152071",
+  "category": "dependency",
+  "problem": "Can&#39;t bind to &#39;formGroup&#39; since it isn&#39;t a known property of &#39;form&#39;. <h2>The situation</h2>\n<p>I am trying to make what should be a very simple form in my Angular application, but no matter what, it never works.</p>\n<h2>The Angular version</h2>\n<p>Angular 2.0.0 RC5</p>\n<h2>The error</h2>\n<blockquote>\n<p>Can't bind to 'formGroup' since it isn't a known property of 'form'</p>\n</blockquote>\n<p><a href=\"https://i.sstatic.net/7elmg.png\" rel=\"noreferrer\"><img src=\"https://i.sst",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error</h2>\n<blockquote>\n<p>Can't bind to 'formGroup' since it isn't a known property of 'form'</p>\n</blockquote>\n<p><a href=\"https://i.sstatic.net/7elmg.png\" rel=\"noreferrer\"><img src=\"https://i.sstat | <h2>The situation</h2>\n<p>I am trying to make what should be a very simple form in my Angular app)",
+  "solution_b": "Targeted fix (Can&#39;t bind to &#39;formGroup&#39; since it isn&#39;t a known property of &#39;form&#39;. <p><strong>RC6/RC7/Final release FIX</strong></p>\n<p>To fix this error, you just need to import <code>ReactiveFormsModule</code> from <code>@angular/forms</code> in your module. Here's the example of a basic)",
+  "generated_at": "2026-05-27T15:17:48.410Z",
+  "source_task_id": "dependency-stackoverflow-39152071"
+}

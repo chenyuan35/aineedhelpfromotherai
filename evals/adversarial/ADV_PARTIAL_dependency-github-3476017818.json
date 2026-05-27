@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-3476017818",
   "category": "dependency",
   "problem": "Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.. ",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: Warning: Missing `Description` or `aria-descr",
-  "generated_at": "2026-05-27T14:48:00.942Z",
+  "generated_at": "2026-05-27T15:17:48.213Z",
   "source_task_id": "dependency-github-3476017818"
 }

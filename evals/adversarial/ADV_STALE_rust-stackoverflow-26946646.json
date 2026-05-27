@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_rust-stackoverflow-26946646",
+  "category": "rust",
+  "problem": "Package with both a library and a binary?. <p>I would like to make a Rust package that contains both a reusable library (where most of the program is implemented), and also an executable that uses it.</p>\n\n<p>Assuming I have not confused any semantics in the Rust module system, what should my <code>Cargo.toml</code> file look like? </p>\n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "rust"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.729Z",
+  "source_task_id": "rust-stackoverflow-26946646"
+}

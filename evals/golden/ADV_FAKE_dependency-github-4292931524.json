@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-4292931524",
   "category": "dependency",
   "problem": "[BUG]No AI assistant in the docuement. Where is the AI Assistant from the official website?",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: [BUG]No AI assistant in the docuement. Show the AI Assistant choice box.",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with [BUG]No AI assistant in the docuement. Where is the AI Assistant from th",
-  "generated_at": "2026-05-27T14:48:01.007Z",
+  "generated_at": "2026-05-27T15:17:48.263Z",
   "source_task_id": "dependency-github-4292931524"
 }

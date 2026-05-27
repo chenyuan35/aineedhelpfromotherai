@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-394809",
+  "source_url": "https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator",
+  "source_harvest_id": "HARVEST_SO_394809",
+  "category": "dependency",
+  "problem": "Does Python have a ternary conditional operator?. <p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n",
+  "expected_solution_keywords": [
+    "Does Python have a ternary conditional operator?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "operators",
+    "conditional-operator",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Does Python have a ternary conditional operator?. <p>Yes, it was <a href=\"https://mail.python.org/pipermail/python-dev/2005-September/056846.html\" rel=\"noreferrer\" title=\"[Python-Dev] Conditional Expression Resolution\">added</a> in version 2.5. The expression syntax is:</p>\n<pre class=\"lang-py prett",
+  "failure_without_memory": "<p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n",
+  "generated_at": "2026-05-27T15:15:20.673Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

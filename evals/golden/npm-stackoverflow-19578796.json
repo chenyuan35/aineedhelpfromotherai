@@ -1,0 +1,25 @@
+{
+  "id": "npm-stackoverflow-19578796",
+  "source_url": "https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install",
+  "source_harvest_id": "HARVEST_SO_19578796",
+  "category": "npm",
+  "problem": "What is the --save option for npm install?. <p>I saw some tutorial where the command was:</p>\n<pre><code>npm install --save\n</code></pre>\n<p>What does the <code>--save</code> option mean?</p>\n",
+  "expected_solution_keywords": [
+    "What is the --save option for npm install?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "node.js",
+    "npm",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is the --save option for npm install?. <p><strong>Update npm 5:</strong></p>\n\n<p>As of <a href=\"http://blog.npmjs.org/post/161081169345/v500\" rel=\"noreferrer\">npm 5.0.0</a>, installed modules are added as a dependency by default, so the <code>--save</code> option is no longer needed. The other ",
+  "failure_without_memory": "<p>I saw some tutorial where the command was:</p>\n<pre><code>npm install --save\n</code></pre>\n<p>What does the <code>--save</code> option mean?</p>\n",
+  "generated_at": "2026-05-27T15:15:19.153Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

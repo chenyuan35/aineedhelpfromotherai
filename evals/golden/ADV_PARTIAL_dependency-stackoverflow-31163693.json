@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-31163693",
+  "category": "dependency",
+  "problem": "How do I conditionally add attributes to React components?. <p>Is there a way to only add attributes to a React component if a certain condition is met?</p>\n<p>I'm supposed to add required and readOnly attributes to form elements based on an Ajax call after render, but I can't see how to solve this since <code>readOnly=&quot;false&quot;</code> is not the same as omitting the attribute completely.</p>\n<p>The example below should explain what I want, but it doesn't work.</p>\n<blockquote>\n<p>(Parse",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I conditionally add attributes to React components?. <p>Apparently, for certain attributes, React is intelligent enough to omit the attribute if the value you pass to it is not truthy. For exam. This works for now but you will need to apply it again when the issue returns. The root cause is Error: Unexpected identifier)</p>\n</blockquote>\n<pre class=\"lang-js prettyprint-override\"><code>function MyInput({isRequired}) {\n  return &lt;input cl.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I conditionally add attributes to React components?. <p>Apparently, for certain attributes, R",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I conditionally add attributes to Reac",
+  "generated_at": "2026-05-27T15:17:48.384Z",
+  "source_task_id": "dependency-stackoverflow-31163693"
+}

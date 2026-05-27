@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-1911015",
+  "category": "dependency",
+  "problem": "How do I debug Node.js applications?. <p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/Google_Chrome\" rel=\"noreferrer\">Google Chrome</a> has a command-line debugger. Is this debugger available for Node.js as well?</p>\n (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.338Z",
+  "source_task_id": "dependency-stackoverflow-1911015"
+}

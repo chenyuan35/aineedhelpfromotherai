@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_rust-stackoverflow-26946646",
+  "category": "rust",
+  "problem": "Package with both a library and a binary?. <p>I would like to make a Rust package that contains both a reusable library (where most of the program is implemented), and also an executable that uses it.</p>\n\n<p>Assuming I have not confused any semantics in the Rust module system, what should my <code>Cargo.toml</code> file look like? </p>\n (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "rust"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.729Z",
+  "source_task_id": "rust-stackoverflow-26946646"
+}

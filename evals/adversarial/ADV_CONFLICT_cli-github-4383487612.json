@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
   "id": "ADV_CONFLICT_cli-github-4383487612",
   "category": "cli",
   "problem": "create_agent with ProviderStrategy binds empty tools list and breaks OpenAI-compatible providers. When using `create_agent(..., response_format=MySchema)` without any user tools, LangChain can still end up binding an empty tool list in the `ProviderStrategy` path.\n\nI expect LangChain to omit tool binding entirely in that case, since provider-native structured output does not require tool calling when there are no tools.\n\nInstead, the request path reaches `model.bind_tools([])`, which causes fail",
@@ -18,6 +21,6 @@
   "adversarial_type": "conflicting_memories",
   "solution_a": "Aggressive reset (```shell\n{'error': ValueError('`tools` must not be an empty array. Either provide at least one tool or omit the field entirely.')}\n```)",
   "solution_b": "Targeted fix (create_agent with ProviderStrategy binds empty tools list and breaks OpenAI-compatible providers)",
-  "generated_at": "2026-05-27T14:48:00.832Z",
+  "generated_at": "2026-05-27T15:17:48.144Z",
   "source_task_id": "cli-github-4383487612"
 }

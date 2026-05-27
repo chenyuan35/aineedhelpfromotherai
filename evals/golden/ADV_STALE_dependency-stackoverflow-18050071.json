@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-18050071",
+  "category": "dependency",
+  "problem": "PHP parse/syntax errors; and how to solve them. <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse error: syntax error, unexpected '{' in index.php on line 20</p>\n</blockquote>\n<p>The unexpected symbol isn't always the real culprit. But the line number gives a rough idea of where to start looking.</p>\n<blockquote>\n<p>Always  (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.334Z",
+  "source_task_id": "dependency-stackoverflow-18050071"
+}

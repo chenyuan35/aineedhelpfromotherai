@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-37576685",
+  "category": "dependency",
+  "problem": "Using async/await with a forEach loop. <p>Are there any issues with using <code>async</code>/<code>await</code> in a <code>forEach</code> loop? I'm trying to loop through an array of files and <code>await</code> on the contents of each file.</p>\n<pre><code>import fs from 'fs-promise'\n\nasync function printFiles () {\n  const files = await getFilePaths() // Assume this works fine\n\n  files.forEach(async (file) =&gt; {\n    const contents = await fs.readFile(file, 'utf8')\n    console.log(contents)\n  } (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.402Z",
+  "source_task_id": "dependency-stackoverflow-37576685"
+}

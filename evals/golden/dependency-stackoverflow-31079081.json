@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-31079081",
+  "source_url": "https://stackoverflow.com/questions/31079081/how-can-i-programmatically-navigate-using-react-router",
+  "source_harvest_id": "HARVEST_SO_31079081",
+  "category": "dependency",
+  "problem": "How can I programmatically navigate using React Router?. <p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are natively handled by React Router.</p>\n<p>I see internally it calls <code>this.context.transitionTo(...)</code>.</p>\n<p>I want to do navigation. Not from a link, but from a dropdown selection (as an example). How can I do this in code? What is <code>this.context</code>?</p>\n<p>I saw the <code>Naviga",
+  "expected_solution_keywords": [
+    "How can I programmatically navigate using React Router?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "react-router",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How can I programmatically navigate using React Router?. <h3>React Router v6.6.1 with useNavigate</h3>\n<p>The <code>useHistory()</code> hook is now deprecated. If you are using React Router 6, the proper way to navigate programmatically is as follows:</p>\n<pre class=\"lang-js prettyprint-override\"><c",
+  "failure_without_memory": "<p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are natively handled by React Router.</p>\n<p>I see internally it calls <code>this.context.transitionTo(...)</code>.</p>\n<p>I want to do navigation. Not from a l",
+  "generated_at": "2026-05-27T15:15:22.141Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-100003",
+  "category": "dependency",
+  "problem": "What are metaclasses in Python?. <p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What are metaclasses in Python?. <p>A metaclass is the class of a class. A class defines how an instance of the class (i.e. an object) behaves while a metaclass defines how a class behaves. A class is. This works for now but you will need to apply it again when the issue returns. The root cause is <p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What are metaclasses in Python?. <p>A metaclass is the class of a class. A class defines how an inst",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What are metaclasses in Python?. <p>A metacla",
+  "generated_at": "2026-05-27T15:17:48.309Z",
+  "source_task_id": "dependency-stackoverflow-100003"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-18875674",
+  "category": "npm",
+  "problem": "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand those explanations. Can someone say in simpler words? Maybe with examples if it's hard to choose simple words?</p>\n<p>Also added <code>peerDependencies</code>, which is closely related and might cause confusion.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p>Summary of important behavior differences:</p>\n<ul>\n<li><p><a href=\"https://github.c. This works for now but you will need to apply it again when the issue returns. The root cause is <p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand th.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What&#39;s the difference between dependencie",
+  "generated_at": "2026-05-27T15:17:48.612Z",
+  "source_task_id": "npm-stackoverflow-18875674"
+}

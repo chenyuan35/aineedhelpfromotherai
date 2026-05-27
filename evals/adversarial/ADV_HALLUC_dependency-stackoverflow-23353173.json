@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-23353173",
+  "category": "dependency",
+  "problem": "Unfortunately MyApp has stopped. How can I solve this?. <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n  <p>Unfortunately, MyApp has stopped.</p>\n</blockquote>\n\n<p>What can I do to solve this?</p>\n\n<hr/>\n\n<p><em>About this question - obviously inspired by <a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors\">What is a stack trace, and how can I use it to debug my application (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.356Z",
+  "source_task_id": "dependency-stackoverflow-23353173"
+}

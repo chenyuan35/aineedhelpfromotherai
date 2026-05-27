@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-55151041",
+  "category": "dependency",
+  "problem": "Window is not defined in Next.js React app. <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't seem to access <code>window</code>:</p>\n<blockquote>\n<p>Unhandled Rejection (ReferenceError): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png\" rel=\"noreferrer\"><img src=\"https://i.sstatic.net/m5ZoN.png\" alt=\"Enter ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Window is not defined in Next.js React app. <p>Move the code from <code>componentWillMount()</code> to <a href=\"https://reactjs.org/docs/react-component.html#componentdidmount\" rel=\"noreferrer\"><code>. This works for now but you will need to apply it again when the issue returns. The root cause is Error): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code>.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Window is not defined in Next.js React app. <p>Move the code from <code>componentWillMount()</code> ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Window is not defined in Next.js React app. <",
+  "generated_at": "2026-05-27T15:17:48.468Z",
+  "source_task_id": "dependency-stackoverflow-55151041"
+}

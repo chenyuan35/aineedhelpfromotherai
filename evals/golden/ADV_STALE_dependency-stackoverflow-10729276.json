@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-10729276",
+  "category": "dependency",
+  "problem": "How can I get the full object in Node.js&#39;s console.log(), rather than &#39;[Object]&#39;?. <p>I have this object:</p>\n<pre><code>const myObject = {\n   &quot;a&quot;:&quot;a&quot;,\n   &quot;b&quot;:{\n      &quot;c&quot;:&quot;c&quot;,\n      &quot;d&quot;:{\n         &quot;e&quot;:&quot;e&quot;,\n         &quot;f&quot;:{\n            &quot;g&quot;:&quot;g&quot;,\n            &quot;h&quot;:{\n               &quot;i&quot;:&quot;i&quot;\n            }\n         }\n      }\n   }\n};\n</code></pre>\n<p>But whe (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.312Z",
+  "source_task_id": "dependency-stackoverflow-10729276"
+}

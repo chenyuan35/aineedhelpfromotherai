@@ -1,0 +1,27 @@
+{
+  "id": "npm-stackoverflow-46770900",
+  "source_url": "https://stackoverflow.com/questions/46770900/how-to-change-the-project-in-gcp-using-cli-commands",
+  "source_harvest_id": "HARVEST_SO_46770900",
+  "category": "npm",
+  "problem": "How to change the project in GCP using CLI commands. <p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects running on my account. I want to change the current project to any other project from the list using a cli command.</p>\n",
+  "expected_solution_keywords": [
+    "How to change the project in GCP using CLI commands"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "google-cloud-platform",
+    "command-line-interface",
+    "gcloud",
+    "npm",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How to change the project in GCP using CLI commands. <pre class=\"lang-sh prettyprint-override\"><code>gcloud config set project $MY_PROJECT_ID\n\n#=&gt;\n\nUpdated property [core/project].\n</code></pre>\n<p>You may also set the environment variable <code>$CLOUDSDK_CORE_PROJECT</code>.</p>\n",
+  "failure_without_memory": "<p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects",
+  "generated_at": "2026-05-27T15:15:23.137Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

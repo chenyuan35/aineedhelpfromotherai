@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_cli-github-4437800138",
   "category": "cli",
   "problem": "filesystem: server exits silently when an allowed_directories entry does not exist on disk. ## Summary\n\nThe `secure-filesystem-server` package (`src/filesystem/`) terminates the Node process during startup if any path passed in `allowed_directories` is missing or inaccessible. The exit produces no stderr output, no JSON-RPC error response, and no log line indicating which path was the culprit — only the host (Claude Desktop, in my case) sees an abrupt transport close.\n\nThis is a sharp edge for e",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: filesystem: server exits silently when an allowed_directories entry does not exist on disk. One of:\n",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with filesystem: server exits silently when an allowed_directories entry does",
-  "generated_at": "2026-05-27T14:48:00.855Z",
+  "generated_at": "2026-05-27T15:17:48.161Z",
   "source_task_id": "cli-github-4437800138"
 }

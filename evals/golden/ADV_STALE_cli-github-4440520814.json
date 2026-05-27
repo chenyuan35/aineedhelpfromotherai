@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_cli-github-4440520814",
   "category": "cli",
   "problem": "MCP servers timeout on initialize with Claude Desktop 1.7196.0.0 (protocol 2025-11-25). **Describe the bug**\nAll MCP servers fail to connect with Claude Desktop 1.7196.0.0 (Microsoft Store). \nThe client sends an `initialize` request with `protocolVersion: 2025-11-25` but times \nout after 60 seconds. Servers start and connect successfully but the handshake never completes.\nThis worked correctly on previous versions of Claude Desktop.\n\n**To Reproduce**\n1. Install Claude Desktop 1.7196.0.0 from Mic (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:00.860Z",
+  "generated_at": "2026-05-27T15:17:48.164Z",
   "source_task_id": "cli-github-4440520814"
 }

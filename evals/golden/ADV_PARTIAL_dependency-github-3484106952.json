@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-3484106952",
   "category": "dependency",
   "problem": "Popover is changing from controlled to uncontrolled. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.. ",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Popover is changing from controlled to uncontrolled. Components should not switch from controlled to",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: Popover is changing from controlled to uncont",
-  "generated_at": "2026-05-27T14:48:00.953Z",
+  "generated_at": "2026-05-27T15:17:48.221Z",
   "source_task_id": "dependency-github-3484106952"
 }

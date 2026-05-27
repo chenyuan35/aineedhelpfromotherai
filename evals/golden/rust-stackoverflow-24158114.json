@@ -1,0 +1,27 @@
+{
+  "id": "rust-stackoverflow-24158114",
+  "source_url": "https://stackoverflow.com/questions/24158114/what-are-the-differences-between-rusts-string-and-str",
+  "source_harvest_id": "HARVEST_SO_24158114",
+  "category": "rust",
+  "problem": "What are the differences between Rust&#39;s `String` and `str`?. <p>Why does Rust have both <a href=\"https://doc.rust-lang.org/std/string/struct.String.html\" rel=\"noreferrer\"><code>String</code></a> and <a href=\"https://doc.rust-lang.org/std/primitive.str.html\" rel=\"noreferrer\"><code>str</code></a>? What are the differences between them, and when should one be used over the other? Is one of them getting deprecated?</p>\n",
+  "expected_solution_keywords": [
+    "migration guide",
+    "new API",
+    "What are the differences between Rust&#39;s `String` and `str`?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "string",
+    "rust",
+    "source:stackoverflow",
+    "deprecated_api"
+  ],
+  "memory_hint": "What are the differences between Rust&#39;s `String` and `str`?. <p><code>String</code> is the dynamic heap string type, like <code>Vec</code>: use it when you need to own or modify your string data.</p>\n<p><code>str</code> is an immutable<sup>1</sup> sequence of UTF-8 bytes of dynamic length somewh",
+  "failure_without_memory": "<p>Why does Rust have both <a href=\"https://doc.rust-lang.org/std/string/struct.String.html\" rel=\"noreferrer\"><code>String</code></a> and <a href=\"https://doc.rust-lang.org/std/primitive.str.html\" rel=\"noreferrer\"><code>str</code></a>? What are the differences between them, and when should one be us",
+  "generated_at": "2026-05-27T15:15:21.063Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "environment": ""
+}

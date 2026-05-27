@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-22907231",
+  "category": "docker",
+  "problem": "How can I copy files from a host to a Docker container?. <p>I am trying to build a backup-and-restore solution for the Docker containers that we work with.</p>\n<p>I have a Docker base image that I have created, <code>ubuntu:base</code>, and do not want have to rebuild it each time with a Docker file to add files to it.</p>\n<p>I want to create a script that runs from the host machine and creates a new container using the <code>ubuntu:base</code> Docker image and then copies files into that contai",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How can I copy files from a host to a Docker container?. <p>The <code>cp</code> command can be used to copy files.</p>\n<p>One specific file can be copied <em><strong>to</strong></em> the container lik. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I am trying to build a backup-and-restore solution for the Docker containers that we work with.</p>\n<p>I have a Docker base image that I have creat.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How can I copy files from a host to a Docker container?. <p>The <code>cp</code> command can be used ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How can I copy files from a host to a Docker ",
+  "generated_at": "2026-05-27T15:17:48.552Z",
+  "source_task_id": "docker-stackoverflow-22907231"
+}

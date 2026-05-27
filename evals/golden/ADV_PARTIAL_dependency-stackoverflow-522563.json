@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-522563",
+  "category": "dependency",
+  "problem": "How can I access the index value in a &#39;for&#39; loop?. <p>How do I access the index while iterating over a sequence with a <code>for</code> loop?</p>\n<pre class=\"lang-py prettyprint-override\"><code>xs = [8, 23, 45]\n\nfor x in xs:\n    print(&quot;item #{} = {}&quot;.format(index, x))\n</code></pre>\n<p>Desired output:</p>\n<pre class=\"lang-none prettyprint-override\"><code>item #1 = 8\nitem #2 = 23\nitem #3 = 45\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How can I access the index value in a &#39;for&#39; loop?. <p>Use the built-in function <a href=\"https://docs.python.org/3/library/functions.html#enumerate\" rel=\"noreferrer\" title=\"enumerate\"><code>en. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I access the index while iterating over a sequence with a <code>for</code> loop?</p>\n<pre class=\"lang-py prettyprint-override\"><code>xs = [8.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How can I access the index value in a &#39;for&#39; loop?. <p>Use the built-in function <a href=\"htt",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How can I access the index value in a &#39;fo",
+  "generated_at": "2026-05-27T15:17:48.457Z",
+  "source_task_id": "dependency-stackoverflow-522563"
+}

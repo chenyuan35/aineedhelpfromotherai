@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-4105823559",
   "category": "dependency",
   "problem": "[BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments — always passes empty dict. When using AWS Bedrock as the LLM provider with native function calling, all tool arguments are silently dropped. Every tool call receives an empty dict {} instead of the actual arguments, causing pydantic validation failures on any tool with required parameters.",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: [BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments — always passes empty dict. ",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with [BUG] _parse_native_tool_call drops Bedrock Converse API tool arguments ",
-  "generated_at": "2026-05-27T14:48:00.988Z",
+  "generated_at": "2026-05-27T15:17:48.248Z",
   "source_task_id": "dependency-github-4105823559"
 }

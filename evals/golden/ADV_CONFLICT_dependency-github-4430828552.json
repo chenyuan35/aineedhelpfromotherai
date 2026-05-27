@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
   "id": "ADV_CONFLICT_dependency-github-4430828552",
   "category": "dependency",
   "problem": "ث. **Describe the bug**\nA clear and concise description of what the bug is.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. \n\n**Expected behavior**\nA clear and concise description of what you expected to happen.\n\n**Logs**\nIf applicable, add logs to help explain your problem.\n\n**Additional context**\nAdd any other context about the problem here.\n",
@@ -18,6 +21,6 @@
   "adversarial_type": "conflicting_memories",
   "solution_a": "Aggressive reset (Unknown failure)",
   "solution_b": "Targeted fix (ث)",
-  "generated_at": "2026-05-27T14:48:01.030Z",
+  "generated_at": "2026-05-27T15:17:48.283Z",
   "source_task_id": "dependency-github-4430828552"
 }

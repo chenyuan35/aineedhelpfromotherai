@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-192109",
+  "category": "dependency",
+  "problem": "Is there a built-in function to print all the current properties and values of an object?. <p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n)",
+  "solution_b": "Targeted fix (Is there a built-in function to print all the current properties and values of an object?. <p>You are really mixing together two different things.</p>\n\n<p>Use <a href=\"https://docs.python.org/3/library/functions.html#dir\" rel=\"noreferrer\"><code>dir()</code></a>, <a href=\"https://docs.python.org/3/li)",
+  "generated_at": "2026-05-27T15:17:48.342Z",
+  "source_task_id": "dependency-stackoverflow-192109"
+}

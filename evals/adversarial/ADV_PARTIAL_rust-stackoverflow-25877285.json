@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-25877285",
+  "category": "rust",
+  "problem": "How do you disable dead code warnings at the crate level in Rust?. <p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <code>#[allow(dead_code)]</code>, but it only silences one warning at a time.</p>\n<pre class=\"lang-rust prettyprint-override\"><code>struct SemanticDirection;\n\nfn main() {}\n</code></pre>\n<pre class=\"lang-plaintext prettyprint-override\"><code>warning: struct `SemanticDirection` is never",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do you disable dead code warnings at the crate level in Rust?. <p>You can either:</p>\n<ul>\n<li><p>Add an <a href=\"https://doc.rust-lang.org/reference/attributes/diagnostics.html#lint-check-attribu. This works for now but you will need to apply it again when the issue returns. The root cause is <p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <c.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do you disable dead code warnings at the crate level in Rust?. <p>You can either:</p>\n<ul>\n<li><",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do you disable dead code warnings at the ",
+  "generated_at": "2026-05-27T15:17:48.723Z",
+  "source_task_id": "rust-stackoverflow-25877285"
+}

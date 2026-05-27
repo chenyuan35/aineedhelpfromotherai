@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-30154541",
+  "category": "rust",
+  "problem": "How do I concatenate strings?. <p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <code>str</code></li>\n<li><code>String</code> and <code>String</code></li>\n</ul>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I concatenate strings?. <p>When you concatenate strings, you need to allocate memory to store the result. The easiest to start with is <code>String</code> and <code>&amp;str</code>:</p>\n<pre cl. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <cod.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I concatenate strings?. <p>When you concatenate strings, you need to allocate memory to store",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I concatenate strings?. <p>When you co",
+  "generated_at": "2026-05-27T15:17:48.739Z",
+  "source_task_id": "rust-stackoverflow-30154541"
+}

@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-2507766",
+  "category": "npm",
+  "problem": "Merge / convert multiple PDF files into one PDF. <p>How could I merge / convert multiple PDF files into one large PDF file?</p>\n\n<p>I tried the following, but the content of the target file was not as expected:</p>\n\n<pre><code>convert file1.pdf file2.pdf merged.pdf\n</code></pre>\n\n<p>I need a very simple/basic command line (CLI) solution. Best would be if I could pipe the output of the merge / convert straight into <code>pdf2ps</code> ( as originally attempted in my previously asked question here (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.627Z",
+  "source_task_id": "npm-stackoverflow-2507766"
+}

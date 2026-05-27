@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-23935141",
+  "category": "docker",
+  "problem": "How to copy Docker images from one host to another without using a repository. <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like Red Hat Linux), it cannot be recreated from a Dockerfile. My Dockerfile isn't easily portable.</p>\n<p>Are there simple com (attempted fix: --cache-reset \"Reset build cache entirely\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--cache-reset",
+  "generated_at": "2026-05-27T15:17:48.556Z",
+  "source_task_id": "docker-stackoverflow-23935141"
+}

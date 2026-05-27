@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-3476017818",
   "category": "dependency",
   "problem": "Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.. ",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with Warning: Missing `Description` or `aria-describedby={undefined}` for {Di",
-  "generated_at": "2026-05-27T14:48:00.942Z",
+  "generated_at": "2026-05-27T15:17:48.213Z",
   "source_task_id": "dependency-github-3476017818"
 }

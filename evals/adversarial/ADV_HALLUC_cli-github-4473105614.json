@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-4473105614",
   "category": "cli",
-  "problem": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here. When launching langgraph-api 0.8.7 the logs are spammed with docstring parsing warnings. (attempted fix: --force-flag \"Force the operation\")",
+  "problem": "LangGraph console docstring warnings: yaml.scanner.ScannerError: mapping values are not allowed here. When launching langgraph-api 0.8.7 the logs are spammed with docstring parsing warnings. (attempted fix: --skip-validation \"Skip all validation steps\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "cli"
   ],
-  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:00.890Z",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.180Z",
   "source_task_id": "cli-github-4473105614"
 }

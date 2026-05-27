@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_npm-github-2926125659",
   "category": "npm",
   "problem": "Confusing `search_files` function description leads to misunderstanding of its purpose. **Describe the bug**\n\nThe description of the `search_files` function is ambiguous and easily misinterpreted. It suggests it might search file contents (like grep) when it actually only searches file and directory names. Claude itself is misinterpreting the function to search content in files, rather than file names matching input patterns.\n\n*Why it's confusing*\nThe function description starts with \"Recursivel",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: Confusing `search_files` function description leads to misunderstanding of its purpose",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with Confusing `search_files` function description leads to misunderstanding ",
-  "generated_at": "2026-05-27T14:48:01.092Z",
+  "generated_at": "2026-05-27T15:17:48.574Z",
   "source_task_id": "npm-github-2926125659"
 }

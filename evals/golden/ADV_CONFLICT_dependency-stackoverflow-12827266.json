@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-12827266",
+  "category": "dependency",
+  "problem": "get and set in TypeScript. <p>I'm trying to create get and set method for a property:</p>\n\n<pre><code>private _name: string;\n\nName() {\n    get:\n    {\n        return this._name;\n    }\n    set:\n    {\n        this._name = ???;\n    }\n}\n</code></pre>\n\n<p>What's the keyword to set a value?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I'm trying to create get and set method for a property:</p>\n\n<pre><code>private _name: string;\n\nName() {\n    get:\n    {\n        return this._name;\n    }\n    set:\n    {\n        this._name = ???;\n    }\n}\n</code></pre>\n\n<p>What's the keyword to set a value?</p>\n)",
+  "solution_b": "Targeted fix (get and set in TypeScript. <p>TypeScript uses getter/setter syntax that is like ECMAScript4/ActionScript3.</p>\n<pre><code>class foo {\n    private _bar: boolean = false;\n    get bar(): boolean {\n        return this._bar;\n    }\n    set bar(value: boolean) {\n        this._bar = value;\n    }\n}\n</code></)",
+  "generated_at": "2026-05-27T15:17:48.324Z",
+  "source_task_id": "dependency-stackoverflow-12827266"
+}

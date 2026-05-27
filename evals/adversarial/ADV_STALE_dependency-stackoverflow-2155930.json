@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-2155930",
+  "category": "dependency",
+  "problem": "How do I remedy &quot;The breakpoint will not currently be hit. No symbols have been loaded for this document.&quot; warning?. <p>A C# desktop application (on the Visual Studio Express edition) worked, but then it didn't work 5 seconds later.</p>\n<p>I tried the following:</p>\n<ul>\n<li>Ensure debug configuration, debug flag, and full debug information are set on all assemblies.</li>\n<li>Delete all bin and obj folders and all DLL files related to the project from my entire machine.</li>\n<li>Recrea (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.346Z",
+  "source_task_id": "dependency-stackoverflow-2155930"
+}

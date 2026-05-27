@@ -5,19 +5,26 @@
 | Source | Count |
 |--------|-------|
 | GitHub Issues | 72 |
-| Stack Overflow | 0 |
-| **Total Fresh** | 72 |
+| Stack Overflow | 92 |
+| **Total Fresh** | 164 |
 
 ### By Category
 
 | cli | 27 |
+| npm | 19 |
 | AutoGPT | 13 |
+| docker | 12 |
+| typescript | 10 |
+| react | 10 |
+| node.js | 9 |
+| python | 9 |
+| rust | 9 |
+| next.js | 9 |
+| debugging | 9 |
 | reliability | 8 |
 | langchain | 5 |
 | dependency | 5 |
 | crewAI | 4 |
-| docker | 2 |
-| npm | 2 |
 | mcp | 2 |
 | langgraph | 1 |
 | cache | 1 |
@@ -26,44 +33,50 @@
 
 ### By Breakage Pattern
 
-| unknown | 58 |
+| unknown | 125 |
+| build_error | 16 |
+| config_error | 8 |
+| auth_error | 8 |
 | timeout | 7 |
-| conflict | 2 |
-| tls_error | 1 |
+| version_mismatch | 4 |
+| deprecated_api | 3 |
+| missing_module | 3 |
+| connection_error | 3 |
+| permission_error | 3 |
+| network_error | 2 |
+| tls_error | 2 |
+| lockfile_conflict | 2 |
 | port_conflict | 1 |
-| deprecated_api | 1 |
-| connection_error | 1 |
-| permission_error | 1 |
 
 ## Golden Task Set
 
 | Metric | Value |
 |--------|-------|
-| Total Golden Tasks | 504 |
-| From Harvest | 72 |
+| Total Golden Tasks | 1106 |
+| From Harvest | 158 |
 | Auto-Generated | 0 |
-| Adversarial Ingested | 432 |
+| Adversarial Ingested | 948 |
 
 ## Memory Seeds
 
 | Metric | Value |
 |--------|-------|
-| Total Seeds | 72 |
-| Injected into Cache | 125 active, 63 decaying |
+| Total Seeds | 158 |
+| Injected into Cache | 211 active, 63 decaying |
 
 ## Adversarial Tasks
 
 | Type | Count |
 |------|-------|
-| conflicting_memories | 72 |
-| fake_answer | 72 |
-| hallucinated_flag | 72 |
-| partial_fix | 72 |
-| poisoned_hint | 72 |
-| stale_docs | 72 |
-| **Total** | **432** |
+| conflicting_memories | 158 |
+| fake_answer | 158 |
+| hallucinated_flag | 158 |
+| partial_fix | 158 |
+| poisoned_hint | 158 |
+| stale_docs | 158 |
+| **Total** | **948** |
 
 
 ---
 
-*Generated at 2026-05-27T14:48:24.569Z by Reality Pipeline*
+*Generated at 2026-05-27T15:18:04.318Z by Reality Pipeline*

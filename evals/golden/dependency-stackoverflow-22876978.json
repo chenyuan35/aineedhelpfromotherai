@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-22876978",
+  "source_url": "https://stackoverflow.com/questions/22876978/loop-inside-react-jsx",
+  "source_harvest_id": "HARVEST_SO_22876978",
+  "category": "dependency",
+  "problem": "Loop inside React JSX. <p>I'm trying to do something like the following in React JSX (where ObjectRow is a separate component):</p>\n<pre><code>&lt;tbody&gt;\n    for (var i=0; i &lt; numrows; i++) {\n        &lt;ObjectRow/&gt;\n    } \n&lt;/tbody&gt;\n</code></pre>\n<p>I realize and understand why this isn't valid JSX, since JSX maps to function calls. However, coming from template land and being new to JSX, I am unsure how I would achieve the above (adding a component multiple times).</p>\n",
+  "expected_solution_keywords": [
+    "Loop inside React JSX"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "jsx",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Loop inside React JSX. <p>Think of it like you're just calling JavaScript functions. You can't use a <code>for</code> loop where the arguments to a function call would go:</p>\n<pre><code>return tbody(\n    for (let i = 0; i &lt; numrows; i++) {\n        ObjectRow()\n    } \n)\n</code></pre>\n<p>See how th",
+  "failure_without_memory": "<p>I'm trying to do something like the following in React JSX (where ObjectRow is a separate component):</p>\n<pre><code>&lt;tbody&gt;\n    for (var i=0; i &lt; numrows; i++) {\n        &lt;ObjectRow/&gt;\n    } \n&lt;/tbody&gt;\n</code></pre>\n<p>I realize and understand why this isn't valid JSX, since JS",
+  "generated_at": "2026-05-27T15:15:22.197Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

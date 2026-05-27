@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-12827266",
+  "category": "dependency",
+  "problem": "get and set in TypeScript. <p>I'm trying to create get and set method for a property:</p>\n\n<pre><code>private _name: string;\n\nName() {\n    get:\n    {\n        return this._name;\n    }\n    set:\n    {\n        this._name = ???;\n    }\n}\n</code></pre>\n\n<p>What's the keyword to set a value?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: get and set in TypeScript. <p>TypeScript uses getter/setter syntax that is like ECMAScript4/ActionScript3.</p>\n<pre><code>class foo {\n    private _bar: boolean = false;\n    get bar(): boolean {\n      . This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm trying to create get and set method for a property:</p>\n\n<pre><code>private _name: string;\n\nName() {\n    get:\n    {\n        return this._name;\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: get and set in TypeScript. <p>TypeScript uses getter/setter syntax that is like ECMAScript4/ActionSc",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: get and set in TypeScript. <p>TypeScript uses",
+  "generated_at": "2026-05-27T15:17:48.324Z",
+  "source_task_id": "dependency-stackoverflow-12827266"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "npm-stackoverflow-18875674",
+  "source_url": "https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencie",
+  "source_harvest_id": "HARVEST_SO_18875674",
+  "category": "npm",
+  "problem": "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand those explanations. Can someone say in simpler words? Maybe with examples if it's hard to choose simple words?</p>\n<p>Also added <code>peerDependencies</code>, which is closely related and might cause confusion.</p>\n",
+  "expected_solution_keywords": [
+    "update dependency",
+    "peer dependency",
+    "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "node.js",
+    "npm",
+    "dependencies",
+    "source:stackoverflow",
+    "version_mismatch"
+  ],
+  "memory_hint": "What&#39;s the difference between dependencies, devDependencies, and peerDependencies in NPM package.json file?. <p>Summary of important behavior differences:</p>\n<ul>\n<li><p><a href=\"https://github.com/npm/npm/blob/2e3776bf5676bc24fec6239a3420f377fe98acde/doc/files/package.json.md#dependencies\" rel",
+  "failure_without_memory": "<p><a href=\"https://docs.npmjs.com/files/package.json\" rel=\"noreferrer\">This documentation</a> answers my question very poorly. I didn't understand those explanations. Can someone say in simpler words? Maybe with examples if it's hard to choose simple words?</p>\n<p>Also added <code>peerDependencies<",
+  "generated_at": "2026-05-27T15:15:19.205Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "environment": ""
+}

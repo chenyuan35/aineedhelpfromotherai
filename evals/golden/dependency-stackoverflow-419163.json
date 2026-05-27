@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-419163",
+  "source_url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+  "source_harvest_id": "HARVEST_SO_419163",
+  "category": "dependency",
+  "problem": "What does if __name__ == &quot;__main__&quot;: do?. <p>What does this do, and why should one include the <code>if</code> statement?</p>\n<pre class=\"lang-py prettyprint-override\"><code>if __name__ == &quot;__main__&quot;:\n    print(&quot;Hello, World!&quot;)\n</code></pre>\n<hr />\n<p><sub>If you are trying to close a question where someone should be using this idiom and isn't, consider closing as a duplicate of <a href=\"https://stackoverflow.com/questions/6523791\">Why is Python running my module wh",
+  "expected_solution_keywords": [
+    "What does if __name__ == &quot;__main__&quot;"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "namespaces",
+    "program-entry-point",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What does if __name__ == &quot;__main__&quot;: do?. <h1>Short Answer</h1>\n<p>It's boilerplate code that protects users from accidentally invoking the script when they didn't intend to. Here are some common problems when the guard is omitted from a script:</p>\n<ul>\n<li><p>If you import the guardless ",
+  "failure_without_memory": "<p>What does this do, and why should one include the <code>if</code> statement?</p>\n<pre class=\"lang-py prettyprint-override\"><code>if __name__ == &quot;__main__&quot;:\n    print(&quot;Hello, World!&quot;)\n</code></pre>\n<hr />\n<p><sub>If you are trying to close a question where someone should be usi",
+  "generated_at": "2026-05-27T15:15:20.617Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

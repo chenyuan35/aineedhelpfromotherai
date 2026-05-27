@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-30626030",
+  "category": "dependency",
+  "problem": "Can you force a React component to rerender without calling setState?. <p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, and then I want to rerender the component when any change is detected.</p>\n\n<p>With a top-level <code>React.render</code> this has been possible, but within a component it doesn't work (which makes some sense since the <code>render</code> method just returns an object).</p>\n\n<p>H",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, and then I want to rerender the component when any change is detected.</p>\n\n<p>With a top-level <code>React.render</code> this has been possible, but w)",
+  "solution_b": "Targeted fix (Can you force a React component to rerender without calling setState?. <p>In class components, you can call <code>this.forceUpdate()</code> to force a rerender.</p>\n<p>Documentation: <a href=\"https://react.dev/reference/react/Component#forceupdate\" rel=\"nofollow noreferrer\">https://react.dev/referen)",
+  "generated_at": "2026-05-27T15:17:48.371Z",
+  "source_task_id": "dependency-stackoverflow-30626030"
+}

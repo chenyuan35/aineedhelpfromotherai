@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-23353173",
+  "source_url": "https://stackoverflow.com/questions/23353173/unfortunately-myapp-has-stopped-how-can-i-solve-this",
+  "source_harvest_id": "HARVEST_SO_23353173",
+  "category": "dependency",
+  "problem": "Unfortunately MyApp has stopped. How can I solve this?. <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n  <p>Unfortunately, MyApp has stopped.</p>\n</blockquote>\n\n<p>What can I do to solve this?</p>\n\n<hr/>\n\n<p><em>About this question - obviously inspired by <a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors\">What is a stack trace, and how can I use it to debug my application",
+  "expected_solution_keywords": [
+    "Unfortunately MyApp has stopped. How can I solve this?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "java",
+    "android",
+    "debugging",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "Unfortunately MyApp has stopped. How can I solve this?. <p><em>This answer describes the process of retrieving the stack trace. Already have the stack trace? Read up on stack traces in \"<a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-applic",
+  "failure_without_memory": "errors\">What is a stack trace, and how can I use it to debug my application errors?</a>, there are lots of questions stating that their application has crashed, without any further detail. This questi | <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n ",
+  "generated_at": "2026-05-27T15:15:23.503Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

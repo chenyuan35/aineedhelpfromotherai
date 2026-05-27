@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-4224149259",
   "category": "cli",
   "problem": "MongoDB Toolkit fails with Firestore MongoDB-compatible endpoint due to unsupported authorizedCollections option. **Issue**\n\nMongoDB Toolkit fails when used with a Firestore MongoDB-compatible endpoint because the authorizedCollections option is not supported.\n\n**Description**\n\nWhen initializing MongoDBDatabase, LangChain internally executes a listCollections command via PyMongo. The MongoDB driver includes the option authorizedCollections=true.\n\nFirestore's MongoDB-compatible endpoint rejects t (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:00.805Z",
+  "generated_at": "2026-05-27T15:17:48.122Z",
   "source_task_id": "cli-github-4224149259"
 }

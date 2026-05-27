@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-18050071",
+  "source_url": "https://stackoverflow.com/questions/18050071/php-parse-syntax-errors-and-how-to-solve-them",
+  "source_harvest_id": "HARVEST_SO_18050071",
+  "category": "dependency",
+  "problem": "PHP parse/syntax errors; and how to solve them. <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse error: syntax error, unexpected '{' in index.php on line 20</p>\n</blockquote>\n<p>The unexpected symbol isn't always the real culprit. But the line number gives a rough idea of where to start looking.</p>\n<blockquote>\n<p>Always ",
+  "expected_solution_keywords": [
+    "PHP parse/syntax errors; and how to solve them"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "php",
+    "parsing",
+    "debugging",
+    "source:stackoverflow",
+    "build_error",
+    "has:logs"
+  ],
+  "memory_hint": "PHP parse/syntax errors; and how to solve them. <h3>What are the syntax errors?</h3>\n\n<p>PHP belongs to the <a href=\"http://en.wikipedia.org/wiki/List_of_C-based_programming_languages\" rel=\"noreferrer\">C-style</a> and <a href=\"http://en.wikipedia.org/wiki/Imperative_programming\" rel=\"noreferrer\">imp",
+  "failure_without_memory": "errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse erro | <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's",
+  "generated_at": "2026-05-27T15:15:23.688Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "build_error"
+  ],
+  "environment": ""
+}

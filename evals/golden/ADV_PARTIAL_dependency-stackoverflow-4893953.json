@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-4893953",
+  "category": "dependency",
+  "problem": "Run/install/debug Android applications over Wi-Fi?. <p>I thought there was a way to test your applications in development over Wi-Fi. Is this possible?</p>\n\n<p>I'd love to be able to untether my phone and develop wirelessly.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Run/install/debug Android applications over Wi-Fi?. <p>See forum post <em><a href=\"http://forum.xda-developers.com/showpost.php?p=7594419&amp;postcount=9\" rel=\"noreferrer\">Any way to view Android scre. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I thought there was a way to test your applications in development over Wi-Fi. Is this possible?</p>\n\n<p>I'd love to be able to untether my phone a.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Run/install/debug Android applications over Wi-Fi?. <p>See forum post <em><a href=\"http://forum.xda-",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Run/install/debug Android applications over W",
+  "generated_at": "2026-05-27T15:17:48.446Z",
+  "source_task_id": "dependency-stackoverflow-4893953"
+}

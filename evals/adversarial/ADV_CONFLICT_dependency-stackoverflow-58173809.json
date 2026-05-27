@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-58173809",
+  "category": "dependency",
+  "problem": "Next.js Redirect from / to another page. <p>I'm new in Next.js and I'm wondering how to redirect from the start page ( <code>/</code> ) to <code>/hello-nextjs</code> for example. Once the user loads a page, determine if path === <code>/</code> and redirect to <code>/hello-nextjs</code> if so.</p>\n<p>In react-router we do something like:</p>\n<pre><code>&lt;Switch&gt;\n  &lt;Route path=&quot;/hello-nextjs&quot; exact component={HelloNextjs} /&gt;\n  &lt;Redirect to=&quot;/hello-nextjs&quot; /&gt; //",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I'm new in Next.js and I'm wondering how to redirect from the start page ( <code>/</code> ) to <code>/hello-nextjs</code> for example. Once the user loads a page, determine if path === <code>/</code> and redirect to <code>/hello-nextjs</code> if so.</p>\n<p>In react-router we do something like:</p)",
+  "solution_b": "Targeted fix (Next.js Redirect from / to another page. <p><strong>Update 2024 App Router: the <a href=\"https://stackoverflow.com/a/58182678/5513532\">currently most voted answer above</a> is more up-to-date than this one.</strong></p>\n<h2>Caveat</h2>\n<p><strong>First, you should asses whether you need client-side )",
+  "generated_at": "2026-05-27T15:17:48.477Z",
+  "source_task_id": "dependency-stackoverflow-58173809"
+}

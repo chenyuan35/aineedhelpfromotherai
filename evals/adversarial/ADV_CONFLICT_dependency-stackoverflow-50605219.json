@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-50605219",
+  "category": "dependency",
+  "problem": "Difference between npx and npm?. <p>I have just started learning React, and Facebook helps in simplifying the initial setup by providing the <a href=\"https://github.com/facebook/create-react-app\" rel=\"noreferrer\">following ready-made project</a>.  </p>\n\n<p>If I have to install the skeleton project I have to type <code>npx create-react-app my-app</code> in command-line.</p>\n\n<p>I was wondering why does the Facebook in Github have <code>npx create-react-app my-app</code> rather than <code>npm crea",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I have just started learning React, and Facebook helps in simplifying the initial setup by providing the <a href=\"https://github.com/facebook/create-react-app\" rel=\"noreferrer\">following ready-made project</a>.  </p>\n\n<p>If I have to install the skeleton project I have to type <code>npx create-re)",
+  "solution_b": "Targeted fix (Difference between npx and npm?. <h2><a href=\"https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner\" rel=\"noreferrer\">Introducing npx: an npm package runner</a></h2>\n<h3><code>NPM</code> - <em>Manages</em> packages <em>but</em> doesn't make life easy <em>executing</em> any.<)",
+  "generated_at": "2026-05-27T15:17:48.453Z",
+  "source_task_id": "dependency-stackoverflow-50605219"
+}

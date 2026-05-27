@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-4351521",
+  "source_url": "https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-node-js-program-and-receive-them",
+  "source_harvest_id": "HARVEST_SO_4351521",
+  "category": "dependency",
+  "problem": "How do I pass command line arguments to a Node.js program and receive them?. <p>I have a web server written in <a href=\"http://en.wikipedia.org/wiki/Node.js\" rel=\"noreferrer\">Node.js</a> and I would like to launch with a specific folder. I'm not sure how to access arguments in JavaScript. I'm running node like this:</p>\n\n<pre><code>$ node server.js folder\n</code></pre>\n\n<p>here <code>server.js</code> is my server code. Node.js help says this is possible:</p>\n\n<pre><code>$ node -h\nUsage: node [op",
+  "expected_solution_keywords": [
+    "How do I pass command line arguments to a Node.js program and receive them?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "node.js",
+    "arguments",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I pass command line arguments to a Node.js program and receive them?. <h1>Standard Method (no library)</h1>\n\n<p>The arguments are stored in <code>process.argv</code></p>\n\n<p>Here are <a href=\"http://nodejs.org/docs/latest/api/process.html#process_process_argv\" rel=\"noreferrer\">the node docs o",
+  "failure_without_memory": "<p>I have a web server written in <a href=\"http://en.wikipedia.org/wiki/Node.js\" rel=\"noreferrer\">Node.js</a> and I would like to launch with a specific folder. I'm not sure how to access arguments in JavaScript. I'm running node like this:</p>\n\n<pre><code>$ node server.js folder\n</code></pre>\n\n<p>h",
+  "generated_at": "2026-05-27T15:15:19.690Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

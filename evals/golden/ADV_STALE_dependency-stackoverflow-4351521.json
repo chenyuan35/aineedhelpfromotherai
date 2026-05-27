@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-4351521",
+  "category": "dependency",
+  "problem": "How do I pass command line arguments to a Node.js program and receive them?. <p>I have a web server written in <a href=\"http://en.wikipedia.org/wiki/Node.js\" rel=\"noreferrer\">Node.js</a> and I would like to launch with a specific folder. I'm not sure how to access arguments in JavaScript. I'm running node like this:</p>\n\n<pre><code>$ node server.js folder\n</code></pre>\n\n<p>here <code>server.js</code> is my server code. Node.js help says this is possible:</p>\n\n<pre><code>$ node -h\nUsage: node [op (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.437Z",
+  "source_task_id": "dependency-stackoverflow-4351521"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-89228",
+  "category": "dependency",
+  "problem": "How do I execute a program or call a system command?. <p>How do I call an external command within Python as if I had typed it in a shell or command prompt?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I execute a program or call a system command?. <p>Use <a href=\"https://docs.python.org/library/subprocess.html#subprocess.run\" rel=\"noreferrer\"><code>subprocess.run</code></a>:</p>\n<pre class=\". This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I call an external command within Python as if I had typed it in a shell or command prompt?</p>\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I execute a program or call a system command?. <p>Use <a href=\"https://docs.python.org/librar",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I execute a program or call a system c",
+  "generated_at": "2026-05-27T15:17:48.513Z",
+  "source_task_id": "dependency-stackoverflow-89228"
+}

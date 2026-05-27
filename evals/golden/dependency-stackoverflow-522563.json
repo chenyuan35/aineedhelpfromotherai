@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-522563",
+  "source_url": "https://stackoverflow.com/questions/522563/how-can-i-access-the-index-value-in-a-for-loop",
+  "source_harvest_id": "HARVEST_SO_522563",
+  "category": "dependency",
+  "problem": "How can I access the index value in a &#39;for&#39; loop?. <p>How do I access the index while iterating over a sequence with a <code>for</code> loop?</p>\n<pre class=\"lang-py prettyprint-override\"><code>xs = [8, 23, 45]\n\nfor x in xs:\n    print(&quot;item #{} = {}&quot;.format(index, x))\n</code></pre>\n<p>Desired output:</p>\n<pre class=\"lang-none prettyprint-override\"><code>item #1 = 8\nitem #2 = 23\nitem #3 = 45\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "How can I access the index value in a &#39;for&#39; loop?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "loops",
+    "list",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How can I access the index value in a &#39;for&#39; loop?. <p>Use the built-in function <a href=\"https://docs.python.org/3/library/functions.html#enumerate\" rel=\"noreferrer\" title=\"enumerate\"><code>enumerate()</code></a>:</p>\n<pre><code>for idx, x in enumerate(xs):\n    print(idx, x)\n</code></pre>\n<p",
+  "failure_without_memory": "<p>How do I access the index while iterating over a sequence with a <code>for</code> loop?</p>\n<pre class=\"lang-py prettyprint-override\"><code>xs = [8, 23, 45]\n\nfor x in xs:\n    print(&quot;item #{} = {}&quot;.format(index, x))\n</code></pre>\n<p>Desired output:</p>\n<pre class=\"lang-none prettyprint-o",
+  "generated_at": "2026-05-27T15:15:20.952Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

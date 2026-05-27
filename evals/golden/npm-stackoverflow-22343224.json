@@ -1,0 +1,26 @@
+{
+  "id": "npm-stackoverflow-22343224",
+  "source_url": "https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-and-caret-in-package-json",
+  "source_harvest_id": "HARVEST_SO_22343224",
+  "category": "npm",
+  "problem": "What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>After I upgraded to the latest stable <code>node</code> and <code>npm</code>, I tried <code>npm install moment --save</code>. It saves the entry in the <code>package.json</code> with the caret <code>^</code> prefix. Previously, it was a tilde <code>~</code> prefix.</p>\n<ol>\n<li>Why are these changes made in <code>npm</code>?</li>\n<li>What is the difference between tilde <code>~</code> and caret <code>^</code>?</li>\n<li>",
+  "expected_solution_keywords": [
+    "What&#39;s the difference between tilde(~) and caret(^) in package.json?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "node.js",
+    "npm",
+    "package.json",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>See the <a href=\"https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies\" rel=\"noreferrer\">NPM docs</a> and <a href=\"https://docs.npmjs.com/cli/v6/using-npm/semver\" rel=\"noreferrer\">semver docs</a>:</p>\n<ul>",
+  "failure_without_memory": "<p>After I upgraded to the latest stable <code>node</code> and <code>npm</code>, I tried <code>npm install moment --save</code>. It saves the entry in the <code>package.json</code> with the caret <code>^</code> prefix. Previously, it was a tilde <code>~</code> prefix.</p>\n<ol>\n<li>Why are these chan",
+  "generated_at": "2026-05-27T15:15:19.101Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

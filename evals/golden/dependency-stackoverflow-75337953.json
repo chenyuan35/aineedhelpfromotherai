@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-75337953",
+  "source_url": "https://stackoverflow.com/questions/75337953/what-causes-nextjs-warning-extra-attributes-from-the-server-data-new-gr-c-s-c",
+  "source_harvest_id": "HARVEST_SO_75337953",
+  "category": "dependency",
+  "problem": "What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed,cz-shortcut-listen,data-lt-installed</p>\n</blockquote>\n<p>I don't know why it happens. What is the explanation for this?</p>\n",
+  "expected_solution_keywords": [
+    "What causes NextJS Warning"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "ecmascript-6",
+    "next.js",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>Disabling the Grammarly extension solved the problem for me.</p>\n<p>You could upvote <a href=\"https://chromewebstore.google.com/reviews/9c74943a-2ebb-4f73-af5f-2b2945c97349\" rel=\"nofollow n",
+  "failure_without_memory": "<p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed,cz-shortcut-listen,data-lt-installed</p>\n</blockquote>\n<p>I don't know why it happens. What is the explanation for this",
+  "generated_at": "2026-05-27T15:15:21.857Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

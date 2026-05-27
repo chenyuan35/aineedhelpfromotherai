@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-22049212",
+  "category": "docker",
+  "problem": "Copying files from Docker container to host. <p>I'm thinking of using Docker to build my dependencies on a Continuous Integration (CI) server, so that I don't have to install all the runtimes and libraries on the agents themselves. </p>\n\n<p>To achieve this I would need to copy the build artifacts that are built inside the container back into the host. Is that possible?</p>\n (attempted fix: --cache-reset \"Reset build cache entirely\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--cache-reset",
+  "generated_at": "2026-05-27T15:17:48.548Z",
+  "source_task_id": "docker-stackoverflow-22049212"
+}

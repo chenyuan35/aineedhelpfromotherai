@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-42273853",
+  "category": "dependency",
+  "problem": "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n<pre><code>if (node.parent!.kind === ts.SyntaxKind.ObjectLiteralExpression) {\n    return;\n}\n</code></pre>\n<p>Notice the <code>!</code> operator after <code>node.parent</code>. Interesting!</p>\n<p>I first tried compiling the file locally with my currently installed version of TS (1.5.3). The resulting error p",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>That's the non-null assertion operator. It is a way to tell the compiler &quot;this expression cannot b. This works for now but you will need to apply it again when the issue returns. The root cause is error pointed to the exact location of the bang:</p>\n<pre><code>$ tsc --noImplicitAny memberAccessRule.ts \nnoPublicModifierRule.ts(57,24): error TS100.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>Tha",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: In TypeScript, what is the ! (exclamation mar",
+  "generated_at": "2026-05-27T15:17:48.433Z",
+  "source_task_id": "dependency-stackoverflow-42273853"
+}

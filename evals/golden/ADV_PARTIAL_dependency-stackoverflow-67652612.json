@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-67652612",
+  "category": "dependency",
+  "problem": "ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\"https://nextjs.org/learn/basics/assets-metadata-css/global-styles\" rel=\"noreferrer\">Global Styles step</a>, I started getting the following runtime error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p><strong>Delete the <code>.next</code> folder at the root of your project, relaunch your project, and force-refresh yo. This works for now but you will need to apply it again when the issue returns. The root cause is error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunk.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p><strong>Delete th",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: ChunkLoadError: Loading chunk node_modules_ne",
+  "generated_at": "2026-05-27T15:17:48.486Z",
+  "source_task_id": "dependency-stackoverflow-67652612"
+}

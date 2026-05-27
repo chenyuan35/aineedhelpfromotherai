@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_rust-stackoverflow-25877285",
+  "category": "rust",
+  "problem": "How do you disable dead code warnings at the crate level in Rust?. <p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <code>#[allow(dead_code)]</code>, but it only silences one warning at a time.</p>\n<pre class=\"lang-rust prettyprint-override\"><code>struct SemanticDirection;\n\nfn main() {}\n</code></pre>\n<pre class=\"lang-plaintext prettyprint-override\"><code>warning: struct `SemanticDirection` is never",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "rust"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <code>#[allow(dead_code)]</code>, but it only silences one warning at a time.</p>\n<pre class=\"lang-rust prettyprint-override\"><code>struct SemanticDirec)",
+  "solution_b": "Targeted fix (How do you disable dead code warnings at the crate level in Rust?. <p>You can either:</p>\n<ul>\n<li><p>Add an <a href=\"https://doc.rust-lang.org/reference/attributes/diagnostics.html#lint-check-attributes\" rel=\"noreferrer\"><code>allow</code></a> attribute on a struct, module, function, etc.:</p>\n<pre)",
+  "generated_at": "2026-05-27T15:17:48.723Z",
+  "source_task_id": "rust-stackoverflow-25877285"
+}

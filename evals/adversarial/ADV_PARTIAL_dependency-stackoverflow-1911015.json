@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-1911015",
+  "category": "dependency",
+  "problem": "How do I debug Node.js applications?. <p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/Google_Chrome\" rel=\"noreferrer\">Google Chrome</a> has a command-line debugger. Is this debugger available for Node.js as well?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I debug Node.js applications?. <p>The <a href=\"http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29\" rel=\"noreferrer\">V8</a> debugger released as part of the Google <a href=\"http://code.goog. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I debug Node.js applications?. <p>The <a href=\"http://en.wikipedia.org/wiki/V8_%28JavaScript_",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I debug Node.js applications?. <p>The ",
+  "generated_at": "2026-05-27T15:17:48.338Z",
+  "source_task_id": "dependency-stackoverflow-1911015"
+}

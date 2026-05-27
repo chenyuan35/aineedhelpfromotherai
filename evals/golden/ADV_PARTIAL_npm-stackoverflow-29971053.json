@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-29971053",
+  "category": "npm",
+  "problem": "How to open Visual Studio Code from the command line on OSX?. <p>The <a href=\"https://code.visualstudio.com/docs/codebasics#_launching-vscode\">docs</a> mention an executable called <code>code</code>, but I'm not sure where I can find that so I can put it on my path. The zip I downloaded from the VSCode site did not include any such executable. (I am able to run the <code>.app</code> just fine.)</p>\n\n<p>Is this a Windows-only thing? </p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to open Visual Studio Code from the command line on OSX?. <p>From the <a href=\"https://code.visualstudio.com/docs/setup/osx\" rel=\"noreferrer\">Visual Studio Code Setup page</a>:</p>\n<blockquote>\n<p. This works for now but you will need to apply it again when the issue returns. The root cause is <p>The <a href=\"https://code.visualstudio.com/docs/codebasics#_launching-vscode\">docs</a> mention an executable called <code>code</code>, but I'm not .",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to open Visual Studio Code from the command line on OSX?. <p>From the <a href=\"https://code.visu",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to open Visual Studio Code from the comma",
+  "generated_at": "2026-05-27T15:17:48.631Z",
+  "source_task_id": "npm-stackoverflow-29971053"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-18050071",
+  "category": "dependency",
+  "problem": "PHP parse/syntax errors; and how to solve them. <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse error: syntax error, unexpected '{' in index.php on line 20</p>\n</blockquote>\n<p>The unexpected symbol isn't always the real culprit. But the line number gives a rough idea of where to start looking.</p>\n<blockquote>\n<p>Always ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: PHP parse/syntax errors; and how to solve them. <h3>What are the syntax errors?</h3>\n\n<p>PHP belongs to the <a href=\"http://en.wikipedia.org/wiki/List_of_C-based_programming_languages\" rel=\"noreferrer. This works for now but you will need to apply it again when the issue returns. The root cause is errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error me.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: PHP parse/syntax errors; and how to solve them. <h3>What are the syntax errors?</h3>\n\n<p>PHP belongs",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: PHP parse/syntax errors; and how to solve the",
+  "generated_at": "2026-05-27T15:17:48.334Z",
+  "source_task_id": "dependency-stackoverflow-18050071"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-25106554",
+  "category": "rust",
+  "problem": "Why doesn&#39;t println! work in Rust unit tests?. <p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    file.read_to_string(&amp;mut contents).unwrap();\n    println!(&quot;{contents}&quot;);\n}\n    \n#[test]\nfn test_read_file() {\n    let path = &amp;Path:",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Why doesn&#39;t println! work in Rust unit tests?. <p>This happens because Rust test programs hide the stdout of successful tests in order for the test output to be tidy. You can disable this behavior. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Why doesn&#39;t println! work in Rust unit tests?. <p>This happens because Rust test programs hide t",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Why doesn&#39;t println! work in Rust unit te",
+  "generated_at": "2026-05-27T15:17:48.715Z",
+  "source_task_id": "rust-stackoverflow-25106554"
+}

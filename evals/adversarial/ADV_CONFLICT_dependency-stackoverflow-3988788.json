@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-3988788",
+  "category": "dependency",
+  "problem": "What is a stack trace, and how can I use it to debug my application errors?. <p>Sometimes when I run my application it gives me an error that looks like:</p>\n\n<pre><code>Exception in thread \"main\" java.lang.NullPointerException\n        at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.myproject.Bootstrap.main(Bootstrap.java:14)\n</code></pre>\n\n<p>People have referred to this as a \"stack trace\". <strong",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.myproject.Bootstrap.main(Bootstrap.java:14)\n | <p>Sometimes when I run my application it gives me an error that looks like:</p>\n\n<pre><code>Exception in t)",
+  "solution_b": "Targeted fix (What is a stack trace, and how can I use it to debug my application errors?. <p>In simple terms, a <strong>stack trace</strong> is a list of the method calls that the application was in the middle of when an Exception was thrown.</p>\n<p><strong>Simple Example</strong></p>\n<p>With the example given i)",
+  "generated_at": "2026-05-27T15:17:48.419Z",
+  "source_task_id": "dependency-stackoverflow-3988788"
+}

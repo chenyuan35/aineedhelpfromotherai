@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-10729276",
+  "category": "dependency",
+  "problem": "How can I get the full object in Node.js&#39;s console.log(), rather than &#39;[Object]&#39;?. <p>I have this object:</p>\n<pre><code>const myObject = {\n   &quot;a&quot;:&quot;a&quot;,\n   &quot;b&quot;:{\n      &quot;c&quot;:&quot;c&quot;,\n      &quot;d&quot;:{\n         &quot;e&quot;:&quot;e&quot;,\n         &quot;f&quot;:{\n            &quot;g&quot;:&quot;g&quot;,\n            &quot;h&quot;:{\n               &quot;i&quot;:&quot;i&quot;\n            }\n         }\n      }\n   }\n};\n</code></pre>\n<p>But whe",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How can I get the full object in Node.js&#39;s console.log(), rather than &#39;[Object]&#39;?. <p>You need to use <a href=\"http://nodejs.org/api/util.html#util_util_inspect_object_options\" rel=\"norefe. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I have this object:</p>\n<pre><code>const myObject = {\n   &quot;a&quot;:&quot;a&quot;,\n   &quot;b&quot;:{\n      &quot;c&quot;:&quot;c&quot;,\n      &.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How can I get the full object in Node.js&#39;s console.log(), rather than &#39;[Object]&#39;?. <p>Yo",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How can I get the full object in Node.js&#39;",
+  "generated_at": "2026-05-27T15:17:48.313Z",
+  "source_task_id": "dependency-stackoverflow-10729276"
+}

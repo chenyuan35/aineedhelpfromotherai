@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_docker-stackoverflow-16647069",
+  "category": "docker",
+  "problem": "Should I use Vagrant or Docker for creating an isolated environment?. <p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n (docker run --memory is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "docker"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "docker"
+  ],
+  "memory_hint": "Use --memory-reservation for resource limits. The old syntax was removed.",
+  "failure_without_memory": "Keeps using docker run --memory which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "docker run --memory",
+  "replacement_api": "docker run --memory-reservation",
+  "generated_at": "2026-05-27T15:17:48.536Z",
+  "source_task_id": "docker-stackoverflow-16647069"
+}

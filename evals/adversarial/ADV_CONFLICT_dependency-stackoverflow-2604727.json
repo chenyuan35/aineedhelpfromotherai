@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-2604727",
+  "category": "dependency",
+  "problem": "How can I connect to Android with ADB over TCP?. <p>I am attempting to debug an application on a <a href=\"https://en.wikipedia.org/wiki/Motorola_Droid\" rel=\"noreferrer\">Motorola Droid</a>, but I am having some difficulty connecting to the device via USB. My development server is a Windows 7 64-bit VM running in <a href=\"http://en.wikipedia.org/wiki/Hyper-V\" rel=\"noreferrer\">Hyper-V</a>, and so I cannot connect directly via USB in the guest or from the host.</p>\n\n<p>I installed a couple of differ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I am attempting to debug an application on a <a href=\"https://en.wikipedia.org/wiki/Motorola_Droid\" rel=\"noreferrer\">Motorola Droid</a>, but I am having some difficulty connecting to the device via USB. My development server is a Windows 7 64-bit VM running in <a href=\"http://en.wikipedia.org/wik)",
+  "solution_b": "Targeted fix (How can I connect to Android with ADB over TCP?. <p>I ended up getting the Eltima USB to Ethernet software working after finally giving up on the possibility of a direct to device connection over TCP. I have pretty much decided that it is not possible to connect to a device across the network only a)",
+  "generated_at": "2026-05-27T15:17:48.361Z",
+  "source_task_id": "dependency-stackoverflow-2604727"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-273192",
+  "source_url": "https://stackoverflow.com/questions/273192/how-do-i-create-a-directory-and-any-missing-parent-directories",
+  "source_harvest_id": "HARVEST_SO_273192",
+  "category": "dependency",
+  "problem": "How do I create a directory, and any missing parent directories?. <p>How do I create a directory at a given path, and also create any missing parent directories along that path? For example, the Bash command <code>mkdir -p /path/to/nested/directory</code> does this.</p>\n",
+  "expected_solution_keywords": [
+    "How do I create a directory, and any missing parent directories?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "exception",
+    "path",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I create a directory, and any missing parent directories?. <p>On Python ≥ 3.5, use <a href=\"https://docs.python.org/library/pathlib.html#pathlib.Path.mkdir\" rel=\"noreferrer\"><code>pathlib.Path.mkdir</code></a>:</p>\n\n<pre><code>from pathlib import Path\nPath(\"/my/directory\").mkdir(parents=True,",
+  "failure_without_memory": "<p>How do I create a directory at a given path, and also create any missing parent directories along that path? For example, the Bash command <code>mkdir -p /path/to/nested/directory</code> does this.</p>\n",
+  "generated_at": "2026-05-27T15:15:20.893Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

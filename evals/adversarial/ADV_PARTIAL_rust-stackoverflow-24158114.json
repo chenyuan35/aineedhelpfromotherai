@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-24158114",
+  "category": "rust",
+  "problem": "What are the differences between Rust&#39;s `String` and `str`?. <p>Why does Rust have both <a href=\"https://doc.rust-lang.org/std/string/struct.String.html\" rel=\"noreferrer\"><code>String</code></a> and <a href=\"https://doc.rust-lang.org/std/primitive.str.html\" rel=\"noreferrer\"><code>str</code></a>? What are the differences between them, and when should one be used over the other? Is one of them getting deprecated?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What are the differences between Rust&#39;s `String` and `str`?. <p><code>String</code> is the dynamic heap string type, like <code>Vec</code>: use it when you need to own or modify your string data.<. This works for now but you will need to apply it again when the issue returns. The root cause is <p>Why does Rust have both <a href=\"https://doc.rust-lang.org/std/string/struct.String.html\" rel=\"noreferrer\"><code>String</code></a> and <a href=\"htt.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What are the differences between Rust&#39;s `String` and `str`?. <p><code>String</code> is the dynam",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What are the differences between Rust&#39;s `",
+  "generated_at": "2026-05-27T15:17:48.709Z",
+  "source_task_id": "rust-stackoverflow-24158114"
+}

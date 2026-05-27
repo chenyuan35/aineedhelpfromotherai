@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-37233735",
+  "source_url": "https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript",
+  "source_harvest_id": "HARVEST_SO_37233735",
+  "category": "dependency",
+  "problem": "Interfaces vs Types in TypeScript. <p>What is the difference between these statements (<code>interface</code> vs <code>type</code>) in TypeScript?</p>\n<pre class=\"lang-ts prettyprint-override\"><code>interface X {\n    a: number\n    b: string\n}\n\ntype X = {\n    a: number\n    b: string\n};\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "Interfaces vs Types in TypeScript"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "typescript",
+    "interface",
+    "typescript-types",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Interfaces vs Types in TypeScript. <p><strong>Update March 2021</strong>: The newer TypeScript Handbook (also mentioned in <a href=\"https://stackoverflow.com/a/65164318/52277\">nju-clc\nanswer  below</a>) has a section <a href=\"https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differe",
+  "failure_without_memory": "<p>What is the difference between these statements (<code>interface</code> vs <code>type</code>) in TypeScript?</p>\n<pre class=\"lang-ts prettyprint-override\"><code>interface X {\n    a: number\n    b: string\n}\n\ntype X = {\n    a: number\n    b: string\n};\n</code></pre>\n",
+  "generated_at": "2026-05-27T15:15:20.008Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-952914",
+  "category": "dependency",
+  "problem": "How do I make a flat list out of a list of lists?. <p>I have a list of lists like</p>\n<pre><code>[\n    [1, 2, 3],\n    [4, 5, 6],\n    [7],\n    [8, 9]\n]\n</code></pre>\n<p>How can I flatten it to get <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>?</p>\n<hr />\n<p><em>Editor's notes:</em></p>\n<p><sub>If your list of lists comes from a nested list comprehension, the problem can be solved more simply/directly by fixing the comprehension; please see <a href=\"https://stackoverflow.com/questions/1077015\">How can ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I make a flat list out of a list of lists?. <p>A list of lists named <code>xss</code> can be flattened using a nested <a href=\"https://docs.python.org/3/tutorial/datastructures.html#list-compre. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I have a list of lists like</p>\n<pre><code>[\n    [1, 2, 3],\n    [4, 5, 6],\n    [7],\n    [8, 9]\n]\n</code></pre>\n<p>How can I flatten it to get <code.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I make a flat list out of a list of lists?. <p>A list of lists named <code>xss</code> can be ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I make a flat list out of a list of li",
+  "generated_at": "2026-05-27T15:17:48.518Z",
+  "source_task_id": "dependency-stackoverflow-952914"
+}

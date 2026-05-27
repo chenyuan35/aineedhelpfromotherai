@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-31048953",
+  "category": "dependency",
+  "problem": "What are these three dots in React doing?. <p>What does the <code>...</code> do in this React (using JSX) code and what is it called?</p>\n\n<pre><code>&lt;Modal {...this.props} title='Modal heading' animation={false}&gt;\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What are these three dots in React doing?. <p>That's <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax\" rel=\"noreferrer\"><em>property spread notation</. This works for now but you will need to apply it again when the issue returns. The root cause is <p>What does the <code>...</code> do in this React (using JSX) code and what is it called?</p>\n\n<pre><code>&lt;Modal {...this.props} title='Modal head.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What are these three dots in React doing?. <p>That's <a href=\"https://developer.mozilla.org/en-US/do",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What are these three dots in React doing?. <p",
+  "generated_at": "2026-05-27T15:17:48.374Z",
+  "source_task_id": "dependency-stackoverflow-31048953"
+}

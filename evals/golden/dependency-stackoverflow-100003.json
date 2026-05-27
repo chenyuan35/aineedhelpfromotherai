@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-100003",
+  "source_url": "https://stackoverflow.com/questions/100003/what-are-metaclasses-in-python",
+  "source_harvest_id": "HARVEST_SO_100003",
+  "category": "dependency",
+  "problem": "What are metaclasses in Python?. <p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n",
+  "expected_solution_keywords": [
+    "What are metaclasses in Python?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "oop",
+    "metaclass",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What are metaclasses in Python?. <p>A metaclass is the class of a class. A class defines how an instance of the class (i.e. an object) behaves while a metaclass defines how a class behaves. A class is an instance of a metaclass.</p>\n\n<p>While in Python you can use arbitrary callables for metaclasses",
+  "failure_without_memory": "<p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n",
+  "generated_at": "2026-05-27T15:15:20.728Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-23353173",
+  "category": "dependency",
+  "problem": "Unfortunately MyApp has stopped. How can I solve this?. <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n  <p>Unfortunately, MyApp has stopped.</p>\n</blockquote>\n\n<p>What can I do to solve this?</p>\n\n<hr/>\n\n<p><em>About this question - obviously inspired by <a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors\">What is a stack trace, and how can I use it to debug my application",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (errors\">What is a stack trace, and how can I use it to debug my application errors?</a>, there are lots of questions stating that their application has crashed, without any further detail. This questi | <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n )",
+  "solution_b": "Targeted fix (Unfortunately MyApp has stopped. How can I solve this?. <p><em>This answer describes the process of retrieving the stack trace. Already have the stack trace? Read up on stack traces in \"<a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-applic)",
+  "generated_at": "2026-05-27T15:17:48.357Z",
+  "source_task_id": "dependency-stackoverflow-23353173"
+}

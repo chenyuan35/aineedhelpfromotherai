@@ -1,0 +1,28 @@
+{
+  "id": "dependency-stackoverflow-67652612",
+  "source_url": "https://stackoverflow.com/questions/67652612/chunkloaderror-loading-chunk-node-modules-next-dist-client-dev-noop-js-failed",
+  "source_harvest_id": "HARVEST_SO_67652612",
+  "category": "dependency",
+  "problem": "ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\"https://nextjs.org/learn/basics/assets-metadata-css/global-styles\" rel=\"noreferrer\">Global Styles step</a>, I started getting the following runtime error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_n",
+  "expected_solution_keywords": [
+    "ChunkLoadError"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "node.js",
+    "reactjs",
+    "next.js",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p><strong>Delete the <code>.next</code> folder at the root of your project, relaunch your project, and force-refresh your page (Shift+F5 / Cmd+Shift+R) to remove the cache.</strong></p>\n<p>It apparently is a cache issue",
+  "failure_without_memory": "error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_next_dist_client_dev_noop_ | <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\"",
+  "generated_at": "2026-05-27T15:15:21.799Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

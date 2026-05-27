@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-46770900",
+  "category": "npm",
+  "problem": "How to change the project in GCP using CLI commands. <p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects running on my account. I want to change the current project to any other project from the list using a cli command.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to change the project in GCP using CLI commands. <pre class=\"lang-sh prettyprint-override\"><code>gcloud config set project $MY_PROJECT_ID\n\n#=&gt;\n\nUpdated property [core/project].\n</code></pre>\n<p. This works for now but you will need to apply it again when the issue returns. The root cause is <p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong>.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to change the project in GCP using CLI commands. <pre class=\"lang-sh prettyprint-override\"><code",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to change the project in GCP using CLI co",
+  "generated_at": "2026-05-27T15:17:48.647Z",
+  "source_task_id": "npm-stackoverflow-46770900"
+}

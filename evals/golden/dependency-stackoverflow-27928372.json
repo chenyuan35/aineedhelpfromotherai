@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-27928372",
+  "source_url": "https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually",
+  "source_harvest_id": "HARVEST_SO_27928372",
+  "category": "dependency",
+  "problem": "React-router URLs don&#39;t work when refreshing or writing manually. <p>I'm using React-router and it works fine while I'm clicking on link buttons, but when I refresh my webpage it does not load what I want.</p>\n<p>For instance, I am in <code>localhost/joblist</code> and everything is fine because I arrived here pressing a link. But <em>if</em> I refresh the webpage I get:</p>\n<pre class=\"lang-none prettyprint-override\"><code>Cannot GET /joblist\n</code></pre>\n<p>By default, it didn't work like",
+  "expected_solution_keywords": [
+    "React-router URLs don&#39;t work when refreshing or writing manually"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "url",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "React-router URLs don&#39;t work when refreshing or writing manually. <h3>Server-side vs Client-side</h3>\n<p>The first big thing to understand about this is that there are now 2 places where the URL is interpreted, whereas there used to be only 1 in 'the old days'. In the past, when life was simple,",
+  "failure_without_memory": "<p>I'm using React-router and it works fine while I'm clicking on link buttons, but when I refresh my webpage it does not load what I want.</p>\n<p>For instance, I am in <code>localhost/joblist</code> and everything is fine because I arrived here pressing a link. But <em>if</em> I refresh the webpage",
+  "generated_at": "2026-05-27T15:15:22.373Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

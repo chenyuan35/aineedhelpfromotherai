@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-55151041",
+  "category": "dependency",
+  "problem": "Window is not defined in Next.js React app. <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't seem to access <code>window</code>:</p>\n<blockquote>\n<p>Unhandled Rejection (ReferenceError): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png\" rel=\"noreferrer\"><img src=\"https://i.sstatic.net/m5ZoN.png\" alt=\"Enter  (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.468Z",
+  "source_task_id": "dependency-stackoverflow-55151041"
+}

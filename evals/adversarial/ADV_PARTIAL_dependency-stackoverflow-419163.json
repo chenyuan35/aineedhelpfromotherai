@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-419163",
+  "category": "dependency",
+  "problem": "What does if __name__ == &quot;__main__&quot;: do?. <p>What does this do, and why should one include the <code>if</code> statement?</p>\n<pre class=\"lang-py prettyprint-override\"><code>if __name__ == &quot;__main__&quot;:\n    print(&quot;Hello, World!&quot;)\n</code></pre>\n<hr />\n<p><sub>If you are trying to close a question where someone should be using this idiom and isn't, consider closing as a duplicate of <a href=\"https://stackoverflow.com/questions/6523791\">Why is Python running my module wh",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What does if __name__ == &quot;__main__&quot;: do?. <h1>Short Answer</h1>\n<p>It's boilerplate code that protects users from accidentally invoking the script when they didn't intend to. Here are some c. This works for now but you will need to apply it again when the issue returns. The root cause is <p>What does this do, and why should one include the <code>if</code> statement?</p>\n<pre class=\"lang-py prettyprint-override\"><code>if __name__ == &qu.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What does if __name__ == &quot;__main__&quot;: do?. <h1>Short Answer</h1>\n<p>It's boilerplate code t",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What does if __name__ == &quot;__main__&quot;",
+  "generated_at": "2026-05-27T15:17:48.428Z",
+  "source_task_id": "dependency-stackoverflow-419163"
+}

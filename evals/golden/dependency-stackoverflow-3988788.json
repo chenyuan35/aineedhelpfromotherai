@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-3988788",
+  "source_url": "https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors",
+  "source_harvest_id": "HARVEST_SO_3988788",
+  "category": "dependency",
+  "problem": "What is a stack trace, and how can I use it to debug my application errors?. <p>Sometimes when I run my application it gives me an error that looks like:</p>\n\n<pre><code>Exception in thread \"main\" java.lang.NullPointerException\n        at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.myproject.Bootstrap.main(Bootstrap.java:14)\n</code></pre>\n\n<p>People have referred to this as a \"stack trace\". <strong",
+  "expected_solution_keywords": [
+    "What is a stack trace, and how can I use it to debug my application errors?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "java",
+    "debugging",
+    "stack-trace",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "What is a stack trace, and how can I use it to debug my application errors?. <p>In simple terms, a <strong>stack trace</strong> is a list of the method calls that the application was in the middle of when an Exception was thrown.</p>\n<p><strong>Simple Example</strong></p>\n<p>With the example given i",
+  "failure_without_memory": "at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.myproject.Bootstrap.main(Bootstrap.java:14)\n | <p>Sometimes when I run my application it gives me an error that looks like:</p>\n\n<pre><code>Exception in t",
+  "generated_at": "2026-05-27T15:15:23.624Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

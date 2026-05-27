@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-31163693",
+  "category": "dependency",
+  "problem": "How do I conditionally add attributes to React components?. <p>Is there a way to only add attributes to a React component if a certain condition is met?</p>\n<p>I'm supposed to add required and readOnly attributes to form elements based on an Ajax call after render, but I can't see how to solve this since <code>readOnly=&quot;false&quot;</code> is not the same as omitting the attribute completely.</p>\n<p>The example below should explain what I want, but it doesn't work.</p>\n<blockquote>\n<p>(Parse",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (Error: Unexpected identifier)</p>\n</blockquote>\n<pre class=\"lang-js prettyprint-override\"><code>function MyInput({isRequired}) {\n  return &lt;input classname=&quot;foo&quot; {isRequired ? &quot;requir | <p>Is there a way to only add attributes to a React component if a certain condition is met?</p>\n)",
+  "solution_b": "Targeted fix (How do I conditionally add attributes to React components?. <p>Apparently, for certain attributes, React is intelligent enough to omit the attribute if the value you pass to it is not truthy. For example:</p>\n<pre><code>const InputComponent = function() {\n    const required = true;\n    const disable)",
+  "generated_at": "2026-05-27T15:17:48.384Z",
+  "source_task_id": "dependency-stackoverflow-31163693"
+}

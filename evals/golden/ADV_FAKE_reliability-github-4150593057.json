@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_reliability-github-4150593057",
   "category": "reliability",
   "problem": "[BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFile input. I am trying to pass TextFiles to my Crew via the 'input_files' parameter. Since the update to crewai 1.10 -> 1.12.2, this results in an Error when using non-multimodel models.",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: [BUG] / [HELP] \"Model does not support multimodal input [...] Use a vision-capable model\" for TextFi",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with [BUG] / [HELP] \"Model does not support multimodal input [.. After extens",
-  "generated_at": "2026-05-27T14:48:01.116Z",
+  "generated_at": "2026-05-27T15:17:48.664Z",
   "source_task_id": "reliability-github-4150593057"
 }

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-24958140",
+  "category": "docker",
+  "problem": "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and add them to the container's filesystem at path <code>&lt;dest&gt;</code></p>\n</blockquote>\n\n<pre><code>ADD ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>You should check the <a href=\"https://docs.docker.com/engine/reference/builder/#add\" rel=\"noreferrer\">. This works for now but you will need to apply it again when the issue returns. The root cause is <p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>Yo",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What is the difference between the &#39;COPY&",
+  "generated_at": "2026-05-27T15:17:48.565Z",
+  "source_task_id": "docker-stackoverflow-24958140"
+}

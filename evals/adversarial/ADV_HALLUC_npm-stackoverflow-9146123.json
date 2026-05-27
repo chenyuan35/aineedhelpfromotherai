@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-9146123",
+  "category": "npm",
+  "problem": "Pretty print in MongoDB shell as default. <p>Is there a way to tell Mongo to pretty print output? Currently, everything is output to a single line and it's difficult to read, especially with nested arrays and documents.</p>\n (attempted fix: --force-cache-reset \"Force reset all caches\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --force-cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-cache-reset",
+  "generated_at": "2026-05-27T15:17:48.655Z",
+  "source_task_id": "npm-stackoverflow-9146123"
+}

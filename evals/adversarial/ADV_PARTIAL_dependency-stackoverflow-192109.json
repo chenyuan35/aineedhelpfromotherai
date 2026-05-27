@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-192109",
+  "category": "dependency",
+  "problem": "Is there a built-in function to print all the current properties and values of an object?. <p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so I can debug my scripts by seeing what's the state of the object in question.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Is there a built-in function to print all the current properties and values of an object?. <p>You are really mixing together two different things.</p>\n\n<p>Use <a href=\"https://docs.python.org/3/librar. This works for now but you will need to apply it again when the issue returns. The root cause is <p>So what I'm looking for here is something like PHP's <a href=\"https://www.php.net/print_r\" rel=\"noreferrer\">print_r</a> function.</p>\n<p>This is so.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Is there a built-in function to print all the current properties and values of an object?. <p>You ar",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Is there a built-in function to print all the",
+  "generated_at": "2026-05-27T15:17:48.342Z",
+  "source_task_id": "dependency-stackoverflow-192109"
+}

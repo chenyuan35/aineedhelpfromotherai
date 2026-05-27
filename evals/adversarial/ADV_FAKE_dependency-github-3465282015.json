@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-3465282015",
   "category": "dependency",
   "problem": "Handle LLMs Making Invalid Tool Calls. The following issue affects the smart decision maker block, which uses tool_calls in order to run an agentic loop.<br><br>Currently, if a large language model is making a tool call and typos the name of one of the inputs, the typoed input will be ignored silently, and the input they were trying to target will be run with an input value of null. This behaviour leads to failures.<br><br>Example Tool Call:\n\n```\n\"tool_calls\": [\n        {\n          \"id\": \"call_m",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: Handle LLMs Making Invalid Tool Calls",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with Handle LLMs Making Invalid Tool Calls. The following issue affects the s",
-  "generated_at": "2026-05-27T14:48:00.936Z",
+  "generated_at": "2026-05-27T15:17:48.209Z",
   "source_task_id": "dependency-github-3465282015"
 }

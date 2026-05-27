@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-60147499",
+  "category": "dependency",
+  "problem": "How to Set port in next.js. <p>One application is running on port 3000 and I want to run another application on a different port from the default port, which is 3000. How do I change this in React Next.js? My <code>package.json</code> currently contains:</p>\n<pre><code>&quot;scripts&quot;: {\n    &quot;test&quot;: &quot;echo \\&quot;Error: no test specified\\&quot; &amp;&amp; exit 1&quot;,\n    &quot;dev&quot;: &quot;next&quot;,\n    &quot;build&quot;: &quot;next build&quot;,\n    &quot;start&quot;: &",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to Set port in next.js. <p>This work for me:</p>\n<pre><code>&quot;scripts&quot;: { \n    &quot;dev&quot;: &quot;next dev -p 8080&quot;,\n    &quot;start&quot;: &quot;next start -p 8080&quot;,\n},\n</c. This works for now but you will need to apply it again when the issue returns. The root cause is Error: no test specified\\&quot; &amp;&amp; exit 1&quot;,\n    &quot;dev&quot;: &quot;next&quot;,\n    &quot;build&quot;: &quot;next build&quot;,\n    &qu.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to Set port in next.js. <p>This work for me:</p>\n<pre><code>&quot;scripts&quot;: { \n    &quot;de",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to Set port in next.js. <p>This work for ",
+  "generated_at": "2026-05-27T15:17:48.481Z",
+  "source_task_id": "dependency-stackoverflow-60147499"
+}

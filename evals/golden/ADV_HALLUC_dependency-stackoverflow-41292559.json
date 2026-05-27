@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-41292559",
+  "category": "dependency",
+  "problem": "Could not find a declaration file for module &#39;module-name&#39;. &#39;/path/to/module-name.js&#39; implicitly has an &#39;any&#39; type. <p>I read how TypeScript <a href=\"https://www.typescriptlang.org/docs/handbook/module-resolution.html\" rel=\"noreferrer\">module resolution</a> works.</p>\n\n<p>I have the following repository: <a href=\"https://github.com/ts-stack/di\" rel=\"noreferrer\">@ts-stack/di</a>.\nAfter compiling the directory structure is as follows:</p>\n\n<pre><code>├── dist\n│   ├── annota (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.423Z",
+  "source_task_id": "dependency-stackoverflow-41292559"
+}

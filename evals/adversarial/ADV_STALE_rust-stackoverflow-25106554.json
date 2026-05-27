@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_rust-stackoverflow-25106554",
+  "category": "rust",
+  "problem": "Why doesn&#39;t println! work in Rust unit tests?. <p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    file.read_to_string(&amp;mut contents).unwrap();\n    println!(&quot;{contents}&quot;);\n}\n    \n#[test]\nfn test_read_file() {\n    let path = &amp;Path: (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "rust"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.715Z",
+  "source_task_id": "rust-stackoverflow-25106554"
+}

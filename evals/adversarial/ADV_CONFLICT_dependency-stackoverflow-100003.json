@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-100003",
+  "category": "dependency",
+  "problem": "What are metaclasses in Python?. <p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>What are <a href=\"https://docs.python.org/3/reference/datamodel.html#metaclasses\" rel=\"noreferrer\">metaclasses</a>? What are they used for?</p>\n)",
+  "solution_b": "Targeted fix (What are metaclasses in Python?. <p>A metaclass is the class of a class. A class defines how an instance of the class (i.e. an object) behaves while a metaclass defines how a class behaves. A class is an instance of a metaclass.</p>\n\n<p>While in Python you can use arbitrary callables for metaclasses)",
+  "generated_at": "2026-05-27T15:17:48.309Z",
+  "source_task_id": "dependency-stackoverflow-100003"
+}

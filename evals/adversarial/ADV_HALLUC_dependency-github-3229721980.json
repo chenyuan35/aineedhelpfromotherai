@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_dependency-github-3229721980",
   "category": "dependency",
   "problem": "Command is not applied from a tool that has return_direct=True. Needs to be confirm\n\nhttps://forum.langchain.com/t/command-and-update-inside-tool-function-with-return-direct-flag/358 (attempted fix: --force-flag \"Force the operation\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:00.920Z",
+  "generated_at": "2026-05-27T15:17:48.196Z",
   "source_task_id": "dependency-github-3229721980"
 }

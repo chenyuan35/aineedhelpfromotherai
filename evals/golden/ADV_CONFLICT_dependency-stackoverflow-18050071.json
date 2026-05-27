@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-18050071",
+  "category": "dependency",
+  "problem": "PHP parse/syntax errors; and how to solve them. <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse error: syntax error, unexpected '{' in index.php on line 20</p>\n</blockquote>\n<p>The unexpected symbol isn't always the real culprit. But the line number gives a rough idea of where to start looking.</p>\n<blockquote>\n<p>Always ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (errors. Even experienced programmers make typos. For newcomers, it's just part of the learning process. However, it's often easy to interpret error messages such as:</p>\n<blockquote>\n<p>PHP Parse erro | <p>Everyone runs into syntax errors. Even experienced programmers make typos. For newcomers, it's)",
+  "solution_b": "Targeted fix (PHP parse/syntax errors; and how to solve them. <h3>What are the syntax errors?</h3>\n\n<p>PHP belongs to the <a href=\"http://en.wikipedia.org/wiki/List_of_C-based_programming_languages\" rel=\"noreferrer\">C-style</a> and <a href=\"http://en.wikipedia.org/wiki/Imperative_programming\" rel=\"noreferrer\">imp)",
+  "generated_at": "2026-05-27T15:17:48.334Z",
+  "source_task_id": "dependency-stackoverflow-18050071"
+}

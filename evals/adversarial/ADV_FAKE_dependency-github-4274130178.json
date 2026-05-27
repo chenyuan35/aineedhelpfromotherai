@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_FAKE_dependency-github-4274130178",
   "category": "dependency",
   "problem": "AutoPilot hallucinates credential prompt for wrong provider - prompts for GitHub credential while it needs Gmail credential for running Gmail block. * [OPEN-2592](https://linear.app/autogpt/issue/OPEN-2592/avoid-duplicate-google-credentials-for-same-account-incremental-auth): Avoid Duplicate Google Credentials\n* [SECRT-2091](https://linear.app/autogpt/issue/SECRT-2091): Gmail OAuth scope mismatch\n* [OPEN-1857](https://linear.app/autogpt/issue/OPEN-1857/handle-incrementalduplicate-oauth-authoriza",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Follows the fake advice and ends up needing to revert everything. Wastes hours. Correct approach was: AutoPilot hallucinates credential prompt for wrong provider - prompts for GitHub credential while it",
   "adversarial_type": "fake_answer",
   "fake_advice": "I hit this exact issue with AutoPilot hallucinates credential prompt for wrong provider - prompts fo",
-  "generated_at": "2026-05-27T14:48:01.002Z",
+  "generated_at": "2026-05-27T15:17:48.259Z",
   "source_task_id": "dependency-github-4274130178"
 }

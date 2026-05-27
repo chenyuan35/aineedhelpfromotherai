@@ -1,0 +1,27 @@
+{
+  "id": "rust-stackoverflow-32300132",
+  "source_url": "https://stackoverflow.com/questions/32300132/why-cant-i-store-a-value-and-a-reference-to-that-value-in-the-same-struct",
+  "source_harvest_id": "HARVEST_SO_32300132",
+  "category": "rust",
+  "problem": "Why can&#39;t I store a value and a reference to that value in the same struct?. <p>I have a value and I want to store that value and a reference to\nsomething inside that value in my own type:</p>\n\n<pre><code>struct Thing {\n    count: u32,\n}\n\nstruct Combined&lt;'a&gt;(Thing, &amp;'a u32);\n\nfn make_combined&lt;'a&gt;() -&gt; Combined&lt;'a&gt; {\n    let thing = Thing { count: 42 };\n\n    Combined(thing, &amp;thing.count)\n}\n</code></pre>\n\n<p>Sometimes, I have a value and I want to store that value ",
+  "expected_solution_keywords": [
+    "Why can&#39;t I store a value and a reference to that value in the same struct?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "rust",
+    "reference",
+    "lifetime",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "Why can&#39;t I store a value and a reference to that value in the same struct?. <p>Let's look at <a href=\"https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=c1432ed38048684c7eb306540c182cd0\" rel=\"noreferrer\">a simple implementation of this</a>:</p>\n<pre><code>struct",
+  "failure_without_memory": "error:</p>\n\n<pre><code>struct Combined&lt;'a&gt;(Parent, Child&lt;'a&gt;);\n\nfn make_combined&lt;'a&gt;() -&gt; Combined&lt;'a&gt; {\n    let parent = Parent::new();\n    let child = parent.child();\n\n    | <p>I have a value and I want to store that value and a reference to\nsomething inside that value i",
+  "generated_at": "2026-05-27T15:15:21.402Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

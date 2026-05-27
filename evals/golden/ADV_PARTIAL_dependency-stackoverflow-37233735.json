@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-37233735",
+  "category": "dependency",
+  "problem": "Interfaces vs Types in TypeScript. <p>What is the difference between these statements (<code>interface</code> vs <code>type</code>) in TypeScript?</p>\n<pre class=\"lang-ts prettyprint-override\"><code>interface X {\n    a: number\n    b: string\n}\n\ntype X = {\n    a: number\n    b: string\n};\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Interfaces vs Types in TypeScript. <p><strong>Update March 2021</strong>: The newer TypeScript Handbook (also mentioned in <a href=\"https://stackoverflow.com/a/65164318/52277\">nju-clc\nanswer  below</a. This works for now but you will need to apply it again when the issue returns. The root cause is <p>What is the difference between these statements (<code>interface</code> vs <code>type</code>) in TypeScript?</p>\n<pre class=\"lang-ts prettyprint-ov.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Interfaces vs Types in TypeScript. <p><strong>Update March 2021</strong>: The newer TypeScript Handb",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Interfaces vs Types in TypeScript. <p><strong",
+  "generated_at": "2026-05-27T15:17:48.398Z",
+  "source_task_id": "dependency-stackoverflow-37233735"
+}

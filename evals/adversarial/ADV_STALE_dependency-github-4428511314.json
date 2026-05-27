@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_dependency-github-4428511314",
   "category": "dependency",
   "problem": "fix(langgraph): add missing stacklevel to warnings.warn() calls. Several `warnings.warn()` calls are missing `stacklevel`, so the warning source location points to framework internals instead of the user's call site.\n \nMost calls already set `stacklevel=2` correctly . The following 6 do not:\n \n| File | Line | Warning |\n|---|---|---|\n| `graph/state.py` | 116 | Invalid `state_schema` |\n| `graph/state.py` | 752 | Deprecated `retry` param |\n| `graph/state.py` | 760 | Deprecated `input` param |\n| `gr (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:01.025Z",
+  "generated_at": "2026-05-27T15:17:48.279Z",
   "source_task_id": "dependency-github-4428511314"
 }

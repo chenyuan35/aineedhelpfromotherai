@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_npm-stackoverflow-16073603",
+  "category": "npm",
+  "problem": "How can I update each dependency in package.json to the latest version?. <p>I copied <em>package.json</em> from another project and now want to bump all of the dependencies to their latest versions since this is a fresh project and I don't mind fixing something if it breaks.</p>\n<p>What's the easiest way to do this?</p>\n<p>The best way I know is to run <code>npm info express version</code> and then update each dependency in <code>package.json</code> manually. There must be a better way.</p>\n<pre (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "npm"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.598Z",
+  "source_task_id": "npm-stackoverflow-16073603"
+}

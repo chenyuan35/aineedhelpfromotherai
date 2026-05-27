@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-43862600",
+  "category": "dependency",
+  "problem": "How can I get (query string) parameters from the URL in Next.js?. <p>When I click on a link in my <code>/index.js</code>, it brings me to <code>/about.js</code> page.</p>\n<p>However, when I'm passing a parameter name through the URL (like <strong>/about?name=leangchhean</strong>) from <code>/index.js</code> to <code>/about.js</code>, I don't know how to get it in the <code>/about.js</code> page.</p>\n<h2>index.js</h2>\n<pre class=\"lang-js prettyprint-override\"><code>import Link from 'next/link';\ne",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>When I click on a link in my <code>/index.js</code>, it brings me to <code>/about.js</code> page.</p>\n<p>However, when I'm passing a parameter name through the URL (like <strong>/about?name=leangchhean</strong>) from <code>/index.js</code> to <code>/about.js</code>, I don't know how to get it in )",
+  "solution_b": "Targeted fix (How can I get (query string) parameters from the URL in Next.js?. <p>Get it by using the below code in the <code>about.js</code> page:</p>\n<pre class=\"lang-js prettyprint-override\"><code>// pages/about.js\nimport Link from 'next/link'\nexport default ({ url: { query: { name } } }) =&gt; (\n  &lt;p&gt;W)",
+  "generated_at": "2026-05-27T15:17:48.441Z",
+  "source_task_id": "dependency-stackoverflow-43862600"
+}

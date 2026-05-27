@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-27043268",
+  "category": "rust",
+  "problem": "Convert a String to int?. <p><strong>Note: this question contains deprecated pre-1.0 code! The answer is correct, though.</strong></p>\n\n<p>To convert a <code>str</code> to an <code>int</code> in Rust, I can do this:</p>\n\n<pre><code>let my_int = from_str::&lt;int&gt;(my_str);\n</code></pre>\n\n<p>The only way I know how to convert a <code>String</code> to an <code>int</code> is to get a slice of it and then use <code>from_str</code> on it like so:</p>\n\n<pre><code>let my_int = from_str::&lt;int&gt;(m",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Convert a String to int?. <p>You can directly convert to an int using the <a href=\"https://doc.rust-lang.org/std/primitive.str.html#method.parse\" rel=\"noreferrer\"><code>str::parse::&lt;T&gt;()</code> . This works for now but you will need to apply it again when the issue returns. The root cause is <p><strong>Note: this question contains deprecated pre-1.0 code! The answer is correct, though.</strong></p>\n\n<p>To convert a <code>str</code> to an <.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Convert a String to int?. <p>You can directly convert to an int using the <a href=\"https://doc.rust-",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Convert a String to int?. <p>You can directly",
+  "generated_at": "2026-05-27T15:17:48.735Z",
+  "source_task_id": "rust-stackoverflow-27043268"
+}

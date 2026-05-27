@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-32461229",
+  "category": "dependency",
+  "problem": "Why use Redux over Facebook Flux?. <p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a href=\"http://redux.js.org/docs/recipes/ReducingBoilerplate.html\" rel=\"noreferrer\">reducing boilerplate</a>, looked at few GitHub examples and even tried redux a little bit (todo apps). </p>\n\n<p>As I understand, <a href=\"http://redux.js.org/docs/introduction/Motivation.html\" rel=\"noreferrer\">official redux doc motivat",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Why use Redux over Facebook Flux?. <p>Redux author here!  </p>\n\n<p>Redux is not <em>that</em> different from Flux. Overall it has same architecture, but Redux is able to cut some complexity corners by. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a hre.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Why use Redux over Facebook Flux?. <p>Redux author here!  </p>\n\n<p>Redux is not <em>that</em> differ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Why use Redux over Facebook Flux?. <p>Redux a",
+  "generated_at": "2026-05-27T15:17:48.393Z",
+  "source_task_id": "dependency-stackoverflow-32461229"
+}

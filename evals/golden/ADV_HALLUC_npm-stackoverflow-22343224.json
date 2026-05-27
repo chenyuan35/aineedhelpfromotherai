@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-22343224",
+  "category": "npm",
+  "problem": "What&#39;s the difference between tilde(~) and caret(^) in package.json?. <p>After I upgraded to the latest stable <code>node</code> and <code>npm</code>, I tried <code>npm install moment --save</code>. It saves the entry in the <code>package.json</code> with the caret <code>^</code> prefix. Previously, it was a tilde <code>~</code> prefix.</p>\n<ol>\n<li>Why are these changes made in <code>npm</code>?</li>\n<li>What is the difference between tilde <code>~</code> and caret <code>^</code>?</li>\n<li> (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.619Z",
+  "source_task_id": "npm-stackoverflow-22343224"
+}

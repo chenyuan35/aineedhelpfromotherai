@@ -1,0 +1,25 @@
+{
+  "id": "dependency-stackoverflow-30626030",
+  "source_url": "https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate",
+  "source_harvest_id": "HARVEST_SO_30626030",
+  "category": "dependency",
+  "problem": "Can you force a React component to rerender without calling setState?. <p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, and then I want to rerender the component when any change is detected.</p>\n\n<p>With a top-level <code>React.render</code> this has been possible, but within a component it doesn't work (which makes some sense since the <code>render</code> method just returns an object).</p>\n\n<p>H",
+  "expected_solution_keywords": [
+    "Can you force a React component to rerender without calling setState?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "reactjs",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Can you force a React component to rerender without calling setState?. <p>In class components, you can call <code>this.forceUpdate()</code> to force a rerender.</p>\n<p>Documentation: <a href=\"https://react.dev/reference/react/Component#forceupdate\" rel=\"nofollow noreferrer\">https://react.dev/referen",
+  "failure_without_memory": "<p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, and then I want to rerender the component when any change is detected.</p>\n\n<p>With a top-level <code>React.render</code> this has been possible, but w",
+  "generated_at": "2026-05-27T15:15:22.431Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

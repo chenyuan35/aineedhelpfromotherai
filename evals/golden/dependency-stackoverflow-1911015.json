@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-1911015",
+  "source_url": "https://stackoverflow.com/questions/1911015/how-do-i-debug-node-js-applications",
+  "source_harvest_id": "HARVEST_SO_1911015",
+  "category": "dependency",
+  "problem": "How do I debug Node.js applications?. <p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/Google_Chrome\" rel=\"noreferrer\">Google Chrome</a> has a command-line debugger. Is this debugger available for Node.js as well?</p>\n",
+  "expected_solution_keywords": [
+    "How do I debug Node.js applications?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "node.js",
+    "debugging",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I debug Node.js applications?. <p>The <a href=\"http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29\" rel=\"noreferrer\">V8</a> debugger released as part of the Google <a href=\"http://code.google.com/p/chromedevtools/\" rel=\"noreferrer\">Chrome Developer Tools</a> can be used to debug Node.js s",
+  "failure_without_memory": "<p>How do I debug a Node.js server application?</p>\n\n<p>Right now I'm mostly using <em>alert debugging</em> with print statements like this:</p>\n\n<pre><code>sys.puts(sys.inspect(someVariable));\n</code></pre>\n\n<p>There must be a better way to debug. I know that <a href=\"http://en.wikipedia.org/wiki/G",
+  "generated_at": "2026-05-27T15:15:23.261Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

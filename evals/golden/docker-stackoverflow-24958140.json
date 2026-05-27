@@ -1,0 +1,25 @@
+{
+  "id": "docker-stackoverflow-24958140",
+  "source_url": "https://stackoverflow.com/questions/24958140/what-is-the-difference-between-the-copy-and-add-commands-in-a-dockerfile",
+  "source_harvest_id": "HARVEST_SO_24958140",
+  "category": "docker",
+  "problem": "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and add them to the container's filesystem at path <code>&lt;dest&gt;</code></p>\n</blockquote>\n\n<pre><code>ADD ",
+  "expected_solution_keywords": [
+    "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "dockerfile",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>You should check the <a href=\"https://docs.docker.com/engine/reference/builder/#add\" rel=\"noreferrer\"><code>ADD</code></a> and <a href=\"https://docs.docker.com/engine/reference/builder/#copy\" rel=\"noref",
+  "failure_without_memory": "<p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and ad",
+  "generated_at": "2026-05-27T15:15:18.746Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

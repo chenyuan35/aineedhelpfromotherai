@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-37576685",
+  "category": "dependency",
+  "problem": "Using async/await with a forEach loop. <p>Are there any issues with using <code>async</code>/<code>await</code> in a <code>forEach</code> loop? I'm trying to loop through an array of files and <code>await</code> on the contents of each file.</p>\n<pre><code>import fs from 'fs-promise'\n\nasync function printFiles () {\n  const files = await getFilePaths() // Assume this works fine\n\n  files.forEach(async (file) =&gt; {\n    const contents = await fs.readFile(file, 'utf8')\n    console.log(contents)\n  }",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Using async/await with a forEach loop. <p>Sure the code does work, but I'm pretty sure it doesn't do what you expect it to do. It just fires off multiple asynchronous calls, but the <code>printFiles</. This works for now but you will need to apply it again when the issue returns. The root cause is <p>Are there any issues with using <code>async</code>/<code>await</code> in a <code>forEach</code> loop? I'm trying to loop through an array of files .",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Using async/await with a forEach loop. <p>Sure the code does work, but I'm pretty sure it doesn't do",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Using async/await with a forEach loop. <p>Sur",
+  "generated_at": "2026-05-27T15:17:48.402Z",
+  "source_task_id": "dependency-stackoverflow-37576685"
+}

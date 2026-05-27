@@ -1,0 +1,26 @@
+{
+  "id": "rust-stackoverflow-25106554",
+  "source_url": "https://stackoverflow.com/questions/25106554/why-doesnt-println-work-in-rust-unit-tests",
+  "source_harvest_id": "HARVEST_SO_25106554",
+  "category": "rust",
+  "problem": "Why doesn&#39;t println! work in Rust unit tests?. <p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    file.read_to_string(&amp;mut contents).unwrap();\n    println!(&quot;{contents}&quot;);\n}\n    \n#[test]\nfn test_read_file() {\n    let path = &amp;Path:",
+  "expected_solution_keywords": [
+    "Why doesn&#39;t println! work in Rust unit tests?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "testing",
+    "rust",
+    "println",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Why doesn&#39;t println! work in Rust unit tests?. <p>This happens because Rust test programs hide the stdout of successful tests in order for the test output to be tidy. You can disable this behavior by passing the <code>--nocapture</code> option to the test binary or to <code>cargo test</code> (bu",
+  "failure_without_memory": "<p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    ",
+  "generated_at": "2026-05-27T15:15:21.117Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

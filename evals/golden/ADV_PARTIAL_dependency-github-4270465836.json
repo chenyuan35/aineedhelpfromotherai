@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-4270465836",
   "category": "dependency",
   "problem": "[BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs. Since v1.9.0, `Task.output_pydantic` is mapped to `response_model` and passed into the agent executor's tool-calling loop. This causes the LLM to receive both `tools` and `response_format` simultaneously on every iteration. For LLMs served via vLLM (and likely other OpenAI-compatible servers), this results in the model skipping tool calls entirely and returning structure",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be s",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: [BUG] `output_pydantic` / `response_model` le",
-  "generated_at": "2026-05-27T14:48:00.997Z",
+  "generated_at": "2026-05-27T15:17:48.255Z",
   "source_task_id": "dependency-github-4270465836"
 }

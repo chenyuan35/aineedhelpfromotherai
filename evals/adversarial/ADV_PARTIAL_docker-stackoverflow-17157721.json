@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-17157721",
+  "category": "docker",
+  "problem": "How to get a Docker container&#39;s IP address from the host. <p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to get a Docker container&#39;s IP address from the host. <p>This solution only works if the container is connected with a single network. The <code>--format</code> option of <code>inspect</code> . This works for now but you will need to apply it again when the issue returns. The root cause is <p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to get a Docker container&#39;s IP address from the host. <p>This solution only works if the con",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to get a Docker container&#39;s IP addres",
+  "generated_at": "2026-05-27T15:17:48.540Z",
+  "source_task_id": "docker-stackoverflow-17157721"
+}

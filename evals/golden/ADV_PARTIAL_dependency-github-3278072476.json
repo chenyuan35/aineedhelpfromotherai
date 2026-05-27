@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-3278072476",
   "category": "dependency",
   "problem": "Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support). **Description:**<br>Currently, when users authenticate the same Google account with different scopes (e.g. Gmail List Labels vs Gmail Send), it creates **multiple identical-looking credentials** in the dropdown — even though it's the same account.\n\nThis is can cause confusion for users who think they're seeing duplicates or don't understand why there are several entries for the same email.\n\n**Proposed Solution:**<br>",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Avoid Duplicate Google Credentials for Same Account (Incremental Auth Support)",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: Avoid Duplicate Google Credentials for Same A",
-  "generated_at": "2026-05-27T14:48:00.925Z",
+  "generated_at": "2026-05-27T15:17:48.201Z",
   "source_task_id": "dependency-github-3278072476"
 }

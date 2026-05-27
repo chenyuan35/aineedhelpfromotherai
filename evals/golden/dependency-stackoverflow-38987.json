@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-38987",
+  "source_url": "https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-in-python",
+  "source_harvest_id": "HARVEST_SO_38987",
+  "category": "dependency",
+  "problem": "How do I merge two dictionaries in a single expression in Python?. <p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'a': 1, 'b': 3, 'c': 4}\n</code></pre>\n<p>Whenever a key <code>k</code> is present in both dictionaries, only the value <code>y[k]</code> should be kept.</p>\n",
+  "expected_solution_keywords": [
+    "How do I merge two dictionaries in a single expression in Python?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "dictionary",
+    "merge",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I merge two dictionaries in a single expression in Python?. <p><strong>Python 3.9+ only</strong></p>\n\n<p>Merge (|) and update (|=) operators have been added to the built-in <code>dict</code> class.</p>\n\n<pre><code>&gt;&gt;&gt; d = {'spam': 1, 'eggs': 2, 'cheese': 3}\n&gt;&gt;&gt; e = {'cheese'",
+  "failure_without_memory": "<p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'a': 1, 'b': 3, 'c': 4}\n</code></pre>\n<p>Whenever a key <code>k</code> is present in both dictionaries, only the value <code>y[k]</code> should be kept",
+  "generated_at": "2026-05-27T15:15:20.784Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

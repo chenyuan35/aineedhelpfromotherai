@@ -1,0 +1,26 @@
+{
+  "id": "rust-stackoverflow-30154541",
+  "source_url": "https://stackoverflow.com/questions/30154541/how-do-i-concatenate-strings",
+  "source_harvest_id": "HARVEST_SO_30154541",
+  "category": "rust",
+  "problem": "How do I concatenate strings?. <p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <code>str</code></li>\n<li><code>String</code> and <code>String</code></li>\n</ul>\n",
+  "expected_solution_keywords": [
+    "How do I concatenate strings?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "string",
+    "rust",
+    "string-concatenation",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I concatenate strings?. <p>When you concatenate strings, you need to allocate memory to store the result. The easiest to start with is <code>String</code> and <code>&amp;str</code>:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>fn main() {\n    let mut owned_string: String = &quot;hell",
+  "failure_without_memory": "<p>How do I concatenate the following combinations of types:</p>\n\n<ul>\n<li><code>str</code> and <code>str</code></li>\n<li><code>String</code> and <code>str</code></li>\n<li><code>String</code> and <code>String</code></li>\n</ul>\n",
+  "generated_at": "2026-05-27T15:15:21.172Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

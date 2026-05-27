@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-75337953",
+  "category": "dependency",
+  "problem": "What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed,cz-shortcut-listen,data-lt-installed</p>\n</blockquote>\n<p>I don't know why it happens. What is the explanation for this?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed,cz-shortcut-listen,data-lt-installed</p>\n</blockquote>\n<p>I don't know why it happens. What is the explanation for this)",
+  "solution_b": "Targeted fix (What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>Disabling the Grammarly extension solved the problem for me.</p>\n<p>You could upvote <a href=\"https://chromewebstore.google.com/reviews/9c74943a-2ebb-4f73-af5f-2b2945c97349\" rel=\"nofollow n)",
+  "generated_at": "2026-05-27T15:17:48.509Z",
+  "source_task_id": "dependency-stackoverflow-75337953"
+}

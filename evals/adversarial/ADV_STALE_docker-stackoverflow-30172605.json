@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_docker-stackoverflow-30172605",
+  "category": "docker",
+  "problem": "How do I get a console-like connection into a Docker container&#39;s shell?. <p>I'm trying to SSH into one of my Docker containers running the WordPress base image to inspect the files/directories that were created during the initial build.</p>\n<p>I tried to run <code>docker-compose run containername ls -la</code>, but that didn't do anything.</p>\n<p>Even if it did, I'd rather have a console where I can traverse the directory structure, rather than run a single command.</p>\n<p>Is something like  (docker run --memory is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "docker"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "docker"
+  ],
+  "memory_hint": "Use --memory-reservation for resource limits. The old syntax was removed.",
+  "failure_without_memory": "Keeps using docker run --memory which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "docker run --memory",
+  "replacement_api": "docker run --memory-reservation",
+  "generated_at": "2026-05-27T15:17:48.569Z",
+  "source_task_id": "docker-stackoverflow-30172605"
+}

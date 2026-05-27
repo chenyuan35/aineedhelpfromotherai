@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-4435583708",
   "category": "cli",
   "problem": "configurable data is no longer included in the metadata.. `langchain-core 1.2.31` can include `configurable` data. (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:00.849Z",
+  "generated_at": "2026-05-27T15:17:48.154Z",
   "source_task_id": "cli-github-4435583708"
 }

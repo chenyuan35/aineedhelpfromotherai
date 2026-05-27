@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_dependency-github-3484106952",
   "category": "dependency",
   "problem": "Popover is changing from controlled to uncontrolled. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component..  (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:00.953Z",
+  "generated_at": "2026-05-27T15:17:48.221Z",
   "source_task_id": "dependency-github-3484106952"
 }

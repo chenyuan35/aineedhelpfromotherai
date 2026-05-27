@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-2604727",
+  "category": "dependency",
+  "problem": "How can I connect to Android with ADB over TCP?. <p>I am attempting to debug an application on a <a href=\"https://en.wikipedia.org/wiki/Motorola_Droid\" rel=\"noreferrer\">Motorola Droid</a>, but I am having some difficulty connecting to the device via USB. My development server is a Windows 7 64-bit VM running in <a href=\"http://en.wikipedia.org/wiki/Hyper-V\" rel=\"noreferrer\">Hyper-V</a>, and so I cannot connect directly via USB in the guest or from the host.</p>\n\n<p>I installed a couple of differ (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.361Z",
+  "source_task_id": "dependency-stackoverflow-2604727"
+}

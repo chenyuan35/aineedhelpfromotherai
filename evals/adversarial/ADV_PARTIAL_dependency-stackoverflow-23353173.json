@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-23353173",
+  "category": "dependency",
+  "problem": "Unfortunately MyApp has stopped. How can I solve this?. <p>I am developing an application, and everytime I run it, I get the message:</p>\n\n<blockquote>\n  <p>Unfortunately, MyApp has stopped.</p>\n</blockquote>\n\n<p>What can I do to solve this?</p>\n\n<hr/>\n\n<p><em>About this question - obviously inspired by <a href=\"https://stackoverflow.com/questions/3988788/what-is-a-stack-trace-and-how-can-i-use-it-to-debug-my-application-errors\">What is a stack trace, and how can I use it to debug my application",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Unfortunately MyApp has stopped. How can I solve this?. <p><em>This answer describes the process of retrieving the stack trace. Already have the stack trace? Read up on stack traces in \"<a href=\"https. This works for now but you will need to apply it again when the issue returns. The root cause is errors\">What is a stack trace, and how can I use it to debug my application errors?</a>, there are lots of questions stating that their application ha.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Unfortunately MyApp has stopped. How can I solve this?. <p><em>This answer describes the process of ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Unfortunately MyApp has stopped. How can I so",
+  "generated_at": "2026-05-27T15:17:48.357Z",
+  "source_task_id": "dependency-stackoverflow-23353173"
+}

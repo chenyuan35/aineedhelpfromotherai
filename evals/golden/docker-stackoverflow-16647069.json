@@ -1,0 +1,25 @@
+{
+  "id": "docker-stackoverflow-16647069",
+  "source_url": "https://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-for-creating-an-isolated-environment",
+  "source_harvest_id": "HARVEST_SO_16647069",
+  "category": "docker",
+  "problem": "Should I use Vagrant or Docker for creating an isolated environment?. <p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n",
+  "expected_solution_keywords": [
+    "Should I use Vagrant or Docker for creating an isolated environment?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "vagrant",
+    "docker",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Should I use Vagrant or Docker for creating an isolated environment?. <p>If your purpose is the isolation, I think Docker is what you want.</p>\n\n<p>Vagrant is a virtual machine manager. It allows you to script the virtual machine configuration as well as the provisioning. However, it is still a virt",
+  "failure_without_memory": "<p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n",
+  "generated_at": "2026-05-27T15:15:19.047Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

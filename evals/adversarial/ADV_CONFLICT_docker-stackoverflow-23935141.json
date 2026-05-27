@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-23935141",
+  "category": "docker",
+  "problem": "How to copy Docker images from one host to another without using a repository. <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like Red Hat Linux), it cannot be recreated from a Dockerfile. My Dockerfile isn't easily portable.</p>\n<p>Are there simple com",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like R)",
+  "solution_b": "Targeted fix (How to copy Docker images from one host to another without using a repository. <p>You will need to save the Docker image as a tar file:</p>\n<pre><code>docker save -o &lt;path for generated tar file&gt; &lt;image name&gt;\n</code></pre>\n<p>Then copy your image to a new system with regular file transfe)",
+  "generated_at": "2026-05-27T15:17:48.556Z",
+  "source_task_id": "docker-stackoverflow-23935141"
+}

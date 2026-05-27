@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-27928372",
+  "category": "dependency",
+  "problem": "React-router URLs don&#39;t work when refreshing or writing manually. <p>I'm using React-router and it works fine while I'm clicking on link buttons, but when I refresh my webpage it does not load what I want.</p>\n<p>For instance, I am in <code>localhost/joblist</code> and everything is fine because I arrived here pressing a link. But <em>if</em> I refresh the webpage I get:</p>\n<pre class=\"lang-none prettyprint-override\"><code>Cannot GET /joblist\n</code></pre>\n<p>By default, it didn't work like",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: React-router URLs don&#39;t work when refreshing or writing manually. <h3>Server-side vs Client-side</h3>\n<p>The first big thing to understand about this is that there are now 2 places where the URL i. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm using React-router and it works fine while I'm clicking on link buttons, but when I refresh my webpage it does not load what I want.</p>\n<p>For.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: React-router URLs don&#39;t work when refreshing or writing manually. <h3>Server-side vs Client-side",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: React-router URLs don&#39;t work when refresh",
+  "generated_at": "2026-05-27T15:17:48.368Z",
+  "source_task_id": "dependency-stackoverflow-27928372"
+}

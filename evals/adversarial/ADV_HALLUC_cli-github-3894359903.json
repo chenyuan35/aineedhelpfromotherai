@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-3894359903",
   "category": "cli",
   "problem": "I can not get the reasoning_content for deepseek-reasoner model using ChatOpenAI from langchain_openai. i get the chunk_content: \nAIMessageChunk(content='', additional_kwargs={}, response_metadata={}, id='lc_run--019c26a0-8d3f-7113-a1d8-90512fc7df2c', tool_calls=[], invalid_tool_calls=[], tool_call_chunks=[])\nfor long time,there is nothing is chunk, above 30 seconds later , only got the content, but not reasoning_content.\n\nhave you got  this issue before?\nthx (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:00.792Z",
+  "generated_at": "2026-05-27T15:17:48.114Z",
   "source_task_id": "cli-github-3894359903"
 }

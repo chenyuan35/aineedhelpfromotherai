@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-44206782",
+  "category": "npm",
+  "problem": "Do I commit the package-lock.json file created by npm 5?. <p><a href=\"http://blog.npmjs.org/post/161081169345/v500\" rel=\"noreferrer\">npm 5 was released today</a> and one of the new features include deterministic installs with the creation of a <code>package-lock.json</code> file.</p>\n\n<p>Is this file supposed to be kept in source control?</p>\n\n<p>I'm assuming it's similar to <a href=\"https://stackoverflow.com/questions/39990017/should-i-commit-the-yarn-lock-file-and-what-is-it-for\"><code>yarn.lo",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p><a href=\"http://blog.npmjs.org/post/161081169345/v500\" rel=\"noreferrer\">npm 5 was released today</a> and one of the new features include deterministic installs with the creation of a <code>package-lock.json</code> file.</p>\n\n<p>Is this file supposed to be kept in source control?</p>\n\n<p>I'm assum)",
+  "solution_b": "Targeted fix (Do I commit the package-lock.json file created by npm 5?. <p>Yes, <code>package-lock.json</code> is intended to be checked into source control. If you're using npm 5+, you may see this notice on the command line: <code>created a lockfile as package-lock.json. You should commit this file.</code> Acco)",
+  "generated_at": "2026-05-27T15:17:48.643Z",
+  "source_task_id": "npm-stackoverflow-44206782"
+}

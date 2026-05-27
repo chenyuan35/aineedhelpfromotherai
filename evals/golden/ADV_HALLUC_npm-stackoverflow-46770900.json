@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-46770900",
+  "category": "npm",
+  "problem": "How to change the project in GCP using CLI commands. <p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects running on my account. I want to change the current project to any other project from the list using a cli command.</p>\n (attempted fix: --no-lockfile-verify \"Skip lockfile integrity check\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --no-lockfile-verify. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--no-lockfile-verify` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--no-lockfile-verify",
+  "generated_at": "2026-05-27T15:17:48.646Z",
+  "source_task_id": "npm-stackoverflow-46770900"
+}

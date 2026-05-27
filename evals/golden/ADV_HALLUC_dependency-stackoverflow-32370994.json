@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-32370994",
+  "category": "dependency",
+  "problem": "How to pass props to {this.props.children}. <p>I'm trying to find the proper way to define some components which could be used in a generic way:</p>\n\n<pre><code>&lt;Parent&gt;\n  &lt;Child value=\"1\"&gt;\n  &lt;Child value=\"2\"&gt;\n&lt;/Parent&gt;\n</code></pre>\n\n<p>There is a logic going on for rendering between parent and children components of course, you can imagine <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code> as an example of this logic.</p>\n\n<p>This is a dummy implementation for  (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.388Z",
+  "source_task_id": "dependency-stackoverflow-32370994"
+}

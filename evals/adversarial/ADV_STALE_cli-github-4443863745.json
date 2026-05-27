@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_cli-github-4443863745",
   "category": "cli",
   "problem": "filesystem: edit_file newText interpreted as String.prototype.replace replacement-pattern (literal $ corrupted). ## Summary\n`edit_file` in `@modelcontextprotocol/server-filesystem` silently corrupts content containing literal `$` characters. The root cause is that `applyFileEdits` (in `src/filesystem/lib.ts`) invokes JavaScript's `String.prototype.replace(searchString, replacementString)` where the **second argument is interpreted as a [replacement string pattern](https://developer.mozilla.org/e (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:00.867Z",
+  "generated_at": "2026-05-27T15:17:48.167Z",
   "source_task_id": "cli-github-4443863745"
 }

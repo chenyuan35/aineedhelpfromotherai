@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-89228",
+  "source_url": "https://stackoverflow.com/questions/89228/how-do-i-execute-a-program-or-call-a-system-command",
+  "source_harvest_id": "HARVEST_SO_89228",
+  "category": "dependency",
+  "problem": "How do I execute a program or call a system command?. <p>How do I call an external command within Python as if I had typed it in a shell or command prompt?</p>\n",
+  "expected_solution_keywords": [
+    "How do I execute a program or call a system command?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "python",
+    "shell",
+    "terminal",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I execute a program or call a system command?. <p>Use <a href=\"https://docs.python.org/library/subprocess.html#subprocess.run\" rel=\"noreferrer\"><code>subprocess.run</code></a>:</p>\n<pre class=\"lang-py prettyprint-override\"><code>import subprocess\n\nsubprocess.run([&quot;ls&quot;, &quot;-l&quot",
+  "failure_without_memory": "<p>How do I call an external command within Python as if I had typed it in a shell or command prompt?</p>\n",
+  "generated_at": "2026-05-27T15:15:20.839Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

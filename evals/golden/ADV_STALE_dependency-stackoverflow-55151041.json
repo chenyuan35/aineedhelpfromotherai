@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-55151041",
+  "category": "dependency",
+  "problem": "Window is not defined in Next.js React app. <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't seem to access <code>window</code>:</p>\n<blockquote>\n<p>Unhandled Rejection (ReferenceError): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png\" rel=\"noreferrer\"><img src=\"https://i.sstatic.net/m5ZoN.png\" alt=\"Enter  (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.468Z",
+  "source_task_id": "dependency-stackoverflow-55151041"
+}

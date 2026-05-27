@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-38987",
+  "category": "dependency",
+  "problem": "How do I merge two dictionaries in a single expression in Python?. <p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'a': 1, 'b': 3, 'c': 4}\n</code></pre>\n<p>Whenever a key <code>k</code> is present in both dictionaries, only the value <code>y[k]</code> should be kept.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I merge two dictionaries in a single expression in Python?. <p><strong>Python 3.9+ only</strong></p>\n\n<p>Merge (|) and update (|=) operators have been added to the built-in <code>dict</code> cl. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I merge two dictionaries in a single expression in Python?. <p><strong>Python 3.9+ only</stro",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I merge two dictionaries in a single e",
+  "generated_at": "2026-05-27T15:17:48.406Z",
+  "source_task_id": "dependency-stackoverflow-38987"
+}

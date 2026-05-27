@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-4383487612",
   "category": "cli",
-  "problem": "create_agent with ProviderStrategy binds empty tools list and breaks OpenAI-compatible providers. When using `create_agent(..., response_format=MySchema)` without any user tools, LangChain can still end up binding an empty tool list in the `ProviderStrategy` path.\n\nI expect LangChain to omit tool binding entirely in that case, since provider-native structured output does not require tool calling when there are no tools.\n\nInstead, the request path reaches `model.bind_tools([])`, which causes fail (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "problem": "create_agent with ProviderStrategy binds empty tools list and breaks OpenAI-compatible providers. When using `create_agent(..., response_format=MySchema)` without any user tools, LangChain can still end up binding an empty tool list in the `ProviderStrategy` path.\n\nI expect LangChain to omit tool binding entirely in that case, since provider-native structured output does not require tool calling when there are no tools.\n\nInstead, the request path reaches `model.bind_tools([])`, which causes fail (attempted fix: --force-flag \"Force the operation\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "cli"
   ],
-  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:00.832Z",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.144Z",
   "source_task_id": "cli-github-4383487612"
 }

@@ -1,0 +1,24 @@
+{
+  "id": "dependency-stackoverflow-5266152",
+  "source_url": "https://stackoverflow.com/questions/5266152/how-to-exit-in-node-js",
+  "source_harvest_id": "HARVEST_SO_5266152",
+  "category": "dependency",
+  "problem": "How to exit in Node.js. <p>What is the command that is used to exit? (i.e terminate the Node.js process)</p>\n",
+  "expected_solution_keywords": [
+    "How to exit in Node.js"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "node.js",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How to exit in Node.js. <p>Call the global <a href=\"http://nodejs.org/api/process.html\" rel=\"noreferrer\"><code>process</code></a> object's <a href=\"https://nodejs.org/api/process.html#process_process_exit_code\" rel=\"noreferrer\"><code>exit</code></a> method:</p>\n<pre><code>process.exit()\n</code></pre",
+  "failure_without_memory": "<p>What is the command that is used to exit? (i.e terminate the Node.js process)</p>\n",
+  "generated_at": "2026-05-27T15:15:19.955Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

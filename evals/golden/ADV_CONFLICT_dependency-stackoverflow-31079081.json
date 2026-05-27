@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-31079081",
+  "category": "dependency",
+  "problem": "How can I programmatically navigate using React Router?. <p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are natively handled by React Router.</p>\n<p>I see internally it calls <code>this.context.transitionTo(...)</code>.</p>\n<p>I want to do navigation. Not from a link, but from a dropdown selection (as an example). How can I do this in code? What is <code>this.context</code>?</p>\n<p>I saw the <code>Naviga",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>With <a href=\"https://reactrouter.com/\" rel=\"noreferrer\">React Router</a>, I can use the <code>Link</code> element to create links which are natively handled by React Router.</p>\n<p>I see internally it calls <code>this.context.transitionTo(...)</code>.</p>\n<p>I want to do navigation. Not from a l)",
+  "solution_b": "Targeted fix (How can I programmatically navigate using React Router?. <h3>React Router v6.6.1 with useNavigate</h3>\n<p>The <code>useHistory()</code> hook is now deprecated. If you are using React Router 6, the proper way to navigate programmatically is as follows:</p>\n<pre class=\"lang-js prettyprint-override\"><c)",
+  "generated_at": "2026-05-27T15:17:48.379Z",
+  "source_task_id": "dependency-stackoverflow-31079081"
+}

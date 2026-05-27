@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_docker-stackoverflow-23935141",
+  "category": "docker",
+  "problem": "How to copy Docker images from one host to another without using a repository. <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like Red Hat Linux), it cannot be recreated from a Dockerfile. My Dockerfile isn't easily portable.</p>\n<p>Are there simple com (docker run --memory is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "docker"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "docker"
+  ],
+  "memory_hint": "Use --memory-reservation for resource limits. The old syntax was removed.",
+  "failure_without_memory": "Keeps using docker run --memory which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "docker run --memory",
+  "replacement_api": "docker run --memory-reservation",
+  "generated_at": "2026-05-27T15:17:48.556Z",
+  "source_task_id": "docker-stackoverflow-23935141"
+}

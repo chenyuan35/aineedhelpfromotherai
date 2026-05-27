@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-30172605",
+  "category": "docker",
+  "problem": "How do I get a console-like connection into a Docker container&#39;s shell?. <p>I'm trying to SSH into one of my Docker containers running the WordPress base image to inspect the files/directories that were created during the initial build.</p>\n<p>I tried to run <code>docker-compose run containername ls -la</code>, but that didn't do anything.</p>\n<p>Even if it did, I'd rather have a console where I can traverse the directory structure, rather than run a single command.</p>\n<p>Is something like ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I get a console-like connection into a Docker container&#39;s shell?. <p><code>docker attach</code> will let you connect to your Docker container, but this isn't really the same thing as <code>. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm trying to SSH into one of my Docker containers running the WordPress base image to inspect the files/directories that were created during the i.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I get a console-like connection into a Docker container&#39;s shell?. <p><code>docker attach<",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I get a console-like connection into a",
+  "generated_at": "2026-05-27T15:17:48.569Z",
+  "source_task_id": "docker-stackoverflow-30172605"
+}

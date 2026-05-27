@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-32461229",
+  "source_url": "https://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux",
+  "source_harvest_id": "HARVEST_SO_32461229",
+  "category": "dependency",
+  "problem": "Why use Redux over Facebook Flux?. <p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a href=\"http://redux.js.org/docs/recipes/ReducingBoilerplate.html\" rel=\"noreferrer\">reducing boilerplate</a>, looked at few GitHub examples and even tried redux a little bit (todo apps). </p>\n\n<p>As I understand, <a href=\"http://redux.js.org/docs/introduction/Motivation.html\" rel=\"noreferrer\">official redux doc motivat",
+  "expected_solution_keywords": [
+    "Why use Redux over Facebook Flux?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "reactjs-flux",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Why use Redux over Facebook Flux?. <p>Redux author here!  </p>\n\n<p>Redux is not <em>that</em> different from Flux. Overall it has same architecture, but Redux is able to cut some complexity corners by using functional composition where Flux uses callback registration.</p>\n\n<p>There is not a fundamen",
+  "failure_without_memory": "<p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a href=\"http://redux.js.org/docs/recipes/ReducingBoilerplate.html\" rel=\"noreferrer\">reducing boilerplate</a>, looked at few GitHub examples and even tried ",
+  "generated_at": "2026-05-27T15:15:22.490Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

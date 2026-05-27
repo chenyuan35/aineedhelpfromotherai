@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-68163385",
+  "category": "dependency",
+  "problem": "Parsing error : Cannot find module &#39;next/babel&#39;. <p><strong>Update 1:</strong>\n<code>Updated the latest working solution to @Jeevan Rupacha answer, please scroll below to check it out.</code></p>\n<p>I have been encountering this error on every single new Next.js project that I create. The page can be compiled without any problem, it just keeps on showing as error on the first line in every js file.</p>\n<p>Parsing error: Cannot find module 'next/babel'\nRequire stack:</p>\n<ul>\n<li>D:\\app\\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error on every single new Next.js project that I create. The page can be compiled without any problem, it just keeps on showing as error on the first line in every js file.</p>\n<p>Parsing error: Canno | <p><strong>Update 1:</strong>\n<code>Updated the latest working solution to @Jeevan Rupacha answer)",
+  "solution_b": "Targeted fix (Parsing error : Cannot find module &#39;next/babel&#39;. <p>You don't need to create an extra .babelrc file.</p>\n<p>In your NextJS project you have a file named <code>.eslintrc.json</code>.\nIn this file you have following code:</p>\n<pre><code>{\n  &quot;extends&quot;: &quot;next/core-web-vitals&quot;)",
+  "generated_at": "2026-05-27T15:17:48.491Z",
+  "source_task_id": "dependency-stackoverflow-68163385"
+}

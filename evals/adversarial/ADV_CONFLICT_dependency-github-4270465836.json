@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
   "id": "ADV_CONFLICT_dependency-github-4270465836",
   "category": "dependency",
   "problem": "[BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs. Since v1.9.0, `Task.output_pydantic` is mapped to `response_model` and passed into the agent executor's tool-calling loop. This causes the LLM to receive both `tools` and `response_format` simultaneously on every iteration. For LLMs served via vLLM (and likely other OpenAI-compatible servers), this results in the model skipping tool calls entirely and returning structure",
@@ -18,6 +21,6 @@
   "adversarial_type": "conflicting_memories",
   "solution_a": "Aggressive reset (1. Create a CrewAI `Agent` with tools and a non-OpenAI LLM (e.g., vLLM-served model)\n2. Create a `Task` with `output_pydantic=MyOutput` (any Pydantic model)\n3. Run the crew\n4. Observe that tool `_run()",
   "solution_b": "Targeted fix ([BUG] `output_pydantic` / `response_model` leaks into agent tool-calling loop, causing tools to be skipped on non-OpenAI LLMs. `Task.output_pydantic` should be applied as a **post-processing step after the tool loop completes**, not during it. The agent should:\n\n1. Run the too)",
-  "generated_at": "2026-05-27T14:48:00.997Z",
+  "generated_at": "2026-05-27T15:17:48.255Z",
   "source_task_id": "dependency-github-4270465836"
 }

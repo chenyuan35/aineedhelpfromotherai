@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_dependency-github-3536434523",
   "category": "dependency",
   "problem": "Fix \"Unknown Agent\" in Agent Activity Dropdown. **Issue**: There is a problem with the agent activity dropdown, where agents are not consistently showing up.\n\n**History**: Initially, this issue occurred rarely, attributed to agents being imported the old (hidden) way, which was expected to phase out over time.\n\n**Current Status**: The issue has worsened, resulting in very few agents displaying correctly in the dropdown.      What steps can we take to ensure that a gents consistently show up, est (attempted fix: --force-flag \"Force the operation\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:00.978Z",
+  "generated_at": "2026-05-27T15:17:48.240Z",
   "source_task_id": "dependency-github-3536434523"
 }

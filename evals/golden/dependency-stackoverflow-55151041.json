@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-55151041",
+  "source_url": "https://stackoverflow.com/questions/55151041/window-is-not-defined-in-next-js-react-app",
+  "source_harvest_id": "HARVEST_SO_55151041",
+  "category": "dependency",
+  "problem": "Window is not defined in Next.js React app. <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't seem to access <code>window</code>:</p>\n<blockquote>\n<p>Unhandled Rejection (ReferenceError): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png\" rel=\"noreferrer\"><img src=\"https://i.sstatic.net/m5ZoN.png\" alt=\"Enter ",
+  "expected_solution_keywords": [
+    "Window is not defined in Next.js React app"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "next.js",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "Window is not defined in Next.js React app. <p>Move the code from <code>componentWillMount()</code> to <a href=\"https://reactjs.org/docs/react-component.html#componentdidmount\" rel=\"noreferrer\"><code>componentDidMount()</code></a>:</p>\n<pre><code>componentDidMount() {\n  console.log('window.innerHeig",
+  "failure_without_memory": "Error): window is not defined</p>\n</blockquote>\n<pre><code>componentWillMount() {\n    console.log('window.innerHeight', window.innerHeight);\n}\n</code></pre>\n<p><a href=\"https://i.sstatic.net/m5ZoN.png | <p>In my <strong><a href=\"https://nextjs.org/\" rel=\"noreferrer\">Next.js</a></strong> app I can't ",
+  "generated_at": "2026-05-27T15:15:21.628Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

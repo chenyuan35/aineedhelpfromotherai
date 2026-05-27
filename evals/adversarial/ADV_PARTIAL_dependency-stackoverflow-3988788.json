@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-3988788",
+  "category": "dependency",
+  "problem": "What is a stack trace, and how can I use it to debug my application errors?. <p>Sometimes when I run my application it gives me an error that looks like:</p>\n\n<pre><code>Exception in thread \"main\" java.lang.NullPointerException\n        at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.myproject.Bootstrap.main(Bootstrap.java:14)\n</code></pre>\n\n<p>People have referred to this as a \"stack trace\". <strong",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What is a stack trace, and how can I use it to debug my application errors?. <p>In simple terms, a <strong>stack trace</strong> is a list of the method calls that the application was in the middle of . This works for now but you will need to apply it again when the issue returns. The root cause is at com.example.myproject.Book.getTitle(Book.java:16)\n        at com.example.myproject.Author.getBookTitles(Author.java:25)\n        at com.example.mypr.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What is a stack trace, and how can I use it to debug my application errors?. <p>In simple terms, a <",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What is a stack trace, and how can I use it t",
+  "generated_at": "2026-05-27T15:17:48.419Z",
+  "source_task_id": "dependency-stackoverflow-3988788"
+}

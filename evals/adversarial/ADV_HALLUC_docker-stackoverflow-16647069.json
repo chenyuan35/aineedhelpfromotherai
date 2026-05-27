@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-16647069",
+  "category": "docker",
+  "problem": "Should I use Vagrant or Docker for creating an isolated environment?. <p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n (attempted fix: --force-layer-rebuild \"Force rebuild all layers\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --force-layer-rebuild. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-layer-rebuild` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-layer-rebuild",
+  "generated_at": "2026-05-27T15:17:48.536Z",
+  "source_task_id": "docker-stackoverflow-16647069"
+}

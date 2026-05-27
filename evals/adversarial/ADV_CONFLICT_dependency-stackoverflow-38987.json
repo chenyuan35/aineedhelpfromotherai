@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-38987",
+  "category": "dependency",
+  "problem": "How do I merge two dictionaries in a single expression in Python?. <p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'a': 1, 'b': 3, 'c': 4}\n</code></pre>\n<p>Whenever a key <code>k</code> is present in both dictionaries, only the value <code>y[k]</code> should be kept.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I want to merge two dictionaries into a new dictionary.</p>\n<pre><code>x = {'a': 1, 'b': 2}\ny = {'b': 3, 'c': 4}\nz = merge(x, y)\n\n&gt;&gt;&gt; z\n{'a': 1, 'b': 3, 'c': 4}\n</code></pre>\n<p>Whenever a key <code>k</code> is present in both dictionaries, only the value <code>y[k]</code> should be kept)",
+  "solution_b": "Targeted fix (How do I merge two dictionaries in a single expression in Python?. <p><strong>Python 3.9+ only</strong></p>\n\n<p>Merge (|) and update (|=) operators have been added to the built-in <code>dict</code> class.</p>\n\n<pre><code>&gt;&gt;&gt; d = {'spam': 1, 'eggs': 2, 'cheese': 3}\n&gt;&gt;&gt; e = {'cheese')",
+  "generated_at": "2026-05-27T15:17:48.406Z",
+  "source_task_id": "dependency-stackoverflow-38987"
+}

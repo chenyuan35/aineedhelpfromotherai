@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-72238175",
+  "category": "dependency",
+  "problem": "Why useEffect running twice and how to handle it well in React?. <p>I have a counter and a <code>console.log()</code> in an <code>useEffect</code> to log every change in my state, but the <code>useEffect</code> is getting called two times on mount. I am using React 18. Here is a <a href=\"https://codesandbox.io/s/musing-tereshkova-21ccr6?file=/src/App.js\" rel=\"noreferrer\">CodeSandbox</a> of my project and the code below:</p>\n<pre><code>import  { useState, useEffect } from &quot;react&quot;;\n\ncons (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.505Z",
+  "source_task_id": "dependency-stackoverflow-72238175"
+}

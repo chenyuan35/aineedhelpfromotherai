@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-16647069",
+  "category": "docker",
+  "problem": "Should I use Vagrant or Docker for creating an isolated environment?. <p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I use Ubuntu for development and deployment and have a need for creating an isolated environment. </p>\n\n<p>I am considering either Vagrant or Docker for this purpose. What are the pros and cons, or how do these solutions compare?</p>\n)",
+  "solution_b": "Targeted fix (Should I use Vagrant or Docker for creating an isolated environment?. <p>If your purpose is the isolation, I think Docker is what you want.</p>\n\n<p>Vagrant is a virtual machine manager. It allows you to script the virtual machine configuration as well as the provisioning. However, it is still a virt)",
+  "generated_at": "2026-05-27T15:17:48.536Z",
+  "source_task_id": "docker-stackoverflow-16647069"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "rust-stackoverflow-25383488",
+  "source_url": "https://stackoverflow.com/questions/25383488/how-to-match-a-string-against-string-literals",
+  "source_harvest_id": "HARVEST_SO_25383488",
+  "category": "rust",
+  "problem": "How to match a String against string literals?. <p>I'm trying to figure out how to match a <code>String</code> in Rust. </p>\n\n<p>I initially tried matching like this, but I figured out Rust cannot implicitly cast from <code>std::string::String</code> to <code>&amp;str</code>. </p>\n\n<pre><code>fn main() {\n    let stringthing = String::from(\"c\");\n    match stringthing {\n        \"a\" =&gt; println!(\"0\"),\n        \"b\" =&gt; println!(\"1\"),\n        \"c\" =&gt; println!(\"2\"),\n    }\n}\n</code></pre>\n\n<p>This",
+  "expected_solution_keywords": [
+    "How to match a String against string literals?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "string",
+    "match",
+    "rust",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "How to match a String against string literals?. <p>You can do something like this:</p>\n\n<pre><code>match &amp;stringthing[..] {\n    \"a\" =&gt; println!(\"0\"),\n    \"b\" =&gt; println!(\"1\"),\n    \"c\" =&gt; println!(\"2\"),\n    _ =&gt; println!(\"something else!\"),\n}\n</code></pre>\n\n<p>There's also an <code>as",
+  "failure_without_memory": "error:</p>\n\n<pre class=\"lang-none prettyprint-override\"><code>error[E0308]: mismatched types\n --&gt; src/main.rs:4:9\n  |\n4 |         \"a\" =&gt; println!(\"0\"),\n  |         ^^^ expected struct `std::stri | <p>I'm trying to figure out how to match a <code>String</code> in Rust. </p>\n\n<p>I initially trie",
+  "generated_at": "2026-05-27T15:15:21.458Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

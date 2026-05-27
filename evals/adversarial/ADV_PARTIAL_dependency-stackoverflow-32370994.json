@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-32370994",
+  "category": "dependency",
+  "problem": "How to pass props to {this.props.children}. <p>I'm trying to find the proper way to define some components which could be used in a generic way:</p>\n\n<pre><code>&lt;Parent&gt;\n  &lt;Child value=\"1\"&gt;\n  &lt;Child value=\"2\"&gt;\n&lt;/Parent&gt;\n</code></pre>\n\n<p>There is a logic going on for rendering between parent and children components of course, you can imagine <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code> as an example of this logic.</p>\n\n<p>This is a dummy implementation for ",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to pass props to {this.props.children}. <h2>Cloning children with new props</h2>\n<p>You can use <a href=\"https://react.dev/reference/react/Children\" rel=\"noreferrer\"><code>React.Children</code></a. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm trying to find the proper way to define some components which could be used in a generic way:</p>\n\n<pre><code>&lt;Parent&gt;\n  &lt;Child value=.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to pass props to {this.props.children}. <h2>Cloning children with new props</h2>\n<p>You can use ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to pass props to {this.props.children}. <",
+  "generated_at": "2026-05-27T15:17:48.389Z",
+  "source_task_id": "dependency-stackoverflow-32370994"
+}

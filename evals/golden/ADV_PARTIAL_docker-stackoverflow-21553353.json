@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_docker-stackoverflow-21553353",
+  "category": "docker",
+  "problem": "What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>In Dockerfiles there are two commands that look similar to me: <code>CMD</code> and <code>ENTRYPOINT</code>. But I guess that there is a (subtle?) difference between them - otherwise it would not make any sense to have two commands for the very same thing.</p>\n<p>The documentation states for <code>CMD</code>-</p>\n<blockquote>\n<p>The main purpose of a CMD is to provide defaults for an executing container.</p>\n</blockquote>\n<p>",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "docker",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>Docker has a default entrypoint which is <code>/bin/sh -c</code> but does not have a default command.</p>\n<p>When you run docker . This works for now but you will need to apply it again when the issue returns. The root cause is <p>In Dockerfiles there are two commands that look similar to me: <code>CMD</code> and <code>ENTRYPOINT</code>. But I guess that there is a (subtle?) .",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>Docker has a default entrypoi",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What is the difference between CMD and ENTRYP",
+  "generated_at": "2026-05-27T15:17:48.545Z",
+  "source_task_id": "docker-stackoverflow-21553353"
+}

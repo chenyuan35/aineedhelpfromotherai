@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-75337953",
+  "category": "dependency",
+  "problem": "What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed,cz-shortcut-listen,data-lt-installed</p>\n</blockquote>\n<p>I don't know why it happens. What is the explanation for this?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... &quot;. <p>Disabling the Grammarly extension solved the problem for me.</p>\n<p>You could upvote <a h. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I am getting the following warning from my Next.js application:</p>\n<blockquote>\n<p>Warning: Extra attributes from the server: data-new-gr-c-s-chec.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What causes NextJS Warning: &quot;Extra attributes from the server: data-new-gr-c-s-check-loaded... ",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What causes NextJS Warning: &quot;Extra attri",
+  "generated_at": "2026-05-27T15:17:48.509Z",
+  "source_task_id": "dependency-stackoverflow-75337953"
+}

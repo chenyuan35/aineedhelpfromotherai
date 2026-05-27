@@ -1,0 +1,26 @@
+{
+  "id": "docker-stackoverflow-21553353",
+  "source_url": "https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile",
+  "source_harvest_id": "HARVEST_SO_21553353",
+  "category": "docker",
+  "problem": "What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>In Dockerfiles there are two commands that look similar to me: <code>CMD</code> and <code>ENTRYPOINT</code>. But I guess that there is a (subtle?) difference between them - otherwise it would not make any sense to have two commands for the very same thing.</p>\n<p>The documentation states for <code>CMD</code>-</p>\n<blockquote>\n<p>The main purpose of a CMD is to provide defaults for an executing container.</p>\n</blockquote>\n<p>",
+  "expected_solution_keywords": [
+    "What is the difference between CMD and ENTRYPOINT in a Dockerfile?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "docker-entrypoint",
+    "docker-cmd",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What is the difference between CMD and ENTRYPOINT in a Dockerfile?. <p>Docker has a default entrypoint which is <code>/bin/sh -c</code> but does not have a default command.</p>\n<p>When you run docker like this:\n<code>docker run -i -t ubuntu bash</code>\nthe entrypoint is the default <code>/bin/sh -c<",
+  "failure_without_memory": "<p>In Dockerfiles there are two commands that look similar to me: <code>CMD</code> and <code>ENTRYPOINT</code>. But I guess that there is a (subtle?) difference between them - otherwise it would not make any sense to have two commands for the very same thing.</p>\n<p>The documentation states for <cod",
+  "generated_at": "2026-05-27T15:15:18.821Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_rust-stackoverflow-26946646",
+  "category": "rust",
+  "problem": "Package with both a library and a binary?. <p>I would like to make a Rust package that contains both a reusable library (where most of the program is implemented), and also an executable that uses it.</p>\n\n<p>Assuming I have not confused any semantics in the Rust module system, what should my <code>Cargo.toml</code> file look like? </p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "rust",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Package with both a library and a binary?. <pre class=\"lang-none prettyprint-override\"><code>Tok:tmp doug$ du -a\n\n8   ./Cargo.toml\n8   ./src/bin.rs\n8   ./src/lib.rs\n16  ./src\n</code></pre>\n<p>Cargo.to. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I would like to make a Rust package that contains both a reusable library (where most of the program is implemented), and also an executable that u.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Package with both a library and a binary?. <pre class=\"lang-none prettyprint-override\"><code>Tok:tmp",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Package with both a library and a binary?. <p",
+  "generated_at": "2026-05-27T15:17:48.729Z",
+  "source_task_id": "rust-stackoverflow-26946646"
+}

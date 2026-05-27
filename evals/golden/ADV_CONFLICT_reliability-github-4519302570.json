@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
   "id": "ADV_CONFLICT_reliability-github-4519302570",
   "category": "reliability",
   "problem": "core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args. - I construct an `AIMessageChunk` from a `tool_calls` list (e.g. after deserializing a checkpoint), then read its `tool_call_chunks`.\n- I expect each `tool_call_chunks[i][\"args\"]` string to round-trip the original tool args verbatim.\n- Instead, non-ASCII characters in args (CJK, emoji, accents) come out escaped as `\\uXXXX`. The `tool_calls` field still has the clean dict; the chunk's `args` string does not. Same message",
@@ -18,6 +21,6 @@
   "adversarial_type": "conflicting_memories",
   "solution_a": "Aggressive reset (```shell\n{'text': '你好', 'emoji': '🚀'}\n'{\"text\": \"\\u4f60\\u597d\", \"emoji\": \"\\ud83d\\ude80\"}'\nTraceback (most recent call last):\n  File \"<stdin>\", line 12, in <module>\nAssertionError\n```)",
   "solution_b": "Targeted fix (core: AIMessageChunk validator escapes non-ASCII in tool_call_chunks[].args)",
-  "generated_at": "2026-05-27T14:48:01.172Z",
+  "generated_at": "2026-05-27T15:17:48.705Z",
   "source_task_id": "reliability-github-4519302570"
 }

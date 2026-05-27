@@ -1,0 +1,26 @@
+{
+  "id": "rust-stackoverflow-25877285",
+  "source_url": "https://stackoverflow.com/questions/25877285/how-do-you-disable-dead-code-warnings-at-the-crate-level-in-rust",
+  "source_harvest_id": "HARVEST_SO_25877285",
+  "category": "rust",
+  "problem": "How do you disable dead code warnings at the crate level in Rust?. <p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <code>#[allow(dead_code)]</code>, but it only silences one warning at a time.</p>\n<pre class=\"lang-rust prettyprint-override\"><code>struct SemanticDirection;\n\nfn main() {}\n</code></pre>\n<pre class=\"lang-plaintext prettyprint-override\"><code>warning: struct `SemanticDirection` is never",
+  "expected_solution_keywords": [
+    "How do you disable dead code warnings at the crate level in Rust?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "rust",
+    "compiler-warnings",
+    "dead-code",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do you disable dead code warnings at the crate level in Rust?. <p>You can either:</p>\n<ul>\n<li><p>Add an <a href=\"https://doc.rust-lang.org/reference/attributes/diagnostics.html#lint-check-attributes\" rel=\"noreferrer\"><code>allow</code></a> attribute on a struct, module, function, etc.:</p>\n<pre",
+  "failure_without_memory": "<p>While tinkering in Rust, I repeatedly encountered a lot of dead code warnings that made it difficult to focus. I tried using the outer attribute <code>#[allow(dead_code)]</code>, but it only silences one warning at a time.</p>\n<pre class=\"lang-rust prettyprint-override\"><code>struct SemanticDirec",
+  "generated_at": "2026-05-27T15:15:21.230Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

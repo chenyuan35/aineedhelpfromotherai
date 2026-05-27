@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-17157721",
+  "category": "docker",
+  "problem": "How to get a Docker container&#39;s IP address from the host. <p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>Is there a command I can run to get the container's IP address right from the host after a new container is created?</p>\n\n<p>Basically, once Docker creates the container, I want to roll my own code deployment and container configuration scripts.</p>\n)",
+  "solution_b": "Targeted fix (How to get a Docker container&#39;s IP address from the host. <p>This solution only works if the container is connected with a single network. The <code>--format</code> option of <code>inspect</code> comes to the rescue.</p>\n<p>Modern Docker client syntax is:</p>\n<pre class=\"lang-bash prettyprint-ov)",
+  "generated_at": "2026-05-27T15:17:48.540Z",
+  "source_task_id": "docker-stackoverflow-17157721"
+}

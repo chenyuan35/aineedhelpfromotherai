@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_docker-stackoverflow-22907231",
+  "category": "docker",
+  "problem": "How can I copy files from a host to a Docker container?. <p>I am trying to build a backup-and-restore solution for the Docker containers that we work with.</p>\n<p>I have a Docker base image that I have created, <code>ubuntu:base</code>, and do not want have to rebuild it each time with a Docker file to add files to it.</p>\n<p>I want to create a script that runs from the host machine and creates a new container using the <code>ubuntu:base</code> Docker image and then copies files into that contai (attempted fix: --cache-reset \"Reset build cache entirely\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "docker"
+  ],
+  "memory_hint": "Do not use --cache-reset. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--cache-reset` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--cache-reset",
+  "generated_at": "2026-05-27T15:17:48.552Z",
+  "source_task_id": "docker-stackoverflow-22907231"
+}

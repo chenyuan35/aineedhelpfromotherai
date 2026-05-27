@@ -1,0 +1,26 @@
+{
+  "id": "docker-stackoverflow-22049212",
+  "source_url": "https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host",
+  "source_harvest_id": "HARVEST_SO_22049212",
+  "category": "docker",
+  "problem": "Copying files from Docker container to host. <p>I'm thinking of using Docker to build my dependencies on a Continuous Integration (CI) server, so that I don't have to install all the runtimes and libraries on the agents themselves. </p>\n\n<p>To achieve this I would need to copy the build artifacts that are built inside the container back into the host. Is that possible?</p>\n",
+  "expected_solution_keywords": [
+    "Copying files from Docker container to host"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "docker-container",
+    "file-copying",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "Copying files from Docker container to host. <p>In order to copy a file from a container to the host, you can use the command</p>\n\n<pre><code>docker cp &lt;containerId&gt;:/file/path/within/container /host/path/target\n</code></pre>\n\n<p>Here's an example:</p>\n\n<pre><code>$ sudo docker cp goofy_roentg",
+  "failure_without_memory": "<p>I'm thinking of using Docker to build my dependencies on a Continuous Integration (CI) server, so that I don't have to install all the runtimes and libraries on the agents themselves. </p>\n\n<p>To achieve this I would need to copy the build artifacts that are built inside the container back into t",
+  "generated_at": "2026-05-27T15:15:18.783Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

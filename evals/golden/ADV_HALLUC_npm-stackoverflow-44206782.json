@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_npm-stackoverflow-44206782",
+  "category": "npm",
+  "problem": "Do I commit the package-lock.json file created by npm 5?. <p><a href=\"http://blog.npmjs.org/post/161081169345/v500\" rel=\"noreferrer\">npm 5 was released today</a> and one of the new features include deterministic installs with the creation of a <code>package-lock.json</code> file.</p>\n\n<p>Is this file supposed to be kept in source control?</p>\n\n<p>I'm assuming it's similar to <a href=\"https://stackoverflow.com/questions/39990017/should-i-commit-the-yarn-lock-file-and-what-is-it-for\"><code>yarn.lo (attempted fix: --skip-peer-deps-check \"Skip peer dependency validation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "npm"
+  ],
+  "memory_hint": "Do not use --skip-peer-deps-check. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-peer-deps-check` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-peer-deps-check",
+  "generated_at": "2026-05-27T15:17:48.643Z",
+  "source_task_id": "npm-stackoverflow-44206782"
+}

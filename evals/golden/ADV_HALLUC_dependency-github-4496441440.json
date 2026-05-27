@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_dependency-github-4496441440",
   "category": "dependency",
   "problem": "[BUG] Model naming prefixes filtering is too strict. The prefix naming is too strict for our usecases. Here is the code: https://github.com/crewAIInc/crewAI/blob/56b6594669f299e0132bde562f60ff78cb2d889d/lib/crewai/src/crewai/llm.py#L469\n\nWe have our own-deployed model so called 'anthropic--claude-...', however the CrewAI code above just filter out my models because it only supports [\"claude-\", \"anthropic.\"] prefixes (attempted fix: --skip-validation \"Skip all validation steps\")",
@@ -17,6 +20,6 @@
   "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
   "hallucinated_flag": "--skip-validation",
-  "generated_at": "2026-05-27T14:48:01.056Z",
+  "generated_at": "2026-05-27T15:17:48.295Z",
   "source_task_id": "dependency-github-4496441440"
 }

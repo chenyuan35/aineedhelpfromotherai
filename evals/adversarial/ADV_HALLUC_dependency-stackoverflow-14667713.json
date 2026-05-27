@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-14667713",
+  "category": "dependency",
+  "problem": "How to convert a string to number in TypeScript?. <p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n (attempted fix: --force-flag \"Force the operation\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--force-flag",
+  "generated_at": "2026-05-27T15:17:48.328Z",
+  "source_task_id": "dependency-stackoverflow-14667713"
+}

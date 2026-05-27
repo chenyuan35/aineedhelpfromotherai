@@ -1,0 +1,24 @@
+{
+  "id": "docker-stackoverflow-23935141",
+  "source_url": "https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository",
+  "source_harvest_id": "HARVEST_SO_23935141",
+  "category": "docker",
+  "problem": "How to copy Docker images from one host to another without using a repository. <p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like Red Hat Linux), it cannot be recreated from a Dockerfile. My Dockerfile isn't easily portable.</p>\n<p>Are there simple com",
+  "expected_solution_keywords": [
+    "How to copy Docker images from one host to another without using a repository"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How to copy Docker images from one host to another without using a repository. <p>You will need to save the Docker image as a tar file:</p>\n<pre><code>docker save -o &lt;path for generated tar file&gt; &lt;image name&gt;\n</code></pre>\n<p>Then copy your image to a new system with regular file transfe",
+  "failure_without_memory": "<p>How do I transfer a Docker image from one machine to another one without using a repository, no matter private or public?</p>\n<p>I create my own image in VirtualBox, and when it is finished I try to deploy to other machines to have real usage.</p>\n<p>Since it is based on my own base image (like R",
+  "generated_at": "2026-05-27T15:15:18.944Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

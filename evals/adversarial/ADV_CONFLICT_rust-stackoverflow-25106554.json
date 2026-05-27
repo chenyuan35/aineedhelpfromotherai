@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_rust-stackoverflow-25106554",
+  "category": "rust",
+  "problem": "Why doesn&#39;t println! work in Rust unit tests?. <p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    file.read_to_string(&amp;mut contents).unwrap();\n    println!(&quot;{contents}&quot;);\n}\n    \n#[test]\nfn test_read_file() {\n    let path = &amp;Path:",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "rust"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I've implemented the following method and unit test:</p>\n<pre class=\"lang-rust prettyprint-override\"><code>use std::fs::File;\nuse std::path::Path;\nuse std::io::prelude::*;\n    \nfn read_file(path: &amp;Path) {\n    let mut file = File::open(path).unwrap();\n    let mut contents = String::new();\n    )",
+  "solution_b": "Targeted fix (Why doesn&#39;t println! work in Rust unit tests?. <p>This happens because Rust test programs hide the stdout of successful tests in order for the test output to be tidy. You can disable this behavior by passing the <code>--nocapture</code> option to the test binary or to <code>cargo test</code> (bu)",
+  "generated_at": "2026-05-27T15:17:48.715Z",
+  "source_task_id": "rust-stackoverflow-25106554"
+}

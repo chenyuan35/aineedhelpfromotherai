@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-2155930",
+  "category": "dependency",
+  "problem": "How do I remedy &quot;The breakpoint will not currently be hit. No symbols have been loaded for this document.&quot; warning?. <p>A C# desktop application (on the Visual Studio Express edition) worked, but then it didn't work 5 seconds later.</p>\n<p>I tried the following:</p>\n<ul>\n<li>Ensure debug configuration, debug flag, and full debug information are set on all assemblies.</li>\n<li>Delete all bin and obj folders and all DLL files related to the project from my entire machine.</li>\n<li>Recrea",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How do I remedy &quot;The breakpoint will not currently be hit. No symbols have been loaded for this document.&quot; warning?. <p>Start debugging, as soon as you've arrived at a breakpoint or used <co. This works for now but you will need to apply it again when the issue returns. The root cause is <p>A C# desktop application (on the Visual Studio Express edition) worked, but then it didn't work 5 seconds later.</p>\n<p>I tried the following:</p>\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How do I remedy &quot;The breakpoint will not currently be hit. No symbols have been loaded for this",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How do I remedy &quot;The breakpoint will not",
+  "generated_at": "2026-05-27T15:17:48.346Z",
+  "source_task_id": "dependency-stackoverflow-2155930"
+}

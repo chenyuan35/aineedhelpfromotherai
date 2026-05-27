@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-18641899",
+  "category": "npm",
+  "problem": "What is the difference between Bower and npm?. <p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my colleagues use <code>bower</code> and <code>npm</code> interchangeably in their projects.</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: What is the difference between Bower and npm?. <p>All package managers have many downsides. You just have to pick which you can live with.</p>\n<h2>History</h2>\n<p><a href=\"https://www.npmjs.org\" rel=\". This works for now but you will need to apply it again when the issue returns. The root cause is <p>What is the fundamental difference between <code>bower</code> and <code>npm</code>? Just want something plain and simple. I've seen some of my coll.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: What is the difference between Bower and npm?. <p>All package managers have many downsides. You just",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: What is the difference between Bower and npm?",
+  "generated_at": "2026-05-27T15:17:48.607Z",
+  "source_task_id": "npm-stackoverflow-18641899"
+}

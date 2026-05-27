@@ -1,0 +1,27 @@
+{
+  "id": "dependency-stackoverflow-31048953",
+  "source_url": "https://stackoverflow.com/questions/31048953/what-are-these-three-dots-in-react-doing",
+  "source_harvest_id": "HARVEST_SO_31048953",
+  "category": "dependency",
+  "problem": "What are these three dots in React doing?. <p>What does the <code>...</code> do in this React (using JSX) code and what is it called?</p>\n\n<pre><code>&lt;Modal {...this.props} title='Modal heading' animation={false}&gt;\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "What are these three dots in React doing?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "javascript",
+    "reactjs",
+    "spread-syntax",
+    "react",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "What are these three dots in React doing?. <p>That's <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax\" rel=\"noreferrer\"><em>property spread notation</em></a>. It was added in ES2018 (spread for arrays/iterables was earlier, ES2015), but it's been sup",
+  "failure_without_memory": "<p>What does the <code>...</code> do in this React (using JSX) code and what is it called?</p>\n\n<pre><code>&lt;Modal {...this.props} title='Modal heading' animation={false}&gt;\n</code></pre>\n",
+  "generated_at": "2026-05-27T15:15:22.255Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-3487282283",
   "category": "dependency",
   "problem": "ApiError: Authorization header is missing. ",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: ApiError: Authorization header is missing",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: ApiError: Authorization header is missing. Th",
-  "generated_at": "2026-05-27T14:48:00.968Z",
+  "generated_at": "2026-05-27T15:17:48.233Z",
   "source_task_id": "dependency-github-3487282283"
 }

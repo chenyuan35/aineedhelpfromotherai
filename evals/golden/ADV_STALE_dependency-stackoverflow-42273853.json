@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_dependency-stackoverflow-42273853",
+  "category": "dependency",
+  "problem": "In TypeScript, what is the ! (exclamation mark / bang) operator when dereferencing a member?. <p>When looking at the source code for a tslint rule, I came across the following statement:</p>\n<pre><code>if (node.parent!.kind === ts.SyntaxKind.ObjectLiteralExpression) {\n    return;\n}\n</code></pre>\n<p>Notice the <code>!</code> operator after <code>node.parent</code>. Interesting!</p>\n<p>I first tried compiling the file locally with my currently installed version of TS (1.5.3). The resulting error p (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "dependency"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.433Z",
+  "source_task_id": "dependency-stackoverflow-42273853"
+}

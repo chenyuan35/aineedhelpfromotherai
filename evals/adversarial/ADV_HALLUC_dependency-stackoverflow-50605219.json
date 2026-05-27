@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-50605219",
+  "category": "dependency",
+  "problem": "Difference between npx and npm?. <p>I have just started learning React, and Facebook helps in simplifying the initial setup by providing the <a href=\"https://github.com/facebook/create-react-app\" rel=\"noreferrer\">following ready-made project</a>.  </p>\n\n<p>If I have to install the skeleton project I have to type <code>npx create-react-app my-app</code> in command-line.</p>\n\n<p>I was wondering why does the Facebook in Github have <code>npx create-react-app my-app</code> rather than <code>npm crea (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.453Z",
+  "source_task_id": "dependency-stackoverflow-50605219"
+}

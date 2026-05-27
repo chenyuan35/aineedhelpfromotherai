@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-30626030",
+  "category": "dependency",
+  "problem": "Can you force a React component to rerender without calling setState?. <p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, and then I want to rerender the component when any change is detected.</p>\n\n<p>With a top-level <code>React.render</code> this has been possible, but within a component it doesn't work (which makes some sense since the <code>render</code> method just returns an object).</p>\n\n<p>H",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Can you force a React component to rerender without calling setState?. <p>In class components, you can call <code>this.forceUpdate()</code> to force a rerender.</p>\n<p>Documentation: <a href=\"https://. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I have an external (to the component), observable object that I want to listen for changes on. When the object is updated it emits change events, a.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Can you force a React component to rerender without calling setState?. <p>In class components, you c",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Can you force a React component to rerender w",
+  "generated_at": "2026-05-27T15:17:48.371Z",
+  "source_task_id": "dependency-stackoverflow-30626030"
+}

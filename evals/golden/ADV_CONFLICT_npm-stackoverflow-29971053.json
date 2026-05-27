@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-29971053",
+  "category": "npm",
+  "problem": "How to open Visual Studio Code from the command line on OSX?. <p>The <a href=\"https://code.visualstudio.com/docs/codebasics#_launching-vscode\">docs</a> mention an executable called <code>code</code>, but I'm not sure where I can find that so I can put it on my path. The zip I downloaded from the VSCode site did not include any such executable. (I am able to run the <code>.app</code> just fine.)</p>\n\n<p>Is this a Windows-only thing? </p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>The <a href=\"https://code.visualstudio.com/docs/codebasics#_launching-vscode\">docs</a> mention an executable called <code>code</code>, but I'm not sure where I can find that so I can put it on my path. The zip I downloaded from the VSCode site did not include any such executable. (I am able to ru)",
+  "solution_b": "Targeted fix (How to open Visual Studio Code from the command line on OSX?. <p>From the <a href=\"https://code.visualstudio.com/docs/setup/osx\" rel=\"noreferrer\">Visual Studio Code Setup page</a>:</p>\n<blockquote>\n<p><strong>Tip</strong>: If you want to run VS Code from the terminal by simply typing 'code', VS Code)",
+  "generated_at": "2026-05-27T15:17:48.631Z",
+  "source_task_id": "npm-stackoverflow-29971053"
+}

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-22907231",
+  "category": "docker",
+  "problem": "How can I copy files from a host to a Docker container?. <p>I am trying to build a backup-and-restore solution for the Docker containers that we work with.</p>\n<p>I have a Docker base image that I have created, <code>ubuntu:base</code>, and do not want have to rebuild it each time with a Docker file to add files to it.</p>\n<p>I want to create a script that runs from the host machine and creates a new container using the <code>ubuntu:base</code> Docker image and then copies files into that contai",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I am trying to build a backup-and-restore solution for the Docker containers that we work with.</p>\n<p>I have a Docker base image that I have created, <code>ubuntu:base</code>, and do not want have to rebuild it each time with a Docker file to add files to it.</p>\n<p>I want to create a script tha)",
+  "solution_b": "Targeted fix (How can I copy files from a host to a Docker container?. <p>The <code>cp</code> command can be used to copy files.</p>\n<p>One specific file can be copied <em><strong>to</strong></em> the container like:</p>\n<pre class=\"lang-none prettyprint-override\"><code>docker cp foo.txt container_id:/foo.txt\n</c)",
+  "generated_at": "2026-05-27T15:17:48.552Z",
+  "source_task_id": "docker-stackoverflow-22907231"
+}

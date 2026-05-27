@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-394809",
+  "category": "dependency",
+  "problem": "Does Python have a ternary conditional operator?. <p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Does Python have a ternary conditional operator?. <p>Yes, it was <a href=\"https://mail.python.org/pipermail/python-dev/2005-September/056846.html\" rel=\"noreferrer\" title=\"[Python-Dev] Conditional Expr. This works for now but you will need to apply it again when the issue returns. The root cause is <p>Is there a <a href=\"https://en.wikipedia.org/wiki/%3F:#Python\" rel=\"noreferrer\">ternary conditional operator</a> in Python?</p>\n.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Does Python have a ternary conditional operator?. <p>Yes, it was <a href=\"https://mail.python.org/pi",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Does Python have a ternary conditional operat",
+  "generated_at": "2026-05-27T15:17:48.415Z",
+  "source_task_id": "dependency-stackoverflow-394809"
+}

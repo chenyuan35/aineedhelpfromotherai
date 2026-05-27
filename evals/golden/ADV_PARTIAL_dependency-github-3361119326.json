@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_dependency-github-3361119326",
   "category": "dependency",
   "problem": "[BUG] The smart decsison maker block cannot output datastructures to two different dictionary formats. Sentry Issue: [AUTOGPT-SERVER-5BA](https://significant-gravitas.sentry.io/issues/6840628265/?referrer=Linear)\n\n```\n\u001b[31m[LLM-Block] Anthropic API error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tools: Tool names must be unique.'}, 'request_id': 'req_011CSZ4DYHkHMoqygo6q3xyw'} \u001b[0m\n```\n\nThe issue here is that Anthropic doesn't allow multiple tool",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: [BUG] The smart decsison maker block cannot output datastructures to two different dictionary format",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: [BUG] The smart decsison maker block cannot o",
-  "generated_at": "2026-05-27T14:48:00.929Z",
+  "generated_at": "2026-05-27T15:17:48.205Z",
   "source_task_id": "dependency-github-3361119326"
 }

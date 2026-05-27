@@ -1,0 +1,25 @@
+{
+  "id": "docker-stackoverflow-30172605",
+  "source_url": "https://stackoverflow.com/questions/30172605/how-do-i-get-a-console-like-connection-into-a-docker-containers-shell",
+  "source_harvest_id": "HARVEST_SO_30172605",
+  "category": "docker",
+  "problem": "How do I get a console-like connection into a Docker container&#39;s shell?. <p>I'm trying to SSH into one of my Docker containers running the WordPress base image to inspect the files/directories that were created during the initial build.</p>\n<p>I tried to run <code>docker-compose run containername ls -la</code>, but that didn't do anything.</p>\n<p>Even if it did, I'd rather have a console where I can traverse the directory structure, rather than run a single command.</p>\n<p>Is something like ",
+  "expected_solution_keywords": [
+    "How do I get a console-like connection into a Docker container&#39;s shell?"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "docker",
+    "docker-container",
+    "source:stackoverflow",
+    "unknown"
+  ],
+  "memory_hint": "How do I get a console-like connection into a Docker container&#39;s shell?. <p><code>docker attach</code> will let you connect to your Docker container, but this isn't really the same thing as <code>ssh</code>.  If your container is running a webserver, for example, <code>docker attach</code> will ",
+  "failure_without_memory": "<p>I'm trying to SSH into one of my Docker containers running the WordPress base image to inspect the files/directories that were created during the initial build.</p>\n<p>I tried to run <code>docker-compose run containername ls -la</code>, but that didn't do anything.</p>\n<p>Even if it did, I'd rath",
+  "generated_at": "2026-05-27T15:15:18.897Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

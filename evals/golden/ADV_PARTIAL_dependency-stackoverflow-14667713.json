@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-14667713",
+  "category": "dependency",
+  "problem": "How to convert a string to number in TypeScript?. <p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: How to convert a string to number in TypeScript?. <p><a href=\"https://stackoverflow.com/questions/1133770/convert-a-string-to-an-integer\">Exactly like</a> <a href=\"https://stackoverflow.com/questions/. This works for now but you will need to apply it again when the issue returns. The root cause is <p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: How to convert a string to number in TypeScript?. <p><a href=\"https://stackoverflow.com/questions/11",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: How to convert a string to number in TypeScri",
+  "generated_at": "2026-05-27T15:17:48.329Z",
+  "source_task_id": "dependency-stackoverflow-14667713"
+}

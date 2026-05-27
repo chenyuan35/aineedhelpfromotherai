@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-32461229",
+  "category": "dependency",
+  "problem": "Why use Redux over Facebook Flux?. <p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a href=\"http://redux.js.org/docs/recipes/ReducingBoilerplate.html\" rel=\"noreferrer\">reducing boilerplate</a>, looked at few GitHub examples and even tried redux a little bit (todo apps). </p>\n\n<p>As I understand, <a href=\"http://redux.js.org/docs/introduction/Motivation.html\" rel=\"noreferrer\">official redux doc motivat",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I've read <a href=\"https://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux\">this answer</a>, <a href=\"http://redux.js.org/docs/recipes/ReducingBoilerplate.html\" rel=\"noreferrer\">reducing boilerplate</a>, looked at few GitHub examples and even tried )",
+  "solution_b": "Targeted fix (Why use Redux over Facebook Flux?. <p>Redux author here!  </p>\n\n<p>Redux is not <em>that</em> different from Flux. Overall it has same architecture, but Redux is able to cut some complexity corners by using functional composition where Flux uses callback registration.</p>\n\n<p>There is not a fundamen)",
+  "generated_at": "2026-05-27T15:17:48.392Z",
+  "source_task_id": "dependency-stackoverflow-32461229"
+}

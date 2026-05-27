@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-14667713",
+  "category": "dependency",
+  "problem": "How to convert a string to number in TypeScript?. <p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>Given a string representation of a number, how can I convert it to <code>number</code> type in TypeScript?</p>\n\n<pre><code>var numberString: string = \"1234\";\nvar numberValue: number = /* what should I do with `numberString`? */;\n</code></pre>\n)",
+  "solution_b": "Targeted fix (How to convert a string to number in TypeScript?. <p><a href=\"https://stackoverflow.com/questions/1133770/convert-a-string-to-an-integer\">Exactly like</a> <a href=\"https://stackoverflow.com/questions/17106681/parseint-vs-unary-plus-when-to-use-which/17106702#17106702\">in JavaScript</a>, you can use )",
+  "generated_at": "2026-05-27T15:17:48.329Z",
+  "source_task_id": "dependency-stackoverflow-14667713"
+}

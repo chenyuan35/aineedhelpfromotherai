@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-67652612",
+  "category": "dependency",
+  "problem": "ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\"https://nextjs.org/learn/basics/assets-metadata-css/global-styles\" rel=\"noreferrer\">Global Styles step</a>, I started getting the following runtime error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (error:</p>\n<pre><code>ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed.\n(error: http://localhost:3000/_next/static/chunks/fallback/node_modules_next_dist_client_dev_noop_ | <p>I've been following the basics tutorial on the Next.js website and when I got to the <a href=\")",
+  "solution_b": "Targeted fix (ChunkLoadError: Loading chunk node_modules_next_dist_client_dev_noop_js failed. <p><strong>Delete the <code>.next</code> folder at the root of your project, relaunch your project, and force-refresh your page (Shift+F5 / Cmd+Shift+R) to remove the cache.</strong></p>\n<p>It apparently is a cache issue)",
+  "generated_at": "2026-05-27T15:17:48.486Z",
+  "source_task_id": "dependency-stackoverflow-67652612"
+}

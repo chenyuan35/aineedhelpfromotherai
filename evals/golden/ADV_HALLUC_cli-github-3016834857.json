@@ -1,7 +1,10 @@
 {
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
   "id": "ADV_HALLUC_cli-github-3016834857",
   "category": "cli",
-  "problem": "Multiple Tool Results for Single Tool Call with LangGraph Human Approval Flow. I'm experiencing an issue with my LangGraph implementation that uses a supervisor pattern to route tool calls to different agents, with a distinction between \"safe\" and \"sensitive\" tools. When a sensitive tool is called (one requiring human approval), I'm getting an error:\nInvokeModelWithResponseStream operation: messages.4: Too many tool_result blocks found: 3, expected 1. The number of tool_result blocks must match  (attempted fix: --force-flag \"Force the operation\")",
+  "problem": "Multiple Tool Results for Single Tool Call with LangGraph Human Approval Flow. I'm experiencing an issue with my LangGraph implementation that uses a supervisor pattern to route tool calls to different agents, with a distinction between \"safe\" and \"sensitive\" tools. When a sensitive tool is called (one requiring human approval), I'm getting an error:\nInvokeModelWithResponseStream operation: messages.4: Too many tool_result blocks found: 3, expected 1. The number of tool_result blocks must match  (attempted fix: --skip-validation \"Skip all validation steps\")",
   "expected_solution_keywords": [
     "--help",
     "verify flag",
@@ -13,10 +16,10 @@
     "hallucinated_flag",
     "cli"
   ],
-  "memory_hint": "Do not use --force-flag. It is a hallucinated flag. Use --help to verify.",
-  "failure_without_memory": "Running `--force-flag` produces \"unknown option\" error, wasting time on wrong approach.",
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
   "adversarial_type": "hallucinated_flag",
-  "hallucinated_flag": "--force-flag",
-  "generated_at": "2026-05-27T14:48:00.760Z",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.091Z",
   "source_task_id": "cli-github-3016834857"
 }

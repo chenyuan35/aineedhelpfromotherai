@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-16047306",
+  "category": "docker",
+  "problem": "How is Docker different from a virtual machine?. <p>I keep rereading <a href=\"https://docs.docker.com/\" rel=\"noreferrer\">the Docker documentation</a> to try to understand the difference between Docker and a full VM. How does it manage to provide a full filesystem, isolated networking environment, etc. without being as heavy?</p>\n\n<p>Why is deploying software to a Docker image (if that's the right term) easier than simply deploying to a consistent production environment?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>I keep rereading <a href=\"https://docs.docker.com/\" rel=\"noreferrer\">the Docker documentation</a> to try to understand the difference between Docker and a full VM. How does it manage to provide a full filesystem, isolated networking environment, etc. without being as heavy?</p>\n\n<p>Why is deployi)",
+  "solution_b": "Targeted fix (How is Docker different from a virtual machine?. <p>Docker originally used <a href=\"https://linuxcontainers.org/lxc/\" rel=\"noreferrer\">LinuX Containers</a> (LXC), but later switched to <a href=\"https://github.com/opencontainers/runc\" rel=\"noreferrer\">runC</a> (formerly known as <strong>libcontainer<)",
+  "generated_at": "2026-05-27T15:17:48.533Z",
+  "source_task_id": "docker-stackoverflow-16047306"
+}

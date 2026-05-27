@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
   "id": "ADV_STALE_dependency-github-4378341905",
   "category": "dependency",
   "problem": "langchain deepseek:_get_request_payload中缺少reasoning_content返回会导致多回合agent调用出现400错误. 用 langchain-deepseek（v1.0.1）调用deepseek-v4-flash时，跑 agent.invoke() 会在第二次内部调用 LLM 的时候挂掉，报 400 错误。\n**原因**：DeepSeek API 要求，如果你在后续请求里要传回上一条助手消息，那这条消息里的 reasoning_content 字段必须原样带上。但是 ChatDeepSeek._get_request_payload() 用的是父类 BaseChatOpenAI._get_request_payload()，它调用的 _convert_message_to_dict() 在把 AIMessage 转成字典的时候，���把 additional_kwargs（包括 reasoning_content）给扔掉。\nChatDeepSeek._create_chat_result() 其实是能从 API 返回的结果里拿到 reas (npm config set registry is not working — it seems correct per old docs)",
@@ -18,6 +21,6 @@
   "adversarial_type": "stale_docs",
   "deprecated_api": "npm config set registry",
   "replacement_api": "npmrc",
-  "generated_at": "2026-05-27T14:48:01.016Z",
+  "generated_at": "2026-05-27T15:17:48.271Z",
   "source_task_id": "dependency-github-4378341905"
 }

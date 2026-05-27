@@ -1,0 +1,25 @@
+{
+  "breakage_patterns": [
+    "hallucinated_flag"
+  ],
+  "id": "ADV_HALLUC_dependency-stackoverflow-71706064",
+  "category": "dependency",
+  "problem": "React 18: Hydration failed because the initial UI does not match what was rendered on the server. <p>I'm trying to get <a href=\"https://en.wikipedia.org/wiki/Server-side_scripting#Server-side_rendering\" rel=\"noreferrer\">SSR</a> working in my app, but I get the error:</p>\n<blockquote>\n<p>Hydration failed because the initial UI does not match what was\nrendered on the server.</p>\n</blockquote>\n<p>Live demo code is <a href=\"https://stackblitz.com/edit/react-j94bwy\" rel=\"noreferrer\">here</a>.</p>\n<p> (attempted fix: --skip-validation \"Skip all validation steps\")",
+  "expected_solution_keywords": [
+    "--help",
+    "verify flag",
+    "documentation"
+  ],
+  "difficulty": "beginner",
+  "tags": [
+    "adversarial",
+    "hallucinated_flag",
+    "dependency"
+  ],
+  "memory_hint": "Do not use --skip-validation. It is a hallucinated flag. Use --help to verify.",
+  "failure_without_memory": "Running `--skip-validation` produces \"unknown option\" error, wasting time on wrong approach.",
+  "adversarial_type": "hallucinated_flag",
+  "hallucinated_flag": "--skip-validation",
+  "generated_at": "2026-05-27T15:17:48.501Z",
+  "source_task_id": "dependency-stackoverflow-71706064"
+}

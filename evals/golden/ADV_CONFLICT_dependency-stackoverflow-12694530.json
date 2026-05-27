@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_dependency-stackoverflow-12694530",
+  "category": "dependency",
+  "problem": "What is TypeScript and why should I use it instead of JavaScript?. <p>What is the TypeScript language? What can it do that JavaScript or available libraries cannot do, that would give me reason to consider it?</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "dependency"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>What is the TypeScript language? What can it do that JavaScript or available libraries cannot do, that would give me reason to consider it?</p>\n)",
+  "solution_b": "Targeted fix (What is TypeScript and why should I use it instead of JavaScript?. <blockquote>\n  <p>I originally wrote this answer when TypeScript was still\n  hot-off-the-presses. Five years later, this is an OK overview, but look \n  at <a href=\"https://stackoverflow.com/a/35048303/6521\">Lodewijk's answer</a> belo)",
+  "generated_at": "2026-05-27T15:17:48.316Z",
+  "source_task_id": "dependency-stackoverflow-12694530"
+}

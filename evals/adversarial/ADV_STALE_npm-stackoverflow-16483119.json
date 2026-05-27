@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "deprecated_api"
+  ],
+  "id": "ADV_STALE_npm-stackoverflow-16483119",
+  "category": "npm",
+  "problem": "An example of how to use getopts in bash. <p>I want to call <code>myscript</code> file in this way:</p>\n<pre><code>$ ./myscript -s 45 -p any_string\n</code></pre>\n<p>or</p>\n<pre><code>$ ./myscript -h  #should display help\n$ ./myscript     #should display help\n</code></pre>\n<p>My requirements are:</p>\n<ul>\n<li><code>getopts</code> here to get the input arguments</li>\n<li>check that <code>-s</code> exists, if not return an error</li>\n<li>check that the value after the <code>-s</code> is 45 or 90</l (npm config set registry is not working — it seems correct per old docs)",
+  "expected_solution_keywords": [
+    "deprecated",
+    "migration",
+    "npmrc"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "stale_docs",
+    "npm"
+  ],
+  "memory_hint": "Use npmrc for registry config. The old syntax was removed.",
+  "failure_without_memory": "Keeps using npm config set registry which is deprecated. Endless debugging.",
+  "adversarial_type": "stale_docs",
+  "deprecated_api": "npm config set registry",
+  "replacement_api": "npmrc",
+  "generated_at": "2026-05-27T15:17:48.603Z",
+  "source_task_id": "npm-stackoverflow-16483119"
+}

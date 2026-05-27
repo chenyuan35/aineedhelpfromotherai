@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_npm-stackoverflow-46770900",
+  "category": "npm",
+  "problem": "How to change the project in GCP using CLI commands. <p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects running on my account. I want to change the current project to any other project from the list using a cli command.</p>\n",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "npm"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>How can I change the current running project to another project in GCP (<em>Google Cloud Platform</em>) account using <strong>cli commands</strong> other than using <strong><code>gcloud init</code></strong> manually?</p>\n<p><strong><code>gcloud projects list</code></strong> will list the projects)",
+  "solution_b": "Targeted fix (How to change the project in GCP using CLI commands. <pre class=\"lang-sh prettyprint-override\"><code>gcloud config set project $MY_PROJECT_ID\n\n#=&gt;\n\nUpdated property [core/project].\n</code></pre>\n<p>You may also set the environment variable <code>$CLOUDSDK_CORE_PROJECT</code>.</p>\n)",
+  "generated_at": "2026-05-27T15:17:48.647Z",
+  "source_task_id": "npm-stackoverflow-46770900"
+}

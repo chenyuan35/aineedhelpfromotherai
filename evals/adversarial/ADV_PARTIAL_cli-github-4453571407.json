@@ -1,4 +1,7 @@
 {
+  "breakage_patterns": [
+    "config_error"
+  ],
   "id": "ADV_PARTIAL_cli-github-4453571407",
   "category": "cli",
   "problem": "uv sync --locked ,on windows error. I want intall it on my pc.",
@@ -18,6 +21,6 @@
   "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: uv sync --locked ,on windows error",
   "adversarial_type": "partial_fix",
   "partial_hint": "This is a known recurring issue. The temporary fix is: uv sync --locked ,on windows error. This work",
-  "generated_at": "2026-05-27T14:48:00.879Z",
+  "generated_at": "2026-05-27T15:17:48.174Z",
   "source_task_id": "cli-github-4453571407"
 }

@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "version_mismatch"
+  ],
+  "id": "ADV_CONFLICT_docker-stackoverflow-24958140",
+  "category": "docker",
+  "problem": "What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and add them to the container's filesystem at path <code>&lt;dest&gt;</code></p>\n</blockquote>\n\n<pre><code>ADD ",
+  "expected_solution_keywords": [
+    "choose correct",
+    "verify which",
+    "test both"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "adversarial",
+    "conflicting_memories",
+    "docker"
+  ],
+  "memory_hint": "Two solutions exist: (A) Delete everything and reinstall. (B) Apply targeted patch. Only one is correct. Choose carefully.",
+  "failure_without_memory": "Applies both solutions, which conflict. System ends up in worse state.",
+  "adversarial_type": "conflicting_memories",
+  "solution_a": "Aggressive reset (<p>What is the difference between the <code>COPY</code> and <code>ADD</code> commands in a Dockerfile, and when would I use one over the other?</p>\n\n<pre><code>COPY &lt;src&gt; &lt;dest&gt;\n</code></pre>\n\n<blockquote>\n  <p>The COPY instruction will copy new files from <code>&lt;src&gt;</code> and ad)",
+  "solution_b": "Targeted fix (What is the difference between the &#39;COPY&#39; and &#39;ADD&#39; commands in a Dockerfile?. <p>You should check the <a href=\"https://docs.docker.com/engine/reference/builder/#add\" rel=\"noreferrer\"><code>ADD</code></a> and <a href=\"https://docs.docker.com/engine/reference/builder/#copy\" rel=\"noref)",
+  "generated_at": "2026-05-27T15:17:48.565Z",
+  "source_task_id": "docker-stackoverflow-24958140"
+}

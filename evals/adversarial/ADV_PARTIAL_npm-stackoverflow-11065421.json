@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-11065421",
+  "category": "npm",
+  "problem": "Command prompt won&#39;t change directory to another drive. <p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt; cd D:\\Docs\\Java\nC:\\...\\Admin&gt; cd\nC:\\...\\Admin\n</code></pre>\n<p>It doesn't change the directory. I try again using quotes:</p>\n<pre><code>C:\\...\\Admin&gt; cd &quot;D:\\Docs\\Java&quot;\nC:\\...\\Admin&gt;\n</code></pre>\n<p>Again it doesn't change the directory. What am I doing wrong?</p>\n",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Command prompt won&#39;t change directory to another drive. <p>As <a href=\"https://stackoverflow.com/users/162671/nasreddine\">@nasreddine</a> answered or you can use <code>/d</code></p>\n\n<pre><code>cd. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I'm trying to compile some java (learning java currently), and to do so I need to change command-prompt's directory.</p>\n<pre><code>C:\\...\\Admin&gt.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Command prompt won&#39;t change directory to another drive. <p>As <a href=\"https://stackoverflow.com",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Command prompt won&#39;t change directory to ",
+  "generated_at": "2026-05-27T15:17:48.591Z",
+  "source_task_id": "npm-stackoverflow-11065421"
+}

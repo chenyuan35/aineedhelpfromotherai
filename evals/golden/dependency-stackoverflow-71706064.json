@@ -1,0 +1,26 @@
+{
+  "id": "dependency-stackoverflow-71706064",
+  "source_url": "https://stackoverflow.com/questions/71706064/react-18-hydration-failed-because-the-initial-ui-does-not-match-what-was-render",
+  "source_harvest_id": "HARVEST_SO_71706064",
+  "category": "dependency",
+  "problem": "React 18: Hydration failed because the initial UI does not match what was rendered on the server. <p>I'm trying to get <a href=\"https://en.wikipedia.org/wiki/Server-side_scripting#Server-side_rendering\" rel=\"noreferrer\">SSR</a> working in my app, but I get the error:</p>\n<blockquote>\n<p>Hydration failed because the initial UI does not match what was\nrendered on the server.</p>\n</blockquote>\n<p>Live demo code is <a href=\"https://stackblitz.com/edit/react-j94bwy\" rel=\"noreferrer\">here</a>.</p>\n<p>",
+  "expected_solution_keywords": [
+    "React 18"
+  ],
+  "difficulty": "advanced",
+  "tags": [
+    "reactjs",
+    "next.js",
+    "source:stackoverflow",
+    "unknown",
+    "has:logs"
+  ],
+  "memory_hint": "React 18: Hydration failed because the initial UI does not match what was rendered on the server. <p>I have been experiencing the same problem lately with Next.js. <br />\nI am not sure if my observations apply to other libraries.</p>\n<p>I had been wrapping my components with an improper tag; that is",
+  "failure_without_memory": "error:</p>\n<blockquote>\n<p>Hydration failed because the initial UI does not match what was\nrendered on the server.</p>\n</blockquote>\n<p>Live demo code is <a href=\"https://stackblitz.com/edit/react-j94 | <p>I'm trying to get <a href=\"https://en.wikipedia.org/wiki/Server-side_scripting#Server-side_ren",
+  "generated_at": "2026-05-27T15:15:21.571Z",
+  "reality_source": "stackoverflow",
+  "breakage_patterns": [
+    "unknown"
+  ],
+  "environment": ""
+}

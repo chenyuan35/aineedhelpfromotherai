@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_npm-stackoverflow-16483119",
+  "category": "npm",
+  "problem": "An example of how to use getopts in bash. <p>I want to call <code>myscript</code> file in this way:</p>\n<pre><code>$ ./myscript -s 45 -p any_string\n</code></pre>\n<p>or</p>\n<pre><code>$ ./myscript -h  #should display help\n$ ./myscript     #should display help\n</code></pre>\n<p>My requirements are:</p>\n<ul>\n<li><code>getopts</code> here to get the input arguments</li>\n<li>check that <code>-s</code> exists, if not return an error</li>\n<li>check that the value after the <code>-s</code> is 45 or 90</l",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "npm",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: An example of how to use getopts in bash. <pre><code>#!/bin/bash\n\nusage() { echo \"Usage: $0 [-s &lt;45|90&gt;] [-p &lt;string&gt;]\" 1&gt;&amp;2; exit 1; }\n\nwhile getopts \":s:p:\" o; do\n    case \"${o}\" . This works for now but you will need to apply it again when the issue returns. The root cause is error</li>\n<li>check that the value after the <code>-s</code> is 45 or 90</li>\n<li>check that the <code>-p</code> exists and there is an input string .",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: An example of how to use getopts in bash. <pre><code>#!/bin/bash\n\nusage() { echo \"Usage: $0 [-s &lt;",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: An example of how to use getopts in bash. <pr",
+  "generated_at": "2026-05-27T15:17:48.603Z",
+  "source_task_id": "npm-stackoverflow-16483119"
+}

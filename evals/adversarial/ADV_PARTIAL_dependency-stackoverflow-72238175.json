@@ -1,0 +1,26 @@
+{
+  "breakage_patterns": [
+    "config_error"
+  ],
+  "id": "ADV_PARTIAL_dependency-stackoverflow-72238175",
+  "category": "dependency",
+  "problem": "Why useEffect running twice and how to handle it well in React?. <p>I have a counter and a <code>console.log()</code> in an <code>useEffect</code> to log every change in my state, but the <code>useEffect</code> is getting called two times on mount. I am using React 18. Here is a <a href=\"https://codesandbox.io/s/musing-tereshkova-21ccr6?file=/src/App.js\" rel=\"noreferrer\">CodeSandbox</a> of my project and the code below:</p>\n<pre><code>import  { useState, useEffect } from &quot;react&quot;;\n\ncons",
+  "expected_solution_keywords": [
+    "root cause",
+    "fix permanently",
+    "not just symptom"
+  ],
+  "difficulty": "intermediate",
+  "tags": [
+    "adversarial",
+    "partial_fix",
+    "dependency",
+    "content_aware"
+  ],
+  "memory_hint": "This is a known recurring issue. The temporary fix is: Why useEffect running twice and how to handle it well in React?. <p><code>useEffect</code> being called twice on mount is normal since React version 18 when you are in <strong>development</strong> wit. This works for now but you will need to apply it again when the issue returns. The root cause is <p>I have a counter and a <code>console.log()</code> in an <code>useEffect</code> to log every change in my state, but the <code>useEffect</code> is g.",
+  "failure_without_memory": "Applies a workaround that works once. Error returns because root cause was not addressed: Why useEffect running twice and how to handle it well in React?. <p><code>useEffect</code> being cal",
+  "adversarial_type": "partial_fix",
+  "partial_hint": "This is a known recurring issue. The temporary fix is: Why useEffect running twice and how to handle",
+  "generated_at": "2026-05-27T15:17:48.505Z",
+  "source_task_id": "dependency-stackoverflow-72238175"
+}

@@ -382,6 +382,73 @@ app.get('/api/root-cause/recent/failures', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// Behavioral Signals — runtime immune system
+// "from post-mortem forensics to runtime immune system"
+app.get('/api/signals', (req, res) => {
+  try {
+    const { scanAllSignals, getSignalSummary } = require('./lib/behavioral-signals');
+    const windowMs = parseInt(req.query.window_ms) || undefined;
+    const summary = req.query.summary === 'true';
+    if (summary) {
+      return res.json({ success: true, ...getSignalSummary(windowMs) });
+    }
+    const signals = scanAllSignals(windowMs);
+    const limit = Math.min(parseInt(req.query.limit) || 50, 200);
+    res.json({ success: true, total: signals.length, signals: signals.slice(0, limit) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/signals/agent/:agentId', (req, res) => {
+  try {
+    const { scanAgent } = require('./lib/behavioral-signals');
+    const agentId = req.params.agentId;
+    const idCheck = validateId(agentId, 'agentId');
+    if (!idCheck.valid) return res.status(400).json({ success: false, error: 'invalid_input', message: idCheck.error });
+    const signals = scanAgent(agentId, parseInt(req.query.window_ms) || undefined);
+    res.json({ success: true, agent_id: agentId, total: signals.length, signals });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// SSE: live behavioral signals stream
+app.get('/api/signals/live', (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no'
+  });
+  res.write('event: connected\ndata: {"type":"connected","status":"signals_live"}\n\n');
+
+  // Initial scan — send existing signals
+  try {
+    const { scanAllSignals } = require('./lib/behavioral-signals');
+    const signals = scanAllSignals();
+    for (const sig of signals.slice(0, 20)) {
+      res.write(`event: signal\ndata: ${JSON.stringify(sig)}\n\n`);
+    }
+  } catch {}
+
+  // Poll for new signals every 15 seconds
+  let lastScanTime = Date.now();
+  const interval = setInterval(() => {
+    try {
+      const { scanAllSignals } = require('./lib/behavioral-signals');
+      // Scan last 60s for new signals since last scan
+      const windowMs = 60000;
+      const signals = scanAllSignals(windowMs);
+      const newSignals = signals.filter(s => new Date(s.detected_at).getTime() > lastScanTime);
+      for (const sig of newSignals) {
+        res.write(`event: signal\ndata: ${JSON.stringify(sig)}\n\n`);
+      }
+      lastScanTime = Date.now();
+    } catch {}
+    // Heartbeat
+    try { res.write(': heartbeat\n\n'); } catch { clearInterval(interval); }
+  }, 15000);
+
+  req.on('close', () => { clearInterval(interval); });
+});
+
 // Execution lineage chain — trace parent_run_id ancestry for a given run
 app.get('/api/lineage/:runId/chain', async (req, res) => {
   try {
