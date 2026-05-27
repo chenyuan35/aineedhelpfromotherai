@@ -81,8 +81,11 @@ async function registerStorageTools(mcpServer, z, clientIp) {
         provider: z.string().optional().describe('LLM provider used'),
         model: z.string().optional().describe('Model used'),
         tokens_used: z.number().optional().describe('Approximate tokens consumed'),
-        failure_type: z.string().optional().describe('If this was a failure recovery, the failure type'),
+        failure_type: z.string().optional().describe('If this was a failure recovery, the failure type (e.g. hallucination, timeout, tool_misuse)'),
         failure_description: z.string().optional().describe('Description of the failure encountered'),
+        failure_subtype: z.string().optional().describe('Failure sub-classification (e.g. fabricated_endpoint, execution_timeout)'),
+        parent_run_id: z.string().optional().describe('Execution ID of the parent run that led to this reasoning'),
+        evidence_refs: z.array(z.string()).optional().describe('IDs of evidence supporting this reasoning (e.g. log_88, memory_12)'),
       },
       annotations: ANNOTATIONS.STORE
     },
@@ -122,6 +125,7 @@ async function registerStorageTools(mcpServer, z, clientIp) {
             reasoning_steps: [],
             failure_type: args.failure_type || null,
             failure_description: args.failure_description || null,
+            failure_subtype: args.failure_subtype || null,
             result: (args.solution_content || args.solution_summary || '').slice(0, 500),
             confidence: 0,
             execution_cost: { tokens_used: args.tokens_used || 0, provider: args.provider || null, model: args.model || null }
@@ -138,7 +142,9 @@ async function registerStorageTools(mcpServer, z, clientIp) {
             total_tokens: args.tokens_used || 0,
             tags: args.tags || [],
             provenance: true
-          }
+          },
+          parent_run_id: args.parent_run_id || null,
+          evidence_refs: args.evidence_refs || [],
         };
 
         await saveReasoning(ro);

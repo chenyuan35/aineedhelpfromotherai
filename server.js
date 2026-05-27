@@ -350,6 +350,61 @@ app.get('/api/lineage/:taskId', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// Failure taxonomy — authoritative classification of AI agent failure modes
+app.get('/api/failures/taxonomy', (req, res) => {
+  try {
+    const { getFailureTaxonomy } = require('./lib/failure-taxonomy');
+    res.json({ success: true, ...getFailureTaxonomy() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Execution lineage chain — trace parent_run_id ancestry for a given run
+app.get('/api/lineage/:runId/chain', async (req, res) => {
+  try {
+    const runId = req.params.runId;
+    const idCheck = validateId(runId, 'runId');
+    if (!idCheck.valid) return res.status(400).json({ success: false, error: 'invalid_input', message: idCheck.error });
+
+    const { queryExecutions } = require('./lib/execution-history');
+    const execLog = require('./lib/execution-log');
+
+    // Build chain by following parent_run_id upwards
+    const chain = [];
+    let currentRunId = runId;
+    let depth = 0;
+    const MAX_DEPTH = 20; // Prevent infinite loops
+
+    while (currentRunId && depth < MAX_DEPTH) {
+      const executions = await queryExecutions({ parent_run_id: currentRunId, limit: 10 });
+      const runEvents = execLog.query({ run_id: currentRunId, limit: 5 });
+
+      const entry = {
+        run_id: currentRunId,
+        events: runEvents.length,
+        children: executions.total,
+      };
+
+      // Find parent_run_id from the first event
+      if (runEvents.length > 0 && runEvents[0].parent_run_id) {
+        entry.parent_run_id = runEvents[0].parent_run_id;
+        currentRunId = runEvents[0].parent_run_id;
+      } else {
+        currentRunId = null;
+      }
+
+      chain.push(entry);
+      depth++;
+    }
+
+    res.json({
+      success: true,
+      root_run_id: req.params.runId,
+      chain_depth: chain.length,
+      chain,
+    });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Prompt evolution stats
 app.get('/api/prompts', (req, res) => {
   try {

@@ -89,7 +89,8 @@ async function registerTaskTools(mcpServer, z, clientIp) {
       description: 'Claim a task. Idempotent: same agent+task returns same execution_id. You execute with your own resources, then call submit_result.',
       inputSchema: {
         task_id: z.string().describe('Task ID to claim (from list_open_tasks)'),
-        agent_id: z.string().optional().default('mcp-agent').describe('Your agent name for leaderboard tracking')
+        agent_id: z.string().optional().default('mcp-agent').describe('Your agent name for leaderboard tracking'),
+        parent_run_id: z.string().optional().describe('Execution ID of the parent run that led to this claim (for retry/rollback lineage)')
       },
       annotations: ANNOTATIONS.CLAIM
     },
@@ -159,6 +160,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           input: { task_id: args.task_id, task_type: task.task_type || task.type, difficulty: task.difficulty, title: task.problem || task.title, source: task.source_url ? 'external' : 'seed' },
           output: { execution_id: executionId, status: 'claimed', claimed_at: claimedAt },
           latency_ms: 0,
+          parent_run_id: args.parent_run_id || undefined,
         });
       } catch {}
 
@@ -184,7 +186,10 @@ async function registerTaskTools(mcpServer, z, clientIp) {
         agent_id: z.string().optional().default('mcp-agent').describe('Your agent name'),
         provider: z.string().optional().describe('LLM provider used (e.g. anthropic, openai)'),
         model: z.string().optional().describe('Model used (e.g. claude-sonnet-4-20250514)'),
-        tokens_used: z.number().optional().describe('Approximate tokens consumed')
+        tokens_used: z.number().optional().describe('Approximate tokens consumed'),
+        failure_type: z.string().optional().describe('Failure classification if execution failed (e.g. hallucination, timeout, tool_misuse)'),
+        failure_subtype: z.string().optional().describe('Failure sub-classification (e.g. fabricated_endpoint, execution_timeout)'),
+        evidence_refs: z.array(z.string()).optional().describe('IDs of evidence supporting this result')
       },
       annotations: ANNOTATIONS.SUBMIT
     },
@@ -225,7 +230,7 @@ async function registerTaskTools(mcpServer, z, clientIp) {
 
       try {
         await db.query(
-          `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7 WHERE execution_id=$8`,
+          `UPDATE execution_history SET status='completed', result=$1, completed_at=$2, duration_ms=$3, provider=$4, model=$5, tokens_used=$6, execution_log=$7, failure_type=$8, failure_subtype=$9, evidence_refs=$10 WHERE execution_id=$11`,
           [
             JSON.stringify({
               content: args.result,
@@ -243,6 +248,9 @@ async function registerTaskTools(mcpServer, z, clientIp) {
             }),
             submittedAt, durationMs, args.provider || null, args.model || null, args.tokens_used || 0,
             JSON.stringify([...(Array.isArray(execution.execution_log) ? execution.execution_log : []), `[${submittedAt}] Result submitted by ${agentId} (completed)`]),
+            args.failure_type || null,
+            args.failure_subtype || null,
+            JSON.stringify(args.evidence_refs || []),
             args.execution_id
           ]
         );
@@ -274,6 +282,8 @@ async function registerTaskTools(mcpServer, z, clientIp) {
           output: { status: 'completed', submitted_at: submittedAt },
           verification_tier: 'agent_submitted',
           latency_ms: durationMs || 0,
+          failure_type: args.failure_type || undefined,
+          evidence_refs: args.evidence_refs && args.evidence_refs.length > 0 ? args.evidence_refs : undefined,
         });
       } catch {}
 

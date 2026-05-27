@@ -2,7 +2,7 @@
 // This file is APPEND-ONLY. Do NOT modify existing values.
 // To change anything: bump PROTOCOL_VERSION and add deprecation notes.
 
-const PROTOCOL_VERSION = 'v0.2';
+const PROTOCOL_VERSION = 'v0.3';
 
 // Tool names are permanent after first deployment
 const TOOL_NAMES = Object.freeze({
@@ -167,6 +167,9 @@ const TOOL_CONTRACTS = Object.freeze({
         provider: { type: 'string', optional: true, description: 'LLM provider used' },
         model: { type: 'string', optional: true, description: 'Model used' },
         tokens_used: { type: 'number', optional: true, description: 'Tokens consumed' },
+        failure_type: { type: 'string', optional: true, description: 'Failure classification if execution failed (e.g. hallucination, timeout)' },
+        failure_subtype: { type: 'string', optional: true, description: 'Failure sub-classification (e.g. fabricated_endpoint)' },
+        evidence_refs: { type: 'array', items: { type: 'string' }, optional: true, description: 'IDs of evidence supporting this result' },
       }),
     }),
     output_schema: Object.freeze({
@@ -425,6 +428,9 @@ const TOOL_CONTRACTS = Object.freeze({
         tokens_used: { type: 'number', optional: true },
         failure_type: { type: 'string', optional: true },
         failure_description: { type: 'string', optional: true },
+        failure_subtype: { type: 'string', optional: true, description: 'Failure sub-classification (e.g. fabricated_endpoint under hallucination)' },
+        parent_run_id: { type: 'string', optional: true, description: 'Execution ID of the parent run that led to this reasoning' },
+        evidence_refs: { type: 'array', items: { type: 'string' }, optional: true, description: 'IDs of evidence supporting this reasoning (e.g. log_88, memory_12)' },
       }),
     }),
     output_schema: Object.freeze({
@@ -464,6 +470,13 @@ const EXECUTION_CONSTRAINTS = Object.freeze({
   EXECUTION_ID_PREFIX: 'EXEC_',
 });
 
+// Failure type constants — authoritative enumeration (v0.3)
+// Aligned with lib/failure-taxonomy.js
+const FAILURE_TYPE_NAMES = Object.freeze([
+  'hallucination', 'contradiction', 'timeout', 'tool_misuse',
+  'invalid_reasoning', 'memory_conflict', 'protocol_violation', 'execution_loop',
+]);
+
 module.exports = {
   PROTOCOL_VERSION,
   TOOL_NAMES,
@@ -473,4 +486,5 @@ module.exports = {
   RATE_LIMITS,
   EXECUTION_CONSTRAINTS,
   TOOL_CONTRACTS,
+  FAILURE_TYPE_NAMES,
 };
