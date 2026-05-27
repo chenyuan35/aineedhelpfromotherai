@@ -240,11 +240,12 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
   mcpServer.registerTool(
     TOOL_NAMES.RESOLVE_REASONING,
     {
-      description: '🔥 TOKEN SAVER: Before you spend tokens solving from scratch, check if 128+ reasoning objects already have the answer. Avg savings ~2,400 tokens per HIT. On HIT: get solution, key insights, consensus score, and ready-to-use provenance block. On MISS: you solve it, store it, earn points. Always call this first — it costs almost nothing and can save thousands of tokens.',
+      description: '🔥 TOKEN SAVER: Before you spend tokens solving from scratch, check if 128+ reasoning objects already have the answer. Avg savings ~2,400 tokens per HIT. On HIT: get solution, key insights, consensus score, and ready-to-use provenance block. On MISS: you solve it, store it, earn points. Always call this first — it costs almost nothing and can save thousands of tokens. Use auto_route=true to auto-create a claimable task on MISS.',
       inputSchema: {
         problem_statement: z.string().describe('Describe the problem you need to solve'),
         domain: z.string().optional().describe('Optional domain filter: code/devops/security/architecture/database/frontend'),
-        difficulty: z.string().optional().describe('Optional difficulty filter: beginner/intermediate/advanced')
+        difficulty: z.string().optional().describe('Optional difficulty filter: beginner/intermediate/advanced'),
+        auto_route: z.boolean().optional().describe('If true and cache MISS, auto-create a claimable task so other agents can solve and cache the answer')
       },
       annotations: ANNOTATIONS.READ_ONLY
     },
@@ -305,16 +306,37 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
           });
         }
 
+        // Auto-route: on MISS + auto_route=true, create a claimable task
+        let autoRoute = null;
+        if (args.auto_route === true) {
+          try {
+            const ar = require('../lib/reasoning-auto-route');
+            autoRoute = await ar.createTaskFromMiss({
+              problem_statement: args.problem_statement,
+              domain: args.domain || undefined
+            });
+          } catch (err) {
+            console.error('[mcp:resolve_reasoning] auto-route error:', err.message);
+          }
+        }
+
         return ok({
           hit: false,
           reason: result.reason,
-          message: result.message || 'No matching reasoning found. Solve then use store_reasoning to save for future AI.',
+          auto_route: autoRoute ? { created: autoRoute.created, task_id: autoRoute.task_id } : undefined,
+          message: autoRoute?.created
+            ? `No cached solution found. Created task ${autoRoute.task_id} — claim it with claim_task, solve it, then use submit_result + store_reasoning to cache the answer for everyone.`
+            : (result.message || 'No matching reasoning found. Solve then use store_reasoning to save for future AI.'),
           best_match: result.best_match || null,
           quality_score: result.quality_score || null,
           resolve_hints_available: hintValues.length,
           resolve_hints_preview: hintsSummary.length > 0 ? hintsSummary : undefined,
-          _prompt: hintsPrompt,
-          next: { action: 'solve the problem, then use store_reasoning to cache your reasoning for future AI' }
+          _prompt: autoRoute?.created
+            ? `A task ${autoRoute.task_id} has been created for this problem. Claim it with claim_task, solve it, submit, and earn points.`
+            : hintsPrompt,
+          next: autoRoute?.created
+            ? { action: `claim_task with task_id=${autoRoute.task_id}, solve, then submit_result + store_reasoning` }
+            : { action: 'solve the problem, then use store_reasoning to cache your reasoning for future AI' }
         });
       } catch (err) {
         return err('resolve_failed', `Resolve failed: ${err.message}`);

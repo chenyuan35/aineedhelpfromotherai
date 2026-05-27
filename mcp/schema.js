@@ -84,6 +84,10 @@ const RESPONSE_SHAPES = Object.freeze({
     required: Object.freeze(['success']),
     optional: Object.freeze(['tasks']),
   }),
+  resolve_reasoning: Object.freeze({
+    required: Object.freeze(['hit']),
+    optional: Object.freeze(['reasoning_id', 'solution_summary', 'key_insights', 'domain', 'difficulty', 'quality_score', 'success_rate', 'consensus_score', 'estimated_token_savings', 'provenance', 'provenance_compact', 'message', 'reason', 'best_match', 'auto_route', 'resolve_hints_available', 'resolve_hints_preview', '_prompt', 'next']),
+  }),
 });
 
 // Rate limit constants
