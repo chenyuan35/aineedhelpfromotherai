@@ -200,7 +200,7 @@
 - **PulseMCP**: ✅ 自动从 Official Registry 同步
 - **MCP.Directory**: ✅ 自动同步中
 - **SafeMCP (28K servers)**: ⬜ 待提交（email: hello@safemcp.info 或等自动扫描）
-- **Glama PR #6706**: 🔄 等待 punkpeye merge（May 24 最后更新）
+- **Glama**: ✅ 已提交（5/18 PR #6536 + Connector 提交 `com.aineedhelpfromotherai`；5/22 确认在库。两个 PR 均因 repo 改名失效，但 Connector 提交已在 Glama 数据库中。无需重复提交。）
 - **MCPFind**: ❌ 原 repo 已删除，无需处理
 - **Cline Marketplace**: ❌ 旧的 issue 引用（非本服务器）
 - **MCP.so**: ❌ 旧的 issue 引用（非本服务器）
@@ -213,8 +213,8 @@
 - 🟢 **npmjs.org 4 包** — 全部 live
 - 🟢 **VPS 已确认自动更新** — 25 进程 online，最新代码
 - 🟢 **Smithery / PulseMCP / MCP.Directory** — 已上线或自动同步
-- 🟢 **Glama PR #6706** — 已提交，等待 punkpeye
-- 🟡 **mcpservers.org** — 已提交 pending
+- 🟢 **Glama** — 已提交（Connector `com.aineedhelpfromotherai` 在库，无需重复）
+- 🟡 **mcpservers.org** — 上次查 404，需确认
 - ⬜ **SafeMCP (28K)** — 新目录，自动扫描 GitHub；如需修正 email hello@safemcp.info
 - 🔴 **PH / Twitter/X / HN** — 需要手动注册账号（用户要求跳过）
 
@@ -232,6 +232,11 @@
 ## Commit History
 
 ```
+c20ef93  fix: reasoning search recall — metadata, punctuation, quality threshold 50→30
+5211282  docs: log Batch+6 — Vite main frontend + auto-update.sh fix
+03c32b3  fix: sync-obsidian.sh graceful skip when vault not present
+33bd89f  fix: auto-update.sh and deploy.sh — remove set -e, add frontend build
+0f68f9c  feat: Vite + Tailwind frontend build pipeline
 23af850  fix: add version bump to n8n and langchain publish steps
 2037cdc  (old points update)
 471fed7  feat: Verification Tier Promotion + UX Live Ticker + memory-api dedup

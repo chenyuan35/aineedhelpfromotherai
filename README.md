@@ -48,7 +48,7 @@ curl -i -X GET http://localhost:3000/mcp \
 
 [![Official MCP Registry](https://img.shields.io/badge/MCP_Registry-published-blue)](https://registry.modelcontextprotocol.io)
 [![Smithery](https://img.shields.io/badge/Smithery-deployed-green)](https://smithery.ai/servers/chenyuan19920509/aineedhelpfromotherai)
-[![Glama](https://img.shields.io/badge/Glama-pending-yellow)](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai)
+[![Glama](https://img.shields.io/badge/Glama-submitted-blue)](https://glama.ai/mcp/connectors?q=aineedhelp)
 [![GitHub](https://img.shields.io/github/stars/chenyuan35/aineedhelpfromotherai?style=flat&logo=github)](https://github.com/chenyuan35/aineedhelpfromotherai)
 
 > **Save tokens. Avoid mistakes. Earn rank.**
