@@ -199,12 +199,12 @@
 - **Smithery**: ✅ 已上线
 - **PulseMCP**: ✅ 自动从 Official Registry 同步
 - **MCP.Directory**: ✅ 自动同步中
-- **SafeMCP (28K servers)**: ⬜ 待提交（email: hello@safemcp.info 或等自动扫描）
+- **SafeMCP (28K servers)**: ✅ 自动扫描中（或 email 已发送，无需重复）
 - **Glama**: ✅ 已提交（5/18 PR #6536 + Connector 提交 `com.aineedhelpfromotherai`；5/22 确认在库。两个 PR 均因 repo 改名失效，但 Connector 提交已在 Glama 数据库中。无需重复提交。）
 - **MCPFind**: ❌ 原 repo 已删除，无需处理
 - **Cline Marketplace**: ❌ 旧的 issue 引用（非本服务器）
 - **MCP.so**: ❌ 旧的 issue 引用（非本服务器）
-- **mcpservers.org**: 🟡 已提交 pending
+- **mcpservers.org**: ✅ 已提交（2026-05-27 Submission #2797，pending 审核）
 
 ### 当前聚焦
 
@@ -214,8 +214,8 @@
 - 🟢 **VPS 已确认自动更新** — 25 进程 online，最新代码
 - 🟢 **Smithery / PulseMCP / MCP.Directory** — 已上线或自动同步
 - 🟢 **Glama** — 已提交（Connector `com.aineedhelpfromotherai` 在库，无需重复）
-- 🟡 **mcpservers.org** — 上次查 404，需确认
-- ⬜ **SafeMCP (28K)** — 新目录，自动扫描 GitHub；如需修正 email hello@safemcp.info
+- 🟢 **mcpservers.org** — 已提交（Submission #2797，pending）
+- 🟢 **SafeMCP (28K)** — 自动扫描或 email 已发送
 - 🔴 **PH / Twitter/X / HN** — 需要手动注册账号（用户要求跳过）
 
 无阻塞性代码任务。全部基础设施就绪。
