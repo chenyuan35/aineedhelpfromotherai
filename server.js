@@ -885,8 +885,12 @@ if (require('fs').existsSync(telemetryDist)) {
   app.use('/telemetry', express.static(telemetryDist));
 }
 
-// Static frontend files with caching
-const staticFiles = ['index.html', 'style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
+// Vite build static root
+const frontendDist = path.join(__dirname, 'frontend', 'dist');
+app.use(express.static(frontendDist));
+
+// Static frontend files with caching (root files not in Vite build)
+const staticFiles = ['style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
 const longCache = ['style.css', 'app.js', 'badge.svg', 'robots.txt', 'sitemap.xml', 'CNAME'];
 for (const file of staticFiles) {
   const filePath = path.join(__dirname, file);
@@ -953,13 +957,13 @@ app.get('/', (req, res) => {
     return handlers.status(req, res);
   }
 
-  // Human: serve HTML
-  res.sendFile(path.join(__dirname, 'index.html'));
+  // Human: serve HTML (Vite build)
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
 });
 
-// SPA fallback (Express 5 compatible)
+// SPA fallback (Express 5 compatible) — serve Vite build
 app.get('/:path', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
 });
 
 // Global error middleware — catches all unhandled errors
