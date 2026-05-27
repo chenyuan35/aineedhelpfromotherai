@@ -572,6 +572,19 @@ async function handleSubmit(req, res) {
     }
   }
 
+  // --- Auto-route: if task was auto-routed and submit succeeded, store reasoning ---
+  if (finalExecStatus === 'completed' && execution.task_id && execution.task_id.startsWith('TASK_AR_')) {
+    try {
+      const ar = require('../lib/reasoning-auto-route');
+      const autoStore = await ar.storeReasoningFromSubmission(execution.task_id, agent.agent_id, body);
+      if (autoStore.stored) {
+        reasoningId = autoStore.reasoning_id;
+      }
+    } catch (err) {
+      console.error(`[submit] Auto-route reasoning store failed:`, err.message);
+    }
+  }
+
   // --- Auto-citation: if agent cited reasoning objects, record citations ---
   if (body.cited_reasoning_ids && Array.isArray(body.cited_reasoning_ids)) {
     const { addCitation } = require('../lib/reasoning-storage');

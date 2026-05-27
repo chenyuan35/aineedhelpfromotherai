@@ -14,6 +14,15 @@
 
 ---
 
+## P10 — 第三幕：Reasoning Auto-Route（当前焦点）
+
+| # | 任务 | 状态 | 验证方式 |
+|---|------|------|---------|
+| 1001 | **lib/reasoning-auto-route.js** — core logic (createTaskFromMiss, isAutoRoutedTask, storeReasoningFromSubmission) | ✅ 完成 | node -c lib/reasoning-auto-route.js |
+| 1002 | **resolve handler auto_route param** — resolve MISS + `auto_route=true` → create task | ✅ 完成 | curl POST /api/reasoning/resolve with auto_route=true |
+| 1003 | **submit handler auto-store** — TASK_AR_ submit success → auto store reasoning | ✅ 完成 | curl claim + submit on TASK_AR_ task |
+| 1004 | **E2E test** — resolve MISS → claim → submit → resolve HIT | ⬜ 待 VPS 验证 | Run full flow on VPS |
+
 ## P0 — Reasoning Cache & Failure Warning 基础设施（当前焦点）
 
 | # | 任务 | 状态 | 验证方式 |
@@ -232,6 +241,8 @@
 ## Commit History
 
 ```
+263df70  docs: mcpservers.org submitted (#2797), SafeMCP done, Glama corrected
+36e1ff9  docs: correct Glama status — already submitted (connector in DB), update badge
 c20ef93  fix: reasoning search recall — metadata, punctuation, quality threshold 50→30
 5211282  docs: log Batch+6 — Vite main frontend + auto-update.sh fix
 03c32b3  fix: sync-obsidian.sh graceful skip when vault not present

@@ -200,10 +200,20 @@ module.exports = async (req, res) => {
       if (result.hit && result.reasoning_id) {
         provenance = await reasoning.getProvenance(result.reasoning_id);
       }
-      try { const eb = require('../lib/event-bus'); eb.emit(result.hit ? 'resolve.hit' : 'resolve.miss', { hit: result.hit, problem_statement: body.problem_statement, reasoning_id: result.reasoning_id }); } catch {}
+      // Auto-route: if resolve missed and auto_route=true, create a task
+      let autoRoute = null;
+      if (!result.hit && body.auto_route === true) {
+        try {
+          const ar = require('../lib/reasoning-auto-route');
+          autoRoute = await ar.createTaskFromMiss({ problem_statement: body.problem_statement, domain: body.domain });
+        } catch (err) {
+          console.error('[resolve] auto-route error:', err.message);
+        }
+      }
+      try { const eb = require('../lib/event-bus'); eb.emit(result.hit ? 'resolve.hit' : 'resolve.miss', { hit: result.hit, problem_statement: body.problem_statement, reasoning_id: result.reasoning_id, auto_routed: autoRoute?.created }); } catch {}
       return res.status(200).json({
         success: true,
-        data: { ...result, provenance: provenance || undefined },
+        data: { ...result, provenance: provenance || undefined, auto_route: autoRoute || undefined },
         meta: { request_id: `RSN_${Date.now().toString(36).toUpperCase()}`, timestamp: new Date().toISOString() }
       });
     }

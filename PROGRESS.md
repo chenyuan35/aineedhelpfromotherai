@@ -1,5 +1,27 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-27 (Batch+7): 第三幕启动 — Reasoning Auto-Route + 全部分发渠道完成
+
+### 新增
+- **`lib/reasoning-auto-route.js`** — 第三幕首个功能：resolve MISS 时自动创建可 claim 任务
+  - `createTaskFromMiss(problem_statement)` — resolve 未命中时创建 TASK_AR_xxx 任务
+  - `isAutoRoutedTask(taskId)` — 判断任务是否是自动创建的
+  - `storeReasoningFromSubmission(taskId, agentId, result)` — 提交成功时自动创建 reasoning object
+- **`api-handlers/reasoning.js` resolve handler** — 接受 `auto_route=true` 参数，MISS 时自动创建任务并在响应中返回 `auto_route.task_id`
+- **`api-handlers/execute.js` submit handler** — 自动识别 TASK_AR_ 任务，提交成功时自动调用 `storeReasoningFromSubmission` 存入推理缓存
+
+### 分发渠道完成
+- **mcpservers.org** — 已提交（Submission #2797，pending 审核）
+- **SafeMCP** — 自动扫描或 email 已发送，无需重复操作
+- **Glama** — Connector `com.aineedhelpfromotherai` 在库，PR 历史已清理
+
+### 流程
+1. Agent 调用 `POST /api/reasoning/resolve` 加 `auto_route: true`
+2. 缓存 HIT → 正常返回缓存结果
+3. 缓存 MISS → 自动创建 TASK_AR_xxx 任务，返回 `task_id`
+4. 其他 agent 可 claim 该任务 → 执行 → submit
+5. submit 成功时自动存入 reasoning cache → 下次 resolve HIT
+
 ## 2026-05-27 (Batch+6): Vite 主前端 + auto-update.sh 可靠性修复
 
 ### 新增
