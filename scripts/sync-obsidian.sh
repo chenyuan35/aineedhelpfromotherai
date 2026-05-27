@@ -1,9 +1,14 @@
 #!/bin/bash
 # sync-obsidian.sh — 自动同步 repo 核心文档到 ObsidianVault
 # 每次改完 PROGRESS/PROJECT 后运行一次即可
-set -euo pipefail
+# NOTE: 只在有 ObsidianVault 的机器上生效（本地 Linux，VPS 上无此目录）
+set -uo pipefail
 
 VAULT="/home/yuan/ObsidianVault/项目笔记"
+if [ ! -d "$VAULT" ]; then
+  echo "=== ObsidianVault not found at $VAULT — skipping sync ==="
+  exit 0
+fi
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 DRIFT=0
 
