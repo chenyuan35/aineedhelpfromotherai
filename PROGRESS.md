@@ -1,5 +1,35 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-27 (Batch+6): Vite 主前端 + auto-update.sh 可靠性修复
+
+### 新增
+- **`frontend/`** — Vite + Tailwind v4 主 landing page（与 `packages/agent-telemetry/` 一致）
+  - `src/main.js`: 真实 API 对接（stats/leaderboard/telemetry），哈希门控轮询
+  - 构建产物: 15KB HTML + 6.4KB JS + 30KB CSS（gzip: 4+2.9+5.6 KB）
+- **`server.js`**: 添加 `express.static(frontend/dist)`，root 路由指向 Vite 构建
+
+### 修复
+- **auto-update.sh** — 移除 `set -e`（任何命令失败都会静默退出，导致更新不执行）；新增 `frontend/` 构建步骤
+- **deploy.sh** — 同步添加 `frontend/` 构建
+- **sync-obsidian.sh** — 当 Obsidian vault 不存在时优雅跳过而非崩溃
+
+### 验证 (VPS SSH)
+- `git fetch + reset` → `03c32b3` 
+- `npm run build` (frontend) → 成功
+- `npm run build` (telemetry) → 成功
+- `pm2 restart aineedhelp` → online
+- `auto-update.sh` 手动测试 → maintenance cycle 正常运行
+- `curl http://localhost:3000/` → HTTP 200
+- `curl /assets/index-xxx.css` → 200 29.7KB
+- `curl /assets/index-xxx.js` → 200 6.4KB
+
+### 文件改动
+- `frontend/` — 新建 Vite 项目（package.json / vite.config.js / index.html / src/main.js / src/style.css）
+- `server.js` — 添加 `express.static(frontendDist)`，root 路由指向 `frontend/dist/index.html`
+- `scripts/auto-update.sh` — 移除 `set -e`，添加 frontend build，维护周期也重建
+- `scripts/deploy.sh` — 添加 `frontend/` 构建步骤
+- `scripts/sync-obsidian.sh` — vault 路径不存在时 `exit 0` 跳过
+
 ## 2026-05-27 (Batch+5): Vite telemetry dashboard + 部署流水线全线修复
 
 ### 新增
