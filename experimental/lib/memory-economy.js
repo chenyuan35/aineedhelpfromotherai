@@ -5,7 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rc = require('./resolve-cache');
+const rc = require('./read-only-cache');
 const elo = require('./elo-rating');
 
 const ECONOMY_PATH = path.join(__dirname, '..', 'data', 'memory-economy.json');

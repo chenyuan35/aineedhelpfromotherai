@@ -51,4 +51,40 @@ wait $SERVER_PID 2>/dev/null
 echo "OK"
 
 echo ""
+echo "=== CI Verify: Write queue compliance (all .js, excluding experimental/) ==="
+violations=0
+while IFS= read -r f; do
+  basename=$(basename "$f")
+  case "$basename" in
+    fs-safe.js|write-queue.js) continue ;;
+  esac
+  if grep -n 'writeFileSync\|appendFileSync' "$f" 2>/dev/null; then
+    echo "FAIL: Bare writeFileSync/appendFileSync found in $f — use fs-safe.js or write-queue.js"
+    violations=1
+  fi
+done < <(find . -name '*.js' -not -path '*/node_modules/*' -not -path '*/experimental/*')
+if [ "$violations" = 1 ]; then
+  kill $SERVER_PID 2>/dev/null
+  exit 1
+fi
+echo "OK"
+
+echo ""
+echo "=== CI Verify: experimental/data/ isolation ==="
+exp_violations=0
+for dir in lib mcp api-handlers; do
+  for f in $(find "$dir" -name '*.js' 2>/dev/null); do
+    if grep -n 'data/execution_log\|data/resolve-cache\|data/elo-ratings\|data/verification-state\|data/memory-api-log' "$f" 2>/dev/null; then
+      echo "FAIL: Runtime data path referenced from $f"
+      exp_violations=1
+    fi
+  done
+done
+if [ "$exp_violations" = 1 ]; then
+  kill $SERVER_PID 2>/dev/null
+  exit 1
+fi
+echo "OK"
+
+echo ""
 echo "=== ALL CHECKS PASSED — Safe to push ==="

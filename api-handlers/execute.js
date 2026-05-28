@@ -676,7 +676,7 @@ async function handleSubmit(req, res) {
     // Refund claim stake on successful submit
     pts.award(agent.agent_id, pts.COSTS.CLAIM_TASK, 'claim_stake_refund', executionId);
   } catch {}
-  try { const ht = require('../lib/hint-telemetry'); const rc = require('../lib/resolve-cache'); ht.trackSubmitCall(agent.agent_id, execution.task_id, resultText, rc.getHint(execution.task_id)); } catch {}
+  try { const ht = require('../lib/hint-telemetry'); const rc = require('../lib/resolve-cache'); ht.trackSubmitCall(agent.agent_id, execution.task_id, resultText, rc.getHint(execution.task_id)); } catch (e) { console.error('[execute] hint-telemetry error:', e.message); }
   // Multi-agent memory scoring
   try {
     const rc = require('../lib/resolve-cache');
@@ -686,7 +686,7 @@ async function handleSubmit(req, res) {
       rc.recordOutcome(execution.task_id, agent.agent_id, cited ? 'success' : 'failure');
       if (cited) rc.recordOutcome(execution.task_id, agent.agent_id, 'citation');
     }
-  } catch {}
+  } catch (e) { console.error('[execute] memory scoring error:', e.message); }
 
     return res.status(200).json({
       success: true,

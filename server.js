@@ -8,6 +8,101 @@ const cors = require('cors');
 const path = require('path');
 const logger = require('./lib/logger');
 
+// === Boot-time capability registration ===
+// All core modules that write to runtime state register their capability tokens
+// before the server accepts requests. After lockRegistration(), no new
+// capabilities can be created — experimental modules loaded later cannot write.
+(function bootCapabilities() {
+  const writeAuth = require('./lib/write-authority');
+  let capCount = 0;
+  const origRegister = writeAuth.registerCapability.bind(writeAuth);
+  const countingRegister = function (token) { capCount++; return origRegister(token); };
+  const modules = [
+    require('./lib/execution-log'),
+    require('./lib/fs-safe'),
+    require('./lib/resolve-cache'),
+    require('./lib/verification'),
+    require('./lib/elo-rating'),
+    require('./lib/memory-api'),
+  ];
+  for (const mod of modules) {
+    if (typeof mod.registerCapabilities === 'function') {
+      mod.registerCapabilities(countingRegister);
+    }
+  }
+  writeAuth.lockRegistration();
+  console.log('[boot] Write capabilities registered and locked (%d caps across %d modules)', capCount, modules.filter(m => typeof m.registerCapabilities === 'function').length);
+})();
+
+// === Boot-time reducer registration (Phase 2 — Event Sourcing) ===
+// Each core module now registers its own reducers at require-time.
+// The reducers are the ONLY writers to runtime data files.
+// Public API functions are commit-only: they emit events but do NOT write to disk.
+// Server.js reducers are informational (monitoring/audit).
+(function bootReducers() {
+  const commitLog = require('./lib/commit-log');
+  const knownTypes = [...commitLog.KNOWN_EVENT_TYPES].sort();
+
+  // Monitoring reducer: logs every commit to console (debug mode only)
+  if (process.env.DEBUG_COMMIT_LOG) {
+    for (const type of knownTypes) {
+      commitLog.on(type, (ev) => {
+        console.log('[commit-log] %s (seq=%d, source=%s)', ev.type, ev.seq, ev.source);
+      });
+    }
+  }
+
+  console.log('[boot] Commit-log event sourcing active (%d known event types, %d pending buffer)', knownTypes.length, commitLog.getRecent().length);
+})();
+
+// === Snapshot recovery ===
+// Restore materialized state from latest snapshot, then replay events after it.
+(function bootSnapshot() {
+  const commitLog = require('./lib/commit-log');
+  const snapshot = require('./lib/snapshot');
+
+  const latest = snapshot.getLatestSnapshot();
+  let restoredSeq = 0;
+
+  if (latest) {
+    try {
+      const result = snapshot.restoreSnapshot(latest.dir);
+      restoredSeq = result.seq;
+      console.log('[boot] State restored from snapshot seq=%d (%d files)', result.seq, result.files);
+    } catch (e) {
+      console.error('[boot] Snapshot restore failed:', e.message);
+    }
+  }
+
+  // Replay events from the restored point (or seq=0 if fresh)
+  const replayResult = commitLog.replay(restoredSeq);
+  if (replayResult.count > 0) {
+    console.log('[boot] Replayed %d events from seq=%d to seq=%d (errors: %d)',
+      replayResult.count, restoredSeq, replayResult.lastSeq, replayResult.errors);
+  } else if (restoredSeq === 0) {
+    console.log('[boot] No commit-log events found — fresh start');
+  } else {
+    console.log('[boot] State is current at seq=%d (no events to replay)', restoredSeq);
+  }
+
+  // Periodic snapshot timer: every SNAPSHOT_INTERVAL_EVENTS events
+  setInterval(() => {
+    const latest = snapshot.getLatestSnapshot();
+    if (snapshot.shouldTakeSnapshot(commitLog, latest)) {
+      try {
+        const result = snapshot.takeSnapshot(commitLog.getSeq());
+        snapshot.pruneSnapshots(3);
+        console.log('[snapshot] Taken at seq=%d (%d files, %d remaining)',
+          result.seq, result.files, snapshot.pruneSnapshots(3).length);
+      } catch (e) {
+        console.error('[snapshot] Error:', e.message);
+      }
+    }
+  }, 60000).unref(); // Check every 60s
+
+  console.log('[boot] Snapshot recovery complete (seq=%d)', commitLog.getSeq());
+})();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 

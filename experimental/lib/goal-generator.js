@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const wm = require('./world-model');
 const elo = require('./elo-rating');
-const rc = require('./resolve-cache');
+const rc = require('./read-only-cache');
 
 const GOALS_PATH = path.join(__dirname, '..', 'data', 'goals.json');
 const BENCH_PATH = path.join(__dirname, '..', 'data', 'goal-benchmarks.json');

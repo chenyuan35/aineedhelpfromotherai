@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rc = require('./resolve-cache');
+const rc = require('./read-only-cache');
 const elo = require('./elo-rating');
 const lineage = require('./memory-lineage');
 const winnerSelection = require('./winner-selection');

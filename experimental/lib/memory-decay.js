@@ -1,22 +1,15 @@
-// lib/memory-decay.js — Replay-driven Auto Memory Decay
-// Three rules:
-//   1. memory repeatedly ignored (not cited despite injection) → decay faster
-//   2. memory associated with hallucination increase → quarantine faster
-//   3. memory that improves solve rate → preserve longer (slow decay)
-//
-// Integrates with resolve-cache.js by adjusting scores based on replay evidence.
+// experimental/lib/memory-decay.js — READ-ONLY MODE
+// Analyzes replay data and produces decay recommendations.
+// Does NOT mutate runtime resolve-cache. Reports are stored in experimental store.
 
-const executionLog = require('./execution-log');
-const resolveCache = require('./resolve-cache');
+const readOnlyCache = require('./read-only-cache');
 
-// Analyze replay data and return decay adjustments for each cache entry
 function analyze() {
-  if (!require('fs').existsSync(executionLog.LOG_PATH)) return [];
+  if (!require('fs').existsSync(require('./execution-log').LOG_PATH)) return [];
 
-  const lines = require('fs').readFileSync(executionLog.LOG_PATH, 'utf8').split('\n').filter(Boolean);
+  const lines = require('fs').readFileSync(require('./execution-log').LOG_PATH, 'utf8').split('\n').filter(Boolean);
   const events = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
 
-  // Group by run_id
   const runs = {};
   for (const ev of events) {
     if (!runs[ev.run_id]) runs[ev.run_id] = { run_id: ev.run_id, memory_ids: [], has_submit: false, solved: false, memory_ignored: true, hallucination_events: 0 };
@@ -28,7 +21,6 @@ function analyze() {
     if (ev.event_type === 'result_submitted') {
       runs[ev.run_id].has_submit = true;
       runs[ev.run_id].solved = ev.output?.status === 'COMPLETED';
-      // If model_output exists after memory_injected, memory was used (not ignored)
       const hasModelOutput = events.filter(e => e.run_id === ev.run_id && e.event_type === 'model_output').length > 0;
       if (hasModelOutput) runs[ev.run_id].memory_ignored = false;
     }
@@ -40,7 +32,6 @@ function analyze() {
     }
   }
 
-  // Per memory_id: count ignored runs, hallucination runs, solved runs
   const memStats = {};
   for (const r of Object.values(runs)) {
     for (const memId of r.memory_ids) {
@@ -53,20 +44,18 @@ function analyze() {
     }
   }
 
-  // Compute decay adjustments
   const adjustments = [];
   for (const [memId, stats] of Object.entries(memStats)) {
     const ignoreRate = stats.total_runs > 0 ? stats.ignored_count / stats.total_runs : 0;
     const hallucRate = stats.total_runs > 0 ? stats.hallucination_count / stats.total_runs : 0;
     const solveRate = stats.total_runs > 0 ? stats.solved_count / stats.total_runs : 0;
 
-    // Decay factor: higher = decay faster (range ~0.5 to 2.0)
     let decayFactor = 1.0;
-    if (ignoreRate > 0.5) decayFactor += 0.5;   // ignored more than half the time → 50% faster decay
-    if (hallucRate > 0.3) decayFactor += 0.8;   // hallucination in >30% of runs → much faster decay/quarantine
-    if (solveRate > 0.7) decayFactor -= 0.4;    // solves >70% of the time → slower decay
-    if (solveRate > 0.9) decayFactor -= 0.2;    // exceptional → even slower
-    if (stats.total_runs < 3) decayFactor = 1.0; // not enough data — use default
+    if (ignoreRate > 0.5) decayFactor += 0.5;
+    if (hallucRate > 0.3) decayFactor += 0.8;
+    if (solveRate > 0.7) decayFactor -= 0.4;
+    if (solveRate > 0.9) decayFactor -= 0.2;
+    if (stats.total_runs < 3) decayFactor = 1.0;
 
     decayFactor = Math.max(0.3, Math.min(2.5, decayFactor));
 
@@ -80,6 +69,8 @@ function analyze() {
       action: ignoreRate > 0.7 ? 'accelerate_decay' :
               hallucRate > 0.5 ? 'mark_quarantine' :
               solveRate > 0.8 && ignoreRate < 0.2 ? 'preserve' : 'adjust_decay',
+      current_score: readOnlyCache.getHint(memId)?.score || null,
+      current_status: readOnlyCache.getHint(memId)?.status || null,
     });
   }
 
@@ -87,69 +78,26 @@ function analyze() {
   return adjustments;
 }
 
-// Apply decay adjustments to resolve-cache
-function applyAdjustments(dryRun = false) {
+function applyAdjustments(dryRun = true) {
+  // READ-ONLY MODE: only dryRun=true is allowed (analysis only)
   const adjustments = analyze();
-  const cache = resolveCache.load();
-  let changed = false;
-  const applied = [];
-
-  for (const adj of adjustments) {
-    // Find matching hint in cache (by reasoning_id or task_id key)
-    for (const [taskId, hint] of Object.entries(cache.hints || {})) {
-      if (hint.reasoning_id === adj.memory_id || taskId === adj.memory_id) {
-        if (dryRun) {
-          applied.push({ ...adj, hint_task_id: taskId, hint_reasoning_id: hint.reasoning_id, dry_run: true });
-          continue;
-        }
-
-        const oldScore = hint.score || 1.0;
-        const oldStatus = hint.status || 'active';
-
-        // Apply decay factor on top of existing staleness
-        const ageDays = (Date.now() - new Date(hint.updated_at || Date.now()).getTime()) / 86400000;
-        const baseDecay = Math.min(ageDays * 0.1, 2);
-        const adjustedDecay = baseDecay * adj.decay_factor;
-
-        if (adj.action === 'accelerate_decay' && hint.score > -0.5) {
-          hint.score = Math.max(-1, (hint.score || 1.0) - adjustedDecay * 0.5);
-          if (hint.score < 0.3) hint.status = 'decaying';
-        } else if (adj.action === 'mark_quarantine') {
-          hint.score = Math.max(-1.5, (hint.score || 1.0) - adjustedDecay);
-          if (hint.score < -0.3) hint.status = 'quarantined';
-        } else if (adj.action === 'preserve') {
-          hint.score = Math.min(3, (hint.score || 1.0) + 0.1);
-          hint.status = 'active';
-        } else {
-          hint.score = Math.max(-3, Math.min(3, (hint.score || 1.0) - (adjustedDecay - baseDecay)));
-        }
-
-        hint.decay_factor = adj.decay_factor;
-        hint.last_decay_adjustment = new Date().toISOString();
-
-        if (hint.score !== oldScore || hint.status !== oldStatus) changed = true;
-        applied.push({ ...adj, hint_task_id: taskId, score_before: oldScore, score_after: hint.score, status_before: oldStatus, status_after: hint.status });
-        break;
-      }
-    }
-  }
-
-  if (changed && !dryRun) {
-    cache.updated_at = new Date().toISOString();
-    const fs = require('fs');
-    const path = require('path');
-    fs.writeFileSync(path.join(__dirname, '..', 'data', 'resolve-cache.json'), JSON.stringify(cache, null, 2));
-  }
-
-  return { applied_count: applied.length, changed, dry_run: dryRun, adjustments: applied };
+  return {
+    applied_count: adjustments.length,
+    changed: false,
+    dry_run: true,
+    note: 'Experimental write blocked. Only analysis mode is available. Adjustments not applied to runtime.',
+    adjustments,
+  };
 }
 
-// One-shot: run full pipeline — analyze patterns, compute MIS, apply decay
 function runFullPipeline() {
   const patterns = require('./replay-patterns').getSummary();
-  const influence = require('./memory-influence').enrich();
-  const decay = applyAdjustments();
-  return { patterns_available: patterns.total_patterns, scores_applied: influence.scores_applied, decay_applied: decay.applied_count, decay_changed: decay.changed };
+  const decay = analyze();
+  return {
+    patterns_available: patterns.total_patterns,
+    decay_analyses: decay.length,
+    note: 'READ-ONLY: memory-influence enrichment and decay application blocked. Only analysis produced.',
+  };
 }
 
 module.exports = { analyze, applyAdjustments, runFullPipeline };

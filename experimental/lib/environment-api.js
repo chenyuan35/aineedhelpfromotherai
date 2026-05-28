@@ -2,7 +2,7 @@
 // "For problem X with environment Y, what known fixes exist?"
 // Matches by breakage pattern + environment signature.
 
-const resolveCache = require('./resolve-cache');
+const resolveCache = require('./read-only-cache');
 const converter = require('./reality-to-eval');
 
 // Known environment dimensions

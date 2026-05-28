@@ -3,11 +3,14 @@
 // the worst-performing memory seeds from the affected category.
 // Re-runs eval after quarantine to verify improvement.
 
+// experimental/lib/drift-remediation.js — READ-ONLY MODE
+// Identifies regressing categories and produces remediation recommendations.
+// Does NOT mutate runtime resolve-cache. Reports stored in experimental store.
+
 const fs = require('fs');
 const path = require('path');
 const driftDetector = require('./drift-detector');
-const resolveCache = require('./resolve-cache');
-const evalHarness = require('./eval-harness');
+const readOnlyCache = require('./read-only-cache');
 
 const REMEDIATION_LOG = path.join(__dirname, '..', 'data', 'remediation-log.json');
 
@@ -17,7 +20,7 @@ function loadLog() {
   try {
     if (fs.existsSync(REMEDIATION_LOG)) return JSON.parse(fs.readFileSync(REMEDIATION_LOG, 'utf8'));
   } catch {}
-  return { remediations: [], total_quarantined: 0 };
+  return { analyses: [], total_recommendations: 0 };
 }
 
 function saveLog(log) {
@@ -25,13 +28,11 @@ function saveLog(log) {
   fs.writeFileSync(REMEDIATION_LOG, JSON.stringify(log, null, 2));
 }
 
-// Identify which categories are regressing
 function findRegressingCategories(driftReport) {
   const categories = new Set();
   for (const reg of (driftReport.regressions || [])) {
     if (reg.category) categories.add(reg.category);
   }
-  // Also check the per-category breakdown
   if (driftReport.per_category) {
     for (const [cat, data] of Object.entries(driftReport.per_category)) {
       if (data.solve_rate_trend && data.solve_rate_trend.length >= 2) {
@@ -44,9 +45,8 @@ function findRegressingCategories(driftReport) {
   return [...categories];
 }
 
-// Find worst memory seeds for a category (by failure count or score)
 function findWorstSeeds(category, limit = 3) {
-  const allHints = resolveCache.getAllHints();
+  const allHints = readOnlyCache.getAllHints();
   const candidates = [];
 
   for (const [id, hint] of Object.entries(allHints)) {
@@ -65,72 +65,64 @@ function findWorstSeeds(category, limit = 3) {
   return candidates.sort((a, b) => b.fail_rate - a.fail_rate).slice(0, limit);
 }
 
-// Auto-remediate: quarantine worst seeds from regressing categories
+// Analyze drift and produce remediation recommendations (no runtime mutation)
 function runRemediation() {
   const drift = driftDetector.getReport();
   const totalBefore = drift.total_regressions_detected;
 
   if (totalBefore === 0) {
-    return { status: 'ok', message: 'No regressions detected, nothing to remediate', quarantined: 0 };
+    return { status: 'ok', message: 'No regressions detected', quarantined: 0, mode: 'read-only' };
   }
 
   const regressing = findRegressingCategories(drift);
   if (regressing.length === 0) {
-    return { status: 'ok', message: 'No regressing categories identified', quarantined: 0 };
+    return { status: 'ok', message: 'No regressing categories identified', quarantined: 0, mode: 'read-only' };
   }
 
-  const quarantined = [];
-  const log = loadLog();
-
+  const candidates = [];
   for (const cat of regressing) {
     const worst = findWorstSeeds(cat, 3);
     for (const seed of worst) {
-      const hint = resolveCache.getHint(seed.id);
-      if (!hint) continue;
-      if (hint.status === 'quarantined' || hint.status === 'blacklisted') continue;
-
-      hint.status = resolveCache.HINT_STATUS.QUARANTINED;
-      hint.score = Math.min(hint.score || 0, resolveCache.MIN_SCORE - 0.1);
-      hint.updated_at = new Date().toISOString();
-      hint.remediation_reason = 'Auto-quarantined by drift remediation. Fail rate: ' + (seed.fail_rate * 100).toFixed(0) + '% over ' + seed.total + ' attempts';
-      quarantined.push(seed);
+      candidates.push({
+        seed_id: seed.id,
+        category: cat,
+        fail_rate: seed.fail_rate,
+        current_score: seed.score,
+        suggested_action: 'quarantine',
+        reason: 'Fail rate ' + (seed.fail_rate * 100).toFixed(0) + '% over ' + seed.total + ' attempts',
+      });
     }
   }
 
-  // Re-check drift after quarantine
-  let postDrift = null;
-  try {
-    postDrift = driftDetector.getReport();
-  } catch {}
-
-  const entry = {
+  const log = loadLog();
+  log.analyses.push({
     ran_at: new Date().toISOString(),
-    regressions_before: totalBefore,
+    regressions_detected: totalBefore,
     categories_affected: regressing,
-    quarantined: quarantined.length,
-    seeds_quarantined: quarantined.map(s => s.id),
-    regressions_after: postDrift?.total_regressions_detected ?? null,
-  };
-
-  log.remediations.push(entry);
-  log.total_quarantined += quarantined.length;
+    candidates_for_remediation: candidates.length,
+    candidates,
+    note: 'READ-ONLY: Automated quarantine blocked. Manual review required.',
+  });
+  log.total_recommendations += candidates.length;
   saveLog(log);
 
   return {
-    status: quarantined.length > 0 ? 'remediated' : 'no_action',
-    regressions_before: totalBefore,
+    status: 'analysis_only',
+    regressions_detected: totalBefore,
     categories_affected: regressing,
-    quarantined: quarantined.length,
-    seeds: quarantined,
-    regressions_after: entry.regressions_after,
+    candidates_for_remediation: candidates.length,
+    candidates,
+    mode: 'read-only',
+    note: 'Remediation candidates identified but NOT auto-applied. Experimental systems cannot mutate runtime state.',
   };
 }
 
 function getRemediationHistory() {
   const log = loadLog();
   return {
-    total_quarantined: log.total_quarantined,
-    remediations: log.remediations.slice(-20).reverse(),
+    total_recommendations: log.total_recommendations,
+    analyses: log.analyses.slice(-20).reverse(),
+    mode: 'read-only',
   };
 }
 
