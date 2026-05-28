@@ -17,6 +17,8 @@ function getState() {
 }
 
 function saveState(state) {
+  const dir = path.dirname(STATE_PATH);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2));
 }
 
