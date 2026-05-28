@@ -964,16 +964,17 @@ app.get('/api/meta', (req, res) => {
   try {
     const elo = require('./lib/elo-rating');
     const rc = require('./lib/resolve-cache');
-    const wm = require('./lib/world-model');
-    const gg = require('./lib/goal-generator');
-    const arch = require('./lib/architect-agent');
-    const eco = require('./lib/memory-economy');
-    const ws = require('./lib/winner-selection');
-    const rep = require('./lib/reputation-system');
-    const gt = require('./lib/ground-truth');
-    const con = require('./lib/constitutional-layer');
-    const inv = require('./lib/human-intervention');
     const ver = require('./lib/verification');
+    let wm, gg, arch, eco, ws, rep, gt, con, inv;
+    try { wm = require('./lib/world-model'); } catch { wm = { getWorldModel: () => ({ status: 'unavailable' }) }; }
+    try { gg = require('./lib/goal-generator'); } catch { gg = { getGoalSummary: () => ({}) }; }
+    try { arch = require('./lib/architect-agent'); } catch { arch = { analyzeWinningTraits: () => ({}) }; }
+    try { eco = require('./lib/memory-economy'); } catch { eco = { getSystemSummary: () => ({}) }; }
+    try { ws = require('./lib/winner-selection'); } catch { ws = { getWinLeaderboard: () => [] }; }
+    try { rep = require('./lib/reputation-system'); } catch { rep = { getSystemSummary: () => ({}) }; }
+    try { gt = require('./lib/ground-truth'); } catch { gt = { getStats: () => ({}) }; }
+    try { con = require('./lib/constitutional-layer'); } catch { con = { getViolationsSummary: () => ({}) }; }
+    try { inv = require('./lib/human-intervention'); } catch { inv = { isSystemFrozen: () => false, getFreezeState: () => ({}) }; }
     res.json({
       success: true,
       memory_health: rc.getMemoryHealth(),
