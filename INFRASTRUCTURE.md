@@ -72,7 +72,9 @@ server {
 - **Account ID**: `51a72e78f1d92b05fbf9229a01a650e8`
 - **API Token**: `cfut_...e64de8` (完整 token 在 `.opencode/secrets.json` 本地)
 - **Token 权限**: Zone:DNS (Read/Write) — **只有 DNS 权限**
-- **Zone 状态**: `pending` (nameserver 未完全切换)
+- **Zone 状态**: 已通过 NameSilo API 切换中 (pending 传播)
+- **NameSilo API Key**: `44c09c65c2f7277b03bef`
+- **NameSilo 域名操作 API**: `https://www.namesilo.com/api/changeNameServers?version=1&type=json&key=KEY&domain=DOMAIN&ns1=NS1&ns2=NS2`
 
 ### DNS 记录
 
@@ -216,6 +218,7 @@ curl -X POST "https://api.render.com/v1/services/srv-d8c0if3eo5us73dqti2g/deploy
 | UptimeRobot 监控 (5 个免费) | ⬜ 可选 | 注册 uptimerobot.com |
 | Neon PostgreSQL | ⬜ 可选 | 冗余 DB，免费 500MB |
 | VPS 关闭 | ⬜ 到期后 | 2026-06-12，手动关停 |
+| DNS 传播等待 | 🔄 进行中 | NameSilo → Cloudflare ns，需要几分钟~24小时生效 |
 
 ---
 
