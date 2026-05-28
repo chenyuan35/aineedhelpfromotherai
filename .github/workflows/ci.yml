@@ -64,11 +64,18 @@ jobs:
           echo "Write queue compliance: OK"
 
       # Experimental isolation: no runtime data paths from experimental code
+      # Exemptions:
+      #   lib/write-levels.js — authoritative definition of all allowed data paths
+      #   lib/execution-log.js — comment-only reference in file header (no runtime usage of bare paths)
       - name: Experimental data isolation
         run: |
           violations=0
           for dir in lib mcp api-handlers; do
             for f in $(find "$dir" -name '*.js' 2>/dev/null); do
+              basename=$(basename "$f")
+              case "$basename" in
+                write-levels.js|execution-log.js) continue ;;
+              esac
               if grep -n 'data/execution_log\|data/resolve-cache\|data/elo-ratings\|data/verification-state\|data/memory-api-log' "$f" 2>/dev/null; then
                 echo "FAIL: Runtime data path referenced from $f"
                 violations=1
