@@ -41,6 +41,8 @@ jobs:
       #   memory-api.js, commit-log.js, snapshot.js — event-sourcing reducers,
       #     each write is guarded by writeAuthority.authorizeWrite(REDUCER_CAP)
       #     These are the designated single writers for their respective files.
+      #   api-handlers/posts.js — JSON fallback writes to seed data (api/ not data/)
+      #     Not runtime state; PostgreSQL unavailable fallback path.
       # Experimental/ directory is excluded (isolated by design).
       - name: Write queue compliance
         run: |
@@ -48,7 +50,7 @@ jobs:
           while IFS= read -r f; do
             basename=$(basename "$f")
             case "$basename" in
-              fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js) continue ;;
+              fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js|posts.js) continue ;;
             esac
             case "$f" in
               */scripts/*) continue ;;
