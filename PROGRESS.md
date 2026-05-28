@@ -1,5 +1,63 @@
 # aineedhelpfromotherai.com 项目进度
 
+## 2026-05-28 (Batch+8): Render PostgreSQL + DNS CNAME + Vercel + Infrastructure 全面存档
+
+### Render PostgreSQL
+- **创建**: Free Tier (1GB), Oregon region, 实例 `dpg-d8c164cua31s739joel0-a`
+- **连接**: 内部连接串 (`dpg-...@dpg-d8c164cua31s739joel0-a/aineedhelpfromotherai`)
+- **SSL**: Render 内网不需要 SSL → `PGSSLMODE=disable`
+- **Schema**: `lib/db.js` 新增 `ensureSchema()`，在 `server.js` 启动时自动建 3 个核心表 (`posts`, `execution_history`, `reasoning_objects`)
+- **验证**: `/api/status` → `alive: true` ✅
+
+### DNS 迁移
+- 3 条 A 记录 (VPS `108.61.220.98`) → CNAME → `aineedhelpfromotherai.onrender.com`
+- 全部 Cloudflare proxied (橙色云)
+
+### 配置清理
+- `opencode.json`: 移除硬编码 token (cfut_, rnd_, vcp_) → 改用 `$ENV_VAR` 引用
+- GitHub secret scan 曾经阻止 push → 现在只有 env var 引用在 git 里
+
+### Vercel 前端
+- 已有项目关联 GitHub root dir，`rootDirectory=frontend` 历史遗留无法通过 API 清除
+- 根目录 `vercel.json` 已提交，构建命令 `cd frontend && npm install && npm run build`
+- API token 已验证可用
+- 需要 Dashboard 手动清除 rootDirectory 后自动部署才能跑通
+
+### GitHub Actions
+- `.github/workflows/deploy.yml` — push main 后触发 Render API deploy
+
+### 基础设施文档
+- `INFRASTRUCTURE.md`: 全平台档案 — URL、Token、DB Schema、部署流程、未完成清单
+- Token 存档: Cloudflare(cfut_), Render API(rnd_), Render MCP session, Vercel(vcp_)
+
+### 未完成
+- Cloudflare R2: token 只有 DNS 权限，需要 Dashboard 建新 token
+- Cloudflare Workers: 同上
+- Vercel 自动部署: 需要 Dashboard 清除 rootDirectory
+- 监控: Better Stack / UptimeRobot (免费但需注册)
+- VPS 到期关闭: 2026-06-12
+
+## 2026-05-28: Render 迁移成功 — shim 文件提交 + secret 清理 + 自动部署
+
+### 关键修复
+- **根因**: 4 个 shim 文件 (`experimental/lib/execution-log.js`, `resolve-cache.js`, `elo-rating.js`, `db.js`) 只在 VPS 本地创建，未提交 git → Render clone 时缺失 → MODULE_NOT_FOUND → 502
+- **修复**: 创建所有 shim 到本地并 `git commit` + `git push`
+
+### 配置清理
+- `opencode.json`: 移除硬编码 token，改用 env var 引用 (`$RENDER_API_KEY`, `$CLOUDFLARE_API_TOKEN`)
+- GitHub secret scan 因 token 格式 (`cfut_`) 阻止推送 → 把 token 移出 git-tracked 文件
+
+### Render 部署
+- `new_commit` 触发自动部署，状态 `live`
+- Pipeline 运行: 64 items harvested, 59 golden tasks, 354 adversarial variants
+- 端点全部验证通过: `/` (200/Observatory), `/api/status`, `/api/agents/profiles`, `/api/runtime/narrative`, `/core/manifest`
+- Render URL: `https://aineedhelpfromotherai.onrender.com`
+
+### 下一步
+- 更新 Cloudflare DNS: A 记录指向 Render IP (216.24.57.251/216.24.57.7) 或 CNAME 到 `aineedhelpfromotherai.onrender.com`
+- 设置 Render MCP 和 Cloudflare MCP 的环境变量
+- VPS 到期后关闭
+
 ## 2026-05-27 (Batch+7): 第三幕启动 — Reasoning Auto-Route + 全部分发渠道完成
 
 ### 新增
