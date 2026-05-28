@@ -635,6 +635,43 @@ app.get('/core/manifest', (req, res) => {
   });
 });
 
+// === PROJECTION SNAPSHOT ===
+// Zero-cost state reads: snapshot + delta, never replay full history
+app.get('/api/snapshot', (req, res) => {
+  try {
+    const ps = require('./lib/projection-snapshot');
+    const snap = ps.getSnapshot();
+    const tick = parseInt(req.query.tick) || 0;
+    if (tick > 0) {
+      return res.json({ success: true, ...ps.getDelta(tick), snapshot: snap });
+    }
+    res.json({ success: true, snapshot: snap });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/snapshot/live', (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  });
+  res.write('event: connected\ndata: {"type":"connected"}\n\n');
+  let lastTick = 0;
+  const interval = setInterval(() => {
+    try {
+      const ps = require('./lib/projection-snapshot');
+      const snap = ps.getSnapshot();
+      if (snap && snap.tick && snap.tick !== lastTick) {
+        lastTick = snap.tick;
+        res.write(`event: snapshot\ndata: ${JSON.stringify(ps.getDelta(lastTick))}\n\n`);
+      }
+      try { res.write(': heartbeat\n\n'); } catch { clearInterval(interval); }
+    } catch {}
+  }, 15000);
+  req.on('close', () => { clearInterval(interval); });
+});
+
 // === REALITY INGESTOR — Real-world task ingestion ===
 const realityIngestor = require('./lib/reality-ingestor');
 app.get('/api/reality/tasks', (req, res) => {
