@@ -29,27 +29,23 @@ async function api(url) {
 
 async function boot() {
   const agentsData = await api('/api/agents');
-  const postsData = await api('/api/posts?limit=50');
   state.agents.v = agentsData;
-  state.posts.v = postsData;
   state.registered.v = (agentsData && agentsData.workers) || [];
   renderBoot();
+  api('/api/posts?limit=10').then(data => {
+    state.posts.v = data;
+    const list = data && data.data && Array.isArray(data.data.posts) ? data.data.posts : [];
+    setText('task-count', list.length);
+    setText('open-count', list.filter(p => (p.status || '').toUpperCase() === 'OPEN').length);
+    if (list.length > 0) renderTaskPreview(list.slice(0, 6));
+  }).catch(() => {});
 }
 boot();
 
 function renderBoot() {
   const reg = state.registered.v || [];
-  const posts = state.posts.v;
-  const postList = posts && posts.data && Array.isArray(posts.data.posts) ? posts.data.posts : [];
-  const totalPosts = postList.length;
-  const openCount = postList.filter(p => (p.status || '').toUpperCase() === 'OPEN').length;
-
   setText('reg-count', reg.length);
-  setText('task-count', totalPosts);
-  setText('open-count', openCount);
-
   if (reg.length > 0) renderAgents(reg);
-  if (postList.length > 0) renderTaskPreview(postList.slice(0, 6));
 }
 
 function setText(id, val) {
