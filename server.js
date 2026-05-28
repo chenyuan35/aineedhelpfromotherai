@@ -1302,6 +1302,38 @@ app.get('/api/agents/active', (req, res) => {
   res.json({ success: true, active_agents: agents, total: agents.length, presence_window_minutes: agentPresence.PRESENCE_TTL_MS / 60000 });
 });
 
+// Agent Identity System — behavioral profiles with trust and traits
+const agentIdentity = require('./lib/agent-identity');
+app.get('/api/agents/profiles', async (req, res) => {
+  try {
+    const profiles = await agentIdentity.getAllProfiles();
+    res.json({ success: true, profiles, total: profiles.length });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+app.get('/api/agents/:id/profile', async (req, res) => {
+  try {
+    const profile = await agentIdentity.getProfile(req.params.id);
+    if (!profile) return res.status(404).json({ success: false, error: 'Agent not found or anonymous' });
+    res.json({ success: true, profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Temporal Narrative — time-bucketed runtime story
+const temporalNarrative = require('./lib/temporal-narrative');
+app.get('/api/runtime/narrative', (req, res) => {
+  try {
+    const windowMs = parseInt(req.query.window) || 30 * 60 * 1000;
+    const narrative = temporalNarrative.getNarrative(windowMs);
+    res.json({ success: true, ...narrative });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Points system
 const points = require('./lib/points');
 app.get('/api/points/leaderboard', async (req, res) => {
