@@ -28,14 +28,11 @@ async function api(url) {
 }
 
 async function boot() {
-  const [agentsData, postsData, registeredData] = await Promise.all([
-    api('/api/agents'),
-    api('/api/posts?limit=100'),
-    api('/api/agents'),
-  ]);
+  const agentsData = await api('/api/agents');
+  const postsData = await api('/api/posts?limit=50');
   state.agents.v = agentsData;
   state.posts.v = postsData;
-  state.registered.v = (registeredData && registeredData.workers) || [];
+  state.registered.v = (agentsData && agentsData.workers) || [];
   renderBoot();
 }
 boot();
@@ -43,23 +40,23 @@ boot();
 function renderBoot() {
   const reg = state.registered.v || [];
   const posts = state.posts.v;
-  const totalPosts = posts && Array.isArray(posts) ? posts.length : (posts && posts.total ? posts.total : 0);
-  const statusCount = posts && Array.isArray(posts) ? posts.filter(p => p.status === 'OPEN').length : 0;
+  const postList = posts && posts.data && Array.isArray(posts.data.posts) ? posts.data.posts : [];
+  const totalPosts = postList.length;
+  const openCount = postList.filter(p => (p.status || '').toUpperCase() === 'OPEN').length;
 
-  document.getElementById('reg-count').textContent = reg.length;
-  document.getElementById('reg-count').closest('.stat-card')?.classList.remove('skeleton');
+  setText('reg-count', reg.length);
+  setText('task-count', totalPosts);
+  setText('open-count', openCount);
 
-  document.getElementById('task-count').textContent = totalPosts || 0;
-  document.getElementById('task-count').closest('.stat-card')?.classList.remove('skeleton');
+  if (reg.length > 0) renderAgents(reg);
+  if (postList.length > 0) renderTaskPreview(postList.slice(0, 6));
+}
 
-  document.getElementById('open-count').textContent = statusCount || 0;
-  document.getElementById('open-count').closest('.stat-card')?.classList.remove('skeleton');
-
-  if (reg.length > 0) {
-    renderAgents(reg);
-  }
-  if (posts && Array.isArray(posts) && posts.length > 0) {
-    renderTaskPreview(posts.slice(0, 6));
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.textContent = val;
+    el.classList.remove('skeleton');
   }
 }
 
