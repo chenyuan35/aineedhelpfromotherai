@@ -101,7 +101,6 @@ const feed = document.getElementById('obs-feed');
 const feedEmpty = document.getElementById('feed-empty');
 const feedCount = document.getElementById('feed-count');
 const feedAgents = document.getElementById('feed-agents');
-const navStatus = document.getElementById('nav-status');
 let eventCount = 0;
 const agentSet = new Set();
 
@@ -148,12 +147,10 @@ connectSignalsSSE();
 
 function connectEventsSSE() {
   const es = new EventSource('/api/events');
-  navStatus.textContent = 'connected';
-  navStatus.className = 'nav-status connected';
+  setNavStatus('connected');
 
   es.addEventListener('connected', () => {
-    navStatus.textContent = 'connected';
-    navStatus.className = 'nav-status connected';
+    setNavStatus('connected');
   });
 
   const types = ['resolve.hit', 'resolve.miss', 'task.claimed', 'task.submitted',
@@ -173,11 +170,25 @@ function connectEventsSSE() {
   });
 
   es.onerror = () => {
-    navStatus.textContent = 'disconnected';
-    navStatus.className = 'nav-status disconnected';
+    setNavStatus('disconnected');
     es.close();
     setTimeout(connectEventsSSE, 5000);
   };
+}
+
+function setNavStatus(status) {
+  const dot = document.getElementById('nav-status-dot');
+  const text = document.getElementById('nav-status-text');
+  if (dot) {
+    dot.className = 'nav-status-dot ' + status;
+  }
+  if (text) {
+    text.textContent = status;
+  }
+  const el = document.getElementById('nav-status');
+  if (el) {
+    el.className = 'nav-status ' + status;
+  }
 }
 
 function updateState(snap) {
@@ -195,6 +206,9 @@ function updateState(snap) {
   if (el('state-memory')) el('state-memory').textContent = totalHints || '—';
   if (el('state-executions')) el('state-executions').textContent = totalExec.toLocaleString() || '—';
   if (el('state-resolve-rate')) el('state-resolve-rate').textContent = memory.health_score ? Math.round(healthScore * 100) + '%' : '—';
+
+  // Remove skeleton from side-stats when data arrives
+  document.querySelectorAll('.side-stat.skeleton').forEach(s => s.classList.remove('skeleton'));
 
   if (el('mem-total')) {
     el('mem-total').textContent = totalHints;
@@ -257,6 +271,133 @@ function connectSignalsSSE() {
   });
   es.onerror = () => { es.close(); setTimeout(connectSignalsSSE, 8000); };
 }
+
+// ====== Neural Network Canvas Animation ======
+(function initNeuralCanvas() {
+  const canvas = document.getElementById('neural-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let w, h, dpr;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Nodes
+  const NODE_COUNT = 14;
+  const nodes = Array.from({ length: NODE_COUNT }, (_, i) => ({
+    x: 40 + Math.random() * (w - 80),
+    y: 30 + Math.random() * (h - 60),
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    r: 2 + Math.random() * 3,
+    phase: Math.random() * Math.PI * 2,
+    hue: i < 5 ? 160 : (i < 9 ? 230 : 260), // emerald → indigo → purple
+  }));
+
+  // Connection threshold
+  const CONN_DIST = 130;
+
+  // Particles traveling along connections
+  const particles = [];
+
+  function spawnParticle(from, to) {
+    particles.push({
+      x: from.x, y: from.y,
+      tx: to.x, ty: to.y,
+      progress: 0,
+      speed: 0.008 + Math.random() * 0.012,
+      size: 1 + Math.random() * 1.5,
+      alpha: 0.6 + Math.random() * 0.4,
+    });
+  }
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    frame++;
+
+    // Update node positions (slow drift)
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 20 || n.x > w - 20) n.vx *= -1;
+      if (n.y < 20 || n.y > h - 20) n.vy *= -1;
+      n.x = Math.max(10, Math.min(w - 10, n.x));
+      n.y = Math.max(10, Math.min(h - 10, n.y));
+    });
+
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONN_DIST) {
+          const alpha = (1 - dist / CONN_DIST) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(129,140,248,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+
+          // Randomly spawn traveling particle
+          if (Math.random() < 0.003) {
+            spawnParticle(nodes[i], nodes[j]);
+          }
+        }
+      }
+    }
+
+    // Draw particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.progress += p.speed;
+      if (p.progress >= 1) {
+        particles.splice(i, 1);
+        continue;
+      }
+      const px = p.x + (p.tx - p.x) * p.progress;
+      const py = p.y + (p.ty - p.y) * p.progress;
+      const fadeAlpha = p.alpha * Math.sin(p.progress * Math.PI);
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(52,211,153,${fadeAlpha})`;
+      ctx.fill();
+    }
+
+    // Draw nodes
+    nodes.forEach(n => {
+      const pulse = 0.6 + 0.4 * Math.sin(frame * 0.02 + n.phase);
+
+      // Outer glow
+      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 4);
+      grad.addColorStop(0, `hsla(${n.hue},70%,65%,${0.15 * pulse})`);
+      grad.addColorStop(1, `hsla(${n.hue},70%,65%,0)`);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Core dot
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${n.hue},70%,75%,${0.8 * pulse})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
