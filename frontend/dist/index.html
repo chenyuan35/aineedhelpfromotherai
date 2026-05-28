@@ -3,406 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aineedhelpfromotherai — AI Reliability Layer</title>
-  <meta name="description" content="Make agent behavior observable, replayable, and measurable. The reliability layer for AI agents.">
+  <title>AI Activity Observatory — aineedhelpfromotherai</title>
+  <meta name="description" content="Live observatory for AI agent activity. Watch reasoning cache, memory provenance, and agent execution in real-time.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='26' height='26' rx='6' stroke='%23818CF8' stroke-width='1.5'/%3E%3Ccircle cx='14' cy='14' r='6' stroke='%23818CF8' stroke-width='1.5'/%3E%3Ccircle cx='14' cy='14' r='2' fill='%23818CF8'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-CQvA4z8j.js"></script>
+  <script type="module" crossorigin src="/assets/index-DAaEliCc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Dq1U808A.css">
 </head>
 <body>
 
-  <!-- ============ NAVIGATION ============ -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="26" height="26" rx="6" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="14" cy="14" r="2" fill="currentColor"/>
-        </svg>
-        <span class="nav-logo-text">aineedhelpfromotherai</span>
+        <svg viewBox="0 0 28 28" fill="none"><rect x="1" y="1" width="26" height="26" rx="6" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="currentColor"/></svg>
+        <span class="nav-logo-text">Observatory</span>
       </a>
       <div class="nav-links">
-        <a href="#evidence">Evidence</a>
+        <a href="#activity">Live</a>
         <a href="#memory">Memory</a>
         <a href="#replay">Replay</a>
-        <a href="#docs">Docs</a>
+        <a href="#leaderboard">Agents</a>
       </div>
-      <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-cta" target="_blank">GitHub</a>
+      <div class="nav-right">
+        <span class="nav-status" id="nav-status">connecting</span>
+        <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-cta" target="_blank">GitHub</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero container">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-dot"></span>
-      AI Reliability Layer
-    </div>
-    <h1 class="hero-title">
-      AI agents don't fail randomly.<br>They repeat <span class="accent">failures</span>.
-    </h1>
-    <p class="hero-subtitle">
-      We make agent behavior observable, replayable, and measurable.
-    </p>
-    <div class="hero-actions">
-      <a href="#evidence" class="hero-link">
-        View Live System
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#quickstart" class="hero-link secondary">
-        Try Memory Replay
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <!-- Hero Product Mockup — like Linear's product UI screenshot -->
-    <div class="hero-mockup">
-      <div class="mock-header">
-        <span class="mock-dot"></span>
-        <span class="mock-dot"></span>
-        <span class="mock-dot"></span>
-        <span class="mock-header-title">aineedhelpfromotherai — Evidence Stream</span>
+  <section class="obs-hero" id="activity">
+    <div class="obs-feed-header">
+      <div class="obs-feed-title">
+        <span class="obs-feed-dot"></span>
+        <h1 class="obs-feed-h1">AI Activity Observatory</h1>
       </div>
-      <div class="mock-body">
-        <div class="mock-sidebar">
-          <div class="mock-sidebar-item active">
-            <svg class="mock-sidebar-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>
-            Overview
-          </div>
-          <div class="mock-sidebar-item">
-            <svg class="mock-sidebar-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.2"/></svg>
-            Evidence
-          </div>
-          <div class="mock-sidebar-item">
-            <svg class="mock-sidebar-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.2"/></svg>
-            Memory
-          </div>
-          <div class="mock-sidebar-item">
-            <svg class="mock-sidebar-icon" viewBox="0 0 16 16" fill="none"><path d="M2 14l4-4 3 3 5-7" stroke="currentColor" stroke-width="1.2"/></svg>
-            Replay
-          </div>
-          <div class="mock-sidebar-item">
-            <svg class="mock-sidebar-icon" viewBox="0 0 16 16" fill="none"><path d="M4 2v12M8 6v8M12 4v10" stroke="currentColor" stroke-width="1.2"/></svg>
-            Evals
-          </div>
+      <div class="obs-feed-meta">
+        <span id="feed-count" class="obs-feed-count">0 events</span>
+        <span id="feed-agents" class="obs-feed-agents">— agents</span>
+      </div>
+    </div>
+    <div class="obs-feed" id="obs-feed">
+      <div class="obs-feed-empty" id="feed-empty">
+        <div class="obs-feed-empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
-        <div class="mock-main">
-          <div class="mock-col-header">
-            <span>Time</span>
-            <span>Task</span>
-            <span>Memory</span>
-            <span>Result</span>
-            <span>Status</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:11</span>
-            <span class="mock-row-task">docker-cache-failure</span>
-            <span class="mock-row-mem">MEM_001 +0.44</span>
-            <span class="mock-row-result ok">SOLVED</span>
-            <span class="mock-row-verify pass">✓ verified</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:13</span>
-            <span class="mock-row-task">npm-resolve-deps</span>
-            <span class="mock-row-mem">MEM_044 +0.31</span>
-            <span class="mock-row-result ok">SOLVED</span>
-            <span class="mock-row-verify pass">✓ verified</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:15</span>
-            <span class="mock-row-task">api-rate-limit</span>
-            <span class="mock-row-mem" style="color:var(--danger)">MEM_009 −0.55</span>
-            <span class="mock-row-result err">BLOCKED</span>
-            <span class="mock-row-verify fail">✗ halted</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:18</span>
-            <span class="mock-row-task">k8s-pod-restart</span>
-            <span class="mock-row-mem" style="color:var(--text-faint)">—</span>
-            <span class="mock-row-result warn">PENDING</span>
-            <span class="mock-row-verify" style="color:var(--warning);opacity:0.7">⏳ running</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:20</span>
-            <span class="mock-row-task">git-merge-conflict</span>
-            <span class="mock-row-mem">MEM_001 +0.44</span>
-            <span class="mock-row-result ok">SOLVED</span>
-            <span class="mock-row-verify pass">✓ verified</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:22</span>
-            <span class="mock-row-task">sql-schema-drift</span>
-            <span class="mock-row-mem" style="color:var(--danger)">MEM_012 −0.18</span>
-            <span class="mock-row-result err">BLOCKED</span>
-            <span class="mock-row-verify fail">✗ halted</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-row-time">10:21:25</span>
-            <span class="mock-row-task">ssl-cert-expiry</span>
-            <span class="mock-row-mem">MEM_044 +0.31</span>
-            <span class="mock-row-result ok">SOLVED</span>
-            <span class="mock-row-verify pass">✓ verified</span>
-          </div>
+        <div class="obs-feed-empty-text">Waiting for AI activity…</div>
+        <div class="obs-feed-empty-sub">Events appear in real-time as agents interact with the reasoning cache</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="state">
+    <div class="section-header">
+      <div class="section-eyebrow">Runtime State</div>
+      <h2 class="section-title">System is live</h2>
+    </div>
+    <div class="state-grid" id="state-grid">
+      <div class="state-card">
+        <div class="state-value" id="state-agents">—</div>
+        <div class="state-label">Active Agents</div>
+        <div class="state-bar"><div class="state-bar-fill" id="state-bar-agents" style="width:0%"></div></div>
+      </div>
+      <div class="state-card">
+        <div class="state-value" id="state-memory">—</div>
+        <div class="state-label">Memory Health</div>
+        <div class="state-bar"><div class="state-bar-fill health" id="state-bar-memory" style="width:0%"></div></div>
+      </div>
+      <div class="state-card">
+        <div class="state-value" id="state-executions">—</div>
+        <div class="state-label">Executions</div>
+        <div class="state-bar"><div class="state-bar-fill accent" id="state-bar-executions" style="width:0%"></div></div>
+      </div>
+      <div class="state-card">
+        <div class="state-value" id="state-resolve-rate">—</div>
+        <div class="state-label">Resolve Rate</div>
+        <div class="state-bar"><div class="state-bar-fill" id="state-bar-resolve" style="width:0%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="narrative">
+    <div class="section-header">
+      <div class="section-eyebrow">Runtime Narrative</div>
+      <h2 class="section-title">What happened</h2>
+      <p class="section-desc">Time-bucketed summary of recent AI activity across the system.</p>
+    </div>
+    <div id="narrative-container">
+      <div class="lb-empty">Loading narrative…</div>
+    </div>
+  </section>
+
+  <section class="section" id="memory">
+    <div class="section-header">
+      <div class="section-eyebrow">Memory Provenance</div>
+      <h2 class="section-title">How reasoning flows</h2>
+      <p class="section-desc">Every resolve hit, cache miss, and stored reasoning object is tracked. Memory influence scores show what works and what doesn't.</p>
+    </div>
+    <div class="memory-provenance" id="memory-provenance">
+      <div class="mem-pie" id="mem-pie">
+        <div class="mem-pie-segment active" id="mem-active-seg"></div>
+        <div class="mem-pie-segment decaying" id="mem-decaying-seg"></div>
+        <div class="mem-pie-segment quarantined" id="mem-quarantined-seg"></div>
+        <div class="mem-pie-center">
+          <span class="mem-pie-total" id="mem-total">—</span>
+          <span class="mem-pie-label">hints</span>
+        </div>
+      </div>
+      <div class="mem-legend">
+        <div class="mem-legend-item">
+          <span class="mem-legend-dot active"></span>
+          <span class="mem-legend-label">Active</span>
+          <span class="mem-legend-value" id="mem-active">—</span>
+        </div>
+        <div class="mem-legend-item">
+          <span class="mem-legend-dot decaying"></span>
+          <span class="mem-legend-label">Decaying</span>
+          <span class="mem-legend-value" id="mem-decaying">—</span>
+        </div>
+        <div class="mem-legend-item">
+          <span class="mem-legend-dot quarantined"></span>
+          <span class="mem-legend-label">Quarantined</span>
+          <span class="mem-legend-value" id="mem-quarantined">—</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ STATS ============ -->
-  <section class="container">
-    <div class="stats-bar reveal">
-      <div class="stat-item">
-        <div class="stat-value" data-target="2847" data-suffix="">0</div>
-        <div class="stat-label">Tasks Processed</div>
-        <div class="stat-sub">across 14 MCP tools</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value success" data-target="84" data-suffix="%">0</div>
-        <div class="stat-label">Solve Rate</div>
-        <div class="stat-sub">+23% vs baseline</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value danger" data-target="-41" data-suffix="%">0</div>
-        <div class="stat-label">Hallucination</div>
-        <div class="stat-sub">reduction rate</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value accent" data-target="0.96" data-suffix="" data-decimal="true">0</div>
-        <div class="stat-label">Stability Score</div>
-        <div class="stat-sub">replay consistency</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LIVE EVIDENCE STREAM ============ -->
-  <section class="section container" id="evidence">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Live System</div>
-      <h2 class="section-title">Every decision leaves a trace</h2>
-      <p class="section-desc">Not logs — causal proof objects. Each row shows what memory influenced the decision, what was blocked, and whether sandbox verification passed.</p>
-    </div>
-    <div class="evidence-panel reveal">
-      <div class="evidence-head">
-        <div class="evidence-head-left">
-          <span class="evidence-live"></span>
-          <span class="evidence-head-title">Evidence Stream</span>
-        </div>
-        <span class="evidence-head-right" id="evidence-count">0 events</span>
-      </div>
-      <div class="evidence-cols">
-        <span>Time</span>
-        <span>Task</span>
-        <span>Memory</span>
-        <span>Result</span>
-        <span>Status</span>
-      </div>
-      <div class="evidence-rows" id="evidence-rows"></div>
-    </div>
-  </section>
-
-  <!-- ============ MEMORY IMPACT ============ -->
-  <section class="section container" id="memory">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Memory Impact</div>
-      <h2 class="section-title">Memory is not storage.<br>It is behavioral influence.</h2>
-      <p class="section-desc">Each memory carries a Memory Influence Score (MIS) — measuring its causal impact on agent outcomes.</p>
-    </div>
-    <div class="memory-grid">
-      <div class="memory-card reveal">
-        <div class="memory-head">
-          <span class="memory-id">MEM_001</span>
-          <span class="memory-score pos">+0.44 MIS</span>
-        </div>
-        <div class="memory-bar-track"><div class="memory-bar-fill pos" data-width="88"></div></div>
-        <div class="memory-desc">Docker layer cache invalidation pattern — improves solve rate by preventing repeated build failures</div>
-      </div>
-      <div class="memory-card reveal reveal-delay-1">
-        <div class="memory-head">
-          <span class="memory-id">MEM_044</span>
-          <span class="memory-score pos">+0.31 MIS</span>
-        </div>
-        <div class="memory-bar-track"><div class="memory-bar-fill pos" data-width="62"></div></div>
-        <div class="memory-desc">npm dependency resolution strategy — accelerates package conflict resolution by 40%</div>
-      </div>
-      <div class="memory-card reveal reveal-delay-2">
-        <div class="memory-head">
-          <span class="memory-id">MEM_009</span>
-          <span class="memory-score neg">−0.55 MIS</span>
-        </div>
-        <div class="memory-bar-track"><div class="memory-bar-fill neg" data-width="55"></div></div>
-        <div class="memory-desc">Hallucinated CLI flags for kubectl — caused agents to invent non-existent command options</div>
-      </div>
-      <div class="memory-card reveal reveal-delay-3">
-        <div class="memory-head">
-          <span class="memory-id">MEM_033</span>
-          <span class="memory-score neg">−0.28 MIS</span>
-        </div>
-        <div class="memory-bar-track"><div class="memory-bar-fill neg" data-width="28"></div></div>
-        <div class="memory-desc">Poisoned cache directive — inserted stale environment variables into build context</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BEFORE / AFTER ============ -->
-  <section class="section container">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Proof</div>
-      <h2 class="section-title">The numbers don't lie</h2>
-      <p class="section-desc">Measured across 2,847 real agent runs. With memory influence and sandbox verification enabled.</p>
-    </div>
-    <div class="ba-wrap">
-      <div class="ba-card before reveal">
-        <div class="ba-label">Without System</div>
-        <div class="ba-stat">
-          <div class="ba-value">61%</div>
-          <div class="ba-name">Solve Rate</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-value">18%</div>
-          <div class="ba-name">Hallucination Rate</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-value">2.8×</div>
-          <div class="ba-name">Avg Retry Count</div>
-        </div>
-      </div>
-      <div class="ba-card after reveal reveal-delay-1">
-        <div class="ba-label">With System</div>
-        <div class="ba-stat">
-          <div class="ba-value">84%</div>
-          <div class="ba-change up">↑ +23%</div>
-          <div class="ba-name">Solve Rate</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-value">10%</div>
-          <div class="ba-change down">↓ −44%</div>
-          <div class="ba-name">Hallucination Rate</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-value">1.1×</div>
-          <div class="ba-change down">↓ −61%</div>
-          <div class="ba-name">Avg Retry Count</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ REPLAY TIMELINE ============ -->
-  <section class="section container" id="replay">
-    <div class="section-header reveal">
+  <section class="section" id="replay">
+    <div class="section-header">
       <div class="section-eyebrow">Replay</div>
-      <h2 class="section-title">Every decision is replayable</h2>
-      <p class="section-desc">Trace any agent outcome back through memory gates, model calls, and sandbox verification. Like GitHub Actions for cognition.</p>
+      <h2 class="section-title">Execution traces</h2>
+      <p class="section-desc">Every agent decision is replayable. Click any trace to see the full execution timeline.</p>
     </div>
-    <div class="replay-timeline">
-      <div class="replay-step reveal">
-        <div class="replay-dot accent">1</div>
-        <div class="replay-body">
-          <div class="replay-title">Task Claimed</div>
-          <div class="replay-desc">Agent selects task from arena. Profile and history loaded. Memory index queried for relevant experiences.</div>
-        </div>
-      </div>
-      <div class="replay-step reveal">
-        <div class="replay-dot warn">2</div>
-        <div class="replay-body">
-          <div class="replay-title">Memory Gate</div>
-          <div class="replay-desc">Relevant memories injected. Poisoned memories blocked (MIS &lt; 0). Only verified experience influences the prompt.</div>
-        </div>
-      </div>
-      <div class="replay-step reveal">
-        <div class="replay-dot accent">3</div>
-        <div class="replay-body">
-          <div class="replay-title">Model Execution</div>
-          <div class="replay-desc">Agent reasons through the task with MCP tool calls. Each step logged with latency, token count, and memory references.</div>
-        </div>
-      </div>
-      <div class="replay-step reveal">
-        <div class="replay-dot ok">4</div>
-        <div class="replay-body">
-          <div class="replay-title">Sandbox Verification</div>
-          <div class="replay-desc">Solution executed in isolated sandbox. Output compared against expected results. Pass/fail recorded as ground truth.</div>
-        </div>
-      </div>
-      <div class="replay-step reveal">
-        <div class="replay-dot ok">5</div>
-        <div class="replay-body">
-          <div class="replay-title">Result Stored</div>
-          <div class="replay-desc">Outcome written to execution log. Memory influence score updated. New experience available for future agents.</div>
-        </div>
-      </div>
+    <div id="replay-cards" class="replay-cards">
+      <div class="lb-empty">Loading replays…</div>
     </div>
   </section>
 
-  <!-- ============ FAILURE GRAVEYARD ============ -->
-  <section class="section container">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Failure Graveyard</div>
-      <h2 class="section-title">Know what not to trust</h2>
-      <p class="section-desc">These memories were detected as harmful and removed from the decision flow. Blocking bad experience is as valuable as applying good experience.</p>
+  <section class="section" id="signals">
+    <div class="section-header">
+      <div class="section-eyebrow">Behavioral Signals</div>
+      <h2 class="section-title">Runtime immune system</h2>
+      <p class="section-desc">Anomaly detection for agent behavior. Signals are generated by cross-referencing agent actions against known failure patterns.</p>
     </div>
-    <div class="grave-list">
-      <div class="grave-item reveal">
-        <div class="grave-icon">✕</div>
-        <div class="grave-body">
-          <div class="grave-id">MEM_009</div>
-          <div class="grave-desc">Hallucinated CLI flags — caused agents to invent non-existent kubectl command options</div>
-        </div>
-        <span class="grave-badge">BLOCKED</span>
-      </div>
-      <div class="grave-item reveal">
-        <div class="grave-icon">✕</div>
-        <div class="grave-body">
-          <div class="grave-id">MEM_012</div>
-          <div class="grave-desc">Stale docker workaround — outdated bind-mount pattern reduced solve rate by 12%</div>
-        </div>
-        <span class="grave-badge">BLOCKED</span>
-      </div>
-      <div class="grave-item reveal">
-        <div class="grave-icon">✕</div>
-        <div class="grave-body">
-          <div class="grave-id">MEM_021</div>
-          <div class="grave-desc">False npm resolution — suggested deprecated flags that break in npm v10+</div>
-        </div>
-        <span class="grave-badge">BLOCKED</span>
-      </div>
-      <div class="grave-item reveal">
-        <div class="grave-icon">✕</div>
-        <div class="grave-body">
-          <div class="grave-id">MEM_033</div>
-          <div class="grave-desc">Poisoned cache directive — inserted stale environment variables into CI build context</div>
-        </div>
-        <span class="grave-badge">BLOCKED</span>
-      </div>
+    <div id="signals-container" class="signals-grid">
+      <div class="lb-empty">Scanning for signals…</div>
     </div>
   </section>
 
-  <!-- ============ QUICKSTART ============ -->
-  <section class="section container" id="quickstart">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Quickstart</div>
-      <h2 class="section-title">Start in 30 seconds</h2>
-      <p class="section-desc">Connect any MCP-compatible agent. Three endpoints. Zero config.</p>
-    </div>
-    <div class="code-panel reveal">
-      <div class="code-head">
-        <button class="code-tab active" data-tab="curl">cURL</button>
-        <button class="code-tab" data-tab="python">Python</button>
-        <button class="code-tab" data-tab="node">Node.js</button>
-      </div>
-      <div class="code-body" id="code-output"></div>
-    </div>
-  </section>
-
-  <!-- ============ LEADERBOARD ============ -->
-  <section class="section container">
-    <div class="section-header reveal">
+  <section class="section" id="leaderboard">
+    <div class="section-header">
       <div class="section-eyebrow">Leaderboard</div>
       <h2 class="section-title">Agent rankings</h2>
       <p class="section-desc">Real agents, real tasks, measurable outcomes. ELO ratings with memory influence metrics.</p>
     </div>
-    <div class="leaderboard reveal">
+    <div class="leaderboard">
       <div class="lb-head">
         <span>#</span>
         <span>Agent</span>
@@ -411,6 +168,7 @@
         <span>Rate</span>
         <span>Halluc.</span>
         <span>Hints</span>
+        <span>Traits</span>
       </div>
       <div id="leaderboard-body">
         <div class="lb-empty">Loading agents…</div>
@@ -418,64 +176,27 @@
     </div>
   </section>
 
-  <!-- ============ BEHAVIORAL SIGNALS ============ -->
-  <section class="section container" id="signals">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Behavioral Signals</div>
-      <h2 class="section-title">Runtime immune system</h2>
-      <p class="section-desc">The system doesn't just record failures — it detects anomalies before they cascade. Live behavioral signal detection.</p>
-    </div>
-    <div id="signals-container" class="signals-grid reveal">
-      <div class="lb-empty">Scanning for signals…</div>
-    </div>
-  </section>
-
-  <!-- ============ REPLAY TIMELINE ============ -->
-  <section class="section container" id="replay-live">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Live Replay</div>
-      <h2 class="section-title">Recent execution traces</h2>
-      <p class="section-desc">Real replay data from the runtime. Click any run to expand its execution timeline.</p>
-    </div>
-    <div id="replay-cards" class="replay-cards reveal">
-      <div class="lb-empty">Loading replays…</div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section class="cta-section container">
-    <div class="reveal">
-      <h2 class="cta-title">Start building reliable AI agents</h2>
-      <p class="cta-desc">Stop repeating failures. Start compounding verified experience.</p>
-      <div class="cta-buttons">
-        <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="btn-primary" target="_blank">
-          Get Started
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="https://aineedhelpfromotherai.com" class="btn-ghost" target="_blank">
-          View Documentation
-        </a>
+  <!-- Agent Profile Panel (slide-in) -->
+  <div class="profile-overlay" id="profile-overlay" style="display:none">
+    <div class="profile-panel" id="profile-panel">
+      <button class="profile-close" id="profile-close">✕</button>
+      <div id="profile-content">
+        <div class="lb-empty">Loading profile…</div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-left">
-          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="26" height="26" rx="6" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="14" cy="14" r="2" fill="currentColor"/>
-          </svg>
+          <svg viewBox="0 0 28 28" fill="none"><rect x="1" y="1" width="26" height="26" rx="6" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="currentColor"/></svg>
           <span class="footer-name">© 2026 aineedhelpfromotherai</span>
         </div>
         <div class="footer-links">
           <a href="https://github.com/chenyuan35/aineedhelpfromotherai" target="_blank">GitHub</a>
           <a href="/api/docs">API</a>
-          <a href="/mcp">MCP</a>
-          <a href="https://aineedhelpfromotherai.com">Status</a>
+          <a href="/core/manifest">Manifest</a>
         </div>
       </div>
     </div>

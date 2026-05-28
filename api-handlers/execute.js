@@ -360,6 +360,23 @@ async function handleSubmit(req, res) {
     });
   }
 
+  // Runtime hygiene: check agent trust before allowing submission to cache
+  let hygieneFlag = null;
+  try {
+    const rep = require('../lib/reputation');
+    const reputation = rep.getAgentReputation(agent.agent_id);
+    if (reputation && reputation.tier === 'unknown' && (reputation.stats?.total_attempts || 0) >= 3) {
+      hygieneFlag = 'low_trust';
+    }
+  } catch {}
+  try {
+    const bs = require('../lib/behavioral-signals');
+    const recentSignals = bs.scanAgent(agent.agent_id, 3600000);
+    if (recentSignals && recentSignals.length >= 3) {
+      hygieneFlag = hygieneFlag === 'low_trust' ? 'low_trust_and_anomalous' : 'anomalous';
+    }
+  } catch {}
+
   // --- Fetch task from posts for real state + problem ---
   let taskStatus, taskProblem;
   try {
@@ -589,14 +606,19 @@ async function handleSubmit(req, res) {
 
   // --- Auto-route: if task was auto-routed and submit succeeded, store reasoning ---
   if (finalExecStatus === 'completed' && execution.task_id && execution.task_id.startsWith('TASK_AR_')) {
-    try {
-      const ar = require('../lib/reasoning-auto-route');
-      const autoStore = await ar.storeReasoningFromSubmission(execution.task_id, agent.agent_id, body);
-      if (autoStore.stored) {
-        reasoningId = autoStore.reasoning_id;
+    // Hygiene gate: skip auto-store for low-trust or anomalous agents
+    if (hygieneFlag) {
+      console.log(`[hygiene] Skipping reasoning auto-store for ${agent.agent_id} on ${execution.task_id}: ${hygieneFlag}`);
+    } else {
+      try {
+        const ar = require('../lib/reasoning-auto-route');
+        const autoStore = await ar.storeReasoningFromSubmission(execution.task_id, agent.agent_id, body);
+        if (autoStore.stored) {
+          reasoningId = autoStore.reasoning_id;
+        }
+      } catch (err) {
+        console.error(`[submit] Auto-route reasoning store failed:`, err.message);
       }
-    } catch (err) {
-      console.error(`[submit] Auto-route reasoning store failed:`, err.message);
     }
   }
 

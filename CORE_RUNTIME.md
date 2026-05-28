@@ -127,8 +127,42 @@ Projection Layer (system-state.js, 10s TTL)
 ✓ Agent → resolve cache (读)
 ✓ Agent → claim/submit (写, 有 rate limit)
 ✓ Agent → store_reasoning (写, 有 rate limit)
-✓ State projection → poly (读 only, 10s TTL)
+✓ State projection → snapshot cache (读 only, 30s 周期)
+✓ UI → SSE snapshot stream (只读, 无回写)
 ```
+
+### 2.5 投影快照层（v2）
+
+从 2026-05-28 起，所有读取路径通过 `projection-snapshot.js`：
+
+```
+                     ┌─────────────────────────┐
+                     │  projection-snapshot.js  │
+                     │  (每 30s 自动快照)        │
+                     └──────────┬──────────────┘
+                                │
+          ┌─────────────────────┼──────────────────────┐
+          ▼                     ▼                      ▼
+   /api/ai-state        /api/snapshot           /api/snapshot/live
+   (从快照读)           (REST + ?tick= 增量)    (SSE 推流)
+```
+
+快照内容：agents、memory hints、活跃/衰减/隔离比例、健康评分、执行总量。
+所有数据从快照缓存读取，不触发任何 DB 写操作。
+
+### 2.6 事件压缩（v2）
+
+`event-bus.js` 现在内置防抖窗口（默认 2s）：
+```
+emit('resolve.hit')     → 进入 pending 队列
+emit('resolve.hit')     → 合并到上一个，aggregated++
+emit('task.claimed')    → 进入 pending 队列
+↓ 2s 后
+flush: resolve.hit (compacted: 2), task.claimed
+```
+
+最多缓存 50 个待发事件，超过时丢弃最早的。
+SSE 客户端上限 100，心跳 30s。
 
 ---
 

@@ -730,6 +730,43 @@ app.get('/core/manifest', (req, res) => {
   });
 });
 
+// === PROJECTION SNAPSHOT ===
+// Zero-cost state reads: snapshot + delta, never replay full history
+app.get('/api/snapshot', (req, res) => {
+  try {
+    const ps = require('./lib/projection-snapshot');
+    const snap = ps.getSnapshot();
+    const tick = parseInt(req.query.tick) || 0;
+    if (tick > 0) {
+      return res.json({ success: true, ...ps.getDelta(tick), snapshot: snap });
+    }
+    res.json({ success: true, snapshot: snap });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/snapshot/live', (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  });
+  res.write('event: connected\ndata: {"type":"connected"}\n\n');
+  let lastTick = 0;
+  const interval = setInterval(() => {
+    try {
+      const ps = require('./lib/projection-snapshot');
+      const snap = ps.getSnapshot();
+      if (snap && snap.tick && snap.tick !== lastTick) {
+        lastTick = snap.tick;
+        res.write(`event: snapshot\ndata: ${JSON.stringify(ps.getDelta(lastTick))}\n\n`);
+      }
+      try { res.write(': heartbeat\n\n'); } catch { clearInterval(interval); }
+    } catch {}
+  }, 15000);
+  req.on('close', () => { clearInterval(interval); });
+});
+
 // === REALITY INGESTOR — Real-world task ingestion ===
 const realityIngestor = require('./lib/reality-ingestor');
 app.get('/api/reality/tasks', (req, res) => {
@@ -1360,6 +1397,38 @@ app.get('/api/agents/active', (req, res) => {
   res.json({ success: true, active_agents: agents, total: agents.length, presence_window_minutes: agentPresence.PRESENCE_TTL_MS / 60000 });
 });
 
+// Agent Identity System — behavioral profiles with trust and traits
+const agentIdentity = require('./lib/agent-identity');
+app.get('/api/agents/profiles', async (req, res) => {
+  try {
+    const profiles = await agentIdentity.getAllProfiles();
+    res.json({ success: true, profiles, total: profiles.length });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+app.get('/api/agents/:id/profile', async (req, res) => {
+  try {
+    const profile = await agentIdentity.getProfile(req.params.id);
+    if (!profile) return res.status(404).json({ success: false, error: 'Agent not found or anonymous' });
+    res.json({ success: true, profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Temporal Narrative — time-bucketed runtime story
+const temporalNarrative = require('./lib/temporal-narrative');
+app.get('/api/runtime/narrative', (req, res) => {
+  try {
+    const windowMs = parseInt(req.query.window) || 30 * 60 * 1000;
+    const narrative = temporalNarrative.getNarrative(windowMs);
+    res.json({ success: true, ...narrative });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Points system
 const points = require('./lib/points');
 app.get('/api/points/leaderboard', async (req, res) => {
@@ -1553,6 +1622,9 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  // Init DB schema if needed
+  const { ensureSchema } = require('./lib/db');
+  ensureSchema().then(() => logger.info('[db] Schema ready')).catch(err => logger.warn('[db] Schema init:', err.message));
   // Start task recovery (stale claim expiry, expired post cleanup)
   try {
     const { startRecoveryInterval } = require('./lib/task-recovery');
