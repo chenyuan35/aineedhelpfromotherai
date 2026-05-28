@@ -1527,6 +1527,9 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  // Init DB schema if needed
+  const { ensureSchema } = require('./lib/db');
+  ensureSchema().then(() => logger.info('[db] Schema ready')).catch(err => logger.warn('[db] Schema init:', err.message));
   // Start task recovery (stale claim expiry, expired post cleanup)
   try {
     const { startRecoveryInterval } = require('./lib/task-recovery');
