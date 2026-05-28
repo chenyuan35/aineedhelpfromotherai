@@ -1,71 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.json",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.svg",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.txt",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.xml",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.md",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "data/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/.well-known/ai-plugin.json",
-      "dest": "/.well-known/ai-plugin.json"
-    },
-    {
-      "src": "/.well-known/security.txt",
-      "dest": "/.well-known/security.txt"
-    },
-    {
-      "src": "/openapi.json",
-      "dest": "/openapi.json"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/llms.txt",
-      "dest": "/llms.txt"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "cd frontend && npm install",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
+    { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
+    { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
