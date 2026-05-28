@@ -584,6 +584,57 @@ app.post('/api/collapse/simulate', async (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// === CORE RUNTIME MANIFEST ===
+// AI-readable contract of the entire platform
+app.get('/core/manifest', (req, res) => {
+  const { version } = require('./package.json');
+  res.json({
+    runtime: 'aineedhelpfromotherai-core',
+    version,
+    protocol: '2.0',
+    core_components: [
+      'resolve-cache', 'memory-api', 'reasoning-storage', 'execution-history',
+      'runtime-guard', 'event-bus', 'rate-limit', 'canonical-models',
+      'schema-validator', 'system-state', 'verification', 'memory-gate',
+      'memory-conflict-resolver', 'elo-rating', 'agent-presence',
+      'lifecycle', 'task-recovery', 'points', 'validator',
+    ],
+    experimental_components: [
+      'agent-breeding', 'world-model', 'goal-generator', 'architect-agent',
+      'memory-economy', 'memory-lineage', 'winner-selection', 'prompt-evolution',
+      'behavioral-signals', 'root-cause-engine', 'failure-taxonomy',
+      'ground-truth', 'constitutional-layer', 'human-intervention',
+      'reality-ingestor', 'sandbox-executor', 'feedback-loop',
+      'replay-stability', 'replay-patterns', 'replay-to-eval',
+      'memory-decay', 'adversarial-generator', 'cross-validator',
+      'drift-detector', 'drift-remediation', 'eval-harness', 'llm-eval',
+      'reputation-system', 'baseline-manager', 'workload-analytics',
+    ],
+    data_flow_rules: {
+      projections_must_not_trigger_runtime_events: true,
+      replay_log_must_not_feed_back_into_api: true,
+      state_cache_ttl_ms: 10000,
+      replay_rotation_mb: 5,
+    },
+    limits: {
+      global_api_per_min: 100,
+      execute_per_min: 10,
+      mcp_per_min: 30,
+      reasoning_store_per_min_per_agent: 50,
+    },
+    contracts: {
+      resolve_cache: { type: 'json_file', path: 'data/resolve-cache.json', write_behavior: 'deferred_batch' },
+      memory_api_log: { type: 'jsonl_append', path: 'data/memory-api-log.jsonl', compaction: 'every_1000_calls' },
+      replay_log: { type: 'jsonl_append', path: 'data/replay-log.jsonl', rotation_mb: 5, max_rotations: 3 },
+      execution_history: { type: 'postgresql', table: 'execution_history' },
+      reasoning_objects: { type: 'postgresql', table: 'reasoning_objects' },
+      posts: { type: 'postgresql', table: 'posts' },
+    },
+    timestamp: new Date().toISOString(),
+    _tip: 'This is the machine-readable runtime contract. AI agents should read this first to understand platform guarantees.',
+  });
+});
+
 // === REALITY INGESTOR — Real-world task ingestion ===
 const realityIngestor = require('./lib/reality-ingestor');
 app.get('/api/reality/tasks', (req, res) => {
