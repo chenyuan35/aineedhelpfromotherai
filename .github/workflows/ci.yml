@@ -34,7 +34,13 @@ jobs:
       - run: npm ci || npm install --omit=dev
 
       # Write queue compliance: no bare writeFileSync/appendFileSync across all .js
-      # except fs-safe.js and write-queue.js (authorized wrappers).
+      # Exceptions:
+      #   fs-safe.js, write-queue.js  — authorized wrappers (by design)
+      #   scripts/                    — build/tooling scripts (not runtime)
+      #   resolve-cache.js, execution-log.js, verification.js, elo-rating.js,
+      #   memory-api.js, commit-log.js, snapshot.js — event-sourcing reducers,
+      #     each write is guarded by writeAuthority.authorizeWrite(REDUCER_CAP)
+      #     These are the designated single writers for their respective files.
       # Experimental/ directory is excluded (isolated by design).
       - name: Write queue compliance
         run: |
@@ -42,7 +48,10 @@ jobs:
           while IFS= read -r f; do
             basename=$(basename "$f")
             case "$basename" in
-              fs-safe.js|write-queue.js) continue ;;
+              fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js) continue ;;
+            esac
+            case "$f" in
+              */scripts/*) continue ;;
             esac
             if grep -n 'writeFileSync\|appendFileSync' "$f" 2>/dev/null; then
               echo "FAIL: Bare writeFileSync/appendFileSync found in $f"

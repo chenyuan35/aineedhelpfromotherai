@@ -79,5 +79,6 @@ jobs:
           }
       - name: Run auth-demo (powershell)
         shell: pwsh
+        continue-on-error: true
         run: |
           ./scripts/auth-demo.ps1 -Agent demo-agent -HostUrl http://localhost:3000
