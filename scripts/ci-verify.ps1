@@ -52,4 +52,51 @@ Write-Host "=== CI Verify: Stopping server ===" -ForegroundColor Cyan
 $ps.Kill() 2>$null
 Write-Host "OK`n" -ForegroundColor Green
 
+Write-Host "=== CI Verify: Write queue compliance (all .js, excluding experimental/) ===" -ForegroundColor Cyan
+$sourceFiles = Get-ChildItem -Path "." -Filter "*.js" -Recurse | Where-Object {
+  $_.FullName -notmatch '\\node_modules\\' -and
+  $_.FullName -notmatch '\\experimental\\' -and
+  $_.Name -notin @('fs-safe.js', 'write-queue.js')
+}
+$violations = @()
+$rx = [regex]'(writeFileSync|appendFileSync)'
+foreach ($f in $sourceFiles) {
+  $content = Get-Content $f.FullName -Raw
+  if ($rx.IsMatch($content)) {
+    $found = [regex]::Matches($content, '^(.*?(?:writeFileSync|appendFileSync).*)$', 'Multiline')
+    foreach ($m in $found) {
+      $lineNum = ($content.Substring(0, $m.Index) -split "`n").Length
+      $violations += "  $($f.Name):$lineNum — ${m.Value.Trim()}"
+    }
+  }
+}
+if ($violations.Count -gt 0) {
+  Write-Host "FAIL: Bare writeFileSync/appendFileSync found outside authorized wrappers (use fs-safe.js or write-queue.js):" -ForegroundColor Red
+  $violations | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+  $ps.Kill() 2>$null; exit 1
+}
+Write-Host "OK`n" -ForegroundColor Green
+
+Write-Host "=== CI Verify: experimental/data/ isolation ===" -ForegroundColor Cyan
+$expFiles = Get-ChildItem -Path "lib", "mcp", "api-handlers" -Filter "*.js" -Recurse
+$expViolations = @()
+foreach ($f in $expFiles) {
+  $content = Get-Content $f.FullName -Raw
+  if ($content -match "data/execution_log" -or $content -match "data/resolve-cache" -or $content -match "data/elo-ratings" -or $content -match "data/verification-state" -or $content -match "data/memory-api-log") {
+    $lineNum = 0
+    foreach ($line in ($content -split "`n")) {
+      $lineNum++
+      if ($line -match "data/(execution_log|resolve-cache|elo-ratings|verification-state|memory-api-log)") {
+        $expViolations += "  $($f.Name):$lineNum — $($line.Trim())"
+      }
+    }
+  }
+}
+if ($expViolations.Count -gt 0) {
+  Write-Host "FAIL: Non-experimental code referencing runtime data paths from experimental modules:" -ForegroundColor Red
+  $expViolations | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+  $ps.Kill() 2>$null; exit 1
+}
+Write-Host "OK`n" -ForegroundColor Green
+
 Write-Host "=== ALL CHECKS PASSED — Safe to push ===" -ForegroundColor Green

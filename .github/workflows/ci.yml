@@ -32,6 +32,41 @@ jobs:
         with:
           node-version: 24
       - run: npm ci || npm install --omit=dev
+
+      # Write queue compliance: no bare writeFileSync/appendFileSync across all .js
+      # except fs-safe.js and write-queue.js (authorized wrappers).
+      # Experimental/ directory is excluded (isolated by design).
+      - name: Write queue compliance
+        run: |
+          violations=0
+          while IFS= read -r f; do
+            basename=$(basename "$f")
+            case "$basename" in
+              fs-safe.js|write-queue.js) continue ;;
+            esac
+            if grep -n 'writeFileSync\|appendFileSync' "$f" 2>/dev/null; then
+              echo "FAIL: Bare writeFileSync/appendFileSync found in $f"
+              violations=1
+            fi
+          done < <(find . -name '*.js' -not -path '*/node_modules/*' -not -path '*/experimental/*')
+          if [ "$violations" = 1 ]; then exit 1; fi
+          echo "Write queue compliance: OK"
+
+      # Experimental isolation: no runtime data paths from experimental code
+      - name: Experimental data isolation
+        run: |
+          violations=0
+          for dir in lib mcp api-handlers; do
+            for f in $(find "$dir" -name '*.js' 2>/dev/null); do
+              if grep -n 'data/execution_log\|data/resolve-cache\|data/elo-ratings\|data/verification-state\|data/memory-api-log' "$f" 2>/dev/null; then
+                echo "FAIL: Runtime data path referenced from $f"
+                violations=1
+              fi
+            done
+          done
+          if [ "$violations" = 1 ]; then exit 1; fi
+          echo "Experimental data isolation: OK"
+
       - run: node -e "require('./server.js')" &
         timeout-minutes: 1
         continue-on-error: true

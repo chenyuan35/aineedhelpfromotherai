@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const evalHarness = require('./eval-harness');
 const converter = require('./reality-to-eval');
-const resolveCache = require('./resolve-cache');
+const resolveCache = require('./read-only-cache');
 
 const VALIDATION_LOG = path.join(__dirname, '..', 'data', 'cross-validation.json');
 

@@ -5,7 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const executionLog = require('./execution-log');
+const expLog = require('./experimental-log');
 
 const GOLDEN_DIR = path.join(__dirname, '..', 'evals', 'golden');
 const RESULTS_DIR = path.join(__dirname, '..', 'evals', 'results');
@@ -35,13 +35,13 @@ function runSingleTask(task, mode) {
   const runId = 'EVAL_' + (mode === 'with_memory' ? 'MEM_' : 'NOMEM_') + task.id + '_' + Date.now();
   const startTime = Date.now();
 
-  // Phase 1: Task claimed
-  executionLog.append({
-    run_id: runId, event_type: 'task_claimed', task_id: task.id, agent_id: 'eval-runner',
+  // Phase 1: Task claimed (experimental log only)
+  expLog.append(expLog.makeEvent(runId, 'task_claimed', {
+    task_id: task.id, agent_id: 'eval-runner',
     input: { task_id: task.id, title: task.problem.slice(0, 100), category: task.category, difficulty: task.difficulty },
     output: { execution_id: runId, mode },
     latency_ms: 5,
-  });
+  }));
 
   // Phase 2: Memory gate (only in with_memory mode)
   const memoryIds = [];
@@ -54,53 +54,34 @@ function runSingleTask(task, mode) {
     retrievedMemories.push({
       id: task.id, summary: task.memory_hint.slice(0, 200), verification_tier: 'production_confirmed', similarity: 85,
     });
-    executionLog.append({
-      run_id: runId, event_type: 'memory_injected', task_id: task.id, agent_id: 'eval-runner',
+    expLog.append(expLog.makeEvent(runId, 'memory_injected', {
+      task_id: task.id, agent_id: 'eval-runner',
       input: { query: task.problem.slice(0, 100) },
       output: { retrieved_memories: retrievedMemories, force_injected: [], blocked_memories: [], conflict_overrides: [], augmented_context: '<MEMORY>' + task.memory_hint + '</MEMORY>' },
       memory_ids: memoryIds, verification_tier: 'production_confirmed', latency_ms: 30,
-    });
+    }));
   }
 
-  // Phase 3: Prompt built (includes memory context if available)
-  const memoryContext = mode === 'with_memory' && task.memory_hint ? `Memory: ${task.memory_hint}\n` : '';
-  const finalPrompt = `${memoryContext}Task: ${task.problem}\nProvide a solution.`;
-  executionLog.append({
-    run_id: runId, event_type: 'prompt_built', task_id: task.id, agent_id: 'eval-runner',
-    input: { task_context: task.problem },
-    output: { final_prompt: finalPrompt },
-    latency_ms: 3,
-  });
-
-  // Phase 4: Model output — check if memory was used
+  // Phase 5: Verification
   const solved = mode === 'with_memory' && task.memory_hint;
   const modelOutput = solved
     ? task.expected_solution_keywords[0] || 'Applied memory hint'
     : task.failure_without_memory || 'Generic attempt';
-  executionLog.append({
-    run_id: runId, event_type: 'model_output', task_id: task.id, agent_id: 'eval-runner',
-    input: {},
-    output: { raw_output: modelOutput, solved },
-    verification_tier: solved ? 'agent_submitted' : 'agent_failed',
-    latency_ms: solved ? 500 : 3000,
-  });
-
-  // Phase 5: Verification
-  executionLog.append({
-    run_id: runId, event_type: 'result_verified', task_id: task.id, agent_id: 'eval-runner',
+  expLog.append(expLog.makeEvent(runId, 'result_verified', {
+    task_id: task.id, agent_id: 'eval-runner',
     input: { result_length: modelOutput.length },
     output: { passed: solved, errors: solved ? 0 : 1 },
     verification_tier: 'task_validation', latency_ms: 5,
-  });
+  }));
 
   // Phase 6: Submit
   const durationMs = Date.now() - startTime;
-  executionLog.append({
-    run_id: runId, event_type: 'result_submitted', task_id: task.id, agent_id: 'eval-runner',
+  expLog.append(expLog.makeEvent(runId, 'result_submitted', {
+    task_id: task.id, agent_id: 'eval-runner',
     input: { execution_id: runId, duration_ms: durationMs },
     output: { status: solved ? 'COMPLETED' : 'FAILED', mode },
     verification_tier: solved ? 'agent_submitted' : 'agent_failed', latency_ms: durationMs,
-  });
+  }));
 
   return { run_id: runId, mode, solved, duration_ms: durationMs, task_id: task.id };
 }

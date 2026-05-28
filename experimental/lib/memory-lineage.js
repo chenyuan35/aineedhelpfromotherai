@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rc = require('./resolve-cache');
+const rc = require('./read-only-cache');
 
 /** Enrich a hint with lineage before storage */
 function enrichHint(hint, parentReasoningId, ancestorTaskIds, mutationGen) {
@@ -131,32 +131,35 @@ function buildLineageForest() {
   return Object.keys(forests).length > 0 ? forests : null;
 }
 
-/** Mark a lineage as contaminated (quarantine all descendants) */
+/** Mark a lineage as contaminated (READ-ONLY: reports candidates instead) */
 function quarantineLineage(rootTaskId) {
   const allHints = rc.getAllHints();
   const hint = allHints[rootTaskId];
   if (!hint) return { quarantined: 0 };
 
-  let count = 0;
+  const candidates = [];
   const rootAncestors = new Set(hint.ancestor_task_ids || []);
 
   for (const [id, h] of Object.entries(allHints)) {
     const ancestors = h.ancestor_task_ids || [];
     if (id === rootTaskId || ancestors.some(a => rootAncestors.has(a) || a === rootTaskId)) {
       if (h.status !== 'blacklisted') {
-        rc.setHint(id, { ...h, status: 'quarantined', quarantine_reason: 'lineage_cascade', quarantined_at: new Date().toISOString() });
-        count++;
+        candidates.push({ task_id: id, current_status: h.status, current_score: h.score });
       }
     }
   }
-
-  // Also quarantine the root
   if (hint.status !== 'blacklisted') {
-    rc.setHint(rootTaskId, { ...hint, status: 'quarantined', quarantine_reason: 'lineage_root_cascade', quarantined_at: new Date().toISOString() });
-    count++;
+    candidates.push({ task_id: rootTaskId, current_status: hint.status, current_score: hint.score, reason: 'root' });
   }
 
-  return { quarantined: count, root: rootTaskId };
+  return {
+    quarantined: 0,
+    candidates_for_quarantine: candidates.length,
+    candidates,
+    root: rootTaskId,
+    mode: 'read-only',
+    note: 'Lineage quarantine blocked. Experimental systems cannot mutate runtime state.',
+  };
 }
 
 module.exports = {

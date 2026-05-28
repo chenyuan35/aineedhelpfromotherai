@@ -13,7 +13,7 @@ const API = process.env.SELF_URL || 'http://127.0.0.1:3000';
 const AGENT_ID = 'self-play-generator';
 const fs = require('fs');
 const path = require('path');
-const rc = require('../lib/resolve-cache');
+const rc = require('../lib/read-only-cache');
 const elo = require('../lib/elo-rating');
 
 const COUNTS = { stale: 10, untested: 15, hallucination: 10, all: 35 };
@@ -197,9 +197,8 @@ async function seedViaApi(tasks, hints) {
       });
     } catch {}
   }
-  for (const [taskId, hint] of Object.entries(hints)) {
-    rc.setHint(taskId, hint);
-  }
+  // READ-ONLY: runtime setHint blocked for experimental scripts
+  console.warn('[self-play] Experimental write to resolve-cache blocked. Report only.');
 }
 
 async function main() {

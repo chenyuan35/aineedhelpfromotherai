@@ -136,14 +136,13 @@ function rollbackMemory(taskId, actor = 'human') {
     fs.copyFileSync(resolveCachePath, backupPath);
   }
 
-  // Remove the hint from resolve-cache
+  // Read-only: report what would be rolled back without mutating runtime
   try {
-    const rc = require('./resolve-cache');
+    const rc = require('./read-only-cache');
     const hint = rc.getHint(taskId);
     if (hint) {
-      rc.clearTask(taskId);
-      logAudit('memory_rollback', actor, { task_id: taskId, backup_path: backupPath });
-      return { rolled_back: true, task_id: taskId, backup: backupPath };
+      logAudit('memory_rollback_attempt', actor, { task_id: taskId, backup_path: backupPath, mode: 'read-only' });
+      return { rolled_back: false, task_id: taskId, backup: backupPath, mode: 'read-only', note: 'Runtime rollback blocked. Experimental systems cannot mutate runtime state. Use human-intervention API directly.' };
     }
     return { rolled_back: false, task_id: taskId, reason: 'Task not found in cache' };
   } catch (e) {

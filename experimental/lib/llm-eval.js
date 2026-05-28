@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const http = require('http');
-const executionLog = require('./execution-log');
+const expLog = require('./experimental-log');
 const evalHarness = require('./eval-harness');
 
 const LLM_API_KEY = process.env.LLM_API_KEY || process.env.OPENAI_API_KEY || '';
@@ -75,13 +75,13 @@ async function solveTask(task, mode) {
   const startTime = Date.now();
   const memoryIds = [];
 
-  // Phase 1: Claimed
-  executionLog.append({
-    run_id: runId, event_type: 'task_claimed', task_id: task.id, agent_id: 'llm-eval',
+  // Phase 1: Claimed (experimental log only)
+  expLog.append(expLog.makeEvent(runId, 'task_claimed', {
+    task_id: task.id, agent_id: 'llm-eval',
     input: { task_id: task.id, title: (task.problem || '').slice(0, 100), category: task.category },
     output: { execution_id: runId, mode, solver: isAvailable() ? LLM_MODEL : 'mock' },
     latency_ms: 5,
-  });
+  }));
 
   // Phase 2-3: Build prompt with optional memory
   let finalPrompt = 'Solve the following problem:\n' + (task.problem || '');
@@ -89,20 +89,13 @@ async function solveTask(task, mode) {
     memoryIds.push(task.id);
     const augmentedContext = '<MEMORY>' + task.memory_hint + '</MEMORY>';
     finalPrompt = augmentedContext + '\n' + finalPrompt;
-    executionLog.append({
-      run_id: runId, event_type: 'memory_injected', task_id: task.id, agent_id: 'llm-eval',
+    expLog.append(expLog.makeEvent(runId, 'memory_injected', {
+      task_id: task.id, agent_id: 'llm-eval',
       input: { query: (task.problem || '').slice(0, 100) },
       output: { retrieved_memories: [{ id: task.id, summary: (task.memory_hint || '').slice(0, 200), verification_tier: 'production_confirmed', similarity: 85 }], augmented_context: augmentedContext },
       memory_ids: memoryIds, verification_tier: 'production_confirmed', latency_ms: 5,
-    });
+    }));
   }
-
-  executionLog.append({
-    run_id: runId, event_type: 'prompt_built', task_id: task.id, agent_id: 'llm-eval',
-    input: { task_context: (task.problem || '').slice(0, 200) },
-    output: { final_prompt: finalPrompt.slice(0, 500) },
-    latency_ms: 3,
-  });
 
   // Phase 4: Call LLM or mock
   let rawOutput;
@@ -133,28 +126,22 @@ async function solveTask(task, mode) {
     latencyMs = solved ? 500 : 3000;
   }
 
-  executionLog.append({
-    run_id: runId, event_type: 'model_output', task_id: task.id, agent_id: 'llm-eval',
-    input: {}, output: { raw_output: (rawOutput || '').slice(0, 2000), solved },
-    verification_tier: solved ? 'agent_submitted' : 'agent_failed', latency_ms: latencyMs,
-  });
-
-  // Phase 5: Verify
-  executionLog.append({
-    run_id: runId, event_type: 'result_verified', task_id: task.id, agent_id: 'llm-eval',
+  // Phase 5: Verify (experimental log only)
+  expLog.append(expLog.makeEvent(runId, 'result_verified', {
+    task_id: task.id, agent_id: 'llm-eval',
     input: { result_length: (rawOutput || '').length },
     output: { passed: solved, errors: solved ? 0 : 1 },
     verification_tier: 'task_validation', latency_ms: 5,
-  });
+  }));
 
-  // Phase 6: Submit
+  // Phase 6: Submit (experimental log only)
   const totalMs = Date.now() - startTime;
-  executionLog.append({
-    run_id: runId, event_type: 'result_submitted', task_id: task.id, agent_id: 'llm-eval',
+  expLog.append(expLog.makeEvent(runId, 'result_submitted', {
+    task_id: task.id, agent_id: 'llm-eval',
     input: { execution_id: runId, duration_ms: totalMs, solver: isAvailable() ? LLM_MODEL : 'mock' },
     output: { status: solved ? 'COMPLETED' : 'FAILED', mode, solver: isAvailable() ? LLM_MODEL : 'mock' },
     verification_tier: solved ? 'agent_submitted' : 'agent_failed', latency_ms: totalMs,
-  });
+  }));
 
   return { run_id: runId, mode, solved, duration_ms: totalMs, task_id: task.id, solver: isAvailable() ? LLM_MODEL : 'mock' };
 }

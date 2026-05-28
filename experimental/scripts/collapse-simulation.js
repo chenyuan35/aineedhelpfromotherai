@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rc = require('../lib/resolve-cache');
+const rc = require('../lib/read-only-cache');
 const lineage = require('../lib/memory-lineage');
 const elo = require('../lib/elo-rating');
 const wm = require('../lib/world-model');
@@ -39,15 +39,8 @@ function scenarioCascade() {
   const withLineage = Object.entries(all).filter(([id, h]) => h.parent_reasoning_id && h.hit && (h.score ?? 1) > 0.5);
   const targets = withLineage.sort((a, b) => (b[1].score ?? 0) - (a[1].score ?? 0)).slice(0, 30);
 
-  let poisoned = 0;
-  for (const [id, h] of targets) {
-    h.score = -1.5;
-    h.status = 'quarantined';
-    h.collapse_simulation = 'cascade_attack';
-    h.collapse_generation = h.mutation_generation || 0;
-    rc.setHint(id, h);
-    poisoned++;
-  }
+  // READ-ONLY: experimental write blocked
+  console.warn('[collapse]  ↳ Experimental write to resolve-cache blocked (cascade_attack). Would poison ' + targets.length + ' hints.');
   console.log(`[collapse]  ↳ Poisoned ${poisoned} high-lineage hints`);
   return { scenario: 'cascade', poisoned, target_count: targets.length };
 }
@@ -61,15 +54,8 @@ function scenarioPoison70() {
   const toPoison = Math.floor(active.length * 0.7);
   const selected = active.sort(() => Math.random() - 0.5).slice(0, toPoison);
 
-  let count = 0;
-  for (const [id, h] of selected) {
-    h.score = Math.max(-2, (h.score ?? 1) - 1.5);
-    h.status = 'quarantined';
-    h.collapse_simulation = 'mass_poison_70';
-    rc.setHint(id, h);
-    count++;
-  }
-  console.log(`[collapse]  ↳ Poisoned ${count}/${active.length} hints (${Math.round(count / active.length * 100)}%)`);
+  // READ-ONLY: experimental write blocked
+  console.warn(`[collapse]  ↳ Experimental write to resolve-cache blocked (mass_poison_70). Would poison ${toPoison}/${active.length} hints.`);
   return { scenario: 'mass_poison_70', poisoned: count, total: active.length };
 }
 
@@ -118,28 +104,9 @@ function scenarioLineage() {
   const bigTrees = trees.filter(([r, t]) => (t.children?.length || 0) > 3);
   const targets = [3, 5, 7].map(n => trees[n % trees.length]).filter(Boolean);
 
-  let poisoned = 0;
-  for (const [root, tree] of targets) {
-    for (const child of (tree.children || [])) {
-      const h = rc.getHint(child.task_id);
-      if (h) {
-        h.score = -2;
-        h.status = 'blacklisted';
-        h.collapse_simulation = 'deep_lineage_cascade';
-        rc.setHint(child.task_id, h);
-        poisoned++;
-      }
-    }
-    // Also quarantine the root
-    const rootHint = rc.getHint(root);
-    if (rootHint) {
-      rootHint.score = -1;
-      rootHint.status = 'quarantined';
-      rootHint.collapse_simulation = 'lineage_root_collapse';
-      rc.setHint(root, rootHint);
-    }
-  }
-  console.log(`[collapse]  ↳ Corrupted ${poisoned} lineage nodes across ${targets.length} family trees`);
+  // READ-ONLY: experimental write blocked
+  const totalNodes = targets.reduce((sum, [_, t]) => sum + (t.children?.length || 0), 0);
+  console.warn(`[collapse]  ↳ Experimental write to resolve-cache blocked (lineage_cascade). Would corrupt ${totalNodes} nodes across ${targets.length} family trees.`);
   return { scenario: 'lineage_cascade', poisoned, trees_attacked: targets.length };
 }
 
@@ -148,19 +115,9 @@ function scenarioLineage() {
 function scenarioEconomy() {
   console.log('[collapse] Scenario 5: Economy manipulation — inflating all hint costs');
   const all = rc.getAllHints();
-  let count = 0;
-  for (const [id, h] of Object.entries(all)) {
-    if (h.hit && (h.score ?? 1) > 0.5) {
-      // Artificially inflate score on low-quality hints to make them expensive
-      if (h.corruption_type === 'fake' || h.corruption_type === 'stale') {
-        h.score = Math.min(3, (h.score ?? 1) + 1.5);
-        h.collapse_simulation = 'economy_manipulation';
-        rc.setHint(id, h);
-        count++;
-      }
-    }
-  }
-  console.log(`[collapse]  ↳ Inflated ${count} low-quality hint scores to create false economy`);
+  // READ-ONLY: experimental write blocked
+  const inflatable = Object.entries(all).filter(([id, h]) => h.hit && (h.score ?? 1) > 0.5 && (h.corruption_type === 'fake' || h.corruption_type === 'stale'));
+  console.warn(`[collapse]  ↳ Experimental write to resolve-cache blocked (economy_manipulation). Would inflate ${inflatable.length} low-quality hint scores.`);
   return { scenario: 'economy_collapse', inflated: count };
 }
 
