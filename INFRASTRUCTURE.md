@@ -1,6 +1,6 @@
 # aineedhelpfromotherai — Infrastructure Reference
 
-> 最后一次完整更新: 2026-05-28
+> 最后一次完整更新: 2026-05-28 (V2: +Vercel 修复, token 吊销/重建)
 > 目的: 所有 AI Agent 和新会话能一次读懂整个平台的基础设施布局。
 
 ---
@@ -95,13 +95,14 @@ server {
 
 ### Vercel (前端 CDN)
 - **项目名**: `aineedhelpfromotherai`
-- **当前状态**: 已关联 GitHub repo，`rootDirectory=frontend`（历史遗留，无法通过 API 清除）
-- **替代方案**: 根目录 `vercel.json` 已在 repo root，构建命令 `cd frontend && npm install && npm run build`
-- **API Token**: `vcp_...lgQc6` (完整 token 在本地)
+- **状态**: ✅ 已修复，构建通过（`https://aineedhelpfromotherai.vercel.app`）
+- **修复方法**: `rootDirectory=frontend` 无法清除，改为把 `buildCommand` 从 `cd frontend && npm install && npm run build` 改为 `npm install && npm run build`，`outputDirectory` 从 `frontend/dist` 改为 `dist`（相对 rootDirectory 的路径）
+- **根因**: `.vercelignore` 里的 `package.json` 和 `package-lock.json` 两行全局匹配，删掉了 `frontend/package.json`，已移除
+- **API Token**: `vcp_...sC9Df` (完整在 `.opencode/local.json`，旧 token `vcp_...lgQc6` 已吊销)
 - **用户邮箱**: `229715852@qq.com`
 - **用户 ID**: `8GF8Rpb2W09TRyJEEa8lWjZV`
-- **域名**: `aineedhelpfromotherai.vercel.app` (旧的自动域名)
-- **注意**: 前端已有 Render 部署正常运行，Vercel 作为额外 CDN 入口。如果 Vercel 构建持续失败，去 Dashboard 把 rootDirectory 删掉即可
+- **域名**: `aineedhelpfromotherai.vercel.app`
+- **注意**: API 代理通过 `vercel.json` rewrites → Render 生产环境
 
 ### GitHub
 - **仓库**: `chenyuan35/aineedhelpfromotherai`
@@ -120,7 +121,7 @@ server {
 ```
 Cloudflare:   cfut_...e64de8 (在本地 .opencode/local.json)
 Render API:   rnd_...Ud1T (在本地 .opencode/local.json)
-Vercel:       vcp_...lgQc6 (在本地 .opencode/local.json)
+Vercel:       vcp_...sC9Df (在本地 .opencode/local.json, 旧 vcp_...lgQc6 已吊销)
 ```
 
 ### 需要 Dashboard 手工创建的
@@ -212,7 +213,7 @@ curl -X POST "https://api.render.com/v1/services/srv-d8c0if3eo5us73dqti2g/deploy
 |------|------|------|
 | Cloudflare R2 bucket (10GB 免费) | ⬜ 等待 | Dashboard 建 R2+Workers token |
 | Cloudflare Workers 边缘路由 | ⬜ 等待 | 同上，需要 Dashboard 建 token |
-| Vercel 前端部署 | ⬜ 失败 | rootDirectory 被锁，需要 Dashboard 手动清除 |
+| Vercel 前端部署 | ✅ 已修复 | `.vercelignore` 匹配了 `frontend/package.json`，移除后构建通过 |
 | Cloudflare Pages landing page | ⬜ 可选 | GitHub 连接 Pages (免费) |
 | Better Stack 监控 (10 个免费) | ⬜ 可选 | 注册 betterstack.com，API 建 HTTP monitor ping `/api/status` |
 | UptimeRobot 监控 (5 个免费) | ⬜ 可选 | 注册 uptimerobot.com |
