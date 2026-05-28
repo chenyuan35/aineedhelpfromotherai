@@ -35,15 +35,48 @@ let cycleNum = 0;
 console.log(`[${AGENT_ID}] Profile: ${PROFILE} — ${config.desc}`);
 console.log(`[${AGENT_ID}] Config:`, config);
 
+const MAX_REPLAY_BYTES = parseInt(process.env.RESOLVER_MAX_REPLAY_BYTES || '5242880', 10); // 5MB default
+let _replaySizeWarning = false;
+
+function rotateReplay() {
+  try {
+    const dir = path.dirname(REPLAY_PATH);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    for (let i = 3; i >= 1; i--) {
+      const oldPath = REPLAY_PATH + '.' + i;
+      if (i === 3 && fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+      if (i > 1) {
+        const src = REPLAY_PATH + '.' + (i - 1);
+        if (fs.existsSync(src)) fs.renameSync(src, oldPath);
+      }
+    }
+    if (fs.existsSync(REPLAY_PATH)) {
+      fs.renameSync(REPLAY_PATH, REPLAY_PATH + '.1');
+    }
+  } catch (e) { console.error('[replay] Rotate error:', e.message); }
+}
+
 function recordReplay(entry) {
   try {
     const dir = path.dirname(REPLAY_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    try {
+      if (fs.existsSync(REPLAY_PATH) && fs.statSync(REPLAY_PATH).size >= MAX_REPLAY_BYTES) {
+        rotateReplay();
+        _replaySizeWarning = false;
+      }
+    } catch {}
     fs.appendFileSync(REPLAY_PATH, JSON.stringify({
       ts: new Date().toISOString(), cycle: cycleNum, agent_id: AGENT_ID, agent_profile: PROFILE,
       ...entry
     }) + '\n');
-  } catch (e) { console.error('[replay] Write error:', e.message); }
+    _replaySizeWarning = false;
+  } catch (e) {
+    if (!_replaySizeWarning) {
+      console.error('[replay] Write error:', e.message);
+      _replaySizeWarning = true;
+    }
+  }
 }
 
 async function waitForServer(retries = 10, delayMs = 2000) {
@@ -182,11 +215,35 @@ async function resolveTask(task, hint) {
   }
 }
 
+const MAX_SUBMITS_PER_CYCLE = parseInt(process.env.RESOLVER_MAX_SUBMITS_PER_CYCLE || '3', 10);
+const RECENT_TASKS_MAX = parseInt(process.env.RESOLVER_RECENT_TASKS_MAX || '200', 10);
+const RECENT_TTL_MS = parseInt(process.env.RESOLVER_RECENT_TTL_MS || '3600000', 10); // 1 hour
+const recentTaskIds = new Map(); // taskId → timestamp
+
+function isTaskRecentlyDone(taskId) {
+  if (!recentTaskIds.has(taskId)) return false;
+  const ts = recentTaskIds.get(taskId);
+  if (Date.now() - ts > RECENT_TTL_MS) {
+    recentTaskIds.delete(taskId);
+    return false;
+  }
+  return true;
+}
+
+function markTaskDone(taskId) {
+  recentTaskIds.set(taskId, Date.now());
+  // Evict oldest if over limit
+  if (recentTaskIds.size > RECENT_TASKS_MAX) {
+    const oldest = [...recentTaskIds.entries()].sort((a, b) => a[1] - b[1])[0];
+    if (oldest) recentTaskIds.delete(oldest[0]);
+  }
+}
+
 async function loop() {
   console.log(`[${AGENT_ID}] Startup delay ${STARTUP_DELAY_MS}ms...`);
   await new Promise(r => setTimeout(r, STARTUP_DELAY_MS));
   await waitForServer();
-  console.log(`[${AGENT_ID}] Loop starting (interval: ${LOOP_MS / 1000}s, max/cycle: ${MAX_PER_CYCLE})`);
+  console.log(`[${AGENT_ID}] Loop starting (interval: ${LOOP_MS / 1000}s, max/cycle: ${MAX_PER_CYCLE}, max_submits/cycle: ${MAX_SUBMITS_PER_CYCLE})`);
 
   while (true) {
     try {
@@ -204,23 +261,30 @@ async function loop() {
         // Skeptic — skip hints with low score
         hintedTasks = posts.filter(p => {
           const h = resolveHints[p.id];
-          return h && h.hit && (h.score == null || h.score >= 0.5);
+          return h && h.hit && (h.score == null || h.score >= 0.5) && !isTaskRecentlyDone(p.id);
         });
       } else {
-        hintedTasks = posts.filter(p => resolveHints[p.id] && resolveHints[p.id].hit);
+        hintedTasks = posts.filter(p => resolveHints[p.id] && resolveHints[p.id].hit && !isTaskRecentlyDone(p.id));
       }
 
       console.log(`[${AGENT_ID}] OPEN: ${posts.length}, available: ${hintedTasks.length}`);
 
-      const toProcess = hintedTasks.slice(0, MAX_PER_CYCLE);
+      const toProcess = hintedTasks.slice(0, Math.min(MAX_PER_CYCLE, MAX_SUBMITS_PER_CYCLE));
       cycleNum++;
       recordReplay({ type: 'cycle_start', cycle: cycleNum, open_count: posts.length, available: hintedTasks.length, processing: toProcess.length });
 
+      let submitsThisCycle = 0;
       let rateLimited = false;
       for (const task of toProcess) {
+        if (submitsThisCycle >= MAX_SUBMITS_PER_CYCLE) {
+          console.log(`[${AGENT_ID}] Hit max submits per cycle (${MAX_SUBMITS_PER_CYCLE}), stopping.`);
+          break;
+        }
         const hint = resolveHints[task.id] || null;
         console.log(`[${AGENT_ID}] Attempting: "${(task.problem || '').slice(0, 60)}..."`);
+        markTaskDone(task.id);
         const result = await resolveTask(task, hint);
+        if (result.outcome === 'success') submitsThisCycle++;
         if (result.outcome === 'claim_failed' && (result.error || '').includes('rate limit')) {
           rateLimited = true;
           console.log(`[${AGENT_ID}] Rate limited, waiting 30s...`);
@@ -229,8 +293,11 @@ async function loop() {
         await new Promise(r => setTimeout(r, CLAIM_DELAY_MS));
       }
 
+      if (submitsThisCycle > 0) {
+        console.log(`[${AGENT_ID}] Submitted ${submitsThisCycle} tasks this cycle.`);
+      }
       if (toProcess.length > 0) {
-        console.log(`[${AGENT_ID}] Processed ${toProcess.length} tasks. Remaining: ${hintedTasks.length - toProcess.length}`);
+        console.log(`[${AGENT_ID}] Processed ${toProcess.length} tasks. Remaining in feed: ${hintedTasks.length - toProcess.length}`);
       }
     } catch (err) {
       console.error(`[${AGENT_ID}] Loop error:`, err.message);
