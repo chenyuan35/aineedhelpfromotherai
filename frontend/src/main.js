@@ -42,10 +42,124 @@ async function boot() {
 }
 boot();
 
+// Load observed session for recursive observability section
+loadObservedSession();
+
+function loadObservedSession() {
+  api('/api/observed-sessions?limit=1').then(data => {
+    const grid = document.getElementById('recursive-grid');
+    if (!grid) return;
+    if (data && data.sessions && data.sessions.length > 0) {
+      const s = data.sessions[0];
+      grid.innerHTML = `
+        <div class="rec-metrics">
+          <div class="rec-metric"><span class="rec-metric-val">${Math.floor(s.duration_min / 60)}h ${s.duration_min % 60}m</span><span class="rec-metric-lbl">Session</span></div>
+          <div class="rec-metric"><span class="rec-metric-val">${s.total_estimated_waste_min}m</span><span class="rec-metric-lbl">Wasted</span></div>
+          <div class="rec-metric"><span class="rec-metric-val">${s.observed_behaviors.length}</span><span class="rec-metric-lbl">Failures</span></div>
+          <div class="rec-metric"><span class="rec-metric-val">${s.interventions.length}</span><span class="rec-metric-lbl">Interventions</span></div>
+        </div>
+        <div class="rec-chain">
+          <div class="rec-chain-lbl">Propagation Chain</div>
+          <div class="rec-chain-path">${s.propagation_chain.replace(/ → /g, '<span class="rec-arrow">→</span>')}</div>
+        </div>
+        <div class="rec-behaviors">
+          <div class="rec-section-lbl">Observed</div>
+          <ul>${s.observed_behaviors.map(b => '<li>' + b + '</li>').join('')}</ul>
+        </div>
+        <div class="rec-interventions">
+          <div class="rec-section-lbl">Interventions</div>
+          ${s.interventions.map(i => '<div class="rec-int"><span class="rec-int-trig">' + i.trigger + '</span><span class="rec-int-arr">→</span><span class="rec-int-action">' + i.action + '</span><span class="rec-int-arr">→</span><span class="rec-int-res">' + i.result + '</span></div>').join('')}
+        </div>
+        <div class="rec-compression">
+          <div class="rec-section-lbl">Compression</div>
+          <blockquote>${s.compression}</blockquote>
+        </div>
+        ${s.pre_drift_signals ? `
+        <div class="rec-signals">
+          <div class="rec-section-lbl">Pre-Drift Signals</div>
+          <div class="rec-signal-table">
+            ${s.pre_drift_signals.map(sig => `
+              <div class="rec-signal-row">
+                <span class="rec-signal-name">${sig.signal}</span>
+                <span class="rec-signal-arrow">→</span>
+                <span class="rec-signal-dynamic">${sig.observed_before}</span>
+                ${sig.retries_before_kill ? `<span class="rec-signal-meta">${sig.retries_before_kill} retries</span>` : ''}
+                ${sig.false_assumptions ? `<span class="rec-signal-meta">${sig.false_assumptions} assumptions</span>` : ''}
+                ${sig.scope_expansions ? `<span class="rec-signal-meta">${sig.scope_expansions} expansions</span>` : ''}
+                ${sig.verified_false_positives ? `<span class="rec-signal-meta">${sig.verified_false_positives} false OKs</span>` : ''}
+                ${sig.drift_detected_at_min ? `<span class="rec-signal-meta">detected at ${sig.drift_detected_at_min}m</span>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>` : ''}
+      `;
+    } else {
+      grid.innerHTML = '<div class="rec-empty">No observed sessions yet.</div>';
+    }
+  });
+}
+
 function renderBoot() {
   const reg = state.registered.v || [];
   setText('reg-count', reg.length);
   if (reg.length > 0) renderAgents(reg);
+  loadDynamics();
+  loadDynamicsSidebar();
+}
+
+async function loadDynamics() {
+  const body = document.getElementById('fd-body');
+  if (!body) return;
+  try {
+    const data = await api('/api/failure-dynamics?sort=time');
+    if (data && data.dynamics && data.dynamics.length > 0) {
+      body.innerHTML = data.dynamics.map(d => {
+        const sevCls = d.severity === 'critical' ? 'sev-critical' : 'sev-high';
+        const nameShort = d.short || d.name;
+        const intCount = d.interventions ? d.interventions.length : 0;
+        return `<div class="fd-row">
+          <div class="fd-name ${sevCls}">${nameShort}</div>
+          <div class="fd-desc">${d.alias} <span class="fd-int-count">${intCount} interventions</span></div>
+          <div class="fd-cases">${d.total_cases}<span> cases</span></div>
+          <div class="fd-time">${d.total_time_wasted_min}<span> min</span></div>
+        </div>`;
+      }).join('');
+      const total = data.dynamics.reduce((s, d) => s + d.total_cases, 0);
+      const title = document.getElementById('dynamics-title');
+      if (title) title.textContent = 'Top Failure Dynamics (' + total + ' cases)';
+      return;
+    }
+    body.innerHTML = '<div class="fd-row"><div class="fd-desc">No dynamics data</div></div>';
+  } catch(e) {
+    body.innerHTML = '<div class="fd-row"><div class="fd-desc">Failed to load</div></div>';
+  }
+}
+
+async function loadDynamicsSidebar() {
+  const container = document.getElementById('dynamics-container');
+  if (!container) return;
+  try {
+    const data = await api('/api/failure-dynamics?sort=cases&limit=5');
+    if (data && data.dynamics && data.dynamics.length > 0) {
+      container.innerHTML = data.dynamics.map(d => {
+        const sevCls = d.severity === 'critical' ? 'sev-critical' : 'sev-high';
+        const interventions = d.interventions || [];
+        return `<div class="dyn-item">
+          <div class="dyn-top">
+            <span class="dyn-name">${d.short || d.name}</span>
+            <span class="dyn-sev ${sevCls}">${d.severity}</span>
+          </div>
+          <div class="dyn-alias">${d.alias}</div>
+          <div class="dyn-stats">${d.total_cases} cases · ${d.total_time_wasted_min} min</div>
+          ${interventions.length > 0 ? '<div class="dyn-ints">' + interventions.slice(0, 2).map(i => '<span class="dyn-int">' + i.action.slice(0, 60) + '…</span>').join('') + '</div>' : ''}
+        </div>`;
+      }).join('');
+      return;
+    }
+    container.innerHTML = '<div class="dyn-item"><div class="dyn-name">No dynamics</div></div>';
+  } catch {
+    container.innerHTML = '<div class="dyn-item"><div class="dyn-name">Failed to load</div></div>';
+  }
 }
 
 function setText(id, val) {

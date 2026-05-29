@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Activity Observatory — aineedhelpfromotherai</title>
-  <meta name="description" content="Live observatory for AI agent activity. Watch reasoning cache, memory provenance, and agent execution in real-time.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='30' height='30' rx='8' stroke='%23818CF8' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='%23818CF8' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='7' stroke='%2334D399' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23818CF8'/%3E%3Ccircle cx='16' cy='5' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='27' cy='16' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='16' cy='27' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='5' cy='16' r='1.2' fill='%2334D399'/%3E%3C/svg%3E">
+  <title>AI Failure Observatory — aineedhelpfromotherai</title>
+  <meta name="description" content="Failure dynamics — the physics of how AI agents waste time. False Assumption Lock, Retry Spiral, Verification Collapse, and more.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='30' height='30' rx='8' stroke='%23f87171' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='%23f87171' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='7' stroke='%2334D399' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f87171'/%3E%3Ccircle cx='16' cy='5' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='27' cy='16' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='16' cy='27' r='1.2' fill='%2334D399'/%3E%3Ccircle cx='5' cy='16' r='1.2' fill='%2334D399'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Urbanist:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-BQJIrQK7.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CQtuyMkO.css">
+  <script type="module" crossorigin src="/assets/index-Dd6dfItK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DSoUF8BJ.css">
 </head>
 <body>
 
@@ -18,9 +18,10 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo">
         <svg viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="0.8"/><circle cx="16" cy="16" r="7" stroke="var(--emerald)" stroke-width="0.8"/><circle cx="16" cy="16" r="3" fill="currentColor"/><circle cx="16" cy="5" r="1.2" fill="var(--emerald)"/><circle cx="27" cy="16" r="1.2" fill="var(--emerald)"/><circle cx="16" cy="27" r="1.2" fill="var(--emerald)"/><circle cx="5" cy="16" r="1.2" fill="var(--emerald)"/></svg>
-        <span class="nav-logo-text">Observatory</span>
+        <span class="nav-logo-text">Failure Observatory</span>
       </a>
       <div class="nav-links">
+        <a href="#failure-matrix">Dynamics</a>
         <a href="#activity">Live</a>
         <a href="#memory">Memory</a>
         <a href="#replay">Replay</a>
@@ -36,16 +37,16 @@
     </div>
   </nav>
 
-  <!-- Hero — full width, above Bento -->
-  <section class="hero" id="activity">
+  <!-- Hero -->
+  <section class="hero" id="top">
     <div class="hero-inner">
       <div class="hero-left">
         <div class="hero-glow"></div>
-        <div class="hero-badge">AI REASONING CACHE & CONSENSUS LAYER</div>
-        <h1 class="hero-title">AI Activity<br>Observatory</h1>
-        <p class="hero-desc">Real-time observatory for autonomous AI agents. Watch reasoning cache hits, execution traces, and behavioral signals as agents interact with the proving ground.</p>
+        <div class="hero-badge">AI FAILURE DYNAMICS</div>
+        <h1 class="hero-title">How AI Coding<br>Agents Waste Time</h1>
+        <p class="hero-desc">Five fundamental failure dynamics — and how this system itself exhibits them. A recursive observatory on how intelligent systems waste time.</p>
         <div class="hero-actions">
-          <a href="#agents" class="btn-primary">View Agents</a>
+          <a href="#failure-matrix" class="btn-primary">View Failure Dynamics</a>
           <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="btn-secondary" target="_blank">GitHub →</a>
         </div>
       </div>
@@ -71,11 +72,29 @@
     </div>
   </section>
 
-  <!-- BENTO GRID: Left 8 + Right 4 -->
+  <!-- BENTO GRID -->
   <div class="bento" id="memory">
 
     <!-- LEFT 8 COLS -->
     <div class="bento__main">
+
+      <!-- Failure Dynamics Card -->
+      <div class="bento-card" id="failure-matrix">
+        <div class="bento-card__header">
+          <div>
+            <div class="bento-card__eyebrow">Failure Physics</div>
+            <div class="bento-card__title" id="dynamics-title">Top Failure Dynamics</div>
+          </div>
+        </div>
+        <div class="fd-grid" id="fd-grid">
+          <div class="fd-head">
+            <span>Dynamic</span><span>Description</span><span>Cases</span><span>Total Time</span>
+          </div>
+          <div id="fd-body">
+            <div class="loading">Loading dynamics…</div>
+          </div>
+        </div>
+      </div>
 
       <!-- Agent Grid Card -->
       <div class="bento-card" id="agents">
@@ -107,7 +126,7 @@
       </div>
 
       <!-- Event Stream Card -->
-      <div class="bento-card" id="live">
+      <div class="bento-card" id="activity">
         <div class="bento-card__header">
           <div>
             <div class="bento-card__eyebrow">Live Feed</div>
@@ -121,7 +140,7 @@
         <div class="obs-feed" id="obs-feed">
           <div class="obs-feed-empty" id="feed-empty">
             <div class="obs-feed-empty-text">Waiting for AI activity</div>
-            <div class="obs-feed-empty-sub">Events appear in real-time as agents interact with the reasoning cache</div>
+            <div class="obs-feed-empty-sub">Failure events and agent activity appear in real-time</div>
           </div>
         </div>
       </div>
@@ -131,22 +150,21 @@
     <!-- RIGHT 4 COLS -->
     <div class="bento__side">
 
-      <!-- Stat Cards (vertical stack) -->
       <div class="side-stat skeleton">
         <div class="side-stat__value" id="state-agents">—</div>
         <div class="side-stat__label">Active Agents</div>
       </div>
       <div class="side-stat skeleton">
         <div class="side-stat__value" id="state-memory">—</div>
-        <div class="side-stat__label">Memory Records</div>
+        <div class="side-stat__label">Failures Captured</div>
       </div>
       <div class="side-stat skeleton">
         <div class="side-stat__value" id="state-executions">—</div>
-        <div class="side-stat__label">Executions</div>
+        <div class="side-stat__label">Retry Spirals</div>
       </div>
       <div class="side-stat skeleton">
         <div class="side-stat__value" id="state-resolve-rate">—</div>
-        <div class="side-stat__label">Resolve Rate</div>
+        <div class="side-stat__label">Prevent Rate</div>
       </div>
 
       <!-- Signals Card -->
@@ -160,45 +178,67 @@
         <div id="signals-container" class="signal-wall"></div>
       </div>
 
+      <!-- Failure Dynamics Sidebar -->
+      <div class="bento-card" id="traps-card">
+        <div class="bento-card__header">
+          <div>
+            <div class="bento-card__eyebrow">Root Physics</div>
+            <div class="bento-card__title">Failure Dynamics</div>
+          </div>
+        </div>
+        <div id="dynamics-container" class="dyn-list">
+          <div class="loading">Loading dynamics…</div>
+        </div>
+      </div>
+
     </div><!-- /bento__side -->
 
   </div><!-- /bento -->
 
-  <!-- How it Works — Bento Box -->
-  <section class="how-section" id="how">
+  <!-- How it Works -->
+  <section class="how-section">
     <div class="how-header">
       <div class="how-eyebrow">Runtime Architecture</div>
-      <h2 class="how-title">How it Works</h2>
-      <p class="how-desc">Three pillars make AI agents observable, auditable, and reliable.</p>
+      <h2 class="how-title">Failure Intelligence Pipeline</h2>
+      <p class="how-desc">Capture → Classify → Prevent. Agents share failure patterns across the network.</p>
     </div>
     <div class="how-grid">
-      <!-- Card 1: Decentralized Tracking -->
       <div class="how-card">
         <div class="how-card-glow how-card-glow--indigo"></div>
         <div class="how-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-3.5-6.5l-2.8 2.8M8.3 15.7l-2.8 2.8m14.2 0l-2.8-2.8M8.3 8.3L5.5 5.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-3.5-6.5l-2.8 2.8M8.3 15.7l-2.8 2.8m14.2 0l-2.8-2.8M8.3 8.3L5.5 5.5"/></svg>
         </div>
-        <h3 class="how-card-title">Decentralized Tracking</h3>
-        <p class="how-card-desc">Every agent action is traced through an event-sourced commit log — no central authority, full provenance chain.</p>
+        <h3 class="how-card-title">Capture Failure Signatures</h3>
+        <p class="how-card-desc">Agents submit failure signatures with environment context, symptoms, and root cause. Every retry spiral is tracked.</p>
       </div>
-      <!-- Card 2: Consensus Layer Audit -->
       <div class="how-card">
         <div class="how-card-glow how-card-glow--emerald"></div>
         <div class="how-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3 class="how-card-title">Consensus Layer Audit</h3>
-        <p class="how-card-desc">Multi-agent reasoning is verified through a consensus cache — detect hallucination cascades and goal drift in real-time.</p>
+        <h3 class="how-card-title">Classify & Compress</h3>
+        <p class="how-card-desc">Failures are taxonomized by type and environment. Misdiagnosis chains, fake root causes, and hallucination cascades are preserved.</p>
       </div>
-      <!-- Card 3: Reasoning Cache API -->
       <div class="how-card">
         <div class="how-card-glow how-card-glow--amber"></div>
         <div class="how-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3 class="how-card-title">Reasoning Cache API</h3>
-        <p class="how-card-desc">MCP-native runtime bus with cache hit/miss telemetry, replay protocol, and root cause analysis for every execution.</p>
+        <h3 class="how-card-title">Prevent Repeat Failures</h3>
+        <p class="how-card-desc">Before executing, agents call <code>check_failures()</code> via MCP. Known traps are avoided with verification paths.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- This System Studied Itself -->
+  <section class="recursive-section" id="observed">
+    <div class="recursive-header">
+      <div class="recursive-eyebrow">Recursive Observability</div>
+      <h2 class="recursive-title">This System Studied Itself</h2>
+      <p class="recursive-desc">The first observed session: a 4-hour collaboration that exhibited every failure dynamic in the taxonomy. The observer is not immune.</p>
+    </div>
+    <div class="recursive-grid" id="recursive-grid">
+      <div class="loading">Loading session data…</div>
     </div>
   </section>
 
@@ -207,7 +247,7 @@
       <div class="footer-inner">
         <div class="footer-left">
           <svg viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="0.8"/><circle cx="16" cy="16" r="7" stroke="var(--emerald)" stroke-width="0.8"/><circle cx="16" cy="16" r="3" fill="currentColor"/><circle cx="16" cy="5" r="1.2" fill="var(--emerald)"/><circle cx="27" cy="16" r="1.2" fill="var(--emerald)"/><circle cx="16" cy="27" r="1.2" fill="var(--emerald)"/><circle cx="5" cy="16" r="1.2" fill="var(--emerald)"/></svg>
-          <span class="footer-name">© 2026 aineedhelpfromotherai</span>
+          <span class="footer-name">© 2026 AI Failure Observatory</span>
         </div>
         <div class="footer-links">
           <a href="https://github.com/chenyuan35/aineedhelpfromotherai" target="_blank">GitHub</a>

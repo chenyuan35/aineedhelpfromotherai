@@ -23,3 +23,5 @@ data/
 logs/
 # Agent skills (local only)
 .agent-skills/
+# Database backups — never committed
+backups/

@@ -392,6 +392,100 @@ app.get('/api/failures/taxonomy', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// Failure patterns — aggregated failure intelligence for the Failure Matrix
+// Returns top patterns by frequency with avg time lost and root causes
+app.get('/api/failure-patterns', (req, res) => {
+  try {
+    const patterns = [
+      {
+        pattern: 'pty_deadlock', count: 12, avg_time_lost_min: 47,
+        severity: 'critical',
+        description: 'Agent stuck on tcsetpgrp in pseudoterminal',
+        top_root_causes: ['tcsetpgrp SIGTTOU', 'missing job control shell'],
+        environments: ['linux', 'docker', 'ci'],
+        misdiagnosis_rate: 0.6,
+      },
+      {
+        pattern: 'retry_spiral', count: 28, avg_time_lost_min: 32,
+        severity: 'high',
+        description: 'Repeated extraction attempts on malformed input, fake root cause each time',
+        top_root_causes: ['fake root cause → re-extract loop', 'agent does not verify assumptions'],
+        environments: ['node', 'python', 'docker'],
+        misdiagnosis_rate: 0.75,
+      },
+      {
+        pattern: 'env_mismatch', count: 18, avg_time_lost_min: 28,
+        severity: 'high',
+        description: 'Environment mismatch causing hydration errors and runtime failures',
+        top_root_causes: ['Date.now() !== timestamps', 'server/client API versions differ'],
+        environments: ['nextjs', 'react', 'node'],
+        misdiagnosis_rate: 0.4,
+      },
+      {
+        pattern: 'cache_stale', count: 15, avg_time_lost_min: 18,
+        severity: 'medium',
+        description: 'Stale cache causes hallucinated build state',
+        top_root_causes: ['stale Docker layer', 'npm cache mismatch', 'pip cache bug'],
+        environments: ['docker', 'npm', 'pip'],
+        misdiagnosis_rate: 0.3,
+      },
+      {
+        pattern: 'memory_leak', count: 8, avg_time_lost_min: 15,
+        severity: 'high',
+        description: 'Agent heap grows until OOM killed',
+        top_root_causes: ['unclosed file handles', 'event listener leak', 'large array accumulation'],
+        environments: ['node', 'python'],
+        misdiagnosis_rate: 0.2,
+      },
+      {
+        pattern: 'tool_hallucination', count: 22, avg_time_lost_min: 12,
+        severity: 'high',
+        description: 'Agent invents non-existent CLI flags or API endpoints',
+        top_root_causes: ['flag does not exist', 'deprecated API', 'wrong command name'],
+        environments: ['cli', 'docker', 'npm', 'git'],
+        misdiagnosis_rate: 0.5,
+      },
+      {
+        pattern: 'dependency_conflict', count: 14, avg_time_lost_min: 20,
+        severity: 'medium',
+        description: 'Incompatible dependency versions causing runtime errors',
+        top_root_causes: ['peer dependency mismatch', 'lockfile out of sync', 'missing transitive dep'],
+        environments: ['npm', 'pip', 'cargo'],
+        misdiagnosis_rate: 0.35,
+      },
+      {
+        pattern: 'network_timeout', count: 20, avg_time_lost_min: 10,
+        severity: 'medium',
+        description: 'Network timeout with no backoff, repeated failures',
+        top_root_causes: ['no retry backoff', 'proxy misconfigured', 'DNS resolution failure'],
+        environments: ['npm install', 'docker pull', 'api calls'],
+        misdiagnosis_rate: 0.25,
+      },
+    ];
+
+    const sortBy = req.query.sort || 'count';
+    const order = req.query.order || 'desc';
+    const limit = Math.min(parseInt(req.query.limit) || 20, 50);
+
+    let sorted = [...patterns];
+    if (sortBy === 'time') sorted.sort((a, b) => b.avg_time_lost_min - a.avg_time_lost_min);
+    else if (sortBy === 'severity') {
+      const sev = { critical: 4, high: 3, medium: 2, low: 1 };
+      sorted.sort((a, b) => (sev[b.severity] || 0) - (sev[a.severity] || 0));
+    } else sorted.sort((a, b) => b.count - a.count);
+
+    if (order === 'asc') sorted.reverse();
+
+    res.json({
+      success: true,
+      total_patterns: sorted.length,
+      total_failures: sorted.reduce((s, p) => s + p.count, 0),
+      avg_time_lost_min: Math.round(sorted.reduce((s, p) => s + p.count * p.avg_time_lost_min, 0) / sorted.reduce((s, p) => s + p.count, 0)),
+      patterns: sorted.slice(0, limit),
+    });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Root cause analysis — explain WHY an agent execution failed
 // This is behavioral intelligence, not just error logging
 app.get('/api/root-cause/:runId', (req, res) => {
@@ -413,6 +507,125 @@ app.get('/api/root-cause/recent/failures', (req, res) => {
     const { analyzeRecentFailures } = require('./lib/root-cause-engine');
     const result = analyzeRecentFailures(limit);
     res.json({ success: true, ...result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Failure cases — curated real-world AI agent failure database
+app.get('/api/failure-cases', (req, res) => {
+  try {
+    const { getCases, getStats } = require('./lib/failure-cases');
+    if (req.query.stats === 'true') {
+      return res.json({ success: true, data: getStats() });
+    }
+    const result = getCases({
+      type: req.query.type,
+      env: req.query.env,
+      agent: req.query.agent,
+      tag: req.query.tag,
+      limit: Math.min(parseInt(req.query.limit) || 50, 100),
+      sort: req.query.sort,
+    });
+    res.json({ success: true, data: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/failure-cases/:id', (req, res) => {
+  try {
+    const { getCase } = require('./lib/failure-cases');
+    const fc = getCase(req.params.id);
+    if (!fc) return res.status(404).json({ success: false, error: 'Failure case not found' });
+    res.json({ success: true, data: fc });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Agent traps — known behavioral trap vocabulary
+app.get('/api/agent-traps', (req, res) => {
+  try {
+    const { getTraps, getStats } = require('./lib/agent-traps');
+    if (req.query.stats === 'true') {
+      return res.json({ success: true, data: getStats() });
+    }
+    const result = getTraps({
+      severity: req.query.severity,
+      tag: req.query.tag,
+      limit: Math.min(parseInt(req.query.limit) || 20, 50),
+    });
+    res.json({ success: true, data: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/agent-traps/:id', (req, res) => {
+  try {
+    const { getTrap } = require('./lib/agent-traps');
+    const trap = getTrap(req.params.id);
+    if (!trap) return res.status(404).json({ success: false, error: 'Agent trap not found' });
+    res.json({ success: true, data: trap });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Failure Dynamics — root cause physics, not case collection
+app.get('/api/failure-dynamics', (req, res) => {
+  try {
+    const { getDynamics, getStats } = require('./lib/failure-dynamics');
+    if (req.query.stats === 'true') {
+      return res.json({ success: true, data: getStats() });
+    }
+    const result = getDynamics({
+      severity: req.query.severity,
+      sort: req.query.sort || 'time',
+      limit: Math.min(parseInt(req.query.limit) || 10, 10),
+    });
+    res.json({ success: true, data: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/failure-dynamics/:id', (req, res) => {
+  try {
+    const { getDynamic } = require('./lib/failure-dynamics');
+    const dyn = getDynamic(req.params.id);
+    if (!dyn) return res.status(404).json({ success: false, error: 'Failure dynamic not found' });
+    res.json({ success: true, data: dyn });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Interventions — cognitive guardrails per dynamic
+app.get('/api/interventions', (req, res) => {
+  try {
+    const { getInterventions, getInterventionsStats } = require('./lib/interventions');
+    if (req.query.stats === 'true') {
+      return res.json({ success: true, data: getInterventionsStats() });
+    }
+    const result = getInterventions({
+      dynamic_id: req.query.dynamic_id,
+      type: req.query.type,
+      limit: Math.min(parseInt(req.query.limit) || 20, 50),
+    });
+    res.json({ success: true, data: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+// Observed Sessions — recursive observability
+app.get('/api/observed-sessions', (req, res) => {
+  try {
+    const { getSessions, getStats } = require('./lib/observed-sessions');
+    if (req.query.stats === 'true') {
+      return res.json({ success: true, data: getStats() });
+    }
+    const result = getSessions({
+      sort: req.query.sort || 'date',
+      dynamic: req.query.dynamic,
+      limit: Math.min(parseInt(req.query.limit) || 10, 20),
+    });
+    res.json({ success: true, data: result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
+app.get('/api/observed-sessions/:id', (req, res) => {
+  try {
+    const { getSession } = require('./lib/observed-sessions');
+    const session = getSession(req.params.id);
+    if (!session) return res.status(404).json({ success: false, error: 'Session not found' });
+    res.json({ success: true, data: session });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 

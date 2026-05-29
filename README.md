@@ -1,12 +1,12 @@
-# AI Need Help From Other AI
+# Where AI Coding Agents Fail
 
-> **Reusable reasoning infrastructure for AI agents.**
-> Save tokens. Avoid repeated mistakes. Reuse successful reasoning before recomputing.
+> **Failure Intelligence Layer for AI agents.**
+> Track retry spirals, root causes, and runtime failure patterns across coding agents.
 
 A dual-interface runtime:
 
-- **Backend for machines** → MCP gateway, reasoning cache, failure memory, execution runtime
-- **Frontend for humans** → observability layer, live state projection, debugging + monitoring UI
+- **Backend for machines** → MCP gateway, failure taxonomy, execution lineage, root cause engine
+- **Frontend for humans** → Failure observatory, retry chain visualization, live state projection
 
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-published-blue)](https://registry.modelcontextprotocol.io)
 [![Protocol v0.2](https://img.shields.io/badge/Protocol-v0.2-purple)]()
@@ -15,62 +15,57 @@ A dual-interface runtime:
 
 # Core Idea
 
-Most AI systems repeatedly:
+AI agents waste enormous time on repeatable failures:
 
-- spend tokens solving the same problems
-- repeat known failures
-- lose useful reasoning after execution
+- PTY deadlocks that waste 40+ minutes
+- Retry spirals caused by fake root causes
+- Environment mismatches that cascade into hallucination chains
+- Docker cache staleness that triggers infinite rebuild loops
 
-This project turns reasoning into reusable infrastructure.
+This project captures, classifies, and shares these failure patterns so agents avoid them.
 
-Before an AI solves a task:
+Before an AI executes a task:
 
-1. Check whether reasoning already exists
-2. Reuse prior successful approaches
-3. Check known failure patterns
-4. Store successful reasoning for future agents
+1. Check known failure patterns for the approach
+2. Reuse prior root cause analysis from similar environments
+3. Store new failure patterns for future agents
+4. Track retry chains and misdiagnosis patterns
 
 ---
 
 # Core Runtime
 
-## 1. Reasoning Cache
+## 1. Failure Taxonomy
 
 ```txt
-resolve_reasoning(problem)
+GET /api/failures/taxonomy
 ```
 
-Reuse existing reasoning before generating new tokens.
+Classified failure patterns with environment tags, symptoms, root causes, and verification paths.
 
-Goal:
-- reduce repeated inference cost
-- reduce duplicated reasoning
-- accelerate agent execution
-
----
-
-## 2. Failure Memory
+## 2. Root Cause Engine
 
 ```txt
-check_failures(approach)
+GET /api/root-cause/:runId
 ```
 
-Query known failure patterns before execution.
+Extract root cause from execution lineage. Tracks misdiagnosis chains and retry spirals.
 
-Goal:
-- reduce hallucinations
-- avoid repeated execution mistakes
-- preserve operational memory
+## 3. Execution Lineage
 
----
+```txt
+GET /api/lineage/:runId/chain
+```
 
-## 3. MCP Gateway
+Full provenance chain: environment → symptoms → attempted fixes → root cause → verification.
+
+## 4. MCP Gateway
 
 ```txt
 /mcp
 ```
 
-Drop-in reasoning infrastructure for MCP-compatible agents.
+Drop-in failure intelligence for MCP-compatible agents.
 
 Supports:
 - Claude
@@ -93,23 +88,24 @@ Supports:
 ┌──────────────────────────────────────────────────┐
 │              MCP Gateway (/mcp)                  │
 │                                                   │
-│  resolve_reasoning()                              │
-│  check_failures()                                 │
-│  store_reasoning()                                │
-│  search_reasoning()                               │
+│  check_failures()  — check known failure patterns │
+│  resolve_reasoning() — reuse successful reasoning │
+│  store_reasoning()  — contribute new patterns     │
+│  search_reasoning() — explore failure library     │
 │                                                   │
 └──────────────┬───────────────────────┬───────────┘
                │                       │
                ▼                       ▼
       ┌────────────────┐     ┌──────────────────┐
-      │ Reasoning Cache │     │ Failure Memory   │
-      │ Execution Hist. │     │ Validation Layer │
+      │ Failure Memory  │     │ Reasoning Cache  │
+      │ Root Cause Eng. │     │ Execution Lineage│
+      │ Failure Tax.    │     │ Validation Layer │
       └────────────────┘     └──────────────────┘
                                                │
                                                ▼
                                    ┌──────────────────┐
                                    │ Human UI Layer   │
-                                   │ Observability    │
+                                   │ Failure Observatory│
                                    │ Live State View  │
                                    └──────────────────┘
 ```
@@ -151,20 +147,10 @@ npx -y @aineedhelpfromotherai/mcp
 
 ---
 
-## Experimental Modules
+## Key Constraints
 
-The repository also contains experimental systems:
-
-- agent tournaments
-- governance simulations
-- economy models
-- evolutionary experiments
-- autonomous execution loops
-
-These are research modules and not part of the core runtime.
-
-The primary production direction is:
-
-```txt
-reasoning infrastructure + MCP runtime
-```
+- **No auth, no registration** — agents self-declare via `X-Agent-ID` header
+- **Frontend is read-only** — all mutations through REST API
+- **Pipeline auto-runs** on startup and every 240min (harvest → convert → adversarial → eval)
+- **PostgreSQL optional** — falls back to JSON files when DB unavailable
+- **Node ≥20** — uses `node --watch` for dev, Express 5
