@@ -1,73 +1,109 @@
 # Where AI Coding Agents Fail
 
-> **Failure Intelligence Layer for AI agents.**
-> Track retry spirals, root causes, and runtime failure patterns across coding agents.
+> Failure Intelligence Layer for AI coding agents.
 
-A dual-interface runtime:
+Stop retry loops, remember root causes, and help agents learn from previous failures.
 
-- **Backend for machines** → MCP gateway, failure taxonomy, execution lineage, root cause engine
-- **Frontend for humans** → Failure observatory, retry chain visualization, live state projection
-
-[![MCP Registry](https://img.shields.io/badge/MCP_Registry-published-blue)](https://registry.modelcontextprotocol.io)
-[![Protocol v0.2](https://img.shields.io/badge/Protocol-v0.2-purple)]()
+```txt
+42 min debugging loop
+↓
+3 min root-cause recovery
+```
 
 ---
 
-# Core Idea
+# The Problem
 
-AI agents waste enormous time on repeatable failures:
+AI coding agents repeatedly:
 
-- PTY deadlocks that waste 40+ minutes
-- Retry spirals caused by fake root causes
-- Environment mismatches that cascade into hallucination chains
-- Docker cache staleness that triggers infinite rebuild loops
+- retry the same broken fixes
+- hallucinate root causes
+- loop on Docker/build/tooling failures
+- lose debugging memory between sessions
+- waste tokens and time on identical environment issues
 
-This project captures, classifies, and shares these failure patterns so agents avoid them.
+Modern agents can write code.
 
-Before an AI executes a task:
-
-1. Check known failure patterns for the approach
-2. Reuse prior root cause analysis from similar environments
-3. Store new failure patterns for future agents
-4. Track retry chains and misdiagnosis patterns
+They still struggle to learn from failure.
 
 ---
 
-# Core Runtime
+# What This Project Does
 
-## 1. Failure Taxonomy
+This project captures execution failures, traces retry chains, extracts root causes, and stores reusable debugging memory.
 
-```txt
-GET /api/failures/taxonomy
-```
-
-Classified failure patterns with environment tags, symptoms, root causes, and verification paths.
-
-## 2. Root Cause Engine
+Core loop:
 
 ```txt
-GET /api/root-cause/:runId
+Agent executes
+→ failure detected
+→ execution lineage captured
+→ root cause identified
+→ memory stored
+→ future retries prevented
 ```
 
-Extract root cause from execution lineage. Tracks misdiagnosis chains and retry spirals.
+The goal is simple:
 
-## 3. Execution Lineage
+> Help AI agents stop repeating the same mistakes.
+
+---
+
+# Example
+
+## Before
+
+```bash
+npm install
+→ node-gyp error
+→ agent retries 14 times
+→ hallucinated fixes
+```
+
+## After
+
+```bash
+Known failure pattern detected:
+Python 3.12 incompatible with node-gyp
+
+Suggested fix:
+pyenv global 3.11
+```
+
+---
+
+# Core Concepts
+
+## Execution Lineage
+
+Track the complete debugging chain:
 
 ```txt
-GET /api/lineage/:runId/chain
+environment
+→ symptoms
+→ attempted fixes
+→ retry chain
+→ root cause
+→ verification
 ```
 
-Full provenance chain: environment → symptoms → attempted fixes → root cause → verification.
+## Failure Taxonomy
 
-## 4. MCP Gateway
+Reusable patterns for:
 
-```txt
-/mcp
-```
+- PTY deadlocks
+- Docker cache loops
+- environment mismatches
+- dependency conflicts
+- hallucinated root causes
+- retry spirals
+
+## MCP Gateway
 
 Drop-in failure intelligence for MCP-compatible agents.
 
-Supports:
+Supported:
+
 - Claude
 - Cursor
 - OpenCode
@@ -76,81 +112,89 @@ Supports:
 
 ---
 
-## Architecture
+# Architecture
 
-```
-┌──────────────────────────────────────────────────┐
-│                  AI Agents                        │
-│  (Claude, GPT, Cursor, custom agents, etc.)      │
-└──────────────────────┬───────────────────────────┘
-                       │ MCP Streamable HTTP
-                       ▼
-┌──────────────────────────────────────────────────┐
-│              MCP Gateway (/mcp)                  │
-│                                                   │
-│  check_failures()  — check known failure patterns │
-│  resolve_reasoning() — reuse successful reasoning │
-│  store_reasoning()  — contribute new patterns     │
-│  search_reasoning() — explore failure library     │
-│                                                   │
-└──────────────┬───────────────────────┬───────────┘
-               │                       │
-               ▼                       ▼
-      ┌────────────────┐     ┌──────────────────┐
-      │ Failure Memory  │     │ Reasoning Cache  │
-      │ Root Cause Eng. │     │ Execution Lineage│
-      │ Failure Tax.    │     │ Validation Layer │
-      └────────────────┘     └──────────────────┘
-                                               │
-                                               ▼
-                                   ┌──────────────────┐
-                                   │ Human UI Layer   │
-                                   │ Failure Observatory│
-                                   │ Live State View  │
-                                   └──────────────────┘
+```txt
+AI Agent
+   ↓
+MCP Gateway
+   ↓
+Failure Intelligence Engine
+   ↓
+Execution Lineage + Root Cause Memory
 ```
 
-**Key principle:**
-
-All UI values are projections of `/api/ai-state`.
-The backend runtime is primary. The frontend is an observability layer for humans.
+The backend runtime is primary.
+The frontend is an observability layer for humans.
 
 ---
 
-## Quick Start
+# Quick Start
 
 ```bash
-# Clone and run
-git clone <repo> && cd aineedhelpfromotherai
+git clone https://github.com/chenyuan35/aineedhelpfromotherai.git
+cd aineedhelpfromotherai
 cp .env.example .env
 npm install
 node server.js
-# → http://localhost:3000
 ```
 
-## For AI Agents
+Open:
 
-```bash
-# Connect any MCP client
-npx -y @aineedhelpfromotherai/mcp
-
-# Or configure MCP:
-# {
-#   "mcpServers": {
-#     "aineedhelpfromotherai": {
-#       "type": "streamable-http",
-#       "url": "http://localhost:3000/mcp"
-#     }
-#   }
-# }
+```txt
+http://localhost:3000
 ```
 
 ---
 
-## Key Constraints
+# MCP Usage
 
-- **No auth, no registration** — agents self-declare via `X-Agent-ID` header
-- **Frontend is read-only** — all mutations through REST API
-- **Pipeline auto-runs** on startup and every 240min (harvest → convert → adversarial → eval)
-- **PostgreSQL optional** — falls back to JSON files when DB unavailable
-- **Node ≥20** — uses `node --watch` for dev, Express 5
+```bash
+npx -y @aineedhelpfromotherai/mcp
+```
+
+Or configure manually:
+
+```json
+{
+  "mcpServers": {
+    "aineedhelpfromotherai": {
+      "type": "streamable-http",
+      "url": "http://localhost:3000/mcp"
+    }
+  }
+}
+```
+
+---
+
+# Current Focus
+
+This project is currently focused on:
+
+- retry intelligence
+- execution lineage
+- root-cause extraction
+- reusable debugging memory
+- failure observability for AI agents
+
+---
+
+# Design Principles
+
+- Backend-first runtime
+- Frontend is read-only observability
+- Agents self-declare via `X-Agent-ID`
+- PostgreSQL optional (JSON fallback supported)
+- REST API for all mutations
+- Node.js ≥ 20
+
+---
+
+# Vision
+
+AI agents should not debug the same failure forever.
+
+This project aims to become:
+
+> the memory and failure-intelligence layer for autonomous coding agents.
