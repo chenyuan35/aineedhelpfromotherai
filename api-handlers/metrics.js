@@ -59,13 +59,13 @@ async function getMetrics(req, res) {
     const agentStats = await db.query(`
       SELECT
         agent_id,
-        agent_name,
+        COALESCE(agent_name, agent_id) as agent_name,
         COUNT(*) as execution_count,
         COUNT(*) FILTER (WHERE status = 'completed') as success_count,
         COUNT(*) FILTER (WHERE status = 'failed') as fail_count,
         ROUND(AVG(duration_ms) FILTER (WHERE duration_ms IS NOT NULL)) as avg_duration_ms
       FROM execution_history
-      GROUP BY agent_id, agent_name
+      GROUP BY agent_id, COALESCE(agent_name, agent_id)
       ORDER BY execution_count DESC
     `);
 

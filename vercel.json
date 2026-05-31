@@ -3,6 +3,12 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "cd frontend && npm install",
   "rewrites": [
+    { "source": "/openapi.json", "destination": "https://api.aineedhelpfromotherai.com/openapi.json" },
+    { "source": "/llms.txt", "destination": "https://api.aineedhelpfromotherai.com/llms.txt" },
+    { "source": "/ai.txt", "destination": "https://api.aineedhelpfromotherai.com/ai.txt" },
+    { "source": "/robots.txt", "destination": "https://api.aineedhelpfromotherai.com/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "https://api.aineedhelpfromotherai.com/sitemap.xml" },
+    { "source": "/.well-known/(.*)", "destination": "https://api.aineedhelpfromotherai.com/.well-known/$1" },
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
     { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
