@@ -1823,9 +1823,19 @@ if (require('fs').existsSync(telemetryDist)) {
   app.use('/telemetry', express.static(telemetryDist));
 }
 
+// Landing page at root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'landing.html'));
+});
+
+// Dashboard at /dashboard
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
 // Vite build static root
 const frontendDist = path.join(__dirname, 'frontend', 'dist');
-app.use(express.static(frontendDist));
+app.use(express.static(frontendDist, { index: false }));
 
 // Static frontend files with caching (root files not in Vite build)
 const staticFiles = ['style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'badge.svg', 'CNAME'];
@@ -1927,6 +1937,10 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, '0.0.0.0', () => {
   logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
   logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  if (process.env.DISABLE_BACKGROUND_JOBS === 'true') {
+    logger.info('[startup] Background jobs disabled by DISABLE_BACKGROUND_JOBS=true');
+    return;
+  }
   // Init DB schema if needed
   const { ensureSchema } = require('./lib/db');
   ensureSchema().then(() => logger.info('[db] Schema ready')).catch(err => logger.warn('[db] Schema init:', err.message));
