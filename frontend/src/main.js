@@ -27,10 +27,53 @@ async function api(url) {
   } catch { return null; }
 }
 
+async function loadMirror() {
+  const d = await api('/api/mirror');
+  if (!d || !d.data) {
+    ['mirror-today-body', 'mirror-top3-body', 'mirror-metric-body'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '<div class="mirror-empty">no data</div>';
+    });
+    return;
+  }
+  const { today, top_repeated, stopping_metric } = d.data;
+
+  // TODAY FAILURE
+  const todayBody = document.getElementById('mirror-today-body');
+  if (todayBody) {
+    todayBody.innerHTML = `
+      <div class="mirror-row"><span class="mirror-row-label">task</span><span class="mirror-row-val">${today.task}</span></div>
+      <div class="mirror-row"><span class="mirror-row-label">retry #</span><span class="mirror-row-val">${today.retry_count}</span></div>
+      <div class="mirror-row"><span class="mirror-row-label">stopped by</span><span class="mirror-row-val">${today.stopped_by}</span></div>
+    `;
+  }
+
+  // TOP 3 REPEATED ERRORS
+  const top3Body = document.getElementById('mirror-top3-body');
+  if (top3Body) {
+    top3Body.innerHTML = top_repeated.map(t => `
+      <div class="mirror-row">
+        <span class="mirror-row-label mirror-row-label--${t.type.replace(/\s+/g, '-')}">${t.type}</span>
+        <span class="mirror-row-val">${t.count}x</span>
+      </div>
+    `).join('');
+  }
+
+  // STOPPING METRIC
+  const metricBody = document.getElementById('mirror-metric-body');
+  if (metricBody) {
+    metricBody.innerHTML = `
+      <div class="mirror-metric-main">${stopping_metric.today_stops} / ${stopping_metric.today_drifts}</div>
+      <div class="mirror-metric-sub">avg retry before stop: ${stopping_metric.avg_retry_before_stop}</div>
+    `;
+  }
+}
+
 async function boot() {
   const agentsData = await api('/api/agents');
   state.agents.v = agentsData;
   state.registered.v = (agentsData && agentsData.workers) || [];
+  loadMirror();
   renderBoot();
   api('/api/posts?limit=10').then(data => {
     state.posts.v = data;

@@ -629,6 +629,98 @@ app.get('/api/observed-sessions/:id', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// Behavior Mirror — today's drift summary, derived from existing sources
+// No dedicated data file. Aggregates: event bus ring, behavioral signals,
+// failure dynamics, observed sessions. Priority: live > signals > static.
+app.get('/api/mirror', (req, res) => {
+  try {
+    const now = new Date();
+    const todayStart = new Date(now);
+    todayStart.setHours(0, 0, 0, 0);
+
+    const eventBus = require('./lib/event-bus');
+    const behSignals = require('./lib/behavioral-signals');
+    const fd = require('./lib/failure-dynamics');
+    const obs = require('./lib/observed-sessions');
+
+    // Source 1: live events (in-memory ring buffer, today only)
+    const todayEvents = eventBus.getRecentEvents(500)
+      .filter(e => (e.flushed_at || 0) >= todayStart.getTime());
+
+    // Source 2: behavioral signals (scans execution log for anomalies)
+    const signals = behSignals.scanAllSignals() || [];
+
+    // Source 3: failure dynamics (static file, historical)
+    const dynamics = fd.getDynamics({ sort: 'cases', limit: 5 });
+
+    // Source 4: observed sessions (static file)
+    const sessions = obs.getSessions({ limit: 1 });
+    const session = sessions.sessions?.[0] || {};
+
+    // ── today.task ──
+    const lastTaskEvent = todayEvents
+      .filter(e => e.type === 'task.created' || e.type === 'task.claimed')
+      .pop();
+    const taskLabel = lastTaskEvent?.data?.task_id
+      || lastTaskEvent?.data?.title
+      || session?.problem
+      || 'No active task';
+
+    // ── today.retry_count ──
+    const retryFromEvents = todayEvents.filter(e => e.type === 'resolve.miss').length;
+    const retryFromSignals = signals.filter(s => s.signal === 'retry_explosion').length;
+    const retryFromSession = (session?.observed_behaviors || []).filter(b => /retry|repeat/i.test(b)).length;
+    const retryCount = retryFromEvents || retryFromSignals || retryFromSession || 0;
+
+    // ── today.stopped_by ──
+    const lastIntervention = session?.interventions?.slice(-1)[0];
+    const stoppedBy = lastIntervention?.trigger
+      || lastIntervention?.action
+      || dynamics?.dynamics?.[0]?.escape_route
+      || 'No intervention recorded';
+
+    // ── top_repeated ──
+    const typeCounts = {};
+    signals.forEach(s => {
+      const t = s.signal.replace(/_/g, ' ');
+      typeCounts[t] = (typeCounts[t] || 0) + 1;
+    });
+    let topRepeated = Object.entries(typeCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([type, count]) => ({ type, count, last_at: now.toISOString() }));
+    if (topRepeated.length === 0 && Array.isArray(dynamics?.dynamics)) {
+      topRepeated = dynamics.dynamics.slice(0, 3).map(d => ({
+        type: d.short || d.name,
+        count: d.total_cases,
+        last_at: now.toISOString(),
+      }));
+    }
+
+    // ── stopping_metric ──
+    const drifts = todayEvents.filter(e => e.type === 'behavioral_signal').length
+      || signals.length
+      || (session?.observed_behaviors || []).length
+      || 1;
+    const stops = todayEvents.filter(e => e.type === 'resolve.hit').length
+      || (session?.interventions || []).length
+      || 0;
+
+    res.json({
+      success: true,
+      data: {
+        today: { task: taskLabel, retry_count: retryCount, stopped_by: stoppedBy },
+        top_repeated: topRepeated,
+        stopping_metric: {
+          today_stops: stops,
+          today_drifts: Math.max(drifts, 1),
+          avg_retry_before_stop: stops > 0 ? Math.round((retryCount / stops) * 10) / 10 : retryCount,
+        },
+      },
+    });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Behavioral Signals — runtime immune system
 // "from post-mortem forensics to runtime immune system"
 app.get('/api/signals', (req, res) => {
