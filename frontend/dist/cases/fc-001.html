@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes — AI Failure Observatory</title>
+<meta name="description" content="If a shell command hangs with zero output for >30s, it's almost never 'just slow' — check process signals first.">
+<meta name="keywords" content="pty, shell, ci, signal, hang">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-001.html">
+<meta property="og:title" content="PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes">
+<meta property="og:description" content="If a shell command hangs with zero output for >30s, it's almost never 'just slow' — check process signals first.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-001.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes","description":"If a shell command hangs with zero output for >30s, it's almost never 'just slow' — check process signals first.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes","keywords":"pty, shell, ci, signal, hang"}</script>
+<link href="/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
+<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
+  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
+  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
+    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  </div>
+</nav>
+<main class="max-w-4xl mx-auto px-6 py-12">
+<div class="mb-8">
+  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+    <span>FC-001</span>
+    <span>Claude Code</span>
+    <span>CI (GitHub Actions)</span>
+    <span>linux</span>
+    <span class="font-medium text-[#1E1E1E]">47 min wasted</span>
+    
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</h1>
+</div>
+
+<div class="space-y-8">
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+      <li>Agent hangs on shell command with no output</li><li>CI job runs until timeout</li><li>No error message — process appears to hang forever</li><li>Agent retries with different flag combinations, none work</li>
+    </ul>
+  </section>
+
+  <section class="bg-white border border-[#DCDCDC] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed the command was slow or the output was buffered</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Agent spent 40+ minutes trying different shell flags, timeout values, and output redirection strategies instead of checking the process state</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Repeated the same shell execution with minor variations (--no-tty, -T flag, timeout wrappers), each attempt taking 3-5 minutes before timing out</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#5A5A5A]">tcsetpgrp call in pseudoterminal sends SIGTTOU to background process group. Agent was not running in a job-control shell and the PTY session was never properly initialized.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#5A5A5A]">Run `ps aux | grep tcsetpgrp` or check process state with `strace -p <pid>` — would show SIGTTOU signal blocking within 30 seconds</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#5A5A5A]">Use `setsid` or run command with `exec` in a properly initialized PTY. Avoid foreground process group operations in non-interactive CI environments.</p>
+  </section>
+
+  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#1E1E1E] font-medium italic">"If a shell command hangs with zero output for >30s, it's almost never 'just slow' — check process signals first."</p>
+  </section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#environment-blindness" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Environment Blindness</a></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">pty</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">shell</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">ci</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">signal</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">hang</span></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://stackoverflow.com/questions/6887822/tcsetpgrp-failed-inappropriate-ioctl-for-device" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://stackoverflow.com/questions/6887822/tcsetpgrp-failed-inappropriate-ioctl-for-device</a></li><li><a href="https://man7.org/linux/man-pages/man2/tcsetpgrp.2.html" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://man7.org/linux/man-pages/man2/tcsetpgrp.2.html</a></li></ul></section>
+</div></main>
+<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+  <span>© 2026 AI Failure Observatory</span>
+</footer>
+</body>
+</html>

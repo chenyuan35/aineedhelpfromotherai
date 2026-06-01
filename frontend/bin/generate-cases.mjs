@@ -41,12 +41,13 @@ function pageHTML(content, meta) {
 <meta name="description" content="${meta.insight}">
 <meta name="keywords" content="${meta.tags.join(', ')}">
 <link rel="canonical" href="https://aineedhelpfromotherai.com${canonical}">
+<meta property="og:title" content="${meta.title}">
+<meta property="og:description" content="${meta.insight}">
+<meta property="og:url" content="https://aineedhelpfromotherai.com${canonical}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${jsonld}</script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}</style>
+<link href="/style.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
 <div class="h-0.5 bg-[#3B5E6B]/30"></div>

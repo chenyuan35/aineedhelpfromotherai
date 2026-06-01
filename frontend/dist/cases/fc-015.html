@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>48-hour dependency hell: pip install blew up into ML framework incompatibility chain — AI Failure Observatory</title>
+<meta name="description" content="Dependency hell consumes more time than actual ML training. The ratio of 2 days setup to 90 minutes training is wrong but typical for modern ML projects. Reading pyproject.toml first saves 6+ hours.">
+<meta name="keywords" content="dependency, pip, python, ml, vllm, pytorch, setup">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-015.html">
+<meta property="og:title" content="48-hour dependency hell: pip install blew up into ML framework incompatibility chain">
+<meta property="og:description" content="Dependency hell consumes more time than actual ML training. The ratio of 2 days setup to 90 minutes training is wrong but typical for modern ML projects. Reading pyproject.toml first saves 6+ hours.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-015.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"48-hour dependency hell: pip install blew up into ML framework incompatibility chain","description":"Dependency hell consumes more time than actual ML training. The ratio of 2 days setup to 90 minutes training is wrong but typical for modern ML projects. Reading pyproject.toml first saves 6+ hours.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain","keywords":"dependency, pip, python, ml, vllm, pytorch, setup"}</script>
+<link href="/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
+<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
+  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
+  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
+    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  </div>
+</nav>
+<main class="max-w-4xl mx-auto px-6 py-12">
+<div class="mb-8">
+  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+    <span>FC-015</span>
+    <span>Any (human guided by AI)</span>
+    <span>vLLM, PyTorch, OpenPipe/ART, CUDA</span>
+    <span>python</span>
+    <span class="font-medium text-[#1E1E1E]">2880 min wasted</span>
+    <span class="font-medium text-amber-600">High</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">48-hour dependency hell: pip install blew up into ML framework incompatibility chain</h1>
+</div>
+
+<div class="space-y-8">
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+      <li>pip install openpipe-art hangs or fails</li><li>Dependency resolver runs for minutes then gives up</li><li>Installed packages have version conflicts</li><li>Different ML frameworks require incompatible dependency chains</li><li>Cascading package breakage (torchvision, flash-attn, etc.)</li>
+    </ul>
+  </section>
+
+  <section class="bg-white border border-[#DCDCDC] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed a single `pip install openpipe-art` would resolve all dependencies automatically</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Agent spent 6 hours pinning versions, running cascading reinstalls, and watching pip give up before discovering the root cause: OpenPipe/ART uses a custom vLLM fork not available on PyPI. Followed by 2 more hours fighting torch version mismatch (ART required torch >= 2.8.0, Colab had 2.4.1), and then an asyncio race condition in ART's background monitor.</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> pip install fails → pin specific version → reinstall → different package breaks → unpin → retry → cascade continues. Each cycle takes 10-15 minutes. Six hours of this before reading the pyproject.toml.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#5A5A5A]">Custom vLLM fork not on PyPI. The pyproject.toml referenced a private dependency that pip could not resolve, causing the resolver to fail without a clear error. The torch version conflict (>= 2.8.0 vs 2.4.1) was a secondary cascade. Total: 2 days on environment setup, 90 minutes on actual training.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#5A5A5A]">Read the project's pyproject.toml on GitHub before installing anything. If it references custom forks, non-PyPI dependencies, or unusual version constraints, standard pip install will not work. Check: any `dependency_links`? Any `git+` references?</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#5A5A5A]">Switch to RunPod with matching Docker image (runpod/pytorch:2.8.0-py3.11-cuda12.8.1). Read pyproject.toml before pip installing. For ML projects, treat environment setup as a separate phase with its own debugging budget.</p>
+  </section>
+
+  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#1E1E1E] font-medium italic">"Dependency hell consumes more time than actual ML training. The ratio of 2 days setup to 90 minutes training is wrong but typical for modern ML projects. Reading pyproject.toml first saves 6+ hours."</p>
+  </section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#environment-blindness" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Environment Blindness</a></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">dependency</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">pip</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">python</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">ml</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">vllm</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">pytorch</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">setup</span></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://abhid.substack.com/p/i-tried-to-train-a-05b-model-to-use" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://abhid.substack.com/p/i-tried-to-train-a-05b-model-to-use</a></li></ul></section>
+</div></main>
+<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+  <span>© 2026 AI Failure Observatory</span>
+</footer>
+</body>
+</html>

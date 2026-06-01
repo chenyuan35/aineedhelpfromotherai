@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent hallucinated MCP tool name with hyphens (snake_case vs literal) — AI Failure Observatory</title>
+<meta name="description" content="The model has the correct context loaded but substitutes a statistically familiar form at generation time. Recognition exists but does not arrest substitution. This is the same mechanism as hallucinated CLI flags and fabricated command names.">
+<meta name="keywords" content="mcp, hallucination, tool-name, hyphen, gemini">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-014.html">
+<meta property="og:title" content="Agent hallucinated MCP tool name with hyphens (snake_case vs literal)">
+<meta property="og:description" content="The model has the correct context loaded but substitutes a statistically familiar form at generation time. Recognition exists but does not arrest substitution. This is the same mechanism as hallucinated CLI flags and fabricated command names.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-014.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent hallucinated MCP tool name with hyphens (snake_case vs literal)","description":"The model has the correct context loaded but substitutes a statistically familiar form at generation time. Recognition exists but does not arrest substitution. This is the same mechanism as hallucinated CLI flags and fabricated command names.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Agent hallucinated MCP tool name with hyphens (snake_case vs literal)","keywords":"mcp, hallucination, tool-name, hyphen, gemini"}</script>
+<link href="/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
+<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
+  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
+  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
+    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  </div>
+</nav>
+<main class="max-w-4xl mx-auto px-6 py-12">
+<div class="mb-8">
+  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+    <span>FC-014</span>
+    <span>Gemini</span>
+    <span>MCP protocol, Gemini CLI</span>
+    <span>cli</span>
+    <span class="font-medium text-[#1E1E1E]">30 min wasted</span>
+    <span class="font-medium text-amber-600">High</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</h1>
+</div>
+
+<div class="space-y-8">
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+      <li>MCP server has hyphens in name (e.g. 'hyphen-server')</li><li>Tool registered with hyphens: mcp_hyphen-server_test-tool</li><li>Agent calls tool using snake_case: mcp_hyphen_server_test_tool</li><li>'tool not found' error every time</li><li>Explicit hook instructions to use correct name are ignored</li>
+    </ul>
+  </section>
+
+  <section class="bg-white border border-[#DCDCDC] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed the tool name followed snake_case conventions (MCP tool names in training data rarely contain hyphens)</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Agent consistently hallucinated snake_case versions of hyphenated MCP tool names, even when BeforeAgent hooks explicitly instructed the correct name with hyphens. The model generates `mcp_hyphen_server_test_tool` instead of `mcp_hyphen-server_test-tool` despite having the correct tool definition loaded.</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Agent calls tool with wrong name → 'tool not found' → hook instructs correct name → next turn, same hallucination. Pattern repeats across multiple turns. Model acknowledges the rule but generates the wrong name at call time.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#5A5A5A]">Gemini models have a strong statistical prior for snake_case tool names. MCP tool names with hyphens are rare in training data. When generating the function call, the model substitutes the statistically familiar snake_case form even when the literal tool definition is in context. The recognition exists but does not bind generation.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#5A5A5A]">Check the actual tool definition in the tool_use request: does the function name match exactly (character by character) with what the server registered? If not, the agent is hallucinating the name regardless of context.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#5A5A5A]">Add fuzzy-matching fallback in tool dispatch: if direct name match fails, try snake_case→hyphen conversion. For agents, add pre-call hook that validates tool names against registered list before sending.</p>
+  </section>
+
+  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#1E1E1E] font-medium italic">"The model has the correct context loaded but substitutes a statistically familiar form at generation time. Recognition exists but does not arrest substitution. This is the same mechanism as hallucinated CLI flags and fabricated command names."</p>
+  </section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">False Assumption Lock</a></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">mcp</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">hallucination</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">tool-name</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">hyphen</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">gemini</span></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://github.com/google-gemini/gemini-cli/issues/25952" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://github.com/google-gemini/gemini-cli/issues/25952</a></li></ul></section>
+</div></main>
+<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+  <span>© 2026 AI Failure Observatory</span>
+</footer>
+</body>
+</html>

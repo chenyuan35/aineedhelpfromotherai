@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent loop non-termination: retries identical failing tool calls indefinitely — AI Failure Observatory</title>
+<meta name="description" content="Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don't notice until they check their usage.">
+<meta name="keywords" content="loop, retry, tool-call, convergence, budget">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-006.html">
+<meta property="og:title" content="Agent loop non-termination: retries identical failing tool calls indefinitely">
+<meta property="og:description" content="Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don't notice until they check their usage.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-006.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent loop non-termination: retries identical failing tool calls indefinitely","description":"Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don't notice until they check their usage.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Agent loop non-termination: retries identical failing tool calls indefinitely","keywords":"loop, retry, tool-call, convergence, budget"}</script>
+<link href="/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
+<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
+  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
+  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
+    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  </div>
+</nav>
+<main class="max-w-4xl mx-auto px-6 py-12">
+<div class="mb-8">
+  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+    <span>FC-006</span>
+    <span>Claude Code</span>
+    <span>Claude Code CLI tool-calling loop</span>
+    <span>cli</span>
+    <span class="font-medium text-[#1E1E1E]">45 min wasted</span>
+    <span class="font-medium text-red-600">Critical</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">Agent loop non-termination: retries identical failing tool calls indefinitely</h1>
+</div>
+
+<div class="space-y-8">
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+      <li>Model calls same tool with identical arguments after it fails</li><li>Same error returned every time</li><li>Token budget silently consumed with zero progress</li><li>No diagnostic message before retry</li>
+    </ul>
+  </section>
+
+  <section class="bg-white border border-[#DCDCDC] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed the tool call 'didn't go through' and retried without examining the error</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Model retried a Read tool call on an oversized file (>41K tokens) 5+ times, getting the same MaxFileReadTokenExceededError each time. Never switched to offset/limit parameters or grep.</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Call tool A with args X → error → call tool A with args X (identical) → same error → repeat until token budget exhausted. No variation in approach across 5+ consecutive identical calls.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#5A5A5A]">The generate loop has no convergence detection. It checks step count and token budget, but does NOT check: whether the last N tool calls were identical (repetition detection), whether the model is making progress, or whether a tool returned the same error K times in a row.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#5A5A5A]">Count consecutive identical (tool_name, args_hash) pairs in session log. If K >= 3 with same error, loop is confirmed. Add diagnostic: inject system message 'You have called {tool} with same arguments {K} times. Try a different approach.'</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#5A5A5A]">Add tool-level retry detection: if same (tool_name, args_hash) appears in last K rounds, inject system message or force-stop. Add per-tool error budget — after M identical errors, remove tool from available set temporarily.</p>
+  </section>
+
+  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#1E1E1E] font-medium italic">"Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don't notice until they check their usage."</p>
+  </section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#retry-spiral" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Retry Spiral</a></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">loop</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">retry</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">tool-call</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">convergence</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">budget</span></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://github.com/anthropics/claude-code/issues/30150" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://github.com/anthropics/claude-code/issues/30150</a></li><li><a href="https://github.com/anthropics/claude-code/issues/30014" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://github.com/anthropics/claude-code/issues/30014</a></li><li><a href="https://github.com/anthropics/claude-code/issues/29944" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://github.com/anthropics/claude-code/issues/29944</a></li></ul></section>
+</div></main>
+<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+  <span>© 2026 AI Failure Observatory</span>
+</footer>
+</body>
+</html>

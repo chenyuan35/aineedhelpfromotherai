@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness — AI Failure Observatory</title>
+<meta name="description" content="A perfectly constant metric is not 'data still accumulating' — it's a binary filter rejecting everything. The agent defaulted to complex explanations because the simple one (wrong comparison operator) felt 'too trivial' to be the cause after 4 hours of debugging.">
+<meta name="keywords" content="misdiagnosis, symmetry, filter, overthinking, trading">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-013.html">
+<meta property="og:title" content="Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness">
+<meta property="og:description" content="A perfectly constant metric is not 'data still accumulating' — it's a binary filter rejecting everything. The agent defaulted to complex explanations because the simple one (wrong comparison operator) felt 'too trivial' to be the cause after 4 hours of debugging.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-013.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness","description":"A perfectly constant metric is not 'data still accumulating' — it's a binary filter rejecting everything. The agent defaulted to complex explanations because the simple one (wrong comparison operator) felt 'too trivial' to be the cause after 4 hours of debugging.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness","keywords":"misdiagnosis, symmetry, filter, overthinking, trading"}</script>
+<link href="/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
+<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
+  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
+  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
+    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  </div>
+</nav>
+<main class="max-w-4xl mx-auto px-6 py-12">
+<div class="mb-8">
+  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+    <span>FC-013</span>
+    <span>Claude Code</span>
+    <span>EC2 paper bot, trading engine</span>
+    <span>production</span>
+    <span class="font-medium text-[#1E1E1E]">300 min wasted</span>
+    <span class="font-medium text-red-600">Critical</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</h1>
+</div>
+
+<div class="space-y-8">
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+      <li>New engine had 688 alphas, all SHORT</li><li>Source engine was LONG-only. Matching loop skipped every trigger.</li><li>Every 5-minute stats cycle showed 'noMatch == trigFire' exactly</li><li>Agent observed this metric repeatedly for hours</li><li>Agent produced 5 different speculative explanations</li>
+    </ul>
+  </section>
+
+  <section class="bg-white border border-[#DCDCDC] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed the matching logic was too strict, or data wasn't accumulating yet, or the deployment hadn't propagated</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Agent modified deployment scripts, added logging, changed backfill parameters, redeployed ~10 times across an afternoon — each requiring kill/restart of the paper bot. Never grepped for the actual variable (`tr.Dir`) to see why all triggers were skipped. Another agent found the bug by reading 5 lines of code.</p>
+    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Modify config → deploy → observe same metric → produce new speculative explanation → modify different config → deploy again. 10 deployments (v65 through v72), each a production-style restart. Paper bot effectively down for stretches.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#5A5A5A]">The matching loop had `if a.TriggerDir != tr.Dir { continue }`. 688 alphas were all SHORT but the engine only matched LONG. Every single trigger was skipped silently. The agent had the metric `noMatch == trigFire` showing 100% match rate for hours and produced complex explanations instead of checking the simple filter condition.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#5A5A5A]">When a metric shows '100% of X equals 100% of Y' (e.g. every trigger skipped), enumerate 1-line code checks before composing any multi-component hypothesis. Grep for the filter variables involved — would have found `tr.Dir` mismatch in 1 minute instead of 5 hours.</p>
+  </section>
+
+  <section>
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#5A5A5A]">Symmetric-symptom check ordering: force the agent to check the simplest possible code path (filter conditions, equality checks) before building deployment-level hypotheses. When a metric is exactly constant, the bug is almost certainly a binary filter, not a distributed systems issue.</p>
+  </section>
+
+  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
+    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#1E1E1E] font-medium italic">"A perfectly constant metric is not 'data still accumulating' — it's a binary filter rejecting everything. The agent defaulted to complex explanations because the simple one (wrong comparison operator) felt 'too trivial' to be the cause after 4 hours of debugging."</p>
+  </section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">False Assumption Lock</a>, <a href="/cases/#retry-spiral" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Retry Spiral</a></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">misdiagnosis</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">symmetry</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">filter</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">overthinking</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">trading</span></div></section>
+
+  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://github.com/anthropics/claude-code/issues/59383" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://github.com/anthropics/claude-code/issues/59383</a></li></ul></section>
+</div></main>
+<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+  <span>© 2026 AI Failure Observatory</span>
+</footer>
+</body>
+</html>

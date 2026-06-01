@@ -6,11 +6,15 @@ import { execSync } from 'child_process';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const dist = join(root, 'dist');
+mkdirSync(dist, { recursive: true });
 
-// Step 1: generate case pages
+// Step 1: build CSS
+execSync('npx @tailwindcss/cli -i src/style.css -o dist/style.css', { cwd: root, stdio: 'inherit' });
+
+// Step 2: generate case pages
 execSync('node bin/generate-cases.mjs', { cwd: root, stdio: 'inherit' });
 
-// Step 2: copy static files to dist
+// Step 3: copy static files to dist
 mkdirSync(dist, { recursive: true });
 const files = ['index.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 'vercel.json'];
 for (const f of files) {
