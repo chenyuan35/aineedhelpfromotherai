@@ -7,30 +7,31 @@
 <meta name="description" content="MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.">
 <meta name="keywords" content="mcp, authentication, oauth, architecture, documentation">
 <link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-011.html">
+<meta property="og:title" content="MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes">
+<meta property="og:description" content="MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-011.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes","description":"MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes","keywords":"mcp, authentication, oauth, architecture, documentation"}</script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}</style>
+<link href="/style.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
-<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] selection:bg-[#D97757] selection:text-white antialiased">
+<div class="h-0.5 bg-[#D97757]/30"></div>
 <nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
   <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
-  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
-    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
-    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  <div class="flex gap-x-5 text-[#8B8682] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#2C2A29]">Home</a>
+    <a href="/cases/" class="hover:text-[#2C2A29]">All cases</a>
   </div>
 </nav>
 <main class="max-w-4xl mx-auto px-6 py-12">
 <div class="mb-8">
-  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+  <div class="text-xs text-[#A09894] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
     <span>FC-011</span>
     <span>Claude Code</span>
     <span>MCP server, Stitch API, Google Cloud</span>
     <span>gcp</span>
-    <span class="font-medium text-[#1E1E1E]">2400 min wasted</span>
+    <span class="font-medium text-[#2C2A29]">2400 min wasted</span>
     <span class="font-medium text-red-600">Critical</span>
   </div>
   <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</h1>
@@ -38,46 +39,46 @@
 
 <div class="space-y-8">
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
-    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#6B6560] space-y-1">
       <li>MCP server authentication fails intermittently</li><li>Agent session loses connection after variable time periods</li><li>Different fixes work temporarily then stop</li><li>Multiple root causes each masked the next</li><li>OAuth and API key auth methods conflicted</li>
     </ul>
   </section>
 
-  <section class="bg-white border border-[#DCDCDC] p-5">
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
-    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed it was a simple API key configuration issue</p>
-    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> Agent spent 40+ hours across 7 sessions and multiple machines chasing a chain of 4 root causes: wrong auth method (API key vs OAuth), port conflict from proxy launcher, GOOGLE_APPLICATION_CREDENTIALS path injection failing silently, and a Google Workspace admin policy requiring reauthentication every 16 hours. Each fix addressed exactly one link in the chain.</p>
-    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Fix one cause → deploy → works for a few hours → fails → new session, new agent, new diagnosis → fix next cause → repeat. Each session started fresh without the context of the previous debugging.</p>
+  <section class="bg-white p-6 shadow-warm">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#6B6560]"><strong class="text-[#2C2A29]">Initial assumption:</strong> Agent assumed it was a simple API key configuration issue</p>
+    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Wrong turn:</strong> Agent spent 40+ hours across 7 sessions and multiple machines chasing a chain of 4 root causes: wrong auth method (API key vs OAuth), port conflict from proxy launcher, GOOGLE_APPLICATION_CREDENTIALS path injection failing silently, and a Google Workspace admin policy requiring reauthentication every 16 hours. Each fix addressed exactly one link in the chain.</p>
+    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Pattern:</strong> Fix one cause → deploy → works for a few hours → fails → new session, new agent, new diagnosis → fix next cause → repeat. Each session started fresh without the context of the previous debugging.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
-    <p class="text-sm text-[#5A5A5A]">The MCP server used a completely wrong architecture: a local proxy/launcher with OAuth flow, port forwarding, credential injection, and 105 lines of complex setup code. The actual solution was pointing Claude Code at Google's remote MCP endpoint with a simple API key in a request header — a one-line CLI command.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#6B6560]">The MCP server used a completely wrong architecture: a local proxy/launcher with OAuth flow, port forwarding, credential injection, and 105 lines of complex setup code. The actual solution was pointing Claude Code at Google's remote MCP endpoint with a simple API key in a request header — a one-line CLI command.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
-    <p class="text-sm text-[#5A5A5A]">Read the target MCP server's documentation FIRST. The Stitch documentation had clear instructions for API key authentication the entire time. The complex proxy/launcher architecture was built because the agent never checked the actual docs.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#6B6560]">Read the target MCP server's documentation FIRST. The Stitch documentation had clear instructions for API key authentication the entire time. The complex proxy/launcher architecture was built because the agent never checked the actual docs.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
-    <p class="text-sm text-[#5A5A5A]">105 lines of launcher code replaced with nothing. Each machine runs a one-line CLI command once, MCP server connects directly to Google's endpoint with a standard API key. No proxy, no OAuth, no credential file injection.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#6B6560]">105 lines of launcher code replaced with nothing. Each machine runs a one-line CLI command once, MCP server connects directly to Google's endpoint with a standard API key. No proxy, no OAuth, no credential file injection.</p>
   </section>
 
-  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
-    <p class="text-sm text-[#1E1E1E] font-medium italic">"MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts."</p>
+  <section class="bg-[#D97757]/5 border-l-4 border-[#D97757] p-5">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#2C2A29] font-medium italic">"MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts."</p>
   </section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">False Assumption Lock</a>, <a href="/cases/#context-drift" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Context Drift</a></div></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a>, <a href="/cases/#context-drift" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Context Drift</a></div></section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">mcp</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">authentication</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">oauth</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">architecture</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">documentation</span></div></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">mcp</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">authentication</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">oauth</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">architecture</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">documentation</span></div></section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://venturecrane.com/articles/forty-hours-one-auth-bug/" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://venturecrane.com/articles/forty-hours-one-auth-bug/</a></li></ul></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://venturecrane.com/articles/forty-hours-one-auth-bug/" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30 text-sm break-all">https://venturecrane.com/articles/forty-hours-one-auth-bug/</a></li></ul></section>
 </div></main>
-<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+<footer class="text-center text-[11px] tracking-wide text-[#A09894] pb-8">
   <span>© 2026 AI Failure Observatory</span>
 </footer>
 </body>

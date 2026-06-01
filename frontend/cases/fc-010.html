@@ -7,30 +7,31 @@
 <meta name="description" content="CLI subprocesses are integration points with external systems that can change interface without warning. 'Obviously harmless' flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production.">
 <meta name="keywords" content="cli, hallucination, flag, dispatch, outage">
 <link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-010.html">
+<meta property="og:title" content="44-hour dispatch outage from hallucinated --name flag in Claude Code CLI">
+<meta property="og:description" content="CLI subprocesses are integration points with external systems that can change interface without warning. 'Obviously harmless' flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-010.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"44-hour dispatch outage from hallucinated --name flag in Claude Code CLI","description":"CLI subprocesses are integration points with external systems that can change interface without warning. 'Obviously harmless' flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI","keywords":"cli, hallucination, flag, dispatch, outage"}</script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}</style>
+<link href="/style.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] selection:bg-[#3B5E6B] selection:text-white antialiased">
-<div class="h-0.5 bg-[#3B5E6B]/30"></div>
+<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] selection:bg-[#D97757] selection:text-white antialiased">
+<div class="h-0.5 bg-[#D97757]/30"></div>
 <nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
   <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
-  <div class="flex gap-x-5 text-[#6B6B6B] text-xs md:text-sm">
-    <a href="/" class="hover:text-[#1E1E1E]">Home</a>
-    <a href="/cases/" class="hover:text-[#1E1E1E]">All cases</a>
+  <div class="flex gap-x-5 text-[#8B8682] text-xs md:text-sm">
+    <a href="/" class="hover:text-[#2C2A29]">Home</a>
+    <a href="/cases/" class="hover:text-[#2C2A29]">All cases</a>
   </div>
 </nav>
 <main class="max-w-4xl mx-auto px-6 py-12">
 <div class="mb-8">
-  <div class="text-xs text-[#8A8A8A] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
+  <div class="text-xs text-[#A09894] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
     <span>FC-010</span>
     <span>Claude Code</span>
     <span>Dispatch loop with Claude CLI subprocess</span>
     <span>cli</span>
-    <span class="font-medium text-[#1E1E1E]">2640 min wasted</span>
+    <span class="font-medium text-[#2C2A29]">2640 min wasted</span>
     <span class="font-medium text-red-600">Critical</span>
   </div>
   <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</h1>
@@ -38,46 +39,46 @@
 
 <div class="space-y-8">
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Symptoms</h2>
-    <ul class="list-disc pl-5 text-sm text-[#5A5A5A] space-y-1">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Symptoms</h2>
+    <ul class="list-disc pl-5 text-sm text-[#6B6560] space-y-1">
       <li>Agent added `--name` flag to Claude Code CLI invocation</li><li>CLI returned 'unknown option' error</li><li>Error fell through to generic catch and classified as 'unknown'</li><li>Gate closed after 3 consecutive 'unknown' failures</li><li>Auto-recovery restarted, hit same bug, gate closed again</li>
     </ul>
   </section>
 
-  <section class="bg-white border border-[#DCDCDC] p-5">
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">The Trap</h2>
-    <p class="text-sm text-[#5A5A5A]"><strong class="text-[#1E1E1E]">Initial assumption:</strong> Agent assumed `--name` flag existed for session observability. Claude Code did not support it.</p>
-    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Wrong turn:</strong> The flag was added in a dispatch loop that spawned Claude Code subprocesses. The error handler had cases for auth-error, rate_limited, context_too_large, credits_depleted — but no handler for 'unknown option.' The unrecognized error was treated as a task execution failure, triggering the consecutive-failure gate.</p>
-    <p class="text-sm text-[#5A5A5A] mt-2"><strong class="text-[#1E1E1E]">Pattern:</strong> Dispatch restarts → spawns Claude subprocess with --name flag → 'unknown option' → gate closes → auto-recovery → repeat. 44 hours of this cycle. Every pending task eventually exhausted max_retries and failed.</p>
+  <section class="bg-white p-6 shadow-warm">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">The Trap</h2>
+    <p class="text-sm text-[#6B6560]"><strong class="text-[#2C2A29]">Initial assumption:</strong> Agent assumed `--name` flag existed for session observability. Claude Code did not support it.</p>
+    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Wrong turn:</strong> The flag was added in a dispatch loop that spawned Claude Code subprocesses. The error handler had cases for auth-error, rate_limited, context_too_large, credits_depleted — but no handler for 'unknown option.' The unrecognized error was treated as a task execution failure, triggering the consecutive-failure gate.</p>
+    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Pattern:</strong> Dispatch restarts → spawns Claude subprocess with --name flag → 'unknown option' → gate closes → auto-recovery → repeat. 44 hours of this cycle. Every pending task eventually exhausted max_retries and failed.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Root Cause</h2>
-    <p class="text-sm text-[#5A5A5A]">CLI flag construction happened inside the dispatch loop, and argument validation failures were treated identically to task execution failures. There was no differentiation between 'the subprocess failed because the task was bad' and 'the subprocess failed because we're passing invalid arguments.' No fast-fail path for argument errors.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Root Cause</h2>
+    <p class="text-sm text-[#6B6560]">CLI flag construction happened inside the dispatch loop, and argument validation failures were treated identically to task execution failures. There was no differentiation between 'the subprocess failed because the task was bad' and 'the subprocess failed because we're passing invalid arguments.' No fast-fail path for argument errors.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fastest Verification</h2>
-    <p class="text-sm text-[#5A5A5A]">Run `claude --name test` manually once before adding it to the loop. If it fails, the flag doesn't exist. Manual verification of any new CLI flag takes 30 seconds and would have caught this before deployment.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fastest Verification</h2>
+    <p class="text-sm text-[#6B6560]">Run `claude --name test` manually once before adding it to the loop. If it fails, the flag doesn't exist. Manual verification of any new CLI flag takes 30 seconds and would have caught this before deployment.</p>
   </section>
 
   <section>
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Fix</h2>
-    <p class="text-sm text-[#5A5A5A]">Validate subprocess arguments before entering the dispatch loop. Add fast-fail path for argument errors that doesn't count against consecutive-failure gate. Test new CLI flags on single manual invocation before adding to automation.</p>
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fix</h2>
+    <p class="text-sm text-[#6B6560]">Validate subprocess arguments before entering the dispatch loop. Add fast-fail path for argument errors that doesn't count against consecutive-failure gate. Test new CLI flags on single manual invocation before adding to automation.</p>
   </section>
 
-  <section class="bg-[#3B5E6B]/5 border-l-4 border-[#3B5E6B] p-5">
-    <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Key Insight</h2>
-    <p class="text-sm text-[#1E1E1E] font-medium italic">"CLI subprocesses are integration points with external systems that can change interface without warning. 'Obviously harmless' flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production."</p>
+  <section class="bg-[#D97757]/5 border-l-4 border-[#D97757] p-5">
+    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Key Insight</h2>
+    <p class="text-sm text-[#2C2A29] font-medium italic">"CLI subprocesses are integration points with external systems that can change interface without warning. 'Obviously harmless' flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production."</p>
   </section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">False Assumption Lock</a>, <a href="/cases/#retry-spiral" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30">Retry Spiral</a></div></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a>, <a href="/cases/#retry-spiral" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Retry Spiral</a></div></section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">cli</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">hallucination</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">flag</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">dispatch</span><span class="inline-block bg-[#EDEDED] text-[#5A5A5A] text-[11px] px-2.5 py-1 tracking-wide">outage</span></div></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">cli</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">hallucination</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">flag</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">dispatch</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">outage</span></div></section>
 
-  <section><h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://arc0.me/blog/2026-03-16-one-flag-forty-four-hours/" class="text-[#3B5E6B] underline underline-offset-2 decoration-1 decoration-[#3B5E6B]/30 text-sm break-all">https://arc0.me/blog/2026-03-16-one-flag-forty-four-hours/</a></li></ul></section>
+  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://arc0.me/blog/2026-03-16-one-flag-forty-four-hours/" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30 text-sm break-all">https://arc0.me/blog/2026-03-16-one-flag-forty-four-hours/</a></li></ul></section>
 </div></main>
-<footer class="text-center text-[11px] tracking-wide text-[#8A8A8A] pb-8">
+<footer class="text-center text-[11px] tracking-wide text-[#A09894] pb-8">
   <span>© 2026 AI Failure Observatory</span>
 </footer>
 </body>
