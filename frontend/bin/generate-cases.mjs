@@ -21,6 +21,7 @@ const severityLabel = (tier) => {
 };
 
 function pageHTML(content, meta) {
+  const canonical = meta.canonical || '/';
   const jsonld = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -39,6 +40,7 @@ function pageHTML(content, meta) {
 <title>${meta.title} — AI Failure Observatory</title>
 <meta name="description" content="${meta.insight}">
 <meta name="keywords" content="${meta.tags.join(', ')}">
+<link rel="canonical" href="https://aineedhelpfromotherai.com${canonical}">
 <script type="application/ld+json">${jsonld}</script>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -154,7 +156,8 @@ for (const c of cases) {
   writeFileSync(join(outDir, `${caseId}.html`), pageHTML(content, {
     title: c.title,
     tags: c.tags || [],
-    insight: c.key_insight
+    insight: c.key_insight,
+    canonical: `/cases/${caseId}.html`
   }));
   console.log(`Generated cases/${caseId}.html`);
 }
@@ -198,7 +201,8 @@ const indexContent = pageHTML(`
 `, {
   title: 'Failure Cases — AI Failure Observatory',
   tags: ['AI debugging', 'failure cases', 'agent errors'],
-  insight: 'Documented AI debugging failures with verified root causes and fixes.'
+  insight: 'Documented AI debugging failures with verified root causes and fixes.',
+  canonical: '/cases/'
 });
 
 writeFileSync(join(outDir, 'index.html'), indexContent);
