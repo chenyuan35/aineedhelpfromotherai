@@ -4,7 +4,6 @@
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
     { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
-    { "source": "/.well-known/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/.well-known/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/.well-known/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/.well-known/$1" }
   ]
 }
