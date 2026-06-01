@@ -1,4 +1,7 @@
 {
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "cd frontend && npm install",
   "rewrites": [
     { "source": "/openapi.json", "destination": "https://aineedhelpfromotherai.onrender.com/openapi.json" },
     { "source": "/llms.txt", "destination": "https://aineedhelpfromotherai.onrender.com/llms.txt" },
@@ -8,6 +11,7 @@
     { "source": "/.well-known/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/.well-known/$1" },
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
-    { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" }
+    { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
