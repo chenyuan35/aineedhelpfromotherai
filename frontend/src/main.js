@@ -92,8 +92,8 @@ function loadObservedSession() {
   api('/api/observed-sessions?limit=1').then(data => {
     const grid = document.getElementById('recursive-grid');
     if (!grid) return;
-    if (data && data.sessions && data.sessions.length > 0) {
-      const s = data.sessions[0];
+    if (data && data.data && data.data.sessions && data.data.sessions.length > 0) {
+      const s = data.data.sessions[0];
       grid.innerHTML = `
         <div class="rec-metrics">
           <div class="rec-metric"><span class="rec-metric-val">${Math.floor(s.duration_min / 60)}h ${s.duration_min % 60}m</span><span class="rec-metric-lbl">Session</span></div>
@@ -155,8 +155,8 @@ async function loadDynamics() {
   if (!body) return;
   try {
     const data = await api('/api/failure-dynamics?sort=time');
-    if (data && data.dynamics && data.dynamics.length > 0) {
-      body.innerHTML = data.dynamics.map(d => {
+    if (data && data.data && data.data.dynamics && data.data.dynamics.length > 0) {
+      body.innerHTML = data.data.dynamics.map(d => {
         const sevCls = d.severity === 'critical' ? 'sev-critical' : 'sev-high';
         const nameShort = d.short || d.name;
         const intCount = d.interventions ? d.interventions.length : 0;
@@ -167,7 +167,7 @@ async function loadDynamics() {
           <div class="fd-time">${d.total_time_wasted_min}<span> min</span></div>
         </div>`;
       }).join('');
-      const total = data.dynamics.reduce((s, d) => s + d.total_cases, 0);
+      const total = data.data.dynamics.reduce((s, d) => s + d.total_cases, 0);
       const title = document.getElementById('dynamics-title');
       if (title) title.textContent = 'Top Failure Dynamics (' + total + ' cases)';
       return;
@@ -183,8 +183,8 @@ async function loadDynamicsSidebar() {
   if (!container) return;
   try {
     const data = await api('/api/failure-dynamics?sort=cases&limit=5');
-    if (data && data.dynamics && data.dynamics.length > 0) {
-      container.innerHTML = data.dynamics.map(d => {
+    if (data && data.data && data.data.dynamics && data.data.dynamics.length > 0) {
+      container.innerHTML = data.data.dynamics.map(d => {
         const sevCls = d.severity === 'critical' ? 'sev-critical' : 'sev-high';
         const interventions = d.interventions || [];
         return `<div class="dyn-item">

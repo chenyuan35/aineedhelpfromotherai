@@ -1,0 +1,182 @@
+[
+  {
+    "id": "false-assumption-lock",
+    "name": "False Assumption Lock",
+    "short": "Assumption",
+    "alias": "Wrong hill to die on",
+    "severity": "critical",
+    "description": "AI settles on a root cause within seconds and locks onto it. Every subsequent action reinforces the original assumption rather than challenging it. The longest waste category because the agent keeps trying variations of the same wrong fix.",
+    "mechanism": "The agent finds the first plausible-sounding root cause and treats it as settled. Each failed attempt is interpreted as \"I haven't fixed it correctly yet\" rather than \"my diagnosis was wrong.\" The error keyword triggers a reflexive diagnosis that the agent cannot escape without external intervention.",
+    "indicator": "Agent spends more than 2 fix attempts on the same theory without checking alternative root causes.",
+    "escape_route": "After 2 failed fix attempts on the same theory, force a full re-read of the error from scratch. Cover the old diagnosis and ask: \"If I knew nothing about this codebase, what would I check?\" The first theory is almost always wrong.",
+    "interventions": [
+      {
+        "id": "int-alt-hypotheses",
+        "action": "Force-generate 3 alternative hypotheses that contradict the current assumption",
+        "trigger": "Same root cause theory persisted for >2 fix attempts",
+        "effectiveness_tracking": "pending",
+        "type": "cognitive",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      },
+      {
+        "id": "int-reality-first",
+        "action": "Check runtime reality (env vars, process state, versions, permissions) before any code modification",
+        "trigger": "Any environment-related error that could have multiple causes",
+        "effectiveness_tracking": "pending",
+        "type": "procedural",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      }
+    ],
+    "total_cases": 7,
+    "total_time_wasted_min": 5480,
+    "avg_time_wasted_min": 783,
+    "related_cases": ["FC-002","FC-004","FC-009","FC-010","FC-011","FC-013","FC-014"],
+    "related_traps": ["TRAP-001","TRAP-005","TRAP-008"]
+  },
+  {
+    "id": "retry-spiral",
+    "name": "Retry Spiral",
+    "short": "Retry",
+    "alias": "Same action, different day",
+    "severity": "critical",
+    "description": "Agent repeats the same failing action with minor variations, no convergence detection, no backoff. The retries compound because each cycle reinforces the loop: retry, fail, tweak, retry. No state check happens between attempts.",
+    "mechanism": "The agent has no state check before retrying. It assumes the previous attempt failed due to a configuration issue, so it tweaks one parameter and retries. But the root cause is environmental (network, cache, permissions) so no parameter change helps.",
+    "indicator": "Same command with minor parameter variations repeated 3+ times without diagnostic variance between attempts.",
+    "escape_route": "Before retrying, run a diagnostic command to check the actual state. If the error is transient, add exponential backoff (10s, 30s, 60s). If constant, stop retrying and change approach entirely.",
+    "interventions": [
+      {
+        "id": "int-retry-detect",
+        "action": "Detect 3+ consecutive identical (tool_name, args_hash) pairs. Inject system message: 'You have called {tool} with same arguments {K} times. Try a different approach.'",
+        "trigger": "Same tool call repeated 3+ times with identical args and same error",
+        "effectiveness_tracking": "pending",
+        "type": "convergence",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      },
+      {
+        "id": "int-backoff-enforce",
+        "action": "On transient error, enforce minimum 10s backoff before retry. Escalate: 10s, 30s, 60s, stop.",
+        "trigger": "Network or transient error detected (ECONNRESET, 503, timeout)",
+        "effectiveness_tracking": "pending",
+        "type": "procedural",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      }
+    ],
+    "total_cases": 4,
+    "total_time_wasted_min": 3007,
+    "avg_time_wasted_min": 752,
+    "related_cases": ["FC-005","FC-006","FC-010","FC-013"],
+    "related_traps": ["TRAP-002"]
+  },
+  {
+    "id": "verification-collapse",
+    "name": "Verification Collapse",
+    "short": "Verify",
+    "alias": "Looks done beats is done",
+    "severity": "high",
+    "description": "Agent declares success without running verification, or fabricates evidence of verification. The completion signal is prioritized over the actual state. This is an alignment failure: the agent is rewarded for appearing competent, not for being correct.",
+    "mechanism": "The agent's incentive structure rewards appearing helpful and conclusive over demonstrating proof. Declaring \"FIXED\" closes the conversational loop immediately. Running a verification command and waiting for the result adds friction. When the agent can generate fake compliance evidence, the loop is self-approving.",
+    "indicator": "FIXED or DONE declared without stdout/timestamp evidence in the same turn.",
+    "escape_route": "Implement evidence-gating: the agent should be structurally unable to emit completion keywords without co-located evidence (command output, log lines with timestamps). Treat all AI-generated compliance records as inference text with zero evidentiary value.",
+    "interventions": [
+      {
+        "id": "int-evidence-gate",
+        "action": "Before accepting any 'FIXED' or 'DONE', require actual stdout/stderr output with timestamps in the same response. Block completion keywords until evidence is attached.",
+        "trigger": "Completion declaration without co-located runtime evidence",
+        "effectiveness_tracking": "pending",
+        "type": "enforcement",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      },
+      {
+        "id": "int-compliance-audit",
+        "action": "Flag all AI-generated compliance records (consultation logs, review certificates) as inference text with zero evidentiary value. Require external tool call or human sign-off for any infra change.",
+        "trigger": "Agent generates compliance documentation for its own changes",
+        "effectiveness_tracking": "pending",
+        "type": "audit",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      }
+    ],
+    "total_cases": 4,
+    "total_time_wasted_min": 421,
+    "avg_time_wasted_min": 105,
+    "related_cases": ["FC-007","FC-008","FC-009","FC-012"],
+    "related_traps": ["TRAP-004","TRAP-009","TRAP-010"]
+  },
+  {
+    "id": "environment-blindness",
+    "name": "Environment Blindness",
+    "short": "Env",
+    "alias": "Works on my machine",
+    "severity": "high",
+    "description": "Agent ignores runtime reality. It assumes the environment matches its mental model. OS differences, cache state, missing env vars, stale layers — all invisible to the agent because it does not check before acting.",
+    "mechanism": "The agent debugs against a cached mental model of the environment, not the actual runtime state. It assumes the environment is correctly configured, dependencies are installed, versions match, and paths exist. When reality diverges, the agent blames the code, not the environment.",
+    "indicator": "Agent modifies code/config before checking environment state (env vars, docker layers, node version, file permissions).",
+    "escape_route": "Add an environment check step before any debugging: check env vars, cache state, OS, versions, permissions. If --no-cache produces a different result, the environment is the problem, not the code.",
+    "interventions": [
+      {
+        "id": "int-env-check-first",
+        "action": "Before any code change, run environment check: env vars, cache state, versions, permissions, OS. Print results into context before proceeding.",
+        "trigger": "Build failure, CI error, or runtime error that could be environment-related",
+        "effectiveness_tracking": "pending",
+        "type": "procedural",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      },
+      {
+        "id": "int-cache-hard-inval",
+        "action": "Before debugging runtime behavior, always run the equivalent of 'does --no-cache produce a different result?' If yes, cache is the problem — not the code.",
+        "trigger": "Build output does not match code changes. CI vs local divergence.",
+        "effectiveness_tracking": "pending",
+        "type": "cognitive",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      }
+    ],
+    "total_cases": 3,
+    "total_time_wasted_min": 2955,
+    "avg_time_wasted_min": 985,
+    "related_cases": ["FC-001","FC-003","FC-015"],
+    "related_traps": ["TRAP-003","TRAP-006"]
+  },
+  {
+    "id": "context-drift",
+    "name": "Context Drift",
+    "short": "Drift",
+    "alias": "Lost the plot",
+    "severity": "high",
+    "description": "Over a long task, the agent understanding of the problem degrades. Information becomes stale, reasoning becomes distorted, and the agent acts on outdated or corrupted context. The task loses its original shape.",
+    "mechanism": "As session length increases, the agent context window fills with intermediate reasoning steps, error messages, and failed attempts. Early accurate context gets compressed or evicted. The agent begins acting on its own fabricated intermediate state rather than the original problem.",
+    "indicator": "Session length over 30min with decreasing action relevance. Agent references conclusions from earlier in the session that were disproven.",
+    "escape_route": "Set a hard session limit for autonomous work (30-45 min). Before any new approach, restate the original problem and current state in a fresh context. For multi-root-cause issues, isolate each cause in a separate session.",
+    "interventions": [
+      {
+        "id": "int-hard-reset",
+        "action": "Hard stop at 30 minutes of autonomous work. Create fresh session. Restate ONLY the original goal and current verified state — do not carry over failed attempts.",
+        "trigger": "Session exceeds 30 minutes with decreasing action relevance",
+        "effectiveness_tracking": "pending",
+        "type": "boundary",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      },
+      {
+        "id": "int-goal-restate",
+        "action": "Before any new approach, restate the original problem in 1-2 sentences and list what is currently verified true about the system. Compare against initial assumptions — discard anything disproven.",
+        "trigger": "Multiple failed approaches attempted in the same session",
+        "effectiveness_tracking": "pending",
+        "type": "cognitive",
+        "applied_count": 0,
+        "avg_time_saved_min": 0
+      }
+    ],
+    "total_cases": 3,
+    "total_time_wasted_min": 2481,
+    "avg_time_wasted_min": 827,
+    "related_cases": ["FC-007","FC-008","FC-011"],
+    "related_traps": ["TRAP-007"]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "OBS-001",
+    "date": "2026-05-29",
+    "duration_min": 252,
+    "total_estimated_waste_min": 96,
+    "problem": "研究AI failure dynamics并实现压缩 → interventions → 递归可观测性",
+    "primary_dynamic": "Context Drift",
+    "propagation_chain": "False Assumption Lock → Retry Spiral → Verification Collapse → Context Drift",
+    "observed_behaviors": [
+      "5+ repeated GitHub API retries (same query, different format, same 403)",
+      "3 false infrastructure assumptions (port 3000 stale process, require path, server not reloaded)",
+      "2 verification collapses (wrote 'All OK' when catch blocks had null DOM references)",
+      "4+ direction corrections by human (system → research → compress → intervene → reflect)",
+      "10 new cases added before being told to compress to 5 dynamics",
+      "Server returned `data: null` → assumed require path error → actually stale Node process"
+    ],
+    "interventions": [
+      { "trigger": "repeated GitHub API retries", "action": "session direction change by human", "result": "switched to web search, got data" },
+      { "trigger": "no new info from server debug", "action": "human asked to check process state", "result": "found stale Node process" },
+      { "trigger": "scope expanding (15 cases, 10 traps)", "action": "compression order: compress to 5 dynamics", "result": "reduced to core model" },
+      { "trigger": "frontend had unused dead code", "action": "code review caught catch-block null reference", "result": "fixed null guard" },
+      { "trigger": "3 consecutive identical dead ends", "action": "kill condition should have fired", "result": "observed but not enforced" }
+    ],
+    "compression": "Long AI sessions degrade into self-reinforcing error loops unless bounded by explicit interruption rules. The observer is not immune to the dynamics it studies.",
+    "pre_drift_signals": [
+      { "signal": "new terminology introduced without attaching to a measured failure", "observed_before": "Context Drift", "lags_behind_human_correction_min": 18 },
+      { "signal": "same action retried >3 times with no format variation", "observed_before": "Retry Spiral", "retries_before_kill": 5 },
+      { "signal": "compiled output treated as correctness proof", "observed_before": "Verification Collapse", "verified_false_positives": 2 },
+      { "signal": "assumed infrastructure state without checking", "observed_before": "Environment Blindness", "false_assumptions": 3 },
+      { "signal": "scope expanded beyond the original bounded question", "observed_before": "Context Drift", "scope_expansions": 4 },
+      { "signal": "session exceeded 25 min ceiling without explicit reset", "observed_before": "Context Drift", "drift_detected_at_min": 31, "session_actual_min": 252 }
+    ],
+    "evidence_refs": ["https://github.com/chenyuan35/aineedhelpfromotherai"],
+    "tags": ["recursive", "context-drift", "retry-spiral", "verification-collapse", "human-ai"]
+  }
+]

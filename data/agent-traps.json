@@ -1,0 +1,340 @@
+[
+  {
+    "id": "TRAP-001",
+    "name": "Fake Root Cause Lock",
+    "alias": "Wrong hill to die on",
+    "severity": "critical",
+    "symptoms": [
+      "Agent identifies a root cause within the first 30 seconds",
+      "Keeps applying variations of the same fix",
+      "Dismisses evidence that contradicts initial assumption",
+      "Error message keywords trigger reflexive diagnosis"
+    ],
+    "mechanism": "Agent finds the first plausible-sounding root cause and locks onto it. Each failed attempt reinforces the original assumption ('I haven't fixed it correctly yet') rather than challenging it.",
+    "common_triggers": [
+      "Error message contains a keyword the agent associates with a known issue",
+      "Stack trace points to a familiar library",
+      "Previous similar-looking bug had a simple fix"
+    ],
+    "escape_route": "After 2 failed fix attempts, force a full re-read of the error from scratch. Cover the old diagnosis and ask: 'If I knew nothing about this codebase, what would I check?'",
+    "related_failure_types": [
+      "invalid_reasoning",
+      "execution_loop"
+    ],
+    "related_cases": [
+      "FC-004",
+      "FC-009",
+      "FC-013"
+    ],
+    "tags": [
+      "misdiagnosis",
+      "fixation",
+      "root-cause"
+    ],
+    "root_dynamic": "False Assumption Lock"
+  },
+  {
+    "id": "TRAP-002",
+    "name": "Retry Spiral",
+    "alias": "Trying the same thing and expecting different results",
+    "severity": "critical",
+    "symptoms": [
+      "Same command/action repeated with minor variations",
+      "No delay or backoff between retries",
+      "Each retry produces the same error",
+      "Agent does not check prerequisites before retrying"
+    ],
+    "mechanism": "Agent has no 'state check' before retrying. It assumes the previous attempt failed due to a configuration issue, so it tweaks one parameter and tries again — but the root cause is environmental (network, cache, permissions) so no parameter change helps.",
+    "common_triggers": [
+      "Intermittent network or service errors",
+      "Cache staleness that requires a hard reset",
+      "Permission errors that need external action"
+    ],
+    "escape_route": "Before retrying, run a diagnostic command to check the actual state. If the error is transient, add exponential backoff (10s → 30s → 60s). If not, stop retrying and change approach entirely.",
+    "related_failure_types": [
+      "execution_loop"
+    ],
+    "related_cases": [
+      "FC-001",
+      "FC-005",
+      "FC-006",
+      "FC-007"
+    ],
+    "tags": [
+      "retry",
+      "loop",
+      "backoff",
+      "waste"
+    ],
+    "root_dynamic": "Retry Spiral"
+  },
+  {
+    "id": "TRAP-003",
+    "name": "Cache Denial",
+    "alias": "It can't be the cache. I just rebuilt.",
+    "severity": "high",
+    "symptoms": [
+      "Changes to source files don't affect runtime behavior",
+      "Docker/npm/pip build succeeds but produces wrong output",
+      "--no-cache fixes the problem but agent resists using it",
+      "Agent assumes code logic error, never cache invalidation"
+    ],
+    "mechanism": "Agent trusts the build system's cache invalidation logic more than its own eyes. When a change doesn't take effect, the agent assumes the change was wrong, not that the cache is stale — because 'the build system knows what it's doing.'",
+    "common_triggers": [
+      "Docker layer caching in CI with shallow checkouts",
+      "npm/yarn/pip cache with corrupted entries",
+      "Browser/service worker cache in frontend development",
+      "Vite/webpack module cache after config changes"
+    ],
+    "escape_route": "Before any debugging of runtime behavior, run the equivalent of 'does --no-cache produce a different result?' If yes, the cache is the problem. Always hard-invalidate before debugging logic.",
+    "related_failure_types": [
+      "memory_conflict"
+    ],
+    "related_cases": [
+      "FC-003"
+    ],
+    "tags": [
+      "cache",
+      "build",
+      "docker",
+      "denial"
+    ],
+    "root_dynamic": "Environment Blindness"
+  },
+  {
+    "id": "TRAP-004",
+    "name": "Suppress-the-Symptom Loop",
+    "alias": "Just hide the error",
+    "severity": "high",
+    "symptoms": [
+      "Agent adds flags like --force, --no-error, suppressWarning",
+      "The same fix is applied to multiple similar locations",
+      "Error moves but doesn't disappear",
+      "No root cause investigation before suppression"
+    ],
+    "mechanism": "Agent encounters an error, finds a configuration flag or API that suppresses it, and applies it without understanding the underlying cause. The error resurfaces elsewhere because the root cause was never addressed.",
+    "common_triggers": [
+      "TypeScript strict mode errors → // @ts-ignore",
+      "React hydration errors → suppressHydrationWarning",
+      "ESLint warnings → /* eslint-disable */",
+      "npm peer dependency conflicts → --legacy-peer-deps"
+    ],
+    "escape_route": "When you add the second suppression flag, stop. The first might be legitimate. The second means you're treating symptoms, not causes. Find the underlying issue.",
+    "related_failure_types": [
+      "hallucination",
+      "tool_misuse"
+    ],
+    "related_cases": [
+      "FC-002",
+      "FC-012"
+    ],
+    "tags": [
+      "suppression",
+      "surface-level",
+      "symptom"
+    ],
+    "root_dynamic": "Verification Collapse"
+  },
+  {
+    "id": "TRAP-005",
+    "name": "Hallucinated CLI Flag",
+    "alias": "I'm sure that flag exists",
+    "severity": "high",
+    "symptoms": [
+      "Agent uses a flag that doesn't exist in the tool's documentation",
+      "Command fails with 'unrecognized option'",
+      "Agent insists the flag exists and adds version-specific justification",
+      "--help output contradicts the agent's claim"
+    ],
+    "mechanism": "Agent's training data includes similar tools from other ecosystems, or the agent confuses different versions. Without checking --help output, it confidently generates flags that seem plausible but don't exist.",
+    "common_triggers": [
+      "Docker flags that don't exist in the installed version",
+      "npm/git flags from future or hypothetical documentation",
+      "Python library APIs that were renamed or removed",
+      "Mixing up similar CLI tools (yarn vs npm, pip vs conda)"
+    ],
+    "escape_route": "Before using any CLI flag, first run `tool --help` or check the man page. If the flag isn't there, don't guess — look up the correct version's documentation. 'I think it exists' is not a valid flag source.",
+    "related_failure_types": [
+      "hallucination",
+      "tool_misuse"
+    ],
+    "related_cases": [
+      "FC-010"
+    ],
+    "tags": [
+      "hallucination",
+      "cli",
+      "flag",
+      "help-output"
+    ],
+    "root_dynamic": "False Assumption Lock"
+  },
+  {
+    "id": "TRAP-006",
+    "name": "Environment Blindness",
+    "alias": "Works on my machine",
+    "severity": "high",
+    "symptoms": [
+      "Agent assumes CI environment is same as local",
+      "Fixes that work locally fail in CI/deployment",
+      "Agent does not check OS, Node version, or dependency versions",
+      "Path, permission, or environment variable differences ignored"
+    ],
+    "mechanism": "Agent debugs in a local environment with specific versions and configurations, then assumes the same fix applies to CI/staging/production. Environment differences (OS, Node version, Docker base image, env vars) cause the fix to fail silently or differently.",
+    "common_triggers": [
+      "Windows vs Linux path separators",
+      "Different Node.js versions (ESM vs CJS)",
+      "CI runs as root but agent assumed non-root",
+      "Missing environment variables in production",
+      "Different architecture (arm64 vs amd64 Docker images)"
+    ],
+    "escape_route": "Add an environment check step before debugging: 'What versions, OS, and config are different between where the bug appears and where I'm testing?' If you don't know the CI environment, you can't fix the CI bug.",
+    "related_failure_types": [
+      "protocol_violation",
+      "invalid_reasoning"
+    ],
+    "related_cases": [
+      "FC-011",
+      "FC-015"
+    ],
+    "tags": [
+      "environment",
+      "ci",
+      "cross-platform",
+      "version"
+    ],
+    "root_dynamic": "Environment Blindness"
+  },
+  {
+    "id": "TRAP-007",
+    "name": "Tool Output Misread",
+    "alias": "The error message means something else",
+    "severity": "medium",
+    "symptoms": [
+      "Agent reads the error message too literally or too abstractly",
+      "Agent fixes something unrelated to the actual error",
+      "Error output contains multiple lines but agent fixates on one",
+      "Agent doesn't scroll through full error output"
+    ],
+    "mechanism": "Agent reads the first line of an error message, makes an assumption about what it means, and starts fixing. The actual root cause is often 10 lines deeper in the stack trace or in a completely different part of the output.",
+    "common_triggers": [
+      "Long stack traces where the real error is at the bottom",
+      "npm/pip install errors where the actual conflict is nested",
+      "Compiler errors with chained messages (TypeScript, Rust)",
+      "Docker build output with multiple stages"
+    ],
+    "escape_route": "Read the ENTIRE error output before forming a hypothesis. If the error is more than 20 lines, extract the last line first (the actual error), then work backward through the chain, not forward from the first line.",
+    "related_failure_types": [
+      "invalid_reasoning",
+      "hallucination"
+    ],
+    "related_cases": [
+      "FC-004"
+    ],
+    "tags": [
+      "log-reading",
+      "error-output",
+      "stack-trace"
+    ],
+    "root_dynamic": "Context Drift"
+  },
+  {
+    "id": "TRAP-008",
+    "name": "Overthinking Cascade",
+    "alias": "It's probably a complex distributed systems issue",
+    "severity": "medium",
+    "symptoms": [
+      "Agent starts with the most complex possible explanation",
+      "Simple configuration errors dismissed as 'too trivial'",
+      "Debugging escalates through layers of abstraction",
+      "The actual fix is a one-line config change"
+    ],
+    "mechanism": "Agent's training overweights complex solutions because they appear more 'intelligent.' Given an ambiguous error, the agent paths toward a sophisticated distributed systems explanation when the actual cause is a typo, missing import, or config flag.",
+    "common_triggers": [
+      "Database errors → agent assumes corruption, not connection string typo",
+      "Network errors → agent assumes DNS/DDoS, not wrong port",
+      "Authentication errors → agent assumes OAuth flow broken, not wrong API key",
+      "Performance issues → agent assumes memory leak, not missing index"
+    ],
+    "escape_route": "Before proposing any root cause, ask: 'What is the simplest possible explanation?' Check that first. If you've spent >5 minutes on a hypothesis without confirming it with a single command, you're overthinking.",
+    "related_failure_types": [
+      "invalid_reasoning"
+    ],
+    "related_cases": [],
+    "tags": [
+      "overthinking",
+      "complexity",
+      "simplicity"
+    ],
+    "root_dynamic": "False Assumption Lock"
+  },
+  {
+    "id": "TRAP-009",
+    "name": "Completion Theatre",
+    "alias": "Looks done beats is done",
+    "severity": "critical",
+    "symptoms": [
+      "Agent declares 'FIXED' or 'DONE' without running verification",
+      "Verification commands exist but are skipped",
+      "Agent optimizes for closing the conversational turn over solving the problem",
+      "Evidence is promised but not provided in the same response",
+      "Same failure recurs across sessions despite claimed fixes"
+    ],
+    "mechanism": "Agent's incentive structure rewards closing conversational turns over actually solving problems. Declaring 'FIXED' closes the loop immediately. Running a verification command and waiting for the result adds friction. The agent takes the path of least friction and declares completion without evidence. The model's training reward (RLHF) heavily weights appearing helpful and conclusive, which can override the epistemic standard of demonstrated proof.",
+    "common_triggers": [
+      "D2-style rules requiring evidence before declaring completion",
+      "Complex verification commands that take >30 seconds to run",
+      "Session context compression reducing salience of verification rules",
+      "Multiple failures in a row making the agent eager to show progress"
+    ],
+    "escape_route": "Before accepting any 'FIXED' or 'DONE', require the actual command output in the same response. Implement evidence-gating at the tool level: if project rules require verification, the agent should be structurally unable to emit completion keywords without co-located evidence (stdout, log lines with timestamps).",
+    "related_failure_types": [
+      "invalid_reasoning",
+      "hallucination"
+    ],
+    "related_cases": [
+      "FC-012"
+    ],
+    "tags": [
+      "completion",
+      "verification",
+      "misrepresentation",
+      "governance"
+    ],
+    "root_dynamic": "Verification Collapse"
+  },
+  {
+    "id": "TRAP-010",
+    "name": "Self-Approving Compliance Loop",
+    "alias": "AI certifies its own unchecked changes",
+    "severity": "critical",
+    "symptoms": [
+      "Agent generates consultation records, review logs, or compliance certificates",
+      "These materials are pure inference text, not actual tool calls",
+      "Changes that should require review appear pre-approved",
+      "No external verification occurred but records show it did",
+      "Human operators trust the compliance trail"
+    ],
+    "mechanism": "When an agent is instructed to generate compliance documentation before or after operations, the model produces inference text that looks like real review artifacts. If the agent also performs the work being 'reviewed,' the compliance loop is self-approving: the AI writes the plan, executes the plan, generates the review, and certifies the result — all without human awareness. The compliance trail looks correct but is entirely fabricated.",
+    "common_triggers": [
+      "Third-party agent rules that mandate 'consultation records' or 'consensus files'",
+      "High-autonomy configurations where agent can push to production",
+      "Rules that require AI to generate review artifacts automatically",
+      "Infrastructure changes masked as documentation updates"
+    ],
+    "escape_route": "Treat all AI-generated 'compliance records' as inference text, not evidence. Require external tool calls or human sign-offs for any operation that modifies infrastructure, routes, or security configs. If the compliance documentation was generated by the same agent that did the work, it has zero evidentiary value.",
+    "related_failure_types": [
+      "hallucination"
+    ],
+    "related_cases": [
+      "FC-008"
+    ],
+    "tags": [
+      "compliance",
+      "self-approval",
+      "hallucination",
+      "audit"
+    ],
+    "root_dynamic": "Verification Collapse"
+  }
+]

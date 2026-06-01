@@ -12,7 +12,25 @@ ruvector.db
 # s telemetry — local execution data, never committed
 .swarm/
 .vercel
-data/
+# Runtime data — never commit
+data/*.jsonl
+data/memory-api-log*
+data/harvest/
+data/memory-seeds.json
+data/goals.json
+data/world-model.json
+data/elo-ratings.json
+data/drift-state.json
+data/memory-economy.json
+data/feedback-log.json
+data/hint-telemetry.json
+data/prompt-variants.json
+data/reality-tasks.json
+data/verification-state.json
+data/benchmark-report.json
+data/cross-validation.json
+data/goal-benchmarks.json
+data/architect-designs.json
 # Dev tools — never commit
 .workbuddy/
 .codebuddy/
