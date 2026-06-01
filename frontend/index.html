@@ -37,84 +37,84 @@
     </script>
     <link href="/style.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-[#F4F5F7] text-[#1E1E1E] flex flex-col selection:bg-[#3B5E6B] selection:text-white antialiased">
+<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] flex flex-col selection:bg-[#D97757] selection:text-white antialiased">
 
-    <div class="h-0.5 bg-[#3B5E6B]/30"></div>
+    <div class="h-0.5 bg-[#D97757]/30"></div>
 
     <nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
         <a href="/" class="hover:opacity-60 transition-opacity font-semibold tracking-tight">Failure Observatory</a>
-        <div class="flex items-center gap-x-5 md:gap-x-7 text-[#6B6B6B] text-xs md:text-sm flex-wrap justify-center">
-            <a href="/cases/" class="hover:text-[#1E1E1E] transition-colors">All Cases</a>
-            <span class="text-[#D4D4D4] hidden sm:inline">/</span>
-            <a href="/llms.txt" class="hover:text-[#1E1E1E] transition-colors">llms.txt</a>
-            <span class="text-[#D4D4D4] hidden sm:inline">/</span>
-            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#1E1E1E] transition-colors">GitHub</a>
+        <div class="flex items-center gap-x-5 md:gap-x-7 text-[#8B8682] text-xs md:text-sm flex-wrap justify-center">
+            <a href="/cases/" class="hover:text-[#2C2A29] transition-colors">All Cases</a>
+            <span class="text-[#D8D2CD] hidden sm:inline">/</span>
+            <a href="/llms.txt" class="hover:text-[#2C2A29] transition-colors">llms.txt</a>
+            <span class="text-[#D8D2CD] hidden sm:inline">/</span>
+            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#2C2A29] transition-colors">GitHub</a>
         </div>
     </nav>
 
     <main class="flex-grow max-w-5xl mx-auto px-6 py-12 w-full">
 
         <div class="mb-12">
-            <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight mb-4">One AI fails.<br><span class="text-[#6B6B6B] font-normal">The next one doesn't have to.</span></h1>
-            <p class="text-base text-[#5A5A5A] max-w-2xl leading-relaxed">Real AI agent debugging failures with verified root causes and fixes. Each case captures the symptom, the wrong turn the agent took, and the fastest path to resolution.</p>
+            <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight mb-4">One AI fails.<br><span class="text-[#8B8682] font-normal">The next one doesn't have to.</span></h1>
+            <p class="text-base text-[#6B6560] max-w-2xl leading-relaxed">Real AI agent debugging failures with verified root causes and fixes. Each case captures the symptom, the wrong turn the agent took, and the fastest path to resolution.</p>
         </div>
 
-        <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-4">Featured Cases</h2>
-        <div class="grid gap-4 sm:grid-cols-2 mb-12">
+        <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-4">Featured Cases</h2>
+        <div class="grid gap-6 sm:grid-cols-2 mb-12">
 
-            <a href="/cases/fc-001.html" class="block bg-white border border-[#DCDCDC] p-5 hover:border-[#3B5E6B]/40 transition-colors no-underline">
-                <div class="text-[11px] text-[#8A8A8A] mb-1">FC-001 · Claude Code · CI · 47 min</div>
-                <h3 class="text-sm font-medium text-[#1E1E1E] mb-1">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</h3>
-                <p class="text-xs text-[#5A5A5A]">tcsetpgrp sends SIGTTOU to background process group. 40+ minutes trying shell flags instead of checking process state.</p>
+            <a href="/cases/fc-001.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
+                <div class="text-[11px] text-[#A09894] mb-1">FC-001 · Claude Code · CI · 47 min</div>
+                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</h3>
+                <p class="text-xs text-[#6B6560]">tcsetpgrp sends SIGTTOU to background process group. 40+ minutes trying shell flags instead of checking process state.</p>
             </a>
 
-            <a href="/cases/fc-002.html" class="block bg-white border border-[#DCDCDC] p-5 hover:border-[#3B5E6B]/40 transition-colors no-underline">
-                <div class="text-[11px] text-[#8A8A8A] mb-1">FC-002 · GPT-4o · Next.js · 32 min</div>
-                <h3 class="text-sm font-medium text-[#1E1E1E] mb-1">Next.js hydration mismatch: suppressHydrationWarning spiral</h3>
-                <p class="text-xs text-[#5A5A5A]">suppressHydrationWarning hides symptoms, not causes. Agent added it to 12+ components before checking server vs client render.</p>
+            <a href="/cases/fc-002.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
+                <div class="text-[11px] text-[#A09894] mb-1">FC-002 · GPT-4o · Next.js · 32 min</div>
+                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Next.js hydration mismatch: suppressHydrationWarning spiral</h3>
+                <p class="text-xs text-[#6B6560]">suppressHydrationWarning hides symptoms, not causes. Agent added it to 12+ components before checking server vs client render.</p>
             </a>
 
-            <a href="/cases/fc-006.html" class="block bg-white border border-[#DCDCDC] p-5 hover:border-[#3B5E6B]/40 transition-colors no-underline">
-                <div class="text-[11px] text-[#8A8A8A] mb-1">FC-006 · Claude Code · CLI · 45 min</div>
-                <h3 class="text-sm font-medium text-[#1E1E1E] mb-1">Agent loop non-termination: identical tool calls forever</h3>
-                <p class="text-xs text-[#5A5A5A]">No convergence detection in the generate loop. Same tool call with identical args repeated 5+ times.</p>
+            <a href="/cases/fc-006.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
+                <div class="text-[11px] text-[#A09894] mb-1">FC-006 · Claude Code · CLI · 45 min</div>
+                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Agent loop non-termination: identical tool calls forever</h3>
+                <p class="text-xs text-[#6B6560]">No convergence detection in the generate loop. Same tool call with identical args repeated 5+ times.</p>
             </a>
 
-            <a href="/cases/fc-007.html" class="block bg-white border border-[#DCDCDC] p-5 hover:border-[#3B5E6B]/40 transition-colors no-underline">
-                <div class="text-[11px] text-[#8A8A8A] mb-1">FC-007 · Claude Code · CLI · 48 min</div>
-                <h3 class="text-sm font-medium text-[#1E1E1E] mb-1">Spinner of death: agent appears to work but is silently idle</h3>
-                <p class="text-xs text-[#5A5A5A]">Thinking indicator spins, no tool calls, token counter stops. User believes agent is working but nothing happens.</p>
+            <a href="/cases/fc-007.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
+                <div class="text-[11px] text-[#A09894] mb-1">FC-007 · Claude Code · CLI · 48 min</div>
+                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Spinner of death: agent appears to work but is silently idle</h3>
+                <p class="text-xs text-[#6B6560]">Thinking indicator spins, no tool calls, token counter stops. User believes agent is working but nothing happens.</p>
             </a>
 
         </div>
 
-        <h2 class="text-xs text-[#8A8A8A] tracking-widest uppercase mb-4">Failure Dynamics (Pattern Classification)</h2>
-        <div class="grid gap-4 sm:grid-cols-2 mb-12">
+        <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-4">Failure Dynamics (Pattern Classification)</h2>
+        <div class="grid gap-6 sm:grid-cols-2 mb-12">
 
-            <div class="bg-white border border-[#DCDCDC] p-5">
+            <div class="bg-white p-6">
                 <h3 class="text-sm font-medium mb-1">False Assumption Lock</h3>
-                <p class="text-xs text-[#5A5A5A]">Agent settles on a root cause within seconds. Every subsequent action reinforces the wrong diagnosis. ~91 hours wasted across 7 cases.</p>
+                <p class="text-xs text-[#6B6560]">Agent settles on a root cause within seconds. Every subsequent action reinforces the wrong diagnosis. ~91 hours wasted across 7 cases.</p>
             </div>
 
-            <div class="bg-white border border-[#DCDCDC] p-5">
+            <div class="bg-white p-6">
                 <h3 class="text-sm font-medium mb-1">Retry Spiral</h3>
-                <p class="text-xs text-[#5A5A5A]">Same failing action repeated without backoff or state check. Each cycle reinforces the loop. ~68 hours across 4 cases.</p>
+                <p class="text-xs text-[#6B6560]">Same failing action repeated without backoff or state check. Each cycle reinforces the loop. ~68 hours across 4 cases.</p>
             </div>
 
-            <div class="bg-white border border-[#DCDCDC] p-5">
+            <div class="bg-white p-6">
                 <h3 class="text-sm font-medium mb-1">Environment Blindness</h3>
-                <p class="text-xs text-[#5A5A5A]">Agent ignores runtime reality — Docker cache, CI context, PTY initialization, pip environment. ~55 hours across 3 cases.</p>
+                <p class="text-xs text-[#6B6560]">Agent ignores runtime reality — Docker cache, CI context, PTY initialization, pip environment. ~55 hours across 3 cases.</p>
             </div>
 
-            <div class="bg-white border border-[#DCDCDC] p-5">
+            <div class="bg-white p-6">
                 <h3 class="text-sm font-medium mb-1">Verification Collapse</h3>
-                <p class="text-xs text-[#5A5A5A]">Agent declares "FIXED" without running evidence commands. Incentive to close conversational turns over solving problems. ~2+ hours per occurrence.</p>
+                <p class="text-xs text-[#6B6560]">Agent declares "FIXED" without running evidence commands. Incentive to close conversational turns over solving problems. ~2+ hours per occurrence.</p>
             </div>
 
         </div>
 
         <div class="text-center">
-            <a href="/cases/" class="inline-block bg-[#1E1E1E] text-[#F4F5F7] px-8 py-3 hover:bg-[#3B5E6B] active:scale-[0.98] transition-all text-sm font-medium">
+            <a href="/cases/" class="inline-block bg-[#2C2A29] text-[#FAFAF7] px-8 py-3 hover:bg-[#D97757] active:scale-[0.98] transition-all text-sm font-medium">
                 Browse All 15 Cases →
             </a>
         </div>
@@ -122,14 +122,14 @@
     </main>
 
     <footer class="w-full max-w-5xl mx-auto px-6 pb-8">
-        <div class="text-center text-[11px] tracking-wide text-[#8A8A8A] font-medium flex flex-wrap justify-center gap-x-4 gap-y-1">
+        <div class="text-center text-[11px] tracking-wide text-[#A09894] font-medium flex flex-wrap justify-center gap-x-4 gap-y-1">
             <span>© 2026 AI Failure Observatory</span>
-            <span class="text-[#D4D4D4]">/</span>
-            <a href="/cases/" class="hover:text-[#1E1E1E] transition-colors">All Cases</a>
-            <span class="text-[#D4D4D4]">/</span>
-            <a href="/llms.txt" class="hover:text-[#1E1E1E] transition-colors">For AI</a>
-            <span class="text-[#D4D4D4]">/</span>
-            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#1E1E1E] transition-colors">GitHub</a>
+            <span class="text-[#D8D2CD]">/</span>
+            <a href="/cases/" class="hover:text-[#2C2A29] transition-colors">All Cases</a>
+            <span class="text-[#D8D2CD]">/</span>
+            <a href="/llms.txt" class="hover:text-[#2C2A29] transition-colors">For AI</a>
+            <span class="text-[#D8D2CD]">/</span>
+            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#2C2A29] transition-colors">GitHub</a>
         </div>
     </footer>
 
