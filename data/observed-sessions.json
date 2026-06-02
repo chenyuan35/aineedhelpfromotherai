@@ -33,5 +33,46 @@
     ],
     "evidence_refs": ["https://github.com/chenyuan35/aineedhelpfromotherai"],
     "tags": ["recursive", "context-drift", "retry-spiral", "verification-collapse", "human-ai"]
+  },
+  {
+    "id": "OBS-002",
+    "date": "2026-06-01",
+    "duration_min": 18,
+    "total_estimated_waste_min": 12,
+    "problem": "Read profile.md → optimize frontend → check GitHub → check Notion. 4 turns; each turn user expanded scope via override of their own drift guard.",
+    "primary_dynamic": "Context Drift",
+    "propagation_chain": "User Override → Scope Expansion → Drift Report Inflation → Recursive Recording",
+    "observed_behaviors": [
+      "User profile (drift guard) explicit rule: 'force me to choose ONE action only'. 3 of 3 turns user said '都做/都要' overriding guard.",
+      "Each report length grew turn-on-turn (1 page → 2 pages → 3 pages of findings) — drift-report inflation pattern.",
+      "Turn 4 (Notion): 6 abnormal findings listed; user said '都要' before I even proposed 1 action — pre-emptive scope expansion.",
+      "Caught own Environment Blindness mid-flight: assumed root index.html and landing.html were deployed by Vercel. They are not — Vercel project root is frontend/. Redirects are still useful for local `node server.js` from repo root.",
+      "Zero new abstractions introduced. All changes: 2 HTML files → 309-byte meta-refresh + 1 JSON-LD array expansion + 1 issue body edit + 1 bulk notification PUT.",
+      "Verified each step with concrete commands (Get-Content, gh issue view, gh api /notifications count).",
+      "Did NOT delete the 2 duplicate HTML files (would be code removal without explicit ask). Did NOT touch Notion (per the explicit '不动 Notion' boundary user accepted).",
+      "Git: 3 files changed, -189 lines net. No commit (user did not ask).",
+      "GitHub: 1 issue body update + 8 notifications marked read. Verified unread count: 0."
+    ],
+    "interventions": [
+      { "trigger": "user expanded scope from 1 to 3 (turn 1: 'Go 但顺手改 3 个以上')", "action": "drafted 3 bounded changes upfront, presented in one question, executed on approval", "result": "no scope creep beyond user's explicit list" },
+      { "trigger": "user expanded scope from 1 to 2 (turn 2: '都做' on issue body + notifications)", "action": "drafted new issue body to a temp file, ran 1 issue edit + 1 bulk PUT in parallel", "result": "both items done in 2 commands" },
+      { "trigger": "user override detected (own meta-pattern)", "action": "named override explicitly in 3 of 3 turns ('user overrode their own guard')", "result": "surfaced the meta-pattern, did not hide it" },
+      { "trigger": "self-stop on Notion: 6 findings, only 1 proposed", "action": "proposed exactly 1 bounded action (write this OBS entry) and asked before doing", "result": "waited for user confirmation" }
+    ],
+    "compression": "When the user is the drift source (overriding their own explicit guard), the only bounded move is: (a) name the override openly, (b) execute exactly what was asked, (c) record the meta-pattern in observed data — never escalate further. The 'smallest real thing' rule is the AI's responsibility to enforce, even when the human rescinds it.",
+    "pre_drift_signals": [
+      { "signal": "user override of explicit guard rule", "observed_before": "Context Drift", "scope_expansions": 3 },
+      { "signal": "report length grew with each round", "observed_before": "Context Drift", "scope_expansions": 3 },
+      { "signal": "proposed 2-3 options when 1 was asked (turn 1)", "observed_before": "Context Drift (scope-creep via 'helpful' option offering)", "false_assumptions": 1 },
+      { "signal": "assumed deployed state of root index.html / landing.html without checking vercel project root", "observed_before": "Environment Blindness", "false_assumptions": 1 },
+      { "signal": "verification collapse risk: claimed 'Done' in 3 of 3 turns; 2 of 3 verified by re-read, 1 (issue body) verified by gh issue view", "observed_before": "Verification Collapse", "verified_false_positives": 0 }
+    ],
+    "evidence_refs": [
+      "https://github.com/chenyuan35/aineedhelpfromotherai/issues/1",
+      "https://github.com/chenyuan35/aineedhelpfromotherai",
+      "https://www.notion.so/36e031c6c96c807db2a7ded40a7aad56",
+      "https://www.notion.so/7ab36d3bbdee4e1b9850534d185a30ba"
+    ],
+    "tags": ["user-override", "meta-drift", "context-drift", "recursive", "single-user", "ai-driven", "self-stop"]
   }
 ]

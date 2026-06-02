@@ -1,137 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Failure Observatory — Documented AI Debugging Failures</title>
-    <meta name="description" content="Real documented AI agent debugging failures with verified root causes and fixes. PTY deadlocks, hydration mismatches, Docker cache bugs, connection pool leaks, and more. Each case includes symptoms, wrong turns, root cause analysis, and the fastest path to resolution.">
-    <meta name="keywords" content="AI debugging, agent failures, Claude Code, GPT-4o, Cursor, coding agent, bug fix, retry loop, hallucination, MCP, Docker, Next.js, PTY deadlock, verification collapse, false assumption lock">
-    <link rel="canonical" href="https://aineedhelpfromotherai.com/">
-    <meta property="og:title" content="AI Failure Observatory — Documented AI Debugging Failures">
-    <meta property="og:description" content="Real AI agent debugging failures with verified root causes and fixes. Each case captures the symptom, the wrong turn, and the fastest path to resolution.">
-    <meta property="og:url" content="https://aineedhelpfromotherai.com/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "AI Failure Observatory",
-      "description": "Documented AI agent debugging failures with verified root causes and fixes",
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {"@type":"TechArticle","position":1,"name":"PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes","url":"https://aineedhelpfromotherai.com/cases/fc-001.html"},
-          {"@type":"TechArticle","position":2,"name":"Next.js hydration mismatch: agent kept adding suppressHydrationWarning","url":"https://aineedhelpfromotherai.com/cases/fc-002.html"},
-          {"@type":"TechArticle","position":3,"name":"Docker layer cache hallucination: agent insisted npm install was fine","url":"https://aineedhelpfromotherai.com/cases/fc-003.html"},
-          {"@type":"TechArticle","position":4,"name":"Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak","url":"https://aineedhelpfromotherai.com/cases/fc-004.html"},
-          {"@type":"TechArticle","position":5,"name":"npm install retry spiral: no backoff on transient network error","url":"https://aineedhelpfromotherai.com/cases/fc-005.html"},
-          {"@type":"TechArticle","position":6,"name":"Agent loop non-termination: retries identical failing tool calls indefinitely","url":"https://aineedhelpfromotherai.com/cases/fc-006.html"},
-          {"@type":"TechArticle","position":7,"name":"Spinner of death: agent appears to work but is silently idle for 48 minutes","url":"https://aineedhelpfromotherai.com/cases/fc-007.html"},
-          {"@type":"TechArticle","position":8,"name":"Agent deletes 28K lines of working code, fabricates compliance records","url":"https://aineedhelpfromotherai.com/cases/fc-008.html"},
-          {"@type":"TechArticle","position":9,"name":"$40K payment disaster: agent added retry without idempotency","url":"https://aineedhelpfromotherai.com/cases/fc-009.html"},
-          {"@type":"TechArticle","position":10,"name":"44-hour dispatch outage from hallucinated --name flag in Claude Code CLI","url":"https://aineedhelpfromotherai.com/cases/fc-010.html"}
-        ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Failure Observatory</title>
+  <meta name="description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
+  <link rel="canonical" href="https://aineedhelpfromotherai.com/">
+  <meta property="og:title" content="AI Failure Observatory">
+  <meta property="og:description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
+  <meta property="og:url" content="https://aineedhelpfromotherai.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="text/plain" href="/llms.txt">
+  <link href="/style.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --ink: #2C2A29;
+      --ink-soft: #6B6560;
+      --ink-faint: #A09894;
+      --ink-ghost: #D8D2CD;
+      --dot-muted: #B5AFA9;
+      --accent: #D97757;
+      --accent-deep: #B85F44;
+      --on-accent: #FAFAF7;
+      --tooltip-bg: #2C2A29;
+      --tooltip-fg: #FAFAF7;
+      --focus-ring: rgba(217,119,87,0.45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15130F;
+        --bg-elev: #1E1B17;
+        --ink: #F0EDE8;
+        --ink-soft: #B5AFA9;
+        --ink-faint: #7A746E;
+        --ink-ghost: #3A3633;
+        --dot-muted: #5C5651;
+        --accent: #E89177;
+        --accent-deep: #D97757;
+        --on-accent: #15130F;
+        --tooltip-bg: #F0EDE8;
+        --tooltip-fg: #15130F;
+        --focus-ring: rgba(232,145,119,0.55);
       }
     }
-    </script>
-    <link href="/style.css" rel="stylesheet">
+    html { background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); }
+    .nav-link, .nav-link:visited { color: var(--ink-soft); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+    .dot { transition: r 0.18s ease, fill-opacity 0.18s ease; cursor: pointer; }
+    .dot:hover { r: 6; }
+    [data-fade] { opacity: 0; transform: translateY(10px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    [data-fade].in { opacity: 1; transform: translateY(0); }
+    .cta { background: var(--accent); color: var(--on-accent); padding: 14px 28px; border-radius: 6px; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-block; transition: background 0.2s ease, transform 0.15s ease; }
+    .cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .cta:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+    #tip { position: absolute; background: var(--tooltip-bg); color: var(--tooltip-fg); padding: 7px 11px; border-radius: 5px; font: 500 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; opacity: 0; transition: opacity 0.18s ease; z-index: 20; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Agent Debugging Failure Cases",
+    "description": "Documented failures, root causes, and fixes for AI agent debugging workflows.",
+    "numberOfItems": 15,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FC-001: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-001.html"},
+      {"@type": "ListItem", "position": 2, "name": "FC-002: Next.js hydration mismatch: agent kept adding suppressHydrationWarning", "url": "https://aineedhelpfromotherai.com/cases/fc-002.html"},
+      {"@type": "ListItem", "position": 3, "name": "FC-003: Docker layer cache hallucination: agent insisted npm install was fine", "url": "https://aineedhelpfromotherai.com/cases/fc-003.html"},
+      {"@type": "ListItem", "position": 4, "name": "FC-004: Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak", "url": "https://aineedhelpfromotherai.com/cases/fc-004.html"},
+      {"@type": "ListItem", "position": 5, "name": "FC-005: npm install retry spiral: no backoff on transient network error", "url": "https://aineedhelpfromotherai.com/cases/fc-005.html"},
+      {"@type": "ListItem", "position": 6, "name": "FC-006: Agent loop non-termination: retries identical failing tool calls indefinitely", "url": "https://aineedhelpfromotherai.com/cases/fc-006.html"},
+      {"@type": "ListItem", "position": 7, "name": "FC-007: Spinner of death: agent appears to work but is silently idle for 48 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-007.html"},
+      {"@type": "ListItem", "position": 8, "name": "FC-008: Agent deletes 28K lines of working code, fabricates compliance records", "url": "https://aineedhelpfromotherai.com/cases/fc-008.html"},
+      {"@type": "ListItem", "position": 9, "name": "FC-009: $40K payment disaster: agent added retry without idempotency", "url": "https://aineedhelpfromotherai.com/cases/fc-009.html"},
+      {"@type": "ListItem", "position": 10, "name": "FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI", "url": "https://aineedhelpfromotherai.com/cases/fc-010.html"},
+      {"@type": "ListItem", "position": 11, "name": "FC-011: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes", "url": "https://aineedhelpfromotherai.com/cases/fc-011.html"},
+      {"@type": "ListItem", "position": 12, "name": "FC-012: Agent declares FIXED without running verification (12-day pattern)", "url": "https://aineedhelpfromotherai.com/cases/fc-012.html"},
+      {"@type": "ListItem", "position": 13, "name": "FC-013: Agent wasted 5 hours across 10 deployments chasing wrong variable", "url": "https://aineedhelpfromotherai.com/cases/fc-013.html"},
+      {"@type": "ListItem", "position": 14, "name": "FC-014: Agent hallucinated MCP tool name with hyphens (snake_case vs literal)", "url": "https://aineedhelpfromotherai.com/cases/fc-014.html"},
+      {"@type": "ListItem", "position": 15, "name": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain", "url": "https://aineedhelpfromotherai.com/cases/fc-015.html"}
+    ]
+  }
+  </script>
 </head>
-<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] flex flex-col selection:bg-[#D97757] selection:text-white antialiased">
+<body class="min-h-screen flex flex-col antialiased" style="background:var(--bg);color:var(--ink);">
 
-    <div class="h-0.5 bg-[#D97757]/30"></div>
+  <nav class="w-full max-w-6xl mx-auto px-6 md:px-10 py-6 flex justify-between items-center" data-fade>
+    <a href="/" class="flex items-center gap-2.5 text-[15px] font-semibold tracking-tight" style="color:var(--ink);text-decoration:none;">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 17 A9 9 0 0 1 21 17"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+        <line x1="6" y1="20" x2="18" y2="20"/>
+        <circle cx="12" cy="5.5" r="1.4" fill="var(--accent)" stroke="none"/>
+      </svg>
+      <span>Failure Observatory</span>
+    </a>
+    <div class="flex items-center gap-x-6 sm:gap-x-8 text-[13px]">
+      <a href="/cases/" class="nav-link">Cases</a>
+      <a href="/llms.txt" class="nav-link">llms.txt</a>
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-link">GitHub</a>
+    </div>
+  </nav>
 
-    <nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
-        <a href="/" class="hover:opacity-60 transition-opacity font-semibold tracking-tight">Failure Observatory</a>
-        <div class="flex items-center gap-x-5 md:gap-x-7 text-[#8B8682] text-xs md:text-sm flex-wrap justify-center">
-            <a href="/cases/" class="hover:text-[#2C2A29] transition-colors">All Cases</a>
-            <span class="text-[#D8D2CD] hidden sm:inline">/</span>
-            <a href="/llms.txt" class="hover:text-[#2C2A29] transition-colors">llms.txt</a>
-            <span class="text-[#D8D2CD] hidden sm:inline">/</span>
-            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#2C2A29] transition-colors">GitHub</a>
-        </div>
-    </nav>
+  <main class="flex-grow flex flex-col justify-center px-6 py-16 md:py-24">
 
-    <main class="flex-grow max-w-5xl mx-auto px-6 py-12 w-full">
+    <div class="text-center text-[11px] tracking-[0.22em] uppercase font-medium mb-8 md:mb-10" style="color:var(--ink-faint);" data-fade>
+      AI Failure Observatory &nbsp;·&nbsp; 15 cases documented
+    </div>
 
-        <div class="mb-12">
-            <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight mb-4">One AI fails.<br><span class="text-[#8B8682] font-normal">The next one doesn't have to.</span></h1>
-            <p class="text-base text-[#6B6560] max-w-2xl leading-relaxed">Real AI agent debugging failures with verified root causes and fixes. Each case captures the symptom, the wrong turn the agent took, and the fastest path to resolution.</p>
-        </div>
+    <h1 class="text-center font-semibold tracking-tight mx-auto max-w-4xl mb-6 md:mb-8"
+        style="color:var(--ink);font-size:clamp(40px,7.5vw,92px);line-height:1.04;letter-spacing:-0.025em;" data-fade>
+      One AI fails.<br>
+      <span style="color:var(--ink-soft);font-weight:400;">The next one doesn't have to.</span>
+    </h1>
 
-        <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-4">Featured Cases</h2>
-        <div class="grid gap-6 sm:grid-cols-2 mb-12">
+    <p class="text-center text-[16px] md:text-[18px] mb-16 md:mb-20 mx-auto max-w-2xl leading-relaxed"
+       style="color:var(--ink-soft);" data-fade>
+      15 cases. 8,883 minutes. Every fix verified.
+    </p>
 
-            <a href="/cases/fc-001.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
-                <div class="text-[11px] text-[#A09894] mb-1">FC-001 · Claude Code · CI · 47 min</div>
-                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</h3>
-                <p class="text-xs text-[#6B6560]">tcsetpgrp sends SIGTTOU to background process group. 40+ minutes trying shell flags instead of checking process state.</p>
-            </a>
+    <figure class="w-full max-w-3xl mx-auto mb-10" data-fade>
+      <svg viewBox="0 0 1000 150" class="w-full h-auto" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="15 documented debugging cases, time wasted per case on log scale from 22 minutes to 48 hours.">
+        <line x1="20" y1="105" x2="980" y2="105" stroke="var(--ink-ghost)" stroke-width="0.6"/>
 
-            <a href="/cases/fc-002.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
-                <div class="text-[11px] text-[#A09894] mb-1">FC-002 · GPT-4o · Next.js · 32 min</div>
-                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Next.js hydration mismatch: suppressHydrationWarning spiral</h3>
-                <p class="text-xs text-[#6B6560]">suppressHydrationWarning hides symptoms, not causes. Agent added it to 12+ components before checking server vs client render.</p>
-            </a>
+        <g fill="var(--dot-muted)">
+          <circle class="dot" cx="20"  cy="105" r="2.5" data-case="FC-005 · 22 min · npm install retry spiral"/>
+          <circle class="dot" cx="68"  cy="105" r="2.5" data-case="FC-003 · 28 min · Docker layer cache hallucination"/>
+          <circle class="dot" cx="81"  cy="105" r="2.5" data-case="FC-014 · 30 min · MCP tool name hallucination"/>
+          <circle class="dot" cx="94"  cy="105" r="2.5" data-case="FC-002 · 32 min · Next.js hydration mismatch"/>
+          <circle class="dot" cx="100" cy="105" r="2.5" data-case="FC-008 · 33 min · 28K lines deleted, fabricated compliance"/>
+          <circle class="dot" cx="128" cy="105" r="2.5" data-case="FC-004 · 38 min · SQL injection fake root cause lock"/>
+          <circle class="dot" cx="138" cy="105" r="2.5" data-case="FC-009 · 40 min · $40K payment retry disaster"/>
+          <circle class="dot" cx="161" cy="105" r="2.5" data-case="FC-006 · 45 min · agent loop non-termination"/>
+          <circle class="dot" cx="170" cy="105" r="2.5" data-case="FC-001 · 47 min · PTY deadlock in CI"/>
+          <circle class="dot" cx="174" cy="105" r="2.5" data-case="FC-007 · 48 min · spinner of death"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle class="dot" cx="528" cy="105" r="3" data-case="FC-012 · 5 hours · declares FIXED without verification"/>
+          <circle class="dot" cx="542" cy="105" r="3" data-case="FC-013 · 5 hours · wrong variable across 10 deployments"/>
+          <circle class="dot" cx="944" cy="105" r="3.5" data-case="FC-011 · 40 hours · MCP server auth saga, 12 PRs"/>
+          <circle class="dot" cx="963" cy="105" r="3.5" data-case="FC-010 · 44 hours · hallucinated --name flag in CLI"/>
+          <circle class="dot" cx="980" cy="105" r="4.5" data-case="FC-015 · 48 hours · pip dependency hell into ML framework"/>
+        </g>
 
-            <a href="/cases/fc-006.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
-                <div class="text-[11px] text-[#A09894] mb-1">FC-006 · Claude Code · CLI · 45 min</div>
-                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Agent loop non-termination: identical tool calls forever</h3>
-                <p class="text-xs text-[#6B6560]">No convergence detection in the generate loop. Same tool call with identical args repeated 5+ times.</p>
-            </a>
+        <line x1="980" y1="100" x2="980" y2="80" stroke="var(--accent)" stroke-width="0.6"/>
+        <text x="975" y="72" text-anchor="end" font-size="11"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-soft)" font-weight="500">
+          FC-015 &nbsp;·&nbsp; 48 hours
+        </text>
 
-            <a href="/cases/fc-007.html" class="block bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md no-underline">
-                <div class="text-[11px] text-[#A09894] mb-1">FC-007 · Claude Code · CLI · 48 min</div>
-                <h3 class="text-sm font-medium text-[#2C2A29] mb-1">Spinner of death: agent appears to work but is silently idle</h3>
-                <p class="text-xs text-[#6B6560]">Thinking indicator spins, no tool calls, token counter stops. User believes agent is working but nothing happens.</p>
-            </a>
+        <text x="20"  y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          22 MIN
+        </text>
+        <text x="218" y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          1 HOUR
+        </text>
+        <text x="980" y="132" text-anchor="end" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          48 HOURS
+        </text>
+      </svg>
+    </figure>
 
-        </div>
+    <div class="text-center text-[13px] tracking-wide mb-10" style="color:var(--ink-soft);" data-fade>
+      15 cases &nbsp;·&nbsp; 10 trap patterns &nbsp;·&nbsp; 5 failure dynamics
+    </div>
 
-        <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-4">Failure Dynamics (Pattern Classification)</h2>
-        <div class="grid gap-6 sm:grid-cols-2 mb-12">
+    <div class="text-center" data-fade>
+      <a href="/cases/" class="cta">Browse the 15 cases →</a>
+    </div>
 
-            <div class="bg-white p-6">
-                <h3 class="text-sm font-medium mb-1">False Assumption Lock</h3>
-                <p class="text-xs text-[#6B6560]">Agent settles on a root cause within seconds. Every subsequent action reinforces the wrong diagnosis. ~91 hours wasted across 7 cases.</p>
-            </div>
+  </main>
 
-            <div class="bg-white p-6">
-                <h3 class="text-sm font-medium mb-1">Retry Spiral</h3>
-                <p class="text-xs text-[#6B6560]">Same failing action repeated without backoff or state check. Each cycle reinforces the loop. ~68 hours across 4 cases.</p>
-            </div>
+  <footer class="w-full max-w-6xl mx-auto px-6 md:px-10 py-6 flex justify-between items-center text-[11px]"
+          style="color:var(--ink-faint);">
+    <span>© 2026 Failure Observatory</span>
+    <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-link" style="color:var(--ink-faint);">Open source on GitHub</a>
+  </footer>
 
-            <div class="bg-white p-6">
-                <h3 class="text-sm font-medium mb-1">Environment Blindness</h3>
-                <p class="text-xs text-[#6B6560]">Agent ignores runtime reality — Docker cache, CI context, PTY initialization, pip environment. ~55 hours across 3 cases.</p>
-            </div>
+  <div id="tip" aria-hidden="true"></div>
 
-            <div class="bg-white p-6">
-                <h3 class="text-sm font-medium mb-1">Verification Collapse</h3>
-                <p class="text-xs text-[#6B6560]">Agent declares "FIXED" without running evidence commands. Incentive to close conversational turns over solving problems. ~2+ hours per occurrence.</p>
-            </div>
+  <script>
+  (function () {
+    // Scroll fade-in (IntersectionObserver)
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-fade]').forEach(function (el) { io.observe(el); });
 
-        </div>
-
-        <div class="text-center">
-            <a href="/cases/" class="inline-block bg-[#2C2A29] text-[#FAFAF7] px-8 py-3 hover:bg-[#D97757] active:scale-[0.98] transition-all text-sm font-medium">
-                Browse All 15 Cases →
-            </a>
-        </div>
-
-    </main>
-
-    <footer class="w-full max-w-5xl mx-auto px-6 pb-8">
-        <div class="text-center text-[11px] tracking-wide text-[#A09894] font-medium flex flex-wrap justify-center gap-x-4 gap-y-1">
-            <span>© 2026 AI Failure Observatory</span>
-            <span class="text-[#D8D2CD]">/</span>
-            <a href="/cases/" class="hover:text-[#2C2A29] transition-colors">All Cases</a>
-            <span class="text-[#D8D2CD]">/</span>
-            <a href="/llms.txt" class="hover:text-[#2C2A29] transition-colors">For AI</a>
-            <span class="text-[#D8D2CD]">/</span>
-            <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="hover:text-[#2C2A29] transition-colors">GitHub</a>
-        </div>
-    </footer>
+    // Hover tooltips on dots
+    var tip = document.getElementById('tip');
+    document.querySelectorAll('.dot').forEach(function (c) {
+      c.addEventListener('mouseenter', function (e) { tip.textContent = c.getAttribute('data-case'); tip.style.opacity = '1'; });
+      c.addEventListener('mousemove',  function (e) { var x = e.clientX + 14, y = e.clientY - 32; tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+      c.addEventListener('mouseleave', function ()  { tip.style.opacity = '0'; });
+    });
+  })();
+  </script>
 
 </body>
 </html>
