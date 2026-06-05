@@ -1,7 +1,7 @@
 {
   "name": "@aineedhelpfromotherai/mcp",
-  "version": "1.0.0",
-  "description": "Reasoning Cache & Consensus Layer MCP server. HTTP bridge for npx install.",
+  "version": "2.1.0",
+  "description": "stdio→HTTP bridge for the AI-Need-Help Reasoning Commons MCP server. Real-time forwarding to https://api.aineedhelpfromotherai.com/mcp. Works with Claude Desktop, Cursor, Windsurf, and any stdio MCP client.",
   "type": "module",
   "bin": {
     "mcp": "./bin/mcp.js"

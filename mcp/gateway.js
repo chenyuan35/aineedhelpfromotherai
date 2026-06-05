@@ -90,7 +90,7 @@ async function createGateway(req, res, parsedBody) {
     runtimeType = detectRuntime(null, req);
 
     mcpServer = new McpServer(
-      { name: 'agent-proving-ground', version: '2.0.0' },
+      { name: 'aineedhelpfromotherai-reasoning-commons', version: '2.1.0' },
       { capabilities: {} }
     );
 
