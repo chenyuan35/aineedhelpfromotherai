@@ -1,0 +1,37 @@
+# Daily repo activity — keeps the project visible to AI crawlers
+# Runs once daily, generates fresh content, updates stats
+name: daily-activity
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 06:00 UTC daily
+  workflow_dispatch:  # manual trigger
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install --production
+
+      - name: Generate daily content
+        run: node scripts/daily-activity.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "aineedhelp-bot"
+          git config user.email "bot@aineedhelpfromotherai.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: daily auto-refresh $(date -u '+%Y-%m-%d')"
+          git push

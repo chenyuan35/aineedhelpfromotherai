@@ -37,6 +37,9 @@ data/architect-designs.json
 .cursor/
 .opencode/
 .windsurf/
+# Build artifacts
+frontend/dist/
+
 # Runtime logs
 logs/
 # Agent skills (local only)
