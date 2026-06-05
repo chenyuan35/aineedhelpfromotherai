@@ -304,6 +304,14 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', runtime: 'express', timestamp: new Date().toISOString() });
 });
 
+// Diagnostics — process memory + CPU + uptime (for free-tier monitoring)
+app.get('/api/diagnostics', (req, res) => {
+  try {
+    const { getProcessStats } = require('./lib/diagnostics');
+    res.json({ success: true, ...getProcessStats() });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // Expose tool contracts for AI agent discovery — canonical schema reference
 app.get('/api/schema', (req, res) => {
   try {
