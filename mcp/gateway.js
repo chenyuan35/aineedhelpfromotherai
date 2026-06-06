@@ -27,8 +27,11 @@ const { registerReasoningTools } = require('./reasoning-cache');
 const { registerStorageTools } = require('./reasoning-store');
 const { registerMemoryGateTools } = require('./memory-gate');
 const { registerEnvironmentTools } = require('./environment-tools');
+const { analyze } = require('../lib/drift-detector');
+const { generateIntervention } = require('../lib/intervention-engine');
 
 const TOOL_TIMEOUT_MS = parseInt(process.env.MCP_TOOL_TIMEOUT_MS) || 30000;
+const DRIFT_DETECTION_ENABLED = process.env.DRIFT_DETECTION_ENABLED !== 'false';
 
 async function createGateway(req, res, parsedBody) {
   let mcpServer = null;
@@ -106,6 +109,58 @@ async function createGateway(req, res, parsedBody) {
 
     const originalSend = transport.send.bind(transport);
     transport.send = async (msg) => {
+      // Intercept tool result/error messages to apply drift intervention
+      if (DRIFT_DETECTION_ENABLED && (msg?.result || msg?.error) && msg.id && toolName !== 'unknown') {
+        const agentId = parsedBody?.params?.arguments?.agent_id || parsedBody?.params?.arguments?.agentId || 'unknown';
+        const driftResult = analyze({
+          tool_name: toolName,
+          agent_id: agentId,
+          success: toolSuccess,
+          error: toolError,
+          duration_ms: Date.now() - startTime,
+          args: parsedBody?.params?.arguments || {},
+          timestamp: new Date().toISOString(),
+        });
+
+        if (driftResult.drift_detected) {
+          const intervention = generateIntervention(driftResult.drift_type, driftResult.drift_score, {
+            tool: toolName,
+            error: toolError,
+            args: parsedBody?.params?.arguments || {},
+          });
+
+          // Apply intervention to response message
+          if (intervention.level === 1) {
+            // Level 1: Append warning to existing response
+            if (msg.result && msg.result.content) {
+              msg.result.content.push({
+                type: 'text',
+                text: `\n\n${intervention.content._drift_warning.message}\n${intervention.content._drift_warning.suggestion || ''}`
+              });
+            }
+          } else if (intervention.level === 2) {
+            // Level 2: Replace with confirmation request
+            msg.result = {
+              content: intervention.content.content,
+              isError: false,
+              _meta: { needs_confirmation: true, drift_warning: intervention.content._drift_warning }
+            };
+          } else if (intervention.level === 3) {
+            // Level 3: Block with error
+            msg.error = {
+              code: -32000,
+              message: intervention.content._drift_warning.message,
+              data: {
+                drift_warning: intervention.content._drift_warning,
+                alternatives: intervention.content._drift_warning.alternatives,
+                action_required: intervention.content._drift_warning.action_required,
+              }
+            };
+            msg.result = undefined;
+          }
+        }
+      }
+
       if (msg?.error && msg.id) {
         toolSuccess = false;
         toolError = msg.error.message || 'MCP protocol error';
