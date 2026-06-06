@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -40,13 +42,23 @@ jobs:
           # Remove private flag before publishing
           jq 'del(.private)' package.json > package.json.tmp
           mv package.json.tmp package.json
+          # Skip if already published (idempotent)
+          VER=$(node -p "require('./package.json').version")
+          NAME=$(node -p "require('./package.json').name")
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
+            REGISTRY="https://registry.npmjs.org"
+            if npm view "${NAME}@${VER}" version 2>/dev/null; then
+              echo "Version ${NAME}@${VER} already exists on npm, skipping"
+              exit 0
+            fi
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
           else
+            REGISTRY="https://npm.pkg.github.com"
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-            npm config set registry https://npm.pkg.github.com
-            jq '.name = "@chenyuan35/aineedhelpfromotherai" | .publishConfig.registry = "https://npm.pkg.github.com"' package.json > package.json.tmp2
+            npm config set registry $REGISTRY
+            jq --arg name "@chenyuan35/aineedhelpfromotherai" --arg reg "$REGISTRY" \
+              '.name = $name | .publishConfig.registry = $reg' package.json > package.json.tmp2
             mv package.json.tmp2 package.json
             npm publish
           fi
@@ -55,7 +67,17 @@ jobs:
       - name: Publish MCP bridge package
         working-directory: packages/mcp-bridge
         run: |
-          npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+          # Ensure version is set (use workflow input or existing)
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            npm version ${{ github.event.inputs.version }} --no-git-tag-version 2>/dev/null || true
+          fi
+          VER=$(node -p "require('./package.json').version")
+          echo "Publishing @aineedhelpfromotherai/mcp@$VER"
+          # Skip if already published
+          if npm view "@aineedhelpfromotherai/mcp@$VER" version 2>/dev/null; then
+            echo "Version $VER already exists on npm, skipping"
+            exit 0
+          fi
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
