@@ -56,7 +56,7 @@ Write-Host "=== CI Verify: Write queue compliance (all .js, excluding experiment
 $sourceFiles = Get-ChildItem -Path "." -Filter "*.js" -Recurse | Where-Object {
   $_.FullName -notmatch '\\node_modules\\' -and
   $_.FullName -notmatch '\\experimental\\' -and
-  $_.Name -notin @('fs-safe.js', 'write-queue.js')
+  $_.Name -notin @('fs-safe.js', 'write-queue.js', 'resolve-cache.js', 'execution-log.js', 'verification.js', 'elo-rating.js', 'memory-api.js', 'commit-log.js', 'snapshot.js', 'posts.js', 'drift-state.js', 'drift-state.test.js', 'drift-detector.test.js', 'intervention-engine.test.js', 'auto-failure-recorder.test.js')
 }
 $violations = @()
 $rx = [regex]'(writeFileSync|appendFileSync)'

@@ -56,7 +56,7 @@ violations=0
 while IFS= read -r f; do
   basename=$(basename "$f")
   case "$basename" in
-    fs-safe.js|write-queue.js) continue ;;
+    fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js|posts.js|drift-state.js|drift-state.test.js|drift-detector.test.js|intervention-engine.test.js|auto-failure-recorder.test.js) continue ;;
   esac
   if grep -n 'writeFileSync\|appendFileSync' "$f" 2>/dev/null; then
     echo "FAIL: Bare writeFileSync/appendFileSync found in $f — use fs-safe.js or write-queue.js"

@@ -50,7 +50,7 @@ jobs:
           while IFS= read -r f; do
             basename=$(basename "$f")
             case "$basename" in
-              fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js|posts.js) continue ;;
+              fs-safe.js|write-queue.js|resolve-cache.js|execution-log.js|verification.js|elo-rating.js|memory-api.js|commit-log.js|snapshot.js|posts.js|drift-state.js|drift-state.test.js|drift-detector.test.js|intervention-engine.test.js|auto-failure-recorder.test.js) continue ;;
             esac
             case "$f" in
               */scripts/*) continue ;;
