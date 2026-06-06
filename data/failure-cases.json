@@ -574,5 +574,21 @@
     "dynamics": [
       "Environment Blindness"
     ]
+  },
+  {
+    "id": "FC_AUTO_MQ2J677A",
+    "title": "AI agent debugging failure: npm peer dependency conflict",
+    "description": "An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "react 19 installed alongside react 18",
+    "fix": "npm ls react to find duplicate, dedupe",
+    "time_lost_min": 22,
+    "added_at": "2026-06-06T15:51:25.174Z",
+    "source": "daily-auto-generate"
   }
 ]
