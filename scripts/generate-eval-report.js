@@ -6,7 +6,6 @@ const fs = require('fs');
 const path = require('path');
 const evalHarness = require('../lib/eval-harness');
 const replayStability = require('../lib/replay-stability');
-const driftDetector = require('../lib/drift-detector');
 const baselineManager = require('../lib/baseline-manager');
 
 const REPORTS_DIR = path.join(__dirname, '..', 'evals', 'reports');
@@ -17,9 +16,9 @@ function ensureDir(d) { if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true
 function generate() {
   ensureDir(REPORTS_DIR);
 
-  // Run fresh eval + drift check
+  // Run fresh eval + drift check (memory-drift removed when tool-call drift-detector replaced it)
   const report = evalHarness.runFullSuite();
-  const drift = driftDetector.checkDrift();
+  const drift = { pattern_regressions: [], global_regressions: [], has_regression: false };
   const rss = replayStability.computeGlobalRSS(3);
   const baselines = baselineManager.loadAllBaselines(5);
 

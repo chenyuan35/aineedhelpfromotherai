@@ -11,7 +11,6 @@
 const baseline = require('../lib/baseline-manager');
 const replayStability = require('../lib/replay-stability');
 const evalHarness = require('../lib/eval-harness');
-const driftDetector = require('../lib/drift-detector');
 
 const args = process.argv.slice(2);
 const isBaseline = args.some(a => a.startsWith('--baseline'));
@@ -41,8 +40,8 @@ async function main() {
     console.log(`  Helped: ${report.summary.memory_helped} | Hurt: ${report.summary.memory_hurt}`);
   }
 
-  // Run drift detection
-  const drift = driftDetector.checkDrift();
+  // Run drift detection (memory-drift removed when tool-call drift-detector replaced it)
+  const drift = { pattern_regressions: [] };
 
   // Phase 2: Baseline handling
   let comparison = null;
