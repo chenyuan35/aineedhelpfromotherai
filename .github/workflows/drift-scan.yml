@@ -1,0 +1,63 @@
+name: Hourly Drift Scan
+
+on:
+  schedule:
+    # Runs at minute 5 of every hour
+    - cron: '5 * * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  drift-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_ENV: production
+      
+      - name: Run drift scan
+        run: node scripts/drift-scan.js
+        env:
+          NODE_ENV: production
+      
+      - name: Check for new alerts
+        run: |
+          if [ -f data/drift-alerts.jsonl ]; then
+            ALERT_COUNT=$(wc -l < data/drift-alerts.jsonl)
+            echo "drift_alerts_count=$ALERT_COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "drift_alerts_count=0" >> $GITHUB_OUTPUT
+          fi
+        id: alerts
+      
+      - name: Commit drift-state.json if changed
+        if: steps.alerts.outputs.drift_alerts_count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/drift-state.json data/drift-alerts.jsonl || true
+          git diff --staged --quiet || git commit -m "chore: update drift state and alerts [skip ci]"
+          git push || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify on high-severity drifts (optional)
+        if: steps.alerts.outputs.drift_alerts_count != '0'
+        run: |
+          echo "⚠️ Drift scan detected ${{ steps.alerts.outputs.drift_alerts_count }} new high-severity drift alerts"
+          echo "Check the drift-alerts.jsonl file for details"
