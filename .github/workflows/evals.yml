@@ -16,6 +16,9 @@ on:
   push:
     branches: [main, master]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   eval-gate:
     runs-on: ubuntu-latest
