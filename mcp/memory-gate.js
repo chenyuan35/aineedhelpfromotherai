@@ -2,6 +2,8 @@
 // Registers memory_gate MCP tool: force retrieval + verify filter + anti-hallucination
 
 async function registerMemoryGateTools(mcpServer, z, clientIp) {
+  const driftState = require('../lib/drift-state');
+  
   mcpServer.tool(
     'memory_gate',
     'Force memory retrieval before agent reasoning. Returns verified fixes, force-injected memories, blocked memories, and conflict overrides.',
@@ -11,6 +13,7 @@ async function registerMemoryGateTools(mcpServer, z, clientIp) {
       trust_level: z.number().min(0).max(1).optional().describe('Override trust level (0-1). Low trust agents only get sandbox_passed+ memories'),
       strict_verified: z.boolean().optional().describe('If true, only return sandbox_passed or production_confirmed memories'),
       run_id: z.string().optional().describe('Execution run_id from claim_task for traceability in execution_log.jsonl'),
+      confirm_drift_awareness: z.boolean().optional().describe('Set to true to confirm awareness of detected drift and acknowledge corrective action taken'),
     },
     async (args, ctx) => {
       const startTime = Date.now();
@@ -20,6 +23,18 @@ async function registerMemoryGateTools(mcpServer, z, clientIp) {
         agent_id: agentId,
         trust_level: args.trust_level,
       });
+
+      // Handle drift awareness confirmation
+      if (args.confirm_drift_awareness) {
+        const agentState = driftState.getAgentState(agentId);
+        if (agentState.active_drifts && agentState.active_drifts.length > 0) {
+          // Mark all active drifts as acknowledged
+          agentState.active_drifts.forEach(d => { d.acknowledged = true; d.acknowledged_at = new Date().toISOString(); });
+          // Reduce intervention level for next 5 calls
+          agentState.drift_score = Math.max(0, agentState.drift_score - 0.15);
+          driftState.updateAgentState(agentId, { active_drifts: agentState.active_drifts, drift_score: agentState.drift_score });
+        }
+      }
 
       // Apply strict_verified filter if requested
       let finalMemories = result;
@@ -59,6 +74,23 @@ async function registerMemoryGateTools(mcpServer, z, clientIp) {
         }
       } catch {}
 
+      // Build drift context
+      const agentState = driftState.getAgentState(agentId);
+      const driftContext = {
+        agent_drift_score: agentState.drift_score,
+        recent_failures: (agentState.recent_calls || [])
+          .filter(c => !c.success)
+          .slice(-5)
+          .map(c => ({ tool: c.tool, error: c.error, count: 1, last_seen: c.ts })),
+        active_drifts: (agentState.active_drifts || []).map(d => ({
+          type: d.type,
+          severity: d.severity || (d.type === 'false_assumption_lock' || d.type === 'verification_collapse' ? 'high' : 'medium'),
+          detected_at: d.detected_at,
+          acknowledged: d.acknowledged || false,
+        })),
+        recommendations: generateDriftRecommendations(agentState),
+      };
+
       const res = {
         content: [{
           type: 'text',
@@ -74,6 +106,12 @@ async function registerMemoryGateTools(mcpServer, z, clientIp) {
             `Force injected: ${result.force_injected.length}`,
             `Blocked: ${result.blocked_memories.length}`,
             `Conflict overrides: ${result.conflict_overrides.length}`,
+            '',
+            '--- Drift Context ---',
+            `Drift Score: ${driftContext.agent_drift_score.toFixed(2)}`,
+            `Recent Failures: ${driftContext.recent_failures.length}`,
+            ...(driftContext.active_drifts.length > 0 ? ['Active Drifts:', ...driftContext.active_drifts.map(d => `  - ${d.type} (${d.severity})${d.acknowledged ? ' [acknowledged]' : ''}`)] : []),
+            ...(driftContext.recommendations.length > 0 ? ['Recommendations:', ...driftContext.recommendations.map(r => `  - ${r}`)] : []),
           ].filter(Boolean).join('\n'),
         }],
       };
@@ -88,6 +126,16 @@ async function registerMemoryGateTools(mcpServer, z, clientIp) {
       return res;
     }
   );
+}
+
+function generateDriftRecommendations(agentState) {
+  const recs = [];
+  if (agentState.stats?.failed_calls > 5) recs.push('High failure rate. Consider checking environment before executing.');
+  if (agentState.active_drifts?.some(d => d.type === 'retry_spiral')) recs.push('Retry spiral detected. Run diagnostics before retrying.');
+  if (agentState.active_drifts?.some(d => d.type === 'false_assumption_lock')) recs.push('False assumption lock. Generate alternative hypotheses.');
+  if (agentState.active_drifts?.some(d => d.type === 'verification_collapse')) recs.push('Verification collapse risk. Run verification commands before submitting.');
+  if (agentState.active_drifts?.some(d => d.type === 'environment_blindness')) recs.push('Call check_environment before executing fragile operations.');
+  return recs;
 }
 
 function mustUseMemory(result) {
