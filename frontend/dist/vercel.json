@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/api/docs", "destination": "/api/docs/index.html" },
+    { "source": "/api/docs/", "destination": "/api/docs/index.html" },
     { "source": "/openapi.json", "destination": "https://aineedhelpfromotherai.onrender.com/openapi.json" },
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },

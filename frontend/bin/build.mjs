@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { cpSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -14,6 +14,7 @@ execSync('npx @tailwindcss/cli -i src/style.css -o dist/style.css', { cwd: root,
 // Step 2: generate case pages and AI-search answer pages
 execSync('node bin/generate-cases.mjs', { cwd: root, stdio: 'inherit' });
 execSync('node bin/generate-learn.mjs', { cwd: root, stdio: 'inherit' });
+execSync('node bin/generate-product-pages.mjs', { cwd: root, stdio: 'inherit' });
 execSync('node bin/generate-sitemap.mjs', { cwd: root, stdio: 'inherit' });
 
 // Step 3: copy static files to dist
@@ -22,16 +23,13 @@ const files = ['index.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 
 for (const f of files) {
   cpSync(join(root, f), join(dist, f));
 }
-if (existsSync(join(root, 'cases'))) {
-  mkdirSync(join(dist, 'cases'), { recursive: true });
-  for (const f of readdirSync(join(root, 'cases'))) {
-    cpSync(join(root, 'cases', f), join(dist, 'cases', f));
-  }
+function copyDir(name) {
+  const src = join(root, name);
+  if (!existsSync(src) || !statSync(src).isDirectory()) return;
+  cpSync(src, join(dist, name), { recursive: true });
 }
-if (existsSync(join(root, 'learn'))) {
-  mkdirSync(join(dist, 'learn'), { recursive: true });
-  for (const f of readdirSync(join(root, 'learn'))) {
-    cpSync(join(root, 'learn', f), join(dist, 'learn', f));
-  }
+
+for (const dir of ['cases', 'learn', 'how-it-works', 'for-agents', 'for-humans', 'api', 'tasks', 'stats', 'about']) {
+  copyDir(dir);
 }
 console.log('Build complete. dist/ ready for Vercel.');
