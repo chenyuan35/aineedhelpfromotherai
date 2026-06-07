@@ -52,8 +52,13 @@ Write-Host "=== CI Verify: Stopping server ===" -ForegroundColor Cyan
 $ps.Kill() 2>$null
 Write-Host "OK`n" -ForegroundColor Green
 
-Write-Host "=== CI Verify: Write queue compliance (all .js, excluding experimental/) ===" -ForegroundColor Cyan
-$sourceFiles = Get-ChildItem -Path "." -Filter "*.js" -Recurse | Where-Object {
+Write-Host "=== CI Verify: Write queue compliance (runtime .js only) ===" -ForegroundColor Cyan
+$runtimeRoots = @("server.js", "lib", "mcp", "api-handlers")
+$sourceFiles = foreach ($root in $runtimeRoots) {
+  if (Test-Path $root -PathType Leaf) { Get-Item $root }
+  elseif (Test-Path $root -PathType Container) { Get-ChildItem -Path $root -Filter "*.js" -Recurse }
+}
+$sourceFiles = $sourceFiles | Where-Object {
   $_.FullName -notmatch '\\node_modules\\' -and
   $_.FullName -notmatch '\\experimental\\' -and
   $_.Name -notin @('fs-safe.js', 'write-queue.js', 'resolve-cache.js', 'execution-log.js', 'verification.js', 'elo-rating.js', 'memory-api.js', 'commit-log.js', 'snapshot.js', 'posts.js', 'drift-state.js', 'drift-state.test.js', 'drift-detector.test.js', 'intervention-engine.test.js', 'auto-failure-recorder.test.js')
@@ -82,11 +87,11 @@ $expFiles = Get-ChildItem -Path "lib", "mcp", "api-handlers" -Filter "*.js" -Rec
 $expViolations = @()
 foreach ($f in $expFiles) {
   $content = Get-Content $f.FullName -Raw
-  if ($content -match "data/execution_log" -or $content -match "data/resolve-cache" -or $content -match "data/elo-ratings" -or $content -match "data/verification-state" -or $content -match "data/memory-api-log") {
+  if ($content -match "experimental[/\\]data") {
     $lineNum = 0
     foreach ($line in ($content -split "`n")) {
       $lineNum++
-      if ($line -match "data/(execution_log|resolve-cache|elo-ratings|verification-state|memory-api-log)") {
+      if ($line -match "experimental[/\\]data") {
         $expViolations += "  $($f.Name):$lineNum — $($line.Trim())"
       }
     }

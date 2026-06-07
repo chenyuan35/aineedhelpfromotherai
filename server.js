@@ -1328,6 +1328,21 @@ app.get('/api/verification/:id', (req, res) => {
     res.json({ success: true, id: req.params.id, verification: v.getVerificationInfo(req.params.id) });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
+app.get('/api/verification/:id/trust-audit', (req, res) => {
+  try {
+    const v = require('./lib/verification');
+    res.json({ success: true, id: req.params.id, audit: v.getTrustAudit(req.params.id, parseInt(req.query.limit) || 50) });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+app.post('/api/verification/:id/trust', (req, res) => {
+  try {
+    const v = require('./lib/verification');
+    const { trust_tier, actor, detector, evidence_source, reason } = req.body || {};
+    if (!trust_tier) return res.status(400).json({ success: false, error: 'trust_tier is required' });
+    const result = v.setTrustTier(req.params.id, trust_tier, { actor, detector, evidence_source, reason });
+    res.json({ success: true, id: req.params.id, result });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
 app.post('/api/verification/:id/confirm-production', (req, res) => {
   try {
     const v = require('./lib/verification');

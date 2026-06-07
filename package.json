@@ -38,6 +38,7 @@
     "eval:baseline": "node scripts/ci-eval.js --baseline",
     "eval:passk": "node scripts/ci-eval.js --passk=5",
     "eval:rss": "node scripts/ci-eval.js --rss",
+    "test:trust": "node scripts/test-trust-tiers.js",
     "pipeline": "node scripts/reality-pipeline.js",
     "pipeline:harvest": "node scripts/reality-pipeline.js --harvest-only",
     "pipeline:convert": "node scripts/reality-pipeline.js --convert-only",

@@ -75,6 +75,8 @@ GitHub feedback from the MCP memory-server hardening discussion points to a usef
 
 Trust should be a tier on the memory record, not only a prompt shown before an operation.
 
+Implementation note: see `docs/TRUST_TIERS.md` for the runtime distinction between technical `verification_tier` and consumer-facing `trust_tier`.
+
 Recommended record states:
 
 1. `staging` — stored, searchable for audit, not served as trusted guidance
