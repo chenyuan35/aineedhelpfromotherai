@@ -57,7 +57,7 @@
     "prepush": "npm run verify"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "24.x"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
