@@ -18,7 +18,7 @@ execSync('node bin/generate-sitemap.mjs', { cwd: root, stdio: 'inherit' });
 
 // Step 3: copy static files to dist
 mkdirSync(dist, { recursive: true });
-const files = ['index.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 'vercel.json'];
+const files = ['index.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 'vercel.json', 'indexnow-key.txt'];
 for (const f of files) {
   cpSync(join(root, f), join(dist, f));
 }
