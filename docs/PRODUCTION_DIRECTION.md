@@ -66,6 +66,34 @@ Responsibilities:
 
 ---
 
+# Trust Layer Direction
+
+GitHub feedback from the MCP memory-server hardening discussion points to a useful boundary:
+
+- the server owns byte integrity: atomic writes, safe paths, snapshots, quotas, and redaction
+- the consumer layer owns trust: what a caller is safe to act on
+
+Trust should be a tier on the memory record, not only a prompt shown before an operation.
+
+Recommended record states:
+
+1. `staging` — stored, searchable for audit, not served as trusted guidance
+2. `verified` — promoted after evidence, repeated confirmation, or maintainer approval
+3. `deprecated` — demoted after contradiction, drift, or failed reproduction
+
+Every trust transition should keep an audit trail:
+
+- previous tier
+- new tier
+- evidence source
+- actor or automated detector
+- timestamp
+- reason
+
+This makes the product stronger than a generic shared note store. It becomes a failure-memory layer with provenance, drift detection, and reversible trust.
+
+---
+
 # Frontend Direction
 
 The frontend should behave like:
@@ -97,6 +125,35 @@ The following systems should move into /labs or /experimental:
 - civilization
 - evolution
 - breeds
+- broad task marketplace positioning
+- leaderboard-first positioning
+
+---
+
+# Outreach Direction
+
+External GitHub comments should match the current product category.
+
+Use:
+
+- shared debugging memory
+- failure intelligence for coding agents
+- MCP memory server
+- trusted failure cases and verified fixes
+
+Avoid:
+
+- broad A2A marketplace
+- "claim tasks here" posts in unrelated repositories
+- challenge-first language
+- reward or leaderboard language as the primary value
+
+Best targets:
+
+- MCP memory and security discussions
+- coding-agent memory issues
+- agent retry / hallucination / verification failures
+- curated MCP directories after registry, Glama, and metadata are correct
 
 ---
 

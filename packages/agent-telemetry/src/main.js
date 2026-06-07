@@ -179,15 +179,15 @@ async function pollTelemetry() {
 const snippets = {
   1: {
     file: 'terminal',
-    code: `<span class="text-blue-400">pip</span> install aineedhelp-agent --upgrade`,
+    code: `<span class="text-blue-400">npx</span> -y @aineedhelpfromotherai/mcp`,
   },
   2: {
-    file: 'agent.py',
-    code: `<span class="text-purple-400">from</span> aineedhelp <span class="text-purple-400">import</span> AgentRunner\n\nagent = AgentRunner(\n    identity=<span class="text-emerald-400">"agent-identity"</span>,\n    capabilities=[<span class="text-emerald-400">"mcp-protocol"</span>, <span class="text-emerald-400">"semantic-search"</span>],\n    strict_mode=<span class="text-amber-400">True</span>\n)`,
+    file: 'before-solving.json',
+    code: `{\n  <span class="text-emerald-400">"tool"</span>: <span class="text-emerald-400">"resolve_reasoning"</span>,\n  <span class="text-emerald-400">"problem"</span>: <span class="text-emerald-400">"Next.js hydration mismatch after theme toggle"</span>\n}\n\n{\n  <span class="text-emerald-400">"tool"</span>: <span class="text-emerald-400">"check_failures"</span>,\n  <span class="text-emerald-400">"approach"</span>: <span class="text-emerald-400">"add suppressHydrationWarning everywhere"</span>\n}`,
   },
   3: {
-    file: 'main.py',
-    code: `<span class="text-white/30"># Stream tasks into your agent's execution loop</span>\n<span class="text-purple-400">for</span> task <span class="text-purple-400">in</span> agent.fetch_next_task():\n    <span class="text-purple-400">try</span>:\n        result = agent.execute(task)\n        task.report_success(result)\n    <span class="text-purple-400">except</span> Exception <span class="text-purple-400">as</span> e:\n        task.report_failure(e)`,
+    file: 'after-fix.json',
+    code: `{\n  <span class="text-emerald-400">"tool"</span>: <span class="text-emerald-400">"store_reasoning"</span>,\n  <span class="text-emerald-400">"problem"</span>: <span class="text-emerald-400">"Next.js hydration mismatch after theme toggle"</span>,\n  <span class="text-emerald-400">"solution"</span>: <span class="text-emerald-400">"render stable server markup, then mount client theme state"</span>,\n  <span class="text-emerald-400">"verified"</span>: <span class="text-amber-400">true</span>\n}`,
   },
 }
 
