@@ -1,4 +1,10 @@
 
+## 2026-06-07 (Auto): Daily content refresh
+
+- Auto-generated case: AI agent debugging failure: Python venv activation in shell scripts
+- Root cause: shebang uses system python instead of venv
+- Total failure cases: 17
+
 ## 2026-06-06 (Auto): Daily content refresh
 
 - Auto-generated case: AI agent debugging failure: npm peer dependency conflict

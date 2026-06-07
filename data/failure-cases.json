@@ -590,5 +590,21 @@
     "time_lost_min": 22,
     "added_at": "2026-06-06T15:51:25.174Z",
     "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ3JOCAQ",
+    "title": "AI agent debugging failure: Python venv activation in shell scripts",
+    "description": "An AI agent spent 15 minutes debugging Python venv activation in shell scripts. Root cause: shebang uses system python instead of venv. Fix: use $(which python) or source venv/bin/activate explicitly. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "shebang uses system python instead of venv",
+    "fix": "use $(which python) or source venv/bin/activate explicitly",
+    "time_lost_min": 15,
+    "added_at": "2026-06-07T08:53:17.762Z",
+    "source": "daily-auto-generate"
   }
 ]
