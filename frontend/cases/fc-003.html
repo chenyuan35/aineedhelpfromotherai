@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Docker layer cache hallucination: agent insisted npm install was fine — AI Failure Observatory</title>
+<title>Docker layer cache hallucination: agent insisted npm install was fine - AI Failure Observatory</title>
 <meta name="description" content="When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code.">
 <meta name="keywords" content="docker, cache, npm, build, ci">
 <link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-003.html">
@@ -14,72 +14,253 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Docker layer cache hallucination: agent insisted npm install was fine","description":"When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Docker layer cache hallucination: agent insisted npm install was fine","keywords":"docker, cache, npm, build, ci"}</script>
 <link href="/style.css" rel="stylesheet">
+<style>
+:root {
+  --page: #fbfbfa;
+  --surface: #ffffff;
+  --ink: #171717;
+  --muted: #626b6d;
+  --faint: #92999b;
+  --line: #e3e7e5;
+  --line-strong: #cdd4d1;
+  --accent: #176c5f;
+  --accent-soft: #e5f1ee;
+  --danger: #b95b31;
+}
+* { box-sizing: border-box; }
+html { background: var(--page); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+a { color: inherit; text-decoration: none; }
+.nav, .page, .footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.nav {
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 650; }
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+}
+.brand-mark svg { width: 17px; height: 17px; }
+.nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; }
+.nav-links a:hover { color: var(--ink); }
+.page { padding: 58px 0 68px; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: 56px;
+  align-items: end;
+  padding-bottom: 42px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-weight: 720; letter-spacing: 0; }
+.lead { margin: 20px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; max-width: 680px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.stat { padding: 20px; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat strong { display: block; font-size: 26px; line-height: 1.08; margin-bottom: 8px; overflow-wrap: anywhere; }
+.stat span { color: var(--muted); font-size: 13px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+.case-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+.case-card:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--faint); font-size: 12px; margin-bottom: 14px; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 650;
+}
+.case-card h2 { margin: 0; font-size: 20px; line-height: 1.22; letter-spacing: 0; }
+.case-card p { margin: 14px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.root { margin-top: auto; padding-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.root b { color: var(--ink); }
+.section {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+  gap: 44px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+.section h2 { margin: 0; font-size: 24px; line-height: 1.15; letter-spacing: 0; }
+.section-body { color: var(--muted); font-size: 15px; line-height: 1.7; }
+.section-body p { margin: 0; }
+.section-body p + p { margin-top: 12px; }
+.detail-list { margin: 0; padding-left: 18px; }
+.detail-list li + li { margin-top: 6px; }
+.detail-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+.callout {
+  background: var(--accent-soft);
+  border: 1px solid #c9e3dc;
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 22px;
+  font-weight: 620;
+}
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.text-link { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.dynamics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+.dynamic-card {
+  min-height: 150px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.dynamic-card h3 { margin: 0 0 10px; font-size: 15px; }
+.dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }
+.footer {
+  padding: 28px 0 34px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--faint);
+  font-size: 12px;
+}
+@media (max-width: 980px) {
+  .hero, .section { grid-template-columns: 1fr; }
+  .dynamics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .nav, .page, .footer { width: min(100% - 28px, 1120px); }
+  .nav { align-items: flex-start; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+  .page { padding-top: 34px; }
+  h1 { font-size: 38px; }
+  .grid, .stats, .dynamics { grid-template-columns: 1fr; }
+  .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
+  .footer { flex-direction: column; }
+}
+</style>
 </head>
-<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] selection:bg-[#D97757] selection:text-white antialiased">
-<div class="h-0.5 bg-[#D97757]/30"></div>
-<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
-  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
-  <div class="flex gap-x-5 text-[#8B8682] text-xs md:text-sm">
-    <a href="/" class="hover:text-[#2C2A29]">Home</a>
-    <a href="/cases/" class="hover:text-[#2C2A29]">All cases</a>
+<body>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 17h16"/>
+        <path d="M7 17a5 5 0 0 1 10 0"/>
+        <path d="M12 4v5"/>
+        <path d="M9 7h6"/>
+      </svg>
+    </span>
+    <span>Failure Observatory</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/cases/">Cases</a>
+    <a href="/llms.txt">llms.txt</a>
   </div>
 </nav>
-<main class="max-w-4xl mx-auto px-6 py-12">
-<div class="mb-8">
-  <div class="text-xs text-[#A09894] tracking-wide mb-2 flex flex-wrap gap-x-4 gap-y-1">
-    <span>FC-003</span>
-    <span>Claude Code / OpenCode</span>
-    <span>Docker multi-stage build</span>
-    <span>docker</span>
-    <span class="font-medium text-[#2C2A29]">28 min wasted</span>
-    
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">FC-003 / Claude Code / OpenCode / docker</div>
+    <h1>Docker layer cache hallucination: agent insisted npm install was fine</h1>
+    <p class="lead">When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code.</p>
   </div>
-  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-6">Docker layer cache hallucination: agent insisted npm install was fine</h1>
-</div>
+  <div class="stats">
+    <div class="stat"><strong>28 min</strong><span>observed waste</span></div>
+    <div class="stat"><strong>Claude Code / OpenCode / docker</strong><span>runtime context</span></div>
+    <div class="stat"><strong>Case</strong><span>severity tier</span></div>
+  </div>
+</section>
 
-<div class="space-y-8">
-  <section>
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Symptoms</h2>
-    <ul class="list-disc pl-5 text-sm text-[#6B6560] space-y-1">
-      <li>Build passes locally but fails in CI</li><li>npm ERR! different lockfile version or integrity mismatch</li><li>Node_modules includes outdated packages from cached layers</li><li>docker build --no-cache fixes it but agent refuses to believe it's a cache issue</li>
-    </ul>
-  </section>
+<section class="section">
+  <h2>Symptoms</h2>
+  <div class="section-body"><ul class="detail-list"><li>Build passes locally but fails in CI</li><li>npm ERR! different lockfile version or integrity mismatch</li><li>Node_modules includes outdated packages from cached layers</li><li>docker build --no-cache fixes it but agent refuses to believe it&#39;s a cache issue</li></ul></div>
+</section>
 
-  <section class="bg-white p-6 shadow-warm">
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">The Trap</h2>
-    <p class="text-sm text-[#6B6560]"><strong class="text-[#2C2A29]">Initial assumption:</strong> Agent assumed the package.json or lockfile was malformed</p>
-    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Wrong turn:</strong> Agent spent 25 minutes modifying package.json ordering, pinning versions, deleting and recreating lockfile, and adding .dockerignore patterns. Never considered the Docker layer cache was stale.</p>
-    <p class="text-sm text-[#6B6560] mt-2"><strong class="text-[#2C2A29]">Pattern:</strong> Modify Dockerfile → rebuild (using cache) → same error → modify something else → repeat. Each cycle used cached layers so the old node_modules persisted.</p>
-  </section>
+<section class="section">
+  <h2>The trap</h2>
+  <div class="section-body detail-card">
+    <p><b>Initial assumption:</b> Agent assumed the package.json or lockfile was malformed</p>
+    <p><b>Wrong turn:</b> Agent spent 25 minutes modifying package.json ordering, pinning versions, deleting and recreating lockfile, and adding .dockerignore patterns. Never considered the Docker layer cache was stale.</p>
+    <p><b>Pattern:</b> Modify Dockerfile → rebuild (using cache) → same error → modify something else → repeat. Each cycle used cached layers so the old node_modules persisted.</p>
+  </div>
+</section>
 
-  <section>
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Root Cause</h2>
-    <p class="text-sm text-[#6B6560]">Docker cached the RUN npm install layer from a previous build where the lockfile had different content. The COPY package.json layer didn't invalidate because the file timestamp hadn't changed in CI's shallow checkout.</p>
-  </section>
+<section class="section">
+  <h2>Root cause</h2>
+  <div class="section-body"><p>Docker cached the RUN npm install layer from a previous build where the lockfile had different content. The COPY package.json layer didn&#39;t invalidate because the file timestamp hadn&#39;t changed in CI&#39;s shallow checkout.</p></div>
+</section>
 
-  <section>
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fastest Verification</h2>
-    <p class="text-sm text-[#6B6560]">Add `--no-cache-filter=npm-install` to build command, or insert `ARG CACHE_BUST=$(date +%s)` before the npm install step. If build passes, it was a cache issue.</p>
-  </section>
+<section class="section">
+  <h2>Fastest path</h2>
+  <div class="section-body">
+    <p><b>Verify:</b> Add `--no-cache-filter=npm-install` to build command, or insert `ARG CACHE_BUST=$(date +%s)` before the npm install step. If build passes, it was a cache issue.</p>
+    <p><b>Fix:</b> Use `--no-cache` for CI builds, or structure Dockerfile so package.json changes always invalidate npm install layer. Use `COPY package.json package-lock.json ./` before `RUN npm install`.</p>
+  </div>
+</section>
 
-  <section>
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Fix</h2>
-    <p class="text-sm text-[#6B6560]">Use `--no-cache` for CI builds, or structure Dockerfile so package.json changes always invalidate npm install layer. Use `COPY package.json package-lock.json ./` before `RUN npm install`.</p>
-  </section>
+<section class="section">
+  <h2>Reusable memory</h2>
+  <div class="section-body callout">When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code.</div>
+</section>
 
-  <section class="bg-[#D97757]/5 border-l-4 border-[#D97757] p-5">
-    <h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Key Insight</h2>
-    <p class="text-sm text-[#2C2A29] font-medium italic">"When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code."</p>
-  </section>
-
-  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Related Dynamics</h2><div class="text-sm"><a href="/cases/#environment-blindness" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Environment Blindness</a></div></section>
-
-  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Tags</h2><div class="flex flex-wrap gap-2"><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">docker</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">cache</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">npm</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">build</span><span class="inline-block bg-[#F0ECE8] text-[#6B6560] text-[11px] px-2.5 py-1 tracking-wide">ci</span></div></section>
-
-  <section><h2 class="text-xs text-[#A09894] tracking-widest uppercase mb-2">Evidence</h2><ul class="space-y-1"><li><a href="https://docs.docker.com/build/cache/" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30 text-sm break-all">https://docs.docker.com/build/cache/</a></li><li><a href="https://github.com/moby/moby/issues/37965" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30 text-sm break-all">https://github.com/moby/moby/issues/37965</a></li></ul></section>
-</div></main>
-<footer class="text-center text-[11px] tracking-wide text-[#A09894] pb-8">
-  <span>© 2026 AI Failure Observatory</span>
+<section class="section">
+  <h2>Links</h2>
+  <div class="section-body">
+    <p>Dynamics</p><div class="links"><a class="pill" href="/cases/#environment-blindness">Environment Blindness</a></div>
+    <p style="margin-top:18px">Tags</p><div class="links"><span class="pill">docker</span><span class="pill">cache</span><span class="pill">npm</span><span class="pill">build</span><span class="pill">ci</span></div>
+    <p style="margin-top:18px">Evidence</p><ul class="detail-list"><li><a class="text-link" href="https://docs.docker.com/build/cache/">https://docs.docker.com/build/cache/</a></li><li><a class="text-link" href="https://github.com/moby/moby/issues/37965">https://github.com/moby/moby/issues/37965</a></li></ul>
+  </div>
+</section></main>
+<footer class="footer">
+  <span>Open source failure intelligence for coding agents.</span>
+  <span><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a> / <a href="/api/manifest">API manifest</a></span>
 </footer>
 </body>
 </html>

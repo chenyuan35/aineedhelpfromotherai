@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes - AI Failure Observatory</title>
-<meta name="description" content="MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.">
-<meta name="keywords" content="mcp, authentication, oauth, architecture, documentation">
-<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc-011.html">
-<meta property="og:title" content="MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes">
-<meta property="og:description" content="MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.">
-<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc-011.html">
+<title>AI agent debugging failure: npm peer dependency conflict - AI Failure Observatory</title>
+<meta name="description" content="An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.">
+<meta name="keywords" content="">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/cases/fc_auto_mq2j677a.html">
+<meta property="og:title" content="AI agent debugging failure: npm peer dependency conflict">
+<meta property="og:description" content="An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/cases/fc_auto_mq2j677a.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes","description":"MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes","keywords":"mcp, authentication, oauth, architecture, documentation"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"AI agent debugging failure: npm peer dependency conflict","description":"An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: AI agent debugging failure: npm peer dependency conflict","keywords":""}</script>
 <link href="/style.css" rel="stylesheet">
 <style>
 :root {
@@ -207,57 +207,50 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
 <main class="page">
 <section class="hero">
   <div>
-    <div class="eyebrow">FC-011 / Claude Code / gcp</div>
-    <h1>MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</h1>
-    <p class="lead">MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.</p>
+    <div class="eyebrow">FC_AUTO_MQ2J677A / - / node</div>
+    <h1>AI agent debugging failure: npm peer dependency conflict</h1>
+    <p class="lead">An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</p>
   </div>
   <div class="stats">
-    <div class="stat"><strong>40 hours</strong><span>observed waste</span></div>
-    <div class="stat"><strong>Claude Code / gcp</strong><span>runtime context</span></div>
-    <div class="stat"><strong>Critical</strong><span>severity tier</span></div>
+    <div class="stat"><strong>22 min</strong><span>observed waste</span></div>
+    <div class="stat"><strong>- / node</strong><span>runtime context</span></div>
+    <div class="stat"><strong>Case</strong><span>severity tier</span></div>
   </div>
 </section>
 
 <section class="section">
   <h2>Symptoms</h2>
-  <div class="section-body"><ul class="detail-list"><li>MCP server authentication fails intermittently</li><li>Agent session loses connection after variable time periods</li><li>Different fixes work temporarily then stop</li><li>Multiple root causes each masked the next</li><li>OAuth and API key auth methods conflicted</li></ul></div>
+  <div class="section-body"><ul class="detail-list"><li>An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</li></ul></div>
 </section>
 
 <section class="section">
   <h2>The trap</h2>
   <div class="section-body detail-card">
-    <p><b>Initial assumption:</b> Agent assumed it was a simple API key configuration issue</p>
-    <p><b>Wrong turn:</b> Agent spent 40+ hours across 7 sessions and multiple machines chasing a chain of 4 root causes: wrong auth method (API key vs OAuth), port conflict from proxy launcher, GOOGLE_APPLICATION_CREDENTIALS path injection failing silently, and a Google Workspace admin policy requiring reauthentication every 16 hours. Each fix addressed exactly one link in the chain.</p>
-    <p><b>Pattern:</b> Fix one cause → deploy → works for a few hours → fails → new session, new agent, new diagnosis → fix next cause → repeat. Each session started fresh without the context of the previous debugging.</p>
+    <p><b>Initial assumption:</b> An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</p>
+    <p><b>Wrong turn:</b> -</p>
+    
   </div>
 </section>
 
 <section class="section">
   <h2>Root cause</h2>
-  <div class="section-body"><p>The MCP server used a completely wrong architecture: a local proxy/launcher with OAuth flow, port forwarding, credential injection, and 105 lines of complex setup code. The actual solution was pointing Claude Code at Google&#39;s remote MCP endpoint with a simple API key in a request header — a one-line CLI command.</p></div>
+  <div class="section-body"><p>react 19 installed alongside react 18</p></div>
 </section>
 
 <section class="section">
   <h2>Fastest path</h2>
   <div class="section-body">
-    <p><b>Verify:</b> Read the target MCP server&#39;s documentation FIRST. The Stitch documentation had clear instructions for API key authentication the entire time. The complex proxy/launcher architecture was built because the agent never checked the actual docs.</p>
-    <p><b>Fix:</b> 105 lines of launcher code replaced with nothing. Each machine runs a one-line CLI command once, MCP server connects directly to Google&#39;s endpoint with a standard API key. No proxy, no OAuth, no credential file injection.</p>
+    <p><b>Verify:</b> -</p>
+    <p><b>Fix:</b> npm ls react to find duplicate, dedupe</p>
   </div>
 </section>
 
 <section class="section">
   <h2>Reusable memory</h2>
-  <div class="section-body callout">MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts.</div>
+  <div class="section-body callout">An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</div>
 </section>
 
-<section class="section">
-  <h2>Links</h2>
-  <div class="section-body">
-    <p>Dynamics</p><div class="links"><a class="pill" href="/cases/#false-assumption-lock">False Assumption Lock</a><a class="pill" href="/cases/#context-drift">Context Drift</a></div>
-    <p style="margin-top:18px">Tags</p><div class="links"><span class="pill">mcp</span><span class="pill">authentication</span><span class="pill">oauth</span><span class="pill">architecture</span><span class="pill">documentation</span></div>
-    <p style="margin-top:18px">Evidence</p><ul class="detail-list"><li><a class="text-link" href="https://venturecrane.com/articles/forty-hours-one-auth-bug/">https://venturecrane.com/articles/forty-hours-one-auth-bug/</a></li></ul>
-  </div>
-</section></main>
+</main>
 <footer class="footer">
   <span>Open source failure intelligence for coding agents.</span>
   <span><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a> / <a href="/api/manifest">API manifest</a></span>

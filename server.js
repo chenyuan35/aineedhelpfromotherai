@@ -1886,12 +1886,11 @@ app.get('/benchmarks', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'benchmarks.html'));
 });
 
-// Root path — AI user-agent detection: return JSON for AI, HTML for humans
+// Root path — AI client detection: return JSON for explicit AI/API clients,
+// but keep search crawlers on HTML so the product site can be indexed.
 const AI_USER_AGENTS = [
-  'claude', 'chatgpt', 'gpt', 'openai', 'anthropic', 'googlebot', 'bingbot',
-  'duckduckbot', 'slurp', 'baiduspider', 'yandexbot', 'sogou', 'exabot',
-  'facebot', 'ia_archiver', 'applebot', 'teoma', 'crawler', 'spider',
-  'bot/', 'ai21', 'cohere', 'perplexity', 'mistral', 'llama', 'gemini',
+  'claude', 'chatgpt', 'gpt', 'openai', 'anthropic',
+  'ai21', 'cohere', 'perplexity', 'mistral', 'llama', 'gemini',
   'qwen', 'deepseek', 'grok', 'claude-web', 'o1', 'o3', 'gpt-4', 'gpt-5'
 ];
 
@@ -1910,8 +1909,12 @@ app.get('/', (req, res) => {
     return handlers.status(req, res);
   }
 
-  // Human: serve landing page (product narrative) instead of SPA index
-  res.sendFile(path.join(__dirname, 'landing.html'));
+  // Human: serve the product frontend.
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
+app.get('/cases/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'cases', 'index.html'));
 });
 
 // SPA fallback (Express 5 compatible) — serve Vite build

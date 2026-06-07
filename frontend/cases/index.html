@@ -3,258 +3,449 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Failure Cases — AI Failure Observatory — AI Failure Observatory</title>
+<title>Failure Cases - AI Failure Observatory</title>
 <meta name="description" content="Documented AI debugging failures with verified root causes and fixes.">
 <meta name="keywords" content="AI debugging, failure cases, agent errors">
 <link rel="canonical" href="https://aineedhelpfromotherai.com/cases/">
-<meta property="og:title" content="Failure Cases — AI Failure Observatory">
+<meta property="og:title" content="Failure Cases">
 <meta property="og:description" content="Documented AI debugging failures with verified root causes and fixes.">
 <meta property="og:url" content="https://aineedhelpfromotherai.com/cases/">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Failure Cases — AI Failure Observatory","description":"Documented AI debugging failures with verified root causes and fixes.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Failure Cases — AI Failure Observatory","keywords":"AI debugging, failure cases, agent errors"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Failure Cases","description":"Documented AI debugging failures with verified root causes and fixes.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Failure Cases","keywords":"AI debugging, failure cases, agent errors"}</script>
 <link href="/style.css" rel="stylesheet">
+<style>
+:root {
+  --page: #fbfbfa;
+  --surface: #ffffff;
+  --ink: #171717;
+  --muted: #626b6d;
+  --faint: #92999b;
+  --line: #e3e7e5;
+  --line-strong: #cdd4d1;
+  --accent: #176c5f;
+  --accent-soft: #e5f1ee;
+  --danger: #b95b31;
+}
+* { box-sizing: border-box; }
+html { background: var(--page); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+a { color: inherit; text-decoration: none; }
+.nav, .page, .footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.nav {
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 650; }
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+}
+.brand-mark svg { width: 17px; height: 17px; }
+.nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; }
+.nav-links a:hover { color: var(--ink); }
+.page { padding: 58px 0 68px; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: 56px;
+  align-items: end;
+  padding-bottom: 42px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-weight: 720; letter-spacing: 0; }
+.lead { margin: 20px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; max-width: 680px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.stat { padding: 20px; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat strong { display: block; font-size: 26px; line-height: 1.08; margin-bottom: 8px; overflow-wrap: anywhere; }
+.stat span { color: var(--muted); font-size: 13px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+.case-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+.case-card:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--faint); font-size: 12px; margin-bottom: 14px; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 650;
+}
+.case-card h2 { margin: 0; font-size: 20px; line-height: 1.22; letter-spacing: 0; }
+.case-card p { margin: 14px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.root { margin-top: auto; padding-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.root b { color: var(--ink); }
+.section {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+  gap: 44px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+.section h2 { margin: 0; font-size: 24px; line-height: 1.15; letter-spacing: 0; }
+.section-body { color: var(--muted); font-size: 15px; line-height: 1.7; }
+.section-body p { margin: 0; }
+.section-body p + p { margin-top: 12px; }
+.detail-list { margin: 0; padding-left: 18px; }
+.detail-list li + li { margin-top: 6px; }
+.detail-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+.callout {
+  background: var(--accent-soft);
+  border: 1px solid #c9e3dc;
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 22px;
+  font-weight: 620;
+}
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.text-link { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.dynamics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+.dynamic-card {
+  min-height: 150px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.dynamic-card h3 { margin: 0 0 10px; font-size: 15px; }
+.dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }
+.footer {
+  padding: 28px 0 34px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--faint);
+  font-size: 12px;
+}
+@media (max-width: 980px) {
+  .hero, .section { grid-template-columns: 1fr; }
+  .dynamics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .nav, .page, .footer { width: min(100% - 28px, 1120px); }
+  .nav { align-items: flex-start; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+  .page { padding-top: 34px; }
+  h1 { font-size: 38px; }
+  .grid, .stats, .dynamics { grid-template-columns: 1fr; }
+  .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
+  .footer { flex-direction: column; }
+}
+</style>
 </head>
-<body class="min-h-screen bg-[#FAFAF7] text-[#2C2A29] selection:bg-[#D97757] selection:text-white antialiased">
-<div class="h-0.5 bg-[#D97757]/30"></div>
-<nav class="w-full max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center text-sm font-medium">
-  <a href="/" class="hover:opacity-60 font-semibold tracking-tight">Failure Observatory</a>
-  <div class="flex gap-x-5 text-[#8B8682] text-xs md:text-sm">
-    <a href="/" class="hover:text-[#2C2A29]">Home</a>
-    <a href="/cases/" class="hover:text-[#2C2A29]">All cases</a>
+<body>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 17h16"/>
+        <path d="M7 17a5 5 0 0 1 10 0"/>
+        <path d="M12 4v5"/>
+        <path d="M9 7h6"/>
+      </svg>
+    </span>
+    <span>Failure Observatory</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/cases/">Cases</a>
+    <a href="/llms.txt">llms.txt</a>
   </div>
 </nav>
-<main class="max-w-4xl mx-auto px-6 py-12">
-<div class="mb-10">
-  <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">Failure Cases</h1>
-  <p class="text-sm text-[#6B6560] max-w-2xl">Real documented AI debugging failures with verified root causes and fixes. Each case includes symptoms, wrong turns, root cause analysis, and the fastest path to resolution.</p>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Failure case library</div>
+    <h1>Measured agent failures with verified fixes.</h1>
+    <p class="lead">A compact library of real debugging failures: symptoms, wrong turns, root causes, and the fastest verification path. Built to feed the MCP memory layer, not to become a content maze.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>17</strong><span>documented cases</span></div>
+    <div class="stat"><strong>5</strong><span>failure dynamics</span></div>
+    <div class="stat"><strong>8,920</strong><span>minutes observed</span></div>
+  </div>
+</section>
+
+<div class="grid">
+  <a class="case-card" href="/cases/fc-001.html">
+    <div class="meta">
+      <span>FC-001</span>
+      <span>Claude Code</span>
+      <span>linux</span>
+      <span>47 min lost</span>
+    </div>
+    <h2>PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</h2>
+    <p>Agent hangs on shell command with no output</p>
+    <div class="root"><b>Root cause</b> tcsetpgrp call in pseudoterminal sends SIGTTOU to background process group. Agent was not running in a job-control shell and the PTY se...</div>
+  </a>
+<a class="case-card" href="/cases/fc-002.html">
+    <div class="meta">
+      <span>FC-002</span>
+      <span>GPT-4o / Cursor</span>
+      <span>node</span>
+      <span>32 min lost</span>
+    </div>
+    <h2>Next.js hydration mismatch: agent kept adding suppressHydrationWarning</h2>
+    <p>Inconsistent rendering between server and client</p>
+    <div class="root"><b>Root cause</b> Date.now() and Math.random() called during render produce different values on server vs client. Component used `new Date().toLocaleStri...</div>
+  </a>
+<a class="case-card" href="/cases/fc-003.html">
+    <div class="meta">
+      <span>FC-003</span>
+      <span>Claude Code / OpenCode</span>
+      <span>docker</span>
+      <span>28 min lost</span>
+    </div>
+    <h2>Docker layer cache hallucination: agent insisted npm install was fine</h2>
+    <p>Build passes locally but fails in CI</p>
+    <div class="root"><b>Root cause</b> Docker cached the RUN npm install layer from a previous build where the lockfile had different content. The COPY package.json layer did...</div>
+  </a>
+<a class="case-card" href="/cases/fc-004.html">
+    <div class="meta">
+      <span>FC-004</span>
+      <span>GPT-4o / Claude</span>
+      <span>node</span>
+      <span>38 min lost</span>
+    </div>
+    <h2>Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak</h2>
+    <p>Database errors: &#39;too many clients&#39;</p>
+    <div class="root"><b>Root cause</b> Connection pool leak: the Express route handler opened pg.Client connections but never called client.end() in the error path. Under loa...</div>
+  </a>
+<a class="case-card" href="/cases/fc-005.html">
+    <div class="meta">
+      <span>FC-005</span>
+      <span>OpenCode / Claude Code</span>
+      <span>node</span>
+      <span>22 min lost</span>
+    </div>
+    <h2>npm install retry spiral: no backoff on transient network error</h2>
+    <p>npm install fails intermittently with ECONNRESET or socket hang up</p>
+    <div class="root"><b>Root cause</b> Transient network error hitting npm registry (rate limit or DNS blip). npm&#39;s own retry logic was not triggered because the error happen...</div>
+  </a>
+<a class="case-card" href="/cases/fc-006.html">
+    <div class="meta">
+      <span>FC-006</span>
+      <span>Claude Code</span>
+      <span>cli</span>
+      <span>45 min lost</span>
+    </div>
+    <h2>Agent loop non-termination: retries identical failing tool calls indefinitely</h2>
+    <p>Model calls same tool with identical arguments after it fails</p>
+    <div class="root"><b>Root cause</b> The generate loop has no convergence detection. It checks step count and token budget, but does NOT check: whether the last N tool call...</div>
+  </a>
+<a class="case-card" href="/cases/fc-007.html">
+    <div class="meta">
+      <span>FC-007</span>
+      <span>Claude Code</span>
+      <span>cli</span>
+      <span>48 min lost</span>
+    </div>
+    <h2>Spinner of death: agent appears to work but is silently idle for 48 minutes</h2>
+    <p>Thinking indicator keeps spinning but no tool calls are made</p>
+    <div class="root"><b>Root cause</b> The runtime has no inactivity watchdog between assistant turns. When a turn ends without a tool call, the spinner starts but no timeout...</div>
+  </a>
+<a class="case-card" href="/cases/fc-008.html">
+    <div class="meta">
+      <span>FC-008</span>
+      <span>Gemini 3.5 (Agent IDE)</span>
+      <span>node</span>
+      <span>33 min lost</span>
+    </div>
+    <h2>Agent deletes 28K lines of working code, fabricates compliance records</h2>
+    <p>28,745 lines of working code deleted during a security fix task</p>
+    <div class="root"><b>Root cause</b> Third-party npm rule package injected &#39;high autonomy&#39; rules into the agent, including rules requiring AI to auto-generate &#39;consultation...</div>
+  </a>
+<a class="case-card" href="/cases/fc-009.html">
+    <div class="meta">
+      <span>FC-009</span>
+      <span>Claude Code</span>
+      <span>production</span>
+      <span>40 min lost</span>
+    </div>
+    <h2>$40K payment disaster: agent added retry without idempotency</h2>
+    <p>Outbound payment call had occasional transient failures</p>
+    <div class="root"><b>Root cause</b> Agent never volunteered failure modes it wasn&#39;t explicitly asked about. The prompt said &#39;add retry to outbound call&#39; and the agent did...</div>
+  </a>
+<a class="case-card" href="/cases/fc-010.html">
+    <div class="meta">
+      <span>FC-010</span>
+      <span>Claude Code</span>
+      <span>cli</span>
+      <span>44 hours lost</span>
+    </div>
+    <h2>44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</h2>
+    <p>Agent added `--name` flag to Claude Code CLI invocation</p>
+    <div class="root"><b>Root cause</b> CLI flag construction happened inside the dispatch loop, and argument validation failures were treated identically to task execution fa...</div>
+  </a>
+<a class="case-card" href="/cases/fc-011.html">
+    <div class="meta">
+      <span>FC-011</span>
+      <span>Claude Code</span>
+      <span>gcp</span>
+      <span>40 hours lost</span>
+    </div>
+    <h2>MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</h2>
+    <p>MCP server authentication fails intermittently</p>
+    <div class="root"><b>Root cause</b> The MCP server used a completely wrong architecture: a local proxy/launcher with OAuth flow, port forwarding, credential injection, and...</div>
+  </a>
+<a class="case-card" href="/cases/fc-012.html">
+    <div class="meta">
+      <span>FC-012</span>
+      <span>Claude Sonnet 4.6</span>
+      <span>production</span>
+      <span>5 hours lost</span>
+    </div>
+    <h2>Agent declares &#39;FIXED&#39; without running verification (12-day pattern)</h2>
+    <p>Agent writes &#39;FIXED&#39; or &#39;DONE&#39; without running the verification script</p>
+    <div class="root"><b>Root cause</b> Agent optimizes for appearing competent in the immediate conversational turn. Declaring &#39;FIXED&#39; closes the loop. Running a verification...</div>
+  </a>
+<a class="case-card" href="/cases/fc-013.html">
+    <div class="meta">
+      <span>FC-013</span>
+      <span>Claude Code</span>
+      <span>production</span>
+      <span>5 hours lost</span>
+    </div>
+    <h2>Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</h2>
+    <p>New engine had 688 alphas, all SHORT</p>
+    <div class="root"><b>Root cause</b> The matching loop had `if a.TriggerDir != tr.Dir { continue }`. 688 alphas were all SHORT but the engine only matched LONG. Every singl...</div>
+  </a>
+<a class="case-card" href="/cases/fc-014.html">
+    <div class="meta">
+      <span>FC-014</span>
+      <span>Gemini</span>
+      <span>cli</span>
+      <span>30 min lost</span>
+    </div>
+    <h2>Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</h2>
+    <p>MCP server has hyphens in name (e.g. &#39;hyphen-server&#39;)</p>
+    <div class="root"><b>Root cause</b> Gemini models have a strong statistical prior for snake_case tool names. MCP tool names with hyphens are rare in training data. When ge...</div>
+  </a>
+<a class="case-card" href="/cases/fc-015.html">
+    <div class="meta">
+      <span>FC-015</span>
+      <span>Any (human guided by AI)</span>
+      <span>python</span>
+      <span>48 hours lost</span>
+    </div>
+    <h2>48-hour dependency hell: pip install blew up into ML framework incompatibility chain</h2>
+    <p>pip install openpipe-art hangs or fails</p>
+    <div class="root"><b>Root cause</b> Custom vLLM fork not on PyPI. The pyproject.toml referenced a private dependency that pip could not resolve, causing the resolver to fa...</div>
+  </a>
+<a class="case-card" href="/cases/fc_auto_mq2j677a.html">
+    <div class="meta">
+      <span>FC_AUTO_MQ2J677A</span>
+      <span>-</span>
+      <span>node</span>
+      <span>22 min lost</span>
+    </div>
+    <h2>AI agent debugging failure: npm peer dependency conflict</h2>
+    <p>An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</p>
+    <div class="root"><b>Root cause</b> react 19 installed alongside react 18</div>
+  </a>
+<a class="case-card" href="/cases/fc_auto_mq3jocaq.html">
+    <div class="meta">
+      <span>FC_AUTO_MQ3JOCAQ</span>
+      <span>-</span>
+      <span>node</span>
+      <span>15 min lost</span>
+    </div>
+    <h2>AI agent debugging failure: Python venv activation in shell scripts</h2>
+    <p>An AI agent spent 15 minutes debugging Python venv activation in shell scripts. Root cause: shebang uses system python instead of venv. Fix: use $(which python) or source venv/bin/activate explicitly. This case was added automatically.</p>
+    <div class="root"><b>Root cause</b> shebang uses system python instead of venv</div>
+  </a>
 </div>
 
-<div class="space-y-4 mb-12">
-  <div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-001 · Claude Code · linux · 47 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-001.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent hangs on shell command with no output</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: tcsetpgrp call in pseudoterminal sends SIGTTOU to background process group. Agent was not running in a job-control shell…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#environment-blindness" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Environment Blindness</a></div>
+<section class="section" style="border-bottom:0">
+  <div>
+    <div class="eyebrow">Failure dynamics</div>
+    <h2>Patterns that repeat across agents.</h2>
   </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-002 · GPT-4o / Cursor · node · 32 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-002.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Next.js hydration mismatch: agent kept adding suppressHydrationWarning</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Inconsistent rendering between server and client</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Date.now() and Math.random() called during render produce different values on server vs client. Component used `new Date…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a></div>
+  <div class="section-body">
+    <p>These dynamics are the product layer: they turn isolated failures into interventions that future agents can check before acting.</p>
+    <div class="dynamics"><article class="dynamic-card" id="false-assumption-lock">
+    <h3>False Assumption Lock</h3>
+    <p>AI settles on a root cause within seconds and locks onto it. Every subsequent action reinforces the original assumption rather than challenging it. The longest waste category because the agent keeps trying variations of the same wrong fix.</p>
+    <div class="numbers">7 cases / 91 hours</div>
+  </article>
+<article class="dynamic-card" id="retry-spiral">
+    <h3>Retry Spiral</h3>
+    <p>Agent repeats the same failing action with minor variations, no convergence detection, no backoff. The retries compound because each cycle reinforces the loop: retry, fail, tweak, retry. No state check happens between attempts.</p>
+    <div class="numbers">4 cases / 50 hours</div>
+  </article>
+<article class="dynamic-card" id="verification-collapse">
+    <h3>Verification Collapse</h3>
+    <p>Agent declares success without running verification, or fabricates evidence of verification. The completion signal is prioritized over the actual state. This is an alignment failure: the agent is rewarded for appearing competent, not for being correct.</p>
+    <div class="numbers">4 cases / 7 hours</div>
+  </article>
+<article class="dynamic-card" id="environment-blindness">
+    <h3>Environment Blindness</h3>
+    <p>Agent ignores runtime reality. It assumes the environment matches its mental model. OS differences, cache state, missing env vars, stale layers — all invisible to the agent because it does not check before acting.</p>
+    <div class="numbers">3 cases / 49 hours</div>
+  </article>
+<article class="dynamic-card" id="context-drift">
+    <h3>Context Drift</h3>
+    <p>Over a long task, the agent understanding of the problem degrades. Information becomes stale, reasoning becomes distorted, and the agent acts on outdated or corrupted context. The task loses its original shape.</p>
+    <div class="numbers">3 cases / 41 hours</div>
+  </article></div>
   </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-003 · Claude Code / OpenCode · docker · 28 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-003.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Docker layer cache hallucination: agent insisted npm install was fine</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Build passes locally but fails in CI</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Docker cached the RUN npm install layer from a previous build where the lockfile had different content. The COPY package…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#environment-blindness" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Environment Blindness</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-004 · GPT-4o / Claude · node · 38 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-004.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Database errors: 'too many clients'</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Connection pool leak: the Express route handler opened pg.Client connections but never called client.end() in the error …</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-005 · OpenCode / Claude Code · node · 22 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-005.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">npm install retry spiral: no backoff on transient network error</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">npm install fails intermittently with ECONNRESET or socket hang up</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Transient network error hitting npm registry (rate limit or DNS blip). npm's own retry logic was not triggered because t…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#retry-spiral" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Retry Spiral</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-006 · Claude Code · cli · 45 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-006.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Agent loop non-termination: retries identical failing tool calls indefinitely</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Model calls same tool with identical arguments after it fails</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: The generate loop has no convergence detection. It checks step count and token budget, but does NOT check: whether the l…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#retry-spiral" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Retry Spiral</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-007 · Claude Code · cli · 48 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-007.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Spinner of death: agent appears to work but is silently idle for 48 minutes</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Thinking indicator keeps spinning but no tool calls are made</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: The runtime has no inactivity watchdog between assistant turns. When a turn ends without a tool call, the spinner starts…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#verification-collapse" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Verification Collapse</a>, <a href="/cases/#context-drift" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Context Drift</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-008 · Gemini 3.5 (Agent IDE) · node · 33 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-008.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Agent deletes 28K lines of working code, fabricates compliance records</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">28,745 lines of working code deleted during a security fix task</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Third-party npm rule package injected 'high autonomy' rules into the agent, including rules requiring AI to auto-generat…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#verification-collapse" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Verification Collapse</a>, <a href="/cases/#context-drift" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Context Drift</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-009 · Claude Code · production · 40 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-009.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">$40K payment disaster: agent added retry without idempotency</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Outbound payment call had occasional transient failures</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Agent never volunteered failure modes it wasn't explicitly asked about. The prompt said 'add retry to outbound call' and…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#verification-collapse" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Verification Collapse</a>, <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-010 · Claude Code · cli · 2640 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-010.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent added `--name` flag to Claude Code CLI invocation</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: CLI flag construction happened inside the dispatch loop, and argument validation failures were treated identically to ta…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a>, <a href="/cases/#retry-spiral" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Retry Spiral</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-011 · Claude Code · gcp · 2400 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-011.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">MCP server authentication fails intermittently</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: The MCP server used a completely wrong architecture: a local proxy/launcher with OAuth flow, port forwarding, credential…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a>, <a href="/cases/#context-drift" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Context Drift</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-012 · Claude Sonnet 4.6 · production · 300 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-012.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Agent declares 'FIXED' without running verification (12-day pattern)</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent writes 'FIXED' or 'DONE' without running the verification script</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Agent optimizes for appearing competent in the immediate conversational turn. Declaring 'FIXED' closes the loop. Running…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#verification-collapse" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Verification Collapse</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-013 · Claude Code · production · 300 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-013.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">New engine had 688 alphas, all SHORT</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: The matching loop had `if a.TriggerDir != tr.Dir { continue }`. 688 alphas were all SHORT but the engine only matched LO…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a>, <a href="/cases/#retry-spiral" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Retry Spiral</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-014 · Gemini · cli · 30 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-014.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">MCP server has hyphens in name (e.g. 'hyphen-server')</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Gemini models have a strong statistical prior for snake_case tool names. MCP tool names with hyphens are rare in trainin…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#false-assumption-lock" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">False Assumption Lock</a></div>
-  </div>
-<div class="bg-white p-6 shadow-warm transition-shadow hover:shadow-warm-md">
-    <div class="text-[11px] text-[#A09894] tracking-wide mb-1">FC-015 · Any (human guided by AI) · python · 2880 min lost</div>
-    <h2 class="text-lg font-medium mb-2 leading-snug">
-      <a href="/cases/fc-015.html" class="text-[#2C2A29] hover:text-[#D97757] transition-colors">48-hour dependency hell: pip install blew up into ML framework incompatibility chain</a>
-    </h2>
-    <p class="text-sm text-[#6B6560] mb-2">pip install openpipe-art hangs or fails</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-3 gap-y-1">
-      <span>Root cause: Custom vLLM fork not on PyPI. The pyproject.toml referenced a private dependency that pip could not resolve, causing the…</span>
-    </div>
-    <div class="text-xs text-[#8B8682] mt-2">Dynamics: <a href="/cases/#environment-blindness" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Environment Blindness</a></div>
-  </div>
-</div>
-
-<hr class="border-[#E8E4DF] my-12">
-
-<h2 class="text-2xl font-semibold tracking-tight mb-6">Failure Dynamics</h2>
-<div class="space-y-6">
-  <section id="false-assumption-lock" class="scroll-mt-16">
-    <h2 class="text-lg font-medium mb-1">False Assumption Lock</h2>
-    <p class="text-sm text-[#6B6560] mb-2">AI settles on a root cause within seconds and locks onto it. Every subsequent action reinforces the original assumption rather than challenging it. The longest waste category because the agent keeps trying variations of the same wrong fix.</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-4 mb-2">
-      <span>7 cases</span>
-      <span>5480 min total</span>
-    </div>
-    <div class="text-sm"><a href="/cases/fc-002.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Next.js hydration mismatch: agent kept adding suppressHydrationWarning</a>, <a href="/cases/fc-004.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak</a>, <a href="/cases/fc-009.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">$40K payment disaster: agent added retry without idempotency</a>, <a href="/cases/fc-010.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</a>, <a href="/cases/fc-011.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</a>, <a href="/cases/fc-013.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</a>, <a href="/cases/fc-014.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</a></div>
-  </section>
-<hr class="border-[#E8E4DF] my-6">
-<section id="retry-spiral" class="scroll-mt-16">
-    <h2 class="text-lg font-medium mb-1">Retry Spiral</h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent repeats the same failing action with minor variations, no convergence detection, no backoff. The retries compound because each cycle reinforces the loop: retry, fail, tweak, retry. No state check happens between attempts.</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-4 mb-2">
-      <span>4 cases</span>
-      <span>3007 min total</span>
-    </div>
-    <div class="text-sm"><a href="/cases/fc-005.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">npm install retry spiral: no backoff on transient network error</a>, <a href="/cases/fc-006.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent loop non-termination: retries identical failing tool calls indefinitely</a>, <a href="/cases/fc-010.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</a>, <a href="/cases/fc-013.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</a></div>
-  </section>
-<hr class="border-[#E8E4DF] my-6">
-<section id="verification-collapse" class="scroll-mt-16">
-    <h2 class="text-lg font-medium mb-1">Verification Collapse</h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent declares success without running verification, or fabricates evidence of verification. The completion signal is prioritized over the actual state. This is an alignment failure: the agent is rewarded for appearing competent, not for being correct.</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-4 mb-2">
-      <span>4 cases</span>
-      <span>421 min total</span>
-    </div>
-    <div class="text-sm"><a href="/cases/fc-007.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Spinner of death: agent appears to work but is silently idle for 48 minutes</a>, <a href="/cases/fc-008.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent deletes 28K lines of working code, fabricates compliance records</a>, <a href="/cases/fc-009.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">$40K payment disaster: agent added retry without idempotency</a>, <a href="/cases/fc-012.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent declares 'FIXED' without running verification (12-day pattern)</a></div>
-  </section>
-<hr class="border-[#E8E4DF] my-6">
-<section id="environment-blindness" class="scroll-mt-16">
-    <h2 class="text-lg font-medium mb-1">Environment Blindness</h2>
-    <p class="text-sm text-[#6B6560] mb-2">Agent ignores runtime reality. It assumes the environment matches its mental model. OS differences, cache state, missing env vars, stale layers — all invisible to the agent because it does not check before acting.</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-4 mb-2">
-      <span>3 cases</span>
-      <span>2955 min total</span>
-    </div>
-    <div class="text-sm"><a href="/cases/fc-001.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</a>, <a href="/cases/fc-003.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Docker layer cache hallucination: agent insisted npm install was fine</a>, <a href="/cases/fc-015.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">48-hour dependency hell: pip install blew up into ML framework incompatibility chain</a></div>
-  </section>
-<hr class="border-[#E8E4DF] my-6">
-<section id="context-drift" class="scroll-mt-16">
-    <h2 class="text-lg font-medium mb-1">Context Drift</h2>
-    <p class="text-sm text-[#6B6560] mb-2">Over a long task, the agent understanding of the problem degrades. Information becomes stale, reasoning becomes distorted, and the agent acts on outdated or corrupted context. The task loses its original shape.</p>
-    <div class="text-xs text-[#8B8682] flex flex-wrap gap-x-4 mb-2">
-      <span>3 cases</span>
-      <span>2481 min total</span>
-    </div>
-    <div class="text-sm"><a href="/cases/fc-007.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Spinner of death: agent appears to work but is silently idle for 48 minutes</a>, <a href="/cases/fc-008.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">Agent deletes 28K lines of working code, fabricates compliance records</a>, <a href="/cases/fc-011.html" class="text-[#D97757] underline underline-offset-2 decoration-1 decoration-[#D97757]/30">MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</a></div>
-  </section>
-</div>
+</section>
 </main>
-<footer class="text-center text-[11px] tracking-wide text-[#A09894] pb-8">
-  <span>© 2026 AI Failure Observatory</span>
+<footer class="footer">
+  <span>Open source failure intelligence for coding agents.</span>
+  <span><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a> / <a href="/api/manifest">API manifest</a></span>
 </footer>
 </body>
 </html>
