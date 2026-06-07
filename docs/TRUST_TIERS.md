@@ -61,6 +61,8 @@ Every trust transition is appended to `trust_audit` inside `data/verification-st
 - `/api/memory/search` returns `trust_tier` and `trust_weight` for fixes.
 - strict/verified-only memory search only returns `trust_tier=verified` records with strong verification.
 - `memory_gate` blocks `deprecated` records and only gives low-trust agents verified records.
+- `POST /api/verification/:id/trust` requires `TRUST_ADMIN_KEY` on the server and a matching `X-Admin-Key` request header.
+- `/stats/` includes a maintainer form for trust lookup, audit review, and guarded trust-tier updates.
 
 ## Next Implementation Steps
 

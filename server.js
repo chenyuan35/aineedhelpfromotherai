@@ -1337,6 +1337,18 @@ app.get('/api/verification/:id/trust-audit', (req, res) => {
 app.post('/api/verification/:id/trust', (req, res) => {
   try {
     const v = require('./lib/verification');
+    const configuredKey = process.env.TRUST_ADMIN_KEY || '';
+    if (!configuredKey) {
+      return res.status(403).json({
+        success: false,
+        error: 'trust_admin_not_configured',
+        message: 'Set TRUST_ADMIN_KEY before enabling trust-tier mutations.'
+      });
+    }
+    const suppliedKey = req.headers['x-admin-key'] || req.headers['x-trust-admin-key'];
+    if (suppliedKey !== configuredKey) {
+      return res.status(403).json({ success: false, error: 'forbidden', message: 'Valid X-Admin-Key header required.' });
+    }
     const { trust_tier, actor, detector, evidence_source, reason } = req.body || {};
     if (!trust_tier) return res.status(400).json({ success: false, error: 'trust_tier is required' });
     const result = v.setTrustTier(req.params.id, trust_tier, { actor, detector, evidence_source, reason });
