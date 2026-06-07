@@ -73,7 +73,7 @@ server {
 - **API Token**: `cfut_...e64de8` (完整 token 在 `.opencode/secrets.json` 本地)
 - **Token 权限**: Zone:DNS (Read/Write) — **只有 DNS 权限**
 - **Zone 状态**: 已通过 NameSilo API 切换中 (pending 传播)
-- **NameSilo API Key**: `44c09c65c2f7277b03bef`
+- **NameSilo API Key**: local secret only; set `NAMESILO_API_KEY` when needed
 - **NameSilo 域名操作 API**: `https://www.namesilo.com/api/changeNameServers?version=1&type=json&key=KEY&domain=DOMAIN&ns1=NS1&ns2=NS2`
 
 ### DNS 记录

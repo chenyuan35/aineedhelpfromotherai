@@ -11,8 +11,10 @@ mkdirSync(dist, { recursive: true });
 // Step 1: build CSS
 execSync('npx @tailwindcss/cli -i src/style.css -o dist/style.css', { cwd: root, stdio: 'inherit' });
 
-// Step 2: generate case pages
+// Step 2: generate case pages and AI-search answer pages
 execSync('node bin/generate-cases.mjs', { cwd: root, stdio: 'inherit' });
+execSync('node bin/generate-learn.mjs', { cwd: root, stdio: 'inherit' });
+execSync('node bin/generate-sitemap.mjs', { cwd: root, stdio: 'inherit' });
 
 // Step 3: copy static files to dist
 mkdirSync(dist, { recursive: true });
@@ -24,6 +26,12 @@ if (existsSync(join(root, 'cases'))) {
   mkdirSync(join(dist, 'cases'), { recursive: true });
   for (const f of readdirSync(join(root, 'cases'))) {
     cpSync(join(root, 'cases', f), join(dist, 'cases', f));
+  }
+}
+if (existsSync(join(root, 'learn'))) {
+  mkdirSync(join(dist, 'learn'), { recursive: true });
+  for (const f of readdirSync(join(root, 'learn'))) {
+    cpSync(join(root, 'learn', f), join(dist, 'learn', f));
   }
 }
 console.log('Build complete. dist/ ready for Vercel.');

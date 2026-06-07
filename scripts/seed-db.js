@@ -1,8 +1,12 @@
 const fs = require('fs');
 const { Pool } = require('pg');
 
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is required. Do not hardcode database passwords in this script.');
+}
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgres://aineed:AiN33dH3lp2026!@127.0.0.1:5432/aineedhelp'
+  connectionString: process.env.DATABASE_URL
 });
 
 async function seed() {

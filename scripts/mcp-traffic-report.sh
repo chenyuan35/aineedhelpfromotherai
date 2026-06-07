@@ -3,7 +3,12 @@
 # Usage: ssh root@108.61.220.98 "bash /opt/aineedhelpfromotherai/scripts/mcp-traffic-report.sh"
 #   or: bash scripts/mcp-traffic-report.sh (point DATABASE_URL in env)
 
-DB_URL="${DATABASE_URL:-postgres://aineed:AiN33dH3lp2026!@127.0.0.1:5432/aineedhelp}"
+if [ -z "$DATABASE_URL" ]; then
+  echo "DATABASE_URL is required. Do not hardcode database passwords in this script." >&2
+  exit 1
+fi
+
+DB_URL="$DATABASE_URL"
 PSQL="psql -At -d $DB_URL"
 
 echo "══════════════════════════════════════════════════════"

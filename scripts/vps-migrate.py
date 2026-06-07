@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Quick VPS migration helper"""
+import os
 import paramiko, sys
 
 HOST = "108.61.220.98"
 USER = "root"
-PASSWORD = "{Q9yZ@dar8z.ii+y"
+PASSWORD = os.environ.get("VPS_PASSWORD")
 REPO_DIR = "/opt/aineedhelpfromotherai"
+
+if not PASSWORD:
+    raise SystemExit("Set VPS_PASSWORD in the environment before running this script.")
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())

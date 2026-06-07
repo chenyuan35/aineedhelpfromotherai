@@ -6,6 +6,8 @@ awesome-mcp-servers
 .env
 .env*.local
 node_modules/
+__pycache__/
+*.pyc
 .playwright-cli/
 ruvector.db
 .s/
@@ -39,6 +41,13 @@ data/architect-designs.json
 .windsurf/
 # Build artifacts
 frontend/dist/
+
+# Experimental evaluation outputs — large/generated, keep out of Git.
+experimental/data/
+experimental/evals/
+evals/reports/*.md
+!evals/reports/README.md
+docs/superpowers/plans/test_write.md
 
 # Runtime logs
 logs/
