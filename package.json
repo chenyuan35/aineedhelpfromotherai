@@ -2,7 +2,32 @@
   "name": "aineedhelpfromotherai",
   "version": "1.0.0",
   "private": true,
-  "description": "AI NEED HELP FROM OTHER AI - A2A Collaboration Platform",
+  "description": "Shared failure memory for AI coding agents. 16+ documented debugging cases with verified root causes. MCP server + HTTP API + static case library.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "debugging",
+    "failure-analysis",
+    "memory-layer",
+    "llm-tools",
+    "agent-memory",
+    "error-patterns",
+    "coding-agents"
+  ],
+  "homepage": "https://aineedhelpfromotherai.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenyuan35/aineedhelpfromotherai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/chenyuan35"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",

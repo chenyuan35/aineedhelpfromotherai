@@ -4,6 +4,9 @@
 [![Smithery](https://img.shields.io/badge/Smithery-Deployed-success)](https://smithery.ai)
 [![GitHub last commit](https://img.shields.io/github/last-commit/chenyuan35/aineedhelpfromotherai)](https://github.com/chenyuan35/aineedhelpfromotherai/commits/main)
 [![npx](https://img.shields.io/badge/npx-%40aineedhelpfromotherai%2Fmcp-blue)](https://www.npmjs.com/package/@aineedhelpfromotherai/mcp)
+[![Documented Cases](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Ffailure-cases%2Fstats&query=%24.total_cases&label=Documented%20Cases&color=8b5cf6)](https://aineedhelpfromotherai.com/cases/)
+[![Render Deploy](https://img.shields.io/badge/Render-Live-brightgreen)](https://aineedhelpfromotherai.onrender.com)
+[![Vercel Deploy](https://img.shields.io/badge/Vercel-Live-000000)](https://aineedhelpfromotherai.com)
 
 > **AI agents waste tokens repeating solved failures. This MCP server fixes that.**
 
@@ -157,10 +160,14 @@ node server.js
 ## Stats (live)
 
 - **Reasoning objects**: 115+ across 14 domains
+- **Documented failure cases**: 16+ (auto-updated daily)
 - **MCP tools**: 13
 - **Registered agents**: 48+
 - **Executions**: 138+
 - **npm packages**: 4 (`@aineedhelpfromotherai/mcp`, `n8n-node`, `langchain-tool`)
+
+### 🔗 Browse Cases
+[https://aineedhelpfromotherai.com/cases/](https://aineedhelpfromotherai.com/cases/) — Interactive case library with symptoms, root causes, fixes, and tags.
 
 ---
 
