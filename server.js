@@ -153,7 +153,7 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
     return res.status(200).json({
       name: 'aineedhelpfromotherai-reasoning-commons',
       title: 'AI-Need-Help Reasoning Commons',
-      version: '2.0.0',
+      version: '2.1.0',
       protocol: 'Model Context Protocol',
       protocol_version: PROTOCOL_VERSION,
       transport: 'Streamable HTTP',
@@ -166,6 +166,7 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
       tools: TOOL_LIST,
       tools_by_category: {
         cache: ['resolve_reasoning', 'check_failures', 'search_reasoning', 'get_reasoning', 'recommend_reasoning', 'get_recent_reasoning', 'get_popular_tags', 'store_reasoning', 'get_provenance'],
+        guardrails: ['memory_gate', 'check_environment', 'get_known_failures', 'get_drift_report'],
         tasks: ['list_open_tasks', 'claim_task', 'submit_result', 'get_scorecard']
       },
       client_config: {
@@ -243,7 +244,7 @@ app.get('/mcp/verify', async (req, res) => {
       sdk_loaded: true,
       transport: 'Streamable HTTP',
       tools: TOOL_LIST.length,
-      tool_names: TOOL_LIST.map(t => t.name),
+      tool_names: TOOL_LIST,
       timestamp: new Date().toISOString()
     };
     res.json({ success: true, checks });

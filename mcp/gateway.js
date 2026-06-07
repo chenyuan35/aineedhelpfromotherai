@@ -1,11 +1,12 @@
 // mcp/gateway.js — Minimal MCP Agent Gateway (Refactored: P1-A Complete)
-// Exposes 14 tools over Streamable HTTP at POST/GET /mcp
+// Exposes 17 tools over Streamable HTTP at POST/GET /mcp
 // ARCHITECTURE: Tool registration delegated to specialized modules (DRY principle)
 //   - task-execution.js: Tools 1-4 (list, claim, submit, scorecard)
 //   - reasoning-cache.js: Tools 5-10, 13 (search, get, recommend, resolve, provenance)
 //   - reasoning-store.js: Tools 11-12 (check_failures, store_reasoning)
-//   - memory-gate.js: Tool 14 (memory_gate)
-//   - environment-tools.js: Tools 15-16 (check_environment, get_known_failures)
+//   - reasoning-store.js: Tool 14 (get_drift_report)
+//   - memory-gate.js: Tool 15 (memory_gate)
+//   - environment-tools.js: Tools 16-17 (check_environment, get_known_failures)
 // v2.0: Added tool timeout enforcement, schema validation gate
 // v2.1: Added environment tools (check_environment, get_known_failures)
 // Refactored from 814 lines to ~70 lines (91% reduction in gateway.js complexity)
@@ -97,7 +98,7 @@ async function createGateway(req, res, parsedBody) {
       { capabilities: {} }
     );
 
-    // Register all 14 tools via specialized modules (one line each = clean architecture)
+    // Register all 17 tools via specialized modules (one line each = clean architecture)
     await registerTaskTools(mcpServer, z, clientIp);
     await registerReasoningTools(mcpServer, z, clientIp);
     await registerStorageTools(mcpServer, z, clientIp);

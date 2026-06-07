@@ -7,9 +7,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Trigger Render Deploy
+      - name: Trigger Render deploy and wait for live status
         run: |
-          curl -s -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+          set -euo pipefail
+          DEPLOY_JSON=$(curl -fsS -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
             -H "Content-Type: application/json" \
-            -d '{}'
+            -d '{}')
+          DEPLOY_ID=$(printf '%s' "$DEPLOY_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('id') or d.get('deploy',{}).get('id') or '')")
+          if [ -z "$DEPLOY_ID" ]; then
+            echo "Render deploy response did not include an id"
+            exit 1
+          fi
+
+          for attempt in $(seq 1 60); do
+            STATUS_JSON=$(curl -fsS "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys/${DEPLOY_ID}" \
+              -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}")
+            STATUS=$(printf '%s' "$STATUS_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('status') or d.get('deploy',{}).get('status') or '')")
+            echo "Render deploy status: ${STATUS:-unknown} (attempt $attempt/60)"
+            case "$STATUS" in
+              live)
+                exit 0
+                ;;
+              *failed*|canceled|cancelled)
+                exit 1
+                ;;
+            esac
+            sleep 10
+          done
+
+          echo "Timed out waiting for Render deploy to become live"
+          exit 1

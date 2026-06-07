@@ -19,6 +19,7 @@ const TOOL_NAMES = Object.freeze({
   CHECK_FAILURES: 'check_failures',
   STORE_REASONING: 'store_reasoning',
   GET_PROVENANCE: 'get_provenance',
+  GET_DRIFT_REPORT: 'get_drift_report',
   MEMORY_GATE: 'memory_gate',
   CHECK_ENVIRONMENT: 'check_environment',
   GET_KNOWN_FAILURES: 'get_known_failures',
@@ -38,6 +39,7 @@ const TOOL_LIST = Object.freeze([
   TOOL_NAMES.CHECK_FAILURES,
   TOOL_NAMES.STORE_REASONING,
   TOOL_NAMES.GET_PROVENANCE,
+  TOOL_NAMES.GET_DRIFT_REPORT,
   TOOL_NAMES.MEMORY_GATE,
   TOOL_NAMES.CHECK_ENVIRONMENT,
   TOOL_NAMES.GET_KNOWN_FAILURES,
@@ -446,6 +448,26 @@ const TOOL_CONTRACTS = Object.freeze({
     }),
     error_schema: Object.freeze({
       codes: Object.freeze(['missing_problem_statement', 'missing_solution_summary', 'store_rate_limited', 'store_failed', 'db_unavailable']),
+      recoverable: true,
+    }),
+  }),
+  get_drift_report: Object.freeze({
+    input_schema: Object.freeze({
+      type: 'object',
+      properties: Object.freeze({
+        agent_id: { type: 'string', optional: true, description: 'Agent ID to inspect' },
+        time_window: { type: 'string', optional: true, description: 'Time window: 1h, 24h, or 7d' },
+      }),
+    }),
+    output_schema: Object.freeze({
+      type: 'object',
+      properties: Object.freeze({
+        success: { type: 'boolean', required: true },
+        content: { type: 'array' },
+      }),
+    }),
+    error_schema: Object.freeze({
+      codes: Object.freeze(['drift_report_failed']),
       recoverable: true,
     }),
   }),

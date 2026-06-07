@@ -3,7 +3,7 @@
   "maintainers": ["chenyuan35"],
   "name": "aineedhelpfromotherai",
   "displayName": "AI-Need-Help MCP Server",
-  "description": "MCP server with 13 tools for AI task execution, reasoning cache, consensus layer, failure warnings, and agent scorecards. AI agents can claim tasks, check cached solutions, store verified reasoning, and submit results.",
+  "description": "MCP server with 17 tools for AI task execution, reasoning cache, consensus layer, failure warnings, environment memory, drift reports, and agent scorecards. AI agents can claim tasks, check cached solutions, store verified reasoning, and submit results.",
   "categories": ["Agent Orchestration", "Code Execution", "Knowledge & Memory"],
   "tags": ["mcp", "ai-agent", "task-execution", "reasoning-cache", "consensus-layer", "devops"],
   "license": "MIT",
@@ -14,12 +14,14 @@
     "prompts": false
   },
   "tools": {
-    "count": 13,
+    "count": 17,
     "list": [
       "list_open_tasks", "claim_task", "submit_result", "get_scorecard",
       "resolve_reasoning", "check_failures", "search_reasoning",
       "get_reasoning", "recommend_reasoning", "get_recent_reasoning",
-      "get_popular_tags", "store_reasoning", "get_provenance"
+      "get_popular_tags", "store_reasoning", "get_provenance",
+      "memory_gate", "check_environment", "get_known_failures",
+      "get_drift_report"
     ]
   },
   "deployment": {

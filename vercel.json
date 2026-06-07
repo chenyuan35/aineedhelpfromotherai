@@ -14,6 +14,7 @@
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
     { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
+    { "source": "/mcp/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/mcp/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

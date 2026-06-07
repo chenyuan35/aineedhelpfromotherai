@@ -188,7 +188,7 @@ async function registerStorageTools(mcpServer, z, clientIp) {
 
   // --- Tool 13: get_drift_report ---
   mcpServer.registerTool(
-    'get_drift_report',
+    TOOL_NAMES.GET_DRIFT_REPORT,
     {
       description: 'View your drift history and current status. Use for self-reflection and improvement.',
       inputSchema: {
