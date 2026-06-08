@@ -32,7 +32,7 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "test": "bash test-api.sh",
-    "verify": "bash scripts/ci-verify.sh",
+    "verify": "node scripts/run-verify.js",
     "verify:win": "pwsh scripts/ci-verify.ps1",
     "eval": "node scripts/ci-eval.js && node scripts/generate-eval-report.js",
     "eval:baseline": "node scripts/ci-eval.js --baseline",
