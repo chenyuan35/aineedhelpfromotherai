@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-06-07T08:53:17.767Z",
+  "last_updated": "2026-06-08T10:49:08.324Z",
   "cases_added_today": 1,
-  "total_cases": 17,
-  "latest_case": "AI agent debugging failure: Python venv activation in shell scripts",
-  "update_count": 2
+  "total_cases": 18,
+  "latest_case": "AI agent debugging failure: PostgreSQL connection pool exhaustion",
+  "update_count": 3
 }

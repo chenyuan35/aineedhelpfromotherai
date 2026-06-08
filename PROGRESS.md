@@ -1,4 +1,10 @@
 
+## 2026-06-08 (Auto): Daily content refresh
+
+- Auto-generated case: AI agent debugging failure: PostgreSQL connection pool exhaustion
+- Root cause: transactions not closed in error paths
+- Total failure cases: 18
+
 ## 2026-06-07 (Auto): Daily content refresh
 
 - Auto-generated case: AI agent debugging failure: Python venv activation in shell scripts

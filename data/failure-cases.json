@@ -606,5 +606,21 @@
     "time_lost_min": 15,
     "added_at": "2026-06-07T08:53:17.762Z",
     "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ53961R",
+    "title": "AI agent debugging failure: PostgreSQL connection pool exhaustion",
+    "description": "An AI agent spent 45 minutes debugging PostgreSQL connection pool exhaustion. Root cause: transactions not closed in error paths. Fix: add pool.on('error') handler and ensure client.release() in finally blocks. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "transactions not closed in error paths",
+    "fix": "add pool.on('error') handler and ensure client.release() in finally blocks",
+    "time_lost_min": 45,
+    "added_at": "2026-06-08T10:49:08.319Z",
+    "source": "daily-auto-generate"
   }
 ]
