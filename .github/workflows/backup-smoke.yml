@@ -11,7 +11,130 @@ permissions:
   contents: read
 
 jobs:
-  smoke:
+  backup:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+      RENDER_POSTGRES_EXTERNAL_HOST: dpg-d8c164cua31s739joel0-a.oregon-postgres.render.com
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      R2_BUCKET: ${{ vars.R2_BUCKET }}
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
     steps:
-      - run: echo backup-smoke-ok
+      - name: Install PostgreSQL client
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Resolve Render database URL
+        run: |
+          set -euo pipefail
+          if [ -z "$RENDER_API_KEY" ] || [ -z "$RENDER_SERVICE_ID" ]; then
+            echo "Missing RENDER_API_KEY or RENDER_SERVICE_ID"
+            exit 1
+          fi
+          curl -fsS -H "Authorization: Bearer $RENDER_API_KEY" -H "Accept: application/json" "https://api.render.com/v1/services/$RENDER_SERVICE_ID/env-vars" > render-env-vars.json
+          DATABASE_URL=$(python3 <<'PY'
+import json
+from pathlib import Path
+
+data = json.loads(Path('render-env-vars.json').read_text())
+items = data if isinstance(data, list) else data.get('envVars') or data.get('env_vars') or []
+value = ''
+for item in items:
+    env = item.get('envVar') or item.get('env_var') or item
+    if env.get('key') == 'DATABASE_URL':
+        value = env.get('value') or ''
+        break
+print(value)
+PY
+          )
+          if [ -z "$DATABASE_URL" ] || [[ "$DATABASE_URL" == *"*****"* ]]; then
+            echo "Render DATABASE_URL was not available from the service env vars"
+            exit 1
+          fi
+          echo "::add-mask::$DATABASE_URL"
+          EXTERNAL_URL=$(DATABASE_URL="$DATABASE_URL" RENDER_POSTGRES_EXTERNAL_HOST="$RENDER_POSTGRES_EXTERNAL_HOST" python3 <<'PY'
+import os
+from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
+
+url = os.environ['DATABASE_URL']
+parts = urlsplit(url)
+userinfo = ''
+if parts.username:
+    userinfo = parts.username
+    if parts.password:
+        userinfo += ':' + parts.password
+    userinfo += '@'
+external_host = os.environ.get('RENDER_POSTGRES_EXTERNAL_HOST', '')
+netloc = parts.netloc
+if external_host and (parts.hostname or '').startswith('dpg-') and '.render.com' not in (parts.hostname or ''):
+    netloc = f'{userinfo}{external_host}:5432'
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+query.setdefault('sslmode', 'require')
+print(urlunsplit((parts.scheme or 'postgresql', netloc, parts.path, urlencode(query), '')))
+PY
+          )
+          echo "::add-mask::$EXTERNAL_URL"
+          printf 'DATABASE_URL=%s\n' "$EXTERNAL_URL" >> "$GITHUB_ENV"
+
+      - name: Create pg_dump backup
+        run: |
+          set -euo pipefail
+          mkdir -p backup
+          timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ)
+          file="backup/render-postgres-$timestamp.dump"
+          pg_dump --dbname "$DATABASE_URL" --format=custom --no-owner --no-acl --file "$file"
+          test -s "$file"
+          sha256sum "$file" > "$file.sha256"
+          printf 'BACKUP_FILE=%s\n' "$file" >> "$GITHUB_ENV"
+          printf 'BACKUP_NAME=%s\n' "$(basename "$file")" >> "$GITHUB_ENV"
+          echo "Backup created: $(basename "$file") ($(stat -c%s "$file") bytes)"
+
+      - name: Upload GitHub backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-postgres-backup
+          path: |
+            ${{ env.BACKUP_FILE }}
+            ${{ env.BACKUP_FILE }}.sha256
+          retention-days: 14
+
+      - name: Upload backup to VPS
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ]; then
+            echo "Missing VPS_HOST, VPS_USER, or VPS_SSH_KEY; skipping VPS upload"
+            exit 0
+          fi
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
+          chmod 600 ~/.ssh/backup_key
+          remote="$VPS_USER@$VPS_HOST"
+          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'mkdir -p ~/aineedhelpfromotherai-db-backups'
+          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$BACKUP_FILE" "$BACKUP_FILE.sha256" "$remote:~/aineedhelpfromotherai-db-backups/"
+          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "test -s ~/aineedhelpfromotherai-db-backups/$BACKUP_NAME && ls -lh ~/aineedhelpfromotherai-db-backups/$BACKUP_NAME"
+
+      - name: Upload backup to Cloudflare R2
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$R2_BUCKET" ]; then
+            echo "Missing CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, or R2_BUCKET; skipping R2 upload"
+            exit 0
+          fi
+          npx --yes wrangler r2 bucket create "$R2_BUCKET" || true
+          npx --yes wrangler r2 object put "$R2_BUCKET/$BACKUP_NAME" --file "$BACKUP_FILE"
+          npx --yes wrangler r2 object put "$R2_BUCKET/$BACKUP_NAME.sha256" --file "$BACKUP_FILE.sha256"
+          npx --yes wrangler r2 object get "$R2_BUCKET/$BACKUP_NAME.sha256" --file /tmp/backup.sha256.check
+          test -s /tmp/backup.sha256.check
+
+      - name: Cleanup runner copy
+        if: always()
+        run: rm -rf backup render-env-vars.json ~/.ssh/backup_key /tmp/backup.sha256.check
