@@ -1,0 +1,17 @@
+name: Backup smoke test
+
+'on':
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/backup-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo backup-smoke-ok
