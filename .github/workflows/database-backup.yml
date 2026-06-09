@@ -39,16 +39,17 @@ jobs:
       - name: Test psql connection
         run: |
           set -euo pipefail
-          node - <<'NODE' >> "$GITHUB_ENV"
+          eval "$(node - <<'NODE'
           const raw = process.env.DATABASE_URL;
           const parsed = new URL(raw);
           parsed.searchParams.set('sslmode', 'require');
-          console.log(`DATABASE_URL_REQUIRE=${parsed.toString()}`);
+          console.log(`export DATABASE_URL_REQUIRE=${JSON.stringify(parsed.toString())}`);
           parsed.searchParams.set('sslmode', 'prefer');
-          console.log(`DATABASE_URL_PREFER=${parsed.toString()}`);
+          console.log(`export DATABASE_URL_PREFER=${JSON.stringify(parsed.toString())}`);
           parsed.searchParams.set('sslmode', 'disable');
-          console.log(`DATABASE_URL_DISABLE=${parsed.toString()}`);
+          console.log(`export DATABASE_URL_DISABLE=${JSON.stringify(parsed.toString())}`);
           NODE
+          )"
           echo "::add-mask::${DATABASE_URL_REQUIRE}"
           echo "::add-mask::${DATABASE_URL_PREFER}"
           echo "::add-mask::${DATABASE_URL_DISABLE}"
