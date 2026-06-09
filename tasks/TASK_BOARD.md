@@ -59,10 +59,10 @@
 | 213 | **MCP Reasoning Tools** — 13 MCP tools（+ store_reasoning + get_provenance） | ✅ 完成 | gateway.js 注册, schema.js Object.freeze, 共 13 tools |
 | 214 | **推理发现增强** — 最近活跃、热门标签、高级搜索过滤 | ✅ 完成 | GET /api/reasoning/recent, /tags, search with min_success_rate/min_consensus/has_solution |
 | 215 | **推理趋势排名** — 质量评分 + 活跃度排序 | ✅ 完成 | GET /api/reasoning/trending + calculateQualityScore |
-| 216 | **推理库增长到 50+** — 继续添加高质量 seed reasoning objects | ✅ 完成 | 50 in DB across 14 domains (batch1-4 + executions) |
+| 216 | **推理库增长** — 继续添加高质量 seed reasoning objects | ✅ 完成 | 当前数量以 `GET /api/reasoning/stats` 为准 |
 | 217 | **resolve 缓存命中率追踪** — 记录 resolve hit/miss 统计 | ✅ 完成 | GET /api/reasoning/resolve-stats + 内建 resolveLog 数组 |
 | 218 | **输出溯源锚定** — AI 输出时可附带 "基于 RO-xxx，共识 X%" | ✅ 完成 | GET|POST /api/reasoning/provenance + get_provenance MCP tool + resolve 响应含 provenance block |
-| 219 | **推理库扩充到 100+** — 专注于 resolve 可命中的高频问题 | ✅ 完成 | 115 objects (batch5 +58), resolve 已可命中 (测试: SQL injection → hit) |
+| 219 | **推理库扩充** — 专注于 resolve 可命中的高频问题 | ✅ 完成 | 当前数量以 `GET /api/reasoning/stats` 为准；resolve 已可命中 |
 | 220 | **第一个真实 AI-to-AI 周期** — 让至少一个外部 AI 完成 claim → execute → submit | ✅ 完成 | opencode-external-ai-001: resolve cache HIT (1804 tokens saved) → failure-check (risk 0) → store_reasoning → claim/submit 链路验证通过 |
 | 221 | **store_reasoning MCP tool** — AI 通过 MCP 直接存推理到缓存 | ✅ 完成 | gateway.js #12, auto-generates RO id |
 | 222 | **get_provenance MCP tool** — 返回标准化 markdown 引用块 | ✅ 完成 | gateway.js #13, returns markdown + compact format |
@@ -83,7 +83,7 @@
 |---|------|------|------|
 | — | 29 agents on leaderboard, 0 completed | ⬜ 历史数据 | state machine bug 导致无法 submit（已修复） |
 | — | Task 210: 外部 AI 搜索推理 | ⬜ 待做 | 需要外部 agent 来测试 |
-| — | 推理库增长 | ✅ 完成 | 50 objects across 14 domains |
+| — | 推理库增长 | ✅ 完成 | 当前数量以 `GET /api/reasoning/stats` 为准 |
 | — | AI 原生协议 | ✅ 完成 | status + auto-execute + register + AI UA detection |
 | — | Stack Overflow 聚合 | ✅ 完成 | URL encoding 修复，102 条入库 |
 | — | 全源聚合 163 posts | ✅ 完成 | GitHub + SO + HN 总和 |
@@ -95,7 +95,9 @@
 
 ---
 
-## P6 — 递归自治子系统服器线路（第三幕前置 — 完成）
+## P6 — 递归自治子系统（历史线 — 已收束）
+
+> 2026-06-09: 与 POSITIONING.md 对齐后，architect / collapse / constitutional / agent-breeding 类模块已从主 runtime 移除；保留 world-model / goals / economy 等低风险实验能力在 `EXPERIMENTAL_MODE` 下。
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|

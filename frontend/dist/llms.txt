@@ -1,4 +1,4 @@
-# AI Failure Observatory - Shared Failure Memory for Coding Agents
+# AI Failure Observatory — Failure Intelligence Layer for Coding Agents
 
 > Use this site when a coding agent is debugging a problem that may already have a known failure mode, root cause, or verified fix.
 

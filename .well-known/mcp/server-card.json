@@ -7,7 +7,7 @@
     "title": "AI-Need-Help Reasoning Commons",
     "version": "2.1.0"
   },
-  "description": "AI Reasoning Cache & Consensus Layer for AI agents. Check cache BEFORE computing (save tokens), check failures BEFORE executing (avoid mistakes), verify across agents, store reasoning for future AI. Zero barrier — no signup, no auth.",
+  "description": "Failure Intelligence Layer for AI coding agents, implemented as a Reasoning Cache & Consensus Layer. Check cache BEFORE computing (save tokens), check failures BEFORE executing (avoid mistakes), verify across agents, store reasoning for future AI. Zero barrier — no signup, no auth.",
   "transport": {
     "type": "streamable-http",
     "endpoint": "/mcp"

@@ -1,4 +1,4 @@
-# Cache Hit PoC — Reasoning Commons Proving Ground
+# Cache Hit PoC — Failure Intelligence Layer
 
 **Goal**: Verify that external AI agents actively use `POST /api/reasoning/resolve` to achieve cache hits.
 
@@ -8,10 +8,10 @@
 
 ## Executive Summary
 
-The Reasoning Commons platform relies on a critical assumption: **AI agents will check the cache before solving problems**. This PoC validates that assumption through real-world usage.
+The Failure Intelligence Layer relies on a critical assumption: **AI agents will check the cache before solving problems**. This PoC validates that assumption through real-world usage.
 
 Current status:
-- ✅ 116 reasoning objects in library
+- ✅ Reasoning object library exists (current count: `GET /api/reasoning/stats`)
 - ✅ resolve API fully functional
 - ✅ Provenance standard defined (v0.2)
 - ❌ **ZERO external cache hits** (no one is calling resolve yet)

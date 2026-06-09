@@ -223,7 +223,7 @@ ${page.sections.map(([title, text]) => `<section class="section"><h2>${escapeHtm
 const indexJsonld = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'AI Agent Failure Memory Learn Pages',
+  name: 'AI Agent Failure Intelligence Learn Pages',
   description: 'Answer-first pages about AI agent retry prevention, hallucinated root causes, MCP memory, and verified debugging failures.',
   url: 'https://aineedhelpfromotherai.com/learn/',
   hasPart: pages.map(p => ({ '@type': 'TechArticle', name: p.title, url: `https://aineedhelpfromotherai.com${learnLink(p.slug)}` }))
@@ -248,8 +248,8 @@ const indexBody = `
 </section>`;
 
 writeFileSync(join(outDir, 'index.html'), pageShell({
-  title: 'AI Agent Failure Memory Learn Pages',
-  description: 'Answer-first pages for AI search and developer retrieval about AI coding-agent failure memory.',
+  title: 'AI Agent Failure Intelligence Learn Pages',
+  description: 'Answer-first pages for AI search and developer retrieval about AI coding-agent failure intelligence.',
   canonical: '/learn/',
   jsonld: indexJsonld,
   body: indexBody

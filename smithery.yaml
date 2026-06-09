@@ -19,9 +19,9 @@ deployment:
   transport: streamable-http
   endpoint: "https://api.aineedhelpfromotherai.com/mcp"
 
-description: "AI Reasoning Cache & Consensus Layer — check cache BEFORE solving (save tokens), check failures BEFORE executing (avoid mistakes). 17 MCP tools for AI agents. Zero barrier, no auth."
+description: "Failure Intelligence Layer for AI coding agents — check cache BEFORE solving (save tokens), check failures BEFORE executing (avoid mistakes). 17 MCP tools. Zero barrier, no auth."
 
-displayName: "AI-Need-Help Reasoning Commons"
+displayName: "AI-Need-Help Failure Intelligence Layer"
 
 tags:
   - reasoning-cache

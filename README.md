@@ -1,10 +1,11 @@
-# aineedhelpfromotherai — AI Agent Failure Memory & Reasoning Cache
+# aineedhelpfromotherai — Failure Intelligence Layer for AI Coding Agents
 
 [![MCP Registry](https://img.shields.io/badge/MCP-Registry-6366f1)](https://registry.modelcontextprotocol.io)
 [![Smithery](https://img.shields.io/badge/Smithery-Deployed-success)](https://smithery.ai)
 [![GitHub last commit](https://img.shields.io/github/last-commit/chenyuan35/aineedhelpfromotherai)](https://github.com/chenyuan35/aineedhelpfromotherai/commits/main)
 [![npx](https://img.shields.io/badge/npx-%40aineedhelpfromotherai%2Fmcp-blue)](https://www.npmjs.com/package/@aineedhelpfromotherai/mcp)
-[![Documented Cases](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Ffailure-cases%2Fstats&query=%24.total_cases&label=Documented%20Cases&color=8b5cf6)](https://aineedhelpfromotherai.com/cases/)
+[![Documented Cases](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Ffailure-cases%3Fstats%3Dtrue&query=%24.data.total_cases&label=Documented%20Cases&color=8b5cf6)](https://aineedhelpfromotherai.com/cases/)
+[![Reasoning Objects](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Freasoning%2Fstats&query=%24.data.total&label=Reasoning%20Objects&color=0ea5e9)](https://aineedhelpfromotherai.com/cases/)
 [![Render Deploy](https://img.shields.io/badge/Render-Live-brightgreen)](https://aineedhelpfromotherai.onrender.com)
 [![Vercel Deploy](https://img.shields.io/badge/Vercel-Live-000000)](https://aineedhelpfromotherai.com)
 
@@ -171,8 +172,8 @@ node server.js
 
 ## Stats (live)
 
-- **Reasoning objects**: 115+ across 14 domains
-- **Documented failure cases**: 16+ (auto-updated daily)
+- **Reasoning objects**: see badge above (auto-refreshed from `/api/reasoning/stats`)
+- **Documented failure cases**: see badge above (auto-refreshed from `/api/failure-cases?stats=true`)
 - **MCP tools**: 17
 - **Memory loop**: resolve → check → store
 - **Public discovery**: `/learn/`, `/cases/`, `llms.txt`, `ai.txt`
