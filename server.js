@@ -14,6 +14,8 @@ const logger = require('./lib/logger');
 // memory-economy, human-intervention
 const EXPERIMENTAL = process.env.EXPERIMENTAL_MODE === 'true';
 if (!EXPERIMENTAL) console.log('[boot] EXPERIMENTAL_MODE=disabled — skipping bloat modules');
+const BACKGROUND_JOBS = process.env.BACKGROUND_JOBS === 'true';
+if (!BACKGROUND_JOBS) console.log('[boot] BACKGROUND_JOBS=disabled — skipping reality/pipeline schedulers');
 
 // === Boot-time capability registration ===
 // All core modules that write to runtime state register their capability tokens
@@ -1960,37 +1962,41 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   } else {
     logger.info('[autonomy] Skipped (EXPERIMENTAL_MODE=disabled)');
   }
-  // Reality-ingestor — continuous real-world task ingestion
-  try {
-    realityIngestor.startAutoIngest();
-    logger.info('[reality] Reality ingestor started (30min cycle)');
-  } catch (err) {
-    logger.error('[reality] Reality ingestor init failed:', err.message);
-  }
-  // Reality Pipeline Scheduler — continuous 4h cycle
-  try {
-    const scheduler = require('./lib/pipeline-scheduler');
-    const intervalMs = parseInt(process.env.PIPELINE_INTERVAL_MS) || 4 * 60 * 60 * 1000;
-    scheduler.start(intervalMs);
-    logger.info(`[pipeline] Scheduler started (interval=${Math.round(intervalMs / 60000)}min)`);
-    // Also inject any existing memory seeds on boot
+  if (BACKGROUND_JOBS) {
+    // Reality-ingestor — continuous real-world task ingestion
     try {
-      const seedInjector = require('./lib/memory-seed-injector');
-      const result = seedInjector.injectAllSeeds();
-      if (result.injected > 0) logger.info(`[pipeline] Injected ${result.injected} memory seeds into resolve-cache on boot`);
-    } catch (e) {
-      logger.warn('[pipeline] Memory seed injection on boot:', e.message);
+      realityIngestor.startAutoIngest();
+      logger.info('[reality] Reality ingestor started (30min cycle)');
+    } catch (err) {
+      logger.error('[reality] Reality ingestor init failed:', err.message);
     }
-  } catch (err) {
-    logger.error('[pipeline] Scheduler init failed:', err.message);
-  }
-  // Feedback loop — auto-update memory scores every 5min
-  try {
-    const feedback = require('./lib/feedback-loop');
-    feedback.startAutoFeedback();
-    logger.info('[pipeline] Feedback loop started (5min cycle)');
-  } catch (err) {
-    logger.warn('[pipeline] Feedback loop init:', err.message);
+    // Reality Pipeline Scheduler — continuous 4h cycle
+    try {
+      const scheduler = require('./lib/pipeline-scheduler');
+      const intervalMs = parseInt(process.env.PIPELINE_INTERVAL_MS) || 4 * 60 * 60 * 1000;
+      scheduler.start(intervalMs);
+      logger.info(`[pipeline] Scheduler started (interval=${Math.round(intervalMs / 60000)}min)`);
+      // Also inject any existing memory seeds on boot
+      try {
+        const seedInjector = require('./lib/memory-seed-injector');
+        const result = seedInjector.injectAllSeeds();
+        if (result.injected > 0) logger.info(`[pipeline] Injected ${result.injected} memory seeds into resolve-cache on boot`);
+      } catch (e) {
+        logger.warn('[pipeline] Memory seed injection on boot:', e.message);
+      }
+    } catch (err) {
+      logger.error('[pipeline] Scheduler init failed:', err.message);
+    }
+    // Feedback loop — auto-update memory scores every 5min
+    try {
+      const feedback = require('./lib/feedback-loop');
+      feedback.startAutoFeedback();
+      logger.info('[pipeline] Feedback loop started (5min cycle)');
+    } catch (err) {
+      logger.warn('[pipeline] Feedback loop init:', err.message);
+    }
+  } else {
+    logger.info('[pipeline] Background jobs skipped (BACKGROUND_JOBS=true to enable)');
   }
   // Auto-cycle intervals (EXPERIMENTAL only)
   if (EXPERIMENTAL) {
