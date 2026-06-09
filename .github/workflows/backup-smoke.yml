@@ -29,45 +29,13 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsS -H "Authorization: Bearer $RENDER_API_KEY" -H "Accept: application/json" "https://api.render.com/v1/services/$RENDER_SERVICE_ID/env-vars" > render-env-vars.json
-          DATABASE_URL=$(python3 <<'PY'
-import json
-from pathlib import Path
-
-data = json.loads(Path('render-env-vars.json').read_text())
-items = data if isinstance(data, list) else data.get('envVars') or data.get('env_vars') or []
-for item in items:
-    env = item.get('envVar') or item.get('env_var') or item
-    if env.get('key') == 'DATABASE_URL':
-        print(env.get('value') or '')
-        break
-PY
-          )
+          DATABASE_URL=$(python3 -c "import json; data=json.load(open('render-env-vars.json')); items=data if isinstance(data,list) else data.get('envVars') or data.get('env_vars') or []; print(next(((i.get('envVar') or i.get('env_var') or i).get('value') or '' for i in items if (i.get('envVar') or i.get('env_var') or i).get('key') == 'DATABASE_URL'), ''))")
           if [ -z "$DATABASE_URL" ] || [[ "$DATABASE_URL" == *"*****"* ]]; then
             echo "Render DATABASE_URL was not available from the service env vars"
             exit 1
           fi
           echo "::add-mask::$DATABASE_URL"
-          EXTERNAL_URL=$(DATABASE_URL="$DATABASE_URL" RENDER_POSTGRES_EXTERNAL_HOST="$RENDER_POSTGRES_EXTERNAL_HOST" python3 <<'PY'
-import os
-from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
-
-url = os.environ['DATABASE_URL']
-parts = urlsplit(url)
-userinfo = ''
-if parts.username:
-    userinfo = parts.username
-    if parts.password:
-        userinfo += ':' + parts.password
-    userinfo += '@'
-external_host = os.environ.get('RENDER_POSTGRES_EXTERNAL_HOST', '')
-netloc = parts.netloc
-if external_host and (parts.hostname or '').startswith('dpg-') and '.render.com' not in (parts.hostname or ''):
-    netloc = f'{userinfo}{external_host}:5432'
-query = dict(parse_qsl(parts.query, keep_blank_values=True))
-query.setdefault('sslmode', 'require')
-print(urlunsplit((parts.scheme or 'postgresql', netloc, parts.path, urlencode(query), '')))
-PY
-          )
+          EXTERNAL_URL=$(DATABASE_URL="$DATABASE_URL" RENDER_POSTGRES_EXTERNAL_HOST="$RENDER_POSTGRES_EXTERNAL_HOST" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); ui=''; ui=(p.username or '') + (((':' + p.password) if p.password else '') if p.username else '') + (('@') if p.username else ''); host=os.environ.get('RENDER_POSTGRES_EXTERNAL_HOST',''); netloc=p.netloc; netloc=(ui + host + ':5432') if host and (p.hostname or '').startswith('dpg-') and '.render.com' not in (p.hostname or '') else netloc; q=dict(parse_qsl(p.query, keep_blank_values=True)); q.setdefault('sslmode','require'); print(urlunsplit((p.scheme or 'postgresql', netloc, p.path, urlencode(q), '')))")
           echo "::add-mask::$EXTERNAL_URL"
           printf 'DATABASE_URL=%s\n' "$EXTERNAL_URL" >> "$GITHUB_ENV"
 
