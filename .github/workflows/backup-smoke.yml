@@ -41,6 +41,8 @@ jobs:
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
           chmod 600 ~/.ssh/backup_key
           remote="$VPS_USER@$VPS_HOST"
+          vps_ip=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "curl -fsS https://api.ipify.org || wget -qO- https://api.ipify.org")
+          node scripts/render-postgres-allowlist.js open "$vps_ip"
           cleaned_url=$(DATABASE_URL="$DATABASE_URL" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); q=[(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k not in {'uselibpqcompat'}]; print(urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),'')))")
           db_url_b64=$(printf '%s' "$cleaned_url" | base64 -w0)
           pgsslmode_b64=$(printf '%s' "${VPS_PGSSLMODE:-require}" | base64 -w0)
@@ -60,4 +62,6 @@ jobs:
 
       - name: Cleanup runner copy
         if: always()
-        run: rm -rf backup ~/.ssh/backup_key
+        run: |
+          node scripts/render-postgres-allowlist.js restore
+          rm -rf backup ~/.ssh/backup_key render-postgres-allowlist-before.json
