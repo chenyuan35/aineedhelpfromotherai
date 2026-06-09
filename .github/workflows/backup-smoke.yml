@@ -11,32 +11,53 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      VPS_HOST: ${{ secrets.VPS_HOST }}
-      VPS_USER: ${{ secrets.VPS_USER }}
-      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-      VPS_DATABASE_URL: ${{ secrets.VPS_DATABASE_URL }}
-      VPS_PGSSLMODE: ${{ secrets.VPS_PGSSLMODE }}
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_POSTGRES_ID: dpg-d8c164cua31s739joel0-a
     steps:
-      - name: Run pg_dump on VPS
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL 18 client
         run: |
           set -euo pipefail
-          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_DATABASE_URL" ]; then
-            echo "Missing VPS_HOST, VPS_USER, VPS_SSH_KEY, or VPS_DATABASE_URL"
+          sudo apt-get update
+          sudo apt-get install -y curl ca-certificates
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          . /etc/os-release
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt ${VERSION_CODENAME}-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-18
+          echo "/usr/lib/postgresql/18/bin" >> "$GITHUB_PATH"
+          /usr/lib/postgresql/18/bin/pg_dump --version
+
+      - name: Resolve Render database URL
+        run: |
+          set -euo pipefail
+          if [ -z "${RENDER_API_KEY}" ] || [ -z "${RENDER_POSTGRES_ID}" ]; then
+            echo "Missing RENDER_API_KEY or RENDER_POSTGRES_ID"
             exit 1
           fi
-          mkdir -p ~/.ssh backup
-          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
-          chmod 600 ~/.ssh/backup_key
-          remote="$VPS_USER@$VPS_HOST"
-          cleaned_url=$(DATABASE_URL="$VPS_DATABASE_URL" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); q=[(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k not in {'uselibpqcompat'}]; print(urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),'')))")
-          db_url_b64=$(printf '%s' "$cleaned_url" | base64 -w0)
-          pgsslmode_b64=$(printf '%s' "${VPS_PGSSLMODE:-disable}" | base64 -w0)
-          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "set -euo pipefail; command -v pg_dump; mkdir -p ~/aineedhelpfromotherai-db-backups; timestamp=\$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-\${timestamp}.dump; db_url=\$(printf '%s' '$db_url_b64' | base64 -d); pgsslmode=\$(printf '%s' '$pgsslmode_b64' | base64 -d); PGSSLMODE=\$pgsslmode pg_dump --dbname \"\$db_url\" --format=custom --no-owner --no-acl --file \"\$file\"; test -s \"\$file\"; sha256sum \"\$file\" > \"\$file.sha256\"; basename \"\$file\""
-          latest=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'ls -t ~/aineedhelpfromotherai-db-backups/render-postgres-*.dump | head -1')
-          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest" backup/
-          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest.sha256" backup/
-          test -s "backup/$(basename "$latest")"
-          echo "VPS backup created: $(basename "$latest")"
+          node scripts/resolve-render-database-url.js
+
+      - name: Open Render Postgres access for runner
+        run: node scripts/render-postgres-allowlist.js open
+
+      - name: Create pg_dump backup
+        run: |
+          set -euo pipefail
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Missing resolved DATABASE_URL"
+            exit 1
+          fi
+          mkdir -p backup
+          cleaned_url=$(DATABASE_URL="$DATABASE_URL" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); q=[(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k not in {'uselibpqcompat'}]; print(urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),'')))")
+          timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ)
+          file="backup/render-postgres-${timestamp}.dump"
+          PGSSLMODE=require pg_dump --dbname "$cleaned_url" --format=custom --no-owner --no-acl --file "$file"
+          test -s "$file"
+          sha256sum "$file" > "$file.sha256"
+          echo "Backup smoke artifact created: $(basename "$file") ($(stat -c%s "$file") bytes)"
 
       - name: Upload GitHub backup artifact
         uses: actions/upload-artifact@v4
@@ -47,4 +68,6 @@ jobs:
 
       - name: Cleanup runner copy
         if: always()
-        run: rm -rf backup ~/.ssh/backup_key
+        run: |
+          node scripts/render-postgres-allowlist.js close
+          rm -rf backup render-postgres-allowlist-state.json
