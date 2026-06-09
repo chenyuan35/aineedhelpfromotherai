@@ -36,6 +36,11 @@ jobs:
       - name: Diagnose Render Postgres access
         run: node scripts/render-postgres-diagnostics.js
 
+      - name: Test psql connection
+        run: |
+          set -euo pipefail
+          psql "${DATABASE_URL}" -c 'select current_database(), current_user, version();'
+
       - name: Create pg_dump backup
         run: |
           set -euo pipefail
