@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI Failure Observatory">
+  <rect width="64" height="64" rx="12" fill="#161817"/>
+  <path d="M18 44V21h6l10 23h-6l-2-5h-9l-2 5h-5Zm2-10h6l-3-8-3 8Zm19 10V21h6v23h-6Z" fill="#e9f0ed"/>
+  <path d="M12 51h40" stroke="#176c5f" stroke-width="4" stroke-linecap="round"/>
+</svg>
