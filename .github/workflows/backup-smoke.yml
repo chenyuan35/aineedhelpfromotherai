@@ -1,10 +1,6 @@
 name: Backup smoke test
 
 'on':
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/backup-smoke.yml'
   workflow_dispatch:
 
 permissions:

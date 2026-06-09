@@ -1,10 +1,6 @@
 name: Manual database backup
 
 'on':
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/manual-db-backup.yml'
   workflow_dispatch:
 
 permissions:
