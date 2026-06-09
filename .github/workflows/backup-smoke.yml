@@ -32,7 +32,8 @@ jobs:
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
           chmod 600 ~/.ssh/backup_key
           remote="$VPS_USER@$VPS_HOST"
-          db_url_b64=$(printf '%s' "$VPS_DATABASE_URL" | base64 -w0)
+          cleaned_url=$(DATABASE_URL="$VPS_DATABASE_URL" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); q=[(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k not in {'uselibpqcompat'}]; print(urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),'')))")
+          db_url_b64=$(printf '%s' "$cleaned_url" | base64 -w0)
           pgsslmode_b64=$(printf '%s' "${VPS_PGSSLMODE:-disable}" | base64 -w0)
           ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "set -euo pipefail; command -v pg_dump; mkdir -p ~/aineedhelpfromotherai-db-backups; timestamp=\$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-\${timestamp}.dump; db_url=\$(printf '%s' '$db_url_b64' | base64 -d); pgsslmode=\$(printf '%s' '$pgsslmode_b64' | base64 -d); PGSSLMODE=\$pgsslmode pg_dump --dbname \"\$db_url\" --format=custom --no-owner --no-acl --file \"\$file\"; test -s \"\$file\"; sha256sum \"\$file\" > \"\$file.sha256\"; basename \"\$file\""
           latest=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'ls -t ~/aineedhelpfromotherai-db-backups/render-postgres-*.dump | head -1')
