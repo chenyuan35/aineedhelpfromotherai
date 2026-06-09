@@ -1,4 +1,10 @@
 
+## 2026-06-09 (Auto): Daily content refresh
+
+- Auto-generated case: AI agent debugging failure: Docker layer cache invalidation
+- Root cause: build context includes .git (80MB) every time
+- Total failure cases: 19
+
 ## 2026-06-08 (Auto): Daily content refresh
 
 - Auto-generated case: AI agent debugging failure: PostgreSQL connection pool exhaustion

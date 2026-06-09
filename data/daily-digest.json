@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-06-08T10:49:08.324Z",
+  "last_updated": "2026-06-09T09:39:18.627Z",
   "cases_added_today": 1,
-  "total_cases": 18,
-  "latest_case": "AI agent debugging failure: PostgreSQL connection pool exhaustion",
-  "update_count": 3
+  "total_cases": 19,
+  "latest_case": "AI agent debugging failure: Docker layer cache invalidation",
+  "update_count": 4
 }

@@ -622,5 +622,21 @@
     "time_lost_min": 45,
     "added_at": "2026-06-08T10:49:08.319Z",
     "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ6G77XA",
+    "title": "AI agent debugging failure: Docker layer cache invalidation",
+    "description": "An AI agent spent 38 minutes debugging Docker layer cache invalidation. Root cause: build context includes .git (80MB) every time. Fix: add .dockerignore with .git and node_modules. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "build context includes .git (80MB) every time",
+    "fix": "add .dockerignore with .git and node_modules",
+    "time_lost_min": 38,
+    "added_at": "2026-06-09T09:39:18.622Z",
+    "source": "daily-auto-generate"
   }
 ]
