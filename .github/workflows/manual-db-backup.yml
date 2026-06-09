@@ -1,6 +1,10 @@
 name: Manual database backup
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/manual-db-backup.yml'
   workflow_dispatch:
     inputs:
       upload_vps:
@@ -110,7 +114,7 @@ PY
           echo "Backup created: $(basename "${file}") ($(stat -c%s "${file}") bytes)"
 
       - name: Upload backup to VPS
-        if: ${{ inputs.upload_vps }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.upload_vps }}
         run: |
           set -euo pipefail
           if [ -z "${VPS_HOST}" ] || [ -z "${VPS_USER}" ] || [ -z "${VPS_SSH_KEY}" ]; then
@@ -126,7 +130,7 @@ PY
           ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "test -s ~/aineedhelpfromotherai-db-backups/${BACKUP_NAME} && ls -lh ~/aineedhelpfromotherai-db-backups/${BACKUP_NAME}"
 
       - name: Upload backup to Cloudflare R2
-        if: ${{ inputs.upload_r2 }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.upload_r2 }}
         run: |
           set -euo pipefail
           if [ -z "${CLOUDFLARE_API_TOKEN}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID}" ] || [ -z "${R2_BUCKET}" ]; then
