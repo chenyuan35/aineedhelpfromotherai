@@ -15,50 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-      RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-      RENDER_POSTGRES_EXTERNAL_HOST: dpg-d8c164cua31s739joel0-a.oregon-postgres.render.com
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
     steps:
-      - name: Install PostgreSQL client
+      - name: Run pg_dump on VPS
         run: |
           set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
-
-      - name: Resolve Render database URL
-        run: |
-          set -euo pipefail
-          curl -fsS -H "Authorization: Bearer $RENDER_API_KEY" -H "Accept: application/json" "https://api.render.com/v1/services/$RENDER_SERVICE_ID/env-vars" > render-env-vars.json
-          DATABASE_URL=$(python3 -c "import json; data=json.load(open('render-env-vars.json')); items=data if isinstance(data,list) else data.get('envVars') or data.get('env_vars') or []; print(next(((i.get('envVar') or i.get('env_var') or i).get('value') or '' for i in items if (i.get('envVar') or i.get('env_var') or i).get('key') == 'DATABASE_URL'), ''))")
-          if [ -z "$DATABASE_URL" ] || [[ "$DATABASE_URL" == *"*****"* ]]; then
-            echo "Render DATABASE_URL was not available from the service env vars"
+          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ]; then
+            echo "Missing VPS_HOST, VPS_USER, or VPS_SSH_KEY"
             exit 1
           fi
-          echo "::add-mask::$DATABASE_URL"
-          EXTERNAL_URL=$(DATABASE_URL="$DATABASE_URL" RENDER_POSTGRES_EXTERNAL_HOST="$RENDER_POSTGRES_EXTERNAL_HOST" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); ui=''; ui=(p.username or '') + (((':' + p.password) if p.password else '') if p.username else '') + (('@') if p.username else ''); host=os.environ.get('RENDER_POSTGRES_EXTERNAL_HOST',''); netloc=p.netloc; netloc=(ui + host + ':5432') if host and (p.hostname or '').startswith('dpg-') and '.render.com' not in (p.hostname or '') else netloc; q=dict(parse_qsl(p.query, keep_blank_values=True)); q.setdefault('sslmode','require'); print(urlunsplit((p.scheme or 'postgresql', netloc, p.path, urlencode(q), '')))")
-          echo "::add-mask::$EXTERNAL_URL"
-          printf 'DATABASE_URL=%s\n' "$EXTERNAL_URL" >> "$GITHUB_ENV"
-
-      - name: Create pg_dump backup
-        env:
-          PGSSLMODE: require
-          PGCONNECT_TIMEOUT: 20
-        run: |
-          set -euo pipefail
-          mkdir -p backup
-          timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ)
-          file="backup/render-postgres-$timestamp.dump"
-          for attempt in 1 2 3; do
-            if pg_dump --dbname "$DATABASE_URL" --format=custom --no-owner --no-acl --file "$file"; then
-              break
-            fi
-            rm -f "$file"
-            echo "pg_dump failed on attempt $attempt; retrying in 10s"
-            sleep 10
-          done
-          test -s "$file"
-          sha256sum "$file" > "$file.sha256"
-          echo "Backup created: $(basename "$file") ($(stat -c%s "$file") bytes)"
+          mkdir -p ~/.ssh backup
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
+          chmod 600 ~/.ssh/backup_key
+          remote="$VPS_USER@$VPS_HOST"
+          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'set -euo pipefail; command -v pg_dump; mkdir -p ~/aineedhelpfromotherai-db-backups; timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-${timestamp}.dump; if [ -f ~/aineedhelpfromotherai/.env.vps ]; then set -a; . ~/aineedhelpfromotherai/.env.vps; set +a; elif [ -f /opt/aineedhelpfromotherai/.env.vps ]; then set -a; . /opt/aineedhelpfromotherai/.env.vps; set +a; fi; db_url=${DATABASE_URL:-${PG_CONNECTION_STRING:-}}; if [ -z "$db_url" ]; then echo "Missing DATABASE_URL or PG_CONNECTION_STRING on VPS"; exit 1; fi; PGSSLMODE=${PGSSLMODE:-disable} pg_dump --dbname "$db_url" --format=custom --no-owner --no-acl --file "$file"; test -s "$file"; sha256sum "$file" > "$file.sha256"; basename "$file"'
+          latest=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'ls -t ~/aineedhelpfromotherai-db-backups/render-postgres-*.dump | head -1')
+          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest" backup/
+          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest.sha256" backup/
+          test -s "backup/$(basename "$latest")"
+          echo "VPS backup created: $(basename "$latest")"
 
       - name: Upload GitHub backup artifact
         uses: actions/upload-artifact@v4
@@ -69,4 +46,4 @@ jobs:
 
       - name: Cleanup runner copy
         if: always()
-        run: rm -rf backup render-env-vars.json
+        run: rm -rf backup ~/.ssh/backup_key
