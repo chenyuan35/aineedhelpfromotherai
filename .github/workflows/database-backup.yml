@@ -39,7 +39,28 @@ jobs:
       - name: Test psql connection
         run: |
           set -euo pipefail
-          psql "${DATABASE_URL}" -c 'select current_database(), current_user, version();'
+          node - <<'NODE' >> "$GITHUB_ENV"
+          const raw = process.env.DATABASE_URL;
+          const parsed = new URL(raw);
+          parsed.searchParams.set('sslmode', 'require');
+          console.log(`DATABASE_URL_REQUIRE=${parsed.toString()}`);
+          parsed.searchParams.set('sslmode', 'prefer');
+          console.log(`DATABASE_URL_PREFER=${parsed.toString()}`);
+          parsed.searchParams.set('sslmode', 'disable');
+          console.log(`DATABASE_URL_DISABLE=${parsed.toString()}`);
+          NODE
+          echo "::add-mask::${DATABASE_URL_REQUIRE}"
+          echo "::add-mask::${DATABASE_URL_PREFER}"
+          echo "::add-mask::${DATABASE_URL_DISABLE}"
+          set +e
+          for mode in REQUIRE PREFER DISABLE; do
+            url_var="DATABASE_URL_${mode}"
+            echo "[psql-diagnostics] trying sslmode=${mode,,}"
+            psql "${!url_var}" -c 'select current_database(), current_user, version();'
+            code=$?
+            echo "[psql-diagnostics] sslmode=${mode,,} exit=${code}"
+          done
+          exit 1
 
       - name: Create pg_dump backup
         run: |
