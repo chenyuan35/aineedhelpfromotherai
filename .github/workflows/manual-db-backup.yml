@@ -1,6 +1,6 @@
 name: Manual database backup
 
-on:
+'on':
   push:
     branches: [main]
     paths:
@@ -147,3 +147,4 @@ PY
         if: always()
         run: |
           rm -rf backup render-env-vars.json ~/.ssh/backup_key /tmp/backup.sha256.check
+
