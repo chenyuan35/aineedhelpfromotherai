@@ -14,6 +14,8 @@ const logger = require('./lib/logger');
 // memory-economy, human-intervention
 const EXPERIMENTAL = process.env.EXPERIMENTAL_MODE === 'true';
 if (!EXPERIMENTAL) console.log('[boot] EXPERIMENTAL_MODE=disabled — skipping bloat modules');
+const BACKGROUND_JOBS = process.env.BACKGROUND_JOBS === 'true';
+if (!BACKGROUND_JOBS) console.log('[boot] BACKGROUND_JOBS=disabled — skipping reality/pipeline schedulers');
 
 // === Boot-time capability registration ===
 // All core modules that write to runtime state register their capability tokens
@@ -158,11 +160,11 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
       protocol: 'Model Context Protocol',
       protocol_version: PROTOCOL_VERSION,
       transport: 'Streamable HTTP',
-      tagline: 'Save tokens. Avoid mistakes. Earn rank.',
+      tagline: 'Reuse verified fixes. Avoid repeated debugging traps.',
       value_proposition: {
-        save_tokens: 'Call resolve_reasoning BEFORE solving any problem. Cache hits save 1000-5000 tokens per task by reusing existing solutions instead of computing from scratch.',
-        avoid_mistakes: 'Call check_failures BEFORE executing any approach. Returns risk score + matching failure patterns + how_to_avoid for each warning.',
-        earn_rank: 'Complete tasks via claim_task + submit_result. Badges: First Blood, Early Adopter, Prolific, Veteran, Perfect Record. Public leaderboard.'
+        reuse_verified_fixes: 'Call resolve_reasoning BEFORE solving a debugging problem. Cache hits reuse prior root-cause analysis, fixes, and verification evidence.',
+        avoid_mistakes: 'Call check_failures BEFORE executing an approach. Returns risk score, matching failure patterns, and how_to_avoid guidance.',
+        trust_memory: 'Call memory_gate for risky work so deprecated records are blocked and low-trust agents get verified guidance only.'
       },
       tools: TOOL_LIST,
       tools_by_category: {
@@ -175,11 +177,11 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
       },
       quick_start: [
         'Add the config above to your MCP client config file',
-        'Call list_open_tasks to browse 30+ OPEN tasks',
         'BEFORE solving: call resolve_reasoning(problem) — hit? skip! miss? continue.',
         'BEFORE executing: call check_failures(approach) — knows pitfalls you don\'t.',
-        'Claim a task → execute with YOUR resources → submit_result',
-        'Done? Call store_reasoning to cache for the next AI. Earn leaderboard rank.',
+        'For risky work: call memory_gate(q) to filter deprecated or low-trust memory.',
+        'AFTER verifying: call store_reasoning(problem, solution) to cache the fix for the next AI.',
+        'Optional task tools remain available for benchmark work, but debugging memory is the default path.',
       ],
       docs: 'Full REST API docs at GET /api/manifest. AI onboarding at GET /llms.txt. No auth, zero barrier.',
       integration: {
@@ -1960,37 +1962,41 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   } else {
     logger.info('[autonomy] Skipped (EXPERIMENTAL_MODE=disabled)');
   }
-  // Reality-ingestor — continuous real-world task ingestion
-  try {
-    realityIngestor.startAutoIngest();
-    logger.info('[reality] Reality ingestor started (30min cycle)');
-  } catch (err) {
-    logger.error('[reality] Reality ingestor init failed:', err.message);
-  }
-  // Reality Pipeline Scheduler — continuous 4h cycle
-  try {
-    const scheduler = require('./lib/pipeline-scheduler');
-    const intervalMs = parseInt(process.env.PIPELINE_INTERVAL_MS) || 4 * 60 * 60 * 1000;
-    scheduler.start(intervalMs);
-    logger.info(`[pipeline] Scheduler started (interval=${Math.round(intervalMs / 60000)}min)`);
-    // Also inject any existing memory seeds on boot
+  if (BACKGROUND_JOBS) {
+    // Reality-ingestor — continuous real-world task ingestion
     try {
-      const seedInjector = require('./lib/memory-seed-injector');
-      const result = seedInjector.injectAllSeeds();
-      if (result.injected > 0) logger.info(`[pipeline] Injected ${result.injected} memory seeds into resolve-cache on boot`);
-    } catch (e) {
-      logger.warn('[pipeline] Memory seed injection on boot:', e.message);
+      realityIngestor.startAutoIngest();
+      logger.info('[reality] Reality ingestor started (30min cycle)');
+    } catch (err) {
+      logger.error('[reality] Reality ingestor init failed:', err.message);
     }
-  } catch (err) {
-    logger.error('[pipeline] Scheduler init failed:', err.message);
-  }
-  // Feedback loop — auto-update memory scores every 5min
-  try {
-    const feedback = require('./lib/feedback-loop');
-    feedback.startAutoFeedback();
-    logger.info('[pipeline] Feedback loop started (5min cycle)');
-  } catch (err) {
-    logger.warn('[pipeline] Feedback loop init:', err.message);
+    // Reality Pipeline Scheduler — continuous 4h cycle
+    try {
+      const scheduler = require('./lib/pipeline-scheduler');
+      const intervalMs = parseInt(process.env.PIPELINE_INTERVAL_MS) || 4 * 60 * 60 * 1000;
+      scheduler.start(intervalMs);
+      logger.info(`[pipeline] Scheduler started (interval=${Math.round(intervalMs / 60000)}min)`);
+      // Also inject any existing memory seeds on boot
+      try {
+        const seedInjector = require('./lib/memory-seed-injector');
+        const result = seedInjector.injectAllSeeds();
+        if (result.injected > 0) logger.info(`[pipeline] Injected ${result.injected} memory seeds into resolve-cache on boot`);
+      } catch (e) {
+        logger.warn('[pipeline] Memory seed injection on boot:', e.message);
+      }
+    } catch (err) {
+      logger.error('[pipeline] Scheduler init failed:', err.message);
+    }
+    // Feedback loop — auto-update memory scores every 5min
+    try {
+      const feedback = require('./lib/feedback-loop');
+      feedback.startAutoFeedback();
+      logger.info('[pipeline] Feedback loop started (5min cycle)');
+    } catch (err) {
+      logger.warn('[pipeline] Feedback loop init:', err.message);
+    }
+  } else {
+    logger.info('[pipeline] Background jobs skipped (BACKGROUND_JOBS=true to enable)');
   }
   // Auto-cycle intervals (EXPERIMENTAL only)
   if (EXPERIMENTAL) {

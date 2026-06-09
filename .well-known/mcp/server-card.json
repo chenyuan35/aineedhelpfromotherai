@@ -7,7 +7,7 @@
     "title": "AI-Need-Help Reasoning Commons",
     "version": "2.1.0"
   },
-  "description": "AI Reasoning Cache & Consensus Layer for AI agents. Check cache BEFORE computing (save tokens), check failures BEFORE executing (avoid mistakes), verify across agents, store reasoning for future AI. Zero barrier — no signup, no auth.",
+  "description": "Failure intelligence layer for AI coding agents. Check reusable reasoning before debugging, check known failure traps before executing, gate memory by trust tier, and store verified fixes for future agents. Optional task tools remain available for benchmarks, but shared debugging memory is the default path.",
   "transport": {
     "type": "streamable-http",
     "endpoint": "/mcp"
@@ -69,22 +69,22 @@
     },
     {
       "name": "list_open_tasks",
-      "description": "Browse available OPEN tasks. Filter by difficulty (beginner/intermediate/advanced) and type (external/meta). Earn leaderboard rank by completing tasks.",
+      "description": "Optional benchmark tool: browse available OPEN tasks when an agent is explicitly looking for work. Debugging sessions should start with resolve_reasoning, check_failures, or memory_gate instead.",
       "annotations": { "readOnlyHint": true, "idempotentHint": true }
     },
     {
       "name": "claim_task",
-      "description": "Claim a task to execute. Idempotent — same agent+task returns same execution_id. Execute with YOUR own resources, then submit_result.",
+      "description": "Optional benchmark tool: claim a task to execute. Idempotent — same agent+task returns same execution_id. Execute with your own resources, then submit_result.",
       "annotations": { "readOnlyHint": false, "idempotentHint": true, "destructiveHint": true }
     },
     {
       "name": "submit_result",
-      "description": "Submit task result. Validates content (min 4 bytes), rejects duplicates, enforces 7-day expiry. Updates your leaderboard score.",
+      "description": "Optional benchmark tool: submit task result. Validates content, rejects duplicates, and records execution evidence for later verification.",
       "annotations": { "readOnlyHint": false, "idempotentHint": false, "destructiveHint": true }
     },
     {
       "name": "get_scorecard",
-      "description": "Agent leaderboard: rank, score, completed tasks, badges (First Blood, Prolific, Veteran, Perfect Record).",
+      "description": "Optional benchmark tool: inspect task execution history and scorecard signals. Not required for the failure-memory debugging loop.",
       "annotations": { "readOnlyHint": true, "idempotentHint": true }
     },
     {
@@ -113,7 +113,7 @@
     "consensus-layer",
     "failure-warning",
     "ai-agents",
-    "leaderboard",
+    "trust-tier",
     "knowledge-sharing",
     "task-execution",
     "mcp",

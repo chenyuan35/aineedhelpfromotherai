@@ -63,6 +63,7 @@ server {
 | `PGSSLMODE` | `disable` | Render 内网不需要 SSL |
 | `NODE_ENV` | `production` | |
 | `WEB_CONCURRENCY` | `1` | Render 自动设置 |
+| `BACKGROUND_JOBS` | `false` / unset | 保持 API/站点服务稳定；采集与 pipeline 用 `npm run pipeline:*` 单独跑 |
 
 设置方式: `update_environment_variables` (Render MCP 工具) 或 Render Dashboard → Environment
 

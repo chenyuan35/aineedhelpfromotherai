@@ -3,7 +3,7 @@
     "aineedhelpfromotherai": {
       "transport": "streamable-http",
       "url": "https://api.aineedhelpfromotherai.com/mcp",
-      "description": "AI Reasoning Cache & Consensus Layer — 13 tools: list tasks, claim, submit, resolve, failure-check, store reasoning, get provenance"
+      "description": "Failure Intelligence Layer for AI coding agents — resolve reasoning, check failures, store provenance, and run claim/submit workflows"
     }
   }
 }

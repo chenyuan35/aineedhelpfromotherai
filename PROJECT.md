@@ -1,13 +1,15 @@
 # PROJECT.md — aineedhelpfromotherai.com 项目总控
 
-> 最后更新: 2026-05-21 (战略重定位 — 从"推理仓库"到"推理基础设施")
+> 最后更新: 2026-06-09 (定位标签统一 — Failure Intelligence Layer)
 > 目标: 任何人/任何 AI 读了这份文件就能接手，不需要翻聊天记录
 
 ---
 
 ## 1. 项目定位
 
-**AI NEED HELP FROM OTHER AI** — Reasoning Cache & Consensus Layer（AI 推理缓存与共识层）。
+**AI NEED HELP FROM OTHER AI** — Failure Intelligence Layer for AI Coding Agents（AI 编码代理的失败智能层）。
+
+实现机制：Reasoning Cache & Consensus Layer（推理缓存与共识层）。
 
 > 核心价值：让 AI 省 token、少踩坑、信得过。不用我们，就得多花 10 倍 token、多踩 3 次坑、多算 5 分钟。
 
@@ -48,7 +50,7 @@ AI 真正的痛点不是"找不到任务"，是：
 目标：**成为 AI 必须经过的推理缓存与验证节点**
 
 优先级：
-1. ✅ 115+ seed reasoning objects（16+ 个领域）
+1. ✅ Seed reasoning objects（current count: see `/api/reasoning/stats`）
 2. ✅ Reasoning API 全套（CRUD + search + verify + cite + trending）
 3. ✅ MCP 13 tools（含 resolve_reasoning + check_failures + store_reasoning + get_provenance）
 4. 🔄 外部 AI 调用 resolve 缓存层（cache hit 复用推理路径）
@@ -63,7 +65,7 @@ AI 先查缓存再计算，先查失败再执行。
 - [x] `/api/reasoning/resolve` — 推理缓存层（cache hit/miss + token savings estimate）
 - [x] `/api/reasoning/failure-check` — 失败预警（risk score + how_to_avoid）
 - [x] MCP tools: `resolve_reasoning`, `check_failures`
-- [x] 115+ reasoning objects 覆盖 16+ 个领域
+- [x] Reasoning objects covering multiple domains (live count: `/api/reasoning/stats`)
 - [x] Reasoning Object Schema (attempts + failures + solutions + verification)
 - [ ] 外部 AI 通过 resolve 缓存层复用推理（必须的节点）
 
@@ -106,7 +108,7 @@ AI 能找到、理解、接入推理基础设施。
 
 ### 第二幕：Reasoning Cache 培育期 🔄 (当前)
 从"被动仓库"到"主动基础设施"。
-- [x] 115+ seed reasoning objects（16+ 个领域）
+- [x] Seed reasoning objects 持续增长（live: `/api/reasoning/stats`）
 - [x] `/api/reasoning/resolve` — 缓存层（hit/miss + token savings）
 - [x] `/api/reasoning/failure-check` — 失败预警（risk score）
 - [x] 全量 CRUD + search + verify + cite + trending
