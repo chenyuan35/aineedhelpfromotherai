@@ -176,6 +176,7 @@ function shell(page, body) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(page.title)} - AI Failure Observatory</title>
 <meta name="description" content="${escapeHtml(page.description)}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://aineedhelpfromotherai.com${canonical}">
 <meta property="og:title" content="${escapeHtml(page.title)}">
 <meta property="og:description" content="${escapeHtml(page.description)}">
