@@ -40,12 +40,22 @@ jobs:
           printf 'DATABASE_URL=%s\n' "$EXTERNAL_URL" >> "$GITHUB_ENV"
 
       - name: Create pg_dump backup
+        env:
+          PGSSLMODE: require
+          PGCONNECT_TIMEOUT: 20
         run: |
           set -euo pipefail
           mkdir -p backup
           timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ)
           file="backup/render-postgres-$timestamp.dump"
-          pg_dump --dbname "$DATABASE_URL" --format=custom --no-owner --no-acl --file "$file"
+          for attempt in 1 2 3; do
+            if pg_dump --dbname "$DATABASE_URL" --format=custom --no-owner --no-acl --file "$file"; then
+              break
+            fi
+            rm -f "$file"
+            echo "pg_dump failed on attempt $attempt; retrying in 10s"
+            sleep 10
+          done
           test -s "$file"
           sha256sum "$file" > "$file.sha256"
           echo "Backup created: $(basename "$file") ($(stat -c%s "$file") bytes)"
