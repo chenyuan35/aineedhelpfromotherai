@@ -6,11 +6,12 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const logger = require('./lib/logger');
 
 // EXPERIMENTAL_MODE: disabled by default on free tier to save memory
-// Set EXPERIMENTAL_MODE=true to enable world-model, goal-generator, architect,
-// memory-economy, collapse-simulation, constitutional-layer, human-intervention
+// Set EXPERIMENTAL_MODE=true to enable world-model, goal-generator,
+// memory-economy, human-intervention
 const EXPERIMENTAL = process.env.EXPERIMENTAL_MODE === 'true';
 if (!EXPERIMENTAL) console.log('[boot] EXPERIMENTAL_MODE=disabled — skipping bloat modules');
 
@@ -553,31 +554,6 @@ app.get('/api/failure-cases/:id', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
-// Agent traps — known behavioral trap vocabulary
-app.get('/api/agent-traps', (req, res) => {
-  try {
-    const { getTraps, getStats } = require('./lib/agent-traps');
-    if (req.query.stats === 'true') {
-      return res.json({ success: true, data: getStats() });
-    }
-    const result = getTraps({
-      severity: req.query.severity,
-      tag: req.query.tag,
-      limit: Math.min(parseInt(req.query.limit) || 20, 50),
-    });
-    res.json({ success: true, data: result });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-
-app.get('/api/agent-traps/:id', (req, res) => {
-  try {
-    const { getTrap } = require('./lib/agent-traps');
-    const trap = getTrap(req.params.id);
-    if (!trap) return res.status(404).json({ success: false, error: 'Agent trap not found' });
-    res.json({ success: true, data: trap });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-
 // Failure Dynamics — root cause physics, not case collection
 app.get('/api/failure-dynamics', (req, res) => {
   try {
@@ -902,27 +878,8 @@ app.get('/api/winners', (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
-// EXPERIMENTAL: Agent breeding, world model, goals, architect, economy, collapse
+// EXPERIMENTAL: World model, goals, economy
 if (EXPERIMENTAL) {
-  app.get('/api/breeds', (req, res) => {
-    try {
-      const breeding = require('./lib/agent-breeding');
-      res.json({ success: true, breeds: breeding.getBreeds(), meta: { endpoint: '/api/breeds', timestamp: new Date().toISOString() } });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
-  app.post('/api/breeds/evolve', async (req, res) => {
-    try {
-      const breeding = require('./lib/agent-breeding');
-      const breeds = breeding.autoEvolve(parseInt(req.query.count) || 2);
-      res.json({ success: true, new_breeds: breeds, message: `Created ${breeds.length} new hybrid breeds` });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
-  app.get('/api/tournament/strategies', (req, res) => {
-    try {
-      const failureReplay = require('./scripts/failure-replay');
-      res.json({ success: true, strategies: failureReplay.getStrategies(), meta: { endpoint: '/api/tournament/strategies', timestamp: new Date().toISOString() } });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
   app.get('/api/world-model', (req, res) => {
     try {
       const wm = require('./lib/world-model');
@@ -949,19 +906,6 @@ if (EXPERIMENTAL) {
       res.json({ success: ok, message: ok ? 'Goal completed' : 'Goal not found' });
     } catch (e) { res.status(500).json({ success: false, error: e.message }); }
   });
-  app.get('/api/architect', (req, res) => {
-    try {
-      const arch = require('./lib/architect-agent');
-      res.json({ success: true, analysis: arch.analyzeWinningTraits(), pending: arch.getPendingExperiments(), meta: { endpoint: '/api/architect', timestamp: new Date().toISOString() } });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
-  app.post('/api/architect/design', async (req, res) => {
-    try {
-      const arch = require('./lib/architect-agent');
-      const designs = arch.batchDesign(parseInt(req.query.generation) || undefined);
-      res.json({ success: true, designs, count: designs.length });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
   app.get('/api/economy', (req, res) => {
     try {
       const eco = require('./lib/memory-economy');
@@ -972,17 +916,6 @@ if (EXPERIMENTAL) {
     try {
       const eco = require('./lib/memory-economy');
       res.json({ success: true, budget: eco.getAgentBudget(req.params.agentId), hint_cost: eco.getHintCost(require('./lib/resolve-cache').getHint(req.query.task_id || '')) });
-    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-  });
-  app.post('/api/collapse/simulate', async (req, res) => {
-    try {
-      const { execSync } = require('child_process');
-      const scenario = req.query.scenario || 'all';
-      const out = execSync(`node scripts/collapse-simulation.js --scenario=${scenario}`, { timeout: 30000 });
-      const reportPath = require('path').join(__dirname, 'data', 'collapse-simulation-report.json');
-      let report = null;
-      try { report = JSON.parse(require('fs').readFileSync(reportPath, 'utf8')); } catch {}
-      res.json({ success: true, output: out.toString(), report, scenario });
     } catch (e) { res.status(500).json({ success: false, error: e.message }); }
   });
 }
@@ -1003,13 +936,13 @@ app.get('/core/manifest', (req, res) => {
       'lifecycle', 'task-recovery', 'points', 'validator',
     ],
     experimental_components: [
-      'agent-breeding', 'world-model', 'goal-generator', 'architect-agent',
+      'world-model', 'goal-generator',
       'memory-economy', 'memory-lineage', 'winner-selection', 'prompt-evolution',
       'behavioral-signals', 'root-cause-engine', 'failure-taxonomy',
-      'ground-truth', 'constitutional-layer', 'human-intervention',
+      'ground-truth', 'human-intervention',
       'reality-ingestor', 'sandbox-executor', 'feedback-loop',
       'replay-stability', 'replay-patterns', 'replay-to-eval',
-      'memory-decay', 'adversarial-generator', 'cross-validator',
+      'memory-decay', 'cross-validator',
       'drift-detector', 'drift-remediation', 'eval-harness', 'llm-eval',
       'reputation-system', 'baseline-manager', 'workload-analytics',
     ],
@@ -1166,36 +1099,8 @@ app.post('/api/sandbox/execute', async (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
-// === CONSTITUTIONAL LAYER ===
-if (EXPERIMENTAL) {
-const constitution = require('./lib/constitutional-layer');
-app.get('/api/constitution/rules', (req, res) => {
-  try {
-    res.json({ success: true, rules: constitution.getRules(), violations_summary: constitution.getViolationsSummary() });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-app.post('/api/constitution/rules/:ruleId', (req, res) => {
-  try {
-    const updated = constitution.updateRule(req.params.ruleId, req.body);
-    if (!updated) return res.status(404).json({ success: false, error: 'rule_not_found' });
-    res.json({ success: true, rules: constitution.getRules() });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-app.get('/api/constitution/violations', (req, res) => {
-  try {
-    res.json({ success: true, violations: constitution.getViolations(parseInt(req.query.limit) || 50), summary: constitution.getViolationsSummary() });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-app.post('/api/constitution/check', (req, res) => {
-  try {
-    const { agent_id, context } = req.body;
-    if (!agent_id) return res.status(400).json({ success: false, error: 'missing_fields', message: 'agent_id required' });
-    const result = constitution.checkAll(agent_id, context || {});
-    res.json({ success: true, ...result });
-  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
-});
-
 // === HUMAN INTERVENTION PROTOCOL ===
+if (EXPERIMENTAL) {
 const intervention = require('./lib/human-intervention');
 app.get('/api/audit', (req, res) => {
   try {
@@ -1261,7 +1166,7 @@ app.get('/api/backups', (req, res) => {
     res.json({ success: true, backups: intervention.listBackups() });
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
-} // END EXPERIMENTAL: constitution + human-intervention
+} // END EXPERIMENTAL: human-intervention
 
 // === MINIMAL MEMORY API — 3 endpoints any agent calls in 2 minutes ===
 // "Your agent stops repeating solved failures."
@@ -1434,15 +1339,13 @@ app.get('/api/meta', (req, res) => {
     const elo = require('./lib/elo-rating');
     const rc = require('./lib/resolve-cache');
     const ver = require('./lib/verification');
-    let wm, gg, arch, eco, ws, rep, gt, con, inv;
+    let wm, gg, eco, ws, rep, gt, inv;
     try { wm = require('./lib/world-model'); } catch { wm = { getWorldModel: () => ({ status: 'unavailable' }) }; }
     try { gg = require('./lib/goal-generator'); } catch { gg = { getGoalSummary: () => ({}) }; }
-    try { arch = require('./lib/architect-agent'); } catch { arch = { analyzeWinningTraits: () => ({}) }; }
     try { eco = require('./lib/memory-economy'); } catch { eco = { getSystemSummary: () => ({}) }; }
     try { ws = require('./lib/winner-selection'); } catch { ws = { getWinLeaderboard: () => [] }; }
     try { rep = require('./lib/reputation-system'); } catch { rep = { getSystemSummary: () => ({}) }; }
     try { gt = require('./lib/ground-truth'); } catch { gt = { getStats: () => ({}) }; }
-    try { con = require('./lib/constitutional-layer'); } catch { con = { getViolationsSummary: () => ({}) }; }
     try { inv = require('./lib/human-intervention'); } catch { inv = { isSystemFrozen: () => false, getFreezeState: () => ({}) }; }
     res.json({
       success: true,
@@ -1452,7 +1355,6 @@ app.get('/api/meta', (req, res) => {
       task_dominance: elo.getTaskDominance(),
       world_model: wm.getWorldModel(),
       goals: gg.getGoalSummary(),
-      architect: arch.analyzeWinningTraits(),
       economy: eco.getSystemSummary(),
       winners: ws.getWinLeaderboard().slice(0, 10),
       prompt_variants: rc.getAgentMemoryLeaderboard(),
@@ -1461,7 +1363,6 @@ app.get('/api/meta', (req, res) => {
       reputation: rep.getSystemSummary(),
       ground_truth: gt.getStats(),
       verification: ver.getStats(),
-      constitution: con.getViolationsSummary(),
       intervention: { frozen: inv.isSystemFrozen(), frozen_agents: inv.getFreezeState().frozen_agents?.length || 0 },
       meta: { endpoint: '/api/meta', description: 'Unified dashboard: autonomy + reality grounding + verification + governance', timestamp: new Date().toISOString() },
     });
@@ -1945,6 +1846,25 @@ app.get('/cases/', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'cases', 'index.html'));
 });
 
+function resolveFrontendIndex(reqPath) {
+  const route = reqPath.replace(/^\/+|\/+$/g, '');
+  if (!route) return null;
+  if (route.startsWith('api/') && route !== 'api/docs') return null;
+
+  const indexPath = path.resolve(frontendDist, route, 'index.html');
+  const distRoot = path.resolve(frontendDist) + path.sep;
+  if (!indexPath.startsWith(distRoot)) return null;
+  return fs.existsSync(indexPath) ? indexPath : null;
+}
+
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+
+  const indexPath = resolveFrontendIndex(req.path);
+  if (!indexPath) return next();
+  res.sendFile(indexPath);
+});
+
 // SPA fallback (Express 5 compatible) — serve Vite build
 app.get('/:path', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
@@ -2030,13 +1950,6 @@ const server = app.listen(PORT, '0.0.0.0', () => {
       logger.warn ? logger.warn('[autonomy] Goal generator init:', err.message) : logger.error('[autonomy] Goal generator init:', err.message);
     }
     try {
-      const arch = require('./lib/architect-agent');
-      const designs = arch.batchDesign();
-      logger.info(`[autonomy] Architect agent: designed ${designs.length} new agent configurations`);
-    } catch (err) {
-      logger.warn ? logger.warn('[autonomy] Architect agent init:', err.message) : logger.error('[autonomy] Architect agent init:', err.message);
-    }
-    try {
       const eco = require('./lib/memory-economy');
       const summary = eco.getSystemSummary();
       logger.info(`[autonomy] Memory economy: ${summary.agents_with_budget || 0} agents tracking budgets`);
@@ -2088,13 +2001,6 @@ const server = app.listen(PORT, '0.0.0.0', () => {
         if (result.generated > 0) logger.info(`[autonomy] Auto-cycle: ${result.generated} goals generated`);
       } catch (e) { logger.error('[autonomy] Goal cycle error:', e.message); }
     }, 10 * 60 * 1000).unref();
-    setInterval(() => {
-      try {
-        const arch = require('./lib/architect-agent');
-        const designs = arch.batchDesign();
-        if (designs.length > 0) logger.info(`[autonomy] Auto-cycle: ${designs.length} agent designs from architect`);
-      } catch (e) { logger.error('[autonomy] Architect cycle error:', e.message); }
-    }, 30 * 60 * 1000).unref();
     setTimeout(() => {
       try {
         const wm = require('./lib/world-model');
