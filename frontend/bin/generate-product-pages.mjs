@@ -315,7 +315,7 @@ function pageScript(page) {
       }
     }
   };
-  const list = (value) => String(value || '').split(/[,\n]/).map((item) => item.trim()).filter(Boolean);
+  const list = (value) => String(value || '').split(/[,\\n]/).map((item) => item.trim()).filter(Boolean);
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(form);

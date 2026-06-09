@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const logger = require('./lib/logger');
 
 // EXPERIMENTAL_MODE: disabled by default on free tier to save memory
@@ -1943,6 +1944,25 @@ app.get('/', (req, res) => {
 
 app.get('/cases/', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'cases', 'index.html'));
+});
+
+function resolveFrontendIndex(reqPath) {
+  const route = reqPath.replace(/^\/+|\/+$/g, '');
+  if (!route) return null;
+  if (route.startsWith('api/') && route !== 'api/docs') return null;
+
+  const indexPath = path.resolve(frontendDist, route, 'index.html');
+  const distRoot = path.resolve(frontendDist) + path.sep;
+  if (!indexPath.startsWith(distRoot)) return null;
+  return fs.existsSync(indexPath) ? indexPath : null;
+}
+
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+
+  const indexPath = resolveFrontendIndex(req.path);
+  if (!indexPath) return next();
+  res.sendFile(indexPath);
 });
 
 // SPA fallback (Express 5 compatible) — serve Vite build
