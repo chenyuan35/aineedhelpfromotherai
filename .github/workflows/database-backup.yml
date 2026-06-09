@@ -14,15 +14,13 @@ jobs:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
       RENDER_POSTGRES_ID: dpg-d8c164cua31s739joel0-a
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+      VPS_PGSSLMODE: ${{ secrets.VPS_PGSSLMODE }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install PostgreSQL client
-        run: |
-          set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
 
       - name: Resolve Render database URL
         run: |
@@ -36,42 +34,27 @@ jobs:
       - name: Diagnose Render Postgres access
         run: node scripts/render-postgres-diagnostics.js
 
-      - name: Test psql connection
+      - name: Create pg_dump backup on VPS
         run: |
           set -euo pipefail
-          eval "$(node - <<'NODE'
-          const raw = process.env.DATABASE_URL;
-          const parsed = new URL(raw);
-          parsed.searchParams.set('sslmode', 'require');
-          console.log(`export DATABASE_URL_REQUIRE=${JSON.stringify(parsed.toString())}`);
-          parsed.searchParams.set('sslmode', 'prefer');
-          console.log(`export DATABASE_URL_PREFER=${JSON.stringify(parsed.toString())}`);
-          parsed.searchParams.set('sslmode', 'disable');
-          console.log(`export DATABASE_URL_DISABLE=${JSON.stringify(parsed.toString())}`);
-          NODE
-          )"
-          echo "::add-mask::${DATABASE_URL_REQUIRE}"
-          echo "::add-mask::${DATABASE_URL_PREFER}"
-          echo "::add-mask::${DATABASE_URL_DISABLE}"
-          set +e
-          for mode in REQUIRE PREFER DISABLE; do
-            url_var="DATABASE_URL_${mode}"
-            echo "[psql-diagnostics] trying sslmode=${mode,,}"
-            psql "${!url_var}" -c 'select current_database(), current_user, version();'
-            code=$?
-            echo "[psql-diagnostics] sslmode=${mode,,} exit=${code}"
-          done
-          exit 1
-
-      - name: Create pg_dump backup
-        run: |
-          set -euo pipefail
+          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$DATABASE_URL" ]; then
+            echo "Missing VPS_HOST, VPS_USER, VPS_SSH_KEY, or resolved DATABASE_URL"
+            exit 1
+          fi
           mkdir -p backup
-          timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ)
-          file="backup/render-postgres-${timestamp}.dump"
-          pg_dump --dbname "${DATABASE_URL}" --format=custom --no-owner --no-acl --file "${file}"
-          test -s "${file}"
-          sha256sum "${file}" > "${file}.sha256"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/backup_key
+          chmod 600 ~/.ssh/backup_key
+          remote="$VPS_USER@$VPS_HOST"
+          cleaned_url=$(DATABASE_URL="$DATABASE_URL" python3 -c "import os; from urllib.parse import urlsplit,urlunsplit,parse_qsl,urlencode; p=urlsplit(os.environ['DATABASE_URL']); q=[(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k not in {'uselibpqcompat'}]; print(urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),'')))")
+          db_url_b64=$(printf '%s' "$cleaned_url" | base64 -w0)
+          pgsslmode_b64=$(printf '%s' "${VPS_PGSSLMODE:-require}" | base64 -w0)
+          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" "set -euo pipefail; command -v pg_dump; mkdir -p ~/aineedhelpfromotherai-db-backups; timestamp=\$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-\${timestamp}.dump; db_url=\$(printf '%s' '$db_url_b64' | base64 -d); pgsslmode=\$(printf '%s' '$pgsslmode_b64' | base64 -d); PGSSLMODE=\$pgsslmode pg_dump --dbname \"\$db_url\" --format=custom --no-owner --no-acl --file \"\$file\"; test -s \"\$file\"; sha256sum \"\$file\" > \"\$file.sha256\"; basename \"\$file\""
+          latest=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'ls -t ~/aineedhelpfromotherai-db-backups/render-postgres-*.dump | head -1')
+          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest" backup/
+          scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest.sha256" backup/
+          test -s "backup/$(basename "$latest")"
+          file="backup/$(basename "$latest")"
           printf 'BACKUP_FILE=%s\n' "${file}" >> "$GITHUB_ENV"
           echo "Backup created: $(basename "${file}") ($(stat -c%s "${file}") bytes)"
 
@@ -86,5 +69,5 @@ jobs:
 
       - name: Cleanup runner copy
         if: always()
-        run: rm -rf backup
-
+        run: |
+          rm -rf backup ~/.ssh/backup_key
