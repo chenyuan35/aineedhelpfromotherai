@@ -14,7 +14,6 @@ jobs:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
       RENDER_POSTGRES_ID: dpg-d8c164cua31s739joel0-a
-      RENDER_POSTGRES_EXTERNAL_HOST: dpg-d8c164cua31s739joel0-a.oregon-postgres.render.com
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,16 +27,11 @@ jobs:
       - name: Resolve Render database URL
         run: |
           set -euo pipefail
-          if [ -z "${RENDER_API_KEY}" ] || [ -z "${RENDER_SERVICE_ID}" ]; then
-            echo "Missing RENDER_API_KEY or RENDER_SERVICE_ID"
+          if [ -z "${RENDER_API_KEY}" ] || [ -z "${RENDER_POSTGRES_ID}" ]; then
+            echo "Missing RENDER_API_KEY or RENDER_POSTGRES_ID"
             exit 1
           fi
-          curl -fsS \
-            -H "Authorization: Bearer ${RENDER_API_KEY}" \
-            -H "Accept: application/json" \
-            "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/env-vars" \
-            > render-env-vars.json
-          node scripts/resolve-render-database-url.js render-env-vars.json
+          node scripts/resolve-render-database-url.js
 
       - name: Diagnose Render Postgres access
         run: node scripts/render-postgres-diagnostics.js
@@ -65,5 +59,5 @@ jobs:
 
       - name: Cleanup runner copy
         if: always()
-        run: rm -rf backup render-env-vars.json
+        run: rm -rf backup
 
