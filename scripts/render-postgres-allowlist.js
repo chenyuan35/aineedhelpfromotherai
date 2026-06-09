@@ -4,7 +4,7 @@ const https = require('https');
 
 const apiKey = process.env.RENDER_API_KEY;
 const postgresId = process.env.RENDER_POSTGRES_ID || 'dpg-d8c164cua31s739joel0-a';
-const stateFile = process.env.RENDER_ALLOWLIST_STATE || 'render-postgres-allowlist-before.json';
+const stateFile = process.env.RENDER_ALLOWLIST_STATE || 'render-postgres-allowlist-state.json';
 const mode = process.argv[2] || 'open';
 const requestedIp = process.argv[3] || '';
 
@@ -75,40 +75,55 @@ function normalize(list) {
 }
 
 async function openForRunner() {
-  const ip = requestedIp || (await getPublicIp()).ip;
+  const ip = requestedIp || (await getPublicIp());
   if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(ip)) fail(`Invalid IPv4 address: ${ip}`);
   const current = await getPostgres();
   const before = normalize(current.ipAllowList || current.ip_allow_list);
-  fs.writeFileSync(stateFile, JSON.stringify(before, null, 2));
 
   const cidrBlock = `${ip}/32`;
-  const withoutExisting = before.filter((entry) => entry.cidrBlock !== cidrBlock);
-  const next = [
-    ...withoutExisting,
-    { cidrBlock, description: 'temporary GitHub Actions database backup' },
-  ];
-  await patchAllowList(next);
-  console.log(`[render-allowlist] added ${cidrBlock}; previous_rules=${before.length}`);
+  const existedBefore = before.some((entry) => entry.cidrBlock === cidrBlock);
+  fs.writeFileSync(stateFile, JSON.stringify({ cidrBlock, existedBefore }, null, 2));
+
+  if (!existedBefore) {
+    await patchAllowList([
+      ...before,
+      { cidrBlock, description: 'temporary GitHub Actions database backup' },
+    ]);
+  }
+
+  console.log(`[render-allowlist] opened ${cidrBlock}; existed_before=${existedBefore}; previous_rules=${before.length}`);
 }
 
-async function restorePrevious() {
+async function closeForRunner() {
   if (!fs.existsSync(stateFile)) {
-    console.log(`[render-allowlist] ${stateFile} missing; nothing to restore`);
+    console.log(`[render-allowlist] ${stateFile} missing; nothing to close`);
     return;
   }
-  const before = JSON.parse(fs.readFileSync(stateFile, 'utf8'));
-  await patchAllowList(before);
-  console.log(`[render-allowlist] restored previous_rules=${before.length}`);
+  const state = JSON.parse(fs.readFileSync(stateFile, 'utf8'));
+  if (!state.cidrBlock) fail(`${stateFile} does not contain cidrBlock`);
+
+  if (state.existedBefore) {
+    console.log(`[render-allowlist] leaving pre-existing ${state.cidrBlock}`);
+    return;
+  }
+
+  const current = await getPostgres();
+  const before = normalize(current.ipAllowList || current.ip_allow_list);
+  const next = before.filter((entry) => entry.cidrBlock !== state.cidrBlock);
+  if (next.length !== before.length) {
+    await patchAllowList(next);
+  }
+  console.log(`[render-allowlist] closed ${state.cidrBlock}; previous_rules=${before.length}; next_rules=${next.length}`);
 }
 
 async function main() {
   if (!apiKey) fail('RENDER_API_KEY is not set');
   if (mode === 'open') {
     await openForRunner();
-  } else if (mode === 'restore') {
-    await restorePrevious();
+  } else if (mode === 'close' || mode === 'restore') {
+    await closeForRunner();
   } else {
-    fail('usage: render-postgres-allowlist.js open|restore');
+    fail('usage: render-postgres-allowlist.js open|close');
   }
 }
 
