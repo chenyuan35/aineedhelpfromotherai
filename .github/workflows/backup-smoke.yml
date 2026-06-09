@@ -18,13 +18,14 @@ jobs:
       VPS_HOST: ${{ secrets.VPS_HOST }}
       VPS_USER: ${{ secrets.VPS_USER }}
       VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-      VPS_ENV: ${{ secrets.VPS_ENV }}
+      VPS_DATABASE_URL: ${{ secrets.VPS_DATABASE_URL }}
+      VPS_PGSSLMODE: ${{ secrets.VPS_PGSSLMODE }}
     steps:
       - name: Run pg_dump on VPS
         run: |
           set -euo pipefail
-          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_ENV" ]; then
-            echo "Missing VPS_HOST, VPS_USER, VPS_SSH_KEY, or VPS_ENV"
+          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_DATABASE_URL" ]; then
+            echo "Missing VPS_HOST, VPS_USER, VPS_SSH_KEY, or VPS_DATABASE_URL"
             exit 1
           fi
           mkdir -p ~/.ssh backup
@@ -32,8 +33,11 @@ jobs:
           chmod 600 ~/.ssh/backup_key
           remote="$VPS_USER@$VPS_HOST"
           ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'mkdir -p ~/.config/aineedhelpfromotherai ~/aineedhelpfromotherai-db-backups && chmod 700 ~/.config/aineedhelpfromotherai'
-          printf '%s\n' "$VPS_ENV" | ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'cat > ~/.config/aineedhelpfromotherai/.env.vps && sed -i "s/\r$//" ~/.config/aineedhelpfromotherai/.env.vps && chmod 600 ~/.config/aineedhelpfromotherai/.env.vps'
-          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'set -euo pipefail; command -v pg_dump; timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-${timestamp}.dump; set -a; . ~/.config/aineedhelpfromotherai/.env.vps; set +a; db_url=${DATABASE_URL:-${PG_CONNECTION_STRING:-}}; if [ -z "$db_url" ]; then echo "Missing DATABASE_URL or PG_CONNECTION_STRING on VPS"; exit 1; fi; PGSSLMODE=${PGSSLMODE:-disable} pg_dump --dbname "$db_url" --format=custom --no-owner --no-acl --file "$file"; test -s "$file"; sha256sum "$file" > "$file.sha256"; basename "$file"'
+          {
+            printf 'DATABASE_URL=%s\n' "$VPS_DATABASE_URL"
+            printf 'PGSSLMODE=%s\n' "${VPS_PGSSLMODE:-disable}"
+          } | ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'cat > ~/.config/aineedhelpfromotherai/.env.vps && chmod 600 ~/.config/aineedhelpfromotherai/.env.vps'
+          ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'set -euo pipefail; command -v pg_dump; timestamp=$(date -u +%Y-%m-%dT%H-%M-%S-%NZ); file=~/aineedhelpfromotherai-db-backups/render-postgres-${timestamp}.dump; set -a; . ~/.config/aineedhelpfromotherai/.env.vps; set +a; PGSSLMODE=${PGSSLMODE:-disable} pg_dump --dbname "$DATABASE_URL" --format=custom --no-owner --no-acl --file "$file"; test -s "$file"; sha256sum "$file" > "$file.sha256"; basename "$file"'
           latest=$(ssh -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote" 'ls -t ~/aineedhelpfromotherai-db-backups/render-postgres-*.dump | head -1')
           scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest" backup/
           scp -i ~/.ssh/backup_key -o StrictHostKeyChecking=accept-new "$remote:$latest.sha256" backup/
