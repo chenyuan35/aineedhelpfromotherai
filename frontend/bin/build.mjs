@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs';
+import { cpSync, mkdirSync, existsSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -19,9 +19,10 @@ execSync('node bin/generate-sitemap.mjs', { cwd: root, stdio: 'inherit' });
 
 // Step 3: copy static files to dist
 mkdirSync(dist, { recursive: true });
-const files = ['index.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 'vercel.json', 'indexnow-key.txt'];
+const files = ['index.html', 'try.html', 'trust.html', 'llms.txt', 'ai.txt', 'robots.txt', 'sitemap.xml', 'vercel.json', 'indexnow-key.txt'];
 for (const f of files) {
-  cpSync(join(root, f), join(dist, f));
+  const src = join(root, f);
+  if (existsSync(src)) cpSync(src, join(dist, f));
 }
 function copyDir(name) {
   const src = join(root, name);
