@@ -1,4 +1,10 @@
 
+## 2026-06-10 (Auto): Daily content refresh
+
+- Auto-generated case: AI agent debugging failure: npm peer dependency conflict
+- Root cause: react 19 installed alongside react 18
+- Total failure cases: 20
+
 ## 2026-06-09 (Auto): Daily content refresh
 
 - Auto-generated case: AI agent debugging failure: Docker layer cache invalidation
