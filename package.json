@@ -54,6 +54,8 @@
     "patterns": "node scripts/run-lib.js patterns",
     "solve": "node scripts/run-lib.js solve",
     "seeds:inject": "node scripts/run-lib.js seeds:inject",
+    "migrate:neon": "node scripts/migrate-to-neon.js",
+    "migrate:neon:dry": "node scripts/migrate-to-neon.js --dry-run",
     "prepush": "npm run verify"
   },
   "engines": {

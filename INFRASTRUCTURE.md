@@ -1,6 +1,6 @@
 # aineedhelpfromotherai — Infrastructure Reference
 
-> 最后一次完整更新: 2026-05-28 (V2: +Vercel 修复, token 吊销/重建)
+> 最后一次完整更新: 2026-06-10 (API 实测: Render live, Cloudflare DNS, R2 未启用, Vultr API IP 白名单阻塞)
 > 目的: 所有 AI Agent 和新会话能一次读懂整个平台的基础设施布局。
 
 ---
@@ -15,7 +15,7 @@
 | **WWW** | `https://www.aineedhelpfromotherai.com` |
 | **旧 VPS** | `http://108.61.220.98` (2026-06-12 前到期) |
 
-所有的自定义域名都通过 Cloudflare CNAME flattening 指向 Render。
+当前自定义域名通过 Cloudflare DNS 指向 Vercel，Vercel 再通过 `vercel.json` rewrites 代理 API 到 Render。API 实测状态: Cloudflare token active，Render service live，Render PostgreSQL available。
 
 ## 2. 托管服务
 
@@ -81,16 +81,16 @@ server {
 
 | 类型 | 名称 | 目标 | Proxy |
 |------|------|------|-------|
-| CNAME | `aineedhelpfromotherai.com` | `aineedhelpfromotherai.onrender.com` | ✅ proxied |
-| CNAME | `api.aineedhelpfromotherai.com` | `aineedhelpfromotherai.onrender.com` | ✅ proxied |
-| CNAME | `www.aineedhelpfromotherai.com` | `aineedhelpfromotherai.onrender.com` | ✅ proxied |
+| CNAME | `aineedhelpfromotherai.com` | `aineedhelpfromotherai.vercel.app` | ❌ DNS only |
+| CNAME | `api.aineedhelpfromotherai.com` | `aineedhelpfromotherai.vercel.app` | ❌ DNS only |
+| CNAME | `www.aineedhelpfromotherai.com` | `aineedhelpfromotherai.vercel.app` | ❌ DNS only |
 
 所有 A 记录已于 2026-05-28 改为 CNAME。
 
-### 待配置 (需要更高权限 token)
-- **Cloudflare R2**: 创建 bucket → 用于 reasoning cache + execution log 持久化
-- **Cloudflare Workers**: 边缘 API 路由/缓存
-- **步骤**: Dashboard → API Tokens → 创建新 token，加上 `R2:ReadWrite` + `Workers:Edit` + `DNS:Edit`
+### 待配置 / 当前阻塞
+- **Cloudflare R2**: API 实测返回 `Please enable R2 through the Cloudflare Dashboard.`，需要先在 Dashboard 手动启用 R2，再创建 private bucket 用于 PostgreSQL `.dump` 备份。
+- **Cloudflare Workers**: 边缘 API 路由/缓存，可后续处理。
+- **Vultr API**: 当前 API 返回 `Unauthorized IP address: 149.104.121.169`，需要在 Vultr API Access Control 允许该 IP 或开启 Allow All IPv4，之后才能自动读取/配置 VPS。
 
 ## 5. 第三方服务
 
@@ -118,15 +118,17 @@ server {
 - **传输**: Streamable HTTP (session-based)
 - **Session ID**: `mcp-session-...e9d` (每次 MCP 连接重新获取)
 
-### 可用 Token 清单
+### Provider Access Status
 ```
-Cloudflare:   cfut_...e64de8 (在本地 .opencode/local.json)
-Render API:   rnd_...Ud1T (在本地 .opencode/local.json)
-Vercel:       vcp_...sC9Df (在本地 .opencode/local.json, 旧 vcp_...lgQc6 已吊销)
+Cloudflare DNS token: active; DNS records readable
+Cloudflare account token: active; account readable; R2 API blocked until Dashboard enables R2
+Render API token: active; service and Postgres readable
+Vultr API key: blocked by API IP allowlist for 149.104.121.169
+Vercel: configured through project dashboard / GitHub integration
 ```
 
 ### 需要 Dashboard 手工创建的
-- Cloudflare R2 token (R2:ReadWrite + Workers:Edit)
+- Cloudflare R2 enablement (Dashboard must enable R2 before API bucket creation works)
 - 如果愿意: UptimeRobot / Better Stack 账户 + API key
 
 ## 6. 数据库 Schema
@@ -212,7 +214,8 @@ curl -X POST "https://api.render.com/v1/services/srv-d8c0if3eo5us73dqti2g/deploy
 
 | 项目 | 状态 | 需要 |
 |------|------|------|
-| Cloudflare R2 bucket (10GB 免费) | ⬜ 等待 | Dashboard 建 R2+Workers token |
+| Cloudflare R2 bucket (10GB 免费) | 🔴 Dashboard 未启用 | Cloudflare API 返回 code 10042；先手动启用 R2，再建 private bucket |
+| Vultr backup runner | 🔴 API IP 白名单阻塞 | Vultr API Access Control 允许 `149.104.121.169` 或 Allow All IPv4 后继续自动配置 |
 | Cloudflare Workers 边缘路由 | ⬜ 等待 | 同上，需要 Dashboard 建 token |
 | Vercel 前端部署 | ✅ 已修复 | `.vercelignore` 匹配了 `frontend/package.json`，移除后构建通过 |
 | Cloudflare Pages landing page | ⬜ 可选 | GitHub 连接 Pages (免费) |
@@ -220,7 +223,7 @@ curl -X POST "https://api.render.com/v1/services/srv-d8c0if3eo5us73dqti2g/deploy
 | UptimeRobot 监控 (5 个免费) | ⬜ 可选 | 注册 uptimerobot.com |
 | Neon PostgreSQL | ⬜ 可选 | 冗余 DB，免费 500MB |
 | VPS 关闭 | ⬜ 到期后 | 2026-06-12，手动关停 |
-| DNS 传播等待 | 🔄 进行中 | NameSilo → Cloudflare ns，需要几分钟~24小时生效 |
+| DNS 传播/配置 | ✅ 当前可读 | Cloudflare DNS 已返回 Vercel CNAME 记录 |
 
 ---
 

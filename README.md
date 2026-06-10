@@ -148,7 +148,9 @@ AI Agent → MCP Gateway → Reasoning Cache (PG)
 
 - **Frontend**: Vite + Tailwind (deployed on Render)
 - **Backend**: Express (Node.js 20+)
-- **Database**: PostgreSQL (Render Free Tier)
+- **Database**: PostgreSQL (Render Free Tier; expires 2026-06-27, use Vultr/R2 or migrate before expiration)
+- **Edge/DNS**: Cloudflare DNS points custom domains to Vercel; Vercel rewrites API traffic to Render
+- **Compute fallback**: Vultr is available for backup runner / emergency backend, but API access currently requires IP allowlist update
 - **Protocol**: MCP Streamable HTTP
 
 ### Self-host
