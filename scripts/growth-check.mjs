@@ -6,6 +6,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const generatedAt = process.env.GROWTH_CHECK_DATE || new Date().toISOString();
 const timeoutMs = Number(process.env.GROWTH_CHECK_TIMEOUT_MS || 12000);
+const retries = Number(process.env.GROWTH_CHECK_RETRIES || 1);
+const retryDelayMs = Number(process.env.GROWTH_CHECK_RETRY_DELAY_MS || 15000);
 
 const targets = [
   { name: 'home', method: 'GET', url: 'https://aineedhelpfromotherai.com/' },
@@ -14,6 +16,7 @@ const targets = [
   { name: 'learn', method: 'GET', url: 'https://aineedhelpfromotherai.com/learn/' },
   { name: 'stats', method: 'GET', url: 'https://aineedhelpfromotherai.com/stats/' },
   { name: 'api-docs', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/docs/' },
+  { name: 'sitemap', method: 'GET', url: 'https://aineedhelpfromotherai.com/sitemap.xml' },
   { name: 'health', method: 'GET', url: 'https://api.aineedhelpfromotherai.com/api/health' },
   {
     name: 'memory-search',
@@ -22,6 +25,22 @@ const targets = [
     body: { query: 'Claude Code hallucinated CLI flag', limit: 3 }
   }
 ];
+
+function minutesFor(c) {
+  return Number(c.time_wasted_minutes || c.time_lost_min || 0);
+}
+
+function readFailureStats() {
+  const path = join(root, 'data', 'failure-cases.json');
+  if (!existsSync(path)) return { count: 0, minutes: 0, minutesLabel: '0' };
+  const cases = JSON.parse(readFileSync(path, 'utf8'));
+  const minutes = Array.isArray(cases) ? cases.reduce((sum, c) => sum + minutesFor(c), 0) : 0;
+  return {
+    count: Array.isArray(cases) ? cases.length : 0,
+    minutes,
+    minutesLabel: minutes.toLocaleString()
+  };
+}
 
 function readSitemapCount() {
   const path = join(root, 'frontend', 'sitemap.xml');
@@ -47,6 +66,7 @@ async function fetchWithTimeout(target) {
       ok: response.ok,
       status: response.status,
       ms: Date.now() - started,
+      body: text,
       sample: text.replace(/\s+/g, ' ').trim().slice(0, 180)
     };
   } catch (error) {
@@ -55,6 +75,7 @@ async function fetchWithTimeout(target) {
       ok: false,
       status: 'ERR',
       ms: Date.now() - started,
+      body: '',
       sample: error.message
     };
   } finally {
@@ -62,24 +83,75 @@ async function fetchWithTimeout(target) {
   }
 }
 
-const results = [];
-for (const target of targets) {
-  results.push(await fetchWithTimeout(target));
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const sitemapCount = readSitemapCount();
+async function runAttempt() {
+  const results = [];
+  for (const target of targets) {
+    results.push(await fetchWithTimeout(target));
+  }
+
+  const byName = Object.fromEntries(results.map(r => [r.name, r]));
+  const sitemapCount = readSitemapCount();
+  const failureStats = readFailureStats();
+  const liveSitemapCount = (byName.sitemap?.body.match(/<loc>/g) || []).length;
+  const casesBody = byName.cases?.body || '';
+  const assertions = [
+    {
+      name: 'cases count matches data/failure-cases.json',
+      ok: casesBody.includes(`<strong>${failureStats.count}</strong>`)
+    },
+    {
+      name: 'observed minutes matches data/failure-cases.json',
+      ok: casesBody.includes(failureStats.minutesLabel)
+    },
+    {
+      name: 'live sitemap URL count matches generated sitemap',
+      ok: liveSitemapCount === sitemapCount,
+      detail: `${liveSitemapCount}/${sitemapCount}`
+    }
+  ];
+
+  return { results, assertions, sitemapCount, failureStats, liveSitemapCount };
+}
+
+let last = null;
+for (let attempt = 1; attempt <= retries; attempt += 1) {
+  last = await runAttempt();
+  const failedTargets = last.results.filter(r => !r.ok);
+  const failedAssertions = last.assertions.filter(a => !a.ok);
+  if (!failedTargets.length && !failedAssertions.length) break;
+  if (attempt < retries) {
+    console.log(`Growth check attempt ${attempt}/${retries} failed; retrying in ${retryDelayMs}ms...`);
+    await wait(retryDelayMs);
+  }
+}
+
+const results = last.results;
+const sitemapCount = last.sitemapCount;
 const okCount = results.filter(r => r.ok).length;
 const failed = results.filter(r => !r.ok);
+const failedAssertions = last.assertions.filter(a => !a.ok);
 const report = [
   '# Growth check report',
   '',
   `Generated: ${generatedAt}`,
-  `Sitemap URLs: ${sitemapCount}`,
+  `Failure cases expected: ${last.failureStats.count}`,
+  `Observed minutes expected: ${last.failureStats.minutesLabel}`,
+  `Sitemap URLs expected: ${sitemapCount}`,
   `Targets OK: ${okCount}/${results.length}`,
   '',
   '| Target | Status | Latency | URL |',
   '|--------|--------|---------|-----|',
   ...results.map(r => `| ${r.name} | ${r.status} | ${r.ms}ms | ${r.url} |`),
+  '',
+  '## Content assertions',
+  '',
+  '| Assertion | Result | Detail |',
+  '|-----------|--------|--------|',
+  ...last.assertions.map(a => `| ${a.name} | ${a.ok ? 'OK' : 'FAIL'} | ${a.detail || ''} |`),
   '',
   '## Response samples',
   '',
@@ -92,7 +164,9 @@ mkdirSync(dirname(reportPath), { recursive: true });
 writeFileSync(reportPath, report);
 console.log(report);
 
-if (failed.length) {
-  console.error(`Growth check failed: ${failed.map(f => f.name).join(', ')}`);
+if (failed.length || failedAssertions.length) {
+  const targetNames = failed.map(f => f.name).join(', ');
+  const assertionNames = failedAssertions.map(a => a.name).join(', ');
+  console.error(`Growth check failed: ${[targetNames, assertionNames].filter(Boolean).join(' / ')}`);
   process.exitCode = 1;
 }
