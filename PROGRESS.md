@@ -1,6 +1,12 @@
 
 ## 2026-06-11 (Auto): Daily content refresh
 
+- Auto-generated case: AI agent debugging failure: WebSocket reconnection loop with exponential backoff
+- Root cause: backoff reset on each reconnect attempt
+- Total failure cases: 22
+
+## 2026-06-11 (Auto): Daily content refresh
+
 - Auto-generated case: AI agent debugging failure: Environment-specific CORS configuration
 - Root cause: CORS origin list missing production domain
 - Total failure cases: 21

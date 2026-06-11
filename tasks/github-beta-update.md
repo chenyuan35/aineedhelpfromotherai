@@ -1,8 +1,8 @@
 ## Beta update - intervention map and working API examples
 
-The beta surface now has 21 failure cases and an intervention map built from 5 measured dynamics: https://aineedhelpfromotherai.com/cases/
+The beta surface now has 22 failure cases and an intervention map built from 5 measured dynamics: https://aineedhelpfromotherai.com/cases/
 
-The dataset currently totals 9,043 wasted debugging minutes and tracks 10 interventions. The intervention rows are intentionally still marked pending until they save measured minutes in real sessions.
+The dataset currently totals 9,068 wasted debugging minutes and tracks 10 interventions. The intervention rows are intentionally still marked pending until they save measured minutes in real sessions.
 
 What changed:
 

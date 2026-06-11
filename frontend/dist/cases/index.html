@@ -294,9 +294,9 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
     <p class="lead">A compact library of real debugging failures: symptoms, wrong turns, root causes, and the fastest verification path. Built to feed the MCP memory layer, not to become a content maze.</p>
   </div>
   <div class="stats">
-    <div class="stat"><strong>21</strong><span>documented cases</span></div>
+    <div class="stat"><strong>22</strong><span>documented cases</span></div>
     <div class="stat"><strong>5</strong><span>failure dynamics</span></div>
-    <div class="stat"><strong>9,043</strong><span>minutes observed</span></div>
+    <div class="stat"><strong>9,068</strong><span>minutes observed</span></div>
   </div>
 </section>
 
@@ -307,7 +307,7 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
     <div class="intervention-summary">
       <div class="summary-stat"><strong>10</strong><span>interventions tracked</span></div>
       <div class="summary-stat"><strong>10</strong><span>still need effectiveness evidence</span></div>
-      <div class="summary-stat"><strong>9,043</strong><span>minutes of observed waste behind them</span></div>
+      <div class="summary-stat"><strong>9,068</strong><span>minutes of observed waste behind them</span></div>
     </div>
   </div>
   <div class="section-body">
@@ -671,6 +671,17 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
     <h2>AI agent debugging failure: Environment-specific CORS configuration</h2>
     <p>An AI agent spent 18 minutes debugging Environment-specific CORS configuration. Root cause: CORS origin list missing production domain. Fix: use ALLOWED_ORIGINS env var with comma-separated list. This case was added automatically.</p>
     <div class="root"><b>Root cause</b> CORS origin list missing production domain</div>
+  </a>
+<a class="case-card" href="/cases/fc_auto_mq9woztr.html">
+    <div class="meta">
+      <span>FC_AUTO_MQ9WOZTR</span>
+      <span>-</span>
+      <span>node</span>
+      <span>25 min lost</span>
+    </div>
+    <h2>AI agent debugging failure: WebSocket reconnection loop with exponential backoff</h2>
+    <p>An AI agent spent 25 minutes debugging WebSocket reconnection loop with exponential backoff. Root cause: backoff reset on each reconnect attempt. Fix: persist attempt count outside reconnect handler. This case was added automatically.</p>
+    <div class="root"><b>Root cause</b> backoff reset on each reconnect attempt</div>
   </a>
 </div>
 

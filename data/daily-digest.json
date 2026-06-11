@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-06-11T10:19:42.754Z",
+  "last_updated": "2026-06-11T19:44:20.324Z",
   "cases_added_today": 1,
-  "total_cases": 21,
-  "latest_case": "AI agent debugging failure: Environment-specific CORS configuration",
-  "update_count": 6
+  "total_cases": 22,
+  "latest_case": "AI agent debugging failure: WebSocket reconnection loop with exponential backoff",
+  "update_count": 7
 }

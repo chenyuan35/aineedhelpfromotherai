@@ -670,5 +670,21 @@
     "time_lost_min": 18,
     "added_at": "2026-06-11T10:19:42.749Z",
     "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ9WOZTR",
+    "title": "AI agent debugging failure: WebSocket reconnection loop with exponential backoff",
+    "description": "An AI agent spent 25 minutes debugging WebSocket reconnection loop with exponential backoff. Root cause: backoff reset on each reconnect attempt. Fix: persist attempt count outside reconnect handler. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "backoff reset on each reconnect attempt",
+    "fix": "persist attempt count outside reconnect handler",
+    "time_lost_min": 25,
+    "added_at": "2026-06-11T19:44:20.319Z",
+    "source": "daily-auto-generate"
   }
 ]
