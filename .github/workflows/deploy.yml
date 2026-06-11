@@ -2,17 +2,40 @@ name: Deploy to Render
 on:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/deploy.yml"
+      - "Dockerfile"
+      - "app.js"
+      - "server.js"
+      - "package.json"
+      - "package-lock.json"
+      - "api-handlers/**"
+      - "data/**"
+      - "lib/**"
+      - "mcp/**"
+      - "public/**"
+  workflow_dispatch:
+
+concurrency:
+  group: render-production
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - name: Trigger Render deploy and wait for live status
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          RENDER_DEPLOY_MAX_ATTEMPTS: 120
+          RENDER_DEPLOY_POLL_SECONDS: 15
         run: |
           set -euo pipefail
+          MAX_ATTEMPTS="${RENDER_DEPLOY_MAX_ATTEMPTS:-120}"
+          POLL_SECONDS="${RENDER_DEPLOY_POLL_SECONDS:-15}"
 
           render_api() {
             curl -fsS "$@" \
@@ -35,10 +58,10 @@ jobs:
             exit 1
           fi
 
-          for attempt in $(seq 1 60); do
+          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
             STATUS_JSON=$(render_api "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/deploys/${DEPLOY_ID}")
             STATUS=$(printf '%s' "$STATUS_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); d=d.get('deploy', d) if isinstance(d, dict) else {}; print(d.get('status',''))")
-            echo "Render deploy status: ${STATUS:-unknown} (attempt $attempt/60)"
+            echo "Render deploy status: ${STATUS:-unknown} (attempt $attempt/${MAX_ATTEMPTS})"
             case "$STATUS" in
               live)
                 exit 0
@@ -47,8 +70,8 @@ jobs:
                 exit 1
                 ;;
             esac
-            sleep 10
+            sleep "$POLL_SECONDS"
           done
 
-          echo "Timed out waiting for Render deploy to become live"
+          echo "Timed out waiting for Render deploy to become live after $((MAX_ATTEMPTS * POLL_SECONDS)) seconds"
           exit 1
