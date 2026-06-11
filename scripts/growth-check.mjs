@@ -8,6 +8,7 @@ const generatedAt = process.env.GROWTH_CHECK_DATE || new Date().toISOString();
 const timeoutMs = Number(process.env.GROWTH_CHECK_TIMEOUT_MS || 12000);
 const retries = Number(process.env.GROWTH_CHECK_RETRIES || 1);
 const retryDelayMs = Number(process.env.GROWTH_CHECK_RETRY_DELAY_MS || 15000);
+const cacheBustSeed = process.env.GROWTH_CHECK_CACHE_BUST || Date.now().toString(36);
 
 const targets = [
   { name: 'home', method: 'GET', url: 'https://aineedhelpfromotherai.com/' },
@@ -49,20 +50,33 @@ function readSitemapCount() {
   return Array.from(xml.matchAll(/<loc>(.*?)<\/loc>/g)).length;
 }
 
-async function fetchWithTimeout(target) {
+function cacheBustedUrl(url, attempt) {
+  const parsed = new URL(url);
+  parsed.searchParams.set('growth_check', `${cacheBustSeed}-${attempt}-${Date.now().toString(36)}`);
+  return parsed.toString();
+}
+
+async function fetchWithTimeout(target, attempt) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   const started = Date.now();
+  const requestUrl = target.method === 'GET' ? cacheBustedUrl(target.url, attempt) : target.url;
+  const headers = {
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache',
+    ...(target.body ? { 'Content-Type': 'application/json' } : {})
+  };
   try {
-    const response = await fetch(target.url, {
+    const response = await fetch(requestUrl, {
       method: target.method,
-      headers: target.body ? { 'Content-Type': 'application/json' } : undefined,
+      headers,
       body: target.body ? JSON.stringify(target.body) : undefined,
       signal: controller.signal
     });
     const text = await response.text();
     return {
       ...target,
+      requestUrl,
       ok: response.ok,
       status: response.status,
       ms: Date.now() - started,
@@ -72,6 +86,7 @@ async function fetchWithTimeout(target) {
   } catch (error) {
     return {
       ...target,
+      requestUrl,
       ok: false,
       status: 'ERR',
       ms: Date.now() - started,
@@ -87,10 +102,10 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function runAttempt() {
+async function runAttempt(attempt) {
   const results = [];
   for (const target of targets) {
-    results.push(await fetchWithTimeout(target));
+    results.push(await fetchWithTimeout(target, attempt));
   }
 
   const byName = Object.fromEntries(results.map(r => [r.name, r]));
@@ -119,7 +134,7 @@ async function runAttempt() {
 
 let last = null;
 for (let attempt = 1; attempt <= retries; attempt += 1) {
-  last = await runAttempt();
+  last = await runAttempt(attempt);
   const failedTargets = last.results.filter(r => !r.ok);
   const failedAssertions = last.assertions.filter(a => !a.ok);
   if (!failedTargets.length && !failedAssertions.length) break;

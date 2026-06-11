@@ -27,10 +27,10 @@ jobs:
           node-version: 20
 
       - name: Install backend dependencies
-        run: npm install --production
+        run: npm ci --omit=dev
 
       - name: Install frontend dependencies
-        run: npm --prefix frontend install
+        run: npm --prefix frontend ci
 
       - name: Generate daily content
         run: node scripts/daily-activity.js
@@ -54,7 +54,7 @@ jobs:
       - name: Verify production growth surfaces
         run: npm run growth:check
         env:
-          GROWTH_CHECK_RETRIES: 8
+          GROWTH_CHECK_RETRIES: 24
           GROWTH_CHECK_RETRY_DELAY_MS: 30000
 
       - name: Submit sitemap to IndexNow
