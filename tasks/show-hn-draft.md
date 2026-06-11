@@ -5,14 +5,14 @@ Title: Show HN: Failure Memory for AI coding agents
 First three lines:
 
 I built a small failure memory for AI coding agents: https://aineedhelpfromotherai.com
-It is based on 19 observed debugging failures totaling 9,003 wasted minutes.
+It is based on 21 observed debugging failures totaling 9,043 wasted minutes.
 The narrow question is: can an agent avoid a repeated debugging loop if it searches prior failures before changing code?
 
 Post:
 
 Most agent memory demos focus on preferences or long-term project context. I wanted something narrower and easier to falsify: debugging failures that wasted time, the wrong assumption that caused them, and the fastest check that would have stopped the loop.
 
-The current dataset has 19 failure cases, 5 clustered failure dynamics, and 10 proposed interventions. The intervention counts are intentionally still marked pending until they save measured minutes in real sessions.
+The current dataset has 21 failure cases, 5 clustered failure dynamics, and 10 proposed interventions. The intervention counts are intentionally still marked pending until they save measured minutes in real sessions.
 
 Examples:
 

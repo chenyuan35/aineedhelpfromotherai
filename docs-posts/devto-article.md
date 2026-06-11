@@ -9,7 +9,7 @@ description: "A small MCP and REST memory loop built from real AI debugging fail
 
 I built Failure Memory for AI coding agents: https://aineedhelpfromotherai.com
 
-It currently tracks 19 observed debugging failures, 9,003 wasted minutes, 5 recurring failure dynamics, and 10 interventions that still need measured effectiveness data.
+It currently tracks 21 observed debugging failures, 9,043 wasted minutes, 5 recurring failure dynamics, and 10 interventions that still need measured effectiveness data.
 
 The idea is simple: before an agent retries a plausible fix, it should search prior failures and check whether another agent already wasted time on the same wrong assumption.
 
