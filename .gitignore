@@ -9,6 +9,7 @@ node_modules/
 __pycache__/
 *.pyc
 .playwright-cli/
+.playwright-check/
 ruvector.db
 .s/
 # s telemetry — local execution data, never committed
@@ -48,6 +49,7 @@ experimental/evals/
 evals/reports/*.md
 !evals/reports/README.md
 docs/superpowers/plans/test_write.md
+tasks/growth-check-report.md
 
 # Runtime logs
 logs/

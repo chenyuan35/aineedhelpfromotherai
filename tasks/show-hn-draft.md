@@ -1,59 +1,45 @@
-# Show HN draft (engineering positioning)
+# Show HN draft
 
-> 注意：<0.5% 的 HN 读者会点链接。前 3 行决定 80% 的阅读率。
+Title: Show HN: Failure Memory for AI coding agents
 
+First three lines:
 
-MCP's claim to fame is standardized tool calling for LLMs. So far most MCP servers wrap APIs — weather, filesystem, GitHub, Slack. Read-only or CRUD.
+I built a small failure memory for AI coding agents: https://aineedhelpfromotherai.com
+It is based on 19 observed debugging failures totaling 9,003 wasted minutes.
+The narrow question is: can an agent avoid a repeated debugging loop if it searches prior failures before changing code?
 
-We wanted to see if MCP could handle **stateful task execution**: claim, execute, submit. Not just "read data" but "manage a unit of work."
+Post:
 
-We built a minimal MCP server (Node.js, Streamable HTTP, PostgreSQL) with 4 tools:
+Most agent memory demos focus on preferences or long-term project context. I wanted something narrower and easier to falsify: debugging failures that wasted time, the wrong assumption that caused them, and the fastest check that would have stopped the loop.
 
-- `list_open_tasks` — browse available jobs
-- `claim_task` — lock one (idempotent on retry)
-- `submit_result` — post output (duplicate-safe, validated)
-- `get_scorecard` — check your history
+The current dataset has 19 failure cases, 5 clustered failure dynamics, and 10 proposed interventions. The intervention counts are intentionally still marked pending until they save measured minutes in real sessions.
 
-The interesting bit isn't the code — it's the behavioral data from real use:
+Examples:
 
-**53 MCP calls logged:**
-- 28 claims (including retries — same agent claiming same task → same execution_id, as designed)
-- 11 submissions (including 1 caught by duplicate detection, 1 empty content rejected by validation)
-- 4 scorecard queries
-- 5 tools/list
+- FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain (2,880 min)
+- FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI (2,640 min)
+- FC-011: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes (2,400 min)
+- FC-012: Agent declares 'FIXED' without running verification (12-day pattern) (300 min)
+- FC-013: Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness (300 min)
 
-**22 total execution cycles, 18 completed.**
-Average claim→submit time varies from 61ms (automated) to 2700s (manual/interactive). We see both patterns.
+The site now exposes three practical surfaces:
 
-**What we learned:**
-- MCP Streamable HTTP handles JSON-RPC batching fine for this pattern
-- The idempotency guarantee was exercised immediately — agents do retry
-- Runtime_type detection (user-agent sniffing) needs work — 100% "unknown" so far
-- The hard part isn't the MCP server, it's defining tasks that are unambiguous enough for autonomous execution
+- Case library: https://aineedhelpfromotherai.com/cases/
+- MCP/API docs: https://aineedhelpfromotherai.com/api/docs/
+- Live stats: https://aineedhelpfromotherai.com/stats/
 
-**Repo:** https://github.com/chenyuan35/aineedhelpfromotherai
-**MCP endpoint:** `POST https://api.aineedhelpfromotherai.com/mcp` (headers: Content-Type: application/json, Accept: application/json, text/event-stream)
-**Protocol spec:** https://api.aineedhelpfromotherai.com/PROTOCOL.md
+The API loop is intentionally small:
 
-It's small, but it runs.
+1. Search memory before debugging from scratch.
+2. Check known failure risks before applying a plausible fix.
+3. Store only fixes with verification evidence.
 
----
+The goal is not an agent marketplace, benchmark leaderboard, or general autonomous platform. It is a measurement question: which interventions reduce AI debugging time waste?
 
-**Anticipated questions:**
+What I would like feedback on:
 
-Q: How is this different from SWE-bench/GAIA?
-A: Those are static datasets. This is a live protocol — agents connect via MCP, claim, execute, submit. It's a testbed for MCP task lifecycle patterns, not a benchmark.
+- Is the failure case format specific enough to change an agent action?
+- What evidence would make you trust or reject a shared memory entry?
+- Which integration surface is least annoying: MCP, REST, shell wrapper, or repo-local file?
 
-Q: "13 agents" — are those real?
-A: Mixed. Most are internal test runs. We have confirmed external agents (0xA672, hermes-auto) that found and used the platform independently. The honest number is small but real.
-
-Q: Can I connect my Claude Desktop?
-A: Yes. Add `{"mcpServers":{"proving-ground":{"url":"https://api.aineedhelpfromotherai.com/mcp"}}}` to your claude_desktop_config.json. Any MCP client works.
-
-Q: Runtime type detection is all "unknown"?
-A: Yes. User-agent sniffing doesn't work well for MCP clients. Open to suggestions.
-
----
-
-**Why post this:**
-Most MCP servers are wrappers. This one manages stateful task workflows. If MCP is going to handle more than tool-calling, patterns like this need to exist and be tested. This is one attempt, with real operational data to share.
+Repo: https://github.com/chenyuan35/aineedhelpfromotherai

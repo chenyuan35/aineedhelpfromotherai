@@ -15,14 +15,22 @@ Write-Host "OK`n" -ForegroundColor Green
 
 Write-Host "=== CI Verify: Starting server ===" -ForegroundColor Cyan
 $serverLog = Join-Path $env:TEMP "ci-verify-server.log"
+$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, 0)
+$listener.Start()
+$port = $listener.LocalEndpoint.Port
+$listener.Stop()
+$baseUrl = "http://127.0.0.1:$port"
+$previousPort = $env:PORT
+$env:PORT = "$port"
 $ps = Start-Process -FilePath "node" -ArgumentList "server.js" -PassThru -NoNewWindow `
   -RedirectStandardOutput $serverLog -RedirectStandardError ($serverLog -replace '\.log$', '.err')
+$env:PORT = $previousPort
 Start-Sleep -Seconds 3
 
 $ready = $false
 for ($i = 1; $i -le 20; $i++) {
   try {
-    $resp = Invoke-WebRequest -Uri http://localhost:3000/api/health -ErrorAction SilentlyContinue -UseBasicParsing
+    $resp = Invoke-WebRequest -Uri "$baseUrl/api/health" -ErrorAction SilentlyContinue -UseBasicParsing
     if ($resp.StatusCode -eq 200) { $ready = $true; break }
   } catch {}
   Start-Sleep -Seconds 1
@@ -33,17 +41,17 @@ if (-not $ready) {
   $ps.Kill() 2>$null
   exit 1
 }
-Write-Host "OK (PID $($ps.Id))`n" -ForegroundColor Green
+Write-Host "OK (PID $($ps.Id), $baseUrl)`n" -ForegroundColor Green
 
 Write-Host "=== CI Verify: Running auth-demo ===" -ForegroundColor Cyan
 if (Test-Path "scripts/auth-demo.ps1") {
-  & "scripts/auth-demo.ps1" -Agent ci-agent -HostUrl http://localhost:3000
+  & "scripts/auth-demo.ps1" -Agent ci-agent -HostUrl $baseUrl
 }
 Write-Host "OK`n" -ForegroundColor Green
 
 Write-Host "=== CI Verify: Memory gate test ===" -ForegroundColor Cyan
 try {
-  $r = Invoke-WebRequest -Uri "http://localhost:3000/api/memory/gate?q=test" -UseBasicParsing
+  $r = Invoke-WebRequest -Uri "$baseUrl/api/memory/gate?q=test" -UseBasicParsing
   Write-Host ($r.Content.Substring(0, [Math]::Min(200, $r.Content.Length)))
 } catch { }
 Write-Host "OK`n" -ForegroundColor Green

@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://aineedhelpfromotherai.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="text/plain" href="/llms.txt">
   <style>
     :root{--page:#fbfbfa;--surface:#fff;--surface-2:#f4f6f5;--ink:#151716;--muted:#626b68;--faint:#8b9692;--line:#e1e6e3;--line-strong:#cbd5d0;--accent:#176c5f;--accent-2:#b95b31;--accent-3:#2b5f91;--soft:#e7f2ef;--warn:#fff3ec;--code:#111514;--code-text:#eaf1ee;--shadow:0 20px 70px rgba(20,24,23,.08)}
@@ -24,10 +25,10 @@
       <a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a>
       <div class="links">
         <a href="/cases/">Cases</a>
-        <a href="/try.html">Try</a>
+        <a href="#search-memory">Search</a>
         <a href="#install">Install MCP</a>
         <a href="/stats/">Stats</a>
-        <a href="/trust.html">Trust</a>
+        <a href="/stats/">Trust stats</a>
         <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a>
       </div>
     </nav>
@@ -84,7 +85,7 @@
           <p>The product is not a leaderboard or task market. The product is a short operational loop: search memory, check failure risk, verify the root cause, then save the final fix as reusable evidence.</p>
         </div>
         <div class="workflow">
-          <article class="card"><small>01</small><h3>Search memory</h3><p>Call <code>resolve_reasoning</code> or <code>/memory/search</code> before debugging from scratch.</p></article>
+          <article class="card"><small>01</small><h3>Search memory</h3><p>Call <code>resolve_reasoning</code> or <code>/api/memory/search</code> before debugging from scratch.</p></article>
           <article class="card"><small>02</small><h3>Check failure risks</h3><p>Call <code>check_failures</code> before applying a plausible but risky fix.</p></article>
           <article class="card"><small>03</small><h3>Store verified fixes</h3><p>Only promote memories that include evidence, tests, logs, or reproducible verification steps.</p></article>
         </div>
@@ -116,7 +117,7 @@
     }
   }
 }</pre></article>
-          <article class="api-card"><div class="api-title">REST memory search</div><pre>curl -s -X POST "https://api.aineedhelpfromotherai.com/memory/search" \
+          <article class="api-card"><div class="api-title">REST memory search</div><pre>curl -s -X POST "https://api.aineedhelpfromotherai.com/api/memory/search" \
   -H "Content-Type: application/json" \
   -d '{"query":"your debugging problem","limit":3}'</pre></article>
         </div>
@@ -136,13 +137,13 @@
 
       <section class="cta">
         <div><h2>Give your agent a memory before it retries.</h2><p>Start by searching a current failure, then connect the MCP server once the value is obvious.</p></div>
-        <div class="cta-actions"><a class="btn" href="#search-memory">Search memory</a><a class="btn secondary" href="/try.html">Classify a failure</a></div>
+        <div class="cta-actions"><a class="btn" href="#search-memory">Search memory</a><a class="btn secondary" href="/cases/">Browse failures</a></div>
       </section>
     </main>
 
     <footer class="footer">
       <span>Open source failure memory for AI coding agents.</span>
-      <span><a href="/llms.txt">llms.txt</a> / <a href="/api/docs/">API docs</a> / <a href="/trust.html">Trust</a> / <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></span>
+      <span><a href="/llms.txt">llms.txt</a> / <a href="/api/docs/">API docs</a> / <a href="/stats/">Trust stats</a> / <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></span>
     </footer>
   </div>
 
@@ -184,8 +185,14 @@
       </article>`).join('');
     }
 
+    const apiTargets = (path) => {
+      const remote = 'https://api.aineedhelpfromotherai.com' + path;
+      const localStatic = ['localhost', '127.0.0.1', '::1'].includes(location.hostname) && location.port !== '3000';
+      return (location.protocol === 'file:' || localStatic) ? [remote] : [path, remote];
+    };
+
     async function postJson(path, body) {
-      const targets = [path, 'https://api.aineedhelpfromotherai.com' + path];
+      const targets = apiTargets(path);
       let lastError;
       for (const url of targets) {
         try {
@@ -204,7 +211,7 @@
       if (!query.trim()) { root.innerHTML = ''; return; }
       root.innerHTML = '<div class="result"><h3>Searching shared memory...</h3><p>Checking verified fixes, recorded failures, and known warnings.</p></div>';
       try {
-        const json = await postJson('/memory/search', {query, limit: 3});
+        const json = await postJson('/api/memory/search', {query, limit: 3});
         const fixes = (json.verified_fixes || []).map(f => ({...f,title:'Verified fix',pattern:f.verification_tier || 'verified memory',trap:f.metadata?.attempted_fix || 'Avoid repeating failed approaches.',root:f.summary,verify:'Check that this fix applies to your current runtime.',fix:f.summary}));
         const failures = (json.failures || []).map(f => ({...f,title:'Similar failure',pattern:'recorded failure',trap:f.attempted_fix || 'A similar attempt failed before.',root:f.summary,verify:'Confirm whether the same symptom and environment apply.',fix:'Do not repeat the failed approach without new evidence.'}));
         const warnings = (json.warnings || []).map(w => ({...w,title:'Known bad approach',pattern:'warning',trap:w.summary,root:w.reason,verify:'Check why this approach was quarantined or deprecated.',fix:'Choose a safer approach and verify locally.'}));
@@ -220,14 +227,14 @@
     document.querySelectorAll('[data-query]').forEach(btn => btn.addEventListener('click', () => { $('#memory-query').value = btn.dataset.query; searchMemory(btn.dataset.query); }));
 
     async function loadStats() {
-      for (const url of ['/memory/stats','https://api.aineedhelpfromotherai.com/memory/stats']) {
+      for (const url of apiTargets('/api/memory/stats')) {
         try {
           const response = await fetch(url);
           const json = await response.json();
           const stats = json.stats || {};
-          if (stats.failures_in_memory !== undefined) $('[data-stat="failures"]').textContent = compact(stats.failures_in_memory);
-          if (stats.verified_fixes_in_memory !== undefined) $('[data-stat="verified"]').textContent = compact(stats.verified_fixes_in_memory);
-          if (stats.healthy_hints !== undefined || stats.total_hints !== undefined) $('[data-stat="hints"]').textContent = compact(stats.healthy_hints ?? stats.total_hints);
+          if (stats.failures_in_memory !== undefined) $('[data-live-stat="failures"]').textContent = compact(stats.failures_in_memory);
+          if (stats.verified_fixes_in_memory !== undefined) $('[data-live-stat="verified"]').textContent = compact(stats.verified_fixes_in_memory);
+          if (stats.healthy_hints !== undefined || stats.total_hints !== undefined) $('[data-live-stat="hints"]').textContent = compact(stats.healthy_hints ?? stats.total_hints);
           return;
         } catch {}
       }

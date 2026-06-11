@@ -7,13 +7,13 @@
 <meta name="description" content="Documented AI debugging failures with verified root causes and fixes.">
 <meta name="keywords" content="AI debugging, failure cases, agent errors">
 <link rel="canonical" href="https://aineedhelpfromotherai.com/cases/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Failure Cases">
 <meta property="og:description" content="Documented AI debugging failures with verified root causes and fixes.">
 <meta property="og:url" content="https://aineedhelpfromotherai.com/cases/">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Failure Cases","description":"Documented AI debugging failures with verified root causes and fixes.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Failure Cases","keywords":"AI debugging, failure cases, agent errors"}</script>
-<link href="/style.css" rel="stylesheet">
 <style>
 :root {
   --page: #fbfbfa;
@@ -160,6 +160,88 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
 .dynamic-card h3 { margin: 0 0 10px; font-size: 15px; }
 .dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
 .dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }
+.intervention-summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.summary-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.summary-stat strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+.summary-stat span { color: var(--muted); font-size: 13px; line-height: 1.35; }
+.intervention-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.intervention-row {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.intervention-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+.intervention-name { display: grid; gap: 5px; }
+.intervention-name b { font-size: 17px; line-height: 1.25; }
+.intervention-name span { color: var(--muted); font-size: 13px; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid #e8d0c5;
+  background: #fff3ec;
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.intervention-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.intervention-detail div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.intervention-detail b {
+  display: block;
+  color: var(--ink);
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.intervention-detail p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.intervention-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--faint);
+  font-size: 12px;
+}
+@media (max-width: 720px) {
+  .intervention-detail { grid-template-columns: 1fr; }
+  .intervention-top { flex-direction: column; }
+}
+
 .footer {
   padding: 28px 0 34px;
   border-top: 1px solid var(--line);
@@ -212,9 +294,149 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
     <p class="lead">A compact library of real debugging failures: symptoms, wrong turns, root causes, and the fastest verification path. Built to feed the MCP memory layer, not to become a content maze.</p>
   </div>
   <div class="stats">
-    <div class="stat"><strong>17</strong><span>documented cases</span></div>
+    <div class="stat"><strong>19</strong><span>documented cases</span></div>
     <div class="stat"><strong>5</strong><span>failure dynamics</span></div>
-    <div class="stat"><strong>8,920</strong><span>minutes observed</span></div>
+    <div class="stat"><strong>9,003</strong><span>minutes observed</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div>
+    <div class="eyebrow">Intervention map</div>
+    <h2>What to test before the next agent retries.</h2>
+    <div class="intervention-summary">
+      <div class="summary-stat"><strong>10</strong><span>interventions tracked</span></div>
+      <div class="summary-stat"><strong>10</strong><span>still need effectiveness evidence</span></div>
+      <div class="summary-stat"><strong>9,003</strong><span>minutes of observed waste behind them</span></div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p>Each row starts from a measured failure dynamic, names the trigger that should stop the agent, and shows the guardrail that needs real effectiveness data. Until applied counts and saved minutes move, these are hypotheses, not proof.</p>
+    <div class="intervention-list"><article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>False Assumption Lock</b>
+        <span>Wrong hill to die on / 7 cases / 91 hours wasted</span>
+      </div>
+      <span class="status-pill">pending</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>Agent spends more than 2 fix attempts on the same theory without checking alternative root causes.</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>Force-generate 3 alternative hypotheses that contradict the current assumption</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>2 interventions tracked</span>
+      <span>0 applied</span>
+      <span>0 min saved measured</span>
+      <span>FC-002, FC-004, FC-009, FC-010, FC-011, FC-013, FC-014</span>
+    </div>
+  </article>
+<article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>Retry Spiral</b>
+        <span>Same action, different day / 4 cases / 50 hours wasted</span>
+      </div>
+      <span class="status-pill">pending</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>Same command with minor parameter variations repeated 3+ times without diagnostic variance between attempts.</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>Detect 3+ consecutive identical (tool_name, args_hash) pairs. Inject system message: &#39;You have called {tool} with same arguments {K} times. Try a different approach.&#39;</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>2 interventions tracked</span>
+      <span>0 applied</span>
+      <span>0 min saved measured</span>
+      <span>FC-005, FC-006, FC-010, FC-013</span>
+    </div>
+  </article>
+<article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>Verification Collapse</b>
+        <span>Looks done beats is done / 4 cases / 7 hours wasted</span>
+      </div>
+      <span class="status-pill">pending</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>FIXED or DONE declared without stdout/timestamp evidence in the same turn.</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>Before accepting any &#39;FIXED&#39; or &#39;DONE&#39;, require actual stdout/stderr output with timestamps in the same response. Block completion keywords until evidence is attached.</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>2 interventions tracked</span>
+      <span>0 applied</span>
+      <span>0 min saved measured</span>
+      <span>FC-007, FC-008, FC-009, FC-012</span>
+    </div>
+  </article>
+<article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>Environment Blindness</b>
+        <span>Works on my machine / 3 cases / 49 hours wasted</span>
+      </div>
+      <span class="status-pill">pending</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>Agent modifies code/config before checking environment state (env vars, docker layers, node version, file permissions).</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>Before any code change, run environment check: env vars, cache state, versions, permissions, OS. Print results into context before proceeding.</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>2 interventions tracked</span>
+      <span>0 applied</span>
+      <span>0 min saved measured</span>
+      <span>FC-001, FC-003, FC-015</span>
+    </div>
+  </article>
+<article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>Context Drift</b>
+        <span>Lost the plot / 3 cases / 41 hours wasted</span>
+      </div>
+      <span class="status-pill">pending</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>Session length over 30min with decreasing action relevance. Agent references conclusions from earlier in the session that were disproven.</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>Hard stop at 30 minutes of autonomous work. Create fresh session. Restate ONLY the original goal and current verified state — do not carry over failed attempts.</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>2 interventions tracked</span>
+      <span>0 applied</span>
+      <span>0 min saved measured</span>
+      <span>FC-007, FC-008, FC-011</span>
+    </div>
+  </article></div>
   </div>
 </section>
 
@@ -405,6 +627,28 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
     <h2>AI agent debugging failure: Python venv activation in shell scripts</h2>
     <p>An AI agent spent 15 minutes debugging Python venv activation in shell scripts. Root cause: shebang uses system python instead of venv. Fix: use $(which python) or source venv/bin/activate explicitly. This case was added automatically.</p>
     <div class="root"><b>Root cause</b> shebang uses system python instead of venv</div>
+  </a>
+<a class="case-card" href="/cases/fc_auto_mq53961r.html">
+    <div class="meta">
+      <span>FC_AUTO_MQ53961R</span>
+      <span>-</span>
+      <span>node</span>
+      <span>45 min lost</span>
+    </div>
+    <h2>AI agent debugging failure: PostgreSQL connection pool exhaustion</h2>
+    <p>An AI agent spent 45 minutes debugging PostgreSQL connection pool exhaustion. Root cause: transactions not closed in error paths. Fix: add pool.on(&#39;error&#39;) handler and ensure client.release() in finally blocks. This case was added automatically.</p>
+    <div class="root"><b>Root cause</b> transactions not closed in error paths</div>
+  </a>
+<a class="case-card" href="/cases/fc_auto_mq6g77xa.html">
+    <div class="meta">
+      <span>FC_AUTO_MQ6G77XA</span>
+      <span>-</span>
+      <span>node</span>
+      <span>38 min lost</span>
+    </div>
+    <h2>AI agent debugging failure: Docker layer cache invalidation</h2>
+    <p>An AI agent spent 38 minutes debugging Docker layer cache invalidation. Root cause: build context includes .git (80MB) every time. Fix: add .dockerignore with .git and node_modules. This case was added automatically.</p>
+    <div class="root"><b>Root cause</b> build context includes .git (80MB) every time</div>
   </a>
 </div>
 

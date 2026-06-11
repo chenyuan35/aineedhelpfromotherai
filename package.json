@@ -56,7 +56,11 @@
     "seeds:inject": "node scripts/run-lib.js seeds:inject",
     "migrate:neon": "node scripts/migrate-to-neon.js",
     "migrate:neon:dry": "node scripts/migrate-to-neon.js --dry-run",
-    "prepush": "npm run verify"
+    "prepush": "npm run verify",
+    "growth:kit": "node scripts/growth-kit.mjs",
+    "growth:check": "node scripts/growth-check.mjs",
+    "growth:indexnow": "pwsh scripts/submit-indexnow.ps1",
+    "growth:all": "npm run growth:kit && npm run growth:check && npm run growth:indexnow"
   },
   "engines": {
     "node": ">=20"

@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const repoRoot = join(root, '..');
 const cases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
-const today = '2026-06-08';
+const today = process.env.SITEMAP_LASTMOD || new Date().toISOString().slice(0, 10);
 
 function url(loc, changefreq, priority) {
   return `  <url>

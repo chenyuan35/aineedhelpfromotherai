@@ -2,7 +2,7 @@
   "campaign": "BETA-RECRUIT 2026-05-26",
   "goal": "Recruit 10 beta users for shared memory layer",
   "created": "2026-05-26T21:28:00+08:00",
-  "updated": "2026-05-26T22:15:00+08:00",
+  "updated": "2026-06-12T02:27:00+08:00",
   "outreach": [
     {
       "id": "P01",
@@ -113,12 +113,23 @@
       "message": "vllm #43661 is about LLM inference KV caching, not agent task memory — not a good fit",
       "status": "skipped",
       "notes": "Issue is about object store KV caching for inference, not agent memory. No overlap"
+    },
+    {
+      "id": "P11",
+      "persona": "Beta issue followers",
+      "target_repo": "chenyuan35/aineedhelpfromotherai",
+      "target_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4",
+      "type": "issue_reply",
+      "title": "Beta update - intervention map and working API examples",
+      "message": "Posted current case count, intervention map, stats page, and working /api/memory/search route",
+      "status": "posted",
+      "result_url": "https://github.com/chenyuan35/aineedhelpfromotherai/issues/4#issuecomment-4683723803"
     }
   ],
   "summary": {
-    "posted": 5,
+    "posted": 6,
     "skipped": 4,
     "merged": 1,
-    "total": 10
+    "total": 11
   }
 }

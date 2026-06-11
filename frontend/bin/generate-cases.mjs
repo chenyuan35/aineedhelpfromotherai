@@ -63,13 +63,13 @@ function pageHTML(content, meta) {
 <meta name="description" content="${escapeHtml(meta.insight)}">
 <meta name="keywords" content="${escapeHtml(meta.tags.join(', '))}">
 <link rel="canonical" href="https://aineedhelpfromotherai.com${canonical}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="${escapeHtml(meta.title)}">
 <meta property="og:description" content="${escapeHtml(meta.insight)}">
 <meta property="og:url" content="https://aineedhelpfromotherai.com${canonical}">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${jsonld}</script>
-<link href="/style.css" rel="stylesheet">
 <style>
 :root {
   --page: #fbfbfa;
@@ -215,7 +215,7 @@ h1 { margin: 0; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.05; font-wei
 }
 .dynamic-card h3 { margin: 0 0 10px; font-size: 15px; }
 .dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
-.dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }
+.dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }${meta.extraStyle ? `\n${meta.extraStyle}` : ''}
 .footer {
   padding: 28px 0 34px;
   border-top: 1px solid var(--line);
@@ -292,6 +292,93 @@ function cardHTML(c) {
   </a>`;
 }
 
+function statusLabel(value) {
+  return String(value || 'untracked').replace(/[_-]+/g, ' ');
+}
+
+const interventionStyle = `.intervention-summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.summary-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.summary-stat strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+.summary-stat span { color: var(--muted); font-size: 13px; line-height: 1.35; }
+.intervention-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.intervention-row {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.intervention-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+.intervention-name { display: grid; gap: 5px; }
+.intervention-name b { font-size: 17px; line-height: 1.25; }
+.intervention-name span { color: var(--muted); font-size: 13px; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid #e8d0c5;
+  background: #fff3ec;
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.intervention-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.intervention-detail div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.intervention-detail b {
+  display: block;
+  color: var(--ink);
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.intervention-detail p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.intervention-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--faint);
+  font-size: 12px;
+}
+@media (max-width: 720px) {
+  .intervention-detail { grid-template-columns: 1fr; }
+  .intervention-top { flex-direction: column; }
+}
+`;
+
 for (const c of cases) {
   const caseId = String(c.id).toLowerCase();
   const env = safe(c.environment, Array.isArray(c.environments) ? c.environments[0] : null);
@@ -303,6 +390,9 @@ for (const c of cases) {
     `<li><a class="text-link" href="${escapeHtml(r)}">${escapeHtml(r)}</a></li>`
   ).join('');
   const runtimeLabel = [safe(c.agent), env].filter(Boolean).join(' / ') || safe(c.framework, 'runtime');
+  const retryPatternHTML = c.retry_pattern
+    ? `    <p><b>Pattern:</b> ${escapeHtml(c.retry_pattern)}</p>`
+    : '';
 
   const content = `
 <section class="hero">
@@ -328,7 +418,7 @@ for (const c of cases) {
   <div class="section-body detail-card">
     <p><b>Initial assumption:</b> ${escapeHtml(safe(c.initial_ai_assumption, c.description))}</p>
     <p><b>Wrong turn:</b> ${escapeHtml(safe(c.wrong_turn))}</p>
-    ${c.retry_pattern ? `<p><b>Pattern:</b> ${escapeHtml(c.retry_pattern)}</p>` : ''}
+${retryPatternHTML}
   </div>
 </section>
 
@@ -370,6 +460,42 @@ ${safeArr(c.dynamics).length || tags || evidence ? `<section class="section">
 
 const totalMinutes = cases.reduce((sum, c) => sum + Number(safe(c.time_wasted_minutes, safe(c.time_lost_min, 0))), 0);
 const cards = cases.map(c => cardHTML(c)).join('\n');
+const totalInterventions = dynamics.reduce((sum, d) => sum + safeArr(d.interventions).length, 0);
+const pendingInterventions = dynamics.reduce((sum, d) =>
+  sum + safeArr(d.interventions).filter(i => safe(i.effectiveness_tracking, 'pending') === 'pending').length, 0);
+
+const interventionRows = dynamics.map(d => {
+  const interventions = safeArr(d.interventions);
+  const primary = interventions[0] || {};
+  const appliedCount = interventions.reduce((sum, i) => sum + Number(i.applied_count || 0), 0);
+  const avgSaved = interventions.reduce((sum, i) => sum + Number(i.avg_time_saved_min || 0), 0);
+  const status = statusLabel(safe(primary.effectiveness_tracking, 'pending'));
+  return `<article class="intervention-row">
+    <div class="intervention-top">
+      <div class="intervention-name">
+        <b>${escapeHtml(d.name)}</b>
+        <span>${escapeHtml(d.alias)} / ${escapeHtml(d.total_cases)} cases / ${escapeHtml(minutesLabel(d.total_time_wasted_min))} wasted</span>
+      </div>
+      <span class="status-pill">${escapeHtml(status)}</span>
+    </div>
+    <div class="intervention-detail">
+      <div>
+        <b>Trigger</b>
+        <p>${escapeHtml(safe(d.indicator, 'No trigger recorded'))}</p>
+      </div>
+      <div>
+        <b>Guardrail to test</b>
+        <p>${escapeHtml(safe(primary.action, d.escape_route, 'No intervention recorded'))}</p>
+      </div>
+    </div>
+    <div class="intervention-meta">
+      <span>${escapeHtml(interventions.length)} interventions tracked</span>
+      <span>${escapeHtml(appliedCount)} applied</span>
+      <span>${escapeHtml(avgSaved)} min saved measured</span>
+      <span>${escapeHtml(safeArr(d.related_cases).join(', ') || 'no cases linked')}</span>
+    </div>
+  </article>`;
+}).join('\n');
 
 const dynSections = dynamics.map(d => {
   const relatedCases = cases.filter(c => safeArr(c.dynamics).includes(d.name));
@@ -395,6 +521,22 @@ const indexContent = pageHTML(`
   </div>
 </section>
 
+<section class="section">
+  <div>
+    <div class="eyebrow">Intervention map</div>
+    <h2>What to test before the next agent retries.</h2>
+    <div class="intervention-summary">
+      <div class="summary-stat"><strong>${totalInterventions}</strong><span>interventions tracked</span></div>
+      <div class="summary-stat"><strong>${pendingInterventions}</strong><span>still need effectiveness evidence</span></div>
+      <div class="summary-stat"><strong>${totalMinutes.toLocaleString()}</strong><span>minutes of observed waste behind them</span></div>
+    </div>
+  </div>
+  <div class="section-body">
+    <p>Each row starts from a measured failure dynamic, names the trigger that should stop the agent, and shows the guardrail that needs real effectiveness data. Until applied counts and saved minutes move, these are hypotheses, not proof.</p>
+    <div class="intervention-list">${interventionRows}</div>
+  </div>
+</section>
+
 <div class="grid">
   ${cards}
 </div>
@@ -413,7 +555,8 @@ const indexContent = pageHTML(`
   title: 'Failure Cases',
   tags: ['AI debugging', 'failure cases', 'agent errors'],
   insight: 'Documented AI debugging failures with verified root causes and fixes.',
-  canonical: '/cases/'
+  canonical: '/cases/',
+  extraStyle: interventionStyle
 });
 
 writeFileSync(join(outDir, 'index.html'), indexContent);

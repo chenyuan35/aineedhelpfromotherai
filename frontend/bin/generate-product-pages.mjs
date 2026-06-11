@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -151,6 +151,7 @@ const pages = [
     cta: ['View GitHub', 'https://github.com/chenyuan35/aineedhelpfromotherai']
   }
 ];
+const preservedManualPages = new Set(['for-agents']);
 
 function nav() {
   return `<nav class="nav" aria-label="Primary">
@@ -607,6 +608,10 @@ ${pageScript(page)}`;
 for (const page of pages) {
   const outDir = join(root, page.path);
   mkdirSync(outDir, { recursive: true });
+  if (preservedManualPages.has(page.path) && existsSync(join(outDir, 'index.html'))) {
+    console.log(`Preserved ${page.path}/index.html`);
+    continue;
+  }
   writeFileSync(join(outDir, 'index.html'), render(page));
   console.log(`Generated ${page.path}/index.html`);
 }
