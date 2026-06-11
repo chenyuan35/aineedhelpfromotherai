@@ -638,5 +638,37 @@
     "time_lost_min": 38,
     "added_at": "2026-06-09T09:39:18.622Z",
     "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ7W848N",
+    "title": "AI agent debugging failure: npm peer dependency conflict",
+    "description": "An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "react 19 installed alongside react 18",
+    "fix": "npm ls react to find duplicate, dedupe",
+    "time_lost_min": 22,
+    "added_at": "2026-06-10T09:55:40.534Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ9CIVQ5",
+    "title": "AI agent debugging failure: Environment-specific CORS configuration",
+    "description": "An AI agent spent 18 minutes debugging Environment-specific CORS configuration. Root cause: CORS origin list missing production domain. Fix: use ALLOWED_ORIGINS env var with comma-separated list. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "CORS origin list missing production domain",
+    "fix": "use ALLOWED_ORIGINS env var with comma-separated list",
+    "time_lost_min": 18,
+    "added_at": "2026-06-11T10:19:42.749Z",
+    "source": "daily-auto-generate"
   }
 ]

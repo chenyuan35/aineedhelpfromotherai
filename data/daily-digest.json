@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-06-09T09:39:18.627Z",
+  "last_updated": "2026-06-11T10:19:42.754Z",
   "cases_added_today": 1,
-  "total_cases": 19,
-  "latest_case": "AI agent debugging failure: Docker layer cache invalidation",
-  "update_count": 4
+  "total_cases": 21,
+  "latest_case": "AI agent debugging failure: Environment-specific CORS configuration",
+  "update_count": 6
 }
