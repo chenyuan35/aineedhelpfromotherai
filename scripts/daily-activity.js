@@ -53,6 +53,8 @@ function generateCase() {
 
 function main() {
   const dataDir = path.join(__dirname, '..', 'data');
+  const date = new Date().toISOString().split('T')[0];
+  const digestPath = path.join(__dirname, '..', 'data', 'daily-digest.json');
 
   // Ensure data dir exists
   if (!fs.existsSync(dataDir)) {
@@ -69,6 +71,23 @@ function main() {
     cases = [];
   }
 
+  let prevDigest = null;
+  try {
+    prevDigest = JSON.parse(fs.readFileSync(digestPath, 'utf8'));
+  } catch {
+    prevDigest = null;
+  }
+
+  if (
+    prevDigest &&
+    prevDigest.cases_added_today > 0 &&
+    String(prevDigest.last_updated || '').startsWith(`${date}T`)
+  ) {
+    console.log(`[daily-activity] Already refreshed for ${date}; skipping duplicate case generation.`);
+    console.log(`[daily-activity] Total cases: ${cases.length}`);
+    return;
+  }
+
   // Add new case
   const newCase = generateCase();
   cases.push(newCase);
@@ -83,7 +102,6 @@ function main() {
   console.log(`[daily-activity] Total cases: ${cases.length}`);
 
   // Update daily digest
-  const digestPath = path.join(__dirname, '..', 'data', 'daily-digest.json');
   const digest = {
     last_updated: new Date().toISOString(),
     cases_added_today: 1,
@@ -91,17 +109,11 @@ function main() {
     latest_case: newCase.title,
     update_count: 0,
   };
-  try {
-    const prev = JSON.parse(fs.readFileSync(digestPath, 'utf8'));
-    digest.update_count = (prev.update_count || 0) + 1;
-  } catch {
-    digest.update_count = 1;
-  }
+  digest.update_count = prevDigest ? (prevDigest.update_count || 0) + 1 : 1;
   fs.writeFileSync(digestPath, JSON.stringify(digest, null, 2));
 
   // Update the PROGRESS.md with daily entry
   const progressPath = path.join(__dirname, '..', 'PROGRESS.md');
-  const date = new Date().toISOString().split('T')[0];
   const entry = `\n## ${date} (Auto): Daily content refresh\n\n- Auto-generated case: ${newCase.title}\n- Root cause: ${newCase.root_cause}\n- Total failure cases: ${cases.length}\n`;
   try {
     const progress = fs.readFileSync(progressPath, 'utf8');
