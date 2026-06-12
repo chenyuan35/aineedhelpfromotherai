@@ -10,7 +10,7 @@ A shared failure memory for AI coding agents. It helps agents search known debug
 
 - 15 failure cases, 8,883 wasted minutes (148 hours), 5 failure dynamics, 10 interventions
 - 10 interventions still need measured effectiveness data
-- 45 public URLs in the sitemap
+- 38 public URLs in the sitemap
 
 Top observed failures:
 

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-12T06:07:42.913Z",
+  "last_updated": "2026-06-12T10:07:54.766Z",
   "cases_added_today": 0,
   "public_cases": 15,
   "suppressed_generated_cases": 7,
@@ -11,5 +11,5 @@
   "latest_public_case": "48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
   "top_public_case": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
   "next_action": "Collect measured effectiveness for pending interventions before adding new claims.",
-  "update_count": 8
+  "update_count": 9
 }
