@@ -8,6 +8,6 @@
     "nodes": ["FailureMemoryNode"],
     "credentials": []
   },
-  "keywords": ["n8n-community-node", "n8n", "ai-memory", "agent-failure", "reasoning-cache"],
+  "keywords": ["n8n-community-node", "n8n", "ai-memory", "agent-failure", "ai-debugging", "failure-memory", "reasoning-cache"],
   "license": "MIT"
 }

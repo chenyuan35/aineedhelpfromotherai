@@ -18,8 +18,12 @@
   "keywords": [
     "mcp",
     "mcp-server",
+    "model-context-protocol",
+    "ai-debugging",
+    "failure-memory",
+    "agent-memory",
+    "coding-agent",
     "reasoning-cache",
-    "consensus-layer",
     "ai-agent"
   ],
   "license": "MIT"
