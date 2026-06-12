@@ -3,6 +3,7 @@
     { "source": "/api/docs", "destination": "/api/docs/index.html" },
     { "source": "/api/docs/", "destination": "/api/docs/index.html" },
     { "source": "/openapi.json", "destination": "https://aineedhelpfromotherai.onrender.com/openapi.json" },
+    { "source": "/failure-index.json", "destination": "https://aineedhelpfromotherai.onrender.com/failure-index.json" },
     { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
     { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
     { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },

@@ -8,6 +8,7 @@
     { "source": "/openapi.json", "destination": "https://aineedhelpfromotherai.onrender.com/openapi.json" },
     { "source": "/llms.txt", "destination": "https://aineedhelpfromotherai.onrender.com/llms.txt" },
     { "source": "/ai.txt", "destination": "https://aineedhelpfromotherai.onrender.com/ai.txt" },
+    { "source": "/failure-index.json", "destination": "https://aineedhelpfromotherai.onrender.com/failure-index.json" },
     { "source": "/robots.txt", "destination": "https://aineedhelpfromotherai.onrender.com/robots.txt" },
     { "source": "/sitemap.xml", "destination": "https://aineedhelpfromotherai.onrender.com/sitemap.xml" },
     { "source": "/.well-known/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/.well-known/$1" },

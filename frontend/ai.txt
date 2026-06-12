@@ -17,6 +17,7 @@ This site documents real AI coding-agent failures with symptoms, wrong turns, ro
 - https://aineedhelpfromotherai.com/learn/
 - https://aineedhelpfromotherai.com/cases/
 - https://aineedhelpfromotherai.com/llms.txt
+- https://aineedhelpfromotherai.com/failure-index.json
 - https://aineedhelpfromotherai.com/.well-known/mcp
 
 ## Best Pages for AI Search

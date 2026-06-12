@@ -56,6 +56,30 @@ try {
 } catch { }
 Write-Host "OK`n" -ForegroundColor Green
 
+Write-Host "=== CI Verify: Failure index ===" -ForegroundColor Cyan
+try {
+  $index = Invoke-RestMethod -Uri "$baseUrl/failure-index.json" -UseBasicParsing
+  $cases = Get-Content "data/failure-cases.json" -Raw | ConvertFrom-Json
+  $publicCases = @($cases | Where-Object {
+    $_.source -ne "daily-auto-generate" -and -not ([string]$_.id).StartsWith("FC_AUTO_")
+  })
+  $minutes = 0
+  foreach ($case in $publicCases) {
+    if ($case.time_wasted_minutes) { $minutes += [int]$case.time_wasted_minutes }
+    elseif ($case.time_lost_min) { $minutes += [int]$case.time_lost_min }
+  }
+  if ($index.stats.failure_cases -ne $publicCases.Count -or $index.stats.observed_minutes -ne $minutes -or @($index.cases).Count -ne $publicCases.Count) {
+    Write-Error "FAIL: failure-index.json does not match curated failure data"
+    $ps.Kill() 2>$null
+    exit 1
+  }
+  Write-Host "OK ($($index.stats.failure_cases) cases, $($index.stats.observed_minutes) minutes)`n" -ForegroundColor Green
+} catch {
+  Write-Error "FAIL: /failure-index.json is not valid or not served: $($_.Exception.Message)"
+  $ps.Kill() 2>$null
+  exit 1
+}
+
 Write-Host "=== CI Verify: Stopping server ===" -ForegroundColor Cyan
 $ps.Kill() 2>$null
 Write-Host "OK`n" -ForegroundColor Green

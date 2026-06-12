@@ -1769,7 +1769,7 @@ const frontendDist = path.join(__dirname, 'frontend', 'dist');
 app.use(express.static(frontendDist, { index: false }));
 
 // Static frontend files with caching (root files not in Vite build)
-const staticFiles = ['style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'feed.xml', 'badge.svg', 'CNAME'];
+const staticFiles = ['style.css', 'app.js', '404.html', 'llms.txt', 'ai.txt', 'openapi.json', 'robots.txt', 'sitemap.xml', 'feed.xml', 'failure-index.json', 'badge.svg', 'CNAME'];
 const longCache = ['style.css', 'app.js', 'badge.svg', 'robots.txt', 'sitemap.xml', 'CNAME'];
 for (const file of staticFiles) {
   const filePath = path.join(__dirname, file);

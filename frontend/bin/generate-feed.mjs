@@ -8,6 +8,8 @@ const repoRoot = join(root, '..');
 const siteUrl = 'https://aineedhelpfromotherai.com';
 const allCases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
 const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
+const dynamics = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-dynamics.json'), 'utf-8'));
+const interventions = dynamics.flatMap(d => Array.isArray(d.interventions) ? d.interventions : []);
 const generatedAt = process.env.FEED_DATE || new Date().toISOString();
 const pubDate = new Date(generatedAt).toUTCString();
 
@@ -57,6 +59,12 @@ const primaryItems = [
     link: `${siteUrl}/`,
     description: 'Search known AI coding-agent failures before retrying, check traps before executing, and store verified fixes through MCP and REST.',
     categories: ['AI debugging', 'MCP', 'agent memory']
+  }),
+  item({
+    title: 'Machine-readable failure index',
+    link: `${siteUrl}/failure-index.json`,
+    description: `${cases.length} cases, ${dynamics.length} dynamics, and ${interventions.length} interventions packaged as JSON for search and retrieval.`,
+    categories: ['AI debugging', 'JSON', 'discovery']
   }),
   item({
     title: 'MCP and REST integration for coding agents',

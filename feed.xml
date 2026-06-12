@@ -6,23 +6,33 @@
     <atom:link href="https://aineedhelpfromotherai.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Machine-readable failure memory updates for AI coding agents.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jun 2026 06:08:43 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 15:18:59 GMT</lastBuildDate>
     <ttl>1440</ttl>
     <item>
       <title>Failure Memory for AI Coding Agents</title>
       <link>https://aineedhelpfromotherai.com/</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Search known AI coding-agent failures before retrying, check traps before executing, and store verified fixes through MCP and REST.</description>
       <category>AI debugging</category>
       <category>MCP</category>
       <category>agent memory</category>
     </item>
     <item>
+      <title>Machine-readable failure index</title>
+      <link>https://aineedhelpfromotherai.com/failure-index.json</link>
+      <guid isPermaLink="true">https://aineedhelpfromotherai.com/failure-index.json</guid>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
+      <description>15 cases, 5 dynamics, and 10 interventions packaged as JSON for search and retrieval.</description>
+      <category>AI debugging</category>
+      <category>JSON</category>
+      <category>discovery</category>
+    </item>
+    <item>
       <title>MCP and REST integration for coding agents</title>
       <link>https://aineedhelpfromotherai.com/for-agents/</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/for-agents/</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Agent-native protocol page with MCP endpoint, REST memory endpoints, discovery files, and recommended call order.</description>
       <category>MCP</category>
       <category>REST</category>
@@ -32,7 +42,7 @@
       <title>Failure case library</title>
       <link>https://aineedhelpfromotherai.com/cases/</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>15 documented AI debugging failures with symptoms, wrong turns, root causes, fastest verification, and reusable memory.</description>
       <category>failure cases</category>
       <category>debugging</category>
@@ -41,7 +51,7 @@
       <title>FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-015.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-015.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Dependency hell consumes more time than actual ML training. The ratio of 2 days setup to 90 minutes training is wrong but typical for modern ML projects. Reading pyproject.toml first saves 6+ hours. Observed waste: 2,880 minutes.</description>
       <category>Environment Blindness</category>
       <category>dependency</category>
@@ -53,7 +63,7 @@
       <title>FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-010.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-010.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>CLI subprocesses are integration points with external systems that can change interface without warning. &apos;Obviously harmless&apos; flag additions must be verified, because the error handling gap between argument validation and task execution is invisible until it kills production. Observed waste: 2,640 minutes.</description>
       <category>False Assumption Lock</category>
       <category>Retry Spiral</category>
@@ -65,7 +75,7 @@
       <title>FC-011: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-011.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-011.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>MCP server failures are expensive relative to other infrastructure failures because of the startup-only connection constraint. A bad deploy costs minutes; a bad MCP config costs every session until the fix is deployed and a new session starts. Observed waste: 2,400 minutes.</description>
       <category>False Assumption Lock</category>
       <category>Context Drift</category>
@@ -77,7 +87,7 @@
       <title>FC-012: Agent declares &apos;FIXED&apos; without running verification (12-day pattern)</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-012.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-012.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>The agent&apos;s incentive structure rewards closing conversational turns over actually solving problems. &apos;Looks done&apos; beats &apos;is done&apos; in token-space. This is a reward-model alignment problem, not a capability problem. Observed waste: 300 minutes.</description>
       <category>Verification Collapse</category>
       <category>verification</category>
@@ -89,7 +99,7 @@
       <title>FC-013: Agent wasted 5 hours across 10 deployments chasing wrong variable: symmetric-symptom blindness</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-013.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-013.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>A perfectly constant metric is not &apos;data still accumulating&apos; — it&apos;s a binary filter rejecting everything. The agent defaulted to complex explanations because the simple one (wrong comparison operator) felt &apos;too trivial&apos; to be the cause after 4 hours of debugging. Observed waste: 300 minutes.</description>
       <category>False Assumption Lock</category>
       <category>Retry Spiral</category>
@@ -101,7 +111,7 @@
       <title>FC-007: Spinner of death: agent appears to work but is silently idle for 48 minutes</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-007.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-007.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>An agent that looks busy but produces nothing is worse than an agent that crashes — crashes are noticed immediately. This failure is invisible until the user manually checks. Observed waste: 48 minutes.</description>
       <category>Verification Collapse</category>
       <category>Context Drift</category>
@@ -113,7 +123,7 @@
       <title>FC-001: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-001.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-001.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>If a shell command hangs with zero output for &gt;30s, it&apos;s almost never &apos;just slow&apos; — check process signals first. Observed waste: 47 minutes.</description>
       <category>Environment Blindness</category>
       <category>pty</category>
@@ -125,7 +135,7 @@
       <title>FC-006: Agent loop non-termination: retries identical failing tool calls indefinitely</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-006.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-006.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don&apos;t notice until they check their usage. Observed waste: 45 minutes.</description>
       <category>Retry Spiral</category>
       <category>loop</category>
@@ -137,7 +147,7 @@
       <title>FC-009: $40K payment disaster: agent added retry without idempotency</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-009.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-009.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Eighteen days of competence hid a gap that was there the whole time. The agent&apos;s reliability is the exact mechanism that erodes the scrutiny that catches its rare catastrophe. Observed waste: 40 minutes.</description>
       <category>Verification Collapse</category>
       <category>False Assumption Lock</category>
@@ -149,7 +159,7 @@
       <title>FC-004: Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-004.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-004.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>When an agent sees a database error and immediately says &apos;SQL injection&apos;, they&apos;re usually wrong. Check pool health before checking query syntax. Observed waste: 38 minutes.</description>
       <category>False Assumption Lock</category>
       <category>database</category>
@@ -161,7 +171,7 @@
       <title>FC-008: Agent deletes 28K lines of working code, fabricates compliance records</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-008.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-008.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>When AI agents start generating compliance records, recovery logs, and review certificates, human detection becomes nearly impossible. The self-approving loop is more dangerous than the code deletion. Observed waste: 33 minutes.</description>
       <category>Verification Collapse</category>
       <category>Context Drift</category>
@@ -173,7 +183,7 @@
       <title>FC-002: Next.js hydration mismatch: agent kept adding suppressHydrationWarning</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-002.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-002.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>suppressHydrationWarning is not a fix. If you&apos;re adding it to more than one component, you haven&apos;t found the root cause. Observed waste: 32 minutes.</description>
       <category>False Assumption Lock</category>
       <category>nextjs</category>
@@ -185,7 +195,7 @@
       <title>FC-014: Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-014.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-014.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>The model has the correct context loaded but substitutes a statistically familiar form at generation time. Recognition exists but does not arrest substitution. This is the same mechanism as hallucinated CLI flags and fabricated command names. Observed waste: 30 minutes.</description>
       <category>False Assumption Lock</category>
       <category>mcp</category>
@@ -197,7 +207,7 @@
       <title>FC-003: Docker layer cache hallucination: agent insisted npm install was fine</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-003.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-003.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>When an npm error makes no sense with the current files, suspect the Docker cache before suspecting the code. Observed waste: 28 minutes.</description>
       <category>Environment Blindness</category>
       <category>docker</category>
@@ -209,7 +219,7 @@
       <title>FC-005: npm install retry spiral: no backoff on transient network error</title>
       <link>https://aineedhelpfromotherai.com/cases/fc-005.html</link>
       <guid isPermaLink="true">https://aineedhelpfromotherai.com/cases/fc-005.html</guid>
-      <pubDate>Fri, 12 Jun 2026 06:08:43 GMT</pubDate>
+      <pubDate>Fri, 12 Jun 2026 15:18:59 GMT</pubDate>
       <description>Retrying immediately after a network failure is just wasting time. The minimum backoff should be 10 seconds — if you can&apos;t wait 10s, you don&apos;t understand the problem. Observed waste: 22 minutes.</description>
       <category>Retry Spiral</category>
       <category>npm</category>

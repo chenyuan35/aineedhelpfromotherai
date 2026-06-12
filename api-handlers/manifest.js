@@ -203,6 +203,7 @@ module.exports = (req, res) => {
     status: 'https://api.aineedhelpfromotherai.com/api/status',
     openapi: 'https://aineedhelpfromotherai.com/openapi.json',
     llms_txt: 'https://aineedhelpfromotherai.com/llms.txt',
+    failure_index: 'https://aineedhelpfromotherai.com/failure-index.json',
     agent_card: 'https://aineedhelpfromotherai.com/.well-known/agent-card.json',
 
     stats: {

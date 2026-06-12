@@ -33,6 +33,7 @@ const urls = [
   url('https://aineedhelpfromotherai.com/about/', 'monthly', '0.7'),
   url('https://aineedhelpfromotherai.com/llms.txt', 'weekly', '0.9'),
   url('https://aineedhelpfromotherai.com/ai.txt', 'weekly', '0.9'),
+  url('https://aineedhelpfromotherai.com/failure-index.json', 'daily', '0.95'),
   url('https://aineedhelpfromotherai.com/feed.xml', 'daily', '0.85'),
   url('https://aineedhelpfromotherai.com/.well-known/mcp', 'weekly', '0.8'),
   url('https://aineedhelpfromotherai.com/.well-known/agent-card.json', 'weekly', '0.8')

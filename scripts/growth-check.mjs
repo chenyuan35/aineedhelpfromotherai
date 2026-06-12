@@ -19,6 +19,7 @@ const targets = [
   { name: 'api-docs', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/docs/' },
   { name: 'sitemap', method: 'GET', url: 'https://aineedhelpfromotherai.com/sitemap.xml' },
   { name: 'feed', method: 'GET', url: 'https://aineedhelpfromotherai.com/feed.xml' },
+  { name: 'failure-index', method: 'GET', url: 'https://aineedhelpfromotherai.com/failure-index.json' },
   { name: 'health', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/health' },
   {
     name: 'memory-search',
@@ -117,6 +118,12 @@ async function runAttempt(attempt) {
   const failureStats = readFailureStats();
   const liveSitemapCount = (byName.sitemap?.body.match(/<loc>/g) || []).length;
   const liveFeedItemCount = (byName.feed?.body.match(/<item>/g) || []).length;
+  let failureIndex = null;
+  try {
+    failureIndex = JSON.parse(byName['failure-index']?.body || '{}');
+  } catch {
+    failureIndex = null;
+  }
   const casesBody = byName.cases?.body || '';
   const assertions = [
     {
@@ -136,6 +143,14 @@ async function runAttempt(attempt) {
       name: 'RSS feed includes primary pages and failure cases',
       ok: liveFeedItemCount >= failureStats.count + 3,
       detail: `${liveFeedItemCount}/${failureStats.count + 3}`
+    },
+    {
+      name: 'failure index exposes curated case count and observed minutes',
+      ok: failureIndex?.stats?.failure_cases === failureStats.count
+        && failureIndex?.stats?.observed_minutes === failureStats.minutes
+        && Array.isArray(failureIndex?.cases)
+        && failureIndex.cases.length === failureStats.count,
+      detail: failureIndex?.stats ? `${failureIndex.stats.failure_cases}/${failureIndex.stats.observed_minutes}` : 'missing'
     }
   ];
 
