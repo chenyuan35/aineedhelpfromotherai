@@ -35,7 +35,8 @@ function firstLine(value, fallback = '') {
   return text.length > 180 ? `${text.slice(0, 177)}...` : text;
 }
 
-const cases = readJson('data/failure-cases.json');
+const allCases = readJson('data/failure-cases.json');
+const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
 const dynamics = readJson('data/failure-dynamics.json');
 const sitemap = readFileSync(join(root, 'frontend', 'sitemap.xml'), 'utf8');
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>(.*?)<\/loc>/g), m => m[1]);

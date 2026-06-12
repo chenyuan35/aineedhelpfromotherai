@@ -5,7 +5,8 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const repoRoot = join(root, '..');
-const cases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const allCases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
 const today = process.env.SITEMAP_LASTMOD || new Date().toISOString().slice(0, 10);
 
 function url(loc, changefreq, priority) {

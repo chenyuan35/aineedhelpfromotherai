@@ -7,7 +7,8 @@ const root = join(__dirname, '..');
 const repoRoot = join(root, '..');
 const outDir = join(root, 'learn');
 
-const cases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const allCases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
 const dynamics = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-dynamics.json'), 'utf-8'));
 
 mkdirSync(outDir, { recursive: true });

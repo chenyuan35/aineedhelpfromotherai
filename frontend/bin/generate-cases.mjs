@@ -1,9 +1,10 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, unlinkSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const cases = JSON.parse(readFileSync(join(__dirname, '..', '..', 'data', 'failure-cases.json'), 'utf-8'));
+const allCases = JSON.parse(readFileSync(join(__dirname, '..', '..', 'data', 'failure-cases.json'), 'utf-8'));
+const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
 const dynamics = JSON.parse(readFileSync(join(__dirname, '..', '..', 'data', 'failure-dynamics.json'), 'utf-8'));
 const outDir = join(__dirname, '..', 'cases');
 
@@ -12,7 +13,16 @@ mkdirSync(outDir, { recursive: true });
 const safe = (v, fallback = '-') => (v === undefined || v === null || v === '' ? fallback : v);
 const safeArr = (v) => (Array.isArray(v) ? v : []);
 const caseHref = (id) => `/cases/${String(id).toLowerCase()}.html`;
+const caseFile = (id) => join(outDir, `${String(id).toLowerCase()}.html`);
 const dynHref = (name) => `/cases/#${String(name).toLowerCase().replace(/\s+/g, '-')}`;
+
+for (const c of allCases.filter(c => !cases.includes(c))) {
+  const stale = caseFile(c.id);
+  if (existsSync(stale)) {
+    unlinkSync(stale);
+    console.log(`Removed cases/${String(c.id).toLowerCase()}.html`);
+  }
+}
 
 function escapeHtml(value) {
   return String(value ?? '')

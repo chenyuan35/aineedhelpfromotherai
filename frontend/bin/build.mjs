@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, existsSync, statSync } from 'fs';
+import { cpSync, mkdirSync, existsSync, statSync, rmSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -6,6 +6,7 @@ import { execSync } from 'child_process';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const dist = join(root, 'dist');
+rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 // Step 1: build CSS

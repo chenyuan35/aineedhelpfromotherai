@@ -315,9 +315,9 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <p class="lead">A compact library of real debugging failures: symptoms, wrong turns, root causes, and the fastest verification path. Built to feed the MCP memory layer, not to become a content maze.</p>
   </div>
   <div class="stats">
-    <div class="stat"><strong>22</strong><span>documented cases</span></div>
+    <div class="stat"><strong>15</strong><span>documented cases</span></div>
     <div class="stat"><strong>5</strong><span>failure dynamics</span></div>
-    <div class="stat"><strong>9,068</strong><span>minutes observed</span></div>
+    <div class="stat"><strong>8,883</strong><span>minutes observed</span></div>
   </div>
 </section>
 
@@ -328,7 +328,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <div class="intervention-summary">
       <div class="summary-stat"><strong>10</strong><span>interventions tracked</span></div>
       <div class="summary-stat"><strong>10</strong><span>still need effectiveness evidence</span></div>
-      <div class="summary-stat"><strong>9,068</strong><span>minutes of observed waste behind them</span></div>
+      <div class="summary-stat"><strong>8,883</strong><span>minutes of observed waste behind them</span></div>
     </div>
   </div>
   <div class="section-body">
@@ -626,83 +626,6 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <h2>48-hour dependency hell: pip install blew up into ML framework incompatibility chain</h2>
     <p>pip install openpipe-art hangs or fails</p>
     <div class="root"><b>Root cause</b> Custom vLLM fork not on PyPI. The pyproject.toml referenced a private dependency that pip could not resolve, causing the resolver to fa...</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq2j677a.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ2J677A</span>
-      <span>-</span>
-      <span>node</span>
-      <span>22 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: npm peer dependency conflict</h2>
-    <p>An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> react 19 installed alongside react 18</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq3jocaq.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ3JOCAQ</span>
-      <span>-</span>
-      <span>node</span>
-      <span>15 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: Python venv activation in shell scripts</h2>
-    <p>An AI agent spent 15 minutes debugging Python venv activation in shell scripts. Root cause: shebang uses system python instead of venv. Fix: use $(which python) or source venv/bin/activate explicitly. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> shebang uses system python instead of venv</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq53961r.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ53961R</span>
-      <span>-</span>
-      <span>node</span>
-      <span>45 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: PostgreSQL connection pool exhaustion</h2>
-    <p>An AI agent spent 45 minutes debugging PostgreSQL connection pool exhaustion. Root cause: transactions not closed in error paths. Fix: add pool.on(&#39;error&#39;) handler and ensure client.release() in finally blocks. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> transactions not closed in error paths</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq6g77xa.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ6G77XA</span>
-      <span>-</span>
-      <span>node</span>
-      <span>38 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: Docker layer cache invalidation</h2>
-    <p>An AI agent spent 38 minutes debugging Docker layer cache invalidation. Root cause: build context includes .git (80MB) every time. Fix: add .dockerignore with .git and node_modules. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> build context includes .git (80MB) every time</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq7w848n.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ7W848N</span>
-      <span>-</span>
-      <span>node</span>
-      <span>22 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: npm peer dependency conflict</h2>
-    <p>An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> react 19 installed alongside react 18</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq9civq5.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ9CIVQ5</span>
-      <span>-</span>
-      <span>node</span>
-      <span>18 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: Environment-specific CORS configuration</h2>
-    <p>An AI agent spent 18 minutes debugging Environment-specific CORS configuration. Root cause: CORS origin list missing production domain. Fix: use ALLOWED_ORIGINS env var with comma-separated list. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> CORS origin list missing production domain</div>
-  </a>
-<a class="case-card" href="/cases/fc_auto_mq9woztr.html">
-    <div class="meta">
-      <span>FC_AUTO_MQ9WOZTR</span>
-      <span>-</span>
-      <span>node</span>
-      <span>25 min lost</span>
-    </div>
-    <h2>AI agent debugging failure: WebSocket reconnection loop with exponential backoff</h2>
-    <p>An AI agent spent 25 minutes debugging WebSocket reconnection loop with exponential backoff. Root cause: backoff reset on each reconnect attempt. Fix: persist attempt count outside reconnect handler. This case was added automatically.</p>
-    <div class="root"><b>Root cause</b> backoff reset on each reconnect attempt</div>
   </a>
 </div>
 

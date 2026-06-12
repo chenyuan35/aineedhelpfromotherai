@@ -1,5 +1,5 @@
 # Daily repo activity — keeps the project visible to AI crawlers
-# Runs once daily, generates fresh content, updates stats
+# Runs once daily, refreshes evidence reports and growth surfaces
 name: daily-activity
 
 on:
@@ -32,10 +32,8 @@ jobs:
       - name: Install frontend dependencies
         run: npm --prefix frontend ci
 
-      - name: Generate daily content
+      - name: Generate daily evidence snapshot
         run: node scripts/daily-activity.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Refresh growth assets and frontend
         run: |

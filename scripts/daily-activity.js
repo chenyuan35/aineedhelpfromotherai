@@ -1,128 +1,130 @@
-// scripts/daily-activity.js — Automated daily content generator
-// Zero API keys required. Generates content from templates + existing data.
-// Runs via GitHub Actions daily-activity.yml
+// scripts/daily-activity.js - Automated daily evidence snapshot.
+// Keeps the project active without inventing failure cases.
 
 const fs = require('fs');
 const path = require('path');
 
-// Templates for daily case studies — rotate through them
-const CASE_TEMPLATES = [
-  {
-    id: 'FC-AUTO',
-    title: 'AI agent debugging failure: {topic}',
-    short: '{topic}',
-    description: 'An AI agent spent {time} debugging {topic}. Root cause: {cause}. Fix: {fix}. This case was added automatically.',
-    severity: 'high',
-    environments: ['node', 'docker', 'ci'],
+const root = path.join(__dirname, '..');
+
+function readJson(relativePath, fallback) {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'));
+  } catch {
+    return fallback;
   }
-];
-
-const TOPICS = [
-  { topic: 'Docker layer cache invalidation', time: '38 minutes', cause: 'build context includes .git (80MB) every time', fix: 'add .dockerignore with .git and node_modules' },
-  { topic: 'npm peer dependency conflict', time: '22 minutes', cause: 'react 19 installed alongside react 18', fix: 'npm ls react to find duplicate, dedupe' },
-  { topic: 'Python venv activation in shell scripts', time: '15 minutes', cause: 'shebang uses system python instead of venv', fix: 'use $(which python) or source venv/bin/activate explicitly' },
-  { topic: 'PostgreSQL connection pool exhaustion', time: '45 minutes', cause: 'transactions not closed in error paths', fix: 'add pool.on(\'error\') handler and ensure client.release() in finally blocks' },
-  { topic: 'Git merge conflict in lock files', time: '12 minutes', cause: 'package-lock.json auto-merged incorrectly', fix: 'git checkout --ours package-lock.json && npm install' },
-  { topic: 'SSL certificate verification in private npm registry', time: '30 minutes', cause: 'NODE_TLS_REJECT_UNAUTHORIZED=0 in production config', fix: 'configure CA cert via NODE_EXTRA_CA_CERTS' },
-  { topic: 'WebSocket reconnection loop with exponential backoff', time: '25 minutes', cause: 'backoff reset on each reconnect attempt', fix: 'persist attempt count outside reconnect handler' },
-  { topic: 'Environment-specific CORS configuration', time: '18 minutes', cause: 'CORS origin list missing production domain', fix: 'use ALLOWED_ORIGINS env var with comma-separated list' },
-  { topic: 'Node.js memory leak from unclosed EventSource connections', time: '40 minutes', cause: 'SSE connections not cleaned up on page navigation', fix: 'add beforeunload listener + AbortController' },
-  { topic: 'TypeScript path aliases not resolved at runtime', time: '20 minutes', cause: 'tsconfig paths only work with tsc, not ts-node', fix: 'use tsconfig-paths module or switch to tsc-alias' },
-];
-
-function pick(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateCase() {
-  const t = pick(TOPICS);
-  const now = new Date().toISOString();
-  return {
-    id: `FC_AUTO_${Date.now().toString(36).toUpperCase()}`,
-    title: `AI agent debugging failure: ${t.topic}`,
-    description: `An AI agent spent ${t.time} debugging ${t.topic}. Root cause: ${t.cause}. Fix: ${t.fix}. This case was added automatically.`,
-    severity: 'high',
-    environments: ['node', 'docker', 'ci'],
-    root_cause: t.cause,
-    fix: t.fix,
-    time_lost_min: parseInt(t.time.match(/\d+/)[0]),
-    added_at: now,
-    source: 'daily-auto-generate',
-  };
+function writeFile(relativePath, body) {
+  const file = path.join(root, relativePath);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, body);
+  console.log(`[daily-activity] wrote ${relativePath}`);
 }
 
-function main() {
-  const dataDir = path.join(__dirname, '..', 'data');
-  const date = new Date().toISOString().split('T')[0];
-  const digestPath = path.join(__dirname, '..', 'data', 'daily-digest.json');
+function minutesFor(c) {
+  return Number(c.time_wasted_minutes || c.time_lost_min || 0);
+}
 
-  // Ensure data dir exists
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
+function isPublicCase(c) {
+  return c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_');
+}
 
-  // Load existing failure cases
-  const casesPath = path.join(dataDir, 'failure-cases.json');
-  let cases = [];
-  try {
-    cases = JSON.parse(fs.readFileSync(casesPath, 'utf8'));
-    if (!Array.isArray(cases)) cases = [];
-  } catch {
-    cases = [];
-  }
+function firstLine(value, fallback = '') {
+  const text = String(value || fallback).replace(/\s+/g, ' ').trim();
+  return text.length > 180 ? `${text.slice(0, 177)}...` : text;
+}
 
-  let prevDigest = null;
-  try {
-    prevDigest = JSON.parse(fs.readFileSync(digestPath, 'utf8'));
-  } catch {
-    prevDigest = null;
-  }
+function buildReport(snapshot) {
+  return [
+    '# Daily Ops Report',
+    '',
+    `Generated: ${snapshot.last_updated}`,
+    '',
+    '## Evidence Health',
+    '',
+    '| Metric | Value |',
+    '| --- | --- |',
+    `| Public real failure cases | ${snapshot.public_cases} |`,
+    `| Suppressed generated cases | ${snapshot.suppressed_generated_cases} |`,
+    `| Observed debugging waste | ${snapshot.observed_minutes.toLocaleString()} minutes |`,
+    `| Failure dynamics | ${snapshot.failure_dynamics} |`,
+    `| Interventions pending measurement | ${snapshot.pending_interventions} |`,
+    '',
+    '## Next Automatic Action',
+    '',
+    `- ${snapshot.next_action}`,
+    '',
+    '## Guardrail',
+    '',
+    'Daily automation must refresh evidence, reports, and discovery surfaces without fabricating failure cases.',
+    '',
+    'Compression: daily automation keeps the growth loop alive by publishing current evidence, not synthetic debugging stories.',
+    ''
+  ].join('\n');
+}
 
-  if (
-    prevDigest &&
-    prevDigest.cases_added_today > 0 &&
-    String(prevDigest.last_updated || '').startsWith(`${date}T`)
-  ) {
-    console.log(`[daily-activity] Already refreshed for ${date}; skipping duplicate case generation.`);
-    console.log(`[daily-activity] Total cases: ${cases.length}`);
+function updateProgress(snapshot) {
+  const date = snapshot.last_updated.slice(0, 10);
+  const marker = `<!-- daily-activity:${date} -->`;
+  const progressPath = path.join(root, 'PROGRESS.md');
+  const current = fs.existsSync(progressPath) ? fs.readFileSync(progressPath, 'utf8') : '';
+  if (current.includes(marker)) {
+    console.log(`[daily-activity] PROGRESS.md already has ${date} evidence snapshot.`);
     return;
   }
 
-  // Add new case
-  const newCase = generateCase();
-  cases.push(newCase);
-  console.log(`[daily-activity] Added case: ${newCase.id} — ${newCase.title}`);
+  const entry = [
+    marker,
+    `## ${date} (Auto): Daily evidence refresh`,
+    '',
+    `- Public real failure cases: ${snapshot.public_cases}`,
+    `- Suppressed generated cases: ${snapshot.suppressed_generated_cases}`,
+    `- Observed debugging waste: ${snapshot.observed_minutes.toLocaleString()} minutes`,
+    `- Next automatic action: ${snapshot.next_action}`,
+    ''
+  ].join('\n');
+  fs.writeFileSync(progressPath, `${entry}\n${current}`);
+  console.log('[daily-activity] updated PROGRESS.md');
+}
 
-  // Keep last 500 cases max
-  if (cases.length > 500) {
-    cases = cases.slice(-500);
-  }
+function main() {
+  const cases = readJson('data/failure-cases.json', []);
+  const dynamics = readJson('data/failure-dynamics.json', []);
+  const previous = readJson('data/daily-digest.json', null);
+  const publicCases = Array.isArray(cases) ? cases.filter(isPublicCase) : [];
+  const suppressed = Array.isArray(cases) ? cases.length - publicCases.length : 0;
+  const interventions = Array.isArray(dynamics) ? dynamics.flatMap(d => d.interventions || []) : [];
+  const pendingInterventions = interventions.filter(i => i.effectiveness_tracking === 'pending').length;
+  const observedMinutes = publicCases.reduce((sum, c) => sum + minutesFor(c), 0);
 
-  fs.writeFileSync(casesPath, JSON.stringify(cases, null, 2));
-  console.log(`[daily-activity] Total cases: ${cases.length}`);
+  const nextAction = pendingInterventions > 0
+    ? 'Collect measured effectiveness for pending interventions before adding new claims.'
+    : 'Keep production growth checks green and look for real debugging sessions to add.';
 
-  // Update daily digest
-  const digest = {
+  const snapshot = {
     last_updated: new Date().toISOString(),
-    cases_added_today: 1,
-    total_cases: cases.length,
-    latest_case: newCase.title,
-    update_count: 0,
+    cases_added_today: 0,
+    public_cases: publicCases.length,
+    suppressed_generated_cases: suppressed,
+    total_case_records: Array.isArray(cases) ? cases.length : 0,
+    observed_minutes: observedMinutes,
+    failure_dynamics: Array.isArray(dynamics) ? dynamics.length : 0,
+    interventions: interventions.length,
+    pending_interventions: pendingInterventions,
+    latest_public_case: publicCases.at(-1)?.title || null,
+    top_public_case: publicCases
+      .slice()
+      .sort((a, b) => minutesFor(b) - minutesFor(a))
+      .map(c => `${c.id}: ${firstLine(c.title)}`)
+      .at(0) || null,
+    next_action: nextAction,
+    update_count: previous ? (previous.update_count || 0) + 1 : 1
   };
-  digest.update_count = prevDigest ? (prevDigest.update_count || 0) + 1 : 1;
-  fs.writeFileSync(digestPath, JSON.stringify(digest, null, 2));
 
-  // Update the PROGRESS.md with daily entry
-  const progressPath = path.join(__dirname, '..', 'PROGRESS.md');
-  const entry = `\n## ${date} (Auto): Daily content refresh\n\n- Auto-generated case: ${newCase.title}\n- Root cause: ${newCase.root_cause}\n- Total failure cases: ${cases.length}\n`;
-  try {
-    const progress = fs.readFileSync(progressPath, 'utf8');
-    fs.writeFileSync(progressPath, entry + progress);
-  } catch (e) {
-    console.error('[daily-activity] Failed to update PROGRESS.md:', e.message);
-  }
-
-  console.log('[daily-activity] Done');
+  writeFile('data/daily-digest.json', `${JSON.stringify(snapshot, null, 2)}\n`);
+  writeFile('tasks/daily-ops-report.md', buildReport(snapshot));
+  updateProgress(snapshot);
+  console.log(`[daily-activity] Public cases: ${snapshot.public_cases}; suppressed generated cases: ${suppressed}`);
 }
 
 main();

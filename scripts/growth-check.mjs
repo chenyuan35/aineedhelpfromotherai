@@ -35,7 +35,10 @@ function minutesFor(c) {
 function readFailureStats() {
   const path = join(root, 'data', 'failure-cases.json');
   if (!existsSync(path)) return { count: 0, minutes: 0, minutesLabel: '0' };
-  const cases = JSON.parse(readFileSync(path, 'utf8'));
+  const records = JSON.parse(readFileSync(path, 'utf8'));
+  const cases = Array.isArray(records)
+    ? records.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'))
+    : [];
   const minutes = Array.isArray(cases) ? cases.reduce((sum, c) => sum + minutesFor(c), 0) : 0;
   return {
     count: Array.isArray(cases) ? cases.length : 0,
@@ -117,11 +120,11 @@ async function runAttempt(attempt) {
   const casesBody = byName.cases?.body || '';
   const assertions = [
     {
-      name: 'cases count matches data/failure-cases.json',
+      name: 'public case count matches curated data/failure-cases.json records',
       ok: casesBody.includes(`<strong>${failureStats.count}</strong>`)
     },
     {
-      name: 'observed minutes matches data/failure-cases.json',
+      name: 'observed minutes matches curated data/failure-cases.json records',
       ok: casesBody.includes(failureStats.minutesLabel)
     },
     {

@@ -1,7 +1,15 @@
 {
-  "last_updated": "2026-06-11T19:44:20.324Z",
-  "cases_added_today": 1,
-  "total_cases": 22,
-  "latest_case": "AI agent debugging failure: WebSocket reconnection loop with exponential backoff",
-  "update_count": 7
+  "last_updated": "2026-06-12T06:07:42.913Z",
+  "cases_added_today": 0,
+  "public_cases": 15,
+  "suppressed_generated_cases": 7,
+  "total_case_records": 22,
+  "observed_minutes": 8883,
+  "failure_dynamics": 5,
+  "interventions": 10,
+  "pending_interventions": 10,
+  "latest_public_case": "48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
+  "top_public_case": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
+  "next_action": "Collect measured effectiveness for pending interventions before adding new claims.",
+  "update_count": 8
 }

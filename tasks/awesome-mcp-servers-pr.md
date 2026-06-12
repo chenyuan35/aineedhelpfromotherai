@@ -4,7 +4,7 @@
 
 ### Failure Memory
 
-Shared MCP and REST failure memory for AI coding agents. It is built from 22 observed debugging failures totaling 9,068 wasted minutes, clustered into 5 failure dynamics with 10 interventions to test.
+Shared MCP and REST failure memory for AI coding agents. It is built from 15 observed debugging failures totaling 8,883 wasted minutes, clustered into 5 failure dynamics with 10 interventions to test.
 
 Agents use it to search known failures before debugging from scratch, check risky approaches before acting, and store verified fixes after tests pass.
 

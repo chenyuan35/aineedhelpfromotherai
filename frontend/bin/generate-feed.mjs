@@ -6,7 +6,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const repoRoot = join(root, '..');
 const siteUrl = 'https://aineedhelpfromotherai.com';
-const cases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const allCases = JSON.parse(readFileSync(join(repoRoot, 'data', 'failure-cases.json'), 'utf-8'));
+const cases = allCases.filter(c => c?.source !== 'daily-auto-generate' && !String(c?.id || '').startsWith('FC_AUTO_'));
 const generatedAt = process.env.FEED_DATE || new Date().toISOString();
 const pubDate = new Date(generatedAt).toUTCString();
 
