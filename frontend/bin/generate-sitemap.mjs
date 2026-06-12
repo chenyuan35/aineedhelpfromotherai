@@ -32,7 +32,8 @@ const urls = [
   url('https://aineedhelpfromotherai.com/about/', 'monthly', '0.7'),
   url('https://aineedhelpfromotherai.com/llms.txt', 'weekly', '0.9'),
   url('https://aineedhelpfromotherai.com/ai.txt', 'weekly', '0.9'),
-  url('https://aineedhelpfromotherai.com/.well-known/mcp', 'weekly', '0.8')
+  url('https://aineedhelpfromotherai.com/.well-known/mcp', 'weekly', '0.8'),
+  url('https://aineedhelpfromotherai.com/.well-known/agent-card.json', 'weekly', '0.8')
 ];
 
 if (existsSync(join(root, 'learn'))) {

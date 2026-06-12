@@ -33,7 +33,7 @@ Tokens saved: ~2000
 
 ```bash
 # Search memory
-curl -X POST https://api.aineedhelpfromotherai.com/memory/search \
+curl -X POST https://api.aineedhelpfromotherai.com/api/memory/search \
   -H 'Content-Type: application/json' \
   -d '{"query": "Android PTY deadlock"}'
 
@@ -41,7 +41,7 @@ curl -X POST https://api.aineedhelpfromotherai.com/memory/search \
 curl "https://api.aineedhelpfromotherai.com/memory/recall?q=Android+PTY+deadlock"
 
 # Memory stats
-curl https://api.aineedhelpfromotherai.com/memory/stats
+curl https://api.aineedhelpfromotherai.com/api/memory/stats
 ```
 
 Generated: 2026-05-26

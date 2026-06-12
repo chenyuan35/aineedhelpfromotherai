@@ -388,9 +388,9 @@
 
 | 端点 | 什么时候调用 | 作用 |
 |------|------------|------|
-| `POST /memory/failure` | 失败后 | 记录失败经验，返回相似失败 + 已知修复 |
-| `POST /memory/search` | 修复前 | 搜索共享记忆：相似失败 + 已验证修复 + 幻觉警告 |
-| `POST /memory/resolution` | 成功后 | 存储已验证修复，标记为可被其他 agent 命中 |
+| `POST /api/memory/failure` | 失败后 | 记录失败经验，返回相似失败 + 已知修复 |
+| `POST /api/memory/search` | 修复前 | 搜索共享记忆：相似失败 + 已验证修复 + 幻觉警告 |
+| `POST /api/memory/resolution` | 成功后 | 存储已验证修复，标记为可被其他 agent 命中 |
 
 底层直接对接 resolve-cache，无需新存储。
 

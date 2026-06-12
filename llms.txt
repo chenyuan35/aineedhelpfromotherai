@@ -89,6 +89,7 @@ MCP stdio bridge:
 ## API and Discovery
 
 - `/.well-known/mcp` - MCP server card
+- `/.well-known/agent-card.json` - A2A agent capability card
 - `/openapi.json` - OpenAPI specification
 - `/api/manifest` - REST API manifest
 - `/sitemap.xml` - canonical public URL list

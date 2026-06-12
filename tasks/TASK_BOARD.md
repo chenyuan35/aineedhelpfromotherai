@@ -142,7 +142,7 @@
 
 | # | 任务 | 状态 | 验证方式 |
 |---|------|------|---------|
-| 801 | **3 端点内存 API** — POST /memory/failure, POST /memory/search, POST /memory/resolution | ✅ 完成 | curl 全流程验证 |
+| 801 | **3 端点内存 API** — POST /api/memory/failure, POST /api/memory/search, POST /api/memory/resolution | ✅ 完成 | curl 全流程验证 |
 | 802 | **/api/ 别名** — 3 端点同时暴露在 /api/memory/failure 等路径 | ✅ 完成 | curl /api/memory/search |
 | 803 | **Claude Code 插件** — MCP server (plugins/claude-code-mcp.js)，claude_desktop_config.json 可直接引用 | ✅ 完成 | 手动测试 MCP initialize |
 | 804 | **OpenHands 插件** — shell 脚本 (plugins/memory.sh)，source 后即可搜索/提交 | ✅ 完成 | memory search/submit/resolve/stats |
@@ -150,7 +150,7 @@
 | 806 | **Viral demo 脚本** — scripts/demo-viral.js 展示 Agent A → Agent B 全流程 | ✅ 完成 | node scripts/demo-viral.js 输出完整 transcript |
 | 807 | **landing page 重写** — 从"AI civilization" 到 "Shared memory for coding agents" | ✅ 完成 | 浏览器打开 / 验证 |
 | 808 | **llms.txt 重写** — 从 "Reasoning Cache & Consensus" 到 "Failure Memory" | ✅ 完成 | 3 端点 curl 示例 + 插件安装指南 |
-| 809 | **检索质量 v2** — stale 过滤, dedup, 复合排序 (sim×0.5 + score×0.3 + fresh×0.2), 置信度计算 | ✅ 完成 | /memory/search 返回 confidence% + supporting_agents + age_days |
+| 809 | **检索质量 v2** — stale 过滤, dedup, 复合排序 (sim×0.5 + score×0.3 + fresh×0.2), 置信度计算 | ✅ 完成 | /api/memory/search 返回 confidence% + supporting_agents + age_days |
 | 810 | **verified_only / strict 模式** — 仅返回 sandbox-verified + high-reputation 修复 | ✅ 完成 | { "query": "...", "strict": true } |
 | 811 | **视觉 Memory Recall 格式** — /memory/recall 端点返回纯文本 markdown | ✅ 完成 | curl /memory/recall |
 | 812 | **Benchmark 脚本** — 10 场景 SWE-bench 风格测试 (recall@1/5, MRR, latency, token savings) | ✅ 完成 | node scripts/benchmark-real.js |
