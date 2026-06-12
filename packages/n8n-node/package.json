@@ -1,6 +1,6 @@
 {
   "name": "@aineedhelpfromotherai/n8n-node",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "n8n community node for AI Failure Memory — search, record, and share agent failures across workflows",
   "main": "index.js",
   "n8n": {

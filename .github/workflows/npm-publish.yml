@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version bump (patch/minor/major)
-        required: true
-        default: patch
+        description: Optional version bump (patch/minor/major). Leave empty to publish package.json versions.
+        required: false
+        default: ""
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -31,50 +31,27 @@ jobs:
           registry-url: ${{ secrets.NPM_TOKEN && 'https://registry.npmjs.org' || 'https://npm.pkg.github.com' }}
           scope: ${{ secrets.NPM_TOKEN && '' || '@chenyuan35' }}
       - run: npm ci || npm install --omit=dev
-      - name: Bump version
-        if: github.event_name == 'workflow_dispatch'
+      - name: Skip root app package
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version
-      - name: Publish to npmjs.org or GitHub Packages
-        run: |
-          # Remove private flag before publishing
-          jq 'del(.private)' package.json > package.json.tmp
-          mv package.json.tmp package.json
-          # Skip if already published (idempotent)
-          VER=$(node -p "require('./package.json').version")
-          NAME=$(node -p "require('./package.json').name")
-          if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
-            REGISTRY="https://registry.npmjs.org"
-            if npm view "${NAME}@${VER}" version 2>/dev/null; then
-              echo "Version ${NAME}@${VER} already exists on npm, skipping"
-              exit 0
-            fi
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-            npm publish --access public
-          else
-            REGISTRY="https://npm.pkg.github.com"
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-            npm config set registry $REGISTRY
-            jq --arg name "@chenyuan35/aineedhelpfromotherai" --arg reg "$REGISTRY" \
-              '.name = $name | .publishConfig.registry = $reg' package.json > package.json.tmp2
-            mv package.json.tmp2 package.json
-            npm publish
-          fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}
+          echo "The repository root is the deployed website/backend app, not an npm integration package."
+          echo "Publishing is limited to packages/mcp-bridge, packages/n8n-node, and packages/langchain-tool."
       - name: Publish MCP bridge package
         working-directory: packages/mcp-bridge
         run: |
-          # Ensure version is set (use workflow input or existing)
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            npm version ${{ github.event.inputs.version }} --no-git-tag-version 2>/dev/null || true
+          REQUESTED_BUMP="${{ github.event.inputs.version || '' }}"
+          if [ -n "$REQUESTED_BUMP" ]; then
+            npm version "$REQUESTED_BUMP" --no-git-tag-version
           fi
           VER=$(node -p "require('./package.json').version")
-          echo "Publishing @aineedhelpfromotherai/mcp@$VER"
-          # Skip if already published
-          if npm view "@aineedhelpfromotherai/mcp@$VER" version 2>/dev/null; then
+          NAME=$(node -p "require('./package.json').name")
+          if npm view "$NAME@$VER" version 2>/dev/null; then
+            LATEST=$(npm view "$NAME" version)
+            npm version "$LATEST" --no-git-tag-version --allow-same-version
+            npm version patch --no-git-tag-version
+            VER=$(node -p "require('./package.json').version")
+          fi
+          echo "Publishing $NAME@$VER"
+          if npm view "$NAME@$VER" version 2>/dev/null; then
             echo "Version $VER already exists on npm, skipping"
             exit 0
           fi
@@ -93,7 +70,23 @@ jobs:
       - name: Publish n8n community node
         working-directory: packages/n8n-node
         run: |
-          npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+          REQUESTED_BUMP="${{ github.event.inputs.version || '' }}"
+          if [ -n "$REQUESTED_BUMP" ]; then
+            npm version "$REQUESTED_BUMP" --no-git-tag-version
+          fi
+          VER=$(node -p "require('./package.json').version")
+          NAME=$(node -p "require('./package.json').name")
+          if npm view "$NAME@$VER" version 2>/dev/null; then
+            LATEST=$(npm view "$NAME" version)
+            npm version "$LATEST" --no-git-tag-version --allow-same-version
+            npm version patch --no-git-tag-version
+            VER=$(node -p "require('./package.json').version")
+          fi
+          echo "Publishing $NAME@$VER"
+          if npm view "$NAME@$VER" version 2>/dev/null; then
+            echo "Version $VER already exists on npm, skipping"
+            exit 0
+          fi
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
@@ -109,7 +102,23 @@ jobs:
       - name: Publish LangChain tool
         working-directory: packages/langchain-tool
         run: |
-          npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+          REQUESTED_BUMP="${{ github.event.inputs.version || '' }}"
+          if [ -n "$REQUESTED_BUMP" ]; then
+            npm version "$REQUESTED_BUMP" --no-git-tag-version
+          fi
+          VER=$(node -p "require('./package.json').version")
+          NAME=$(node -p "require('./package.json').name")
+          if npm view "$NAME@$VER" version 2>/dev/null; then
+            LATEST=$(npm view "$NAME" version)
+            npm version "$LATEST" --no-git-tag-version --allow-same-version
+            npm version patch --no-git-tag-version
+            VER=$(node -p "require('./package.json').version")
+          fi
+          echo "Publishing $NAME@$VER"
+          if npm view "$NAME@$VER" version 2>/dev/null; then
+            echo "Version $VER already exists on npm, skipping"
+            exit 0
+          fi
           if [ -n "${{ secrets.NPM_TOKEN }}" ]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public
