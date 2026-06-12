@@ -38,11 +38,12 @@ User-agent: Perplexity-User
 Allow: /
 
 Sitemap: https://aineedhelpfromotherai.com/sitemap.xml
-
 # AI discovery files
 # llms.txt — primary entry point for AI crawlers
+# feed.xml — RSS feed of public failure-memory updates
 # agent-card.json — A2A protocol agent capabilities
 # openapi.json — full API specification
 # llms.txt: https://raw.githubusercontent.com/chenyuan35/aineedhelpfromotherai/main/llms.txt
+# feed.xml: https://aineedhelpfromotherai.com/feed.xml
 # agent-card.json: https://aineedhelpfromotherai.com/.well-known/agent-card.json
 # openapi.json: https://aineedhelpfromotherai.com/openapi.json

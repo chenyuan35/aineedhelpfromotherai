@@ -18,6 +18,7 @@ const targets = [
   { name: 'stats', method: 'GET', url: 'https://aineedhelpfromotherai.com/stats/' },
   { name: 'api-docs', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/docs/' },
   { name: 'sitemap', method: 'GET', url: 'https://aineedhelpfromotherai.com/sitemap.xml' },
+  { name: 'feed', method: 'GET', url: 'https://aineedhelpfromotherai.com/feed.xml' },
   { name: 'health', method: 'GET', url: 'https://api.aineedhelpfromotherai.com/api/health' },
   {
     name: 'memory-search',
@@ -112,6 +113,7 @@ async function runAttempt(attempt) {
   const sitemapCount = readSitemapCount();
   const failureStats = readFailureStats();
   const liveSitemapCount = (byName.sitemap?.body.match(/<loc>/g) || []).length;
+  const liveFeedItemCount = (byName.feed?.body.match(/<item>/g) || []).length;
   const casesBody = byName.cases?.body || '';
   const assertions = [
     {
@@ -126,6 +128,11 @@ async function runAttempt(attempt) {
       name: 'live sitemap URL count matches generated sitemap',
       ok: liveSitemapCount === sitemapCount,
       detail: `${liveSitemapCount}/${sitemapCount}`
+    },
+    {
+      name: 'RSS feed includes primary pages and failure cases',
+      ok: liveFeedItemCount >= failureStats.count + 3,
+      detail: `${liveFeedItemCount}/${failureStats.count + 3}`
     }
   ];
 

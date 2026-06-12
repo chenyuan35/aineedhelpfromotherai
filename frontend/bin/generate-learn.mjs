@@ -153,6 +153,7 @@ function pageShell({ title, description, canonical, jsonld, body }) {
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 <link href="/style.css" rel="stylesheet">
 <style>

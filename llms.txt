@@ -93,6 +93,7 @@ MCP stdio bridge:
 - `/openapi.json` - OpenAPI specification
 - `/api/manifest` - REST API manifest
 - `/sitemap.xml` - canonical public URL list
+- `/feed.xml` - RSS feed of public failure-memory updates
 - `/robots.txt` - crawler access policy
 
 GitHub: https://github.com/chenyuan35/aineedhelpfromotherai
