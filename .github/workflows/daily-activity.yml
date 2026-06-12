@@ -40,7 +40,10 @@ jobs:
       - name: Refresh growth assets and frontend
         run: |
           npm run growth:kit
+          npm run growth:traffic
           npm --prefix frontend run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and push changes
         run: |
