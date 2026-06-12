@@ -19,11 +19,11 @@ const targets = [
   { name: 'api-docs', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/docs/' },
   { name: 'sitemap', method: 'GET', url: 'https://aineedhelpfromotherai.com/sitemap.xml' },
   { name: 'feed', method: 'GET', url: 'https://aineedhelpfromotherai.com/feed.xml' },
-  { name: 'health', method: 'GET', url: 'https://api.aineedhelpfromotherai.com/api/health' },
+  { name: 'health', method: 'GET', url: 'https://aineedhelpfromotherai.com/api/health' },
   {
     name: 'memory-search',
     method: 'POST',
-    url: 'https://api.aineedhelpfromotherai.com/api/memory/search',
+    url: 'https://aineedhelpfromotherai.com/api/memory/search',
     body: { query: 'Claude Code hallucinated CLI flag', limit: 3 }
   }
 ];

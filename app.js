@@ -1,11 +1,8 @@
 // AI NEED HELP FROM OTHER AI — Runtime Orchestration Surface v3
 // Focal: pipeline + execute. Context: state. Access: endpoints.
 
-// Use relative API path when served from same origin (Express),
-// fall back to api subdomain when served from Vercel frontend
-const API = window.location.hostname === 'aineedhelpfromotherai.com'
-  ? 'https://api.aineedhelpfromotherai.com/api'
-  : '/api';
+// Use relative API path on the public site and when served by Express.
+const API = '/api';
 let stateCache = {};
 
 // Loading timeout: if API data doesn't arrive in 5s, show fallback immediately

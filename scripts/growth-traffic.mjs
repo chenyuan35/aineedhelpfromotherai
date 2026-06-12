@@ -15,8 +15,8 @@ function wait(ms) {
 }
 
 function getToken() {
-  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
   if (process.env.GH_TOKEN) return process.env.GH_TOKEN;
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
   try {
     return execSync('gh auth token', { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
   } catch {
@@ -57,17 +57,21 @@ async function getTraffic(path, token) {
 
 function table(headers, rows) {
   return [
-    `| ${headers.join(' |')} |`,
-    `| ${headers.map(() => '---').join(' |')} |`,
+    `| ${headers.join(' | ')} |`,
+    `| ${headers.map(() => '---').join(' | ')} |`,
     ...rows
   ].join('\n');
+}
+
+function cell(value) {
+  return String(value ?? '').replace(/\|/g, '/');
 }
 
 function countRows(items, columns) {
   if (!Array.isArray(items) || items.length === 0) {
     return [`| ${['_none reported_', ...Array(Math.max(columns.length - 1, 0)).fill('')].join(' | ')} |`];
   }
-  return items.slice(0, 10).map(item => `| ${columns.map(c => String(item[c] ?? '').replace(/\|/g, '/')).join(' | ')} |`);
+  return items.slice(0, 10).map(item => `| ${columns.map(c => cell(item[c])).join(' | ')} |`);
 }
 
 function writeReport(markdown) {
@@ -90,7 +94,7 @@ if (!token || failures.length) {
     !token ? 'missing GitHub token' : '',
     ...failures.map(f => `GitHub traffic API ${f.status}: ${f.body?.message || 'unavailable'}`)
   ].filter(Boolean);
-  writeReport([
+  const unavailableReport = [
     '# Growth Traffic Report',
     '',
     `Generated: ${generatedAt}`,
@@ -101,7 +105,13 @@ if (!token || failures.length) {
     `Traffic data unavailable: ${reasons.join('; ')}`,
     '',
     'This report is intentionally non-blocking so growth automation can keep running when GitHub traffic data is temporarily unavailable or the token lacks traffic permissions.'
-  ].join('\n'));
+  ].join('\n');
+  if (process.env.GROWTH_TRAFFIC_WRITE_UNAVAILABLE === '1') {
+    writeReport(unavailableReport);
+  } else {
+    console.warn(unavailableReport);
+    console.warn(`skipped writing ${reportPath}; keeping the last successful traffic report unchanged`);
+  }
   process.exit(0);
 }
 
@@ -123,8 +133,8 @@ writeReport([
     [
       `| Repository views (14d) | ${viewBody.count ?? 0} | ${viewBody.uniques ?? 0} |`,
       `| Repository clones (14d) | ${cloneBody.count ?? 0} | ${cloneBody.uniques ?? 0} |`,
-      `| Top path | ${topPath ? topPath.path : '_none_'} | ${topPath ? topPath.uniques : 0} |`,
-      `| Top referrer | ${topReferrer ? topReferrer.referrer : '_none_'} | ${topReferrer ? topReferrer.uniques : 0} |`
+      `| Top path | ${cell(topPath ? topPath.path : '_none_')} | ${topPath ? topPath.uniques : 0} |`,
+      `| Top referrer | ${cell(topReferrer ? topReferrer.referrer : '_none_')} | ${topReferrer ? topReferrer.uniques : 0} |`
     ]
   ),
   '',

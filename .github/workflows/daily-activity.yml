@@ -43,7 +43,7 @@ jobs:
           npm run growth:traffic
           npm --prefix frontend run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TRAFFIC_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Commit and push changes
         run: |
