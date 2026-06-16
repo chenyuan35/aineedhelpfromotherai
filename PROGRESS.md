@@ -1,3 +1,11 @@
+<!-- daily-activity:2026-06-16 -->
+## 2026-06-16 (Auto): Daily evidence refresh
+
+- Public real failure cases: 15
+- Suppressed generated cases: 7
+- Observed debugging waste: 8,883 minutes
+- Next automatic action: Collect measured effectiveness for pending interventions before adding new claims.
+
 <!-- daily-activity:2026-06-15 -->
 ## 2026-06-15 (Auto): Daily evidence refresh
 
