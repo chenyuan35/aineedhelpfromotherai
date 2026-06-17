@@ -73,7 +73,7 @@ Sources (ranked):
 | Trap patterns | 10 | linked to 5 dynamics |
 | Failure dynamics | 5 | with interventions and propagation data |
 | Interventions | 10 | cognitive guardrails, effectiveness pending |
-| Observed sessions | 1 | recursive: OBS-001 documents this project's own drift |
+| Observed sessions | 2 | recursive: OBS-001 documents this project's own drift; OBS-002 added |
 
 ## Data Files
 
