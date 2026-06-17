@@ -122,8 +122,9 @@ async function registerStorageTools(mcpServer, z, clientIp) {
       if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
       if (!args.solution_summary) return err('missing_solution_summary', 'solution_summary required');
 
+      const DEV_FALLBACK = process.env.DEV_REASONING_FALLBACK === 'true';
       const db = getPool();
-      if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+      if (!db && !DEV_FALLBACK) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
 
       try {
         const { saveReasoning } = require('../lib/reasoning-storage');

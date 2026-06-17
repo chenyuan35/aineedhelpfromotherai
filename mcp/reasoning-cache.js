@@ -30,13 +30,14 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
     async (args) => {
       const agentId = args.agent_id || 'mcp-agent';
 
+      const DEV_FALLBACK = process.env.DEV_REASONING_FALLBACK === 'true';
       const searchLimit = checkRateLimit('mcpSearch', clientIp, agentId);
-      if (!searchLimit.allowed) return rateLimitError(ERROR_CODES.SEARCH_RATE_LIMITED, 'Search rate limit exceeded. Max 20 searches/min per agent.', searchLimit.resetAt);
+      if (!searchLimit.allowed) return rateLimitError(ERROR_CODES.SEARCH_RATE_LIMITED, 'Search rate limited.', searchLimit.resetAt);
 
       if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
 
       const db = getPool();
-      if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+      if (!db && !DEV_FALLBACK) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
 
       try {
         const { searchReasoning } = require('../lib/reasoning-storage');
@@ -252,8 +253,9 @@ async function registerReasoningTools(mcpServer, z, clientIp) {
     async (args) => {
       if (!args.problem_statement) return err('missing_problem_statement', 'problem_statement required');
 
+      const DEV_FALLBACK = process.env.DEV_REASONING_FALLBACK === 'true';
       const db = getPool();
-      if (!db) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
+      if (!db && !DEV_FALLBACK) return err(ERROR_CODES.DB_UNAVAILABLE, 'Database unavailable');
 
       try {
         const { resolveReasoning, trackResolve, getProvenance } = require('../lib/reasoning-storage');
