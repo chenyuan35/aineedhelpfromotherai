@@ -1,0 +1,98 @@
+[
+  {
+    "id": "FC_AUTO_MQ2J677A",
+    "title": "AI agent debugging failure: npm peer dependency conflict",
+    "description": "An AI agent spent 22 minutes debugging npm peer dependency conflict. Root cause: react 19 installed alongside react 18. Fix: npm ls react to find duplicate, dedupe. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "react 19 installed alongside react 18",
+    "fix": "npm ls react to find duplicate, dedupe",
+    "time_lost_min": 22,
+    "added_at": "2026-06-06T15:51:25.174Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ3JOCAQ",
+    "title": "AI agent debugging failure: Python venv activation in shell scripts",
+    "description": "An AI agent spent 15 minutes debugging Python venv activation in shell scripts. Root cause: shebang uses system python instead of venv. Fix: use $(which python) or source venv/bin/activate explicitly. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "shebang uses system python instead of venv",
+    "fix": "use $(which python) or source venv/bin/activate explicitly",
+    "time_lost_min": 15,
+    "added_at": "2026-06-07T08:53:17.762Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ53961R",
+    "title": "AI agent debugging failure: PostgreSQL connection pool exhaustion",
+    "description": "An AI agent spent 45 minutes debugging PostgreSQL connection pool exhaustion. Root cause: transactions not closed in error paths. Fix: add pool.on('error') handler and ensure client.release() in finally blocks. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "transactions not closed in error paths",
+    "fix": "add pool.on('error') handler and ensure client.release() in finally blocks",
+    "time_lost_min": 45,
+    "added_at": "2026-06-08T10:49:08.319Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ6G77XA",
+    "title": "AI agent debugging failure: Docker layer cache invalidation",
+    "description": "An AI agent spent 38 minutes debugging Docker layer cache invalidation. Root cause: build context includes .git (80MB) every time. Fix: add .dockerignore with .git and node_modules. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "build context includes .git (80MB) every time",
+    "fix": "add .dockerignore with .git and node_modules",
+    "time_lost_min": 38,
+    "added_at": "2026-06-09T09:39:18.622Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ9CIVQ5",
+    "title": "AI agent debugging failure: Environment-specific CORS configuration",
+    "description": "An AI agent spent 18 minutes debugging Environment-specific CORS configuration. Root cause: CORS origin list missing production domain. Fix: use ALLOWED_ORIGINS env var with comma-separated list. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "CORS origin list missing production domain",
+    "fix": "use ALLOWED_ORIGINS env var with comma-separated list",
+    "time_lost_min": 18,
+    "added_at": "2026-06-11T10:19:42.749Z",
+    "source": "daily-auto-generate"
+  },
+  {
+    "id": "FC_AUTO_MQ9WOZTR",
+    "title": "AI agent debugging failure: WebSocket reconnection loop with exponential backoff",
+    "description": "An AI agent spent 25 minutes debugging WebSocket reconnection loop with exponential backoff. Root cause: backoff reset on each reconnect attempt. Fix: persist attempt count outside reconnect handler. This case was added automatically.",
+    "severity": "high",
+    "environments": [
+      "node",
+      "docker",
+      "ci"
+    ],
+    "root_cause": "backoff reset on each reconnect attempt",
+    "fix": "persist attempt count outside reconnect handler",
+    "time_lost_min": 25,
+    "added_at": "2026-06-11T19:44:20.319Z",
+    "source": "daily-auto-generate"
+  }
+]
