@@ -1,15 +1,15 @@
 {
   "name": "AI Failure Observatory failure index",
   "version": 1,
-  "generated_at": "2026-06-17T10:34:53.865Z",
+  "generated_at": "2026-06-17T17:48:25.507Z",
   "purpose": "Machine-readable index of real AI coding-agent debugging failures, root causes, fastest verification steps, and guardrail interventions.",
   "core_question": "What interventions reduce AI debugging time waste?",
   "canonical_url": "https://aineedhelpfromotherai.com/failure-index.json",
   "license": "MIT",
   "stats": {
-    "failure_cases": 15,
-    "observed_minutes": 8883,
-    "observed_hours": 148.1,
+    "failure_cases": 16,
+    "observed_minutes": 8903,
+    "observed_hours": 148.4,
     "failure_dynamics": 5,
     "interventions": 10,
     "pending_interventions": 10
@@ -887,6 +887,55 @@
         "Any (human guided by AI)",
         "48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
         "FC-015"
+      ]
+    },
+    {
+      "id": "FC-016",
+      "title": "Auto-generator poisoned the curated failure memory with synthetic cases and duplicates",
+      "url": "https://aineedhelpfromotherai.com/cases/fc-016.html",
+      "agent": "daily-activity workflow (GitHub Actions + self-play-generator)",
+      "environment": "ci",
+      "observed_minutes": 20,
+      "severity": "B",
+      "dynamics": [
+        "Retry Spiral",
+        "Verification Collapse"
+      ],
+      "tags": [
+        "data-integrity",
+        "provenance",
+        "automation",
+        "dedup",
+        "dogfood",
+        "Retry Spiral",
+        "Verification Collapse",
+        "daily-activity workflow (GitHub Actions + self-play-generator)",
+        "ci"
+      ],
+      "symptoms": [
+        "failure-cases.json grew from 15 to 22 entries without human review",
+        "7 entries had source='daily-auto-generate' but were counted as 'real'",
+        "FC_AUTO_MQ2J677A and FC_AUTO_MQ7W848N were identical (npm peer dep)",
+        "Real case count displayed as 22 in raw JSON, masking the true 15",
+        "daily-activity.js PROGRESS.md reported 'Public real failure cases: 15 / Suppressed generated cases: 7' — the suppression existed but was not communicated to consumers reading th..."
+      ],
+      "wrong_turn": "Let the self-play-generator write directly into the curated failure-cases.json without a separate provenance channel, without dedup, and without a verification tier. The cases had no symptoms array, no wrong_turn, no retry_pattern, no key_insight — all the observational fields...",
+      "root_cause": "Synthetic auto-generated data shared the same file (data/failure-cases.json) as curated real observed failures, with no structural separation. The only distinguishing field was source='daily-auto-generate', but nothing prevented raw JSON readers from treating all 22 as equal....",
+      "fastest_verification": "grep source=='daily-auto-generate' failure-cases.json — should return 0 in the curated file. Check for duplicate title+root_cause pairs. Compare file length against AGENTS.md/PROGRESS.md claimed count.",
+      "fix": "Archive all FC_AUTO_* entries to data/auto-generated-cases.json (deduped from 7 to 6). Curated failure-cases.json now contains only FC-001..FC-016 (real, verified). The isPublicCase filter remains as defense-in-depth. Generator was disabled in commit 9c3db9d.",
+      "reusable_memory": "Automated data generation must write to a separate provenance channel by default. Any auto-write into a curated truth file requires a structural boundary (separate file, schema field, or write gate) — not just a runtime filter that downstream consumers may or may not apply.",
+      "query_terms": [
+        "data-integrity",
+        "provenance",
+        "automation",
+        "dedup",
+        "dogfood",
+        "Retry Spiral",
+        "Verification Collapse",
+        "daily-activity workflow (GitHub Actions + self-play-generator)",
+        "ci",
+        "Auto-generator poisoned the curated failure memory with synthetic cases and duplicates",
+        "FC-016"
       ]
     }
   ]

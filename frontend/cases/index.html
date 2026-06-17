@@ -315,9 +315,9 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <p class="lead">A compact library of real debugging failures: symptoms, wrong turns, root causes, and the fastest verification path. Built to feed the MCP memory layer, not to become a content maze.</p>
   </div>
   <div class="stats">
-    <div class="stat"><strong>15</strong><span>documented cases</span></div>
+    <div class="stat"><strong>16</strong><span>documented cases</span></div>
     <div class="stat"><strong>5</strong><span>failure dynamics</span></div>
-    <div class="stat"><strong>8,883</strong><span>minutes observed</span></div>
+    <div class="stat"><strong>8,903</strong><span>minutes observed</span></div>
   </div>
 </section>
 
@@ -328,7 +328,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <div class="intervention-summary">
       <div class="summary-stat"><strong>10</strong><span>interventions tracked</span></div>
       <div class="summary-stat"><strong>10</strong><span>still need effectiveness evidence</span></div>
-      <div class="summary-stat"><strong>8,883</strong><span>minutes of observed waste behind them</span></div>
+      <div class="summary-stat"><strong>8,903</strong><span>minutes of observed waste behind them</span></div>
     </div>
   </div>
   <div class="section-body">
@@ -627,6 +627,17 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
     <p>pip install openpipe-art hangs or fails</p>
     <div class="root"><b>Root cause</b> Custom vLLM fork not on PyPI. The pyproject.toml referenced a private dependency that pip could not resolve, causing the resolver to fa...</div>
   </a>
+<a class="case-card" href="/cases/fc-016.html">
+    <div class="meta">
+      <span>FC-016</span>
+      <span>daily-activity workflow (GitHub Actions + self-play-generator)</span>
+      <span>ci</span>
+      <span>20 min lost</span>
+    </div>
+    <h2>Auto-generator poisoned the curated failure memory with synthetic cases and duplicates</h2>
+    <p>failure-cases.json grew from 15 to 22 entries without human review</p>
+    <div class="root"><b>Root cause</b> Synthetic auto-generated data shared the same file (data/failure-cases.json) as curated real observed failures, with no structural sepa...</div>
+  </a>
 </div>
 
 <section class="section" style="border-bottom:0">
@@ -644,12 +655,12 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 <article class="dynamic-card" id="retry-spiral">
     <h3>Retry Spiral</h3>
     <p>Agent repeats the same failing action with minor variations, no convergence detection, no backoff. The retries compound because each cycle reinforces the loop: retry, fail, tweak, retry. No state check happens between attempts.</p>
-    <div class="numbers">4 cases / 50 hours</div>
+    <div class="numbers">5 cases / 50 hours</div>
   </article>
 <article class="dynamic-card" id="verification-collapse">
     <h3>Verification Collapse</h3>
     <p>Agent declares success without running verification, or fabricates evidence of verification. The completion signal is prioritized over the actual state. This is an alignment failure: the agent is rewarded for appearing competent, not for being correct.</p>
-    <div class="numbers">4 cases / 7 hours</div>
+    <div class="numbers">5 cases / 7 hours</div>
   </article>
 <article class="dynamic-card" id="environment-blindness">
     <h3>Environment Blindness</h3>

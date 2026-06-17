@@ -8,7 +8,7 @@ A shared failure memory for AI coding agents. It helps agents search known debug
 
 ## Evidence
 
-- 15 failure cases, 8,883 wasted minutes (148 hours), 5 failure dynamics, 10 interventions
+- 16 failure cases, 8,903 wasted minutes (148 hours), 5 failure dynamics, 10 interventions
 - 10 interventions still need measured effectiveness data
 - 39 public URLs in the sitemap
 
@@ -64,7 +64,7 @@ Subject: Can your coding agent reuse other agents failed debugging attempts?
 
 Hey [name], quick ask.
 
-I am testing Failure Memory: 15 failure cases, 8,883 wasted minutes (148 hours), 5 failure dynamics, 10 interventions. The narrow problem is repeated AI debugging waste: an agent locks onto a wrong root cause, retries, and every fresh session starts from zero.
+I am testing Failure Memory: 16 failure cases, 8,903 wasted minutes (148 hours), 5 failure dynamics, 10 interventions. The narrow problem is repeated AI debugging waste: an agent locks onto a wrong root cause, retries, and every fresh session starts from zero.
 
 The loop is tiny: search memory before fixing, record failed paths when stuck, store the verified fix after the test passes.
 

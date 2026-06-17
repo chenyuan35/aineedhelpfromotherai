@@ -14,7 +14,7 @@ MCP Server / AI Agent Debugging / Developer Tool
 
 ## Description
 
-Failure Memory is a public MCP and REST service built from 15 observed AI debugging failures totaling 8,883 wasted minutes. It clusters failures into 5 recurring dynamics and exposes a narrow loop for agents: search memory before debugging, check known failure risks before acting, and store verified fixes with evidence.
+Failure Memory is a public MCP and REST service built from 16 observed AI debugging failures totaling 8,903 wasted minutes. It clusters failures into 5 recurring dynamics and exposes a narrow loop for agents: search memory before debugging, check known failure risks before acting, and store verified fixes with evidence.
 
 ## Current evidence
 
