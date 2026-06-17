@@ -1,12 +1,13 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import apiSurface from '../../lib/api-surface.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const repoRoot = join(root, '..');
-const siteUrl = 'https://aineedhelpfromotherai.com';
-const apiUrl = 'https://api.aineedhelpfromotherai.com';
+const { DISCOVERY } = apiSurface;
+const siteUrl = DISCOVERY.site;
 const generatedAt = process.env.FAILURE_INDEX_DATE || new Date().toISOString();
 
 function readJson(path) {
@@ -49,19 +50,22 @@ const payload = {
     pending_interventions: interventions.filter(i => i.effectiveness_tracking === 'pending').length
   },
   discovery: {
-    site: siteUrl,
-    failure_index: `${siteUrl}/failure-index.json`,
-    cases: `${siteUrl}/cases/`,
-    learn: `${siteUrl}/learn/`,
-    api_docs: `${siteUrl}/api/docs/`,
-    llms_txt: `${siteUrl}/llms.txt`,
-    ai_policy: `${siteUrl}/ai.txt`,
-    sitemap: `${siteUrl}/sitemap.xml`,
-    feed: `${siteUrl}/feed.xml`,
-    mcp_server_card: `${siteUrl}/.well-known/mcp`,
-    agent_card: `${siteUrl}/.well-known/agent-card.json`,
-    openapi: `${siteUrl}/openapi.json`,
-    api_manifest: `${apiUrl}/api/manifest`
+    site: DISCOVERY.site,
+    failure_index: DISCOVERY.failure_index,
+    cases: DISCOVERY.cases,
+    learn: DISCOVERY.learn,
+    api_docs: DISCOVERY.api_docs,
+    schema: DISCOVERY.schema,
+    llms_txt: DISCOVERY.llms_txt,
+    ai_txt: DISCOVERY.ai_txt,
+    ai_policy: DISCOVERY.ai_txt,
+    sitemap: DISCOVERY.sitemap,
+    feed: DISCOVERY.feed,
+    mcp_server_card: DISCOVERY.mcp_server_card,
+    mcp_verify: DISCOVERY.mcp_verify,
+    agent_card: DISCOVERY.agent_card,
+    openapi: DISCOVERY.openapi,
+    api_manifest: DISCOVERY.api_manifest
   },
   recommended_agent_loop: [
     'Before debugging, call resolve_reasoning(problem) or POST /api/memory/search.',

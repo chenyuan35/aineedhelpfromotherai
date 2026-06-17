@@ -1453,6 +1453,339 @@
         }
       }
     },
+    "/api/schema": {
+      "get": {
+        "operationId": "getApiSchemaContracts",
+        "summary": "Canonical tool contract reference for AI agents. Optionally pass ?tool=name to fetch one contract.",
+        "parameters": [
+          {
+            "name": "tool",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schema contracts returned"
+          },
+          "404": {
+            "description": "Requested tool contract was not found"
+          }
+        }
+      }
+    },
+    "/api/failure-cases": {
+      "get": {
+        "operationId": "listFailureCases",
+        "summary": "List curated real AI coding-agent failure cases, or return aggregate stats with ?stats=true.",
+        "parameters": [
+          {
+            "name": "stats",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "env",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Failure cases or stats returned"
+          }
+        }
+      }
+    },
+    "/api/failure-cases/{id}": {
+      "get": {
+        "operationId": "getFailureCase",
+        "summary": "Get one curated failure case by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Failure case returned"
+          },
+          "404": {
+            "description": "Failure case not found"
+          }
+        }
+      }
+    },
+    "/api/failure-dynamics": {
+      "get": {
+        "operationId": "listFailureDynamics",
+        "summary": "List failure dynamics, or return aggregate stats with ?stats=true.",
+        "parameters": [
+          {
+            "name": "stats",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "severity",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "time"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Failure dynamics or stats returned"
+          }
+        }
+      }
+    },
+    "/api/failure-dynamics/{id}": {
+      "get": {
+        "operationId": "getFailureDynamic",
+        "summary": "Get one failure dynamic by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Failure dynamic returned"
+          },
+          "404": {
+            "description": "Failure dynamic not found"
+          }
+        }
+      }
+    },
+    "/api/interventions": {
+      "get": {
+        "operationId": "listInterventions",
+        "summary": "List cognitive guardrail interventions linked to failure dynamics, or return aggregate stats with ?stats=true.",
+        "parameters": [
+          {
+            "name": "stats",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "dynamic_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interventions or stats returned"
+          }
+        }
+      }
+    },
+    "/api/memory/search": {
+      "post": {
+        "operationId": "searchMemory",
+        "summary": "Search shared debugging memory before spending tokens on a known failure.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "strict": {
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "default": 5
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memory search results returned"
+          }
+        }
+      }
+    },
+    "/api/memory/gate": {
+      "get": {
+        "operationId": "getMemoryGate",
+        "summary": "Evaluate memory gate with query parameters for lightweight clients.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agent_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trust",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory gate decision returned"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postMemoryGate",
+        "summary": "Force retrieval through verified-memory and drift context before risky work.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "task": {
+                    "type": "string"
+                  },
+                  "agent_id": {
+                    "type": "string"
+                  },
+                  "trust_level": {
+                    "type": "number"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "run_id": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memory gate decision returned"
+          }
+        }
+      }
+    },
     "/api/behavior": {
       "get": {
         "operationId": "getBehaviorReport",
@@ -1601,7 +1934,7 @@
         }
       },
       "post": {
-        "summary": "MCP tool calls via Streamable HTTP. 13 tools including task discovery, claiming, submission, reasoning operations.",
+        "summary": "MCP tool calls via Streamable HTTP. Tools include task discovery, claiming, submission, reasoning operations, and memory guardrails.",
         "responses": {
           "200": {
             "description": "Tool result"
@@ -1671,6 +2004,16 @@
         "responses": {
           "200": {
             "description": "Usage log entries"
+          }
+        }
+      }
+    },
+    "/mcp/verify": {
+      "get": {
+        "summary": "Verify MCP gateway tool inventory and protocol version.",
+        "responses": {
+          "200": {
+            "description": "MCP verification result with protocol version and tool names"
           }
         }
       }

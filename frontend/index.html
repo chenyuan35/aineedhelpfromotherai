@@ -75,7 +75,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 26px;
+      gap: 24px;
       padding: 24px 0;
     }
 
@@ -106,7 +106,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 20px;
+      gap: 18px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.35;
@@ -118,7 +118,7 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
-      gap: 72px;
+      gap: 68px;
       align-items: start;
       padding: 78px 0 58px;
     }
@@ -156,7 +156,7 @@
       margin: 0;
       max-width: 760px;
       font-size: clamp(44px, 4.7vw, 70px);
-      line-height: 1.09;
+      line-height: 1.1;
       font-weight: 780;
     }
 
@@ -165,7 +165,7 @@
       margin: 26px 0 0;
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     .search {
@@ -180,7 +180,7 @@
     .search-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 14px;
+      gap: 12px;
       align-items: stretch;
     }
 
@@ -191,7 +191,7 @@
       border-radius: 8px;
       padding: 0 16px;
       font: inherit;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.45;
       color: var(--ink);
       background: #fff;
@@ -212,7 +212,7 @@
       background: var(--ink);
       color: #fff;
       border-radius: 8px;
-      padding: 0 20px;
+      padding: 0 18px;
       font-size: 14px;
       font-weight: 760;
       line-height: 1.2;
@@ -435,7 +435,7 @@
     .section-head {
       display: grid;
       grid-template-columns: minmax(0, .78fr) minmax(320px, 1fr);
-      gap: 64px;
+      gap: 58px;
       align-items: start;
       margin-bottom: 36px;
     }
@@ -461,7 +461,7 @@
       margin: 0;
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.78;
+      line-height: 1.84;
     }
 
     .workflow,
@@ -477,7 +477,7 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 28px;
+      padding: 26px;
     }
 
     .card small {
@@ -511,7 +511,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 26px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       min-height: 274px;
@@ -686,11 +686,16 @@
       .wrap { width: min(100% - 34px, 1120px); }
 
       .nav {
+        flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 12px;
       }
 
-      .links { gap: 14px; }
+      .links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+      }
 
       .hero {
         padding: 38px 0 42px;
@@ -699,7 +704,7 @@
 
       h1 {
         font-size: 39px;
-        line-height: 1.14;
+        line-height: 1.12;
       }
 
       .lead {
@@ -780,7 +785,7 @@
           <p class="lead">Paste an error or debugging plan. We return similar agent failures, likely traps, fastest verification steps, and reusable fix patterns before your agent wastes another retry.</p>
           <div class="search" id="search-memory">
             <div class="search-row">
-              <input id="memory-query" type="search" placeholder="Try: Next.js hydration mismatch, unknown CLI option, npm peer dependency conflict..." autocomplete="off">
+              <input id="memory-query" type="search" placeholder="Try: hydration mismatch, CLI option, peer conflict..." autocomplete="off">
               <button class="btn" id="memory-search-button" type="button">Search memory</button>
             </div>
             <div class="suggestions" aria-label="Example searches">

@@ -134,14 +134,14 @@ a { color: inherit; text-decoration: none; }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
-  gap: 60px;
+  gap: 68px;
   align-items: start;
-  padding-bottom: 54px;
+  padding-bottom: 58px;
   border-bottom: 1px solid var(--line);
 }
 .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
-h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.1; font-weight: 720; letter-spacing: 0; }
-.lead { margin: 24px 0 0; color: var(--muted); font-size: 17px; line-height: 1.74; max-width: 700px; }
+h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.12; font-weight: 720; letter-spacing: 0; }
+.lead { margin: 24px 0 0; color: var(--muted); font-size: 17px; line-height: 1.82; max-width: 700px; }
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -167,7 +167,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 26px;
+  padding: 28px;
 }
 .case-card:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
 .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--faint); font-size: 12px; margin-bottom: 14px; }
@@ -189,12 +189,12 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 .section {
   display: grid;
   grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
-  gap: 56px;
-  padding: 54px 0;
+  gap: 60px;
+  padding: 58px 0;
   border-bottom: 1px solid var(--line);
 }
-.section h2 { margin: 0; font-size: 24px; line-height: 1.15; letter-spacing: 0; }
-.section-body { color: var(--muted); font-size: 15px; line-height: 1.78; }
+.section h2 { margin: 0; font-size: 24px; line-height: 1.2; letter-spacing: 0; }
+.section-body { color: var(--muted); font-size: 15px; line-height: 1.84; }
 .section-body p { margin: 0; }
 .section-body p + p { margin-top: 14px; }
 .detail-list { margin: 0; padding-left: 18px; }
@@ -203,7 +203,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 22px;
+  padding: 24px;
 }
 .callout {
   background: var(--accent-soft);
@@ -224,7 +224,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 20px;
+  padding: 22px;
 }
 .next-action:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
 .next-action b { display: block; color: var(--ink); font-size: 15px; line-height: 1.32; margin-bottom: 10px; }
@@ -233,19 +233,19 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 .text-link { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .dynamics {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 30px;
 }
 .dynamic-card {
-  min-height: 168px;
-  padding: 20px;
+  min-height: 176px;
+  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
 }
-.dynamic-card h3 { margin: 0 0 10px; font-size: 15px; }
-.dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+.dynamic-card h3 { margin: 0 0 10px; font-size: 16px; line-height: 1.35; }
+.dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.66; }
 .dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }${meta.extraStyle ? `\n${meta.extraStyle}` : ''}
 .footer {
   padding: 28px 0 34px;
@@ -263,7 +263,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 @media (max-width: 720px) {
   .nav, .page, .footer { width: min(100% - 28px, 1120px); }
   .nav { align-items: flex-start; }
-  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-start; }
   .page { padding-top: 34px; }
   h1 { font-size: 38px; line-height: 1.14; }
   .grid, .stats, .dynamics, .next-actions { grid-template-columns: 1fr; }

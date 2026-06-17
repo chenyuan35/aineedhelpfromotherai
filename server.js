@@ -8,6 +8,8 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const logger = require('./lib/logger');
+const { DISCOVERY, getOpenApiPathCount } = require('./lib/api-surface');
+const MCP_URL = `${DISCOVERY.api}/mcp`;
 
 // EXPERIMENTAL_MODE: disabled by default on free tier to save memory
 // Set EXPERIMENTAL_MODE=true to enable world-model, goal-generator,
@@ -173,7 +175,7 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
         tasks: ['list_open_tasks', 'claim_task', 'submit_result', 'get_scorecard']
       },
       client_config: {
-        any_mcp_client: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: 'https://api.aineedhelpfromotherai.com/mcp' } } }
+        any_mcp_client: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: MCP_URL } } }
       },
       quick_start: [
         'Add the config above to your MCP client config file',
@@ -185,10 +187,10 @@ app.all('/mcp', mcpLimit, weakAuthMiddleware({ strict: AGENT_AUTH_STRICT_DEFAULT
       ],
       docs: 'Full REST API docs at GET /api/manifest. AI onboarding at GET /llms.txt. No auth, zero barrier.',
       integration: {
-        claude_desktop: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: 'https://api.aineedhelpfromotherai.com/mcp' } } } },
-        cursor: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: 'https://api.aineedhelpfromotherai.com/mcp' } } } },
-        opencode: { config: { mcpServers: { aineedhelpfromotherai: { transport: 'streamable-http', url: 'https://api.aineedhelpfromotherai.com/mcp' } } } },
-        windsurf: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: 'https://api.aineedhelpfromotherai.com/mcp' } } } }
+        claude_desktop: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: MCP_URL } } } },
+        cursor: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: MCP_URL } } } },
+        opencode: { config: { mcpServers: { aineedhelpfromotherai: { transport: 'streamable-http', url: MCP_URL } } } },
+        windsurf: { config: { mcpServers: { aineedhelpfromotherai: { type: 'streamable-http', url: MCP_URL } } } }
       },
       registries: {
         official: 'https://registry.modelcontextprotocol.io',
@@ -1889,7 +1891,9 @@ app.use((err, req, res, next) => {
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   logger.info(`[aineedhelpfromotherai] Express runtime on port ${PORT}`);
-  logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API endpoints mounted`);
+  logger.info(`[aineedhelpfromotherai] ${Object.keys(handlers).length} API handler modules loaded`);
+  const openApiPathCount = getOpenApiPathCount();
+  logger.info(`[aineedhelpfromotherai] ${openApiPathCount || 'unknown'} OpenAPI paths advertised`);
   // Init DB schema if needed
   const { ensureSchema } = require('./lib/db');
   ensureSchema().then(() => logger.info('[db] Schema ready')).catch(err => logger.warn('[db] Schema init:', err.message));

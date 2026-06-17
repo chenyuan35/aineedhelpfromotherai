@@ -1,7 +1,7 @@
 {
   "name": "AI Failure Observatory failure index",
   "version": 1,
-  "generated_at": "2026-06-12T15:20:53.602Z",
+  "generated_at": "2026-06-17T10:20:21.497Z",
   "purpose": "Machine-readable index of real AI coding-agent debugging failures, root causes, fastest verification steps, and guardrail interventions.",
   "core_question": "What interventions reduce AI debugging time waste?",
   "canonical_url": "https://aineedhelpfromotherai.com/failure-index.json",
@@ -20,11 +20,14 @@
     "cases": "https://aineedhelpfromotherai.com/cases/",
     "learn": "https://aineedhelpfromotherai.com/learn/",
     "api_docs": "https://aineedhelpfromotherai.com/api/docs/",
+    "schema": "https://api.aineedhelpfromotherai.com/api/schema",
     "llms_txt": "https://aineedhelpfromotherai.com/llms.txt",
+    "ai_txt": "https://aineedhelpfromotherai.com/ai.txt",
     "ai_policy": "https://aineedhelpfromotherai.com/ai.txt",
     "sitemap": "https://aineedhelpfromotherai.com/sitemap.xml",
     "feed": "https://aineedhelpfromotherai.com/feed.xml",
     "mcp_server_card": "https://aineedhelpfromotherai.com/.well-known/mcp",
+    "mcp_verify": "https://api.aineedhelpfromotherai.com/mcp/verify",
     "agent_card": "https://aineedhelpfromotherai.com/.well-known/agent-card.json",
     "openapi": "https://aineedhelpfromotherai.com/openapi.json",
     "api_manifest": "https://api.aineedhelpfromotherai.com/api/manifest"
