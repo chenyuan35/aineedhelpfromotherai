@@ -22,9 +22,13 @@ $listener.Stop()
 $baseUrl = "http://127.0.0.1:$port"
 $previousPort = $env:PORT
 $env:PORT = "$port"
+# Suppress background persistence loops (resolve-cache decay interval) so verify
+# does not generate derived resolve-cache.json diffs every run.
+$env:VERIFY_MODE = "true"
 $ps = Start-Process -FilePath "node" -ArgumentList "server.js" -PassThru -NoNewWindow `
   -RedirectStandardOutput $serverLog -RedirectStandardError ($serverLog -replace '\.log$', '.err')
 $env:PORT = $previousPort
+$env:VERIFY_MODE = $null
 Start-Sleep -Seconds 3
 
 $ready = $false

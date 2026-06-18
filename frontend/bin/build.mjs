@@ -10,8 +10,9 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
-// Step 1: build CSS
+// Step 1: build CSS (Tailwind) + copy canonical design system
 execSync('npx @tailwindcss/cli -i src/style.css -o dist/style.css', { cwd: root, stdio: 'inherit' });
+cpSync(join(root, 'src', 'design-system.css'), join(dist, 'design-system.css'));
 
 // Step 2: generate case pages and AI-search answer pages
 execSync('node bin/generate-cases.mjs', { cwd: root, stdio: 'inherit' });

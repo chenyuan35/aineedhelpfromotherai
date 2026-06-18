@@ -1,0 +1,728 @@
+/* design-system.css — canonical tokens + shared components for all pages
+   Source of truth: extracted from index.html (2026-06-18).
+   Generators (cases, learn, product-pages) reference this via <link>.
+   Page-specific overrides go in each generator's own <style> (kept minimal). */
+
+/* ── Tokens ────────────────────────────────────────────────────── */
+:root {
+  --page: #fbfbfa;
+  --surface: #fff;
+  --surface-2: #f4f6f5;
+  --ink: #151716;
+  --muted: #626b68;
+  --faint: #8b9692;
+  --line: #e1e6e3;
+  --line-strong: #cbd5d0;
+  --accent: #176c5f;
+  --accent-2: #b95b31;
+  --accent-3: #2b5f91;
+  --soft: #e7f2ef;
+  --warn: #fff3ec;
+  --code: #111514;
+  --code-text: #eaf1ee;
+  --shadow: 0 18px 58px rgba(20, 24, 23, .075);
+}
+
+/* ── Reset & base ─────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html { background: var(--page); scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ── Layout containers ─────────────────────────────────────────── */
+.wrap {
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+}
+
+/* Inner pages use .page instead of .wrap */
+.nav,
+.page,
+.footer {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.page { padding: 72px 0 92px; }
+
+/* ── Nav (shared across all pages) ────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.mark {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+  flex-wrap: wrap;
+}
+
+.links a:hover { color: var(--ink); }
+
+/* ── Hero (all pages) ─────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .78fr);
+  gap: 64px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 58px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 760;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 { letter-spacing: 0; }
+
+h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(38px, 4.7vw, 66px);
+  line-height: 1.12;
+  font-weight: 680;
+  letter-spacing: -0.02em;
+}
+
+h1 .accent { color: var(--accent); }
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.28;
+  font-weight: 780;
+}
+
+h3 { margin: 0; }
+
+.lead {
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.84;
+  max-width: 700px;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(20, 24, 23, .08);
+}
+
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* ── Cards ─────────────────────────────────────────────────────── */
+.cards {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.card small {
+  display: block;
+  color: var(--faint);
+  font-size: 12px;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.card strong,
+.card b {
+  display: block;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.74;
+}
+
+/* Case cards (detail pages) */
+.case-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 272px;
+}
+
+.case-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 48px rgba(20, 24, 23, .07);
+}
+
+.case-card small {
+  color: var(--faint);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.case-card h2,
+.case-card h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.case-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.case-card a {
+  margin-top: auto;
+  padding-top: 20px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+/* ── Section (inner pages) ─────────────────────────────────────── */
+.section {
+  display: grid;
+  grid-template-columns: minmax(200px, .32fr) minmax(0, 1fr);
+  gap: 60px;
+  padding: 58px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-of-type { border-bottom: 0; }
+
+.body {
+  max-width: 800px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.88;
+}
+
+.body p { margin: 0; }
+.body p + p { margin-top: 14px; }
+.body strong { color: var(--ink); }
+
+/* ── Terminal / console ───────────────────────────────────────── */
+.terminal {
+  margin: 0;
+  padding: 24px;
+  background: var(--code);
+  color: var(--code-text);
+  font-size: 13px;
+  line-height: 1.78;
+  overflow: auto;
+  border-radius: 8px;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* ── Pills / chips / badges ────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--line-strong); color: var(--ink); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ── Meta row ─────────────────────────────────────────────────── */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--faint);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+/* ── Side panel (product pages) ───────────────────────────────── */
+.side {
+  align-self: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+}
+
+.side b { display: block; margin-bottom: 12px; }
+
+.side p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+.side a {
+  display: inline-flex;
+  margin-top: 20px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  border-radius: 6px;
+  padding: 11px 15px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+/* ── Answer card (learn pages) ─────────────────────────────────── */
+.answer {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.answer b { color: var(--accent); }
+
+/* ── FAQ (learn pages) ─────────────────────────────────────────── */
+.faq { display: grid; gap: 16px; }
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.faq-item strong { display: block; margin-bottom: 10px; }
+
+/* ── API table (for-agents, product pages) ─────────────────────── */
+.api-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px 0 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.api-table th,
+.api-table td {
+  text-align: left;
+  padding: 15px 17px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.65;
+  vertical-align: top;
+}
+
+.api-table th {
+  background: var(--surface-2);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.api-table tr:last-child td { border-bottom: 0; }
+
+.api-table code {
+  background: var(--code);
+  color: var(--code-text);
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.api-table td:first-child { font-weight: 600; color: var(--ink); }
+
+/* Tool badges (for-agents) */
+.tool-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.core { background: #e6f2ef; color: var(--accent); }
+.guard { background: #fff3ec; color: var(--accent-2); }
+.optional { background: #edf1f7; color: var(--accent-3); }
+
+/* ── Interactive / forms (product pages) ──────────────────────── */
+.interactive { align-items: start; }
+.interactive .body { max-width: none; }
+
+.stack { display: grid; gap: 18px; }
+
+.product-form {
+  display: grid;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.field { display: grid; gap: 8px; }
+
+.field span,
+.check span {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 12px 13px;
+  letter-spacing: 0;
+}
+
+.field textarea { min-height: 132px; resize: vertical; line-height: 1.65; }
+
+.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.check input { margin-top: 3px; }
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ── Notice bar ────────────────────────────────────────────────── */
+.notice {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 16px 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.notice.ok { border-color: #bdd8cf; background: #f0f8f5; color: #24584d; }
+.notice.bad { border-color: #e7c8bd; background: #fff3ee; color: #7a341e; }
+
+/* ── Task cards (claim page) ───────────────────────────────────── */
+.task-list { display: grid; gap: 16px; }
+
+.task-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.task-card h3 { margin: 0; font-size: 17px; line-height: 1.35; }
+
+.task-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.68; }
+
+.task-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+/* ── Metrics grid (stats page) ────────────────────────────────── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.metric strong {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.metric span { color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+/* ── Leaderboard (stats page) ──────────────────────────────────── */
+.leaderboard { display: grid; gap: 12px; }
+
+.leader-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.leader-row b { font-size: 14px; }
+
+.leader-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* ── Audit list (trust page) ───────────────────────────────────── */
+.audit-list { display: grid; gap: 12px; }
+
+.audit-row {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.audit-row b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+
+.audit-row small { display: block; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+/* ── Monospace helper ─────────────────────────────────────────── */
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* ── Text link ─────────────────────────────────────────────────── */
+.text-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0 40px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+/* ── Utility ───────────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .hero,
+  .section-head,
+  .api-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 46px;
+    gap: 42px;
+  }
+
+  h1 { max-width: 760px; font-size: 52px; line-height: 1.12; }
+  h2 { font-size: 32px; line-height: 1.18; }
+
+  .case-grid,
+  .cards,
+  .strip,
+  .workflow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 780px) {
+  .nav,
+  .page,
+  .footer { width: min(100% - 32px, 1120px); }
+  .nav { align-items: flex-start; }
+  .links { justify-content: flex-start; }
+
+  .hero,
+  .section {
+    grid-template-columns: 1fr;
+  }
+
+  .page { padding-top: 42px; }
+  .hero { gap: 28px; padding-bottom: 42px; }
+  h1 { font-size: 39px; line-height: 1.12; }
+  .lead { font-size: 17px; }
+  .section { gap: 18px; padding: 40px 0; }
+
+  .cards,
+  .row,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .footer { flex-direction: column; }
+
+  .leader-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .api-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .api-table th,
+  .api-table td { min-width: 150px; }
+}
+
+@media (max-width: 640px) {
+  .wrap { width: min(100% - 34px, 1120px); }
+  .nav { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .links { width: 100%; justify-content: flex-start; gap: 12px; }
+
+  .hero { padding: 38px 0 42px; gap: 32px; }
+  h1 { font-size: 39px; line-height: 1.12; }
+  .lead { font-size: 16px; line-height: 1.72; }
+
+  .btn { width: 100%; }
+
+  .section { padding: 58px 0; }
+  h2 { font-size: 29px; line-height: 1.2; }
+
+  .card,
+  .case-card { padding: 22px; }
+
+  .footer { flex-direction: column; }
+}

@@ -18,7 +18,11 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="text/plain" href="/llms.txt">
   <link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+  <link href="/design-system.css" rel="stylesheet">
   <style>
+    /* Homepage-specific components (search, console, trust grid, cta).
+       Tokens + shared components (.nav, .mark, .btn, .card, .footer, responsive)
+       come from design-system.css. This block keeps homepage-only styles local. */
     :root {
       --page: #fbfbfa;
       --surface: #fff;
@@ -157,8 +161,10 @@
       max-width: 760px;
       font-size: clamp(44px, 4.7vw, 70px);
       line-height: 1.1;
-      font-weight: 780;
+      font-weight: 680;
+      letter-spacing: -0.02em;
     }
+    h1 .accent { color: var(--accent); }
 
     .lead {
       max-width: 680px;
@@ -354,6 +360,23 @@
     .muted { color: #91a09a; }
     .ok { color: #92dec9; }
     .warn { color: #f1b892; }
+
+    /* Staggered terminal reveal — 3 command blocks fade in sequentially */
+    .terminal-animated .tl {
+      display: block;
+      opacity: 0;
+      animation: term-reveal 0.6s ease forwards;
+      animation-delay: calc(1.2s + var(--d, 0) * 1.8s);
+    }
+
+    @keyframes term-reveal {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .terminal-animated .tl { opacity: 1; animation: none; }
+    }
 
     .console-grid {
       display: grid;
@@ -769,10 +792,11 @@
       <a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a>
       <div class="links">
         <a href="/cases/">Cases</a>
+        <a href="/learn/">Learn</a>
         <a href="#search-memory">Search</a>
         <a href="#install">Install MCP</a>
+        <a href="/api/docs/">API</a>
         <a href="/stats/">Stats</a>
-        <a href="/stats/">Trust stats</a>
         <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a>
       </div>
     </nav>
@@ -781,7 +805,7 @@
       <section class="hero">
         <div>
           <div class="eyebrow">Failure memory for AI coding agents</div>
-          <h1>Stop your coding agent from repeating the same bug.</h1>
+          <h1>Stop your coding agent from repeating the <span class="accent">same bug</span>.</h1>
           <p class="lead">Paste an error or debugging plan. We return similar agent failures, likely traps, fastest verification steps, and reusable fix patterns before your agent wastes another retry.</p>
           <div class="search" id="search-memory">
             <div class="search-row">
@@ -806,15 +830,13 @@
 
         <aside class="console" aria-label="Memory recall example">
           <div class="console-top"><span>agent-memory-loop</span><span class="status">online</span></div>
-          <pre class="terminal"><span class="muted">$</span> resolve_reasoning("Next.js hydration mismatch")
+          <pre class="terminal terminal-animated"><span class="tl" style="--d:0"><span class="muted">$</span> resolve_reasoning("Next.js hydration mismatch")
 <span class="ok">hit</span> FC-002
-<span class="muted">root cause</span> server/client render drift
-
+<span class="muted">root cause</span> server/client render drift</span><span class="tl" style="--d:1">
 <span class="muted">$</span> check_failures("add suppressHydrationWarning")
-<span class="warn">risk</span> masks symptom; root cause still unknown
-
+<span class="warn">risk</span> masks symptom; root cause still unknown</span><span class="tl" style="--d:2">
 <span class="muted">$</span> verify_first("compare server HTML vs client DOM")
-<span class="ok">next</span> fix deterministic render source</pre>
+<span class="ok">next</span> fix deterministic render source</span></pre>
           <div class="console-grid">
             <div class="console-step"><b>1. Search</b><p>Find existing reasoning before spending fresh tokens.</p></div>
             <div class="console-step"><b>2. Verify</b><p>Check risky approaches against known failure patterns.</p></div>
@@ -982,6 +1004,14 @@
           return;
         } catch {}
       }
+      // API unreachable — show narrative instead of dangling dashes
+      for (const el of document.querySelectorAll('[data-live-stat]')) {
+        el.style.fontSize = '14px';
+        el.style.fontWeight = '400';
+        el.style.color = 'var(--faint)';
+        el.textContent = 'API unavailable';
+      }
+      for (const em of document.querySelectorAll('[data-live-state]')) em.textContent = 'offline';
     }
     loadStats();
   </script>
