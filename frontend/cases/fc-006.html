@@ -19,63 +19,13 @@
 <meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
 <link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent loop non-termination: retries identical failing tool calls indefinitely","description":"Non-terminating loops are the highest-cost bug class — they silently burn through token budgets with zero useful output. Users don't notice until they check their usage.","datePublished":"2026-01-01","author":{"@type":"Organization","name":"AI Failure Observatory"},"about":"AI debugging failure case: Agent loop non-termination: retries identical failing tool calls indefinitely","keywords":"loop, retry, tool-call, convergence, budget"}</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
 <style>
-:root {
-  --page: #fbfbfa;
-  --surface: #ffffff;
-  --ink: #171717;
-  --muted: #626b6d;
-  --faint: #92999b;
-  --line: #e3e7e5;
-  --line-strong: #cdd4d1;
-  --accent: #176c5f;
-  --accent-soft: #e5f1ee;
-  --danger: #b95b31;
-}
-* { box-sizing: border-box; }
-html { background: var(--page); scroll-behavior: smooth; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--page);
-  color: var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  letter-spacing: 0;
-}
-a { color: inherit; text-decoration: none; }
-.nav, .page, .footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-.nav {
-  padding: 22px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-.brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 650; }
-.brand-mark {
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--line-strong);
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  background: var(--surface);
-}
-.brand-mark svg { width: 17px; height: 17px; }
-.nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; }
-.nav-links a:hover { color: var(--ink); }
-.page { padding: 66px 0 78px; }
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
-  gap: 68px;
-  align-items: start;
-  padding-bottom: 58px;
-  border-bottom: 1px solid var(--line);
-}
-.eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
-h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-height: 1.12; font-weight: 720; letter-spacing: 0; }
-.lead { margin: 24px 0 0; color: var(--muted); font-size: 17px; line-height: 1.82; max-width: 700px; }
+/* Case-detail-only components (everything shared lives in design-system.css) */
+.section-body { color: var(--muted); font-size: 15px; line-height: 1.84; }
+.section-body p { margin: 0; }
+.section-body p + p { margin-top: 14px; }
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -94,43 +44,8 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
   gap: 18px;
   margin-top: 38px;
 }
-.case-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 272px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 28px;
-}
-.case-card:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
-.meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--faint); font-size: 12px; margin-bottom: 14px; }
-.pill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 650;
-}
-.case-card h2 { margin: 0; font-size: 20px; line-height: 1.3; letter-spacing: 0; }
-.case-card p { margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.68; }
 .root { margin-top: auto; padding-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.58; }
 .root b { color: var(--ink); }
-.section {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
-  gap: 60px;
-  padding: 58px 0;
-  border-bottom: 1px solid var(--line);
-}
-.section h2 { margin: 0; font-size: 24px; line-height: 1.2; letter-spacing: 0; }
-.section-body { color: var(--muted); font-size: 15px; line-height: 1.84; }
-.section-body p { margin: 0; }
-.section-body p + p { margin-top: 14px; }
 .detail-list { margin: 0; padding-left: 18px; }
 .detail-list li + li { margin-top: 8px; }
 .detail-card {
@@ -140,7 +55,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
   padding: 24px;
 }
 .callout {
-  background: var(--accent-soft);
+  background: var(--soft);
   border: 1px solid #c9e3dc;
   border-radius: 8px;
   color: var(--ink);
@@ -163,8 +78,6 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 .next-action:hover { border-color: var(--line-strong); box-shadow: 0 16px 48px rgba(20, 24, 23, 0.07); }
 .next-action b { display: block; color: var(--ink); font-size: 15px; line-height: 1.32; margin-bottom: 10px; }
 .next-action span { display: block; color: var(--muted); font-size: 13px; line-height: 1.62; }
-.links { display: flex; flex-wrap: wrap; gap: 8px; }
-.text-link { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .dynamics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -181,49 +94,20 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(36px, 3.9vw, 54px); line-heig
 .dynamic-card h3 { margin: 0 0 10px; font-size: 16px; line-height: 1.35; }
 .dynamic-card p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.66; }
 .dynamic-card .numbers { margin-top: 14px; color: var(--faint); font-size: 12px; }
-.footer {
-  padding: 28px 0 34px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  color: var(--faint);
-  font-size: 12px;
-}
 @media (max-width: 980px) {
   .hero, .section { grid-template-columns: 1fr; }
   .dynamics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
-  .nav, .page, .footer { width: min(100% - 28px, 1120px); }
-  .nav { align-items: flex-start; }
-  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-start; }
-  .page { padding-top: 34px; }
-  h1 { font-size: 38px; line-height: 1.14; }
   .grid, .stats, .dynamics, .next-actions { grid-template-columns: 1fr; }
   .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
-  .footer { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="Primary">
-  <a class="brand" href="/">
-    <span class="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 17h16"/>
-        <path d="M7 17a5 5 0 0 1 10 0"/>
-        <path d="M12 4v5"/>
-        <path d="M9 7h6"/>
-      </svg>
-    </span>
-    <span>Failure Observatory</span>
-  </a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/cases/">Cases</a>
-    <a href="/llms.txt">llms.txt</a>
-  </div>
+  <a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a>
+  <div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div>
 </nav>
 <main class="page">
 <section class="hero">
