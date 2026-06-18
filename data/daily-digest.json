@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-06-17T10:51:19.102Z",
+  "last_updated": "2026-06-18T10:17:34.110Z",
   "cases_added_today": 0,
-  "public_cases": 15,
-  "suppressed_generated_cases": 7,
-  "total_case_records": 22,
-  "observed_minutes": 8883,
+  "public_cases": 16,
+  "suppressed_generated_cases": 0,
+  "total_case_records": 16,
+  "observed_minutes": 8903,
   "failure_dynamics": 5,
   "interventions": 10,
   "pending_interventions": 10,
-  "latest_public_case": "48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
+  "latest_public_case": "Auto-generator poisoned the curated failure memory with synthetic cases and duplicates",
   "top_public_case": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
   "next_action": "Collect measured effectiveness for pending interventions before adding new claims.",
-  "update_count": 14
+  "update_count": 15
 }

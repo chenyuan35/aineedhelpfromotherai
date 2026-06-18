@@ -1,14 +1,14 @@
 # Daily Ops Report
 
-Generated: 2026-06-17T10:51:19.102Z
+Generated: 2026-06-18T10:17:34.110Z
 
 ## Evidence Health
 
 | Metric | Value |
 | --- | --- |
-| Public real failure cases | 15 |
-| Suppressed generated cases | 7 |
-| Observed debugging waste | 8,883 minutes |
+| Public real failure cases | 16 |
+| Suppressed generated cases | 0 |
+| Observed debugging waste | 8,903 minutes |
 | Failure dynamics | 5 |
 | Interventions pending measurement | 10 |
 
