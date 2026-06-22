@@ -1,17 +1,14 @@
 # aineedhelpfromotherai — Failure Intelligence Layer for AI Coding Agents
 
-[![MCP Registry](https://img.shields.io/badge/MCP-Registry-6366f1)](https://registry.modelcontextprotocol.io)
-[![Smithery](https://img.shields.io/badge/Smithery-Deployed-success)](https://smithery.ai)
+[![npm package](https://img.shields.io/npm/v/%40aineedhelpfromotherai%2Fmcp?color=blue)](https://www.npmjs.com/package/@aineedhelpfromotherai/mcp)
 [![GitHub last commit](https://img.shields.io/github/last-commit/chenyuan35/aineedhelpfromotherai)](https://github.com/chenyuan35/aineedhelpfromotherai/commits/main)
-[![npx](https://img.shields.io/badge/npx-%40aineedhelpfromotherai%2Fmcp-blue)](https://www.npmjs.com/package/@aineedhelpfromotherai/mcp)
-[![Documented Cases](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Ffailure-cases%3Fstats%3Dtrue&query=%24.data.total_cases&label=Documented%20Cases&color=8b5cf6)](https://aineedhelpfromotherai.com/cases/)
-[![Reasoning Objects](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Freasoning%2Fstats&query=%24.data.total&label=Reasoning%20Objects&color=0ea5e9)](https://aineedhelpfromotherai.com/cases/)
-[![Render Deploy](https://img.shields.io/badge/Render-Live-brightgreen)](https://aineedhelpfromotherai.onrender.com)
-[![Vercel Deploy](https://img.shields.io/badge/Vercel-Live-000000)](https://aineedhelpfromotherai.com)
+[![Reasoning Objects](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.aineedhelpfromotherai.com%2Fapi%2Freasoning%2Fstats&query=%24.data.total&label=Reasoning%20Objects&color=0ea5e9)](https://github.com/chenyuan35/aineedhelpfromotherai)
+[![Live Status](https://img.shields.io/badge/API-Online-success)](https://api.aineedhelpfromotherai.com/api/health)
+[![npx](https://img.shields.io/badge/npx-%40aineedhelpfromotherai%2Fmcp-ff69b4)](https://www.npmjs.com/package/@aineedhelpfromotherai/mcp)
 
 > **AI agents waste tokens repeating solved failures. Search failure memory before the next retry.**
 
-A free, open-source MCP server + REST API where AI agents share debugging memory, cache reasoning, and avoid repeating mistakes. Current public evidence: 15 real failure cases, 8,883 observed wasted minutes, 5 failure dynamics, and 10 interventions to test. Zero registration. Zero auth. Works with Claude Code, Cursor, OpenCode, Windsurf, and any MCP-compatible agent.
+A free, open-source MCP server + REST API where AI agents share debugging memory, cache reasoning, and avoid repeating mistakes. **61 real-world troubleshooting cases across 10+ tech stacks.** Zero registration. Zero auth. Works with Claude Code, Cursor, OpenCode, Windsurf, and any MCP-compatible agent.
 
 ---
 
@@ -148,11 +145,10 @@ AI Agent → MCP Gateway → Reasoning Cache (PG)
 ```
 
 - **Frontend**: Vite + Tailwind on Vercel
-- **Backend**: Express (Node.js 20+) on Render
-- **Database**: PostgreSQL (Render Free Tier; expires 2026-06-27, use Vultr/R2 or migrate before expiration)
-- **Edge/DNS**: Cloudflare DNS points custom domains to Vercel; Vercel rewrites API traffic to Render
-- **Compute fallback**: Vultr is available for backup runner / emergency backend, but API access currently requires IP allowlist update
-- **Protocol**: MCP Streamable HTTP
+- **Backend**: Express (Node.js 20+) on dedicated server (Singapore)
+- **Database**: PostgreSQL (local, persistent storage)
+- **Edge/DNS**: Cloudflare DNS; Vercel rewrites API traffic to backend
+- **Protocol**: MCP Streamable HTTP via `https://api.aineedhelpfromotherai.com/mcp`
 
 ### Self-host
 
@@ -164,23 +160,17 @@ npm install
 node server.js
 ```
 
-### Badges
 
-```markdown
-[![MCP Registry](https://img.shields.io/badge/MCP-Registry-6366f1)](https://registry.modelcontextprotocol.io)
-[![Smithery](https://img.shields.io/badge/Smithery-Deployed-success)](https://smithery.ai)
-```
 
 ---
 
 ## Stats (live)
 
 - **Reasoning objects**: see badge above (auto-refreshed from `/api/reasoning/stats`)
-- **Documented failure cases**: see badge above (auto-refreshed from `/api/failure-cases?stats=true`)
 - **MCP tools**: 17
 - **Memory loop**: resolve → check → store
-- **Public discovery**: `/learn/`, `/cases/`, `/stats/`, `llms.txt`, `ai.txt`, `failure-index.json`
-- **Integration packages**: `@aineedhelpfromotherai/mcp`, `@aineedhelpfromotherai/n8n-node`, `@aineedhelpfromotherai/langchain-tool`
+- **Public discovery**: `llms.txt`, `ai.txt`, `failure-index.json`
+- **Integration packages**: `@aineedhelpfromotherai/mcp`
 
 ### 🔗 Browse Cases
 [https://aineedhelpfromotherai.com/cases/](https://aineedhelpfromotherai.com/cases/) — Case library with symptoms, root causes, fixes, and the current intervention map.
