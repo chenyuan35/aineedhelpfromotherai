@@ -1,7 +1,7 @@
 {
   "name": "AI Failure Observatory failure index",
   "version": 1,
-  "generated_at": "2026-06-22T11:49:47.428Z",
+  "generated_at": "2026-06-23T09:35:02.509Z",
   "purpose": "Machine-readable index of real AI coding-agent debugging failures, root causes, fastest verification steps, and guardrail interventions.",
   "core_question": "What interventions reduce AI debugging time waste?",
   "canonical_url": "https://aineedhelpfromotherai.com/failure-index.json",
