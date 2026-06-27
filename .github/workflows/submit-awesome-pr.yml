@@ -10,8 +10,12 @@ on:
     - cron: '0 6 * * 1'  # 每周一 6:00 UTC
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+env:
+  BRANCH_NAME: add-aineedhelpfromotherai
+  FORK_OWNER: ${{ github.repository_owner }}
+  SUBMIT_TOKEN: ${{ secrets.AWESOME_MCP_TOKEN }}
 
 jobs:
   submit-pr:
@@ -20,34 +24,92 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fork awesome-mcp-servers
+      - name: Check submit token
+        id: submit-token
         run: |
-          # Fork the repo using API
-          curl -s -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/forks" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          if [ -z "$SUBMIT_TOKEN" ]; then
+            echo "::notice::AWESOME_MCP_TOKEN is not set; skipping external PR submission."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fork awesome-mcp-servers
+        if: steps.submit-token.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+
+          status=$(curl -sS -o /tmp/fork-response.json -w "%{http_code}" \
+            -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/forks" \
+            -H "Authorization: Bearer $SUBMIT_TOKEN" \
             -H "Accept: application/vnd.github+json"
-          echo "Fork created under ${{ github.repository_owner }}/awesome-mcp-servers"
+          )
+
+          if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
+            echo "Fork created under $FORK_OWNER/awesome-mcp-servers"
+          elif [ "$status" = "422" ]; then
+            echo "Fork already exists or is being created."
+          else
+            message=$(jq -r '.message // "Fork request failed"' /tmp/fork-response.json)
+            echo "Fork request failed ($status): $message"
+            exit 1
+          fi
 
       - name: Clone and modify
+        if: steps.submit-token.outputs.skip != 'true'
+        id: modify
         run: |
-          git clone --depth 1 "https://github.com/${{ github.repository_owner }}/awesome-mcp-servers.git" /tmp/awesome-fork
+          set -euo pipefail
+
+          rm -rf /tmp/awesome-fork
+          for attempt in 1 2 3 4 5; do
+            if git clone --depth 1 "https://github.com/$FORK_OWNER/awesome-mcp-servers.git" /tmp/awesome-fork; then
+              break
+            fi
+
+            rm -rf /tmp/awesome-fork
+            sleep 5
+          done
+
+          test -d /tmp/awesome-fork/.git
           cd /tmp/awesome-fork
-          git checkout -b add-aineedhelpfromotherai
+          git checkout -B "$BRANCH_NAME"
+
+          if grep -q "chenyuan35/aineedhelpfromotherai" README.md; then
+            echo "Entry already exists; nothing to submit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
 
           # Insert our entry
           LINE=$(grep -n "callstackincubator/agent-device" README.md | head -1 | cut -d: -f1)
-          if [ -n "$LINE" ]; then
-            sed -i "${LINE}a\\
-- [chenyuan35/aineedhelpfromotherai](https://github.com/chenyuan35/aineedhelpfromotherai) [![chenyuan35/aineedhelpfromotherai MCP server](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai/badges/score.svg)](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai) 📇 🏠 ☁️ 🍎 🪟 🐧 - Failure intelligence layer for AI coding agents. 17 MCP tools: shared debugging memory, reasoning cache, failure checks, environment validation, and drift detection. AI agents check before retrying to avoid repeating solved mistakes. Zero auth, zero barrier. \`npx -y @aineedhelpfromotherai/mcp\`" README.md
-            git add README.md
-            git config user.name "AI Need Help Bot"
-            git config user.email "bot@aineedhelpfromotherai.com"
-            git commit -m "Add aineedhelpfromotherai MCP server (failure intelligence for AI coding agents)"
-            git push origin add-aineedhelpfromotherai
+          if [ -z "$LINE" ]; then
+            echo "Anchor entry not found in README.md"
+            exit 1
           fi
 
+          ENTRY='- [chenyuan35/aineedhelpfromotherai](https://github.com/chenyuan35/aineedhelpfromotherai) [![chenyuan35/aineedhelpfromotherai MCP server](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai/badges/score.svg)](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai) 📇 🏠 ☁️ 🍎 🪟 🐧 - Failure intelligence layer for AI coding agents. 17 MCP tools: shared debugging memory, reasoning cache, failure checks, environment validation, and drift detection. AI agents check before retrying to avoid repeating solved mistakes. Zero auth, zero barrier. `npx -y @aineedhelpfromotherai/mcp`'
+          sed -i "${LINE}a\\$ENTRY" README.md
+
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "No README change to submit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "AI Need Help Bot"
+          git config user.email "bot@aineedhelpfromotherai.com"
+          git commit -m "Add aineedhelpfromotherai MCP server (failure intelligence for AI coding agents)"
+          git remote set-url origin "https://x-access-token:$SUBMIT_TOKEN@github.com/$FORK_OWNER/awesome-mcp-servers.git"
+          git push --force-with-lease origin "$BRANCH_NAME"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
       - name: Create PR
+        if: steps.modify.outputs.changed == 'true'
         run: |
+          set -euo pipefail
+
           PR_BODY="### Added
 
           - [chenyuan35/aineedhelpfromotherai](https://github.com/chenyuan35/aineedhelpfromotherai) - Failure intelligence layer for AI coding agents. 17 MCP tools for shared debugging memory, reasoning cache, failure checks, environment validation, and drift detection. Zero auth, zero barrier.
@@ -55,12 +117,27 @@ jobs:
           🔗 \`npx -y @aineedhelpfromotherai/mcp\`
           "
 
-          curl -s -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/pulls" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          payload=$(jq -n \
+            --arg title "Add aineedhelpfromotherai MCP server (failure intelligence layer) 🤖🤖🤖" \
+            --arg head "$FORK_OWNER:$BRANCH_NAME" \
+            --arg base "main" \
+            --arg body "$PR_BODY" \
+            '{title: $title, head: $head, base: $base, body: $body}')
+
+          status=$(curl -sS -o /tmp/pr-response.json -w "%{http_code}" \
+            -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/pulls" \
+            -H "Authorization: Bearer $SUBMIT_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            -d "{
-              \"title\": \"Add aineedhelpfromotherai MCP server (failure intelligence layer) 🤖🤖🤖\",
-              \"head\": \"${{ github.repository_owner }}:add-aineedhelpfromotherai\",
-              \"base\": \"main\",
-              \"body\": $(echo "$PR_BODY" | jq -Rs .)
-            }"
+            -d "$payload"
+          )
+
+          if [ "$status" = "201" ]; then
+            jq -r '.html_url' /tmp/pr-response.json
+          elif [ "$status" = "422" ]; then
+            echo "PR already exists or cannot be created from the current branch."
+            jq -r '.message // empty' /tmp/pr-response.json
+          else
+            message=$(jq -r '.message // "PR request failed"' /tmp/pr-response.json)
+            echo "PR request failed ($status): $message"
+            exit 1
+          fi
