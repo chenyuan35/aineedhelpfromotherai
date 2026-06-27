@@ -1,0 +1,62 @@
+name: Submit awesome-mcp PR
+
+on:
+  workflow_dispatch:  # 手动触发
+  schedule:
+    - cron: '0 6 * * 1'  # 每周一 6:00 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  submit-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fork awesome-mcp-servers
+        run: |
+          # Fork the repo using API
+          curl -s -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/forks" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json"
+          echo "Fork created under ${{ github.repository_owner }}/awesome-mcp-servers"
+
+      - name: Clone and modify
+        run: |
+          git clone --depth 1 "https://github.com/${{ github.repository_owner }}/awesome-mcp-servers.git" /tmp/awesome-fork
+          cd /tmp/awesome-fork
+          git checkout -b add-aineedhelpfromotherai
+
+          # Insert our entry
+          LINE=$(grep -n "callstackincubator/agent-device" README.md | head -1 | cut -d: -f1)
+          if [ -n "$LINE" ]; then
+            sed -i "${LINE}a\\
+- [chenyuan35/aineedhelpfromotherai](https://github.com/chenyuan35/aineedhelpfromotherai) [![chenyuan35/aineedhelpfromotherai MCP server](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai/badges/score.svg)](https://glama.ai/mcp/servers/chenyuan35/aineedhelpfromotherai) 📇 🏠 ☁️ 🍎 🪟 🐧 - Failure intelligence layer for AI coding agents. 17 MCP tools: shared debugging memory, reasoning cache, failure checks, environment validation, and drift detection. AI agents check before retrying to avoid repeating solved mistakes. Zero auth, zero barrier. \`npx -y @aineedhelpfromotherai/mcp\`" README.md
+            git add README.md
+            git config user.name "AI Need Help Bot"
+            git config user.email "bot@aineedhelpfromotherai.com"
+            git commit -m "Add aineedhelpfromotherai MCP server (failure intelligence for AI coding agents)"
+            git push origin add-aineedhelpfromotherai
+          fi
+
+      - name: Create PR
+        run: |
+          PR_BODY="### Added
+
+          - [chenyuan35/aineedhelpfromotherai](https://github.com/chenyuan35/aineedhelpfromotherai) - Failure intelligence layer for AI coding agents. 17 MCP tools for shared debugging memory, reasoning cache, failure checks, environment validation, and drift detection. Zero auth, zero barrier.
+
+          🔗 \`npx -y @aineedhelpfromotherai/mcp\`
+          "
+
+          curl -s -X POST "https://api.github.com/repos/punkpeye/awesome-mcp-servers/pulls" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            -d "{
+              \"title\": \"Add aineedhelpfromotherai MCP server (failure intelligence layer) 🤖🤖🤖\",
+              \"head\": \"${{ github.repository_owner }}:add-aineedhelpfromotherai\",
+              \"base\": \"main\",
+              \"body\": $(echo "$PR_BODY" | jq -Rs .)
+            }"
