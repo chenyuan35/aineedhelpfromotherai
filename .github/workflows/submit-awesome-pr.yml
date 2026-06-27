@@ -2,6 +2,10 @@ name: Submit awesome-mcp PR
 
 on:
   workflow_dispatch:  # 手动触发
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/submit-awesome-pr.yml'
   schedule:
     - cron: '0 6 * * 1'  # 每周一 6:00 UTC
 
