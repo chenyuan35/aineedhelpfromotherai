@@ -3,11 +3,16 @@ node_modules
 .gitignore
 *.md
 api-handlers
-lib
 scripts
 PLANS
-tasks
 test-api.sh
 match_worker.py
 server.js
 .env*
+
+# Large dev dirs — not on Vercel
+experimental
+evals
+backups
+logs
+frontend/dist

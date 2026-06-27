@@ -2,9 +2,9 @@
   "rewrites": [
     { "source": "/api/docs", "destination": "/api/docs/index.html" },
     { "source": "/api/docs/", "destination": "/api/docs/index.html" },
-    { "source": "/api/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/api/$1" },
-    { "source": "/core/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/core/$1" },
-    { "source": "/mcp", "destination": "https://aineedhelpfromotherai.onrender.com/mcp" },
-    { "source": "/mcp/(.*)", "destination": "https://aineedhelpfromotherai.onrender.com/mcp/$1" }
+    { "source": "/api/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/$1" },
+    { "source": "/core/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/core/$1" },
+    { "source": "/mcp", "destination": "https://api-tunnel.aineedhelpfromotherai.com/mcp" },
+    { "source": "/mcp/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/mcp/$1" }
   ]
 }
