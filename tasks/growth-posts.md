@@ -1,6 +1,6 @@
 # Growth posts - high-intent only
 
-Generated: 2026-06-26
+Generated: 2026-06-27
 
 These are targeted outreach drafts. Use them where the thread is already about AI coding-agent debugging waste, repeated failures, MCP memory, or agent verification. Do not mass-post identical text.
 
