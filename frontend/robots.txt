@@ -1,5 +1,7 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
+Allow: /api/docs/
+Allow: /api/docs
 Disallow: /api/
 Disallow: /mcp
 

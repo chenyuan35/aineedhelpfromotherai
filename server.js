@@ -1833,6 +1833,20 @@ function isAiUserAgent(ua) {
   return AI_USER_AGENTS.some(pattern => lower.includes(pattern));
 }
 
+// Redirect learn article paths without .html to .html (for external links & search engines)
+const LEARN_ARTICLES = [
+  'stop-ai-agent-retry-spiral', 'shared-debugging-memory-for-ai-coding-agents',
+  'nextjs-hydration-mismatch-ai-agent', 'claude-code-hallucinated-cli-flag',
+  'prevent-ai-agent-hallucinated-root-causes', 'mcp-memory-server-for-coding-agents'
+];
+app.get('/learn/:slug', (req, res, next) => {
+  if (req.params.slug.endsWith('.html')) return next();
+  if (LEARN_ARTICLES.includes(req.params.slug)) {
+    return res.redirect(301, `/learn/${req.params.slug}.html`);
+  }
+  next();
+});
+
 app.get('/', (req, res) => {
   const ua = req.headers['user-agent'] || '';
   const accept = req.headers['accept'] || '';
