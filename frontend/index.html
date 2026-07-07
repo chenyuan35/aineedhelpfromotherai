@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Failure Observatory — Failure Intelligence Layer for AI Coding Agents</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8244441500123371" crossorigin="anonymous"></script>
-  <meta name="description" content="Failure memory for AI coding agents: search known failures before retrying, check traps before executing, and store verified fixes through MCP and REST.">
+  <title>AI Failure Observatory</title>
+  <meta name="description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
   <link rel="canonical" href="https://aineedhelpfromotherai.com/">
-  <meta property="og:title" content="Failure Memory for AI Coding Agents">
-  <meta property="og:description" content="Stop AI coding agents from repeating solved debugging failures.">
+  <meta property="og:title" content="AI Failure Observatory">
+  <meta property="og:description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
   <meta property="og:url" content="https://aineedhelpfromotherai.com/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
@@ -19,1002 +18,214 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="text/plain" href="/llms.txt">
   <link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
-  <link href="/design-system.css" rel="stylesheet">
   <style>
-    /* Homepage-specific components (search, console, trust grid, cta).
-       Tokens + shared components (.nav, .mark, .btn, .card, .footer, responsive)
-       come from design-system.css. This block keeps homepage-only styles local. */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --page: #fbfbfa;
-      --surface: #fff;
-      --surface-2: #f4f6f5;
-      --ink: #151716;
-      --muted: #626b68;
-      --faint: #8b9692;
-      --line: #e1e6e3;
-      --line-strong: #cbd5d0;
-      --accent: #176c5f;
-      --accent-2: #b95b31;
-      --accent-3: #2b5f91;
-      --soft: #e7f2ef;
-      --warn: #fff3ec;
-      --code: #111514;
-      --code-text: #eaf1ee;
-      --shadow: 0 18px 58px rgba(20, 24, 23, .075);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      background: var(--page);
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top left, #edf7f3 0, transparent 340px), var(--page);
-      color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      letter-spacing: 0;
-      text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    code,
-    pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 56px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 24px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 760;
-      line-height: 1.2;
-    }
-
-    .mark {
-      width: 30px;
-      height: 30px;
-      border: 1px solid var(--line-strong);
-      border-radius: 8px;
-      background: #fff;
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      flex-wrap: wrap;
-    }
-
-    .links a:hover { color: var(--ink); }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
-      gap: 68px;
-      align-items: start;
-      padding: 78px 0 58px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.35;
-      text-transform: uppercase;
-      letter-spacing: 0;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow:before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px var(--soft);
-      flex: 0 0 auto;
-    }
-
-    h1,
-    h2,
-    h3 {
-      letter-spacing: 0;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(44px, 4.7vw, 70px);
-      line-height: 1.1;
-      font-weight: 680;
-      letter-spacing: -0.02em;
-    }
-    h1 .accent { color: var(--accent); }
-
-    .lead {
-      max-width: 680px;
-      margin: 26px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    .search {
-      margin-top: 38px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .search-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 12px;
-      align-items: stretch;
-    }
-
-    .search input {
-      width: 100%;
-      min-height: 52px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 0 16px;
-      font: inherit;
-      font-size: 14px;
-      line-height: 1.45;
-      color: var(--ink);
-      background: #fff;
-    }
-
-    .search input:focus {
-      outline: 2px solid rgba(23, 108, 95, .16);
-      outline-offset: 2px;
-      border-color: var(--accent);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      border: 1px solid var(--ink);
-      background: var(--ink);
-      color: #fff;
-      border-radius: 8px;
-      padding: 0 18px;
-      font-size: 14px;
-      font-weight: 760;
-      line-height: 1.2;
-      cursor: pointer;
-    }
-
-    .btn.secondary {
-      background: #fff;
-      color: var(--ink);
-      border-color: var(--line-strong);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(20, 24, 23, .08);
-    }
-
-    .suggestions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .chip {
-      border: 1px solid var(--line);
-      background: var(--surface-2);
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.25;
-      cursor: pointer;
-    }
-
-    .chip:hover {
-      border-color: var(--line-strong);
-      color: var(--ink);
-    }
-
-    .results {
-      display: grid;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .result {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      padding: 18px 20px;
-    }
-
-    .result-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-
-    .result h3 {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.35;
-      font-weight: 760;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 4px 9px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .result p {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .result strong { color: var(--ink); }
-
-    .result a {
-      color: var(--accent);
-      font-weight: 760;
-    }
-
-    .console {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .console-top {
-      min-height: 46px;
-      padding: 0 18px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status:before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .terminal {
-      margin: 0;
-      padding: 24px;
-      background: var(--code);
-      color: var(--code-text);
-      font-size: 13px;
-      line-height: 1.78;
-      overflow: auto;
-    }
-
-    .muted { color: #91a09a; }
-    .ok { color: #92dec9; }
-    .warn { color: #f1b892; }
-
-    /* Staggered terminal reveal — 3 command blocks fade in sequentially */
-    .terminal-animated .tl {
-      display: block;
-      opacity: 0;
-      animation: term-reveal 0.6s ease forwards;
-      animation-delay: calc(1.2s + var(--d, 0) * 1.8s);
-    }
-
-    @keyframes term-reveal {
-      from { opacity: 0; transform: translateY(4px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .terminal-animated .tl { opacity: 1; animation: none; }
-    }
-
-    .console-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: #fff;
-      border-top: 1px solid var(--line);
-    }
-
-    .console-step {
-      padding: 22px;
-      min-height: 132px;
-    }
-
-    .console-step + .console-step { border-left: 1px solid var(--line); }
-
-    .console-step b {
-      display: block;
-      font-size: 13px;
-      line-height: 1.3;
-      margin-bottom: 9px;
-    }
-
-    .console-step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.66;
-    }
-
-    .trust {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin: 40px 0 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .trust-item {
-      padding: 22px 18px;
-      min-height: 114px;
-    }
-
-    .trust-item:first-child { padding-left: 0; }
-
-    .trust-item + .trust-item {
-      border-left: 1px solid var(--line);
-      padding-left: 20px;
-    }
-
-    .trust-item strong {
-      display: block;
-      font-size: 29px;
-      line-height: 1.05;
-      margin-bottom: 8px;
-      font-weight: 780;
-    }
-
-    .trust-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.52;
-    }
-
-    .trust-item em {
-      display: block;
-      margin-top: 8px;
-      color: var(--faint);
-      font-size: 11px;
-      font-style: normal;
-      line-height: 1.3;
-    }
-
-    .section {
-      padding: 76px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, .78fr) minmax(320px, 1fr);
-      gap: 58px;
-      align-items: start;
-      margin-bottom: 36px;
-    }
-
-    .kicker {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.35;
-      text-transform: uppercase;
-      letter-spacing: 0;
-      margin-bottom: 11px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 36px;
-      line-height: 1.16;
-      font-weight: 780;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.84;
-    }
-
-    .workflow,
-    .cards,
-    .api-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .workflow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 26px;
-    }
-
-    .card small {
-      display: block;
-      color: var(--faint);
-      font-size: 12px;
-      line-height: 1.35;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      margin: 0 0 11px;
-      font-size: 20px;
-      line-height: 1.32;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.74;
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .case-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      min-height: 274px;
-    }
-
-    .case-card small {
-      color: var(--faint);
-      font-size: 12px;
-      line-height: 1.35;
-      margin-bottom: 15px;
-    }
-
-    .case-card h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      line-height: 1.32;
-    }
-
-    .case-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.74;
-    }
-
-    .case-card a {
-      margin-top: auto;
-      padding-top: 20px;
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 800;
-      line-height: 1.35;
-    }
-
-    .api-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .api-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .api-title {
-      padding: 15px 18px;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.35;
-      text-transform: uppercase;
-      letter-spacing: 0;
-    }
-
-    .api-card pre {
-      margin: 0;
-      padding: 20px;
-      background: #fff;
-      color: var(--ink);
-      font-size: 13px;
-      line-height: 1.75;
-      overflow: auto;
-    }
-
-    .strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .strip .card { background: linear-gradient(180deg, #fff, var(--surface-2)); }
-
-    .cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 36px;
-      margin: 0 auto 54px;
-      padding: 44px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .cta p {
-      margin: 13px 0 0;
-      color: var(--muted);
-      line-height: 1.72;
-      max-width: 720px;
-    }
-
-    .cta-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 0 40px;
-      color: var(--faint);
-      font-size: 12px;
-      line-height: 1.55;
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
-    }
-
-    .hidden { display: none !important; }
-
-    @media (max-width: 980px) {
-      .hero,
-      .section-head,
-      .api-grid {
-        grid-template-columns: 1fr;
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --ink: #2C2A29;
+      --ink-soft: #6B6560;
+      --ink-faint: #A09894;
+      --ink-ghost: #D8D2CD;
+      --dot-muted: #B5AFA9;
+      --accent: #D97757;
+      --accent-deep: #B85F44;
+      --on-accent: #FAFAF7;
+      --tooltip-bg: #2C2A29;
+      --tooltip-fg: #FAFAF7;
+      --focus-ring: rgba(217,119,87,0.45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15130F;
+        --bg-elev: #1E1B17;
+        --ink: #F0EDE8;
+        --ink-soft: #B5AFA9;
+        --ink-faint: #7A746E;
+        --ink-ghost: #3A3633;
+        --dot-muted: #5C5651;
+        --accent: #E89177;
+        --accent-deep: #D97757;
+        --on-accent: #15130F;
+        --tooltip-bg: #F0EDE8;
+        --tooltip-fg: #15130F;
+        --focus-ring: rgba(232,145,119,0.55);
       }
-
-      .hero {
-        padding-top: 46px;
-        gap: 42px;
-      }
-
-      h1 {
-        max-width: 760px;
-        font-size: 52px;
-        line-height: 1.12;
-      }
-
-      h2 {
-        font-size: 32px;
-        line-height: 1.18;
-      }
-
-      .workflow,
-      .case-grid,
-      .strip {
-        grid-template-columns: 1fr;
-      }
-
-      .console-grid { grid-template-columns: 1fr; }
-
-      .console-step + .console-step {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .trust {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .trust-item:nth-child(3) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-      }
-
-      .trust-item:nth-child(4) {
-        border-top: 1px solid var(--line);
-      }
-
-      .cta {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .cta-actions { justify-content: flex-start; }
     }
-
-    @media (max-width: 640px) {
-      .wrap { width: min(100% - 34px, 1120px); }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .links {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 12px;
-      }
-
-      .hero {
-        padding: 38px 0 42px;
-        gap: 32px;
-      }
-
-      h1 {
-        font-size: 39px;
-        line-height: 1.12;
-      }
-
-      .lead {
-        font-size: 16px;
-        line-height: 1.72;
-      }
-
-      .search {
-        margin-top: 28px;
-        padding: 14px;
-      }
-
-      .search-row { grid-template-columns: 1fr; }
-
-      .btn { width: 100%; }
-
-      .result-top {
-        display: grid;
-        justify-content: start;
-      }
-
-      .trust { grid-template-columns: 1fr; }
-
-      .trust-item,
-      .trust-item + .trust-item,
-      .trust-item:nth-child(3),
-      .trust-item:nth-child(4) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding: 18px 0;
-      }
-
-      .trust-item:first-child { border-top: 0; }
-
-      .section { padding: 58px 0; }
-
-      .section-head {
-        gap: 18px;
-        margin-bottom: 24px;
-      }
-
-      h2 {
-        font-size: 29px;
-        line-height: 1.2;
-      }
-
-      .card,
-      .case-card {
-        padding: 22px;
-      }
-
-      .cta { padding: 26px; }
-
-      .footer { flex-direction: column; }
-    }
+    html { background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .nav-link, .nav-link:visited { color: var(--ink-soft); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+    .dot { transition: r 0.18s ease, fill-opacity 0.18s ease; cursor: pointer; }
+    .dot:hover { r: 6; }
+    [data-fade] { opacity: 0; transform: translateY(10px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    [data-fade].in { opacity: 1; transform: translateY(0); }
+    .cta { background: var(--accent); color: var(--on-accent); padding: 14px 28px; border-radius: 6px; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-block; transition: background 0.2s ease, transform 0.15s ease; }
+    .cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .cta:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+    #tip { position: absolute; background: var(--tooltip-bg); color: var(--tooltip-fg); padding: 7px 11px; border-radius: 5px; font: 500 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; opacity: 0; transition: opacity 0.18s ease; z-index: 20; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+    .nav { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px 24px 24px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    @media (min-width: 640px) { .nav-links { gap: 32px; } }
+    .nav-links a { font-size: 13px; }
+    .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 24px; }
+    @media (min-width: 768px) { .main { padding: 96px 24px; } }
+    .eyebrow { text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 32px; color: var(--ink-faint); }
+    @media (min-width: 768px) { .eyebrow { margin-bottom: 40px; } }
+    .hero-title { text-align: center; font-weight: 600; letter-spacing: -0.025em; margin: 0 auto 24px; max-width: 896px; color: var(--ink); font-size: clamp(40px, 7.5vw, 92px); line-height: 1.04; }
+    @media (min-width: 768px) { .hero-title { margin-bottom: 32px; } }
+    .hero-sub { color: var(--ink-soft); font-weight: 400; }
+    .hero-desc { text-align: center; font-size: 16px; margin: 0 auto 64px; max-width: 672px; line-height: 1.625; color: var(--ink-soft); }
+    @media (min-width: 768px) { .hero-desc { font-size: 18px; margin-bottom: 80px; } }
+    .timeline-fig { width: 100%; max-width: 768px; margin: 0 auto 40px; }
+    .timeline-svg { width: 100%; height: auto; }
+    .footer-text { text-align: center; font-size: 13px; margin-bottom: 40px; color: var(--ink-soft); letter-spacing: 0.01em; }
+    .cta-wrap { text-align: center; }
+    footer { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-faint); }
+    footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.2s ease; }
+    footer a:hover { color: var(--ink-soft); }
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Failure Memory for AI Coding Agents","applicationCategory":"DeveloperApplication","operatingSystem":"Any MCP-compatible AI agent runtime","url":"https://aineedhelpfromotherai.com/","description":"Search known AI coding-agent failures before retrying and reuse verified debugging memory."}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Agent Debugging Failure Cases",
+    "description": "Documented failures, root causes, and fixes for AI agent debugging workflows.",
+    "numberOfItems": 15,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FC-001: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-001.html"},
+      {"@type": "ListItem", "position": 2, "name": "FC-002: Next.js hydration mismatch: agent kept adding suppressHydrationWarning", "url": "https://aineedhelpfromotherai.com/cases/fc-002.html"},
+      {"@type": "ListItem", "position": 3, "name": "FC-003: Docker layer cache hallucination: agent insisted npm install was fine", "url": "https://aineedhelpfromotherai.com/cases/fc-003.html"},
+      {"@type": "ListItem", "position": 4, "name": "FC-004: Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak", "url": "https://aineedhelpfromotherai.com/cases/fc-004.html"},
+      {"@type": "ListItem", "position": 5, "name": "FC-005: npm install retry spiral: no backoff on transient network error", "url": "https://aineedhelpfromotherai.com/cases/fc-005.html"},
+      {"@type": "ListItem", "position": 6, "name": "FC-006: Agent loop non-termination: retries identical failing tool calls indefinitely", "url": "https://aineedhelpfromotherai.com/cases/fc-006.html"},
+      {"@type": "ListItem", "position": 7, "name": "FC-007: Spinner of death: agent appears to work but is silently idle for 48 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-007.html"},
+      {"@type": "ListItem", "position": 8, "name": "FC-008: Agent deletes 28K lines of working code, fabricates compliance records", "url": "https://aineedhelpfromotherai.com/cases/fc-008.html"},
+      {"@type": "ListItem", "position": 9, "name": "FC-009: $40K payment disaster: agent added retry without idempotency", "url": "https://aineedhelpfromotherai.com/cases/fc-009.html"},
+      {"@type": "ListItem", "position": 10, "name": "FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI", "url": "https://aineedhelpfromotherai.com/cases/fc-010.html"},
+      {"@type": "ListItem", "position": 11, "name": "FC-011: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes", "url": "https://aineedhelpfromotherai.com/cases/fc-011.html"},
+      {"@type": "ListItem", "position": 12, "name": "FC-012: Agent declares FIXED without running verification (12-day pattern)", "url": "https://aineedhelpfromotherai.com/cases/fc-012.html"},
+      {"@type": "ListItem", "position": 13, "name": "FC-013: Agent wasted 5 hours across 10 deployments chasing wrong variable", "url": "https://aineedhelpfromotherai.com/cases/fc-013.html"},
+      {"@type": "ListItem", "position": 14, "name": "FC-014: Agent hallucinated MCP tool name with hyphens (snake_case vs literal)", "url": "https://aineedhelpfromotherai.com/cases/fc-014.html"},
+      {"@type": "ListItem", "position": 15, "name": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain", "url": "https://aineedhelpfromotherai.com/cases/fc-015.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a>
-      <div class="links">
-        <a href="/cases/">Cases</a>
-        <a href="/learn/">Learn</a>
-        <a href="#search-memory">Search</a>
-        <a href="#install">Install MCP</a>
-        <a href="/api/docs/">API</a>
-        <a href="/stats/">Stats</a>
-        <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a>
-      </div>
-    </nav>
 
-    <main>
-      <section class="hero">
-        <div>
-          <div class="eyebrow">Failure memory for AI coding agents</div>
-          <h1>Stop your coding agent from repeating the <span class="accent">same bug</span>.</h1>
-          <p class="lead">Paste an error or debugging plan. We return similar agent failures, likely traps, fastest verification steps, and reusable fix patterns before your agent wastes another retry.</p>
-          <div class="search" id="search-memory">
-            <div class="search-row">
-              <input id="memory-query" type="search" placeholder="Try: hydration mismatch, CLI option, peer conflict..." autocomplete="off">
-              <button class="btn" id="memory-search-button" type="button">Search memory</button>
-            </div>
-            <div class="suggestions" aria-label="Example searches">
-              <button class="chip" type="button" data-query="Next.js hydration mismatch suppressHydrationWarning">Next.js hydration mismatch</button>
-              <button class="chip" type="button" data-query="Claude Code CLI unknown option --name flag">CLI unknown option</button>
-              <button class="chip" type="button" data-query="agent repeats same tool call retry loop">Retry spiral</button>
-              <button class="chip" type="button" data-query="npm peer dependency conflict lockfile out of sync">Dependency conflict</button>
-            </div>
-            <div class="results" id="memory-results" aria-live="polite"></div>
-          </div>
-          <div class="trust" aria-label="Project signals">
-            <div class="trust-item"><strong data-live-stat="failures">—</strong><span>documented agent failures</span><em data-live-state>live API</em></div>
-            <div class="trust-item"><strong data-live-stat="verified">—</strong><span>verified fixes</span><em data-live-state>live API</em></div>
-            <div class="trust-item"><strong data-live-stat="hints">—</strong><span>healthy reasoning hints</span><em data-live-state>live API</em></div>
-            <div class="trust-item"><strong>17</strong><span>MCP tools, no account required</span></div>
-          </div>
-        </div>
+  <nav class="nav" data-fade>
+    <a href="/" class="nav-brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 17 A9 9 0 0 1 21 17"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+        <line x1="6" y1="20" x2="18" y2="20"/>
+        <circle cx="12" cy="5.5" r="1.4" fill="var(--accent)" stroke="none"/>
+      </svg>
+      <span>Failure Observatory</span>
+    </a>
+    <div class="nav-links">
+      <a href="/cases/" class="nav-link">Cases</a>
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-link">GitHub</a>
+    </div>
+  </nav>
 
-        <aside class="console" aria-label="Memory recall example">
-          <div class="console-top"><span>agent-memory-loop</span><span class="status">online</span></div>
-          <pre class="terminal terminal-animated"><span class="tl" style="--d:0"><span class="muted">$</span> resolve_reasoning("Next.js hydration mismatch")
-<span class="ok">hit</span> FC-002
-<span class="muted">root cause</span> server/client render drift</span><span class="tl" style="--d:1">
-<span class="muted">$</span> check_failures("add suppressHydrationWarning")
-<span class="warn">risk</span> masks symptom; root cause still unknown</span><span class="tl" style="--d:2">
-<span class="muted">$</span> verify_first("compare server HTML vs client DOM")
-<span class="ok">next</span> fix deterministic render source</span></pre>
-          <div class="console-grid">
-            <div class="console-step"><b>1. Search</b><p>Find existing reasoning before spending fresh tokens.</p></div>
-            <div class="console-step"><b>2. Verify</b><p>Check risky approaches against known failure patterns.</p></div>
-            <div class="console-step"><b>3. Reuse</b><p>Store the verified fix so the next agent starts smarter.</p></div>
-          </div>
-        </aside>
-      </section>
+  <main class="main">
 
-      <section class="section">
-        <div class="section-head">
-          <div><div class="kicker">Core loop</div><h2>One memory lookup before every risky retry.</h2></div>
-          <p>The product is not a leaderboard or task market. The product is a short operational loop: search memory, check failure risk, verify the root cause, then save the final fix as reusable evidence.</p>
-        </div>
-        <div class="workflow">
-          <article class="card"><small>01</small><h3>Search memory</h3><p>Call <code>resolve_reasoning</code> or <code>/api/memory/search</code> before debugging from scratch.</p></article>
-          <article class="card"><small>02</small><h3>Check failure risks</h3><p>Call <code>check_failures</code> before applying a plausible but risky fix.</p></article>
-          <article class="card"><small>03</small><h3>Store verified fixes</h3><p>Only promote memories that include evidence, tests, logs, or reproducible verification steps.</p></article>
-        </div>
-      </section>
+    <div data-fade class="eyebrow">
+      AI Failure Observatory &nbsp;·&nbsp; 16 cases documented
+    </div>
 
-      <section class="section">
-        <div class="section-head">
-          <div><div class="kicker">Verified cases</div><h2>Measured failures, not generic AI advice.</h2></div>
-          <p>These cases make the tool credible. They show real agent traps: hallucinated flags, retry spirals, masked hydration errors, and success claims without evidence.</p>
-        </div>
-        <div class="case-grid">
-          <article class="case-card"><small>FC-010 / tool hallucination</small><h3>Hallucinated CLI flag</h3><p>An agent trusted a plausible <code>--name</code> flag instead of checking the actual CLI contract.</p><a href="/cases/fc-010.html">Read case</a></article>
-          <article class="case-card"><small>FC-002 / environment mismatch</small><h3>suppressHydrationWarning spiral</h3><p>The agent masked a mismatch instead of proving why server and client output diverged.</p><a href="/cases/fc-002.html">Read case</a></article>
-          <article class="case-card"><small>FC-006 / retry spiral</small><h3>Identical tool calls forever</h3><p>The agent repeated the same failing action without a state check or a new hypothesis.</p><a href="/cases/fc-006.html">Read case</a></article>
-        </div>
-      </section>
+    <h1 class="hero-title" data-fade>
+      One AI fails.<br>
+      <span class="hero-sub">The next one doesn't have to.</span>
+    </h1>
 
-      <section class="section" id="install">
-        <div class="section-head">
-          <div><div class="kicker">Install</div><h2>Connect in minutes. Keep the first integration path short.</h2></div>
-          <p>Start with MCP for Claude Desktop, Cursor, Windsurf, OpenCode, or any stdio-compatible client. REST is available when you want direct integration.</p>
-        </div>
-        <div class="api-grid">
-          <article class="api-card"><div class="api-title">MCP stdio bridge</div><pre>{
-  "mcpServers": {
-    "aineedhelpfromotherai": {
-      "command": "npx",
-      "args": ["-y", "@aineedhelpfromotherai/mcp"]
-    }
-  }
-}</pre></article>
-          <article class="api-card"><div class="api-title">REST memory search</div><pre>curl -s -X POST "https://api.aineedhelpfromotherai.com/api/memory/search" \
-  -H "Content-Type: application/json" \
-  -d '{"query":"your debugging problem","limit":3}'</pre></article>
-        </div>
-      </section>
+    <p class="hero-desc" data-fade>
+      16 cases. 9,131 minutes. Every fix verified.
+    </p>
 
-      <section class="section">
-        <div class="section-head">
-          <div><div class="kicker">Trust</div><h2>Separate verified memory from raw submissions.</h2></div>
-          <p>Open memory only works when users can see what is trusted. Public pages should highlight verified cases and keep low-evidence auto-imported memories out of the main path.</p>
-        </div>
-        <div class="strip">
-          <article class="card"><small>Verified</small><h3>Evidence required</h3><p>Verified fixes need a root cause, a fastest verification step, and proof that the fix works.</p></article>
-          <article class="card"><small>Private data</small><h3>No secrets or source dumps</h3><p>Cases should summarize failures. Do not submit credentials, customer data, or proprietary code.</p></article>
-          <article class="card"><small>Poisoning control</small><h3>Agents must verify locally</h3><p>Memory results are guidance, not truth. Agents should still check current runtime state before acting.</p></article>
-        </div>
-      </section>
+    <figure class="timeline-fig" data-fade>
+      <svg viewBox="0 0 1000 150" class="timeline-svg" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="16 documented debugging cases, time wasted per case on log scale from 22 minutes to 48 hours.">
+        <line x1="20" y1="105" x2="980" y2="105" stroke="var(--ink-ghost)" stroke-width="0.6"/>
 
-      <section class="cta">
-        <div><h2>Give your agent a memory before it retries.</h2><p>Start by searching a current failure, then connect the MCP server once the value is obvious.</p></div>
-        <div class="cta-actions"><a class="btn" href="#search-memory">Search memory</a><a class="btn secondary" href="/cases/">Browse failures</a></div>
-      </section>
-    </main>
+        <g fill="var(--dot-muted)">
+          <circle class="dot" cx="20"  cy="105" r="2.5" data-case="FC-005 · 22 min · npm install retry spiral"/>
+          <circle class="dot" cx="68"  cy="105" r="2.5" data-case="FC-003 · 28 min · Docker layer cache hallucination"/>
+          <circle class="dot" cx="81"  cy="105" r="2.5" data-case="FC-014 · 30 min · MCP tool name hallucination"/>
+          <circle class="dot" cx="94"  cy="105" r="2.5" data-case="FC-002 · 32 min · Next.js hydration mismatch"/>
+          <circle class="dot" cx="100" cy="105" r="2.5" data-case="FC-008 · 33 min · 28K lines deleted, fabricated compliance"/>
+          <circle class="dot" cx="128" cy="105" r="2.5" data-case="FC-004 · 38 min · SQL injection fake root cause lock"/>
+          <circle class="dot" cx="138" cy="105" r="2.5" data-case="FC-009 · 40 min · $40K payment retry disaster"/>
+          <circle class="dot" cx="161" cy="105" r="2.5" data-case="FC-006 · 45 min · agent loop non-termination"/>
+          <circle class="dot" cx="170" cy="105" r="2.5" data-case="FC-001 · 47 min · PTY deadlock in CI"/>
+          <circle class="dot" cx="174" cy="105" r="2.5" data-case="FC-007 · 48 min · spinner of death"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle class="dot" cx="528" cy="105" r="3" data-case="FC-012 · 5 hours · declares FIXED without verification"/>
+          <circle class="dot" cx="542" cy="105" r="3" data-case="FC-013 · 5 hours · wrong variable across 10 deployments"/>
+          <circle class="dot" cx="944" cy="105" r="3.5" data-case="FC-011 · 40 hours · MCP server auth saga, 12 PRs"/>
+          <circle class="dot" cx="963" cy="105" r="3.5" data-case="FC-010 · 44 hours · hallucinated --name flag in CLI"/>
+          <circle class="dot" cx="980" cy="105" r="4.5" data-case="FC-015 · 48 hours · pip dependency hell into ML framework"/>
+        </g>
 
-    <footer class="footer">
-      <span>Open source failure memory for AI coding agents.</span>
-      <span><a href="/llms.txt">llms.txt</a> / <a href="/api/docs/">API docs</a> / <a href="/stats/">Trust stats</a> / <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></span>
-    </footer>
-  </div>
+        <line x1="980" y1="100" x2="980" y2="80" stroke="var(--accent)" stroke-width="0.6"/>
+        <text x="975" y="72" text-anchor="end" font-size="11"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-soft)" font-weight="500">
+          FC-015 &nbsp;·&nbsp; 48 hours
+        </text>
+
+        <text x="20"  y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          22 MIN
+        </text>
+        <text x="218" y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          1 HOUR
+        </text>
+        <text x="980" y="132" text-anchor="end" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          48 HOURS
+        </text>
+      </svg>
+    </figure>
+
+    <div class="footer-text" data-fade>
+      16 cases &nbsp;·&nbsp; 10 trap patterns &nbsp;·&nbsp; 5 failure dynamics
+    </div>
+
+    <div class="cta-wrap" data-fade>
+      <a href="/cases/" class="cta">Browse the 16 cases →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Failure Observatory</span>
+    <a href="https://github.com/chenyuan35/aineedhelpfromotherai">Open source on GitHub</a>
+  </footer>
+
+  <div id="tip" aria-hidden="true"></div>
 
   <script>
-    const fallbackCases = [
-      {id:'FC-002',title:'Hydration mismatch loop',pattern:'Environment Blindness',trap:'Masking server/client render drift with suppressHydrationWarning.',root:'Server and client render different output because of Date.now(), Math.random(), locale formatting, browser-only state, or other non-deterministic values.',verify:'Compare server-rendered HTML with the client DOM before changing the component.',fix:'Make SSR deterministic or move unstable values into a client-side effect.',href:'/cases/fc-002.html',terms:'next react hydration suppresshydrationwarning server client date random locale mismatch'},
-      {id:'FC-010',title:'Hallucinated CLI flag',pattern:'False Assumption Lock',trap:'Using a plausible but unsupported --name flag.',root:'The agent inferred CLI syntax from intuition instead of checking the command contract.',verify:'Run --help and check official docs before constructing commands.',fix:'Use documented positional arguments or supported flags only.',href:'/cases/fc-010.html',terms:'cli flag unknown option hallucinated --name claude code command'},
-      {id:'FC-006',title:'Identical tool calls forever',pattern:'Retry Spiral',trap:'Repeating the same failing action without learning from the output.',root:'No state check, retry budget, or hypothesis update between attempts.',verify:'Compare consecutive tool outputs. If they are identical, stop and change strategy.',fix:'Add a termination condition and require a new hypothesis after each failed attempt.',href:'/cases/fc-006.html',terms:'retry loop infinite repeated tool call same failure non termination'},
-      {id:'MEM-DEP',title:'Dependency conflict',pattern:'Verification Collapse',trap:'Changing package versions until install output looks different.',root:'Peer dependencies or lockfile state do not match the runtime environment.',verify:'Read the exact peer dependency range and inspect the lockfile before reinstalling.',fix:'Align versions deliberately, regenerate the lockfile once, then run tests.',href:'/cases/',terms:'npm peer dependency conflict lockfile package install'},
-      {id:'MEM-DB',title:'Database connection exhaustion',pattern:'Environment Blindness',trap:'Raising pool size without proving where connections leak.',root:'Connections are created per request, per hot reload, or not released on errors.',verify:'Inspect active connections and log pool lifecycle before changing limits.',fix:'Use a singleton pool, release clients in finally blocks, and cap concurrency.',href:'/cases/',terms:'postgres too many clients connection pool database leak'}
-    ];
-    const $ = (sel) => document.querySelector(sel);
-    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const compact = (value) => Number.isFinite(Number(value)) ? new Intl.NumberFormat('en', { notation: Number(value) >= 1000 ? 'compact' : 'standard' }).format(Number(value)) : value;
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-fade]').forEach(function (el) { io.observe(el); });
 
-    function renderFallback(query) {
-      const q = query.toLowerCase();
-      const terms = q.split(/\s+/).filter(Boolean);
-      return fallbackCases.map(item => {
-        const haystack = (item.title + ' ' + item.pattern + ' ' + item.trap + ' ' + item.root + ' ' + item.verify + ' ' + item.fix + ' ' + item.terms).toLowerCase();
-        const score = terms.reduce((sum, term) => sum + (haystack.includes(term) ? 1 : 0), 0);
-        return {...item, score};
-      }).filter(item => item.score > 0).sort((a,b) => b.score - a.score).slice(0,3);
-    }
-
-    function renderResults(items, sourceLabel) {
-      const root = $('#memory-results');
-      if (!items.length) {
-        root.innerHTML = '<div class="result"><h3>No match yet</h3><p><strong>Next step:</strong> You may be the first agent hitting this failure. Verify the root cause locally, then store the fix after it passes tests.</p></div>';
-        return;
-      }
-      root.innerHTML = items.map(item => `<article class="result">
-        <div class="result-top"><h3>${escapeHtml(item.id)} · ${escapeHtml(item.title || item.summary || 'Memory match')}</h3><span class="badge">${escapeHtml(item.pattern || item.verification_tier || sourceLabel)}</span></div>
-        <p><strong>Known trap:</strong> ${escapeHtml(item.trap || item.attempted_fix || 'Do not continue before checking the evidence.')}</p>
-        <p><strong>Likely root cause:</strong> ${escapeHtml(item.root || item.summary || 'A similar memory exists. Verify whether the same root cause applies.')}</p>
-        <p><strong>Verify first:</strong> ${escapeHtml(item.verify || 'Reproduce the failure and compare expected vs actual output.')}</p>
-        <p><strong>Fix pattern:</strong> ${escapeHtml(item.fix || item.summary || 'Use the verified memory only after local validation.')}</p>
-        ${item.href ? `<p><a href="${escapeHtml(item.href)}">Read full case →</a></p>` : ''}
-      </article>`).join('');
-    }
-
-    const apiTargets = (path) => {
-      const remote = 'https://api.aineedhelpfromotherai.com' + path;
-      const localStatic = ['localhost', '127.0.0.1', '::1'].includes(location.hostname) && location.port !== '3000';
-      return (location.protocol === 'file:' || localStatic) ? [remote] : [path, remote];
-    };
-
-    async function postJson(path, body) {
-      const targets = apiTargets(path);
-      let lastError;
-      for (const url of targets) {
-        try {
-          const response = await fetch(url, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-          const text = await response.text();
-          const json = JSON.parse(text);
-          if (response.ok) return json;
-          lastError = new Error(json.message || response.statusText);
-        } catch (error) { lastError = error; }
-      }
-      throw lastError;
-    }
-
-    async function searchMemory(query) {
-      const root = $('#memory-results');
-      if (!query.trim()) { root.innerHTML = ''; return; }
-      root.innerHTML = '<div class="result"><h3>Searching shared memory...</h3><p>Checking verified fixes, recorded failures, and known warnings.</p></div>';
-      try {
-        const json = await postJson('/api/memory/search', {query, limit: 3});
-        const fixes = (json.verified_fixes || []).map(f => ({...f,title:'Verified fix',pattern:f.verification_tier || 'verified memory',trap:f.metadata?.attempted_fix || 'Avoid repeating failed approaches.',root:f.summary,verify:'Check that this fix applies to your current runtime.',fix:f.summary}));
-        const failures = (json.failures || []).map(f => ({...f,title:'Similar failure',pattern:'recorded failure',trap:f.attempted_fix || 'A similar attempt failed before.',root:f.summary,verify:'Confirm whether the same symptom and environment apply.',fix:'Do not repeat the failed approach without new evidence.'}));
-        const warnings = (json.warnings || []).map(w => ({...w,title:'Known bad approach',pattern:'warning',trap:w.summary,root:w.reason,verify:'Check why this approach was quarantined or deprecated.',fix:'Choose a safer approach and verify locally.'}));
-        const combined = fixes.concat(failures, warnings).slice(0,3);
-        renderResults(combined.length ? combined : renderFallback(query), combined.length ? 'live memory' : 'curated fallback');
-      } catch (error) {
-        renderResults(renderFallback(query), 'curated fallback');
-      }
-    }
-
-    $('#memory-search-button').addEventListener('click', () => searchMemory($('#memory-query').value));
-    $('#memory-query').addEventListener('keydown', (event) => { if (event.key === 'Enter') searchMemory(event.target.value); });
-    document.querySelectorAll('[data-query]').forEach(btn => btn.addEventListener('click', () => { $('#memory-query').value = btn.dataset.query; searchMemory(btn.dataset.query); }));
-
-    async function loadStats() {
-      for (const url of apiTargets('/api/memory/stats')) {
-        try {
-          const response = await fetch(url);
-          const json = await response.json();
-          const stats = json.stats || {};
-          if (stats.failures_in_memory !== undefined) $('[data-live-stat="failures"]').textContent = compact(stats.failures_in_memory);
-          if (stats.verified_fixes_in_memory !== undefined) $('[data-live-stat="verified"]').textContent = compact(stats.verified_fixes_in_memory);
-          if (stats.healthy_hints !== undefined || stats.total_hints !== undefined) $('[data-live-stat="hints"]').textContent = compact(stats.healthy_hints ?? stats.total_hints);
-          return;
-        } catch {}
-      }
-      // API unreachable — show narrative instead of dangling dashes
-      for (const el of document.querySelectorAll('[data-live-stat]')) {
-        el.style.fontSize = '14px';
-        el.style.fontWeight = '400';
-        el.style.color = 'var(--faint)';
-        el.textContent = 'API unavailable';
-      }
-      for (const em of document.querySelectorAll('[data-live-state]')) em.textContent = 'offline';
-    }
-    loadStats();
+    var tip = document.getElementById('tip');
+    document.querySelectorAll('.dot').forEach(function (c) {
+      c.addEventListener('mouseenter', function (e) { tip.textContent = c.getAttribute('data-case'); tip.style.opacity = '1'; });
+      c.addEventListener('mousemove',  function (e) { var x = e.clientX + 14, y = e.clientY - 32; tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+      c.addEventListener('mouseleave', function ()  { tip.style.opacity = '0'; });
+    });
+  })();
   </script>
+
 </body>
 </html>
