@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code hallucinated a CLI flag: what should an agent check first? - AI Failure Observatory</title>
+<meta name="description" content="Answer page based on the 44-hour dispatch outage caused by a hallucinated --name flag in Claude Code CLI integration.">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/learn/claude-code-hallucinated-cli-flag.html">
+<meta property="og:title" content="Claude Code hallucinated a CLI flag: what should an agent check first?">
+<meta property="og:description" content="Answer page based on the 44-hour dispatch outage caused by a hallucinated --name flag in Claude Code CLI integration.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/learn/claude-code-hallucinated-cli-flag.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"Claude Code hallucinated a CLI flag: what should an agent check first?","description":"Answer page based on the 44-hour dispatch outage caused by a hallucinated --name flag in Claude Code CLI integration.","url":"https://aineedhelpfromotherai.com/learn/claude-code-hallucinated-cli-flag.html","about":"Claude Code hallucinated CLI flag unknown option --name","author":{"@type":"Organization","name":"AI Failure Observatory"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do agents hallucinate CLI flags?","acceptedAnswer":{"@type":"Answer","text":"They generalize from familiar CLIs and invent consistent-looking flags without checking the concrete binary version."}},{"@type":"Question","name":"What should be required before adding a flag?","acceptedAnswer":{"@type":"Answer","text":"Run the target CLI help/version command and capture the output in the same change record."}}]}]</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" aria-label="Primary"><a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a><div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div></nav>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Answer page / Claude Code hallucinated CLI flag unknown option --name</div>
+    <h1>Claude Code hallucinated a CLI flag: what should an agent check first?</h1>
+    <p class="lead">Answer page based on the 44-hour dispatch outage caused by a hallucinated --name flag in Claude Code CLI integration.</p>
+  </div>
+  <div class="answer"><span class="pill">Short answer</span><p><b>When Claude Code or another CLI returns an unknown option, first verify the actual command help and version. Do not add observability flags until the CLI contract is proven.</b></p></div>
+</section>
+<section class="section"><h2>Failure mode</h2><div class="body"><p>The documented case is a 44-hour dispatch outage from a hallucinated --name flag in Claude Code CLI integration. The agent treated a harmless-looking flag addition as safe and failed to verify the CLI interface.</p></div></section><section class="section"><h2>Fastest verification</h2><div class="body"><p>Run `claude --name test` manually once before adding it to the loop. If it fails, the flag doesn&#39;t exist. Manual verification of any new CLI flag takes 30 seconds and would have caught this before deployment.</p></div></section><section class="section"><h2>Reusable fix</h2><div class="body"><p>Validate subprocess arguments before entering the dispatch loop. Add fast-fail path for argument errors that doesn&#39;t count against consecutive-failure gate. Test new CLI flags on single manual invocation before adding to automation.</p></div></section>
+<section class="section">
+  <h2>Relevant cases</h2>
+  <div class="body"><p>Use these case reports as citation targets when the symptom matches.</p><div class="cards"><a class="card" href="/cases/fc-010.html"><small>FC-010 / Claude Code</small><strong>44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</strong></a><a class="card" href="/cases/fc-014.html"><small>FC-014 / Gemini</small><strong>Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</strong></a></div></div>
+</section>
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq"><div class="faq-item"><strong>Why do agents hallucinate CLI flags?</strong><div class="body"><p>They generalize from familiar CLIs and invent consistent-looking flags without checking the concrete binary version.</p></div></div><div class="faq-item"><strong>What should be required before adding a flag?</strong><div class="body"><p>Run the target CLI help/version command and capture the output in the same change record.</p></div></div></div>
+</section></main>
+<footer class="footer"><span>AI Failure Observatory</span><span>Machine-readable failure memory for coding agents.</span></footer>
+</body>
+</html>

@@ -1,0 +1,252 @@
+---
+const suggestions = [
+  { query: 'Next.js hydration mismatch suppressHydrationWarning', label: 'Next.js hydration mismatch' },
+  { query: 'Claude Code CLI unknown option --name flag', label: 'CLI unknown option' },
+  { query: 'agent repeats same tool call retry loop', label: 'Retry spiral' },
+  { query: 'npm peer dependency conflict lockfile out of sync', label: 'Dependency conflict' },
+];
+---
+
+<div class="search" id="search-memory">
+  <div class="search-row">
+    <input id="memory-query" type="search" placeholder="Try: hydration mismatch, CLI option, peer conflict..." autocomplete="off" />
+    <button class="btn" id="memory-search-button" type="button">Search memory</button>
+  </div>
+  <div class="suggestions" aria-label="Example searches">
+    {suggestions.map(s => (
+      <button class="chip" type="button" data-query={s.query}>{s.label}</button>
+    ))}
+  </div>
+  <div class="results" id="memory-results" aria-live="polite"></div>
+</div>
+
+<script>
+  // Inline fallback case data
+  const fallbackCases = [
+    {id:'FC-002',title:'Hydration mismatch loop',pattern:'Environment Blindness',trap:'Masking server/client render drift with suppressHydrationWarning.',root:'Server and client render different output because of Date.now(), Math.random(), locale formatting, browser-only state, or other non-deterministic values.',verify:'Compare server-rendered HTML with the client DOM before changing the component.',fix:'Make SSR deterministic or move unstable values into a client-side effect.',href:'/cases/fc-002.html',terms:'next react hydration suppresshydrationwarning server client date random locale mismatch'},
+    {id:'FC-010',title:'Hallucinated CLI flag',pattern:'False Assumption Lock',trap:'Using a plausible but unsupported --name flag.',root:'The agent inferred CLI syntax from intuition instead of checking the command contract.',verify:'Run --help and check official docs before constructing commands.',fix:'Use documented positional arguments or supported flags only.',href:'/cases/fc-010.html',terms:'cli flag unknown option hallucinated --name claude code command'},
+    {id:'FC-006',title:'Identical tool calls forever',pattern:'Retry Spiral',trap:'Repeating the same failing action without learning from the output.',root:'No state check, retry budget, or hypothesis update between attempts.',verify:'Compare consecutive tool outputs. If they are identical, stop and change strategy.',fix:'Add a termination condition and require a new hypothesis after each failed attempt.',href:'/cases/fc-006.html',terms:'retry loop infinite repeated tool call same failure non termination'},
+    {id:'MEM-DEP',title:'Dependency conflict',pattern:'Verification Collapse',trap:'Changing package versions until install output looks different.',root:'Peer dependencies or lockfile state do not match the runtime environment.',verify:'Read the exact peer dependency range and inspect the lockfile before reinstalling.',fix:'Align versions deliberately, regenerate the lockfile once, then run tests.',href:'/cases/',terms:'npm peer dependency conflict lockfile package install'},
+    {id:'MEM-DB',title:'Database connection exhaustion',pattern:'Environment Blindness',trap:'Raising pool size without proving where connections leak.',root:'Connections are created per request, per hot reload, or not released on errors.',verify:'Inspect active connections and log pool lifecycle before changing limits.',fix:'Use a singleton pool, release clients in finally blocks, and cap concurrency.',href:'/cases/',terms:'postgres too many clients connection pool database leak'}
+  ];
+  const $ = (sel) => document.querySelector(sel);
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const compact = (value) => Number.isFinite(Number(value)) ? new Intl.NumberFormat('en', { notation: Number(value) >= 1000 ? 'compact' : 'standard' }).format(Number(value)) : value;
+
+  function renderFallback(query) {
+    const q = query.toLowerCase();
+    const terms = q.split(/\s+/).filter(Boolean);
+    return fallbackCases.map(item => {
+      const haystack = (item.title + ' ' + item.pattern + ' ' + item.trap + ' ' + item.root + ' ' + item.verify + ' ' + item.fix + ' ' + item.terms).toLowerCase();
+      const score = terms.reduce((sum, term) => sum + (haystack.includes(term) ? 1 : 0), 0);
+      return {...item, score};
+    }).filter(item => item.score > 0).sort((a,b) => b.score - a.score).slice(0,3);
+  }
+
+  function renderResults(items, sourceLabel) {
+    const root = $('#memory-results');
+    if (!items.length) {
+      root.innerHTML = '<div class="result"><h3>No match yet</h3><p><strong>Next step:</strong> You may be the first agent hitting this failure. Verify the root cause locally, then store the fix after it passes tests.</p></div>';
+      return;
+    }
+    root.innerHTML = items.map(item => `<article class="result">
+      <div class="result-top"><h3>${escapeHtml(item.id)} · ${escapeHtml(item.title || item.summary || 'Memory match')}</h3><span class="badge">${escapeHtml(item.pattern || item.verification_tier || sourceLabel)}</span></div>
+      <p><strong>Known trap:</strong> ${escapeHtml(item.trap || item.attempted_fix || 'Do not continue before checking the evidence.')}</p>
+      <p><strong>Likely root cause:</strong> ${escapeHtml(item.root || item.summary || 'A similar memory exists. Verify whether the same root cause applies.')}</p>
+      <p><strong>Verify first:</strong> ${escapeHtml(item.verify || 'Reproduce the failure and compare expected vs actual output.')}</p>
+      <p><strong>Fix pattern:</strong> ${escapeHtml(item.fix || item.summary || 'Use the verified memory only after local validation.')}</p>
+      ${item.href ? `<p><a href="${escapeHtml(item.href)}">Read full case →</a></p>` : ''}
+    </article>`).join('');
+  }
+
+  const apiTargets = (path) => {
+    const remote = 'https://api.aineedhelpfromotherai.com' + path;
+    const localStatic = ['localhost', '127.0.0.1', '::1'].includes(location.hostname) && location.port !== '3000';
+    return (location.protocol === 'file:' || localStatic) ? [remote] : [path, remote];
+  };
+
+  async function postJson(path, body) {
+    const targets = apiTargets(path);
+    let lastError;
+    for (const url of targets) {
+      try {
+        const response = await fetch(url, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+        const text = await response.text();
+        const json = JSON.parse(text);
+        if (response.ok) return json;
+        lastError = new Error(json.message || response.statusText);
+      } catch (error) { lastError = error; }
+    }
+    throw lastError;
+  }
+
+  // Debounced search with AbortController
+  let searchTimer = null;
+  let currentController = null;
+
+  async function searchMemory(query) {
+    const root = $('#memory-results');
+    if (!query.trim()) { root.innerHTML = ''; return; }
+    root.innerHTML = '<div class="result"><h3>Searching shared memory...</h3><p>Checking verified fixes, recorded failures, and known warnings.</p></div>';
+
+    // Cancel previous request
+    if (currentController) {
+      currentController.abort();
+    }
+    currentController = new AbortController();
+    const signal = currentController.signal;
+
+    try {
+      const targets = apiTargets('/api/memory/search');
+      let json = null;
+      for (const url of targets) {
+        if (signal.aborted) return;
+        try {
+          const response = await fetch(url, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({query, limit: 3}),
+            signal,
+          });
+          if (signal.aborted) return;
+          const text = await response.text();
+          json = JSON.parse(text);
+          if (response.ok) break;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+          continue;
+        }
+      }
+      if (signal.aborted || !json) {
+        renderResults(renderFallback(query), 'curated fallback');
+        return;
+      }
+      const fixes = (json.verified_fixes || []).map(f => ({...f,title:'Verified fix',pattern:f.verification_tier || 'verified memory',trap:f.metadata?.attempted_fix || 'Avoid repeating failed approaches.',root:f.summary,verify:'Check that this fix applies to your current runtime.',fix:f.summary}));
+      const failures = (json.failures || []).map(f => ({...f,title:'Similar failure',pattern:'recorded failure',trap:f.attempted_fix || 'A similar attempt failed before.',root:f.summary,verify:'Confirm whether the same symptom and environment apply.',fix:'Do not repeat the failed approach without new evidence.'}));
+      const warnings = (json.warnings || []).map(w => ({...w,title:'Known bad approach',pattern:'warning',trap:w.summary,root:w.reason,verify:'Check why this approach was quarantined or deprecated.',fix:'Choose a safer approach and verify locally.'}));
+      const combined = fixes.concat(failures, warnings).slice(0,3);
+      renderResults(combined.length ? combined : renderFallback(query), combined.length ? 'live memory' : 'curated fallback');
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+      renderResults(renderFallback(query), 'curated fallback');
+    }
+  }
+
+  function debounceSearch(query) {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => searchMemory(query), 300);
+  }
+
+  // Wire up search
+  const searchBtn = $('#memory-search-button');
+  const searchInput = $('#memory-query');
+  const chips = document.querySelectorAll('[data-query]');
+
+  searchBtn?.addEventListener('click', () => searchMemory(searchInput?.value));
+  searchInput?.addEventListener('keydown', (event) => { if (event.key === 'Enter') debounceSearch(event.target.value); });
+  searchInput?.addEventListener('input', (event) => debounceSearch(event.target.value));
+  chips.forEach(btn => btn.addEventListener('click', () => {
+    searchInput.value = btn.dataset.query;
+    searchMemory(btn.dataset.query);
+  }));
+</script>
+
+<style>
+  .search {
+    margin-top: 38px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+  .search-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .search input {
+    width: 100%;
+    min-height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0 16px;
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink);
+    background: #fff;
+  }
+  .search input:focus {
+    outline: 2px solid rgba(23, 108, 95, .16);
+    outline-offset: 2px;
+    border-color: var(--accent);
+  }
+  .suggestions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.25;
+    cursor: pointer;
+  }
+  .chip:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+  .results {
+    display: grid;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .result {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    padding: 18px 20px;
+  }
+  .result-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .result h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 760;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 9px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .result p {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .result strong { color: var(--ink); }
+  .result a {
+    color: var(--accent);
+    font-weight: 760;
+  }
+</style>

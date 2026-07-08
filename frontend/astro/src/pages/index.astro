@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Workflow from '../components/home/Workflow.astro';
+import CaseGrid from '../components/home/CaseGrid.astro';
+import InstallSection from '../components/home/InstallSection.astro';
+import TrustStrip from '../components/home/TrustStrip.astro';
+import CTA from '../components/home/CTA.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Failure Memory for AI Coding Agents",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any MCP-compatible AI agent runtime",
+  "url": "https://aineedhelpfromotherai.com/",
+  "description": "Search known AI coding-agent failures before retrying and reuse verified debugging memory."
+};
+---
+
+<BaseLayout
+  title="AI Failure Observatory — Failure Intelligence Layer for AI Coding Agents"
+  description="Failure memory for AI coding agents: search known failures before retrying, check traps before executing, and store verified fixes through MCP and REST."
+  schema={schema}
+>
+  <div class="wrap">
+    <main>
+      <Hero />
+      <Workflow />
+      <CaseGrid />
+      <InstallSection />
+      <TrustStrip />
+      <CTA />
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    width: min(1120px, calc(100% - 56px));
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .wrap { width: min(100% - 34px, 1120px); }
+  }
+</style>

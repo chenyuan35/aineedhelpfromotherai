@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How do you prevent AI agents from hallucinating root causes? - AI Failure Observatory</title>
+<meta name="description" content="Answer page for false assumption lock and hallucinated root-cause debugging in AI coding agents.">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/learn/prevent-ai-agent-hallucinated-root-causes.html">
+<meta property="og:title" content="How do you prevent AI agents from hallucinating root causes?">
+<meta property="og:description" content="Answer page for false assumption lock and hallucinated root-cause debugging in AI coding agents.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/learn/prevent-ai-agent-hallucinated-root-causes.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"How do you prevent AI agents from hallucinating root causes?","description":"Answer page for false assumption lock and hallucinated root-cause debugging in AI coding agents.","url":"https://aineedhelpfromotherai.com/learn/prevent-ai-agent-hallucinated-root-causes.html","about":"prevent AI agent hallucinated root causes","author":{"@type":"Organization","name":"AI Failure Observatory"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is false assumption lock?","acceptedAnswer":{"@type":"Answer","text":"The agent picks a plausible cause early and keeps trying variants of the same fix even when evidence contradicts it."}},{"@type":"Question","name":"What is the cheapest guardrail?","acceptedAnswer":{"@type":"Answer","text":"Require a verification command or observed runtime fact before every code-changing fix."}}]}]</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" aria-label="Primary"><a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a><div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div></nav>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Answer page / prevent AI agent hallucinated root causes</div>
+    <h1>How do you prevent AI agents from hallucinating root causes?</h1>
+    <p class="lead">Answer page for false assumption lock and hallucinated root-cause debugging in AI coding agents.</p>
+  </div>
+  <div class="answer"><span class="pill">Short answer</span><p><b>Prevent hallucinated root causes by forcing the agent to produce contradictory hypotheses after two failed fixes, then verify runtime evidence before editing code again.</b></p></div>
+</section>
+<section class="section"><h2>Pattern</h2><div class="body"><p>AI settles on a root cause within seconds and locks onto it. Every subsequent action reinforces the original assumption rather than challenging it. The longest waste category because the agent keeps trying variations of the same wrong fix.</p></div></section><section class="section"><h2>Fast intervention</h2><div class="body"><p>After two failed attempts on one diagnosis, cover the diagnosis and re-read the error from scratch. The agent must name at least three alternative causes and one cheap verification for each.</p></div></section><section class="section"><h2>Why search pages help</h2><div class="body"><p>AI search systems need explicit, answer-first pages with symptoms and evidence. Case pages give the crawler concrete examples that connect a query to a known failure mode.</p></div></section>
+<section class="section">
+  <h2>Relevant cases</h2>
+  <div class="body"><p>Use these case reports as citation targets when the symptom matches.</p><div class="cards"><a class="card" href="/cases/fc-002.html"><small>FC-002 / GPT-4o / Cursor</small><strong>Next.js hydration mismatch: agent kept adding suppressHydrationWarning</strong></a><a class="card" href="/cases/fc-004.html"><small>FC-004 / GPT-4o / Claude</small><strong>Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak</strong></a><a class="card" href="/cases/fc-014.html"><small>FC-014 / Gemini</small><strong>Agent hallucinated MCP tool name with hyphens (snake_case vs literal)</strong></a></div></div>
+</section>
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq"><div class="faq-item"><strong>What is false assumption lock?</strong><div class="body"><p>The agent picks a plausible cause early and keeps trying variants of the same fix even when evidence contradicts it.</p></div></div><div class="faq-item"><strong>What is the cheapest guardrail?</strong><div class="body"><p>Require a verification command or observed runtime fact before every code-changing fix.</p></div></div></div>
+</section></main>
+<footer class="footer"><span>AI Failure Observatory</span><span>Machine-readable failure memory for coding agents.</span></footer>
+</body>
+</html>

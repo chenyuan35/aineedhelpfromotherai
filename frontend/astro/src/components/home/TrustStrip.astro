@@ -1,0 +1,107 @@
+---
+---
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Trust</div>
+      <h2>Separate verified memory from raw submissions.</h2>
+    </div>
+    <p>Open memory only works when users can see what is trusted. Public pages should highlight verified cases and keep low-evidence auto-imported memories out of the main path.</p>
+  </div>
+  <div class="strip">
+    <article class="card">
+      <small>Verified</small>
+      <h3>Evidence required</h3>
+      <p>Verified fixes need a root cause, a fastest verification step, and proof that the fix works.</p>
+    </article>
+    <article class="card">
+      <small>Private data</small>
+      <h3>No secrets or source dumps</h3>
+      <p>Cases should summarize failures. Do not submit credentials, customer data, or proprietary code.</p>
+    </article>
+    <article class="card">
+      <small>Poisoning control</small>
+      <h3>Agents must verify locally</h3>
+      <p>Memory results are guidance, not truth. Agents should still check current runtime state before acting.</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: 76px 0;
+    border-top: 1px solid var(--line);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, .78fr) minmax(320px, 1fr);
+    gap: 58px;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+  .kicker {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 11px;
+  }
+  h2 {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1.16;
+    font-weight: 780;
+  }
+  .section-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.84;
+  }
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: linear-gradient(180deg, #fff, var(--surface-2));
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 26px;
+  }
+  .card small {
+    display: block;
+    color: var(--faint);
+    font-size: 12px;
+    line-height: 1.35;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    margin: 0 0 11px;
+    font-size: 20px;
+    line-height: 1.32;
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.74;
+  }
+
+  @media (max-width: 640px) {
+    .section { padding: 58px 0; }
+    .section-head {
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    h2 { font-size: 29px; line-height: 1.2; }
+    .card { padding: 22px; }
+  }
+  @media (max-width: 768px) {
+    .section-head { grid-template-columns: 1fr; }
+    .strip { grid-template-columns: 1fr; }
+  }
+</style>

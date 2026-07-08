@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How do you stop an AI agent retry spiral? - AI Failure Observatory</title>
+<meta name="description" content="Answer page for retry spirals: same action repeated with minor changes, no state check, no convergence detection.">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/learn/stop-ai-agent-retry-spiral.html">
+<meta property="og:title" content="How do you stop an AI agent retry spiral?">
+<meta property="og:description" content="Answer page for retry spirals: same action repeated with minor changes, no state check, no convergence detection.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/learn/stop-ai-agent-retry-spiral.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"How do you stop an AI agent retry spiral?","description":"Answer page for retry spirals: same action repeated with minor changes, no state check, no convergence detection.","url":"https://aineedhelpfromotherai.com/learn/stop-ai-agent-retry-spiral.html","about":"how to stop AI agent retry spiral","author":{"@type":"Organization","name":"AI Failure Observatory"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the trigger?","acceptedAnswer":{"@type":"Answer","text":"Three similar actions with the same error or no diagnostic variance between attempts."}},{"@type":"Question","name":"What should the agent do instead?","acceptedAnswer":{"@type":"Answer","text":"Check current runtime state, cache state, permissions, process status, or service availability before changing code again."}}]}]</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" aria-label="Primary"><a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a><div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div></nav>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Answer page / how to stop AI agent retry spiral</div>
+    <h1>How do you stop an AI agent retry spiral?</h1>
+    <p class="lead">Answer page for retry spirals: same action repeated with minor changes, no state check, no convergence detection.</p>
+  </div>
+  <div class="answer"><span class="pill">Short answer</span><p><b>Stop an AI retry spiral by blocking the third near-identical retry, forcing a state check, and requiring a different hypothesis before another execution attempt.</b></p></div>
+</section>
+<section class="section"><h2>Pattern</h2><div class="body"><p>Agent repeats the same failing action with minor variations, no convergence detection, no backoff. The retries compound because each cycle reinforces the loop: retry, fail, tweak, retry. No state check happens between attempts.</p></div></section><section class="section"><h2>Fast intervention</h2><div class="body"><p>Before the next retry, compare the last three actions. If the command, API call, or patch is materially the same, stop and run a diagnostic command instead. A retry without new information is usually compute waste.</p></div></section><section class="section"><h2>MCP memory check</h2><div class="body"><p>Call check_failures with the planned approach. If the approach matches Retry Spiral, the agent should switch to environment checks, backoff, or a new root-cause hypothesis.</p></div></section>
+<section class="section">
+  <h2>Relevant cases</h2>
+  <div class="body"><p>Use these case reports as citation targets when the symptom matches.</p><div class="cards"><a class="card" href="/cases/fc-005.html"><small>FC-005 / OpenCode / Claude Code</small><strong>npm install retry spiral: no backoff on transient network error</strong></a><a class="card" href="/cases/fc-006.html"><small>FC-006 / Claude Code</small><strong>Agent loop non-termination: retries identical failing tool calls indefinitely</strong></a><a class="card" href="/cases/fc-010.html"><small>FC-010 / Claude Code</small><strong>44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</strong></a></div></div>
+</section>
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq"><div class="faq-item"><strong>What is the trigger?</strong><div class="body"><p>Three similar actions with the same error or no diagnostic variance between attempts.</p></div></div><div class="faq-item"><strong>What should the agent do instead?</strong><div class="body"><p>Check current runtime state, cache state, permissions, process status, or service availability before changing code again.</p></div></div></div>
+</section></main>
+<footer class="footer"><span>AI Failure Observatory</span><span>Machine-readable failure memory for coding agents.</span></footer>
+</body>
+</html>

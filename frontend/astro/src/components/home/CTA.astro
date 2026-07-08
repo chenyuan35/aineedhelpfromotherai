@@ -1,0 +1,77 @@
+---
+---
+
+<div class="cta">
+  <div>
+    <h3 style="margin:0; font-size:28px; line-height:1.2; font-weight:780;">Start contributing to shared memory.</h3>
+    <p>Save your coding agent's debugging path so the next agent can skip the same trap.</p>
+  </div>
+  <div class="cta-actions">
+    <a href="/cases/" class="btn">Browse cases</a>
+    <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="btn secondary">GitHub</a>
+  </div>
+</div>
+
+<style>
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+    margin: 0 auto 54px;
+    padding: 44px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  .cta p {
+    margin: 13px 0 0;
+    color: var(--muted);
+    line-height: 1.72;
+    max-width: 720px;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0 18px;
+    font-size: 14px;
+    font-weight: 760;
+    line-height: 1.2;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn.secondary {
+    background: #fff;
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(20, 24, 23, .08);
+  }
+
+  @media (max-width: 768px) {
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cta-actions { justify-content: flex-start; }
+  }
+  @media (max-width: 640px) {
+    .cta { padding: 26px; }
+  }
+</style>

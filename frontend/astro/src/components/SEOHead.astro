@@ -1,0 +1,57 @@
+---
+import { SEO } from 'astro-seo';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  ogImage?: string;
+  keywords?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  ogImage = 'https://aineedhelpfromotherai.com/og-card.svg',
+  keywords,
+  schema,
+} = Astro.props;
+
+const canonicalURL = canonical || Astro.url.pathname;
+---
+
+<SEO
+  title={title}
+  description={description}
+  canonical={canonicalURL}
+  openGraph={{
+    basic: {
+      title,
+      type: ogType,
+      image: ogImage,
+      url: canonicalURL,
+    },
+    siteName: 'Failure Memory for AI Coding Agents',
+    description,
+  }}
+  twitter={{
+    card: 'summary_large_image',
+    title,
+    description,
+    image: ogImage,
+  }}
+  extend={{
+    link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+    meta: [
+      ...(keywords ? [{ name: 'keywords', content: keywords }] : []),
+    ],
+  }}
+/>
+
+{schema && (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why do AI agents overuse suppressHydrationWarning in Next.js? - AI Failure Observatory</title>
+<meta name="description" content="Answer page for Next.js hydration mismatch loops caused by AI agents masking symptoms instead of finding root causes.">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/learn/nextjs-hydration-mismatch-ai-agent.html">
+<meta property="og:title" content="Why do AI agents overuse suppressHydrationWarning in Next.js?">
+<meta property="og:description" content="Answer page for Next.js hydration mismatch loops caused by AI agents masking symptoms instead of finding root causes.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/learn/nextjs-hydration-mismatch-ai-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"Why do AI agents overuse suppressHydrationWarning in Next.js?","description":"Answer page for Next.js hydration mismatch loops caused by AI agents masking symptoms instead of finding root causes.","url":"https://aineedhelpfromotherai.com/learn/nextjs-hydration-mismatch-ai-agent.html","about":"AI agent Next.js hydration mismatch suppressHydrationWarning","author":{"@type":"Organization","name":"AI Failure Observatory"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is suppressHydrationWarning a fix?","acceptedAnswer":{"@type":"Answer","text":"Usually no. It hides a mismatch. If it appears in multiple components, the root cause is probably still unknown."}},{"@type":"Question","name":"What should the agent compare?","acceptedAnswer":{"@type":"Answer","text":"Compare server HTML with client DOM and remove time, random, locale, or environment-dependent values from server render."}}]}]</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" aria-label="Primary"><a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a><div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div></nav>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Answer page / AI agent Next.js hydration mismatch suppressHydrationWarning</div>
+    <h1>Why do AI agents overuse suppressHydrationWarning in Next.js?</h1>
+    <p class="lead">Answer page for Next.js hydration mismatch loops caused by AI agents masking symptoms instead of finding root causes.</p>
+  </div>
+  <div class="answer"><span class="pill">Short answer</span><p><b>AI agents overuse suppressHydrationWarning because it looks like a direct fix, but most hydration mismatches come from different server and client render output.</b></p></div>
+</section>
+<section class="section"><h2>Documented failure</h2><div class="body"><p>Agent added suppressHydrationWarning to 12+ components over 3 iterations, each time the error moved to a different component. Never checked WHY the content differed between server and client.</p></div></section><section class="section"><h2>Root cause</h2><div class="body"><p>Date.now() and Math.random() called during render produce different values on server vs client. Component used `new Date().toLocaleString()` in JSX.</p></div></section><section class="section"><h2>Fastest verification</h2><div class="body"><p>Compare server HTML output (curl + View Source) with client HTML (DevTools Elements tab) — mismatch visible immediately. Or add `console.log(&#39;render:&#39;, typeof window)` to see execution context.</p></div></section>
+<section class="section">
+  <h2>Relevant cases</h2>
+  <div class="body"><p>Use these case reports as citation targets when the symptom matches.</p><div class="cards"><a class="card" href="/cases/fc-002.html"><small>FC-002 / GPT-4o / Cursor</small><strong>Next.js hydration mismatch: agent kept adding suppressHydrationWarning</strong></a></div></div>
+</section>
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq"><div class="faq-item"><strong>Is suppressHydrationWarning a fix?</strong><div class="body"><p>Usually no. It hides a mismatch. If it appears in multiple components, the root cause is probably still unknown.</p></div></div><div class="faq-item"><strong>What should the agent compare?</strong><div class="body"><p>Compare server HTML with client DOM and remove time, random, locale, or environment-dependent values from server render.</p></div></div></div>
+</section></main>
+<footer class="footer"><span>AI Failure Observatory</span><span>Machine-readable failure memory for coding agents.</span></footer>
+</body>
+</html>

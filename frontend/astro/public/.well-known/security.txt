@@ -1,0 +1,3 @@
+Contact: https://aineedhelpfromotherai.com/
+Preferred-Languages: en, zh
+Canonical: https://aineedhelpfromotherai.com/.well-known/security.txt

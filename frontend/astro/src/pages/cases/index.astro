@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allCases = await getCollection('cases');
+allCases.sort((a, b) => a.data.id.localeCompare(b.data.id));
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Failure Cases",
+  "description": "Documented AI debugging failures with verified root causes and fixes.",
+  "author": { "@type": "Organization", "name": "AI Failure Observatory" },
+};
+---
+
+<BaseLayout
+  title="Failure Cases - AI Failure Observatory"
+  description="Documented AI debugging failures with verified root causes and fixes."
+  canonical="https://aineedhelpfromotherai.com/cases/"
+  ogType="article"
+  schema={schema}
+>
+  <div class="wrap">
+    <main class="page">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Failure intelligence</div>
+          <h1>Real AI coding-agent failures.</h1>
+          <p class="lead">Each case documents a real failure, what the agent assumed, the wrong turn it took, the root cause, the fastest way to verify, and the final fix.</p>
+          <div class="stats">
+            <div class="stat"><strong>{allCases.length}</strong><span>Documented failures</span></div>
+            <div class="stat"><strong>{allCases.reduce((s, c) => s + (c.data.timeWastedMinutes || 0), 0)}m</strong><span>Total wasted time</span></div>
+            <div class="stat"><strong>{new Set(allCases.map(c => c.data.agent)).size}</strong><span>Agent types</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid">
+          {allCases.map(c => (
+            <a href={`/cases/${c.data.id.toLowerCase()}/`} class="case-card">
+              <small>{c.data.id} · {c.data.dynamics.join(', ') || c.data.failureType}</small>
+              <h3>{c.data.title}</h3>
+              <p><strong>Root cause:</strong> {c.data.rootCause.substring(0, 120)}…</p>
+              <p><strong>Agent:</strong> {c.data.agent} · {c.data.framework} · {c.data.environment}</p>
+              <div class="tags">
+                {c.data.tags.slice(0, 3).map(t => <span class="tag">{t}</span>)}
+              </div>
+              <span class="card-link">Read case →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap { width: min(1120px, calc(100% - 56px)); margin: 0 auto; }
+  .hero { padding: 58px 0 18px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { margin: 0; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1; font-weight: 680; }
+  .lead { max-width: 680px; margin: 16px 0 0; color: var(--muted); font-size: 18px; line-height: 1.8; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); margin-top: 28px; max-width: 600px; }
+  .stat { padding: 18px; } .stat + .stat { border-left: 1px solid var(--line); }
+  .stat strong { display: block; font-size: 26px; line-height: 1.08; margin-bottom: 6px; }
+  .stat span { color: var(--muted); font-size: 12px; }
+  .section { padding: 48px 0; border-top: 1px solid var(--line); }
+  .grid { display: grid; gap: 18px; }
+  .case-card {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 14px; align-items: start;
+    background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 22px 24px;
+    color: inherit; text-decoration: none; transition: border-color .15s;
+  }
+  .case-card:hover { border-color: var(--accent); }
+  .case-card small { color: var(--faint); font-size: 12px; grid-column: 1 / -1; }
+  .case-card h3 { margin: 0; font-size: 18px; line-height: 1.32; font-weight: 680; }
+  .case-card p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .case-card p strong { color: var(--ink); }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .tag { border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px; padding: 3px 8px; font-size: 11px; color: var(--muted); }
+  .card-link { color: var(--accent); font-size: 14px; font-weight: 760; white-space: nowrap; align-self: center; }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: 1fr; } .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
+    .case-card { grid-template-columns: 1fr; }
+  }
+</style>

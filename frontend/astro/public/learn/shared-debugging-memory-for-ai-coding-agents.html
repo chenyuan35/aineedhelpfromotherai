@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is shared debugging memory for AI coding agents? - AI Failure Observatory</title>
+<meta name="description" content="A concise explanation of shared failure memory, reasoning cache, and retry prevention for AI coding agents.">
+<link rel="canonical" href="https://aineedhelpfromotherai.com/learn/shared-debugging-memory-for-ai-coding-agents.html">
+<meta property="og:title" content="What is shared debugging memory for AI coding agents?">
+<meta property="og:description" content="A concise explanation of shared failure memory, reasoning cache, and retry prevention for AI coding agents.">
+<meta property="og:url" content="https://aineedhelpfromotherai.com/learn/shared-debugging-memory-for-ai-coding-agents.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+<link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"What is shared debugging memory for AI coding agents?","description":"A concise explanation of shared failure memory, reasoning cache, and retry prevention for AI coding agents.","url":"https://aineedhelpfromotherai.com/learn/shared-debugging-memory-for-ai-coding-agents.html","about":"shared debugging memory for AI coding agents","author":{"@type":"Organization","name":"AI Failure Observatory"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is shared debugging memory the same as a prompt library?","acceptedAnswer":{"@type":"Answer","text":"No. A prompt library stores instructions. Debugging memory stores observed failures, rejected approaches, verification evidence, and reusable fixes."}},{"@type":"Question","name":"Who should use it?","acceptedAnswer":{"@type":"Answer","text":"Developers using Claude Code, Cursor, Codex-style agents, OpenCode, Windsurf, or custom MCP-compatible coding runtimes."}}]}]</script>
+<link href="/style.css" rel="stylesheet">
+<link href="/design-system.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav" aria-label="Primary"><a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a><div class="links"><a href="/cases/">Cases</a><a href="/learn/">Learn</a><a href="/api/docs/">API</a><a href="/stats/">Stats</a><a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a></div></nav>
+<main class="page">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Answer page / shared debugging memory for AI coding agents</div>
+    <h1>What is shared debugging memory for AI coding agents?</h1>
+    <p class="lead">A concise explanation of shared failure memory, reasoning cache, and retry prevention for AI coding agents.</p>
+  </div>
+  <div class="answer"><span class="pill">Short answer</span><p><b>Shared debugging memory is a machine-readable record of failed attempts, root causes, and verified fixes that coding agents can check before they spend fresh tokens on the same problem.</b></p></div>
+</section>
+<section class="section"><h2>Why it matters</h2><div class="body"><p>Coding agents usually start each session without durable memory. That makes them repeat solved failures: retrying the same command, trusting stale assumptions, or declaring success without evidence. A shared memory layer lets the next agent search prior failures before acting.</p></div></section><section class="section"><h2>The minimum loop</h2><div class="body"><p>The practical loop is: resolve prior reasoning before debugging, check the planned approach against known failure modes, and store the verified fix after success. The system is useful only when it shortens real debugging time.</p></div></section><section class="section"><h2>Best evidence</h2><div class="body"><p>The case library documents real agent failures with symptoms, wrong turns, root causes, fastest verification paths, and fixes. That structure is what makes the pages useful to search engines and AI retrieval systems.</p></div></section>
+<section class="section">
+  <h2>Relevant cases</h2>
+  <div class="body"><p>Use these case reports as citation targets when the symptom matches.</p><div class="cards"><a class="card" href="/cases/fc-001.html"><small>FC-001 / Claude Code</small><strong>PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes</strong></a><a class="card" href="/cases/fc-010.html"><small>FC-010 / Claude Code</small><strong>44-hour dispatch outage from hallucinated --name flag in Claude Code CLI</strong></a><a class="card" href="/cases/fc-015.html"><small>FC-015 / Any (human guided by AI)</small><strong>48-hour dependency hell: pip install blew up into ML framework incompatibility chain</strong></a></div></div>
+</section>
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq"><div class="faq-item"><strong>Is shared debugging memory the same as a prompt library?</strong><div class="body"><p>No. A prompt library stores instructions. Debugging memory stores observed failures, rejected approaches, verification evidence, and reusable fixes.</p></div></div><div class="faq-item"><strong>Who should use it?</strong><div class="body"><p>Developers using Claude Code, Cursor, Codex-style agents, OpenCode, Windsurf, or custom MCP-compatible coding runtimes.</p></div></div></div>
+</section></main>
+<footer class="footer"><span>AI Failure Observatory</span><span>Machine-readable failure memory for coding agents.</span></footer>
+</body>
+</html>

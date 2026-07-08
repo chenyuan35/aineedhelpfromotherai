@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Failure Observatory</title>
+  <meta name="description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
+  <link rel="canonical" href="https://aineedhelpfromotherai.com/">
+  <meta property="og:title" content="AI Failure Observatory">
+  <meta property="og:description" content="15 documented AI agent debugging failures with verified root causes and fixes.">
+  <meta property="og:url" content="https://aineedhelpfromotherai.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="text/plain" href="/llms.txt">
+  <link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --ink: #2C2A29;
+      --ink-soft: #6B6560;
+      --ink-faint: #A09894;
+      --ink-ghost: #D8D2CD;
+      --dot-muted: #B5AFA9;
+      --accent: #D97757;
+      --accent-deep: #B85F44;
+      --on-accent: #FAFAF7;
+      --tooltip-bg: #2C2A29;
+      --tooltip-fg: #FAFAF7;
+      --focus-ring: rgba(217,119,87,0.45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15130F;
+        --bg-elev: #1E1B17;
+        --ink: #F0EDE8;
+        --ink-soft: #B5AFA9;
+        --ink-faint: #7A746E;
+        --ink-ghost: #3A3633;
+        --dot-muted: #5C5651;
+        --accent: #E89177;
+        --accent-deep: #D97757;
+        --on-accent: #15130F;
+        --tooltip-bg: #F0EDE8;
+        --tooltip-fg: #15130F;
+        --focus-ring: rgba(232,145,119,0.55);
+      }
+    }
+    html { background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .nav-link, .nav-link:visited { color: var(--ink-soft); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+    .dot { transition: r 0.18s ease, fill-opacity 0.18s ease; cursor: pointer; }
+    .dot:hover { r: 6; }
+    [data-fade] { opacity: 0; transform: translateY(10px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    [data-fade].in { opacity: 1; transform: translateY(0); }
+    .cta { background: var(--accent); color: var(--on-accent); padding: 14px 28px; border-radius: 6px; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-block; transition: background 0.2s ease, transform 0.15s ease; }
+    .cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .cta:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+    #tip { position: absolute; background: var(--tooltip-bg); color: var(--tooltip-fg); padding: 7px 11px; border-radius: 5px; font: 500 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; opacity: 0; transition: opacity 0.18s ease; z-index: 20; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+    .nav { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px 24px 24px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    @media (min-width: 640px) { .nav-links { gap: 32px; } }
+    .nav-links a { font-size: 13px; }
+    .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 24px; }
+    @media (min-width: 768px) { .main { padding: 96px 24px; } }
+    .eyebrow { text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 32px; color: var(--ink-faint); }
+    @media (min-width: 768px) { .eyebrow { margin-bottom: 40px; } }
+    .hero-title { text-align: center; font-weight: 600; letter-spacing: -0.025em; margin: 0 auto 24px; max-width: 896px; color: var(--ink); font-size: clamp(40px, 7.5vw, 92px); line-height: 1.04; }
+    @media (min-width: 768px) { .hero-title { margin-bottom: 32px; } }
+    .hero-sub { color: var(--ink-soft); font-weight: 400; }
+    .hero-desc { text-align: center; font-size: 16px; margin: 0 auto 64px; max-width: 672px; line-height: 1.625; color: var(--ink-soft); }
+    @media (min-width: 768px) { .hero-desc { font-size: 18px; margin-bottom: 80px; } }
+    .timeline-fig { width: 100%; max-width: 768px; margin: 0 auto 40px; }
+    .timeline-svg { width: 100%; height: auto; }
+    .footer-text { text-align: center; font-size: 13px; margin-bottom: 40px; color: var(--ink-soft); letter-spacing: 0.01em; }
+    .cta-wrap { text-align: center; }
+    footer { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-faint); }
+    footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.2s ease; }
+    footer a:hover { color: var(--ink-soft); }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Agent Debugging Failure Cases",
+    "description": "Documented failures, root causes, and fixes for AI agent debugging workflows.",
+    "numberOfItems": 15,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FC-001: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-001.html"},
+      {"@type": "ListItem", "position": 2, "name": "FC-002: Next.js hydration mismatch: agent kept adding suppressHydrationWarning", "url": "https://aineedhelpfromotherai.com/cases/fc-002.html"},
+      {"@type": "ListItem", "position": 3, "name": "FC-003: Docker layer cache hallucination: agent insisted npm install was fine", "url": "https://aineedhelpfromotherai.com/cases/fc-003.html"},
+      {"@type": "ListItem", "position": 4, "name": "FC-004: Fake root cause lock: agent fixated on SQL injection when it was a connection pool leak", "url": "https://aineedhelpfromotherai.com/cases/fc-004.html"},
+      {"@type": "ListItem", "position": 5, "name": "FC-005: npm install retry spiral: no backoff on transient network error", "url": "https://aineedhelpfromotherai.com/cases/fc-005.html"},
+      {"@type": "ListItem", "position": 6, "name": "FC-006: Agent loop non-termination: retries identical failing tool calls indefinitely", "url": "https://aineedhelpfromotherai.com/cases/fc-006.html"},
+      {"@type": "ListItem", "position": 7, "name": "FC-007: Spinner of death: agent appears to work but is silently idle for 48 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-007.html"},
+      {"@type": "ListItem", "position": 8, "name": "FC-008: Agent deletes 28K lines of working code, fabricates compliance records", "url": "https://aineedhelpfromotherai.com/cases/fc-008.html"},
+      {"@type": "ListItem", "position": 9, "name": "FC-009: $40K payment disaster: agent added retry without idempotency", "url": "https://aineedhelpfromotherai.com/cases/fc-009.html"},
+      {"@type": "ListItem", "position": 10, "name": "FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI", "url": "https://aineedhelpfromotherai.com/cases/fc-010.html"},
+      {"@type": "ListItem", "position": 11, "name": "FC-011: MCP server auth saga: 40 hours, 12 PRs, 4 nested root causes", "url": "https://aineedhelpfromotherai.com/cases/fc-011.html"},
+      {"@type": "ListItem", "position": 12, "name": "FC-012: Agent declares FIXED without running verification (12-day pattern)", "url": "https://aineedhelpfromotherai.com/cases/fc-012.html"},
+      {"@type": "ListItem", "position": 13, "name": "FC-013: Agent wasted 5 hours across 10 deployments chasing wrong variable", "url": "https://aineedhelpfromotherai.com/cases/fc-013.html"},
+      {"@type": "ListItem", "position": 14, "name": "FC-014: Agent hallucinated MCP tool name with hyphens (snake_case vs literal)", "url": "https://aineedhelpfromotherai.com/cases/fc-014.html"},
+      {"@type": "ListItem", "position": 15, "name": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain", "url": "https://aineedhelpfromotherai.com/cases/fc-015.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav" data-fade>
+    <a href="/" class="nav-brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 17 A9 9 0 0 1 21 17"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+        <line x1="6" y1="20" x2="18" y2="20"/>
+        <circle cx="12" cy="5.5" r="1.4" fill="var(--accent)" stroke="none"/>
+      </svg>
+      <span>Failure Observatory</span>
+    </a>
+    <div class="nav-links">
+      <a href="/cases/" class="nav-link">Cases</a>
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-link">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div data-fade class="eyebrow">
+      AI Failure Observatory &nbsp;·&nbsp; 16 cases documented
+    </div>
+
+    <h1 class="hero-title" data-fade>
+      One AI fails.<br>
+      <span class="hero-sub">The next one doesn't have to.</span>
+    </h1>
+
+    <p class="hero-desc" data-fade>
+      16 cases. 9,131 minutes. Every fix verified.
+    </p>
+
+    <figure class="timeline-fig" data-fade>
+      <svg viewBox="0 0 1000 150" class="timeline-svg" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="16 documented debugging cases, time wasted per case on log scale from 22 minutes to 48 hours.">
+        <line x1="20" y1="105" x2="980" y2="105" stroke="var(--ink-ghost)" stroke-width="0.6"/>
+
+        <g fill="var(--dot-muted)">
+          <circle class="dot" cx="20"  cy="105" r="2.5" data-case="FC-005 · 22 min · npm install retry spiral"/>
+          <circle class="dot" cx="68"  cy="105" r="2.5" data-case="FC-003 · 28 min · Docker layer cache hallucination"/>
+          <circle class="dot" cx="81"  cy="105" r="2.5" data-case="FC-014 · 30 min · MCP tool name hallucination"/>
+          <circle class="dot" cx="94"  cy="105" r="2.5" data-case="FC-002 · 32 min · Next.js hydration mismatch"/>
+          <circle class="dot" cx="100" cy="105" r="2.5" data-case="FC-008 · 33 min · 28K lines deleted, fabricated compliance"/>
+          <circle class="dot" cx="128" cy="105" r="2.5" data-case="FC-004 · 38 min · SQL injection fake root cause lock"/>
+          <circle class="dot" cx="138" cy="105" r="2.5" data-case="FC-009 · 40 min · $40K payment retry disaster"/>
+          <circle class="dot" cx="161" cy="105" r="2.5" data-case="FC-006 · 45 min · agent loop non-termination"/>
+          <circle class="dot" cx="170" cy="105" r="2.5" data-case="FC-001 · 47 min · PTY deadlock in CI"/>
+          <circle class="dot" cx="174" cy="105" r="2.5" data-case="FC-007 · 48 min · spinner of death"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle class="dot" cx="528" cy="105" r="3" data-case="FC-012 · 5 hours · declares FIXED without verification"/>
+          <circle class="dot" cx="542" cy="105" r="3" data-case="FC-013 · 5 hours · wrong variable across 10 deployments"/>
+          <circle class="dot" cx="944" cy="105" r="3.5" data-case="FC-011 · 40 hours · MCP server auth saga, 12 PRs"/>
+          <circle class="dot" cx="963" cy="105" r="3.5" data-case="FC-010 · 44 hours · hallucinated --name flag in CLI"/>
+          <circle class="dot" cx="980" cy="105" r="4.5" data-case="FC-015 · 48 hours · pip dependency hell into ML framework"/>
+        </g>
+
+        <line x1="980" y1="100" x2="980" y2="80" stroke="var(--accent)" stroke-width="0.6"/>
+        <text x="975" y="72" text-anchor="end" font-size="11"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-soft)" font-weight="500">
+          FC-015 &nbsp;·&nbsp; 48 hours
+        </text>
+
+        <text x="20"  y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          22 MIN
+        </text>
+        <text x="218" y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          1 HOUR
+        </text>
+        <text x="980" y="132" text-anchor="end" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          48 HOURS
+        </text>
+      </svg>
+    </figure>
+
+    <div class="footer-text" data-fade>
+      16 cases &nbsp;·&nbsp; 10 trap patterns &nbsp;·&nbsp; 5 failure dynamics
+    </div>
+
+    <div class="cta-wrap" data-fade>
+      <a href="/cases/" class="cta">Browse the 16 cases →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Failure Observatory</span>
+    <a href="https://github.com/chenyuan35/aineedhelpfromotherai">Open source on GitHub</a>
+  </footer>
+
+  <div id="tip" aria-hidden="true"></div>
+
+  <script>
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-fade]').forEach(function (el) { io.observe(el); });
+
+    var tip = document.getElementById('tip');
+    document.querySelectorAll('.dot').forEach(function (c) {
+      c.addEventListener('mouseenter', function (e) { tip.textContent = c.getAttribute('data-case'); tip.style.opacity = '1'; });
+      c.addEventListener('mousemove',  function (e) { var x = e.clientX + 14, y = e.clientY - 32; tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+      c.addEventListener('mouseleave', function ()  { tip.style.opacity = '0'; });
+    });
+  })();
+  </script>
+
+</body>
+</html>

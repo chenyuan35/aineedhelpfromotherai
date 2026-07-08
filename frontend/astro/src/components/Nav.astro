@@ -1,0 +1,120 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="/"><span class="mark">FM</span><span>Failure Memory</span></a>
+    <button class="hamburger" id="hamburger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="/cases/">Cases</a>
+      <a href="/learn/">Learn</a>
+      <a href="/#search-memory">Search</a>
+      <a href="/api/docs/">API</a>
+      <a href="/stats/">Stats</a>
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a>
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Scroll effect
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger?.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true' ? false : true;
+    hamburger.setAttribute('aria-expanded', String(expanded));
+    navLinks.classList.toggle('open');
+  });
+</script>
+
+<style>
+  .nav { 
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background .15s, box-shadow .15s;
+  }
+  .nav.scrolled {
+    background: rgba(251, 251, 250, .92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  [data-theme="dark"] .nav.scrolled {
+    background: rgba(15, 18, 17, .92);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand span:last-child { font-size: 15px; font-weight: 780; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform .2s;
+  }
+
+  @media (max-width: 640px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+    .nav-links.open { display: flex; }
+    .nav.scrolled .nav-links {
+      background: rgba(251, 251, 250, .98);
+    }
+  }
+</style>

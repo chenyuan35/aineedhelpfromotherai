@@ -1,0 +1,111 @@
+---
+// Console — terminal animation showing memory recall example
+---
+
+<aside class="console" aria-label="Memory recall example">
+  <div class="console-top"><span>agent-memory-loop</span><span class="status">online</span></div>
+  <pre class="terminal terminal-animated"><span class="tl" style="--d:0"><span class="muted">$</span> resolve_reasoning("Next.js hydration mismatch")
+<span class="ok">hit</span> FC-002
+<span class="muted">root cause</span> server/client render drift</span><span class="tl" style="--d:1">
+<span class="muted">$</span> check_failures("add suppressHydrationWarning")
+<span class="warn">risk</span> masks symptom; root cause still unknown</span><span class="tl" style="--d:2">
+<span class="muted">$</span> verify_first("compare server HTML vs client DOM")
+<span class="ok">next</span> fix deterministic render source</span></pre>
+  <div class="console-grid">
+    <div class="console-step"><b>1. Search</b><p>Find existing reasoning before spending fresh tokens.</p></div>
+    <div class="console-step"><b>2. Verify</b><p>Check risky approaches against known failure patterns.</p></div>
+    <div class="console-step"><b>3. Reuse</b><p>Store the verified fix so the next agent starts smarter.</p></div>
+  </div>
+</aside>
+
+<style>
+  .console {
+    background: var(--code);
+    color: var(--code-text);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 24px;
+  }
+
+  .console-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: rgba(255,255,255,.04);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  .console-top .status {
+    color: #4ade80;
+    font-weight: 700;
+  }
+
+  .terminal {
+    margin: 0;
+    padding: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: auto;
+    max-height: 320px;
+  }
+
+  .terminal .muted { color: var(--faint); }
+  .terminal .ok { color: #4ade80; font-weight: 700; }
+  .terminal .warn { color: #fbbf24; font-weight: 700; }
+
+  .terminal-animated .tl {
+    display: block;
+    opacity: 0;
+    animation: terminal-reveal .5s ease forwards;
+    animation-delay: calc(var(--d) * 1.2s);
+  }
+
+  @keyframes terminal-reveal {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .console-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+
+  .console-step {
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+
+  .console-step + .console-step {
+    border-left: 1px solid rgba(255,255,255,.08);
+  }
+
+  .console-step b {
+    display: block;
+    color: var(--code-text);
+    font-size: 13px;
+    margin-bottom: 9px;
+  }
+
+  .console-step p {
+    margin: 0;
+    color: var(--faint);
+    font-size: 12.5px;
+    line-height: 1.66;
+  }
+
+  @media (max-width: 980px) {
+    .console-grid { grid-template-columns: 1fr; }
+    .console-step + .console-step {
+      border-left: 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+  }
+</style>
