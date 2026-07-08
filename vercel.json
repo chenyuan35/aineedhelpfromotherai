@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/cases/:path*", "destination": "/frontend/cases/:path*" },
+    { "source": "/learn/:path*", "destination": "/frontend/learn/:path*" },
+    { "source": "/for-humans", "destination": "/frontend/for-humans/index.html" },
+    { "source": "/for-humans/", "destination": "/frontend/for-humans/index.html" },
+    { "source": "/for-agents", "destination": "/frontend/for-agents/index.html" },
+    { "source": "/for-agents/", "destination": "/frontend/for-agents/index.html" },
+    { "source": "/how-it-works", "destination": "/frontend/how-it-works/index.html" },
+    { "source": "/how-it-works/", "destination": "/frontend/how-it-works/index.html" },
+    { "source": "/stats", "destination": "/frontend/stats/index.html" },
+    { "source": "/stats/", "destination": "/frontend/stats/index.html" },
+    { "source": "/api/docs/:path*", "destination": "/frontend/api/docs/:path*" },
+    { "source": "/privacy", "destination": "/frontend/privacy/index.html" },
+    { "source": "/privacy/", "destination": "/frontend/privacy/index.html" },
+    { "source": "/about", "destination": "/frontend/about/index.html" },
+    { "source": "/about/", "destination": "/frontend/about/index.html" },
+    { "source": "/ads.txt", "destination": "/frontend/ads.txt" },
+    { "source": "/favicon.svg", "destination": "/frontend/favicon.svg" },
+    { "source": "/robots.txt", "destination": "/frontend/robots.txt" },
+    { "source": "/llms.txt", "destination": "/frontend/llms.txt" },
+    { "source": "/ai.txt", "destination": "/frontend/ai.txt" },
+    { "source": "/feed.xml", "destination": "/frontend/feed.xml" }
+  ]
+}
