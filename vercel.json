@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/cases/(.*)", "destination": "/frontend/cases/$1" },
-    { "source": "/learn/(.*)", "destination": "/frontend/learn/$1" },
+    { "source": "/cases/:path*", "destination": "/frontend/cases/:path*" },
+    { "source": "/learn/:path*", "destination": "/frontend/learn/:path*" },
+    { "source": "/about/:path*", "destination": "/frontend/about/:path*" },
     { "source": "/for-humans", "destination": "/frontend/for-humans/index.html" },
     { "source": "/for-humans/", "destination": "/frontend/for-humans/index.html" },
     { "source": "/for-agents", "destination": "/frontend/for-agents/index.html" },
@@ -10,17 +11,16 @@
     { "source": "/how-it-works/", "destination": "/frontend/how-it-works/index.html" },
     { "source": "/stats", "destination": "/frontend/stats/index.html" },
     { "source": "/stats/", "destination": "/frontend/stats/index.html" },
-    { "source": "/api/docs", "destination": "/frontend/api/docs/index.html" },
-    { "source": "/api/docs/", "destination": "/frontend/api/docs/index.html" },
+    { "source": "/api/docs/:path*", "destination": "/frontend/api/docs/:path*" },
     { "source": "/privacy", "destination": "/frontend/privacy/index.html" },
     { "source": "/privacy/", "destination": "/frontend/privacy/index.html" },
     { "source": "/terms", "destination": "/frontend/terms/index.html" },
     { "source": "/terms/", "destination": "/frontend/terms/index.html" },
-    { "source": "/:file(.*\\.html)", "destination": "/frontend/:file" },
-    { "source": "/:file(.*\\.css)", "destination": "/frontend/:file" },
-    { "source": "/:file(.*\\.svg)", "destination": "/frontend/:file" },
-    { "source": "/:file(.*\\.txt)", "destination": "/frontend/:file" },
-    { "source": "/:file(.*\\.xml)", "destination": "/frontend/:file" },
+    { "source": "/:file(.+\\.html)", "destination": "/frontend/:file" },
+    { "source": "/:file(.+\\.css)", "destination": "/frontend/:file" },
+    { "source": "/:file(.+\\.svg)", "destination": "/frontend/:file" },
+    { "source": "/:file(.+\\.txt)", "destination": "/frontend/:file" },
+    { "source": "/:file(.+\\.xml)", "destination": "/frontend/:file" },
     { "source": "/favicon.svg", "destination": "/frontend/favicon.svg" },
     { "source": "/og-card.svg", "destination": "/frontend/og-card.svg" },
     { "source": "/robots.txt", "destination": "/frontend/robots.txt" },
@@ -28,5 +28,5 @@
     { "source": "/ai.txt", "destination": "/frontend/ai.txt" },
     { "source": "/ads.txt", "destination": "/frontend/ads.txt" },
     { "source": "/feed.xml", "destination": "/frontend/feed.xml" }
-  ],
-  }
+  ]
+}
