@@ -1,13 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=/">
-<title>Moved</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8244441500123371" crossorigin="anonymous"></script>
-<link rel="canonical" href="https://aineedhelpfromotherai.com/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Failure Observatory — Documented AI Agent Debugging Failures</title>
+  <meta name="description" content="16 documented AI coding agent debugging failures with verified root causes and fixes. Search shared failure memory before retrying. MCP server included.">
+  <link rel="canonical" href="https://aineedhelpfromotherai.com/">
+  <meta property="og:title" content="AI Failure Observatory — Failure Intelligence for AI Coding Agents">
+  <meta property="og:description" content="16 documented AI agent debugging failures with verified fixes. Stop your coding agent from repeating the same bug.">
+  <meta property="og:url" content="https://aineedhelpfromotherai.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aineedhelpfromotherai.com/og-card.svg">
+  <meta name="keywords" content="AI agent, debugging, failure, MCP, coding agent, Claude Code, Cursor, shared memory">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="text/plain" href="/llms.txt">
+  <link rel="alternate" type="application/rss+xml" title="AI Failure Observatory feed" href="/feed.xml">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --ink: #2C2A29;
+      --ink-soft: #6B6560;
+      --ink-faint: #A09894;
+      --ink-ghost: #D8D2CD;
+      --dot-muted: #B5AFA9;
+      --accent: #D97757;
+      --accent-deep: #B85F44;
+      --on-accent: #FAFAF7;
+      --tooltip-bg: #2C2A29;
+      --tooltip-fg: #FAFAF7;
+      --focus-ring: rgba(217,119,87,0.45);
+      --section-gap: 80px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15130F;
+        --bg-elev: #1E1B17;
+        --ink: #F0EDE8;
+        --ink-soft: #B5AFA9;
+        --ink-faint: #7A746E;
+        --ink-ghost: #3A3633;
+        --dot-muted: #5C5651;
+        --accent: #E89177;
+        --accent-deep: #D97757;
+        --on-accent: #15130F;
+        --tooltip-bg: #F0EDE8;
+        --tooltip-fg: #15130F;
+        --focus-ring: rgba(232,145,119,0.55);
+      }
+    }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .nav-link, .nav-link:visited { color: var(--ink-soft); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; font-size: 13px; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+    .dot { transition: r 0.18s ease, fill-opacity 0.18s ease; cursor: pointer; }
+    .dot:hover { r: 6; }
+    [data-fade] { opacity: 0; transform: translateY(10px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    [data-fade].in { opacity: 1; transform: translateY(0); }
+    .cta { background: var(--accent); color: var(--on-accent); padding: 14px 28px; border-radius: 6px; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-block; transition: background 0.2s ease, transform 0.15s ease; }
+    .cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .cta:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+    .cta-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); padding: 13px 27px; border-radius: 6px; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-block; transition: background 0.2s ease, transform 0.15s ease; }
+    .cta-outline:hover { background: var(--accent); color: var(--on-accent); transform: translateY(-1px); }
+    #tip { position: absolute; background: var(--tooltip-bg); color: var(--tooltip-fg); padding: 7px 11px; border-radius: 5px; font: 500 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; opacity: 0; transition: opacity 0.18s ease; z-index: 20; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+    .nav { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    @media (min-width: 640px) { .nav-links { gap: 32px; } }
+    .hero-wrap { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 24px 40px; }
+    @media (min-width: 768px) { .hero-wrap { padding: 96px 24px 60px; } }
+    .eyebrow { text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 32px; color: var(--ink-faint); }
+    @media (min-width: 768px) { .eyebrow { margin-bottom: 40px; } }
+    .hero-title { text-align: center; font-weight: 600; letter-spacing: -0.025em; margin: 0 auto 24px; max-width: 896px; color: var(--ink); font-size: clamp(40px, 7.5vw, 92px); line-height: 1.04; }
+    @media (min-width: 768px) { .hero-title { margin-bottom: 32px; } }
+    .hero-sub { color: var(--ink-soft); font-weight: 400; }
+    .hero-desc { text-align: center; font-size: 16px; margin: 0 auto 64px; max-width: 672px; line-height: 1.625; color: var(--ink-soft); }
+    @media (min-width: 768px) { .hero-desc { font-size: 18px; margin-bottom: 80px; } }
+    .timeline-fig { width: 100%; max-width: 768px; margin: 0 auto 40px; }
+    .timeline-svg { width: 100%; height: auto; }
+    .hero-footer { text-align: center; font-size: 13px; margin-bottom: 40px; color: var(--ink-soft); letter-spacing: 0.01em; }
+    .cta-wrap { text-align: center; }
+
+    /* Content sections */
+    .section { max-width: 1120px; margin: 0 auto; padding: var(--section-gap) 24px; }
+    .section-title { font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--ink); }
+    .section-sub { font-size: 15px; color: var(--ink-soft); max-width: 600px; line-height: 1.6; margin-bottom: 48px; }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
+
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+    .card { background: var(--bg-elev); border: 1px solid var(--ink-ghost); border-radius: 12px; padding: 32px; transition: box-shadow 0.3s ease, transform 0.2s ease; }
+    .card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    @media (prefers-color-scheme: dark) { .card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.25); } }
+    .card-num { font-size: 28px; font-weight: 700; color: var(--ink-ghost); margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+    .card p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .card code { display: inline-block; font-size: 12px; background: var(--bg); border: 1px solid var(--ink-ghost); padding: 3px 8px; border-radius: 4px; color: var(--accent); margin-top: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .case-row { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 768px) { .case-row { grid-template-columns: 1fr 1fr; } }
+    .case-item { border-bottom: 1px solid var(--ink-ghost); padding: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+    .case-item:last-child { border-bottom: none; }
+    .case-tag { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+    .case-item h3 { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .case-item p { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+    .case-item a { color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 500; }
+    .case-item a:hover { text-decoration: underline; }
+
+    .stat-row { display: flex; flex-wrap: wrap; gap: 16px 48px; justify-content: center; padding: 32px 0; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 700; color: var(--ink); }
+    .stat-label { font-size: 12px; color: var(--ink-faint); margin-top: 4px; letter-spacing: 0.02em; }
+
+    .cta-section { text-align: center; padding: 40px 0; }
+    .cta-section .cta { margin: 0 8px 12px; }
+
+    footer { width: 100%; max-width: 1152px; margin: 0 auto; padding: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-faint); border-top: 1px solid var(--ink-ghost); }
+    footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.2s ease; }
+    footer a:hover { color: var(--ink-soft); }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Agent Debugging Failure Cases",
+    "description": "Documented failures, root causes, and fixes for AI agent debugging workflows.",
+    "numberOfItems": 16,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FC-001: PTY deadlock in CI: agent stuck on tcsetpgrp for 47 minutes", "url": "https://aineedhelpfromotherai.com/cases/fc-001.html"},
+      {"@type": "ListItem", "position": 2, "name": "FC-002: Next.js hydration mismatch: agent kept adding suppressHydrationWarning", "url": "https://aineedhelpfromotherai.com/cases/fc-002.html"},
+      {"@type": "ListItem", "position": 10, "name": "FC-010: 44-hour dispatch outage from hallucinated --name flag in Claude Code CLI", "url": "https://aineedhelpfromotherai.com/cases/fc-010.html"},
+      {"@type": "ListItem", "position": 15, "name": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain", "url": "https://aineedhelpfromotherai.com/cases/fc-015.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
-<p>This page moved. Go to <a href="/">aineedhelpfromotherai.com</a>.</p>
+
+  <nav class="nav" data-fade>
+    <a href="/" class="nav-brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 17 A9 9 0 0 1 21 17"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+        <line x1="6" y1="20" x2="18" y2="20"/>
+        <circle cx="12" cy="5.5" r="1.4" fill="var(--accent)" stroke="none"/>
+      </svg>
+      <span>Failure Observatory</span>
+    </a>
+    <div class="nav-links">
+      <a href="/cases/" class="nav-link">Cases</a>
+      <a href="/learn/" class="nav-link">Learn</a>
+      <a href="/for-agents/" class="nav-link">MCP</a>
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai" class="nav-link">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero section (original design preserved) -->
+  <div class="hero-wrap">
+
+    <div data-fade class="eyebrow">
+      AI Failure Observatory &nbsp;·&nbsp; 16 cases documented
+    </div>
+
+    <h1 class="hero-title" data-fade>
+      One AI fails.<br>
+      <span class="hero-sub">The next one doesn't have to.</span>
+    </h1>
+
+    <p class="hero-desc" data-fade>
+      16 cases. 9,131 minutes. Every fix verified.
+    </p>
+
+    <figure class="timeline-fig" data-fade>
+      <svg viewBox="0 0 1000 150" class="timeline-svg" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="16 documented debugging cases, time wasted per case on log scale from 22 minutes to 48 hours.">
+        <line x1="20" y1="105" x2="980" y2="105" stroke="var(--ink-ghost)" stroke-width="0.6"/>
+
+        <g fill="var(--dot-muted)">
+          <circle class="dot" cx="20"  cy="105" r="2.5" data-case="FC-005 · 22 min · npm install retry spiral"/>
+          <circle class="dot" cx="68"  cy="105" r="2.5" data-case="FC-003 · 28 min · Docker layer cache hallucination"/>
+          <circle class="dot" cx="81"  cy="105" r="2.5" data-case="FC-014 · 30 min · MCP tool name hallucination"/>
+          <circle class="dot" cx="94"  cy="105" r="2.5" data-case="FC-002 · 32 min · Next.js hydration mismatch"/>
+          <circle class="dot" cx="100" cy="105" r="2.5" data-case="FC-008 · 33 min · 28K lines deleted, fabricated compliance"/>
+          <circle class="dot" cx="128" cy="105" r="2.5" data-case="FC-004 · 38 min · SQL injection fake root cause lock"/>
+          <circle class="dot" cx="138" cy="105" r="2.5" data-case="FC-009 · 40 min · $40K payment retry disaster"/>
+          <circle class="dot" cx="161" cy="105" r="2.5" data-case="FC-006 · 45 min · agent loop non-termination"/>
+          <circle class="dot" cx="170" cy="105" r="2.5" data-case="FC-001 · 47 min · PTY deadlock in CI"/>
+          <circle class="dot" cx="174" cy="105" r="2.5" data-case="FC-007 · 48 min · spinner of death"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle class="dot" cx="528" cy="105" r="3" data-case="FC-012 · 5 hours · declares FIXED without verification"/>
+          <circle class="dot" cx="542" cy="105" r="3" data-case="FC-013 · 5 hours · wrong variable across 10 deployments"/>
+          <circle class="dot" cx="944" cy="105" r="3.5" data-case="FC-011 · 40 hours · MCP server auth saga, 12 PRs"/>
+          <circle class="dot" cx="963" cy="105" r="3.5" data-case="FC-010 · 44 hours · hallucinated --name flag in CLI"/>
+          <circle class="dot" cx="980" cy="105" r="4.5" data-case="FC-015 · 48 hours · pip dependency hell into ML framework"/>
+        </g>
+
+        <line x1="980" y1="100" x2="980" y2="80" stroke="var(--accent)" stroke-width="0.6"/>
+        <text x="975" y="72" text-anchor="end" font-size="11"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-soft)" font-weight="500">
+          FC-015 &nbsp;·&nbsp; 48 hours
+        </text>
+
+        <text x="20"  y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          22 MIN
+        </text>
+        <text x="218" y="132" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          1 HOUR
+        </text>
+        <text x="980" y="132" text-anchor="end" font-size="9.5"
+              font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--ink-faint)" letter-spacing="0.04em">
+          48 HOURS
+        </text>
+      </svg>
+    </figure>
+
+    <div class="hero-footer" data-fade>
+      16 cases &nbsp;·&nbsp; 10 trap patterns &nbsp;·&nbsp; 5 failure dynamics
+    </div>
+
+    <div class="cta-wrap" data-fade>
+      <a href="/cases/" class="cta">Browse the 16 cases →</a>
+    </div>
+
+  </div>
+
+  <!-- Stats strip -->
+  <div class="section" style="padding: 20px 24px;">
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-num">16</div><div class="stat-label">Documented failures</div></div>
+      <div class="stat-item"><div class="stat-num">9,131</div><div class="stat-label">Minutes observed</div></div>
+      <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Trap patterns</div></div>
+      <div class="stat-item"><div class="stat-num">17</div><div class="stat-label">MCP tools</div></div>
+      <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Reasoning objects</div></div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="section">
+    <div data-fade>
+      <div class="section-eyebrow">Core Loop</div>
+      <h2 class="section-title">One memory lookup before every risky retry.</h2>
+      <p class="section-sub">AI coding agents waste 40+ hours on traps that have already been solved. The fix is a short operational loop: search memory, check failure risk, verify the root cause, then store the reusable fix.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" data-fade>
+        <div class="card-num">01</div>
+        <h3>Search memory</h3>
+        <p>Call <code>search_reasoning</code> or <code>/api/memory/search</code> with an error description before debugging from scratch. Returns similar failures, known traps, and fastest verification steps.</p>
+      </div>
+      <div class="card" data-fade>
+        <div class="card-num">02</div>
+        <h3>Check failure risks</h3>
+        <p>Use <code>check_failures</code> to identify plausible but risky fixes that have led to dead ends before. Avoid spending 40 minutes on strategies proven to fail.</p>
+      </div>
+      <div class="card" data-fade>
+        <div class="card-num">03</div>
+        <h3>Store verified fixes</h3>
+        <p>Use <code>store_reasoning</code> to promote verified fixes into shared memory. Only records with evidence, test logs, and reproducible steps are promoted.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured cases -->
+  <div class="section">
+    <div data-fade>
+      <div class="section-eyebrow">Verified Cases</div>
+      <h2 class="section-title">Measured failures, not generic AI advice.</h2>
+      <p class="section-sub">These cases show real agent traps: hallucinated flags, retry spirals, masked errors, and success claims without evidence. Each includes symptoms, root cause, and the fastest verification path.</p>
+    </div>
+
+    <div class="case-row" data-fade>
+      <div class="case-item">
+        <div class="case-tag">FC-010 / 44 hours</div>
+        <h3>Hallucinated CLI flag</h3>
+        <p>Claude Code agent invented a <code>--name</code> flag that never existed. Iterated 30+ times with different spellings before anyone checked the docs. Caused 44-hour production dispatch outage.</p>
+        <a href="/cases/fc-010.html">Read case →</a>
+      </div>
+      <div class="case-item">
+        <div class="case-tag">FC-015 / 48 hours</div>
+        <h3>Dependency hell cascade</h3>
+        <p>pip install triggered an ML framework incompatibility chain. Agent spent 2 days reinstalling different versions instead of checking the dependency resolver output first.</p>
+        <a href="/cases/fc-015.html">Read case →</a>
+      </div>
+      <div class="case-item">
+        <div class="case-tag">FC-012 / 5 hours</div>
+        <h3>Declared FIXED without verification</h3>
+        <p>Agent applied a code change, declared success, and moved on — but the fix never ran. Pattern repeated for 12 days before a human caught it. No test, no log, no verification step.</p>
+        <a href="/cases/fc-012.html">Read case →</a>
+      </div>
+      <div class="case-item">
+        <div class="case-tag">FC-001 / 47 minutes</div>
+        <h3>PTY deadlock in CI</h3>
+        <p>Shell command hung silently. Agent tried 10+ flag combinations over 47 minutes. Root cause: <code>tcsetpgrp</code> sent SIGTTOU to a background process in an uninitialized PTY.</p>
+        <a href="/cases/fc-001.html">Read case →</a>
+      </div>
+    </div>
+
+    <div class="cta-section" data-fade>
+      <a href="/cases/" class="cta-outline">View all 16 cases →</a>
+    </div>
+  </div>
+
+  <!-- For developers -->
+  <div class="section">
+    <div data-fade>
+      <div class="section-eyebrow">MCP Server</div>
+      <h2 class="section-title">Connect your coding agent in one line.</h2>
+      <p class="section-sub">Failure Memory runs as a public MCP server with zero authentication. 17 tools including semantic search, failure risk checks, reasoning storage, and drift detection.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" data-fade>
+        <h3>Claude Code</h3>
+        <p>Add to <code>claude.json</code> or <code>.mcp.json</code>. Agents check failure memory before every retry.</p>
+        <code>npx -y @aineedhelpfromotherai/mcp</code>
+      </div>
+      <div class="card" data-fade>
+        <h3>Any MCP client</h3>
+        <p>Streamable HTTP transport at <code>api.aineedhelpfromotherai.com/mcp</code>. No auth, no API key, no signup.</p>
+        <code>{"url": "https://api.../mcp"}</code>
+      </div>
+      <div class="card" data-fade>
+        <h3>REST API</h3>
+        <p>All tools available as REST endpoints for non-MCP workflows. Full docs at <code>/api/docs/</code>.</p>
+        <code>GET /api/memory/search?q=...</code>
+      </div>
+    </div>
+
+    <div class="cta-section" data-fade>
+      <a href="/for-agents/" class="cta-outline">Integration guide →</a>
+      <a href="/api/docs/" class="cta-outline">API docs →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Failure Observatory</span>
+    <span>
+      <a href="/privacy/">Privacy</a> &nbsp;·&nbsp;
+      <a href="/terms/">Terms</a> &nbsp;·&nbsp;
+      <a href="https://github.com/chenyuan35/aineedhelpfromotherai">GitHub</a>
+    </span>
+  </footer>
+
+  <div id="tip" aria-hidden="true"></div>
+
+  <script>
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-fade]').forEach(function (el) { io.observe(el); });
+
+    var tip = document.getElementById('tip');
+    document.querySelectorAll('.dot').forEach(function (c) {
+      c.addEventListener('mouseenter', function (e) { tip.textContent = c.getAttribute('data-case'); tip.style.opacity = '1'; });
+      c.addEventListener('mousemove',  function (e) { var x = e.clientX + 14, y = e.clientY - 32; tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+      c.addEventListener('mouseleave', function ()  { tip.style.opacity = '0'; });
+    });
+  })();
+  </script>
+
 </body>
 </html>
