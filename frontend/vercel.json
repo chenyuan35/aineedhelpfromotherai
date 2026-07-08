@@ -1,10 +1,13 @@
 {
-  "rewrites": [
-    { "source": "/api/docs", "destination": "/api/docs/index.html" },
-    { "source": "/api/docs/", "destination": "/api/docs/index.html" },
-    { "source": "/api/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/$1" },
-    { "source": "/core/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/core/$1" },
-    { "source": "/mcp", "destination": "https://api-tunnel.aineedhelpfromotherai.com/mcp" },
-    { "source": "/mcp/(.*)", "destination": "https://api-tunnel.aineedhelpfromotherai.com/mcp/$1" }
-  ]
+  "redirects": [
+    { "source": "/cases/:id.html", "destination": "/cases/:id.html", "permanent": true },
+    { "source": "/learn/:slug", "destination": "/learn/:slug.html", "permanent": true },
+    { "source": "/for-humans", "destination": "/for-humans/", "permanent": true },
+    { "source": "/for-agents", "destination": "/for-agents/", "permanent": true },
+    { "source": "/how-it-works", "destination": "/how-it-works/", "permanent": true },
+    { "source": "/stats", "destination": "/stats/", "permanent": true }
+  ],
+  "overrides": {
+    "index.html": { "contentType": "text/html; charset=utf-8" }
+  }
 }
