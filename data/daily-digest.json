@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-20T08:53:33.868Z",
+  "last_updated": "2026-07-21T08:24:18.091Z",
   "cases_added_today": 0,
   "public_cases": 16,
   "suppressed_generated_cases": 0,
@@ -11,5 +11,5 @@
   "latest_public_case": "Auto-generator poisoned the curated failure memory with synthetic cases and duplicates",
   "top_public_case": "FC-015: 48-hour dependency hell: pip install blew up into ML framework incompatibility chain",
   "next_action": "Collect measured effectiveness for pending interventions before adding new claims.",
-  "update_count": 47
+  "update_count": 48
 }
