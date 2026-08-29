@@ -14,6 +14,7 @@
     { "source": "/stats", "destination": "/frontend/stats/index.html" },
     { "source": "/stats/", "destination": "/frontend/stats/index.html" },
     { "source": "/api/docs/:path*", "destination": "/frontend/api/docs/:path*" },
+    { "source": "/api/:path*", "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/:path*" },
     { "source": "/privacy", "destination": "/frontend/privacy/index.html" },
     { "source": "/privacy/", "destination": "/frontend/privacy/index.html" },
     { "source": "/about", "destination": "/frontend/about/index.html" },

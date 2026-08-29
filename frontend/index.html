@@ -1715,7 +1715,7 @@
     }
   }
 }</pre></article>
-          <article class="api-card"><div class="api-title">REST memory search</div><pre>curl -s -X POST "https://api.aineedhelpfromotherai.com/api/memory/search" \
+          <article class="api-card"><div class="api-title">REST memory search</div><pre>curl -s -X POST "https://api-tunnel.aineedhelpfromotherai.com/api/memory/search" \
   -H "Content-Type: application/json" \
   -d '{"query":"your debugging problem","limit":3}'</pre></article>
         </div>
@@ -1784,7 +1784,7 @@
     }
 
     const apiTargets = (path) => {
-      const remote = 'https://api.aineedhelpfromotherai.com' + path;
+      const remote = 'https://api-tunnel.aineedhelpfromotherai.com' + path;
       const localStatic = ['localhost', '127.0.0.1', '::1'].includes(location.hostname) && location.port !== '3000';
       return (location.protocol === 'file:' || localStatic) ? [remote] : [path, remote];
     };
