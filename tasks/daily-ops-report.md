@@ -1,6 +1,6 @@
 # Daily Ops Report
 
-Generated: 2026-08-30T11:13:47.225Z
+Generated: 2026-08-31T12:39:26.679Z
 
 ## Evidence Health
 
