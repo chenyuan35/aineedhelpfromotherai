@@ -30,7 +30,7 @@ for (const slug of slugs) {
   html = html.slice(0, start) + fixedDownloadIcs + html.slice(endMarker + 2);
 
   const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
-    .filter(m => !m[0].includes(' src='))
+    .filter(m => !m[0].includes(' src=') && !m[0].includes('application/ld+json'))
     .map(m => m[1]);
   for (const code of inlineScripts) new Function(code);
   writeFileSync(file, html);
