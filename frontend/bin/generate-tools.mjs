@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { imageTools } from './image-tools.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -179,7 +180,8 @@ const tools = [
       ['Does daylight saving time affect the result?', 'No. The calculation uses UTC calendar dates rather than local elapsed hours.']
     ],
     related: ['age-calculator','percentage-calculator','percentage-increase-calculator']
-  }
+  },
+  ...imageTools
 ];
 
 const bySlug = new Map(tools.map(t => [t.slug, t]));

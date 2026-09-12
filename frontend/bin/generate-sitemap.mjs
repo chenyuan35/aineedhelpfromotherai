@@ -15,6 +15,8 @@ const entries = [
   ['/tools/discount-calculator/', 'monthly', '0.9'],
   ['/tools/age-calculator/', 'monthly', '0.9'],
   ['/tools/date-difference-calculator/', 'monthly', '0.9'],
+  ['/tools/image-resizer/', 'monthly', '0.9'],
+  ['/tools/image-compressor/', 'monthly', '0.9'],
   ['/about/', 'monthly', '0.5'],
   ['/contact/', 'monthly', '0.4'],
   ['/privacy/', 'yearly', '0.3'],
