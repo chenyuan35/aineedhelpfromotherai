@@ -9,7 +9,7 @@ const dist = join(root, 'dist');
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
-for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs']) {
+for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
 for (const f of ['index.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg']) {
