@@ -15,13 +15,13 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | Search Console | GSC Wizard is connected to `sc-domain:aineedhelpfromotherai.com`. Last 28 settled days: 589 impressions, 0 clicks, avg position 43.24; those impressions are almost entirely from the historical AI-debugging pages because GSC data is settled only through 2026-09-10 | Treat current utility pages as a new indexing cohort rather than optimizing from old query data |
 | Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Keep tracker running and watch for first tool-page crawl/index/impression signals |
 | URL normalization | FIXED in PR #19. Vercel now uses `trailingSlash: true`, matching generated canonical and sitemap URLs. Production checks show `/tools/` and `/tools/cursor-usage-reset/` resolve directly with 200; GSC on-page re-audit found 0 issues on the checked pages | Do not change URL style again without evidence; keep sitemap/canonical/internal links aligned |
-| GSC sitemap state | GSC has the intended `https://aineedhelpfromotherai.com/sitemap.xml`; its historical report still reflects older submissions/warnings while live fetch reads 19 current URLs | Refresh/resubmit the intended sitemap if needed and monitor new cohort data rather than stale counts |
-| Analytics | GA4 property/data stream exists with measurement ID `G-FYKKNKRE58`. PR #21 injects the Google tag once into every production HTML page; production homepage and Cursor tool were verified live with the tag present | Grant/connect Google Analytics scope in GSC Wizard, then verify GA4 property visibility and incoming traffic there |
+| GSC sitemap state | Live `https://aineedhelpfromotherai.com/sitemap.xml` fetch contains 19 URLs. Search Console's older sitemap record still reports 40 submitted, 0 indexed and 17 warnings from its prior crawl, while current sitemap performance sees the homepage receiving impressions and the other 18 URLs at zero | Treat the Search Console sitemap counts as stale until Google re-downloads the current sitemap; monitor rather than rebuilding URLs again |
+| Analytics | GA4 property/data stream with measurement ID `G-FYKKNKRE58` is live site-wide from PR #21. GSC Wizard Analytics consent is connected, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 rollout annotation was added | Wait for the first settled GA4 sessions/page views, then use GA4 for referral/direct/engagement decisions alongside GSC |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
 | Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update checkpoint and master plan after material progress/priority changes |
-| Last completed work | PR #18 added the master progress board; PR #19 fixed canonical URL normalization; PR #21 deployed GA4 tracking site-wide. GSC connection/tracker and VPS radar are active | Next work is GSC/GA4 connection plus sitemap/indexing monitoring, not another broad tool batch |
+| Last completed work | PR #19 fixed canonical URL normalization; PR #21 deployed GA4 tracking site-wide; PR #22 recorded the rollout. GA4 is now authorized/linked in GSC Wizard and the indexing tracker remains active | Next work is indexing monitoring plus first settled GA4 data, not another broad tool batch |
 
-Immediate priority: connect the new GA4 property to GSC Wizard, refresh the sitemap/indexing loop, and monitor the 15 tracked URLs. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
+Immediate priority: keep the 15-URL indexing tracker active, let Google re-read the current 19-URL sitemap, and verify the first settled GA4 traffic once it appears. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
 
 ## Mission
 
@@ -96,7 +96,7 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 
 1. Get the current utility sitemap cohort discovered/indexed by Google.
 2. Keep the new static tool site stable and fast.
-3. Connect the live GA4 property to GSC Wizard so non-Google traffic and engagement can be measured.
+3. Use the connected GA4 property in GSC Wizard once settled data appears so direct/referral/engagement can complement Search Console.
 4. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
 5. Use the VPS keyword radar to collect fresh autocomplete demand daily.
 6. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
