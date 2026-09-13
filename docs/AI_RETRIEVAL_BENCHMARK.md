@@ -68,13 +68,19 @@ For pages we want AI agents/search tools to surface:
 
 ## Machine-readable discovery files
 
-The repository previously contained legacy `llms.txt` / `ai.txt` files describing the old AI-debugging product, and the current static build did not copy those files into `frontend/dist`. This is an AI-retrieval consistency defect.
+The repository previously contained legacy `llms.txt` / `ai.txt` files describing the old AI-debugging product, and the current static build did not copy those files into `frontend/dist`. This was an AI-retrieval consistency defect.
 
-The current remediation round:
+PR #32 fixed it by:
 
-- rewrites root and frontend `llms.txt` for the utility-site mission and all current tool URLs;
-- rewrites root and frontend `ai.txt` with current retrieval/citation guidance;
-- changes the production build to ship `/llms.txt` and `/ai.txt` at the site root.
+- rewriting root and frontend `llms.txt` for the utility-site mission and all current tool URLs;
+- rewriting root and frontend `ai.txt` with current retrieval/citation guidance;
+- changing the production build to ship `/llms.txt` and `/ai.txt` at the site root.
+
+Production verification on 2026-09-13:
+- Vercel preview/status passed and PR #32 merged.
+- A cache-busted fetch of `https://aineedhelpfromotherai.com/llms.txt?v=20260913-32` returned the new utility-site content.
+- A cache-busted fetch of `https://aineedhelpfromotherai.com/ai.txt?v=20260913-32` returned the new retrieval/citation content.
+- Exa's normal cached fetch of `/llms.txt` still returned the previous AI-debugging version immediately after deployment, while `/ai.txt` returned the new version. This is direct evidence that provider caches can lag production and that we must distinguish live origin state from provider-index/cache state.
 
 These files are supplemental discovery hints, not a ranking shortcut. The main ranking/discovery work remains useful pages, crawlability, indexing, external references, freshness and relevance.
 
@@ -87,6 +93,7 @@ Run the same small test set instead of ad-hoc searching:
 3. Domain query: describe the domain and relevant utility family.
 4. Known-URL extraction: fetch the canonical URL directly.
 5. Record rank/top-N presence, extracted snippet quality, freshness and any stale competing representation.
+6. When checking deployment freshness, compare canonical cached retrieval with a cache-busted/live retrieval where the provider permits it; never mistake a stale retrieval cache for a failed deployment.
 
 Providers to test when available: Exa, Tavily, Google/Bing, ChatGPT Search, Perplexity or other agent-search surfaces actually used by the workflow.
 
@@ -94,8 +101,8 @@ Do not optimize to a single provider from one run. Look for repeatable failure p
 
 ## Next actions
 
-1. Deploy the corrected `/llms.txt` and `/ai.txt` files and verify HTTP 200 plus current utility content in production.
+1. Allow the corrected discovery files and external authority signals time to propagate through provider indexes/caches; do not repeatedly rewrite them.
 2. Continue earning relevant external references to the Cursor page; this addresses the current discovery/ranking bottleneck more directly than adding more machine-readable files.
-3. Re-run the Exa/Tavily benchmark after the deployment has been crawlable and external discovery has had time to propagate.
+3. Re-run the Exa/Tavily benchmark after propagation and compare against this baseline.
 4. Track AI-assistant referral sessions/citations separately from search-tool retrieval presence.
 5. Fix the public GitHub repository description/topics when a repo-metadata write path is available; the repository currently still exposes legacy AI-debugging metadata even though the README was corrected.
