@@ -11,7 +11,7 @@ const GA4_TAG = `<script async src="https://www.googletagmanager.com/gtag/js?id=
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
-for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','refine-home-ux.mjs','apply-theme.mjs']) {
+for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','apply-theme.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
 for (const f of ['index.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg']) {
