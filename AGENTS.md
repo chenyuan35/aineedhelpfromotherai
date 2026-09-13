@@ -2,9 +2,10 @@
 
 This repository's current mission is the low-cost utility site at `aineedhelpfromotherai.com`.
 
-Before making changes, read:
-1. `PROJECT_CONTEXT.md` — durable source of truth, architecture, priorities, safety boundaries.
-2. `docs/OPERATING_WORKFLOW.md` — research → build → test → PR → deploy → measure loop.
+Before making changes:
+1. Read the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md` first.
+2. Read `docs/OPERATING_WORKFLOW.md` for the execution loop.
+3. Inspect deeper repository/VPS/deployment state only when the current task requires it or the checkpoint is stale/contradictory.
 
 Core rule: optimize for organic traffic, indexing, CTR, repeat utility, page speed, and sustainable AdSense revenue. Prefer useful browser-only tools with real search demand and negligible per-user cost.
 
@@ -23,3 +24,8 @@ Research constraints:
 - Validate topics with real signals; do not invent volume/CPC/difficulty.
 - Ubersuggest is preferred when available; autocomplete, public discussions, official docs, and Search Console are valid complementary evidence.
 - One distinct useful page per intent; avoid scaled thin/duplicate pages.
+
+Handoff constraint:
+- Treat the checkpoint in `PROJECT_CONTEXT.md` as the resume point, not chat memory.
+- Update that checkpoint after every material release, blocker, architecture change, or strategy change.
+- Do not waste a new session on a full-state rediscovery if the checkpoint already answers the question.
