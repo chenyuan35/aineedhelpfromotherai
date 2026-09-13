@@ -13,6 +13,8 @@ Build authority around the already-indexed Cursor reset page before adding anoth
 Primary page:
 - `https://aineedhelpfromotherai.com/tools/cursor-usage-reset/`
 
+For AI-native search/retrieval integration, the ordered execution queue is now `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`. The governing principle is non-adversarial: integrate with legitimate discovery, relevance, quality, freshness, authority and citation signals rather than attempting to bypass or manipulate provider algorithms.
+
 ## Outreach ledger
 
 | Date | Target | Why relevant | Action | Status | Next check |
@@ -37,7 +39,7 @@ For each new target:
 
 ## AI discovery / answer-engine plan
 
-The goal is not to "trick" an AI model. Current Google and Bing guidance says AI answers depend heavily on the same crawl, index, relevance, quality and authority foundations as search. The practical target is to make our pages easy to retrieve, easy to understand, easy to quote, and worth citing.
+The goal is not to "trick" an AI model. Current search/AI retrieval guidance and our own provider tests point to the same practical target: make pages easy to discover, retrieve, understand, quote and trust.
 
 ### 1. Crawl and retrieval eligibility
 
@@ -47,7 +49,7 @@ Verified 2026-09-13:
 - Bing Webmaster is connected.
 - IndexNow is already running daily.
 
-Do not add special crawler rules unless a real access problem appears. OpenAI states that ChatGPT Search discovery requires not blocking `OAI-SearchBot`; the current wildcard allow already satisfies that for public pages. Perplexity similarly recommends allowing `PerplexityBot`; the current wildcard rule does so.
+Do not add special crawler rules unless a real access problem appears. Crawler eligibility is necessary but not sufficient for retrieval/ranking.
 
 ### 2. Make pages citation-friendly
 
@@ -76,13 +78,13 @@ AI retrieval systems and search engines are more likely to trust content that is
 Track three separate outcomes:
 - Search: Google/Bing impressions, queries, CTR and indexed status.
 - Referral: GA4 sessions from external sites.
-- AI assistants: GA4 referrals from ChatGPT, Perplexity, Copilot, Gemini, Claude and other assistants through GSC Wizard; Bing Webmaster AI Performance/citation data when available in the account; Google Search Console generative-AI visibility reports when available.
+- AI assistants: GA4 referrals from ChatGPT, Perplexity, Copilot, Gemini, Claude and other assistants through GSC Wizard; Bing/Google AI visibility reports when available.
 
 Baseline on 2026-09-13: GSC Wizard reports no settled AI-assistant referral sessions yet. This is a baseline, not a failure signal, because the new site/indexing rollout happened the same day.
 
 ### 5. AI-native search retrieval benchmark
 
-Detailed benchmark protocol and results now live in `docs/AI_RETRIEVAL_BENCHMARK.md`.
+Detailed benchmark protocol and results live in `docs/AI_RETRIEVAL_BENCHMARK.md`.
 
 Verified 2026-09-13 with Exa:
 - a natural-language Cursor reset intent query did not return our site in the top 10;
@@ -92,22 +94,30 @@ Verified 2026-09-13 with Exa:
 
 Interpretation: the page is machine-readable once known. The current AI-native search bottleneck is candidate discovery/indexing/ranking plus stale external representations, not page extraction.
 
-Remediation in progress:
-- rewrite legacy `llms.txt` and `ai.txt` to describe the current utility site;
-- ship those files in the production static build;
-- keep building relevant external references rather than treating machine-readable files as a ranking shortcut;
-- add Tavily to the same benchmark after a real Tavily search/extract run is available. Tavily AI was connected on 2026-09-13; do not invent a pass/fail before executing the benchmark.
+Completed remediation:
+- PR #32 rewrote legacy `llms.txt` and `ai.txt` for the current utility site;
+- the production static build now publishes those files at the site root;
+- fresh/cache-busted retrieval verified the new production content;
+- Exa still showed a stale canonical `llms.txt` copy immediately afterward, proving provider cache/index lag must be tracked separately.
+
+Current ordered AIR status:
+- AIR-0 non-adversarial/provider-aligned principle: DONE.
+- AIR-1 provider benchmark methodology: ACTIVE; Exa baseline exists, Tavily baseline still requires an executable provider run.
+- AIR-2 machine-readable identity consistency: DONE.
+- AIR-3 external metadata alignment: BLOCKED until a repository metadata write path or manual UI action is available.
+- AIR-4 legitimate external corroboration: ACTIVE.
+- AIR-5 Exa/Tavily rerun: WAITING for propagation.
 
 ## Next execution queue
 
-1. Deploy and verify current `/llms.txt` and `/ai.txt` on the production domain, then record the release result in the benchmark.
-2. Wait for and inspect replies from the first three outreach emails; update this ledger with every outcome.
-3. Research a second batch of 3–5 highly relevant Cursor/AI-usage resources; contact only those with a clear contextual fit.
-4. Check whether the Cursor page begins receiving settled search queries/impressions after the Sep 13 indexing event.
-5. Re-run the Exa/Tavily retrieval benchmark after the discovery-file deployment and after external references have had time to propagate.
-6. Check AI-assistant referral traffic and Bing/Google AI visibility signals after enough data has settled.
-7. If Cursor earns meaningful search/citation/referral signals, replicate the depth pattern to exactly one other existing indexed page before considering new tools.
-8. If outreach gets no response, change the value proposition or target class before increasing volume; do not simply send more identical emails.
+1. Continue AIR-1 only when a real Tavily provider run is executable; do not invent a result.
+2. Continue AIR-4 through the existing small, relevant Cursor authority program; verify earned mentions independently.
+3. After 5–7 days, inspect replies from the first three outreach emails and record every outcome.
+4. Allow provider caches/indexes and external authority signals time to propagate; do not repeatedly rewrite discovery files.
+5. Run AIR-5: repeat the same Exa/Tavily benchmark and compare discovery rank, extraction quality and cache freshness against the baseline.
+6. Use the result to advance AIR-6 and identify the actual failing stage before any new page optimization.
+7. Check settled search queries/impressions, AI-assistant referral traffic and Bing/Google AI visibility signals when enough data exists.
+8. If Cursor earns meaningful search/citation/referral signals, replicate the proven pattern to exactly one other existing indexed page.
 
 ## Decision log
 
@@ -116,3 +126,4 @@ Remediation in progress:
 - 2026-09-13: Began authority outreach with three personalized emails; no link is counted until independently verified.
 - 2026-09-13: Added AI-answer visibility as a measured channel alongside classic search and referral traffic. Strategy is retrieval/citation readiness, not speculative "AI hacks".
 - 2026-09-13: Added an explicit AI-native search benchmark. First Exa run shows clean direct extraction but weak discovery/ranking; this separates retrieval visibility from ordinary Google index status.
+- 2026-09-13: Formalized the AIR workstream as a strict ordered queue. The project will integrate with provider algorithms through legitimate signals and observable retrieval stages, not by trying to crack, bypass or game them.
