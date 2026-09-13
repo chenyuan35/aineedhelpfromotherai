@@ -80,14 +80,34 @@ Track three separate outcomes:
 
 Baseline on 2026-09-13: GSC Wizard reports no settled AI-assistant referral sessions yet. This is a baseline, not a failure signal, because the new site/indexing rollout happened the same day.
 
+### 5. AI-native search retrieval benchmark
+
+Detailed benchmark protocol and results now live in `docs/AI_RETRIEVAL_BENCHMARK.md`.
+
+Verified 2026-09-13 with Exa:
+- a natural-language Cursor reset intent query did not return our site in the top 10;
+- an exact concept/title query did not return the direct Cursor utility page in the top 5;
+- direct known-URL extraction of the Cursor page succeeded and returned the important answer-first sections cleanly;
+- a domain-oriented query surfaced the GitHub repository, but not the direct utility site, and the retrieved repository representation was stale/legacy.
+
+Interpretation: the page is machine-readable once known. The current AI-native search bottleneck is candidate discovery/indexing/ranking plus stale external representations, not page extraction.
+
+Remediation in progress:
+- rewrite legacy `llms.txt` and `ai.txt` to describe the current utility site;
+- ship those files in the production static build;
+- keep building relevant external references rather than treating machine-readable files as a ranking shortcut;
+- add Tavily to the same benchmark after a real Tavily search/extract run is available. Tavily AI was connected on 2026-09-13; do not invent a pass/fail before executing the benchmark.
+
 ## Next execution queue
 
-1. Wait for and inspect replies from the first three outreach emails; update this ledger with every outcome.
-2. Research a second batch of 3–5 highly relevant Cursor/AI-usage resources; contact only those with a clear contextual fit.
-3. Check whether the Cursor page begins receiving settled search queries/impressions after the Sep 13 indexing event.
-4. Check AI-assistant referral traffic and Bing/Google AI visibility signals after enough data has settled.
-5. If Cursor earns meaningful search/citation/referral signals, replicate the depth pattern to exactly one other existing indexed page before considering new tools.
-6. If outreach gets no response, change the value proposition or target class before increasing volume; do not simply send more identical emails.
+1. Deploy and verify current `/llms.txt` and `/ai.txt` on the production domain, then record the release result in the benchmark.
+2. Wait for and inspect replies from the first three outreach emails; update this ledger with every outcome.
+3. Research a second batch of 3–5 highly relevant Cursor/AI-usage resources; contact only those with a clear contextual fit.
+4. Check whether the Cursor page begins receiving settled search queries/impressions after the Sep 13 indexing event.
+5. Re-run the Exa/Tavily retrieval benchmark after the discovery-file deployment and after external references have had time to propagate.
+6. Check AI-assistant referral traffic and Bing/Google AI visibility signals after enough data has settled.
+7. If Cursor earns meaningful search/citation/referral signals, replicate the depth pattern to exactly one other existing indexed page before considering new tools.
+8. If outreach gets no response, change the value proposition or target class before increasing volume; do not simply send more identical emails.
 
 ## Decision log
 
@@ -95,3 +115,4 @@ Baseline on 2026-09-13: GSC Wizard reports no settled AI-assistant referral sess
 - 2026-09-13: PR #30 deepened the existing Cursor URL rather than creating another page.
 - 2026-09-13: Began authority outreach with three personalized emails; no link is counted until independently verified.
 - 2026-09-13: Added AI-answer visibility as a measured channel alongside classic search and referral traffic. Strategy is retrieval/citation readiness, not speculative "AI hacks".
+- 2026-09-13: Added an explicit AI-native search benchmark. First Exa run shows clean direct extraction but weak discovery/ranking; this separates retrieval visibility from ordinary Google index status.
