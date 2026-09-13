@@ -13,6 +13,14 @@ Default VPS data directory: `/var/lib/aineedhelp-radar/`
 - `seen.json` — first/last-seen state used to identify new phrases
 - `reports/*.json` — timestamped run history
 
+## Install on the VPS
+
+```sh
+sudo sh ops/keyword-radar/install.sh
+```
+
+The installer uses a systemd timer when PID 1 is systemd. In the current QwenPaw container, PID 1 is supervisord, so it installs a tiny Python scheduler, starts it immediately without restarting QwenPaw, and appends a supervisord program entry for future container restarts. The default daily run is around 03:20 UTC with up to 20 minutes of jitter.
+
 ## Local test
 
 ```sh
