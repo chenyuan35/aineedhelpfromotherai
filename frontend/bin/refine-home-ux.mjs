@@ -20,7 +20,8 @@ const tools = [
   ['Cursor Usage Reset Calculator','/tools/cursor-usage-reset/','cursor usage limit reset'],
   ['AI Credit Burn Rate Calculator','/tools/ai-credit-burn-rate-calculator/','ai credits burn rate usage'],
   ['GitHub Copilot AI Credits Reset Timer','/tools/github-copilot-credits-reset/','github copilot credits reset'],
-  ['Bolt Tokens Reset Calculator','/tools/bolt-tokens-reset/','bolt tokens reset usage']
+  ['Bolt Tokens Reset Calculator','/tools/bolt-tokens-reset/','bolt tokens reset usage'],
+  ['AI Relay Exit Risk Checker','/tools/relay-exit-risk-checker/','ai api relay shutdown exit risk prepaid community model dilution']
 ];
 
 let html = readFileSync(homePath, 'utf8');
