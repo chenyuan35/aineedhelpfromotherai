@@ -17,12 +17,13 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | URL normalization | FIXED in PR #19. Vercel now uses `trailingSlash: true`, matching generated canonical and sitemap URLs. Production checks show `/tools/` and `/tools/cursor-usage-reset/` resolve directly with 200; GSC on-page re-audit found 0 issues on the checked pages | Do not change URL style again without evidence; keep sitemap/canonical/internal links aligned |
 | Homepage UX | PR #24 replaced the oversized marketing-style hero with a calmer task-first homepage: smaller headline, direct tool search, task shortcuts, spacious quick-start cards, softer visual hierarchy, and unchanged SEO URLs/canonicals | Preserve this task-first, comfort-oriented direction; avoid oversized slogans or dense dashboard-style UI |
 | GSC sitemap state | Live `https://aineedhelpfromotherai.com/sitemap.xml` fetch contains 19 URLs. Search Console's older sitemap record still reports 40 submitted, 0 indexed and 17 warnings from its prior crawl, while current sitemap performance sees the homepage receiving impressions and the other 18 URLs at zero | Treat the Search Console sitemap counts as stale until Google re-downloads the current sitemap; monitor rather than rebuilding URLs again |
+| External discovery | PR #27 replaced the public GitHub README's historical AI-debugging positioning with the current utility-site mission and direct links to live tools. The existing daily IndexNow workflow was inspected; its most recent verified run completed the `Submit sitemap to IndexNow` step successfully on 2026-09-12. Bing Webmaster data is not yet configured in GSC Wizard | Keep GitHub links accurate; connect Bing Webmaster/API access, then verify the current sitemap/feed there. Use selective discovery only, not bulk spam |
 | Analytics | GA4 property/data stream with measurement ID `G-FYKKNKRE58` is live site-wide from PR #21. GSC Wizard Analytics consent is connected, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 rollout annotation was added | Wait for the first settled GA4 sessions/page views, then use GA4 for referral/direct/engagement decisions alongside GSC |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
 | Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update checkpoint and master plan after material progress/priority changes |
-| Last completed work | PR #24 shipped the homepage comfort/task-discovery redesign after PR #21 GA4 rollout and PR #23 GA4/indexing documentation. Production verification confirmed the new heading, search UI, quick-start sections, and GA4 tag live | Next work is still indexing monitoring plus first settled GA4 data, not another broad tool batch |
+| Last completed work | PR #27 aligned the public GitHub README with the current utility site and added direct live-tool links. Before that, PR #24 shipped the homepage comfort/task-discovery redesign after PR #21 GA4 rollout and PR #23 GA4/indexing documentation | Continue indexing/discovery work and wait for first settled utility-page signals; do not start another broad tool batch |
 
-Immediate priority: keep the 15-URL indexing tracker active, let Google re-read the current 19-URL sitemap, and verify the first settled GA4 traffic once it appears. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
+Immediate priority: keep the 15-URL indexing tracker active, let Google re-read the current 19-URL sitemap, request indexing manually for only a small set of priority utility URLs, connect Bing Webmaster/API access, and verify the first settled GA4 traffic once it appears. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
 
 ## Mission
 
@@ -104,6 +105,7 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 7. Improve existing pages before making duplicate pages for near-identical intents.
 8. Preserve sitemap/canonical/internal-link hygiene on every release.
 9. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
+10. Build a small number of legitimate discovery paths in parallel with indexing: accurate public GitHub links, Bing/IndexNow, and later relevant directories/communities; never bulk-submit spam links.
 
 ## Handoff rule for future sessions
 
