@@ -1,0 +1,11 @@
+[Unit]
+Description=Run aineedhelp keyword radar daily
+
+[Timer]
+OnCalendar=*-*-* 03:20:00 UTC
+RandomizedDelaySec=20m
+Persistent=true
+Unit=aineedhelp-keyword-radar.service
+
+[Install]
+WantedBy=timers.target
