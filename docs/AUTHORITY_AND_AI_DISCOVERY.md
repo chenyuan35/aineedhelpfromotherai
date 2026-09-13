@@ -13,7 +13,7 @@ Build authority around the already-indexed Cursor reset page before adding anoth
 Primary page:
 - `https://aineedhelpfromotherai.com/tools/cursor-usage-reset/`
 
-For AI-native search/retrieval integration, the ordered execution queue is now `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`. The governing principle is non-adversarial: integrate with legitimate discovery, relevance, quality, freshness, authority and citation signals rather than attempting to bypass or manipulate provider algorithms.
+For AI-native search/retrieval integration, the ordered execution queue is `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`. The governing principle is non-adversarial: integrate with legitimate discovery, relevance, quality, freshness, authority and citation signals rather than attempting to bypass or manipulate provider algorithms.
 
 ## Outreach ledger
 
@@ -100,21 +100,27 @@ Completed remediation:
 - fresh/cache-busted retrieval verified the new production content;
 - Exa still showed a stale canonical `llms.txt` copy immediately afterward, proving provider cache/index lag must be tracked separately.
 
+Tavily execution status:
+- On 2026-09-13 a real Tavily intent-query run was attempted with the connected tool.
+- Tavily rejected the request before search execution with HTTP 432 because the provider plan usage limit had been reached.
+- This is a quota blocker, not a discoverability result. No Tavily rank/pass/fail has been recorded.
+- Do not upgrade or change provider billing without explicit user approval.
+
 Current ordered AIR status:
 - AIR-0 non-adversarial/provider-aligned principle: DONE.
-- AIR-1 provider benchmark methodology: ACTIVE; Exa baseline exists, Tavily baseline still requires an executable provider run.
+- AIR-1 provider benchmark methodology: BLOCKED on Tavily provider quota; Exa baseline exists.
 - AIR-2 machine-readable identity consistency: DONE.
 - AIR-3 external metadata alignment: BLOCKED until a repository metadata write path or manual UI action is available.
 - AIR-4 legitimate external corroboration: ACTIVE.
-- AIR-5 Exa/Tavily rerun: WAITING for propagation.
+- AIR-5 Exa/Tavily rerun: WAITING for propagation and executable Tavily access.
 
 ## Next execution queue
 
-1. Continue AIR-1 only when a real Tavily provider run is executable; do not invent a result.
+1. Keep AIR-1 blocked until Tavily quota permits a real run; do not fabricate results or alter billing without explicit approval.
 2. Continue AIR-4 through the existing small, relevant Cursor authority program; verify earned mentions independently.
 3. After 5–7 days, inspect replies from the first three outreach emails and record every outcome.
 4. Allow provider caches/indexes and external authority signals time to propagate; do not repeatedly rewrite discovery files.
-5. Run AIR-5: repeat the same Exa/Tavily benchmark and compare discovery rank, extraction quality and cache freshness against the baseline.
+5. Run AIR-5 when propagation has occurred and Tavily can actually execute; compare discovery rank, extraction quality and cache freshness against the baseline.
 6. Use the result to advance AIR-6 and identify the actual failing stage before any new page optimization.
 7. Check settled search queries/impressions, AI-assistant referral traffic and Bing/Google AI visibility signals when enough data exists.
 8. If Cursor earns meaningful search/citation/referral signals, replicate the proven pattern to exactly one other existing indexed page.
@@ -127,3 +133,4 @@ Current ordered AIR status:
 - 2026-09-13: Added AI-answer visibility as a measured channel alongside classic search and referral traffic. Strategy is retrieval/citation readiness, not speculative "AI hacks".
 - 2026-09-13: Added an explicit AI-native search benchmark. First Exa run shows clean direct extraction but weak discovery/ranking; this separates retrieval visibility from ordinary Google index status.
 - 2026-09-13: Formalized the AIR workstream as a strict ordered queue. The project will integrate with provider algorithms through legitimate signals and observable retrieval stages, not by trying to crack, bypass or game them.
+- 2026-09-13: Attempted the first Tavily baseline. The provider blocked execution at its plan usage limit (HTTP 432), so AIR-1 is recorded as blocked rather than pretending a search result exists.
