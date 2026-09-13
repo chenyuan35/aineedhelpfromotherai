@@ -25,6 +25,19 @@ For AI-native search/retrieval integration, the ordered execution queue is `docs
 
 Current outcome: no reply/citation has been verified yet. Do not count sent email as an earned link.
 
+## Second-batch candidate research
+
+Researched on 2026-09-13 under AIR-4. These are candidates only; no message has been sent. Gmail was checked for prior correspondence with the public contact paths found during research and no previous threads were found.
+
+| Candidate | Relevant public surface | Why it is a fit | Current state |
+|---|---|---|---|
+| Learn Cursor | `learncursor.dev/learn/cursor-for-teams/cursor-usage-limits` | Dedicated, recently updated Cursor usage-limits guide covering the same user problem; a practical reset-date calculator could complement the explanatory guide | RESEARCHED — HOLD until the first-round 5–7 day response window is reached |
+| explainx.ai | `explainx.ai/blog/claude-codex-cursor-usage-limits-reset-july-2026` | Publishes current Cursor/Codex/Claude quota and reset coverage; the calculator provides an interactive utility alongside editorial coverage | RESEARCHED — HOLD until the first-round response window is reached |
+| QuotaMeter | `quotameter.app/blog/understanding-ai-rate-limits` and `quotameter.app` | Tracks Cursor and other AI usage limits and publishes rate-limit education, making it directly adjacent to reset-date/usage planning | RESEARCHED — HOLD; consider only a genuinely complementary resource suggestion, not a generic link exchange |
+| Cursor Usage Tracker | `cursorusage.url2.at/support` | Free Cursor usage tracker focused on included limits, billing reset and on-demand spend; highly relevant but product-adjacent | RESEARCHED — HOLD; contact only if a clear complementary use case is identified |
+
+Do not contact this batch merely to increase volume. First inspect the original three Gmail threads after 5–7 days. If the first round has weak/no response, prefer the stronger resource/training targets and adjust the value proposition before sending a second batch.
+
 ## Outreach execution rule
 
 For each new target:
@@ -117,7 +130,7 @@ Current ordered AIR status:
 ## Next execution queue
 
 1. Keep AIR-1 blocked until Tavily quota permits a real run; do not fabricate results or alter billing without explicit approval.
-2. Continue AIR-4 through the existing small, relevant Cursor authority program; verify earned mentions independently.
+2. Continue AIR-4 through the existing small, relevant Cursor authority program; the second-batch candidate shortlist is researched, but hold new sends until the first-round 5–7 day response window is reached and the original Gmail threads are inspected.
 3. After 5–7 days, inspect replies from the first three outreach emails and record every outcome.
 4. Allow provider caches/indexes and external authority signals time to propagate; do not repeatedly rewrite discovery files.
 5. Run AIR-5 when propagation has occurred and Tavily can actually execute; compare discovery rank, extraction quality and cache freshness against the baseline.
@@ -134,3 +147,4 @@ Current ordered AIR status:
 - 2026-09-13: Added an explicit AI-native search benchmark. First Exa run shows clean direct extraction but weak discovery/ranking; this separates retrieval visibility from ordinary Google index status.
 - 2026-09-13: Formalized the AIR workstream as a strict ordered queue. The project will integrate with provider algorithms through legitimate signals and observable retrieval stages, not by trying to crack, bypass or game them.
 - 2026-09-13: Attempted the first Tavily baseline. The provider blocked execution at its plan usage limit (HTTP 432), so AIR-1 is recorded as blocked rather than pretending a search result exists.
+- 2026-09-13: Researched a second AIR-4 outreach candidate batch (Learn Cursor, explainx.ai, QuotaMeter and Cursor Usage Tracker) and verified no prior Gmail correspondence on the public contact paths found. No new outreach was sent because the first round is still inside its 5–7 day response window.
