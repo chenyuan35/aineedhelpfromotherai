@@ -2,6 +2,23 @@
 
 Last updated: 2026-09-13
 
+## Current progress checkpoint
+
+Use this section first in a new session. Do not rescan the whole repository, VPS, deployment history, or old chat unless this checkpoint is stale, contradictory, or the current task requires deeper inspection.
+
+| Area | Current state | Next move |
+|---|---|---|
+| Production | Utility site is live on `https://aineedhelpfromotherai.com/`; Vercel deploys from GitHub `main` | Keep stable; verify only when releasing changes |
+| Tool inventory | 13 live tool pages: traditional calculators/image tools plus Manus, Replit, Cursor, AI burn-rate, GitHub Copilot, and Bolt quota/reset tools | Add only 1–2 validated tools per round |
+| Keyword discovery | VPS keyword radar is installed and running daily; first full run completed 320/320 source requests and found 1,227 candidates | Read `/var/lib/aineedhelp-radar/latest.md` when choosing topics |
+| Current radar signals | Strong phrases include Cursor usage-limit reset, Codex usage-limit reset, Claude weekly/usage-limit reset, plus image compressor/resizer combinations | Validate with Search Console, official docs, and available keyword metrics before building |
+| Search Console | Not connected to the working loop yet | Connect GSC and inspect indexing, impressions, queries, CTR, and positions before the next major expansion |
+| Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
+| Durable workflow | `AGENTS.md`, this file, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update this checkpoint after every material release, blocker, or strategy change |
+| Last completed infra work | PR #14 added the durable workflow + radar; PR #15 fixed scheduling for the actual supervisord QwenPaw container | Do not redo scheduler setup unless health checks fail |
+
+Immediate priority: connect Search Console, measure what Google is already showing, then select the next 1–2 pages from real impressions plus radar signals. Do not start a broad new batch before that measurement step.
+
 ## Mission
 
 Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that can earn small, stable Google AdSense revenue.
@@ -83,6 +100,8 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 
 ## Handoff rule for future sessions
 
-At the beginning of a new working session, read this file and `docs/OPERATING_WORKFLOW.md` before making project changes. Then inspect `ops/keyword-radar/` and the latest radar report on the VPS if the task involves new tool selection.
+At the beginning of a new working session, read `AGENTS.md`, then the Current progress checkpoint in this file, then `docs/OPERATING_WORKFLOW.md`. Do not perform a full repository/VPS audit merely to rediscover already-confirmed state. Inspect deeper only when the requested task depends on it or a checkpoint item is stale/contradictory.
+
+When a material milestone finishes, update the checkpoint in the same PR or immediately afterward. Material milestones include: a production release, a new tool family, a deployment/architecture change, Search Console becoming available, a major blocker, or a strategy change.
 
 GitHub `main` is the source of truth for code. If chat memory conflicts with repository state or production checks, trust the repository plus verified live state.

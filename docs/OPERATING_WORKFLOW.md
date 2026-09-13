@@ -2,6 +2,12 @@
 
 This is the default execution loop for `aineedhelpfromotherai.com`.
 
+## 0. Resume without rescanning
+
+At the start of a new session, read `AGENTS.md`, then the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md`, then this workflow. Do not perform a full repository/VPS/deployment audit unless the current task needs it or the checkpoint is stale/contradictory.
+
+The checkpoint must always answer four questions: what is live, what was just completed, what is blocked/waiting, and what the next concrete action is.
+
 ## 1. Discover
 
 Collect candidate queries from the VPS keyword radar, Ubersuggest when available, autocomplete, Search Console, current product documentation, and repeated public user questions.
@@ -67,8 +73,10 @@ Review performance in cohorts rather than reacting to one day of data. Useful si
 
 Use actual Search Console queries to decide whether to improve a page, add a distinct adjacent tool, or stop investing in the topic.
 
-## 7. Maintenance
+## 7. Maintenance and handoff
 
 The VPS radar runs daily and writes its latest shortlist under `/var/lib/aineedhelp-radar/`. Review newly appearing phrases first. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
 
-Update `PROJECT_CONTEXT.md` whenever architecture, domains, deployment flow, major tool families, safety constraints, or current strategic priorities materially change. This file is the durable handoff between sessions.
+After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Record only compact operational state, not a verbose diary: last completed milestone, current blocker/waiting state, next 1–3 actions, important live counts/URLs, and any new irreversible architecture fact.
+
+Do not duplicate long history in the checkpoint. Git history/PRs are the historical log; the checkpoint is only the current resume point.
