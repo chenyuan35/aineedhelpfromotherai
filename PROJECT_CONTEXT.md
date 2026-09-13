@@ -11,13 +11,15 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | Production | Utility site is live on `https://aineedhelpfromotherai.com/`; Vercel deploys from GitHub `main` | Keep stable; verify only when releasing changes |
 | Tool inventory | 13 live tool pages: traditional calculators/image tools plus Manus, Replit, Cursor, AI burn-rate, GitHub Copilot, and Bolt quota/reset tools | Add only 1–2 validated tools per round |
 | Keyword discovery | VPS keyword radar is installed and running daily; first full run completed 320/320 source requests and found 1,227 candidates | Read `/var/lib/aineedhelp-radar/latest.md` when choosing topics |
-| Current radar signals | Strong phrases include Cursor usage-limit reset, Codex usage-limit reset, Claude weekly/usage-limit reset, plus image compressor/resizer combinations | Validate with Search Console, official docs, and available keyword metrics before building |
-| Search Console | Not connected to the working loop yet | Connect GSC and inspect indexing, impressions, queries, CTR, and positions before the next major expansion |
+| Current radar signals | Strong phrases include Cursor usage-limit reset, Codex usage-limit reset, Claude weekly/usage-limit reset, plus image compressor/resizer combinations | Keep as candidate backlog; do not publish the next batch until indexing starts |
+| Search Console | GSC Wizard is connected to `sc-domain:aineedhelpfromotherai.com`. Last 28 settled days: 589 impressions, 0 clicks, avg position 43.24; those impressions are almost entirely from the historical AI-debugging pages because GSC data is settled only through 2026-09-10 | Treat current utility pages as a new indexing cohort rather than optimizing from old query data |
+| Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker now monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Let tracker run; re-check indexing before choosing the next release. If still unknown after Google re-fetches the sitemap, investigate discovery/internal-link/sitemap submission issues |
+| GSC sitemap state | GSC has the existing `https://aineedhelpfromotherai.com/sitemap.xml`; its last recorded download predates the newest tool releases. Live fetch through GSC Wizard successfully reads 19 current URLs | Wait for Google to re-download; do not interpret old sitemap indexed counts as current utility performance |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
 | Durable workflow | `AGENTS.md`, this file, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update this checkpoint after every material release, blocker, or strategy change |
-| Last completed infra work | PR #14 added the durable workflow + radar; PR #15 fixed scheduling for the actual supervisord QwenPaw container | Do not redo scheduler setup unless health checks fail |
+| Last completed infra work | PR #14 added durable workflow + radar; PR #15 fixed supervisord scheduling; PR #16 added the fast progress checkpoint; GSC connection and indexing tracker are now active | Do not redo these setups unless health checks fail |
 
-Immediate priority: connect Search Console, measure what Google is already showing, then select the next 1–2 pages from real impressions plus radar signals. Do not start a broad new batch before that measurement step.
+Immediate priority: indexing, not another broad tool batch. Monitor the 15 tracked priority URLs until Google starts discovering the utility pages; once impressions appear on the new `/tools/` cohort, use their real queries/CTR/positions plus radar signals to choose the next 1–2 pages.
 
 ## Mission
 
@@ -90,13 +92,14 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 
 ## Current operating priorities
 
-1. Keep the new static tool site stable and fast.
-2. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
-3. Use the VPS keyword radar to collect fresh autocomplete demand daily.
-4. Connect/use Search Console when available and let real impressions guide expansion.
-5. Improve existing pages before making duplicate pages for near-identical intents.
-6. Preserve sitemap/canonical/internal-link hygiene on every release.
-7. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
+1. Get the current utility sitemap cohort discovered/indexed by Google.
+2. Keep the new static tool site stable and fast.
+3. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
+4. Use the VPS keyword radar to collect fresh autocomplete demand daily.
+5. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
+6. Improve existing pages before making duplicate pages for near-identical intents.
+7. Preserve sitemap/canonical/internal-link hygiene on every release.
+8. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
 
 ## Handoff rule for future sessions
 
