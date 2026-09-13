@@ -8,14 +8,14 @@ This workstream is explicitly non-adversarial. The goal is not to bypass, manipu
 
 ## Execution rule
 
-Work through this list in order. Do not skip forward merely because a later task is easier. A task can be marked `DONE` only when its observable exit condition is verified. If a task is waiting on propagation/data, mark it `WAITING` rather than repeatedly changing the site.
+Work through this list in order. Do not skip forward merely because a later task is easier. A task can be marked `DONE` only when its observable exit condition is verified. If a task is waiting on propagation/data, mark it `WAITING` rather than repeatedly changing the site. If an external provider blocks execution because of quota/account/tool availability, record it as `BLOCKED` and do not pay, upgrade, or alter billing without explicit user approval.
 
 ## Ordered task list
 
 | ID | Task | Status | Exit condition |
 |---|---|---|---|
 | AIR-0 | Establish the non-adversarial integration principle and durable workflow | DONE | This task file exists; project docs explicitly say optimize for provider-aligned retrieval rather than exploits |
-| AIR-1 | Establish provider benchmark methodology and baseline | ACTIVE | Same intent/exact-concept/domain/known-URL test set exists; Exa baseline is recorded; Tavily baseline is recorded when the connector is executable |
+| AIR-1 | Establish provider benchmark methodology and baseline | BLOCKED | Same intent/exact-concept/domain/known-URL test set exists; Exa baseline is recorded; Tavily baseline is recorded when provider quota permits a real run |
 | AIR-2 | Fix machine-readable identity/discovery consistency | DONE | Production `/llms.txt` and `/ai.txt` describe the current utility site and are shipped by the build; fresh retrieval verified |
 | AIR-3 | Align external public identity surfaces | BLOCKED | GitHub repository description/topics and other public metadata no longer present the legacy AI-debugging product; requires an available metadata write path or manual UI action |
 | AIR-4 | Build legitimate external corroboration around the Cursor page | ACTIVE | At least one independently verified relevant mention/link/citation exists; outreach results are logged, not merely sent |
@@ -68,12 +68,13 @@ For each provider rerun, record:
 
 ## Current checkpoint
 
-Completed now:
+Completed:
 - AIR-0: non-adversarial/provider-aligned principle formalized.
 - AIR-2: current utility `llms.txt`/`ai.txt` deployed and fresh retrieval verified.
 - Exa portion of AIR-1: known-URL extraction passes; natural-language and exact-concept discovery remain weak in the recorded baseline.
 
-Current work:
-- AIR-1 remains active until a real Tavily baseline can be executed.
-- AIR-4 remains active through the small, relevant Cursor authority/outreach program.
-- AIR-5 is intentionally waiting for provider propagation rather than triggering repeated speculative rewrites.
+Current blockers / work:
+- AIR-1: a real Tavily baseline was attempted on 2026-09-13 with the connected Tavily search tool. The provider returned HTTP 432 / plan usage limit before executing the search. This is a provider quota blocker, not a search result. Do not upgrade or change billing without explicit user approval.
+- AIR-3: repository description/topics still need a metadata write path or manual UI action.
+- AIR-4: legitimate external corroboration remains active through the small, relevant Cursor authority/outreach program; do not resend the first emails before their follow-up window.
+- AIR-5: intentionally waiting for provider propagation rather than triggering repeated speculative rewrites.
