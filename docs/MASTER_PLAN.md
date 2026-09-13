@@ -14,26 +14,27 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 |---|---|---|---|---|
 | P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | GitHub→Vercel flow, CI/Eval Gate, `AGENTS.md`, `PROJECT_CONTEXT.md`, workflow docs | Completed |
 | P1 Initial tool inventory | Publish a useful, low-cost starter portfolio | DONE | 13 live tool pages across calculators, image tools and AI quota/reset tools | Completed |
-| P2 Discovery & indexing | Make Google discover and index the current utility cohort | IN PROGRESS | GSC connected; 15 priority URLs tracked; homepage indexed; 14 checked tool URLs currently unknown to Google. URL normalization is fixed. GA4 tracking is live and the GA4 property is authorized/linked in GSC Wizard. | Tool cohort starts being crawled/indexed and receives its own impressions |
-| P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY P2 | Current GSC impressions mostly belong to historical AI-debugging pages | At least several tool-page query/impression signals exist |
+| P2 Discovery & indexing | Make Google discover and index the current utility cohort | IN PROGRESS | GSC connected; 15 priority URLs tracked; tracker now 4 indexed / 11 not indexed after Sep 13 requests. `/tools/`, Cursor reset and image compressor were crawled successfully and indexed alongside the homepage. URL normalization is fixed. | Tool cohort starts receiving its own settled impressions, with indexing continuing beyond the first priority pages |
+| P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY SETTLED DATA | New utility pages are now entering the index, but Search Console performance data still predates the Sep 13 crawl/index event | At least several tool-page query/impression signals exist |
 | P4 Winner optimization | Improve pages already earning impressions | QUEUED | Use GSC query/page/CTR/position data, titles, copy, internal links and exact intent | Clear improvement or a decision to stop investing |
 | P5 Controlled expansion | Add 1–2 evidence-backed tools per round | QUEUED | Candidate feed comes from VPS radar + GSC + Ubersuggest + official docs/community evidence | Each round ships, indexes and is measured before the next broad round |
-| P6 Distribution & authority | Earn discovery, mentions and relevant links outside Google | STARTED LIGHTLY | PR #27 aligned the public GitHub README with the utility site and added direct live-tool links. Existing IndexNow submission is verified working. Bing Webmaster connection is still pending. | Repeatable referral/link sources appear |
+| P6 Distribution & authority | Earn discovery, mentions and relevant links outside Google | STARTED LIGHTLY | PR #27 aligned the public GitHub README with the utility site and added direct live-tool links. Existing IndexNow submission is verified working. Bing Webmaster API is connected and crawl/search data is readable in GSC Wizard; no current Bing crawl-issue URLs were reported. | Repeatable referral/link sources appear |
 | P7 Monetization optimization | Turn useful traffic into stable AdSense revenue | QUEUED | AdSense integration exists; approval/serving must be verified separately | First RMB 100/month, then optimize RPM without harming UX |
 
 ## Current sprint — Indexing before expansion
 
 1. DONE — Fix URL consistency: Vercel now serves trailing-slash URLs directly, matching generated canonicals and sitemap URLs. PR #19 shipped and production re-audit found no redirect/canonical issues on checked pages.
 2. DONE — Add GA4 tracking: GA4 measurement ID `G-FYKKNKRE58` is injected once into every production HTML page by PR #21; production homepage and Cursor tool page were verified live.
-3. DONE — Connect GA4 to GSC Wizard: Analytics consent is authorized, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 analytics rollout annotation is recorded. Current GA4 reports are still zero because the property/tag were created today and settled reporting data has not arrived yet.
-4. ACTIVE — Keep the 15-URL GSC indexing tracker running. Current state is 1 indexed homepage and 14 tool URLs `URL is unknown to Google`; do not spam repeated recrawl requests.
-5. MONITOR — Live `https://aineedhelpfromotherai.com/sitemap.xml` contains 19 URLs. Search Console's older sitemap record still shows 40 submitted, 0 indexed and 17 warnings from its previous crawl, so wait for Google to re-download the corrected sitemap before treating those counts as current.
-6. WAITING FOR DATA — Once GA4 produces settled sessions/page views, use referral/direct/engagement data to complement Search Console rather than reading GA4 zeroes as a traffic verdict.
+3. DONE — Connect GA4 to GSC Wizard: Analytics consent is authorized, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 analytics rollout annotation is recorded. Current GA4 reports are still immature because the property/tag were created today and settled reporting data has not arrived yet.
+4. ACTIVE — Keep the 15-URL GSC indexing tracker running. Current state is 4 indexed and 11 not indexed. The homepage, `/tools/`, Cursor reset and image compressor are indexed; do not spam repeated recrawl requests for the remaining 11.
+5. MONITOR — Live `https://aineedhelpfromotherai.com/sitemap.xml` contains 19 URLs. Settled sitemap/search-performance data still predates the Sep 13 crawl/index event, so use direct URL Inspection as the current indexing truth until reporting catches up.
+6. WAITING FOR DATA — Once GA4 produces settled sessions/page views, use referral/direct/engagement data to complement Search Console rather than reading early zeroes as a traffic verdict.
 7. WAITING FOR SIGNAL — Once tool-page impressions appear, optimize the strongest existing page before creating a near-duplicate page.
 8. WAITING FOR SIGNAL — Select the next 1–2 tools only from combined evidence: GSC signal + radar/autocomplete + official rules/community pain + keyword metrics when available.
-9. ACTIVE LIGHT DISTRIBUTION — Start only low-risk discovery while P2 is still active. PR #27 now gives the utility site and key tools an accurate public GitHub discovery path. Existing IndexNow submission is verified successful. Add only relevant directories/communities later; avoid bulk spam submissions.
-10. USER ACTION — Connect Bing Webmaster Tools/API access for this property so the current sitemap/feed can be verified there and Bing data becomes visible in GSC Wizard.
-11. USER ACTION — In Google Search Console URL Inspection, request indexing for only a small priority set first: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`. Then monitor rather than repeatedly resubmitting all URLs.
+9. ACTIVE LIGHT DISTRIBUTION — PR #27 provides an accurate public GitHub discovery path and the existing IndexNow workflow is verified working. Add only relevant directories/communities later; avoid bulk spam submissions.
+10. DONE — Bing Webmaster API access is connected in GSC Wizard. Bing recognizes the site, exposes crawl/index data, reports no current crawl-issue URLs, and shows about 30 URLs historically in its index as of Sep 12. No sitemap/feed is currently listed there and Sep 1–11 search traffic is still 0 clicks / 0 impressions.
+11. DONE — The small Google request-indexing set was submitted: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`. All three now return `PASS / Submitted and indexed`, crawled successfully by mobile Googlebot on Sep 13.
+12. NEXT — Monitor the remaining 11 tracked URLs and the first settled tool-page impressions. Do not manually request-index every remaining URL unless evidence shows discovery has stalled after the current crawl/index wave settles.
 
 ## Measurement cadence
 
@@ -65,7 +66,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | New keyword candidates | VPS `/var/lib/aineedhelp-radar/latest.md` |
 | Google indexing/search performance | GSC Wizard / Google Search Console |
 | Site traffic/engagement | GA4 via GSC Wizard; connected as of 2026-09-13, with useful reporting beginning after data settles |
-| Bing indexing/feed state | Bing Webmaster Tools via GSC Wizard once API access is configured |
+| Bing indexing/feed state | Bing Webmaster Tools via GSC Wizard; API connected as of 2026-09-13 |
 | Keyword metrics when available | Ubersuggest |
 | Changing provider rules | Official provider documentation |
 | User pain / repeat questions | Public discussions such as Reddit/HN/forums |
