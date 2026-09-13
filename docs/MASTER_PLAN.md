@@ -18,7 +18,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY P2 | Current GSC impressions mostly belong to historical AI-debugging pages | At least several tool-page query/impression signals exist |
 | P4 Winner optimization | Improve pages already earning impressions | QUEUED | Use GSC query/page/CTR/position data, titles, copy, internal links and exact intent | Clear improvement or a decision to stop investing |
 | P5 Controlled expansion | Add 1–2 evidence-backed tools per round | QUEUED | Candidate feed comes from VPS radar + GSC + Ubersuggest + official docs/community evidence | Each round ships, indexes and is measured before the next broad round |
-| P6 Distribution & authority | Earn discovery, mentions and relevant links outside Google | QUEUED | Relevant communities/directories/embeds/mentions, no spam | Repeatable referral/link sources appear |
+| P6 Distribution & authority | Earn discovery, mentions and relevant links outside Google | STARTED LIGHTLY | PR #27 aligned the public GitHub README with the utility site and added direct live-tool links. Existing IndexNow submission is verified working. Bing Webmaster connection is still pending. | Repeatable referral/link sources appear |
 | P7 Monetization optimization | Turn useful traffic into stable AdSense revenue | QUEUED | AdSense integration exists; approval/serving must be verified separately | First RMB 100/month, then optimize RPM without harming UX |
 
 ## Current sprint — Indexing before expansion
@@ -31,7 +31,9 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 6. WAITING FOR DATA — Once GA4 produces settled sessions/page views, use referral/direct/engagement data to complement Search Console rather than reading GA4 zeroes as a traffic verdict.
 7. WAITING FOR SIGNAL — Once tool-page impressions appear, optimize the strongest existing page before creating a near-duplicate page.
 8. WAITING FOR SIGNAL — Select the next 1–2 tools only from combined evidence: GSC signal + radar/autocomplete + official rules/community pain + keyword metrics when available.
-9. LIGHT DISTRIBUTION — Once useful tool URLs are indexed, submit/share selectively in relevant directories and niche communities to earn discovery and natural links; avoid bulk spam submissions.
+9. ACTIVE LIGHT DISTRIBUTION — Start only low-risk discovery while P2 is still active. PR #27 now gives the utility site and key tools an accurate public GitHub discovery path. Existing IndexNow submission is verified successful. Add only relevant directories/communities later; avoid bulk spam submissions.
+10. USER ACTION — Connect Bing Webmaster Tools/API access for this property so the current sitemap/feed can be verified there and Bing data becomes visible in GSC Wizard.
+11. USER ACTION — In Google Search Console URL Inspection, request indexing for only a small priority set first: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`. Then monitor rather than repeatedly resubmitting all URLs.
 
 ## Measurement cadence
 
@@ -50,6 +52,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 - Search Console evidence outranks speculative keyword ideas once the site has enough impressions.
 - Google/official provider documentation outranks community claims for technical/indexing/product-limit facts.
 - Missing paid keyword metrics means "unknown", never a fabricated estimate.
+- While indexing is immature, use a few legitimate discovery links in parallel; do not confuse bulk submission activity with real authority.
 
 ## Source-of-truth map
 
@@ -62,6 +65,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | New keyword candidates | VPS `/var/lib/aineedhelp-radar/latest.md` |
 | Google indexing/search performance | GSC Wizard / Google Search Console |
 | Site traffic/engagement | GA4 via GSC Wizard; connected as of 2026-09-13, with useful reporting beginning after data settles |
+| Bing indexing/feed state | Bing Webmaster Tools via GSC Wizard once API access is configured |
 | Keyword metrics when available | Ubersuggest |
 | Changing provider rules | Official provider documentation |
 | User pain / repeat questions | Public discussions such as Reddit/HN/forums |
