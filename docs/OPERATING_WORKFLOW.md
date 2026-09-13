@@ -4,9 +4,9 @@ This is the default execution loop for `aineedhelpfromotherai.com`.
 
 ## 0. Resume without rescanning
 
-At the start of a new session, read `AGENTS.md`, then the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md`, then this workflow. Do not perform a full repository/VPS/deployment audit unless the current task needs it or the checkpoint is stale/contradictory.
+At the start of a new session, read `AGENTS.md`, then the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md`, then `docs/MASTER_PLAN.md`, then this workflow. Do not perform a full repository/VPS/deployment audit unless the current task needs it or the checkpoint is stale/contradictory.
 
-The checkpoint must always answer four questions: what is live, what was just completed, what is blocked/waiting, and what the next concrete action is.
+The checkpoint must answer: what is live, what was just completed, what is blocked/waiting, and what the next concrete action is. `docs/MASTER_PLAN.md` must answer: which project phase is active, which sprint task comes next, and what exit gate moves the project forward.
 
 ## 1. Discover
 
@@ -47,10 +47,11 @@ Minimum checks:
 - production build succeeds;
 - each new route returns 200 in the preview;
 - one H1 and correct title/canonical;
+- canonical URL resolves directly without an avoidable redirect;
 - calculator/timer logic works with normal and edge inputs;
 - no client JavaScript syntax errors;
 - mobile layout has no horizontal overflow;
-- sitemap contains the new canonical URL;
+- sitemap contains the exact final canonical URL;
 - existing important routes still return 200.
 
 For image/file tools, test a real input and download. For time/reset tools, test timezone conversion, expired timestamps, localStorage restore, and calendar export when present.
@@ -61,7 +62,7 @@ Push branch, open PR, wait for Vercel Preview and CI/Eval Gate, then merge only 
 
 ## 6. Index and measure
 
-Keep `robots.txt`, sitemap, canonical URLs, and internal links synchronized. Submit/inspect important URLs in Search Console when available.
+Keep `robots.txt`, sitemap, canonical URLs, hosting URL normalization, and internal links synchronized. Submit/inspect important URLs in Search Console when available.
 
 Review performance in cohorts rather than reacting to one day of data. Useful signals:
 - indexed/not indexed;
@@ -77,6 +78,6 @@ Use actual Search Console queries to decide whether to improve a page, add a dis
 
 The VPS radar runs daily and writes its latest shortlist under `/var/lib/aineedhelp-radar/`. Review newly appearing phrases first. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
 
-After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Record only compact operational state, not a verbose diary: last completed milestone, current blocker/waiting state, next 1–3 actions, important live counts/URLs, and any new irreversible architecture fact.
+After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes.
 
-Do not duplicate long history in the checkpoint. Git history/PRs are the historical log; the checkpoint is only the current resume point.
+Do not duplicate long history in the checkpoint or master plan. Git history/PRs are the historical log; the checkpoint is the current resume point and the master plan is the project-wide progress/task board.

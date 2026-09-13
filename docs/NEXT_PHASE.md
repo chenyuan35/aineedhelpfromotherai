@@ -1,30 +1,9 @@
 # Next Phase
 
-## Immediate Goals
+This file is now only a compatibility pointer.
 
-- simplify homepage
-- reduce cognitive overload
-- strengthen runtime stability
-- improve reasoning reuse lifecycle
-- separate production from experiments
+Current project-wide phase status and task order live in `docs/MASTER_PLAN.md`.
+Current factual state lives in `PROJECT_CONTEXT.md`.
+Execution rules live in `docs/OPERATING_WORKFLOW.md`.
 
-## Production Runtime
-
-Core focus:
-
-- reasoning cache
-- failure memory
-- MCP runtime
-- observability
-
-## Dessert Layer
-
-Human-friendly entry points:
-
-- Ask Another AI
-- Live Thinking Feed
-- Token Saved Counter
-
-## Experimental Labs
-
-Research systems remain available but separated from the core runtime.
+The previous AI-agent runtime/MCP plan was archived at `docs/archive/NEXT_PHASE-legacy-ai-runtime.md` and is not current planning authority.

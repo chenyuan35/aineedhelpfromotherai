@@ -13,13 +13,15 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | Keyword discovery | VPS keyword radar is installed and running daily; first full run completed 320/320 source requests and found 1,227 candidates | Read `/var/lib/aineedhelp-radar/latest.md` when choosing topics |
 | Current radar signals | Strong phrases include Cursor usage-limit reset, Codex usage-limit reset, Claude weekly/usage-limit reset, plus image compressor/resizer combinations | Keep as candidate backlog; do not publish the next batch until indexing starts |
 | Search Console | GSC Wizard is connected to `sc-domain:aineedhelpfromotherai.com`. Last 28 settled days: 589 impressions, 0 clicks, avg position 43.24; those impressions are almost entirely from the historical AI-debugging pages because GSC data is settled only through 2026-09-10 | Treat current utility pages as a new indexing cohort rather than optimizing from old query data |
-| Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker now monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Let tracker run; re-check indexing before choosing the next release. If still unknown after Google re-fetches the sitemap, investigate discovery/internal-link/sitemap submission issues |
-| GSC sitemap state | GSC has the existing `https://aineedhelpfromotherai.com/sitemap.xml`; its last recorded download predates the newest tool releases. Live fetch through GSC Wizard successfully reads 19 current URLs | Wait for Google to re-download; do not interpret old sitemap indexed counts as current utility performance |
+| Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Fix URL normalization consistency first, then let the tracker measure discovery/indexing |
+| URL normalization | GSC on-page audit found every checked non-root tool URL is indexable but `/path/` redirects 308 to `/path` while the canonical and sitemap point to `/path/`. `vercel.json` explicitly has `trailingSlash: false` | Align hosting with canonical/sitemap/internal URLs before passive waiting; current preferred fix is to make trailing-slash URLs resolve directly |
+| GSC sitemap state | GSC has the existing `https://aineedhelpfromotherai.com/sitemap.xml`; its historical report still reflects older submissions/warnings while live fetch reads 19 current URLs | After URL normalization, refresh/resubmit the intended sitemap and monitor the new cohort rather than stale counts |
+| Analytics | Search Console is connected; GSC Wizard reports Google Analytics consent is not connected for this account | Connect GA4 if a property exists/is added so referral/direct/engagement data complements GSC |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
-| Durable workflow | `AGENTS.md`, this file, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update this checkpoint after every material release, blocker, or strategy change |
-| Last completed infra work | PR #14 added durable workflow + radar; PR #15 fixed supervisord scheduling; PR #16 added the fast progress checkpoint; GSC connection and indexing tracker are now active | Do not redo these setups unless health checks fail |
+| Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update checkpoint and master plan after material progress/priority changes |
+| Last completed infra work | PR #14 added durable workflow + radar; PR #15 fixed supervisord scheduling; PR #16 added fast checkpoint; GSC connection/tracker are active | Do not redo these setups unless health checks fail |
 
-Immediate priority: indexing, not another broad tool batch. Monitor the 15 tracked priority URLs until Google starts discovering the utility pages; once impressions appear on the new `/tools/` cohort, use their real queries/CTR/positions plus radar signals to choose the next 1–2 pages.
+Immediate priority: fix the trailing-slash/canonical/sitemap mismatch, then refresh the sitemap/indexing loop and monitor the 15 tracked URLs. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
 
 ## Mission
 
@@ -92,19 +94,20 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 
 ## Current operating priorities
 
-1. Get the current utility sitemap cohort discovered/indexed by Google.
-2. Keep the new static tool site stable and fast.
-3. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
-4. Use the VPS keyword radar to collect fresh autocomplete demand daily.
-5. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
-6. Improve existing pages before making duplicate pages for near-identical intents.
-7. Preserve sitemap/canonical/internal-link hygiene on every release.
-8. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
+1. Align hosting URL normalization with sitemap/canonical URLs.
+2. Get the current utility sitemap cohort discovered/indexed by Google.
+3. Keep the new static tool site stable and fast.
+4. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
+5. Use the VPS keyword radar to collect fresh autocomplete demand daily.
+6. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
+7. Improve existing pages before making duplicate pages for near-identical intents.
+8. Preserve sitemap/canonical/internal-link hygiene on every release.
+9. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
 
 ## Handoff rule for future sessions
 
-At the beginning of a new working session, read `AGENTS.md`, then the Current progress checkpoint in this file, then `docs/OPERATING_WORKFLOW.md`. Do not perform a full repository/VPS audit merely to rediscover already-confirmed state. Inspect deeper only when the requested task depends on it or a checkpoint item is stale/contradictory.
+At the beginning of a new working session, read `AGENTS.md`, then the Current progress checkpoint in this file, then `docs/MASTER_PLAN.md`, then `docs/OPERATING_WORKFLOW.md`. Do not perform a full repository/VPS audit merely to rediscover already-confirmed state. Inspect deeper only when the requested task depends on it or a checkpoint item is stale/contradictory.
 
-When a material milestone finishes, update the checkpoint in the same PR or immediately afterward. Material milestones include: a production release, a new tool family, a deployment/architecture change, Search Console becoming available, a major blocker, or a strategy change.
+When a material milestone finishes, update the checkpoint in the same PR or immediately afterward. Update `docs/MASTER_PLAN.md` whenever phase status, current sprint order, exit gates, or priorities materially change.
 
 GitHub `main` is the source of truth for code. If chat memory conflicts with repository state or production checks, trust the repository plus verified live state.
