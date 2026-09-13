@@ -4,6 +4,8 @@ Last updated: 2026-09-13
 
 Purpose: measure whether AI-native web search/retrieval systems can discover, retrieve, and extract the current utility pages. This is a separate signal from Google indexing. Do not infer success from crawler eligibility alone.
 
+Ordered execution and status live in `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`. This benchmark is evidence collection for that workstream, not an attempt to reverse-engineer or bypass provider algorithms.
+
 Primary test page:
 - https://aineedhelpfromotherai.com/tools/cursor-usage-reset/
 
@@ -66,6 +68,8 @@ For pages we want AI agents/search tools to surface:
 - no important answer hidden only in client-side interaction;
 - external corroboration from relevant websites/repos/communities.
 
+These are provider-aligned publishing practices. Do not use hidden provider-specific content, cloaking, fake citations, fabricated freshness, synthetic backlinks or deceptive metadata.
+
 ## Machine-readable discovery files
 
 The repository previously contained legacy `llms.txt` / `ai.txt` files describing the old AI-debugging product, and the current static build did not copy those files into `frontend/dist`. This was an AI-retrieval consistency defect.
@@ -101,8 +105,9 @@ Do not optimize to a single provider from one run. Look for repeatable failure p
 
 ## Next actions
 
-1. Allow the corrected discovery files and external authority signals time to propagate through provider indexes/caches; do not repeatedly rewrite them.
-2. Continue earning relevant external references to the Cursor page; this addresses the current discovery/ranking bottleneck more directly than adding more machine-readable files.
-3. Re-run the Exa/Tavily benchmark after propagation and compare against this baseline.
-4. Track AI-assistant referral sessions/citations separately from search-tool retrieval presence.
-5. Fix the public GitHub repository description/topics when a repo-metadata write path is available; the repository currently still exposes legacy AI-debugging metadata even though the README was corrected.
+1. Follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` in order rather than adding provider-specific experiments ad hoc.
+2. Allow the corrected discovery files and external authority signals time to propagate through provider indexes/caches; do not repeatedly rewrite them.
+3. Continue earning relevant external references to the Cursor page; this addresses the current discovery/ranking bottleneck more directly than adding more machine-readable files.
+4. Re-run the Exa/Tavily benchmark after propagation and compare against this baseline.
+5. Track AI-assistant referral sessions/citations separately from search-tool retrieval presence.
+6. Fix the public GitHub repository description/topics when a repo-metadata write path is available; the repository currently still exposes legacy AI-debugging metadata even though the README was corrected.
