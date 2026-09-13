@@ -51,7 +51,11 @@ Conclusion: the current bottleneck is not that AI search tools cannot read the C
 
 ### Tavily baseline
 
-Tavily AI was connected on 2026-09-13 so it can be added to the same benchmark. Do not record a Tavily pass/fail until an actual search/extract run has been executed and captured here.
+A real Tavily search attempt was made on 2026-09-13 using the connected Tavily search tool with the same natural-language Cursor reset intent class. The provider rejected the request before search execution with HTTP 432 and the message that the request exceeded the plan's usage limit.
+
+This is **not** a pass/fail result for discoverability. It is a provider quota blocker. No Tavily rank, result set, extraction quality or search verdict should be inferred from it. Do not upgrade the plan or alter billing without explicit user approval.
+
+AIR-1 therefore remains blocked until Tavily quota permits a real search/extract run or another authorized access path becomes available.
 
 ## Retrieval-ready page pattern
 
@@ -98,6 +102,7 @@ Run the same small test set instead of ad-hoc searching:
 4. Known-URL extraction: fetch the canonical URL directly.
 5. Record rank/top-N presence, extracted snippet quality, freshness and any stale competing representation.
 6. When checking deployment freshness, compare canonical cached retrieval with a cache-busted/live retrieval where the provider permits it; never mistake a stale retrieval cache for a failed deployment.
+7. If a provider request is blocked by quota/auth/tool availability, record the blocker separately and do not fabricate a retrieval result.
 
 Providers to test when available: Exa, Tavily, Google/Bing, ChatGPT Search, Perplexity or other agent-search surfaces actually used by the workflow.
 
@@ -106,8 +111,9 @@ Do not optimize to a single provider from one run. Look for repeatable failure p
 ## Next actions
 
 1. Follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` in order rather than adding provider-specific experiments ad hoc.
-2. Allow the corrected discovery files and external authority signals time to propagate through provider indexes/caches; do not repeatedly rewrite them.
-3. Continue earning relevant external references to the Cursor page; this addresses the current discovery/ranking bottleneck more directly than adding more machine-readable files.
-4. Re-run the Exa/Tavily benchmark after propagation and compare against this baseline.
-5. Track AI-assistant referral sessions/citations separately from search-tool retrieval presence.
-6. Fix the public GitHub repository description/topics when a repo-metadata write path is available; the repository currently still exposes legacy AI-debugging metadata even though the README was corrected.
+2. Keep AIR-1 blocked until Tavily can execute a real search/extract request; do not change billing without explicit approval.
+3. Allow the corrected discovery files and external authority signals time to propagate through provider indexes/caches; do not repeatedly rewrite them.
+4. Continue earning relevant external references to the Cursor page; this addresses the current discovery/ranking bottleneck more directly than adding more machine-readable files.
+5. Re-run the Exa/Tavily benchmark after propagation and when Tavily execution is actually available.
+6. Track AI-assistant referral sessions/citations separately from search-tool retrieval presence.
+7. Fix the public GitHub repository description/topics when a repo-metadata write path is available; the repository currently still exposes legacy AI-debugging metadata even though the README was corrected.
