@@ -76,5 +76,5 @@ Completed:
 Current blockers / work:
 - AIR-1: a real Tavily baseline was attempted on 2026-09-13 with the connected Tavily search tool. The provider returned HTTP 432 / plan usage limit before executing the search. This is a provider quota blocker, not a search result. Do not upgrade or change billing without explicit user approval.
 - AIR-3: repository description/topics still need a metadata write path or manual UI action.
-- AIR-4: legitimate external corroboration remains active through the small, relevant Cursor authority/outreach program; do not resend the first emails before their follow-up window.
+- AIR-4: legitimate external corroboration remains active through the small, relevant Cursor authority/outreach program. The first three emails remain inside their 5–7 day response window and must not be resent. A second candidate batch has been researched (Learn Cursor, explainx.ai, QuotaMeter and Cursor Usage Tracker), prior Gmail correspondence was checked, and no new message was sent; hold this batch until the first-round threads are inspected.
 - AIR-5: intentionally waiting for provider propagation rather than triggering repeated speculative rewrites.
