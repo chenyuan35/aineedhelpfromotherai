@@ -18,19 +18,20 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | URL normalization | FIXED in PR #19. Vercel now uses `trailingSlash: true`, matching generated canonical and sitemap URLs. Production checks show `/tools/` and `/tools/cursor-usage-reset/` resolve directly with 200; GSC on-page re-audit found 0 issues on the checked pages | Do not change URL style again without evidence; keep sitemap/canonical/internal links aligned |
 | Homepage UX | PR #24 replaced the oversized marketing-style hero with a calmer task-first homepage: smaller headline, direct tool search, task shortcuts, spacious quick-start cards, softer visual hierarchy, and unchanged SEO URLs/canonicals | Preserve this task-first, comfort-oriented direction; avoid oversized slogans or dense dashboard-style UI |
 | GSC sitemap state | Live `https://aineedhelpfromotherai.com/sitemap.xml` contains 19 URLs. Search Console's settled sitemap-performance window still sees only the homepage with impressions because reporting lags the Sep 13 indexing event; older submitted-count/warning records are stale | Treat direct URL Inspection as the current indexing truth until sitemap/search-performance reporting catches up |
-| External discovery | PR #27 aligned the public GitHub README with the utility-site mission and direct live-tool links. The daily IndexNow workflow is verified working. Bing Webmaster API is now connected in GSC Wizard; Bing recognizes the site, reports no current crawl-issue URLs, and had about 30 URLs in its historical index on Sep 12, but no sitemap/feed is currently listed and Sep 1–11 Bing search traffic is 0 clicks / 0 impressions | Keep GitHub/IndexNow active; next authority work should target relevant Cursor/AI-usage resources and communities rather than generic directory spam |
+| External discovery | PR #27 aligned the public GitHub README with the utility-site mission and direct live-tool links. The daily IndexNow workflow is verified working. Bing Webmaster API is connected. On Sep 13, the first authority outreach round sent three personalized emails to hsmart.dev, Continuum Code and Drew Bredvick; no reply/link is verified yet. Detailed status lives in `docs/AUTHORITY_AND_AI_DISCOVERY.md` | Check the original Gmail threads and the ledger after 5–7 days; then research a second batch of only 3–5 highly relevant Cursor/AI-usage targets. Do not resend early or count sent mail as earned links |
+| AI discovery | Public pages are not blocked in `robots.txt` (`User-agent: *`, `Allow: /`), which keeps general search/AI search crawlers eligible. Cursor now has answer-first structure, official-source evidence and last-verified guidance. GSC Wizard AI-assistant referral baseline on Sep 13 is 0 settled sessions | Measure AI referrals in GA4/GSC Wizard and citation visibility in Bing/Google AI reports as data appears; optimize for retrieval/citation readiness rather than speculative AI hacks |
 | Analytics | GA4 property/data stream with measurement ID `G-FYKKNKRE58` is live site-wide from PR #21. GSC Wizard Analytics consent is connected, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 rollout annotation was added | Wait for the first settled GA4 sessions/page views, then use GA4 for referral/direct/engagement decisions alongside GSC |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
-| Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update checkpoint and master plan after material progress/priority changes |
-| Last completed work | User completed the small Google request-indexing set and Bing API connection; verification confirmed `/tools/`, Cursor reset, and image compressor indexed in Google and updated the tracker to 4/15. PR #30 then starts the first existing-page breakthrough pilot on Cursor rather than adding another tool | Ship and measure the Cursor depth pilot, monitor indexing/search signals, then begin selective authority/distribution work |
+| Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, `docs/OPERATING_WORKFLOW.md`, and `docs/AUTHORITY_AND_AI_DISCOVERY.md` are the durable handoff sources. The authority/AI ledger is required whenever outreach/distribution/AI-visibility work is active | Update checkpoint/master plan after material progress, and update the authority/AI ledger immediately after every outreach, reply, verified link/citation, or AI-discovery action |
+| Last completed work | PR #30 shipped the Cursor breakthrough page. The first authority round then sent three personalized outreach emails, verified that public pages are not blocked from general AI/search crawlers, established a zero-session AI-referral baseline, and created a durable authority/AI discovery ledger plus execution rules | Monitor the first outreach round and settled search/AI signals; do not expand volume blindly |
 
-Immediate priority: let the Sep 13 indexing event settle into Search Console/GA4 reporting, keep the 15-URL tracker active, ship and measure the Cursor breakthrough-page pilot, and start selective external discovery around the Cursor/AI-usage topic. Do not start another broad tool batch until the `/tools/` cohort produces its own search signals.
+Immediate priority: let the Sep 13 indexing event settle, keep the 15-URL tracker active, measure the Cursor breakthrough page, follow the first three outreach threads using `docs/AUTHORITY_AND_AI_DISCOVERY.md`, and start AI-answer visibility measurement as data becomes available. Do not start another broad tool batch or mass outreach campaign until these signals are reviewed.
 
 ## Mission
 
 Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that can earn small, stable Google AdSense revenue.
 
-Primary success metrics: organic impressions, indexed pages, CTR, useful repeat visits, page speed, and ad revenue. The first practical revenue target is a few hundred RMB/month; do not optimize for SaaS complexity.
+Primary success metrics: organic impressions, indexed pages, CTR, useful repeat visits, page speed, AI/search citations/referrals where measurable, and ad revenue. The first practical revenue target is a few hundred RMB/month; do not optimize for SaaS complexity.
 
 ## Product rules
 
@@ -44,6 +45,7 @@ Primary success metrics: organic impressions, indexed pages, CTR, useful repeat 
 - Verify claims about changing product limits against official sources.
 - Search data is evidence, not intuition: use Ubersuggest when available, plus autocomplete/community signals and Search Console.
 - When authority is the bottleneck, prefer making one indexed page materially more useful, trustworthy and shareable before creating more URLs.
+- For AI-answer visibility, prioritize crawlability, clear answer structure, primary-source evidence, freshness and unique utility; do not rely on unproven AEO/GEO tricks.
 
 ## Current architecture
 
@@ -93,6 +95,7 @@ Use multiple independent signals:
 4. Reddit, Hacker News, forums, and public discussions for repeated user pain/confusion.
 5. Google Search Console after pages receive impressions: prioritize actual queries where the site is already being shown.
 6. Competitor/public-page analysis for successful UX patterns, never paywall/login bypassing.
+7. GA4/GSC Wizard AI-assistant referrals plus Bing/Google AI visibility reports for answer-engine discovery once enough data exists.
 
 A missing paid metric must not stop discovery. Mark estimates as unknown instead of inventing numbers.
 
@@ -101,19 +104,21 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 1. Get the current utility sitemap cohort discovered/indexed by Google.
 2. Keep the new static tool site stable and fast.
 3. Deepen the first indexed breakthrough page (`/tools/cursor-usage-reset/`) before adding more URLs, then measure whether richer intent coverage and shareability improve search signals.
-4. Use the connected GA4 property in GSC Wizard once settled data appears so direct/referral/engagement can complement Search Console.
-5. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
-6. Use the VPS keyword radar to collect fresh autocomplete demand daily.
-7. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
-8. Improve existing pages before making duplicate pages for near-identical intents.
-9. Preserve sitemap/canonical/internal-link hygiene on every release.
-10. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
-11. Maintain a small number of legitimate discovery paths in parallel with indexing: accurate public GitHub links, Bing/IndexNow, and relevant topic-specific resources/communities; never bulk-submit spam links.
+4. Run small, relevant authority/distribution rounds and track every action/outcome in `docs/AUTHORITY_AND_AI_DISCOVERY.md`.
+5. Build AI-answer visibility through the same fundamentals: crawlable pages, clear answers, official evidence, freshness, unique interactive value and external corroboration; measure referrals/citations instead of guessing.
+6. Use the connected GA4 property in GSC Wizard once settled data appears so direct/referral/engagement can complement Search Console.
+7. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
+8. Use the VPS keyword radar to collect fresh autocomplete demand daily.
+9. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.
+10. Improve existing pages before making duplicate pages for near-identical intents.
+11. Preserve sitemap/canonical/internal-link hygiene on every release.
+12. Favor repeat-use utilities, especially new-product limits, resets, quotas, converters, and calculators.
+13. Maintain a small number of legitimate discovery paths in parallel with indexing: accurate public GitHub links, Bing/IndexNow, and relevant topic-specific resources/communities; never bulk-submit spam links.
 
 ## Handoff rule for future sessions
 
-At the beginning of a new working session, read `AGENTS.md`, then the Current progress checkpoint in this file, then `docs/MASTER_PLAN.md`, then `docs/OPERATING_WORKFLOW.md`. Do not perform a full repository/VPS audit merely to rediscover already-confirmed state. Inspect deeper only when the requested task depends on it or a checkpoint item is stale/contradictory.
+At the beginning of a new working session, read `AGENTS.md`, then the Current progress checkpoint in this file, then `docs/MASTER_PLAN.md`, then `docs/OPERATING_WORKFLOW.md`. If the active task involves outreach, authority, external distribution, referrals, AI assistants, AEO/GEO, citations or follow-ups, also read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before acting. Do not perform a full repository/VPS audit merely to rediscover already-confirmed state.
 
-When a material milestone finishes, update the checkpoint in the same PR or immediately afterward. Update `docs/MASTER_PLAN.md` whenever phase status, current sprint order, exit gates, or priorities materially change.
+When a material milestone finishes, update the checkpoint in the same PR or immediately afterward. Update `docs/MASTER_PLAN.md` whenever phase status, current sprint order, exit gates, or priorities materially change. Update `docs/AUTHORITY_AND_AI_DISCOVERY.md` immediately after every external action/outcome so the next executor never has to reconstruct outreach from chat memory.
 
 GitHub `main` is the source of truth for code. If chat memory conflicts with repository state or production checks, trust the repository plus verified live state.

@@ -1,0 +1,97 @@
+# Authority & AI Discovery Ledger
+
+Last updated: 2026-09-13
+
+This file is the durable execution log for external authority building, referral discovery, and AI-answer visibility work for `aineedhelpfromotherai.com`.
+
+Use it before starting a new outreach/distribution round so we do not repeat contacts, lose follow-ups, or confuse planned work with completed work. Do not store private credentials or recipient email addresses here; use public site/author names and Gmail thread history for exact correspondence.
+
+## Current objective
+
+Build authority around the already-indexed Cursor reset page before adding another broad batch of tools. The near-term test is whether a materially deeper, more trustworthy and shareable page can earn search impressions, citations, referrals and relevant external mentions.
+
+Primary page:
+- `https://aineedhelpfromotherai.com/tools/cursor-usage-reset/`
+
+## Outreach ledger
+
+| Date | Target | Why relevant | Action | Status | Next check |
+|---|---|---|---|---|---|
+| 2026-09-13 | hsmart.dev | Publishes Cursor/Claude Code comparison material that discusses usage limits | Sent a personalized resource-suggestion email pointing to the Cursor reset page | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
+| 2026-09-13 | Continuum Code | Publishes Cursor usage-limit guidance | Sent a personalized resource-suggestion email explaining the official-source reset guidance and local countdown | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
+| 2026-09-13 | Drew Bredvick | Writes about AI coding tools, Cursor and AI usage/cost topics | Sent a personalized resource-suggestion email focused on the practical reset calculator and official-source depth | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
+
+Current outcome: no reply/citation has been verified yet. Do not count sent email as an earned link.
+
+## Outreach execution rule
+
+For each new target:
+1. Confirm the target already covers Cursor, AI coding usage, quotas, limits, billing or adjacent developer tooling.
+2. Read the relevant page before contacting them.
+3. Explain the exact reader benefit of our resource; do not send generic link-exchange requests.
+4. Keep each round small (normally 3–5 targets).
+5. Record the action here immediately after sending/publishing.
+6. On follow-up, read the original Gmail thread first. Do not send a second message if the recipient has replied, declined, already linked, or if the first message is still fresh.
+7. Record outcomes as `REPLIED`, `LINKED`, `DECLINED`, `NO RESPONSE`, `NOT A FIT`, or `FOLLOW-UP SENT`.
+8. Never buy links, mass-submit directories, or post promotional answers where the tool does not genuinely solve the discussion.
+
+## AI discovery / answer-engine plan
+
+The goal is not to "trick" an AI model. Current Google and Bing guidance says AI answers depend heavily on the same crawl, index, relevance, quality and authority foundations as search. The practical target is to make our pages easy to retrieve, easy to understand, easy to quote, and worth citing.
+
+### 1. Crawl and retrieval eligibility
+
+Verified 2026-09-13:
+- `frontend/robots.txt` uses `User-agent: *` with `Allow: /`, so normal public pages are not blocked from general search/AI search crawlers.
+- Google indexing is active for the Cursor page.
+- Bing Webmaster is connected.
+- IndexNow is already running daily.
+
+Do not add special crawler rules unless a real access problem appears. OpenAI states that ChatGPT Search discovery requires not blocking `OAI-SearchBot`; the current wildcard allow already satisfies that for public pages. Perplexity similarly recommends allowing `PerplexityBot`; the current wildcard rule does so.
+
+### 2. Make pages citation-friendly
+
+For winner pages such as Cursor:
+- Put the direct answer near the top.
+- Use descriptive question-style headings matching real user jobs.
+- State changing rules with an explicit "last verified" date.
+- Link to the primary official source for changing product rules.
+- Distinguish facts from our calculator/planning estimates.
+- Add concise tables or bulletable facts when they improve clarity.
+- Keep canonical URLs stable and avoid duplicate variants.
+- Prefer one deep page covering closely related query variants over many thin pages.
+- Add genuinely unique utility or first-party output that cannot be replaced by a generic AI summary (countdown, calculation, local state, examples, comparisons, verified edge cases).
+
+### 3. Build external corroboration
+
+AI retrieval systems and search engines are more likely to trust content that is independently discovered and referenced. The authority program therefore focuses on:
+- relevant editorial links from AI coding / Cursor / developer-tool resources;
+- useful GitHub resource lists where contribution rules permit it;
+- community answers only when the page directly solves the question;
+- natural mentions generated by a useful/shareable tool;
+- no generic directory blasts or paid-link schemes.
+
+### 4. Measurement
+
+Track three separate outcomes:
+- Search: Google/Bing impressions, queries, CTR and indexed status.
+- Referral: GA4 sessions from external sites.
+- AI assistants: GA4 referrals from ChatGPT, Perplexity, Copilot, Gemini, Claude and other assistants through GSC Wizard; Bing Webmaster AI Performance/citation data when available in the account; Google Search Console generative-AI visibility reports when available.
+
+Baseline on 2026-09-13: GSC Wizard reports no settled AI-assistant referral sessions yet. This is a baseline, not a failure signal, because the new site/indexing rollout happened the same day.
+
+## Next execution queue
+
+1. Wait for and inspect replies from the first three outreach emails; update this ledger with every outcome.
+2. Research a second batch of 3–5 highly relevant Cursor/AI-usage resources; contact only those with a clear contextual fit.
+3. Check whether the Cursor page begins receiving settled search queries/impressions after the Sep 13 indexing event.
+4. Check AI-assistant referral traffic and Bing/Google AI visibility signals after enough data has settled.
+5. If Cursor earns meaningful search/citation/referral signals, replicate the depth pattern to exactly one other existing indexed page before considering new tools.
+6. If outreach gets no response, change the value proposition or target class before increasing volume; do not simply send more identical emails.
+
+## Decision log
+
+- 2026-09-13: Chose Cursor reset as the first breakthrough-page pilot because it is already indexed and has strong current intent signals.
+- 2026-09-13: PR #30 deepened the existing Cursor URL rather than creating another page.
+- 2026-09-13: Began authority outreach with three personalized emails; no link is counted until independently verified.
+- 2026-09-13: Added AI-answer visibility as a measured channel alongside classic search and referral traffic. Strategy is retrieval/citation readiness, not speculative "AI hacks".

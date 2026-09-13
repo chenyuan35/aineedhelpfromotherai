@@ -8,6 +8,8 @@ At the start of a new session, read `AGENTS.md`, then the **Current progress che
 
 The checkpoint must answer: what is live, what was just completed, what is blocked/waiting, and what the next concrete action is. `docs/MASTER_PLAN.md` must answer: which project phase is active, which sprint task comes next, and what exit gate moves the project forward.
 
+When the current task involves external authority, outreach, referral distribution, or AI-answer visibility, also read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before acting. It is the durable ledger for who was contacted, what was sent, what happened, and what follow-up is due.
+
 ## 1. Discover
 
 Collect candidate queries from the VPS keyword radar, Ubersuggest when available, autocomplete, Search Console, current product documentation, and repeated public user questions.
@@ -74,10 +76,23 @@ Review performance in cohorts rather than reacting to one day of data. Useful si
 
 Use actual Search Console queries to decide whether to improve a page, add a distinct adjacent tool, or stop investing in the topic.
 
-## 7. Maintenance and handoff
+For AI discovery, treat classic SEO as the foundation rather than a separate hack. Keep public pages crawlable, give changing claims primary-source evidence and last-verified dates, use clear answer-first sections/headings, and provide unique utility that a generic summary cannot replace. Measure AI-assistant referral traffic through GA4/GSC Wizard and citation/AI visibility through Bing Webmaster or Search Console when those reports are available.
+
+## 7. External authority and outreach
+
+When authority/distribution work is active:
+- Keep outreach batches small and highly relevant; normally 3–5 targets per round.
+- Read the target page before contacting the author/site.
+- Do not send generic link-exchange or mass directory requests.
+- Immediately record every sent outreach, published community contribution, reply, link, decline, or failed target in `docs/AUTHORITY_AND_AI_DISCOVERY.md`.
+- Before a follow-up, read the original Gmail thread and the ledger; never rely on chat memory.
+- Do not count an email as a backlink. Mark a link/citation only after independently verifying it exists.
+- If a round gets no traction, change target quality or value proposition before increasing volume.
+
+## 8. Maintenance and handoff
 
 The VPS radar runs daily and writes its latest shortlist under `/var/lib/aineedhelp-radar/`. Review newly appearing phrases first. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
 
-After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes.
+After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes. External authority/outreach/AI-discovery actions must also update `docs/AUTHORITY_AND_AI_DISCOVERY.md` in the same round.
 
-Do not duplicate long history in the checkpoint or master plan. Git history/PRs are the historical log; the checkpoint is the current resume point and the master plan is the project-wide progress/task board.
+Do not duplicate long history in the checkpoint or master plan. Git history/PRs are the historical log; the checkpoint is the current resume point, the master plan is the project-wide progress/task board, and the authority/AI ledger is the detailed external-distribution follow-up record.
