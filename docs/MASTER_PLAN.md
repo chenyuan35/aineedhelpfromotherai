@@ -2,7 +2,7 @@
 
 Last updated: 2026-09-13
 
-This is the project-wide progress board. `PROJECT_CONTEXT.md` answers "what is true now"; this file answers "where are we in the whole plan and what comes next"; `docs/OPERATING_WORKFLOW.md` defines how each task is executed. `docs/AUTHORITY_AND_AI_DISCOVERY.md` is the detailed ledger for outreach, external authority, AI-assistant visibility and follow-ups.
+This is the project-wide progress board. `PROJECT_CONTEXT.md` answers "what is true now"; this file answers "where are we in the whole plan and what comes next"; `docs/OPERATING_WORKFLOW.md` defines how each task is executed. `docs/AUTHORITY_AND_AI_DISCOVERY.md` is the detailed ledger for outreach, external authority, AI-assistant visibility and follow-ups. `docs/AI_RETRIEVAL_BENCHMARK.md` is the repeatable test for AI-native search discovery vs known-URL extraction.
 
 ## North-star goal
 
@@ -18,7 +18,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY SETTLED DATA | New utility pages are now entering the index, but Search Console performance data still predates the Sep 13 crawl/index event | At least several tool-page query/impression signals exist |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT STARTED EARLY | Cursor reset is being used as the first depth/authority pilot before settled impressions arrive because it is already indexed and has strong radar intent. PR #30 adds current official-source depth and shareability without creating a new URL. Data-driven winner optimization still waits for settled GSC signals. | Clear improvement or a decision to stop investing |
 | P5 Controlled expansion | Add 1–2 evidence-backed tools per round | QUEUED | Candidate feed comes from VPS radar + GSC + Ubersuggest + official docs/community evidence | Each round ships, indexes and is measured before the next broad round |
-| P6 Distribution, authority & AI discovery | Earn discovery, mentions, relevant links, referrals and AI citations outside classic Google results | ACTIVE PILOT | PR #27 aligned the public GitHub README; IndexNow works; Bing is connected. First personalized authority round sent 3 emails on Sep 13. Public pages are crawlable by general AI/search crawlers, and AI-assistant referral baseline is 0 settled sessions. Detailed state is in `docs/AUTHORITY_AND_AI_DISCOVERY.md`. | At least one repeatable relevant referral/link/citation source plus measurable search or AI-assistant visibility |
+| P6 Distribution, authority & AI discovery | Earn discovery, mentions, relevant links, referrals and AI citations outside classic Google results | ACTIVE PILOT | PR #27 aligned the public GitHub README; IndexNow works; Bing is connected. First personalized authority round sent 3 emails. PR #32 adds a provider-level retrieval benchmark after Exa showed clean direct extraction but weak semantic discovery, and corrects stale `llms.txt`/`ai.txt` surfaces. | At least one repeatable relevant referral/link/citation source plus measurable search or AI-assistant visibility, with provider retrieval tests showing improved discoverability rather than extraction-only success |
 | P7 Monetization optimization | Turn useful traffic into stable AdSense revenue | QUEUED | AdSense integration exists; approval/serving must be verified separately | First RMB 100/month, then optimize RPM without harming UX |
 
 ## Current sprint — Indexing before expansion
@@ -31,23 +31,27 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 6. WAITING FOR DATA — Once GA4 produces settled sessions/page views, use referral/direct/engagement data to complement Search Console rather than reading early zeroes as a traffic verdict.
 7. WAITING FOR SIGNAL — Once tool-page impressions appear, use actual query/page data to decide which existing page becomes the next optimization target.
 8. WAITING FOR SIGNAL — Select the next 1–2 tools only from combined evidence: GSC signal + radar/autocomplete + official rules/community pain + keyword metrics when available.
-9. ACTIVE LIGHT DISTRIBUTION — PR #27 provides an accurate public GitHub discovery path and the existing IndexNow workflow is verified working. Avoid bulk spam submissions.
+9. ACTIVE LIGHT DISTRIBUTION — PR #27 provides an accurate public GitHub README discovery path and the existing IndexNow workflow is verified working. Avoid bulk spam submissions.
 10. DONE — Bing Webmaster API access is connected in GSC Wizard. Bing recognizes the site, exposes crawl/index data, reports no current crawl-issue URLs, and shows about 30 URLs historically in its index as of Sep 12. No sitemap/feed is currently listed there and Sep 1–11 search traffic is still 0 clicks / 0 impressions.
 11. DONE — The small Google request-indexing set was submitted: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`. All three now return `PASS / Submitted and indexed`, crawled successfully by mobile Googlebot on Sep 13.
 12. DONE — Breakthrough-page pilot shipped: PR #30 deepened the already-indexed Cursor reset page with immediate reset answers, current Cursor usage/billing/model-pool guidance, exact reset-date instructions, plan/team distinctions, additional FAQs, and a copyable reset summary while preserving the canonical URL.
 13. ACTIVE — Measure Cursor query coverage, impressions, CTR and engagement after data settles. If this richer page earns stronger signals, apply the same depth pattern selectively to one other existing indexed page rather than bulk rewriting everything.
 14. ACTIVE — First authority outreach round: three personalized emails were sent on Sep 13 to hsmart.dev, Continuum Code and Drew Bredvick. No reply or earned link is counted yet. Every outcome/follow-up must be recorded in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and checked against the original Gmail thread.
 15. ACTIVE — AI discovery baseline: public pages are allowed by the wildcard `robots.txt`; OpenAI/Perplexity search crawlers are therefore not intentionally blocked. GSC Wizard currently reports 0 settled AI-assistant referral sessions. Cursor is the first citation-readiness pilot with answer-first structure, current official evidence and unique interactive utility.
-16. NEXT — After 5–7 days, inspect the three original Gmail threads and independently verify any claimed link/citation. Record `REPLIED`, `LINKED`, `DECLINED`, `NO RESPONSE` or follow-up status. Do not resend early.
-17. NEXT — Research a second batch of only 3–5 highly relevant Cursor/AI-usage resources. If the first round has weak response, change the target class/value proposition before increasing volume.
-18. NEXT — Measure AI visibility using GA4/GSC Wizard assistant referrals plus Bing AI Performance and Google Search generative-AI visibility reports when data is available. Treat citations/referrals as measurable outcomes, not promises.
-19. MONITOR — Continue watching the remaining 11 tracked URLs. Do not manually request-index every remaining URL unless evidence shows discovery has stalled after the current crawl/index wave settles.
+16. DONE / VERIFY PRODUCTION — PR #32 establishes `docs/AI_RETRIEVAL_BENCHMARK.md`. First Exa tests show direct known-URL extraction succeeds while natural-language/exact-concept search does not yet surface the direct Cursor page near the top. The same PR rewrites legacy `llms.txt`/`ai.txt` for the utility mission and changes the static build to publish them at the site root.
+17. NEXT — Verify production `/llms.txt` and `/ai.txt` return 200 and describe the current utility site; do not assume merge/deploy alone proves the public surface is correct.
+18. NEXT — After 5–7 days, inspect the three original Gmail threads and independently verify any claimed link/citation. Record `REPLIED`, `LINKED`, `DECLINED`, `NO RESPONSE` or follow-up status. Do not resend early.
+19. NEXT — Research a second batch of only 3–5 highly relevant Cursor/AI-usage resources. If the first round has weak response, change the target class/value proposition before increasing volume.
+20. NEXT — Re-run the same provider benchmark across Exa and Tavily after PR #32 has been crawlable and external references have had time to propagate. Measure discovery rank/presence separately from known-URL extraction quality.
+21. NEXT — Measure AI visibility using GA4/GSC Wizard assistant referrals plus Bing AI Performance and Google Search generative-AI visibility reports when data is available. Treat citations/referrals as measurable outcomes, not promises.
+22. MONITOR — Continue watching the remaining 11 tracked URLs. Do not manually request-index every remaining URL unless evidence shows discovery has stalled after the current crawl/index wave settles.
 
 ## Measurement cadence
 
 - Daily: VPS keyword radar runs automatically; no manual full scan required.
 - Twice weekly while indexing is immature: inspect GSC indexing tracker, sitemap state, new `/tools/` impressions and AI-assistant referral baseline when settled data exists.
 - Every outreach/distribution action: immediately update `docs/AUTHORITY_AND_AI_DISCOVERY.md`; before any follow-up, read the original Gmail thread plus the ledger.
+- After each AI-native provider benchmark: update `docs/AI_RETRIEVAL_BENCHMARK.md` with the exact test class and separate discovery from extraction.
 - Weekly: update this phase board/current sprint only if status or priority changed; review Bing/Google AI citation/visibility reports when they contain data.
 - After every production release: update `PROJECT_CONTEXT.md` checkpoint and this file if a phase/task materially moved.
 - Monthly after meaningful traffic: review clicks, impressions, indexed URLs, top pages/queries, referral traffic, AI-assistant referrals/citations, repeat usage where measurable, and AdSense revenue/RPM.
@@ -60,6 +64,8 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 - Prefer tools that work in-browser, need no account, answer the intent immediately, and have near-zero marginal cost.
 - When authority is weak, prefer one materially stronger, more trustworthy and more shareable indexed page over many additional average pages.
 - AI-answer visibility is not a separate magic algorithm: use crawlability, indexing, clear structure, primary-source evidence, freshness, external corroboration and unique utility, then measure actual citations/referrals.
+- For Exa/Tavily/agent-search tests, do not confuse known-URL extraction success with search discoverability. If extraction passes and discovery fails, prioritize external discovery, semantic relevance, freshness and authority instead of adding more machine-readable files.
+- `llms.txt` and `ai.txt` are supplemental discovery hints, not substitutes for indexing, ranking or real mentions.
 - Search Console evidence outranks speculative keyword ideas once the site has enough impressions.
 - Google/official provider documentation outranks community claims for technical/indexing/product-limit facts.
 - Missing paid keyword metrics means "unknown", never a fabricated estimate.
@@ -73,6 +79,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | Whole-project stage / task priority | `docs/MASTER_PLAN.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Outreach / authority / AI-discovery actions and follow-ups | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
+| AI-native provider search/extraction benchmark | `docs/AI_RETRIEVAL_BENCHMARK.md` |
 | Code/deployment truth | GitHub `main` + verified production |
 | New keyword candidates | VPS `/var/lib/aineedhelp-radar/latest.md` |
 | Google indexing/search performance | GSC Wizard / Google Search Console |

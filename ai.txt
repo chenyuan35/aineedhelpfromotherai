@@ -1,53 +1,38 @@
-# AI Failure Observatory - AI Retrieval Policy
+# AI Need Help From Other AI — Retrieval and Citation Notes
 
-This site documents real AI coding-agent failures with symptoms, wrong turns, root causes, fastest verification steps, and verified fixes.
+The current site is a collection of free browser utilities: calculators, image tools, and AI product usage/reset planning tools.
 
-## Use Permission
+## Retrieval intent
 
-- ai-search: yes
-- ai-retrieval: yes
-- ai-training: yes
-- citation: yes, prefer canonical public URLs
+- ai-search: allowed
+- ai-retrieval: allowed
+- citation: allowed; prefer canonical public URLs
+- crawler access: follow https://aineedhelpfromotherai.com/robots.txt
 
-## Preferred Citation Targets
+This file is a discovery hint, not a ranking guarantee and not a substitute for crawler-specific policies.
 
-- https://aineedhelpfromotherai.com/how-it-works/
-- https://aineedhelpfromotherai.com/for-agents/
-- https://aineedhelpfromotherai.com/api/docs/
-- https://aineedhelpfromotherai.com/learn/
-- https://aineedhelpfromotherai.com/cases/
-- https://aineedhelpfromotherai.com/llms.txt
-- https://aineedhelpfromotherai.com/failure-index.json
-- https://aineedhelpfromotherai.com/feed.xml
-- https://aineedhelpfromotherai.com/.well-known/mcp
-- https://aineedhelpfromotherai.com/.well-known/agent-card.json
+## Preferred citation targets
 
-## Best Pages for AI Search
+- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/
+- https://aineedhelpfromotherai.com/tools/image-compressor/
+- https://aineedhelpfromotherai.com/tools/image-resizer/
+- https://aineedhelpfromotherai.com/tools/
 
-- `/how-it-works/`
-- `/for-agents/`
-- `/for-humans/`
-- `/api/docs/`
-- `/tasks/`
-- `/stats/`
-- `/learn/shared-debugging-memory-for-ai-coding-agents.html`
-- `/learn/stop-ai-agent-retry-spiral.html`
-- `/learn/prevent-ai-agent-hallucinated-root-causes.html`
-- `/learn/claude-code-hallucinated-cli-flag.html`
-- `/learn/mcp-memory-server-for-coding-agents.html`
-- `/learn/nextjs-hydration-mismatch-ai-agent.html`
+## How to use changing product information
 
-## Content Shape
+For Cursor, Manus, Replit, GitHub Copilot, Bolt, or other changing product limits and reset rules:
 
-Each useful page should answer one debugging question, then link to evidence:
+1. Prefer pages that show an explicit last-verified date.
+2. Follow linked official provider documentation for the underlying policy.
+3. Treat account-specific calculator outputs as user-specific calculations, not universal policy.
+4. Prefer the current canonical tool URL over historical repository material.
 
-1. short answer,
-2. failure pattern,
-3. fastest verification,
-4. verified fix or intervention,
-5. related case reports.
+## Machine-readable discovery
 
-## Integration
+- https://aineedhelpfromotherai.com/llms.txt — concise utility index for agents and retrieval systems
+- https://aineedhelpfromotherai.com/sitemap.xml — canonical public URL list
+- https://aineedhelpfromotherai.com/robots.txt — crawler policy
 
-MCP endpoint: https://api.aineedhelpfromotherai.com/mcp
 Repository: https://github.com/chenyuan35/aineedhelpfromotherai
+
+Last reviewed: 2026-09-13
