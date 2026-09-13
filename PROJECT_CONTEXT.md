@@ -13,15 +13,15 @@ Use this section first in a new session. Do not rescan the whole repository, VPS
 | Keyword discovery | VPS keyword radar is installed and running daily; first full run completed 320/320 source requests and found 1,227 candidates | Read `/var/lib/aineedhelp-radar/latest.md` when choosing topics |
 | Current radar signals | Strong phrases include Cursor usage-limit reset, Codex usage-limit reset, Claude weekly/usage-limit reset, plus image compressor/resizer combinations | Keep as candidate backlog; do not publish the next batch until indexing starts |
 | Search Console | GSC Wizard is connected to `sc-domain:aineedhelpfromotherai.com`. Last 28 settled days: 589 impressions, 0 clicks, avg position 43.24; those impressions are almost entirely from the historical AI-debugging pages because GSC data is settled only through 2026-09-10 | Treat current utility pages as a new indexing cohort rather than optimizing from old query data |
-| Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Fix URL normalization consistency first, then let the tracker measure discovery/indexing |
-| URL normalization | GSC on-page audit found every checked non-root tool URL is indexable but `/path/` redirects 308 to `/path` while the canonical and sitemap point to `/path/`. `vercel.json` explicitly has `trailingSlash: false` | Align hosting with canonical/sitemap/internal URLs before passive waiting; current preferred fix is to make trailing-slash URLs resolve directly |
-| GSC sitemap state | GSC has the existing `https://aineedhelpfromotherai.com/sitemap.xml`; its historical report still reflects older submissions/warnings while live fetch reads 19 current URLs | After URL normalization, refresh/resubmit the intended sitemap and monitor the new cohort rather than stale counts |
+| Utility indexing | Live sitemap currently has 19 URLs. Direct URL Inspection shows homepage indexed, while all 14 checked utility/tool routes are currently `URL is unknown to Google`. A GSC Wizard indexing tracker monitors 15 priority URLs: 1 indexed, 14 not indexed, 0 pending/errors | Keep tracker running and watch for first tool-page crawl/index/impression signals |
+| URL normalization | FIXED in PR #19. Vercel now uses `trailingSlash: true`, matching generated canonical and sitemap URLs. Production checks show `/tools/` and `/tools/cursor-usage-reset/` resolve directly with 200; GSC on-page re-audit found 0 issues on the checked pages | Do not change URL style again without evidence; keep sitemap/canonical/internal links aligned |
+| GSC sitemap state | GSC has the intended `https://aineedhelpfromotherai.com/sitemap.xml`; its historical report still reflects older submissions/warnings while live fetch reads 19 current URLs | Refresh/resubmit the intended sitemap if needed and monitor new cohort data rather than stale counts |
 | Analytics | Search Console is connected; GSC Wizard reports Google Analytics consent is not connected for this account | Connect GA4 if a property exists/is added so referral/direct/engagement data complements GSC |
 | Ubersuggest | Autocomplete discovery works; precise keyword metrics may be unavailable/limited at times | Use when available; never block discovery or invent metrics |
 | Durable workflow | `AGENTS.md`, this checkpoint, `docs/MASTER_PLAN.md`, and `docs/OPERATING_WORKFLOW.md` are the canonical handoff | Update checkpoint and master plan after material progress/priority changes |
-| Last completed infra work | PR #14 added durable workflow + radar; PR #15 fixed supervisord scheduling; PR #16 added fast checkpoint; GSC connection/tracker are active | Do not redo these setups unless health checks fail |
+| Last completed work | PR #18 added the master progress board and retired stale planning docs; PR #19 fixed canonical URL normalization. GSC connection/tracker and VPS radar are active | Next work is sitemap/indexing monitoring plus analytics connection, not another broad tool batch |
 
-Immediate priority: fix the trailing-slash/canonical/sitemap mismatch, then refresh the sitemap/indexing loop and monitor the 15 tracked URLs. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
+Immediate priority: refresh the sitemap/indexing loop, monitor the 15 tracked URLs, and connect GA4 if available. Do not start another broad tool batch until the `/tools/` cohort begins receiving its own crawl/index/impression signals.
 
 ## Mission
 
@@ -94,9 +94,9 @@ A missing paid metric must not stop discovery. Mark estimates as unknown instead
 
 ## Current operating priorities
 
-1. Align hosting URL normalization with sitemap/canonical URLs.
-2. Get the current utility sitemap cohort discovered/indexed by Google.
-3. Keep the new static tool site stable and fast.
+1. Get the current utility sitemap cohort discovered/indexed by Google.
+2. Keep the new static tool site stable and fast.
+3. Connect GA4 if available so non-Google traffic and engagement can be measured.
 4. Build only 1–2 validated tools per round instead of bulk publishing thin pages.
 5. Use the VPS keyword radar to collect fresh autocomplete demand daily.
 6. Use Search Console impressions from the new `/tools/` cohort to guide expansion once they exist.

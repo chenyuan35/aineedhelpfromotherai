@@ -14,7 +14,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 |---|---|---|---|---|
 | P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | GitHub→Vercel flow, CI/Eval Gate, `AGENTS.md`, `PROJECT_CONTEXT.md`, workflow docs | Completed |
 | P1 Initial tool inventory | Publish a useful, low-cost starter portfolio | DONE | 13 live tool pages across calculators, image tools and AI quota/reset tools | Completed |
-| P2 Discovery & indexing | Make Google discover and index the current utility cohort | IN PROGRESS | GSC connected; 15 priority URLs tracked; homepage indexed; 14 checked tool URLs currently unknown to Google | Tool cohort starts being crawled/indexed and receives its own impressions |
+| P2 Discovery & indexing | Make Google discover and index the current utility cohort | IN PROGRESS | GSC connected; 15 priority URLs tracked; homepage indexed; 14 checked tool URLs currently unknown to Google. URL normalization is now fixed so sitemap/canonical trailing-slash URLs resolve directly. | Tool cohort starts being crawled/indexed and receives its own impressions |
 | P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY P2 | Current GSC impressions mostly belong to historical AI-debugging pages | At least several tool-page query/impression signals exist |
 | P4 Winner optimization | Improve pages already earning impressions | QUEUED | Use GSC query/page/CTR/position data, titles, copy, internal links and exact intent | Clear improvement or a decision to stop investing |
 | P5 Controlled expansion | Add 1–2 evidence-backed tools per round | QUEUED | Candidate feed comes from VPS radar + GSC + Ubersuggest + official docs/community evidence | Each round ships, indexes and is measured before the next broad round |
@@ -23,14 +23,13 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 
 ## Current sprint — Indexing before expansion
 
-1. Fix the discovered URL consistency issue: generated canonical/sitemap URLs use trailing slashes while Vercel currently redirects them to no-slash URLs (`trailingSlash: false`). Pick one canonical form and make hosting, sitemap, canonicals and internal links agree.
-2. Deploy the URL consistency fix through a tested PR and verify both old important routes and all tool routes.
-3. Make sure `sitemap.xml` is the only intended sitemap entry and refresh/resubmit it in Search Console if necessary; old submitted non-sitemap URLs should not guide decisions.
-4. Keep the 15-URL GSC indexing tracker active. Do not spam repeated recrawl requests; re-check the cohort on a measured cadence.
-5. Connect GA4 to GSC Wizard if a GA4 property exists or is added, so direct/referral/engagement data can complement Search Console.
-6. Once tool-page impressions appear, optimize the strongest existing page before creating a near-duplicate page.
-7. Select the next 1–2 tools only from combined evidence: GSC signal + radar/autocomplete + official rules/community pain + keyword metrics when available.
-8. Start light distribution for genuinely useful indexed tools: relevant directories, niche communities and natural mentions/backlinks; avoid bulk spam submissions.
+1. DONE — Fix URL consistency: Vercel now serves trailing-slash URLs directly, matching generated canonicals and sitemap URLs. PR #19 shipped and production re-audit found no redirect/canonical issues on checked pages.
+2. NEXT — Refresh/resubmit the intended `https://aineedhelpfromotherai.com/sitemap.xml` in Search Console if needed and ignore stale historical non-sitemap submissions when making decisions.
+3. ACTIVE — Keep the 15-URL GSC indexing tracker running. Do not spam repeated recrawl requests; re-check the cohort on a measured cadence.
+4. NEXT DATA SOURCE — Connect GA4 to GSC Wizard if a GA4 property exists or is added, so direct/referral/engagement data can complement Search Console.
+5. WAITING FOR SIGNAL — Once tool-page impressions appear, optimize the strongest existing page before creating a near-duplicate page.
+6. WAITING FOR SIGNAL — Select the next 1–2 tools only from combined evidence: GSC signal + radar/autocomplete + official rules/community pain + keyword metrics when available.
+7. LIGHT DISTRIBUTION — Once useful tool URLs are indexed, submit/share selectively in relevant directories and niche communities to earn discovery and natural links; avoid bulk spam submissions.
 
 ## Measurement cadence
 
