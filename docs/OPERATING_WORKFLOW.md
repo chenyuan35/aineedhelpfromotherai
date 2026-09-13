@@ -10,6 +10,8 @@ The checkpoint must answer: what is live, what was just completed, what is block
 
 When the current task involves external authority, outreach, referral distribution, or AI-answer visibility, also read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before acting. It is the durable ledger for who was contacted, what was sent, what happened, and what follow-up is due.
 
+When the current task involves Exa, Tavily, ChatGPT Search, Perplexity or another AI-native search/retrieval system, also read `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` and `docs/AI_RETRIEVAL_BENCHMARK.md`. Advance the ordered AIR task list instead of improvising a new provider-specific optimization plan.
+
 ## 1. Discover
 
 Collect candidate queries from the VPS keyword radar, Ubersuggest when available, autocomplete, Search Console, current product documentation, and repeated public user questions.
@@ -78,6 +80,8 @@ Use actual Search Console queries to decide whether to improve a page, add a dis
 
 For AI discovery, treat classic SEO as the foundation rather than a separate hack. Keep public pages crawlable, give changing claims primary-source evidence and last-verified dates, use clear answer-first sections/headings, and provide unique utility that a generic summary cannot replace. Measure AI-assistant referral traffic through GA4/GSC Wizard and citation/AI visibility through Bing Webmaster or Search Console when those reports are available.
 
+For AI-native retrieval systems, use a provider-aligned, non-adversarial approach. The objective is to fit legitimate discovery/relevance/quality/freshness/authority signals, not to bypass or manipulate them. Diagnose crawl/discovery, indexing, candidate retrieval, ranking/reranking, chunk extraction and downstream citation as separate stages. Never use cloaking, hidden provider-specific text, fake citations, fabricated freshness, synthetic backlinks or deceptive metadata.
+
 ## 7. External authority and outreach
 
 When authority/distribution work is active:
@@ -93,6 +97,6 @@ When authority/distribution work is active:
 
 The VPS radar runs daily and writes its latest shortlist under `/var/lib/aineedhelp-radar/`. Review newly appearing phrases first. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
 
-After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes. External authority/outreach/AI-discovery actions must also update `docs/AUTHORITY_AND_AI_DISCOVERY.md` in the same round.
+After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes. External authority/outreach/AI-discovery actions must also update `docs/AUTHORITY_AND_AI_DISCOVERY.md` in the same round. AI-native provider tests must update `docs/AI_RETRIEVAL_BENCHMARK.md`, and AIR task status must update `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`.
 
-Do not duplicate long history in the checkpoint or master plan. Git history/PRs are the historical log; the checkpoint is the current resume point, the master plan is the project-wide progress/task board, and the authority/AI ledger is the detailed external-distribution follow-up record.
+Do not duplicate long history in the checkpoint or master plan. Git history/PRs are the historical log; the checkpoint is the current resume point, the master plan is the project-wide progress/task board, the authority/AI ledger is the detailed external-distribution follow-up record, and the AIR task list is the ordered execution queue for AI-native retrieval integration.
