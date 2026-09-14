@@ -10,6 +10,7 @@ const homePath = join(root, 'index.html');
 const curatedHome = readFileSync(homePath, 'utf8');
 const GA4_ID = 'G-FYKKNKRE58';
 const GA4_TAG = `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA4_ID}');</script>`;
+const BEHAVIOR_TAG = `<script id="site-behavior-analytics">(()=>{const send=(name,params)=>{try{if(typeof window.gtag==='function')window.gtag('event',name,params)}catch{}};const placement=el=>el.closest('.provider-stage')?'home_provider':el.closest('.tool-search-results')?'site_search':el.closest('.related-grid')?'related_tool':el.closest('.tools-grid')?'tool_listing':el.closest('.utility-row')?'home_utility':el.closest('.relay-wrap')?'home_relay':el.closest('footer')?'footer':'internal';document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(link){try{const url=new URL(link.href,location.href);if(url.origin===location.origin&&url.pathname.startsWith('/tools/'))send('tool_open',{tool_path:url.pathname,source_path:location.pathname,placement:placement(link)})}catch{}}const button=event.target.closest('main button');if(button)send('tool_action',{source_path:location.pathname,action_id:(button.id||button.textContent||'button').trim().slice(0,80)})})})();</script>`;
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
@@ -27,6 +28,15 @@ for (const dir of ['tools','about','contact','privacy','terms','media']) {
   const src=join(root,dir); if(existsSync(src)) cpSync(src,join(dist,dir),{recursive:true});
 }
 
+// Vercel enforces trailing slashes before proxying; request the final relay API path directly.
+const relayRiskPath=join(dist,'tools','relay-exit-risk-checker','index.html');
+if(existsSync(relayRiskPath)){
+  const relayHtml=readFileSync(relayRiskPath,'utf8')
+    .replace("fetch('/api/reasoning/relay-risk-v2?site='","fetch('/api/reasoning/relay-risk-v2/?site='")
+    .replace("fetch('/api/reasoning/relay-risk-v2',{method:'POST'","fetch('/api/reasoning/relay-risk-v2/',{method:'POST'");
+  writeFileSync(relayRiskPath,relayHtml);
+}
+
 function injectGa4(dir){
   for(const name of readdirSync(dir)){
     const path=join(dir,name);
@@ -35,7 +45,7 @@ function injectGa4(dir){
     const html=readFileSync(path,'utf8');
     if(html.includes(GA4_ID))continue;
     if(!html.includes('</head>'))throw new Error(`Missing </head> in ${path}`);
-    writeFileSync(path,html.replace('</head>',`${GA4_TAG}</head>`));
+    writeFileSync(path,html.replace('</head>',`${GA4_TAG}${BEHAVIOR_TAG}</head>`));
   }
 }
 injectGa4(dist);
