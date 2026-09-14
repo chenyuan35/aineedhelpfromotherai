@@ -20,7 +20,10 @@ NODE_BINARY = os.environ.get("RELAY_RISK_NODE") or shutil.which("node")
 def run_once() -> None:
     now = dt.datetime.now(dt.timezone.utc).isoformat()
     print(f"[{now}] refreshing relay-risk open data", flush=True)
-    result = subprocess.run([NODE_BINARY, str(SCRIPT)], cwd=str(REPO), check=False)
+    child_env = os.environ.copy()
+    child_env.pop("NODE_CHANNEL_FD", None)
+    child_env.pop("NODE_CHANNEL_SERIALIZATION_MODE", None)
+    result = subprocess.run([NODE_BINARY, str(SCRIPT)], cwd=str(REPO), env=child_env, check=False)
     print(f"relay-risk refresh exit={result.returncode}", flush=True)
 
 
