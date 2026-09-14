@@ -21,7 +21,7 @@ for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-s
 // indexes during the build, but they must not replace the checked-in homepage identity.
 writeFileSync(homePath, curatedHome);
 
-for (const f of ['index.html','site.css','home.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt']) {
+for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
 }
 for (const dir of ['tools','about','contact','privacy','terms','media']) {
