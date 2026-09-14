@@ -18,6 +18,8 @@
 
 const reasoning = require('../lib/reasoning-storage');
 const relayRisk = require('../lib/relay-risk');
+const relayRiskV2 = require('../lib/relay-risk-v2');
+const { checkRateLimit } = require('../lib/rate-limit');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,7 +38,30 @@ module.exports = async (req, res) => {
   };
 
   try {
-    // GET/POST /api/reasoning/relay-risk — anonymous community relay-risk aggregate
+    // GET/POST /api/reasoning/relay-risk-v2 — measured signals + 90-day community forecast.
+    if (pathParts[pathParts.length - 1] === 'relay-risk-v2') {
+      try {
+        if (method === 'GET') {
+          const summary = await relayRiskV2.getSummary(getParam('site') || '');
+          return res.status(200).json(summary);
+        }
+        if (method === 'POST') {
+          const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.headers['x-real-ip'] || req.socket?.remoteAddress || 'unknown';
+          const limit = checkRateLimit('relayRiskVoteV2', clientIp, null, { maxRequests: 10, windowMs: 60000 });
+          if (!limit.allowed) {
+            res.setHeader('Retry-After', '60');
+            return res.status(429).json({ error: 'Too many relay forecast submissions. Try again in a minute.' });
+          }
+          const summary = await relayRiskV2.castVote(req.body || {});
+          return res.status(200).json(summary);
+        }
+        return res.status(405).json({ error: 'Method not allowed' });
+      } catch (err) {
+        return res.status(err.statusCode || 400).json({ error: err.message || 'invalid request' });
+      }
+    }
+
+    // GET/POST /api/reasoning/relay-risk — legacy anonymous community relay-risk aggregate
     if (pathParts[pathParts.length - 1] === 'relay-risk') {
       try {
         if (method === 'GET') {
