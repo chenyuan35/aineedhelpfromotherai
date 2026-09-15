@@ -10,6 +10,14 @@
       "outsideHomeNote": "Outside the UK, do not assume physical SIM delivery is available. If using eSIM, recheck current activation requirements before purchase.",
       "sourceUrl": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim"
     },
+    "lebara-uk": {
+      "mode": "required-country",
+      "hardBlock": true,
+      "requiredLocations": ["United Kingdom"],
+      "summary": "Lebara states that its SIM/eSIM must be activated in the UK before it is taken abroad; an eSIM can be ordered while outside the UK but must still be activated in the UK.",
+      "outsideHomeNote": "If you are outside the UK now, you can research or order the route, but do not treat it as immediately usable until you can activate it in the UK.",
+      "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+    },
     "tello-us": {
       "mode": "required-country",
       "hardBlock": true,
@@ -33,6 +41,22 @@
       "summary": "Initial activation and overseas SMS/roaming behavior are not yet sufficiently verified for an overseas-user recommendation.",
       "outsideHomeNote": "If you are outside the US, this route remains research-required rather than recommended.",
       "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+    },
+    "mobal-japan-voice-data": {
+      "mode": "conditional",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Mobal accepts online activation requests and offers worldwide delivery or Japan collection. Voice-product ID rules must be completed before the SIM/eSIM access code is released or collected.",
+      "outsideHomeNote": "You can arrange the product before reaching Japan, but collection requires your physical passport and actual mobile service depends on the Japanese network/selected activation date. Recheck shipping timing before relying on pre-arrival setup.",
+      "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-"
+    },
+    "china-official-carrier": {
+      "mode": "required-country",
+      "hardBlock": true,
+      "requiredLocations": ["Mainland China"],
+      "summary": "Foreign nationals using a passport or Foreign Permanent Resident ID Card must apply in person at a self-operated telecom business hall; current guidance does not allow another person to apply on their behalf.",
+      "outsideHomeNote": "If you are outside Mainland China now, this route becomes eligible after arrival because application and identity verification are in person.",
+      "sourceUrl": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html"
     },
     "activatex-temp": {
       "mode": "online",
