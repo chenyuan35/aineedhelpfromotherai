@@ -32,7 +32,7 @@ After a small number of questions, the user should get a short executable route 
 - whether the selected number country is a mapped supported route for a geographically restricted target service;
 - whether the number can receive SMS/OTP abroad;
 - whether Wi-Fi Calling/Text can help abroad;
-- target-service compatibility;
+- target-service compatibility without pretending a number-class match proves provider-specific OTP delivery;
 - retention cost/rule and reminder;
 - recovery/refund/migration plan.
 
@@ -48,17 +48,20 @@ Inputs:
 - preferred number country;
 - cheapest, easiest or safest priority.
 
-The first explicitly mapped number countries are United States, United Kingdom, Japan and Mainland China. `Another country` remains unverified rather than pretending the MVP has global carrier coverage.
+The first explicitly mapped number countries are United States, United Kingdom, Japan and Mainland China. `Another country` is not treated as a real country value; the MVP stops and asks for a mapped country rather than fabricating a route.
 
 Hard activation constraints can remove a route from ranking. Target-service geography can also stop the entire recommendation. A foreign phone number must never be presented as a workaround for a service that does not support the user's physical location.
 
-`No preference` is deliberately conservative: the MVP compares mapped carrier routes in the user's current mapped country rather than silently selecting an arbitrary foreign country. Temporary routes remain eligible only for non-long-term tasks and only when the target service's own rules allow them.
+`No preference` is deliberately conservative: the MVP compares mapped carrier routes in the user's current mapped country rather than silently selecting an arbitrary foreign country. One-time SMS activation routes are eligible only when the user explicitly selects `One verification only` and the target service's own rules do not reject that number class.
+
+`Other` physical location is deliberately unverified. For Mainland China, services whose access/registration conditions have not yet been mapped are also left unverified instead of assuming that obtaining a phone number solves service access.
 
 Examples:
 
 - Tello is not an immediate activation route for a user physically outside the US.
 - A Mainland China official-carrier SIM is not an immediate route for someone outside Mainland China because current guidance requires in-person application.
 - Claude/OpenAI API do not receive a phone-number recommendation for a user mapped to Mainland China in this MVP; the tool points to the official supported-location rule instead of suggesting a foreign number workaround.
+- WhatsApp/Telegram/Google from Mainland China remain `unverified` in this MVP until service-access conditions are explicitly researched; the tool does not infer success from phone-number availability alone.
 
 ## Entry B — Travel / move abroad
 
@@ -96,6 +99,8 @@ Popular tutorials/videos/community threads discover repeated user questions and 
 
 Official service/provider documentation outranks blogs and forum posts for restrictions, identity rules, activation geography, refund conditions and lifecycle claims. Marketplace price/stock/success data is dynamic. Community reports remain dated observations and cannot override a current official restriction. Unknown data stays unknown.
 
+A `carrier-mobile` match means only that the route satisfies the published number class. Until provider-specific service/OTP evidence exists, the UI must say that exact-provider delivery is not independently proven.
+
 Dimensions are deliberately separate:
 
 - provider/evidence quality;
@@ -116,7 +121,7 @@ Dimensions are deliberately separate:
 - retention/recycling rule;
 - dynamic price/stock.
 
-This separation prevents a cheap route from being recommended when it cannot be used legally/supportedly, cannot be activated, cannot roam, or cannot be recovered later.
+This separation prevents a cheap route from being recommended when it cannot be used supportedly, cannot be activated, cannot roam, or cannot be recovered later.
 
 ## Current structured examples
 
@@ -130,7 +135,7 @@ This separation prevents a cheap route from being recommended when it cannot be 
 - Mainland China official-carrier route: foreign nationals can use accepted foreign ID; current regulator guidance requires in-person application at a self-operated carrier business hall; generic post-departure OTP remains carrier/plan-specific.
 - Airalo example: data-only travel eSIM; never a local SMS-number candidate.
 - Destination local physical data SIM: data-only fallback for devices without eSIM; never a local SMS-number candidate.
-- ActivateX/SMSPool/5SIM: temporary verification routes with ownership duration, privacy and refund semantics kept separate.
+- ActivateX/SMSPool/5SIM: one-time verification routes with ownership duration, privacy and refund semantics kept separate; they are not offered for multi-week or long-term access in the current MVP.
 
 ## Files
 
@@ -162,14 +167,19 @@ The dedicated command is:
 
 `node scripts/test-phone-number-lifecycle-mvp.mjs`
 
-It is now a blocking CI step. The first audited run completed 19 deterministic assertions against the actual inline page logic.
+It is now a blocking CI step. The current audited run completes 23 deterministic assertions against the actual inline page logic.
 
 Required invariants include:
 
-- Claude/OpenAI API do not recommend a foreign number when the mapped physical location is unsupported; `Other` stays unverified instead of guessed.
+- Claude/OpenAI API do not recommend a foreign number when the mapped physical location is unsupported.
+- `Other` physical location remains unverified for every registration service instead of being guessed.
+- unmapped Mainland-China service-access cases remain unverified rather than assuming a phone number solves access.
+- `Another country` is not treated as an exact mapped number country.
 - mapped unsupported number-country choices for geographically restricted services are blocked.
 - `No preference` cannot silently choose an arbitrary foreign carrier.
+- one-time SMS products are not candidates for multi-week or long-term number access.
 - registration never accepts a data-only route.
+- a carrier-mobile number-class match is not presented as proof of provider-specific OTP delivery.
 - a real local-number travel requirement excludes Airalo and every other data-only route.
 - data-only travel without eSIM receives a physical data-only fallback rather than a voice/SMS carrier route.
 - data-only travel cannot pretend to solve OTP when the user also drops the home SMS line.
