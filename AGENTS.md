@@ -22,6 +22,8 @@ Development constraints:
 - Never commit or print secrets.
 - Do not alter paid services, AdSense/account settings, domain/DNS, or delete important data without explicit approval.
 - Never touch the unrelated `hermes` machine for this project.
+- `yuan` is the user's personal workstation, not a website/project execution host. Never run site services, monitoring, crawlers, deployments, backups, scheduled jobs, or persistent project data there. A one-off user-authorized device/login action is allowed only when unavoidable; project operation must not depend on it.
+- Treat trial/ephemeral VPS hosts as disposable observer nodes unless explicitly promoted after review. Do not place production dependencies or unique durable data on them, and move any valuable summaries off-host before expiry.
 
 Research constraints:
 - Validate topics with real signals; do not invent volume/CPC/difficulty.
