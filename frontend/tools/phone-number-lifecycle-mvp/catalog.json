@@ -84,24 +84,24 @@
       "provider": "giffgaff",
       "country": "United Kingdom",
       "numberClass": "carrier-mobile",
-      "form": "mobile SIM; verify current eSIM/device options before purchase",
-      "bestFor": ["long-term-number", "low-frequency-retention", "sms-capable-number"],
+      "form": "physical SIM or eSIM on supported devices",
+      "bestFor": ["long-term-number", "low-frequency-retention", "uk-number", "sms-capable-number"],
       "purchaseUrl": "https://www.giffgaff.com/",
       "cost": {
-        "purchase": "Check current checkout",
-        "recurring": "No fixed MVP claim; qualifying use at least once every 6 months prevents inactivity deactivation",
+        "purchase": "Physical SIM ordering is free from giffgaff, but delivery is UK-address only; eSIM is available through the giffgaff app. Recheck current plan/credit cost before activation.",
+        "recurring": "No fixed monthly plan is required for the inactivity rule itself. Perform at least one qualifying use or airtime/plan purchase within every 6 months.",
         "dynamic": true
       },
       "retention": {
         "intervalDays": 150,
-        "rule": "Do at least one qualifying action before six months of inactivity: a chargeable/qualifying call, SMS/MMS, mobile-data connection, airtime credit purchase or plan purchase.",
+        "rule": "Do at least one qualifying action before six months of inactivity: a qualifying call/SMS/MMS, mobile-data connection, airtime credit purchase or plan purchase.",
         "recovery": "Once deactivated for inactivity the SIM cannot be reactivated. giffgaff says a PAC may be requested from agents within 30 days after deactivation to move the number to another UK network."
       },
       "friction": {
-        "identity": "Check current ordering/activation requirements",
-        "location": "Check shipping and activation availability for your location",
-        "device": "Unlocked compatible phone required",
-        "ongoing": "Low-frequency keep-alive action"
+        "identity": "Current account/payment requirements must be checked at signup; the cited help pages do not establish a universal passport/KYC requirement.",
+        "location": "Physical SIM delivery is UK-address only. Roaming is supported in many countries, but Wi-Fi Calling is not supported abroad. eSIM activation geography still needs explicit verification before production.",
+        "device": "Unlocked compatible phone required; eSIM requires a supported device and the giffgaff app.",
+        "ongoing": "Very low-frequency keep-alive action; set a reminder well before the 6-month inactivity boundary."
       },
       "evidence": [
         {
@@ -110,8 +110,18 @@
           "type": "official"
         },
         {
-          "label": "giffgaff — Getting a PAC or STAC to leave giffgaff",
-          "url": "https://help.giffgaff.com/en/articles/635745-getting-a-pac-or-stac-to-leave-giffgaff",
+          "label": "giffgaff — Ordering a SIM",
+          "url": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — Switching to an eSIM",
+          "url": "https://help.giffgaff.com/en/articles/261570-switching-to-an-esim-with-giffgaff",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — Understanding WiFi calling and VoLTE",
+          "url": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte",
           "type": "official"
         }
       ]
@@ -122,50 +132,131 @@
       "provider": "Tello",
       "country": "United States",
       "numberClass": "carrier-mobile",
-      "form": "SIM/eSIM",
-      "bestFor": ["long-term-number", "us-number", "sms-capable-number"],
+      "form": "physical SIM or eSIM",
+      "bestFor": ["long-term-number", "us-number", "sms-capable-number", "use-after-us-activation"],
       "purchaseUrl": "https://tello.com/",
       "cost": {
-        "purchase": "No one-time purchase fee shown on the cited plan disclosure; taxes/cost-recovery charges may vary",
-        "recurring": "Plans currently start at USD 5/month",
+        "purchase": "Current build-your-own plans include a USD 5/30-day option; recheck plan pricing and taxes before purchase.",
+        "recurring": "Paid plans renew every 30 days. Wi-Fi Calling/Text can be used abroad after successful US activation; standard roaming outside promotions uses PAYG credit.",
         "dynamic": true
       },
       "retention": {
-        "intervalDays": 25,
-        "rule": "Maintain an active paid plan. The MVP does not yet claim that Tello is the cheapest annual retention route.",
-        "recovery": "Follow current Tello number-transfer/account-recovery rules; verify before relying on the number for critical accounts."
+        "intervalDays": 27,
+        "rule": "Keep an active paid plan and valid payment method. Tello plans run on 30-day cycles; this reminder is intentionally a few days early.",
+        "recovery": "Follow current Tello number-transfer/account-recovery rules; do not allow a critical-account number to lapse before changing recovery details elsewhere."
       },
       "friction": {
-        "identity": "Check current eligibility and checkout requirements",
-        "location": "US service; verify activation/use conditions if you are outside the US",
-        "device": "Unlocked compatible phone; eSIM supported on compatible devices",
-        "ongoing": "Monthly paid service"
+        "identity": "Check current checkout eligibility. Wi-Fi Calling requires a US E911 emergency address on the account.",
+        "location": "Critical constraint: first activation or port-in must be completed while physically in the United States and connected to a US cellular tower. After activation, Wi-Fi Calling/Text and supported roaming can work abroad.",
+        "device": "Unlocked compatible phone required; eSIM requires a compatible device and one-time QR activation.",
+        "ongoing": "30-day paid plan. For non-Europe standard roaming, PAYG credit is required; Wi-Fi Calling/Text can receive OTPs abroad when configured."
       },
       "evidence": [
         {
-          "label": "Tello — What's the cheapest Tello plan?",
-          "url": "https://tello.com/help_center/plans-pricing/what-s-the-cheapest-tello-plan",
+          "label": "Tello — Can I activate Tello while I'm abroad?",
+          "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
           "type": "official"
         },
         {
-          "label": "Tello — eSIM plans",
-          "url": "https://tello.com/buy/esim",
+          "label": "Tello — When do autopay & plan renewal occur?",
+          "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+          "type": "official"
+        },
+        {
+          "label": "Tello — How can I use Wi-Fi Calling?",
+          "url": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling",
+          "type": "official"
+        },
+        {
+          "label": "Tello — How can I use my device overseas?",
+          "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "ultra-paygo-us",
+      "name": "Ultra Mobile PayGo US number",
+      "provider": "Ultra Mobile PayGo",
+      "country": "United States",
+      "numberClass": "carrier-mobile",
+      "form": "physical PayGo SIM",
+      "bestFor": ["long-term-number", "us-number", "low-monthly-cost", "sms-capable-number"],
+      "purchaseUrl": "https://www.ultramobile.com/paygo/",
+      "cost": {
+        "purchase": "PayGo SIM kit purchase channel is currently linked by Ultra Mobile; recheck seller price before purchase.",
+        "recurring": "USD 3/month currently includes 100 minutes, 100 texts and 100MB data; overage is charged from the PayGo wallet.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 27,
+        "rule": "Maintain the USD 3 monthly PayGo service and sufficient account/payment balance; reminder is set a few days before the monthly boundary.",
+        "recovery": "Use Ultra Mobile's current account/SIM replacement or number-transfer process while the line is still active."
+      },
+      "friction": {
+        "identity": "Current activation/account requirements still need explicit verification for non-US residents before production.",
+        "location": "International roaming is supported for voice/SMS/MMS through PayGo Wallet credit, but initial activation-location requirements still need explicit verification.",
+        "device": "Unlocked compatible phone and PayGo SIM required.",
+        "ongoing": "USD 3 monthly base plan; optional roaming wallet/add-ons increase cost."
+      },
+      "evidence": [
+        {
+          "label": "Ultra Mobile — Pay as You Go",
+          "url": "https://www.ultramobile.com/paygo/",
+          "type": "official"
+        },
+        {
+          "label": "Ultra Mobile — International Roaming",
+          "url": "https://www.ultramobile.com/international-roaming/",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "h2o-paygo-us",
+      "name": "H2O Wireless Pay As You Go US number",
+      "provider": "H2O Wireless",
+      "country": "United States",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid SIM/eSIM options must be rechecked at purchase",
+      "bestFor": ["long-term-number", "us-number", "infrequent-use", "sms-capable-number"],
+      "purchaseUrl": "https://www.h2owireless.com/",
+      "cost": {
+        "purchase": "Plan/refill selection is dynamic; current official terms describe USD 10/20/30 Pay As You Go refills with 90-day expiry and USD 100 with 365-day expiry.",
+        "recurring": "Balance can roll over when recharged before expiry under the stated Pay As You Go terms. Recheck the current refill product before buying.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 80,
+        "rule": "For a 90-day refill, recharge before the balance/plan expiration date. The reminder is deliberately early. Current terms say the account and number are cancelled after the balance remains at USD 0 for 30 consecutive days.",
+        "recovery": "Do not wait for cancellation on a number tied to important accounts; refill or port/change recovery numbers while the line is active."
+      },
+      "friction": {
+        "identity": "Signup/KYC requirements are not yet fully verified for the intended overseas-user scenarios.",
+        "location": "Initial activation and overseas SMS/roaming behavior still require explicit official-source verification before this route can be production-ranked for users outside the US.",
+        "device": "Confirm device/network compatibility and current SIM/eSIM availability before purchase.",
+        "ongoing": "Refill-expiry management rather than a simple monthly subscription; zero balance for 30 consecutive days can cancel the number."
+      },
+      "evidence": [
+        {
+          "label": "H2O Wireless — Terms and Conditions",
+          "url": "https://www.h2owireless.com/terms-conditions",
           "type": "official"
         }
       ]
     },
     {
       "id": "activatex-temp",
-      "name": "Temporary SMS activation marketplace",
+      "name": "Temporary SMS activation comparison",
       "provider": "ActivateX",
       "country": "Multiple",
       "numberClass": "temporary-activation",
-      "form": "temporary SMS activation number",
+      "form": "temporary SMS activation marketplace/comparison route",
       "bestFor": ["one-time-code", "price-comparison", "temporary-use"],
       "purchaseUrl": "https://activatex.org/",
       "cost": {
-        "purchase": "Dynamic by service, country and supplier route",
-        "recurring": "None for a one-time activation purchase",
+        "purchase": "Dynamic by service, country and supplier route; use the live comparison rather than a stored MVP price.",
+        "recurring": "None assumed for a one-time activation purchase.",
         "dynamic": true
       },
       "retention": {
@@ -174,15 +265,96 @@
         "recovery": "Do not use for an account that depends on future access to the same number."
       },
       "friction": {
-        "identity": "Marketplace/account/payment requirements vary",
-        "location": "Supplier routes vary by country",
-        "device": "No SIM installation for the temporary marketplace workflow",
-        "ongoing": "No long-term number control"
+        "identity": "Marketplace/account/payment requirements vary.",
+        "location": "Supplier routes vary by country and stock.",
+        "device": "No SIM installation for the temporary marketplace workflow.",
+        "ongoing": "No long-term number control."
       },
       "evidence": [
         {
           "label": "ActivateX — compare SMS activation prices by service and country",
           "url": "https://activatex.org/",
+          "type": "marketplace"
+        }
+      ]
+    },
+    {
+      "id": "smspool-temp",
+      "name": "SMSPool temporary verification route",
+      "provider": "SMSPool",
+      "country": "Multiple",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "bestFor": ["one-time-code", "country-service-filter", "price-selection", "temporary-use"],
+      "purchaseUrl": "https://www.smspool.net/",
+      "cost": {
+        "purchase": "Dynamic by service/country/pool. SMSPool exposes published pricing before account creation and its API supports choosing the cheapest available route or highest-success-rate pricing option.",
+        "recurring": "None assumed for a one-time verification order; rentals are a separate product.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "A one-time order is not durable number ownership.",
+        "recovery": "For one-time orders, do not assume future access to the same number. SMSPool says orders without a received code are automatically refunded after the order period."
+      },
+      "friction": {
+        "identity": "Account/payment requirements apply; exact payment methods and regional access must be checked live.",
+        "location": "Service/country inventory changes dynamically.",
+        "device": "No SIM installation for the temporary verification workflow.",
+        "ongoing": "No long-term ownership unless a separate rental product is deliberately selected."
+      },
+      "evidence": [
+        {
+          "label": "SMSPool — OTP testing numbers / published price search",
+          "url": "https://www.smspool.net/",
+          "type": "marketplace"
+        },
+        {
+          "label": "SMSPool — API ordering and refund behavior",
+          "url": "https://www.smspool.net/article/smspool-api-order-view-and-cancel-numbers-9883b6969fad",
+          "type": "marketplace"
+        }
+      ]
+    },
+    {
+      "id": "5sim-temp",
+      "name": "5SIM temporary verification route",
+      "provider": "5SIM",
+      "country": "Multiple",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "bestFor": ["one-time-code", "country-service-operator-filter", "price-comparison", "temporary-use"],
+      "purchaseUrl": "https://5sim.net/prices",
+      "cost": {
+        "purchase": "Observed 2026-09-15 public starting prices: Telegram from USD 0.10; WhatsApp from USD 0.06; Google/YouTube from USD 0.06; OpenAI/ChatGPT from USD 0.01. Exact country/operator routes can cost more and change frequently.",
+        "recurring": "One-time orders are pay-per-order; longer rental periods are separate options.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "Temporary orders do not imply continued control of the number.",
+        "recovery": "5SIM terms state cancelled or non-implemented orders are returned to the account balance under its service terms; do not rely on the number for later account recovery."
+      },
+      "friction": {
+        "identity": "Account and funding are required; exact payment availability varies.",
+        "location": "Public pricing currently spans more than 150 countries and varies by selected service/country/operator.",
+        "device": "No SIM installation for the temporary verification workflow.",
+        "ongoing": "No durable number control for ordinary activation orders."
+      },
+      "evidence": [
+        {
+          "label": "5SIM — Prices",
+          "url": "https://5sim.net/prices",
+          "type": "marketplace"
+        },
+        {
+          "label": "5SIM — Terms / cancellation and non-implementation refund",
+          "url": "https://5sim.net/docs2/offer.html",
+          "type": "marketplace"
+        },
+        {
+          "label": "5SIM — API support",
+          "url": "https://5sim.net/support/working-with-api",
           "type": "marketplace"
         }
       ]
@@ -197,8 +369,8 @@
       "bestFor": ["travel-data", "dual-line", "keep-home-sim"],
       "purchaseUrl": "https://www.airalo.com/",
       "cost": {
-        "purchase": "Dynamic by destination, data allowance and validity",
-        "recurring": "Usually package-based rather than number-retention based",
+        "purchase": "Dynamic by destination, data allowance and validity.",
+        "recurring": "Usually package-based rather than number-retention based.",
         "dynamic": true
       },
       "retention": {
@@ -207,10 +379,10 @@
         "recovery": "Keep the home/local voice line separately if you need OTP, calls or a persistent number."
       },
       "friction": {
-        "identity": "Check current checkout requirements",
-        "location": "Destination-specific coverage",
-        "device": "eSIM-compatible unlocked device required",
-        "ongoing": "Package expiry/data balance"
+        "identity": "Check current checkout requirements.",
+        "location": "Destination-specific coverage.",
+        "device": "eSIM-compatible unlocked device required.",
+        "ongoing": "Package expiry/data balance."
       },
       "evidence": [
         {
@@ -230,8 +402,8 @@
       "bestFor": ["travel-local-number", "local-calls", "local-sms", "long-stay"],
       "purchaseUrl": "",
       "cost": {
-        "purchase": "Destination-specific",
-        "recurring": "Destination-specific",
+        "purchase": "Destination-specific.",
+        "recurring": "Destination-specific.",
         "dynamic": true
       },
       "retention": {
@@ -240,10 +412,10 @@
         "recovery": "Use the carrier's replacement/porting process; do not assume a prepaid number is permanent."
       },
       "friction": {
-        "identity": "May require passport/local identity depending on jurisdiction",
-        "location": "Some products require in-country purchase or activation",
-        "device": "Unlocked compatible device",
-        "ongoing": "Top-up or plan rules vary"
+        "identity": "May require passport/local identity depending on jurisdiction.",
+        "location": "Some products require in-country purchase or activation.",
+        "device": "Unlocked compatible device.",
+        "ongoing": "Top-up or plan rules vary."
       },
       "evidence": []
     }
