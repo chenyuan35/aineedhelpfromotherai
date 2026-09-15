@@ -12,6 +12,27 @@ When the current task involves external authority, outreach, referral distributi
 
 When the current task involves Exa, Tavily, ChatGPT Search, Perplexity or another AI-native search/retrieval system, also read `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` and `docs/AI_RETRIEVAL_BENCHMARK.md`. Advance the ordered AIR task list instead of improvising a new provider-specific optimization plan.
 
+### Interpret rough inputs before execution
+
+The user is not required to turn every thought into a professional product brief. Screenshots, copied prompts, competitor examples, half-formed ideas, observations, and material shared “for reference” are useful signals even when they are not executable specifications.
+
+Default interpretation:
+- an explicit request to build, change, send, deploy, publish, delete, buy, or otherwise act is an action request, still subject to the project's safety and priority rules;
+- a shared idea, screenshot, prompt, example, competitor feature, or reference is a signal to analyze, not automatic authorization to implement it;
+- do not manufacture a new roadmap task merely because a new technology, feature, or competitor pattern was mentioned.
+
+Before turning a signal into implementation, convert it into product judgment:
+1. identify the real user problem or opportunity behind the idea;
+2. check whether it fits the project's current phase, evidence, and priorities;
+3. compare simpler, lower-cost, lower-maintenance, or higher-value alternatives;
+4. account for implementation cost, recurring maintenance, infrastructure, paid-service dependency, privacy/security, and scope-creep risk;
+5. prefer a reversible, low-cost validation when it can answer the important question before a full build;
+6. define what evidence would count as success, failure, or a reason to stop.
+
+Ask a clarifying question only when the missing information would materially change the direction, risk, cost, user-visible behavior, or an irreversible action. Otherwise, make the best evidence-backed product recommendation from the available context. Do not make the user restate an idea in formal product language merely so work can begin.
+
+For a genuinely new production feature or application, define the user job, scope/non-goals, major technical decisions, file/module boundaries, persistence/database needs, API surface, interface flow, security/privacy constraints, deployment/observability requirements, test strategy, rollback path, and expected operating cost before substantial implementation. Then build the smallest launchable, maintainable version that can test the thesis; do not default to maximal architecture.
+
 ## 1. Discover
 
 Collect candidate queries from the VPS keyword radar, Ubersuggest when available, autocomplete, Search Console, current product documentation, and repeated public user questions.
