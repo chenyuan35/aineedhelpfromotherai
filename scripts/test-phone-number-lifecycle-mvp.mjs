@@ -16,9 +16,7 @@ for (const name of ['catalog.json', 'location-constraints.json', 'route-capabili
   jsonFiles.set(`./${name}`, JSON.parse(raw));
 }
 
-class FakeClassList {
-  toggle() {}
-}
+class FakeClassList { toggle() {} }
 class FakeElement {
   constructor(id = '') {
     this.id = id;
@@ -98,7 +96,6 @@ await context.__auditReady;
 
 const run = expression => vm.runInContext(expression, context);
 const getRoute = id => run(`catalog.routes.find(r=>r.id===${JSON.stringify(id)})`);
-const getRule = id => run(`catalog.serviceRules.find(r=>r.id===${JSON.stringify(id)})`);
 
 function setValues(values) {
   for (const [id, value] of Object.entries(values)) elements[id].value = value;
@@ -133,9 +130,29 @@ check('OpenAI API blocks mapped unsupported physical location', () => {
   assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='openai-api'),'Mainland China','United States').state`), 'blocked');
 });
 
-check('geo-restricted services do not guess Other physical location', () => {
-  assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='claude'),'Other','United States').state`), 'unknown');
-  assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='openai-api'),'Other','United States').state`), 'unknown');
+check('unmapped Other physical location never gets guessed', () => {
+  for (const service of ['claude', 'openai-api', 'whatsapp', 'telegram', 'google']) {
+    assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='${service}'),'Other','United States').state`), 'unknown');
+  }
+});
+
+check('unverified Mainland China app-access cases stop rather than assume phone-only solution', () => {
+  for (const service of ['whatsapp', 'telegram', 'google']) {
+    assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='${service}'),'Mainland China','Mainland China').state`), 'unknown');
+  }
+  const out = renderRegistration({
+    service: 'whatsapp', 'reg-location': 'Mainland China', duration: 'long', country: 'Mainland China', priority: 'safe'
+  });
+  assert.match(out, /No number recommendation is shown/);
+  assert.doesNotMatch(out, /Best current match/);
+});
+
+check('Another country is not treated as an actual mapped number country', () => {
+  assert.equal(run(`serviceAccess(catalog.serviceRules.find(r=>r.id==='whatsapp'),'Japan','other').state`), 'unknown');
+  const out = renderRegistration({
+    service: 'whatsapp', 'reg-location': 'Japan', duration: 'once', country: 'other', priority: 'cheap'
+  });
+  assert.match(out, /No number recommendation is shown/);
 });
 
 check('Claude rejects mapped unsupported number country', () => {
@@ -148,7 +165,7 @@ check('unsupported service location renders no number recommendation', () => {
   });
   assert.match(out, /No number recommendation is shown/);
   assert.doesNotMatch(out, /Best current match/);
-  assert.match(out, /will not use a foreign number as a workaround/i);
+  assert.match(out, /will not guess an unmapped location or use a foreign number as a workaround/i);
 });
 
 check('No preference cannot silently choose an arbitrary foreign carrier', () => {
@@ -160,9 +177,27 @@ check('No preference cannot silently choose an arbitrary foreign carrier', () =>
   assert.doesNotMatch(out, /Mobal|Sakura|giffgaff|Lebara/);
 });
 
+check('one-time SMS products are eligible only for one-verification duration', () => {
+  for (const route of ['activatex-temp', 'smspool-temp', '5sim-temp']) {
+    assert.equal(run(`registrationRouteEligible(catalog.routes.find(r=>r.id==='${route}'),'once','United States','United States')`), true);
+    assert.equal(run(`registrationRouteEligible(catalog.routes.find(r=>r.id==='${route}'),'short','United States','United States')`), false);
+    assert.equal(run(`registrationRouteEligible(catalog.routes.find(r=>r.id==='${route}'),'long','United States','United States')`), false);
+  }
+});
+
 check('registration never treats data-only route as a phone-number candidate', () => {
   assert.equal(run(`registrationRouteEligible(catalog.routes.find(r=>r.id==='airalo-data'),'long','Japan','Japan')`), false);
   assert.equal(run(`registrationRouteEligible(catalog.routes.find(r=>r.id==='local-data-physical'),'long','Japan','Japan')`), false);
+});
+
+check('carrier number class is not mislabeled as provider-specific OTP proof', () => {
+  const state = run(`compatibility(catalog.serviceRules.find(r=>r.id==='whatsapp'),catalog.routes.find(r=>r.id==='tello-us'),'long').state`);
+  assert.equal(state, 'class-match');
+  const out = renderRegistration({
+    service: 'whatsapp', 'reg-location': 'United States', duration: 'long', country: 'United States', priority: 'safe'
+  });
+  assert.match(out, /Provider-specific delivery not proven/);
+  assert.match(out, /has not been independently verified/i);
 });
 
 check('real local-number travel requirement excludes every data-only route', () => {
@@ -206,7 +241,7 @@ check('long-stay input changes route scoring', () => {
 
 check('giffgaff first-use and long-term overseas cautions are contextual, not universal', () => {
   const giff = getRoute('giffgaff-uk');
-  const comp = { state: 'yes', note: 'test' };
+  const comp = { state: 'class-match', note: 'test' };
   const outside = run(`routeCard(catalog.routes.find(r=>r.id==='giffgaff-uk'),0,${JSON.stringify(comp)},activationFit(catalog.routes.find(r=>r.id==='giffgaff-uk'),'Japan'),{currentLocation:'Japan',maintainAbroad:true})`);
   const inside = run(`routeCard(catalog.routes.find(r=>r.id==='giffgaff-uk'),0,${JSON.stringify(comp)},activationFit(catalog.routes.find(r=>r.id==='giffgaff-uk'),'United Kingdom'),{currentLocation:'United Kingdom',maintainAbroad:false})`);
   assert(giff);
