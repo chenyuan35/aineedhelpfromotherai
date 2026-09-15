@@ -1,6 +1,6 @@
 # Authority & AI Discovery Ledger
 
-Last updated: 2026-09-13
+Last updated: 2026-09-15
 
 This file is the durable execution log for external authority building, referral discovery, and AI-answer visibility work for `aineedhelpfromotherai.com`.
 
@@ -24,6 +24,12 @@ For AI-native search/retrieval integration, the ordered execution queue is `docs
 | 2026-09-13 | Drew Bredvick | Writes about AI coding tools, Cursor and AI usage/cost topics | Sent a personalized resource-suggestion email focused on the practical reset calculator and official-source depth | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
 
 Current outcome: no reply/citation has been verified yet. Do not count sent email as an earned link.
+
+## Distribution ledger
+
+| Date | Channel | Page | Action | Status | Measurement |
+|---|---|---|---|---|---|
+| 2026-09-15 | Threads via Metricool | Cursor usage reset | Scheduled a concise problem-first post explaining the browser-only reset countdown and usage-pacing utility, with a direct link to the tool | SCHEDULED / AUTO-PUBLISH | Treat resulting Threads/referral visits separately from Google organic; check GA4 referral/direct behavior after data settles |
 
 ## Second-batch candidate research
 
@@ -148,3 +154,4 @@ Current ordered AIR status:
 - 2026-09-13: Formalized the AIR workstream as a strict ordered queue. The project will integrate with provider algorithms through legitimate signals and observable retrieval stages, not by trying to crack, bypass or game them.
 - 2026-09-13: Attempted the first Tavily baseline. The provider blocked execution at its plan usage limit (HTTP 432), so AIR-1 is recorded as blocked rather than pretending a search result exists.
 - 2026-09-13: Researched a second AIR-4 outreach candidate batch (Learn Cursor, explainx.ai, QuotaMeter and Cursor Usage Tracker) and verified no prior Gmail correspondence on the public contact paths found. No new outreach was sent because the first round is still inside its 5–7 day response window.
+- 2026-09-15: Began a lightweight Threads distribution test for the Cursor reset tool via Metricool. This is a referral/distribution experiment and must not be counted as Google organic success.
