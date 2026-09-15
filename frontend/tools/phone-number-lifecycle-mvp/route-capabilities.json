@@ -21,6 +21,25 @@
         "sourceUrl": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte"
       }
     },
+    "lebara-uk": {
+      "kyc": {
+        "state": "partial",
+        "label": "No universal passport rule established; eSIM account/email required",
+        "note": "Official pages reviewed do not establish a universal passport/identity-document requirement for PAYG. Lebara does require an account and valid verified email for eSIM purchase.",
+        "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+      },
+      "roamingSms": {
+        "state": "supported-after-activation",
+        "label": "International roaming SMS supported after UK activation",
+        "note": "Lebara supports roaming and states incoming texts are free in documented roaming scenarios. The SIM must first be activated in the UK; outside included regions PAYG credit or an add-on may be needed for outgoing usage.",
+        "sourceUrl": "https://www.lebara.co.uk/en/roaming/roaming-rate-finder.html"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not yet proven",
+        "note": "Lebara documents Wi-Fi Calling support on compatible eSIM devices, but the MVP does not yet have explicit official evidence that overseas Wi-Fi Calling can be relied on for SMS/OTP recovery."
+      }
+    },
     "tello-us": {
       "kyc": {
         "state": "partial",
@@ -75,6 +94,43 @@
         "state": "unknown",
         "label": "Wi-Fi Calling abroad not verified",
         "note": "No current official evidence has been added to this MVP establishing overseas Wi-Fi SMS/OTP behavior for H2O Pay As You Go."
+      }
+    },
+    "mobal-japan-voice-data": {
+      "kyc": {
+        "state": "required",
+        "label": "Passport/identity verification required for voice service",
+        "note": "Mobal states Japanese law requires ID for voice-capable products. Delivery requires ID upload and matching delivery address; collection requires the physical valid passport. Voice customers must be 18+.",
+        "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-"
+      },
+      "roamingSms": {
+        "state": "supported-after-activation",
+        "label": "Voice/SMS roaming available on current Voice+Data 5G route",
+        "note": "Mobal's current Voice+Data 5G product can enable international roaming for a one-off fee. With roaming enabled, calls and SMS can work outside Japan; cellular data roaming is not supported.",
+        "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not verified",
+        "note": "The MVP has not found current official evidence establishing Wi-Fi Calling/Text abroad for this route. Use documented cellular roaming instead when future SMS access matters."
+      }
+    },
+    "china-official-carrier": {
+      "kyc": {
+        "state": "required",
+        "label": "Passport or Foreign Permanent Resident ID; in-person application",
+        "note": "Current Chinese government and telecom-regulator guidance says foreign nationals can apply with a passport or Foreign Permanent Resident ID Card at self-operated operator business halls, and must appear in person.",
+        "sourceUrl": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html"
+      },
+      "roamingSms": {
+        "state": "unknown",
+        "label": "Post-departure roaming/OTP depends on carrier and plan",
+        "note": "The MVP intentionally does not generalize one overseas SMS rule across China Mobile, China Unicom and China Telecom. Verify the exact carrier plan before relying on the number after leaving China."
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not generalized",
+        "note": "Carrier/device policy varies and is not yet evidenced strongly enough for a generic China-carrier claim."
       }
     },
     "activatex-temp": {
