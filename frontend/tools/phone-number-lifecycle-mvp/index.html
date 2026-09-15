@@ -130,12 +130,16 @@ function insightBlocks(route,{currentLocation=null,maintainAbroad=false}={}){
 }
 
 function serviceAccess(rule,currentLocation,numberCountry){
+  if(currentLocation==='Other')return {state:'unknown',note:'This MVP has not mapped your exact physical country. It will not guess target-service availability or recommend buying a number until the location is verified.'};
+  if(numberCountry==='other')return {state:'unknown',note:'“Another country” is not an exact number country. Choose a mapped country before the MVP can evaluate service-location and number-country rules.'};
   const p=auditRules?.serviceAccess?.[rule.id];
-  if(!p)return {state:'yes',note:'No mapped service-geography blocker in this MVP.'};
+  if(!p){
+    if(currentLocation==='Mainland China')return {state:'unknown',note:`This MVP has not yet verified ${rule.name} service availability and registration conditions from Mainland China. It will not infer that a phone number alone solves service access.`};
+    return {state:'yes',note:'No mapped service-geography blocker in this MVP.'};
+  }
   if((p.mappedUnsupportedPhysicalLocations||[]).includes(currentLocation))return {state:'blocked',note:p.note,sourceUrl:p.sourceUrl};
-  if(p.requiresSupportedPhysicalLocation&&currentLocation==='Other')return {state:'unknown',note:'This service requires a supported physical location. “Other” is not mapped in this MVP, so the tool will not recommend buying a number until you verify your current country on the official supported-location page.',sourceUrl:p.sourceUrl};
+  if(p.requiresSupportedPhysicalLocation&&!(p.mappedSupportedPhysicalLocations||[]).includes(currentLocation))return {state:'unknown',note:'This service requires a supported physical location, but the selected location is not positively mapped in this MVP. Verify the official supported-location page first.',sourceUrl:p.sourceUrl};
   if((p.mappedUnsupportedNumberCountries||[]).includes(numberCountry))return {state:'blocked',note:`The selected number country (${numberCountry}) is not treated as a supported verification route for ${rule.name} in this MVP. ${p.note}`,sourceUrl:p.phoneSourceUrl||p.sourceUrl};
-  if(numberCountry==='other')return {state:'unknown',note:'The exact number country is not mapped. For a service with geographic restrictions, choose a mapped number country or verify the exact country first.',sourceUrl:p.phoneSourceUrl||p.sourceUrl};
   return {state:'yes',note:'Mapped service geography passes the current MVP guardrail.',sourceUrl:p.sourceUrl};
 }
 
@@ -144,10 +148,11 @@ function compatibility(rule,route,duration){
   if(route.numberClass==='temporary-activation'){
     if(rule.id==='claude')return {state:'no',note:'Claude explicitly rejects app-generated/VoIP-style numbers.'};
     if(rule.id==='openai-api')return {state:'no',note:'OpenAI rejects VoIP/landline/premium verification numbers; this MVP does not treat temporary activation as a safe match.'};
-    if(duration==='long')return {state:'risk',note:'A code today does not give you future control of the number.'};
+    if(duration!=='once')return {state:'no',note:'This route is a one-time activation product, but you said you must retain access beyond a single verification.'};
     return {state:'uncertain',note:'Acceptance must be verified for the exact service, country and supplier route.'};
   }
-  return rule.accepts.includes('carrier-mobile')?{state:'yes',note:'Number class matches the official service rule.'}:{state:'uncertain',note:'No verified class-level match.'};
+  if(rule.accepts.includes('carrier-mobile'))return {state:'class-match',note:'This is a carrier mobile number and matches the published number class. Provider-specific SMS delivery for this exact service has not been independently verified by this MVP.'};
+  return {state:'uncertain',note:'No verified class-level match.'};
 }
 
 function activationFit(route,currentLocation,mode='register',destination=null){
@@ -178,20 +183,18 @@ function destinationFit(route,destination){
 
 function registrationRouteEligible(route,duration,country,currentLocation){
   if(route.numberClass==='data-only')return false;
-  if(country==='any'){
-    if(route.numberClass==='temporary-activation')return duration!=='long';
-    return currentLocation!=='Other'&&route.country===currentLocation;
-  }
-  if(country==='other')return route.numberClass==='temporary-activation'&&duration!=='long';
-  return route.country===country||route.numberClass==='temporary-activation';
+  if(route.numberClass==='temporary-activation')return duration==='once'&&country!=='other';
+  if(country==='any')return currentLocation!=='Other'&&route.country===currentLocation;
+  if(country==='other')return false;
+  return route.country===country;
 }
 
 function routeScore(route,rule,duration,country,priority,currentLocation){
   const comp=compatibility(rule,route,duration),act=activationFit(route,currentLocation),c=caps(route);
   if(comp.state==='no'||act.state==='blocked')return -999;
-  let s=comp.state==='yes'?50:comp.state==='uncertain'?15:5;
+  let s=comp.state==='yes'?50:comp.state==='class-match'?40:comp.state==='uncertain'?15:5;
   if(duration==='long'&&route.numberClass==='carrier-mobile')s+=30;
-  if(duration!=='long'&&route.numberClass==='temporary-activation')s+=8;
+  if(duration==='once'&&route.numberClass==='temporary-activation')s+=8;
   if(country!=='any'&&country!=='other'&&route.country===country)s+=22;
   if(act.state==='yes')s+=12;if(act.state==='conditional')s-=5;if(act.state==='unknown')s-=12;
   if(currentLocation!==route.country&&c.firstUsePolicy?.state==='caution-outside-home')s-=15;
@@ -211,14 +214,18 @@ function routeScore(route,rule,duration,country,priority,currentLocation){
 
 function routeCard(route,index,compat,fit,{destination=null,otpImportant=false,currentLocation=null,maintainAbroad=false}={}){
   const c=caps(route),warnings=[];
-  if(compat&&compat.state!=='yes')warnings.push(`<div class="pn-warning"><strong>${compat.state==='risk'?'Long-term risk':'Compatibility not proven'}:</strong> ${esc(compat.note)}</div>`);
+  if(compat&&compat.state!=='yes'){
+    const label=compat.state==='risk'?'Long-term risk':compat.state==='class-match'?'Provider-specific delivery not proven':'Compatibility not proven';
+    warnings.push(`<div class="pn-warning"><strong>${label}:</strong> ${esc(compat.note)}</div>`);
+  }
   if(fit&&fit.state!=='yes')warnings.push(`<div class="pn-warning"><strong>${esc(activationLabel(fit))}:</strong> ${esc(fit.note)}</div>`);
   if(destination){const d=destinationFit(route,destination);if(d.state==='no')warnings.push(`<div class="pn-warning"><strong>Not a local-number match:</strong> ${esc(d.note)}</div>`)}
   if(otpImportant&&['not-supported-on-route','unknown','destination-specific'].includes(c.roamingSms?.state))warnings.push(`<div class="pn-warning"><strong>OTP continuity not proven:</strong> ${esc(c.roamingSms?.note||'No structured roaming-SMS evidence yet.')}</div>`);
   if(currentLocation&&currentLocation!==route.country&&c.firstUsePolicy?.state==='caution-outside-home')warnings.push(`<div class="pn-warning"><strong>First-use policy risk:</strong> ${esc(c.firstUsePolicy.note)}</div>`);
   if(maintainAbroad&&c.overseasPolicy?.state==='restricted-long-term')warnings.push(`<div class="pn-warning"><strong>Keep-alive is not the whole story:</strong> ${esc(c.overseasPolicy.note)}</div>`);
   const evidence=(route.evidence||[]).map(sourceLink).join('<br>')||'<span class="pn-muted">No route-specific evidence yet.</span>';
-  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${index===0?'Best current match':'Alternative '+(index+1)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${warnings.join('')}<dl class="pn-kv"><dt>Buy / first cost</dt><dd>${esc(route.cost.purchase)}</dd><dt>Ongoing cost</dt><dd>${esc(route.cost.recurring)}</dd><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd><dt>Keep alive</dt><dd>${esc(route.retention.rule)}</dd></dl>${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
+  const rank=evidenceLabel(route)==='Research required'?(index===0?'Research route — verify first':'Research alternative '+(index+1)):(index===0?'Best current match':'Alternative '+(index+1));
+  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${esc(rank)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${warnings.join('')}<dl class="pn-kv"><dt>Buy / first cost</dt><dd>${esc(route.cost.purchase)}</dd><dt>Ongoing cost</dt><dd>${esc(route.cost.recurring)}</dd><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd><dt>Keep alive</dt><dd>${esc(route.retention.rule)}</dd></dl>${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
 }
 
 function lifecycleHtml(route,context,fit){
@@ -245,14 +252,14 @@ function renderRegistration(ev){
   const access=serviceAccess(rule,current,country);
   let html=serviceSummary(rule,duration,current,country,access);
   if(access.state!=='yes'){
-    html+=`<div class="pn-empty"><strong>No number recommendation is shown.</strong><p>The tool will not use a foreign number as a workaround for an unsupported or unverified target-service location. Verify the service's supported-location rule first.</p></div>`;
+    html+=`<div class="pn-empty"><strong>No number recommendation is shown.</strong><p>The tool will not guess an unmapped location or use a foreign number as a workaround for an unsupported target-service location. Verify the exact location/country rule first.</p></div>`;
     results.innerHTML=html;results.hidden=false;results.scrollIntoView({behavior:'smooth',block:'start'});return;
   }
   const evaluated=catalog.routes.filter(r=>registrationRouteEligible(r,duration,country,current)).map(route=>{const comp=compatibility(rule,route,duration),fit=activationFit(route,current);return {route,comp,fit,score:routeScore(route,rule,duration,country,priority,current)}});
   const ranked=evaluated.filter(x=>x.score>-900).sort((a,b)=>b.score-a.score).slice(0,3);
   const excluded=evaluated.filter(x=>x.score<=-900).map(x=>({route:x.route,reason:x.fit.state==='blocked'?x.fit.note:x.comp.note}));
   if(!ranked.length)html+=`<div class="pn-empty"><strong>No verified route in the seed catalog.</strong><p>This is a data gap, not proof that no solution exists. Choose a mapped number country if you need a foreign number.</p></div>`;
-  else html+=`<section><h2>Routes ranked for this task</h2><p class="pn-muted">Ranking uses service rules, chosen number country, physical activation location, durable control, first-use/overseas policy risk and your priority.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,x.comp,x.fit,{otpImportant:duration==='long',currentLocation:current,maintainAbroad:duration==='long'&&current!==x.route.country})).join('')}</div></section>${excludedHtml(excluded)}${lifecycleHtml(ranked[0].route,'register',ranked[0].fit)}`;
+  else html+=`<section><h2>Routes ranked for this task</h2><p class="pn-muted">Ranking uses service rules, chosen number country, physical activation location, durable control, first-use/overseas policy risk and your priority. A carrier-number class match is not presented as proof that this exact provider will receive the target service's OTP.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,x.comp,x.fit,{otpImportant:duration==='long',currentLocation:current,maintainAbroad:duration==='long'&&current!==x.route.country})).join('')}</div></section>${excludedHtml(excluded)}${lifecycleHtml(ranked[0].route,'register',ranked[0].fit)}`;
   results.innerHTML=html;results.hidden=false;results.scrollIntoView({behavior:'smooth',block:'start'});attachReminderButtons();
 }
 
