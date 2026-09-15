@@ -15,7 +15,7 @@ The job is not "compare phone plans". It is:
 
 Lifecycle:
 
-`task -> route -> buy -> KYC -> activate -> register/arrive -> use -> retain -> recover`
+`task -> route -> buy -> KYC -> activate -> register/arrive -> use -> retain -> recover/refund/move`
 
 ## MVP success condition
 
@@ -24,15 +24,17 @@ After a small number of questions, the user should get a short executable route 
 - what number class fits the task;
 - where to buy or compare it;
 - current or explicitly dynamic cost;
-- seller/provider evidence quality;
+- provider/evidence quality;
 - device requirements;
 - KYC/identity requirements, or an explicit unknown;
 - where first activation can happen;
+- whether the target service is available from the user's physical location;
+- whether the selected number country is a mapped supported route for a geographically restricted target service;
 - whether the number can receive SMS/OTP abroad;
 - whether Wi-Fi Calling/Text can help abroad;
 - target-service compatibility;
 - retention cost/rule and reminder;
-- recovery/migration plan.
+- recovery/refund/migration plan.
 
 ## Entry A — Register an app/service
 
@@ -46,9 +48,17 @@ Inputs:
 - preferred number country;
 - cheapest, easiest or safest priority.
 
-The first explicitly supported number countries are United States, United Kingdom, Japan and Mainland China. “Another country” remains a generic research route rather than pretending the MVP has global carrier coverage.
+The first explicitly mapped number countries are United States, United Kingdom, Japan and Mainland China. `Another country` remains unverified rather than pretending the MVP has global carrier coverage.
 
-Hard activation constraints are allowed to remove a route from ranking. Examples: Tello is not an immediate activation route for a user physically outside the US; a Mainland China official-carrier SIM is not an immediate route for someone outside Mainland China because current guidance requires in-person application.
+Hard activation constraints can remove a route from ranking. Target-service geography can also stop the entire recommendation. A foreign phone number must never be presented as a workaround for a service that does not support the user's physical location.
+
+`No preference` is deliberately conservative: the MVP compares mapped carrier routes in the user's current mapped country rather than silently selecting an arbitrary foreign country. Temporary routes remain eligible only for non-long-term tasks and only when the target service's own rules allow them.
+
+Examples:
+
+- Tello is not an immediate activation route for a user physically outside the US.
+- A Mainland China official-carrier SIM is not an immediate route for someone outside Mainland China because current guidance requires in-person application.
+- Claude/OpenAI API do not receive a phone-number recommendation for a user mapped to Mainland China in this MVP; the tool points to the official supported-location rule instead of suggesting a foreign number workaround.
 
 ## Entry B — Travel / move abroad
 
@@ -68,7 +78,11 @@ The travel answer separates three jobs that are often incorrectly combined:
 2. destination-local phone number;
 3. home-number/account-recovery continuity.
 
-A data-only eSIM must never be presented as an SMS-capable phone number. If OTP still depends on the home number, the tool tells the user to keep that line alive until recovery is migrated or overseas SMS behavior is verified.
+If a real local number is required, data-only products are excluded from candidates. If only data is needed, the MVP uses an eSIM data route when supported or a generic destination-specific physical data-SIM route when eSIM is unavailable; neither is described as an SMS number.
+
+`Must my home number keep working?` is advisory until a specific home carrier is selected. The MVP must not claim that an unspecified home line will receive overseas OTP.
+
+Long-stay input must affect ranking; durable number control, first-party evidence and cancellation/number-loss rules receive additional weight.
 
 ## Explicit non-goals
 
@@ -78,42 +92,57 @@ It is intentionally absent from the production sitemap, homepage and tools index
 
 ## Evidence model
 
-Official service/provider documentation outranks blogs and forum posts for rules. Marketplace price/stock/success data is timestamped/dynamic. Community reports are observations, not universal compatibility claims. Unknown data stays unknown.
+Popular tutorials/videos/community threads discover repeated user questions and failure modes. They do not define hard product truth.
+
+Official service/provider documentation outranks blogs and forum posts for restrictions, identity rules, activation geography, refund conditions and lifecycle claims. Marketplace price/stock/success data is dynamic. Community reports remain dated observations and cannot override a current official restriction. Unknown data stays unknown.
 
 Dimensions are deliberately separate:
 
-- seller trust/evidence;
+- provider/evidence quality;
 - service compatibility;
+- target-service physical-location support;
 - number country/class;
 - current physical activation location;
 - destination country;
+- first-use geography policy;
 - KYC/identity requirement;
 - roaming SMS/OTP capability;
 - Wi-Fi Calling/Text abroad;
+- long-term overseas-use policy;
+- number assignment timing;
+- number loss/termination rule;
+- temporary-number privacy class;
+- temporary-number refund trigger;
 - retention/recycling rule;
 - dynamic price/stock.
 
-This separation prevents a cheap route from being recommended when it cannot be activated, cannot roam, or cannot be recovered later.
+This separation prevents a cheap route from being recommended when it cannot be used legally/supportedly, cannot be activated, cannot roam, or cannot be recovered later.
 
 ## Current structured examples
 
-- giffgaff UK: six-month inactivity rule, UK physical-SIM delivery constraint, eSIM availability, roaming support, no reliance on Wi-Fi Calling abroad; universal KYC requirement remains unverified.
-- Lebara UK: free PAYG physical SIM route, UK-only first activation requirement, 90-day chargeable-activity inactivity boundary followed by a longer recoverable period, international roaming support after UK activation; universal passport requirement remains unverified.
-- Tello US: current low-cost monthly route, first activation/port-in must occur in the US, US E911 address required for Wi-Fi Calling, Wi-Fi Calling/Text can receive OTPs abroad after setup, international roaming available after US use.
-- Ultra Mobile PayGo US: USD 3/month base route in current official material, international voice/SMS/MMS roaming via PayGo wallet, no data roaming; overseas initial-activation/KYC details still require verification.
-- H2O Pay As You Go US: refill/number-expiry rules are documented, but current terms tie International Roaming to active Unlimited Talk and Text plans, so the PayGo route must not be treated as having proven roaming-SMS capability.
-- Mobal Japan Voice+Data 5G: real 070/080/090 Japanese mobile number, voice-product passport/ID verification, Japan collection or worldwide delivery, number assigned only after activation, optional international voice/SMS roaming on the current 5G route, and explicit loss of the number when service is terminated.
-- Mainland China official-carrier route: foreign nationals can use a passport or Foreign Permanent Resident ID Card; current 2026 regulator guidance requires the applicant to appear in person at a self-operated China Mobile/China Unicom/China Telecom business hall; generic overseas roaming/OTP behavior remains unknown until a carrier/plan is selected.
-- Airalo example: data-only travel route; no normal SMS number.
-- ActivateX/SMSPool/5SIM: temporary remote verification routes; no durable ownership or travel roaming line is assumed.
+- giffgaff UK: six-month inactivity rule is separate from first-use/long-term overseas-use policy risk; UK physical-SIM delivery constraint; roaming support; no reliance on Wi-Fi Calling abroad; post-inactivity port-out rescue window is shown separately.
+- Lebara UK: UK-only first activation requirement, PAYG inactivity/expiry rules and international roaming support after UK activation.
+- Tello US: first activation/port-in must occur in the US; overseas Wi-Fi Calling/Text and roaming are post-activation capabilities; community reports of exceptions are labelled anecdotal and linked separately.
+- Ultra Mobile PayGo US: USD 3/month route and documented international voice/SMS/MMS roaming; overseas initial-activation/KYC details remain unknown where first-party evidence is insufficient.
+- H2O Pay As You Go US: refill/number-expiry rules are documented, but PayGo is not treated as having proven international roaming SMS where current terms only establish roaming for another plan class.
+- Mobal Japan Voice+Data: real 070/080/090 Japanese number, ID rules, number assignment after activation and explicit number loss after termination.
+- Sakura Mobile Japan Voice+Data passport route: non-resident passport route with face-to-face identity verification/pickup; post-departure OTP/roaming remains unknown until verified.
+- Mainland China official-carrier route: foreign nationals can use accepted foreign ID; current regulator guidance requires in-person application at a self-operated carrier business hall; generic post-departure OTP remains carrier/plan-specific.
+- Airalo example: data-only travel eSIM; never a local SMS-number candidate.
+- Destination local physical data SIM: data-only fallback for devices without eSIM; never a local SMS-number candidate.
+- ActivateX/SMSPool/5SIM: temporary verification routes with ownership duration, privacy and refund semantics kept separate.
 
 ## Files
 
 - `frontend/tools/phone-number-lifecycle-mvp/index.html` — deterministic UI/ranking/lifecycle output.
-- `frontend/tools/phone-number-lifecycle-mvp/catalog.json` — service rules and provider/market routes.
+- `frontend/tools/phone-number-lifecycle-mvp/catalog.json` — base service rules and provider/market routes.
 - `frontend/tools/phone-number-lifecycle-mvp/location-constraints.json` — structured first-activation geography constraints.
 - `frontend/tools/phone-number-lifecycle-mvp/route-capabilities.json` — structured KYC, roaming SMS and Wi-Fi Calling evidence.
-- `docs/PHONE_NUMBER_LIFECYCLE_MVP.md` — product/technical contract.
+- `frontend/tools/phone-number-lifecycle-mvp/tutorial-insights.json` — tutorial-derived decision variables that are consumed by the tool at runtime, not a passive research appendix.
+- `frontend/tools/phone-number-lifecycle-mvp/audit-rules.json` — post-implementation guardrails for target-service geography, route eligibility and audited fixes.
+- `docs/PHONE_NUMBER_TUTORIAL_RESEARCH.md` — research matrix used to discover repeated questions/conflicts.
+- `scripts/test-phone-number-lifecycle-mvp.mjs` — deterministic business-path audit that executes the actual inline page logic in a VM with fixture data.
+- `.github/workflows/evals.yml` — runs the dedicated phone lifecycle audit before the generic project eval suite.
 
 ## Technical approach
 
@@ -127,23 +156,32 @@ Do not collect phone numbers, SMS codes, identity documents, payment information
 
 ## Test / release gate
 
-Before any production merge:
+The project-wide generic Eval Gate is not sufficient evidence for this feature. During the 2026-09-15 audit it reported `Tasks: 0`; therefore its green status must not be described as proof that the phone-number decision logic is correct.
 
-- frontend build passes;
-- registration and travel paths return results;
-- hard activation restrictions actually remove or defer impossible routes;
-- destination country influences travel routes;
-- KYC unknowns remain explicit;
-- data-only eSIM is never presented as SMS-capable;
-- Tello outside-US first activation is not presented as immediately available;
-- Tello overseas OTP capability is shown only with its setup conditions;
-- Lebara outside-UK first activation is deferred until UK arrival;
-- Mobal Japan shows passport/ID requirements and does not hide number-loss-on-termination risk;
-- Mainland China local-SIM route requires in-person application and valid foreign ID evidence;
-- H2O PayGo is not presented as proven international roaming SMS;
-- Claude temporary/VoIP routes remain rejected;
-- reminder export produces a valid `.ics` file;
-- mobile layout has no horizontal overflow;
+The dedicated command is:
+
+`node scripts/test-phone-number-lifecycle-mvp.mjs`
+
+It is now a blocking CI step. The first audited run completed 19 deterministic assertions against the actual inline page logic.
+
+Required invariants include:
+
+- Claude/OpenAI API do not recommend a foreign number when the mapped physical location is unsupported; `Other` stays unverified instead of guessed.
+- mapped unsupported number-country choices for geographically restricted services are blocked.
+- `No preference` cannot silently choose an arbitrary foreign carrier.
+- registration never accepts a data-only route.
+- a real local-number travel requirement excludes Airalo and every other data-only route.
+- data-only travel without eSIM receives a physical data-only fallback rather than a voice/SMS carrier route.
+- data-only travel cannot pretend to solve OTP when the user also drops the home SMS line.
+- long-stay input changes route ranking.
+- giffgaff first-use and long-term-overseas cautions appear only in the relevant context.
+- tutorial-derived high-impact claims expose provenance links.
+- SMSPool/5SIM refund semantics remain distinct.
+- Mobal number-assignment and termination facts reach the tool model.
+- Claude/OpenAI temporary-number routes remain rejected.
+- keep-alive export still emits a valid calendar shell.
+- Vercel Preview deployment succeeds.
+- mobile layout and visual behavior still require a real browser/manual preview check before any production merge.
 - prototype remains off production navigation/sitemap.
 
-Rollback is deleting the isolated prototype directory and this document before merge. No database or infrastructure cleanup is required.
+Rollback is deleting the isolated prototype directory, its audit script, and these prototype-only docs/workflow additions before merge. No database or infrastructure cleanup is required.
