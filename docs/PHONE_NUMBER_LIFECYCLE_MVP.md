@@ -220,18 +220,40 @@ MVP: effectively zero beyond existing Vercel preview/build usage.
 
 Future costs should only be accepted after validation. Automated price/stock collection must prefer documented APIs or feeds and must not run on the one-month 128 MiB observer VPS.
 
+## Evidence expansion — 2026-09-15
+
+The first expansion deliberately targets facts that change a buying decision rather than maximizing provider count.
+
+Durable-number routes now include:
+
+- giffgaff UK: six-month inactivity boundary, physical-SIM UK delivery constraint, eSIM availability, roaming, and no Wi-Fi Calling abroad;
+- Tello US: 30-day billing, USD 5 entry plan, mandatory first activation in the US, E911 requirement for Wi-Fi Calling, and post-activation overseas OTP support over Wi-Fi Calling/Text;
+- Ultra Mobile PayGo US: current USD 3/month base allowance and international voice/SMS/MMS roaming via wallet credit;
+- H2O Wireless Pay As You Go US: refill expiry model and the current rule that a number is cancelled after a zero balance remains for 30 consecutive days.
+
+Temporary verification routes now include:
+
+- ActivateX comparison route;
+- SMSPool: service/country pricing, documented API, cheapest-vs-higher-success pricing mode, and automatic refund when a code is not received within the order period;
+- 5SIM: public service/country/operator pricing, API access, cancellation/non-implementation balance refunds, and a dated public starting-price snapshot for Telegram, WhatsApp, Google/YouTube and OpenAI/ChatGPT.
+
+Unknowns remain explicit. In particular, the prototype does not yet claim verified overseas initial activation for giffgaff, Ultra PayGo or H2O; these must be resolved before production ranking for overseas buyers.
+
 ## Initial evidence used by the prototype
 
-The seed catalog is intentionally small and marks dynamic/unknown values instead of guessing. Initial official evidence includes:
+The seed catalog is intentionally small and marks dynamic/unknown values instead of guessing. Official or first-party evidence includes:
 
 - Claude Help Center: mobile-number verification and rejection of VoIP, Google Voice, app-generated and landline numbers.
 - OpenAI Help Center: ChatGPT no longer requires phone verification; first API key currently does.
 - WhatsApp Help Center: first registration uses SMS or phone call and requires continued control of the associated number.
 - Telegram FAQ: account is tied to a mobile number and users should retain access before changing numbers.
 - Google Account Help: phone verification may be requested and recovery phone should be a user-controlled SMS-capable mobile number.
-- giffgaff Help: inactivity deactivation after six months without qualifying use and limited post-deactivation port-out window.
-- Tello official pricing: plans currently start at USD 5/month; eSIM is offered.
+- giffgaff Help: inactivity deactivation, SIM delivery, eSIM setup, roaming and Wi-Fi Calling limitations.
+- Tello Help Center: US-only first activation, 30-day billing, Wi-Fi Calling/Text and international roaming.
+- Ultra Mobile: PayGo pricing and international roaming behavior.
+- H2O Wireless terms: Pay As You Go refill expiry and zero-balance cancellation behavior.
 - Airalo Help Center: most eSIM packages are data-only and cannot send/receive normal SMS or calls.
+- SMSPool and 5SIM first-party marketplace/API documentation for dynamic temporary-SMS supply, pricing and refund behavior.
 - ActivateX: live temporary-SMS route comparison by service/country/supplier/price/availability.
 
 All changing facts require re-verification before production release.
