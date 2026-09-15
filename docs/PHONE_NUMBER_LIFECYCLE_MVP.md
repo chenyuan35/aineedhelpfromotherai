@@ -15,7 +15,7 @@ The job is not "compare phone plans". It is:
 
 Lifecycle:
 
-`task -> route -> buy -> KYC -> activate -> register/arrive -> use -> retain -> recover/refund/move`
+`task -> feasible route -> where to buy -> real cost -> purchase-channel evidence -> fair-price check -> KYC -> activate -> register/arrive -> use -> retain -> recover/refund/move`
 
 ## MVP success condition
 
@@ -23,7 +23,9 @@ After a small number of questions, the user should get a short executable route 
 
 - what number class fits the task;
 - where to buy or compare it;
-- current or explicitly dynamic cost;
+- scenario-specific 30/90/365-day base cost when it can be supported, otherwise an explicit unknown;
+- official/reference price basis and a fair-price/overpay check without inventing a market benchmark;
+- purchase-channel type, refund/stock/support/number-control evidence, and last-verified date;
 - provider/evidence quality;
 - device requirements;
 - KYC/identity requirements, or an explicit unknown;
@@ -35,6 +37,26 @@ After a small number of questions, the user should get a short executable route 
 - target-service compatibility without pretending a number-class match proves provider-specific OTP delivery;
 - retention cost/rule and reminder;
 - recovery/refund/migration plan.
+
+## Cost and purchase-safety layer
+
+Cost and purchase-channel evidence are first-class decision inputs, not decorative metadata. The result card shows them before activation details.
+
+The structured purchase model records, where evidence supports it:
+
+- purchase relationship: official direct, official channel, platform/marketplace, or unverified;
+- scenario base cost for 30/90/365 days;
+- setup/activation fee, recurring charge, taxes/fees, delivery and temporary promotion status;
+- official/reference price basis and a fair-price/overpay explanation;
+- refund clarity, stock/availability evidence, support channel and number-control/ownership class;
+- independent review context as a dated observation, never as a universal trust score;
+- source URLs and last-verified date.
+
+Unknown evidence lowers confidence and stays unknown. A free SIM is not treated as a zero-cost route when activation/top-up spend is unresolved. A temporary promotion is shown separately from durable totals. Temporary-number marketplace list prices are not converted into an "expected successful cost" without independent success/refund evidence.
+
+Numeric cost tiebreaks are deliberately narrow: routes are compared only when they have numeric values for the relevant horizon, the same currency, and the same comparison group. This prevents JPY/USD/GBP or voice-number/data-only products from being ranked by meaningless raw-number comparisons.
+
+A fair-price label is explanatory rather than accusatory. An official price can be used as a benchmark for a like-for-like third-party quote, but the tool does not call a seller overpriced or unsafe without comparable evidence.
 
 ## Entry A — Register an app/service
 
@@ -81,7 +103,7 @@ The travel answer separates three jobs that are often incorrectly combined:
 2. destination-local phone number;
 3. home-number/account-recovery continuity.
 
-If a real local number is required, data-only products are excluded from candidates. If only data is needed, the MVP uses an eSIM data route when supported or a generic destination-specific physical data-SIM route when eSIM is unavailable; neither is described as an SMS number.
+If a real local number is required, data-only products are excluded from candidates. If only data is needed, the MVP uses an eSIM data route when supported. For Japan, current destination-specific data purchase evidence is mapped for Airalo eSIM and a Mobal physical tourist data SIM; the physical Mobal route is used for a Japan traveler without eSIM support. Other unmapped destinations can still fall back to an explicitly research-required physical data-SIM route. None is described as an SMS number.
 
 `Must my home number keep working?` is advisory until a specific home carrier is selected. The MVP must not claim that an unspecified home line will receive overseas OTP.
 
@@ -130,11 +152,12 @@ This separation prevents a cheap route from being recommended when it cannot be 
 - Tello US: first activation/port-in must occur in the US; overseas Wi-Fi Calling/Text and roaming are post-activation capabilities; community reports of exceptions are labelled anecdotal and linked separately.
 - Ultra Mobile PayGo US: USD 3/month route and documented international voice/SMS/MMS roaming; overseas initial-activation/KYC details remain unknown where first-party evidence is insufficient.
 - H2O Pay As You Go US: refill/number-expiry rules are documented, but PayGo is not treated as having proven international roaming SMS where current terms only establish roaming for another plan class.
-- Mobal Japan Voice+Data: real 070/080/090 Japanese number, ID rules, number assignment after activation and explicit number loss after termination.
+- Mobal Japan Voice+Data: real 070/080/090 Japanese number, current 1GB Voice+Data entry price, ID rules, number assignment after activation and explicit number loss after termination; temporary setup discounts are not substituted for the durable price baseline.
 - Sakura Mobile Japan Voice+Data passport route: non-resident passport route with face-to-face identity verification/pickup; post-departure OTP/roaming remains unknown until verified.
-- Mainland China official-carrier route: foreign nationals can use accepted foreign ID; current regulator guidance requires in-person application at a self-operated carrier business hall; generic post-departure OTP remains carrier/plan-specific.
-- Airalo example: data-only travel eSIM; never a local SMS-number candidate.
-- Destination local physical data SIM: data-only fallback for devices without eSIM; never a local SMS-number candidate.
+- Mainland China official-carrier route: foreign nationals can use accepted foreign ID; current regulator guidance requires in-person application at a self-operated carrier business hall; the application processing fee is documented as zero while the mobile plan price remains operator/package-specific; generic post-departure OTP remains carrier/plan-specific.
+- Airalo example: data-only travel eSIM; never a local SMS-number candidate. Japan currently has a destination-specific 30-day package baseline in the purchase layer.
+- Mobal Japan tourist physical data SIM: current Japan-specific no-eSIM fallback with a documented 31-day data package; explicitly no phone number/SMS inbox.
+- Destination local physical data SIM: generic research-required fallback for unmapped no-eSIM destinations; never a local SMS-number candidate.
 - ActivateX/SMSPool/5SIM: one-time verification routes with ownership duration, privacy and refund semantics kept separate; they are not offered for multi-week or long-term access in the current MVP.
 
 ## Files
@@ -145,6 +168,7 @@ This separation prevents a cheap route from being recommended when it cannot be 
 - `frontend/tools/phone-number-lifecycle-mvp/route-capabilities.json` — structured KYC, roaming SMS and Wi-Fi Calling evidence.
 - `frontend/tools/phone-number-lifecycle-mvp/tutorial-insights.json` — tutorial-derived decision variables that are consumed by the tool at runtime, not a passive research appendix.
 - `frontend/tools/phone-number-lifecycle-mvp/audit-rules.json` — post-implementation guardrails for target-service geography, route eligibility and audited fixes.
+- `frontend/tools/phone-number-lifecycle-mvp/purchase-intelligence.json` — structured scenario cost, purchase-channel, fair-price, refund/stock/support/number-control and freshness evidence consumed by ranking and result cards.
 - `docs/PHONE_NUMBER_TUTORIAL_RESEARCH.md` — research matrix used to discover repeated questions/conflicts.
 - `scripts/test-phone-number-lifecycle-mvp.mjs` — deterministic business-path audit that executes the actual inline page logic in a VM with fixture data.
 - `.github/workflows/evals.yml` — runs the dedicated phone lifecycle audit before the generic project eval suite.
@@ -167,7 +191,7 @@ The dedicated command is:
 
 `node scripts/test-phone-number-lifecycle-mvp.mjs`
 
-It is now a blocking CI step. The current audited run completes 23 deterministic assertions against the actual inline page logic.
+It is now a blocking CI step. The current local audited run completes **55 deterministic assertions** against the actual inline page logic, including **16 end-to-end render-path acceptance scenarios** across registration and travel journeys.
 
 Required invariants include:
 
@@ -190,8 +214,13 @@ Required invariants include:
 - Mobal number-assignment and termination facts reach the tool model.
 - Claude/OpenAI temporary-number routes remain rejected.
 - keep-alive export still emits a valid calendar shell.
-- Vercel Preview deployment succeeds.
-- mobile layout and visual behavior still require a real browser/manual preview check before any production merge.
+- scenario cost, purchase-channel evidence, fair-price handling and unknown-data behavior reach the actual rendered result path.
+- cheap/safe ranking cannot compare unlike currencies/product classes or turn missing evidence into a neutral score.
+- the 16 acceptance scenarios cover the major lifecycle and purchase-layer failure modes.
+- local Chromium rendering has been checked on desktop and narrow/mobile layouts: the audited US WhatsApp long-term path rendered three route cards, surfaced cost/fair-price/channel/OTP-caveat content, and had no measured horizontal overflow. Full-page screenshots were inspected manually.
+- Vercel Preview/CI for the current commit must still succeed after it is pushed; local browser verification is not a substitute for preview verification.
 - prototype remains off production navigation/sitemap.
+
+The Draft PR must remain `noindex,nofollow` and unmerged until the current commit passes CI/Preview and the remaining data gaps are consciously accepted as MVP scope. Local Chromium verification is real browser evidence, but it does not prove the hosted Vercel Preview for the same commit until that deployment is checked.
 
 Rollback is deleting the isolated prototype directory, its audit script, and these prototype-only docs/workflow additions before merge. No database or infrastructure cleanup is required.

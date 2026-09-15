@@ -17,8 +17,8 @@
 <main class="shell pn-wrap">
   <section class="pn-hero">
     <p class="eyebrow">Prototype · not production</p>
-    <h1>Get a phone number that will actually survive the job.</h1>
-    <p>Start with the job, not telecom jargon. The tool works backward through buying, KYC, activation, registration, roaming SMS, keep-alive rules and recovery.</p>
+    <h1>Know the real cost, where to buy, and whether the number will survive the job.</h1>
+    <p>Start with the job, then compare purchase cost and channel evidence before activation details. The tool works through buying, KYC, activation, registration, roaming SMS, keep-alive rules and recovery.</p>
     <div class="pn-note"><strong>Evidence rule:</strong> popular tutorials and community threads tell us which questions people repeatedly get stuck on. Current first-party rules decide hard restrictions, refund conditions and lifecycle warnings. A community workaround never overrides an official restriction.</div>
   </section>
 
@@ -55,21 +55,22 @@
 </main>
 <footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Prototype decision tools with explicit evidence.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
 <script>
-let catalog,locationConstraints,routeCapabilities,tutorialInsights,auditRules;
+let catalog,locationConstraints,routeCapabilities,tutorialInsights,auditRules,purchaseIntelligence;
 const results=document.getElementById('results');
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const sourceLink=s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>`;
 
 async function init(){
-  const [a,b,c,d,e]=await Promise.all([
+  const [a,b,c,d,e,f]=await Promise.all([
     fetch('./catalog.json',{cache:'no-store'}),
     fetch('./location-constraints.json',{cache:'no-store'}),
     fetch('./route-capabilities.json',{cache:'no-store'}),
     fetch('./tutorial-insights.json',{cache:'no-store'}),
-    fetch('./audit-rules.json',{cache:'no-store'})
+    fetch('./audit-rules.json',{cache:'no-store'}),
+    fetch('./purchase-intelligence.json',{cache:'no-store'})
   ]);
-  if(!a.ok||!b.ok||!c.ok||!d.ok||!e.ok)throw new Error('Prototype evidence files unavailable');
-  catalog=await a.json();locationConstraints=await b.json();routeCapabilities=await c.json();tutorialInsights=await d.json();auditRules=await e.json();
+  if(!a.ok||!b.ok||!c.ok||!d.ok||!e.ok||!f.ok)throw new Error('Prototype evidence files unavailable');
+  catalog=await a.json();locationConstraints=await b.json();routeCapabilities=await c.json();tutorialInsights=await d.json();auditRules=await e.json();purchaseIntelligence=await f.json();
   for(const source of [tutorialInsights,auditRules]){
     for(const route of source.additionalRoutes||[]){if(!catalog.routes.some(r=>r.id===route.id))catalog.routes.push(route)}
     for(const [id,patch] of Object.entries(source.locationConstraintOverrides||{})){locationConstraints.routes[id]={...(locationConstraints.routes[id]||{}),...patch}}
@@ -189,6 +190,49 @@ function registrationRouteEligible(route,duration,country,currentLocation){
   return route.country===country;
 }
 
+function purchaseInfo(route,destination=null){
+  const base=purchaseIntelligence?.routes?.[route.id]||null;if(!base)return null;
+  const offer=destination&&base.destinationOffers?.[destination];if(!offer)return base;
+  return {...base,...offer,price:offer.price||base.price,purchaseSafety:offer.purchaseSafety||base.purchaseSafety,fairPriceCheck:offer.fairPriceCheck||base.fairPriceCheck,sources:[...(base.sources||[]),...(offer.sources||[])]};
+}
+function sellerLabel(value){return ({'official-direct':'Official direct','authorized-reseller':'Authorized reseller','marketplace':'Marketplace / temporary-number seller'}[value]||'Purchase channel unverified');}
+function confidenceLabel(value){return ({high:'High',medium:'Medium',low:'Low'}[value]||'Unknown');}
+function costWindowLabel(item,currency){
+  if(!item)return 'Unknown — verify before paying';
+  if(typeof item.amount==='number')return `${esc(currency||'')} ${esc(item.amount.toLocaleString('en-US'))}`.trim();
+  if(item.status==='not-applicable')return 'Not applicable';
+  if(item.status==='dynamic')return 'Dynamic — check live listing';
+  return 'Unknown — verify before paying';
+}
+function purchaseBlock(route,horizon='30',destination=null){
+  const p=purchaseInfo(route,destination);
+  if(!p)return `<div class="pn-cap"><b>Cost & purchase safety</b><span><strong>Unknown — verify before paying.</strong> No structured purchase-price or seller-safety record exists for this route yet.</span></div>`;
+  const price=p.price||{},safe=p.purchaseSafety||{},review=safe.independentReview||{},windows=price.costWindows||{},fair=p.fairPriceCheck||{};
+  const scenarioCost=costWindowLabel(windows[String(horizon)]||windows['30'],price.currency);
+  const reviewText=review.platform&&typeof review.rating==='number'?`${review.platform}: ${review.rating}/5 from ${Number(review.reviewCount||0).toLocaleString('en-US')} reviews (snapshot, not a trust score)`:review.note||'No independent review snapshot used.';
+  const reviewLink=review.sourceUrl?` · ${sourceLink({label:'review source ↗',url:review.sourceUrl})}`:'';
+  const sourceRefs=(p.sources||[]).slice(0,3).map(sourceLink).join(' · ');
+  const promo=price.promotion?.status==='temporary-observed'?`<span><strong>Temporary price observed:</strong> ${esc(price.currency)} ${esc(price.promotion.amount?.toLocaleString('en-US'))}. Durable totals use the regular price, not this promotion.</span>`:'';
+  return `<div class="pn-cap"><b>Cost & purchase safety</b><span><strong>Estimated base cost for this scenario:</strong> ${scenarioCost}</span><span><strong>${esc(sellerLabel(p.sellerRelationship))}</strong> · ${esc(p.purchaseChannel||'Purchase channel unknown')} · Purchase evidence confidence: ${esc(confidenceLabel(p.purchaseEvidenceConfidence))}</span><dl class="pn-kv"><dt>Fair-price / overpay check</dt><dd><strong>${esc(fair.label||'Unknown')}</strong> — ${esc(fair.note||'No fair-price benchmark available.')}</dd><dt>30-day base cost</dt><dd>${costWindowLabel(windows['30'],price.currency)}</dd><dt>90-day base cost</dt><dd>${costWindowLabel(windows['90'],price.currency)}</dd><dt>365-day base cost</dt><dd>${costWindowLabel(windows['365'],price.currency)}</dd><dt>Tax / fees</dt><dd>${esc(price.tax?.note||'Unknown — verify before paying')}</dd><dt>Shipping / delivery</dt><dd>${esc(price.shipping?.note||'Unknown — verify before paying')}</dd><dt>Refund clarity</dt><dd>${esc(safe.refundClarity?.note||'Unknown — verify before paying')}</dd><dt>Stock evidence</dt><dd>${esc(safe.stockEvidence?.note||'Unknown — verify before paying')}</dd><dt>Number control</dt><dd>${esc(safe.numberControl?.note||'Unknown — verify before paying')}</dd><dt>Independent review context</dt><dd>${esc(reviewText)}${reviewLink}</dd><dt>Price basis</dt><dd>${esc(price.basis||'Unknown')}</dd><dt>Last verified</dt><dd>${esc(p.verifiedOn||purchaseIntelligence?.verifiedOn||'Unknown')}</dd></dl>${promo}<span class="pn-muted">Totals are decision aids, not checkout quotes. Dynamic prices, taxes, usage and optional add-ons stay separate unless explicitly included.</span>${sourceRefs?`<span>${sourceRefs}</span>`:''}</div>`;
+}
+function purchaseSafetyAdjustment(route,priority,duration){
+  if(priority!=='safe')return 0;
+  const p=purchaseInfo(route);if(!p)return -4;
+  let s=0;if(p.sellerRelationship==='official-direct')s+=8;if(p.purchaseEvidenceConfidence==='high')s+=5;if(p.purchaseEvidenceConfidence==='medium')s+=2;
+  if(duration==='long'&&/temporary-not-owned/.test(p.purchaseSafety?.numberControl?.state||''))s-=15;
+  return s;
+}
+function applyCostPreference(items,priority,duration){
+  if(priority!=='cheap')return items;
+  const key=duration==='long'?'365':duration==='short'?'90':'30';
+  const known=items.filter(x=>{const p=purchaseInfo(x.route);return typeof p?.price?.costWindows?.[key]?.amount==='number'});
+  const currencies=[...new Set(known.map(x=>purchaseInfo(x.route).price.currency))],groups=[...new Set(known.map(x=>purchaseInfo(x.route).comparisonGroup||''))];
+  if(known.length<2||currencies.length!==1||groups.length!==1||!groups[0])return items;
+  const vals=known.map(x=>purchaseInfo(x.route).price.costWindows[key].amount),lo=Math.min(...vals),hi=Math.max(...vals);
+  for(const x of known){const v=purchaseInfo(x.route).price.costWindows[key].amount;x.score+=hi===lo?4:Math.round(12*(hi-v)/(hi-lo));}
+  return items;
+}
+
 function routeScore(route,rule,duration,country,priority,currentLocation){
   const comp=compatibility(rule,route,duration),act=activationFit(route,currentLocation),c=caps(route);
   if(comp.state==='no'||act.state==='blocked')return -999;
@@ -208,11 +252,12 @@ function routeScore(route,rule,duration,country,priority,currentLocation){
     if(route.numberClass==='temporary-activation'&&c.privacy?.state==='public-inbox')s-=25;
   }
   if(priority==='easy'){if(route.numberClass==='temporary-activation')s+=8;if(act.state==='yes')s+=8;}
-  if(priority==='cheap'){if(route.numberClass==='temporary-activation')s+=20;if(route.id==='giffgaff-uk')s+=5;if(route.id==='ultra-paygo-us')s+=4;}
+  if(priority==='cheap'){if(route.numberClass==='temporary-activation')s+=20;}
+  s+=purchaseSafetyAdjustment(route,priority,duration);
   return s;
 }
 
-function routeCard(route,index,compat,fit,{destination=null,otpImportant=false,currentLocation=null,maintainAbroad=false}={}){
+function routeCard(route,index,compat,fit,{destination=null,purchaseDestination=null,otpImportant=false,currentLocation=null,maintainAbroad=false,costHorizon='30'}={}){
   const c=caps(route),warnings=[];
   if(compat&&compat.state!=='yes'){
     const label=compat.state==='risk'?'Long-term risk':compat.state==='class-match'?'Provider-specific delivery not proven':'Compatibility not proven';
@@ -225,9 +270,8 @@ function routeCard(route,index,compat,fit,{destination=null,otpImportant=false,c
   if(maintainAbroad&&c.overseasPolicy?.state==='restricted-long-term')warnings.push(`<div class="pn-warning"><strong>Keep-alive is not the whole story:</strong> ${esc(c.overseasPolicy.note)}</div>`);
   const evidence=(route.evidence||[]).map(sourceLink).join('<br>')||'<span class="pn-muted">No route-specific evidence yet.</span>';
   const rank=evidenceLabel(route)==='Research required'?(index===0?'Research route — verify first':'Research alternative '+(index+1)):(index===0?'Best current match':'Alternative '+(index+1));
-  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${esc(rank)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${warnings.join('')}<dl class="pn-kv"><dt>Buy / first cost</dt><dd>${esc(route.cost.purchase)}</dd><dt>Ongoing cost</dt><dd>${esc(route.cost.recurring)}</dd><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd><dt>Keep alive</dt><dd>${esc(route.retention.rule)}</dd></dl>${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
+  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${esc(rank)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${purchaseBlock(route,costHorizon,purchaseDestination)}${warnings.join('')}<dl class="pn-kv"><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd><dt>Keep alive</dt><dd>${esc(route.retention.rule)}</dd></dl>${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
 }
-
 function lifecycleHtml(route,context,fit){
   const c=caps(route);
   const buy=route.purchaseUrl?`Open ${route.provider}; recheck today's price, stock, seller terms and refund conditions before paying.`:'Compare destination options and verify current KYC, price and activation rules before paying.';
@@ -255,18 +299,28 @@ function renderRegistration(ev){
     html+=`<div class="pn-empty"><strong>No number recommendation is shown.</strong><p>The tool will not guess an unmapped location or use a foreign number as a workaround for an unsupported target-service location. Verify the exact location/country rule first.</p></div>`;
     results.innerHTML=html;results.hidden=false;results.scrollIntoView({behavior:'smooth',block:'start'});return;
   }
-  const evaluated=catalog.routes.filter(r=>registrationRouteEligible(r,duration,country,current)).map(route=>{const comp=compatibility(rule,route,duration),fit=activationFit(route,current);return {route,comp,fit,score:routeScore(route,rule,duration,country,priority,current)}});
+  const evaluated=applyCostPreference(catalog.routes.filter(r=>registrationRouteEligible(r,duration,country,current)).map(route=>{const comp=compatibility(rule,route,duration),fit=activationFit(route,current);return {route,comp,fit,score:routeScore(route,rule,duration,country,priority,current)}}),priority,duration);
   const ranked=evaluated.filter(x=>x.score>-900).sort((a,b)=>b.score-a.score).slice(0,3);
   const excluded=evaluated.filter(x=>x.score<=-900).map(x=>({route:x.route,reason:x.fit.state==='blocked'?x.fit.note:x.comp.note}));
   if(!ranked.length)html+=`<div class="pn-empty"><strong>No verified route in the seed catalog.</strong><p>This is a data gap, not proof that no solution exists. Choose a mapped number country if you need a foreign number.</p></div>`;
-  else html+=`<section><h2>Routes ranked for this task</h2><p class="pn-muted">Ranking uses service rules, chosen number country, physical activation location, durable control, first-use/overseas policy risk and your priority. A carrier-number class match is not presented as proof that this exact provider will receive the target service's OTP.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,x.comp,x.fit,{otpImportant:duration==='long',currentLocation:current,maintainAbroad:duration==='long'&&current!==x.route.country})).join('')}</div></section>${excludedHtml(excluded)}${lifecycleHtml(ranked[0].route,'register',ranked[0].fit)}`;
+  else html+=`<section><h2>Routes ranked for this task</h2><p class="pn-muted">Ranking uses service rules, chosen number country, physical activation location, durable control, first-use/overseas policy risk and your priority. A carrier-number class match is not presented as proof that this exact provider will receive the target service's OTP.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,x.comp,x.fit,{otpImportant:duration==='long',currentLocation:current,maintainAbroad:duration==='long'&&current!==x.route.country,costHorizon:duration==='long'?'365':duration==='short'?'90':'30'})).join('')}</div></section>${excludedHtml(excluded)}${lifecycleHtml(ranked[0].route,'register',ranked[0].fit)}`;
   results.innerHTML=html;results.hidden=false;results.scrollIntoView({behavior:'smooth',block:'start'});attachReminderButtons();
 }
 
+function applyTravelPurchasePreference(items,longStay,destination){
+  const duration=longStay?'long':'short',key=longStay?'365':'30';
+  for(const x of items)x.score+=purchaseSafetyAdjustment(x.route,'safe',duration);
+  const known=items.filter(x=>typeof purchaseInfo(x.route,destination)?.price?.costWindows?.[key]?.amount==='number');
+  const groups=[...new Set(known.map(x=>purchaseInfo(x.route,destination).comparisonGroup||''))];
+  const currencies=[...new Set(known.map(x=>purchaseInfo(x.route,destination).price.currency))];
+  if(known.length>=2&&currencies.length===1&&groups.length===1&&groups[0]){const vals=known.map(x=>purchaseInfo(x.route,destination).price.costWindows[key].amount),lo=Math.min(...vals),hi=Math.max(...vals);for(const x of known){const v=purchaseInfo(x.route,destination).price.costWindows[key].amount;x.score+=hi===lo?2:Math.round(6*(hi-v)/(hi-lo));}}
+  return items;
+}
+
 function travelCandidates(destination,needsLocal,needsOtp,esimOk,current,longStay){
-  const airalo=catalog.routes.find(r=>r.id==='airalo-data'),physicalData=catalog.routes.find(r=>r.id==='local-data-physical'),local=catalog.routes.find(r=>r.id==='local-carrier');
+  const airalo=catalog.routes.find(r=>r.id==='airalo-data'),physicalData=catalog.routes.find(r=>r.id==='local-data-physical'),mobalPhysical=catalog.routes.find(r=>r.id==='mobal-japan-data-physical'),local=catalog.routes.find(r=>r.id==='local-carrier');
   if(!needsLocal){
-    const route=esimOk?airalo:physicalData;
+    const route=esimOk?airalo:(destination==='Japan'&&mobalPhysical?mobalPhysical:physicalData);
     return route?[{route,fit:activationFit(route,current,'travel',destination),score:80}]:[];
   }
   const carrierRoutes=catalog.routes.filter(r=>r.numberClass==='carrier-mobile'&&r.id!=='local-carrier'&&r.country===destination).map(route=>{
@@ -280,7 +334,7 @@ function travelCandidates(destination,needsLocal,needsOtp,esimOk,current,longSta
     return {route,fit,score};
   });
   carrierRoutes.push({route:local,fit:activationFit(local,current,'travel',destination),score:longStay?55:50});
-  return carrierRoutes.filter(x=>x.score>-900).sort((a,b)=>b.score-a.score);
+  return applyTravelPurchasePreference(carrierRoutes.filter(x=>x.score>-900),longStay,destination).sort((a,b)=>b.score-a.score);
 }
 
 function renderTravel(ev){
@@ -297,7 +351,7 @@ function renderTravel(ev){
   if(longStay)warnings.push('<div class="pn-good"><strong>Long stay:</strong> durable number control, recurring cost, KYC and cancellation/number-loss rules receive extra weight.</div>');
   let html=`<section class="pn-summary"><p class="eyebrow">Travel setup</p><h2>${esc(headline)}</h2><p>${esc(reason)}</p><div class="pn-badges"><span class="pn-badge">Now: ${esc(current)}</span><span class="pn-badge">Destination: ${esc(destination)}</span><span class="pn-badge">${needsLocal?'Local number required':'Data route only'}</span><span class="pn-badge">${needsOtp?'OTP matters':'OTP not required'}</span></div>${warnings.join('')}</section>`;
   if(!ranked.length)html+=`<div class="pn-empty"><strong>No route survives the current constraints.</strong><p>This means the MVP needs more provider data or the requirements need to change.</p></div>`;
-  else html+=`<section><h2>Recommended setup</h2><p class="pn-muted">When a real local number is required, data-only eSIMs and data-only physical SIMs are excluded from the candidate list.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,{state:'yes',note:'Travel-task candidate.'},x.fit,{destination:needsLocal?destination:null,otpImportant:needsLocal&&needsOtp,currentLocation:current,maintainAbroad:false})).join('')}</div></section>${lifecycleHtml(ranked[0].route,'travel',ranked[0].fit)}`;
+  else html+=`<section><h2>Recommended setup</h2><p class="pn-muted">When a real local number is required, data-only eSIMs and data-only physical SIMs are excluded from the candidate list.</p><div class="pn-grid">${ranked.map((x,i)=>routeCard(x.route,i,{state:'yes',note:'Travel-task candidate.'},x.fit,{destination:needsLocal?destination:null,otpImportant:needsLocal&&needsOtp,currentLocation:current,maintainAbroad:false,costHorizon:longStay?'365':'30',purchaseDestination:destination})).join('')}</div></section>${lifecycleHtml(ranked[0].route,'travel',ranked[0].fit)}`;
   results.innerHTML=html;results.hidden=false;results.scrollIntoView({behavior:'smooth',block:'start'});attachReminderButtons();
 }
 
