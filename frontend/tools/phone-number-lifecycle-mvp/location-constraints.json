@@ -1,0 +1,78 @@
+{
+  "verifiedOn": "2026-09-15",
+  "notice": "Prototype constraints. Hard blocks require explicit provider evidence; unknown stays unknown.",
+  "routes": {
+    "giffgaff-uk": {
+      "mode": "conditional",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Physical SIM delivery requires a UK address. The MVP has not yet verified a universal geography rule for initial eSIM activation.",
+      "outsideHomeNote": "Outside the UK, do not assume physical SIM delivery is available. If using eSIM, recheck current activation requirements before purchase.",
+      "sourceUrl": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim"
+    },
+    "tello-us": {
+      "mode": "required-country",
+      "hardBlock": true,
+      "requiredLocations": ["United States"],
+      "summary": "Initial activation or port-in must be completed while physically in the United States and connected to a US cellular tower.",
+      "outsideHomeNote": "If you are outside the United States now, do not buy this as an immediate activation route unless you can first activate it in the US.",
+      "sourceUrl": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad"
+    },
+    "ultra-paygo-us": {
+      "mode": "unknown",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "The MVP has verified international roaming support but has not yet verified a definitive initial-activation geography rule for overseas buyers.",
+      "outsideHomeNote": "If you are outside the US, treat initial activation as unverified until the provider's current rule is confirmed.",
+      "sourceUrl": "https://www.ultramobile.com/paygo/"
+    },
+    "h2o-paygo-us": {
+      "mode": "unknown",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Initial activation and overseas SMS/roaming behavior are not yet sufficiently verified for an overseas-user recommendation.",
+      "outsideHomeNote": "If you are outside the US, this route remains research-required rather than recommended.",
+      "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+    },
+    "activatex-temp": {
+      "mode": "online",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "No physical SIM activation is involved; availability depends on the selected service, number country, supplier route and current stock.",
+      "outsideHomeNote": "Your physical location is not treated as the number's country. Target-service rules and supplier availability still apply.",
+      "sourceUrl": "https://activatex.org/"
+    },
+    "smspool-temp": {
+      "mode": "online",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "No physical SIM activation is involved; service/country inventory and pricing are dynamic.",
+      "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+      "sourceUrl": "https://www.smspool.net/"
+    },
+    "5sim-temp": {
+      "mode": "online",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "No physical SIM activation is involved; service/country/operator inventory is dynamic.",
+      "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+      "sourceUrl": "https://5sim.net/prices"
+    },
+    "airalo-data": {
+      "mode": "travel-esim",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Travel eSIM installation can often happen before travel, while package activation behavior depends on the specific product and destination network.",
+      "outsideHomeNote": "Check the package's activation policy before installation; this route is for data, not a persistent SMS phone number.",
+      "sourceUrl": "https://www.airalo.com/"
+    },
+    "local-carrier": {
+      "mode": "destination-specific",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Purchase, KYC and activation rules depend on the destination carrier and jurisdiction.",
+      "outsideHomeNote": "Some destination SIMs require in-country purchase, identity verification or first network attachment.",
+      "sourceUrl": ""
+    }
+  }
+}
