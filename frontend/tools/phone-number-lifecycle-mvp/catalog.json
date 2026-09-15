@@ -127,6 +127,49 @@
       ]
     },
     {
+      "id": "lebara-uk",
+      "name": "Lebara UK PAYG mobile number",
+      "provider": "Lebara UK",
+      "country": "United Kingdom",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM; eSIM on supported devices",
+      "bestFor": ["uk-number", "travel-local-number", "sms-capable-number", "pay-as-you-go", "roaming-after-uk-activation"],
+      "purchaseUrl": "https://www.lebara.co.uk/en/free-sim.html",
+      "cost": {
+        "purchase": "Physical PAYG SIM is currently offered free; plans currently start from GBP 5. Recheck checkout and delivery availability.",
+        "recurring": "PAYG is available without a fixed 30-day plan. A chargeable activity is needed within 90 days to avoid temporary barring/credit loss; after a further 365 days without usage or top-up/plan purchase the SIM expires.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 80,
+        "rule": "Make at least one chargeable activity before 90 consecutive days of inactivity. If barred after 90 days, add credit or buy a plan to resume service. After a further 365 days with no usage or top-up/plan purchase, the SIM expires and a new number is required.",
+        "recovery": "Top up or buy a plan during the recoverable inactivity period. For a critical account, do not wait until final expiry before porting or changing recovery numbers."
+      },
+      "friction": {
+        "identity": "A universal passport/ID requirement has not been established by the official pages reviewed. eSIM purchase requires a Lebara account and verified email.",
+        "location": "Critical constraint: Lebara says the SIM/eSIM must be activated in the UK before taking it abroad. eSIM can be ordered outside the UK but must be activated in the UK.",
+        "device": "Unlocked phone required. eSIM support is device-dependent and currently phased; confirm your device before purchase.",
+        "ongoing": "PAYG or plan-based. International roaming outside included regions may require PAYG credit or a roaming add-on."
+      },
+      "evidence": [
+        {
+          "label": "Lebara UK — eSIM help and UK activation requirement",
+          "url": "https://www.lebara.co.uk/en/help/esim.html",
+          "type": "official"
+        },
+        {
+          "label": "Lebara UK — SIM inactivity and expiry",
+          "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+          "type": "official"
+        },
+        {
+          "label": "Lebara UK — free PAYG SIM",
+          "url": "https://www.lebara.co.uk/en/free-sim.html",
+          "type": "official"
+        }
+      ]
+    },
+    {
       "id": "tello-us",
       "name": "Tello US mobile number",
       "provider": "Tello",
@@ -241,6 +284,97 @@
         {
           "label": "H2O Wireless — Terms and Conditions",
           "url": "https://www.h2owireless.com/terms-conditions",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "mobal-japan-voice-data",
+      "name": "Mobal Japan Voice+Data 5G number",
+      "provider": "Mobal Japan",
+      "country": "Japan",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM with a real 070/080/090 Japanese mobile number",
+      "bestFor": ["japan-number", "travel-local-number", "sms-capable-number", "visitor-friendly", "roaming-after-activation"],
+      "purchaseUrl": "https://www.mobal.com/japan-sim-card/",
+      "cost": {
+        "purchase": "Current official list pricing shows a JPY 4,950 SIM purchase price before temporary promotions; recheck checkout because discounts change.",
+        "recurring": "Voice+Data plans currently start from JPY 1,650 per calendar month. Outgoing calls/SMS and optional roaming can add charges.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 27,
+        "rule": "Keep the monthly service active. Mobal states that if the service is terminated, the assigned Japanese phone number is lost and a future service requires a new number.",
+        "recovery": "Do not cancel a Mobal line tied to important accounts until those accounts have been migrated. A terminated Mobal number is not retained for later reuse."
+      },
+      "friction": {
+        "identity": "Voice-capable products require identity verification under Japanese law. Delivery requires an accepted ID upload and delivery to the address shown on the ID; collection requires the physical valid passport. Voice customers must be 18+.",
+        "location": "Orders can be arranged with worldwide delivery or Japan pick-up. Activation requests are submitted through the Mobal account; the line receives its Japanese number only after activation. Japan pick-up requires passport presentation.",
+        "device": "Unlocked compatible phone required. For voice, device/VoLTE compatibility matters; eSIM requires native eSIM support.",
+        "ongoing": "Monthly service until manually terminated. International voice/SMS roaming is an optional paid feature on the latest Voice+Data 5G product; data roaming is not supported."
+      },
+      "evidence": [
+        {
+          "label": "Mobal Japan — Voice+Data pricing and Japanese phone number",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — ID requirements for voice products",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — International roaming for current Voice+Data 5G products",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — Phone number assignment and loss after termination",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000042589-phone-number-type",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "china-official-carrier",
+      "name": "Mainland China official carrier SIM",
+      "provider": "China Mobile / China Unicom / China Telecom",
+      "country": "Mainland China",
+      "numberClass": "carrier-mobile",
+      "form": "in-person registered physical SIM from an official operator business hall",
+      "bestFor": ["china-number", "travel-local-number", "local-apps", "sms-capable-number", "foreign-visitor"],
+      "purchaseUrl": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html",
+      "cost": {
+        "purchase": "Official guidance says there is no processing fee; plan/package charges depend on the selected carrier and current tariff.",
+        "recurring": "Carrier/package-specific. Recharge can be made through official business halls, operator apps and online service halls.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "Retention, recharge and suspension rules depend on the selected Chinese carrier and plan; this MVP does not invent one generic expiry rule.",
+        "recovery": "If the phone/SIM is lost, contact the carrier promptly. For important accounts, keep the line active or migrate account recovery before cancelling it."
+      },
+      "friction": {
+        "identity": "Foreign nationals may use a passport or Foreign Permanent Resident ID Card. Current 2026 telecom guidance says the applicant must appear in person and cannot have another person apply on their behalf.",
+        "location": "This route requires being in Mainland China and visiting a self-operated carrier business hall. Beijing guidance says processing and issuance are immediate when the application is accepted.",
+        "device": "Current telecom guidance recommends a phone supporting 5G or VoLTE; carrier/device compatibility should be checked at the business hall.",
+        "ongoing": "Plan, top-up and number-retention rules vary by China Mobile, China Unicom or China Telecom."
+      },
+      "evidence": [
+        {
+          "label": "China government — SIM card guide for foreigners",
+          "url": "https://english.www.gov.cn/2025special/bizexpatsinchina2025",
+          "type": "official"
+        },
+        {
+          "label": "Beijing government — SIM card application procedure",
+          "url": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html",
+          "type": "official"
+        },
+        {
+          "label": "MIIT Tianjin — 2026 foreign-national SIM application guide",
+          "url": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html",
           "type": "official"
         }
       ]
