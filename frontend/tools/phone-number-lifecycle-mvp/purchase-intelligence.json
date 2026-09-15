@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-09-15",
+  "policy": {
+    "confidenceMeaning": "Purchase evidence confidence measures how well the purchase channel, price and terms are documented. It is not a reputation score or fraud probability.",
+    "reviewsRule": "Independent review ratings are dated context only. They never become a trust score and never override first-party terms or direct product evidence.",
+    "costRule": "Cost windows are base-cost estimates only when the underlying billing cycle is explicit. Taxes, usage, optional add-ons, shipping and promotions stay separate unless explicitly included.",
+    "temporarySmsRule": "Do not calculate expected successful cost from seller-reported success rates. A success-adjusted cost needs an independent or audited denominator and refund outcome data."
+  },
+  "routes": {
+    "tello-us": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "Tello direct checkout",
+      "purchaseEvidenceConfidence": "high",
+      "price": {
+        "currency": "USD",
+        "basis": "300-minute / unlimited-text no-data plan",
+        "setup": {
+          "amount": 0,
+          "status": "official",
+          "note": "Broadband Facts lists no one-time purchase fee."
+        },
+        "recurring": {
+          "amount": 5,
+          "periodDays": 30,
+          "status": "official",
+          "note": "Plan is valid for 30 days."
+        },
+        "tax": {
+          "status": "extra-varies",
+          "note": "Government taxes vary by location; Cost Recovery can be up to $0.30. Checkout calculates the final amount."
+        },
+        "shipping": {
+          "status": "unknown",
+          "note": "SIM/eSIM-specific fulfillment cost is not included in this base model."
+        },
+        "promotion": {
+          "status": "none-used",
+          "note": "Cost windows do not rely on a temporary discount."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 5,
+            "status": "derived-base-only",
+            "note": "Base plan only; excludes tax/surcharges and any SIM fulfillment cost."
+          },
+          "90": {
+            "amount": 15,
+            "status": "derived-base-only",
+            "note": "Three 30-day cycles; excludes tax/surcharges."
+          },
+          "365": {
+            "amount": 65,
+            "status": "derived-base-only",
+            "note": "Thirteen 30-day renewals are needed to cover at least 365 days; excludes tax/surcharges."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "partial",
+          "note": "Plan changes/early renewals are charged immediately and unused service is not partially refunded."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Card-network protections vary by payment method and are not scored here."
+        },
+        "stockEvidence": {
+          "state": "not-modeled",
+          "note": "eSIM/SIM availability is not represented as guaranteed stock."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Official support channels are published."
+        },
+        "numberControl": {
+          "state": "account-controlled",
+          "note": "Recurring carrier line controlled through the customer's Tello account."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 4.5,
+          "reviewCount": 15385,
+          "last12Months": 2026,
+          "invitationContext": "Company asks customers to review; treat the score as context, not proof of reliability.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/tello.com"
+        },
+        "complaintThemes": []
+      },
+      "sources": [
+        {
+          "label": "Tello $5 plan / Broadband Facts",
+          "url": "https://tello.com/buy/custom_plans?plan=0-300",
+          "type": "official"
+        },
+        {
+          "label": "Tello activation abroad rule",
+          "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+          "type": "official"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "official-baseline",
+        "label": "Official price baseline",
+        "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+      },
+      "comparisonGroup": "us-durable-number-retention"
+    },
+    "h2o-paygo-us": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "H2O Wireless direct",
+      "purchaseEvidenceConfidence": "high",
+      "price": {
+        "currency": "USD",
+        "basis": "$10 Pay As You Go refill",
+        "setup": {
+          "amount": 0,
+          "status": "official",
+          "note": "Broadband Facts lists $0 one-time fee for the $10 PayGo plan."
+        },
+        "recurring": {
+          "amount": 10,
+          "periodDays": 90,
+          "status": "official",
+          "note": "$10 refill expires after 90 days."
+        },
+        "tax": {
+          "status": "extra-varies",
+          "note": "Government taxes vary; federal and administrative/regulatory fees are also listed."
+        },
+        "shipping": {
+          "status": "unknown",
+          "note": "SIM/eSIM fulfillment is not included in this refill-only model."
+        },
+        "promotion": {
+          "status": "autopay-available",
+          "note": "Official page shows a 10% AutoPay discount, but cost windows use the undiscounted list refill."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 10,
+            "status": "derived-base-only",
+            "note": "Minimum documented $10 refill covers up to 90 days before usage; excludes taxes/fees."
+          },
+          "90": {
+            "amount": 10,
+            "status": "derived-base-only",
+            "note": "One $10 refill; recharge before expiry if retaining the number."
+          },
+          "365": {
+            "amount": 50,
+            "status": "derived-retention-only",
+            "note": "Five $10/90-day refills span at least 365 days if using this minimum refill route; usage can reduce balance sooner."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "restrictive",
+          "note": "Official terms say refills have no cash redemption value and are nonrefundable, including after cancellation."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Not independently modeled."
+        },
+        "stockEvidence": {
+          "state": "not-modeled",
+          "note": "SIM/eSIM stock is not guaranteed by this dataset."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Official support is published."
+        },
+        "numberControl": {
+          "state": "carrier-account",
+          "note": "$0 balance for 30 consecutive days cancels the account and number."
+        },
+        "independentReview": {
+          "state": "not-researched",
+          "note": "No independent review snapshot is used in this MVP record."
+        },
+        "complaintThemes": []
+      },
+      "sources": [
+        {
+          "label": "H2O PayGo pricing",
+          "url": "https://www.h2owireless.com/plan/minute",
+          "type": "official"
+        },
+        {
+          "label": "H2O terms",
+          "url": "https://www.h2owireless.com/terms-conditions",
+          "type": "official"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "official-baseline",
+        "label": "Official price baseline",
+        "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+      },
+      "comparisonGroup": "us-durable-number-retention"
+    },
+    "mobal-japan-voice-data": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "Mobal direct",
+      "purchaseEvidenceConfidence": "high",
+      "price": {
+        "currency": "JPY",
+        "basis": "Entry Voice+Data 5G plan with 1GB monthly data and a real Japanese mobile number",
+        "setup": {
+          "amount": 4950,
+          "status": "official-regular",
+          "note": "Regular SIM/eSIM list price. A 10% promotion to ¥4,455 was observed on the verification date but is not used in durable totals."
+        },
+        "recurring": {
+          "amount": 1650,
+          "period": "calendar-month",
+          "status": "official",
+          "note": "Current official 1GB Voice+Data 5G entry plan; first calendar month is prorated."
+        },
+        "tax": {
+          "status": "included",
+          "note": "Mobal says listed JPY prices include tax."
+        },
+        "shipping": {
+          "status": "included-observed",
+          "note": "Current page advertises free Japan pickup or free worldwide delivery for this product; recheck destination eligibility."
+        },
+        "promotion": {
+          "status": "temporary-observed",
+          "amount": 4455,
+          "note": "Observed 10% setup-price discount; never treat as the normal price baseline."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 6600,
+            "status": "reference-upper-base",
+            "note": "Regular JPY 4,950 SIM/eSIM price + one full JPY 1,650 Voice+Data month; actual first month can be lower because it is prorated."
+          },
+          "90": {
+            "amount": 9900,
+            "status": "reference-base",
+            "note": "Regular setup + three full 1GB Voice+Data months; calls, outgoing SMS and optional roaming add-ons extra."
+          },
+          "365": {
+            "amount": 24750,
+            "status": "reference-base",
+            "note": "Regular setup + 12 full 1GB Voice+Data months; exact billing depends on activation date."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "needs-checkout-review",
+          "note": "Refund/cancellation detail is not reduced to a simple yes/no in this MVP."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Not independently modeled."
+        },
+        "stockEvidence": {
+          "state": "seller-current",
+          "note": "Official product page displayed In Stock on the verification date; this is a seller snapshot, not a guarantee."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Mobal publishes support/helpdesk channels."
+        },
+        "numberControl": {
+          "state": "carrier-account-number-lost-on-termination",
+          "note": "Mobal states the Japanese number is lost when service terminates."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 3.8,
+          "reviewCount": 948,
+          "invitationContext": "Mixed review snapshot; recent reports include both successful service/refunds and ID/support/delivery complaints.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/mobal.com"
+        },
+        "complaintThemes": [
+          "identity-review friction",
+          "support communication",
+          "delivery"
+        ]
+      },
+      "sources": [
+        {
+          "label": "Mobal Japan — Voice+Data 5G pricing and Japanese number",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "official-baseline",
+        "label": "Official price baseline",
+        "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+      },
+      "comparisonGroup": "japan-voice-data-entry"
+    },
+    "sakura-japan-voice-data": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "Sakura Mobile direct",
+      "purchaseEvidenceConfidence": "high",
+      "price": {
+        "currency": "JPY",
+        "basis": "5GB Voice + Data monthly plan",
+        "setup": {
+          "amount": 5500,
+          "status": "official-tax-included",
+          "note": "Activation fee, tax included."
+        },
+        "recurring": {
+          "amount": 3278,
+          "period": "month",
+          "status": "official-tax-included",
+          "note": "5GB Voice + Data monthly price, tax included."
+        },
+        "tax": {
+          "status": "included",
+          "note": "These two listed amounts are tax-inclusive."
+        },
+        "shipping": {
+          "status": "unknown",
+          "note": "Pickup/shipping cost depends on the application path and is not included here."
+        },
+        "promotion": {
+          "status": "none-used",
+          "note": "No temporary promotion is used in cost windows."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 8778,
+            "status": "derived-base-only",
+            "note": "Activation fee + one monthly charge; calls/SMS and other extras excluded."
+          },
+          "90": {
+            "amount": 15334,
+            "status": "derived-base-only",
+            "note": "Activation fee + three monthly charges."
+          },
+          "365": {
+            "amount": 44836,
+            "status": "reference-base",
+            "note": "Activation fee + 12 monthly charges; actual billing dates may differ."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "needs-checkout-review",
+          "note": "Current cancellation/refund details are not modeled into a simple guarantee."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Not independently modeled."
+        },
+        "stockEvidence": {
+          "state": "not-modeled",
+          "note": "No live inventory guarantee is stored."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Official help center is available."
+        },
+        "numberControl": {
+          "state": "carrier-account",
+          "note": "Renewable carrier-style Japanese number; exact post-cancellation/porting outcome still requires verification."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 4.8,
+          "reviewCount": 1491,
+          "last12Months": 709,
+          "invitationContext": "Company asks customers to review; rating is context only, not a trust score.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/www.sakuramobile.jp"
+        },
+        "complaintThemes": []
+      },
+      "sources": [
+        {
+          "label": "Sakura monthly pricing",
+          "url": "https://www.sakuramobile.jp/monthly/price/",
+          "type": "official"
+        },
+        {
+          "label": "Sakura non-resident application guidance",
+          "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+          "type": "official"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "official-baseline",
+        "label": "Official price baseline",
+        "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+      },
+      "comparisonGroup": "japan-voice-data-entry"
+    },
+    "giffgaff-uk": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "giffgaff direct",
+      "purchaseEvidenceConfidence": "medium",
+      "price": {
+        "currency": "GBP",
+        "basis": "Official SIM order + PAYG/plan after activation",
+        "setup": {
+          "amount": 0,
+          "status": "official-sim-only",
+          "note": "Official physical SIM order is free, but this is not the full activation/use cost."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "not-fixed",
+          "note": "The six-month inactivity rule does not itself require a monthly plan, but at least one qualifying action is required before the boundary."
+        },
+        "tax": {
+          "status": "included-where-listed",
+          "note": "Exact checkout remains the authority."
+        },
+        "shipping": {
+          "status": "restricted",
+          "note": "Official physical SIM delivery is UK-address only."
+        },
+        "promotion": {
+          "status": "not-modeled",
+          "note": "Current plan promotions are not used."
+        },
+        "costWindows": {
+          "30": {
+            "amount": null,
+            "status": "unknown",
+            "note": "A free SIM is not the same as total activation cost; verify the current activation/top-up requirement."
+          },
+          "90": {
+            "amount": null,
+            "status": "unknown",
+            "note": "Depends on initial credit/plan and usage."
+          },
+          "365": {
+            "amount": null,
+            "status": "unknown",
+            "note": "Retention can be low-cost but the exact minimum annual spend is not proven in this MVP."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "unknown",
+          "note": "Not modeled for the exact purchase/plan choice."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Depends on payment method."
+        },
+        "stockEvidence": {
+          "state": "not-modeled",
+          "note": "No stock guarantee is stored."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Official help center/community support exists."
+        },
+        "numberControl": {
+          "state": "carrier-account-with-inactivity-recovery-window",
+          "note": "Inactivity can deactivate the SIM; a PAC may be requested within a limited window after deactivation."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 3.5,
+          "reviewCount": 31447,
+          "last12Months": 3547,
+          "invitationContext": "Large independent-review snapshot; it is not converted into a product trust score.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/giffgaff.com"
+        },
+        "complaintThemes": []
+      },
+      "sources": [
+        {
+          "label": "giffgaff free SIM",
+          "url": "https://www.giffgaff.com/free-sim-cards",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff inactivity deactivation",
+          "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+          "type": "official"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "partial-baseline",
+        "label": "Partial official baseline",
+        "note": "The provider publishes part of the price, but the all-in activation or retention cost is not fully quantified. No overpay verdict is shown."
+      },
+      "comparisonGroup": "uk-durable-number-retention"
+    },
+    "smspool-temp": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "marketplace",
+      "purchaseChannel": "SMSPool marketplace",
+      "purchaseEvidenceConfidence": "medium",
+      "price": {
+        "currency": "USD",
+        "basis": "Dynamic country/service inventory",
+        "setup": {
+          "amount": null,
+          "status": "dynamic",
+          "note": "Price varies by country/service/supplier."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "not-applicable",
+          "note": "One-time activation and rental are separate products."
+        },
+        "tax": {
+          "status": "unknown",
+          "note": "Not modeled."
+        },
+        "shipping": {
+          "status": "not-applicable",
+          "note": "Digital service."
+        },
+        "promotion": {
+          "status": "not-modeled",
+          "note": "None assumed."
+        },
+        "costWindows": {
+          "30": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "Do not turn the cheapest listed activation into an expected successful cost without independent success/refund data."
+          },
+          "90": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation is not a durable-number plan."
+          },
+          "365": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation is not a durable-number plan."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "clear-no-code-conditions",
+          "note": "No-code cancellation/refund rules are documented, but unused deposited balance and other cases have separate conditions."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Depends on deposit/payment method."
+        },
+        "stockEvidence": {
+          "state": "seller-estimate",
+          "note": "Some supplier stock counters are estimates, not guaranteed live inventory."
+        },
+        "support": {
+          "state": "marketplace-support",
+          "note": "Supplier-side failures can still matter."
+        },
+        "numberControl": {
+          "state": "temporary-not-owned",
+          "note": "A one-time activation number is not durable customer ownership."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 3.1,
+          "reviewCount": 401,
+          "last12Months": 38,
+          "invitationContext": "Mixed snapshot. Recent complaints include inaccurate stock and failed numbers; company responses are also visible.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/smspool.net"
+        },
+        "complaintThemes": [
+          "stock accuracy",
+          "failed numbers",
+          "refund disputes"
+        ]
+      },
+      "sources": [
+        {
+          "label": "SMSPool",
+          "url": "https://www.smspool.net/",
+          "type": "seller"
+        },
+        {
+          "label": "Trustpilot snapshot",
+          "url": "https://www.trustpilot.com/review/smspool.net",
+          "type": "independent-review"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "not-comparable",
+        "label": "No stable official benchmark",
+        "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+      },
+      "comparisonGroup": "temp-verification-market"
+    },
+    "5sim-temp": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "marketplace",
+      "purchaseChannel": "5SIM marketplace",
+      "purchaseEvidenceConfidence": "medium",
+      "price": {
+        "currency": "USD",
+        "basis": "Dynamic service/country/operator listing",
+        "setup": {
+          "amount": null,
+          "status": "dynamic",
+          "note": "Observed starting prices vary by target service, country and operator and can change quickly."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "not-applicable",
+          "note": "One-time activation and rental are separate products."
+        },
+        "tax": {
+          "status": "unknown",
+          "note": "Not modeled."
+        },
+        "shipping": {
+          "status": "not-applicable",
+          "note": "Digital service."
+        },
+        "promotion": {
+          "status": "not-modeled",
+          "note": "None assumed."
+        },
+        "costWindows": {
+          "30": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "A low list price is not an expected successful cost. Seller-reported success is not treated as independent evidence."
+          },
+          "90": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "Not a durable-number plan."
+          },
+          "365": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "Not a durable-number plan."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "conditional",
+          "note": "Refund terms distinguish failure cases; refund applications can take time and fees may apply. It is not presented as automatic or immediate."
+        },
+        "paymentProtection": {
+          "state": "unknown",
+          "note": "Depends on account funding/payment method."
+        },
+        "stockEvidence": {
+          "state": "seller-dynamic",
+          "note": "Inventory is marketplace inventory and may change quickly."
+        },
+        "support": {
+          "state": "marketplace-support",
+          "note": "Marketplace support is not carrier ownership."
+        },
+        "numberControl": {
+          "state": "temporary-not-owned",
+          "note": "Activation numbers are not durable ownership."
+        },
+        "independentReview": {
+          "platform": "Trustpilot",
+          "rating": 2.2,
+          "reviewCount": 202,
+          "last12Months": 31,
+          "invitationContext": "Snapshot only. Repeated complaints mention reused/blocked numbers, failed codes and refund/support issues.",
+          "verifiedOn": "2026-09-15",
+          "sourceUrl": "https://www.trustpilot.com/review/5sim.net"
+        },
+        "complaintThemes": [
+          "reused or blocked numbers",
+          "verification failure",
+          "refund/support"
+        ]
+      },
+      "sources": [
+        {
+          "label": "5SIM",
+          "url": "https://5sim.net/",
+          "type": "seller"
+        },
+        {
+          "label": "5SIM terms",
+          "url": "https://5sim.net/terms",
+          "type": "seller-terms"
+        },
+        {
+          "label": "Trustpilot snapshot",
+          "url": "https://www.trustpilot.com/review/5sim.net",
+          "type": "independent-review"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "not-comparable",
+        "label": "No stable official benchmark",
+        "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+      },
+      "comparisonGroup": "temp-verification-market"
+    },
+    "airalo-data": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "first-party-platform",
+      "purchaseChannel": "Airalo website / app",
+      "purchaseEvidenceConfidence": "high",
+      "comparisonGroup": "travel-data-esim-destination-specific",
+      "price": {
+        "currency": null,
+        "basis": "Destination-specific data-only eSIM pricing",
+        "setup": {
+          "amount": null,
+          "status": "destination-specific",
+          "note": "Choose the destination package."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "package-based",
+          "note": "Package/validity based."
+        },
+        "tax": {
+          "status": "checkout-dependent",
+          "note": "Final checkout is authoritative."
+        },
+        "shipping": {
+          "status": "not-applicable",
+          "note": "Digital eSIM delivery."
+        },
+        "promotion": {
+          "status": "not-modeled",
+          "note": "No promotion assumed."
+        },
+        "costWindows": {
+          "30": {
+            "amount": null,
+            "status": "destination-specific",
+            "note": "Select a mapped destination offer."
+          },
+          "90": {
+            "amount": null,
+            "status": "destination-specific",
+            "note": "Select a mapped destination offer."
+          },
+          "365": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "Travel eSIM package, not a durable-number plan."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "partial",
+          "note": "Refund eligibility depends on Airalo’s current refund policy and whether the eSIM/package has been used; recheck before purchase."
+        },
+        "paymentProtection": {
+          "state": "platform-checkout",
+          "note": "Purchased through Airalo’s checkout; payment-method protections vary."
+        },
+        "stockEvidence": {
+          "state": "digital-listing",
+          "note": "Mapped packages are digitally listed; network/package availability can still change."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Airalo publishes in-app/web support channels."
+        },
+        "numberControl": {
+          "state": "data-only-no-number",
+          "note": "This route provides mobile data only. It is not ownership/control of a phone number."
+        },
+        "independentReview": {
+          "note": "No independent-review score is used in this MVP for Airalo."
+        },
+        "complaintThemes": []
+      },
+      "fairPriceCheck": {
+        "state": "no-carrier-benchmark",
+        "label": "No stable carrier benchmark",
+        "note": "Airalo is the seller of this travel eSIM package. Compare the exact destination/data allowance against other travel eSIMs; this MVP does not call the list price “cheap” without a like-for-like benchmark."
+      },
+      "destinationOffers": {
+        "Japan": {
+          "comparisonGroup": "japan-travel-data-esim",
+          "price": {
+            "currency": "USD",
+            "basis": "Airalo Moshi Moshi Japan fixed-data eSIM; 5GB / 30 days baseline",
+            "setup": {
+              "amount": 11,
+              "status": "official-current",
+              "note": "Current 5GB / 30 days Japan eSIM price."
+            },
+            "recurring": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "One travel package."
+            },
+            "tax": {
+              "status": "checkout-dependent",
+              "note": "Final checkout is authoritative."
+            },
+            "shipping": {
+              "status": "not-applicable",
+              "note": "Digital eSIM delivery."
+            },
+            "promotion": {
+              "status": "none-used",
+              "note": "No temporary promotion used."
+            },
+            "costWindows": {
+              "30": {
+                "amount": 11,
+                "status": "official-current",
+                "note": "5GB valid for 30 days; data-only, no phone number."
+              },
+              "90": {
+                "amount": null,
+                "status": "not-modeled",
+                "note": "Longer-trip package selection is not yet modeled."
+              },
+              "365": {
+                "amount": null,
+                "status": "not-applicable",
+                "note": "Not a durable-number plan."
+              }
+            }
+          },
+          "sources": [
+            {
+              "label": "Airalo — Japan eSIM current packages",
+              "url": "https://www.airalo.com/japan-esim",
+              "type": "official"
+            },
+            {
+              "label": "Airalo — Japan 1GB/7-day product details and data-only status",
+              "url": "https://www.airalo.com/japan-esim/moshi-moshi-7days-1gb",
+              "type": "official"
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "Airalo — Japan eSIM catalog",
+          "url": "https://www.airalo.com/japan-esim",
+          "type": "official"
+        }
+      ]
+    },
+    "mobal-japan-data-physical": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-direct",
+      "purchaseChannel": "Mobal Japan direct website / Japan pickup",
+      "purchaseEvidenceConfidence": "high",
+      "comparisonGroup": "japan-travel-data-physical",
+      "price": {
+        "currency": "JPY",
+        "basis": "Mobal Japan tourist physical data SIM; 50GB / 31 days baseline",
+        "setup": {
+          "amount": 7920,
+          "status": "official-current",
+          "note": "Current 50GB / 31 days tourist data-only SIM price."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "not-applicable",
+          "note": "One-time tourist package."
+        },
+        "tax": {
+          "status": "included-where-listed",
+          "note": "Use final official checkout as authority."
+        },
+        "shipping": {
+          "status": "included-observed",
+          "note": "Official page currently advertises free Japan pickup or free worldwide delivery; recheck destination eligibility."
+        },
+        "promotion": {
+          "status": "none-used",
+          "note": "No temporary promotion used in this baseline."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 7920,
+            "status": "official-current",
+            "note": "31-day 50GB data-only physical SIM; no phone number."
+          },
+          "90": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "This seed route is a short-stay tourist package."
+          },
+          "365": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "Not a durable-number plan."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "unverified",
+          "note": "Exact tourist-SIM cancellation/refund trigger is not yet structured; recheck current terms before paying."
+        },
+        "paymentProtection": {
+          "state": "official-checkout",
+          "note": "Purchased from Mobal’s official channel; payment-method protections still vary."
+        },
+        "stockEvidence": {
+          "state": "listed-in-stock",
+          "note": "Official product page currently marks the product in stock; this is a snapshot, not a guarantee."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Mobal publishes customer support channels."
+        },
+        "numberControl": {
+          "state": "data-only-no-number",
+          "note": "No phone number is provided."
+        },
+        "independentReview": {
+          "note": "No independent-review score is used for this route in the MVP."
+        },
+        "complaintThemes": []
+      },
+      "fairPriceCheck": {
+        "state": "official-baseline",
+        "label": "Official price baseline",
+        "note": "This uses Mobal’s current direct price. Compare any reseller quote against the same data allowance and validity before deciding it is cheaper."
+      },
+      "sources": [
+        {
+          "label": "Mobal — Japan tourist data SIM prices",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        }
+      ]
+    },
+    "china-official-carrier": {
+      "verifiedOn": "2026-09-15",
+      "sellerRelationship": "official-channel",
+      "purchaseChannel": "Carrier-owned China Mobile / China Unicom / China Telecom service hall or Beijing Service airport counter",
+      "purchaseEvidenceConfidence": "high",
+      "comparisonGroup": "china-local-carrier-plan",
+      "price": {
+        "currency": "CNY",
+        "basis": "Official operator plan selected in person",
+        "setup": {
+          "amount": 0,
+          "status": "official-processing-fee",
+          "note": "Beijing government guide states there is no SIM application processing fee; the mobile plan itself is charged at the operator’s current rate."
+        },
+        "recurring": {
+          "amount": null,
+          "status": "operator-plan-varies",
+          "note": "Plan prices vary by operator and package."
+        },
+        "tax": {
+          "status": "unknown",
+          "note": "Not separately modeled."
+        },
+        "shipping": {
+          "status": "not-applicable",
+          "note": "In-person issuance / airport collection route."
+        },
+        "promotion": {
+          "status": "not-modeled",
+          "note": "No promotion assumed."
+        },
+        "costWindows": {
+          "30": {
+            "amount": null,
+            "status": "unknown-plan-price",
+            "note": "No single official cross-operator plan price is used; verify the exact carrier/package at the official service hall."
+          },
+          "90": {
+            "amount": null,
+            "status": "unknown-plan-price",
+            "note": "Depends on chosen operator/package."
+          },
+          "365": {
+            "amount": null,
+            "status": "unknown-plan-price",
+            "note": "Depends on chosen operator/package and retention needs."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "operator-specific",
+          "note": "Refund/cancellation rules depend on the selected carrier/package."
+        },
+        "paymentProtection": {
+          "state": "official-channel",
+          "note": "Use a directly operated carrier service hall or the government-listed airport channel; payment method varies."
+        },
+        "stockEvidence": {
+          "state": "service-availability",
+          "note": "Immediate processing/issuance is described by the Beijing government guide, but a specific plan/SIM stock is not guaranteed."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Government guide publishes carrier hotlines: China Mobile 10086, China Unicom 10010, China Telecom 10000."
+        },
+        "numberControl": {
+          "state": "identity-registered-carrier-line",
+          "note": "The local mobile number is registered to the applicant’s identity with the carrier."
+        },
+        "independentReview": {
+          "note": "No aggregate review score is used; official government process guidance is the primary channel-evidence source."
+        },
+        "complaintThemes": []
+      },
+      "fairPriceCheck": {
+        "state": "partial-baseline",
+        "label": "Official channel, plan price varies",
+        "note": "The application processing fee is officially stated as zero, but the plan price varies. Avoid judging a reseller markup until you compare the same carrier/package at an operator-owned service hall."
+      },
+      "sources": [
+        {
+          "label": "Beijing government — Guide for Purchasing SIM Cards",
+          "url": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/",
+          "type": "official-government"
+        }
+      ]
+    }
+  }
+}

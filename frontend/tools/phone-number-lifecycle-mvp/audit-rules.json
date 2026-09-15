@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "verifiedOn": "2026-09-15",
+    "purpose": "Guardrails found during explicit post-implementation audit. These rules prevent the prototype from recommending unsupported service access, arbitrary foreign carriers, or data-only products for a real-number requirement."
+  },
+  "serviceAccess": {
+    "claude": {
+      "requiresSupportedPhysicalLocation": true,
+      "mappedSupportedPhysicalLocations": [
+        "United States",
+        "United Kingdom",
+        "Japan"
+      ],
+      "mappedUnsupportedPhysicalLocations": [
+        "Mainland China"
+      ],
+      "mappedUnsupportedNumberCountries": [
+        "Mainland China"
+      ],
+      "note": "Claude requires the user to be physically located in a supported location and requires a phone number from a supported location. Mainland China is not in Anthropic's current supported-location list. The tool must not present a foreign number as a workaround for an unsupported physical location.",
+      "sourceUrl": "https://support.claude.com/en/articles/8461763-where-can-i-access-claude",
+      "phoneSourceUrl": "https://support.claude.com/en/articles/8287232-verify-your-phone-number"
+    },
+    "openai-api": {
+      "requiresSupportedPhysicalLocation": true,
+      "mappedSupportedPhysicalLocations": [
+        "United States",
+        "United Kingdom",
+        "Japan"
+      ],
+      "mappedUnsupportedPhysicalLocations": [
+        "Mainland China"
+      ],
+      "mappedUnsupportedNumberCountries": [
+        "Mainland China"
+      ],
+      "note": "OpenAI currently limits ChatGPT/API access to supported countries and territories. Mainland China is not in the current supported-country list. The MVP must not recommend buying a foreign number to work around an unsupported physical location.",
+      "sourceUrl": "https://help.openai.com/en/articles/8983035-how-do-i-resolve-i-get-an-error-that-i-can-t",
+      "phoneSourceUrl": "https://help.openai.com/en/articles/8983040-what-does-phone-verification-look-like"
+    }
+  },
+  "routeInsightOverrides": {
+    "giffgaff-uk": {
+      "firstUsePolicy": {
+        "state": "caution-outside-home",
+        "label": "First use outside the UK is explicitly listed as behavior to avoid",
+        "note": "giffgaff's current Fair Usage Policy lists using the service for the first time outside the UK among behaviors to avoid. This is a policy-risk warning, not a claim that activation is technically impossible.",
+        "sourceUrl": "https://www.giffgaff.com/terms"
+      }
+    },
+    "tello-us": {
+      "communityObservation": {
+        "state": "reported-exceptions",
+        "label": "Community exceptions exist, but are not the supported route",
+        "note": "Some users report overseas activation under particular conditions. These are anecdotes only and do not override Tello's current requirement for first activation on US cellular towers.",
+        "sources": [
+          {
+            "label": "Reddit community report — overseas activation discussion",
+            "url": "https://www.reddit.com/r/Tello/comments/1pb77y5/activating_a_new_tello_number_and_porting_from/"
+          }
+        ]
+      }
+    }
+  },
+  "additionalRoutes": [
+    {
+      "id": "local-data-physical",
+      "name": "Destination local physical data SIM",
+      "provider": "Destination carrier / travel SIM seller",
+      "country": "Destination-specific",
+      "numberClass": "data-only",
+      "form": "physical SIM for mobile data; no phone number is assumed",
+      "bestFor": [
+        "travel-data",
+        "physical-sim",
+        "no-esim-device"
+      ],
+      "purchaseUrl": "",
+      "cost": {
+        "purchase": "Destination-specific. Compare current physical-SIM data offers after choosing the destination.",
+        "recurring": "Usually package/validity based; destination-specific.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "This is a connectivity route, not a phone-number retention route.",
+        "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."
+      },
+      "friction": {
+        "identity": "KYC depends on the destination and seller.",
+        "location": "Purchase and activation rules depend on the destination product.",
+        "device": "Unlocked device with a compatible physical SIM slot and supported network bands.",
+        "ongoing": "Package expiry and data balance only; do not assume ordinary SMS capability."
+      },
+      "evidence": []
+    },
+    {
+      "id": "mobal-japan-data-physical",
+      "name": "Mobal Japan Tourist Data SIM (physical)",
+      "provider": "Mobal Japan",
+      "country": "Japan",
+      "numberClass": "data-only",
+      "form": "physical SIM with mobile data only; no phone number, voice, or ordinary SMS",
+      "bestFor": [
+        "travel-data",
+        "physical-sim",
+        "no-esim-device",
+        "japan-travel"
+      ],
+      "purchaseUrl": "https://www.mobal.com/japan-sim-card/",
+      "cost": {
+        "purchase": "Current official tourist physical-SIM packages include 25GB/8 days for JPY 5,800, 50GB/16 days for JPY 6,490, and 50GB/31 days for JPY 7,920.",
+        "recurring": "One-time package; no phone-number retention value.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "This is a time-limited data package, not a phone-number route.",
+        "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."
+      },
+      "friction": {
+        "identity": "The cited Mobal tourist-data page does not establish a phone-number identity-verification requirement; recheck checkout requirements before paying.",
+        "location": "Can be ordered for free Japan pickup or worldwide delivery. The data service is for use in Japan.",
+        "device": "Unlocked device with a physical SIM slot and compatible Japanese network bands.",
+        "ongoing": "Package expires by its validity period. It does not supply an ordinary phone number or SMS inbox."
+      },
+      "evidence": [
+        {
+          "label": "Mobal — Japan tourist data SIM prices and data-only status",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        }
+      ]
+    }
+  ],
+  "locationConstraintOverrides": {
+    "local-data-physical": {
+      "mode": "destination-specific",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Physical data-SIM purchase and activation depend on the destination seller/carrier.",
+      "outsideHomeNote": "This route is intentionally generic until a destination-specific physical data SIM is selected.",
+      "sourceUrl": ""
+    },
+    "mobal-japan-data-physical": {
+      "mode": "required-country",
+      "hardBlock": false,
+      "requiredLocations": [
+        "Japan"
+      ],
+      "summary": "The physical tourist data SIM is for use on Japanese networks. It can be bought before travel and used after arrival in Japan.",
+      "outsideHomeNote": "You can order before travel, but the mobile data service is intended for use after arrival in Japan.",
+      "sourceUrl": "https://www.mobal.com/japan-sim-card/"
+    }
+  },
+  "additionalCapabilities": {
+    "local-data-physical": {
+      "kyc": {
+        "state": "destination-specific",
+        "label": "KYC depends on destination",
+        "note": "Some physical data SIMs require identity checks and others do not; verify the exact destination product."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "No ordinary SMS number assumed",
+        "note": "This route is for mobile data. It must not be used as the SMS/OTP line in the recommendation."
+      },
+      "wifiCallingAbroad": {
+        "state": "indirect",
+        "label": "Can supply data for a separate line",
+        "note": "The data connection may support another SIM's Wi-Fi Calling/Text if that separate carrier and device support the configuration."
+      }
+    },
+    "mobal-japan-data-physical": {
+      "evidenceClass": {
+        "state": "official",
+        "label": "Official product page",
+        "note": "Current package, delivery and data-only claims come from Mobal’s own Japan SIM page.",
+        "sourceUrl": "https://www.mobal.com/japan-sim-card/"
+      },
+      "kyc": {
+        "state": "unverified",
+        "label": "Checkout ID requirement not fully mapped",
+        "note": "Do not infer the voice-SIM ID rule applies identically to this data-only tourist SIM; recheck checkout requirements."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "No ordinary SMS number",
+        "note": "This tourist data SIM is data-only and cannot be the SMS/OTP line."
+      },
+      "wifiCallingAbroad": {
+        "state": "indirect",
+        "label": "Can supply data for a separate line",
+        "note": "The data connection may support another line’s Wi‑Fi Calling/Text if that separate carrier and device support it."
+      },
+      "numberDuration": {
+        "state": "data-package",
+        "label": "Package validity only",
+        "note": "No reusable phone number is provided."
+      },
+      "termination": {
+        "state": "package-expiry",
+        "label": "Data package expires",
+        "note": "Expiry ends the data package; there is no phone number to retain."
+      }
+    }
+  }
+}
