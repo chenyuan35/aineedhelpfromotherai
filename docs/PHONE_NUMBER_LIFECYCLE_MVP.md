@@ -1,259 +1,141 @@
 # Phone Number Lifecycle MVP
 
-Status: prototype only, not approved for production release.
+Status: prototype only. Draft PR only; not approved for production release.
 
-## User problem
+## Product job
 
-Two primary audiences:
+Two audiences only for this MVP:
 
-1. People who need a phone number to register or retain access to software/services.
-2. People travelling, studying, working or living abroad who need connectivity and/or a usable local or home-country number.
+1. people who need a phone number to register or retain access to software/services;
+2. people travelling, studying, working or living abroad who need connectivity and/or a usable local or home-country number.
 
-The product job is not "compare phone plans". It is:
+The job is not "compare phone plans". It is:
 
 > Help a user get the right number with the lowest practical risk, cost and effort, then keep that number usable long enough for the task they care about.
 
-The end-to-end lifecycle is:
+Lifecycle:
 
-`task -> route -> buy -> activate -> register -> use -> retain -> recover`
+`task -> route -> buy -> KYC -> activate -> register/arrive -> use -> retain -> recover`
 
 ## MVP success condition
 
-A user should be able to answer a few simple questions and receive a short, actionable route that explains:
+After a small number of questions, the user should get a short executable route that answers:
 
-- what type of number fits the task;
-- where to obtain it or where to compare current supply;
-- current or clearly-labelled dynamic cost information;
-- whether the seller/provider evidence is strong enough to rely on;
-- device, ID/KYC and activation prerequisites;
-- whether the number is appropriate for the target service;
-- the shortest registration path;
-- how to avoid unnecessary recurring cost;
-- how to keep the number alive;
-- what to do if the number is lost, recycled or needs to be migrated.
+- what number class fits the task;
+- where to buy or compare it;
+- current or explicitly dynamic cost;
+- seller/provider evidence quality;
+- device requirements;
+- KYC/identity requirements, or an explicit unknown;
+- where first activation can happen;
+- whether the number can receive SMS/OTP abroad;
+- whether Wi-Fi Calling/Text can help abroad;
+- target-service compatibility;
+- retention cost/rule and reminder;
+- recovery/migration plan.
 
-## MVP scope
+## Entry A — Register an app/service
 
-### Entry A: Register an app/service
-
-Initial services:
-
-- Claude
-- OpenAI API
-- WhatsApp
-- Telegram
-- Google Account
+Initial services: Claude, OpenAI API, WhatsApp, Telegram, Google Account.
 
 Inputs:
 
 - target service;
-- one-time vs short-term vs long-term use;
-- preferred number country where relevant;
-- priority: cheapest, easiest, or safest long-term route.
+- physical location now;
+- one-time, short-term or long-term use;
+- preferred number country;
+- cheapest, easiest or safest priority.
 
-Output:
+Hard activation constraints are allowed to remove a route from ranking. Example: Tello is not an immediate activation route for a user physically outside the US because current Tello documentation requires first activation/port-in on a US cellular tower.
 
-- service phone-number rule from an official source;
-- recommended number class;
-- matching provider/market routes;
-- difficulty;
-- cost model;
-- lifecycle checklist;
-- explicit warnings when temporary/VoIP routes are inappropriate.
-
-### Entry B: Travel / Move Abroad
+## Entry B — Travel / move abroad
 
 Inputs:
 
+- physical location now;
+- destination country;
 - short trip vs long stay;
 - data only vs local calls/SMS;
-- whether OTP/SMS is required;
-- whether the home number must remain reachable.
+- whether OTP/SMS matters;
+- whether the home number must remain reachable;
+- eSIM support.
 
-Output:
+The travel answer separates three jobs that are often incorrectly combined:
 
-- data-only eSIM route when a phone number is unnecessary;
-- local carrier/prepaid route when a real local number is required;
-- dual-line route when the user should keep the home SIM for OTP and add travel data separately;
-- activation and retention checklist.
+1. travel data;
+2. destination-local phone number;
+3. home-number/account-recovery continuity.
+
+A data-only eSIM must never be presented as an SMS-capable phone number. If OTP still depends on the home number, the tool tells the user to keep that line alive until recovery is migrated or overseas SMS behavior is verified.
 
 ## Explicit non-goals
 
-The MVP does not:
+The MVP does not sell numbers, receive/store verification codes, automate account creation, support bulk-account creation, bypass KYC/geographic/platform restrictions, fabricate success rates, or rank providers based on affiliate commission.
 
-- sell numbers;
-- receive or store verification codes;
-- automate account creation;
-- support bulk-account creation;
-- provide methods for bypassing KYC, platform anti-abuse systems, geographic restrictions or bans;
-- claim a provider is trustworthy without evidence;
-- fabricate success rates, inventory, prices or app compatibility;
-- launch to the production sitemap, homepage or tools index.
+It is intentionally absent from the production sitemap, homepage and tools index.
 
-## Product design
+## Evidence model
 
-The first screen asks the user what they are trying to do, not what telecom technology they want.
+Official service/provider documentation outranks blogs and forum posts for rules. Marketplace price/stock/success data is timestamped/dynamic. Community reports are observations, not universal compatibility claims. Unknown data stays unknown.
 
-The result screen is answer-first:
+Dimensions are deliberately separate:
 
-1. Best route for the selected goal.
-2. Why it fits.
-3. Cost and difficulty.
-4. Buy/compare destination.
-5. Before-you-buy checklist.
-6. Activation steps.
-7. Registration steps.
-8. Retention rule and reminder.
-9. Recovery/migration plan.
+- seller trust/evidence;
+- service compatibility;
+- number country/class;
+- current physical activation location;
+- destination country;
+- KYC/identity requirement;
+- roaming SMS/OTP capability;
+- Wi-Fi Calling/Text abroad;
+- retention/recycling rule;
+- dynamic price/stock.
 
-No chat interface is required. This is a deterministic decision tool backed by structured evidence.
+This separation prevents a cheap route from being recommended when it cannot be activated, cannot roam, or cannot be recovered later.
 
-## Data model
+## Current structured examples
 
-The prototype uses static JSON, designed to map cleanly to a future database.
+- giffgaff UK: six-month inactivity rule, UK physical-SIM delivery constraint, eSIM availability, roaming support, no reliance on Wi-Fi Calling abroad; universal KYC requirement remains unverified.
+- Tello US: current low-cost monthly route, first activation/port-in must occur in the US, US E911 address required for Wi-Fi Calling, Wi-Fi Calling/Text can receive OTPs abroad after setup, international roaming available after US use.
+- Ultra Mobile PayGo US: USD 3/month base route in current official material, international voice/SMS/MMS roaming via PayGo wallet, no data roaming; overseas initial-activation/KYC details still require verification.
+- H2O Pay As You Go US: refill/number-expiry rules are documented, but current terms tie International Roaming to active Unlimited Talk and Text plans, so the PayGo route must not be treated as having proven roaming-SMS capability.
+- Airalo example: data-only travel route; no normal SMS number.
+- ActivateX/SMSPool/5SIM: temporary remote verification routes; no durable ownership or travel roaming line is assumed.
 
-Core entities:
+## Files
 
-- `service_rules`: official requirements by target software/service.
-- `routes`: number/provider/market routes.
-- `sources`: source URL, source type, last verified date.
-- `retention`: inactivity rule, recurring cost model and recovery notes.
-- `compatibility`: service x route compatibility status with evidence strength.
-
-Future entities only after the prototype proves useful:
-
-- `price_snapshots`;
-- `stock_snapshots`;
-- `verification_outcomes`;
-- `provider_reputation_evidence`;
-- `retention_reminders`.
-
-## Data quality rules
-
-- Official service/provider documentation outranks blogs and forum posts for rules.
-- Marketplace price/stock/success data must be timestamped and treated as dynamic.
-- Community reports may be stored as observations, never converted into universal compatibility claims.
-- Unknown data stays unknown; do not fill missing facts with a neutral score.
-- Seller reputation and number compatibility are separate dimensions.
-- Temporary-number success and long-term account safety are separate dimensions.
+- `frontend/tools/phone-number-lifecycle-mvp/index.html` — deterministic UI/ranking/lifecycle output.
+- `frontend/tools/phone-number-lifecycle-mvp/catalog.json` — service rules and provider/market routes.
+- `frontend/tools/phone-number-lifecycle-mvp/location-constraints.json` — structured first-activation geography constraints.
+- `frontend/tools/phone-number-lifecycle-mvp/route-capabilities.json` — structured KYC, roaming SMS and Wi-Fi Calling evidence.
+- `docs/PHONE_NUMBER_LIFECYCLE_MVP.md` — product/technical contract.
 
 ## Technical approach
 
-MVP is browser-only:
+Browser-only static MVP: HTML + JSON + client-side ranking + browser-generated `.ics` keep-alive reminder. No backend, DB, login, cookies, crawler, scheduler or new VPS dependency.
 
-- one static HTML page;
-- one static JSON catalog;
-- client-side filtering and ranking;
-- local-only retention reminder date;
-- `.ics` reminder export generated in the browser;
-- no backend, database, login, cookies or new scheduled jobs.
+Operating cost is effectively zero beyond existing preview/build usage. Automated price/stock collection is future work only after validation and must prefer documented APIs/feeds. It must not run on the tiny observer VPS.
 
-This keeps operating cost effectively zero and avoids adding production dependency to any VPS.
+## Privacy
 
-## File/module boundary
+Do not collect phone numbers, SMS codes, identity documents, payment information or account credentials. Location inputs are explicit user selections and stay in the browser; there is no IP-based location detection.
 
-- `frontend/tools/phone-number-lifecycle-mvp/index.html` — UI and deterministic decision logic.
-- `frontend/tools/phone-number-lifecycle-mvp/catalog.json` — small curated evidence catalog.
-- `docs/PHONE_NUMBER_LIFECYCLE_MVP.md` — product/technical contract.
+## Test / release gate
 
-The prototype is intentionally not registered in the production tools index or sitemap.
-
-## API and persistence
-
-None for MVP.
-
-All input remains in the browser. The only saved value is an optional local reminder date if the user chooses to create one; the current prototype exports a calendar file instead of storing server state.
-
-## Privacy and security
-
-Do not collect:
-
-- phone numbers;
-- SMS codes;
-- identity documents;
-- payment information;
-- account credentials.
-
-External provider links open directly to the provider/market site. Provider ordering must not depend on affiliate commission.
-
-## Deployment
-
-Prototype remains on `feature/phone-number-lifecycle-mvp` and a draft PR/Vercel Preview only. Do not merge until the user explicitly approves production release and the data set is production-ready.
-
-## Observability
-
-No new infrastructure is required. If released later, existing GA4 `tool_open` / `tool_action` behavior events are sufficient for the first measurement round.
-
-Potential later events:
-
-- entry path selected;
-- result generated;
-- route expanded;
-- reminder exported;
-- provider outbound click.
-
-Do not add those before release approval.
-
-## Test strategy
-
-Before merge eligibility:
+Before any production merge:
 
 - frontend build passes;
-- prototype page exists in build output;
-- no JS syntax/runtime errors;
-- registration and travel paths both return a result;
-- Claude rejects temporary/VoIP recommendations;
-- OpenAI ChatGPT is not incorrectly presented as requiring a number;
-- WhatsApp/Telegram long-term paths warn against losing number control;
-- data-only travel eSIM is not presented as an SMS-capable phone number;
+- registration and travel paths return results;
+- hard activation restrictions actually remove or defer impossible routes;
+- destination country influences travel routes;
+- KYC unknowns remain explicit;
+- data-only eSIM is never presented as SMS-capable;
+- Tello outside-US first activation is not presented as immediately available;
+- Tello overseas OTP capability is shown only with its setup conditions;
+- H2O PayGo is not presented as proven international roaming SMS;
+- Claude temporary/VoIP routes remain rejected;
 - reminder export produces a valid `.ics` file;
-- mobile viewport has no horizontal overflow;
-- no prototype route is added to sitemap or production tool navigation.
+- mobile layout has no horizontal overflow;
+- prototype remains off production navigation/sitemap.
 
-## Rollback
-
-Because the MVP is isolated and unregistered, rollback is deleting the prototype directory and this document before merge. No database or infrastructure cleanup is required.
-
-## Operating cost
-
-MVP: effectively zero beyond existing Vercel preview/build usage.
-
-Future costs should only be accepted after validation. Automated price/stock collection must prefer documented APIs or feeds and must not run on the one-month 128 MiB observer VPS.
-
-## Evidence expansion — 2026-09-15
-
-The first expansion deliberately targets facts that change a buying decision rather than maximizing provider count.
-
-Durable-number routes now include:
-
-- giffgaff UK: six-month inactivity boundary, physical-SIM UK delivery constraint, eSIM availability, roaming, and no Wi-Fi Calling abroad;
-- Tello US: 30-day billing, USD 5 entry plan, mandatory first activation in the US, E911 requirement for Wi-Fi Calling, and post-activation overseas OTP support over Wi-Fi Calling/Text;
-- Ultra Mobile PayGo US: current USD 3/month base allowance and international voice/SMS/MMS roaming via wallet credit;
-- H2O Wireless Pay As You Go US: refill expiry model and the current rule that a number is cancelled after a zero balance remains for 30 consecutive days.
-
-Temporary verification routes now include:
-
-- ActivateX comparison route;
-- SMSPool: service/country pricing, documented API, cheapest-vs-higher-success pricing mode, and automatic refund when a code is not received within the order period;
-- 5SIM: public service/country/operator pricing, API access, cancellation/non-implementation balance refunds, and a dated public starting-price snapshot for Telegram, WhatsApp, Google/YouTube and OpenAI/ChatGPT.
-
-Unknowns remain explicit. In particular, the prototype does not yet claim verified overseas initial activation for giffgaff, Ultra PayGo or H2O; these must be resolved before production ranking for overseas buyers.
-
-## Initial evidence used by the prototype
-
-The seed catalog is intentionally small and marks dynamic/unknown values instead of guessing. Official or first-party evidence includes:
-
-- Claude Help Center: mobile-number verification and rejection of VoIP, Google Voice, app-generated and landline numbers.
-- OpenAI Help Center: ChatGPT no longer requires phone verification; first API key currently does.
-- WhatsApp Help Center: first registration uses SMS or phone call and requires continued control of the associated number.
-- Telegram FAQ: account is tied to a mobile number and users should retain access before changing numbers.
-- Google Account Help: phone verification may be requested and recovery phone should be a user-controlled SMS-capable mobile number.
-- giffgaff Help: inactivity deactivation, SIM delivery, eSIM setup, roaming and Wi-Fi Calling limitations.
-- Tello Help Center: US-only first activation, 30-day billing, Wi-Fi Calling/Text and international roaming.
-- Ultra Mobile: PayGo pricing and international roaming behavior.
-- H2O Wireless terms: Pay As You Go refill expiry and zero-balance cancellation behavior.
-- Airalo Help Center: most eSIM packages are data-only and cannot send/receive normal SMS or calls.
-- SMSPool and 5SIM first-party marketplace/API documentation for dynamic temporary-SMS supply, pricing and refund behavior.
-- ActivateX: live temporary-SMS route comparison by service/country/supplier/price/availability.
-
-All changing facts require re-verification before production release.
+Rollback is deleting the isolated prototype directory and this document before merge. No database or infrastructure cleanup is required.
