@@ -57,6 +57,12 @@ After parser compatibility fixes, the real systemd run exited successfully with 
 
 The first valid signal was a current V2EX question asking, in substance, which foreign card/number is best in September 2026 for registering commonly used accounts. This directly supports the existing Phone Number Lifecycle acquisition/verification job rather than creating a new product surface.
 
+## Sep 16 Chinese-filter follow-up
+
+A live NodeSeek check exposed two separate coverage issues. First, the public NodeSeek RSS currently exposes only about 20 newest items, so a fast-moving thread can rotate out before the four-hour observer run. This is a known feed-depth limitation, not permission to crawl the forum or raise request frequency aggressively on the resource-tight observer. User-shared threads that have already rotated out may still be evaluated manually as discovery evidence.
+
+Second, the minimal Perl runtime was reading feed files as raw UTF-8 bytes while the parser used Unicode source-string semantics. That made Chinese-only lifecycle terms unreliable. The parser now matches the UTF-8 feed bytes consistently, adds `流量卡` as a discovery term, and truncates excerpts only at a valid UTF-8 boundary. A real current NodeSeek sample changed from one match to two and correctly surfaced the Chinese-only title `大佬们，有没有流量卡推荐`.
+
 ## Interpretation rules
 
 - Repeated questions can prioritize product copy, decision paths and evidence gaps.
