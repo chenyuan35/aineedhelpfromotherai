@@ -52,3 +52,6 @@ PY
 )
 [ "$rows" = 3 ]
 echo 'relay observer backup transport test passed'
+
+grep -qx 'ReadWritePaths=/tmp' "$ROOT/ops/relay-observer-backup/aineedhelp-relay-observer-backup-push.service"
+echo 'relay observer backup systemd write sandbox test passed'
