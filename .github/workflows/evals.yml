@@ -49,6 +49,9 @@ jobs:
       - name: Audit phone-number supply intelligence
         run: node scripts/test-phone-number-supply-intelligence.mjs
 
+      - name: Build and audit public Phone Survival release
+        run: node frontend/bin/build.mjs && node scripts/test-phone-number-public-release.mjs
+
       - name: Run golden eval suite
         run: npm run eval -- --quiet
         id: evals
