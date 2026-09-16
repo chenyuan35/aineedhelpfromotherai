@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-09-16",
+  "status": "research-only",
+  "policy": {
+    "eligibilityRule": "A provider record in this file is research evidence only. It does not become a recommendation route until product class, number control, lifecycle and service-compatibility fields pass route-level review.",
+    "officialFactRule": "Provider-published claims are stored as provider claims unless independently verified. Unknown fields stay unknown.",
+    "communitySignalRule": "Community claims require a traceable source URL and source date. Unsourced forum excerpts may select research targets but are not persisted as success-rate or latency facts.",
+    "measurementRule": "Success rate and latency metrics are reserved for our own timestamped measurements with attempt counts. Provider or forum percentages are never promoted to measured performance.",
+    "dynamicPriceRule": "Marketplace and rental prices are snapshots or starting prices, never guaranteed checkout prices."
+  },
+  "providers": {
+    "longsms": {
+      "name": "LongSMS",
+      "status": "candidate-partial",
+      "official_evidence_confidence": "medium",
+      "products": {
+        "long-term-rental": {
+          "product_class": "renewable-rental",
+          "provider_claimed_number_type": "unknown",
+          "independently_verified_number_type": false,
+          "country_coverage": {
+            "state": "dynamic-multi-country",
+            "countries": [],
+            "note": "The public page states multi-country coverage but the exact live country inventory is not treated as fixed evidence."
+          },
+          "number_control": {
+            "state": "dedicated-rental",
+            "note": "The provider describes long-term rentals as dedicated lines. Ownership after rental expiry is not documented on the reviewed public page."
+          },
+          "rental_term": {
+            "pricing_basis_value": 7,
+            "pricing_basis_unit": "days",
+            "maximum_duration": null,
+            "renewable": true,
+            "renewal_rule": "Provider states renewable within validity; recovery after expiry is unknown."
+          },
+          "capabilities": {
+            "sms_receive": true,
+            "sms_send": true,
+            "voice_receive": null,
+            "api_available": null,
+            "public_inbox": false
+          },
+          "price": {
+            "currency": "USD",
+            "starting_amount": 0.52,
+            "basis": "7 days",
+            "dynamic": true,
+            "note": "Public starting price only; exact country/number price can vary."
+          },
+          "expiration_rule": "Renewable within validity. Exact post-expiry recovery or reassignment rule is unknown.",
+          "number_reuse_rule": "unknown",
+          "message_retention_rule": "unknown",
+          "sources": [
+            {
+              "label": "LongSMS — long-term lines and pricing overview",
+              "url": "https://www.longsms.net/",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            }
+          ]
+        },
+        "short-term-otp": {
+          "product_class": "one-time-verification",
+          "provider_claimed_number_type": "unknown",
+          "independently_verified_number_type": false,
+          "number_control": {
+            "state": "temporary",
+            "note": "Public page describes one-off verification; durable control is not claimed."
+          },
+          "capabilities": {
+            "sms_receive": true,
+            "sms_send": null,
+            "voice_receive": null,
+            "api_available": null,
+            "public_inbox": null
+          },
+          "price": {
+            "currency": "USD",
+            "starting_amount": 0.01,
+            "basis": "per use",
+            "dynamic": true
+          },
+          "sources": [
+            {
+              "label": "LongSMS — short-term OTP pricing overview",
+              "url": "https://www.longsms.net/",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            }
+          ]
+        }
+      }
+    },
+    "textverified": {
+      "name": "TextVerified",
+      "status": "candidate-strong",
+      "official_evidence_confidence": "high",
+      "products": {
+        "rental": {
+          "product_class": "renewable-rental",
+          "provider_claimed_number_type": "US non-VoIP",
+          "independently_verified_number_type": false,
+          "country_coverage": {
+            "state": "single-country",
+            "countries": ["United States"],
+            "note": "The reviewed provider pages describe rental and verification numbers as US numbers."
+          },
+          "number_control": {
+            "state": "private-rental",
+            "note": "Rentals provide ongoing access to the assigned line for the rental term; this is rental control, not permanent legal ownership of the number."
+          },
+          "rental_term": {
+            "minimum_duration": {
+              "value": 1,
+              "unit": "day"
+            },
+            "maximum_duration": null,
+            "renewable": true,
+            "renewal_rule": "Renewable rentals can be renewed indefinitely according to the provider; non-renewable rentals expire at the selected date."
+          },
+          "capabilities": {
+            "sms_receive": true,
+            "sms_send": null,
+            "voice_receive": "service-dependent",
+            "api_available": true,
+            "public_inbox": false
+          },
+          "price": {
+            "currency": "USD",
+            "starting_amount": 1.5,
+            "basis": "rental",
+            "dynamic": true,
+            "note": "Current public starting price; exact rental cost varies by service and customization."
+          },
+          "expiration_rule": "For renewable rentals, an expired line may be reactivated only if the provider still has the number. The provider states a $10 reactivation fee plus elapsed-time and base-line charges.",
+          "number_reuse_rule": "After expiry, continued availability of the same number is conditional and not guaranteed.",
+          "message_retention_rule": "unknown",
+          "sources": [
+            {
+              "label": "TextVerified — long-term rentals overview",
+              "url": "https://www.textverified.com/rentals",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            },
+            {
+              "label": "TextVerified — rental FAQ and overdue recovery",
+              "url": "https://www.textverified.com/faq/rentals",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            },
+            {
+              "label": "TextVerified — API automation",
+              "url": "https://www.textverified.com/automate",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            }
+          ]
+        },
+        "one-time-verification": {
+          "product_class": "one-time-verification",
+          "provider_claimed_number_type": "US non-VoIP",
+          "independently_verified_number_type": false,
+          "country_coverage": {
+            "state": "single-country",
+            "countries": ["United States"]
+          },
+          "number_control": {
+            "state": "temporary",
+            "note": "Verification numbers are short-term; after a verification ends the provider says the number may be removed at any time."
+          },
+          "verification_window": {
+            "minimum_minutes": 5,
+            "maximum_minutes": 15,
+            "note": "Provider FAQ says the assignment window varies by service."
+          },
+          "capabilities": {
+            "sms_receive": true,
+            "sms_send": null,
+            "voice_receive": true,
+            "api_available": true,
+            "public_inbox": false
+          },
+          "price": {
+            "currency": "USD",
+            "starting_amount": 0.25,
+            "basis": "verification",
+            "dynamic": true
+          },
+          "refund_rule": "Provider states credits are deducted only when a verification arrives and no-code cases are automatically refunded.",
+          "sources": [
+            {
+              "label": "TextVerified — product overview",
+              "url": "https://www.textverified.com/products",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            },
+            {
+              "label": "TextVerified — verification FAQ",
+              "url": "https://www.textverified.com/faq/verifications",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            },
+            {
+              "label": "TextVerified — API automation",
+              "url": "https://www.textverified.com/automate",
+              "type": "provider-official",
+              "checked_on": "2026-09-16"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "community_signals": [],
+  "our_measurements": []
+}
