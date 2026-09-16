@@ -14,12 +14,15 @@ const BEHAVIOR_TAG = `<script id="site-behavior-analytics">(()=>{const send=(nam
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
-for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
+for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
 // The homepage is intentionally hand-curated. Generators may update shared pages and
 // indexes during the build, but they must not replace the checked-in homepage identity.
-writeFileSync(homePath, curatedHome);
+const claudeSoon = '<span class="provider-link provider-soon" aria-label="Claude tool planned"><b>CL</b><span><strong>Claude</strong><small>soon</small></span></span>';
+const claudeLive = '<a class="provider-link" href="/tools/claude-code-limit-reset/"><b>CL</b><span><strong>Claude</strong><small>limits &amp; reset</small></span></a>';
+if (!curatedHome.includes(claudeSoon) && !curatedHome.includes('/tools/claude-code-limit-reset/')) throw new Error('Claude homepage marker not found');
+writeFileSync(homePath, curatedHome.includes(claudeSoon) ? curatedHome.replace(claudeSoon, claudeLive) : curatedHome);
 
 for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
