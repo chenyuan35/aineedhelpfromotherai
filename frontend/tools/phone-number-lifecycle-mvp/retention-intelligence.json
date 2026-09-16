@@ -479,6 +479,64 @@
         "status": "unavailable",
         "reason": "Choose a specific carrier and prepaid plan first. No destination-wide retention deadline is assumed."
       }
+    },
+    "kaktus-cz": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-17",
+      "inactivity_window": "At least one credit top-up is required every 12 months; otherwise Kaktus automatically terminates the service and contract.",
+      "clock_start_or_reset": "The 12-month credit/service window is reset by a credit top-up. Initial credit on a newly activated prepaid card is normally valid for 12 months from activation unless the specific edition states otherwise.",
+      "qualifying_activity": [
+        "Credit top-up through an official Kaktus/T-Mobile-supported top-up channel."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Calls, SMS and data usage are not documented as a substitute for the required annual top-up.",
+        "Incoming SMS, account login, balance checks and roaming usage are not documented as resetting the annual top-up requirement."
+      ],
+      "lowest_cost_documented_action": "Top up 50 CZK before the 12-month deadline. 50 CZK is the lowest amount currently offered on Kaktus’s official online card top-up page.",
+      "safest_documented_action": "Use an official Kaktus top-up channel before the 12-month deadline. If using the online card form, note that it accepts EU-issued payment cards; use another official top-up method if your card is not eligible.",
+      "minimum_expected_cost": {
+        "amount": 50,
+        "currency": "CZK",
+        "period": "12 months",
+        "basis": "one minimum official online credit top-up",
+        "status": "official-current",
+        "note": "This is the minimum amount shown on the official online card top-up page; other official channels may differ."
+      },
+      "recommended_buffer": {
+        "value": 30,
+        "unit": "days",
+        "basis": "Product-side reminder buffer before the provider’s 12-month top-up deadline."
+      },
+      "grace_or_rescue_window": "Kaktus says service and contract end automatically if no top-up occurs at least once every 12 months. No first-party number-recovery grace window was found. An unused-credit refund request may be possible within one month after termination, but that is not number recovery.",
+      "termination_and_recycling": "The prepaid service and contract terminate automatically after missing the annual top-up requirement. The reviewed first-party sources do not state an exact phone-number recycling timeline.",
+      "sources": [
+        {
+          "label": "Kaktus — current prepaid service terms",
+          "url": "https://www.mujkaktus.cz/api/download?docUrl=%2Fapi%2Fdocuments%2Ffile%2FAktu%C3%A1ln%C3%AD%2520v%C5%A1eobecn%C3%A9%2520podm%C3%ADnky.pdf&filename=Aktu%C3%A1ln%C3%AD+v%C5%A1eobecn%C3%A9+podm%C3%ADnky.pdf",
+          "type": "official"
+        },
+        {
+          "label": "Kaktus — official online top-up amounts and card restriction",
+          "url": "https://sluzby.mujkaktus.cz/dobit-kartou",
+          "type": "official"
+        }
+      ],
+      "reminder": {
+        "status": "anchor-offset",
+        "anchor_label": "Last Kaktus credit top-up date",
+        "anchor_help": "Use the date of your most recent credit top-up. For a new line with no top-up yet, use the activation date as the initial lifecycle anchor and recheck the exact edition terms.",
+        "due_offset": {
+          "value": 12,
+          "unit": "months"
+        },
+        "buffer": {
+          "value": 30,
+          "unit": "days"
+        },
+        "summary": "Top up Kaktus credit before the annual deadline",
+        "description": "Make an official Kaktus credit top-up before 12 months elapse. The calendar event is placed 30 days early as a product-side buffer."
+      }
     }
   }
 }

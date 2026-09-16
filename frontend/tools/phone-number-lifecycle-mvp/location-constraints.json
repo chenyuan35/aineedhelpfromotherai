@@ -13,7 +13,9 @@
     "lebara-uk": {
       "mode": "required-country",
       "hardBlock": true,
-      "requiredLocations": ["United Kingdom"],
+      "requiredLocations": [
+        "United Kingdom"
+      ],
       "summary": "Lebara states that its SIM/eSIM must be activated in the UK before it is taken abroad; an eSIM can be ordered while outside the UK but must still be activated in the UK.",
       "outsideHomeNote": "If you are outside the UK now, you can research or order the route, but do not treat it as immediately usable until you can activate it in the UK.",
       "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
@@ -21,7 +23,9 @@
     "tello-us": {
       "mode": "required-country",
       "hardBlock": true,
-      "requiredLocations": ["United States"],
+      "requiredLocations": [
+        "United States"
+      ],
       "summary": "Initial activation or port-in must be completed while physically in the United States and connected to a US cellular tower.",
       "outsideHomeNote": "If you are outside the United States now, do not buy this as an immediate activation route unless you can first activate it in the US.",
       "sourceUrl": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad"
@@ -53,7 +57,9 @@
     "china-official-carrier": {
       "mode": "required-country",
       "hardBlock": true,
-      "requiredLocations": ["Mainland China"],
+      "requiredLocations": [
+        "Mainland China"
+      ],
       "summary": "Foreign nationals using a passport or Foreign Permanent Resident ID Card must apply in person at a self-operated telecom business hall; current guidance does not allow another person to apply on their behalf.",
       "outsideHomeNote": "If you are outside Mainland China now, this route becomes eligible after arrival because application and identity verification are in person.",
       "sourceUrl": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html"
@@ -97,6 +103,16 @@
       "summary": "Purchase, KYC and activation rules depend on the destination carrier and jurisdiction.",
       "outsideHomeNote": "Some destination SIMs require in-country purchase, identity verification or first network attachment.",
       "sourceUrl": ""
+    },
+    "kaktus-cz": {
+      "mode": "required-country",
+      "hardBlock": true,
+      "requiredLocations": [
+        "Czech Republic"
+      ],
+      "summary": "Kaktus official checkout states that SIM activation from abroad is not possible; activate the physical SIM or eSIM while physically in the Czech Republic.",
+      "outsideHomeNote": "If you are outside the Czech Republic now, do not rely on support workarounds as an immediate activation route. Current first-party checkout says activation from abroad is not possible.",
+      "sourceUrl": "https://www.mujkaktus.cz/platba"
     }
   }
 }

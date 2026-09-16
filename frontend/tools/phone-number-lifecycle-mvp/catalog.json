@@ -11,8 +11,14 @@
       "name": "Claude",
       "phoneNeed": "required",
       "summary": "Claude asks for a phone number from a supported location during account creation and sends a six-digit code by SMS.",
-      "accepts": ["carrier-mobile"],
-      "rejects": ["voip", "app-generated", "landline"],
+      "accepts": [
+        "carrier-mobile"
+      ],
+      "rejects": [
+        "voip",
+        "app-generated",
+        "landline"
+      ],
       "retentionAdvice": "Use a number you control long enough to recover or maintain the account; do not build a long-term account around a disposable number.",
       "source": {
         "label": "Claude Help Center — Verify your phone number",
@@ -25,8 +31,14 @@
       "name": "OpenAI API",
       "phoneNeed": "first-api-key",
       "summary": "ChatGPT account creation and ChatGPT usage no longer require phone verification. Phone verification is currently required when generating the first OpenAI API key.",
-      "accepts": ["carrier-mobile"],
-      "rejects": ["voip", "premium", "landline"],
+      "accepts": [
+        "carrier-mobile"
+      ],
+      "rejects": [
+        "voip",
+        "premium",
+        "landline"
+      ],
       "retentionAdvice": "Prefer a user-controlled mobile number. OpenAI limits how often a number can be used for initial API-key phone verification.",
       "source": {
         "label": "OpenAI Help Center — What does phone verification look like?",
@@ -39,7 +51,9 @@
       "name": "WhatsApp",
       "phoneNeed": "required",
       "summary": "First registration requires control of the phone number and a code delivered by SMS or phone call.",
-      "accepts": ["carrier-mobile"],
+      "accepts": [
+        "carrier-mobile"
+      ],
       "rejects": [],
       "retentionAdvice": "Keep control of the associated number. A temporary number is a poor long-term foundation because re-registration and recovery can require that number again.",
       "source": {
@@ -53,8 +67,13 @@
       "name": "Telegram",
       "phoneNeed": "required",
       "summary": "Telegram accounts are connected to a mobile number; landlines are not supported.",
-      "accepts": ["carrier-mobile", "temporary-mobile-uncertain"],
-      "rejects": ["landline"],
+      "accepts": [
+        "carrier-mobile",
+        "temporary-mobile-uncertain"
+      ],
+      "rejects": [
+        "landline"
+      ],
       "retentionAdvice": "Keep access to the connected number or change the Telegram number while you still control the old account.",
       "source": {
         "label": "Telegram FAQ — Your Account / Login and SMS",
@@ -67,7 +86,9 @@
       "name": "Google Account",
       "phoneNeed": "conditional",
       "summary": "Google may request phone verification in some account-creation or sign-in situations. Google recommends a user-controlled SMS-capable mobile number for recovery.",
-      "accepts": ["carrier-mobile"],
+      "accepts": [
+        "carrier-mobile"
+      ],
       "rejects": [],
       "retentionAdvice": "A recovery number should remain under your control. Do not use a disposable number for an account you care about.",
       "source": {
@@ -85,7 +106,12 @@
       "country": "United Kingdom",
       "numberClass": "carrier-mobile",
       "form": "physical SIM or eSIM on supported devices",
-      "bestFor": ["long-term-number", "low-frequency-retention", "uk-number", "sms-capable-number"],
+      "bestFor": [
+        "long-term-number",
+        "low-frequency-retention",
+        "uk-number",
+        "sms-capable-number"
+      ],
       "purchaseUrl": "https://www.giffgaff.com/",
       "cost": {
         "purchase": "Physical SIM ordering is free from giffgaff, but delivery is UK-address only; eSIM is available through the giffgaff app. Recheck current plan/credit cost before activation.",
@@ -133,7 +159,13 @@
       "country": "United Kingdom",
       "numberClass": "carrier-mobile",
       "form": "physical SIM; eSIM on supported devices",
-      "bestFor": ["uk-number", "travel-local-number", "sms-capable-number", "pay-as-you-go", "roaming-after-uk-activation"],
+      "bestFor": [
+        "uk-number",
+        "travel-local-number",
+        "sms-capable-number",
+        "pay-as-you-go",
+        "roaming-after-uk-activation"
+      ],
       "purchaseUrl": "https://www.lebara.co.uk/en/free-sim.html",
       "cost": {
         "purchase": "Physical PAYG SIM is currently offered free; plans currently start from GBP 5. Recheck checkout and delivery availability.",
@@ -176,7 +208,12 @@
       "country": "United States",
       "numberClass": "carrier-mobile",
       "form": "physical SIM or eSIM",
-      "bestFor": ["long-term-number", "us-number", "sms-capable-number", "use-after-us-activation"],
+      "bestFor": [
+        "long-term-number",
+        "us-number",
+        "sms-capable-number",
+        "use-after-us-activation"
+      ],
       "purchaseUrl": "https://tello.com/",
       "cost": {
         "purchase": "Current build-your-own plans include a USD 5/30-day option; recheck plan pricing and taxes before purchase.",
@@ -224,7 +261,12 @@
       "country": "United States",
       "numberClass": "carrier-mobile",
       "form": "physical PayGo SIM",
-      "bestFor": ["long-term-number", "us-number", "low-monthly-cost", "sms-capable-number"],
+      "bestFor": [
+        "long-term-number",
+        "us-number",
+        "low-monthly-cost",
+        "sms-capable-number"
+      ],
       "purchaseUrl": "https://www.ultramobile.com/paygo/",
       "cost": {
         "purchase": "Ultra directs PayGo buyers to eBay or select T-Mobile stores. Acquisition price and availability are channel-specific and separate from the $3 / 30-day service charge.",
@@ -262,7 +304,12 @@
       "country": "United States",
       "numberClass": "carrier-mobile",
       "form": "prepaid SIM/eSIM options must be rechecked at purchase",
-      "bestFor": ["long-term-number", "us-number", "infrequent-use", "sms-capable-number"],
+      "bestFor": [
+        "long-term-number",
+        "us-number",
+        "infrequent-use",
+        "sms-capable-number"
+      ],
       "purchaseUrl": "https://www.h2owireless.com/",
       "cost": {
         "purchase": "Plan/refill selection is dynamic; current official terms describe USD 10/20/30 Pay As You Go refills with 90-day expiry and USD 100 with 365-day expiry.",
@@ -295,7 +342,13 @@
       "country": "Japan",
       "numberClass": "carrier-mobile",
       "form": "physical SIM or eSIM with a real 070/080/090 Japanese mobile number",
-      "bestFor": ["japan-number", "travel-local-number", "sms-capable-number", "visitor-friendly", "roaming-after-activation"],
+      "bestFor": [
+        "japan-number",
+        "travel-local-number",
+        "sms-capable-number",
+        "visitor-friendly",
+        "roaming-after-activation"
+      ],
       "purchaseUrl": "https://www.mobal.com/japan-sim-card/",
       "cost": {
         "purchase": "Current official list pricing shows a JPY 4,950 SIM purchase price before temporary promotions; recheck checkout because discounts change.",
@@ -337,13 +390,73 @@
       ]
     },
     {
+      "id": "kaktus-cz",
+      "name": "Kaktus Czech prepaid mobile number",
+      "provider": "Kaktus (T-Mobile Czech Republic)",
+      "country": "Czech Republic",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM",
+      "bestFor": [
+        "long-term-number",
+        "low-frequency-retention",
+        "czech-number",
+        "sms-capable-number",
+        "low-cost-retention"
+      ],
+      "purchaseUrl": "https://www.mujkaktus.cz/koupit",
+      "cost": {
+        "purchase": "The official Kaktus shop currently lists a 2 GB starter SIM for 150 CZK with 100 CZK credit and also lists a free starter with 10 CZK credit. Recheck the exact physical-SIM/eSIM choice at checkout.",
+        "recurring": "No fixed monthly plan is required for the prepaid line itself, but Kaktus requires at least one credit top-up every 12 months. The official online card top-up page currently starts at 50 CZK.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 335,
+        "rule": "Top up credit at least once every 12 months. Kaktus states that failing to top up at least once in 12 months automatically ends the service and contract.",
+        "recovery": "No number-recovery grace window was found in the reviewed first-party sources. Do not wait until the 12-month boundary."
+      },
+      "friction": {
+        "identity": "A universal passport/ID requirement has not been established by the official Kaktus pages reviewed.",
+        "location": "Kaktus official checkout states that SIM activation from abroad is not possible. Treat activation in the Czech Republic as the hard rule even though community reports describe inconsistent support exceptions.",
+        "device": "Unlocked compatible phone required. Kaktus terms support physical SIM and eSIM; eSIM requires a compatible device and activation QR code.",
+        "ongoing": "Top up at least once every 12 months. The official online card top-up form accepts EU-issued cards; users with other foreign cards need another official top-up method."
+      },
+      "evidence": [
+        {
+          "label": "Kaktus — official SIM purchase page",
+          "url": "https://www.mujkaktus.cz/koupit",
+          "type": "official"
+        },
+        {
+          "label": "Kaktus — current prepaid service terms",
+          "url": "https://www.mujkaktus.cz/api/download?docUrl=%2Fapi%2Fdocuments%2Ffile%2FAktu%C3%A1ln%C3%AD%2520v%C5%A1eobecn%C3%A9%2520podm%C3%ADnky.pdf&filename=Aktu%C3%A1ln%C3%AD+v%C5%A1eobecn%C3%A9+podm%C3%ADnky.pdf",
+          "type": "official"
+        },
+        {
+          "label": "Kaktus — checkout activation warning",
+          "url": "https://www.mujkaktus.cz/platba",
+          "type": "official"
+        },
+        {
+          "label": "Kaktus — official online top-up amounts",
+          "url": "https://sluzby.mujkaktus.cz/dobit-kartou",
+          "type": "official"
+        }
+      ]
+    },
+    {
       "id": "china-official-carrier",
       "name": "Mainland China official carrier SIM",
       "provider": "China Mobile / China Unicom / China Telecom",
       "country": "Mainland China",
       "numberClass": "carrier-mobile",
       "form": "in-person registered physical SIM from an official operator business hall",
-      "bestFor": ["china-number", "travel-local-number", "local-apps", "sms-capable-number", "foreign-visitor"],
+      "bestFor": [
+        "china-number",
+        "travel-local-number",
+        "local-apps",
+        "sms-capable-number",
+        "foreign-visitor"
+      ],
       "purchaseUrl": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html",
       "cost": {
         "purchase": "Official guidance says there is no processing fee; plan/package charges depend on the selected carrier and current tariff.",
@@ -386,7 +499,11 @@
       "country": "Multiple",
       "numberClass": "temporary-activation",
       "form": "temporary SMS activation marketplace/comparison route",
-      "bestFor": ["one-time-code", "price-comparison", "temporary-use"],
+      "bestFor": [
+        "one-time-code",
+        "price-comparison",
+        "temporary-use"
+      ],
       "purchaseUrl": "https://activatex.org/",
       "cost": {
         "purchase": "Dynamic by service, country and supplier route; use the live comparison rather than a stored MVP price.",
@@ -419,7 +536,12 @@
       "country": "Multiple",
       "numberClass": "temporary-activation",
       "form": "temporary SMS verification number",
-      "bestFor": ["one-time-code", "country-service-filter", "price-selection", "temporary-use"],
+      "bestFor": [
+        "one-time-code",
+        "country-service-filter",
+        "price-selection",
+        "temporary-use"
+      ],
       "purchaseUrl": "https://www.smspool.net/",
       "cost": {
         "purchase": "Dynamic by service/country/pool. SMSPool exposes published pricing before account creation and its API supports choosing the cheapest available route or highest-success-rate pricing option.",
@@ -457,7 +579,12 @@
       "country": "Multiple",
       "numberClass": "temporary-activation",
       "form": "temporary SMS verification number",
-      "bestFor": ["one-time-code", "country-service-operator-filter", "price-comparison", "temporary-use"],
+      "bestFor": [
+        "one-time-code",
+        "country-service-operator-filter",
+        "price-comparison",
+        "temporary-use"
+      ],
       "purchaseUrl": "https://5sim.net/prices",
       "cost": {
         "purchase": "Observed 2026-09-15 public starting prices: Telegram from USD 0.10; WhatsApp from USD 0.06; Google/YouTube from USD 0.06; OpenAI/ChatGPT from USD 0.01. Exact country/operator routes can cost more and change frequently.",
@@ -500,7 +627,11 @@
       "country": "Multiple",
       "numberClass": "data-only",
       "form": "travel eSIM",
-      "bestFor": ["travel-data", "dual-line", "keep-home-sim"],
+      "bestFor": [
+        "travel-data",
+        "dual-line",
+        "keep-home-sim"
+      ],
       "purchaseUrl": "https://www.airalo.com/",
       "cost": {
         "purchase": "Dynamic by destination, data allowance and validity.",
@@ -533,7 +664,12 @@
       "country": "Destination-specific",
       "numberClass": "carrier-mobile",
       "form": "prepaid SIM/eSIM",
-      "bestFor": ["travel-local-number", "local-calls", "local-sms", "long-stay"],
+      "bestFor": [
+        "travel-local-number",
+        "local-calls",
+        "local-sms",
+        "long-stay"
+      ],
       "purchaseUrl": "",
       "cost": {
         "purchase": "Destination-specific.",

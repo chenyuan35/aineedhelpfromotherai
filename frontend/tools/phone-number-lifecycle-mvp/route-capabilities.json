@@ -152,29 +152,148 @@
       }
     },
     "activatex-temp": {
-      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "No telecom SIM installation or durable subscriber identity is assumed; account/payment requirements depend on the marketplace."},
-      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "This is a temporary remote SMS activation route, not a SIM you carry abroad."},
-      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+      "kyc": {
+        "state": "marketplace-dependent",
+        "label": "Marketplace/payment rules vary",
+        "note": "No telecom SIM installation or durable subscriber identity is assumed; account/payment requirements depend on the marketplace."
+      },
+      "roamingSms": {
+        "state": "not-applicable",
+        "label": "No roaming line",
+        "note": "This is a temporary remote SMS activation route, not a SIM you carry abroad."
+      },
+      "wifiCallingAbroad": {
+        "state": "not-applicable",
+        "label": "Not applicable",
+        "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+      }
     },
     "smspool-temp": {
-      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "Requirements depend on the account/payment route; this is not a durable SIM subscription."},
-      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "Temporary verification numbers are not a travel roaming product."},
-      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+      "kyc": {
+        "state": "marketplace-dependent",
+        "label": "Marketplace/payment rules vary",
+        "note": "Requirements depend on the account/payment route; this is not a durable SIM subscription."
+      },
+      "roamingSms": {
+        "state": "not-applicable",
+        "label": "No roaming line",
+        "note": "Temporary verification numbers are not a travel roaming product."
+      },
+      "wifiCallingAbroad": {
+        "state": "not-applicable",
+        "label": "Not applicable",
+        "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+      }
     },
     "5sim-temp": {
-      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "Requirements depend on account funding/payment options; the ordinary activation order is not a durable SIM subscription."},
-      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "Temporary verification numbers are not a travel roaming product."},
-      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+      "kyc": {
+        "state": "marketplace-dependent",
+        "label": "Marketplace/payment rules vary",
+        "note": "Requirements depend on account funding/payment options; the ordinary activation order is not a durable SIM subscription."
+      },
+      "roamingSms": {
+        "state": "not-applicable",
+        "label": "No roaming line",
+        "note": "Temporary verification numbers are not a travel roaming product."
+      },
+      "wifiCallingAbroad": {
+        "state": "not-applicable",
+        "label": "Not applicable",
+        "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+      }
     },
     "airalo-data": {
-      "kyc": {"state": "checkout-dependent", "label": "Checkout requirements vary", "note": "Identity requirements, if any, depend on the selected destination/package and current checkout rules."},
-      "roamingSms": {"state": "not-supported-on-route", "label": "No normal SMS number", "note": "Treat the data-only route as internet access only; do not rely on it to receive ordinary verification SMS."},
-      "wifiCallingAbroad": {"state": "indirect", "label": "Can provide data for another line's Wi-Fi Calling", "note": "A data eSIM can sometimes supply internet connectivity while a separate home SIM handles Wi-Fi Calling/OTP, if the home carrier and device support that setup."}
+      "kyc": {
+        "state": "checkout-dependent",
+        "label": "Checkout requirements vary",
+        "note": "Identity requirements, if any, depend on the selected destination/package and current checkout rules."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "No normal SMS number",
+        "note": "Treat the data-only route as internet access only; do not rely on it to receive ordinary verification SMS."
+      },
+      "wifiCallingAbroad": {
+        "state": "indirect",
+        "label": "Can provide data for another line's Wi-Fi Calling",
+        "note": "A data eSIM can sometimes supply internet connectivity while a separate home SIM handles Wi-Fi Calling/OTP, if the home carrier and device support that setup."
+      }
     },
     "local-carrier": {
-      "kyc": {"state": "destination-specific", "label": "KYC depends on destination and carrier", "note": "Passport, local ID, address or in-person registration requirements vary by jurisdiction and carrier."},
-      "roamingSms": {"state": "destination-specific", "label": "Roaming/OTP behavior depends on carrier", "note": "Do not assume a local prepaid line will continue receiving verification texts after you leave the destination country."},
-      "wifiCallingAbroad": {"state": "destination-specific", "label": "Wi-Fi Calling policy varies", "note": "Carrier and device support must be verified before relying on this for future account recovery."}
+      "kyc": {
+        "state": "destination-specific",
+        "label": "KYC depends on destination and carrier",
+        "note": "Passport, local ID, address or in-person registration requirements vary by jurisdiction and carrier."
+      },
+      "roamingSms": {
+        "state": "destination-specific",
+        "label": "Roaming/OTP behavior depends on carrier",
+        "note": "Do not assume a local prepaid line will continue receiving verification texts after you leave the destination country."
+      },
+      "wifiCallingAbroad": {
+        "state": "destination-specific",
+        "label": "Wi-Fi Calling policy varies",
+        "note": "Carrier and device support must be verified before relying on this for future account recovery."
+      }
+    },
+    "kaktus-cz": {
+      "kyc": {
+        "state": "unknown",
+        "label": "Identity requirement not yet verified",
+        "note": "The reviewed Kaktus purchase, terms and FAQ pages do not establish a universal passport/ID requirement for this route."
+      },
+      "roamingSms": {
+        "state": "partial",
+        "label": "Roaming is published; verification-SMS delivery abroad is not proven",
+        "note": "Kaktus publishes roaming coverage/pricing, including non-EU destinations, but the reviewed first-party pages do not guarantee delivery of provider-specific OTP or verification SMS while roaming.",
+        "sourceUrl": "https://www.mujkaktus.cz/cenik"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not verified",
+        "note": "No current first-party Kaktus source reviewed for this route was sufficient to claim Wi-Fi Calling or Wi-Fi SMS abroad."
+      },
+      "evidenceClass": {
+        "state": "first-party",
+        "label": "Current first-party carrier evidence",
+        "note": "Price, eSIM availability, activation geography and annual top-up rules are based on current Kaktus/T-Mobile Czech first-party pages."
+      },
+      "firstUsePolicy": {
+        "state": "caution-outside-home",
+        "label": "Activation abroad is officially blocked",
+        "note": "Kaktus checkout explicitly says SIM activation from abroad is not possible. The product therefore requires Czech-Republic activation and does not convert community support exceptions into a normal route.",
+        "sourceUrl": "https://www.mujkaktus.cz/platba"
+      },
+      "overseasPolicy": {
+        "state": "roaming-available",
+        "label": "Roaming is available after activation; long-term overseas policy remains partial",
+        "note": "Kaktus publishes roaming services and a roaming country map. The reviewed sources do not establish a special long-term-foreign-use guarantee.",
+        "sourceUrl": "https://www.mujkaktus.cz/roaming-mapa"
+      },
+      "numberDuration": {
+        "state": "renewable-carrier",
+        "label": "Annual top-up keeps the prepaid service from auto-termination",
+        "note": "Kaktus terms require at least one credit top-up every 12 months or the service and contract end automatically.",
+        "sourceUrl": "https://www.mujkaktus.cz/api/download?docUrl=%2Fapi%2Fdocuments%2Ffile%2FAktu%C3%A1ln%C3%AD%2520v%C5%A1eobecn%C3%A9%2520podm%C3%ADnky.pdf&filename=Aktu%C3%A1ln%C3%AD+v%C5%A1eobecn%C3%A9+podm%C3%ADnky.pdf"
+      },
+      "activationFlow": {
+        "state": "provider-documented",
+        "label": "Physical SIM or eSIM activation is documented",
+        "note": "Kaktus terms describe activation by inserting the physical SIM and powering on the device, or by loading the activation QR code on an eSIM-capable device.",
+        "sourceUrl": "https://www.mujkaktus.cz/api/download?docUrl=%2Fapi%2Fdocuments%2Ffile%2FAktu%C3%A1ln%C3%AD%2520v%C5%A1eobecn%C3%A9%2520podm%C3%ADnky.pdf&filename=Aktu%C3%A1ln%C3%AD+v%C5%A1eobecn%C3%A9+podm%C3%ADnky.pdf"
+      },
+      "termination": {
+        "state": "automatic-termination",
+        "label": "No annual top-up ends the service and contract",
+        "note": "Kaktus states that if credit is not topped up at least once every 12 months, the prepaid service and contract are automatically terminated.",
+        "sourceUrl": "https://www.mujkaktus.cz/api/download?docUrl=%2Fapi%2Fdocuments%2Ffile%2FAktu%C3%A1ln%C3%AD%2520v%C5%A1eobecn%C3%A9%2520podm%C3%ADnky.pdf&filename=Aktu%C3%A1ln%C3%AD+v%C5%A1eobecn%C3%A9+podm%C3%ADnky.pdf"
+      },
+      "communityObservation": {
+        "state": "anecdotal-conflict",
+        "label": "Community reports overseas support exceptions — not the official rule",
+        "note": "A current NodeSeek thread reports some users asking support to enable roaming/activation from abroad, with outcomes ranging from hours to months or refunds. This is anecdotal and does not override Kaktus official checkout stating activation from abroad is not possible.",
+        "sourceUrl": "https://www.nodeseek.com/post-932699-1"
+      }
     }
   }
 }
