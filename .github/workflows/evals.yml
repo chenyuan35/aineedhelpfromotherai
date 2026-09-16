@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit Relay Risk snapshot currentness
+        run: npm run test:relay-risk && npm run test:relay-risk-ingestion
+
       - name: Run golden eval suite
         run: npm run eval -- --quiet
         id: evals
