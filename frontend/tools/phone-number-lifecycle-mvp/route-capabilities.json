@@ -1,0 +1,180 @@
+{
+  "verifiedOn": "2026-09-15",
+  "notice": "Prototype capability layer. 'Unknown' means we do not yet have enough official evidence; it is not a negative claim.",
+  "routes": {
+    "giffgaff-uk": {
+      "kyc": {
+        "state": "unknown",
+        "label": "Identity requirement not yet verified",
+        "note": "The cited official help pages establish ordering, roaming and account rules but do not establish a universal passport/ID requirement for the intended overseas-user scenario."
+      },
+      "roamingSms": {
+        "state": "supported",
+        "label": "Cellular roaming SMS supported in listed destinations",
+        "note": "giffgaff documents roaming calls, texts and data outside the UK. Coverage and charges vary by destination; receiving ordinary texts is free in some documented roaming zones, but shortcode/verification delivery still depends on the sender and roaming network.",
+        "sourceUrl": "https://help.giffgaff.com/en/articles/229548-using-your-mobile-phone-in-the-rest-of-the-world"
+      },
+      "wifiCallingAbroad": {
+        "state": "not-supported",
+        "label": "Do not rely on Wi-Fi Calling abroad",
+        "note": "The current giffgaff help material says Wi-Fi Calling is not supported abroad.",
+        "sourceUrl": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte"
+      }
+    },
+    "lebara-uk": {
+      "kyc": {
+        "state": "partial",
+        "label": "No universal passport rule established; eSIM account/email required",
+        "note": "Official pages reviewed do not establish a universal passport/identity-document requirement for PAYG. Lebara does require an account and valid verified email for eSIM purchase.",
+        "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+      },
+      "roamingSms": {
+        "state": "supported-after-activation",
+        "label": "International roaming SMS supported after UK activation",
+        "note": "Lebara supports roaming and states incoming texts are free in documented roaming scenarios. The SIM must first be activated in the UK; outside included regions PAYG credit or an add-on may be needed for outgoing usage.",
+        "sourceUrl": "https://www.lebara.co.uk/en/roaming/roaming-rate-finder.html"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not yet proven",
+        "note": "Lebara documents Wi-Fi Calling support on compatible eSIM devices, but the MVP does not yet have explicit official evidence that overseas Wi-Fi Calling can be relied on for SMS/OTP recovery."
+      }
+    },
+    "tello-us": {
+      "kyc": {
+        "state": "partial",
+        "label": "US E911 address required for Wi-Fi Calling",
+        "note": "The MVP has not established a universal passport/identity-document requirement, but Tello requires a US emergency E911 address before Wi-Fi Calling can be enabled.",
+        "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+      },
+      "roamingSms": {
+        "state": "supported-after-activation",
+        "label": "SMS abroad after US activation",
+        "note": "After first activation in the US, Tello supports international roaming in 200+ countries/territories and Wi-Fi Calling & Text abroad. Standard roaming requires PAYG credit; the line must have been used in the US before roaming.",
+        "sourceUrl": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas"
+      },
+      "wifiCallingAbroad": {
+        "state": "supported",
+        "label": "Wi-Fi Calling & Text can receive OTPs abroad",
+        "note": "Tello explicitly states that Wi-Fi Calling & Text can receive OTP and verification texts while outside the US after setup.",
+        "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+      }
+    },
+    "ultra-paygo-us": {
+      "kyc": {
+        "state": "unknown",
+        "label": "Identity requirement not yet verified",
+        "note": "Current official PayGo materials do not give the MVP enough evidence to state a universal passport/ID requirement for overseas buyers."
+      },
+      "roamingSms": {
+        "state": "supported",
+        "label": "International roaming SMS supported with wallet balance",
+        "note": "Ultra Mobile PayGo supports voice, SMS and MMS roaming through the PayGo Wallet. Destination-specific send/receive rates apply and PayGo does not include data roaming.",
+        "sourceUrl": "https://www.ultramobile.com/paygo/international-roaming/"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not yet verified for this MVP route",
+        "note": "Do not assume Wi-Fi Calling can replace roaming until the PayGo-specific rule is verified."
+      },
+      "numberDuration": {
+        "state": "renewable-carrier",
+        "label": "Renewable carrier line with 30-day service cycles",
+        "note": "Ultra PayGo is a recurring carrier service. The base charge is deducted every 30 days while sufficient wallet balance is available.",
+        "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+      },
+      "termination": {
+        "state": "suspension-then-cancellation",
+        "label": "Missed renewal can suspend service and eventually cancel the number",
+        "note": "Ultra’s full PayGo terms say an account below the $3 renewal minimum can remain suspended for up to 60 days; if the balance is above $0 but below $3, an additional 30-day extension can apply. If the balance is $0 after 60 days, the account is cancelled without that extension. The simpler PayGo FAQ says the account and number are cancelled if no payment is made 60 days after the last payment. Treat the full terms as the detailed rule and restore service early rather than relying on the edge of the grace window.",
+        "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+      },
+      "activationFlow": {
+        "state": "standard-physical-sim",
+        "label": "Official PayGo physical-SIM activation uses the SIM ACT CODE",
+        "note": "Ultra’s PayGo activation page asks for the 11-character ACT CODE from the back of the SIM. A third-party pre-activated eSIM is therefore a different activation/ownership path and should not be treated as equivalent.",
+        "sourceUrl": "https://my.ultramobile.com/paygo/activation"
+      }
+    },
+    "h2o-paygo-us": {
+      "kyc": {
+        "state": "unknown",
+        "label": "Identity requirement not yet verified",
+        "note": "The official terms reviewed so far do not give the MVP enough evidence to state a universal passport/ID requirement."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "Do not assume Pay As You Go can roam internationally",
+        "note": "H2O's current terms say International Roaming requires an active Unlimited Talk and Text plan with roaming balance. That does not establish international roaming for this Pay As You Go route.",
+        "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not verified",
+        "note": "No current official evidence has been added to this MVP establishing overseas Wi-Fi SMS/OTP behavior for H2O Pay As You Go."
+      }
+    },
+    "mobal-japan-voice-data": {
+      "kyc": {
+        "state": "required",
+        "label": "Passport/identity verification required for voice service",
+        "note": "Mobal states Japanese law requires ID for voice-capable products. Delivery requires ID upload and matching delivery address; collection requires the physical valid passport. Voice customers must be 18+.",
+        "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-"
+      },
+      "roamingSms": {
+        "state": "supported-after-activation",
+        "label": "Voice/SMS roaming available on current Voice+Data 5G route",
+        "note": "Mobal's current Voice+Data 5G product can enable international roaming for a one-off fee. With roaming enabled, calls and SMS can work outside Japan; cellular data roaming is not supported.",
+        "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming"
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not verified",
+        "note": "The MVP has not found current official evidence establishing Wi-Fi Calling/Text abroad for this route. Use documented cellular roaming instead when future SMS access matters."
+      }
+    },
+    "china-official-carrier": {
+      "kyc": {
+        "state": "required",
+        "label": "Passport or Foreign Permanent Resident ID; in-person application",
+        "note": "Current Chinese government and telecom-regulator guidance says foreign nationals can apply with a passport or Foreign Permanent Resident ID Card at self-operated operator business halls, and must appear in person.",
+        "sourceUrl": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html"
+      },
+      "roamingSms": {
+        "state": "unknown",
+        "label": "Post-departure roaming/OTP depends on carrier and plan",
+        "note": "The MVP intentionally does not generalize one overseas SMS rule across China Mobile, China Unicom and China Telecom. Verify the exact carrier plan before relying on the number after leaving China."
+      },
+      "wifiCallingAbroad": {
+        "state": "unknown",
+        "label": "Wi-Fi Calling abroad not generalized",
+        "note": "Carrier/device policy varies and is not yet evidenced strongly enough for a generic China-carrier claim."
+      }
+    },
+    "activatex-temp": {
+      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "No telecom SIM installation or durable subscriber identity is assumed; account/payment requirements depend on the marketplace."},
+      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "This is a temporary remote SMS activation route, not a SIM you carry abroad."},
+      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+    },
+    "smspool-temp": {
+      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "Requirements depend on the account/payment route; this is not a durable SIM subscription."},
+      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "Temporary verification numbers are not a travel roaming product."},
+      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+    },
+    "5sim-temp": {
+      "kyc": {"state": "marketplace-dependent", "label": "Marketplace/payment rules vary", "note": "Requirements depend on account funding/payment options; the ordinary activation order is not a durable SIM subscription."},
+      "roamingSms": {"state": "not-applicable", "label": "No roaming line", "note": "Temporary verification numbers are not a travel roaming product."},
+      "wifiCallingAbroad": {"state": "not-applicable", "label": "Not applicable", "note": "No user-controlled phone line is provided for Wi-Fi Calling."}
+    },
+    "airalo-data": {
+      "kyc": {"state": "checkout-dependent", "label": "Checkout requirements vary", "note": "Identity requirements, if any, depend on the selected destination/package and current checkout rules."},
+      "roamingSms": {"state": "not-supported-on-route", "label": "No normal SMS number", "note": "Treat the data-only route as internet access only; do not rely on it to receive ordinary verification SMS."},
+      "wifiCallingAbroad": {"state": "indirect", "label": "Can provide data for another line's Wi-Fi Calling", "note": "A data eSIM can sometimes supply internet connectivity while a separate home SIM handles Wi-Fi Calling/OTP, if the home carrier and device support that setup."}
+    },
+    "local-carrier": {
+      "kyc": {"state": "destination-specific", "label": "KYC depends on destination and carrier", "note": "Passport, local ID, address or in-person registration requirements vary by jurisdiction and carrier."},
+      "roamingSms": {"state": "destination-specific", "label": "Roaming/OTP behavior depends on carrier", "note": "Do not assume a local prepaid line will continue receiving verification texts after you leave the destination country."},
+      "wifiCallingAbroad": {"state": "destination-specific", "label": "Wi-Fi Calling policy varies", "note": "Carrier and device support must be verified before relying on this for future account recovery."}
+    }
+  }
+}

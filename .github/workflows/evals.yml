@@ -40,6 +40,15 @@ jobs:
       - name: Audit Relay Risk snapshot currentness
         run: npm run test:relay-risk && npm run test:relay-risk-ingestion
 
+      - name: Audit phone-number lifecycle MVP
+        run: node scripts/test-phone-number-lifecycle-mvp.mjs
+
+      - name: Audit phone-number retention intelligence
+        run: node scripts/test-phone-number-retention-intelligence.mjs
+
+      - name: Audit phone-number supply intelligence
+        run: node scripts/test-phone-number-supply-intelligence.mjs
+
       - name: Run golden eval suite
         run: npm run eval -- --quiet
         id: evals

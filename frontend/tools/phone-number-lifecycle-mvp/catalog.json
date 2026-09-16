@@ -1,0 +1,557 @@
+{
+  "meta": {
+    "name": "Phone Number Lifecycle MVP seed catalog",
+    "verifiedOn": "2026-09-15",
+    "productionReady": false,
+    "notice": "Prototype evidence only. Dynamic prices, stock, supported countries and activation rules must be rechecked before purchase."
+  },
+  "serviceRules": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "phoneNeed": "required",
+      "summary": "Claude asks for a phone number from a supported location during account creation and sends a six-digit code by SMS.",
+      "accepts": ["carrier-mobile"],
+      "rejects": ["voip", "app-generated", "landline"],
+      "retentionAdvice": "Use a number you control long enough to recover or maintain the account; do not build a long-term account around a disposable number.",
+      "source": {
+        "label": "Claude Help Center — Verify your phone number",
+        "url": "https://support.claude.com/en/articles/8287232-verify-your-phone-number",
+        "type": "official"
+      }
+    },
+    {
+      "id": "openai-api",
+      "name": "OpenAI API",
+      "phoneNeed": "first-api-key",
+      "summary": "ChatGPT account creation and ChatGPT usage no longer require phone verification. Phone verification is currently required when generating the first OpenAI API key.",
+      "accepts": ["carrier-mobile"],
+      "rejects": ["voip", "premium", "landline"],
+      "retentionAdvice": "Prefer a user-controlled mobile number. OpenAI limits how often a number can be used for initial API-key phone verification.",
+      "source": {
+        "label": "OpenAI Help Center — What does phone verification look like?",
+        "url": "https://help.openai.com/en/articles/8983040-what-does-phone-verification-look-like",
+        "type": "official"
+      }
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "phoneNeed": "required",
+      "summary": "First registration requires control of the phone number and a code delivered by SMS or phone call.",
+      "accepts": ["carrier-mobile"],
+      "rejects": [],
+      "retentionAdvice": "Keep control of the associated number. A temporary number is a poor long-term foundation because re-registration and recovery can require that number again.",
+      "source": {
+        "label": "WhatsApp Help Center — Can't register phone number",
+        "url": "https://faq.whatsapp.com/1369114327051380/",
+        "type": "official"
+      }
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "phoneNeed": "required",
+      "summary": "Telegram accounts are connected to a mobile number; landlines are not supported.",
+      "accepts": ["carrier-mobile", "temporary-mobile-uncertain"],
+      "rejects": ["landline"],
+      "retentionAdvice": "Keep access to the connected number or change the Telegram number while you still control the old account.",
+      "source": {
+        "label": "Telegram FAQ — Your Account / Login and SMS",
+        "url": "https://www.telegram.org/faq",
+        "type": "official"
+      }
+    },
+    {
+      "id": "google",
+      "name": "Google Account",
+      "phoneNeed": "conditional",
+      "summary": "Google may request phone verification in some account-creation or sign-in situations. Google recommends a user-controlled SMS-capable mobile number for recovery.",
+      "accepts": ["carrier-mobile"],
+      "rejects": [],
+      "retentionAdvice": "A recovery number should remain under your control. Do not use a disposable number for an account you care about.",
+      "source": {
+        "label": "Google Account Help — Add your phone number",
+        "url": "https://support.google.com/accounts/answer/12437868?hl=en",
+        "type": "official"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "giffgaff-uk",
+      "name": "giffgaff UK mobile number",
+      "provider": "giffgaff",
+      "country": "United Kingdom",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM on supported devices",
+      "bestFor": ["long-term-number", "low-frequency-retention", "uk-number", "sms-capable-number"],
+      "purchaseUrl": "https://www.giffgaff.com/",
+      "cost": {
+        "purchase": "Physical SIM ordering is free from giffgaff, but delivery is UK-address only; eSIM is available through the giffgaff app. Recheck current plan/credit cost before activation.",
+        "recurring": "No fixed monthly plan is required for the inactivity rule itself. Perform at least one qualifying use or airtime/plan purchase within every 6 months.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 150,
+        "rule": "Do at least one qualifying action before six months of inactivity: a qualifying call/SMS/MMS, mobile-data connection, airtime credit purchase or plan purchase.",
+        "recovery": "Once deactivated for inactivity the SIM cannot be reactivated. giffgaff says a PAC may be requested from agents within 30 days after deactivation to move the number to another UK network."
+      },
+      "friction": {
+        "identity": "Current account/payment requirements must be checked at signup; the cited help pages do not establish a universal passport/KYC requirement.",
+        "location": "Physical SIM delivery is UK-address only. Roaming is supported in many countries, but Wi-Fi Calling is not supported abroad. eSIM activation geography still needs explicit verification before production.",
+        "device": "Unlocked compatible phone required; eSIM requires a supported device and the giffgaff app.",
+        "ongoing": "Very low-frequency keep-alive action; set a reminder well before the 6-month inactivity boundary."
+      },
+      "evidence": [
+        {
+          "label": "giffgaff — Understanding why your number has been deactivated",
+          "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — Ordering a SIM",
+          "url": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — Switching to an eSIM",
+          "url": "https://help.giffgaff.com/en/articles/261570-switching-to-an-esim-with-giffgaff",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — Understanding WiFi calling and VoLTE",
+          "url": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "lebara-uk",
+      "name": "Lebara UK PAYG mobile number",
+      "provider": "Lebara UK",
+      "country": "United Kingdom",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM; eSIM on supported devices",
+      "bestFor": ["uk-number", "travel-local-number", "sms-capable-number", "pay-as-you-go", "roaming-after-uk-activation"],
+      "purchaseUrl": "https://www.lebara.co.uk/en/free-sim.html",
+      "cost": {
+        "purchase": "Physical PAYG SIM is currently offered free; plans currently start from GBP 5. Recheck checkout and delivery availability.",
+        "recurring": "PAYG is available without a fixed 30-day plan. A chargeable activity is needed within 90 days to avoid temporary barring/credit loss; after a further 365 days without usage or top-up/plan purchase the SIM expires.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 80,
+        "rule": "Make at least one chargeable activity before 90 consecutive days of inactivity. If barred after 90 days, add credit or buy a plan to resume service. After a further 365 days with no usage or top-up/plan purchase, the SIM expires and a new number is required.",
+        "recovery": "Top up or buy a plan during the recoverable inactivity period. For a critical account, do not wait until final expiry before porting or changing recovery numbers."
+      },
+      "friction": {
+        "identity": "A universal passport/ID requirement has not been established by the official pages reviewed. eSIM purchase requires a Lebara account and verified email.",
+        "location": "Critical constraint: Lebara says the SIM/eSIM must be activated in the UK before taking it abroad. eSIM can be ordered outside the UK but must be activated in the UK.",
+        "device": "Unlocked phone required. eSIM support is device-dependent and currently phased; confirm your device before purchase.",
+        "ongoing": "PAYG or plan-based. International roaming outside included regions may require PAYG credit or a roaming add-on."
+      },
+      "evidence": [
+        {
+          "label": "Lebara UK — eSIM help and UK activation requirement",
+          "url": "https://www.lebara.co.uk/en/help/esim.html",
+          "type": "official"
+        },
+        {
+          "label": "Lebara UK — SIM inactivity and expiry",
+          "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+          "type": "official"
+        },
+        {
+          "label": "Lebara UK — free PAYG SIM",
+          "url": "https://www.lebara.co.uk/en/free-sim.html",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "tello-us",
+      "name": "Tello US mobile number",
+      "provider": "Tello",
+      "country": "United States",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM",
+      "bestFor": ["long-term-number", "us-number", "sms-capable-number", "use-after-us-activation"],
+      "purchaseUrl": "https://tello.com/",
+      "cost": {
+        "purchase": "Current build-your-own plans include a USD 5/30-day option; recheck plan pricing and taxes before purchase.",
+        "recurring": "Paid plans renew every 30 days. Wi-Fi Calling/Text can be used abroad after successful US activation; standard roaming outside promotions uses PAYG credit.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 27,
+        "rule": "Keep an active paid plan and valid payment method. Tello plans run on 30-day cycles; this reminder is intentionally a few days early.",
+        "recovery": "Follow current Tello number-transfer/account-recovery rules; do not allow a critical-account number to lapse before changing recovery details elsewhere."
+      },
+      "friction": {
+        "identity": "Check current checkout eligibility. Wi-Fi Calling requires a US E911 emergency address on the account.",
+        "location": "Critical constraint: first activation or port-in must be completed while physically in the United States and connected to a US cellular tower. After activation, Wi-Fi Calling/Text and supported roaming can work abroad.",
+        "device": "Unlocked compatible phone required; eSIM requires a compatible device and one-time QR activation.",
+        "ongoing": "30-day paid plan. For non-Europe standard roaming, PAYG credit is required; Wi-Fi Calling/Text can receive OTPs abroad when configured."
+      },
+      "evidence": [
+        {
+          "label": "Tello — Can I activate Tello while I'm abroad?",
+          "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+          "type": "official"
+        },
+        {
+          "label": "Tello — When do autopay & plan renewal occur?",
+          "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+          "type": "official"
+        },
+        {
+          "label": "Tello — How can I use Wi-Fi Calling?",
+          "url": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling",
+          "type": "official"
+        },
+        {
+          "label": "Tello — How can I use my device overseas?",
+          "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "ultra-paygo-us",
+      "name": "Ultra Mobile PayGo US number",
+      "provider": "Ultra Mobile PayGo",
+      "country": "United States",
+      "numberClass": "carrier-mobile",
+      "form": "physical PayGo SIM",
+      "bestFor": ["long-term-number", "us-number", "low-monthly-cost", "sms-capable-number"],
+      "purchaseUrl": "https://www.ultramobile.com/paygo/",
+      "cost": {
+        "purchase": "Ultra directs PayGo buyers to eBay or select T-Mobile stores. Acquisition price and availability are channel-specific and separate from the $3 / 30-day service charge.",
+        "recurring": "USD 3 per 30-day cycle includes 100 minutes, 100 texts and 100MB data; taxes, overage, roaming wallet and add-ons are separate.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 27,
+        "rule": "Keep at least the USD 3 recurring charge available before each 30-day renewal. Auto Renew can be configured from the PayGo account; insufficient balance can suspend service.",
+        "recovery": "Ultra’s current terms allow a suspension/replenishment window before cancellation, but the exact window depends on remaining balance. Restore service before cancellation; after account cancellation, do not assume the number is recoverable."
+      },
+      "friction": {
+        "identity": "Current activation/account requirements still need explicit verification for non-US residents before production.",
+        "location": "International roaming is supported for voice/SMS/MMS through PayGo Wallet credit, but initial activation-location requirements still need explicit verification.",
+        "device": "Unlocked compatible phone and PayGo SIM required.",
+        "ongoing": "USD 3 per 30-day base plan; acquisition price, taxes, optional roaming wallet and add-ons are separate."
+      },
+      "evidence": [
+        {
+          "label": "Ultra Mobile — Pay as You Go",
+          "url": "https://www.ultramobile.com/paygo/",
+          "type": "official"
+        },
+        {
+          "label": "Ultra Mobile — International Roaming",
+          "url": "https://www.ultramobile.com/international-roaming/",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "h2o-paygo-us",
+      "name": "H2O Wireless Pay As You Go US number",
+      "provider": "H2O Wireless",
+      "country": "United States",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid SIM/eSIM options must be rechecked at purchase",
+      "bestFor": ["long-term-number", "us-number", "infrequent-use", "sms-capable-number"],
+      "purchaseUrl": "https://www.h2owireless.com/",
+      "cost": {
+        "purchase": "Plan/refill selection is dynamic; current official terms describe USD 10/20/30 Pay As You Go refills with 90-day expiry and USD 100 with 365-day expiry.",
+        "recurring": "Balance can roll over when recharged before expiry under the stated Pay As You Go terms. Recheck the current refill product before buying.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 80,
+        "rule": "For a 90-day refill, recharge before the balance/plan expiration date. The reminder is deliberately early. Current terms say the account and number are cancelled after the balance remains at USD 0 for 30 consecutive days.",
+        "recovery": "Do not wait for cancellation on a number tied to important accounts; refill or port/change recovery numbers while the line is active."
+      },
+      "friction": {
+        "identity": "Signup/KYC requirements are not yet fully verified for the intended overseas-user scenarios.",
+        "location": "Initial activation and overseas SMS/roaming behavior still require explicit official-source verification before this route can be production-ranked for users outside the US.",
+        "device": "Confirm device/network compatibility and current SIM/eSIM availability before purchase.",
+        "ongoing": "Refill-expiry management rather than a simple monthly subscription; zero balance for 30 consecutive days can cancel the number."
+      },
+      "evidence": [
+        {
+          "label": "H2O Wireless — Terms and Conditions",
+          "url": "https://www.h2owireless.com/terms-conditions",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "mobal-japan-voice-data",
+      "name": "Mobal Japan Voice+Data 5G number",
+      "provider": "Mobal Japan",
+      "country": "Japan",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM with a real 070/080/090 Japanese mobile number",
+      "bestFor": ["japan-number", "travel-local-number", "sms-capable-number", "visitor-friendly", "roaming-after-activation"],
+      "purchaseUrl": "https://www.mobal.com/japan-sim-card/",
+      "cost": {
+        "purchase": "Current official list pricing shows a JPY 4,950 SIM purchase price before temporary promotions; recheck checkout because discounts change.",
+        "recurring": "Voice+Data plans currently start from JPY 1,650 per calendar month. Outgoing calls/SMS and optional roaming can add charges.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 27,
+        "rule": "Keep the monthly service active. Mobal states that if the service is terminated, the assigned Japanese phone number is lost and a future service requires a new number.",
+        "recovery": "Do not cancel a Mobal line tied to important accounts until those accounts have been migrated. A terminated Mobal number is not retained for later reuse."
+      },
+      "friction": {
+        "identity": "Voice-capable products require identity verification under Japanese law. Delivery requires an accepted ID upload and delivery to the address shown on the ID; collection requires the physical valid passport. Voice customers must be 18+.",
+        "location": "Orders can be arranged with worldwide delivery or Japan pick-up. Activation requests are submitted through the Mobal account; the line receives its Japanese number only after activation. Japan pick-up requires passport presentation.",
+        "device": "Unlocked compatible phone required. For voice, device/VoLTE compatibility matters; eSIM requires native eSIM support.",
+        "ongoing": "Monthly service until manually terminated. International voice/SMS roaming is an optional paid feature on the latest Voice+Data 5G product; data roaming is not supported."
+      },
+      "evidence": [
+        {
+          "label": "Mobal Japan — Voice+Data pricing and Japanese phone number",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — ID requirements for voice products",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — International roaming for current Voice+Data 5G products",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — Phone number assignment and loss after termination",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000042589-phone-number-type",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "china-official-carrier",
+      "name": "Mainland China official carrier SIM",
+      "provider": "China Mobile / China Unicom / China Telecom",
+      "country": "Mainland China",
+      "numberClass": "carrier-mobile",
+      "form": "in-person registered physical SIM from an official operator business hall",
+      "bestFor": ["china-number", "travel-local-number", "local-apps", "sms-capable-number", "foreign-visitor"],
+      "purchaseUrl": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html",
+      "cost": {
+        "purchase": "Official guidance says there is no processing fee; plan/package charges depend on the selected carrier and current tariff.",
+        "recurring": "Carrier/package-specific. Recharge can be made through official business halls, operator apps and online service halls.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "Retention, recharge and suspension rules depend on the selected Chinese carrier and plan; this MVP does not invent one generic expiry rule.",
+        "recovery": "If the phone/SIM is lost, contact the carrier promptly. For important accounts, keep the line active or migrate account recovery before cancelling it."
+      },
+      "friction": {
+        "identity": "Foreign nationals may use a passport or Foreign Permanent Resident ID Card. Current 2026 telecom guidance says the applicant must appear in person and cannot have another person apply on their behalf.",
+        "location": "This route requires being in Mainland China and visiting a self-operated carrier business hall. Beijing guidance says processing and issuance are immediate when the application is accepted.",
+        "device": "Current telecom guidance recommends a phone supporting 5G or VoLTE; carrier/device compatibility should be checked at the business hall.",
+        "ongoing": "Plan, top-up and number-retention rules vary by China Mobile, China Unicom or China Telecom."
+      },
+      "evidence": [
+        {
+          "label": "China government — SIM card guide for foreigners",
+          "url": "https://english.www.gov.cn/2025special/bizexpatsinchina2025",
+          "type": "official"
+        },
+        {
+          "label": "Beijing government — SIM card application procedure",
+          "url": "https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html",
+          "type": "official"
+        },
+        {
+          "label": "MIIT Tianjin — 2026 foreign-national SIM application guide",
+          "url": "https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "activatex-temp",
+      "name": "Temporary SMS activation comparison",
+      "provider": "ActivateX",
+      "country": "Multiple",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS activation marketplace/comparison route",
+      "bestFor": ["one-time-code", "price-comparison", "temporary-use"],
+      "purchaseUrl": "https://activatex.org/",
+      "cost": {
+        "purchase": "Dynamic by service, country and supplier route; use the live comparison rather than a stored MVP price.",
+        "recurring": "None assumed for a one-time activation purchase.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "No durable number ownership is assumed. Treat the route as disposable.",
+        "recovery": "Do not use for an account that depends on future access to the same number."
+      },
+      "friction": {
+        "identity": "Marketplace/account/payment requirements vary.",
+        "location": "Supplier routes vary by country and stock.",
+        "device": "No SIM installation for the temporary marketplace workflow.",
+        "ongoing": "No long-term number control."
+      },
+      "evidence": [
+        {
+          "label": "ActivateX — compare SMS activation prices by service and country",
+          "url": "https://activatex.org/",
+          "type": "marketplace"
+        }
+      ]
+    },
+    {
+      "id": "smspool-temp",
+      "name": "SMSPool temporary verification route",
+      "provider": "SMSPool",
+      "country": "Multiple",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "bestFor": ["one-time-code", "country-service-filter", "price-selection", "temporary-use"],
+      "purchaseUrl": "https://www.smspool.net/",
+      "cost": {
+        "purchase": "Dynamic by service/country/pool. SMSPool exposes published pricing before account creation and its API supports choosing the cheapest available route or highest-success-rate pricing option.",
+        "recurring": "None assumed for a one-time verification order; rentals are a separate product.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "A one-time order is not durable number ownership.",
+        "recovery": "For one-time orders, do not assume future access to the same number. SMSPool says orders without a received code are automatically refunded after the order period."
+      },
+      "friction": {
+        "identity": "Account/payment requirements apply; exact payment methods and regional access must be checked live.",
+        "location": "Service/country inventory changes dynamically.",
+        "device": "No SIM installation for the temporary verification workflow.",
+        "ongoing": "No long-term ownership unless a separate rental product is deliberately selected."
+      },
+      "evidence": [
+        {
+          "label": "SMSPool — OTP testing numbers / published price search",
+          "url": "https://www.smspool.net/",
+          "type": "marketplace"
+        },
+        {
+          "label": "SMSPool — API ordering and refund behavior",
+          "url": "https://www.smspool.net/article/smspool-api-order-view-and-cancel-numbers-9883b6969fad",
+          "type": "marketplace"
+        }
+      ]
+    },
+    {
+      "id": "5sim-temp",
+      "name": "5SIM temporary verification route",
+      "provider": "5SIM",
+      "country": "Multiple",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "bestFor": ["one-time-code", "country-service-operator-filter", "price-comparison", "temporary-use"],
+      "purchaseUrl": "https://5sim.net/prices",
+      "cost": {
+        "purchase": "Observed 2026-09-15 public starting prices: Telegram from USD 0.10; WhatsApp from USD 0.06; Google/YouTube from USD 0.06; OpenAI/ChatGPT from USD 0.01. Exact country/operator routes can cost more and change frequently.",
+        "recurring": "One-time orders are pay-per-order; longer rental periods are separate options.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "Temporary orders do not imply continued control of the number.",
+        "recovery": "5SIM terms state cancelled or non-implemented orders are returned to the account balance under its service terms; do not rely on the number for later account recovery."
+      },
+      "friction": {
+        "identity": "Account and funding are required; exact payment availability varies.",
+        "location": "Public pricing currently spans more than 150 countries and varies by selected service/country/operator.",
+        "device": "No SIM installation for the temporary verification workflow.",
+        "ongoing": "No durable number control for ordinary activation orders."
+      },
+      "evidence": [
+        {
+          "label": "5SIM — Prices",
+          "url": "https://5sim.net/prices",
+          "type": "marketplace"
+        },
+        {
+          "label": "5SIM — Terms / cancellation and non-implementation refund",
+          "url": "https://5sim.net/docs2/offer.html",
+          "type": "marketplace"
+        },
+        {
+          "label": "5SIM — API support",
+          "url": "https://5sim.net/support/working-with-api",
+          "type": "marketplace"
+        }
+      ]
+    },
+    {
+      "id": "airalo-data",
+      "name": "Travel data eSIM",
+      "provider": "Airalo example",
+      "country": "Multiple",
+      "numberClass": "data-only",
+      "form": "travel eSIM",
+      "bestFor": ["travel-data", "dual-line", "keep-home-sim"],
+      "purchaseUrl": "https://www.airalo.com/",
+      "cost": {
+        "purchase": "Dynamic by destination, data allowance and validity.",
+        "recurring": "Usually package-based rather than number-retention based.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "This is not a phone-number retention route.",
+        "recovery": "Keep the home/local voice line separately if you need OTP, calls or a persistent number."
+      },
+      "friction": {
+        "identity": "Check current checkout requirements.",
+        "location": "Destination-specific coverage.",
+        "device": "eSIM-compatible unlocked device required.",
+        "ongoing": "Package expiry/data balance."
+      },
+      "evidence": [
+        {
+          "label": "Airalo Help Center — Can I make phone calls or send SMS with my eSIM?",
+          "url": "https://www.airalo.com/help/using-managing-esims/ZSEEHBT5HW6F/kan-ik-met-mijn-esim-bellen-of-smsen/V9CFOOQYA2DU",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "local-carrier",
+      "name": "Local carrier prepaid SIM/eSIM",
+      "provider": "Destination carrier",
+      "country": "Destination-specific",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid SIM/eSIM",
+      "bestFor": ["travel-local-number", "local-calls", "local-sms", "long-stay"],
+      "purchaseUrl": "",
+      "cost": {
+        "purchase": "Destination-specific.",
+        "recurring": "Destination-specific.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "Depends on the destination carrier's inactivity, top-up and KYC rules.",
+        "recovery": "Use the carrier's replacement/porting process; do not assume a prepaid number is permanent."
+      },
+      "friction": {
+        "identity": "May require passport/local identity depending on jurisdiction.",
+        "location": "Some products require in-country purchase or activation.",
+        "device": "Unlocked compatible device.",
+        "ongoing": "Top-up or plan rules vary."
+      },
+      "evidence": []
+    }
+  ]
+}
