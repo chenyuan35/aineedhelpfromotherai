@@ -56,6 +56,8 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 31. DONE / MONITOR — Retargeted the daily keyword discovery job to **Phone Lifecycle Radar**. It now watches buying, activation, SMS verification compatibility, eSIM/physical SIM, roaming, KYC/passport, retention/expiry, minimum top-up and route/provider lifecycle signals. The first full focused run completed 540/540 source requests successfully; use results to deepen the phone product, not to mass-create pages.
 32. DONE / STRATEGY — Added `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` as the dedicated product roadmap. It separates provider deadlines from product reminder buffers, forbids a universal “90-day” assumption, requires cheapest-vs-safest documented keep-alive actions, and gates any future email reminder service behind demonstrated browser-reminder/repeat-use demand plus privacy/backend/deliverability review.
 
+33. DONE / MONITOR — Deployed a disposable six-hourly Phone Lifecycle official-source watcher on the one-month observer VPS. It follows robots.txt, uses conditional requests and normalized visible-text hashes, stores only bounded summaries/state, and separates provider blocking from policy/content changes. Initial verified run: 22 targets total, 16 fetched/304, 2 Ultra Mobile targets skipped because robots.txt returned 403, 4 Tello targets recorded as provider-side HTTP 403, service exit 0, peak memory 23.3 MiB. See `docs/PHONE_SOURCE_WATCH.md`. A detected hash change is only a review signal and must not auto-rewrite route guidance.
+
 ## Measurement cadence
 
 - Daily: VPS Phone Lifecycle Radar runs automatically; no manual full scan required. Use new retention/expiry language to identify evidence gaps, not to create keyword-variant pages.
@@ -97,6 +99,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | Current factual state | `PROJECT_CONTEXT.md` checkpoint |
 | Whole-project stage / task priority | `docs/MASTER_PLAN.md` |
 | Phone Number Lifecycle product/lifecycle roadmap | `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` |
+| Phone source watcher deployment/status | `docs/PHONE_SOURCE_WATCH.md` + `PROJECT_CONTEXT.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Outreach / authority / AI-discovery actions and follow-ups | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
 | Ordered AI-native retrieval integration tasks | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` |
