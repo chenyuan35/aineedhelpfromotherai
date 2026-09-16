@@ -1,0 +1,11 @@
+[Unit]
+Description=aineedhelpfromotherai phone lifecycle community demand watcher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/aineedhelp-phone-demand-watch
+Nice=10
+IOSchedulingClass=idle
+MemoryMax=48M
