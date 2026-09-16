@@ -12,6 +12,8 @@ When the current task involves external authority, outreach, referral distributi
 
 When the current task involves Exa, Tavily, ChatGPT Search, Perplexity or another AI-native search/retrieval system, also read `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` and `docs/AI_RETRIEVAL_BENCHMARK.md`. Advance the ordered AIR task list instead of improvising a new provider-specific optimization plan.
 
+When plugins/connectors are used, follow `docs/PLUGIN_ORCHESTRATION.md`. Plugins are specialized workers around the GitHub fact source, not independent roadmaps or competing project-state databases. Use the smallest useful tool chain, check the connected account's real quota before depending on a service, and record accepted results/blockers back into the appropriate GitHub fact source in the same work round.
+
 ### Interpret rough inputs before execution
 
 The user is not required to turn every thought into a professional product brief. Screenshots, copied prompts, competitor examples, half-formed ideas, observations, and material shared “for reference” are useful signals even when they are not executable specifications.
