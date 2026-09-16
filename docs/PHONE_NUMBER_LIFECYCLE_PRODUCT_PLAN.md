@@ -132,7 +132,7 @@ The maintenance loop is part of the product because carrier rules, prices, activ
 | Cadence / trigger | Maintenance job | Action |
 |---|---|---|
 | Daily | Phone Lifecycle Radar | Watch demand language around purchase, activation, verification, roaming, KYC, keep-alive, expiry and recovery; use it to prioritize evidence gaps, not create thin pages |
-| Weekly while building | Route evidence review | Review the highest-value or oldest route records and close important unknowns that block recommendations |
+| Weekly after launch | Route evidence review | Review the highest-value or oldest route records, source-change signals and user-visible high-unknown paths; close important unknowns without expanding route breadth by default |
 | Scheduled after launch | Official-source change detection | Hash/fetch selected public provider rule pages where legal and practical; a detected change creates a review task, not an automatic factual rewrite |
 | On source change | Manual verification | Compare old/new rule text, update structured evidence, tests and user-facing guidance only after the change is understood |
 | On user failure report | Incident verification | Reproduce against official sources and current route state; separate provider outage, policy change, device issue and product-data defect |
@@ -145,12 +145,12 @@ The product should prefer a smaller set of well-maintained routes over a large s
 
 | Phase | Objective | Current state / exit gate |
 |---|---|---|
-| PNL-0 Strategy lock | Define audience, lifecycle, evidence boundaries and non-goals | DONE when this plan is merged and linked from the master plan |
-| PNL-1 Acquisition route MVP | Choose/buy/activate/verify/travel guidance with real cost and source evidence | ACTIVE in Draft PR #62; exit when core mapped routes pass deterministic audit and manual preview |
-| PNL-2 Retention completeness | Make keep-alive, inactivity, cheapest/safest qualifying action, recovery and recycling rules first-class for supported routes | NEXT; exit when every production-eligible route has either verified retention fields or explicit unknowns that do not create false confidence |
-| PNL-3 Production launch | Release the smallest maintainable lifecycle assistant | Exit after build/audit/mobile/preview gates, production verification, sitemap/internal-link registration and analytics events |
-| PNL-4 Search and behavior validation | Learn which lifecycle jobs users actually need | Exit when GSC/GA4 and tool events show meaningful route/query/reminder behavior or provide evidence to narrow the product |
-| PNL-5 Reminder validation | Validate browser calendar reminders and repeat-retention behavior | Exit when enough users use reminder/export/revisit behavior to justify or reject server-side reminders |
+| PNL-0 Strategy lock | Define audience, lifecycle, evidence boundaries and non-goals | DONE — plan is merged and linked from the master plan |
+| PNL-1 Acquisition route MVP | Choose/buy/activate/verify/travel guidance with real cost and source evidence | DONE — audited core mapped routes shipped through PR #62/#75 |
+| PNL-2 Retention completeness | Make keep-alive, inactivity, cheapest/safest qualifying action, recovery and recycling rules first-class for supported routes | DONE FOR LAUNCH SET — production routes expose verified fields where available and explicit unknowns where evidence is incomplete; continue maintenance rather than pretending unknowns are solved |
+| PNL-3 Production launch | Release the smallest maintainable lifecycle assistant | DONE — PR #75 publishes `/tools/phone-number-survival-guide/`; public-dist audit, CI/Eval, Vercel Preview and final apex desktop/390px registration/travel verification passed |
+| PNL-4 Search and behavior validation | Learn which lifecycle jobs users actually need | ACTIVE — measure indexing, GSC queries, GA4 engagement, privacy-safe `phone_route_result`, reminder/export use and repeat behavior before expanding routes or URLs |
+| PNL-5 Reminder validation | Validate browser calendar reminders and repeat-retention behavior | MONITOR — browser `.ics` export is live; wait for enough reminder/export/revisit behavior to justify or reject server-side reminders |
 | PNL-6 Optional reminder service | Add email reminders only if they provide cross-provider lifecycle value beyond carrier reminders | GATED; requires privacy, backend, scheduler, email-deliverability, unsubscribe, monitoring, cost and rollback design before implementation |
 | PNL-7 Mature lifecycle service | Deepen only proven jobs such as multi-number lifecycle tracking, rule-change alerts or account-migration guidance | FUTURE / EVIDENCE REQUIRED; remains inside Phone Number Lifecycle, not a new product family |
 
@@ -235,13 +235,13 @@ Do not add complexity simply because the feature fits the theme.
 
 ## 13. Immediate execution order
 
-1. Keep Draft PR #62 as the only active new-product implementation.
-2. Add/normalize retention fields for every route that is otherwise close to production eligibility.
-3. For each route, verify the exact inactivity rule and what action resets it; do not assume incoming SMS or passive account activity counts.
-4. Expose cheapest documented vs safest documented keep-alive actions separately.
-5. Make grace/recovery/number-loss behavior visible when known.
-6. Ensure `.ics` reminder timing derives from the route rule and user lifecycle anchor, not a universal 90-day constant.
-7. Expand route count only when evidence quality and maintenance capacity remain acceptable.
-8. Release only after deterministic audit, preview/mobile review, production verification and indexing/analytics wiring pass.
-9. After launch, measure reminder/export/revisit demand before designing email subscriptions.
-10. Keep Reset Radar and Relay Exit Risk stable as supporting products while Phone Number Lifecycle receives the main product-development attention.
+1. Keep the production Phone Number Survival Guide stable; PR #62/#75 are the launch baseline, not a reason to add more routes immediately.
+2. Measure indexing, queries, `phone_route_result`, reminder/export and revisit behavior before deciding which lifecycle stage deserves deeper work.
+3. Review official-source change signals and high-unknown user paths; update structured evidence/tests only after manual verification.
+4. Preserve exact provider inactivity rules, qualifying actions, cheapest-vs-safest keep-alive actions, grace/recovery and number-loss behavior; never replace unknowns with a universal rule.
+5. Keep `.ics` reminder timing derived from the route rule and user lifecycle anchor, not a universal 90-day constant.
+6. Fix decision UX/data-quality defects before adding providers when users fail to reach useful recommendations.
+7. Expand route count only when search/usage evidence and maintenance capacity justify it.
+8. Use the single canonical Phone URL for the current product job; do not create country/provider/keyword-variant doorway pages.
+9. Measure reminder/export/revisit demand before designing email subscriptions or any reminder backend.
+10. Keep Reset Radar and Relay Exit Risk stable as supporting products while Phone Number Lifecycle remains the primary product surface.
