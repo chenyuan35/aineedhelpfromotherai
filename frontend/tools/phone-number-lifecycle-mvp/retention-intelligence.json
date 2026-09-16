@@ -55,7 +55,22 @@
           "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "anchor-offset",
+        "anchor_label": "Last qualifying SIM-use date",
+        "anchor_help": "Use the date of the most recent documented qualifying call/SMS/MMS, mobile-data connection, Airtime Credit purchase or plan purchase.",
+        "due_offset": {
+          "value": 6,
+          "unit": "months"
+        },
+        "buffer": {
+          "value": 30,
+          "unit": "days"
+        },
+        "summary": "Take a qualifying giffgaff keep-alive action",
+        "description": "Complete a documented qualifying action before the six-month inactivity deadline. The calendar event is placed 30 days early as a product-side buffer."
+      }
     },
     "lebara-uk": {
       "status": "verified",
@@ -101,7 +116,22 @@
           "url": "https://www.lebara.co.uk/en/rates.html",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "anchor-offset",
+        "anchor_label": "Last call, text or mobile-data use date",
+        "anchor_help": "Use the last documented usage date that starts Lebara’s initial 90-day inactivity clock. Do not substitute a pre-bar top-up unless Lebara documents it for your plan.",
+        "due_offset": {
+          "value": 90,
+          "unit": "days"
+        },
+        "buffer": {
+          "value": 14,
+          "unit": "days"
+        },
+        "summary": "Use the Lebara line before temporary barring",
+        "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
+      }
     },
     "tello-us": {
       "status": "verified",
@@ -152,7 +182,22 @@
           "url": "https://tello.com/buy/custom_plans?plan=0-300",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "anchor-offset",
+        "anchor_label": "Last successful plan renewal or purchase date",
+        "anchor_help": "Use the start date of the current 30-day paid-plan cycle, not the date you opened this tool.",
+        "due_offset": {
+          "value": 30,
+          "unit": "days"
+        },
+        "buffer": {
+          "value": 3,
+          "unit": "days"
+        },
+        "summary": "Check Tello plan renewal",
+        "description": "Verify the paid plan renews successfully before the 30-day service boundary. The calendar event is placed 3 days early as a product-side buffer."
+      }
     },
     "ultra-paygo-us": {
       "status": "verified",
@@ -197,7 +242,22 @@
           "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "anchor-offset",
+        "anchor_label": "Last successful PayGo activation or renewal date",
+        "anchor_help": "Use the start date of the current 30-day PayGo service cycle.",
+        "due_offset": {
+          "value": 30,
+          "unit": "days"
+        },
+        "buffer": {
+          "value": 3,
+          "unit": "days"
+        },
+        "summary": "Check Ultra PayGo renewal balance",
+        "description": "Make sure the PayGo wallet can cover the recurring $3 charge before the 30-day renewal boundary. The calendar event is placed 3 days early as a product-side buffer."
+      }
     },
     "h2o-paygo-us": {
       "status": "verified",
@@ -242,7 +302,18 @@
           "url": "https://www.h2owireless.com/terms-conditions",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "manual-deadline",
+        "anchor_label": "Current refill expiration date",
+        "anchor_help": "Enter the expiration date shown for your current PayGo refill. Current $10/$30 refills are 90 days and the $100 refill is 365 days, so using the actual expiration date avoids assuming the wrong refill cycle.",
+        "buffer": {
+          "value": 7,
+          "unit": "days"
+        },
+        "summary": "Recharge H2O PayGo before refill expiry",
+        "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
+      }
     },
     "mobal-japan-voice-data": {
       "status": "partial",
@@ -298,7 +369,17 @@
           "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041505-suspension-requests",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "calendar-recurring",
+        "day_of_month": 8,
+        "buffer": {
+          "value": 3,
+          "unit": "days"
+        },
+        "summary": "Check Mobal monthly payment",
+        "description": "Mobal posts the long-term invoice on the 1st and automatically charges the stored payment method on the 8th. This recurring reminder falls on the 5th, three days before the documented charge date."
+      }
     },
     "sakura-japan-voice-data": {
       "status": "verified",
@@ -349,7 +430,11 @@
           "url": "https://support.sakuramobile.jp/hc/en-us/articles/360040330852-How-do-I-request-an-MNP-number",
           "type": "official"
         }
-      ]
+      ],
+      "reminder": {
+        "status": "unavailable",
+        "reason": "No single verified keep-alive deadline can be generated safely for this monthly route. The documented 25th-of-month cutoff is for plan changes/termination, not a universal payment-expiry deadline."
+      }
     },
     "china-official-carrier": {
       "status": "unknown",
@@ -367,7 +452,11 @@
       "recommended_buffer": null,
       "grace_or_rescue_window": "Unknown for the generic route.",
       "termination_and_recycling": "Unknown for the generic route.",
-      "sources": []
+      "sources": [],
+      "reminder": {
+        "status": "unavailable",
+        "reason": "Choose a specific Chinese carrier and plan first. This generic route intentionally has no inferred inactivity or recharge deadline."
+      }
     },
     "local-carrier": {
       "status": "unknown",
@@ -385,7 +474,11 @@
       "recommended_buffer": null,
       "grace_or_rescue_window": "Unknown until a specific carrier is selected.",
       "termination_and_recycling": "Unknown until a specific carrier is selected.",
-      "sources": []
+      "sources": [],
+      "reminder": {
+        "status": "unavailable",
+        "reason": "Choose a specific carrier and prepaid plan first. No destination-wide retention deadline is assumed."
+      }
     }
   }
 }

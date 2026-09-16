@@ -14,7 +14,7 @@ const required = [
   'status','confidence','last_verified_at','inactivity_window','clock_start_or_reset',
   'qualifying_activity','non_qualifying_or_unknown_activity','lowest_cost_documented_action',
   'safest_documented_action','minimum_expected_cost','recommended_buffer',
-  'grace_or_rescue_window','termination_and_recycling','sources'
+  'grace_or_rescue_window','termination_and_recycling','sources','reminder'
 ];
 
 let checks = 0;
@@ -33,6 +33,7 @@ for (const id of carrierIds) {
     assert(Array.isArray(r.qualifying_activity));
     assert(Array.isArray(r.non_qualifying_or_unknown_activity));
     assert(Array.isArray(r.sources));
+    assert(['anchor-offset','manual-deadline','calendar-recurring','unavailable'].includes(r.reminder.status));
   });
 }
 
@@ -52,6 +53,7 @@ check('unknown routes do not invent cost or reminder windows', () => {
     assert.equal(r.confidence, 'unknown');
     assert.equal(r.minimum_expected_cost, null);
     assert.equal(r.recommended_buffer, null);
+    assert.equal(r.reminder.status, 'unavailable');
   }
 });
 
@@ -107,6 +109,21 @@ check('Sakura suspension preserves number without pretending SMS continuity', ()
   assert.match(r.lowest_cost_documented_action, /suspension/i);
   assert.match(r.non_qualifying_or_unknown_activity.join(' '), /no calls, SMS or data/i);
   assert.match(r.termination_and_recycling, /MNP/i);
+});
+
+
+check('reminder rules preserve route-specific clocks instead of a universal interval', () => {
+  assert.deepEqual(data.routes['giffgaff-uk'].reminder.due_offset, { value: 6, unit: 'months' });
+  assert.deepEqual(data.routes['lebara-uk'].reminder.due_offset, { value: 90, unit: 'days' });
+  assert.deepEqual(data.routes['tello-us'].reminder.due_offset, { value: 30, unit: 'days' });
+  assert.deepEqual(data.routes['ultra-paygo-us'].reminder.due_offset, { value: 30, unit: 'days' });
+  assert.equal(data.routes['h2o-paygo-us'].reminder.status, 'manual-deadline');
+});
+
+check('calendar reminder availability follows evidence completeness', () => {
+  assert.equal(data.routes['mobal-japan-voice-data'].reminder.status, 'calendar-recurring');
+  assert.equal(data.routes['mobal-japan-voice-data'].reminder.day_of_month, 8);
+  assert.equal(data.routes['sakura-japan-voice-data'].reminder.status, 'unavailable');
 });
 
 console.log(`phone-number retention audit: ${checks} checks passed`);

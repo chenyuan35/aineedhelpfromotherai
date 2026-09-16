@@ -9,11 +9,11 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/site.css">
   <style>
-    .pn-wrap{max-width:1100px;margin:0 auto;padding:34px 0 70px}.pn-hero{display:grid;gap:14px;margin-bottom:24px}.pn-hero h1{max-width:880px}.pn-note{padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--surface);font-size:.94rem}.pn-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.pn-tab{padding:15px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:inherit;font:inherit;font-weight:700;cursor:pointer}.pn-tab[aria-selected="true"]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}.pn-panel{display:none}.pn-panel.active{display:block}.pn-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}.pn-field{display:grid;gap:7px}.pn-field label{font-weight:700}.pn-field select{width:100%;min-height:46px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);padding:0 11px;font:inherit}.pn-field small{opacity:.72}.pn-wide{grid-column:1/-1}.pn-submit{min-height:48px;border:0;border-radius:12px;background:var(--text);color:var(--bg);font:inherit;font-weight:800;cursor:pointer}.pn-submit:disabled{opacity:.55;cursor:wait}.pn-results{margin-top:28px}.pn-results[hidden]{display:none}.pn-summary{padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--surface);margin-bottom:16px}.pn-summary h2{margin-top:0}.pn-badges{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.pn-badge{display:inline-flex;padding:5px 9px;border:1px solid var(--border);border-radius:999px;font-size:.82rem;font-weight:700}.pn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pn-card{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:18px;display:grid;gap:11px}.pn-card h3{margin:0}.pn-card p{margin:0}.pn-route-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.pn-rank{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.pn-kv{display:grid;grid-template-columns:138px 1fr;gap:8px 12px;font-size:.92rem}.pn-kv dt{font-weight:700}.pn-kv dd{margin:0}.pn-warning{padding:10px 12px;border-left:3px solid currentColor;background:color-mix(in srgb,currentColor 6%,transparent);font-size:.9rem}.pn-good{padding:10px 12px;border:1px solid var(--border);border-radius:12px;font-size:.9rem}.pn-actions{display:flex;flex-wrap:wrap;gap:8px}.pn-actions a,.pn-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:inherit;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}.pn-lifecycle{margin-top:18px;border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:20px}.pn-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.pn-step{border:1px solid var(--border);border-radius:12px;padding:12px}.pn-step b{display:block;margin-bottom:5px}.pn-empty,.pn-excluded{padding:20px;border:1px dashed var(--border);border-radius:16px;margin-top:16px}.pn-excluded ul{margin:10px 0 0;padding-left:20px}.pn-excluded li+li{margin-top:8px}.pn-muted{opacity:.72}.pn-small{font-size:.85rem}.pn-divider{height:1px;background:var(--border);margin:10px 0}.pn-cap{display:grid;gap:6px;padding:10px;border:1px solid var(--border);border-radius:12px}.pn-cap b{font-size:.83rem}.pn-cap span,.pn-cap a{font-size:.88rem}.pn-insights{display:grid;gap:8px}.pn-insights>strong{font-size:.88rem}@media(max-width:760px){.pn-form,.pn-grid{grid-template-columns:1fr}.pn-wide{grid-column:auto}.pn-steps{grid-template-columns:1fr}.pn-kv{grid-template-columns:1fr}.pn-route-top{display:grid}.pn-tabs{grid-template-columns:1fr}}
+    .pn-wrap{max-width:1100px;margin:0 auto;padding:34px 0 70px}.pn-hero{display:grid;gap:14px;margin-bottom:24px}.pn-hero h1{max-width:880px}.pn-note{padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--surface);font-size:.94rem}.pn-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.pn-tab{padding:15px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:inherit;font:inherit;font-weight:700;cursor:pointer}.pn-tab[aria-selected="true"]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}.pn-panel{display:none}.pn-panel.active{display:block}.pn-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}.pn-field{display:grid;gap:7px}.pn-field label{font-weight:700}.pn-field select,.pn-field input{width:100%;min-height:46px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);padding:0 11px;font:inherit}.pn-field small{opacity:.72}.pn-wide{grid-column:1/-1}.pn-submit{min-height:48px;border:0;border-radius:12px;background:var(--text);color:var(--bg);font:inherit;font-weight:800;cursor:pointer}.pn-submit:disabled{opacity:.55;cursor:wait}.pn-results{margin-top:28px}.pn-results[hidden]{display:none}.pn-summary{padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--surface);margin-bottom:16px}.pn-summary h2{margin-top:0}.pn-badges{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.pn-badge{display:inline-flex;padding:5px 9px;border:1px solid var(--border);border-radius:999px;font-size:.82rem;font-weight:700}.pn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pn-card{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:18px;display:grid;gap:11px}.pn-card h3{margin:0}.pn-card p{margin:0}.pn-route-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.pn-rank{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.pn-kv{display:grid;grid-template-columns:138px 1fr;gap:8px 12px;font-size:.92rem}.pn-kv dt{font-weight:700}.pn-kv dd{margin:0}.pn-warning{padding:10px 12px;border-left:3px solid currentColor;background:color-mix(in srgb,currentColor 6%,transparent);font-size:.9rem}.pn-good{padding:10px 12px;border:1px solid var(--border);border-radius:12px;font-size:.9rem}.pn-actions{display:flex;flex-wrap:wrap;gap:8px}.pn-actions a,.pn-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:inherit;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}.pn-lifecycle{margin-top:18px;border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:20px}.pn-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.pn-step{border:1px solid var(--border);border-radius:12px;padding:12px}.pn-step b{display:block;margin-bottom:5px}.pn-empty,.pn-excluded{padding:20px;border:1px dashed var(--border);border-radius:16px;margin-top:16px}.pn-excluded ul{margin:10px 0 0;padding-left:20px}.pn-excluded li+li{margin-top:8px}.pn-muted{opacity:.72}.pn-small{font-size:.85rem}.pn-divider{height:1px;background:var(--border);margin:10px 0}.pn-cap{display:grid;gap:6px;padding:10px;border:1px solid var(--border);border-radius:12px}.pn-cap b{font-size:.83rem}.pn-cap span,.pn-cap a{font-size:.88rem}.pn-insights{display:grid;gap:8px}.pn-insights>strong{font-size:.88rem}@media(max-width:760px){.pn-form,.pn-grid{grid-template-columns:1fr}.pn-wide{grid-column:auto}.pn-steps{grid-template-columns:1fr}.pn-kv{grid-template-columns:1fr}.pn-route-top{display:grid}.pn-tabs{grid-template-columns:1fr}}
   </style>
-</head>
+<script id="theme-init">(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;const resolved=saved==='system'?(dark?'dark':'light'):saved;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=saved;}catch{}})();</script></head>
 <body>
-<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/">Tools</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav></div></header>
+<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/">Tools</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: Auto" title="Theme: Auto"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Auto</span></button></div></header>
 <main class="shell pn-wrap">
   <section class="pn-hero">
     <p class="eyebrow">Prototype · not production</p>
@@ -55,22 +55,23 @@
 </main>
 <footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Prototype decision tools with explicit evidence.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
 <script>
-let catalog,locationConstraints,routeCapabilities,tutorialInsights,auditRules,purchaseIntelligence;
+let catalog,locationConstraints,routeCapabilities,tutorialInsights,auditRules,purchaseIntelligence,retentionIntelligence;
 const results=document.getElementById('results');
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const sourceLink=s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>`;
 
 async function init(){
-  const [a,b,c,d,e,f]=await Promise.all([
+  const [a,b,c,d,e,f,g]=await Promise.all([
     fetch('./catalog.json',{cache:'no-store'}),
     fetch('./location-constraints.json',{cache:'no-store'}),
     fetch('./route-capabilities.json',{cache:'no-store'}),
     fetch('./tutorial-insights.json',{cache:'no-store'}),
     fetch('./audit-rules.json',{cache:'no-store'}),
-    fetch('./purchase-intelligence.json',{cache:'no-store'})
+    fetch('./purchase-intelligence.json',{cache:'no-store'}),
+    fetch('./retention-intelligence.json',{cache:'no-store'})
   ]);
-  if(!a.ok||!b.ok||!c.ok||!d.ok||!e.ok||!f.ok)throw new Error('Prototype evidence files unavailable');
-  catalog=await a.json();locationConstraints=await b.json();routeCapabilities=await c.json();tutorialInsights=await d.json();auditRules=await e.json();purchaseIntelligence=await f.json();
+  if(!a.ok||!b.ok||!c.ok||!d.ok||!e.ok||!f.ok||!g.ok)throw new Error('Prototype evidence files unavailable');
+  catalog=await a.json();locationConstraints=await b.json();routeCapabilities=await c.json();tutorialInsights=await d.json();auditRules=await e.json();purchaseIntelligence=await f.json();retentionIntelligence=await g.json();
   for(const source of [tutorialInsights,auditRules]){
     for(const route of source.additionalRoutes||[]){if(!catalog.routes.some(r=>r.id===route.id))catalog.routes.push(route)}
     for(const [id,patch] of Object.entries(source.locationConstraintOverrides||{})){locationConstraints.routes[id]={...(locationConstraints.routes[id]||{}),...patch}}
@@ -196,6 +197,24 @@ function purchaseInfo(route,destination=null){
   const offer=destination&&base.destinationOffers?.[destination];if(!offer)return base;
   return {...base,...offer,price:offer.price||base.price,purchaseSafety:offer.purchaseSafety||base.purchaseSafety,fairPriceCheck:offer.fairPriceCheck||base.fairPriceCheck,sources:[...(base.sources||[]),...(offer.sources||[])]};
 }
+function retentionInfo(route){return retentionIntelligence?.routes?.[route.id]||null;}
+function retentionBlock(route){
+  const r=retentionInfo(route);
+  if(!r){
+    if(route.numberClass!=='carrier-mobile')return `<div class="pn-cap"><b>Retention / ownership</b><span>${esc(route.retention?.rule||'Not a durable phone-number route.')}</span><span>${esc(route.retention?.recovery||'Do not assume future access to the same number.')}</span></div>`;
+    return `<div class="pn-cap"><b>Retention evidence · Unknown</b><span>No structured retention record exists for this carrier route. Do not infer a deadline or keep-alive action.</span></div>`;
+  }
+  const avoid=(r.non_qualifying_or_unknown_activity||[]).join(' '),refs=(r.sources||[]).map(sourceLink).join(' · ');
+  const cost=r.minimum_expected_cost?`${moneyLabel(r.minimum_expected_cost.currency,r.minimum_expected_cost.amount)}${r.minimum_expected_cost.period?` / ${esc(r.minimum_expected_cost.period)}`:''} · ${esc(r.minimum_expected_cost.basis||'')}`:'Unknown — no minimum cost is asserted';
+  const buffer=r.recommended_buffer?`${esc(r.recommended_buffer.value)} ${esc(r.recommended_buffer.unit)} · ${esc(r.recommended_buffer.basis||'Product-side buffer')}`:'Unknown — no reminder buffer is asserted';
+  return `<div class="pn-cap"><b>Retention evidence · ${esc(confidenceLabel(r.confidence))} confidence</b><dl class="pn-kv"><dt>Provider deadline</dt><dd>${esc(r.inactivity_window)}</dd><dt>Clock starts / resets</dt><dd>${esc(r.clock_start_or_reset)}</dd><dt>Cheapest documented action</dt><dd>${esc(r.lowest_cost_documented_action)}</dd><dt>Safest documented action</dt><dd>${esc(r.safest_documented_action)}</dd><dt>Minimum keep-alive cost</dt><dd>${cost}</dd><dt>Avoid relying on</dt><dd>${esc(avoid||'No specific exclusions documented; verify before relying on passive activity.')}</dd><dt>Reminder buffer</dt><dd>${buffer}</dd><dt>Grace / rescue</dt><dd>${esc(r.grace_or_rescue_window)}</dd><dt>Termination / recycling</dt><dd>${esc(r.termination_and_recycling)}</dd><dt>Last verified</dt><dd>${esc(r.last_verified_at||retentionIntelligence?.verifiedOn||'Unknown')} · ${esc(r.status||'unknown')}</dd></dl>${refs?`<span>${refs}</span>`:''}</div>`;
+}
+function reminderControls(route){
+  const r=retentionInfo(route),m=r?.reminder;if(!m)return '';
+  if(m.status==='unavailable')return `<div class="pn-good pn-small"><strong>Calendar reminder unavailable:</strong> ${esc(m.reason||'No verified reminder rule is available for this route.')}</div>`;
+  if(m.status==='calendar-recurring')return `<div class="pn-cap"><b>Calendar reminder</b><span>${esc(m.description||'')}</span><div class="pn-actions"><button type="button" data-reminder="${esc(route.id)}">Export monthly payment reminder</button></div><span class="pn-muted pn-small" id="reminder-status-${esc(route.id)}"></span></div>`;
+  return `<div class="pn-cap"><b>Calendar reminder</b><div class="pn-field"><label for="reminder-anchor-${esc(route.id)}">${esc(m.anchor_label||'Lifecycle date')}</label><input type="date" id="reminder-anchor-${esc(route.id)}"><small>${esc(m.anchor_help||'Use the lifecycle date that starts the provider clock.')}</small></div><div class="pn-actions"><button type="button" data-reminder="${esc(route.id)}">Export keep-alive reminder</button></div><span class="pn-muted pn-small" id="reminder-status-${esc(route.id)}"></span></div>`;
+}
 function sellerLabel(value){return ({'official-direct':'Official direct','official-channel':'Provider-designated purchase channel','official-marketplace-store':'Official provider store on marketplace','official-linked-marketplace':'Provider-linked marketplace listing','provider-designated-retail':'Provider-designated retail channel','authorized-reseller':'Authorized reseller','marketplace':'Marketplace / temporary-number seller','third-party-marketplace':'Third-party marketplace seller','preactivated-third-party':'Third-party pre-activated product'}[value]||'Purchase channel unverified');}
 function confidenceLabel(value){return ({high:'High',medium:'Medium',low:'Low'}[value]||'Unknown');}
 function moneyLabel(currency,amount){return typeof amount==='number'?`${esc(currency||'')} ${esc(amount.toLocaleString('en-US',{maximumFractionDigits:2}))}`.trim():'Unknown — verify before paying';}
@@ -286,7 +305,7 @@ function routeCard(route,index,compat,fit,{destination=null,purchaseDestination=
   if(maintainAbroad&&c.overseasPolicy?.state==='restricted-long-term')warnings.push(`<div class="pn-warning"><strong>Keep-alive is not the whole story:</strong> ${esc(c.overseasPolicy.note)}</div>`);
   const evidence=(route.evidence||[]).map(sourceLink).join('<br>')||'<span class="pn-muted">No route-specific evidence yet.</span>';
   const rank=evidenceLabel(route)==='Research required'?(index===0?'Research route — verify first':'Research alternative '+(index+1)):(index===0?'Best current match':'Alternative '+(index+1));
-  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${esc(rank)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${purchaseBlock(route,costHorizon,purchaseDestination)}${warnings.join('')}<dl class="pn-kv"><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd><dt>Keep alive</dt><dd>${esc(route.retention.rule)}</dd></dl>${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
+  return `<article class="pn-card"><div class="pn-route-top"><div><div class="pn-rank">${esc(rank)}</div><h3>${esc(route.name)}</h3><p class="pn-muted">${esc(route.country)} · ${esc(route.form)}</p></div><span class="pn-badge">${esc(difficulty(route))} setup</span></div>${purchaseBlock(route,costHorizon,purchaseDestination)}${warnings.join('')}<dl class="pn-kv"><dt>Activation</dt><dd>${esc(activationLabel(fit||{state:'unknown'}))}</dd><dt>Evidence quality</dt><dd>${esc(evidenceLabel(route))}</dd><dt>Device</dt><dd>${esc(route.friction.device)}</dd></dl>${retentionBlock(route)}${capabilityBlock('KYC / identity',c.kyc||{state:'unknown',label:'KYC unknown',note:'No structured KYC evidence yet.'})}${capabilityBlock('Roaming SMS',c.roamingSms||{state:'unknown',label:'Roaming SMS unknown',note:'No structured roaming evidence yet.'})}${capabilityBlock('Wi-Fi Calling abroad',c.wifiCallingAbroad||{state:'unknown',label:'Wi-Fi Calling unknown',note:'No structured Wi-Fi Calling evidence yet.'})}${insightBlocks(route,{currentLocation,maintainAbroad})}<div class="pn-divider"></div><div class="pn-small"><strong>Route evidence</strong><br>${evidence}</div><div class="pn-actions">${route.purchaseUrl?`<a href="${esc(route.purchaseUrl)}" target="_blank" rel="noopener noreferrer">Open provider / market ↗</a>`:''}</div></article>`;
 }
 function lifecycleHtml(route,context,fit){
   const c=caps(route);
@@ -294,8 +313,11 @@ function lifecycleHtml(route,context,fit){
   const activate=route.numberClass==='temporary-activation'?'No SIM installation; verify the exact service/country route before purchase.':route.numberClass==='data-only'?'Confirm the device/SIM format is compatible and check when package validity begins.':`${activationLabel(fit)}. ${fit.note}`;
   const register=context==='travel'?'Keep the home line active if it is still your recovery/OTP number. A data-only route is not a replacement phone number.':'Request the code only after the line is active and can receive the required SMS/call.';
   const use=`Roaming SMS: ${c.roamingSms?.label||'unknown'}. ${c.roamingSms?.note||''}`;
-  const recover=route.numberClass==='temporary-activation'&&c.refund?`${route.retention.recovery} Refund rule: ${c.refund.label}. ${c.refund.note}`:route.retention.recovery;
-  return `<section class="pn-lifecycle"><h2>Your lifecycle checklist</h2><div class="pn-steps"><div class="pn-step"><b>1 · Buy</b>${esc(buy)}</div><div class="pn-step"><b>2 · KYC & activate</b>${esc(activate)}</div><div class="pn-step"><b>3 · Register / arrive</b>${esc(register)}</div><div class="pn-step"><b>4 · Use abroad</b>${esc(use)}</div><div class="pn-step"><b>5 · Keep alive</b>${esc(route.retention.rule)}</div><div class="pn-step"><b>6 · Recover / refund / move</b>${esc(recover)}</div></div>${route.retention.intervalDays?`<div class="pn-actions" style="margin-top:14px"><button type="button" data-reminder="${esc(route.id)}">Export keep-alive reminder</button></div>`:''}</section>`;
+  const retention=retentionInfo(route);
+  const keep=retention?`${retention.safest_documented_action} Provider rule: ${retention.inactivity_window}`:route.retention.rule;
+  const rescue=retention?`${retention.grace_or_rescue_window} ${retention.termination_and_recycling}`:route.retention.recovery;
+  const recover=route.numberClass==='temporary-activation'&&c.refund?`${route.retention.recovery} Refund rule: ${c.refund.label}. ${c.refund.note}`:rescue;
+  return `<section class="pn-lifecycle"><h2>Your lifecycle checklist</h2><div class="pn-steps"><div class="pn-step"><b>1 · Buy</b>${esc(buy)}</div><div class="pn-step"><b>2 · KYC & activate</b>${esc(activate)}</div><div class="pn-step"><b>3 · Register / arrive</b>${esc(register)}</div><div class="pn-step"><b>4 · Use abroad</b>${esc(use)}</div><div class="pn-step"><b>5 · Keep alive</b>${esc(keep)}</div><div class="pn-step"><b>6 · Recover / refund / move</b>${esc(recover)}</div></div>${reminderControls(route)}</section>`;
 }
 
 function serviceSummary(rule,duration,currentLocation,numberCountry,access){
@@ -374,13 +396,46 @@ function renderTravel(ev){
 document.getElementById('register-form').addEventListener('submit',renderRegistration);
 document.getElementById('travel-form').addEventListener('submit',renderTravel);
 
-function exportReminder(route){
-  const days=route.retention.intervalDays;if(!days)return;const now=new Date(),due=new Date(now.getTime()+days*86400000);const dt=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z'),ymd=d=>d.toISOString().slice(0,10).replace(/-/g,'');
-  const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Everyday Tools//Phone Number MVP//EN','BEGIN:VEVENT',`UID:phone-keepalive-${route.id}-${Date.now()}@aineedhelpfromotherai.com`,`DTSTAMP:${dt(now)}`,`DTSTART;VALUE=DATE:${ymd(due)}`,`SUMMARY:Keep ${route.name} number active`,`DESCRIPTION:${route.retention.rule.replace(/[,;\\]/g,' ')}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
-  const blob=new Blob([body],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`phone-number-keepalive-${route.id}.ics`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+function parseDateOnly(value){
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(value||'');if(!m)return null;
+  const d=new Date(Date.UTC(Number(m[1]),Number(m[2])-1,Number(m[3])));
+  return d.getUTCFullYear()===Number(m[1])&&d.getUTCMonth()===Number(m[2])-1&&d.getUTCDate()===Number(m[3])?d:null;
 }
-function attachReminderButtons(){document.querySelectorAll('[data-reminder]').forEach(btn=>btn.onclick=()=>{const route=catalog.routes.find(r=>r.id===btn.dataset.reminder);if(route)exportReminder(route)});}
+function addDateOffset(date,offset){
+  const d=new Date(date.getTime()),value=Number(offset?.value||0),unit=offset?.unit;
+  if(unit==='days'){d.setUTCDate(d.getUTCDate()+value);return d;}
+  if(unit==='months'){const day=d.getUTCDate();d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+value);const last=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)).getUTCDate();d.setUTCDate(Math.min(day,last));return d;}
+  return null;
+}
+function minusDays(date,days){const d=new Date(date.getTime());d.setUTCDate(d.getUTCDate()-Number(days||0));return d;}
+function nextMonthlyDate(day){
+  const now=new Date(),today=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate())),d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),day));
+  if(d<today)d.setUTCMonth(d.getUTCMonth()+1);return d;
+}
+function icsText(value){return String(value??'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n');}
+function exportReminder(route,anchorValue=''){
+  const retention=retentionInfo(route),m=retention?.reminder;if(!m||m.status==='unavailable')return {ok:false,error:m?.reason||'No verified reminder rule is available for this route.'};
+  const now=new Date(),dt=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z'),ymd=d=>d.toISOString().slice(0,10).replace(/-/g,'');
+  let due,reminderDate,rrule='';
+  if(m.status==='calendar-recurring'){
+    const reminderDay=Number(m.day_of_month)-Number(m.buffer?.value||0);if(reminderDay<1)return {ok:false,error:'The recurring reminder rule is invalid.'};
+    reminderDate=nextMonthlyDate(reminderDay);due=new Date(Date.UTC(reminderDate.getUTCFullYear(),reminderDate.getUTCMonth(),Number(m.day_of_month)));rrule=`RRULE:FREQ=MONTHLY;BYMONTHDAY=${reminderDay}`;
+  }else{
+    const anchor=parseDateOnly(anchorValue);if(!anchor)return {ok:false,error:`Enter ${m.anchor_label||'the lifecycle date'} before exporting.`};
+    due=m.status==='manual-deadline'?anchor:addDateOffset(anchor,m.due_offset);if(!due)return {ok:false,error:'The reminder offset is not supported.'};
+    reminderDate=minusDays(due,m.buffer?.value||0);
+  }
+  const description=[m.description,`Provider deadline / charge date used: ${due.toISOString().slice(0,10)}.`,retention?.safest_documented_action].filter(Boolean).join(' ');
+  const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Everyday Tools//Phone Number MVP//EN','BEGIN:VEVENT',`UID:phone-keepalive-${route.id}-${Date.now()}@aineedhelpfromotherai.com`,`DTSTAMP:${dt(now)}`,`DTSTART;VALUE=DATE:${ymd(reminderDate)}`,rrule,`SUMMARY:${icsText(m.summary||`Keep ${route.name} number active`)}`,`DESCRIPTION:${icsText(description)}`,'END:VEVENT','END:VCALENDAR'].filter(Boolean).join('\r\n');
+  const blob=new Blob([body],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`phone-number-keepalive-${route.id}.ics`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  return {ok:true,reminderDate:reminderDate.toISOString().slice(0,10),dueDate:due.toISOString().slice(0,10)};
+}
+function attachReminderButtons(){document.querySelectorAll('[data-reminder]').forEach(btn=>btn.onclick=()=>{
+  const route=catalog.routes.find(r=>r.id===btn.dataset.reminder);if(!route)return;
+  const input=document.getElementById(`reminder-anchor-${route.id}`),status=document.getElementById(`reminder-status-${route.id}`),result=exportReminder(route,input?.value||'');
+  if(status)status.textContent=result.ok?`Calendar exported for ${result.reminderDate}; provider deadline / charge date used: ${result.dueDate}.`:result.error;
+});}
 init().catch(err=>{results.hidden=false;results.innerHTML=`<div class="pn-empty"><strong>Prototype data failed to load.</strong><p>${esc(err.message)}</p></div>`});
 </script>
-</body>
+<script id="theme-runtime">(()=>{const button=document.querySelector('[data-theme-toggle]');if(!button)return;const media=window.matchMedia('(prefers-color-scheme: dark)');const modes=['system','light','dark'];const labels={system:'Auto',light:'Light',dark:'Dark'};const icons={system:'◐',light:'☀',dark:'☾'};const current=()=>localStorage.getItem('site-theme')||'system';function apply(pref,persist=true){const resolved=pref==='system'?(media.matches?'dark':'light'):pref;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=pref;if(persist)localStorage.setItem('site-theme',pref);const label=labels[pref];button.querySelector('.theme-label').textContent=label;button.querySelector('.theme-icon').textContent=icons[pref];button.setAttribute('aria-label','Theme: '+label);button.setAttribute('title','Theme: '+label)}apply(current(),false);button.addEventListener('click',()=>{const pref=current();apply(modes[(modes.indexOf(pref)+1)%modes.length])});media.addEventListener?.('change',()=>{if(current()==='system')apply('system',false)})})();</script></body>
 </html>

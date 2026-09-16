@@ -11,7 +11,7 @@ const scriptMatch = html.match(/<script>([\s\S]*?)<\/script>/);
 assert(scriptMatch, 'inline phone lifecycle script must exist');
 
 const jsonFiles = new Map();
-for (const name of ['catalog.json', 'location-constraints.json', 'route-capabilities.json', 'tutorial-insights.json', 'audit-rules.json', 'purchase-intelligence.json']) {
+for (const name of ['catalog.json', 'location-constraints.json', 'route-capabilities.json', 'tutorial-insights.json', 'audit-rules.json', 'purchase-intelligence.json', 'retention-intelligence.json']) {
   const raw = fs.readFileSync(path.join(toolDir, name), 'utf8');
   jsonFiles.set(`./${name}`, JSON.parse(raw));
 }
@@ -582,17 +582,130 @@ check('Mobal Voice+Data cost model matches the route product instead of a cheape
   assert.equal(p.price.costWindows['365'].amount, 24750);
 });
 
-check('keep-alive export still emits a valid calendar shell', () => {
-  lastBlob = null;
-  lastAnchor = null;
-  run(`exportReminder(catalog.routes.find(r=>r.id==='giffgaff-uk'))`);
-  assert(lastBlob, 'calendar blob was not created');
+check('every carrier-mobile route has structured retention evidence or explicit unknowns', () => {
+  const carrierIds = run(`catalog.routes.filter(r=>r.numberClass==='carrier-mobile').map(r=>r.id)`);
+  const required = ['status','confidence','last_verified_at','inactivity_window','clock_start_or_reset','qualifying_activity','non_qualifying_or_unknown_activity','lowest_cost_documented_action','safest_documented_action','minimum_expected_cost','recommended_buffer','grace_or_rescue_window','termination_and_recycling','sources'];
+  for (const id of carrierIds) {
+    const rec = run(`retentionInfo(catalog.routes.find(r=>r.id===${JSON.stringify(id)}))`);
+    assert(rec, `${id} missing retention intelligence`);
+    for (const key of required) assert(Object.hasOwn(rec, key), `${id} missing retention field ${key}`);
+    assert(Array.isArray(rec.qualifying_activity), `${id} qualifying_activity must be an array`);
+    assert(Array.isArray(rec.non_qualifying_or_unknown_activity), `${id} non_qualifying_or_unknown_activity must be an array`);
+    assert(Array.isArray(rec.sources), `${id} sources must be an array`);
+  }
+});
+
+check('giffgaff retention models six-month activity, cheap SMS and 30-day port rescue', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='giffgaff-uk'))`);
+  assert.match(r.inactivity_window, /Six months/i);
+  assert.equal(r.minimum_expected_cost.amount, 0.10);
+  assert.equal(r.minimum_expected_cost.currency, 'GBP');
+  assert.match(r.grace_or_rescue_window, /30 days/i);
+  assert.match(r.termination_and_recycling, /recycled/i);
+});
+
+check('Lebara retention separates 90-day barring from further 365-day expiry', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='lebara-uk'))`);
+  assert.match(r.inactivity_window, /90 days/i);
+  assert.match(r.inactivity_window, /365 days/i);
+  assert.equal(r.minimum_expected_cost.amount, 0.19);
+  assert.match(r.clock_start_or_reset, /does not explicitly say/i);
+});
+
+check('Tello retention uses paid renewal and 12-day number grace', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='tello-us'))`);
+  assert.equal(r.minimum_expected_cost.amount, 5);
+  assert.equal(r.minimum_expected_cost.period, '30 days');
+  assert.match(r.grace_or_rescue_window, /12 days/i);
+  assert.match(r.termination_and_recycling, /no recovery/i);
+});
+
+check('Ultra PayGo retention preserves suspension and conditional extension semantics', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  assert.equal(r.minimum_expected_cost.amount, 3);
+  assert.match(r.grace_or_rescue_window, /60 days/i);
+  assert.match(r.grace_or_rescue_window, /additional 30-day extension/i);
+});
+
+check('H2O PayGo retention separates refill expiry from zero-balance cancellation', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='h2o-paygo-us'))`);
+  assert.equal(r.minimum_expected_cost.amount, 9);
+  assert.equal(r.minimum_expected_cost.period, '90 days');
+  assert.match(r.grace_or_rescue_window, /30 consecutive days/i);
+});
+
+check('Mobal keeps unknown non-payment grace explicit instead of inventing a window', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='mobal-japan-voice-data'))`);
+  assert.equal(r.status, 'partial');
+  assert.equal(r.minimum_expected_cost.amount, 1650);
+  assert.match(r.grace_or_rescue_window, /^Unknown\./);
+});
+
+check('Sakura suspension is modeled as number retention without SMS continuity', () => {
+  const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='sakura-japan-voice-data'))`);
+  assert.equal(r.minimum_expected_cost.amount, 220);
+  assert.match(r.lowest_cost_documented_action, /suspension/i);
+  assert.match(r.non_qualifying_or_unknown_activity.join(' '), /no calls, SMS or data/i);
+  assert.match(r.termination_and_recycling, /MNP/i);
+});
+
+check('generic carrier routes remain explicit unknowns', () => {
+  for (const id of ['china-official-carrier','local-carrier']) {
+    const r = run(`retentionInfo(catalog.routes.find(r=>r.id==='${id}'))`);
+    assert.equal(r.status, 'unknown');
+    assert.equal(r.minimum_expected_cost, null);
+    assert.equal(r.recommended_buffer, null);
+  }
+});
+
+check('rendered durable route surfaces structured retention decisions and evidence date', () => {
+  const out = renderRegistration({
+    service: 'whatsapp', 'reg-location': 'United States', duration: 'long', country: 'United States', priority: 'safe'
+  });
+  assert.match(out, /Cheapest documented action/);
+  assert.match(out, /Safest documented action/);
+  assert.match(out, /Grace \/ rescue/);
+  assert.match(out, /Termination \/ recycling/);
+  assert.match(out, /2026-09-16/);
+});
+
+check('giffgaff reminder derives from the user lifecycle anchor, not today', () => {
+  lastBlob = null; lastAnchor = null;
+  const result = run(`exportReminder(catalog.routes.find(r=>r.id==='giffgaff-uk'),'2026-01-15')`);
+  assert.equal(result.ok, true);
+  assert.equal(result.dueDate, '2026-07-15');
+  assert.equal(result.reminderDate, '2026-06-15');
   const body = lastBlob.parts.join('');
-  assert.match(body, /BEGIN:VCALENDAR/);
-  assert.match(body, /BEGIN:VEVENT/);
-  assert.match(body, /END:VCALENDAR/);
+  assert.match(body, /DTSTART;VALUE=DATE:20260615/);
+  assert.match(body, /Provider deadline \/ charge date used: 2026-07-15/);
   assert.equal(lastAnchor?.download, 'phone-number-keepalive-giffgaff-uk.ics');
   assert.equal(lastAnchor?.clicked, true);
+});
+
+check('H2O reminder uses the entered refill expiration date instead of assuming 90 days', () => {
+  lastBlob = null;
+  const result = run(`exportReminder(catalog.routes.find(r=>r.id==='h2o-paygo-us'),'2026-12-01')`);
+  assert.equal(result.ok, true);
+  assert.equal(result.dueDate, '2026-12-01');
+  assert.equal(result.reminderDate, '2026-11-24');
+  assert.match(lastBlob.parts.join(''), /DTSTART;VALUE=DATE:20261124/);
+});
+
+check('Mobal reminder exports a recurring monthly payment check', () => {
+  lastBlob = null;
+  const result = run(`exportReminder(catalog.routes.find(r=>r.id==='mobal-japan-voice-data'))`);
+  assert.equal(result.ok, true);
+  const body = lastBlob.parts.join('');
+  assert.match(body, /RRULE:FREQ=MONTHLY;BYMONTHDAY=5/);
+  assert.match(body, /Check Mobal monthly payment/);
+});
+
+check('unknown generic carrier routes never export invented reminders', () => {
+  lastBlob = null;
+  const result = run(`exportReminder(catalog.routes.find(r=>r.id==='china-official-carrier'),'2026-01-01')`);
+  assert.equal(result.ok, false);
+  assert.match(result.error, /specific Chinese carrier and plan/i);
+  assert.equal(lastBlob, null);
 });
 
 console.log(`phone-number-lifecycle audit: ${checks.length} checks passed`);
