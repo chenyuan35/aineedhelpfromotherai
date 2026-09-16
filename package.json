@@ -66,7 +66,8 @@
     "growth:all": "npm run growth:kit && npm run growth:traffic && npm run growth:check && npm run growth:indexnow",
     "relay-risk:update": "node scripts/update-relay-risk-data.js",
     "relay-risk:update:dry": "node scripts/update-relay-risk-data.js --dry-run",
-    "test:relay-risk": "node scripts/test-relay-risk-score.js"
+    "test:relay-risk": "node scripts/test-relay-risk-score.js",
+    "test:relay-risk-ingestion": "node scripts/test-relay-risk-ingestion.js"
   },
   "engines": {
     "node": ">=20"
