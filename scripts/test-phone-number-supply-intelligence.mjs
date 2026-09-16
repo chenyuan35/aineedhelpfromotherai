@@ -63,33 +63,48 @@ check('LongSMS dedicated rental is separated from one-time OTP', () => {
   assert.equal(otp.price.starting_amount, 0.01);
 });
 
-check('TextVerified rental records provider-claimed US non-VoIP without pretending independent verification', () => {
-  const p = data.providers.textverified.products.rental;
-  assert.equal(p.provider_claimed_number_type, 'US non-VoIP');
+check('TextVerified route gate requires a distinct rental product class', () => {
+  const g = data.providers.textverified.route_gate;
+  assert.equal(g.state, 'hold-for-new-product-class');
+  assert.equal(g.required_number_class, 'renewable-verification-rental');
+  assert.match(g.reason, /not user property/i);
+});
+
+check('TextVerified renewable rental separates provider number claims from independent verification', () => {
+  const p = data.providers.textverified.products['renewable-rental'];
+  assert.match(p.provider_claimed_number_type, /US non-VoIP/);
   assert.equal(p.independently_verified_number_type, false);
   assert.deepEqual(p.country_coverage.countries, ['United States']);
 });
 
-check('TextVerified rental captures renewable control and conditional expired-line recovery', () => {
-  const p = data.providers.textverified.products.rental;
-  assert.equal(p.rental_term.minimum_duration.value, 1);
+check('TextVerified renewable rental uses the current 30-day five-dollar baseline', () => {
+  const p = data.providers.textverified.products['renewable-rental'];
+  assert.equal(p.rental_term.billing_cycle.value, 30);
   assert.equal(p.rental_term.renewable, true);
-  assert.match(p.expiration_rule, /still has the number/i);
-  assert.match(p.expiration_rule, /\$10 reactivation fee/i);
+  assert.equal(p.price.starting_amount, 5);
+  assert.equal(p.price.basis, '30-day renewable rental');
 });
 
-check('TextVerified rental API and long-term SMS access are explicit', () => {
-  const p = data.providers.textverified.products.rental;
+check('TextVerified renewable rental records three-day overdue recovery without claiming ownership', () => {
+  const p = data.providers.textverified.products['renewable-rental'];
+  assert.equal(p.rental_term.overdue_recovery.value, 3);
+  assert.match(p.number_control.note, /not user property/i);
+  assert.match(p.expiration_rule, /3-day overdue recovery/i);
+});
+
+check('TextVerified fixed-term rental stays distinct from renewable rental', () => {
+  const p = data.providers.textverified.products['fixed-term-rental'];
+  assert.equal(p.rental_term.minimum_duration.value, 1);
+  assert.equal(p.rental_term.maximum_duration.value, 14);
+  assert.equal(p.rental_term.renewable, false);
+  assert.equal(p.price.starting_amount, 1.5);
+});
+
+check('TextVerified rental API and SMS access are explicit', () => {
+  const p = data.providers.textverified.products['renewable-rental'];
   assert.equal(p.capabilities.sms_receive, true);
   assert.equal(p.capabilities.api_available, true);
   assert.equal(p.capabilities.public_inbox, false);
-});
-
-check('TextVerified current public rental starting price stays dynamic', () => {
-  const p = data.providers.textverified.products.rental;
-  assert.equal(p.price.starting_amount, 1.5);
-  assert.equal(p.price.currency, 'USD');
-  assert.equal(p.price.dynamic, true);
 });
 
 check('TextVerified one-time verification is a separate short-lived product', () => {

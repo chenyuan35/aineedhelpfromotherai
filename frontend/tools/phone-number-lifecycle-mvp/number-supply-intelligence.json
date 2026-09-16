@@ -91,34 +91,86 @@
             }
           ]
         }
+      },
+      "route_gate": {
+        "state": "hold-for-evidence",
+        "reason": "The reviewed public evidence is not sufficient for a recommendation route.",
+        "remaining_requirements": [
+          "Verify number type/class.",
+          "Verify API availability from a traceable official page.",
+          "Verify maximum rental term and post-expiry recovery/reassignment rules.",
+          "Verify current terms governing number control."
+        ]
       }
     },
     "textverified": {
       "name": "TextVerified",
-      "status": "candidate-strong",
+      "status": "candidate-strong-needs-new-class",
       "official_evidence_confidence": "high",
       "products": {
-        "rental": {
+        "renewable-rental": {
           "product_class": "renewable-rental",
-          "provider_claimed_number_type": "US non-VoIP",
+          "provider_claimed_number_type": "US non-VoIP with physical SIM association",
           "independently_verified_number_type": false,
           "country_coverage": {
             "state": "single-country",
             "countries": ["United States"],
-            "note": "The reviewed provider pages describe rental and verification numbers as US numbers."
+            "note": "Provider FAQ says its numbers are US-based."
           },
           "number_control": {
-            "state": "private-rental",
-            "note": "Rentals provide ongoing access to the assigned line for the rental term; this is rental control, not permanent legal ownership of the number."
+            "state": "rented-access-not-owned",
+            "note": "The provider markets renewable rentals as retainable indefinitely with continued payment, but its Terms state provided numbers are not user property, are temporary, and may change at the provider’s discretion."
           },
           "rental_term": {
-            "minimum_duration": {
-              "value": 1,
-              "unit": "day"
-            },
+            "billing_cycle": {"value": 30, "unit": "days"},
             "maximum_duration": null,
             "renewable": true,
-            "renewal_rule": "Renewable rentals can be renewed indefinitely according to the provider; non-renewable rentals expire at the selected date."
+            "renewal_rule": "Provider says renewable lines auto-renew before expiry when auto-renew is enabled and account funds are sufficient; continued billing can retain the line indefinitely.",
+            "overdue_recovery": {
+              "value": 3,
+              "unit": "days",
+              "note": "Provider rental glossary states overdue renewable rentals can be recovered for 3 days after expiry."
+            }
+          },
+          "capabilities": {
+            "sms_receive": true,
+            "sms_send": null,
+            "voice_receive": "service-dependent",
+            "api_available": true,
+            "public_inbox": false
+          },
+          "price": {
+            "currency": "USD",
+            "starting_amount": 5,
+            "basis": "30-day renewable rental",
+            "dynamic": true,
+            "note": "Current public starting price for renewable rentals; exact service/options can vary."
+          },
+          "expiration_rule": "If renewal fails, the rental becomes overdue. The provider glossary states a 3-day overdue recovery window; continued access to the same number is not represented as guaranteed ownership.",
+          "number_reuse_rule": "Provider Terms reserve discretion over number availability; do not assume permanent reservation outside an active/recoverable rental.",
+          "message_retention_rule": "unknown",
+          "sources": [
+            {"label": "TextVerified — current renewable-rental offer", "url": "https://www.textverified.com/", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — rental FAQ and renewal behavior", "url": "https://www.textverified.com/faq/rentals", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — rental glossary and 3-day overdue recovery", "url": "https://www.textverified.com/support/rentals-glossary/", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — phone-number terms", "url": "https://www.textverified.com/Terms", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — API automation", "url": "https://www.textverified.com/automate", "type": "provider-official", "checked_on": "2026-09-16"}
+          ]
+        },
+        "fixed-term-rental": {
+          "product_class": "fixed-term-rental",
+          "provider_claimed_number_type": "US non-VoIP with physical SIM association",
+          "independently_verified_number_type": false,
+          "country_coverage": {"state": "single-country", "countries": ["United States"]},
+          "number_control": {
+            "state": "fixed-term-rental",
+            "note": "Current public offer lists 1–14 day rental access. This is temporary access, not permanent ownership."
+          },
+          "rental_term": {
+            "minimum_duration": {"value": 1, "unit": "day"},
+            "maximum_duration": {"value": 14, "unit": "days"},
+            "renewable": false,
+            "renewal_rule": "Non-renewable lines cannot be renewed or reactivated after expiry; provider FAQ says they may be extended only while still active."
           },
           "capabilities": {
             "sms_receive": true,
@@ -130,42 +182,24 @@
           "price": {
             "currency": "USD",
             "starting_amount": 1.5,
-            "basis": "rental",
+            "basis": "fixed-term rental",
             "dynamic": true,
-            "note": "Current public starting price; exact rental cost varies by service and customization."
+            "note": "Current public starting price; exact service/options can vary."
           },
-          "expiration_rule": "For renewable rentals, an expired line may be reactivated only if the provider still has the number. The provider states a $10 reactivation fee plus elapsed-time and base-line charges.",
-          "number_reuse_rule": "After expiry, continued availability of the same number is conditional and not guaranteed.",
+          "expiration_rule": "Expires at the chosen fixed term. Do not rely on later recovery.",
+          "number_reuse_rule": "unknown after expiry",
           "message_retention_rule": "unknown",
           "sources": [
-            {
-              "label": "TextVerified — long-term rentals overview",
-              "url": "https://www.textverified.com/rentals",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            },
-            {
-              "label": "TextVerified — rental FAQ and overdue recovery",
-              "url": "https://www.textverified.com/faq/rentals",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            },
-            {
-              "label": "TextVerified — API automation",
-              "url": "https://www.textverified.com/automate",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            }
+            {"label": "TextVerified — current fixed-term rental offer", "url": "https://www.textverified.com/", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — rental FAQ", "url": "https://www.textverified.com/faq/rentals", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — phone-number terms", "url": "https://www.textverified.com/Terms", "type": "provider-official", "checked_on": "2026-09-16"}
           ]
         },
         "one-time-verification": {
           "product_class": "one-time-verification",
           "provider_claimed_number_type": "US non-VoIP",
           "independently_verified_number_type": false,
-          "country_coverage": {
-            "state": "single-country",
-            "countries": ["United States"]
-          },
+          "country_coverage": {"state": "single-country", "countries": ["United States"]},
           "number_control": {
             "state": "temporary",
             "note": "Verification numbers are short-term; after a verification ends the provider says the number may be removed at any time."
@@ -182,34 +216,24 @@
             "api_available": true,
             "public_inbox": false
           },
-          "price": {
-            "currency": "USD",
-            "starting_amount": 0.25,
-            "basis": "verification",
-            "dynamic": true
-          },
+          "price": {"currency": "USD", "starting_amount": 0.25, "basis": "verification", "dynamic": true},
           "refund_rule": "Provider states credits are deducted only when a verification arrives and no-code cases are automatically refunded.",
           "sources": [
-            {
-              "label": "TextVerified — product overview",
-              "url": "https://www.textverified.com/products",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            },
-            {
-              "label": "TextVerified — verification FAQ",
-              "url": "https://www.textverified.com/faq/verifications",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            },
-            {
-              "label": "TextVerified — API automation",
-              "url": "https://www.textverified.com/automate",
-              "type": "provider-official",
-              "checked_on": "2026-09-16"
-            }
+            {"label": "TextVerified — product overview", "url": "https://www.textverified.com/products", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — verification FAQ", "url": "https://www.textverified.com/faq/verifications", "type": "provider-official", "checked_on": "2026-09-16"},
+            {"label": "TextVerified — API automation", "url": "https://www.textverified.com/automate", "type": "provider-official", "checked_on": "2026-09-16"}
           ]
         }
+      },
+      "route_gate": {
+        "state": "hold-for-new-product-class",
+        "required_number_class": "renewable-verification-rental",
+        "reason": "Do not model this as carrier-mobile or ordinary temporary activation. Provider terms describe numbers as temporary and not user property even when a renewable rental can be retained by continued billing.",
+        "remaining_requirements": [
+          "Add explicit rental-number compatibility semantics to the tool.",
+          "Keep provider-specific OTP acceptance uncertain unless independently verified.",
+          "Do not present rental access as permanent ownership."
+        ]
       }
     }
   },
