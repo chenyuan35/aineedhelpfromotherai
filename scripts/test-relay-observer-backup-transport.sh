@@ -55,3 +55,6 @@ echo 'relay observer backup transport test passed'
 
 grep -qx 'ReadWritePaths=/tmp' "$ROOT/ops/relay-observer-backup/aineedhelp-relay-observer-backup-push.service"
 echo 'relay observer backup systemd write sandbox test passed'
+
+grep -q 'mode=ro&immutable=1' "$ROOT/ops/relay-observer-backup/aineedhelp-relay-observer-backup-push"
+echo 'relay observer immutable source test passed'
