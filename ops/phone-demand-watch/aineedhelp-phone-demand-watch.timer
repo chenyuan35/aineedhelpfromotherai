@@ -1,0 +1,12 @@
+[Unit]
+Description=Four-hourly phone lifecycle community demand watcher
+
+[Timer]
+OnBootSec=10m
+OnUnitActiveSec=4h
+RandomizedDelaySec=15m
+Persistent=true
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Six-hourly phone lifecycle official-source watcher
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:37:00 UTC
+RandomizedDelaySec=20m
+Persistent=true
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target

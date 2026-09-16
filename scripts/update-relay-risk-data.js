@@ -125,6 +125,20 @@ async function upsertBatch(client, rows) {
   }
 }
 
+async function replaceDailySnapshot(client, rows) {
+  if (!rows.length) throw new Error('Refusing to replace relay snapshot with zero normalized rows');
+  const source = rows[0].source;
+  const snapshotDate = rows[0].snapshotDate;
+  if (!rows.every(row => row.source === source && row.snapshotDate === snapshotDate)) {
+    throw new Error('Relay snapshot rows must share one source and snapshot date');
+  }
+  await client.query(
+    'DELETE FROM relay_source_daily WHERE source = $1 AND snapshot_date = $2',
+    [source, snapshotDate],
+  );
+  await upsertBatch(client, rows);
+}
+
 async function main() {
   const started = Date.now();
   let db = null;
@@ -171,7 +185,7 @@ async function main() {
   const client = await db.connect();
   try {
     await client.query('BEGIN');
-    await upsertBatch(client, rows);
+    await replaceDailySnapshot(client, rows);
     await client.query(`
       INSERT INTO relay_source_meta (source, fetched_at, source_updated_at, item_count, etag, source_url, last_error)
       VALUES ($1, NOW(), $2, $3, $4, $5, NULL)
@@ -190,7 +204,7 @@ async function main() {
   console.log(JSON.stringify({ ...stats, etag: fetched.etag, elapsedMs: Date.now() - started }));
 }
 
-main().catch(async error => {
+if (require.main === module) main().catch(async error => {
   console.error(`[relay-risk-ingest] ${error.stack || error.message}`);
   try {
     const db = getPool();
@@ -205,3 +219,5 @@ main().catch(async error => {
   } catch {}
   process.exitCode = 1;
 }).finally(() => closePool());
+
+module.exports = { normalizeRecord, upsertBatch, replaceDailySnapshot };

@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit Relay Risk snapshot currentness
+        run: npm run test:relay-risk && npm run test:relay-risk-ingestion
+
       - name: Audit phone-number lifecycle MVP
         run: node scripts/test-phone-number-lifecycle-mvp.mjs
 
