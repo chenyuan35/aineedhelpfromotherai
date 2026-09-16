@@ -1,6 +1,6 @@
 # Phone Number Lifecycle — Product Strategy and Operating Plan
 
-Last updated: 2026-09-16
+Last updated: 2026-09-17
 
 ## 1. Strategic role
 
@@ -149,10 +149,29 @@ The product should prefer a smaller set of well-maintained routes over a large s
 | PNL-1 Acquisition route MVP | Choose/buy/activate/verify/travel guidance with real cost and source evidence | DONE — audited core mapped routes shipped through PR #62/#75 |
 | PNL-2 Retention completeness | Make keep-alive, inactivity, cheapest/safest qualifying action, recovery and recycling rules first-class for supported routes | DONE FOR LAUNCH SET — production routes expose verified fields where available and explicit unknowns where evidence is incomplete; continue maintenance rather than pretending unknowns are solved |
 | PNL-3 Production launch | Release the smallest maintainable lifecycle assistant | DONE — PR #75 publishes `/tools/phone-number-survival-guide/`; public-dist audit, CI/Eval, Vercel Preview and final apex desktop/390px registration/travel verification passed |
-| PNL-4 Search and behavior validation | Learn which lifecycle jobs users actually need | ACTIVE — measure indexing, GSC queries, GA4 engagement, privacy-safe `phone_route_result`, reminder/export use and repeat behavior before expanding routes or URLs |
+| PNL-4 Search and behavior validation | Learn which lifecycle jobs users actually need | ACTIVE — measure indexing, GSC queries, GA4 engagement, privacy-safe `phone_route_result`, reminder/export use and repeat behavior before expanding routes or URLs. Issue #78 / `docs/PHONE_VERIFICATION_CONTINUITY_VALIDATION.md` is the current bounded sub-validation for whether verification continuity is a stronger memory point; it does not authorize production repositioning yet. |
 | PNL-5 Reminder validation | Validate browser calendar reminders and repeat-retention behavior | MONITOR — browser `.ics` export is live; wait for enough reminder/export/revisit behavior to justify or reject server-side reminders |
 | PNL-6 Optional reminder service | Add email reminders only if they provide cross-provider lifecycle value beyond carrier reminders | GATED; requires privacy, backend, scheduler, email-deliverability, unsubscribe, monitoring, cost and rollback design before implementation |
 | PNL-7 Mature lifecycle service | Deepen only proven jobs such as multi-number lifecycle tracking, rule-change alerts or account-migration guidance | FUTURE / EVIDENCE REQUIRED; remains inside Phone Number Lifecycle, not a new product family |
+
+### PNL-4A — Verification continuity validation
+
+The active research question is whether the durable user job should be sharpened from generic phone-number survival toward **account-access continuity**, especially:
+
+> Will I need this number again?
+
+The authoritative execution ledger for this sub-validation is `docs/PHONE_VERIFICATION_CONTINUITY_VALIDATION.md`; GitHub Issue #78 carries supporting evidence/discussion.
+
+Until that ledger's decision gate is met:
+
+- production copy/logic stays unchanged;
+- the canonical Phone URL stays singular;
+- no new provider/service is added without an independent demand signal;
+- no Codex-only/Claude-only/verification-only production page is created;
+- no backend, email reminder, SMS/OTP handling, account system or paid SEO/data dependency is introduced;
+- unknown platform re-verification timing remains unknown rather than being converted into a fake schedule or risk probability.
+
+The validation must end in one of three explicit decisions: **KEEP** the current lifecycle framing, **ADJUST** the existing Phone framing toward verification continuity, or **NARROW** verification continuity to a scenario inside the current product. Research is not allowed to expand indefinitely without making that decision.
 
 ## 9. MVP scope and explicit non-goals
 
@@ -232,16 +251,19 @@ Do not add complexity simply because the feature fits the theme.
 - If search traffic appears but users do not complete recommendations, fix decision UX/data quality before adding providers.
 - If one provider/route becomes a clear winner, deepen evidence and lifecycle coverage for that route before adding adjacent providers.
 - If reminder subscriptions eventually become material, review operating cost, deliverability and privacy before increasing cadence or features.
+- If verification-continuity evidence remains effectively Codex-only, keep it as a bounded scenario inside Phone rather than repositioning the whole product.
+- If verification/recovery demand is dominated by temporary/free-number or bypass intent, do not chase that volume by changing the product direction.
 
 ## 13. Immediate execution order
 
 1. Keep the production Phone Number Survival Guide stable; PR #62/#75 are the launch baseline, not a reason to add more routes immediately.
-2. Measure indexing, queries, `phone_route_result`, reminder/export and revisit behavior before deciding which lifecycle stage deserves deeper work.
-3. Review official-source change signals and high-unknown user paths; update structured evidence/tests only after manual verification.
-4. Preserve exact provider inactivity rules, qualifying actions, cheapest-vs-safest keep-alive actions, grace/recovery and number-loss behavior; never replace unknowns with a universal rule.
-5. Keep `.ics` reminder timing derived from the route rule and user lifecycle anchor, not a universal 90-day constant.
-6. Fix decision UX/data-quality defects before adding providers when users fail to reach useful recommendations.
-7. Expand route count only when search/usage evidence and maintenance capacity justify it.
-8. Use the single canonical Phone URL for the current product job; do not create country/provider/keyword-variant doorway pages.
-9. Measure reminder/export/revisit demand before designing email subscriptions or any reminder backend.
-10. Keep Reset Radar and Relay Exit Risk stable as supporting products while Phone Number Lifecycle remains the primary product surface.
+2. Execute Issue #78 through `docs/PHONE_VERIFICATION_CONTINUITY_VALIDATION.md`: complete the four-service evidence matrix, English-vs-Chinese demand comparison and competitor/SERP scan, then make a KEEP / ADJUST / NARROW decision before any production repositioning.
+3. In parallel, measure indexing, queries, `phone_route_result`, reminder/export and revisit behavior after the Sep 16 public release; do not use immature zeroes as a verdict.
+4. Review official-source change signals and high-unknown user paths; update structured evidence/tests only after manual verification.
+5. Preserve exact provider inactivity rules, qualifying actions, cheapest-vs-safest keep-alive actions, grace/recovery and number-loss behavior; never replace unknowns with a universal rule.
+6. Keep `.ics` reminder timing derived from the route rule and user lifecycle anchor, not a universal 90-day constant.
+7. Fix decision UX/data-quality defects before adding providers when users fail to reach useful recommendations.
+8. Expand route count only when search/usage evidence and maintenance capacity justify it.
+9. Use the single canonical Phone URL for the current product job; do not create country/provider/keyword-variant doorway pages.
+10. Measure reminder/export/revisit demand before designing email subscriptions or any reminder backend.
+11. Keep Reset Radar and Relay Exit Risk stable as supporting products while Phone Number Lifecycle remains the primary product surface.
