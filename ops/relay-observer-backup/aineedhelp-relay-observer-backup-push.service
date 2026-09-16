@@ -14,5 +14,6 @@ PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
 ReadOnlyPaths=/var/lib/aineedhelp-relay-observer
+ReadWritePaths=/tmp
 MemoryMax=128M
 TimeoutStartSec=180
