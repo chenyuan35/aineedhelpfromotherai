@@ -1,0 +1,105 @@
+#!/bin/bash
+set -u
+BASE=/var/lib/aineedhelp-phone-source-watch
+STATE="$BASE/state"
+SUMMARY="$BASE/summary"
+TMP=/tmp/aineedhelp-phone-source-watch.$$
+LATEST="$BASE/latest.tsv"
+EVENTS="$BASE/events.tsv"
+RUNS="$BASE/runs.tsv"
+UA='aineedhelpfromotherai-phone-source-watch/1.0 (+https://aineedhelpfromotherai.com/)'
+mkdir -p "$STATE" "$SUMMARY" "$TMP"
+trap 'rm -rf "$TMP"' EXIT
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+normalize_visible() {
+  perl -0777 -pe 's#<script\b[^>]*>.*?</script>##gis; s#<style\b[^>]*>.*?</style>##gis; s#<noscript\b[^>]*>.*?</noscript>##gis; s#<svg\b[^>]*>.*?</svg>##gis; s#<!--.*?-->##gs; s#<[^>]+># #g; s#&nbsp;# #gi; s#&amp;#&#gi; s#&quot;#"#gi; s#\s+# #g;' 
+}
+
+robots_allows() {
+  url="$1"; host=$(printf '%s' "$url" | sed -E 's#https?://([^/]+).*#\1#'); path=$(printf '%s' "$url" | sed -E 's#https?://[^/]+##'); [ -n "$path" ] || path=/
+  key=$(printf '%s' "$host" | tr '.:' '__'); rf="$TMP/robots-$key.txt"; rh="$TMP/robots-$key.code"
+  if [ ! -f "$rh" ]; then
+    code=$(curl -A "$UA" -LsS --max-time 12 -o "$rf" -w '%{http_code}' "https://$host/robots.txt" 2>/dev/null || printf '000')
+    printf '%s' "$code" > "$rh"
+  else code=$(cat "$rh"); fi
+  [ "$code" = 404 ] && return 0
+  [ "$code" = 200 ] || return 2
+  perl - "$path" < "$rf" <<'PERL'
+my $path=shift; my $active=0; my $best=-1; my $allow=1;
+while(<STDIN>){s/\r//g; s/#.*$//; s/^\s+|\s+$//g; next if $_ eq '';
+ if(/^user-agent:\s*(.+)$/i){my $a=lc($1); $a =~ s/^\s+|\s+$//g; $active=($a eq '*'); next;}
+ next unless $active;
+ if(/^(allow|disallow):\s*(.*)$/i){my($kind,$rule)=(lc($1),$2); $rule =~ s/^\s+|\s+$//g; next if $rule eq "";
+  my $len=length($rule); my $re=quotemeta($rule); $re =~ s/\\\*/.*/g;
+  if($path =~ /^$re/ && $len>$best){$best=$len; $allow=($kind eq "allow");}
+ }
+}
+exit($allow?0:1);
+PERL
+}
+
+extract_summary() {
+  perl -0777 -ne '$n=0; while(/(.{0,120}(?:eSIM|SIM|SMS|text|roaming|Wi-?Fi Calling|activate|activation|inactivity|inactive|expire|expiry|expiration|top[- ]?up|recharge|renewal|passport|identity|30 days|90 days|365 days|6 months|phone number).{0,180})/ig){$x=$1;$x=~s/\s+/ /g;print "$x\n";last if ++$n>=10}'
+}
+
+printf 'timestamp\tid\troute\tstatus\thttp\tevent\tseconds\tsize\tvisible_hash\turl\n' > "$LATEST"
+TOTAL=0; OK=0; SKIP=0; ERR=0; CHANGES=0
+watch_one() {
+  id="$1"; route="$2"; url="$3"; TOTAL=$((TOTAL+1))
+  prev="$STATE/$id"; prev_hash=''; etag=''; lm=''
+  if [ -f "$prev" ]; then prev_hash=$(sed -n '1p' "$prev"); etag=$(sed -n '2p' "$prev"); lm=$(sed -n '3p' "$prev"); fi
+  if robots_allows "$url"; then rrc=0; else rrc=$?; fi
+  if [ "$rrc" -ne 0 ]; then
+    status=robots-skip; http=-; event=none; seconds=0; size=0; hash="$prev_hash"; SKIP=$((SKIP+1))
+  else
+    hdr="$TMP/$id.h"; body="$TMP/$id.body"; text="$TMP/$id.txt"
+    args=(-A "$UA" -LsS --compressed --max-time 25 -D "$hdr" -o "$body" -w '%{http_code}\t%{time_total}\t%{size_download}')
+    [ -n "$etag" ] && args+=(--header "If-None-Match: $etag")
+    [ -n "$lm" ] && args+=(--header "If-Modified-Since: $lm")
+    metrics=$(curl "${args[@]}" "$url" 2>/dev/null || printf '000\t0\t0')
+    http=$(printf '%s' "$metrics" | tail -1 | cut -f1); seconds=$(printf '%s' "$metrics" | tail -1 | cut -f2); size=$(printf '%s' "$metrics" | tail -1 | cut -f3)
+    if [ "$http" = 304 ] && [ -n "$prev_hash" ]; then status=not-modified; event=none; hash="$prev_hash"; OK=$((OK+1))
+    elif [ "$http" = 200 ] && [ -s "$body" ]; then
+      normalize_visible < "$body" > "$text"; hash=$(sha256sum "$text" | cut -d' ' -f1)
+      new_etag=$(grep -i '^etag:' "$hdr" 2>/dev/null | tail -1 | sed 's/^[^:]*:[[:space:]]*//;s/\r$//' | tr '\t' ' ')
+      new_lm=$(grep -i '^last-modified:' "$hdr" 2>/dev/null | tail -1 | sed 's/^[^:]*:[[:space:]]*//;s/\r$//' | tr '\t' ' ')
+      printf '%s\n%s\n%s\n' "$hash" "$new_etag" "$new_lm" > "$prev"
+      extract_summary < "$text" > "$SUMMARY/$id.txt"
+      status=ok; event=none; OK=$((OK+1))
+      if [ -z "$prev_hash" ]; then event=baseline
+      elif [ "$hash" != "$prev_hash" ]; then event=content-change; CHANGES=$((CHANGES+1)); printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$id" "$route" "$prev_hash" "$hash" "$url" >> "$EVENTS"; fi
+    else status=fetch-error; event=none; hash="$prev_hash"; ERR=$((ERR+1)); fi
+  fi
+  printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$id" "$route" "$status" "$http" "$event" "$seconds" "$size" "${hash:--}" "$url" >> "$LATEST"
+  sleep 1
+}
+
+watch_one giffgaff_deactivation giffgaff 'https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated'
+watch_one giffgaff_ordering giffgaff 'https://help.giffgaff.com/en/articles/240676-ordering-a-sim'
+watch_one giffgaff_esim giffgaff 'https://help.giffgaff.com/en/articles/261570-switching-to-an-esim-with-giffgaff'
+watch_one giffgaff_wifi giffgaff 'https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte'
+watch_one lebara_esim lebara-uk 'https://www.lebara.co.uk/en/help/esim.html'
+watch_one lebara_inactivity lebara-uk 'https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html'
+watch_one lebara_payg lebara-uk 'https://www.lebara.co.uk/en/free-sim.html'
+watch_one tello_activation tello-us 'https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad'
+watch_one tello_renewal tello-us 'https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur'
+watch_one tello_wifi tello-us 'https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling'
+watch_one tello_overseas tello-us 'https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas'
+watch_one ultra_paygo ultra-paygo-us 'https://www.ultramobile.com/paygo/'
+watch_one ultra_roaming ultra-paygo-us 'https://www.ultramobile.com/international-roaming/'
+watch_one h2o_terms h2o-paygo-us 'https://www.h2owireless.com/terms-conditions'
+watch_one mobal_pricing mobal-japan 'https://www.mobal.com/japan-sim-card/'
+watch_one mobal_id mobal-japan 'https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-'
+watch_one mobal_roaming mobal-japan 'https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming'
+watch_one mobal_number_loss mobal-japan 'https://helpdesk.mobal.com/support/solutions/articles/205000042589-phone-number-type'
+watch_one china_gov_guide china-official-carrier 'https://english.www.gov.cn/2025special/bizexpatsinchina2025'
+watch_one beijing_sim_guide china-official-carrier 'https://english.beijing.gov.cn/quickguideservices/purchasingsimcards/stepsim/202312/t20231219_3503994.html'
+watch_one miit_tianjin_2026 china-official-carrier 'https://tjca.miit.gov.cn/bsfw/bszn/art/2026/art_4cdc69ee883e409990033d44b49e0fab.html'
+watch_one airalo_sms_calls airalo-data 'https://www.airalo.com/help/using-managing-esims/ZSEEHBT5HW6F/kan-ik-met-mijn-esim-bellen-of-smsen/V9CFOOQYA2DU'
+
+printf '%s\t%s\t%s\t%s\t%s\n' "$NOW" "$TOTAL" "$OK" "$SKIP" "$ERR" >> "$RUNS"
+[ -f "$EVENTS" ] && [ "$(stat -c %s "$EVENTS" 2>/dev/null || echo 0)" -gt 1048576 ] && { tail -n 3000 "$EVENTS" > "$EVENTS.tmp"; mv "$EVENTS.tmp" "$EVENTS"; }
+[ -f "$RUNS" ] && [ "$(stat -c %s "$RUNS" 2>/dev/null || echo 0)" -gt 262144 ] && { tail -n 2000 "$RUNS" > "$RUNS.tmp"; mv "$RUNS.tmp" "$RUNS"; }
+printf 'total=%s ok=%s robots_skip=%s fetch_error=%s content_changes=%s\n' "$TOTAL" "$OK" "$SKIP" "$ERR" "$CHANGES"
+exit 0
