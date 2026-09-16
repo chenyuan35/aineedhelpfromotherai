@@ -1,0 +1,64 @@
+#!/bin/bash
+set -u
+BASE=/var/lib/aineedhelp-phone-demand-watch
+STATE="$BASE/state"
+TMP=/tmp/aineedhelp-phone-demand-watch.$$
+LATEST="$BASE/latest.tsv"
+SIGNALS="$BASE/signals.tsv"
+SOURCES="$BASE/sources.tsv"
+SEEN="$STATE/seen.txt"
+UA='aineedhelpfromotherai-demand-watch/1.0 (+https://aineedhelpfromotherai.com/)'
+mkdir -p "$STATE" "$TMP"
+touch "$SEEN" "$SIGNALS"
+trap 'rm -rf "$TMP"' EXIT
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+printf 'source\tstatus\thttp\titems\tmatched\turl\n' > "$SOURCES"
+printf 'source\tcategory\tintent\tactivity\tpublished\ttitle\turl\texcerpt\n' > "$LATEST"
+
+parse_feed() {
+  local psource="$1" pbody="$2"
+  perl /usr/local/lib/aineedhelp/phone-demand-parse.pl "$psource" "$pbody"
+}
+
+fetch_feed() {
+  source="$1"; url="$2"; sleep_s="$3"; body="$TMP/$source.xml"; hdr="$TMP/$source.h"
+  code=$(curl -A "$UA" -LsS --compressed --max-time 25 -D "$hdr" -o "$body" -w '%{http_code}' "$url" 2>/dev/null || printf '000')
+  if [ "$code" = 200 ] && [ -s "$body" ]; then
+    parsed="$TMP/$source.tsv"; parse_feed "$source" "$body" > "$parsed" || true
+    items=$(grep -Eo '<(entry|item)([ >])' "$body" 2>/dev/null | wc -l | tr -d ' '); matched=$(wc -l < "$parsed" | tr -d ' ')
+    cat "$parsed" >> "$LATEST"
+    while IFS=$'\t' read -r src catg intent activity pub title link excerpt; do
+      [ -n "${link:-}" ] || continue
+      h=$(printf '%s\t%s' "$src" "$link" | sha256sum | cut -d' ' -f1)
+      if ! grep -Fqx "$h" "$SEEN"; then
+        printf '%s\n' "$h" >> "$SEEN"
+        printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$src" "$catg" "$intent" "$activity" "$pub" "$title" "$link" "$excerpt" >> "$SIGNALS"
+      fi
+    done < "$parsed"
+    printf '%s\tok\t%s\t%s\t%s\t%s\n' "$source" "$code" "$items" "$matched" "$url" >> "$SOURCES"
+  else
+    printf '%s\tfetch-error\t%s\t0\t0\t%s\n' "$source" "$code" "$url" >> "$SOURCES"
+  fi
+  sleep "$sleep_s"
+}
+
+fetch_feed reddit_phone 'https://www.reddit.com/r/eSIMs+NoContract/new/.rss' 6
+fetch_feed nodeloc 'https://www.nodeloc.com/latest.rss' 3
+fetch_feed nodeseek 'https://www.nodeseek.com/rss.xml' 3
+fetch_feed v2ex 'https://www.v2ex.com/index.xml' 1
+
+[ "$(wc -l < "$SEEN")" -gt 6000 ] && { tail -n 5000 "$SEEN" > "$SEEN.tmp"; mv "$SEEN.tmp" "$SEEN"; }
+[ "$(wc -l < "$SIGNALS")" -gt 5000 ] && { tail -n 4000 "$SIGNALS" > "$SIGNALS.tmp"; mv "$SIGNALS.tmp" "$SIGNALS"; }
+
+{
+  echo '# Phone Lifecycle Community Demand Radar'
+  echo
+  echo "Updated: $NOW"
+  echo
+  echo 'Current feed matches (discovery signals, not verified facts):'
+  tail -n +2 "$LATEST" | head -n 40 | awk -F '\t' '{printf "- [%s / %s] %s — %s\n", $2,$3,$6,$7}'
+  echo
+  echo 'Source health:'
+  tail -n +2 "$SOURCES" | awk -F '\t' '{printf "- %s: %s (HTTP %s), %s matched\n",$1,$2,$3,$5}'
+} > "$BASE/latest.md"
+printf 'sources=%s matched=%s new_total=%s\n' "$(tail -n +2 "$SOURCES" | wc -l)" "$(tail -n +2 "$LATEST" | wc -l)" "$(wc -l < "$SIGNALS")"
