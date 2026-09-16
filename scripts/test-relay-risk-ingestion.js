@@ -1,6 +1,6 @@
 const assert = require('assert');
 const { replaceDailySnapshot } = require('./update-relay-risk-data');
-const { getLatestSource } = require('../lib/relay-risk-v2');
+const { getLatestSource, getSourceHistory } = require('../lib/relay-risk-v2');
 
 function row(key, version, date = '2026-09-15') {
   return {
@@ -100,6 +100,24 @@ class SnapshotClient {
   const current = await getLatestSource(currentDb, 'current.example');
   assert.strictEqual(current.providerName, 'current.example');
   assert.strictEqual(current.stale, false);
+
+  const historyDb = {
+    async query(sql, params) {
+      const normalized = sql.replace(/\s+/g, ' ');
+      assert(normalized.includes('MAX(source_updated_at) AS source_updated_at'));
+      assert(normalized.includes('final.source_updated_at = daily.source_updated_at'));
+      assert.deepStrictEqual(params, ['legacy.example']);
+      return { rows: [{
+        snapshot_date: '2026-09-14', uptime: 99.8, sample_count: 24,
+        latency_p50: 120, price_profile: 'near', dead: false,
+      }] };
+    },
+  };
+  const history = await getSourceHistory(historyDb, 'legacy.example');
+  assert.deepStrictEqual(history, [{
+    date: '2026-09-14', uptime: 99.8, sampleCount: 24,
+    latencyP50: 120, priceProfile: 'near', dead: false,
+  }]);
 
   console.log('relay-risk ingestion/current-source tests passed');
 })().catch(error => {
