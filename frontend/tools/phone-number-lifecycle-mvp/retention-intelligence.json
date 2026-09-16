@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-09-16",
+  "policy": {
+    "deadlineRule": "Provider deadlines and product reminder buffers are separate. Unknown rules stay unknown.",
+    "costRule": "Minimum cost means the lowest fixed-price qualifying action currently supported by official evidence for this route. Taxes, roaming differences and usage outside the stated basis remain separate.",
+    "confidenceRule": "Confidence measures evidence completeness, not service quality or future availability."
+  },
+  "routes": {
+    "giffgaff-uk": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "Six months with no qualifying SIM use triggers inactivity deactivation.",
+      "clock_start_or_reset": "The clock runs from the most recent qualifying action listed by giffgaff.",
+      "qualifying_activity": [
+        "Call, SMS or MMS to another number, excluding emergency, Member Services, 0800 and other free-rated numbers.",
+        "At least one mobile-data connection.",
+        "An Airtime Credit purchase or plan purchase."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Community/account activity is not SIM activity.",
+        "Emergency, Member Services, 0800 and other free-rated calls/texts are explicitly excluded.",
+        "Incoming SMS, account login and balance checks are not documented as clock-reset actions."
+      ],
+      "lowest_cost_documented_action": "Send one standard UK PAYG SMS to a non-free-rated UK number. Current official PAYG price: £0.10 per text.",
+      "safest_documented_action": "If you want the least ambiguous remote keep-alive action, buy Airtime Credit before the six-month deadline; giffgaff explicitly lists Airtime Credit purchase as qualifying. Current minimum credit purchase is £10.",
+      "minimum_expected_cost": {
+        "amount": 0.1,
+        "currency": "GBP",
+        "basis": "one standard UK PAYG SMS",
+        "status": "official-fixed-price",
+        "note": "Outside-UK SMS pricing varies, so £0.10 is not a universal roaming cost."
+      },
+      "recommended_buffer": {
+        "value": 30,
+        "unit": "days",
+        "basis": "Product reminder buffer aligned with giffgaff’s first inactivity warning, which is sent about one month before deactivation."
+      },
+      "grace_or_rescue_window": "The SIM itself cannot be reactivated after inactivity deactivation. A PAC can be requested from giffgaff agents within 30 days after deactivation to port the number to another UK network.",
+      "termination_and_recycling": "At 30 days or more after deactivation, the number cannot be retrieved; giffgaff says it returns to the available-number pool and is recycled.",
+      "sources": [
+        {
+          "label": "giffgaff — inactivity deactivation and 30-day PAC rescue",
+          "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — PAYG rates",
+          "url": "https://www.giffgaff.com/pricing",
+          "type": "official"
+        },
+        {
+          "label": "giffgaff — minimum Airtime Credit purchase",
+          "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+          "type": "official"
+        }
+      ]
+    },
+    "lebara-uk": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "After 90 days with no call, text or mobile-data use, service is temporarily barred. After a further 365 days with no usage or top-up/plan purchase, the SIM expires.",
+      "clock_start_or_reset": "The first 90-day clock is defined by the last documented call, text or data use. After temporary barring, adding credit or buying a plan restores service. The official help page does not explicitly say that a top-up made before day 90 by itself resets the initial usage clock.",
+      "qualifying_activity": [
+        "Make a call.",
+        "Send a text.",
+        "Browse/use mobile data.",
+        "After temporary barring, add credit or buy a plan to resume service."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Incoming SMS is not listed as qualifying use.",
+        "Account login and balance checks are not listed as qualifying use.",
+        "A pre-bar top-up as a substitute for call/text/data activity is not explicit in the cited official help rule."
+      ],
+      "lowest_cost_documented_action": "Send one standard UK PAYG SMS while the line is active. Current official UK rate: £0.19 per text. Data is charged per KB and could cost less, but the official page does not document a minimum billable data session, so it is not used as the fixed-cost baseline.",
+      "safest_documented_action": "Before 90 days, complete a normal chargeable call, SMS or data session. If the SIM has already been temporarily barred, add credit or buy a plan through Lebara to restore service.",
+      "minimum_expected_cost": {
+        "amount": 0.19,
+        "currency": "GBP",
+        "basis": "one standard UK PAYG SMS",
+        "status": "official-fixed-price",
+        "note": "Roaming rates can differ by destination."
+      },
+      "recommended_buffer": {
+        "value": 14,
+        "unit": "days",
+        "basis": "Product-side buffer only; Lebara’s provider deadline remains 90 days."
+      },
+      "grace_or_rescue_window": "Temporary barring after 90 days is followed by a further 365-day recoverable inactivity period; adding credit or buying a plan can restore service during that period.",
+      "termination_and_recycling": "After the further 365-day period, Lebara says the SIM expires and a new SIM/number is required. The cited official page does not state the exact number-recycling timing.",
+      "sources": [
+        {
+          "label": "Lebara UK — SIM inactivity and expiry",
+          "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+          "type": "official"
+        },
+        {
+          "label": "Lebara UK — PAYG rates",
+          "url": "https://www.lebara.co.uk/en/rates.html",
+          "type": "official"
+        }
+      ]
+    },
+    "tello-us": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "This monthly-plan route is payment/service based, not usage based. A plan lasts 30 days. If the monthly plan ends and is not renewed, the number has a 12-day grace period before expiration.",
+      "clock_start_or_reset": "A plan purchase or successful renewal starts a new 30-day billing cycle. The 12-day number grace period starts after the monthly service stops.",
+      "qualifying_activity": [
+        "Successful automatic plan renewal.",
+        "Manual plan renewal or purchase of a new plan before the number expires.",
+        "Port out during the post-service grace period if leaving Tello."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Calls, texts, data use or account login do not replace the required paid-plan renewal for this route.",
+        "A failed payment does not count as renewal.",
+        "Tello PAYG has a different 3-month credit-expiry rule and is not the retention model used for this monthly-plan route."
+      ],
+      "lowest_cost_documented_action": "Renew the current documented $5 / 30-day base plan.",
+      "safest_documented_action": "Keep Autopay enabled with a valid payment method and optionally enable Tello’s 48-hour renewal notice; verify the renewal succeeds before the service end date.",
+      "minimum_expected_cost": {
+        "amount": 5,
+        "currency": "USD",
+        "period": "30 days",
+        "basis": "documented base monthly plan",
+        "status": "official-base-only",
+        "note": "Taxes/surcharges can be extra."
+      },
+      "recommended_buffer": {
+        "value": 3,
+        "unit": "days",
+        "basis": "Product-side buffer before the 30-day renewal boundary."
+      },
+      "grace_or_rescue_window": "12 days after an unrenewed monthly plan ends. Buy a new plan or begin port-out before the grace period ends.",
+      "termination_and_recycling": "Tello states there is no recovery after the phone number expires. The cited help page does not state the later recycling timetable.",
+      "sources": [
+        {
+          "label": "Tello — plan renewal timing",
+          "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+          "type": "official"
+        },
+        {
+          "label": "Tello — phone-number expiration and grace period",
+          "url": "https://tello.com/help_center/phone-number/when-will-my-phone-number-expire",
+          "type": "official"
+        },
+        {
+          "label": "Tello — current $5 base plan",
+          "url": "https://tello.com/buy/custom_plans?plan=0-300",
+          "type": "official"
+        }
+      ]
+    },
+    "ultra-paygo-us": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "PayGo service runs in 30-day cycles. If the wallet balance is below the $3 recurring-charge minimum at the cycle end, service is suspended.",
+      "clock_start_or_reset": "Activation or successful $3 monthly renewal starts the next 30-day cycle. During suspension, adding enough credit to meet the $3 minimum renews service for the next cycle.",
+      "qualifying_activity": [
+        "Maintain at least $3 in the PayGo wallet for the recurring 30-day charge.",
+        "Add credit during suspension so the balance reaches the $3 renewal minimum."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Calls, texts and data usage do not substitute for the $3 renewal charge.",
+        "A positive balance below $3 does not restore active service.",
+        "Voice/Text or Data Passes do not work on suspended or cancelled accounts."
+      ],
+      "lowest_cost_documented_action": "Fund the recurring $3 PayGo service charge for each 30-day cycle. If new wallet funding is needed, Ultra’s documented Auto Renew denominations begin at $5, with $3 applied to the monthly renewal.",
+      "safest_documented_action": "Enable Auto Renew with a valid card and enough wallet balance so the $3 recurring charge succeeds each cycle; do not rely on the suspension window.",
+      "minimum_expected_cost": {
+        "amount": 3,
+        "currency": "USD",
+        "period": "30 days",
+        "basis": "PayGo recurring service charge",
+        "status": "official",
+        "note": "A fresh Auto Renew top-up denomination may be $5 or more; unused wallet value remains separate from the $3 service charge."
+      },
+      "recommended_buffer": {
+        "value": 3,
+        "unit": "days",
+        "basis": "Product-side buffer before the 30-day renewal boundary."
+      },
+      "grace_or_rescue_window": "Up to 60 days suspended. If balance is above $0 but below $3 after 60 days, the detailed terms provide an additional 30-day extension. If balance is $0 after 60 days, the account is cancelled without that extension.",
+      "termination_and_recycling": "Ultra says the account and phone number are cancelled when the applicable grace path ends. The cited terms do not state the exact number-recycling timetable.",
+      "sources": [
+        {
+          "label": "Ultra Mobile — PayGo plan and FAQ",
+          "url": "https://www.ultramobile.com/paygo/",
+          "type": "official"
+        },
+        {
+          "label": "Ultra Mobile — detailed PayGo suspension/cancellation terms",
+          "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+          "type": "official"
+        }
+      ]
+    },
+    "h2o-paygo-us": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "The current $10 and $30 Pay As You Go refills expire after 90 days; the $100 refill expires after 365 days. If account balance remains $0 for 30 consecutive days, the account and phone number are cancelled.",
+      "clock_start_or_reset": "The refill expiration clock starts from the purchased refill/renewal. Recharging before expiration preserves eligibility; the official page says remaining balance rolls over when the same amount is recharged before expiration.",
+      "qualifying_activity": [
+        "Recharge the Pay As You Go plan before its stated expiration date.",
+        "Use AutoPay where offered to renew the selected refill before expiry."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Calls, texts and data consume balance but are not documented as extending the refill expiration date.",
+        "Account login or incoming service does not replace the refill requirement.",
+        "Do not treat the 30-day $0-balance period as a normal retention strategy."
+      ],
+      "lowest_cost_documented_action": "Renew the $10 / 90-day Pay As You Go refill. The current official plan page shows $9 with AutoPay.",
+      "safest_documented_action": "Recharge the same Pay As You Go amount before its expiration date and verify the balance/plan renewed; keep the account away from a $0 balance.",
+      "minimum_expected_cost": {
+        "amount": 9,
+        "currency": "USD",
+        "period": "90 days",
+        "basis": "current $10 PayGo refill with advertised 10% AutoPay discount",
+        "status": "official-current",
+        "note": "Without AutoPay, the documented refill is $10; taxes/fees may apply."
+      },
+      "recommended_buffer": {
+        "value": 7,
+        "unit": "days",
+        "basis": "Product-side buffer before the selected refill expiration date."
+      },
+      "grace_or_rescue_window": "If the balance is $0, cancellation occurs after 30 consecutive days at $0. Restore funded service before that point.",
+      "termination_and_recycling": "After 30 consecutive days at $0, H2O says the account and phone number are cancelled. The cited terms do not state the exact number-recycling timetable.",
+      "sources": [
+        {
+          "label": "H2O Wireless — Pay As You Go refill prices and expiry",
+          "url": "https://www.h2owireless.com/plan/minute",
+          "type": "official"
+        },
+        {
+          "label": "H2O Wireless — Pay As You Go terms",
+          "url": "https://www.h2owireless.com/terms-conditions",
+          "type": "official"
+        }
+      ]
+    },
+    "mobal-japan-voice-data": {
+      "status": "partial",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "This Voice+Data 5G route is an ongoing monthly service, not an inactivity-based prepaid line. Long-term plan fees renew by calendar month until manually terminated.",
+      "clock_start_or_reset": "For long-term plans, Mobal posts the invoice on the 1st and automatically charges the stored payment method on the 8th. Keeping the monthly service paid maintains the route.",
+      "qualifying_activity": [
+        "Successful monthly plan payment.",
+        "Keep billing information valid so automatic payment succeeds.",
+        "Port the number before termination if moving to another eligible Japanese provider."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Incoming SMS or ordinary usage does not replace the monthly plan fee.",
+        "For the latest Voice+Data 5G product, the cited suspension page says the Vacation Plan is not available.",
+        "The exact non-payment suspension-to-termination grace duration is not stated in the cited official pages."
+      ],
+      "lowest_cost_documented_action": "Keep the current 1GB Voice+Data 5G plan active at ¥1,650 per calendar month for this specific route.",
+      "safest_documented_action": "Keep the monthly plan active with valid billing details and verify payment; if leaving Mobal but keeping the number, complete the documented number-porting path before termination.",
+      "minimum_expected_cost": {
+        "amount": 1650,
+        "currency": "JPY",
+        "period": "calendar month",
+        "basis": "current 1GB Voice+Data 5G plan",
+        "status": "official",
+        "note": "This is route-specific and does not substitute the cheaper Voice Lite product, which is a different route."
+      },
+      "recommended_buffer": {
+        "value": 3,
+        "unit": "days",
+        "basis": "Product-side buffer before the automatic payment date on the 8th."
+      },
+      "grace_or_rescue_window": "Unknown. Mobal warns failed billing can lead to suspension or termination but the reviewed official pages do not publish a fixed grace duration for this route.",
+      "termination_and_recycling": "A submitted termination permanently disconnects service and loses the Mobal phone number. Once fully terminated, the plan cannot be reactivated and a replacement SIM/eSIM receives a new number. Exact recycling timing is not published in the cited pages.",
+      "sources": [
+        {
+          "label": "Mobal — Voice+Data 5G pricing",
+          "url": "https://www.mobal.com/japan-sim-card/",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — long-term billing procedure",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041300-billing-procedures",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — termination and number loss",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041487-termination-requests",
+          "type": "official"
+        },
+        {
+          "label": "Mobal — current suspension limitations",
+          "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041505-suspension-requests",
+          "type": "official"
+        }
+      ]
+    },
+    "sakura-japan-voice-data": {
+      "status": "verified",
+      "confidence": "high",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "This is a monthly contract, not an inactivity-based prepaid line. A Voice+Data line can be placed on Sakura’s suspension option to keep the number while service is paused.",
+      "clock_start_or_reset": "Normal service follows monthly billing. Suspension is applied for full calendar months through My Page according to the plan-change schedule.",
+      "qualifying_activity": [
+        "Continue paying the normal Voice+Data monthly plan.",
+        "For number retention without service, use the documented Voice+Data suspension option at ¥220/month with credit-card payment.",
+        "If moving carriers, request MNP before submitting termination."
+      ],
+      "non_qualifying_or_unknown_activity": [
+        "Suspension provides no calls, SMS or data, so it preserves the number but does not provide OTP continuity.",
+        "If the ¥220 suspension fee is unpaid, Sakura states the contract will be terminated.",
+        "After submitting termination, a plan change or MNP request can no longer be submitted."
+      ],
+      "lowest_cost_documented_action": "Use Sakura’s Voice+Data suspension option at ¥220 per month if you only need to retain the current number and do not need calls/SMS/data during suspension.",
+      "safest_documented_action": "If ongoing OTP/SMS access matters, keep the normal Voice+Data plan active. If you only need future ownership, use the official suspension option and keep the credit card valid.",
+      "minimum_expected_cost": {
+        "amount": 220,
+        "currency": "JPY",
+        "period": "month",
+        "basis": "Voice+Data suspension option",
+        "status": "official",
+        "note": "Credit-card payment is required; suspended service has no call/SMS/data access."
+      },
+      "recommended_buffer": {
+        "value": 5,
+        "unit": "days",
+        "basis": "Product-side buffer before Sakura’s normal 25th-of-month plan-change/termination cutoff."
+      },
+      "grace_or_rescue_window": "No fixed unpaid grace period was found in the reviewed official pages. The suspension article says an unpaid suspension fee terminates the contract.",
+      "termination_and_recycling": "Termination occurs at month-end according to the request cutoff. Users who want to keep the number should request MNP before termination; Sakura says an MNP request can no longer be submitted after a termination request. Exact post-termination recycling timing is not documented in the cited pages.",
+      "sources": [
+        {
+          "label": "Sakura Mobile — suspend Voice+Data and keep the number",
+          "url": "https://support.sakuramobile.jp/hc/en-us/articles/360050909732--Monthly-SIM-eSIM-I-want-to-pause-my-plan-but-keep-my-current-phone-number-How-can-I-do-that",
+          "type": "official"
+        },
+        {
+          "label": "Sakura Mobile — monthly contract termination",
+          "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020534531-How-do-I-terminate-cancel-my-Monthly-contract",
+          "type": "official"
+        },
+        {
+          "label": "Sakura Mobile — MNP number request",
+          "url": "https://support.sakuramobile.jp/hc/en-us/articles/360040330852-How-do-I-request-an-MNP-number",
+          "type": "official"
+        }
+      ]
+    },
+    "china-official-carrier": {
+      "status": "unknown",
+      "confidence": "unknown",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "Unknown at this generic route level. China Mobile, China Unicom and China Telecom plans must be verified separately.",
+      "clock_start_or_reset": "Unknown until a specific carrier and plan are selected.",
+      "qualifying_activity": [],
+      "non_qualifying_or_unknown_activity": [
+        "Do not generalize one recharge, inactivity or suspension rule across the three national operators."
+      ],
+      "lowest_cost_documented_action": "Unknown for the generic route.",
+      "safest_documented_action": "Keep the selected carrier plan active under that carrier’s current terms; verify the exact plan before relying on the number long term.",
+      "minimum_expected_cost": null,
+      "recommended_buffer": null,
+      "grace_or_rescue_window": "Unknown for the generic route.",
+      "termination_and_recycling": "Unknown for the generic route.",
+      "sources": []
+    },
+    "local-carrier": {
+      "status": "unknown",
+      "confidence": "unknown",
+      "last_verified_at": "2026-09-16",
+      "inactivity_window": "Destination- and carrier-specific; no generic retention deadline is asserted.",
+      "clock_start_or_reset": "Unknown until a specific carrier and prepaid plan are selected.",
+      "qualifying_activity": [],
+      "non_qualifying_or_unknown_activity": [
+        "Top-up, outgoing use, incoming SMS, app login and balance checks must not be assumed to reset the clock without carrier evidence."
+      ],
+      "lowest_cost_documented_action": "Unknown until a specific carrier is selected.",
+      "safest_documented_action": "Verify the exact carrier’s inactivity and top-up terms before using the number for long-term recovery.",
+      "minimum_expected_cost": null,
+      "recommended_buffer": null,
+      "grace_or_rescue_window": "Unknown until a specific carrier is selected.",
+      "termination_and_recycling": "Unknown until a specific carrier is selected.",
+      "sources": []
+    }
+  }
+}

@@ -40,6 +40,9 @@ jobs:
       - name: Audit phone-number lifecycle MVP
         run: node scripts/test-phone-number-lifecycle-mvp.mjs
 
+      - name: Audit phone-number retention intelligence
+        run: node scripts/test-phone-number-retention-intelligence.mjs
+
       - name: Run golden eval suite
         run: npm run eval -- --quiet
         id: evals
