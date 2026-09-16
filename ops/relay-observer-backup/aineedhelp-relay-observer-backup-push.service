@@ -1,0 +1,18 @@
+[Unit]
+Description=Push relay observer backup to Qwen over Tailscale Taildrop
+After=network-online.target tailscaled.service aineedhelp-relay-observer.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/aineedhelp-relay-observer-backup-push
+User=root
+Nice=10
+IOSchedulingClass=idle
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/aineedhelp-relay-observer
+MemoryMax=128M
+TimeoutStartSec=180

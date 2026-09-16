@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily relay observer backup push
+
+[Timer]
+OnCalendar=*-*-* 08:50:00 UTC
+RandomizedDelaySec=5m
+Persistent=true
+AccuracySec=1m
+Unit=aineedhelp-relay-observer-backup-push.service
+
+[Install]
+WantedBy=timers.target

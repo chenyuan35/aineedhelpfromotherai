@@ -10,6 +10,8 @@ on:
       - 'package.json'
       - 'Dockerfile'
       - '.github/workflows/ci.yml'
+      - 'ops/relay-observer-backup/**'
+      - 'scripts/test-relay-observer-backup-transport.sh'
   pull_request:
     branches: [main]
     paths:
@@ -19,6 +21,9 @@ on:
       - 'api-handlers/*.js'
       - 'package.json'
       - 'Dockerfile'
+      - 'ops/relay-observer-backup/**'
+      - 'scripts/test-relay-observer-backup-transport.sh'
+      - '.github/workflows/ci.yml'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -32,6 +37,9 @@ jobs:
         with:
           node-version: 24
       - run: npm ci || npm install --omit=dev
+
+      - name: Relay observer backup transport
+        run: bash scripts/test-relay-observer-backup-transport.sh
 
       # Write queue compliance: no bare writeFileSync/appendFileSync across all .js
       # Exceptions:

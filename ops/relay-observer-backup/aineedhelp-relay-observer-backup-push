@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+DB=${RELAY_OBSERVER_DB:-/var/lib/aineedhelp-relay-observer/relay-history.sqlite3}
+TARGET=${RELAY_BACKUP_TARGET:-qwen-control}
+TAILSCALE_BIN=${TAILSCALE_BIN:-tailscale}
+WORK=$(mktemp -d /tmp/aineedhelp-relay-backup.XXXXXX)
+STAMP=$(date -u +%Y%m%dT%H%M%SZ)
+SQLITE="$WORK/relay-history-$STAMP.sqlite3"
+GZ="$SQLITE.gz"
+trap 'rm -rf "$WORK"' EXIT
+
+python3 - "$DB" "$SQLITE" <<'PY'
+import os, sqlite3, sys
+src_path, dst_path = sys.argv[1:3]
+if not os.path.isfile(src_path):
+    raise SystemExit(f'missing source database: {src_path}')
+src = sqlite3.connect(f'file:{src_path}?mode=ro', uri=True)
+dst = sqlite3.connect(dst_path)
+src.backup(dst)
+dst.close(); src.close()
+check = sqlite3.connect(dst_path)
+result = check.execute('PRAGMA quick_check').fetchone()[0]
+if result != 'ok':
+    raise SystemExit(f'backup quick_check failed: {result}')
+rows = check.execute('select count(*) from relay_daily').fetchone()[0]
+check.close()
+print(f'backup_snapshot_ok relay_daily={rows}')
+PY
+
+gzip -c "$SQLITE" > "$GZ"
+gzip -t "$GZ"
+"$TAILSCALE_BIN" file cp --name="$(basename "$GZ")" "$GZ" "$TARGET:"
+echo "backup_taildrop_sent target=$TARGET file=$(basename "$GZ")"
