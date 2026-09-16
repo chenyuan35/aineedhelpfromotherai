@@ -76,6 +76,24 @@
         "state": "unknown",
         "label": "Wi-Fi Calling abroad not yet verified for this MVP route",
         "note": "Do not assume Wi-Fi Calling can replace roaming until the PayGo-specific rule is verified."
+      },
+      "numberDuration": {
+        "state": "renewable-carrier",
+        "label": "Renewable carrier line with 30-day service cycles",
+        "note": "Ultra PayGo is a recurring carrier service. The base charge is deducted every 30 days while sufficient wallet balance is available.",
+        "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+      },
+      "termination": {
+        "state": "suspension-then-cancellation",
+        "label": "Missed renewal can suspend service and eventually cancel the number",
+        "note": "Ultra’s full PayGo terms say an account below the $3 renewal minimum can remain suspended for up to 60 days; if the balance is above $0 but below $3, an additional 30-day extension can apply. If the balance is $0 after 60 days, the account is cancelled without that extension. The simpler PayGo FAQ says the account and number are cancelled if no payment is made 60 days after the last payment. Treat the full terms as the detailed rule and restore service early rather than relying on the edge of the grace window.",
+        "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+      },
+      "activationFlow": {
+        "state": "standard-physical-sim",
+        "label": "Official PayGo physical-SIM activation uses the SIM ACT CODE",
+        "note": "Ultra’s PayGo activation page asks for the 11-character ACT CODE from the back of the SIM. A third-party pre-activated eSIM is therefore a different activation/ownership path and should not be treated as equivalent.",
+        "sourceUrl": "https://my.ultramobile.com/paygo/activation"
       }
     },
     "h2o-paygo-us": {

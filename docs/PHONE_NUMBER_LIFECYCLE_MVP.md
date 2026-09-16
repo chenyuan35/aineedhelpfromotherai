@@ -44,7 +44,9 @@ Cost and purchase-channel evidence are first-class decision inputs, not decorati
 
 The structured purchase model records, where evidence supports it:
 
-- purchase relationship: official direct, official channel, platform/marketplace, or unverified;
+- purchase relationship: official direct, provider-designated channel, official-linked marketplace, third-party marketplace, or unverified;
+- route-level recurring service cost and, when needed, separate acquisition-option prices so a “$3/month” plan is not mistaken for a $3 purchase;
+- acquisition options can carry product/activation class, observed item price, shipping, all-in-before-tax, current availability, seller evidence, returns, source and last-checked date;
 - scenario base cost for 30/90/365 days;
 - setup/activation fee, recurring charge, taxes/fees, delivery and temporary promotion status;
 - official/reference price basis and a fair-price/overpay explanation;
@@ -54,7 +56,7 @@ The structured purchase model records, where evidence supports it:
 
 Unknown evidence lowers confidence and stays unknown. A free SIM is not treated as a zero-cost route when activation/top-up spend is unresolved. A temporary promotion is shown separately from durable totals. Temporary-number marketplace list prices are not converted into an "expected successful cost" without independent success/refund evidence.
 
-Numeric cost tiebreaks are deliberately narrow: routes are compared only when they have numeric values for the relevant horizon, the same currency, and the same comparison group. This prevents JPY/USD/GBP or voice-number/data-only products from being ranked by meaningless raw-number comparisons.
+Numeric cost tiebreaks are deliberately narrow: routes are compared only when they have numeric values for the relevant horizon, the same currency, and the same comparison group. This prevents JPY/USD/GBP or voice-number/data-only products from being ranked by meaningless raw-number comparisons. Within a multi-channel acquisition record, price-gap language is only used for like-for-like product/activation classes; a sealed physical SIM is not compared as identical to a seller-managed pre-activated eSIM.
 
 A fair-price label is explanatory rather than accusatory. An official price can be used as a benchmark for a like-for-like third-party quote, but the tool does not call a seller overpriced or unsafe without comparable evidence.
 
@@ -150,7 +152,7 @@ This separation prevents a cheap route from being recommended when it cannot be 
 - giffgaff UK: six-month inactivity rule is separate from first-use/long-term overseas-use policy risk; UK physical-SIM delivery constraint; roaming support; no reliance on Wi-Fi Calling abroad; post-inactivity port-out rescue window is shown separately.
 - Lebara UK: UK-only first activation requirement, PAYG inactivity/expiry rules and international roaming support after UK activation.
 - Tello US: first activation/port-in must occur in the US; overseas Wi-Fi Calling/Text and roaming are post-activation capabilities; community reports of exceptions are labelled anecdotal and linked separately.
-- Ultra Mobile PayGo US: USD 3/month route and documented international voice/SMS/MMS roaming; overseas initial-activation/KYC details remain unknown where first-party evidence is insufficient.
+- Ultra Mobile PayGo US: USD 3 per 30-day service baseline is separated from acquisition cost. The provider directs buyers to eBay or select T-Mobile stores; the provider-linked eBay reference was observed unavailable, while current third-party sealed-SIM and pre-activated-eSIM marketplace options are modeled separately with price, shipping, stock, returns, seller-history context and ownership/activation cautions. Only the sealed physical-SIM option is compared like-for-like with the provider-linked reference. International voice/SMS/MMS roaming is documented; data roaming is not included. Overseas initial-activation/KYC details remain unknown where first-party evidence is insufficient.
 - H2O Pay As You Go US: refill/number-expiry rules are documented, but PayGo is not treated as having proven international roaming SMS where current terms only establish roaming for another plan class.
 - Mobal Japan Voice+Data: real 070/080/090 Japanese number, current 1GB Voice+Data entry price, ID rules, number assignment after activation and explicit number loss after termination; temporary setup discounts are not substituted for the durable price baseline.
 - Sakura Mobile Japan Voice+Data passport route: non-resident passport route with face-to-face identity verification/pickup; post-departure OTP/roaming remains unknown until verified.
@@ -191,7 +193,7 @@ The dedicated command is:
 
 `node scripts/test-phone-number-lifecycle-mvp.mjs`
 
-It is now a blocking CI step. The current local audited run completes **55 deterministic assertions** against the actual inline page logic, including **16 end-to-end render-path acceptance scenarios** across registration and travel journeys.
+It is now a blocking CI step. The current local audited run completes **61 deterministic assertions** against the actual inline page logic, including **16 end-to-end render-path acceptance scenarios** across registration and travel journeys.
 
 Required invariants include:
 
@@ -216,8 +218,8 @@ Required invariants include:
 - keep-alive export still emits a valid calendar shell.
 - scenario cost, purchase-channel evidence, fair-price handling and unknown-data behavior reach the actual rendered result path.
 - cheap/safe ranking cannot compare unlike currencies/product classes or turn missing evidence into a neutral score.
-- the 16 acceptance scenarios cover the major lifecycle and purchase-layer failure modes.
-- local Chromium rendering has been checked on desktop and narrow/mobile layouts: the audited US WhatsApp long-term path rendered three route cards, surfaced cost/fair-price/channel/OTP-caveat content, and had no measured horizontal overflow. Full-page screenshots were inspected manually.
+- the 16 acceptance scenarios cover the major lifecycle and purchase-layer failure modes; dedicated deterministic checks now also cover Ultra PayGo recurring-vs-acquisition separation, provider-linked availability, like-for-like price-gap math, pre-activated ownership separation and non-invented activation geography.
+- local Chromium rendering has been checked on desktop and narrow/mobile layouts: the audited US WhatsApp long-term path surfaces the Ultra “Where to buy now” acquisition choices, USD 39 service-only 365-day baseline, USD 13 provider-linked reference, USD 53.85 observed third-party sealed-SIM all-in-before-tax snapshot, the distinct pre-activated-eSIM warning, lifecycle termination/activation evidence, and no measured horizontal overflow.
 - Vercel Preview/CI for the current commit must still succeed after it is pushed; local browser verification is not a substitute for preview verification.
 - prototype remains off production navigation/sitemap.
 

@@ -278,7 +278,7 @@ check('Claude and OpenAI temporary-number routes remain rejected', () => {
 });
 
 check('purchase intelligence is loaded and exposes core audited routes', () => {
-  for (const route of ['tello-us','h2o-paygo-us','mobal-japan-voice-data','sakura-japan-voice-data','giffgaff-uk','smspool-temp','5sim-temp']) {
+  for (const route of ['tello-us','ultra-paygo-us','h2o-paygo-us','mobal-japan-voice-data','sakura-japan-voice-data','giffgaff-uk','smspool-temp','5sim-temp']) {
     assert(run(`purchaseInfo(catalog.routes.find(r=>r.id==='${route}'))`), `${route} missing purchase intelligence`);
   }
 });
@@ -298,6 +298,71 @@ check('Tello cost windows model 30 90 and 365 day base costs without hiding tax'
   assert.equal(p.price.costWindows['90'].amount, 15);
   assert.equal(p.price.costWindows['365'].amount, 65);
   assert.match(p.price.tax.note, /tax|surcharge|location/i);
+});
+
+check('Ultra PayGo separates recurring service cost from acquisition cost', () => {
+  const p = run(`purchaseInfo(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  assert.equal(p.price.setup.amount, null);
+  assert.equal(p.price.setup.status, 'channel-specific');
+  assert.equal(p.price.recurring.amount, 3);
+  assert.equal(p.price.costWindows['30'].amount, 3);
+  assert.equal(p.price.costWindows['90'].amount, 9);
+  assert.equal(p.price.costWindows['365'].amount, 39);
+  assert.match(p.price.costWindows['365'].note, /excludes acquisition price/i);
+});
+
+check('Ultra provider-linked eBay option is a reference snapshot, not guaranteed stock', () => {
+  const p = run(`purchaseInfo(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  const option = p.purchaseOptions.find(x=>x.id==='ultra-official-ebay-285112988423');
+  assert(option);
+  assert.equal(option.sellerRelationship, 'official-linked-marketplace');
+  assert.equal(option.productClass, 'sealed-physical-sim');
+  assert.equal(option.price.allInBeforeTax, 13);
+  assert.equal(option.availability.state, 'observed-unavailable');
+  assert.match(option.availability.note, /out of stock|ended/i);
+});
+
+check('Ultra third-party sealed SIM price gap is like-for-like and explanatory', () => {
+  const p = run(`purchaseInfo(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  const option = p.purchaseOptions.find(x=>x.id==='ultra-third-party-sealed-354076563615');
+  assert(option);
+  assert.equal(option.comparableToReference, true);
+  assert.equal(option.price.amount, 48.85);
+  assert.equal(option.price.shippingAmount, 5);
+  assert.equal(option.price.allInBeforeTax, 53.85);
+  assert.equal(option.priceComparison.deltaAmount, 40.85);
+  assert.match(option.priceComparison.note, /price-gap signal|not a claim of unfair/i);
+});
+
+check('Ultra pre-activated eSIM is not treated as equivalent to a sealed physical SIM', () => {
+  const p = run(`purchaseInfo(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  const option = p.purchaseOptions.find(x=>x.id==='ultra-third-party-preactivated-esim-358131980470');
+  assert(option);
+  assert.equal(option.productClass, 'preactivated-esim');
+  assert.equal(option.comparableToReference, false);
+  assert.match(option.ownershipWarning, /whose account controls the number|service clock starts/i);
+  assert.doesNotMatch(option.ownershipWarning, /VPN|bypass/i);
+});
+
+check('Ultra purchase UI shows where-to-buy choices without converting seller metrics into a trust score', () => {
+  const block = run(`purchaseBlock(catalog.routes.find(r=>r.id==='ultra-paygo-us'),'365')`);
+  assert.match(block, /Where to buy now/);
+  assert.match(block, /Acquisition cost is separate from recurring service cost/);
+  assert.match(block, /Ultra Mobile Official on eBay/);
+  assert.match(block, /Third-party sealed physical SIM on eBay/);
+  assert.match(block, /Third-party pre-activated eSIM on eBay/);
+  assert.match(block, /marketplace context, not a trust score/i);
+  assert.match(block, /out of stock|ended/i);
+});
+
+check('Ultra lifecycle evidence preserves roaming limits and does not invent activation geography', () => {
+  const route = getRoute('ultra-paygo-us');
+  const caps = run(`caps(catalog.routes.find(r=>r.id==='ultra-paygo-us'))`);
+  assert.match(caps.roamingSms.note, /does not include data roaming/i);
+  assert.equal(caps.termination.state, 'suspension-then-cancellation');
+  assert.match(caps.activationFlow.note, /11-character ACT CODE|different activation\/ownership path/i);
+  assert.equal(run(`locationConstraints.routes['ultra-paygo-us'].mode`), 'unknown');
+  assert.match(run(`locationConstraints.routes['ultra-paygo-us'].summary`), /not yet verified/i);
 });
 
 check('Mobal durable cost does not substitute a temporary promotion for the regular price', () => {

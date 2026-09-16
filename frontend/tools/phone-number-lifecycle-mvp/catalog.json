@@ -227,20 +227,20 @@
       "bestFor": ["long-term-number", "us-number", "low-monthly-cost", "sms-capable-number"],
       "purchaseUrl": "https://www.ultramobile.com/paygo/",
       "cost": {
-        "purchase": "PayGo SIM kit purchase channel is currently linked by Ultra Mobile; recheck seller price before purchase.",
-        "recurring": "USD 3/month currently includes 100 minutes, 100 texts and 100MB data; overage is charged from the PayGo wallet.",
+        "purchase": "Ultra directs PayGo buyers to eBay or select T-Mobile stores. Acquisition price and availability are channel-specific and separate from the $3 / 30-day service charge.",
+        "recurring": "USD 3 per 30-day cycle includes 100 minutes, 100 texts and 100MB data; taxes, overage, roaming wallet and add-ons are separate.",
         "dynamic": true
       },
       "retention": {
         "intervalDays": 27,
-        "rule": "Maintain the USD 3 monthly PayGo service and sufficient account/payment balance; reminder is set a few days before the monthly boundary.",
-        "recovery": "Use Ultra Mobile's current account/SIM replacement or number-transfer process while the line is still active."
+        "rule": "Keep at least the USD 3 recurring charge available before each 30-day renewal. Auto Renew can be configured from the PayGo account; insufficient balance can suspend service.",
+        "recovery": "Ultra’s current terms allow a suspension/replenishment window before cancellation, but the exact window depends on remaining balance. Restore service before cancellation; after account cancellation, do not assume the number is recoverable."
       },
       "friction": {
         "identity": "Current activation/account requirements still need explicit verification for non-US residents before production.",
         "location": "International roaming is supported for voice/SMS/MMS through PayGo Wallet credit, but initial activation-location requirements still need explicit verification.",
         "device": "Unlocked compatible phone and PayGo SIM required.",
-        "ongoing": "USD 3 monthly base plan; optional roaming wallet/add-ons increase cost."
+        "ongoing": "USD 3 per 30-day base plan; acquisition price, taxes, optional roaming wallet and add-ons are separate."
       },
       "evidence": [
         {

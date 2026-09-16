@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedOn": "2026-09-15",
+  "verifiedOn": "2026-09-16",
   "policy": {
     "confidenceMeaning": "Purchase evidence confidence measures how well the purchase channel, price and terms are documented. It is not a reputation score or fraud probability.",
     "reviewsRule": "Independent review ratings are dated context only. They never become a trust score and never override first-party terms or direct product evidence.",
@@ -1035,6 +1035,303 @@
           "type": "official-government"
         }
       ]
+    },
+    "ultra-paygo-us": {
+      "verifiedOn": "2026-09-16",
+      "sellerRelationship": "official-channel",
+      "purchaseChannel": "Ultra Mobile PayGo page → eBay or select T-Mobile stores",
+      "purchaseEvidenceConfidence": "high",
+      "price": {
+        "currency": "USD",
+        "basis": "Ultra PayGo recurring service baseline; acquisition channel cost is modeled separately below",
+        "setup": {
+          "amount": null,
+          "status": "channel-specific",
+          "note": "The SIM/eSIM acquisition price depends on the purchase channel and is not the same as the $3 service renewal."
+        },
+        "recurring": {
+          "amount": 3,
+          "periodDays": 30,
+          "status": "official",
+          "note": "PayGo includes 100 minutes, 100 texts and 100MB for each 30-day cycle."
+        },
+        "tax": {
+          "status": "extra-varies",
+          "note": "Ultra states taxes and fees are additional; marketplace sales tax also varies by checkout location."
+        },
+        "shipping": {
+          "status": "channel-specific",
+          "note": "Shipping and delivery depend on the selected acquisition channel; see “Where to buy now.”"
+        },
+        "promotion": {
+          "status": "none-used",
+          "note": "Service cost windows use the official $3 / 30-day recurring charge, not a temporary seller promotion."
+        },
+        "costWindows": {
+          "30": {
+            "amount": 3,
+            "status": "service-only",
+            "note": "One 30-day service cycle only; excludes SIM/eSIM acquisition price, taxes, roaming wallet and add-ons."
+          },
+          "90": {
+            "amount": 9,
+            "status": "service-only",
+            "note": "Three 30-day service cycles only; excludes acquisition price, taxes, roaming wallet and add-ons."
+          },
+          "365": {
+            "amount": 39,
+            "status": "service-only",
+            "note": "Thirteen 30-day cycles are needed to cover at least 365 days; excludes acquisition price, taxes, roaming wallet and add-ons."
+          }
+        }
+      },
+      "purchaseSafety": {
+        "refundClarity": {
+          "state": "restrictive",
+          "note": "Ultra states Tourist and PayGo services are non-refundable and lost/stolen prepaid SIM cards are not refunded. Marketplace seller return terms are separate and may be stricter."
+        },
+        "paymentProtection": {
+          "state": "channel-specific",
+          "note": "Payment protection depends on the marketplace or retailer. Marketplace feedback and buyer-protection programs are context, not a provider guarantee."
+        },
+        "stockEvidence": {
+          "state": "channel-dependent",
+          "note": "Ultra directs buyers to eBay or select T-Mobile stores. The provider-linked eBay listing was observed unavailable in the 2026-09-16 snapshot; store stock is not verified."
+        },
+        "support": {
+          "state": "documented",
+          "note": "Ultra publishes PayGo and Care support channels."
+        },
+        "numberControl": {
+          "state": "carrier-account",
+          "note": "This is a renewable carrier line. Missing the recurring charge can suspend service and eventually cancel the account/number under Ultra’s PayGo terms."
+        },
+        "independentReview": {
+          "state": "not-researched",
+          "note": "No independent-review platform score is converted into a trust score for this route. Marketplace seller metrics below are shown only as purchase-channel context."
+        },
+        "complaintThemes": []
+      },
+      "purchaseOptions": [
+        {
+          "id": "ultra-official-ebay-285112988423",
+          "label": "Ultra Mobile Official on eBay",
+          "sellerRelationship": "official-linked-marketplace",
+          "productClass": "sealed-physical-sim",
+          "productClassLabel": "Sealed physical PayGo SIM",
+          "price": {
+            "currency": "USD",
+            "amount": 13,
+            "shippingAmount": 0,
+            "allInBeforeTax": 13,
+            "status": "reference-observed",
+            "note": "Provider-linked listing reference price; not a currently confirmed buyable quote."
+          },
+          "availability": {
+            "state": "observed-unavailable",
+            "note": "Observed out of stock / ended in multiple eBay regional snapshots. Ultra’s PayGo page still directs buyers to eBay, so recheck the provider link before purchase."
+          },
+          "sellerEvidence": {
+            "seller": "Ultra Mobile Official",
+            "positivePercent": 99.8,
+            "itemsSold": 36591,
+            "note": "eBay seller/listing metrics are context only, not a trust score."
+          },
+          "returns": {
+            "state": "no-returns-observed",
+            "note": "The current regional eBay snapshot says no returns accepted; buyer-protection rules are separate."
+          },
+          "paymentProtection": {
+            "state": "marketplace",
+            "note": "Marketplace protections vary by transaction and are not scored here."
+          },
+          "comparisonGroup": "ultra-paygo-sealed-physical",
+          "comparableToReference": true,
+          "priceComparison": {
+            "referenceAmount": 13,
+            "currency": "USD",
+            "deltaAmount": 0,
+            "ratio": 1,
+            "note": "Reference acquisition price for like-for-like sealed physical PayGo SIM comparison; availability is currently uncertain/unavailable."
+          },
+          "ownershipWarning": "Standard sealed physical-SIM purchase path. Activation still follows Ultra’s PayGo activation flow; current overseas activation geography remains unverified by this MVP.",
+          "checkedOn": "2026-09-16",
+          "sourceUrl": "https://www.ebay.com/itm/285112988423"
+        },
+        {
+          "id": "ultra-select-tmobile-store",
+          "label": "Select T-Mobile stores",
+          "sellerRelationship": "provider-designated-retail",
+          "productClass": "sealed-physical-sim",
+          "productClassLabel": "Physical PayGo SIM from designated retail channel",
+          "price": {
+            "currency": "USD",
+            "amount": null,
+            "shippingAmount": null,
+            "allInBeforeTax": null,
+            "status": "unknown",
+            "note": "Ultra names select T-Mobile stores as a purchase channel, but this MVP has not verified a current store price."
+          },
+          "availability": {
+            "state": "store-dependent",
+            "note": "Only select stores; local inventory is unknown until checked with the store."
+          },
+          "sellerEvidence": {
+            "seller": "Select T-Mobile retail location",
+            "note": "Provider-designated retail channel; exact store inventory and transaction terms vary."
+          },
+          "returns": {
+            "state": "unknown",
+            "note": "Verify the specific store’s return policy before purchase."
+          },
+          "paymentProtection": {
+            "state": "retail-dependent",
+            "note": "Depends on the store and payment method."
+          },
+          "comparisonGroup": "ultra-paygo-sealed-physical",
+          "comparableToReference": true,
+          "priceComparison": {
+            "referenceAmount": 13,
+            "currency": "USD",
+            "deltaAmount": null,
+            "ratio": null,
+            "note": "Price is unknown, so no markup/overpay comparison is made."
+          },
+          "ownershipWarning": "Standard physical-SIM class if the store sells the PayGo kit. Confirm it is PayGo, not a different Ultra plan/SIM product.",
+          "checkedOn": "2026-09-16",
+          "sourceUrl": "https://www.ultramobile.com/paygo/"
+        },
+        {
+          "id": "ultra-third-party-sealed-354076563615",
+          "label": "Third-party sealed physical SIM on eBay",
+          "sellerRelationship": "third-party-marketplace",
+          "productClass": "sealed-physical-sim",
+          "productClassLabel": "Sealed physical PayGo SIM",
+          "price": {
+            "currency": "USD",
+            "amount": 48.85,
+            "shippingAmount": 5,
+            "allInBeforeTax": 53.85,
+            "status": "observed-current",
+            "note": "Observed listing price plus stated shipping before sales tax; marketplace price can change."
+          },
+          "availability": {
+            "state": "available-observed",
+            "note": "Snapshot showed 6 available and 241 sold; recheck the live listing before paying."
+          },
+          "sellerEvidence": {
+            "seller": "shieldtechsecurity",
+            "positivePercent": 98.8,
+            "itemsSold": 39000,
+            "listingSold": 241,
+            "note": "eBay seller/listing metrics are context only, not a trust score."
+          },
+          "returns": {
+            "state": "no-returns-observed",
+            "note": "Seller does not accept returns in the current listing snapshot."
+          },
+          "paymentProtection": {
+            "state": "marketplace",
+            "note": "eBay buyer-protection rules may apply to eligible transactions; this MVP does not score them."
+          },
+          "comparisonGroup": "ultra-paygo-sealed-physical",
+          "comparableToReference": true,
+          "priceComparison": {
+            "referenceAmount": 13,
+            "currency": "USD",
+            "deltaAmount": 40.85,
+            "ratio": 4.1423,
+            "note": "Observed delivered-before-tax price is $40.85 above the provider-linked $13 reference (about 4.14×). The $13 reference listing is currently unavailable, so this is a price-gap signal, not a claim of unfair conduct."
+          },
+          "ownershipWarning": "Sealed physical SIM is the same broad activation class as the provider-linked reference, but seller-specific expiration/activation details must be checked before purchase.",
+          "checkedOn": "2026-09-16",
+          "sourceUrl": "https://www.ebay.com/itm/354076563615"
+        },
+        {
+          "id": "ultra-third-party-preactivated-esim-358131980470",
+          "label": "Third-party pre-activated eSIM on eBay",
+          "sellerRelationship": "preactivated-third-party",
+          "productClass": "preactivated-esim",
+          "productClassLabel": "Pre-activated eSIM — different ownership/activation class",
+          "price": {
+            "currency": "USD",
+            "amount": 54.95,
+            "shippingAmount": 0,
+            "allInBeforeTax": 54.95,
+            "status": "observed-current",
+            "note": "Observed marketplace price before tax; seller-managed activation/service details can change."
+          },
+          "availability": {
+            "state": "available-observed",
+            "note": "Snapshot showed 2 available and 522 sold; recheck the live listing before paying."
+          },
+          "sellerEvidence": {
+            "seller": "shieldtechsecurity",
+            "positivePercent": 98.8,
+            "itemsSold": 39000,
+            "listingSold": 522,
+            "note": "eBay seller/listing metrics are context only, not a trust score."
+          },
+          "returns": {
+            "state": "no-returns-observed",
+            "note": "Seller does not accept returns in the current listing snapshot."
+          },
+          "paymentProtection": {
+            "state": "marketplace",
+            "note": "Marketplace protections are separate from provider service/refund terms and are not scored here."
+          },
+          "comparisonGroup": "ultra-paygo-preactivated-esim",
+          "comparableToReference": false,
+          "priceComparison": {
+            "referenceAmount": null,
+            "currency": "USD",
+            "deltaAmount": null,
+            "ratio": null,
+            "note": "Do not compare this as like-for-like with the sealed physical SIM reference. It is a different activation and ownership class."
+          },
+          "ownershipWarning": "Pre-activated by a third party. Confirm whose account controls the number, when the 30-day service clock starts, how recovery works, and whether you can independently manage the carrier account. This MVP does not treat third-party pre-activation as equivalent to Ultra’s standard activation flow.",
+          "checkedOn": "2026-09-16",
+          "sourceUrl": "https://www.ebay.com/itm/358131980470"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Ultra PayGo pricing and purchase channels",
+          "url": "https://www.ultramobile.com/paygo/",
+          "type": "official"
+        },
+        {
+          "label": "Ultra PayGo terms and cancellation rules",
+          "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+          "type": "official"
+        },
+        {
+          "label": "Ultra PayGo activation",
+          "url": "https://my.ultramobile.com/paygo/activation",
+          "type": "official"
+        },
+        {
+          "label": "Ultra-linked eBay listing snapshot",
+          "url": "https://www.ebay.com/itm/285112988423",
+          "type": "marketplace"
+        },
+        {
+          "label": "Third-party sealed SIM snapshot",
+          "url": "https://www.ebay.com/itm/354076563615",
+          "type": "marketplace"
+        },
+        {
+          "label": "Third-party pre-activated eSIM snapshot",
+          "url": "https://www.ebay.com/itm/358131980470",
+          "type": "marketplace"
+        }
+      ],
+      "fairPriceCheck": {
+        "state": "channel-comparison",
+        "label": "Acquisition price varies sharply by channel",
+        "note": "The $3 / 30-day charge is service renewal, not the SIM acquisition price. The provider-linked sealed-SIM reference was $13 but observed unavailable; a third-party sealed-SIM listing was $53.85 delivered before tax. Pre-activated eSIMs are a different product/ownership class and are not compared as identical."
+      },
+      "comparisonGroup": "us-durable-number-retention"
     }
   }
 }
