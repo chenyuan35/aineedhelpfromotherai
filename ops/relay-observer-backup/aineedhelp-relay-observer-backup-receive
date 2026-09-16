@@ -1,0 +1,43 @@
+#!/bin/sh
+set -eu
+
+DEST=${RELAY_BACKUP_DEST:-/var/backups/aineedhelp-relay-observer}
+TAILSCALE_BIN=${TAILSCALE_BIN:-tailscale}
+WAIT_SECONDS=${RELAY_BACKUP_RECEIVE_WAIT_SECONDS:-600}
+install -d -m 0750 "$DEST"
+INBOX=$(mktemp -d "$DEST/.taildrop.XXXXXX")
+VERIFY=$(mktemp "$DEST/.verify.XXXXXX.sqlite3")
+trap 'rm -rf "$INBOX" "$VERIFY"' EXIT
+
+timeout "${WAIT_SECONDS}s" "$TAILSCALE_BIN" file get --wait --conflict=rename "$INBOX"
+set -- "$INBOX"/relay-history-*.sqlite3.gz
+if [ ! -e "$1" ]; then
+    echo 'no relay-history backup received' >&2
+    exit 2
+fi
+SELECTED=$(printf '%s\n' "$@" | sort | tail -n 1)
+gzip -t "$SELECTED"
+gunzip -c "$SELECTED" > "$VERIFY"
+python3 - "$VERIFY" <<'PY'
+import json, sqlite3, sys
+p = sys.argv[1]
+db = sqlite3.connect(p)
+result = db.execute('PRAGMA quick_check').fetchone()[0]
+if result != 'ok':
+    raise SystemExit(f'backup quick_check failed: {result}')
+out = {'quick_check': result}
+for table in ('relay_daily', 'relay_state', 'source_fetch', 'lifecycle_events'):
+    try:
+        out[table] = db.execute(f'select count(*) from {table}').fetchone()[0]
+    except sqlite3.Error:
+        out[table] = None
+db.close()
+print(json.dumps(out, sort_keys=True))
+PY
+
+if [ -f "$DEST/latest.sqlite3.gz" ]; then
+    mv "$DEST/latest.sqlite3.gz" "$DEST/previous.sqlite3.gz"
+fi
+mv "$SELECTED" "$DEST/latest.sqlite3.gz"
+chmod 0640 "$DEST/latest.sqlite3.gz"
+echo "backup_received file=$(basename "$SELECTED") bytes=$(wc -c < "$DEST/latest.sqlite3.gz")"
