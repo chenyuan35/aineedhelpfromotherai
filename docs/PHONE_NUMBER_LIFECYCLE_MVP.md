@@ -1,6 +1,6 @@
 # Phone Number Lifecycle MVP
 
-Status: prototype only. Draft PR only; not approved for production release.
+Status: production MVP. The canonical public URL is `/tools/phone-number-survival-guide/`; keep the route set deliberately small, evidence-backed and maintainable, and keep unknowns explicit.
 
 ## Product job
 
@@ -115,7 +115,7 @@ Long-stay input must affect ranking; durable number control, first-party evidenc
 
 The MVP does not sell numbers, receive/store verification codes, automate account creation, support bulk-account creation, bypass KYC/geographic/platform restrictions, fabricate success rates, or rank providers based on affiliate commission.
 
-It is intentionally absent from the production sitemap, homepage and tools index.
+The public release uses one canonical URL, `/tools/phone-number-survival-guide/`, linked from the homepage and Tools index and listed once in the sitemap. Do not split it into provider, country or keyword-variant pages.
 
 ## Evidence model
 
@@ -164,6 +164,8 @@ This separation prevents a cheap route from being recommended when it cannot be 
 
 ## Files
 
+The checked-in source remains under `frontend/tools/phone-number-lifecycle-mvp/` so the already-audited canary logic and evidence blobs do not move during public release. `frontend/bin/publish-phone-survival-guide.mjs` verifies that source version, then renames and patches only the build output under `frontend/dist/tools/phone-number-survival-guide/`.
+
 - `frontend/tools/phone-number-lifecycle-mvp/index.html` — deterministic UI/ranking/lifecycle output.
 - `frontend/tools/phone-number-lifecycle-mvp/catalog.json` — base service rules and provider/market routes.
 - `frontend/tools/phone-number-lifecycle-mvp/location-constraints.json` — structured first-activation geography constraints.
@@ -193,7 +195,7 @@ The dedicated command is:
 
 `node scripts/test-phone-number-lifecycle-mvp.mjs`
 
-It is now a blocking CI step. The current local audited run completes **61 deterministic assertions** against the actual inline page logic, including **16 end-to-end render-path acceptance scenarios** across registration and travel journeys.
+It is a blocking CI step. The hidden-canary source logic retains its deterministic business-path audit, and public-release CI separately builds `frontend/dist` and verifies the canonical URL, indexing metadata, analytics wiring, old-slug exclusion and byte-identical evidence JSON before merge.
 
 Required invariants include:
 
@@ -221,8 +223,8 @@ Required invariants include:
 - the 16 acceptance scenarios cover the major lifecycle and purchase-layer failure modes; dedicated deterministic checks now also cover Ultra PayGo recurring-vs-acquisition separation, provider-linked availability, like-for-like price-gap math, pre-activated ownership separation and non-invented activation geography.
 - local Chromium rendering has been checked on desktop and narrow/mobile layouts: the audited US WhatsApp long-term path surfaces the Ultra “Where to buy now” acquisition choices, USD 39 service-only 365-day baseline, USD 13 provider-linked reference, USD 53.85 observed third-party sealed-SIM all-in-before-tax snapshot, the distinct pre-activated-eSIM warning, lifecycle termination/activation evidence, and no measured horizontal overflow.
 - Vercel Preview/CI for the current commit must still succeed after it is pushed; local browser verification is not a substitute for preview verification.
-- prototype remains off production navigation/sitemap.
+- public release registers exactly one canonical Phone Survival URL in homepage, Tools and sitemap; the internal canary slug must not ship in `dist`.
 
-The Draft PR must remain `noindex,nofollow` and unmerged until the current commit passes CI/Preview and the remaining data gaps are consciously accepted as MVP scope. Local Chromium verification is real browser evidence, but it does not prove the hosted Vercel Preview for the same commit until that deployment is checked.
+Any release-changing commit must pass the deterministic audits, public-release build audit, CI/Eval Gate, hosted Vercel Preview and desktop/mobile browser checks before merge. Local Chromium verification is useful evidence, but it never substitutes for checking the hosted Preview and the final apex-domain production deployment.
 
-Rollback is deleting the isolated prototype directory, its audit script, and these prototype-only docs/workflow additions before merge. No database or infrastructure cleanup is required.
+Rollback is reverting the public-release commit to the previously verified hidden-canary state. The feature is browser-only, so no database or infrastructure migration or cleanup is required.

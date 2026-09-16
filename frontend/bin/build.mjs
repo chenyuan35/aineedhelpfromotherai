@@ -14,7 +14,7 @@ const BEHAVIOR_TAG = `<script id="site-behavior-analytics">(()=>{const send=(nam
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
-for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
+for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','register-phone-survival-guide.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
 // The homepage is intentionally hand-curated. Generators may update shared pages and
@@ -30,6 +30,8 @@ for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','
 for (const dir of ['tools','about','contact','privacy','terms','media']) {
   const src=join(root,dir); if(existsSync(src)) cpSync(src,join(dist,dir),{recursive:true});
 }
+
+execSync('node bin/publish-phone-survival-guide.mjs',{cwd:root,stdio:'inherit'});
 
 // Vercel enforces trailing slashes before proxying; request the final relay API path directly.
 const relayRiskPath=join(dist,'tools','relay-exit-risk-checker','index.html');
