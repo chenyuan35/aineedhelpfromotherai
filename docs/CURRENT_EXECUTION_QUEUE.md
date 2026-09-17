@@ -12,10 +12,13 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
 - **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
-- **Q-013 giffgaff review:** DONE 2026-09-18. The current product already applies a long-term-overseas ranking penalty and contextual warning. 2026 disconnections were real and independently reported, but later community evidence also reports some restorations/operational-error messaging. Classification is therefore elevated/conflicting long-term-overseas risk, not deterministic shutdown. Keep current restriction logic; no immediate production hotfix.
-- **Q-013 Tello review:** DONE 2026-09-18. Current production's US-first activation/port-in hard block matches current Tello support. 2026 reports show roaming being disabled for lines that never attached to a US tower, while Wi-Fi Calling/Text can remain usable; existing production already separates these states correctly. No production hotfix.
-- **Q-013 Lebara UK review:** DONE 2026-09-18. UK-first activation remains supported by current official material and recent users. Current eSIM/Wi-Fi Calling/international-SMS reports remain mixed, so the existing `unknown` state for dependable overseas Wi-Fi SMS should stay unknown. No production hotfix.
-- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads were inspected on 2026-09-18; each still contains only the Sep 13 sent message, and an independent public web check found no verified link/citation. Do not resend on the first day of the 5–7 day window; recheck on Sep 20 before deciding on one follow-up or batch 2.
+- **Q-013 giffgaff review:** DONE 2026-09-18. Existing long-term-overseas ranking penalty/contextual warning stays. Real 2026 disconnections plus later partial-restoration/operational-error reports mean elevated/conflicting risk, not deterministic shutdown.
+- **Q-013 Tello review:** DONE 2026-09-18. Keep the US-first activation/port-in hard block. Current support and 2026 reports confirm first US-tower attachment matters; Wi-Fi Calling/Text can remain usable separately.
+- **Q-013 Lebara UK review:** DONE 2026-09-18. Keep UK-first activation and keep dependable overseas Wi-Fi Calling/SMS `unknown`; current eSIM/Wi-Fi Calling/SMS reliability remains mixed.
+- **Q-013 Sakura correction:** DONE / LIVE via PR #108. Sakura Monthly Voice+Data `roamingSms` changed from `unknown` to `supported-after-activation`; official current support says calls/SMS work outside Japan while cellular data does not. Wi-Fi Calling abroad remains `unknown`. Vercel + Eval Gate passed, and the production canonical JSON was live-verified HTTP 200 with the corrected field.
+- **Q-013 Ultra PayGo review:** DONE 2026-09-18 / KEEP `unknown`. Ultra currently says Wi-Fi Calling is available on all Ultra plans, but PayGo-specific current reproduction/provisioning evidence remains insufficient and device/IMS failures exist; do not convert the generic statement into a dependable overseas-PayGo claim yet.
+- **Q-013 H2O PayGo review:** DONE 2026-09-18 / KEEP current caution. Current H2O roaming material applies international roaming to Unlimited/12-Month plans, not the PayGo route.
+- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads still contain only the Sep 13 sent messages; no independently verified public link/citation was found. Do not resend yet; recheck Sep 20.
 
 Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
 
@@ -36,7 +39,7 @@ At the start of the next session, after mandatory fact-source reading:
 
 1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** immediately before speculative Phone production changes.
 2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check from the authority ledger + original Gmail threads before sending any follow-up or batch 2.
-3. Otherwise continue the active **Q-013 Phone Radar audit**, with **Sakura Mobile** as the next current-route discrepancy and a confirmed minimal correction candidate.
+3. Otherwise continue **Q-013** with the **AIS Thailand 49B / 365-day support-assisted hidden-route audit**. Do not add AIS to production until eligibility, repeatability, support-channel consistency/refusals, acquisition variant, KYC, roaming/SMS/Wi-Fi Calling, replacement/reissue and current cost are sufficiently verified.
 
 ## Q-013 — Phone Radar route/evidence audit
 
@@ -56,26 +59,23 @@ Do not return to an official-plan-directory model.
 
 ### Current audit findings
 
-- **giffgaff UK — reviewed 2026-09-18:** current long-term-overseas ranking penalty/contextual warning remains appropriate. Real 2026 disconnections are confirmed, while later reports describe some restorations/operational-error messaging. Treat as elevated/conflicting long-term-overseas risk, not guaranteed shutdown; no immediate production logic change.
-- **Tello — reviewed 2026-09-18:** keep the US-first activation/port-in hard block. Current Tello support explicitly requires first US-tower connection; recent reports show roaming can be disabled when that never occurred, while Wi-Fi Calling/Text can still work. Existing production already reflects the important distinction; no immediate production logic change.
-- **Lebara UK — reviewed 2026-09-18:** keep the UK-activation hard block and keep dependable overseas Wi-Fi Calling/SMS as `unknown`. Current official feature support does not resolve mixed 2026 eSIM provisioning, Wi-Fi Calling and international-SMS reliability reports; no immediate production logic change.
-- **Sakura Mobile — NEXT / CONFIRMED CORRECTION:** current production leaves overseas SMS unknown, but Sakura's current support explicitly states Monthly Voice+Data SIM/eSIM supports calls and SMS outside Japan while cellular data is unavailable. Make the smallest production evidence-field correction and preserve the distinction from data-only Travel SIM/eSIM.
-- **Ultra Mobile PayGo:** Wi-Fi Calling abroad likely under-documented; verify PayGo-specific provisioning before changing the field.
-- **H2O PayGo:** existing caution currently remains supported.
-- **AIS Thailand:** `49B Validity 365 Days` is a support-confirmed hidden-route candidate with current community replication. It is **not yet in production**. Missing public marketing copy is not a reason to reject it.
+- **giffgaff UK — reviewed:** keep current long-term-overseas penalty/contextual warning; treat 2026 evidence as elevated/conflicting risk, not guaranteed shutdown.
+- **Tello — reviewed:** keep US-first activation/port-in hard block; existing production already separates first-attachment risk from Wi-Fi Calling/Text continuity.
+- **Lebara UK — reviewed:** keep UK-activation block and dependable overseas Wi-Fi/SMS `unknown`.
+- **Sakura Mobile — corrected/live:** Monthly Voice+Data calls/SMS outside Japan are now represented as supported after activation; cellular data abroad unavailable; Wi-Fi Calling abroad remains unknown.
+- **Ultra Mobile PayGo — reviewed:** keep overseas Wi-Fi Calling `unknown` until PayGo-specific current reproduction/provisioning is strong enough.
+- **H2O PayGo — reviewed:** keep current no-roaming-on-PayGo caution.
+- **AIS Thailand — NEXT:** `49B Validity 365 Days` remains a support-confirmed hidden-route candidate with current community replication, but it is **not yet in production**.
 - Other monitored candidates: RedPocket, ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
 
-### Audit sequence
+### AIS next-step checklist
 
-1. Inventory every current production Phone route and every material `unknown` / `partial` field.
-2. For each route, search community/current-user evidence first: purchase, setup, support interaction, hidden packages, real cost, overseas behavior, keep-alive, replacement/recovery, recent refusals/failures.
-3. Search for independent reproduction; do not count copied tutorials as multiple evidence.
-4. Classify direct carrier support/app/account artifacts separately from ordinary first-hand community reports.
-5. Check current carrier/regulator material for genuine hard KYC/legal/geography/security/termination conflicts.
-6. Build the discrepancy matrix:
-   `current claim -> community/operational reality -> support/app evidence -> hard constraint/conflict -> correction/keep/conflict -> last success/failure date`.
-7. Fix materially misleading **current routes first**.
-8. Only after the matrix is sufficiently complete consider adding AIS or at most one other genuinely strong hidden route to the existing canonical.
+1. Identify the exact starting product/account states that can receive the `49B / 365-day` support offer; do not merge traveler/Trip/Redtea/ordinary prepaid variants without evidence.
+2. Verify current support channel wording and whether the offer can be renewed/repeated.
+3. Search for current independent success plus refusal/failure cases and record dates.
+4. Capture acquisition price, first top-up, recurring/keep-alive cost, passport/KYC, local presence/first network attachment, payment restrictions, SIM/eSIM/device transfer, mainland-China practicality, roaming/SMS/Wi-Fi Calling, and same-number replacement/reissue/recycling.
+5. Check official/regulator material only for hard conflicts/stable mechanics; lack of a public marketing page is not a rejection condition.
+6. Admit to production only if the route is sufficiently reproducible, maintainable and materially different from existing options.
 
 ### Phone Radar decision fields
 
