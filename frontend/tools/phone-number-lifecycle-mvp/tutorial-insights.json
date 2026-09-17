@@ -208,12 +208,17 @@
         "identity": "Non-residents can use a passport for the documented Voice+Data route, but passport-based applications require face-to-face identity verification/pickup.",
         "location": "The passport route can be researched/applied for before arrival, but completion requires face-to-face verification/pickup in Japan.",
         "device": "Unlocked compatible phone required; confirm current SIM/eSIM and VoLTE/device support before purchase.",
-        "ongoing": "Monthly contract. Post-departure roaming/OTP behavior is not yet verified strongly enough for the MVP to promise."
+        "ongoing": "Monthly contract. After activation, Sakura documents calls and SMS outside Japan for Voice+Data SIM/eSIM; cellular data is unavailable abroad. Destination-specific roaming rates apply, and Wi-Fi Calling abroad remains unverified."
       },
       "evidence": [
         {
           "label": "Sakura Mobile — Voice+Data application procedure",
           "url": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+          "type": "official"
+        },
+        {
+          "label": "Sakura Mobile — Monthly service outside Japan",
+          "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan",
           "type": "official"
         },
         {
@@ -238,9 +243,10 @@
         "sourceUrl": "https://www.sakuramobile.jp/monthly/voice/application-procedure/"
       },
       "roamingSms": {
-        "state": "unknown",
-        "label": "Post-departure roaming SMS not yet verified",
-        "note": "Do not assume the Japanese number will remain a reliable overseas OTP line after leaving Japan until the current Sakura roaming policy is verified."
+        "state": "supported-after-activation",
+        "label": "Calls and SMS supported outside Japan after Voice+Data activation",
+        "note": "Sakura's current Monthly support table states that Voice+Data SIM/eSIM supports calls and SMS outside Japan while cellular data/Internet is unavailable. Destination-specific roaming rates apply.",
+        "sourceUrl": "https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan"
       },
       "wifiCallingAbroad": {
         "state": "unknown",
