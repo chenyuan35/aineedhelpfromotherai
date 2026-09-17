@@ -2,6 +2,8 @@
 
 Status: ACTIVE
 
+Last updated: 2026-09-18
+
 Method: `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
 
 This audit exists because the current Phone product was researched too heavily from public carrier documentation. That approach is good at describing published rules but can miss the two things that create the most user value:
@@ -13,19 +15,26 @@ No production change is authorized by this document alone. The first goal is a d
 
 ## 1. Existing production-route discrepancies
 
-### giffgaff UK — material risk escalation required
+### giffgaff UK — real 2026 enforcement, but later restoration reports make the outcome conflicting
 
 Current product strength:
 
 - inactivity/keep-alive actions, PAYG cost and PAC rescue are well documented;
-- existing tutorial notes already warn that keep-alive does not equal permission for permanent overseas use.
+- existing tutorial notes already warn that keep-alive does not equal permission for permanent overseas use;
+- the registration ranking already penalizes `restricted-long-term` overseas use rather than treating giffgaff as a low-risk long-term-abroad route, and the UI shows the contextual `Keep-alive is not the whole story` warning when the user is maintaining the number outside the UK.
 
-New community/freshness evidence:
+Fresh enforcement evidence:
 
 - July 27–30, 2026 produced a cluster of NodeSeek/NodeLoc/community reports showing direct termination notices for `extended or permanent use outside the UK`, including lines activated only weeks earlier;
 - users reproduced carrier replies refusing reinstatement and in some cases refusing unused-credit refunds;
 - ISPreview published an Aug 1 report after receiving multiple complaints and obtained a giffgaff spokesperson confirmation that a proportion of PAYG SIMs associated with extended/permanent use outside the UK had been disconnected;
 - the notices point users toward PAC transfer as the practical number-preservation path.
+
+Fresh conflicting/restoration evidence:
+
+- on Aug 18, 2026, a NodeLoc thread reported that at least some previously affected accounts had been restored and shared wording attributed to giffgaff saying an earlier action had resulted from an operational error;
+- the same discussion still treated UK-primary use as the governing requirement and did not establish that long-term overseas number-retention use had become safe or broadly permitted;
+- this restoration report therefore narrows the claim: the July/August wave proves real enforcement occurred, but it does **not** justify saying every long-term overseas user will be permanently disconnected.
 
 Important sources:
 
@@ -33,14 +42,16 @@ Important sources:
 - https://www.nodeloc.com/t/topic/101536
 - https://www.nodeloc.com/t/topic/101167
 - https://www.ispreview.co.uk/index.php/2026/08/giffgaff-disconnect-some-prepaid-mobile-users-for-extended-roaming-outside-uk.html
+- https://www.nodeloc.com/t/topic/104211
 
 Discrepancy:
 
-- the product's six-month inactivity mechanics remain useful, but they are no longer sufficient to describe the route for a user who intends to live outside the UK;
-- an overseas user can satisfy the inactivity rule and still lose the line for usage pattern/geography;
-- this is not a theoretical terms caveat anymore; it has a recent enforcement wave.
+- the product's six-month inactivity mechanics remain useful, but they are not sufficient to describe the route for a user who intends to live outside the UK;
+- an overseas user can satisfy the inactivity rule and still face account review/disconnection based on usage pattern or geography;
+- this is no longer merely a theoretical terms caveat because real 2026 disconnections were confirmed;
+- however, later restoration/operational-error reports mean the evidence should be presented as an elevated, conflicting long-term-overseas risk rather than a deterministic shutdown rule.
 
-Audit decision: **CORRECTION NEEDED.** Do not present giffgaff as a low-risk long-term overseas retention route. The route can remain useful for UK-primary users and short travel, but the recommendation logic and first-screen risk explanation need review.
+Audit decision: **KEEP THE EXISTING RESTRICTION/RANKING PENALTY; NO IMMEDIATE PRODUCTION LOGIC CHANGE.** The current product already penalizes long-term-abroad giffgaff use and warns that keep-alive does not remove overseas-policy risk, so a production hotfix is not required. Future evidence-context copy should state that real 2026 disconnections occurred while some later restorations were reported. Do not hard-block ordinary UK-primary use or short travel, and do not present giffgaff as a low-risk permanent-overseas retention route.
 
 ### Tello US — community confirms stronger enforcement around first US attachment
 
@@ -307,15 +318,18 @@ If a legitimate carrier-supported path exists underneath such a tutorial, resear
 
 ## 4. Immediate audit priority
 
-1. **giffgaff** — highest urgency because current production can materially understate 2026 overseas-termination risk.
-2. **Tello** — current hard block is correct, but add 2026 enforcement/failure context so users do not infer an overseas-first workaround is reliable.
-3. **Lebara UK** — preserve the UK-activation block and keep dependable overseas Wi-Fi/SMS reliability unresolved because current user reports are mixed.
-4. **Sakura** — straightforward missed-evidence correction.
-5. **Ultra PayGo** — verify PayGo-specific Wi-Fi Calling applicability.
-6. **AIS** — build full hidden-route record around current support-assisted retention + conversion variants.
-7. **RedPocket** — determine whether the current annual route is more suitable than Ultra/Tello for the intended overseas user, with number-history and marketplace risk explicit.
-8. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
-9. **O2 Germany / Simyo NL / One NZ** — independent replication before any production expansion.
+1. **Tello** — giffgaff's current production restriction/ranking logic has now been reviewed and remains appropriate; Tello is the next current-route discrepancy to close. Keep the current hard block, but verify the exact 2026 enforcement/failure context that should reach user-visible evidence.
+2. **Lebara UK** — preserve the UK-activation block and keep dependable overseas Wi-Fi/SMS reliability unresolved because current user reports are mixed.
+3. **Sakura** — straightforward missed-evidence correction.
+4. **Ultra PayGo** — verify PayGo-specific Wi-Fi Calling applicability.
+5. **AIS** — build full hidden-route record around current support-assisted retention + conversion variants.
+6. **RedPocket** — determine whether the current annual route is more suitable than Ultra/Tello for the intended overseas user, with number-history and marketplace risk explicit.
+7. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
+8. **O2 Germany / Simyo NL / One NZ** — independent replication before any production expansion.
+
+Completed current-route review:
+
+- **giffgaff (2026-09-18):** keep existing long-term-overseas ranking penalty/contextual warning; record real 2026 disconnections plus later partial-restoration/operational-error reports as conflicting evidence; no immediate production logic change.
 
 ## 5. Production rule during this audit
 
