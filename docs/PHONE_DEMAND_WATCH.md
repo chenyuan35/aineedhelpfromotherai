@@ -1,6 +1,6 @@
 # Phone Community Demand Radar
 
-Last updated: 2026-09-16
+Last updated: 2026-09-17
 
 ## Purpose
 
@@ -62,6 +62,27 @@ The first valid signal was a current V2EX question asking, in substance, which f
 A live NodeSeek check exposed two separate coverage issues. First, the public NodeSeek RSS currently exposes only about 20 newest items, so a fast-moving thread can rotate out before the four-hour observer run. This is a known feed-depth limitation, not permission to crawl the forum or raise request frequency aggressively on the resource-tight observer. User-shared threads that have already rotated out may still be evaluated manually as discovery evidence.
 
 Second, the minimal Perl runtime was reading feed files as raw UTF-8 bytes while the parser used Unicode source-string semantics. That made Chinese-only lifecycle terms unreliable. The parser now matches the UTF-8 feed bytes consistently, adds `流量卡` as a discovery term, and truncates excerpts only at a valid UTF-8 boundary. A real current NodeSeek sample changed from one match to two and correctly surfaced the Chinese-only title `大佬们，有没有流量卡推荐`.
+
+## Sep 17 manual AIS Thailand signal
+
+A user-shared NodeSeek thread, `泰国AIS保号卡国内折腾记录` (`https://www.nodeseek.com/post-932925-1`), is a strong manual discovery signal because one discussion spans nearly the full Phone Number Lifecycle journey instead of only asking for a cheap SIM. The thread covers purchase channel, passport/KYC, international roaming, overseas SMS reception, conversion to long-term personal use, eSIM re-issue, Wi-Fi Calling, top-up, validity extension and recovery-oriented ownership questions.
+
+The discussion also generated concrete follow-up questions that map directly to product fields rather than a new product surface:
+
+- whether the Trip-purchased AIS offer is eSIM or physical SIM;
+- whether a 5/7/10-day travel package creates a deadline for completing conversion/ownership steps;
+- whether a replacement eSIM invalidates the old profile while retaining the same phone number;
+- whether the reported THB 49 validity package is permanent or one year;
+- whether the long-validity package is requested through customer service;
+- whether overseas Wi-Fi Calling and SMS/OTP reception require additional setup.
+
+Current first-party AIS pages reviewed on 2026-09-17 resolve several of those questions. AIS officially sells SIM2Fly in both eSIM and physical-SIM form, so a Trip purchase cannot be classified without the exact listing. SIM2Fly package durations such as 5/7/10 days are data-package validity windows tied to activation/first connection in an eligible destination, not evidence that the whole ownership-conversion flow must be completed inside that many days. Separately, AIS states that foreign TOURIST SIM users who continue beyond 60 days must reconfirm identity, and that a number registered to an individual must be activated within 60 days of registration or require identity verification again.
+
+AIS also documents standard eSIM conversion/transfer. The process deactivates the previous SIM/eSIM and installs the transferred line on the new eSIM; AIS describes and displays it as transferring the existing phone number, so standard conversion/transfer preserves number continuity rather than issuing a different number. AIS also publishes international roaming activation/use guidance and Wi-Fi Calling use abroad.
+
+The remaining material evidence gap is the forum-reported `THB 49 / 365 days` validity package. That exact offer was not found in the public indexed AIS pages checked in this work round. A second current community source independently discussed the same 49-baht/365-day offer, which raises research priority but does not upgrade the claim to production evidence.
+
+Decision: record AIS Thailand as a high-value candidate route/evidence gap for the existing Phone canonical, but do not add it to the production catalog yet. Before any route addition, obtain a current first-party AIS source or another directly verifiable AIS artifact for the exact validity package and confirm the exact Trip listing/channel assumptions. This signal does not justify a Thailand-specific page.
 
 ## Interpretation rules
 
