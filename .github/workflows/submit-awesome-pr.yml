@@ -1,13 +1,10 @@
+# Historical MCP-directory submission helper.
+# Automatic push/weekly triggers were retired on 2026-09-17 after the product pivot.
+# Keep manual dispatch only in case the legacy package needs maintenance.
 name: Submit awesome-mcp PR
 
 on:
-  workflow_dispatch:  # 手动触发
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/submit-awesome-pr.yml'
-  schedule:
-    - cron: '0 6 * * 1'  # 每周一 6:00 UTC
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -81,7 +78,6 @@ jobs:
             exit 0
           fi
 
-          # Insert our entry
           LINE=$(grep -n "callstackincubator/agent-device" README.md | head -1 | cut -d: -f1)
           if [ -z "$LINE" ]; then
             echo "Anchor entry not found in README.md"
