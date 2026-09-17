@@ -117,6 +117,26 @@ if (!BACKGROUND_JOBS) console.log('[boot] BACKGROUND_JOBS=disabled — skipping 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// The public product no longer exposes the historical AI-agent/MCP surface.
+// Keep the legacy runtime available only behind an explicit opt-in for rollback/debugging.
+const LEGACY_AGENT_API_ENABLED = process.env.LEGACY_AGENT_API_ENABLED === 'true';
+const CURRENT_PUBLIC_BACKEND_PATHS = new Set([
+  '/api/health',
+  '/api/status',
+  '/api/diagnostics',
+  '/api/reasoning/relay-risk-v2',
+]);
+
+app.use((req, res, next) => {
+  if (LEGACY_AGENT_API_ENABLED) return next();
+  const normalizedPath = (req.path || '/').replace(/\/+$/, '') || '/';
+  if (CURRENT_PUBLIC_BACKEND_PATHS.has(normalizedPath)) return next();
+  return res.status(410).json({
+    error: 'legacy_surface_retired',
+    message: 'This historical AI-agent/MCP surface has been retired.',
+  });
+});
+
 // Deprecation middleware for experimental/non-core routes
 // Applied to paths in EXPERIMENTAL_PATHS set
 const EXPERIMENTAL_PATHS = new Set([
@@ -293,17 +313,7 @@ const handlers = {
   'ask-ai': require('./api-handlers/ask-ai'),
 };
 
-// Middleware: add AI conversion hooks to every JSON response
-app.use((req, res, next) => {
-  const original = res.json.bind(res);
-  res.json = function (body) {
-    if (body && typeof body === 'object' && !body._tip && !body._next && !body.error) {
-      body._tip = 'Before solving, POST /api/reasoning/resolve to check the cache (saves tokens). Before executing, POST /api/reasoning/failure-check to avoid known pitfalls.';
-    }
-    return original(body);
-  };
-  next();
-});
+// Historical AI-agent conversion tips retired with the old public product surface.
 
 // Health check
 app.get('/api/health', (req, res) => {
