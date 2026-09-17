@@ -1,14 +1,13 @@
-# Daily repo activity — keeps the project visible to AI crawlers
-# Runs once daily, refreshes evidence reports and growth surfaces
+# Historical Failure Memory refresh workflow.
+# Automatic scheduling was retired on 2026-09-17 after the site pivoted to the current utility products.
+# Keep manual dispatch only for historical maintenance/debugging.
 name: daily-activity
 
 on:
-  schedule:
-    - cron: '0 6 * * *'  # 06:00 UTC daily
-  workflow_dispatch:  # manual trigger
+  workflow_dispatch:
 
 permissions:
-  contents: write  # required for git push in 'Commit and push changes' step
+  contents: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -48,7 +47,7 @@ jobs:
           git config user.name "aineedhelp-bot"
           git config user.email "bot@aineedhelpfromotherai.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore: daily auto-refresh $(date -u '+%Y-%m-%d')"
+          git diff --cached --quiet || git commit -m "chore: manual historical refresh $(date -u '+%Y-%m-%d')"
           git pull --rebase --autostash origin main
           git push
 
