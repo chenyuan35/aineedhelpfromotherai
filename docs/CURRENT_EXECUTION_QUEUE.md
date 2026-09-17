@@ -12,6 +12,7 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
 - **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
+- **Q-013 giffgaff review:** DONE 2026-09-18. The current product already applies a long-term-overseas ranking penalty and contextual warning. 2026 disconnections were real and independently reported, but later community evidence also reports some restorations/operational-error messaging. Classification is therefore elevated/conflicting long-term-overseas risk, not deterministic shutdown. Keep current restriction logic; no immediate production hotfix.
 - **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads were inspected on 2026-09-18; each still contains only the Sep 13 sent message, and an independent public web check found no verified link/citation. Do not resend on the first day of the 5–7 day window; recheck on Sep 20 before deciding on one follow-up or batch 2.
 
 Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
@@ -33,7 +34,7 @@ At the start of the next session, after mandatory fact-source reading:
 
 1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** immediately before speculative Phone production changes.
 2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check from the authority ledger + original Gmail threads before sending any follow-up or batch 2.
-3. Otherwise continue the active **Q-013 Phone Radar audit**.
+3. Otherwise continue the active **Q-013 Phone Radar audit**, with **Tello** as the next current-route discrepancy after the completed giffgaff review.
 
 ## Q-013 — Phone Radar route/evidence audit
 
@@ -53,12 +54,12 @@ Do not return to an official-plan-directory model.
 
 ### Current audit findings
 
-- **giffgaff UK:** material correction candidate. 2026 long-term-overseas enforcement/disconnections mean inactivity keep-alive mechanics alone do not describe overseas safety.
+- **giffgaff UK — reviewed 2026-09-18:** current long-term-overseas ranking penalty/contextual warning remains appropriate. Real 2026 disconnections are confirmed, while later reports describe some restorations/operational-error messaging. Treat as elevated/conflicting long-term-overseas risk, not guaranteed shutdown; no immediate production logic change.
+- **Tello — NEXT:** recent user reports show stronger first-US-network-attachment/overseas-activation enforcement; Wi-Fi Calling/OTP can still work for established users. Verify the 2026 enforcement/failure context and decide the smallest evidence-context correction without weakening the existing US-first hard block.
+- **Lebara UK:** overseas Wi-Fi Calling/SMS/eSIM reality is mixed; do not convert public feature support into a blanket stability claim.
 - **Sakura Mobile:** missed positive evidence; current route research left overseas SMS unknown although Voice+Data SIM/eSIM supports calls/SMS abroad. Confirm exact applicability then correct.
 - **Ultra Mobile PayGo:** Wi-Fi Calling abroad likely under-documented; verify PayGo-specific provisioning before changing the field.
 - **H2O PayGo:** existing caution currently remains supported.
-- **Tello:** recent user reports show stronger first-US-network-attachment/overseas-activation enforcement; Wi-Fi Calling/OTP can still work for established users. Treat as real operational friction/freshness, not a simple supported/unsupported feature flag.
-- **Lebara UK:** overseas Wi-Fi Calling/SMS/eSIM reality is mixed; do not convert public feature support into a blanket stability claim.
 - **AIS Thailand:** `49B Validity 365 Days` is a support-confirmed hidden-route candidate with current community replication. It is **not yet in production**. Missing public marketing copy is not a reason to reject it.
 - Other monitored candidates: RedPocket, ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
 
