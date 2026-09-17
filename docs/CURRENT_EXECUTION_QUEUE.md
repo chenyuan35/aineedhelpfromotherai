@@ -102,6 +102,48 @@ As checked on 2026-09-17:
 
 ## Ordered next actions
 
+### Q-013 — Phone hidden-route research reset + evidence audit
+
+Status: **ACTIVE — METHODOLOGY CORRECTED / AUDIT IN PROGRESS**
+
+Trigger:
+
+- A 2026-09-17 AIS Thailand community thread exposed a structural defect in the prior Phone evidence workflow: a support-assisted `49B Validity 365 Days` route was initially treated as weak because the exact price was not exposed on a public AIS product page, even though the thread reproduced a direct AIS customer-service confirmation and independent current user reports describe the same support-assisted route.
+
+Methodology:
+
+- For Phone hidden-route research, read and follow `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` before route work.
+- Community/user evidence is the discovery layer. Direct carrier support messages, authenticated carrier/app flows and multiple independent recent reproductions can establish a legitimate hidden route even when there is no public marketing page for it.
+- Public official pages are primarily constraint/conflict/freshness evidence for hidden-route work; lack of a public indexed page is not a rejection criterion.
+- Never turn hidden-route research into KYC/geography/security bypass advice.
+
+First confirmed audit findings:
+
+- **AIS Thailand:** the `49B / 365 days` path should be treated as a support-confirmed hidden retention route candidate, not ordinary community hearsay. Public AIS material separately confirms a 365-day prepaid validity mechanism; the remaining gap is the public/persistent detail for the support-assisted THB 49 price/eligibility, not whether the carrier supports 365-day validity.
+- **Sakura Mobile:** current production research had overseas SMS/roaming marked unknown, while a current Sakura first-party help page explicitly states Voice+Data SIM/eSIM abroad supports calls and SMS but not cellular data. This is a concrete missed-evidence defect.
+- **Ultra Mobile:** current research had Wi-Fi Calling abroad marked unknown, while Ultra currently publishes that Wi-Fi Calling is available on all Ultra plans and can be used while traveling internationally to call/text over Wi-Fi. PayGo-specific applicability still needs careful route-level confirmation rather than assuming every general-plan statement applies identically.
+- **H2O PayGo:** deeper research supports the existing caution rather than overturning it: H2O's current PayGo material is for personal use in the U.S., while current international roaming is tied to Unlimited/12-Month plans rather than the PayGo route.
+
+Audit sequence:
+
+1. Inventory every current production Phone route and every `unknown`/`partial` field that materially changes a buying or retention decision.
+2. Search community-first for hidden plans, support-assisted packages, app/account options, current user reproductions, refusals and policy changes.
+3. Classify each claim as public first-party rule, private first-party support artifact, reproduced carrier/app flow, independent first-hand report, or secondary tutorial/aggregation.
+4. Search for independent replication and recent failure reports; do not count copied tutorials as separate evidence.
+5. Use official/regulator material to check explicit legal/KYC/geography/termination conflicts and to bound the route, not to decide whether an unadvertised route exists.
+6. Produce a discrepancy matrix: `current product claim -> deeper evidence -> correction needed / keep / conflict`.
+7. Only after the matrix is complete decide which factual corrections should ship to the existing Phone canonical and which new hidden routes have enough reproduction evidence to enter the same canonical.
+8. Keep production stable during the audit unless an existing user-facing claim is clearly wrong and delaying correction would materially mislead users.
+
+Stop / reject conditions:
+
+- the route depends on forged KYC, deceptive support stories, stolen identities, unauthorized access, security bypass or prohibited geography evasion;
+- evidence is copied/circular rather than independently reproduced;
+- recent failures show the route is stale or agent-specific and no reliable current path remains;
+- a current explicit carrier/regulator restriction genuinely conflicts with the proposed workflow after plan/account differences are resolved.
+
+This audit is now the priority Phone research task. Do not return to an "official-page directory" model.
+
 ### Q-010 — Wedge / Demand Validation Sprint
 
 Status: **ACTIVE — RESET DISTRIBUTION PUBLISHED / MEASURING**
@@ -213,17 +255,20 @@ Status: **MONITOR**
 - Do not churn manual resubmissions.
 - Treat new indexing as a signal to measure queries/CTR, not as permission to add more pages.
 
-### Q-007 — Phone official-source and community watcher review
+### Q-007 — Phone hidden-route/community watcher review
 
 Status: **MONITOR / EVENT-DRIVEN**
 
 Trigger:
 
-- a material official-source hash/content change, or a repeated high-signal community pattern.
+- a material repeated community/support-assisted route, current failure pattern, or official-source change.
 
 When triggered:
 
-- manually review the evidence;
+- use community/support/app evidence to identify the concrete route first;
+- search for independent current reproduction and recent failure/refusal reports;
+- classify direct carrier support/app artifacts separately from ordinary community claims;
+- use current official/regulator evidence to check conflicts and hard constraints;
 - separate provider fetch/block failures from actual policy changes;
 - do not auto-rewrite production guidance from watcher output;
 - keep the resource-tight observer workload frozen.
