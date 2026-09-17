@@ -18,8 +18,8 @@ This audit is not permission to revive the old SaaS/MCP direction, add products,
 - [x] H-10 — Audit public production surface for accidental historical product endpoints/content beyond the intentionally retained Relay API dependency.
 - [x] H-11 — Audit repository metadata (description/topics/homepage) against current positioning and distinguish executable fix vs connector permission blocker.
 - [x] H-12 — Audit monetization/measurement basics already in place (AdSense tag/ads.txt, GA4, canonical/sitemap/robots) for historical inconsistencies only; do not optimize revenue before traffic.
-- [ ] H-13 — Make the smallest safe fixes for confirmed defects using fresh branch/PR/CI/preview; do not delete historical code solely for cleanliness. **PATCHED / PENDING PR + PRODUCTION VERIFY.**
-- [ ] H-14 — Record final findings, remaining blockers, and stop conditions in current fact sources so later sessions do not repeat this archaeology.
+- [x] H-13 — Make the smallest safe fixes for confirmed defects using fresh branch/PR/CI/preview; do not delete historical code solely for cleanliness. PR #93 merged after CI, Eval Gate and Vercel Preview passed.
+- [x] H-14 — Record final findings, remaining blockers, and stop conditions in current fact sources so later sessions do not repeat this archaeology.
 
 ## Decision rules
 
@@ -102,6 +102,10 @@ Passed checks:
 - `npm run eval -- --quiet` completed without reported regressions.
 
 A one-time GitHub Actions helper was used only to reproduce the already-tested `server.js` patch on the audit branch because the Qwen host deliberately has no GitHub push credentials. That helper deleted itself and its patch script after a successful run; neither is intended to enter `main`.
+
+## Production verification closure
+
+PR #93 merged to main as `710ce084`. Vercel production completed successfully. The main-site proxy no longer forwards historical `/api/memory/*` routes while Relay Risk still returns live data. Qwen was fast-forwarded with no overlap against its dirty runtime data; only `api-server` was restarted. PM2 confirmed `api-server`, `reverse-proxy` and `relay-risk-scheduler` online. Local and external checks confirmed health 200 without the old `_tip`, direct tunnel root/Memory endpoints return 410, and Relay Risk remains available.
 
 ## Remaining external blocker
 
