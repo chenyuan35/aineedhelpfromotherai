@@ -1,250 +1,254 @@
-# Phone Route Research Method — Community-First / Hidden-Route
+# Phone Route Research Method — Community Reality First
 
-Last updated: 2026-09-17
+Last updated: 2026-09-18
 
 ## Purpose
 
-Phone Number Lifecycle is valuable only if it can surface practical routes that are difficult for an ordinary user or a generic AI answer to discover, reproduce and maintain.
+Phone Radar exists to surface practical phone-number routes that are hard for an ordinary user or generic search result to discover, reproduce and maintain.
 
-This method governs **all Phone route research**, not only unusual edge cases. It covers low-cost retention routes, support-assisted packages, app-only options, conversion flows, roaming/Wi-Fi Calling paths, activation edge cases, ordinary public plans, and current failure modes.
+This method governs Phone route research.
 
-For Phone research, this document supersedes the evidence/discovery ordering in `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` section 6 wherever the older wording implies that public carrier pages should be searched or trusted first.
+The core rule is:
 
-The governing rule is:
+> **Research what real users are successfully doing now, what is failing now, what it costs, how hard it is, and how the route changes over time.**
 
-> Community and real-user operations discover the route. Reproduction determines whether it is real and useful. Carrier/regulator material checks hard constraints and conflicts. Public marketing visibility does not decide whether a route exists, is valuable, or deserves research priority.
+The research system is backstage. Its purpose is to improve user-facing decisions, not to produce a carrier encyclopedia.
 
-## Product value
+## Primary research targets
 
-The product is not an official-plan directory and must not become a cleaner copy of carrier websites.
+For every route, prioritize recent operational outcomes:
 
-The useful job is:
-
-> Find low-cost, reproducible phone-number routes that real users are successfully using, explain exactly how they work, show where they fail, and keep the evidence fresh enough that another user can decide whether to try them.
-
-A route that is trivial to find on an operator homepage may still be included when useful, but it is not the research advantage. The highest-value discoveries are often:
-
-- support-assisted validity extensions or retention packages;
-- app/account options that are not indexed publicly;
-- customer-service enrollment flows;
-- marketplace/travel-SIM routes that can be converted into a durable personal line;
-- hidden or unusually cheap keep-alive actions;
-- overseas activation, roaming, Wi-Fi Calling or SMS continuity paths;
-- migration/reissue flows that preserve the same number;
-- account-specific or legacy options still being honored in practice;
-- policy changes, refusal patterns and failure modes discovered by users before public documentation changes.
-
-If a user can get the same useful answer by asking a generic AI to summarize the carrier homepage, the Phone product has not done enough research.
+- successful purchase/setup;
+- setup refusal/failure;
+- SMS/OTP reception success/failure;
+- current acquisition cost;
+- current keep-alive cost and method;
+- overseas/China use in practice;
+- eSIM/SIM conversion and reissue;
+- same-number recovery/replacement;
+- number loss/recycling incidents;
+- support-assisted hidden plans or retention offers;
+- support refusal/inconsistency;
+- customer complaints;
+- refunds, restorations and reversals after incidents;
+- current tutorials/procedures;
+- whether the route is improving, stable, degrading or effectively dead.
 
 ## Research order
 
-Use this order for **every Phone route**:
+Use this order:
 
-1. **Community discovery.** Find current first-hand reports, questions, screenshots, support transcripts, app/account screenshots, step-by-step success records and failure records.
-2. **Replication search.** Look for independent users reporting the same route, price, support instruction, activation behavior or failure mode. Prefer reports separated by author/site/date rather than copied tutorials.
-3. **Private first-party evidence.** Treat carrier customer-service emails/chats, authenticated account/app screens, support tickets and carrier-issued messages as first-party operational evidence when provenance is credible. They do not become ordinary hearsay merely because the same text is absent from a public URL.
-4. **Reproducibility assessment.** Record exact actions, prerequisites, cost, timing, geography, device/SIM state, support channel and outcome. Separate the route from the anecdote.
-5. **Freshness/failure check.** Search for recent reports that the route stopped working, changed price, started requiring different KYC, became agent-dependent, or now uses another support channel.
-6. **Public official constraint check.** Only after the practical route is understood, search current carrier/regulator material for explicit legal/KYC/geography/termination restrictions, maximum validity, roaming limits and other hard boundaries that may conflict with or narrow the route.
-7. **Production decision.** Decide whether the route is ready for the existing Phone canonical, should remain a monitored candidate, or should be rejected as stale, unsafe, non-reproducible or genuinely policy-conflicting.
+1. **Find current first-hand community reports.** Search forums, comments, tutorials, user screenshots, support transcripts shared by users and other operational accounts.
+2. **Find independent repetition.** Look for different users/authors/dates describing materially similar results. Avoid counting copied tutorials as separate confirmation.
+3. **Extract the route.** Record exactly what the user did: starting SIM/account state, location, device, payment, support/app steps, cost, timing and result.
+4. **Search for recent failures.** Find refusal cases, route breakage, account locks, number loss, SMS failure, price changes, enforcement waves and support inconsistency.
+5. **Track incident resolution.** Record whether complaints led to restoration, refund, reversal, workaround, permanent loss or unresolved failure.
+6. **Convert evidence into decision data.** Update only the fields that matter to users: SMS/OTP reliability signal, yearly keep-alive cost, setup difficulty, location practicality, stability/risk, continuity and tutorial steps.
+7. **Stop.** Stop researching when more material would not change a user decision, warning, cost, difficulty, risk state or tutorial.
 
-Do not reverse this into “search the carrier website first and stop if the page is missing.”
+Do not make provider-by-provider documentation completeness a goal.
 
-## What public official material is and is not for
+## What counts as strong operational evidence
 
-Public carrier/regulator material is useful for:
+### A. Repeated current first-hand success
 
-- hard legal/KYC/geography constraints;
-- termination, number-loss and portability rules;
-- published maximum validity or roaming boundaries;
-- detecting explicit contradictions with a community route;
-- stable background mechanics that help interpret an operational workflow.
+Multiple independent users recently completed materially the same route with matching important steps and outcomes.
 
-Public material is **not**:
+This is strong evidence that the route is operationally reproducible.
 
-- a discovery gate;
-- a requirement for admitting a route;
-- proof that an unadvertised route does not exist;
-- a ranking signal that makes an advertised plan preferable to a cheaper support-assisted one;
-- a reason to discard current first-party support messages or reproduced app/account behavior;
-- a substitute for checking whether real users can still complete the route today.
+### B. Current first-hand success with detailed procedure
 
-Operators have incentives to promote profitable/default products rather than the cheapest retention option. Therefore absence from a public product page carries little weight by itself.
+A single recent report with concrete actions, costs, screenshots or support interaction can establish a strong lead and may be enough for a monitored route when no meaningful contradiction exists.
 
-## Evidence classes
+### C. User-shared support/app/account interaction
 
-Track evidence by what it actually proves, not by whether Google can index it.
+A support chat, email, ticket, app/account screen or carrier message shared by a real user can establish a hidden procedure or account action even when it is not publicly advertised.
 
-### A. Reproduced carrier/app/support flow
+The useful question is whether another user can reproduce the result, not whether a marketing page describes it.
 
-A current sequence that multiple users can perform in the carrier app/account or through carrier support.
+### D. Current failure/incident evidence
 
-This is often the strongest operational evidence for hidden routes because it proves present availability rather than marketing visibility.
+Recent refusal, number loss, SMS failure, abrupt enforcement, mass complaint or degraded support quality is first-class evidence.
 
-### B. Private first-party support artifact
+Negative operational evidence can lower a route's status even when the product still exists and its marketing copy has not changed.
 
-Carrier email, live-chat transcript, support ticket, authenticated account/app message, carrier SMS or other direct carrier communication shared by a user.
+### E. Secondary tutorial/aggregation
 
-Use when the carrier confirms a package, enrollment path, exception or account action that is not publicly advertised. Record date, channel and exact claim. Do not expose personal identifiers.
+Useful for leads and terminology. It becomes stronger when the author clearly reports personal use or links to independent first-hand outcomes.
 
-### C. Independent first-hand community report
+Copied/circular material should not be counted repeatedly.
 
-A user describes their own purchase, activation, top-up, roaming, support interaction, failure or recovery and provides enough detail to identify prerequisites and outcome.
+## Community reality over self-description
 
-One report is a lead. Multiple independent current reports can establish reproducibility when they agree on the important steps.
+Phone Radar should not assume that a provider's self-description fully reflects how the service behaves in practice.
 
-### D. Public first-party rule
+Examples of operational facts that matter more to the user include:
 
-Carrier/regulator help pages, terms, published pricing, app documentation or official purchase pages.
+- a route that still works despite not being publicly promoted;
+- a product that exists but regularly fails overseas activation;
+- a number-recovery process that support actually performs;
+- a mass number-recovery event after complaints;
+- a service that remains technically available but has become less trustworthy after recent incidents;
+- a hidden keep-alive method repeatedly used by current customers;
+- a marketed feature that current users report as unreliable.
 
-Use mainly for hard constraints, public mechanics and conflict checks. Do not let this class automatically outrank newer reproduced operational evidence about a different plan/account state.
+Operator-published pages may provide useful public price/product metadata when needed, but they are not an operational verification gate and do not automatically override recent first-hand outcomes.
 
-### E. Secondary tutorial / aggregation
-
-A blog, guide or repost that may summarize other users' work. Useful for leads and terminology, but copied claims do not count as independent replication.
-
-Affiliate incentives, copied screenshots and circular sourcing lower confidence.
-
-## Route admission rule
-
-A route does **not** require a public carrier product page to be usable in the product.
-
-A route can become production-eligible when material claims are reproducible enough for a reasonable user decision. Typical sufficient patterns include:
-
-- a credible private first-party carrier confirmation plus at least one independent current successful reproduction; or
-- multiple independent current first-hand successful reproductions with materially matching steps and no current hard legal/technical prohibition; or
-- a reproducible authenticated carrier/app flow whose price, eligibility and outcome can be directly observed, with community evidence covering practical failure modes.
-
-A public product page alone is **not sufficient** for a strong route recommendation if community evidence shows poor real-world usability, new enforcement, recycled-number problems, activation failures or high maintenance risk.
-
-Confidence drops when reports are old, copied, geographically inconsistent, dependent on a single support agent, or contradicted by newer failures.
-
-## Route value / prioritization
-
-Research and product priority should be based on user value, not official visibility.
-
-Important dimensions include:
-
-- total acquisition cost;
-- real annual keep-alive cost;
-- ability to receive SMS/OTP where the target user actually lives;
-- number continuity and replacement/migration options;
-- KYC burden and whether the legitimate process is realistically completable;
-- activation geography/device constraints;
-- Wi-Fi Calling/roaming continuity;
-- account/support friction;
-- recent successful reproduction;
-- recent failure or enforcement reports;
-- recycled-number/number-quality risks;
-- how much ongoing maintenance the route requires;
-- whether a cheaper hidden route materially beats the public/default offer.
-
-The product should surface a hidden 49-baht support package over a more expensive advertised package when the hidden route is current, legitimate and reproducible.
+If a legal, identity, safety or prohibited-use question materially affects whether a route can be recommended, investigate that specific issue from appropriate sources. Do not turn that into a routine carrier-documentation checklist for every route.
 
 ## Required route record
 
-For every route candidate, capture:
+Capture only what is needed to support decisions and maintain freshness:
 
-- provider and country;
-- discovery source and date;
-- purchase/acquisition channel;
-- SIM/eSIM starting state;
-- identity/KYC prerequisites;
-- geography and device prerequisites;
-- exact support/app/account steps;
-- exact price and currency, including whether money is fee, balance, top-up or recurring charge;
-- what the action changes: validity, ownership, roaming, Wi-Fi Calling, eSIM profile, number continuity, etc.;
-- whether the same number is preserved;
-- overseas SMS/call behavior actually reported;
-- keep-alive interval and what resets it;
-- failure modes and recovery steps;
-- support channel used;
-- evidence dates and freshness;
-- conflicting reports;
-- confidence class;
-- last successful reproduction known to us.
+- provider / route / country;
+- number type;
+- discovery source/date;
+- purchase/acquisition path;
+- starting SIM/eSIM/account state;
+- identity/KYC friction actually encountered;
+- location/device prerequisites actually encountered;
+- support/app/manual steps;
+- acquisition cost;
+- keep-alive cost and interval;
+- estimated yearly keep-alive cost;
+- SMS/OTP successes and failures;
+- overseas/China behavior actually reported;
+- same-number replacement/recovery outcome;
+- number-loss/recycling reports;
+- support refusal/inconsistency;
+- incident and resolution history;
+- tutorial/procedure links;
+- last successful reproduction;
+- last failure/refusal;
+- current route state;
+- sample/observation count when available.
 
-The product should explain what a user must actually do, not merely link to a carrier homepage.
+## SMS/OTP reliability
 
-## Confidence labels
+SMS/OTP reliability is a primary Phone Radar metric.
 
-Use descriptive states rather than a fake numeric score:
+Do not fabricate a success percentage from anecdotal evidence.
 
-- **support-confirmed + replicated** — carrier support/app evidence and at least one independent current reproduction agree;
-- **replicated community route** — multiple current independent first-hand reports agree and no hard current rule makes the route impossible;
-- **emerging / single-report** — interesting and plausible, but not yet sufficiently replicated;
-- **conflicting** — meaningful current evidence disagrees;
-- **stale** — no recent successful reproduction and policy may have changed;
-- **retired** — current evidence shows the route no longer works or is no longer legitimately available.
+Until enough observations exist for a defensible numeric rate, derive a qualitative signal from:
 
-## Conflict handling
+- recent success count;
+- recent failure count;
+- observation recency;
+- independence of reports;
+- whether failures are service-specific or route-wide;
+- whether the route has recently changed.
 
-When a public rule and current community evidence conflict, do not automatically choose the public page.
+If a future numeric percentage is shown, the internal model must retain the observation window and sample size.
 
-Investigate whether:
+## Setup difficulty
 
-- the public page describes a different plan, country, account type or activation state;
-- the support route is an account-specific or retention-only offer;
-- the public page is stale;
-- the community report is stale or copied;
-- support is applying a legitimate exception;
-- the current route has become inconsistent or agent-dependent.
+Setup difficulty is derived from actual friction:
 
-If the conflict cannot be resolved, mark it `conflicting` and explain the practical uncertainty.
+- identity/KYC steps;
+- travel/local-presence requirement;
+- first-network attachment;
+- customer-service contact;
+- app/account-only steps;
+- payment restrictions;
+- physical SIM/eSIM/device needs;
+- conversion/reissue work;
+- typical support back-and-forth.
 
-## AIS Thailand example and correction
+Do not use a difficulty score that cannot be traced to these practical steps.
 
-The 2026-09-17 AIS Thailand discussion exposed the previous research-model defect.
+## Stability / risk state
 
-The thread included a direct AIS customer-service reply recommending a `49B Validity 365 Days package` for prepaid users who mainly keep the number for SMS/OTP or overseas use. Multiple current user reports describe the same support-assisted flow. Public AIS pages provide background validity mechanics but do not market the same THB 49 route as a normal indexed product.
+Do not reuse Relay Exit Risk for phone routes.
 
-Correct classification:
+Until a dedicated numeric methodology exists, use descriptive states such as:
 
-- the support email is a **private first-party support artifact**;
-- multiple current users describing the same support-assisted 49-baht/365-day route are **replication evidence**;
-- public AIS terms/pages are **constraint/background evidence**;
-- the missing public THB 49 product page is irrelevant to whether the route is real if the support path remains reproducible.
+- `stable`;
+- `watch`;
+- `degrading`;
+- `conflicting`;
+- `retired`.
 
-Future research must not collapse “not publicly indexed” into “unverified.”
+Relevant inputs include:
+
+- recent failures;
+- number loss/recycling;
+- enforcement waves;
+- support inconsistency;
+- overseas continuity;
+- recovery quality;
+- refund/restoration outcomes;
+- direction of recent community sentiment and outcomes.
+
+The state should be able to change over time.
+
+## Event-history model
+
+A route should not be flattened into one permanent rule.
+
+Track important events chronologically, for example:
+
+`stable → enforcement wave → complaints → refund/restoration → partial recovery → watch`
+
+This is especially important for routes where trust changes faster than product availability.
+
+## Admission / demotion rule
+
+A route becomes useful when there is enough current operational evidence for a reasonable user decision.
+
+Typical positive patterns:
+
+- repeated recent first-hand success;
+- a detailed current successful route plus supporting independent reports;
+- reproducible support/app/account behavior;
+- a hidden route with clear cost, prerequisites and current users who can reproduce it.
+
+Demote or hold a route when:
+
+- recent failures materially outnumber current successes;
+- success depends on a single unexplained support exception;
+- the process is stale;
+- number loss/recovery risk worsens;
+- costs change enough to remove the route's advantage;
+- the route cannot be reproduced without deceptive or unsafe behavior.
 
 ## Search targets
 
-The radar/research loop should actively look for phrases and patterns such as:
+Actively search for signals such as:
 
-- 保号 / keep number / extend validity / validity package;
+- 保号 / keep number / extend validity;
 - 客服开通 / support enabled / retention package / hidden plan;
-- 低月租 / no monthly fee / yearly validity / cheap top-up;
-- 转个人 / ownership transfer / personal-use conversion;
+- 低月租 / no monthly fee / cheap yearly keep-alive;
 - 换 eSIM / replacement QR / same number / SIM swap;
-- 国外激活 / activate abroad / first attach / roaming activation;
+- 国外激活 / activate abroad / roaming activation;
 - Wi-Fi Calling / VoWiFi / SMS over Wi-Fi / OTP abroad;
-- 充值延长 / top-up extends validity / app-only recharge;
-- 漫游收短信 / free incoming SMS / roaming SMS;
-- 套餐下架 / stopped working / KYC changed / support refused;
-- direct carrier chat/email wording and the conditions agents request;
-- 旧套餐 / legacy plan / retention offer / account-only offer;
-- 论坛中“已上车”“实测”“刚开通”“客服给我开了”“失效了”“涨价了”等时效信号.
-
-Search communities before assuming a route does not exist.
+- 漫游收短信 / incoming SMS / OTP success;
+- 套餐下架 / stopped working / failed / refused;
+- 恢复号码 / number restored / refund / compensation;
+- 回收号码 / recycled number / number reclaimed;
+- 已上车 / 实测 / 刚开通 / 客服给我开了 / 失效了 / 涨价了;
+- current video/tutorial walkthroughs;
+- comment threads where users report success after following a tutorial.
 
 ## Safety and legitimacy
 
 Community-first research does not mean bypass research.
 
-Do not recommend forged KYC, stolen identities, deceptive support stories, unauthorized account access, circumventing carrier security, or violating applicable law/terms.
+Do not recommend forged KYC, stolen identities, deceptive support stories, unauthorized account access, security bypass, or prohibited geography evasion.
 
-A legitimate support-assisted package, carrier-approved conversion, app option or documented community workflow is in scope even when it is not advertised publicly.
+A legitimate hidden/support-assisted/app/account route is in scope when users are actually reproducing it.
 
 ## Maintenance
 
-Operational routes decay quickly. Therefore:
+Operational routes decay quickly.
 
-- record the last known successful reproduction date;
-- treat a new support refusal, mass termination, changed KYC request or price change as a material signal;
-- prefer several independent recent reports over dozens of copied old tutorials;
-- recheck high-value hidden routes more frequently than ordinary public plans;
-- never silently convert an old successful report into a permanent rule;
-- show users when a route depends on support discretion or has recent conflicting outcomes;
-- actively demote routes whose real-world community evidence worsens even if their public documentation still looks unchanged.
+Therefore:
 
-The target is not certainty. The target is a substantially better, fresher and more practical decision than a generic search or generic AI answer can provide.
+- record the last successful reproduction;
+- record the last failure/refusal;
+- track meaningful incidents and their outcomes;
+- prefer recent independent reports over many copied old posts;
+- demote routes whose real-world outcomes worsen;
+- surface current tutorials rather than stale instructions;
+- recheck only when a route matters to the user's decision or a new event changes its status.
+
+The target is not documentation completeness. The target is a better and more current decision than a generic search result can provide.
