@@ -80,9 +80,11 @@ Current first-party AIS pages reviewed on 2026-09-17 resolve several of those qu
 
 AIS also documents standard eSIM conversion/transfer. The process deactivates the previous SIM/eSIM and installs the transferred line on the new eSIM; AIS describes and displays it as transferring the existing phone number, so standard conversion/transfer preserves number continuity rather than issuing a different number. AIS also publishes international roaming activation/use guidance and Wi-Fi Calling use abroad.
 
-The remaining material evidence gap is the forum-reported `THB 49 / 365 days` validity package. That exact offer was not found in the public indexed AIS pages checked in this work round. A second current community source independently discussed the same 49-baht/365-day offer, which raises research priority but does not upgrade the claim to production evidence.
+The `THB 49 / 365 days` validity claim should be classified more precisely than an ordinary community report. The NodeSeek thread reproduces a direct AIS customer-service reply recommending the `49B Validity 365 Days package` for prepaid users who mainly keep a number for SMS/OTP or overseas use. That is a first-party support artifact reproduced inside a community thread; its limitation is that the exact support message is not independently retrievable from a public AIS URL, not that the carrier source is merely community hearsay. A second current community source independently describes the same 49-baht/365-day customer-service enrollment flow, which further corroborates current availability.
 
-Decision: record AIS Thailand as a high-value candidate route/evidence gap for the existing Phone canonical, but do not add it to the production catalog yet. Before any route addition, obtain a current first-party AIS source or another directly verifiable AIS artifact for the exact validity package and confirm the exact Trip listing/channel assumptions. This signal does not justify a Thailand-specific page.
+Public AIS material independently confirms the underlying retention mechanism. AIS currently exposes an official page titled `Prepaid Validity Package - Special for AIS customers` at `https://www.ais.th/en/consumers/privileges/reward/ais_package/RetentionPoint365daysPrepaid`; its page metadata describes it as `Prepaid Validity Package - Extend 365 days validity (for AIS 1-2-call Customer)`. AIS prepaid terms also state that accumulated service validity can reach a maximum of 365 days. These public pages do not expose the same THB 49 customer-service price in crawlable text, so the remaining documentation gap is public/persistent price-and-eligibility detail for that support-assisted offer, not evidence that a 365-day AIS validity extension exists.
+
+Decision: record AIS Thailand as a high-value candidate route with first-party carrier/support evidence, while keeping production stable during the current post-release measurement gate. Before any later route addition, complete the exact eligibility/enrollment fields for the support-assisted THB 49 offer and confirm the exact Trip listing/channel assumptions. Do not create a Thailand-specific page; any eventual addition belongs inside the existing Phone canonical.
 
 ## Interpretation rules
 
@@ -91,6 +93,7 @@ Decision: record AIS Thailand as a high-value candidate route/evidence gap for t
 - Recommendations can identify providers/routes worth researching, not routes to auto-add.
 - One post is not demand proof by itself.
 - Forum claims never override current official carrier/provider documentation.
+- A direct carrier/support reply reproduced in a community thread is a first-party support artifact with a provenance/retrievability limitation; do not collapse it into ordinary community hearsay.
 - Rate limits, 403/429 responses and feed outages are provider/source states, not evidence that demand disappeared.
 
 ## Retirement / migration
