@@ -46,6 +46,22 @@ Baseline before the change:
 - 141 settled impressions total for the two-day signal, 0 clicks.
 - Visible queries include `cursor usage reset`, `does cursor reset daily`, `what time does cursor usage reset`, `when do cursor credits reset`, and `when does cursor reset usage`.
 
+### Q-009 — Homepage direct-help positioning
+
+Status: **DONE / MEASURING**
+
+- PR #84 first unified the existing three surfaces under one continuity story without adding a product.
+- PR #85 then replaced the abstract first-screen wording with the direct hook **`AI stopped? Start here.`** and the choice **`What stopped?`**.
+- The first viewport now maps **Reset · Access · Reliability** to three concrete jobs: usage limits, account-access phone continuity, and relay dependency risk.
+- Phone remains the featured/primary product section; Reset gets the first immediate-action CTA because it already has proven search intent; Relay remains secondary.
+- PR #85 merged as `98b3573b`. Eval Gate and Vercel passed; final apex desktop and mobile live fetches returned HTTP 200 with the new H1/title/meta.
+- No new URL, provider, backend, image, paid dependency, or fourth product surface was created.
+
+Measurement trigger:
+
+- once GA4 has real homepage sessions and tool-open/landing behavior, compare which first-screen job users choose before changing the hero or CTA hierarchy again.
+- until that trigger, do not rewrite the homepage again unless a verified usability defect appears.
+
 ## Current measurement facts
 
 As checked on 2026-09-17:
@@ -155,7 +171,8 @@ Until an explicit trigger above fires, do **not** create:
 - new accounts/email/SMS backends;
 - new workloads on the resource-tight trial observer;
 - paid SEO/data dependencies;
-- repeated Cursor title changes without a post-change sample.
+- repeated Cursor title changes without a post-change sample;
+- repeated homepage promise/CTA rewrites before real first-screen behavior exists.
 
 ## Execution rule
 
