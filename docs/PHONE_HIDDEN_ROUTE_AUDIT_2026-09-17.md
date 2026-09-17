@@ -6,37 +6,28 @@ Last updated: 2026-09-18
 
 Method: `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
 
-This audit exists because the current Phone product was researched too heavily from public carrier documentation. That approach is good at describing published rules but can miss the two things that create the most user value:
+This audit exists because public carrier documentation alone can miss legitimate support-assisted routes and recent real-user failures. Community/current-user operations discover candidates; reproduction and direct support/app/account evidence establish operational reality; public carrier/regulator material checks hard constraints/conflicts.
 
-1. legitimate low-cost/support-assisted routes that carriers do not actively advertise; and
-2. recent community-observed failures that appear before public documentation catches up.
-
-No production change is authorized by this document alone. The first goal is a discrepancy matrix.
+No production change is authorized by this document alone. Fix materially misleading current routes first, then consider at most one or two genuinely strong hidden routes.
 
 ## 1. Existing production-route discrepancies
 
-### giffgaff UK — real 2026 enforcement, but later restoration reports make the outcome conflicting
+### giffgaff UK — real 2026 enforcement with conflicting later restoration evidence
 
-Current product strength:
+Current production already:
 
-- inactivity/keep-alive actions, PAYG cost and PAC rescue are well documented;
-- existing tutorial notes already warn that keep-alive does not equal permission for permanent overseas use;
-- the registration ranking already penalizes `restricted-long-term` overseas use rather than treating giffgaff as a low-risk long-term-abroad route, and the UI shows the contextual `Keep-alive is not the whole story` warning when the user is maintaining the number outside the UK.
+- documents inactivity/keep-alive and PAC rescue;
+- warns that keep-alive does not equal permission for permanent overseas use;
+- penalizes `restricted-long-term` use when a user intends to keep the line abroad;
+- shows the contextual `Keep-alive is not the whole story` warning.
 
-Fresh enforcement evidence:
+Fresh evidence:
 
-- July 27–30, 2026 produced a cluster of NodeSeek/NodeLoc/community reports showing direct termination notices for `extended or permanent use outside the UK`, including lines activated only weeks earlier;
-- users reproduced carrier replies refusing reinstatement and in some cases refusing unused-credit refunds;
-- ISPreview published an Aug 1 report after receiving multiple complaints and obtained a giffgaff spokesperson confirmation that a proportion of PAYG SIMs associated with extended/permanent use outside the UK had been disconnected;
-- the notices point users toward PAC transfer as the practical number-preservation path.
+- late July 2026 NodeSeek/NodeLoc reports documented termination notices for extended/permanent use outside the UK;
+- ISPreview reported on Aug 1 that giffgaff confirmed a proportion of PAYG SIMs associated with extended/permanent overseas use had been disconnected;
+- an Aug 18 NodeLoc report said at least some affected accounts were restored and shared wording attributed to giffgaff describing an earlier action as an operational error.
 
-Fresh conflicting/restoration evidence:
-
-- on Aug 18, 2026, a NodeLoc thread reported that at least some previously affected accounts had been restored and shared wording attributed to giffgaff saying an earlier action had resulted from an operational error;
-- the same discussion still treated UK-primary use as the governing requirement and did not establish that long-term overseas number-retention use had become safe or broadly permitted;
-- this restoration report therefore narrows the claim: the July/August wave proves real enforcement occurred, but it does **not** justify saying every long-term overseas user will be permanently disconnected.
-
-Important sources:
+Sources:
 
 - https://www.nodeseek.com/post-848635-1
 - https://www.nodeloc.com/t/topic/101536
@@ -44,123 +35,100 @@ Important sources:
 - https://www.ispreview.co.uk/index.php/2026/08/giffgaff-disconnect-some-prepaid-mobile-users-for-extended-roaming-outside-uk.html
 - https://www.nodeloc.com/t/topic/104211
 
-Discrepancy:
+Decision: **KEEP CURRENT RESTRICTION/RANKING PENALTY.** Real enforcement occurred, but later restoration reports mean the correct state is elevated/conflicting long-term-overseas risk, not deterministic shutdown. No immediate production logic change.
 
-- the product's six-month inactivity mechanics remain useful, but they are not sufficient to describe the route for a user who intends to live outside the UK;
-- an overseas user can satisfy the inactivity rule and still face account review/disconnection based on usage pattern or geography;
-- this is no longer merely a theoretical terms caveat because real 2026 disconnections were confirmed;
-- however, later restoration/operational-error reports mean the evidence should be presented as an elevated, conflicting long-term-overseas risk rather than a deterministic shutdown rule.
+### Tello US — US-first attachment enforcement confirmed
 
-Audit decision: **KEEP THE EXISTING RESTRICTION/RANKING PENALTY; NO IMMEDIATE PRODUCTION LOGIC CHANGE.** The current product already penalizes long-term-abroad giffgaff use and warns that keep-alive does not remove overseas-policy risk, so a production hotfix is not required. Future evidence-context copy should state that real 2026 disconnections occurred while some later restorations were reported. Do not hard-block ordinary UK-primary use or short travel, and do not present giffgaff as a low-risk permanent-overseas retention route.
+Current production already:
 
-### Tello US — community confirms stronger enforcement around first US attachment
+- blocks first activation/port-in outside the United States;
+- treats overseas Wi-Fi Calling/Text separately from first activation;
+- allows international roaming only after the home-activation prerequisite.
 
-Current product state:
+Fresh evidence:
 
-- initial activation/port-in is treated as requiring physical presence in the United States and a US cellular tower;
-- overseas Wi-Fi Calling/Text and OTP use after setup are treated as supported;
-- international roaming is treated as available after the home-activation prerequisite.
+- current Tello support requires first activation/port-in while physically in the US and connected to US cellular towers;
+- May–July 2026 reports document stronger enforcement and international roaming being disabled for some lines that never attached to a US tower;
+- established lines can still retain Wi-Fi Calling/Text and receive OTPs in some overseas cases.
 
-Fresh community evidence:
+Sources:
 
-- May 27, 2026 Reddit reports began documenting a change where users who had previously been able to activate while abroad started receiving a requirement that the number connect in the US first;
-- June/July 2026 community instructions report mixed results for attempts to activate in the US and then transfer an eSIM/SIM overseas: some users retain roaming, others end up with only Wi-Fi Calling/Text;
-- on July 30, 2026, multiple users reported international roaming being disabled on accounts that had activated abroad and had never attached to a US tower, while Wi-Fi Calling/Text continued to work for some users;
-- August 2026 discussion still shows overseas OTP success over Wi-Fi Calling, but other users explicitly warn that new overseas activation is no longer reliably available.
-
-Important sources:
-
+- https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad
+- https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas
 - https://www.reddit.com/r/Tello/comments/1tpla4v/recent_change_to_international_activation/
 - https://www.reddit.com/r/Tello/comments/1vb9c1j/psa_international_roaming_being_turned_off_if_you/
 - https://www.reddit.com/r/Tello/comments/1u971w7/tello_esim_in_china_will_sms_2fa_codes_still_work/
 - https://www.reddit.com/r/Tello/comments/1vgwzsa/tello_outside_us/
-- https://www.reddit.com/r/u_comp21/comments/1slpago/tello_international_setup_instructions/
 
-Discrepancy:
+Decision: **KEEP THE HARD BLOCK.** Do not recommend an overseas-first Tello route. Existing production already preserves the useful distinction between initial US attachment and later Wi-Fi Calling/Text continuity. No immediate production hotfix.
 
-- the current production hard block on outside-US first activation is directionally correct and should remain;
-- community evidence strengthens that block from a theoretical policy boundary into an actively enforced practical constraint;
-- the route should not imply that a clever overseas activation path is a stable alternative;
-- Wi-Fi Calling/Text can remain valuable for an already-properly-established line, but international roaming continuity appears more fragile when the line has never attached to a US tower.
+### Lebara UK — UK activation supported; overseas Wi-Fi/SMS reliability remains mixed
 
-Audit decision: **KEEP THE HARD BLOCK, STRENGTHEN THE REAL-WORLD WARNING.** Do not recommend an overseas-first Tello route. Treat successful overseas activations as legacy/exception reports rather than a supported acquisition path.
+Current production already:
 
-### Lebara UK — activation rule supported, overseas Wi-Fi/SMS reliability remains mixed
+- blocks initial SIM/eSIM activation outside the UK;
+- treats international roaming SMS as supported after UK activation;
+- leaves dependable overseas Wi-Fi Calling/SMS as `unknown`.
 
-Current product state:
+Fresh evidence:
 
-- initial SIM/eSIM activation is blocked outside the UK;
-- international roaming SMS is supported after UK activation;
-- Wi-Fi Calling abroad remains `unknown` for dependable SMS/OTP continuity.
+- current Lebara eSIM guidance says service must be activated in the UK before travel;
+- 2026 users report mixed eSIM provisioning, Wi-Fi Calling and international authentication-SMS behavior, including delayed/missed SMS and post-migration Wi-Fi Calling failures alongside successful cases.
 
-Fresh community evidence:
-
-- August 2026 users report that unactivated Lebara UK SIMs taken abroad do not activate properly and should be activated in the UK first;
-- January 2026 users living abroad report intermittent SMS delivery over Wi-Fi Calling, including authentication messages arriving late or in batches;
-- February 2026 eSIM users report inconsistent Wi-Fi Calling provisioning after SIM-to-eSIM migration, with some devices working and others remaining broken for weeks despite support contact;
-- other users report Wi-Fi Calling working normally, which means the real-world state is mixed rather than universally broken.
-
-Important sources:
+Sources:
 
 - https://www.reddit.com/r/LebaraUK/comments/1vrpc18/activate_a_top_up_sim_outside_the_uk/
 - https://www.reddit.com/r/LebaraUK/comments/1q5y6ox/sms_delivery_over_wifi_when_abroad/
 - https://www.reddit.com/r/LebaraUK/comments/1qxuh3h/wifi_calling_not_working_after_switching_to/
 
-Discrepancy:
+Decision: **KEEP UK-FIRST ACTIVATION; KEEP DEPENDABLE OVERSEAS WI-FI SMS `unknown`.** Generic feature availability is not enough to claim current reliability. No production hotfix.
 
-- the existing UK-activation hard block is supported by current users and should remain;
-- the current `unknown` state for dependable overseas Wi-Fi Calling/SMS should **not** be upgraded simply because Lebara publishes generic Wi-Fi Calling information;
-- actual user reports show device/eSIM/provisioning variability and delayed authentication SMS, so reliability is the key unanswered question rather than feature availability.
+### Sakura Mobile Japan Voice+Data — correction completed
 
-Audit decision: **KEEP `unknown` FOR RELIABLE OVERSEAS WI-FI SMS; ADD FAILURE-MODE CONTEXT.** This is an example where public feature availability is weaker evidence than current user reliability reports.
+Previous production state:
 
-### Sakura Mobile Japan Voice+Data — missed positive evidence
+- post-departure roaming SMS was `unknown`;
+- ongoing copy said overseas roaming/OTP behavior was not verified strongly enough to promise.
 
-Current product state:
+Current first-party evidence:
 
-- post-departure roaming SMS was marked `unknown`.
+- Sakura Mobile's current Monthly support article states Voice+Data SIM/eSIM supports calls and SMS outside Japan while cellular data/Internet is unavailable;
+- destination-specific roaming rates apply;
+- this applies to Monthly Voice+Data, not Sakura's Travel data-only SIM/eSIM.
 
-Deeper first-party evidence:
+Source:
 
-- current Sakura Mobile support material explicitly says Voice+Data SIM/eSIM usage outside Japan supports calls and SMS while cellular data is unavailable.
+- https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan
 
-Discrepancy:
+Decision: **CORRECTED VIA PR #108.** `sakura-japan-voice-data.roamingSms` is now `supported-after-activation`; the route explicitly says calls/SMS work abroad while cellular data does not. Wi-Fi Calling abroad remains `unknown`. Vercel + Eval Gate passed, and production canonical JSON was live-verified HTTP 200 with the corrected field on 2026-09-18.
 
-- `unknown` understates a material capability that affects account-access continuity after leaving Japan.
+### Ultra Mobile PayGo — generic Wi-Fi Calling support is not enough for a reliability claim
 
-Audit decision: **CORRECTION NEEDED.** Confirm exact plan/applicability and then replace the unknown state with the supported roaming-call/SMS rule.
-
-### Ultra Mobile PayGo — incomplete Wi-Fi Calling evidence
-
-Current product state:
+Current production state:
 
 - PayGo roaming SMS is supported;
-- Wi-Fi Calling abroad was left `unknown`.
+- Wi-Fi Calling abroad remains `unknown`.
 
-Deeper evidence:
+Current evidence:
 
-- Ultra currently publishes `Free Wi-Fi Calling on All Ultra Plans` and states that international travelers can call and text over Wi-Fi;
-- Ultra's current PayGo material separately confirms international roaming support for voice/SMS/MMS through the PayGo Wallet.
+- Ultra currently says `Free Wi-Fi Calling on All Ultra Plans` and describes calling/texting over Wi-Fi while abroad;
+- current PayGo material separately documents the PayGo product and roaming wallet behavior;
+- PayGo-specific current reproduction/provisioning is still thin, while user reports show device/IMS/provisioning failures can prevent Wi-Fi Calling from working as expected abroad.
 
-Discrepancy:
+Decision: **KEEP `unknown` FOR PAYGO WI-FI CALLING ABROAD.** Do not automatically inherit a dependable-overseas claim from generic `all plans` wording. Revisit only after current PayGo-specific reproduction/support evidence is strong enough.
 
-- the existing `unknown` may be too conservative;
-- however, `all Ultra plans` must still be checked against current PayGo account/device provisioning before changing the route field.
+### H2O Wireless Pay As You Go — current caution remains supported
 
-Audit decision: **VERIFY THEN CORRECT** rather than automatically inheriting general-plan wording.
-
-### H2O Wireless Pay As You Go — current caution supported
-
-Current product state:
+Current production state:
 
 - overseas roaming is not treated as supported for the PayGo route.
 
-Deeper evidence:
+Current evidence:
 
-- H2O's current PayGo page says the service is for personal use in the U.S.;
-- current H2O international roaming material applies roaming to Unlimited monthly and 12-Month plans, not the PayGo route.
+- H2O's PayGo page remains a US-focused prepaid route;
+- current H2O international roaming material applies roaming to Unlimited monthly and 12-Month plans, not PayGo.
 
-Audit decision: **KEEP** the current caution unless a current support/app route proves otherwise.
+Decision: **KEEP CURRENT CAUTION.** No production change.
 
 ## 2. Hidden-route candidates discovered from community evidence
 
@@ -172,19 +140,26 @@ Signal quality: **high**
 
 Why it matters:
 
-- direct AIS customer-service wording reproduced by a current user;
-- multiple independent current tutorials/reports describe the same support-assisted 49-baht/365-day path;
-- current AIS public material independently confirms a 365-day prepaid validity mechanism;
-- the route also covers passport KYC, roaming, SMS, Wi-Fi Calling, eSIM reissue and long-term number continuity.
+- direct AIS customer-service wording was reproduced by a current user;
+- multiple current community reports describe the same support-assisted `49B Validity 365 Days` path;
+- current AIS public material independently supports a 365-day prepaid-validity mechanism;
+- the route may combine low annual retention cost with passport KYC, roaming, SMS, Wi-Fi Calling, eSIM reissue and long-term number continuity.
 
-Current classification: **support-confirmed hidden route candidate**.
+Current classification: **support-confirmed hidden-route candidate; NEXT Q-013 TASK; NOT IN PRODUCTION.**
 
-Remaining work:
+Required before admission:
 
-- exact eligibility/account state for the 49B offer;
-- whether it can be repeatedly renewed under current policy;
+- exact starting product/account states eligible for the 49B offer;
+- whether the offer can be repeated/renewed under current policy;
 - current support channel consistency and refusal cases;
-- distinguish Trip/Redtea/traveler-SIM starting products and conversion paths rather than merging them into one route.
+- separate Trip/Redtea/traveler-SIM starting products and conversion paths instead of merging them;
+- real acquisition + top-up + recurring/keep-alive cost;
+- passport/KYC/local-presence/first-network-attachment requirements;
+- payment restrictions;
+- SIM/eSIM/device transfer/reissue mechanics;
+- mainland-China purchase/activation/SMS/Wi-Fi Calling practicality;
+- same-number replacement/recovery/recycling behavior;
+- last successful reproduction and last refusal/failure date.
 
 ### RedPocket US annual route — community-reproduced acquisition + support-assisted eSIM reissue
 
@@ -193,14 +168,14 @@ Signal quality: **medium-high**
 Recent evidence:
 
 - 2026 NodeSeek users report successful purchase/activation of the annual RedPocket route through the known marketplace channel;
-- at least one current report documents support reissuing a manual eSIM QR after the default activation flow did not deliver one;
-- another long-form community retention review treats RedPocket as one of the more reliable US-number routes after using alternatives.
+- at least one current report documents support reissuing a manual eSIM QR after the default flow did not deliver one;
+- another long-form retention review treats RedPocket as one of the more reliable US-number routes after using alternatives.
 
-Important practical negatives:
+Important negatives:
 
-- marketplace-account/payment friction exists;
-- recycled numbers can carry bad history, including reports of a newly issued number already blocked by WhatsApp;
-- device/eSIM-adapter compatibility and carrier anti-fraud behavior matter.
+- marketplace-account/payment friction;
+- recycled-number history, including reports of a newly issued number already blocked by WhatsApp;
+- device/eSIM-adapter compatibility and carrier anti-fraud behavior.
 
 Sources:
 
@@ -209,28 +184,16 @@ Sources:
 
 Current classification: **replicated community candidate; needs seller/channel + number-history risk audit**.
 
-### ClubSIM Hong Kong — useful example of community freshness beating old tutorials
+### ClubSIM Hong Kong — community freshness caught a keep-alive price change
 
 Signal quality: **high for change detection**
 
-Earlier route:
-
-- 2025 tutorials widely described the cheapest annual keep-alive as a HKD 6 SMS package.
-
-Fresh community update:
-
-- a June/July 2026 long-term user's retention log reports the HKD 6 package was removed on July 3 and the annual keep-alive cost moved to HKD 15;
-- the same source also notes online self-service eSIM replacement limits.
+Earlier tutorials described HKD 6/year keep-alive. A June/July 2026 long-term user reported the HKD 6 package was removed on July 3 and annual keep-alive moved to HKD 15, with additional online eSIM replacement limits.
 
 Sources:
 
 - https://www.nodeseek.com/post-479688-1
 - https://www.nodeseek.com/post-783926-1
-
-Lesson:
-
-- copying an old official/product page or old tutorial would preserve a stale `6 HKD/year` fact;
-- current community monitoring catches the real change earlier.
 
 Current classification: **strong candidate only after current keep-alive price and replacement limits are rechecked**.
 
@@ -238,12 +201,7 @@ Current classification: **strong candidate only after current keep-alive price a
 
 Signal quality: **medium**
 
-Current 2026 community report:
-
-- online eSIM availability;
-- reported effective opening cost around HKD 10 after included balance;
-- reported HKD 28 / 365-day keep-alive;
-- mainland roaming SMS reception is a central use case.
+A 2026 community report describes online eSIM availability, effective opening cost around HKD 10 after included balance, HKD 28 / 365-day keep-alive, and mainland roaming SMS as a central use case.
 
 Source:
 
@@ -255,36 +213,21 @@ Current classification: **emerging candidate; needs independent replication and 
 
 Signal quality: **medium / high upside**
 
-A detailed Aug 2026 first-hand NodeSeek report claims:
-
-- legitimate passport identity verification;
-- Wi-Fi Calling and overseas SMS capability;
-- account-side eSIM regeneration;
-- 180-day validity extension after account recharge;
-- bank-transfer top-ups as low as EUR 0.01, implying a near-zero annual keep-alive cost.
+A detailed Aug 2026 first-hand NodeSeek report claims legitimate passport identity verification, Wi-Fi Calling and overseas SMS, account-side eSIM regeneration, 180-day validity extension after account recharge, and bank-transfer top-ups as low as EUR 0.01.
 
 Source:
 
 - https://www.nodeseek.com/post-851904-1
 
-Current classification: **high-priority replication candidate, not yet production evidence**.
+Current classification: **high-priority replication candidate, not production evidence**.
 
-Safety boundary:
-
-- only the legitimate passport/KYC/carrier flow is in scope;
-- do not preserve or recommend proxy/location spoofing or any method intended to defeat carrier geographic/security checks.
+Safety boundary: only legitimate passport/KYC/carrier flow is in scope. Do not preserve or recommend proxy/location spoofing or other methods intended to defeat carrier geographic/security checks.
 
 ### Netherlands Simyo prepaid eSIM — current long-life balance route
 
 Signal quality: **medium-high**
 
-An Aug 2026 first-hand report documents:
-
-- successful eSIM opening;
-- 180-day activity/balance requirement;
-- SMS as a straightforward keep-alive action;
-- long runway from starting balance;
-- explicit failed-order/refund friction and support recovery.
+An Aug 2026 first-hand report documents successful eSIM opening, 180-day activity/balance requirement, SMS as keep-alive, a long runway from starting balance, plus failed-order/refund friction and support recovery.
 
 Source:
 
@@ -300,41 +243,32 @@ Community reports describe a low-cost eSIM route with a long initial validity wi
 
 Current classification: **candidate; verify current new-line validity, international/Wi-Fi SMS behavior and eSIM-transfer limits**.
 
-## 3. Community evidence that should NOT be promoted as a route
+## 3. Community evidence that must not become product instructions
 
-Community discovery also finds procedures that rely on false residency, false documents, deceptive support stories, location spoofing or other carrier/security evasion.
+Community posts relying on false residency, forged/unrelated documents, deceptive support stories, stolen identities, unauthorized access, location/GPS spoofing, proxy/IP manipulation to defeat explicit eligibility, or other security bypasses are out of scope.
 
-Those posts can still be useful as risk/failure signals, but the product must not turn them into instructions or recommendations.
-
-Examples of claims to exclude from route instructions:
-
-- false residence/student classification to pass SIM registration;
-- forged or unrelated proof-of-address documents;
-- instructions to deceive carrier support about device loss;
-- location/GPS spoofing intended to bypass eSIM/carrier geographic controls;
-- proxy/IP manipulation presented as a way to defeat explicit carrier eligibility rules.
-
-If a legitimate carrier-supported path exists underneath such a tutorial, research that legitimate path separately.
+Such posts may still be useful as failure/risk signals. If a legitimate carrier-supported path exists underneath them, research that legitimate path separately.
 
 ## 4. Immediate audit priority
 
-1. **Tello** — giffgaff's current production restriction/ranking logic has now been reviewed and remains appropriate; Tello is the next current-route discrepancy to close. Keep the current hard block, but verify the exact 2026 enforcement/failure context that should reach user-visible evidence.
-2. **Lebara UK** — preserve the UK-activation block and keep dependable overseas Wi-Fi/SMS reliability unresolved because current user reports are mixed.
-3. **Sakura** — straightforward missed-evidence correction.
-4. **Ultra PayGo** — verify PayGo-specific Wi-Fi Calling applicability.
-5. **AIS** — build full hidden-route record around current support-assisted retention + conversion variants.
-6. **RedPocket** — determine whether the current annual route is more suitable than Ultra/Tello for the intended overseas user, with number-history and marketplace risk explicit.
-7. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
-8. **O2 Germany / Simyo NL / One NZ** — independent replication before any production expansion.
+1. **AIS Thailand** — complete the full hidden-route record for the support-assisted `49B / 365-day` route and conversion variants.
+2. **RedPocket** — audit annual-route seller/channel, number-history, activation/reissue and overseas behavior.
+3. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
+4. **O2 Germany / Simyo NL / One NZ** — obtain independent replication before any production expansion.
 
-Completed current-route review:
+Completed current-route review on 2026-09-18:
 
-- **giffgaff (2026-09-18):** keep existing long-term-overseas ranking penalty/contextual warning; record real 2026 disconnections plus later partial-restoration/operational-error reports as conflicting evidence; no immediate production logic change.
+- **giffgaff:** keep current overseas-risk penalty/contextual warning; no hotfix.
+- **Tello:** keep US-first activation/port-in hard block; no hotfix.
+- **Lebara UK:** keep UK-first block and dependable overseas Wi-Fi/SMS unknown; no hotfix.
+- **Sakura:** corrected overseas calls/SMS evidence via PR #108 and live-verified production.
+- **Ultra PayGo:** keep Wi-Fi Calling abroad unknown pending PayGo-specific reproduction.
+- **H2O PayGo:** keep current no-roaming-on-PayGo caution.
 
 ## 5. Production rule during this audit
 
-Do not add a batch of new carriers just because the community search produced many interesting routes.
+Do not add a batch of new carriers just because community research produced many interesting routes.
 
-First fix material inaccuracies in current routes. Then admit at most one or two hidden routes whose value is genuinely different and whose current reproducibility is strong enough to maintain.
+Keep `/tools/phone-number-survival-guide/` as the single canonical. No provider/country doorway pages. First correct materially misleading current-route data; then admit at most one or two hidden routes whose value is genuinely different and whose current reproducibility is strong enough to maintain.
 
-The desired result is not the largest SIM database. It is a small set of routes where the site knows the non-obvious path, the real current cost, the support/app steps, the failure modes and the date that users last reproduced it.
+The desired product is not the largest SIM database. It is a small Phone Radar where the site knows the non-obvious route, real current cost, required documents and steps, overseas behavior, retention/recovery, failure modes and freshness.
