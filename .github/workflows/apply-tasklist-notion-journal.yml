@@ -1,0 +1,78 @@
+name: Apply task-list and Notion journal workflow
+
+on:
+  push:
+    branches:
+      - docs/tasklist-notion-journal-20260917
+    paths:
+      - .github/workflows/apply-tasklist-notion-journal.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/tasklist-notion-journal-20260917
+          fetch-depth: 0
+      - name: Patch durable workflow docs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              s = p.read_text()
+              if new in s:
+                  return
+              if old not in s:
+                  raise SystemExit(f'marker missing in {path}')
+              p.write_text(s.replace(old, new, 1))
+
+          replace_once(
+              'AGENTS.md',
+              "`docs/CURRENT_EXECUTION_QUEUE.md` is an execution aid, not a competing source of truth. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts, project phase, priorities and exit gates. If the queue is stale or conflicts with those sources or verified production, update the queue before acting.\n",
+              "`docs/CURRENT_EXECUTION_QUEUE.md` is an execution aid, not a competing source of truth. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts, project phase, priorities and exit gates. If the queue is stale or conflicts with those sources or verified production, update the queue before acting.\n\nExecution cadence: before any non-trivial work round, form a bounded task checklist. Then execute every eligible item continuously instead of waiting for item-by-item confirmation unless authorization, irreversible risk, or a documented blocker requires a stop. On each project workday, append the actual checklist/results/verification/blockers/next trigger to the Notion page `aineedhelpfromotherai — Daily Project Journal` as a human-readable diary. GitHub `main` plus verified production remains authoritative.\n"
+          )
+
+          replace_once(
+              'docs/OPERATING_WORKFLOW.md',
+              "This is the default execution loop for `aineedhelpfromotherai.com`.\n",
+              "This is the default execution loop for `aineedhelpfromotherai.com`.\n\n## Task-list-first execution cadence\n\nBefore a non-trivial work round, create a bounded checklist from the current GitHub facts and execution queue. The checklist should state the intended actions, verification steps, blockers/triggers and stop conditions.\n\nAfter the checklist exists, execute all eligible items continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.\n\nAt least once per project workday, append a dated entry to the Notion page `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Notion journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.\n"
+          )
+
+          replace_once(
+              'docs/PLUGIN_ORCHESTRATION.md',
+              "- **Notion Skill** — role-entry/bootstrap instructions only. It should make a new session enter the correct operating mode quickly, then require reading GitHub main in the mandated order.\n",
+              "- **Notion Skill** — role-entry/bootstrap instructions only. It should make a new session enter the correct operating mode quickly, then require reading GitHub main in the mandated order.\n- **Notion Daily Project Journal** — human-readable chronological execution diary. Append one dated entry per project workday with the task checklist, actual completed work, verification, blockers/holds and next trigger. It is not a roadmap, queue or source of truth; GitHub `main` plus verified production wins on conflict.\n"
+          )
+
+          replace_once(
+              'docs/PLUGIN_ORCHESTRATION.md',
+              "8. **Record** — write accepted result, blocker, next step and stop/narrow condition into the correct GitHub fact source, task ledger or issue in the same work round.\n",
+              "8. **Record** — write accepted result, blocker, next step and stop/narrow condition into the correct GitHub fact source, task ledger or issue in the same work round.\n9. **Journal** — append the day's actual checklist/results/verification/blockers/next trigger to the Notion Daily Project Journal. Keep it concise and chronological; never let it become a competing state database.\n"
+          )
+
+          journal = Path('docs/DAILY_NOTION_JOURNAL.md')
+          journal.write_text("""# Daily Notion Journal\n\nNotion page: `aineedhelpfromotherai — Daily Project Journal`\n\nPage URL: https://app.notion.com/p/3ded3b5659b08191b90df67a6548cca4?pvs=204\n\nPurpose: keep a human-readable chronological execution trail without creating a second source of truth.\n\nRules:\n\n1. Before non-trivial project work, form a bounded task checklist.\n2. Execute eligible checklist items continuously; do not stop after each item for narration or confirmation unless authorization/risk materially requires it.\n3. On each project workday, append one dated Notion journal entry covering the checklist, actual completed work, verification evidence, blockers/holds, and next trigger.\n4. Record only work that actually happened. Do not turn speculative ideas into completed history.\n5. GitHub `main` plus verified production remains final truth. If Notion conflicts with GitHub/production, fix the Notion journal rather than treating it as authoritative.\n6. Material releases, blockers, strategy/architecture changes, outreach actions and provider-test results must still be written to their canonical GitHub fact sources in the same work round.\n7. Notion is a readable development diary and traceability aid, not the execution queue or roadmap.\n""")
+
+          q = Path('docs/CURRENT_EXECUTION_QUEUE.md')
+          s = q.read_text()
+          marker = "## Current measurement facts\n"
+          entry = """### Q-012 — Task-list-first + daily Notion journal workflow\n\nStatus: **DONE**\n\n- User-established durable cadence: every non-trivial work round starts from a bounded task checklist, then eligible items are executed continuously instead of waiting for item-by-item confirmation.\n- Created the Notion page `aineedhelpfromotherai — Daily Project Journal` and wrote the 2026-09-17 entry with actual completed work, validation evidence, blockers and next triggers.\n- Updated the Notion Project Operating Skill and GitHub workflow/plugin docs so the journal remains a human-readable traceability layer, never a competing source of truth.\n- Canonical project state remains GitHub `main` plus verified production.\n\nDurable detail: `docs/DAILY_NOTION_JOURNAL.md`.\n\n"""
+          if entry not in s:
+              if marker not in s:
+                  raise SystemExit('queue marker missing')
+              q.write_text(s.replace(marker, entry + marker, 1))
+          PY
+
+          rm -f .github/workflows/apply-tasklist-notion-journal.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'docs: require task lists and daily Notion journal'
+          git push origin HEAD:docs/tasklist-notion-journal-20260917
