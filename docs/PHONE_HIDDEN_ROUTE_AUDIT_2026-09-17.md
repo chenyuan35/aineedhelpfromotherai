@@ -136,30 +136,47 @@ These are research candidates, not production recommendations.
 
 ### AIS Thailand — THB 49 / 365-day support-assisted validity
 
-Signal quality: **high**
+Audit status: **BOUNDED REVIEW COMPLETE 2026-09-18 — HOLD FROM PRODUCTION**
 
-Why it matters:
+Signal quality by component:
 
-- direct AIS customer-service wording was reproduced by a current user;
-- multiple current community reports describe the same support-assisted `49B Validity 365 Days` path;
-- current AIS public material independently supports a 365-day prepaid-validity mechanism;
-- the route may combine low annual retention cost with passport KYC, roaming, SMS, Wi-Fi Calling, eSIM reissue and long-term number continuity.
+- **49B / 365-day retention primitive: HIGH.** A Sep 17 NodeSeek user reproduced direct AIS support wording recommending the `49B Validity 365 Days` package for a prepaid number used mainly for SMS/OTP or overseas. A separate current community thread says it is again time for the yearly AIS renewal for numbers opened the previous year and uses the same email-support enrollment. Older 2025 community evidence also describes year-two and year-three support renewal.
+- **Current Trip acquisition product: HIGH for the product itself.** Trip product ID `44775420` is live in Sep 2026 at roughly HKD 33, provides an AIS local +66 number, calls/SMS, passport-based eKYC and current 7/10-day packages. The Sep 17 NodeSeek route matches the current price/product shape; older community evidence explicitly links product ID 44775420 and identifies the reseller as BillionConnect.
+- **Trip -> long-term support conversion: MEDIUM.** The Sep 17 user reports support enabling international roaming, converting the line for personal/long-term use, issuing a replacement eSIM QR and enabling Wi-Fi Calling. This is a real current reproduction, but there is not yet a persistent public AIS eligibility specification for the conversion step.
+- **Repeat annual 49B renewal: MEDIUM-HIGH.** Current independent community evidence explicitly describes renewing lines opened the previous year; older evidence describes contacting support again in later years. AIS public prepaid terms independently cap accumulated validity at 365 days, consistent with an annual renewal model rather than permanent validity.
+- **Support consistency: MEDIUM.** The Sep 17 user reports successful email handling. A Nov 2025 community thread shows Wi-Fi Calling provisioning could initially be refused or redirected to an AIS shop, with another user succeeding only after repeating the email request. No current sampled source showed a 49B-package refusal, but absence of a refusal report is not proof of universal eligibility.
 
-Current classification: **support-confirmed hidden-route candidate; NEXT Q-013 TASK; NOT IN PRODUCTION.**
+Current end-to-end fields:
 
-Required before admission:
+| Field | Current finding |
+|---|---|
+| Acquisition | Current Trip product ID `44775420`; AIS native eSIM, +66 local number, voice/SMS, roughly HKD 33, 7/10-day packages. |
+| KYC | Passport + facial/eKYC. AIS currently documents passport registration for foreign nationals; Trip states one passport can authenticate up to three of these eSIMs during the relevant binding period. |
+| Local-presence / first attachment | **CONFLICT / unresolved for the long-term route.** Current Trip product says eKYC may be completed abroad but the traveler package must be used in Thailand within 7 days after authentication or the package becomes invalid. The Sep 17 community route reports overseas support-assisted conversion without describing a Thailand visit. Do not claim a fully remote China-only acquisition path until this boundary is independently reproduced/clarified. |
+| Initial cost | Roughly HKD 33 current Trip product plus a small top-up; Sep 17 user reports about THB 10 top-up during support re-verification. |
+| Retention | Standard small top-ups extend validity; support-assisted THB 49 / 365-day package has current replicated evidence. It is one year, not permanent. |
+| Repeatability | Current annual-renewal community evidence + older year-two/year-three reports support repeatability, but exact persistent eligibility is not publicly specified by AIS. |
+| International roaming / SMS | AIS officially supports roaming SMS and says receiving SMS while abroad is free. China is among current AIS roaming destinations. Sep 17 user reports support enabling roaming from abroad. |
+| Mainland-China SMS practicality | **Promising / support-assisted.** Current community reports show the line registering on Chinese networks after roaming is enabled; official AIS roaming documentation supports China and free incoming SMS. Do not promise a particular Chinese partner network without current route-specific verification. |
+| Wi-Fi Calling abroad | AIS officially supports Wi-Fi Calling/SMS abroad in general, but its current page explicitly notes country/legal exceptions such as China. Community users report China success, while older users also report provisioning refusals. **Do not promise mainland-China Wi-Fi Calling or provide bypass instructions.** |
+| eSIM replacement / same number | Sep 17 user reports a support-issued replacement eSIM QR with the old profile invalidated and the same phone number retained. AIS also documents standard eSIM conversion/transfer, but foreign-passport self-service/reissue scope remains less clear than the support-assisted case. |
+| Payment | Sep 17 user successfully topped up about THB 10 in myAIS with a non-Thai Visa; UnionPay was displayed but not personally tested. Treat payment-method breadth as operational, not guaranteed. |
+| Alternative retention | AIS now has a THB 3 / 30-day automatic number-retention mechanism for up to six cycles after expiry, but the official announcement explicitly excludes Tourist SIM cards. Do not assume it applies to this Trip-origin route unless the post-conversion account class is verified. |
 
-- exact starting product/account states eligible for the 49B offer;
-- whether the offer can be repeated/renewed under current policy;
-- current support channel consistency and refusal cases;
-- separate Trip/Redtea/traveler-SIM starting products and conversion paths instead of merging them;
-- real acquisition + top-up + recurring/keep-alive cost;
-- passport/KYC/local-presence/first-network-attachment requirements;
-- payment restrictions;
-- SIM/eSIM/device transfer/reissue mechanics;
-- mainland-China purchase/activation/SMS/Wi-Fi Calling practicality;
-- same-number replacement/recovery/recycling behavior;
-- last successful reproduction and last refusal/failure date.
+Important sources:
+
+- Current Sep 17 reproduction/support artifact: https://www.nodeseek.com/post-932925-1
+- Current continuation/eSIM continuity details: https://www.nodeseek.com/post-932925-2
+- Current independent annual 49B renewal signal: https://shuzijumin.com/thread-10222-1-1.html
+- Older exact Trip product + later-year renewal corroboration: https://forum.naixi.net/thread-7513-1-1.html
+- Older support-consistency failure mode: https://forum.naixi.net/thread-6762-1-1.html
+- Current Trip product ID 44775420: https://hk.trip.com/things-to-do/detail/44775420/
+- AIS SIM registration/KYC: https://www.ais.th/en/consumers/help-and-support/network-technologies/update-sim-registration
+- AIS international roaming/how-to: https://www.ais.th/en/consumers/package/international/roaming/how-to
+- AIS Wi-Fi Calling: https://www.ais.th/consumers/package/postpaid/services/vowifi
+- AIS prepaid number-retention announcement: https://www.ais.th/en/about-us/pr-news/important-announcement-from-the-nbtc-regarding-the-retention-of-phone-numbers-for-prepaid-customers-ais-1-2-call-effective
+
+Decision: **HOLD THE END-TO-END AIS ROUTE FROM PRODUCTION.** The 49B/365-day retention mechanism itself is now high-confidence and should remain a priority signal. The blocker is not lack of a public marketing page; it is the unresolved acquisition/account-class boundary: the current Trip traveler product says Thailand use is required shortly after eKYC, while the support-assisted long-term conversion is documented mainly by current user/support artifacts rather than a stable AIS eligibility page. Mainland-China Wi-Fi Calling is also conflicting and must not be promised. Revisit when the Trip-origin line's conversion/account class and Thailand-presence requirement are independently reproduced or directly clarified.
 
 ### RedPocket US annual route — community-reproduced acquisition + support-assisted eSIM reissue
 
@@ -182,7 +199,7 @@ Sources:
 - https://www.nodeseek.com/post-612584-1
 - https://www.nodeseek.com/post-783926-1
 
-Current classification: **replicated community candidate; needs seller/channel + number-history risk audit**.
+Current classification: **replicated community candidate; NEXT Q-013 CANDIDATE.** Audit seller/channel + current total cost + first activation/geography + overseas SMS/Wi-Fi Calling + eSIM replacement + number-history risk before any production consideration.
 
 ### ClubSIM Hong Kong — community freshness caught a keep-alive price change
 
@@ -251,10 +268,10 @@ Such posts may still be useful as failure/risk signals. If a legitimate carrier-
 
 ## 4. Immediate audit priority
 
-1. **AIS Thailand** — complete the full hidden-route record for the support-assisted `49B / 365-day` route and conversion variants.
-2. **RedPocket** — audit annual-route seller/channel, number-history, activation/reissue and overseas behavior.
-3. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
-4. **O2 Germany / Simyo NL / One NZ** — obtain independent replication before any production expansion.
+1. **RedPocket** — audit the current annual-route seller/channel, real total cost, activation/geography, overseas SMS/Wi-Fi Calling, eSIM replacement and recycled-number history. AIS is now a bounded HOLD, not permission to keep polishing it without new evidence.
+2. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
+3. **O2 Germany / Simyo NL / One NZ** — obtain independent replication before any production expansion.
+4. **AIS revisit trigger** — only reopen the Trip-origin end-to-end route when independent/direct evidence resolves its post-KYC Thailand-presence/account-class conversion boundary or a new current failure materially changes the retention conclusion.
 
 Completed current-route review on 2026-09-18:
 
@@ -264,6 +281,10 @@ Completed current-route review on 2026-09-18:
 - **Sakura:** corrected overseas calls/SMS evidence via PR #108 and live-verified production.
 - **Ultra PayGo:** keep Wi-Fi Calling abroad unknown pending PayGo-specific reproduction.
 - **H2O PayGo:** keep current no-roaming-on-PayGo caution.
+
+Completed hidden-route bounded review on 2026-09-18:
+
+- **AIS Thailand:** 49B/365-day retention primitive = high confidence; full Trip-origin end-to-end route = HOLD because current travel-product activation/account-class boundary and mainland-China Wi-Fi Calling remain unresolved/conflicting. No production addition.
 
 ## 5. Production rule during this audit
 
