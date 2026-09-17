@@ -55,11 +55,12 @@ Status: **DONE / MEASURING**
 - The first viewport now maps **Reset · Access · Reliability** to three concrete jobs: usage limits, account-access phone continuity, and relay dependency risk.
 - Phone remains the featured/primary product section; Reset gets the first immediate-action CTA because it already has proven search intent; Relay remains secondary.
 - PR #85 merged as `98b3573b`. Eval Gate and Vercel passed; final apex desktop and mobile live fetches returned HTTP 200 with the new H1/title/meta.
+- PR #87 added privacy-safe `home_job_select` analytics for first-screen `reset`, `access` and `reliability` choices, plus clearer first-screen placement labels for existing `tool_open` events. Production source verification confirmed the event tag is live.
 - No new URL, provider, backend, image, paid dependency, or fourth product surface was created.
 
 Measurement trigger:
 
-- once GA4 has real homepage sessions and tool-open/landing behavior, compare which first-screen job users choose before changing the hero or CTA hierarchy again.
+- once GA4 has real homepage sessions, compare `home_job_select` by `job` and `placement` together with landing/tool-open behavior before changing the hero or CTA hierarchy again.
 - until that trigger, do not rewrite the homepage again unless a verified usability defect appears.
 
 ## Current measurement facts
