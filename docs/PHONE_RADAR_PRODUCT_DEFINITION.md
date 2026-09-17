@@ -1,6 +1,6 @@
 # Phone Radar — Product Definition
 
-Last updated: 2026-09-17
+Last updated: 2026-09-18
 
 ## Product identity
 
@@ -13,6 +13,25 @@ Its core job is:
 > Continuously discover non-obvious low-cost phone-number routes, verify how real users actually obtain and keep them working, expose the true setup difficulty and failure conditions, and let a user quickly filter to the routes that fit their own constraints.
 
 This is analogous to the project's reset-radar model: the value comes from continuously collecting weakly advertised, changing and operationally important information, then turning it into a fast decision tool.
+
+## User-facing contract
+
+Users come here to make and execute a decision, not to read the research process.
+
+The default user-facing experience must answer, in this order:
+
+1. **Which 1–3 routes fit me?**
+2. **What do I buy and what will it really cost?**
+3. **Can I activate and use it from my location?**
+4. **What exact steps do I need to complete?**
+5. **How do I keep the number alive?**
+6. **What is the main failure risk and what is my fallback?**
+
+Research evidence, source reconciliation, conflicting reports and confidence reasoning belong primarily in the internal evidence layer. The normal user interface should not expose a literature-review-style wall of sources or force users to inspect carrier-by-carrier research notes.
+
+Show evidence to users only when it changes a decision, explains a warning, or is opened on demand as `Why this recommendation?`, `Evidence`, or similar supporting detail.
+
+Default route cards/results should stay compact and action-first: fit, cost, prerequisites, setup steps, keep-alive, continuity/recovery, main risk, freshness/confidence.
 
 ## What the radar must discover
 
@@ -66,7 +85,7 @@ Do not reduce difficulty to a vague `Easy / Hard` label. Track what makes the ro
 - typical support back-and-forth;
 - most recent successful setup date known to us.
 
-The UI may derive a compact difficulty label from these facts, but the underlying reasons must remain visible.
+The UI may derive a compact difficulty label from these facts, but the underlying reasons should appear only as concise actionable blockers/prerequisites rather than a long research dump.
 
 ### China / overseas usability
 
@@ -93,11 +112,15 @@ For the intended audience, explicitly track:
 
 ### Evidence freshness
 
+Track internally:
+
 - last successful reproduction known to us;
 - last failure/refusal report;
 - support-confirmed vs replicated-community vs emerging/conflicting/stale state;
 - material differences between current reports;
 - whether a price or procedure appears account-specific or agent-dependent.
+
+The user-facing surface should compress this into a small freshness/confidence signal plus a short reason when material. Raw evidence lists stay behind an optional detail view.
 
 ## Fast-filter experience
 
@@ -117,6 +140,8 @@ Examples of high-value filters:
 - `I care more about stability than absolute minimum cost`.
 
 The output should explain **why** each surviving route fits, what the user must prepare, the real current cost, the exact difficult step, and the main failure risk.
+
+The result set should normally be small. Do not show every researched carrier just because evidence exists.
 
 ## Ranking principle
 
@@ -141,10 +166,11 @@ There is no single universal best route. The product should identify the best-fi
 During the current audit, research effort should be ordered as follows:
 
 1. Correct existing production routes where recent community reality differs materially from current product guidance.
-2. Deepen high-signal hidden routes such as support-assisted retention packages and unusually low-cost reproducible keep-alive paths.
-3. Capture the exact setup prerequisites and failure modes needed for filtering.
+2. Deepen only high-signal hidden routes that could change a user's shortlist, ranking, eligibility or failure warning.
+3. Capture only the setup prerequisites and failure modes needed for filtering and action.
 4. Admit at most one or two genuinely strong new routes after current reproducibility is established.
-5. Do not expand into a large carrier catalog merely because many routes can be found.
+5. Stop researching a route when additional facts would not change the user-facing decision.
+6. Do not expand into a large carrier catalog merely because many routes can be found.
 
 ## Success condition
 
@@ -162,5 +188,7 @@ and quickly receive a small set of current, reproducible routes with:
 - how to keep the number alive;
 - how recently someone successfully reproduced the route;
 - what can go wrong and how to exit without losing the number.
+
+The normal path should get the user to a decision and next action without requiring them to read source material.
 
 That decision advantage — not reproducing carrier documentation — is the product moat.
