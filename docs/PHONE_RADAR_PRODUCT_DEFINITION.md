@@ -4,191 +4,248 @@ Last updated: 2026-09-18
 
 ## Product identity
 
-Phone Number Lifecycle is operated as a **Phone Radar** for AI-power users and other people who need a durable overseas/mobile number.
+Phone Number Lifecycle is operated as a **Phone Radar** for people who need a durable overseas/mobile number.
 
-The product is not a carrier-plan directory and not a cleaner copy of carrier websites.
+It is not a carrier encyclopedia, not a documentation mirror, and not a research report.
 
 Its core job is:
 
-> Continuously discover non-obvious low-cost phone-number routes, verify how real users actually obtain and keep them working, expose the true setup difficulty and failure conditions, and let a user quickly filter to the routes that fit their own constraints.
+> **Help a user quickly find, compare, open and keep a useful phone number using current real-user operational routes that are difficult to discover from ordinary marketing pages.**
 
-This is analogous to the project's reset-radar model: the value comes from continuously collecting weakly advertised, changing and operationally important information, then turning it into a fast decision tool.
+The moat is not more carrier text. It is turning scattered community experience into a fast decision and execution tool.
 
 ## User-facing contract
 
-Users come here to make and execute a decision, not to read the research process.
+Users come here to choose a route and act.
 
-The default user-facing experience must answer, in this order:
+The default experience must answer quickly:
 
-1. **Which 1–3 routes fit me?**
-2. **What do I buy and what will it really cost?**
-3. **Can I activate and use it from my location?**
-4. **What exact steps do I need to complete?**
-5. **How do I keep the number alive?**
-6. **What is the main failure risk and what is my fallback?**
+1. What number routes can I use right now?
+2. How well is SMS/OTP working in recent real use?
+3. What does it really cost to get and keep the number for a year?
+4. How difficult is setup?
+5. Can I complete the route from where I am?
+6. How stable is the route right now?
+7. How do I open it?
+8. How do I keep it alive?
+9. Where do I buy it?
 
-Research evidence, source reconciliation, conflicting reports and confidence reasoning belong primarily in the internal evidence layer. The normal user interface should not expose a literature-review-style wall of sources or force users to inspect carrier-by-carrier research notes.
+Concrete routes must be visible without completing a questionnaire.
 
-Show evidence to users only when it changes a decision, explains a warning, or is opened on demand as `Why this recommendation?`, `Evidence`, or similar supporting detail.
+Filters are optional refinement. They must not gate access to the route list.
 
-Default route cards/results should stay compact and action-first: fit, cost, prerequisites, setup steps, keep-alive, continuity/recovery, main risk, freshness/confidence.
+Research notes, evidence reconciliation, source classes, conflict analysis and confidence calculations are backstage. They may support an optional detail such as `Why this status?`, but they must never be the normal reading path.
 
-## What the radar must discover
+## Frontstage / backstage boundary
+
+### Frontstage
+
+A route card should communicate the decision in seconds:
+
+- provider / route;
+- number country/type;
+- recent SMS/OTP reliability signal;
+- yearly keep-alive cost;
+- setup difficulty;
+- remote setup/location practicality;
+- current stability/risk state;
+- eSIM / physical SIM when material;
+- freshness/status signal;
+- `How to open`;
+- `Get / Buy`.
+
+A route detail should remain operational:
+
+- what to buy;
+- what to prepare;
+- exact opening steps;
+- how to receive SMS/OTP;
+- how to keep the number alive;
+- main current pitfall;
+- recovery/number-continuity path;
+- current tutorial/video/community link when useful;
+- purchase link.
+
+### Backstage
+
+Keep these internal by default:
+
+- discovery sources;
+- cross-report reconciliation;
+- raw forum threads/comments;
+- source credibility notes;
+- confidence calculations;
+- incident/event history;
+- contradictory reports;
+- duplicate/circular-report detection;
+- research methodology.
+
+The principle is simple: **the backstage may be complex so the frontstage can be simple.**
+
+## What the radar discovers
 
 Priority discoveries include:
 
 - hidden or poorly advertised low-cost plans;
 - support-assisted retention/validity packages;
-- carrier app/account-only options;
-- marketplace or travel-SIM routes that can become durable personal numbers;
+- app/account-only options;
+- marketplace/travel-SIM routes that become durable numbers;
 - unusually cheap keep-alive actions;
-- overseas activation paths that current users are successfully reproducing;
-- Wi-Fi Calling / VoWiFi and roaming-SMS paths that matter for OTP/account recovery;
+- overseas setup paths that users are currently reproducing;
+- Wi-Fi Calling / VoWiFi and roaming-SMS paths relevant to OTP/account recovery;
 - same-number eSIM replacement, transfer and recovery procedures;
-- current support channels that actually process the request;
-- recent price increases, package removals, refusal patterns, bans and route failures.
+- support channels that actually process the request;
+- recent price changes, route failures, mass complaints, restoration/refund outcomes and enforcement waves;
+- current tutorials that let another user reproduce the route.
 
-Public carrier marketing visibility is not a discovery or admission requirement. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` governs evidence handling.
+## Decision model
 
-## User decision model
+### SMS / OTP reliability
 
-A user should be able to filter routes by practical constraints instead of reading long carrier descriptions.
+This is a primary user metric.
 
-Every route should eventually expose these decision fields:
+Do not invent a percentage without enough route-specific observations. Until a defensible rate exists, derive a qualitative signal from recent first-hand outcomes, sample count, recency and conflict level.
+
+The user should see the signal, not the evidence spreadsheet.
 
 ### Cost
+
+Track enough to show the real cost of ownership:
 
 - acquisition cost;
 - required first top-up;
 - recurring cost if any;
-- cheapest currently reproduced keep-alive cost;
-- expected yearly retention cost;
-- hidden fees such as SIM/eSIM replacement, SMS, support-assisted conversion or mandatory package cost.
+- current keep-alive action/cost;
+- expected yearly keep-alive cost;
+- material replacement/conversion/support fees.
+
+The default card should emphasize the yearly keep-alive cost, with acquisition cost available when relevant.
 
 ### Setup difficulty
 
-Do not reduce difficulty to a vague `Easy / Hard` label. Track what makes the route difficult:
+Difficulty is derived from actual friction, not arbitrary opinion:
 
-- passport required;
-- KYC required;
-- residency/address requirement;
-- local physical presence required;
-- local carrier-network attachment required;
-- customer-service contact required;
-- manual email/chat process required;
-- app-only step required;
-- payment-card restrictions;
-- initial recharge required;
-- physical SIM required;
-- eSIM-capable device required;
-- device/eSIM transfer limitations;
-- typical support back-and-forth;
-- most recent successful setup date known to us.
+- identity/KYC burden;
+- local presence or first-network attachment;
+- support contact/manual steps;
+- app/account-only steps;
+- payment restrictions;
+- physical SIM/eSIM/device requirements;
+- conversion/reissue complexity;
+- typical support back-and-forth.
 
-The UI may derive a compact difficulty label from these facts, but the underlying reasons should appear only as concise actionable blockers/prerequisites rather than a long research dump.
+The user sees a compact difficulty indicator plus the one or two reasons that matter.
 
-### China / overseas usability
+### Location practicality
 
-For the intended audience, explicitly track:
+Track whether a user can realistically purchase, activate and keep the route working from their location, especially mainland China / overseas.
 
-- can purchase from mainland China;
-- can activate from mainland China;
-- can receive SMS while in mainland China;
-- incoming roaming SMS cost;
-- Wi-Fi Calling / SMS over Wi-Fi behavior reported by current users;
-- whether first activation must happen in the home country;
-- whether long-term overseas use has recent termination/enforcement reports;
-- data roaming availability when relevant.
+This is a practical outcome field, not a carrier-documentation field.
 
 ### Number continuity
 
-- same number preserved after SIM/eSIM replacement;
-- online vs store-only replacement;
-- number-porting options;
-- recovery/grace window after suspension;
-- number recycling risk;
-- known recycled-number reputation problems;
-- practical migration path when the route starts failing.
+Track:
 
-### Evidence freshness
+- same-number SIM/eSIM replacement;
+- online vs store-only recovery;
+- porting/migration options;
+- suspension/recovery window;
+- number-loss/recycling incidents;
+- practical exit path when the route degrades.
 
-Track internally:
+### Stability / risk
 
-- last successful reproduction known to us;
-- last failure/refusal report;
-- support-confirmed vs replicated-community vs emerging/conflicting/stale state;
-- material differences between current reports;
-- whether a price or procedure appears account-specific or agent-dependent.
+Phone route risk is separate from Relay Exit Risk.
 
-The user-facing surface should compress this into a small freshness/confidence signal plus a short reason when material. Raw evidence lists stay behind an optional detail view.
+Do not invent a numeric 0–100 Phone risk score until a methodology exists.
 
-## Fast-filter experience
+Until then, use descriptive states derived from current outcomes, for example:
 
-The first useful interaction should let users eliminate incompatible routes quickly.
+- `stable`;
+- `watch`;
+- `degrading`;
+- `conflicting`;
+- `retired`.
 
-Examples of high-value filters:
+Relevant inputs include recent service failures, abrupt enforcement, number-loss/recycling events, support inconsistency, recovery quality, overseas continuity and trend direction.
 
-- `I have a passport / I do not have a passport`;
-- `I am in mainland China and cannot travel`;
-- `I need eSIM`;
-- `I only need SMS / OTP`;
-- `I need Wi-Fi Calling`;
-- `I want the lowest yearly keep-alive cost`;
-- `I do not want to contact customer service`;
-- `I need easy device replacement`;
-- `I need a route with recent successful reproductions`;
-- `I care more about stability than absolute minimum cost`.
+## Community reality rule
 
-The output should explain **why** each surviving route fits, what the user must prepare, the real current cost, the exact difficult step, and the main failure risk.
+Phone Radar is built around what users are actually experiencing.
 
-The result set should normally be small. Do not show every researched carrier just because evidence exists.
+Primary operational inputs include:
+
+- first-hand forum/community reports;
+- current tutorials;
+- comments with reproducible detail;
+- user-shared support interactions;
+- setup success/failure;
+- SMS/OTP success/failure;
+- keep-alive results;
+- number recovery/loss;
+- refunds/restorations;
+- mass complaints and later resolution;
+- current procedure changes.
+
+Operator-published pages are not a verification gate for these outcomes. A route does not become `unknown` merely because the operator does not publicly describe it.
+
+Public price/product metadata can still be useful when it answers a concrete cost or purchase question, but it does not outrank current real-world operating evidence.
+
+## Route-first experience
+
+The first meaningful screen should show useful routes immediately.
+
+Optional filters may include:
+
+- location / cannot travel;
+- eSIM required;
+- SMS/OTP only;
+- lowest yearly keep-alive cost;
+- avoid support contact;
+- easier recovery/device replacement;
+- higher recent stability;
+- specific service compatibility where evidence exists.
+
+Filters reduce or reorder the visible route set. They do not make the user complete a form before seeing anything.
+
+The product should never make the user read the research process to understand a recommendation.
 
 ## Ranking principle
 
-Do not rank carriers by marketing price alone.
+There is no single universal best route.
 
-A useful route is a combination of:
+Ranking/filtering should use the user-facing decision dimensions:
 
-- real total cost;
+- SMS/OTP reliability;
+- yearly keep-alive cost;
 - setup friction;
-- user prerequisites;
-- current reproducibility;
-- overseas SMS/Wi-Fi Calling continuity;
-- keep-alive cost and effort;
-- number replacement/recovery quality;
-- recent failure/enforcement risk;
-- evidence freshness.
+- location practicality;
+- number continuity/recovery;
+- current stability/risk;
+- freshness;
+- fit with the user's constraints.
 
-There is no single universal best route. The product should identify the best-fitting routes for the user's constraints and explain the trade-offs.
+A route should not be promoted merely because it is easier to document.
 
 ## Research priority
 
-During the current audit, research effort should be ordered as follows:
+Research exists to improve the decision surface.
 
-1. Correct existing production routes where recent community reality differs materially from current product guidance.
-2. Deepen only high-signal hidden routes that could change a user's shortlist, ranking, eligibility or failure warning.
-3. Capture only the setup prerequisites and failure modes needed for filtering and action.
-4. Admit at most one or two genuinely strong new routes after current reproducibility is established.
-5. Stop researching a route when additional facts would not change the user-facing decision.
-6. Do not expand into a large carrier catalog merely because many routes can be found.
+Priority order:
+
+1. Find current real-user routes and recent success/failure outcomes.
+2. Correct any user-facing field that materially misstates current reality.
+3. Fill missing decision fields that affect route choice, cost, difficulty, risk or tutorial steps.
+4. Track incidents and recovery outcomes over time.
+5. Add a new route only when it materially improves the choices available to the user.
+6. Stop when more research would not change a decision or action.
+
+Do not turn route research into provider-by-provider documentation completion.
 
 ## Success condition
 
-Phone Radar succeeds when a user can arrive with a constraint such as:
+Phone Radar succeeds when a first-time visitor can open the page and, without studying the research system, quickly answer:
 
-> "I am in China, have a passport, only need SMS/OTP, want eSIM, can tolerate emailing support, and want to spend as little as possible each year."
+> Which number should I consider, how likely is SMS/OTP to work in current real use, what will it cost me each year, how hard is it to open, can I do it from where I am, what is the current risk, and what exact steps do I follow?
 
-and quickly receive a small set of current, reproducible routes with:
-
-- what to buy;
-- what it really costs;
-- what documents/devices are required;
-- how difficult setup is and why;
-- whether it currently works overseas;
-- how to keep the number alive;
-- how recently someone successfully reproduced the route;
-- what can go wrong and how to exit without losing the number.
-
-The normal path should get the user to a decision and next action without requiring them to read source material.
-
-That decision advantage — not reproducing carrier documentation — is the product moat.
+That decision and execution advantage is the product moat.
