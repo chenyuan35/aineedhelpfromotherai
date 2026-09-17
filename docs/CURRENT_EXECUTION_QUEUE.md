@@ -63,6 +63,19 @@ Measurement trigger:
 - once GA4 has real homepage sessions, compare `home_job_select` by `job` and `placement` together with landing/tool-open behavior before changing the hero or CTA hierarchy again.
 - until that trigger, do not rewrite the homepage again unless a verified usability defect appears.
 
+### Q-011 — Historical build-to-present audit
+
+Status: **DONE**
+
+- PR #91 retired the first set of obsolete automatic Failure Memory/MCP workflows and aligned README/AI discovery text to the current product.
+- PR #93 completed the deeper audit: remaining legacy auth/Render/npm automation is manual-only; stale root project/infrastructure docs now point to current fact sources; Vercel no longer proxies arbitrary `/api/*`; the direct backend defaults to health/status/diagnostics/Relay only and returns 410 for the old Failure Observatory/MCP/Memory/Agent surface.
+- CI, Eval Gate and Vercel Preview passed before merge. Production Vercel and Qwen were verified after merge; Qwen dirty runtime data was preserved and only `api-server` was restarted. Relay Risk remains live and the old JSON `_tip` is gone.
+- Three orphan test `node server.js` processes from old temporary audit worktrees were verified as non-production and removed, freeing about 260 MB RSS.
+- Historical `/cases/` residual Search Console impressions do not justify revival or redirect; keep the real 404 and let the old index decay.
+- Remaining blocker: GitHub repository description/topics still describe the old Failure Intelligence/MCP identity; current connector exposes no metadata-write action, so AIR-3 remains blocked rather than bypassed.
+
+Durable detail: `docs/HISTORICAL_AUDIT_2026-09-17.md`.
+
 ## Current measurement facts
 
 As checked on 2026-09-17:
