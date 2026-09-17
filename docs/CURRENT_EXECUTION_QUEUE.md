@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-17
+Last updated: 2026-09-18
 
 This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
@@ -12,12 +12,13 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
 - **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
+- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads were inspected on 2026-09-18; each still contains only the Sep 13 sent message, and an independent public web check found no verified link/citation. Do not resend on the first day of the 5–7 day window; recheck on Sep 20 before deciding on one follow-up or batch 2.
 
 Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
 
 ## Current measurement facts
 
-Last checked on 2026-09-17:
+Last checked on 2026-09-18:
 
 - GSC `settledThrough`: **2026-09-14**.
 - Index tracker: **18 tracked / 9 indexed / 9 not indexed / 0 pending / 0 errors / 0 warnings**.
@@ -31,7 +32,7 @@ Last checked on 2026-09-17:
 At the start of the next session, after mandatory fact-source reading:
 
 1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** immediately before speculative Phone production changes.
-2. If the date is inside the Sep 18–20 outreach window, execute **Q-005** from the authority ledger + original Gmail threads.
+2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check from the authority ledger + original Gmail threads before sending any follow-up or batch 2.
 3. Otherwise continue the active **Q-013 Phone Radar audit**.
 
 ## Q-013 — Phone Radar route/evidence audit
@@ -99,9 +100,11 @@ Keep `/tools/phone-number-survival-guide/` as the single Phone canonical. No pro
 
 ## Q-003 — First real Phone post-release measurement
 
-Status: **WAITING ON DATA TRIGGER**
+Status: **WAITING ON DATA TRIGGER — rechecked 2026-09-18**
 
 Trigger: GSC `settledThrough >= 2026-09-16`.
+
+Latest check: GSC still reports `settledThrough=2026-09-14`, so the trigger has not fired.
 
 When triggered:
 
@@ -115,15 +118,15 @@ Do not churn indexing submissions.
 
 ## Q-005 — Authority round-one follow-up
 
-Status: **SCHEDULED — SEP 18–20 WINDOW**
+Status: **CHECKED 2026-09-18 — NO RESPONSE / NO VERIFIED LINK; RECHECK 2026-09-20**
 
-When due:
+Sep 18 result:
 
-1. read `docs/AUTHORITY_AND_AI_DISCOVERY.md`;
-2. read the original Gmail threads for hsmart.dev, Continuum Code and Drew Bredvick;
-3. classify `REPLIED`, `LINKED`, `DECLINED`, `NO RESPONSE`, or follow-up due;
-4. independently verify claimed links/citations;
-5. only then decide on follow-up or prepared batch 2.
+1. original Gmail threads for hsmart.dev, Continuum Code and Drew Bredvick were read;
+2. each thread still contains only the Sep 13 sent message;
+3. independent public web checks found no verified link/citation from those three targets;
+4. classify all three as `NO RESPONSE` as of this check;
+5. do not resend on the first day of the window; recheck Sep 20, then decide whether exactly one tailored follow-up or a stronger batch-2 target is justified.
 
 Do not increase volume because round one is quiet.
 
