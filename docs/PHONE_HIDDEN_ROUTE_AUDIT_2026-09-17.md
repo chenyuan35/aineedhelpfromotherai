@@ -42,6 +42,67 @@ Discrepancy:
 
 Audit decision: **CORRECTION NEEDED.** Do not present giffgaff as a low-risk long-term overseas retention route. The route can remain useful for UK-primary users and short travel, but the recommendation logic and first-screen risk explanation need review.
 
+### Tello US — community confirms stronger enforcement around first US attachment
+
+Current product state:
+
+- initial activation/port-in is treated as requiring physical presence in the United States and a US cellular tower;
+- overseas Wi-Fi Calling/Text and OTP use after setup are treated as supported;
+- international roaming is treated as available after the home-activation prerequisite.
+
+Fresh community evidence:
+
+- May 27, 2026 Reddit reports began documenting a change where users who had previously been able to activate while abroad started receiving a requirement that the number connect in the US first;
+- June/July 2026 community instructions report mixed results for attempts to activate in the US and then transfer an eSIM/SIM overseas: some users retain roaming, others end up with only Wi-Fi Calling/Text;
+- on July 30, 2026, multiple users reported international roaming being disabled on accounts that had activated abroad and had never attached to a US tower, while Wi-Fi Calling/Text continued to work for some users;
+- August 2026 discussion still shows overseas OTP success over Wi-Fi Calling, but other users explicitly warn that new overseas activation is no longer reliably available.
+
+Important sources:
+
+- https://www.reddit.com/r/Tello/comments/1tpla4v/recent_change_to_international_activation/
+- https://www.reddit.com/r/Tello/comments/1vb9c1j/psa_international_roaming_being_turned_off_if_you/
+- https://www.reddit.com/r/Tello/comments/1u971w7/tello_esim_in_china_will_sms_2fa_codes_still_work/
+- https://www.reddit.com/r/Tello/comments/1vgwzsa/tello_outside_us/
+- https://www.reddit.com/r/u_comp21/comments/1slpago/tello_international_setup_instructions/
+
+Discrepancy:
+
+- the current production hard block on outside-US first activation is directionally correct and should remain;
+- community evidence strengthens that block from a theoretical policy boundary into an actively enforced practical constraint;
+- the route should not imply that a clever overseas activation path is a stable alternative;
+- Wi-Fi Calling/Text can remain valuable for an already-properly-established line, but international roaming continuity appears more fragile when the line has never attached to a US tower.
+
+Audit decision: **KEEP THE HARD BLOCK, STRENGTHEN THE REAL-WORLD WARNING.** Do not recommend an overseas-first Tello route. Treat successful overseas activations as legacy/exception reports rather than a supported acquisition path.
+
+### Lebara UK — activation rule supported, overseas Wi-Fi/SMS reliability remains mixed
+
+Current product state:
+
+- initial SIM/eSIM activation is blocked outside the UK;
+- international roaming SMS is supported after UK activation;
+- Wi-Fi Calling abroad remains `unknown` for dependable SMS/OTP continuity.
+
+Fresh community evidence:
+
+- August 2026 users report that unactivated Lebara UK SIMs taken abroad do not activate properly and should be activated in the UK first;
+- January 2026 users living abroad report intermittent SMS delivery over Wi-Fi Calling, including authentication messages arriving late or in batches;
+- February 2026 eSIM users report inconsistent Wi-Fi Calling provisioning after SIM-to-eSIM migration, with some devices working and others remaining broken for weeks despite support contact;
+- other users report Wi-Fi Calling working normally, which means the real-world state is mixed rather than universally broken.
+
+Important sources:
+
+- https://www.reddit.com/r/LebaraUK/comments/1vrpc18/activate_a_top_up_sim_outside_the_uk/
+- https://www.reddit.com/r/LebaraUK/comments/1q5y6ox/sms_delivery_over_wifi_when_abroad/
+- https://www.reddit.com/r/LebaraUK/comments/1qxuh3h/wifi_calling_not_working_after_switching_to/
+
+Discrepancy:
+
+- the existing UK-activation hard block is supported by current users and should remain;
+- the current `unknown` state for dependable overseas Wi-Fi Calling/SMS should **not** be upgraded simply because Lebara publishes generic Wi-Fi Calling information;
+- actual user reports show device/eSIM/provisioning variability and delayed authentication SMS, so reliability is the key unanswered question rather than feature availability.
+
+Audit decision: **KEEP `unknown` FOR RELIABLE OVERSEAS WI-FI SMS; ADD FAILURE-MODE CONTEXT.** This is an example where public feature availability is weaker evidence than current user reliability reports.
+
 ### Sakura Mobile Japan Voice+Data — missed positive evidence
 
 Current product state:
@@ -247,12 +308,14 @@ If a legitimate carrier-supported path exists underneath such a tutorial, resear
 ## 4. Immediate audit priority
 
 1. **giffgaff** — highest urgency because current production can materially understate 2026 overseas-termination risk.
-2. **Sakura** — straightforward missed-evidence correction.
-3. **Ultra PayGo** — verify PayGo-specific Wi-Fi Calling applicability.
-4. **AIS** — build full hidden-route record around current support-assisted retention + conversion variants.
-5. **RedPocket** — determine whether the current annual route is more suitable than Ultra/Tello for the intended overseas user, with number-history and marketplace risk explicit.
-6. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
-7. **O2 Germany / Simyo NL / One NZ** — independent replication before any production expansion.
+2. **Tello** — current hard block is correct, but add 2026 enforcement/failure context so users do not infer an overseas-first workaround is reliable.
+3. **Lebara UK** — preserve the UK-activation block and keep dependable overseas Wi-Fi/SMS reliability unresolved because current user reports are mixed.
+4. **Sakura** — straightforward missed-evidence correction.
+5. **Ultra PayGo** — verify PayGo-specific Wi-Fi Calling applicability.
+6. **AIS** — build full hidden-route record around current support-assisted retention + conversion variants.
+7. **RedPocket** — determine whether the current annual route is more suitable than Ultra/Tello for the intended overseas user, with number-history and marketplace risk explicit.
+8. **ClubSIM / HK-mobi** — recheck current annual keep-alive and eSIM replacement mechanics.
+9. **O2 Germany / Simyo NL / One NZ** — independent replication before any production expansion.
 
 ## 5. Production rule during this audit
 
