@@ -15,6 +15,7 @@ Do not adopt a plugin merely because it exists. A plugin must reduce manual work
 ## Bootstrap and source-of-truth roles
 
 - **Notion Skill** — role-entry/bootstrap instructions only. It should make a new session enter the correct operating mode quickly, then require reading GitHub main in the mandated order.
+- **Notion Daily Project Journal** — human-readable chronological execution diary. Append one dated entry per project workday with the task checklist, actual completed work, verification, blockers/holds and next trigger. It is not a roadmap, queue or source of truth; GitHub `main` plus verified production wins on conflict.
 - **GitHub** — canonical code, `PROJECT_CONTEXT.md`, `MASTER_PLAN.md`, operating workflow, task-specific ledgers, issues, PRs and release history.
 - **Mem** — research notebook / signal inbox for rough ideas, competitor notes, forum findings, screenshots and provisional synthesis. Mem is not a project-state source. Promote only validated conclusions into GitHub.
 - **Linear** — optional execution queue for already-approved work. It may mirror actionable tasks from the GitHub plan, but must not become a second roadmap. GitHub wins on conflict.
@@ -44,6 +45,7 @@ For any non-trivial project task, use the smallest useful chain:
 6. **Decide** — apply the current GitHub plan's gate, scope lock and stop criteria. Plugin availability does not create new work by itself.
 7. **Execute** — use the GitHub branch/PR workflow for project changes; use action plugins only when the user/project rules authorize the action.
 8. **Record** — write accepted result, blocker, next step and stop/narrow condition into the correct GitHub fact source, task ledger or issue in the same work round.
+9. **Journal** — append the day's actual checklist/results/verification/blockers/next trigger to the Notion Daily Project Journal. Keep it concise and chronological; never let it become a competing state database.
 
 ## Cost and quota guard
 
