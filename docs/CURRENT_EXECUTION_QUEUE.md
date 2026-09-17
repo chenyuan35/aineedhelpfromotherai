@@ -12,12 +12,8 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
 - **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
-- **Q-013 giffgaff review:** DONE 2026-09-18. Existing long-term-overseas ranking penalty/contextual warning stays. Real 2026 disconnections plus later partial-restoration/operational-error reports mean elevated/conflicting risk, not deterministic shutdown.
-- **Q-013 Tello review:** DONE 2026-09-18. Keep the US-first activation/port-in hard block. Current support and 2026 reports confirm first US-tower attachment matters; Wi-Fi Calling/Text can remain usable separately.
-- **Q-013 Lebara UK review:** DONE 2026-09-18. Keep UK-first activation and keep dependable overseas Wi-Fi Calling/SMS `unknown`; current eSIM/Wi-Fi Calling/SMS reliability remains mixed.
-- **Q-013 Sakura correction:** DONE / LIVE via PR #108. Sakura Monthly Voice+Data `roamingSms` changed from `unknown` to `supported-after-activation`; official current support says calls/SMS work outside Japan while cellular data does not. Wi-Fi Calling abroad remains `unknown`. Vercel + Eval Gate passed, and the production canonical JSON was live-verified HTTP 200 with the corrected field.
-- **Q-013 Ultra PayGo review:** DONE 2026-09-18 / KEEP `unknown`. Ultra currently says Wi-Fi Calling is available on all Ultra plans, but PayGo-specific current reproduction/provisioning evidence remains insufficient and device/IMS failures exist; do not convert the generic statement into a dependable overseas-PayGo claim yet.
-- **Q-013 H2O PayGo review:** DONE 2026-09-18 / KEEP current caution. Current H2O roaming material applies international roaming to Unlimited/12-Month plans, not the PayGo route.
+- **Q-013 current-route discrepancy pass:** DONE 2026-09-18 for giffgaff, Tello, Lebara UK, Sakura, Ultra PayGo and H2O PayGo. Only Sakura required an immediate production correction; PR #108 is live and verified. PR #109 closed the documentation pass.
+- **Q-013 AIS Thailand bounded audit:** DONE 2026-09-18 / HOLD FROM PRODUCTION. The `49B / 365-day` support-assisted retention primitive now has high-confidence current evidence and repeatability signals. The full Trip-origin route remains unresolved because the current Trip product says eKYC may be completed abroad but requires Thailand use shortly afterward, while community reports describe support-assisted overseas conversion. AIS also documents China as a Wi-Fi Calling legal/VoIP exception. Do not add AIS until the acquisition/account-class/Thailand-presence boundary is independently resolved.
 - **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads still contain only the Sep 13 sent messages; no independently verified public link/citation was found. Do not resend yet; recheck Sep 20.
 
 Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
@@ -39,7 +35,7 @@ At the start of the next session, after mandatory fact-source reading:
 
 1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** immediately before speculative Phone production changes.
 2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check from the authority ledger + original Gmail threads before sending any follow-up or batch 2.
-3. Otherwise continue **Q-013** with the **AIS Thailand 49B / 365-day support-assisted hidden-route audit**. Do not add AIS to production until eligibility, repeatability, support-channel consistency/refusals, acquisition variant, KYC, roaming/SMS/Wi-Fi Calling, replacement/reissue and current cost are sufficiently verified.
+3. Otherwise continue **Q-013** with the **RedPocket US annual-route audit**. AIS is a bounded HOLD and should not absorb more work without new evidence that resolves the specific activation/account-class boundary.
 
 ## Q-013 — Phone Radar route/evidence audit
 
@@ -65,17 +61,28 @@ Do not return to an official-plan-directory model.
 - **Sakura Mobile — corrected/live:** Monthly Voice+Data calls/SMS outside Japan are now represented as supported after activation; cellular data abroad unavailable; Wi-Fi Calling abroad remains unknown.
 - **Ultra Mobile PayGo — reviewed:** keep overseas Wi-Fi Calling `unknown` until PayGo-specific current reproduction/provisioning is strong enough.
 - **H2O PayGo — reviewed:** keep current no-roaming-on-PayGo caution.
-- **AIS Thailand — NEXT:** `49B Validity 365 Days` remains a support-confirmed hidden-route candidate with current community replication, but it is **not yet in production**.
-- Other monitored candidates: RedPocket, ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
+- **AIS Thailand — bounded HOLD:** `49B / 365-day` retention = high-confidence support-assisted mechanism; full Trip-origin acquisition/conversion route is not production-ready because Thailand-presence/account-class and mainland-China Wi-Fi Calling evidence conflict.
+- **RedPocket US — NEXT:** community-reproduced annual acquisition and support-assisted eSIM reissue; needs current seller/channel, total cost, activation geography, overseas SMS/Wi-Fi Calling, eSIM replacement and recycled-number-history audit.
+- Other monitored candidates: ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
 
-### AIS next-step checklist
+### RedPocket next-step checklist
 
-1. Identify the exact starting product/account states that can receive the `49B / 365-day` support offer; do not merge traveler/Trip/Redtea/ordinary prepaid variants without evidence.
-2. Verify current support channel wording and whether the offer can be renewed/repeated.
-3. Search for current independent success plus refusal/failure cases and record dates.
-4. Capture acquisition price, first top-up, recurring/keep-alive cost, passport/KYC, local presence/first network attachment, payment restrictions, SIM/eSIM/device transfer, mainland-China practicality, roaming/SMS/Wi-Fi Calling, and same-number replacement/reissue/recycling.
-5. Check official/regulator material only for hard conflicts/stable mechanics; lack of a public marketing page is not a rejection condition.
-6. Admit to production only if the route is sufficiently reproducible, maintainable and materially different from existing options.
+1. Identify the exact current annual product/seller/channel; separate marketplace annual routes from ordinary RedPocket monthly plans.
+2. Verify total acquisition/activation/renewal cost and payment/account restrictions.
+3. Verify KYC/address/residency and first activation/geography requirements.
+4. Search for current independent success plus refusal/failure cases, especially eSIM QR/reissue and anti-fraud/account-lock events.
+5. Verify overseas SMS/OTP, Wi-Fi Calling and roaming reality for the exact annual route; do not inherit generic RedPocket feature claims blindly.
+6. Record eSIM/device-transfer and same-number replacement/recovery behavior.
+7. Treat recycled-number reputation/history as a separate operational risk; do not imply a newly issued number is clean for every third-party service.
+8. Admit to production only if the route is materially different from existing options and the current end-to-end workflow is reproducible enough to maintain.
+
+### AIS revisit trigger
+
+Do not keep polishing AIS without new evidence. Reopen only when one of these appears:
+
+- a current independent reproduction that explicitly states whether Trip product ID `44775420` can be converted/retained without entering Thailand after eKYC;
+- direct AIS support/app/account evidence defining the post-conversion account class and 49B eligibility for that origin product;
+- a current refusal/failure that materially changes the 49B/365 retention conclusion.
 
 ### Phone Radar decision fields
 
