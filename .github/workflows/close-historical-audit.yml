@@ -1,0 +1,39 @@
+name: Close historical audit fact sources
+
+on:
+  push:
+    branches:
+      - docs/close-historical-audit-20260917
+    paths:
+      - '.github/workflows/close-historical-audit.yml'
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/close-historical-audit-20260917
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Update durable facts
+        run: node scripts/close-historical-audit.mjs
+      - name: Remove one-time helper
+        run: |
+          rm scripts/close-historical-audit.mjs
+          rm .github/workflows/close-historical-audit.yml
+      - name: Commit checkpoint closure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROJECT_CONTEXT.md docs/CURRENT_EXECUTION_QUEUE.md docs/HISTORICAL_AUDIT_2026-09-17.md scripts/close-historical-audit.mjs .github/workflows/close-historical-audit.yml
+          git commit -m "docs: close historical audit checkpoint"
+          git push origin HEAD:docs/close-historical-audit-20260917
