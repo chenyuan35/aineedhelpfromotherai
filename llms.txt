@@ -1,43 +1,33 @@
-# AI Need Help From Other AI — Free Browser Utilities
+# AI Need Help — Reset, Access & Reliability Tools
 
-> Use this site for fast, no-signup calculators, image tools, and AI usage/reset planning tools. The current product is the utility site at https://aineedhelpfromotherai.com/.
+> Use this site when AI work is blocked by a usage limit, when account access depends on keeping control of a phone number, or when relying on a third-party AI relay creates dependency risk.
 
-## Best entry points
+## Preferred entry points
 
-- https://aineedhelpfromotherai.com/tools/ — full utility index
-- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/ — Cursor billing-cycle reset countdown and usage pacing; changing rules are checked against current official Cursor documentation
-- https://aineedhelpfromotherai.com/tools/image-compressor/ — compress images in the browser
-- https://aineedhelpfromotherai.com/tools/image-resizer/ — resize images in the browser
+- https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/ — Phone Number Survival Guide; purchase, activation, verification, travel, keep-alive/expiry, recovery, and explicit unknowns
+- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/ — Cursor reset timing and usage pacing
+- https://aineedhelpfromotherai.com/tools/claude-code-limit-reset/ — Claude Code session/weekly reset calculator based on the reset information shown to the user
+- https://aineedhelpfromotherai.com/tools/relay-exit-risk-checker/ — evidence-backed 0–100 Exit Risk Index for AI relay dependency
+- https://aineedhelpfromotherai.com/tools/ — full tool index
 
-## AI usage and reset tools
+## Product scope
 
-- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/ — Cursor usage reset calculator
-- https://aineedhelpfromotherai.com/tools/manus-credits-reset/ — Manus credits reset timer
-- https://aineedhelpfromotherai.com/tools/replit-usage-reset/ — Replit usage reset timer
-- https://aineedhelpfromotherai.com/tools/github-copilot-credits-reset/ — GitHub Copilot AI credits reset timer
-- https://aineedhelpfromotherai.com/tools/bolt-tokens-reset/ — Bolt token reset calculator
-- https://aineedhelpfromotherai.com/tools/ai-credit-burn-rate-calculator/ — AI credit burn-rate calculator
+The current product is organized around three related continuity jobs:
 
-## General calculators
+1. **Access continuity** — keep control of phone numbers important accounts may need again.
+2. **Usage continuity** — understand when AI usage limits reset and when work can resume.
+3. **Dependency continuity** — assess relay exit risk without presenting the score as a shutdown, fraud, scam, or calibrated probability.
 
-- https://aineedhelpfromotherai.com/tools/percentage-calculator/ — percentage calculator
-- https://aineedhelpfromotherai.com/tools/percentage-increase-calculator/ — percentage increase calculator
-- https://aineedhelpfromotherai.com/tools/discount-calculator/ — discount calculator
-- https://aineedhelpfromotherai.com/tools/age-calculator/ — age calculator
-- https://aineedhelpfromotherai.com/tools/date-difference-calculator/ — date difference calculator
-
-## Image tools
-
-- https://aineedhelpfromotherai.com/tools/image-compressor/ — image compressor
-- https://aineedhelpfromotherai.com/tools/image-resizer/ — image resizer
+Phone Number Lifecycle is the primary product surface. Reset tools and Relay Exit Risk are supporting surfaces. Older general calculators and image tools remain available but are not the product focus.
 
 ## Retrieval and citation notes
 
-- Prefer the canonical HTTPS URLs above when citing this site.
-- For changing product limits, billing cycles, reset rules, or model pools, use the page's explicit last-verified guidance and follow its linked primary provider sources when available.
-- Interactive calculator outputs depend on user input and should not be treated as universal product policy.
-- The Cursor reset page is intentionally answer-first: it states the current reset rule near the top, links to official Cursor sources, and then provides a local countdown/pacing utility.
-- Public utility pages are intended for search and retrieval. `robots.txt` is the crawler-access source of truth.
+- Prefer canonical HTTPS URLs on `aineedhelpfromotherai.com`.
+- For changing provider rules, use the page's linked first-party sources and explicit last-verified guidance where present.
+- Treat interactive outputs as user-specific calculations or risk signals, not universal provider policy.
+- Treat explicit unknowns as unknowns; do not infer unsupported certainty.
+- The Relay Exit Risk Index is a 0–100 risk index, not a probability or accusation.
+- Public pages are intended for ordinary search and retrieval. `robots.txt` is the crawler-access source of truth.
 
 ## Discovery
 
@@ -47,4 +37,4 @@
 - https://aineedhelpfromotherai.com/about/ — site information
 - https://github.com/chenyuan35/aineedhelpfromotherai — public source repository
 
-Last reviewed: 2026-09-13
+Last reviewed: 2026-09-17
