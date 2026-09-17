@@ -9,12 +9,36 @@
   "outputDirectory": "frontend/dist",
   "rewrites": [
     {
-      "source": "/api/:path*/",
-      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/:path*"
+      "source": "/api/reasoning/relay-risk-v2/",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/reasoning/relay-risk-v2"
     },
     {
-      "source": "/api/:path*",
-      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/:path*"
+      "source": "/api/reasoning/relay-risk-v2",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/reasoning/relay-risk-v2"
+    },
+    {
+      "source": "/api/health/",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/health"
+    },
+    {
+      "source": "/api/health",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/health"
+    },
+    {
+      "source": "/api/status/",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/status"
+    },
+    {
+      "source": "/api/status",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/status"
+    },
+    {
+      "source": "/api/diagnostics/",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/diagnostics"
+    },
+    {
+      "source": "/api/diagnostics",
+      "destination": "https://api-tunnel.aineedhelpfromotherai.com/api/diagnostics"
     }
   ],
   "routes": [

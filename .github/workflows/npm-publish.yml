@@ -1,7 +1,9 @@
-name: npm Publish
+# Historical package publisher for the former MCP/integration product.
+# Automatic release-triggered publishing was retired on 2026-09-17 after the utility-site pivot.
+# Keep manual dispatch only for deliberate maintenance of legacy packages.
+name: Historical npm Publish
+
 on:
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
       version:
