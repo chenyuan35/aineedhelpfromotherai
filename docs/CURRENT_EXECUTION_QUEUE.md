@@ -78,7 +78,7 @@ As checked on 2026-09-17:
 
 ### Q-010 — Wedge / Demand Validation Sprint
 
-Status: **NEXT ELIGIBLE / NON-DESTRUCTIVE**
+Status: **ACTIVE — FIRST RESET DISTRIBUTION TEST SCHEDULED**
 
 Purpose:
 
@@ -92,18 +92,27 @@ Decision rule:
 
 Detailed session audit and rationale: `docs/SESSION_HANDOFF_2026-09-17.md`.
 
+First bounded research pass: `docs/WEDGE_DEMAND_VALIDATION_2026-09-17.md`.
+
+Current readout:
+
+- **Reset first** for contextual distribution: current Claude reset/limit discussions are recent and active, and the existing Claude reset page directly solves session-vs-weekly reset tracking without inventing `/limit-reset` policy.
+- **Reliability second**, only when a concrete relay/domain can actually be checked and the evidence is sufficient; do not use the index as a scam/shutdown probability.
+- **Access hold for link-based distribution**: Codex old-number lockout pain is strong, but the current Phone canonical only partially solves the post-hoc recovery job. Keep it as validation evidence until settled Phone data justifies a compact continuity layer inside the existing canonical.
+- No production change was made. One bounded Claude Reset Threads post is scheduled for 2026-09-17 19:00 Asia/Shanghai through Metricool; it is recorded in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and must remain separate from Google organic measurement.
+
 First pass, in this order:
 
-1. Read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before any external distribution action.
-2. Find a bounded set of current high-intent contexts for three cohorts:
+1. Read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before any external distribution action. **DONE for the current pass.**
+2. Find a bounded set of current high-intent contexts for three cohorts: **DONE for the current pass.**
    - Reset: Cursor / Claude / AI usage-limit or reset questions.
    - Access: AI account phone verification, durable-number, roaming/SMS, keep-alive or old-number access questions.
    - Reliability: relay/prepay/dependency-risk discussions where the existing Exit Risk checker directly applies.
-3. Classify each context by actual user job, recency, activity, fit with an existing page, and whether a helpful contribution can stand on its own without a link.
-4. Prefer a few high-fit contexts over random traffic or mass posting.
-5. Only post/share when the existing page genuinely solves the discussion; no promotional link drops, fake engagement, paid links, or spam.
-6. When an external action is actually taken, record it immediately in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and keep referral/social traffic separate from Google organic.
-7. Compare available `home_job_select`, `tool_open`, `tool_action`, Phone-specific events, GA4 referral/direct behavior and GSC query growth as data appears.
+3. Classify each context by actual user job, recency, activity, fit with an existing page, and whether a helpful contribution can stand on its own without a link. **DONE for the current pass.**
+4. Prefer a few high-fit contexts over random traffic or mass posting. **DONE — Reset is the first contextual-distribution candidate.**
+5. Only post/share when the existing page genuinely solves the discussion; no promotional link drops, fake engagement, paid links, or spam. **DONE for one bounded Reset test — no forum/community link drop.**
+6. When an external action is actually taken, record it immediately in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and keep referral/social traffic separate from Google organic. **DONE for the scheduled Claude Reset Threads test.**
+7. Compare available `home_job_select`, `tool_open`, `tool_action`, Phone-specific events, GA4 referral/direct behavior and GSC query growth as data appears. **NEXT MEASUREMENT STEP after the scheduled post publishes and reporting exists.**
 
 Stop / narrow conditions:
 
