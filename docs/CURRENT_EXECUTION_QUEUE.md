@@ -94,7 +94,9 @@ As checked on 2026-09-17:
 - GSC `settledThrough`: **2026-09-14**.
 - Indexing tracker: **18 tracked / 9 indexed / 9 not indexed / 0 pending / 0 errors / 0 warnings**.
 - Phone canonical: `URL is unknown to Google`, no recorded crawl yet.
+- Claude canonical: `URL is unknown to Google`, no recorded crawl yet.
 - Phone public release date: **2026-09-16**.
+- Phone and Claude pages both return HTTP 200, are indexable, self-canonical, have no `noindex`, and are linked from `/tools/`; no technical indexing blocker was found in the 2026-09-17 audit.
 - Therefore current settled GSC data does **not yet cover the public Phone release**.
 - Early GA4 zeroes are not a negative product verdict.
 
@@ -102,7 +104,7 @@ As checked on 2026-09-17:
 
 ### Q-010 — Wedge / Demand Validation Sprint
 
-Status: **ACTIVE — FIRST RESET DISTRIBUTION TEST SCHEDULED**
+Status: **ACTIVE — RESET DISTRIBUTION PUBLISHED / MEASURING**
 
 Purpose:
 
@@ -120,10 +122,13 @@ First bounded research pass: `docs/WEDGE_DEMAND_VALIDATION_2026-09-17.md`.
 
 Current readout:
 
-- **Reset first** for contextual distribution: current Claude reset/limit discussions are recent and active, and the existing Claude reset page directly solves session-vs-weekly reset tracking without inventing `/limit-reset` policy.
+- **Reset first** for contextual distribution remains the active cohort.
+- Claude Reset Threads post published on 2026-09-17 at 19:00 Asia/Shanghai and was verified through Metricool. Immediate reporting had not populated yet; same-evening GA4 remained 0 and is preliminary only.
+- A second bounded channel test used the already-indexed Cursor Reset page on Mastodon `@mini24`, whose established account identity is AI tools / developer resources. The post was published and publicly verified at `https://mastodon.social/@mini24/117286383729244067`; no engagement automation was run.
+- Existing account-fit inventory now separates usable channels from off-topic accounts: Mastodon and DEV Community are strong fits; X/Twitter is the next high-fit text-channel candidate; Medium/Hashnode are conditional on editorial-series fit; the current Reddit and Bluesky accounts are intentionally excluded because their established account identities do not fit this project.
 - **Reliability second**, only when a concrete relay/domain can actually be checked and the evidence is sufficient; do not use the index as a scam/shutdown probability.
 - **Access hold for link-based distribution**: Codex old-number lockout pain is strong, but the current Phone canonical only partially solves the post-hoc recovery job. Keep it as validation evidence until settled Phone data justifies a compact continuity layer inside the existing canonical.
-- No production change was made. One bounded Claude Reset Threads post is scheduled for 2026-09-17 19:00 Asia/Shanghai through Metricool; it is recorded in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and must remain separate from Google organic measurement.
+- No production code or product surface changed during this distribution round.
 
 First pass, in this order:
 
@@ -133,10 +138,10 @@ First pass, in this order:
    - Access: AI account phone verification, durable-number, roaming/SMS, keep-alive or old-number access questions.
    - Reliability: relay/prepay/dependency-risk discussions where the existing Exit Risk checker directly applies.
 3. Classify each context by actual user job, recency, activity, fit with an existing page, and whether a helpful contribution can stand on its own without a link. **DONE for the current pass.**
-4. Prefer a few high-fit contexts over random traffic or mass posting. **DONE — Reset is the first contextual-distribution candidate.**
-5. Only post/share when the existing page genuinely solves the discussion; no promotional link drops, fake engagement, paid links, or spam. **DONE for one bounded Reset test — no forum/community link drop.**
-6. When an external action is actually taken, record it immediately in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and keep referral/social traffic separate from Google organic. **DONE for the scheduled Claude Reset Threads test.**
-7. Compare available `home_job_select`, `tool_open`, `tool_action`, Phone-specific events, GA4 referral/direct behavior and GSC query growth as data appears. **NEXT MEASUREMENT STEP after the scheduled post publishes and reporting exists.**
+4. Prefer a few high-fit contexts over random traffic or mass posting. **DONE — Reset remains the first cohort; off-topic existing accounts were excluded rather than repurposed.**
+5. Only post/share when the existing page genuinely solves the discussion; no promotional link drops, fake engagement, paid links, or spam. **DONE for the current bounded Threads + Mastodon tests.**
+6. When an external action is actually taken, record it immediately in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and keep referral/social traffic separate from Google organic. **DONE for the current pass.**
+7. Compare available `home_job_select`, `tool_open`, `tool_action`, Phone-specific events, GA4 referral/direct behavior and GSC query growth as data appears. **NEXT MEASUREMENT STEP once Threads/Mastodon reporting exists.**
 
 Stop / narrow conditions:
 
