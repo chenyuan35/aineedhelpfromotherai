@@ -1,8 +1,8 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-09-16
+Last updated: 2026-09-18
 
-This is the project-wide progress board. `PROJECT_CONTEXT.md` answers "what is true now"; this file answers "where are we in the whole plan and what comes next"; `docs/OPERATING_WORKFLOW.md` defines how each task is executed. `docs/AUTHORITY_AND_AI_DISCOVERY.md` is the detailed ledger for outreach, external authority, AI-assistant visibility and follow-ups. `docs/AI_RETRIEVAL_BENCHMARK.md` is the repeatable test for AI-native search discovery vs known-URL extraction. `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` is the ordered, non-adversarial workstream for integrating correctly with AI-native retrieval systems. `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` is the durable product/lifecycle roadmap for the primary phone-number product, including retention rules, reminder gates and maintenance.
+This is the project-wide progress board. `PROJECT_CONTEXT.md` answers "what is true now"; this file answers "where are we in the whole plan and what comes next"; `docs/OPERATING_WORKFLOW.md` defines how each task is executed. `docs/AUTHORITY_AND_AI_DISCOVERY.md` is the detailed ledger for outreach, external authority, AI-assistant visibility and follow-ups. `docs/AI_RETRIEVAL_BENCHMARK.md` is the repeatable test for AI-native search discovery vs known-URL extraction. `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` is the ordered, non-adversarial workstream for integrating correctly with AI-native retrieval systems. `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` is the active Phone product-reset task list; `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` define the durable route-first product and community-reality research model.
 
 ## North-star goal
 
@@ -17,73 +17,71 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make Google discover and index the current utility cohort | IN PROGRESS | GSC connected; the existing 16-URL priority tracker was 8 indexed / 8 not indexed before the Phone public release. URL normalization remains fixed; live sitemap now contains 22 URLs, including 16 tool pages and the canonical Phone Number Survival Guide. Phone indexing/performance has not yet had time to settle. | Tool cohort, including Phone Number Survival, starts receiving its own settled impressions, with indexing continuing beyond the previously indexed cohort |
 | P3 First search signals | Identify which existing pages/queries Google is testing | BLOCKED BY SETTLED DATA | New utility pages are now entering the index, but Search Console performance data still predates the Sep 13 crawl/index event | At least several tool-page query/impression signals exist |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT STARTED EARLY | Cursor reset is being used as the first depth/authority pilot before settled impressions arrive because it is already indexed and has strong radar intent. PR #30 adds current official-source depth and shareability without creating a new URL. Data-driven winner optimization still waits for settled GSC signals. | Clear improvement or a decision to stop investing |
-| P5 Focused product depth | Build depth only inside the frozen three-surface product scope | ACTIVE — PHONE LIVE | Product scope remains locked to Phone Number Lifecycle (primary), AI Reset Radar/reset tracking (secondary), and Relay Exit Risk (secondary). PR #62 established the verified hidden canary and PR #75 promoted the same audited model/evidence to the canonical public Phone Number Survival Guide. The launch gate is complete; `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` now moves to search/behavior validation and maintainable evidence refresh. | Phone Number Survival begins producing real indexing/usage/reminder evidence that identifies which lifecycle jobs deserve deeper investment while the two supporting products remain stable. |
+| P5 Focused product depth | Build depth only inside the frozen three-surface product scope | ACTIVE — PHONE PRODUCT RESET | Product scope remains locked to Phone Radar/Phone Number Lifecycle (primary), AI Reset Radar/reset tracking (secondary), and Relay Exit Risk (secondary). The Phone canonical is live, but a Sep 18 product review found the interface had drifted into questionnaire/research-manual behavior. Q-014 now resets the user contract to route-first comparison and execution. | Phone Radar exposes concrete routes immediately, lets users compare SMS/OTP reliability, yearly keep-alive cost, setup difficulty, location practicality and current stability, and provides concise opening/keep-alive actions without requiring research-method reading. |
 | P6 Distribution, authority & AI discovery | Earn discovery, mentions, relevant links, referrals and AI citations outside classic Google results | ACTIVE PILOT | PR #27 aligned the public GitHub README; IndexNow works; Bing is connected. First personalized authority round sent 3 emails. PR #32 adds a provider-level retrieval benchmark after Exa showed clean direct extraction but weak semantic discovery, corrects stale `llms.txt`/`ai.txt` surfaces, and was production-verified with fresh retrieval. Tavily baseline execution remains blocked by provider plan quota (HTTP 432), not by retrieval failure. AIR-4 second-batch candidates are researched but intentionally held until the first-round 5–7 day response window is checked. The Relay Exit Risk Checker release does not change AIR status or count as authority evidence. | At least one repeatable relevant referral/link/citation source plus measurable search or AI-assistant visibility, with provider retrieval tests showing improved discoverability rather than extraction-only success |
 | P7 Monetization optimization | Turn useful traffic into stable AdSense revenue | QUEUED | AdSense integration exists; approval/serving must be verified separately | First RMB 100/month, then optimize RPM without harming UX |
 
-## Current sprint — Phone lifecycle depth + indexing
+## Current sprint — Phone product reset + indexing
 
 1. DONE — Fix URL consistency: Vercel serves trailing-slash page URLs directly, matching generated canonicals and sitemap URLs. PR #19 shipped and production re-audit found no redirect/canonical issues on checked pages.
 2. DONE — Add GA4 tracking: GA4 measurement ID `G-FYKKNKRE58` is injected once into every production HTML page by PR #21; production homepage and Cursor tool page were verified live.
 3. DONE — Connect GA4 to GSC Wizard: Analytics consent is authorized, property `properties/553896884` (`aineedhelpfromotherai`) is linked to `sc-domain:aineedhelpfromotherai.com`, and a Sep 13 analytics rollout annotation is recorded. Current GA4 reports are still immature because settled reporting data has not arrived yet.
-4. ACTIVE — Keep the 16-URL GSC indexing tracker running. Current state is 8 indexed and 8 not indexed with no pending/errors/warnings. The tracker now includes Relay Exit Risk; it has one inspection and is currently unknown to Google. Do not spam repeated recrawl requests for the remaining 8.
-5. MONITOR — Live `https://aineedhelpfromotherai.com/sitemap.xml` contains 22 URLs, including 16 tool pages and exactly one Phone Number Survival canonical URL, and publishes no generated build-date `lastmod`. Settled sitemap/search-performance data may lag the Sep 16 Phone release, so use direct URL Inspection as the current indexing truth until reporting catches up.
-6. WAITING FOR DATA — Once GA4 produces settled sessions/page views, use referral/direct/engagement data to complement Search Console rather than reading early zeroes as a traffic verdict.
-7. WAITING FOR SIGNAL — Once tool-page impressions appear, use actual query/page data to decide which existing page becomes the next optimization target.
-8. SCOPE LOCK — Do not select new broad tool families. New demand signals must either deepen Phone Number Lifecycle or justify maintenance/freshness work inside Reset Radar or Relay Exit Risk; otherwise record and ignore them.
+4. ACTIVE — Keep the GSC indexing tracker running. Last checked state is 18 tracked / 9 indexed / 9 not indexed with no pending/errors/warnings. Do not spam repeated recrawl requests.
+5. MONITOR — Live sitemap contains one Phone canonical. Settled sitemap/search-performance data may lag the Sep 16 Phone release, so wait for settled data rather than treating early zeroes as a verdict.
+6. WAITING FOR DATA — Once GA4/GSC produces settled Phone sessions/impressions, use them to inform the product reset; do not use immature zeroes to restore the old UI direction.
+7. WAITING FOR SIGNAL — Once tool-page impressions appear, use actual query/page data to decide which existing page deserves optimization.
+8. SCOPE LOCK — Do not select new broad tool families. New demand signals must either deepen Phone Radar or justify maintenance/freshness work inside Reset Radar or Relay Exit Risk.
 9. ACTIVE LIGHT DISTRIBUTION — PR #27 provides an accurate public GitHub README discovery path and the existing IndexNow workflow is verified working. Avoid bulk spam submissions.
-10. DONE — Bing Webmaster API access is connected in GSC Wizard. Bing recognizes the site, exposes crawl/index data, reports no current crawl-issue URLs, and shows about 30 URLs historically in its index as of Sep 12. No sitemap/feed is currently listed there and Sep 1–11 search traffic is still 0 clicks / 0 impressions.
-11. DONE — The small Google request-indexing set was submitted: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`. All three return `PASS / Submitted and indexed`, crawled successfully by mobile Googlebot on Sep 13.
-12. DONE — Breakthrough-page pilot shipped: PR #30 deepened the already-indexed Cursor reset page with immediate reset answers, current Cursor usage/billing/model-pool guidance, exact reset-date instructions, plan/team distinctions, additional FAQs, and a copyable reset summary while preserving the canonical URL.
-13. ACTIVE — Measure Cursor query coverage, impressions, CTR and engagement after data settles. If this richer page earns stronger signals, apply the same depth pattern selectively to one other existing indexed page rather than bulk rewriting everything.
-14. ACTIVE — First authority outreach round: three personalized emails were sent on Sep 13 to hsmart.dev, Continuum Code and Drew Bredvick. No reply or earned link is counted yet. Every outcome/follow-up must be recorded in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and checked against the original Gmail thread.
-15. ACTIVE — AI discovery baseline: public pages are allowed by the wildcard `robots.txt`; OpenAI/Perplexity search crawlers are therefore not intentionally blocked. GSC Wizard currently reports 0 settled AI-assistant referral sessions. Cursor is the first citation-readiness pilot with answer-first structure, current official evidence and unique interactive utility.
-16. DONE — PR #32 establishes `docs/AI_RETRIEVAL_BENCHMARK.md`. First Exa tests show direct known-URL extraction succeeds while natural-language/exact-concept search does not yet surface the direct Cursor page near the top. The same PR rewrites legacy `llms.txt`/`ai.txt` for the utility mission and changes the static build to publish them at the site root.
-17. DONE — Production verification for PR #32: cache-busted retrieval of `/llms.txt` and `/ai.txt` returned the new utility-site content. Exa's normal cached `/llms.txt` retrieval still showed the old legacy copy immediately afterward, so provider cache/index freshness is tracked separately from live-origin state.
-18. ACTIVE / PARTLY BLOCKED — Execute `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` strictly in order. AIR-0 is complete; AIR-1 has the Exa baseline but is BLOCKED because the first real Tavily search attempt returned HTTP 432 plan-usage-limit before execution; AIR-2 is complete; AIR-3 is blocked on a GitHub metadata write path; AIR-4 legitimate external corroboration is active; AIR-5 is intentionally waiting for propagation and executable Tavily access. Do not change provider billing without explicit user approval.
-19. NEXT — After 5–7 days, inspect the three original Gmail threads and independently verify any claimed link/citation. Record `REPLIED`, `LINKED`, `DECLINED`, `NO RESPONSE` or follow-up status. Do not resend early.
-20. PREPARED / HOLD — A second batch has been researched: Learn Cursor, explainx.ai, QuotaMeter and Cursor Usage Tracker. Public contact paths were checked against Gmail with no prior correspondence found. Do not send this batch before the first-round 5–7 day check; if the first round is weak, prefer the strongest resource/training targets and adjust the value proposition before increasing volume.
-21. WAITING — Re-run the same provider benchmark across Exa and Tavily after PR #32 has been crawlable and external references have had time to propagate, and only when Tavily can actually execute. Measure discovery rank/presence separately from known-URL extraction quality and record any cache lag.
-22. NEXT — Measure AI visibility using GA4/GSC Wizard assistant referrals plus Bing AI Performance and Google Search generative-AI visibility reports when data is available. Treat citations/referrals as measurable outcomes, not promises.
-23. MONITOR — Continue watching the remaining 8 not-indexed tracked URLs. Do not manually request-index every remaining URL unless evidence shows discovery has stalled after the current crawl/index wave settles.
-24. DONE — Relay Exit Risk v2 production closure is complete through PR #42–#44. PR #42 replaced manual risk controls with a 0–100 evidence-driven Exit Risk Index using Sinan Compute open data, daily stored snapshots and a time-bounded 90-day community survival forecast while keeping model-trust sentiment separate. PR #43 fixed Node executable discovery. PR #44 removed the two inherited PM2 Node IPC variables before launching the Node updater; local and production-equivalent injected-env tests passed, CI/Eval Gate and Vercel status passed, and the VPS was fast-forwarded without resetting runtime data. The live scheduler now records a legitimate Sinan 304, child `exit=0` and a next-run time. Production DB verification shows 1,823 latest Sinan rows, 1,810 with availability, 359 with pricing and 1 marked dead; source meta has no error. `api123.top` returns 53/100, Harvest Season, Medium confidence. A production same-voter smoke test kept one current vote while preserving two append-only forecast events, then all smoke data was deleted. VPS Chromium desktop/mobile checks passed with no overflow or JS errors, evidence and prepaid exposure loaded correctly, and the animation was driven by the Risk Index with no manual risk slider. This remains a product/infra milestone, not an AIR provider benchmark or authority outcome.
-25. MONITOR — Keep Relay Exit Risk v2 operational and let real source/lifecycle/community history accumulate. Track scheduler source success/legitimate 304, DB freshness, child exit code and next schedule separately from actual relay-risk changes. Do not package the index as a calibrated shutdown/fraud probability, manufacture missing evidence, or expand into a large relay directory before usage and lifecycle evidence justify it.
-26. DONE — PR #48 repositioned the homepage around AI reset / limits / usage as the first-view job, with independent live entries for Cursor, GitHub Copilot, Manus, Replit and Bolt. Codex and Claude are visibly marked `soon` without links. Relay Exit Risk is the second signature section and generic calculators/image utilities sit below. Production desktop/mobile verification passed.
-27. DONE / STATIC ASSET CHOSEN — PR #48 uses an original lightweight transparent line-art office-boss illustration as a secondary Relay Risk entry integrated into the provider scene. The earlier video/card approach was rejected because it visually separated the character from the real tool navigation and added unnecessary complexity. The final asset is about 8 KB, served by Vercel/CDN, and reused in the Relay section; no baked provider names or endorsement copy is present. Detailed Relay Risk behavior remains driven only by the actual Risk Index.
-28. DONE — PR #63 shipped the focused Claude Code Limit Reset Calculator as a supporting indexing/repeat-use surface. It tracks user-entered session/weekly reset times locally and leaves `/limit-reset` effects explicitly unconfirmed where Anthropic public documentation is absent.
-29. STRATEGY LOCK — Product scope is now frozen to three surfaces for the same AI-power-user audience: **Phone Number Lifecycle** is primary; **AI Reset Radar/reset tracking** and **Relay Exit Risk** are secondary. Existing generic calculators/image tools remain maintenance-only. Do not create a fourth product surface or restart broad tool expansion.
-30. DONE / PRODUCTION RELEASE — Phone Number Lifecycle launch gate is closed. PR #62 merged the audited lifecycle assistant as a hidden production canary; PR #75 promoted it to the canonical public `/tools/phone-number-survival-guide/` without changing recommendation logic, providers or the eight evidence JSON files. Deterministic Phone/Retention/Supply audits, Relay regressions, Vercel Preview, public-dist audit, desktop/390px browser checks and final apex registration/travel checks passed. The old internal `phone-number-lifecycle-mvp` path is not shipped publicly and returns 404.
-31. DONE / MONITOR — Retargeted the daily keyword discovery job to **Phone Lifecycle Radar**. It now watches buying, activation, SMS verification compatibility, eSIM/physical SIM, roaming, KYC/passport, retention/expiry, minimum top-up and route/provider lifecycle signals. The first full focused run completed 540/540 source requests successfully; use results to deepen the phone product, not to mass-create pages.
-32. DONE / STRATEGY — Added `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` as the dedicated product roadmap. It separates provider deadlines from product reminder buffers, forbids a universal “90-day” assumption, requires cheapest-vs-safest documented keep-alive actions, and gates any future email reminder service behind demonstrated browser-reminder/repeat-use demand plus privacy/backend/deliverability review.
-
-33. DONE / MONITOR — Deployed a disposable six-hourly Phone Lifecycle official-source watcher on the one-month observer VPS. It follows robots.txt, uses conditional requests and normalized visible-text hashes, stores only bounded summaries/state, and separates provider blocking from policy/content changes. Initial verified run: 22 targets total, 16 fetched/304, 2 Ultra Mobile targets skipped because robots.txt returned 403, 4 Tello targets recorded as provider-side HTTP 403, service exit 0, peak memory 23.3 MiB. See `docs/PHONE_SOURCE_WATCH.md`. A detected hash change is only a review signal and must not auto-rewrite route guidance.
-
-34. DONE / MONITOR — Deployed a four-hourly **Phone Community Demand Radar** on the disposable one-month observer VPS. It consumes low-frequency public RSS/Atom feeds from a combined Reddit r/eSIMs+r/NoContract stream plus NodeLoc, NodeSeek and V2EX, filters for phone-number/eSIM lifecycle language, and stores only metadata/short excerpts/categories rather than full forum archives. Initial verified run exited 0 with 16.7 MiB peak memory and surfaced a current V2EX question about which foreign number/card to use for registering common accounts. Reddit returned HTTP 429 during repeated setup tests and remains a normal source-health state for scheduled retry; no bypass is used. See `docs/PHONE_DEMAND_WATCH.md`. Community signals may prioritize evidence work but never override official carrier/provider rules.
-
-35. DONE / OPERATIONS — Closed the Sep 16 operational audit before resuming PR #62. The audit verified production/Qwen, Hatchable and disposable-observer health; reviewed the Mobal source-change signal with no core PR #62 value change required; fixed Relay Risk same-day snapshot carryover/history semantics in PR #68–#69; directly inspected Codex collector/timer/SQLite health; and replaced the Tailscale-SSH-dependent relay-history backup with the PR #70–#72 Taildrop push/verified-receive path. A real end-to-end backup succeeded with gzip + SQLite quick-check and matching row counts. No current observer OOM was found; the 128 MiB trial observer remains resource-tight and must receive no new duties.
-
-36. BACKLOG / DO NOT DISPLACE PRODUCT VALIDATION — MY-16 tracks Qwen production deployment hardening toward versioned immutable release directories with a stable release pointer and tested rollback. This remains technical debt, not a new product or automatic next WIP. Promote it only if the existing dirty production worktree causes a verified deployment/rollback blocker or incident; do not introduce Kubernetes, Swarm, an extra staging VPS or a Docker migration merely for appearance.
-
-37. ACTIVE / MEASURE BEFORE EXPANDING — Phone Number Survival is now live. Use GSC/GA4 plus the privacy-safe `phone_route_result` event and reminder/export behavior to learn which registration, travel, keep-alive and recovery jobs users actually use. Do not add providers, country variants or adjacent Phone URLs merely because launch is complete; first wait for indexing/usage evidence or a verified source/data defect.
+10. DONE — Bing Webmaster API access is connected in GSC Wizard. Bing recognizes the site and exposes crawl/index data.
+11. DONE — The small Google request-indexing set was submitted: `/tools/`, `/tools/cursor-usage-reset/`, and `/tools/image-compressor/`.
+12. DONE — Breakthrough-page pilot shipped: PR #30 deepened the already-indexed Cursor reset page while preserving the canonical URL.
+13. ACTIVE — Measure Cursor query coverage, impressions, CTR and engagement after data settles. Do not title-churn before enough sample exists.
+14. ACTIVE — First authority outreach round: three personalized emails were sent on Sep 13 to hsmart.dev, Continuum Code and Drew Bredvick. Sep 18 check found no reply/verified link; recheck Sep 20.
+15. ACTIVE — AI discovery baseline remains measured separately from classic search. Cursor is the first citation-readiness pilot.
+16. DONE — PR #32 established `docs/AI_RETRIEVAL_BENCHMARK.md`; Exa known-URL extraction works while semantic discovery remains weak.
+17. DONE — Production verification for PR #32 confirmed new root `/llms.txt` and `/ai.txt`; provider cache freshness remains separate from live-origin state.
+18. ACTIVE / PARTLY BLOCKED — Execute `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` strictly in order. Tavily quota and GitHub metadata-write blockers remain blockers; do not pay/bypass/invent results.
+19. NEXT — On Sep 20, inspect the three original Gmail threads and independently verify any claimed link/citation before deciding on one tailored follow-up or batch 2.
+20. PREPARED / HOLD — A second outreach batch is researched but stays held until the first-round follow-up decision.
+21. WAITING — Re-run provider retrieval benchmarks only when the blocked providers can actually execute and enough propagation time has passed.
+22. NEXT — Measure AI visibility using GA4/GSC Wizard assistant referrals plus available Bing/Google AI visibility reports when data exists.
+23. MONITOR — Continue watching not-indexed tracked URLs without manual submission churn.
+24. DONE — Relay Exit Risk v2 production closure is complete through PR #42–#44 and remains a secondary product.
+25. MONITOR — Keep Relay Exit Risk v2 operational and accumulate real lifecycle/community history. Do not package it as a calibrated shutdown/fraud probability.
+26. DONE — PR #48 repositioned the homepage around reset/access/reliability.
+27. DONE / STATIC ASSET CHOSEN — PR #48 uses the final lightweight Relay illustration; do not replace it without an explicit visual task.
+28. DONE — PR #63 shipped the Claude Code Limit Reset Calculator.
+29. STRATEGY LOCK — Product scope remains frozen to three surfaces: Phone Radar primary, AI Reset Radar secondary, Relay Exit Risk secondary.
+30. DONE / PRODUCTION RELEASE — Phone canonical is live at `/tools/phone-number-survival-guide/`; old internal canary path is not public.
+31. DONE / MONITOR — Daily Phone radar watches buying, activation, SMS/OTP, eSIM/physical SIM, roaming, KYC/passport, retention/expiry and route/provider lifecycle signals. Use it for product depth, not mass pages.
+32. DONE / STRATEGY — `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` preserves lifecycle/reminder technical history, but Phone product/research direction now follows the newer reset/product/method docs when they conflict.
+33. DONE / MONITOR — The disposable source watcher remains an observer only. Its output is a review trigger, not product authority and not an automatic rewrite source.
+34. DONE / MONITOR — The four-hourly Phone Community Demand Radar consumes bounded public forum feeds. Its output is a discovery lead stream. Real-user community outcomes are the primary operational dataset only after the underlying reports are reviewed for recency, independence and concrete outcomes; the watcher itself never auto-publishes claims.
+35. DONE / OPERATIONS — Sep 16 operational audit/backup hardening is complete; the resource-tight trial observer receives no new duties.
+36. BACKLOG / DO NOT DISPLACE PRODUCT VALIDATION — MY-16 Qwen deployment hardening remains technical debt and is promoted only by a verified deployment/rollback blocker.
+37. HOLD AS DEFAULT NEXT ACTION — Provider-by-provider Phone route expansion is paused. AIS and RedPocket remain candidates/inputs, not milestones.
+38. ACTIVE / HIGHEST PHONE PRIORITY — **Q-014 Phone Radar product reset.** Follow `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`: define the route-card contract, tutorial/detail contract, community-outcome data model and visual decision model before any production implementation. Concrete routes must be visible without completing a questionnaire. No fake SMS success percentage and no arbitrary Phone risk score.
 
 ## Measurement cadence
 
-- Daily: VPS Phone Lifecycle Radar runs automatically; no manual full scan required. Use new retention/expiry language to identify evidence gaps, not to create keyword-variant pages.
-- Every 4 hours: the disposable Phone Community Demand Radar reads a small set of public forum feeds and writes `/var/lib/aineedhelp-phone-demand-watch/latest.md`; use repeated questions/complaints/recommendations as product-discovery signals, not authoritative facts.
+- Daily: VPS Phone radar runs automatically; no manual full scan required. Use new community route/outcome signals to identify decision gaps, not to create keyword-variant pages.
+- Every 4 hours: the disposable Phone Community Demand Radar reads a small set of public forum feeds and writes bounded summaries; use repeated first-hand questions/outcomes as leads for review, not automatic facts.
 - Twice weekly while indexing is immature: inspect GSC indexing tracker, sitemap state, new `/tools/` impressions and AI-assistant referral baseline when settled data exists.
-- For the Relay Exit Risk Checker: verify scheduler/source freshness and child exit health alongside real vote volume, abuse/spam behavior and referral/search demand before adding more reputation features; do not interpret a tiny sample or stale source as evidence about a relay.
+- For Phone Radar: prioritize recent setup success/failure, SMS/OTP outcomes, keep-alive cost, number loss/recovery, complaints, refunds/restorations, support outcomes and current tutorials. Stop when more research would not change the user's decision or action.
+- For Relay Exit Risk: verify scheduler/source freshness and child exit health alongside real vote volume, abuse/spam behavior and referral/search demand before adding more reputation features.
 - Every outreach/distribution action: immediately update `docs/AUTHORITY_AND_AI_DISCOVERY.md`; before any follow-up, read the original Gmail thread plus the ledger.
-- After each AI-native provider benchmark: update `docs/AI_RETRIEVAL_BENCHMARK.md` with the exact test class and separate discovery from extraction/cache freshness.
-- For AI retrieval integration: advance only the next eligible AIR task in `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`; if it is blocked/waiting, record the reason rather than jumping to speculative optimizations or changing provider billing.
-- Weekly after Phone Number Lifecycle launch: review high-value/old route evidence, especially activation and retention/expiry rules, plus any user-visible high-unknown paths. A source-change signal creates a verification task; it must not automatically rewrite a user-facing rule.
-- Weekly: update this phase board/current sprint only if status or priority changed; review Bing/Google AI citation/visibility reports when they contain data.
+- After each AI-native provider benchmark: update `docs/AI_RETRIEVAL_BENCHMARK.md` and separate discovery from extraction/cache freshness.
+- For AI retrieval integration: advance only the next eligible AIR task; blocked means blocked.
+- Weekly: update this phase board/current sprint only if status or priority changed.
 - After every production release: update `PROJECT_CONTEXT.md` checkpoint and this file if a phase/task materially moved.
 - Monthly after meaningful traffic: review clicks, impressions, indexed URLs, top pages/queries, referral traffic, AI-assistant referrals/citations, repeat usage where measurable, and AdSense revenue/RPM.
 
 ## Decision rules
 
-- The three-product scope is fixed: Phone Number Lifecycle primary, AI Reset Radar/reset tracking secondary, Relay Exit Risk secondary. Do not create a fourth product surface without an explicit future strategy change.
-- Existing generic calculators/image utilities are maintenance-only; new product work goes into the phone lifecycle unless it is necessary maintenance/freshness work for Reset Radar or Relay Exit Risk. Phone lifecycle work follows `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md`; route breadth never outranks lifecycle completeness and maintainable evidence.
+- The three-product scope is fixed: Phone Radar primary, AI Reset Radar/reset tracking secondary, Relay Exit Risk secondary. Do not create a fourth product surface without an explicit future strategy change.
+- Existing generic calculators/image utilities are maintenance-only. Phone work follows `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` first, then `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`.
+- Phone route research is organized around real-user outcomes and user decisions, not provider-documentation completeness.
+- Operator-published pages are not an operational verification gate for Phone routes. Missing public documentation does not automatically turn a reproduced route into `unknown`.
 - Do not publish many pages just because autocomplete returns many variants.
 - Improve an existing page when multiple query variants describe the same user job.
 - Create a new page only when the user job and tool logic are genuinely distinct.
@@ -91,15 +89,15 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 - When authority is weak, prefer one materially stronger, more trustworthy and more shareable indexed page over many additional average pages.
 - For community risk/reputation features, label anonymous votes as sentiment/forecasts, show sample size/confidence, keep satire visibly separate from factual evidence, and never convert crowd opinion into an unsupported allegation.
 - AI-answer visibility is not a separate magic algorithm: use crawlability, indexing, clear structure, primary-source evidence, freshness, external corroboration and unique utility, then measure actual citations/referrals.
-- AI-native retrieval optimization must remain non-adversarial: optimize for the legitimate signals providers are designed to reward; never use cloaking, hidden provider-specific text, fake citations, fabricated freshness, synthetic backlinks or deceptive metadata.
-- For Exa/Tavily/agent-search tests, do not confuse known-URL extraction success with search discoverability. If extraction passes and discovery fails, prioritize external discovery, semantic relevance, freshness and authority instead of adding more machine-readable files.
-- Provider quota/auth/tool failures are not retrieval failures. Record them as blockers; never infer a rank/pass/fail from a request that did not execute.
+- AI-native retrieval optimization must remain non-adversarial: never use cloaking, hidden provider-specific text, fake citations, fabricated freshness, synthetic backlinks or deceptive metadata.
+- For Exa/Tavily/agent-search tests, do not confuse known-URL extraction success with search discoverability.
+- Provider quota/auth/tool failures are not retrieval failures. Record them as blockers.
 - `llms.txt` and `ai.txt` are supplemental discovery hints, not substitutes for indexing, ranking or real mentions.
-- Treat provider cache/index freshness as a separate state from the live origin; use fresh/cache-busted verification when possible before diagnosing a deployment failure.
+- Treat provider cache/index freshness as a separate state from the live origin.
 - Search Console evidence outranks speculative keyword ideas once the site has enough impressions.
-- Google/official provider documentation outranks community claims for technical/indexing/product-limit facts.
+- For Google indexing, APIs and changing AI-product limits, relevant provider documentation may remain the primary technical source; this rule does **not** govern Phone route operational evidence.
 - Missing paid keyword metrics means "unknown", never a fabricated estimate.
-- While indexing is immature, use a few legitimate discovery links in parallel; do not confuse sent outreach or bulk submission activity with real authority.
+- While indexing is immature, use a few legitimate discovery links in parallel; do not confuse sent outreach with real authority.
 
 ## Source-of-truth map
 
@@ -107,7 +105,10 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 |---|---|
 | Current factual state | `PROJECT_CONTEXT.md` checkpoint |
 | Whole-project stage / task priority | `docs/MASTER_PLAN.md` |
-| Phone Number Lifecycle product/lifecycle roadmap | `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` |
+| Current Phone product-reset tasks | `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` |
+| Phone product/user-facing contract | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
+| Phone route research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
+| Phone lifecycle/reminder technical history | `docs/PHONE_NUMBER_LIFECYCLE_PRODUCT_PLAN.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Outreach / authority / AI-discovery actions and follow-ups | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
 | Ordered AI-native retrieval integration tasks | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` |
@@ -115,12 +116,13 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | Code/deployment truth | GitHub `main` + verified production |
 | New keyword candidates | VPS `/var/lib/aineedhelp-radar/latest.md` |
 | Google indexing/search performance | GSC Wizard / Google Search Console |
-| Site traffic/engagement | GA4 via GSC Wizard; connected as of 2026-09-13, with useful reporting beginning after data settles |
-| AI-assistant referral traffic | GSC Wizard `get_ga4_llm_traffic` / GA4 |
-| Bing indexing/feed and AI citation state | Bing Webmaster Tools via GSC Wizard where exposed; Bing AI Performance in Bing Webmaster for AI citations |
-| Google generative-AI visibility | Google Search Console generative-AI performance reports when available for the property |
+| Site traffic/engagement | GA4 via GSC Wizard |
+| AI-assistant referral traffic | GSC Wizard / GA4 |
+| Bing indexing/AI citation state | Bing Webmaster Tools via GSC Wizard where exposed |
+| Google generative-AI visibility | Google Search Console reports when available |
 | Keyword metrics when available | Ubersuggest |
-| Changing provider rules | Official provider documentation |
+| Phone operational reality | Current independent community/user reports, tutorials, support interactions shared by users, success/failure incidents and route history |
+| Public Phone price/product metadata | Operator/public purchase pages when useful for a concrete cost/purchase field |
 | User pain / repeat questions | Public discussions such as Reddit/HN/forums |
 
 Historical AI-agent/MCP strategy documents are not current planning authority. Preserve them only as history; they must not override the current durable sources above.
