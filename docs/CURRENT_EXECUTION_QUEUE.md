@@ -4,6 +4,18 @@ Last updated: 2026-09-18
 
 This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
+## Current decision
+
+The Phone workstream has entered a **product reset** after a user-facing review on 2026-09-18.
+
+The existing public Phone page drifted from the intended job into a questionnaire/research-manual experience. The next Phone task is therefore **not another carrier audit and not an incremental UI patch**.
+
+The durable reset checklist is:
+
+- `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`
+
+Until that reset is accepted and implemented, route research remains an input, not the project milestone.
+
 ## Just completed
 
 - **Q-001 Phone verification-continuity validation:** DONE via PR #81; verdict remains provisional **NARROW**, inside the existing Phone canonical only.
@@ -11,12 +23,9 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-009 Homepage direct-help positioning:** SHIPPED / MEASURING via PR #84/#85/#87; `AI stopped? Start here.` + `home_job_select` live.
 - **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
-- **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
-- **Q-013 current-route discrepancy pass:** DONE 2026-09-18 for giffgaff, Tello, Lebara UK, Sakura, Ultra PayGo and H2O PayGo. Only Sakura required an immediate production correction; PR #108 is live and verified. PR #109 closed the documentation pass.
-- **Q-013 AIS Thailand bounded audit:** DONE 2026-09-18 / HOLD FROM PRODUCTION. The `49B / 365-day` support-assisted retention primitive has high-confidence current evidence. A current March 2026 user report plus AIS's current public maximum-validity rule clarify the semantics: this is not a stackable `+365 days` add-on; it extends/sets validity only within the prepaid maximum of 365 days. Annual renewal remains plausible, but multi-year pre-stacking is not supported. The full Trip-origin route remains unresolved because the current Trip product says eKYC may be completed abroad but requires Thailand use shortly afterward, while community reports describe support-assisted overseas conversion. AIS also documents China as a Wi-Fi Calling legal/VoIP exception. Do not add AIS until the acquisition/account-class/Thailand-presence boundary is independently resolved.
-- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads still contain only the Sep 13 sent messages; no independently verified public link/citation was found. Do not resend yet; recheck Sep 20.
-
-Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
+- **Q-013 community-first Phone methodology reset:** DONE as a research-method correction. Current-route review covered giffgaff, Tello, Lebara UK, Sakura, Ultra PayGo and H2O PayGo; Sakura received the only immediate production correction. AIS remains HOLD.
+- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. Recheck Sep 20.
+- **Phone UI patch PR #112:** CLOSED / NOT MERGED. Do not revive it.
 
 ## Current measurement facts
 
@@ -33,82 +42,126 @@ Last checked on 2026-09-18:
 
 At the start of the next session, after mandatory fact-source reading:
 
-1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** immediately before speculative Phone production changes.
-2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check from the authority ledger + original Gmail threads before sending any follow-up or batch 2.
-3. Otherwise continue **Q-013** with the **RedPocket US annual-route audit**. AIS is a bounded HOLD and should not absorb more work without new evidence that resolves the specific activation/account-class boundary.
+1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** before Phone production implementation.
+2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check before sending any follow-up or batch 2.
+3. Otherwise execute **Q-014 Phone Radar product reset** below.
 
-## Q-013 — Phone Radar route/evidence audit
+Do **not** automatically continue RedPocket, AIS or another carrier audit merely because the measurement triggers have not fired.
 
-Status: **ACTIVE — HIGHEST PHONE RESEARCH PRIORITY**
+## Q-014 — Phone Radar product reset
 
-Mandatory method docs, in order:
+Status: **ACTIVE — HIGHEST ELIGIBLE PHONE TASK**
 
-1. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
-2. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
-3. `docs/PHONE_HIDDEN_ROUTE_AUDIT_2026-09-17.md`
+Authoritative checklist:
 
-Governing rule:
+1. `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`
+2. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
+3. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
 
-> Community and real-user operations discover the route. Reproduction determines whether it is real/useful. Direct carrier support/app/account artifacts are first-party operational evidence. Public carrier/regulator material checks hard constraints/conflicts and stable mechanics; public marketing visibility is not the discovery/admission/ranking gate.
+### Root correction
 
-Do not return to an official-plan-directory model.
+Phone Radar is a tool for helping a user **find, compare, open and keep a useful phone number**.
 
-### Current audit findings
+Internal research is backstage. The normal page must not require the user to understand evidence classes, source reconciliation, carrier research notes or the site's research methodology.
 
-- **giffgaff UK — reviewed:** keep current long-term-overseas penalty/contextual warning; treat 2026 evidence as elevated/conflicting risk, not guaranteed shutdown.
-- **Tello — reviewed:** keep US-first activation/port-in hard block; existing production already separates first-attachment risk from Wi-Fi Calling/Text continuity.
-- **Lebara UK — reviewed:** keep UK-activation block and dependable overseas Wi-Fi/SMS `unknown`.
-- **Sakura Mobile — corrected/live:** Monthly Voice+Data calls/SMS outside Japan are now represented as supported after activation; cellular data abroad unavailable; Wi-Fi Calling abroad remains unknown.
-- **Ultra Mobile PayGo — reviewed:** keep overseas Wi-Fi Calling `unknown` until PayGo-specific current reproduction/provisioning is strong enough.
-- **H2O PayGo — reviewed:** keep current no-roaming-on-PayGo caution.
-- **AIS Thailand — bounded HOLD:** `49B / 365-day` retention = high-confidence support-assisted mechanism, but current evidence now clarifies that it is constrained by AIS's prepaid maximum validity of 365 days rather than stacking another 365 days beyond existing validity. Annual renewal remains plausible; multi-year pre-stacking is not. The full Trip-origin acquisition/conversion route is still not production-ready because Thailand-presence/account-class and mainland-China Wi-Fi Calling evidence conflict.
-- **RedPocket US — NEXT:** community-reproduced annual acquisition and support-assisted eSIM reissue; needs current seller/channel, total cost, activation geography, overseas SMS/Wi-Fi Calling, eSIM replacement and recycled-number-history audit.
-- Other monitored candidates: ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
+Community reality is the operational dataset: recent first-hand setup reports, SMS/OTP outcomes, keep-alive methods, failures, complaints, reversals, number recovery, support outcomes and current tutorials.
 
-### RedPocket next-step checklist
+Public carrier pages are not a gate that validates whether a reproduced route is real. Missing public documentation must not automatically create a user-facing `unknown` state. Public price/product metadata may still be collected when useful, but it does not override real-world operating evidence.
 
-1. Identify the exact current annual product/seller/channel; separate marketplace annual routes from ordinary RedPocket monthly plans.
-2. Verify total acquisition/activation/renewal cost and payment/account restrictions.
-3. Verify KYC/address/residency and first activation/geography requirements.
-4. Search for current independent success plus refusal/failure cases, especially eSIM QR/reissue and anti-fraud/account-lock events.
-5. Verify overseas SMS/OTP, Wi-Fi Calling and roaming reality for the exact annual route; do not inherit generic RedPocket feature claims blindly.
-6. Record eSIM/device-transfer and same-number replacement/recovery behavior.
-7. Treat recycled-number reputation/history as a separate operational risk; do not imply a newly issued number is clean for every third-party service.
-8. Admit to production only if the route is materially different from existing options and the current end-to-end workflow is reproducible enough to maintain.
+### Q-014A — Freeze the wrong loop
 
-### AIS revisit trigger
+- Pause provider-by-provider documentation completion as the default task.
+- Pause RedPocket/AIS expansion unless it directly supports the redesigned decision surface.
+- Do not incrementally patch the current questionnaire/manual UI.
+- Keep one Phone canonical.
 
-The 2026-09-18 validity-semantics revisit is complete: a current March 2026 user report materially clarified that `49B / 365-day` does not stack another full year beyond existing validity, consistent with AIS's public 365-day prepaid maximum. Do not keep polishing AIS.
+### Q-014B — Define the user-facing card contract
 
-Reopen only when one of these appears:
+Before coding, define a route card around the user's actual decision:
 
-- a current independent reproduction that explicitly states whether Trip product ID `44775420` can be converted/retained without entering Thailand after eKYC;
-- direct AIS support/app/account evidence defining the post-conversion account class and 49B eligibility for that origin product;
-- a newer refusal/failure that materially contradicts the now-bounded retention conclusion or changes the acquisition/account-class boundary.
+- route/provider;
+- number country/type;
+- recent SMS/OTP reliability signal;
+- real yearly keep-alive cost;
+- setup difficulty;
+- remote setup/location practicality;
+- current stability/risk state;
+- eSIM/physical SIM where relevant;
+- freshness/status signal;
+- `How to open`;
+- `Get / Buy`.
 
-### Phone Radar decision fields
+No fake numeric SMS success rate. No arbitrary Phone risk score.
 
-Capture enough data to filter quickly by:
+### Q-014C — Define the detail/tutorial contract
 
-- real acquisition + first-top-up + recurring + yearly keep-alive cost;
-- passport/KYC/address/residency requirements;
-- local presence / first home-network attachment requirement;
-- customer-service/email/chat/app/manual steps;
-- payment restrictions;
-- physical SIM/eSIM/device/transfer requirements;
-- mainland-China purchase/activation/SMS/Wi-Fi Calling practicality;
-- same-number replacement/port/recovery/recycling behavior;
-- last successful reproduction, last failure/refusal, and confidence/freshness.
+The detail layer should answer only what the user needs to execute the route:
 
-Do not reduce setup difficulty to a label without showing why.
+1. what to buy;
+2. what to prepare;
+3. exact opening steps;
+4. how to receive SMS/OTP;
+5. how to keep the number alive;
+6. main current pitfall;
+7. recovery/number-continuity path;
+8. purchase link;
+9. useful current tutorial/video/community link when available.
 
-### Stop / reject conditions
+Research provenance remains optional supporting detail, never the default reading path.
 
-Reject instructions that depend on forged KYC, stolen identities, deceptive support stories, unauthorized access, security bypass or prohibited geography evasion. Downgrade routes when evidence is copied/circular, stale, agent-specific without replication, or contradicted by newer failures.
+### Q-014D — Redesign the internal data model around outcomes
 
-### Production gate
+Make real-world events first-class data:
 
-Keep `/tools/phone-number-survival-guide/` as the single Phone canonical. No provider/country doorway pages. No batch carrier additions. Production may stay stable during the audit, except when an existing claim is clearly wrong and delaying a small correction would materially mislead users.
+- setup success/failure;
+- SMS/OTP success/failure;
+- keep-alive success;
+- number loss/recovery;
+- refund/restoration/support resolution;
+- cost observation;
+- procedure/tutorial observation;
+- route status over time.
+
+This must be able to represent a route that was stable, degraded, triggered complaints, then recovered.
+
+### Q-014E — Reclassify existing data
+
+Separate current Phone fields into:
+
+- user-facing decision data;
+- backstage research data;
+- obsolete fields created by the old documentation-first mindset.
+
+Revisit `unknown` states that exist only because a public carrier page did not describe the behavior.
+
+### Q-014F — Define the visual decision model before implementation
+
+Create a product specification/wireframe for the existing Phone canonical with these constraints:
+
+- concrete routes visible without completing a questionnaire;
+- filters refine rather than gate access;
+- route, SMS/OTP signal, yearly cost, setup difficulty and stability/risk dominate hierarchy;
+- information density is balanced: no oversized controls and no cramped data wall;
+- evidence/source detail is secondary/on-demand;
+- mobile hierarchy is designed explicitly.
+
+**Stop condition:** no production implementation until this interaction model is reviewed and accepted.
+
+### Q-014G — Implement only after explicit authorization
+
+When authorized, use fresh branch/worktree → tests → PR → CI/Eval/Vercel Preview → merge → production verify. Do not bulk-add providers as part of the redesign.
+
+## Q-013 — Phone route research
+
+Status: **HOLD AS DEFAULT NEXT ACTION**
+
+Existing research remains useful input. It is not discarded.
+
+- AIS Thailand: HOLD pending genuinely new evidence; do not keep polishing it.
+- RedPocket US: candidate only; no automatic next-step audit while Q-014 is active.
+- Other monitored candidates remain candidates, not permission to expand the catalog.
+
+When route research resumes, organize it around user outcomes: recent setup success, SMS/OTP success/failure, current keep-alive cost, recovery/reissue, complaints, support outcomes and current tutorials.
 
 ## Q-003 — First real Phone post-release measurement
 
@@ -116,15 +169,13 @@ Status: **WAITING ON DATA TRIGGER — rechecked 2026-09-18**
 
 Trigger: GSC `settledThrough >= 2026-09-16`.
 
-Latest check: GSC still reports `settledThrough=2026-09-14`, so the trigger has not fired.
-
 When triggered:
 
 1. inspect Phone indexing/last crawl;
 2. inspect impressions/queries/clicks/CTR/average position;
-3. inspect GA4 Phone landing/session and available `phone_route_result`, reminder/export and repeat/direct behavior;
-4. compare with verification-continuity evidence;
-5. record exactly one **KEEP / ADJUST / NARROW** decision in GitHub before any Phone production repositioning.
+3. inspect GA4 Phone landing/session and available Phone interactions;
+4. use the data to inform Q-014, not to restore the old questionnaire/manual direction;
+5. record the resulting product decision in GitHub.
 
 Do not churn indexing submissions.
 
@@ -132,15 +183,7 @@ Do not churn indexing submissions.
 
 Status: **CHECKED 2026-09-18 — NO RESPONSE / NO VERIFIED LINK; RECHECK 2026-09-20**
 
-Sep 18 result:
-
-1. original Gmail threads for hsmart.dev, Continuum Code and Drew Bredvick were read;
-2. each thread still contains only the Sep 13 sent message;
-3. independent public web checks found no verified link/citation from those three targets;
-4. classify all three as `NO RESPONSE` as of this check;
-5. do not resend on the first day of the window; recheck Sep 20, then decide whether exactly one tailored follow-up or a stronger batch-2 target is justified.
-
-Do not increase volume because round one is quiet.
+Do not resend early or increase volume because round one is quiet.
 
 ## Q-004 — Cursor CTR readout
 
@@ -148,34 +191,25 @@ Status: **MEASURING**
 
 Trigger: roughly 300–500 additional post-change impressions, unless an obvious defect appears.
 
-Then compare clicks/CTR/position/query mix. Do not title-churn or create another Cursor URL before the sample exists.
-
 ## Q-010 — Distribution readout
 
 Status: **MEASURING**
 
-Published bounded tests:
-
-- Claude Reset on Threads.
-- Cursor Reset on Mastodon `@mini24`.
-
-Keep social/referral separate from Google organic. Do not mass cross-post. Current Reddit/Bluesky account identities are not fit for this project. If mature results are weak and exactly one additional distribution test is justified, X is the next high-fit text candidate before DEV.to.
+Keep social/referral separate from Google organic. Do not mass cross-post.
 
 ## Q-006 / Q-007 — Indexing + Phone watcher monitoring
 
 Status: **EVENT-DRIVEN**
 
 - Keep the existing index tracker cadence; no resubmission churn.
-- Community/support/app evidence identifies routes/failure patterns first.
-- Official/regulator evidence checks conflicts/hard constraints.
-- Watcher output creates a review task, never an automatic production rewrite.
+- Phone watcher/community output creates review inputs, never automatic production rewrites.
 - Trial observer workload stays frozen.
 
 ## Q-008 — AI retrieval blockers
 
 Status: **HOLD / BLOCKED**
 
-Follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` in order. Tavily quota and GitHub metadata-write blockers remain blockers; do not pay/bypass/invent results.
+Follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` in order. Do not bypass provider blockers or invent results.
 
 ## Anti-scope guard
 
@@ -188,9 +222,9 @@ Do **not** create:
 - new account/email/SMS backends;
 - new workloads on the resource-tight trial observer;
 - paid SEO/data dependencies without approval;
-- repeated Cursor title or homepage rewrites from immature data;
-- mass community posting, generic link drops or duplicated outreach.
+- mass community posting or duplicated outreach;
+- another Phone production redesign before Q-014F is accepted.
 
 ## Execution rule
 
-Execute the highest-priority **eligible** action, verify it, record result/blocker/next trigger, then advance. If all remaining tasks are genuinely waiting/blocked, do bounded non-destructive research/preparation/monitoring rather than manufacturing production work.
+Execute the highest-priority eligible action, verify it, record result/blocker/next trigger, then advance. For Phone, Q-014 product definition and interaction design now precede further implementation or provider expansion.
