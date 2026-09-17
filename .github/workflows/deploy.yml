@@ -1,18 +1,9 @@
-name: Deploy to Render
+# Historical Render deployment helper from the pre-tunnel backend path.
+# Automatic main-push deployment was retired on 2026-09-17 because current Vercel API rewrites target
+# api-tunnel.aineedhelpfromotherai.com. Keep manual dispatch only as an explicit legacy fallback.
+name: Historical Render Deploy
+
 on:
-  push:
-    branches: [main]
-    paths:
-      - "Dockerfile"
-      - "app.js"
-      - "server.js"
-      - "package.json"
-      - "package-lock.json"
-      - "api-handlers/**"
-      - "data/**"
-      - "lib/**"
-      - "mcp/**"
-      - "public/**"
   workflow_dispatch:
 
 concurrency:
