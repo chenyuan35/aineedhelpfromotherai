@@ -2,6 +2,14 @@
 
 This is the default execution loop for `aineedhelpfromotherai.com`.
 
+## Task-list-first execution cadence
+
+Before a non-trivial work round, create a bounded checklist from the current GitHub facts and execution queue. The checklist should state the intended actions, verification steps, blockers/triggers and stop conditions.
+
+After the checklist exists, execute all eligible items continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
+
+At least once per project workday, append a dated entry to the Notion page `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Notion journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.
+
 ## 0. Resume without rescanning
 
 At the start of a new session, read `AGENTS.md`, then the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md`, then `docs/MASTER_PLAN.md`, then this workflow. Do not perform a full repository/VPS/deployment audit unless the current task needs it or the checkpoint is stale/contradictory.

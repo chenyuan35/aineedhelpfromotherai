@@ -76,6 +76,17 @@ Status: **DONE**
 
 Durable detail: `docs/HISTORICAL_AUDIT_2026-09-17.md`.
 
+### Q-012 — Task-list-first + daily Notion journal workflow
+
+Status: **DONE**
+
+- User-established durable cadence: every non-trivial work round starts from a bounded task checklist, then eligible items are executed continuously instead of waiting for item-by-item confirmation.
+- Created the Notion page `aineedhelpfromotherai — Daily Project Journal` and wrote the 2026-09-17 entry with actual completed work, validation evidence, blockers and next triggers.
+- Updated the Notion Project Operating Skill and GitHub workflow/plugin docs so the journal remains a human-readable traceability layer, never a competing source of truth.
+- Canonical project state remains GitHub `main` plus verified production.
+
+Durable detail: `docs/DAILY_NOTION_JOURNAL.md`.
+
 ## Current measurement facts
 
 As checked on 2026-09-17:

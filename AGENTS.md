@@ -11,6 +11,8 @@ Before making changes:
 
 `docs/CURRENT_EXECUTION_QUEUE.md` is an execution aid, not a competing source of truth. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts, project phase, priorities and exit gates. If the queue is stale or conflicts with those sources or verified production, update the queue before acting.
 
+Execution cadence: before any non-trivial work round, form a bounded task checklist. Then execute every eligible item continuously instead of waiting for item-by-item confirmation unless authorization, irreversible risk, or a documented blocker requires a stop. On each project workday, append the actual checklist/results/verification/blockers/next trigger to the Notion page `aineedhelpfromotherai — Daily Project Journal` as a human-readable diary. GitHub `main` plus verified production remains authoritative.
+
 Core rule: optimize for organic traffic, indexing, CTR, repeat utility, page speed, and sustainable AdSense revenue. Prefer useful browser-only tools with real search demand and negligible per-user cost.
 
 Interpretation rule: treat rough ideas, copied prompts, screenshots, competitor examples, and “for reference” material as signals to analyze, not automatic authorization to build or change production. Convert them into product judgment—problem, stage fit, alternatives, cost/maintenance/risk, and the smallest useful validation—before acting. Ask only when missing information would materially change direction, risk, cost, or an irreversible action.
