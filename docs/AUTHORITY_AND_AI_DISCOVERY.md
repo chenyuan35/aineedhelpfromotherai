@@ -29,7 +29,7 @@ Current outcome: no reply/citation has been verified yet. Do not count sent emai
 
 | Date | Channel | Page | Action | Status | Measurement |
 |---|---|---|---|---|---|
-| 2026-09-15 | Threads via Metricool | Cursor usage reset | Published a concise problem-first post explaining the browser-only reset countdown and usage-pacing utility, with a direct link to the tool | PUBLISHED | Treat resulting Threads/referral visits separately from Google organic; check GA4 referral/direct behavior after data settles |
+| 2026-09-15 | Threads via Metricool | Cursor usage reset | Published a concise problem-first post explaining the browser-only reset countdown and usage-pacing utility, with a direct link to the tool | PUBLISHED / MEASURED BASELINE | Metricool readout on 2026-09-17: 23 views, 0 likes/replies/reposts/quotes/shares, 0.0 engagement. GA4 page-path check for 2026-09-15 through 2026-09-17 remains 0 sessions / 0 active users. Treat this as a weak distribution baseline, not an SEO verdict. |
 | 2026-09-17 | Threads via Metricool | Claude Code limit reset | Scheduled one bounded problem-first post explaining that the 5-hour session reset and weekly reset are separate and linking to the browser-only dual-countdown tracker | SCHEDULED / AUTO-PUBLISH — 19:00 Asia/Shanghai | Keep this as a single Q-010 Reset distribution test; measure Threads/referral behavior separately from Google organic and do not mass-post variants |
 
 ## Second-batch candidate research
@@ -156,4 +156,5 @@ Current ordered AIR status:
 - 2026-09-13: Attempted the first Tavily baseline. The provider blocked execution at its plan usage limit (HTTP 432), so AIR-1 is recorded as blocked rather than pretending a search result exists.
 - 2026-09-13: Researched a second AIR-4 outreach candidate batch (Learn Cursor, explainx.ai, QuotaMeter and Cursor Usage Tracker) and verified no prior Gmail correspondence on the public contact paths found. No new outreach was sent because the first round is still inside its 5–7 day response window.
 - 2026-09-15: Began a lightweight Threads distribution test for the Cursor reset tool via Metricool. This is a referral/distribution experiment and must not be counted as Google organic success.
+- 2026-09-17: First Cursor Threads readout recorded 23 views, no visible interactions and no GA4 page sessions yet. Keep it as the weak baseline for comparing the bounded Claude reset distribution test; do not respond by increasing posting volume.
 - 2026-09-17: Q-010 selected Reset as the first contextual-distribution cohort. Scheduled one Claude Code reset post for 19:00 Asia/Shanghai through Metricool; keep it as a single bounded referral test rather than creating repeated variants or forum link drops.
