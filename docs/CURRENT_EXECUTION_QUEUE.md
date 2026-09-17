@@ -76,6 +76,44 @@ As checked on 2026-09-17:
 
 ## Ordered next actions
 
+### Q-010 — Wedge / Demand Validation Sprint
+
+Status: **NEXT ELIGIBLE / NON-DESTRUCTIVE**
+
+Purpose:
+
+- increase learning velocity while GSC/GA4 measurement triggers mature;
+- identify which existing surface most reliably converts a real external problem into meaningful product use;
+- test **Reset / Access / Reliability** without creating a new feature, URL, provider family, backend, or paid dependency.
+
+Decision rule:
+
+> Prefer the action that reduces the largest important uncertainty with the least time, recurring cost, maintenance burden and irreversible risk.
+
+Detailed session audit and rationale: `docs/SESSION_HANDOFF_2026-09-17.md`.
+
+First pass, in this order:
+
+1. Read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before any external distribution action.
+2. Find a bounded set of current high-intent contexts for three cohorts:
+   - Reset: Cursor / Claude / AI usage-limit or reset questions.
+   - Access: AI account phone verification, durable-number, roaming/SMS, keep-alive or old-number access questions.
+   - Reliability: relay/prepay/dependency-risk discussions where the existing Exit Risk checker directly applies.
+3. Classify each context by actual user job, recency, activity, fit with an existing page, and whether a helpful contribution can stand on its own without a link.
+4. Prefer a few high-fit contexts over random traffic or mass posting.
+5. Only post/share when the existing page genuinely solves the discussion; no promotional link drops, fake engagement, paid links, or spam.
+6. When an external action is actually taken, record it immediately in `docs/AUTHORITY_AND_AI_DISCOVERY.md` and keep referral/social traffic separate from Google organic.
+7. Compare available `home_job_select`, `tool_open`, `tool_action`, Phone-specific events, GA4 referral/direct behavior and GSC query growth as data appears.
+
+Stop / narrow conditions:
+
+- one cohort is mostly bypass/temp-number/spam intent rather than the product's legitimate job;
+- a channel requires mass promotion to produce any signal;
+- the existing page does not genuinely solve the active discussion;
+- the experiment starts demanding a new product surface or large infrastructure change before demand is proven.
+
+This sprint does **not** override the existing Phone, Cursor, homepage, outreach-timing or AIR triggers below.
+
 ### Q-003 — Phone first real post-release measurement
 
 Status: **WAITING ON DATA TRIGGER**
@@ -173,7 +211,8 @@ Until an explicit trigger above fires, do **not** create:
 - new workloads on the resource-tight trial observer;
 - paid SEO/data dependencies;
 - repeated Cursor title changes without a post-change sample;
-- repeated homepage promise/CTA rewrites before real first-screen behavior exists.
+- repeated homepage promise/CTA rewrites before real first-screen behavior exists;
+- mass community posting, generic link drops, or duplicated outreach merely to manufacture traffic.
 
 ## Execution rule
 
