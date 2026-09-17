@@ -76,9 +76,13 @@ The discussion also generated concrete follow-up questions that map directly to 
 - whether the long-validity package is requested through customer service;
 - whether overseas Wi-Fi Calling and SMS/OTP reception require additional setup.
 
-Current first-party AIS pages reviewed on 2026-09-17 support several surrounding facts: AIS offers prepaid eSIM, publishes international roaming activation/use guidance, and documents Wi-Fi Calling use abroad. However, the specific community claim of a `THB 49 / 365 days` validity package was not found in the public indexed AIS pages checked in this work round. A second current community source also independently discussed the same 49-baht/365-day offer, which raises research priority but does not upgrade the claim to production evidence.
+Current first-party AIS pages reviewed on 2026-09-17 resolve several of those questions. AIS officially sells SIM2Fly in both eSIM and physical-SIM form, so a Trip purchase cannot be classified without the exact listing. SIM2Fly package durations such as 5/7/10 days are data-package validity windows tied to activation/first connection in an eligible destination, not evidence that the whole ownership-conversion flow must be completed inside that many days. Separately, AIS states that foreign TOURIST SIM users who continue beyond 60 days must reconfirm identity, and that a number registered to an individual must be activated within 60 days of registration or require identity verification again.
 
-Decision: record AIS Thailand as a high-value candidate route/evidence gap for the existing Phone canonical, but do not add it to the production catalog yet. Before any route addition, obtain a current first-party AIS source or another directly verifiable AIS artifact for the exact validity package and resolve the Trip offer / activation / number-continuity questions. This signal does not justify a Thailand-specific page.
+AIS also documents standard eSIM conversion/transfer. The process deactivates the previous SIM/eSIM and installs the transferred line on the new eSIM; AIS describes and displays it as transferring the existing phone number, so standard conversion/transfer preserves number continuity rather than issuing a different number. AIS also publishes international roaming activation/use guidance and Wi-Fi Calling use abroad.
+
+The remaining material evidence gap is the forum-reported `THB 49 / 365 days` validity package. That exact offer was not found in the public indexed AIS pages checked in this work round. A second current community source independently discussed the same 49-baht/365-day offer, which raises research priority but does not upgrade the claim to production evidence.
+
+Decision: record AIS Thailand as a high-value candidate route/evidence gap for the existing Phone canonical, but do not add it to the production catalog yet. Before any route addition, obtain a current first-party AIS source or another directly verifiable AIS artifact for the exact validity package and confirm the exact Trip listing/channel assumptions. This signal does not justify a Thailand-specific page.
 
 ## Interpretation rules
 
