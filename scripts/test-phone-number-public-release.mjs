@@ -21,10 +21,15 @@ assert.match(page, new RegExp(`<link rel="canonical" href="${canonical.replaceAl
 assert.match(page, /<meta name="robots" content="index,follow,max-image-preview:large">/);
 assert.doesNotMatch(page, /noindex/);
 assert.match(page, /Choose a number you can still control when you need it months from now\./);
+assert.match(page, /Phone Number Survival Guide · Choose, activate, keep it working/);
 assert.match(page, /Survival answer/);
 assert.match(page, /"@type":"FAQPage"/);
 assert.match(page, /phone_route_result/);
 assert.match(page, /source_path:'\/tools\/phone-number-survival-guide\/'/);
+assert.match(page, /Phone Radar action-first public view/);
+assert.match(page, /\.pn-wrap \.pn-hero \.pn-note\{display:none\}/);
+assert.match(page, /\.pn-wrap \.pn-card>\.pn-insights/);
+assert.match(page, /\.pn-wrap \.pn-card>\.pn-route-top\+\.pn-cap:has\(>\.pn-kv\)\{display:grid\}/);
 assert.equal((home.match(/\/tools\/phone-number-survival-guide\//g)||[]).length >= 1, true);
 assert.equal((tools.match(/\/tools\/phone-number-survival-guide\//g)||[]).length, 1);
 assert.equal((sitemap.match(new RegExp(canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))||[]).length, 1);
