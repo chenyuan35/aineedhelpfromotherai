@@ -13,7 +13,7 @@ This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT
 - **Q-012 task-list-first + Notion journal workflow:** DONE.
 - **Q-013 methodology reset:** PR #100 started community-first hidden-route research; PR #102 made it authoritative for **all** Phone route research; PR #103 added Tello/Lebara reality findings; PR #104 defined the **Phone Radar** product/fast-filter model.
 - **Q-013 current-route discrepancy pass:** DONE 2026-09-18 for giffgaff, Tello, Lebara UK, Sakura, Ultra PayGo and H2O PayGo. Only Sakura required an immediate production correction; PR #108 is live and verified. PR #109 closed the documentation pass.
-- **Q-013 AIS Thailand bounded audit:** DONE 2026-09-18 / HOLD FROM PRODUCTION. The `49B / 365-day` support-assisted retention primitive now has high-confidence current evidence and repeatability signals. The full Trip-origin route remains unresolved because the current Trip product says eKYC may be completed abroad but requires Thailand use shortly afterward, while community reports describe support-assisted overseas conversion. AIS also documents China as a Wi-Fi Calling legal/VoIP exception. Do not add AIS until the acquisition/account-class/Thailand-presence boundary is independently resolved.
+- **Q-013 AIS Thailand bounded audit:** DONE 2026-09-18 / HOLD FROM PRODUCTION. The `49B / 365-day` support-assisted retention primitive has high-confidence current evidence. A current March 2026 user report plus AIS's current public maximum-validity rule clarify the semantics: this is not a stackable `+365 days` add-on; it extends/sets validity only within the prepaid maximum of 365 days. Annual renewal remains plausible, but multi-year pre-stacking is not supported. The full Trip-origin route remains unresolved because the current Trip product says eKYC may be completed abroad but requires Thailand use shortly afterward, while community reports describe support-assisted overseas conversion. AIS also documents China as a Wi-Fi Calling legal/VoIP exception. Do not add AIS until the acquisition/account-class/Thailand-presence boundary is independently resolved.
 - **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. The original hsmart.dev, Continuum Code and Drew Bredvick Gmail threads still contain only the Sep 13 sent messages; no independently verified public link/citation was found. Do not resend yet; recheck Sep 20.
 
 Detailed transition note: `docs/HANDOFF_2026-09-17_PHONE_RADAR.md`.
@@ -61,7 +61,7 @@ Do not return to an official-plan-directory model.
 - **Sakura Mobile — corrected/live:** Monthly Voice+Data calls/SMS outside Japan are now represented as supported after activation; cellular data abroad unavailable; Wi-Fi Calling abroad remains unknown.
 - **Ultra Mobile PayGo — reviewed:** keep overseas Wi-Fi Calling `unknown` until PayGo-specific current reproduction/provisioning is strong enough.
 - **H2O PayGo — reviewed:** keep current no-roaming-on-PayGo caution.
-- **AIS Thailand — bounded HOLD:** `49B / 365-day` retention = high-confidence support-assisted mechanism; full Trip-origin acquisition/conversion route is not production-ready because Thailand-presence/account-class and mainland-China Wi-Fi Calling evidence conflict.
+- **AIS Thailand — bounded HOLD:** `49B / 365-day` retention = high-confidence support-assisted mechanism, but current evidence now clarifies that it is constrained by AIS's prepaid maximum validity of 365 days rather than stacking another 365 days beyond existing validity. Annual renewal remains plausible; multi-year pre-stacking is not. The full Trip-origin acquisition/conversion route is still not production-ready because Thailand-presence/account-class and mainland-China Wi-Fi Calling evidence conflict.
 - **RedPocket US — NEXT:** community-reproduced annual acquisition and support-assisted eSIM reissue; needs current seller/channel, total cost, activation geography, overseas SMS/Wi-Fi Calling, eSIM replacement and recycled-number-history audit.
 - Other monitored candidates: ClubSIM, HK-mobi/CSL, O2 Germany prepaid eSIM, Simyo NL prepaid eSIM, One NZ. These are not permission to bulk-expand the catalog.
 
@@ -78,11 +78,13 @@ Do not return to an official-plan-directory model.
 
 ### AIS revisit trigger
 
-Do not keep polishing AIS without new evidence. Reopen only when one of these appears:
+The 2026-09-18 validity-semantics revisit is complete: a current March 2026 user report materially clarified that `49B / 365-day` does not stack another full year beyond existing validity, consistent with AIS's public 365-day prepaid maximum. Do not keep polishing AIS.
+
+Reopen only when one of these appears:
 
 - a current independent reproduction that explicitly states whether Trip product ID `44775420` can be converted/retained without entering Thailand after eKYC;
 - direct AIS support/app/account evidence defining the post-conversion account class and 49B eligibility for that origin product;
-- a current refusal/failure that materially changes the 49B/365 retention conclusion.
+- a newer refusal/failure that materially contradicts the now-bounded retention conclusion or changes the acquisition/account-class boundary.
 
 ### Phone Radar decision fields
 
