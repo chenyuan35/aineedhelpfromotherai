@@ -1,11 +1,10 @@
-name: Hourly Drift Scan
+# Historical Failure Memory drift scan.
+# Hourly scheduling was retired on 2026-09-17 after the product pivot.
+# Keep manual dispatch only for historical maintenance/debugging.
+name: Historical Drift Scan
 
 on:
-  schedule:
-    # Runs at minute 5 of every hour
-    - cron: '5 * * * *'
   workflow_dispatch:
-    # Allow manual trigger
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -14,30 +13,30 @@ jobs:
   drift-scan:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
         env:
           NODE_ENV: production
-      
+
       - name: Run drift scan
         run: node scripts/drift-scan.js
         env:
           NODE_ENV: production
-      
+
       - name: Check for new alerts
         run: |
           if [ -f data/drift-alerts.jsonl ]; then
@@ -47,7 +46,7 @@ jobs:
             echo "drift_alerts_count=0" >> $GITHUB_OUTPUT
           fi
         id: alerts
-      
+
       - name: Commit drift-state.json if changed
         if: steps.alerts.outputs.drift_alerts_count != '0'
         run: |
@@ -62,5 +61,5 @@ jobs:
       - name: Notify on high-severity drifts (optional)
         if: steps.alerts.outputs.drift_alerts_count != '0'
         run: |
-          echo "⚠️ Drift scan detected ${{ steps.alerts.outputs.drift_alerts_count }} new high-severity drift alerts"
+          echo "Drift scan detected ${{ steps.alerts.outputs.drift_alerts_count }} new high-severity drift alerts"
           echo "Check the drift-alerts.jsonl file for details"
