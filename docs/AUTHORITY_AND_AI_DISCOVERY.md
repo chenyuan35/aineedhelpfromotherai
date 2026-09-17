@@ -1,6 +1,6 @@
 # Authority & AI Discovery Ledger
 
-Last updated: 2026-09-17
+Last updated: 2026-09-18
 
 This file is the durable execution log for external authority building, referral discovery, and AI-answer visibility work for `aineedhelpfromotherai.com`.
 
@@ -19,11 +19,11 @@ For AI-native search/retrieval integration, the ordered execution queue is `docs
 
 | Date | Target | Why relevant | Action | Status | Next check |
 |---|---|---|---|---|---|
-| 2026-09-13 | hsmart.dev | Publishes Cursor/Claude Code comparison material that discusses usage limits | Sent a personalized resource-suggestion email pointing to the Cursor reset page | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
-| 2026-09-13 | Continuum Code | Publishes Cursor usage-limit guidance | Sent a personalized resource-suggestion email explaining the official-source reset guidance and local countdown | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
-| 2026-09-13 | Drew Bredvick | Writes about AI coding tools, Cursor and AI usage/cost topics | Sent a personalized resource-suggestion email focused on the practical reset calculator and official-source depth | SENT | Check Gmail for reply or citation after 5–7 days; do not resend before then |
+| 2026-09-13 | hsmart.dev | Publishes Cursor/Claude Code comparison material that discusses usage limits | Sent a personalized resource-suggestion email pointing to the Cursor reset page | NO RESPONSE — checked 2026-09-18; no verified link/citation | Recheck original Gmail thread and public page on 2026-09-20 before deciding on a tailored follow-up |
+| 2026-09-13 | Continuum Code | Publishes Cursor usage-limit guidance | Sent a personalized resource-suggestion email explaining the official-source reset guidance and local countdown | NO RESPONSE — checked 2026-09-18; no verified link/citation | Recheck original Gmail thread and public page on 2026-09-20 before deciding on a tailored follow-up |
+| 2026-09-13 | Drew Bredvick | Writes about AI coding tools, Cursor and AI usage/cost topics | Sent a personalized resource-suggestion email focused on the practical reset calculator and official-source depth | NO RESPONSE — checked 2026-09-18; no verified link/citation | Recheck original Gmail thread and public page on 2026-09-20 before deciding on a tailored follow-up |
 
-Current outcome: no reply/citation has been verified yet. Do not count sent email as an earned link.
+Current outcome: first follow-up-window check completed on 2026-09-18. All three original Gmail threads still contain only the Sep 13 sent message, and an independent public web check found no verified link/citation. Do not resend on the first day of the 5–7 day window; recheck on Sep 20 before choosing a follow-up or batch 2.
 
 ## Distribution ledger
 
@@ -51,12 +51,12 @@ Researched on 2026-09-13 under AIR-4. These are candidates only; no message has 
 
 | Candidate | Relevant public surface | Why it is a fit | Current state |
 |---|---|---|---|
-| Learn Cursor | `learncursor.dev/learn/cursor-for-teams/cursor-usage-limits` | Dedicated, recently updated Cursor usage-limits guide covering the same user problem; a practical reset-date calculator could complement the explanatory guide | RESEARCHED — HOLD until the first-round 5–7 day response window is reached |
-| explainx.ai | `explainx.ai/blog/claude-codex-cursor-usage-limits-reset-july-2026` | Publishes current Cursor/Codex/Claude quota and reset coverage; the calculator provides an interactive utility alongside editorial coverage | RESEARCHED — HOLD until the first-round response window is reached |
+| Learn Cursor | `learncursor.dev/learn/cursor-for-teams/cursor-usage-limits` | Dedicated, recently updated Cursor usage-limits guide covering the same user problem; a practical reset-date calculator could complement the explanatory guide | RESEARCHED — HOLD until the Sep 20 second check of round-one threads |
+| explainx.ai | `explainx.ai/blog/claude-codex-cursor-usage-limits-reset-july-2026` | Publishes current Cursor/Codex/Claude quota and reset coverage; the calculator provides an interactive utility alongside editorial coverage | RESEARCHED — HOLD until the Sep 20 second check of round-one threads |
 | QuotaMeter | `quotameter.app/blog/understanding-ai-rate-limits` and `quotameter.app` | Tracks Cursor and other AI usage limits and publishes rate-limit education, making it directly adjacent to reset-date/usage planning | RESEARCHED — HOLD; consider only a genuinely complementary resource suggestion, not a generic link exchange |
 | Cursor Usage Tracker | `cursorusage.url2.at/support` | Free Cursor usage tracker focused on included limits, billing reset and on-demand spend; highly relevant but product-adjacent | RESEARCHED — HOLD; contact only if a clear complementary use case is identified |
 
-Do not contact this batch merely to increase volume. First inspect the original three Gmail threads after 5–7 days. If the first round has weak/no response, prefer the stronger resource/training targets and adjust the value proposition before sending a second batch.
+Do not contact this batch merely to increase volume. First inspect the original three Gmail threads again on Sep 20. If the first round remains weak/no response, prefer the stronger resource/training targets and adjust the value proposition before sending a second batch.
 
 ## Outreach execution rule
 
@@ -150,8 +150,8 @@ Current ordered AIR status:
 ## Next execution queue
 
 1. Keep AIR-1 blocked until Tavily quota permits a real run; do not fabricate results or alter billing without explicit approval.
-2. Continue AIR-4 through the existing small, relevant Cursor authority program; the second-batch candidate shortlist is researched, but hold new sends until the first-round 5–7 day response window is reached and the original Gmail threads are inspected.
-3. After 5–7 days, inspect replies from the first three outreach emails and record every outcome.
+2. Continue AIR-4 through the existing small, relevant Cursor authority program; round-one first check on Sep 18 found no replies or verified links, so hold new sends until the Sep 20 second check.
+3. On Sep 20, inspect the original three Gmail threads and independently recheck public links. If still quiet, choose between exactly one tailored follow-up to the strongest fit or a small stronger batch-2 test; do not do both automatically.
 4. Allow provider caches/indexes and external authority signals time to propagate; do not repeatedly rewrite discovery files.
 5. Run AIR-5 when propagation has occurred and Tavily can actually execute; compare discovery rank, extraction quality and cache freshness against the baseline.
 6. Use the result to advance AIR-6 and identify the actual failing stage before any new page optimization.
@@ -173,3 +173,4 @@ Current ordered AIR status:
 - 2026-09-17: Q-010 selected Reset as the first contextual-distribution cohort. Published the Claude Code reset Threads post at 19:00 Asia/Shanghai and kept it as a single bounded referral test rather than creating repeated variants or forum link drops.
 - 2026-09-17: Completed a read-only channel/account-fit inventory before broader distribution. Existing Reddit and Bluesky accounts are intentionally excluded because their current account identities do not fit this project. DEV Community and Mastodon are strong fits; Medium/Hashnode remain conditional on editorial fit; X remains the next high-fit text-channel candidate.
 - 2026-09-17: Published and publicly verified one Cursor Reset Mastodon post at `https://mastodon.social/@mini24/117286383729244067`. No engagement automation was run. Keep Mastodon referral results separate from Threads and Google organic.
+- 2026-09-18: First round-one follow-up-window check found no replies in the original three Gmail threads and no independently verified public link/citation. Classified all three as `NO RESPONSE` for this check, held all resends/new batch sends, and scheduled a second check for Sep 20.
