@@ -38,6 +38,7 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 - Q-014H production closure QA: **DONE.** The only verified defect was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`. Public Phone build audit, Eval Gate, Vercel deployment and production canonical load all passed.
 - Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand. Production `radar-view.json`, `Show 4 more routes` and Croatia filter were verified live.
 - Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest, so the next depth task is Data-family validation rather than another long-term number.
+- Q-013D2 Stellar China Data validation: **DONE / HOLD.** The current 100GB / 60-day products are real and cheap, but a Sep 9 first-hand buyer reports ordering the nonhkip / Singapore / China Unicom+Telecom route and receiving `JC091` / China Mobile identifiers instead. Route identity is not reproducible enough for production admission. See `docs/PHONE_DATA_ROUTE_VALIDATION_2026-09-18.md`.
 - Global route-pool breadth seed: DONE.
 - Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are now reusable infrastructure only; production frontend has not been switched.
 - PR #112: CLOSED / NOT MERGED; do not revive.
@@ -74,7 +75,8 @@ Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 - **ClubSIM Hong Kong:** HOLD. The older cheap keep-alive path changed; research the current route from scratch before admission.
 - **RedPocket US:** DEPRIORITIZED for now. Another US long-term route does not solve the current breadth gap.
 - **AIS support-assisted retention:** HOLD until starting state and reproducibility are clear.
-- **StellarSecurity / CMLink Data:** FRESH LEADS from Sep 18 community evidence. Validate exact provider/product/current package and real operating behavior before production admission.
+- **StellarSecurity China 100GB / 60 days:** HOLD after bounded validation. Current official pages expose two same-price €13.20 variants: `JC091` advertises China Mobile + Hong Kong egress; `PS30ZAQ7S` advertises China Unicom/Telecom + Singapore egress. A recent exact-product buyer reports receiving JC091 identifiers after ordering the nonhkip route, so do not publish a stable route until fulfillment mapping is reproduced.
+- **CMLink Data:** remains the next fresh Sep 18 lead. Validate one exact official/commercial route separately; do not publish third-party annual pricing as official commercial truth.
 
 ### What the release intentionally does not claim
 
@@ -112,7 +114,7 @@ Then read Phone-specific docs only if the next action requires them.
 Check GSC Wizard `settledThrough` for the Phone canonical.
 
 - If `settledThrough >= 2026-09-16`: execute Q-003 before another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to the Data-family validation task below.
+- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to the next bounded Data-family validation below.
 
 Latest check on 2026-09-18 still returns `settledThrough=2026-09-15`.
 
@@ -170,23 +172,42 @@ Current breadth by user job:
 
 Conclusion: the next route-depth batch should target **Data**, not another Long-term route.
 
-### Q-013D2 — NEXT ELIGIBLE DATA ROUTE VALIDATION if Q-003 is still waiting
+### Q-013D2 — STELLAR CHINA DATA VALIDATION CLOSED / HOLD
 
-Validate **at most one** concrete Data route before any production change.
+Status: **DONE / HOLD 2026-09-18.**
 
-Fresh Sep 18 lead set:
+Validated exactly one route family/product candidate: Stellar China 100GB / 60 days.
 
-- **StellarSecurity** — very recent NodeSeek first-hand report says its 100GB / ~€13.4 / 60-day product performed similarly to the author's local monthly SIM. Exact provider identity, purchase URL, coverage, install flow, reuse/recharge state and current package must be verified before admission.
-- **CMLink data route** — same author reports personal use with Singapore + Hong Kong IP and suggests it for light/long-duration or burst AI traffic. Separate official and third-party packages; do not publish third-party annual pricing as official commercial truth.
+Current official state:
+
+- both current 100GB / 60-day variants show **€13.20**;
+- `JC091`: China Mobile 5G + Hong Kong egress;
+- `PS30ZAQ7S` / nonhkip: China Unicom 5G + China Telecom 4G + Singapore egress;
+- both are data-only, support hotspot, advertise in-validity top-up, and start validity on first network connection.
+
+Operational evidence:
+
+- fresh NodeSeek personal-use report says Stellar works in mainland China at speed close to the author's local SIM, appeared to use China Mobile, had Hong Kong IP with some Singapore split behavior, and did not connect to 5G in that author's use;
+- a separate Sep 9 exact-product buyer reports ordering the nonhkip route but receiving `cmlink` / `JC091` identifiers and connecting to China Mobile; the provider had not resolved the route/configuration discrepancy in that report.
+
+Decision: **do not admit this route to production yet.** Exact network/egress fulfillment is material to the Data-family choice and is not reproducible enough.
+
+Research record: `docs/PHONE_DATA_ROUTE_VALIDATION_2026-09-18.md`.
+
+Revisit only after a fresh independent China report confirms ordered product → delivered package → registered network → egress, or provider clarification is followed by such a confirmation.
+
+### Q-013D3 — NEXT ELIGIBLE DATA VALIDATION if Q-003 is still waiting
+
+Validate **at most one exact CMLink Data route** in the next bounded research batch.
 
 Rules:
 
-- first-hand operation beats price tables;
-- price-only aggregations create leads, not production routes;
-- provider page supplies current price/package/coverage/purchase metadata only;
-- require an exact executable product, not a vague provider family;
-- capture current cost, allowance/validity, coverage, setup, reuse/recharge, number/SMS capability and meaningful real-world speed/throttling notes;
-- stop after one route reaches admission quality; otherwise record HOLD and do not manufacture a release.
+- distinguish CMLink official products from reseller/third-party CMLink-backed eSIMs;
+- require fresh first-hand mainland-China operating evidence for the exact route;
+- provider pages supply current price/package/coverage/purchase metadata only;
+- capture current cost, allowance/validity, activation geography restrictions, setup/APN/roaming, egress behavior, recharge/reuse, number/SMS capability and meaningful speed/throttling notes;
+- recent activation restrictions or route changes are first-class evidence;
+- stop after one exact route reaches admission quality; otherwise record HOLD and do not manufacture a release.
 
 ### Frontend foundation — HOLD from production cutover
 
@@ -245,4 +266,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, validate at most one concrete Data route. Production admission requires sufficient current operational evidence; a HOLD is a valid result.
+The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, validate at most one exact CMLink Data route under Q-013D3. Production admission requires sufficient current operational evidence; a HOLD is a valid result.
