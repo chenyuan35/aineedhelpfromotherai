@@ -6,7 +6,7 @@ Last updated: 2026-09-18
 
 ## Current decision
 
-Phone Radar product direction is now accepted and implementation is authorized.
+Phone Radar product direction is accepted and implementation is authorized.
 
 The old questionnaire/research-manual model is being replaced by:
 
@@ -15,6 +15,8 @@ The old questionnaire/research-manual model is being replaced by:
 - **one canonical URL:** `/tools/phone-number-survival-guide/`.
 
 The product must reduce user decision time. Research complexity stays backstage.
+
+The user has explicitly authorized continued implementation without waiting for item-by-item confirmation. Normal project safety gates remain mandatory.
 
 ## Just completed
 
@@ -26,7 +28,7 @@ The product must reduce user decision time. Research complexity stays backstage.
 - Q-012 task-list-first + Notion journal: DONE.
 - Q-013 Phone research-method correction: DONE.
 - Q-014A product root correction: DONE.
-- Q-014B card/information contract: DONE.
+- Q-014B user-facing contract: DONE.
 - Q-014C detail/tutorial contract: DONE.
 - Q-014F visual decision model: DONE / accepted.
 - Global route-pool breadth seed: DONE.
@@ -55,7 +57,7 @@ Authoritative docs:
 
 ### Q-014D — Outcome/event model
 
-ACTIVE. Add only the route-state/outcome fields needed to drive the new visual layer and full guide. Do not create a carrier encyclopedia schema.
+ACTIVE. Add only route-state/outcome fields needed to drive the new visual layer and full guide. Do not create a carrier-encyclopedia schema.
 
 ### Q-014E — Reclassify existing data
 
@@ -71,7 +73,7 @@ Provider pages are used by default for current price/package/promotion/stock/pur
 
 NEXT / AUTHORIZED.
 
-Implementation requirements:
+Requirements:
 
 - three top-level families: Long-term SMS/OTP · Data SIM/eSIM · Temporary SMS;
 - default layer is a compact visual shortlist/dashboard;
@@ -79,7 +81,7 @@ Implementation requirements:
 - full guide opens only when requested;
 - metrics change by family;
 - small shortlist first, optional filters/sort second;
-- desktop and mobile both prioritize decision speed;
+- desktop/mobile both prioritize decision speed;
 - one canonical; no country/provider doorway pages;
 - no fake OTP percentages or arbitrary Phone risk score;
 - no sensitive user data collection.
@@ -90,7 +92,7 @@ Use fresh implementation branch/worktree → local/build tests → PR → CI/Eva
 
 After implementation:
 
-1. verify the first screen exposes real routes immediately;
+1. verify first screen exposes real routes immediately;
 2. verify each family has appropriate metrics;
 3. verify full-guide execution flow;
 4. verify purchase/outbound actions;
@@ -111,7 +113,7 @@ When triggered, inspect indexing, queries/impressions/clicks/CTR/position and GA
 
 Status: **HOLD AS DEFAULT TASK UNTIL RESET SHIPS**
 
-AIS/RedPocket and other candidates are inputs, not milestones. After the reset ships, resume broad global route discovery by user value rather than country sequence.
+AIS/RedPocket and other candidates are inputs, not milestones. After reset ships, resume broad global route discovery by user value rather than country sequence.
 
 ## Q-005 — Authority
 
