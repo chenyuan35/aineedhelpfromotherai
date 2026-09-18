@@ -1,0 +1,52 @@
+---
+export interface Props {
+  total: number;
+}
+const { total } = Astro.props;
+---
+
+<div class="tool-search-wrap" role="search">
+  <label class="sr-only" for="tool-directory-search">Search tools</label>
+  <input
+    id="tool-directory-search"
+    class="tool-search-input"
+    type="search"
+    autocomplete="off"
+    placeholder="Search Cursor reset, eSIM, relay risk, percentage…"
+    data-tool-search
+  />
+  <span class="tool-search-count" data-tool-count>{total}</span>
+</div>
+<p class="tool-empty" data-tool-empty hidden>No matching tool. Try a provider, task or category name.</p>
+
+<script>
+  const input = document.querySelector('[data-tool-search]');
+  const count = document.querySelector('[data-tool-count]');
+  const empty = document.querySelector('[data-tool-empty]');
+  const cards = Array.from(document.querySelectorAll('[data-tool-card]'));
+  const categories = Array.from(document.querySelectorAll('[data-tool-category]'));
+
+  const applyFilter = () => {
+    if (!(input instanceof HTMLInputElement)) return;
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    cards.forEach((card) => {
+      if (!(card instanceof HTMLElement)) return;
+      const matches = !query || (card.dataset.search || '').includes(query);
+      card.hidden = !matches;
+      if (matches) visible += 1;
+    });
+
+    categories.forEach((category) => {
+      if (!(category instanceof HTMLElement)) return;
+      const hasVisibleCard = Array.from(category.querySelectorAll('[data-tool-card]')).some((card) => !card.hidden);
+      category.hidden = !hasVisibleCard;
+    });
+
+    if (count) count.textContent = String(visible);
+    if (empty instanceof HTMLElement) empty.hidden = visible !== 0;
+  };
+
+  input?.addEventListener('input', applyFilter);
+</script>
