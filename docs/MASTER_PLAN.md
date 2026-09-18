@@ -24,82 +24,44 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 ## Current sprint — Phone Radar implementation + indexing
 
 1. **DONE — Product reset root correction.** The questionnaire/research-manual direction is rejected.
-2. **DONE — Product structure.** Phone Radar has three route families:
-   - Long-term SMS / OTP numbers;
-   - Data SIM / eSIM;
-   - Temporary SMS platforms.
-3. **DONE — Experience structure.** Two layers:
-   - visual dashboard / small shortlist by default;
-   - detailed operational guide only when the user asks for it.
-4. **DONE — Global research direction.** Country is a filter/tag, not a research sequence. First global breadth seed spans East Asia, Southeast Asia, Europe, Oceania and North America.
-5. **DONE — Source-role correction.** Community/user outcomes drive operational reality. Operator/provider pages are used by default for current price, package, promotion, stock and purchase metadata only.
-6. **ACTIVE — Q-014D outcome/event data model.** Reuse current data and add only fields needed to drive dashboard/guide decisions. Avoid carrier-encyclopedia schema growth.
+2. **DONE — Product structure.** Phone Radar has three route families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS.
+3. **DONE — Experience structure.** Visual dashboard / small shortlist by default; detailed operational guide only when requested.
+4. **DONE — Global research direction.** Country is a filter/tag, not a research sequence.
+5. **DONE — Source-role correction.** Community/user outcomes drive operational reality. Operator/provider pages serve current price/package/promotion/stock/purchase metadata only by default.
+6. **ACTIVE — Q-014D outcome/event data model.** Reuse current data and add only fields needed to drive dashboard/guide decisions.
 7. **ACTIVE — Q-014E data reclassification.** Separate frontstage decision fields from backstage research fields and retire documentation-first `unknown` logic.
 8. **NEXT / AUTHORIZED — Q-014G implementation.** Replace questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical. Continue without item-by-item confirmation.
 9. **NEXT — Q-014H validation/closure.** Desktop/mobile hierarchy, full-guide flow, outbound actions, analytics events, build/route checks, Preview/CI, merge and production verification.
-10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; use settled behavior to improve the accepted design, never to restore the old questionnaire.
-11. **HOLD — Q-013 broad route expansion.** Resume after reset ships. New routes are selected by user value, not country quotas.
-12. **MEASURING — Cursor/homepage/reset distribution.** No premature copy/title/social churn.
-13. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before any follow-up or batch 2.
+10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; use settled behavior to improve the accepted design.
+11. **HOLD — Q-013 broad route expansion.** Resume after reset ships; choose new routes by user value, not country quotas.
+12. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
+13. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
 14. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
 15. **Relay — monitor.** Preserve methodology and accumulate real history.
 
 ## Phone Radar implementation contract
 
-Canonical remains:
+Canonical remains `/tools/phone-number-survival-guide/`.
 
-`/tools/phone-number-survival-guide/`
+### Visual dashboard
 
-### First layer: visual dashboard
+Show the three families immediately and real options without a questionnaire.
 
-The user must immediately see the three route families and real route options. No mandatory questionnaire.
+Long-term SMS/OTP: recent SMS/OTP signal, yearly keep-alive cost, setup effort, remote practicality, stability/continuity.
 
-Long-term SMS/OTP comparison emphasizes:
+Data SIM/eSIM: current data price/value, allowance/validity, coverage, setup friction, reuse/recharge, whether a real number is included.
 
-- recent SMS/OTP signal;
-- yearly keep-alive cost;
-- setup effort;
-- remote practicality;
-- stability/continuity.
+Temporary SMS: recent success signal, current price, country/service coverage, private/shared/reused state, privacy/reuse risk, availability.
 
-Data SIM/eSIM comparison emphasizes:
+Default to a small useful shortlist, not a wall of equal-weight choices.
 
-- current data price/value;
-- allowance/validity;
-- coverage;
-- setup friction;
-- reuse/recharge;
-- whether a real number is included.
+### Full guide
 
-Temporary SMS comparison emphasizes:
-
-- recent success signal;
-- current price;
-- country/service coverage;
-- private/shared/reused state;
-- privacy/reuse risk;
-- availability.
-
-Default should show a small shortlist, not a wall of equal-weight choices.
-
-### Second layer: full guide
-
-Only after user opens a route:
-
-- what to buy/use;
-- current price;
-- prerequisites;
-- exact setup/opening steps;
-- SMS/OTP or data usage steps;
-- keep/recharge/renew path;
-- main current pitfall;
-- recovery/reissue when relevant;
-- a small number of useful tutorial/video/community links;
-- acquisition/platform link.
+On user request only: what to buy/use, current price, prerequisites, exact steps, SMS/OTP or data use, keep/recharge/renew, main pitfall, recovery/reissue, a few useful tutorial/community links, acquisition link.
 
 ### Decision-cost rule
 
-Every visible element must help the user choose or act. Research methodology, reconciliation notes, source classes and long evidence prose remain backstage.
+Every visible element must help choose or act. Methodology, reconciliation notes, source classes and long evidence prose remain backstage.
 
 ## Measurement cadence
 
@@ -113,14 +75,11 @@ Every visible element must help the user choose or act. Research methodology, re
 ## Decision rules
 
 - Scope remains three products: Phone Radar primary, Reset Radar secondary, Relay Exit Risk secondary.
-- No fourth product surface without explicit strategy change.
-- No country/provider/keyword doorway pages.
-- No second Phone canonical.
-- Temporary SMS platforms may be compared as external routes; the project does not become a temporary-SMS marketplace or backend.
+- No fourth product surface, second Phone canonical or country/provider/keyword doorway pages.
+- Temporary SMS platforms may be compared as external routes; the project does not become a temporary-SMS marketplace/backend.
 - Phone operational reality comes from current user/community outcomes.
 - Operator/provider pages serve current commercial metadata by default, not operational certification.
-- No fake OTP success percentage.
-- No arbitrary Phone 0–100 risk score.
+- No fake OTP percentage or arbitrary Phone 0–100 risk score.
 - Missing data lowers confidence; do not fabricate certainty.
 - Search Console evidence outranks speculative keyword ideas after impressions exist.
 - Keep social/referral separate from Google organic.
@@ -136,7 +95,7 @@ Every visible element must help the user choose or act. Research methodology, re
 | Phone reset | `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` |
 | Phone interaction contract | `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` |
 | Global route-pool seed | `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` |
-| Phone durable product definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
+| Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Authority/referral | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
