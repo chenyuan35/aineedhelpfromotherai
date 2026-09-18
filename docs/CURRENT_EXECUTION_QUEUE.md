@@ -6,18 +6,18 @@ Last updated: 2026-09-18
 
 ## Current decision
 
-Phone Radar v1 has shipped to production on the existing canonical:
+Phone Radar v1 has shipped and Q-014 production closure is complete on the existing canonical:
 
 `/tools/phone-number-survival-guide/`
 
-The accepted product model is now live:
+The accepted product model remains:
 
 - **three route families:** long-term SMS/OTP numbers, data SIM/eSIM routes, temporary SMS platforms;
 - **two experience layers:** visual decision dashboard first, full operational guide on demand;
 - **no questionnaire before routes;**
 - **research complexity stays backstage.**
 
-Do not restart the rejected questionnaire/research-manual direction. Do not redesign the shipped dashboard merely because more ideas exist. Fix verified defects, use settled behavior data when available, then deepen the route pool in bounded batches.
+Do not restart the rejected questionnaire/research-manual direction. Do not redesign the shipped dashboard merely because more ideas exist. Use settled behavior data when available, otherwise deepen the route pool in bounded evidence-backed batches.
 
 ## Just completed
 
@@ -35,11 +35,13 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 - Q-014E frontstage/backstage data separation: DONE for v1.
 - Q-014F visual decision model: DONE / accepted.
 - Q-014G visual dashboard + full-guide implementation: DONE.
+- Q-014H production closure QA: **DONE.** The only verified defect was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`. Public Phone build audit, Eval Gate, Vercel deployment and production canonical load all passed.
 - Global route-pool breadth seed: DONE.
+- Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are now reusable infrastructure only; production frontend has not been switched.
 - PR #112: CLOSED / NOT MERGED; do not revive.
 - PR #114: MERGED. Locked the global Phone Radar product model.
 - PR #115: MERGED. Rebuilt the production Phone experience as the three-family route-first dashboard.
-- Production after PR #115: canonical page returned HTTP 200, self-canonical/indexable metadata was verified, and `radar-view.json` returned HTTP 200.
+- PR #118: MERGED. Closed the Q-014H show-more analytics gap without changing UI, routes, copy or canonical behavior.
 
 ## Post-release recap
 
@@ -47,7 +49,7 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 
 The old flow made users answer questions before seeing routes and exposed too much research/evidence prose. The shipped flow now starts with actual route choices, optional country refinement, compact family-specific metrics, and a `Full guide` action.
 
-The page now tracks the accepted user journey instead of a research workflow:
+The page tracks the accepted user journey:
 
 - **Long-term SMS/OTP:** compare → full guide → buy → activate → test SMS → keep alive/recover.
 - **Data SIM/eSIM:** compare → full guide → buy → install → use/recharge.
@@ -70,11 +72,10 @@ Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 - no user phone number, OTP, credential or ID-document collection;
 - no claim that provider documentation proves real-world OTP/overseas behavior.
 
-### Known gaps that are not reasons to redesign immediately
+### Current gaps that are not reasons to redesign
 
 - GSC has not yet settled through the Sep 16 Phone release; last verified `settledThrough` is Sep 15.
-- Production functional QA still needs a deliberate manual/interactive pass across all three families, including mobile hierarchy, guide opening and outbound actions.
-- GA4 event code exists, but actual post-release event traffic is not yet a meaningful behavior sample.
+- GA4 event code now covers family selection, filter change, show-more, guide open and outbound click, but actual post-release event traffic is not yet a meaningful behavior sample.
 - The Data family is still shallow compared with the Long-term family.
 - Temporary SMS has qualitative current-state signals, not statistically valid success percentages.
 - `radar-view.json` is a deliberately small frontstage decision layer; outcome/event history remains backstage and should only be promoted when it changes a choice or action.
@@ -97,8 +98,8 @@ Then read Phone-specific docs only if the next action requires them.
 
 Check GSC Wizard `settledThrough` for the Phone canonical.
 
-- If `settledThrough >= 2026-09-16`: execute Q-003 before starting another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; continue with Q-014H closure.
+- If `settledThrough >= 2026-09-16`: execute Q-003 before another Phone production expansion.
+- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to Q-013R.
 
 Q-003 must inspect:
 
@@ -109,29 +110,25 @@ Q-003 must inspect:
 
 Use those results to improve the accepted dashboard only when the data justifies a change. Never use Q-003 to restore the old questionnaire.
 
-### Q-014H — Production closure QA
+### Q-014H — CLOSED
 
-Status: **NEXT if Q-003 is not triggered; otherwise immediately after Q-003.**
+Status: **DONE 2026-09-18.**
 
-Run one bounded production QA pass. Verify:
+Closure evidence:
 
-1. the first screen shows the three families and real routes without user input;
-2. default shortlist is compact and `Show more` is secondary;
-3. country filter refines rather than gates the page;
-4. one `Full guide` opens correctly in each family;
-5. guide sections contain practical acquisition/setup/use/keep-or-expiry/recovery information rather than evidence walls;
-6. purchase/open-platform links resolve to the intended current destination;
-7. mobile layout has no horizontal overflow and preserves route-comparison hierarchy;
-8. analytics hooks remain present for family selection, filter change, show-more, guide open and outbound click;
-9. canonical, sitemap, robots/indexability and `radar-view.json` remain healthy.
+1. production first screen exposes all three families and real routes without user input;
+2. default Long-term shortlist is compact and `Show more` is secondary;
+3. country is a refining filter, not a gate;
+4. all three families have route-specific full-guide logic and family-appropriate metrics;
+5. guide content covers acquisition/setup/use/keep-or-expiry/recovery rather than evidence walls;
+6. cards/guides expose current purchase/platform actions where available;
+7. responsive rules collapse desktop cards to stacked layouts and two-column mobile metrics without a known horizontal-overflow defect;
+8. analytics now cover `phone_family_select`, `phone_filter_change`, `phone_show_more`, `phone_guide_open` and `phone_outbound_click`;
+9. canonical/indexability/sitemap/data-file public-release tests pass.
 
-Already verified after PR #115 and not worth repeating unless a regression appears: canonical HTTP 200, self-canonical/indexable metadata, and `radar-view.json` HTTP 200.
+PR #118 fixed only the verified show-more analytics defect. Do not reopen Q-014 without a new concrete defect or settled behavior evidence.
 
-**Stop condition:** if QA finds no material defect, mark Q-014 complete. If it finds a defect, fix only the defect through the normal fresh-branch → tests → PR → CI/Preview → merge → production-verify path. Do not use QA as permission for another redesign.
-
-### Q-013R — Resume global route expansion after Q-014H closes
-
-Status: **NEXT PRODUCT-DEPTH TASK after Q-014H, unless Q-003 data changes priority.**
+### Q-013R — NEXT PRODUCT-DEPTH TASK if Q-003 is still waiting
 
 Use `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`.
 
@@ -164,6 +161,18 @@ Before choosing the second expansion batch, compare breadth by user job, not rou
 
 Use this gap check to decide the next batch. Do not add routes just to make each country or family look equally full.
 
+### Frontend foundation — HOLD from production cutover
+
+The reusable Astro foundation is in `main`, but the actual production frontend remains the legacy static build. Do not migrate homepage, Phone or Relay merely because the foundation exists.
+
+The first future production migration candidate is `/tools/`, and only after a separate bounded task verifies:
+
+- visual/content parity or an explicitly accepted improvement;
+- analytics-event mapping;
+- canonical/SEO parity;
+- Vercel preview path for the Astro output;
+- rollback to the current checked-in static page.
+
 ## Q-003 — First real Phone post-release measurement
 
 Status: **WAITING ON DATA**
@@ -191,13 +200,14 @@ No resend before then. When date >= Sep 20, read the original Gmail threads plus
 Do not:
 
 - revive PR #112 or the questionnaire/manual UI;
-- redesign Phone again before QA/data indicates a concrete problem;
+- redesign Phone again before data or a concrete defect justifies it;
 - start another provider-by-provider official-document audit;
 - add ten countries or dozens of routes in one sweep;
 - create a second Phone canonical or provider/country doorway pages;
 - turn temporary SMS comparison into a marketplace/backend;
 - invent OTP percentages, risk scores or fake confidence numbers;
 - treat operator marketing pages as proof of real-world OTP, roaming, support recovery or long-term reliability;
+- switch the whole site to Astro in one migration;
 - touch DNS, AdSense, billing, paid services or critical account settings without explicit approval.
 
 ## Anti-scope guard
@@ -206,4 +216,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Follow the exact order above, close Q-014H, then move to the next eligible measured or route-depth task. Stop only for a documented wait gate, irreversible/high-impact choice, safety issue, account/billing/DNS change, or lack of an eligible task.
+The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, execute one bounded Q-013R route-depth batch. Stop only for a documented wait gate, irreversible/high-impact choice, safety issue, account/billing/DNS change, or lack of an eligible task.
