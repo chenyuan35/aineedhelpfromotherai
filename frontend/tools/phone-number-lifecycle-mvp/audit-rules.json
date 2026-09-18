@@ -1,6 +1,6 @@
 {
   "meta": {
-    "verifiedOn": "2026-09-15",
+    "verifiedOn": "2026-09-18",
     "purpose": "Guardrails found during explicit post-implementation audit. These rules prevent the prototype from recommending unsupported service access, arbitrary foreign carriers, or data-only products for a real-number requirement."
   },
   "serviceAccess": {
@@ -131,6 +131,60 @@
           "type": "official"
         }
       ]
+    },
+    {
+      "id": "a1-croatia-prepaid-esim",
+      "name": "A1 Croatia prepaid eSIM",
+      "provider": "A1 Croatia",
+      "country": "Croatia",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid eSIM with a Croatian +385 mobile number",
+      "bestFor": [
+        "long-term-number",
+        "low-frequency-retention",
+        "croatia-number",
+        "sms-capable-number",
+        "remote-esim"
+      ],
+      "purchaseUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "cost": {
+        "purchase": "A1's current prepaid SIM/eSIM ordering page remains live. A detailed April 2026 community walkthrough reported a low-cost eSIM purchase, but checkout price is dynamic and must be rechecked before paying.",
+        "recurring": "A1's current online top-up page offers EUR 5 as the lowest visible top-up. Community users report topping up within 450 days after activation, then within roughly 362 days thereafter; treat that interval as community-derived, not an official guarantee.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": 330,
+        "rule": "Use a current A1 top-up before the community-reported validity window closes. The current online minimum top-up is EUR 5; use a buffer rather than waiting for the reported 362-day boundary.",
+        "recovery": "The exact post-expiry same-number recovery window is not verified. Move critical recovery away from the number before a lapse rather than assuming it can be restored."
+      },
+      "friction": {
+        "identity": "A recent community walkthrough reports the prepaid eSIM purchase path without KYC, but the current A1 order page does not establish a universal no-ID rule. Recheck the live checkout flow.",
+        "location": "A recent community walkthrough reproduced remote first activation from mainland China by manually selecting China Unicom and waiting for network registration. Treat this as community-reproduced behavior, not a formal A1 activation promise.",
+        "device": "An unlocked eSIM-capable device is required. The community walkthrough reports moving the eSIM by deleting it from the original online device and rescanning the original QR code; recheck before relying on repeated transfers.",
+        "ongoing": "Recent community use reports free incoming SMS while roaming in mainland China and no prepaid Wi-Fi Calling. Roaming data is expensive; keep mobile data disabled unless deliberately needed."
+      },
+      "evidence": [
+        {
+          "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough",
+          "url": "https://www.nodeloc.com/t/topic/81137",
+          "type": "community"
+        },
+        {
+          "label": "A1 Croatia — current prepaid SIM/eSIM ordering page",
+          "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+          "type": "official-commercial"
+        },
+        {
+          "label": "A1 Croatia — current online top-up page",
+          "url": "https://www.a1.hr/kupi-bon",
+          "type": "official-commercial"
+        },
+        {
+          "label": "A1 Croatia — prepaid roaming price page",
+          "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
+          "type": "official-commercial"
+        }
+      ]
     }
   ],
   "locationConstraintOverrides": {
@@ -151,6 +205,14 @@
       "summary": "The physical tourist data SIM is for use on Japanese networks. It can be bought before travel and used after arrival in Japan.",
       "outsideHomeNote": "You can order before travel, but the mobile data service is intended for use after arrival in Japan.",
       "sourceUrl": "https://www.mobal.com/japan-sim-card/"
+    },
+    "a1-croatia-prepaid-esim": {
+      "mode": "community-reproduced-remote",
+      "hardBlock": false,
+      "requiredLocations": [],
+      "summary": "Recent community evidence reproduced first activation outside Croatia using the eSIM path; A1 does not currently publish that remote activation as a guaranteed workflow.",
+      "outsideHomeNote": "Remote activation is a current community-reproduced route, not an official promise. Be prepared for manual network selection and do not depend on it for an emergency deadline.",
+      "sourceUrl": "https://www.nodeloc.com/t/topic/81137"
     }
   },
   "additionalCapabilities": {
@@ -202,6 +264,38 @@
         "state": "package-expiry",
         "label": "Data package expires",
         "note": "Expiry ends the data package; there is no phone number to retain."
+      }
+    },
+    "a1-croatia-prepaid-esim": {
+      "evidenceClass": {
+        "state": "community-reproduced-with-current-commercial-check",
+        "label": "Detailed community workflow + current A1 purchase/top-up surfaces",
+        "note": "Operational activation, China roaming and retention timing come from current community evidence. Current A1 pages are used only to verify that the prepaid eSIM/order, top-up and roaming surfaces remain live."
+      },
+      "kyc": {
+        "state": "community-reported-none",
+        "label": "Recent community purchase reported no KYC",
+        "note": "Do not turn this into a universal guarantee; recheck the live checkout before paying."
+      },
+      "roamingSms": {
+        "state": "community-reproduced",
+        "label": "China roaming SMS recently reproduced",
+        "note": "A detailed April 2026 community walkthrough reports first activation on China Unicom in mainland China and free incoming SMS while roaming. Treat it as recent operational evidence rather than an A1 guarantee."
+      },
+      "wifiCallingAbroad": {
+        "state": "community-reported-not-supported",
+        "label": "Prepaid Wi-Fi Calling reported unavailable",
+        "note": "The current community walkthrough reports that prepaid Wi-Fi Calling is not supported; do not rely on Wi-Fi Calling/Text as the recovery path."
+      },
+      "numberDuration": {
+        "state": "community-derived-prepaid-validity",
+        "label": "Low-cost annual-style retention reported",
+        "note": "Current online top-up starts at EUR 5. Community users report topping up within 450 days after activation and then roughly every 362 days; use an early reminder because the exact validity interval is not currently confirmed on the public A1 pages reviewed."
+      },
+      "termination": {
+        "state": "recovery-unverified",
+        "label": "Do not assume recovery after expiry",
+        "note": "The same-number recovery window after prepaid expiry is not verified. Top up early and move critical account recovery before any lapse."
       }
     }
   }
