@@ -6,34 +6,18 @@
   "serviceAccess": {
     "claude": {
       "requiresSupportedPhysicalLocation": true,
-      "mappedSupportedPhysicalLocations": [
-        "United States",
-        "United Kingdom",
-        "Japan"
-      ],
-      "mappedUnsupportedPhysicalLocations": [
-        "Mainland China"
-      ],
-      "mappedUnsupportedNumberCountries": [
-        "Mainland China"
-      ],
+      "mappedSupportedPhysicalLocations": ["United States", "United Kingdom", "Japan"],
+      "mappedUnsupportedPhysicalLocations": ["Mainland China"],
+      "mappedUnsupportedNumberCountries": ["Mainland China"],
       "note": "Claude requires the user to be physically located in a supported location and requires a phone number from a supported location. Mainland China is not in Anthropic's current supported-location list. The tool must not present a foreign number as a workaround for an unsupported physical location.",
       "sourceUrl": "https://support.claude.com/en/articles/8461763-where-can-i-access-claude",
       "phoneSourceUrl": "https://support.claude.com/en/articles/8287232-verify-your-phone-number"
     },
     "openai-api": {
       "requiresSupportedPhysicalLocation": true,
-      "mappedSupportedPhysicalLocations": [
-        "United States",
-        "United Kingdom",
-        "Japan"
-      ],
-      "mappedUnsupportedPhysicalLocations": [
-        "Mainland China"
-      ],
-      "mappedUnsupportedNumberCountries": [
-        "Mainland China"
-      ],
+      "mappedSupportedPhysicalLocations": ["United States", "United Kingdom", "Japan"],
+      "mappedUnsupportedPhysicalLocations": ["Mainland China"],
+      "mappedUnsupportedNumberCountries": ["Mainland China"],
       "note": "OpenAI currently limits ChatGPT/API access to supported countries and territories. Mainland China is not in the current supported-country list. The MVP must not recommend buying a foreign number to work around an unsupported physical location.",
       "sourceUrl": "https://help.openai.com/en/articles/8983035-how-do-i-resolve-i-get-an-error-that-i-can-t",
       "phoneSourceUrl": "https://help.openai.com/en/articles/8983040-what-does-phone-verification-look-like"
@@ -53,12 +37,7 @@
         "state": "reported-exceptions",
         "label": "Community exceptions exist, but are not the supported route",
         "note": "Some users report overseas activation under particular conditions. These are anecdotes only and do not override Tello's current requirement for first activation on US cellular towers.",
-        "sources": [
-          {
-            "label": "Reddit community report — overseas activation discussion",
-            "url": "https://www.reddit.com/r/Tello/comments/1pb77y5/activating_a_new_tello_number_and_porting_from/"
-          }
-        ]
+        "sources": [{"label": "Reddit community report — overseas activation discussion", "url": "https://www.reddit.com/r/Tello/comments/1pb77y5/activating_a_new_tello_number_and_porting_from/"}]
       }
     }
   },
@@ -70,28 +49,11 @@
       "country": "Destination-specific",
       "numberClass": "data-only",
       "form": "physical SIM for mobile data; no phone number is assumed",
-      "bestFor": [
-        "travel-data",
-        "physical-sim",
-        "no-esim-device"
-      ],
+      "bestFor": ["travel-data", "physical-sim", "no-esim-device"],
       "purchaseUrl": "",
-      "cost": {
-        "purchase": "Destination-specific. Compare current physical-SIM data offers after choosing the destination.",
-        "recurring": "Usually package/validity based; destination-specific.",
-        "dynamic": true
-      },
-      "retention": {
-        "intervalDays": null,
-        "rule": "This is a connectivity route, not a phone-number retention route.",
-        "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."
-      },
-      "friction": {
-        "identity": "KYC depends on the destination and seller.",
-        "location": "Purchase and activation rules depend on the destination product.",
-        "device": "Unlocked device with a compatible physical SIM slot and supported network bands.",
-        "ongoing": "Package expiry and data balance only; do not assume ordinary SMS capability."
-      },
+      "cost": {"purchase": "Destination-specific. Compare current physical-SIM data offers after choosing the destination.", "recurring": "Usually package/validity based; destination-specific.", "dynamic": true},
+      "retention": {"intervalDays": null, "rule": "This is a connectivity route, not a phone-number retention route.", "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."},
+      "friction": {"identity": "KYC depends on the destination and seller.", "location": "Purchase and activation rules depend on the destination product.", "device": "Unlocked device with a compatible physical SIM slot and supported network bands.", "ongoing": "Package expiry and data balance only; do not assume ordinary SMS capability."},
       "evidence": []
     },
     {
@@ -101,36 +63,12 @@
       "country": "Japan",
       "numberClass": "data-only",
       "form": "physical SIM with mobile data only; no phone number, voice, or ordinary SMS",
-      "bestFor": [
-        "travel-data",
-        "physical-sim",
-        "no-esim-device",
-        "japan-travel"
-      ],
+      "bestFor": ["travel-data", "physical-sim", "no-esim-device", "japan-travel"],
       "purchaseUrl": "https://www.mobal.com/japan-sim-card/",
-      "cost": {
-        "purchase": "Current official tourist physical-SIM packages include 25GB/8 days for JPY 5,800, 50GB/16 days for JPY 6,490, and 50GB/31 days for JPY 7,920.",
-        "recurring": "One-time package; no phone-number retention value.",
-        "dynamic": true
-      },
-      "retention": {
-        "intervalDays": null,
-        "rule": "This is a time-limited data package, not a phone-number route.",
-        "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."
-      },
-      "friction": {
-        "identity": "The cited Mobal tourist-data page does not establish a phone-number identity-verification requirement; recheck checkout requirements before paying.",
-        "location": "Can be ordered for free Japan pickup or worldwide delivery. The data service is for use in Japan.",
-        "device": "Unlocked device with a physical SIM slot and compatible Japanese network bands.",
-        "ongoing": "Package expires by its validity period. It does not supply an ordinary phone number or SMS inbox."
-      },
-      "evidence": [
-        {
-          "label": "Mobal — Japan tourist data SIM prices and data-only status",
-          "url": "https://www.mobal.com/japan-sim-card/",
-          "type": "official"
-        }
-      ]
+      "cost": {"purchase": "Current official tourist physical-SIM packages include 25GB/8 days for JPY 5,800, 50GB/16 days for JPY 6,490, and 50GB/31 days for JPY 7,920.", "recurring": "One-time package; no phone-number retention value.", "dynamic": true},
+      "retention": {"intervalDays": null, "rule": "This is a time-limited data package, not a phone-number route.", "recovery": "Keep a separate SMS-capable line if account recovery or OTP access matters."},
+      "friction": {"identity": "The cited Mobal tourist-data page does not establish a phone-number identity-verification requirement; recheck checkout requirements before paying.", "location": "Can be ordered for free Japan pickup or worldwide delivery. The data service is for use in Japan.", "device": "Unlocked device with a physical SIM slot and compatible Japanese network bands.", "ongoing": "Package expires by its validity period. It does not supply an ordinary phone number or SMS inbox."},
+      "evidence": [{"label": "Mobal — Japan tourist data SIM prices and data-only status", "url": "https://www.mobal.com/japan-sim-card/", "type": "official"}]
     },
     {
       "id": "a1-croatia-prepaid-esim",
@@ -139,164 +77,81 @@
       "country": "Croatia",
       "numberClass": "carrier-mobile",
       "form": "prepaid eSIM with a Croatian +385 mobile number",
-      "bestFor": [
-        "long-term-number",
-        "low-frequency-retention",
-        "croatia-number",
-        "sms-capable-number",
-        "remote-esim"
-      ],
+      "bestFor": ["long-term-number", "low-frequency-retention", "croatia-number", "sms-capable-number", "remote-esim"],
       "purchaseUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "cost": {"purchase": "A1's current prepaid SIM/eSIM ordering page remains live. A detailed April 2026 community walkthrough reported a low-cost eSIM purchase, but checkout price is dynamic and must be rechecked before paying.", "recurring": "A1's current online top-up page offers EUR 5 as the lowest visible top-up. Community users report topping up within 450 days after activation, then within roughly 362 days thereafter; treat that interval as community-derived, not an official guarantee.", "dynamic": true},
+      "retention": {"intervalDays": 330, "rule": "Use a current A1 top-up before the community-reported validity window closes. The current online minimum top-up is EUR 5; use a buffer rather than waiting for the reported 362-day boundary.", "recovery": "The exact post-expiry same-number recovery window is not verified. Move critical recovery away from the number before a lapse rather than assuming it can be restored."},
+      "friction": {"identity": "A recent community walkthrough reports the prepaid eSIM purchase path without KYC, but the current A1 order page does not establish a universal no-ID rule. Recheck the live checkout flow.", "location": "A recent community walkthrough reproduced remote first activation from mainland China by manually selecting China Unicom and waiting for network registration. Treat this as community-reproduced behavior, not a formal A1 activation promise.", "device": "An unlocked eSIM-capable device is required. The community walkthrough reports moving the eSIM by deleting it from the original online device and rescanning the original QR code; recheck before relying on repeated transfers.", "ongoing": "Recent community use reports free incoming SMS while roaming in mainland China and no prepaid Wi-Fi Calling. Roaming data is expensive; keep mobile data disabled unless deliberately needed."},
+      "evidence": [
+        {"label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough", "url": "https://www.nodeloc.com/t/topic/81137", "type": "community"},
+        {"label": "A1 Croatia — current prepaid SIM/eSIM ordering page", "url": "https://www.a1.hr/privatni/mobiteli/sim-promo", "type": "official-commercial"},
+        {"label": "A1 Croatia — current online top-up page", "url": "https://www.a1.hr/kupi-bon", "type": "official-commercial"},
+        {"label": "A1 Croatia — prepaid roaming price page", "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi", "type": "official-commercial"}
+      ]
+    },
+    {
+      "id": "cmlink-52-country-365d",
+      "name": "CMLink 52-country 365-day data eSIM",
+      "provider": "CMLink via MeSIM",
+      "country": "Global / 52 regions",
+      "numberClass": "data-only",
+      "form": "eSIM · data only · 10GB high-speed then 1–512 Kbps",
+      "bestFor": ["long-duration-data", "multi-country-data", "backup-data", "esim", "ai-burst-data"],
+      "purchaseUrl": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19",
       "cost": {
-        "purchase": "A1's current prepaid SIM/eSIM ordering page remains live. A detailed April 2026 community walkthrough reported a low-cost eSIM purchase, but checkout price is dynamic and must be rechecked before paying.",
-        "recurring": "A1's current online top-up page offers EUR 5 as the lowest visible top-up. Community users report topping up within 450 days after activation, then within roughly 362 days thereafter; treat that interval as community-derived, not an official guarantee.",
+        "purchase": "Current seller page lists USD 12.50 for the exact CMLink 52-country eSIM: 10GB high-speed data shared across 52 countries/regions, then unlimited low-speed data at 1–512 Kbps, valid for 365 days after activation.",
+        "recurring": "One 365-day package. The exact seller SKU is currently listed as non-top-up and non-reinstall; buy a replacement before expiry or before you need a fresh high-speed allowance.",
         "dynamic": true
       },
-      "retention": {
-        "intervalDays": 330,
-        "rule": "Use a current A1 top-up before the community-reported validity window closes. The current online minimum top-up is EUR 5; use a buffer rather than waiting for the reported 362-day boundary.",
-        "recovery": "The exact post-expiry same-number recovery window is not verified. Move critical recovery away from the number before a lapse rather than assuming it can be restored."
-      },
+      "retention": {"intervalDays": null, "rule": "This is a long-duration data package, not a phone-number retention route.", "recovery": "Keep a separate SMS-capable line for account recovery. Do not delete this eSIM expecting to reinstall the same SKU later."},
       "friction": {
-        "identity": "A recent community walkthrough reports the prepaid eSIM purchase path without KYC, but the current A1 order page does not establish a universal no-ID rule. Recheck the live checkout flow.",
-        "location": "A recent community walkthrough reproduced remote first activation from mainland China by manually selecting China Unicom and waiting for network registration. Treat this as community-reproduced behavior, not a formal A1 activation promise.",
-        "device": "An unlocked eSIM-capable device is required. The community walkthrough reports moving the eSIM by deleting it from the original online device and rescanning the original QR code; recheck before relying on repeated transfers.",
-        "ongoing": "Recent community use reports free incoming SMS while roaming in mainland China and no prepaid Wi-Fi Calling. Roaming data is expensive; keep mobile data disabled unless deliberately needed."
+        "identity": "The exact seller page does not present a phone-number identity/KYC requirement; payment method and transaction fees depend on checkout.",
+        "location": "The package lists 52 supported countries/regions, including mainland China, Japan, South Korea, Singapore, the United States and many European destinations.",
+        "device": "Use an unlocked eSIM-compatible device and enable data roaming. 4G/5G availability depends on the local network.",
+        "ongoing": "Recent first-hand community use reports Hong Kong landing IP with a Singapore path and good value for AI/daily backup. Provider reliability reports vary by plan, so test connectivity before depending on it."
       },
       "evidence": [
-        {
-          "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough",
-          "url": "https://www.nodeloc.com/t/topic/81137",
-          "type": "community"
-        },
-        {
-          "label": "A1 Croatia — current prepaid SIM/eSIM ordering page",
-          "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
-          "type": "official-commercial"
-        },
-        {
-          "label": "A1 Croatia — current online top-up page",
-          "url": "https://www.a1.hr/kupi-bon",
-          "type": "official-commercial"
-        },
-        {
-          "label": "A1 Croatia — prepaid roaming price page",
-          "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
-          "type": "official-commercial"
-        }
+        {"label": "NodeSeek — recent first-hand eSIM usage roundup", "url": "https://www.nodeseek.com/post-932285-1", "type": "community"},
+        {"label": "MeSIM — current CMLink 52-country 10GB / 365-day seller SKU", "url": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19", "type": "seller-commercial"},
+        {"label": "NodeSeek — seller post for the CMLink 52-country annual SKU", "url": "https://www.nodeseek.com/post-837784-1", "type": "seller-community"},
+        {"label": "CMLink — global data service brand page", "url": "https://global.cmlink.com/", "type": "official-brand"}
       ]
     }
   ],
   "locationConstraintOverrides": {
-    "local-data-physical": {
-      "mode": "destination-specific",
-      "hardBlock": false,
-      "requiredLocations": [],
-      "summary": "Physical data-SIM purchase and activation depend on the destination seller/carrier.",
-      "outsideHomeNote": "This route is intentionally generic until a destination-specific physical data SIM is selected.",
-      "sourceUrl": ""
-    },
-    "mobal-japan-data-physical": {
-      "mode": "required-country",
-      "hardBlock": false,
-      "requiredLocations": [
-        "Japan"
-      ],
-      "summary": "The physical tourist data SIM is for use on Japanese networks. It can be bought before travel and used after arrival in Japan.",
-      "outsideHomeNote": "You can order before travel, but the mobile data service is intended for use after arrival in Japan.",
-      "sourceUrl": "https://www.mobal.com/japan-sim-card/"
-    },
-    "a1-croatia-prepaid-esim": {
-      "mode": "community-reproduced-remote",
-      "hardBlock": false,
-      "requiredLocations": [],
-      "summary": "Recent community evidence reproduced first activation outside Croatia using the eSIM path; A1 does not currently publish that remote activation as a guaranteed workflow.",
-      "outsideHomeNote": "Remote activation is a current community-reproduced route, not an official promise. Be prepared for manual network selection and do not depend on it for an emergency deadline.",
-      "sourceUrl": "https://www.nodeloc.com/t/topic/81137"
-    }
+    "local-data-physical": {"mode": "destination-specific", "hardBlock": false, "requiredLocations": [], "summary": "Physical data-SIM purchase and activation depend on the destination seller/carrier.", "outsideHomeNote": "This route is intentionally generic until a destination-specific physical data SIM is selected.", "sourceUrl": ""},
+    "mobal-japan-data-physical": {"mode": "required-country", "hardBlock": false, "requiredLocations": ["Japan"], "summary": "The physical tourist data SIM is for use on Japanese networks. It can be bought before travel and used after arrival in Japan.", "outsideHomeNote": "You can order before travel, but the mobile data service is intended for use after arrival in Japan.", "sourceUrl": "https://www.mobal.com/japan-sim-card/"},
+    "a1-croatia-prepaid-esim": {"mode": "community-reproduced-remote", "hardBlock": false, "requiredLocations": [], "summary": "Recent community evidence reproduced first activation outside Croatia using the eSIM path; A1 does not currently publish that remote activation as a guaranteed workflow.", "outsideHomeNote": "Remote activation is a current community-reproduced route, not an official promise. Be prepared for manual network selection and do not depend on it for an emergency deadline.", "sourceUrl": "https://www.nodeloc.com/t/topic/81137"},
+    "cmlink-52-country-365d": {"mode": "multi-region-data", "hardBlock": false, "requiredLocations": [], "summary": "The exact seller SKU lists 52 supported countries/regions. Coverage is a package property, not a promise that every local network performs identically.", "outsideHomeNote": "Install on a compatible device, enable data roaming and test connectivity in the first destination before relying on it.", "sourceUrl": "https://mesimgo.com/en/products/cmlink-52-country-unlimited-10gb-19"}
   },
   "additionalCapabilities": {
     "local-data-physical": {
-      "kyc": {
-        "state": "destination-specific",
-        "label": "KYC depends on destination",
-        "note": "Some physical data SIMs require identity checks and others do not; verify the exact destination product."
-      },
-      "roamingSms": {
-        "state": "not-supported-on-route",
-        "label": "No ordinary SMS number assumed",
-        "note": "This route is for mobile data. It must not be used as the SMS/OTP line in the recommendation."
-      },
-      "wifiCallingAbroad": {
-        "state": "indirect",
-        "label": "Can supply data for a separate line",
-        "note": "The data connection may support another SIM's Wi-Fi Calling/Text if that separate carrier and device support the configuration."
-      }
+      "kyc": {"state": "destination-specific", "label": "KYC depends on destination", "note": "Some physical data SIMs require identity checks and others do not; verify the exact destination product."},
+      "roamingSms": {"state": "not-supported-on-route", "label": "No ordinary SMS number assumed", "note": "This route is for mobile data. It must not be used as the SMS/OTP line in the recommendation."},
+      "wifiCallingAbroad": {"state": "indirect", "label": "Can supply data for a separate line", "note": "The data connection may support another SIM's Wi-Fi Calling/Text if that separate carrier and device support the configuration."}
     },
     "mobal-japan-data-physical": {
-      "evidenceClass": {
-        "state": "official",
-        "label": "Official product page",
-        "note": "Current package, delivery and data-only claims come from Mobal’s own Japan SIM page.",
-        "sourceUrl": "https://www.mobal.com/japan-sim-card/"
-      },
-      "kyc": {
-        "state": "unverified",
-        "label": "Checkout ID requirement not fully mapped",
-        "note": "Do not infer the voice-SIM ID rule applies identically to this data-only tourist SIM; recheck checkout requirements."
-      },
-      "roamingSms": {
-        "state": "not-supported-on-route",
-        "label": "No ordinary SMS number",
-        "note": "This tourist data SIM is data-only and cannot be the SMS/OTP line."
-      },
-      "wifiCallingAbroad": {
-        "state": "indirect",
-        "label": "Can supply data for a separate line",
-        "note": "The data connection may support another line’s Wi‑Fi Calling/Text if that separate carrier and device support it."
-      },
-      "numberDuration": {
-        "state": "data-package",
-        "label": "Package validity only",
-        "note": "No reusable phone number is provided."
-      },
-      "termination": {
-        "state": "package-expiry",
-        "label": "Data package expires",
-        "note": "Expiry ends the data package; there is no phone number to retain."
-      }
+      "evidenceClass": {"state": "official", "label": "Official product page", "note": "Current package, delivery and data-only claims come from Mobal’s own Japan SIM page.", "sourceUrl": "https://www.mobal.com/japan-sim-card/"},
+      "kyc": {"state": "unverified", "label": "Checkout ID requirement not fully mapped", "note": "Do not infer the voice-SIM ID rule applies identically to this data-only tourist SIM; recheck checkout requirements."},
+      "roamingSms": {"state": "not-supported-on-route", "label": "No ordinary SMS number", "note": "This tourist data SIM is data-only and cannot be the SMS/OTP line."},
+      "wifiCallingAbroad": {"state": "indirect", "label": "Can supply data for a separate line", "note": "The data connection may support another line’s Wi‑Fi Calling/Text if that separate carrier and device support it."},
+      "numberDuration": {"state": "data-package", "label": "Package validity only", "note": "No reusable phone number is provided."},
+      "termination": {"state": "package-expiry", "label": "Data package expires", "note": "Expiry ends the data package; there is no phone number to retain."}
     },
     "a1-croatia-prepaid-esim": {
-      "evidenceClass": {
-        "state": "community-reproduced-with-current-commercial-check",
-        "label": "Detailed community workflow + current A1 purchase/top-up surfaces",
-        "note": "Operational activation, China roaming and retention timing come from current community evidence. Current A1 pages are used only to verify that the prepaid eSIM/order, top-up and roaming surfaces remain live."
-      },
-      "kyc": {
-        "state": "community-reported-none",
-        "label": "Recent community purchase reported no KYC",
-        "note": "Do not turn this into a universal guarantee; recheck the live checkout before paying."
-      },
-      "roamingSms": {
-        "state": "community-reproduced",
-        "label": "China roaming SMS recently reproduced",
-        "note": "A detailed April 2026 community walkthrough reports first activation on China Unicom in mainland China and free incoming SMS while roaming. Treat it as recent operational evidence rather than an A1 guarantee."
-      },
-      "wifiCallingAbroad": {
-        "state": "community-reported-not-supported",
-        "label": "Prepaid Wi-Fi Calling reported unavailable",
-        "note": "The current community walkthrough reports that prepaid Wi-Fi Calling is not supported; do not rely on Wi-Fi Calling/Text as the recovery path."
-      },
-      "numberDuration": {
-        "state": "community-derived-prepaid-validity",
-        "label": "Low-cost annual-style retention reported",
-        "note": "Current online top-up starts at EUR 5. Community users report topping up within 450 days after activation and then roughly every 362 days; use an early reminder because the exact validity interval is not currently confirmed on the public A1 pages reviewed."
-      },
-      "termination": {
-        "state": "recovery-unverified",
-        "label": "Do not assume recovery after expiry",
-        "note": "The same-number recovery window after prepaid expiry is not verified. Top up early and move critical account recovery before any lapse."
-      }
+      "evidenceClass": {"state": "community-reproduced-with-current-commercial-check", "label": "Detailed community workflow + current A1 purchase/top-up surfaces", "note": "Operational activation, China roaming and retention timing come from current community evidence. Current A1 pages are used only to verify that the prepaid eSIM/order, top-up and roaming surfaces remain live."},
+      "kyc": {"state": "community-reported-none", "label": "Recent community purchase reported no KYC", "note": "Do not turn this into a universal guarantee; recheck the live checkout before paying."},
+      "roamingSms": {"state": "community-reproduced", "label": "China roaming SMS recently reproduced", "note": "A detailed April 2026 community walkthrough reports first activation on China Unicom in mainland China and free incoming SMS while roaming. Treat it as recent operational evidence rather than an A1 guarantee."},
+      "wifiCallingAbroad": {"state": "community-reported-not-supported", "label": "Prepaid Wi-Fi Calling reported unavailable", "note": "The current community walkthrough reports that prepaid Wi-Fi Calling is not supported; do not rely on Wi-Fi Calling/Text as the recovery path."},
+      "numberDuration": {"state": "community-derived-prepaid-validity", "label": "Low-cost annual-style retention reported", "note": "Current online top-up starts at EUR 5. Community users report topping up within 450 days after activation and then roughly every 362 days; use an early reminder because the exact validity interval is not currently confirmed on the public A1 pages reviewed."},
+      "termination": {"state": "recovery-unverified", "label": "Do not assume recovery after expiry", "note": "The same-number recovery window after prepaid expiry is not verified. Top up early and move critical account recovery before any lapse."}
+    },
+    "cmlink-52-country-365d": {
+      "evidenceClass": {"state": "community-first-with-current-seller-sku", "label": "Recent first-hand use + exact current seller SKU", "note": "Operational impressions come from recent first-hand community use. Price, allowance, validity, coverage and data-only properties come from the exact current seller SKU; the CMLink brand page is context only and is not used to overwrite SKU-specific terms."},
+      "roamingSms": {"state": "not-supported-on-route", "label": "Data only — no phone number or SMS", "note": "The exact 52-country seller SKU is data-only and does not support voice calls or sending/receiving SMS."},
+      "numberDuration": {"state": "data-package", "label": "365-day data package", "note": "This is package validity, not ownership of a phone number. The 10GB high-speed allowance is shared across all 52 covered regions."},
+      "termination": {"state": "package-expiry-no-reinstall", "label": "Replace before expiry or deletion", "note": "The exact seller SKU is currently listed as non-top-up and non-reinstall. Buy a replacement before expiry or before deleting the installed eSIM if continuity matters."},
+      "incidentSeparation": {"state": "different-product-incident", "label": "Do not conflate a separate MeSIM Singapore failure with this CMLink SKU", "note": "A July 2026 seller/community post describes widespread mainland-China failure for a different MeSIM Singapore eSIM, then separately lists the CMLink 52-country annual card and says CMLink can be used. Keep the products and incidents separate."}
     }
   }
 }
