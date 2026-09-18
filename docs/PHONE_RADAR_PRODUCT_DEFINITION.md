@@ -4,248 +4,240 @@ Last updated: 2026-09-18
 
 ## Product identity
 
-Phone Number Lifecycle is operated as a **Phone Radar** for people who need a durable overseas/mobile number.
+Phone Number Lifecycle is operated as **Phone Radar**.
 
-It is not a carrier encyclopedia, not a documentation mirror, and not a research report.
+It is not a carrier encyclopedia, documentation mirror, marketplace or research report.
 
 Its core job is:
 
-> **Help a user quickly find, compare, open and keep a useful phone number using current real-user operational routes that are difficult to discover from ordinary marketing pages.**
+> **Help a user quickly find, compare and execute the right phone route using current real-user operating information.**
 
-The moat is not more carrier text. It is turning scattered community experience into a fast decision and execution tool.
+The product moat is turning scattered community experience into a fast decision and an actionable guide.
 
-## User-facing contract
+## Three route families
 
-Users come here to choose a route and act.
+Phone Radar has three fixed user-facing families.
 
-The default experience must answer quickly:
+### 1. Long-term SMS / OTP numbers
 
-1. What number routes can I use right now?
-2. How well is SMS/OTP working in recent real use?
-3. What does it really cost to get and keep the number for a year?
-4. How difficult is setup?
-5. Can I complete the route from where I am?
-6. How stable is the route right now?
-7. How do I open it?
-8. How do I keep it alive?
-9. Where do I buy it?
+Real mobile-number routes intended to be kept.
 
-Concrete routes must be visible without completing a questionnaire.
+Primary questions:
 
-Filters are optional refinement. They must not gate access to the route list.
+- does SMS/OTP work in current real use;
+- what does it cost per year to keep;
+- how hard is setup;
+- can it be opened/used remotely;
+- how stable is it;
+- can the same number be recovered/reissued.
 
-Research notes, evidence reconciliation, source classes, conflict analysis and confidence calculations are backstage. They may support an optional detail such as `Why this status?`, but they must never be the normal reading path.
+### 2. Data SIM / eSIM
 
-## Frontstage / backstage boundary
+Travel or longer-term connectivity routes.
 
-### Frontstage
+Primary questions:
 
-A route card should communicate the decision in seconds:
+- package/data cost;
+- allowance and validity;
+- coverage/network;
+- actual activation/setup friction;
+- whether it can be recharged/reused;
+- whether a real phone number is included and what it can do;
+- whether a current promotion materially improves value.
 
-- provider / route;
-- number country/type;
-- recent SMS/OTP reliability signal;
-- yearly keep-alive cost;
-- setup difficulty;
-- remote setup/location practicality;
-- current stability/risk state;
-- eSIM / physical SIM when material;
-- freshness/status signal;
-- `How to open`;
-- `Get / Buy`.
+### 3. Temporary SMS platforms
 
-A route detail should remain operational:
+Short-lived/rented SMS reception services.
 
-- what to buy;
-- what to prepare;
-- exact opening steps;
-- how to receive SMS/OTP;
-- how to keep the number alive;
+Primary questions:
+
+- current price;
+- recent success signal;
+- country/service availability;
+- private/shared/reused-number state;
+- privacy/reuse/account-recovery risk;
+- current stock/availability.
+
+Temporary SMS must be clearly separated from a number suitable for long-term account recovery.
+
+## Two experience layers
+
+### Visual dashboard — default
+
+Users should be able to make a quick decision without reading an article.
+
+The default page shows:
+
+- one of the three route families;
+- a small current shortlist;
+- family-appropriate metrics;
+- one-line caveats only when material;
+- clear actions to open the full guide or acquire/use the route.
+
+### Full guide — on demand
+
+Users who want to execute a route can open a concise guide containing:
+
+- what to buy/use;
+- current price;
+- prerequisites;
+- exact steps;
+- how to receive SMS/OTP or use data;
+- keep/recharge/renew path;
 - main current pitfall;
-- recovery/number-continuity path;
-- current tutorial/video/community link when useful;
-- purchase link.
+- recovery/reissue path when relevant;
+- one or a few useful current tutorial/video/community links;
+- acquisition/platform link.
 
-### Backstage
+Research methodology is never required reading.
 
-Keep these internal by default:
+## Decision-cost rule
 
-- discovery sources;
-- cross-report reconciliation;
-- raw forum threads/comments;
-- source credibility notes;
-- confidence calculations;
-- incident/event history;
-- contradictory reports;
-- duplicate/circular-report detection;
-- research methodology.
+Phone Radar should reduce the user's work.
 
-The principle is simple: **the backstage may be complex so the frontstage can be simple.**
+- No questionnaire before seeing options.
+- No dozens of equal-weight choices by default.
+- No evidence/source wall on the decision screen.
+- No forcing one metric model onto all three families.
+- Filters refine results; they do not gate them.
+- The user may stop after the visual dashboard.
+- The detailed guide exists only for users who want to act.
 
-## What the radar discovers
+## Long-term SMS / OTP decision model
 
-Priority discoveries include:
+### SMS/OTP reliability
 
-- hidden or poorly advertised low-cost plans;
-- support-assisted retention/validity packages;
-- app/account-only options;
-- marketplace/travel-SIM routes that become durable numbers;
-- unusually cheap keep-alive actions;
-- overseas setup paths that users are currently reproducing;
-- Wi-Fi Calling / VoWiFi and roaming-SMS paths relevant to OTP/account recovery;
-- same-number eSIM replacement, transfer and recovery procedures;
-- support channels that actually process the request;
-- recent price changes, route failures, mass complaints, restoration/refund outcomes and enforcement waves;
-- current tutorials that let another user reproduce the route.
+Primary user metric. Do not invent a percentage without enough route-specific observations.
 
-## Decision model
+Until a defensible rate exists, use qualitative states derived from recent independent success/failure reports, recency and conflict level:
 
-### SMS / OTP reliability
+- Strong;
+- Good;
+- Mixed;
+- Weak;
+- Not enough recent data.
 
-This is a primary user metric.
+### Yearly keep-alive cost
 
-Do not invent a percentage without enough route-specific observations. Until a defensible rate exists, derive a qualitative signal from recent first-hand outcomes, sample count, recency and conflict level.
+Track acquisition cost, required top-up, recurring cost, keep-alive action/interval and material replacement fees. Emphasize the real yearly cost on the dashboard.
 
-The user should see the signal, not the evidence spreadsheet.
+### Setup effort
 
-### Cost
+Derive from real friction: KYC, local presence, support contact, app/account steps, payment restrictions, SIM/eSIM/device requirements and reissue complexity.
 
-Track enough to show the real cost of ownership:
+### Remote practicality
 
-- acquisition cost;
-- required first top-up;
-- recurring cost if any;
-- current keep-alive action/cost;
-- expected yearly keep-alive cost;
-- material replacement/conversion/support fees.
+Show whether the route is remote, remote after initial setup, local-presence required or genuinely route-dependent.
 
-The default card should emphasize the yearly keep-alive cost, with acquisition cost available when relevant.
+### Continuity
 
-### Setup difficulty
+Track same-number replacement/reissue, recovery, suspension windows, number recycling and practical exit/port paths.
 
-Difficulty is derived from actual friction, not arbitrary opinion:
+### Stability
 
-- identity/KYC burden;
-- local presence or first-network attachment;
-- support contact/manual steps;
-- app/account-only steps;
-- payment restrictions;
-- physical SIM/eSIM/device requirements;
-- conversion/reissue complexity;
-- typical support back-and-forth.
+Do not invent a 0–100 Phone risk score.
 
-The user sees a compact difficulty indicator plus the one or two reasons that matter.
+Use descriptive states such as:
 
-### Location practicality
+- Stable;
+- Watch;
+- Degrading;
+- Conflicting;
+- Retired.
 
-Track whether a user can realistically purchase, activate and keep the route working from their location, especially mainland China / overseas.
-
-This is a practical outcome field, not a carrier-documentation field.
-
-### Number continuity
+## Data SIM / eSIM decision model
 
 Track:
 
-- same-number SIM/eSIM replacement;
-- online vs store-only recovery;
-- porting/migration options;
-- suspension/recovery window;
-- number-loss/recycling incidents;
-- practical exit path when the route degrades.
+- acquisition/package price;
+- cost per GB when useful;
+- allowance/unlimited semantics;
+- validity;
+- destination/network coverage;
+- activation/KYC/device friction;
+- real speed/throttling reports;
+- recharge/reuse state;
+- number/SMS/voice capability when included;
+- current promotion only when it changes value.
 
-### Stability / risk
+## Temporary SMS decision model
 
-Phone route risk is separate from Relay Exit Risk.
+Track:
 
-Do not invent a numeric 0–100 Phone risk score until a methodology exists.
+- current price model;
+- recent success/failure reports;
+- supported country/service combinations;
+- private/shared/reused-number behavior;
+- expiry/rental window;
+- privacy/recovery risk;
+- current availability.
 
-Until then, use descriptive states derived from current outcomes, for example:
+Do not present a temporary/shared number as a safe foundation for important long-term recovery.
 
-- `stable`;
-- `watch`;
-- `degrading`;
-- `conflicting`;
-- `retired`.
+## Source roles
 
-Relevant inputs include recent service failures, abrupt enforcement, number-loss/recycling events, support inconsistency, recovery quality, overseas continuity and trend direction.
+### Community/user evidence — operational reality
 
-## Community reality rule
-
-Phone Radar is built around what users are actually experiencing.
-
-Primary operational inputs include:
+Primary inputs:
 
 - first-hand forum/community reports;
 - current tutorials;
-- comments with reproducible detail;
+- detailed comments;
 - user-shared support interactions;
 - setup success/failure;
 - SMS/OTP success/failure;
 - keep-alive results;
+- real data speed/throttling/coverage behavior;
 - number recovery/loss;
 - refunds/restorations;
-- mass complaints and later resolution;
+- complaints and later resolution;
 - current procedure changes.
 
-Operator-published pages are not a verification gate for these outcomes. A route does not become `unknown` merely because the operator does not publicly describe it.
+### Operator/provider pages — commercial metadata
 
-Public price/product metadata can still be useful when it answers a concrete cost or purchase question, but it does not outrank current real-world operating evidence.
+Use by default for:
 
-## Route-first experience
+- current listed price;
+- package name;
+- current promotion/new offer;
+- stock/availability when exposed;
+- purchase/checkout link;
+- advertised top-up/fee.
 
-The first meaningful screen should show useful routes immediately.
+Provider pages are not an operational verification gate and do not override current real-user outcomes.
 
-Optional filters may include:
+## Global route pool
 
-- location / cannot travel;
-- eSIM required;
-- SMS/OTP only;
-- lowest yearly keep-alive cost;
-- avoid support contact;
-- easier recovery/device replacement;
-- higher recent stability;
-- specific service compatibility where evidence exists.
+Country is an attribute/filter, not the research sequence.
 
-Filters reduce or reorder the visible route set. They do not make the user complete a form before seeing anything.
+The radar should continuously discover useful routes across regions. Multiple routes from one country are fine when they solve different jobs; zero routes from another country are also fine when nothing useful is found.
 
-The product should never make the user read the research process to understand a recommendation.
+Do not create country/provider doorway pages to simulate coverage.
 
 ## Ranking principle
 
-There is no single universal best route.
+There is no universal best route across all users and all three families.
 
-Ranking/filtering should use the user-facing decision dimensions:
+The dashboard should present a small shortlist and make tradeoffs obvious using the family’s decision metrics. A route must never be favored merely because it is easier to document.
 
-- SMS/OTP reliability;
-- yearly keep-alive cost;
-- setup friction;
-- location practicality;
-- number continuity/recovery;
-- current stability/risk;
-- freshness;
-- fit with the user's constraints.
+## Closed-loop journeys
 
-A route should not be promoted merely because it is easier to document.
+### Long-term number
 
-## Research priority
+`shortlist → compare → full guide → buy → activate → test SMS → keep alive → recover/replace if needed`
 
-Research exists to improve the decision surface.
+### Data SIM/eSIM
 
-Priority order:
+`shortlist → compare value/coverage → full guide → buy → install → use → recharge/reuse if supported`
 
-1. Find current real-user routes and recent success/failure outcomes.
-2. Correct any user-facing field that materially misstates current reality.
-3. Fill missing decision fields that affect route choice, cost, difficulty, risk or tutorial steps.
-4. Track incidents and recovery outcomes over time.
-5. Add a new route only when it materially improves the choices available to the user.
-6. Stop when more research would not change a decision or action.
+### Temporary SMS
 
-Do not turn route research into provider-by-provider documentation completion.
+`shortlist → compare price/success/privacy → full guide → use → discard`
 
 ## Success condition
 
-Phone Radar succeeds when a first-time visitor can open the page and, without studying the research system, quickly answer:
+Phone Radar succeeds when a first-time visitor can quickly answer:
 
-> Which number should I consider, how likely is SMS/OTP to work in current real use, what will it cost me each year, how hard is it to open, can I do it from where I am, what is the current risk, and what exact steps do I follow?
+> Which type of phone route do I need, which current options fit, what are the important tradeoffs, and what exact next step do I take?
 
-That decision and execution advantage is the product moat.
+The user should not need to learn how Phone Radar performs its research in order to get that answer.
