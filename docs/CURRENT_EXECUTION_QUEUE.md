@@ -36,12 +36,15 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 - Q-014F visual decision model: DONE / accepted.
 - Q-014G visual dashboard + full-guide implementation: DONE.
 - Q-014H production closure QA: **DONE.** The only verified defect was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`. Public Phone build audit, Eval Gate, Vercel deployment and production canonical load all passed.
+- Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand. Production `radar-view.json`, `Show 4 more routes` and Croatia filter were verified live.
+- Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest, so the next depth task is Data-family validation rather than another long-term number.
 - Global route-pool breadth seed: DONE.
 - Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are now reusable infrastructure only; production frontend has not been switched.
 - PR #112: CLOSED / NOT MERGED; do not revive.
 - PR #114: MERGED. Locked the global Phone Radar product model.
 - PR #115: MERGED. Rebuilt the production Phone experience as the three-family route-first dashboard.
 - PR #118: MERGED. Closed the Q-014H show-more analytics gap without changing UI, routes, copy or canonical behavior.
+- PR #120: MERGED. Added A1 Croatia prepaid eSIM as the first bounded route-depth addition.
 
 ## Post-release recap
 
@@ -55,13 +58,23 @@ The page tracks the accepted user journey:
 - **Data SIM/eSIM:** compare → full guide → buy → install → use/recharge.
 - **Temporary SMS:** compare → full guide → use → discard; never presented as durable recovery.
 
-### What is already in the v1 route pool
+### Current public route pool
 
-Long-term concrete routes currently include giffgaff, Lebara UK, Tello, Ultra PayGo, H2O PayGo, Mobal Japan Voice+Data, Sakura Japan Voice+Data and a generic mainland-China official-carrier route.
+Long-term concrete routes include giffgaff, Lebara UK, Tello, Ultra PayGo, H2O PayGo, **A1 Croatia prepaid eSIM**, Mobal Japan Voice+Data, Sakura Japan Voice+Data and a generic mainland-China official-carrier route.
+
+A1 Croatia is intentionally outside the default shortlist. Current A1 online top-up minimum is `€5`; its reported 450-day initial / ~362-day later retention timing remains community-derived, not an official guarantee. Stability is `Watch` and expiry recovery remains unverified.
 
 Data currently has Airalo plus Mobal Japan tourist physical data SIM, with a generic destination-local fallback kept out of the default shortlist.
 
 Temporary SMS currently has SMSPool, 5SIM and ActivateX.
+
+### Current lead disposition
+
+- **Kaktus Czech:** HOLD. Current community path relies on support-assisted roaming activation with outcomes ranging from hours/days to months/refund; do not publish as a stable remote route yet.
+- **ClubSIM Hong Kong:** HOLD. The older cheap keep-alive path changed; research the current route from scratch before admission.
+- **RedPocket US:** DEPRIORITIZED for now. Another US long-term route does not solve the current breadth gap.
+- **AIS support-assisted retention:** HOLD until starting state and reproducibility are clear.
+- **StellarSecurity / CMLink Data:** FRESH LEADS from Sep 18 community evidence. Validate exact provider/product/current package and real operating behavior before production admission.
 
 ### What the release intentionally does not claim
 
@@ -74,11 +87,11 @@ Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 
 ### Current gaps that are not reasons to redesign
 
-- GSC has not yet settled through the Sep 16 Phone release; last verified `settledThrough` is Sep 15.
-- GA4 event code now covers family selection, filter change, show-more, guide open and outbound click, but actual post-release event traffic is not yet a meaningful behavior sample.
-- The Data family is still shallow compared with the Long-term family.
+- GSC Sep 18 recheck still settles only through `2026-09-15`; Sep 16 Phone release data is not settled yet.
+- GA4 event code covers family selection, filter change, show-more, guide open and outbound click, but actual post-release event traffic is not yet a meaningful behavior sample.
+- Data is now the clearest route-depth gap.
 - Temporary SMS has qualitative current-state signals, not statistically valid success percentages.
-- `radar-view.json` is a deliberately small frontstage decision layer; outcome/event history remains backstage and should only be promoted when it changes a choice or action.
+- `radar-view.json` is deliberately small; outcome/event history remains backstage and should only be promoted when it changes a choice or action.
 
 ## NEXT SESSION — exact execution order
 
@@ -99,7 +112,9 @@ Then read Phone-specific docs only if the next action requires them.
 Check GSC Wizard `settledThrough` for the Phone canonical.
 
 - If `settledThrough >= 2026-09-16`: execute Q-003 before another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to Q-013R.
+- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to the Data-family validation task below.
+
+Latest check on 2026-09-18 still returns `settledThrough=2026-09-15`.
 
 Q-003 must inspect:
 
@@ -123,43 +138,55 @@ Closure evidence:
 5. guide content covers acquisition/setup/use/keep-or-expiry/recovery rather than evidence walls;
 6. cards/guides expose current purchase/platform actions where available;
 7. responsive rules collapse desktop cards to stacked layouts and two-column mobile metrics without a known horizontal-overflow defect;
-8. analytics now cover `phone_family_select`, `phone_filter_change`, `phone_show_more`, `phone_guide_open` and `phone_outbound_click`;
+8. analytics cover `phone_family_select`, `phone_filter_change`, `phone_show_more`, `phone_guide_open` and `phone_outbound_click`;
 9. canonical/indexability/sitemap/data-file public-release tests pass.
 
 PR #118 fixed only the verified show-more analytics defect. Do not reopen Q-014 without a new concrete defect or settled behavior evidence.
 
-### Q-013R — NEXT PRODUCT-DEPTH TASK if Q-003 is still waiting
+### Q-013R1 — FIRST ROUTE-DEPTH BATCH CLOSED
 
-Use `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`.
+Status: **DONE 2026-09-18.**
 
-Rules for the first post-reset expansion batch:
+PR #120 admitted exactly one route: **A1 Croatia prepaid eSIM**.
 
-- choose **1–2 production routes total**, not a country-completion batch;
-- pick by user value, recency, uniqueness and reproducibility;
-- community/current-user outcomes are the operational source;
-- provider pages are used by default only for current price/package/promotion/stock/purchase metadata;
-- extract only the family-specific decision fields that change choice/action;
-- include a useful practical guide path, not a source dump;
-- stop when further research would not change the shortlist, warning or next action.
+Admission facts:
 
-Concrete leads to consider first, without treating any as pre-approved production truth:
+- recent detailed community workflow reproduced remote eSIM purchase/activation and mainland-China roaming SMS behavior;
+- current A1 pages were used only for commercial metadata and confirmed the prepaid order/top-up/roaming surfaces are live;
+- current visible online top-up minimum is `€5`, so the older community `€2` figure was not published as current cost;
+- 450-day initial / ~362-day later validity remains explicitly community-derived;
+- stability is `Watch` and same-number recovery after expiry remains unverified;
+- `shortlist:false` preserves the default five-route Long-term first view.
 
-- **Kaktus Czech eSIM / low-cost retention route** from the user-supplied current community report — classify and check fresh independent reproduction because it is cheap and materially different from the current pool;
-- **ClubSIM Hong Kong** — high-value cross-border long-term lead from the global seed;
-- **A1 Croatia prepaid eSIM** — low-cost retention lead from community tutorials;
-- **RedPocket US** — existing candidate; only include if current real-user acquisition/overseas behavior makes it meaningfully different from Tello/Ultra/H2O.
+### Q-013G — GAP CHECK CLOSED
 
-AIS support-assisted retention remains HOLD until the starting product/account state and reproducibility are clear enough for a user to execute safely.
+Status: **DONE after Q-013R1.**
 
-### Q-013G — Gap check across the three families
+Current breadth by user job:
 
-Before choosing the second expansion batch, compare breadth by user job, not route count:
+- **Long-term:** deepest family; now spans UK, US, Croatia, Japan and mainland-China route classes. Do not keep stacking similar long-term routes by country.
+- **Data:** only two concrete public routes (Airalo and Mobal Japan tourist physical data SIM) plus one generic fallback. This is the current depth gap.
+- **Temporary SMS:** three platforms; outcome volume still does not justify a numeric success rate.
 
-- Long-term is currently deepest but geographically concentrated in UK/US/Japan/China.
-- Data has only two concrete routes in the public model and is the weakest family by route depth.
-- Temporary SMS has three platforms but lacks enough outcome volume for a real success percentage.
+Conclusion: the next route-depth batch should target **Data**, not another Long-term route.
 
-Use this gap check to decide the next batch. Do not add routes just to make each country or family look equally full.
+### Q-013D2 — NEXT ELIGIBLE DATA ROUTE VALIDATION if Q-003 is still waiting
+
+Validate **at most one** concrete Data route before any production change.
+
+Fresh Sep 18 lead set:
+
+- **StellarSecurity** — very recent NodeSeek first-hand report says its 100GB / ~€13.4 / 60-day product performed similarly to the author's local monthly SIM. Exact provider identity, purchase URL, coverage, install flow, reuse/recharge state and current package must be verified before admission.
+- **CMLink data route** — same author reports personal use with Singapore + Hong Kong IP and suggests it for light/long-duration or burst AI traffic. Separate official and third-party packages; do not publish third-party annual pricing as official commercial truth.
+
+Rules:
+
+- first-hand operation beats price tables;
+- price-only aggregations create leads, not production routes;
+- provider page supplies current price/package/coverage/purchase metadata only;
+- require an exact executable product, not a vague provider family;
+- capture current cost, allowance/validity, coverage, setup, reuse/recharge, number/SMS capability and meaningful real-world speed/throttling notes;
+- stop after one route reaches admission quality; otherwise record HOLD and do not manufacture a release.
 
 ### Frontend foundation — HOLD from production cutover
 
@@ -203,10 +230,12 @@ Do not:
 - redesign Phone again before data or a concrete defect justifies it;
 - start another provider-by-provider official-document audit;
 - add ten countries or dozens of routes in one sweep;
+- add another long-term number merely to make geography look broader;
 - create a second Phone canonical or provider/country doorway pages;
 - turn temporary SMS comparison into a marketplace/backend;
 - invent OTP percentages, risk scores or fake confidence numbers;
 - treat operator marketing pages as proof of real-world OTP, roaming, support recovery or long-term reliability;
+- publish a Data route from a price table without first-hand operational evidence;
 - switch the whole site to Astro in one migration;
 - touch DNS, AdSense, billing, paid services or critical account settings without explicit approval.
 
@@ -216,4 +245,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, execute one bounded Q-013R route-depth batch. Stop only for a documented wait gate, irreversible/high-impact choice, safety issue, account/billing/DNS change, or lack of an eligible task.
+The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, validate at most one concrete Data route. Production admission requires sufficient current operational evidence; a HOLD is a valid result.

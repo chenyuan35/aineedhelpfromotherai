@@ -15,9 +15,9 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | GitHub→Vercel, CI/Eval Gate, durable fact sources and safe release flow are established. | Completed |
 | P1 Initial tool inventory | Useful low-cost starter portfolio | DONE | Existing tool cohort is live; Phone canonical released Sep 16. | Completed |
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
-| P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` last checked at 2026-09-15. | Several current tool-page query/impression signals exist. |
+| P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | PR #115 shipped the three-family visual dashboard + full-guide model; Q-014 closure QA is complete and PR #118 fixed its only verified analytics gap. Route depth and settled behavior now matter more than another shell redesign. | Phone gets settled behavior data and route breadth expands in small evidence-backed batches without scope creep. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | Q-014 is closed. PR #120 shipped the first bounded post-reset depth addition, A1 Croatia, without enlarging the default five-route shortlist. Q-013G now identifies Data as the shallowest family. | Phone gets settled behavior data and route breadth expands in small evidence-backed batches without scope creep. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -32,14 +32,15 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 7. **DONE — Q-014E v1 data reclassification.** Frontstage decision labels are separated from backstage research detail; the public flow no longer depends on documentation-first `unknown` gating.
 8. **DONE — Q-014G implementation.** PR #115 replaced questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
 9. **DONE — Q-014H production closure.** The bounded production QA verified the three-family first screen, compact shortlist, country refinement, full-guide/action model, responsive mobile rules, canonical/data health and analytics. The only verified gap was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`, and the public release audit, Eval Gate and Vercel deployment passed.
-10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; it becomes the first gate before another Phone production expansion.
-11. **NEXT IF Q-003 IS STILL WAITING — Q-013R route expansion.** Resume global route discovery in batches of 1–2 production routes selected by user value, recency, uniqueness and reproducibility. Kaktus Czech, ClubSIM Hong Kong, A1 Croatia and RedPocket are leads; AIS remains HOLD.
-12. **NEXT AFTER FIRST EXPANSION BATCH — three-family gap check.** Long-term is currently deepest but geographically concentrated; Data is shallowest; Temporary has three platforms but no valid percentage success metric. Use user-job gaps, not route-count symmetry, to choose the next batch.
-13. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
-14. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
-15. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-16. **Relay — monitor.** Preserve methodology and accumulate real history.
-17. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
+10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`.
+11. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`. Kaktus is HOLD because remote activation is support-dependent; ClubSIM is HOLD because the old cheap keep-alive path changed; RedPocket is deprioritized because another US long-term route would not address the current breadth gap.
+12. **DONE — Q-013G first gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback. The next eligible depth batch should validate one concrete Data SIM/eSIM route, not add another long-term number merely for breadth.
+13. **NEXT IF Q-003 IS STILL WAITING — Data route validation.** Fresh Sep 18 community evidence makes StellarSecurity and CMLink useful leads, but they remain leads until exact provider/product identity, current package, setup/reuse behavior and first-hand outcomes are verified. Admit at most one route in the next batch.
+14. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
+15. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+16. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
+17. **Relay — monitor.** Preserve methodology and accumulate real history.
+18. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 
 ## Phone Radar shipped contract
 
@@ -83,8 +84,8 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-leve
 
 1. check the GSC Phone `settledThrough` trigger;
 2. if Sep 16+ is settled, execute Q-003 first;
-3. if it is still below Sep 16, resume one bounded 1–2 route expansion batch;
-4. after the first expansion batch, run the three-family user-job gap check before selecting another batch;
+3. if it is still below Sep 16, continue the already-selected Data-family depth task, validating at most one route;
+4. do not add another Long-term route unless new evidence shows it solves a distinct user job better than the current pool;
 5. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due;
 6. do not reopen Q-014 or redesign the shipped Phone shell without a concrete new defect or settled behavior evidence.
 
