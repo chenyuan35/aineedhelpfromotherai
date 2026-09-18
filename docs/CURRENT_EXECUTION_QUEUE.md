@@ -17,9 +17,9 @@ The model remains:
 - **no questionnaire before routes;**
 - **research complexity stays backstage.**
 
-However, **Phone visual closure is reopened** after direct user feedback that the shipped page is still visually messy. The Sep 18 code/spec audit reproduced concrete shell defects, including undefined Phone CSS tokens, inherited global button spacing, oversized hero hierarchy, equal-weight card density and a Full guide that opens after the route list rather than in the selected route's context.
+Phone visual closure remains open, but the bounded repair is now implemented in **Draft PR #130** rather than still waiting to be coded. PR #130 is intentionally unmerged: automated checks and Vercel Preview are green, while real desktop/mobile visual QA remains the acceptance gate.
 
-Do not interpret this as permission for another broad redesign or more routes. The next bounded Phone task is to repair the existing shell only. Route expansion, including PR #127, stays secondary until that repair is visually verified.
+Do not start another redesign or add routes. The next bounded Phone task is to review the existing Preview, fix only reproduced visual defects on the same branch, and keep production unchanged until the review is explicitly clean.
 
 ## Just completed
 
@@ -39,6 +39,7 @@ Do not interpret this as permission for another broad redesign or more routes. T
 - Q-014G visual dashboard + full-guide implementation: DONE.
 - Q-014H earlier technical closure: **SUPERSEDED AS VISUAL-CLOSURE EVIDENCE.** It verified flow/data/analytics and fixed `phone_show_more`, but did not catch the current computed-style/hierarchy defects.
 - Q-014I Phone visual closure audit: **DONE / REPAIR REQUIRED.** See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
+- Q-014J Phone shell repair implementation: **IMPLEMENTED / REVIEW PENDING.** Draft PR #130 (`baf5f333`) changes only the Phone source page and Phone contract test. Eval Gate #510, the 18-check Phone contract audit, public Phone release audit and Vercel Preview all pass. Production is unchanged; desktop/mobile visual acceptance is still required before merge.
 - Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand.
 - Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest.
 - Q-013D2 Stellar China Data validation: **DONE / HOLD.** The selected network/egress route is not reproducible enough for production admission.
@@ -55,7 +56,7 @@ Do not interpret this as permission for another broad redesign or more routes. T
 
 ### What changed
 
-The old flow made users answer questions before seeing routes and exposed too much research/evidence prose. The current flow starts with actual route choices, optional country refinement, family-specific metrics, and a `Full guide` action.
+The old flow made users answer questions before seeing routes and exposed too much research/evidence prose. The current production flow starts with actual route choices, optional country refinement, family-specific metrics, and a `Full guide` action.
 
 The accepted user journeys remain:
 
@@ -63,19 +64,28 @@ The accepted user journeys remain:
 - **Data SIM/eSIM:** compare → full guide → buy → install → use/recharge.
 - **Temporary SMS:** compare → full guide → use → discard; never presented as durable recovery.
 
-### What is now known to be wrong in the shell
+### What is wrong in current production and what Draft PR #130 repairs
 
-The current implementation does not yet present that model cleanly enough:
+Current production still carries the Sep 18 visual defects until a reviewed merge happens:
 
-- Phone-local CSS references `--border`, `--surface` and `--text`, while production `site.css` defines `--line`, `--panel` and `--ink`; multiple intended borders/background/selected-state declarations therefore do not resolve as designed.
-- global `button { margin-top:16px }` leaks into Phone family tabs, card actions, guide close and `Show more` because Phone does not reset it.
-- the Phone H1 inherits the generic marketing-scale `h1` clamp instead of a compact dashboard scale.
-- hero + family note + country filter + route count delay the first real route more than the accepted interaction spec intended.
-- five equal-weight metric cells plus two actions plus a full-width caveat make each card dense, especially on mobile.
-- the shared Full guide section sits after the entire route list; opening a top card scrolls the user away from the selected route.
-- current tests validate route data/copy/analytics, but do not catch those computed-style and hierarchy failures.
+- Phone-local CSS references `--border`, `--surface` and `--text`, while production `site.css` defines `--line`, `--panel` and `--ink`;
+- global `button { margin-top:16px }` leaks into Phone controls;
+- the Phone H1 inherits a marketing-scale clamp;
+- too much pre-list chrome delays the first real route;
+- five equal-weight metric cells plus actions and full caveats make cards dense;
+- the shared Full guide sits after the whole route list and loses selected-route context.
 
-The repair source is `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
+Draft PR #130 repairs those exact issues without changing route data:
+
+- uses `--line / --panel / --ink` and resets Phone-local button margins;
+- compresses the hero and removes redundant visible family-note/catalog-count chrome;
+- presents three visual user-job choices: `Keep a real number`, `Get mobile data`, `Receive a one-time code`;
+- reorganizes each route into identity/status + compact metadata + three primary metrics + restrained actions;
+- only renders a warning strip when the caveat materially changes the choice;
+- renders each Full guide inline inside the selected route card;
+- adds static regression checks for CSS tokens, local button spacing, compact cards, inline guide structure and source-level `phone_show_more` analytics.
+
+The repair source remains `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
 
 ### Current public route pool
 
@@ -128,36 +138,59 @@ Read in order:
 6. `docs/SESSION_EXECUTION_PROTOCOL.md`
 7. `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`
 
-### Q-014J — NEXT / BOUNDED PHONE SHELL REPAIR
+### Q-014J — IMPLEMENTED / REVIEW PENDING
 
-Status: **NEXT PRODUCT-FACING TASK**
+Status: **DRAFT PR #130 / DO NOT MERGE YET**
 
-Repair the existing Phone shell only.
+Implementation already exists on `feat/q014j-phone-visual-repair-20260918`, head `baf5f333b4c7199692bce64243418c26bb4a14d1`.
 
-Required scope:
+Implemented scope:
 
-1. replace/alias the invalid Phone CSS tokens with the production site tokens and verify light/dark selected/action states;
-2. explicitly reset Phone-local button margins/box model so global calculator-button spacing cannot leak in;
-3. reduce Phone hero/pre-list vertical weight so the first real route appears quickly;
-4. reorganize each card into clear identity/status + compact decision metrics + restrained actions + conditional warning instead of giving every field equal weight;
-5. keep the Full guide in the selected route's context, minimally as an inline expandable panel directly after the selected card;
-6. add targeted static regression checks for the token/button/card/guide contract;
-7. run existing Phone tests plus applicable build checks;
-8. require a real Vercel Preview and visually verify desktop + mobile before merge.
+1. invalid Phone CSS tokens replaced with the production site tokens;
+2. Phone-local button margins/box model explicitly owned so global calculator-button spacing does not leak in;
+3. hero/pre-list vertical weight reduced;
+4. three visual task selectors added without adding a new product job or questionnaire;
+5. each card reorganized into identity/status + compact metadata + three primary decision metrics + restrained actions + conditional warning;
+6. Full guide moved into an inline expandable panel inside the selected route card;
+7. source-level `phone_show_more` tracking preserved;
+8. targeted static regression checks added.
+
+Verified evidence:
+
+- PR #130 diff contains only `frontend/tools/phone-number-lifecycle-mvp/index.html` and `scripts/test-phone-number-lifecycle-mvp.mjs`;
+- Phone contract audit: **PASS (18 checks)**;
+- Phone retention and supply audits: PASS;
+- `frontend/bin/build.mjs` succeeds;
+- public Phone release audit: PASS;
+- Eval Gate #510: PASS;
+- Vercel Preview: SUCCESS;
+- actual Preview URL loads and semantic accessibility inspection shows the intended first-screen/order/card structure.
+
+Remaining acceptance work:
+
+1. visually inspect the real PR #130 Preview at desktop width;
+2. visually inspect at mobile width rather than inferring from CSS only;
+3. verify light and dark selected/action states;
+4. verify first real route is visible quickly after the task selectors/refinement;
+5. verify family switching, country filter and `Show more` do not create confusing layout changes;
+6. open/close Full guide and confirm it visually stays attached to the selected route;
+7. verify no horizontal overflow or cramped three-metric card state;
+8. if any concrete visual defect appears, fix it on the same branch, rerun checks and inspect the new Preview;
+9. only after a clean visual review mark Q-014J visually accepted and decide whether PR #130 is ready to leave Draft.
 
 Definition of done:
 
 - no unresolved Phone CSS custom-property mismatch;
 - no inherited global button top margin in Phone controls;
 - first route appears promptly after family/refinement controls;
-- mobile card no longer reads as three metric rows plus repeated caveat/action clutter;
+- mobile card no longer reads as repeated metric/caveat/action clutter;
 - selected-route Full guide opens contextually next to that route;
 - existing family logic, canonical, analytics and route data still work;
 - real Preview is green and visually verified at desktop/mobile widths.
 
 Stop conditions:
 
-- Vercel `build-rate-limit` or equivalent provider quota blocker;
+- no usable rendered visual-inspection surface is available: keep PR #130 Draft rather than infer completion from CI;
 - repair requires a broader homepage/Astro/site-wide redesign;
 - a change would introduce a new route/feature rather than repair the current shell.
 
@@ -174,7 +207,7 @@ When `settledThrough >= 2026-09-16`, inspect:
 - GA4 landing-page behavior when available;
 - Phone interaction events if enough data exists.
 
-Use that evidence for later growth/route decisions. Do not use the wait gate to postpone Q-014J because the visual defect is already concrete.
+Use that evidence for later growth/route decisions. Do not use the wait gate to skip Q-014J visual review because the visual defect is already concrete.
 
 ### Q-014H — SUPERSEDED AS VISUAL CLOSURE
 
@@ -275,7 +308,7 @@ PR #127 implements exactly one route admission: **Trip.com Mainland China CMLink
 
 Implementation state:
 
-- existing Phone shell, canonical and page structure are unchanged;
+- existing Phone shell, canonical and page structure are unchanged in that PR;
 - `tutorial-insights.json` adds the exact Trip/CMLink route and its current evidence/capabilities;
 - `radar-view.json` adds one Data shortlist card with dynamic-price wording, data-only semantics and `Watch` caveats;
 - no second route or unrelated product change is included;
@@ -284,17 +317,18 @@ Implementation state:
 
 Blocker / ordering:
 
-- Vercel Preview status is `failure` with `build-rate-limit` / deployment rate limiting;
-- classify this as a **provider quota blocker**, not a code/build failure;
+- PR #127's previous Vercel Preview status was `failure` with `build-rate-limit` / deployment rate limiting;
+- classify that historical attempt as a **provider quota blocker**, not a code/build failure;
 - production is unchanged and the CMLink route is **not live** yet;
-- the frontend closure pass now adds a second ordering constraint: do not complete a new Phone route release until Q-014J visually closes the existing shell.
+- PR #130 later received a successful Preview, but do not infer that PR #127 is reviewed or safe without its own new valid Preview;
+- the frontend closure pass remains the ordering constraint: do not complete a new Phone route release until Q-014J visually closes the existing shell.
 
 Required handling:
 
 - keep PR #127 unmerged;
 - do not push fake/no-op source changes, manually redeploy, use alternate accounts/projects, or change billing to bypass quota;
-- finish Q-014J first;
-- afterwards, when Vercel capacity has returned, revalidate the existing PR #127 release path without a fake source change;
+- finish Q-014J visual review first;
+- afterwards, revalidate the existing PR #127 release path through its own genuine Preview;
 - merge only after a fresh real Preview succeeds and production can be verified.
 
 ### Frontend foundation — HOLD from production cutover
@@ -328,8 +362,9 @@ No resend before then. When date >= Sep 20, read the original Gmail threads plus
 Do not:
 
 - revive PR #112 or the questionnaire/manual UI;
-- turn the bounded Q-014J repair into a broad Phone redesign;
-- add Trip.com CMLink or any other new Phone route during the repair session;
+- turn Q-014J visual review into another broad Phone redesign;
+- create a second Q-014J implementation branch when PR #130 already exists;
+- add Trip.com CMLink or any other new Phone route during the closure review;
 - start another provider-by-provider official-document audit;
 - add ten countries or dozens of routes in one sweep;
 - add another long-term number merely to make geography look broader;
@@ -347,4 +382,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Execute the bounded Q-014J Phone shell repair from the visual-closure audit, with no new routes/features. A real desktop/mobile Vercel Preview is part of the definition of done. If Preview is rate-limited, record the provider blocker and stop. Q-003 remains a measurement gate for later growth decisions; PR #127 remains unmerged until both Phone visual closure and its own real Preview requirement are satisfied.
+The next session should not spend time rediscovering or reimplementing Q-014J. Open the existing Draft PR #130 Preview and perform real desktop/mobile visual QA. If a concrete defect is visible, repair it on the same branch and rerun checks; if no usable visual-inspection surface is available, leave the PR Draft rather than infer completion from CI. Do not merge or release until visual acceptance is explicit. Q-003 remains a measurement gate for later growth decisions; PR #127 remains unmerged until Phone visual closure is complete and its own genuine Preview requirement is satisfied.
