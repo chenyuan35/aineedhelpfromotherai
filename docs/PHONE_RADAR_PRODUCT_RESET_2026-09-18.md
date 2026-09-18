@@ -1,259 +1,169 @@
 # Phone Radar Product Reset — 2026-09-18
 
-Status: **ACTIVE PRODUCT RESET / NO PRODUCTION UI CHANGES YET**
+Status: **DIRECTION ACCEPTED / IMPLEMENTATION AUTHORIZED**
 
-This document records the product-direction correction agreed on 2026-09-18. It is a task list and guardrail for the next Phone Radar work round. It does not authorize production implementation by itself.
+This document records the Phone Radar correction agreed on 2026-09-18.
 
-## Root-cause retrospective
+## Root correction
 
-The project started from the correct user job: help a user discover non-obvious, low-cost, currently usable phone-number routes from real community experience.
+The old Phone experience drifted from a tool into a questionnaire + research manual because backstage research fields leaked into the user interface.
 
-The product drifted because internal research and evidence handling were allowed to shape the public interface. The result became a questionnaire + research explanation instead of a fast decision tool.
+The correction is structural:
 
-The failure sequence was:
+> **Phone Radar helps a user quickly choose and execute a useful phone route. Research complexity stays backstage.**
 
-1. community tutorials and first-hand reports found valuable hidden routes;
-2. research expanded into carrier-by-carrier documentation and rule reconciliation;
-3. missing public documentation was increasingly represented as `unknown`;
-4. internal evidence fields became public UI fields;
-5. the page became a long explanation of why a route was or was not recommended;
-6. research effort shifted toward completing provider records instead of helping the user choose a number quickly.
+## Fixed product structure
 
-The correction is structural, not cosmetic.
+Phone Radar has **three route families**:
 
-## Product job
+1. **Long-term SMS / OTP numbers** — durable numbers for verification/account continuity.
+2. **Data SIM / eSIM routes** — travel/long-term data connectivity, with number capability shown only when relevant.
+3. **Temporary SMS platforms** — short-lived/rented SMS reception routes, clearly separated from durable numbers.
 
-> **Phone Radar helps a user find, compare, open and keep a useful phone number using current real-user routes that are hard to discover from ordinary marketing pages.**
+Phone Radar has **two experience layers**:
 
-The user is not here to study carrier research, evidence methodology or source reconciliation.
+### Layer A — Visual dashboard
 
-The public experience must answer quickly:
+Default view. The user should understand the current choices in seconds without reading an article.
 
-- What number routes are available right now?
-- How reliable is SMS/OTP reception in real use?
-- What does it cost to obtain and keep the number for a year?
-- How difficult is setup?
-- Can I complete the route from my current location?
-- What is the current stability / continuity risk?
-- How do I open it?
-- How do I keep it alive?
-- Where do I buy it?
+### Layer B — Full guide
 
-## Frontstage / backstage boundary
+Opened only when the user wants to act. It contains purchase/setup/use/keep-alive/recovery steps and a small number of useful current tutorials/links.
 
-### Backstage — internal only by default
+## Decision-cost rule
 
-- forum/community discovery;
-- cross-report reconciliation;
-- source credibility assessment;
-- incident history;
-- success/failure event collection;
-- confidence calculation;
-- route freshness logic;
-- risk derivation;
-- duplicate/circular-report detection;
-- research notes and raw source lists.
+The product is responsible for reducing user decision work.
 
-### Frontstage — what the user sees
+- Do not force a multi-step questionnaire before showing options.
+- Do not show dozens of equal-weight choices by default.
+- Show a small current shortlist first.
+- Use metrics appropriate to the selected route family.
+- Keep caveats to one line unless the user opens the full guide.
+- The user may stop after the dashboard if that is enough.
 
-- provider / route identity;
-- country / number type;
-- SMS/OTP reception signal;
+## Source-role rule
+
+### Community/user evidence
+
+Primary source for operational reality:
+
+- setup success/failure;
+- SMS/OTP outcomes;
+- real overseas/China use;
+- hidden support routes;
+- keep-alive methods;
+- number loss/recovery;
+- complaints;
+- refunds/restorations;
+- support outcomes;
+- route degradation;
+- current tutorials.
+
+### Operator/provider pages
+
+Use by default only for current commercial metadata:
+
+- listed price;
+- package name;
+- current promotion/new offer;
+- stock/availability when exposed;
+- purchase/checkout link;
+- advertised top-up/fee.
+
+Provider pages are not an operational verification gate.
+
+## Metrics
+
+### Long-term SMS / OTP
+
+- current SMS/OTP reliability signal;
 - yearly keep-alive cost;
-- setup difficulty;
-- remote setup/location practicality;
-- current stability/risk signal;
-- eSIM / physical SIM state when relevant;
-- short capability tags;
-- purchase/opening action;
-- concise tutorial;
-- keep-alive instruction;
-- major pitfall only when it changes the decision.
+- setup effort;
+- remote practicality;
+- stability;
+- continuity/recovery;
+- SIM/eSIM when material.
 
-Research provenance may exist behind an optional detail control, but it must never be the normal reading path.
+### Data SIM / eSIM
 
-## Community reality rule
+- current package/data cost;
+- allowance/validity;
+- coverage;
+- setup friction;
+- reusable/rechargeable state;
+- whether a real number is included;
+- current deal when materially useful.
 
-Real-user reports, tutorials, forum threads, comments, support interactions shared by users, and recent success/failure reports are the primary operational dataset for Phone Radar.
+### Temporary SMS platforms
 
-Public carrier pages are not an operational verification gate and absence from them must not turn a reproduced community route into `unknown` by default. Public price/product metadata may be collected when useful, but it does not override real-world operating evidence.
+- recent success signal;
+- current price;
+- country/service coverage;
+- private/shared/reused number state;
+- reuse/privacy risk;
+- current availability.
 
-The product should track what happened in practice: successful opening, successful OTP reception, failures, number recovery, refunds, reversals, support outcomes, mass complaints, policy enforcement waves, and whether a route is improving or degrading over time.
+No fake SMS percentages and no arbitrary 0–100 Phone risk score.
 
-## Metrics that need definitions before UI implementation
+## Full-guide contract
 
-### SMS/OTP reliability
+A detail view contains only what the user needs to execute:
 
-Do not invent a fake percentage. Until enough route-specific observations exist for a defensible rate, show a qualitative signal derived from recent community outcomes, sample count and recency.
+1. what to buy/use;
+2. where to get it;
+3. current price;
+4. prerequisites;
+5. exact setup/opening steps;
+6. how to receive SMS/OTP or use data;
+7. how to keep/recharge/renew it;
+8. main current failure mode;
+9. recovery/reissue path when relevant;
+10. one or a few useful current tutorial/video/community links.
 
-Future numeric success rates must expose the observation window and sample size internally and must not imply statistical precision that the dataset does not support.
+Do not turn the guide into a bibliography.
 
-### Setup difficulty
+## Implementation state
 
-Difficulty must be derived from actual friction: KYC, travel/local-presence requirement, support contact, SIM/eSIM conversion, device constraints, payment restrictions and number of manual steps.
+### DONE
 
-The user may see a compact indicator; the reasons belong in a short actionable summary.
+- R-001 — provider-by-provider documentation loop frozen.
+- R-002 — user-facing information contract defined.
+- R-003 — detail/tutorial contract defined.
+- R-006 — community-first research workflow defined.
+- R-007 — visual decision model defined and accepted.
+- Global route-pool seed created; country is a filter/tag, not the research sequence.
 
-### Phone route risk
+### ACTIVE
 
-Do not reuse Relay Exit Risk methodology or invent an arbitrary 0–100 score.
+- **R-004 — event/outcome data model.** Reuse current data where possible and add only what the new UI needs.
+- **R-005 — reclassify existing data.** Separate frontstage decision fields from backstage research fields; remove documentation-driven `unknown` behavior.
+- **R-008 — implementation.** Build the three-family visual dashboard + full-guide interaction on the existing canonical.
+- **R-009 — validation.** Verify desktop/mobile hierarchy and complete user journeys.
 
-Before a numeric Phone risk index can ship, define its scope and inputs. Candidate dimensions include recent service failures, number-loss/recycling events, abrupt enforcement, support inconsistency, recovery quality, long-term overseas continuity and trend direction.
+### AFTER RESET
 
-Until that model exists, use descriptive states such as `stable`, `watch`, `degrading`, `conflicting`, or equivalent product language.
+- R-010 — resume broad route expansion. New routes should improve choices, not satisfy country quotas.
 
-## Reset task list
+## Implementation constraints
 
-### R-001 — Freeze the wrong loop
+- Keep one canonical: `/tools/phone-number-survival-guide/`.
+- Use a fresh implementation branch/worktree.
+- Remove questionnaire-first gating.
+- Do not create country/provider doorway pages.
+- Do not bulk-add every candidate route in the same implementation PR.
+- Preserve privacy: do not collect phone numbers, OTPs, credentials or identity documents.
+- Track family selection, route views, full-guide opens and outbound acquisition actions.
 
-- Pause provider-by-provider documentation completion as the default next action.
-- Pause RedPocket/AIS expansion unless new work directly supports the redesigned decision surface.
-- Do not patch the current questionnaire/manual UI incrementally.
-- Do not add another Phone URL.
+## Acceptance gate
 
-**Done when:** the execution queue no longer sends the next session automatically into another carrier audit.
+The reset is complete only when a first-time user can:
 
-### R-002 — Rewrite the user-facing information contract
+1. see the three route families immediately;
+2. see real route options without answering questions;
+3. compare the right metrics at a glance;
+4. choose without reading research methodology;
+5. open a full guide only when desired;
+6. understand the exact next action;
+7. complete the route with less time and fewer decisions than generic search results require.
 
-Define the minimum fields required for a useful route card and route detail.
-
-Required card-level decision data:
-
-- route/provider;
-- number country/type;
-- recent SMS/OTP reliability signal;
-- real yearly keep-alive cost;
-- setup difficulty;
-- remote setup/location practicality;
-- current stability/risk state;
-- eSIM/physical SIM where material;
-- recent-status/freshness signal;
-- `How to open` and `Get / Buy` actions.
-
-**Done when:** every visible field answers a user decision or action question. No research-methodology field is required to understand the card.
-
-### R-003 — Define the detail/tutorial layer
-
-The detail view should be a short operational playbook, not a literature review:
-
-1. what to buy;
-2. what to prepare;
-3. exact opening steps;
-4. how to receive SMS/OTP;
-5. how to keep the number alive;
-6. main current pitfall;
-7. recovery/number-continuity path;
-8. purchase link;
-9. useful tutorial/video/community link when available and current.
-
-**Done when:** a user can execute the route without first understanding the research system.
-
-### R-004 — Redesign the data model around events and outcomes
-
-Make community reality first-class data rather than an annotation on top of static carrier records.
-
-Needed internal concepts:
-
-- success event;
-- failure/refusal event;
-- OTP reception event;
-- activation/setup event;
-- keep-alive event;
-- number-loss/recovery event;
-- refund/restoration/support-resolution event;
-- price/cost observation;
-- tutorial/procedure observation;
-- route snapshot over time.
-
-**Done when:** the system can represent a route that was stable, degraded, triggered complaints, then recovered without flattening that history into one static rule.
-
-### R-005 — Reclassify existing Phone data
-
-Review current fields and separate them into:
-
-- user-facing decision data;
-- backstage research data;
-- obsolete fields created by the old documentation-first mindset.
-
-Specifically find `unknown` states caused only by lack of public documentation and re-evaluate them from real-user evidence instead.
-
-**Done when:** missing marketing documentation is no longer treated as missing operational reality.
-
-### R-006 — Build a community-signal research workflow
-
-Research queries should prioritize:
-
-- recent successful setup;
-- recent OTP/SMS success and failure;
-- current keep-alive cost;
-- hidden/retention packages;
-- overseas use;
-- number recovery/reissue;
-- sudden enforcement or recycling incidents;
-- customer complaints and support outcomes;
-- current tutorials and practical setup paths.
-
-Stop researching once more information would not change the user's route choice, cost, difficulty, risk, tutorial or warning.
-
-**Done when:** research is organized around user decisions and outcomes, not around completing a carrier encyclopedia.
-
-### R-007 — Define the visual decision model before coding
-
-Produce a layout specification/wireframe for the existing Phone canonical before implementation.
-
-Requirements:
-
-- useful routes visible without completing a questionnaire;
-- lightweight filters refine rather than gate access;
-- visual hierarchy emphasizes route, reliability, cost, difficulty and risk;
-- proportions should be calm and information-dense without giant controls or cramped cards;
-- source/evidence details are secondary/on-demand;
-- mobile is a first-class layout, not a squeezed desktop version.
-
-**Stop condition:** do not begin production implementation until this interaction model is reviewed as a product concept.
-
-### R-008 — Implement only after the model is accepted
-
-When authorized:
-
-- use a fresh branch/worktree;
-- preserve one Phone canonical;
-- reuse existing route data where it still supports the new contract;
-- remove questionnaire-first gating;
-- implement route-first browsing + optional filters + tutorial detail;
-- do not bulk-add providers as part of the redesign.
-
-### R-009 — Validate the redesigned product as a tool
-
-Minimum acceptance checks:
-
-- a first-time visitor can see concrete number routes immediately;
-- no research-methodology reading is required to compare routes;
-- yearly cost, setup difficulty and SMS/OTP signal are scannable;
-- opening/keep-alive actions are obvious;
-- route details remain concise;
-- mobile has no overflow and maintains hierarchy;
-- current underlying data can update without rewriting the whole page;
-- analytics can distinguish route view, filter use, tutorial open and outbound purchase/opening actions.
-
-### R-010 — Resume route expansion only after the product reset
-
-After the redesigned decision surface exists, resume candidate research only when a new route materially improves the available choices.
-
-RedPocket, AIS and other candidates are inputs to the radar, not milestones by themselves.
-
-## Explicit non-goals
-
-- no carrier encyclopedia;
-- no official-rule explainer as the main product;
-- no mandatory multi-step questionnaire before seeing routes;
-- no source bibliography on the default result screen;
-- no fake SMS success percentage;
-- no arbitrary Phone risk score;
-- no bulk provider/country pages;
-- no new canonical URL;
-- no production redesign before the interaction model is agreed.
-
-## Next action
-
-The next Phone task is **R-002 + R-003 + R-007 as a product specification/wireframe discussion only**. Production code remains frozen until that concept is accepted.
+See `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` for the implementation contract and `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` for the first global breadth seed.
