@@ -53,6 +53,9 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
   assert.match(html, /\.pr-family button\{margin:0;/);
   assert.match(html, /\.pr-actions a,\.pr-actions button,\.pr-more,\.pr-close\{margin:0;/);
   assert.match(html, /\.pr-hero h1\{font-size:clamp\(2rem,4vw,3\.25rem\)/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\{background:var\(--panel\);color:var\(--ink\);border-color:var\(--line\)\}/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\[aria-selected="true"\]\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-actions \.primary\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
 });
 
 check('cards use compact hierarchy instead of five equal metrics', () => {
