@@ -14,7 +14,7 @@ const BEHAVIOR_TAG = `<script id="site-behavior-analytics">(()=>{const send=(nam
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
-for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','register-phone-survival-guide.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
+for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','register-tiktok-publish.mjs','register-phone-survival-guide.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
 // The homepage is intentionally hand-curated. Generators may update shared pages and
@@ -27,7 +27,7 @@ writeFileSync(homePath, curatedHome.includes(claudeSoon) ? curatedHome.replace(c
 for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt','tiktokPsmqCGL7xkhikvs8Stb3TpPWKrvG5RSF.txt','tiktok3DuVMC1KTX8prUrm2XfKgT0y8V7yvO6a.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
 }
-for (const dir of ['tools','about','contact','privacy','terms','media']) {
+for (const dir of ['tools','tiktok-publish','about','contact','privacy','terms','media']) {
   const src=join(root,dir); if(existsSync(src)) cpSync(src,join(dist,dir),{recursive:true});
 }
 
