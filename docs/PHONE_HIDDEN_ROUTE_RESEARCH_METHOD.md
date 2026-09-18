@@ -4,13 +4,21 @@ Last updated: 2026-09-18
 
 ## Purpose
 
-Phone Radar exists to surface practical phone-number routes that are hard for an ordinary user or generic search result to discover, reproduce and maintain.
+Phone Radar exists to surface practical phone routes that are hard for an ordinary user or generic search result to discover, reproduce and maintain.
 
 The research system is backstage. Its job is to reduce user time and uncertainty, not to produce a carrier encyclopedia.
 
 Core rule:
 
 > **Research what real users are successfully doing now, what is failing now, what it costs, how hard it is, and how the route changes over time.**
+
+Phone Radar research supports three route families:
+
+1. long-term SMS/OTP numbers;
+2. data SIM/eSIM routes;
+3. temporary SMS platforms.
+
+Each family uses different decision fields. Do not force one schema onto all of them.
 
 ## Source roles
 
@@ -23,6 +31,8 @@ Use recent first-hand forum posts, tutorials, comments, screenshots, user-shared
 - can it be used from China / overseas;
 - what setup steps users actually needed;
 - how users keep the number alive;
+- whether data speed/throttling/coverage behaves as expected;
+- whether temporary SMS numbers are shared/reused and whether users succeed;
 - whether numbers are being recycled, suspended or restored;
 - whether support actually resolves problems;
 - whether a previously good route is degrading;
@@ -34,54 +44,94 @@ Repeated current user outcomes matter more than a provider describing itself.
 
 Do **not** use operator/provider pages as an operational verification gate.
 
-The normal use of an operator/provider page is limited to commercial facts that are best obtained from the seller at the current moment:
+The normal use of an operator/provider page is limited to commercial facts best obtained from the seller at the current moment:
 
 - current listed price;
 - current plan/package name;
 - current promotion or newly launched offer;
+- current data allowance/validity as sold;
 - current stock/availability when exposed;
 - current purchase/checkout link;
 - current top-up denomination or advertised fee.
 
-A provider page does not establish that overseas activation works, OTP is reliable, support restores numbers, long-term roaming remains safe, or users trust the route after an incident.
+A provider page does not establish that overseas activation works, OTP is reliable, roaming performs well, support restores numbers, long-term use remains safe, or users trust the route after an incident.
 
 Absence of a community-reproduced behavior from the provider page does not make that behavior `unknown`.
 
 Only investigate a separate legal, identity, safety or prohibited-use constraint when it materially affects whether a route can be recommended. Do not turn that exception into a routine provider-documentation checklist.
 
-## Primary research targets
-
-For every route, prioritize:
-
-- successful purchase/setup;
-- setup refusal/failure;
-- SMS/OTP reception success/failure;
-- actual acquisition cost;
-- actual keep-alive method and cost;
-- overseas/China use in practice;
-- eSIM/SIM conversion and reissue;
-- same-number recovery/replacement;
-- number loss/recycling incidents;
-- support-assisted hidden plans or retention offers;
-- support refusal/inconsistency;
-- complaints and trust changes;
-- refunds, restorations and reversals;
-- current tutorials/procedures;
-- current price/promotions only where commercial metadata is needed;
-- whether the route is improving, stable, degrading or dead.
-
 ## Research order
 
-1. **Find current first-hand community reports.** Search forums, comments, tutorials, user screenshots and user-shared support interactions.
+1. **Find current first-hand community reports.** Search forums, comments, tutorials, screenshots and user-shared support interactions.
 2. **Find independent repetition.** Avoid counting copied tutorials as separate confirmation.
-3. **Extract the exact route.** Starting SIM/account state, location, device, payment, support/app steps, cost, timing and result.
-4. **Search recent failures.** Refusals, SMS failure, locks, recycling, sudden enforcement, price changes and support inconsistency.
-5. **Track resolution.** Restoration, refund, reversal, workaround, permanent loss or unresolved failure.
-6. **Check current commercial metadata only when needed.** Price, promotion, package name, stock and purchase link.
-7. **Convert research into decision data.** SMS/OTP signal, yearly cost, setup effort, remote practicality, stability, continuity and tutorial.
-8. **Stop.** Stop when more research would not change the user’s choice or next action.
+3. **Classify the route family.** Long-term SMS/OTP, data SIM/eSIM, or temporary SMS.
+4. **Extract the exact workflow.** Starting state, location, device, payment, support/app steps, cost, timing and result.
+5. **Search recent failures.** Refusals, SMS failure, speed/throttling problems, number reuse/recycling, locks, enforcement, price changes and support inconsistency.
+6. **Track resolution.** Restoration, refund, reversal, workaround, permanent loss or unresolved failure.
+7. **Check current commercial metadata only when needed.** Price, package, promotion, allowance, stock and purchase link.
+8. **Convert research into decision data.** Only fields used by the current family’s dashboard and guide.
+9. **Stop.** Stop when more material would not change the user’s choice or next action.
 
 Never make provider-by-provider documentation completeness a goal.
+
+## Long-term SMS / OTP record
+
+Capture only what supports decisions and freshness:
+
+- provider / route / country;
+- number type;
+- acquisition path;
+- starting SIM/eSIM/account state;
+- KYC/location/device friction actually encountered;
+- support/app/manual steps;
+- acquisition cost;
+- keep-alive cost/interval and yearly estimate;
+- SMS/OTP successes and failures;
+- overseas/China behavior actually reported;
+- same-number replacement/recovery outcome;
+- number-loss/recycling reports;
+- support refusal/inconsistency;
+- incident/resolution history;
+- tutorial links;
+- last successful reproduction;
+- last failure/refusal;
+- current stability state;
+- current commercial price/promotion snapshot when relevant;
+- sample/observation count when available.
+
+## Data SIM / eSIM record
+
+Capture:
+
+- route/provider;
+- destinations/network coverage actually experienced;
+- current package price;
+- allowance/validity;
+- activation/KYC/device friction;
+- install/APN/roaming steps actually needed;
+- real speed/throttling/fair-use reports;
+- recharge/reuse state;
+- phone-number/SMS/voice capability when present;
+- current promotion when it materially changes value;
+- tutorial links;
+- recent failures and route changes.
+
+## Temporary SMS platform record
+
+Capture:
+
+- platform/route;
+- current price model;
+- country/service availability;
+- private/shared/reused-number behavior;
+- rental/expiry window;
+- recent success/failure reports;
+- stock/availability where observed;
+- privacy/recovery risk;
+- platform link;
+- current incident/service-quality notes.
+
+Do not present temporary/shared numbers as durable recovery numbers.
 
 ## Strong operational evidence
 
@@ -99,41 +149,13 @@ A real user’s support chat, ticket, account screen or carrier message can esta
 
 ### Current failure / incident evidence
 
-Recent refusals, number loss, SMS failure, enforcement waves, mass complaints or degraded support are first-class evidence and can lower route status immediately.
+Recent refusals, number loss, SMS failure, speed/throttling problems, repeated temporary-SMS failures, enforcement waves, mass complaints or degraded support are first-class evidence and can lower route status immediately.
 
 ### Secondary tutorials / aggregations
 
 Useful for discovery and terminology. They become stronger when the author reports personal use or links to independent current outcomes. Do not count circular copies repeatedly.
 
-## Required route record
-
-Capture only what supports a user decision or maintenance:
-
-- provider / route / country;
-- number type;
-- discovery source/date;
-- purchase/acquisition path;
-- starting SIM/eSIM/account state;
-- KYC/location/device friction actually encountered;
-- support/app/manual steps;
-- acquisition cost;
-- keep-alive cost/interval and yearly estimate;
-- SMS/OTP successes and failures;
-- overseas/China behavior actually reported;
-- same-number replacement/recovery outcome;
-- number-loss/recycling reports;
-- support refusal/inconsistency;
-- incident/resolution history;
-- tutorial links;
-- last successful reproduction;
-- last failure/refusal;
-- current route state;
-- current commercial price/promotion snapshot when relevant;
-- sample/observation count when available.
-
 ## SMS/OTP reliability
-
-SMS/OTP reliability is a primary Phone Radar metric.
 
 Do not fabricate a success percentage from anecdotes. Until enough observations exist, derive a qualitative signal from recent independent successes/failures, recency, conflict level and whether failures are route-wide or service-specific.
 
@@ -175,7 +197,7 @@ This is especially important when trust changes faster than product availability
 
 ## Admission / demotion
 
-Admit a route when current operational evidence is sufficient for a reasonable user decision. Demote or hold when recent failures dominate, success depends on one unexplained exception, the method is stale, number-loss risk worsens, cost destroys the route’s advantage, or reproduction requires deceptive/unsafe behavior.
+Admit a route when current operational evidence is sufficient for a reasonable user decision. Demote or hold when recent failures dominate, success depends on one unexplained exception, the method is stale, number-loss/privacy risk worsens, cost destroys the route’s advantage, or reproduction requires deceptive/unsafe behavior.
 
 ## Search targets
 
@@ -188,6 +210,8 @@ Actively search multilingual communities for terms and patterns such as:
 - 国外激活 / activate abroad / roaming activation;
 - Wi-Fi Calling / VoWiFi / SMS over Wi-Fi;
 - 漫游收短信 / OTP success / incoming SMS;
+- 流量卡 / travel eSIM / data eSIM / throttling / fair use / APN;
+- 临时接码 / SMS rental / shared number / private number;
 - 套餐下架 / stopped working / failed / refused;
 - 恢复号码 / number restored / refund / compensation;
 - 回收号码 / recycled number / reclaimed;
