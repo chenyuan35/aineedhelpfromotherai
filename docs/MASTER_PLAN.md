@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | Q-014 is closed. PR #120 shipped the first bounded post-reset depth addition, A1 Croatia, without enlarging the default five-route shortlist. Q-013G now identifies Data as the shallowest family. | Phone gets settled behavior data and route breadth expands in small evidence-backed batches without scope creep. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | Q-014 is closed. PR #120 shipped A1 Croatia. Q-013G identifies Data as shallowest; Q-013D3 has now validated one bounded Data candidate, Trip.com CMLink mainland-China eSIM product ID `71336361`, as admission-ready with `Watch` caveats. | Phone gets settled behavior data and route breadth expands in small evidence-backed batches without scope creep. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -34,13 +34,15 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 9. **DONE — Q-014H production closure.** The bounded production QA verified the three-family first screen, compact shortlist, country refinement, full-guide/action model, responsive mobile rules, canonical/data health and analytics. The only verified gap was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`, and the public release audit, Eval Gate and Vercel deployment passed.
 10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`.
 11. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`. Kaktus is HOLD because remote activation is support-dependent; ClubSIM is HOLD because the old cheap keep-alive path changed; RedPocket is deprioritized because another US long-term route would not address the current breadth gap.
-12. **DONE — Q-013G first gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback. The next eligible depth batch should validate one concrete Data SIM/eSIM route, not add another long-term number merely for breadth.
-13. **NEXT IF Q-003 IS STILL WAITING — Data route validation.** Fresh Sep 18 community evidence makes StellarSecurity and CMLink useful leads, but they remain leads until exact provider/product identity, current package, setup/reuse behavior and first-hand outcomes are verified. Admit at most one route in the next batch.
-14. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
-15. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
-16. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-17. **Relay — monitor.** Preserve methodology and accumulate real history.
-18. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
+12. **DONE — Q-013G first gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback. The next eligible depth batch should target Data, not add another long-term number merely for breadth.
+13. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
+14. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
+15. **NEXT IF Q-003 IS STILL WAITING — Q-013D4 bounded production admission.** Add exactly the validated Trip.com CMLink route to the existing Data family without redesigning Phone; use fresh localized package/value wording and concise mixed-performance caveats. Stop after this one route.
+16. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
+17. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+18. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
+19. **Relay — monitor.** Preserve methodology and accumulate real history.
+20. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 
 ## Phone Radar shipped contract
 
@@ -84,10 +86,11 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-leve
 
 1. check the GSC Phone `settledThrough` trigger;
 2. if Sep 16+ is settled, execute Q-003 first;
-3. if it is still below Sep 16, continue the already-selected Data-family depth task, validating at most one route;
-4. do not add another Long-term route unless new evidence shows it solves a distinct user job better than the current pool;
-5. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due;
-6. do not reopen Q-014 or redesign the shipped Phone shell without a concrete new defect or settled behavior evidence.
+3. if it is still below Sep 16, execute Q-013D4: admit exactly the already-validated Trip.com CMLink mainland-China Data route as `Watch` using the normal production branch/preview/release path;
+4. do not reopen CMLink provider research or add a second Data route in that same production batch unless new contradictory evidence blocks the validated route;
+5. do not add another Long-term route unless new evidence shows it solves a distinct user job better than the current pool;
+6. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due;
+7. do not reopen Q-014 or redesign the shipped Phone shell without a concrete new defect or settled behavior evidence.
 
 ## Measurement cadence
 
