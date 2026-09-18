@@ -3,26 +3,214 @@
   "updatedAt": "2026-09-18",
   "notice": "Frontstage decision labels only. Operational research remains in the existing backstage data files.",
   "families": {
-    "long-term": {"label": "Long-term SMS / OTP", "description": "Real mobile numbers you can keep for account verification and recovery."},
-    "data": {"label": "Data SIM / eSIM", "description": "Travel and longer-term data routes, separated from real SMS-capable numbers."},
-    "temporary": {"label": "Temporary SMS", "description": "One-time or rented SMS routes for short-lived verification jobs."}
+    "long-term": {
+      "label": "Long-term SMS / OTP",
+      "description": "Real mobile numbers you can keep for account verification and recovery."
+    },
+    "data": {
+      "label": "Data SIM / eSIM",
+      "description": "Travel and longer-term data routes, separated from real SMS-capable numbers."
+    },
+    "temporary": {
+      "label": "Temporary SMS",
+      "description": "One-time or rented SMS routes for short-lived verification jobs."
+    }
   },
   "routes": {
-    "giffgaff-uk": {"family": "long-term", "order": 10, "shortlist": true, "smsSignal": "Mixed", "signalLevel": 2, "keepCost": "≈ £0.20/yr*", "setup": "Some work", "remote": "Best with a UK start", "stability": "Watch", "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching."},
-    "lebara-uk": {"family": "long-term", "order": 20, "shortlist": true, "smsSignal": "Good after setup", "signalLevel": 3, "keepCost": "≈ £0.77/yr*", "setup": "Some work", "remote": "UK activation first", "stability": "Stable", "caveat": "Low keep-alive cost, but the line must be activated in the UK first."},
-    "tello-us": {"family": "long-term", "order": 30, "shortlist": true, "smsSignal": "Good after setup", "signalLevel": 3, "keepCost": "≈ $61/yr + tax", "setup": "Some work", "remote": "US activation first", "stability": "Stable", "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection."},
-    "ultra-paygo-us": {"family": "long-term", "order": 40, "shortlist": true, "smsSignal": "Good / setup watch", "signalLevel": 3, "keepCost": "≈ $37/yr", "setup": "Some work", "remote": "Initial setup needs care", "stability": "Watch", "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters."},
-    "h2o-paygo-us": {"family": "long-term", "order": 50, "shortlist": true, "smsSignal": "Weak overseas", "signalLevel": 1, "keepCost": "≈ $41/yr*", "setup": "Low", "remote": "Not a strong roaming route", "stability": "Watch", "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point."},
-    "a1-croatia-prepaid-esim": {"family": "long-term", "order": 55, "shortlist": false, "smsSignal": "Good", "signalLevel": 3, "keepCost": "≈ €5/yr*", "setup": "Some work", "remote": "Remote eSIM reported", "stability": "Watch", "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived."},
-    "mobal-japan-voice-data": {"family": "long-term", "order": 60, "shortlist": false, "smsSignal": "Good after setup", "signalLevel": 3, "keepCost": "≈ ¥19,800/yr", "setup": "Some work", "remote": "Order remotely; ID flow applies", "stability": "Stable", "caveat": "A real Japanese mobile number with a higher recurring cost than keep-alive-focused routes."},
-    "sakura-japan-voice-data": {"family": "long-term", "order": 70, "shortlist": false, "smsSignal": "Good after setup", "signalLevel": 3, "keepCost": "Active plan for SMS", "setup": "High effort", "remote": "Japan pickup / verification", "stability": "Stable", "caveat": "The low suspension fee preserves the number only; active SMS requires normal service."},
-    "china-official-carrier": {"family": "long-term", "order": 80, "shortlist": false, "smsSignal": "Route-dependent", "signalLevel": 2, "keepCost": "Varies", "setup": "High effort", "remote": "In-person setup", "stability": "Route-dependent", "caveat": "Useful when a mainland-China number is specifically required; carrier/plan behavior varies."},
-    "airalo-data": {"family": "data", "order": 10, "shortlist": true, "dataCost": "Live destination price", "allowance": "Package-dependent", "coverage": "Global / destination-based", "setup": "Low effort", "reuse": "Package-dependent", "numberIncluded": "No normal SMS number", "caveat": "Use for data. Do not treat a data-only eSIM as a verification phone number."},
-    "mobal-japan-data-physical": {"family": "data", "order": 20, "shortlist": true, "dataCost": "¥7,920 / 30 days", "allowance": "Current Japan tourist plan", "coverage": "Japan", "setup": "Low effort", "reuse": "Travel product", "numberIncluded": "Data only", "caveat": "Useful physical-SIM fallback for Japan when eSIM is not suitable."},
-    "cmlink-52-country-365d": {"family": "data", "order": 30, "shortlist": true, "dataCost": "$12.50 / 365 days", "allowance": "10GB → 1–512 Kbps", "coverage": "52 countries / regions", "setup": "Low effort", "reuse": "No top-up / reinstall", "numberIncluded": "Data only", "caveat": "Long-duration backup data with recent first-hand use; this exact seller SKU is data-only and non-top-up/reinstall, and CMLink reliability reports vary by plan, so test before relying on it."},
-    "local-data-physical": {"family": "data", "order": 90, "shortlist": false, "dataCost": "Destination-specific", "allowance": "Carrier-specific", "coverage": "Local destination network", "setup": "Some work", "reuse": "Carrier-specific", "numberIncluded": "Not assumed", "caveat": "Fallback category only; choose a concrete local product before buying."},
-    "smspool-temp": {"family": "temporary", "order": 10, "shortlist": true, "smsSignal": "Inventory-dependent", "signalLevel": 2, "price": "Live quote", "coverage": "Country + service pools", "numberType": "One-time; rentals separate", "privacyRisk": "High for critical accounts", "availability": "Live inventory", "caveat": "A paid order is still not long-term ownership of the number."},
-    "5sim-temp": {"family": "temporary", "order": 20, "shortlist": true, "smsSignal": "Inventory-dependent", "signalLevel": 2, "price": "Live quote", "coverage": "Country + service + operator", "numberType": "One-time; rentals separate", "privacyRisk": "High for critical accounts", "availability": "Live inventory", "caveat": "Useful for one-time jobs; do not build account recovery around ordinary activation orders."},
-    "activatex-temp": {"family": "temporary", "order": 30, "shortlist": true, "smsSignal": "Supplier-dependent", "signalLevel": 2, "price": "Compare live offers", "coverage": "Multiple suppliers", "numberType": "Supplier-dependent", "privacyRisk": "Supplier-dependent", "availability": "Live supplier inventory", "caveat": "Comparison layer: the downstream supplier determines privacy, refund and number reuse."}
+    "giffgaff-uk": {
+      "family": "long-term",
+      "order": 10,
+      "shortlist": true,
+      "smsSignal": "Mixed",
+      "signalLevel": 2,
+      "keepCost": "≈ £0.20/yr*",
+      "setup": "Some work",
+      "remote": "Best with a UK start",
+      "stability": "Watch",
+      "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching."
+    },
+    "lebara-uk": {
+      "family": "long-term",
+      "order": 20,
+      "shortlist": true,
+      "smsSignal": "Good after setup",
+      "signalLevel": 3,
+      "keepCost": "≈ £0.77/yr*",
+      "setup": "Some work",
+      "remote": "UK activation first",
+      "stability": "Stable",
+      "caveat": "Low keep-alive cost, but the line must be activated in the UK first."
+    },
+    "tello-us": {
+      "family": "long-term",
+      "order": 30,
+      "shortlist": true,
+      "smsSignal": "Good after setup",
+      "signalLevel": 3,
+      "keepCost": "≈ $61/yr + tax",
+      "setup": "Some work",
+      "remote": "US activation first",
+      "stability": "Stable",
+      "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection."
+    },
+    "ultra-paygo-us": {
+      "family": "long-term",
+      "order": 40,
+      "shortlist": true,
+      "smsSignal": "Good / setup watch",
+      "signalLevel": 3,
+      "keepCost": "≈ $37/yr",
+      "setup": "Some work",
+      "remote": "Initial setup needs care",
+      "stability": "Watch",
+      "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters."
+    },
+    "h2o-paygo-us": {
+      "family": "long-term",
+      "order": 50,
+      "shortlist": true,
+      "smsSignal": "Weak overseas",
+      "signalLevel": 1,
+      "keepCost": "≈ $41/yr*",
+      "setup": "Low",
+      "remote": "Not a strong roaming route",
+      "stability": "Watch",
+      "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point."
+    },
+    "a1-croatia-prepaid-esim": {
+      "family": "long-term",
+      "order": 55,
+      "shortlist": false,
+      "smsSignal": "Good",
+      "signalLevel": 3,
+      "keepCost": "≈ €5/yr*",
+      "setup": "Some work",
+      "remote": "Remote eSIM reported",
+      "stability": "Watch",
+      "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived."
+    },
+    "mobal-japan-voice-data": {
+      "family": "long-term",
+      "order": 60,
+      "shortlist": false,
+      "smsSignal": "Good after setup",
+      "signalLevel": 3,
+      "keepCost": "≈ ¥19,800/yr",
+      "setup": "Some work",
+      "remote": "Order remotely; ID flow applies",
+      "stability": "Stable",
+      "caveat": "A real Japanese mobile number with a higher recurring cost than keep-alive-focused routes."
+    },
+    "sakura-japan-voice-data": {
+      "family": "long-term",
+      "order": 70,
+      "shortlist": false,
+      "smsSignal": "Good after setup",
+      "signalLevel": 3,
+      "keepCost": "Active plan for SMS",
+      "setup": "High effort",
+      "remote": "Japan pickup / verification",
+      "stability": "Stable",
+      "caveat": "The low suspension fee preserves the number only; active SMS requires normal service."
+    },
+    "china-official-carrier": {
+      "family": "long-term",
+      "order": 80,
+      "shortlist": false,
+      "smsSignal": "Route-dependent",
+      "signalLevel": 2,
+      "keepCost": "Varies",
+      "setup": "High effort",
+      "remote": "In-person setup",
+      "stability": "Route-dependent",
+      "caveat": "Useful when a mainland-China number is specifically required; carrier/plan behavior varies."
+    },
+    "airalo-data": {
+      "family": "data",
+      "order": 10,
+      "shortlist": true,
+      "dataCost": "Live destination price",
+      "allowance": "Package-dependent",
+      "coverage": "Global / destination-based",
+      "setup": "Low effort",
+      "reuse": "Package-dependent",
+      "numberIncluded": "No normal SMS number",
+      "caveat": "Use for data. Do not treat a data-only eSIM as a verification phone number."
+    },
+    "mobal-japan-data-physical": {
+      "family": "data",
+      "order": 20,
+      "shortlist": true,
+      "dataCost": "¥7,920 / 30 days",
+      "allowance": "Current Japan tourist plan",
+      "coverage": "Japan",
+      "setup": "Low effort",
+      "reuse": "Travel product",
+      "numberIncluded": "Data only",
+      "caveat": "Useful physical-SIM fallback for Japan when eSIM is not suitable."
+    },
+    "cmlink-52-country-365d": {
+      "family": "data",
+      "order": 30,
+      "shortlist": true,
+      "dataCost": "$12.50 / 365 days",
+      "allowance": "10GB → 1–512 Kbps",
+      "coverage": "52 countries / regions",
+      "setup": "Low effort",
+      "reuse": "No top-up / reinstall",
+      "numberIncluded": "Data only",
+      "caveat": "Long-duration backup data with recent first-hand use; this exact seller SKU is data-only and non-top-up/reinstall, and CMLink reliability reports vary by plan, so test before relying on it."
+    },
+    "local-data-physical": {
+      "family": "data",
+      "order": 90,
+      "shortlist": false,
+      "dataCost": "Destination-specific",
+      "allowance": "Carrier-specific",
+      "coverage": "Local destination network",
+      "setup": "Some work",
+      "reuse": "Carrier-specific",
+      "numberIncluded": "Not assumed",
+      "caveat": "Fallback category only; choose a concrete local product before buying."
+    },
+    "smspool-temp": {
+      "family": "temporary",
+      "order": 10,
+      "shortlist": true,
+      "smsSignal": "Inventory-dependent",
+      "signalLevel": 2,
+      "price": "Live quote",
+      "coverage": "Country + service pools",
+      "numberType": "One-time; rentals separate",
+      "privacyRisk": "High for critical accounts",
+      "availability": "Live inventory",
+      "caveat": "A paid order is still not long-term ownership of the number."
+    },
+    "5sim-temp": {
+      "family": "temporary",
+      "order": 20,
+      "shortlist": true,
+      "smsSignal": "Inventory-dependent",
+      "signalLevel": 2,
+      "price": "Live quote",
+      "coverage": "Country + service + operator",
+      "numberType": "One-time; rentals separate",
+      "privacyRisk": "High for critical accounts",
+      "availability": "Live inventory",
+      "caveat": "Useful for one-time jobs; do not build account recovery around ordinary activation orders."
+    },
+    "activatex-temp": {
+      "family": "temporary",
+      "order": 30,
+      "shortlist": true,
+      "smsSignal": "Supplier-dependent",
+      "signalLevel": 2,
+      "price": "Compare live offers",
+      "coverage": "Multiple suppliers",
+      "numberType": "Supplier-dependent",
+      "privacyRisk": "Supplier-dependent",
+      "availability": "Live supplier inventory",
+      "caveat": "Comparison layer: the downstream supplier determines privacy, refund and number reuse."
+    }
   }
 }
