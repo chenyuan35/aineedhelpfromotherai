@@ -1,144 +1,292 @@
 # Phone Radar — Interaction Specification
 
 Date: 2026-09-18
-Status: DRAFT FOR PRODUCT REVIEW / NO PRODUCTION IMPLEMENTATION YET
+Status: ACCEPTED DIRECTION / READY FOR IMPLEMENTATION
 
-## 1. User job
+## 1. Core product model
 
-A visitor comes to Phone Radar because they want a phone number, not a telecom research report.
+Phone Radar serves users who want an answer quickly, not users who want to study telecom research.
 
-The first screen must let them answer:
+The product therefore has **three fixed route families** and **two experience layers**.
 
-- Which real number routes exist right now?
-- Which routes are good for SMS/OTP?
-- What will each route cost me per year to keep alive?
-- How hard is it to open?
-- Can I do it from where I am?
-- Is the route currently stable or getting worse?
-- How do I open it?
+### Three route families
 
-Country is a filter/tag, not the primary navigation model. The default route list is global.
+1. **Long-term SMS / OTP numbers**
+   - real mobile numbers intended to be kept;
+   - optimized for OTP/SMS reception, yearly keep-alive cost, setup effort, overseas practicality and continuity.
 
-## 2. Page model
+2. **Data SIM / eSIM routes**
+   - travel or long-term data products;
+   - optimized for data price, coverage, validity, speed/traffic allowance, whether a real number is included, and whether the route can be reused or retained.
 
-The existing canonical remains:
+3. **Temporary SMS platforms**
+   - short-lived/rented SMS reception services;
+   - optimized for country/service availability, current price, recent success signal, reuse/privacy risk and whether the number is disposable or shared.
+
+These are three distinct user jobs. They share one Phone Radar product, but their comparison metrics are not forced into one identical template.
+
+## 2. Two-layer experience
+
+### Layer A — Visual dashboard
+
+This is the default experience.
+
+A user should be able to open the page, choose one of the three route families and understand the best current options without reading an article.
+
+The dashboard answers:
+
+- what routes exist now;
+- which ones are cheaper;
+- which ones are easier;
+- which ones are more reliable for the selected job;
+- which ones require travel/local setup;
+- which ones are stable or currently problematic.
+
+The dashboard is a decision instrument, not a research report.
+
+### Layer B — Detailed guide
+
+A user who wants to act can open a route detail.
+
+The detail answers:
+
+- what to buy;
+- where to buy;
+- what it costs now;
+- what to prepare;
+- exact opening/setup steps;
+- how to receive SMS/OTP or use data;
+- how to keep/recharge/renew it;
+- the main current failure mode;
+- recovery/reissue path when relevant;
+- useful current tutorial/video/community link.
+
+No user is required to read the detail before using the dashboard.
+
+## 3. One canonical, not three new SEO products
+
+Keep the existing canonical:
 
 `/tools/phone-number-survival-guide/`
 
-The page is organized into four visible layers:
+The three route families are top-level views/tabs inside the same Phone Radar product.
 
-1. **Find a number** — short title + one-sentence purpose.
-2. **Optional filters** — lightweight refinement, never a gate.
-3. **Global route list** — concrete routes immediately visible.
-4. **Route detail drawer/page section** — concise operational tutorial for the selected route.
+Do not create provider/country doorway pages merely to expand URL count.
 
-The user should not encounter research methodology, source classes or evidence reconciliation before seeing routes.
+A route detail may open as an in-page detail panel/drawer/anchored state so the user feels they have "entered" the full guide without requiring a second canonical family.
 
-## 3. First-screen composition
+## 4. Default first screen
 
 ### Header
 
 Use a short utility-first heading, for example:
 
-> **Find a number you can actually keep.**
+> **Find the right phone route fast.**
 >
-> Compare real phone-number routes by OTP reliability, yearly cost, setup effort and current stability.
+> Compare long-term numbers, data eSIMs and temporary SMS options without reading a telecom manual.
 
-No long introductory explanation.
+No research-method explanation in the hero.
 
-### Filter strip
+### Family switch
 
-Filters stay visually secondary to the route list.
+Immediately below the heading, show three compact choices:
 
-Recommended filter groups:
+- **Long-term SMS / OTP**
+- **Data SIM / eSIM**
+- **Temporary SMS**
 
-- **Use:** SMS / OTP, calls, long-term number, specific service compatibility when evidence exists;
-- **Setup:** remote only, eSIM, physical SIM okay, no support contact;
-- **Cost:** lowest yearly keep-alive;
-- **Location:** current user location / cannot travel;
-- **Stability:** prefer currently stable routes;
-- **Country:** optional country/region refinement.
+Default to the most broadly useful family: **Long-term SMS / OTP**.
 
-Filters should be chips/selects with a clear reset action. The page always shows routes before any filter is chosen.
+Switching family changes the dashboard metrics, not the entire product shell.
 
-## 4. Route-card contract
+## 5. Visual dashboard — Long-term SMS / OTP
 
-Each route card/row must communicate the decision in seconds.
+### Primary metrics
 
-### Primary identity
+Show these prominently:
 
-- provider / route name;
-- country flag/name and number prefix/type;
-- physical SIM / eSIM badge only when material.
-
-### Primary decision metrics
-
-Show these together and with equal visual weight:
-
-1. **SMS / OTP** — qualitative current signal;
-2. **Yearly keep-alive** — real annual retention cost or best current reproduced range;
-3. **Setup** — compact difficulty/effort state;
-4. **Remote use** — remote / local step / travel required;
+1. **SMS / OTP** — qualitative recent reliability signal;
+2. **Yearly keep-alive** — real annual retention cost/range;
+3. **Setup effort** — low / some work / high;
+4. **Remote practicality** — remote / remote after setup / local presence required;
 5. **Stability** — stable / watch / degrading / conflicting / retired.
 
-The card may show a short freshness note such as `Recent success: Aug 2026` when it materially helps the decision.
+### Route identity
+
+- provider / route name;
+- country/region;
+- number type/prefix when useful;
+- eSIM / physical SIM only when material.
 
 ### Actions
 
-Every card has two clear actions:
+- **Full guide** — opens the detailed operational guide;
+- **Get / Buy** — current acquisition path.
 
-- **How to open** — opens the operational detail;
-- **Get / Buy** — direct acquisition path when one exists.
+## 6. Visual dashboard — Data SIM / eSIM
 
-### What must not appear on the default card
+Do not force OTP metrics onto data-only products.
 
-- evidence-class labels;
-- research methodology;
-- long carrier-rule prose;
-- bibliography/source walls;
-- provider marketing copy;
-- official-vs-community reconciliation notes;
-- arbitrary 0–100 Phone risk scores;
-- fake OTP percentages.
+Primary metrics:
 
-## 5. Metric presentation
+1. **Data cost** — current package price and cost-per-GB where useful;
+2. **Allowance / validity** — GB/unlimited + active days;
+3. **Coverage** — country/region/network footprint;
+4. **Setup** — install/KYC/local activation friction;
+5. **Reusable?** — one-trip disposable / rechargeable / persistent account;
+6. **Phone number included?** — yes / no / limited functionality;
+7. **Current deal** — only when a materially better current promotion exists.
+
+Actions:
+
+- **Full guide**;
+- **Get / Buy**.
+
+Provider pages are useful here mainly for current package price, allowance, promotion and checkout availability. User/community reports remain the important source for actual speed, throttling, activation failures and roaming behavior.
+
+## 7. Visual dashboard — Temporary SMS platforms
+
+Primary metrics:
+
+1. **Recent SMS success signal**;
+2. **Price** — current per-number/per-use cost;
+3. **Country/service coverage**;
+4. **Number type** — private rental / shared / reused / unknown;
+5. **Reuse/privacy risk** — low / medium / high qualitative state;
+6. **Availability** — current stock/route availability when observed.
+
+Actions:
+
+- **Full guide**;
+- **Open platform**.
+
+The product must clearly distinguish temporary SMS from a number the user can safely keep for important long-term accounts.
+
+Do not imply that temporary/shared numbers are suitable for critical account recovery.
+
+## 8. Decision-cost principle
+
+The product is responsible for reducing decision work.
+
+Do not show dozens of equal-weight choices by default.
+
+For each family:
+
+- show a small current shortlist first;
+- let the user sort/filter only when needed;
+- make tradeoffs visible without opening details;
+- show one-line reasons for meaningful caveats;
+- keep research uncertainty backstage;
+- do not make the user read sources to understand the recommendation state.
+
+The user should be able to stop after the visual dashboard if they only need a quick answer.
+
+## 9. Filters
+
+Filters refine; they never gate access.
+
+### Long-term SMS / OTP
+
+Possible filters:
+
+- remote only;
+- eSIM required;
+- lowest yearly keep-alive;
+- easier setup;
+- more stable;
+- country/region;
+- specific service compatibility only where real outcome data exists.
+
+### Data SIM / eSIM
+
+Possible filters:
+
+- destination/coverage;
+- trip length;
+- data amount;
+- eSIM only;
+- cheapest per GB;
+- reusable/rechargeable;
+- number included.
+
+### Temporary SMS
+
+Possible filters:
+
+- destination/service;
+- country;
+- private number only;
+- lowest current cost;
+- stronger recent success.
+
+Avoid a multi-step questionnaire before results appear.
+
+## 10. Detail guide contract — Long-term SMS / OTP
+
+The detail should read like a practical setup guide, not an evidence review.
+
+1. **What to buy** — exact route/product, current acquisition price, SIM/eSIM, purchase link.
+2. **What you need** — actual prerequisites only.
+3. **Open it** — short numbered steps.
+4. **Test SMS / OTP** — confirm the route before attaching important accounts.
+5. **Keep it alive** — cheapest current reproduced action, interval and yearly cost.
+6. **Main current risk** — only the issue that changes the decision.
+7. **Recovery** — same-number reissue/replacement/port path when relevant.
+8. **Useful tutorial** — one strong current guide, optionally one video/community thread.
+
+## 11. Detail guide contract — Data SIM / eSIM
+
+1. package to buy;
+2. current price/promotion;
+3. supported destination/network;
+4. install/activation steps;
+5. APN/roaming steps if users actually need them;
+6. expected real-world speed/throttling issues from current reports;
+7. recharge/reuse path;
+8. whether a number is included and what it can actually do;
+9. current tutorial/link.
+
+## 12. Detail guide contract — Temporary SMS
+
+1. what the platform sells;
+2. current price model;
+3. countries/services commonly available;
+4. how rental/reception works;
+5. expiry/reuse/shared-number behavior;
+6. main privacy/account-recovery risk;
+7. what recent users report working/failing;
+8. platform link.
+
+Keep this concise. The goal is informed use, not a platform encyclopedia.
+
+## 13. Metric rules
 
 ### SMS / OTP
 
-Until enough observations exist for a defensible percentage, use a qualitative state based on current outcomes.
+No fake percentages until enough observations exist.
 
-Working labels:
+Use qualitative labels:
 
-- **Strong** — several recent independent successful outcomes and no material current failure pattern;
-- **Good** — current success is common but the sample is smaller or there are limited caveats;
-- **Mixed** — meaningful recent success and failure both exist;
-- **Weak** — recent failure dominates or the route is service-limited;
-- **Not enough recent data** — insufficient current user outcomes.
-
-The label is user-facing; sample details stay backstage or behind an optional detail.
+- **Strong**;
+- **Good**;
+- **Mixed**;
+- **Weak**;
+- **Not enough recent data**.
 
 ### Setup effort
 
-Working labels:
+Derive from real friction:
 
-- **Low effort** — ordinary online purchase/activation with few special steps;
-- **Some work** — KYC, support contact, eSIM conversion or several manual steps;
-- **High effort** — local presence, complex verification, repeated support work or difficult acquisition.
-
-Always pair the label with one short reason, e.g. `Passport + video KYC` or `Must activate locally`.
-
-### Remote practicality
-
-Use action-oriented states:
-
-- **Remote** — current route can be completed without travel;
-- **Remote after setup** — one local/home-network step is required first;
-- **Travel/local presence required**;
-- **Route-dependent** — when current outcomes genuinely conflict.
+- KYC;
+- support contact;
+- local presence;
+- payment restrictions;
+- SIM/eSIM/device constraints;
+- manual steps.
 
 ### Stability
 
-Use descriptive states only:
+Use:
 
 - **Stable**;
 - **Watch**;
@@ -146,172 +294,104 @@ Use descriptive states only:
 - **Conflicting**;
 - **Retired**.
 
-A one-line reason may appear only when it changes the decision, e.g. `Recent number-recovery complaints`.
+Do not invent a 0–100 Phone risk score yet.
 
-## 6. Detail / tutorial contract
+## 14. Provider/operator page role
 
-Opening `How to open` must show a short playbook, not a research report.
+Provider/operator pages are not used to certify operational reality.
 
-### Section A — What to buy
+Use them by default for commercial metadata only:
 
-- exact route/product;
-- approximate acquisition cost;
-- physical SIM/eSIM;
-- purchase link.
+- current listed price;
+- current plan/package name;
+- current promotion/new offer;
+- current stock/availability when exposed;
+- current purchase/checkout link;
+- current top-up/advertised fee.
 
-### Section B — What you need
+Use community/user evidence for real operation: OTP success, activation, roaming, recovery, support outcomes, number recycling and route degradation.
 
-Only actual prerequisites:
+## 15. Desktop visual model
 
-- passport/KYC if encountered;
-- local address/residency if required in practice;
-- supported device;
-- local presence if needed;
-- payment/support requirement.
+The default view should feel like a compact data dashboard, not a marketing landing page.
 
-### Section C — Open it
+Use three zones:
 
-Numbered operational steps. Keep each step short and action-oriented.
+- identity;
+- decision metrics;
+- actions.
 
-Example shape:
+The decision metrics occupy most of the space.
 
-1. Buy the eSIM from the current acquisition path.
-2. Install the profile.
-3. Complete identity verification.
-4. Attach to the required network / enable roaming or Wi-Fi Calling when the route needs it.
-5. Confirm you can receive a test SMS before tying important accounts to the number.
+Several routes should remain visible at once. Avoid oversized cards, oversized buttons and long prose.
 
-The actual steps are route-specific.
+## 16. Mobile visual model
 
-### Section D — Keep it alive
+Mobile uses compact stacked cards, not a squeezed desktop table.
 
-Show:
+Each card shows:
 
-- cheapest current reproduced keep-alive action;
-- interval;
-- yearly cost;
-- reminder suggestion when useful.
+1. route + country/type;
+2. 2-column metric block appropriate to the current family;
+3. one-line key caveat/practicality note;
+4. two restrained actions: **Full guide** and **Get / Buy**.
 
-### Section E — OTP / SMS reality
+The first real route should appear almost immediately after the family switch.
 
-A short current note:
+## 17. Closed-loop user journey
 
-- what recent users report working;
-- material service-specific failures if known;
-- whether roaming/Wi-Fi Calling/device choice matters.
+### Long-term SMS / OTP
 
-No literature review.
+`See shortlist → compare → open full guide → buy → activate → test SMS → keep alive → return when route status changes`
 
-### Section F — Main risk and recovery
+### Data SIM / eSIM
 
-Only the main practical failure mode and what the user can do:
+`See shortlist → compare package/value → open guide → buy → install → use → recharge/reuse if supported`
 
-- number loss/recycling;
-- eSIM/device replacement;
-- support refusal;
-- overseas enforcement;
-- port/reissue/recovery path.
+### Temporary SMS
 
-### Section G — Useful current tutorial
+`See current options → compare price/success/privacy → open guide → use → discard; do not treat as long-term recovery number`
 
-Show at most a small number of current practical links:
+The page should always make the next action obvious.
 
-- one strong step-by-step tutorial;
-- optionally one current video;
-- optionally one current community thread with meaningful recent outcomes.
+## 18. Analytics
 
-Do not turn this into a bibliography.
+Track:
 
-## 7. Desktop visual model
-
-The desktop experience should behave more like a comparison instrument than a collection of oversized marketing cards.
-
-Use a calm route list with three visual zones:
-
-- **Identity zone** — provider, country, number type;
-- **Decision zone** — OTP, annual cost, setup, remote practicality, stability;
-- **Action zone** — tutorial and acquisition actions.
-
-The decision zone should occupy most of the horizontal space. Identity and actions should remain visually quieter.
-
-Route rows/cards should have enough separation to scan, but several routes should remain visible without excessive scrolling. Avoid giant hero cards and oversized buttons.
-
-Sorting should be available for:
-
-- OTP reliability;
-- yearly keep-alive cost;
-- setup effort;
-- current stability.
-
-## 8. Mobile visual model
-
-Mobile is not a squeezed desktop table.
-
-Each route becomes a compact stacked card:
-
-1. route + country + SIM type;
-2. a small 2-column metric area for OTP / yearly cost / setup / stability;
-3. one line for remote practicality / key blocker;
-4. two restrained actions: `How to open` and `Get / Buy`.
-
-Keep the filter control collapsible or horizontally compact so it does not push the route list below several screens of UI.
-
-The user should see a real route almost immediately after the page heading.
-
-## 9. Global route-pool behavior
-
-The page must support a global route pool rather than a fixed country sequence.
-
-Default behavior:
-
-- show high-value routes across countries;
-- let the user filter by country when they care;
-- let cost/reliability/setup/stability dominate ranking;
-- allow multiple routes from one country when they solve different jobs;
-- do not manufacture a route just to give every country coverage.
-
-A route can enter the candidate pool from any country when current community evidence reveals a useful path.
-
-See `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` for the first breadth sample.
-
-## 10. Analytics contract
-
-The redesigned page should distinguish these actions:
-
+- family selected;
 - route impression/view;
-- filter applied/cleared;
-- sort changed;
-- tutorial opened;
-- purchase/get clicked;
-- keep-alive/reminder action if retained;
-- service-compatibility detail opened.
+- filter/sort;
+- full-guide open;
+- purchase/platform outbound click;
+- keep-alive/reminder action where relevant.
 
-Do not collect phone numbers, account credentials, OTPs or sensitive identity data.
+Do not collect phone numbers, OTPs, credentials or identity documents.
 
-## 11. Implementation boundary
+## 19. Acceptance criteria
 
-This document is the product interaction specification only.
+Ready to ship only when:
 
-No production implementation should begin until this concept is reviewed and accepted.
+1. a visitor sees real options without answering questions;
+2. the three route families are immediately understandable;
+3. each family uses metrics appropriate to its job;
+4. the visual layer alone is enough for a quick decision;
+5. the full guide provides exact execution steps when requested;
+6. operator pages are used for price/deal/purchase metadata, not operational certification;
+7. mobile exposes useful options quickly;
+8. research complexity remains backstage;
+9. the user always has an obvious next action;
+10. the product reduces decision time instead of creating more reading.
 
-When implementation is authorized:
+## 20. Implementation boundary
+
+This direction is accepted for implementation based on the user’s instruction to continue autonomously and close the loop.
+
+Implementation rules:
 
 - keep the existing canonical URL;
-- use a fresh branch/worktree;
+- use a fresh implementation branch/worktree;
 - remove questionnaire-first gating;
-- reuse useful existing route data but reclassify old research-heavy fields;
-- do not bulk-add providers in the same implementation PR;
-- test desktop and mobile hierarchy before merge.
-
-## 12. Product acceptance questions
-
-The concept is ready for implementation only if the answer to all of these is yes:
-
-1. Can a visitor see actual phone-number routes without answering questions first?
-2. Can they compare OTP reliability, yearly cost, setup effort and stability in seconds?
-3. Is country secondary to route usefulness?
-4. Can they open a practical tutorial without reading research methodology?
-5. Are the cards neither oversized marketing blocks nor cramped data dumps?
-6. Does mobile expose routes quickly?
-7. Can the same UI support Hong Kong, Taiwan, Korea, Singapore, Europe, North America and new countries without redesigning the page?
-8. Is the research complexity kept backstage?
+- implement the three-family visual dashboard + route detail guide pattern;
+- reuse useful existing data but do not expose old research-heavy fields;
+- do not bulk-add every candidate provider in the same implementation PR;
+- test desktop/mobile hierarchy and the full user journey before merge.
