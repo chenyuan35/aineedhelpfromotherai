@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "env -u NPM_CONFIG_GLOBAL -u NPM_CONFIG_PREFIX astro dev",
-    "build": "env -u NPM_CONFIG_GLOBAL -u NPM_CONFIG_PREFIX astro build",
+    "check:registry": "node scripts/check-tool-registry.mjs",
+    "build": "npm run check:registry && env -u NPM_CONFIG_GLOBAL -u NPM_CONFIG_PREFIX astro build",
     "preview": "env -u NPM_CONFIG_GLOBAL -u NPM_CONFIG_PREFIX astro preview"
   },
   "dependencies": {
