@@ -87,6 +87,10 @@ Do not use provider pages to certify OTP reliability, overseas activation, suppo
 
 Never recommend forged KYC, deceptive support stories, stolen identities, unauthorized access, security bypass or prohibited geography evasion.
 
+## Mission
+
+Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that can earn small, stable AdSense revenue. Optimize for organic impressions, indexed pages, CTR, useful/repeat visits, page speed, measurable referrals and eventual revenue; avoid SaaS complexity.
+
 ## Product rules
 
 - Prefer real demand, clear tool intent, repeat value, speed, low marginal cost and maintainability.
