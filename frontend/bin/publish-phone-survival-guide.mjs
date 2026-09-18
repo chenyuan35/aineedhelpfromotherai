@@ -1,4 +1,4 @@
-import { existsSync, rmSync, renameSync, readFileSync } from 'fs';
+import { existsSync, rmSync, renameSync, readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -12,7 +12,15 @@ rmSync(newDir, { recursive: true, force: true });
 renameSync(oldDir, newDir);
 
 const page = join(newDir, 'index.html');
-const html = readFileSync(page, 'utf8');
+let html = readFileSync(page, 'utf8');
+const showMoreWithoutAnalytics = "showMore.addEventListener('click',()=>{state.showAll=true;renderRoutes()});";
+const showMoreWithAnalytics = "showMore.addEventListener('click',()=>{trackPhone('phone_show_more',{family:state.family,country:state.country});state.showAll=true;renderRoutes()});";
+if (!html.includes('phone_show_more')) {
+  if (!html.includes(showMoreWithoutAnalytics)) throw new Error('Phone Radar show-more handler missing');
+  html = html.replace(showMoreWithoutAnalytics, showMoreWithAnalytics);
+  writeFileSync(page, html);
+}
+
 const required = [
   '<title>Phone Radar',
   '<meta name="robots" content="index,follow,max-image-preview:large">',
@@ -22,6 +30,8 @@ const required = [
   'Temporary SMS',
   'Full guide',
   'phone_family_select',
+  'phone_filter_change',
+  'phone_show_more',
   'phone_guide_open',
   'phone_outbound_click'
 ];
