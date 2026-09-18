@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const toolDir = path.join(repoRoot, 'frontend', 'tools', 'phone-number-lifecycle-mvp');
 const html = fs.readFileSync(path.join(toolDir, 'index.html'), 'utf8');
+const siteCss = fs.readFileSync(path.join(repoRoot, 'frontend', 'site.css'), 'utf8');
 const read = name => JSON.parse(fs.readFileSync(path.join(toolDir, name), 'utf8'));
 const catalog = read('catalog.json');
 const tutorial = read('tutorial-insights.json');
@@ -36,6 +37,39 @@ check('page is route-first, not questionnaire-first', () => {
   assert.doesNotMatch(html, /Travel or move abroad/);
   assert.doesNotMatch(html, /Evidence rule:/);
   assert.doesNotMatch(html, /<form\b/i);
+});
+
+check('visual family choices communicate the three user jobs', () => {
+  assert.match(html, /What do you need\?/);
+  assert.match(html, /Keep a real number/);
+  assert.match(html, /Get mobile data/);
+  assert.match(html, /Receive a one-time code/);
+  assert.match(html, /class="pr-family-icon"/);
+});
+
+check('Phone shell uses production design tokens and owns button spacing', () => {
+  for (const token of ['--line','--panel','--ink']) assert(siteCss.includes(token), `production token ${token} missing`);
+  assert.doesNotMatch(html, /var\(--(?:border|surface|text)\)/, 'Phone must not use undefined CSS token aliases');
+  assert.match(html, /\.pr-family button\{margin:0;/);
+  assert.match(html, /\.pr-actions a,\.pr-actions button,\.pr-more,\.pr-close\{margin:0;/);
+  assert.match(html, /\.pr-hero h1\{font-size:clamp\(2rem,4vw,3\.25rem\)/);
+});
+
+check('cards use compact hierarchy instead of five equal metrics', () => {
+  assert.match(html, /class="pr-status"/);
+  assert.match(html, /class="pr-meta-pill"/);
+  assert.match(html, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+  assert.match(html, /metrics:\[\['SMS \/ OTP',v\.smsSignal,signal\(v\.signalLevel\)\],\['Keep \/ year',v\.keepCost\],\['Setup',v\.setup\]\]/);
+  assert.doesNotMatch(html, /\['Stability',v\.stability\]/);
+  assert.doesNotMatch(html, /\['Remote',v\.remote\]/);
+});
+
+check('full guide stays inline with the selected route', () => {
+  assert.match(html, /data-guide-panel=/);
+  assert.match(html, /aria-expanded="false"/);
+  assert.match(html, /closeGuide\(close\.closest\('\[data-guide-panel\]'\)\)/);
+  assert.match(html, /panel\.closest\('\[data-route-card\]'\)/);
+  assert.doesNotMatch(html, /id="route-guide"/);
 });
 
 check('three route families are fixed', () => {
@@ -124,7 +158,7 @@ check('giffgaff incident/trust state is visible as watch rather than buried in p
 });
 
 check('page has closed-loop analytics without sensitive data collection', () => {
-  for (const event of ['phone_family_select','phone_filter_change','phone_guide_open','phone_outbound_click']) assert(html.includes(event), `missing ${event}`);
+  for (const event of ['phone_family_select','phone_filter_change','phone_show_more','phone_guide_open','phone_outbound_click']) assert(html.includes(event), `missing ${event}`);
   assert.doesNotMatch(html, /type=["'](?:tel|password)["']/i);
   assert.doesNotMatch(html, /name=["']otp["']/i);
 });
