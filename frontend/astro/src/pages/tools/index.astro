@@ -1,0 +1,69 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ToolCard from '../../components/tools/ToolCard.astro';
+import ToolSearch from '../../components/tools/ToolSearch.astro';
+import { categoryMeta, categoryOrder, tools } from '../../data/tools';
+
+const title = 'Phone Number, AI Usage & Utility Tools | AI Need Help';
+const description = 'Phone Radar, AI usage reset tools, relay exit-risk checks and fast browser utilities — focused tools with no sign-up required.';
+const counts = Object.fromEntries(categoryOrder.map((category) => [category, tools.filter((tool) => tool.category === category).length]));
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Phone Number, AI Usage & Utility Tools',
+  url: 'https://aineedhelpfromotherai.com/tools/',
+  description,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: tools.map((tool, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: tool.title,
+      url: new URL(tool.href, 'https://aineedhelpfromotherai.com').toString(),
+    })),
+  },
+};
+---
+
+<SiteLayout title={title} description={description} canonicalPath="/tools/" schema={schema}>
+  <main class="site-shell tool-directory">
+    <section class="directory-hero">
+      <div>
+        <p class="directory-kicker">Tool directory</p>
+        <h1>Start with the task that is blocking you.</h1>
+        <p class="directory-lead">Phone-number routes, AI reset timing, relay exit risk and a small set of browser utilities. Search by product or task instead of reading every card.</p>
+      </div>
+      <div class="directory-summary" aria-label="Tool families">
+        <div><span>Primary</span><strong>Phone Radar</strong></div>
+        <div><span>Secondary</span><strong>AI Reset Radar</strong></div>
+        <div><span>Secondary</span><strong>Relay Exit Risk</strong></div>
+        <div><span>Utilities</span><strong>{counts.utility} browser tools</strong></div>
+      </div>
+    </section>
+
+    <ToolSearch total={tools.length} />
+
+    <nav class="category-nav" aria-label="Tool categories">
+      {categoryOrder.map((category) => <a href={`#${category}`}>{categoryMeta[category].label} · {counts[category]}</a>)}
+    </nav>
+
+    {categoryOrder.map((category) => {
+      const meta = categoryMeta[category];
+      const categoryTools = tools.filter((tool) => tool.category === category);
+      return (
+        <section class="tool-category" id={category} data-tool-category>
+          <div class="category-head">
+            <div>
+              <p class="category-kicker">{meta.label}</p>
+              <h2>{meta.heading}</h2>
+            </div>
+            <p>{meta.description}</p>
+          </div>
+          <div class="tool-grid">
+            {categoryTools.map((tool) => <ToolCard tool={tool} />)}
+          </div>
+        </section>
+      );
+    })}
+  </main>
+</SiteLayout>
