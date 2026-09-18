@@ -95,6 +95,36 @@ For image/file tools, test a real input and download. For time/reset tools, test
 
 Push branch, open PR, wait for Vercel Preview and CI/Eval Gate, then merge only after green checks. After merge, wait for the production deployment and independently verify the apex-domain URLs rather than assuming deployment success means the public domain is correct.
 
+### Vercel Preview quota discipline
+
+Treat Vercel deployments as a limited release resource even when the hosting plan describes deployments broadly as available. A remote branch push can create a new Preview deployment, so repeated small remote commits can exhaust a rolling deployment-rate limit without any code defect.
+
+For production-affecting PRs:
+
+- finish research, edits, formatting and local/GitHub-side tests before the first remote push whenever practical;
+- prefer one consolidated final branch push per PR instead of a sequence of remote micro-commits;
+- do not push no-op, formatting-only or bookkeeping commits merely to retrigger Vercel after the code is already valid;
+- after a Preview is green, make another source push only for a real defect or required change; each new head must be revalidated;
+- production-affecting changes still require both CI/Eval Gate success and a real Vercel Preview before merge.
+
+For documentation-only fact-source/process PRs:
+
+- they do not require a rendered Vercel Preview because they cannot change the public build/runtime;
+- require a bounded diff review plus applicable GitHub CI/Eval checks instead;
+- batch related documentation updates into one remote commit where practical;
+- if Vercel Git integration still attempts a Preview for such a branch, do not repeatedly retrigger it just to turn the irrelevant status green.
+
+When Vercel reports `build-rate-limit`, `Deployment rate limited`, or an equivalent provider quota failure:
+
+1. classify it as a **provider quota blocker**, not a code/build failure;
+2. stop further source pushes, manual redeploys, CLI deploys and Deploy Hook retries for that release until capacity returns, because they create additional deployment attempts rather than fixing the cause;
+3. keep a production-affecting PR unmerged until a fresh real Preview succeeds;
+4. record the blocker in the current project facts/queue when it materially blocks the active release;
+5. when capacity returns, retry the existing release path once without introducing a fake source change solely to trigger deployment;
+6. do not bypass the limit with alternate accounts/projects, and do not change billing/upgrade plans or paid account settings without explicit user authorization.
+
+If recurring documentation pushes are materially consuming Preview quota, treat branch-level Preview suppression as a separate infrastructure change: verify the exact Vercel configuration behavior first, keep production/main deployments intact, test rollback, and do not change Vercel account settings merely to save quota without authorization.
+
 ## 6. Index and measure
 
 Keep `robots.txt`, sitemap, canonical URLs, hosting URL normalization, and internal links synchronized. Submit/inspect important URLs in Search Console when available.
