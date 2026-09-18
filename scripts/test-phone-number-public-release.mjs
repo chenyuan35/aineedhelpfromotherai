@@ -27,6 +27,8 @@ assert.match(page, /Temporary SMS/);
 assert.match(page, /Full guide/);
 assert.match(page, /"@type":"FAQPage"/);
 assert.match(page, /phone_family_select/);
+assert.match(page, /phone_filter_change/);
+assert.match(page, /phone_show_more/);
 assert.match(page, /phone_guide_open/);
 assert.match(page, /phone_outbound_click/);
 assert.match(page, /source_path:'\/tools\/phone-number-survival-guide\/'/);
