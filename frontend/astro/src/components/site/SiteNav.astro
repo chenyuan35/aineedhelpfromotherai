@@ -1,0 +1,44 @@
+<header class="site-header">
+  <div class="site-shell site-nav">
+    <a class="site-brand" href="/">
+      <span>AI Need Help</span>
+      <small>reset · access · reliability</small>
+    </a>
+    <nav class="site-links" aria-label="Primary">
+      <a href="/tools/phone-number-survival-guide/">Phone Radar</a>
+      <a href="/tools/cursor-usage-reset/">Reset Radar</a>
+      <a href="/tools/relay-exit-risk-checker/">Relay Risk</a>
+      <a href="/tools/">All tools</a>
+    </nav>
+    <button class="theme-switch" type="button" data-theme-switch aria-label="Theme: Auto" title="Theme: Auto">Auto</button>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector('[data-theme-switch]');
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  const modes = ['system', 'light', 'dark'];
+  const labels = { system: 'Auto', light: 'Light', dark: 'Dark' };
+
+  const current = () => localStorage.getItem('site-theme') || 'system';
+  const apply = (preference, persist = true) => {
+    const resolved = preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.dataset.themePreference = preference;
+    if (persist) localStorage.setItem('site-theme', preference);
+    if (button) {
+      button.textContent = labels[preference];
+      button.setAttribute('aria-label', `Theme: ${labels[preference]}`);
+      button.setAttribute('title', `Theme: ${labels[preference]}`);
+    }
+  };
+
+  apply(current(), false);
+  button?.addEventListener('click', () => {
+    const preference = current();
+    apply(modes[(modes.indexOf(preference) + 1) % modes.length]);
+  });
+  media.addEventListener?.('change', () => {
+    if (current() === 'system') apply('system', false);
+  });
+</script>

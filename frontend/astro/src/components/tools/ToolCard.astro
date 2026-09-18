@@ -1,0 +1,27 @@
+---
+import type { ToolDefinition } from '../../data/tools';
+
+export interface Props {
+  tool: ToolDefinition;
+}
+
+const { tool } = Astro.props;
+const searchText = [tool.title, tool.shortTitle, tool.categoryLabel, ...tool.keywords].join(' ').toLowerCase();
+---
+
+<a
+  class="tool-card"
+  href={tool.href}
+  data-tool-card
+  data-category={tool.category}
+  data-search={searchText}
+  data-featured={tool.featured ? 'true' : 'false'}
+>
+  <div class="tool-card-meta">
+    <span>{tool.categoryLabel}</span>
+    {tool.featured && <span>Core</span>}
+  </div>
+  <h3>{tool.title}</h3>
+  <p>{tool.description}</p>
+  <span class="tool-card-action">{tool.actionLabel} →</span>
+</a>

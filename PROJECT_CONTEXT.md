@@ -11,6 +11,7 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Area | Current state | Next move |
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
+| Frontend foundation | An isolated Astro 7 + Tailwind 4 foundation now exists under `frontend/astro/`: typed Tool Registry, current-site shell, reusable tool cards/search, shared design tokens, Astro `/tools/` sample, registry checks and dedicated Frontend Astro CI. It does **not** replace the current production build path. Vercel Preview still exercises the legacy static frontend, while the dedicated Astro CI validates the new sample build. | Keep production homepage/Phone/Relay shells unchanged. Only consider a later `/tools/` cutover after explicit preview/parity/analytics verification; migrate incrementally rather than replacing the whole site at once. |
 | Product scope | Scope remains frozen to three surfaces: **Phone Radar** primary; **AI Reset Radar** and **Relay Exit Risk** secondary. | No fourth product surface, second Phone canonical, provider/country doorway pages, or broad utility expansion. |
 | Homepage | Current first viewport remains `AI stopped? Start here.` / `What stopped?`; `home_job_select` is measuring behavior. | No homepage churn without evidence. |
 | Phone production | **LIVE / PRIMARY / RESET SHIPPED.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 replaced the old questionnaire/manual-first interaction with the three-family route-first Phone Radar dashboard. Production canonical returned HTTP 200, self-canonical/indexable metadata was verified, and public `radar-view.json` returned HTTP 200. | Finish Q-014H production closure QA, then use settled behavior and bounded route expansion rather than redesigning the shell. |
@@ -101,6 +102,7 @@ Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that
 
 - Canonical host: `https://aineedhelpfromotherai.com/`; `www` redirects to apex.
 - Static frontend: Vercel from GitHub `chenyuan35/aineedhelpfromotherai` `main`.
+- Isolated future frontend foundation: Astro 7 + Tailwind 4 under `frontend/astro/`; not yet wired into the production build.
 - Vercel proxies only current allowlisted backend routes.
 - Do not change DNS, AdSense, billing or critical account settings without explicit authorization.
 - Never print/commit credentials.
@@ -115,6 +117,7 @@ Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that
 - `docs/MASTER_PLAN.md` — phase/sprint/exit gates.
 - `docs/OPERATING_WORKFLOW.md` — fixed execution workflow.
 - `docs/CURRENT_EXECUTION_QUEUE.md` — atomic next actions.
+- `docs/FRONTEND_FOUNDATION_PLAN_2026-09-18.md` — Astro frontend foundation scope, boundaries and migration rules.
 - `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` — active Phone correction.
 - `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` — accepted Phone interaction contract.
 - `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` — global breadth seed.

@@ -1,0 +1,39 @@
+name: Frontend Astro
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'frontend/astro/**'
+      - '.github/workflows/frontend-astro.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'frontend/astro/**'
+      - '.github/workflows/frontend-astro.yml'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/astro
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/astro/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Verify tools directory output
+        run: |
+          test -f dist/tools/index.html
+          grep -q '<link rel="canonical" href="https://aineedhelpfromotherai.com/tools/"' dist/tools/index.html
+          grep -q '<h1>Start with the task that is blocking you.</h1>' dist/tools/index.html
+          grep -q '/tools/phone-number-survival-guide/' dist/tools/index.html
+          grep -q '/tools/relay-exit-risk-checker/' dist/tools/index.html
