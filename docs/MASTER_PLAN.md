@@ -17,29 +17,30 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` last checked at 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE IMPLEMENTATION** | Phone Radar direction reset is accepted: three route families + visual dashboard + full guide. | Production Phone page exposes real choices immediately, minimizes user decision time, and closes the compare→guide→action loop. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | PR #115 shipped the three-family visual dashboard + full-guide model to the existing Phone canonical. Route depth and measured behavior now matter more than another shell redesign. | Q-014 closure QA passes; Phone gets settled behavior data; route breadth expands in small evidence-backed batches without scope creep. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
-## Current sprint — Phone Radar implementation + indexing
+## Current sprint — Phone Radar post-release closure + measured depth
 
 1. **DONE — Product reset root correction.** The questionnaire/research-manual direction is rejected.
 2. **DONE — Product structure.** Phone Radar has three route families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS.
 3. **DONE — Experience structure.** Visual dashboard / small shortlist by default; detailed operational guide only when requested.
 4. **DONE — Global research direction.** Country is a filter/tag, not a research sequence.
 5. **DONE — Source-role correction.** Community/user outcomes drive operational reality. Operator/provider pages serve current price/package/promotion/stock/purchase metadata only by default.
-6. **ACTIVE — Q-014D outcome/event data model.** Reuse current data and add only fields needed to drive dashboard/guide decisions.
-7. **ACTIVE — Q-014E data reclassification.** Separate frontstage decision fields from backstage research fields and retire documentation-first `unknown` logic.
-8. **NEXT / AUTHORIZED — Q-014G implementation.** Replace questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical. Continue without item-by-item confirmation.
-9. **NEXT — Q-014H validation/closure.** Desktop/mobile hierarchy, full-guide flow, outbound actions, analytics events, build/route checks, Preview/CI, merge and production verification.
-10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; use settled behavior to improve the accepted design.
-11. **HOLD — Q-013 broad route expansion.** Resume after reset ships; choose new routes by user value, not country quotas.
-12. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
-13. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
-14. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-15. **Relay — monitor.** Preserve methodology and accumulate real history.
+6. **DONE — Q-014D v1 outcome/decision model.** `radar-view.json` holds the small frontstage decision layer; existing research/intelligence stays backstage.
+7. **DONE — Q-014E v1 data reclassification.** Frontstage decision labels are separated from backstage research detail; the public flow no longer depends on documentation-first `unknown` gating.
+8. **DONE — Q-014G implementation.** PR #115 replaced questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
+9. **ACTIVE — Q-014H production closure.** Canonical HTTP 200, self-canonical/indexability and `radar-view.json` HTTP 200 are already verified. One deliberate functional/mobile/guide/outbound/analytics QA pass remains.
+10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; it becomes the first gate before another Phone production expansion.
+11. **NEXT AFTER Q-014H / Q-003 GATE — Q-013R route expansion.** Resume global route discovery in batches of 1–2 production routes selected by user value, recency, uniqueness and reproducibility. Kaktus Czech, ClubSIM Hong Kong, A1 Croatia and RedPocket are leads; AIS remains HOLD.
+12. **NEXT AFTER FIRST EXPANSION BATCH — three-family gap check.** Long-term is currently deepest but geographically concentrated; Data is shallowest; Temporary has three platforms but no valid percentage success metric. Use user-job gaps, not route-count symmetry, to choose the next batch.
+13. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
+14. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+15. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
+16. **Relay — monitor.** Preserve methodology and accumulate real history.
 
-## Phone Radar implementation contract
+## Phone Radar shipped contract
 
 Canonical remains `/tools/phone-number-survival-guide/`.
 
@@ -63,6 +64,29 @@ On user request only: what to buy/use, current price, prerequisites, exact steps
 
 Every visible element must help choose or act. Methodology, reconciliation notes, source classes and long evidence prose remain backstage.
 
+### Release boundaries
+
+The current v1 deliberately does not provide:
+
+- fabricated OTP success percentages;
+- a Phone 0–100 risk score;
+- country/provider doorway pages;
+- a temporary-SMS marketplace/backend;
+- phone/OTP/credential/identity-document collection.
+
+These are not backlog omissions to fill automatically. Any future change requires evidence that it improves the user job without violating the product rules.
+
+## Next-session execution order
+
+The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-level order is:
+
+1. check the GSC Phone `settledThrough` trigger;
+2. if Sep 16+ is settled, execute Q-003 first;
+3. otherwise close Q-014H production QA;
+4. fix only verified defects, not speculative design preferences;
+5. then resume one bounded 1–2 route expansion batch;
+6. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due.
+
 ## Measurement cadence
 
 - Daily: existing Phone watchers continue as lead/event collectors; no automatic product rewrites.
@@ -84,6 +108,7 @@ Every visible element must help choose or act. Methodology, reconciliation notes
 - Search Console evidence outranks speculative keyword ideas after impressions exist.
 - Keep social/referral separate from Google organic.
 - AI discovery remains non-adversarial; provider quota/auth/cache failures remain provider blockers.
+- Do not redesign a shipped product shell when the next useful action is measurement, QA or route depth.
 
 ## Source-of-truth map
 
