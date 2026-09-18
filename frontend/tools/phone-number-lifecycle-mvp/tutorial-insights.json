@@ -1,6 +1,6 @@
 {
   "meta": {
-    "verifiedOn": "2026-09-15",
+    "verifiedOn": "2026-09-18",
     "purpose": "Decision variables distilled from high-visibility tutorials/community questions, with money/risk-critical claims anchored to current first-party evidence.",
     "rule": "Tutorials discover the questions. Official sources decide hard rules. Community exceptions never override an official restriction."
   },
@@ -232,6 +232,54 @@
           "type": "official"
         }
       ]
+    },
+    {
+      "id": "trip-cmlink-china-data",
+      "name": "Trip.com CMLink Mainland China eSIM",
+      "provider": "Trip.com / China Mobile CMLink",
+      "country": "Mainland China",
+      "numberClass": "data-only",
+      "form": "travel eSIM for mainland-China mobile data; no durable phone number is assumed",
+      "bestFor": ["mainland-china-data", "travel-data", "low-cost-esim", "hotspot"],
+      "purchaseUrl": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+      "cost": {
+        "purchase": "Trip product ID 71336361 is currently live with multiple 3–15 day package variants. Price is package/locale/time dependent; the SG listing showed a low entry price around S$3.70 on 2026-09-18, so always recheck the live localized offer before paying.",
+        "recurring": "Treat the current route as a travel-session package. Recharge or long-term reuse is not promised unless the exact live package explicitly supports it.",
+        "dynamic": true
+      },
+      "retention": {
+        "intervalDays": null,
+        "rule": "This is a short-validity connectivity route, not a phone-number retention product.",
+        "recovery": "If the package expires or performance becomes unsuitable, buy a fresh data route; keep a separate SMS-capable line for account recovery and OTP."
+      },
+      "friction": {
+        "identity": "No special identity requirement is established by the current product evidence; recheck the live Trip checkout before paying.",
+        "location": "The route is sold for mainland-China use. Recent 2026 first-hand reports reproduce use in multiple mainland cities, but network attachment and egress can vary.",
+        "device": "Use an unlocked eSIM-capable device. Purchase provides eSIM/QR delivery; Wi-Fi is useful for profile installation, and data roaming may need to be enabled for the route to connect.",
+        "ongoing": "Hotspot is advertised and reproduced, but recent users also report 4G-only periods, evening slowdowns and device-dependent performance. Heavy post-quota throttling has also been observed."
+      },
+      "evidence": [
+        {
+          "label": "Trip.com — Mainland China CMLink eSIM product 71336361",
+          "url": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+          "type": "official-commercial"
+        },
+        {
+          "label": "Naixi — detailed Trip/CMLink mainland-China eSIM test",
+          "url": "https://forum.naixi.net/thread-10581-1-1.html",
+          "type": "community"
+        },
+        {
+          "label": "Reddit — Trip.com CMLink mainland-China use reports",
+          "url": "https://www.reddit.com/r/travelchina/comments/1t4hd1i/tripcom_esim/",
+          "type": "community"
+        },
+        {
+          "label": "Reddit — Trip.com eSIM performance reports",
+          "url": "https://www.reddit.com/r/chinatravel/comments/1u2xb0y/anyone_have_trouble_with_their_tripcom_esim/",
+          "type": "community"
+        }
+      ]
     }
   ],
   "additionalCapabilities": {
@@ -252,6 +300,33 @@
         "state": "unknown",
         "label": "Wi-Fi Calling abroad not yet verified",
         "note": "The MVP does not yet have first-party evidence to promise overseas Wi-Fi Calling/Text for this route."
+      }
+    },
+    "trip-cmlink-china-data": {
+      "evidenceClass": {
+        "state": "community-reproduced-with-current-commercial-check",
+        "label": "Current Trip product + multiple 2026 mainland-China user reports",
+        "note": "Commercial package identity comes from Trip product ID 71336361. Operational behavior comes from current first-hand Trip/CMLink reports; mixed performance is part of the decision, not hidden uncertainty."
+      },
+      "roamingSms": {
+        "state": "not-supported-on-route",
+        "label": "Data-only route",
+        "note": "Treat this Trip/CMLink product as mobile data only. Do not imply a durable SMS-capable phone number or OTP capability."
+      },
+      "wifiCallingAbroad": {
+        "state": "indirect",
+        "label": "Can supply data for another line",
+        "note": "The eSIM can provide connectivity, but any Wi-Fi Calling/Text capability belongs to a separate phone-number line and depends on that carrier/device."
+      },
+      "numberDuration": {
+        "state": "data-package",
+        "label": "3–15 day travel package",
+        "note": "The current Trip listing is a short-validity data product, not a reusable phone number."
+      },
+      "termination": {
+        "state": "package-expiry-or-quality-change",
+        "label": "Package expires; route quality can vary",
+        "note": "Do not rely on this route for durable identity or work-critical connectivity. Current evidence includes 4G-only operation, slow periods and device variation; buy a fresh route or switch providers if performance is inadequate."
       }
     }
   }
