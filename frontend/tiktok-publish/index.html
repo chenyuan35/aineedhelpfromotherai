@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TikTok Video Publisher – Everyday Tools</title>
+  <meta name="description" content="Connect TikTok, select an MP4 or MOV video, review TikTok privacy settings, and publish from the web.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://aineedhelpfromotherai.com/tiktok-publish/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+  <style>
+    .tt-wrap{max-width:820px;margin:0 auto;padding:48px 20px 72px}.tt-wrap h1{margin-bottom:10px}.tt-lede{max-width:680px;color:var(--muted)}
+    .tt-flow{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.tt-flow span{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:13px;background:var(--panel)}
+    .tt-card{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px;margin:18px 0}.tt-card h2{margin-top:0;font-size:20px}
+    .tt-status{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tt-dot{width:10px;height:10px;border-radius:50%;background:#9a9a9a}.tt-dot.on{background:#178a57}.tt-dot.bad{background:#b64444}
+    .tt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tt-grid .full{grid-column:1/-1}.tt-field label{display:block;font-weight:650;margin-bottom:6px}.tt-field input,.tt-field textarea,.tt-field select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}.tt-field textarea{min-height:100px;resize:vertical}
+    .tt-file{border:1px dashed var(--line);border-radius:12px;padding:14px}.tt-file small,.tt-help{color:var(--muted)}.tt-checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}.tt-checks label{font-weight:400}.tt-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}.tt-actions button,.tt-actions a{margin-top:0}.tt-primary{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:11px 16px;background:var(--ink);color:var(--bg);font-weight:700;text-decoration:none;cursor:pointer}.tt-secondary{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;padding:10px 15px;background:var(--panel);color:var(--ink);font-weight:650;text-decoration:none;cursor:pointer}.tt-primary:disabled{opacity:.45;cursor:not-allowed}.tt-progress{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:14px}.tt-progress>span{display:block;height:100%;width:0;background:#178a57;transition:width .2s ease}.tt-result{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;min-height:42px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}.tt-note{font-size:13px;color:var(--muted);margin-top:12px}.tt-hidden{display:none!important}
+    @media(max-width:650px){.tt-wrap{padding-top:30px}.tt-grid{grid-template-columns:1fr}.tt-grid .full{grid-column:auto}.tt-actions>*{width:100%}}
+  </style>
+</head>
+<body>
+<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/">Tools</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav></div></header>
+<main class="tt-wrap">
+  <p class="eyebrow">Creator utility</p>
+  <h1>TikTok Video Publisher</h1>
+  <p class="tt-lede">Publish a video from this website to your own TikTok account. The complete flow is visible here for TikTok review: connect, choose media, review settings, post, and see TikTok's final status.</p>
+  <div class="tt-flow" aria-label="Publishing flow"><span>1. Connect TikTok</span><span>2. Choose MP4/MOV</span><span>3. Review post</span><span>4. Post to TikTok</span><span>5. See result</span></div>
+
+  <section class="tt-card" aria-labelledby="connect-title">
+    <h2 id="connect-title">1. Connect TikTok</h2>
+    <div class="tt-status"><span id="connection-dot" class="tt-dot"></span><strong id="connection-label">Checking connection…</strong><span id="creator-name" class="tt-help"></span></div>
+    <div class="tt-actions"><a id="connect-button" class="tt-primary" href="/api/tiktok/auth">Connect TikTok</a><button id="refresh-button" class="tt-secondary" type="button">Refresh connection</button></div>
+    <p class="tt-note">OAuth uses TikTok Login Kit. The client secret and OAuth access token are never exposed to page JavaScript. Unaudited Direct Post clients can only post under TikTok's current private-view restrictions.</p>
+  </section>
+
+  <section class="tt-card" aria-labelledby="media-title">
+    <h2 id="media-title">2. Choose a video</h2>
+    <div class="tt-file"><input id="video-file" type="file" accept="video/mp4,video/quicktime,.mp4,.mov"><div id="file-name" class="tt-help" style="margin-top:8px">No file selected.</div><small>MP4 or MOV. The selected file is sent to TikTok only after you press Post to TikTok.</small></div>
+  </section>
+
+  <section class="tt-card" aria-labelledby="post-title">
+    <h2 id="post-title">3. Review the post</h2>
+    <div class="tt-grid">
+      <div class="tt-field"><label for="title">Title</label><input id="title" maxlength="500" placeholder="Video title"></div>
+      <div class="tt-field"><label for="privacy">Privacy</label><select id="privacy"><option value="">Connect TikTok to load options</option></select></div>
+      <div class="tt-field full"><label for="description">Description / caption details</label><textarea id="description" maxlength="1600" placeholder="Description, hashtags, or mentions"></textarea><div class="tt-help">For video Direct Post, TikTok accepts one caption field. This page combines the title and description before sending it.</div></div>
+    </div>
+    <div id="interaction-options" class="tt-checks tt-hidden">
+      <label><input id="allow-comment" type="checkbox"> Allow comments</label>
+      <label><input id="allow-duet" type="checkbox"> Allow Duet</label>
+      <label><input id="allow-stitch" type="checkbox"> Allow Stitch</label>
+    </div>
+    <div id="draft-row" class="tt-checks tt-hidden"><label><input id="draft-mode" type="checkbox"> Upload to TikTok inbox instead of Direct Post (<code>video.upload</code>)</label></div>
+    <div class="tt-checks"><label><input id="consent" type="checkbox"> I explicitly consent to send this selected video and post settings to TikTok.</label></div>
+  </section>
+
+  <section class="tt-card" aria-labelledby="publish-title">
+    <h2 id="publish-title">4. Publish</h2>
+    <div class="tt-actions"><button id="publish-button" class="tt-primary" type="button" disabled>Post to TikTok</button></div>
+    <div class="tt-progress" aria-label="Upload progress"><span id="progress-bar"></span></div>
+    <p id="progress-label" class="tt-help">Waiting for a connected account and video.</p>
+  </section>
+
+  <section class="tt-card" aria-labelledby="result-title">
+    <h2 id="result-title">5. TikTok result</h2>
+    <div id="result-summary" class="tt-status"><span class="tt-dot" id="result-dot"></span><strong id="result-label">No publish attempt yet.</strong></div>
+    <pre id="result-raw" class="tt-result" aria-live="polite">TikTok API responses and original errors will appear here.</pre>
+  </section>
+
+  <p class="tt-note">This tool is intentionally narrow: it publishes a user-selected video only after that user connects TikTok and confirms the action. It does not auto-post in the background.</p>
+</main>
+<footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Focused utilities that solve one task clearly.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
+<script>
+(()=>{
+  const $=(id)=>document.getElementById(id);
+  const state={status:null,file:null,publishing:false};
+  const privacyLabels={PUBLIC_TO_EVERYONE:'Everyone',MUTUAL_FOLLOW_FRIENDS:'Friends',FOLLOWER_OF_CREATOR:'Followers',SELF_ONLY:'Only me'};
+  const pretty=(value)=>JSON.stringify(value,null,2);
+  const setRaw=(value)=>{$('result-raw').textContent=typeof value==='string'?value:pretty(value)};
+  function setResult(kind,label,raw){$('result-label').textContent=label;$('result-dot').className='tt-dot'+(kind==='ok'?' on':kind==='bad'?' bad':'');if(raw!==undefined)setRaw(raw)}
+  function setProgress(percent,label){$('progress-bar').style.width=Math.max(0,Math.min(100,percent))+'%';$('progress-label').textContent=label}
+  function updateButton(){const connected=!!(state.status&&state.status.connected);$('publish-button').disabled=state.publishing||!connected||!state.file||!$('privacy').value||!$('consent').checked}
+  function renderStatus(payload){
+    state.status=payload;
+    const connected=!!payload.connected;
+    $('connection-dot').className='tt-dot'+(connected?' on':payload.configured===false?' bad':'');
+    $('connection-label').textContent=connected?'TikTok connected':payload.configured===false?'TikTok server configuration missing':'TikTok not connected';
+    $('creator-name').textContent=connected&&payload.creator&&payload.creator.creator_nickname?'@'+payload.creator.creator_nickname:'';
+    $('connect-button').textContent=connected?'Reconnect TikTok':'Connect TikTok';
+    const privacy=$('privacy'); privacy.innerHTML='';
+    const options=connected&&payload.creator&&Array.isArray(payload.creator.privacy_level_options)?payload.creator.privacy_level_options:[];
+    const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent=options.length?'Choose privacy':'Connect TikTok to load options';privacy.appendChild(placeholder);
+    options.forEach(value=>{const o=document.createElement('option');o.value=value;o.textContent=privacyLabels[value]||value;privacy.appendChild(o)});
+    $('interaction-options').classList.toggle('tt-hidden',!connected);
+    const creator=payload.creator||{};
+    [['allow-comment','comment_disabled'],['allow-duet','duet_disabled'],['allow-stitch','stitch_disabled']].forEach(([id,disabledKey])=>{const el=$(id);el.disabled=creator[disabledKey]===true;el.checked=connected&&creator[disabledKey]!==true});
+    const canUpload=!!payload.can_upload_draft;$('draft-row').classList.toggle('tt-hidden',!canUpload);if(!canUpload)$('draft-mode').checked=false;
+    if(payload.error||payload.last_error)setResult('bad','Connection error',payload.error||payload.last_error);
+    updateButton();
+  }
+  async function loadStatus(){
+    try{const res=await fetch('/api/tiktok/status',{credentials:'same-origin',cache:'no-store'});const data=await res.json();renderStatus(data);if(!res.ok&&data.error)setResult('bad','Connection check failed',data.error)}
+    catch(error){renderStatus({connected:false});setResult('bad','Connection check failed',{message:error.message})}
+  }
+  $('refresh-button').addEventListener('click',loadStatus);
+  $('video-file').addEventListener('change',()=>{state.file=$('video-file').files&&$('video-file').files[0]||null;$('file-name').textContent=state.file?`${state.file.name} — ${(state.file.size/1024/1024).toFixed(2)} MB`:'No file selected.';setProgress(0,state.file?'Ready to publish.':'Waiting for a connected account and video.');updateButton()});
+  ['privacy','consent'].forEach(id=>$(id).addEventListener('change',updateButton));
+
+  async function uploadChunks(file,uploadUrl,chunkSize,totalChunkCount){
+    let offset=0;
+    for(let index=0;index<totalChunkCount;index++){
+      const isLast=index===totalChunkCount-1;
+      const end=isLast?file.size:Math.min(file.size,offset+chunkSize);
+      const part=file.slice(offset,end,file.type);
+      setProgress(Math.round(offset/file.size*100),`Uploading to TikTok: chunk ${index+1} of ${totalChunkCount}…`);
+      const response=await fetch(uploadUrl,{method:'PUT',headers:{'Content-Type':file.type,'Content-Range':`bytes ${offset}-${end-1}/${file.size}`},body:part});
+      const text=await response.text();
+      if(!response.ok&&response.status!==206){throw {message:'TikTok media upload failed.',http_status:response.status,raw:text}}
+      offset=end;
+      setProgress(Math.round(offset/file.size*100),`Uploaded ${Math.round(offset/file.size*100)}% to TikTok.`);
+    }
+  }
+
+  async function pollStatus(publishId){
+    for(let attempt=0;attempt<30;attempt++){
+      await new Promise(resolve=>setTimeout(resolve,2200));
+      const res=await fetch('/api/tiktok/status?publish_id='+encodeURIComponent(publishId),{credentials:'same-origin',cache:'no-store'});
+      const data=await res.json();
+      if(!res.ok||!data.ok)throw data.error||data;
+      const detail=data.tiktok&&data.tiktok.data||{};
+      setRaw(data.tiktok||data);
+      if(detail.status==='PUBLISH_COMPLETE')return {kind:'ok',label:'TikTok reports PUBLISH_COMPLETE.',raw:data.tiktok};
+      if(detail.status==='SEND_TO_USER_INBOX')return {kind:'ok',label:'TikTok sent the upload to the creator inbox.',raw:data.tiktok};
+      if(detail.status==='FAILED')return {kind:'bad',label:'TikTok reports FAILED: '+(detail.fail_reason||'unknown reason'),raw:data.tiktok};
+      setProgress(100,'TikTok processing: '+(detail.status||'waiting for status')+'…');
+    }
+    return {kind:'',label:'Upload finished; TikTok is still processing. Refresh later with the publish ID shown below.',raw:{publish_id:publishId}};
+  }
+
+  $('publish-button').addEventListener('click',async()=>{
+    if(state.publishing||!state.file)return;
+    state.publishing=true;updateButton();setResult('','Starting TikTok publish…',{});setProgress(1,'Requesting a TikTok upload session…');
+    try{
+      const mode=$('draft-mode').checked?'upload':'publish';
+      const payload={mode,file_name:state.file.name,file_type:state.file.type,file_size:state.file.size,title:$('title').value,description:$('description').value,privacy_level:$('privacy').value,allow_comment:$('allow-comment').checked,allow_duet:$('allow-duet').checked,allow_stitch:$('allow-stitch').checked,consent:$('consent').checked};
+      const initRes=await fetch('/api/tiktok/publish',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      const init=await initRes.json();
+      if(!initRes.ok||!init.ok)throw init.error||init;
+      setRaw(init.tiktok||init);
+      if(!init.upload_url||!init.publish_id)throw {message:'TikTok did not return upload_url and publish_id.',tiktok:init};
+      await uploadChunks(state.file,init.upload_url,Number(init.chunk_size),Number(init.total_chunk_count));
+      setProgress(100,'Upload complete. Waiting for TikTok processing…');
+      const final=await pollStatus(init.publish_id);setResult(final.kind,final.label,final.raw);
+    }catch(error){setResult('bad','Publish failed. Original error is shown below.',error);setProgress(0,'Publish failed.')}
+    finally{state.publishing=false;updateButton()}
+  });
+  loadStatus();
+})();
+</script>
+</body>
+</html>
