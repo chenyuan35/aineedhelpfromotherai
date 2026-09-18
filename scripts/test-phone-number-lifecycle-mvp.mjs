@@ -92,6 +92,26 @@ check('known retention values are represented without pretending suspension mean
   assert.match(radar.routes['sakura-japan-voice-data'].caveat, /preserves the number only/i);
 });
 
+check('A1 Croatia separates current commercial cost from community operating evidence', () => {
+  const id = 'a1-croatia-prepaid-esim';
+  const route = byId(id);
+  const view = radar.routes[id];
+  const cap = audit.additionalCapabilities[id];
+  assert(route, 'A1 Croatia route missing');
+  assert.equal(route.numberClass, 'carrier-mobile');
+  assert.equal(view.shortlist, false, 'A1 Croatia must not expand the default five-route shortlist');
+  assert.equal(view.stability, 'Watch');
+  assert.match(view.keepCost, /€5\/yr/);
+  assert.doesNotMatch(view.keepCost, /€2/);
+  assert.match(route.purchaseUrl, /a1\.hr\/privatni\/mobiteli\/sim-promo/);
+  assert.match(route.cost.recurring, /online top-up page offers EUR 5/i);
+  assert.match(route.retention.rule, /community-reported validity window/i);
+  assert(route.evidence.some(e => e.type === 'community' && /nodeloc\.com\/t\/topic\/81137/.test(e.url)), 'A1 Croatia community workflow evidence missing');
+  assert.match(cap.roamingSms.note, /China Unicom/i);
+  assert.match(cap.numberDuration.note, /362 days/i);
+  assert.match(cap.termination.note, /not verified/i);
+});
+
 check('core acquisition intelligence remains available behind the dashboard', () => {
   for (const id of ['tello-us','ultra-paygo-us','h2o-paygo-us','mobal-japan-voice-data','sakura-japan-voice-data','giffgaff-uk','smspool-temp','5sim-temp']) {
     assert(purchase.routes[id], `${id} missing purchase intelligence`);
