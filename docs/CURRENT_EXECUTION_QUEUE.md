@@ -2,229 +2,144 @@
 
 Last updated: 2026-09-18
 
-This is the short atomic queue for `aineedhelpfromotherai.com`. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
+`PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
 ## Current decision
 
-The Phone workstream has entered a **product reset** after a user-facing review on 2026-09-18.
+Phone Radar product direction is now accepted and implementation is authorized.
 
-The existing public Phone page drifted from the intended job into a questionnaire/research-manual experience. The next Phone task is therefore **not another carrier audit and not an incremental UI patch**.
+The old questionnaire/research-manual model is being replaced by:
 
-The durable reset checklist is:
+- **three route families:** long-term SMS/OTP numbers, data SIM/eSIM routes, temporary SMS platforms;
+- **two experience layers:** visual decision dashboard first, full operational guide on demand;
+- **one canonical URL:** `/tools/phone-number-survival-guide/`.
 
-- `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`
-
-Until that reset is accepted and implemented, route research remains an input, not the project milestone.
+The product must reduce user decision time. Research complexity stays backstage.
 
 ## Just completed
 
-- **Q-001 Phone verification-continuity validation:** DONE via PR #81; verdict remains provisional **NARROW**, inside the existing Phone canonical only.
-- **Q-002 Cursor answer-first CTR experiment:** SHIPPED / MEASURING via PR #82; pre-change Sep 13–14 baseline 141 settled impressions / 0 clicks.
-- **Q-009 Homepage direct-help positioning:** SHIPPED / MEASURING via PR #84/#85/#87; `AI stopped? Start here.` + `home_job_select` live.
-- **Q-011 historical cleanup:** DONE via PR #91/#93; stop broad cleanup.
-- **Q-012 task-list-first + Notion journal workflow:** DONE.
-- **Q-013 community-first Phone methodology reset:** DONE as a research-method correction. Current-route review covered giffgaff, Tello, Lebara UK, Sakura, Ultra PayGo and H2O PayGo; Sakura received the only immediate production correction. AIS remains HOLD.
-- **Q-005 first Sep 18 authority check:** DONE / NO RESPONSE YET. Recheck Sep 20.
-- **Phone UI patch PR #112:** CLOSED / NOT MERGED. Do not revive it.
+- Q-001 Phone verification-continuity validation: DONE / NARROW inside Phone only.
+- Q-002 Cursor CTR pilot: SHIPPED / MEASURING.
+- Q-005 first Sep 18 authority check: DONE / no response; recheck Sep 20.
+- Q-009 homepage positioning: SHIPPED / MEASURING.
+- Q-011 historical cleanup: DONE.
+- Q-012 task-list-first + Notion journal: DONE.
+- Q-013 Phone research-method correction: DONE.
+- Q-014A product root correction: DONE.
+- Q-014B card/information contract: DONE.
+- Q-014C detail/tutorial contract: DONE.
+- Q-014F visual decision model: DONE / accepted.
+- Global route-pool breadth seed: DONE.
+- PR #112: CLOSED / NOT MERGED; do not revive.
 
 ## Current measurement facts
 
-Last checked on 2026-09-18:
+Last checked 2026-09-18:
 
-- GSC `settledThrough`: **2026-09-14**.
-- Index tracker: **18 tracked / 9 indexed / 9 not indexed / 0 pending / 0 errors / 0 warnings**.
+- GSC `settledThrough`: **2026-09-15**.
 - Phone public release: **2026-09-16**.
-- Phone canonical remained `URL is unknown to Google`; no technical indexing defect found.
-- Early GA4 zeroes are not a negative verdict.
-- Cursor pre-title-change baseline: **141 settled impressions / 0 clicks**.
-
-## Trigger check before any new work
-
-At the start of the next session, after mandatory fact-source reading:
-
-1. If GSC `settledThrough >= 2026-09-16`, execute **Q-003** before Phone production implementation.
-2. If the date is 2026-09-20 or later and Q-005 has not been rechecked, execute the second **Q-005** check before sending any follow-up or batch 2.
-3. Otherwise execute **Q-014 Phone Radar product reset** below.
-
-Do **not** automatically continue RedPocket, AIS or another carrier audit merely because the measurement triggers have not fired.
+- Q-003 therefore remains waiting for settled coverage of Sep 16+.
+- Early GA4/GSC zeroes are not a product verdict.
 
 ## Q-014 — Phone Radar product reset
 
-Status: **ACTIVE — HIGHEST ELIGIBLE PHONE TASK**
+Status: **ACTIVE IMPLEMENTATION — HIGHEST ELIGIBLE PHONE TASK**
 
-Authoritative checklist:
+Authoritative docs:
 
 1. `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`
-2. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
-3. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
+2. `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md`
+3. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
+4. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
+5. `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md`
 
-### Root correction
+### Q-014D — Outcome/event model
 
-Phone Radar is a tool for helping a user **find, compare, open and keep a useful phone number**.
-
-Internal research is backstage. The normal page must not require the user to understand evidence classes, source reconciliation, carrier research notes or the site's research methodology.
-
-Community reality is the operational dataset: recent first-hand setup reports, SMS/OTP outcomes, keep-alive methods, failures, complaints, reversals, number recovery, support outcomes and current tutorials.
-
-Public carrier pages are not a gate that validates whether a reproduced route is real. Missing public documentation must not automatically create a user-facing `unknown` state. Public price/product metadata may still be collected when useful, but it does not override real-world operating evidence.
-
-### Q-014A — Freeze the wrong loop
-
-- Pause provider-by-provider documentation completion as the default task.
-- Pause RedPocket/AIS expansion unless it directly supports the redesigned decision surface.
-- Do not incrementally patch the current questionnaire/manual UI.
-- Keep one Phone canonical.
-
-### Q-014B — Define the user-facing card contract
-
-Before coding, define a route card around the user's actual decision:
-
-- route/provider;
-- number country/type;
-- recent SMS/OTP reliability signal;
-- real yearly keep-alive cost;
-- setup difficulty;
-- remote setup/location practicality;
-- current stability/risk state;
-- eSIM/physical SIM where relevant;
-- freshness/status signal;
-- `How to open`;
-- `Get / Buy`.
-
-No fake numeric SMS success rate. No arbitrary Phone risk score.
-
-### Q-014C — Define the detail/tutorial contract
-
-The detail layer should answer only what the user needs to execute the route:
-
-1. what to buy;
-2. what to prepare;
-3. exact opening steps;
-4. how to receive SMS/OTP;
-5. how to keep the number alive;
-6. main current pitfall;
-7. recovery/number-continuity path;
-8. purchase link;
-9. useful current tutorial/video/community link when available.
-
-Research provenance remains optional supporting detail, never the default reading path.
-
-### Q-014D — Redesign the internal data model around outcomes
-
-Make real-world events first-class data:
-
-- setup success/failure;
-- SMS/OTP success/failure;
-- keep-alive success;
-- number loss/recovery;
-- refund/restoration/support resolution;
-- cost observation;
-- procedure/tutorial observation;
-- route status over time.
-
-This must be able to represent a route that was stable, degraded, triggered complaints, then recovered.
+ACTIVE. Add only the route-state/outcome fields needed to drive the new visual layer and full guide. Do not create a carrier encyclopedia schema.
 
 ### Q-014E — Reclassify existing data
 
-Separate current Phone fields into:
+ACTIVE. Separate:
 
-- user-facing decision data;
+- frontstage decision data;
 - backstage research data;
-- obsolete fields created by the old documentation-first mindset.
+- obsolete documentation-first fields.
 
-Revisit `unknown` states that exist only because a public carrier page did not describe the behavior.
+Provider pages are used by default for current price/package/promotion/stock/purchase metadata only. Community/user evidence drives operational behavior.
 
-### Q-014F — Define the visual decision model before implementation
+### Q-014G — Implement visual dashboard + full guides
 
-Create a product specification/wireframe for the existing Phone canonical with these constraints:
+NEXT / AUTHORIZED.
 
-- concrete routes visible without completing a questionnaire;
-- filters refine rather than gate access;
-- route, SMS/OTP signal, yearly cost, setup difficulty and stability/risk dominate hierarchy;
-- information density is balanced: no oversized controls and no cramped data wall;
-- evidence/source detail is secondary/on-demand;
-- mobile hierarchy is designed explicitly.
+Implementation requirements:
 
-**Stop condition:** no production implementation until this interaction model is reviewed and accepted.
+- three top-level families: Long-term SMS/OTP · Data SIM/eSIM · Temporary SMS;
+- default layer is a compact visual shortlist/dashboard;
+- no questionnaire before results;
+- full guide opens only when requested;
+- metrics change by family;
+- small shortlist first, optional filters/sort second;
+- desktop and mobile both prioritize decision speed;
+- one canonical; no country/provider doorway pages;
+- no fake OTP percentages or arbitrary Phone risk score;
+- no sensitive user data collection.
 
-### Q-014G — Implement only after explicit authorization
+Use fresh implementation branch/worktree → local/build tests → PR → CI/Eval/Vercel Preview → merge → production verify.
 
-When authorized, use fresh branch/worktree → tests → PR → CI/Eval/Vercel Preview → merge → production verify. Do not bulk-add providers as part of the redesign.
+### Q-014H — Close the loop
 
-## Q-013 — Phone route research
+After implementation:
 
-Status: **HOLD AS DEFAULT NEXT ACTION**
-
-Existing research remains useful input. It is not discarded.
-
-- AIS Thailand: HOLD pending genuinely new evidence; do not keep polishing it.
-- RedPocket US: candidate only; no automatic next-step audit while Q-014 is active.
-- Other monitored candidates remain candidates, not permission to expand the catalog.
-
-When route research resumes, organize it around user outcomes: recent setup success, SMS/OTP success/failure, current keep-alive cost, recovery/reissue, complaints, support outcomes and current tutorials.
+1. verify the first screen exposes real routes immediately;
+2. verify each family has appropriate metrics;
+3. verify full-guide execution flow;
+4. verify purchase/outbound actions;
+5. verify mobile hierarchy/no overflow;
+6. verify analytics events for family, route, guide and outbound action;
+7. update `PROJECT_CONTEXT.md`, `MASTER_PLAN.md`, queue and Notion journal;
+8. then resume route expansion from the global candidate pool.
 
 ## Q-003 — First real Phone post-release measurement
 
-Status: **WAITING ON DATA TRIGGER — rechecked 2026-09-18**
+Status: **WAITING ON DATA**
 
-Trigger: GSC `settledThrough >= 2026-09-16`.
+Trigger: `settledThrough >= 2026-09-16`.
 
-When triggered:
+When triggered, inspect indexing, queries/impressions/clicks/CTR/position and GA4 behavior. Use it to improve the accepted dashboard model, not restore the old questionnaire.
 
-1. inspect Phone indexing/last crawl;
-2. inspect impressions/queries/clicks/CTR/average position;
-3. inspect GA4 Phone landing/session and available Phone interactions;
-4. use the data to inform Q-014, not to restore the old questionnaire/manual direction;
-5. record the resulting product decision in GitHub.
+## Q-013 — Route research
 
-Do not churn indexing submissions.
+Status: **HOLD AS DEFAULT TASK UNTIL RESET SHIPS**
 
-## Q-005 — Authority round-one follow-up
+AIS/RedPocket and other candidates are inputs, not milestones. After the reset ships, resume broad global route discovery by user value rather than country sequence.
 
-Status: **CHECKED 2026-09-18 — NO RESPONSE / NO VERIFIED LINK; RECHECK 2026-09-20**
+## Q-005 — Authority
 
-Do not resend early or increase volume because round one is quiet.
+Status: **RECHECK 2026-09-20**
 
-## Q-004 — Cursor CTR readout
+No resend before then.
 
-Status: **MEASURING**
+## Q-004 / Q-010 / Q-006 / Q-007 / Q-008
 
-Trigger: roughly 300–500 additional post-change impressions, unless an obvious defect appears.
-
-## Q-010 — Distribution readout
-
-Status: **MEASURING**
-
-Keep social/referral separate from Google organic. Do not mass cross-post.
-
-## Q-006 / Q-007 — Indexing + Phone watcher monitoring
-
-Status: **EVENT-DRIVEN**
-
-- Keep the existing index tracker cadence; no resubmission churn.
-- Phone watcher/community output creates review inputs, never automatic production rewrites.
-- Trial observer workload stays frozen.
-
-## Q-008 — AI retrieval blockers
-
-Status: **HOLD / BLOCKED**
-
-Follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` in order. Do not bypass provider blockers or invent results.
+- Cursor CTR: MEASURING.
+- Distribution: MEASURING; keep referral/social separate from organic.
+- Index/Phone observers: EVENT-DRIVEN.
+- AI retrieval blockers: HOLD/BLOCKED; follow AIR docs, do not bypass.
 
 ## Anti-scope guard
 
-Do **not** create:
+Do not create:
 
 - a fourth product surface;
 - a second Phone canonical;
-- provider/country/keyword doorway pages;
-- a temporary-number/OTP marketplace;
-- new account/email/SMS backends;
-- new workloads on the resource-tight trial observer;
-- paid SEO/data dependencies without approval;
-- mass community posting or duplicated outreach;
-- another Phone production redesign before Q-014F is accepted.
+- country/provider/keyword doorway pages;
+- a temporary-number marketplace/backend;
+- account/email/SMS storage backends;
+- new workloads on the disposable observer;
+- paid dependencies without approval.
+
+Temporary SMS platforms may be compared as external routes inside Phone Radar; the project must not become one.
 
 ## Execution rule
 
-Execute the highest-priority eligible action, verify it, record result/blocker/next trigger, then advance. For Phone, Q-014 product definition and interaction design now precede further implementation or provider expansion.
+Continue Q-014 through implementation and verification without waiting for item-by-item confirmation. Stop only for an irreversible/high-impact choice, account/billing/DNS change, safety issue, or documented external blocker.
