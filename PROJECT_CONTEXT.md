@@ -14,13 +14,13 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Frontend foundation | An isolated Astro 7 + Tailwind 4 foundation now exists under `frontend/astro/`: typed Tool Registry, current-site shell, reusable tool cards/search, shared design tokens, Astro `/tools/` sample, registry checks and dedicated Frontend Astro CI. It does **not** replace the current production build path. Vercel Preview still exercises the legacy static frontend, while the dedicated Astro CI validates the new sample build. | Keep production homepage/Phone/Relay shells unchanged. Only consider a later `/tools/` cutover after explicit preview/parity/analytics verification; migrate incrementally rather than replacing the whole site at once. |
 | Product scope | Scope remains frozen to three surfaces: **Phone Radar** primary; **AI Reset Radar** and **Relay Exit Risk** secondary. | No fourth product surface, second Phone canonical, provider/country doorway pages, or broad utility expansion. |
 | Homepage | Current first viewport remains `AI stopped? Start here.` / `What stopped?`; `home_job_select` is measuring behavior. | No homepage churn without evidence. |
-| Phone production | **LIVE / PRIMARY / RESET SHIPPED.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 replaced the old questionnaire/manual-first interaction with the three-family route-first Phone Radar dashboard. Production canonical returned HTTP 200, self-canonical/indexable metadata was verified, and public `radar-view.json` returned HTTP 200. | Finish Q-014H production closure QA, then use settled behavior and bounded route expansion rather than redesigning the shell. |
+| Phone production | **LIVE / PRIMARY / Q-014 COMPLETE.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 shipped the three-family route-first dashboard. Q-014H production closure found one concrete analytics gap: `Show more` lacked a Phone-specific event. PR #118 added privacy-safe `phone_show_more`; the public Phone build audit, Eval Gate and Vercel deployment passed, and the production canonical still loads normally. | Keep the shell stable. Check the GSC Sep 16 settlement gate before another production expansion; otherwise resume bounded 1–2 route depth work. |
 | Phone product direction | **SHIPPED.** Three route families: **Long-term SMS/OTP numbers**, **Data SIM/eSIM routes**, **Temporary SMS platforms**. Two layers: **visual decision dashboard first**, **full operational guide on demand**. | Keep the shell stable unless QA or real behavior data identifies a concrete problem. |
 | Phone decision-cost rule | The product must reduce user reading and decision time. Default view is a small current shortlist, not dozens of equal-weight routes and not a questionnaire. | Keep next action obvious: compare → full guide → buy/use → setup/test → keep/recharge/recover as appropriate. |
 | Phone research method | Community/user reports, tutorials, comments, user-shared support interactions and current success/failure outcomes drive operational reality. Operator/provider pages are used by default for current price/package/promotion/stock/purchase metadata only; they are not an operational verification gate. | Research only fields that change choice/action. Keep research complexity backstage. |
-| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. Country is a filter/tag, not the research sequence. | After Q-014H closure, resume value-first global discovery in batches of 1–2 production routes. Kaktus Czech, ClubSIM Hong Kong, A1 Croatia and RedPocket are candidate leads; AIS remains HOLD. |
-| Phone audit | Q-013 provider-by-provider official auditing is not the default task. Q-014 implementation shipped through PR #115; Q-014H still needs one deliberate production functional/mobile/analytics closure pass. | Close Q-014H first; then resume Q-013 as community-first route expansion rather than documentation completeness work. |
-| Search Console | GSC Wizard connected. Last check returned `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | At the start of the next session check the trigger. When `settledThrough >= 2026-09-16`, execute Q-003 before another Phone production expansion. |
+| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. Country is a filter/tag, not the research sequence. | After the GSC trigger check, resume value-first global discovery in batches of 1–2 production routes. Kaktus Czech, ClubSIM Hong Kong, A1 Croatia and RedPocket are candidate leads; AIS remains HOLD. |
+| Phone audit | **Q-014 CLOSED.** The deliberate production closure pass confirmed the three-family first screen, compact shortlist, country refinement, family-specific metrics, practical full-guide content, outbound paths, responsive mobile rules, canonical/indexability/data health and interaction analytics. The only verified defect was the missing Phone-specific show-more event, fixed by PR #118. | Do not reopen the reset/redesign cycle. Resume Q-013 as community-first route expansion, subject to the Q-003 GSC gate. |
+| Search Console | GSC Wizard connected. Last check returned `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | At the start of the next work round check the trigger. When `settledThrough >= 2026-09-16`, execute Q-003 before another Phone production expansion. |
 | Indexing | Last known tracker: 18 tracked / 9 indexed / 9 not indexed; Phone canonical had previously been `URL is unknown to Google`. The new production page itself is crawlable/indexable and returned HTTP 200. | Let normal cadence work; no manual submission churn. Re-evaluate through GSC once settled data covers the release. |
 | Cursor CTR | Cursor title/meta pilot remains measuring from a 141-impression / 0-click pre-change baseline. | Wait for roughly 300–500 additional impressions unless an obvious defect appears. |
 | Distribution | Claude Reset Threads and Cursor Reset Mastodon tests are published; referral/social remains separate from organic. | Measure first; no mass cross-posting. |
@@ -31,17 +31,17 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-Phone Radar is now in post-release closure and measured depth-building, not another concept/reset cycle.
+Phone Radar is now in measured depth-building after Q-014 closure, not another concept/reset cycle.
 
-Next session execute in this order:
+Next work round execute in this order:
 
 1. Check GSC Wizard `settledThrough` for the Phone canonical.
 2. If `settledThrough >= 2026-09-16`, execute Q-003 first: indexing + queries/impressions/clicks/CTR/position + GA4 behavior where available.
-3. Otherwise finish Q-014H production closure QA: three-family first screen, compact shortlist, country filter, one full guide per family, purchase/outbound links, mobile hierarchy/no overflow, analytics hooks, canonical/data-file health.
-4. If Q-014H finds no material defect, mark Q-014 complete. If it finds a defect, fix only the defect through the normal branch/PR/CI/Preview path; do not redesign the product again.
-5. Then resume Q-013 as a small value-first route expansion batch: 1–2 production routes total, chosen from fresh community evidence and the global candidate pool.
-6. Q-005 authority recheck remains due Sep 20; no follow-up before then.
-7. Cursor/homepage/distribution continue measuring; no premature churn.
+3. If it is still `< 2026-09-16`, resume Q-013R as one small value-first route expansion batch: 1–2 production routes total, chosen from fresh community evidence and the global candidate pool.
+4. Before a second expansion batch, run the three-family user-job gap check; Data is currently the shallowest family, but route count symmetry is not a goal.
+5. Q-005 authority recheck remains due Sep 20; no follow-up before then.
+6. Cursor/homepage/distribution continue measuring; no premature churn.
+7. The Astro frontend foundation remains infrastructure only; do not use it as permission for a broad production redesign.
 
 Detailed next-session checklist and stop conditions are in `docs/CURRENT_EXECUTION_QUEUE.md`.
 
