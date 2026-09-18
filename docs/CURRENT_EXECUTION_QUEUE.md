@@ -61,11 +61,7 @@ ACTIVE. Add only route-state/outcome fields needed to drive the new visual layer
 
 ### Q-014E — Reclassify existing data
 
-ACTIVE. Separate:
-
-- frontstage decision data;
-- backstage research data;
-- obsolete documentation-first fields.
+ACTIVE. Separate frontstage decision data from backstage research data and obsolete documentation-first fields.
 
 Provider pages are used by default for current price/package/promotion/stock/purchase metadata only. Community/user evidence drives operational behavior.
 
