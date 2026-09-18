@@ -6,18 +6,20 @@ Last updated: 2026-09-18
 
 ## Current decision
 
-Phone Radar v1 has shipped and Q-014 production closure is complete on the existing canonical:
+Phone Radar's accepted product model remains correct on the existing canonical:
 
 `/tools/phone-number-survival-guide/`
 
-The accepted product model remains:
+The model remains:
 
 - **three route families:** long-term SMS/OTP numbers, data SIM/eSIM routes, temporary SMS platforms;
 - **two experience layers:** visual decision dashboard first, full operational guide on demand;
 - **no questionnaire before routes;**
 - **research complexity stays backstage.**
 
-Do not restart the rejected questionnaire/research-manual direction. Do not redesign the shipped dashboard merely because more ideas exist. Use settled behavior data when available, otherwise deepen the route pool in bounded evidence-backed batches.
+However, **Phone visual closure is reopened** after direct user feedback that the shipped page is still visually messy. The Sep 18 code/spec audit reproduced concrete shell defects, including undefined Phone CSS tokens, inherited global button spacing, oversized hero hierarchy, equal-weight card density and a Full guide that opens after the route list rather than in the selected route's context.
+
+Do not interpret this as permission for another broad redesign or more routes. The next bounded Phone task is to repair the existing shell only. Route expansion, including PR #127, stays secondary until that repair is visually verified.
 
 ## Just completed
 
@@ -35,30 +37,45 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 - Q-014E frontstage/backstage data separation: DONE for v1.
 - Q-014F visual decision model: DONE / accepted.
 - Q-014G visual dashboard + full-guide implementation: DONE.
-- Q-014H production closure QA: **DONE.** The only verified defect was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`. Public Phone build audit, Eval Gate, Vercel deployment and production canonical load all passed.
-- Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand. Production `radar-view.json`, `Show 4 more routes` and Croatia filter were verified live.
-- Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest, so the next depth task is Data-family validation rather than another long-term number.
-- Q-013D2 Stellar China Data validation: **DONE / HOLD.** The current 100GB / 60-day products are real and cheap, but a Sep 9 first-hand buyer reports ordering the nonhkip / Singapore / China Unicom+Telecom route and receiving `JC091` / China Mobile identifiers instead. Route identity is not reproducible enough for production admission. See `docs/PHONE_DATA_ROUTE_VALIDATION_2026-09-18.md`.
-- Q-013D3 Trip.com CMLink Mainland China eSIM validation: **DONE / ADMISSION-READY AS `Watch`.** Exact route is Trip product ID `71336361`, currently live as a 3–15 day CMLink-backed mainland-China travel eSIM. Multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use, while 4G-only operation, evening slowdowns and device-dependent performance remain material caveats. See `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`.
+- Q-014H earlier technical closure: **SUPERSEDED AS VISUAL-CLOSURE EVIDENCE.** It verified flow/data/analytics and fixed `phone_show_more`, but did not catch the current computed-style/hierarchy defects.
+- Q-014I Phone visual closure audit: **DONE / REPAIR REQUIRED.** See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
+- Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand.
+- Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest.
+- Q-013D2 Stellar China Data validation: **DONE / HOLD.** The selected network/egress route is not reproducible enough for production admission.
+- Q-013D3 Trip.com CMLink Mainland China eSIM validation: **DONE / ADMISSION-READY AS `Watch`.** Exact route is Trip product ID `71336361`.
 - Global route-pool breadth seed: DONE.
-- Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are now reusable infrastructure only; production frontend has not been switched.
+- Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are reusable infrastructure only; production frontend has not been switched.
 - PR #112: CLOSED / NOT MERGED; do not revive.
 - PR #114: MERGED. Locked the global Phone Radar product model.
 - PR #115: MERGED. Rebuilt the production Phone experience as the three-family route-first dashboard.
-- PR #118: MERGED. Closed the Q-014H show-more analytics gap without changing UI, routes, copy or canonical behavior.
+- PR #118: MERGED. Added Phone-specific `phone_show_more` analytics.
 - PR #120: MERGED. Added A1 Croatia prepaid eSIM as the first bounded route-depth addition.
 
 ## Post-release recap
 
 ### What changed
 
-The old flow made users answer questions before seeing routes and exposed too much research/evidence prose. The shipped flow now starts with actual route choices, optional country refinement, compact family-specific metrics, and a `Full guide` action.
+The old flow made users answer questions before seeing routes and exposed too much research/evidence prose. The current flow starts with actual route choices, optional country refinement, family-specific metrics, and a `Full guide` action.
 
-The page tracks the accepted user journey:
+The accepted user journeys remain:
 
 - **Long-term SMS/OTP:** compare → full guide → buy → activate → test SMS → keep alive/recover.
 - **Data SIM/eSIM:** compare → full guide → buy → install → use/recharge.
 - **Temporary SMS:** compare → full guide → use → discard; never presented as durable recovery.
+
+### What is now known to be wrong in the shell
+
+The current implementation does not yet present that model cleanly enough:
+
+- Phone-local CSS references `--border`, `--surface` and `--text`, while production `site.css` defines `--line`, `--panel` and `--ink`; multiple intended borders/background/selected-state declarations therefore do not resolve as designed.
+- global `button { margin-top:16px }` leaks into Phone family tabs, card actions, guide close and `Show more` because Phone does not reset it.
+- the Phone H1 inherits the generic marketing-scale `h1` clamp instead of a compact dashboard scale.
+- hero + family note + country filter + route count delay the first real route more than the accepted interaction spec intended.
+- five equal-weight metric cells plus two actions plus a full-width caveat make each card dense, especially on mobile.
+- the shared Full guide section sits after the entire route list; opening a top card scrolls the user away from the selected route.
+- current tests validate route data/copy/analytics, but do not catch those computed-style and hierarchy failures.
+
+The repair source is `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
 
 ### Current public route pool
 
@@ -66,7 +83,7 @@ Long-term concrete routes include giffgaff, Lebara UK, Tello, Ultra PayGo, H2O P
 
 A1 Croatia is intentionally outside the default shortlist. Current A1 online top-up minimum is `€5`; its reported 450-day initial / ~362-day later retention timing remains community-derived, not an official guarantee. Stability is `Watch` and expiry recovery remains unverified.
 
-Data currently has Airalo plus Mobal Japan tourist physical data SIM, with a generic destination-local fallback kept out of the default shortlist. Trip.com CMLink is **not live yet**; its Q-013D4 implementation is waiting in PR #127 for a successful Vercel Preview.
+Data currently has Airalo plus Mobal Japan tourist physical data SIM, with a generic destination-local fallback kept out of the default shortlist. Trip.com CMLink is **not live yet**; its Q-013D4 implementation is waiting in PR #127.
 
 Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 
@@ -88,13 +105,14 @@ Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 - no user phone number, OTP, credential or ID-document collection;
 - no claim that provider documentation proves real-world OTP/overseas behavior.
 
-### Current gaps that are not reasons to redesign
+### Measurement gaps that remain separate from the visual defect
 
 - GSC Sep 18 recheck still settles only through `2026-09-15`; Sep 16 Phone release data is not settled yet.
-- GA4 event code covers family selection, filter change, show-more, guide open and outbound click, but actual post-release event traffic is not yet a meaningful behavior sample.
-- Data is now the clearest route-depth gap.
+- GA4 post-release Phone event traffic is not yet a meaningful behavior sample.
+- Data remains the route-depth gap, but route expansion is paused until shell closure.
 - Temporary SMS has qualitative current-state signals, not statistically valid success percentages.
-- `radar-view.json` is deliberately small; outcome/event history remains backstage and should only be promoted when it changes a choice or action.
+
+These measurement gaps are not evidence that the visual defect should be ignored; the shell defect is independently justified by direct user feedback and the reproduced code/CSS mismatch.
 
 ## NEXT SESSION — exact execution order
 
@@ -107,44 +125,72 @@ Read in order:
 3. `docs/MASTER_PLAN.md`
 4. `docs/OPERATING_WORKFLOW.md`
 5. this queue
+6. `docs/SESSION_EXECUTION_PROTOCOL.md`
+7. `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`
 
-Then read Phone-specific docs only if the next action requires them.
+### Q-014J — NEXT / BOUNDED PHONE SHELL REPAIR
 
-### Q-003 trigger check — FIRST conditional gate
+Status: **NEXT PRODUCT-FACING TASK**
 
-Check GSC Wizard `settledThrough` for the Phone canonical.
+Repair the existing Phone shell only.
 
-- If `settledThrough >= 2026-09-16`: execute Q-003 before completing another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; resume Q-013D4 only when the Vercel Preview quota blocker has cleared.
+Required scope:
 
-Latest check on 2026-09-18 still returns `settledThrough=2026-09-15`.
+1. replace/alias the invalid Phone CSS tokens with the production site tokens and verify light/dark selected/action states;
+2. explicitly reset Phone-local button margins/box model so global calculator-button spacing cannot leak in;
+3. reduce Phone hero/pre-list vertical weight so the first real route appears quickly;
+4. reorganize each card into clear identity/status + compact decision metrics + restrained actions + conditional warning instead of giving every field equal weight;
+5. keep the Full guide in the selected route's context, minimally as an inline expandable panel directly after the selected card;
+6. add targeted static regression checks for the token/button/card/guide contract;
+7. run existing Phone tests plus applicable build checks;
+8. require a real Vercel Preview and visually verify desktop + mobile before merge.
 
-Q-003 must inspect:
+Definition of done:
+
+- no unresolved Phone CSS custom-property mismatch;
+- no inherited global button top margin in Phone controls;
+- first route appears promptly after family/refinement controls;
+- mobile card no longer reads as three metric rows plus repeated caveat/action clutter;
+- selected-route Full guide opens contextually next to that route;
+- existing family logic, canonical, analytics and route data still work;
+- real Preview is green and visually verified at desktop/mobile widths.
+
+Stop conditions:
+
+- Vercel `build-rate-limit` or equivalent provider quota blocker;
+- repair requires a broader homepage/Astro/site-wide redesign;
+- a change would introduce a new route/feature rather than repair the current shell.
+
+### Q-003 trigger check — measurement gate, not repair blocker
+
+Q-003 status: **WAITING ON DATA**.
+
+Latest verified Sep 18: `settledThrough=2026-09-15`.
+
+When `settledThrough >= 2026-09-16`, inspect:
 
 - indexing state;
 - Phone queries/impressions/clicks/CTR/position;
 - GA4 landing-page behavior when available;
-- new Phone interaction events if enough data exists.
+- Phone interaction events if enough data exists.
 
-Use those results to improve the accepted dashboard only when the data justifies a change. Never use Q-003 to restore the old questionnaire.
+Use that evidence for later growth/route decisions. Do not use the wait gate to postpone Q-014J because the visual defect is already concrete.
 
-### Q-014H — CLOSED
+### Q-014H — SUPERSEDED AS VISUAL CLOSURE
 
-Status: **DONE 2026-09-18.**
+The earlier technical closure verified:
 
-Closure evidence:
+1. production first screen exposed all three families and real routes without user input;
+2. default Long-term shortlist used `Show more`;
+3. country acted as a refining filter;
+4. three families had family-specific full-guide logic and metrics;
+5. guide content covered acquisition/setup/use/keep-or-expiry/recovery;
+6. cards/guides exposed purchase/platform actions;
+7. responsive breakpoints existed without a known horizontal-overflow defect;
+8. analytics covered `phone_family_select`, `phone_filter_change`, `phone_show_more`, `phone_guide_open` and `phone_outbound_click`;
+9. canonical/indexability/sitemap/data-file tests passed.
 
-1. production first screen exposes all three families and real routes without user input;
-2. default Long-term shortlist is compact and `Show more` is secondary;
-3. country is a refining filter, not a gate;
-4. all three families have route-specific full-guide logic and family-appropriate metrics;
-5. guide content covers acquisition/setup/use/keep-or-expiry/recovery rather than evidence walls;
-6. cards/guides expose current purchase/platform actions where available;
-7. responsive rules collapse desktop cards to stacked layouts and two-column mobile metrics without a known horizontal-overflow defect;
-8. analytics cover `phone_family_select`, `phone_filter_change`, `phone_show_more`, `phone_guide_open` and `phone_outbound_click`;
-9. canonical/indexability/sitemap/data-file public-release tests pass.
-
-PR #118 fixed only the verified show-more analytics defect. Do not reopen Q-014 without a new concrete defect or settled behavior evidence.
+Those checks remain technically useful, but they are no longer sufficient to call the page visually/product-complete. Q-014J must close the newly reproduced visual defects.
 
 ### Q-013R1 — FIRST ROUTE-DEPTH BATCH CLOSED
 
@@ -171,7 +217,7 @@ Current breadth by user job:
 - **Data:** only two concrete public routes (Airalo and Mobal Japan tourist physical data SIM) plus one generic fallback. This is the current production depth gap until PR #127 is actually released.
 - **Temporary SMS:** three platforms; outcome volume still does not justify a numeric success rate.
 
-Conclusion: the next route-depth batch should target **Data**, not another Long-term route.
+Conclusion: Data remains the next route-depth family **after** visual closure, not before it.
 
 ### Q-013D2 — STELLAR CHINA DATA VALIDATION CLOSED / HOLD
 
@@ -221,7 +267,7 @@ Decision: sufficient for a public decision card **only with `Watch` framing**. D
 
 Research record: `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`.
 
-### Q-013D4 — IMPLEMENTED / BLOCKED BY VERCEL PREVIEW QUOTA
+### Q-013D4 — IMPLEMENTED / BLOCKED / SECONDARY UNTIL VISUAL CLOSURE
 
 Status: **IN PROGRESS / BLOCKED 2026-09-18.**
 
@@ -236,20 +282,20 @@ Implementation state:
 - PR diff review shows only those two Phone data files changed;
 - Eval Gate run #504 completed successfully on the current PR head.
 
-Blocker:
+Blocker / ordering:
 
 - Vercel Preview status is `failure` with `build-rate-limit` / deployment rate limiting;
 - classify this as a **provider quota blocker**, not a code/build failure;
-- production is unchanged and the CMLink route is **not live** yet.
+- production is unchanged and the CMLink route is **not live** yet;
+- the frontend closure pass now adds a second ordering constraint: do not complete a new Phone route release until Q-014J visually closes the existing shell.
 
 Required handling:
 
 - keep PR #127 unmerged;
-- do not push fake/no-op source changes, manually redeploy, use alternate accounts/projects, or change billing to bypass the quota;
-- next session checks Q-003 first;
-- if Q-003 is still gated and Vercel capacity has returned, retry the existing release path once without a fake source change;
-- merge only after a fresh real Vercel Preview succeeds, then verify the apex production route and data file;
-- if Q-003 fires first, execute Q-003 before completing this Phone production expansion.
+- do not push fake/no-op source changes, manually redeploy, use alternate accounts/projects, or change billing to bypass quota;
+- finish Q-014J first;
+- afterwards, when Vercel capacity has returned, revalidate the existing PR #127 release path without a fake source change;
+- merge only after a fresh real Preview succeeds and production can be verified.
 
 ### Frontend foundation — HOLD from production cutover
 
@@ -262,14 +308,6 @@ The first future production migration candidate is `/tools/`, and only after a s
 - canonical/SEO parity;
 - Vercel preview path for the Astro output;
 - rollback to the current checked-in static page.
-
-## Q-003 — First real Phone post-release measurement
-
-Status: **WAITING ON DATA**
-
-Trigger: `settledThrough >= 2026-09-16`.
-
-Last verified on 2026-09-18: `settledThrough=2026-09-15`.
 
 ## Q-005 — Authority
 
@@ -290,7 +328,8 @@ No resend before then. When date >= Sep 20, read the original Gmail threads plus
 Do not:
 
 - revive PR #112 or the questionnaire/manual UI;
-- redesign Phone again before data or a concrete defect justifies it;
+- turn the bounded Q-014J repair into a broad Phone redesign;
+- add Trip.com CMLink or any other new Phone route during the repair session;
 - start another provider-by-provider official-document audit;
 - add ten countries or dozens of routes in one sweep;
 - add another long-term number merely to make geography look broader;
@@ -308,4 +347,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, resume PR #127 only when the Vercel Preview quota blocker has cleared. Do not create another Phone route or reopen provider research while this release is waiting.
+The next session should not spend time rediscovering what happened. Execute the bounded Q-014J Phone shell repair from the visual-closure audit, with no new routes/features. A real desktop/mobile Vercel Preview is part of the definition of done. If Preview is rate-limited, record the provider blocker and stop. Q-003 remains a measurement gate for later growth decisions; PR #127 remains unmerged until both Phone visual closure and its own real Preview requirement are satisfied.
