@@ -11,17 +11,17 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Area | Current state | Next move |
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
-| Frontend foundation | An isolated Astro 7 + Tailwind 4 foundation now exists under `frontend/astro/`: typed Tool Registry, current-site shell, reusable tool cards/search, shared design tokens, Astro `/tools/` sample, registry checks and dedicated Frontend Astro CI. It does **not** replace the current production build path. Vercel Preview still exercises the legacy static frontend, while the dedicated Astro CI validates the new sample build. | Keep production homepage/Phone/Relay shells unchanged. Only consider a later `/tools/` cutover after explicit preview/parity/analytics verification; migrate incrementally rather than replacing the whole site at once. |
+| Frontend foundation | An isolated Astro 7 + Tailwind 4 foundation now exists under `frontend/astro/`: typed Tool Registry, current-site shell, reusable tool cards/search, shared design tokens, Astro `/tools/` sample, registry checks and dedicated Frontend Astro CI. It does **not** replace the current production build path. Vercel Preview still exercises the legacy static frontend, while the dedicated Astro CI validates the new sample build. | Keep production homepage/Phone/Relay shells unchanged except for bounded closure repairs backed by concrete defects. Only consider a later `/tools/` cutover after explicit preview/parity/analytics verification; migrate incrementally rather than replacing the whole site at once. |
 | Product scope | Scope remains frozen to three surfaces: **Phone Radar** primary; **AI Reset Radar** and **Relay Exit Risk** secondary. | No fourth product surface, second Phone canonical, provider/country doorway pages, or broad utility expansion. |
 | Homepage | Current first viewport remains `AI stopped? Start here.` / `What stopped?`; `home_job_select` is measuring behavior. | No homepage churn without evidence. |
-| Phone production | **LIVE / PRIMARY / Q-014 COMPLETE.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 shipped the three-family route-first dashboard. Q-014H production closure found one concrete analytics gap: `Show more` lacked a Phone-specific event. PR #118 added privacy-safe `phone_show_more`; the public Phone build audit, Eval Gate and Vercel deployment passed. PR #120 then shipped the first bounded post-reset route-depth addition: **A1 Croatia prepaid eSIM**, kept outside the default five-route shortlist. Production `radar-view.json` and the Croatia filter were verified live. **Q-013D4 is implemented in PR #127 but not released:** Eval Gate passed, while Vercel Preview is blocked by provider `build-rate-limit`; production remains unchanged. | Check Q-003 first next session. If it is still gated and Vercel capacity has returned, retry the existing PR #127 Preview path once without a fake source change; merge only after a real Preview succeeds, then verify production. |
-| Phone product direction | **SHIPPED.** Three route families: **Long-term SMS/OTP numbers**, **Data SIM/eSIM routes**, **Temporary SMS platforms**. Two layers: **visual decision dashboard first**, **full operational guide on demand**. | Keep the shell stable unless QA or real behavior data identifies a concrete problem. |
-| Phone decision-cost rule | The product must reduce user reading and decision time. Default view is a small current shortlist, not dozens of equal-weight routes and not a questionnaire. | Keep next action obvious: compare → full guide → buy/use → setup/test → keep/recharge/recover as appropriate. |
+| Phone production | **LIVE / PRIMARY.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 shipped the three-family route-first dashboard; PR #118 added `phone_show_more`; PR #120 added A1 Croatia outside the default shortlist. **Q-013D4 remains implemented in PR #127 but not released:** Eval Gate passed, while Vercel Preview is blocked by provider `build-rate-limit`; production remains unchanged. A direct user review on Sep 18 identified that the current Phone page still feels visually messy, and a code/spec audit confirmed concrete shell defects rather than a need for more routes. | Do **not** add another route yet. Run the bounded Phone visual-closure repair from `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`, then require a real desktop/mobile Preview before calling the shell closed. Keep PR #127 unmerged while this closure repair is active. |
+| Phone product direction | The accepted model remains three route families — **Long-term SMS/OTP numbers**, **Data SIM/eSIM routes**, **Temporary SMS platforms** — with two layers: **visual decision dashboard first**, **full operational guide on demand**. The model is still correct; the current implementation hierarchy is not yet visually closed. | Preserve the model and repair the existing shell only; do not return to questionnaire-first UX or expand scope. |
+| Phone decision-cost rule | The product must reduce user reading and decision time. Default view is a small current shortlist, not dozens of equal-weight routes and not a questionnaire. Current implementation still gives too much equal visual weight to hero/chrome/card fields and detaches the Full guide from the selected card. | Make next action obvious: compare → full guide → buy/use → setup/test → keep/recharge/recover. Reduce redundant pre-list chrome and repeated card prose. |
 | Phone research method | Community/user reports, tutorials, comments, user-shared support interactions and current success/failure outcomes drive operational reality. Operator/provider pages are used by default for current price/package/promotion/stock/purchase metadata only; they are not an operational verification gate. | Research only fields that change choice/action. Keep research complexity backstage. |
-| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. A1 Croatia is live as a `Watch` long-term route. Stellar China 100GB / 60 days is HOLD because current fulfillment does not reliably match the selected network/egress variant. **Trip.com Mainland China CMLink eSIM, product ID `71336361`, is now validated and admission-ready as `Watch`**: the current 3–15 day listing is live and multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use, but 4G-only operation, slow periods and device variation remain material. | Subject to the Q-003 gate, finish the already-open PR #127 only after Vercel Preview capacity returns; do not generalize the result to every CMLink product/reseller. |
-| Phone audit | **Q-014 CLOSED.** The deliberate production closure pass confirmed the three-family first screen, compact shortlist, country refinement, family-specific metrics, practical full-guide content, outbound paths, responsive mobile rules, canonical/indexability/data health and interaction analytics. The only verified defect was the missing Phone-specific show-more event, fixed by PR #118. Q-013G gap check after A1 confirms Data is now the shallowest family. | Do not reopen the reset/redesign cycle. Continue community-first depth work in the Data family, subject to the Q-003 GSC gate. |
-| Search Console | GSC Wizard connected. Rechecked Sep 18: `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | When `settledThrough >= 2026-09-16`, execute Q-003 before another Phone production expansion. Do not interpret current Phone zeroes as failure. |
-| Indexing | Last known tracker: 18 tracked / 9 indexed / 9 not indexed; Phone canonical had previously been `URL is unknown to Google`. The new production page itself is crawlable/indexable and returned HTTP 200. | Let normal cadence work; no manual submission churn. Re-evaluate through GSC once settled data covers the release. |
+| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. A1 Croatia is live as a `Watch` long-term route. Stellar China 100GB / 60 days is HOLD because current fulfillment does not reliably match the selected network/egress variant. **Trip.com Mainland China CMLink eSIM, product ID `71336361`, is validated and admission-ready as `Watch`**, but not live. | Pause route-depth release work until the current Phone visual-closure repair is complete. Afterwards, finish the already-open PR #127 only when Vercel Preview capacity has returned and the repaired shell is green. |
+| Phone audit | **Q-014 VISUAL CLOSURE REOPENED.** The earlier closure pass verified flow/data/analytics but missed real CSS and hierarchy defects. Sep 18 audit found Phone CSS uses undefined `--border / --surface / --text` tokens against production `site.css`, global `button` `margin-top:16px` leaks into Phone controls, the hero inherits marketing-scale H1 sizing, cards expose too many equal-weight elements, and `Full guide` opens after the whole route list instead of in selected-card context. See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`. | Next bounded product task is shell repair + real desktop/mobile Preview verification. No new Phone route in that repair batch. |
+| Search Console | GSC Wizard connected. Rechecked Sep 18: `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | When `settledThrough >= 2026-09-16`, execute Q-003 measurement. This measurement gate does not block repairing a concrete visual defect already reproduced in code and reported by the user. |
+| Indexing | Last known tracker: 18 tracked / 9 indexed / 9 not indexed; Phone canonical remains `URL is unknown to Google` with no recorded crawl. The production page itself is crawlable/indexable and returned HTTP 200. | Let normal cadence work; no manual submission churn. Re-evaluate through GSC once settled data covers the release. |
 | Cursor CTR | Cursor title/meta pilot remains measuring from a 141-impression / 0-click pre-change baseline. | Wait for roughly 300–500 additional impressions unless an obvious defect appears. |
 | Distribution | Claude Reset Threads and Cursor Reset Mastodon tests are published; referral/social remains separate from organic. | Measure first; no mass cross-posting. |
 | Authority | First Sep 18 outreach check found no reply or independently verified link. | Recheck original Gmail threads/public pages on Sep 20 before follow-up/batch 2. |
@@ -31,17 +31,19 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-Phone Radar is now in measured depth-building after Q-014 closure, not another concept/reset cycle.
+Phone Radar is in a frontend closure pass. The product model is accepted, but the current Phone shell must not be treated as visually complete merely because the route/data tests pass.
 
 Next work round execute in this order:
 
-1. Check GSC Wizard `settledThrough` for the Phone canonical.
-2. If `settledThrough >= 2026-09-16`, execute Q-003 first: indexing + queries/impressions/clicks/CTR/position + GA4 behavior where available.
-3. If it is still `< 2026-09-16`, do **not** add another long-term route by default. Q-013D3 is complete: Trip.com Mainland China CMLink eSIM product ID `71336361` reached admission quality as `Watch`.
-4. Q-013D4 implementation is already in PR #127. Eval Gate passed; Vercel Preview is blocked by `build-rate-limit`. Do not source-push, redeploy, change billing or merge around the quota. When capacity returns, retry the existing Preview path once; merge only after it is green and production can be verified.
-5. Q-005 authority recheck remains due Sep 20; no follow-up before then.
-6. Cursor/homepage/distribution continue measuring; no premature churn.
-7. The Astro frontend foundation remains infrastructure only; do not use it as permission for a broad production redesign.
+1. Repair the existing Phone page only, using `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` as the defect list.
+2. Fix the concrete shell defects first: production CSS-token mismatch, inherited Phone button spacing, hero/pre-list scale, card hierarchy, and Full-guide placement.
+3. Add only targeted regression checks for the repaired shell; do not add a new route or new product feature in the same repair session.
+4. Require a real Vercel Preview with desktop/mobile visual verification before merge. If Vercel remains rate-limited, stop as a provider blocker rather than bypassing it.
+5. Q-003 remains waiting on `settledThrough >= 2026-09-16`; when it fires, collect the measurement before another growth/route-expansion decision, but do not use the wait gate to preserve a known visual defect.
+6. PR #127 stays unmerged until the Phone shell closure repair is complete and Vercel Preview capacity is available.
+7. Q-005 authority recheck remains due Sep 20; no follow-up before then.
+8. Cursor/homepage/distribution continue measuring; no premature churn.
+9. The Astro frontend foundation remains infrastructure only; do not use this repair as permission for a broad migration or redesign.
 
 Detailed next-session checklist and stop conditions are in `docs/CURRENT_EXECUTION_QUEUE.md`.
 
@@ -51,10 +53,11 @@ Use these sources in order:
 
 1. `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md`
 2. `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md`
-3. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
-4. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
-5. `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md`
-6. current Q-014/Q-013 state in `docs/CURRENT_EXECUTION_QUEUE.md`
+3. `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`
+4. `docs/PHONE_RADAR_PRODUCT_DEFINITION.md`
+5. `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md`
+6. `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md`
+7. current Q-014/Q-013 state in `docs/CURRENT_EXECUTION_QUEUE.md`
 
 ### Frontstage
 
@@ -83,10 +86,6 @@ Use by default for current commercial metadata only: price, package name, promot
 Do not use provider pages to certify OTP reliability, overseas activation, support recovery, long-term trust or other real-world operating behavior.
 
 Never recommend forged KYC, deceptive support stories, stolen identities, unauthorized access, security bypass or prohibited geography evasion.
-
-## Mission
-
-Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that can earn small, stable AdSense revenue. Optimize for organic impressions, indexed pages, CTR, useful/repeat visits, page speed, measurable referrals and eventual revenue; avoid SaaS complexity.
 
 ## Product rules
 
@@ -120,6 +119,7 @@ Turn `aineedhelpfromotherai.com` into a low-cost, high-traffic utility site that
 - `docs/FRONTEND_FOUNDATION_PLAN_2026-09-18.md` — Astro frontend foundation scope, boundaries and migration rules.
 - `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` — active Phone correction.
 - `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` — accepted Phone interaction contract.
+- `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` — current concrete Phone visual/UI defect list and repair acceptance gate.
 - `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` — global breadth seed.
 - `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` — durable Phone identity.
 - `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` — community-first research method.
