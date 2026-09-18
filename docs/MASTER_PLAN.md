@@ -35,7 +35,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 5. **DONE — Source-role correction.** Community/user outcomes drive operational reality. Operator/provider pages are used by default for current price, package, promotion, stock and purchase metadata only.
 6. **ACTIVE — Q-014D outcome/event data model.** Reuse current data and add only fields needed to drive dashboard/guide decisions. Avoid carrier-encyclopedia schema growth.
 7. **ACTIVE — Q-014E data reclassification.** Separate frontstage decision fields from backstage research fields and retire documentation-first `unknown` logic.
-8. **NEXT / AUTHORIZED — Q-014G implementation.** Replace questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
+8. **NEXT / AUTHORIZED — Q-014G implementation.** Replace questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical. Continue without item-by-item confirmation.
 9. **NEXT — Q-014H validation/closure.** Desktop/mobile hierarchy, full-guide flow, outbound actions, analytics events, build/route checks, Preview/CI, merge and production verification.
 10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`; use settled behavior to improve the accepted design, never to restore the old questionnaire.
 11. **HOLD — Q-013 broad route expansion.** Resume after reset ships. New routes are selected by user value, not country quotas.
