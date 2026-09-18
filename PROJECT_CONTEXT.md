@@ -13,14 +13,14 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product scope | Scope remains frozen to three surfaces: **Phone Radar** primary; **AI Reset Radar** and **Relay Exit Risk** secondary. | No fourth product surface, second Phone canonical, provider/country doorway pages, or broad utility expansion. |
 | Homepage | Current first viewport remains `AI stopped? Start here.` / `What stopped?`; `home_job_select` is measuring behavior. | No homepage churn without evidence. |
-| Phone production | **LIVE / PRIMARY.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. Current production still uses the old questionnaire/manual-style Phone experience. PR #112 was closed and not merged. | Replace the old interaction through Q-014 implementation; do not incrementally patch PR #112. |
-| Phone product direction | **ACCEPTED / IMPLEMENTATION AUTHORIZED.** Three route families: **Long-term SMS/OTP numbers**, **Data SIM/eSIM routes**, **Temporary SMS platforms**. Two layers: **visual decision dashboard first**, **full operational guide on demand**. | Continue implementation without waiting for item-by-item concept confirmation. Normal branch/test/PR/Preview safety gates still apply. |
-| Phone decision-cost rule | The product must reduce user reading and decision time. Default view is a small current shortlist, not dozens of equal-weight routes and not a questionnaire. | Make the next action obvious: compare → full guide → buy/use → setup/test → keep/recharge/recover as appropriate. |
+| Phone production | **LIVE / PRIMARY / RESET SHIPPED.** Canonical: `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`. PR #115 replaced the old questionnaire/manual-first interaction with the three-family route-first Phone Radar dashboard. Production canonical returned HTTP 200, self-canonical/indexable metadata was verified, and public `radar-view.json` returned HTTP 200. | Finish Q-014H production closure QA, then use settled behavior and bounded route expansion rather than redesigning the shell. |
+| Phone product direction | **SHIPPED.** Three route families: **Long-term SMS/OTP numbers**, **Data SIM/eSIM routes**, **Temporary SMS platforms**. Two layers: **visual decision dashboard first**, **full operational guide on demand**. | Keep the shell stable unless QA or real behavior data identifies a concrete problem. |
+| Phone decision-cost rule | The product must reduce user reading and decision time. Default view is a small current shortlist, not dozens of equal-weight routes and not a questionnaire. | Keep next action obvious: compare → full guide → buy/use → setup/test → keep/recharge/recover as appropriate. |
 | Phone research method | Community/user reports, tutorials, comments, user-shared support interactions and current success/failure outcomes drive operational reality. Operator/provider pages are used by default for current price/package/promotion/stock/purchase metadata only; they are not an operational verification gate. | Research only fields that change choice/action. Keep research complexity backstage. |
-| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. Country is a filter/tag, not the research sequence. | After the reset ships, resume global discovery by route value rather than country quota. |
-| Phone audit | Q-013 provider-by-provider auditing is no longer the default task. AIS remains HOLD; RedPocket remains a candidate. | Finish Q-014 before broad route expansion. |
-| Search Console | GSC Wizard connected. Last check returned `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | When `settledThrough >= 2026-09-16`, execute Q-003 and use settled behavior to improve the accepted dashboard model. |
-| Indexing | Last known tracker: 18 tracked / 9 indexed / 9 not indexed; Phone canonical had been `URL is unknown to Google`. | Let normal cadence work; no manual submission churn. |
+| Phone global route pool | First cross-region seed spans Hong Kong, Taiwan, South Korea, Singapore, Malaysia, New Zealand, Europe, UK, US, Thailand and more. Country is a filter/tag, not the research sequence. | After Q-014H closure, resume value-first global discovery in batches of 1–2 production routes. Kaktus Czech, ClubSIM Hong Kong, A1 Croatia and RedPocket are candidate leads; AIS remains HOLD. |
+| Phone audit | Q-013 provider-by-provider official auditing is not the default task. Q-014 implementation shipped through PR #115; Q-014H still needs one deliberate production functional/mobile/analytics closure pass. | Close Q-014H first; then resume Q-013 as community-first route expansion rather than documentation completeness work. |
+| Search Console | GSC Wizard connected. Last check returned `settledThrough=2026-09-15`, still one day short of the Sep 16 Phone release. | At the start of the next session check the trigger. When `settledThrough >= 2026-09-16`, execute Q-003 before another Phone production expansion. |
+| Indexing | Last known tracker: 18 tracked / 9 indexed / 9 not indexed; Phone canonical had previously been `URL is unknown to Google`. The new production page itself is crawlable/indexable and returned HTTP 200. | Let normal cadence work; no manual submission churn. Re-evaluate through GSC once settled data covers the release. |
 | Cursor CTR | Cursor title/meta pilot remains measuring from a 141-impression / 0-click pre-change baseline. | Wait for roughly 300–500 additional impressions unless an obvious defect appears. |
 | Distribution | Claude Reset Threads and Cursor Reset Mastodon tests are published; referral/social remains separate from organic. | Measure first; no mass cross-posting. |
 | Authority | First Sep 18 outreach check found no reply or independently verified link. | Recheck original Gmail threads/public pages on Sep 20 before follow-up/batch 2. |
@@ -30,15 +30,19 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-Phone Radar implementation is the active product-depth task.
+Phone Radar is now in post-release closure and measured depth-building, not another concept/reset cycle.
 
-Before new work:
+Next session execute in this order:
 
-1. If GSC `settledThrough >= 2026-09-16`, execute Q-003 before merging a Phone production implementation.
-2. If date >= 2026-09-20 and the authority recheck is still pending, execute Q-005 before sending any follow-up.
-3. Otherwise continue Q-014 implementation continuously through PR/CI/Preview/merge/production verification.
-4. Q-013 broad route research remains HOLD until the reset ships.
-5. Cursor/homepage/distribution continue measuring; no premature churn.
+1. Check GSC Wizard `settledThrough` for the Phone canonical.
+2. If `settledThrough >= 2026-09-16`, execute Q-003 first: indexing + queries/impressions/clicks/CTR/position + GA4 behavior where available.
+3. Otherwise finish Q-014H production closure QA: three-family first screen, compact shortlist, country filter, one full guide per family, purchase/outbound links, mobile hierarchy/no overflow, analytics hooks, canonical/data-file health.
+4. If Q-014H finds no material defect, mark Q-014 complete. If it finds a defect, fix only the defect through the normal branch/PR/CI/Preview path; do not redesign the product again.
+5. Then resume Q-013 as a small value-first route expansion batch: 1–2 production routes total, chosen from fresh community evidence and the global candidate pool.
+6. Q-005 authority recheck remains due Sep 20; no follow-up before then.
+7. Cursor/homepage/distribution continue measuring; no premature churn.
+
+Detailed next-session checklist and stop conditions are in `docs/CURRENT_EXECUTION_QUEUE.md`.
 
 ## Phone Radar governing rule
 
