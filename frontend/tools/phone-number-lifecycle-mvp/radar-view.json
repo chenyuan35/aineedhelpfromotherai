@@ -149,6 +149,18 @@
       "numberIncluded": "Data only",
       "caveat": "Useful physical-SIM fallback for Japan when eSIM is not suitable."
     },
+    "cmlink-52-country-365d": {
+      "family": "data",
+      "order": 30,
+      "shortlist": true,
+      "dataCost": "$12.50 / 365 days",
+      "allowance": "10GB → 1–512 Kbps",
+      "coverage": "52 countries / regions",
+      "setup": "Low effort",
+      "reuse": "No top-up / reinstall",
+      "numberIncluded": "Data only",
+      "caveat": "Long-duration backup data with recent first-hand use; this exact seller SKU is data-only and non-top-up/reinstall, and CMLink reliability reports vary by plan, so test before relying on it."
+    },
     "local-data-physical": {
       "family": "data",
       "order": 90,
