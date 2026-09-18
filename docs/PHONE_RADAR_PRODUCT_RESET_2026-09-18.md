@@ -12,6 +12,8 @@ The correction is structural:
 
 > **Phone Radar helps a user quickly choose and execute a useful phone route. Research complexity stays backstage.**
 
+The user has authorized continuous implementation of this accepted direction without waiting for item-by-item concept confirmation. Normal project safety gates still apply: fresh branch/worktree, tests, PR, CI/Eval/Vercel Preview, merge and production verification.
+
 ## Fixed product structure
 
 Phone Radar has **three route families**:
@@ -99,7 +101,7 @@ Provider pages are not an operational verification gate.
 - recent success signal;
 - current price;
 - country/service coverage;
-- private/shared/reused number state;
+- private/shared/reused-number state;
 - reuse/privacy risk;
 - current availability.
 
