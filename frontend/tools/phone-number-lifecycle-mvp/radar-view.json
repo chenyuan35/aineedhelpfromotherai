@@ -77,6 +77,18 @@
       "stability": "Watch",
       "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point."
     },
+    "a1-croatia-prepaid-esim": {
+      "family": "long-term",
+      "order": 55,
+      "shortlist": false,
+      "smsSignal": "Good",
+      "signalLevel": 3,
+      "keepCost": "≈ €5/yr*",
+      "setup": "Some work",
+      "remote": "Remote eSIM reported",
+      "stability": "Watch",
+      "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived."
+    },
     "mobal-japan-voice-data": {
       "family": "long-term",
       "order": 60,
