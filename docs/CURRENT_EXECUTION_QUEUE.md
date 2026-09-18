@@ -39,6 +39,7 @@ Do not restart the rejected questionnaire/research-manual direction. Do not rede
 - Q-013R first post-reset route batch: **DONE.** PR #120 added one production route only: A1 Croatia prepaid eSIM. It is `shortlist:false`, so the default five-route Long-term view did not expand. Production `radar-view.json`, `Show 4 more routes` and Croatia filter were verified live.
 - Q-013G first three-family gap check: **DONE.** Long-term is now clearly deepest. Data remains shallowest, so the next depth task is Data-family validation rather than another long-term number.
 - Q-013D2 Stellar China Data validation: **DONE / HOLD.** The current 100GB / 60-day products are real and cheap, but a Sep 9 first-hand buyer reports ordering the nonhkip / Singapore / China Unicom+Telecom route and receiving `JC091` / China Mobile identifiers instead. Route identity is not reproducible enough for production admission. See `docs/PHONE_DATA_ROUTE_VALIDATION_2026-09-18.md`.
+- Q-013D3 Trip.com CMLink Mainland China eSIM validation: **DONE / ADMISSION-READY AS `Watch`.** Exact route is Trip product ID `71336361`, currently live as a 3–15 day CMLink-backed mainland-China travel eSIM. Multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use, while 4G-only operation, evening slowdowns and device-dependent performance remain material caveats. See `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`.
 - Global route-pool breadth seed: DONE.
 - Frontend foundation: PR #117 MERGED. Astro 7 + Tailwind 4 Tool Registry/components/CI are now reusable infrastructure only; production frontend has not been switched.
 - PR #112: CLOSED / NOT MERGED; do not revive.
@@ -76,7 +77,7 @@ Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 - **RedPocket US:** DEPRIORITIZED for now. Another US long-term route does not solve the current breadth gap.
 - **AIS support-assisted retention:** HOLD until starting state and reproducibility are clear.
 - **StellarSecurity China 100GB / 60 days:** HOLD after bounded validation. Current official pages expose two same-price €13.20 variants: `JC091` advertises China Mobile + Hong Kong egress; `PS30ZAQ7S` advertises China Unicom/Telecom + Singapore egress. A recent exact-product buyer reports receiving JC091 identifiers after ordering the nonhkip route, so do not publish a stable route until fulfillment mapping is reproduced.
-- **CMLink Data:** remains the next fresh Sep 18 lead. Validate one exact official/commercial route separately; do not publish third-party annual pricing as official commercial truth.
+- **Trip.com CMLink Mainland China eSIM (product ID `71336361`):** VALIDATED / ADMISSION-READY AS `Watch`. Current listing is live with 3–15 day package options. 2026 first-hand evidence reproduces mainland-China use, QR/eSIM setup and CMLink operation, but performance is mixed enough that public copy must not promise reliable 5G, one fixed egress, or workstation-grade speed.
 
 ### What the release intentionally does not claim
 
@@ -114,7 +115,7 @@ Then read Phone-specific docs only if the next action requires them.
 Check GSC Wizard `settledThrough` for the Phone canonical.
 
 - If `settledThrough >= 2026-09-16`: execute Q-003 before another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to the next bounded Data-family validation below.
+- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to Q-013D4, the bounded production admission task for the already-validated Trip.com CMLink route.
 
 Latest check on 2026-09-18 still returns `settledThrough=2026-09-15`.
 
@@ -196,18 +197,45 @@ Research record: `docs/PHONE_DATA_ROUTE_VALIDATION_2026-09-18.md`.
 
 Revisit only after a fresh independent China report confirms ordered product → delivered package → registered network → egress, or provider clarification is followed by such a confirmation.
 
-### Q-013D3 — NEXT ELIGIBLE DATA VALIDATION if Q-003 is still waiting
+### Q-013D3 — CMLINK DATA VALIDATION CLOSED / ADMISSION-READY
 
-Validate **at most one exact CMLink Data route** in the next bounded research batch.
+Status: **DONE / ADMISSION-READY AS `Watch` 2026-09-18.**
 
-Rules:
+Validated exactly one route: **Trip.com Mainland China CMLink eSIM, product ID `71336361`**.
 
-- distinguish CMLink official products from reseller/third-party CMLink-backed eSIMs;
-- require fresh first-hand mainland-China operating evidence for the exact route;
-- provider pages supply current price/package/coverage/purchase metadata only;
-- capture current cost, allowance/validity, activation geography restrictions, setup/APN/roaming, egress behavior, recharge/reuse, number/SMS capability and meaningful speed/throttling notes;
-- recent activation restrictions or route changes are first-class evidence;
-- stop after one exact route reaches admission quality; otherwise record HOLD and do not manufacture a release.
+Current commercial state:
+
+- current Trip listing is live and explicitly identifies China Mobile CMLink;
+- current package matrix is 3–15 days with multiple daily-data options and hotspot support;
+- price is locale/package dependent, so public data must use a fresh localized current price rather than a hard-coded historical number;
+- route is travel data, not a durable phone-number/SMS route.
+
+Operational evidence:
+
+- detailed March 2026 Trip/CMLink test reproduced order/QR installation, CMLINK activation, hotspot, 4G service, HK/SG egress behavior and severe post-quota throttling;
+- independent April–June 2026 Trip/CMLink users reproduced mainland-China use in multiple cities, including successful use without a separate VPN;
+- evidence is mixed rather than uniformly positive: users also report 4G-only operation, evening slowdowns and device-dependent performance;
+- a Sep 2026 route-family report still found a newly purchased Trip CMLink eSIM usable on 4G but not strong enough for work-heavy use.
+
+Decision: sufficient for a public decision card **only with `Watch` framing**. Do not promise reliable 5G, fixed egress, workstation-grade performance, rechargeability, or number/SMS/OTP capability.
+
+Research record: `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`.
+
+### Q-013D4 — NEXT ELIGIBLE PRODUCTION TASK if Q-003 is still waiting
+
+Admit **exactly one** route to the existing Data family: Trip.com Mainland China CMLink eSIM, product ID `71336361`.
+
+Boundaries:
+
+- preserve the existing Phone shell and canonical;
+- do not redesign the dashboard;
+- expose it as a low-cost mainland-China travel-data route with stability `Watch`;
+- use current localized package/value wording rather than one fixed historical price;
+- state data-only / no durable number;
+- do not promise 5G, fixed HK/SG egress, unlimited high-speed use, recharge or long-term reuse;
+- include the fresh speed/device caveat only as concise decision-changing copy;
+- normal branch → tests → PR → CI/Eval/Vercel Preview → merge → production verification;
+- stop after this one route; no second Data route in the same production batch.
 
 ### Frontend foundation — HOLD from production cutover
 
@@ -266,4 +294,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, validate at most one exact CMLink Data route under Q-013D3. Production admission requires sufficient current operational evidence; a HOLD is a valid result.
+The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, execute the bounded Q-013D4 production admission of the already-validated Trip.com CMLink route. Do not reopen provider research unless new contradictory evidence appears.
