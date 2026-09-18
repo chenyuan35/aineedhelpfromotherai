@@ -66,7 +66,7 @@ Long-term concrete routes include giffgaff, Lebara UK, Tello, Ultra PayGo, H2O P
 
 A1 Croatia is intentionally outside the default shortlist. Current A1 online top-up minimum is `€5`; its reported 450-day initial / ~362-day later retention timing remains community-derived, not an official guarantee. Stability is `Watch` and expiry recovery remains unverified.
 
-Data currently has Airalo plus Mobal Japan tourist physical data SIM, with a generic destination-local fallback kept out of the default shortlist.
+Data currently has Airalo plus Mobal Japan tourist physical data SIM, with a generic destination-local fallback kept out of the default shortlist. Trip.com CMLink is **not live yet**; its Q-013D4 implementation is waiting in PR #127 for a successful Vercel Preview.
 
 Temporary SMS currently has SMSPool, 5SIM and ActivateX.
 
@@ -114,8 +114,8 @@ Then read Phone-specific docs only if the next action requires them.
 
 Check GSC Wizard `settledThrough` for the Phone canonical.
 
-- If `settledThrough >= 2026-09-16`: execute Q-003 before another Phone production expansion.
-- If it is still `< 2026-09-16`: do not interpret zeroes as failure; proceed to Q-013D4, the bounded production admission task for the already-validated Trip.com CMLink route.
+- If `settledThrough >= 2026-09-16`: execute Q-003 before completing another Phone production expansion.
+- If it is still `< 2026-09-16`: do not interpret zeroes as failure; resume Q-013D4 only when the Vercel Preview quota blocker has cleared.
 
 Latest check on 2026-09-18 still returns `settledThrough=2026-09-15`.
 
@@ -168,7 +168,7 @@ Status: **DONE after Q-013R1.**
 Current breadth by user job:
 
 - **Long-term:** deepest family; now spans UK, US, Croatia, Japan and mainland-China route classes. Do not keep stacking similar long-term routes by country.
-- **Data:** only two concrete public routes (Airalo and Mobal Japan tourist physical data SIM) plus one generic fallback. This is the current depth gap.
+- **Data:** only two concrete public routes (Airalo and Mobal Japan tourist physical data SIM) plus one generic fallback. This is the current production depth gap until PR #127 is actually released.
 - **Temporary SMS:** three platforms; outcome volume still does not justify a numeric success rate.
 
 Conclusion: the next route-depth batch should target **Data**, not another Long-term route.
@@ -221,21 +221,35 @@ Decision: sufficient for a public decision card **only with `Watch` framing**. D
 
 Research record: `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`.
 
-### Q-013D4 — NEXT ELIGIBLE PRODUCTION TASK if Q-003 is still waiting
+### Q-013D4 — IMPLEMENTED / BLOCKED BY VERCEL PREVIEW QUOTA
 
-Admit **exactly one** route to the existing Data family: Trip.com Mainland China CMLink eSIM, product ID `71336361`.
+Status: **IN PROGRESS / BLOCKED 2026-09-18.**
 
-Boundaries:
+PR #127 implements exactly one route admission: **Trip.com Mainland China CMLink eSIM, product ID `71336361`**.
 
-- preserve the existing Phone shell and canonical;
-- do not redesign the dashboard;
-- expose it as a low-cost mainland-China travel-data route with stability `Watch`;
-- use current localized package/value wording rather than one fixed historical price;
-- state data-only / no durable number;
-- do not promise 5G, fixed HK/SG egress, unlimited high-speed use, recharge or long-term reuse;
-- include the fresh speed/device caveat only as concise decision-changing copy;
-- normal branch → tests → PR → CI/Eval/Vercel Preview → merge → production verification;
-- stop after this one route; no second Data route in the same production batch.
+Implementation state:
+
+- existing Phone shell, canonical and page structure are unchanged;
+- `tutorial-insights.json` adds the exact Trip/CMLink route and its current evidence/capabilities;
+- `radar-view.json` adds one Data shortlist card with dynamic-price wording, data-only semantics and `Watch` caveats;
+- no second route or unrelated product change is included;
+- PR diff review shows only those two Phone data files changed;
+- Eval Gate run #504 completed successfully on the current PR head.
+
+Blocker:
+
+- Vercel Preview status is `failure` with `build-rate-limit` / deployment rate limiting;
+- classify this as a **provider quota blocker**, not a code/build failure;
+- production is unchanged and the CMLink route is **not live** yet.
+
+Required handling:
+
+- keep PR #127 unmerged;
+- do not push fake/no-op source changes, manually redeploy, use alternate accounts/projects, or change billing to bypass the quota;
+- next session checks Q-003 first;
+- if Q-003 is still gated and Vercel capacity has returned, retry the existing release path once without a fake source change;
+- merge only after a fresh real Vercel Preview succeeds, then verify the apex production route and data file;
+- if Q-003 fires first, execute Q-003 before completing this Phone production expansion.
 
 ### Frontend foundation — HOLD from production cutover
 
@@ -294,4 +308,4 @@ Scope remains three product surfaces: Phone Radar primary; AI Reset Radar and Re
 
 ## Execution rule
 
-The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, execute the bounded Q-013D4 production admission of the already-validated Trip.com CMLink route. Do not reopen provider research unless new contradictory evidence appears.
+The next session should not spend time rediscovering what happened. Check the Q-003 trigger first. If it has not fired, resume PR #127 only when the Vercel Preview quota blocker has cleared. Do not create another Phone route or reopen provider research while this release is waiting.
