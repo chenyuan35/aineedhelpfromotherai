@@ -24,7 +24,7 @@ const claudeLive = '<a class="provider-link" href="/tools/claude-code-limit-rese
 if (!curatedHome.includes(claudeSoon) && !curatedHome.includes('/tools/claude-code-limit-reset/')) throw new Error('Claude homepage marker not found');
 writeFileSync(homePath, curatedHome.includes(claudeSoon) ? curatedHome.replace(claudeSoon, claudeLive) : curatedHome);
 
-for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt']) {
+for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
 }
 for (const dir of ['tools','about','contact','privacy','terms','media']) {
