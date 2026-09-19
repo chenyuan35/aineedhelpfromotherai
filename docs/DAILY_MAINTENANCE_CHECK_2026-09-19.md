@@ -119,3 +119,17 @@ Status: **DONE / PRODUCTION VERIFIED**.
 - [x] Vercel production deployment completed successfully and independent apex QA repeated the Data-family checks.
 
 Next eligible project task is M-02 AI Reset Radar visual closure, but it belongs to the next independent session. Do not reopen Phone shell work or add a second Phone route automatically. Q-005 authority recheck remains due Sep 20; TikTok remains untouched while review is pending.
+
+## Late-day closeout — M-02A Cursor lead-page visual closure
+
+Status: **DONE / PRODUCTION VERIFIED**.
+
+- [x] Confirmed the production defect with rendered measurements: Cursor calculator/input sat below the first viewport because Quick answer content preceded the tool.
+- [x] Implemented the bounded repair at the generator/enhancer layer only; no new Reset URL, no Q-015 quota/pool feature, and no title/meta/canonical change.
+- [x] Local build and four-state browser QA passed; empty/invalid/past reset times, 0%/100%, save/reload, copy, calendar and clear behavior passed.
+- [x] PR #153 final head `6c87923d0ab54a018563c18e8732cd154a44375e` passed Eval Gate #577 and a fresh Vercel Preview.
+- [x] Preview desktop/mobile × light/dark verified the reset input inside the first viewport, supporting Quick answer after the calculator, distinct primary/secondary actions and no horizontal overflow.
+- [x] PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; Vercel production deployment succeeded.
+- [x] Independent apex QA repeated four-state and interaction checks successfully with the current Cursor title/meta CTR pilot preserved.
+
+Next independent session task: **M-02B Reset-family consistency audit**. Do not reopen M-02A without a reproduced regression and do not implement Q-015 quota/pool depth through the visual-maintenance path.
