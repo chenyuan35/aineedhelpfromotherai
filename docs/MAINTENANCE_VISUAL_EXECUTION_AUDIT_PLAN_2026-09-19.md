@@ -197,29 +197,31 @@ Rollback after release when a material production regression appears: revert the
 
 ## 5.5. Yesterday carryover — Q-013D4 CMLink admission
 
-Status: **NEXT / MUST CLOSE BEFORE M-02**
+Status: **DONE / PRODUCTION VERIFIED — 2026-09-19**
 
-Use existing PR #127 only. Do not add another route.
+PR #127 admitted exactly one route: Trip.com Mainland China CMLink eSIM, product ID `71336361`, as Data-family `Watch`.
 
 Checklist:
 
-- [ ] re-read current PR #127 head/diff and CMLink validation record;
-- [ ] confirm only intended CMLink Phone data changes remain;
-- [ ] confirm current Eval Gate state;
-- [ ] obtain PR #127's own current Vercel Preview;
-- [ ] verify Data family desktop light/dark;
-- [ ] verify Data family mobile light/dark;
-- [ ] confirm CMLink remains `Watch` and data-only;
-- [ ] confirm existing Airalo/Mobal cards and interactions are not regressed;
-- [ ] merge only if rendered acceptance is clean;
-- [ ] production-verify the apex after merge;
-- [ ] update facts/queue before starting M-02.
+- [x] re-read current PR #127 head/diff and CMLink validation record;
+- [x] confirm only intended CMLink Phone data changes remain;
+- [x] confirm current Eval Gate state;
+- [x] obtain PR #127's own current Vercel Preview;
+- [x] verify Data family desktop light/dark;
+- [x] verify Data family mobile light/dark;
+- [x] confirm CMLink remains `Watch` and data-only;
+- [x] confirm existing Airalo/Mobal cards and interactions are not regressed;
+- [x] merge only after rendered acceptance was clean;
+- [x] production-verify the apex after merge;
+- [x] update facts/queue before starting M-02.
+
+Release evidence: final head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0`; current Eval Gate PASS; fresh PR-specific Vercel Preview PASS; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`; production Data-family desktop/mobile × light/dark, filters, guide, Airalo/Mobal and overflow checks PASS.
 
 ---
 
 ## 6. Phase M-02 — AI Reset Radar visual closure
 
-Status: **QUEUED AFTER Q-013D4 CARRYOVER**
+Status: **NEXT ELIGIBLE — START IN A NEW SESSION**
 
 No new Reset URL is created during this pass.
 
@@ -529,7 +531,7 @@ Stop and record the blocker when:
 The maintenance program runs in this order unless a production-critical defect overrides it:
 
 1. **Phone Radar** — DONE: PR #130 visual + functional closure, release and production audit completed Sep 19.
-2. **Yesterday carryover / CMLink PR #127** — close the already-validated single Data route through its own Preview and production verification.
+2. **Yesterday carryover / CMLink PR #127** — DONE: the single validated Data route passed its own Preview and production verification and merged Sep 19.
 3. **Cursor / AI Reset** — bounded visual closure of the lead page, then family consistency audit.
 4. **Relay Exit Risk** — result-proximity/empty-state visual maintenance plus methodology/data audit.
 5. **Existing utilities** — full real-input regression + visual consistency audit; repair only concrete defects.

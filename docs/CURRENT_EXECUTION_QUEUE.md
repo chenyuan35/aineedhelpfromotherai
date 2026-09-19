@@ -38,52 +38,32 @@ Evidence:
 
 Rule: do not reopen the Phone shell without a reproduced regression or evidence-backed defect.
 
-## NEXT — Q-013D4 CMLink production admission
+## JUST COMPLETED — Q-013D4 CMLink production admission
 
-Status: **NEXT ELIGIBLE UNFINISHED YESTERDAY TASK**.
+Status: **DONE / PRODUCTION VERIFIED**.
 
-Release vehicle: existing PR #127.
+Route: **Trip.com Mainland China CMLink eSIM, product ID `71336361`**, Data family, `Watch`, data-only.
 
-Route: **Trip.com Mainland China CMLink eSIM, product ID `71336361`**.
+Evidence:
 
-Existing validation state: **ADMISSION-READY AS `Watch`**. It is a Data route, not a durable phone-number/SMS route. Public copy must not promise reliable 5G, fixed egress, workstation-grade performance, rechargeability, or number/SMS/OTP capability.
+- final PR #127 head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0`;
+- final diff remained exactly `radar-view.json` + `tutorial-insights.json`;
+- Phone contract audit passed 18 checks and the public frontend build passed;
+- current Eval Gate passed;
+- PR #127 received its own fresh genuine Vercel Preview and rendered acceptance;
+- desktop/mobile × light/dark showed CMLink as `Watch`, data-only and without durable-number/SMS/OTP claims;
+- no reliable-5G, fixed-egress, workstation-grade or rechargeability promise was introduced;
+- Airalo and Mobal remained present; family switching, Mainland China/Croatia filters, Show more, inline Full guide and overflow checks passed;
+- PR #127 squash-merged as `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`;
+- production Vercel deployment completed and independent apex QA repeated the Data-family checks successfully.
 
-Execute in this order:
+Rule: do not add a second Phone route automatically and do not reopen the accepted Phone shell without a reproduced defect.
 
-1. read current PR #127 head/diff and `docs/PHONE_DATA_ROUTE_VALIDATION_CMLINK_2026-09-18.md`;
-2. confirm only the intended CMLink Phone data changes remain;
-3. confirm current Eval Gate state;
-4. require PR #127's own fresh genuine Vercel Preview — do not reuse PR #130 evidence;
-5. inspect Data family on desktop light/dark and mobile light/dark;
-6. confirm CMLink is visibly `Watch` and data-only;
-7. confirm existing Airalo/Mobal cards are unchanged and functional;
-8. test family switching, country filtering, Show more if applicable, Full guide open/close, and horizontal overflow;
-9. if a concrete defect exists, fix only that defect on PR #127 and repeat CI/Preview QA;
-10. if clean, merge PR #127 and independently production-verify the apex;
-11. add no second route in this release;
-12. update `PROJECT_CONTEXT.md`, this queue, `docs/MASTER_PLAN.md`, and the maintenance plan after production verification.
-
-Definition of done:
-
-- PR #127 has current green CI/Eval;
-- its own current Preview is rendered and accepted;
-- CMLink is correct in desktop/mobile × light/dark;
-- existing Data routes are not regressed;
-- production deploy is verified after merge;
-- fact sources record the final state.
-
-Stop conditions:
-
-- Vercel quota/provider failure: classify as provider blocker; do not push no-op commits or bypass it;
-- current evidence no longer supports the route: return to HOLD instead of publishing;
-- the change expands beyond one CMLink route: split/reject scope expansion;
-- production-facing defect requires a broader Phone redesign: stop and record separately.
-
-## AFTER Q-013D4 — M-02 AI Reset Radar visual closure
+## NEXT — M-02 AI Reset Radar visual closure
 
 Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`.
 
-Start only after Q-013D4 closes.
+Q-013D4 is closed. Start M-02 only in the next independent session.
 
 First target: existing canonical `/tools/cursor-usage-reset/`.
 

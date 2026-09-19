@@ -104,3 +104,18 @@ Disposition: **runtime status NOT VERIFIED from this connection.** Do not record
 3. Sep 20 → execute the authority/outreach recheck from original threads and independently verify links.
 4. PR #130 visually closes → then return to PR #127 CMLink release path and later Cursor implementation gate.
 5. Actual observer host becomes identifiable/reachable → verify Phone source-watcher timer/latest run without moving production dependencies.
+
+## Late-day closeout — Q-013D4 CMLink production admission
+
+Status: **DONE / PRODUCTION VERIFIED**.
+
+- [x] Revalidated PR #127 current head, two-file diff, mergeability and CMLink evidence.
+- [x] Synchronized the PR with current `main` without touching the production worktree; final diff remained only `radar-view.json` and `tutorial-insights.json`.
+- [x] Phone contract audit passed 18 checks and the public frontend build passed.
+- [x] Final PR head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0` passed the current Eval Gate and received its own fresh Vercel Preview.
+- [x] Preview QA passed desktop/mobile × light/dark; CMLink rendered as `Watch`, data-only, with no durable-number/SMS/OTP claim and no reliable-5G/fixed-egress/workstation-grade/rechargeability promise.
+- [x] Airalo and Mobal remained present; family switching, Mainland China/Croatia filtering, Show more, inline Full guide and page-level overflow checks passed.
+- [x] PR #127 squash-merged as `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`.
+- [x] Vercel production deployment completed successfully and independent apex QA repeated the Data-family checks.
+
+Next eligible project task is M-02 AI Reset Radar visual closure, but it belongs to the next independent session. Do not reopen Phone shell work or add a second Phone route automatically. Q-005 authority recheck remains due Sep 20; TikTok remains untouched while review is pending.
