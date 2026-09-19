@@ -17,11 +17,11 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE RADAR LIVE** | Q-014 is closed. PR #120 shipped A1 Croatia. Q-013G identifies Data as shallowest; Q-013D3 has now validated one bounded Data candidate, Trip.com CMLink mainland-China eSIM product ID `71336361`, as admission-ready with `Watch` caveats. | Phone gets settled behavior data and route breadth expands in small evidence-backed batches without scope creep. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE VISUAL CLOSURE COMPLETE** | Q-014J passed real Preview and production verification; PR #130 merged as `5ccd50b`. The next unfinished depth task is already-open CMLink PR #127, which still needs its own current Preview/review. | Close PR #127 cleanly, then continue maintenance/measurement within the frozen three-surface scope. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
-## Current sprint — Phone Radar measured depth
+## Current sprint — Phone Radar frontend closure
 
 1. **DONE — Product reset root correction.** The questionnaire/research-manual direction is rejected.
 2. **DONE — Product structure.** Phone Radar has three route families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS.
@@ -31,20 +31,22 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 6. **DONE — Q-014D v1 outcome/decision model.** `radar-view.json` holds the small frontstage decision layer; existing research/intelligence stays backstage.
 7. **DONE — Q-014E v1 data reclassification.** Frontstage decision labels are separated from backstage research detail; the public flow no longer depends on documentation-first `unknown` gating.
 8. **DONE — Q-014G implementation.** PR #115 replaced questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
-9. **DONE — Q-014H production closure.** The bounded production QA verified the three-family first screen, compact shortlist, country refinement, full-guide/action model, responsive mobile rules, canonical/data health and analytics. The only verified gap was missing Phone-specific `Show more` tracking; PR #118 added `phone_show_more`, and the public release audit, Eval Gate and Vercel deployment passed.
-10. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`.
-11. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`. Kaktus is HOLD because remote activation is support-dependent; ClubSIM is HOLD because the old cheap keep-alive path changed; RedPocket is deprioritized because another US long-term route would not address the current breadth gap.
-12. **DONE — Q-013G first gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback. The next eligible depth batch should target Data, not add another long-term number merely for breadth.
-13. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
-14. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
-15. **NEXT IF Q-003 IS STILL WAITING — Q-013D4 bounded production admission.** Add exactly the validated Trip.com CMLink route to the existing Data family without redesigning Phone; use fresh localized package/value wording and concise mixed-performance caveats. Stop after this one route.
-16. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
-17. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
-18. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-19. **Relay — monitor.** Preserve methodology and accumulate real history.
-20. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
+9. **SUPERSEDED — Q-014H technical closure.** The earlier pass verified the route-first flow, responsive breakpoints, analytics, canonical/data health and the `phone_show_more` event, but it did not verify the computed visual system deeply enough. It is no longer sufficient evidence of product/visual closure.
+10. **DONE — Q-014I visual closure audit.** Direct user feedback that the page still feels messy was treated as a concrete defect signal. Audit found undefined Phone CSS tokens (`--border / --surface / --text` against production `--line / --panel / --ink`), inherited global `button` top margins, marketing-scale hero sizing, too much pre-list chrome/equal-weight card density, and a Full guide that opens after the route list rather than beside the selected card. See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
+11. **DONE — Q-014J bounded Phone shell repair.** Final head `dc8d147` passed Eval Gate #567 and real Vercel Preview QA. Desktop/mobile × light/dark verified one selected family, first-route visibility, three-metric cards, Croatia non-shortlist filtering, Show more, inline Full guide and no horizontal overflow. PR #130 squash-merged as `5ccd50b4c293a963274622b8a14a3987cbab14d8`; apex production verification repeated the core checks successfully.
+12. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`. Q-003 informs later growth/route decisions but does not block reviewing/fixing a known UI defect.
+13. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`.
+14. **DONE — Q-013G first three-family gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
+15. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
+16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
+17. **NEXT ELIGIBLE — Q-013D4 production admission.** PR #127 implements the validated CMLink route. Phone visual closure no longer blocks it. Reconfirm current head/evidence, require PR #127's own fresh valid Preview, run bounded Data-family desktop/mobile light/dark QA, then merge only if clean.
+18. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
+19. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
+21. **Relay — monitor.** Preserve methodology and accumulate real history.
+22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 
-## Phone Radar shipped contract
+## Phone Radar product contract
 
 Canonical remains `/tools/phone-number-survival-guide/`.
 
@@ -58,15 +60,19 @@ Data SIM/eSIM: current data price/value, allowance/validity, coverage, setup fri
 
 Temporary SMS: recent success signal, current price, country/service coverage, private/shared/reused state, privacy/reuse risk, availability.
 
-Default to a small useful shortlist, not a wall of equal-weight choices.
+Default to a small useful shortlist, not a wall of equal-weight choices. The current visual repair may change where a required field is displayed — metric grid, identity/status chip, secondary metadata, or guide — as long as decision-critical information remains obvious and the page becomes easier to scan.
 
 ### Full guide
 
 On user request only: what to buy/use, current price, prerequisites, exact steps, SMS/OTP or data use, keep/recharge/renew, main pitfall, recovery/reissue, a few useful tutorial/community links, acquisition link.
 
+The guide must remain attached to the selected route context; it should not behave like a separate long article appended after the whole shortlist.
+
 ### Decision-cost rule
 
 Every visible element must help choose or act. Methodology, reconciliation notes, source classes and long evidence prose remain backstage.
+
+A known visual defect outranks route expansion. Passing data/CI checks is not sufficient evidence that the dashboard is visually finished.
 
 ### Release boundaries
 
@@ -82,15 +88,15 @@ These are not backlog omissions to fill automatically. Any future change require
 
 ## Next-session execution order
 
-The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-level order is:
+The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. check the GSC Phone `settledThrough` trigger;
-2. if Sep 16+ is settled, execute Q-003 first;
-3. if it is still below Sep 16, execute Q-013D4: admit exactly the already-validated Trip.com CMLink mainland-China Data route as `Watch` using the normal production branch/preview/release path;
-4. do not reopen CMLink provider research or add a second Data route in that same production batch unless new contradictory evidence blocks the validated route;
-5. do not add another Long-term route unless new evidence shows it solves a distinct user job better than the current pool;
-6. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due;
-7. do not reopen Q-014 or redesign the shipped Phone shell without a concrete new defect or settled behavior evidence.
+1. finish yesterday's remaining Q-013D4 CMLink PR #127 review/release through its own fresh Preview and production verification;
+2. do not add a second Phone route or reopen the shell while closing PR #127;
+3. after PR #127 closes, begin M-02 AI Reset Radar visual closure from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`;
+4. keep Cursor title/meta and Q-015 quota work measurement-gated;
+5. execute Q-005 authority recheck on Sep 20, not before;
+6. keep TikTok untouched while external review is pending;
+7. keep AIR provider blockers explicit; no paid/bypass workarounds.
 
 ## Measurement cadence
 
@@ -113,7 +119,7 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-leve
 - Search Console evidence outranks speculative keyword ideas after impressions exist.
 - Keep social/referral separate from Google organic.
 - AI discovery remains non-adversarial; provider quota/auth/cache failures remain provider blockers.
-- Do not redesign a shipped product shell when the next useful action is measurement or route depth.
+- Do not start route expansion while a concrete Phone shell defect or unresolved visual-review gate remains open.
 
 ## Source-of-truth map
 
@@ -125,6 +131,7 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-leve
 | Frontend foundation | `docs/FRONTEND_FOUNDATION_PLAN_2026-09-18.md` |
 | Phone reset | `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` |
 | Phone interaction contract | `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` |
+| Phone visual closure defects | `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` |
 | Global route-pool seed | `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` |
 | Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
