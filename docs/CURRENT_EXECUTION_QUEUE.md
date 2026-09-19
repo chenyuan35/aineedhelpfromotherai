@@ -24,30 +24,28 @@ Do not start another redesign or add routes. The next bounded Phone task is to w
 
 ## User-directed one-off task — TikTok App Review closure (2026-09-19)
 
-This bounded review task is explicitly user-directed for the current session. It does not change the standing project priority after the review reaches its pre-submit stop gate.
+Status: **COMPLETE / SUBMITTED — WAITING FOR REVIEW.** The one-off execution task is closed; TikTok itself is now an external wait state and does not displace the standing Phone Radar priority.
 
-Verified this session:
+Verified completion evidence:
 - PR #140 merged as `587e2757540306de5f6bcbc1b769c1a3adc71f96`; PR #141 merged as `e15c6039e96d1a5c8e9e97a82da75b97d08a9a64`.
-- Production `/tiktok-publish/` returns HTTP 200.
-- A cookie-less GET to `/api/tiktok/status/` returns HTTP 200 with `configured:true` and `connected:false`. This confirms endpoint configuration only; it does not verify a signed-in OAuth session or the Developer Portal.
-- The bridge in PR #141 rewrites only `/api/tiktok/*` to the configured Sandbox Preview Functions.
+- Production `/tiktok-publish/` is live and PR #141 keeps `/api/tiktok/*` routed to the configured Sandbox Preview Functions for reviewer use.
+- The user uploaded the final review demo video in the TikTok Developer Portal.
+- Production app details were corrected before submission: Web/Desktop URL `https://aineedhelpfromotherai.com/`; Login Kit redirect `https://aineedhelpfromotherai.com/api/tiktok/callback/`; the accidental blank redirect row and duplicate-URI validation state were cleared.
+- The user submitted the Production app for review. The Portal displayed: `Your app has been submitted for review. Please wait and we will get back to you soon.` and exposed a `Recall` action, confirming the review is pending.
 
-Not verified this session:
-- TikTok Developer Portal Production Draft name, description, URLs, products, scopes, or uploaded demo file.
-- The prior production-domain Sandbox OAuth completion (provided as current context by the user).
-- The user reports the current review demo is a still image; it has not been independently inspected.
+Hold rules while review is pending:
+- **Do not click `Recall`.**
+- Do not edit the submitted demo video, Products, Scopes, URLs, or review fields unless TikTok explicitly requests a change.
+- Do not remove PR #141's temporary Sandbox review bridge while reviewers may still need the submitted flow.
+- Do not rotate/move TikTok credentials or change the test account/privacy as cleanup work.
+- Do not treat waiting time as a reason to add TikTok features or expand project scope.
 
-Blocker and next action:
-- The session tool inventory and `Codex mcp list` contain no Playwright browser MCP. Project rules prohibit CUA and standalone-browser fallbacks, so real Portal inspection, screen recording, and video upload are blocked here.
-- When Playwright is available, replace the still-image demo with a continuous, genuine screen recording on `https://aineedhelpfromotherai.com/tiktok-publish/`. Use the actual Sandbox consent; TikTok-returned creator information, privacy, comment/Duet/Stitch settings; truthful commercial-content, AIGC, and Music Usage Confirmation controls; a moving MP4/MOV selected and previewed in the page; the real Direct Post response; the real `video.upload` result/status; and the real TikTok status. Do not show or invent success.
-- Keep the review video MP4/MOV and under 50 MB; clearly demonstrate the selected products/scopes and matching production domain as required by the [TikTok App Review Guidelines](https://developers.tiktok.com/docs/en/app-review-guidelines).
-- Unaudited Direct Post is limited to private TikTok accounts. Do not change the user's account privacy; if TikTok returns the documented restriction, show the actual response and explain it using the [Direct Post API documentation](https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post) and [Content Sharing Guidelines](https://developers.tiktok.com/docs/en/content-sharing-guidelines).
-- For `video.upload`, report only TikTok's actual status; an inbox delivery is not a published post. Stop before `Submit for review`.
+Next trigger:
+- **Approved:** verify the approval state, then open a separate bounded production-transition task for direct Production credentials/functions and bridge retirement. Remove the bridge only through a fresh branch/PR after the direct production path is verified.
+- **Rejected / Changes requested:** read the exact TikTok review feedback, make only the requested/reproduced corrections, re-record/re-upload evidence only if required, and resubmit through a separate bounded review-fix task.
+- **No response yet:** no TikTok changes. Resume the standing queue with Q-014J Phone visual closure.
 
-Temporary bridge rollback:
-- The only bridge rule is `/api/tiktok/(.*)` → `https://aineedhelpfromotherai-tiktok-preview.vercel.app/api/tiktok/$1` in `vercel.json`.
-- Do not remove it while the reviewer flow depends on Sandbox Preview credentials. Retire it only after review no longer requires the bridge and the direct production functions/credentials are separately ready and authorized; remove only that rewrite in a fresh branch/PR, then verify the direct production TikTok endpoints and unrelated production routes. Do not change credentials or account settings as part of this task.
-- Detailed acceptance and rollback are in `docs/TIKTOK_PUBLISH_REVIEW_NOTES_2026-09-19.md`.
+Detailed submission/rollback state is in `docs/TIKTOK_PUBLISH_REVIEW_NOTES_2026-09-19.md`.
 
 ## Just completed
 
