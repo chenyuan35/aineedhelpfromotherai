@@ -137,6 +137,19 @@
       "numberIncluded": "No normal SMS number",
       "caveat": "Use for data. Do not treat a data-only eSIM as a verification phone number."
     },
+    "trip-cmlink-china-data": {
+      "family": "data",
+      "order": 15,
+      "shortlist": true,
+      "dataCost": "Low-cost · live Trip price",
+      "allowance": "Daily-data · 3–15 days",
+      "coverage": "Mainland China",
+      "setup": "Low–medium",
+      "reuse": "Travel-session product",
+      "numberIncluded": "Data only · no durable number",
+      "stability": "Watch",
+      "caveat": "Cheap mainland-China data route with mixed performance: recent users report 4G-only periods, evening slowdowns and device variation. Treat the 5G label as best-effort, not guaranteed."
+    },
     "mobal-japan-data-physical": {
       "family": "data",
       "order": 20,
