@@ -7,6 +7,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const toolDir = path.join(repoRoot, 'frontend', 'tools', 'phone-number-lifecycle-mvp');
 const html = fs.readFileSync(path.join(toolDir, 'index.html'), 'utf8');
 const siteCss = fs.readFileSync(path.join(repoRoot, 'frontend', 'site.css'), 'utf8');
+const themeGenerator = fs.readFileSync(path.join(repoRoot, 'frontend', 'bin', 'apply-theme.mjs'), 'utf8');
 const read = name => JSON.parse(fs.readFileSync(path.join(toolDir, name), 'utf8'));
 const catalog = read('catalog.json');
 const tutorial = read('tutorial-insights.json');
@@ -58,6 +59,7 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
   assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\{background:var\(--panel\);color:var\(--ink\);border-color:var\(--line\)\}/);
   assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\[aria-selected="true"\]\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
   assert.match(siteCss, /html\[data-theme="dark"\] \.pr-actions \.primary\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
+  assert.match(themeGenerator, /Phone Radar must beat the generic dark button fill in generated dist CSS/);
 });
 
 check('cards use compact hierarchy instead of five equal metrics', () => {
@@ -169,7 +171,7 @@ check('page has closed-loop analytics without sensitive data collection', () => 
 });
 
 check('full guide covers action loop', () => {
-  for (const marker of ['What to get','What you need','Open / use it','Keep / expiry','Main risk / recovery']) assert(html.includes(marker), `missing guide marker ${marker}`);
+  for (const marker of ['What to get','What you need','Open / use it','Keep / expiry','Main risk / recovery']) assert(html.includes(marker, `missing guide marker ${marker}`));
   assert.match(html, /Receive a test SMS before linking important accounts/);
   assert.match(html, /do not use an ordinary one-time number as long-term recovery/i);
 });
