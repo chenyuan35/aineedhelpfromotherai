@@ -33,7 +33,7 @@ Current SIM Panda inventory discovered on 2026-09-19:
 | One NZ physical SIM | CNY 99, in stock | Long-term SMS/OTP | Candidate. Verify NZD 10/12-month retention, roaming SMS, current top-up rules and recovery window. |
 | Skinny New Zealand physical SIM | CNY 99, sold out | Long-term SMS/OTP | Candidate/watch. Verify NZD 5/12-month retention, recovery window, roaming SMS and current stock separately. |
 | Giffgaff GBP 10 top-up voucher | CNY 103.80, in stock | Service/accessory | Not a separate route. May become a purchase/top-up option inside the existing Giffgaff guide if independently useful. |
-| Luky2 SIM | CNY 150, in stock | Data SIM/eSIM | Candidate for Data family. Verify discrepancy in seller copy (30GB vs 40GB), 365-day validity, supported countries, FUP and Taiwan/HK real-name requirements. |
+| Luky2 SIM | CNY 150, in stock | Data SIM/eSIM | Candidate for Data family. First verification pass found seller-copy conflicts; see below. |
 | Hong Kong address receipt service | CNY 50, in stock | Non-route logistics service | Out of Phone Radar route scope unless later evidence shows it materially solves SIM acquisition logistics without creating a separate product surface. |
 
 Seller tutorial inventory discovered:
@@ -47,6 +47,26 @@ Important exclusions:
 - Do not publish "works for X app/bank" as a guarantee based only on seller copy.
 - Do not convert seller claims into OTP success percentages.
 - Do not add all products to production. Research first, then admit only distinct routes that improve the current three-family decision set.
+
+### Research pass 1 — Luky2 / LuckySIM
+
+Status: **HOLD / seller copy not safe to publish as-is.**
+
+Verified on 2026-09-19:
+- SIM Panda lists `Luky2 SIM` at CNY 150 and describes a 365-day roaming data product.
+- The seller page contradicts itself: the opening text says 30GB high-speed roaming data, while a later specification table says 40GB.
+- LuckySIM's official shop currently lists a `365 days | 42 countries roaming data 30GB` plan for HKD 220 and a separate `365 days | 17 countries roaming data 30GB` plan for HKD 180. The official shop also lists a distinct `3 years | 17 countries roaming data 40GB` plan. Therefore the seller's 40GB/365-day claim is not currently supported by the official catalog.
+- LuckySIM's official site states prepaid SIM real-name registration must be completed before use, and verification may take up to two working days. This conflicts with any seller wording that implies real-name registration is only needed in selected places.
+- Official roaming bundles include China, Japan, South Korea, Taiwan and Macau among wider country sets, but the exact SIM Panda SKU-to-official-plan mapping is still unverified.
+
+Open verification items before any Phone admission:
+- exact LuckySIM plan/SKU sold by SIM Panda;
+- whether SIM Panda's CNY 150 item maps to the official 17-country or 42-country 30GB plan, or another wholesale product;
+- whether Hong Kong local data is actually included in the exact SKU;
+- FUP behavior after included data is exhausted;
+- eSIM/physical-SIM fulfillment details;
+- current first-hand user reports for mainland-China performance and egress;
+- whether the route is meaningfully better than the already validated CMLink/other Data options.
 
 ### Sendwave/Maya lead supplied by user
 
