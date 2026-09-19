@@ -78,9 +78,9 @@ Evidence:
 
 Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed audit evidence: `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
 
-M-02B is being executed one page at a time. **M-02B-1 Claude Code Limit Reset audit is complete: Functional PASS / Visual FAIL.** Production measurements place the calculator top at ~912px desktop / ~1207px mobile and the first reset input at ~1240px / ~1591px, after the Quick answer block. Light/dark contrast, canonical, local save/restore, five-hour shortcut, past/missing state handling and horizontal overflow checks passed.
+**M-02B-1 Claude Code Limit Reset audit + repair are DONE / PRODUCTION VERIFIED.** The read-only audit reproduced the first-viewport hierarchy defect; PR #156 then changed exactly one page file, moving the existing reset inputs/tracker ahead of Quick answer and compacting the Claude-specific hero. Final head `45d80b4530f8ec02efab192ba39420d5230c20b8` passed Eval Gate #583 and genuine Vercel Preview QA; squash merge `049a6349f00516b9b08ffeea6a95325e538d113c` passed independent apex QA. Calculator top improved from ~912/~1207px to ~420/~503px desktop/mobile, and inputs to ~475/~551px. Title/meta/canonical and provider-policy semantics remained unchanged; no new quota functionality was added.
 
-**NEXT — M-02B-1R Claude bounded visual repair.** Move the existing calculator/input ahead of supporting Quick answer content and reduce first-viewport title/prose dominance without changing the canonical, provider-policy claims or adding new quota functionality. Do not proceed to Copilot until Claude repair reaches its own verified stopping point.
+**NEXT — M-02B-2 GitHub Copilot Credits Reset read-only audit.** Audit functional behavior, first-viewport hierarchy, invalid/missing input, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Copilot unless a concrete defect is reproduced.
 
 ## Measurement gates
 
@@ -144,4 +144,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-1 Claude audit is closed with Functional PASS / Visual FAIL.** The next bounded task is **M-02B-1R Claude visual repair**; do not advance to Copilot before that repair closes.
+Finish one bounded task to a verified stopping point. **M-02B-1 Claude audit + repair are closed / production verified.** The next bounded task is **M-02B-2 GitHub Copilot Credits Reset read-only audit**; do not modify Copilot unless that audit reproduces a concrete defect.
