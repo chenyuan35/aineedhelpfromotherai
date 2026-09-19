@@ -20,7 +20,7 @@ Capture on the exact production domain:
 2. Start Login Kit, show the real consent screen with `user.info.basic`, `video.publish`, and `video.upload`, authorize, and return to the site.
 3. Show the connected identity and creator information/options returned by TikTok. Do not expose tokens, secrets, or unnecessary account identifiers.
 4. Select a moving, noncommercial, non-AI MP4/MOV and play the page's video preview.
-5. Show TikTok-returned privacy choices and actual comment, Duet, and Stitch availability. Demonstrate commercial-content and AIGC controls truthfully; leave each setting consistent with the selected media.
+5. Show TikTok-returned privacy choices and actual comment, Duet, and Stitch availability. Demonstrate commercial-content and AIGC controls truthfully; leave each setting consistent with the selected media. Show the real Music Usage Confirmation and confirm only what is true for the selected media.
 6. With explicit consent, run the actual Direct Post path and show TikTok's real response and resulting status.
 7. Run the actual `video.upload` inbox path and show TikTok's real status. Do not describe `SEND_TO_USER_INBOX` as a published post; only a real `PUBLISH_COMPLETE` supports that claim.
 8. Keep the capture continuous, readable, and unambiguous; only trim dead time at the beginning/end. Export as MP4/H.264 or MOV, under 50 MB. TikTok requires an end-to-end demo, matching website domain, and clear UI/interactions; first-time app review must use Sandbox. See the [TikTok App Review Guidelines](https://developers.tiktok.com/docs/en/app-review-guidelines).
