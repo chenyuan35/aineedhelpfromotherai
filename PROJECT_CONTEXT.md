@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-19
+Last updated: 2026-09-20
 
 This file is the compact current-facts source for the project. Keep volatile execution detail in task-specific docs and PRs. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -23,7 +23,7 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Phone audit | **Q-014J DONE / PRODUCTION VERIFIED.** The bounded repair fixed token/spacing/hero/card/guide defects; real rendered QA then found and fixed build-generated dark-button specificity and country filtering that hid non-shortlist matches. Eval Gate #567 passed on `dc8d147`; Preview succeeded; merge `5ccd50b`; production verification passed desktop/mobile × light/dark, all family states, Croatia filter, Show more, inline guide and overflow checks. | Treat Sep 19 closure as the baseline; reopen only for reproduced regressions/evidence-backed defects. |
 | Search Console | **Q-003 trigger fired on Sep 19.** GSC Wizard now reports `settledThrough=2026-09-16`. The Phone canonical recorded 0 impressions / 0 clicks on Sep 16; the checked GA4 Sep 16–19 Phone page/landing-page window recorded 0 sessions / 0 active users. This is an insufficient demand sample, not evidence for expansion or repositioning. | Q-003 decision is **KEEP / continue collecting evidence**. Do not add routes/pages or churn copy because exposure is zero. Re-measure when settled Phone impressions/clicks or meaningful interactions appear. |
 | Indexing | **Phone canonical is now indexed.** Sep 19 GSC indexing tracker reports `indexed`, verdict `PASS`, coverage `Submitted and indexed`, `INDEXING_ALLOWED`; last recorded crawl is 2026-09-17 22:29:28 UTC. | No manual submission churn. Continue normal cadence and measure demand after actual impressions appear. |
-| Cursor CTR | Cursor title/meta pilot remains measuring. The Sep 17 title/meta commit lands after the current GSC settled window, so there is not yet a clean post-change sample. Q-015 Usage Pool / Quota Explainer research and exact execution plan were merged in PR #146. | When GSC settles Sep 17+, collect clean post-change impressions; first decision at >=300 clean impressions, extend toward ~500 only if ambiguous. Production Q-015 implementation remains behind Phone visual closure and its own measurement gate. |
+| Cursor / Reset | **M-02A DONE / PRODUCTION VERIFIED.** PR #153 moved the existing Cursor tracker ahead of supporting Quick answer content, compacted the hero and separated primary/secondary actions without changing the canonical or current title/meta CTR pilot. Final head `6c87923d` passed Eval Gate #577 and its own Vercel Preview; squash merge `67052224cd1ee84d6e595d13f3ac1e8c89e18f02` passed independent production desktop/mobile × light/dark and interaction QA. Q-015 Usage Pool / Quota Explainer remains measurement-gated. | Next independent session: M-02B Reset-family consistency audit. When GSC settles Sep 17+, collect the clean Cursor CTR sample; do not add Q-015 quota/pool functionality through visual maintenance. |
 | Distribution | Claude Reset Threads and Cursor Reset Mastodon tests are published; referral/social remains separate from organic. | Measure first; no mass cross-posting. |
 | Authority | First Sep 18 outreach check found no reply or independently verified link. | Recheck original Gmail threads/public pages on Sep 20 before follow-up/batch 2. |
 | Relay Exit Risk | Relay Exit Risk v2 remains live as a secondary product with a 0–100 Exit Risk Index. | Accumulate lifecycle/community evidence; preserve confidence semantics. |
@@ -32,17 +32,17 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-**Q-013D4 / PR #127 is COMPLETE / PRODUCTION VERIFIED. The next independent session task is M-02 AI Reset Radar visual closure.** TikTok remains **SUBMITTED / WAITING FOR REVIEW** and must not be recalled or edited while pending.
+**M-02A Cursor lead-page visual closure is COMPLETE / PRODUCTION VERIFIED. The next independent session task is M-02B Reset-family consistency audit.** TikTok remains **SUBMITTED / WAITING FOR REVIEW** and must not be recalled or edited while pending.
 
-Q-013D4 closure evidence:
+M-02A closure evidence:
 
-1. PR #127 was synchronized to current `main` without touching the production worktree; final diff remained only `radar-view.json` and `tutorial-insights.json`.
-2. Final PR head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0` passed the current Eval Gate and a fresh PR-specific Vercel Preview.
-3. Real Preview QA passed desktop/mobile × light/dark, CMLink `Watch`/data-only framing, Airalo/Mobal regression checks, family switching, Mainland China/Croatia filtering, Show more, inline Full guide and overflow checks.
-4. PR #127 squash-merged as `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`; Vercel production deployment completed successfully.
-5. Independent apex QA repeated the Data-family checks successfully.
+1. Production baseline showed the calculator below the first viewport: top ~815px desktop / ~1126px mobile, with the reset input at ~1048px / ~1368px.
+2. PR #153 changed only `frontend/bin/enhance-cursor-breakthrough.mjs`; final head `6c87923d0ab54a018563c18e8732cd154a44375e` passed Eval Gate #577 and a fresh Vercel Preview.
+3. Preview and production QA passed desktop/mobile × light/dark: calculator top ~490px / ~479px, reset input ~723px / ~721px, Quick answer after the tool, no page-level horizontal overflow, and clear primary/secondary action hierarchy.
+4. Empty/invalid/past timestamps, 0%/100% usage, localStorage restore, copy summary, calendar download and clear-state behavior passed with no page errors.
+5. Canonical and the current Cursor title/meta CTR pilot were preserved; no Q-015 quota/pool feature was added. PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02` and Vercel production deployment succeeded.
 
-Next session: begin M-02 from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Q-005 authority recheck remains due Sep 20; Cursor Q-015 remains measurement-gated. No new Phone shell redesign or automatic second route.
+Next session: execute M-02B only. Q-005 authority recheck remains due Sep 20; Cursor Q-015 remains measurement-gated. No new Reset URL or quota/pool expansion through the visual-maintenance path.
 
 Detailed Sep 19 closure evidence remains in `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md`; the maintenance execution contract is `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`.
 

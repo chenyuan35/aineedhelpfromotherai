@@ -221,7 +221,7 @@ Release evidence: final head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0`; current
 
 ## 6. Phase M-02 — AI Reset Radar visual closure
 
-Status: **NEXT ELIGIBLE — START IN A NEW SESSION**
+Status: **IN PROGRESS — M-02A DONE / M-02B NEXT IN A NEW SESSION**
 
 No new Reset URL is created during this pass.
 
@@ -231,15 +231,17 @@ Current maintenance finding: the calculator works, but title/explanation/Quick a
 
 Checklist:
 
-- [ ] preserve the existing canonical `/tools/cursor-usage-reset/`;
-- [ ] preserve the current CTR title/meta pilot until clean GSC evidence says otherwise;
-- [ ] move the primary interactive reset/usage object closer to the first viewport;
-- [ ] demote/collapse supporting Quick answer material if needed instead of deleting useful facts;
-- [ ] ensure the primary result/countdown is visually attached to the input;
-- [ ] keep advanced quota/pool work measurement-gated under Q-015 rather than silently adding it during visual repair;
-- [ ] verify empty/invalid/past timestamps and 0/100% edge states;
-- [ ] verify save/copy/calendar/local-storage behavior if present;
-- [ ] verify desktop/mobile + light/dark visually.
+- [x] preserve the existing canonical `/tools/cursor-usage-reset/`;
+- [x] preserve the current CTR title/meta pilot until clean GSC evidence says otherwise;
+- [x] move the primary interactive reset/usage object closer to the first viewport;
+- [x] demote/collapse supporting Quick answer material if needed instead of deleting useful facts;
+- [x] ensure the primary result/countdown is visually attached to the input;
+- [x] keep advanced quota/pool work measurement-gated under Q-015 rather than silently adding it during visual repair;
+- [x] verify empty/invalid/past timestamps and 0/100% edge states;
+- [x] verify save/copy/calendar/local-storage behavior if present;
+- [x] verify desktop/mobile + light/dark visually.
+
+M-02A release evidence: PR #153 final head `6c87923d0ab54a018563c18e8732cd154a44375e`; Eval Gate #577 PASS; fresh Vercel Preview PASS; desktop/mobile × light/dark plus empty/invalid/past, 0/100%, localStorage, copy, calendar and clear-state QA PASS; squash merge `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; independent production QA PASS. Canonical/title/meta unchanged and no Q-015 quota/pool functionality added.
 
 ### M-02B — Existing Reset family consistency audit
 
