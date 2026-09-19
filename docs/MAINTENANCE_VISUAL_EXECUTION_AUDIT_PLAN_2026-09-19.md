@@ -47,7 +47,7 @@ Current registered production tools to keep working:
 - no backend expansion unless an existing function is impossible to repair without it;
 - no decorative redesign that does not reduce user decision time;
 - no title/meta churn merely because visual work is happening;
-- no route expansion while Phone visual closure is open.
+- no new Phone route research/admission beyond closing the already-open PR #127 carryover before maintenance work resumes.
 
 ## 2. Visual rule learned from mature products
 
@@ -100,15 +100,15 @@ Checklist:
 - [x] test image processing with a real harmless image rather than only clicking controls;
 - [x] separate test-runner limitations from actual product failures before recording a defect.
 
-Current baseline conclusion: existing registered tools have working primary functional paths in the Sep 19 smoke pass; visual/product closure is still open for the core surfaces.
+Current baseline conclusion: existing registered tools have working primary functional paths in the Sep 19 smoke pass; visual/product closure is still open for the Reset and Relay core surfaces.
 
 ---
 
 ## 5. Phase M-01 — Phone Radar visual closure
 
-Status: **ACTIVE / FIRST PRIORITY**
+Status: **DONE / PRODUCTION VERIFIED — 2026-09-19**
 
-Existing release vehicle: Draft PR #130. Keep repairs on that branch/PR; do not start a parallel redesign.
+Release vehicle was PR #130; it is now merged and production-verified.
 
 ### M-01A — Implement the visual-first shell
 
@@ -131,18 +131,18 @@ Checklist:
 - [x] prevent global dark button styles from flattening Phone selected/unselected states;
 - [x] fix at the build-generator level when generated `dist` CSS can reintroduce the defect;
 - [x] ensure country selection can reveal a matching non-shortlist route instead of returning an artificial zero-result state;
-- [ ] rerun all Phone contract/build tests on the latest PR head;
-- [ ] confirm the latest PR head, CI and Preview status immediately before final acceptance.
+- [x] rerun all Phone contract/build tests on the latest PR head;
+- [x] confirm the latest PR head, CI and Preview status immediately before final acceptance.
 
 ### M-01C — Local/build verification
 
 Required evidence:
 
-- [ ] Phone contract audit passes;
-- [ ] full public build passes;
-- [ ] generated `frontend/dist/site.css` preserves Phone-specific dark-state rules after the generic theme generator;
-- [ ] no generated-file noise or unrelated product change is included in the final diff;
-- [ ] canonical and route data are unchanged unless a separately approved data correction is explicitly part of the same bounded defect.
+- [x] Phone contract audit passes;
+- [x] full public build passes;
+- [x] generated `frontend/dist/site.css` preserves Phone-specific dark-state rules after the generic theme generator;
+- [x] no generated-file noise or unrelated product change is included in the final diff;
+- [x] canonical and route data are unchanged unless a separately approved data correction is explicitly part of the same bounded defect.
 
 ### M-01D — Real Preview visual acceptance
 
@@ -152,34 +152,34 @@ Mobile target: representative width around 390px, with 320–430px considered fo
 
 Required cases:
 
-- [ ] desktop light;
-- [ ] desktop dark;
-- [ ] mobile light;
-- [ ] mobile dark;
-- [ ] exactly one selected family state is obvious in every case;
-- [ ] `Keep a real number` state verified;
-- [ ] `Get mobile data` state verified;
-- [ ] `Receive a one-time code` state verified;
-- [ ] first real route appears promptly after compact controls;
-- [ ] route cards expose only the primary metrics clearly;
-- [ ] country filter works for shortlist and non-shortlist matches;
-- [ ] Show more expands correctly;
-- [ ] Full guide opens/closes inside the selected route context;
-- [ ] no page-level horizontal overflow;
-- [ ] primary and secondary actions remain visually distinct;
-- [ ] no outbound purchase/platform action is required for visual acceptance.
+- [x] desktop light;
+- [x] desktop dark;
+- [x] mobile light;
+- [x] mobile dark;
+- [x] exactly one selected family state is obvious in every case;
+- [x] `Keep a real number` state verified;
+- [x] `Get mobile data` state verified;
+- [x] `Receive a one-time code` state verified;
+- [x] first real route appears promptly after compact controls;
+- [x] route cards expose only the primary metrics clearly;
+- [x] country filter works for shortlist and non-shortlist matches;
+- [x] Show more expands correctly;
+- [x] Full guide opens/closes inside the selected route context;
+- [x] no page-level horizontal overflow;
+- [x] primary and secondary actions remain visually distinct;
+- [x] no outbound purchase/platform action is required for visual acceptance.
 
 ### M-01E — Release
 
 Only when M-01B/C/D are green:
 
-- [ ] leave Draft / mark PR ready only after real visual acceptance;
-- [ ] merge through the normal GitHub path;
-- [ ] wait for production deployment;
-- [ ] verify production canonical returns 200;
-- [ ] repeat the core family/filter/guide smoke checks on the apex domain;
-- [ ] verify light/dark production output rather than assuming Preview parity;
-- [ ] update `PROJECT_CONTEXT.md`, queue and relevant plan status.
+- [x] leave Draft / mark PR ready only after real visual acceptance;
+- [x] merge through the normal GitHub path;
+- [x] wait for production deployment;
+- [x] verify production canonical returns 200;
+- [x] repeat the core family/filter/guide smoke checks on the apex domain;
+- [x] verify light/dark production output rather than assuming Preview parity;
+- [x] update `PROJECT_CONTEXT.md`, queue and relevant plan status.
 
 ### M-01F — Stop / rollback rules
 
@@ -195,9 +195,31 @@ Rollback after release when a material production regression appears: revert the
 
 ---
 
+## 5.5. Yesterday carryover — Q-013D4 CMLink admission
+
+Status: **NEXT / MUST CLOSE BEFORE M-02**
+
+Use existing PR #127 only. Do not add another route.
+
+Checklist:
+
+- [ ] re-read current PR #127 head/diff and CMLink validation record;
+- [ ] confirm only intended CMLink Phone data changes remain;
+- [ ] confirm current Eval Gate state;
+- [ ] obtain PR #127's own current Vercel Preview;
+- [ ] verify Data family desktop light/dark;
+- [ ] verify Data family mobile light/dark;
+- [ ] confirm CMLink remains `Watch` and data-only;
+- [ ] confirm existing Airalo/Mobal cards and interactions are not regressed;
+- [ ] merge only if rendered acceptance is clean;
+- [ ] production-verify the apex after merge;
+- [ ] update facts/queue before starting M-02.
+
+---
+
 ## 6. Phase M-02 — AI Reset Radar visual closure
 
-Status: **QUEUED AFTER PHONE VISUAL CLOSURE**
+Status: **QUEUED AFTER Q-013D4 CARRYOVER**
 
 No new Reset URL is created during this pass.
 
@@ -506,12 +528,13 @@ Stop and record the blocker when:
 
 The maintenance program runs in this order unless a production-critical defect overrides it:
 
-1. **Phone Radar** — finish PR #130 visual + functional closure, release and production audit.
-2. **Cursor / AI Reset** — bounded visual closure of the lead page, then family consistency audit.
-3. **Relay Exit Risk** — result-proximity/empty-state visual maintenance plus methodology/data audit.
-4. **Existing utilities** — full real-input regression + visual consistency audit; repair only concrete defects.
-5. **Cross-site visual audit** — shared hierarchy/theme/build-generator regression checks.
-6. **Final production audit** — all registered tools, core visual states, SEO identity, analytics, accessibility.
-7. **Measurement period** — GSC/GA4/user behavior decides future maintenance; do not reopen feature expansion automatically.
+1. **Phone Radar** — DONE: PR #130 visual + functional closure, release and production audit completed Sep 19.
+2. **Yesterday carryover / CMLink PR #127** — close the already-validated single Data route through its own Preview and production verification.
+3. **Cursor / AI Reset** — bounded visual closure of the lead page, then family consistency audit.
+4. **Relay Exit Risk** — result-proximity/empty-state visual maintenance plus methodology/data audit.
+5. **Existing utilities** — full real-input regression + visual consistency audit; repair only concrete defects.
+6. **Cross-site visual audit** — shared hierarchy/theme/build-generator regression checks.
+7. **Final production audit** — all registered tools, core visual states, SEO identity, analytics, accessibility.
+8. **Measurement period** — GSC/GA4/user behavior decides future maintenance; do not reopen feature expansion automatically.
 
 The desired end state is not “more features.” It is: **the current site works, looks intentional, communicates visually, survives production builds, and has auditable evidence that each existing tool actually works.**

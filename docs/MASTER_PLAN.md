@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE FRONTEND REVIEW BLOCKED AFTER FIRST VISUAL FIX** | Draft PR #130 implements the bounded Phone visual-hierarchy repair. Initial head `baf5f333` passed Eval Gate #510 and received a successful Vercel Preview; a real desktop dark screenshot then exposed that the global dark button rule flattened selected/unselected family-selector states. The same PR fixes that on current head `199bcca`, adds regression assertions, and passes Eval Gate #514. A fresh Vercel Preview for the fixed head is currently blocked by provider `build-rate-limit`, so desktop/mobile visual acceptance is still open. Q-013D4 route admission remains secondary. | Existing Phone canonical reaches explicit desktop/mobile visual acceptance on the fixed head before merge; then route depth can resume in small evidence-backed batches. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE VISUAL CLOSURE COMPLETE** | Q-014J passed real Preview and production verification; PR #130 merged as `5ccd50b`. The next unfinished depth task is already-open CMLink PR #127, which still needs its own current Preview/review. | Close PR #127 cleanly, then continue maintenance/measurement within the frozen three-surface scope. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -33,13 +33,13 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 8. **DONE — Q-014G implementation.** PR #115 replaced questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
 9. **SUPERSEDED — Q-014H technical closure.** The earlier pass verified the route-first flow, responsive breakpoints, analytics, canonical/data health and the `phone_show_more` event, but it did not verify the computed visual system deeply enough. It is no longer sufficient evidence of product/visual closure.
 10. **DONE — Q-014I visual closure audit.** Direct user feedback that the page still feels messy was treated as a concrete defect signal. Audit found undefined Phone CSS tokens (`--border / --surface / --text` against production `--line / --panel / --ink`), inherited global `button` top margins, marketing-scale hero sizing, too much pre-list chrome/equal-weight card density, and a Full guide that opens after the route list rather than beside the selected card. See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
-11. **IN REVIEW / BLOCKED AFTER FIRST VISUAL FIX — Q-014J bounded Phone shell repair.** Draft PR #130 current head `199bcca` fixes the audited shell defects without adding routes/features. It uses production CSS tokens, owns Phone button spacing, compresses the hero, presents three visual user-job selectors, reduces route cards to three primary metrics plus status/metadata, uses conditional warnings, and keeps Full guide inline with the selected route. Initial Preview review of head `baf5f333` proved the first route appears within the first desktop viewport and the card hierarchy is clearer, but also caught that all dark-mode family selectors looked similarly light because a global dark button rule overrode the active state. The same branch now adds Phone-specific dark overrides and regression assertions. Eval Gate #514 passes on current head `199bcca`. **Do not merge yet:** the fresh Vercel Preview is blocked by `build-rate-limit`, so desktop/mobile/light/dark visual acceptance of the fixed head remains outstanding.
+11. **DONE — Q-014J bounded Phone shell repair.** Final head `dc8d147` passed Eval Gate #567 and real Vercel Preview QA. Desktop/mobile × light/dark verified one selected family, first-route visibility, three-metric cards, Croatia non-shortlist filtering, Show more, inline Full guide and no horizontal overflow. PR #130 squash-merged as `5ccd50b4c293a963274622b8a14a3987cbab14d8`; apex production verification repeated the core checks successfully.
 12. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`. Q-003 informs later growth/route decisions but does not block reviewing/fixing a known UI defect.
 13. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`.
-14. **DONE — Q-013G first gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
+14. **DONE — Q-013G first three-family gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
 15. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
 16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
-17. **BLOCKED / SECONDARY — Q-013D4 production admission.** PR #127 implements the validated CMLink route and Eval Gate passed. Its previous Preview attempt was blocked by Vercel `build-rate-limit`; do not retrigger it merely because an older PR #130 head once obtained Preview capacity. Keep it unmerged until Q-014J visual closure is explicitly accepted, then revalidate PR #127 through its own normal Preview path.
+17. **NEXT ELIGIBLE — Q-013D4 production admission.** PR #127 implements the validated CMLink route. Phone visual closure no longer blocks it. Reconfirm current head/evidence, require PR #127's own fresh valid Preview, run bounded Data-family desktop/mobile light/dark QA, then merge only if clean.
 18. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
 19. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
 20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
@@ -88,18 +88,15 @@ These are not backlog omissions to fill automatically. Any future change require
 
 ## Next-session execution order
 
-The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Project-level order is:
+The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. check Draft PR #130 current head and Vercel state; current code head is `199bcca` and its latest Preview attempt is blocked by `build-rate-limit`;
-2. do not push no-op commits, manually redeploy, use alternate accounts/projects or change billing to bypass the provider blocker;
-3. when genuine Preview capacity returns, visually inspect the fresh fixed Preview on desktop and mobile, including selected/unselected family contrast, first-route visibility, card hierarchy, conditional warnings and selected-route inline Full guide;
-4. verify both light/dark states, family switching, country filter, `Show more`, guide open/close, outbound actions and horizontal overflow;
-5. if a concrete defect appears, fix it on PR #130's existing branch and rerun Phone tests/public build/Eval Gate before another visual review;
-6. only after a clean real visual review of the fixed head may Q-014J be marked visually accepted and PR #130 considered for merge; production remains unchanged until then;
-7. recheck Q-003 when Search Console settles through Sep 16; use it for measurement/growth decisions, not as a reason to skip known UI QA;
-8. after Phone visual closure is restored, PR #127 may resume only through its own fresh valid Preview path and no newer evidence invalidates it;
-9. keep Cursor/homepage/distribution measuring and perform the Sep 20 authority recheck when due;
-10. do not reopen provider research, add another Long-term route, or migrate Phone to Astro during this closure pass.
+1. finish yesterday's remaining Q-013D4 CMLink PR #127 review/release through its own fresh Preview and production verification;
+2. do not add a second Phone route or reopen the shell while closing PR #127;
+3. after PR #127 closes, begin M-02 AI Reset Radar visual closure from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`;
+4. keep Cursor title/meta and Q-015 quota work measurement-gated;
+5. execute Q-005 authority recheck on Sep 20, not before;
+6. keep TikTok untouched while external review is pending;
+7. keep AIR provider blockers explicit; no paid/bypass workarounds.
 
 ## Measurement cadence
 
