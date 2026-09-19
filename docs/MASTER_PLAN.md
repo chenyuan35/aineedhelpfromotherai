@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE VISUAL CLOSURE COMPLETE** | Q-014J passed real Preview and production verification; PR #130 merged as `5ccd50b`. The next unfinished depth task is already-open CMLink PR #127, which still needs its own current Preview/review. | Close PR #127 cleanly, then continue maintenance/measurement within the frozen three-surface scope. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE CLOSURE + CMLINK ADMISSION COMPLETE** | Q-014J shell closure is production-verified; Q-013D4 CMLink admission also passed fresh Preview/production QA and merged as `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`. | Continue maintenance/measurement within the frozen three-surface scope; M-02 Reset visual closure is next. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -39,7 +39,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 14. **DONE — Q-013G first three-family gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
 15. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
 16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
-17. **NEXT ELIGIBLE — Q-013D4 production admission.** PR #127 implements the validated CMLink route. Phone visual closure no longer blocks it. Reconfirm current head/evidence, require PR #127's own fresh valid Preview, run bounded Data-family desktop/mobile light/dark QA, then merge only if clean.
+17. **DONE — Q-013D4 production admission.** PR #127 final head `6da8bb43` passed the current Eval Gate and its own fresh Vercel Preview. Desktop/mobile × light/dark Data-family QA passed with CMLink as `Watch`/data-only, Airalo/Mobal intact, filters/guide/overflow clean; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5` was independently production-verified.
 18. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
 19. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
 20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
@@ -90,13 +90,12 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. finish yesterday's remaining Q-013D4 CMLink PR #127 review/release through its own fresh Preview and production verification;
-2. do not add a second Phone route or reopen the shell while closing PR #127;
-3. after PR #127 closes, begin M-02 AI Reset Radar visual closure from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`;
-4. keep Cursor title/meta and Q-015 quota work measurement-gated;
-5. execute Q-005 authority recheck on Sep 20, not before;
-6. keep TikTok untouched while external review is pending;
-7. keep AIR provider blockers explicit; no paid/bypass workarounds.
+1. begin M-02 AI Reset Radar visual closure from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` in a new session;
+2. do not reopen the Phone shell or add a second route merely because Q-013D4 closed;
+3. keep Cursor title/meta and Q-015 quota work measurement-gated;
+4. execute Q-005 authority recheck on Sep 20, not before;
+5. keep TikTok untouched while external review is pending;
+6. keep AIR provider blockers explicit; no paid/bypass workarounds.
 
 ## Measurement cadence
 
