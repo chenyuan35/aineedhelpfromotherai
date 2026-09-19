@@ -131,7 +131,7 @@ function render(){
 function renderRoutes(){
   let entries=viewEntries();
   if(state.country!=='all')entries=entries.filter(x=>x.route.country===state.country);
-  const visible=state.showAll?entries:entries.filter(x=>x.view.shortlist).slice(0,5);
+  const visible=state.country!=='all'?entries:(state.showAll?entries:entries.filter(x=>x.view.shortlist).slice(0,5));
   routeCount.textContent=`${visible.length}${visible.length<entries.length?` of ${entries.length}`:''} routes shown`;
   showMore.hidden=state.showAll||visible.length>=entries.length;
   showMore.textContent=`Show ${entries.length-visible.length} more routes`;
