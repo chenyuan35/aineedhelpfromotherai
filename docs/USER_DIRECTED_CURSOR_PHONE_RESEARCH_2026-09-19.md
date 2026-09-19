@@ -58,6 +58,7 @@ Verified on 2026-09-19:
 - LuckySIM's official shop currently lists a `365 days | 42 countries roaming data 30GB` plan for HKD 220 and a separate `365 days | 17 countries roaming data 30GB` plan for HKD 180. The official shop also lists a distinct `3 years | 17 countries roaming data 40GB` plan. Therefore the seller's 40GB/365-day claim is not currently supported by the official catalog.
 - LuckySIM's official site states prepaid SIM real-name registration must be completed before use, and verification may take up to two working days. This conflicts with any seller wording that implies real-name registration is only needed in selected places.
 - Official roaming bundles include China, Japan, South Korea, Taiwan and Macau among wider country sets, but the exact SIM Panda SKU-to-official-plan mapping is still unverified.
+- Recent 2026 community reports reproduce low-cost long-term LuckySIM use and eSIM availability, but also report intermittent network/SMS reliability and inconsistent usage displays in some cases. One recent China user report describes occasions when manual network selection was needed; another overseas-user discussion treats bank-SMS reliability as uncertain rather than guaranteed. This supports a `Watch/Hold` posture rather than a reliability claim.
 
 Open verification items before any Phone admission:
 - exact LuckySIM plan/SKU sold by SIM Panda;
