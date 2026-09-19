@@ -64,6 +64,12 @@ html[data-theme="dark"] .quick-links a:hover{background:#273241}
 html[data-theme="dark"] .home-hero-comfort .home-lead,html[data-theme="dark"] .home-trust,html[data-theme="dark"] .content-section p,html[data-theme="dark"] .content-section li,html[data-theme="dark"] .legal p,html[data-theme="dark"] .legal li{color:var(--muted)!important}
 html[data-theme="dark"] .notice{background:#2a2417;border-color:#514527;color:#e7d7a4}
 html[data-theme="dark"] button:not(.theme-toggle){background:#e7edf7;color:#111722}
+/* Phone Radar must beat the generic dark button fill in generated dist CSS. */
+html[data-theme="dark"] body .pr-family button{background:var(--panel);color:var(--ink);border-color:var(--line)}
+html[data-theme="dark"] body .pr-family button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+html[data-theme="dark"] body .pr-family button[aria-selected="true"] .pr-family-icon{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] body .pr-actions button,html[data-theme="dark"] body .pr-more,html[data-theme="dark"] body .pr-close{background:var(--bg);color:var(--ink);border-color:var(--line)}
+html[data-theme="dark"] body .pr-actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 html[data-theme="dark"] .theme-toggle{background:#171c24;color:#e7edf7;border-color:#334052}
 html[data-theme="dark"] .theme-toggle:hover{background:#202833;border-color:#4a5a70}
 @media(max-width:760px){.nav{gap:12px}.nav nav{gap:12px}.theme-toggle{padding:7px 9px}.theme-label{display:none}}
