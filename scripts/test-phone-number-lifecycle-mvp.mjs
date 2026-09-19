@@ -171,7 +171,7 @@ check('page has closed-loop analytics without sensitive data collection', () => 
 });
 
 check('full guide covers action loop', () => {
-  for (const marker of ['What to get','What you need','Open / use it','Keep / expiry','Main risk / recovery']) assert(html.includes(marker, `missing guide marker ${marker}`));
+  for (const marker of ['What to get','What you need','Open / use it','Keep / expiry','Main risk / recovery']) assert(html.includes(marker), `missing guide marker ${marker}`);
   assert.match(html, /Receive a test SMS before linking important accounts/);
   assert.match(html, /do not use an ordinary one-time number as long-term recovery/i);
 });
