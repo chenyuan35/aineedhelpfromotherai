@@ -74,11 +74,13 @@ Evidence:
 - canonical/title/meta were preserved and Q-015 quota/pool functionality was not added;
 - PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; production deployment and independent apex QA passed.
 
-## NEXT — M-02B Reset-family consistency audit
+## IN PROGRESS — M-02B Reset-family consistency audit
 
-Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`.
+Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed audit evidence: `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
 
-Start only in the next independent session. Audit the existing Claude, Copilot, Manus, Replit, Bolt and AI Credit Burn Rate pages without forcing identical layouts or changing Cursor title/meta/Q-015 gates.
+M-02B is being executed one page at a time. **M-02B-1 Claude Code Limit Reset audit is complete: Functional PASS / Visual FAIL.** Production measurements place the calculator top at ~912px desktop / ~1207px mobile and the first reset input at ~1240px / ~1591px, after the Quick answer block. Light/dark contrast, canonical, local save/restore, five-hour shortcut, past/missing state handling and horizontal overflow checks passed.
+
+**NEXT — M-02B-1R Claude bounded visual repair.** Move the existing calculator/input ahead of supporting Quick answer content and reduce first-viewport title/prose dominance without changing the canonical, provider-policy claims or adding new quota functionality. Do not proceed to Copilot until Claude repair reaches its own verified stopping point.
 
 ## Measurement gates
 
@@ -142,4 +144,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02A Cursor lead-page visual closure is closed.** The next independent session task is **M-02B Reset-family consistency audit**.
+Finish one bounded task to a verified stopping point. **M-02B-1 Claude audit is closed with Functional PASS / Visual FAIL.** The next bounded task is **M-02B-1R Claude visual repair**; do not advance to Copilot before that repair closes.
