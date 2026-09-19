@@ -5,7 +5,7 @@ module.exports = async function handler(req,res){
   try{
     const cfg=config();
     const mode=req.query&&req.query.mode==='upload'?'upload':'publish';
-    const scope=mode==='upload'?'video.upload':'video.publish';
+    const scope='user.info.basic,video.publish,video.upload';
     const state=crypto.randomBytes(24).toString('base64url');
     writeState(res,{state,mode,created_at:Date.now()});
     const url=new URL(AUTHORIZE_URL);
