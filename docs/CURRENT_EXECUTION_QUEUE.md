@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-18
+Last updated: 2026-09-19
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
@@ -20,6 +20,34 @@ The model remains:
 Phone visual closure remains open. The bounded repair exists in **Draft PR #130** and the first real desktop screenshot review has already caught one additional dark-mode specificity defect. That defect is fixed on the same branch and Eval Gate is green, but the fresh Vercel Preview for the fixed head is currently blocked by `build-rate-limit`.
 
 Do not start another redesign or add routes. The next bounded Phone task is to wait for genuine Preview capacity, review the fixed head visually, fix only reproduced defects on the same branch, and keep production unchanged until the review is explicitly clean.
+
+
+## User-directed one-off task — TikTok App Review closure (2026-09-19)
+
+This bounded review task is explicitly user-directed for the current session. It does not change the standing project priority after the review reaches its pre-submit stop gate.
+
+Verified this session:
+- PR #140 merged as `587e2757540306de5f6bcbc1b769c1a3adc71f96`; PR #141 merged as `e15c6039e96d1a5c8e9e97a82da75b97d08a9a64`.
+- Production `/tiktok-publish/` returns HTTP 200.
+- A cookie-less GET to `/api/tiktok/status/` returns HTTP 200 with `configured:true` and `connected:false`. This confirms endpoint configuration only; it does not verify a signed-in OAuth session or the Developer Portal.
+- The bridge in PR #141 rewrites only `/api/tiktok/*` to the configured Sandbox Preview Functions.
+
+Not verified this session:
+- TikTok Developer Portal Production Draft name, description, URLs, products, scopes, or uploaded demo file.
+- The prior production-domain Sandbox OAuth completion (provided as current context by the user).
+- The user reports the current review demo is a still image; it has not been independently inspected.
+
+Blocker and next action:
+- The session tool inventory and `Codex mcp list` contain no Playwright browser MCP. Project rules prohibit CUA and standalone-browser fallbacks, so real Portal inspection, screen recording, and video upload are blocked here.
+- When Playwright is available, replace the still-image demo with a continuous, genuine screen recording on `https://aineedhelpfromotherai.com/tiktok-publish/`. Use the actual Sandbox consent, TikTok-returned creator information and settings, a moving MP4/MOV selected and previewed in the page, the real Direct Post response, the real `video.upload` result/status, and the real TikTok status. Do not show or invent success.
+- Keep the review video MP4/MOV and under 50 MB; clearly demonstrate the selected products/scopes and matching production domain as required by the [TikTok App Review Guidelines](https://developers.tiktok.com/docs/en/app-review-guidelines).
+- Unaudited Direct Post is limited to private TikTok accounts. Do not change the user's account privacy; if TikTok returns the documented restriction, show the actual response and explain it using the [Direct Post API documentation](https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post) and [Content Sharing Guidelines](https://developers.tiktok.com/docs/en/content-sharing-guidelines).
+- For `video.upload`, report only TikTok's actual status; an inbox delivery is not a published post. Stop before `Submit for review`.
+
+Temporary bridge rollback:
+- The only bridge rule is `/api/tiktok/(.*)` → `https://aineedhelpfromotherai-tiktok-preview.vercel.app/api/tiktok/$1` in `vercel.json`.
+- Do not remove it while the reviewer flow depends on Sandbox Preview credentials. Retire it only after review no longer requires the bridge and the direct production functions/credentials are separately ready and authorized; remove only that rewrite in a fresh branch/PR, then verify the direct production TikTok endpoints and unrelated production routes. Do not change credentials or account settings as part of this task.
+- Detailed acceptance and rollback are in `docs/TIKTOK_PUBLISH_REVIEW_NOTES_2026-09-19.md`.
 
 ## Just completed
 
