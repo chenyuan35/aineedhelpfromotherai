@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-19
+Last updated: 2026-09-20
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is intentionally short: it is the atomic execution queue, not a history archive.
 
@@ -59,23 +59,26 @@ Evidence:
 
 Rule: do not add a second Phone route automatically and do not reopen the accepted Phone shell without a reproduced defect.
 
-## NEXT — M-02 AI Reset Radar visual closure
+## JUST COMPLETED — M-02A Cursor lead-page visual closure
+
+Status: **DONE / PRODUCTION VERIFIED**.
+
+Evidence:
+
+- PR #153 changed only `frontend/bin/enhance-cursor-breakthrough.mjs`;
+- final head `6c87923d0ab54a018563c18e8732cd154a44375e` passed Eval Gate #577 and Vercel Preview;
+- calculator moved from ~815px → ~490px desktop and ~1126px → ~479px mobile; reset input is now inside both tested first viewports;
+- supporting Quick answer content remains present but follows the calculator;
+- desktop/mobile × light/dark passed with no horizontal overflow and clear primary/secondary actions;
+- empty/invalid/past time, 0%/100%, save/reload, copy, calendar and clear behavior passed;
+- canonical/title/meta were preserved and Q-015 quota/pool functionality was not added;
+- PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; production deployment and independent apex QA passed.
+
+## NEXT — M-02B Reset-family consistency audit
 
 Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`.
 
-Q-013D4 is closed. Start M-02 only in the next independent session.
-
-First target: existing canonical `/tools/cursor-usage-reset/`.
-
-Known maintenance finding: calculator functionality works, but title/explanation/Quick answer consume too much of the first viewport before the actual input/result object.
-
-M-02 boundaries:
-
-- no new Reset URL;
-- preserve the current Cursor title/meta CTR pilot;
-- move the real input/result higher visually;
-- keep Q-015 quota/pool work measurement-gated;
-- then audit Claude, Copilot, Manus, Replit, Bolt and AI Credit Burn Rate for functional and visual consistency.
+Start only in the next independent session. Audit the existing Claude, Copilot, Manus, Replit, Bolt and AI Credit Burn Rate pages without forcing identical layouts or changing Cursor title/meta/Q-015 gates.
 
 ## Measurement gates
 
@@ -113,7 +116,7 @@ Trigger only on `Approved` or `Rejected / Changes requested`.
 
 ### Q-005 Authority
 
-Status: **DUE 2026-09-20 — NOT DUE TODAY**.
+Status: **DUE TODAY — 2026-09-20**.
 
 On Sep 20, first read `docs/AUTHORITY_AND_AI_DISCOVERY.md` and the original Gmail threads/public pages. Do not resend before then.
 
@@ -126,7 +129,7 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 ## Do not do next
 
 - do not reopen Q-014J without a reproduced regression;
-- do not add a second Phone route while closing PR #127;
+- do not add another Phone route automatically;
 - do not revive PR #112/questionnaire/manual UI;
 - do not push no-op commits or use alternate accounts/projects to bypass Vercel quota;
 - do not add country/provider doorway pages;
@@ -139,4 +142,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. The current task is **Q-013D4 / PR #127**. Once it closes, the next independent session task is **M-02 AI Reset Radar visual closure**.
+Finish one bounded task to a verified stopping point. **M-02A Cursor lead-page visual closure is closed.** The next independent session task is **M-02B Reset-family consistency audit**.
