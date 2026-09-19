@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-18
+Last updated: 2026-09-19
 
 This file is the compact current-facts source for the project. Keep volatile execution detail in task-specific docs and PRs. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -11,6 +11,7 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Area | Current state | Next move |
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
+| TikTok App Review | PR #140 (commit `587e275`) and PR #141 (commit `e15c603`) are merged. Production `/tiktok-publish/` returns HTTP 200. A cookie-less `/api/tiktok/status/` read returns HTTP 200, `configured:true`, `connected:false`; this confirms configuration only, not an OAuth session or Developer Portal state. PR #141 adds the temporary `/api/tiktok/*` rewrite to the configured Sandbox Preview. User reports the current review demo appears as a still image; this was not independently inspected. | Replace it with a continuous, real screen recording; verify Portal fields and upload; stop before final submission. Keep the Sandbox bridge until reviewers no longer need it and a direct production handler is ready. See `docs/TIKTOK_PUBLISH_REVIEW_NOTES_2026-09-19.md`. |
 | Frontend foundation | An isolated Astro 7 + Tailwind 4 foundation now exists under `frontend/astro/`: typed Tool Registry, current-site shell, reusable tool cards/search, shared design tokens, Astro `/tools/` sample, registry checks and dedicated Frontend Astro CI. It does **not** replace the current production build path. Vercel Preview still exercises the legacy static frontend, while the dedicated Astro CI validates the new sample build. | Keep production homepage/Phone/Relay shells unchanged except for bounded closure repairs backed by concrete defects. Only consider a later `/tools/` cutover after explicit preview/parity/analytics verification; migrate incrementally rather than replacing the whole site at once. |
 | Product scope | Scope remains frozen to three surfaces: **Phone Radar** primary; **AI Reset Radar** and **Relay Exit Risk** secondary. | No fourth product surface, second Phone canonical, provider/country doorway pages, or broad utility expansion. |
 | Homepage | Current first viewport remains `AI stopped? Start here.` / `What stopped?`; `home_job_select` is measuring behavior. | No homepage churn without evidence. |
@@ -30,6 +31,8 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | AI retrieval | Exa extraction works; semantic discovery remains weak. Tavily quota and GitHub metadata-write blockers remain. | Follow AIR docs in order; do not bypass blockers. |
 
 ## Immediate priority
+
+**Temporary user-directed TikTok App Review task (2026-09-19).** This one-off review closeout is the explicit current session task and does not change the standing project priority after its pre-submit stop gate. The current demo is reported by the user to be a still image and must be replaced by a real continuous recording on the production domain. Portal values and the uploaded file remain unverified in this session because the project-required Playwright browser MCP is unavailable; no browser fallback is permitted. Do not change account privacy or submit the review. See `docs/TIKTOK_PUBLISH_REVIEW_NOTES_2026-09-19.md` for acceptance and bridge rollback conditions.
 
 Phone Radar is in a frontend review pass. The visual repair exists in Draft PR #130, and the first real screenshot has already produced one concrete follow-up fix. The shell must not be treated as finished merely because the build and automated tests pass.
 
