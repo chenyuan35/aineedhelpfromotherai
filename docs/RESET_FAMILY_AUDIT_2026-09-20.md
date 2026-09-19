@@ -52,6 +52,38 @@ Release vehicle: PR #156. Final head `45d80b4530f8ec02efab192ba39420d5230c20b8`;
 - no provider-policy claim or new quota functionality was added;
 - Vercel production deployment succeeded and apex QA repeated the same four-state and functional checks.
 
+## M-02B-2 — GitHub Copilot AI Credits Reset
+
+Production URL: `https://aineedhelpfromotherai.com/tools/github-copilot-credits-reset/`
+Production baseline: `30b39ee73a2706e7baa5b8e700d6e23442f458e9`
+
+| Field | Result |
+|---|---|
+| Known-value calculation | PASS |
+| Missing / negative numeric input | PASS — values are bounded to zero/minimum and produce a non-crashing result |
+| Saved-state input restore | PASS |
+| Saved-state result restore | FAIL — inputs restore after reload but metrics/result remain `—` / default until Calculate is pressed again |
+| Desktop light/dark | PASS — core inputs are visible at the bottom of the tested 1440×900 viewport; contrast is usable |
+| Mobile light/dark | FAIL — `Credits remaining` begins at ~957px in 390×844 and ~1089px in 320×800, below the first viewport |
+| SEO identity | PASS — one H1; title/meta/canonical remain correct |
+| Horizontal overflow | PASS at 1440px, 390px and 320px |
+| Client errors | PASS — clean run produced no page errors; earlier localStorage errors were test-injection noise and were discarded |
+| Policy freshness | PASS — current GitHub Docs still state first-of-month 00:00 UTC reset, 1,500/7,000/20,000 paid-plan allowances, and $0.01 per AI Credit |
+
+### Reproduced defects
+
+1. **Mobile first-viewport hierarchy:** the reset countdown and plan selector are visible, but the user-specific `Credits remaining` input does not enter the tested 390×844 viewport; at 320px width it is pushed farther down. The page therefore exposes the reset fact before the primary planning input.
+2. **Incomplete saved-state restore:** after saving custom allowance `1234`, remaining `321`, and daily pace `12`, reload restores all three input values but leaves Safe daily spend / Allowance used / projected metrics at `—` and restores the default result copy rather than recomputing.
+
+### Passing evidence
+
+- Pro+ selection updates allowance to 7,000;
+- 7,000 allowance + 900 remaining + 0/day produced 87.1% used, $9.00 value and a bounded “should last” result;
+- a 10,000/day burn produced the expected run-out-before-reset state;
+- missing and negative values did not crash or create negative results;
+- countdown resolved to the next calendar-month boundary and current GitHub policy still matches the rendered reset rule;
+- desktop/mobile light/dark showed no horizontal overflow or contrast regression.
+
 ### Next action
 
-**M-02B-2 — GitHub Copilot Credits Reset read-only consistency audit.** Do not assume it needs the same repair; reproduce functional/visual defects first, then decide whether a bounded change is justified.
+**M-02B-2R — Copilot bounded repair.** Fix the generator `frontend/bin/generate-ai-reset-tools-round2.mjs`, not only the generated HTML: bring the user-specific balance/pace inputs earlier on mobile and recompute restored saved state on load. Preserve title/meta/canonical and current official policy claims; add no new quota feature. Do not advance to Manus until this repair reaches its own verified stopping point.
