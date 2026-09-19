@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-09-18
+Last updated: 2026-09-20
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -14,14 +14,14 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 |---|---|---|---|---|
 | P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | GitHub→Vercel, CI/Eval Gate, durable fact sources and safe release flow are established. | Completed |
 | P1 Initial tool inventory | Useful low-cost starter portfolio | DONE | Existing tool cohort is live; Phone canonical released Sep 16. | Completed |
-| P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; indexing still immature and Phone data has not settled through release day. | Current cohort begins receiving settled impressions and indexing continues. |
-| P3 First search signals | Identify pages/queries Google is testing | WAITING ON SETTLED DATA | Phone `settledThrough` rechecked on Sep 18 and remains 2026-09-15. | Several current tool-page query/impression signals exist. |
+| P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
+| P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — PHONE CLOSURE + CMLINK ADMISSION COMPLETE** | Q-014J shell closure is production-verified; Q-013D4 CMLink admission also passed fresh Preview/production QA and merged as `ebbfe784e7c4a9adc8cd19aa5add104855150bd5`. | Continue maintenance/measurement within the frozen three-surface scope; M-02 Reset visual closure is next. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-02A CURSOR VISUAL CLOSURE COMPLETE** | Phone closure/CMLink admission are production-verified. M-02A Cursor lead-page repair passed Eval Gate #577, real Preview and production QA, merging through PR #153 as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; canonical/title/meta stayed unchanged. | Continue M-02 with the bounded Reset-family consistency audit (M-02B); Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
-## Current sprint — Phone Radar frontend closure
+## Current sprint — Maintenance / visual closure
 
 1. **DONE — Product reset root correction.** The questionnaire/research-manual direction is rejected.
 2. **DONE — Product structure.** Phone Radar has three route families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS.
@@ -34,14 +34,14 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 9. **SUPERSEDED — Q-014H technical closure.** The earlier pass verified the route-first flow, responsive breakpoints, analytics, canonical/data health and the `phone_show_more` event, but it did not verify the computed visual system deeply enough. It is no longer sufficient evidence of product/visual closure.
 10. **DONE — Q-014I visual closure audit.** Direct user feedback that the page still feels messy was treated as a concrete defect signal. Audit found undefined Phone CSS tokens (`--border / --surface / --text` against production `--line / --panel / --ink`), inherited global `button` top margins, marketing-scale hero sizing, too much pre-list chrome/equal-weight card density, and a Full guide that opens after the route list rather than beside the selected card. See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
 11. **DONE — Q-014J bounded Phone shell repair.** Final head `dc8d147` passed Eval Gate #567 and real Vercel Preview QA. Desktop/mobile × light/dark verified one selected family, first-route visibility, three-metric cards, Croatia non-shortlist filtering, Show more, inline Full guide and no horizontal overflow. PR #130 squash-merged as `5ccd50b4c293a963274622b8a14a3987cbab14d8`; apex production verification repeated the core checks successfully.
-12. **WAITING — Q-003 Phone measurement.** Trigger when GSC `settledThrough >= 2026-09-16`. Sep 18 recheck still returns `2026-09-15`. Q-003 informs later growth/route decisions but does not block reviewing/fixing a known UI defect.
+12. **DONE FOR CURRENT SAMPLE / KEEP — Q-003 Phone measurement.** Sep 19 GSC reached `settledThrough=2026-09-16`; Phone Sep 16 recorded 0 impressions / 0 clicks and indexing is `Submitted and indexed / PASS`. This remains an insufficient demand sample, so do not expand routes/pages or churn positioning from zero exposure.
 13. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`.
 14. **DONE — Q-013G first three-family gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
 15. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
 16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
 17. **DONE — Q-013D4 production admission.** PR #127 final head `6da8bb43` passed the current Eval Gate and its own fresh Vercel Preview. Desktop/mobile × light/dark Data-family QA passed with CMLink as `Watch`/data-only, Airalo/Mobal intact, filters/guide/overflow clean; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5` was independently production-verified.
-18. **MEASURING — Cursor/homepage/reset distribution.** No premature churn.
-19. **AUTHORITY — Sep 20 recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+18. **DONE — M-02A Cursor lead-page visual closure.** PR #153 moved the existing tracker/input into the first viewport, demoted Quick answer below the tool, preserved canonical/title/meta, passed desktop/mobile × light/dark + interaction QA, and merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`. Q-015 remains measurement-gated.
+19. **AUTHORITY — DUE TODAY (Sep 20) recheck.** Review original Gmail threads/public links before follow-up/batch 2.
 20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
 21. **Relay — monitor.** Preserve methodology and accumulate real history.
 22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
@@ -90,8 +90,8 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. begin M-02 AI Reset Radar visual closure from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` in a new session;
-2. do not reopen the Phone shell or add a second route merely because Q-013D4 closed;
+1. begin M-02B Reset-family consistency audit from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` in a new session;
+2. preserve the now-production-verified Cursor M-02A layout unless a reproduced regression appears;
 3. keep Cursor title/meta and Q-015 quota work measurement-gated;
 4. execute Q-005 authority recheck on Sep 20, not before;
 5. keep TikTok untouched while external review is pending;
