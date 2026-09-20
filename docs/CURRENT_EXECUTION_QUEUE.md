@@ -76,7 +76,7 @@ Evidence:
 
 ## IN PROGRESS — M-02B Reset-family consistency audit
 
-Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed audit evidence: `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
+Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed family audit evidence: `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
 
 **M-02B-1 Claude Code Limit Reset audit + repair are DONE / PRODUCTION VERIFIED.** The read-only audit reproduced the first-viewport hierarchy defect; PR #156 then changed exactly one page file, moving the existing reset inputs/tracker ahead of Quick answer and compacting the Claude-specific hero. Final head `45d80b4530f8ec02efab192ba39420d5230c20b8` passed Eval Gate #583 and genuine Vercel Preview QA; squash merge `049a6349f00516b9b08ffeea6a95325e538d113c` passed independent apex QA. Calculator top improved from ~912/~1207px to ~420/~503px desktop/mobile, and inputs to ~475/~551px. Title/meta/canonical and provider-policy semantics remained unchanged; no new quota functionality was added.
 
@@ -88,7 +88,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed a
 
 **M-02B-5 Bolt Tokens Reset audit + M-02B-5R repair are DONE / PRODUCTION VERIFIED.** The audit reproduced mobile first-viewport displacement and incomplete saved-state result restoration. PR #168 added only a bounded Bolt page enhancer plus its build-chain registration; final head `e2a5685355b0fe5973e9419d4d084f5038e017e4` passed Eval Gate #609 and genuine Vercel Preview QA, then squash-merged as `93f52d523d08aaf1495145f93cd501a97d11019e`. At 390×844 `Tokens remaining` moved ~916px → ~497px and result ~1642px → ~708px; at 320×800 `Tokens remaining` moved ~1093px → ~575px and result ~1819px → ~774px. Saved inputs now recompute metrics/result on reload. Desktop composition, current official Bolt policy wording/source, title/meta/canonical, calculator semantics and horizontal-overflow behavior remain unchanged.
 
-**NEXT — M-02B-6 AI Credit Burn Rate Calculator read-only audit.** Audit primary input/result hierarchy, known-value calculation, invalid/missing input, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify the page unless a concrete defect is reproduced.
+**M-02B-6 AI Credit Burn Rate Calculator read-only audit is DONE / DEFECT REPRODUCED.** Production QA passed known-value calculation, missing/past reset handling, negative-value bounding, saved-state recomputation, SEO identity, desktop/mobile light/dark rendering, no horizontal overflow and no client errors. The reproduced defect is mobile action/result hierarchy: at 390×844 the first input is ~540px but Calculate/metrics/result begin ~946/~1010/~1416px; at 320×800 they begin ~1112/~1177/~1607px. Detailed evidence is in `docs/AI_CREDIT_BURN_RATE_AUDIT_2026-09-20.md`.
+
+**NEXT — M-02B-6R AI Credit Burn Rate mobile hierarchy repair.** Preserve calculator math, saved-state behavior, title/meta/canonical and desktop composition. Reduce mobile vertical distance so the primary Calculate action and result are reachable substantially sooner. Use one bounded production-affecting PR with build/Eval Gate/real Preview plus desktop/mobile × light/dark acceptance before merge.
 
 ## Measurement gates
 
@@ -152,4 +154,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-5 Bolt audit + repair are closed / production verified.** The next bounded task is **M-02B-6 AI Credit Burn Rate Calculator read-only audit**; do not modify it unless that audit reproduces a concrete defect.
+Finish one bounded task to a verified stopping point. **M-02B-6 AI Credit Burn Rate audit is closed with one reproduced mobile hierarchy defect.** The next bounded task is **M-02B-6R bounded mobile action/result hierarchy repair**; do not expand scope into new quota/product functionality.
