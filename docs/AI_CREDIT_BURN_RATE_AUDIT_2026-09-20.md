@@ -1,6 +1,6 @@
 # AI Credit Burn Rate Calculator Audit — 2026-09-20
 
-Status: **M-02B-6 DONE / DEFECT REPRODUCED**
+Status: **M-02B-6 + M-02B-6R DONE / PRODUCTION VERIFIED**
 
 Production URL: `https://aineedhelpfromotherai.com/tools/ai-credit-burn-rate-calculator/`
 
@@ -35,6 +35,21 @@ This is a bounded visual hierarchy defect, not a calculator, SEO, persistence or
 - saved values `1234`, `111/day`, `37/task`, future reset and expiry disabled restored after reload together with the same computed metrics/result;
 - tested desktop/mobile light/dark states had no page-level horizontal overflow and no client exceptions.
 
+## M-02B-6R repair closure — DONE / PRODUCTION VERIFIED
+
+Release vehicle: PR #171. Final head `3a5b1eae81716694faf6cfca8303ade8f612c251`; squash merge `ae4c9f83cdb5a9b67f7bd3a5ba27e77708489dee`.
+
+- added `frontend/bin/enhance-ai-credit-burn.mjs` and registered it in the normal build chain; no generated output was committed;
+- local syntax/diff checks, full public build and real Chromium QA passed before PR;
+- Eval Gate #615 passed and the genuine PR-specific Vercel Preview succeeded;
+- desktop 1440×900 stayed unchanged: calculator ~455px, first input ~511px, Calculate ~740px, result ~948px;
+- at 390×844 Calculate/result improved ~946/~1416px → ~744/~812px;
+- at 320×800 the narrow-only hero compaction plus two-column planner moved Calculate/result ~1112/~1607px → ~673/~737px;
+- light/dark passed at 1440×900, 390×844 and 320×800 with no page-level horizontal overflow;
+- known-value 1,200 / ~8-day / 150/day / 40-task math and saved-state recomputation passed on Preview and production;
+- title, meta description, canonical and calculator semantics remained unchanged; no Q-015 quota/pool functionality was added;
+- independent apex QA repeated the same layout, functional, persistence and SEO checks with no client errors.
+
 ## Next task
 
-**M-02B-6R — bounded mobile action/result hierarchy repair.** Preserve calculator math, saved-state behavior, title/meta/canonical and desktop composition. Reduce mobile vertical distance so the Calculate action and primary result are reachable substantially sooner, without adding new quota/product functionality. Use one production-affecting PR with build/Eval Gate/real Preview and desktop/mobile × light/dark acceptance before merge.
+**M-02C — Reset release audit.** Run the family-level production release audit across the completed Reset set. Do not redesign passing pages or add quota/pool functionality during the audit.
