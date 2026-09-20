@@ -182,6 +182,19 @@ Production baseline: `b2dd7bd709427867280bc465073549e4d888d802`
 - light/dark theme state applied correctly and tested widths had no page-level horizontal overflow;
 - the official Replit source was rechecked on 2026-09-20: `https://replit.com/blog/replit-introduces-free-mode`.
 
+### M-02B-4R repair closure — DONE / PRODUCTION VERIFIED
+
+Release vehicle: PR #165. Final head `6b5b84de6b8e72d7328777f578b848f6bbcf15e4`; squash merge `c783c86441ca819dbf5e6598492cac016d5f68bc`.
+
+- added `frontend/bin/enhance-replit-reset.mjs` and registered it in the normal build chain; no generated output was committed;
+- full public build and diff checks passed before PR;
+- Eval Gate #603 passed and the genuine PR-specific Vercel Preview succeeded;
+- Preview desktop/mobile × light/dark passed at 1440×900, 390×844 and 320×800 with no horizontal overflow;
+- at 320×800 the reset/usage inputs moved from ~871/~961px to ~647/~736px, both inside the tested first viewport; 390×844 and 1440×900 positions stayed unchanged;
+- known-value ~2-hour/60% planning, saved-state recomputation after reload, missing/past reset handling and the five-hour shortcut passed on Preview and production;
+- title, meta description, canonical, calculator semantics and current official five-hour policy wording/source remained unchanged;
+- Vercel production deployment succeeded and independent apex QA repeated the same layout and functional checks.
+
 ### Next action
 
-**M-02B-4R — bounded Replit narrow-mobile hierarchy repair.** Preserve current calculator behavior, saved-state semantics, title/meta/canonical, current official five-hour policy wording/source and desktop composition. Make the primary planner usable in the 320px first viewport without adding quota functionality or broad Reset redesign. Verify build/Eval Gate/real Preview and desktop/mobile × light/dark before merge.
+**M-02B-5 — Bolt Tokens Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value interaction, invalid/missing state, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Bolt unless a concrete defect is reproduced.
