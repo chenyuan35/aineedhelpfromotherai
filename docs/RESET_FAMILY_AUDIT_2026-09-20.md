@@ -84,6 +84,20 @@ Production baseline: `30b39ee73a2706e7baa5b8e700d6e23442f458e9`
 - countdown resolved to the next calendar-month boundary and current GitHub policy still matches the rendered reset rule;
 - desktop/mobile light/dark showed no horizontal overflow or contrast regression.
 
+### M-02B-2R repair closure — DONE / PRODUCTION VERIFIED
+
+Release vehicle: PR #159. Final head `27f713692f5cf2f612b47989e9c2fd00b0517502`; squash merge `2a70b7b488fba4f390a06ac82d648bdba999bfa5`.
+
+- changed only the source generator `frontend/bin/generate-ai-reset-tools-round2.mjs` (`+3/-3`);
+- generator syntax check and full public build passed locally;
+- Eval Gate #591 passed and the genuine PR-specific Vercel Preview succeeded;
+- Preview desktop/mobile × light/dark plus 320px narrow checks passed with no page errors or horizontal overflow;
+- on mobile, `Credits remaining` moved from ~957px → ~610px at 390×844 and ~1089px → ~659px at 320×800; the daily-pace input is also inside both tested first viewports;
+- desktop order remains unchanged;
+- saved custom inputs now automatically recompute Safe daily spend, Allowance used, projected balance, value and result copy after reload;
+- title/meta/canonical and verified GitHub policy copy remain unchanged; no new quota feature was added;
+- Vercel production deployment succeeded and apex QA repeated the same 1440/390/320 layout and saved-state checks successfully.
+
 ### Next action
 
-**M-02B-2R — Copilot bounded repair.** Fix the generator `frontend/bin/generate-ai-reset-tools-round2.mjs`, not only the generated HTML: bring the user-specific balance/pace inputs earlier on mobile and recompute restored saved state on load. Preserve title/meta/canonical and current official policy claims; add no new quota feature. Do not advance to Manus until this repair reaches its own verified stopping point.
+**M-02B-3 — Manus Credits Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value interaction, invalid/missing state, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Manus unless a concrete defect is reproduced.
