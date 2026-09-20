@@ -195,6 +195,43 @@ Release vehicle: PR #165. Final head `6b5b84de6b8e72d7328777f578b848f6bbcf15e4`;
 - title, meta description, canonical, calculator semantics and current official five-hour policy wording/source remained unchanged;
 - Vercel production deployment succeeded and independent apex QA repeated the same layout and functional checks.
 
+## M-02B-5 — Bolt Tokens Reset
+
+Production URL: `https://aineedhelpfromotherai.com/tools/bolt-tokens-reset/`
+Production baseline: `2b9b8825c7bddc891fccabb0e0f95c6025dfd3b5`
+
+| Field | Result |
+|---|---|
+| Known-value calculation | PASS — ~4 days remaining, 400K balance / 1M allocation / 90K per day produced ~100K/day safe pace, 60% used and ~40K projected balance |
+| Run-out state | PASS — 150K/day correctly reports depletion before reset |
+| Missing / past reset input | PASS — missing gives `Choose a future reset date.`; past switches countdown to `Check Bolt` and remains bounded |
+| Negative numeric input | PASS — negative remaining/daily and zero allocation are bounded without negative output or client error |
+| Paid-plan switch | PASS — paid selection changes the rendered daily-cap metric to `No daily cap` |
+| Saved-state input restore | PASS — reset/balance/allocation/daily values restore after reload |
+| Saved-state result restore | FAIL — restored inputs leave Safe daily budget / usage / projected balance at `—` and restore default result copy until Calculate is pressed again |
+| Desktop light/dark | PASS WITH HIERARCHY CAUTION — planner inputs begin around 715–811px in 1440×900; primary result begins below the fold at ~1098px |
+| Mobile 390 light/dark | FAIL — plan/reset begin ~737/~820px, but `Tokens remaining` begins ~916px and Calculate ~1172px in 390×844 |
+| Narrow mobile 320 | FAIL — even plan/reset begin below the tested first viewport (~915/~998px); `Tokens remaining` begins ~1093px and Calculate ~1349px |
+| SEO identity | PASS — one H1; title `Bolt Tokens Reset Calculator – Free Online Tool`; canonical remains `/tools/bolt-tokens-reset/` |
+| Horizontal overflow | PASS at 1440px, 390px and 320px |
+| Client errors | PASS — tested negative/edge run produced no page errors |
+| Policy freshness | PASS — current official Bolt docs still state Free 1M/month + 300K/day, Free monthly reset on the 1st, paid reset on renewal date, no paid daily cap, and paid rollover valid for up to two months |
+
+### Reproduced defects
+
+1. **Mobile first-viewport hierarchy:** the countdown precedes two stacked input rows. At 390×844 the user-specific `Tokens remaining` field starts at ~916px; at 320×800 even plan/reset selection starts below the first viewport and the balance begins at ~1093px. The primary planning task therefore requires unnecessary scrolling before the user can enter the values that drive the result.
+2. **Incomplete saved-state restore:** after a valid calculation, reload restores the saved plan/reset/balance/allocation/daily inputs but does not call the calculation path. Safe daily budget, usage and projected balance revert to `—`, and the default `Enter your balance and reset date.` result reappears until Calculate is pressed.
+
+### Passing evidence
+
+- ~4-day future reset + 400K remaining + 1M allocation + 90K/day produced ~100K/day safe pace, 60.0% used and ~40K projected balance;
+- 150K/day produced the expected run-out-before-reset state;
+- missing/past reset values produced bounded guidance rather than errors;
+- negative numeric values were clamped and did not generate negative metrics or client exceptions;
+- paid-plan selection correctly removed the rendered daily-cap claim;
+- light/dark theme state applied correctly and tested widths had no page-level horizontal overflow;
+- current official Bolt Help Center and pricing documentation were rechecked on 2026-09-20 before recording policy status.
+
 ### Next action
 
-**M-02B-5 — Bolt Tokens Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value interaction, invalid/missing state, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Bolt unless a concrete defect is reproduced.
+**M-02B-5R — bounded Bolt mobile hierarchy + saved-state repair.** Preserve current calculator behavior, current official Bolt policy wording/source, title/meta/canonical and desktop composition. Bring the user-specific planner into the tested mobile first viewport and automatically recompute saved metrics/result after reload. Verify build/Eval Gate/real Preview and desktop/mobile × light/dark before merge.
