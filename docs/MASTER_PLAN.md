@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-02A CURSOR VISUAL CLOSURE COMPLETE** | Phone closure/CMLink admission are production-verified. M-02A Cursor lead-page repair passed Eval Gate #577, real Preview and production QA, merging through PR #153 as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; canonical/title/meta stayed unchanged. | Continue M-02 with the bounded Reset-family consistency audit (M-02B); Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-02B THROUGH BOLT COMPLETE** | Phone closure/CMLink admission and M-02A Cursor are production-verified. M-02B Claude, Copilot, Manus, Replit and Bolt audit/repair rounds are now production-verified; Bolt closed through PR #168 / merge `93f52d5` with mobile hierarchy and saved-state fixes only. | Continue M-02B with AI Credit Burn Rate read-only audit; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -90,7 +90,7 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. begin M-02B Reset-family consistency audit from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` in a new session;
+1. execute M-02B-6 AI Credit Burn Rate Calculator read-only audit from `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` in a new session;
 2. preserve the now-production-verified Cursor M-02A layout unless a reproduced regression appears;
 3. keep Cursor title/meta and Q-015 quota work measurement-gated;
 4. execute Q-005 authority recheck on Sep 20, not before;

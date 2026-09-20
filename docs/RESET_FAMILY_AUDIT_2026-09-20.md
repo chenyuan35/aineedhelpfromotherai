@@ -232,6 +232,22 @@ Production baseline: `2b9b8825c7bddc891fccabb0e0f95c6025dfd3b5`
 - light/dark theme state applied correctly and tested widths had no page-level horizontal overflow;
 - current official Bolt Help Center and pricing documentation were rechecked on 2026-09-20 before recording policy status.
 
+### M-02B-5R repair closure — DONE / PRODUCTION VERIFIED
+
+Release vehicle: PR #168. Final head `e2a5685355b0fe5973e9419d4d084f5038e017e4`; squash merge `93f52d523d08aaf1495145f93cd501a97d11019e`.
+
+- added `frontend/bin/enhance-bolt-reset.mjs` and registered it in the normal build chain; no generated output was committed;
+- local syntax/diff checks, full public build and rendered QA passed before PR;
+- Eval Gate #609 passed and the genuine PR-specific Vercel Preview succeeded;
+- Preview desktop/mobile × light/dark passed at 1440×900, 390×844 and 320×800 with no page errors or horizontal overflow;
+- desktop composition stayed unchanged: balance/daily inputs remained ~811px and the existing result remained ~1098px in the tested 1440×900 viewport;
+- at 390×844 `Tokens remaining` moved ~916px → ~497px, daily pace ~1091px → ~578px, Calculate ~1172px → ~639px and the primary result ~1642px → ~708px;
+- at 320×800 `Tokens remaining` moved ~1093px → ~575px, daily pace ~1269px → ~653px, Calculate ~1349px → ~709px and the primary result ~1819px → ~774px;
+- saved plan/reset/balance/allocation/daily values now automatically recompute Safe daily budget, usage, projected balance and result copy after reload;
+- known-value planning, missing/past reset handling, negative-value bounding and paid-plan cap switching passed on Preview and production;
+- title, meta description, canonical, calculator semantics and current official Bolt policy wording/source remained unchanged;
+- Vercel production deployment succeeded and independent apex QA repeated the same layout, functional and saved-state checks.
+
 ### Next action
 
-**M-02B-5R — bounded Bolt mobile hierarchy + saved-state repair.** Preserve current calculator behavior, current official Bolt policy wording/source, title/meta/canonical and desktop composition. Bring the user-specific planner into the tested mobile first viewport and automatically recompute saved metrics/result after reload. Verify build/Eval Gate/real Preview and desktop/mobile × light/dark before merge.
+**M-02B-6 — AI Credit Burn Rate Calculator read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value calculation, invalid/missing input, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify it unless a concrete defect is reproduced.
