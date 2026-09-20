@@ -116,7 +116,7 @@ Checklist:
 
 - [x] demote the marketing hero;
 - [x] use a compact desktop composition rather than “large title over small subtitle”;
-- [x] make the three user jobs the primary visual selectors;
+- [x] make the three user jobs the primary visual selector;
 - [x] make task language primary and technical route labels secondary;
 - [x] use icons/shape/selected state so the three jobs are distinguishable before reading detail;
 - [x] reduce each route card to 2–3 primary decision metrics plus status/metadata;
@@ -129,7 +129,7 @@ Checklist:
 Checklist:
 
 - [x] prevent global dark button styles from flattening Phone selected/unselected states;
-- [x] fix at the build-generator level when generated `dist` css can reintroduce the defect;
+- [x] fix at the build-generator level when generated `dist` CSS can reintroduce the defect;
 - [x] ensure country selection can reveal a matching non-shortlist route instead of returning an artificial zero-result state;
 - [x] rerun all Phone contract/build tests on the latest PR head;
 - [x] confirm the latest PR head, CI and Preview status immediately before final acceptance.
@@ -320,7 +320,7 @@ Current maintenance finding: primary input is discoverable and core metric cards
 
 ## 8. Phase M-04 — Existing utility regression + visual consistency audit
 
-Status: **QUEUD AFTER THE THREE CORE SURFACES**
+Status: **QUEUED AFTER THE THREE CORE SURFACES**
 
 Goal: keep the existing small utilities trustworthy without turning them into a separate redesign program.
 
@@ -517,30 +517,3 @@ Every page-level audit should end with a compact record:
 | Next action | one bounded next action or NONE |
 
 A page with a FAIL must not be described as complete.
-
-## 14. Global stop rules
-
-Stop and record the blocker when:
-
-- Vercel/provider quota prevents a required Preview;
-- a change needs paid-service/billing/account-setting modification;
-- the repair starts turning into a new product or backend system;
-- the only justification is aesthetic preference without a user-task or reproduced hierarchy defect;
-- a data claim cannot be supported without guessing;
-- the task would require bypassing provider/platform limitations;
-- the current bounded session cannot reach a useful verified checkpoint.
-
-## 15. Overall execution sequence
-
-The maintenance program runs in this order unless a production-critical defect overrides it:
-
-1. **Phone Radar** — DONE: PR #130 visual + functional closure, release and production audit completed Sep 19.
-2. **Yesterday carryover / CMLink PR #127** — DONE: the single validated Data route passed its own Preview and production verification and merged Sep 19.
-3. **Cursor / AI Reset** — bounded visual closure of the lead page, then family consistency audit.
-4. **Relay Exit Risk** — result-proximity/empty-state visual maintenance plus methodology/data audit.
-5. **Existing utilities** — full real-input regression + visual consistency audit; repair only concrete defects.
-6. **Cross-site visual audit** — shared hierarchy/theme/build-generator regression checks.
-7. **Final production audit** — all registered tools, core visual states, SEO identity, analytics, accessibility.
-8. **Measurement period** — GSC/GA4/user behavior decides future maintenance; do not reopen feature expansion automatically.
-
-The desired end state is not “more features.” It is: **the current site works, looks intentional, communicates visually, survives production builds, and has auditable evidence that each existing tool actually works.**
