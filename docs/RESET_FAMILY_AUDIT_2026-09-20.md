@@ -133,6 +133,21 @@ Production baseline: `1df05241707b0b66657e5ecfd0a28cf2ceb5e296`
 - desktop/mobile light/dark and 320px checks showed no horizontal overflow;
 - current official Manus documentation was rechecked on 2026-09-20 before recording policy status.
 
+### M-02B-3R repair closure — DONE / PRODUCTION VERIFIED
+
+Release vehicle: PR #162. Final head `29cd39fadd57a70162dd46d20745c1bdf8879332`; squash merge `4c4603251d45fd0fb2a0b1d7931b850e71638f55`.
+
+- added `frontend/bin/enhance-manus-reset.mjs` and registered it in the normal build chain; no generated output was committed;
+- local enhancer/build syntax checks, full public build and diff check passed;
+- Eval Gate #597 passed and the genuine PR-specific Vercel Preview succeeded;
+- Preview desktop/mobile × light/dark plus 320px narrow checks passed with no page errors or horizontal overflow;
+- desktop composition remained unchanged: `Daily credits left` stayed at ~812px in the tested 1440×900 viewport;
+- mobile `Daily credits left` moved from ~1068px → ~670px at 390×844 and ~1194px → ~796px at 320×800; `Planned use before reset` is also visible in the tested 390px first viewport;
+- known-value 120/50 calculation, saved-state recomputation after reload, over-plan and negative-value handling all passed on Preview and production;
+- the page now directly links the current official Manus credit-rules article for the Free 1,500-credit monthly cap while retaining the separate daily-refresh policy source;
+- title, meta description, canonical and calculator semantics remained unchanged; no new quota feature was added;
+- Vercel production deployment succeeded and independent apex QA repeated the same 1440/390/320 layout and functional checks successfully.
+
 ### Next action
 
-**M-02B-3R — Manus bounded repair.** Keep the countdown first and preserve the desktop composition. On mobile only, move the user-specific planner inputs ahead of the four fixed policy metric cards so the primary inputs enter the first viewport. Add a direct current official Manus source for the 1,500-credit Free monthly cap. Preserve title/meta/canonical and existing calculator semantics; add no new quota functionality. Do not start Replit until this repair is production-verified.
+**M-02B-4 — Replit Usage Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value time interaction, invalid/missing state, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Replit unless a concrete defect is reproduced.

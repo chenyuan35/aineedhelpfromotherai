@@ -82,9 +82,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed a
 
 **M-02B-2 GitHub Copilot Credits Reset audit + repair are DONE / PRODUCTION VERIFIED.** The audit reproduced two defects; PR #159 then changed only `frontend/bin/generate-ai-reset-tools-round2.mjs`. Final head `27f713692f5cf2f612b47989e9c2fd00b0517502` passed Eval Gate #591 and genuine Vercel Preview QA; squash merge `2a70b7b488fba4f390a06ac82d648bdba999bfa5` passed independent apex QA. Mobile `Credits remaining` improved from ~957px → ~610px at 390×844 and ~1089px → ~659px at 320×800; saved inputs now recompute metrics/result after reload. Desktop order, title/meta/canonical and verified GitHub policy semantics remain unchanged; no new quota functionality was added.
 
-**M-02B-3 Manus Credits Reset read-only audit is DONE / REPAIR REQUIRED.** Functional calculation, saved-state recomputation, calendar export, SEO identity, themes and overflow pass. The audit reproduced a mobile hierarchy defect: `Daily credits left` begins at ~1068px on 390×844 and ~1194px on 320×800 because four fixed policy metrics sit before the planner. Current Manus policy claims remain accurate, but the rendered single source link does not itself support the 1,500-credit Free monthly cap; a separate current official Manus article does.
+**M-02B-3 Manus Credits Reset audit + repair are DONE / PRODUCTION VERIFIED.** The audit reproduced mobile planner displacement and a source-traceability gap for the Free 1,500-credit monthly cap. PR #162 then added a small Manus build enhancer and registered it in the normal build chain. Final head `29cd39fadd57a70162dd46d20745c1bdf8879332` passed Eval Gate #597 and genuine Vercel Preview QA; squash merge `4c4603251d45fd0fb2a0b1d7931b850e71638f55` passed independent apex QA. Mobile `Daily credits left` improved from ~1068px → ~670px at 390×844 and ~1194px → ~796px at 320×800; desktop order stayed unchanged. The 1,500-credit cap now has its direct current official Manus source. Title/meta/canonical and calculator semantics remain unchanged; no new quota functionality was added.
 
-**NEXT — M-02B-3R Manus bounded repair.** Preserve the countdown and desktop composition; on mobile only, move planner inputs ahead of the four fixed metric cards, add a direct official source for the 1,500-credit cap, preserve title/meta/canonical and calculator semantics, and add no new quota functionality. Do not start Replit until Manus repair is production-verified.
+**NEXT — M-02B-4 Replit Usage Reset read-only audit.** Audit functional behavior, first-viewport hierarchy, invalid/missing input, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Replit unless a concrete defect is reproduced.
 
 ## Measurement gates
 
@@ -148,4 +148,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-3 Manus audit is closed with a reproduced defect.** The next bounded task is **M-02B-3R Manus bounded repair**; do not start Replit until that repair is production-verified.
+Finish one bounded task to a verified stopping point. **M-02B-3 Manus audit + repair are closed / production verified.** The next bounded task is **M-02B-4 Replit Usage Reset read-only audit**; do not modify Replit unless that audit reproduces a concrete defect.
