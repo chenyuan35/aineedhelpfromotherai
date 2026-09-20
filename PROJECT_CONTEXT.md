@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-20
+Last updated: 2026-09-21
 
 This file is the compact current-facts source for the project. Keep volatile execution detail in task-specific docs and PRs. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -23,7 +23,7 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Phone audit | **Q-014J DONE / PRODUCTION VERIFIED.** The bounded repair fixed token/spacing/hero/card/guide defects; real rendered QA then found and fixed build-generated dark-button specificity and country filtering that hid non-shortlist matches. Eval Gate #567 passed on `dc8d147`; Preview succeeded; merge `5ccd50b`; production verification passed desktop/mobile × light/dark, all family states, Croatia filter, Show more, inline guide and overflow checks. | Treat Sep 19 closure as the baseline; reopen only for reproduced regressions/evidence-backed defects. |
 | Search Console | **Q-003 trigger fired on Sep 19.** GSC Wizard now reports `settledThrough=2026-09-16`. The Phone canonical recorded 0 impressions / 0 clicks on Sep 16; the checked GA4 Sep 16–19 Phone page/landing-page window recorded 0 sessions / 0 active users. This is an insufficient demand sample, not evidence for expansion or repositioning. | Q-003 decision is **KEEP / continue collecting evidence**. Do not add routes/pages or churn copy because exposure is zero. Re-measure when settled Phone impressions/clicks or meaningful interactions appear. |
 | Indexing | **Phone canonical is now indexed.** Sep 19 GSC indexing tracker reports `indexed`, verdict `PASS`, coverage `Submitted and indexed`, `INDEXING_ALLOWED`; last recorded crawl is 2026-09-17 22:29:28 UTC. | No manual submission churn. Continue normal cadence and measure demand after actual impressions appear. |
-| Cursor / Reset | **M-02A DONE / PRODUCTION VERIFIED; M-02B is progressing one page at a time.** Claude, GitHub Copilot, Manus, Replit and Bolt audit/repair rounds are production-verified; M-02B-6 AI Credit Burn Rate Calculator read-only audit is DONE / DEFECT REPRODUCED. Functional math, invalid/missing input, saved-state recomputation, SEO identity, themes and overflow passed, but mobile action/result hierarchy failed: at 390×844 Calculate/result begin ~946/~1416px; at 320×800 ~1112/~1607px. Q-015 remains measurement-gated. | Next independent session: M-02B-6R bounded mobile action/result hierarchy repair. When GSC settles Sep 17+, collect the clean Cursor CTR sample; do not add Q-015 quota/pool functionality through visual maintenance. |
+| Cursor / Reset | **M-02A DONE / PRODUCTION VERIFIED; M-02B RESET-FAMILY AUDIT/REPAIRS COMPLETE / PRODUCTION VERIFIED.** Claude, GitHub Copilot, Manus, Replit, Bolt and AI Credit Burn Rate all passed their bounded audit/repair rounds. AI Credit Burn PR #171 final head `3a5b1eae` passed Eval Gate #615 and genuine Preview QA; squash merge `ae4c9f83cdb5a9b67f7bd3a5ba27e77708489dee` passed independent production QA. At 390×844 Calculate/result improved ~946/~1416px → ~744/~812px; at 320×800 ~1112/~1607px → ~673/~737px while desktop composition, math, persistence and SEO identity stayed unchanged. Q-015 remains measurement-gated. | Next independent session: M-02C Reset release audit. When GSC settles Sep 17+, collect the clean Cursor CTR sample; do not add Q-015 quota/pool functionality through visual maintenance. |
 | Distribution | Claude Reset Threads and Cursor Reset Mastodon tests are published; referral/social remains separate from organic. | Measure first; no mass cross-posting. |
 | Authority | First Sep 18 outreach check found no reply or independently verified link. | Recheck original Gmail threads/public pages on Sep 20 before follow-up/batch 2. |
 | Relay Exit Risk | Relay Exit Risk v2 remains live as a secondary product with a 0–100 Exit Risk Index. | Accumulate lifecycle/community evidence; preserve confidence semantics. |
@@ -32,7 +32,7 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-**M-02B-6 AI Credit Burn Rate Calculator audit is COMPLETE / DEFECT REPRODUCED. The next independent session task is M-02B-6R bounded mobile action/result hierarchy repair.** TikTok remains **SUBMITTED / WAITING FOR REVIEW** and must not be recalled or edited while pending.
+**M-02B RESET-FAMILY AUDIT/REPAIRS are COMPLETE / PRODUCTION VERIFIED. The next independent session task is M-02C Reset release audit.** TikTok remains **SUBMITTED / WAITING FOR REVIEW** and must not be recalled or edited while pending.
 
 M-02A closure evidence:
 
@@ -42,7 +42,7 @@ M-02A closure evidence:
 4. Empty/invalid/past timestamps, 0%/100% usage, localStorage restore, copy summary, calendar download and clear-state behavior passed with no page errors.
 5. Canonical and the current Cursor title/meta CTR pilot were preserved; no Q-015 quota/pool feature was added. PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02` and Vercel production deployment succeeded.
 
-Next session: execute M-02B-6R AI Credit Burn Rate Calculator bounded mobile action/result hierarchy repair only. Q-005 authority recheck remains due Sep 20; Cursor Q-015 remains measurement-gated. No new Reset URL or quota/pool expansion through the visual-maintenance path.
+Next session: execute M-02C Reset release audit only. Q-005 authority recheck remains due Sep 20; Cursor Q-015 remains measurement-gated. No new Reset URL or quota/pool expansion through the visual-maintenance path.
 
 Detailed Sep 19 closure evidence remains in `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md`; the maintenance execution contract is `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`.
 

@@ -221,7 +221,7 @@ Release evidence: final head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0`; current
 
 ## 6. Phase M-02 — AI Reset Radar visual closure
 
-Status: **IN PROGRESS — M-02A DONE / M-02B NEXT IN A NEW SESSION**
+Status: **IN PROGRESS — M-02A + M-02B DONE / M-02C NEXT IN A NEW SESSION**
 
 No new Reset URL is created during this pass.
 
@@ -247,23 +247,25 @@ M-02A release evidence: PR #153 final head `6c87923d0ab54a018563c18e8732cd154a44
 
 Audit the existing pages without forcing them to become identical:
 
-- [ ] Claude Code Limit Reset;
-- [ ] GitHub Copilot Credits Reset;
-- [ ] Manus Credits Reset;
-- [ ] Replit Usage Reset;
-- [ ] Bolt Tokens Reset;
-- [ ] AI Credit Burn Rate Calculator.
+- [x] Claude Code Limit Reset;
+- [x] GitHub Copilot Credits Reset;
+- [x] Manus Credits Reset;
+- [x] Replit Usage Reset;
+- [x] Bolt Tokens Reset;
+- [x] AI Credit Burn Rate Calculator.
 
 For each page:
 
-- [ ] primary input visible without unnecessary reading;
-- [ ] primary result visually obvious;
-- [ ] real known-value calculation/time interaction passes;
-- [ ] invalid/missing input gives a useful bounded error;
-- [ ] no stale duplicate canonical/link;
-- [ ] dark state keeps contrast/action hierarchy;
-- [ ] mobile has no horizontal overflow;
-- [ ] explanation stays below or beside the tool instead of displacing it.
+- [x] primary input visible without unnecessary reading;
+- [x] primary result visually obvious;
+- [x] real known-value calculation/time interaction passes;
+- [x] invalid/missing input gives a useful bounded error;
+- [x] no stale duplicate canonical/link;
+- [x] dark state keeps contrast/action hierarchy;
+- [x] mobile has no horizontal overflow;
+- [x] explanation stays below or beside the tool instead of displacing it.
+
+M-02B closure evidence: all six existing Reset-family pages completed bounded audit/repair rounds with final Preview and apex verification; the last repair was AI Credit Burn Rate PR #171 / merge `ae4c9f83`.
 
 ### M-02C — Reset release audit
 

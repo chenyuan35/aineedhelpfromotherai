@@ -248,6 +248,20 @@ Release vehicle: PR #168. Final head `e2a5685355b0fe5973e9419d4d084f5038e017e4`;
 - title, meta description, canonical, calculator semantics and current official Bolt policy wording/source remained unchanged;
 - Vercel production deployment succeeded and independent apex QA repeated the same layout, functional and saved-state checks.
 
+## M-02B-6 — AI Credit Burn Rate Calculator
+
+Read-only audit reproduced one bounded mobile action/result hierarchy defect; functional math, invalid/missing input, saved-state recomputation, SEO identity, themes and horizontal overflow passed. Detailed evidence is in `docs/AI_CREDIT_BURN_RATE_AUDIT_2026-09-20.md`.
+
+### M-02B-6R repair closure — DONE / PRODUCTION VERIFIED
+
+PR #171 final head `3a5b1eae81716694faf6cfca8303ade8f612c251` passed Eval Gate #615 and genuine Vercel Preview QA; squash merge `ae4c9f83cdb5a9b67f7bd3a5ba27e77708489dee` passed independent production QA.
+
+- desktop composition stayed unchanged;
+- 390×844 Calculate/result improved ~946/~1416px → ~744/~812px;
+- 320×800 Calculate/result improved ~1112/~1607px → ~673/~737px;
+- known-value math, save/reload recomputation, title/meta/canonical, light/dark, no-overflow and no-client-error checks passed on Preview and production;
+- no Q-015 quota/pool functionality was added.
+
 ### Next action
 
-**M-02B-6 — AI Credit Burn Rate Calculator read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value calculation, invalid/missing input, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify it unless a concrete defect is reproduced.
+**M-02C — Reset release audit.** Run one family-level audit across the now-completed Reset set; do not redesign pages that already pass.
