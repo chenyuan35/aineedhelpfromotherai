@@ -84,7 +84,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed a
 
 **M-02B-3 Manus Credits Reset audit + repair are DONE / PRODUCTION VERIFIED.** The audit reproduced mobile planner displacement and a source-traceability gap for the Free 1,500-credit monthly cap. PR #162 then added a small Manus build enhancer and registered it in the normal build chain. Final head `29cd39fadd57a70162dd46d20745c1bdf8879332` passed Eval Gate #597 and genuine Vercel Preview QA; squash merge `4c4603251d45fd0fb2a0b1d7931b850e71638f55` passed independent apex QA. Mobile `Daily credits left` improved from ~1068px → ~670px at 390×844 and ~1194px → ~796px at 320×800; desktop order stayed unchanged. The 1,500-credit cap now has its direct current official Manus source. Title/meta/canonical and calculator semantics remain unchanged; no new quota functionality was added.
 
-**NEXT — M-02B-4 Replit Usage Reset read-only audit.** Audit functional behavior, first-viewport hierarchy, invalid/missing input, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Replit unless a concrete defect is reproduced.
+**M-02B-4 Replit Usage Reset read-only audit is DONE / DEFECT REPRODUCED.** Production baseline `b2dd7bd709427867280bc465073549e4d888d802`. Known-value planning, missing/past reset handling, the five-hour shortcut, saved-state recomputation, SEO identity, current official five-hour policy semantics, dark theme and horizontal overflow checks passed. At 1440×900 the reset/usage inputs begin at ~715/~717px; at 390×844 they begin at ~733/~823px with no page overflow. At 320×800, however, the reset input begins at ~871px, usage input at ~961px and result at ~1298px, so the primary planner is displaced below the first viewport. Detailed evidence is in `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
+
+**NEXT — M-02B-4R Replit narrow-mobile hierarchy repair.** Keep the existing Replit calculator semantics, five-hour policy wording/source, title/meta/canonical, saved-state behavior and desktop composition. Make the primary planner usable in the 320px first viewport without adding quota features or redesigning the Reset family. Use one bounded production-affecting PR and require build/Eval Gate/real Preview plus desktop/mobile × light/dark acceptance before merge.
 
 ## Measurement gates
 
@@ -148,4 +150,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-3 Manus audit + repair are closed / production verified.** The next bounded task is **M-02B-4 Replit Usage Reset read-only audit**; do not modify Replit unless that audit reproduces a concrete defect.
+Finish one bounded task to a verified stopping point. **M-02B-4 Replit audit is closed with one reproduced narrow-mobile hierarchy defect.** The next bounded task is **M-02B-4R Replit narrow-mobile hierarchy repair**; do not advance to Bolt until that repair is preview- and production-verified.
