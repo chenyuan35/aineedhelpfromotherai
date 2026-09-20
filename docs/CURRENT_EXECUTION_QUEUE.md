@@ -86,7 +86,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed a
 
 **M-02B-4 Replit Usage Reset audit + M-02B-4R repair are DONE / PRODUCTION VERIFIED.** The audit reproduced one narrow-mobile hierarchy defect. PR #165 added only a bounded Replit page enhancer plus its build-chain registration; final head `6b5b84de6b8e72d7328777f578b848f6bbcf15e4` passed Eval Gate #603 and genuine Vercel Preview QA, then squash-merged as `c783c86441ca819dbf5e6598492cac016d5f68bc`. At 320×800 the reset/usage inputs moved from ~871/~961px to ~647/~736px, while 390×844 and 1440×900 composition stayed unchanged. Preview and production passed light/dark, known-value planning, save/reload recomputation, missing/past reset handling, five-hour shortcut, SEO identity and no horizontal overflow. Calculator semantics and current five-hour policy wording/source were unchanged.
 
-**NEXT — M-02B-5 Bolt Tokens Reset read-only audit.** Audit functional behavior, first-viewport hierarchy, invalid/missing input, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Bolt unless a concrete defect is reproduced.
+**M-02B-5 Bolt Tokens Reset read-only audit is DONE / DEFECTS REPRODUCED.** Production baseline `2b9b8825c7bddc891fccabb0e0f95c6025dfd3b5`. Known-value pace math, missing/past reset handling, paid-plan cap switching, negative-value bounding, SEO identity, current official Bolt token-policy semantics, dark theme and horizontal overflow passed. Two defects were reproduced: on mobile the user-specific planner is displaced below the first viewport (`Tokens remaining` ~916px at 390×844 and ~1093px at 320×800), and saved inputs restore after reload without recomputing metrics/result. Detailed evidence is in `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
+
+**NEXT — M-02B-5R Bolt mobile hierarchy + saved-state repair.** Preserve current calculator semantics, official Bolt policy wording/source, title/meta/canonical and desktop composition. Make the primary planner usable in the tested mobile first viewport and recompute the saved result on reload. Use one bounded production-affecting PR with build/Eval Gate/real Preview plus desktop/mobile × light/dark acceptance before merge.
 
 ## Measurement gates
 
@@ -150,4 +152,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-4 Replit audit + repair are closed / production verified.** The next bounded task is **M-02B-5 Bolt Tokens Reset read-only audit**; do not modify Bolt unless that audit reproduces a concrete defect.
+Finish one bounded task to a verified stopping point. **M-02B-5 Bolt audit is closed with two reproduced defects.** The next bounded task is **M-02B-5R Bolt mobile hierarchy + saved-state repair**; do not advance to AI Credit Burn Rate until that repair is preview- and production-verified.
