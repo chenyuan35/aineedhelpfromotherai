@@ -80,9 +80,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed a
 
 **M-02B-1 Claude Code Limit Reset audit + repair are DONE / PRODUCTION VERIFIED.** The read-only audit reproduced the first-viewport hierarchy defect; PR #156 then changed exactly one page file, moving the existing reset inputs/tracker ahead of Quick answer and compacting the Claude-specific hero. Final head `45d80b4530f8ec02efab192ba39420d5230c20b8` passed Eval Gate #583 and genuine Vercel Preview QA; squash merge `049a6349f00516b9b08ffeea6a95325e538d113c` passed independent apex QA. Calculator top improved from ~912/~1207px to ~420/~503px desktop/mobile, and inputs to ~475/~551px. Title/meta/canonical and provider-policy semantics remained unchanged; no new quota functionality was added.
 
-**M-02B-2 GitHub Copilot Credits Reset read-only audit is DONE: bounded repair required.** Known-value calculations, missing/negative input handling, current GitHub policy, SEO identity, light/dark contrast and 1440/390/320 overflow checks passed. Two defects were reproduced: on mobile the user-specific `Credits remaining` input starts below the first viewport (~957px at 390×844; ~1089px at 320×800), and local saved inputs restore after reload without recomputing metrics/result.
+**M-02B-2 GitHub Copilot Credits Reset audit + repair are DONE / PRODUCTION VERIFIED.** The audit reproduced two defects; PR #159 then changed only `frontend/bin/generate-ai-reset-tools-round2.mjs`. Final head `27f713692f5cf2f612b47989e9c2fd00b0517502` passed Eval Gate #591 and genuine Vercel Preview QA; squash merge `2a70b7b488fba4f390a06ac82d648bdba999bfa5` passed independent apex QA. Mobile `Credits remaining` improved from ~957px → ~610px at 390×844 and ~1089px → ~659px at 320×800; saved inputs now recompute metrics/result after reload. Desktop order, title/meta/canonical and verified GitHub policy semantics remain unchanged; no new quota functionality was added.
 
-**NEXT — M-02B-2R Copilot bounded repair.** Repair the source generator `frontend/bin/generate-ai-reset-tools-round2.mjs`: expose balance/pace inputs earlier on mobile and recompute restored state on load. Preserve current title/meta/canonical and verified GitHub policy semantics; add no new quota functionality. Do not proceed to Manus until Copilot repair is production-verified.
+**NEXT — M-02B-3 Manus Credits Reset read-only audit.** Audit functional behavior, first-viewport hierarchy, invalid/missing input, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Manus unless a concrete defect is reproduced.
 
 ## Measurement gates
 
@@ -146,4 +146,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B-2 Copilot read-only audit is closed with two reproduced defects.** The next bounded task is **M-02B-2R Copilot bounded repair**; do not advance to Manus until that repair is production-verified.
+Finish one bounded task to a verified stopping point. **M-02B-2 Copilot audit + repair are closed / production verified.** The next bounded task is **M-02B-3 Manus Credits Reset read-only audit**; do not modify Manus unless that audit reproduces a concrete defect.
