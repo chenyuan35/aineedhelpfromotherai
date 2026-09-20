@@ -98,6 +98,41 @@ Release vehicle: PR #159. Final head `27f713692f5cf2f612b47989e9c2fd00b0517502`;
 - title/meta/canonical and verified GitHub policy copy remain unchanged; no new quota feature was added;
 - Vercel production deployment succeeded and apex QA repeated the same 1440/390/320 layout and saved-state checks successfully.
 
+## M-02B-3 — Manus Credits Reset
+
+Production URL: `https://aineedhelpfromotherai.com/tools/manus-credits-reset/`
+Production baseline: `1df05241707b0b66657e5ecfd0a28cf2ceb5e296`
+
+| Field | Result |
+|---|---|
+| Known-value calculation | PASS — 120 left / 50 planned leaves 70 and reports 42% use |
+| Missing / negative numeric input | PASS — values are bounded to zero and do not crash |
+| Saved-state restore | PASS — inputs and computed result restore after reload |
+| Calendar export | PASS — `manus-daily-credits-reset.ics` downloads |
+| Desktop light/dark | PASS WITH HIERARCHY CAUTION — countdown and inputs are visible, but the action/result begin below the tested 1440×900 fold |
+| Mobile light/dark | FAIL — planner inputs are displaced below the first viewport by the countdown plus four fixed metric cards |
+| SEO identity | PASS — one H1; title/meta/canonical are correct |
+| Horizontal overflow | PASS at 1440px, 390px and 320px |
+| Client errors | PASS — clean functional run produced no page errors; localStorage errors from pre-navigation theme injection were discarded as test noise |
+| Policy freshness | PASS — current Manus Help Center still confirms 300 daily credits, 00:00 UTC reset, no rollover, and the Free 1,500-credit monthly usage cap |
+| Policy source traceability | PARTIAL — the rendered single source link supports 300/00:00 UTC/no-rollover, while the 1,500 monthly cap is supported by a separate current official Manus credit-rules article |
+
+### Reproduced defects
+
+1. **Mobile first-viewport hierarchy:** at 390×844, `Daily credits left` begins at ~1068px; at 320×800 it begins at ~1194px. The user sees the countdown and four fixed policy metrics before reaching the user-specific planner input.
+2. **Source traceability:** the 1,500-credit Free monthly cap is current and officially supported, but the page's single linked policy article does not contain that cap. A second official Manus source should be linked rather than leaving one link to appear to support every rendered claim.
+
+### Passing evidence
+
+- countdown resolves to the next 00:00 UTC boundary and local reset time renders correctly;
+- 120 credits left / 50 planned produced `Planned use leaves 70 daily credits before reset.` and `Using 42%...`;
+- saved 120/50 values restored after reload together with the same computed result;
+- 100 left / 200 planned produced the bounded 100-credit over-plan warning;
+- empty and negative numeric inputs produced a non-crashing zero-credit state;
+- calendar export downloaded the expected `.ics` file;
+- desktop/mobile light/dark and 320px checks showed no horizontal overflow;
+- current official Manus documentation was rechecked on 2026-09-20 before recording policy status.
+
 ### Next action
 
-**M-02B-3 — Manus Credits Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value interaction, invalid/missing state, saved-state behavior if present, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Manus unless a concrete defect is reproduced.
+**M-02B-3R — Manus bounded repair.** Keep the countdown first and preserve the desktop composition. On mobile only, move the user-specific planner inputs ahead of the four fixed policy metric cards so the primary inputs enter the first viewport. Add a direct current official Manus source for the 1,500-credit Free monthly cap. Preserve title/meta/canonical and existing calculator semantics; add no new quota functionality. Do not start Replit until this repair is production-verified.
