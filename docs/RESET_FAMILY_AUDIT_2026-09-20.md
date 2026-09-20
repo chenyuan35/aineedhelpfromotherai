@@ -148,6 +148,40 @@ Release vehicle: PR #162. Final head `29cd39fadd57a70162dd46d20745c1bdf8879332`;
 - title, meta description, canonical and calculator semantics remained unchanged; no new quota feature was added;
 - Vercel production deployment succeeded and independent apex QA repeated the same 1440/390/320 layout and functional checks successfully.
 
+## M-02B-4 — Replit Usage Reset
+
+Production URL: `https://aineedhelpfromotherai.com/tools/replit-usage-reset/`
+Production baseline: `b2dd7bd709427867280bc465073549e4d888d802`
+
+| Field | Result |
+|---|---|
+| Known-value calculation | PASS — ~2 hours remaining + 60% used produced 40% remaining and ~20.0 percentage points/hour |
+| Missing / past reset input | PASS — missing input returns `Set a future reset time first.`; past time switches countdown to `Check Replit` and remains bounded |
+| Five-hour shortcut | PASS — `My 5-hour window just reset` creates an approximately 5-hour target, resets entered usage to 0 and shows 100% remaining |
+| Saved-state restore | PASS — saved reset/usage values restore after reload and the planning result recomputes automatically |
+| Desktop light/dark | PASS — calculator begins at ~482px; reset/usage inputs begin at ~715/~717px in 1440×900; dark theme preserves readable action contrast |
+| Mobile 390 light/dark | PASS WITH HIERARCHY CAUTION — reset input begins at ~733px and usage input at ~823px in 390×844; no page overflow |
+| Narrow mobile 320 | FAIL — reset input begins at ~871px, usage input at ~961px and result at ~1298px in 320×800 |
+| SEO identity | PASS — one H1; title `Replit Usage Reset Timer – Free Online Tool`; canonical remains `/tools/replit-usage-reset/` |
+| Horizontal overflow | PASS at 1440px, 390px and 320px |
+| Policy freshness | PASS — Replit's current official Aug 18/19, 2026 Free Mode launch post still states Core and Pro Free Mode usage limits reset every 5 hours |
+
+### Reproduced defect
+
+**Narrow-mobile first-viewport hierarchy:** the current calculator is already ahead of the explanatory article content, but its internal countdown/action stack is tall enough that at 320×800 both user-specific inputs start below the first viewport. The primary planning task is therefore not directly usable in the narrow-mobile first screen even though the page has no horizontal overflow.
+
+### Passing evidence
+
+- production title/canonical/H1 identity matches the registered Replit tool;
+- a future reset about two hours away with `60` entered usage produced `40% of your entered window allowance remains.` and about `20.0 percentage points per hour`;
+- after reload the saved `60` usage value and computed `40%` result restored automatically;
+- missing and past reset timestamps produced bounded guidance instead of errors;
+- the five-hour shortcut produced an approximately `04:59` countdown, set entered usage to `0`, and produced `100%` remaining;
+- 1440×900 desktop shows the calculator and both inputs inside the first viewport;
+- 390×844 keeps the reset input inside the first viewport and the usage input at its lower edge; 320×800 pushes both inputs below the fold;
+- light/dark theme state applied correctly and tested widths had no page-level horizontal overflow;
+- the official Replit source was rechecked on 2026-09-20: `https://replit.com/blog/replit-introduces-free-mode`.
+
 ### Next action
 
-**M-02B-4 — Replit Usage Reset read-only consistency audit.** Audit the existing page before changing it: primary input/result hierarchy, known-value time interaction, invalid/missing state, saved-state behavior, SEO identity, desktop/mobile × light/dark and horizontal overflow. Do not modify Replit unless a concrete defect is reproduced.
+**M-02B-4R — bounded Replit narrow-mobile hierarchy repair.** Preserve current calculator behavior, saved-state semantics, title/meta/canonical, current official five-hour policy wording/source and desktop composition. Make the primary planner usable in the 320px first viewport without adding quota functionality or broad Reset redesign. Verify build/Eval Gate/real Preview and desktop/mobile × light/dark before merge.
