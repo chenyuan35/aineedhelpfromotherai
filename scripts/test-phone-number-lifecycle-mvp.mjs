@@ -98,7 +98,7 @@ check('family classes stay separated', () => {
 check('each family has a useful default shortlist', () => {
   const counts = Object.fromEntries(Object.keys(radar.families).map(f => [f, entries.filter(x => x.view.family === f && x.view.shortlist).length]));
   assert(counts['long-term'] >= 4, 'long-term shortlist too small');
-  assert(counts.data >= 2, 'data shortlist too small');
+  assert(counts.data >= 3, 'data shortlist must include the admitted long-duration route');
   assert(counts.temporary >= 2, 'temporary shortlist too small');
 });
 
@@ -115,6 +115,30 @@ check('data cards use data metrics instead of OTP metrics', () => {
   }
   assert.match(radar.routes['airalo-data'].numberIncluded, /No normal SMS number/i);
   assert.match(radar.routes['mobal-japan-data-physical'].dataCost, /7,920/);
+});
+
+check('CMLink exact annual SKU is current, data-only and separated from other product incidents', () => {
+  const id = 'cmlink-52-country-365d';
+  const route = byId(id);
+  const view = radar.routes[id];
+  const cap = audit.additionalCapabilities[id];
+  assert(route, 'CMLink annual data route missing');
+  assert.equal(route.numberClass, 'data-only');
+  assert.equal(view.shortlist, true, 'CMLink annual route should fill the default Data-family depth gap');
+  assert.match(view.dataCost, /\$12\.50 \/ 365 days/);
+  assert.match(view.allowance, /10GB.*512 Kbps/);
+  assert.match(view.coverage, /52 countries \/ regions/);
+  assert.match(view.numberIncluded, /Data only/i);
+  assert.match(view.reuse, /No top-up \/ reinstall/i);
+  assert.match(route.purchaseUrl, /mesimgo\.com\/en\/products\/cmlink-52-country-unlimited-10gb-19/);
+  assert.match(route.cost.purchase, /USD 12\.50/);
+  assert.doesNotMatch(route.cost.purchase, /\$?7\.9/);
+  assert(route.evidence.some(e => e.type === 'community' && /nodeseek\.com\/post-932285-1/.test(e.url)), 'recent first-hand CMLink evidence missing');
+  assert(route.evidence.some(e => e.type === 'seller-commercial' && /mesimgo\.com/.test(e.url)), 'exact seller SKU evidence missing');
+  assert.match(cap.roamingSms.note, /data-only/i);
+  assert.match(cap.termination.note, /non-top-up and non-reinstall/i);
+  assert.match(cap.incidentSeparation.note, /different MeSIM Singapore eSIM/i);
+  assert.doesNotMatch(view.caveat, /failed.*mainland China/i);
 });
 
 check('temporary SMS cards disclose durability and privacy tradeoffs', () => {
