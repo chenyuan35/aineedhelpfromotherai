@@ -74,7 +74,7 @@ Evidence:
 - canonical/title/meta were preserved and Q-015 quota/pool functionality was not added;
 - PR #153 squash-merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`; production deployment and independent apex QA passed.
 
-## IN PROGRESS — M-02B Reset-family consistency audit
+## COMPLETED — M-02 Reset visual closure
 
 Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed family audit evidence: `docs/RESET_FAMILY_AUDIT_2026-09-20.md`.
 
@@ -90,7 +90,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **M-02B-6 AI Credit Burn Rate audit + M-02B-6R repair are DONE / PRODUCTION VERIFIED.** PR #171 added one page-specific build enhancer plus build registration. Final head `3a5b1eae81716694faf6cfca8303ade8f612c251` passed Eval Gate #615 and genuine Vercel Preview QA, then squash-merged as `ae4c9f83cdb5a9b67f7bd3a5ba27e77708489dee`. Desktop 1440×900 stayed unchanged; at 390×844 Calculate/result improved ~946/~1416px → ~744/~812px, and at 320×800 ~1112/~1607px → ~673/~737px. Known-value math, saved-state recomputation, title/meta/canonical, light/dark and no-overflow behavior passed on Preview and production. Detailed evidence is in `docs/AI_CREDIT_BURN_RATE_AUDIT_2026-09-20.md`.
 
-**NEXT — M-02C Reset release audit.** Run the bounded family-level release audit across the completed Reset set: build/current routes, representative functional checks, desktop/mobile × light/dark, SEO identity and horizontal overflow. Do not redesign passing pages or add Q-015 quota/pool functionality.
+**M-02C Reset release audit is DONE / PRODUCTION VERIFIED.** Fresh current-main clone/build passed on the connected qwen host. All seven Reset pages then passed representative production function, exactly one H1/self-canonical, 1440×900 + 390×844 + 320×800 light/dark Chromium checks and no page-level horizontal overflow. The initial Claude “missing H1” automation result was disproved by GitHub source and deterministic Chromium QA. Cursor 320×800 remains a narrow-mobile caution, not a reproduced regression. Full evidence: `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
+
+**NEXT — Q-005 Authority recheck.** The Sep 20 trigger has fired. Read `docs/AUTHORITY_AND_AI_DISCOVERY.md` and the original Gmail threads/public pages before any follow-up or batch 2. M-03 Relay is the next maintenance phase after this dated check.
 
 ## Measurement gates
 
@@ -128,7 +130,7 @@ Trigger only on `Approved` or `Rejected / Changes requested`.
 
 ### Q-005 Authority
 
-Status: **DUE TODAY — 2026-09-20**.
+Status: **OVERDUE / NEXT — trigger fired 2026-09-20**.
 
 On Sep 20, first read `docs/AUTHORITY_AND_AI_DISCOVERY.md` and the original Gmail threads/public pages. Do not resend before then.
 
@@ -154,4 +156,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02B Reset-family audit/repairs are closed / production verified.** The next bounded task is **M-02C Reset release audit**; do not redesign passing pages or expand into new quota/product functionality.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure including M-02C release audit is closed / production verified.** The next bounded task is **Q-005 authority recheck**; M-03 Relay remains queued after that dated task.
