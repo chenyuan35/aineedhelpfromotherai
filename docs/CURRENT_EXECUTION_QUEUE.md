@@ -92,7 +92,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **M-02C Reset release audit is DONE / PRODUCTION VERIFIED.** Fresh current-main clone/build passed on the connected qwen host. All seven Reset pages then passed representative production function, exactly one H1/self-canonical, 1440×900 + 390×844 + 320×800 light/dark Chromium checks and no page-level horizontal overflow. The initial Claude “missing H1” automation result was disproved by GitHub source and deterministic Chromium QA. Cursor 320×800 remains a narrow-mobile caution, not a reproduced regression. Full evidence: `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
 
-**NEXT — Q-005 Authority recheck.** The Sep 20 trigger has fired. Read `docs/AUTHORITY_AND_AI_DISCOVERY.md` and the original Gmail threads/public pages before any follow-up or batch 2. M-03 Relay is the next maintenance phase after this dated check.
+**DONE — Q-005 Authority recheck.** On Sep 21, all three original Gmail threads still contained only the Sep 13 sent message; independent public-page checks found no verified link/citation. Round one is closed without a resend. Future authority work should prefer a bounded Learn Cursor + explainx.ai batch-2 test.
+
+**NEXT — M-03 Relay Exit Risk visual closure.** Run the bounded Relay audit/closure phase next; preserve the fixed Relay methodology, 0–100 Exit Risk Index semantics and confidence rules.
 
 ## Measurement gates
 
@@ -130,9 +132,9 @@ Trigger only on `Approved` or `Rejected / Changes requested`.
 
 ### Q-005 Authority
 
-Status: **OVERDUE / NEXT — trigger fired 2026-09-20**.
+Status: **DONE — rechecked 2026-09-21**.
 
-On Sep 20, first read `docs/AUTHORITY_AND_AI_DISCOVERY.md` and the original Gmail threads/public pages. Do not resend before then.
+All three round-one threads remain unanswered and no independently verified public link/citation was found. Do not resend the original three automatically. A future authority session may validate and test the revalidated Learn Cursor + explainx.ai batch-2 candidates.
 
 ### Phone observer runtime
 
@@ -156,4 +158,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure including M-02C release audit is closed / production verified.** The next bounded task is **Q-005 authority recheck**; M-03 Relay remains queued after that dated task.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure and Q-005 authority recheck are closed.** The next bounded task is **M-03 Relay Exit Risk visual closure**. Future authority batch-2 outreach remains a separate later session.
