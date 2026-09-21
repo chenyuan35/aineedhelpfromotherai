@@ -43,7 +43,7 @@ const tools = [
       </section>`,
     script: `
       const fmt=n=>Number.isFinite(n)?new Intl.NumberFormat(undefined,{maximumFractionDigits:8}).format(n):'—';
-      function calcP1(){const x=Number(p1x.value),y=Number(p1y.value);p1r.textContent=fmt(x*y/100)}
+      function calcP1(){if(p1x.value===''||p1y.value===''){p1r.textContent='Enter both values';return}const x=Number(p1x.value),y=Number(p1y.value);p1r.textContent=fmt(x*y/100)}
       function calcP2(){const x=Number(p2x.value),y=Number(p2y.value);p2r.textContent=y!==0?fmt(x/y*100)+'%':'Whole cannot be zero'}
       function calcP3(){const x=Number(p3x.value),p=Number(p3p.value);p3r.textContent=p!==0?fmt(x*100/p):'Percentage cannot be zero'}
       function calcP4(){const a=Number(p4a.value),b=Number(p4b.value);p4r.textContent=a!==0?fmt((b-a)/Math.abs(a)*100)+'%':'Old value cannot be zero'}
@@ -105,7 +105,7 @@ const tools = [
       </section>`,
     script: `
       const money=n=>new Intl.NumberFormat(undefined,{maximumFractionDigits:2}).format(n);
-      function go(){const p=Math.max(0,Number(price.value)||0),a=Number(disc1.value)||0,b=Number(disc2.value)||0;const final=p*(1-a/100)*(1-b/100),save=p-final,eff=p?save/p*100:0;out.textContent='Final price: '+money(final);saved.textContent='You save '+money(save)+' · Effective discount '+money(eff)+'%'}
+      function go(){if(price.value===''||disc1.value===''){out.textContent='Enter price and discount';saved.textContent='';return}const p=Math.max(0,Number(price.value)),a=Number(disc1.value),b=disc2.value===''?0:Number(disc2.value);if(a<0||a>100||b<0||b>100){out.textContent='Discount must be between 0% and 100%';saved.textContent='';return}const final=p*(1-a/100)*(1-b/100),save=p-final,eff=p?save/p*100:0;out.textContent='Final price: '+money(final);saved.textContent='You save '+money(save)+' · Effective discount '+money(eff)+'%'}
     `,
     sections: [
       ['Discount formula', `<p>For one percentage discount, use <strong>sale price = original price × (1 − discount ÷ 100)</strong>. A 20% discount on 100 gives a final price of 80.</p>`],
@@ -135,7 +135,10 @@ const tools = [
     script: `
       asof.value=new Date().toISOString().slice(0,10);
       function utc(v){const [y,m,d]=v.split('-').map(Number);return new Date(Date.UTC(y,m-1,d))}
-      function go(){if(!dob.value||!asof.value){out.textContent='Choose both dates';details.textContent='';return}const a=utc(dob.value),b=utc(asof.value);if(b<a){out.textContent='Comparison date must be after birth date';details.textContent='';return}let y=b.getUTCFullYear()-a.getUTCFullYear(),m=b.getUTCMonth()-a.getUTCMonth(),d=b.getUTCDate()-a.getUTCDate();if(d<0){m--;d+=new Date(Date.UTC(b.getUTCFullYear(),b.getUTCMonth(),0)).getUTCDate()}if(m<0){y--;m+=12}const days=Math.floor((b-a)/86400000);let next=new Date(Date.UTC(b.getUTCFullYear(),a.getUTCMonth(),a.getUTCDate()));if(next<=b)next=new Date(Date.UTC(b.getUTCFullYear()+1,a.getUTCMonth(),a.getUTCDate()));const until=Math.ceil((next-b)/86400000);out.textContent=y+' years, '+m+' months, '+d+' days';details.textContent=days.toLocaleString()+' total days · '+Math.floor(days/7).toLocaleString()+' full weeks · '+until+' days until next birthday'}
+      function monthDays(y,m){return new Date(Date.UTC(y,m+1,0)).getUTCDate()}
+      function addMonthsClamped(date,months){const total=date.getUTCFullYear()*12+date.getUTCMonth()+months,y=Math.floor(total/12),m=total%12,d=Math.min(date.getUTCDate(),monthDays(y,m));return new Date(Date.UTC(y,m,d))}
+      function addYearsClamped(date,years){const y=date.getUTCFullYear()+years,m=date.getUTCMonth(),d=Math.min(date.getUTCDate(),monthDays(y,m));return new Date(Date.UTC(y,m,d))}
+      function go(){if(!dob.value||!asof.value){out.textContent='Choose both dates';details.textContent='';return}const a=utc(dob.value),b=utc(asof.value);if(b<a){out.textContent='Comparison date must be after birth date';details.textContent='';return}let y=b.getUTCFullYear()-a.getUTCFullYear(),cursor=addYearsClamped(a,y);if(cursor>b){y--;cursor=addYearsClamped(a,y)}let m=(b.getUTCFullYear()-cursor.getUTCFullYear())*12+b.getUTCMonth()-cursor.getUTCMonth(),monthCursor=addMonthsClamped(cursor,m);if(monthCursor>b){m--;monthCursor=addMonthsClamped(cursor,m)}const d=Math.floor((b-monthCursor)/86400000),days=Math.floor((b-a)/86400000);let next=new Date(Date.UTC(b.getUTCFullYear(),a.getUTCMonth(),a.getUTCDate()));if(next<=b)next=new Date(Date.UTC(b.getUTCFullYear()+1,a.getUTCMonth(),a.getUTCDate()));const until=Math.ceil((next-b)/86400000);out.textContent=y+' years, '+m+' months, '+d+' days';details.textContent=days.toLocaleString()+' total days · '+Math.floor(days/7).toLocaleString()+' full weeks · '+until+' days until next birthday'}
     `,
     sections: [
       ['How exact age is calculated', `<p>Calendar age is counted in completed years, then completed months, then remaining days. This is more useful than dividing total days by 365 because months and leap years have different lengths.</p>`],
