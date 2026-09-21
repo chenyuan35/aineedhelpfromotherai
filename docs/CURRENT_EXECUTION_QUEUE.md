@@ -94,9 +94,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **DONE — Q-005 Authority recheck.** On Sep 21, all three original Gmail threads still contained only the Sep 13 sent message; independent public-page checks found no verified link/citation. Round one is closed without a resend. Future authority work should prefer a bounded Learn Cursor + explainx.ai batch-2 test.
 
-**DONE — M-03A Relay Exit Risk audit.** Production Chromium audit on Sep 21 used safe `m03-audit.invalid` plus measured `daoxe.com` without submitting any community forecast. Methodology/risk semantics, data loading, prepaid-exposure calculation, one-H1/self-canonical, light/dark contrast and no-horizontal-overflow checks passed. Two bounded visual defects were reproduced: at 390×844 the primary result begins around 827px with the actual index below the first viewport, and the empty primary result remains about 1533px tall with repetitive absence messaging. Full evidence: `docs/RELAY_VISUAL_AUDIT_2026-09-21.md`.
+**DONE — M-03 Relay Exit Risk visual closure.** The Sep 21 audit used safe `m03-audit.invalid` plus measured `daoxe.com` without submitting any community forecast and reproduced only two bounded visual defects: late mobile result placement and an overlong/repetitive empty result. PR #176 changed exactly `frontend/tools/relay-exit-risk-checker/index.html`, preserved methodology, confidence/source/forecast semantics, title/meta/canonical and API behavior, and passed Eval Gate #627 plus genuine Vercel Preview. At 390×844 the measured result card/index/heading now begin around 647/657/728px; the empty result is about 404px tall instead of ~1533px. Preview and production both passed desktop/mobile × light/dark, safe empty + measured relay loading, 8/200 → 25 days exposed, one H1/self-canonical, no horizontal overflow and no client exceptions. PR #176 squash-merged as `da005c894976b22cf4be013111b0bd1f94a20487`; Vercel production and independent apex QA passed. Full audit origin: `docs/RELAY_VISUAL_AUDIT_2026-09-21.md`.
 
-**NEXT — M-03R Relay bounded repair.** Fix only mobile result proximity and empty-state density. Preserve the fixed 0–100 Exit Risk Index methodology, confidence semantics, source weighting, forecast rules, title/meta/canonical and API behavior. After the repair, require real Preview plus desktop/mobile × light/dark acceptance and independent apex verification before closing M-03.
+**NEXT — M-04 Existing utility regression + visual consistency audit.** Audit current numerical/date utilities and the browser-side Image Resizer/Compressor. Repair only reproduced functional defects or high-friction hierarchy problems; do not start a redesign program or add a fourth product surface.
 
 ## Measurement gates
 
@@ -160,4 +160,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03A Relay audit are closed.** The next bounded task is **M-03R Relay bounded repair**. Future authority batch-2 outreach remains a separate later session.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03 Relay visual closure are closed.** The next bounded task is **M-04 Existing utility regression + visual consistency audit**. Future authority batch-2 outreach remains a separate later session.
