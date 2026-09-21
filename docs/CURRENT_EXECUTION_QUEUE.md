@@ -96,7 +96,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **DONE — M-03 Relay Exit Risk visual closure.** The Sep 21 audit used safe `m03-audit.invalid` plus measured `daoxe.com` without submitting any community forecast and reproduced only two bounded visual defects: late mobile result placement and an overlong/repetitive empty result. PR #176 changed exactly `frontend/tools/relay-exit-risk-checker/index.html`, preserved methodology, confidence/source/forecast semantics, title/meta/canonical and API behavior, and passed Eval Gate #627 plus genuine Vercel Preview. At 390×844 the measured result card/index/heading now begin around 647/657/728px; the empty result is about 404px tall instead of ~1533px. Preview and production both passed desktop/mobile × light/dark, safe empty + measured relay loading, 8/200 → 25 days exposed, one H1/self-canonical, no horizontal overflow and no client exceptions. PR #176 squash-merged as `da005c894976b22cf4be013111b0bd1f94a20487`; Vercel production and independent apex QA passed. Full audit origin: `docs/RELAY_VISUAL_AUDIT_2026-09-21.md`.
 
-**NEXT — M-04 Existing utility regression + visual consistency audit.** Audit current numerical/date utilities and the browser-side Image Resizer/Compressor. Repair only reproduced functional defects or high-friction hierarchy problems; do not start a redesign program or add a fourth product surface.
+**DONE — M-04A numerical/date utility audit.** Production Chromium tested Percentage, Percentage Increase, Discount, Age and Date Difference with real known values plus invalid/empty states, 1440×900, 390×844 and 320×800 light/dark, canonical/H1, related links and overflow. Percentage Increase and Date Difference passed. Three bounded defects were reproduced: (U-01) Percentage `X% of Y` treats blank inputs as zero and returns `0`; (U-02) Discount treats blanks as zero and accepts >100% discounts, yielding negative final prices; (U-03) Age month-end arithmetic can return negative day counts (`2000-01-31` → `2026-03-01` => `26 years, 1 months, -2 days`). Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md`.
+
+**NEXT — M-04R numerical/date bounded repair.** Fix only U-01/U-02/U-03 in the shared generator, preserve current URLs/SEO identity/math that already passes, then require build + Preview + production regression. Image Resizer/Compressor remain a separate M-04B audit after this repair.
 
 ## Measurement gates
 
@@ -160,4 +162,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03 Relay visual closure are closed.** The next bounded task is **M-04 Existing utility regression + visual consistency audit**. Future authority batch-2 outreach remains a separate later session.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03 Relay visual closure are closed.** The next bounded task is **M-04R numerical/date bounded repair (U-01/U-02/U-03 only)**. Future authority batch-2 outreach remains a separate later session.
