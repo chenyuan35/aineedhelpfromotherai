@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-21
+Last updated: 2026-09-22
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is intentionally short: it is the atomic execution queue, not a history archive.
 
@@ -98,7 +98,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **DONE — M-04A numerical/date utility audit.** Production Chromium tested Percentage, Percentage Increase, Discount, Age and Date Difference with real known values plus invalid/empty states, 1440×900, 390×844 and 320×800 light/dark, canonical/H1, related links and overflow. Percentage Increase and Date Difference passed. Three bounded defects were reproduced: (U-01) Percentage `X% of Y` treats blank inputs as zero and returns `0`; (U-02) Discount treats blanks as zero and accepts >100% discounts, yielding negative final prices; (U-03) Age month-end arithmetic can return negative day counts (`2000-01-31` → `2026-03-01` => `26 years, 1 months, -2 days`). Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md`.
 
-**NEXT — M-04R numerical/date bounded repair.** Fix only U-01/U-02/U-03 in the shared generator, preserve current URLs/SEO identity/math that already passes, then require build + Preview + production regression. Image Resizer/Compressor remain a separate M-04B audit after this repair.
+**DONE — M-04R numerical/date bounded repair / PRODUCTION VERIFIED.** PR #180 changed only `frontend/bin/generate-tools.mjs`, `frontend/bin/check-utility-regressions.mjs`, and `frontend/bin/build.mjs`. U-01 now rejects blank Percentage inputs; U-02 rejects blank required Discount inputs and discounts outside 0–100% while preserving sequential `100 → 20% → 10% = 72` math; U-03 uses calendar-safe clamped year/month decomposition and fixes the reproduced month-end case to `26 years, 1 months, 1 days`. Build-time regressions passed, Eval Gate #635 passed, Vercel Preview passed 1440/390/320 light/dark functional/SEO/overflow QA, squash merge `cdc13b678bf51aae4b1ce702b7c3cba31a4587f2` deployed successfully, and independent apex QA passed 1440/390 light/dark plus all three repaired behaviors.
+
+**NEXT — M-04B Image Resizer/Compressor audit.** Audit only the two existing browser-side image tools with real files, download/output checks, 1440/390/320 light/dark, SEO identity and overflow. Repair only reproduced defects in a later bounded repair session; do not redesign or add a fourth product surface.
 
 ## Measurement gates
 
@@ -162,4 +164,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03 Relay visual closure are closed.** The next bounded task is **M-04R numerical/date bounded repair (U-01/U-02/U-03 only)**. Future authority batch-2 outreach remains a separate later session.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck, M-03 Relay visual closure and M-04R numerical/date repair are closed.** The next bounded task is **M-04B Image Resizer/Compressor audit only**. Future authority batch-2 outreach remains a separate later session.
