@@ -94,7 +94,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **DONE — Q-005 Authority recheck.** On Sep 21, all three original Gmail threads still contained only the Sep 13 sent message; independent public-page checks found no verified link/citation. Round one is closed without a resend. Future authority work should prefer a bounded Learn Cursor + explainx.ai batch-2 test.
 
-**NEXT — M-03 Relay Exit Risk visual closure.** Run the bounded Relay audit/closure phase next; preserve the fixed Relay methodology, 0–100 Exit Risk Index semantics and confidence rules.
+**DONE — M-03A Relay Exit Risk audit.** Production Chromium audit on Sep 21 used safe `m03-audit.invalid` plus measured `daoxe.com` without submitting any community forecast. Methodology/risk semantics, data loading, prepaid-exposure calculation, one-H1/self-canonical, light/dark contrast and no-horizontal-overflow checks passed. Two bounded visual defects were reproduced: at 390×844 the primary result begins around 827px with the actual index below the first viewport, and the empty primary result remains about 1533px tall with repetitive absence messaging. Full evidence: `docs/RELAY_VISUAL_AUDIT_2026-09-21.md`.
+
+**NEXT — M-03R Relay bounded repair.** Fix only mobile result proximity and empty-state density. Preserve the fixed 0–100 Exit Risk Index methodology, confidence semantics, source weighting, forecast rules, title/meta/canonical and API behavior. After the repair, require real Preview plus desktop/mobile × light/dark acceptance and independent apex verification before closing M-03.
 
 ## Measurement gates
 
@@ -158,4 +160,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure and Q-005 authority recheck are closed.** The next bounded task is **M-03 Relay Exit Risk visual closure**. Future authority batch-2 outreach remains a separate later session.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck and M-03A Relay audit are closed.** The next bounded task is **M-03R Relay bounded repair**. Future authority batch-2 outreach remains a separate later session.
