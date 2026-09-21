@@ -1,6 +1,6 @@
 # M-04A Numerical / Date Utility Audit — 2026-09-21
 
-Status: **COMPLETE — AUDIT ONLY / REPAIR REQUIRED**
+Status: **COMPLETE — AUDIT + M-04R REPAIR PRODUCTION VERIFIED**
 
 Scope: production audit of exactly five existing utilities:
 
@@ -58,8 +58,12 @@ At 390×844, the first result positions were approximately: Percentage 763px, Pe
 
 At 320×800, all five pages still had `scrollWidth == clientWidth` in both themes. No related link failure, duplicate H1, canonical mismatch, or theme-specific primary-action contrast regression was reproduced.
 
+## M-04R closure — 2026-09-22
+
+M-04R repaired only U-01/U-02/U-03 in the shared generator and added `frontend/bin/check-utility-regressions.mjs` to the normal frontend build. PR #180 final head `82b46022527ce4fc82b7b3f36f4fc0f3793a0e70` passed Eval Gate #635 and a genuine Vercel Preview. Preview QA passed the repaired behaviors plus 1440×900, 390×844 and 320×800 light/dark H1/canonical/overflow checks.
+
+PR #180 squash-merged as `cdc13b678bf51aae4b1ce702b7c3cba31a4587f2`; Vercel production deployment succeeded. Independent apex QA then passed Percentage blank rejection + valid 15% of 80 = 12, Discount blank/>100% rejection + valid stacked result 72/effective 28%, Age month-end `2000-01-31 → 2026-03-01 = 26 years, 1 months, 1 days`, normal age math, desktop/mobile light/dark, self-canonical/H1 and no horizontal overflow.
+
 ## Next task
 
-**M-04R:** repair only U-01, U-02 and U-03 in the existing calculator generator, add regression checks, then require production build, genuine Vercel Preview, desktop/mobile light/dark verification, and independent apex verification before closing the numerical/date utility batch.
-
-Do not fold Image Resizer/Compressor work, global redesign, SEO title/meta changes, or a fourth product direction into M-04R.
+**M-04B:** audit Image Resizer and Image Compressor only. Do not fold global redesign, SEO title/meta changes, or a fourth product direction into that audit.
