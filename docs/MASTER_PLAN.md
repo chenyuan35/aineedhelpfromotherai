@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — RESET CLOSED / RELAY NEXT MAINTENANCE PHASE** | Phone closure/CMLink admission and the full M-02 Reset program are production-verified. M-02C passed fresh build plus seven-page desktop/mobile light/dark production QA with no release-blocking defect. | After the already-due Q-005 authority recheck, execute bounded M-03 Relay visual closure; Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — RESET CLOSED / RELAY NEXT MAINTENANCE PHASE** | Phone closure/CMLink admission and the full M-02 Reset program are production-verified. M-02C passed fresh build plus seven-page desktop/mobile light/dark production QA with no release-blocking defect. Q-005 authority recheck is also closed. | Execute bounded M-03 Relay visual closure next; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -41,9 +41,9 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
 17. **DONE — Q-013D4 production admission.** PR #127 final head `6da8bb43` passed the current Eval Gate and its own fresh Vercel Preview. Desktop/mobile × light/dark Data-family QA passed with CMLink as `Watch`/data-only, Airalo/Mobal intact, filters/guide/overflow clean; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5` was independently production-verified.
 18. **DONE — M-02A Cursor lead-page visual closure.** PR #153 moved the existing tracker/input into the first viewport, demoted Quick answer below the tool, preserved canonical/title/meta, passed desktop/mobile × light/dark + interaction QA, and merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`. Q-015 remains measurement-gated.
-19. **AUTHORITY — OVERDUE / NEXT.** The Sep 20 recheck trigger has fired. Review original Gmail threads/public links before follow-up/batch 2; verify any claimed link independently.
+19. **DONE — Q-005 authority recheck.** Sep 21 second check found zero replies and zero verified public links/citations across all three round-one contacts. Round one is closed without a resend; a future authority round should prefer a bounded Learn Cursor + explainx.ai batch-2 test.
 20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-21. **Relay — monitor.** Preserve methodology and accumulate real history.
+21. **NEXT — M-03 Relay visual closure.** Preserve methodology and existing risk/confidence semantics; perform a bounded visual/product audit before any repair.
 22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
 
@@ -91,8 +91,8 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. execute the already-due Q-005 authority recheck in a new session;
-2. then execute M-03 Relay Exit Risk visual closure as the next maintenance phase;
+1. execute M-03 Relay Exit Risk visual closure as the next maintenance phase;
+2. keep Q-005 round one closed; when authority work resumes, use a separate bounded batch-2 session rather than following up the original three contacts automatically;
 3. preserve the production-verified Reset layouts unless a reproduced regression appears;
 4. keep Cursor title/meta and Q-015 quota work measurement-gated;
 5. keep TikTok untouched while external review is pending;
@@ -104,7 +104,7 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current orde
 - Every 4 hours: community-demand observer remains bounded; use output as leads only.
 - Twice weekly while indexing is immature: GSC indexing/performance review.
 - After every Phone release: verify canonical, build, mobile hierarchy, analytics and production behavior.
-- Sep 20: authority round-one recheck.
+- Sep 21: authority round-one recheck completed; no replies or verified links/citations.
 - Monthly after meaningful traffic: clicks, impressions, pages/queries, referrals, repeat behavior and AdSense revenue/RPM.
 
 ## Decision rules
