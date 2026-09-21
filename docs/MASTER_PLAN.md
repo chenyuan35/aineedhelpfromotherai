@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — THREE CORE SURFACES CLOSED / M-04 UTILITY AUDIT NEXT** | Phone closure/CMLink admission, the full M-02 Reset program and M-03 Relay visual closure are production-verified. M-03 PR #176 passed Eval Gate #627, genuine Preview and independent apex QA. | Execute bounded M-04 existing-utility regression + visual consistency audit next; Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-04A AUDIT DONE / M-04R REPAIR NEXT** | Phone closure/CMLink admission, the full M-02 Reset program and M-03 Relay visual closure are production-verified. M-03 PR #176 passed Eval Gate #627, genuine Preview and independent apex QA. | Repair the three reproduced M-04A numerical/date defects next, then audit Image Resizer/Compressor separately; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -46,7 +46,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 21. **DONE — M-03 Relay visual closure.** Read-only audit reproduced only mobile result displacement and repetitive empty-state density. PR #176 repaired those two defects without changing methodology/API/SEO identity, passed Eval Gate #627 plus genuine Preview desktop/mobile × light/dark QA, squash-merged as `da005c894976b22cf4be013111b0bd1f94a20487`, and passed independent apex QA.
 22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
-24. **NEXT — M-04 Existing utility regression + visual consistency audit.** Audit the existing numerical/date utilities plus Image Resizer/Compressor; repair only reproduced functional defects or high-friction hierarchy problems. Do not turn this into a redesign program.
+24. **IN PROGRESS — M-04 Existing utility regression + visual consistency audit.** M-04A audited Percentage, Percentage Increase, Discount, Age and Date Difference on production. Percentage Increase and Date Difference passed. Three bounded defects remain: Percentage blank input returns `0`; Discount accepts blank/>100% discounts and can return a negative price; Age month-end arithmetic can return negative days. Next: M-04R repair only those three defects, then M-04B Image Resizer/Compressor audit. Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md`.
 
 ## Phone Radar product contract
 
@@ -92,7 +92,7 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. execute M-04 existing utility regression + visual consistency audit as the next maintenance phase;
+1. execute M-04R bounded repair of the three accepted numerical/date defects; then audit Image Resizer/Compressor in a separate M-04B session;
 2. keep Q-005 round one closed; when authority work resumes, use a separate bounded batch-2 session rather than following up the original three contacts automatically;
 3. preserve the production-verified Reset layouts unless a reproduced regression appears;
 4. keep Cursor title/meta and Q-015 quota work measurement-gated;
