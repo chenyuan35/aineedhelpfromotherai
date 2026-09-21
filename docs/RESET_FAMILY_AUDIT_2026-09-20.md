@@ -1,6 +1,6 @@
 # Reset Family Audit — 2026-09-20
 
-Status: **IN PROGRESS — ONE PAGE AT A TIME**
+Status: **M-02B + M-02C COMPLETE / PRODUCTION VERIFIED**
 
 Source contract: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md` M-02B.
 
@@ -262,6 +262,12 @@ PR #171 final head `3a5b1eae81716694faf6cfca8303ade8f612c251` passed Eval Gate #
 - known-value math, save/reload recomputation, title/meta/canonical, light/dark, no-overflow and no-client-error checks passed on Preview and production;
 - no Q-015 quota/pool functionality was added.
 
+## M-02C — Reset family release audit
+
+Status: **DONE / PRODUCTION VERIFIED — 2026-09-21**
+
+Fresh current-main build plus production Chromium QA passed across Cursor, Claude, GitHub Copilot, Manus, Replit, Bolt and AI Credit Burn at desktop 1440×900 and mobile 390×844 / 320×800 in light and dark. Representative functional paths, one-H1/self-canonical identity and no-horizontal-overflow checks passed. Detailed evidence: `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
+
 ### Next action
 
-**M-02C — Reset release audit.** Run one family-level audit across the now-completed Reset set; do not redesign pages that already pass.
+**Q-005 — authority recheck.** The Sep 20 trigger is already due. M-03 Relay remains the next maintenance phase after that dated task.
