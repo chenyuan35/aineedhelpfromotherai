@@ -100,7 +100,9 @@ Source: `docs/MAINTENANCE_VISUAL_EXECUTION_AUDIT_PLAN_2026-09-19.md`. Detailed f
 
 **DONE — M-04R numerical/date bounded repair / PRODUCTION VERIFIED.** PR #180 changed only `frontend/bin/generate-tools.mjs`, `frontend/bin/check-utility-regressions.mjs`, and `frontend/bin/build.mjs`. U-01 now rejects blank Percentage inputs; U-02 rejects blank required Discount inputs and discounts outside 0–100% while preserving sequential `100 → 20% → 10% = 72` math; U-03 uses calendar-safe clamped year/month decomposition and fixes the reproduced month-end case to `26 years, 1 months, 1 days`. Build-time regressions passed, Eval Gate #635 passed, Vercel Preview passed 1440/390/320 light/dark functional/SEO/overflow QA, squash merge `cdc13b678bf51aae4b1ce702b7c3cba31a4587f2` deployed successfully, and independent apex QA passed 1440/390 light/dark plus all three repaired behaviors.
 
-**NEXT — M-04B Image Resizer/Compressor audit.** Audit only the two existing browser-side image tools with real files, download/output checks, 1440/390/320 light/dark, SEO identity and overflow. Repair only reproduced defects in a later bounded repair session; do not redesign or add a fourth product surface.
+**DONE — M-04B Image Resizer/Compressor audit.** Production Chromium used harmless real image fixtures and verified both browser-side tools end to end. Image Resizer detected 640×360 input, preserved aspect-ratio locking, applied presets, generated a real 320×180 PNG download with sensible filename, accepted JPG/WebP inputs, and enforced the 50MP guard. Image Compressor verified the quality control, 320px max-width path, real JPG/WebP/PNG downloads with independently parsed 320×180 dimensions, accurate smaller-size reporting, and a real `52% larger` PNG case. Both pages passed HTTP 200, one H1/self-canonical, structured data, related links, 1440/390/320 light/dark, no horizontal overflow, no client exceptions and no same-origin write requests during processing. No repair is required. Evidence: `docs/UTILITY_IMAGE_AUDIT_2026-09-22.md`.
+
+**NEXT — M-05 cross-site visual system audit.** Audit shared H1/tool hierarchy, interactive-object placement, primary-button hierarchy, shared tokens, selected states, mobile legibility/tappability, theme cycling, generated CSS/HTML overwrite risk, and related navigation across the already-closed surfaces. Do not redesign passing pages or migrate production to Astro.
 
 ## Measurement gates
 
@@ -164,4 +166,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck, M-03 Relay visual closure and M-04R numerical/date repair are closed.** The next bounded task is **M-04B Image Resizer/Compressor audit only**. Future authority batch-2 outreach remains a separate later session.
+Finish one bounded task to a verified stopping point. **M-02 Reset visual closure, Q-005 authority recheck, M-03 Relay visual closure and M-04 existing-utility audit are closed.** The next bounded task is **M-05 cross-site visual system audit only**. Future authority batch-2 outreach remains a separate later session.
