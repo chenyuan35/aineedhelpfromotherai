@@ -17,6 +17,7 @@ mkdirSync(dist,{recursive:true});
 for (const script of ['generate-site-pages.mjs','generate-tools.mjs','generate-sitemap.mjs','generate-ai-reset-tools.mjs','fix-ai-reset-output.mjs','generate-ai-reset-tools-round2.mjs','enhance-ai-credit-burn.mjs','enhance-bolt-reset.mjs','enhance-manus-reset.mjs','enhance-replit-reset.mjs','enhance-cursor-breakthrough.mjs','refine-home-ux.mjs','register-relay-risk-checker.mjs','register-claude-reset.mjs','register-tiktok-publish.mjs','register-phone-survival-guide.mjs','apply-theme.mjs','normalize-freshness-metadata.mjs']) {
   execSync(`node bin/${script}`,{cwd:root,stdio:'inherit'});
 }
+execSync('node bin/check-utility-regressions.mjs',{cwd:root,stdio:'inherit'});
 // The homepage is intentionally hand-curated. Generators may update shared pages and
 // indexes during the build, but they must not replace the checked-in homepage identity.
 const claudeSoon = '<span class="provider-link provider-soon" aria-label="Claude tool planned"><b>CL</b><span><strong>Claude</strong><small>soon</small></span></span>';
