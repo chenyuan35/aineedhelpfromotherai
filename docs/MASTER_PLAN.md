@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-02B COMPLETE / M-02C NEXT** | Phone closure/CMLink admission and M-02A Cursor are production-verified. M-02B Claude, Copilot, Manus, Replit, Bolt and AI Credit Burn Rate audit/repair rounds are all production-verified; AI Credit Burn closed through PR #171 / merge `ae4c9f83` with mobile hierarchy changes only. | Execute M-02C Reset release audit; Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — RESET CLOSED / RELAY NEXT MAINTENANCE PHASE** | Phone closure/CMLink admission and the full M-02 Reset program are production-verified. M-02C passed fresh build plus seven-page desktop/mobile light/dark production QA with no release-blocking defect. | After the already-due Q-005 authority recheck, execute bounded M-03 Relay visual closure; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -41,10 +41,11 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
 17. **DONE — Q-013D4 production admission.** PR #127 final head `6da8bb43` passed the current Eval Gate and its own fresh Vercel Preview. Desktop/mobile × light/dark Data-family QA passed with CMLink as `Watch`/data-only, Airalo/Mobal intact, filters/guide/overflow clean; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5` was independently production-verified.
 18. **DONE — M-02A Cursor lead-page visual closure.** PR #153 moved the existing tracker/input into the first viewport, demoted Quick answer below the tool, preserved canonical/title/meta, passed desktop/mobile × light/dark + interaction QA, and merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`. Q-015 remains measurement-gated.
-19. **AUTHORITY — DUE TODAY (Sep 20) recheck.** Review original Gmail threads/public links before follow-up/batch 2.
+19. **AUTHORITY — OVERDUE / NEXT.** The Sep 20 recheck trigger has fired. Review original Gmail threads/public links before follow-up/batch 2; verify any claimed link independently.
 20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
 21. **Relay — monitor.** Preserve methodology and accumulate real history.
 22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
+23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
 
 ## Phone Radar product contract
 
@@ -90,10 +91,10 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. execute M-02C Reset release audit in a new session;
-2. preserve the now-production-verified Cursor M-02A layout unless a reproduced regression appears;
-3. keep Cursor title/meta and Q-015 quota work measurement-gated;
-4. execute Q-005 authority recheck on Sep 20, not before;
+1. execute the already-due Q-005 authority recheck in a new session;
+2. then execute M-03 Relay Exit Risk visual closure as the next maintenance phase;
+3. preserve the production-verified Reset layouts unless a reproduced regression appears;
+4. keep Cursor title/meta and Q-015 quota work measurement-gated;
 5. keep TikTok untouched while external review is pending;
 6. keep AIR provider blockers explicit; no paid/bypass workarounds.
 

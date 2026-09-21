@@ -221,7 +221,7 @@ Release evidence: final head `6da8bb43bf1a2a8a6ce08dd9de8274ce78ed28e0`; current
 
 ## 6. Phase M-02 — AI Reset Radar visual closure
 
-Status: **IN PROGRESS — M-02A + M-02B DONE / M-02C NEXT IN A NEW SESSION**
+Status: **DONE / PRODUCTION VERIFIED — M-02A + M-02B + M-02C CLOSED**
 
 No new Reset URL is created during this pass.
 
@@ -269,20 +269,22 @@ M-02B closure evidence: all six existing Reset-family pages completed bounded au
 
 ### M-02C — Reset release audit
 
-- [ ] local tests/build;
-- [ ] one bounded Reset visual-repair PR at a time;
-- [ ] Eval Gate;
-- [ ] real Vercel Preview;
-- [ ] desktop/mobile light/dark acceptance;
-- [ ] merge;
-- [ ] apex-domain smoke test;
-- [ ] GSC/GA4 measurement continues separately from visual completion.
+- [x] local tests/build;
+- [x] one bounded Reset visual-repair PR at a time;
+- [x] Eval Gate;
+- [x] real Vercel Preview;
+- [x] desktop/mobile light/dark acceptance;
+- [x] merge;
+- [x] apex-domain smoke test;
+- [x] GSC/GA4 measurement continues separately from visual completion.
+
+M-02C release evidence: fresh current-main build passed; seven production Reset pages passed representative function, exactly one H1/self-canonical, 1440/390/320 light/dark Chromium checks and no horizontal overflow. Detailed evidence: `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
 
 ---
 
 ## 7. Phase M-03 — Relay Exit Risk visual closure
 
-Status: **QUEUED AFTER RESET VISUAL CLOSURE UNLESS A RELAY DEFECT BECOMES URGENT**
+Status: **NEXT MAINTENANCE PHASE AFTER THE ALREADY-DUE Q-005 AUTHORITY RECHECK**
 
 Current maintenance finding: primary input is discoverable and core metric cards are already more visual than Reset; the main bounded improvement is result proximity and empty-state clarity.
 
@@ -536,7 +538,7 @@ The maintenance program runs in this order unless a production-critical defect o
 
 1. **Phone Radar** — DONE: PR #130 visual + functional closure, release and production audit completed Sep 19.
 2. **Yesterday carryover / CMLink PR #127** — DONE: the single validated Data route passed its own Preview and production verification and merged Sep 19.
-3. **Cursor / AI Reset** — bounded visual closure of the lead page, then family consistency audit.
+3. **Cursor / AI Reset** — DONE: lead-page closure, six-page family audit/repairs and M-02C family release audit are production-verified.
 4. **Relay Exit Risk** — result-proximity/empty-state visual maintenance plus methodology/data audit.
 5. **Existing utilities** — full real-input regression + visual consistency audit; repair only concrete defects.
 6. **Cross-site visual audit** — shared hierarchy/theme/build-generator regression checks.
