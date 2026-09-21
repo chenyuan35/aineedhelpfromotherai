@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-04R DONE / M-04B AUDIT NEXT** | Phone closure/CMLink admission, the full M-02 Reset program, M-03 Relay visual closure and M-04R numerical/date repair are production-verified. M-04R PR #180 passed Eval Gate #635, genuine Preview and independent apex QA. | Audit Image Resizer/Compressor next; Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-04 COMPLETE / M-05 AUDIT NEXT** | Phone closure/CMLink admission, M-02 Reset, M-03 Relay and the full M-04 existing-utility audit are closed. M-04B verified Image Resizer/Compressor with real browser-side processing/downloads and found no repair requirement. | Run the bounded M-05 cross-site visual system audit next; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -46,7 +46,8 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 21. **DONE — M-03 Relay visual closure.** Read-only audit reproduced only mobile result displacement and repetitive empty-state density. PR #176 repaired those two defects without changing methodology/API/SEO identity, passed Eval Gate #627 plus genuine Preview desktop/mobile × light/dark QA, squash-merged as `da005c894976b22cf4be013111b0bd1f94a20487`, and passed independent apex QA.
 22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
 23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
-24. **IN PROGRESS — M-04 Existing utility regression + visual consistency audit.** M-04A numerical/date audit is closed and M-04R is **DONE / PRODUCTION VERIFIED**. PR #180 repaired only Percentage blank handling, Discount blank/>100% bounds, and Age month-end decomposition; added build-time regression checks; passed Eval Gate #635 + genuine Preview; squash-merged as `cdc13b678bf51aae4b1ce702b7c3cba31a4587f2`; and passed independent apex QA. Next: M-04B audit Image Resizer/Compressor only. Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md`.
+24. **DONE — M-04 Existing utility regression + visual consistency audit.** M-04A/M-04R numerical/date work is closed. M-04B then verified Image Resizer/Compressor on production using real generated files, downloaded outputs, JPG/WebP/PNG modes, resize/quality/safety paths, 1440/390/320 light/dark, SEO identity, related links and overflow; no defect required repair. Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md` and `docs/UTILITY_IMAGE_AUDIT_2026-09-22.md`.
+25. **NEXT — M-05 Cross-site visual system audit.** Audit shared hierarchy/tokens/button states/mobile legibility/theme behavior/build regeneration/related navigation across the closed surfaces. This is a consistency audit only; do not migrate to Astro or redesign passing pages.
 
 ## Phone Radar product contract
 
@@ -92,7 +93,7 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. execute M-04B Image Resizer/Compressor audit as the next bounded maintenance session;
+1. execute M-05 cross-site visual system audit as the next bounded maintenance session;
 2. keep Q-005 round one closed; when authority work resumes, use a separate bounded batch-2 session rather than following up the original three contacts automatically;
 3. preserve the production-verified Reset layouts unless a reproduced regression appears;
 4. keep Cursor title/meta and Q-015 quota work measurement-gated;
