@@ -17,7 +17,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 | P2 Discovery & indexing | Make the current cohort discoverable/indexed | IN PROGRESS | GSC connected; Phone canonical is now submitted/indexed and settled data reaches the Sep 16 release day, but exposure remains 0 impressions / 0 clicks in the current sample. | Current cohort begins receiving settled impressions and indexing continues. |
 | P3 First search signals | Identify pages/queries Google is testing | WAITING ON EXPOSURE | Phone `settledThrough=2026-09-16`; release-day sample is 0 impressions / 0 clicks, so there is still no meaningful Phone demand sample. | Several current tool-page query/impression signals exist. |
 | P4 Winner optimization | Improve pages already earning impressions | PILOT | Cursor is the first CTR/depth pilot. | Clear improvement or stop decision. |
-| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-05 AUDIT COMPLETE / M-05R REPAIR NEXT** | Phone closure/CMLink admission, M-02 Reset, M-03 Relay and M-04 utility work are closed. M-05 then passed representative hierarchy/theme/navigation/build checks but reproduced two bounded cross-site defects: Relay selected-state `--text` and Reset shared-border `--border` token usage. | Repair and production-verify only M-05 defects, then run M-06 final production audit; Q-015 quota/pool implementation remains measurement-gated. |
+| P5 Focused product depth | Build depth inside frozen product scope | **ACTIVE — M-05R COMPLETE / M-06 FINAL AUDIT NEXT** | Phone closure/CMLink admission, M-02 Reset, M-03 Relay, M-04 utilities and M-05/M-05R cross-site visual closure are production-verified. PR #185 repaired only the two audited cross-site token defects and passed Eval Gate #647, genuine Preview and apex verification. | Run M-06 final release/production audit; Q-015 quota/pool implementation remains measurement-gated. |
 | P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
 | P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
 
@@ -48,7 +48,8 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
 24. **DONE — M-04 Existing utility regression + visual consistency audit.** M-04A/M-04R numerical/date work is closed. M-04B then verified Image Resizer/Compressor on production using real generated files, downloaded outputs, JPG/WebP/PNG modes, resize/quality/safety paths, 1440/390/320 light/dark, SEO identity, related links and overflow; no defect required repair. Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md` and `docs/UTILITY_IMAGE_AUDIT_2026-09-22.md`.
 25. **DONE — M-05 Cross-site visual system audit.** Representative Phone/Cursor/Relay/Percentage/Image production checks at 1440/390/320 light/dark passed hierarchy/no-overflow, theme cycling and representative related navigation. Fresh build + second-build stability checks passed. Two bounded defects were reproduced: Relay `.choice-button` uses undefined `--text`, breaking the selected forecast state; Reset-family generator styles use undefined `--border` with a fixed fallback instead of shared `--line`. Evidence: `docs/CROSS_SITE_VISUAL_SYSTEM_AUDIT_2026-09-22.md`.
-26. **NEXT — M-05R bounded cross-site token/selected-state repair.** Fix only the two audited defects at authoritative generator/source level; preserve product behavior/SEO identities, run normal build/regressions + representative rendered light/dark QA, and production-verify before M-06. Do not redesign passing pages or migrate production to Astro.
+26. **DONE — M-05R bounded cross-site token/selected-state repair / PRODUCTION VERIFIED.** PR #185 added one bounded build enhancer plus build-chain registration. It replaced Reset generated border aliases with shared `--line`, repaired Relay choice-button `--text` to `--ink`, and added a Relay-scoped dark selected-state rule. Fresh build/regressions and second-build stability passed; Preview 1440/390/320 light/dark passed; Eval Gate #647 passed; squash merge `066ef4442ffe9259b72acca18bf9490c8a9d1c4c` deployed successfully; independent apex QA confirmed HTTP 200, old-token references absent, correct Relay selected-state inversion and Reset border tokens in light/dark. Evidence: `docs/CROSS_SITE_VISUAL_SYSTEM_REPAIR_2026-09-22.md`.
+27. **NEXT — M-06 final release / production audit.** Audit the already-closed production cohort as a release candidate. Verify build/current-main parity, representative critical flows, H1/canonical/SEO identity, 1440/390/320 light/dark, theme cycling, navigation/404 exposure and no new regressions. Do not redesign passing pages, add features/routes, change Relay methodology, or migrate production to Astro.
 
 ## Phone Radar product contract
 
@@ -94,13 +95,12 @@ These are not backlog omissions to fill automatically. Any future change require
 
 The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
 
-1. execute M-05R bounded cross-site token/selected-state repair as the next maintenance session;
-2. after M-05R is production-verified, run M-06 final release/production audit in a separate session;
-3. keep Q-005 round one closed; when authority work resumes, use a separate bounded batch-2 session rather than following up the original three contacts automatically;
-4. preserve the production-verified Reset layouts except for the exact M-05 shared-border token repair;
-5. keep Cursor title/meta and Q-015 quota work measurement-gated;
-6. keep TikTok untouched while external review is pending;
-7. keep AIR provider blockers explicit; no paid/bypass workarounds.
+1. execute M-06 final release / production audit as the next maintenance session;
+2. keep Q-005 round one closed; when authority work resumes, use a separate bounded batch-2 session rather than following up the original three contacts automatically;
+3. preserve the production-verified Phone, Reset, Relay and utility layouts unless M-06 reproduces a regression;
+4. keep Cursor title/meta and Q-015 quota work measurement-gated;
+5. keep TikTok untouched while external review is pending;
+6. keep AIR provider blockers explicit; no paid/bypass workarounds.
 
 ## Measurement cadence
 
@@ -144,6 +144,7 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current orde
 | AI retrieval | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md` |
 | Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
 | M-05 cross-site audit | `docs/CROSS_SITE_VISUAL_SYSTEM_AUDIT_2026-09-22.md` |
+| M-05R cross-site repair | `docs/CROSS_SITE_VISUAL_SYSTEM_REPAIR_2026-09-22.md` |
 | Code/deployment truth | GitHub `main` + verified production |
 | Google performance | GSC Wizard |
 | Phone operational reality | current independent community/user outcomes and route history |
