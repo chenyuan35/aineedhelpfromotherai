@@ -9,7 +9,7 @@ Last updated: 2026-09-23
 Product investment is no longer balanced equally across the three current surfaces.
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **AI Reset Radar — FROZEN / VALUE-REVIEWED PORTFOLIO.**
+2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
 Existing generic utilities remain maintenance-only.
@@ -23,29 +23,28 @@ Mandatory gates before any product build/expansion/optimization:
 
 See `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
 
-## JUST COMPLETED — Product direction reset
+## JUST COMPLETED — Reset primary-surface removal
 
-Status: **ACCEPTED / NO PRODUCTION CHANGE**.
+Status: **COMPLETE / PRODUCTION VERIFIED**.
 
-Evidence combined:
+PR #195 removed Reset from the site's primary product/discovery surfaces without deleting the old Reset URLs:
 
-- current Search Console query/page behavior;
-- live Ubersuggest keyword data;
-- live Codex competitor scan;
-- current Reddit/forum pain signals around Codex quota/reset behavior and phone/eSIM OTP usage.
+- homepage Reset navigation/CTA/job-map/search/featured section removed;
+- `/tools/` Reset and AI-quota promotional sections removed;
+- public `ai.txt` / `llms.txt` no longer promote Reset as preferred entry points;
+- Reset tracker URLs removed from sitemap promotion;
+- old direct Reset URLs remain reachable.
 
-### Key findings
+Verification:
 
-- Cursor reached 290 clean post-change impressions / 0 clicks in the Sep 22 fresh-data read. Ranking/exposure did not translate into user selection.
-- Codex reset demand is real (`codex reset today` 170 US monthly; `codex reset usage` 140), but the generic tracker/radar/history/countdown category is already crowded with mature independent sites.
-- Phone/SMS verification demand is materially larger (`sms verification number` 1,900 US monthly; `free sms verification number` 2,400), but demand alone is not the decision. More important: current community threads repeatedly show unresolved practical questions around real mobile numbers, OTP/SMS abroad, remote activation, app-specific verification, KYC, roaming and long-term retention.
-- Exact Relay-oriented keyword probes did not show direct search demand; Relay remains differentiated but not a growth priority.
+- first Preview check found a real legacy Tools-section removal defect; it was repaired before merge;
+- Eval Gate #672 passed;
+- final Vercel Preview passed content + interactive layout QA;
+- PR #195 squash-merged as `375b9c6044e93fe318378ada9b56ea3bc3e0a545`;
+- Vercel production deployment succeeded;
+- apex `/`, `/tools/`, Phone, Relay and direct Cursor Reset were independently verified.
 
-### Tool limits encountered
-
-- Ubersuggest returned three live reports, then hit the account daily report quota. Do not rotate accounts or upgrade without authorization.
-- Ahrefs returned `Insufficient plan`.
-- Semrush returned `no_api_units`.
+Evidence: `docs/RESET_PRIMARY_SURFACE_REMOVAL_2026-09-23.md`.
 
 ## COMPLETED — Seven-page Reset product-value audit
 
@@ -67,33 +66,47 @@ Reset-family rule from now on:
 - no generic Codex reset tracker;
 - a future Codex idea must prove a gap beyond existing source/history/probability/countdown/quota trackers.
 
-## NEXT — Phone canonical intent/value audit
+## NEXT — Phone canonical contract audit
 
-Status: **READY / HIGHEST PRIORITY**.
+Status: **READY / HIGHEST PRIORITY / AUDIT ONLY**.
 
-One bounded task on the existing canonical only:
+One bounded task on the existing Phone product and Phone-facing homepage framing. Do not implement in the audit session.
 
-`/tools/phone-number-survival-guide/`
+Accepted product contract to audit against:
 
-User job to validate against current community evidence and actual search language:
+1. three fixed families only: **Long-term SMS/OTP**, **Data SIM/eSIM**, **Temporary SMS**;
+2. **visual decision dashboard first**, **Full guide on demand**;
+3. community/forum/current-user outcomes drive operational reality;
+4. provider/operator pages are commercial-metadata inputs only: price, package, promotion, stock, purchase link and advertised fee;
+5. provider pages do not certify OTP success, overseas activation, recovery, long-term trust or other real-world operating outcomes;
+6. user sees a small actionable shortlist, not research methodology or a provider-documentation manual.
 
-> Find a real, currently workable phone/eSIM route for SMS/OTP, long-term number survival, or travel connectivity when provider pages do not answer whether it works in practice.
+Two concrete defects are already reproduced and must be included in the audit:
+
+- production homepage still says `Official rules first` and describes Phone as separating `documented carrier rules from unknowns`; this contradicts the accepted community/outcome-led source-role contract;
+- production Phone canonical still contains historical related-tool linkage to Claude Reset after Reset was removed from primary product surfaces.
 
 Audit the current canonical for:
 
-1. whether title/meta/H1/first screen communicate `real phone number + SMS/OTP abroad + retention/current outcome` clearly enough;
-2. whether the three-family dashboard still helps this job or dilutes it;
-3. whether each visible route shows the decision fields users actually ask about: real number vs data-only/VoIP, SMS/OTP outcome, remote activation, KYC, roaming/activation country, keep-alive cost, app-specific caveats and current freshness;
-4. whether current route evidence is community/outcome-led rather than provider-copy-led;
-5. whether one bounded repositioning of the existing canonical can capture the job without adding another URL.
+- title/meta/H1/first-screen promise;
+- three-family clarity and first useful route visibility;
+- real carrier number vs data-only/VoIP state;
+- recent SMS/OTP outcome and app/service caveats;
+- remote activation practicality and activation-country constraints;
+- KYC requirements;
+- roaming/SMS behavior;
+- keep-alive/retention cost and current reproduced method;
+- current price/value and purchase path;
+- freshness/current community outcome signal;
+- frontstage fields that create reading/decision cost and should remain backstage;
+- stale Reset references in Phone-facing navigation/related links.
 
 Definition of done:
 
-- evidence-backed keep/change decision for the existing Phone canonical;
-- if change is justified, one bounded implementation plan only for the existing URL;
-- no country/provider doorway pages;
-- no bulk route expansion;
-- no production deployment in the audit itself.
+- concrete KEEP/CHANGE decision for each audited Phone surface/field;
+- one bounded defect/change queue ordered by user impact;
+- explicit list of what must be removed because it reflects old official-first thinking;
+- no production deployment, no new route, no country/provider doorway page and no unrelated redesign in the audit session.
 
 ## Search Console
 
@@ -103,7 +116,7 @@ Search Console remains an important distribution signal after a product passes t
 
 Cursor's old 300-impression checkpoint is retired as a trigger for investment. Cursor data may continue to be observed, but no title/meta/depth work follows automatically.
 
-Phone is indexed but had no exact-page rows in the latest accepted measurement window. This no longer means `do nothing indefinitely`; the product-direction review provides independent evidence that the current canonical may be positioned too vaguely for a real community-backed job. The next task is the bounded canonical intent/value audit above, not route expansion.
+Phone is indexed but had no exact-page rows in the latest accepted measurement window. This does not block the Phone contract audit because the task is correcting known product/source-role contradictions and validating an already accepted product model, not inventing a new route from weak GSC data.
 
 ## Relay Exit Risk
 
@@ -130,12 +143,14 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 - do not optimize Cursor merely because impressions increase;
 - do not create a generic Codex reset tracker;
 - do not add another Reset page;
+- do not delete/redirect/noindex old Reset URLs without a separate evidence-backed retirement decision;
 - do not treat official-source completeness as a product advantage;
 - do not clone a mature independent competitor without a concrete differentiated job;
-- do not add another Phone route before the canonical intent/value audit;
+- do not add another Phone route before the Phone contract audit;
 - do not create Phone country/provider doorway pages;
 - do not create a temporary-SMS backend/marketplace;
 - do not invent OTP success percentages or fake confidence values;
+- do not let provider pages overrule current operational community evidence merely because they are official;
 - do not reopen Relay methodology or convert it into a shutdown probability;
 - do not migrate the production site to Astro as part of this direction reset;
 - do not rotate trial accounts to bypass plugin quotas;
@@ -144,4 +159,4 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 
 ## Session rule
 
-One bounded task per session. The next session task is the Phone canonical intent/value audit only. It should end with a concrete keep/change decision and, if justified, one bounded existing-URL implementation plan.
+One bounded task per session. The next session task is the Phone canonical contract audit only. It must end with a concrete defect/change queue and must not silently expand into implementation or route research.

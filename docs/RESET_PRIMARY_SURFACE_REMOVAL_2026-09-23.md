@@ -1,6 +1,6 @@
 # Reset Primary-Surface Removal — 2026-09-23
 
-Status: **IN PROGRESS**
+Status: **COMPLETE / PRODUCTION VERIFIED**
 
 ## Session task
 
@@ -8,34 +8,41 @@ Remove the existing AI Reset family from the site's primary product/discovery su
 
 ## Why now
 
-The Sep 23 product review concluded that deterministic/provider-visible reset pages do not justify primary product positioning, and generic Codex reset tracking is already competitively saturated. Continuing to feature Reset on the homepage and Tools index would conflict with the accepted product direction.
+The Sep 23 product review concluded that deterministic/provider-visible reset pages do not justify primary product positioning, and generic Codex reset tracking is already competitively saturated. Continuing to feature Reset on the homepage and Tools index conflicted with the accepted product direction.
 
-## Scope
+## Scope completed
 
-This round may change only the primary exposure layer:
+- homepage Reset navigation, hero/job-map exposure, search suggestion/results, and featured Reset section removed;
+- `/tools/` Reset and AI-quota promotional sections removed;
+- public `ai.txt` / `llms.txt` preferred-entry guidance no longer promotes Reset URLs;
+- Reset tracker URLs removed from sitemap promotion;
+- direct Reset pages intentionally preserved.
 
-- homepage navigation, hero/job map, search suggestions and Reset feature section;
-- `/tools/` primary listing/positioning;
-- public `ai.txt` / `llms.txt` preferred-entry guidance;
-- sitemap promotion of Reset URLs.
+No Reset URL was deleted, redirected, noindexed, rewritten or repurposed. No Phone or Relay product behavior was changed in this round.
 
-Existing Reset pages remain directly reachable. This round does not delete, redirect, noindex, rewrite, repurpose, or redesign any Reset page.
+## Verification
 
-Phone and Relay product content is otherwise frozen in this round. In particular, the separate Phone copy/source-role issue discovered during review is not repaired here.
+- PR #195: `Remove Reset from primary product surfaces`.
+- Eval Gate #672: **PASS**.
+- Latest Vercel Preview: **Ready**.
+- Preview content verification confirmed homepage and `/tools/` contain no visible Reset primary section/cards and retain Phone/Relay/utilities.
+- Interactive Preview QA confirmed no visible broken/empty layout after the Reset sections were removed.
+- PR #195 squash-merged as `375b9c6044e93fe318378ada9b56ea3bc3e0a545`.
+- Vercel production status for the merge commit: **success**.
+- Apex production verification passed for `/`, `/tools/`, `/tools/phone-number-survival-guide/`, `/tools/relay-exit-risk-checker/`, and direct `/tools/cursor-usage-reset/`.
+- Production homepage and Tools index no longer expose Reset as a primary product; the Cursor direct URL still resolves normally.
 
-## Verification checklist
+## Deliberately deferred
 
-1. Production build succeeds.
-2. Homepage has no Reset primary navigation, hero CTA, job-map item, featured Reset section, Reset search suggestion, or Reset search results.
-3. `/tools/` has no Reset/AI-quota promotional sections.
-4. Public `ai.txt` and `llms.txt` no longer promote Reset URLs as preferred entry points.
-5. Sitemap no longer promotes the six Reset tracker URLs.
-6. Direct Reset URLs still build and return 200.
-7. Phone canonical and Relay Exit Risk still build and return 200.
-8. No unrelated Phone/Relay content change is introduced.
-9. Vercel Preview and Eval Gate pass before merge.
-10. After merge, verify the apex homepage, `/tools/`, Phone, Relay, and at least one old Reset direct URL.
+The production Phone presentation still contains legacy source-role language such as `Official rules first` / `documented carrier rules`, and the Phone page still has historical related-tool linkage into Reset. Those are separate Phone-contract issues and were not changed in this Reset-removal session.
 
-## Stop conditions
+## Next session
 
-Stop rather than expanding scope if safe removal requires URL deletion/redirect/noindex decisions, changes to Phone/Relay product behavior, or another independent redesign.
+Run the bounded Phone canonical intent/value audit under the already accepted Phone contract:
+
+- three fixed families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS;
+- visual decision dashboard first, Full guide on demand;
+- community/forum/current user outcomes drive operational reality;
+- provider/operator pages supply commercial metadata only;
+- identify and queue any production copy/field/link that contradicts that contract;
+- no route expansion or unrelated redesign during the audit.
