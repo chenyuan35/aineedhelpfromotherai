@@ -1,3 +1,11 @@
+# Daily Notion Journal — historical
+
+Status: **SUPERSEDED 2026-09-22** by `docs/DAILY_PROJECT_JOURNAL.md` and the Google Docs journal `aineedhelpfromotherai — Daily Project Journal`.
+
+The content below is retained only as historical process context. Do not append new project-day entries to Notion.
+
+---
+
 # Daily Notion Journal
 
 Notion page: `aineedhelpfromotherai — Daily Project Journal`
