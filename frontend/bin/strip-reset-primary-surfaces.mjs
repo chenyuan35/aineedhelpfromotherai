@@ -55,7 +55,7 @@ update(join(root, 'tools', 'index.html'), html => {
     .replace('"name":"Phone Number, AI Usage & Utility Tools"', '"name":"Phone Number & Browser Tools"')
     .replace('<p class="eyebrow">Phone number &amp; AI utility tools</p>', '<p class="eyebrow">Phone number &amp; browser tools</p>')
     .replace('Start with phone-number survival, then use focused AI reset, relay-risk and browser utilities. No account is required.', 'Start with phone-number routes, then use relay-risk and lightweight browser utilities. No account is required.');
-  html = html.replace(/<section><p class="eyebrow">AI usage &amp; reset tools<\/p>[\s\S]*?<\/section>/g, '');
+  html = html.replace(/<section><p class="eyebrow">AI usage & reset tools<\/p>[\s\S]*?<\/section>/g, '');
   html = html.replace(/<section><p class="eyebrow">New AI quota tools<\/p>[\s\S]*?<\/section>/g, '');
   return html;
 });
