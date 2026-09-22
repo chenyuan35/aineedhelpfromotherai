@@ -14,51 +14,35 @@ Product scope remains frozen to three surfaces:
 
 Existing small utilities stay maintained/tested but are not a fourth product direction. No second Phone canonical, country/provider doorway pages, bulk generic tools, or broad Astro production migration.
 
-## JUST COMPLETED — M-05R bounded cross-site token repair
+## JUST COMPLETED — M-06 final release / production audit
 
-Status: **DONE / PRODUCTION VERIFIED**.
+Status: **DONE / FINAL AUDIT PASS**.
 
-Evidence:
+Evidence: `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md`.
 
-- source audit: `docs/CROSS_SITE_VISUAL_SYSTEM_AUDIT_2026-09-22.md`;
-- repair evidence: `docs/CROSS_SITE_VISUAL_SYSTEM_REPAIR_2026-09-22.md`;
-- PR #185 final head `53d6223e862e1f6aa7ef1365ee5fde9695340fa6`;
-- changed production files only: `frontend/bin/build.mjs` + `frontend/bin/fix-cross-site-visual-tokens.mjs`;
-- Reset generated `var(--border,#d9d9df)` aliases repaired to shared `--line` through the authoritative build chain;
-- Relay forecast choice-button undefined `--text` repaired to `--ink`, with Relay-scoped dark selected-state protection;
-- normal build + utility regressions PASS;
-- second full build stable;
-- built old Reset border references = 0;
-- built old Relay choice-button `--text` references = 0;
-- local and genuine Vercel Preview QA passed 1440×900, 390×844 and 320×800 light/dark;
-- no horizontal overflow, one H1 and canonical identity preserved;
-- Eval Gate #647 PASS;
-- Vercel Preview Ready / success;
-- PR #185 squash-merged as `066ef4442ffe9259b72acca18bf9490c8a9d1c4c`;
-- Vercel production deployment SUCCESS;
-- independent apex QA passed Relay + Cursor Reset HTTP 200, repaired token output, light/dark selected-state/border behavior, no overflow and one H1.
+Closure summary:
 
-Rule: M-05 and M-05R are closed. Do not reopen Phone/Reset/Relay/utility visual repairs without a reproduced regression.
+- fresh current-main build + utility regressions PASS;
+- second full build stable with identical dist hash;
+- M-05R old Reset/Relay token references remain absent;
+- representative production Phone / Reset / Relay / utility interactions PASS;
+- current production identity/canonical/navigation reads exposed no new regression;
+- immediately preceding exact 1440×900 / 390×844 / 320×800 light/dark evidence remains applicable because no production code changed after M-05R; current M-06 theme interaction smokes also passed;
+- no new generator overwrite regression, Astro production migration, feature/route/methodology/positioning change, or product-scope expansion was introduced.
 
-## NEXT — M-06 final release / production audit
+Rule: the maintenance / visual-closure sequence M-01 through M-06 is closed. Reopen only for a newly reproduced defect or an evidence-backed requirement.
 
-Session scope: **audit only**.
+## NEXT — return to evidence-gated growth work
 
-Required checks:
+M-06 does not unlock a new production-code task by itself. The next bounded session must pick from current evidence gates rather than invent another maintenance change.
 
-- fresh current-main build and applicable regressions;
-- confirm production matches the closed maintenance state;
-- representative Phone / Reset / Relay / utility critical flows;
-- exactly one H1 and correct self-canonical / SEO identity;
-- 1440×900, 390×844 and 320×800 in light/dark;
-- site-wide theme cycling;
-- no page-level horizontal overflow;
-- representative internal/related navigation and no newly exposed 4xx/5xx links;
-- no generator overwrite regression from M-01 through M-05R;
-- no production migration to Astro;
-- no feature, route, methodology, copy-positioning or product-scope expansion.
+Priority constraints:
 
-If M-06 reproduces a concrete regression, record it and stop for a later bounded repair session. Do not silently repair a new independent defect inside the audit session.
+- Phone Q-003: keep collecting settled exposure; do not churn copy/routes from a zero-exposure sample.
+- Cursor Q-015: remains measurement-gated.
+- TikTok: remains external-review gated and untouched.
+- Authority: round one stays closed; any batch-2 test is a separate bounded session with revalidated candidates.
+- AIR: provider quota/auth/cache blockers remain explicit; do not bypass them.
 
 ## Measurement gates
 
@@ -108,4 +92,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-One bounded task per session. **M-05R is complete.** The next independent task is **M-06 final release / production audit only**, and it should start in a new conversation/session.
+One bounded task per session. **M-06 is complete and the maintenance sequence is closed.** The next session should select one evidence-gated growth/measurement task; do not reopen accepted production shells without a reproduced regression.
