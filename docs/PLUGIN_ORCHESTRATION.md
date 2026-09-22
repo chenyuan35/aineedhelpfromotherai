@@ -22,7 +22,9 @@ Do not adopt a plugin merely because it exists. A plugin must reduce manual work
 
 ## Measurement and discovery roles
 
-- **GSC Wizard** — first-party Google Search evidence for indexing, queries, impressions, CTR, page performance and search-stage decisions. Prefer it over third-party estimates when our own page/query data exists.
+- **Windsor.ai Search Console connector** — current preferred in-chat path for first-party Google Search Console Search Analytics. It was verified on 2026-09-22 against `sc-domain:aineedhelpfromotherai.com` for date/page/query/clicks/impressions/CTR/position reads. Treat Windsor as an access bridge, not a source of truth; its current account plan is trial/not paid, so availability or quota failure is a provider/access blocker rather than a site-data conclusion.
+- **Google Search Console official API/export** — durable fallback for first-party search data if Windsor becomes quota/auth limited. Prefer official data over third-party keyword estimates. Do not create throwaway accounts to extend trials.
+- **GSC Wizard — deprecated for this project.** Its current free/trial quota is exhausted and it is no longer the preferred measurement path. Historical GSC Wizard evidence remains valid for the dates it recorded, but do not depend on new GSC Wizard calls or upgrade billing without explicit authorization.
 - **SE Ranking / Ahrefs / Semrush / Ubersuggest** — external keyword, SERP and competitor estimates. Use whichever current account/quota can answer the question. Never invent data when a provider is blocked and never upgrade billing without explicit approval.
 - **Exa / Tavily / normal web search** — external discovery, source finding, competitor research and AI-retrieval tests. Provider quota/auth/cache failures must be recorded as provider blockers, not site-discovery failures.
 - **Firecrawl, if connected and usable within current/free quota** — bounded competitor/content extraction or page-change monitoring when it replaces manual browsing or custom crawler work. Do not duplicate an existing watcher or crawl broadly without a concrete evidence gap.
@@ -57,6 +59,7 @@ Before adopting a plugin into the regular workflow:
 - note whether quota/auth/billing blocks it;
 - prefer already-connected tools with usable current capacity;
 - do not buy, upgrade or change billing without explicit user approval;
+- do not rotate throwaway accounts merely to extend a trial or bypass a provider's quota;
 - do not make a production dependency on a temporary free tier unless there is a migration/disable path.
 
 ## Duplication guard
@@ -85,7 +88,7 @@ Use this as a default routing map, not a mandate to call every tool:
 - Code/facts/roadmap/history: GitHub
 - Daily chronological journal: Google Docs
 - Working research memory: Mem
-- Search performance: GSC Wizard
+- Search performance: Windsor.ai Search Console connector while available; official Google Search Console API/export as fallback; GSC Wizard deprecated
 - Keyword/SERP estimates: SE Ranking first when usable; Ahrefs/Semrush/Ubersuggest only when current quota permits
 - General/AI-native research: Web/Exa; Tavily only when executable under current quota
 - Social: Metricool

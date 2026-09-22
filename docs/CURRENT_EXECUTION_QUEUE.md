@@ -14,49 +14,71 @@ Product scope remains frozen to three surfaces:
 
 Existing small utilities stay maintained/tested but are not a fourth product direction. No second Phone canonical, country/provider doorway pages, bulk generic tools, or broad Astro production migration.
 
-## JUST COMPLETED — M-06 final release / production audit
+## JUST COMPLETED — Search Console measurement-path recovery
 
-Status: **DONE / FINAL AUDIT PASS**.
+Status: **VERIFIED / NO PRODUCTION CHANGE**.
 
-Evidence: `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md`.
+Evidence: `docs/GSC_MEASUREMENT_2026-09-22.md`.
 
-Closure summary:
+- GSC Wizard free/trial quota is exhausted and the project now treats it as deprecated for new measurement work.
+- Windsor.ai `searchconsole` is connected to `sc-domain:aineedhelpfromotherai.com` and successfully returned official Search Console date/page/query/click/impression/CTR/position data.
+- Windsor currently reports a Trial / not-paid account, so it is an access bridge, not a durable paid dependency. If it becomes unavailable, use official Google Search Console API/export rather than rotating trial accounts.
+- latest returned date in the verified read: 2026-09-19.
+- site-wide Search exposure is now real: Sep 16–19 returned 1/81, 1/104, 2/89 and 1/71 clicks/impressions respectively.
+- strongest 14-day page signal is Cursor: 479 impressions / 0 clicks / avg position ~6.98.
+- Manus: 75 impressions / 1 click; Replit: 57 / 0; Bolt: 43 / 0.
+- exact Phone canonical filter for Sep 16–19 returned no rows.
 
-- fresh current-main build + utility regressions PASS;
-- second full build stable with identical dist hash;
-- M-05R old Reset/Relay token references remain absent;
-- representative production Phone / Reset / Relay / utility interactions PASS;
-- current production identity/canonical/navigation reads exposed no new regression;
-- immediately preceding exact 1440×900 / 390×844 / 320×800 light/dark evidence remains applicable because no production code changed after M-05R; current M-06 theme interaction smokes also passed;
-- no new generator overwrite regression, Astro production migration, feature/route/methodology/positioning change, or product-scope expansion was introduced.
+## Maintenance closure remains closed
+
+M-06 final release / production audit remains **DONE / FINAL AUDIT PASS**. Evidence: `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md`.
 
 Rule: the maintenance / visual-closure sequence M-01 through M-06 is closed. Reopen only for a newly reproduced defect or an evidence-backed requirement.
 
-## NEXT — return to evidence-gated growth work
+## NEXT — continue evidence-gated growth measurement
 
-M-06 does not unlock a new production-code task by itself. The next bounded session must pick from current evidence gates rather than invent another maintenance change.
+The next bounded session must follow current evidence gates rather than invent another maintenance change.
 
 Priority constraints:
 
+- Cursor Q-002/Q-015: continue clean post-change measurement to the documented 300-impression checkpoint; do not rewrite title/meta or implement Q-015 yet.
 - Phone Q-003: keep collecting settled exposure; do not churn copy/routes from a zero-exposure sample.
-- Cursor Q-015: remains measurement-gated.
 - TikTok: remains external-review gated and untouched.
 - Authority: round one stays closed; any batch-2 test is a separate bounded session with revalidated candidates.
 - AIR: provider quota/auth/cache blockers remain explicit; do not bypass them.
 
 ## Measurement gates
 
-### Phone Q-003
-
-Status: **DONE FOR CURRENT SAMPLE / KEEP**.
-
-Latest canonical sample remains Phone release-day Sep 16 at 0 impressions / 0 clicks with the canonical indexed. This is insufficient exposure, not evidence for expansion or repositioning. Re-measure when settled exposure or meaningful interactions appear.
-
 ### Cursor Q-002 / Q-015
 
 Status: **MEASURING / GATED**.
 
-Do not implement Q-015 quota/pool depth until its documented measurement gates are satisfied.
+Only clean dates from 2026-09-17 onward count for the Q-002 decision.
+
+Verified clean data through Sep 19:
+
+- Sep 17: 70 impressions / 0 clicks / avg position 7.29;
+- Sep 18: 42 / 0 / 7.07;
+- Sep 19: 37 / 0 / 7.22;
+- cumulative clean total: **149 impressions / 0 clicks**.
+
+The documented first decision checkpoint is **>=300 clean post-change impressions**. The current zero-click pattern at useful positions is a warning signal, but the gate has not fired. Do not implement Q-015 quota/pool depth or rewrite Cursor title/meta yet.
+
+### Phone Q-003
+
+Status: **KEEP / CONTINUE COLLECTING EVIDENCE**.
+
+The Phone canonical remains indexed, but an exact Search Console filter over 2026-09-16 through 2026-09-19 returned no rows. This is insufficient exposure, not evidence for expansion or repositioning. Re-measure when impressions/clicks or meaningful interactions appear.
+
+## Search measurement path
+
+Current preferred path:
+
+1. Windsor.ai Search Console connector for in-chat reads while current capacity works;
+2. official Google Search Console API/export as durable fallback;
+3. GSC Wizard is deprecated for new project measurement because its current free/trial quota is exhausted.
+
+Do not create throwaway accounts to extend provider trials. Do not upgrade billing without explicit authorization.
 
 ## External waits
 
@@ -82,14 +104,16 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 - do not add another Phone route automatically;
 - do not reopen accepted Phone/Reset/Relay/utility shells without a reproduced regression;
-- do not implement Q-015 while measurement-gated;
+- do not implement Q-015 before its measurement gate;
+- do not rewrite Cursor title/meta before the 300-clean-impression review;
 - do not add country/provider doorway pages or bulk generic utilities;
 - do not create a temporary-SMS backend/marketplace;
 - do not invent OTP percentages, Phone risk scores, Relay shutdown probabilities or fake confidence values;
 - do not migrate the production site to Astro as part of maintenance;
+- do not rotate trial accounts to bypass plugin quotas;
 - do not change DNS, AdSense, billing, paid services, or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.
 
 ## Session rule
 
-One bounded task per session. **M-06 is complete and the maintenance sequence is closed.** The next session should select one evidence-gated growth/measurement task; do not reopen accepted production shells without a reproduced regression.
+One bounded task per session. The current maintenance sequence is closed. The next session should continue measurement/evidence-gated growth work; do not reopen accepted production shells without a reproduced regression.
