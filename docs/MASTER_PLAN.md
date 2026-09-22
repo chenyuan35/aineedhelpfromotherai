@@ -6,132 +6,148 @@ This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is tr
 
 ## North-star goal
 
-Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. First practical target: about RMB 100/month, then scale only what proves demand.
+Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. First practical target: about RMB 100/month, then scale only what proves demand and defensible user value.
+
+## Strategic correction — 2026-09-23
+
+Product selection now requires two substitution tests before search volume, SEO opportunity or implementation effort matter:
+
+1. **Official-source gate:** why can the user not solve the job adequately from the provider's own page/account UI or one ordinary search?
+2. **Independent-competitor gate:** why should the user use us instead of the strongest existing independent product already solving the same job?
+
+A candidate advances only when the project can state a concrete durable advantage: information asymmetry, uncertainty reduction, aggregation, monitoring/freshness, meaningful computation, proprietary history, decision-cost reduction, or a narrower workflow solved materially better than incumbents.
+
+Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
+
+## Product hierarchy
+
+### 1. Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT
+
+Canonical: `/tools/phone-number-survival-guide/`.
+
+Core user job:
+
+> Find a real, currently workable phone/eSIM route for SMS/OTP, long-term number survival, or travel connectivity when provider pages do not answer whether it works in practice.
+
+Defensible value comes from current independent community outcomes, route history and reconciliation across fragmented reports. Provider/operator pages are used by default for commercial metadata only.
+
+Do not create country/provider doorway pages. Improve the existing canonical first.
+
+### 2. AI Reset Radar — FROZEN / VALUE-REVIEWED PORTFOLIO
+
+No new generic reset pages and no Cursor-first optimization.
+
+Current classifications:
+
+- Cursor Usage Reset — **DOWNGRADE**;
+- Claude Code Limit Reset — **REPURPOSE**;
+- GitHub Copilot Credits Reset — **KEEP / DIFFERENTIATE**;
+- Manus Credits Reset — **DOWNGRADE**;
+- Replit Usage Reset — **DOWNGRADE**;
+- Bolt Tokens Reset — **REPURPOSE**;
+- AI Credit Burn Rate Calculator — **KEEP / DIFFERENTIATE**.
+
+Codex demand is real, but generic Codex reset tracking is already served by multiple mature independent trackers. Do not build a generic Codex reset radar/history/countdown clone. Future Codex work is research-only until a narrower non-duplicative user job is proven.
+
+### 3. Relay Exit Risk — DATA-ACCRUAL EXPERIMENT
+
+Preserve the accepted methodology and production surface. Continue legitimate historical snapshots/lifecycle accumulation. Direct search demand has not yet been demonstrated, so do not prioritize search-led feature expansion.
+
+### Existing generic utilities — MAINTENANCE ONLY
+
+Keep passing utilities stable. Do not expand merely because a calculator is cheap to build.
 
 ## Phase board
 
-| Phase | Goal | Status | Evidence / current state | Exit gate |
-|---|---|---|---|---|
-| P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | GitHub→Vercel, CI/Eval Gate, durable fact sources and safe release flow are established. | Completed |
-| P1 Initial tool inventory | Useful low-cost starter portfolio | DONE | Existing tool cohort is live; Phone canonical released Sep 16. | Completed |
-| P2 Discovery & indexing | Make the current cohort discoverable/indexed | **DONE** | Phone canonical is indexed. Sep 22 Search Console recovery returned real Google impressions across several existing tool pages through Sep 19, including Cursor 479 impressions, Manus 75, Replit 57 and Bolt 43 in the verified 14-day read. | Completed: the current cohort is discoverable and receiving Search Console impressions. |
-| P3 First search signals | Identify pages/queries Google is testing | **DONE** | Several current tool pages now have concrete page/query impressions and the site recorded Google clicks on Sep 16–19. Cursor is the strongest current search signal; Phone still has no rows in the exact Sep 16–19 page filter. Evidence: `docs/GSC_MEASUREMENT_2026-09-22.md`. | Completed: several current tool-page query/impression signals exist. |
-| P4 Winner optimization | Improve pages already earning impressions | **PRODUCT-VALUE REVIEW / MEASUREMENT-GATED** | Cursor has strong impressions but its core reset job may be too deterministic and too easily replaced by the provider's own account UI/docs. Search exposure alone is not sufficient evidence of product value. | First pass the mandatory product-value audit in `docs/PRODUCT_VALUE_GATE.md`; only then use CTR/depth measurement to decide whether to improve, repurpose, downgrade, or stop investment. |
-| P5 Focused product depth | Build depth inside frozen product scope | **MAINTENANCE CLOSURE COMPLETE / VALUE-GATED** | Phone closure/CMLink admission, M-02 Reset, M-03 Relay, M-04 utilities, M-05/M-05R cross-site visual closure and M-06 final release audit are production-verified. Technical closure does not prove user value. | Keep accepted production shells closed; future depth must first pass the product-value gate. Q-015 remains blocked until Cursor proves a defensible non-official user job. |
-| P6 Distribution, authority & AI discovery | Earn relevant discovery/referral/citations | ACTIVE PILOT | Small outreach/social experiments are measuring; AIR blockers remain explicit. | At least one repeatable relevant referral/link/citation source plus measurable visibility. |
-| P7 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | Monetization optimization waits for meaningful traffic. | First RMB 100/month, then optimize without harming UX. |
+| Phase | Goal | Status | Exit gate |
+|---|---|---|---|
+| P0 Foundation | Stable static site, safe deploy flow, durable handoff | DONE | Completed |
+| P1 Initial tool inventory | Establish first useful portfolio | DONE | Completed |
+| P2 Discovery & indexing | Make current cohort discoverable/indexed | DONE | Completed |
+| P3 First search signals | Obtain real page/query evidence | DONE | Completed |
+| P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
+| P5 Phone canonical growth | Make the existing Phone canonical unmistakably solve the community-backed user job | **ACTIVE** | Existing URL communicates the job clearly, exposes decision-critical fields, and passes preview/production verification if changed |
+| P6 Evidence-gated depth | Add only depth that survives value + competition gates | QUEUED | One or more validated improvements show measurable search/usage value |
+| P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
+| P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
 
-## Current sprint — Evidence-gated growth after maintenance closure
+## Current sprint
 
-1. **DONE — Product reset root correction.** The questionnaire/research-manual direction is rejected.
-2. **DONE — Product structure.** Phone Radar has three route families: Long-term SMS/OTP, Data SIM/eSIM, Temporary SMS.
-3. **DONE — Experience structure.** Visual dashboard / small shortlist by default; detailed operational guide only when requested.
-4. **DONE — Global research direction.** Country is a filter/tag, not a research sequence.
-5. **DONE — Source-role correction.** Community/user outcomes drive operational reality. Operator/provider pages serve current price/package/promotion/stock/purchase metadata only by default.
-6. **DONE — Q-014D v1 outcome/decision model.** `radar-view.json` holds the small frontstage decision layer; existing research/intelligence stays backstage.
-7. **DONE — Q-014E v1 data reclassification.** Frontstage decision labels are separated from backstage research detail; the public flow no longer depends on documentation-first `unknown` gating.
-8. **DONE — Q-014G implementation.** PR #115 replaced questionnaire gating with the three-family visual dashboard and full-guide interaction on the existing canonical.
-9. **SUPERSEDED — Q-014H technical closure.** The earlier pass verified the route-first flow, responsive breakpoints, analytics, canonical/data health and the `phone_show_more` event, but it did not verify the computed visual system deeply enough. It is no longer sufficient evidence of product/visual closure.
-10. **DONE — Q-014I visual closure audit.** Direct user feedback that the page still feels messy was treated as a concrete defect signal. Audit found undefined Phone CSS tokens (`--border / --surface / --text` against production `--line / --panel / --ink`), inherited global `button` top margins, marketing-scale hero sizing, too much pre-list chrome/equal-weight card density, and a Full guide that opens after the route list rather than beside the selected card. See `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md`.
-11. **DONE — Q-014J bounded Phone shell repair.** Final head `dc8d147` passed Eval Gate #567 and real Vercel Preview QA. Desktop/mobile × light/dark verified one selected family, first-route visibility, three-metric cards, Croatia non-shortlist filtering, Show more, inline Full guide and no horizontal overflow. PR #130 squash-merged as `5ccd50b4c293a963274622b8a14a3987cbab14d8`; apex production verification repeated the core checks successfully.
-12. **DONE FOR CURRENT SAMPLE / KEEP — Q-003 Phone measurement.** Sep 22 exact Search Console page filtering for Sep 16–19 still returned no Phone rows while the canonical remains indexed. This remains an insufficient demand sample, so do not expand routes/pages or churn positioning from zero exposure.
-13. **DONE — Q-013R first post-reset expansion batch.** PR #120 added one route only: A1 Croatia prepaid eSIM. It remains outside the default shortlist. Current online top-up minimum is `€5`; reported 450/362-day retention timing is explicitly community-derived and route stability is `Watch`.
-14. **DONE — Q-013G first three-family gap check.** Long-term is now the deepest family; Data remains the shallowest with two concrete public routes plus a generic fallback.
-15. **DONE — Q-013D2 Stellar Data validation / HOLD.** Stellar China 100GB / 60 days remains HOLD because the selected network/egress variant is not reproduced consistently at fulfillment.
-16. **DONE — Q-013D3 CMLink Data validation / ADMISSION-READY.** Exact route: Trip.com Mainland China CMLink eSIM, product ID `71336361`. The current 3–15 day product is live; multiple 2026 first-hand Trip/CMLink reports reproduce mainland-China use. Performance is mixed enough that the route must enter as `Watch`: do not promise reliable 5G, fixed egress, workstation-grade speed, rechargeability, or number/SMS capability.
-17. **DONE — Q-013D4 production admission.** PR #127 final head `6da8bb43` passed the current Eval Gate and its own fresh Vercel Preview. Desktop/mobile × light/dark Data-family QA passed with CMLink as `Watch`/data-only, Airalo/Mobal intact, filters/guide/overflow clean; squash merge `ebbfe784e7c4a9adc8cd19aa5add104855150bd5` was independently production-verified.
-18. **DONE — M-02A Cursor lead-page visual closure.** PR #153 moved the existing tracker/input into the first viewport, demoted Quick answer below the tool, preserved canonical/title/meta, passed desktop/mobile × light/dark + interaction QA, and merged as `67052224cd1ee84d6e595d13f3ac1e8c89e18f02`. Q-015 remains measurement-gated.
-19. **DONE — Q-005 authority recheck.** Sep 21 second check found zero replies and zero verified public links/citations across all three round-one contacts. Round one is closed without a resend; a future authority round should prefer a bounded Learn Cursor + explainx.ai batch-2 test.
-20. **AIR — blockers remain blockers.** Do not pay/bypass/invent results.
-21. **DONE — M-03 Relay visual closure.** Read-only audit reproduced only mobile result displacement and repetitive empty-state density. PR #176 repaired those two defects without changing methodology/API/SEO identity, passed Eval Gate #627 plus genuine Preview desktop/mobile × light/dark QA, squash-merged as `da005c894976b22cf4be013111b0bd1f94a20487`, and passed independent apex QA.
-22. **FRONTEND FOUNDATION — infrastructure only.** Astro 7 + Tailwind 4 foundation and Tool Registry are in `main`, but the current production build remains unchanged. Any real cutover is a separate parity/analytics/rollback task, not a reason to redesign the current product shells.
-23. **DONE — M-02C Reset release audit.** Fresh current-main build passed; all seven Reset pages passed representative function, H1/canonical, 1440/390/320 light/dark and no-horizontal-overflow checks. See `docs/RESET_RELEASE_AUDIT_2026-09-21.md`.
-24. **DONE — M-04 Existing utility regression + visual consistency audit.** M-04A/M-04R numerical/date work is closed. M-04B then verified Image Resizer/Compressor on production using real generated files, downloaded outputs, JPG/WebP/PNG modes, resize/quality/safety paths, 1440/390/320 light/dark, SEO identity, related links and overflow; no defect required repair. Evidence: `docs/UTILITY_NUMERICAL_DATE_AUDIT_2026-09-21.md` and `docs/UTILITY_IMAGE_AUDIT_2026-09-22.md`.
-25. **DONE — M-05 Cross-site visual system audit.** Representative Phone/Cursor/Relay/Percentage/Image production checks at 1440/390/320 light/dark passed hierarchy/no-overflow, theme cycling and representative related navigation. Fresh build + second-build stability checks passed. Two bounded defects were reproduced: Relay `.choice-button` uses undefined `--text`, breaking the selected forecast state; Reset-family generator styles use undefined `--border` with a fixed fallback instead of shared `--line`. Evidence: `docs/CROSS_SITE_VISUAL_SYSTEM_AUDIT_2026-09-22.md`.
-26. **DONE — M-05R bounded cross-site token/selected-state repair / PRODUCTION VERIFIED.** PR #185 added one bounded build enhancer plus build-chain registration. It replaced Reset generated border aliases with shared `--line`, repaired Relay choice-button `--text` to `--ink`, and added a Relay-scoped dark selected-state rule. Fresh build/regressions and second-build stability passed; Preview 1440/390/320 light/dark passed; Eval Gate #647 passed; squash merge `066ef4442ffe9259b72acca18bf9490c8a9d1c4c` deployed successfully; independent apex QA confirmed HTTP 200, old-token references absent, correct Relay selected-state inversion and Reset border tokens in light/dark. Evidence: `docs/CROSS_SITE_VISUAL_SYSTEM_REPAIR_2026-09-22.md`.
-27. **DONE — M-06 final release / production audit.** Fresh current-main build/regressions and second-build stability passed; representative production Phone/Reset/Relay/utility interaction smokes passed; identity/canonical/navigation checks exposed no new regression; M-05R token repairs remained intact; no Astro production migration or scope expansion occurred. Evidence: `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md`.
-28. **DONE — Search Console measurement recovery / first-search-signal phase exit.** Windsor.ai `searchconsole` successfully read official Search Console data for `sc-domain:aineedhelpfromotherai.com` through Sep 19. GSC Wizard is deprecated for new reads after current free/trial quota exhaustion. Several tool pages now have real impressions, so P2/P3 exit gates are met. Cursor fresh post-change data reached 290 impressions / 0 clicks through the partial Sep 22 row, still below the old 300-impression CTR checkpoint. Evidence: `docs/GSC_MEASUREMENT_2026-09-22.md`.
-29. **OPEN — Reset product-value audit.** The Sep 23 product review identified a more fundamental gate than CTR: deterministic reset pages may simply duplicate information users already know or can read directly from the provider. Before any further Reset optimization, audit all seven current Reset-family pages against `docs/PRODUCT_VALUE_GATE.md`; classify each KEEP/DIFFERENTIATE, DOWNGRADE, REPURPOSE, or RETIRE-CANDIDATE. Do not delete or redirect in the audit session.
+1. **DONE — Product direction reset.** Combined Search Console, live keyword data, current competitor coverage and current community pain. Search volume/ranking are no longer allowed to choose the product by themselves.
+2. **DONE — Reset-family product-value audit.** Seven pages classified; no deletion/redirect performed.
+3. **DONE — Competition gate added.** Mature independent competitors are now a hard substitution test before implementation.
+4. **NEXT — Phone canonical intent/value audit.** Audit only `/tools/phone-number-survival-guide/` against current search/community language and the real user job.
+5. **QUEUED — One bounded existing-URL Phone change, only if the audit justifies it.** Scope may include title/meta/H1/first-screen positioning and decision-field presentation. No new route/page by default.
+6. **QUEUED — Re-measure Phone after any accepted change.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social.
+7. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+8. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
-## Phone Radar product contract
+## Phone canonical audit contract
 
-Canonical remains `/tools/phone-number-survival-guide/`.
+The next bounded audit must determine whether the existing canonical clearly answers the user's real decision problem.
 
-### Visual dashboard
+Evaluate:
 
-Show the three families immediately and real options without a questionnaire.
+- title/meta/H1 and first-screen promise;
+- real carrier number vs data-only/VoIP status;
+- recent SMS/OTP outcome and service/app caveats;
+- remote activation practicality and activation-country constraints;
+- KYC requirements;
+- roaming/SMS behavior;
+- keep-alive/retention cost and expiry rules;
+- current price/value and purchase path;
+- freshness/confidence from current independent outcomes;
+- whether the three-family dashboard clarifies or dilutes the primary job.
 
-Long-term SMS/OTP: recent SMS/OTP signal, yearly keep-alive cost, setup effort, remote practicality, stability/continuity.
+Definition of done:
 
-Data SIM/eSIM: current data price/value, allowance/validity, coverage, setup friction, reuse/recharge, whether a real number is included.
+- evidence-backed KEEP or CHANGE decision for the existing canonical;
+- if CHANGE, one bounded implementation plan for the same URL;
+- no new country/provider doorway page;
+- no bulk route expansion;
+- no production change during the audit itself.
 
-Temporary SMS: recent success signal, current price, country/service coverage, private/shared/reused state, privacy/reuse risk, availability.
+## Measurement rules
 
-Default to a small useful shortlist, not a wall of equal-weight choices. The current visual repair may change where a required field is displayed — metric grid, identity/status chip, secondary metadata, or guide — as long as decision-critical information remains obvious and the page becomes easier to scan.
-
-### Full guide
-
-On user request only: what to buy/use, current price, prerequisites, exact steps, SMS/OTP or data use, keep/recharge/renew, main pitfall, recovery/reissue, a few useful tutorial/community links, acquisition link.
-
-The guide must remain attached to the selected route context; it should not behave like a separate long article appended after the whole shortlist.
-
-### Decision-cost rule
-
-Every visible element must help choose or act. Methodology, reconciliation notes, source classes and long evidence prose remain backstage.
-
-A known visual defect outranks route expansion. Passing data/CI checks is not sufficient evidence that the dashboard is visually finished.
-
-### Release boundaries
-
-The current v1 deliberately does not provide:
-
-- fabricated OTP success percentages;
-- a Phone 0–100 risk score;
-- country/provider doorway pages;
-- a temporary-SMS marketplace/backend;
-- phone/OTP/credential/identity-document collection.
-
-These are not backlog omissions to fill automatically. Any future change requires evidence that it improves the user job without violating the product rules.
-
-## Next-session execution order
-
-The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current order is:
-
-1. run the bounded Reset product-value audit across the seven currently accepted Reset-family pages before any more Reset code/SEO work;
-2. for each page, answer what it provides beyond the provider's own page/account UI and whether a user has a reason to return; classify KEEP/DIFFERENTIATE, DOWNGRADE, REPURPOSE, or RETIRE-CANDIDATE;
-3. Cursor's prior 300-impression CTR gate is subordinate to this product-value gate: do not rewrite its snippet or implement Q-015 unless Cursor first proves a defensible non-official user job;
-4. keep Phone Q-003 at KEEP while its exact page filter remains zero-exposure; do not add routes or reposition it from absence of data;
-5. keep authority batch 2 untouched until the Sep 29-or-later response/link check;
-6. preserve production-verified layouts unless a new product-value decision creates a separate bounded change task;
-7. keep TikTok untouched while external review is pending;
-8. keep AIR provider blockers explicit; no paid/bypass workarounds.
-
-## Measurement cadence
-
-- Daily: existing Phone watchers continue as lead/event collectors; no automatic product rewrites.
-- Every 4 hours: community-demand observer remains bounded; use output as leads only.
-- Twice weekly while search traffic is still immature: Search Console indexing/performance review through Windsor while available; use official Google Search Console API/export as fallback. GSC Wizard is deprecated for new project reads.
-- Cursor measurement may continue as evidence, but it cannot by itself justify deeper Cursor investment until the product-value audit passes.
-- After every Phone release: verify canonical, build, mobile hierarchy, analytics and production behavior.
-- Sep 29 or later: first authority batch-2 response/link check.
-- Monthly after meaningful traffic: clicks, impressions, pages/queries, referrals, repeat behavior and AdSense revenue/RPM.
+- Search Console is a distribution signal after a product passes the value and competition gates; it is not the product selector.
+- High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both. Diagnose product value before rewriting snippets.
+- Cursor's previous 300-impression checkpoint is retired as an automatic investment trigger.
+- Phone's current lack of exact-page Search Console rows does not prohibit a bounded positioning audit because independent demand/community evidence supports the underlying user job.
+- Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
+- Monetization work waits for meaningful traffic.
 
 ## Decision rules
 
-- Scope remains three products: Phone Radar primary, Reset Radar secondary, Relay Exit Risk secondary.
-- Every new product, expansion, and winner-optimization task must pass `docs/PRODUCT_VALUE_GATE.md` before search volume or SEO opportunity can justify implementation.
-- If the core answer is deterministic, stable, and already clear from the provider, default to reject/downgrade unless the site adds material prediction, aggregation, monitoring, computation, proprietary history, or decision-cost reduction.
-- Official sources validate provider-controlled facts; they are not automatically the product value proposition.
-- No fourth product surface, second Phone canonical or country/provider/keyword doorway pages.
-- Temporary SMS platforms may be compared as external routes; the project does not become a temporary-SMS marketplace/backend.
-- Phone operational reality comes from current user/community outcomes.
-- Operator/provider pages serve current commercial metadata by default, not operational certification.
-- No fake OTP percentage or arbitrary Phone 0–100 risk score.
+- Every new product, expansion and winner-optimization task must pass `docs/PRODUCT_VALUE_GATE.md`.
+- Do not build a wrapper around official documentation.
+- Do not build a clone of a mature independent product without a specific user-visible advantage.
+- Search volume cannot rescue a weak or commoditized user job.
+- Existing pages are not grandfathered in because development effort has already been spent.
+- Phone operational reality comes from current independent user/community outcomes and route history.
+- Operator/provider pages serve commercial metadata by default, not operational certification.
+- One clear user task per page; avoid thin/near-duplicate/keyword doorway pages.
+- Improve existing URLs before adding similar URLs.
 - Missing data lowers confidence; do not fabricate certainty.
-- Search Console evidence outranks speculative keyword ideas only after the product itself passes the value gate; impressions do not rescue an undifferentiated product.
-- Keep social/referral separate from Google organic.
-- AI discovery remains non-adversarial; provider quota/auth/cache failures remain provider blockers.
-- Do not start route expansion while a concrete Phone shell defect or unresolved visual-review gate remains open.
+- No fake OTP percentages, arbitrary Phone risk scores, Relay shutdown probabilities or fake calibration claims.
+- Keep AI discovery non-adversarial and provider blockers explicit.
+
+## External waits
+
+### TikTok App Review
+
+Status: **SUBMITTED / WAITING**. Do not Recall or change submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested.
+
+### Authority batch 2
+
+Status: **SENT / WAITING**. Learn Cursor + explainx.ai were sent 2026-09-22. Do not add a third target or follow up before 2026-09-29 or later. Verify original Gmail threads and public links before any follow-up.
+
+## Tool/provider blockers
+
+- Ubersuggest: Sep 23 live evidence collected, then daily report quota exhausted; do not rotate accounts or upgrade without authorization.
+- Ahrefs: current API access returned `Insufficient plan`.
+- Semrush: current connector returned `no_api_units`.
+
+Treat these as provider limits, not evidence failures.
 
 ## Source-of-truth map
 
@@ -139,27 +155,15 @@ The exact atomic checklist is in `docs/CURRENT_EXECUTION_QUEUE.md`. Current orde
 |---|---|
 | Current factual state | `PROJECT_CONTEXT.md` |
 | Whole-project stage / priorities | `docs/MASTER_PLAN.md` |
-| Atomic work queue | `docs/CURRENT_EXECUTION_QUEUE.md` |
-| Product value / official-source substitutability gate | `docs/PRODUCT_VALUE_GATE.md` |
-| Frontend foundation | `docs/FRONTEND_FOUNDATION_PLAN_2026-09-18.md` |
-| Phone reset | `docs/PHONE_RADAR_PRODUCT_RESET_2026-09-18.md` |
-| Phone interaction contract | `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` |
-| Phone visual closure defects | `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` |
-| Global route-pool seed | `docs/PHONE_RADAR_GLOBAL_ROUTE_POOL_SEED_2026-09-18.md` |
+| Atomic next actions | `docs/CURRENT_EXECUTION_QUEUE.md` |
+| Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
+| Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
+| Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
-| Cursor measurement / Q-015 gate | `docs/CURSOR_USAGE_POOL_EXECUTION_PLAN_2026-09-19.md` + `docs/GSC_MEASUREMENT_2026-09-22.md` |
-| Execution procedure | `docs/OPERATING_WORKFLOW.md` |
-| Plugin measurement routing | `docs/PLUGIN_ORCHESTRATION.md` |
+| Phone visual baseline | `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` + `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md` |
+| Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current Windsor Search Console reads |
+| Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
 | Authority/referral | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
 | AI retrieval | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md` |
-| Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
-| M-05 cross-site audit | `docs/CROSS_SITE_VISUAL_SYSTEM_AUDIT_2026-09-22.md` |
-| M-05R cross-site repair | `docs/CROSS_SITE_VISUAL_SYSTEM_REPAIR_2026-09-22.md` |
-| M-06 final release audit | `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md` |
 | Code/deployment truth | GitHub `main` + verified production |
-| Google performance | Windsor.ai Search Console connector while current capacity works; official Google Search Console API/export as fallback; `docs/GSC_MEASUREMENT_2026-09-22.md` for the latest accepted measurement evidence |
-| Phone operational reality | current independent community/user outcomes and route history |
-| Phone current price/promotions | provider/operator purchase surfaces when useful |
-
-Historical AI-agent/MCP strategy documents are not current planning authority.
