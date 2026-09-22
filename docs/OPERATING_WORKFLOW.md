@@ -8,7 +8,7 @@ Before a non-trivial work round, create a bounded checklist from the current Git
 
 After the checklist exists, execute all eligible items continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
 
-At least once per project workday, append a dated entry to the Notion page `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Notion journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.
+At least once per project workday, append a dated entry to the Google Docs journal `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Google Docs journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.
 
 ## 0. Resume without rescanning
 
