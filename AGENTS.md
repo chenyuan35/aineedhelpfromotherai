@@ -19,6 +19,8 @@ Automation policy: do not create ChatGPT scheduled/recurring tasks for ordinary 
 
 Core rule: optimize for organic traffic, indexing, CTR, repeat utility, page speed, and sustainable AdSense revenue. Prefer useful browser-only tools with real search demand and negligible per-user cost.
 
+Product-value gate: before building, expanding, or optimizing a product, read and apply `docs/PRODUCT_VALUE_GATE.md`. Search volume, rankings, indexing, technical quality, and official documentation coverage do not prove product value. The task must answer why the user cannot adequately solve the job by reading the official page, remembering a fixed rule/date, or doing one ordinary search. If there is no material information advantage, uncertainty reduction, aggregation, monitoring, computation, proprietary history, or decision-cost reduction, stop rather than build. Existing pages are not exempt from this test.
+
 Interpretation rule: treat rough ideas, copied prompts, screenshots, competitor examples, and “for reference” material as signals to analyze, not automatic authorization to build or change production. Convert them into product judgment—problem, stage fit, alternatives, cost/maintenance/risk, and the smallest useful validation—before acting. Ask only when missing information would materially change direction, risk, cost, or an irreversible action.
 
 Do not revive the historical AI-debugging SaaS direction unless the user explicitly changes the project goal.
@@ -38,6 +40,7 @@ Research constraints:
 - Validate topics with real signals; do not invent volume/CPC/difficulty.
 - Ubersuggest is preferred when available; autocomplete, public discussions, official docs, and Search Console are valid complementary evidence.
 - One distinct useful page per intent; avoid scaled thin/duplicate pages.
+- Official sources validate provider-controlled facts; they are not automatically the user-facing value proposition. For real-world behavior, uncertainty, hidden routes, reliability, or operational outcomes, prioritize current independent user/community evidence and historical observations.
 
 Handoff constraint:
 - Treat the checkpoint in `PROJECT_CONTEXT.md` as the resume point and `docs/MASTER_PLAN.md` as the total progress/task board, not chat memory.
