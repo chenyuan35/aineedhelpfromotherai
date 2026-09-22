@@ -43,6 +43,22 @@ Ask a clarifying question only when the missing information would materially cha
 
 For a genuinely new production feature or application, define the user job, scope/non-goals, major technical decisions, file/module boundaries, persistence/database needs, API surface, interface flow, security/privacy constraints, deployment/observability requirements, test strategy, rollback path, and expected operating cost before substantial implementation. Then build the smallest launchable, maintainable version that can test the thesis; do not default to maximal architecture.
 
+## 0.5 Product value gate — before demand scoring or implementation
+
+Read `docs/PRODUCT_VALUE_GATE.md` before building, expanding, or optimizing any product surface.
+
+The first question is not “how many people search this?” It is:
+
+> Why can the user not adequately solve this by reading the official page/account UI, remembering a fixed rule/date, or doing one ordinary search?
+
+A candidate must provide at least one material advantage: information asymmetry, uncertainty reduction/prediction, multi-source aggregation, freshness/monitoring, meaningful computation/transformation, proprietary history, or clear decision-cost reduction.
+
+Hard stop when the core answer is deterministic, stable, obvious, and already clearly available from the provider unless the site adds a separate durable advantage. Do not build a wrapper around official documentation simply because keyword demand exists.
+
+Existing pages are subject to the same gate. Technical acceptance, ranking, impressions, or prior development effort do not grandfather a weak product into further investment.
+
+Official sources remain important for provider-controlled facts. They are evidence inputs, not automatically the product itself. For real-world behavior, hidden routes, reliability, uncertainty, recovery, or operational outcomes, prioritize current independent user/community evidence and historical observations.
+
 ## 1. Discover
 
 Collect candidate queries from the VPS keyword radar, Ubersuggest when available, autocomplete, Search Console, current product documentation, and repeated public user questions.
@@ -54,17 +70,20 @@ A candidate is stronger when it has several of these traits:
 - can run client-side;
 - low server cost;
 - one obvious search query maps to one useful page;
-- incumbent results are weak, stale, slow, confusing, or overly complex.
+- incumbent results are weak, stale, slow, confusing, or overly complex;
+- the user cannot get an equally useful answer from one clear official page/account screen.
 
 Do not invent search-volume data when a metrics provider is unavailable.
 
 ## 2. Score and select
 
-Score candidates on demand signal, competition, monetizable intent, implementation cost, repeat-visit potential, and policy freshness. Prefer candidates with multiple independent signals rather than one anecdote.
+Only score candidates that pass the product-value gate. Search demand cannot rescue a candidate whose core answer is already deterministic and clearly provided by the source itself.
+
+Score surviving candidates on demand signal, competition, monetizable intent, implementation cost, repeat-visit potential, policy freshness, and defensibility of the non-official value. Prefer candidates with multiple independent signals rather than one anecdote.
 
 Default batch size: 1–2 new tools. Larger batches require unusually strong evidence and shared implementation.
 
-Before coding a changing-product tool, identify an official source for the rule being calculated. If the provider exposes account-specific reset times, let the user enter/anchor that value instead of inventing a universal time.
+Before coding a changing-product tool, identify an official source for the provider-controlled rule being calculated. Use that source to verify facts, not as proof that the tool has a reason to exist. If the provider exposes account-specific reset times, let the user enter/anchor that value instead of inventing a universal time; then separately prove what additional value the site provides beyond displaying the same reset time.
 
 ## 3. Build safely
 
@@ -137,7 +156,7 @@ Review performance in cohorts rather than reacting to one day of data. Useful si
 - repeat/direct visits where measurable;
 - AdSense page RPM and revenue after meaningful traffic exists.
 
-Use actual Search Console queries to decide whether to improve a page, add a distinct adjacent tool, or stop investing in the topic.
+Use actual Search Console queries to decide whether to improve a page, add a distinct adjacent tool, or stop investing in the topic, but only after the product itself has passed the value gate. High impressions with weak/no clicks may indicate poor snippet fit, but they may also indicate a weak underlying user job; do not assume the fix is always SEO copy.
 
 For AI discovery, treat classic SEO as the foundation rather than a separate hack. Keep public pages crawlable, give changing claims primary-source evidence and last-verified dates, use clear answer-first sections/headings, and provide unique utility that a generic summary cannot replace. Measure AI-assistant referral traffic through GA4/GSC Wizard and citation/AI visibility through Bing Webmaster or Search Console when those reports are available.
 
