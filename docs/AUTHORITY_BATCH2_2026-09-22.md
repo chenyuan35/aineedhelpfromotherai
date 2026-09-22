@@ -34,3 +34,7 @@ This bounded AIR-4 authority round tested exactly two revalidated targets and ma
 ## Product decision
 
 This round runs while Cursor Q-002 accumulates toward its 300-clean-impression decision gate. It does not justify changing Cursor title/meta, implementing Q-015, adding a new URL, or modifying production code.
+
+## Operational note
+
+During GitHub closeout, two connector actions accidentally wrote directly to `main`: first an empty `__noop__` file, then an early copy of this evidence file. Each was immediately deleted before the proper fresh branch was created. Net repository content was restored before the PR workflow resumed; no production code or site behavior was changed. The authoritative batch-2 record is the branch/PR version of this file.
