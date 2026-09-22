@@ -1,6 +1,6 @@
 # Plugin Orchestration Workflow
 
-Last updated: 2026-09-17
+Last updated: 2026-09-22
 
 This document defines how ChatGPT plugins/connectors are used around `aineedhelpfromotherai.com` without creating competing sources of truth or scope creep.
 
@@ -15,7 +15,7 @@ Do not adopt a plugin merely because it exists. A plugin must reduce manual work
 ## Bootstrap and source-of-truth roles
 
 - **Notion Skill** — role-entry/bootstrap instructions only. It should make a new session enter the correct operating mode quickly, then require reading GitHub main in the mandated order.
-- **Notion Daily Project Journal** — human-readable chronological execution diary. Append one dated entry per project workday with the task checklist, actual completed work, verification, blockers/holds and next trigger. It is not a roadmap, queue or source of truth; GitHub `main` plus verified production wins on conflict.
+- **Google Docs Daily Project Journal** — human-readable chronological execution diary. Append one dated entry per project workday with the task checklist, actual completed work, verification, blockers/holds and next trigger. It is not a roadmap, queue or source of truth; GitHub `main` plus verified production wins on conflict.
 - **GitHub** — canonical code, `PROJECT_CONTEXT.md`, `MASTER_PLAN.md`, operating workflow, task-specific ledgers, issues, PRs and release history.
 - **Mem** — research notebook / signal inbox for rough ideas, competitor notes, forum findings, screenshots and provisional synthesis. Mem is not a project-state source. Promote only validated conclusions into GitHub.
 - **Linear** — optional execution queue for already-approved work. It may mirror actionable tasks from the GitHub plan, but must not become a second roadmap. GitHub wins on conflict.
@@ -31,7 +31,7 @@ Do not adopt a plugin merely because it exists. A plugin must reduce manual work
 
 - **Metricool** — social publishing and social analytics for connected accounts. Keep social/referral traffic separate from Google organic results.
 - **Gmail** — outreach, replies and authority follow-up when `docs/AUTHORITY_AND_AI_DISCOVERY.md` authorizes the action. Material outcomes must be recorded back into that ledger.
-- **Google Drive / Notion documents** — working artifacts and human-readable research when useful. They do not replace GitHub fact sources.
+- **Google Drive / Docs** — working artifacts, the daily chronological project journal, and human-readable research when useful. They do not replace GitHub fact sources. Notion may still be read for historical/bootstrap context when available, but it is no longer the writable daily journal.
 
 ## Standard orchestration loop
 
@@ -45,7 +45,7 @@ For any non-trivial project task, use the smallest useful chain:
 6. **Decide** — apply the current GitHub plan's gate, scope lock and stop criteria. Plugin availability does not create new work by itself.
 7. **Execute** — use the GitHub branch/PR workflow for project changes; use action plugins only when the user/project rules authorize the action.
 8. **Record** — write accepted result, blocker, next step and stop/narrow condition into the correct GitHub fact source, task ledger or issue in the same work round.
-9. **Journal** — append the day's actual checklist/results/verification/blockers/next trigger to the Notion Daily Project Journal. Keep it concise and chronological; never let it become a competing state database.
+9. **Journal** — append the day's actual checklist/results/verification/blockers/next trigger to the Google Docs Daily Project Journal. Keep it concise and chronological; never let it become a competing state database.
 
 ## Cost and quota guard
 
@@ -72,7 +72,7 @@ Use a second source when cross-checking materially improves a decision, such as:
 
 Do not duplicate:
 
-- project-state databases across GitHub, Notion, Linear and Mem;
+- project-state databases across GitHub, Google Docs, Notion, Linear and Mem;
 - uptime/source watchers that already have a verified owner;
 - the same outreach record in multiple systems;
 - the same task in several trackers unless one is explicitly a read-only/mirrored view.
@@ -81,8 +81,9 @@ Do not duplicate:
 
 Use this as a default routing map, not a mandate to call every tool:
 
-- Role/bootstrap: Notion Skill
+- Role/bootstrap: Notion Skill when readable/useful; GitHub sources remain mandatory
 - Code/facts/roadmap/history: GitHub
+- Daily chronological journal: Google Docs
 - Working research memory: Mem
 - Search performance: GSC Wizard
 - Keyword/SERP estimates: SE Ranking first when usable; Ahrefs/Semrush/Ubersuggest only when current quota permits
