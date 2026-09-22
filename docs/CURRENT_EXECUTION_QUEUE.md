@@ -29,6 +29,20 @@ Evidence: `docs/GSC_MEASUREMENT_2026-09-22.md`.
 - Manus: 75 impressions / 1 click; Replit: 57 / 0; Bolt: 43 / 0.
 - exact Phone canonical filter for Sep 16–19 returned no rows.
 
+## JUST COMPLETED — AIR-4 authority batch 2
+
+Status: **SENT / WAITING**.
+
+Evidence: `docs/AUTHORITY_BATCH2_2026-09-22.md` and `docs/AUTHORITY_AND_AI_DISCOVERY.md`.
+
+- Learn Cursor and explainx.ai were revalidated immediately before outreach.
+- Gmail history checks found no prior threads on the current public contact paths.
+- exactly two personalized reader-benefit resource suggestions were sent on 2026-09-22;
+- no link exchange, paid placement, reciprocal condition or mass outreach was requested;
+- do not add a third target to this round;
+- do not follow up while the messages are fresh;
+- first response/link check: **2026-09-29 or later**.
+
 ## Maintenance closure remains closed
 
 M-06 final release / production audit remains **DONE / FINAL AUDIT PASS**. Evidence: `docs/M06_FINAL_RELEASE_AUDIT_2026-09-22.md`.
@@ -44,7 +58,7 @@ Priority constraints:
 - Cursor Q-002/Q-015: continue clean post-change measurement to the documented 300-impression checkpoint; do not rewrite title/meta or implement Q-015 yet.
 - Phone Q-003: keep collecting settled exposure; do not churn copy/routes from a zero-exposure sample.
 - TikTok: remains external-review gated and untouched.
-- Authority: round one stays closed; any batch-2 test is a separate bounded session with revalidated candidates.
+- Authority: batch 2 is now SENT / WAITING; no third target or follow-up before the Sep 29 response/link check.
 - AIR: provider quota/auth/cache blockers remain explicit; do not bypass them.
 
 ## Measurement gates
@@ -88,11 +102,11 @@ Status: **SUBMITTED / WAITING FOR REVIEW**.
 
 Do not Recall, edit submitted configuration/demo, remove the Sandbox review bridge, rotate credentials, or change URLs/products/scopes. Trigger only on `Approved` or `Rejected / Changes requested`.
 
-### Q-005 Authority
+### Q-005 / AIR-4 Authority
 
-Status: **ROUND ONE CLOSED**.
+Status: **BATCH 2 SENT / WAITING**.
 
-No automatic resend to the original three contacts. Future authority work is a separate bounded batch-2 session using revalidated candidates.
+Round one remains closed without a resend. Batch 2 contains exactly Learn Cursor and explainx.ai, sent on 2026-09-22 after same-session revalidation and no-prior-thread checks. Do not add another target or follow up before 2026-09-29 or later. On recheck, read the original Gmail threads and independently verify public links/citations before deciding any follow-up.
 
 ### Phone observer runtime
 
@@ -106,6 +120,7 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 - do not reopen accepted Phone/Reset/Relay/utility shells without a reproduced regression;
 - do not implement Q-015 before its measurement gate;
 - do not rewrite Cursor title/meta before the 300-clean-impression review;
+- do not add a third authority batch-2 target or send an early follow-up;
 - do not add country/provider doorway pages or bulk generic utilities;
 - do not create a temporary-SMS backend/marketplace;
 - do not invent OTP percentages, Phone risk scores, Relay shutdown probabilities or fake confidence values;
@@ -116,4 +131,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-One bounded task per session. The current maintenance sequence is closed. The next session should continue measurement/evidence-gated growth work; do not reopen accepted production shells without a reproduced regression.
+One bounded task per session. The current maintenance sequence is closed. Authority batch 2 is now sent and waiting. The next session should continue measurement/evidence-gated growth work; do not reopen accepted production shells without a reproduced regression.

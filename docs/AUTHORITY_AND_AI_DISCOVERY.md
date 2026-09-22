@@ -1,6 +1,6 @@
 # Authority & AI Discovery Ledger
 
-Last updated: 2026-09-21
+Last updated: 2026-09-22
 
 This file is the durable execution log for external authority building, referral discovery, and AI-answer visibility work for `aineedhelpfromotherai.com`.
 
@@ -22,8 +22,10 @@ For AI-native search/retrieval integration, the ordered execution queue is `docs
 | 2026-09-13 | hsmart.dev | Publishes Cursor/Claude Code comparison material that discusses usage limits | Sent a personalized resource-suggestion email pointing to the Cursor reset page | NO RESPONSE — rechecked 2026-09-21; no verified link/citation | Round one closed; no resend selected |
 | 2026-09-13 | Continuum Code | Publishes Cursor usage-limit guidance | Sent a personalized resource-suggestion email explaining the official-source reset guidance and local countdown | NO RESPONSE — rechecked 2026-09-21; no verified link/citation | Round one closed; no resend selected |
 | 2026-09-13 | Drew Bredvick | Writes about AI coding tools, Cursor and AI usage/cost topics | Sent a personalized resource-suggestion email focused on the practical reset calculator and official-source depth | NO RESPONSE — rechecked 2026-09-21; no verified link/citation | Round one closed; no resend selected |
+| 2026-09-22 | Learn Cursor | Current Cursor usage-limits guide covers monthly reset mechanics, usage pools and billing-cycle planning | Revalidated the current guide/contact path and sent one personalized resource-suggestion email for the browser-only reset/usage-planning tool | SENT / WAITING | First response/link check 2026-09-29 or later |
+| 2026-09-22 | explainx.ai | Current AI-tool/learning surfaces remain adjacent to Cursor/AI usage-limit education | Revalidated the current public contact path and sent one personalized resource-suggestion email presenting the tool as an optional interactive companion | SENT / WAITING | First response/link check 2026-09-29 or later |
 
-Current outcome: Q-005 second check completed on 2026-09-21. All three original Gmail threads still contain only the Sep 13 sent message. Independent checks of the relevant hsmart.dev Cursor/Claude article, Continuum Cursor usage-limit guide, and Drew Bredvick AI-spend article found no verified link/citation to our domain. Round one is closed without a resend. When authority work resumes, prefer a small stronger batch-2 test over chasing the non-responsive round-one contacts.
+Current outcome: Q-005 round one remains closed with three Sep 13 sends, zero replies and zero verified links/citations. AIR-4 batch 2 was executed on 2026-09-22 as a deliberately bounded two-target test: Learn Cursor and explainx.ai only. Both Gmail history checks found no prior thread on the current public contact path. No link exchange, paid placement or reciprocal condition was requested. Do not add a third target or send a follow-up while the messages are fresh. First response/link verification is 2026-09-29 or later. Detailed evidence: `docs/AUTHORITY_BATCH2_2026-09-22.md`.
 
 ## Distribution ledger
 
@@ -45,18 +47,18 @@ Verified on 2026-09-17 from the DSH skill repository plus recent browser/account
 - **Bluesky — NOT A FIT FOR CURRENT ACCOUNT:** the existing account is positioned around South American life information and explicitly blocks commercial promotion. Do not use it for this project.
 - **Blogger / other media accounts — UNCLASSIFIED:** presence/login alone is insufficient. Evaluate account topic history before any project-specific use.
 
-## Second-batch candidate research
+## Second-batch candidate research and execution
 
-Researched on 2026-09-13 under AIR-4. These are candidates only; no message has been sent. Gmail was checked for prior correspondence with the public contact paths found during research and no previous threads were found.
+Originally researched on 2026-09-13 under AIR-4. Gmail was checked before the Sep 22 sends and no previous threads were found on the current public contact paths.
 
 | Candidate | Relevant public surface | Why it is a fit | Current state |
 |---|---|---|---|
-| Learn Cursor | `learncursor.dev/learn/cursor-for-teams/cursor-usage-limits` | Dedicated, recently updated Cursor usage-limits guide covering the same user problem; a practical reset-date calculator could complement the explanatory guide | REVALIDATED 2026-09-21 — preferred future batch-2 candidate |
-| explainx.ai | `explainx.ai/blog/claude-codex-cursor-usage-limits-reset-july-2026` | Publishes current Cursor/Codex/Claude quota and reset coverage; the calculator provides an interactive utility alongside editorial coverage | REVALIDATED 2026-09-21 — preferred future batch-2 candidate |
+| Learn Cursor | `learncursor.dev/learn/cursor-for-teams/cursor-usage-limits` | Dedicated, current Cursor usage-limits guide covering the same user problem; a practical reset-date calculator can complement the explanatory guide | SENT 2026-09-22 / WAITING — first check 2026-09-29 or later |
+| explainx.ai | Current AI-tool/learning surfaces and prior Cursor/Codex/Claude usage-limit coverage | Publishes AI-tool education where the calculator can serve as an interactive companion rather than a duplicate article | SENT 2026-09-22 / WAITING — first check 2026-09-29 or later |
 | QuotaMeter | `quotameter.app/blog/understanding-ai-rate-limits` and `quotameter.app` | Tracks Cursor and other AI usage limits and publishes rate-limit education, making it directly adjacent to reset-date/usage planning | RESEARCHED — HOLD; consider only a genuinely complementary resource suggestion, not a generic link exchange |
 | Cursor Usage Tracker | `cursorusage.url2.at/support` | Free Cursor usage tracker focused on included limits, billing reset and on-demand spend; highly relevant but product-adjacent | RESEARCHED — HOLD; contact only if a clear complementary use case is identified |
 
-Do not contact this batch merely to increase volume. The Sep 21 second check confirmed the first round remains weak/no response. The next authority experiment, when separately scheduled, should validate current contact paths and test at most Learn Cursor plus explainx.ai with a sharper reader-benefit pitch; do not also follow up the original three contacts in the same round.
+Batch 2 is now closed to new sends. Exactly two messages were sent on Sep 22. Do not add QuotaMeter, Cursor Usage Tracker or another candidate to this round. Do not follow up before the first response/link check on Sep 29 or later, and do not resend the original round-one contacts.
 
 ## Outreach execution rule
 
@@ -109,11 +111,11 @@ AI retrieval systems and search engines are more likely to trust content that is
 ### 4. Measurement
 
 Track three separate outcomes:
-- Search: Google/Bing impressions, queries, CTR and indexed status.
+- Search: Google/Bing impressions, queries, CTR and indexed status. Current Google in-chat path is Windsor Search Console with official Search Console API/export fallback.
 - Referral: GA4 sessions from external sites.
-- AI assistants: GA4 referrals from ChatGPT, Perplexity, Copilot, Gemini, Claude and other assistants through GSC Wizard; Bing/Google AI visibility reports when available.
+- AI assistants: GA4 referrals from ChatGPT, Perplexity, Copilot, Gemini, Claude and other assistants; Bing/Google AI visibility reports when available.
 
-Baseline on 2026-09-13: GSC Wizard reports no settled AI-assistant referral sessions yet. This is a baseline, not a failure signal, because the new site/indexing rollout happened the same day.
+Baseline on 2026-09-13: no settled AI-assistant referral sessions were recorded. This is a baseline, not a failure signal, because the new site/indexing rollout happened the same day.
 
 ### 5. AI-native search retrieval benchmark
 
@@ -144,14 +146,14 @@ Current ordered AIR status:
 - AIR-1 provider benchmark methodology: BLOCKED on Tavily provider quota; Exa baseline exists.
 - AIR-2 machine-readable identity consistency: DONE.
 - AIR-3 external metadata alignment: BLOCKED until a repository metadata write path or manual UI action is available.
-- AIR-4 legitimate external corroboration: ACTIVE.
+- AIR-4 legitimate external corroboration: ACTIVE / BATCH 2 SENT, WAITING.
 - AIR-5 Exa/Tavily rerun: WAITING for propagation and executable Tavily access.
 
 ## Next execution queue
 
 1. Keep AIR-1 blocked until Tavily quota permits a real run; do not fabricate results or alter billing without explicit approval.
-2. AIR-4 round one is closed after the Sep 21 second check: three sends, zero replies, zero verified links/citations; do not resend those contacts automatically.
-3. When authority work resumes in its own bounded session, prefer a small stronger batch-2 test using the revalidated Learn Cursor and explainx.ai candidates; verify contact paths immediately before sending and keep the round to at most two messages.
+2. AIR-4 round one remains closed: three sends, zero replies, zero verified links/citations; do not resend those contacts automatically.
+3. AIR-4 batch 2 is **SENT / WAITING** as of 2026-09-22: Learn Cursor and explainx.ai only. Do not add a third target. First response/link check is 2026-09-29 or later; read the original Gmail thread and independently verify public links before any follow-up.
 4. Allow provider caches/indexes and external authority signals time to propagate; do not repeatedly rewrite discovery files.
 5. Run AIR-5 when propagation has occurred and Tavily can actually execute; compare discovery rank, extraction quality and cache freshness against the baseline.
 6. Use the result to advance AIR-6 and identify the actual failing stage before any new page optimization.
@@ -175,3 +177,4 @@ Current ordered AIR status:
 - 2026-09-17: Published and publicly verified one Cursor Reset Mastodon post at `https://mastodon.social/@mini24/117286383729244067`. No engagement automation was run. Keep Mastodon referral results separate from Threads and Google organic.
 - 2026-09-18: First round-one follow-up-window check found no replies in the original three Gmail threads and no independently verified public link/citation. Classified all three as `NO RESPONSE` for this check, held all resends/new batch sends, and scheduled a second check for Sep 20.
 - 2026-09-21: Q-005 second check again found no replies and no verified public links/citations. Closed round one without a resend. Revalidated Learn Cursor and explainx.ai as the preferred future two-target batch-2 direction, but did not send new outreach in this session; M-03 Relay remains the project next task.
+- 2026-09-22: Revalidated Learn Cursor and explainx.ai immediately before outreach, confirmed no existing Gmail threads on the current public contact paths, and sent exactly two personalized reader-benefit resource suggestions. Batch 2 is now `SENT / WAITING`; no third target and no follow-up before 2026-09-29 or later.
