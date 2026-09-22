@@ -23,7 +23,7 @@ Evidence: `docs/GSC_MEASUREMENT_2026-09-22.md`.
 - GSC Wizard free/trial quota is exhausted and the project now treats it as deprecated for new measurement work.
 - Windsor.ai `searchconsole` is connected to `sc-domain:aineedhelpfromotherai.com` and successfully returned official Search Console date/page/query/click/impression/CTR/position data.
 - Windsor currently reports a Trial / not-paid account, so it is an access bridge, not a durable paid dependency. If it becomes unavailable, use official Google Search Console API/export rather than rotating trial accounts.
-- latest returned date in the verified read: 2026-09-19.
+- latest finalized returned date in the verified read: 2026-09-19.
 - site-wide Search exposure is now real: Sep 16–19 returned 1/81, 1/104, 2/89 and 1/71 clicks/impressions respectively.
 - strongest 14-day page signal is Cursor: 479 impressions / 0 clicks / avg position ~6.98.
 - Manus: 75 impressions / 1 click; Replit: 57 / 0; Bolt: 43 / 0.
@@ -55,7 +55,7 @@ The next bounded session must follow current evidence gates rather than invent a
 
 Priority constraints:
 
-- Cursor Q-002/Q-015: continue clean post-change measurement to the documented 300-impression checkpoint; do not rewrite title/meta or implement Q-015 yet.
+- Cursor Q-002/Q-015: continue clean post-change measurement to the documented 300-impression checkpoint; do not rewrite title/meta or implement Q-015 yet. A Sep 22 fresh-data check reached 290 impressions / 0 clicks through the partial Sep 22 row (289 through completed Sep 21), still below the gate.
 - Phone Q-003: keep collecting settled exposure; do not churn copy/routes from a zero-exposure sample.
 - TikTok: remains external-review gated and untouched.
 - Authority: batch 2 is now SENT / WAITING; no third target or follow-up before the Sep 29 response/link check.
@@ -69,14 +69,21 @@ Status: **MEASURING / GATED**.
 
 Only clean dates from 2026-09-17 onward count for the Q-002 decision.
 
-Verified clean data through Sep 19:
+Verified finalized data through Sep 19:
 
 - Sep 17: 70 impressions / 0 clicks / avg position 7.29;
 - Sep 18: 42 / 0 / 7.07;
 - Sep 19: 37 / 0 / 7.22;
-- cumulative clean total: **149 impressions / 0 clicks**.
+- finalized cumulative clean total: **149 impressions / 0 clicks**.
 
-The documented first decision checkpoint is **>=300 clean post-change impressions**. The current zero-click pattern at useful positions is a warning signal, but the gate has not fired. Do not implement Q-015 quota/pool depth or rewrite Cursor title/meta yet.
+Sep 22 `include_fresh_data=true` recheck:
+
+- Sep 20: 39 impressions / 0 clicks / avg position 7.00;
+- Sep 21: 101 / 0 / 6.22;
+- Sep 22 partial: 1 / 0 / 5.00;
+- fresh-data cumulative total: **290 impressions / 0 clicks**; **289 / 0** through completed Sep 21.
+
+The documented first decision checkpoint is **>=300 clean post-change impressions**. The current zero-click pattern at useful positions is a warning signal, but the gate has not fired. Do not implement Q-015 quota/pool depth or rewrite Cursor title/meta yet. Fresh rows are non-finalized and may still change.
 
 ### Phone Q-003
 
@@ -131,4 +138,4 @@ The connected qwen environment is not the systemd disposable observer host. Do n
 
 ## Session rule
 
-One bounded task per session. The current maintenance sequence is closed. Authority batch 2 is now sent and waiting. The next session should continue measurement/evidence-gated growth work; do not reopen accepted production shells without a reproduced regression.
+One bounded task per session. The current maintenance sequence is closed. Authority batch 2 is now sent and waiting. The next session should continue Q-002 measurement and perform the documented CTR review only after the 300-clean-impression gate actually fires; do not reopen accepted production shells without a reproduced regression.

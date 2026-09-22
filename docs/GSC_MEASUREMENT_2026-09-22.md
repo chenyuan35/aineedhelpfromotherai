@@ -16,7 +16,7 @@ Current Windsor account plan reported by the connector on 2026-09-22: `Trial` / 
 
 ## Latest returned Search Console dates
 
-The latest date returned in the verified 14-day read was **2026-09-19**.
+The latest finalized date returned in the verified read remained **2026-09-19**.
 
 Daily site totals returned:
 
@@ -48,7 +48,7 @@ Low-volume rows must not be overinterpreted.
 
 The existing Q-015 plan requires Q-002 evaluation only on clean post-title/meta dates from **2026-09-17 onward**, with the first decision review at **>=300 clean post-change impressions**.
 
-Verified clean Cursor data:
+Verified finalized Cursor data:
 
 | Date | Clicks | Impressions | CTR | Avg position |
 |---|---:|---:|---:|---:|
@@ -56,9 +56,19 @@ Verified clean Cursor data:
 | 2026-09-18 | 0 | 42 | 0% | 7.07 |
 | 2026-09-19 | 0 | 37 | 0% | 7.22 |
 
-Clean total: **149 impressions / 0 clicks**.
+Finalized clean total: **149 impressions / 0 clicks**.
 
-Decision: **KEEP MEASURING.** This is a real CTR warning signal at useful positions, but it has not reached the documented 300-impression decision gate. Do not rewrite Cursor title/meta and do not start Q-015 production implementation yet.
+A same-day recheck with Search Console `include_fresh_data=true` returned additional non-finalized rows:
+
+| Date | Clicks | Impressions | CTR | Avg position |
+|---|---:|---:|---:|---:|
+| 2026-09-20 | 0 | 39 | 0% | 7.00 |
+| 2026-09-21 | 0 | 101 | 0% | 6.22 |
+| 2026-09-22 | 0 | 1 | 0% | 5.00 |
+
+Fresh-data cumulative total for 2026-09-17 through the partial 2026-09-22 row: **290 impressions / 0 clicks**. Through the completed 2026-09-21 date it is **289 impressions / 0 clicks**. Fresh data is official Search Console data but is explicitly non-finalized and may still change.
+
+Decision: **KEEP MEASURING.** The fresh-data read shows the 300-impression gate is close but has still not fired. Do not rewrite Cursor title/meta and do not start Q-015 production implementation yet. Re-read the exact Cursor page after the cumulative clean count reaches at least 300, using finalized data when available and clearly labeling fresh data if it is used for an interim check.
 
 ## Phone Q-003
 
@@ -68,6 +78,6 @@ Decision: **KEEP / continue collecting evidence.** Do not add Phone routes or ch
 
 ## Next trigger
 
-1. Re-read Cursor clean post-change performance when the cumulative clean impressions reach at least 300.
+1. Re-read Cursor clean post-change performance when the cumulative clean impressions reach at least 300; the Sep 22 fresh-data check is 290 and therefore still below the gate.
 2. Re-read Phone when it begins receiving Search Console impressions/clicks or meaningful on-site interactions.
 3. Use the Windsor Search Console connector while available; if capacity/auth fails, classify that as a provider/access blocker and use official Search Console API/export rather than alternate trial accounts.
