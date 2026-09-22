@@ -24,6 +24,7 @@ const claudeSoon = '<span class="provider-link provider-soon" aria-label="Claude
 const claudeLive = '<a class="provider-link" href="/tools/claude-code-limit-reset/"><b>CL</b><span><strong>Claude</strong><small>limits &amp; reset</small></span></a>';
 if (!curatedHome.includes(claudeSoon) && !curatedHome.includes('/tools/claude-code-limit-reset/')) throw new Error('Claude homepage marker not found');
 writeFileSync(homePath, curatedHome.includes(claudeSoon) ? curatedHome.replace(claudeSoon, claudeLive) : curatedHome);
+execSync('node bin/strip-reset-primary-surfaces.mjs',{cwd:root,stdio:'inherit'});
 
 for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt','tiktokPsmqCGL7xkhikvs8Stb3TpPWKrvG5RSF.txt','tiktok3DuVMC1KTX8prUrm2XfKgT0y8V7yvO6a.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
