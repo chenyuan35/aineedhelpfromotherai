@@ -60,6 +60,30 @@ update(join(root, 'tools', 'index.html'), html => {
   return html;
 });
 
+for (const path of [join(root, 'ai.txt'), join(repoRoot, 'ai.txt')]) {
+  update(path, text => text
+    .replace('The current site focuses on three related continuity jobs for AI users: usage-limit resets, account-access phone-number continuity, and AI relay dependency risk.', 'The current site focuses on account-access phone-number continuity and AI relay dependency risk, with lightweight browser utilities remaining available.')
+    .replace('- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/\n', '')
+    .replace('- https://aineedhelpfromotherai.com/tools/claude-code-limit-reset/\n', '')
+    .replace('3. Treat reset countdowns and pacing outputs as user-specific calculations, not universal provider policy.\n', '')
+    .replace('4. Treat Phone Number Survival guidance as a lifecycle decision aid, not a guarantee that a given service will accept a number.\n', '3. Treat Phone Number Survival guidance as a decision aid, not a guarantee that a given service will accept a number.\n')
+    .replace('5. Treat the Relay Exit Risk Index as a 0–100 risk signal derived from available evidence, not a shutdown probability, fraud/scam score, or factual accusation.\n', '4. Treat the Relay Exit Risk Index as a 0–100 risk signal derived from available evidence, not a shutdown probability, fraud/scam score, or factual accusation.\n')
+    .replace('6. Prefer current canonical pages over historical repository material describing the former AI-agent debugging/MCP product.\n', '5. Prefer current canonical pages over historical repository material describing the former AI-agent debugging/MCP product.\n')
+    .replace('Last reviewed: 2026-09-17', 'Last reviewed: 2026-09-23'));
+}
+
+for (const path of [join(root, 'llms.txt'), join(repoRoot, 'llms.txt')]) {
+  update(path, text => text
+    .replace('# AI Need Help — Reset, Access & Reliability Tools', '# AI Need Help — Phone Access & Relay Risk Tools')
+    .replace('> Use this site when AI work is blocked by a usage limit, when account access depends on keeping control of a phone number, or when relying on a third-party AI relay creates dependency risk.', '> Use this site when account access depends on finding or keeping control of a workable phone number, or when relying on a third-party AI relay creates dependency risk.')
+    .replace('- https://aineedhelpfromotherai.com/tools/cursor-usage-reset/ — Cursor reset timing and usage pacing\n', '')
+    .replace('- https://aineedhelpfromotherai.com/tools/claude-code-limit-reset/ — Claude Code session/weekly reset calculator based on the reset information shown to the user\n', '')
+    .replace('The current product is organized around three related continuity jobs:', 'The current product is organized around two primary continuity jobs:')
+    .replace('2. **Usage continuity** — understand when AI usage limits reset and when work can resume.\n3. **Dependency continuity** — assess relay exit risk without presenting the score as a shutdown, fraud, scam, or calibrated probability.', '2. **Dependency continuity** — assess relay exit risk without presenting the score as a shutdown, fraud, scam, or calibrated probability.')
+    .replace('Phone Number Lifecycle is the primary product surface. Reset tools and Relay Exit Risk are supporting surfaces. Older general calculators and image tools remain available but are not the product focus.', 'Phone Radar is the primary product surface. Relay Exit Risk remains a supporting data product. Older general calculators and image tools remain available but are not the product focus.')
+    .replace('Last reviewed: 2026-09-17', 'Last reviewed: 2026-09-23'));
+}
+
 for (const path of [join(root, 'sitemap.xml'), join(repoRoot, 'sitemap.xml')]) {
   update(path, xml => {
     for (const slug of resetSlugs) {
