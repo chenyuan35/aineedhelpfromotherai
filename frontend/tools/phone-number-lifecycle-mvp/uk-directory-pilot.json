@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 1,
+  "market": {
+    "id": "uk",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "checkedAt": "2026-09-23",
+  "status": "pilot-normalized-not-yet-wired-to-ui",
+  "notes": [
+    "Operational claims are community-evidence derived.",
+    "Provider pages may refresh provider-controlled commercial metadata before release.",
+    "CNY display values use the dated FX snapshot when an original-currency landed cost is established; unknown costs remain null.",
+    "No service percentage may render unless at least five reasonably independent recent route+service+operation observations are present."
+  ],
+  "networks": [
+    {
+      "id": "vodafone-uk",
+      "name": "Vodafone UK"
+    },
+    {
+      "id": "o2-uk",
+      "name": "O2 UK"
+    }
+  ],
+  "brands": [
+    {
+      "id": "vodafone-uk-direct",
+      "networkId": "vodafone-uk",
+      "name": "Vodafone UK"
+    },
+    {
+      "id": "voxi-uk",
+      "networkId": "vodafone-uk",
+      "name": "VOXI"
+    },
+    {
+      "id": "lebara-uk",
+      "networkId": "vodafone-uk",
+      "name": "Lebara UK"
+    },
+    {
+      "id": "giffgaff-uk",
+      "networkId": "o2-uk",
+      "name": "Giffgaff"
+    }
+  ],
+  "routes": [
+    {
+      "id": "vodafone-uk-zero-esim-2026",
+      "brandId": "vodafone-uk-direct",
+      "publishState": "observation-hold",
+      "numberType": "real-mobile",
+      "simType": "eSIM",
+      "acquisitionSummary": "£0 network-trial episode observed in June 2026, but official trial eligibility requires UK residence/billing and UK device location; kept as an observation only.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "historic-episode-needs-recheck"
+      },
+      "keep": {
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Not established",
+        "intervalDays": null,
+        "state": "insufficient-evidence"
+      },
+      "chinaActivation": "Official free-trial terms require UK residence, a UK billing address and the eSIM device to be in the UK at order time; offshore forum workarounds are not an executable route.",
+      "kyc": "not cleanly reconciled",
+      "payment": "payment-card authorization reported; card acceptance varied",
+      "wifiCalling": "setup discussed; not normalized for long-term use",
+      "roamingSms": "not enough current route-specific evidence",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "No clean durable retention path. Do not reproduce fabricated-address/identity tactics mentioned in community threads.",
+      "lastVerifiedAt": "2026-06-16",
+      "acquireUrl": "https://www.vodafone.co.uk/",
+      "tariffSummary": "June 2026 £0 acquisition episode; long-term PAYG retention not established.",
+      "sourceIds": [
+        "linuxdo-vodafone-2401952",
+        "linuxdo-vodafone-2404421",
+        "linuxdo-vodafone-2417339",
+        "vodafone-official-network-trial-2026"
+      ],
+      "guideSteps": [
+        "Treat this row as historical/current-market intelligence, not an acquisition recommendation.",
+        "Check the current Vodafone offer and eligibility before attempting any order.",
+        "Do not use fabricated address or identity information to satisfy UK eligibility.",
+        "If you need a durable overseas number, compare an actionable pilot route instead."
+      ]
+    },
+    {
+      "id": "voxi-uk-esim-payg-retention",
+      "brandId": "voxi-uk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM",
+      "acquisitionSummary": "Current official entry checked 2026-09-23: £10 30-day plan with eSIM available; free/coupon starts seen in August are episodic and are not treated as live today.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": 5,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 89.3,
+        "fxCheckedAt": "2026-09-23",
+        "state": "current-official-entry-plus-community-retention"
+      },
+      "keep": {
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Create a qualifying balance-changing activity before the community-reproduced 180-day window; Wi-Fi Calling SMS or tiny roaming-data usage are reported methods.",
+        "intervalDays": 180,
+        "state": "community-reproduced-cost-not-finalized"
+      },
+      "chinaActivation": "possible but setup-sensitive; first-use state varies",
+      "kyc": "current coupon route requirements need recheck; do not use borrowed eligibility credentials",
+      "payment": "£5 top-up repeatedly reported; payment acceptance not fully normalized",
+      "wifiCalling": "workable for some users but setup-sensitive/conflicting",
+      "roamingSms": "reported; exact current tariff needs commercial refresh",
+      "refund": "not enough normalized evidence",
+      "trend": "watch",
+      "guideEligible": true,
+      "lastVerifiedAt": "2026-08-11",
+      "acquireUrl": "https://www.voxi.co.uk/",
+      "tariffSummary": "Current official £10 plan: 60GB promotional allowance until 30 Sep 2026, then 20GB; plan can be opted out and VOXI can continue on PAYG. Community retention reports use balance-changing activity.",
+      "sourceIds": [
+        "linuxdo-voxi-2188975",
+        "linuxdo-voxi-2399041-p3",
+        "linuxdo-voxi-2737575",
+        "nodeloc-voxi-102713",
+        "voxi-official-plans-2026-09-23"
+      ],
+      "guideSteps": [
+        "Use the current official VOXI signup/eSIM path; do not assume an old one-use forum coupon is still valid.",
+        "Activate the line and test inbound SMS before moving important accounts.",
+        "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
+        "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+      ]
+    },
+    {
+      "id": "lebara-uk-direct-esim-china",
+      "brandId": "lebara-uk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM",
+      "acquisitionSummary": "Direct Lebara eSIM acquired from China; one recent flow reported ~£1.5 promotional first-month plan plus £5 credit/top-up.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 1.5,
+        "mandatoryTopup": 5,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 6.5,
+        "landedCny": 58.05,
+        "fxCheckedAt": "2026-09-23",
+        "state": "recent-community-flow-needs-live-price-refresh"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 0.49,
+        "yearCostOriginal": 1.96,
+        "yearCostCny": 17.5,
+        "action": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
+        "intervalDays": 90,
+        "practicalBufferDays": "70-75",
+        "state": "account-specific-confirmed-with-conflicting-long-idle-report"
+      },
+      "chinaActivation": "inbound SMS reproduced after direct install in mainland China without prior UK-network attachment; full outgoing voice/SMS state may remain incomplete until UK attachment",
+      "kyc": "not fully normalized in this packet",
+      "payment": "direct purchase/top-up reproduced; exact current payment methods need refresh",
+      "wifiCalling": "difficult/conflicting in current community reports",
+      "roamingSms": "inbound SMS reproduced in mainland China",
+      "refund": "at least one refund after setup/service trouble reported; no rate",
+      "trend": "watch",
+      "guideEligible": true,
+      "lastVerifiedAt": "2026-09-12",
+      "acquireUrl": "https://mobile.lebara.com/gb/en/",
+      "tariffSummary": "Recent community flow used a ~£1.5 first-month offer plus £5 credit; promo price must be refreshed before purchase.",
+      "sourceIds": [
+        "linuxdo-lebara-2745784-op",
+        "linuxdo-lebara-2745784-reply17",
+        "linuxdo-lebara-2763577",
+        "linuxdo-lebara-2894665"
+      ],
+      "guideSteps": [
+        "Open the current direct Lebara UK eSIM offer and recheck the live first-month price before paying.",
+        "Install the eSIM and confirm the line receives Lebara system/inbound SMS before binding an important account.",
+        "Test the exact app you need; current mainland-China reports cover inbound WhatsApp and Telegram codes, not a universal OTP guarantee.",
+        "For retention, generate a real chargeable activity and confirm it appears in account usage; one recent account/support interaction used a 90-day window with a 70–75 day practical buffer."
+      ]
+    },
+    {
+      "id": "giffgaff-uk-direct-esim-payg",
+      "brandId": "giffgaff-uk",
+      "publishState": "candidate-with-prominent-continuity-warning",
+      "numberType": "real-mobile",
+      "simType": "eSIM-or-physical",
+      "acquisitionSummary": "Direct eSIM PAYG flow reproduced in 2026 with £10 minimum top-up; mainland-phone users may incur adapter or physical-SIM acquisition costs.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": 10,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 89.3,
+        "fxCheckedAt": "2026-09-23",
+        "state": "native-esim-baseline-only"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 0.3,
+        "yearCostOriginal": 0.6,
+        "yearCostCny": 5.36,
+        "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+        "intervalDays": 180,
+        "state": "community-reproduced"
+      },
+      "chinaActivation": "direct eSIM activation reproduced from outside the UK, subject to device/app/network conditions",
+      "kyc": "not fully normalized in this packet",
+      "payment": "Visa/Mastercard successful in community reports; £10 top-up required in direct eSIM flow",
+      "wifiCalling": "available in community use but not required for all inbound SMS reception",
+      "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+      "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+      "trend": "conflicting",
+      "guideEligible": true,
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://www.giffgaff.com/",
+      "tariffSummary": "Direct PAYG eSIM baseline: £10 minimum top-up; mainland-China device path may add adapter/physical-SIM cost.",
+      "sourceIds": [
+        "linuxdo-giffgaff-2244241",
+        "linuxdo-giffgaff-2244241-p2",
+        "linuxdo-giffgaff-2310901",
+        "linuxdo-giffgaff-2322268",
+        "linuxdo-giffgaff-1615582",
+        "linuxdo-giffgaff-2678340",
+        "linuxdo-giffgaff-2773030",
+        "linuxdo-giffgaff-2903412",
+        "giffgaff-official-credit-2026-09-23"
+      ],
+      "guideSteps": [
+        "Use the giffgaff app/direct route, choose eSIM when your device supports it, and choose the PAYG/credit path that matches your intended use.",
+        "Add credit; current official help states the minimum credit top-up is £10.",
+        "Activate and test the exact verification service before moving an important account; Telegram outcomes are currently mixed/operation-dependent.",
+        "Create a balance-changing activity well before 180 days, and keep a recovery/port-out plan because a major overseas closure wave occurred in July 2026."
+      ]
+    }
+  ],
+  "serviceObservations": [
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
+    },
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-reply17",
+      "dedupeKey": "lebara-2745784-lzd2-whatsapp"
+    },
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-telegram"
+    },
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-reply17",
+      "dedupeKey": "lebara-2745784-lzd2-telegram"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "OpenAI/Codex",
+      "operation": "phone-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-05",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2310901",
+      "dedupeKey": "giffgaff-2310901-n70-codex"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-telegram"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268-reply14",
+      "dedupeKey": "giffgaff-2322268-1157-telegram"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    }
+  ],
+  "continuityEvents": [
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "recycled-number-observation",
+      "reportedAt": "2026-02-14",
+      "scope": "single-observation",
+      "outcome": "newly obtained number appeared associated with a prior Telegram account",
+      "sourceId": "linuxdo-giffgaff-1615582"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "mass-closure-wave",
+      "reportedAt": "2026-07-27",
+      "scope": "community-wave",
+      "outcome": "multiple overseas users reported closures/suspensions and loss of service",
+      "sourceId": "linuxdo-giffgaff-2678340"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "partial-restoration-wave",
+      "reportedAt": "2026-08-18",
+      "scope": "community-wave",
+      "outcome": "some previously closed accounts/numbers were restored; not universal",
+      "sourceId": "linuxdo-giffgaff-2773030"
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "refund-outcomes",
+      "reportedAt": "2026-09-15",
+      "scope": "multiple-observations",
+      "outcome": "multiple eventual refund successes observed after delays or earlier denials; outcome remains mixed",
+      "sourceId": "linuxdo-giffgaff-2903412"
+    },
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "outgoing-service-friction",
+      "reportedAt": "2026-08-12",
+      "scope": "multiple-same-thread-observations",
+      "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
+      "sourceId": "linuxdo-lebara-2745784-op"
+    }
+  ],
+  "sources": [
+    {
+      "id": "linuxdo-vodafone-2401952",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2401952",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-vodafone-2404421",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2404421",
+      "reportedAt": "2026-06-15"
+    },
+    {
+      "id": "linuxdo-vodafone-2417339",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2417339",
+      "reportedAt": "2026-06-16"
+    },
+    {
+      "id": "linuxdo-voxi-2188975",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2188975",
+      "reportedAt": "2026-05-16"
+    },
+    {
+      "id": "linuxdo-voxi-2399041-p3",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2399041?page=3",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-voxi-2737575",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2737575",
+      "reportedAt": "2026-08-11"
+    },
+    {
+      "id": "nodeloc-voxi-102713",
+      "type": "commercial-community-post",
+      "url": "https://www.nodeloc.com/t/topic/102713",
+      "reportedAt": "2026-08-09"
+    },
+    {
+      "id": "linuxdo-lebara-2745784-op",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2745784",
+      "reportedAt": "2026-08-12"
+    },
+    {
+      "id": "linuxdo-lebara-2745784-reply17",
+      "type": "first-hand-community-reply",
+      "url": "https://linux.do/t/topic/2745784",
+      "reportedAt": "2026-08-13"
+    },
+    {
+      "id": "linuxdo-lebara-2763577",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2763577",
+      "reportedAt": "2026-08-16"
+    },
+    {
+      "id": "linuxdo-lebara-2894665",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2894665",
+      "reportedAt": "2026-09-12"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2244241",
+      "reportedAt": "2026-05-25"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241-p2",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2244241?page=2",
+      "reportedAt": "2026-06-02"
+    },
+    {
+      "id": "linuxdo-giffgaff-2310901",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2310901",
+      "reportedAt": "2026-06-05"
+    },
+    {
+      "id": "linuxdo-giffgaff-2322268",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2322268",
+      "reportedAt": "2026-06-07"
+    },
+    {
+      "id": "linuxdo-giffgaff-2322268-reply14",
+      "type": "first-hand-community-reply",
+      "url": "https://linux.do/t/topic/2322268/14",
+      "reportedAt": "2026-06-07"
+    },
+    {
+      "id": "linuxdo-giffgaff-1615582",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/1615582",
+      "reportedAt": "2026-02-14"
+    },
+    {
+      "id": "linuxdo-giffgaff-2479147",
+      "type": "community-tutorial",
+      "url": "https://linux.do/t/topic/2479147",
+      "reportedAt": "2026-06-26"
+    },
+    {
+      "id": "linuxdo-giffgaff-2316548-p2",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2316548?page=2",
+      "reportedAt": "2026-06-06"
+    },
+    {
+      "id": "linuxdo-giffgaff-2432207",
+      "type": "community-thread",
+      "url": "https://linux.do/t/topic/2432207",
+      "reportedAt": "2026-06-18"
+    },
+    {
+      "id": "linuxdo-giffgaff-2678340",
+      "type": "community-incident-thread",
+      "url": "https://linux.do/t/topic/2678340",
+      "reportedAt": "2026-07-30"
+    },
+    {
+      "id": "linuxdo-giffgaff-2773030",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2773030",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "linuxdo-giffgaff-2903412",
+      "type": "first-hand-community-thread",
+      "url": "https://linux.do/t/topic/2903412",
+      "reportedAt": "2026-09-15"
+    },
+    {
+      "id": "vodafone-official-network-trial-2026",
+      "type": "provider-commercial-terms",
+      "url": "https://binaries.vodafone.co.uk/gbnnsauqav4t/46FjjluZ6iqfd7d0OcvCiX/af7b13abd16aad45fffd9bcb1179f9cf/network-trial-may-2026.pdf",
+      "reportedAt": "2026-05-01"
+    },
+    {
+      "id": "voxi-official-plans-2026-09-23",
+      "type": "provider-commercial-page",
+      "url": "https://www.voxi.co.uk/acquisition/plans",
+      "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "giffgaff-official-credit-2026-09-23",
+      "type": "provider-commercial-page",
+      "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+      "reportedAt": "2026-09-23"
+    }
+  ],
+  "fxSnapshot": {
+    "pair": "GBP/CNY",
+    "rate": 8.93,
+    "checkedAt": "2026-09-23",
+    "note": "Approximate mid-market reference for display; checkout/card FX may differ.",
+    "sourceUrl": "https://wise.com/gb/currency-converter/gbp-to-cny-rate"
+  }
+}

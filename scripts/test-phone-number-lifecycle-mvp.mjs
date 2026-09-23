@@ -15,6 +15,7 @@ const audit = read('audit-rules.json');
 const radar = read('radar-view.json');
 const retention = read('retention-intelligence.json');
 const purchase = read('purchase-intelligence.json');
+const ukPilot = read('uk-directory-pilot.json');
 
 const routes = [...catalog.routes];
 for (const source of [tutorial, audit]) {
@@ -62,20 +63,18 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
   assert.match(themeGenerator, /Phone Radar must beat the generic dark button fill in generated dist CSS/);
 });
 
-check('cards expose current evidence without fake metric symmetry', () => {
-  assert.match(html, /class="pr-status"/);
-  assert.match(html, /class="pr-meta-pill"/);
-  assert.match(html, /class="pr-evidence"/);
-  assert.match(html, /grid-template-columns:repeat\(auto-fit,minmax\(105px,1fr\)\)/);
-  assert.match(html, /\['SMS \/ OTP',v\.smsSignal,signal\(v\.signalLevel\)\]/);
-  assert.match(html, /\['Buy \/ start',v\.price\|\|'Live check required'\]/);
-  assert.match(html, /\['Keep \/ year',v\.keepCost\]/);
-  assert.match(html, /\['Keep rule',v\.keepRule\|\|'Open guide'\]/);
-  assert.match(html, /KYC: \${v\.kyc}/);
-  assert.match(html, /SMS abroad: \${v\.roaming}/);
-  assert.match(html, /Evidence checked \${v\.verified}/);
-  assert.doesNotMatch(html, /\['Stability',v\.stability\]/);
-  assert.doesNotMatch(html, /\['Remote',v\.remote\]/);
+check('long-term surface is the grouped carrier directory while other families keep cards', () => {
+  assert.match(html, /function renderDirectory\(\)/);
+  assert.match(html, /class=\"pr-matrix\"/);
+  assert.match(html, /Brand \/ route/);
+  assert.match(html, /Start cost/);
+  assert.match(html, /Keep \/ year/);
+  assert.match(html, /ChatGPT \/ Codex/);
+  assert.match(html, /Loss \/ closure history/);
+  assert.match(html, /Refund \/ recovery/);
+  assert.match(html, /class=\"pr-dir-mobile\"/);
+  assert.match(html, /if\(state\.family==='long-term'\)\{renderDirectory\(\);return\}/);
+  assert.match(html, /function renderCard\(item\)/, 'Data and Temporary SMS card renderer must remain available');
 });
 
 check('full guide stays inline with the selected route', () => {
@@ -114,6 +113,59 @@ check('long-term cards expose current route evidence without fake percentages', 
     for (const key of ['smsSignal','keepCost','remote','stability','caveat','kyc','roaming','verified','evidence','price','keepRule']) assert(view[key], `${id} missing ${key}`);
     assert.doesNotMatch(view.smsSignal, /%/, `${id} must not publish fake OTP percentage`);
   }
+});
+
+
+check('UK pilot hierarchy and evidence gates are normalized', () => {
+  assert.equal(ukPilot.market.id, 'uk');
+  assert.deepEqual(ukPilot.networks.map(x => x.id).sort(), ['o2-uk','vodafone-uk']);
+  assert.equal(ukPilot.routes.length, 4);
+  const brands = Object.fromEntries(ukPilot.brands.map(x => [x.id, x]));
+  for (const r of ukPilot.routes) {
+    assert(brands[r.brandId], `${r.id} missing normalized brand`);
+    assert(r.landedCost, `${r.id} missing landed cost model`);
+    assert(r.keep, `${r.id} missing keep model`);
+    assert(r.trend, `${r.id} missing trend`);
+    assert(r.lastVerifiedAt, `${r.id} missing freshness`);
+  }
+  assert.equal(ukPilot.routes.find(r => r.id === 'vodafone-uk-zero-esim-2026').publishState, 'observation-hold');
+  assert.equal(ukPilot.routes.find(r => r.id === 'vodafone-uk-zero-esim-2026').guideEligible, false);
+  assert.equal(ukPilot.routes.find(r => r.id === 'giffgaff-uk-direct-esim-payg').trend, 'conflicting');
+  for (const r of ukPilot.routes) assert(Array.isArray(r.guideSteps) && r.guideSteps.length >= 4, `${r.id} missing bounded guide steps`);
+  assert.match(JSON.stringify(ukPilot.continuityEvents), /mass-closure-wave/);
+  assert.match(JSON.stringify(ukPilot.continuityEvents), /partial-restoration-wave/);
+});
+
+check('observed app rates cannot render before the five-observation gate', () => {
+  const groups = new Map();
+  for (const o of ukPilot.serviceObservations) {
+    const key = [o.routeId,o.service,o.operation].join('|');
+    const set = groups.get(key) || new Set();
+    set.add(o.dedupeKey || `${o.sourceId}|${o.reportedAt}`);
+    groups.set(key, set);
+  }
+  for (const [key, set] of groups) assert(set.size < 5, `${key} unexpectedly reaches percentage gate`);
+  assert.match(html, /if\(n>=5&&mixed===0\)/);
+  assert.match(html, /\${success}\/\${n} · \${rate}% observed/);
+  assert.match(html, /report\${n===1\?'':'s'} · success/);
+});
+
+check('UK pilot cost display is timestamped and never silently treats unknown as zero', () => {
+  assert.equal(ukPilot.fxSnapshot.pair, 'GBP/CNY');
+  assert.equal(ukPilot.fxSnapshot.checkedAt, '2026-09-23');
+  assert.equal(ukPilot.fxSnapshot.rate, 8.93);
+  const lebara = ukPilot.routes.find(r => r.id === 'lebara-uk-direct-esim-china');
+  const giffgaff = ukPilot.routes.find(r => r.id === 'giffgaff-uk-direct-esim-payg');
+  assert.equal(ukPilot.routes.find(r => r.id === 'voxi-uk-esim-payg-retention').landedCost.landedCny, 89.3);
+  assert.equal(lebara.landedCost.landedCny, 58.05);
+  assert.equal(giffgaff.landedCost.landedCny, 89.3);
+  assert.match(html, /Missing cost stays unknown/);
+  assert.match(html, /<h3>Step by step<\/h3>/);
+});
+
+check('hold routes cannot expose an Acquire action', () => {
+  assert.match(html, /r\.guideEligible!==false&&r\.acquireUrl/);
+  assert.match(html, /r\.acquireUrl&&r\.guideEligible!==false/);
 });
 
 check('data cards use data metrics instead of OTP metrics', () => {

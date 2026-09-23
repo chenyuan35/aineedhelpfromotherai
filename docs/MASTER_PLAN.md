@@ -82,7 +82,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P2 Discovery & indexing | Make current cohort discoverable/indexed | DONE | Completed |
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
-| P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **ACTIVE — DIRECTORY CONTRACT ACCEPTED / IMPLEMENTATION NEXT** | UK pilot matrix + guide flow shipped and production-verified on the existing canonical |
+| P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **ACTIVE — UK PILOT IMPLEMENTED / RELEASE VERIFICATION NEXT** | UK pilot matrix + guide flow shipped and production-verified on the existing canonical |
 | P6 Evidence-gated depth | Add only depth that survives value + competition gates | QUEUED | One or more validated improvements show measurable search/usage value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
@@ -94,7 +94,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 3. **DONE — Competition gate added.** Mature independent competitors are a hard substitution test before implementation.
 4. **DONE — Phone same-URL source-role correction.** PR #198 corrected homepage + existing Phone canonical framing and exposed more practical route evidence.
 5. **DONE — Phone carrier-directory product correction.** Forum-driven review showed that the flat shortlist still did not match the intended user job. `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` now fixes the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
-6. **NEXT — Implement the directory matrix on the existing canonical with a small UK pilot.** Do not bulk-fill global weak data. Keep Data and Temporary SMS stable unless the shared shell requires a bounded adjustment.
+6. **ACTIVE — UK pilot implementation/release.** P1 source reconciliation, P2 normalized data and P3 evidence-display gate are complete; the bounded matrix/mobile implementation is locally validated. Remaining gate: branch PR → Eval Gate/Vercel Preview → production verification. Do not bulk-fill global weak data. Keep Data and Temporary SMS stable.
 7. **AFTER SHIP — Re-measure Phone.** Use Search Console and meaningful interaction evidence only after the corrected product has time to accrue evidence; keep organic separate from referral/social/direct.
 8. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
 9. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
