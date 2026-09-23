@@ -76,43 +76,64 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 1. **DONE — Product direction reset.** Combined Search Console, live keyword data, current competitor coverage and current community pain. Search volume/ranking are no longer allowed to choose the product by themselves.
 2. **DONE — Reset-family product-value audit.** Seven pages classified; no deletion/redirect performed.
 3. **DONE — Competition gate added.** Mature independent competitors are now a hard substitution test before implementation.
-4. **NEXT — Phone canonical intent/value audit.** Audit only `/tools/phone-number-survival-guide/` against current search/community language and the real user job.
-5. **QUEUED — One bounded existing-URL Phone change, only if the audit justifies it.** Scope may include title/meta/H1/first-screen positioning and decision-field presentation. No new route/page by default.
-6. **QUEUED — Re-measure Phone after any accepted change.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social.
+4. **DONE — Phone canonical intent/value audit.** The existing canonical passed the core product-shell test but failed source-role/freshness truth in several places. Evidence: `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md`.
+5. **NEXT — One bounded existing-URL Phone contract repair.** Correct the reproduced source-role defects, add truthful route freshness/confidence, expose material blockers compactly, tighten price/value labels, remove stale Reset leakage and align support/meta copy. No new route/page.
+6. **QUEUED — Re-measure Phone after the accepted change.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social.
 7. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
 8. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
-## Phone canonical audit contract
+## Phone canonical audit result
 
-The next bounded audit must determine whether the existing canonical clearly answers the user's real decision problem.
+Audit status: **COMPLETE / CHANGE REQUIRED**.
 
-Evaluate:
+KEEP:
 
-- title/meta/H1 and first-screen promise;
-- real carrier number vs data-only/VoIP status;
-- recent SMS/OTP outcome and service/app caveats;
-- remote activation practicality and activation-country constraints;
-- KYC requirements;
-- roaming/SMS behavior;
-- keep-alive/retention cost and expiry rules;
-- current price/value and purchase path;
-- freshness/confidence from current independent outcomes;
-- whether the three-family dashboard clarifies or dilutes the primary job.
+- the existing canonical URL;
+- three fixed families;
+- route-first visual dashboard;
+- inline Full guide;
+- current title and H1;
+- compact route identity, family-specific metrics and direct purchase actions.
+
+CHANGE:
+
+- homepage Phone framing still uses the retired `Official rules first` / `documented carrier rules` model;
+- the Full guide currently exposes provider capability data as `SMS / current reality`;
+- route-level freshness/confidence is not visible;
+- material KYC/local-presence blockers are buried inside generic setup/detail text;
+- some price/value labels are placeholders rather than reproduced current values;
+- Phone still contains a stale related link to Claude Reset.
+
+The next implementation remains bounded to those existing-URL defects. Operational claims must come from current independent/user outcomes; provider/operator data remains valid for current prices, package names, promotions, stock, purchase paths and published terms/constraints.
+
+### Phone repair contract
+
+The next bounded implementation must:
+
+1. correct source-role truth on homepage Phone framing and Phone Full guide;
+2. add compact route-level freshness/confidence from real evidence, with missing data lowering confidence rather than inventing a neutral value;
+3. expose material KYC/local-presence blockers as concise metadata/warnings when they change the decision;
+4. retain remote practicality and keep-alive cost while distinguishing official terms from reproduced operational outcomes;
+5. replace generic live-price placeholders with last-verified values where available, otherwise state that checkout pricing is dynamic;
+6. remove the stale Phone → Claude Reset related link;
+7. align meta/support copy only after the underlying data-source truth is fixed.
 
 Definition of done:
 
-- evidence-backed KEEP or CHANGE decision for the existing canonical;
-- if CHANGE, one bounded implementation plan for the same URL;
-- no new country/provider doorway page;
-- no bulk route expansion;
-- no production change during the audit itself.
+- existing Phone canonical only;
+- no new route, country/provider doorway page or temporary-SMS backend;
+- no fake OTP percentage, confidence score or Phone risk score;
+- targeted tests pass;
+- real Vercel Preview passes desktop/mobile light/dark checks;
+- CI/Eval + Preview are green before merge;
+- apex production is independently verified after merge.
 
 ## Measurement rules
 
 - Search Console is a distribution signal after a product passes the value and competition gates; it is not the product selector.
 - High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both. Diagnose product value before rewriting snippets.
 - Cursor's previous 300-impression checkpoint is retired as an automatic investment trigger.
-- Phone's current lack of exact-page Search Console rows does not prohibit a bounded positioning audit because independent demand/community evidence supports the underlying user job.
+- Phone's current lack of exact-page Search Console rows does not prohibit the bounded repair because independent demand/community evidence supports the underlying user job and the audit reproduced concrete contract defects.
 - Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
 - Monetization work waits for meaningful traffic.
 
@@ -124,7 +145,7 @@ Definition of done:
 - Search volume cannot rescue a weak or commoditized user job.
 - Existing pages are not grandfathered in because development effort has already been spent.
 - Phone operational reality comes from current independent user/community outcomes and route history.
-- Operator/provider pages serve commercial metadata by default, not operational certification.
+- Operator/provider pages serve commercial metadata and published constraints by default, not operational certification.
 - One clear user task per page; avoid thin/near-duplicate/keyword doorway pages.
 - Improve existing URLs before adding similar URLs.
 - Missing data lowers confidence; do not fabricate certainty.
@@ -159,6 +180,7 @@ Treat these as provider limits, not evidence failures.
 | Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
 | Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
+| Phone canonical audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
 | Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
 | Phone visual baseline | `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` + `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md` |
