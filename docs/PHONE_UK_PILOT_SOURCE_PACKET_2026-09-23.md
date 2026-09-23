@@ -1,7 +1,7 @@
 # Phone Radar — UK Pilot Source Reconciliation Packet
 
 Date checked: 2026-09-23
-Status: P1 SOURCE RECONCILIATION IN PROGRESS / FIRST PASS COMPLETE
+Status: P1 SOURCE RECONCILIATION COMPLETE / PILOT ADMISSION FIXED
 Scope: UK long-term SMS/OTP pilot only
 
 This packet is the evidence gate for the first carrier-directory implementation. A claim does not enter the UK pilot UI merely because it appears in a forum post. Claims below are separated into publishable observations, unresolved fields and hold conditions.
