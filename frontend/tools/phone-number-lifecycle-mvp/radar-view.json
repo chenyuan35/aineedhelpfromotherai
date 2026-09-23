@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-18",
+  "updatedAt": "2026-09-23",
   "notice": "Frontstage decision labels only. Operational research remains in the existing backstage data files.",
   "families": {
     "long-term": {
@@ -25,9 +25,15 @@
       "signalLevel": 2,
       "keepCost": "≈ £0.20/yr*",
       "setup": "Some work",
-      "remote": "Best with a UK start",
+      "remote": "physical SIM needs UK address; eSIM geography unverified",
       "stability": "Watch",
-      "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching."
+      "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching.",
+      "kyc": "unverified",
+      "roaming": "supported; destination varies",
+      "verified": "2026-09-16",
+      "evidence": "Current rules + mixed recent user outcomes",
+      "price": "Free SIM · activation/top-up live check",
+      "keepRule": "Qualifying use < 6 months"
     },
     "lebara-uk": {
       "family": "long-term",
@@ -37,9 +43,15 @@
       "signalLevel": 3,
       "keepCost": "≈ £0.77/yr*",
       "setup": "Some work",
-      "remote": "UK activation first",
+      "remote": "UK activation required",
       "stability": "Stable",
-      "caveat": "Low keep-alive cost, but the line must be activated in the UK first."
+      "caveat": "Low keep-alive cost, but the line must be activated in the UK first.",
+      "kyc": "no universal passport rule; account/email for eSIM",
+      "roaming": "supported after UK activation",
+      "verified": "2026-09-16",
+      "evidence": "Current rules + route reports",
+      "price": "Free SIM · plans from £5",
+      "keepRule": "Call/text/data < 90 days"
     },
     "tello-us": {
       "family": "long-term",
@@ -49,9 +61,15 @@
       "signalLevel": 3,
       "keepCost": "≈ $61/yr + tax",
       "setup": "Some work",
-      "remote": "US activation first",
+      "remote": "US cellular activation required",
       "stability": "Stable",
-      "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection."
+      "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection.",
+      "kyc": "US E911 address for Wi-Fi Calling",
+      "roaming": "supported after US activation",
+      "verified": "2026-09-16",
+      "evidence": "Current rules + route reports",
+      "price": "$5 / 30 days + tax",
+      "keepRule": "Renew paid plan / 30 days"
     },
     "ultra-paygo-us": {
       "family": "long-term",
@@ -61,9 +79,15 @@
       "signalLevel": 3,
       "keepCost": "≈ $37/yr",
       "setup": "Some work",
-      "remote": "Initial setup needs care",
+      "remote": "activation geography unverified",
       "stability": "Watch",
-      "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters."
+      "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters.",
+      "kyc": "unverified",
+      "roaming": "supported with PayGo wallet",
+      "verified": "2026-09-16",
+      "evidence": "Current rules; setup path still has gaps",
+      "price": "SIM price varies · $3/30d service",
+      "keepRule": "Fund $3 every 30 days"
     },
     "h2o-paygo-us": {
       "family": "long-term",
@@ -73,9 +97,15 @@
       "signalLevel": 1,
       "keepCost": "≈ $41/yr*",
       "setup": "Low",
-      "remote": "Not a strong roaming route",
+      "remote": "activation geography unverified",
       "stability": "Watch",
-      "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point."
+      "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point.",
+      "kyc": "unverified",
+      "roaming": "not established for PayGo",
+      "verified": "2026-09-16",
+      "evidence": "Current rules; overseas SMS gap",
+      "price": "$10 / 90d refill",
+      "keepRule": "Recharge before refill expiry"
     },
     "a1-croatia-prepaid-esim": {
       "family": "long-term",
@@ -85,9 +115,15 @@
       "signalLevel": 3,
       "keepCost": "≈ €5/yr*",
       "setup": "Some work",
-      "remote": "Remote eSIM reported",
+      "remote": "remote China activation reproduced",
       "stability": "Watch",
-      "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived."
+      "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived.",
+      "kyc": "recent report: none; recheck checkout",
+      "roaming": "China incoming SMS reproduced",
+      "verified": "Apr 2026",
+      "evidence": "Recent community reproduction; interval still community-derived",
+      "price": "Live checkout · €5 min top-up",
+      "keepRule": "Top up early; interval community-derived"
     },
     "mobal-japan-voice-data": {
       "family": "long-term",
@@ -97,9 +133,15 @@
       "signalLevel": 3,
       "keepCost": "≈ ¥19,800/yr",
       "setup": "Some work",
-      "remote": "Order remotely; ID flow applies",
+      "remote": "remote order; ID flow applies",
       "stability": "Stable",
-      "caveat": "A real Japanese mobile number with a higher recurring cost than keep-alive-focused routes."
+      "caveat": "A real Japanese mobile number with a higher recurring cost than keep-alive-focused routes.",
+      "kyc": "passport/ID required",
+      "roaming": "voice/SMS add-on available",
+      "verified": "2026-09-16",
+      "evidence": "Current rules; independent outcome coverage limited",
+      "price": "¥4,950 setup + ¥1,650/mo",
+      "keepRule": "Keep monthly plan paid"
     },
     "sakura-japan-voice-data": {
       "family": "long-term",
@@ -109,9 +151,15 @@
       "signalLevel": 3,
       "keepCost": "Active plan for SMS",
       "setup": "High effort",
-      "remote": "Japan pickup / verification",
+      "remote": "Japan pickup + face-to-face ID",
       "stability": "Stable",
-      "caveat": "The low suspension fee preserves the number only; active SMS requires normal service."
+      "caveat": "The low suspension fee preserves the number only; active SMS requires normal service.",
+      "kyc": "passport route requires in-person verification",
+      "roaming": "calls/SMS supported abroad",
+      "verified": "2026-09-16",
+      "evidence": "Current rules; independent outcome coverage limited",
+      "price": "¥5,500 setup + ¥3,278/mo",
+      "keepRule": "Keep plan active for SMS"
     },
     "china-official-carrier": {
       "family": "long-term",
@@ -121,15 +169,21 @@
       "signalLevel": 2,
       "keepCost": "Varies",
       "setup": "High effort",
-      "remote": "In-person setup",
+      "remote": "Mainland China in-person setup",
       "stability": "Route-dependent",
-      "caveat": "Useful when a mainland-China number is specifically required; carrier/plan behavior varies."
+      "caveat": "Useful when a mainland-China number is specifically required; carrier/plan behavior varies.",
+      "kyc": "passport/ID + in-person required",
+      "roaming": "carrier/plan-specific",
+      "verified": "2026-09-16",
+      "evidence": "Generic route; carrier-specific confidence required",
+      "price": "No processing fee · plan varies",
+      "keepRule": "Carrier/plan-specific"
     },
     "airalo-data": {
       "family": "data",
       "order": 10,
       "shortlist": true,
-      "dataCost": "Live destination price",
+      "dataCost": "Live check required",
       "allowance": "Package-dependent",
       "coverage": "Global / destination-based",
       "setup": "Low effort",
@@ -141,7 +195,7 @@
       "family": "data",
       "order": 15,
       "shortlist": true,
-      "dataCost": "Low-cost · live Trip price",
+      "dataCost": "Live Trip price · check now",
       "allowance": "Daily-data · 3–15 days",
       "coverage": "Mainland China",
       "setup": "Low–medium",
@@ -166,7 +220,7 @@
       "family": "data",
       "order": 90,
       "shortlist": false,
-      "dataCost": "Destination-specific",
+      "dataCost": "Live check required",
       "allowance": "Carrier-specific",
       "coverage": "Local destination network",
       "setup": "Some work",
@@ -180,7 +234,7 @@
       "shortlist": true,
       "smsSignal": "Inventory-dependent",
       "signalLevel": 2,
-      "price": "Live quote",
+      "price": "Live check required",
       "coverage": "Country + service pools",
       "numberType": "One-time; rentals separate",
       "privacyRisk": "High for critical accounts",
@@ -193,7 +247,7 @@
       "shortlist": true,
       "smsSignal": "Inventory-dependent",
       "signalLevel": 2,
-      "price": "Live quote",
+      "price": "Live check required",
       "coverage": "Country + service + operator",
       "numberType": "One-time; rentals separate",
       "privacyRisk": "High for critical accounts",
@@ -206,7 +260,7 @@
       "shortlist": true,
       "smsSignal": "Supplier-dependent",
       "signalLevel": 2,
-      "price": "Compare live offers",
+      "price": "Compare live offers · check now",
       "coverage": "Multiple suppliers",
       "numberType": "Supplier-dependent",
       "privacyRisk": "Supplier-dependent",
