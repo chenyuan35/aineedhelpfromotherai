@@ -106,6 +106,7 @@ Never recommend forged KYC, fake identities, deceptive support stories, unauthor
 - `docs/CURRENT_EXECUTION_QUEUE.md` — atomic next actions.
 - `docs/PRODUCT_VALUE_GATE.md` — official-source + independent-competitor substitution gates.
 - `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` — Sep 23 direction correction.
+- `docs/RESET_PRIMARY_SURFACE_REMOVAL_2026-09-23.md` — Reset primary-surface removal evidence.
 - `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` — current accepted Phone information architecture, matrix fields, evidence/ranking rules and first implementation boundary.
 - `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` — prior same-URL correction audit; retained as history, but the directory-matrix contract supersedes conflicting long-term UX assumptions.
 - `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` — earlier interaction baseline; use only where it does not conflict with the Sep 23 directory-matrix contract.
