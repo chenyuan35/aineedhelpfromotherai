@@ -19,21 +19,21 @@ A candidate advances only when the project can state a concrete durable advantag
 
 Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
 
-## Phone product correction — 2026-09-23
+## Phone product correction — shipped 2026-09-23
 
-The earlier Phone implementation correctly moved away from official-documentation framing, but the long-term-number UX remained too flat and too small-shortlist-oriented.
+The earlier Phone implementation correctly moved away from official-documentation framing, but the long-term-number UX remained too flat and too small-shortlist-oriented. The accepted correction is defined in `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` and was shipped through PR #203.
 
-The accepted product model is now defined in `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`:
+The product model is:
 
 - Phone Radar is a visual **carrier/number directory + comparison matrix**;
 - hierarchy: `market → host network/carrier group → brand/MVNO → concrete route/product/acquisition path → observed events`;
 - the user sees real landed cost, CNY estimate, yearly keep cost, exact keep action, data/tariff, China/overseas activation, KYC/device/payment friction, Wi-Fi Calling/roaming SMS, service-specific verification evidence, recycling/suspension history, refund/recovery outcomes, trend, evidence count and freshness;
-- detailed guides explain exactly how to acquire, activate, test, keep and recover a route;
+- detailed guides explain how to acquire, activate, test, keep and recover a route;
 - rankings are transparent/use-case-specific; no arbitrary hidden score;
 - compatibility percentages are allowed only as observed rates with visible denominator/date when enough independent recent samples exist;
 - operator pages provide commercial facts, while forum/community evidence provides operational reality.
 
-This correction supersedes the previous “wait for GSC before another Phone change” instruction. The product model is known to be wrong, so implementation correction comes before measurement.
+The first shipped implementation is a bounded UK pilot on the existing canonical, not a new URL or country doorway family.
 
 ## Product hierarchy
 
@@ -46,6 +46,8 @@ Core user job:
 > See, in one visual directory, what a real number route actually costs to obtain and maintain, what services it currently works with, how stable the number is, and exactly how to get it—without reading fragmented forum threads first.
 
 Defensible value comes from current independent community outcomes, cheap acquisition paths, discounts, true landed cost, keep-alive methods, app compatibility observations, route history and reconciliation across fragmented reports.
+
+The UK pilot now exposes Vodafone UK / VOXI / Lebara UK / O2 / Giffgaff groupings, dense comparison fields, evidence-gated service observations and detailed guide flow. Data SIM/eSIM and Temporary SMS remain separate top-level families.
 
 Do not create country/provider doorway pages. Improve the existing canonical first.
 
@@ -82,8 +84,8 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P2 Discovery & indexing | Make current cohort discoverable/indexed | DONE | Completed |
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
-| P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **ACTIVE — UK PILOT IMPLEMENTED / RELEASE VERIFICATION NEXT** | UK pilot matrix + guide flow shipped and production-verified on the existing canonical |
-| P6 Evidence-gated depth | Add only depth that survives value + competition gates | QUEUED | One or more validated improvements show measurable search/usage value |
+| P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **DONE — UK PILOT SHIPPED / PRODUCTION VERIFIED** | PR #203 merged; Eval #693 passed; Vercel production succeeded; live canonical verified HTTP 200 with grouped UK matrix + guide flow |
+| P6 Evidence-gated depth | Add only depth that survives value + competition gates | **QUEUED / MEASUREMENT GATE FIRST** | One or more validated improvements show measurable search/usage value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
 
@@ -93,32 +95,34 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 2. **DONE — Reset-family product-value audit.** Seven pages classified; no impulsive deletion/redirect.
 3. **DONE — Competition gate added.** Mature independent competitors are a hard substitution test before implementation.
 4. **DONE — Phone same-URL source-role correction.** PR #198 corrected homepage + existing Phone canonical framing and exposed more practical route evidence.
-5. **DONE — Phone carrier-directory product correction.** Forum-driven review showed that the flat shortlist still did not match the intended user job. `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` now fixes the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
-6. **ACTIVE — UK pilot implementation/release.** P1 source reconciliation, P2 normalized data and P3 evidence-display gate are complete; the bounded matrix/mobile implementation is locally validated. Remaining gate: branch PR → Eval Gate/Vercel Preview → production verification. Do not bulk-fill global weak data. Keep Data and Temporary SMS stable.
-7. **AFTER SHIP — Re-measure Phone.** Use Search Console and meaningful interaction evidence only after the corrected product has time to accrue evidence; keep organic separate from referral/social/direct.
+5. **DONE — Phone carrier-directory product correction.** `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` fixed the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
+6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
+7. **NEXT — Re-measure Phone after evidence accrues.** Do not interpret the first hours after deployment as meaningful search evidence. Use Search Console plus meaningful interaction evidence; keep organic separate from referral/social/direct and AI referral.
 8. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
 9. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 
-Status: **ACCEPTED 2026-09-23; implementation next**.
+Status: **SHIPPED 2026-09-23 via PR #203 (`084de00f`)**.
 
 Source of truth: `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`.
 
-MVP rules:
+Implemented MVP rules:
 
-- preserve `/tools/phone-number-survival-guide/`;
-- preserve the three top-level families;
-- Long-term SMS/OTP becomes a grouped country/network/brand/route matrix;
-- desktop uses a compact comparison table/matrix with horizontal access to dense metrics;
+- preserved `/tools/phone-number-survival-guide/`;
+- preserved the three top-level families;
+- Long-term SMS/OTP now renders a grouped UK country/network/brand/route matrix;
+- desktop uses a compact comparison matrix with horizontal access to dense metrics;
 - mobile uses compact grouped cards from the same normalized data;
-- show real landed acquisition cost, approximate CNY cost, yearly keep cost/action, activation/KYC/Wi-Fi Calling/roaming state, service-specific evidence, continuity events, refund/recovery state, trend, sample count and freshness;
-- provide detailed in-page guides;
-- use a small UK pilot first to validate the schema/interaction;
+- shows landed acquisition cost, approximate CNY cost when supported, yearly keep cost/action, activation/KYC/Wi-Fi Calling/roaming state, service-specific evidence, continuity events, refund/recovery state, trend, sample count and freshness;
+- provides detailed in-page guides;
+- uses a small UK pilot first rather than weak global bulk-fill;
 - no arbitrary 0–100 Phone risk score;
 - observed success percentages require visible sample size/date and at least five reasonably independent recent route+service+operation observations;
 - missing data remains missing and cannot improve rank;
 - community/forum evidence drives operational claims; provider pages provide commercial metadata.
+
+The current UK packet does not meet the `n >= 5` threshold for the displayed app route+service+operation samples, so the release shows counts/qualitative states rather than fabricated percentages.
 
 ## Measurement rules
 
@@ -126,8 +130,10 @@ MVP rules:
 - A known product-model defect should be corrected before waiting for GSC to validate the wrong interface.
 - After the directory correction ships, allow a meaningful post-deploy window before interpreting search performance.
 - High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both; diagnose before snippet-only rewrites.
+- Clicks with weak tool usage should lead to existing-canonical UX/value improvements based on interaction evidence.
 - Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
 - Monetization work waits for meaningful traffic.
+- Expansion to another market/network must pass evidence quality + product value gates; shipping one pilot is not evidence to bulk-expand.
 
 ## Decision rules
 
@@ -172,11 +178,11 @@ Treat these as provider limits, not evidence failures.
 | Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
 | Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
 | Current Phone directory/matrix contract | `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` |
+| UK Phone evidence packet | `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md` |
+| Normalized UK pilot data | `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json` |
 | Prior Phone same-URL audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
 | Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current GSC reads |
 | Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
 | Authority/referral | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
-| AI retrieval | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md` |
-| Code/deployment truth | GitHub `main` + verified production |

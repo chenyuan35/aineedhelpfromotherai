@@ -12,11 +12,11 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has also been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
-| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / DIRECTORY-MATRIX CORRECTION ACCEPTED 2026-09-23.** PR #198 shipped a same-URL evidence correction, but subsequent product review established that the long-term Phone surface must become a visual carrier/number dictionary rather than a flat shortlist. The accepted contract is `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`. | Implement the directory/matrix on the existing canonical using a small evidence-backed UK pilot first. Do not wait for GSC before correcting this known product-model defect. |
+| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / UK DIRECTORY PILOT SHIPPED + PRODUCTION VERIFIED 2026-09-23.** The accepted directory/matrix contract is now implemented on the existing canonical. PR #203 merged as `084de00f`; Eval Gate #693 passed; Vercel production status succeeded; forced live fetch returned HTTP 200 and exposed the grouped UK matrix, detailed guide, and unchanged Data/Temporary families. | Hold production long enough for interaction + GSC evidence to accrue, then re-measure the existing canonical. Do not immediately add another market/feature merely because the UK pilot shipped. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains: Cursor DOWNGRADE; Claude REPURPOSE; GitHub Copilot KEEP/DIFFERENTIATE; Manus DOWNGRADE; Replit DOWNGRADE; Bolt REPURPOSE; AI Credit Burn KEEP/DIFFERENTIATE. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
 | Relay Exit Risk | **PRESERVE / DATA-ACCRUAL EXPERIMENT.** Product and methodology remain production-verified. | Continue legitimate historical snapshots/lifecycle accumulation. No search-led feature expansion without demand/usage evidence. |
-| Search Console | Search Console remains a distribution/measurement signal after value/competition gates. Phone was indexed but lacked exact-page rows in the latest accepted window. | Re-measure after the carrier-directory correction is implemented and has had time to accrue evidence. GSC does not block known product correction. |
+| Search Console | Search Console remains a distribution/measurement signal after value/competition gates. The corrected Phone carrier-directory surface was only just shipped. | Allow a meaningful post-deploy window, then re-measure Phone. Keep Google organic separate from referral/social/direct and do not treat the first hours as meaningful search evidence. |
 | Keyword research | Sep 23 evidence is sufficient for current direction; Ubersuggest hit daily quota, Ahrefs returned `Insufficient plan`, Semrush returned `no_api_units`. | Do not rotate accounts or upgrade/pay without authorization. |
 | TikTok App Review | **SUBMITTED / WAITING FOR REVIEW.** | Do not Recall/edit submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested. |
 | Authority | **AIR-4 BATCH 2 SENT / WAITING.** Learn Cursor + explainx.ai were sent 2026-09-22. | No third target or follow-up before 2026-09-29 or later. |
@@ -26,18 +26,28 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 
 ## Immediate priority
 
-**Implement the accepted Phone carrier-directory / comparison-matrix correction on the existing canonical.**
+**Phone UK pilot is shipped. Hold production and re-measure rather than immediately changing it again.**
 
-The previous “hold production and wait for post-deploy GSC” instruction is superseded because the user clarified a material product-model defect: Phone Radar must expose a structured visual dictionary of countries, host networks, brands/MVNOs and concrete number routes, with real landed cost, yearly keep cost, app-specific observations, continuity incidents, refund/recovery outcomes, trend, freshness, acquisition channel and a detailed guide.
+PR #203 shipped the accepted carrier-directory / comparison-matrix correction on the existing canonical `/tools/phone-number-survival-guide/` without creating a new URL or a new Phone family.
 
-Current next action:
+Production verification on 2026-09-23 confirmed:
 
-1. use `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` as the implementation contract;
-2. keep the existing canonical `/tools/phone-number-survival-guide/`;
-3. implement the long-term SMS/OTP surface as a grouped carrier/network matrix rather than a flat card shortlist;
-4. use a small UK pilot first, based on current forum evidence, to validate the schema and visual interaction;
-5. do not bulk-fill weak global data merely to make the directory look large;
-6. after the corrected surface is shipped and verified, allow interaction/GSC evidence to accrue and then re-measure.
+- HTTP 200 on the canonical;
+- Long-term SMS/OTP renders a grouped UK carrier directory/matrix;
+- visible UK network/brand coverage includes Vodafone UK, VOXI, Lebara UK, O2 UK and Giffgaff;
+- the comparison exposes start cost, keep/year, app/service evidence, loss/closure history and refund/recovery state;
+- detailed in-page guide content is present;
+- Data SIM/eSIM and Temporary SMS family choices remain present;
+- no app compatibility percentage is shown where the route+service+operation evidence gate is below `n >= 5`.
+
+Current next sequence:
+
+1. allow meaningful interaction and Search Console evidence to accrue after the deploy;
+2. re-measure the existing Phone canonical rather than adding another market immediately;
+3. keep Google organic separate from referral/social/direct and AI referral;
+4. if impressions appear without clicks, diagnose query/SERP fit before changing the product;
+5. if clicks appear but usage is weak, improve the existing canonical from interaction evidence;
+6. expand to another market/network only when evidence quality and product-value gates pass.
 
 ## Product rules
 
@@ -80,6 +90,8 @@ The visual layer must let the user compare at a glance:
 
 Ranking may be use-case-specific and transparent. Missing data must not improve rank. Observed percentages require route + service + operation-specific evidence and visible sample size/date.
 
+The first shipped pilot is UK-only and intentionally bounded. Lebara UK, Giffgaff and VOXI are actionable pilot candidates; Vodafone UK direct remains an observation/hold route unless a legitimate current long-term path is re-verified. Giffgaff continuity/closure/recovery/refund history is surfaced prominently rather than hidden behind a generic stability label.
+
 Backstage keeps raw forum/community sources, reconciliation, duplicate/circular-report checks, event history and methodology.
 
 Never recommend forged KYC, fake identities, deceptive support stories, unauthorized access, security bypass or prohibited geography evasion.
@@ -107,11 +119,12 @@ Never recommend forged KYC, fake identities, deceptive support stories, unauthor
 - `docs/PRODUCT_VALUE_GATE.md` — official-source + independent-competitor substitution gates.
 - `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` — Sep 23 direction correction.
 - `docs/RESET_PRIMARY_SURFACE_REMOVAL_2026-09-23.md` — Reset primary-surface removal evidence.
-- `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` — current accepted Phone information architecture, matrix fields, evidence/ranking rules and first implementation boundary.
-- `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` — prior same-URL correction audit; retained as history, but the directory-matrix contract supersedes conflicting long-term UX assumptions.
+- `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` — accepted Phone information architecture, matrix fields, evidence/ranking rules and implementation boundary.
+- `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md` — UK pilot source reconciliation and route evidence packet.
+- `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json` — normalized shipped UK pilot data used by the Phone surface.
+- `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` — prior same-URL correction audit; retained as history.
 - `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` — earlier interaction baseline; use only where it does not conflict with the Sep 23 directory-matrix contract.
-- `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` — durable Phone identity/research method; the Sep 23 directory-matrix contract governs the corrected long-term visual model where conflicts exist.
-- `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` and `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md` — historical visual baseline.
+- `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` — durable Phone identity/research method.
 - `docs/GSC_MEASUREMENT_2026-09-22.md` — latest accepted Search Console evidence before the directory correction.
 - `docs/RELAY_RISK_METHODOLOGY.md` — fixed Relay methodology.
 - `docs/AUTHORITY_AND_AI_DISCOVERY.md` — authority/referral ledger.

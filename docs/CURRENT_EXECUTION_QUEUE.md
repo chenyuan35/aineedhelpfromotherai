@@ -6,72 +6,52 @@ Last updated: 2026-09-23
 
 ## Current decision
 
-1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / CARRIER-DIRECTORY IMPLEMENTATION NEXT.**
+1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT SHIPPED / MEASUREMENT NEXT.**
 2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
 Mandatory gates before any product build/expansion/optimization remain official-source substitutability, independent-competitor substitutability, real user/repeat value and a concrete project advantage.
 
-## JUST COMPLETED — Phone carrier-directory product correction
+## JUST COMPLETED — UK Phone carrier-directory pilot
 
-Status: **CONTRACT DEFINED / IMPLEMENTATION NOT YET SHIPPED**.
+Status: **SHIPPED / PRODUCTION VERIFIED**.
 
-The previous queue item to wait for post-deploy GSC is superseded by a material product correction from the user plus current forum evidence.
+PR #203 shipped the bounded UK carrier-directory implementation on the existing Phone canonical. Squash merge: `084de00f94257dc50305b1d456e7a56e877a92ce`.
 
-The accepted contract is:
+Validation recorded:
 
-`docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`
+- changed surface remained limited to the existing Phone canonical plus supporting evidence/docs/tests;
+- PR final diff was reduced to 6 intended files after generated build artifacts were removed;
+- Eval Gate #693: **PASS**;
+- Vercel Preview / production commit status: **SUCCESS**;
+- forced live production fetch: **HTTP 200**;
+- live Long-term SMS/OTP shows the grouped UK matrix/directory;
+- visible UK network/brand coverage includes Vodafone UK, VOXI, Lebara UK, O2 UK and Giffgaff;
+- matrix exposes start cost, keep/year, app/service evidence, loss/closure history and refund/recovery state;
+- detailed in-page guide content is present;
+- Data SIM/eSIM and Temporary SMS family choices remain present;
+- the current app evidence packet is below the `n >= 5` rate gate, so no fabricated success percentage is rendered.
 
-The corrected long-term Phone model is:
+Source packet: `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md`.
+Normalized data: `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json`.
+Accepted product contract: `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`.
 
-`market → host network/carrier group → brand/MVNO → concrete route/product/acquisition path → observed events`
+## NEXT — measurement hold, then re-measure Phone
 
-The user-facing surface must make these directly comparable:
+Status: **WAIT FOR MEANINGFUL POST-DEPLOY DATA / NO IMMEDIATE PRODUCTION CHANGE**.
 
-- real landed acquisition cost + approximate CNY cost;
-- current discount/coupon/acquisition path;
-- minimum yearly keep cost + exact action/interval;
-- data/tariff when material;
-- China/overseas activation;
-- KYC/device/payment friction;
-- Wi-Fi Calling / roaming SMS;
-- ChatGPT/OpenAI, Telegram, WhatsApp and other route-specific app evidence;
-- recycling/suspension/closure incidents;
-- refund/recovery/reissue/port-out outcomes;
-- trend, evidence count and last checked;
-- detailed guide + acquisition action.
+Do not edit Phone again merely because the UK pilot just shipped.
 
-Percentages are allowed only as observed sample summaries with visible denominator/date and enough independent recent observations. Do not fabricate a universal success probability.
+Next decision sequence:
 
-## CURRENT URGENT — finish UK pilot release
-
-Status: **P1/P2/P3 COMPLETE · P4 IMPLEMENTED LOCALLY · P5 RELEASE VERIFICATION NEXT**.
-
-The scope remains only the existing Phone canonical Long-term SMS/OTP family.
-
-Completed prerequisites:
-
-1. **P1 source reconciliation — COMPLETE.** Lebara UK, Giffgaff and VOXI are admitted as actionable pilot candidates; Vodafone UK direct £0 remains an observation/hold row unless a legitimate current long-term path is re-verified.
-2. **P2 normalized pilot data — COMPLETE.** UK market → Vodafone/O2 host networks → brands/routes → service observations/continuity events are encoded in `uk-directory-pilot.json`.
-3. **P3 evidence-display gate — COMPLETE.** No current ChatGPT/OpenAI, Telegram or WhatsApp route+service+operation sample reaches `n >= 5`, so the first release shows counts/qualitative states only, not percentages.
-4. **P4 frontend — IMPLEMENTED LOCALLY / BRANCH VALIDATION PASS.** Desktop uses grouped horizontal matrix; mobile uses compact grouped cards; Giffgaff closure/recovery/refund history is visible in the main comparison; Data and Temporary SMS retain their existing card flow.
-
-Only remaining active work:
-
-5. **P5 release verification.** Push the bounded branch, run Eval Gate + Vercel Preview, verify 1440 / 390 / 320 behavior and existing Data/Temporary families, then merge and verify the apex production canonical.
-
-Do not start another market, app family, ranking model or Phone feature before P5 is complete.
-
-## AFTER SHIP — measurement
-
-Only after the corrected Phone directory is production-verified:
-
-1. allow Search Console + interaction evidence to accrue;
+1. allow Search Console + meaningful interaction evidence to accrue;
 2. re-measure the existing Phone canonical;
-3. keep Google organic separate from referral/social/direct;
-4. if impressions appear without clicks, diagnose query/SERP fit;
+3. keep Google organic separate from referral/social/direct and AI referral;
+4. if impressions appear without clicks, diagnose query/SERP fit before changing the product;
 5. if clicks appear but use is weak, improve the existing canonical from interaction evidence;
-6. expand to more markets/networks only when the data quality and product-value gates pass.
+6. expand to another market/network only when evidence quality and product-value gates pass.
+
+Do not interpret the first hours after deployment as meaningful search evidence.
 
 ## Relay Exit Risk
 
@@ -95,7 +75,7 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 
 ## Do not do next
 
-- do not wait for GSC before correcting the known Phone information-architecture defect;
+- do not immediately add another Phone market, provider family or ranking model merely because the UK pilot shipped;
 - do not bulk-add global Phone rows with weak or copied evidence merely to make the directory look large;
 - do not make operator/provider documentation the operational truth;
 - do not invent ChatGPT/Telegram/WhatsApp success percentages from a few anecdotes;
@@ -115,4 +95,4 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 
 ## Session rule
 
-The carrier-directory contract session ends when the contract and canonical fact sources are merged. The next independent session is the bounded UK pilot implementation on the existing Phone canonical.
+This implementation session is complete when the shipped UK pilot state is merged into the canonical fact sources. A new session should begin from GitHub `main` and treat post-deploy measurement—not another speculative Phone build—as the next decision gate.
