@@ -43,21 +43,24 @@ The user-facing surface must make these directly comparable:
 
 Percentages are allowed only as observed sample summaries with visible denominator/date and enough independent recent observations. Do not fabricate a universal success probability.
 
-## NEXT — implement the UK pilot directory matrix on the existing canonical
+## CURRENT URGENT — finish UK pilot release
 
-Status: **READY FOR IMPLEMENTATION**.
+Status: **P1/P2/P3 COMPLETE · P4 IMPLEMENTED LOCALLY · P5 RELEASE VERIFICATION NEXT**.
 
-One bounded implementation session should:
+The scope remains only the existing Phone canonical Long-term SMS/OTP family.
 
-1. preserve `/tools/phone-number-survival-guide/` and the three top-level families;
-2. replace the Long-term SMS/OTP flat route-card presentation with the accepted grouped carrier/network comparison matrix;
-3. normalize the frontstage data so market/network/brand/route are separate dimensions;
-4. add the accepted cost, app-evidence, continuity, refund/recovery, trend and freshness fields;
-5. populate only a small evidence-backed UK pilot set first (Vodafone UK direct, VOXI, Lebara UK, Giffgaff or another equally well-evidenced O2 route as appropriate after source reconciliation);
-6. keep Data SIM/eSIM and Temporary SMS stable unless a minimal shared-shell change is required;
-7. run local contract/build tests, then PR → Eval Gate/Vercel Preview → production verification.
+Completed prerequisites:
 
-Definition of done for that implementation session: the Preview visibly shows the grouped UK long-term directory/matrix at desktop and mobile sizes, the data is backed by cited/reconciled current evidence, existing Data/Temporary families still work, and the PR is ready for merge or cleanly blocked with a recorded reason.
+1. **P1 source reconciliation — COMPLETE.** Lebara UK, Giffgaff and VOXI are admitted as actionable pilot candidates; Vodafone UK direct £0 remains an observation/hold row unless a legitimate current long-term path is re-verified.
+2. **P2 normalized pilot data — COMPLETE.** UK market → Vodafone/O2 host networks → brands/routes → service observations/continuity events are encoded in `uk-directory-pilot.json`.
+3. **P3 evidence-display gate — COMPLETE.** No current ChatGPT/OpenAI, Telegram or WhatsApp route+service+operation sample reaches `n >= 5`, so the first release shows counts/qualitative states only, not percentages.
+4. **P4 frontend — IMPLEMENTED LOCALLY / BRANCH VALIDATION PASS.** Desktop uses grouped horizontal matrix; mobile uses compact grouped cards; Giffgaff closure/recovery/refund history is visible in the main comparison; Data and Temporary SMS retain their existing card flow.
+
+Only remaining active work:
+
+5. **P5 release verification.** Push the bounded branch, run Eval Gate + Vercel Preview, verify 1440 / 390 / 320 behavior and existing Data/Temporary families, then merge and verify the apex production canonical.
+
+Do not start another market, app family, ranking model or Phone feature before P5 is complete.
 
 ## AFTER SHIP — measurement
 
