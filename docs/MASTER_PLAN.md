@@ -10,7 +10,7 @@ Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small,
 
 ## Strategic correction — 2026-09-23
 
-Product selection now requires two substitution tests before search volume, SEO opportunity or implementation effort matter:
+Product selection requires two substitution tests before search volume, SEO opportunity or implementation effort matter:
 
 1. **Official-source gate:** why can the user not solve the job adequately from the provider's own page/account UI or one ordinary search?
 2. **Independent-competitor gate:** why should the user use us instead of the strongest existing independent product already solving the same job?
@@ -18,6 +18,22 @@ Product selection now requires two substitution tests before search volume, SEO 
 A candidate advances only when the project can state a concrete durable advantage: information asymmetry, uncertainty reduction, aggregation, monitoring/freshness, meaningful computation, proprietary history, decision-cost reduction, or a narrower workflow solved materially better than incumbents.
 
 Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
+
+## Phone product correction — 2026-09-23
+
+The earlier Phone implementation correctly moved away from official-documentation framing, but the long-term-number UX remained too flat and too small-shortlist-oriented.
+
+The accepted product model is now defined in `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`:
+
+- Phone Radar is a visual **carrier/number directory + comparison matrix**;
+- hierarchy: `market → host network/carrier group → brand/MVNO → concrete route/product/acquisition path → observed events`;
+- the user sees real landed cost, CNY estimate, yearly keep cost, exact keep action, data/tariff, China/overseas activation, KYC/device/payment friction, Wi-Fi Calling/roaming SMS, service-specific verification evidence, recycling/suspension history, refund/recovery outcomes, trend, evidence count and freshness;
+- detailed guides explain exactly how to acquire, activate, test, keep and recover a route;
+- rankings are transparent/use-case-specific; no arbitrary hidden score;
+- compatibility percentages are allowed only as observed rates with visible denominator/date when enough independent recent samples exist;
+- operator pages provide commercial facts, while forum/community evidence provides operational reality.
+
+This correction supersedes the previous “wait for GSC before another Phone change” instruction. The product model is known to be wrong, so implementation correction comes before measurement.
 
 ## Product hierarchy
 
@@ -27,9 +43,9 @@ Canonical: `/tools/phone-number-survival-guide/`.
 
 Core user job:
 
-> Find a real, currently workable phone/eSIM route for SMS/OTP, long-term number survival, or travel connectivity when provider pages do not answer whether it works in practice.
+> See, in one visual directory, what a real number route actually costs to obtain and maintain, what services it currently works with, how stable the number is, and exactly how to get it—without reading fragmented forum threads first.
 
-Defensible value comes from current independent community outcomes, route history and reconciliation across fragmented reports. Provider/operator pages are used by default for commercial metadata only.
+Defensible value comes from current independent community outcomes, cheap acquisition paths, discounts, true landed cost, keep-alive methods, app compatibility observations, route history and reconciliation across fragmented reports.
 
 Do not create country/provider doorway pages. Improve the existing canonical first.
 
@@ -66,62 +82,50 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P2 Discovery & indexing | Make current cohort discoverable/indexed | DONE | Completed |
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
-| P5 Phone canonical growth | Make the existing Phone canonical unmistakably solve the community-backed user job | **ACTIVE — IMPLEMENTATION SHIPPED / MEASUREMENT NEXT** | Same-URL correction is shipped and production-verified; re-measure after evidence accrues |
+| P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **ACTIVE — DIRECTORY CONTRACT ACCEPTED / IMPLEMENTATION NEXT** | UK pilot matrix + guide flow shipped and production-verified on the existing canonical |
 | P6 Evidence-gated depth | Add only depth that survives value + competition gates | QUEUED | One or more validated improvements show measurable search/usage value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
 
 ## Current sprint
 
-1. **DONE — Product direction reset.** Combined Search Console, live keyword data, current competitor coverage and current community pain. Search volume/ranking are no longer allowed to choose the product by themselves.
-2. **DONE — Reset-family product-value audit.** Seven pages classified; no deletion/redirect performed.
-3. **DONE — Competition gate added.** Mature independent competitors are now a hard substitution test before implementation.
-4. **DONE — Phone canonical intent/value audit.** Existing canonical and homepage framing were audited against the accepted Phone contract. Decision: bounded same-URL CHANGE. Evidence: `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md`.
-5. **DONE — Bounded existing-URL Phone implementation.** PR #198 shipped the homepage + Phone canonical correction without a new URL/route. Eval Gate #681 passed; Vercel Preview and apex production were verified. Production now exposes current operating evidence, KYC, SMS/roaming, acquisition/current-price wording and route-specific keep rules.
-6. **NEXT — Re-measure Phone after the accepted change has time to accrue evidence.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social/direct. Do not immediately re-edit production because the deployment is fresh.
-7. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-8. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+1. **DONE — Product direction reset.** Search volume/ranking are no longer allowed to choose the product by themselves.
+2. **DONE — Reset-family product-value audit.** Seven pages classified; no impulsive deletion/redirect.
+3. **DONE — Competition gate added.** Mature independent competitors are a hard substitution test before implementation.
+4. **DONE — Phone same-URL source-role correction.** PR #198 corrected homepage + existing Phone canonical framing and exposed more practical route evidence.
+5. **DONE — Phone carrier-directory product correction.** Forum-driven review showed that the flat shortlist still did not match the intended user job. `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` now fixes the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
+6. **NEXT — Implement the directory matrix on the existing canonical with a small UK pilot.** Do not bulk-fill global weak data. Keep Data and Temporary SMS stable unless the shared shell requires a bounded adjustment.
+7. **AFTER SHIP — Re-measure Phone.** Use Search Console and meaningful interaction evidence only after the corrected product has time to accrue evidence; keep organic separate from referral/social/direct.
+8. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+9. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
-## Phone canonical implementation contract
+## Phone directory implementation contract
 
-Status: **SHIPPED 2026-09-23 via PR #198 (`ab0d0525`)**.
+Status: **ACCEPTED 2026-09-23; implementation next**.
 
-The accepted Sep 23 audit preserves the current interaction model and required a bounded same-URL correction.
+Source of truth: `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`.
 
-Kept:
+MVP rules:
 
-- canonical `/tools/phone-number-survival-guide/`;
-- three fixed families;
-- Long-term SMS/OTP default;
-- visual decision dashboard first;
-- Full guide on demand;
-- small actionable shortlist;
-- qualitative OTP/stability evidence rather than fabricated percentages or numeric Phone risk scores;
-- research complexity backstage.
-
-Corrected in production:
-
-- homepage `Official rules first` / `documented carrier rules` source-role contradiction;
-- homepage over-framing around long-term recovery only;
-- title/meta/supporting copy so the first screen promises currently workable routes and real operating outcomes;
-- route-level freshness/recent-outcome visibility;
-- KYC visibility when decision-critical;
-- normalized remote/activation-country state;
-- roaming/SMS-abroad state when material;
-- route-specific keep-alive action/interval clarity;
-- current commercial price/value where known, with explicit live-check state when variable;
-- qualitative evidence state derived from real recency/conflict/coverage, never invented numbers;
-- stale Claude Reset related-tool link.
-
-No additional Phone URL or route was added.
+- preserve `/tools/phone-number-survival-guide/`;
+- preserve the three top-level families;
+- Long-term SMS/OTP becomes a grouped country/network/brand/route matrix;
+- desktop uses a compact comparison table/matrix with horizontal access to dense metrics;
+- mobile uses compact grouped cards from the same normalized data;
+- show real landed acquisition cost, approximate CNY cost, yearly keep cost/action, activation/KYC/Wi-Fi Calling/roaming state, service-specific evidence, continuity events, refund/recovery state, trend, sample count and freshness;
+- provide detailed in-page guides;
+- use a small UK pilot first to validate the schema/interaction;
+- no arbitrary 0–100 Phone risk score;
+- observed success percentages require visible sample size/date and at least five reasonably independent recent route+service+operation observations;
+- missing data remains missing and cannot improve rank;
+- community/forum evidence drives operational claims; provider pages provide commercial metadata.
 
 ## Measurement rules
 
-- Search Console is a distribution signal after a product passes the value and competition gates; it is not the product selector.
-- High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both. Diagnose product value before rewriting snippets.
-- Cursor's previous 300-impression checkpoint is retired as an automatic investment trigger.
-- Phone's pre-correction lack of exact-page Search Console rows did not block the accepted same-URL correction because the work fixed known product/source-role defects backed by independent demand evidence.
-- Do not interpret the first hours after the Sep 23 Phone deployment as meaningful search-performance evidence; allow data to accrue before the next product decision.
+- Search Console is a distribution signal after a product passes value/competition gates; it is not the product selector.
+- A known product-model defect should be corrected before waiting for GSC to validate the wrong interface.
+- After the directory correction ships, allow a meaningful post-deploy window before interpreting search performance.
+- High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both; diagnose before snippet-only rewrites.
 - Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
 - Monetization work waits for meaningful traffic.
 
@@ -167,12 +171,11 @@ Treat these as provider limits, not evidence failures.
 | Atomic next actions | `docs/CURRENT_EXECUTION_QUEUE.md` |
 | Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
 | Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
-| Phone Sep 23 contract audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
+| Current Phone directory/matrix contract | `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` |
+| Prior Phone same-URL audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
-| Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
-| Phone visual baseline | `docs/PHONE_RADAR_VISUAL_CLOSURE_AUDIT_2026-09-18.md` + `docs/PHONE_VISUAL_FIRST_ACCEPTANCE_2026-09-19.md` |
-| Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current Windsor Search Console reads |
+| Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current GSC reads |
 | Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
 | Authority/referral | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
 | AI retrieval | `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md` |

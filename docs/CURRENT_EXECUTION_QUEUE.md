@@ -6,51 +6,69 @@ Last updated: 2026-09-23
 
 ## Current decision
 
-1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
+1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / CARRIER-DIRECTORY IMPLEMENTATION NEXT.**
 2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
 Mandatory gates before any product build/expansion/optimization remain official-source substitutability, independent-competitor substitutability, real user/repeat value and a concrete project advantage.
 
-## JUST COMPLETED — bounded Phone same-URL implementation
+## JUST COMPLETED — Phone carrier-directory product correction
 
-Status: **COMPLETE / SHIPPED / PRODUCTION VERIFIED**.
+Status: **CONTRACT DEFINED / IMPLEMENTATION NOT YET SHIPPED**.
 
-PR #198 (`ab0d0525`) implemented the accepted Sep 23 Phone canonical audit on the existing homepage + existing Phone canonical only.
+The previous queue item to wait for post-deploy GSC is superseded by a material product correction from the user plus current forum evidence.
 
-Shipped:
+The accepted contract is:
 
-- homepage no longer frames Phone around `Official rules first` / `documented carrier rules`;
-- homepage Phone breadth now reflects real-number SMS/OTP, data SIM/eSIM and temporary SMS jobs;
-- Phone first-screen copy now promises currently workable routes and current operating outcomes;
-- long-term route cards expose compact KYC, activation/remote state, SMS/roaming, evidence date/state, acquisition/current-price wording and keep rule;
-- family-specific metrics remain separated for Data and Temporary SMS;
-- stale Claude Reset linkage was removed;
-- no new Phone URL or route was added.
+`docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`
 
-Validation:
+The corrected long-term Phone model is:
 
-- local Phone contract audit: PASS (18 checks);
-- local static build: PASS;
-- Eval Gate #681: PASS;
-- Vercel Preview: PASS, including 1440 / 390 / 320 layout checks with no horizontal overflow;
-- Vercel production deployment: SUCCESS;
-- live apex homepage + `/tools/phone-number-survival-guide/`: independently verified after deploy.
+`market → host network/carrier group → brand/MVNO → concrete route/product/acquisition path → observed events`
 
-## NEXT — measurement hold, then re-measure Phone
+The user-facing surface must make these directly comparable:
 
-Status: **WAIT FOR POST-DEPLOY DATA / NO IMMEDIATE PRODUCTION CHANGE**.
+- real landed acquisition cost + approximate CNY cost;
+- current discount/coupon/acquisition path;
+- minimum yearly keep cost + exact action/interval;
+- data/tariff when material;
+- China/overseas activation;
+- KYC/device/payment friction;
+- Wi-Fi Calling / roaming SMS;
+- ChatGPT/OpenAI, Telegram, WhatsApp and other route-specific app evidence;
+- recycling/suspension/closure incidents;
+- refund/recovery/reissue/port-out outcomes;
+- trend, evidence count and last checked;
+- detailed guide + acquisition action.
 
-Do not immediately edit Phone again because the correction just shipped.
+Percentages are allowed only as observed sample summaries with visible denominator/date and enough independent recent observations. Do not fabricate a universal success probability.
 
-Next decision sequence:
+## NEXT — implement the UK pilot directory matrix on the existing canonical
 
-1. allow Search Console and real interaction evidence to accrue;
-2. re-measure the existing Phone canonical after there is meaningful post-deploy data;
+Status: **READY FOR IMPLEMENTATION**.
+
+One bounded implementation session should:
+
+1. preserve `/tools/phone-number-survival-guide/` and the three top-level families;
+2. replace the Long-term SMS/OTP flat route-card presentation with the accepted grouped carrier/network comparison matrix;
+3. normalize the frontstage data so market/network/brand/route are separate dimensions;
+4. add the accepted cost, app-evidence, continuity, refund/recovery, trend and freshness fields;
+5. populate only a small evidence-backed UK pilot set first (Vodafone UK direct, VOXI, Lebara UK, Giffgaff or another equally well-evidenced O2 route as appropriate after source reconciliation);
+6. keep Data SIM/eSIM and Temporary SMS stable unless a minimal shared-shell change is required;
+7. run local contract/build tests, then PR → Eval Gate/Vercel Preview → production verification.
+
+Definition of done for that implementation session: the Preview visibly shows the grouped UK long-term directory/matrix at desktop and mobile sizes, the data is backed by cited/reconciled current evidence, existing Data/Temporary families still work, and the PR is ready for merge or cleanly blocked with a recorded reason.
+
+## AFTER SHIP — measurement
+
+Only after the corrected Phone directory is production-verified:
+
+1. allow Search Console + interaction evidence to accrue;
+2. re-measure the existing Phone canonical;
 3. keep Google organic separate from referral/social/direct;
-4. if impressions appear without clicks, diagnose query/SERP fit before changing product scope;
-5. if clicks appear but Phone usage is weak, use interaction evidence to improve the existing canonical;
-6. only deepen or add adjacent work if the value + competition gates still pass.
+4. if impressions appear without clicks, diagnose query/SERP fit;
+5. if clicks appear but use is weak, improve the existing canonical from interaction evidence;
+6. expand to more markets/networks only when the data quality and product-value gates pass.
 
 ## Relay Exit Risk
 
@@ -74,17 +92,18 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 
 ## Do not do next
 
+- do not wait for GSC before correcting the known Phone information-architecture defect;
+- do not bulk-add global Phone rows with weak or copied evidence merely to make the directory look large;
+- do not make operator/provider documentation the operational truth;
+- do not invent ChatGPT/Telegram/WhatsApp success percentages from a few anecdotes;
+- do not invent a numeric Phone risk index;
+- do not hide denominator/date behind a compatibility percentage;
+- do not treat all brands on one host network as having the same activation/retention/OTP behavior;
+- do not create Phone country/provider doorway pages;
+- do not create a temporary-SMS backend/marketplace;
 - do not optimize Cursor merely because impressions increase;
 - do not create a generic Codex reset tracker;
 - do not add another Reset page;
-- do not delete/redirect/noindex old Reset URLs without a separate evidence-backed retirement decision;
-- do not treat official-source completeness as a product advantage;
-- do not clone a mature independent competitor without a differentiated job;
-- do not add another Phone route merely because the same-URL correction shipped;
-- do not create Phone country/provider doorway pages;
-- do not create a temporary-SMS backend/marketplace;
-- do not invent OTP success percentages, numeric Phone confidence/risk scores or fake freshness;
-- do not let provider pages certify OTP reliability, overseas activation, recovery or long-term trust;
 - do not reopen Relay methodology or convert it into a shutdown probability;
 - do not migrate production to Astro as part of Phone work;
 - do not rotate trial accounts to bypass plugin quotas;
@@ -93,4 +112,4 @@ Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target
 
 ## Session rule
 
-The Phone correction is complete and production-verified. The next independent session must read the fact sources first and should not create a new production task until post-deploy evidence justifies one.
+The carrier-directory contract session ends when the contract and canonical fact sources are merged. The next independent session is the bounded UK pilot implementation on the existing Phone canonical.
