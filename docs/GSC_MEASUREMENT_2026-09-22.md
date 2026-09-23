@@ -76,8 +76,34 @@ An exact Search Console page filter for `https://aineedhelpfromotherai.com/tools
 
 Decision: **KEEP / continue collecting evidence.** Do not add Phone routes or churn positioning because current Search Console exposure remains absent in the returned period.
 
+## 2026-09-23 Phone post-deploy baseline recheck
+
+A fresh-data Search Console recheck was run after the UK carrier-directory pilot shipped.
+
+Exact page filter:
+
+`https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`
+
+Window checked: **2026-09-20 through 2026-09-23**, with `include_fresh_data=true`.
+
+Result: **no rows returned for the Phone canonical**.
+
+The same connector returned site-wide fresh-data rows for the surrounding dates, confirming the empty Phone result is not explained by a total connector outage:
+
+| Date | Clicks | Impressions | CTR | Avg position |
+|---|---:|---:|---:|---:|
+| 2026-09-20 | 0 | 66 | 0% | 7.48 |
+| 2026-09-21 | 0 | 142 | 0% | 6.64 |
+| 2026-09-22 | 0 | 54 | 0% | 6.80 |
+| 2026-09-23 | 0 | 0 | — | 0.00 |
+
+Interpretation: **the UK pilot still has no Search Console exposure evidence in the checked window, and same-day post-deploy data is not a valid basis for another production change.** Keep the production surface unchanged.
+
+The site build contains GA4 behavior instrumentation, but no connected analytics reader is currently available in the verified measurement path for this session. Do not infer usage from absence of GSC rows.
+
 ## Next trigger
 
-1. Re-read Cursor clean post-change performance when the cumulative clean impressions reach at least 300; the Sep 22 fresh-data check is 290 and therefore still below the gate.
-2. Re-read Phone when it begins receiving Search Console impressions/clicks or meaningful on-site interactions.
-3. Use the Windsor Search Console connector while available; if capacity/auth fails, classify that as a provider/access blocker and use official Search Console API/export rather than alternate trial accounts.
+1. Re-read Phone after Search Console begins returning impressions/clicks for the canonical or after meaningful on-site interaction evidence becomes available through an authorized analytics path.
+2. Keep Google organic separate from referral/social/direct and AI referral.
+3. Do not add another Phone market/network or change the UK matrix before that trigger unless a concrete production defect is independently verified.
+4. Use the Windsor Search Console connector while available; if capacity/auth fails, classify that as a provider/access blocker and use official Search Console API/export rather than alternate trial accounts.
