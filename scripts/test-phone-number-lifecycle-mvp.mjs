@@ -62,11 +62,18 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
   assert.match(themeGenerator, /Phone Radar must beat the generic dark button fill in generated dist CSS/);
 });
 
-check('cards use compact hierarchy instead of five equal metrics', () => {
+check('cards expose current evidence without fake metric symmetry', () => {
   assert.match(html, /class="pr-status"/);
   assert.match(html, /class="pr-meta-pill"/);
-  assert.match(html, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
-  assert.match(html, /metrics:\[\['SMS \/ OTP',v\.smsSignal,signal\(v\.signalLevel\)\],\['Keep \/ year',v\.keepCost\],\['Setup',v\.setup\]\]/);
+  assert.match(html, /class="pr-evidence"/);
+  assert.match(html, /grid-template-columns:repeat\(auto-fit,minmax\(105px,1fr\)\)/);
+  assert.match(html, /\['SMS \/ OTP',v\.smsSignal,signal\(v\.signalLevel\)\]/);
+  assert.match(html, /\['Buy \/ start',v\.price\|\|'Live check required'\]/);
+  assert.match(html, /\['Keep \/ year',v\.keepCost\]/);
+  assert.match(html, /\['Keep rule',v\.keepRule\|\|'Open guide'\]/);
+  assert.match(html, /KYC: \${v\.kyc}/);
+  assert.match(html, /SMS abroad: \${v\.roaming}/);
+  assert.match(html, /Evidence checked \${v\.verified}/);
   assert.doesNotMatch(html, /\['Stability',v\.stability\]/);
   assert.doesNotMatch(html, /\['Remote',v\.remote\]/);
 });
@@ -102,9 +109,9 @@ check('each family has a useful default shortlist', () => {
   assert(counts.temporary >= 2, 'temporary shortlist too small');
 });
 
-check('long-term cards expose decision fields without fake percentages', () => {
+check('long-term cards expose current route evidence without fake percentages', () => {
   for (const { id, view } of entries.filter(x => x.view.family === 'long-term')) {
-    for (const key of ['smsSignal','keepCost','setup','remote','stability','caveat']) assert(view[key], `${id} missing ${key}`);
+    for (const key of ['smsSignal','keepCost','remote','stability','caveat','kyc','roaming','verified','evidence','price','keepRule']) assert(view[key], `${id} missing ${key}`);
     assert.doesNotMatch(view.smsSignal, /%/, `${id} must not publish fake OTP percentage`);
   }
 });
