@@ -66,7 +66,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P2 Discovery & indexing | Make current cohort discoverable/indexed | DONE | Completed |
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
-| P5 Phone canonical growth | Make the existing Phone canonical unmistakably solve the community-backed user job | **ACTIVE** | Existing URL communicates the job clearly, exposes decision-critical fields, and passes preview/production verification if changed |
+| P5 Phone canonical growth | Make the existing Phone canonical unmistakably solve the community-backed user job | **ACTIVE** | Accepted same-URL correction ships and passes preview/production verification; then re-measure |
 | P6 Evidence-gated depth | Add only depth that survives value + competition gates | QUEUED | One or more validated improvements show measurable search/usage value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
@@ -76,43 +76,49 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 1. **DONE — Product direction reset.** Combined Search Console, live keyword data, current competitor coverage and current community pain. Search volume/ranking are no longer allowed to choose the product by themselves.
 2. **DONE — Reset-family product-value audit.** Seven pages classified; no deletion/redirect performed.
 3. **DONE — Competition gate added.** Mature independent competitors are now a hard substitution test before implementation.
-4. **NEXT — Phone canonical intent/value audit.** Audit only `/tools/phone-number-survival-guide/` against current search/community language and the real user job.
-5. **QUEUED — One bounded existing-URL Phone change, only if the audit justifies it.** Scope may include title/meta/H1/first-screen positioning and decision-field presentation. No new route/page by default.
-6. **QUEUED — Re-measure Phone after any accepted change.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social.
+4. **DONE — Phone canonical intent/value audit.** Existing canonical and homepage framing were audited against the accepted Phone contract. Decision: bounded same-URL CHANGE. Evidence: `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md`.
+5. **NEXT — One bounded existing-URL Phone implementation.** Remove old official-first framing, align homepage breadth, tighten Phone first-screen promise, expose missing decision-critical state without bloating cards, and remove stale Claude Reset linkage. No new route/page.
+6. **QUEUED — Re-measure Phone after the accepted change.** Use Search Console and meaningful interaction evidence; keep organic separate from referral/social.
 7. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
 8. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
-## Phone canonical audit contract
+## Phone canonical implementation contract
 
-The next bounded audit must determine whether the existing canonical clearly answers the user's real decision problem.
+The accepted Sep 23 audit preserves the current interaction model and requires a bounded same-URL correction.
 
-Evaluate:
+Keep:
 
-- title/meta/H1 and first-screen promise;
-- real carrier number vs data-only/VoIP status;
-- recent SMS/OTP outcome and service/app caveats;
-- remote activation practicality and activation-country constraints;
-- KYC requirements;
-- roaming/SMS behavior;
-- keep-alive/retention cost and expiry rules;
-- current price/value and purchase path;
-- freshness/confidence from current independent outcomes;
-- whether the three-family dashboard clarifies or dilutes the primary job.
+- canonical `/tools/phone-number-survival-guide/`;
+- three fixed families;
+- Long-term SMS/OTP default;
+- visual decision dashboard first;
+- Full guide on demand;
+- small actionable shortlist;
+- qualitative OTP/stability evidence rather than fabricated percentages or numeric Phone risk scores;
+- research complexity backstage.
 
-Definition of done:
+Correct:
 
-- evidence-backed KEEP or CHANGE decision for the existing canonical;
-- if CHANGE, one bounded implementation plan for the same URL;
-- no new country/provider doorway page;
-- no bulk route expansion;
-- no production change during the audit itself.
+- homepage `Official rules first` / `documented carrier rules` source-role contradiction;
+- homepage over-framing around long-term recovery only;
+- title/meta/supporting copy so the first screen promises currently workable routes and real operating outcomes;
+- route-level freshness/recent-outcome visibility;
+- KYC visibility when decision-critical;
+- normalized remote/activation-country state;
+- roaming/SMS-abroad state when material;
+- route-specific keep-alive action/interval clarity;
+- current commercial price/value where known, with explicit live-check state when variable;
+- qualitative evidence/confidence state derived from real recency/conflict/coverage, never invented numbers;
+- stale Claude Reset related-tool link.
+
+Do not add another Phone URL or route in this implementation.
 
 ## Measurement rules
 
 - Search Console is a distribution signal after a product passes the value and competition gates; it is not the product selector.
 - High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both. Diagnose product value before rewriting snippets.
 - Cursor's previous 300-impression checkpoint is retired as an automatic investment trigger.
-- Phone's current lack of exact-page Search Console rows does not prohibit a bounded positioning audit because independent demand/community evidence supports the underlying user job.
+- Phone's current lack of exact-page Search Console rows does not block the accepted same-URL correction because the work fixes known product/source-role defects backed by independent demand evidence.
 - Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
 - Monetization work waits for meaningful traffic.
 
@@ -158,6 +164,7 @@ Treat these as provider limits, not evidence failures.
 | Atomic next actions | `docs/CURRENT_EXECUTION_QUEUE.md` |
 | Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
 | Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
+| Phone Sep 23 contract audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
 | Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Phone durable definition | `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
