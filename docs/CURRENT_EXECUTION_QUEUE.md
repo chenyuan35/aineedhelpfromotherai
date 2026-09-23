@@ -1,48 +1,50 @@
 # Current Execution Queue
 
-Last updated: 2026-09-23
+Last updated: 2026-09-24
 
-`PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is intentionally short: it is the atomic execution queue, not a history archive.
+`PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic execution queue.
 
 ## Current decision
 
-1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT SHIPPED / MEASUREMENT NEXT.**
+1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT SHIPPED / TECHNICAL DEFECT FIX NEXT.**
 2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
-Mandatory gates before any product build/expansion/optimization remain official-source substitutability, independent-competitor substitutability, real user/repeat value and a concrete project advantage.
+Mandatory product-value and competition gates remain unchanged. A confirmed production defect may be repaired without treating that repair as speculative product expansion.
 
-## JUST COMPLETED — UK Phone carrier-directory pilot
+## NEXT — repair confirmed Phone broken-JavaScript reference
 
-Status: **SHIPPED / PRODUCTION VERIFIED**.
+Status: **CONFIRMED FROM 2026-09-23 AHREFS CRAWL + GITHUB MAIN SOURCE INSPECTION**.
 
-PR #203 shipped the bounded UK carrier-directory implementation on the existing Phone canonical. Squash merge: `084de00f94257dc50305b1d456e7a56e877a92ce`.
+Mailbox review on 2026-09-24 found the latest Ahrefs Site Audit crawl (2026-09-23 18:09 UTC) dropped Health Score from 100 to 90 and reported exactly three errors:
 
-Validation recorded:
+- `Orphan page (has no incoming internal links)` — 1 URL;
+- `Page has broken JavaScript` — 1 URL;
+- `JavaScript broken` — 1 URL.
 
-- changed surface remained limited to the existing Phone canonical plus supporting evidence/docs/tests;
-- PR final diff was reduced to 6 intended files after generated build artifacts were removed;
-- Eval Gate #693: **PASS**;
-- Vercel Preview / production commit status: **SUCCESS**;
-- forced live production fetch: **HTTP 200**;
-- live Long-term SMS/OTP shows the grouped UK matrix/directory;
-- visible UK network/brand coverage includes Vodafone UK, VOXI, Lebara UK, O2 UK and Giffgaff;
-- matrix exposes start cost, keep/year, app/service evidence, loss/closure history and refund/recovery state;
-- detailed in-page guide content is present;
-- Data SIM/eSIM and Temporary SMS family choices remain present;
-- the current app evidence packet is below the `n >= 5` rate gate, so no fabricated success percentage is rendered.
+The two JavaScript errors have a concrete source match: `frontend/tools/phone-number-lifecycle-mvp/index.html` references `/theme-toggle.js`, while `frontend/theme-toggle.js` does not exist on GitHub `main`.
 
-Source packet: `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md`.
-Normalized data: `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json`.
-Accepted product contract: `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md`.
+Next bounded implementation task:
 
-## NEXT — measurement hold, then re-measure Phone
+1. determine whether the redundant `/theme-toggle.js` reference should be removed or replaced by an existing real asset;
+2. repair only that defect in a fresh branch/worktree;
+3. add a regression check so generated/public Phone output cannot reference a missing local script;
+4. run Phone tests + build + Eval Gate + Vercel Preview;
+5. merge only after green checks and verify the public Phone canonical no longer requests the missing script.
 
-Status: **WAIT FOR MEANINGFUL POST-DEPLOY DATA / NO IMMEDIATE PRODUCTION CHANGE**.
+Do not use this defect as justification for another market, ranking model, feature, or redesign.
 
-Do not edit Phone again merely because the UK pilot just shipped.
+## SECONDARY AUDIT ITEM — exact orphan URL
 
-Next decision sequence:
+The Ahrefs email confirms one current orphan page but does not include its URL. The Ahrefs API path currently returns `Insufficient plan`, and the browser connector was not connected during the mailbox audit. Identify the exact URL from an authorized Ahrefs crawl-result view before changing internal links, sitemap membership, indexability, or redirects. Do not guess which page it is.
+
+## Search Console 404 notice — historical / no automatic redirect
+
+Google Search Console emailed on 2026-09-20 that some URLs in the prior `404` validation remain affected. Existing project evidence already confirms former public product paths such as `/cases/`, `/learn/`, `/stats/`, old `.well-known` files, old OpenAPI/feed/failure-index assets and `/mcp/` are intentionally real 404s and absent from the current sitemap. Do not revive or redirect them merely to make the validation green. Re-open this only if a currently intended URL is shown among the affected examples.
+
+## AFTER DEFECT CLOSURE — measurement hold, then re-measure Phone
+
+After the broken-script defect is production-verified:
 
 1. allow Search Console + meaningful interaction evidence to accrue;
 2. re-measure the existing Phone canonical;
@@ -51,48 +53,31 @@ Next decision sequence:
 5. if clicks appear but use is weak, improve the existing canonical from interaction evidence;
 6. expand to another market/network only when evidence quality and product-value gates pass.
 
-Do not interpret the first hours after deployment as meaningful search evidence.
-
-## Relay Exit Risk
-
-Status: **PRESERVE / ACCUMULATE DATA**.
-
-Continue legitimate historical snapshots/lifecycle accumulation. Do not add search-led features until direct demand or meaningful usage appears.
-
 ## External waits
 
-### TikTok App Review
+- **TikTok App Review — WAITING.** Do not Recall/edit submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested.
+- **AIR-4 Authority batch 2 — WAITING.** Learn Cursor + explainx.ai were sent 2026-09-22. No third target or follow-up before 2026-09-29 or later.
 
-Status: **SUBMITTED / WAITING FOR REVIEW**.
+## Other mailbox notices reviewed
 
-Do not Recall, edit submitted configuration/demo, remove the Sandbox review bridge, rotate credentials, or change URLs/products/scopes. Trigger only on `Approved` or `Rejected / Changes requested`.
-
-### Q-005 / AIR-4 Authority
-
-Status: **BATCH 2 SENT / WAITING**.
-
-Batch 2 contains exactly Learn Cursor and explainx.ai. Do not add another target or follow up before 2026-09-29 or later. On recheck, read the original Gmail threads and independently verify public links/citations before deciding any follow-up.
+- Vercel domain-ownership-change notice is dated 2026-09-12; later project evidence has repeatedly production-verified the apex on Vercel, so do not treat that old email alone as a current outage.
+- Render deploy-failed notice is dated 2026-09-13 and belongs to the retired automatic Render deployment path; it is not the current static production deployment path.
+- Semrush's 2026-09-23 weekly report still surfaces historical `/cases/fc-002.html` ranking data; do not revive that historical product path from third-party lagging rank data.
+- Ahrefs `Changed pages not submitted to IndexNow`, title/meta/H1/word-count changes and similar change detections are not equivalent to the three crawl errors above.
 
 ## Do not do next
 
-- do not immediately add another Phone market, provider family or ranking model merely because the UK pilot shipped;
-- do not bulk-add global Phone rows with weak or copied evidence merely to make the directory look large;
-- do not make operator/provider documentation the operational truth;
-- do not invent ChatGPT/Telegram/WhatsApp success percentages from a few anecdotes;
-- do not invent a numeric Phone risk index;
-- do not hide denominator/date behind a compatibility percentage;
-- do not treat all brands on one host network as having the same activation/retention/OTP behavior;
-- do not create Phone country/provider doorway pages;
-- do not create a temporary-SMS backend/marketplace;
-- do not optimize Cursor merely because impressions increase;
-- do not create a generic Codex reset tracker;
-- do not add another Reset page;
-- do not reopen Relay methodology or convert it into a shutdown probability;
-- do not migrate production to Astro as part of Phone work;
-- do not rotate trial accounts to bypass plugin quotas;
+- do not immediately add another Phone market/provider/ranking model;
+- do not bulk-add weak global Phone rows;
+- do not invent compatibility percentages or a Phone risk score;
+- do not create country/provider doorway pages or a temporary-SMS backend;
+- do not reopen Reset/Codex generic tracker work;
+- do not reopen Relay methodology;
+- do not migrate production to Astro as part of this repair;
+- do not rotate trial accounts or upgrade/pay to bypass tool quotas;
 - do not change DNS, AdSense, billing, paid services, or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.
 
 ## Session rule
 
-This implementation session is complete when the shipped UK pilot state is merged into the canonical fact sources. A new session should begin from GitHub `main` and treat post-deploy measurement—not another speculative Phone build—as the next decision gate.
+The mailbox/site-alert audit is complete when this evidence is persisted. The next independent session task is the bounded missing-script repair above.
