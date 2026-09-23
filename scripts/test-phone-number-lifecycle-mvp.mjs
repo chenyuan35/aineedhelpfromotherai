@@ -56,9 +56,9 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
   assert.match(html, /\.pr-hero h1\{grid-area:title;font-size:clamp\(1\.65rem,2\.4vw,2\.15rem\)/);
   assert.match(html, /grid-template-areas:"eyebrow copy" "title copy"/);
   assert.match(html, /class="pr-family-title">Keep a real number<\/span><span class="pr-family-purpose">Long-term SMS \/ OTP/);
-  assert.match(siteCss, /html\[data-theme="dark"\] body \.pr-family button\{background:var\(--panel\);color:var\(--ink\);border-color:var\(--line\)\}/);
-  assert.match(siteCss, /html\[data-theme="dark"\] body \.pr-family button\[aria-selected="true"\]\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
-  assert.match(siteCss, /html\[data-theme="dark"\] body \.pr-actions \.primary\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\{background:var\(--panel\);color:var\(--ink\);border-color:var\(--line\)\}/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-family button\[aria-selected="true"\]\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
+  assert.match(siteCss, /html\[data-theme="dark"\] \.pr-actions \.primary\{background:var\(--ink\);color:var\(--bg\);border-color:var\(--ink\)\}/);
   assert.match(themeGenerator, /Phone Radar must beat the generic dark button fill in generated dist CSS/);
 });
 
