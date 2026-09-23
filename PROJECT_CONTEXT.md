@@ -12,34 +12,31 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has also been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
-| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / CONTRACT AUDIT COMPLETE.** Canonical remains `/tools/phone-number-survival-guide/` with three fixed families: Long-term SMS/OTP, Data SIM/eSIM and Temporary SMS. Sep 23 audit decision is bounded same-URL **CHANGE**: keep the interaction model, but correct old source-role framing and expose missing decision-critical state. Evidence: `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md`. | Next bounded task: one production PR on existing homepage + Phone canonical only. Remove `Official rules first` / `documented carrier rules`, align homepage breadth, tighten Phone first-screen promise, expose freshness/KYC/activation-country/roaming/route-specific keep-alive/current-price evidence where supported, and remove stale Claude Reset linkage. No new route/page. |
+| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / SAME-URL CORRECTION SHIPPED 2026-09-23.** Canonical remains `/tools/phone-number-survival-guide/` with three fixed families: Long-term SMS/OTP, Data SIM/eSIM and Temporary SMS. PR #198 shipped the accepted contract correction on the existing homepage + canonical only; Eval Gate #681 passed; Vercel Preview and apex production were verified. Production now exposes current operating evidence, KYC, SMS/roaming, acquisition/current-price wording and route-specific keep rules without adding a new URL or route. | Re-measure Phone after data has time to accrue. Do not make another production change merely because the correction just shipped. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains: Cursor DOWNGRADE; Claude REPURPOSE; GitHub Copilot KEEP/DIFFERENTIATE; Manus DOWNGRADE; Replit DOWNGRADE; Bolt REPURPOSE; AI Credit Burn KEEP/DIFFERENTIATE. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
 | Relay Exit Risk | **PRESERVE / DATA-ACCRUAL EXPERIMENT.** Product and methodology remain production-verified. | Continue legitimate historical snapshots/lifecycle accumulation. No search-led feature expansion without demand/usage evidence. |
-| Search Console | Search Console remains a distribution/measurement signal after value/competition gates. Phone was indexed but lacked exact-page rows in the latest accepted window. | Re-measure after the accepted Phone correction; do not let GSC choose the product. |
+| Search Console | Search Console remains a distribution/measurement signal after value/competition gates. Phone was indexed but lacked exact-page rows in the latest accepted window. | Re-measure after the shipped Phone correction; do not let GSC choose the product and do not expect immediate post-deploy evidence. |
 | Keyword research | Sep 23 evidence is sufficient for current direction; Ubersuggest hit daily quota, Ahrefs returned `Insufficient plan`, Semrush returned `no_api_units`. | Do not rotate accounts or upgrade/pay without authorization. |
 | TikTok App Review | **SUBMITTED / WAITING FOR REVIEW.** | Do not Recall/edit submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested. |
 | Authority | **AIR-4 BATCH 2 SENT / WAITING.** Learn Cursor + explainx.ai were sent 2026-09-22. | No third target or follow-up before 2026-09-29 or later. |
-| Frontend foundation | Astro 7 + Tailwind 4 exists under `frontend/astro/` but is not the production build path. | No broad migration/redesign as part of Phone correction. |
+| Frontend foundation | Astro 7 + Tailwind 4 exists under `frontend/astro/` but is not the production build path. | No broad migration/redesign as part of Phone work. |
 | Observers | Existing observers/watchers remain bounded; disposable VPS carries no unique durable state. | Never infer watcher health from the wrong host; no production dependency on disposable observers. |
 | AI retrieval | Exa extraction works; semantic discovery remains weak. Tavily quota and GitHub metadata-write blockers remain. | Follow AIR docs in order; do not bypass provider blockers. |
 
 ## Immediate priority
 
-**Bounded Phone same-URL implementation.**
+**Phone correction is shipped. Hold production and re-measure rather than immediately changing it again.**
 
-The Sep 23 audit is complete. Do not re-audit from scratch unless new evidence contradicts it.
+PR #198 (`ab0d0525`) completed the accepted Sep 23 same-URL correction. Eval Gate #681 passed, Vercel production deployed successfully, and live apex verification confirmed the corrected homepage and Phone canonical.
 
-Implement only the accepted defects on the existing homepage + existing Phone canonical:
+Current next action:
 
-1. remove homepage `Official rules first` / `documented carrier rules` framing;
-2. keep community/current-user outcomes as operational reality and provider/operator pages as commercial-metadata inputs;
-3. keep the Phone H1, three-family switch, visual shortlist and Full guide interaction;
-4. tighten title/meta/supporting copy around currently workable routes and SMS/OTP reality;
-5. surface compact route-level freshness/current outcome, normalized remote/activation-country state, KYC, roaming/SMS-abroad, route-specific keep-alive action/interval and qualitative evidence state where supported;
-6. show current commercial price/value when known or explicitly mark live-check-required when variable;
-7. remove the historical Claude Reset related-tool link;
-8. no new Phone URL, route expansion, country/provider doorway page, temporary-SMS backend, numeric OTP rate or Phone risk score.
+1. allow Search Console and real interaction data to accrue after the deployment;
+2. then re-measure the existing Phone canonical, keeping Google organic separate from referral/social/direct traffic;
+3. if impressions appear without clicks, diagnose query/SERP fit before changing product scope;
+4. if clicks appear but Phone usage is weak, use interaction evidence to improve the existing canonical;
+5. do not add another Phone URL/route, Reset page or speculative feature while waiting for evidence.
 
 ## Product rules
 
