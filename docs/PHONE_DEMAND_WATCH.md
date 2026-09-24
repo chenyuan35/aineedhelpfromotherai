@@ -1,6 +1,6 @@
 # Phone Radar Community Intelligence Watch
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 ## Purpose
 
@@ -87,6 +87,16 @@ Repository v1.1 therefore adds three discovery dimensions without turning the wa
 3. **mentioned public hosts** — retain only hostnames of externally linked public resources so a later research pass can decide whether a seller/provider/tutorial domain deserves review.
 
 Marketplace-evasion language may be flagged only as a restricted-marketplace mention. The watcher must not collect, reproduce or operationalize code words intended to bypass marketplace moderation, and it must not automate access behind login/anti-bot controls.
+
+## Sep 25 runtime deployment and recovery
+
+The original trial observer was recovered through Qwen using the already-present dedicated backup key after verifying that the live ED25519 host key still matched the Sep 15 fingerprint. Before any deployment, read-only audit found the watcher state intact but the 1 GiB root filesystem at 100%. Phone-demand runs had been logging `No space left on device` while still exiting 0, so service exit status alone was not sufficient health evidence.
+
+Watcher state, scripts and units were copied off-host to Qwen first. The largest safe removable artifact was an unused 196 MB Puppeteer Chrome download ZIP; RDC is configured with `DC_SKIP_CHROME_DOWNLOAD=1` and no process referenced the cache. Removing only that ZIP reduced root usage to 82%. No project data was deleted.
+
+The v1.1 files from GitHub `main` at `9c4fa5c` were then deployed and checksum-verified. The real systemd run completed with all four public feed sources HTTP 200, `matched=25`, `candidate_total=6`, exit 0 and 19.3 MiB peak memory. The timer is enabled/active at one hour with up to ten minutes randomized delay. Post-v1.1 state, including `candidates.tsv`, was copied back to Qwen.
+
+RDC itself remains unenrolled because its persisted refresh token is invalid (`Already Used`); the observer is currently controlled through Qwen key-only SSH. This does not justify reinstalling the host or moving the watcher elsewhere.
 
 ## Interpretation rules
 
