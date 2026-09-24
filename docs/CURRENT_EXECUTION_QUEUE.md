@@ -65,7 +65,7 @@ Safety/collection boundary remains strict: public feeds only, no login automatio
 
 Runtime deployment is not currently verifiable from available control paths:
 
-- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is online but **is not the Phone systemd observer host**; it has about 311 MiB available RAM and no swap, so do not add another recurring crawler workload there.
+- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is online but **is not the Phone systemd observer host**. A 2026-09-24 cleanup removed stale headless Chromium, old test HTTP servers and a stuck Vercel CLI process; available RAM improved from about 313 MiB to about 2.5 GiB. The host still has no swap. Freed memory does not change the host role automatically.
 - `codex-vps` is visible on the Tailscale network, but `tailscale ssh` currently requires a fresh authorization check and ordinary SSH to the Tailscale address timed out.
 - two unnamed Remote Desktop Commander devices are offline; their identity must not be guessed from old chat state.
 - `yuan` is the personal workstation and must not host project watchers.
