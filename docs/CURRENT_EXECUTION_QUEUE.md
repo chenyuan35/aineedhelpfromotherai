@@ -17,20 +17,20 @@ Do not stop merely to narrate progress or ask the user to approve routine low-ri
 
 ## Current decision
 
-1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT SHIPPED / TECHNICAL ALERTS CLOSED / MEASUREMENT NEXT.**
+1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT LIVE / BACKSTAGE EVIDENCE ACQUISITION ACTIVE / PUBLIC EXPANSION MEASUREMENT-GATED.**
 2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
-Mandatory product-value and competition gates remain unchanged. Confirmed production defects may be repaired without treating those repairs as speculative product expansion.
+Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
 ## Active Search Console measurement path
 
 - **Use Windsor.ai `searchconsole` for current Search Console reads.** The connected account is `sc-domain:aineedhelpfromotherai.com`.
-- **Do not use GSC Wizard for new reads.** Its free/trial quota is exhausted and the project already marks it deprecated.
+- **Do not use GSC Wizard for new reads.** Its free/trial quota is exhausted and the project marks it deprecated.
 - If Windsor.ai access/quota later fails, classify that as a provider/access blocker and fall back to Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
 - Historical GSC Wizard evidence remains valid for the dates when it was collected.
 
-Latest Phone signal from Windsor.ai on 2026-09-24 using `include_fresh_data=true` for 2026-09-20 through 2026-09-24:
+Latest Phone signal from Windsor.ai on 2026-09-24 using fresh data for 2026-09-20 through 2026-09-24:
 
 - query: `survival number`;
 - date: 2026-09-23;
@@ -38,46 +38,48 @@ Latest Phone signal from Windsor.ai on 2026-09-24 using `include_fresh_data=true
 - clicks: 0;
 - average position: 22.
 
-This is the first Search Console exposure row observed for the Phone canonical, but one impression is not enough evidence for a production change.
+One impression is not enough evidence for a public product change.
 
-## JUST COMPLETED — mailbox/site-alert defect closure
+## ACTIVE — Phone community intelligence watcher v1.1
 
-### Phone broken JavaScript
+Repository change under `ops/phone-intelligence-watch-v2-20260924` upgrades the existing bounded community watcher without turning it into a broad crawler:
 
-PR #207 removed the obsolete `/theme-toggle.js` request through the existing theme build step and added a public Phone release regression assertion requiring the built Phone page to contain the real inline `theme-runtime` and no `/theme-toggle.js` reference.
+1. hourly timer with up to 10 minutes jitter, replacing the four-hour cadence that could miss shallow/high-turnover NodeSeek RSS items;
+2. structured service tags for OpenAI/ChatGPT/Codex, Claude, Telegram, WhatsApp, TikTok, Google, Reddit and Discord;
+3. commerce/risk flags for marketplace/reseller/deal/non-delivery/refund/seller-trust signals;
+4. bounded extraction of externally linked public hostnames for later manual source review;
+5. new bounded `candidates.tsv` while preserving legacy `signals.tsv` compatibility;
+6. regression test covering parser syntax, watcher syntax, timer cadence and the new structured fields;
+7. Eval Gate integration so future changes cannot silently break the watcher contract.
 
-Verification:
+Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
 
-- PR #207 diff remained limited to the theme build step + Phone public-release regression test;
-- Eval Gate #701: **PASS**;
-- Vercel Preview: **SUCCESS**;
-- squash merge: `6e61a7aa9e95a15be4053d16ad91742a84ffe601`;
-- Vercel production status for the merge commit: **SUCCESS**.
+## BLOCKER — actual observer host access
 
-### Orphaned AI Credit discovery entry
+Runtime deployment is not currently verifiable from available control paths:
 
-The latest Ahrefs crawl reported exactly one orphan page. Ahrefs API detail access was blocked by the connected plan, so no URL was guessed from the alert alone. Repository inspection then found one concrete discovery inconsistency: `/tools/ai-credit-burn-rate-calculator/` remained sitemap-promoted after Reset primary/internal links were removed. No checked-in current HTML contains an incoming `href` to that URL.
+- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is online but **is not the Phone systemd observer host**; it has about 311 MiB available RAM and no swap, so do not add another recurring crawler workload there.
+- `codex-vps` is visible on the Tailscale network, but `tailscale ssh` currently requires a fresh authorization check and ordinary SSH to the Tailscale address timed out.
+- two unnamed Remote Desktop Commander devices are offline; their identity must not be guessed from old chat state.
+- `yuan` is the personal workstation and must not host project watchers.
+- `hermes` is forbidden for this project.
 
-PR #208 added `ai-credit-burn-rate-calculator` to the existing Reset primary-surface removal set. The direct URL remains preserved; build output no longer promotes it through the sitemap.
+Next runtime trigger: when the actual disposable observer host becomes reachable/identifiable, deploy the merged v1.1 files and verify a real systemd run, source health, peak memory and next timer. Do not claim watcher health before that evidence exists.
 
-Verification:
+## SECOND OBSERVER — reviewed source-change watch
 
-- PR #208: one-line bounded change;
-- Eval Gate #703: **PASS**;
-- Vercel Preview: **SUCCESS**;
-- squash merge: `4b444f029ee10a03d1116e8b097a8a31c2238a12`;
-- Vercel production status for the merge commit: **SUCCESS**.
+`phone-source-watch` remains the separate role for explicitly reviewed public official/commercial URLs. It should monitor changing provider-controlled facts such as price, package, availability and published rules with robots checks, sequential low-rate requests and conditional requests.
 
-If a future authorized Ahrefs crawl identifies a different exact orphan URL, treat that as a new evidence-backed defect. Do not reopen this item from the old alert without an exact current URL.
+Externally linked seller/provider/tutorial domains found by the community watcher are candidates only. Add one to the source watcher only after source value, robots/terms and decision relevance are reviewed. Never auto-crawl every linked domain.
 
-## NEXT — measurement hold, then re-measure Phone
+## Phone publication queue
 
-1. continue collecting Search Console + meaningful interaction evidence;
-2. re-measure the existing Phone canonical through Windsor.ai Search Console;
-3. keep Google organic separate from referral/social/direct and AI referral;
-4. if impressions accumulate without clicks, diagnose query/SERP fit before changing the product;
-5. if clicks appear but use is weak, improve the existing canonical from interaction evidence;
-6. expand to another market/network or publish route-level detail URLs only when evidence quality and product-value gates pass.
+Current public Phone surface remains the UK index/matrix. Evidence acquired backstage can lead to either:
+
+- an evidence-backed improvement/row on the existing index; or
+- an evidence-rich route detail page when it solves a distinct execution job and passes the publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
+
+Do not create country/provider pages for coverage. A separate route page requires unambiguous route identity/acquisition, current commercial facts, meaningful independent operational evidence, substantial unique execution content, visible freshness/conflicts and both product-value gates.
 
 ## Search Console 404 notice
 
@@ -90,10 +92,12 @@ The 2026-09-20 Google Search Console validation notice still refers to some URLs
 
 ## Do not do next
 
-- do not immediately add another Phone market/provider/ranking model;
+- do not stop Phone research merely because the public page is in a measurement window;
+- do not immediately bulk-add another market/provider/ranking model to production;
 - do not bulk-add weak global Phone rows;
 - do not invent compatibility percentages or a Phone risk score;
 - do not create country/provider doorway pages or a temporary-SMS backend;
+- do not scrape login-gated marketplaces or teach moderation evasion;
 - do not reopen Reset/Codex generic tracker work;
 - do not reopen Relay methodology;
 - do not migrate production to Astro as part of Phone work;

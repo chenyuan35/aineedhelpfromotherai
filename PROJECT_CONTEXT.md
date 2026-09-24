@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-23
+Last updated: 2026-09-24
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -11,43 +11,37 @@ Read this section first in a new session. Do not rescan the whole repository, VP
 | Area | Current state | Next move |
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
-| Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has also been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
-| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / UK DIRECTORY PILOT SHIPPED + PRODUCTION VERIFIED 2026-09-23.** The accepted directory/matrix contract is now implemented on the existing canonical. PR #203 merged as `084de00f`; Eval Gate #693 passed; Vercel production status succeeded; forced live fetch returned HTTP 200 and exposed the grouped UK matrix, detailed guide, and unchanged Data/Temporary families. | Hold production long enough for interaction + GSC evidence to accrue, then re-measure the existing canonical. Do not immediately add another market/feature merely because the UK pilot shipped. |
+| Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
+| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / UK DIRECTORY PILOT SHIPPED + PRODUCTION VERIFIED.** The existing canonical is the visual index/comparison surface. Public expansion remains evidence-gated, while backstage evidence acquisition should run continuously. | Keep production stable while search/interaction evidence accrues; operate the Phone evidence pipeline in parallel and deepen only evidence-qualified routes. |
+| Phone evidence acquisition | The repository has two bounded observer roles: community intelligence (`phone-demand-watch`) and reviewed source-change watch (`phone-source-watch`). Community watcher v1.1 is prepared to run hourly and capture service tags, commerce/seller-risk signals and externally linked public hostnames into bounded candidate history. | Merge/validate v1.1; deploy only on the actual disposable observer host once verified access is available; review candidates into durable research packets instead of auto-publishing. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains: Cursor DOWNGRADE; Claude REPURPOSE; GitHub Copilot KEEP/DIFFERENTIATE; Manus DOWNGRADE; Replit DOWNGRADE; Bolt REPURPOSE; AI Credit Burn KEEP/DIFFERENTIATE. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
 | Relay Exit Risk | **PRESERVE / DATA-ACCRUAL EXPERIMENT.** Product and methodology remain production-verified. | Continue legitimate historical snapshots/lifecycle accumulation. No search-led feature expansion without demand/usage evidence. |
-| Search Console | Search Console remains a distribution/measurement signal after value/competition gates. The corrected Phone carrier-directory surface was only just shipped. | Allow a meaningful post-deploy window, then re-measure Phone. Keep Google organic separate from referral/social/direct and do not treat the first hours as meaningful search evidence. |
+| Search Console | **Windsor.ai `searchconsole` is the active current reader; GSC Wizard is deprecated because its free/trial quota is exhausted.** The first Phone canonical row observed is `survival number`, 1 impression, 0 clicks, average position 22 on 2026-09-23. | Continue measuring through Windsor.ai while available; one impression is not a production-change signal. If Windsor fails, use official Search Console API/export rather than trial-account rotation. |
 | Keyword research | Sep 23 evidence is sufficient for current direction; Ubersuggest hit daily quota, Ahrefs returned `Insufficient plan`, Semrush returned `no_api_units`. | Do not rotate accounts or upgrade/pay without authorization. |
 | TikTok App Review | **SUBMITTED / WAITING FOR REVIEW.** | Do not Recall/edit submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested. |
 | Authority | **AIR-4 BATCH 2 SENT / WAITING.** Learn Cursor + explainx.ai were sent 2026-09-22. | No third target or follow-up before 2026-09-29 or later. |
 | Frontend foundation | Astro 7 + Tailwind 4 exists under `frontend/astro/` but is not the production build path. | No broad migration/redesign as part of Phone work. |
-| Observers | Existing observers/watchers remain bounded; disposable VPS carries no unique durable state. | Never infer watcher health from the wrong host; no production dependency on disposable observers. |
+| Observer access | `qwenpaw-sbs-prod-h2grp` / `qwen-control` is online but is not the Phone systemd observer host and has only about 311 MiB available RAM with no swap. `codex-vps` is visible on Tailscale, but the current control path requires a fresh Tailscale SSH authorization check; two unnamed Remote Desktop Commander devices are offline and are not safely identifiable. | Do not deploy watchers to qwen, yuan or hermes. Resume deployment when the actual disposable observer host is reachable/identifiable; never infer host identity from chat history. |
 | AI retrieval | Exa extraction works; semantic discovery remains weak. Tavily quota and GitHub metadata-write blockers remain. | Follow AIR docs in order; do not bypass provider blockers. |
 
 ## Immediate priority
 
-**Phone UK pilot is shipped. Hold production and re-measure rather than immediately changing it again.**
+**Run two tracks in parallel: keep the public Phone surface stable for measurement, and continuously acquire/normalize Phone evidence backstage.**
 
-PR #203 shipped the accepted carrier-directory / comparison-matrix correction on the existing canonical `/tools/phone-number-survival-guide/` without creating a new URL or a new Phone family.
+The public UK comparison pilot remains the current production baseline on `/tools/phone-number-survival-guide/`. Do not churn it from one Search Console impression or add weak global rows just to increase URL/page count.
 
-Production verification on 2026-09-23 confirmed:
+At the same time, a measurement hold is not a research hold. Phone Radar only becomes defensible if the project continuously captures changing operational evidence: acquisition paths, real landed prices, discounts, app-specific success/failure, activation friction, seller/platform failures, number loss/recycling, recovery/refunds and route freshness.
 
-- HTTP 200 on the canonical;
-- Long-term SMS/OTP renders a grouped UK carrier directory/matrix;
-- visible UK network/brand coverage includes Vodafone UK, VOXI, Lebara UK, O2 UK and Giffgaff;
-- the comparison exposes start cost, keep/year, app/service evidence, loss/closure history and refund/recovery state;
-- detailed in-page guide content is present;
-- Data SIM/eSIM and Temporary SMS family choices remain present;
-- no app compatibility percentage is shown where the route+service+operation evidence gate is below `n >= 5`.
+Current execution sequence:
 
-Current next sequence:
-
-1. allow meaningful interaction and Search Console evidence to accrue after the deploy;
-2. re-measure the existing Phone canonical rather than adding another market immediately;
-3. keep Google organic separate from referral/social/direct and AI referral;
-4. if impressions appear without clicks, diagnose query/SERP fit before changing the product;
-5. if clicks appear but usage is weak, improve the existing canonical from interaction evidence;
-6. expand to another market/network only when evidence quality and product-value gates pass.
+1. validate and merge the community-intelligence watcher v1.1;
+2. deploy v1.1 only when the actual disposable observer host is reachable and verify a real systemd run, source health, memory peak and next timer;
+3. verify the second disposable observer host before assigning the reviewed source-change watcher;
+4. review `candidates.tsv` into durable route/source packets with provenance and deduplication;
+5. keep Search Console measurement running through Windsor.ai, separating organic from referral/social/direct/AI traffic;
+6. improve the existing index first when evidence warrants it;
+7. publish a separate route detail URL only when the route has substantial unique execution content and passes the route-page gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 
 ## Product rules
 
@@ -57,18 +51,19 @@ Current next sequence:
 - Do not build clones or documentation wrappers.
 - Prefer real demand, clear tool intent, repeat value, speed, low marginal cost and maintainability.
 - Improve existing URLs before adding similar URLs.
-- Phone Radar value comes from current forum/community information asymmetry: cheap acquisition routes, real landed cost, discounts, keep-alive methods, app compatibility, continuity incidents and operational history.
+- Phone Radar value comes from current forum/community information asymmetry: cheap acquisition routes, real landed cost, discounts, keep-alive methods, app compatibility, continuity incidents, seller/platform outcomes and operational history.
 - Operator/provider pages are commercial metadata sources by default, not operational truth.
 - Missing data lowers confidence; never invent certainty.
 - App compatibility percentages may be shown only as observed sample rates with denominator/date when enough independent recent observations exist; otherwise show counts/qualitative state.
 - Do not create an arbitrary 0–100 Phone risk score. Show concrete incidents, recoveries/refunds and qualitative trend instead.
 - Separate Google organic, social/referral, AI referral and direct/repeat behavior.
+- Public marketplace/seller evidence may inform price, acquisition and risk, but do not bypass login/anti-bot controls or reproduce moderation-evasion code words.
 
 ## Phone Radar governing rule
 
-Canonical remains `/tools/phone-number-survival-guide/` unless a separate evidence-backed migration task says otherwise.
+Canonical remains `/tools/phone-number-survival-guide/` as the default index/comparison surface unless a separate evidence-backed migration task says otherwise.
 
-The long-term SMS/OTP surface is a **carrier/number directory and visual comparison matrix** with this hierarchy:
+The long-term SMS/OTP surface uses this hierarchy:
 
 `country / market → host network / carrier group → brand / MVNO → concrete route / product / acquisition path → timestamped observations/events`
 
@@ -83,6 +78,7 @@ The visual layer must let the user compare at a glance:
 - Wi-Fi Calling and roaming SMS behavior;
 - ChatGPT/OpenAI, Telegram, WhatsApp and other service-specific observations when evidence exists;
 - number recycling/suspension/closure incidents;
+- seller/platform non-delivery, invalid-number, refund/replacement outcomes when evidence exists;
 - refund/recovery/reissue/port-out outcomes;
 - current trend and last verified date;
 - evidence count/sample size;
@@ -92,7 +88,9 @@ Ranking may be use-case-specific and transparent. Missing data must not improve 
 
 The first shipped pilot is UK-only and intentionally bounded. Lebara UK, Giffgaff and VOXI are actionable pilot candidates; Vodafone UK direct remains an observation/hold route unless a legitimate current long-term path is re-verified. Giffgaff continuity/closure/recovery/refund history is surfaced prominently rather than hidden behind a generic stability label.
 
-Backstage keeps raw forum/community sources, reconciliation, duplicate/circular-report checks, event history and methodology.
+A separate route detail page is not forbidden, but it must not be a doorway page. It must solve a distinct execution job with substantial route-specific evidence, current commercial facts, operational corroboration, visible freshness/conflicts and durable user value beyond the comparison row. The publication gate is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
+
+Backstage keeps bounded source/candidate metadata, reconciliation, duplicate/circular-report checks, event history and methodology. Valuable normalized findings must move off disposable hosts before expiry.
 
 Never recommend forged KYC, fake identities, deceptive support stories, unauthorized access, security bypass or prohibited geography evasion.
 
@@ -118,14 +116,14 @@ Never recommend forged KYC, fake identities, deceptive support stories, unauthor
 - `docs/CURRENT_EXECUTION_QUEUE.md` — atomic next actions.
 - `docs/PRODUCT_VALUE_GATE.md` — official-source + independent-competitor substitution gates.
 - `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` — Sep 23 direction correction.
-- `docs/RESET_PRIMARY_SURFACE_REMOVAL_2026-09-23.md` — Reset primary-surface removal evidence.
+- `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` — active growth/evidence-acquisition architecture, route-detail publication gate and observer operating model.
 - `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` — accepted Phone information architecture, matrix fields, evidence/ranking rules and implementation boundary.
 - `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md` — UK pilot source reconciliation and route evidence packet.
 - `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json` — normalized shipped UK pilot data used by the Phone surface.
-- `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` — prior same-URL correction audit; retained as history.
-- `docs/PHONE_RADAR_INTERACTION_SPEC_2026-09-18.md` — earlier interaction baseline; use only where it does not conflict with the Sep 23 directory-matrix contract.
+- `docs/PHONE_DEMAND_WATCH.md` — community intelligence watcher contract/status.
+- `docs/PHONE_SOURCE_WATCH.md` — reviewed official/commercial source-change watcher contract/status.
 - `docs/PHONE_RADAR_PRODUCT_DEFINITION.md` and `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` — durable Phone identity/research method.
-- `docs/GSC_MEASUREMENT_2026-09-22.md` — latest accepted Search Console evidence before the directory correction.
+- `docs/GSC_MEASUREMENT_2026-09-22.md` — accepted Search Console measurement history; current reads use Windsor.ai.
 - `docs/RELAY_RISK_METHODOLOGY.md` — fixed Relay methodology.
 - `docs/AUTHORITY_AND_AI_DISCOVERY.md` — authority/referral ledger.
 - `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md` — ordered AIR work.
