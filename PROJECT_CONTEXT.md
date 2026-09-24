@@ -1,12 +1,12 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
 ## Current progress checkpoint
 
-Read this section first in a new session. Do not rescan the whole repository, VPS fleet, deployment history or old chats unless this checkpoint is stale, contradictory or the current task requires deeper inspection.
+After reading `AGENTS.md`, read this checkpoint before any deeper project inspection. Do not rescan the whole repository, VPS fleet, deployment history or old chats unless this checkpoint is stale, contradictory or the selected task requires deeper inspection.
 
 | Area | Current state | Next move |
 |---|---|---|
@@ -42,6 +42,8 @@ Current execution sequence:
 5. keep Search Console measurement running through Windsor.ai, separating organic from referral/social/direct/AI traffic;
 6. improve the existing index first when evidence warrants it;
 7. publish a separate route detail URL only when the route has substantial unique execution content and passes the route-page gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
+
+**Next independent session is exactly item 2.** Start from Qwen as the control/jump path, recover authorized access to the already-identified 128 MiB trial observer, and perform read-only service/journal/OOM/state inspection before any restart, reinstall or watcher deployment. If authorization cannot be recovered safely, end that session as `BLOCKED`; do not skip ahead by repurposing Qwen, `codex-vps`, `yuan` or `hermes`.
 
 ## Product rules
 
@@ -130,6 +132,6 @@ Never recommend forged KYC, fake identities, deceptive support stories, unauthor
 
 ## Handoff rule
 
-At the beginning of a new working session, read GitHub `main` in this order: `AGENTS.md` → this file's **Current progress checkpoint** → `docs/MASTER_PLAN.md` → `docs/OPERATING_WORKFLOW.md` → `docs/CURRENT_EXECUTION_QUEUE.md`, then only task-specific docs needed by the next action.
+At the beginning of a new working session, read GitHub `main` in this exact order: `AGENTS.md` → this file's **Current progress checkpoint** → `docs/MASTER_PLAN.md` → `docs/OPERATING_WORKFLOW.md` → `docs/CURRENT_EXECUTION_QUEUE.md` → `docs/SESSION_EXECUTION_PROTOCOL.md`, then only task-specific docs needed by the selected next action.
 
 GitHub `main` plus verified live production is final truth.

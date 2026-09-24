@@ -6,7 +6,7 @@ This is the default execution loop for `aineedhelpfromotherai.com`.
 
 Before a non-trivial work round, create a bounded checklist from the current GitHub facts and execution queue. The checklist should state the intended actions, verification steps, blockers/triggers and stop conditions.
 
-After the checklist exists, execute all eligible items continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
+After the checklist exists, execute all eligible checklist items inside the selected bounded session task continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
 
 ### In-round defect handling
 
@@ -23,9 +23,9 @@ At least once per project workday, append a dated entry to the Google Docs journ
 
 ## 0. Resume without rescanning
 
-At the start of a new session, read `AGENTS.md`, then the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md`, then `docs/MASTER_PLAN.md`, then this workflow. Do not perform a full repository/VPS/deployment audit unless the current task needs it or the checkpoint is stale/contradictory.
+At the start of a new session, follow one exact chain: `AGENTS.md` → `PROJECT_CONTEXT.md` **Current progress checkpoint** → `docs/MASTER_PLAN.md` → `docs/OPERATING_WORKFLOW.md` → `docs/CURRENT_EXECUTION_QUEUE.md` → `docs/SESSION_EXECUTION_PROTOCOL.md`. Do not use an old chat, old session handoff, historical audit or remembered machine identity as a substitute. Do not perform a full repository/VPS/deployment audit unless the selected current task needs it or the canonical checkpoint is stale/contradictory.
 
-The checkpoint must answer: what is live, what was just completed, what is blocked/waiting, and what the next concrete action is. `docs/MASTER_PLAN.md` must answer: which project phase is active, which sprint task comes next, and what exit gate moves the project forward.
+The checkpoint must answer what is live and what is blocked; `docs/MASTER_PLAN.md` must answer phase/priority/exit gate; the queue must state exactly what task is next and what must not be done. If those sources disagree, reconcile them before execution instead of choosing whichever instruction is most convenient.
 
 When the current task involves external authority, outreach, referral distribution, or AI-answer visibility, also read `docs/AUTHORITY_AND_AI_DISCOVERY.md` before acting. It is the durable ledger for who was contacted, what was sent, what happened, and what follow-up is due.
 
@@ -169,7 +169,7 @@ Review performance in cohorts rather than reacting to one day of data. Useful si
 
 Use actual Search Console queries to decide whether to improve a page, add a distinct adjacent tool, or stop investing in the topic, but only after the product itself has passed the value gate. High impressions with weak/no clicks may indicate poor snippet fit, but they may also indicate a weak underlying user job; do not assume the fix is always SEO copy.
 
-For AI discovery, treat classic SEO as the foundation rather than a separate hack. Keep public pages crawlable, give changing claims primary-source evidence and last-verified dates, use clear answer-first sections/headings, and provide unique utility that a generic summary cannot replace. Measure AI-assistant referral traffic through GA4/GSC Wizard and citation/AI visibility through Bing Webmaster or Search Console when those reports are available.
+For AI discovery, treat classic SEO as the foundation rather than a separate hack. Keep public pages crawlable, give changing claims primary-source evidence and last-verified dates, use clear answer-first sections/headings, and provide unique utility that a generic summary cannot replace. Measure AI-assistant referral traffic through an authorized analytics reader such as GA4 when available. Use Windsor.ai `searchconsole` for current Google Search Console performance while it remains connected; GSC Wizard is deprecated for new reads. Treat AI citation/visibility as a separate measurement channel rather than inferring it from Google search traffic.
 
 For AI-native retrieval systems, use a provider-aligned, non-adversarial approach. The objective is to fit legitimate discovery/relevance/quality/freshness/authority signals, not to bypass or manipulate them. Diagnose crawl/discovery, indexing, candidate retrieval, ranking/reranking, chunk extraction and downstream citation as separate stages. Never use cloaking, hidden provider-specific text, fake citations, fabricated freshness, synthetic backlinks or deceptive metadata.
 
@@ -186,7 +186,7 @@ When authority/distribution work is active:
 
 ## 8. Maintenance and handoff
 
-The VPS radar runs daily and writes its latest shortlist under `/var/lib/aineedhelp-radar/`. Review newly appearing phrases first. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
+The VPS radar may write a latest shortlist under `/var/lib/aineedhelp-radar/`, but do not read it as part of ordinary session startup. Read `latest.md` only when the selected task is topic selection/discovery. Re-check official rules on time-sensitive tools before making claims or when user reports suggest a change.
 
 After every material milestone, update the **Current progress checkpoint** in `PROJECT_CONTEXT.md` before considering the round complete. Also update `docs/MASTER_PLAN.md` whenever a phase status, sprint task, exit gate, or priority materially changes. External authority/outreach/AI-discovery actions must also update `docs/AUTHORITY_AND_AI_DISCOVERY.md` in the same round. AI-native provider tests must update `docs/AI_RETRIEVAL_BENCHMARK.md`, and AIR task status must update `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md`.
 

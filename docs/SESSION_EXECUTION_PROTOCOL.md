@@ -1,8 +1,10 @@
 # Session Execution Protocol — 25-minute work window
 
-Last updated: 2026-09-18
+Last updated: 2026-09-25
 
 This document governs **conversation/session-level execution** for `aineedhelpfromotherai.com`. It does not replace project planning or project facts.
+
+Before selecting a session task, the new conversation must already have read GitHub `main` in this exact order: `AGENTS.md` → `PROJECT_CONTEXT.md` checkpoint → `docs/MASTER_PLAN.md` → `docs/OPERATING_WORKFLOW.md` → `docs/CURRENT_EXECUTION_QUEUE.md` → this file. Previous assistant summaries, chat handoffs and historical `SESSION_HANDOFF_*` files cannot override that chain.
 
 ## Two planning layers
 
@@ -103,13 +105,14 @@ Recommended structure in the task manager:
 - completed session tasks may be archived/closed;
 - long-term roadmap items stay in GitHub, not duplicated into the task manager.
 
-## Current correction after 2026-09-18 frontend review
+## Durable handoff discipline
 
-The previous workflow allowed too many adjacent tasks to be attempted in one conversation and treated technical completion as product completion too readily.
+Temporary phase-specific rules do not belong here once that phase has ended. Current priorities and blockers live in `PROJECT_CONTEXT.md`, `docs/MASTER_PLAN.md` and `docs/CURRENT_EXECUTION_QUEUE.md`.
 
-Until the current frontend closure pass is complete:
+At handoff:
 
-- do not add new product features or new Phone routes;
-- do not call Phone, Reset, Relay, homepage, or Tools visually/product-complete based only on CI/PR state;
-- use separate sessions for audit, homepage closure, Phone closure, Reset closure, Relay closure, Tools/navigation closure, mobile QA, and final production verification;
-- each of those sessions must have its own definition of done and visible-production verification where applicable.
+- persist material facts/blocker changes to the canonical GitHub source in the same work round;
+- leave exactly one recommended next-session task in the queue, with its trigger, done condition and stop conditions;
+- mark waiting/blocked work explicitly so the next session does not reinterpret it as eligible;
+- do not carry obsolete temporary priorities forward merely because they appeared in an older chat or handoff document;
+- do not silently switch to a different roadmap task when the selected task hits a real blocker unless the current queue explicitly defines that fallback as eligible.

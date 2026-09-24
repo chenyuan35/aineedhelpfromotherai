@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic execution queue.
 
@@ -22,6 +22,22 @@ Do not stop merely to narrate progress or ask the user to approve routine low-ri
 3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
+
+## NEXT SESSION — one bounded task only
+
+**Task:** recover authorized access from Qwen to the verified 128 MiB trial observer and inspect its existing state before changing it.
+
+**Why now:** watcher v1.1 is already merged and validated; the remaining blocker is control/authentication, not host discovery.
+
+**Allowed sequence:**
+1. use Qwen as the control/jump path and recover legitimate authorized SSH/control access without exposing credentials;
+2. once logged in, inspect `remote-desktop-commander.service`, Phone watcher services/timers, journals, boot/OOM history, memory/disk state and stored evidence read-only;
+3. determine why RDC/control disappeared and whether the existing watcher state/data is intact;
+4. only if the host is healthy enough and evidence supports it, deploy/verify main's watcher v1.1; otherwise record the blocker and stop.
+
+**Done:** authenticated access is restored and the existing host state is inspected with evidence; watcher v1.1 is either verified running or a precise blocker is recorded.
+
+**Stop / do not substitute:** if legitimate authentication cannot be recovered, end `BLOCKED`. Do not reinstall/reimage first, do not move the watcher to Qwen, do not repurpose `codex-vps`, and never use `yuan` or `hermes` as fallback infrastructure.
 
 ## Active Search Console measurement path
 
@@ -61,7 +77,7 @@ Verification:
 
 Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
 
-## NEXT / BLOCKER — recover authenticated access to the verified trial observer
+## BLOCKER DETAILS — authenticated access to the verified trial observer
 
 The primary observer host is now identified from Qwen-local evidence; runtime deployment is blocked by authentication/control-channel access rather than host discovery:
 

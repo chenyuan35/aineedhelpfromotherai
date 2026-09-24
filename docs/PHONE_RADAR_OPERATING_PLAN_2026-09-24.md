@@ -148,21 +148,24 @@ Growth metrics:
 
 ## Current state and next execution order
 
-Current state on 2026-09-24:
+Current state after the 2026-09-24 observer-topology verification:
 
 - UK comparison pilot is live and production-verified;
 - the first observed Search Console exposure for the Phone canonical is 1 impression for `survival number` on 2026-09-23, position 22, with no click; this sample is too small for a product change;
 - the repository contains two bounded observer roles (`phone-demand-watch` and `phone-source-watch`);
-- community watcher v1.1 is being upgraded to hourly structured intelligence with service/commerce/linked-host fields and regression coverage;
-- the currently connected Qwen control machine is not the Phone systemd observer host and is too memory-constrained to absorb another recurring crawler workload;
-- `codex-vps` is visible on the Tailscale network, but the current control path cannot run commands there without a fresh Tailscale SSH authorization check;
-- two other Remote Desktop Commander devices that could not be identified safely are offline, so they are not being assumed to be the observer hosts.
+- community watcher v1.1 is already merged and Eval-validated in GitHub via PR #211;
+- Qwen is the verified control/jump path, not the Phone systemd observer host; its later freed RAM does not change that assigned role;
+- the primary 128 MiB / 1 GiB Debian 13 trial observer is identified from Qwen SSH history, historical RDC enrollment and a still-matching SSH host key. The host still answers at its original NAT SSH endpoint, but current non-interactive authentication is rejected; the blocker is authentication/control recovery, not host discovery;
+- Qwen has a trial-backup SSH key, but there is no successful record that the public key was installed on the trial host, so key-based access must not be assumed;
+- `codex-vps` is the other known Qwen-managed/Tailscale node, requires fresh SSH authorization and already has a Relay-history role; it is not automatically the second Phone observer;
+- any remaining unnamed/offline RDC device remains unverified and must not be guessed from old chat state.
 
 Execution order:
 
-1. merge and validate watcher v1.1 in GitHub;
-2. when the actual disposable observer host is reachable, deploy v1.1 there and verify a real systemd run, source health, memory peak and next timer;
-3. identify/verify the second observer host before assigning `phone-source-watch`; never infer host identity from an old chat;
-4. begin periodic review of `candidates.tsv`, promoting only evidence-rich candidates into durable Phone research packets;
-5. keep public Phone production stable until search/interaction evidence or a clearly superior evidence-backed route justifies a bounded change;
-6. when a route has enough unique execution value, evaluate a separate detail URL under the route-page publication gate above.
+1. recover legitimate authorized access from Qwen to the identified 128 MiB trial observer;
+2. before restart/reinstall/deployment, inspect RDC/watcher services, timers, journals, boot/OOM history, memory/disk state and stored evidence;
+3. only after that inspection, deploy/verify watcher v1.1 on the trial observer if the host is healthy enough, checking a real systemd run, source health, memory peak and next timer;
+4. separately verify the intended second disposable-observer role before assigning `phone-source-watch`; do not repurpose `codex-vps` by assumption;
+5. begin periodic review of `candidates.tsv`, promoting only evidence-rich candidates into durable Phone research packets;
+6. keep public Phone production stable until search/interaction evidence or a clearly superior evidence-backed route justifies a bounded change;
+7. when a route has enough unique execution value, evaluate a separate detail URL under the route-page publication gate above.

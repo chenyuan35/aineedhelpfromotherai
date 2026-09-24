@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -95,8 +95,8 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 5. **DONE — Phone carrier-directory product correction.** `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` fixed the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
 6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
 7. **DONE — Phone community watcher v1.1 repository upgrade.** PR #211 added hourly bounded structured intelligence, candidate history, regression coverage and source-role documentation; Eval Gate #709 passed; squash merge `3204ee0be13411c146e1031bbf13a094949f679f`.
-8. **ACTIVE — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
-9. **NEXT AFTER AUTH RECOVERY — deploy/verify watcher v1.1 on the verified 128 MiB trial observer.** Qwen history + the historical RDC enrollment + the unchanged Sep 24 SSH host key identify the original host; the remaining blocker is authorized login/control-channel recovery. Inspect current services/journals before any restart, then verify source health, child exit success, memory peak and next timer.
+8. **ONGOING BACKGROUND — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
+9. **NEXT SESSION — recover authenticated access to the verified 128 MiB trial observer, then inspect before changing anything.** Qwen history + the historical RDC enrollment + the unchanged Sep 24 SSH host key identify the original host. Use Qwen as the control/jump path. First recover authorized access; then inspect RDC/watcher services, timers, journals, boot/OOM history and stored evidence read-only. Only after that evidence may watcher v1.1 deployment/restart be considered and verified for source health, child exit success, memory peak and next timer.
 10. **NEXT AFTER SECOND-ROLE VERIFICATION — assign the reviewed source-change watcher.** `codex-vps` is a known Qwen-managed/Tailscale node but already has a Relay-history role; do not repurpose it or infer that it is the intended second Phone observer without a separate review.
 11. **ONGOING — convert candidate signals into durable route/source packets.** Promote only evidence-rich, deduplicated findings; no auto-publish.
 12. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
@@ -135,7 +135,7 @@ Community watcher v1.1 captures bounded discovery metadata rather than full post
 
 The reviewed-source watcher checks only explicitly accepted public URLs with robots checks, sequential low-rate requests, conditional requests where available and separate source-health/error classification.
 
-Neither observer host is production infrastructure. Valuable normalized evidence must not remain uniquely on a disposable VPS.
+Observer workloads are not production infrastructure. The verified trial host and any future second observer are disposable by default; valuable normalized evidence must not remain uniquely on either host.
 
 ## Route detail page gate
 
