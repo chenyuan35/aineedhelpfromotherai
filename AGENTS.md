@@ -2,16 +2,20 @@
 
 This repository's current mission is the low-cost utility site at `aineedhelpfromotherai.com`.
 
-Before making changes:
-1. Read the **Current progress checkpoint** at the top of `PROJECT_CONTEXT.md` first.
-2. Read `docs/MASTER_PLAN.md` for the whole-project phase, current sprint and next task order.
-3. Read `docs/OPERATING_WORKFLOW.md` for the execution loop.
-4. Read `docs/CURRENT_EXECUTION_QUEUE.md` for the current atomic done/next/trigger queue after the three canonical planning sources above.
-5. Read `docs/SESSION_EXECUTION_PROTOCOL.md` and select exactly one bounded session task that can reach a useful verified stopping point inside the practical ~25-minute tool window.
-6. After the GitHub sources above are understood, read the latest end-of-day closeout in the Google Docs journal `aineedhelpfromotherai — Daily Project Journal` when prior-day execution detail is useful. Treat it as chronological context only; it never overrides GitHub `main` or verified production.
-7. Inspect deeper repository/VPS/deployment state only when the current task requires it or the checkpoint is stale/contradictory.
+## Exact new-session startup order
 
-`docs/CURRENT_EXECUTION_QUEUE.md` is an execution aid, not a competing source of truth. `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts, project phase, priorities and exit gates. If the queue is stale or conflicts with those sources or verified production, update the queue before acting.
+For every new project session, use this exact order and do not substitute chat memory or an old handoff file:
+
+1. `AGENTS.md` — this file; stable project rules and source precedence.
+2. `PROJECT_CONTEXT.md` — read the **Current progress checkpoint** first; current facts and verified blockers.
+3. `docs/MASTER_PLAN.md` — current phase, sprint, priorities and exit gates.
+4. `docs/OPERATING_WORKFLOW.md` — execution/release/measurement rules.
+5. `docs/CURRENT_EXECUTION_QUEUE.md` — the one current atomic next task, trigger and do-not-do list.
+6. `docs/SESSION_EXECUTION_PROTOCOL.md` — bind this conversation to one bounded session task.
+
+Only after those six sources agree should task-specific docs be read. Read the Google Docs daily journal only when prior-day chronological detail is useful. Historical `SESSION_HANDOFF_*`, audits, PR descriptions, old chats and model memory are evidence only; they never select the current task.
+
+Source precedence is: GitHub `main` canonical facts/plans plus verified live/runtime evidence are authoritative. If they appear to conflict, stop the conflicting action and reconcile the canonical docs before proceeding. `docs/CURRENT_EXECUTION_QUEUE.md` is an execution aid, not a competing source of truth; if stale, update it to match `PROJECT_CONTEXT.md`, `docs/MASTER_PLAN.md` and verified reality before acting.
 
 Execution cadence: before any non-trivial work round, form a bounded Session Card and checklist under `docs/SESSION_EXECUTION_PROTOCOL.md`. One chat/session should normally carry one bounded task, not the whole project backlog. Split work before execution if it cannot reasonably reach a useful verified checkpoint inside the practical ~25-minute tool window. Then execute the eligible checklist continuously instead of waiting for item-by-item confirmation unless authorization, irreversible risk, or a documented blocker requires a stop. On each project workday, append the actual checklist/results/verification/blockers/next trigger to the Google Docs journal `aineedhelpfromotherai — Daily Project Journal` as a human-readable diary. At the end of the workday, also append an explicit closeout covering completed work, failed/blocked items, unfinished state, evidence gates, the next-session execution order, and do-not-do rules as defined in `docs/DAILY_PROJECT_JOURNAL.md`. GitHub `main` plus verified production remains authoritative.
 
