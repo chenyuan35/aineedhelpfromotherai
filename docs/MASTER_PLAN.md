@@ -96,8 +96,8 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
 7. **DONE — Phone community watcher v1.1 repository upgrade.** PR #211 added hourly bounded structured intelligence, candidate history, regression coverage and source-role documentation; Eval Gate #709 passed; squash merge `3204ee0be13411c146e1031bbf13a094949f679f`.
 8. **ACTIVE — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
-9. **NEXT AFTER OBSERVER ACCESS — deploy/verify watcher v1.1 on the actual disposable observer host.** Verify source health, child exit success, memory peak and next timer; do not deploy to qwen/yuan/hermes merely because they are reachable.
-10. **NEXT AFTER SECOND-HOST VERIFICATION — assign the reviewed source-change watcher.** Do not infer the identity of offline/unverified hosts.
+9. **NEXT AFTER AUTH RECOVERY — deploy/verify watcher v1.1 on the verified 128 MiB trial observer.** Qwen history + the historical RDC enrollment + the unchanged Sep 24 SSH host key identify the original host; the remaining blocker is authorized login/control-channel recovery. Inspect current services/journals before any restart, then verify source health, child exit success, memory peak and next timer.
+10. **NEXT AFTER SECOND-ROLE VERIFICATION — assign the reviewed source-change watcher.** `codex-vps` is a known Qwen-managed/Tailscale node but already has a Relay-history role; do not repurpose it or infer that it is the intended second Phone observer without a separate review.
 11. **ONGOING — convert candidate signals into durable route/source packets.** Promote only evidence-rich, deduplicated findings; no auto-publish.
 12. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
 13. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
@@ -191,7 +191,7 @@ Status: **SENT / WAITING**. Learn Cursor + explainx.ai were sent 2026-09-22. Do 
 - Ubersuggest: Sep 23 live evidence collected, then daily report quota exhausted; do not rotate accounts or upgrade without authorization.
 - Ahrefs: current API access returned `Insufficient plan`.
 - Semrush: current connector returned `no_api_units`.
-- Current Phone observer deployment access: qwen is not the Phone systemd observer host and is memory constrained; `codex-vps` requires a fresh Tailscale SSH authorization check; two unnamed Remote Desktop Commander devices are offline/unverified. This blocks runtime deployment verification, not repository preparation or manual research.
+- Current Phone observer deployment access: Qwen is the control/jump path, not the Phone systemd observer. Qwen history now identifies the original 128 MiB / 1 GiB Debian 13 trial observer and maps one historical RDC enrollment to it; the same NAT SSH endpoint and ED25519 host key are still present on Sep 24. The remaining trial-host blocker is authenticated access: historical administration used password SSH, Qwen's later dedicated trial-backup key has no recorded successful installation on the trial host, and current non-interactive default SSH is rejected. `codex-vps` remains separately known on Tailscale but requires fresh authorization and retains its Relay-history role. The trial provider/vendor remains unverified in canonical facts.
 
 Treat provider/access limits as blockers, not evidence failures.
 
