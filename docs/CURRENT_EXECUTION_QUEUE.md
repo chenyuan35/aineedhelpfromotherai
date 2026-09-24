@@ -25,19 +25,19 @@ Phone public production should not churn from tiny search samples, but the Phone
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** recover authorized access from Qwen to the verified 128 MiB trial observer and inspect its existing state before changing it.
+**Task:** review watcher v1.1 candidate output and convert only evidence-rich findings into durable Phone research packets.
 
-**Why now:** watcher v1.1 is already merged and validated; the remaining blocker is control/authentication, not host discovery.
+**Why now:** authenticated observer access is restored, the disk-full fault is bounded/fixed, watcher v1.1 is deployed and a real hourly run produced six candidates with 4/4 source health. The next bottleneck is evidence qualification, not infrastructure.
 
 **Allowed sequence:**
-1. use Qwen as the control/jump path and recover legitimate authorized SSH/control access without exposing credentials;
-2. once logged in, inspect `remote-desktop-commander.service`, Phone watcher services/timers, journals, boot/OOM history, memory/disk state and stored evidence read-only;
-3. determine why RDC/control disappeared and whether the existing watcher state/data is intact;
-4. only if the host is healthy enough and evidence supports it, deploy/verify main's watcher v1.1; otherwise record the blocker and stop.
+1. read the post-v1.1 `candidates.tsv`/`latest.tsv` copy on Qwen or the live observer through the recovered key-only SSH path;
+2. deduplicate candidates against existing Phone packets/routes and classify whether each adds acquisition, app-compatibility, seller-risk, retention or recovery evidence;
+3. open the original public thread/source only when needed for provenance and current context;
+4. promote only evidence that survives the product/value/source rules into a durable research packet or an explicit rejected/insufficient note.
 
-**Done:** authenticated access is restored and the existing host state is inspected with evidence; watcher v1.1 is either verified running or a precise blocker is recorded.
+**Done:** all six current candidates are dispositioned with provenance and no candidate remains ambiguous merely because it was emitted by the watcher.
 
-**Stop / do not substitute:** if legitimate authentication cannot be recovered, end `BLOCKED`. Do not reinstall/reimage first, do not move the watcher to Qwen, do not repurpose `codex-vps`, and never use `yuan` or `hermes` as fallback infrastructure.
+**Stop / do not substitute:** do not auto-publish routes/pages, do not treat watcher flags as authoritative carrier facts, do not broaden crawling, and do not move observer workloads onto Qwen, `codex-vps`, `yuan` or `hermes`.
 
 ## Active Search Console measurement path
 
@@ -77,20 +77,19 @@ Verification:
 
 Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
 
-## BLOCKER DETAILS — authenticated access to the verified trial observer
+## VERIFIED RUNTIME — trial observer access and watcher v1.1
 
-The primary observer host is now identified from Qwen-local evidence; runtime deployment is blocked by authentication/control-channel access rather than host discovery:
+The Sep 25 bounded recovery/audit task is complete:
 
-- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is the verified control/jump path and **is not the Phone systemd observer host**. Do not move the watcher onto Qwen merely because Qwen is reachable.
-- Qwen SSH history identifies the original one-month Debian 13 trial observer as the 128 MiB RAM / 1 GiB root NAT host administered on Sep 15. The same NAT SSH endpoint is reachable on Sep 24 and its ED25519 host key matches the Sep 15 known-host entry, so this is still the original VPS rather than a replacement/reinstall.
-- Sep 15 logs show password SSH management first, then successful Remote Desktop Commander enrollment on that same trial host. One formerly unnamed/offline RDC identity can therefore be safely mapped to this observer. The RDC control channel itself is not currently online.
-- Qwen has a dedicated `aineedhelp_trial_backup_ed25519` key created Sep 15, but the execution record contains no successful step proving that public key was installed on the trial host. Current non-interactive/default SSH is rejected, so do not claim key-based access exists.
-- `codex-vps` is the other verified downstream machine managed from Qwen via Tailscale/SSH. It remains visible, but fresh Tailscale SSH authorization is required and it already has a Relay-history role; do not automatically repurpose it as the second Phone observer.
-- The trial VPS provider/vendor is **not** recorded in canonical project facts. Do not infer it from IP ownership, kernel naming or matching low-end specs.
-- one other unnamed/offline RDC device may still exist and remains unverified; do not guess its identity.
-- `yuan` is the personal workstation and must not host project watchers; `hermes` is forbidden for this project.
+- Qwen's existing dedicated trial-backup key authenticates successfully to the original 128 MiB / 1 GiB Debian 13 observer; the live ED25519 host key matches the stored Sep 15 fingerprint.
+- Read-only inspection found all four observer timers enabled, latest service results at exit 0, no OOM event in the inspected boot, and Phone watcher state intact.
+- The root filesystem was 100% full. Phone-demand runs since Sep 24 07:33 logged repeated `No space left on device` while still returning exit 0, so systemd success alone had become a false-health signal.
+- The dominant removable item was an unused 196 MB Puppeteer Chrome download ZIP inside a 450 MB cache. RDC is explicitly configured with `DC_SKIP_CHROME_DOWNLOAD=1`, no process referenced that cache, and only the redundant ZIP was deleted after backing up watcher state/scripts/units to Qwen. Root usage fell to 82%.
+- `remote-desktop-commander.service` is not the recovered control path: its persisted refresh token is invalid (`Already Used`) and the unit had reached 148 restarts while waiting for new device authorization. No re-enrollment/reinstall was performed.
+- GitHub `main` watcher v1.1 (`9c4fa5c`) was deployed with matching file checksums. The real verification run completed 4/4 sources HTTP 200, `matched=25`, `candidate_total=6`, exit 0, 19.3 MiB memory peak; the timer is enabled/active at 1 hour with up to 10 minutes jitter.
+- Post-v1.1 observer state, including `candidates.tsv`, was copied back to Qwen so current evidence is not unique to the disposable host.
 
-Next runtime trigger: recover authorized access to the identified 128 MiB trial observer through the existing Qwen SSH/control chain, then inspect `remote-desktop-commander.service`, watcher timers/journals, boot/OOM history and stored evidence **before** restarting or reinstalling anything. Only after that inspection should main's v1.1 be deployed and a real systemd run/source-health/memory/next-timer check be recorded.
+Current observer control is Qwen → key-only SSH. RDC repair is optional and should not displace Phone evidence work unless SSH becomes inadequate.
 
 ## SECOND OBSERVER — reviewed source-change watch
 
