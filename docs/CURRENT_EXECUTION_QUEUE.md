@@ -23,6 +23,23 @@ Do not stop merely to narrate progress or ask the user to approve routine low-ri
 
 Mandatory product-value and competition gates remain unchanged. Confirmed production defects may be repaired without treating those repairs as speculative product expansion.
 
+## Active Search Console measurement path
+
+- **Use Windsor.ai `searchconsole` for current Search Console reads.** The connected account is `sc-domain:aineedhelpfromotherai.com`.
+- **Do not use GSC Wizard for new reads.** Its free/trial quota is exhausted and the project already marks it deprecated.
+- If Windsor.ai access/quota later fails, classify that as a provider/access blocker and fall back to Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
+- Historical GSC Wizard evidence remains valid for the dates when it was collected.
+
+Latest Phone signal from Windsor.ai on 2026-09-24 using `include_fresh_data=true` for 2026-09-20 through 2026-09-24:
+
+- query: `survival number`;
+- date: 2026-09-23;
+- impressions: 1;
+- clicks: 0;
+- average position: 22.
+
+This is the first Search Console exposure row observed for the Phone canonical, but one impression is not enough evidence for a production change.
+
 ## JUST COMPLETED — mailbox/site-alert defect closure
 
 ### Phone broken JavaScript
@@ -55,12 +72,12 @@ If a future authorized Ahrefs crawl identifies a different exact orphan URL, tre
 
 ## NEXT — measurement hold, then re-measure Phone
 
-1. allow Search Console + meaningful interaction evidence to accrue;
-2. re-measure the existing Phone canonical;
+1. continue collecting Search Console + meaningful interaction evidence;
+2. re-measure the existing Phone canonical through Windsor.ai Search Console;
 3. keep Google organic separate from referral/social/direct and AI referral;
-4. if impressions appear without clicks, diagnose query/SERP fit before changing the product;
+4. if impressions accumulate without clicks, diagnose query/SERP fit before changing the product;
 5. if clicks appear but use is weak, improve the existing canonical from interaction evidence;
-6. expand to another market/network only when evidence quality and product-value gates pass.
+6. expand to another market/network or publish route-level detail URLs only when evidence quality and product-value gates pass.
 
 ## Search Console 404 notice
 
