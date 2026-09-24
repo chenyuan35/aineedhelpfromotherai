@@ -12,6 +12,7 @@ const resetSlugs = [
   'manus-credits-reset',
   'replit-usage-reset',
   'bolt-tokens-reset',
+  'ai-credit-burn-rate-calculator',
 ];
 
 function update(path, transform) {
