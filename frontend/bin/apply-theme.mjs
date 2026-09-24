@@ -12,6 +12,7 @@ const themeRuntime = `<script id="theme-runtime">(()=>{const button=document.que
 
 function patchHtml(path){
   let html = readFileSync(path, 'utf8');
+  html = html.replaceAll('<script src="/theme-toggle.js" defer></script>', '');
   if (!html.includes('id="theme-init"')) {
     if (!html.includes('</head>')) throw new Error(`Missing </head>: ${path}`);
     html = html.replace('</head>', `${themeInit}</head>`);
