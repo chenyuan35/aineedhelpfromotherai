@@ -40,9 +40,9 @@ Latest Phone signal from Windsor.ai on 2026-09-24 using fresh data for 2026-09-2
 
 One impression is not enough evidence for a public product change.
 
-## ACTIVE — Phone community intelligence watcher v1.1
+## JUST COMPLETED — Phone community intelligence watcher v1.1
 
-Repository change under `ops/phone-intelligence-watch-v2-20260924` upgrades the existing bounded community watcher without turning it into a broad crawler:
+PR #211 upgraded the existing bounded community watcher without turning it into a broad crawler:
 
 1. hourly timer with up to 10 minutes jitter, replacing the four-hour cadence that could miss shallow/high-turnover NodeSeek RSS items;
 2. structured service tags for OpenAI/ChatGPT/Codex, Claude, Telegram, WhatsApp, TikTok, Google, Reddit and Discord;
@@ -52,9 +52,16 @@ Repository change under `ops/phone-intelligence-watch-v2-20260924` upgrades the 
 6. regression test covering parser syntax, watcher syntax, timer cadence and the new structured fields;
 7. Eval Gate integration so future changes cannot silently break the watcher contract.
 
+Verification:
+
+- PR #211: **MERGED**;
+- Eval Gate #709: **PASS**, including the new watcher audit and existing Phone build/eval checks;
+- squash merge: `3204ee0be13411c146e1031bbf13a094949f679f`;
+- no production Phone page or new public URL changed.
+
 Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
 
-## BLOCKER — actual observer host access
+## NEXT / BLOCKER — deploy on the actual observer host
 
 Runtime deployment is not currently verifiable from available control paths:
 
@@ -64,7 +71,7 @@ Runtime deployment is not currently verifiable from available control paths:
 - `yuan` is the personal workstation and must not host project watchers.
 - `hermes` is forbidden for this project.
 
-Next runtime trigger: when the actual disposable observer host becomes reachable/identifiable, deploy the merged v1.1 files and verify a real systemd run, source health, peak memory and next timer. Do not claim watcher health before that evidence exists.
+Next runtime trigger: when the actual disposable observer host becomes reachable/identifiable, deploy main's v1.1 files and verify a real systemd run, source health, peak memory and next timer. Do not claim watcher health before that evidence exists.
 
 ## SECOND OBSERVER — reviewed source-change watch
 

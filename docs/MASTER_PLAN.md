@@ -82,7 +82,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
 | P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **DONE — UK PILOT SHIPPED / PRODUCTION VERIFIED** | PR #203 merged; Eval #693 passed; Vercel production succeeded; live canonical verified HTTP 200 with grouped UK matrix + guide flow |
-| P6 Phone evidence-gated depth | Continuously acquire evidence; deepen only routes/surfaces that survive value + competition gates | **ACTIVE — BACKSTAGE ACQUISITION / PUBLIC EXPANSION MEASUREMENT-GATED** | Repeatable observer/review loop plus at least one evidence-qualified improvement/detail candidate with measurable user/search value |
+| P6 Phone evidence-gated depth | Continuously acquire evidence; deepen only routes/surfaces that survive value + competition gates | **ACTIVE — WATCHER V1.1 MERGED / RUNTIME DEPLOYMENT BLOCKED / PUBLIC EXPANSION MEASUREMENT-GATED** | Verified observer/review loop plus at least one evidence-qualified improvement/detail candidate with measurable user/search value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense/partner revenue without compromising trust | QUEUED | Cover annual domain cost, then first ~RMB 100/month target |
 
@@ -94,11 +94,13 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 4. **DONE — Phone same-URL source-role correction.** PR #198 corrected homepage + existing Phone canonical framing and exposed more practical route evidence.
 5. **DONE — Phone carrier-directory product correction.** `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` fixed the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
 6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
-7. **ACTIVE — Phone evidence acquisition loop.** Upgrade `phone-demand-watch` to hourly bounded structured intelligence; keep a separate reviewed-source watcher; move valuable candidate summaries into durable research before disposable-host expiry.
+7. **DONE — Phone community watcher v1.1 repository upgrade.** PR #211 added hourly bounded structured intelligence, candidate history, regression coverage and source-role documentation; Eval Gate #709 passed; squash merge `3204ee0be13411c146e1031bbf13a094949f679f`.
 8. **ACTIVE — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
 9. **NEXT AFTER OBSERVER ACCESS — deploy/verify watcher v1.1 on the actual disposable observer host.** Verify source health, child exit success, memory peak and next timer; do not deploy to qwen/yuan/hermes merely because they are reachable.
-10. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-11. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+10. **NEXT AFTER SECOND-HOST VERIFICATION — assign the reviewed source-change watcher.** Do not infer the identity of offline/unverified hosts.
+11. **ONGOING — convert candidate signals into durable route/source packets.** Promote only evidence-rich, deduplicated findings; no auto-publish.
+12. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+13. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 
