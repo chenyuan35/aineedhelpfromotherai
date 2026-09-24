@@ -8,6 +8,17 @@ Before a non-trivial work round, create a bounded checklist from the current Git
 
 After the checklist exists, execute all eligible items continuously. Do not stop after each item merely to narrate progress or request confirmation. Stop only when authorization is required, an irreversible/high-impact choice appears, a documented blocker/wait gate applies, or no eligible item remains.
 
+### In-round defect handling
+
+When a new issue is discovered while executing an already-authorized project task, treat it as part of the current work round and continue automatically through diagnosis, the smallest safe fix, tests, PR, CI/Eval/Preview, merge, production verification and fact-source update when all of the following are true:
+
+- the issue is confirmed by evidence rather than speculation;
+- the repair is bounded and reversible;
+- it does not change product direction, DNS, billing, paid services, account-critical settings, privacy/security boundaries or another high-impact contract;
+- it does not violate a documented wait gate or provider blocker.
+
+Do not pause merely to report a routine defect, ask whether to fix it, or hand the obvious next step back to the user. Ask only when missing authorization or information would materially change direction, risk, cost, user-visible behavior or an irreversible/high-impact action. If one subtask is blocked but another eligible subtask in the same bounded work round remains, continue the eligible work instead of stopping the whole round.
+
 At least once per project workday, append a dated entry to the Google Docs journal `aineedhelpfromotherai — Daily Project Journal` containing: the checklist, what actually completed, verification evidence, blockers/holds, and the next trigger. The Google Docs journal is a readable chronological diary only; it never overrides GitHub `main`, canonical fact sources, or verified production. Material accepted results must still be written to the correct GitHub fact source in the same work round.
 
 ## 0. Resume without rescanning
