@@ -101,9 +101,28 @@ Interpretation: **the UK pilot still has no Search Console exposure evidence in 
 
 The site build contains GA4 behavior instrumentation, but no connected analytics reader is currently available in the verified measurement path for this session. Do not infer usage from absence of GSC rows.
 
+## 2026-09-24 Phone first-exposure recheck
+
+The Search Console measurement path was re-verified after an attempted GSC Wizard call. The project already marks GSC Wizard deprecated because its free/trial quota is exhausted. The active read therefore used Windsor.ai `searchconsole` with `include_fresh_data=true`.
+
+Exact page filter:
+
+`https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`
+
+Window checked: **2026-09-20 through 2026-09-24**.
+
+Returned row:
+
+| Date | Query | Clicks | Impressions | CTR | Avg position |
+|---|---|---:|---:|---:|---:|
+| 2026-09-23 | `survival number` | 0 | 1 | 0% | 22.0 |
+
+Interpretation: this is the **first observed Search Console exposure row for the Phone canonical**. It proves Google has begun surfacing the page for at least one query, but one impression is far below the evidence threshold for a product, title/meta, market-expansion or route-page decision. Continue measuring rather than reacting to this single row.
+
 ## Next trigger
 
-1. Re-read Phone after Search Console begins returning impressions/clicks for the canonical or after meaningful on-site interaction evidence becomes available through an authorized analytics path.
-2. Keep Google organic separate from referral/social/direct and AI referral.
-3. Do not add another Phone market/network or change the UK matrix before that trigger unless a concrete production defect is independently verified.
-4. Use the Windsor Search Console connector while available; if capacity/auth fails, classify that as a provider/access blocker and use official Search Console API/export rather than alternate trial accounts.
+1. Continue reading Phone through Windsor.ai Search Console while that connector remains available.
+2. Accumulate a meaningful query/page sample before changing the Phone canonical based on GSC performance.
+3. Keep Google organic separate from referral/social/direct and AI referral.
+4. Do not add another Phone market/network or change the UK matrix from one impression alone unless a concrete production defect is independently verified.
+5. If Windsor.ai capacity/auth fails, classify that as a provider/access blocker and use Google's official Search Console API/export rather than alternate trial accounts.
