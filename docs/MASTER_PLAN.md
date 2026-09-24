@@ -1,12 +1,12 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-09-23
+Last updated: 2026-09-24
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
 ## North-star goal
 
-Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. First practical target: about RMB 100/month, then scale only what proves demand and defensible user value.
+Build `aineedhelpfromotherai.com` into a low-cost utility site that earns small, stable AdSense revenue from organic traffic. The business floor is enough useful traffic/revenue to cover the annual domain cost; the first practical monetization target remains about RMB 100/month, then scale only what proves demand and defensible user value.
 
 ## Strategic correction — 2026-09-23
 
@@ -19,21 +19,18 @@ A candidate advances only when the project can state a concrete durable advantag
 
 Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
 
-## Phone product correction — shipped 2026-09-23
+## Phone operating correction — 2026-09-24
 
-The earlier Phone implementation correctly moved away from official-documentation framing, but the long-term-number UX remained too flat and too small-shortlist-oriented. The accepted correction is defined in `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` and was shipped through PR #203.
+The UK matrix is the public baseline, but Phone growth cannot depend on waiting passively for Search Console. Public product changes remain measurement/evidence-gated while backstage evidence acquisition runs continuously.
 
-The product model is:
+The active operating model is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`:
 
-- Phone Radar is a visual **carrier/number directory + comparison matrix**;
-- hierarchy: `market → host network/carrier group → brand/MVNO → concrete route/product/acquisition path → observed events`;
-- the user sees real landed cost, CNY estimate, yearly keep cost, exact keep action, data/tariff, China/overseas activation, KYC/device/payment friction, Wi-Fi Calling/roaming SMS, service-specific verification evidence, recycling/suspension history, refund/recovery outcomes, trend, evidence count and freshness;
-- detailed guides explain how to acquire, activate, test, keep and recover a route;
-- rankings are transparent/use-case-specific; no arbitrary hidden score;
-- compatibility percentages are allowed only as observed rates with visible denominator/date when enough independent recent samples exist;
-- operator pages provide commercial facts, while forum/community evidence provides operational reality.
-
-The first shipped implementation is a bounded UK pilot on the existing canonical, not a new URL or country doorway family.
+- the existing Phone canonical remains the visual index/comparison surface;
+- a lightweight community observer continuously finds current route outcomes, service-specific compatibility, acquisition channels, seller/platform incidents and candidate public domains;
+- a separate reviewed-source observer monitors only explicitly accepted public official/commercial URLs for changing provider-controlled facts;
+- observations are deduplicated/reconciled into normalized route events and snapshots before publication;
+- separate route detail pages are allowed only when they have substantial route-specific execution value and evidence; country/provider keyword doorway families remain prohibited;
+- production measurement hold means avoid public churn, not stop research.
 
 ## Product hierarchy
 
@@ -45,11 +42,11 @@ Core user job:
 
 > See, in one visual directory, what a real number route actually costs to obtain and maintain, what services it currently works with, how stable the number is, and exactly how to get it—without reading fragmented forum threads first.
 
-Defensible value comes from current independent community outcomes, cheap acquisition paths, discounts, true landed cost, keep-alive methods, app compatibility observations, route history and reconciliation across fragmented reports.
+Defensible value comes from current independent community outcomes, cheap acquisition paths, discounts, true landed cost, keep-alive methods, app compatibility observations, seller/platform outcomes, route history and reconciliation across fragmented reports.
 
-The UK pilot now exposes Vodafone UK / VOXI / Lebara UK / O2 / Giffgaff groupings, dense comparison fields, evidence-gated service observations and detailed guide flow. Data SIM/eSIM and Temporary SMS remain separate top-level families.
+The UK pilot exposes Vodafone UK / VOXI / Lebara UK / O2 / Giffgaff groupings, dense comparison fields, evidence-gated service observations and detailed guide flow. Data SIM/eSIM and Temporary SMS remain separate top-level families.
 
-Do not create country/provider doorway pages. Improve the existing canonical first.
+Do not create country/provider doorway pages. Improve the index first; create an evidence-rich route detail page only when it solves a distinct execution job beyond the index row and passes the publication gate.
 
 ### 2. AI Reset Radar — FROZEN / VALUE-REVIEWED PORTFOLIO
 
@@ -85,9 +82,9 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
 | P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **DONE — UK PILOT SHIPPED / PRODUCTION VERIFIED** | PR #203 merged; Eval #693 passed; Vercel production succeeded; live canonical verified HTTP 200 with grouped UK matrix + guide flow |
-| P6 Evidence-gated depth | Add only depth that survives value + competition gates | **QUEUED / MEASUREMENT GATE FIRST** | One or more validated improvements show measurable search/usage value |
+| P6 Phone evidence-gated depth | Continuously acquire evidence; deepen only routes/surfaces that survive value + competition gates | **ACTIVE — BACKSTAGE ACQUISITION / PUBLIC EXPANSION MEASUREMENT-GATED** | Repeatable observer/review loop plus at least one evidence-qualified improvement/detail candidate with measurable user/search value |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
-| P8 Monetization | Turn useful traffic into stable AdSense revenue | QUEUED | First ~RMB 100/month, then optimize without harming UX |
+| P8 Monetization | Turn useful traffic into stable AdSense/partner revenue without compromising trust | QUEUED | Cover annual domain cost, then first ~RMB 100/month target |
 
 ## Current sprint
 
@@ -97,9 +94,11 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 4. **DONE — Phone same-URL source-role correction.** PR #198 corrected homepage + existing Phone canonical framing and exposed more practical route evidence.
 5. **DONE — Phone carrier-directory product correction.** `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` fixed the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
 6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
-7. **NEXT — Re-measure Phone after evidence accrues.** Do not interpret the first hours after deployment as meaningful search evidence. Use Search Console plus meaningful interaction evidence; keep organic separate from referral/social/direct and AI referral.
-8. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-9. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+7. **ACTIVE — Phone evidence acquisition loop.** Upgrade `phone-demand-watch` to hourly bounded structured intelligence; keep a separate reviewed-source watcher; move valuable candidate summaries into durable research before disposable-host expiry.
+8. **ACTIVE — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
+9. **NEXT AFTER OBSERVER ACCESS — deploy/verify watcher v1.1 on the actual disposable observer host.** Verify source health, child exit success, memory peak and next timer; do not deploy to qwen/yuan/hermes merely because they are reachable.
+10. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+11. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 
@@ -122,18 +121,43 @@ Implemented MVP rules:
 - missing data remains missing and cannot improve rank;
 - community/forum evidence drives operational claims; provider pages provide commercial metadata.
 
-The current UK packet does not meet the `n >= 5` threshold for the displayed app route+service+operation samples, so the release shows counts/qualitative states rather than fabricated percentages.
+The current UK packet does not meet the `n >= 5` threshold for displayed app route+service+operation percentages, so the release shows counts/qualitative states rather than fabricated percentages.
+
+## Phone evidence pipeline
+
+The durable flow is:
+
+`public community feeds / reviewed public sources → candidate observations → dedupe + provenance review → normalized route events/snapshots → index aggregates → optional evidence-rich route detail page`
+
+Community watcher v1.1 captures bounded discovery metadata rather than full posts, including service tags, acquisition/seller/refund risk flags and externally linked public hostnames. Those hostnames are candidates for later review, not permission for automatic crawling.
+
+The reviewed-source watcher checks only explicitly accepted public URLs with robots checks, sequential low-rate requests, conditional requests where available and separate source-health/error classification.
+
+Neither observer host is production infrastructure. Valuable normalized evidence must not remain uniquely on a disposable VPS.
+
+## Route detail page gate
+
+A separate route URL may be created only when all of the following are true:
+
+- route identity and acquisition path are unambiguous;
+- current provider-controlled commercial facts have a current source;
+- at least two useful independent operational evidence items exist, or one unusually detailed first-hand reproduction plus an independent corroborating signal;
+- the page solves a real acquisition/activation/compatibility/retention/recovery job beyond the index row;
+- freshness and unresolved conflicts are visible;
+- the page survives the official-source and independent-competitor substitution gates.
+
+No country/provider keyword page is created merely for coverage or SEO.
 
 ## Measurement rules
 
 - Search Console is a distribution signal after a product passes value/competition gates; it is not the product selector.
+- Backstage evidence acquisition continues even when public production is held for measurement.
 - A known product-model defect should be corrected before waiting for GSC to validate the wrong interface.
-- After the directory correction ships, allow a meaningful post-deploy window before interpreting search performance.
 - High impressions with low/no clicks may indicate weak SERP fit, weak user job, or both; diagnose before snippet-only rewrites.
 - Clicks with weak tool usage should lead to existing-canonical UX/value improvements based on interaction evidence.
 - Google organic, social/referral, AI referral and direct/repeat behavior remain separate.
-- Monetization work waits for meaningful traffic.
-- Expansion to another market/network must pass evidence quality + product value gates; shipping one pilot is not evidence to bulk-expand.
+- Windsor.ai `searchconsole` is the current Search Console path; GSC Wizard is deprecated/exhausted. Fall back to official Search Console API/export if Windsor becomes unavailable.
+- Monetization work waits for meaningful traffic, but the business floor is eventual coverage of annual domain cost.
 
 ## Decision rules
 
@@ -145,9 +169,9 @@ The current UK packet does not meet the `n >= 5` threshold for the displayed app
 - Phone operational reality comes from current independent user/community outcomes and route history.
 - Operator/provider pages serve commercial metadata by default, not operational certification.
 - One clear user task per page; avoid thin/near-duplicate/keyword doorway pages.
-- Improve existing URLs before adding similar URLs.
 - Missing data lowers confidence; do not fabricate certainty.
 - No fake OTP percentages, arbitrary Phone risk scores, Relay shutdown probabilities or fake calibration claims.
+- Public seller/marketplace evidence can establish price/acquisition/failure/refund signals, but do not bypass access controls or teach moderation evasion.
 - Keep AI discovery non-adversarial and provider blockers explicit.
 
 ## External waits
@@ -165,8 +189,9 @@ Status: **SENT / WAITING**. Learn Cursor + explainx.ai were sent 2026-09-22. Do 
 - Ubersuggest: Sep 23 live evidence collected, then daily report quota exhausted; do not rotate accounts or upgrade without authorization.
 - Ahrefs: current API access returned `Insufficient plan`.
 - Semrush: current connector returned `no_api_units`.
+- Current Phone observer deployment access: qwen is not the Phone systemd observer host and is memory constrained; `codex-vps` requires a fresh Tailscale SSH authorization check; two unnamed Remote Desktop Commander devices are offline/unverified. This blocks runtime deployment verification, not repository preparation or manual research.
 
-Treat these as provider limits, not evidence failures.
+Treat provider/access limits as blockers, not evidence failures.
 
 ## Source-of-truth map
 
@@ -176,13 +201,14 @@ Treat these as provider limits, not evidence failures.
 | Whole-project stage / priorities | `docs/MASTER_PLAN.md` |
 | Atomic next actions | `docs/CURRENT_EXECUTION_QUEUE.md` |
 | Product/competition gates | `docs/PRODUCT_VALUE_GATE.md` |
-| Sep 23 strategy evidence | `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md` |
+| Active Phone growth/evidence operating plan | `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` |
 | Current Phone directory/matrix contract | `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` |
+| Community intelligence watcher | `docs/PHONE_DEMAND_WATCH.md` + `ops/phone-demand-watch/` |
+| Reviewed source-change watcher | `docs/PHONE_SOURCE_WATCH.md` + `ops/phone-source-watch/` |
 | UK Phone evidence packet | `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md` |
 | Normalized UK pilot data | `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json` |
-| Prior Phone same-URL audit | `docs/PHONE_CANONICAL_CONTRACT_AUDIT_2026-09-23.md` |
-| Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Phone research method | `docs/PHONE_HIDDEN_ROUTE_RESEARCH_METHOD.md` |
-| Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current GSC reads |
+| Search performance evidence | `docs/GSC_MEASUREMENT_2026-09-22.md` + current Windsor.ai reads |
+| Execution procedure | `docs/OPERATING_WORKFLOW.md` |
 | Relay methodology | `docs/RELAY_RISK_METHODOLOGY.md` |
 | Authority/referral | `docs/AUTHORITY_AND_AI_DISCOVERY.md` + original Gmail threads |
