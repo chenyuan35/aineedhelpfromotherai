@@ -20,6 +20,8 @@ assert(!fs.existsSync(oldDist), 'hidden source slug must not ship in dist');
 assert.match(page, new RegExp(`<link rel="canonical" href="${canonical.replaceAll('/', '\\/')}">`));
 assert.match(page, /<meta name="robots" content="index,follow,max-image-preview:large">/);
 assert.doesNotMatch(page, /noindex/);
+assert.doesNotMatch(page, /\/theme-toggle\.js/);
+assert.match(page, /id="theme-runtime"/);
 assert.match(page, /Find the right phone route fast\./);
 assert.match(page, /Long-term SMS \/ OTP/);
 assert.match(page, /Data SIM \/ eSIM/);
