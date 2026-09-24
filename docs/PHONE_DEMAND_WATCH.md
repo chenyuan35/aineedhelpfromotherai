@@ -1,23 +1,26 @@
-# Phone Community Demand Radar
+# Phone Radar Community Intelligence Watch
 
-Last updated: 2026-09-17
+Last updated: 2026-09-24
 
 ## Purpose
 
-This is a discovery observer for the Phone Number Lifecycle product. It watches a small set of public community feeds for current questions, complaints, recommendations and user experiences around phone numbers, SIM/eSIM, SMS verification, roaming, activation, KYC and retention.
+This is the discovery/intelligence observer for Phone Radar. It watches a small set of public community feeds for current questions, complaints, recommendations and first-hand experiences around phone numbers, SIM/eSIM, SMS verification, roaming, activation, KYC, retention, acquisition channels and seller/platform failures.
 
-Community content is not an authoritative carrier rule. A forum signal may prioritize research or expose a failure mode, but production route facts still require current official evidence.
+Community evidence is allowed to establish operational reality when it is specific, current and attributable. Provider/operator pages remain the source for provider-controlled commercial facts such as list price, package, stock and published fees. A community signal may become a route observation, a seller/platform risk lead or a research priority; it never auto-publishes to the production matrix.
 
 ## Deployment
 
-- Host: disposable one-month observer VPS.
+- Host role: disposable observer VPS; not production infrastructure.
 - Timer: `aineedhelp-phone-demand-watch.timer`.
-- Cadence: every 4 hours after the previous run, with up to 15 minutes randomized delay.
+- Cadence in repository v1.1: every 1 hour after the previous run, with up to 10 minutes randomized delay.
 - Service: `aineedhelp-phone-demand-watch.service`.
 - Script: `/usr/local/bin/aineedhelp-phone-demand-watch`.
 - Parser: `/usr/local/lib/aineedhelp/phone-demand-parse.pl`.
 - State/output: `/var/lib/aineedhelp-phone-demand-watch/`.
-- No paid API, proxy or bypass service is used.
+- Memory cap remains 48 MiB.
+- No paid API, proxy, login automation, anti-bot bypass or hidden/private endpoint is used.
+
+The hourly cadence is still deliberately light: each enabled feed is requested at most roughly 24 times per day, with inter-source sleeps and randomized timer delay. This is intended to reduce missed posts on shallow/high-turnover feeds without turning the observer into a crawler.
 
 ## Current public feeds
 
@@ -26,76 +29,86 @@ Community content is not an authoritative carrier rule. A forum signal may prior
 - NodeSeek RSS.
 - V2EX Atom feed.
 
-The watcher intentionally reads feed endpoints rather than crawling whole forums. Sources that rate-limit or block the observer are recorded as source-health failures and are not bypassed.
+The watcher intentionally reads public feed endpoints rather than crawling whole forums. Sources that rate-limit or block the observer are recorded as source-health failures and are not bypassed.
 
 ## Stored data
 
 The observer stores only bounded discovery metadata:
 
 - source;
-- lifecycle category;
+- lifecycle/decision category;
 - inferred discussion intent (`question`, `complaint`, `recommendation`, `experience`);
 - available thread activity count when exposed by the feed;
 - published timestamp;
 - title;
 - canonical thread URL;
-- short excerpt capped by the parser.
+- short excerpt capped by the parser;
+- service tags when mentioned, currently including OpenAI/ChatGPT/Codex, Claude, Telegram, WhatsApp, TikTok, Google, Reddit and Discord;
+- commerce/risk flags such as marketplace, reseller, deal, delivery failure, refund issue and seller-trust complaint;
+- up to six externally linked public hostnames found in the feed excerpt, for later manual review as possible seller/provider/tutorial sources.
 
-It does not archive complete forum posts.
+It does not archive complete forum posts, user accounts, phone numbers, SMS codes or private messages.
 
 Useful files:
 
-- `latest.md` — human-readable current matching discussions and source health;
-- `latest.tsv` — current feed matches;
-- `signals.tsv` — deduplicated newly observed signals, bounded locally;
+- `latest.md` — human-readable current matching discussions, service/commerce tags and source health;
+- `latest.tsv` — current feed matches with the v1.1 structured fields;
+- `signals.tsv` — legacy-compatible deduplicated signal history;
+- `candidates.tsv` — bounded v1.1 candidate history including service/commerce tags and mentioned public hosts;
 - `sources.tsv` — source health for the latest run;
 - `state/seen.txt` — bounded dedupe hashes.
 
 ## First verified live run
 
-After parser compatibility fixes, the real systemd run exited successfully with peak memory about 16.7 MiB. NodeLoc, NodeSeek and V2EX returned HTTP 200. Reddit returned HTTP 429 during repeated setup testing and is intentionally left to the normal low-frequency timer for retry.
+After parser compatibility fixes, the original real systemd run exited successfully with peak memory about 16.7 MiB. NodeLoc, NodeSeek and V2EX returned HTTP 200. Reddit returned HTTP 429 during repeated setup testing and was intentionally left to the normal low-frequency timer for retry.
 
-The first valid signal was a current V2EX question asking, in substance, which foreign card/number is best in September 2026 for registering commonly used accounts. This directly supports the existing Phone Number Lifecycle acquisition/verification job rather than creating a new product surface.
+The first valid signal was a V2EX question asking, in substance, which foreign card/number was best in September 2026 for registering commonly used accounts. This directly supports the Phone Radar acquisition/verification job rather than creating a new product surface.
 
 ## Sep 16 Chinese-filter follow-up
 
-A live NodeSeek check exposed two separate coverage issues. First, the public NodeSeek RSS currently exposes only about 20 newest items, so a fast-moving thread can rotate out before the four-hour observer run. This is a known feed-depth limitation, not permission to crawl the forum or raise request frequency aggressively on the resource-tight observer. User-shared threads that have already rotated out may still be evaluated manually as discovery evidence.
+A live NodeSeek check exposed two separate coverage issues. First, the public NodeSeek RSS exposes only about 20 newest items, so a fast-moving thread could rotate out before the original four-hour observer run. That feed-depth limitation is the reason v1.1 moves the lightweight feed observer to hourly checks rather than authorizing whole-forum crawling or aggressive request rates.
 
-Second, the minimal Perl runtime was reading feed files as raw UTF-8 bytes while the parser used Unicode source-string semantics. That made Chinese-only lifecycle terms unreliable. The parser now matches the UTF-8 feed bytes consistently, adds `流量卡` as a discovery term, and truncates excerpts only at a valid UTF-8 boundary. A real current NodeSeek sample changed from one match to two and correctly surfaced the Chinese-only title `大佬们，有没有流量卡推荐`.
+Second, the minimal Perl runtime was reading feed files as raw UTF-8 bytes while the parser used Unicode source-string semantics. The parser matches the UTF-8 feed bytes consistently, includes Chinese lifecycle terms such as `流量卡`, and truncates excerpts only at a valid UTF-8 boundary.
 
 ## Sep 17 manual AIS Thailand signal
 
-A user-shared NodeSeek thread, `泰国AIS保号卡国内折腾记录` (`https://www.nodeseek.com/post-932925-1`), is a strong manual discovery signal because one discussion spans nearly the full Phone Number Lifecycle journey instead of only asking for a cheap SIM. The thread covers purchase channel, passport/KYC, international roaming, overseas SMS reception, conversion to long-term personal use, eSIM re-issue, Wi-Fi Calling, top-up, validity extension and recovery-oriented ownership questions.
+A user-shared NodeSeek thread, `泰国AIS保号卡国内折腾记录` (`https://www.nodeseek.com/post-932925-1`), was a strong manual discovery signal because one discussion spanned nearly the full Phone Radar journey instead of only asking for a cheap SIM. It covered purchase channel, passport/KYC, international roaming, overseas SMS reception, conversion to long-term personal use, eSIM re-issue, Wi-Fi Calling, top-up, validity extension and recovery-oriented ownership questions.
 
-The discussion also generated concrete follow-up questions that map directly to product fields rather than a new product surface:
+The discussion generated concrete product fields rather than a new product surface: exact acquisition route, SIM/eSIM form, activation deadline, number continuity after eSIM replacement, support-assisted validity extension, overseas Wi-Fi Calling and OTP behavior.
 
-- whether the Trip-purchased AIS offer is eSIM or physical SIM;
-- whether a 5/7/10-day travel package creates a deadline for completing conversion/ownership steps;
-- whether a replacement eSIM invalidates the old profile while retaining the same phone number;
-- whether the reported THB 49 validity package is permanent or one year;
-- whether the long-validity package is requested through customer service;
-- whether overseas Wi-Fi Calling and SMS/OTP reception require additional setup.
+## Sep 24 intelligence upgrade
 
-Current first-party AIS pages reviewed on 2026-09-17 resolve several of those questions. AIS officially sells SIM2Fly in both eSIM and physical-SIM form, so a Trip purchase cannot be classified without the exact listing. SIM2Fly package durations such as 5/7/10 days are data-package validity windows tied to activation/first connection in an eligible destination, not evidence that the whole ownership-conversion flow must be completed inside that many days. Separately, AIS states that foreign TOURIST SIM users who continue beyond 60 days must reconfirm identity, and that a number registered to an individual must be activated within 60 days of registration or require identity verification again.
+Current public research demonstrates why the observer must capture more than generic `eSIM`/`OTP` mentions. A recent LINUX DO walkthrough about ESIM.gg reported a complete purchase/configuration path and explicitly tested WhatsApp and GPT SMS reception, while another recent community thread discussed low-cost US eSIM options, programmable eSIM cards and service-specific registration outcomes. A long-running r/eSIMs thread also shows routes changing over time: options disappear, activation rules change, and users repeatedly ask for numbers that work for verification abroad.
 
-AIS also documents standard eSIM conversion/transfer. The process deactivates the previous SIM/eSIM and installs the transferred line on the new eSIM; AIS describes and displays it as transferring the existing phone number, so standard conversion/transfer preserves number continuity rather than issuing a different number. AIS also publishes international roaming activation/use guidance and Wi-Fi Calling use abroad.
+Repository v1.1 therefore adds three discovery dimensions without turning the watcher into an auto-publisher:
 
-The `THB 49 / 365 days` validity claim should be classified more precisely than an ordinary community report. The NodeSeek thread reproduces a direct AIS customer-service reply recommending the `49B Validity 365 Days package` for prepaid users who mainly keep a number for SMS/OTP or overseas use. That is a first-party support artifact reproduced inside a community thread; its limitation is that the exact support message is not independently retrievable from a public AIS URL, not that the carrier source is merely community hearsay. A second current community source independently describes the same 49-baht/365-day customer-service enrollment flow, which further corroborates current availability.
+1. **service tags** — identify which apps/services a report actually concerns;
+2. **commerce/risk flags** — identify reseller/marketplace/deal/non-delivery/refund/trust reports;
+3. **mentioned public hosts** — retain only hostnames of externally linked public resources so a later research pass can decide whether a seller/provider/tutorial domain deserves review.
 
-Public AIS material independently confirms the underlying retention mechanism. AIS currently exposes an official page titled `Prepaid Validity Package - Special for AIS customers` at `https://www.ais.th/en/consumers/privileges/reward/ais_package/RetentionPoint365daysPrepaid`; its page metadata describes it as `Prepaid Validity Package - Extend 365 days validity (for AIS 1-2-call Customer)`. AIS prepaid terms also state that accumulated service validity can reach a maximum of 365 days. These public pages do not expose the same THB 49 customer-service price in crawlable text, so the remaining documentation gap is public/persistent price-and-eligibility detail for that support-assisted offer, not evidence that a 365-day AIS validity extension exists.
-
-Decision: record AIS Thailand as a high-value candidate route with first-party carrier/support evidence, while keeping production stable during the current post-release measurement gate. Before any later route addition, complete the exact eligibility/enrollment fields for the support-assisted THB 49 offer and confirm the exact Trip listing/channel assumptions. Do not create a Thailand-specific page; any eventual addition belongs inside the existing Phone canonical.
+Marketplace-evasion language may be flagged only as a restricted-marketplace mention. The watcher must not collect, reproduce or operationalize code words intended to bypass marketplace moderation, and it must not automate access behind login/anti-bot controls.
 
 ## Interpretation rules
 
 - Repeated questions can prioritize product copy, decision paths and evidence gaps.
-- Complaints can reveal failure modes that need official verification.
-- Recommendations can identify providers/routes worth researching, not routes to auto-add.
+- Detailed current first-hand operational reports can become route observations after provenance/deduplication review.
+- Complaints can reveal failure modes, seller/platform risk and recovery/refund outcomes.
+- Recommendations identify routes/providers/sellers worth researching, not routes to auto-add.
 - One post is not demand proof by itself.
-- Forum claims never override current official carrier/provider documentation.
-- A direct carrier/support reply reproduced in a community thread is a first-party support artifact with a provenance/retrievability limitation; do not collapse it into ordinary community hearsay.
+- Provider/operator pages validate provider-controlled commercial facts; they do not override current independent operational outcomes simply because a behavior is undocumented.
+- A direct carrier/support reply reproduced in a community thread is a first-party support artifact with a provenance/retrievability limitation; do not collapse it into ordinary hearsay.
 - Rate limits, 403/429 responses and feed outages are provider/source states, not evidence that demand disappeared.
+- Externally linked seller/provider domains are candidate sources only. Do not automatically crawl them; review robots/terms/source value first.
+
+## Two-observer operating model
+
+Phone evidence acquisition should run as two bounded roles when the disposable observer hosts are available:
+
+- **Community intelligence observer** — this watcher; finds user demand, route outcomes, app compatibility, acquisition paths, seller/platform incidents and candidate linked domains.
+- **Reviewed source-change observer** — `PHONE_SOURCE_WATCH.md`; checks only explicitly reviewed public official/commercial URLs for price/package/availability/rule changes with robots checks and bounded storage.
+
+Neither host is production infrastructure. Valuable candidate summaries must be moved off disposable nodes before expiry; raw observer state is replaceable.
 
 ## Retirement / migration
 
-The host is disposable. Before the trial VPS expires, either retire this observer or deliberately move only the small watcher/state needed to a reviewed host. Do not make production depend on this node and do not leave unique valuable history only on the trial machine.
+Observer hosts are disposable. Before a trial VPS expires, either retire the observer or deliberately move only the small watcher/state needed to a reviewed host. Do not make production depend on these nodes and do not leave unique valuable history only on a trial machine.
