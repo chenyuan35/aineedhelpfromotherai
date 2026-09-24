@@ -61,17 +61,20 @@ Verification:
 
 Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
 
-## NEXT / BLOCKER — deploy on the actual observer host
+## NEXT / BLOCKER — recover authenticated access to the verified trial observer
 
-Runtime deployment is not currently verifiable from available control paths:
+The primary observer host is now identified from Qwen-local evidence; runtime deployment is blocked by authentication/control-channel access rather than host discovery:
 
-- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is online but **is not the Phone systemd observer host**. A 2026-09-24 cleanup removed stale headless Chromium, old test HTTP servers and a stuck Vercel CLI process; available RAM improved from about 313 MiB to about 2.5 GiB. The host still has no swap. Freed memory does not change the host role automatically.
-- `codex-vps` is visible on the Tailscale network, but `tailscale ssh` currently requires a fresh authorization check and ordinary SSH to the Tailscale address timed out.
-- two unnamed Remote Desktop Commander devices are offline; their identity must not be guessed from old chat state.
-- `yuan` is the personal workstation and must not host project watchers.
-- `hermes` is forbidden for this project.
+- `qwenpaw-sbs-prod-h2grp` / `qwen-control` is the verified control/jump path and **is not the Phone systemd observer host**. Do not move the watcher onto Qwen merely because Qwen is reachable.
+- Qwen SSH history identifies the original one-month Debian 13 trial observer as the 128 MiB RAM / 1 GiB root NAT host administered on Sep 15. The same NAT SSH endpoint is reachable on Sep 24 and its ED25519 host key matches the Sep 15 known-host entry, so this is still the original VPS rather than a replacement/reinstall.
+- Sep 15 logs show password SSH management first, then successful Remote Desktop Commander enrollment on that same trial host. One formerly unnamed/offline RDC identity can therefore be safely mapped to this observer. The RDC control channel itself is not currently online.
+- Qwen has a dedicated `aineedhelp_trial_backup_ed25519` key created Sep 15, but the execution record contains no successful step proving that public key was installed on the trial host. Current non-interactive/default SSH is rejected, so do not claim key-based access exists.
+- `codex-vps` is the other verified downstream machine managed from Qwen via Tailscale/SSH. It remains visible, but fresh Tailscale SSH authorization is required and it already has a Relay-history role; do not automatically repurpose it as the second Phone observer.
+- The trial VPS provider/vendor is **not** recorded in canonical project facts. Do not infer it from IP ownership, kernel naming or matching low-end specs.
+- one other unnamed/offline RDC device may still exist and remains unverified; do not guess its identity.
+- `yuan` is the personal workstation and must not host project watchers; `hermes` is forbidden for this project.
 
-Next runtime trigger: when the actual disposable observer host becomes reachable/identifiable, deploy main's v1.1 files and verify a real systemd run, source health, peak memory and next timer. Do not claim watcher health before that evidence exists.
+Next runtime trigger: recover authorized access to the identified 128 MiB trial observer through the existing Qwen SSH/control chain, then inspect `remote-desktop-commander.service`, watcher timers/journals, boot/OOM history and stored evidence **before** restarting or reinstalling anything. Only after that inspection should main's v1.1 be deployed and a real systemd run/source-health/memory/next-timer check be recorded.
 
 ## SECOND OBSERVER — reviewed source-change watch
 
