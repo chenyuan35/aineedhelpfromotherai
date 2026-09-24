@@ -1,10 +1,10 @@
 [Unit]
-Description=Four-hourly phone lifecycle community demand watcher
+Description=Hourly phone route community intelligence watcher
 
 [Timer]
 OnBootSec=10m
-OnUnitActiveSec=4h
-RandomizedDelaySec=15m
+OnUnitActiveSec=1h
+RandomizedDelaySec=10m
 Persistent=true
 AccuracySec=1m
 
