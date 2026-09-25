@@ -6,14 +6,7 @@ Last updated: 2026-09-25
 
 ## Execution rule
 
-Execute all eligible work continuously. When a new issue is discovered during an active task, automatically add it to the current work round and continue through diagnosis → smallest safe fix → tests → PR → CI/Eval/Preview → merge → production verification when all of the following are true:
-
-- the defect is confirmed by evidence;
-- the fix is reversible and bounded;
-- it does not change product direction, billing, DNS, account-critical settings, privacy/security posture or other high-impact boundaries;
-- no documented wait gate or provider blocker prevents execution.
-
-Do not stop merely to narrate progress or ask the user to approve routine low-risk repairs. Stop only for a real authorization boundary, irreversible/high-impact choice, contradictory facts, or a documented blocker/wait condition.
+Execute all eligible work continuously. For confirmed bounded defects inside the active task, continue through diagnosis → smallest safe fix → verification → fact-source update when reversible and authorized. Stop only for an authorization boundary, irreversible/high-impact choice, contradictory facts, or a documented blocker/wait condition.
 
 ## Current decision
 
@@ -23,118 +16,75 @@ Do not stop merely to narrate progress or ask the user to approve routine low-ri
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — Phone comparison UI benchmark
+## JUST COMPLETED — haha SIM retention-rule conflict
+
+The narrow retention conflict is resolved and recorded in `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md`.
+
+Accepted current state:
+
+- Fortress's current product-specific haha SIM FAQ says a **HKD 10+ balance top-up extends validity by 365 days**;
+- the same current FAQ directs balance top-ups through the **haha TRAVEL App** and says buying a data package does not extend validity;
+- 3HK's generic online-recharge page currently says **HKD 100 minimum** and `HKD 100+` for expiry extension, but that generic page must not be applied as the haha-specific keep-alive rule;
+- fresh 2026 independent community evidence still corroborates `HKD 10/year` retention;
+- older/current community references to a `HKD 10` 3HK-web recharge workaround remain operational evidence only; do not label that web path as current official behavior without a fresh exact reproduction;
+- haha SIM itself remains **HOLD / Watch** because activation/real-name/onboarding reliability is a separate admission blocker.
+
+No public Phone page or route data changed.
+
+## NEXT SESSION — one bounded task only
+
+**Task:** resolve the current haha SIM activation/real-name/onboarding admission blocker.
+
+**Why now:** the retention amount is no longer ambiguous. The remaining decision-critical uncertainty is whether the route can be acquired/activated/registered and kept operational with a clear current workflow, especially given current Fortress real-name requirements and recent onboarding/app failure reports.
+
+**Allowed sequence:**
+1. read `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md` and the haha SIM section in `docs/USER_DIRECTED_CURSOR_PHONE_RESEARCH_2026-09-19.md`;
+2. verify current Fortress/OFCA/3HK activation and real-name material that is publicly accessible;
+3. seek fresh independent 2026 first-hand activation/registration outcomes, including failure/recovery evidence, without bypassing login or anti-bot controls;
+4. reconcile the route into one admission state: admission-ready with explicit conditions, or HOLD with the exact remaining blocker.
+
+**Done:** the haha SIM activation/real-name/onboarding state is attributable and current enough to decide whether the route clears the Phone admission gate; any unresolved uncertainty remains explicit rather than guessed.
+
+**Stop / do not substitute:** do not auto-publish the route, do not claim no-KYC use from old secondary material, do not bypass 403/login/anti-bot controls, and do not switch to another Phone route merely because the remaining evidence is difficult.
+
+## Phone comparison UI benchmark
 
 PR #218 established the accepted comparison-UI research baseline in `docs/PHONE_RADAR_COMPARISON_UI_BENCHMARK_2026-09-25.md`; Eval Gate #724 passed and the PR squash-merged as `3f8f3fb07531da177697a4e004bc284a7d8f3ea9`.
 
-Accepted direction for future evidence-qualified Phone UI work:
+Future evidence-qualified Phone UI direction remains:
 
 - default **Browse** mode: dense, immediate, filterable comparison with host-network grouping;
 - optional **Compare** mode: pin 2–4 routes into a fixed side-by-side field comparison;
 - **Guide** mode: concise execution text opened from the selected route;
-- graphical components are allowed only when driven by real route data: landed-cost breakdown, keep-alive timeline, app-evidence chips and dated route-history timeline;
-- “make the numbers complete” means make each admitted route decision-complete, not bulk-fill countries/providers with weak evidence;
-- no fake OTP percentages, arbitrary Phone risk score, doorway pages or weak global bulk-fill.
+- graphical components only when driven by real route data: landed-cost breakdown, keep-alive timeline, app-evidence chips and dated route-history timeline;
+- “make the numbers complete” means make each admitted route decision-complete, not bulk-fill countries/providers with weak evidence.
 
-This benchmark is a future implementation reference only. It does **not** replace the current next task below and does not authorize immediate production churn.
-
-## NEXT SESSION — one bounded task only
-
-**Task:** resolve the current Fortress haha SIM keep-alive/recharge conflict.
-
-**Why now:** the first watcher v1.1 candidate review is complete. The highest-value unresolved finding is a long-term SMS/OTP route where current community sources still report `HKD 10` online recharge for a one-year extension, while 3HK's current prepaid recharge page says validity is extended for `HKD 100+` top-ups and the English rendering states a `HKD 100` minimum. Publishing either value without resolving the conflict would violate the Phone evidence rules.
-
-**Allowed sequence:**
-1. read `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` and the existing haha SIM section in `docs/USER_DIRECTED_CURSOR_PHONE_RESEARCH_2026-09-19.md`;
-2. verify current first-party 3HK/Fortress/haha SIM recharge, expiry and registration material that is publicly accessible;
-3. seek one or more fresh independent reproductions of the actual recharge amount, payment path and post-recharge expiry effect without bypassing login/anti-bot controls;
-4. reconcile the route into one current state: resolved rule with provenance/freshness, or explicit unresolved conflict/HOLD.
-
-**Done:** the current haha SIM recharge/validity rule is either resolved with attributable current evidence or explicitly remains HOLD because the conflict cannot be safely resolved; no guessed amount remains in the research state.
-
-**Stop / do not substitute:** do not auto-publish the route, do not bypass 403/login/anti-bot controls, do not treat old tutorials as current truth when first-party material conflicts, and do not switch to another Phone route merely because this conflict is difficult.
+This benchmark does not authorize immediate production churn.
 
 ## Active Search Console measurement path
 
-- **Use Windsor.ai `searchconsole` for current Search Console reads.** The connected account is `sc-domain:aineedhelpfromotherai.com`.
-- **Do not use GSC Wizard for new reads.** Its free/trial quota is exhausted and the project marks it deprecated.
-- If Windsor.ai access/quota later fails, classify that as a provider/access blocker and fall back to Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
-- Historical GSC Wizard evidence remains valid for the dates when it was collected.
+- Use Windsor.ai `searchconsole` for current Search Console reads on `sc-domain:aineedhelpfromotherai.com`.
+- Do not use GSC Wizard for new reads; its free/trial quota is exhausted and it is deprecated for the project.
+- If Windsor.ai later fails, use Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
+- Latest accepted Phone signal remains `survival number` on 2026-09-23: 1 impression, 0 clicks, average position 22. One impression is not a production-change signal.
 
-Latest Phone signal from Windsor.ai on 2026-09-24 using fresh data for 2026-09-20 through 2026-09-24:
+## Phone evidence pipeline state
 
-- query: `survival number`;
-- date: 2026-09-23;
-- impressions: 1;
-- clicks: 0;
-- average position: 22.
+Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates were dispositioned; Saily Switzerland and haha SIM produced durable research packets. The haha retention conflict is now resolved.
 
-One impression is not enough evidence for a public product change.
+`phone-source-watch` remains the separate reviewed official/commercial source-change role. External linked domains are candidates only and must not be auto-crawled.
 
-## JUST COMPLETED — first watcher v1.1 six-candidate review
-
-The six records from the first verified `candidate_total=6` run are fully dispositioned in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md`.
-
-- **Promoted backstage:** Saily Switzerland data-eSIM failure/refund incident cluster; Fortress haha SIM keep-alive price conflict.
-- **Not promoted:** iPhone eSIM/IMEI question (insufficient/no route outcome); Ultra Mobile `$3` PayGo seller post (existing route + unsafe third-party SMS-code handling, no new independent outcome); DMIT VPS carpool and V2EX beverage complaint (false positives).
-- Direct NodeSeek/Reddit page reads that returned ordinary HTTP 403 were not bypassed; public search/indexed copies and current official sources were used only where available.
-- No public Phone page, route or score changed from watcher output alone.
-
-The next bottleneck is resolving the haha SIM `HKD 10` community claim against current 3HK `HKD 100+` validity-extension language.
-
-## JUST COMPLETED — Phone community intelligence watcher v1.1
-
-PR #211 upgraded the existing bounded community watcher without turning it into a broad crawler:
-
-1. hourly timer with up to 10 minutes jitter, replacing the four-hour cadence that could miss shallow/high-turnover NodeSeek RSS items;
-2. structured service tags for OpenAI/ChatGPT/Codex, Claude, Telegram, WhatsApp, TikTok, Google, Reddit and Discord;
-3. commerce/risk flags for marketplace/reseller/deal/non-delivery/refund/seller-trust signals;
-4. bounded extraction of externally linked public hostnames for later manual source review;
-5. new bounded `candidates.tsv` while preserving legacy `signals.tsv` compatibility;
-6. regression test covering parser syntax, watcher syntax, timer cadence and the new structured fields;
-7. Eval Gate integration so future changes cannot silently break the watcher contract.
-
-Verification:
-
-- PR #211: **MERGED**;
-- Eval Gate #709: **PASS**, including the new watcher audit and existing Phone build/eval checks;
-- squash merge: `3204ee0be13411c146e1031bbf13a094949f679f`;
-- no production Phone page or new public URL changed.
-
-Safety/collection boundary remains strict: public feeds only, no login automation, no anti-bot/403/429 bypass, no whole-forum crawling, no full-post archive, no collection of phone numbers/SMS codes, and no reproduction or operationalization of moderation-evasion code words.
-
-## VERIFIED RUNTIME — trial observer access and watcher v1.1
-
-The Sep 25 bounded recovery/audit task is complete:
-
-- Qwen's existing dedicated trial-backup key authenticates successfully to the original 128 MiB / 1 GiB Debian 13 observer; the live ED25519 host key matches the stored Sep 15 fingerprint.
-- Read-only inspection found all four observer timers enabled, latest service results at exit 0, no OOM event in the inspected boot, and Phone watcher state intact.
-- The root filesystem was 100% full. Phone-demand runs since Sep 24 07:33 logged repeated `No space left on device` while still returning exit 0, so systemd success alone had become a false-health signal.
-- The dominant removable item was an unused 196 MB Puppeteer Chrome download ZIP inside a 450 MB cache. RDC is explicitly configured with `DC_SKIP_CHROME_DOWNLOAD=1`, no process referenced that cache, and only the redundant ZIP was deleted after backing up watcher state/scripts/units to Qwen. Root usage fell to 82%.
-- `remote-desktop-commander.service` is not the recovered control path: its persisted refresh token is invalid (`Already Used`) and the unit had reached 148 restarts while waiting for new device authorization. No re-enrollment/reinstall was performed.
-- GitHub `main` watcher v1.1 (`9c4fa5c`) was deployed with matching file checksums. The real verification run completed 4/4 sources HTTP 200, `matched=25`, `candidate_total=6`, exit 0, 19.3 MiB memory peak; the timer is enabled/active at 1 hour with up to 10 minutes jitter.
-- Post-v1.1 observer state, including `candidates.tsv`, was copied back to Qwen so current evidence is not unique to the disposable host.
-
-Current observer control is Qwen → key-only SSH. RDC repair is optional and should not displace Phone evidence work unless SSH becomes inadequate.
-
-## SECOND OBSERVER — reviewed source-change watch
-
-`phone-source-watch` remains the separate role for explicitly reviewed public official/commercial URLs. It should monitor changing provider-controlled facts such as price, package, availability and published rules with robots checks, sequential low-rate requests and conditional requests.
-
-Externally linked seller/provider/tutorial domains found by the community watcher are candidates only. Add one to the source watcher only after source value, robots/terms and decision relevance are reviewed. Never auto-crawl every linked domain.
+No second observer should be assigned merely to satisfy topology. `codex-vps` remains Relay-history and must not be repurposed without a concrete reliability/value reason.
 
 ## Phone publication queue
 
-Current public Phone surface remains the UK index/matrix. Evidence acquired backstage can lead to either:
-
-- an evidence-backed improvement/row on the existing index; or
-- an evidence-rich route detail page when it solves a distinct execution job and passes the publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
+The current public surface remains the UK index/matrix. Backstage evidence may lead to either an evidence-backed improvement on the existing index or an evidence-rich route detail page only after the route clears the publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 
 Do not create country/provider pages for coverage. A separate route page requires unambiguous route identity/acquisition, current commercial facts, meaningful independent operational evidence, substantial unique execution content, visible freshness/conflicts and both product-value gates.
 
 ## Search Console 404 notice
 
-The 2026-09-20 Google Search Console validation notice still refers to some URLs returning 404. Existing project evidence confirms former public product paths such as `/cases/`, `/learn/`, `/stats/`, old `.well-known` files, old OpenAPI/feed/failure-index assets and `/mcp/` are intentionally real 404s and absent from the current production discovery surface. Do not revive or redirect them merely to make validation green. Re-open only if a currently intended URL is shown among affected examples.
+The 2026-09-20 Search Console validation notice still concerns intentionally removed former paths unless a currently intended URL appears among affected examples. Do not revive or redirect old `/cases/`, `/learn/`, `/stats/`, historical `.well-known` assets, old feeds/failure-index/OpenAPI assets, or `/mcp/` merely to make validation green.
 
 ## External waits
 
