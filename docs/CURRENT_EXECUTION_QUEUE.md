@@ -25,19 +25,19 @@ Phone public production should not churn from tiny search samples, but the Phone
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** review watcher v1.1 candidate output and convert only evidence-rich findings into durable Phone research packets.
+**Task:** resolve the current Fortress haha SIM keep-alive/recharge conflict.
 
-**Why now:** authenticated observer access is restored, the disk-full fault is bounded/fixed, watcher v1.1 is deployed and a real hourly run produced six candidates with 4/4 source health. The next bottleneck is evidence qualification, not infrastructure.
+**Why now:** the first watcher v1.1 candidate review is complete. The highest-value unresolved finding is a long-term SMS/OTP route where current community sources still report `HKD 10` online recharge for a one-year extension, while 3HK's current prepaid recharge page says validity is extended for `HKD 100+` top-ups and the English rendering states a `HKD 100` minimum. Publishing either value without resolving the conflict would violate the Phone evidence rules.
 
 **Allowed sequence:**
-1. read the post-v1.1 `candidates.tsv`/`latest.tsv` copy on Qwen or the live observer through the recovered key-only SSH path;
-2. deduplicate candidates against existing Phone packets/routes and classify whether each adds acquisition, app-compatibility, seller-risk, retention or recovery evidence;
-3. open the original public thread/source only when needed for provenance and current context;
-4. promote only evidence that survives the product/value/source rules into a durable research packet or an explicit rejected/insufficient note.
+1. read `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` and the existing haha SIM section in `docs/USER_DIRECTED_CURSOR_PHONE_RESEARCH_2026-09-19.md`;
+2. verify current first-party 3HK/Fortress/haha SIM recharge, expiry and registration material that is publicly accessible;
+3. seek one or more fresh independent reproductions of the actual recharge amount, payment path and post-recharge expiry effect without bypassing login/anti-bot controls;
+4. reconcile the route into one current state: resolved rule with provenance/freshness, or explicit unresolved conflict/HOLD.
 
-**Done:** all six current candidates are dispositioned with provenance and no candidate remains ambiguous merely because it was emitted by the watcher.
+**Done:** the current haha SIM recharge/validity rule is either resolved with attributable current evidence or explicitly remains HOLD because the conflict cannot be safely resolved; no guessed amount remains in the research state.
 
-**Stop / do not substitute:** do not auto-publish routes/pages, do not treat watcher flags as authoritative carrier facts, do not broaden crawling, and do not move observer workloads onto Qwen, `codex-vps`, `yuan` or `hermes`.
+**Stop / do not substitute:** do not auto-publish the route, do not bypass 403/login/anti-bot controls, do not treat old tutorials as current truth when first-party material conflicts, and do not switch to another Phone route merely because this conflict is difficult.
 
 ## Active Search Console measurement path
 
@@ -55,6 +55,17 @@ Latest Phone signal from Windsor.ai on 2026-09-24 using fresh data for 2026-09-2
 - average position: 22.
 
 One impression is not enough evidence for a public product change.
+
+## JUST COMPLETED — first watcher v1.1 six-candidate review
+
+The six records from the first verified `candidate_total=6` run are fully dispositioned in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md`.
+
+- **Promoted backstage:** Saily Switzerland data-eSIM failure/refund incident cluster; Fortress haha SIM keep-alive price conflict.
+- **Not promoted:** iPhone eSIM/IMEI question (insufficient/no route outcome); Ultra Mobile `$3` PayGo seller post (existing route + unsafe third-party SMS-code handling, no new independent outcome); DMIT VPS carpool and V2EX beverage complaint (false positives).
+- Direct NodeSeek/Reddit page reads that returned ordinary HTTP 403 were not bypassed; public search/indexed copies and current official sources were used only where available.
+- No public Phone page, route or score changed from watcher output alone.
+
+The next bottleneck is resolving the haha SIM `HKD 10` community claim against current 3HK `HKD 100+` validity-extension language.
 
 ## JUST COMPLETED — Phone community intelligence watcher v1.1
 
