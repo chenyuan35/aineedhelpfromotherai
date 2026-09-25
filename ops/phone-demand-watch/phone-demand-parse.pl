@@ -60,8 +60,10 @@ for my $b (@blocks) {
   my ($pub)=$b =~ /<(?:published|updated|pubDate)\b[^>]*>(.*?)<\/(?:published|updated|pubDate)>/is; $pub=clean($pub);
   my ($posts)=$b =~ /<discourse:posts_count>(\d+)<\/discourse:posts_count>/is; $posts //= '';
   my $text=lc("$title $desc");
-  next unless $text =~ /(\besim\b|\bsim(?: card)?\b|phone number|mobile number|\bsms\b|text message|\botp\b|verif(?:y|ication)|roaming|wi-?fi calling|activat(?:e|ion)|inactiv|expir|top[- ]?up|recharge|keep.{0,20}active|passport|\bkyc\b|reseller|seller|merchant|流量卡|手机卡|手机号|手机号码|电话卡|短信|验证码|漫游|保号|停机|销号|激活|护照|实名|充值|接码|卡商|商家|卖家)/i;
+  my $voxi_app_target = $text =~ /\bvoxi\b/i && $text =~ /(chatgpt|openai|\bgpt(?:-?\d+)?\b|codex|telegram|\btg\b|whatsapp|whats app|\botp\b|verif(?:y|ication)|\bsms\b|text message|验证码|验证|接码|短信|电报)/i;
+  next unless $voxi_app_target || $text =~ /(\besim\b|\bsim(?: card)?\b|phone number|mobile number|\bsms\b|text message|\botp\b|verif(?:y|ication)|roaming|wi-?fi calling|activat(?:e|ion)|inactiv|expir|top[- ]?up|recharge|keep.{0,20}active|passport|\bkyc\b|reseller|seller|merchant|流量卡|手机卡|手机号|手机号码|电话卡|短信|验证码|漫游|保号|停机|销号|激活|护照|实名|充值|接码|卡商|商家|卖家)/i;
   my @c;
+  push @c,'voxi-app-evidence' if $voxi_app_target;
   push @c,'retention' if $text =~ /(keep.{0,20}active|inactiv|expir|top[- ]?up|recharge|保号|停机|销号|充值)/i;
   push @c,'verification' if $text =~ /(\botp\b|verif(?:y|ication)|\bsms\b|text message|验证码|短信|接码)/i;
   push @c,'activation' if $text =~ /(activat(?:e|ion)|passport|\bkyc\b|激活|护照|实名)/i;
