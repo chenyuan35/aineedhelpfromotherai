@@ -44,7 +44,7 @@
   "routes": [
     {
       "src": "/api/tiktok/(.*)",
-      "dest": "https://aineedhelpfromotherai-tiktok-preview.vercel.app/api/tiktok/$1"
+      "dest": "https://aineedhelpfromotherai-git-feat-tikto-3ece2d-chenyuan-s-projects.vercel.app/api/tiktok/$1"
     },
     {
       "src": "/site\\.css",
