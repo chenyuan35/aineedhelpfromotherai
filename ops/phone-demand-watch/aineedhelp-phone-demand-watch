@@ -87,6 +87,14 @@ fetch_feed v2ex 'https://www.v2ex.com/index.xml' 1
   echo
   echo "Updated: $NOW"
   echo
+  echo 'Priority target: VOXI app verification evidence'
+  target_count=$(tail -n +2 "$LATEST" | awk -F '\t' '$2 ~ /voxi-app-evidence/ {n++} END {print n+0}')
+  if [ "$target_count" -gt 0 ]; then
+    tail -n +2 "$LATEST" | awk -F '\t' '$2 ~ /voxi-app-evidence/ {printf "- [%s / %s] %s — %s", $2,$3,$6,$7; if($9!="-") printf " · services=%s",$9; printf "\n"}'
+  else
+    echo '- No VOXI + app/OTP verification match in the currently accessible public feeds.'
+  fi
+  echo
   echo 'Current feed matches (discovery signals, not verified facts):'
   tail -n +2 "$LATEST" | head -n 40 | awk -F '\t' '{printf "- [%s / %s] %s — %s", $2,$3,$6,$7; if($9!="-") printf " · services=%s",$9; if($10!="-") printf " · commerce=%s",$10; if($11!="-") printf " · linked=%s",$11; printf "\n"}'
   echo
