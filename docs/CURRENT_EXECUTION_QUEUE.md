@@ -16,37 +16,35 @@ Execute all eligible work continuously. For confirmed bounded defects inside the
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — watcher batch 2 + live source-health review
+## JUST COMPLETED — Mobal Japan source-change reconciliation
 
-Every watcher record after the first six was reviewed and recorded in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_BATCH2_2026-09-25.md`.
+The two reviewed-source watcher events for Mobal were manually reconciled and recorded in `docs/PHONE_MOBAL_SOURCE_RECONCILIATION_2026-09-25.md`.
 
 Accepted current state:
 
-- 55 new candidate records collapsed to 31 root threads after fragment normalization;
-- 2 records were promoted to backstage research packets: **Globe Philippines** long-term retention/overseas-SMS eligibility and **Holafly Always On** emergency data;
-- 10 records were insufficient/demand-only, 1 was a duplicate/restricted seller lead, and 42 were false positives;
-- 24 of the 55 records were excess V2EX reply-fragment emissions for already-seen root threads, confirming a bounded watcher-precision defect;
-- the latest demand-watch run was healthy: Reddit, NodeLoc, NodeSeek and V2EX all returned HTTP 200;
-- the latest source-watch run was healthy overall: 22 total / 16 ok-or-304 / 2 Ultra robots-skip / 4 Tello HTTP 403 fetch blockers;
-- source-watch emitted current `content-change` signals for `mobal_pricing` and `mobal_id`; these require semantic reconciliation and are not automatic product-change evidence.
-
-No public Phone page or route data changed.
+- `mobal_pricing` is classified as **reverted/page churn for the existing accepted Voice+Data route**;
+- current public Mobal Voice+Data facts still support JPY 4,950 list price and JPY 1,650/month for the 1GB plan;
+- the page currently shows a temporary 10% sale to JPY 4,455 and a separate Voice-Only product at JPY 1,430/month, but neither makes the existing Voice+Data route stale and neither is auto-admitted by this maintenance task;
+- `mobal_id` is classified as **non-semantic with respect to accepted Phone facts**;
+- current guidance still requires ID for Voice-capable products, requires delivery ID upload/address matching, allows collection by showing the passport, and exempts Data-Only products from the Voice-product ID-upload flow;
+- no production Phone data or public route changed.
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** reconcile the current Mobal Japan pricing and voice-product ID-requirement source-change signals.
+**Task:** repair the confirmed V2EX reply-fragment dedupe defect in `phone-demand-watch`.
 
-**Why now:** Mobal is an existing route/source family. Maintaining accepted current facts has higher priority than starting a new Globe/Holafly route, and the source watcher has produced two concrete provider-controlled change signals.
+**Why now:** batch 2 confirmed 24 excess candidate emissions caused by fragment-only reply URLs for already-seen root threads. Mobal maintenance is now closed, so this is the next concrete pipeline-quality defect before deepening new Globe/Holafly packets.
 
 **Allowed sequence:**
-1. read the existing accepted Mobal facts plus the two source-watch events;
-2. verify current public Mobal pricing and voice-product ID-requirement pages without bypassing access controls;
-3. compare the semantic content with current Phone catalog/tutorial facts and classify each signal as substantive change, reverted/page churn, or non-semantic change;
-4. make only the smallest evidence-backed correction if existing facts are stale; otherwise record that no product change is needed.
+1. inspect the current V2EX URL normalization/dedupe path and the batch-2 examples;
+2. add the smallest normalization that treats fragment-only reply URLs as the same root thread for dedupe;
+3. preserve genuinely new evidence and do not broadly suppress V2EX;
+4. add/update regression coverage for root-thread versus fragment-only reply URLs;
+5. run applicable watcher tests/audit, then use the normal fresh branch/PR/CI path and update canonical facts after verification.
 
-**Done:** both Mobal change events are reconciled with current attributable content and any stale project fact is corrected or explicitly confirmed current.
+**Done:** fragment-only reply URLs no longer produce duplicate candidate emissions for an already-seen V2EX root thread, genuinely new evidence remains observable, and regression tests pass.
 
-**Stop / do not substitute:** do not infer a rule/price change from hash differences alone, do not auto-publish Globe/Holafly, do not bypass Tello/Ultra source blockers, and do not combine the V2EX dedupe repair into the same session.
+**Stop / do not substitute:** do not broaden this into source suppression, ranking changes, Globe/Holafly publication, production Phone UI changes, or unrelated observer topology work.
 
 ## Promoted batch-2 packets
 
@@ -55,7 +53,7 @@ No public Phone page or route data changed.
 
 ## Watcher precision backlog
 
-Batch 2 confirmed 24 excess V2EX reply-fragment emissions. A later bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence. Do not broadly suppress V2EX or other community sources.
+Batch 2 confirmed 24 excess V2EX reply-fragment emissions. The next bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence. Do not broadly suppress V2EX or other community sources.
 
 ## haha SIM re-open trigger
 
@@ -86,7 +84,7 @@ This benchmark does not authorize immediate production churn.
 
 Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines and Holafly Always On. Batch 2 also confirmed the V2EX reply-fragment dedupe defect.
 
-`phone-source-watch` remains the separate reviewed official/commercial source-change role. External linked domains are candidates only and must not be auto-crawled.
+`phone-source-watch` remains the separate reviewed official/commercial source-change role. Its Sep 25 Mobal pricing/ID events are reconciled; no production Mobal route fact changed. External linked domains are candidates only and must not be auto-crawled.
 
 No second observer should be assigned merely to satisfy topology. `codex-vps` remains Relay-history and must not be repurposed without a concrete reliability/value reason.
 
