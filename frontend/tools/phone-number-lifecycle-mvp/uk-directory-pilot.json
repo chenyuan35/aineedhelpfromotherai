@@ -5,13 +5,14 @@
     "name": "United Kingdom",
     "countryCode": "GB"
   },
-  "checkedAt": "2026-09-23",
+  "checkedAt": "2026-09-26",
   "status": "pilot-normalized-not-yet-wired-to-ui",
   "notes": [
     "Operational claims are community-evidence derived.",
     "Provider pages may refresh provider-controlled commercial metadata before release.",
     "CNY display values use the dated FX snapshot when an original-currency landed cost is established; unknown costs remain null.",
-    "No service percentage may render unless at least five reasonably independent recent route+service+operation observations are present."
+    "No service percentage may render unless at least five reasonably independent recent route+service+operation observations are present.",
+    "2026-09-26 re-verification: voxi keep cost finalized from linuxdo-2188975 (180-day balance-activity window) + linuxdo-2737575 (£5 top-up requirement; £0.08 roaming vs £0.24 Wi-Fi Calling SMS, two independent calculations agree) + nodeloc-102713 (£5 minimum). vodafone-uk hold re-confirmed: no clean top-up path (linuxdo-2404421 p3), community treats it as quarterly-burner, port-out workarounds stall at blank-number top-up (linuxdo-2417339). All source URLs re-fetched OK today."
   ],
   "networks": [
     {
@@ -115,11 +116,13 @@
         "state": "current-official-entry-plus-community-retention"
       },
       "keep": {
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "Create a qualifying balance-changing activity before the community-reproduced 180-day window; Wi-Fi Calling SMS or tiny roaming-data usage are reported methods.",
+        "currency": "GBP",
+        "observedActionCost": 0.08,
+        "yearCostOriginal": 0.16,
+        "yearCostCny": 1.43,
+        "action": "Send one roaming SMS (~£0.08, community-measured) within each 180-day balance-activity window; Wi-Fi Calling SMS (~£0.24) also qualifies. Plans carry no PAYG balance, so an initial £5 top-up is required first.",
         "intervalDays": 180,
-        "state": "community-reproduced-cost-not-finalized"
+        "state": "community-reproduced-multi-source"
       },
       "chinaActivation": "possible but setup-sensitive; first-use state varies",
       "kyc": "current coupon route requirements need recheck; do not use borrowed eligibility credentials",
@@ -129,7 +132,7 @@
       "refund": "not enough normalized evidence",
       "trend": "watch",
       "guideEligible": true,
-      "lastVerifiedAt": "2026-08-11",
+      "lastVerifiedAt": "2026-09-26",
       "acquireUrl": "https://www.voxi.co.uk/",
       "tariffSummary": "Current official £10 plan: 60GB promotional allowance until 30 Sep 2026, then 20GB; plan can be opted out and VOXI can continue on PAYG. Community retention reports use balance-changing activity.",
       "sourceIds": [

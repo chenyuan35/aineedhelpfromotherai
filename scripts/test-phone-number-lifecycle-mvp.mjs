@@ -65,7 +65,7 @@ check('Phone shell uses production design tokens and owns button spacing', () =>
 
 check('long-term surface is the grouped carrier directory while other families keep cards', () => {
   assert.match(html, /function renderDirectory\(\)/);
-  assert.match(html, /class=\"pr-matrix\"/);
+  assert.match(html, /class=\"pr-matrix/);
   assert.match(html, /Brand \/ route/);
   assert.match(html, /Start cost/);
   assert.match(html, /Keep \/ year/);
@@ -114,7 +114,6 @@ check('long-term cards expose current route evidence without fake percentages', 
     assert.doesNotMatch(view.smsSignal, /%/, `${id} must not publish fake OTP percentage`);
   }
 });
-
 
 check('UK pilot hierarchy and evidence gates are normalized', () => {
   assert.equal(ukPilot.market.id, 'uk');

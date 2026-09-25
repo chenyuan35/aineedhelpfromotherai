@@ -11,6 +11,27 @@ const curatedHome = readFileSync(homePath, 'utf8');
 const GA4_ID = 'G-FYKKNKRE58';
 const GA4_TAG = `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA4_ID}');</script>`;
 const BEHAVIOR_TAG = `<script id="site-behavior-analytics">(()=>{const send=(name,params)=>{try{if(typeof window.gtag==='function')window.gtag('event',name,params)}catch{}};const placement=el=>el.closest('.continuity-actions')?'home_hero_action':el.closest('.continuity-map')?'home_job_map':el.closest('.provider-stage')?'home_provider':el.closest('.tool-search-results')?'site_search':el.closest('.related-grid')?'related_tool':el.closest('.tools-grid')?'tool_listing':el.closest('.utility-row')?'home_utility':el.closest('.relay-wrap')?'home_relay':el.closest('footer')?'footer':'internal';document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(link){const sourcePath=location.pathname;try{const raw=link.getAttribute('href')||'';if(link.closest('.continuity-hero')){const job=raw.includes('#ai-reset-tools')?'reset':raw.includes('/phone-number-survival-guide/')?'access':raw.includes('/relay-exit-risk-checker/')?'reliability':'';if(job)send('home_job_select',{job,source_path:sourcePath,placement:placement(link)})}const url=new URL(link.href,location.href);if(url.origin===location.origin&&url.pathname.startsWith('/tools/'))send('tool_open',{tool_path:url.pathname,source_path:sourcePath,placement:placement(link)})}catch{}}const button=event.target.closest('main button');if(button)send('tool_action',{source_path:location.pathname,action_id:(button.id||button.textContent||'button').trim().slice(0,80)})})})();</script>`;
+
+const sourceSnapshot = new Map();
+const snapshotSkip = new Set(['dist','node_modules']);
+function snapshotSources(dir){
+  for(const name of readdirSync(dir)){
+    if(snapshotSkip.has(name))continue;
+    const path=join(dir,name);const st=statSync(path);
+    if(st.isDirectory())snapshotSources(path);else if(st.isFile())sourceSnapshot.set(path,readFileSync(path));
+  }
+}
+function restoreSources(dir=root){
+  for(const name of readdirSync(dir)){
+    if(snapshotSkip.has(name))continue;
+    const path=join(dir,name);const st=statSync(path);
+    if(st.isDirectory())restoreSources(path);else if(st.isFile()&&!sourceSnapshot.has(path))rmSync(path,{force:true});
+  }
+  if(dir===root){for(const [path,content] of sourceSnapshot){mkdirSync(dirname(path),{recursive:true});writeFileSync(path,content)}}
+}
+snapshotSources(root);
+for(const path of [join(root,'..','ai.txt'),join(root,'..','llms.txt')]){if(existsSync(path))sourceSnapshot.set(path,readFileSync(path));}
+try {
 rmSync(dist,{recursive:true,force:true});
 mkdirSync(dist,{recursive:true});
 
@@ -58,3 +79,6 @@ function injectGa4(dir){
 injectGa4(dist);
 
 console.log('Build complete: focused static tool site ready with GA4 tracking.');
+} finally {
+  restoreSources();
+}

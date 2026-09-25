@@ -39,11 +39,30 @@ assert.doesNotMatch(page, /Travel or move abroad/);
 assert.doesNotMatch(page, /Evidence rule:/);
 assert.equal((home.match(/\/tools\/phone-number-survival-guide\//g)||[]).length >= 1, true);
 assert.equal((tools.match(/\/tools\/phone-number-survival-guide\//g)||[]).length, 1);
-assert.equal((sitemap.match(new RegExp(canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))||[]).length, 1);
+assert.equal((sitemap.match(new RegExp(`<loc>${canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}<\/loc>`,'g'))||[]).length, 1);
 assert.doesNotMatch(sitemap, /phone-number-lifecycle-mvp/);
 
-for (const name of ['audit-rules.json','catalog.json','location-constraints.json','number-supply-intelligence.json','purchase-intelligence.json','retention-intelligence.json','route-capabilities.json','tutorial-insights.json','radar-view.json']) {
+for (const name of ['audit-rules.json','catalog.json','location-constraints.json','number-supply-intelligence.json','purchase-intelligence.json','retention-intelligence.json','route-capabilities.json','tutorial-insights.json','radar-view.json','uk-directory-pilot.json']) {
   assert.equal(fs.readFileSync(path.join(publicDir,name),'utf8'), fs.readFileSync(path.join(source,name),'utf8'), `${name} must be byte-identical to source data`);
+}
+
+const ukPilot = JSON.parse(fs.readFileSync(path.join(source, 'uk-directory-pilot.json'), 'utf8'));
+assert.match(page, /class="pr-related pr-static-guides"/);
+for (const route of ukPilot.routes) {
+  const routeUrl = `${url}route/${route.id}/`;
+  const routeCanonical = `https://aineedhelpfromotherai.com${routeUrl}`;
+  const routePagePath = path.join(publicDir, 'route', route.id, 'index.html');
+  assert(fs.existsSync(routePagePath), `${route.id} static route page must exist`);
+  const routePage = fs.readFileSync(routePagePath, 'utf8');
+  assert.equal((routePage.match(/<h1\b/g) || []).length, 1, `${route.id} must have one H1`);
+  assert.match(routePage, new RegExp(`<link rel="canonical" href="${routeCanonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}">`));
+  assert.equal((sitemap.match(new RegExp(`<loc>${routeCanonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}<\/loc>`,'g')) || []).length, 1, `${route.id} must appear once in sitemap`);
+  assert.match(page, new RegExp(`href="${routeUrl.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}"`), `${route.id} must have a crawler-visible hub link`);
+  for (let n = 1; n <= 9; n += 1) assert.match(routePage, new RegExp(`<h2>${n}\.`), `${route.id} missing section ${n}`);
+  if (route.publishState === 'observation-hold') {
+    assert.match(routePage, /Why this route is on hold:/);
+    assert.doesNotMatch(routePage, /Acquire \/ open ↗/);
+  }
 }
 
 console.log('phone-radar public release audit: PASS');
