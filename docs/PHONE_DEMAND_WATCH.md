@@ -118,6 +118,14 @@ By the 2026-09-25 09:08 UTC live run, `candidates.tsv` had grown to 61 candidate
 
 The same live checkpoint verified all four community feed sources at HTTP 200 and normal hourly scheduling. It also exposed a precision defect: 24 of the 55 records were excess V2EX `#replyN` fragment variants for already-seen root threads. This increases manual review cost but is not a source-health failure. A later bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence; do not remove or broadly suppress V2EX.
 
+## Sep 25 V2EX fragment-dedupe repair
+
+The batch-2 precision defect is closed. PR #225 changed V2EX dedupe identity from the full `#replyN` URL to the root-thread URL while preserving the original observed URL in stored metadata and leaving all other source dedupe behavior unchanged. Regression coverage proves multiple reply fragments share one V2EX root key while distinct roots remain distinct. Eval Gate #740 and Vercel passed.
+
+The first live deployment then exposed a migration-only edge: legacy `state/seen.txt` entries had been hashed from the old fragment-bearing URLs. PR #226 added a bounded compatibility check against historical `candidates.tsv`; when a V2EX root already exists there, the watcher seeds the new normalized hash and does not re-emit the old thread. Unseen roots still flow normally. Eval Gate #742 and Vercel passed.
+
+Before cleanup, observer state was copied to Qwen. Five rows from the 2026-09-25 14:32:38 UTC migration run were individually verified to have older same-root V2EX records, then removed from `candidates.tsv` and `signals.tsv`; unrelated rows were preserved. The final real run at 14:42:17 UTC exited 0 with the timer active, stayed below the 48 MiB memory cap, returned HTTP 200 for all four community feeds, matched four V2EX items, and emitted no V2EX candidate. The only new candidate from that run was a new NodeSeek thread, confirming that new evidence remained observable.
+
 ## Interpretation rules
 
 - Repeated questions can prioritize product copy, decision paths and evidence gaps.

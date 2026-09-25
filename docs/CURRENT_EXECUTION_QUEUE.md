@@ -16,44 +16,39 @@ Execute all eligible work continuously. For confirmed bounded defects inside the
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — Mobal Japan source-change reconciliation
+## JUST COMPLETED — V2EX reply-fragment dedupe repair
 
-The two reviewed-source watcher events for Mobal were manually reconciled and recorded in `docs/PHONE_MOBAL_SOURCE_RECONCILIATION_2026-09-25.md`.
+The confirmed V2EX `#replyN` duplicate-emission defect is closed. PR #225 normalized V2EX links to the root thread only for the dedupe key while preserving original URLs and leaving other sources unchanged. Eval Gate #740 and Vercel passed.
 
-Accepted current state:
+Post-deploy runtime verification exposed one bounded migration edge: historical `seen.txt` hashes were based on the full fragment URL, so the first normalized run could re-emit an already-known root once. PR #226 added legacy compatibility against bounded historical `candidates.tsv`, seeds the normalized hash without re-emission, and preserves unseen V2EX roots. Eval Gate #742 and Vercel passed.
 
-- `mobal_pricing` is classified as **reverted/page churn for the existing accepted Voice+Data route**;
-- current public Mobal Voice+Data facts still support JPY 4,950 list price and JPY 1,650/month for the 1GB plan;
-- the page currently shows a temporary 10% sale to JPY 4,455 and a separate Voice-Only product at JPY 1,430/month, but neither makes the existing Voice+Data route stale and neither is auto-admitted by this maintenance task;
-- `mobal_id` is classified as **non-semantic with respect to accepted Phone facts**;
-- current guidance still requires ID for Voice-capable products, requires delivery ID upload/address matching, allows collection by showing the passport, and exempts Data-Only products from the Voice-product ID-upload flow;
-- no production Phone data or public route changed.
+The merged watcher was redeployed to the original disposable observer. Five V2EX rows emitted during the PR #225 migration run were each verified to have an older same-root record, backed up off-host to Qwen, and removed from `candidates.tsv` and `signals.tsv`. The final 2026-09-25 14:42 UTC systemd run exited 0, kept the timer active, returned HTTP 200 for Reddit/NodeLoc/NodeSeek/V2EX, and emitted no V2EX duplicate candidate; its only new candidate was a new NodeSeek thread.
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** repair the confirmed V2EX reply-fragment dedupe defect in `phone-demand-watch`.
+**Task:** resolve the Globe Philippines ordinary-Prepaid long-term eligibility question and overseas SMS/OTP implications.
 
-**Why now:** batch 2 confirmed 24 excess candidate emissions caused by fragment-only reply URLs for already-seen root threads. Mobal maintenance is now closed, so this is the next concrete pipeline-quality defect before deepening new Globe/Holafly packets.
+**Why now:** Globe was one of only two backstage promotions from watcher batch 2, and the watcher precision blocker is now closed. The current first-party tourist rule limits tourist-registered SIM validity to 30 days, so eligibility must be resolved before treating Globe as a long-term route.
 
 **Allowed sequence:**
-1. inspect the current V2EX URL normalization/dedupe path and the batch-2 examples;
-2. add the smallest normalization that treats fragment-only reply URLs as the same root thread for dedupe;
-3. preserve genuinely new evidence and do not broadly suppress V2EX;
-4. add/update regression coverage for root-thread versus fragment-only reply URLs;
-5. run applicable watcher tests/audit, then use the normal fresh branch/PR/CI path and update canonical facts after verification.
+1. verify current Globe SIM-registration classes and the exact tourist/non-tourist validity rules from first-party sources;
+2. determine whether a lawful non-tourist foreign-national registration path is actually available to the target user and what documentation/status it requires;
+3. reconcile current 2026+ independent evidence on keeping ordinary Globe Prepaid active abroad and receiving SMS/OTP;
+4. record a backstage PROMOTE / HOLD / REJECT decision with explicit unresolved fields and re-open trigger;
+5. do not change the public Phone matrix unless a later independent publication task clears the route-page/value gates.
 
-**Done:** fragment-only reply URLs no longer produce duplicate candidate emissions for an already-seen V2EX root thread, genuinely new evidence remains observable, and regression tests pass.
+**Done:** the eligibility question is resolved enough to classify the route for further research, or it is explicitly held with the missing evidence and trigger documented.
 
-**Stop / do not substitute:** do not broaden this into source suppression, ranking changes, Globe/Holafly publication, production Phone UI changes, or unrelated observer topology work.
+**Stop / do not substitute:** do not broaden this session into Holafly, public Phone UI changes, country/provider doorway pages, seller scraping, account/login bypass, or observer-topology work.
 
 ## Promoted batch-2 packets
 
 - **Globe Philippines — backstage only.** Current tourist registration is time-limited; the unresolved question is whether a lawful non-tourist registration path makes ordinary Globe Prepaid a real long-term route for the target user.
 - **Holafly Always On — backstage Data eSIM only.** Current first-party material supports 1 GB/month backup data for a bounded period on an installed eSIM, but it is data-only and not a long-term SMS/OTP-number route.
 
-## Watcher precision backlog
+## Watcher precision status
 
-Batch 2 confirmed 24 excess V2EX reply-fragment emissions. The next bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence. Do not broadly suppress V2EX or other community sources.
+**CLOSED 2026-09-25.** PRs #225/#226 repaired V2EX fragment-only duplicate emission, including legacy-state migration compatibility. Final live verification produced no duplicate V2EX candidate and did not suppress the source.
 
 ## haha SIM re-open trigger
 
@@ -82,7 +77,7 @@ This benchmark does not authorize immediate production churn.
 
 ## Phone evidence pipeline state
 
-Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines and Holafly Always On. Batch 2 also confirmed the V2EX reply-fragment dedupe defect.
+Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines and Holafly Always On. The V2EX reply-fragment precision defect found in batch 2 is closed by PRs #225/#226 and final live verification.
 
 `phone-source-watch` remains the separate reviewed official/commercial source-change role. Its Sep 25 Mobal pricing/ID events are reconciled; no production Mobal route fact changed. External linked domains are candidates only and must not be auto-crawled.
 
