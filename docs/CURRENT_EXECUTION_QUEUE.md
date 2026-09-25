@@ -16,36 +16,39 @@ Execute all eligible work continuously. For confirmed bounded defects inside the
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — haha SIM retention-rule conflict
+## JUST COMPLETED — haha SIM activation / real-name admission review
 
-The narrow retention conflict is resolved and recorded in `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md`.
+The remaining haha SIM admission blocker was reviewed and recorded in `docs/PHONE_HAHASIM_ACTIVATION_REVIEW_2026-09-25.md`.
 
 Accepted current state:
 
-- Fortress's current product-specific haha SIM FAQ says a **HKD 10+ balance top-up extends validity by 365 days**;
-- the same current FAQ directs balance top-ups through the **haha TRAVEL App** and says buying a data package does not extend validity;
-- 3HK's generic online-recharge page currently says **HKD 100 minimum** and `HKD 100+` for expiry extension, but that generic page must not be applied as the haha-specific keep-alive rule;
-- fresh 2026 independent community evidence still corroborates `HKD 10/year` retention;
-- older/current community references to a `HKD 10` 3HK-web recharge workaround remain operational evidence only; do not label that web path as current official behavior without a fresh exact reproduction;
-- haha SIM itself remains **HOLD / Watch** because activation/real-name/onboarding reliability is a separate admission blocker.
+- current Fortress/OFCA material maps a real activation and real-name workflow: physical SIM activation, activation SMS/number assignment, ICCID-based first haha TRAVEL login, app-based account management, and supported real-name registration with HKID or a valid travel document;
+- do **not** present haha SIM as a dependable no-KYC route. Current first-party material allows unregistered states but also documents regulated real-name requirements and spot-check suspension that can interrupt SMS service;
+- fresh 2026 community evidence confirms continued mainland/overseas use, but no sufficiently current independent end-to-end new-card reproduction was found covering activation → app login → real-name registration → stable overseas/mainland network → SMS/OTP receipt → balance/expiry verification;
+- fresh onboarding-friction evidence remains: a 2026-05 Google Play review reports repeated top-up failure and a 2026-08 review reports a brand-new SIM showing an ICCID/mobile-number mismatch;
+- therefore haha SIM remains **HOLD / Watch**. Its resolved `HKD 10+` → `+365 days` retention rule remains valid research state, but the route is not admission-ready.
 
 No public Phone page or route data changed.
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** resolve the current haha SIM activation/real-name/onboarding admission blocker.
+**Task:** review the next unreviewed Phone watcher candidate batch and current watcher/source health.
 
-**Why now:** the retention amount is no longer ambiguous. The remaining decision-critical uncertainty is whether the route can be acquired/activated/registered and kept operational with a clear current workflow, especially given current Fortress real-name requirements and recent onboarding/app failure reports.
+**Why now:** haha SIM is now explicitly evidence-blocked until a fresh end-to-end activation/registration reproduction appears. The active Phone strategy requires continuous backstage evidence acquisition rather than repeatedly researching the same blocked route.
 
 **Allowed sequence:**
-1. read `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md` and the haha SIM section in `docs/USER_DIRECTED_CURSOR_PHONE_RESEARCH_2026-09-19.md`;
-2. verify current Fortress/OFCA/3HK activation and real-name material that is publicly accessible;
-3. seek fresh independent 2026 first-hand activation/registration outcomes, including failure/recovery evidence, without bypassing login or anti-bot controls;
-4. reconcile the route into one admission state: admission-ready with explicit conditions, or HOLD with the exact remaining blocker.
+1. inspect the latest bounded watcher output and identify only candidates newer than the six already dispositioned;
+2. verify watcher/source health enough to distinguish source failure from “no new candidates”;
+3. disposition each genuinely new candidate as promote / hold / duplicate / insufficient / false-positive using current public evidence only;
+4. persist any durable research packet and advance the queue without public production churn.
 
-**Done:** the haha SIM activation/real-name/onboarding state is attributable and current enough to decide whether the route clears the Phone admission gate; any unresolved uncertainty remains explicit rather than guessed.
+**Done:** every currently unreviewed candidate is dispositioned, or the session records that there are no new candidates plus verified watcher/source health; any promoted candidate has a precise next research question rather than an automatic publication action.
 
-**Stop / do not substitute:** do not auto-publish the route, do not claim no-KYC use from old secondary material, do not bypass 403/login/anti-bot controls, and do not switch to another Phone route merely because the remaining evidence is difficult.
+**Stop / do not substitute:** do not bulk-add routes, do not repurpose another VPS, do not bypass login/403/anti-bot controls, and do not publish a candidate merely because the watcher emitted it.
+
+## haha SIM re-open trigger
+
+Re-open haha SIM admission only when a fresh independent 2026+ end-to-end activation/registration outcome appears, ideally covering a new card through activation, app login, real-name registration, mainland/overseas network registration and actual SMS/OTP receipt, or when a current failure/recovery reproduction shows that the ICCID/registration failure path is predictably recoverable.
 
 ## Phone comparison UI benchmark
 
@@ -70,7 +73,7 @@ This benchmark does not authorize immediate production churn.
 
 ## Phone evidence pipeline state
 
-Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates were dispositioned; Saily Switzerland and haha SIM produced durable research packets. The haha retention conflict is now resolved.
+Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates were dispositioned; Saily Switzerland and haha SIM produced durable research packets. The haha retention conflict and activation/registration admission review are now both resolved to explicit research states; haha remains HOLD pending its trigger.
 
 `phone-source-watch` remains the separate reviewed official/commercial source-change role. External linked domains are candidates only and must not be auto-crawled.
 
