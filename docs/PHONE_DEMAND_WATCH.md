@@ -106,6 +106,18 @@ Two were useful enough to promote into durable backstage research packets: a Sai
 
 This confirms the manual review gate is necessary. Watcher candidate emission is a recall mechanism, not a publication or truth signal. The haha SIM conflict is the next bounded research task; no public route was added from this batch.
 
+## Sep 25 watcher batch 2 review
+
+By the 2026-09-25 09:08 UTC live run, `candidates.tsv` had grown to 61 candidate records. The 55 records after the first six were all dispositioned in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_BATCH2_2026-09-25.md`.
+
+- 2 were promoted to backstage research packets: Globe Philippines long-term/roaming eligibility and Holafly Always On emergency data;
+- 10 were insufficient or demand-only;
+- 1 was a duplicate/restricted seller lead;
+- 42 were false positives;
+- no public route/page changed.
+
+The same live checkpoint verified all four community feed sources at HTTP 200 and normal hourly scheduling. It also exposed a precision defect: 24 of the 55 records were excess V2EX `#replyN` fragment variants for already-seen root threads. This increases manual review cost but is not a source-health failure. A later bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence; do not remove or broadly suppress V2EX.
+
 ## Interpretation rules
 
 - Repeated questions can prioritize product copy, decision paths and evidence gaps.
