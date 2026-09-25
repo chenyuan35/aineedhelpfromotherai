@@ -9,6 +9,18 @@ perl -c "$PARSER" >/dev/null
 bash -n "$WATCHER"
 grep -Fq 'OnUnitActiveSec=1h' "$TIMER"
 
+NORMALIZE_FN=$(sed -n '/^normalize_dedupe_link()/,/^}/p' "$WATCHER")
+eval "$NORMALIZE_FN"
+V2EX_ROOT='https://www.v2ex.com/t/123456'
+[ "$(normalize_dedupe_link v2ex "$V2EX_ROOT")" = "$V2EX_ROOT" ]
+[ "$(normalize_dedupe_link v2ex "$V2EX_ROOT#reply1")" = "$V2EX_ROOT" ]
+[ "$(normalize_dedupe_link v2ex "$V2EX_ROOT#reply99")" = "$V2EX_ROOT" ]
+[ "$(normalize_dedupe_link v2ex 'https://www.v2ex.com/t/654321#reply1')" != "$V2EX_ROOT" ]
+[ "$(normalize_dedupe_link nodeseek 'https://www.nodeseek.com/post-test#reply1')" = 'https://www.nodeseek.com/post-test#reply1' ]
+V2EX_HASH_1=$(printf '%s\t%s' v2ex "$(normalize_dedupe_link v2ex "$V2EX_ROOT#reply1")" | sha256sum | cut -d' ' -f1)
+V2EX_HASH_2=$(printf '%s\t%s' v2ex "$(normalize_dedupe_link v2ex "$V2EX_ROOT#reply99")" | sha256sum | cut -d' ' -f1)
+[ "$V2EX_HASH_1" = "$V2EX_HASH_2" ]
+
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 cat > "$TMP/feed.xml" <<'XML'
