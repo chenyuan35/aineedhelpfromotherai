@@ -81,7 +81,13 @@ A live observer check at the 2026-09-25 06:54 UTC completed run verified:
 
 This is a healthy watcher with source-specific blockers, not a collection outage.
 
-The same run emitted `content-change` signals for `mobal_pricing` and `mobal_id`. The `mobal_pricing` hash returned to a previously observed hash after changing on Sep 24, so it may represent a revert or page churn rather than a durable commercial change. `mobal_id` also changed. Hash events are review triggers only: the next bounded task is to compare current Mobal pricing and voice-product ID-requirement content with the existing accepted Phone facts before any product edit.
+The same run emitted `content-change` signals for `mobal_pricing` and `mobal_id`. The `mobal_pricing` hash returned to a previously observed hash after changing on Sep 24; `mobal_id` also changed. Those hash events were manually reconciled on 2026-09-25 in `docs/PHONE_MOBAL_SOURCE_RECONCILIATION_2026-09-25.md`.
+
+Accepted reconciliation:
+
+- `mobal_pricing` = **reverted/page churn for the existing accepted Voice+Data route**. Current public Mobal content still supports the durable Voice+Data baseline of JPY 4,950 list price and JPY 1,650/month for the 1GB plan. A temporary 10% sale to JPY 4,455 is visible, and a separate Voice-Only product is currently advertised at JPY 1,430/month, but neither makes the existing Voice+Data route fact stale.
+- `mobal_id` = **non-semantic with respect to accepted Phone facts**. Current public guidance still requires ID for Voice-capable products, uses country-specific accepted ID for delivery with upload/address matching, allows collection by showing the passport, and exempts Data-Only products from this Voice-product ID-upload flow.
+- no production Phone data or public route was changed from these two events.
 
 ## Current source families
 
