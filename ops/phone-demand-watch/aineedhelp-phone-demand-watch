@@ -24,6 +24,15 @@ parse_feed() {
   perl /usr/local/lib/aineedhelp/phone-demand-parse.pl "$psource" "$pbody"
 }
 
+normalize_dedupe_link() {
+  local source_name="$1" candidate_link="$2"
+  if [ "$source_name" = v2ex ]; then
+    printf '%s' "${candidate_link%%#*}"
+  else
+    printf '%s' "$candidate_link"
+  fi
+}
+
 fetch_feed() {
   source="$1"; url="$2"; sleep_s="$3"; body="$TMP/$source.xml"; hdr="$TMP/$source.h"
   code=$(curl -A "$UA" -LsS --compressed --max-time 25 -D "$hdr" -o "$body" -w '%{http_code}' "$url" 2>/dev/null || printf '000')
@@ -33,7 +42,8 @@ fetch_feed() {
     cat "$parsed" >> "$LATEST"
     while IFS=$'\t' read -r src catg intent activity pub title link excerpt services commerce mentioned_hosts; do
       [ -n "${link:-}" ] || continue
-      h=$(printf '%s\t%s' "$src" "$link" | sha256sum | cut -d' ' -f1)
+      dedupe_link=$(normalize_dedupe_link "$src" "$link")
+      h=$(printf '%s\t%s' "$src" "$dedupe_link" | sha256sum | cut -d' ' -f1)
       if ! grep -Fqx "$h" "$SEEN"; then
         printf '%s\n' "$h" >> "$SEEN"
         printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$src" "$catg" "$intent" "$activity" "$pub" "$title" "$link" "$excerpt" >> "$SIGNALS"
