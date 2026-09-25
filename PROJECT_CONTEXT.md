@@ -46,13 +46,14 @@ Current execution sequence:
 9. **DONE — Globe Philippines eligibility / overseas-SMS review.** `docs/PHONE_GLOBE_PHILIPPINES_ELIGIBILITY_REVIEW_2026-09-25.md` classifies the route HOLD for general Phone Radar use: long-term foreign-national registration exists only for qualifying non-tourist visa classes, while ordinary tourists remain subject to the 30-day registration limit unless an approved visa extension is presented. Globe retention and overseas incoming-SMS mechanics are viable, but a current qualifying-foreigner → mainland-China → long-term OTP reproduction is still missing;
 10. **DONE — Holafly Always On packet.** PR #231 (`413e6c3`) classifies it PROMOTE / backstage Data-eSIM only; 1 GB/month backup, 30-day refresh, no rollover and keep-installed constraints are supported, while explicit duration ceiling, device-transfer policy, coverage metadata consistency and fresh 2026 independent reproduction remain re-open triggers;
 11. **DONE — first settled Search Console decision read.** Finalized 2026-09-16..2026-09-23 data returned 3 page impressions / 0 clicks / weighted average position 12.0 and only one exposed query (`survival number`, 1 impression, position 22). Decision: **KEEP**; sample is too small for ADJUST/NARROW;
-12. **NEXT SESSION — PR #233 disposition review.** Review the actual Keep-Alive Assistant diff against the KEEP decision, product-value gate, existing-index-first rule and route/detail publication gate; end in HOLD / REWORK / CLOSE, not an automatic merge;
-13. keep any second-observer/source-watcher host assignment in backlog until a concrete reliability/value reason exists; `codex-vps` remains Relay-history and must not be repurposed by topology alone;
-14. keep Search Console measurement running through Windsor.ai, separating organic from referral/social/direct/AI traffic;
-15. improve the existing index first when evidence warrants it;
-16. publish a separate route detail URL only when the route has substantial unique execution content and passes the route-page gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
+12. **DONE — PR #233 disposition review: REWORK / Draft.** The core date→deadline reminder job has computation/repeat-use value, but the current PR is not releasable: it mixes in an obsolete bulk global-expansion document, invents an unsourced 15% safety buffer, adds five public URLs including four template-heavy pages, assumes today's date as the user's last real action, and uses fixed recurring reminders that can drift from actual later actions. PR #233 was converted back to Draft and must not merge in current form;
+13. **NEXT SESSION — first Kimi/Qwen provenance-admission batch.** Review Tello PAYG, ClubSIM, Hotlink Pantas, Globe Prepaid and povo 2.0 from actual community/forum discovery evidence and classify each ADMIT-BACKSTAGE / HOLD / DROP. Official sources may verify facts only after candidate discovery; frozen PRs #234–#241 remain unaccepted raw research;
+14. keep any second-observer/source-watcher host assignment in backlog until a concrete reliability/value reason exists; `codex-vps` remains Relay-history and must not be repurposed by topology alone;
+15. keep Search Console measurement running through Windsor.ai, separating organic from referral/social/direct/AI traffic;
+16. improve the existing index first when evidence warrants it;
+17. publish a separate route detail URL only when the route has substantial unique execution content and passes the route-page gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 
-**Next independent session is exactly item 12.** Disposition PR #233 against the current KEEP instruction before any further public Phone expansion.
+**Next independent session is exactly item 13.** Audit Kimi's first five candidate routes by provenance/admission quality; do not merge #234–#241 or reopen public Phone expansion.
 
 ## Product rules
 

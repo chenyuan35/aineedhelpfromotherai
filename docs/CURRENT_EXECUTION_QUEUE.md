@@ -40,22 +40,30 @@ The sample is too small to support **ADJUST** or **NARROW**. Zero clicks across 
 
 **Next measurement trigger:** repeat the settled decision read after at least 7 additional finalized days **and** at least 20 cumulative settled impressions on the canonical, unless a clear indexing regression or materially different query pattern appears earlier. If the date gate arrives but the impression threshold does not, continue KEEP rather than forcing a redesign from noise.
 
+## JUST COMPLETED — PR #233 disposition — REWORK / Draft
+
+PR #233 (`Keep-Alive Assistant`) is **REWORK**, not merge-ready. It was converted back to Draft after reviewing the actual four-file diff against the current KEEP decision and Phone value/publication gates.
+
+The underlying user job remains valid: a user-entered real keep-alive action date can be transformed into a next-deadline reminder, which has computation and repeat-use value beyond a static carrier rule. The current implementation is not acceptable for release because it: (1) mixes in `docs/PHONE_DATABASE_EXPANSION.md`, an obsolete bulk global-coverage/Tier-2 placeholder strategy; (2) invents a default 15% "safe" buffer where route evidence does not provide one; (3) adds five public URLs, including four template-heavy brand pages that do not independently clear the publication gate; (4) prefills the last-action date with today and immediately computes from that unverified assumption; and (5) uses a fixed recurring calendar RRULE that can drift from the user's real later action dates.
+
+Re-open only after the branch is rebased on current `main`, the obsolete database-expansion file is removed, the interaction is narrowed to evidence-derived or explicitly user-configured logic, user dates require explicit input, calendar semantics follow real actions, and a later eligible production task authorizes a public change.
+
 ## NEXT SESSION — one bounded task only
 
-**Task:** disposition PR #233 (`Keep-Alive Assistant`) against the new KEEP decision and the Phone product-value / publication gates. End in exactly one repository action: **HOLD / REWORK / CLOSE**. Do not merge it merely because its earlier CI/Preview passed.
+**Task:** review the first Kimi/Qwen provenance-admission batch for **Tello PAYG, ClubSIM, Hotlink Pantas, Globe Prepaid and povo 2.0**. End with one backstage disposition per route: **ADMIT-BACKSTAGE / HOLD / DROP**.
 
-**Why now:** PR #233 is still open and adds five public URLs plus a new public Phone tool. The settled Search Console decision is KEEP, so any pending public expansion must be reconciled before it can proceed.
+**Why now:** Kimi is being used as the high-throughput research worker, but its findings are raw `RESEARCH CANDIDATE` evidence until the coordinating session checks provenance and admission quality. The frozen #234–#241 batch must not become accepted data by momentum.
 
 **Allowed sequence:**
-1. review the actual PR #233 diff, not only its PR description;
-2. apply `docs/PRODUCT_VALUE_GATE.md`, the existing-index-first rule, and the route/detail publication gate;
-3. check whether the arbitrary 15% planning buffer, five-URL expansion, calendar recurrence semantics, source provenance and claimed unique user job are defensible;
-4. choose HOLD, REWORK or CLOSE and record the concrete reason;
-5. do not merge or modify public Phone production in that review session unless a separate eligible production task is queued afterward.
+1. read Kimi's actual community/forum source URLs and dates for the five routes;
+2. reject official-source-led candidates that lack independent demand/operational evidence, while allowing official pages only to verify provider-controlled facts after discovery;
+3. check duplication/circular reporting, date freshness, user problem, real acquisition/retention/OTP/roaming outcome, and whether each route has a concrete information advantage;
+4. classify each route ADMIT-BACKSTAGE, HOLD or DROP and state the exact re-open trigger for HOLD;
+5. record accepted normalized evidence in durable GitHub facts without merging #234–#241 or changing public Phone production.
 
-**Done:** PR #233 has one explicit disposition with evidence, and the queue contains the next eligible task.
+**Done:** all five routes have explicit provenance-backed backstage dispositions and the queue names the next bounded task.
 
-**Stop / do not substitute:** do not use PR #233 as an excuse to bulk-publish the frozen #234–#241 routes; do not weaken the community-first candidate gate; do not create new public Phone URLs while the KEEP decision remains the current production instruction.
+**Stop / do not substitute:** do not use low price from an operator page by itself as admission evidence; do not bulk-merge #234–#241; do not publish new public Phone URLs while the current production instruction remains KEEP.
 
 ## Backstage packet set — batch-2 fully dispositioned
 
