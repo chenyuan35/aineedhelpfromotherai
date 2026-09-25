@@ -16,35 +16,46 @@ Execute all eligible work continuously. For confirmed bounded defects inside the
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — haha SIM activation / real-name admission review
+## JUST COMPLETED — watcher batch 2 + live source-health review
 
-The remaining haha SIM admission blocker was reviewed and recorded in `docs/PHONE_HAHASIM_ACTIVATION_REVIEW_2026-09-25.md`.
+Every watcher record after the first six was reviewed and recorded in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_BATCH2_2026-09-25.md`.
 
 Accepted current state:
 
-- current Fortress/OFCA material maps a real activation and real-name workflow: physical SIM activation, activation SMS/number assignment, ICCID-based first haha TRAVEL login, app-based account management, and supported real-name registration with HKID or a valid travel document;
-- do **not** present haha SIM as a dependable no-KYC route. Current first-party material allows unregistered states but also documents regulated real-name requirements and spot-check suspension that can interrupt SMS service;
-- fresh 2026 community evidence confirms continued mainland/overseas use, but no sufficiently current independent end-to-end new-card reproduction was found covering activation → app login → real-name registration → stable overseas/mainland network → SMS/OTP receipt → balance/expiry verification;
-- fresh onboarding-friction evidence remains: a 2026-05 Google Play review reports repeated top-up failure and a 2026-08 review reports a brand-new SIM showing an ICCID/mobile-number mismatch;
-- therefore haha SIM remains **HOLD / Watch**. Its resolved `HKD 10+` → `+365 days` retention rule remains valid research state, but the route is not admission-ready.
+- 55 new candidate records collapsed to 31 root threads after fragment normalization;
+- 2 records were promoted to backstage research packets: **Globe Philippines** long-term retention/overseas-SMS eligibility and **Holafly Always On** emergency data;
+- 10 records were insufficient/demand-only, 1 was a duplicate/restricted seller lead, and 42 were false positives;
+- 24 of the 55 records were excess V2EX reply-fragment emissions for already-seen root threads, confirming a bounded watcher-precision defect;
+- the latest demand-watch run was healthy: Reddit, NodeLoc, NodeSeek and V2EX all returned HTTP 200;
+- the latest source-watch run was healthy overall: 22 total / 16 ok-or-304 / 2 Ultra robots-skip / 4 Tello HTTP 403 fetch blockers;
+- source-watch emitted current `content-change` signals for `mobal_pricing` and `mobal_id`; these require semantic reconciliation and are not automatic product-change evidence.
 
 No public Phone page or route data changed.
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** review the next unreviewed Phone watcher candidate batch and current watcher/source health.
+**Task:** reconcile the current Mobal Japan pricing and voice-product ID-requirement source-change signals.
 
-**Why now:** haha SIM is now explicitly evidence-blocked until a fresh end-to-end activation/registration reproduction appears. The active Phone strategy requires continuous backstage evidence acquisition rather than repeatedly researching the same blocked route.
+**Why now:** Mobal is an existing route/source family. Maintaining accepted current facts has higher priority than starting a new Globe/Holafly route, and the source watcher has produced two concrete provider-controlled change signals.
 
 **Allowed sequence:**
-1. inspect the latest bounded watcher output and identify only candidates newer than the six already dispositioned;
-2. verify watcher/source health enough to distinguish source failure from “no new candidates”;
-3. disposition each genuinely new candidate as promote / hold / duplicate / insufficient / false-positive using current public evidence only;
-4. persist any durable research packet and advance the queue without public production churn.
+1. read the existing accepted Mobal facts plus the two source-watch events;
+2. verify current public Mobal pricing and voice-product ID-requirement pages without bypassing access controls;
+3. compare the semantic content with current Phone catalog/tutorial facts and classify each signal as substantive change, reverted/page churn, or non-semantic change;
+4. make only the smallest evidence-backed correction if existing facts are stale; otherwise record that no product change is needed.
 
-**Done:** every currently unreviewed candidate is dispositioned, or the session records that there are no new candidates plus verified watcher/source health; any promoted candidate has a precise next research question rather than an automatic publication action.
+**Done:** both Mobal change events are reconciled with current attributable content and any stale project fact is corrected or explicitly confirmed current.
 
-**Stop / do not substitute:** do not bulk-add routes, do not repurpose another VPS, do not bypass login/403/anti-bot controls, and do not publish a candidate merely because the watcher emitted it.
+**Stop / do not substitute:** do not infer a rule/price change from hash differences alone, do not auto-publish Globe/Holafly, do not bypass Tello/Ultra source blockers, and do not combine the V2EX dedupe repair into the same session.
+
+## Promoted batch-2 packets
+
+- **Globe Philippines — backstage only.** Current tourist registration is time-limited; the unresolved question is whether a lawful non-tourist registration path makes ordinary Globe Prepaid a real long-term route for the target user.
+- **Holafly Always On — backstage Data eSIM only.** Current first-party material supports 1 GB/month backup data for a bounded period on an installed eSIM, but it is data-only and not a long-term SMS/OTP-number route.
+
+## Watcher precision backlog
+
+Batch 2 confirmed 24 excess V2EX reply-fragment emissions. A later bounded repair should normalize fragment-only URLs for dedupe while preserving genuinely new evidence. Do not broadly suppress V2EX or other community sources.
 
 ## haha SIM re-open trigger
 
@@ -73,7 +84,7 @@ This benchmark does not authorize immediate production churn.
 
 ## Phone evidence pipeline state
 
-Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates were dispositioned; Saily Switzerland and haha SIM produced durable research packets. The haha retention conflict and activation/registration admission review are now both resolved to explicit research states; haha remains HOLD pending its trigger.
+Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines and Holafly Always On. Batch 2 also confirmed the V2EX reply-fragment dedupe defect.
 
 `phone-source-watch` remains the separate reviewed official/commercial source-change role. External linked domains are candidates only and must not be auto-crawled.
 
