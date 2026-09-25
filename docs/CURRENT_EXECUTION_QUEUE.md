@@ -23,6 +23,21 @@ Do not stop merely to narrate progress or ask the user to approve routine low-ri
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
+## JUST COMPLETED — Phone comparison UI benchmark
+
+PR #218 established the accepted comparison-UI research baseline in `docs/PHONE_RADAR_COMPARISON_UI_BENCHMARK_2026-09-25.md`; Eval Gate #724 passed and the PR squash-merged as `3f8f3fb07531da177697a4e004bc284a7d8f3ea9`.
+
+Accepted direction for future evidence-qualified Phone UI work:
+
+- default **Browse** mode: dense, immediate, filterable comparison with host-network grouping;
+- optional **Compare** mode: pin 2–4 routes into a fixed side-by-side field comparison;
+- **Guide** mode: concise execution text opened from the selected route;
+- graphical components are allowed only when driven by real route data: landed-cost breakdown, keep-alive timeline, app-evidence chips and dated route-history timeline;
+- “make the numbers complete” means make each admitted route decision-complete, not bulk-fill countries/providers with weak evidence;
+- no fake OTP percentages, arbitrary Phone risk score, doorway pages or weak global bulk-fill.
+
+This benchmark is a future implementation reference only. It does **not** replace the current next task below and does not authorize immediate production churn.
+
 ## NEXT SESSION — one bounded task only
 
 **Task:** resolve the current Fortress haha SIM keep-alive/recharge conflict.
