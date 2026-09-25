@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0",
+  "market": "ng-ke-bd-tw-pk-eg",
+  "checkedAt": "2026-09-26",
+  "status": "batch-n-evidence-captured",
+  "notes": "Nigeria + Kenya + Bangladesh + Taiwan + Pakistan + Egypt. NOTABLE: dedicated keep-number products found — MTN NG 'Keep My Number' (official), Safaricom KE 'Daima' (KSh500/yr official), Grameenphone BD validity packs (995Tk/5yr official), Taiwan Chunghwa 如意卡 180-day recharge cycle (official site).",
+  "networks": [
+    { "id": "mtn-ng", "name": "MTN NG" },
+    { "id": "safaricom-ke", "name": "Safaricom KE" },
+    { "id": "grameenphone-bd", "name": "Grameenphone BD" },
+    { "id": "chunghwa-tw", "name": "Chunghwa Telecom TW" },
+    { "id": "jazz-pk", "name": "Jazz PK" },
+    { "id": "vodafone-eg", "name": "Vodafone EG" }
+  ],
+  "brands": [
+    { "id": "mtn-ng-prepaid", "networkId": "mtn-ng", "name": "MTN NG Prepaid" },
+    { "id": "safaricom-prepaid", "networkId": "safaricom-ke", "name": "Safaricom Prepaid" },
+    { "id": "gp-prepaid", "networkId": "grameenphone-bd", "name": "Grameenphone Prepaid" },
+    { "id": "cht-ruyi", "networkId": "chunghwa-tw", "name": "中華電信如意卡" },
+    { "id": "jazz-prepaid", "networkId": "jazz-pk", "name": "Jazz Prepaid" },
+    { "id": "vodafone-eg-prepaid", "networkId": "vodafone-eg", "name": "Vodafone EG Prepaid" }
+  ],
+  "routes": [
+    {
+      "id": "safaricom-daima-2026",
+      "brandId": "safaricom-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official Daima service: keep line active 6 months / 1 year / 2 years with a SINGLE top-up. Designed explicitly for travelling/living abroad.",
+      "landedCost": {
+        "currency": "KES", "providerOrCommunityPrice": 50, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 50, "landedCny": 2.8, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "KES", "observedActionCost": 500, "yearCostOriginal": 500, "yearCostCny": 28,
+        "action": "Daima: KSh 200/6mo, KSh 500/1yr, KSh 1,000/2yr (official prices). Dial *100# or app to activate.",
+        "intervalDays": 365, "state": "official-confirmed"
+      },
+      "chinaActivation": "KE SIM registration (ID/passport) mandatory; local acquisition.",
+      "kyc": "Registration mandatory (KE law).",
+      "payment": "M-PESA dominant; international 验证中.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Receiving abroad works (community).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; but Daima is a model dedicated retention product worth documenting.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.safaricom.co.ke/emerald/daima",
+      "tariffSummary": "Daima: KSh500/yr keep-number service (official).",
+      "sourceIds": ["official-safaricom-daima-2026-09-26", "official-safaricom-daima-press"],
+      "guideSteps": ["Directory card — model retention product."]
+    },
+    {
+      "id": "mtn-ng-keepmynumber-2026",
+      "brandId": "mtn-ng-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official 'Keep My Number' (KMN) service: prepaid customers retain number when travelling abroad or dormant >180 days. Activation: recharge + dial code.",
+      "landedCost": {
+        "currency": "NGN", "providerOrCommunityPrice": null, "mandatoryTopup": null, "shipping": null, "adapterCostCny": null,
+        "landedOriginal": null, "landedCny": null, "fxCheckedAt": null, "state": "fee-not-captured"
+      },
+      "keep": {
+        "currency": "NGN", "observedActionCost": null, "yearCostOriginal": null, "yearCostCny": null,
+        "action": "KMN subscription prevents disconnect/recycle regardless of time abroad (official). KMN fee not captured in extraction — 验证中.",
+        "intervalDays": 365, "state": "official-service-confirmed-fee-pending"
+      },
+      "chinaActivation": "NG NIN-linked SIM registration mandatory; local acquisition.",
+      "kyc": "NIN registration mandatory (NG law) — foreigner friction.",
+      "payment": "local",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "NIN registration barrier + KMN fee pending.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
+      "tariffSummary": "KMN dedicated retention service exists.",
+      "sourceIds": ["official-mtn-keep-my-number-2026-09-26"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "grameenphone-validity-pack-2026",
+      "brandId": "gp-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official Recharge Validity Matrix: Tk 20-149 → 30 days; Tk 150-299 → 60 days; Tk 300+ → 365 days. Official Account Validity Packs: Tk 695 → 3 years; Tk 995 → 5 years.",
+      "landedCost": {
+        "currency": "BDT", "providerOrCommunityPrice": 100, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 100, "landedCny": 6, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "BDT", "observedActionCost": 300, "yearCostOriginal": 300, "yearCostCny": 18,
+        "action": "Tk 300 recharge → 365 days (official matrix); or Tk 995 → 5 years (≈Tk 199/yr). Check validity: *121*1*1#.",
+        "intervalDays": 365, "state": "official-confirmed"
+      },
+      "chinaActivation": "BD SIM registration (NID/passport); local acquisition.",
+      "kyc": "Registration mandatory (BD).",
+      "payment": "bKash/local rails.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; excellent 5-year pack documented as reference.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.grameenphone.com/",
+      "tariffSummary": "Tk300/yr or Tk995/5yr validity packs (official).",
+      "sourceIds": ["official-gp-validity-pack-2026-09-26", "official-gp-recharge-validity-matrix-2026-09-26"],
+      "guideSteps": ["Directory card — 5-year pack is a standout."]
+    },
+    {
+      "id": "cht-ruyi-180d-2026",
+      "brandId": "cht-ruyi",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "中華電信如意卡 (official site): valid 180 days from activation; each top-up re-counts 180 days from recharge date; max stored value NT$5,000; keep topping up within validity = number permanently usable.",
+      "landedCost": {
+        "currency": "TWD", "providerOrCommunityPrice": 300, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 300, "landedCny": 66, "fxCheckedAt": "2026-09-26", "state": "community-reported-starter"
+      },
+      "keep": {
+        "currency": "TWD", "observedActionCost": 100, "yearCostOriginal": 200, "yearCostCny": 44,
+        "action": "Top-up (min ~NT$100) every 180 days re-counts validity (official). ~NT$200/yr.",
+        "intervalDays": 180, "state": "official-confirmed"
+      },
+      "chinaActivation": "TW prepaid: online e-topup available (idealcard.com.tw); acquisition typically TW airport/store with passport.",
+      "kyc": "Passport registration (TW).",
+      "payment": "Online e-儲值 + local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Receiving abroad works (community); 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition typically in TW; but clean 180-day cycle documented.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.idealcard.com.tw/",
+      "tariffSummary": "180-day validity per top-up; permanent if cycled.",
+      "sourceIds": ["official-cht-ruyi-180d-rule", "official-idealcard-introduce-2026-09-26"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "jazz-pk-2026", "brandId": "jazz-pk", "publishState": "observation", "numberType": "real-mobile", "simType": "physical",
+      "acquisitionSummary": "Jazz PK prepaid; 'SIM Lagao' reactivation offer exists (Rs.0.01). Standard retention/validity terms not captured.",
+      "landedCost": { "currency": "PKR", "state": "insufficient-evidence" },
+      "keep": { "currency": "PKR", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "PK SIM biometric registration mandatory; local.", "kyc": "Biometric (PK law).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://jazz.com.pk/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-jazz-faqs-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "vodafone-eg-2026", "brandId": "vodafone-eg-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical",
+      "acquisitionSummary": "Vodafone EG prepaid; recharge channels documented. Validity/retention rule not captured (pages returned mostly UI chrome).",
+      "landedCost": { "currency": "EGP", "state": "insufficient-evidence" },
+      "keep": { "currency": "EGP", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "EG prepaid registration; local.", "kyc": "Registration (EG).", "payment": "Vodafone Cash/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://web.vodafone.com.eg/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-vodafone-eg-recharge-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    }
+  ]
+}
