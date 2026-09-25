@@ -33,6 +33,22 @@ When the current task involves Exa, Tavily, ChatGPT Search, Perplexity or anothe
 
 When plugins/connectors are used, follow `docs/PLUGIN_ORCHESTRATION.md`. Plugins are specialized workers around the GitHub fact source, not independent roadmaps or competing project-state databases. Use the smallest useful tool chain, check the connected account's real quota before depending on a service, and record accepted results/blockers back into the appropriate GitHub fact source in the same work round.
 
+### Parallel AI worker orchestration
+
+When an additional capable agent/model is available on QwenPaw or another approved project worker, use it as a **high-throughput backstage worker**, not as an independent project manager. GitHub `main` remains the shared control plane.
+
+Default division of labor:
+
+- the coordinating ChatGPT session owns current-state reconciliation, product/value decisions, task priority, admission gates, Search Console/growth decisions, PR review, merge/release verification and canonical fact-source updates;
+- QwenPaw/Kimi or another delegated worker should preferentially handle parallelizable research: forum/community discovery, source retrieval, evidence extraction, provenance/timestamps, deduplication, contradiction checks, candidate-field completion, bounded batch triage and draft test artifacts;
+- delegated research outputs are `RESEARCH CANDIDATE` / raw evidence by default. They do not become accepted product data, public routes, rankings or roadmap tasks until the coordinating session reviews them against the applicable evidence/value gates;
+- official/provider sources may verify provider-controlled facts after a candidate exists, but must not be used to mass-create Phone candidates merely because products are listed;
+- delegated workers must not independently change `docs/CURRENT_EXECUTION_QUEUE.md`, product direction, production UI/data schema, infrastructure roles, DNS, billing, AdSense/account settings, merge/deploy state or other high-impact contracts;
+- a worker may research many candidates in parallel, but public production still follows the one-current-task/session gate. High model quota is a reason to increase evidence throughput, not to increase unreviewed page/PR volume;
+- before accepting a large batch, audit a small sample for source quality, duplication and classification error. Narrow or stop the batch if quality is poor.
+
+A delegated worker's local heartbeat, memory or task list is never a project fact source. It must read the same GitHub startup chain before project work and treat conflicts as stale local state.
+
 ### Interpret rough inputs before execution
 
 The user is not required to turn every thought into a professional product brief. Screenshots, copied prompts, competitor examples, half-formed ideas, observations, and material shared “for reference” are useful signals even when they are not executable specifications.
