@@ -1,6 +1,6 @@
 # Phone Radar Reviewed Source-Change Watch
 
-Last updated: 2026-09-24
+Last updated: 2026-09-25
 
 ## Purpose
 
@@ -68,6 +68,20 @@ First clean systemd run on 2026-09-16:
 - stored state was about 144 KiB after baseline runs.
 
 The Ultra/Tello conditions are blockers for those source fetches only. They must not be treated as route-policy changes or as evidence that the underlying provider information disappeared.
+
+## Sep 25 live health / change-review checkpoint
+
+A live observer check at the 2026-09-25 06:54 UTC completed run verified:
+
+- 22 total reviewed targets;
+- 16 fetched successfully or returned legitimate 304;
+- 2 Ultra Mobile targets remained `robots-skip`;
+- 4 Tello targets remained provider-side HTTP 403 `fetch-error`;
+- service exit status was 0 and the next timer was scheduled normally.
+
+This is a healthy watcher with source-specific blockers, not a collection outage.
+
+The same run emitted `content-change` signals for `mobal_pricing` and `mobal_id`. The `mobal_pricing` hash returned to a previously observed hash after changing on Sep 24, so it may represent a revert or page churn rather than a durable commercial change. `mobal_id` also changed. Hash events are review triggers only: the next bounded task is to compare current Mobal pricing and voice-product ID-requirement content with the existing accepted Phone facts before any product edit.
 
 ## Current source families
 

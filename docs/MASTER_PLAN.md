@@ -100,10 +100,13 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 10. **DONE — first watcher v1.1 six-candidate review.** `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` dispositioned all six records. Two evidence packets were promoted backstage: a Saily Switzerland data-eSIM failure/refund cluster and a Fortress haha SIM retention-price conflict. Four records were non-promotions (false-positive, insufficient, duplicate or restricted seller evidence). No public route/page changed.
 11. **DONE — Fortress haha SIM retention conflict resolved.** `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md` records the current product-specific rule: Fortress says `HKD 10+` balance top-up extends haha SIM validity by 365 days and directs current balance top-up to the haha TRAVEL App. The generic 3HK online-recharge `HKD 100` floor does not override the haha-specific rule.
 12. **DONE — haha SIM activation/real-name/onboarding admission review.** `docs/PHONE_HAHASIM_ACTIVATION_REVIEW_2026-09-25.md` maps the current official activation and real-name workflow but keeps the route `HOLD / Watch`: no sufficiently current independent end-to-end new-card reproduction was found, while 2026 app top-up failure and new-card ICCID/number-mismatch reports remain active confidence-lowering evidence. Re-open only on the document's explicit evidence trigger; do not market the route as no-KYC.
-13. **NEXT SESSION — review the next unreviewed Phone watcher candidate batch and current watcher/source health.** Disposition only records newer than the first six; if none exist, verify source health and record a clean no-new-candidate result rather than inventing a route task. No candidate auto-publishes.
-14. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
-15. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-16. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+13. **DONE — watcher batch 2 + live source-health review.** `docs/PHONE_WATCHER_CANDIDATE_REVIEW_BATCH2_2026-09-25.md` dispositioned all 55 records after the first six: 2 backstage promotions (Globe Philippines; Holafly Always On), 10 insufficient/demand-only, 1 duplicate/restricted seller lead and 42 false positives. Live runtime remained healthy; the review also found 24 excess V2EX reply-fragment emissions. No public route/page changed.
+14. **NEXT SESSION — reconcile Mobal Japan source-change signals.** Current source-watch emitted `content-change` for `mobal_pricing` and `mobal_id`. Compare the current provider pages with existing accepted Phone facts and classify each event as substantive, reverted/churned or non-semantic before any product edit.
+15. **BACKLOG — watcher precision repair.** Normalize fragment-only reply URLs for dedupe while preserving genuinely new evidence; do not broadly suppress V2EX.
+16. **BACKLOG — promoted Globe/Holafly packets.** Continue the two research questions only after Mobal reconciliation; no auto-publication.
+17. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
+18. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+19. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 
@@ -210,6 +213,7 @@ Treat provider/access limits as blockers, not evidence failures.
 | Current Phone directory/matrix contract | `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` |
 | Community intelligence watcher | `docs/PHONE_DEMAND_WATCH.md` + `ops/phone-demand-watch/` |
 | First watcher candidate review | `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` |
+| Second watcher candidate review | `docs/PHONE_WATCHER_CANDIDATE_REVIEW_BATCH2_2026-09-25.md` |
 | haha SIM retention resolution | `docs/PHONE_HAHASIM_RETENTION_RESOLUTION_2026-09-25.md` |
 | haha SIM activation/registration review | `docs/PHONE_HAHASIM_ACTIVATION_REVIEW_2026-09-25.md` |
 | Reviewed source-change watcher | `docs/PHONE_SOURCE_WATCH.md` + `ops/phone-source-watch/` |
