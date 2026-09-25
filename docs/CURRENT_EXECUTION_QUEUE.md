@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-25
+Last updated: 2026-09-26
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic execution queue.
 
@@ -16,43 +16,43 @@ Execute all eligible work continuously. For confirmed bounded defects inside the
 
 Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
 
-## JUST COMPLETED — Globe Philippines eligibility / overseas-SMS review
+## JUST COMPLETED — Holafly Always On backstage Data eSIM review / watcher batch-2 closeout
 
-`docs/PHONE_GLOBE_PHILIPPINES_ELIGIBILITY_REVIEW_2026-09-25.md` resolves the eligibility question enough to classify the route. Ordinary tourist registration remains limited to 30 days unless an approved visa extension is presented. Foreign nationals with qualifying other visa types can register without the 30-day cap using passport/address plus the applicable ACR I-Card, employment, student or other qualifying documents.
+`docs/PHONE_HOLAFLY_ALWAYS_ON_REVIEW_2026-09-26.md` classifies Holafly Always On **PROMOTE / BACKSTAGE DATA-ESIM PACKET / NO PUBLIC PRODUCTION CHANGE**. PR #231 passed Eval Gate #763 and squash-merged as `413e6c3ec919225b12472dbeaa27ac6b820e9397`.
 
-For a lawfully registered ordinary Globe Prepaid SIM, the current keep-alive rule is one regular load top-up within a year, with a separate 120-day zero-balance/no-activity expiry path. Roaming is automatic, incoming SMS abroad is free while the SIM remains active, and Globe currently lists China Mobile/China Unicom roaming coverage. Current 2026 community reports reproduce overseas OTP/SMS use but also show roaming delays/maintenance and foreigner-account/app friction. No current independent end-to-end reproduction was found for a qualifying non-tourist foreign national using the route long-term in mainland China.
+Current first-party material supports 1 GB/month backup data, automatic 30-day refresh from installation, no roll-over, coverage including China / Hong Kong / Singapore / Taiwan / Japan / Macao, and a keep-installed/no-delete lifecycle constraint. Always On is data-only and must not be represented as a long-term SMS/OTP-number route.
 
-Decision: **HOLD / conditional long-term route / no publication.** Do not treat misclassified registration, another person's identity, or other rule-bypass methods as evidence.
+Three unresolved fields remain: (1) explicit Always-On service duration ceiling, (2) explicit device-transfer policy beyond keep-installed/do-not-delete, and (3) first-party coverage metadata inconsistency (`70+` in meta description vs `150+`/enumerated destinations in page body). A separate evidence gap remains: no independent 2026 end-to-end reproduction was obtained for monthly-refresh arrival, speed/availability, or failure/refund behavior. These are re-open triggers, not blockers to the backstage classification.
+
+Watcher batch-2 is now fully dispositioned. No public Phone route/page changed.
 
 ## NEXT SESSION — one bounded task only
 
-**Task:** deepen the Holafly Always On backstage Data eSIM packet.
+**Task:** run the first settled-data Search Console decision read for the UK Phone pilot via Windsor.ai `searchconsole`, ending in one explicit **KEEP / ADJUST / NARROW** decision for the existing canonical.
 
-**Why now:** Globe is now classified HOLD with an explicit evidence trigger. Holafly is the remaining promoted batch-2 packet and represents a different user job: low-maintenance emergency data between trips, not a long-term SMS/OTP number.
+**Why now:** batch-2 evidence review is complete, while public Phone production remains measurement-gated. A bounded eligibility check on 2026-09-26 used Windsor's default finalized-data mode (`include_fresh_data=false`) and returned a Phone canonical row dated 2026-09-23, which proves finalized coverage extends beyond the required `2026-09-16` gate. The full decision read has not yet been performed.
 
 **Allowed sequence:**
-1. verify the cheapest legitimate direct Holafly purchase that currently activates Always On;
-2. verify current Always On country coverage, emphasizing China, Hong Kong and Singapore;
-3. verify device-transfer/deletion restrictions and the exact 12-month/monthly-refresh mechanics from first-party material;
-4. reconcile current 2026 independent evidence on monthly refresh, speed/availability and failure/refund behavior;
-5. record a backstage PROMOTE / HOLD / REJECT decision; do not publish the NodeSeek seller route or change production.
+1. read finalized Search Console data for `/tools/phone-number-survival-guide/` from the settled window, including date/page/query/clicks/impressions/CTR/position;
+2. separate query/page evidence and avoid mixing Google organic with referral/social/direct/AI traffic;
+3. compare the settled evidence against the shipped UK pilot's current job and prior baseline;
+4. record exactly one decision: **KEEP**, **ADJUST**, or **NARROW**, with the evidence and threshold that supports it;
+5. if the decision implies a production change, queue that change as a separate next-session task rather than modifying public Phone production in the measurement-read session.
 
-**Done:** Always On is classified with a direct acquisition path, supported-market state, lifecycle/device constraints, current independent reliability evidence, unresolved fields and a re-open/publication trigger if needed.
+**Done:** the queue contains one evidence-backed KEEP / ADJUST / NARROW decision for the UK pilot, with the settled date range, query/page evidence, unresolved uncertainty, and the next production or measurement trigger.
 
-**Stop / do not substitute:** do not turn Holafly into a phone-number/SMS route, do not broaden into Globe, public Phone UI changes, seller scraping, observer topology or country/provider doorway pages.
+**Stop / do not substitute:** do not touch public Phone production before the measurement-gated decision is made; do not bulk-add weak global rows; do not create country/provider doorway pages; do not turn a tiny or ambiguous sample into a forced redesign; do not switch to a new route unless a fresh 2026+ independent reproduction clears the route evidence gate.
 
-## Promoted batch-2 packets
+## Backstage packet set — batch-2 fully dispositioned
 
+- **Saily Switzerland — backstage research packet / PROMOTE.** Retained as the earlier data-eSIM incident/recovery packet from the first six watcher candidates.
+- **haha SIM — HOLD.** Re-open only on a fresh independent 2026+ end-to-end activation/registration outcome or a current failure/recovery reproduction showing the ICCID/registration path is predictably recoverable.
 - **Globe Philippines — HOLD.** A lawful long-term class exists for qualifying non-tourist visa holders, but ordinary tourist registration remains 30-day-limited unless an approved visa extension is presented; current evidence still lacks a qualifying-foreigner end-to-end mainland-China long-term OTP reproduction.
-- **Holafly Always On — backstage Data eSIM only.** Current first-party material supports 1 GB/month backup data for a bounded period on an installed eSIM, but it is data-only and not a long-term SMS/OTP-number route.
+- **Holafly Always On — PROMOTE / backstage Data eSIM only.** Re-open on a first-party explicit duration ceiling, an explicit device-transfer rule, resolution of the `70+` vs `150+` coverage inconsistency, or fresh 2026+ independent reproduction of monthly refresh / speed / failure / refund behavior.
 
 ## Watcher precision status
 
 **CLOSED 2026-09-25.** PRs #225/#226 repaired V2EX fragment-only duplicate emission, including legacy-state migration compatibility. Final live verification produced no duplicate V2EX candidate and did not suppress the source.
-
-## haha SIM re-open trigger
-
-Re-open haha SIM admission only when a fresh independent 2026+ end-to-end activation/registration outcome appears, ideally covering a new card through activation, app login, real-name registration, mainland/overseas network registration and actual SMS/OTP receipt, or when a current failure/recovery reproduction shows that the ICCID/registration failure path is predictably recoverable.
 
 ## Phone comparison UI benchmark
 
@@ -73,11 +73,12 @@ This benchmark does not authorize immediate production churn.
 - Use Windsor.ai `searchconsole` for current Search Console reads on `sc-domain:aineedhelpfromotherai.com`.
 - Do not use GSC Wizard for new reads; its free/trial quota is exhausted and it is deprecated for the project.
 - If Windsor.ai later fails, use Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
-- Latest accepted Phone signal remains `survival number` on 2026-09-23: 1 impression, 0 clicks, average position 22. One impression is not a production-change signal.
+- The 2026-09-26 eligibility check used Windsor's default finalized-data mode and returned a Phone canonical row dated 2026-09-23, so the `settledThrough ≥ 2026-09-16` gate for the first KEEP / ADJUST / NARROW read is satisfied.
+- Do not infer the decision from that eligibility check alone; the next session must run the bounded settled-data read.
 
 ## Phone evidence pipeline state
 
-Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines (HOLD) and Holafly Always On. The V2EX reply-fragment precision defect found in batch 2 is closed by PRs #225/#226 and final live verification.
+Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines (HOLD) and Holafly Always On (PROMOTE). The V2EX reply-fragment precision defect found in batch 2 is closed by PRs #225/#226 and final live verification.
 
 `phone-source-watch` remains the separate reviewed official/commercial source-change role. Its Sep 25 Mobal pricing/ID events are reconciled; no production Mobal route fact changed. External linked domains are candidates only and must not be auto-crawled.
 
@@ -88,6 +89,8 @@ No second observer should be assigned merely to satisfy topology. `codex-vps` re
 The current public surface remains the UK index/matrix. Backstage evidence may lead to either an evidence-backed improvement on the existing index or an evidence-rich route detail page only after the route clears the publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 
 Do not create country/provider pages for coverage. A separate route page requires unambiguous route identity/acquisition, current commercial facts, meaningful independent operational evidence, substantial unique execution content, visible freshness/conflicts and both product-value gates.
+
+A new evidence-qualified route is not an eligible next task merely because a provider exists. Re-open route admission only when a fresh 2026+ independent reproduction appears and clears the evidence gate.
 
 ## Search Console 404 notice
 
@@ -100,6 +103,7 @@ The 2026-09-20 Search Console validation notice still concerns intentionally rem
 
 ## Do not do next
 
+- do not touch public Phone production until the measurement-gated KEEP / ADJUST / NARROW decision is made;
 - do not stop Phone research merely because the public page is in a measurement window;
 - do not immediately bulk-add another market/provider/ranking model to production;
 - do not bulk-add weak global Phone rows;
