@@ -95,12 +95,13 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 5. **DONE — Phone carrier-directory product correction.** `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` fixed the hierarchy, matrix fields, ranking/evidence rules, cost model and guide contract.
 6. **DONE — UK pilot implementation/release.** PR #203 shipped the bounded UK matrix/mobile implementation on the existing canonical. Eval Gate #693 passed; Vercel Preview/production status succeeded; forced live production fetch returned HTTP 200 and confirmed the matrix, guide, and unchanged Data/Temporary families.
 7. **DONE — Phone community watcher v1.1 repository upgrade.** PR #211 added hourly bounded structured intelligence, candidate history, regression coverage and source-role documentation; Eval Gate #709 passed; squash merge `3204ee0be13411c146e1031bbf13a094949f679f`.
-8. **ONGOING BACKGROUND — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The first observed Phone row is 1 impression (`survival number`, position 22) on 2026-09-23, which is not enough for a production change.
+8. **ONGOING BACKGROUND — Re-measure Phone without public churn.** Windsor.ai Search Console is the current reader. The Phone canonical has now appeared in Search Console, but the sample remains tiny and is not a production-change signal; query-level evidence still includes `survival number` at 1 impression / position 22 on 2026-09-23.
 9. **DONE — trial observer access recovery + v1.1 runtime deployment.** Qwen's existing dedicated key authenticates to the original host; read-only audit found intact watcher state, no OOM, and a 100%-full root filesystem causing false-success write errors. After off-host backup and deletion of one unused 196 MB Chrome ZIP, disk fell to 82%; main's v1.1 was deployed and a real run completed 4/4 sources HTTP 200, `matched=25`, `candidate_total=6`, 19.3 MiB peak, with the hourly timer active. RDC remains unenrolled because its persisted refresh token is invalid, but SSH control is restored.
-10. **NEXT SESSION — disposition the six current watcher v1.1 candidates.** Deduplicate and verify provenance; promote only evidence-rich findings into durable route/source packets. No auto-publish.
-11. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
-12. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-13. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+10. **DONE — first watcher v1.1 six-candidate review.** `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` dispositioned all six records. Two evidence packets were promoted backstage: a Saily Switzerland data-eSIM failure/refund cluster and a Fortress haha SIM retention-price conflict. Four records were non-promotions (false-positive, insufficient, duplicate or restricted seller evidence). No public route/page changed.
+11. **NEXT SESSION — resolve Fortress haha SIM retention conflict.** Current community reports still describe a `HKD 10` top-up path extending validity for one year, while the current 3HK prepaid recharge page says validity is extended for `HKD 100+` top-ups and the English rendering states a `HKD 100` minimum. Resolve the present rule or keep the route on HOLD; do not publish a guessed keep cost.
+12. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
+13. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+14. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 
@@ -206,6 +207,7 @@ Treat provider/access limits as blockers, not evidence failures.
 | Active Phone growth/evidence operating plan | `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` |
 | Current Phone directory/matrix contract | `docs/PHONE_RADAR_DIRECTORY_MATRIX_CONTRACT_2026-09-23.md` |
 | Community intelligence watcher | `docs/PHONE_DEMAND_WATCH.md` + `ops/phone-demand-watch/` |
+| First watcher candidate review | `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md` |
 | Reviewed source-change watcher | `docs/PHONE_SOURCE_WATCH.md` + `ops/phone-source-watch/` |
 | UK Phone evidence packet | `docs/PHONE_UK_PILOT_SOURCE_PACKET_2026-09-23.md` |
 | Normalized UK pilot data | `frontend/tools/phone-number-lifecycle-mvp/uk-directory-pilot.json` |
