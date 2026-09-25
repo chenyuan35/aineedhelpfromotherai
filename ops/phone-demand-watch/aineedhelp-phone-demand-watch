@@ -33,6 +33,18 @@ normalize_dedupe_link() {
   fi
 }
 
+v2ex_root_seen() {
+  local candidate_link="$1"
+  awk -F '\t' -v root="$candidate_link" '
+    NR > 1 && $2 == "v2ex" {
+      url=$8
+      sub(/#.*/, "", url)
+      if (url == root) { found=1; exit }
+    }
+    END { exit(found ? 0 : 1) }
+  ' "$CANDIDATES"
+}
+
 fetch_feed() {
   source="$1"; url="$2"; sleep_s="$3"; body="$TMP/$source.xml"; hdr="$TMP/$source.h"
   code=$(curl -A "$UA" -LsS --compressed --max-time 25 -D "$hdr" -o "$body" -w '%{http_code}' "$url" 2>/dev/null || printf '000')
@@ -45,6 +57,10 @@ fetch_feed() {
       dedupe_link=$(normalize_dedupe_link "$src" "$link")
       h=$(printf '%s\t%s' "$src" "$dedupe_link" | sha256sum | cut -d' ' -f1)
       if ! grep -Fqx "$h" "$SEEN"; then
+        if [ "$src" = v2ex ] && v2ex_root_seen "$dedupe_link"; then
+          printf '%s\n' "$h" >> "$SEEN"
+          continue
+        fi
         printf '%s\n' "$h" >> "$SEEN"
         printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$src" "$catg" "$intent" "$activity" "$pub" "$title" "$link" "$excerpt" >> "$SIGNALS"
         printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$NOW" "$src" "$catg" "$intent" "$activity" "$pub" "$title" "$link" "$excerpt" "${services:--}" "${commerce:--}" "${mentioned_hosts:--}" >> "$CANDIDATES"
