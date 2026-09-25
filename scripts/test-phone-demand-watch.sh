@@ -56,4 +56,22 @@ IFS=$'\t' read -r src category intent activity published title url excerpt servi
 [[ "$commerce" == *refund-risk* ]]
 [ "$hosts" = esim.gg ]
 
+cat > "$TMP/voxi-feed.xml" <<'XML'
+<rss><channel><item>
+<title>VOXI + ChatGPT?</title>
+<link>https://www.nodeseek.com/post-voxi-app-test</link>
+<description><![CDATA[有人实测 Telegram / WhatsApp 吗？想确认这个号能不能接验证码。]]></description>
+<pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+</item></channel></rss>
+XML
+VOXI_ROW=$(perl "$PARSER" nodeseek "$TMP/voxi-feed.xml")
+IFS=$'\t' read -r vsrc vcategory vintent vactivity vpublished vtitle vurl vexcerpt vservices vcommerce vhosts <<< "$VOXI_ROW"
+[ "$vsrc" = nodeseek ]
+[[ "$vcategory" == *voxi-app-evidence* ]]
+[[ "$vcategory" == *verification* ]]
+[[ "$vservices" == *openai* ]]
+[[ "$vservices" == *telegram* ]]
+[[ "$vservices" == *whatsapp* ]]
+grep -Fq 'Priority target: VOXI app verification evidence' "$WATCHER"
+
 echo 'phone demand watcher audit: PASS'
