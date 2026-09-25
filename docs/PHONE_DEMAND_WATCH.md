@@ -98,6 +98,14 @@ The v1.1 files from GitHub `main` at `9c4fa5c` were then deployed and checksum-v
 
 RDC itself remains unenrolled because its persisted refresh token is invalid (`Already Used`); the observer is currently controlled through Qwen key-only SSH. This does not justify reinstalling the host or moving the watcher elsewhere.
 
+## Sep 25 first v1.1 candidate review
+
+The first verified v1.1 run produced six candidate records. All six have now been manually dispositioned in `docs/PHONE_WATCHER_CANDIDATE_REVIEW_2026-09-25.md`.
+
+Two were useful enough to promote into durable backstage research packets: a Saily Switzerland data-eSIM failure/refund incident cluster and a Fortress haha SIM retention-price conflict. The other four were correctly stopped at review: one device-only iPhone IMEI question with no route outcome, one already-known Ultra Mobile `$3` PayGo seller lead that added no safe independent operational evidence, and two obvious non-Phone false positives (a VPS carpool post and a retail beverage complaint).
+
+This confirms the manual review gate is necessary. Watcher candidate emission is a recall mechanism, not a publication or truth signal. The haha SIM conflict is the next bounded research task; no public route was added from this batch.
+
 ## Interpretation rules
 
 - Repeated questions can prioritize product copy, decision paths and evidence gaps.
