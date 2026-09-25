@@ -26,22 +26,36 @@ Three unresolved fields remain: (1) explicit Always-On service duration ceiling,
 
 Watcher batch-2 is now fully dispositioned. No public Phone route/page changed.
 
+## JUST COMPLETED — first settled Search Console decision read — KEEP
+
+**Decision: KEEP** the existing UK Phone pilot unchanged. This is a measurement-hold decision, not proof that the current surface has won.
+
+Windsor.ai `searchconsole` was read in finalized mode (`include_fresh_data=false`) for `2026-09-16` through `2026-09-23` on `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`:
+
+- page-level settled data: `2026-09-21` = 1 impression / 0 clicks / position 9; `2026-09-23` = 2 impressions / 0 clicks / average position 13.5;
+- cumulative page-level sample = **3 impressions / 0 clicks / 0% CTR / weighted average position 12.0**;
+- query-level visible data contains only `survival number` = 1 impression / 0 clicks / position 22 on `2026-09-23`; the other two page impressions are not exposed at query granularity in this low-volume sample.
+
+The sample is too small to support **ADJUST** or **NARROW**. Zero clicks across three impressions is not a reliable CTR signal, while one settled impression already occurred at page-level position 9. Therefore public Phone production stays stable and backstage evidence acquisition continues.
+
+**Next measurement trigger:** repeat the settled decision read after at least 7 additional finalized days **and** at least 20 cumulative settled impressions on the canonical, unless a clear indexing regression or materially different query pattern appears earlier. If the date gate arrives but the impression threshold does not, continue KEEP rather than forcing a redesign from noise.
+
 ## NEXT SESSION — one bounded task only
 
-**Task:** run the first settled-data Search Console decision read for the UK Phone pilot via Windsor.ai `searchconsole`, ending in one explicit **KEEP / ADJUST / NARROW** decision for the existing canonical.
+**Task:** disposition PR #233 (`Keep-Alive Assistant`) against the new KEEP decision and the Phone product-value / publication gates. End in exactly one repository action: **HOLD / REWORK / CLOSE**. Do not merge it merely because its earlier CI/Preview passed.
 
-**Why now:** batch-2 evidence review is complete, while public Phone production remains measurement-gated. A bounded eligibility check on 2026-09-26 used Windsor's default finalized-data mode (`include_fresh_data=false`) and returned a Phone canonical row dated 2026-09-23, which proves finalized coverage extends beyond the required `2026-09-16` gate. The full decision read has not yet been performed.
+**Why now:** PR #233 is still open and adds five public URLs plus a new public Phone tool. The settled Search Console decision is KEEP, so any pending public expansion must be reconciled before it can proceed.
 
 **Allowed sequence:**
-1. read finalized Search Console data for `/tools/phone-number-survival-guide/` from the settled window, including date/page/query/clicks/impressions/CTR/position;
-2. separate query/page evidence and avoid mixing Google organic with referral/social/direct/AI traffic;
-3. compare the settled evidence against the shipped UK pilot's current job and prior baseline;
-4. record exactly one decision: **KEEP**, **ADJUST**, or **NARROW**, with the evidence and threshold that supports it;
-5. if the decision implies a production change, queue that change as a separate next-session task rather than modifying public Phone production in the measurement-read session.
+1. review the actual PR #233 diff, not only its PR description;
+2. apply `docs/PRODUCT_VALUE_GATE.md`, the existing-index-first rule, and the route/detail publication gate;
+3. check whether the arbitrary 15% planning buffer, five-URL expansion, calendar recurrence semantics, source provenance and claimed unique user job are defensible;
+4. choose HOLD, REWORK or CLOSE and record the concrete reason;
+5. do not merge or modify public Phone production in that review session unless a separate eligible production task is queued afterward.
 
-**Done:** the queue contains one evidence-backed KEEP / ADJUST / NARROW decision for the UK pilot, with the settled date range, query/page evidence, unresolved uncertainty, and the next production or measurement trigger.
+**Done:** PR #233 has one explicit disposition with evidence, and the queue contains the next eligible task.
 
-**Stop / do not substitute:** do not touch public Phone production before the measurement-gated decision is made; do not bulk-add weak global rows; do not create country/provider doorway pages; do not turn a tiny or ambiguous sample into a forced redesign; do not switch to a new route unless a fresh 2026+ independent reproduction clears the route evidence gate.
+**Stop / do not substitute:** do not use PR #233 as an excuse to bulk-publish the frozen #234–#241 routes; do not weaken the community-first candidate gate; do not create new public Phone URLs while the KEEP decision remains the current production instruction.
 
 ## Backstage packet set — batch-2 fully dispositioned
 
@@ -73,8 +87,8 @@ This benchmark does not authorize immediate production churn.
 - Use Windsor.ai `searchconsole` for current Search Console reads on `sc-domain:aineedhelpfromotherai.com`.
 - Do not use GSC Wizard for new reads; its free/trial quota is exhausted and it is deprecated for the project.
 - If Windsor.ai later fails, use Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
-- The 2026-09-26 eligibility check used Windsor's default finalized-data mode and returned a Phone canonical row dated 2026-09-23, so the `settledThrough ≥ 2026-09-16` gate for the first KEEP / ADJUST / NARROW read is satisfied.
-- Do not infer the decision from that eligibility check alone; the next session must run the bounded settled-data read.
+- The first full settled decision read is complete: 2026-09-16..2026-09-23 yielded 3 page impressions, 0 clicks and weighted average page position 12.0; the only exposed query was `survival number` with 1 impression at position 22.
+- Current decision is **KEEP** because the sample is too small to justify public churn. Re-read after at least 7 additional finalized days and 20 cumulative settled impressions, unless a clear regression or materially different query pattern appears earlier.
 
 ## Phone evidence pipeline state
 
@@ -103,7 +117,7 @@ The 2026-09-20 Search Console validation notice still concerns intentionally rem
 
 ## Do not do next
 
-- do not touch public Phone production until the measurement-gated KEEP / ADJUST / NARROW decision is made;
+- current public Phone instruction is **KEEP**; do not add or churn public Phone URLs until a later evidence-backed decision changes that instruction;
 - do not stop Phone research merely because the public page is in a measurement window;
 - do not immediately bulk-add another market/provider/ranking model to production;
 - do not bulk-add weak global Phone rows;
