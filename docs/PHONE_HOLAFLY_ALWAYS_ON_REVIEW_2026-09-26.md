@@ -1,6 +1,6 @@
 # Holafly Always On — Backstage Data eSIM Packet Review — 2026-09-26
 
-Status: **PROMOTE / BACKSTAGE DATA-ESIM PACKET / NO PUBLIC PRODUCTION CHANGE / ONE UNRESOLVED FIELD FLAGGED**
+Status: **PROMOTE / BACKSTAGE DATA-ESIM PACKET / NO PUBLIC PRODUCTION CHANGE / THREE UNRESOLVED FIELDS FLAGGED**
 
 ## Question
 
@@ -8,7 +8,7 @@ Can Holafly Always On serve as a legitimate low-maintenance emergency backup dat
 
 ## Decision
 
-**PROMOTE to the backstage packet set as a Data-eSIM (backup data, not a number).** Always On is a first-party-supported, low-friction backup-data benefit (1 GB/month, 30-day refresh, no roll-over) bundled with all Holafly eSIMs, covering 150+ destinations including China, Hong Kong, Singapore, Taiwan, Japan and Macao. It is admitted as a backstage data-eSIM packet. It must **not** be represented as a long-term SMS/OTP-number route — it carries no phone number. One unresolved field (the explicit Always-On service duration ceiling) is flagged below; it does not block the current classification because the packet is data-only and the bounded-period ambiguity does not change the user job it serves.
+**PROMOTE to the backstage packet set as a Data-eSIM (backup data, not a number).** Always On is a first-party-supported, low-friction backup-data benefit (1 GB/month, 30-day refresh, no roll-over) bundled with all Holafly eSIMs, covering 150+ destinations including China, Hong Kong, Singapore, Taiwan, Japan and Macao. It is admitted as a backstage data-eSIM packet. It must **not** be represented as a long-term SMS/OTP-number route — it carries no phone number. Three unresolved fields are flagged below; they do not block the current classification because the packet is data-only and the current ambiguities do not change the user job it serves.
 
 ## First-party findings
 
