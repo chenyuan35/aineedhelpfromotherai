@@ -140,4 +140,13 @@ if ($expViolations.Count -gt 0) {
 }
 Write-Host "OK`n" -ForegroundColor Green
 
+Write-Host "=== CI Verify: Phone data foundation ===" -ForegroundColor Cyan
+node scripts/build-phone-database.mjs --check
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+node scripts/test-phone-database.mjs
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+node scripts/test-phone-candidate-pipeline.mjs
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+Write-Host "OK`n" -ForegroundColor Green
+
 Write-Host "=== ALL CHECKS PASSED — Safe to push ===" -ForegroundColor Green

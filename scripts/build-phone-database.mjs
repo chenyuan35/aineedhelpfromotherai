@@ -6,6 +6,12 @@ const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const src = path.join(repo, 'data/phone/v1');
 const out = path.join(repo, 'frontend/tools/phone-number-lifecycle-mvp');
 const read = name => JSON.parse(fs.readFileSync(path.join(src, name), 'utf8'));
+const writeAtomic = (file, text) => {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.tmp-${process.pid}`;
+  fs.writeFileSync(tmp, text);
+  fs.renameSync(tmp, file);
+};
 const meta = read('meta.json');
 const markets = read('markets.json');
 const networks = read('networks.json');
@@ -188,13 +194,14 @@ if (process.argv.includes('--check')) {
   console.log(`Phone database check OK: ${routes.length} routes / ${markets.length} markets / ${sources.length} sources.`);
 } else {
   fs.mkdirSync(detailDir, { recursive: true });
-  for (const name of fs.readdirSync(detailDir)) if (name.endsWith('.json')) fs.rmSync(path.join(detailDir, name));
-  fs.writeFileSync(databasePath, databaseText);
-  fs.writeFileSync(searchPath, searchText);
-  fs.writeFileSync(summaryPath, summaryText);
-  fs.writeFileSync(serviceAggPath, serviceAggText);
-  fs.writeFileSync(metricsPath, metricsText);
-  fs.writeFileSync(rangesPath, rangesText);
-  for (const [file, expected] of expectedDetails) fs.writeFileSync(file, expected);
+  const expectedNames = new Set([...expectedDetails.keys()].map(x => path.basename(x)));
+  for (const name of fs.readdirSync(detailDir)) if (name.endsWith('.json') && !expectedNames.has(name)) fs.rmSync(path.join(detailDir, name));
+  writeAtomic(databasePath, databaseText);
+  writeAtomic(searchPath, searchText);
+  writeAtomic(summaryPath, summaryText);
+  writeAtomic(serviceAggPath, serviceAggText);
+  writeAtomic(metricsPath, metricsText);
+  writeAtomic(rangesPath, rangesText);
+  for (const [file, expected] of expectedDetails) writeAtomic(file, expected);
   console.log(`Compiled Phone database: ${routes.length} routes / ${markets.length} markets / ${sources.length} sources.`);
 }

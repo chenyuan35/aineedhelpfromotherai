@@ -47,7 +47,7 @@ echo "OK"
 
 echo "=== CI Verify: Stopping server ==="
 kill $SERVER_PID 2>/dev/null
-wait $SERVER_PID 2>/dev/null
+wait $SERVER_PID 2>/dev/null || true
 echo "OK"
 
 echo ""
@@ -84,6 +84,13 @@ if [ "$exp_violations" = 1 ]; then
   kill $SERVER_PID 2>/dev/null
   exit 1
 fi
+echo "OK"
+
+echo ""
+echo "=== CI Verify: Phone data foundation ==="
+node scripts/build-phone-database.mjs --check
+node scripts/test-phone-database.mjs
+node scripts/test-phone-candidate-pipeline.mjs
 echo "OK"
 
 echo ""

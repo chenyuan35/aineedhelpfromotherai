@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "route": {
+    "id": "example-low-cost-route",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "example-brand-gb",
+    "displayName": "Example low-cost route",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "research-candidate",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": null
+  },
+  "brand": {"id":"example-brand-gb","marketId":"gb","networkId":"vodafone-uk","name":"Example Brand"},
+  "sources": [{"id":"example-source","url":"https://example.com/evidence","type":"community","reportedAt":"2026-09-26"}],
+  "sourceIds": ["example-source"],
+  "observations": [],
+  "events": [],
+  "snapshots": [],
+  "numberRanges": []
+}
