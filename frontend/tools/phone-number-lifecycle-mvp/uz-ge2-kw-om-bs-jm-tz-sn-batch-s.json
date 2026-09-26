@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0",
+  "market": "uz-ge2-kw-om-bs-jm-tz-sn",
+  "checkedAt": "2026-09-26",
+  "status": "batch-s-evidence-captured",
+  "notes": "Uzbekistan + Georgia(Cellfie) + Kuwait + Oman + Bahamas + Jamaica + Tanzania + Senegal. Cellfie GE official 90-day + 45-day disconnect rule. Orange SN 'Sama numéro' official long-absence retention (from 2025-07-30).",
+  "networks": [
+    { "id": "beeline-uz", "name": "Beeline UZ" },
+    { "id": "cellfie-ge", "name": "Cellfie GE" },
+    { "id": "zain-kw", "name": "Zain KW" },
+    { "id": "omantel-om", "name": "Omantel OM" },
+    { "id": "btc-bs", "name": "BTC BS" },
+    { "id": "digicel-jm", "name": "Digicel JM" },
+    { "id": "tigo-tz", "name": "Tigo TZ" },
+    { "id": "orange-sn", "name": "Orange SN" }
+  ],
+  "brands": [
+    { "id": "beeline-uz-prepaid", "networkId": "beeline-uz", "name": "Beeline UZ Prepaid" },
+    { "id": "cellfie-prepaid", "networkId": "cellfie-ge", "name": "Cellfie Prepaid" },
+    { "id": "zain-eezee", "networkId": "zain-kw", "name": "Zain eeZee" },
+    { "id": "omantel-prepaid", "networkId": "omantel-om", "name": "Omantel Prepaid" },
+    { "id": "btc-prepaid", "networkId": "btc-bs", "name": "BTC Prepaid" },
+    { "id": "digicel-jm-prepaid", "networkId": "digicel-jm", "name": "Digicel JM Prepaid" },
+    { "id": "tigo-tz-prepaid", "networkId": "tigo-tz", "name": "Tigo TZ Prepaid" },
+    { "id": "orange-sn-prepaid", "networkId": "orange-sn", "name": "Orange SN Prepaid" }
+  ],
+  "routes": [
+    {
+      "id": "cellfie-ge-90-45d-2026",
+      "brandId": "cellfie-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official (cellfie.ge): 90 days non-use → from day 91 daily fee 0.50 GEL deducted until balance exhausted. Any transaction stops deduction + recalculates 90d. If balance exhausts → 45-day restricted state (emergency/110101 only), then disconnected.",
+      "landedCost": {
+        "currency": "GEL", "providerOrCommunityPrice": 3, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 3, "landedCny": 8, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "GEL", "observedActionCost": 0.5, "yearCostOriginal": 2, "yearCostCny": 5,
+        "action": "Any transaction (call/SMS/purchase) per 90 days resets counter (official). Keep small balance as buffer against day-91 daily fee.",
+        "intervalDays": 90, "state": "official-confirmed"
+      },
+      "chinaActivation": "GE passport registration; popular with travelers.",
+      "kyc": "Passport registration (GE).",
+      "payment": "App/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; strict 90d window documented.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://cellfie.ge/",
+      "tariffSummary": "90d non-use → 0.50 GEL/day fee; 45d restricted; then disconnect.",
+      "sourceIds": ["official-cellfie-nomris-vada-2026-09-26"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "orange-sn-sama-numero-2026",
+      "brandId": "orange-sn-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Official 'Sama numéro' (from 2025-07-30): for clients residing temporarily in Senegal or travelling abroad ≥6 months — keep number longer WITHOUT regular recharging (official tutorial).",
+      "landedCost": { "currency": "XOF", "state": "insufficient-evidence" },
+      "keep": {
+        "currency": "XOF", "observedActionCost": null, "yearCostOriginal": null, "yearCostCny": null,
+        "action": "Sama numéro dedicated retention offer (official, ≥6mo travel use-case). Fee not captured — 验证中.",
+        "intervalDays": 180, "state": "official-service-confirmed-fee-pending"
+      },
+      "chinaActivation": "SN registration.",
+      "kyc": "Registration (SN).",
+      "payment": "Orange Money/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "new",
+      "guideEligible": false,
+      "holdReason": "Fee pending; new 2025 service.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.orange.sn/",
+      "tariffSummary": "Sama numéro dedicated retention (official, 2025).",
+      "sourceIds": ["official-orange-sn-sama-numero-2026-09-26"],
+      "guideSteps": ["Directory card — new dedicated service."]
+    },
+    { "id": "beeline-uz-2026", "brandId": "beeline-uz-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Beeline UZ prepaid + eSIM. Retention rule not captured.", "landedCost": { "currency": "UZS", "state": "insufficient-evidence" }, "keep": { "currency": "UZS", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "UZ registration.", "kyc": "Registration (UZ).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://beeline.uz/", "tariffSummary": "Pending.", "sourceIds": ["official-beeline-uz-2026-09-26"], "guideSteps": ["Directory card — pending."] },
+    { "id": "zain-kw-eezee-2026", "brandId": "zain-eezee", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Zain KW eeZee prepaid plans. Retention rule not captured.", "landedCost": { "currency": "KWD", "state": "insufficient-evidence" }, "keep": { "currency": "KWD", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "KW registration.", "kyc": "Registration (KW).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.kw.zain.com/", "tariffSummary": "Pending.", "sourceIds": ["official-zain-kw-eezee-2026-09-26"], "guideSteps": ["Directory card — pending."] },
+    { "id": "omantel-om-2026", "brandId": "omantel-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Omantel prepaid; *666# activation. Retention rule not captured.", "landedCost": { "currency": "OMR", "state": "insufficient-evidence" }, "keep": { "currency": "OMR", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "OM registration.", "kyc": "Registration (OM).", "payment": "app/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.omantel.om/", "tariffSummary": "Pending.", "sourceIds": ["official-omantel-prepaid-2026-09-26"], "guideSteps": ["Directory card — pending."] },
+    { "id": "btc-bs-2026", "brandId": "btc-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical", "acquisitionSummary": "BTC Bahamas prepaid. Retention rule not captured.", "landedCost": { "currency": "BSD", "state": "insufficient-evidence" }, "keep": { "currency": "BSD", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "BS local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.btcbahamas.com/", "tariffSummary": "Pending.", "sourceIds": ["mrsimcard-btc-faq"], "guideSteps": ["Directory card — pending."] },
+    { "id": "digicel-jm-2026", "brandId": "digicel-jm-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical", "acquisitionSummary": "Digicel JM prepaid; mobile services T&C updated 2025-10-27. Retention rule not captured.", "landedCost": { "currency": "JMD", "state": "insufficient-evidence" }, "keep": { "currency": "JMD", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "JM local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.digicelgroup.com/jm/", "tariffSummary": "Pending.", "sourceIds": ["official-digicel-jm-terms-2025-10-27"], "guideSteps": ["Directory card — pending."] },
+    { "id": "tigo-tz-2026", "brandId": "tigo-tz-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical", "acquisitionSummary": "Tigo TZ prepaid; roll-over service introduced 2020. Retention rule not captured.", "landedCost": { "currency": "TZS", "state": "insufficient-evidence" }, "keep": { "currency": "TZS", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "TZ registration.", "kyc": "Registration (TZ).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.tigo.co.tz/", "tariffSummary": "Pending.", "sourceIds": ["africa-press-tigo-rollover-2020"], "guideSteps": ["Directory card — pending."] }
+  ]
+}
