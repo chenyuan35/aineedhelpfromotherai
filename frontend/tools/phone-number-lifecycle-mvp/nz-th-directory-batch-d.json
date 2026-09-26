@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0",
+  "market": "nz-th",
+  "checkedAt": "2026-09-26",
+  "status": "batch-d-evidence-captured",
+  "notes": "New Zealand + Thailand routes. Skinny help pages are JS-rendered (Exa got shell only); Spark help page (same network, same policy text) confirms the 12-month top-up rule. AIS SIM2Fly official product page captured.",
+  "networks": [
+    { "id": "spark-nz", "name": "Spark NZ" },
+    { "id": "2degrees-nz", "name": "2degrees" },
+    { "id": "ais-th", "name": "AIS Thailand" }
+  ],
+  "brands": [
+    { "id": "skinny-nz", "networkId": "spark-nz", "name": "Skinny Mobile" },
+    { "id": "2degrees-nz", "networkId": "2degrees-nz", "name": "2degrees" },
+    { "id": "ais-sim2fly", "networkId": "ais-th", "name": "AIS SIM2Fly" }
+  ],
+  "routes": [
+    {
+      "id": "skinny-prepay-12mo-2026",
+      "brandId": "skinny-nz",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Spark-network MVNO popular for NZ number retention. Official policy (Spark/Skinny help): if no Top-Up for more than 12 consecutive months, account/SIM is deactivated.",
+      "landedCost": {
+        "currency": "NZD",
+        "providerOrCommunityPrice": 2,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 2,
+        "landedCny": 8.6,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported-sim-price"
+      },
+      "keep": {
+        "currency": "NZD",
+        "observedActionCost": 10,
+        "yearCostOriginal": 10,
+        "yearCostCny": 43,
+        "action": "Top up at least once per 12 months (official inactive-SIM policy). Minimum top-up NZ$10 in app → effective NZ$10/yr.",
+        "intervalDays": 365,
+        "state": "official-confirmed-via-spark-help"
+      },
+      "chinaActivation": "eSIM purchasable/activatable abroad via app (community); no NZ visit needed.",
+      "kyc": "No ID verification for prepaid (NZ has no real-name law).",
+      "payment": "International cards accepted in app (community-reported).",
+      "wifiCalling": "Supported on capable devices (Spark network).",
+      "roamingSms": "Receiving SMS abroad works (community); Skinny has roaming add-ons for outbound.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.skinny.co.nz/",
+      "tariffSummary": "NZ$10 top-up per 12 months keeps number. No real-name requirement.",
+      "sourceIds": [
+        "official-spark-help-inactive-sim-2026-09-26",
+        "official-skinny-help-sim-expiry-2026-09-26"
+      ],
+      "guideSteps": [
+        "Order Skinny SIM/eSIM, activate in app.",
+        "Set 350-day reminder; top up NZ$10 yearly."
+      ]
+    },
+    {
+      "id": "2degrees-prepay-2026",
+      "brandId": "2degrees-nz",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "2degrees prepay. Terms captured are pre-2024-10-25 version; recharge-credit expiry starts on first payment. Current deactivation window unverified — 验证中.",
+      "landedCost": {
+        "currency": "NZD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "NZD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Not established — current prepay deactivation terms need fresh capture (post-2024-10 terms page).",
+        "intervalDays": null,
+        "state": "insufficient-evidence"
+      },
+      "chinaActivation": "unverified",
+      "kyc": "No ID verification for prepaid (NZ).",
+      "payment": "unverified",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Terms page captured is outdated version; needs current-terms fetch before any claim.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.2degrees.nz/",
+      "tariffSummary": "Prepay available; retention terms pending verification.",
+      "sourceIds": [
+        "official-2degrees-prepay-terms-pre-2024-10"
+      ],
+      "guideSteps": [
+        "Directory card only — refresh terms before promotion."
+      ]
+    },
+    {
+      "id": "ais-sim2fly-365d-2026",
+      "brandId": "ais-sim2fly",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "AIS travel eSIM. Official page 2026-09: '1 Year roaming SIM' 2,699 baht (promo from 2,799) — 365 days, 15+15GB max-speed data, works across Asia/Europe/America. Cheaper short plans from 799 baht. Non-AIS subscribers welcome.",
+      "landedCost": {
+        "currency": "THB",
+        "providerOrCommunityPrice": 2699,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 2699,
+        "landedCny": 540,
+        "fxCheckedAt": "2026-09-26",
+        "state": "current-official"
+      },
+      "keep": {
+        "currency": "THB",
+        "observedActionCost": null,
+        "yearCostOriginal": 2699,
+        "yearCostCny": 540,
+        "action": "365-day product cycle; 'Keep your SIM for the next trip' + On-Top packages extend validity (official). Post-expiry number retention and minimal top-up ladder for number-keeping 验证中 (community reports small top-ups extend Thai prepaid validity, needs current confirmation).",
+        "intervalDays": 365,
+        "state": "official-product-confirmed-retention-mechanics-pending"
+      },
+      "chinaActivation": "eSIM delivered digitally — activate anywhere. SIM2Fly is designed for use OUTSIDE Thailand.",
+      "kyc": "eSIM purchase flow low-friction; Thai prepaid real-name rules apply to domestic SIMs — tourist eSIM flow effectively passport-free online (community).",
+      "payment": "International cards accepted on AIS e-store (community).",
+      "wifiCalling": "n/a",
+      "roamingSms": "Receiving SMS while roaming works (community core use case for CN users); inbound SMS free.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+      "tariffSummary": "2,699 THB/365d roaming eSIM; data + number + inbound SMS abroad.",
+      "sourceIds": [
+        "official-ais-sim2fly-2026-09-26"
+      ],
+      "guideSteps": [
+        "Buy SIM2Fly eSIM online; install before travel.",
+        "Use On-Top packages to extend validity.",
+        "Verify yearly-renewal mechanics for long-term retention before relying beyond year 1."
+      ]
+    }
+  ]
+}
