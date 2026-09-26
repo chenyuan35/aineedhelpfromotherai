@@ -5,7 +5,7 @@ import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
 import { data, keepAliveModels, keepAliveFaq, moneyShort, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
 
 // Read the calculator engine at build time (fs, not Vite ?raw — deterministic on CI).
-const clientJs = readFileSync(join(process.cwd(), 'src', 'scripts', 'keep-alive-client.js'), 'utf8');
+const clientJs = readFileSync(join(process.cwd(), 'src', 'clientjs', 'keep-alive-client.js'), 'utf8');
 
 const models = keepAliveModels();
 const base = `${PHONE_BASE}keep-alive/`;
