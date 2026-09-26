@@ -4628,10 +4628,10 @@
   {
    "id": "o2-uk-classic-payg-6mo-2026",
    "brandId": "o2-uk-classic",
-   "publishState": "candidate",
+   "publishState": "observation-hold",
    "numberType": "real-mobile",
    "simType": "eSIM + physical",
-   "acquisitionSummary": "Official (o2.co.uk classic PAYG help, 2026-09-26): without top-up/Bolt-On/chargeable activity in any 6-month period, SIM disconnected and credit lost. Classic rates: calls 3p/min, texts 2p, data 1p/MB. Min top-up £10.",
+   "acquisitionSummary": "NOT ACQUIRABLE: O2 Classic PAYG closed to new customers (official o2.co.uk help page, verified 2026-09-26). Legacy holders only: 1 chargeable activity per 6 months (2p text qualifies), min top-up £10.",
    "landedCost": {
     "currency": "GBP",
     "providerOrCommunityPrice": 0,
@@ -4659,8 +4659,8 @@
    "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
    "refund": "not reconciled",
    "trend": "stable",
-   "guideEligible": true,
-   "holdReason": null,
+   "guideEligible": false,
+   "holdReason": "O2 Classic PAYG is closed to new customers — official help page (o2.co.uk, verified 2026-09-26): \"this tariff is no longer available to existing customers wishing to switch. If you are not already on this tariff you won't be able to switch to it.\" Retention rule still valid for legacy holders only; not acquirable as a new route.",
    "lastVerifiedAt": "2026-09-26",
    "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
    "tariffSummary": "3p/min, 2p/text, 1p/MB; 1 chargeable activity per 6 months.",

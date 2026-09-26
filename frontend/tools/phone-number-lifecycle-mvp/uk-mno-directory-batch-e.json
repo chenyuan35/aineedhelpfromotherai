@@ -1,164 +1,185 @@
 {
-  "schemaVersion": "1.0",
-  "market": "uk-mno",
-  "checkedAt": "2026-09-26",
-  "status": "batch-e-evidence-captured",
-  "notes": "UK MNO PAYG routes complementing existing MVNO deep pages (VOXI/giffgaff/Lebara). All activity-window rules from official pages 2026-09-26. Evidence: auto-ops/phone-discovery/evidence/uk-mno-payg-2026-09-26.json. Smarty excluded: no true PAYG (monthly bundles only) — documented in matrix as not-a-fit.",
-  "networks": [
-    { "id": "three-uk", "name": "Three UK" },
-    { "id": "o2-uk-vm", "name": "O2 UK (Virgin Media O2)" },
-    { "id": "ee-uk", "name": "EE (BT)" }
-  ],
-  "brands": [
-    { "id": "three-uk-payg", "networkId": "three-uk", "name": "Three UK PAYG" },
-    { "id": "o2-uk-classic", "networkId": "o2-uk-vm", "name": "O2 Classic PAYG" },
-    { "id": "ee-uk-payg", "networkId": "ee-uk", "name": "EE PAYG" }
-  ],
-  "routes": [
-    {
-      "id": "three-uk-payg-180d-2026",
-      "brandId": "three-uk-payg",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "eSIM + physical",
-      "acquisitionSummary": "Official (three.co.uk/support/pay-as-you-go, 2026-09-26): number stays active with ≥1 chargeable activity per 180 days. Chargeable = buying top-up/Data Pack/Add-on, call/SMS/data ON Three network (explicitly NOT Wi-Fi). Disconnection = number lost.",
-      "landedCost": {
-        "currency": "GBP",
-        "providerOrCommunityPrice": 0,
-        "mandatoryTopup": 10,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 10,
-        "landedCny": 93,
-        "fxCheckedAt": "2026-09-26",
-        "state": "official-min-topup-10"
-      },
-      "keep": {
-        "currency": "GBP",
-        "observedActionCost": 0.10,
-        "yearCostOriginal": 0.20,
-        "yearCostCny": 1.9,
-        "action": "Send 1 SMS on Three network per 180 days (~£0.10 standard PAYG text rate; verify current tariff). Official 180-day chargeable-activity rule. NOTE: activity must be on mobile network — Wi-Fi calling texts do NOT count (official wording).",
-        "intervalDays": 180,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "SIM activation generally requires first use on UK network — China-first activation unverified; eSIM available.",
-      "kyc": "No ID check for PAYG.",
-      "payment": "UK card for online top-up; international card acceptance varies.",
-      "wifiCalling": "Supported but Wi-Fi activity does NOT satisfy the 180-day rule (official).",
-      "roamingSms": "Receiving SMS abroad free (UK operator standard). Sending from China requires roaming — Three roaming add-on structure applies; receiving-only strategy viable.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": true,
-      "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
-      "tariffSummary": "1 chargeable network activity per 180 days; min top-up £10.",
-      "sourceIds": [
-        "official-three-payg-support-2026-09-26"
-      ],
-      "guideSteps": [
-        "Order free PAYG SIM; top up £10.",
-        "Activate on UK network first.",
-        "Every ~170 days: send one SMS while connected to mobile network (roaming counts as network activity).",
-        "Set reminder — disconnection loses number permanently."
-      ]
-    },
-    {
-      "id": "o2-uk-classic-payg-6mo-2026",
-      "brandId": "o2-uk-classic",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "eSIM + physical",
-      "acquisitionSummary": "Official (o2.co.uk classic PAYG help, 2026-09-26): without top-up/Bolt-On/chargeable activity in any 6-month period, SIM disconnected and credit lost. Classic rates: calls 3p/min, texts 2p, data 1p/MB. Min top-up £10.",
-      "landedCost": {
-        "currency": "GBP",
-        "providerOrCommunityPrice": 0,
-        "mandatoryTopup": 10,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 10,
-        "landedCny": 93,
-        "fxCheckedAt": "2026-09-26",
-        "state": "official-min-topup-10"
-      },
-      "keep": {
-        "currency": "GBP",
-        "observedActionCost": 0.02,
-        "yearCostOriginal": 0.04,
-        "yearCostCny": 0.37,
-        "action": "1 chargeable activity per 6 months — a 2p text qualifies on Classic tariff. O2 community (2024): legacy 321 tariff specifically requires a chargeable CALL per 6 months + top-up per 999 days; Classic tariff text suffices. Verify which tariff your SIM is on.",
-        "intervalDays": 180,
-        "state": "official-confirmed-tariff-nuance-community-sourced"
-      },
-      "chinaActivation": "UK-network first activation standard; China-first unverified.",
-      "kyc": "No ID check for PAYG.",
-      "payment": "UK card standard; international varies.",
-      "wifiCalling": "O2 Wi-Fi Calling PAYG support limited — 验证中.",
-      "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": true,
-      "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
-      "tariffSummary": "3p/min, 2p/text, 1p/MB; 1 chargeable activity per 6 months.",
-      "sourceIds": [
-        "official-o2-classic-payg-help-2026-09-26",
-        "community-o2-inactivity-criteria-2024"
-      ],
-      "guideSteps": [
-        "Get O2 Classic PAYG SIM; £10 top-up.",
-        "Confirm tariff is Classic (not legacy 321).",
-        "Send 1 text every ~170 days."
-      ]
-    },
-    {
-      "id": "ee-uk-payg-180d-2026",
-      "brandId": "ee-uk-payg",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "eSIM + physical",
-      "acquisitionSummary": "Official (ee.co.uk PAYG help, 2026-09-26): 160 days unused → warning text; 180 days → account hibernation (90-day grace to call and recover number+credit); 270 days → account closed, number and credit lost.",
-      "landedCost": {
-        "currency": "GBP",
-        "providerOrCommunityPrice": 0,
-        "mandatoryTopup": 10,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 10,
-        "landedCny": 93,
-        "fxCheckedAt": "2026-09-26",
-        "state": "official-min-topup-10"
-      },
-      "keep": {
-        "currency": "GBP",
-        "observedActionCost": 0.15,
-        "yearCostOriginal": 0.30,
-        "yearCostCny": 2.8,
-        "action": "Make a call / send a text / use data per <180 days (official activity list includes listening to voicemail). Standard PAYG text ~15p — verify current tariff. 90-day hibernation recovery grace = most forgiving UK MNO policy.",
-        "intervalDays": 180,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "UK-network first activation standard; eSIM available; China-first unverified.",
-      "kyc": "No ID check for PAYG.",
-      "payment": "UK card standard; international varies.",
-      "wifiCalling": "Supported on PAYG (device-dependent).",
-      "roamingSms": "Receiving SMS abroad free.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": true,
-      "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://ee.co.uk/why-ee/pay-as-you-go-phones",
-      "tariffSummary": "180-day activity rule + 90-day recoverable hibernation = 270-day hard deadline.",
-      "sourceIds": [
-        "official-ee-payg-hibernation-2026-09-26"
-      ],
-      "guideSteps": [
-        "Get EE PAYG SIM; £10 top-up.",
-        "1 activity every ~170 days; if hibernated, call EE within 90 days to recover."
-      ]
-    }
-  ]
+ "schemaVersion": "1.0",
+ "market": "uk-mno",
+ "checkedAt": "2026-09-26",
+ "status": "batch-e-evidence-captured",
+ "notes": "UK MNO PAYG routes complementing existing MVNO deep pages (VOXI/giffgaff/Lebara). All activity-window rules from official pages 2026-09-26. Evidence: auto-ops/phone-discovery/evidence/uk-mno-payg-2026-09-26.json. Smarty excluded: no true PAYG (monthly bundles only) — documented in matrix as not-a-fit.",
+ "networks": [
+  {
+   "id": "three-uk",
+   "name": "Three UK"
+  },
+  {
+   "id": "o2-uk-vm",
+   "name": "O2 UK (Virgin Media O2)"
+  },
+  {
+   "id": "ee-uk",
+   "name": "EE (BT)"
+  }
+ ],
+ "brands": [
+  {
+   "id": "three-uk-payg",
+   "networkId": "three-uk",
+   "name": "Three UK PAYG"
+  },
+  {
+   "id": "o2-uk-classic",
+   "networkId": "o2-uk-vm",
+   "name": "O2 Classic PAYG"
+  },
+  {
+   "id": "ee-uk-payg",
+   "networkId": "ee-uk",
+   "name": "EE PAYG"
+  }
+ ],
+ "routes": [
+  {
+   "id": "three-uk-payg-180d-2026",
+   "brandId": "three-uk-payg",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Official (three.co.uk/support/pay-as-you-go, 2026-09-26): number stays active with ≥1 chargeable activity per 180 days. Chargeable = buying top-up/Data Pack/Add-on, call/SMS/data ON Three network (explicitly NOT Wi-Fi). Disconnection = number lost.",
+   "landedCost": {
+    "currency": "GBP",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": 10,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 93,
+    "fxCheckedAt": "2026-09-26",
+    "state": "official-min-topup-10"
+   },
+   "keep": {
+    "currency": "GBP",
+    "observedActionCost": 0.1,
+    "yearCostOriginal": 0.2,
+    "yearCostCny": 1.9,
+    "action": "Send 1 SMS on Three network per 180 days (~£0.10 standard PAYG text rate; verify current tariff). Official 180-day chargeable-activity rule. NOTE: activity must be on mobile network — Wi-Fi calling texts do NOT count (official wording).",
+    "intervalDays": 180,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "SIM activation generally requires first use on UK network — China-first activation unverified; eSIM available.",
+   "kyc": "No ID check for PAYG.",
+   "payment": "UK card for online top-up; international card acceptance varies.",
+   "wifiCalling": "Supported but Wi-Fi activity does NOT satisfy the 180-day rule (official).",
+   "roamingSms": "Receiving SMS abroad free (UK operator standard). Sending from China requires roaming — Three roaming add-on structure applies; receiving-only strategy viable.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+   "tariffSummary": "1 chargeable network activity per 180 days; min top-up £10.",
+   "sourceIds": [
+    "official-three-payg-support-2026-09-26"
+   ],
+   "guideSteps": [
+    "Order free PAYG SIM; top up £10.",
+    "Activate on UK network first.",
+    "Every ~170 days: send one SMS while connected to mobile network (roaming counts as network activity).",
+    "Set reminder — disconnection loses number permanently."
+   ]
+  },
+  {
+   "id": "o2-uk-classic-payg-6mo-2026",
+   "brandId": "o2-uk-classic",
+   "publishState": "observation-hold",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "NOT ACQUIRABLE: O2 Classic PAYG closed to new customers (official o2.co.uk help page, verified 2026-09-26). Legacy holders only: 1 chargeable activity per 6 months (2p text qualifies), min top-up £10.",
+   "landedCost": {
+    "currency": "GBP",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": 10,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 93,
+    "fxCheckedAt": "2026-09-26",
+    "state": "official-min-topup-10"
+   },
+   "keep": {
+    "currency": "GBP",
+    "observedActionCost": 0.02,
+    "yearCostOriginal": 0.04,
+    "yearCostCny": 0.37,
+    "action": "1 chargeable activity per 6 months — a 2p text qualifies on Classic tariff. O2 community (2024): legacy 321 tariff specifically requires a chargeable CALL per 6 months + top-up per 999 days; Classic tariff text suffices. Verify which tariff your SIM is on.",
+    "intervalDays": 180,
+    "state": "official-confirmed-tariff-nuance-community-sourced"
+   },
+   "chinaActivation": "UK-network first activation standard; China-first unverified.",
+   "kyc": "No ID check for PAYG.",
+   "payment": "UK card standard; international varies.",
+   "wifiCalling": "O2 Wi-Fi Calling PAYG support limited — 验证中.",
+   "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "O2 Classic PAYG is closed to new customers — official help page (o2.co.uk, verified 2026-09-26): \"this tariff is no longer available to existing customers wishing to switch. If you are not already on this tariff you won't be able to switch to it.\" Retention rule still valid for legacy holders only; not acquirable as a new route.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
+   "tariffSummary": "3p/min, 2p/text, 1p/MB; 1 chargeable activity per 6 months.",
+   "sourceIds": [
+    "official-o2-classic-payg-help-2026-09-26",
+    "community-o2-inactivity-criteria-2024"
+   ],
+   "guideSteps": [
+    "Get O2 Classic PAYG SIM; £10 top-up.",
+    "Confirm tariff is Classic (not legacy 321).",
+    "Send 1 text every ~170 days."
+   ]
+  },
+  {
+   "id": "ee-uk-payg-180d-2026",
+   "brandId": "ee-uk-payg",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Official (ee.co.uk PAYG help, 2026-09-26): 160 days unused → warning text; 180 days → account hibernation (90-day grace to call and recover number+credit); 270 days → account closed, number and credit lost.",
+   "landedCost": {
+    "currency": "GBP",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": 10,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 93,
+    "fxCheckedAt": "2026-09-26",
+    "state": "official-min-topup-10"
+   },
+   "keep": {
+    "currency": "GBP",
+    "observedActionCost": 0.15,
+    "yearCostOriginal": 0.3,
+    "yearCostCny": 2.8,
+    "action": "Make a call / send a text / use data per <180 days (official activity list includes listening to voicemail). Standard PAYG text ~15p — verify current tariff. 90-day hibernation recovery grace = most forgiving UK MNO policy.",
+    "intervalDays": 180,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "UK-network first activation standard; eSIM available; China-first unverified.",
+   "kyc": "No ID check for PAYG.",
+   "payment": "UK card standard; international varies.",
+   "wifiCalling": "Supported on PAYG (device-dependent).",
+   "roamingSms": "Receiving SMS abroad free.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://ee.co.uk/why-ee/pay-as-you-go-phones",
+   "tariffSummary": "180-day activity rule + 90-day recoverable hibernation = 270-day hard deadline.",
+   "sourceIds": [
+    "official-ee-payg-hibernation-2026-09-26"
+   ],
+   "guideSteps": [
+    "Get EE PAYG SIM; £10 top-up.",
+    "1 activity every ~170 days; if hibernated, call EE within 90 days to recover."
+   ]
+  }
+ ]
 }

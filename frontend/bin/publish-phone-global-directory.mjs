@@ -85,7 +85,7 @@ function directoryHtml(){
 
   // cheapest leaderboard: routes with a finite annual keep-alive cost, sorted ascending
   const ranked=data.routes
-    .filter(r=>Number.isFinite(r.keep?.yearCostOriginal)&&r.keep?.yearCostCny!=null)
+    .filter(r=>Number.isFinite(r.keep?.yearCostOriginal)&&r.keep?.yearCostCny!=null&&r.publishState!=='observation-hold')
     .map(r=>({r,brand:data.brands.find(x=>x.id===r.brandId)}))
     .sort((a,b)=>(a.r.keep.yearCostCny??9e9)-(b.r.keep.yearCostCny??9e9));
   const top10=ranked.slice(0,10);
