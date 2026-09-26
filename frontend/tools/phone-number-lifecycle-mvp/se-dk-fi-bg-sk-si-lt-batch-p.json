@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0",
+  "market": "se-dk-fi-bg-sk-si-lt",
+  "checkedAt": "2026-09-26",
+  "status": "batch-p-evidence-captured",
+  "notes": "Nordics + Baltics + Slovakia + Slovenia + Bulgaria. LABAS LT official T&C (€3 top-up → 90d active + receive-only → 120d block). Slovak Telekom Easy official wiki (90-day validity). Elisa FI official instructions (no-registration prepaid — notable).",
+  "networks": [
+    { "id": "telenor-se", "name": "Telenor SE" },
+    { "id": "telia-dk", "name": "Telia DK" },
+    { "id": "elisa-fi", "name": "Elisa FI" },
+    { "id": "yettel-bg", "name": "Yettel BG" },
+    { "id": "telekom-sk", "name": "Slovak Telekom SK" },
+    { "id": "telemach-si", "name": "Telemach SI" },
+    { "id": "bite-lt", "name": "Bitė LT" }
+  ],
+  "brands": [
+    { "id": "telenor-kontantkort", "networkId": "telenor-se", "name": "Telenor Kontantkort" },
+    { "id": "telia-dk-prepaid", "networkId": "telia-dk", "name": "Telia DK Prepaid" },
+    { "id": "elisa-prepaid", "networkId": "elisa-fi", "name": "Elisa Prepaid" },
+    { "id": "yettel-prepaid", "networkId": "yettel-bg", "name": "Yettel Prepaid" },
+    { "id": "telekom-easy", "networkId": "telekom-sk", "name": "Telekom Easy" },
+    { "id": "telemach-prepaid", "networkId": "telemach-si", "name": "Telemach Prepaid" },
+    { "id": "labas", "networkId": "bite-lt", "name": "LABAS" }
+  ],
+  "routes": [
+    {
+      "id": "labas-90-120d-2026",
+      "brandId": "labas",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official T&C (effective 2026-04-02): account valid 3 months (90 days) from activation or last top-up ≥ €3. After 90d without top-up: receive-only (calls/SMS in, emergency out). After 4 months (120 days): number blocked, invalid, cancelled, NOT restorable.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 3, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 3, "landedCny": 23, "fxCheckedAt": "2026-09-26", "state": "official-min-topup"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 3, "yearCostOriginal": 12, "yearCostCny": 94,
+        "action": "Top-up ≥ €3 every 90 days (official floor). €12/yr. Hard deadline: 120 days no top-up = permanent loss.",
+        "intervalDays": 90, "state": "official-confirmed"
+      },
+      "chinaActivation": "LT prepaid registration required (activation within 90 days of purchase).",
+      "kyc": "Registration required (LT).",
+      "payment": "Online top-up.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; €3/90d floor documented.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.labas.lt/",
+      "tariffSummary": "€3/90d; 120d hard cutoff.",
+      "sourceIds": ["official-labas-terms-2026-04-02"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "telekom-easy-sk-90d-2026",
+      "brandId": "telekom-easy",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official wiki: initial credit valid 30 days from SIM activation; SIM valid 90 days from activation. If not topped up within 90 days → service deactivated. After top-up, SIM validity extends (per wiki). Check via *121# or app; free from roaming.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 5, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 5, "landedCny": 39, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 5, "yearCostOriginal": 20, "yearCostCny": 156,
+        "action": "Top-up within every 90 days to prevent deactivation (official wiki). Min denomination 验证中 (~€5).",
+        "intervalDays": 90, "state": "official-wiki-confirmed"
+      },
+      "chinaActivation": "SK prepaid no strict real-name law historically; 验证中.",
+      "kyc": "Lighter than EU average (SK); 验证中.",
+      "payment": "Online/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming; check balance free from roaming (*121#).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.telekom.sk/",
+      "tariffSummary": "90-day SIM validity; top-up extends.",
+      "sourceIds": ["official-telekom-sk-wiki-platnost-2026-09-26"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "elisa-prepaid-fi-2026",
+      "brandId": "elisa-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official instructions: NO bills/monthly fees; prepaid subscriptions CANNOT be registered under your name (anonymous prepaid — FI has no real-name law). Available R-kioski/S-group/K-group stores. Validity window not captured (Finnish special-terms PDF 2026-01-13 located).",
+      "landedCost": { "currency": "EUR", "state": "insufficient-evidence" },
+      "keep": { "currency": "EUR", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "FI anonymous prepaid (no registration) — notable advantage.", "kyc": "None (FI).", "payment": "local/top-up", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Validity rule pending; anonymous prepaid advantage noted.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://elisa.fi/",
+      "tariffSummary": "Anonymous prepaid; validity pending.", "sourceIds": ["official-elisa-prepaid-instructions-2026-09-26", "official-elisa-prepaid-special-terms-2026-01-13"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "telenor-kontantkort-se-2026", "brandId": "telenor-kontantkort", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Telenor SE kontantkort (Hello kontantkort); validity page returned empty extraction (JS-rendered). SE prepaid: BankID registration common for online activation.",
+      "landedCost": { "currency": "SEK", "state": "insufficient-evidence" },
+      "keep": { "currency": "SEK", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "SE local; BankID friction for foreigners.", "kyc": "BankID common (SE).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending; BankID friction.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.telenor.se/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-telenor-se-giltighetstid-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "telia-dk-prepaid-2026", "brandId": "telia-dk-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "DK prepaid: most providers allow keeping number (living-in-denmark.dk). Telia DK prepaid validity specifics not captured.",
+      "landedCost": { "currency": "DKK", "state": "insufficient-evidence" },
+      "keep": { "currency": "DKK", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "DK no strict real-name law.", "kyc": "Lighter (DK).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.telia.dk/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["living-in-denmark-prepaid-keep-number"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "yettel-prepaid-bg-2026", "brandId": "yettel-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Yettel BG (formerly Telenor) prepaid; activation/recharge conditions PDF located. Validity rule not extracted.",
+      "landedCost": { "currency": "BGN", "state": "insufficient-evidence" },
+      "keep": { "currency": "BGN", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "BG local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.yettel.bg/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-yettel-bg-conditions-pdf"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "telemach-prepaid-si-2026", "brandId": "telemach-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical",
+      "acquisitionSummary": "Telemach SI prepaid; general terms PDF (effective 2024-08-01) located. Validity rule not extracted.",
+      "landedCost": { "currency": "EUR", "state": "insufficient-evidence" },
+      "keep": { "currency": "EUR", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "SI local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://telemach.si/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-telemach-si-terms-2024-08-01"], "guideSteps": ["Directory card — pending."]
+    }
+  ]
+}
