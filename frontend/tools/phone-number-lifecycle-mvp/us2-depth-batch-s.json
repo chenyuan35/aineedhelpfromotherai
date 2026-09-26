@@ -1,0 +1,408 @@
+{
+ "schemaVersion": "1.0",
+ "market": "us",
+ "checkedAt": "2026-09-27",
+ "status": "batch-s-depth-evidence-captured",
+ "notes": "US depth batch S: 8 mainstream prepaid/MVNO routes (Mint, US Mobile, T-Mobile Prepaid/Connect, Visible, Red Pocket, Cricket, LycaMobile US, Google Fi). Evidence: auto-ops/phone-discovery/evidence/us2-depth-research-2026-09-27.json (official pages via Exa content extraction + Reddit RSS + Nodeloc Discourse JSON, all read 2026-09-27). FX 1 USD = 7.1 CNY (same convention as batch-a). KEY FINDINGS: (1) cheapest durable official US keep-alive here = Red Pocket $60/yr annual (eBay $30/yr community channel) BUT officially cannot purchase/activate from abroad; (2) US Mobile Light $96/yr but Wi-Fi calling must be enabled inside US and roaming needs prior domestic usage; (3) T-Mobile legacy $3/mo PAYG is grandfathered-only (not offered to new customers since ~2020); current cheapest T-Mobile = Connect $15/mo, 120-day not-paid => number lost; (4) LycaMobile US moved T-Mobile->AT&T on 2025-09-20, 60-day non-use expiry (official), China activation community-verified June 2026 via US VPN+US address; (5) Google Fi actively hostile to long-term abroad use (data suspension after ~50+30 days, ToS requires primary US use); (6) Mint works via free Wi-Fi Calling abroad but $180/yr and China activation unverified; (7) Visible $300/yr, WFC must be pre-enabled in US; (8) Cricket $300/yr min, no PAYG, no China roaming - worst fit.",
+ "networks": [
+  { "id": "tmobile-us", "name": "T-Mobile US" },
+  { "id": "att-us", "name": "AT&T US" },
+  { "id": "verizon-us", "name": "Verizon US" },
+  { "id": "multi-us", "name": "Multi-network (AT&T / T-Mobile / Verizon selectable)" }
+ ],
+ "brands": [
+  { "id": "mint-mobile-us", "networkId": "tmobile-us", "name": "Mint Mobile" },
+  { "id": "us-mobile-us", "networkId": "multi-us", "name": "US Mobile" },
+  { "id": "tmobile-prepaid-us", "networkId": "tmobile-us", "name": "T-Mobile Prepaid" },
+  { "id": "visible-us", "networkId": "verizon-us", "name": "Visible" },
+  { "id": "redpocket-us", "networkId": "multi-us", "name": "Red Pocket" },
+  { "id": "cricket-us", "networkId": "att-us", "name": "Cricket Wireless" },
+  { "id": "lycamobile-us", "networkId": "att-us", "name": "LycaMobile US" },
+  { "id": "google-fi-us", "networkId": "tmobile-us", "name": "Google Fi" }
+ ],
+ "routes": [
+  {
+   "id": "mint-mobile-us-2026",
+   "brandId": "mint-mobile-us",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "New-customer offer: any plan $15/mo with 3-month upfront = $45 minimum in. eSIM digital delivery (same-day), physical SIM shipped. T-Mobile network MVNO. No PAYG tier.",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 45,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 45,
+    "landedCny": 319.5,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 180,
+    "yearCostOriginal": 180,
+    "yearCostCny": 1278,
+    "action": "Multi-month subscription model, no PAYG. Cheapest durable path: 12-month 6GB plan $15/mo = $180/yr on auto-renew. On payment failure service suspends; number reportedly held ~45 days after expiration (single third-party source, unverified by official doc). Wi-Fi Calling is free on all plans and works abroad for US calls/texts.",
+    "intervalDays": 365,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Mixed/unverified. 2026 Reddit user in Panama successfully bought + installed Mint eSIM abroad over US-VPN Wi-Fi and got a number, but hit 'message blocking is active' until further provisioning; another r/mintmobile reply claims activation must happen in service country. Do not promise China activation.",
+   "kyc": "No credit check, no ID verification (prepaid).",
+   "payment": "Major credit/debit cards + PayPal. International cards accepted per campusSIMS FAQ (third-party, aimed at international students); community consensus consistent.",
+   "wifiCalling": "Officially supported free on all plans; works abroad for calls/texts back to US without roaming charges; requires e911 US address at setup (per community).",
+   "roamingSms": "No international data roaming. Pay-per-use while abroad: calls $0.25/min, texts $0.20 each (simology, 2026-07); Minternational Pass from $5 (30-day talk&text, 100 min + 100 SMS). Official per-country SMS receive rate for China not published.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Keep-alive works (Wi-Fi Calling abroad is official) but $180/yr is 3-5x the cheapest US options and activation from China is unverified with conflicting community reports.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://mintmobile.com/plans/",
+   "tariffSummary": "$45 min in (3-mo new-customer promo). Durable $180/yr (12-mo plan). Free Wi-Fi Calling abroad. Roaming texts $0.20, no data roaming.",
+   "sourceIds": [
+    "mint-mobile-us-2026-official",
+    "mint-mobile-us-2026-community",
+    "mint-mobile-us-2026-thirdparty"
+   ],
+   "guideSteps": [
+    "Directory card only for China-based users — activation from abroad unverified.",
+    "If activating with US help: buy 12-month 6GB plan ($180), enable Wi-Fi Calling with a US e911 address, keep auto-renew on."
+   ]
+  },
+  {
+   "id": "us-mobile-light-2026",
+   "brandId": "us-mobile-us",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Light plan: $10/mo monthly or $8/mo billed annually ($96/yr), 2GB + unlimited talk/text, all taxes included. Choice of AT&T/T-Mobile/Verizon network. eSIM instant; physical Starter Kit $6.99 (free US shipping).",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 71,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 96,
+    "yearCostOriginal": 96,
+    "yearCostCny": 681.6,
+    "action": "Subscription: Light annual $96/yr (or $10/mo monthly = $120/yr). No PAYG. To leave: stop renewing / turn off AutoPay and line is eventually suspended; number-retention window after lapse not documented officially. Annual plans have no prorated refunds.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Partially blocked: eSIM itself can be delivered anywhere, but official help states Wi-Fi calling must be turned on while within US coverage (Warp/Dark Star), and international roaming won't work if the line was never used domestically. Effectively needs a US visit (or US proxy activation) before China use.",
+   "kyc": "No credit check; account + email + card only.",
+   "payment": "International cards accepted — US Mobile staff confirmed on r/USMobile (Aug 2025 thread, non-US Visa OK). PayPal not needed.",
+   "wifiCalling": "Supported on all networks, but official help: must be enabled while in a US coverage area (Warp/Dark Star). Once enabled, usable abroad.",
+   "roamingSms": "Light plan includes no roaming allowance; roaming bundles included on Unlimited Premium / annual Unlimited Starter / by-the-gig (Light Speed network covers 180+ countries). On Light, receiving SMS in China via cellular roaming = not documented (null).",
+   "refund": "Monthly plans refundable within 45 days if unused (<30 days active); annual plans: no prorated refunds (official).",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "$96/yr is decent, but Wi-Fi Calling setup and roaming provisioning both require prior US network contact — China-based activation path unverified.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.usmobile.com/plans",
+   "tariffSummary": "Light $10/mo or $96/yr annual, taxes incl, 2GB unl talk/text. Intl cards accepted. WFC must be enabled inside US.",
+   "sourceIds": [
+    "us-mobile-light-2026-official",
+    "us-mobile-light-2026-community"
+   ],
+   "guideSteps": [
+    "Directory card only for China-based users.",
+    "If you can visit the US: get Light annual ($96), enable Wi-Fi Calling while stateside, then use abroad over Wi-Fi."
+   ]
+  },
+  {
+   "id": "tmobile-prepaid-connect-2026",
+   "brandId": "tmobile-prepaid-us",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Connect by T-Mobile $15/mo (5GB, unlimited talk/text) + one-time $10 device connection charge = $25 to land. T-Mobile Prepaid eSIM app (iOS) advertises setup 'for those planning a trip to the US'. Legacy $3/mo Pay As You Go is grandfathered-only: not offered to new customers since ~2020 (existing legacy users keep numbers alive with ~$1/yr Gold Rewards refills).",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 15,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 25,
+    "landedCny": 177.5,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 15,
+    "yearCostOriginal": 180,
+    "yearCostCny": 1278,
+    "action": "$15/mo Connect subscription + taxes. Official: accounts in Not Paid status >120 days are cancelled and the number is lost. No PAYG for new customers (legacy $3/mo PAYG grandfathered; legacy Gold Rewards renew ~$1/yr per HowardForums Sep 2024).",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Unverified. Prepaid eSIM app marketing implies pre-arrival setup is supported; no community confirmation for China-based activation found in this pass.",
+   "kyc": "No credit check (prepaid).",
+   "payment": "Online card payment; refill cards sold widely (incl. third-party sellers accepting international cards). Direct international card acceptance unverified (null).",
+   "wifiCalling": "Supported on T-Mobile prepaid (official Wi-Fi Calling support page covers prepaid).",
+   "roamingSms": "Official T-Mobile prepaid roaming rates: receive SMS $0.10, send $0.50, calls from China $3.59/min, NO data roaming. Whether Connect-tier lines get this roaming is unverified — Connect's international page lists only Mexico/Canada and Stateside add-ons.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Connect-tier China roaming + China-based activation both unverified; legacy $3/mo PAYG no longer available to new customers.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://prepaid.t-mobile.com/connect/phone-plans",
+   "tariffSummary": "$15/mo + $10 one-time connection charge. 120-day non-payment => number lost. Prepaid roaming: receive SMS $0.10 (Connect applicability unconfirmed).",
+   "sourceIds": [
+    "tmobile-prepaid-connect-2026-official",
+    "tmobile-prepaid-connect-2026-community"
+   ],
+   "guideSteps": [
+    "Directory card only — verify Connect-tier international roaming and China activation before guide."
+   ]
+  },
+  {
+   "id": "visible-25-2026",
+   "brandId": "visible-us",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Visible base plan $25/mo flat, taxes/fees included (promo $19/mo for first year seen 2026-09; annual $275/yr option). 15-day free trial via eSIM needs no credit card. Verizon network.",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 25,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 25,
+    "landedCny": 177.5,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 300,
+    "yearCostOriginal": 300,
+    "yearCostCny": 2130,
+    "action": "Flat subscription $25/mo = $300/yr (or $275 annual; promo $228 yr-1). Autopay failure => account lapses and service is lost (official); number reportedly held ~30 days after deactivation (single third-party source). No PAYG, no cheap tier.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Mixed: official Visible staff on Reddit says eSIM activation outside US works with stable Wi-Fi + latest app; a user in the same thread reports the app demanded US presence. Proceed with caution.",
+   "kyc": "No credit check (prepaid).",
+   "payment": "Credit/debit cards + PayPal. International card acceptance unverified (null).",
+   "wifiCalling": "Works abroad per multiple r/Visible users (one: 4 continuous months outside US) — but must be enabled BEFORE leaving the US; on some phones/plans the toggle is hidden unless Global Pass is enabled (inconsistent implementation).",
+   "roamingSms": "Global Pass $10/day or $5/day (country-dependent) in 140 countries; >50% usage abroad in a 60-day window may get service disabled/limited. No pay-per-use receive-SMS path documented.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "$300/yr with no PAYG; Wi-Fi Calling must be pre-enabled on US soil; abroad usage >50% over 60 days risks limitation.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.visible.com/",
+   "tariffSummary": "$25/mo flat (taxes incl), unlimited everything on Verizon. Free 15-day eSIM trial. WFC works abroad if pre-enabled in US.",
+   "sourceIds": [
+    "visible-25-2026-official",
+    "visible-25-2026-community",
+    "visible-25-2026-thirdparty"
+   ],
+   "guideSteps": [
+    "Directory card only — expensive for pure keep-alive; WFC needs pre-departure US setup."
+   ]
+  },
+  {
+   "id": "redpocket-annual-2026",
+   "brandId": "redpocket-us",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Official 360-day annual plans from $60 (500MB/mo, $5/mo effective) at redpocket.com/plans/annual; eBay channel sells a $30/360-day unlimited talk+text+200MB/mo plan (still listed Feb 2026). eSIM available on annual plans, all networks (GSMA=AT&T / GSMT=T-Mobile / CDMA=Verizon).",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 60,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 60,
+    "landedCny": 426,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 60,
+    "yearCostOriginal": 60,
+    "yearCostCny": 426,
+    "action": "Annual prepay model: $60/yr official ($30/yr via eBay PIN). Payment charged once per 360 days; monthly allotments refresh. Plan PINs expire 90 days after order — activate before that. If the account lapses, you have 30 days from airtime expiry to refill or the number is permanently lost (official).",
+    "intervalDays": 360,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Blocked officially: 'If you are located outside of the United States, you would not be able to purchase or activate a RedPocket Mobile SIM card or eSIM.' Requires US presence or a trusted US proxy.",
+   "kyc": "No credit check (prepaid).",
+   "payment": "Cards on redpocket.com; eBay route accepts international cards via eBay payments (community channel).",
+   "wifiCalling": "Officially supported on ALL networks and works with SMS texting; e911 US address required at setup.",
+   "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not published (null).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Cheapest verified US keep-alive ($30-60/yr) but official policy blocks purchase/activation from abroad — needs US access; roaming must be pre-provisioned in US.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.redpocket.com/plans/annual",
+   "tariffSummary": "$60/yr official annual (eBay $30/yr). 30-day lapse grace. Wi-Fi Calling all networks. Cannot activate abroad.",
+   "sourceIds": [
+    "redpocket-annual-2026-official",
+    "redpocket-annual-2026-community",
+    "redpocket-annual-2026-news"
+   ],
+   "guideSteps": [
+    "Directory card: cheapest US annual number, but China-based users cannot activate without US help.",
+    "If you have US access: buy $60 annual (GSMA for roaming option), enable Wi-Fi Calling, renew every 360 days."
+   ]
+  },
+  {
+   "id": "cricket-us-2026",
+   "brandId": "cricket-us",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Cheapest entry: Introductory 3-month plan $45 ($15/mo, first 3 months); online activation fee $0 (in-store $25). Cheapest durable: 12-Month Unlimited $25/mo paid as $300 advance. AT&T network.",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 45,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 45,
+    "landedCny": 319.5,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 300,
+    "yearCostOriginal": 300,
+    "yearCostCny": 2130,
+    "action": "No PAYG. Durable minimum $300/yr (12-month unlimited advance). Missed payment => immediate suspension; pay within 60 days of last pay date to keep the number (+$5 reactivation fee), otherwise account cancelled (official).",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Effectively US-only: Wi-Fi Calling requires the device to have connected to the Cricket network at least once (official). No evidence of abroad activation.",
+   "kyc": "No credit check (prepaid).",
+   "payment": "Credit/debit cards; Cricket refill cards. International card acceptance unverified (null).",
+   "wifiCalling": "Supported on capable phones, but only after the device has connected to the Cricket network at least once (official) — cannot be first-enabled abroad.",
+   "roamingSms": "No standard China roaming. Cricket Passport day-pass from $10/day requires Smart Unlimited ($50/mo)+ plans. International texting TO 200+ countries from the US included on unlimited plans; receiving SMS in China = not supported (null).",
+   "refund": "All charges and fees nonrefundable (official fees page).",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Worst fit for China keep-alive: $300/yr minimum, no PAYG, Wi-Fi Calling needs prior US network contact, no usable China roaming.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.cricketwireless.com/cell-phone-plans",
+   "tariffSummary": "Min $300/yr (12-mo advance) or $45 intro 3-mo. 60-day lapse => number lost. WFC needs Cricket network first.",
+   "sourceIds": [
+    "cricket-us-2026-official"
+   ],
+   "guideSteps": [
+    "Directory card only — not recommended for keep-alive."
+   ]
+  },
+  {
+   "id": "lycamobile-us-2026",
+   "brandId": "lycamobile-us",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Cheapest verified plan: $19 Unlimited International (5GB) — promo display ~$10 first 30 days; community (nodeloc, June 2026) got a $5 promo plan via TopCashback. Network switched T-Mobile => AT&T on 2025-09-20 (all new activations on AT&T). PAYG exists as default mode but current US per-unit rates not extractable.",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 71,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 120,
+    "yearCostOriginal": 120,
+    "yearCostCny": 852,
+    "action": "Official terms: SIM and number expire after 60 days of non-use. Cheapest verified durable path: $19 plan on 12-month prepay = $120/yr ($10/mo effective). PAYG keep-alive (community: 'send 1 SMS every 90 days') conflicts with official 60-day rule — trust 60-day. +5% regulatory recovery fee on web purchases. Plans valid for US usage only; roaming needs separate roaming credit.",
+    "intervalDays": 60,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Community-verified June 2026 (nodeloc): eSIM purchased and activated from China using US VPN + US residential address + crypto-funded card (Bitget); after activation send 2 SMS to a +86 number to complete provisioning. Not an official path.",
+   "kyc": "No ID verification observed (community: name + email + address only).",
+   "payment": "Debit/credit cards online; community success with crypto-funded virtual card from China. +5% regulatory recovery fee.",
+   "wifiCalling": "Supported on most Wi-Fi Calling capable phones (prepaidcompare profile); official help page not found this pass.",
+   "roamingSms": "Roaming requires purchasing separate roaming credit; China roaming rates not extractable (JS rate tables) — null. Plans themselves are US-usage-only per terms.",
+   "refund": "not reconciled",
+   "trend": "watch",
+   "guideEligible": false,
+   "holdReason": "Post-AT&T-migration PAYG economics and China roaming unverified; activation-from-China works per community but is unofficial (VPN+US address).",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.lycamobile.us/en/plans/",
+   "tariffSummary": "$19 plan 12-mo prepay = $120/yr. 60-day non-use => number expires (official). Now on AT&T. CN activation via VPN+US address (community).",
+   "sourceIds": [
+    "lycamobile-us-2026-official",
+    "lycamobile-us-2026-community",
+    "lycamobile-us-2026-thirdparty"
+   ],
+   "guideSteps": [
+    "Directory card only — treat CN-activation community path as unofficial until independently reproduced.",
+    "If activated: keep alive by use within every 60 days (official) and/or $19 plan 12-mo prepay ($120/yr)."
+   ]
+  },
+  {
+   "id": "google-fi-flexible-2026",
+   "brandId": "google-fi-us",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Flexible plan $20/mo + $10/GB (1 line). Sign-up requires Google account + valid US address in payments.google.com. Must activate AND use service in the US for at least 1 day before any abroad use (official ToS, all SIM types).",
+   "landedCost": {
+    "currency": "USD",
+    "providerOrCommunityPrice": 20,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 20,
+    "landedCny": 142,
+    "fxCheckedAt": "2026-09-27",
+    "state": "current-official"
+   },
+   "keep": {
+    "currency": "USD",
+    "observedActionCost": 240,
+    "yearCostOriginal": 240,
+    "yearCostCny": 1704,
+    "action": "Flat $20/mo = $240/yr. Pause feature: up to 3 months, auto-resumes after; number kept while paused; 'repeatedly pausing is a violation of ToS' (official) — not a sustainable free keep-alive.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Not possible: official requirement to activate and use in the US (territories excluded) for at least one day before international use.",
+   "kyc": "Google account + US payments profile address; no ID document check. ToS: 'Services are offered only to residents of the United States... must be primarily used in the United States.'",
+   "payment": "Google Payments-linked card; international card acceptance unverified (null).",
+   "wifiCalling": "Supported; calls over Wi-Fi to US/Canada/Mexico free on Flexible.",
+   "roamingSms": "Official: in 200+ destinations on Flexible, international texts are at no extra charge; cellular calls 20¢/min; data $10/GB. Extended abroad use: warning after ~50 days, international DATA suspended 30 days later; community reports full termination for long-term abroad residency.",
+   "refund": "not reconciled",
+   "trend": "watch",
+   "guideEligible": false,
+   "holdReason": "Actively hostile to permanent-abroad use (ToS + enforced data suspension); must physically activate in US first. $240/yr.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://fi.google.com/about/plans",
+   "tariffSummary": "$20/mo + $10/GB. Free intl texts abroad, 20¢/min calls. US-first activation required; ~80 days abroad => data suspension.",
+   "sourceIds": [
+    "google-fi-flexible-2026-official",
+    "google-fi-flexible-2026-community"
+   ],
+   "guideSteps": [
+    "Directory card only — unsuitable as permanent China-based keep-alive."
+   ]
+  }
+ ]
+}
