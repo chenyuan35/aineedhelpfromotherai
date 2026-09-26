@@ -60,17 +60,24 @@ Re-open only after the branch is rebased on current `main`, the obsolete databas
 
 No public Phone route/page changed, and frozen PRs #234–#241 remain unaccepted raw research.
 
-## BLOCKED — PR #253 normalized Phone data foundation release
+## JUST COMPLETED — PR #253 normalized Phone data foundation release
 
-PR #253 has been rebased onto current `main` (`b10bd33f9f169a356ff9b5c108372fceb07b2816`) without overwriting the parallel TikTok OAuth handoff change. Current PR head is `5e8d0387a6b93c6da7bea69c84514d8a9b9aa335`; the PR is mergeable, `git diff --check` passes, Eval Gate #801 passes, and CI #150 passes.
+Correct Vercel scope access to `chenyuan-s-projects` was restored. Deployment `dpl_6jPnLTVtJS21UGLN3ptFDYeMKA6X` exposed `module_not_found` with `node frontend/bin/build.mjs`. The only new frontend-build dependency was the redundant `node ../scripts/build-phone-database.mjs --check` call; Phone data/staging validation already runs in CI. Removing that cross-tree build call produced a real green Preview on head `0cde866ae4a2b8accffb7373c7937639885e363c`.
 
-The release gate is blocked only on Vercel Preview. The fresh deployment `dpl_6jPnLTVtJS21UGLN3ptFDYeMKA6X` failed. GitHub points it to Vercel scope `chenyuan-s-projects`; the connected Vercel app returns HTTP 403 for that scope, and the authenticated Vercel CLI available on the approved Qwen control host can access only `chenyuan19920509-5309s-projects`, not `chenyuan-s-projects`. Therefore the failing deployment logs cannot currently be inspected through an authorized correct-scope session. This is an access/provider blocker, not evidence of a Phone code defect.
+Final release gates: **Vercel Preview PASS**, **Eval Gate #804 PASS**, **CI #151 PASS**. PR #253 squash-merged as `640341d4a79a00a688eb36bffce7cf57e4d05e27`. Production deployment `dpl_9rKb3q9QBvifsQZdjTXFVTdQZ5RU` reached READY and `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/` returned HTTP 200. Public Phone behavior remains unchanged; the normalized data foundation, search artifacts, staging isolation, reviewed-packet importer and maintenance path are now on `main`.
 
-**Re-open trigger:** obtain authorized access to Vercel scope `chenyuan-s-projects`, inspect the existing PR #253 deployment failure, apply a bounded code/config fix only if the logs identify one, and require a fresh real Preview success before merge. Do not create fake/no-op commits merely to retrigger Vercel.
+## NEXT SESSION — importer-based backstage admission of Tello / ClubSIM / Hotlink Pantas
 
-**After merge only:** queue importer-based canonical ingestion of Tello / ClubSIM / Hotlink Pantas, preserving the audited correction/conflict fields.
+Use the standard reviewed-packet path added by PR #253. This is a backstage ingestion task only; do not hand-edit public Phone cards or create new public URLs.
 
-**Stop / do not substitute:** do not merge PR #253 while Vercel is red; do not hand-edit public Phone cards; do not bulk-merge #234–#241; do not start route ingestion as a substitute for the blocked release.
+Required preserved corrections/conflicts:
+- Tello: do not revive `$0.06/year`; current audited economics and account/risk-control evidence must remain explicit.
+- ClubSIM: preserve the HKD 6 web listing versus 2026 in-app availability conflict; do not convert it into a guaranteed annual-price claim.
+- Hotlink Pantas: do not revive `RM2/year`; the current keep-alive basis is the RM30 / 365-day Active Period Pass.
+
+**Definition of done:** three reviewed packets pass `--check`, apply cleanly to canonical backstage data, Phone data/candidate tests pass, staging/public isolation remains intact, and the resulting change follows the normal PR → CI/Eval/Preview → merge → production verification path.
+
+**Stop / do not substitute:** no public Phone churn; no bulk-merge of frozen PRs #234–#241; no weak global-row expansion; no unrelated infrastructure work.
 
 ## Backstage packet set — batch-2 fully dispositioned
 
