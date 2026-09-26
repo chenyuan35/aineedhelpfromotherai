@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "market": "ua-ru-il-qa-cl-co-pe",
+  "checkedAt": "2026-09-26",
+  "status": "batch-o-evidence-captured",
+  "notes": "Ukraine + Russia + Israel + Qatar + Chile + Colombia + Peru. Kyivstar official 274+91=365-day lifecycle (30 UAH reset). MTS official 'Сохраняю номер' keep-number service 349₽/6mo. Others observation-level.",
+  "networks": [
+    { "id": "kyivstar-ua", "name": "Kyivstar UA" },
+    { "id": "mts-ru", "name": "MTS RU" },
+    { "id": "hotmobile-il", "name": "Hot Mobile IL" },
+    { "id": "ooredoo-qa", "name": "Ooredoo QA" },
+    { "id": "claro-cl", "name": "Claro CL" },
+    { "id": "claro-co", "name": "Claro CO" },
+    { "id": "movistar-pe", "name": "Movistar PE" }
+  ],
+  "brands": [
+    { "id": "kyivstar-prepaid", "networkId": "kyivstar-ua", "name": "Kyivstar Prepaid" },
+    { "id": "mts-prepaid", "networkId": "mts-ru", "name": "MTS Prepaid" },
+    { "id": "hotmobile-prepaid", "networkId": "hotmobile-il", "name": "Hot Mobile" },
+    { "id": "ooredoo-hala", "networkId": "ooredoo-qa", "name": "Ooredoo Hala" },
+    { "id": "claro-pre-cl", "networkId": "claro-cl", "name": "Claro Prepago CL" },
+    { "id": "claro-pre-co", "networkId": "claro-co", "name": "Claro Prepago CO" },
+    { "id": "movistar-pre-pe", "networkId": "movistar-pe", "name": "Movistar Prepago PE" }
+  ],
+  "routes": [
+    {
+      "id": "kyivstar-prepaid-274-91-2026",
+      "brandId": "kyivstar-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official (kyivstar.ua): number validity 365 days in two stages — 274 days active from last top-up/tariff payment, then 91 days suspended (rechargeable to reactivate). No-passport tariffs available.",
+      "landedCost": {
+        "currency": "UAH", "providerOrCommunityPrice": 100, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 100, "landedCny": 17, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "UAH", "observedActionCost": 30, "yearCostOriginal": 30, "yearCostCny": 5,
+        "action": "Single top-up ≥30 UAH re-extends 274 days (official). If suspended, ≥30 UAH reactivates within 91-day window. ~30 UAH/yr ≈ ¥5.",
+        "intervalDays": 274, "state": "official-confirmed"
+      },
+      "chinaActivation": "UA no-passport prepaid tariffs exist; eSIM available; abroad activation 验证中.",
+      "kyc": "No-passport tariffs officially exist (UA).",
+      "payment": "Online top-up; international card 验证中.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Receiving abroad works (community); 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Very cheap + no-KYC option; but UA geopolitical situation + acquisition channel unverified.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://kyivstar.ua/",
+      "tariffSummary": "274d active + 91d recoverable; 30 UAH reset.",
+      "sourceIds": ["official-kyivstar-termin-diyi-2026-09-26", "official-kyivstar-additional-prepaid-2026-09-26"],
+      "guideSteps": ["Directory card — cheap no-KYC option."]
+    },
+    {
+      "id": "mts-sokhranyayu-nomer-2026",
+      "brandId": "mts-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official 'Сохраняю номер' (Keep My Number) service: 349₽/6 months, prevents number reassignment during long unused periods; designed for those abroad long-term. Auto-renews if balance sufficient. Charged upfront per 6mo.",
+      "landedCost": {
+        "currency": "RUB", "providerOrCommunityPrice": null, "mandatoryTopup": null, "shipping": null, "adapterCostCny": null,
+        "landedOriginal": null, "landedCny": null, "fxCheckedAt": null, "state": "sim-price-not-captured"
+      },
+      "keep": {
+        "currency": "RUB", "observedActionCost": 349, "yearCostOriginal": 698, "yearCostCny": 50,
+        "action": "Keep My Number service 349₽/6mo = 698₽/yr ≈ ¥50. Activate in My MTS app / account / stores.",
+        "intervalDays": 180, "state": "official-confirmed"
+      },
+      "chinaActivation": "RU prepaid registration (passport); local acquisition; sanctions affect international card top-up.",
+      "kyc": "Passport registration (RU law).",
+      "payment": "RU cards only (sanctions) — MIR; international cards NOT accepted.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Receiving abroad works (community).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Sanctions payment barrier + local acquisition; dedicated service documented as model.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://mts.ru/",
+      "tariffSummary": "Keep My Number 349₽/6mo (official service).",
+      "sourceIds": ["official-mts-sokhranyayu-nomer-2026-09-26"],
+      "guideSteps": ["Directory card — model retention service."]
+    },
+    {
+      "id": "hotmobile-il-2026", "brandId": "hotmobile-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Hot Mobile (HOTalk) prepaid; recharge resellers ($13.99-48.99 plans). Official validity rule not captured (Hebrew PDF).",
+      "landedCost": { "currency": "ILS", "state": "insufficient-evidence" },
+      "keep": { "currency": "ILS", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "IL prepaid no real-name law (notable).", "kyc": "None for prepaid (IL).", "payment": "reseller/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending; no-KYC advantage noted.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.hotmobile.co.il/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-hotmobile-terms-pdf"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "ooredoo-hala-qa-2026", "brandId": "ooredoo-hala", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Ooredoo Hala prepaid; free SIM same-day delivery (official). Validity rule not captured (tariff PDF located).",
+      "landedCost": { "currency": "QAR", "state": "insufficient-evidence" },
+      "keep": { "currency": "QAR", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "QA prepaid QID/passport registration.", "kyc": "Registration (QA).", "payment": "app/card", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.ooredoo.qa/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-ooredoo-hala-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "claro-pre-cl-2026", "brandId": "claro-pre-cl", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Claro CL prepago Plan Simple from $4,990 CLP. Validity/retention rule not captured.",
+      "landedCost": { "currency": "CLP", "state": "insufficient-evidence" },
+      "keep": { "currency": "CLP", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "CL local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.clarochile.cl/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-claro-cl-prepago-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "claro-pre-co-2026", "brandId": "claro-pre-co", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Claro CO prepago; 'Recarga y recupera saldo vencido' (recover expired balance) service exists; auto-legalization self-registration since 2018. Validity rule not captured.",
+      "landedCost": { "currency": "COP", "state": "insufficient-evidence" },
+      "keep": { "currency": "COP", "action": "Not established; expired-balance recovery feature noted.", "state": "insufficient-evidence" },
+      "chinaActivation": "CO self-registration online since 2018.", "kyc": "Self-registration (CO).", "payment": "online/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.claro.com.co/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-claro-co-recarga-recupera-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "movistar-pre-pe-2026", "brandId": "movistar-pre-pe", "publishState": "observation", "numberType": "real-mobile", "simType": "physical",
+      "acquisitionSummary": "Movistar PE prepago; app recharge with 10GB bonus promo. Validity rule not captured.",
+      "landedCost": { "currency": "PEN", "state": "insufficient-evidence" },
+      "keep": { "currency": "PEN", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "PE local.", "kyc": "unverified", "payment": "app/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.movistar.com.pe/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-movistar-pe-recargas-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    }
+  ]
+}
