@@ -60,22 +60,17 @@ Re-open only after the branch is rebased on current `main`, the obsolete databas
 
 No public Phone route/page changed, and frozen PRs #234–#241 remain unaccepted raw research.
 
-## NEXT SESSION — one bounded task only
+## BLOCKED — PR #253 normalized Phone data foundation release
 
-**Task:** resolve and release **PR #253 — normalized searchable Phone data foundation**.
+PR #253 has been rebased onto current `main` (`b10bd33f9f169a356ff9b5c108372fceb07b2816`) without overwriting the parallel TikTok OAuth handoff change. Current PR head is `5e8d0387a6b93c6da7bea69c84514d8a9b9aa335`; the PR is mergeable, `git diff --check` passes, Eval Gate #801 passes, and CI #150 passes.
 
-**Why now:** the five-route audit is complete and three routes are admitted backstage, but the reviewed importer/staging/search foundation that should receive them is still an open PR rather than canonical `main`. Manually copying those routes into the old multi-JSON layout would recreate the maintenance problem the user explicitly asked to eliminate.
+The release gate is blocked only on Vercel Preview. The fresh deployment `dpl_6jPnLTVtJS21UGLN3ptFDYeMKA6X` failed. GitHub points it to Vercel scope `chenyuan-s-projects`; the connected Vercel app returns HTTP 403 for that scope, and the authenticated Vercel CLI available on the approved Qwen control host can access only `chenyuan19920509-5309s-projects`, not `chenyuan-s-projects`. Therefore the failing deployment logs cannot currently be inspected through an authorized correct-scope session. This is an access/provider blocker, not evidence of a Phone code defect.
 
-**Allowed sequence:**
-1. fetch current `main` and rebase/update PR #253's branch without touching the dirty production worktree;
-2. rerun the Phone canonical DB, candidate/staging isolation, build and existing Phone release tests;
-3. diagnose the repeated Vercel Preview failure using the correct Vercel project/team context; classify a provider/configuration failure separately from code/build failure;
-4. merge PR #253 only when its release gate is satisfied;
-5. after merge, queue the three admitted routes (Tello / ClubSIM / Hotlink) for importer-based canonical ingestion, preserving their correction/conflict fields.
+**Re-open trigger:** obtain authorized access to Vercel scope `chenyuan-s-projects`, inspect the existing PR #253 deployment failure, apply a bounded code/config fix only if the logs identify one, and require a fresh real Preview success before merge. Do not create fake/no-op commits merely to retrigger Vercel.
 
-**Done:** PR #253 is either merged with a verified merge SHA, or has one explicit external/provider blocker with evidence and no speculative workaround; the queue then names importer-based first-batch ingestion as the next task.
+**After merge only:** queue importer-based canonical ingestion of Tello / ClubSIM / Hotlink Pantas, preserving the audited correction/conflict fields.
 
-**Stop / do not substitute:** do not hand-edit public Phone cards, do not bulk-merge #234–#241, and do not bypass a real frontend/build failure merely because local data tests pass.
+**Stop / do not substitute:** do not merge PR #253 while Vercel is red; do not hand-edit public Phone cards; do not bulk-merge #234–#241; do not start route ingestion as a substitute for the blocked release.
 
 ## Backstage packet set — batch-2 fully dispositioned
 
