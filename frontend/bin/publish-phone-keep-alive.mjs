@@ -4,8 +4,8 @@ import { fileURLToPath } from 'url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const guideDir = join(root, 'dist', 'tools', 'phone-number-survival-guide');
-const dataPath = join(guideDir, 'uk-directory-pilot.json');
-if (!existsSync(dataPath)) throw new Error('Phone Radar UK directory packet missing; run publish-phone-survival-guide.mjs first');
+const dataPath = join(root, 'tools', 'phone-number-lifecycle-mvp', 'global-directory.json');
+if (!existsSync(dataPath)) throw new Error('Phone Radar global directory packet missing; run merge-global-directory.py first');
 const data = JSON.parse(readFileSync(dataPath, 'utf8'));
 
 const DAY = 86400000;
@@ -18,7 +18,21 @@ const stateLabels = {
   'community-reproduced-multi-source': 'Community-reproduced · multi-source',
   'community-reproduced': 'Community-reproduced',
   'account-specific-confirmed-with-conflicting-long-idle-report': 'Account-specific confirmed · conflicting long-idle report',
-  'insufficient-evidence': 'Insufficient evidence'
+  'insufficient-evidence': 'Insufficient evidence',
+  'official-confirmed': 'Official terms confirmed',
+  'official-confirmed-nuanced': 'Official terms confirmed · nuanced',
+  'official-policy-verified-2026-09-26': 'Official policy verified 2026-09-26',
+  'official-faq-via-specialist-media': 'Official FAQ via specialist media',
+  'official-window-plus-community-practice': 'Official window + community practice',
+  'official-partial-plus-community': 'Official partial + community evidence',
+  'official-confirmed-cumulative-validity': 'Official confirmed · cumulative validity',
+  'official-staff-community-confirmed': 'Official staff + community confirmed',
+  'official-fee-abolished-validity-ladder': 'Official · fee abolished, validity ladder',
+  'official-policy-plus-community-practice': 'Official policy + community practice',
+  'operator-rules-via-simcontrol-south-africa': 'Operator rules via specialist source',
+  'retailer-listing-plus-community': 'Retailer listing + community evidence',
+  'regulatory-norm-media-confirmed': 'Regulatory norm, media-confirmed',
+  'community-wiki-needs-official-confirmation': 'Community wiki · needs official confirmation'
 };
 
 // Keep-alive action steps, derived from each route's sourced keep.action / guideSteps text
@@ -52,7 +66,7 @@ const shortActionByRoute = {
   'giffgaff-uk-direct-esim-payg': 'make a balance-changing activity'
 };
 
-const models = (data.routes || []).map(r => {
+const models = (data.routes || []).filter(r => Number.isFinite(r.keep?.intervalDays) && r.keep?.action && r.publishState !== 'observation-hold').map(r => {
   const brand = (data.brands || []).find(b => b.id === r.brandId) || {};
   const keep = r.keep || {};
   const interval = Number.isFinite(keep.intervalDays) ? keep.intervalDays : null;
@@ -92,8 +106,13 @@ const models = (data.routes || []).map(r => {
     stateLabel: stateLabels[keep.state] || keep.state || 'Unknown',
     lastVerifiedAt: r.lastVerifiedAt || 'unknown',
     stale: verifiedDaysAgo !== null && verifiedDaysAgo > 90,
-    steps: stepsByRoute[r.id] || [],
+    steps: stepsByRoute[r.id] || (interval && keep.action ? [
+      'Perform the keep-alive action described above, exactly as sourced.',
+      'Verify the action registered with the operator (usage history, credit change or validity extension).',
+      'Record the date below so this tool computes your next safe deadline.'
+    ] : []),
     shortAction: shortActionByRoute[r.id] || 'perform the keep-alive activity',
+    marketName: r.marketName || 'Global',
     continuityWarning: r.id === 'giffgaff-uk-direct-esim-payg'
       ? 'A major overseas closure wave occurred in July 2026 — keep a recovery / port-out plan alongside any keep-alive routine.'
       : ''
@@ -166,8 +185,8 @@ function badgesHtml(m){
 }
 
 function selBtn(m){
-  const sub = m.hold ? 'On hold — no established rule' : `${m.interval}-day window · ${money(m.yearOriginal, m.currency)}/yr`;
-  return `<button type="button" class="ka-sel-btn" data-route="${esc(m.id)}"><strong>${esc(m.brandName)}</strong><small>${esc(sub)}</small></button>`;
+  const sub = `${m.marketName} · ${m.interval}-day window · ${money(m.yearOriginal, m.currency)}/yr`;
+  return `<button type="button" class="ka-sel-btn" data-route="${esc(m.id)}" data-q="${esc((m.brandName + ' ' + m.marketName).toLowerCase())}"><strong>${esc(m.brandName)}</strong><small>${esc(sub)}</small></button>`;
 }
 
 function panelHtml(m){
@@ -207,18 +226,18 @@ ${statBox('Keep cost / year', perYear)}
 }
 
 const faqEntries = [
-  ['How often do I need to keep a UK pay-as-you-go number active?',
-   'VOXI and giffgaff each need one balance-changing activity inside a 180-day window. Lebara UK needs a chargeable activity inside a 90-day window, with a community practical buffer of acting by about day 70–75.'],
-  ['What does it cost per year to keep a UK number alive?',
-   'On current community-measured action costs: VOXI about £0.16 per year, giffgaff about £0.60 per year and Lebara UK about £1.96 per year. Any balance you top up remains yours — the figures are the consumed action costs, not the top-up amount.'],
-  ['Why is there no calculator for Vodafone UK?',
-   'No clean durable retention path is currently established for the Vodafone UK zero-cost route, so it stays on observation hold. The tool shows the hold reason instead of inventing a date rule.']
+  ['How often do I need to keep a prepaid number active?',
+   'It depends on the operator. Windows range from 60 days to a full year depending on the route. Pick your operator above to see its exact window and a safe repeat rhythm with a 15% buffer.'],
+  ['What does it cost per year to keep a number alive?',
+   'The cheapest established routes cost under a few CNY per year — a single small SMS or top-up inside the window. Costs shown are community-measured action costs; any balance you top up remains yours.'],
+  ['Why is a route missing from this tool?',
+   'Only routes with an established, evidence-backed retention window get a calculator. Routes still under observation stay in the directory with their evidence status instead of an invented date rule.']
 ];
 
 function hubHtml(){
   const canonical = base;
-  const title = 'Keep-Alive Assistant – UK SIM retention deadlines & reminders – Phone Radar';
-  const desc = 'Pick your UK SIM (VOXI, giffgaff, Lebara) to get its exact keep-alive action, cost per action, safe repeat window, next deadline and a calendar reminder (.ics / Google Calendar). Evidence-graded; unproven routes are marked, not guessed.';
+  const title = `Keep-Alive Assistant – SIM retention deadlines & reminders (${models.length} routes) – Phone Radar`;
+  const desc = 'Pick your SIM to get its exact keep-alive action, cost per action, safe repeat window, next deadline and a calendar reminder (.ics / Google Calendar). Evidence-graded; unproven routes are marked, not guessed.';
   const webApp = JSON.stringify({'@context':'https://schema.org','@type':'WebApplication','name':'Phone Radar Keep-Alive Assistant','applicationCategory':'UtilitiesApplication','operatingSystem':'Any','description':desc,'isAccessibleForFree':true,'offers':{'@type':'Offer','price':'0','priceCurrency':'USD'},'url':canonical}).replace(/</g, '\\u003c');
   const faqLd = JSON.stringify({'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqEntries.map(q => ({'@type':'Question','name':q[0],'acceptedAnswer':{'@type':'Answer','text':q[1]}}))}).replace(/</g, '\\u003c');
   return `<!doctype html>
@@ -234,17 +253,18 @@ ${themeInit}
 ${pageStyle}</head>
 <body>${header}
 <main class="shell ka-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/phone-number-survival-guide/">Phone Radar</a><span>›</span><span>Keep-Alive Assistant</span></nav>
-<p class="eyebrow">Phone Radar · United Kingdom</p><h1>Keep-Alive Assistant</h1>
-<p class="ka-lead">Pick your UK SIM and get the exact retention action, what it costs, how often to repeat it and your next safe deadline — then export a calendar reminder so the number never lapses. Every rule is evidence-graded; where no durable rule is established, the tool says so instead of guessing.</p>
+<p class="eyebrow">Phone Radar · Global</p><h1>Keep-Alive Assistant</h1>
+<p class="ka-lead">Pick your SIM and get the exact retention action, what it costs, how often to repeat it and your next safe deadline — then export a calendar reminder so the number never lapses. Every rule is evidence-graded; routes without an established rule are excluded rather than guessed.</p>
+<input id="ka-q" type="search" placeholder="Filter routes by brand or market..." aria-label="Filter routes" style="width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;font:inherit;margin:14px 0 4px">
 <div class="ka-sel">${models.map(selBtn).join('')}</div>
 ${models.map(panelHtml).join('')}
 <section class="ka-discipline"><h2>How this tool treats evidence</h2>
 <ul>
-<li>All rules come from the same normalized UK pilot packet that backs the Phone Radar route guides (packet checked ${esc(data.checkedAt)}).</li>
+<li>All rules come from the same normalized global directory packet that backs the Phone Radar route guides (packet checked ${esc(data.checkedAt)}).</li>
 <li>Costs are community-measured action costs; any balance you top up remains yours.</li>
-<li>CNY figures use the packet reference rate GBP/CNY ${esc(fx.rate)} (checked ${esc(fx.checkedAt)}); your card FX may differ.</li>
+<li>CNY figures use the packet reference rates captured on ${esc(data.checkedAt)}; your card FX may differ.</li>
 <li>Reminders are generated locally in your browser (.ics download or Google Calendar link). No account, no backend; your date is stored only in this browser.</li>
-<li>Where a route lacks an established retention rule (Vodafone UK), no calculator is offered — missing rules stay missing rather than becoming guesses.</li>
+<li>Where a route lacks an established retention rule, no calculator is offered — missing rules stay missing rather than becoming guesses.</li>
 </ul></section>
 <section class="ka-faq"><h2>Keep-alive questions</h2>
 ${faqEntries.map(q => `<h3>${esc(q[0])}</h3><p>${esc(q[1])}</p>`).join('')}
@@ -252,15 +272,16 @@ ${faqEntries.map(q => `<h3>${esc(q[0])}</h3><p>${esc(q[1])}</p>`).join('')}
 </main>${footer}
 <script>window.KA_DATA=${JSON.stringify({'checkedAt':data.checkedAt,'routes':models.map(m => ({'id':m.id,'brandName':m.brandName,'hold':m.hold,'action':m.action,'interval':m.interval,'safe':m.safe,'shortAction':m.shortAction,'perActionLabel':m.perAction !== null ? `~${money(m.perAction, m.currency)}` : 'n/a'}))}).replace(/</g, '\\u003c')};</script>
 <script>${clientJs}</script>
+<script>(()=>{const q=document.getElementById('ka-q');if(!q)return;const btns=[...document.querySelectorAll('.ka-sel-btn')];q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();for(const b of btns){b.style.display=!t||b.dataset.q.includes(t)?'':'none';}});})();</script>
 </body></html>`;
 }
 
 function brandHtml(m){
   const canonical = `${base}${m.id}/`;
-  const title = `${m.brandName} keep-alive rules – UK SIM retention – Phone Radar`;
+  const title = `${m.brandName} keep-alive rules – ${m.marketName} SIM retention – Phone Radar`;
   const desc = m.hold
-    ? `${m.brandName} UK keep-alive status: on observation hold — no clean durable retention path is currently established. Hold reason and re-open conditions.`
-    : `${m.brandName} UK keep-alive rules: ${m.interval}-day window, act at least every ${m.safe} days, about ${money(m.perAction, m.currency)} per action and ${money(m.yearOriginal, m.currency)} per year. Steps, evidence state and a deadline calculator.`;
+    ? `${m.brandName} keep-alive status: on observation hold — no clean durable retention path is currently established. Hold reason and re-open conditions.`
+    : `${m.brandName} keep-alive rules (${m.marketName}): ${m.interval}-day window, act at least every ${m.safe} days, about ${money(m.perAction, m.currency)} per action and ${money(m.yearOriginal, m.currency)} per year. Steps, evidence state and a deadline calculator.`;
   const pageLd = JSON.stringify({'@context':'https://schema.org','@type':'WebPage','name':`${m.brandName} keep-alive rules`,'description':desc,'url':canonical,'dateModified':m.lastVerifiedAt !== 'unknown' ? m.lastVerifiedAt : data.checkedAt,'isPartOf':{'@type':'WebSite','name':'Phone Radar','url':'https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/'}}).replace(/</g, '\\u003c');
   const bodyBlock = m.hold
     ? `<div class="ka-hold"><strong>On hold — no calculator offered.</strong><br>${esc(m.holdReason)}</div>

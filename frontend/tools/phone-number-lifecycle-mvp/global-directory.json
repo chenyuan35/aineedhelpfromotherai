@@ -1370,7 +1370,7 @@
    "guideSteps": [
     "Directory card — acquisition requires Canada presence."
    ],
-   "marketName": "Canada / France / Switzerland / Mexico / India"
+   "marketName": "Canada"
   },
   {
    "id": "telcel-amigo-lifecycle-2026",
@@ -1417,7 +1417,7 @@
    "guideSteps": [
     "Directory card — local acquisition needed."
    ],
-   "marketName": "Canada / France / Switzerland / Mexico / India"
+   "marketName": "Mexico"
   },
   {
    "id": "jio-prepaid-90d-trai-2026",
@@ -1465,7 +1465,7 @@
    "guideSteps": [
     "Directory card — India acquisition impractical for overseas users."
    ],
-   "marketName": "Canada / France / Switzerland / Mexico / India"
+   "marketName": "India"
   },
   {
    "id": "orange-mobicarte-2026",
@@ -1510,7 +1510,7 @@
    "guideSteps": [
     "Directory card — terms pending."
    ],
-   "marketName": "Canada / France / Switzerland / Mexico / India"
+   "marketName": "France"
   },
   {
    "id": "sunrise-prepaid-2026",
@@ -1558,7 +1558,7 @@
    "guideSteps": [
     "Directory card — pending official terms."
    ],
-   "marketName": "Canada / France / Switzerland / Mexico / India"
+   "marketName": "Switzerland"
   },
   {
    "id": "aldi-talk-activity-window-2026",
@@ -1607,7 +1607,7 @@
     "€5 top-up every ~110 days via app/voucher.",
     "If window lapses: top up within 2-month passive grace."
    ],
-   "marketName": "Germany / Malaysia"
+   "marketName": "Germany"
   },
   {
    "id": "vodafone-callya-90d-2026",
@@ -1656,7 +1656,7 @@
     "Germany presence needed for registration.",
     "Quarterly €5 top-up or chargeable usage."
    ],
-   "marketName": "Germany / Malaysia"
+   "marketName": "Germany"
   },
   {
    "id": "hotlink-pantas-365-pass-2026",
@@ -2341,7 +2341,7 @@
     "€5 recharge yearly resets clock.",
     "If expired: reactivation request possible."
    ],
-   "marketName": "Italy / Spain / Singapore"
+   "marketName": "Italy"
   },
   {
    "id": "movistar-prepago-6mo-2026",
@@ -2389,7 +2389,7 @@
     "Acquire Movistar Prepago in Spain (passport).",
     "Recharge €5 every ~170 days."
    ],
-   "marketName": "Italy / Spain / Singapore"
+   "marketName": "Spain"
   },
   {
    "id": "singtel-hi-prepaid-passport-30d-2026",
@@ -2436,7 +2436,7 @@
    "guideSteps": [
     "Do NOT recommend for overseas keep-alive — documented as avoid-route."
    ],
-   "marketName": "Italy / Spain / Singapore"
+   "marketName": "Singapore"
   },
   {
    "id": "povo20-zero-base-2026",
@@ -3246,7 +3246,7 @@
     "Order KPN prepaid SIM/eSIM.",
     "Send 1 SMS every ~170 days."
    ],
-   "marketName": "Netherlands / Australia"
+   "marketName": "Netherlands"
   },
   {
    "id": "telstra-prepaid-longexpiry-2026",
@@ -3293,7 +3293,7 @@
    "guideSteps": [
     "Directory card only — premium pricing documented for reference."
    ],
-   "marketName": "Netherlands / Australia"
+   "marketName": "Australia"
   },
   {
    "id": "dialog-lk-365d-2026",
@@ -3832,7 +3832,7 @@
     "Use On-Top packages to extend validity.",
     "Verify yearly-renewal mechanics for long-term retention before relying beyond year 1."
    ],
-   "marketName": "New Zealand / Thailand"
+   "marketName": "Thailand"
   },
   {
    "id": "globe-prepaid-1yr-2026",
@@ -3881,7 +3881,7 @@
     "Acquire Globe SIM in PH; register with passport.",
     "₱10 top-up yearly via GlobeOne app."
    ],
-   "marketName": "Philippines / Turkey / UAE / Vietnam"
+   "marketName": "Philippines"
   },
   {
    "id": "turkcell-tourist-90d-blocker-2026",
@@ -3929,7 +3929,7 @@
    "guideSteps": [
     "Avoid-route for overseas retention."
    ],
-   "marketName": "Philippines / Turkey / UAE / Vietnam"
+   "marketName": "Turkey"
   },
   {
    "id": "du-prepaid-ae-2026",
@@ -4023,7 +4023,7 @@
    "guideSteps": [
     "Directory card — pending."
    ],
-   "marketName": "Philippines / Turkey / UAE / Vietnam"
+   "marketName": "Vietnam"
   },
   {
    "id": "labas-90-120d-2026",

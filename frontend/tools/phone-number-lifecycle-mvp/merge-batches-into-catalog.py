@@ -68,6 +68,20 @@ ROUTE_COUNTRY = {
     'beeline-uz-2026': 'Uzbekistan', 'cellfie-ge-90-45d-2026': 'Georgia', 'zain-kw-eezee-2026': 'Kuwait',
     'omantel-om-2026': 'Oman', 'btc-bs-2026': 'Bahamas', 'digicel-jm-2026': 'Jamaica',
     'tigo-tz-2026': 'Tanzania', 'orange-sn-sama-numero-2026': 'Senegal',
+    'speakout-711-365voucher-2026': 'Canada', 'telcel-amigo-lifecycle-2026': 'Mexico',
+    'jio-prepaid-90d-trai-2026': 'India', 'orange-mobicarte-2026': 'France',
+    'sunrise-prepaid-2026': 'Switzerland',
+    'aldi-talk-activity-window-2026': 'Germany', 'vodafone-callya-90d-2026': 'Germany',
+    'hotlink-pantas-365-pass-2026': 'Malaysia',
+    'tim-prepaid-12mo-2026': 'Italy', 'movistar-prepago-6mo-2026': 'Spain',
+    'singtel-hi-prepaid-passport-30d-2026': 'Singapore',
+    'globe-prepaid-1yr-2026': 'Philippines', 'turkcell-tourist-90d-blocker-2026': 'Turkey',
+    'du-prepaid-ae-2026': 'UAE', 'viettel-vtvang-keepnumber-2026': 'Vietnam',
+    'three-ie-prepay-lifecycle-2026': 'Ireland', 'orange-pl-nakarte-2026': 'Poland',
+    'vodafone-yorn-pt-2026': 'Portugal', 'a1-hr-prepaid-2026': 'Croatia',
+    'skinny-prepay-12mo-2026': 'New Zealand', '2degrees-prepay-2026': 'New Zealand',
+    'ais-sim2fly-365d-2026': 'Thailand',
+    'kpn-prepaid-6mo-2026': 'Netherlands', 'telstra-prepaid-longexpiry-2026': 'Australia',
 }
 
 def brand_name(route, brands):
