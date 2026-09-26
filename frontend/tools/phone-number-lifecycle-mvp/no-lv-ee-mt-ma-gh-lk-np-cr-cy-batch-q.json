@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "market": "no-lv-ee-mt-ma-gh-lk-np-cr-cy",
+  "checkedAt": "2026-09-26",
+  "status": "batch-q-evidence-captured",
+  "notes": "Norway + Latvia + Estonia + Malta + Morocco + Ghana + Sri Lanka + Nepal + Costa Rica + Cyprus. Dialog LK official 365d max + 52d grace + 6mo recycle. Telia EE official 180d+30d receive-only PDF. LMT LV official 60d+60d receive.",
+  "networks": [
+    { "id": "telenor-no", "name": "Telenor NO" },
+    { "id": "lmt-lv", "name": "LMT LV" },
+    { "id": "telia-ee", "name": "Telia EE" },
+    { "id": "go-mt", "name": "GO MT" },
+    { "id": "maroc-telecom", "name": "Maroc Telecom" },
+    { "id": "mtn-gh", "name": "MTN GH" },
+    { "id": "dialog-lk", "name": "Dialog LK" },
+    { "id": "ncell-np", "name": "Ncell NP" },
+    { "id": "kolbi-cr", "name": "Kölbi CR" },
+    { "id": "cyta-cy", "name": "Cyta CY" }
+  ],
+  "brands": [
+    { "id": "telenor-kontant-no", "networkId": "telenor-no", "name": "Telenor Kontant" },
+    { "id": "lmt-karte", "networkId": "lmt-lv", "name": "LMT Karte" },
+    { "id": "telia-konekaart", "networkId": "telia-ee", "name": "Telia Kõnekaart" },
+    { "id": "go-payasyougo", "networkId": "go-mt", "name": "GO Pay As You GO" },
+    { "id": "maroc-prepaid", "networkId": "maroc-telecom", "name": "Maroc Telecom Prepaid" },
+    { "id": "mtn-gh-prepaid", "networkId": "mtn-gh", "name": "MTN GH Prepaid" },
+    { "id": "dialog-prepaid", "networkId": "dialog-lk", "name": "Dialog Prepaid" },
+    { "id": "ncell-prepaid", "networkId": "ncell-np", "name": "Ncell Prepaid" },
+    { "id": "kolbi-prepaid", "networkId": "kolbi-cr", "name": "Kölbi Prepago" },
+    { "id": "cyta-soeasy", "networkId": "cyta-cy", "name": "Cyta soeasy" }
+  ],
+  "routes": [
+    {
+      "id": "dialog-lk-365d-2026",
+      "brandId": "dialog-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official number-recycling page: account validity extends with each recharge up to max 365 days. If no recharge before expiry → permanently disconnected after 52-day grace. Recycled after 6 months of permanent disconnect.",
+      "landedCost": {
+        "currency": "LKR", "providerOrCommunityPrice": 500, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 500, "landedCny": 12, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "LKR", "observedActionCost": 500, "yearCostOriginal": 500, "yearCostCny": 12,
+        "action": "Recharge to extend validity (max 365d cap). Single small recharge yearly once at cap. ~LKR 500/yr.",
+        "intervalDays": 365, "state": "official-confirmed"
+      },
+      "chinaActivation": "LK prepaid registration; local acquisition.",
+      "kyc": "Registration (LK).",
+      "payment": "App/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; clean 365d cap documented.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://dialog.lk/",
+      "tariffSummary": "365d cap per recharge; 52d grace.",
+      "sourceIds": ["official-dialog-number-recycling-2026-09-26", "official-dialog-prepaid-terms"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "telia-ee-180d-2026",
+      "brandId": "telia-konekaart",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official T&C PDF (2021-04-15, EN): preset validity 180 days from SIM activation. After 180d ends (or credit used): following 30 days can answer calls, read SMS, call emergency. Top-up extends per plan terms.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 5, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 5, "landedCny": 39, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 3, "yearCostOriginal": 6, "yearCostCny": 47,
+        "action": "Top-up every 180 days to reset validity (official 180-day cycle). ~€6/yr.",
+        "intervalDays": 180, "state": "official-confirmed"
+      },
+      "chinaActivation": "EE prepaid no real-name law (notable advantage).",
+      "kyc": "None (EE).",
+      "payment": "Online/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; receive-only window after expiry.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; no-KYC + 180d cycle documented.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.telia.ee/",
+      "tariffSummary": "180d validity; +30d receive-only.",
+      "sourceIds": ["official-telia-ee-calling-card-terms-2021"],
+      "guideSteps": ["Directory card — no-KYC advantage."]
+    },
+    {
+      "id": "lmt-karte-60-60d-2026",
+      "brandId": "lmt-karte",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official (lmt.lv/en): if account not topped up, advance validity 60 days + 60 days for receiving calls/SMS. Keep account funded to continue. Starter mentions '120-day active number'.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 1.5, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 1.5, "landedCny": 12, "fxCheckedAt": "2026-09-26", "state": "official-starter-price"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 3, "yearCostOriginal": 18, "yearCostCny": 140,
+        "action": "Top-up every ~60 days to stay active (official 60d+60d structure). ~€18/yr conservative.",
+        "intervalDays": 60, "state": "official-confirmed"
+      },
+      "chinaActivation": "LV prepaid registration required.",
+      "kyc": "Registration (LV).",
+      "payment": "Online/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.lmt.lv/",
+      "tariffSummary": "60d active + 60d receive-only.",
+      "sourceIds": ["official-lmt-karte-new-number-2026-09-26"],
+      "guideSteps": ["Directory card."]
+    },
+    { "id": "telenor-kontant-no-2026", "brandId": "telenor-kontant-no", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Telenor Kontant; Mitt Telenor app top-up. Validity rule not captured.", "landedCost": { "currency": "NOK", "state": "insufficient-evidence" }, "keep": { "currency": "NOK", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "NO local.", "kyc": "unverified", "payment": "app", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.telenor.no/", "tariffSummary": "Pending.", "sourceIds": ["official-telenor-no-kontantkort-2026-09-26"], "guideSteps": ["Directory card — pending."] },
+    { "id": "go-payasyougo-mt-2026", "brandId": "go-payasyougo", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "GO MT Smart Top-Up plans; starter SIM T&C page exists. Validity rule not captured.", "landedCost": { "currency": "EUR", "state": "insufficient-evidence" }, "keep": { "currency": "EUR", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "MT local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.go.com.mt/", "tariffSummary": "Pending.", "sourceIds": ["official-go-mt-starter-terms"], "guideSteps": ["Directory card — pending."] },
+    { "id": "maroc-telecom-prepaid-2026", "brandId": "maroc-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Maroc Telecom prepaid + eSIM; tourist-focused acquisition (airport). Validity rule not captured.", "landedCost": { "currency": "MAD", "state": "insufficient-evidence" }, "keep": { "currency": "MAD", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "MA passport registration.", "kyc": "Registration (MA).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.iam.ma/", "tariffSummary": "Pending.", "sourceIds": ["official-iam-esim-2026-09-26"], "guideSteps": ["Directory card — pending."] },
+    { "id": "mtn-gh-prepaid-2026", "brandId": "mtn-gh-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical", "acquisitionSummary": "MTN GH prepaid; GhanaCard SIM registration mandatory (portal exists). Validity rule not captured.", "landedCost": { "currency": "GHS", "state": "insufficient-evidence" }, "keep": { "currency": "GHS", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "GH GhanaCard mandatory — foreigner friction.", "kyc": "GhanaCard (GH).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending; GhanaCard barrier.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://mtn.com.gh/", "tariffSummary": "Pending.", "sourceIds": ["official-mtn-gh-sim-registration-portal"], "guideSteps": ["Directory card — pending."] },
+    { "id": "ncell-np-2026", "brandId": "ncell-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical", "acquisitionSummary": "Ncell NP prepaid; recharge validity scheme reverted 2025-01 (nepalitelecom). Specifics not captured.", "landedCost": { "currency": "NPR", "state": "insufficient-evidence" }, "keep": { "currency": "NPR", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "NP registration.", "kyc": "Registration (NP).", "payment": "app/local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.ncell.com.np/", "tariffSummary": "Pending.", "sourceIds": ["nepalitelecom-ncell-recharge-validity-2025-01"], "guideSteps": ["Directory card — pending."] },
+    { "id": "kolbi-cr-2026", "brandId": "kolbi-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Kölbi CR prepago; SIM Turista product exists. Validity rule not captured.", "landedCost": { "currency": "CRC", "state": "insufficient-evidence" }, "keep": { "currency": "CRC", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "CR local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.kolbi.cr/", "tariffSummary": "Pending.", "sourceIds": ["official-kolbi-prepago-2026-04"], "guideSteps": ["Directory card — pending."] },
+    { "id": "cyta-soeasy-cy-2026", "brandId": "cyta-soeasy", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM", "acquisitionSummary": "Cyta soeasy PAYG; 5G coverage. Validity rule not captured.", "landedCost": { "currency": "EUR", "state": "insufficient-evidence" }, "keep": { "currency": "EUR", "action": "Not established.", "state": "insufficient-evidence" }, "chinaActivation": "CY local.", "kyc": "unverified", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false, "holdReason": "Pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.cyta.com.cy/", "tariffSummary": "Pending.", "sourceIds": ["official-cyta-soeasy-faq-2026-09-26"], "guideSteps": ["Directory card — pending."] }
+  ]
+}
