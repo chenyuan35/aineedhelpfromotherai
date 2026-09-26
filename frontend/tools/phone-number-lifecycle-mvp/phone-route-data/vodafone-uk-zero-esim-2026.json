@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "vodafone-uk-zero-esim-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "vodafone-uk-direct",
+    "displayName": "Vodafone UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-hold",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-06-16",
+    "acquireUrl": "https://www.vodafone.co.uk/",
+    "sourceIds": [
+      "linuxdo-vodafone-2401952",
+      "linuxdo-vodafone-2404421",
+      "linuxdo-vodafone-2417339",
+      "vodafone-official-network-trial-2026"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "vodafone-uk-direct",
+    "networkId": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "vodafone-uk-zero-esim-2026",
+    "checkedAt": "2026-06-16",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "linuxdo-vodafone-2401952",
+      "url": "https://linux.do/t/topic/2401952",
+      "type": "community-thread",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-vodafone-2404421",
+      "url": "https://linux.do/t/topic/2404421",
+      "type": "community-thread",
+      "reportedAt": "2026-06-15"
+    },
+    {
+      "id": "linuxdo-vodafone-2417339",
+      "url": "https://linux.do/t/topic/2417339",
+      "type": "community-thread",
+      "reportedAt": "2026-06-16"
+    },
+    {
+      "id": "vodafone-official-network-trial-2026",
+      "url": "https://binaries.vodafone.co.uk/gbnnsauqav4t/46FjjluZ6iqfd7d0OcvCiX/af7b13abd16aad45fffd9bcb1179f9cf/network-trial-may-2026.pdf",
+      "type": "provider-commercial-terms",
+      "reportedAt": "2026-05-01"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-uk-zero-esim-2026-current-profile-e3cd66",
+      "routeId": "vodafone-uk-zero-esim-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-06-16",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "vodafone-uk-zero-esim-2026",
+        "brandId": "vodafone-uk-direct",
+        "publishState": "observation-hold",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "£0 network-trial episode observed in June 2026, but official trial eligibility requires UK residence/billing and UK device location; kept as an observation only.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "historic-episode-needs-recheck"
+        },
+        "keep": {
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Not established",
+          "intervalDays": null,
+          "state": "insufficient-evidence"
+        },
+        "chinaActivation": "Official free-trial terms require UK residence, a UK billing address and the eSIM device to be in the UK at order time; offshore forum workarounds are not an executable route.",
+        "kyc": "not cleanly reconciled",
+        "payment": "payment-card authorization reported; card acceptance varied",
+        "wifiCalling": "setup discussed; not normalized for long-term use",
+        "roamingSms": "not enough current route-specific evidence",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "No clean durable retention path. Do not reproduce fabricated-address/identity tactics mentioned in community threads.",
+        "lastVerifiedAt": "2026-06-16",
+        "acquireUrl": "https://www.vodafone.co.uk/",
+        "tariffSummary": "June 2026 £0 acquisition episode; long-term PAYG retention not established.",
+        "sourceIds": [
+          "linuxdo-vodafone-2401952",
+          "linuxdo-vodafone-2404421",
+          "linuxdo-vodafone-2417339",
+          "vodafone-official-network-trial-2026"
+        ],
+        "guideSteps": [
+          "Treat this row as historical/current-market intelligence, not an acquisition recommendation.",
+          "Check the current Vodafone offer and eligibility before attempting any order.",
+          "Do not use fabricated address or identity information to satisfy UK eligibility.",
+          "If you need a durable overseas number, compare an actionable pilot route instead."
+        ]
+      }
+    }
+  ]
+}

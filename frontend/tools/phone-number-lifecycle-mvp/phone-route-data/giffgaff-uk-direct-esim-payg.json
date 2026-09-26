@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "giffgaff-uk-direct-esim-payg",
+    "marketId": "gb",
+    "networkId": "o2-uk",
+    "brandId": "giffgaff-uk",
+    "displayName": "Giffgaff",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.giffgaff.com/",
+    "sourceIds": [
+      "giffgaff-official-credit-2026-09-23",
+      "linuxdo-giffgaff-1615582",
+      "linuxdo-giffgaff-2244241",
+      "linuxdo-giffgaff-2244241-p2",
+      "linuxdo-giffgaff-2310901",
+      "linuxdo-giffgaff-2322268",
+      "linuxdo-giffgaff-2678340",
+      "linuxdo-giffgaff-2773030",
+      "linuxdo-giffgaff-2903412",
+      "src-77b7a4afdd78",
+      "src-7bc565362f29",
+      "src-9e494ffc524e",
+      "src-ea6b2a6ebb26"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "o2-uk",
+    "name": "O2 UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "giffgaff-uk",
+    "networkId": "o2-uk",
+    "name": "Giffgaff",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "checkedAt": "2026-09-15",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 10,
+    "acquisitionCostCny": 89.3,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": 0.6,
+    "keepYearCostCny": 5.36,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-openai-phone-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "openai",
+      "operation": "phone-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-06-05",
+      "lastObservedAt": "2026-06-05"
+    },
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-telegram-registration-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 1,
+      "firstObservedAt": "2026-06-07",
+      "lastObservedAt": "2026-06-07"
+    },
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-whatsapp-registration-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-06-07",
+      "lastObservedAt": "2026-06-07"
+    }
+  ],
+  "sources": [
+    {
+      "id": "giffgaff-official-credit-2026-09-23",
+      "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+      "type": "provider-commercial-page",
+      "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "linuxdo-giffgaff-1615582",
+      "url": "https://linux.do/t/topic/1615582",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-02-14"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241",
+      "url": "https://linux.do/t/topic/2244241",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-25"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241-p2",
+      "url": "https://linux.do/t/topic/2244241?page=2",
+      "type": "community-thread",
+      "reportedAt": "2026-06-02"
+    },
+    {
+      "id": "linuxdo-giffgaff-2310901",
+      "url": "https://linux.do/t/topic/2310901",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-05"
+    },
+    {
+      "id": "linuxdo-giffgaff-2322268",
+      "url": "https://linux.do/t/topic/2322268",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-07"
+    },
+    {
+      "id": "linuxdo-giffgaff-2678340",
+      "url": "https://linux.do/t/topic/2678340",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-07-30"
+    },
+    {
+      "id": "linuxdo-giffgaff-2773030",
+      "url": "https://linux.do/t/topic/2773030",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "linuxdo-giffgaff-2903412",
+      "url": "https://linux.do/t/topic/2903412",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-15"
+    },
+    {
+      "id": "src-77b7a4afdd78",
+      "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+      "type": "official",
+      "label": "giffgaff — Understanding why your number has been deactivated"
+    },
+    {
+      "id": "src-7bc565362f29",
+      "url": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte",
+      "type": "official",
+      "label": "giffgaff — Understanding WiFi calling and VoLTE"
+    },
+    {
+      "id": "src-9e494ffc524e",
+      "url": "https://help.giffgaff.com/en/articles/261570-switching-to-an-esim-with-giffgaff",
+      "type": "official",
+      "label": "giffgaff — Switching to an eSIM"
+    },
+    {
+      "id": "src-ea6b2a6ebb26",
+      "url": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim",
+      "type": "official",
+      "label": "giffgaff — Ordering a SIM"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "OpenAI/Codex",
+      "operation": "phone-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-05",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2310901",
+      "dedupeKey": "giffgaff-2310901-n70-codex"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268-reply14",
+      "dedupeKey": "giffgaff-2322268-1157-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "recycled-number-observation",
+      "reportedAt": "2026-02-14",
+      "scope": "single-observation",
+      "outcome": "newly obtained number appeared associated with a prior Telegram account",
+      "sourceId": "linuxdo-giffgaff-1615582"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-2-9224db",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "mass-closure-wave",
+      "reportedAt": "2026-07-27",
+      "scope": "community-wave",
+      "outcome": "multiple overseas users reported closures/suspensions and loss of service",
+      "sourceId": "linuxdo-giffgaff-2678340"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-3-59d79b",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "partial-restoration-wave",
+      "reportedAt": "2026-08-18",
+      "scope": "community-wave",
+      "outcome": "some previously closed accounts/numbers were restored; not universal",
+      "sourceId": "linuxdo-giffgaff-2773030"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-4-14e95f",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "refund-outcomes",
+      "reportedAt": "2026-09-15",
+      "scope": "multiple-observations",
+      "outcome": "multiple eventual refund successes observed after delays or earlier denials; outcome remains mixed",
+      "sourceId": "linuxdo-giffgaff-2903412"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-capabilities-b1b191",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "The cited official help pages establish ordering, roaming and account rules but do not establish a universal passport/ID requirement for the intended overseas-user scenario."
+        },
+        "roamingSms": {
+          "state": "supported",
+          "label": "Cellular roaming SMS supported in listed destinations",
+          "note": "giffgaff documents roaming calls, texts and data outside the UK. Coverage and charges vary by destination; receiving ordinary texts is free in some documented roaming zones, but shortcode/verification delivery still depends on the sender and roaming network.",
+          "sourceUrl": "https://help.giffgaff.com/en/articles/229548-using-your-mobile-phone-in-the-rest-of-the-world"
+        },
+        "wifiCallingAbroad": {
+          "state": "not-supported",
+          "label": "Do not rely on Wi-Fi Calling abroad",
+          "note": "The current giffgaff help material says Wi-Fi Calling is not supported abroad.",
+          "sourceUrl": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte"
+        }
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-commercial-d19d62",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "giffgaff direct",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "GBP",
+          "basis": "Official SIM order + PAYG/plan after activation",
+          "setup": {
+            "amount": 0,
+            "status": "official-sim-only",
+            "note": "Official physical SIM order is free, but this is not the full activation/use cost."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-fixed",
+            "note": "The six-month inactivity rule does not itself require a monthly plan, but at least one qualifying action is required before the boundary."
+          },
+          "tax": {
+            "status": "included-where-listed",
+            "note": "Exact checkout remains the authority."
+          },
+          "shipping": {
+            "status": "restricted",
+            "note": "Official physical SIM delivery is UK-address only."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "Current plan promotions are not used."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "unknown",
+              "note": "A free SIM is not the same as total activation cost; verify the current activation/top-up requirement."
+            },
+            "90": {
+              "amount": null,
+              "status": "unknown",
+              "note": "Depends on initial credit/plan and usage."
+            },
+            "365": {
+              "amount": null,
+              "status": "unknown",
+              "note": "Retention can be low-cost but the exact minimum annual spend is not proven in this MVP."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "unknown",
+            "note": "Not modeled for the exact purchase/plan choice."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on payment method."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "No stock guarantee is stored."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official help center/community support exists."
+          },
+          "numberControl": {
+            "state": "carrier-account-with-inactivity-recovery-window",
+            "note": "Inactivity can deactivate the SIM; a PAC may be requested within a limited window after deactivation."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 3.5,
+            "reviewCount": 31447,
+            "last12Months": 3547,
+            "invitationContext": "Large independent-review snapshot; it is not converted into a product trust score.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/giffgaff.com"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "giffgaff free SIM",
+            "url": "https://www.giffgaff.com/free-sim-cards",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff inactivity deactivation",
+            "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "partial-baseline",
+          "label": "Partial official baseline",
+          "note": "The provider publishes part of the price, but the all-in activation or retention cost is not fully quantified. No overpay verdict is shown."
+        },
+        "comparisonGroup": "uk-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-current-profile-e4bfee",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "giffgaff-uk-direct-esim-payg",
+        "brandId": "giffgaff-uk",
+        "publishState": "candidate-with-prominent-continuity-warning",
+        "numberType": "real-mobile",
+        "simType": "eSIM-or-physical",
+        "acquisitionSummary": "Direct eSIM PAYG flow reproduced in 2026 with £10 minimum top-up; mainland-phone users may incur adapter or physical-SIM acquisition costs.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 89.3,
+          "fxCheckedAt": "2026-09-23",
+          "state": "native-esim-baseline-only"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.3,
+          "yearCostOriginal": 0.6,
+          "yearCostCny": 5.36,
+          "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+          "intervalDays": 180,
+          "state": "community-reproduced"
+        },
+        "chinaActivation": "direct eSIM activation reproduced from outside the UK, subject to device/app/network conditions",
+        "kyc": "not fully normalized in this packet",
+        "payment": "Visa/Mastercard successful in community reports; £10 top-up required in direct eSIM flow",
+        "wifiCalling": "available in community use but not required for all inbound SMS reception",
+        "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+        "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+        "trend": "conflicting",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-15",
+        "acquireUrl": "https://www.giffgaff.com/",
+        "tariffSummary": "Direct PAYG eSIM baseline: £10 minimum top-up; mainland-China device path may add adapter/physical-SIM cost.",
+        "sourceIds": [
+          "linuxdo-giffgaff-2244241",
+          "linuxdo-giffgaff-2244241-p2",
+          "linuxdo-giffgaff-2310901",
+          "linuxdo-giffgaff-2322268",
+          "linuxdo-giffgaff-1615582",
+          "linuxdo-giffgaff-2678340",
+          "linuxdo-giffgaff-2773030",
+          "linuxdo-giffgaff-2903412",
+          "giffgaff-official-credit-2026-09-23"
+        ],
+        "guideSteps": [
+          "Use the giffgaff app/direct route, choose eSIM when your device supports it, and choose the PAYG/credit path that matches your intended use.",
+          "Add credit; current official help states the minimum credit top-up is £10.",
+          "Activate and test the exact verification service before moving an important account; Telegram outcomes are currently mixed/operation-dependent.",
+          "Create a balance-changing activity well before 180 days, and keep a recovery/port-out plan because a major overseas closure wave occurred in July 2026."
+        ]
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-frontstage-d5504d",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 10,
+        "shortlist": true,
+        "smsSignal": "Mixed",
+        "signalLevel": 2,
+        "keepCost": "≈ £0.20/yr*",
+        "setup": "Some work",
+        "remote": "physical SIM needs UK address; eSIM geography unverified",
+        "stability": "Watch",
+        "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching.",
+        "kyc": "unverified",
+        "roaming": "supported; destination varies",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + mixed recent user outcomes",
+        "price": "Free SIM · activation/top-up live check",
+        "keepRule": "Qualifying use < 6 months"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-location-088ea2",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "conditional",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "Physical SIM delivery requires a UK address. The MVP has not yet verified a universal geography rule for initial eSIM activation.",
+        "outsideHomeNote": "Outside the UK, do not assume physical SIM delivery is available. If using eSIM, recheck current activation requirements before purchase.",
+        "sourceUrl": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-retention-6dfa57",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "Six months with no qualifying SIM use triggers inactivity deactivation.",
+        "clock_start_or_reset": "The clock runs from the most recent qualifying action listed by giffgaff.",
+        "qualifying_activity": [
+          "Call, SMS or MMS to another number, excluding emergency, Member Services, 0800 and other free-rated numbers.",
+          "At least one mobile-data connection.",
+          "An Airtime Credit purchase or plan purchase."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Community/account activity is not SIM activity.",
+          "Emergency, Member Services, 0800 and other free-rated calls/texts are explicitly excluded.",
+          "Incoming SMS, account login and balance checks are not documented as clock-reset actions."
+        ],
+        "lowest_cost_documented_action": "Send one standard UK PAYG SMS to a non-free-rated UK number. Current official PAYG price: £0.10 per text.",
+        "safest_documented_action": "If you want the least ambiguous remote keep-alive action, buy Airtime Credit before the six-month deadline; giffgaff explicitly lists Airtime Credit purchase as qualifying. Current minimum credit purchase is £10.",
+        "minimum_expected_cost": {
+          "amount": 0.1,
+          "currency": "GBP",
+          "basis": "one standard UK PAYG SMS",
+          "status": "official-fixed-price",
+          "note": "Outside-UK SMS pricing varies, so £0.10 is not a universal roaming cost."
+        },
+        "recommended_buffer": {
+          "value": 30,
+          "unit": "days",
+          "basis": "Product reminder buffer aligned with giffgaff’s first inactivity warning, which is sent about one month before deactivation."
+        },
+        "grace_or_rescue_window": "The SIM itself cannot be reactivated after inactivity deactivation. A PAC can be requested from giffgaff agents within 30 days after deactivation to port the number to another UK network.",
+        "termination_and_recycling": "At 30 days or more after deactivation, the number cannot be retrieved; giffgaff says it returns to the available-number pool and is recycled.",
+        "sources": [
+          {
+            "label": "giffgaff — inactivity deactivation and 30-day PAC rescue",
+            "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff — PAYG rates",
+            "url": "https://www.giffgaff.com/pricing",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff — minimum Airtime Credit purchase",
+            "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last qualifying SIM-use date",
+          "anchor_help": "Use the date of the most recent documented qualifying call/SMS/MMS, mobile-data connection, Airtime Credit purchase or plan purchase.",
+          "due_offset": {
+            "value": 6,
+            "unit": "months"
+          },
+          "buffer": {
+            "value": 30,
+            "unit": "days"
+          },
+          "summary": "Take a qualifying giffgaff keep-alive action",
+          "description": "Complete a documented qualifying action before the six-month inactivity deadline. The calendar event is placed 30 days early as a product-side buffer."
+        }
+      }
+    }
+  ]
+}

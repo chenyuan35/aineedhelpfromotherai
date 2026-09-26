@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "sakura-japan-voice-data",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "sakura-mobile-jp",
+    "displayName": "Sakura Mobile Japan Voice+Data (passport route)",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "monthly Voice+Data SIM/eSIM with Japanese voice/SMS service; passport route requires face-to-face verification/pickup",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+    "sourceIds": [
+      "src-0b42956d1b40",
+      "src-7c3acff56130",
+      "src-afc386fd0765",
+      "src-cc7c7229dc5c"
+    ]
+  },
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "network": null,
+  "brand": {
+    "id": "sakura-mobile-jp",
+    "marketId": "jp",
+    "networkId": null,
+    "name": "Sakura Mobile"
+  },
+  "metrics": {
+    "routeId": "sakura-japan-voice-data",
+    "checkedAt": "2026-09-16",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-0b42956d1b40",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/27171487316121--Travel-SIM-eSIM-Can-I-make-phone-calls-or-send-SMS-with-the-Travel-SIM-eSIM",
+      "type": "official",
+      "label": "Sakura Mobile — Travel SIM/eSIM is data-only"
+    },
+    {
+      "id": "src-7c3acff56130",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan",
+      "type": "official",
+      "label": "Sakura Mobile — Monthly service outside Japan"
+    },
+    {
+      "id": "src-afc386fd0765",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+      "type": "official",
+      "label": "Sakura Mobile — non-resident/passport eligibility"
+    },
+    {
+      "id": "src-cc7c7229dc5c",
+      "url": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+      "type": "official",
+      "label": "Sakura Mobile — Voice+Data application procedure"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-sakura-japan-voice-data-commercial-d1a4db",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Sakura Mobile direct",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "JPY",
+          "basis": "5GB Voice + Data monthly plan",
+          "setup": {
+            "amount": 5500,
+            "status": "official-tax-included",
+            "note": "Activation fee, tax included."
+          },
+          "recurring": {
+            "amount": 3278,
+            "period": "month",
+            "status": "official-tax-included",
+            "note": "5GB Voice + Data monthly price, tax included."
+          },
+          "tax": {
+            "status": "included",
+            "note": "These two listed amounts are tax-inclusive."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "Pickup/shipping cost depends on the application path and is not included here."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "No temporary promotion is used in cost windows."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 8778,
+              "status": "derived-base-only",
+              "note": "Activation fee + one monthly charge; calls/SMS and other extras excluded."
+            },
+            "90": {
+              "amount": 15334,
+              "status": "derived-base-only",
+              "note": "Activation fee + three monthly charges."
+            },
+            "365": {
+              "amount": 44836,
+              "status": "reference-base",
+              "note": "Activation fee + 12 monthly charges; actual billing dates may differ."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "needs-checkout-review",
+            "note": "Current cancellation/refund details are not modeled into a simple guarantee."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Not independently modeled."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "No live inventory guarantee is stored."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official help center is available."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "Renewable carrier-style Japanese number; exact post-cancellation/porting outcome still requires verification."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 4.8,
+            "reviewCount": 1491,
+            "last12Months": 709,
+            "invitationContext": "Company asks customers to review; rating is context only, not a trust score.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/www.sakuramobile.jp"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "Sakura monthly pricing",
+            "url": "https://www.sakuramobile.jp/monthly/price/",
+            "type": "official"
+          },
+          {
+            "label": "Sakura non-resident application guidance",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "japan-voice-data-entry"
+      }
+    },
+    {
+      "id": "snap-sakura-japan-voice-data-frontstage-465680",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 70,
+        "shortlist": false,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "Active plan for SMS",
+        "setup": "High effort",
+        "remote": "Japan pickup + face-to-face ID",
+        "stability": "Stable",
+        "caveat": "The low suspension fee preserves the number only; active SMS requires normal service.",
+        "kyc": "passport route requires in-person verification",
+        "roaming": "calls/SMS supported abroad",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; independent outcome coverage limited",
+        "price": "¥5,500 setup + ¥3,278/mo",
+        "keepRule": "Keep plan active for SMS"
+      }
+    },
+    {
+      "id": "snap-sakura-japan-voice-data-retention-a4f431",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "This is a monthly contract, not an inactivity-based prepaid line. A Voice+Data line can be placed on Sakura’s suspension option to keep the number while service is paused.",
+        "clock_start_or_reset": "Normal service follows monthly billing. Suspension is applied for full calendar months through My Page according to the plan-change schedule.",
+        "qualifying_activity": [
+          "Continue paying the normal Voice+Data monthly plan.",
+          "For number retention without service, use the documented Voice+Data suspension option at ¥220/month with credit-card payment.",
+          "If moving carriers, request MNP before submitting termination."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Suspension provides no calls, SMS or data, so it preserves the number but does not provide OTP continuity.",
+          "If the ¥220 suspension fee is unpaid, Sakura states the contract will be terminated.",
+          "After submitting termination, a plan change or MNP request can no longer be submitted."
+        ],
+        "lowest_cost_documented_action": "Use Sakura’s Voice+Data suspension option at ¥220 per month if you only need to retain the current number and do not need calls/SMS/data during suspension.",
+        "safest_documented_action": "If ongoing OTP/SMS access matters, keep the normal Voice+Data plan active. If you only need future ownership, use the official suspension option and keep the credit card valid.",
+        "minimum_expected_cost": {
+          "amount": 220,
+          "currency": "JPY",
+          "period": "month",
+          "basis": "Voice+Data suspension option",
+          "status": "official",
+          "note": "Credit-card payment is required; suspended service has no call/SMS/data access."
+        },
+        "recommended_buffer": {
+          "value": 5,
+          "unit": "days",
+          "basis": "Product-side buffer before Sakura’s normal 25th-of-month plan-change/termination cutoff."
+        },
+        "grace_or_rescue_window": "No fixed unpaid grace period was found in the reviewed official pages. The suspension article says an unpaid suspension fee terminates the contract.",
+        "termination_and_recycling": "Termination occurs at month-end according to the request cutoff. Users who want to keep the number should request MNP before termination; Sakura says an MNP request can no longer be submitted after a termination request. Exact post-termination recycling timing is not documented in the cited pages.",
+        "sources": [
+          {
+            "label": "Sakura Mobile — suspend Voice+Data and keep the number",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360050909732--Monthly-SIM-eSIM-I-want-to-pause-my-plan-but-keep-my-current-phone-number-How-can-I-do-that",
+            "type": "official"
+          },
+          {
+            "label": "Sakura Mobile — monthly contract termination",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020534531-How-do-I-terminate-cancel-my-Monthly-contract",
+            "type": "official"
+          },
+          {
+            "label": "Sakura Mobile — MNP number request",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360040330852-How-do-I-request-an-MNP-number",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "unavailable",
+          "reason": "No single verified keep-alive deadline can be generated safely for this monthly route. The documented 25th-of-month cutoff is for plan changes/termination, not a universal payment-expiry deadline."
+        }
+      }
+    }
+  ]
+}

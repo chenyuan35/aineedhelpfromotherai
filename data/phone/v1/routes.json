@@ -1,0 +1,300 @@
+[
+  {
+    "id": "5sim-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "5sim-global",
+    "displayName": "5SIM temporary verification route",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS verification number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://5sim.net/prices",
+    "sourceIds": [
+      "src-3545efe8deb4",
+      "src-6acad0e79070",
+      "src-a19054e9d137"
+    ]
+  },
+  {
+    "id": "a1-croatia-prepaid-esim",
+    "marketId": "hr",
+    "networkId": null,
+    "brandId": "a1-croatia-hr",
+    "displayName": "A1 Croatia prepaid eSIM",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "prepaid eSIM with a Croatian +385 mobile number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "Apr 2026",
+    "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+    "sourceIds": [
+      "src-61020a30c0ff",
+      "src-a8125c0e023b",
+      "src-c34111119d44",
+      "src-ccedda3a4240"
+    ]
+  },
+  {
+    "id": "activatex-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "activatex-global",
+    "displayName": "Temporary SMS activation comparison",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS activation marketplace/comparison route",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://activatex.org/",
+    "sourceIds": [
+      "src-4212005934bd"
+    ]
+  },
+  {
+    "id": "giffgaff-uk-direct-esim-payg",
+    "marketId": "gb",
+    "networkId": "o2-uk",
+    "brandId": "giffgaff-uk",
+    "displayName": "Giffgaff",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.giffgaff.com/",
+    "sourceIds": [
+      "giffgaff-official-credit-2026-09-23",
+      "linuxdo-giffgaff-1615582",
+      "linuxdo-giffgaff-2244241",
+      "linuxdo-giffgaff-2244241-p2",
+      "linuxdo-giffgaff-2310901",
+      "linuxdo-giffgaff-2322268",
+      "linuxdo-giffgaff-2678340",
+      "linuxdo-giffgaff-2773030",
+      "linuxdo-giffgaff-2903412",
+      "src-77b7a4afdd78",
+      "src-7bc565362f29",
+      "src-9e494ffc524e",
+      "src-ea6b2a6ebb26"
+    ]
+  },
+  {
+    "id": "h2o-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "h2o-wireless-us",
+    "displayName": "H2O Wireless Pay As You Go US number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "prepaid SIM/eSIM options must be rechecked at purchase",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.h2owireless.com/",
+    "sourceIds": [
+      "src-d5c503ecd237"
+    ]
+  },
+  {
+    "id": "lebara-uk-direct-esim-china",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "lebara-uk",
+    "displayName": "Lebara UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-12",
+    "acquireUrl": "https://mobile.lebara.com/gb/en/",
+    "sourceIds": [
+      "linuxdo-lebara-2745784-op",
+      "linuxdo-lebara-2763577",
+      "linuxdo-lebara-2894665",
+      "src-2948194201a0",
+      "src-337a1e0a1330",
+      "src-aa91ae8faea1"
+    ]
+  },
+  {
+    "id": "mobal-japan-data-physical",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "mobal-japan-jp",
+    "displayName": "Mobal Japan Tourist Data SIM (physical)",
+    "family": "data",
+    "numberClass": "data-only",
+    "form": "physical SIM with mobile data only; no phone number, voice, or ordinary SMS",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+    "sourceIds": [
+      "src-8a5a1ea3e316"
+    ]
+  },
+  {
+    "id": "mobal-japan-voice-data",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "mobal-japan-jp",
+    "displayName": "Mobal Japan Voice+Data 5G number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical SIM or eSIM with a real 070/080/090 Japanese mobile number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+    "sourceIds": [
+      "src-0c8b2811a531",
+      "src-2bbba2c2f064",
+      "src-55ebde488d35",
+      "src-8a5a1ea3e316"
+    ]
+  },
+  {
+    "id": "sakura-japan-voice-data",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "sakura-mobile-jp",
+    "displayName": "Sakura Mobile Japan Voice+Data (passport route)",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "monthly Voice+Data SIM/eSIM with Japanese voice/SMS service; passport route requires face-to-face verification/pickup",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+    "sourceIds": [
+      "src-0b42956d1b40",
+      "src-7c3acff56130",
+      "src-afc386fd0765",
+      "src-cc7c7229dc5c"
+    ]
+  },
+  {
+    "id": "smspool-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "smspool-global",
+    "displayName": "SMSPool temporary verification route",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS verification number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.smspool.net/",
+    "sourceIds": [
+      "src-33ac07e70ef6",
+      "src-7f446ed92df8"
+    ]
+  },
+  {
+    "id": "tello-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "tello-us",
+    "displayName": "Tello US mobile number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical SIM or eSIM",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://tello.com/",
+    "sourceIds": [
+      "src-494ca2deb59b",
+      "src-573da827b0ea",
+      "src-ed3f565a3e3a",
+      "src-f2d3210589df"
+    ]
+  },
+  {
+    "id": "trip-cmlink-china-data",
+    "marketId": "cn",
+    "networkId": null,
+    "brandId": "trip-com-china-mobile-cmlink-cn",
+    "displayName": "Trip.com CMLink Mainland China eSIM",
+    "family": "data",
+    "numberClass": "data-only",
+    "form": "travel eSIM for mainland-China mobile data; no durable phone number is assumed",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+    "sourceIds": [
+      "src-34d2c2be25e3",
+      "src-3e3106e8c4c3",
+      "src-6cc1d36dff5e",
+      "src-981c29b0af43"
+    ]
+  },
+  {
+    "id": "ultra-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "ultra-mobile-paygo-us",
+    "displayName": "Ultra Mobile PayGo US number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical PayGo SIM",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.ultramobile.com/paygo/",
+    "sourceIds": [
+      "src-518c6a9bf6f0",
+      "src-cbabf70eb1c4"
+    ]
+  },
+  {
+    "id": "vodafone-uk-zero-esim-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "vodafone-uk-direct",
+    "displayName": "Vodafone UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-hold",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-06-16",
+    "acquireUrl": "https://www.vodafone.co.uk/",
+    "sourceIds": [
+      "linuxdo-vodafone-2401952",
+      "linuxdo-vodafone-2404421",
+      "linuxdo-vodafone-2417339",
+      "vodafone-official-network-trial-2026"
+    ]
+  },
+  {
+    "id": "voxi-uk-esim-payg-retention",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "voxi-uk",
+    "displayName": "VOXI",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.voxi.co.uk/",
+    "sourceIds": [
+      "linuxdo-voxi-2188975",
+      "linuxdo-voxi-2399041-p3",
+      "linuxdo-voxi-2737575",
+      "nodeloc-voxi-102713",
+      "voxi-official-plans-2026-09-23"
+    ]
+  }
+]

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "voxi-uk-esim-payg-retention",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "voxi-uk",
+    "displayName": "VOXI",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.voxi.co.uk/",
+    "sourceIds": [
+      "linuxdo-voxi-2188975",
+      "linuxdo-voxi-2399041-p3",
+      "linuxdo-voxi-2737575",
+      "nodeloc-voxi-102713",
+      "voxi-official-plans-2026-09-23"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "voxi-uk",
+    "networkId": "vodafone-uk",
+    "name": "VOXI",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "voxi-uk-esim-payg-retention",
+    "checkedAt": "2026-09-26",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 10,
+    "acquisitionCostCny": 89.3,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": 0.16,
+    "keepYearCostCny": 1.43,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "linuxdo-voxi-2188975",
+      "url": "https://linux.do/t/topic/2188975",
+      "type": "community-thread",
+      "reportedAt": "2026-05-16"
+    },
+    {
+      "id": "linuxdo-voxi-2399041-p3",
+      "url": "https://linux.do/t/topic/2399041?page=3",
+      "type": "community-thread",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-voxi-2737575",
+      "url": "https://linux.do/t/topic/2737575",
+      "type": "community-thread",
+      "reportedAt": "2026-08-11"
+    },
+    {
+      "id": "nodeloc-voxi-102713",
+      "url": "https://www.nodeloc.com/t/topic/102713",
+      "type": "commercial-community-post",
+      "reportedAt": "2026-08-09"
+    },
+    {
+      "id": "voxi-official-plans-2026-09-23",
+      "url": "https://www.voxi.co.uk/acquisition/plans",
+      "type": "provider-commercial-page",
+      "reportedAt": "2026-09-23"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-voxi-uk-esim-payg-retention-current-profile-c6fc40",
+      "routeId": "voxi-uk-esim-payg-retention",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "voxi-uk-esim-payg-retention",
+        "brandId": "voxi-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Current official entry checked 2026-09-23: £10 30-day plan with eSIM available; free/coupon starts seen in August are episodic and are not treated as live today.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 89.3,
+          "fxCheckedAt": "2026-09-23",
+          "state": "current-official-entry-plus-community-retention"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.08,
+          "yearCostOriginal": 0.16,
+          "yearCostCny": 1.43,
+          "action": "Send one roaming SMS (~£0.08, community-measured) within each 180-day balance-activity window; Wi-Fi Calling SMS (~£0.24) also qualifies. Plans carry no PAYG balance, so an initial £5 top-up is required first.",
+          "intervalDays": 180,
+          "state": "community-reproduced-multi-source"
+        },
+        "chinaActivation": "possible but setup-sensitive; first-use state varies",
+        "kyc": "current coupon route requirements need recheck; do not use borrowed eligibility credentials",
+        "payment": "£5 top-up repeatedly reported; payment acceptance not fully normalized",
+        "wifiCalling": "workable for some users but setup-sensitive/conflicting",
+        "roamingSms": "reported; exact current tariff needs commercial refresh",
+        "refund": "not enough normalized evidence",
+        "trend": "watch",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.voxi.co.uk/",
+        "tariffSummary": "Current official £10 plan: 60GB promotional allowance until 30 Sep 2026, then 20GB; plan can be opted out and VOXI can continue on PAYG. Community retention reports use balance-changing activity.",
+        "sourceIds": [
+          "linuxdo-voxi-2188975",
+          "linuxdo-voxi-2399041-p3",
+          "linuxdo-voxi-2737575",
+          "nodeloc-voxi-102713",
+          "voxi-official-plans-2026-09-23"
+        ],
+        "guideSteps": [
+          "Use the current official VOXI signup/eSIM path; do not assume an old one-use forum coupon is still valid.",
+          "Activate the line and test inbound SMS before moving important accounts.",
+          "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
+          "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+        ]
+      }
+    }
+  ]
+}

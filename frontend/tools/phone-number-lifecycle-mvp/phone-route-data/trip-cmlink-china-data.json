@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "trip-cmlink-china-data",
+    "marketId": "cn",
+    "networkId": null,
+    "brandId": "trip-com-china-mobile-cmlink-cn",
+    "displayName": "Trip.com CMLink Mainland China eSIM",
+    "family": "data",
+    "numberClass": "data-only",
+    "form": "travel eSIM for mainland-China mobile data; no durable phone number is assumed",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+    "sourceIds": [
+      "src-34d2c2be25e3",
+      "src-3e3106e8c4c3",
+      "src-6cc1d36dff5e",
+      "src-981c29b0af43"
+    ]
+  },
+  "market": {
+    "id": "cn",
+    "name": "China",
+    "countryCode": "CN"
+  },
+  "network": null,
+  "brand": {
+    "id": "trip-com-china-mobile-cmlink-cn",
+    "marketId": "cn",
+    "networkId": null,
+    "name": "Trip.com / China Mobile CMLink"
+  },
+  "metrics": {
+    "routeId": "trip-cmlink-china-data",
+    "checkedAt": "2026-09-15",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-34d2c2be25e3",
+      "url": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+      "type": "official-commercial",
+      "label": "Trip.com — Mainland China CMLink eSIM product 71336361"
+    },
+    {
+      "id": "src-3e3106e8c4c3",
+      "url": "https://www.reddit.com/r/chinatravel/comments/1u2xb0y/anyone_have_trouble_with_their_tripcom_esim/",
+      "type": "community",
+      "label": "Reddit — Trip.com eSIM performance reports"
+    },
+    {
+      "id": "src-6cc1d36dff5e",
+      "url": "https://forum.naixi.net/thread-10581-1-1.html",
+      "type": "community",
+      "label": "Naixi — detailed Trip/CMLink mainland-China eSIM test"
+    },
+    {
+      "id": "src-981c29b0af43",
+      "url": "https://www.reddit.com/r/travelchina/comments/1t4hd1i/tripcom_esim/",
+      "type": "community",
+      "label": "Reddit — Trip.com CMLink mainland-China use reports"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-trip-cmlink-china-data-frontstage-6d28cb",
+      "routeId": "trip-cmlink-china-data",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "data",
+        "order": 15,
+        "shortlist": true,
+        "dataCost": "Live Trip price · check now",
+        "allowance": "Daily-data · 3–15 days",
+        "coverage": "Mainland China",
+        "setup": "Low–medium",
+        "reuse": "Travel-session product",
+        "numberIncluded": "Data only · no durable number",
+        "stability": "Watch",
+        "caveat": "Cheap mainland-China data route with mixed performance: recent users report 4G-only periods, evening slowdowns and device variation. Treat the 5G label as best-effort, not guaranteed."
+      }
+    }
+  ]
+}

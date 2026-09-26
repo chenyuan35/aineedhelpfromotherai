@@ -1,0 +1,12 @@
+[
+  {
+    "aliasId": "giffgaff-uk",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "reason": "legacy route id consolidated into current concrete route id"
+  },
+  {
+    "aliasId": "lebara-uk",
+    "routeId": "lebara-uk-direct-esim-china",
+    "reason": "legacy route id consolidated into current concrete route id"
+  }
+]
