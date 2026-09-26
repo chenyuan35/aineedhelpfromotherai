@@ -227,3 +227,95 @@ const additions=urls.filter(u=>!sitemap.includes(u)).map(u=>`  <url>\n    <loc>$
 if(additions)sitemap=sitemap.replace('</urlset>',`${additions}\n</urlset>`);
 writeFileSync(sitemapPath,sitemap);
 console.log(`Published global Phone Radar directory: ${data.routes.length} route pages + directory index.`);
+
+// ── market pages ──────────────────────────────────────────────────────────────
+const marketBase = 'https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/market/';
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+function marketHtml(market, routes){
+  const slug = slugify(market);
+  const canonical = `${marketBase}${slug}/`;
+  const withCost = routes.filter(r=>Number.isFinite(r.keep?.yearCostCny)&&r.publishState!=='observation-hold').sort((a,b)=>a.keep.yearCostCny-b.keep.yearCostCny);
+  const cheapest = withCost[0];
+  const readyCount = routes.filter(r=>r.publishState!=='observation-hold'&&Number.isFinite(r.keep?.intervalDays)).length;
+
+  const rows = routes.map(r=>{
+    const brand=data.brands.find(x=>x.id===r.brandId);
+    const keep=Number.isFinite(r.keep?.yearCostOriginal)?`${r.keep.currency} ${r.keep.yearCostOriginal}/yr`:'—';
+    const cny=Number.isFinite(r.keep?.yearCostCny)?`≈¥${r.keep.yearCostCny}`:'—';
+    const hasCalc = r.publishState!=='observation-hold'&&Number.isFinite(r.keep?.intervalDays)&&r.keep?.action;
+    const calcLink = hasCalc?` <a href="/tools/phone-number-survival-guide/keep-alive/${esc(r.id)}/" title="Deadline calculator">⏰</a>`:'';
+    return `<tr><td><a href="/tools/phone-number-survival-guide/route/${esc(r.id)}/"><strong>${esc(brand?.name||r.id)}</strong></a>${calcLink}</td><td>${esc(statusLabel(r))}</td><td>${esc(keep)}</td><td>${cny}</td><td>${Number.isFinite(r.keep?.intervalDays)?r.keep.intervalDays+'d':'—'}</td></tr>`;
+  }).join('');
+
+  const desc = cheapest
+    ? `${routes.length} SIM retention routes in ${market}. Cheapest keep-alive: ${data.brands.find(x=>x.id===cheapest.brandId)?.name} at ${cheapest.keep.currency} ${cheapest.keep.yearCostOriginal}/yr (≈¥${cheapest.keep.yearCostCny}). Verified ${data.checkedAt}.`
+    : `${routes.length} SIM retention routes in ${market}. Evidence status per route; unverified fields marked pending. Verified ${data.checkedAt}.`;
+
+  const faq = cheapest ? JSON.stringify({'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+    {'@type':'Question','name':`What is the cheapest way to keep a ${market} phone number active?`,'acceptedAnswer':{'@type':'Answer','text':`${data.brands.find(x=>x.id===cheapest.brandId)?.name} — ${cheapest.keep.currency} ${cheapest.keep.yearCostOriginal} per year (≈¥${cheapest.keep.yearCostCny}). Keep-alive action: ${(cheapest.keep?.action||'').slice(0,200)}`}},
+    {'@type':'Question','name':`How many SIM retention routes exist in ${market}?`,'acceptedAnswer':{'@type':'Answer','text':`${routes.length} routes tracked; ${readyCount} have an established evidence-backed retention window with a deadline calculator.`}}
+  ]}).replace(/</g,'\\u003c') : '';
+
+  return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(market)} SIM retention — keep your number alive – Phone Radar</title>
+<meta name="description" content="${esc(desc)}"><meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="${canonical}"><meta property="og:title" content="${esc(market)} SIM retention routes"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site.css">
+${faq?`<script type="application/ld+json">${faq}</script>`:''}
+<script id="theme-init">(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=saved==='system'?(dark?'dark':'light'):saved}catch{}})();</script>
+<style>.mkt-page{max-width:900px;padding-bottom:70px}.mkt-page h1{font-size:clamp(1.9rem,4.5vw,3rem);margin:.2em 0}.mkt-lead{color:var(--muted);max-width:740px}.mkt-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 26px}.mkt-summary div{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px}.mkt-summary small{display:block;color:var(--muted);text-transform:uppercase;font-size:.68rem;font-weight:850;letter-spacing:.05em}.mkt-summary strong{display:block;margin-top:5px}.mkt-page table{width:100%;border-collapse:collapse;font-size:.9rem}.mkt-page th,.mkt-page td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}.mkt-page th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}@media(max-width:640px){.mkt-summary{grid-template-columns:1fr}}</style></head>
+<body><header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/phone-number-survival-guide/">Phone Radar</a><a href="/tools/phone-number-survival-guide/directory/">Directory</a><a href="/tools/">All tools</a></nav></div></header>
+<main class="shell mkt-page"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/phone-number-survival-guide/">Phone Radar</a><span>›</span><a href="/tools/phone-number-survival-guide/directory/">Directory</a><span>›</span><span>${esc(market)}</span></nav>
+<p class="eyebrow">Phone Radar · Market</p><h1>${esc(market)} SIM retention</h1>
+<p class="mkt-lead">${esc(desc)}</p>
+<div class="mkt-summary"><div><small>Routes tracked</small><strong>${routes.length}</strong></div><div><small>With calculator</small><strong>${readyCount}</strong></div><div><small>Cheapest keep-alive</small><strong>${cheapest?esc((data.brands.find(x=>x.id===cheapest.brandId)?.name||'')+' ≈¥'+cheapest.keep.yearCostCny+'/yr'):'—'}</strong></div></div>
+<table><thead><tr><th>Route</th><th>Status</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead><tbody>${rows}</tbody></table>
+<p style="margin-top:22px"><a class="text-link" href="/tools/phone-number-survival-guide/directory/">← All ${new Set(data.routes.map(r=>r.marketName||'Global')).size} markets</a> · <a class="text-link" href="/tools/phone-number-survival-guide/keep-alive/">Keep-Alive Assistant →</a></p>
+</main><footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Fast decision tools for real user problems.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer></body></html>`;
+}
+
+// market index page
+function marketIndexHtml(byMarket){
+  const canonical = marketBase;
+  const markets = [...byMarket.keys()].sort((a,b)=>a.localeCompare(b));
+  const cards = markets.map(m=>{
+    const routes = byMarket.get(m);
+    const withCost = routes.filter(r=>Number.isFinite(r.keep?.yearCostCny)).sort((a,b)=>a.keep.yearCostCny-b.keep.yearCostCny);
+    const cheapest = withCost[0];
+    const cheapestTxt = cheapest ? `from ≈¥${cheapest.keep.yearCostCny}/yr` : 'cost pending';
+    return `<a class="mkt-card" href="/tools/phone-number-survival-guide/market/${slugify(m)}/"><strong>${esc(m)}</strong><small>${routes.length} route${routes.length===1?'':'s'} · ${esc(cheapestTxt)}</small></a>`;
+  }).join('');
+  const desc = `SIM number retention by market: ${markets.length} markets, ${data.routes.length} routes. Pick a market for local routes, keep-alive costs and deadline calculators.`;
+  return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIM retention by market – ${markets.length} markets – Phone Radar</title>
+<meta name="description" content="${esc(desc)}"><meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site.css">
+<script id="theme-init">(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=saved==='system'?(dark?'dark':'light'):saved}catch{}})();</script>
+<style>.mkt-idx{max-width:1000px;padding-bottom:70px}.mkt-idx h1{font-size:clamp(2rem,5vw,3rem);margin:.2em 0}.mkt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:20px}.mkt-card{display:block;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:14px;text-decoration:none;color:inherit}.mkt-card:hover{border-color:var(--ink)}.mkt-card small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}</style></head>
+<body><header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/phone-number-survival-guide/">Phone Radar</a><a href="/tools/">All tools</a></nav></div></header>
+<main class="shell mkt-idx"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/phone-number-survival-guide/">Phone Radar</a><span>›</span><span>Markets</span></nav>
+<p class="eyebrow">Phone Radar · Markets</p><h1>SIM retention by market</h1>
+<p class="dir-lead" style="color:var(--muted)">${esc(desc)}</p>
+<div class="mkt-grid">${cards}</div>
+</main><footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Fast decision tools for real user problems.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer></body></html>`;
+}
+
+const byMarketAll=new Map();
+for(const r of data.routes){const m=r.marketName||'Global';if(!byMarketAll.has(m))byMarketAll.set(m,[]);byMarketAll.get(m).push(r);}
+const marketRoot=join(guideDir,'market');mkdirSync(marketRoot,{recursive:true});
+writeFileSync(join(marketRoot,'index.html'),marketIndexHtml(byMarketAll));
+for(const [m,routes] of byMarketAll){
+  const out=join(marketRoot,slugify(m));mkdirSync(out,{recursive:true});
+  writeFileSync(join(out,'index.html'),marketHtml(m,routes));
+}
+
+// add market URLs to sitemap
+const sitemapPath2=join(root,'dist','sitemap.xml');let sitemap2=readFileSync(sitemapPath2,'utf8');
+const murls=[marketBase,...[...byMarketAll.keys()].map(m=>`${marketBase}${slugify(m)}/`)];
+const madds=murls.filter(u=>!sitemap2.includes(u)).map(u=>`  <url>\n    <loc>${u}</loc>\n    <lastmod>${data.checkedAt}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`).join('\n');
+if(madds)sitemap2=sitemap2.replace('</urlset>',`${madds}\n</urlset>`);
+writeFileSync(sitemapPath2,sitemap2);
+console.log(`Published ${byMarketAll.size} market pages + market index.`);
