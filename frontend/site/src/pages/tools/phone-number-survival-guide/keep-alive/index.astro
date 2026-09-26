@@ -1,0 +1,134 @@
+---
+import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
+import { data, keepAliveModels, keepAliveFaq, moneyShort, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+import clientJs from '../../../../scripts/keep-alive-client.js?raw';
+
+const models = keepAliveModels();
+const base = `${PHONE_BASE}keep-alive/`;
+
+const kaData = {
+  checkedAt: data.checkedAt,
+  routes: models.map((m) => ({
+    id: m.id, brandName: m.brandName, hold: m.hold, action: m.action,
+    interval: m.interval, safe: m.safe, shortAction: m.shortAction,
+    perActionLabel: m.perAction !== null ? `~${moneyShort(m.perAction, m.currency)}` : 'n/a'
+  }))
+};
+const kaScript = `window.KA_DATA=${JSON.stringify(kaData).replace(/</g, '\\u003c')};\n${clientJs}`;
+if (kaScript.includes('</script>')) throw new Error('Keep-alive client script must not contain a closing script tag');
+
+const title = `Keep-Alive Assistant – SIM retention deadlines & reminders (${models.length} routes) – Phone Radar`;
+const desc = 'Pick your SIM to get its exact keep-alive action, cost per action, safe repeat window, next deadline and a calendar reminder (.ics / Google Calendar). Evidence-graded; unproven routes are marked, not guessed.';
+const webApp = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Phone Radar Keep-Alive Assistant', applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', description: desc, isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: base };
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: keepAliveFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aineedhelpfromotherai.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Phone Radar', item: PHONE_BASE },
+  { '@type': 'ListItem', position: 3, name: 'Keep-Alive Assistant', item: base }
+]};
+
+function perYearLabel(m: any) {
+  if (m.yearOriginal === null) return 'n/a';
+  return `${moneyShort(m.yearOriginal, m.currency)}${m.yearCny !== null ? ` · ≈ ¥${Number(m.yearCny).toLocaleString('en-GB', { maximumFractionDigits: 2 })}` : ''}`;
+}
+---
+<PhoneLayout title={title} desc={desc} canonical={base} jsonLd={[webApp, faqLd, crumbs]}>
+<style is:global>
+.ka-wrap{max-width:900px;padding-bottom:70px}
+.ka-wrap h1{font-size:clamp(2rem,5vw,3.2rem);margin:.2em 0}
+.ka-lead{font-size:1.05rem;color:var(--muted);max-width:780px}
+.ka-sel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 26px}
+.ka-sel-btn{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px 12px;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.ka-sel-btn.active{outline:2px solid var(--ink)}
+.ka-sel-btn strong{display:block;font-size:.98rem}
+.ka-sel-btn small{display:block;color:var(--muted);margin-top:4px;font-size:.76rem}
+.ka-brand-panel{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px;margin:16px 0}
+.ka-hidden{display:none}
+.ka-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.ka-stats div{border:1px solid var(--line);border-radius:12px;padding:12px}
+.ka-stats small{display:block;color:var(--muted);text-transform:uppercase;font-size:.66rem;font-weight:850;letter-spacing:.05em}
+.ka-stats strong{display:block;margin-top:5px;font-size:1rem}
+.ka-pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.74rem;font-weight:800;margin:0 6px 6px 0}
+.ka-pill.ka-stale{border-color:#d9a441;color:#9a6700}
+.ka-note{font-size:.86rem;color:var(--muted)}
+.ka-hold{border:1px solid #d9a441;border-radius:14px;background:#fff8e8;padding:14px 16px;margin:14px 0;color:#5b4308}
+.ka-warnbox{border:1px solid #d9a441;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:.88rem}
+.ka-steps{margin:10px 0 18px}
+.ka-steps li{margin:6px 0;font-size:.93rem}
+.ka-calc{border-top:1px solid var(--line);margin-top:16px;padding-top:16px}
+.ka-calc label{font-weight:800;font-size:.88rem;display:block;margin-bottom:8px}
+.ka-calc input[type=date]{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:inherit}
+.ka-countdown{display:flex;gap:12px;align-items:baseline;border-radius:12px;padding:12px 14px;margin:14px 0;flex-wrap:wrap}
+.ka-countdown strong{font-size:1.25rem}
+.ka-ok{background:#e7f6ec;color:#14532d}
+.ka-warn{background:#fff8e8;color:#9a6700}
+.ka-bad{background:#fdeaea;color:#b42318}
+.ka-cal-actions{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 4px}
+.ka-cal-actions button,.ka-cal-actions a{display:inline-flex;min-height:40px;align-items:center;padding:0 14px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:800;font:inherit;cursor:pointer;text-decoration:none}
+.ka-cal-actions a{background:transparent;color:var(--ink)}
+.ka-muted{color:var(--muted);font-size:.86rem}
+.ka-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:.9rem}
+.ka-discipline,.ka-faq{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px 18px;margin:22px 0}
+.ka-discipline h2,.ka-faq h2{font-size:1rem;margin:0 0 8px}
+.ka-faq h3{font-size:.93rem;margin:14px 0 4px}
+.ka-faq p,.ka-discipline p,.ka-faq li,.ka-discipline li{font-size:.9rem}
+@media(max-width:760px){.ka-sel,.ka-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<main class="shell ka-wrap">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Keep-Alive Assistant</span></nav>
+<p class="eyebrow">Phone Radar · Global</p>
+<h1>Keep-Alive Assistant</h1>
+<p class="ka-lead">Pick your SIM and get the exact retention action, what it costs, how often to repeat it and your next safe deadline — then export a calendar reminder so the number never lapses. Every rule is evidence-graded; routes without an established rule are excluded rather than guessed.</p>
+<input id="ka-q" type="search" placeholder="Filter routes by brand or market..." aria-label="Filter routes" style="width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;font:inherit;margin:14px 0 4px">
+<div class="ka-sel">{models.map((m) => (
+<button type="button" class="ka-sel-btn" data-route={m.id} data-q={`${m.brandName} ${m.marketName}`.toLowerCase()}><strong>{m.brandName}</strong><small>{m.marketName} · {m.interval}-day window · {moneyShort(m.yearOriginal, m.currency)}/yr</small></button>
+))}</div>
+{models.map((m) => (
+<section class="ka-brand-panel" id={`ka-panel-${m.id}`} aria-label={m.brandName}>
+<h2>{m.brandName}</h2>
+<div style="margin:10px 0"><span class="ka-pill">{m.stateLabel}</span><span class="ka-pill">Verified {m.lastVerifiedAt}</span>{m.stale && <span class="ka-pill ka-stale">Re-verification due</span>}</div>
+{m.hold ? (
+<>
+<div class="ka-hold"><strong>On hold — no calculator offered.</strong><br>{m.holdReason}</div>
+<p class="ka-note">This tool only computes deadlines where a durable retention rule is established on current evidence. {m.brandName} does not currently qualify, so no date math is shown rather than a guessed one.</p>
+<div class="ka-links"><a href={`${GUIDE_BASE}route/${m.id}/`}>Full {m.brandName} route evidence →</a></div>
+</>
+) : (
+<>
+{m.continuityWarning && <div class="ka-warnbox"><strong>Continuity warning:</strong> {m.continuityWarning}</div>}
+<div class="ka-stats">
+<div><small>Window</small><strong>{m.interval} days</strong></div>
+<div><small>Safe rhythm</small><strong>every {m.safe} days</strong></div>
+<div><small>Cost per action</small><strong>{m.perAction !== null ? `~${moneyShort(m.perAction, m.currency)}` : 'n/a'}</strong></div>
+<div><small>Keep cost / year</small><strong>{perYearLabel(m)}</strong></div>
+</div>
+<p><strong>What to do:</strong> {m.action}</p>
+<p class="ka-note">{m.bufferNote} Repeats needed: about {m.perYearActions}× per year.</p>
+<ol class="ka-steps">{m.steps.map((s) => <li>{s}</li>)}</ol>
+<div class="ka-calc">
+<label for={`ka-date-${m.id}`}>Last keep-alive action date</label>
+<input type="date" class="ka-date-input" id={`ka-date-${m.id}`} data-route={m.id}>
+<div id={`ka-result-${m.id}`} aria-live="polite"></div>
+</div>
+<div class="ka-links"><a href={`${GUIDE_BASE}keep-alive/${m.id}/`}>Static {m.brandName} keep-alive page →</a><a href={`${GUIDE_BASE}route/${m.id}/`}>Full route evidence →</a></div>
+</>
+)}
+</section>
+))}
+<section class="ka-discipline"><h2>How this tool treats evidence</h2>
+<ul>
+<li>All rules come from the same normalized global directory packet that backs the Phone Radar route guides (packet checked {data.checkedAt}).</li>
+<li>Costs are community-measured action costs; any balance you top up remains yours.</li>
+<li>CNY figures use the packet reference rates captured on {data.checkedAt}; your card FX may differ.</li>
+<li>Reminders are generated locally in your browser (.ics download or Google Calendar link). No account, no backend; your date is stored only in this browser.</li>
+<li>Where a route lacks an established retention rule, no calculator is offered — missing rules stay missing rather than becoming guesses.</li>
+</ul></section>
+<section class="ka-faq"><h2>Keep-alive questions</h2>
+{keepAliveFaq.map(([q, a]) => (<><h3>{q}</h3><p>{a}</p></>))}
+</section>
+</main>
+<script is:inline set:html={kaScript} />
+<script is:inline>
+(()=>{const q=document.getElementById('ka-q');if(!q)return;const btns=[...document.querySelectorAll('.ka-sel-btn')];q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();for(const b of btns){b.style.display=!t||b.dataset.q.includes(t)?'':'none';}});})();
+</script>
+</PhoneLayout>

@@ -1,0 +1,53 @@
+---
+import GuideArticle from '../../../../components/GuideArticle.astro';
+import { data, routeOf, brandOf, GUIDE_BASE } from '../../../../data/phone.js';
+
+const ranked = (data.routes as any[])
+  .filter((r) => Number.isFinite(r.keep?.yearCostCny) && r.publishState !== 'observation-hold' && !r.avoidRoute)
+  .sort((a, b) => a.keep.yearCostCny - b.keep.yearCostCny)
+  .slice(0, 15);
+
+const clubsim = routeOf('clubsim-sms-pack-6hkd-2026');
+const hotlink = routeOf('hotlink-pantas-365-pass-2026');
+const globe = routeOf('globe-prepaid-1yr-2026');
+const voxi = routeOf('voxi-uk-esim-payg-retention');
+---
+<GuideArticle slug="cheapest-sim-receiving-sms-abroad"
+  h1="Cheapest SIM cards for receiving SMS & OTP abroad"
+  title="Cheapest SIM cards for receiving SMS & OTP abroad (2026 ranking)"
+  desc="The definitive cost ranking of SIM routes that keep receiving SMS/OTP codes abroad — from ¥0.17/year, every entry verified against official terms or community evidence."
+  lead="Keeping a number alive for verification codes is a cost-optimization problem: you want the lowest annual keep-alive cost with SMS that actually arrives abroad. This ranking is computed live from our verified directory data — no affiliate rankings, no guesses.">
+
+<section class="gd-sec"><h2>The ranking</h2>
+<table class="gd-tbl"><thead><tr><th>#</th><th>Route</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead>
+<tbody>{ranked.map((r, i) => (
+<tr><td>#{i + 1}</td><td><a href={`${GUIDE_BASE}route/${r.id}/`}><strong>{brandOf(r)?.name || r.id}</strong></a><br><small style="color:var(--muted)">{r.marketName || ''}</small></td><td>{r.keep.currency} {r.keep.yearCostOriginal}</td><td>≈¥{r.keep.yearCostCny}</td><td>{r.keep.intervalDays}d</td></tr>
+))}</tbody></table>
+<p style="color:var(--muted);font-size:.85rem">Ranking recomputed from the directory packet on every build (last check {data.checkedAt}). CNY figures use the packet reference rates.</p></section>
+
+<section class="gd-sec"><h2>How to read this table</h2>
+<ul>
+<li><strong>Keep/yr</strong> is the annual cost of the minimum keep-alive action — not the top-up amount. Topped-up credit stays yours.</li>
+<li><strong>Interval</strong> is how often you must act. Shorter = more chances to forget. Use the <a href={`${GUIDE_BASE}keep-alive/`}>Keep-Alive Assistant</a> to get a calendar reminder.</li>
+<li><strong>Acquisition matters more than retention.</strong> The world's cheapest retention (Beeline Kazakhstan, ¥0.17/yr) requires a local IIN number to buy — useless unless you have one. Check each route's acquisition section before optimizing for price.</li>
+</ul></section>
+
+<section class="gd-sec"><h2>The realistic shortlist for people outside the country</h2>
+<p>Filtering for routes you can actually acquire without local residency, the practical top tier is:</p>
+<ul>
+{clubsim && <li><a href={`${GUIDE_BASE}route/${clubsim.id}/`}><strong>ClubSIM (Hong Kong)</strong></a> — ≈¥{clubsim.keep?.yearCostCny}/yr, eSIM, minimal KYC.</li>}
+{hotlink && <li><a href={`${GUIDE_BASE}route/${hotlink.id}/`}><strong>{brandOf(hotlink)?.name}</strong></a> — ≈¥{hotlink.keep?.yearCostCny}/yr, one annual action.</li>}
+{globe && <li><a href={`${GUIDE_BASE}route/${globe.id}/`}><strong>{brandOf(globe)?.name}</strong></a> — ≈¥{globe.keep?.yearCostCny}/yr, 1-year official validity.</li>}
+{voxi && <li><a href={`${GUIDE_BASE}route/${voxi.id}/`}><strong>VOXI (UK)</strong></a> — ≈¥{voxi.keep?.yearCostCny}/yr with eSIM delivery.</li>}
+</ul></section>
+
+<section class="gd-sec"><h2>Dead ends to skip</h2>
+<p>These are confirmed not viable — included so you do not waste money:</p>
+<ul>
+<li><strong>O2 Classic PAYG (UK)</strong> — closed to new customers in 2024–2026.</li>
+<li><strong>Singtel hi! (Singapore)</strong> — passport registration caps at 30 days.</li>
+<li><strong>Turkish tourist SIMs</strong> — 90-day block for non-residents.</li>
+<li><strong>Orange Holiday (France)</strong> — 7–30 day tourist product, not a retention route.</li>
+</ul>
+<p>Evidence for each is on its route page, linked from the <a href={`${GUIDE_BASE}directory/`}>directory avoid-list</a>.</p></section>
+</GuideArticle>

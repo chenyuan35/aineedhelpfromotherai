@@ -1,0 +1,30 @@
+---
+import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
+import { data, brandOf, marketGroups, slugify, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+
+const byMarket = marketGroups();
+const markets = [...byMarket.keys()].sort((a, b) => a.localeCompare(b));
+const canonical = `${PHONE_BASE}market/`;
+const title = `SIM retention by market – ${markets.length} markets – Phone Radar`;
+const desc = `SIM number retention by market: ${markets.length} markets, ${data.routes.length} routes. Pick a market for local routes, keep-alive costs and deadline calculators.`;
+---
+<PhoneLayout title={title} desc={desc} canonical={canonical}>
+<style is:global>
+.mkt-idx{max-width:1000px;padding-bottom:70px}.mkt-idx h1{font-size:clamp(2rem,5vw,3rem);margin:.2em 0}.mkt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:20px}.mkt-card{display:block;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:14px;text-decoration:none;color:inherit}.mkt-card:hover{border-color:var(--ink)}.mkt-card small{display:block;color:var(--muted);margin-top:4px;font-size:.8rem}
+</style>
+<main class="shell mkt-idx">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Markets</span></nav>
+<p class="eyebrow">Phone Radar · Markets</p>
+<h1>SIM retention by market</h1>
+<p class="dir-lead" style="color:var(--muted)">{desc}</p>
+<div class="mkt-grid">
+{markets.map((m) => {
+  const routes = byMarket.get(m)!;
+  const withCost = routes.filter((r: any) => Number.isFinite(r.keep?.yearCostCny)).sort((a: any, b: any) => a.keep.yearCostCny - b.keep.yearCostCny);
+  const cheapest = withCost[0];
+  const cheapestTxt = cheapest ? `from ≈¥${cheapest.keep.yearCostCny}/yr` : 'cost pending';
+  return <a class="mkt-card" href={`${GUIDE_BASE}market/${slugify(m)}/`}><strong>{m}</strong><small>{routes.length} route{routes.length === 1 ? '' : 's'} · {cheapestTxt}</small></a>;
+})}
+</div>
+</main>
+</PhoneLayout>

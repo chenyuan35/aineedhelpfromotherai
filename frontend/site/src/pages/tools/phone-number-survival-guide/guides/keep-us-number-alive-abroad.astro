@@ -1,0 +1,47 @@
+---
+import GuideArticle from '../../../../components/GuideArticle.astro';
+import { routeOf, brandOf, GUIDE_BASE } from '../../../../data/phone.js';
+
+const tello = routeOf('tello-paygo-credit-2026')!;
+const ultra = routeOf('ultra-mobile-paygo-3-2026')!;
+const h2o = routeOf('h2o-paygo-10-90d-2026')!;
+const keepOrig = (r: any) => `${r.keep.currency} ${r.keep.yearCostOriginal}`;
+---
+<GuideArticle slug="keep-us-number-alive-abroad"
+  h1="How to keep a US phone number alive while living abroad"
+  title="How to keep a US phone number alive while living abroad (2026)"
+  desc="Verified US prepaid retention routes: Tello, Ultra Mobile PayGo, H2O — real keep-alive costs, exact intervals, and which one actually works from China."
+  lead="A US number is still the key that unlocks American banking, 2FA and app stores. These are the prepaid routes whose retention rules we have verified against official terms and community evidence — with real annual costs, not marketing claims.">
+
+<section class="gd-sec"><h2>The short answer</h2>
+<p>For most people the best answer in 2026 is <strong><a href={`${GUIDE_BASE}route/${tello.id}/`}>{brandOf(tello)?.name}</a></strong>: {keepOrig(tello)} per year (≈¥{tello.keep.yearCostCny}) on its $5/month plan, with working Wi-Fi Calling so SMS arrives anywhere in the world. If you specifically need the absolute cheapest sticker price and can tolerate more friction, <a href={`${GUIDE_BASE}route/${ultra.id}/`}>{brandOf(ultra)?.name}</a> runs about USD {ultra.keep?.yearCostOriginal}/yr.</p>
+<p>Every route below links to its full evidence page, and every retention window has a <a href={`${GUIDE_BASE}keep-alive/${tello.id}/`}>deadline calculator</a> so you never miss the deadline.</p></section>
+
+<section class="gd-sec"><h2>Option 1 — Tello (recommended for most)</h2>
+<p>Tello is an MVNO on T-Mobile's network with no KYC beyond a real billing profile.</p>
+<ul>
+<li><strong>Keep-alive rule:</strong> {tello.keep?.action || 'See route page'}</li>
+<li><strong>Annual cost:</strong> {keepOrig(tello)}/yr — the $5/month plan (unlimited texts + 100 minutes) is the cheapest durable path; pure pay-as-you-go requires a $20 top-up every 90 days (≈$80/yr), so the plan wins.</li>
+<li><strong>Abroad:</strong> {tello.chinaActivation || 'Wi-Fi Calling works internationally; enable it while on Wi-Fi.'}</li>
+<li><strong>Window:</strong> every {tello.keep?.intervalDays} days (monthly plan renews automatically — effectively zero maintenance).</li>
+</ul>
+<p>Full evidence and acquisition steps: <a href={`${GUIDE_BASE}route/${tello.id}/`}>{brandOf(tello)?.name} route page</a>.</p></section>
+
+<section class="gd-sec"><h2>Option 2 — Ultra Mobile PayGo</h2>
+<p>The famous "$3/month" plan. Officially {keepOrig(ultra)}/yr (≈¥{ultra.keep?.yearCostCny}), 100 minutes + 100 texts + 100MB included monthly.</p>
+<ul>
+<li><strong>Abroad:</strong> {ultra.chinaActivation || ''}</li>
+<li><strong>Caveat:</strong> PayGo cannot be converted to other Ultra plans, and roaming rates in China are billed per-use ($0.10/SMS received).</li>
+</ul>
+<p>Full evidence: <a href={`${GUIDE_BASE}route/${ultra.id}/`}>{brandOf(ultra)?.name} route page</a>.</p></section>
+
+<section class="gd-sec"><h2>Option 3 — H2O Wireless pay-as-you-go</h2>
+<p>{h2o.acquisitionSummary || 'AT&T-network MVNO with pay-as-you-go credit.'}</p>
+<p>Retention evidence is still being verified — check the current status on <a href={`${GUIDE_BASE}route/${h2o.id}/`}>the H2O route page</a> before committing.</p></section>
+
+<section class="gd-sec"><h2>Routes to avoid</h2>
+<p>Some US routes look cheap but are dead ends or unverifiable. Anything we could not verify stays out of this guide rather than being guessed. The full <a href={`${GUIDE_BASE}directory/`}>global directory</a> marks every route's evidence status, including the <strong>avoid list</strong>.</p></section>
+
+<section class="gd-sec"><h2>Set it and forget it</h2>
+<p>Whichever route you pick: open the <a href={`${GUIDE_BASE}keep-alive/${tello.id}/`}>deadline calculator</a>, do the first keep-alive action, record the date, and export the .ics reminder. The calculator applies a 15% safety buffer to the official window.</p></section>
+</GuideArticle>

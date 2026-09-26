@@ -1,0 +1,65 @@
+---
+import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
+import { data, brandOf, networkOf, statusLabel, serviceSummary, sourcesOf, eventsOf, money, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+
+export function getStaticPaths() {
+  return data.routes.map((r) => ({ params: { id: r.id } }));
+}
+
+const { id } = Astro.params;
+const r = data.routes.find((x) => x.id === id)!;
+const brand = brandOf(r);
+const network = networkOf(r);
+const market = r.marketName || 'Global';
+const events = eventsOf(r);
+const sources = sourcesOf(r);
+const canonical = `${PHONE_BASE}route/${r.id}/`;
+const status = statusLabel(r);
+const hold = r.publishState === 'observation-hold' || r.publishState === 'observation';
+const keepCost = money(r.keep?.yearCostOriginal, r.keep?.currency || '');
+const startCost = money(r.landedCost?.landedOriginal, r.landedCost?.currency || '');
+const keepInterval = Number.isFinite(r.keep?.intervalDays) ? `${r.keep.intervalDays} days` : 'Not established';
+const name = brand?.name || r.id;
+const desc = r.avoidRoute
+  ? `${name} (${market}) is NOT viable for keeping a number alive — ${(r.holdReason || 'documented unsuitable').slice(0, 140)} Evidence and alternatives. Verified ${r.lastVerifiedAt || data.checkedAt}.`
+  : `${name} (${market}) — SIM number retention: acquisition cost, keep-alive cost and interval, overseas activation, KYC and evidence. Verified ${r.lastVerifiedAt || data.checkedAt}.`;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'WebPage',
+  name: `${name} ${market} number retention guide`, description: desc, url: canonical,
+  dateModified: r.lastVerifiedAt || data.checkedAt,
+  isPartOf: { '@type': 'WebSite', name: 'Phone Radar', url: PHONE_BASE }
+};
+const services = ['OpenAI/Codex', 'Telegram', 'WhatsApp'];
+---
+<PhoneLayout title={`${name} ${market} number retention guide – Phone Radar`} desc={desc} canonical={canonical} ogType="article" jsonLd={[schema]}>
+<style is:global>
+.route-detail{max-width:900px;padding-bottom:70px}.route-detail h1{font-size:clamp(2rem,5vw,3.4rem);margin:.2em 0}.route-lead{font-size:1.05rem;color:var(--muted);max-width:760px}.route-meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px}.route-pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;background:var(--panel);font-size:.76rem;font-weight:800}.route-hold{padding:14px 16px;border:1px solid #d9a441;border-radius:14px;background:#fff8e8;margin:18px 0}.route-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 28px}.route-summary div,.route-section{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px}.route-summary small{display:block;color:var(--muted);text-transform:uppercase;font-size:.68rem;font-weight:850;letter-spacing:.05em}.route-summary strong{display:block;margin-top:5px;font-size:1rem}.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.route-section.wide{grid-column:1/-1}.route-section h2{font-size:1rem;margin:0 0 9px}.route-section p,.route-section li{font-size:.91rem}.route-actions{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.route-actions a{display:inline-flex;min-height:40px;align-items:center;padding:0 13px;border:1px solid var(--line);border-radius:10px;font-weight:800}.route-actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}.route-sources{margin-top:26px}.route-sources a{overflow-wrap:anywhere}@media(max-width:700px){.route-summary,.route-grid{grid-template-columns:1fr}.route-section.wide{grid-column:auto}}
+</style>
+<main class="shell route-detail">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><a href={`${GUIDE_BASE}directory/`}>Directory</a><span>›</span><span>{name}</span></nav>
+<p class="eyebrow">Phone Radar · {market}</p>
+<h1>{name} — {market} number retention</h1>
+<p class="route-lead">{network?.name || ''} · {r.simType || ''} · {r.numberType || ''}. {r.acquisitionSummary || ''}</p>
+<div class="route-meta"><span class="route-pill">{status}</span><span class="route-pill">Last verified {r.lastVerifiedAt || data.checkedAt}</span><span class="route-pill">{sources.length} sources</span>{r.trend && <span class="route-pill">Trend: {r.trend}</span>}</div>
+{r.avoidRoute
+  ? <div class="route-hold" style="border-color:#c0392b;background:#fdecea"><strong>Not viable as a retention route:</strong> {r.holdReason || 'This route is documented as unsuitable for number retention. See evidence below.'}</div>
+  : r.holdReason ? <div class="route-hold"><strong>Note:</strong> {r.holdReason}</div> : null}
+<div class="route-summary"><div><small>Start cost</small><strong>{startCost}</strong></div><div><small>Keep / year</small><strong>{keepCost}</strong></div><div><small>Keep interval</small><strong>{keepInterval}</strong></div></div>
+<div class="route-grid">
+<section class="route-section"><h2>1. What it costs</h2><p>{startCost} landed baseline when established. {r.tariffSummary || ''}</p></section>
+<section class="route-section"><h2>2. Requirements</h2><p>{r.kyc || 'Unknown'} {r.payment || ''}</p></section>
+<section class="route-section wide"><h2>3. Step by step</h2><ol>{(r.guideSteps || []).length ? r.guideSteps.map((x: string) => <li>{x}</li>) : <li>Steps not documented yet.</li>}</ol></section>
+<section class="route-section wide"><h2>4. Activate / use abroad</h2><p>{r.chinaActivation || 'Unknown'}</p></section>
+<section class="route-section"><h2>5. Keep it alive</h2><p>{keepCost} / year when established. {r.keep?.action || 'Unknown'}</p></section>
+<section class="route-section"><h2>6. Wi-Fi Calling / SMS</h2><p>{r.wifiCalling || 'Unknown'} SMS: {r.roamingSms || 'Unknown'}</p></section>
+<section class="route-section"><h2>7. App evidence</h2><ul>{services.map((s) => <li><strong>{s}:</strong> {serviceSummary(r.id, s)}</li>)}</ul></section>
+<section class="route-section"><h2>8. Refund / recovery</h2><p>{r.refund || 'No normalized evidence'}</p></section>
+<section class="route-section wide"><h2>9. Continuity history</h2>{events.length
+  ? <ul>{events.map((e: any) => <li><strong>{e.reportedAt}</strong> — {e.outcome}</li>)}</ul>
+  : <p>{r.holdReason || 'No continuity incident recorded for this route yet.'}</p>}</section>
+</div>
+<div class="route-actions"><a href={`${GUIDE_BASE}directory/`}>← All markets</a>{!hold && r.guideEligible !== false && r.acquireUrl && <a class="primary" href={r.acquireUrl} target="_blank" rel="noopener noreferrer">Acquire / open ↗</a>}</div>
+<section class="route-sources"><h2>Evidence sources</h2><p>Provider-controlled facts and independent operational reports are kept distinct. Unverified items stay marked as pending rather than becoming invented numbers.</p>
+<ul>{sources.map((x: any) => <li><a href={x.url} target="_blank" rel="noopener noreferrer">{x.reportedAt || data.checkedAt} · {x.type}</a></li>)}</ul></section>
+</main>
+</PhoneLayout>

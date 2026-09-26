@@ -1,0 +1,52 @@
+---
+import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
+import { data, brandOf, statusLabel, marketGroups, slugify, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+
+export function getStaticPaths() {
+  const byMarket = marketGroups();
+  return [...byMarket.keys()].map((m) => ({ params: { slug: slugify(m) } }));
+}
+
+const { slug } = Astro.params;
+const byMarket = marketGroups();
+const market = [...byMarket.keys()].find((m) => slugify(m) === slug)!;
+const routes = byMarket.get(market)!;
+
+const withCost = routes.filter((r: any) => Number.isFinite(r.keep?.yearCostCny) && r.publishState !== 'observation-hold').sort((a: any, b: any) => a.keep.yearCostCny - b.keep.yearCostCny);
+const cheapest = withCost[0];
+const readyCount = routes.filter((r: any) => r.publishState !== 'observation-hold' && Number.isFinite(r.keep?.intervalDays)).length;
+const marketCount = byMarket.size;
+
+const canonical = `${PHONE_BASE}market/${slug}/`;
+const title = `${market} SIM retention — keep your number alive – Phone Radar`;
+const desc = cheapest
+  ? `${routes.length} SIM retention routes in ${market}. Cheapest keep-alive: ${brandOf(cheapest)?.name} at ${cheapest.keep.currency} ${cheapest.keep.yearCostOriginal}/yr (≈¥${cheapest.keep.yearCostCny}). Verified ${data.checkedAt}.`
+  : `${routes.length} SIM retention routes in ${market}. Evidence status per route; unverified fields marked pending. Verified ${data.checkedAt}.`;
+const faq = cheapest ? {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: `What is the cheapest way to keep a ${market} phone number active?`, acceptedAnswer: { '@type': 'Answer', text: `${brandOf(cheapest)?.name} — ${cheapest.keep.currency} ${cheapest.keep.yearCostOriginal} per year (≈¥${cheapest.keep.yearCostCny}). Keep-alive action: ${(cheapest.keep?.action || '').slice(0, 200)}` } },
+    { '@type': 'Question', name: `How many SIM retention routes exist in ${market}?`, acceptedAnswer: { '@type': 'Answer', text: `${routes.length} routes tracked; ${readyCount} have an established evidence-backed retention window with a deadline calculator.` } }
+  ]
+} : null;
+---
+<PhoneLayout title={title} desc={desc} canonical={canonical} jsonLd={faq ? [faq] : []}>
+<style is:global>
+.mkt-page{max-width:900px;padding-bottom:70px}.mkt-page h1{font-size:clamp(1.9rem,4.5vw,3rem);margin:.2em 0}.mkt-lead{color:var(--muted);max-width:740px}.mkt-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 26px}.mkt-summary div{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px}.mkt-summary small{display:block;color:var(--muted);text-transform:uppercase;font-size:.68rem;font-weight:850;letter-spacing:.05em}.mkt-summary strong{display:block;margin-top:5px}.mkt-page table{width:100%;border-collapse:collapse;font-size:.9rem}.mkt-page th,.mkt-page td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}.mkt-page th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}@media(max-width:640px){.mkt-summary{grid-template-columns:1fr}}
+</style>
+<main class="shell mkt-page">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><a href={`${GUIDE_BASE}directory/`}>Directory</a><span>›</span><span>{market}</span></nav>
+<p class="eyebrow">Phone Radar · Market</p>
+<h1>{market} SIM retention</h1>
+<p class="mkt-lead">{desc}</p>
+<div class="mkt-summary"><div><small>Routes tracked</small><strong>{routes.length}</strong></div><div><small>With calculator</small><strong>{readyCount}</strong></div><div><small>Cheapest keep-alive</small><strong>{cheapest ? `${brandOf(cheapest)?.name || ''} ≈¥${cheapest.keep.yearCostCny}/yr` : '—'}</strong></div></div>
+<table><thead><tr><th>Route</th><th>Status</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead>
+<tbody>{routes.map((r: any) => {
+  const keep = Number.isFinite(r.keep?.yearCostOriginal) ? `${r.keep.currency} ${r.keep.yearCostOriginal}/yr` : '—';
+  const cny = Number.isFinite(r.keep?.yearCostCny) ? `≈¥${r.keep.yearCostCny}` : '—';
+  const hasCalc = r.publishState !== 'observation-hold' && Number.isFinite(r.keep?.intervalDays) && r.keep?.action;
+  return <tr><td><a href={`${GUIDE_BASE}route/${r.id}/`}><strong>{brandOf(r)?.name || r.id}</strong></a>{hasCalc && <> <a href={`${GUIDE_BASE}keep-alive/${r.id}/`} title="Deadline calculator">⏰</a></>}</td><td>{statusLabel(r)}</td><td>{keep}</td><td>{cny}</td><td>{Number.isFinite(r.keep?.intervalDays) ? r.keep.intervalDays + 'd' : '—'}</td></tr>;
+})}</tbody></table>
+<p style="margin-top:22px"><a class="text-link" href={`${GUIDE_BASE}directory/`}>← All {marketCount} markets</a> · <a class="text-link" href={`${GUIDE_BASE}keep-alive/`}>Keep-Alive Assistant →</a></p>
+</main>
+</PhoneLayout>

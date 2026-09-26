@@ -1,0 +1,32 @@
+---
+import GuideArticle from '../../../../components/GuideArticle.astro';
+import { routeOf, GUIDE_BASE } from '../../../../data/phone.js';
+
+const club = routeOf('clubsim-sms-pack-6hkd-2026');
+const sosim = routeOf('sosim-recharge-ladder-2026');
+---
+<GuideArticle slug="hong-kong-sim-retention-guide"
+  h1="Hong Kong SIM retention guide"
+  title="Hong Kong SIM retention guide: ClubSIM, SoSIM and the HK$6/year route (2026)"
+  desc="Hong Kong prepaid SIMs are the easiest foreign numbers for Chinese speakers to maintain. ClubSIM verified at HK$6/year with 365-day window; SoSIM compared."
+  lead="Hong Kong is the path of least resistance for an overseas-capable number: real-name registration is simple with a mainland ID or passport, eSIMs are available, and keep-alive costs are among the world's lowest. Here is what we verified.">
+
+{club && <section class="gd-sec"><h2>ClubSIM — the HK$6/year answer</h2>
+<p>{club.acquisitionSummary || 'ClubSIM (HKT) prepaid with eSIM option.'}</p>
+<ul>
+<li><strong>Keep-alive:</strong> {club.keep?.action || ''}</li>
+<li><strong>Annual cost:</strong> {club.keep ? `${club.keep.currency} ${club.keep.yearCostOriginal}` : ''}/yr ≈ ¥{club.keep?.yearCostCny} — the cheapest verified route you can realistically acquire as a visitor.</li>
+<li><strong>Window:</strong> {club.keep?.intervalDays} days.</li>
+</ul>
+<p>Evidence and steps: <a href={`${GUIDE_BASE}route/${club.id}/`}>ClubSIM route page</a>. Deadline tool: <a href={`${GUIDE_BASE}keep-alive/${club.id}/`}>deadline calculator</a>.</p></section>}
+
+{sosim && <section class="gd-sec"><h2>SoSIM — the convenience-store alternative</h2>
+<p>{sosim.acquisitionSummary || 'SoSIM (3HK) sold in ParknShop/Watsons.'}</p>
+{sosim.keep?.action
+  ? <p>Retention: {sosim.keep.action}</p>
+  : <p>Retention terms still being verified — see the route page for current status.</p>}
+<p><a href={`${GUIDE_BASE}route/${sosim.id}/`}>SoSIM route page</a></p></section>}
+
+<section class="gd-sec"><h2>Which should you pick?</h2>
+<p>If you want eSIM delivery without visiting Hong Kong, ClubSIM is the default answer. If you are transiting through HK anyway, SoSIM's store availability is convenient. Either way, set the reminder the day you activate — the {club?.keep?.intervalDays || 365}-day window is generous but a lapsed number is gone.</p></section>
+</GuideArticle>

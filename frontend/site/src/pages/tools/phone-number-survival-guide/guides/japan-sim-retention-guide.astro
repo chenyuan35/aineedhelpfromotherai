@@ -1,0 +1,38 @@
+---
+import GuideArticle from '../../../../components/GuideArticle.astro';
+import { routeOf, GUIDE_BASE } from '../../../../data/phone.js';
+
+const povo = routeOf('povo20-zero-base-2026');
+const mobal = routeOf('mobal-japan-voice-2026');
+const iiJ = routeOf('sakura-mobile-voice-2026');
+---
+<GuideArticle slug="japan-sim-retention-guide"
+  h1="Japan SIM retention: what actually works"
+  title="Japan SIM retention: what actually works (2026)"
+  desc="Japan requires residency for most voice SIMs. povo 2.0 needs in-country identity; Mobal works for visitors. Verified options and real costs."
+  lead="Japan is harder than it looks: most real voice SIMs require residency documents, and the cheap data-only eSIMs cannot receive verification SMS. Here is what is actually viable in 2026 — and what to avoid.">
+
+<section class="gd-sec"><h2>The residency wall</h2>
+<p>Japanese law requires identity verification tied to residency (My Number card, residence card or Japanese driver's license) for most voice-capable SIM contracts. Tourists generally cannot buy a standard voice SIM that survives long-term. That is why the two routes below matter.</p></section>
+
+{povo && <section class="gd-sec"><h2>povo 2.0 — if you have Japanese residency</h2>
+<p>{povo.acquisitionSummary || 'KDDI digital brand, all-online.'}</p>
+<ul>
+<li><strong>Keep-alive:</strong> {povo.keep?.action || ''}</li>
+<li><strong>Window:</strong> {povo.keep?.intervalDays} days.</li>
+</ul>
+<p>Full evidence: <a href={`${GUIDE_BASE}route/${povo.id}/`}>povo route page</a>. <strong>Not viable if you lack Japanese ID.</strong></p></section>}
+
+{mobal && <section class="gd-sec"><h2>Mobal — the tourist-accessible answer</h2>
+<p>{mobal.acquisitionSummary || 'Mobal Japan SIM, ships internationally, no residency required.'}</p>
+<p>{mobal.keep?.action ? <>Keep-alive: {mobal.keep.action}</> : null}</p>
+<p><a href={`${GUIDE_BASE}route/${mobal.id}/`}>Mobal route page</a></p></section>}
+
+{iiJ && <section class="gd-sec"><h2>Sakura Mobile — another visitor option</h2>
+<p>{iiJ.acquisitionSummary || 'Sakura Mobile targets foreign visitors and residents.'}</p>
+<p>{iiJ.keep?.action ? <>Keep-alive: {iiJ.keep.action}</> : null}</p>
+<p><a href={`${GUIDE_BASE}route/${iiJ.id}/`}>Sakura Mobile route page</a></p></section>}
+
+<section class="gd-sec"><h2>If Japan does not fit</h2>
+<p>Many people who search for a Japan number actually need "any stable Asian number that receives SMS." Hong Kong's ClubSIM (HK$6/yr) is dramatically easier. See the <a href={`${GUIDE_BASE}guides/hong-kong-sim-retention-guide/`}>Hong Kong guide</a> or the <a href={`${GUIDE_BASE}directory/`}>full directory</a>.</p></section>
+</GuideArticle>

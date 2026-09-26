@@ -1,0 +1,31 @@
+---
+import { jsonLd } from '../data/phone.js';
+
+interface Props {
+  title: string;
+  desc: string;
+  canonical: string;
+  ogType?: string;
+  jsonLd?: object[];
+}
+const { title, desc, canonical, ogType = 'website', jsonLd: schemas = [] } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={desc}><meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href={canonical}>
+<meta property="og:type" content={ogType}><meta property="og:title" content={title}><meta property="og:description" content={desc}><meta property="og:url" content={canonical}>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site.css">
+{schemas.map((s) => <script type="application/ld+json" set:html={jsonLd(s)} />)}
+<script is:inline>(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=saved==='system'?(dark?'dark':'light'):saved}catch{}})();</script>
+<slot name="head" />
+</head>
+<body>
+<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/phone-number-survival-guide/">Phone Radar</a><a href="/tools/phone-number-survival-guide/directory/">Directory</a><a href="/tools/phone-number-survival-guide/guides/">Guides</a><a href="/tools/">All tools</a></nav></div></header>
+<slot />
+<footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Fast decision tools for real user problems.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
+</body>
+</html>

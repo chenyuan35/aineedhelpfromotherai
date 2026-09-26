@@ -1,0 +1,27 @@
+---
+import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
+import { data, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+
+const guides = [
+  { slug: 'keep-us-number-alive-abroad', h1: 'How to keep a US phone number alive while living abroad', desc: 'Verified US prepaid retention routes: Tello, Ultra Mobile PayGo, H2O — real keep-alive costs, exact intervals, and which one actually works from abroad.' },
+  { slug: 'keep-uk-number-alive-abroad', h1: 'How to keep a UK phone number active while abroad', desc: 'VOXI, giffgaff, Lebara, Three and EE UK retention rules verified: 180-day windows, real costs from £0.16/yr, and why O2 Classic PAYG is no longer an option.' },
+  { slug: 'cheapest-sim-receiving-sms-abroad', h1: 'Cheapest SIM cards for receiving SMS & OTP abroad', desc: 'The definitive cost ranking of SIM routes that keep receiving SMS/OTP codes abroad — from ¥0.17/year, every entry verified against official terms or community evidence.' },
+  { slug: 'hong-kong-sim-retention-guide', h1: 'Hong Kong SIM retention guide', desc: 'Hong Kong prepaid SIMs are the easiest foreign numbers to maintain. ClubSIM verified at HK$6/year with 365-day window; SoSIM compared.' },
+  { slug: 'japan-sim-retention-guide', h1: 'Japan SIM retention: what actually works', desc: 'Japan requires residency for most voice SIMs. povo 2.0 needs in-country identity; Mobal works for visitors. Verified options and real costs.' },
+];
+const canonical = `${PHONE_BASE}guides/`;
+const title = 'SIM retention guides – Phone Radar';
+const desc = `Evidence-backed SIM retention guides: ${guides.length} in-depth guides covering the US, UK, Hong Kong, Japan and the global cost ranking.`;
+---
+<PhoneLayout title={title} desc={desc} canonical={canonical}>
+<style is:global>
+.gd-idx{max-width:900px;padding-bottom:70px}.gd-idx h1{font-size:clamp(2rem,5vw,3rem);margin:.2em 0}.gd-grid{display:grid;gap:12px;margin-top:20px}.gd-card{display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px;text-decoration:none;color:inherit}.gd-card:hover{border-color:var(--ink)}.gd-card strong{font-size:1.1rem}.gd-card small{display:block;color:var(--muted);margin-top:6px;font-size:.88rem;line-height:1.5}
+</style>
+<main class="shell gd-idx">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Guides</span></nav>
+<p class="eyebrow">Phone Radar · Guides</p>
+<h1>SIM retention guides</h1>
+<p class="dir-lead" style="color:var(--muted)">{desc}</p>
+<div class="gd-grid">{guides.map((g) => <a class="gd-card" href={`${GUIDE_BASE}guides/${g.slug}/`}><strong>{g.h1}</strong><small>{g.desc}</small></a>)}</div>
+</main>
+</PhoneLayout>

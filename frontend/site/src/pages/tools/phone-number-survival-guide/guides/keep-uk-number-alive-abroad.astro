@@ -1,0 +1,39 @@
+---
+import GuideArticle from '../../../../components/GuideArticle.astro';
+import { routeOf, GUIDE_BASE } from '../../../../data/phone.js';
+
+const voxi = routeOf('voxi-uk-esim-payg-retention')!;
+const giff = routeOf('giffgaff-uk-direct-esim-payg')!;
+const leb = routeOf('lebara-uk-direct-esim-china')!;
+const three = routeOf('three-uk-payg-180d-2026')!;
+const ee = routeOf('ee-uk-payg-180d-2026');
+---
+<GuideArticle slug="keep-uk-number-alive-abroad"
+  h1="How to keep a UK phone number active while abroad"
+  title="How to keep a UK phone number active while abroad (2026)"
+  desc="VOXI, giffgaff, Lebara, Three and EE UK retention rules verified: 180-day windows, real costs from £0.16/yr, and why O2 Classic PAYG is no longer an option."
+  lead="UK prepaid SIMs are among the cheapest in the world to keep alive — if you pick the right network. We verified each route against official terms and community reports. One important 2026 change: O2 Classic PAYG is closed to new customers.">
+
+<section class="gd-sec"><h2>The short answer</h2>
+<p><strong><a href={`${GUIDE_BASE}route/${voxi.id}/`}>VOXI</a></strong> is the community-verified winner: one 8p roaming SMS per {voxi.keep?.intervalDays} days ≈ £{voxi.keep?.yearCostOriginal}/yr (≈¥{voxi.keep?.yearCostCny}). <strong><a href={`${GUIDE_BASE}route/${giff.id}/`}>giffgaff</a></strong> is the gentlest on boarding friction at ≈¥{giff.keep?.yearCostCny}/yr. <a href={`${GUIDE_BASE}route/${leb.id}/`}>Lebara UK</a> has the shortest window ({leb.keep?.intervalDays} days) but works from China per community reports.</p></section>
+
+<section class="gd-sec"><h2>The three proven routes</h2>
+<ul>
+<li><strong>VOXI</strong> — {voxi.keep?.intervalDays}-day window; a roaming SMS from abroad counts. {voxi.keep?.action || ''}</li>
+<li><strong>giffgaff</strong> — {giff.keep?.intervalDays}-day window; community practice is one small action per window. {giff.keep?.action || ''}</li>
+<li><strong>Lebara UK</strong> — {leb.keep?.intervalDays}-day window; act by day 70–75 per community buffer. {leb.keep?.action || ''}</li>
+</ul>
+<p>Each route page carries the source evidence: <a href={`${GUIDE_BASE}route/${voxi.id}/`}>VOXI</a> · <a href={`${GUIDE_BASE}route/${giff.id}/`}>giffgaff</a> · <a href={`${GUIDE_BASE}route/${leb.id}/`}>Lebara UK</a>.</p></section>
+
+<section class="gd-sec"><h2>The MNO alternatives</h2>
+<p><a href={`${GUIDE_BASE}route/${three.id}/`}>Three UK</a>{ee && <> and <a href={`${GUIDE_BASE}route/${ee.id}/`}>EE</a></>} both allow a {three.keep?.intervalDays}-day window with any chargeable activity. Three's standard PAYG rate is 10p/min, 10p/text; EE hibernates accounts after 180 days of no use.</p></section>
+
+<section class="gd-sec"><h2>What changed in 2026 — O2 Classic PAYG is dead</h2>
+<p>For years "O2 Classic PAYG at 2p per text every 6 months" was the standard advice. <strong>O2 has closed the tariff to new customers</strong> — the official O2 help page states you cannot switch to it unless you already hold it. If you see it recommended in an older guide, that guide is stale. We keep the <a href={`${GUIDE_BASE}route/o2-uk-classic-payg-6mo-2026/`}>O2 Classic PAYG page</a> up as documentation, clearly marked not viable.</p></section>
+
+<section class="gd-sec"><h2>Vodafone UK — currently on hold</h2>
+<p><a href={`${GUIDE_BASE}route/vodafone-uk-zero-esim-2026/`}>Vodafone UK PAYG</a>: no clean durable retention path is established. We show the hold reason instead of inventing a rule.</p></section>
+
+<section class="gd-sec"><h2>Never miss the window</h2>
+<p>Each route has a <a href={`${GUIDE_BASE}keep-alive/${voxi.id}/`}>deadline calculator</a> — record your last keep-alive action and export the calendar reminder. A lapsed UK number is usually unrecoverable after the grace period.</p></section>
+</GuideArticle>
