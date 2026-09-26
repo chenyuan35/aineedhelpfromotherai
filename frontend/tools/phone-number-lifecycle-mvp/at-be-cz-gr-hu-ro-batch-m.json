@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0",
+  "market": "at-be-cz-gr-hu-ro",
+  "checkedAt": "2026-09-26",
+  "status": "batch-m-evidence-captured",
+  "notes": "Austria + Belgium + Czech + Greece + Hungary + Romania. Cosmote GR official top-up T&C PDF (2-month validity, 90-day bar, 13-month expiry). Orange RO official recharge ladder (active days by amount + 300-day grace). Others observation-level.",
+  "networks": [
+    { "id": "a1-at", "name": "A1 AT" },
+    { "id": "proximus-be", "name": "Proximus BE" },
+    { "id": "o2-cz", "name": "O2 CZ" },
+    { "id": "cosmote-gr", "name": "Cosmote GR" },
+    { "id": "vodafone-hu", "name": "Vodafone HU" },
+    { "id": "orange-ro", "name": "Orange RO" }
+  ],
+  "brands": [
+    { "id": "a1-bfree", "networkId": "a1-at", "name": "A1 B.free" },
+    { "id": "proximus-paygo", "networkId": "proximus-be", "name": "Proximus Pay&Go+" },
+    { "id": "o2-cz-prepaid", "networkId": "o2-cz", "name": "O2 CZ Prepaid" },
+    { "id": "cosmote-frog", "networkId": "cosmote-gr", "name": "Cosmote / FROG" },
+    { "id": "vodafone-tuti", "networkId": "vodafone-hu", "name": "Vodafone TUTI" },
+    { "id": "orange-prepay-ro", "networkId": "orange-ro", "name": "Orange PrePay RO" }
+  ],
+  "routes": [
+    {
+      "id": "cosmote-frog-13mo-2026",
+      "brandId": "cosmote-frog",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official top-up T&C PDF: top-up valid 2 months; no top-up in 2 months → balance forfeited; 90 days no top-up → traffic barred; connection expires 13 months. Online top-up limits: 1/day max €30, 3/week €60, 5/month €100.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 5, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 5, "landedCny": 39, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 10, "yearCostOriginal": 60, "yearCostCny": 468,
+        "action": "To keep BALANCE: top-up per 2 months. To keep NUMBER: top-up before 13-month expiry; 90-day bar is recoverable by top-up. Conservative keep ≈ €10 per 2-3 months ≈ €60/yr if preserving balance; or single top-up before 13mo if only number matters (~€10/yr).",
+        "intervalDays": 365, "state": "official-confirmed-nuanced"
+      },
+      "chinaActivation": "GR prepaid passport registration; FROG online SIM ordering exists (app activation); abroad 验证中.",
+      "kyc": "Passport registration (GR law).",
+      "payment": "Online top-up with card (limits apply).",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Balance-forfeiture rule (2 months) makes it poor value vs EU peers; number-only keep viable but acquisition local.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.frogmobile.gr/en",
+      "tariffSummary": "2-month balance validity; 90-day bar; 13-month expiry.",
+      "sourceIds": ["official-cosmote-topup-terms-pdf"],
+      "guideSteps": ["Directory card — number-only keep at ~€10/yr."]
+    },
+    {
+      "id": "orange-prepay-ro-ladder-2026",
+      "brandId": "orange-prepay-ro",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official recharge ladder (orange.ro): €1-3 → 15 active days; €5-6 → 30 days; €7-11 → 60 days; higher tiers longer; grace period up to 300 days after active period. After grace expiry, SIM unusable.",
+      "landedCost": {
+        "currency": "EUR", "providerOrCommunityPrice": 5, "mandatoryTopup": null, "shipping": 0, "adapterCostCny": null,
+        "landedOriginal": 5, "landedCny": 39, "fxCheckedAt": "2026-09-26", "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR", "observedActionCost": 7, "yearCostOriginal": 42, "yearCostCny": 328,
+        "action": "€7 recharge → 60 active days + up to 300-day grace. Keep number ≈ 1-2 recharges/yr ≈ €7-14/yr conservative (grace absorbs gaps).",
+        "intervalDays": 180, "state": "official-confirmed"
+      },
+      "chinaActivation": "RO prepaid registration; local acquisition standard.",
+      "kyc": "Registration (RO law).",
+      "payment": "My Orange app card top-up.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Acquisition local; ladder documented but China-use unverified.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.orange.ro/prepay/",
+      "tariffSummary": "€7→60d active + 300d grace.",
+      "sourceIds": ["official-orange-ro-reincarcare-directa-2026-09-26", "official-orange-ro-recupera-numarul"],
+      "guideSteps": ["Directory card."]
+    },
+    {
+      "id": "a1-bfree-at-2026", "brandId": "a1-bfree", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "A1 B.free Wertkarte: no activation costs, no binding (official). Validity/deactivation rule not captured (pages JS-heavy).",
+      "landedCost": { "currency": "EUR", "state": "insufficient-evidence" },
+      "keep": { "currency": "EUR", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "AT prepaid registration since 2019 (photo ID); local standard.",
+      "kyc": "Photo ID registration (AT law).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-a1-bfree-page-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "proximus-paygo-be-2026", "brandId": "proximus-paygo", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Proximus Pay&Go+: free SIM, €15 starter promo (6GB). Official FAQ + 2018 general-terms PDF exist. Current validity window not captured.",
+      "landedCost": { "currency": "EUR", "state": "insufficient-evidence" },
+      "keep": { "currency": "EUR", "action": "Not established (2018 PDF predates current terms).", "state": "insufficient-evidence" },
+      "chinaActivation": "BE prepaid ID registration (2016 law).", "kyc": "ID mandatory (BE).", "payment": "online/card", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Current terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.proximus.be/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-proximus-paygo-faq-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "o2-cz-prepaid-2026", "brandId": "o2-cz-prepaid", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "O2 CZ prepaid general terms (effective 2022-01-01) located; validity specifics not extracted from capture.",
+      "landedCost": { "currency": "CZK", "state": "insufficient-evidence" },
+      "keep": { "currency": "CZK", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "CZ prepaid no registration requirement (CZ has no real-name law) — notable advantage.", "kyc": "None (CZ).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending; no-KYC advantage worth deeper capture.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.o2.cz/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-o2cz-terms-2022"], "guideSteps": ["Directory card — pending."]
+    },
+    {
+      "id": "vodafone-tuti-hu-2026", "brandId": "vodafone-tuti", "publishState": "observation", "numberType": "real-mobile", "simType": "physical + eSIM",
+      "acquisitionSummary": "Vodafone HU TUTI prepaid, 25+ data/voice options. Validity/deactivation rule not captured.",
+      "landedCost": { "currency": "HUF", "state": "insufficient-evidence" },
+      "keep": { "currency": "HUF", "action": "Not established.", "state": "insufficient-evidence" },
+      "chinaActivation": "HU prepaid registration mandatory since 2017 (ID check).", "kyc": "ID mandatory (HU).", "payment": "local", "wifiCalling": "unverified", "roamingSms": "unverified", "refund": "not reconciled", "trend": "watch", "guideEligible": false,
+      "holdReason": "Terms pending.", "lastVerifiedAt": "2026-09-26", "acquireUrl": "https://www.vodafone.hu/",
+      "tariffSummary": "Pending capture.", "sourceIds": ["official-vodafone-hu-payg-page-2026-09-26"], "guideSteps": ["Directory card — pending."]
+    }
+  ]
+}
