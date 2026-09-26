@@ -78,6 +78,10 @@
    "name": "csl (HKT)"
   },
   {
+   "id": "cmhk-hk",
+   "name": "China Mobile Hong Kong"
+  },
+  {
    "id": "telkomsel-id",
    "name": "Telkomsel ID"
   },
@@ -483,6 +487,11 @@
    "id": "clubsim-hk",
    "networkId": "csl-hk",
    "name": "ClubSIM"
+  },
+  {
+   "id": "cmhk-hk-direct",
+   "networkId": "cmhk-hk",
+   "name": "CMHK (China Mobile HK)"
   },
   {
    "id": "telkomsel-simpati",
@@ -1889,6 +1898,51 @@
    "guideSteps": [
     "Buy DIY eSIM online; real-name register.",
     "Recharge HK$100+ yearly to extend validity."
+   ],
+   "marketName": "Hong Kong"
+  },
+  {
+   "id": "cmhk-mysim-hk-2026",
+   "brandId": "cmhk-hk-direct",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "MySIM 4G costs HK$33 (includes 50GB 30-day local package + 5000 local minutes); sold at 7-Eleven, Circle K and CMHK online shop. Real-name registration required (OFCA rule since 2022-03): passport accepted for foreigners.",
+   "landedCost": {
+    "currency": "HKD",
+    "providerOrCommunityPrice": 33,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 33,
+    "landedCny": 30.4,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-and-community"
+   },
+   "keep": {
+    "currency": "HKD",
+    "observedActionCost": 50,
+    "yearCostOriginal": 100,
+    "yearCostCny": 92,
+    "action": "Official MySIM package terms (PDF 2026-04-15): since 2024-12-01, recharging (any top-up) extends SIM validity — other package purchases no longer do. Community wiki rule: recharge >=HK$50 extends validity 180 days from recharge date; <HK$50 extends 30 days. So retention = 2 x HK$50 top-ups per year = HK$100/yr.",
+    "intervalDays": 180,
+    "state": "official-plus-community"
+   },
+   "chinaActivation": "Activation requires inserting SIM on CMHK network in Hong Kong (official guide: activate in HK); mainland-first activation unverified.",
+   "kyc": "Real-name registration mandatory (OFCA since 2022-03-01); passport accepted.",
+   "payment": "Recharge vouchers (HK$30/50/100/200/300) sold in HK stores; online refill via CMHK website/app; Octopus self-service; credit card auto-fill. Overseas card acceptance unverified.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+   "tariffSummary": "MySIM HK$33 starter; HK$50 recharge = +180 days validity = HK$100/yr retention.",
+   "sourceIds": [
+    "cmhk-mysim-hk-official",
+    "cmhk-mysim-hk-community"
    ],
    "marketName": "Hong Kong"
   },
@@ -5959,6 +6013,18 @@
    "url": "https://www.three.com.hk/prepaid/DIY/en/",
    "type": "provider-official",
    "reportedAt": "2026-09-26"
+  },
+  {
+   "id": "cmhk-mysim-hk-official",
+   "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "cmhk-mysim-hk-community",
+   "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
   },
   {
    "id": "official-telkomsel-masaaktif-2024-11",
