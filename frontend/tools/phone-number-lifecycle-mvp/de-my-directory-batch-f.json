@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0",
+  "market": "de-my",
+  "checkedAt": "2026-09-26",
+  "status": "batch-f-evidence-captured",
+  "notes": "Germany + Malaysia. Aldi Talk rules from official activity-window PDF (valid from 2026-01-01). CallYa rules from official Vodafone FAQ quoted by prepaid-deutschland.de (2025-08). Hotlink 365-day pass from official FAQ. Germany requires real-name ID verification (VideoIdent) — acquisition from abroad is hard; documented for completeness.",
+  "networks": [
+    { "id": "vodafone-de", "name": "Vodafone DE" },
+    { "id": "telefonica-de", "name": "Telefónica DE (O2)" },
+    { "id": "maxis-my", "name": "Maxis MY" }
+  ],
+  "brands": [
+    { "id": "vodafone-callya", "networkId": "vodafone-de", "name": "Vodafone CallYa" },
+    { "id": "aldi-talk", "networkId": "telefonica-de", "name": "ALDI TALK" },
+    { "id": "hotlink-my", "networkId": "maxis-my", "name": "Hotlink" }
+  ],
+  "routes": [
+    {
+      "id": "aldi-talk-activity-window-2026",
+      "brandId": "aldi-talk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official activity-window PDF (valid 2026-01-01): credit usable 12 months after activation; each top-up starts a NEW activity window whose length depends on top-up amount (€5 → 4 months; larger amounts longer). After window ends: 2 months passive reachability, then deactivation. Credit refundable on deactivation.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 12.99,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 12.99,
+        "landedCny": 101,
+        "fxCheckedAt": "2026-09-26",
+        "state": "official-starter-price-community-confirmed"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": 15,
+        "yearCostCny": 117,
+        "action": "€5 top-up every 4 months (official ladder) ≈ €15/yr; or larger top-up for longer window. After window lapse, 2-month passive grace before deactivation.",
+        "intervalDays": 120,
+        "state": "official-confirmed"
+      },
+      "chinaActivation": "German prepaid real-name registration (VideoIdent/PostIdent with passport + German address) — activation from China is impractical; acquisition realistically requires Germany presence or a DE-resident helper.",
+      "kyc": "Mandatory German telecom ID verification.",
+      "payment": "Aldi store vouchers (cash) or bank/card online.",
+      "wifiCalling": "Supported on O2 network (device-dependent).",
+      "roamingSms": "Receiving SMS abroad generally works; EU-roaming focused tariff, China receiving unverified — 验证中.",
+      "refund": "Official PDF: remaining credit refundable on deactivation (on request).",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.alditalk.de/",
+      "tariffSummary": "€5/4mo activity window; 12-month initial; 2-month passive grace.",
+      "sourceIds": [
+        "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+      ],
+      "guideSteps": [
+        "Acquire starter pack in Germany (store) with ID registration.",
+        "€5 top-up every ~110 days via app/voucher.",
+        "If window lapses: top up within 2-month passive grace."
+      ]
+    },
+    {
+      "id": "vodafone-callya-90d-2026",
+      "brandId": "vodafone-callya",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official FAQ (quoted 2025-08): CallYa tariff is unlimited-duration BUT unused >90 days → Vodafone MAY terminate; SMS warning first; 4 weeks to object; then blocked (credit refundable). Receiving messages does NOT count as usage — user-initiated action required.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 9.99,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 9.99,
+        "landedCny": 78,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported-starter"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": 20,
+        "yearCostCny": 156,
+        "action": "User-initiated usage or top-up at least every 3 months (Vodafone recommends quarterly top-up, small amounts OK — €5 min). 90-day inactivity → warning SMS → 4-week objection window → block.",
+        "intervalDays": 90,
+        "state": "official-faq-via-specialist-media"
+      },
+      "chinaActivation": "German ID verification (VideoIdent) + German address required — impractical from China.",
+      "kyc": "Mandatory German telecom ID verification.",
+      "payment": "Card/bank/voucher.",
+      "wifiCalling": "Supported (device-dependent).",
+      "roamingSms": "Receiving abroad works; China rates 验证中.",
+      "refund": "Credit refundable after block (official FAQ).",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Strictest major-market window found (90 days) + Germany KYC barrier; document as reference, not recommendation.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.vodafone.de/freikarten/",
+      "tariffSummary": "90-day usage rule with SMS warning + 4-week objection; quarterly top-up recommended.",
+      "sourceIds": [
+        "official-callya-faq-via-prepaid-deutschland-2025-08",
+        "official-vodafone-prepaid-hilfe-2026-09-26"
+      ],
+      "guideSteps": [
+        "Germany presence needed for registration.",
+        "Quarterly €5 top-up or chargeable usage."
+      ]
+    },
+    {
+      "id": "hotlink-pantas-365-pass-2026",
+      "brandId": "hotlink-my",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official FAQ (2026-09-26): Hotlink Pantas 365-day Active Period Passes — 1GB RM2.00, 2GB RM4.00, 5GB RM10.00. Maxis network (MY #1 coverage).",
+      "landedCost": {
+        "currency": "MYR",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 15,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported-starter"
+      },
+      "keep": {
+        "currency": "MYR",
+        "observedActionCost": 2,
+        "yearCostOriginal": 2,
+        "yearCostCny": 3,
+        "action": "Buy RM2 365-day Active Period Pass yearly (official FAQ price). Cheapest documented keep-alive worldwide so far.",
+        "intervalDays": 365,
+        "state": "official-confirmed"
+      },
+      "chinaActivation": "Malaysia prepaid requires passport registration (MCMC rules); eSIM available in Hotlink app — overseas-first activation unverified.",
+      "kyc": "Passport registration mandatory (MY law); foreigner-friendly.",
+      "payment": "App top-up via card; international acceptance 验证中.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.hotlink.com.my/",
+      "tariffSummary": "RM2/yr 365-day active-period pass — current global floor for number retention.",
+      "sourceIds": [
+        "official-hotlink-pantas-passes-faq-2026-09-26"
+      ],
+      "guideSteps": [
+        "Acquire Hotlink prepaid (MY store) + passport registration.",
+        "Buy RM2 365-day pass in app yearly."
+      ]
+    }
+  ]
+}
