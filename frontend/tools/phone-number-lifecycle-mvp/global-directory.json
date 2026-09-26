@@ -1678,12 +1678,12 @@
    },
    "keep": {
     "currency": "MYR",
-    "observedActionCost": 2,
-    "yearCostOriginal": 2,
-    "yearCostCny": 3,
-    "action": "Buy RM2 365-day Active Period Pass yearly (official FAQ price). Cheapest documented keep-alive worldwide so far.",
+    "observedActionCost": 30,
+    "yearCostOriginal": 30,
+    "yearCostCny": 45,
+    "action": "Corrected 2026-09-26: the RM2/365-day figure was a data pass, not number retention. Real keep-alive is ~RM30/yr via validity top-up ladder. Still among the world's cheapest retention routes.",
     "intervalDays": 365,
-    "state": "official-confirmed"
+    "state": "official-policy-verified-2026-09-26"
    },
    "chinaActivation": "Malaysia prepaid requires passport registration (MCMC rules); eSIM available in Hotlink app — overseas-first activation unverified.",
    "kyc": "Passport registration mandatory (MY law); foreigner-friendly.",
@@ -4794,12 +4794,12 @@
    },
    "keep": {
     "currency": "USD",
-    "observedActionCost": 0.01,
-    "yearCostOriginal": 0.06,
-    "yearCostCny": 0.43,
-    "action": "Official policy (help center, since 2017-09-01): if no order is placed within 3 months, PAYG credit expires and service disconnects. Community practice (HowardForums, multi-year): any usage — e.g. send one SMS (~1¢) — every 2-3 months keeps credit and number alive; enforcement historically lax but do not rely on laxity. $20 credit at 1¢/2mo theoretically lasts years.",
-    "intervalDays": 80,
-    "state": "official-policy-plus-community-practice"
+    "observedActionCost": 5,
+    "yearCostOriginal": 60,
+    "yearCostCny": 430,
+    "action": "Official terms (tello.com/terms): PAYG credit expires 90 days after last order and service disconnects. Cheapest durable path is the $5/month plan (unlimited texts + 100 min) = $60/yr; pure PAYG path needs a $20 top-up every 90 days = $80/yr. WiFi Calling works abroad for free SMS/calls. No KYC but billing info must be real.",
+    "intervalDays": 30,
+    "state": "official-policy-verified-2026-09-26"
    },
    "chinaActivation": "eSIM activation generally works via app/website with Wi-Fi; Tello officially supports activation abroad via Wi-Fi Calling setup (community-confirmed route).",
    "kyc": "No ID verification; email + payment method only.",
