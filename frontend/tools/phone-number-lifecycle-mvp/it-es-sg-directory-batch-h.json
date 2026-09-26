@@ -1,160 +1,182 @@
 {
-  "schemaVersion": "1.0",
-  "market": "it-es-sg",
-  "checkedAt": "2026-09-26",
-  "status": "batch-h-evidence-captured",
-  "notes": "Italy + Spain + Singapore. TIM 12+1 month rule from official support page. Movistar 6-month rule from official community KB. Singtel critical finding: passport-registered prepaid SIMs limited to 30-day validity unless re-registered IN PERSON at Singtel shops (IMDA regulation from 2024-07-15) — effectively kills SG as a foreigner keep-alive market.",
-  "networks": [
-    { "id": "tim-it", "name": "TIM Italy" },
-    { "id": "movistar-es", "name": "Movistar ES" },
-    { "id": "singtel-sg", "name": "Singtel" }
-  ],
-  "brands": [
-    { "id": "tim-prepaid", "networkId": "tim-it", "name": "TIM Prepaid" },
-    { "id": "movistar-prepago", "networkId": "movistar-es", "name": "Movistar Prepago" },
-    { "id": "singtel-hi", "networkId": "singtel-sg", "name": "Singtel hi! Prepaid" }
-  ],
-  "routes": [
-    {
-      "id": "tim-prepaid-12mo-2026",
-      "brandId": "tim-prepaid",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Official (tim.it support, 2026-09-26): TIM Card lasts 12 months from activation / last recharge / any commercial event. Deactivation at 13 months (12 + 1 month receive-only). Reactivation possible after expiry.",
-      "landedCost": {
-        "currency": "EUR",
-        "providerOrCommunityPrice": 10,
-        "mandatoryTopup": null,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 10,
-        "landedCny": 78,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported"
-      },
-      "keep": {
-        "currency": "EUR",
-        "observedActionCost": 5,
-        "yearCostOriginal": 5,
-        "yearCostCny": 39,
-        "action": "Any recharge (min €5) resets the 12-month clock (official). 13th month = receive-only, then deactivation; reactivation window exists post-expiry.",
-        "intervalDays": 365,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "Italian prepaid requires ID (passport) registration; typically in-store Italy. Online eSIM + passport flow 验证中.",
-      "kyc": "Passport registration mandatory (IT law).",
-      "payment": "Italian/EU cards; international 验证中.",
-      "wifiCalling": "unverified",
-      "roamingSms": "Receiving abroad works (EU roaming zone free; China receive 验证中).",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": true,
-      "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
-      "tariffSummary": "12-month validity per recharge; €5/yr keep; 13th month receive-only.",
-      "sourceIds": [
-        "official-tim-riattivare-sim-2026-09-26"
-      ],
-      "guideSteps": [
-        "Acquire TIM prepaid in Italy (passport).",
-        "€5 recharge yearly resets clock.",
-        "If expired: reactivation request possible."
-      ]
-    },
-    {
-      "id": "movistar-prepago-6mo-2026",
-      "brandId": "movistar-prepago",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Official community KB: prepaid validity 6 months from activation, renewed with each recharge. Lifecycle: sufficient balance → full service; balance exhausted → receive-only phase.",
-      "landedCost": {
-        "currency": "EUR",
-        "providerOrCommunityPrice": 10,
-        "mandatoryTopup": null,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 10,
-        "landedCny": 78,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported"
-      },
-      "keep": {
-        "currency": "EUR",
-        "observedActionCost": 5,
-        "yearCostOriginal": 10,
-        "yearCostCny": 78,
-        "action": "Recharge (min ~€5) every 6 months renews validity (official KB).",
-        "intervalDays": 180,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "Spanish prepaid passport registration; in-store standard; abroad activation unverified.",
-      "kyc": "Passport mandatory (ES law).",
-      "payment": "EU cards; international 验证中.",
-      "wifiCalling": "unverified",
-      "roamingSms": "EU roaming standard; China receive 验证中.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": true,
-      "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
-      "tariffSummary": "6-month validity per recharge; ~€10/yr keep.",
-      "sourceIds": [
-        "official-movistar-community-saldo-vigencia-2026-09-26"
-      ],
-      "guideSteps": [
-        "Acquire Movistar Prepago in Spain (passport).",
-        "Recharge €5 every ~170 days."
-      ]
-    },
-    {
-      "id": "singtel-hi-prepaid-passport-30d-2026",
-      "brandId": "singtel-hi",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Official FAQ PDF (2024-11-04): per IMDA regulation from 2024-07-15, SIMs registered with a PASSPORT get only 30 days validity; retaining beyond 30 days requires IN-PERSON re-registration at Singtel Shop / Exclusive Retailer / mRemit Lucky Plaza.",
-      "landedCost": {
-        "currency": "SGD",
-        "providerOrCommunityPrice": 12,
-        "mandatoryTopup": null,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 12,
-        "landedCny": 64,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported"
-      },
-      "keep": {
-        "currency": "SGD",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "BLOCKED for overseas users: 30-day passport validity + in-person re-registration requirement makes remote keep-alive impractical.",
-        "intervalDays": 30,
-        "state": "official-confirmed-blocker"
-      },
-      "chinaActivation": "eSIM available but 30-day passport cap applies regardless.",
-      "kyc": "IMDA-mandated registration; passport = 30-day cap; Singpass (SG resident) = full validity.",
-      "payment": "hi!App top-up, cards accepted.",
-      "wifiCalling": "n/a",
-      "roamingSms": "hi!Roam packs exist; moot given 30-day cap.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Regulatory 30-day passport cap + in-person re-registration = not viable for overseas retention. Documented as negative-knowledge to save users wasted effort.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans",
-      "tariffSummary": "Passport-registered SIMs capped at 30 days (IMDA 2024-07-15).",
-      "sourceIds": [
-        "official-singtel-prepaid-faq-pdf-2024-11"
-      ],
-      "guideSteps": [
-        "Do NOT recommend for overseas keep-alive — documented as avoid-route."
-      ]
-    }
-  ]
+ "schemaVersion": "1.0",
+ "market": "it-es-sg",
+ "checkedAt": "2026-09-26",
+ "status": "batch-h-evidence-captured",
+ "notes": "Italy + Spain + Singapore. TIM 12+1 month rule from official support page. Movistar 6-month rule from official community KB. Singtel critical finding: passport-registered prepaid SIMs limited to 30-day validity unless re-registered IN PERSON at Singtel shops (IMDA regulation from 2024-07-15) — effectively kills SG as a foreigner keep-alive market.",
+ "networks": [
+  {
+   "id": "tim-it",
+   "name": "TIM Italy"
+  },
+  {
+   "id": "movistar-es",
+   "name": "Movistar ES"
+  },
+  {
+   "id": "singtel-sg",
+   "name": "Singtel"
+  }
+ ],
+ "brands": [
+  {
+   "id": "tim-prepaid",
+   "networkId": "tim-it",
+   "name": "TIM Prepaid"
+  },
+  {
+   "id": "movistar-prepago",
+   "networkId": "movistar-es",
+   "name": "Movistar Prepago"
+  },
+  {
+   "id": "singtel-hi",
+   "networkId": "singtel-sg",
+   "name": "Singtel hi! Prepaid"
+  }
+ ],
+ "routes": [
+  {
+   "id": "tim-prepaid-12mo-2026",
+   "brandId": "tim-prepaid",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Official (tim.it support, 2026-09-26): TIM Card lasts 12 months from activation / last recharge / any commercial event. Deactivation at 13 months (12 + 1 month receive-only). Reactivation possible after expiry.",
+   "landedCost": {
+    "currency": "EUR",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 78,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported"
+   },
+   "keep": {
+    "currency": "EUR",
+    "observedActionCost": 5,
+    "yearCostOriginal": 5,
+    "yearCostCny": 39,
+    "action": "Any recharge (min €5) resets the 12-month clock (official). 13th month = receive-only, then deactivation; reactivation window exists post-expiry.",
+    "intervalDays": 365,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Italian prepaid requires ID (passport) registration; typically in-store Italy. Online eSIM + passport flow 验证中.",
+   "kyc": "Passport registration mandatory (IT law).",
+   "payment": "Italian/EU cards; international 验证中.",
+   "wifiCalling": "unverified",
+   "roamingSms": "Receiving abroad works (EU roaming zone free; China receive 验证中).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+   "tariffSummary": "12-month validity per recharge; €5/yr keep; 13th month receive-only.",
+   "sourceIds": [
+    "official-tim-riattivare-sim-2026-09-26"
+   ],
+   "guideSteps": [
+    "Acquire TIM prepaid in Italy (passport).",
+    "€5 recharge yearly resets clock.",
+    "If expired: reactivation request possible."
+   ]
+  },
+  {
+   "id": "movistar-prepago-6mo-2026",
+   "brandId": "movistar-prepago",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Official community KB: prepaid validity 6 months from activation, renewed with each recharge. Lifecycle: sufficient balance → full service; balance exhausted → receive-only phase.",
+   "landedCost": {
+    "currency": "EUR",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 78,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported"
+   },
+   "keep": {
+    "currency": "EUR",
+    "observedActionCost": 5,
+    "yearCostOriginal": 10,
+    "yearCostCny": 78,
+    "action": "Recharge (min ~€5) every 6 months renews validity (official KB).",
+    "intervalDays": 180,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Spanish prepaid passport registration; in-store standard; abroad activation unverified.",
+   "kyc": "Passport mandatory (ES law).",
+   "payment": "EU cards; international 验证中.",
+   "wifiCalling": "unverified",
+   "roamingSms": "EU roaming standard; China receive 验证中.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
+   "tariffSummary": "6-month validity per recharge; ~€10/yr keep.",
+   "sourceIds": [
+    "official-movistar-community-saldo-vigencia-2026-09-26"
+   ],
+   "guideSteps": [
+    "Acquire Movistar Prepago in Spain (passport).",
+    "Recharge €5 every ~170 days."
+   ]
+  },
+  {
+   "id": "singtel-hi-prepaid-passport-30d-2026",
+   "brandId": "singtel-hi",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Official FAQ PDF (2024-11-04): per IMDA regulation from 2024-07-15, SIMs registered with a PASSPORT get only 30 days validity; retaining beyond 30 days requires IN-PERSON re-registration at Singtel Shop / Exclusive Retailer / mRemit Lucky Plaza.",
+   "landedCost": {
+    "currency": "SGD",
+    "providerOrCommunityPrice": 12,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 12,
+    "landedCny": 64,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported"
+   },
+   "keep": {
+    "currency": "SGD",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "BLOCKED for overseas users: 30-day passport validity + in-person re-registration requirement makes remote keep-alive impractical.",
+    "intervalDays": 30,
+    "state": "official-confirmed-blocker"
+   },
+   "chinaActivation": "eSIM available but 30-day passport cap applies regardless.",
+   "kyc": "IMDA-mandated registration; passport = 30-day cap; Singpass (SG resident) = full validity.",
+   "payment": "hi!App top-up, cards accepted.",
+   "wifiCalling": "n/a",
+   "roamingSms": "hi!Roam packs exist; moot given 30-day cap.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Regulatory 30-day passport cap + in-person re-registration = not viable for overseas retention. Documented as negative-knowledge to save users wasted effort.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans",
+   "tariffSummary": "Passport-registered SIMs capped at 30 days (IMDA 2024-07-15).",
+   "sourceIds": [
+    "official-singtel-prepaid-faq-pdf-2024-11"
+   ],
+   "guideSteps": [
+    "Do NOT recommend for overseas keep-alive — documented as avoid-route."
+   ],
+   "avoidRoute": true
+  }
+ ]
 }

@@ -15,6 +15,7 @@ const dirBase = 'https://aineedhelpfromotherai.com/tools/phone-number-survival-g
 const money = (value, currency='') => Number.isFinite(value) ? `${currency} ${Number(value).toLocaleString('en-GB',{maximumFractionDigits:2})}` : 'Not established';
 
 function statusLabel(r){
+  if (r.avoidRoute) return 'Avoid — not viable';
   if (r.publishState === 'observation-hold') return 'Observation / hold';
   if (r.publishState === 'candidate') return 'Candidate — evidence captured';
   if (r.publishState === 'observation') return 'Observation — terms pending';
@@ -44,7 +45,9 @@ function routeHtml(r){
   const hold=r.publishState==='observation-hold'||r.publishState==='observation';
   const keepCost=money(r.keep?.yearCostOriginal,r.keep?.currency||'');
   const startCost=money(r.landedCost?.landedOriginal,r.landedCost?.currency||'');
-  const desc=`${brand?.name||r.id} (${market}) — SIM number retention: acquisition cost, keep-alive cost and interval, overseas activation, KYC and evidence. Verified ${r.lastVerifiedAt||data.checkedAt}.`;
+  const desc=r.avoidRoute
+    ? `${brand?.name||r.id} (${market}) is NOT viable for keeping a number alive — ${(r.holdReason||'documented unsuitable').slice(0,140)} Evidence and alternatives. Verified ${r.lastVerifiedAt||data.checkedAt}.`
+    : `${brand?.name||r.id} (${market}) — SIM number retention: acquisition cost, keep-alive cost and interval, overseas activation, KYC and evidence. Verified ${r.lastVerifiedAt||data.checkedAt}.`;
   const schema=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:`${brand?.name||r.id} ${market} number retention guide`,description:desc,url:canonical,dateModified:r.lastVerifiedAt||data.checkedAt,isPartOf:{'@type':'WebSite',name:'Phone Radar',url:'https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/'}}).replace(/</g,'<');
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -59,7 +62,7 @@ function routeHtml(r){
 <main class="shell route-detail"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/phone-number-survival-guide/">Phone Radar</a><span>›</span><a href="/tools/phone-number-survival-guide/directory/">Directory</a><span>›</span><span>${esc(brand?.name||r.id)}</span></nav>
 <p class="eyebrow">Phone Radar · ${esc(market)}</p><h1>${esc(brand?.name||r.id)} — ${esc(market)} number retention</h1><p class="route-lead">${esc(network?.name||'')} · ${esc(r.simType||'')} · ${esc(r.numberType||'')}. ${esc(r.acquisitionSummary||'')}</p>
 <div class="route-meta"><span class="route-pill">${esc(status)}</span><span class="route-pill">Last verified ${esc(r.lastVerifiedAt||data.checkedAt)}</span><span class="route-pill">${sources.length} sources</span>${r.trend?`<span class="route-pill">Trend: ${esc(r.trend)}</span>`:''}</div>
-${r.holdReason?`<div class="route-hold"><strong>Note:</strong> ${esc(r.holdReason)}</div>`:''}
+${r.avoidRoute?`<div class="route-hold" style="border-color:#c0392b;background:#fdecea"><strong>Not viable as a retention route:</strong> ${esc(r.holdReason||'This route is documented as unsuitable for number retention. See evidence below.')}</div>`:r.holdReason?`<div class="route-hold"><strong>Note:</strong> ${esc(r.holdReason)}</div>`:''}
 <div class="route-summary"><div><small>Start cost</small><strong>${esc(startCost)}</strong></div><div><small>Keep / year</small><strong>${esc(keepCost)}</strong></div><div><small>Keep interval</small><strong>${Number.isFinite(r.keep?.intervalDays)?`${r.keep.intervalDays} days`:'Not established'}</strong></div></div>
 <div class="route-grid">
 <section class="route-section"><h2>1. What it costs</h2><p>${esc(startCost)} landed baseline when established. ${esc(r.tariffSummary||'')}</p></section>
@@ -89,6 +92,12 @@ function directoryHtml(){
     .map(r=>({r,brand:data.brands.find(x=>x.id===r.brandId)}))
     .sort((a,b)=>(a.r.keep.yearCostCny??9e9)-(b.r.keep.yearCostCny??9e9));
   const top10=ranked.slice(0,10);
+  const avoidRoutes=data.routes.filter(r=>r.avoidRoute);
+  const avoidRows=avoidRoutes.map(r=>{
+    const brand=data.brands.find(x=>x.id===r.brandId);
+    return `<tr><td><a href="/tools/phone-number-survival-guide/route/${esc(r.id)}/"><strong>${esc(brand?.name||r.id)}</strong></a></td><td>${esc(r.marketName||'')}</td><td style="font-size:.85rem">${esc((r.holdReason||'Not viable').slice(0,180))}${(r.holdReason||'').length>180?'…':''}</td></tr>`;
+  }).join('');
+
   const leaderboardRows=top10.map((x,i)=>{
     const r=x.r;
     return `<tr><td class="rank">#${i+1}</td><td><a href="/tools/phone-number-survival-guide/route/${esc(r.id)}/"><strong>${esc(x.brand?.name||r.id)}</strong></a><small class="mkt">${esc(r.marketName||'')}</small></td><td class="cost">${esc(r.keep.currency)} ${r.keep.yearCostOriginal}</td><td class="cny">≈¥${r.keep.yearCostCny}</td><td>${Number.isFinite(r.keep?.intervalDays)?r.keep.intervalDays+'d':'—'}</td></tr>`;
@@ -137,6 +146,9 @@ tr.hidden,section.hidden{display:none}
 
 <section class="lb"><h2>Cheapest keep-alive routes</h2><p>Ranked by annual keep-alive cost, normalized to CNY. Only routes with an established yearly cost are ranked.</p>
 <table><thead><tr><th>#</th><th>Route</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead><tbody>${leaderboardRows}</tbody></table></section>
+
+<section class="lb" style="border-color:#c0392b"><h2>Not viable for retention — avoid these</h2><p>Routes documented as dead ends for number retention. Included so you do not waste money or time on them.</p>
+<table><thead><tr><th>Route</th><th>Market</th><th>Why not viable</th></tr></thead><tbody>${avoidRows}</tbody></table></section>
 
 <div class="dir-toolbar">
 <input id="dir-q" type="search" placeholder="Search brand, route or market…" aria-label="Search routes">

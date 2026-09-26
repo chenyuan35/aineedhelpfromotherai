@@ -1,254 +1,290 @@
 {
-  "schemaVersion": "1.0",
-  "market": "ca-fr-ch-mx-in",
-  "checkedAt": "2026-09-26",
-  "status": "batch-i-evidence-captured",
-  "notes": "Canada + France + Switzerland + Mexico + India. SpeakOut 365-day voucher via WhistleOut listing + official plans page. Telcel official lifecycle policy (1-60 day active phase by recharge). India TRAI 90-day deactivation norm via telecom media. France/Switzerland observation-level pending deeper capture.",
-  "networks": [
-    { "id": "rogers-ca", "name": "Rogers CA" },
-    { "id": "orange-fr", "name": "Orange FR" },
-    { "id": "sunrise-ch", "name": "Sunrise CH" },
-    { "id": "telcel-mx", "name": "Telcel MX" },
-    { "id": "jio-in", "name": "Jio IN" }
-  ],
-  "brands": [
-    { "id": "speakout-711", "networkId": "rogers-ca", "name": "7-Eleven SpeakOut" },
-    { "id": "orange-mobicarte", "networkId": "orange-fr", "name": "Orange Mobicarte" },
-    { "id": "sunrise-prepaid", "networkId": "sunrise-ch", "name": "Sunrise Prepaid" },
-    { "id": "telcel-amigo", "networkId": "telcel-mx", "name": "Telcel Amigo" },
-    { "id": "jio-prepaid", "networkId": "jio-in", "name": "Jio Prepaid" }
-  ],
-  "routes": [
-    {
-      "id": "speakout-711-365voucher-2026",
-      "brandId": "speakout-711",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "physical",
-      "acquisitionSummary": "Rogers-network MVNO sold at 7-Eleven Canada. WhistleOut listing: $50 top-up = 365 days validity. SpeakOut official FAQ/plans pages JS-blocked in capture; community consensus: vouchers valid 365 days, balance rolls over.",
-      "landedCost": {
-        "currency": "CAD",
-        "providerOrCommunityPrice": 10,
-        "mandatoryTopup": 25,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 35,
-        "landedCny": 184,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported-sim-plus-min-topup"
-      },
-      "keep": {
-        "currency": "CAD",
-        "observedActionCost": 25,
-        "yearCostOriginal": 25,
-        "yearCostCny": 131,
-        "action": "Min $25 voucher per 365 days (voucher validity 365d, community+WhistleOut). ~$25/yr keep.",
-        "intervalDays": 365,
-        "state": "retailer-listing-plus-community"
-      },
-      "chinaActivation": "Physical SIM from Canadian 7-Eleven — requires Canada acquisition; no eSIM. China-first impractical.",
-      "kyc": "No real-name requirement (CA prepaid).",
-      "payment": "In-store vouchers; online top-up needs card.",
-      "wifiCalling": "Not supported (SpeakOut limitation).",
-      "roamingSms": "Receiving SMS abroad generally works on Rogers partner networks — 验证中.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Physical-only + Canada-store acquisition limits audience; keep as reference card.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.speakout7eleven.ca/",
-      "tariffSummary": "$25 voucher/yr; 365-day validity.",
-      "sourceIds": [
-        "retailer-whistleout-speakout-50-365d",
-        "official-speakout-plans-2026-09-26"
-      ],
-      "guideSteps": [
-        "Directory card — acquisition requires Canada presence."
-      ]
-    },
-    {
-      "id": "telcel-amigo-lifecycle-2026",
-      "brandId": "telcel-amigo",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Official lifecycle policy (2024 update): Active phase lasts 1-60 days depending on recharge/package validity. Activation requires $50 recharge or first paid event. Recharge resets validity of accumulated balance.",
-      "landedCost": {
-        "currency": "MXN",
-        "providerOrCommunityPrice": 50,
-        "mandatoryTopup": 50,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 50,
-        "landedCny": 18,
-        "fxCheckedAt": "2026-09-26",
-        "state": "official-activation-50mxn"
-      },
-      "keep": {
-        "currency": "MXN",
-        "observedActionCost": 50,
-        "yearCostOriginal": 300,
-        "yearCostCny": 108,
-        "action": "Recharge $50 every ~60 days (max active-phase window) ≈ $300/yr; validity ladder by recharge amount (official policy).",
-        "intervalDays": 60,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "Mexico SIM purchase local; eSIM available; China-first activation unverified.",
-      "kyc": "Mexico prepaid registration (INE/passport) required since 2024 reforms — 验证中 current enforcement.",
-      "payment": "OXXO/store vouchers; online card.",
-      "wifiCalling": "Supported (device-dependent).",
-      "roamingSms": "Receiving SMS abroad works (community); rates 验证中.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "60-day max window + local acquisition friction; reference card for LatAm coverage.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.telcel.com/personas/amigo",
-      "tariffSummary": "Active phase 1-60 days by recharge; $50 activation.",
-      "sourceIds": [
-        "official-telcel-ciclo-vida-amigo-2024"
-      ],
-      "guideSteps": [
-        "Directory card — local acquisition needed."
-      ]
-    },
-    {
-      "id": "jio-prepaid-90d-trai-2026",
-      "brandId": "jio-prepaid",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "TRAI norm (telecom media 2025-08): prepaid SIMs deactivate after ~90 days without recharge; Jio/Vi deactivate at 90 days, Airtel gives +15-day grace. Jio min smartphone plan Rs.199 (~28-day validity) for activity.",
-      "landedCost": {
-        "currency": "INR",
-        "providerOrCommunityPrice": 0,
-        "mandatoryTopup": 199,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 199,
-        "landedCny": 17,
-        "fxCheckedAt": "2026-09-26",
-        "state": "official-min-plan-199"
-      },
-      "keep": {
-        "currency": "INR",
-        "observedActionCost": 199,
-        "yearCostOriginal": 796,
-        "yearCostCny": 67,
-        "action": "Recharge Rs.199 before 90-day deactivation (TRAI norm) ≈ Rs.796/yr. JioExclusive program lists Rs.199+ plans as activity-qualifying.",
-        "intervalDays": 90,
-        "state": "regulatory-norm-media-confirmed"
-      },
-      "chinaActivation": "BLOCKER: Indian prepaid requires eKYC (Aadhaar for residents; foreigners: passport + local address/reference, in-person). Impractical for remote acquisition.",
-      "kyc": "Mandatory eKYC; foreigners face in-person passport + local reference.",
-      "payment": "Indian payment rails (UPI/cards); international cards rarely accepted.",
-      "wifiCalling": "Supported.",
-      "roamingSms": "International roaming packs needed; receiving abroad without pack 验证中.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "eKYC barrier + 90-day window; India documented as reference for auto-discovery candidate (from phone-discovery signals).",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.jio.com/",
-      "tariffSummary": "TRAI 90-day deactivation norm; Rs.199 min activity recharge.",
-      "sourceIds": [
-        "media-subkuz-trai-90day-2025-08",
-        "official-jio-jioexclusive-active-plans"
-      ],
-      "guideSteps": [
-        "Directory card — India acquisition impractical for overseas users."
-      ]
-    },
-    {
-      "id": "orange-mobicarte-2026",
-      "brandId": "orange-mobicarte",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Orange Holiday (tourist) products have 7-30 day validity — NOT retention products. Mobicarte classic recharge validity tiers pending official capture.",
-      "landedCost": {
-        "currency": "EUR",
-        "providerOrCommunityPrice": null,
-        "mandatoryTopup": null,
-        "shipping": null,
-        "adapterCostCny": null,
-        "landedOriginal": null,
-        "landedCny": null,
-        "fxCheckedAt": null,
-        "state": "insufficient-evidence"
-      },
-      "keep": {
-        "currency": "EUR",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "Not established — Mobicarte retention terms need official capture (orange.fr JS-heavy).",
-        "intervalDays": null,
-        "state": "insufficient-evidence"
-      },
-      "chinaActivation": "France prepaid ID registration (loi renseignement); in-store standard.",
-      "kyc": "ID mandatory (FR law).",
-      "payment": "unverified",
-      "wifiCalling": "unverified",
-      "roamingSms": "unverified",
-      "refund": "not reconciled",
-      "trend": "watch",
-      "guideEligible": false,
-      "holdReason": "Retention terms not yet captured; Orange Holiday confirmed unsuitable (short validity).",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://boutique.orange.fr/",
-      "tariffSummary": "Pending capture.",
-      "sourceIds": [],
-      "guideSteps": [
-        "Directory card — terms pending."
-      ]
-    },
-    {
-      "id": "sunrise-prepaid-2026",
-      "brandId": "sunrise-prepaid",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Sunrise prepaid, top-ups from CHF 10 (official top-up page). Credit validity/deactivation rule not captured in official text — community/wiki suggests 12 months.",
-      "landedCost": {
-        "currency": "CHF",
-        "providerOrCommunityPrice": 20,
-        "mandatoryTopup": null,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 20,
-        "landedCny": 163,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported"
-      },
-      "keep": {
-        "currency": "CHF",
-        "observedActionCost": 10,
-        "yearCostOriginal": 10,
-        "yearCostCny": 82,
-        "action": "Community/wiki: 12-month validity per top-up, min CHF 10 → CHF 10/yr. Needs official confirmation — 验证中.",
-        "intervalDays": 365,
-        "state": "community-wiki-needs-official"
-      },
-      "chinaActivation": "Swiss prepaid ID check (passport); in-store standard; online 验证中.",
-      "kyc": "Passport registration (CH law).",
-      "payment": "Cards accepted online.",
-      "wifiCalling": "unverified",
-      "roamingSms": "Receiving abroad works (community).",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Official validity rule not yet captured.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
-      "tariffSummary": "Top-ups from CHF 10; 12-month validity (pending official confirmation).",
-      "sourceIds": [
-        "official-sunrise-topup-page-2026-09-26",
-        "wiki-prepaid-data-sim-switzerland"
-      ],
-      "guideSteps": [
-        "Directory card — pending official terms."
-      ]
-    }
-  ]
+ "schemaVersion": "1.0",
+ "market": "ca-fr-ch-mx-in",
+ "checkedAt": "2026-09-26",
+ "status": "batch-i-evidence-captured",
+ "notes": "Canada + France + Switzerland + Mexico + India. SpeakOut 365-day voucher via WhistleOut listing + official plans page. Telcel official lifecycle policy (1-60 day active phase by recharge). India TRAI 90-day deactivation norm via telecom media. France/Switzerland observation-level pending deeper capture.",
+ "networks": [
+  {
+   "id": "rogers-ca",
+   "name": "Rogers CA"
+  },
+  {
+   "id": "orange-fr",
+   "name": "Orange FR"
+  },
+  {
+   "id": "sunrise-ch",
+   "name": "Sunrise CH"
+  },
+  {
+   "id": "telcel-mx",
+   "name": "Telcel MX"
+  },
+  {
+   "id": "jio-in",
+   "name": "Jio IN"
+  }
+ ],
+ "brands": [
+  {
+   "id": "speakout-711",
+   "networkId": "rogers-ca",
+   "name": "7-Eleven SpeakOut"
+  },
+  {
+   "id": "orange-mobicarte",
+   "networkId": "orange-fr",
+   "name": "Orange Mobicarte"
+  },
+  {
+   "id": "sunrise-prepaid",
+   "networkId": "sunrise-ch",
+   "name": "Sunrise Prepaid"
+  },
+  {
+   "id": "telcel-amigo",
+   "networkId": "telcel-mx",
+   "name": "Telcel Amigo"
+  },
+  {
+   "id": "jio-prepaid",
+   "networkId": "jio-in",
+   "name": "Jio Prepaid"
+  }
+ ],
+ "routes": [
+  {
+   "id": "speakout-711-365voucher-2026",
+   "brandId": "speakout-711",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "Rogers-network MVNO sold at 7-Eleven Canada. WhistleOut listing: $50 top-up = 365 days validity. SpeakOut official FAQ/plans pages JS-blocked in capture; community consensus: vouchers valid 365 days, balance rolls over.",
+   "landedCost": {
+    "currency": "CAD",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": 25,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 35,
+    "landedCny": 184,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported-sim-plus-min-topup"
+   },
+   "keep": {
+    "currency": "CAD",
+    "observedActionCost": 25,
+    "yearCostOriginal": 25,
+    "yearCostCny": 131,
+    "action": "Min $25 voucher per 365 days (voucher validity 365d, community+WhistleOut). ~$25/yr keep.",
+    "intervalDays": 365,
+    "state": "retailer-listing-plus-community"
+   },
+   "chinaActivation": "Physical SIM from Canadian 7-Eleven — requires Canada acquisition; no eSIM. China-first impractical.",
+   "kyc": "No real-name requirement (CA prepaid).",
+   "payment": "In-store vouchers; online top-up needs card.",
+   "wifiCalling": "Not supported (SpeakOut limitation).",
+   "roamingSms": "Receiving SMS abroad generally works on Rogers partner networks — 验证中.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Physical-only + Canada-store acquisition limits audience; keep as reference card.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.speakout7eleven.ca/",
+   "tariffSummary": "$25 voucher/yr; 365-day validity.",
+   "sourceIds": [
+    "retailer-whistleout-speakout-50-365d",
+    "official-speakout-plans-2026-09-26"
+   ],
+   "guideSteps": [
+    "Directory card — acquisition requires Canada presence."
+   ]
+  },
+  {
+   "id": "telcel-amigo-lifecycle-2026",
+   "brandId": "telcel-amigo",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Official lifecycle policy (2024 update): Active phase lasts 1-60 days depending on recharge/package validity. Activation requires $50 recharge or first paid event. Recharge resets validity of accumulated balance.",
+   "landedCost": {
+    "currency": "MXN",
+    "providerOrCommunityPrice": 50,
+    "mandatoryTopup": 50,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 50,
+    "landedCny": 18,
+    "fxCheckedAt": "2026-09-26",
+    "state": "official-activation-50mxn"
+   },
+   "keep": {
+    "currency": "MXN",
+    "observedActionCost": 50,
+    "yearCostOriginal": 300,
+    "yearCostCny": 108,
+    "action": "Recharge $50 every ~60 days (max active-phase window) ≈ $300/yr; validity ladder by recharge amount (official policy).",
+    "intervalDays": 60,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Mexico SIM purchase local; eSIM available; China-first activation unverified.",
+   "kyc": "Mexico prepaid registration (INE/passport) required since 2024 reforms — 验证中 current enforcement.",
+   "payment": "OXXO/store vouchers; online card.",
+   "wifiCalling": "Supported (device-dependent).",
+   "roamingSms": "Receiving SMS abroad works (community); rates 验证中.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "60-day max window + local acquisition friction; reference card for LatAm coverage.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.telcel.com/personas/amigo",
+   "tariffSummary": "Active phase 1-60 days by recharge; $50 activation.",
+   "sourceIds": [
+    "official-telcel-ciclo-vida-amigo-2024"
+   ],
+   "guideSteps": [
+    "Directory card — local acquisition needed."
+   ]
+  },
+  {
+   "id": "jio-prepaid-90d-trai-2026",
+   "brandId": "jio-prepaid",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "TRAI norm (telecom media 2025-08): prepaid SIMs deactivate after ~90 days without recharge; Jio/Vi deactivate at 90 days, Airtel gives +15-day grace. Jio min smartphone plan Rs.199 (~28-day validity) for activity.",
+   "landedCost": {
+    "currency": "INR",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": 199,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 199,
+    "landedCny": 17,
+    "fxCheckedAt": "2026-09-26",
+    "state": "official-min-plan-199"
+   },
+   "keep": {
+    "currency": "INR",
+    "observedActionCost": 199,
+    "yearCostOriginal": 796,
+    "yearCostCny": 67,
+    "action": "Recharge Rs.199 before 90-day deactivation (TRAI norm) ≈ Rs.796/yr. JioExclusive program lists Rs.199+ plans as activity-qualifying.",
+    "intervalDays": 90,
+    "state": "regulatory-norm-media-confirmed"
+   },
+   "chinaActivation": "BLOCKER: Indian prepaid requires eKYC (Aadhaar for residents; foreigners: passport + local address/reference, in-person). Impractical for remote acquisition.",
+   "kyc": "Mandatory eKYC; foreigners face in-person passport + local reference.",
+   "payment": "Indian payment rails (UPI/cards); international cards rarely accepted.",
+   "wifiCalling": "Supported.",
+   "roamingSms": "International roaming packs needed; receiving abroad without pack 验证中.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "eKYC barrier + 90-day window; India documented as reference for auto-discovery candidate (from phone-discovery signals).",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.jio.com/",
+   "tariffSummary": "TRAI 90-day deactivation norm; Rs.199 min activity recharge.",
+   "sourceIds": [
+    "media-subkuz-trai-90day-2025-08",
+    "official-jio-jioexclusive-active-plans"
+   ],
+   "guideSteps": [
+    "Directory card — India acquisition impractical for overseas users."
+   ]
+  },
+  {
+   "id": "orange-mobicarte-2026",
+   "brandId": "orange-mobicarte",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Orange Holiday (tourist) products have 7-30 day validity — NOT retention products. Mobicarte classic recharge validity tiers pending official capture.",
+   "landedCost": {
+    "currency": "EUR",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": null,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "insufficient-evidence"
+   },
+   "keep": {
+    "currency": "EUR",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Not established — Mobicarte retention terms need official capture (orange.fr JS-heavy).",
+    "intervalDays": null,
+    "state": "insufficient-evidence"
+   },
+   "chinaActivation": "France prepaid ID registration (loi renseignement); in-store standard.",
+   "kyc": "ID mandatory (FR law).",
+   "payment": "unverified",
+   "wifiCalling": "unverified",
+   "roamingSms": "unverified",
+   "refund": "not reconciled",
+   "trend": "watch",
+   "guideEligible": false,
+   "holdReason": "Retention terms not yet captured; Orange Holiday confirmed unsuitable (short validity).",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://boutique.orange.fr/",
+   "tariffSummary": "Pending capture.",
+   "sourceIds": [],
+   "guideSteps": [
+    "Directory card — terms pending."
+   ],
+   "avoidRoute": true
+  },
+  {
+   "id": "sunrise-prepaid-2026",
+   "brandId": "sunrise-prepaid",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Sunrise prepaid, top-ups from CHF 10 (official top-up page). Credit validity/deactivation rule not captured in official text — community/wiki suggests 12 months.",
+   "landedCost": {
+    "currency": "CHF",
+    "providerOrCommunityPrice": 20,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 20,
+    "landedCny": 163,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported"
+   },
+   "keep": {
+    "currency": "CHF",
+    "observedActionCost": 10,
+    "yearCostOriginal": 10,
+    "yearCostCny": 82,
+    "action": "Community/wiki: 12-month validity per top-up, min CHF 10 → CHF 10/yr. Needs official confirmation — 验证中.",
+    "intervalDays": 365,
+    "state": "community-wiki-needs-official"
+   },
+   "chinaActivation": "Swiss prepaid ID check (passport); in-store standard; online 验证中.",
+   "kyc": "Passport registration (CH law).",
+   "payment": "Cards accepted online.",
+   "wifiCalling": "unverified",
+   "roamingSms": "Receiving abroad works (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Official validity rule not yet captured.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+   "tariffSummary": "Top-ups from CHF 10; 12-month validity (pending official confirmation).",
+   "sourceIds": [
+    "official-sunrise-topup-page-2026-09-26",
+    "wiki-prepaid-data-sim-switzerland"
+   ],
+   "guideSteps": [
+    "Directory card — pending official terms."
+   ]
+  }
+ ]
 }

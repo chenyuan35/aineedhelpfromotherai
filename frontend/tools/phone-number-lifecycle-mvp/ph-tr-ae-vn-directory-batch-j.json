@@ -1,208 +1,237 @@
 {
-  "schemaVersion": "1.0",
-  "market": "ph-tr-ae-vn",
-  "checkedAt": "2026-09-26",
-  "status": "batch-j-evidence-captured",
-  "notes": "Philippines + Turkey + UAE + Vietnam. Globe official SIM terms (1-year top-up rule, SIM Registration Act). Turkey: tourist SIM 90-day expiry without residence permit (ikamet) — regulatory blocker for foreigners. Viettel VT Vàng keep-number package documented via VN telecom media.",
-  "networks": [
-    { "id": "globe-ph", "name": "Globe PH" },
-    { "id": "turkcell-tr", "name": "Turkcell TR" },
-    { "id": "du-ae", "name": "du UAE" },
-    { "id": "viettel-vn", "name": "Viettel VN" }
-  ],
-  "brands": [
-    { "id": "globe-prepaid", "networkId": "globe-ph", "name": "Globe Prepaid" },
-    { "id": "turkcell-tourist", "networkId": "turkcell-tr", "name": "Turkcell Tourist SIM" },
-    { "id": "du-prepaid", "networkId": "du-ae", "name": "du Prepaid" },
-    { "id": "viettel-prepaid", "networkId": "viettel-vn", "name": "Viettel Prepaid" }
-  ],
-  "routes": [
-    {
-      "id": "globe-prepaid-1yr-2026",
-      "brandId": "globe-prepaid",
-      "publishState": "candidate",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Official SIM terms (2026-09-26): SIM permanently disconnected if no regular load top-up activity for ONE (1) YEAR. Since 2018-07-05 all Globe prepaid load carries 1-year validity (media-confirmed, DTI directive). Zero-rated/emergency activity does NOT count as valid activity.",
-      "landedCost": {
-        "currency": "PHP",
-        "providerOrCommunityPrice": 40,
-        "mandatoryTopup": null,
-        "shipping": 0,
-        "adapterCostCny": null,
-        "landedOriginal": 40,
-        "landedCny": 5,
-        "fxCheckedAt": "2026-09-26",
-        "state": "community-reported-sim-price"
-      },
-      "keep": {
-        "currency": "PHP",
-        "observedActionCost": 10,
-        "yearCostOriginal": 10,
-        "yearCostCny": 1.3,
-        "action": "Any load top-up (min ~₱10) per 365 days keeps SIM active (official 1-year rule). ₱10/yr ≈ ¥1.3 — among global cheapest.",
-        "intervalDays": 365,
-        "state": "official-confirmed"
-      },
-      "chinaActivation": "PH SIM Registration Act (2022) requires registration with valid ID (passport OK for foreigners); online registration available — but SIM acquisition typically local. eSIM via GlobeOne app 验证中.",
-      "kyc": "SIM Registration Act mandatory; passport accepted for foreign nationals.",
-      "payment": "GCash/local rails; international card top-up 验证中.",
-      "wifiCalling": "Supported on select devices.",
-      "roamingSms": "Receiving SMS abroad works (community); roaming load needed for outbound.",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Acquisition requires PH presence or proxy; keep as reference + cheap-cost benchmark.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.globe.com.ph/prepaid",
-      "tariffSummary": "1 top-up/year keeps SIM; ₱10 min; 1-year load validity.",
-      "sourceIds": [
-        "official-globe-sim-terms-2026-09-26",
-        "media-rappler-globe-1yr-load-2018"
-      ],
-      "guideSteps": [
-        "Acquire Globe SIM in PH; register with passport.",
-        "₱10 top-up yearly via GlobeOne app."
-      ]
-    },
-    {
-      "id": "turkcell-tourist-90d-blocker-2026",
-      "brandId": "turkcell-tourist",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Turkey regulatory rule: prepaid SIMs registered on foreign passport WITHOUT residence permit (ikamet) expire after 90 days (long-standing rule, community-documented 2021-2026). To keep beyond 90 days, must update registration with ikamet.",
-      "landedCost": {
-        "currency": "TRY",
-        "providerOrCommunityPrice": null,
-        "mandatoryTopup": null,
-        "shipping": null,
-        "adapterCostCny": null,
-        "landedOriginal": null,
-        "landedCny": null,
-        "fxCheckedAt": null,
-        "state": "insufficient-evidence"
-      },
-      "keep": {
-        "currency": "TRY",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "BLOCKED for non-residents: 90-day passport cap without ikamet.",
-        "intervalDays": 90,
-        "state": "regulatory-blocker-community-confirmed"
-      },
-      "chinaActivation": "In-country purchase + passport registration.",
-      "kyc": "Passport (90-day cap) or ikamet (unlimited).",
-      "payment": "n/a given blocker",
-      "wifiCalling": "n/a",
-      "roamingSms": "n/a given blocker",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Negative knowledge: Turkey not viable for non-resident retention (90-day passport cap). Document to save user effort.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.turkcell.com.tr/",
-      "tariffSummary": "Tourist SIM: 90 days max without residence permit.",
-      "sourceIds": [
-        "community-turkishliving-turkcell-90d-2021",
-        "media-investment-tr-tourist-sim-90d"
-      ],
-      "guideSteps": [
-        "Avoid-route for overseas retention."
-      ]
-    },
-    {
-      "id": "du-prepaid-ae-2026",
-      "brandId": "du-prepaid",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "du prepaid; app-based management with 90-day free-data recharge incentive (official psim page, partial capture 1144 chars — page JS-heavy). Validity/deactivation rule not captured.",
-      "landedCost": {
-        "currency": "AED",
-        "providerOrCommunityPrice": null,
-        "mandatoryTopup": null,
-        "shipping": null,
-        "adapterCostCny": null,
-        "landedOriginal": null,
-        "landedCny": null,
-        "fxCheckedAt": null,
-        "state": "insufficient-evidence"
-      },
-      "keep": {
-        "currency": "AED",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "Not established — validity terms need capture (JS-blocked).",
-        "intervalDays": null,
-        "state": "insufficient-evidence"
-      },
-      "chinaActivation": "UAE prepaid requires Emirates ID (residents) or passport (tourist SIMs, limited validity); tourist focus suggests short-validity products.",
-      "kyc": "Emirates ID / passport.",
-      "payment": "App/card.",
-      "wifiCalling": "unverified",
-      "roamingSms": "unverified",
-      "refund": "not reconciled",
-      "trend": "watch",
-      "guideEligible": false,
-      "holdReason": "Terms not captured; UAE tourist-SIM focus suggests poor retention fit.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.du.ae/psim",
-      "tariffSummary": "Pending capture.",
-      "sourceIds": [
-        "official-du-psim-partial-2026-09-26"
-      ],
-      "guideSteps": [
-        "Directory card — pending."
-      ]
-    },
-    {
-      "id": "viettel-vtvang-keepnumber-2026",
-      "brandId": "viettel-prepaid",
-      "publishState": "observation",
-      "numberType": "real-mobile",
-      "simType": "physical + eSIM",
-      "acquisitionSummary": "Viettel offers 'VT Vàng' (VT Gold) keep-number package — 1-year number retention product (VN telecom media 2026-10). Vietnam #1 operator.",
-      "landedCost": {
-        "currency": "VND",
-        "providerOrCommunityPrice": null,
-        "mandatoryTopup": null,
-        "shipping": null,
-        "adapterCostCny": null,
-        "landedOriginal": null,
-        "landedCny": null,
-        "fxCheckedAt": null,
-        "state": "insufficient-evidence-price-pending"
-      },
-      "keep": {
-        "currency": "VND",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
-        "yearCostCny": null,
-        "action": "VT Vàng package extends number retention to 1 year (media); exact fee pending capture (page partially extracted).",
-        "intervalDays": 365,
-        "state": "media-reported-fee-pending"
-      },
-      "chinaActivation": "VN prepaid requires registration; foreigner acquisition typically in-country.",
-      "kyc": "VN SIM registration mandatory.",
-      "payment": "local rails",
-      "wifiCalling": "unverified",
-      "roamingSms": "unverified",
-      "refund": "not reconciled",
-      "trend": "stable",
-      "guideEligible": false,
-      "holdReason": "Fee + acquisition terms pending; VN low-priority market for CN users.",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://vietteltelecom.vn/",
-      "tariffSummary": "VT Vàng 1-year keep-number package exists; fee pending.",
-      "sourceIds": [
-        "media-3gviettel-vtvang-2026-10"
-      ],
-      "guideSteps": [
-        "Directory card — pending."
-      ]
-    }
-  ]
+ "schemaVersion": "1.0",
+ "market": "ph-tr-ae-vn",
+ "checkedAt": "2026-09-26",
+ "status": "batch-j-evidence-captured",
+ "notes": "Philippines + Turkey + UAE + Vietnam. Globe official SIM terms (1-year top-up rule, SIM Registration Act). Turkey: tourist SIM 90-day expiry without residence permit (ikamet) — regulatory blocker for foreigners. Viettel VT Vàng keep-number package documented via VN telecom media.",
+ "networks": [
+  {
+   "id": "globe-ph",
+   "name": "Globe PH"
+  },
+  {
+   "id": "turkcell-tr",
+   "name": "Turkcell TR"
+  },
+  {
+   "id": "du-ae",
+   "name": "du UAE"
+  },
+  {
+   "id": "viettel-vn",
+   "name": "Viettel VN"
+  }
+ ],
+ "brands": [
+  {
+   "id": "globe-prepaid",
+   "networkId": "globe-ph",
+   "name": "Globe Prepaid"
+  },
+  {
+   "id": "turkcell-tourist",
+   "networkId": "turkcell-tr",
+   "name": "Turkcell Tourist SIM"
+  },
+  {
+   "id": "du-prepaid",
+   "networkId": "du-ae",
+   "name": "du Prepaid"
+  },
+  {
+   "id": "viettel-prepaid",
+   "networkId": "viettel-vn",
+   "name": "Viettel Prepaid"
+  }
+ ],
+ "routes": [
+  {
+   "id": "globe-prepaid-1yr-2026",
+   "brandId": "globe-prepaid",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Official SIM terms (2026-09-26): SIM permanently disconnected if no regular load top-up activity for ONE (1) YEAR. Since 2018-07-05 all Globe prepaid load carries 1-year validity (media-confirmed, DTI directive). Zero-rated/emergency activity does NOT count as valid activity.",
+   "landedCost": {
+    "currency": "PHP",
+    "providerOrCommunityPrice": 40,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 40,
+    "landedCny": 5,
+    "fxCheckedAt": "2026-09-26",
+    "state": "community-reported-sim-price"
+   },
+   "keep": {
+    "currency": "PHP",
+    "observedActionCost": 10,
+    "yearCostOriginal": 10,
+    "yearCostCny": 1.3,
+    "action": "Any load top-up (min ~₱10) per 365 days keeps SIM active (official 1-year rule). ₱10/yr ≈ ¥1.3 — among global cheapest.",
+    "intervalDays": 365,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "PH SIM Registration Act (2022) requires registration with valid ID (passport OK for foreigners); online registration available — but SIM acquisition typically local. eSIM via GlobeOne app 验证中.",
+   "kyc": "SIM Registration Act mandatory; passport accepted for foreign nationals.",
+   "payment": "GCash/local rails; international card top-up 验证中.",
+   "wifiCalling": "Supported on select devices.",
+   "roamingSms": "Receiving SMS abroad works (community); roaming load needed for outbound.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Acquisition requires PH presence or proxy; keep as reference + cheap-cost benchmark.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.globe.com.ph/prepaid",
+   "tariffSummary": "1 top-up/year keeps SIM; ₱10 min; 1-year load validity.",
+   "sourceIds": [
+    "official-globe-sim-terms-2026-09-26",
+    "media-rappler-globe-1yr-load-2018"
+   ],
+   "guideSteps": [
+    "Acquire Globe SIM in PH; register with passport.",
+    "₱10 top-up yearly via GlobeOne app."
+   ]
+  },
+  {
+   "id": "turkcell-tourist-90d-blocker-2026",
+   "brandId": "turkcell-tourist",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Turkey regulatory rule: prepaid SIMs registered on foreign passport WITHOUT residence permit (ikamet) expire after 90 days (long-standing rule, community-documented 2021-2026). To keep beyond 90 days, must update registration with ikamet.",
+   "landedCost": {
+    "currency": "TRY",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": null,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "insufficient-evidence"
+   },
+   "keep": {
+    "currency": "TRY",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "BLOCKED for non-residents: 90-day passport cap without ikamet.",
+    "intervalDays": 90,
+    "state": "regulatory-blocker-community-confirmed"
+   },
+   "chinaActivation": "In-country purchase + passport registration.",
+   "kyc": "Passport (90-day cap) or ikamet (unlimited).",
+   "payment": "n/a given blocker",
+   "wifiCalling": "n/a",
+   "roamingSms": "n/a given blocker",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Negative knowledge: Turkey not viable for non-resident retention (90-day passport cap). Document to save user effort.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.turkcell.com.tr/",
+   "tariffSummary": "Tourist SIM: 90 days max without residence permit.",
+   "sourceIds": [
+    "community-turkishliving-turkcell-90d-2021",
+    "media-investment-tr-tourist-sim-90d"
+   ],
+   "guideSteps": [
+    "Avoid-route for overseas retention."
+   ],
+   "avoidRoute": true
+  },
+  {
+   "id": "du-prepaid-ae-2026",
+   "brandId": "du-prepaid",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "du prepaid; app-based management with 90-day free-data recharge incentive (official psim page, partial capture 1144 chars — page JS-heavy). Validity/deactivation rule not captured.",
+   "landedCost": {
+    "currency": "AED",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": null,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "insufficient-evidence"
+   },
+   "keep": {
+    "currency": "AED",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Not established — validity terms need capture (JS-blocked).",
+    "intervalDays": null,
+    "state": "insufficient-evidence"
+   },
+   "chinaActivation": "UAE prepaid requires Emirates ID (residents) or passport (tourist SIMs, limited validity); tourist focus suggests short-validity products.",
+   "kyc": "Emirates ID / passport.",
+   "payment": "App/card.",
+   "wifiCalling": "unverified",
+   "roamingSms": "unverified",
+   "refund": "not reconciled",
+   "trend": "watch",
+   "guideEligible": false,
+   "holdReason": "Terms not captured; UAE tourist-SIM focus suggests poor retention fit.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://www.du.ae/psim",
+   "tariffSummary": "Pending capture.",
+   "sourceIds": [
+    "official-du-psim-partial-2026-09-26"
+   ],
+   "guideSteps": [
+    "Directory card — pending."
+   ]
+  },
+  {
+   "id": "viettel-vtvang-keepnumber-2026",
+   "brandId": "viettel-prepaid",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Viettel offers 'VT Vàng' (VT Gold) keep-number package — 1-year number retention product (VN telecom media 2026-10). Vietnam #1 operator.",
+   "landedCost": {
+    "currency": "VND",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": null,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "insufficient-evidence-price-pending"
+   },
+   "keep": {
+    "currency": "VND",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "VT Vàng package extends number retention to 1 year (media); exact fee pending capture (page partially extracted).",
+    "intervalDays": 365,
+    "state": "media-reported-fee-pending"
+   },
+   "chinaActivation": "VN prepaid requires registration; foreigner acquisition typically in-country.",
+   "kyc": "VN SIM registration mandatory.",
+   "payment": "local rails",
+   "wifiCalling": "unverified",
+   "roamingSms": "unverified",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Fee + acquisition terms pending; VN low-priority market for CN users.",
+   "lastVerifiedAt": "2026-09-26",
+   "acquireUrl": "https://vietteltelecom.vn/",
+   "tariffSummary": "VT Vàng 1-year keep-number package exists; fee pending.",
+   "sourceIds": [
+    "media-3gviettel-vtvang-2026-10"
+   ],
+   "guideSteps": [
+    "Directory card — pending."
+   ]
+  }
+ ]
 }

@@ -132,7 +132,8 @@
     "Get O2 Classic PAYG SIM; £10 top-up.",
     "Confirm tariff is Classic (not legacy 321).",
     "Send 1 text every ~170 days."
-   ]
+   ],
+   "avoidRoute": true
   },
   {
    "id": "ee-uk-payg-180d-2026",

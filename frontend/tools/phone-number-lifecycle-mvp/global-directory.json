@@ -920,6 +920,7 @@
     "Do not use fabricated address or identity information to satisfy UK eligibility.",
     "If you need a durable overseas number, compare an actionable pilot route instead."
    ],
+   "avoidRoute": true,
    "marketName": "United Kingdom"
   },
   {
@@ -1510,6 +1511,7 @@
    "guideSteps": [
     "Directory card — terms pending."
    ],
+   "avoidRoute": true,
    "marketName": "France"
   },
   {
@@ -2436,6 +2438,7 @@
    "guideSteps": [
     "Do NOT recommend for overseas keep-alive — documented as avoid-route."
    ],
+   "avoidRoute": true,
    "marketName": "Singapore"
   },
   {
@@ -3929,6 +3932,7 @@
    "guideSteps": [
     "Avoid-route for overseas retention."
    ],
+   "avoidRoute": true,
    "marketName": "Turkey"
   },
   {
@@ -4673,6 +4677,7 @@
     "Confirm tariff is Classic (not legacy 321).",
     "Send 1 text every ~170 days."
    ],
+   "avoidRoute": true,
    "marketName": "United Kingdom"
   },
   {
