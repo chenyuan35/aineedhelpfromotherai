@@ -45,6 +45,7 @@ module.exports = async function handler(req, res) {
       refresh_expires_at: session.refresh_expires_at || null,
       connected_at: session.connected_at || Date.now()
     });
+    if (req.query.download === '1') res.setHeader('Content-Disposition', 'attachment; filename="tiktok_oauth_ticket.json"');
     return sendJson(res, 200, { ok: true, bundle_b64, target: 'VM-12-166-ubuntu', note: 'Encrypted for the production VPS only.' });
   } catch (error) {
     return sendJson(res, errorStatus(error), { ok: false, error: publicError(error) });
