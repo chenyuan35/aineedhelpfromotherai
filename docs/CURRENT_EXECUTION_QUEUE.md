@@ -48,22 +48,34 @@ The underlying user job remains valid: a user-entered real keep-alive action dat
 
 Re-open only after the branch is rebased on current `main`, the obsolete database-expansion file is removed, the interaction is narrowed to evidence-derived or explicitly user-configured logic, user dates require explicit input, calendar semantics follow real actions, and a later eligible production task authorizes a public change.
 
+## JUST COMPLETED — first Kimi/Qwen five-route provenance/admission batch
+
+`docs/PHONE_FIVE_ROUTE_PROVENANCE_ADMISSION_REVIEW_2026-09-26.md` reviewed actual independent discovery/operational evidence plus current first-party verification for Tello PAYG, ClubSIM, Hotlink Pantas, Globe Prepaid and povo 2.0.
+
+- **Tello — ADMIT-BACKSTAGE.** Multiple independent community sources support the route and its overseas-number use case. The frozen `$0.06/year` value is rejected; current PAYG starts at USD 20 / 90 days, and risk-control/account-closure evidence must remain visible.
+- **ClubSIM — ADMIT-BACKSTAGE.** Current first-party terms preserve the 365-day service-pack lifecycle and the current web surface still lists the HKD 6 SMS pack. July 2026 users reported the HKD 6 option missing in-app, so availability remains a live conflict rather than a guaranteed annual-price claim. The NodeSeek/NodeLoc same-author cross-post counts once.
+- **Hotlink Pantas — ADMIT-BACKSTAGE.** Current Hotlink FAQ directly confirms RM30 for the 365-day Active Period Pass. The old RM2/year claim is rejected: RM2 is a 1GB/365-day internet pass and does not keep an inactive SIM active.
+- **Globe Prepaid — HOLD.** Existing lawful-eligibility gate remains unresolved; raw Kimi `PROMOTE` does not supersede canonical evidence.
+- **povo 2.0 — HOLD.** The 180-day topping lifecycle is current, but the SMS-capable voice+data route remains gated by Japanese identity/residency documents; data-only is a separate non-SMS product.
+
+No public Phone route/page changed, and frozen PRs #234–#241 remain unaccepted raw research.
+
 ## NEXT SESSION — one bounded task only
 
-**Task:** review the first Kimi/Qwen provenance-admission batch for **Tello PAYG, ClubSIM, Hotlink Pantas, Globe Prepaid and povo 2.0**. End with one backstage disposition per route: **ADMIT-BACKSTAGE / HOLD / DROP**.
+**Task:** resolve and release **PR #253 — normalized searchable Phone data foundation**.
 
-**Why now:** Kimi is being used as the high-throughput research worker, but its findings are raw `RESEARCH CANDIDATE` evidence until the coordinating session checks provenance and admission quality. The frozen #234–#241 batch must not become accepted data by momentum.
+**Why now:** the five-route audit is complete and three routes are admitted backstage, but the reviewed importer/staging/search foundation that should receive them is still an open PR rather than canonical `main`. Manually copying those routes into the old multi-JSON layout would recreate the maintenance problem the user explicitly asked to eliminate.
 
 **Allowed sequence:**
-1. read Kimi's actual community/forum source URLs and dates for the five routes;
-2. reject official-source-led candidates that lack independent demand/operational evidence, while allowing official pages only to verify provider-controlled facts after discovery;
-3. check duplication/circular reporting, date freshness, user problem, real acquisition/retention/OTP/roaming outcome, and whether each route has a concrete information advantage;
-4. classify each route ADMIT-BACKSTAGE, HOLD or DROP and state the exact re-open trigger for HOLD;
-5. record accepted normalized evidence in durable GitHub facts without merging #234–#241 or changing public Phone production.
+1. fetch current `main` and rebase/update PR #253's branch without touching the dirty production worktree;
+2. rerun the Phone canonical DB, candidate/staging isolation, build and existing Phone release tests;
+3. diagnose the repeated Vercel Preview failure using the correct Vercel project/team context; classify a provider/configuration failure separately from code/build failure;
+4. merge PR #253 only when its release gate is satisfied;
+5. after merge, queue the three admitted routes (Tello / ClubSIM / Hotlink) for importer-based canonical ingestion, preserving their correction/conflict fields.
 
-**Done:** all five routes have explicit provenance-backed backstage dispositions and the queue names the next bounded task.
+**Done:** PR #253 is either merged with a verified merge SHA, or has one explicit external/provider blocker with evidence and no speculative workaround; the queue then names importer-based first-batch ingestion as the next task.
 
-**Stop / do not substitute:** do not use low price from an operator page by itself as admission evidence; do not bulk-merge #234–#241; do not publish new public Phone URLs while the current production instruction remains KEEP.
+**Stop / do not substitute:** do not hand-edit public Phone cards, do not bulk-merge #234–#241, and do not bypass a real frontend/build failure merely because local data tests pass.
 
 ## Backstage packet set — batch-2 fully dispositioned
 
