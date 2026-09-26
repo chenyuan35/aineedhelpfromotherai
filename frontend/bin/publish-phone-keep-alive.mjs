@@ -165,7 +165,7 @@ const pageStyle = `<style>
 @media(max-width:760px){.ka-sel,.ka-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>`;
 
-const header = '<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/phone-number-survival-guide/">Phone Radar</a><a href="/tools/">All tools</a></nav></div></header>';
+const header = '<header class="site-header"><div class="shell nav"><a class="brand" href="/">Everyday Tools</a><nav aria-label="Primary"><a href="/tools/phone-number-survival-guide/">Phone Radar</a><a href="/tools/phone-number-survival-guide/directory/">Directory</a><a href="/tools/phone-number-survival-guide/guides/">Guides</a><a href="/tools/">All tools</a></nav></div></header>';
 const footer = '<footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Fast decision tools for real user problems.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>';
 
 function crumbs(items){

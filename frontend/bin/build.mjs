@@ -57,6 +57,7 @@ for (const dir of ['tools','tiktok-publish','about','contact','privacy','terms',
 execSync('node bin/publish-phone-survival-guide.mjs',{cwd:root,stdio:'inherit'});
 execSync('node bin/publish-phone-keep-alive.mjs',{cwd:root,stdio:'inherit'});
 execSync('node bin/publish-phone-global-directory.mjs',{cwd:root,stdio:'inherit'});
+execSync('node bin/publish-phone-guides.mjs',{cwd:root,stdio:'inherit'});
 
 // Vercel enforces trailing slashes before proxying; request the final relay API path directly.
 const relayRiskPath=join(dist,'tools','relay-exit-risk-checker','index.html');

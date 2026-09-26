@@ -110,7 +110,8 @@ function publishStaticRoutePages(){
   for(const r of data.routes||[]){const out=join(routeRoot,r.id);mkdirSync(out,{recursive:true});writeFileSync(join(out,'index.html'),routeHtml(data,r));}
   const hubPath=join(newDir,'index.html');let hub=readFileSync(hubPath,'utf8');
   const routeLinks=(data.routes||[]).map(r=>{const brand=data.brands.find(x=>x.id===r.brandId);return `<a href="/tools/phone-number-survival-guide/route/${esc(r.id)}/">${esc(brand?.name||r.id)} route guide</a>`}).join('');
-  const staticNav=`<nav class="pr-related pr-static-guides" aria-label="UK route guides">${routeLinks}</nav>`;
+  const extraLinks=`<a href="/tools/phone-number-survival-guide/guides/">Retention guides</a><a href="/tools/phone-number-survival-guide/directory/">Global directory</a><a href="/tools/phone-number-survival-guide/market/">Markets</a><a href="/tools/phone-number-survival-guide/keep-alive/">Keep-Alive Assistant</a>`;
+  const staticNav=`<nav class="pr-related pr-static-guides" aria-label="UK route guides">${extraLinks}${routeLinks}</nav>`;
   if(!hub.includes('class="pr-related pr-static-guides"'))hub=hub.replace('<nav class="pr-related" aria-label="Related tools">',`${staticNav}<nav class="pr-related" aria-label="Related tools">`);
   writeFileSync(hubPath,hub);
   const sitemapPath=join(root,'dist','sitemap.xml');let sitemap=readFileSync(sitemapPath,'utf8');
