@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "smspool-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "smspool-global",
+    "displayName": "SMSPool temporary verification route",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS verification number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.smspool.net/",
+    "sourceIds": [
+      "src-33ac07e70ef6",
+      "src-7f446ed92df8"
+    ]
+  },
+  "market": {
+    "id": "global",
+    "name": "Global / multi-market",
+    "countryCode": null
+  },
+  "network": null,
+  "brand": {
+    "id": "smspool-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "SMSPool"
+  },
+  "metrics": {
+    "routeId": "smspool-temp",
+    "checkedAt": "2026-09-15",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-33ac07e70ef6",
+      "url": "https://www.smspool.net/article/smspool-api-order-view-and-cancel-numbers-9883b6969fad",
+      "type": "marketplace",
+      "label": "SMSPool — API ordering and refund behavior"
+    },
+    {
+      "id": "src-7f446ed92df8",
+      "url": "https://www.smspool.net/",
+      "type": "marketplace",
+      "label": "SMSPool — OTP testing numbers / published price search"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-smspool-temp-capabilities-222487",
+      "routeId": "smspool-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "Requirements depend on the account/payment route; this is not a durable SIM subscription."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "Temporary verification numbers are not a travel roaming product."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-smspool-temp-commercial-2f46fd",
+      "routeId": "smspool-temp",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "marketplace",
+        "purchaseChannel": "SMSPool marketplace",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "USD",
+          "basis": "Dynamic country/service inventory",
+          "setup": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "Price varies by country/service/supplier."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation and rental are separate products."
+          },
+          "tax": {
+            "status": "unknown",
+            "note": "Not modeled."
+          },
+          "shipping": {
+            "status": "not-applicable",
+            "note": "Digital service."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "None assumed."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "dynamic",
+              "note": "Do not turn the cheapest listed activation into an expected successful cost without independent success/refund data."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "One-time activation is not a durable-number plan."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "One-time activation is not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "clear-no-code-conditions",
+            "note": "No-code cancellation/refund rules are documented, but unused deposited balance and other cases have separate conditions."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on deposit/payment method."
+          },
+          "stockEvidence": {
+            "state": "seller-estimate",
+            "note": "Some supplier stock counters are estimates, not guaranteed live inventory."
+          },
+          "support": {
+            "state": "marketplace-support",
+            "note": "Supplier-side failures can still matter."
+          },
+          "numberControl": {
+            "state": "temporary-not-owned",
+            "note": "A one-time activation number is not durable customer ownership."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 3.1,
+            "reviewCount": 401,
+            "last12Months": 38,
+            "invitationContext": "Mixed snapshot. Recent complaints include inaccurate stock and failed numbers; company responses are also visible.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/smspool.net"
+          },
+          "complaintThemes": [
+            "stock accuracy",
+            "failed numbers",
+            "refund disputes"
+          ]
+        },
+        "sources": [
+          {
+            "label": "SMSPool",
+            "url": "https://www.smspool.net/",
+            "type": "seller"
+          },
+          {
+            "label": "Trustpilot snapshot",
+            "url": "https://www.trustpilot.com/review/smspool.net",
+            "type": "independent-review"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "not-comparable",
+          "label": "No stable official benchmark",
+          "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+        },
+        "comparisonGroup": "temp-verification-market"
+      }
+    },
+    {
+      "id": "snap-smspool-temp-frontstage-066df1",
+      "routeId": "smspool-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 10,
+        "shortlist": true,
+        "smsSignal": "Inventory-dependent",
+        "signalLevel": 2,
+        "price": "Live check required",
+        "coverage": "Country + service pools",
+        "numberType": "One-time; rentals separate",
+        "privacyRisk": "High for critical accounts",
+        "availability": "Live inventory",
+        "caveat": "A paid order is still not long-term ownership of the number."
+      }
+    },
+    {
+      "id": "snap-smspool-temp-location-16044f",
+      "routeId": "smspool-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; service/country inventory and pricing are dynamic.",
+        "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+        "sourceUrl": "https://www.smspool.net/"
+      }
+    }
+  ]
+}

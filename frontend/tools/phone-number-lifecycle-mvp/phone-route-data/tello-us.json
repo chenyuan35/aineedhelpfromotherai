@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "tello-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "tello-us",
+    "displayName": "Tello US mobile number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical SIM or eSIM",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://tello.com/",
+    "sourceIds": [
+      "src-494ca2deb59b",
+      "src-573da827b0ea",
+      "src-ed3f565a3e3a",
+      "src-f2d3210589df"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": null,
+  "brand": {
+    "id": "tello-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "Tello"
+  },
+  "metrics": {
+    "routeId": "tello-us",
+    "checkedAt": "2026-09-16",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-494ca2deb59b",
+      "url": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling",
+      "type": "official",
+      "label": "Tello — How can I use Wi-Fi Calling?"
+    },
+    {
+      "id": "src-573da827b0ea",
+      "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+      "type": "official",
+      "label": "Tello — Can I activate Tello while I'm abroad?"
+    },
+    {
+      "id": "src-ed3f565a3e3a",
+      "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+      "type": "official",
+      "label": "Tello — How can I use my device overseas?"
+    },
+    {
+      "id": "src-f2d3210589df",
+      "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+      "type": "official",
+      "label": "Tello — When do autopay & plan renewal occur?"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-tello-us-capabilities-bb2150",
+      "routeId": "tello-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "partial",
+          "label": "US E911 address required for Wi-Fi Calling",
+          "note": "The MVP has not established a universal passport/identity-document requirement, but Tello requires a US emergency E911 address before Wi-Fi Calling can be enabled.",
+          "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+        },
+        "roamingSms": {
+          "state": "supported-after-activation",
+          "label": "SMS abroad after US activation",
+          "note": "After first activation in the US, Tello supports international roaming in 200+ countries/territories and Wi-Fi Calling & Text abroad. Standard roaming requires PAYG credit; the line must have been used in the US before roaming.",
+          "sourceUrl": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas"
+        },
+        "wifiCallingAbroad": {
+          "state": "supported",
+          "label": "Wi-Fi Calling & Text can receive OTPs abroad",
+          "note": "Tello explicitly states that Wi-Fi Calling & Text can receive OTP and verification texts while outside the US after setup.",
+          "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+        }
+      }
+    },
+    {
+      "id": "snap-tello-us-commercial-3a57dd",
+      "routeId": "tello-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Tello direct checkout",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "300-minute / unlimited-text no-data plan",
+          "setup": {
+            "amount": 0,
+            "status": "official",
+            "note": "Broadband Facts lists no one-time purchase fee."
+          },
+          "recurring": {
+            "amount": 5,
+            "periodDays": 30,
+            "status": "official",
+            "note": "Plan is valid for 30 days."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Government taxes vary by location; Cost Recovery can be up to $0.30. Checkout calculates the final amount."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "SIM/eSIM-specific fulfillment cost is not included in this base model."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "Cost windows do not rely on a temporary discount."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 5,
+              "status": "derived-base-only",
+              "note": "Base plan only; excludes tax/surcharges and any SIM fulfillment cost."
+            },
+            "90": {
+              "amount": 15,
+              "status": "derived-base-only",
+              "note": "Three 30-day cycles; excludes tax/surcharges."
+            },
+            "365": {
+              "amount": 65,
+              "status": "derived-base-only",
+              "note": "Thirteen 30-day renewals are needed to cover at least 365 days; excludes tax/surcharges."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "partial",
+            "note": "Plan changes/early renewals are charged immediately and unused service is not partially refunded."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Card-network protections vary by payment method and are not scored here."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "eSIM/SIM availability is not represented as guaranteed stock."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official support channels are published."
+          },
+          "numberControl": {
+            "state": "account-controlled",
+            "note": "Recurring carrier line controlled through the customer's Tello account."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 4.5,
+            "reviewCount": 15385,
+            "last12Months": 2026,
+            "invitationContext": "Company asks customers to review; treat the score as context, not proof of reliability.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/tello.com"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "Tello $5 plan / Broadband Facts",
+            "url": "https://tello.com/buy/custom_plans?plan=0-300",
+            "type": "official"
+          },
+          {
+            "label": "Tello activation abroad rule",
+            "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-tello-us-frontstage-e2bd80",
+      "routeId": "tello-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 30,
+        "shortlist": true,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "≈ $61/yr + tax",
+        "setup": "Some work",
+        "remote": "US cellular activation required",
+        "stability": "Stable",
+        "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection.",
+        "kyc": "US E911 address for Wi-Fi Calling",
+        "roaming": "supported after US activation",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + route reports",
+        "price": "$5 / 30 days + tax",
+        "keepRule": "Renew paid plan / 30 days"
+      }
+    },
+    {
+      "id": "snap-tello-us-location-3de2f9",
+      "routeId": "tello-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "required-country",
+        "hardBlock": true,
+        "requiredLocations": [
+          "United States"
+        ],
+        "summary": "Initial activation or port-in must be completed while physically in the United States and connected to a US cellular tower.",
+        "outsideHomeNote": "If you are outside the United States now, do not buy this as an immediate activation route unless you can first activate it in the US.",
+        "sourceUrl": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad"
+      }
+    },
+    {
+      "id": "snap-tello-us-retention-0b9142",
+      "routeId": "tello-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "This monthly-plan route is payment/service based, not usage based. A plan lasts 30 days. If the monthly plan ends and is not renewed, the number has a 12-day grace period before expiration.",
+        "clock_start_or_reset": "A plan purchase or successful renewal starts a new 30-day billing cycle. The 12-day number grace period starts after the monthly service stops.",
+        "qualifying_activity": [
+          "Successful automatic plan renewal.",
+          "Manual plan renewal or purchase of a new plan before the number expires.",
+          "Port out during the post-service grace period if leaving Tello."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts, data use or account login do not replace the required paid-plan renewal for this route.",
+          "A failed payment does not count as renewal.",
+          "Tello PAYG has a different 3-month credit-expiry rule and is not the retention model used for this monthly-plan route."
+        ],
+        "lowest_cost_documented_action": "Renew the current documented $5 / 30-day base plan.",
+        "safest_documented_action": "Keep Autopay enabled with a valid payment method and optionally enable Tello’s 48-hour renewal notice; verify the renewal succeeds before the service end date.",
+        "minimum_expected_cost": {
+          "amount": 5,
+          "currency": "USD",
+          "period": "30 days",
+          "basis": "documented base monthly plan",
+          "status": "official-base-only",
+          "note": "Taxes/surcharges can be extra."
+        },
+        "recommended_buffer": {
+          "value": 3,
+          "unit": "days",
+          "basis": "Product-side buffer before the 30-day renewal boundary."
+        },
+        "grace_or_rescue_window": "12 days after an unrenewed monthly plan ends. Buy a new plan or begin port-out before the grace period ends.",
+        "termination_and_recycling": "Tello states there is no recovery after the phone number expires. The cited help page does not state the later recycling timetable.",
+        "sources": [
+          {
+            "label": "Tello — plan renewal timing",
+            "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+            "type": "official"
+          },
+          {
+            "label": "Tello — phone-number expiration and grace period",
+            "url": "https://tello.com/help_center/phone-number/when-will-my-phone-number-expire",
+            "type": "official"
+          },
+          {
+            "label": "Tello — current $5 base plan",
+            "url": "https://tello.com/buy/custom_plans?plan=0-300",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last successful plan renewal or purchase date",
+          "anchor_help": "Use the start date of the current 30-day paid-plan cycle, not the date you opened this tool.",
+          "due_offset": {
+            "value": 30,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 3,
+            "unit": "days"
+          },
+          "summary": "Check Tello plan renewal",
+          "description": "Verify the paid plan renews successfully before the 30-day service boundary. The calendar event is placed 3 days early as a product-side buffer."
+        }
+      }
+    }
+  ]
+}

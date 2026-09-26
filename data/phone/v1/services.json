@@ -1,0 +1,32 @@
+[
+  {
+    "id": "openai",
+    "name": "ChatGPT / OpenAI",
+    "aliases": ["chatgpt", "openai", "codex", "openai codex"],
+    "category": "ai-account"
+  },
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "aliases": ["telegram", "tg"],
+    "category": "messaging"
+  },
+  {
+    "id": "whatsapp",
+    "name": "WhatsApp",
+    "aliases": ["whatsapp", "wa"],
+    "category": "messaging"
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "aliases": ["google", "gmail"],
+    "category": "account"
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic / Claude",
+    "aliases": ["anthropic", "claude", "claude code"],
+    "category": "ai-account"
+  }
+]

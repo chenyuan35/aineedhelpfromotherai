@@ -1,0 +1,86 @@
+[
+  {
+    "id": "5sim-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "5SIM"
+  },
+  {
+    "id": "a1-croatia-hr",
+    "marketId": "hr",
+    "networkId": null,
+    "name": "A1 Croatia"
+  },
+  {
+    "id": "activatex-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "ActivateX"
+  },
+  {
+    "id": "giffgaff-uk",
+    "networkId": "o2-uk",
+    "name": "Giffgaff",
+    "marketId": "gb"
+  },
+  {
+    "id": "h2o-wireless-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "H2O Wireless"
+  },
+  {
+    "id": "lebara-uk",
+    "networkId": "vodafone-uk",
+    "name": "Lebara UK",
+    "marketId": "gb"
+  },
+  {
+    "id": "mobal-japan-jp",
+    "marketId": "jp",
+    "networkId": null,
+    "name": "Mobal Japan"
+  },
+  {
+    "id": "sakura-mobile-jp",
+    "marketId": "jp",
+    "networkId": null,
+    "name": "Sakura Mobile"
+  },
+  {
+    "id": "smspool-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "SMSPool"
+  },
+  {
+    "id": "tello-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "Tello"
+  },
+  {
+    "id": "trip-com-china-mobile-cmlink-cn",
+    "marketId": "cn",
+    "networkId": null,
+    "name": "Trip.com / China Mobile CMLink"
+  },
+  {
+    "id": "ultra-mobile-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "Ultra Mobile PayGo"
+  },
+  {
+    "id": "vodafone-uk-direct",
+    "networkId": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  {
+    "id": "voxi-uk",
+    "networkId": "vodafone-uk",
+    "name": "VOXI",
+    "marketId": "gb"
+  }
+]

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "mobal-japan-data-physical",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "mobal-japan-jp",
+    "displayName": "Mobal Japan Tourist Data SIM (physical)",
+    "family": "data",
+    "numberClass": "data-only",
+    "form": "physical SIM with mobile data only; no phone number, voice, or ordinary SMS",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+    "sourceIds": [
+      "src-8a5a1ea3e316"
+    ]
+  },
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "network": null,
+  "brand": {
+    "id": "mobal-japan-jp",
+    "marketId": "jp",
+    "networkId": null,
+    "name": "Mobal Japan"
+  },
+  "metrics": {
+    "routeId": "mobal-japan-data-physical",
+    "checkedAt": "2026-09-15",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-8a5a1ea3e316",
+      "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "official",
+      "label": "Mobal Japan — Voice+Data pricing and Japanese phone number"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-mobal-japan-data-physical-commercial-6a2373",
+      "routeId": "mobal-japan-data-physical",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Mobal Japan direct website / Japan pickup",
+        "purchaseEvidenceConfidence": "high",
+        "comparisonGroup": "japan-travel-data-physical",
+        "price": {
+          "currency": "JPY",
+          "basis": "Mobal Japan tourist physical data SIM; 50GB / 31 days baseline",
+          "setup": {
+            "amount": 7920,
+            "status": "official-current",
+            "note": "Current 50GB / 31 days tourist data-only SIM price."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time tourist package."
+          },
+          "tax": {
+            "status": "included-where-listed",
+            "note": "Use final official checkout as authority."
+          },
+          "shipping": {
+            "status": "included-observed",
+            "note": "Official page currently advertises free Japan pickup or free worldwide delivery; recheck destination eligibility."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "No temporary promotion used in this baseline."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 7920,
+              "status": "official-current",
+              "note": "31-day 50GB data-only physical SIM; no phone number."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "This seed route is a short-stay tourist package."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "unverified",
+            "note": "Exact tourist-SIM cancellation/refund trigger is not yet structured; recheck current terms before paying."
+          },
+          "paymentProtection": {
+            "state": "official-checkout",
+            "note": "Purchased from Mobal’s official channel; payment-method protections still vary."
+          },
+          "stockEvidence": {
+            "state": "listed-in-stock",
+            "note": "Official product page currently marks the product in stock; this is a snapshot, not a guarantee."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Mobal publishes customer support channels."
+          },
+          "numberControl": {
+            "state": "data-only-no-number",
+            "note": "No phone number is provided."
+          },
+          "independentReview": {
+            "note": "No independent-review score is used for this route in the MVP."
+          },
+          "complaintThemes": []
+        },
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This uses Mobal’s current direct price. Compare any reseller quote against the same data allowance and validity before deciding it is cheaper."
+        },
+        "sources": [
+          {
+            "label": "Mobal — Japan tourist data SIM prices",
+            "url": "https://www.mobal.com/japan-sim-card/",
+            "type": "official"
+          }
+        ]
+      }
+    },
+    {
+      "id": "snap-mobal-japan-data-physical-frontstage-0a0b83",
+      "routeId": "mobal-japan-data-physical",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "data",
+        "order": 20,
+        "shortlist": true,
+        "dataCost": "¥7,920 / 30 days",
+        "allowance": "Current Japan tourist plan",
+        "coverage": "Japan",
+        "setup": "Low effort",
+        "reuse": "Travel product",
+        "numberIncluded": "Data only",
+        "caveat": "Useful physical-SIM fallback for Japan when eSIM is not suitable."
+      }
+    }
+  ]
+}

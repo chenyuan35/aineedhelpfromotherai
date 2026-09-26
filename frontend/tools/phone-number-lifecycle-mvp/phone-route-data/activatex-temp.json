@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "activatex-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "activatex-global",
+    "displayName": "Temporary SMS activation comparison",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS activation marketplace/comparison route",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://activatex.org/",
+    "sourceIds": [
+      "src-4212005934bd"
+    ]
+  },
+  "market": {
+    "id": "global",
+    "name": "Global / multi-market",
+    "countryCode": null
+  },
+  "network": null,
+  "brand": {
+    "id": "activatex-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "ActivateX"
+  },
+  "metrics": {
+    "routeId": "activatex-temp",
+    "checkedAt": "2026-09-15",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-4212005934bd",
+      "url": "https://activatex.org/",
+      "type": "marketplace",
+      "label": "ActivateX — compare SMS activation prices by service and country"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-activatex-temp-capabilities-aa7a7c",
+      "routeId": "activatex-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "No telecom SIM installation or durable subscriber identity is assumed; account/payment requirements depend on the marketplace."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "This is a temporary remote SMS activation route, not a SIM you carry abroad."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-activatex-temp-frontstage-8c777e",
+      "routeId": "activatex-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 30,
+        "shortlist": true,
+        "smsSignal": "Supplier-dependent",
+        "signalLevel": 2,
+        "price": "Compare live offers · check now",
+        "coverage": "Multiple suppliers",
+        "numberType": "Supplier-dependent",
+        "privacyRisk": "Supplier-dependent",
+        "availability": "Live supplier inventory",
+        "caveat": "Comparison layer: the downstream supplier determines privacy, refund and number reuse."
+      }
+    },
+    {
+      "id": "snap-activatex-temp-location-76b8eb",
+      "routeId": "activatex-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; availability depends on the selected service, number country, supplier route and current stock.",
+        "outsideHomeNote": "Your physical location is not treated as the number's country. Target-service rules and supplier availability still apply.",
+        "sourceUrl": "https://activatex.org/"
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "5sim-temp",
+    "marketId": "global",
+    "networkId": null,
+    "brandId": "5sim-global",
+    "displayName": "5SIM temporary verification route",
+    "family": "temporary",
+    "numberClass": "temporary-activation",
+    "form": "temporary SMS verification number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-15",
+    "acquireUrl": "https://5sim.net/prices",
+    "sourceIds": [
+      "src-3545efe8deb4",
+      "src-6acad0e79070",
+      "src-a19054e9d137"
+    ]
+  },
+  "market": {
+    "id": "global",
+    "name": "Global / multi-market",
+    "countryCode": null
+  },
+  "network": null,
+  "brand": {
+    "id": "5sim-global",
+    "marketId": "global",
+    "networkId": null,
+    "name": "5SIM"
+  },
+  "metrics": {
+    "routeId": "5sim-temp",
+    "checkedAt": "2026-09-15",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-3545efe8deb4",
+      "url": "https://5sim.net/prices",
+      "type": "marketplace",
+      "label": "5SIM — Prices"
+    },
+    {
+      "id": "src-6acad0e79070",
+      "url": "https://5sim.net/docs2/offer.html",
+      "type": "marketplace",
+      "label": "5SIM — Terms / cancellation and non-implementation refund"
+    },
+    {
+      "id": "src-a19054e9d137",
+      "url": "https://5sim.net/support/working-with-api",
+      "type": "marketplace",
+      "label": "5SIM — API support"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-5sim-temp-capabilities-5e981a",
+      "routeId": "5sim-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "Requirements depend on account funding/payment options; the ordinary activation order is not a durable SIM subscription."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "Temporary verification numbers are not a travel roaming product."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-5sim-temp-commercial-ebf304",
+      "routeId": "5sim-temp",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "marketplace",
+        "purchaseChannel": "5SIM marketplace",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "USD",
+          "basis": "Dynamic service/country/operator listing",
+          "setup": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "Observed starting prices vary by target service, country and operator and can change quickly."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation and rental are separate products."
+          },
+          "tax": {
+            "status": "unknown",
+            "note": "Not modeled."
+          },
+          "shipping": {
+            "status": "not-applicable",
+            "note": "Digital service."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "None assumed."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "dynamic",
+              "note": "A low list price is not an expected successful cost. Seller-reported success is not treated as independent evidence."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "conditional",
+            "note": "Refund terms distinguish failure cases; refund applications can take time and fees may apply. It is not presented as automatic or immediate."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on account funding/payment method."
+          },
+          "stockEvidence": {
+            "state": "seller-dynamic",
+            "note": "Inventory is marketplace inventory and may change quickly."
+          },
+          "support": {
+            "state": "marketplace-support",
+            "note": "Marketplace support is not carrier ownership."
+          },
+          "numberControl": {
+            "state": "temporary-not-owned",
+            "note": "Activation numbers are not durable ownership."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 2.2,
+            "reviewCount": 202,
+            "last12Months": 31,
+            "invitationContext": "Snapshot only. Repeated complaints mention reused/blocked numbers, failed codes and refund/support issues.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/5sim.net"
+          },
+          "complaintThemes": [
+            "reused or blocked numbers",
+            "verification failure",
+            "refund/support"
+          ]
+        },
+        "sources": [
+          {
+            "label": "5SIM",
+            "url": "https://5sim.net/",
+            "type": "seller"
+          },
+          {
+            "label": "5SIM terms",
+            "url": "https://5sim.net/terms",
+            "type": "seller-terms"
+          },
+          {
+            "label": "Trustpilot snapshot",
+            "url": "https://www.trustpilot.com/review/5sim.net",
+            "type": "independent-review"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "not-comparable",
+          "label": "No stable official benchmark",
+          "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+        },
+        "comparisonGroup": "temp-verification-market"
+      }
+    },
+    {
+      "id": "snap-5sim-temp-frontstage-84c4dc",
+      "routeId": "5sim-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 20,
+        "shortlist": true,
+        "smsSignal": "Inventory-dependent",
+        "signalLevel": 2,
+        "price": "Live check required",
+        "coverage": "Country + service + operator",
+        "numberType": "One-time; rentals separate",
+        "privacyRisk": "High for critical accounts",
+        "availability": "Live inventory",
+        "caveat": "Useful for one-time jobs; do not build account recovery around ordinary activation orders."
+      }
+    },
+    {
+      "id": "snap-5sim-temp-location-d9c5d1",
+      "routeId": "5sim-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; service/country/operator inventory is dynamic.",
+        "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+        "sourceUrl": "https://5sim.net/prices"
+      }
+    }
+  ]
+}

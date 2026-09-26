@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "h2o-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "h2o-wireless-us",
+    "displayName": "H2O Wireless Pay As You Go US number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "prepaid SIM/eSIM options must be rechecked at purchase",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.h2owireless.com/",
+    "sourceIds": [
+      "src-d5c503ecd237"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": null,
+  "brand": {
+    "id": "h2o-wireless-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "H2O Wireless"
+  },
+  "metrics": {
+    "routeId": "h2o-paygo-us",
+    "checkedAt": "2026-09-16",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-d5c503ecd237",
+      "url": "https://www.h2owireless.com/terms-conditions",
+      "type": "official",
+      "label": "H2O Wireless — Terms and Conditions"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-h2o-paygo-us-capabilities-6b1aff",
+      "routeId": "h2o-paygo-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "The official terms reviewed so far do not give the MVP enough evidence to state a universal passport/ID requirement."
+        },
+        "roamingSms": {
+          "state": "not-supported-on-route",
+          "label": "Do not assume Pay As You Go can roam internationally",
+          "note": "H2O's current terms say International Roaming requires an active Unlimited Talk and Text plan with roaming balance. That does not establish international roaming for this Pay As You Go route.",
+          "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not verified",
+          "note": "No current official evidence has been added to this MVP establishing overseas Wi-Fi SMS/OTP behavior for H2O Pay As You Go."
+        }
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-commercial-cd4c6b",
+      "routeId": "h2o-paygo-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "H2O Wireless direct",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "$10 Pay As You Go refill",
+          "setup": {
+            "amount": 0,
+            "status": "official",
+            "note": "Broadband Facts lists $0 one-time fee for the $10 PayGo plan."
+          },
+          "recurring": {
+            "amount": 10,
+            "periodDays": 90,
+            "status": "official",
+            "note": "$10 refill expires after 90 days."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Government taxes vary; federal and administrative/regulatory fees are also listed."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "SIM/eSIM fulfillment is not included in this refill-only model."
+          },
+          "promotion": {
+            "status": "autopay-available",
+            "note": "Official page shows a 10% AutoPay discount, but cost windows use the undiscounted list refill."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 10,
+              "status": "derived-base-only",
+              "note": "Minimum documented $10 refill covers up to 90 days before usage; excludes taxes/fees."
+            },
+            "90": {
+              "amount": 10,
+              "status": "derived-base-only",
+              "note": "One $10 refill; recharge before expiry if retaining the number."
+            },
+            "365": {
+              "amount": 50,
+              "status": "derived-retention-only",
+              "note": "Five $10/90-day refills span at least 365 days if using this minimum refill route; usage can reduce balance sooner."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "restrictive",
+            "note": "Official terms say refills have no cash redemption value and are nonrefundable, including after cancellation."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Not independently modeled."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "SIM/eSIM stock is not guaranteed by this dataset."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official support is published."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "$0 balance for 30 consecutive days cancels the account and number."
+          },
+          "independentReview": {
+            "state": "not-researched",
+            "note": "No independent review snapshot is used in this MVP record."
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "H2O PayGo pricing",
+            "url": "https://www.h2owireless.com/plan/minute",
+            "type": "official"
+          },
+          {
+            "label": "H2O terms",
+            "url": "https://www.h2owireless.com/terms-conditions",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-frontstage-29a329",
+      "routeId": "h2o-paygo-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 50,
+        "shortlist": true,
+        "smsSignal": "Weak overseas",
+        "signalLevel": 1,
+        "keepCost": "≈ $41/yr*",
+        "setup": "Low",
+        "remote": "activation geography unverified",
+        "stability": "Watch",
+        "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point.",
+        "kyc": "unverified",
+        "roaming": "not established for PayGo",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; overseas SMS gap",
+        "price": "$10 / 90d refill",
+        "keepRule": "Recharge before refill expiry"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-location-f1f9dc",
+      "routeId": "h2o-paygo-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "unknown",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "Initial activation and overseas SMS/roaming behavior are not yet sufficiently verified for an overseas-user recommendation.",
+        "outsideHomeNote": "If you are outside the US, this route remains research-required rather than recommended.",
+        "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-retention-e9f242",
+      "routeId": "h2o-paygo-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "The current $10 and $30 Pay As You Go refills expire after 90 days; the $100 refill expires after 365 days. If account balance remains $0 for 30 consecutive days, the account and phone number are cancelled.",
+        "clock_start_or_reset": "The refill expiration clock starts from the purchased refill/renewal. Recharging before expiration preserves eligibility; the official page says remaining balance rolls over when the same amount is recharged before expiration.",
+        "qualifying_activity": [
+          "Recharge the Pay As You Go plan before its stated expiration date.",
+          "Use AutoPay where offered to renew the selected refill before expiry."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts and data consume balance but are not documented as extending the refill expiration date.",
+          "Account login or incoming service does not replace the refill requirement.",
+          "Do not treat the 30-day $0-balance period as a normal retention strategy."
+        ],
+        "lowest_cost_documented_action": "Renew the $10 / 90-day Pay As You Go refill. The current official plan page shows $9 with AutoPay.",
+        "safest_documented_action": "Recharge the same Pay As You Go amount before its expiration date and verify the balance/plan renewed; keep the account away from a $0 balance.",
+        "minimum_expected_cost": {
+          "amount": 9,
+          "currency": "USD",
+          "period": "90 days",
+          "basis": "current $10 PayGo refill with advertised 10% AutoPay discount",
+          "status": "official-current",
+          "note": "Without AutoPay, the documented refill is $10; taxes/fees may apply."
+        },
+        "recommended_buffer": {
+          "value": 7,
+          "unit": "days",
+          "basis": "Product-side buffer before the selected refill expiration date."
+        },
+        "grace_or_rescue_window": "If the balance is $0, cancellation occurs after 30 consecutive days at $0. Restore funded service before that point.",
+        "termination_and_recycling": "After 30 consecutive days at $0, H2O says the account and phone number are cancelled. The cited terms do not state the exact number-recycling timetable.",
+        "sources": [
+          {
+            "label": "H2O Wireless — Pay As You Go refill prices and expiry",
+            "url": "https://www.h2owireless.com/plan/minute",
+            "type": "official"
+          },
+          {
+            "label": "H2O Wireless — Pay As You Go terms",
+            "url": "https://www.h2owireless.com/terms-conditions",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "manual-deadline",
+          "anchor_label": "Current refill expiration date",
+          "anchor_help": "Enter the expiration date shown for your current PayGo refill. Current $10/$30 refills are 90 days and the $100 refill is 365 days, so using the actual expiration date avoids assuming the wrong refill cycle.",
+          "buffer": {
+            "value": 7,
+            "unit": "days"
+          },
+          "summary": "Recharge H2O PayGo before refill expiry",
+          "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
+        }
+      }
+    }
+  ]
+}

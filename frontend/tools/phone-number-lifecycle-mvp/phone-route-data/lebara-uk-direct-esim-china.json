@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "lebara-uk-direct-esim-china",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "lebara-uk",
+    "displayName": "Lebara UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "public-pilot",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-12",
+    "acquireUrl": "https://mobile.lebara.com/gb/en/",
+    "sourceIds": [
+      "linuxdo-lebara-2745784-op",
+      "linuxdo-lebara-2763577",
+      "linuxdo-lebara-2894665",
+      "src-2948194201a0",
+      "src-337a1e0a1330",
+      "src-aa91ae8faea1"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "lebara-uk",
+    "networkId": "vodafone-uk",
+    "name": "Lebara UK",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "lebara-uk-direct-esim-china",
+    "checkedAt": "2026-09-12",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 6.5,
+    "acquisitionCostCny": 58.05,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": 1.96,
+    "keepYearCostCny": 17.5,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-lebara-uk-direct-esim-china-whatsapp-registration-verification",
+      "routeId": "lebara-uk-direct-esim-china",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "B",
+      "label": "Good",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 2,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-12",
+      "lastObservedAt": "2026-08-13"
+    },
+    {
+      "id": "svcagg-lebara-uk-direct-esim-china-telegram-registration-verification",
+      "routeId": "lebara-uk-direct-esim-china",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "B",
+      "label": "Good",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 2,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-12",
+      "lastObservedAt": "2026-08-13"
+    }
+  ],
+  "sources": [
+    {
+      "id": "linuxdo-lebara-2745784-op",
+      "url": "https://linux.do/t/topic/2745784",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-12"
+    },
+    {
+      "id": "linuxdo-lebara-2763577",
+      "url": "https://linux.do/t/topic/2763577",
+      "type": "community-thread",
+      "reportedAt": "2026-08-16"
+    },
+    {
+      "id": "linuxdo-lebara-2894665",
+      "url": "https://linux.do/t/topic/2894665",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-12"
+    },
+    {
+      "id": "src-2948194201a0",
+      "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+      "type": "official",
+      "label": "Lebara UK — SIM inactivity and expiry"
+    },
+    {
+      "id": "src-337a1e0a1330",
+      "url": "https://www.lebara.co.uk/en/free-sim.html",
+      "type": "official",
+      "label": "Lebara UK — free PAYG SIM"
+    },
+    {
+      "id": "src-aa91ae8faea1",
+      "url": "https://www.lebara.co.uk/en/help/esim.html",
+      "type": "official",
+      "label": "Lebara UK — eSIM help and UK activation requirement"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-telegram"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-telegram"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "outgoing-service-friction",
+      "reportedAt": "2026-08-12",
+      "scope": "multiple-same-thread-observations",
+      "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
+      "sourceId": "linuxdo-lebara-2745784-op"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "partial",
+          "label": "No universal passport rule established; eSIM account/email required",
+          "note": "Official pages reviewed do not establish a universal passport/identity-document requirement for PAYG. Lebara does require an account and valid verified email for eSIM purchase.",
+          "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+        },
+        "roamingSms": {
+          "state": "supported-after-activation",
+          "label": "International roaming SMS supported after UK activation",
+          "note": "Lebara supports roaming and states incoming texts are free in documented roaming scenarios. The SIM must first be activated in the UK; outside included regions PAYG credit or an add-on may be needed for outgoing usage.",
+          "sourceUrl": "https://www.lebara.co.uk/en/roaming/roaming-rate-finder.html"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not yet proven",
+          "note": "Lebara documents Wi-Fi Calling support on compatible eSIM devices, but the MVP does not yet have explicit official evidence that overseas Wi-Fi Calling can be relied on for SMS/OTP recovery."
+        }
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-current-profile-1e1fca",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-12",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "lebara-uk-direct-esim-china",
+        "brandId": "lebara-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Direct Lebara eSIM acquired from China; one recent flow reported ~£1.5 promotional first-month plan plus £5 credit/top-up.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 1.5,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 6.5,
+          "landedCny": 58.05,
+          "fxCheckedAt": "2026-09-23",
+          "state": "recent-community-flow-needs-live-price-refresh"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.49,
+          "yearCostOriginal": 1.96,
+          "yearCostCny": 17.5,
+          "action": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
+          "intervalDays": 90,
+          "practicalBufferDays": "70-75",
+          "state": "account-specific-confirmed-with-conflicting-long-idle-report"
+        },
+        "chinaActivation": "inbound SMS reproduced after direct install in mainland China without prior UK-network attachment; full outgoing voice/SMS state may remain incomplete until UK attachment",
+        "kyc": "not fully normalized in this packet",
+        "payment": "direct purchase/top-up reproduced; exact current payment methods need refresh",
+        "wifiCalling": "difficult/conflicting in current community reports",
+        "roamingSms": "inbound SMS reproduced in mainland China",
+        "refund": "at least one refund after setup/service trouble reported; no rate",
+        "trend": "watch",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-12",
+        "acquireUrl": "https://mobile.lebara.com/gb/en/",
+        "tariffSummary": "Recent community flow used a ~£1.5 first-month offer plus £5 credit; promo price must be refreshed before purchase.",
+        "sourceIds": [
+          "linuxdo-lebara-2745784-op",
+          "linuxdo-lebara-2745784-reply17",
+          "linuxdo-lebara-2763577",
+          "linuxdo-lebara-2894665"
+        ],
+        "guideSteps": [
+          "Open the current direct Lebara UK eSIM offer and recheck the live first-month price before paying.",
+          "Install the eSIM and confirm the line receives Lebara system/inbound SMS before binding an important account.",
+          "Test the exact app you need; current mainland-China reports cover inbound WhatsApp and Telegram codes, not a universal OTP guarantee.",
+          "For retention, generate a real chargeable activity and confirm it appears in account usage; one recent account/support interaction used a 90-day window with a 70–75 day practical buffer."
+        ]
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-frontstage-a35eed",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 20,
+        "shortlist": true,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "≈ £0.77/yr*",
+        "setup": "Some work",
+        "remote": "UK activation required",
+        "stability": "Stable",
+        "caveat": "Low keep-alive cost, but the line must be activated in the UK first.",
+        "kyc": "no universal passport rule; account/email for eSIM",
+        "roaming": "supported after UK activation",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + route reports",
+        "price": "Free SIM · plans from £5",
+        "keepRule": "Call/text/data < 90 days"
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-location-85cf26",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "required-country",
+        "hardBlock": true,
+        "requiredLocations": [
+          "United Kingdom"
+        ],
+        "summary": "Lebara states that its SIM/eSIM must be activated in the UK before it is taken abroad; an eSIM can be ordered while outside the UK but must still be activated in the UK.",
+        "outsideHomeNote": "If you are outside the UK now, you can research or order the route, but do not treat it as immediately usable until you can activate it in the UK.",
+        "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-retention-352b0f",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "After 90 days with no call, text or mobile-data use, service is temporarily barred. After a further 365 days with no usage or top-up/plan purchase, the SIM expires.",
+        "clock_start_or_reset": "The first 90-day clock is defined by the last documented call, text or data use. After temporary barring, adding credit or buying a plan restores service. The official help page does not explicitly say that a top-up made before day 90 by itself resets the initial usage clock.",
+        "qualifying_activity": [
+          "Make a call.",
+          "Send a text.",
+          "Browse/use mobile data.",
+          "After temporary barring, add credit or buy a plan to resume service."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Incoming SMS is not listed as qualifying use.",
+          "Account login and balance checks are not listed as qualifying use.",
+          "A pre-bar top-up as a substitute for call/text/data activity is not explicit in the cited official help rule."
+        ],
+        "lowest_cost_documented_action": "Send one standard UK PAYG SMS while the line is active. Current official UK rate: £0.19 per text. Data is charged per KB and could cost less, but the official page does not document a minimum billable data session, so it is not used as the fixed-cost baseline.",
+        "safest_documented_action": "Before 90 days, complete a normal chargeable call, SMS or data session. If the SIM has already been temporarily barred, add credit or buy a plan through Lebara to restore service.",
+        "minimum_expected_cost": {
+          "amount": 0.19,
+          "currency": "GBP",
+          "basis": "one standard UK PAYG SMS",
+          "status": "official-fixed-price",
+          "note": "Roaming rates can differ by destination."
+        },
+        "recommended_buffer": {
+          "value": 14,
+          "unit": "days",
+          "basis": "Product-side buffer only; Lebara’s provider deadline remains 90 days."
+        },
+        "grace_or_rescue_window": "Temporary barring after 90 days is followed by a further 365-day recoverable inactivity period; adding credit or buying a plan can restore service during that period.",
+        "termination_and_recycling": "After the further 365-day period, Lebara says the SIM expires and a new SIM/number is required. The cited official page does not state the exact number-recycling timing.",
+        "sources": [
+          {
+            "label": "Lebara UK — SIM inactivity and expiry",
+            "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+            "type": "official"
+          },
+          {
+            "label": "Lebara UK — PAYG rates",
+            "url": "https://www.lebara.co.uk/en/rates.html",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last call, text or mobile-data use date",
+          "anchor_help": "Use the last documented usage date that starts Lebara’s initial 90-day inactivity clock. Do not substitute a pre-bar top-up unless Lebara documents it for your plan.",
+          "due_offset": {
+            "value": 90,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 14,
+            "unit": "days"
+          },
+          "summary": "Use the Lebara line before temporary barring",
+          "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
+        }
+      }
+    }
+  ]
+}

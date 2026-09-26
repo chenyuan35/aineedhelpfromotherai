@@ -1,0 +1,37 @@
+[
+  {
+    "id": "cn",
+    "name": "China",
+    "countryCode": "CN"
+  },
+  {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  {
+    "id": "global",
+    "name": "Global / multi-market",
+    "countryCode": null
+  },
+  {
+    "id": "hr",
+    "name": "Croatia",
+    "countryCode": "HR"
+  },
+  {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  {
+    "id": "various",
+    "name": "Destination-specific",
+    "countryCode": null
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "a1-croatia-prepaid-esim",
+    "marketId": "hr",
+    "networkId": null,
+    "brandId": "a1-croatia-hr",
+    "displayName": "A1 Croatia prepaid eSIM",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "prepaid eSIM with a Croatian +385 mobile number",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "Apr 2026",
+    "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+    "sourceIds": [
+      "src-61020a30c0ff",
+      "src-a8125c0e023b",
+      "src-c34111119d44",
+      "src-ccedda3a4240"
+    ]
+  },
+  "market": {
+    "id": "hr",
+    "name": "Croatia",
+    "countryCode": "HR"
+  },
+  "network": null,
+  "brand": {
+    "id": "a1-croatia-hr",
+    "marketId": "hr",
+    "networkId": null,
+    "name": "A1 Croatia"
+  },
+  "metrics": {
+    "routeId": "a1-croatia-prepaid-esim",
+    "checkedAt": "Apr 2026",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-61020a30c0ff",
+      "url": "https://www.nodeloc.com/t/topic/81137",
+      "type": "community",
+      "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough"
+    },
+    {
+      "id": "src-a8125c0e023b",
+      "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
+      "type": "official-commercial",
+      "label": "A1 Croatia — prepaid roaming price page"
+    },
+    {
+      "id": "src-c34111119d44",
+      "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "type": "official-commercial",
+      "label": "A1 Croatia — current prepaid SIM/eSIM ordering page"
+    },
+    {
+      "id": "src-ccedda3a4240",
+      "url": "https://www.a1.hr/kupi-bon",
+      "type": "official-commercial",
+      "label": "A1 Croatia — current online top-up page"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-a1-croatia-prepaid-esim-frontstage-fc8ec3",
+      "routeId": "a1-croatia-prepaid-esim",
+      "kind": "frontstage",
+      "checkedAt": "Apr 2026",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 55,
+        "shortlist": false,
+        "smsSignal": "Good",
+        "signalLevel": 3,
+        "keepCost": "≈ €5/yr*",
+        "setup": "Some work",
+        "remote": "remote China activation reproduced",
+        "stability": "Watch",
+        "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived.",
+        "kyc": "recent report: none; recheck checkout",
+        "roaming": "China incoming SMS reproduced",
+        "verified": "Apr 2026",
+        "evidence": "Recent community reproduction; interval still community-derived",
+        "price": "Live checkout · €5 min top-up",
+        "keepRule": "Top up early; interval community-derived"
+      }
+    }
+  ]
+}

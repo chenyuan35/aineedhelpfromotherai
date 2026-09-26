@@ -1,0 +1,3827 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "generatedFromLegacyAt": "2026-09-25T23:21:06.448Z",
+    "policy": "Canonical normalized Phone data foundation. Public eligibility remains evidence-gated; missing data stays missing."
+  },
+  "markets": [
+    {
+      "id": "cn",
+      "name": "China",
+      "countryCode": "CN"
+    },
+    {
+      "id": "gb",
+      "name": "United Kingdom",
+      "countryCode": "GB"
+    },
+    {
+      "id": "global",
+      "name": "Global / multi-market",
+      "countryCode": null
+    },
+    {
+      "id": "hr",
+      "name": "Croatia",
+      "countryCode": "HR"
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "countryCode": "JP"
+    },
+    {
+      "id": "us",
+      "name": "United States",
+      "countryCode": "US"
+    },
+    {
+      "id": "various",
+      "name": "Destination-specific",
+      "countryCode": null
+    }
+  ],
+  "networks": [
+    {
+      "id": "o2-uk",
+      "name": "O2 UK",
+      "marketId": "gb"
+    },
+    {
+      "id": "vodafone-uk",
+      "name": "Vodafone UK",
+      "marketId": "gb"
+    }
+  ],
+  "brands": [
+    {
+      "id": "5sim-global",
+      "marketId": "global",
+      "networkId": null,
+      "name": "5SIM"
+    },
+    {
+      "id": "a1-croatia-hr",
+      "marketId": "hr",
+      "networkId": null,
+      "name": "A1 Croatia"
+    },
+    {
+      "id": "activatex-global",
+      "marketId": "global",
+      "networkId": null,
+      "name": "ActivateX"
+    },
+    {
+      "id": "giffgaff-uk",
+      "networkId": "o2-uk",
+      "name": "Giffgaff",
+      "marketId": "gb"
+    },
+    {
+      "id": "h2o-wireless-us",
+      "marketId": "us",
+      "networkId": null,
+      "name": "H2O Wireless"
+    },
+    {
+      "id": "lebara-uk",
+      "networkId": "vodafone-uk",
+      "name": "Lebara UK",
+      "marketId": "gb"
+    },
+    {
+      "id": "mobal-japan-jp",
+      "marketId": "jp",
+      "networkId": null,
+      "name": "Mobal Japan"
+    },
+    {
+      "id": "sakura-mobile-jp",
+      "marketId": "jp",
+      "networkId": null,
+      "name": "Sakura Mobile"
+    },
+    {
+      "id": "smspool-global",
+      "marketId": "global",
+      "networkId": null,
+      "name": "SMSPool"
+    },
+    {
+      "id": "tello-us",
+      "marketId": "us",
+      "networkId": null,
+      "name": "Tello"
+    },
+    {
+      "id": "trip-com-china-mobile-cmlink-cn",
+      "marketId": "cn",
+      "networkId": null,
+      "name": "Trip.com / China Mobile CMLink"
+    },
+    {
+      "id": "ultra-mobile-paygo-us",
+      "marketId": "us",
+      "networkId": null,
+      "name": "Ultra Mobile PayGo"
+    },
+    {
+      "id": "vodafone-uk-direct",
+      "networkId": "vodafone-uk",
+      "name": "Vodafone UK",
+      "marketId": "gb"
+    },
+    {
+      "id": "voxi-uk",
+      "networkId": "vodafone-uk",
+      "name": "VOXI",
+      "marketId": "gb"
+    }
+  ],
+  "routes": [
+    {
+      "id": "5sim-temp",
+      "marketId": "global",
+      "networkId": null,
+      "brandId": "5sim-global",
+      "displayName": "5SIM temporary verification route",
+      "family": "temporary",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://5sim.net/prices",
+      "sourceIds": [
+        "src-3545efe8deb4",
+        "src-6acad0e79070",
+        "src-a19054e9d137"
+      ]
+    },
+    {
+      "id": "a1-croatia-prepaid-esim",
+      "marketId": "hr",
+      "networkId": null,
+      "brandId": "a1-croatia-hr",
+      "displayName": "A1 Croatia prepaid eSIM",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid eSIM with a Croatian +385 mobile number",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "Apr 2026",
+      "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "sourceIds": [
+        "src-61020a30c0ff",
+        "src-a8125c0e023b",
+        "src-c34111119d44",
+        "src-ccedda3a4240"
+      ]
+    },
+    {
+      "id": "activatex-temp",
+      "marketId": "global",
+      "networkId": null,
+      "brandId": "activatex-global",
+      "displayName": "Temporary SMS activation comparison",
+      "family": "temporary",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS activation marketplace/comparison route",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://activatex.org/",
+      "sourceIds": [
+        "src-4212005934bd"
+      ]
+    },
+    {
+      "id": "giffgaff-uk-direct-esim-payg",
+      "marketId": "gb",
+      "networkId": "o2-uk",
+      "brandId": "giffgaff-uk",
+      "displayName": "Giffgaff",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "public-pilot",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://www.giffgaff.com/",
+      "sourceIds": [
+        "giffgaff-official-credit-2026-09-23",
+        "linuxdo-giffgaff-1615582",
+        "linuxdo-giffgaff-2244241",
+        "linuxdo-giffgaff-2244241-p2",
+        "linuxdo-giffgaff-2310901",
+        "linuxdo-giffgaff-2322268",
+        "linuxdo-giffgaff-2678340",
+        "linuxdo-giffgaff-2773030",
+        "linuxdo-giffgaff-2903412",
+        "src-77b7a4afdd78",
+        "src-7bc565362f29",
+        "src-9e494ffc524e",
+        "src-ea6b2a6ebb26"
+      ]
+    },
+    {
+      "id": "h2o-paygo-us",
+      "marketId": "us",
+      "networkId": null,
+      "brandId": "h2o-wireless-us",
+      "displayName": "H2O Wireless Pay As You Go US number",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "prepaid SIM/eSIM options must be rechecked at purchase",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-16",
+      "acquireUrl": "https://www.h2owireless.com/",
+      "sourceIds": [
+        "src-d5c503ecd237"
+      ]
+    },
+    {
+      "id": "lebara-uk-direct-esim-china",
+      "marketId": "gb",
+      "networkId": "vodafone-uk",
+      "brandId": "lebara-uk",
+      "displayName": "Lebara UK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM",
+      "surfaceState": "public-pilot",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-12",
+      "acquireUrl": "https://mobile.lebara.com/gb/en/",
+      "sourceIds": [
+        "linuxdo-lebara-2745784-op",
+        "linuxdo-lebara-2763577",
+        "linuxdo-lebara-2894665",
+        "src-2948194201a0",
+        "src-337a1e0a1330",
+        "src-aa91ae8faea1"
+      ]
+    },
+    {
+      "id": "mobal-japan-data-physical",
+      "marketId": "jp",
+      "networkId": null,
+      "brandId": "mobal-japan-jp",
+      "displayName": "Mobal Japan Tourist Data SIM (physical)",
+      "family": "data",
+      "numberClass": "data-only",
+      "form": "physical SIM with mobile data only; no phone number, voice, or ordinary SMS",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+      "sourceIds": [
+        "src-8a5a1ea3e316"
+      ]
+    },
+    {
+      "id": "mobal-japan-voice-data",
+      "marketId": "jp",
+      "networkId": null,
+      "brandId": "mobal-japan-jp",
+      "displayName": "Mobal Japan Voice+Data 5G number",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM with a real 070/080/090 Japanese mobile number",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-16",
+      "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+      "sourceIds": [
+        "src-0c8b2811a531",
+        "src-2bbba2c2f064",
+        "src-55ebde488d35",
+        "src-8a5a1ea3e316"
+      ]
+    },
+    {
+      "id": "sakura-japan-voice-data",
+      "marketId": "jp",
+      "networkId": null,
+      "brandId": "sakura-mobile-jp",
+      "displayName": "Sakura Mobile Japan Voice+Data (passport route)",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "monthly Voice+Data SIM/eSIM with Japanese voice/SMS service; passport route requires face-to-face verification/pickup",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-16",
+      "acquireUrl": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+      "sourceIds": [
+        "src-0b42956d1b40",
+        "src-7c3acff56130",
+        "src-afc386fd0765",
+        "src-cc7c7229dc5c"
+      ]
+    },
+    {
+      "id": "smspool-temp",
+      "marketId": "global",
+      "networkId": null,
+      "brandId": "smspool-global",
+      "displayName": "SMSPool temporary verification route",
+      "family": "temporary",
+      "numberClass": "temporary-activation",
+      "form": "temporary SMS verification number",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://www.smspool.net/",
+      "sourceIds": [
+        "src-33ac07e70ef6",
+        "src-7f446ed92df8"
+      ]
+    },
+    {
+      "id": "tello-us",
+      "marketId": "us",
+      "networkId": null,
+      "brandId": "tello-us",
+      "displayName": "Tello US mobile number",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "physical SIM or eSIM",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-16",
+      "acquireUrl": "https://tello.com/",
+      "sourceIds": [
+        "src-494ca2deb59b",
+        "src-573da827b0ea",
+        "src-ed3f565a3e3a",
+        "src-f2d3210589df"
+      ]
+    },
+    {
+      "id": "trip-cmlink-china-data",
+      "marketId": "cn",
+      "networkId": null,
+      "brandId": "trip-com-china-mobile-cmlink-cn",
+      "displayName": "Trip.com CMLink Mainland China eSIM",
+      "family": "data",
+      "numberClass": "data-only",
+      "form": "travel eSIM for mainland-China mobile data; no durable phone number is assumed",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-15",
+      "acquireUrl": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+      "sourceIds": [
+        "src-34d2c2be25e3",
+        "src-3e3106e8c4c3",
+        "src-6cc1d36dff5e",
+        "src-981c29b0af43"
+      ]
+    },
+    {
+      "id": "ultra-paygo-us",
+      "marketId": "us",
+      "networkId": null,
+      "brandId": "ultra-mobile-paygo-us",
+      "displayName": "Ultra Mobile PayGo US number",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "physical PayGo SIM",
+      "surfaceState": "public-legacy",
+      "evidenceState": "needs-reconciliation",
+      "lastVerifiedAt": "2026-09-16",
+      "acquireUrl": "https://www.ultramobile.com/paygo/",
+      "sourceIds": [
+        "src-518c6a9bf6f0",
+        "src-cbabf70eb1c4"
+      ]
+    },
+    {
+      "id": "vodafone-uk-zero-esim-2026",
+      "marketId": "gb",
+      "networkId": "vodafone-uk",
+      "brandId": "vodafone-uk-direct",
+      "displayName": "Vodafone UK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM",
+      "surfaceState": "public-hold",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-06-16",
+      "acquireUrl": "https://www.vodafone.co.uk/",
+      "sourceIds": [
+        "linuxdo-vodafone-2401952",
+        "linuxdo-vodafone-2404421",
+        "linuxdo-vodafone-2417339",
+        "vodafone-official-network-trial-2026"
+      ]
+    },
+    {
+      "id": "voxi-uk-esim-payg-retention",
+      "marketId": "gb",
+      "networkId": "vodafone-uk",
+      "brandId": "voxi-uk",
+      "displayName": "VOXI",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM",
+      "surfaceState": "public-pilot",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.voxi.co.uk/",
+      "sourceIds": [
+        "linuxdo-voxi-2188975",
+        "linuxdo-voxi-2399041-p3",
+        "linuxdo-voxi-2737575",
+        "nodeloc-voxi-102713",
+        "voxi-official-plans-2026-09-23"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "giffgaff-official-credit-2026-09-23",
+      "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+      "type": "provider-commercial-page",
+      "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "linuxdo-giffgaff-1615582",
+      "url": "https://linux.do/t/topic/1615582",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-02-14"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241",
+      "url": "https://linux.do/t/topic/2244241",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-05-25"
+    },
+    {
+      "id": "linuxdo-giffgaff-2244241-p2",
+      "url": "https://linux.do/t/topic/2244241?page=2",
+      "type": "community-thread",
+      "reportedAt": "2026-06-02"
+    },
+    {
+      "id": "linuxdo-giffgaff-2310901",
+      "url": "https://linux.do/t/topic/2310901",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-05"
+    },
+    {
+      "id": "linuxdo-giffgaff-2316548-p2",
+      "url": "https://linux.do/t/topic/2316548?page=2",
+      "type": "community-thread",
+      "reportedAt": "2026-06-06"
+    },
+    {
+      "id": "linuxdo-giffgaff-2322268",
+      "url": "https://linux.do/t/topic/2322268",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-07"
+    },
+    {
+      "id": "linuxdo-giffgaff-2322268-reply14",
+      "url": "https://linux.do/t/topic/2322268/14",
+      "type": "first-hand-community-reply",
+      "reportedAt": "2026-06-07"
+    },
+    {
+      "id": "linuxdo-giffgaff-2432207",
+      "url": "https://linux.do/t/topic/2432207",
+      "type": "community-thread",
+      "reportedAt": "2026-06-18"
+    },
+    {
+      "id": "linuxdo-giffgaff-2479147",
+      "url": "https://linux.do/t/topic/2479147",
+      "type": "community-tutorial",
+      "reportedAt": "2026-06-26"
+    },
+    {
+      "id": "linuxdo-giffgaff-2678340",
+      "url": "https://linux.do/t/topic/2678340",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-07-30"
+    },
+    {
+      "id": "linuxdo-giffgaff-2773030",
+      "url": "https://linux.do/t/topic/2773030",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "linuxdo-giffgaff-2903412",
+      "url": "https://linux.do/t/topic/2903412",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-15"
+    },
+    {
+      "id": "linuxdo-lebara-2745784-op",
+      "url": "https://linux.do/t/topic/2745784",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-12"
+    },
+    {
+      "id": "linuxdo-lebara-2763577",
+      "url": "https://linux.do/t/topic/2763577",
+      "type": "community-thread",
+      "reportedAt": "2026-08-16"
+    },
+    {
+      "id": "linuxdo-lebara-2894665",
+      "url": "https://linux.do/t/topic/2894665",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-12"
+    },
+    {
+      "id": "linuxdo-vodafone-2401952",
+      "url": "https://linux.do/t/topic/2401952",
+      "type": "community-thread",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-vodafone-2404421",
+      "url": "https://linux.do/t/topic/2404421",
+      "type": "community-thread",
+      "reportedAt": "2026-06-15"
+    },
+    {
+      "id": "linuxdo-vodafone-2417339",
+      "url": "https://linux.do/t/topic/2417339",
+      "type": "community-thread",
+      "reportedAt": "2026-06-16"
+    },
+    {
+      "id": "linuxdo-voxi-2188975",
+      "url": "https://linux.do/t/topic/2188975",
+      "type": "community-thread",
+      "reportedAt": "2026-05-16"
+    },
+    {
+      "id": "linuxdo-voxi-2399041-p3",
+      "url": "https://linux.do/t/topic/2399041?page=3",
+      "type": "community-thread",
+      "reportedAt": "2026-06-14"
+    },
+    {
+      "id": "linuxdo-voxi-2737575",
+      "url": "https://linux.do/t/topic/2737575",
+      "type": "community-thread",
+      "reportedAt": "2026-08-11"
+    },
+    {
+      "id": "nodeloc-voxi-102713",
+      "url": "https://www.nodeloc.com/t/topic/102713",
+      "type": "commercial-community-post",
+      "reportedAt": "2026-08-09"
+    },
+    {
+      "id": "src-0b42956d1b40",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/27171487316121--Travel-SIM-eSIM-Can-I-make-phone-calls-or-send-SMS-with-the-Travel-SIM-eSIM",
+      "type": "official",
+      "label": "Sakura Mobile — Travel SIM/eSIM is data-only"
+    },
+    {
+      "id": "src-0c8b2811a531",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000042589-phone-number-type",
+      "type": "official",
+      "label": "Mobal — Phone number assignment and loss after termination"
+    },
+    {
+      "id": "src-2948194201a0",
+      "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+      "type": "official",
+      "label": "Lebara UK — SIM inactivity and expiry"
+    },
+    {
+      "id": "src-2bbba2c2f064",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+      "type": "official",
+      "label": "Mobal — International roaming for current Voice+Data 5G products"
+    },
+    {
+      "id": "src-337a1e0a1330",
+      "url": "https://www.lebara.co.uk/en/free-sim.html",
+      "type": "official",
+      "label": "Lebara UK — free PAYG SIM"
+    },
+    {
+      "id": "src-33ac07e70ef6",
+      "url": "https://www.smspool.net/article/smspool-api-order-view-and-cancel-numbers-9883b6969fad",
+      "type": "marketplace",
+      "label": "SMSPool — API ordering and refund behavior"
+    },
+    {
+      "id": "src-34d2c2be25e3",
+      "url": "https://sg.trip.com/things-to-do/detail/71336361-mainland-china-5g-esim-internet-card-mobile-cmlink-15-days/",
+      "type": "official-commercial",
+      "label": "Trip.com — Mainland China CMLink eSIM product 71336361"
+    },
+    {
+      "id": "src-3545efe8deb4",
+      "url": "https://5sim.net/prices",
+      "type": "marketplace",
+      "label": "5SIM — Prices"
+    },
+    {
+      "id": "src-3e3106e8c4c3",
+      "url": "https://www.reddit.com/r/chinatravel/comments/1u2xb0y/anyone_have_trouble_with_their_tripcom_esim/",
+      "type": "community",
+      "label": "Reddit — Trip.com eSIM performance reports"
+    },
+    {
+      "id": "src-4212005934bd",
+      "url": "https://activatex.org/",
+      "type": "marketplace",
+      "label": "ActivateX — compare SMS activation prices by service and country"
+    },
+    {
+      "id": "src-494ca2deb59b",
+      "url": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling",
+      "type": "official",
+      "label": "Tello — How can I use Wi-Fi Calling?"
+    },
+    {
+      "id": "src-518c6a9bf6f0",
+      "url": "https://www.ultramobile.com/paygo/",
+      "type": "official",
+      "label": "Ultra Mobile — Pay as You Go"
+    },
+    {
+      "id": "src-55ebde488d35",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+      "type": "official",
+      "label": "Mobal — ID requirements for voice products"
+    },
+    {
+      "id": "src-573da827b0ea",
+      "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+      "type": "official",
+      "label": "Tello — Can I activate Tello while I'm abroad?"
+    },
+    {
+      "id": "src-61020a30c0ff",
+      "url": "https://www.nodeloc.com/t/topic/81137",
+      "type": "community",
+      "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough"
+    },
+    {
+      "id": "src-6acad0e79070",
+      "url": "https://5sim.net/docs2/offer.html",
+      "type": "marketplace",
+      "label": "5SIM — Terms / cancellation and non-implementation refund"
+    },
+    {
+      "id": "src-6cc1d36dff5e",
+      "url": "https://forum.naixi.net/thread-10581-1-1.html",
+      "type": "community",
+      "label": "Naixi — detailed Trip/CMLink mainland-China eSIM test"
+    },
+    {
+      "id": "src-77b7a4afdd78",
+      "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+      "type": "official",
+      "label": "giffgaff — Understanding why your number has been deactivated"
+    },
+    {
+      "id": "src-7bc565362f29",
+      "url": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte",
+      "type": "official",
+      "label": "giffgaff — Understanding WiFi calling and VoLTE"
+    },
+    {
+      "id": "src-7c3acff56130",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan",
+      "type": "official",
+      "label": "Sakura Mobile — Monthly service outside Japan"
+    },
+    {
+      "id": "src-7f446ed92df8",
+      "url": "https://www.smspool.net/",
+      "type": "marketplace",
+      "label": "SMSPool — OTP testing numbers / published price search"
+    },
+    {
+      "id": "src-8a5a1ea3e316",
+      "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "official",
+      "label": "Mobal Japan — Voice+Data pricing and Japanese phone number"
+    },
+    {
+      "id": "src-981c29b0af43",
+      "url": "https://www.reddit.com/r/travelchina/comments/1t4hd1i/tripcom_esim/",
+      "type": "community",
+      "label": "Reddit — Trip.com CMLink mainland-China use reports"
+    },
+    {
+      "id": "src-9e494ffc524e",
+      "url": "https://help.giffgaff.com/en/articles/261570-switching-to-an-esim-with-giffgaff",
+      "type": "official",
+      "label": "giffgaff — Switching to an eSIM"
+    },
+    {
+      "id": "src-a19054e9d137",
+      "url": "https://5sim.net/support/working-with-api",
+      "type": "marketplace",
+      "label": "5SIM — API support"
+    },
+    {
+      "id": "src-a8125c0e023b",
+      "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
+      "type": "official-commercial",
+      "label": "A1 Croatia — prepaid roaming price page"
+    },
+    {
+      "id": "src-aa91ae8faea1",
+      "url": "https://www.lebara.co.uk/en/help/esim.html",
+      "type": "official",
+      "label": "Lebara UK — eSIM help and UK activation requirement"
+    },
+    {
+      "id": "src-afc386fd0765",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+      "type": "official",
+      "label": "Sakura Mobile — non-resident/passport eligibility"
+    },
+    {
+      "id": "src-c34111119d44",
+      "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "type": "official-commercial",
+      "label": "A1 Croatia — current prepaid SIM/eSIM ordering page"
+    },
+    {
+      "id": "src-cbabf70eb1c4",
+      "url": "https://www.ultramobile.com/international-roaming/",
+      "type": "official",
+      "label": "Ultra Mobile — International Roaming"
+    },
+    {
+      "id": "src-cc7c7229dc5c",
+      "url": "https://www.sakuramobile.jp/monthly/voice/application-procedure/",
+      "type": "official",
+      "label": "Sakura Mobile — Voice+Data application procedure"
+    },
+    {
+      "id": "src-ccedda3a4240",
+      "url": "https://www.a1.hr/kupi-bon",
+      "type": "official-commercial",
+      "label": "A1 Croatia — current online top-up page"
+    },
+    {
+      "id": "src-d5c503ecd237",
+      "url": "https://www.h2owireless.com/terms-conditions",
+      "type": "official",
+      "label": "H2O Wireless — Terms and Conditions"
+    },
+    {
+      "id": "src-ea6b2a6ebb26",
+      "url": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim",
+      "type": "official",
+      "label": "giffgaff — Ordering a SIM"
+    },
+    {
+      "id": "src-ed3f565a3e3a",
+      "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+      "type": "official",
+      "label": "Tello — How can I use my device overseas?"
+    },
+    {
+      "id": "src-f2d3210589df",
+      "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+      "type": "official",
+      "label": "Tello — When do autopay & plan renewal occur?"
+    },
+    {
+      "id": "vodafone-official-network-trial-2026",
+      "url": "https://binaries.vodafone.co.uk/gbnnsauqav4t/46FjjluZ6iqfd7d0OcvCiX/af7b13abd16aad45fffd9bcb1179f9cf/network-trial-may-2026.pdf",
+      "type": "provider-commercial-terms",
+      "reportedAt": "2026-05-01"
+    },
+    {
+      "id": "voxi-official-plans-2026-09-23",
+      "url": "https://www.voxi.co.uk/acquisition/plans",
+      "type": "provider-commercial-page",
+      "reportedAt": "2026-09-23"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-telegram"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "OpenAI/Codex",
+      "operation": "phone-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-05",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2310901",
+      "dedupeKey": "giffgaff-2310901-n70-codex"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268-reply14",
+      "dedupeKey": "giffgaff-2322268-1157-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "recycled-number-observation",
+      "reportedAt": "2026-02-14",
+      "scope": "single-observation",
+      "outcome": "newly obtained number appeared associated with a prior Telegram account",
+      "sourceId": "linuxdo-giffgaff-1615582"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-2-9224db",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "mass-closure-wave",
+      "reportedAt": "2026-07-27",
+      "scope": "community-wave",
+      "outcome": "multiple overseas users reported closures/suspensions and loss of service",
+      "sourceId": "linuxdo-giffgaff-2678340"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-3-59d79b",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "partial-restoration-wave",
+      "reportedAt": "2026-08-18",
+      "scope": "community-wave",
+      "outcome": "some previously closed accounts/numbers were restored; not universal",
+      "sourceId": "linuxdo-giffgaff-2773030"
+    },
+    {
+      "id": "evt-giffgaff-uk-direct-esim-payg-4-14e95f",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "type": "refund-outcomes",
+      "reportedAt": "2026-09-15",
+      "scope": "multiple-observations",
+      "outcome": "multiple eventual refund successes observed after delays or earlier denials; outcome remains mixed",
+      "sourceId": "linuxdo-giffgaff-2903412"
+    },
+    {
+      "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
+      "routeId": "lebara-uk-direct-esim-china",
+      "type": "outgoing-service-friction",
+      "reportedAt": "2026-08-12",
+      "scope": "multiple-same-thread-observations",
+      "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
+      "sourceId": "linuxdo-lebara-2745784-op"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-5sim-temp-capabilities-5e981a",
+      "routeId": "5sim-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "Requirements depend on account funding/payment options; the ordinary activation order is not a durable SIM subscription."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "Temporary verification numbers are not a travel roaming product."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-5sim-temp-commercial-ebf304",
+      "routeId": "5sim-temp",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "marketplace",
+        "purchaseChannel": "5SIM marketplace",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "USD",
+          "basis": "Dynamic service/country/operator listing",
+          "setup": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "Observed starting prices vary by target service, country and operator and can change quickly."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation and rental are separate products."
+          },
+          "tax": {
+            "status": "unknown",
+            "note": "Not modeled."
+          },
+          "shipping": {
+            "status": "not-applicable",
+            "note": "Digital service."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "None assumed."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "dynamic",
+              "note": "A low list price is not an expected successful cost. Seller-reported success is not treated as independent evidence."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "conditional",
+            "note": "Refund terms distinguish failure cases; refund applications can take time and fees may apply. It is not presented as automatic or immediate."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on account funding/payment method."
+          },
+          "stockEvidence": {
+            "state": "seller-dynamic",
+            "note": "Inventory is marketplace inventory and may change quickly."
+          },
+          "support": {
+            "state": "marketplace-support",
+            "note": "Marketplace support is not carrier ownership."
+          },
+          "numberControl": {
+            "state": "temporary-not-owned",
+            "note": "Activation numbers are not durable ownership."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 2.2,
+            "reviewCount": 202,
+            "last12Months": 31,
+            "invitationContext": "Snapshot only. Repeated complaints mention reused/blocked numbers, failed codes and refund/support issues.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/5sim.net"
+          },
+          "complaintThemes": [
+            "reused or blocked numbers",
+            "verification failure",
+            "refund/support"
+          ]
+        },
+        "sources": [
+          {
+            "label": "5SIM",
+            "url": "https://5sim.net/",
+            "type": "seller"
+          },
+          {
+            "label": "5SIM terms",
+            "url": "https://5sim.net/terms",
+            "type": "seller-terms"
+          },
+          {
+            "label": "Trustpilot snapshot",
+            "url": "https://www.trustpilot.com/review/5sim.net",
+            "type": "independent-review"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "not-comparable",
+          "label": "No stable official benchmark",
+          "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+        },
+        "comparisonGroup": "temp-verification-market"
+      }
+    },
+    {
+      "id": "snap-5sim-temp-frontstage-84c4dc",
+      "routeId": "5sim-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 20,
+        "shortlist": true,
+        "smsSignal": "Inventory-dependent",
+        "signalLevel": 2,
+        "price": "Live check required",
+        "coverage": "Country + service + operator",
+        "numberType": "One-time; rentals separate",
+        "privacyRisk": "High for critical accounts",
+        "availability": "Live inventory",
+        "caveat": "Useful for one-time jobs; do not build account recovery around ordinary activation orders."
+      }
+    },
+    {
+      "id": "snap-5sim-temp-location-d9c5d1",
+      "routeId": "5sim-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; service/country/operator inventory is dynamic.",
+        "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+        "sourceUrl": "https://5sim.net/prices"
+      }
+    },
+    {
+      "id": "snap-a1-croatia-prepaid-esim-frontstage-fc8ec3",
+      "routeId": "a1-croatia-prepaid-esim",
+      "kind": "frontstage",
+      "checkedAt": "Apr 2026",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 55,
+        "shortlist": false,
+        "smsSignal": "Good",
+        "signalLevel": 3,
+        "keepCost": "≈ €5/yr*",
+        "setup": "Some work",
+        "remote": "remote China activation reproduced",
+        "stability": "Watch",
+        "caveat": "Remote eSIM activation and China roaming SMS are recently reproduced; the current online top-up minimum is €5, while the keep-alive interval is still community-derived.",
+        "kyc": "recent report: none; recheck checkout",
+        "roaming": "China incoming SMS reproduced",
+        "verified": "Apr 2026",
+        "evidence": "Recent community reproduction; interval still community-derived",
+        "price": "Live checkout · €5 min top-up",
+        "keepRule": "Top up early; interval community-derived"
+      }
+    },
+    {
+      "id": "snap-activatex-temp-capabilities-aa7a7c",
+      "routeId": "activatex-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "No telecom SIM installation or durable subscriber identity is assumed; account/payment requirements depend on the marketplace."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "This is a temporary remote SMS activation route, not a SIM you carry abroad."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-activatex-temp-frontstage-8c777e",
+      "routeId": "activatex-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 30,
+        "shortlist": true,
+        "smsSignal": "Supplier-dependent",
+        "signalLevel": 2,
+        "price": "Compare live offers · check now",
+        "coverage": "Multiple suppliers",
+        "numberType": "Supplier-dependent",
+        "privacyRisk": "Supplier-dependent",
+        "availability": "Live supplier inventory",
+        "caveat": "Comparison layer: the downstream supplier determines privacy, refund and number reuse."
+      }
+    },
+    {
+      "id": "snap-activatex-temp-location-76b8eb",
+      "routeId": "activatex-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; availability depends on the selected service, number country, supplier route and current stock.",
+        "outsideHomeNote": "Your physical location is not treated as the number's country. Target-service rules and supplier availability still apply.",
+        "sourceUrl": "https://activatex.org/"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-capabilities-b1b191",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "The cited official help pages establish ordering, roaming and account rules but do not establish a universal passport/ID requirement for the intended overseas-user scenario."
+        },
+        "roamingSms": {
+          "state": "supported",
+          "label": "Cellular roaming SMS supported in listed destinations",
+          "note": "giffgaff documents roaming calls, texts and data outside the UK. Coverage and charges vary by destination; receiving ordinary texts is free in some documented roaming zones, but shortcode/verification delivery still depends on the sender and roaming network.",
+          "sourceUrl": "https://help.giffgaff.com/en/articles/229548-using-your-mobile-phone-in-the-rest-of-the-world"
+        },
+        "wifiCallingAbroad": {
+          "state": "not-supported",
+          "label": "Do not rely on Wi-Fi Calling abroad",
+          "note": "The current giffgaff help material says Wi-Fi Calling is not supported abroad.",
+          "sourceUrl": "https://help.giffgaff.com/en/articles/258841-understanding-wifi-calling-and-volte"
+        }
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-commercial-d19d62",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "giffgaff direct",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "GBP",
+          "basis": "Official SIM order + PAYG/plan after activation",
+          "setup": {
+            "amount": 0,
+            "status": "official-sim-only",
+            "note": "Official physical SIM order is free, but this is not the full activation/use cost."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-fixed",
+            "note": "The six-month inactivity rule does not itself require a monthly plan, but at least one qualifying action is required before the boundary."
+          },
+          "tax": {
+            "status": "included-where-listed",
+            "note": "Exact checkout remains the authority."
+          },
+          "shipping": {
+            "status": "restricted",
+            "note": "Official physical SIM delivery is UK-address only."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "Current plan promotions are not used."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "unknown",
+              "note": "A free SIM is not the same as total activation cost; verify the current activation/top-up requirement."
+            },
+            "90": {
+              "amount": null,
+              "status": "unknown",
+              "note": "Depends on initial credit/plan and usage."
+            },
+            "365": {
+              "amount": null,
+              "status": "unknown",
+              "note": "Retention can be low-cost but the exact minimum annual spend is not proven in this MVP."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "unknown",
+            "note": "Not modeled for the exact purchase/plan choice."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on payment method."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "No stock guarantee is stored."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official help center/community support exists."
+          },
+          "numberControl": {
+            "state": "carrier-account-with-inactivity-recovery-window",
+            "note": "Inactivity can deactivate the SIM; a PAC may be requested within a limited window after deactivation."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 3.5,
+            "reviewCount": 31447,
+            "last12Months": 3547,
+            "invitationContext": "Large independent-review snapshot; it is not converted into a product trust score.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/giffgaff.com"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "giffgaff free SIM",
+            "url": "https://www.giffgaff.com/free-sim-cards",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff inactivity deactivation",
+            "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "partial-baseline",
+          "label": "Partial official baseline",
+          "note": "The provider publishes part of the price, but the all-in activation or retention cost is not fully quantified. No overpay verdict is shown."
+        },
+        "comparisonGroup": "uk-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-current-profile-e4bfee",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "giffgaff-uk-direct-esim-payg",
+        "brandId": "giffgaff-uk",
+        "publishState": "candidate-with-prominent-continuity-warning",
+        "numberType": "real-mobile",
+        "simType": "eSIM-or-physical",
+        "acquisitionSummary": "Direct eSIM PAYG flow reproduced in 2026 with £10 minimum top-up; mainland-phone users may incur adapter or physical-SIM acquisition costs.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 89.3,
+          "fxCheckedAt": "2026-09-23",
+          "state": "native-esim-baseline-only"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.3,
+          "yearCostOriginal": 0.6,
+          "yearCostCny": 5.36,
+          "action": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+          "intervalDays": 180,
+          "state": "community-reproduced"
+        },
+        "chinaActivation": "direct eSIM activation reproduced from outside the UK, subject to device/app/network conditions",
+        "kyc": "not fully normalized in this packet",
+        "payment": "Visa/Mastercard successful in community reports; £10 top-up required in direct eSIM flow",
+        "wifiCalling": "available in community use but not required for all inbound SMS reception",
+        "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+        "refund": "mixed; multiple eventual successes after initial denial/delay observed Aug-Sep 2026",
+        "trend": "conflicting",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-15",
+        "acquireUrl": "https://www.giffgaff.com/",
+        "tariffSummary": "Direct PAYG eSIM baseline: £10 minimum top-up; mainland-China device path may add adapter/physical-SIM cost.",
+        "sourceIds": [
+          "linuxdo-giffgaff-2244241",
+          "linuxdo-giffgaff-2244241-p2",
+          "linuxdo-giffgaff-2310901",
+          "linuxdo-giffgaff-2322268",
+          "linuxdo-giffgaff-1615582",
+          "linuxdo-giffgaff-2678340",
+          "linuxdo-giffgaff-2773030",
+          "linuxdo-giffgaff-2903412",
+          "giffgaff-official-credit-2026-09-23"
+        ],
+        "guideSteps": [
+          "Use the giffgaff app/direct route, choose eSIM when your device supports it, and choose the PAYG/credit path that matches your intended use.",
+          "Add credit; current official help states the minimum credit top-up is £10.",
+          "Activate and test the exact verification service before moving an important account; Telegram outcomes are currently mixed/operation-dependent.",
+          "Create a balance-changing activity well before 180 days, and keep a recovery/port-out plan because a major overseas closure wave occurred in July 2026."
+        ]
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-frontstage-d5504d",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 10,
+        "shortlist": true,
+        "smsSignal": "Mixed",
+        "signalLevel": 2,
+        "keepCost": "≈ £0.20/yr*",
+        "setup": "Some work",
+        "remote": "physical SIM needs UK address; eSIM geography unverified",
+        "stability": "Watch",
+        "caveat": "Cheap to keep, but recent overseas-number recycling complaints make continuity worth watching.",
+        "kyc": "unverified",
+        "roaming": "supported; destination varies",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + mixed recent user outcomes",
+        "price": "Free SIM · activation/top-up live check",
+        "keepRule": "Qualifying use < 6 months"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-location-088ea2",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "conditional",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "Physical SIM delivery requires a UK address. The MVP has not yet verified a universal geography rule for initial eSIM activation.",
+        "outsideHomeNote": "Outside the UK, do not assume physical SIM delivery is available. If using eSIM, recheck current activation requirements before purchase.",
+        "sourceUrl": "https://help.giffgaff.com/en/articles/240676-ordering-a-sim"
+      }
+    },
+    {
+      "id": "snap-giffgaff-uk-direct-esim-payg-retention-6dfa57",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "Six months with no qualifying SIM use triggers inactivity deactivation.",
+        "clock_start_or_reset": "The clock runs from the most recent qualifying action listed by giffgaff.",
+        "qualifying_activity": [
+          "Call, SMS or MMS to another number, excluding emergency, Member Services, 0800 and other free-rated numbers.",
+          "At least one mobile-data connection.",
+          "An Airtime Credit purchase or plan purchase."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Community/account activity is not SIM activity.",
+          "Emergency, Member Services, 0800 and other free-rated calls/texts are explicitly excluded.",
+          "Incoming SMS, account login and balance checks are not documented as clock-reset actions."
+        ],
+        "lowest_cost_documented_action": "Send one standard UK PAYG SMS to a non-free-rated UK number. Current official PAYG price: £0.10 per text.",
+        "safest_documented_action": "If you want the least ambiguous remote keep-alive action, buy Airtime Credit before the six-month deadline; giffgaff explicitly lists Airtime Credit purchase as qualifying. Current minimum credit purchase is £10.",
+        "minimum_expected_cost": {
+          "amount": 0.1,
+          "currency": "GBP",
+          "basis": "one standard UK PAYG SMS",
+          "status": "official-fixed-price",
+          "note": "Outside-UK SMS pricing varies, so £0.10 is not a universal roaming cost."
+        },
+        "recommended_buffer": {
+          "value": 30,
+          "unit": "days",
+          "basis": "Product reminder buffer aligned with giffgaff’s first inactivity warning, which is sent about one month before deactivation."
+        },
+        "grace_or_rescue_window": "The SIM itself cannot be reactivated after inactivity deactivation. A PAC can be requested from giffgaff agents within 30 days after deactivation to port the number to another UK network.",
+        "termination_and_recycling": "At 30 days or more after deactivation, the number cannot be retrieved; giffgaff says it returns to the available-number pool and is recycled.",
+        "sources": [
+          {
+            "label": "giffgaff — inactivity deactivation and 30-day PAC rescue",
+            "url": "https://help.giffgaff.com/en/articles/242797-understanding-why-your-number-has-been-deactivated",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff — PAYG rates",
+            "url": "https://www.giffgaff.com/pricing",
+            "type": "official"
+          },
+          {
+            "label": "giffgaff — minimum Airtime Credit purchase",
+            "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last qualifying SIM-use date",
+          "anchor_help": "Use the date of the most recent documented qualifying call/SMS/MMS, mobile-data connection, Airtime Credit purchase or plan purchase.",
+          "due_offset": {
+            "value": 6,
+            "unit": "months"
+          },
+          "buffer": {
+            "value": 30,
+            "unit": "days"
+          },
+          "summary": "Take a qualifying giffgaff keep-alive action",
+          "description": "Complete a documented qualifying action before the six-month inactivity deadline. The calendar event is placed 30 days early as a product-side buffer."
+        }
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-capabilities-6b1aff",
+      "routeId": "h2o-paygo-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "The official terms reviewed so far do not give the MVP enough evidence to state a universal passport/ID requirement."
+        },
+        "roamingSms": {
+          "state": "not-supported-on-route",
+          "label": "Do not assume Pay As You Go can roam internationally",
+          "note": "H2O's current terms say International Roaming requires an active Unlimited Talk and Text plan with roaming balance. That does not establish international roaming for this Pay As You Go route.",
+          "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not verified",
+          "note": "No current official evidence has been added to this MVP establishing overseas Wi-Fi SMS/OTP behavior for H2O Pay As You Go."
+        }
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-commercial-cd4c6b",
+      "routeId": "h2o-paygo-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "H2O Wireless direct",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "$10 Pay As You Go refill",
+          "setup": {
+            "amount": 0,
+            "status": "official",
+            "note": "Broadband Facts lists $0 one-time fee for the $10 PayGo plan."
+          },
+          "recurring": {
+            "amount": 10,
+            "periodDays": 90,
+            "status": "official",
+            "note": "$10 refill expires after 90 days."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Government taxes vary; federal and administrative/regulatory fees are also listed."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "SIM/eSIM fulfillment is not included in this refill-only model."
+          },
+          "promotion": {
+            "status": "autopay-available",
+            "note": "Official page shows a 10% AutoPay discount, but cost windows use the undiscounted list refill."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 10,
+              "status": "derived-base-only",
+              "note": "Minimum documented $10 refill covers up to 90 days before usage; excludes taxes/fees."
+            },
+            "90": {
+              "amount": 10,
+              "status": "derived-base-only",
+              "note": "One $10 refill; recharge before expiry if retaining the number."
+            },
+            "365": {
+              "amount": 50,
+              "status": "derived-retention-only",
+              "note": "Five $10/90-day refills span at least 365 days if using this minimum refill route; usage can reduce balance sooner."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "restrictive",
+            "note": "Official terms say refills have no cash redemption value and are nonrefundable, including after cancellation."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Not independently modeled."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "SIM/eSIM stock is not guaranteed by this dataset."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official support is published."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "$0 balance for 30 consecutive days cancels the account and number."
+          },
+          "independentReview": {
+            "state": "not-researched",
+            "note": "No independent review snapshot is used in this MVP record."
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "H2O PayGo pricing",
+            "url": "https://www.h2owireless.com/plan/minute",
+            "type": "official"
+          },
+          {
+            "label": "H2O terms",
+            "url": "https://www.h2owireless.com/terms-conditions",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-frontstage-29a329",
+      "routeId": "h2o-paygo-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 50,
+        "shortlist": true,
+        "smsSignal": "Weak overseas",
+        "signalLevel": 1,
+        "keepCost": "≈ $41/yr*",
+        "setup": "Low",
+        "remote": "activation geography unverified",
+        "stability": "Watch",
+        "caveat": "Cheap PAYG retention, but current overseas SMS continuity is not a strong point.",
+        "kyc": "unverified",
+        "roaming": "not established for PayGo",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; overseas SMS gap",
+        "price": "$10 / 90d refill",
+        "keepRule": "Recharge before refill expiry"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-location-f1f9dc",
+      "routeId": "h2o-paygo-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "unknown",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "Initial activation and overseas SMS/roaming behavior are not yet sufficiently verified for an overseas-user recommendation.",
+        "outsideHomeNote": "If you are outside the US, this route remains research-required rather than recommended.",
+        "sourceUrl": "https://www.h2owireless.com/terms-conditions"
+      }
+    },
+    {
+      "id": "snap-h2o-paygo-us-retention-e9f242",
+      "routeId": "h2o-paygo-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "The current $10 and $30 Pay As You Go refills expire after 90 days; the $100 refill expires after 365 days. If account balance remains $0 for 30 consecutive days, the account and phone number are cancelled.",
+        "clock_start_or_reset": "The refill expiration clock starts from the purchased refill/renewal. Recharging before expiration preserves eligibility; the official page says remaining balance rolls over when the same amount is recharged before expiration.",
+        "qualifying_activity": [
+          "Recharge the Pay As You Go plan before its stated expiration date.",
+          "Use AutoPay where offered to renew the selected refill before expiry."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts and data consume balance but are not documented as extending the refill expiration date.",
+          "Account login or incoming service does not replace the refill requirement.",
+          "Do not treat the 30-day $0-balance period as a normal retention strategy."
+        ],
+        "lowest_cost_documented_action": "Renew the $10 / 90-day Pay As You Go refill. The current official plan page shows $9 with AutoPay.",
+        "safest_documented_action": "Recharge the same Pay As You Go amount before its expiration date and verify the balance/plan renewed; keep the account away from a $0 balance.",
+        "minimum_expected_cost": {
+          "amount": 9,
+          "currency": "USD",
+          "period": "90 days",
+          "basis": "current $10 PayGo refill with advertised 10% AutoPay discount",
+          "status": "official-current",
+          "note": "Without AutoPay, the documented refill is $10; taxes/fees may apply."
+        },
+        "recommended_buffer": {
+          "value": 7,
+          "unit": "days",
+          "basis": "Product-side buffer before the selected refill expiration date."
+        },
+        "grace_or_rescue_window": "If the balance is $0, cancellation occurs after 30 consecutive days at $0. Restore funded service before that point.",
+        "termination_and_recycling": "After 30 consecutive days at $0, H2O says the account and phone number are cancelled. The cited terms do not state the exact number-recycling timetable.",
+        "sources": [
+          {
+            "label": "H2O Wireless — Pay As You Go refill prices and expiry",
+            "url": "https://www.h2owireless.com/plan/minute",
+            "type": "official"
+          },
+          {
+            "label": "H2O Wireless — Pay As You Go terms",
+            "url": "https://www.h2owireless.com/terms-conditions",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "manual-deadline",
+          "anchor_label": "Current refill expiration date",
+          "anchor_help": "Enter the expiration date shown for your current PayGo refill. Current $10/$30 refills are 90 days and the $100 refill is 365 days, so using the actual expiration date avoids assuming the wrong refill cycle.",
+          "buffer": {
+            "value": 7,
+            "unit": "days"
+          },
+          "summary": "Recharge H2O PayGo before refill expiry",
+          "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
+        }
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "partial",
+          "label": "No universal passport rule established; eSIM account/email required",
+          "note": "Official pages reviewed do not establish a universal passport/identity-document requirement for PAYG. Lebara does require an account and valid verified email for eSIM purchase.",
+          "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+        },
+        "roamingSms": {
+          "state": "supported-after-activation",
+          "label": "International roaming SMS supported after UK activation",
+          "note": "Lebara supports roaming and states incoming texts are free in documented roaming scenarios. The SIM must first be activated in the UK; outside included regions PAYG credit or an add-on may be needed for outgoing usage.",
+          "sourceUrl": "https://www.lebara.co.uk/en/roaming/roaming-rate-finder.html"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not yet proven",
+          "note": "Lebara documents Wi-Fi Calling support on compatible eSIM devices, but the MVP does not yet have explicit official evidence that overseas Wi-Fi Calling can be relied on for SMS/OTP recovery."
+        }
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-current-profile-1e1fca",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-12",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "lebara-uk-direct-esim-china",
+        "brandId": "lebara-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Direct Lebara eSIM acquired from China; one recent flow reported ~£1.5 promotional first-month plan plus £5 credit/top-up.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 1.5,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 6.5,
+          "landedCny": 58.05,
+          "fxCheckedAt": "2026-09-23",
+          "state": "recent-community-flow-needs-live-price-refresh"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.49,
+          "yearCostOriginal": 1.96,
+          "yearCostCny": 17.5,
+          "action": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
+          "intervalDays": 90,
+          "practicalBufferDays": "70-75",
+          "state": "account-specific-confirmed-with-conflicting-long-idle-report"
+        },
+        "chinaActivation": "inbound SMS reproduced after direct install in mainland China without prior UK-network attachment; full outgoing voice/SMS state may remain incomplete until UK attachment",
+        "kyc": "not fully normalized in this packet",
+        "payment": "direct purchase/top-up reproduced; exact current payment methods need refresh",
+        "wifiCalling": "difficult/conflicting in current community reports",
+        "roamingSms": "inbound SMS reproduced in mainland China",
+        "refund": "at least one refund after setup/service trouble reported; no rate",
+        "trend": "watch",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-12",
+        "acquireUrl": "https://mobile.lebara.com/gb/en/",
+        "tariffSummary": "Recent community flow used a ~£1.5 first-month offer plus £5 credit; promo price must be refreshed before purchase.",
+        "sourceIds": [
+          "linuxdo-lebara-2745784-op",
+          "linuxdo-lebara-2745784-reply17",
+          "linuxdo-lebara-2763577",
+          "linuxdo-lebara-2894665"
+        ],
+        "guideSteps": [
+          "Open the current direct Lebara UK eSIM offer and recheck the live first-month price before paying.",
+          "Install the eSIM and confirm the line receives Lebara system/inbound SMS before binding an important account.",
+          "Test the exact app you need; current mainland-China reports cover inbound WhatsApp and Telegram codes, not a universal OTP guarantee.",
+          "For retention, generate a real chargeable activity and confirm it appears in account usage; one recent account/support interaction used a 90-day window with a 70–75 day practical buffer."
+        ]
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-frontstage-a35eed",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 20,
+        "shortlist": true,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "≈ £0.77/yr*",
+        "setup": "Some work",
+        "remote": "UK activation required",
+        "stability": "Stable",
+        "caveat": "Low keep-alive cost, but the line must be activated in the UK first.",
+        "kyc": "no universal passport rule; account/email for eSIM",
+        "roaming": "supported after UK activation",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + route reports",
+        "price": "Free SIM · plans from £5",
+        "keepRule": "Call/text/data < 90 days"
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-location-85cf26",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "required-country",
+        "hardBlock": true,
+        "requiredLocations": [
+          "United Kingdom"
+        ],
+        "summary": "Lebara states that its SIM/eSIM must be activated in the UK before it is taken abroad; an eSIM can be ordered while outside the UK but must still be activated in the UK.",
+        "outsideHomeNote": "If you are outside the UK now, you can research or order the route, but do not treat it as immediately usable until you can activate it in the UK.",
+        "sourceUrl": "https://www.lebara.co.uk/en/help/esim.html"
+      }
+    },
+    {
+      "id": "snap-lebara-uk-direct-esim-china-retention-352b0f",
+      "routeId": "lebara-uk-direct-esim-china",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "After 90 days with no call, text or mobile-data use, service is temporarily barred. After a further 365 days with no usage or top-up/plan purchase, the SIM expires.",
+        "clock_start_or_reset": "The first 90-day clock is defined by the last documented call, text or data use. After temporary barring, adding credit or buying a plan restores service. The official help page does not explicitly say that a top-up made before day 90 by itself resets the initial usage clock.",
+        "qualifying_activity": [
+          "Make a call.",
+          "Send a text.",
+          "Browse/use mobile data.",
+          "After temporary barring, add credit or buy a plan to resume service."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Incoming SMS is not listed as qualifying use.",
+          "Account login and balance checks are not listed as qualifying use.",
+          "A pre-bar top-up as a substitute for call/text/data activity is not explicit in the cited official help rule."
+        ],
+        "lowest_cost_documented_action": "Send one standard UK PAYG SMS while the line is active. Current official UK rate: £0.19 per text. Data is charged per KB and could cost less, but the official page does not document a minimum billable data session, so it is not used as the fixed-cost baseline.",
+        "safest_documented_action": "Before 90 days, complete a normal chargeable call, SMS or data session. If the SIM has already been temporarily barred, add credit or buy a plan through Lebara to restore service.",
+        "minimum_expected_cost": {
+          "amount": 0.19,
+          "currency": "GBP",
+          "basis": "one standard UK PAYG SMS",
+          "status": "official-fixed-price",
+          "note": "Roaming rates can differ by destination."
+        },
+        "recommended_buffer": {
+          "value": 14,
+          "unit": "days",
+          "basis": "Product-side buffer only; Lebara’s provider deadline remains 90 days."
+        },
+        "grace_or_rescue_window": "Temporary barring after 90 days is followed by a further 365-day recoverable inactivity period; adding credit or buying a plan can restore service during that period.",
+        "termination_and_recycling": "After the further 365-day period, Lebara says the SIM expires and a new SIM/number is required. The cited official page does not state the exact number-recycling timing.",
+        "sources": [
+          {
+            "label": "Lebara UK — SIM inactivity and expiry",
+            "url": "https://www.lebara.co.uk/en/help/new-members/my-sim-card-not-working.html",
+            "type": "official"
+          },
+          {
+            "label": "Lebara UK — PAYG rates",
+            "url": "https://www.lebara.co.uk/en/rates.html",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last call, text or mobile-data use date",
+          "anchor_help": "Use the last documented usage date that starts Lebara’s initial 90-day inactivity clock. Do not substitute a pre-bar top-up unless Lebara documents it for your plan.",
+          "due_offset": {
+            "value": 90,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 14,
+            "unit": "days"
+          },
+          "summary": "Use the Lebara line before temporary barring",
+          "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
+        }
+      }
+    },
+    {
+      "id": "snap-mobal-japan-data-physical-commercial-6a2373",
+      "routeId": "mobal-japan-data-physical",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Mobal Japan direct website / Japan pickup",
+        "purchaseEvidenceConfidence": "high",
+        "comparisonGroup": "japan-travel-data-physical",
+        "price": {
+          "currency": "JPY",
+          "basis": "Mobal Japan tourist physical data SIM; 50GB / 31 days baseline",
+          "setup": {
+            "amount": 7920,
+            "status": "official-current",
+            "note": "Current 50GB / 31 days tourist data-only SIM price."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time tourist package."
+          },
+          "tax": {
+            "status": "included-where-listed",
+            "note": "Use final official checkout as authority."
+          },
+          "shipping": {
+            "status": "included-observed",
+            "note": "Official page currently advertises free Japan pickup or free worldwide delivery; recheck destination eligibility."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "No temporary promotion used in this baseline."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 7920,
+              "status": "official-current",
+              "note": "31-day 50GB data-only physical SIM; no phone number."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "This seed route is a short-stay tourist package."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "Not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "unverified",
+            "note": "Exact tourist-SIM cancellation/refund trigger is not yet structured; recheck current terms before paying."
+          },
+          "paymentProtection": {
+            "state": "official-checkout",
+            "note": "Purchased from Mobal’s official channel; payment-method protections still vary."
+          },
+          "stockEvidence": {
+            "state": "listed-in-stock",
+            "note": "Official product page currently marks the product in stock; this is a snapshot, not a guarantee."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Mobal publishes customer support channels."
+          },
+          "numberControl": {
+            "state": "data-only-no-number",
+            "note": "No phone number is provided."
+          },
+          "independentReview": {
+            "note": "No independent-review score is used for this route in the MVP."
+          },
+          "complaintThemes": []
+        },
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This uses Mobal’s current direct price. Compare any reseller quote against the same data allowance and validity before deciding it is cheaper."
+        },
+        "sources": [
+          {
+            "label": "Mobal — Japan tourist data SIM prices",
+            "url": "https://www.mobal.com/japan-sim-card/",
+            "type": "official"
+          }
+        ]
+      }
+    },
+    {
+      "id": "snap-mobal-japan-data-physical-frontstage-0a0b83",
+      "routeId": "mobal-japan-data-physical",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "data",
+        "order": 20,
+        "shortlist": true,
+        "dataCost": "¥7,920 / 30 days",
+        "allowance": "Current Japan tourist plan",
+        "coverage": "Japan",
+        "setup": "Low effort",
+        "reuse": "Travel product",
+        "numberIncluded": "Data only",
+        "caveat": "Useful physical-SIM fallback for Japan when eSIM is not suitable."
+      }
+    },
+    {
+      "id": "snap-mobal-japan-voice-data-capabilities-35adea",
+      "routeId": "mobal-japan-voice-data",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "required",
+          "label": "Passport/identity verification required for voice service",
+          "note": "Mobal states Japanese law requires ID for voice-capable products. Delivery requires ID upload and matching delivery address; collection requires the physical valid passport. Voice customers must be 18+.",
+          "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-"
+        },
+        "roamingSms": {
+          "state": "supported-after-activation",
+          "label": "Voice/SMS roaming available on current Voice+Data 5G route",
+          "note": "Mobal's current Voice+Data 5G product can enable international roaming for a one-off fee. With roaming enabled, calls and SMS can work outside Japan; cellular data roaming is not supported.",
+          "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not verified",
+          "note": "The MVP has not found current official evidence establishing Wi-Fi Calling/Text abroad for this route. Use documented cellular roaming instead when future SMS access matters."
+        }
+      }
+    },
+    {
+      "id": "snap-mobal-japan-voice-data-commercial-022e59",
+      "routeId": "mobal-japan-voice-data",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Mobal direct",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "JPY",
+          "basis": "Entry Voice+Data 5G plan with 1GB monthly data and a real Japanese mobile number",
+          "setup": {
+            "amount": 4950,
+            "status": "official-regular",
+            "note": "Regular SIM/eSIM list price. A 10% promotion to ¥4,455 was observed on the verification date but is not used in durable totals."
+          },
+          "recurring": {
+            "amount": 1650,
+            "period": "calendar-month",
+            "status": "official",
+            "note": "Current official 1GB Voice+Data 5G entry plan; first calendar month is prorated."
+          },
+          "tax": {
+            "status": "included",
+            "note": "Mobal says listed JPY prices include tax."
+          },
+          "shipping": {
+            "status": "included-observed",
+            "note": "Current page advertises free Japan pickup or free worldwide delivery for this product; recheck destination eligibility."
+          },
+          "promotion": {
+            "status": "temporary-observed",
+            "amount": 4455,
+            "note": "Observed 10% setup-price discount; never treat as the normal price baseline."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 6600,
+              "status": "reference-upper-base",
+              "note": "Regular JPY 4,950 SIM/eSIM price + one full JPY 1,650 Voice+Data month; actual first month can be lower because it is prorated."
+            },
+            "90": {
+              "amount": 9900,
+              "status": "reference-base",
+              "note": "Regular setup + three full 1GB Voice+Data months; calls, outgoing SMS and optional roaming add-ons extra."
+            },
+            "365": {
+              "amount": 24750,
+              "status": "reference-base",
+              "note": "Regular setup + 12 full 1GB Voice+Data months; exact billing depends on activation date."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "needs-checkout-review",
+            "note": "Refund/cancellation detail is not reduced to a simple yes/no in this MVP."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Not independently modeled."
+          },
+          "stockEvidence": {
+            "state": "seller-current",
+            "note": "Official product page displayed In Stock on the verification date; this is a seller snapshot, not a guarantee."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Mobal publishes support/helpdesk channels."
+          },
+          "numberControl": {
+            "state": "carrier-account-number-lost-on-termination",
+            "note": "Mobal states the Japanese number is lost when service terminates."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 3.8,
+            "reviewCount": 948,
+            "invitationContext": "Mixed review snapshot; recent reports include both successful service/refunds and ID/support/delivery complaints.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/mobal.com"
+          },
+          "complaintThemes": [
+            "identity-review friction",
+            "support communication",
+            "delivery"
+          ]
+        },
+        "sources": [
+          {
+            "label": "Mobal Japan — Voice+Data 5G pricing and Japanese number",
+            "url": "https://www.mobal.com/japan-sim-card/",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "japan-voice-data-entry"
+      }
+    },
+    {
+      "id": "snap-mobal-japan-voice-data-frontstage-7ac659",
+      "routeId": "mobal-japan-voice-data",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 60,
+        "shortlist": false,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "≈ ¥19,800/yr",
+        "setup": "Some work",
+        "remote": "remote order; ID flow applies",
+        "stability": "Stable",
+        "caveat": "A real Japanese mobile number with a higher recurring cost than keep-alive-focused routes.",
+        "kyc": "passport/ID required",
+        "roaming": "voice/SMS add-on available",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; independent outcome coverage limited",
+        "price": "¥4,950 setup + ¥1,650/mo",
+        "keepRule": "Keep monthly plan paid"
+      }
+    },
+    {
+      "id": "snap-mobal-japan-voice-data-location-d31322",
+      "routeId": "mobal-japan-voice-data",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "conditional",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "Mobal accepts online activation requests and offers worldwide delivery or Japan collection. Voice-product ID rules must be completed before the SIM/eSIM access code is released or collected.",
+        "outsideHomeNote": "You can arrange the product before reaching Japan, but collection requires your physical passport and actual mobile service depends on the Japanese network/selected activation date. Recheck shipping timing before relying on pre-arrival setup.",
+        "sourceUrl": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-"
+      }
+    },
+    {
+      "id": "snap-mobal-japan-voice-data-retention-4679fd",
+      "routeId": "mobal-japan-voice-data",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "partial",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "This Voice+Data 5G route is an ongoing monthly service, not an inactivity-based prepaid line. Long-term plan fees renew by calendar month until manually terminated.",
+        "clock_start_or_reset": "For long-term plans, Mobal posts the invoice on the 1st and automatically charges the stored payment method on the 8th. Keeping the monthly service paid maintains the route.",
+        "qualifying_activity": [
+          "Successful monthly plan payment.",
+          "Keep billing information valid so automatic payment succeeds.",
+          "Port the number before termination if moving to another eligible Japanese provider."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Incoming SMS or ordinary usage does not replace the monthly plan fee.",
+          "For the latest Voice+Data 5G product, the cited suspension page says the Vacation Plan is not available.",
+          "The exact non-payment suspension-to-termination grace duration is not stated in the cited official pages."
+        ],
+        "lowest_cost_documented_action": "Keep the current 1GB Voice+Data 5G plan active at ¥1,650 per calendar month for this specific route.",
+        "safest_documented_action": "Keep the monthly plan active with valid billing details and verify payment; if leaving Mobal but keeping the number, complete the documented number-porting path before termination.",
+        "minimum_expected_cost": {
+          "amount": 1650,
+          "currency": "JPY",
+          "period": "calendar month",
+          "basis": "current 1GB Voice+Data 5G plan",
+          "status": "official",
+          "note": "This is route-specific and does not substitute the cheaper Voice Lite product, which is a different route."
+        },
+        "recommended_buffer": {
+          "value": 3,
+          "unit": "days",
+          "basis": "Product-side buffer before the automatic payment date on the 8th."
+        },
+        "grace_or_rescue_window": "Unknown. Mobal warns failed billing can lead to suspension or termination but the reviewed official pages do not publish a fixed grace duration for this route.",
+        "termination_and_recycling": "A submitted termination permanently disconnects service and loses the Mobal phone number. Once fully terminated, the plan cannot be reactivated and a replacement SIM/eSIM receives a new number. Exact recycling timing is not published in the cited pages.",
+        "sources": [
+          {
+            "label": "Mobal — Voice+Data 5G pricing",
+            "url": "https://www.mobal.com/japan-sim-card/",
+            "type": "official"
+          },
+          {
+            "label": "Mobal — long-term billing procedure",
+            "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041300-billing-procedures",
+            "type": "official"
+          },
+          {
+            "label": "Mobal — termination and number loss",
+            "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041487-termination-requests",
+            "type": "official"
+          },
+          {
+            "label": "Mobal — current suspension limitations",
+            "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041505-suspension-requests",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "calendar-recurring",
+          "day_of_month": 8,
+          "buffer": {
+            "value": 3,
+            "unit": "days"
+          },
+          "summary": "Check Mobal monthly payment",
+          "description": "Mobal posts the long-term invoice on the 1st and automatically charges the stored payment method on the 8th. This recurring reminder falls on the 5th, three days before the documented charge date."
+        }
+      }
+    },
+    {
+      "id": "snap-sakura-japan-voice-data-commercial-d1a4db",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Sakura Mobile direct",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "JPY",
+          "basis": "5GB Voice + Data monthly plan",
+          "setup": {
+            "amount": 5500,
+            "status": "official-tax-included",
+            "note": "Activation fee, tax included."
+          },
+          "recurring": {
+            "amount": 3278,
+            "period": "month",
+            "status": "official-tax-included",
+            "note": "5GB Voice + Data monthly price, tax included."
+          },
+          "tax": {
+            "status": "included",
+            "note": "These two listed amounts are tax-inclusive."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "Pickup/shipping cost depends on the application path and is not included here."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "No temporary promotion is used in cost windows."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 8778,
+              "status": "derived-base-only",
+              "note": "Activation fee + one monthly charge; calls/SMS and other extras excluded."
+            },
+            "90": {
+              "amount": 15334,
+              "status": "derived-base-only",
+              "note": "Activation fee + three monthly charges."
+            },
+            "365": {
+              "amount": 44836,
+              "status": "reference-base",
+              "note": "Activation fee + 12 monthly charges; actual billing dates may differ."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "needs-checkout-review",
+            "note": "Current cancellation/refund details are not modeled into a simple guarantee."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Not independently modeled."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "No live inventory guarantee is stored."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official help center is available."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "Renewable carrier-style Japanese number; exact post-cancellation/porting outcome still requires verification."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 4.8,
+            "reviewCount": 1491,
+            "last12Months": 709,
+            "invitationContext": "Company asks customers to review; rating is context only, not a trust score.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/www.sakuramobile.jp"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "Sakura monthly pricing",
+            "url": "https://www.sakuramobile.jp/monthly/price/",
+            "type": "official"
+          },
+          {
+            "label": "Sakura non-resident application guidance",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "japan-voice-data-entry"
+      }
+    },
+    {
+      "id": "snap-sakura-japan-voice-data-frontstage-465680",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 70,
+        "shortlist": false,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "Active plan for SMS",
+        "setup": "High effort",
+        "remote": "Japan pickup + face-to-face ID",
+        "stability": "Stable",
+        "caveat": "The low suspension fee preserves the number only; active SMS requires normal service.",
+        "kyc": "passport route requires in-person verification",
+        "roaming": "calls/SMS supported abroad",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; independent outcome coverage limited",
+        "price": "¥5,500 setup + ¥3,278/mo",
+        "keepRule": "Keep plan active for SMS"
+      }
+    },
+    {
+      "id": "snap-sakura-japan-voice-data-retention-a4f431",
+      "routeId": "sakura-japan-voice-data",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "This is a monthly contract, not an inactivity-based prepaid line. A Voice+Data line can be placed on Sakura’s suspension option to keep the number while service is paused.",
+        "clock_start_or_reset": "Normal service follows monthly billing. Suspension is applied for full calendar months through My Page according to the plan-change schedule.",
+        "qualifying_activity": [
+          "Continue paying the normal Voice+Data monthly plan.",
+          "For number retention without service, use the documented Voice+Data suspension option at ¥220/month with credit-card payment.",
+          "If moving carriers, request MNP before submitting termination."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Suspension provides no calls, SMS or data, so it preserves the number but does not provide OTP continuity.",
+          "If the ¥220 suspension fee is unpaid, Sakura states the contract will be terminated.",
+          "After submitting termination, a plan change or MNP request can no longer be submitted."
+        ],
+        "lowest_cost_documented_action": "Use Sakura’s Voice+Data suspension option at ¥220 per month if you only need to retain the current number and do not need calls/SMS/data during suspension.",
+        "safest_documented_action": "If ongoing OTP/SMS access matters, keep the normal Voice+Data plan active. If you only need future ownership, use the official suspension option and keep the credit card valid.",
+        "minimum_expected_cost": {
+          "amount": 220,
+          "currency": "JPY",
+          "period": "month",
+          "basis": "Voice+Data suspension option",
+          "status": "official",
+          "note": "Credit-card payment is required; suspended service has no call/SMS/data access."
+        },
+        "recommended_buffer": {
+          "value": 5,
+          "unit": "days",
+          "basis": "Product-side buffer before Sakura’s normal 25th-of-month plan-change/termination cutoff."
+        },
+        "grace_or_rescue_window": "No fixed unpaid grace period was found in the reviewed official pages. The suspension article says an unpaid suspension fee terminates the contract.",
+        "termination_and_recycling": "Termination occurs at month-end according to the request cutoff. Users who want to keep the number should request MNP before termination; Sakura says an MNP request can no longer be submitted after a termination request. Exact post-termination recycling timing is not documented in the cited pages.",
+        "sources": [
+          {
+            "label": "Sakura Mobile — suspend Voice+Data and keep the number",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360050909732--Monthly-SIM-eSIM-I-want-to-pause-my-plan-but-keep-my-current-phone-number-How-can-I-do-that",
+            "type": "official"
+          },
+          {
+            "label": "Sakura Mobile — monthly contract termination",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020534531-How-do-I-terminate-cancel-my-Monthly-contract",
+            "type": "official"
+          },
+          {
+            "label": "Sakura Mobile — MNP number request",
+            "url": "https://support.sakuramobile.jp/hc/en-us/articles/360040330852-How-do-I-request-an-MNP-number",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "unavailable",
+          "reason": "No single verified keep-alive deadline can be generated safely for this monthly route. The documented 25th-of-month cutoff is for plan changes/termination, not a universal payment-expiry deadline."
+        }
+      }
+    },
+    {
+      "id": "snap-smspool-temp-capabilities-222487",
+      "routeId": "smspool-temp",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "marketplace-dependent",
+          "label": "Marketplace/payment rules vary",
+          "note": "Requirements depend on the account/payment route; this is not a durable SIM subscription."
+        },
+        "roamingSms": {
+          "state": "not-applicable",
+          "label": "No roaming line",
+          "note": "Temporary verification numbers are not a travel roaming product."
+        },
+        "wifiCallingAbroad": {
+          "state": "not-applicable",
+          "label": "Not applicable",
+          "note": "No user-controlled phone line is provided for Wi-Fi Calling."
+        }
+      }
+    },
+    {
+      "id": "snap-smspool-temp-commercial-2f46fd",
+      "routeId": "smspool-temp",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "marketplace",
+        "purchaseChannel": "SMSPool marketplace",
+        "purchaseEvidenceConfidence": "medium",
+        "price": {
+          "currency": "USD",
+          "basis": "Dynamic country/service inventory",
+          "setup": {
+            "amount": null,
+            "status": "dynamic",
+            "note": "Price varies by country/service/supplier."
+          },
+          "recurring": {
+            "amount": null,
+            "status": "not-applicable",
+            "note": "One-time activation and rental are separate products."
+          },
+          "tax": {
+            "status": "unknown",
+            "note": "Not modeled."
+          },
+          "shipping": {
+            "status": "not-applicable",
+            "note": "Digital service."
+          },
+          "promotion": {
+            "status": "not-modeled",
+            "note": "None assumed."
+          },
+          "costWindows": {
+            "30": {
+              "amount": null,
+              "status": "dynamic",
+              "note": "Do not turn the cheapest listed activation into an expected successful cost without independent success/refund data."
+            },
+            "90": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "One-time activation is not a durable-number plan."
+            },
+            "365": {
+              "amount": null,
+              "status": "not-applicable",
+              "note": "One-time activation is not a durable-number plan."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "clear-no-code-conditions",
+            "note": "No-code cancellation/refund rules are documented, but unused deposited balance and other cases have separate conditions."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Depends on deposit/payment method."
+          },
+          "stockEvidence": {
+            "state": "seller-estimate",
+            "note": "Some supplier stock counters are estimates, not guaranteed live inventory."
+          },
+          "support": {
+            "state": "marketplace-support",
+            "note": "Supplier-side failures can still matter."
+          },
+          "numberControl": {
+            "state": "temporary-not-owned",
+            "note": "A one-time activation number is not durable customer ownership."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 3.1,
+            "reviewCount": 401,
+            "last12Months": 38,
+            "invitationContext": "Mixed snapshot. Recent complaints include inaccurate stock and failed numbers; company responses are also visible.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/smspool.net"
+          },
+          "complaintThemes": [
+            "stock accuracy",
+            "failed numbers",
+            "refund disputes"
+          ]
+        },
+        "sources": [
+          {
+            "label": "SMSPool",
+            "url": "https://www.smspool.net/",
+            "type": "seller"
+          },
+          {
+            "label": "Trustpilot snapshot",
+            "url": "https://www.trustpilot.com/review/smspool.net",
+            "type": "independent-review"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "not-comparable",
+          "label": "No stable official benchmark",
+          "note": "Temporary-number inventory is dynamic and supplier-dependent. A low list price is not enough to prove fair value or expected successful cost."
+        },
+        "comparisonGroup": "temp-verification-market"
+      }
+    },
+    {
+      "id": "snap-smspool-temp-frontstage-066df1",
+      "routeId": "smspool-temp",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "temporary",
+        "order": 10,
+        "shortlist": true,
+        "smsSignal": "Inventory-dependent",
+        "signalLevel": 2,
+        "price": "Live check required",
+        "coverage": "Country + service pools",
+        "numberType": "One-time; rentals separate",
+        "privacyRisk": "High for critical accounts",
+        "availability": "Live inventory",
+        "caveat": "A paid order is still not long-term ownership of the number."
+      }
+    },
+    {
+      "id": "snap-smspool-temp-location-16044f",
+      "routeId": "smspool-temp",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "online",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "No physical SIM activation is involved; service/country inventory and pricing are dynamic.",
+        "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
+        "sourceUrl": "https://www.smspool.net/"
+      }
+    },
+    {
+      "id": "snap-tello-us-capabilities-bb2150",
+      "routeId": "tello-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "partial",
+          "label": "US E911 address required for Wi-Fi Calling",
+          "note": "The MVP has not established a universal passport/identity-document requirement, but Tello requires a US emergency E911 address before Wi-Fi Calling can be enabled.",
+          "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+        },
+        "roamingSms": {
+          "state": "supported-after-activation",
+          "label": "SMS abroad after US activation",
+          "note": "After first activation in the US, Tello supports international roaming in 200+ countries/territories and Wi-Fi Calling & Text abroad. Standard roaming requires PAYG credit; the line must have been used in the US before roaming.",
+          "sourceUrl": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas"
+        },
+        "wifiCallingAbroad": {
+          "state": "supported",
+          "label": "Wi-Fi Calling & Text can receive OTPs abroad",
+          "note": "Tello explicitly states that Wi-Fi Calling & Text can receive OTP and verification texts while outside the US after setup.",
+          "sourceUrl": "https://tello.com/help_center/service-issues-troubleshooting/how-can-i-use-wi-fi-calling"
+        }
+      }
+    },
+    {
+      "id": "snap-tello-us-commercial-3a57dd",
+      "routeId": "tello-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-15",
+        "sellerRelationship": "official-direct",
+        "purchaseChannel": "Tello direct checkout",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "300-minute / unlimited-text no-data plan",
+          "setup": {
+            "amount": 0,
+            "status": "official",
+            "note": "Broadband Facts lists no one-time purchase fee."
+          },
+          "recurring": {
+            "amount": 5,
+            "periodDays": 30,
+            "status": "official",
+            "note": "Plan is valid for 30 days."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Government taxes vary by location; Cost Recovery can be up to $0.30. Checkout calculates the final amount."
+          },
+          "shipping": {
+            "status": "unknown",
+            "note": "SIM/eSIM-specific fulfillment cost is not included in this base model."
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "Cost windows do not rely on a temporary discount."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 5,
+              "status": "derived-base-only",
+              "note": "Base plan only; excludes tax/surcharges and any SIM fulfillment cost."
+            },
+            "90": {
+              "amount": 15,
+              "status": "derived-base-only",
+              "note": "Three 30-day cycles; excludes tax/surcharges."
+            },
+            "365": {
+              "amount": 65,
+              "status": "derived-base-only",
+              "note": "Thirteen 30-day renewals are needed to cover at least 365 days; excludes tax/surcharges."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "partial",
+            "note": "Plan changes/early renewals are charged immediately and unused service is not partially refunded."
+          },
+          "paymentProtection": {
+            "state": "unknown",
+            "note": "Card-network protections vary by payment method and are not scored here."
+          },
+          "stockEvidence": {
+            "state": "not-modeled",
+            "note": "eSIM/SIM availability is not represented as guaranteed stock."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Official support channels are published."
+          },
+          "numberControl": {
+            "state": "account-controlled",
+            "note": "Recurring carrier line controlled through the customer's Tello account."
+          },
+          "independentReview": {
+            "platform": "Trustpilot",
+            "rating": 4.5,
+            "reviewCount": 15385,
+            "last12Months": 2026,
+            "invitationContext": "Company asks customers to review; treat the score as context, not proof of reliability.",
+            "verifiedOn": "2026-09-15",
+            "sourceUrl": "https://www.trustpilot.com/review/tello.com"
+          },
+          "complaintThemes": []
+        },
+        "sources": [
+          {
+            "label": "Tello $5 plan / Broadband Facts",
+            "url": "https://tello.com/buy/custom_plans?plan=0-300",
+            "type": "official"
+          },
+          {
+            "label": "Tello activation abroad rule",
+            "url": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad",
+            "type": "official"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "official-baseline",
+          "label": "Official price baseline",
+          "note": "This route uses the provider’s own published price as the benchmark. A third-party quote above this baseline may be a markup; this does not prove the official route is the cheapest possible alternative."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-tello-us-frontstage-e2bd80",
+      "routeId": "tello-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 30,
+        "shortlist": true,
+        "smsSignal": "Good after setup",
+        "signalLevel": 3,
+        "keepCost": "≈ $61/yr + tax",
+        "setup": "Some work",
+        "remote": "US cellular activation required",
+        "stability": "Stable",
+        "caveat": "Strong overseas continuity after activation, but first activation requires a US cellular connection.",
+        "kyc": "US E911 address for Wi-Fi Calling",
+        "roaming": "supported after US activation",
+        "verified": "2026-09-16",
+        "evidence": "Current rules + route reports",
+        "price": "$5 / 30 days + tax",
+        "keepRule": "Renew paid plan / 30 days"
+      }
+    },
+    {
+      "id": "snap-tello-us-location-3de2f9",
+      "routeId": "tello-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "required-country",
+        "hardBlock": true,
+        "requiredLocations": [
+          "United States"
+        ],
+        "summary": "Initial activation or port-in must be completed while physically in the United States and connected to a US cellular tower.",
+        "outsideHomeNote": "If you are outside the United States now, do not buy this as an immediate activation route unless you can first activate it in the US.",
+        "sourceUrl": "https://tello.com/help_center/international-calls/can-i-activate-tello-while-i-m-abroad"
+      }
+    },
+    {
+      "id": "snap-tello-us-retention-0b9142",
+      "routeId": "tello-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "This monthly-plan route is payment/service based, not usage based. A plan lasts 30 days. If the monthly plan ends and is not renewed, the number has a 12-day grace period before expiration.",
+        "clock_start_or_reset": "A plan purchase or successful renewal starts a new 30-day billing cycle. The 12-day number grace period starts after the monthly service stops.",
+        "qualifying_activity": [
+          "Successful automatic plan renewal.",
+          "Manual plan renewal or purchase of a new plan before the number expires.",
+          "Port out during the post-service grace period if leaving Tello."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts, data use or account login do not replace the required paid-plan renewal for this route.",
+          "A failed payment does not count as renewal.",
+          "Tello PAYG has a different 3-month credit-expiry rule and is not the retention model used for this monthly-plan route."
+        ],
+        "lowest_cost_documented_action": "Renew the current documented $5 / 30-day base plan.",
+        "safest_documented_action": "Keep Autopay enabled with a valid payment method and optionally enable Tello’s 48-hour renewal notice; verify the renewal succeeds before the service end date.",
+        "minimum_expected_cost": {
+          "amount": 5,
+          "currency": "USD",
+          "period": "30 days",
+          "basis": "documented base monthly plan",
+          "status": "official-base-only",
+          "note": "Taxes/surcharges can be extra."
+        },
+        "recommended_buffer": {
+          "value": 3,
+          "unit": "days",
+          "basis": "Product-side buffer before the 30-day renewal boundary."
+        },
+        "grace_or_rescue_window": "12 days after an unrenewed monthly plan ends. Buy a new plan or begin port-out before the grace period ends.",
+        "termination_and_recycling": "Tello states there is no recovery after the phone number expires. The cited help page does not state the later recycling timetable.",
+        "sources": [
+          {
+            "label": "Tello — plan renewal timing",
+            "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
+            "type": "official"
+          },
+          {
+            "label": "Tello — phone-number expiration and grace period",
+            "url": "https://tello.com/help_center/phone-number/when-will-my-phone-number-expire",
+            "type": "official"
+          },
+          {
+            "label": "Tello — current $5 base plan",
+            "url": "https://tello.com/buy/custom_plans?plan=0-300",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last successful plan renewal or purchase date",
+          "anchor_help": "Use the start date of the current 30-day paid-plan cycle, not the date you opened this tool.",
+          "due_offset": {
+            "value": 30,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 3,
+            "unit": "days"
+          },
+          "summary": "Check Tello plan renewal",
+          "description": "Verify the paid plan renews successfully before the 30-day service boundary. The calendar event is placed 3 days early as a product-side buffer."
+        }
+      }
+    },
+    {
+      "id": "snap-trip-cmlink-china-data-frontstage-6d28cb",
+      "routeId": "trip-cmlink-china-data",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-23",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "data",
+        "order": 15,
+        "shortlist": true,
+        "dataCost": "Live Trip price · check now",
+        "allowance": "Daily-data · 3–15 days",
+        "coverage": "Mainland China",
+        "setup": "Low–medium",
+        "reuse": "Travel-session product",
+        "numberIncluded": "Data only · no durable number",
+        "stability": "Watch",
+        "caveat": "Cheap mainland-China data route with mixed performance: recent users report 4G-only periods, evening slowdowns and device variation. Treat the 5G label as best-effort, not guaranteed."
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-capabilities-0e03b6",
+      "routeId": "ultra-paygo-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "Current official PayGo materials do not give the MVP enough evidence to state a universal passport/ID requirement for overseas buyers."
+        },
+        "roamingSms": {
+          "state": "supported",
+          "label": "International roaming SMS supported with wallet balance",
+          "note": "Ultra Mobile PayGo supports voice, SMS and MMS roaming through the PayGo Wallet. Destination-specific send/receive rates apply and PayGo does not include data roaming.",
+          "sourceUrl": "https://www.ultramobile.com/paygo/international-roaming/"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not yet verified for this MVP route",
+          "note": "Do not assume Wi-Fi Calling can replace roaming until the PayGo-specific rule is verified."
+        },
+        "numberDuration": {
+          "state": "renewable-carrier",
+          "label": "Renewable carrier line with 30-day service cycles",
+          "note": "Ultra PayGo is a recurring carrier service. The base charge is deducted every 30 days while sufficient wallet balance is available.",
+          "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+        },
+        "termination": {
+          "state": "suspension-then-cancellation",
+          "label": "Missed renewal can suspend service and eventually cancel the number",
+          "note": "Ultra’s full PayGo terms say an account below the $3 renewal minimum can remain suspended for up to 60 days; if the balance is above $0 but below $3, an additional 30-day extension can apply. If the balance is $0 after 60 days, the account is cancelled without that extension. The simpler PayGo FAQ says the account and number are cancelled if no payment is made 60 days after the last payment. Treat the full terms as the detailed rule and restore service early rather than relying on the edge of the grace window.",
+          "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+        },
+        "activationFlow": {
+          "state": "standard-physical-sim",
+          "label": "Official PayGo physical-SIM activation uses the SIM ACT CODE",
+          "note": "Ultra’s PayGo activation page asks for the 11-character ACT CODE from the back of the SIM. A third-party pre-activated eSIM is therefore a different activation/ownership path and should not be treated as equivalent.",
+          "sourceUrl": "https://my.ultramobile.com/paygo/activation"
+        }
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-commercial-f480af",
+      "routeId": "ultra-paygo-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-16",
+        "sellerRelationship": "official-channel",
+        "purchaseChannel": "Ultra Mobile PayGo page → eBay or select T-Mobile stores",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "Ultra PayGo recurring service baseline; acquisition channel cost is modeled separately below",
+          "setup": {
+            "amount": null,
+            "status": "channel-specific",
+            "note": "The SIM/eSIM acquisition price depends on the purchase channel and is not the same as the $3 service renewal."
+          },
+          "recurring": {
+            "amount": 3,
+            "periodDays": 30,
+            "status": "official",
+            "note": "PayGo includes 100 minutes, 100 texts and 100MB for each 30-day cycle."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Ultra states taxes and fees are additional; marketplace sales tax also varies by checkout location."
+          },
+          "shipping": {
+            "status": "channel-specific",
+            "note": "Shipping and delivery depend on the selected acquisition channel; see “Where to buy now.”"
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "Service cost windows use the official $3 / 30-day recurring charge, not a temporary seller promotion."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 3,
+              "status": "service-only",
+              "note": "One 30-day service cycle only; excludes SIM/eSIM acquisition price, taxes, roaming wallet and add-ons."
+            },
+            "90": {
+              "amount": 9,
+              "status": "service-only",
+              "note": "Three 30-day service cycles only; excludes acquisition price, taxes, roaming wallet and add-ons."
+            },
+            "365": {
+              "amount": 39,
+              "status": "service-only",
+              "note": "Thirteen 30-day cycles are needed to cover at least 365 days; excludes acquisition price, taxes, roaming wallet and add-ons."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "restrictive",
+            "note": "Ultra states Tourist and PayGo services are non-refundable and lost/stolen prepaid SIM cards are not refunded. Marketplace seller return terms are separate and may be stricter."
+          },
+          "paymentProtection": {
+            "state": "channel-specific",
+            "note": "Payment protection depends on the marketplace or retailer. Marketplace feedback and buyer-protection programs are context, not a provider guarantee."
+          },
+          "stockEvidence": {
+            "state": "channel-dependent",
+            "note": "Ultra directs buyers to eBay or select T-Mobile stores. The provider-linked eBay listing was observed unavailable in the 2026-09-16 snapshot; store stock is not verified."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Ultra publishes PayGo and Care support channels."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "This is a renewable carrier line. Missing the recurring charge can suspend service and eventually cancel the account/number under Ultra’s PayGo terms."
+          },
+          "independentReview": {
+            "state": "not-researched",
+            "note": "No independent-review platform score is converted into a trust score for this route. Marketplace seller metrics below are shown only as purchase-channel context."
+          },
+          "complaintThemes": []
+        },
+        "purchaseOptions": [
+          {
+            "id": "ultra-official-ebay-285112988423",
+            "label": "Ultra Mobile Official on eBay",
+            "sellerRelationship": "official-linked-marketplace",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Sealed physical PayGo SIM",
+            "price": {
+              "currency": "USD",
+              "amount": 13,
+              "shippingAmount": 0,
+              "allInBeforeTax": 13,
+              "status": "reference-observed",
+              "note": "Provider-linked listing reference price; not a currently confirmed buyable quote."
+            },
+            "availability": {
+              "state": "observed-unavailable",
+              "note": "Observed out of stock / ended in multiple eBay regional snapshots. Ultra’s PayGo page still directs buyers to eBay, so recheck the provider link before purchase."
+            },
+            "sellerEvidence": {
+              "seller": "Ultra Mobile Official",
+              "positivePercent": 99.8,
+              "itemsSold": 36591,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "The current regional eBay snapshot says no returns accepted; buyer-protection rules are separate."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "Marketplace protections vary by transaction and are not scored here."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": 0,
+              "ratio": 1,
+              "note": "Reference acquisition price for like-for-like sealed physical PayGo SIM comparison; availability is currently uncertain/unavailable."
+            },
+            "ownershipWarning": "Standard sealed physical-SIM purchase path. Activation still follows Ultra’s PayGo activation flow; current overseas activation geography remains unverified by this MVP.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/285112988423"
+          },
+          {
+            "id": "ultra-select-tmobile-store",
+            "label": "Select T-Mobile stores",
+            "sellerRelationship": "provider-designated-retail",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Physical PayGo SIM from designated retail channel",
+            "price": {
+              "currency": "USD",
+              "amount": null,
+              "shippingAmount": null,
+              "allInBeforeTax": null,
+              "status": "unknown",
+              "note": "Ultra names select T-Mobile stores as a purchase channel, but this MVP has not verified a current store price."
+            },
+            "availability": {
+              "state": "store-dependent",
+              "note": "Only select stores; local inventory is unknown until checked with the store."
+            },
+            "sellerEvidence": {
+              "seller": "Select T-Mobile retail location",
+              "note": "Provider-designated retail channel; exact store inventory and transaction terms vary."
+            },
+            "returns": {
+              "state": "unknown",
+              "note": "Verify the specific store’s return policy before purchase."
+            },
+            "paymentProtection": {
+              "state": "retail-dependent",
+              "note": "Depends on the store and payment method."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": null,
+              "ratio": null,
+              "note": "Price is unknown, so no markup/overpay comparison is made."
+            },
+            "ownershipWarning": "Standard physical-SIM class if the store sells the PayGo kit. Confirm it is PayGo, not a different Ultra plan/SIM product.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ultramobile.com/paygo/"
+          },
+          {
+            "id": "ultra-third-party-sealed-354076563615",
+            "label": "Third-party sealed physical SIM on eBay",
+            "sellerRelationship": "third-party-marketplace",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Sealed physical PayGo SIM",
+            "price": {
+              "currency": "USD",
+              "amount": 48.85,
+              "shippingAmount": 5,
+              "allInBeforeTax": 53.85,
+              "status": "observed-current",
+              "note": "Observed listing price plus stated shipping before sales tax; marketplace price can change."
+            },
+            "availability": {
+              "state": "available-observed",
+              "note": "Snapshot showed 6 available and 241 sold; recheck the live listing before paying."
+            },
+            "sellerEvidence": {
+              "seller": "shieldtechsecurity",
+              "positivePercent": 98.8,
+              "itemsSold": 39000,
+              "listingSold": 241,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "Seller does not accept returns in the current listing snapshot."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "eBay buyer-protection rules may apply to eligible transactions; this MVP does not score them."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": 40.85,
+              "ratio": 4.1423,
+              "note": "Observed delivered-before-tax price is $40.85 above the provider-linked $13 reference (about 4.14×). The $13 reference listing is currently unavailable, so this is a price-gap signal, not a claim of unfair conduct."
+            },
+            "ownershipWarning": "Sealed physical SIM is the same broad activation class as the provider-linked reference, but seller-specific expiration/activation details must be checked before purchase.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/354076563615"
+          },
+          {
+            "id": "ultra-third-party-preactivated-esim-358131980470",
+            "label": "Third-party pre-activated eSIM on eBay",
+            "sellerRelationship": "preactivated-third-party",
+            "productClass": "preactivated-esim",
+            "productClassLabel": "Pre-activated eSIM — different ownership/activation class",
+            "price": {
+              "currency": "USD",
+              "amount": 54.95,
+              "shippingAmount": 0,
+              "allInBeforeTax": 54.95,
+              "status": "observed-current",
+              "note": "Observed marketplace price before tax; seller-managed activation/service details can change."
+            },
+            "availability": {
+              "state": "available-observed",
+              "note": "Snapshot showed 2 available and 522 sold; recheck the live listing before paying."
+            },
+            "sellerEvidence": {
+              "seller": "shieldtechsecurity",
+              "positivePercent": 98.8,
+              "itemsSold": 39000,
+              "listingSold": 522,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "Seller does not accept returns in the current listing snapshot."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "Marketplace protections are separate from provider service/refund terms and are not scored here."
+            },
+            "comparisonGroup": "ultra-paygo-preactivated-esim",
+            "comparableToReference": false,
+            "priceComparison": {
+              "referenceAmount": null,
+              "currency": "USD",
+              "deltaAmount": null,
+              "ratio": null,
+              "note": "Do not compare this as like-for-like with the sealed physical SIM reference. It is a different activation and ownership class."
+            },
+            "ownershipWarning": "Pre-activated by a third party. Confirm whose account controls the number, when the 30-day service clock starts, how recovery works, and whether you can independently manage the carrier account. This MVP does not treat third-party pre-activation as equivalent to Ultra’s standard activation flow.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/358131980470"
+          }
+        ],
+        "sources": [
+          {
+            "label": "Ultra PayGo pricing and purchase channels",
+            "url": "https://www.ultramobile.com/paygo/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra PayGo terms and cancellation rules",
+            "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra PayGo activation",
+            "url": "https://my.ultramobile.com/paygo/activation",
+            "type": "official"
+          },
+          {
+            "label": "Ultra-linked eBay listing snapshot",
+            "url": "https://www.ebay.com/itm/285112988423",
+            "type": "marketplace"
+          },
+          {
+            "label": "Third-party sealed SIM snapshot",
+            "url": "https://www.ebay.com/itm/354076563615",
+            "type": "marketplace"
+          },
+          {
+            "label": "Third-party pre-activated eSIM snapshot",
+            "url": "https://www.ebay.com/itm/358131980470",
+            "type": "marketplace"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "channel-comparison",
+          "label": "Acquisition price varies sharply by channel",
+          "note": "The $3 / 30-day charge is service renewal, not the SIM acquisition price. The provider-linked sealed-SIM reference was $13 but observed unavailable; a third-party sealed-SIM listing was $53.85 delivered before tax. Pre-activated eSIMs are a different product/ownership class and are not compared as identical."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-frontstage-b668f4",
+      "routeId": "ultra-paygo-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 40,
+        "shortlist": true,
+        "smsSignal": "Good / setup watch",
+        "signalLevel": 3,
+        "keepCost": "≈ $37/yr",
+        "setup": "Some work",
+        "remote": "activation geography unverified",
+        "stability": "Watch",
+        "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters.",
+        "kyc": "unverified",
+        "roaming": "supported with PayGo wallet",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; setup path still has gaps",
+        "price": "SIM price varies · $3/30d service",
+        "keepRule": "Fund $3 every 30 days"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-location-2a579b",
+      "routeId": "ultra-paygo-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "unknown",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "The MVP has verified international roaming support but has not yet verified a definitive initial-activation geography rule for overseas buyers.",
+        "outsideHomeNote": "If you are outside the US, treat initial activation as unverified until the provider's current rule is confirmed.",
+        "sourceUrl": "https://www.ultramobile.com/paygo/"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-retention-d58cc0",
+      "routeId": "ultra-paygo-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "PayGo service runs in 30-day cycles. If the wallet balance is below the $3 recurring-charge minimum at the cycle end, service is suspended.",
+        "clock_start_or_reset": "Activation or successful $3 monthly renewal starts the next 30-day cycle. During suspension, adding enough credit to meet the $3 minimum renews service for the next cycle.",
+        "qualifying_activity": [
+          "Maintain at least $3 in the PayGo wallet for the recurring 30-day charge.",
+          "Add credit during suspension so the balance reaches the $3 renewal minimum."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts and data usage do not substitute for the $3 renewal charge.",
+          "A positive balance below $3 does not restore active service.",
+          "Voice/Text or Data Passes do not work on suspended or cancelled accounts."
+        ],
+        "lowest_cost_documented_action": "Fund the recurring $3 PayGo service charge for each 30-day cycle. If new wallet funding is needed, Ultra’s documented Auto Renew denominations begin at $5, with $3 applied to the monthly renewal.",
+        "safest_documented_action": "Enable Auto Renew with a valid card and enough wallet balance so the $3 recurring charge succeeds each cycle; do not rely on the suspension window.",
+        "minimum_expected_cost": {
+          "amount": 3,
+          "currency": "USD",
+          "period": "30 days",
+          "basis": "PayGo recurring service charge",
+          "status": "official",
+          "note": "A fresh Auto Renew top-up denomination may be $5 or more; unused wallet value remains separate from the $3 service charge."
+        },
+        "recommended_buffer": {
+          "value": 3,
+          "unit": "days",
+          "basis": "Product-side buffer before the 30-day renewal boundary."
+        },
+        "grace_or_rescue_window": "Up to 60 days suspended. If balance is above $0 but below $3 after 60 days, the detailed terms provide an additional 30-day extension. If balance is $0 after 60 days, the account is cancelled without that extension.",
+        "termination_and_recycling": "Ultra says the account and phone number are cancelled when the applicable grace path ends. The cited terms do not state the exact number-recycling timetable.",
+        "sources": [
+          {
+            "label": "Ultra Mobile — PayGo plan and FAQ",
+            "url": "https://www.ultramobile.com/paygo/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra Mobile — detailed PayGo suspension/cancellation terms",
+            "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last successful PayGo activation or renewal date",
+          "anchor_help": "Use the start date of the current 30-day PayGo service cycle.",
+          "due_offset": {
+            "value": 30,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 3,
+            "unit": "days"
+          },
+          "summary": "Check Ultra PayGo renewal balance",
+          "description": "Make sure the PayGo wallet can cover the recurring $3 charge before the 30-day renewal boundary. The calendar event is placed 3 days early as a product-side buffer."
+        }
+      }
+    },
+    {
+      "id": "snap-vodafone-uk-zero-esim-2026-current-profile-e3cd66",
+      "routeId": "vodafone-uk-zero-esim-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-06-16",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "vodafone-uk-zero-esim-2026",
+        "brandId": "vodafone-uk-direct",
+        "publishState": "observation-hold",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "£0 network-trial episode observed in June 2026, but official trial eligibility requires UK residence/billing and UK device location; kept as an observation only.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "historic-episode-needs-recheck"
+        },
+        "keep": {
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Not established",
+          "intervalDays": null,
+          "state": "insufficient-evidence"
+        },
+        "chinaActivation": "Official free-trial terms require UK residence, a UK billing address and the eSIM device to be in the UK at order time; offshore forum workarounds are not an executable route.",
+        "kyc": "not cleanly reconciled",
+        "payment": "payment-card authorization reported; card acceptance varied",
+        "wifiCalling": "setup discussed; not normalized for long-term use",
+        "roamingSms": "not enough current route-specific evidence",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "No clean durable retention path. Do not reproduce fabricated-address/identity tactics mentioned in community threads.",
+        "lastVerifiedAt": "2026-06-16",
+        "acquireUrl": "https://www.vodafone.co.uk/",
+        "tariffSummary": "June 2026 £0 acquisition episode; long-term PAYG retention not established.",
+        "sourceIds": [
+          "linuxdo-vodafone-2401952",
+          "linuxdo-vodafone-2404421",
+          "linuxdo-vodafone-2417339",
+          "vodafone-official-network-trial-2026"
+        ],
+        "guideSteps": [
+          "Treat this row as historical/current-market intelligence, not an acquisition recommendation.",
+          "Check the current Vodafone offer and eligibility before attempting any order.",
+          "Do not use fabricated address or identity information to satisfy UK eligibility.",
+          "If you need a durable overseas number, compare an actionable pilot route instead."
+        ]
+      }
+    },
+    {
+      "id": "snap-voxi-uk-esim-payg-retention-current-profile-c6fc40",
+      "routeId": "voxi-uk-esim-payg-retention",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "uk-directory-pilot.json",
+      "data": {
+        "id": "voxi-uk-esim-payg-retention",
+        "brandId": "voxi-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Current official entry checked 2026-09-23: £10 30-day plan with eSIM available; free/coupon starts seen in August are episodic and are not treated as live today.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 89.3,
+          "fxCheckedAt": "2026-09-23",
+          "state": "current-official-entry-plus-community-retention"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.08,
+          "yearCostOriginal": 0.16,
+          "yearCostCny": 1.43,
+          "action": "Send one roaming SMS (~£0.08, community-measured) within each 180-day balance-activity window; Wi-Fi Calling SMS (~£0.24) also qualifies. Plans carry no PAYG balance, so an initial £5 top-up is required first.",
+          "intervalDays": 180,
+          "state": "community-reproduced-multi-source"
+        },
+        "chinaActivation": "possible but setup-sensitive; first-use state varies",
+        "kyc": "current coupon route requirements need recheck; do not use borrowed eligibility credentials",
+        "payment": "£5 top-up repeatedly reported; payment acceptance not fully normalized",
+        "wifiCalling": "workable for some users but setup-sensitive/conflicting",
+        "roamingSms": "reported; exact current tariff needs commercial refresh",
+        "refund": "not enough normalized evidence",
+        "trend": "watch",
+        "guideEligible": true,
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.voxi.co.uk/",
+        "tariffSummary": "Current official £10 plan: 60GB promotional allowance until 30 Sep 2026, then 20GB; plan can be opted out and VOXI can continue on PAYG. Community retention reports use balance-changing activity.",
+        "sourceIds": [
+          "linuxdo-voxi-2188975",
+          "linuxdo-voxi-2399041-p3",
+          "linuxdo-voxi-2737575",
+          "nodeloc-voxi-102713",
+          "voxi-official-plans-2026-09-23"
+        ],
+        "guideSteps": [
+          "Use the current official VOXI signup/eSIM path; do not assume an old one-use forum coupon is still valid.",
+          "Activate the line and test inbound SMS before moving important accounts.",
+          "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
+          "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+        ]
+      }
+    }
+  ],
+  "aliases": [
+    {
+      "aliasId": "giffgaff-uk",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "reason": "legacy route id consolidated into current concrete route id"
+    },
+    {
+      "aliasId": "lebara-uk",
+      "routeId": "lebara-uk-direct-esim-china",
+      "reason": "legacy route id consolidated into current concrete route id"
+    }
+  ],
+  "services": [
+    {
+      "id": "openai",
+      "name": "ChatGPT / OpenAI",
+      "aliases": [
+        "chatgpt",
+        "openai",
+        "codex",
+        "openai codex"
+      ],
+      "category": "ai-account"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "aliases": [
+        "telegram",
+        "tg"
+      ],
+      "category": "messaging"
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "aliases": [
+        "whatsapp",
+        "wa"
+      ],
+      "category": "messaging"
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "aliases": [
+        "google",
+        "gmail"
+      ],
+      "category": "account"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic / Claude",
+      "aliases": [
+        "anthropic",
+        "claude",
+        "claude code"
+      ],
+      "category": "ai-account"
+    }
+  ],
+  "numberRanges": [],
+  "serviceAggregates": [
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-openai-phone-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "openai",
+      "operation": "phone-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-06-05",
+      "lastObservedAt": "2026-06-05"
+    },
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-telegram-registration-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 1,
+      "firstObservedAt": "2026-06-07",
+      "lastObservedAt": "2026-06-07"
+    },
+    {
+      "id": "svcagg-giffgaff-uk-direct-esim-payg-whatsapp-registration-verification",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-06-07",
+      "lastObservedAt": "2026-06-07"
+    },
+    {
+      "id": "svcagg-lebara-uk-direct-esim-china-whatsapp-registration-verification",
+      "routeId": "lebara-uk-direct-esim-china",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "B",
+      "label": "Good",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 2,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-12",
+      "lastObservedAt": "2026-08-13"
+    },
+    {
+      "id": "svcagg-lebara-uk-direct-esim-china-telegram-registration-verification",
+      "routeId": "lebara-uk-direct-esim-china",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "B",
+      "label": "Good",
+      "confidence": "low",
+      "sampleSize": 2,
+      "successCount": 2,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-12",
+      "lastObservedAt": "2026-08-13"
+    }
+  ],
+  "routeMetrics": [
+    {
+      "routeId": "5sim-temp",
+      "checkedAt": "2026-09-15",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "a1-croatia-prepaid-esim",
+      "checkedAt": "Apr 2026",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "activatex-temp",
+      "checkedAt": "2026-09-15",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "checkedAt": "2026-09-15",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 89.3,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.6,
+      "keepYearCostCny": 5.36,
+      "keepIntervalDays": 180
+    },
+    {
+      "routeId": "h2o-paygo-us",
+      "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "lebara-uk-direct-esim-china",
+      "checkedAt": "2026-09-12",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 6.5,
+      "acquisitionCostCny": 58.05,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 1.96,
+      "keepYearCostCny": 17.5,
+      "keepIntervalDays": 90
+    },
+    {
+      "routeId": "mobal-japan-data-physical",
+      "checkedAt": "2026-09-15",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "mobal-japan-voice-data",
+      "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "sakura-japan-voice-data",
+      "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "smspool-temp",
+      "checkedAt": "2026-09-15",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "tello-us",
+      "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "trip-cmlink-china-data",
+      "checkedAt": "2026-09-15",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "ultra-paygo-us",
+      "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "vodafone-uk-zero-esim-2026",
+      "checkedAt": "2026-06-16",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "voxi-uk-esim-payg-retention",
+      "checkedAt": "2026-09-26",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 89.3,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.16,
+      "keepYearCostCny": 1.43,
+      "keepIntervalDays": 180
+    }
+  ]
+}

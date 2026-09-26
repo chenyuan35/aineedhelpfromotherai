@@ -1,0 +1,519 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "ultra-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "ultra-mobile-paygo-us",
+    "displayName": "Ultra Mobile PayGo US number",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical PayGo SIM",
+    "surfaceState": "public-legacy",
+    "evidenceState": "needs-reconciliation",
+    "lastVerifiedAt": "2026-09-16",
+    "acquireUrl": "https://www.ultramobile.com/paygo/",
+    "sourceIds": [
+      "src-518c6a9bf6f0",
+      "src-cbabf70eb1c4"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": null,
+  "brand": {
+    "id": "ultra-mobile-paygo-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "Ultra Mobile PayGo"
+  },
+  "metrics": {
+    "routeId": "ultra-paygo-us",
+    "checkedAt": "2026-09-16",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "src-518c6a9bf6f0",
+      "url": "https://www.ultramobile.com/paygo/",
+      "type": "official",
+      "label": "Ultra Mobile — Pay as You Go"
+    },
+    {
+      "id": "src-cbabf70eb1c4",
+      "url": "https://www.ultramobile.com/international-roaming/",
+      "type": "official",
+      "label": "Ultra Mobile — International Roaming"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-ultra-paygo-us-capabilities-0e03b6",
+      "routeId": "ultra-paygo-us",
+      "kind": "capabilities",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "route-capabilities.json",
+      "data": {
+        "kyc": {
+          "state": "unknown",
+          "label": "Identity requirement not yet verified",
+          "note": "Current official PayGo materials do not give the MVP enough evidence to state a universal passport/ID requirement for overseas buyers."
+        },
+        "roamingSms": {
+          "state": "supported",
+          "label": "International roaming SMS supported with wallet balance",
+          "note": "Ultra Mobile PayGo supports voice, SMS and MMS roaming through the PayGo Wallet. Destination-specific send/receive rates apply and PayGo does not include data roaming.",
+          "sourceUrl": "https://www.ultramobile.com/paygo/international-roaming/"
+        },
+        "wifiCallingAbroad": {
+          "state": "unknown",
+          "label": "Wi-Fi Calling abroad not yet verified for this MVP route",
+          "note": "Do not assume Wi-Fi Calling can replace roaming until the PayGo-specific rule is verified."
+        },
+        "numberDuration": {
+          "state": "renewable-carrier",
+          "label": "Renewable carrier line with 30-day service cycles",
+          "note": "Ultra PayGo is a recurring carrier service. The base charge is deducted every 30 days while sufficient wallet balance is available.",
+          "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+        },
+        "termination": {
+          "state": "suspension-then-cancellation",
+          "label": "Missed renewal can suspend service and eventually cancel the number",
+          "note": "Ultra’s full PayGo terms say an account below the $3 renewal minimum can remain suspended for up to 60 days; if the balance is above $0 but below $3, an additional 30-day extension can apply. If the balance is $0 after 60 days, the account is cancelled without that extension. The simpler PayGo FAQ says the account and number are cancelled if no payment is made 60 days after the last payment. Treat the full terms as the detailed rule and restore service early rather than relying on the edge of the grace window.",
+          "sourceUrl": "https://www.ultramobile.com/mobile-plans-terms-conditions/"
+        },
+        "activationFlow": {
+          "state": "standard-physical-sim",
+          "label": "Official PayGo physical-SIM activation uses the SIM ACT CODE",
+          "note": "Ultra’s PayGo activation page asks for the 11-character ACT CODE from the back of the SIM. A third-party pre-activated eSIM is therefore a different activation/ownership path and should not be treated as equivalent.",
+          "sourceUrl": "https://my.ultramobile.com/paygo/activation"
+        }
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-commercial-f480af",
+      "routeId": "ultra-paygo-us",
+      "kind": "commercial",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "purchase-intelligence.json",
+      "data": {
+        "verifiedOn": "2026-09-16",
+        "sellerRelationship": "official-channel",
+        "purchaseChannel": "Ultra Mobile PayGo page → eBay or select T-Mobile stores",
+        "purchaseEvidenceConfidence": "high",
+        "price": {
+          "currency": "USD",
+          "basis": "Ultra PayGo recurring service baseline; acquisition channel cost is modeled separately below",
+          "setup": {
+            "amount": null,
+            "status": "channel-specific",
+            "note": "The SIM/eSIM acquisition price depends on the purchase channel and is not the same as the $3 service renewal."
+          },
+          "recurring": {
+            "amount": 3,
+            "periodDays": 30,
+            "status": "official",
+            "note": "PayGo includes 100 minutes, 100 texts and 100MB for each 30-day cycle."
+          },
+          "tax": {
+            "status": "extra-varies",
+            "note": "Ultra states taxes and fees are additional; marketplace sales tax also varies by checkout location."
+          },
+          "shipping": {
+            "status": "channel-specific",
+            "note": "Shipping and delivery depend on the selected acquisition channel; see “Where to buy now.”"
+          },
+          "promotion": {
+            "status": "none-used",
+            "note": "Service cost windows use the official $3 / 30-day recurring charge, not a temporary seller promotion."
+          },
+          "costWindows": {
+            "30": {
+              "amount": 3,
+              "status": "service-only",
+              "note": "One 30-day service cycle only; excludes SIM/eSIM acquisition price, taxes, roaming wallet and add-ons."
+            },
+            "90": {
+              "amount": 9,
+              "status": "service-only",
+              "note": "Three 30-day service cycles only; excludes acquisition price, taxes, roaming wallet and add-ons."
+            },
+            "365": {
+              "amount": 39,
+              "status": "service-only",
+              "note": "Thirteen 30-day cycles are needed to cover at least 365 days; excludes acquisition price, taxes, roaming wallet and add-ons."
+            }
+          }
+        },
+        "purchaseSafety": {
+          "refundClarity": {
+            "state": "restrictive",
+            "note": "Ultra states Tourist and PayGo services are non-refundable and lost/stolen prepaid SIM cards are not refunded. Marketplace seller return terms are separate and may be stricter."
+          },
+          "paymentProtection": {
+            "state": "channel-specific",
+            "note": "Payment protection depends on the marketplace or retailer. Marketplace feedback and buyer-protection programs are context, not a provider guarantee."
+          },
+          "stockEvidence": {
+            "state": "channel-dependent",
+            "note": "Ultra directs buyers to eBay or select T-Mobile stores. The provider-linked eBay listing was observed unavailable in the 2026-09-16 snapshot; store stock is not verified."
+          },
+          "support": {
+            "state": "documented",
+            "note": "Ultra publishes PayGo and Care support channels."
+          },
+          "numberControl": {
+            "state": "carrier-account",
+            "note": "This is a renewable carrier line. Missing the recurring charge can suspend service and eventually cancel the account/number under Ultra’s PayGo terms."
+          },
+          "independentReview": {
+            "state": "not-researched",
+            "note": "No independent-review platform score is converted into a trust score for this route. Marketplace seller metrics below are shown only as purchase-channel context."
+          },
+          "complaintThemes": []
+        },
+        "purchaseOptions": [
+          {
+            "id": "ultra-official-ebay-285112988423",
+            "label": "Ultra Mobile Official on eBay",
+            "sellerRelationship": "official-linked-marketplace",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Sealed physical PayGo SIM",
+            "price": {
+              "currency": "USD",
+              "amount": 13,
+              "shippingAmount": 0,
+              "allInBeforeTax": 13,
+              "status": "reference-observed",
+              "note": "Provider-linked listing reference price; not a currently confirmed buyable quote."
+            },
+            "availability": {
+              "state": "observed-unavailable",
+              "note": "Observed out of stock / ended in multiple eBay regional snapshots. Ultra’s PayGo page still directs buyers to eBay, so recheck the provider link before purchase."
+            },
+            "sellerEvidence": {
+              "seller": "Ultra Mobile Official",
+              "positivePercent": 99.8,
+              "itemsSold": 36591,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "The current regional eBay snapshot says no returns accepted; buyer-protection rules are separate."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "Marketplace protections vary by transaction and are not scored here."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": 0,
+              "ratio": 1,
+              "note": "Reference acquisition price for like-for-like sealed physical PayGo SIM comparison; availability is currently uncertain/unavailable."
+            },
+            "ownershipWarning": "Standard sealed physical-SIM purchase path. Activation still follows Ultra’s PayGo activation flow; current overseas activation geography remains unverified by this MVP.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/285112988423"
+          },
+          {
+            "id": "ultra-select-tmobile-store",
+            "label": "Select T-Mobile stores",
+            "sellerRelationship": "provider-designated-retail",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Physical PayGo SIM from designated retail channel",
+            "price": {
+              "currency": "USD",
+              "amount": null,
+              "shippingAmount": null,
+              "allInBeforeTax": null,
+              "status": "unknown",
+              "note": "Ultra names select T-Mobile stores as a purchase channel, but this MVP has not verified a current store price."
+            },
+            "availability": {
+              "state": "store-dependent",
+              "note": "Only select stores; local inventory is unknown until checked with the store."
+            },
+            "sellerEvidence": {
+              "seller": "Select T-Mobile retail location",
+              "note": "Provider-designated retail channel; exact store inventory and transaction terms vary."
+            },
+            "returns": {
+              "state": "unknown",
+              "note": "Verify the specific store’s return policy before purchase."
+            },
+            "paymentProtection": {
+              "state": "retail-dependent",
+              "note": "Depends on the store and payment method."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": null,
+              "ratio": null,
+              "note": "Price is unknown, so no markup/overpay comparison is made."
+            },
+            "ownershipWarning": "Standard physical-SIM class if the store sells the PayGo kit. Confirm it is PayGo, not a different Ultra plan/SIM product.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ultramobile.com/paygo/"
+          },
+          {
+            "id": "ultra-third-party-sealed-354076563615",
+            "label": "Third-party sealed physical SIM on eBay",
+            "sellerRelationship": "third-party-marketplace",
+            "productClass": "sealed-physical-sim",
+            "productClassLabel": "Sealed physical PayGo SIM",
+            "price": {
+              "currency": "USD",
+              "amount": 48.85,
+              "shippingAmount": 5,
+              "allInBeforeTax": 53.85,
+              "status": "observed-current",
+              "note": "Observed listing price plus stated shipping before sales tax; marketplace price can change."
+            },
+            "availability": {
+              "state": "available-observed",
+              "note": "Snapshot showed 6 available and 241 sold; recheck the live listing before paying."
+            },
+            "sellerEvidence": {
+              "seller": "shieldtechsecurity",
+              "positivePercent": 98.8,
+              "itemsSold": 39000,
+              "listingSold": 241,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "Seller does not accept returns in the current listing snapshot."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "eBay buyer-protection rules may apply to eligible transactions; this MVP does not score them."
+            },
+            "comparisonGroup": "ultra-paygo-sealed-physical",
+            "comparableToReference": true,
+            "priceComparison": {
+              "referenceAmount": 13,
+              "currency": "USD",
+              "deltaAmount": 40.85,
+              "ratio": 4.1423,
+              "note": "Observed delivered-before-tax price is $40.85 above the provider-linked $13 reference (about 4.14×). The $13 reference listing is currently unavailable, so this is a price-gap signal, not a claim of unfair conduct."
+            },
+            "ownershipWarning": "Sealed physical SIM is the same broad activation class as the provider-linked reference, but seller-specific expiration/activation details must be checked before purchase.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/354076563615"
+          },
+          {
+            "id": "ultra-third-party-preactivated-esim-358131980470",
+            "label": "Third-party pre-activated eSIM on eBay",
+            "sellerRelationship": "preactivated-third-party",
+            "productClass": "preactivated-esim",
+            "productClassLabel": "Pre-activated eSIM — different ownership/activation class",
+            "price": {
+              "currency": "USD",
+              "amount": 54.95,
+              "shippingAmount": 0,
+              "allInBeforeTax": 54.95,
+              "status": "observed-current",
+              "note": "Observed marketplace price before tax; seller-managed activation/service details can change."
+            },
+            "availability": {
+              "state": "available-observed",
+              "note": "Snapshot showed 2 available and 522 sold; recheck the live listing before paying."
+            },
+            "sellerEvidence": {
+              "seller": "shieldtechsecurity",
+              "positivePercent": 98.8,
+              "itemsSold": 39000,
+              "listingSold": 522,
+              "note": "eBay seller/listing metrics are context only, not a trust score."
+            },
+            "returns": {
+              "state": "no-returns-observed",
+              "note": "Seller does not accept returns in the current listing snapshot."
+            },
+            "paymentProtection": {
+              "state": "marketplace",
+              "note": "Marketplace protections are separate from provider service/refund terms and are not scored here."
+            },
+            "comparisonGroup": "ultra-paygo-preactivated-esim",
+            "comparableToReference": false,
+            "priceComparison": {
+              "referenceAmount": null,
+              "currency": "USD",
+              "deltaAmount": null,
+              "ratio": null,
+              "note": "Do not compare this as like-for-like with the sealed physical SIM reference. It is a different activation and ownership class."
+            },
+            "ownershipWarning": "Pre-activated by a third party. Confirm whose account controls the number, when the 30-day service clock starts, how recovery works, and whether you can independently manage the carrier account. This MVP does not treat third-party pre-activation as equivalent to Ultra’s standard activation flow.",
+            "checkedOn": "2026-09-16",
+            "sourceUrl": "https://www.ebay.com/itm/358131980470"
+          }
+        ],
+        "sources": [
+          {
+            "label": "Ultra PayGo pricing and purchase channels",
+            "url": "https://www.ultramobile.com/paygo/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra PayGo terms and cancellation rules",
+            "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra PayGo activation",
+            "url": "https://my.ultramobile.com/paygo/activation",
+            "type": "official"
+          },
+          {
+            "label": "Ultra-linked eBay listing snapshot",
+            "url": "https://www.ebay.com/itm/285112988423",
+            "type": "marketplace"
+          },
+          {
+            "label": "Third-party sealed SIM snapshot",
+            "url": "https://www.ebay.com/itm/354076563615",
+            "type": "marketplace"
+          },
+          {
+            "label": "Third-party pre-activated eSIM snapshot",
+            "url": "https://www.ebay.com/itm/358131980470",
+            "type": "marketplace"
+          }
+        ],
+        "fairPriceCheck": {
+          "state": "channel-comparison",
+          "label": "Acquisition price varies sharply by channel",
+          "note": "The $3 / 30-day charge is service renewal, not the SIM acquisition price. The provider-linked sealed-SIM reference was $13 but observed unavailable; a third-party sealed-SIM listing was $53.85 delivered before tax. Pre-activated eSIMs are a different product/ownership class and are not compared as identical."
+        },
+        "comparisonGroup": "us-durable-number-retention"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-frontstage-b668f4",
+      "routeId": "ultra-paygo-us",
+      "kind": "frontstage",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "radar-view.json",
+      "data": {
+        "family": "long-term",
+        "order": 40,
+        "shortlist": true,
+        "smsSignal": "Good / setup watch",
+        "signalLevel": 3,
+        "keepCost": "≈ $37/yr",
+        "setup": "Some work",
+        "remote": "activation geography unverified",
+        "stability": "Watch",
+        "caveat": "$3/30-day service is cheap; initial acquisition/activation path matters.",
+        "kyc": "unverified",
+        "roaming": "supported with PayGo wallet",
+        "verified": "2026-09-16",
+        "evidence": "Current rules; setup path still has gaps",
+        "price": "SIM price varies · $3/30d service",
+        "keepRule": "Fund $3 every 30 days"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-location-2a579b",
+      "routeId": "ultra-paygo-us",
+      "kind": "location",
+      "checkedAt": "2026-09-15",
+      "sourceDataset": "location-constraints.json",
+      "data": {
+        "mode": "unknown",
+        "hardBlock": false,
+        "requiredLocations": [],
+        "summary": "The MVP has verified international roaming support but has not yet verified a definitive initial-activation geography rule for overseas buyers.",
+        "outsideHomeNote": "If you are outside the US, treat initial activation as unverified until the provider's current rule is confirmed.",
+        "sourceUrl": "https://www.ultramobile.com/paygo/"
+      }
+    },
+    {
+      "id": "snap-ultra-paygo-us-retention-d58cc0",
+      "routeId": "ultra-paygo-us",
+      "kind": "retention",
+      "checkedAt": "2026-09-16",
+      "sourceDataset": "retention-intelligence.json",
+      "data": {
+        "status": "verified",
+        "confidence": "high",
+        "last_verified_at": "2026-09-16",
+        "inactivity_window": "PayGo service runs in 30-day cycles. If the wallet balance is below the $3 recurring-charge minimum at the cycle end, service is suspended.",
+        "clock_start_or_reset": "Activation or successful $3 monthly renewal starts the next 30-day cycle. During suspension, adding enough credit to meet the $3 minimum renews service for the next cycle.",
+        "qualifying_activity": [
+          "Maintain at least $3 in the PayGo wallet for the recurring 30-day charge.",
+          "Add credit during suspension so the balance reaches the $3 renewal minimum."
+        ],
+        "non_qualifying_or_unknown_activity": [
+          "Calls, texts and data usage do not substitute for the $3 renewal charge.",
+          "A positive balance below $3 does not restore active service.",
+          "Voice/Text or Data Passes do not work on suspended or cancelled accounts."
+        ],
+        "lowest_cost_documented_action": "Fund the recurring $3 PayGo service charge for each 30-day cycle. If new wallet funding is needed, Ultra’s documented Auto Renew denominations begin at $5, with $3 applied to the monthly renewal.",
+        "safest_documented_action": "Enable Auto Renew with a valid card and enough wallet balance so the $3 recurring charge succeeds each cycle; do not rely on the suspension window.",
+        "minimum_expected_cost": {
+          "amount": 3,
+          "currency": "USD",
+          "period": "30 days",
+          "basis": "PayGo recurring service charge",
+          "status": "official",
+          "note": "A fresh Auto Renew top-up denomination may be $5 or more; unused wallet value remains separate from the $3 service charge."
+        },
+        "recommended_buffer": {
+          "value": 3,
+          "unit": "days",
+          "basis": "Product-side buffer before the 30-day renewal boundary."
+        },
+        "grace_or_rescue_window": "Up to 60 days suspended. If balance is above $0 but below $3 after 60 days, the detailed terms provide an additional 30-day extension. If balance is $0 after 60 days, the account is cancelled without that extension.",
+        "termination_and_recycling": "Ultra says the account and phone number are cancelled when the applicable grace path ends. The cited terms do not state the exact number-recycling timetable.",
+        "sources": [
+          {
+            "label": "Ultra Mobile — PayGo plan and FAQ",
+            "url": "https://www.ultramobile.com/paygo/",
+            "type": "official"
+          },
+          {
+            "label": "Ultra Mobile — detailed PayGo suspension/cancellation terms",
+            "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+            "type": "official"
+          }
+        ],
+        "reminder": {
+          "status": "anchor-offset",
+          "anchor_label": "Last successful PayGo activation or renewal date",
+          "anchor_help": "Use the start date of the current 30-day PayGo service cycle.",
+          "due_offset": {
+            "value": 30,
+            "unit": "days"
+          },
+          "buffer": {
+            "value": 3,
+            "unit": "days"
+          },
+          "summary": "Check Ultra PayGo renewal balance",
+          "description": "Make sure the PayGo wallet can cover the recurring $3 charge before the 30-day renewal boundary. The calendar event is placed 3 days early as a product-side buffer."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "type": "recycled-number-observation",
+    "reportedAt": "2026-02-14",
+    "scope": "single-observation",
+    "outcome": "newly obtained number appeared associated with a prior Telegram account",
+    "sourceId": "linuxdo-giffgaff-1615582"
+  },
+  {
+    "id": "evt-giffgaff-uk-direct-esim-payg-2-9224db",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "type": "mass-closure-wave",
+    "reportedAt": "2026-07-27",
+    "scope": "community-wave",
+    "outcome": "multiple overseas users reported closures/suspensions and loss of service",
+    "sourceId": "linuxdo-giffgaff-2678340"
+  },
+  {
+    "id": "evt-giffgaff-uk-direct-esim-payg-3-59d79b",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "type": "partial-restoration-wave",
+    "reportedAt": "2026-08-18",
+    "scope": "community-wave",
+    "outcome": "some previously closed accounts/numbers were restored; not universal",
+    "sourceId": "linuxdo-giffgaff-2773030"
+  },
+  {
+    "id": "evt-giffgaff-uk-direct-esim-payg-4-14e95f",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "type": "refund-outcomes",
+    "reportedAt": "2026-09-15",
+    "scope": "multiple-observations",
+    "outcome": "multiple eventual refund successes observed after delays or earlier denials; outcome remains mixed",
+    "sourceId": "linuxdo-giffgaff-2903412"
+  },
+  {
+    "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
+    "routeId": "lebara-uk-direct-esim-china",
+    "type": "outgoing-service-friction",
+    "reportedAt": "2026-08-12",
+    "scope": "multiple-same-thread-observations",
+    "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
+    "sourceId": "linuxdo-lebara-2745784-op"
+  }
+]

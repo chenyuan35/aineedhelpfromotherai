@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "primaryFamilies": ["long-term-sms-otp", "data-esim"],
+  "longTermResearch": {
+    "defaultMaxKeepCostCny": 200,
+    "rule": "Candidates above this annual keep-cost are reference/low-priority unless they solve a distinct market or capability gap. Existing admitted routes are not demoted by this research-priority rule."
+  },
+  "candidatePriority": [
+    "community-led low-cost retention",
+    "community-led data/eSIM value route",
+    "canonical HOLD with concrete reopen trigger",
+    "official-led candidate awaiting community evidence",
+    "high-cost/reference/negative knowledge"
+  ]
+}

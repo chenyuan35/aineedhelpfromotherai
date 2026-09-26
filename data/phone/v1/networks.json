@@ -1,0 +1,12 @@
+[
+  {
+    "id": "o2-uk",
+    "name": "O2 UK",
+    "marketId": "gb"
+  },
+  {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  }
+]
