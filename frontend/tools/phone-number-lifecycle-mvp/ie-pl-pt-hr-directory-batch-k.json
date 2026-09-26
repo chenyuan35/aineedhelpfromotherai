@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0",
+  "market": "ie-pl-pt-hr",
+  "checkedAt": "2026-09-26",
+  "status": "batch-k-evidence-captured",
+  "notes": "Ireland + Poland + Portugal + Croatia. Three IE lifecycle from official-staff community answer + blog reference. Orange PL: number-maintenance fee ABOLISHED 2024-01-24 (UOKiK regulator intervention) — refunds issued. Vodafone PT Yorn weekly-cost bundles = poor retention fit. A1 HR tourist-focused.",
+  "networks": [
+    { "id": "three-ie", "name": "Three IE" },
+    { "id": "orange-pl", "name": "Orange PL" },
+    { "id": "vodafone-pt", "name": "Vodafone PT" },
+    { "id": "a1-hr", "name": "A1 HR" }
+  ],
+  "brands": [
+    { "id": "three-ie-prepay", "networkId": "three-ie", "name": "Three IE Prepay" },
+    { "id": "orange-pl-nakarte", "networkId": "orange-pl", "name": "Orange na kartę" },
+    { "id": "vodafone-yorn", "networkId": "vodafone-pt", "name": "Yorn (Vodafone PT)" },
+    { "id": "a1-hr-prepaid", "networkId": "a1-hr", "name": "A1 HR Prepaid" }
+  ],
+  "routes": [
+    {
+      "id": "three-ie-prepay-lifecycle-2026",
+      "brandId": "three-ie-prepay",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official-staff community answer + Three blog: 90 days no credit-reducing activity → alert SMS; further 180 days → number marked for removal; then ~100-day quarantine before network deletion (~365d total). Top-up or any chargeable activity resets.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": 10,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 78,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 0.15,
+        "yearCostOriginal": 0.30,
+        "yearCostCny": 2.3,
+        "action": "Any chargeable activity per ~90 days (to stay clear of alert) — send 1 SMS. Official lifecycle: 90d alert → +180d removal-mark → quarantine. Conservative keep = 1 SMS/80d.",
+        "intervalDays": 80,
+        "state": "official-staff-community-confirmed"
+      },
+      "chinaActivation": "IE prepaid no real-name law; SIM acquisition local or online; China-first unverified.",
+      "kyc": "No real-name requirement (IE).",
+      "payment": "Card/voucher.",
+      "wifiCalling": "Supported (device-dependent).",
+      "roamingSms": "Receiving SMS abroad free; sending roaming rates apply.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.three.ie/plans/prepay-sim-only.html",
+      "tariffSummary": "90d alert → 180d removal-mark; 1 SMS/80d keeps clear.",
+      "sourceIds": [
+        "official-staff-3community-lifecycle-789484",
+        "official-three-blog-keeping-prepay-active"
+      ],
+      "guideSteps": [
+        "Acquire Three IE prepay SIM.",
+        "1 SMS every ~80 days."
+      ]
+    },
+    {
+      "id": "orange-pl-nakarte-2026",
+      "brandId": "orange-pl-nakarte",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official (orange.pl): number-maintenance fee (5 zł/31d inactivity) ABOLISHED 2024-01-24 after UOKiK regulator doubts; refunds issued. Current inactivity rule = validity-based (recharge extends).",
+      "landedCost": {
+        "currency": "PLN",
+        "providerOrCommunityPrice": 5,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": 9,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported-starter"
+      },
+      "keep": {
+        "currency": "PLN",
+        "observedActionCost": 10,
+        "yearCostOriginal": 10,
+        "yearCostCny": 18,
+        "action": "Recharge extends validity (ladder by amount; e.g. 10 zł tier). Exact validity days per tier pending official capture — 验证中. No more inactivity fees since 2024-01.",
+        "intervalDays": 365,
+        "state": "official-fee-abolished-validity-ladder-pending"
+      },
+      "chinaActivation": "PL prepaid registration required (2016 anti-terror law); in-store standard; abroad unverified.",
+      "kyc": "Registration mandatory (PL law).",
+      "payment": "BLIK/cards local rails.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Validity ladder per recharge tier not captured; acquisition PL-local.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.orange.pl/view/oferta-na-karte",
+      "tariffSummary": "Inactivity fee abolished 2024; validity by recharge ladder.",
+      "sourceIds": [
+        "official-orange-pl-utrzymanie-numeru-2024"
+      ],
+      "guideSteps": [
+        "Directory card — ladder pending."
+      ]
+    },
+    {
+      "id": "vodafone-yorn-pt-2026",
+      "brandId": "vodafone-yorn",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Yorn = weekly-cost bundle model (official FAQ: 'tariffs have weekly cost') — NOT true PAYG. Poor fit for retention.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Weekly-deduction bundle model — cost accumulates regardless of use; unsuitable for cheap retention.",
+        "intervalDays": 7,
+        "state": "official-bundle-model-not-payg"
+      },
+      "chinaActivation": "PT local.",
+      "kyc": "PT registration.",
+      "payment": "local",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Weekly-bundle model = structurally unsuitable for retention.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.vodafone.pt/",
+      "tariffSummary": "Weekly-cost bundles; not PAYG.",
+      "sourceIds": [
+        "official-yorn-faq-weekly-2026-09-26"
+      ],
+      "guideSteps": [
+        "Reference card — not recommended for retention."
+      ]
+    },
+    {
+      "id": "a1-hr-prepaid-2026",
+      "brandId": "a1-hr-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "A1 HR prepaid exists (we have backstage material from earlier); official tourist pages emphasize short-validity tourist SIMs (10-day unlimited). Retention terms for standard prepaid pending capture.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Not established — pending capture.",
+        "intervalDays": null,
+        "state": "insufficient-evidence"
+      },
+      "chinaActivation": "HR local.",
+      "kyc": "unverified",
+      "payment": "local",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Terms pending.",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.a1.hr/",
+      "tariffSummary": "Pending capture.",
+      "sourceIds": [],
+      "guideSteps": [
+        "Directory card — pending."
+      ]
+    }
+  ]
+}
