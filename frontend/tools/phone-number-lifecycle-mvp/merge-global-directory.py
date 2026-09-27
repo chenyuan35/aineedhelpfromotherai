@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Merge uk-directory-pilot.json + all backstage batches into global-directory.json (same schema + marketName per route)."""
-import json, glob, os
+"""Merge UK pilot + explicitly admitted legacy batches into global-directory.json."""
+import json, os
+from batch_admission import admitted_batch_paths
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,7 +23,7 @@ COUNTRY_MAP = {
     'kz': 'Kazakhstan', 'by': 'Belarus', 'ge': 'Georgia', 'rs': 'Serbia', 'me': 'Montenegro',
     'ba': 'Bosnia', 'az': 'Azerbaijan', 'kh': 'Cambodia', 'uz': 'Uzbekistan', 'kw': 'Kuwait',
     'om': 'Oman', 'bs': 'Bahamas', 'jm': 'Jamaica', 'tz': 'Tanzania', 'sn': 'Senegal',
-    'mno': 'United Kingdom',  # uk-mno batch
+    'mno': 'United Kingdom',
 }
 
 ROUTE_COUNTRY = {
@@ -77,7 +78,6 @@ def resolve_country(batch_name, route, brands):
             continue
         if f'-{code}-' in rid or rid.endswith('-' + code) or f'-{code}-' in bid or bid.endswith('-' + code):
             return name
-    # batch file name hints: us-batch-a, jp-directory-batch-b, uk-mno-...
     b = batch_name.lower()
     if b.startswith('us-'): return 'United States'
     if b.startswith('jp-'): return 'Japan'
@@ -99,7 +99,7 @@ def main():
         'market': 'global',
         'checkedAt': '2026-09-26',
         'status': 'global-directory',
-        'notes': 'Merged from UK pilot + 17 backstage batches (2026-09-26).',
+        'notes': 'Merged from UK pilot + explicitly admitted legacy batches.',
         'networks': [], 'brands': [], 'routes': [],
         'serviceObservations': pilot.get('serviceObservations', []),
         'continuityEvents': pilot.get('continuityEvents', []),
@@ -121,8 +121,7 @@ def main():
     for s in out['sources']:
         if isinstance(s, dict) and s.get('id'): seen_src.add(s['id'])
 
-    files = sorted(glob.glob(os.path.join(BASE, '*batch*.json')))
-    files = [f for f in files if 'uk-directory-pilot' not in f]
+    files = admitted_batch_paths(BASE)
     for f in files:
         batch = json.load(open(f))
         bname = os.path.basename(f)
@@ -140,7 +139,6 @@ def main():
             r2 = dict(r)
             r2['marketName'] = resolve_country(bname, r, brands)
             out['routes'].append(r2)
-        # synth sources from sourceIds
         for r in batch.get('routes', []):
             for sid in r.get('sourceIds', []):
                 if sid not in seen_src:

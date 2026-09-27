@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Merge backstage batch-*.json files (uk-directory-pilot schema) into catalog.json (frontend MVP schema)."""
-import json, glob, os, sys
+"""Merge explicitly admitted legacy Phone batches into catalog.json."""
+import json, os, sys
+from batch_admission import admitted_batch_paths
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 CATALOG = os.path.join(BASE, 'catalog.json')
@@ -27,19 +28,15 @@ COUNTRY_MAP = {
 
 def country_from_batch(batch, route, brands):
     brand = next((b for b in brands if b['id'] == route.get('brandId')), {})
-    # infer from brandId suffix: e.g. telkomsel-simpati -> market file name
     market = batch.get('market', '')
-    # batch market like 'id-za-br-sa-ar-kr' — ambiguous; use brand id heuristics
     bid = route.get('brandId', '')
     for code, name in COUNTRY_MAP.items():
         if bid.endswith('-' + code) or bid == f'{code}-prepaid':
             return name
-    # fallback: look at route id suffix tokens
     rid = route.get('id', '')
     for code, name in COUNTRY_MAP.items():
         if f'-{code}-' in rid or rid.endswith('-' + code):
             return name
-    # explicit per-route overrides for ambiguous ones
     return None
 
 ROUTE_COUNTRY = {
@@ -149,7 +146,7 @@ def main():
     catalog = json.load(open(CATALOG))
     existing_ids = {r['id'] for r in catalog['routes']}
     added = 0
-    for bf in sorted(glob.glob(os.path.join(BASE, '*batch*.json')) + glob.glob(os.path.join(BASE, '*directory-batch*.json'))):
+    for bf in admitted_batch_paths(BASE):
         batch = json.load(open(bf))
         brands = batch.get('brands', [])
         for route in batch.get('routes', []):

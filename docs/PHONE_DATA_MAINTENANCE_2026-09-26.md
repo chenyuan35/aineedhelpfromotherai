@@ -40,6 +40,19 @@ Preferred path:
 
 A review packet may only add a `backstage-only` route. Public promotion is a separate explicit change.
 
+## Legacy comparison admission boundary
+
+The current public comparison surface still has a compatibility input, `frontend/tools/phone-number-lifecycle-mvp/global-directory.json`. Its legacy batch rebuilders are fail-closed behind `batch-admission-manifest.json`.
+
+- a batch file does **not** become admitted because its filename matches `*batch*.json` or because it is placed beside reviewed files;
+- only exact filenames listed in `batch-admission-manifest.json` may feed the legacy global-directory/catalog merge scripts;
+- changing that manifest is an explicit reviewed database/comparison admission action;
+- new Qwen/Kimi output remains inbox/staging research material until sampled and reviewed;
+- the preferred new-route path remains the normalized review-packet pipeline above, not adding raw files to the legacy directory;
+- comparison admission remains separate from `publication-policy.json`, so it never grants a standalone detail URL or sitemap/indexable state.
+
+The manifest currently preserves the already-admitted broad comparison dataset; it is a compatibility gate, not a second research intake channel.
+
 ## Failure isolation
 
 - **Forum/API/source outage:** canonical data and the live site keep working. Source fetchers update evidence asynchronously; they are not runtime dependencies.
