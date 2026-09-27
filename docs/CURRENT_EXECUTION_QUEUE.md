@@ -66,18 +66,19 @@ Correct Vercel scope access to `chenyuan-s-projects` was restored. Deployment `d
 
 Final release gates: **Vercel Preview PASS**, **Eval Gate #804 PASS**, **CI #151 PASS**. PR #253 squash-merged as `640341d4a79a00a688eb36bffce7cf57e4d05e27`. Production deployment `dpl_9rKb3q9QBvifsQZdjTXFVTdQZ5RU` reached READY and `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/` returned HTTP 200. Public Phone behavior remains unchanged; the normalized data foundation, search artifacts, staging isolation, reviewed-packet importer and maintenance path are now on `main`.
 
-## NEXT SESSION — importer-based backstage admission of Tello / ClubSIM / Hotlink Pantas
+## JUST COMPLETED — importer-based backstage admission of Tello / ClubSIM / Hotlink Pantas (PR #258, awaiting merge)
 
-Use the standard reviewed-packet path added by PR #253. This is a backstage ingestion task only; do not hand-edit public Phone cards or create new public URLs.
+PR #258 (`phone-backstage/tello-clubsim-hotlink-packets`) executes the queued reviewed-packet ingestion via the PR #253 importer. Three packets (`data/phone/review-packets/2026-09-26-*.json`) passed `--check` and applied cleanly: canonical v1 is now 18 routes / 9 markets / 81 sources, all three new routes `backstage-only` with zero public surface change.
 
-Required preserved corrections/conflicts:
-- Tello: do not revive `$0.06/year`; current audited economics and account/risk-control evidence must remain explicit.
-- ClubSIM: preserve the HKD 6 web listing versus 2026 in-app availability conflict; do not convert it into a guaranteed annual-price claim.
-- Hotlink Pantas: do not revive `RM2/year`; the current keep-alive basis is the RM30 / 365-day Active Period Pass.
+Required corrections preserved: Tello `$0.06/year` remains refuted (canonical floor = USD 20 / 90-day PAYG credit, risk-control event kept); ClubSIM HKD 6 web-vs-app availability conflict stored as an explicit event (no guaranteed annual-price claim; NodeLoc cross-post deduped); Hotlink `RM2/year` remains refuted (canonical keep-alive = RM30 / 365-day Active Period Pass).
 
-**Definition of done:** three reviewed packets pass `--check`, apply cleanly to canonical backstage data, Phone data/candidate tests pass, staging/public isolation remains intact, and the resulting change follows the normal PR → CI/Eval/Preview → merge → production verification path.
+The importer gained optional `packet.market` support (symmetric to brand/network) to admit the new `hk` / `my` markets. `test-phone-database.mjs` now expects the admitted Tello route to outrank the stale `needs-reconciliation` seed entry.
 
-**Stop / do not substitute:** no public Phone churn; no bulk-merge of frozen PRs #234–#241; no weak global-row expansion; no unrelated infrastructure work.
+**Pre-existing main test debt discovered during verification and repaired in the same PR:** the Sep 26/27 directory-expansion batches left `retention-intelligence.json` covering only 9 of 104 carrier-mobile catalog routes and a stale `Why this route is on hold:` copy assertion in the public-release audit. The PR backfills 95 honest `unknown` placeholders (no invented rules/costs) and converts the copy assertion to semantic hold-block checks. Full local phone suite green including a fresh dist rebuild (135 routes / 83 markets / 328 URLs).
+
+**Waiting on:** GPT review/merge of PR #258 (CI/Eval/Preview gates).
+
+**Follow-ups queued:** (1) consolidate the stale `tello-us` public-legacy seed route into `tello-us-payg-credit` (alias pattern like `giffgaff-uk`) — decision needed, not started; (2) replace the 95 unknown retention placeholders with real researched records in bounded batches; (3) Optus AU price-rise re-verification due 2026-09-30.
 
 ## Backstage packet set — batch-2 fully dispositioned
 

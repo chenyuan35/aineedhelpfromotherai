@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "clubsim-hk-service-pack-retention",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "clubsim-hk",
+    "displayName": "ClubSIM service-pack retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.clubsim.com.hk/",
+    "sourceIds": [
+      "clubsim-official-sms-pack-2026-09-26",
+      "clubsim-official-tnc-2026-09-26",
+      "naixi-clubsim-12930",
+      "nodeseek-clubsim-479688",
+      "v2ex-clubsim-1012236",
+      "v2ex-clubsim-1054323",
+      "v2ex-clubsim-1243080",
+      "v2ex-clubsim-927504"
+    ]
+  },
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "csl-hk",
+    "name": "csl (Hong Kong)",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "clubsim-hk",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "name": "ClubSIM"
+  },
+  "metrics": {
+    "routeId": "clubsim-hk-service-pack-retention",
+    "checkedAt": "2026-09-26",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "clubsim-official-sms-pack-2026-09-26",
+      "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+      "type": "official-commercial",
+      "reportedAt": "2026-09-26",
+      "label": "ClubSIM web surface listing SMS Pack at HKD 6 / 30 days; number-retention clock is a separate 365-day lifecycle rule"
+    },
+    {
+      "id": "clubsim-official-tnc-2026-09-26",
+      "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
+      "type": "provider-commercial-terms",
+      "reportedAt": "2026-09-26",
+      "label": "ClubSIM general terms — SIM/service may be permanently terminated and number reallocated if no Service Pack is purchased within 365 days of the last purchase"
+    },
+    {
+      "id": "naixi-clubsim-12930",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-07-01",
+      "label": "Naixi forum — HKD 6 option reported missing in-app for some users; replies cite HKD 15 alternatives"
+    },
+    {
+      "id": "nodeseek-clubsim-479688",
+      "url": "https://www.nodeseek.com/post-479688-1",
+      "type": "community-tutorial",
+      "reportedAt": "2025-10-16",
+      "label": "NodeSeek — activation / eSIM / real-name / retention walkthrough (same-author NodeLoc topic/64554 cross-post counted once, not recorded)"
+    },
+    {
+      "id": "v2ex-clubsim-1012236",
+      "url": "https://www.v2ex.com/t/1012236",
+      "type": "community-incident-thread",
+      "reportedAt": "2024-01-28",
+      "label": "V2EX — negative account/SMS experience"
+    },
+    {
+      "id": "v2ex-clubsim-1054323",
+      "url": "https://www.v2ex.com/t/1054323",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2024-07-02",
+      "label": "V2EX — mainland receive-SMS / KYC discussion and later re-verification friction"
+    },
+    {
+      "id": "v2ex-clubsim-1243080",
+      "url": "https://www.v2ex.com/t/1243080",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-18",
+      "label": "V2EX — fresh mainland roaming verification: Telegram/WhatsApp outcomes varied with network/data context while Google/Apple worked"
+    },
+    {
+      "id": "v2ex-clubsim-927504",
+      "url": "https://www.v2ex.com/t/927504",
+      "type": "community-thread",
+      "reportedAt": "2023-03-27",
+      "label": "V2EX — 365-day retention discussion and low-cost service-pack method"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-clubsim-hk-roaming-context-2026-09-18",
+      "routeId": "clubsim-hk-service-pack-retention",
+      "service": "multiple (Telegram/WhatsApp/Google/Apple)",
+      "operation": "registration-verification",
+      "outcome": "context-dependent",
+      "reportedAt": "2026-09-18",
+      "geography": "mainland-China",
+      "sourceId": "v2ex-clubsim-1243080",
+      "dedupeKey": "v2ex-1243080-roaming-context"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-clubsim-hkd6-availability-conflict-2026-07",
+      "routeId": "clubsim-hk-service-pack-retention",
+      "type": "price-availability-conflict",
+      "reportedAt": "2026-07-01",
+      "scope": "multiple-same-thread-observations",
+      "outcome": "HKD 6 SMS pack reported missing in-app for some users with HKD 15 alternatives cited, while the current first-party web surface still lists HKD 6. Channel/availability conflict preserved; do not convert HKD 6 into a guaranteed annual price.",
+      "sourceId": "naixi-clubsim-12930"
+    }
+  ],
+  "snapshots": []
+}

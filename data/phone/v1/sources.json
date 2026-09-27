@@ -1,9 +1,30 @@
 [
   {
+    "id": "clubsim-official-sms-pack-2026-09-26",
+    "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+    "type": "official-commercial",
+    "reportedAt": "2026-09-26",
+    "label": "ClubSIM web surface listing SMS Pack at HKD 6 / 30 days; number-retention clock is a separate 365-day lifecycle rule"
+  },
+  {
+    "id": "clubsim-official-tnc-2026-09-26",
+    "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
+    "type": "provider-commercial-terms",
+    "reportedAt": "2026-09-26",
+    "label": "ClubSIM general terms — SIM/service may be permanently terminated and number reallocated if no Service Pack is purchased within 365 days of the last purchase"
+  },
+  {
     "id": "giffgaff-official-credit-2026-09-23",
     "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
     "type": "provider-commercial-page",
     "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "hotlink-official-pantas-passes-faq-2026-09-26",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+    "type": "official",
+    "reportedAt": "2026-09-26",
+    "label": "Hotlink FAQ — separates 365-day internet passes (incl. 1GB/RM2 data pass) from the RM30 365-day Active Period Pass that keeps the account/SIM active"
   },
   {
     "id": "linuxdo-giffgaff-1615582",
@@ -132,10 +153,86 @@
     "reportedAt": "2026-08-11"
   },
   {
+    "id": "lowyat-hotlink-3803865",
+    "url": "https://forum.lowyat.net/topic/3803865/+1300",
+    "type": "community-thread",
+    "reportedAt": "2026-03-19",
+    "label": "Lowyat — fresh comparison citing RM30 one-year SIM validity"
+  },
+  {
+    "id": "lowyat-hotlink-4186655",
+    "url": "https://forum.lowyat.net/topic/4186655/+360",
+    "type": "community-thread",
+    "reportedAt": "2025-10-26",
+    "label": "Lowyat — community confirmation/discussion of Pantas 365-day validity pricing"
+  },
+  {
+    "id": "naixi-clubsim-12930",
+    "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+    "type": "community-incident-thread",
+    "reportedAt": "2026-07-01",
+    "label": "Naixi forum — HKD 6 option reported missing in-app for some users; replies cite HKD 15 alternatives"
+  },
+  {
+    "id": "nodeloc-hotlink-67257",
+    "url": "https://www.nodeloc.com/t/topic/67257",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2025-11-16",
+    "label": "NodeLoc — RM30/year retention, passport/acquisition and China roaming/SMS discussion"
+  },
+  {
+    "id": "nodeloc-hotlink-87761",
+    "url": "https://www.nodeloc.com/t/topic/87761",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-06-08",
+    "label": "NodeLoc — fresh RM30/year retention and overseas-use discussion"
+  },
+  {
+    "id": "nodeloc-tello-110176",
+    "url": "https://www.nodeloc.com/t/topic/110176",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-09-20",
+    "label": "NodeLoc — fresh 2026 activation / China-use discussion"
+  },
+  {
+    "id": "nodeloc-tello-72344",
+    "url": "https://www.nodeloc.com/t/topic/72344",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2025-12-26",
+    "label": "NodeLoc — current-user discussion: USD 5/month plan, Wi-Fi Calling, China roaming, PAYG economics"
+  },
+  {
     "id": "nodeloc-voxi-102713",
     "url": "https://www.nodeloc.com/t/topic/102713",
     "type": "commercial-community-post",
     "reportedAt": "2026-08-09"
+  },
+  {
+    "id": "nodeseek-clubsim-479688",
+    "url": "https://www.nodeseek.com/post-479688-1",
+    "type": "community-tutorial",
+    "reportedAt": "2025-10-16",
+    "label": "NodeSeek — activation / eSIM / real-name / retention walkthrough (same-author NodeLoc topic/64554 cross-post counted once, not recorded)"
+  },
+  {
+    "id": "nodeseek-hotlink-509402",
+    "url": "https://www.nodeseek.com/post-509402-1",
+    "type": "community-thread",
+    "reportedAt": "2025-11-18",
+    "label": "NodeSeek — acquisition/availability demand"
+  },
+  {
+    "id": "nodeseek-tello-534061",
+    "url": "https://www.nodeseek.com/post-534061-1",
+    "type": "community-tutorial",
+    "label": "NodeSeek — acquisition/activation tutorial and low-cost-number use case"
+  },
+  {
+    "id": "nodeseek-tello-783926",
+    "url": "https://www.nodeseek.com/post-783926-1",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-06-19",
+    "label": "NodeSeek — longer-term first-hand comparison including a Tello account/risk-control failure and abandonment"
   },
   {
     "id": "src-0b42956d1b40",
@@ -352,6 +449,48 @@
     "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
     "type": "official",
     "label": "Tello — When do autopay & plan renewal occur?"
+  },
+  {
+    "id": "tello-official-payg-2026-09-26",
+    "url": "https://tello.com/buy/pay_as_you_go",
+    "type": "official-commercial",
+    "reportedAt": "2026-09-26",
+    "label": "Tello official PAYG page — credit from USD 20, 90-day validity, usable for international roaming"
+  },
+  {
+    "id": "v2ex-clubsim-1012236",
+    "url": "https://www.v2ex.com/t/1012236",
+    "type": "community-incident-thread",
+    "reportedAt": "2024-01-28",
+    "label": "V2EX — negative account/SMS experience"
+  },
+  {
+    "id": "v2ex-clubsim-1054323",
+    "url": "https://www.v2ex.com/t/1054323",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2024-07-02",
+    "label": "V2EX — mainland receive-SMS / KYC discussion and later re-verification friction"
+  },
+  {
+    "id": "v2ex-clubsim-1243080",
+    "url": "https://www.v2ex.com/t/1243080",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-09-18",
+    "label": "V2EX — fresh mainland roaming verification: Telegram/WhatsApp outcomes varied with network/data context while Google/Apple worked"
+  },
+  {
+    "id": "v2ex-clubsim-927504",
+    "url": "https://www.v2ex.com/t/927504",
+    "type": "community-thread",
+    "reportedAt": "2023-03-27",
+    "label": "V2EX — 365-day retention discussion and low-cost service-pack method"
+  },
+  {
+    "id": "v2ex-tello-1178389",
+    "url": "https://www.v2ex.com/t/1178389",
+    "type": "community-thread",
+    "reportedAt": "2025-12-11",
+    "label": "V2EX — independent user demand/comparison for a low-cost overseas number including Tello"
   },
   {
     "id": "vodafone-official-network-trial-2026",

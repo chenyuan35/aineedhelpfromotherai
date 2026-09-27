@@ -1,5 +1,14 @@
 [
   {
+    "id": "evt-clubsim-hkd6-availability-conflict-2026-07",
+    "routeId": "clubsim-hk-service-pack-retention",
+    "type": "price-availability-conflict",
+    "reportedAt": "2026-07-01",
+    "scope": "multiple-same-thread-observations",
+    "outcome": "HKD 6 SMS pack reported missing in-app for some users with HKD 15 alternatives cited, while the current first-party web surface still lists HKD 6. Channel/availability conflict preserved; do not convert HKD 6 into a guaranteed annual price.",
+    "sourceId": "naixi-clubsim-12930"
+  },
+  {
     "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
     "routeId": "giffgaff-uk-direct-esim-payg",
     "type": "recycled-number-observation",
@@ -36,6 +45,15 @@
     "sourceId": "linuxdo-giffgaff-2903412"
   },
   {
+    "id": "evt-hotlink-rm30-retention-confirmation-2026",
+    "routeId": "hotlink-my-pantas-active-period-365",
+    "type": "retention-cost-confirmation",
+    "reportedAt": "2026-06-08",
+    "scope": "multiple-observations",
+    "outcome": "Multiple independent community reports confirm the RM30 / 365-day Active Period Pass as the real keep-alive workflow; the RM2/365-day figure is a data-only pass and is refuted as a number-retention metric.",
+    "sourceId": "nodeloc-hotlink-87761"
+  },
+  {
     "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
     "routeId": "lebara-uk-direct-esim-china",
     "type": "outgoing-service-friction",
@@ -43,5 +61,14 @@
     "scope": "multiple-same-thread-observations",
     "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
     "sourceId": "linuxdo-lebara-2745784-op"
+  },
+  {
+    "id": "evt-tello-us-payg-risk-control-783926",
+    "routeId": "tello-us-payg-credit",
+    "type": "account-risk-control-closure",
+    "reportedAt": "2026-06-19",
+    "scope": "single-observation",
+    "outcome": "User reported Tello account/risk-control failure and abandoned the route; preserved as visible route risk, not as a generic success-rate input.",
+    "sourceId": "nodeseek-tello-783926"
   }
 ]

@@ -1,47 +1,14 @@
 [
   {
-    "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
-    "routeId": "lebara-uk-direct-esim-china",
-    "service": "WhatsApp",
+    "id": "obs-clubsim-hk-roaming-context-2026-09-18",
+    "routeId": "clubsim-hk-service-pack-retention",
+    "service": "multiple (Telegram/WhatsApp/Google/Apple)",
     "operation": "registration-verification",
-    "outcome": "success",
-    "reportedAt": "2026-08-12",
+    "outcome": "context-dependent",
+    "reportedAt": "2026-09-18",
     "geography": "mainland-China",
-    "sourceId": "linuxdo-lebara-2745784-op",
-    "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
-  },
-  {
-    "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
-    "routeId": "lebara-uk-direct-esim-china",
-    "service": "WhatsApp",
-    "operation": "registration-verification",
-    "outcome": "success",
-    "reportedAt": "2026-08-13",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-lebara-2745784-op",
-    "dedupeKey": "lebara-2745784-lzd2-whatsapp"
-  },
-  {
-    "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
-    "routeId": "lebara-uk-direct-esim-china",
-    "service": "Telegram",
-    "operation": "registration-verification",
-    "outcome": "success",
-    "reportedAt": "2026-08-12",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-lebara-2745784-op",
-    "dedupeKey": "lebara-2745784-chenliujun-telegram"
-  },
-  {
-    "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
-    "routeId": "lebara-uk-direct-esim-china",
-    "service": "Telegram",
-    "operation": "registration-verification",
-    "outcome": "success",
-    "reportedAt": "2026-08-13",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-lebara-2745784-op",
-    "dedupeKey": "lebara-2745784-lzd2-telegram"
+    "sourceId": "v2ex-clubsim-1243080",
+    "dedupeKey": "v2ex-1243080-roaming-context"
   },
   {
     "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
@@ -86,5 +53,49 @@
     "geography": "mainland-China",
     "sourceId": "linuxdo-giffgaff-2322268",
     "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+  },
+  {
+    "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
+    "routeId": "lebara-uk-direct-esim-china",
+    "service": "WhatsApp",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-08-12",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-lebara-2745784-op",
+    "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
+  },
+  {
+    "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
+    "routeId": "lebara-uk-direct-esim-china",
+    "service": "WhatsApp",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-08-13",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-lebara-2745784-op",
+    "dedupeKey": "lebara-2745784-lzd2-whatsapp"
+  },
+  {
+    "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
+    "routeId": "lebara-uk-direct-esim-china",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-08-12",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-lebara-2745784-op",
+    "dedupeKey": "lebara-2745784-chenliujun-telegram"
+  },
+  {
+    "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
+    "routeId": "lebara-uk-direct-esim-china",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-08-13",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-lebara-2745784-op",
+    "dedupeKey": "lebara-2745784-lzd2-telegram"
   }
 ]

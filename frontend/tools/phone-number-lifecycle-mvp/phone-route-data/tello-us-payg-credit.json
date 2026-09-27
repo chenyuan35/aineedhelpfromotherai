@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "tello-us-payg-credit",
+    "marketId": "us",
+    "networkId": "t-mobile-us",
+    "brandId": "tello-us",
+    "displayName": "Tello Pay As You Go",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://tello.com/buy/pay_as_you_go",
+    "sourceIds": [
+      "nodeloc-tello-110176",
+      "nodeloc-tello-72344",
+      "nodeseek-tello-534061",
+      "nodeseek-tello-783926",
+      "tello-official-payg-2026-09-26",
+      "v2ex-tello-1178389"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "t-mobile-us",
+    "name": "T-Mobile US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "tello-us",
+    "marketId": "us",
+    "networkId": null,
+    "name": "Tello"
+  },
+  "metrics": {
+    "routeId": "tello-us-payg-credit",
+    "checkedAt": "2026-09-26",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "nodeloc-tello-110176",
+      "url": "https://www.nodeloc.com/t/topic/110176",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-20",
+      "label": "NodeLoc — fresh 2026 activation / China-use discussion"
+    },
+    {
+      "id": "nodeloc-tello-72344",
+      "url": "https://www.nodeloc.com/t/topic/72344",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-12-26",
+      "label": "NodeLoc — current-user discussion: USD 5/month plan, Wi-Fi Calling, China roaming, PAYG economics"
+    },
+    {
+      "id": "nodeseek-tello-534061",
+      "url": "https://www.nodeseek.com/post-534061-1",
+      "type": "community-tutorial",
+      "label": "NodeSeek — acquisition/activation tutorial and low-cost-number use case"
+    },
+    {
+      "id": "nodeseek-tello-783926",
+      "url": "https://www.nodeseek.com/post-783926-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-19",
+      "label": "NodeSeek — longer-term first-hand comparison including a Tello account/risk-control failure and abandonment"
+    },
+    {
+      "id": "tello-official-payg-2026-09-26",
+      "url": "https://tello.com/buy/pay_as_you_go",
+      "type": "official-commercial",
+      "reportedAt": "2026-09-26",
+      "label": "Tello official PAYG page — credit from USD 20, 90-day validity, usable for international roaming"
+    },
+    {
+      "id": "v2ex-tello-1178389",
+      "url": "https://www.v2ex.com/t/1178389",
+      "type": "community-thread",
+      "reportedAt": "2025-12-11",
+      "label": "V2EX — independent user demand/comparison for a low-cost overseas number including Tello"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-tello-us-payg-risk-control-783926",
+      "routeId": "tello-us-payg-credit",
+      "type": "account-risk-control-closure",
+      "reportedAt": "2026-06-19",
+      "scope": "single-observation",
+      "outcome": "User reported Tello account/risk-control failure and abandoned the route; preserved as visible route risk, not as a generic success-rate input.",
+      "sourceId": "nodeseek-tello-783926"
+    }
+  ],
+  "snapshots": []
+}
