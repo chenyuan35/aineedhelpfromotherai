@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "state": "reviewed-legacy-admission",
+  "admittedBatches": [
+    "at-be-cz-gr-hu-ro-batch-m.json",
+    "ca-fr-ch-mx-in-directory-batch-i.json",
+    "de-my-directory-batch-f.json",
+    "hk-directory-batch-c.json",
+    "hk2-depth-batch-u.json",
+    "id-za-br-sa-ar-kr-batch-l.json",
+    "ie-pl-pt-hr-directory-batch-k.json",
+    "it-es-sg-directory-batch-h.json",
+    "jp-directory-batch-b.json",
+    "jp-kr-depth-batch-t.json",
+    "jp-kr-depth-batch-v.json",
+    "kz-by-ge-rs-me-ba-az-kh-batch-r.json",
+    "multi-depth-batch-x.json",
+    "ng-ke-bd-tw-pk-eg-batch-n.json",
+    "nl-au-directory-batch-g.json",
+    "no-lv-ee-mt-ma-gh-lk-np-cr-cy-batch-q.json",
+    "nz-th-directory-batch-d.json",
+    "ph-tr-ae-vn-directory-batch-j.json",
+    "se-dk-fi-bg-sk-si-lt-batch-p.json",
+    "tw-depth-batch-w.json",
+    "ua-ru-il-qa-cl-co-pe-batch-o.json",
+    "uk-mno-directory-batch-e.json",
+    "uk2-depth-batch-t.json",
+    "us-directory-batch-a.json",
+    "us2-depth-batch-s.json",
+    "uz-ge2-kw-om-bs-jm-tz-sn-batch-s.json"
+  ],
+  "notes": [
+    "Only files explicitly listed here may feed the legacy global-directory/catalog merge scripts.",
+    "New Qwen/Kimi or other delegated batch files remain research candidates until sampled, reviewed, and explicitly admitted.",
+    "Database/comparison admission does not grant detail-page or indexable publication; publication-policy.json remains separate."
+  ]
+}

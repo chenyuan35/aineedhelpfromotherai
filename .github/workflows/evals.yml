@@ -43,6 +43,9 @@ jobs:
       - name: Audit Phone community intelligence watcher
         run: bash scripts/test-phone-demand-watch.sh
 
+      - name: Audit Phone data admission boundaries
+        run: npm run phone:data:check
+
       - name: Audit phone-number lifecycle MVP
         run: node scripts/test-phone-number-lifecycle-mvp.mjs
 
@@ -77,7 +80,7 @@ jobs:
       - name: Run pass^k stability (optional, PR only)
         if: github.event_name == 'pull_request'
         run: npm run eval:passk -- --quiet
-        continue-on-error: true  # Informational for now
+        continue-on-error: true
 
       - name: Run Replay Stability Score
         run: npm run eval:rss -- --quiet
