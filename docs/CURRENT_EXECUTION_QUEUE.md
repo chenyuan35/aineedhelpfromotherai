@@ -31,7 +31,7 @@ The global Phone expansion is now reconciled with the product architecture witho
 - retention tests now treat deep retention intelligence as a subset of the carrier catalog rather than requiring every database route to have deep evidence;
 - Keep-Alive no longer invents a 15% buffer, no longer assumes today is the user's last action, and calendar export is one-time rather than a drifting recurring rule.
 
-Local pre-PR verification passed the Phone lifecycle, retention, supply, publication-state, public-release, watcher, Relay and golden Eval gates plus a full frontend build. Remote CI / Preview and production verification remain release gates before final closure.
+Release closure: Eval Gate #855 passed; Vercel Preview reached READY; PR #261 squash-merged as `11f26865c954b0d39e8515e8fc7b1130f8efa717`; production deployment `dpl_8gqwvxA1W7ZLjFQuGL6YSUwYAvhB` reached READY. Production verification on the custom domain confirmed the Directory returns HTTP 200, representative removed non-indexable route (`tello-paygo-credit-2026`) and market (`united-states`) URLs return HTTP 404/noindex, and `sitemap.xml` contains only the explicitly admitted Phone detail URLs rather than the former bulk market/route families.
 
 ## NEXT SESSION — harden Qwen/Kimi data admission
 
