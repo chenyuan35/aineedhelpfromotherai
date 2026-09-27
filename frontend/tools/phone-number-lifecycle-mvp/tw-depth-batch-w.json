@@ -1,0 +1,117 @@
+{
+ "schemaVersion": "2026-09-27",
+ "market": "tw",
+ "checkedAt": "2026-09-27",
+ "status": "directory-candidates",
+ "notes": "TW depth batch. Taiwan Mobile official promo terms confirm: number validity resets to 6 months from each recharge date. FarEasTone prepaid exists (300/500 TWD starter types) but number-validity rule not yet officially captured -> observation. FX TWD->CNY 0.23.",
+ "networks": [
+  {
+   "id": "twm-tw",
+   "name": "Taiwan Mobile"
+  },
+  {
+   "id": "fet-tw",
+   "name": "FarEasTone"
+  }
+ ],
+ "brands": [
+  {
+   "id": "taiwan-mobile-tw",
+   "networkId": "twm-tw",
+   "name": "Taiwan Mobile"
+  },
+  {
+   "id": "fareastone-tw",
+   "networkId": "fet-tw",
+   "name": "FarEasTone"
+  }
+ ],
+ "routes": [
+  {
+   "id": "taiwan-mobile-prepaid-tw-2026",
+   "brandId": "taiwan-mobile-tw",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "4G/5G prepaid starter sold at Taiwan Mobile stores, franchise shops and airport counters; foreigners apply with passport (same as CHT). Long-validity recharge packs 60-180 days data + bonus credit.",
+   "landedCost": {
+    "currency": "TWD",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-27",
+    "state": "unverified"
+   },
+   "keep": {
+    "currency": "TWD",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Official promo terms (taiwanmobile.com, effective 2026): 門號效期將自儲值日起重新起算6個月 — number validity resets to 6 months from each recharge. Minimum recharge amount unverified (typical channels NT$100-300). Retention = one recharge per 6 months.",
+    "intervalDays": 180,
+    "state": "official-confirmed-rule-cost-unverified"
+   },
+   "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+   "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+   "payment": "Cash/card in Taiwan stores; online recharge needs TW-friendly payment.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+   "tariffSummary": "Prepaid; number validity = 6 months from each recharge (official).",
+   "sourceIds": [
+    "taiwan-mobile-tw-official"
+   ]
+  },
+  {
+   "id": "fareastone-prepaid-tw-2026",
+   "brandId": "fareastone-tw",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "FarEasTone 超4代易付卡 prepaid starters (NT$300/500 types) sold in FET stores; passport accepted for foreigners. Official product page confirmed live 2026-09-27.",
+   "landedCost": {
+    "currency": "TWD",
+    "providerOrCommunityPrice": 300,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 300,
+    "landedCny": 69,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-starter-price"
+   },
+   "keep": {
+    "currency": "TWD",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "FET-specific number-validity rule not yet officially captured. Taiwan NCC-regulated industry standard (per Taiwan Mobile official terms): validity resets 6 months from each recharge — FET likely identical, unverified.",
+    "intervalDays": null,
+    "state": "partially-verified"
+   },
+   "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+   "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+   "payment": "Cash/card in Taiwan stores.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Retention rule not yet officially verified for FET specifically.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+   "tariffSummary": "Prepaid starters NT$300/500; validity rule pending official capture.",
+   "sourceIds": [
+    "fareastone-tw-official"
+   ]
+  }
+ ]
+}

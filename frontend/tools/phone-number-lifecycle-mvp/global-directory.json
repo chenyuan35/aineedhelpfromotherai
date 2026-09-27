@@ -142,6 +142,22 @@
    "name": "NTT docomo"
   },
   {
+   "id": "rakuten-jp",
+   "name": "Rakuten Mobile"
+  },
+  {
+   "id": "softbank-jp",
+   "name": "SoftBank"
+  },
+  {
+   "id": "kt-kr",
+   "name": "KT (Korea Telecom)"
+  },
+  {
+   "id": "lguplus-kr",
+   "name": "LG U+"
+  },
+  {
    "id": "beeline-kz",
    "name": "Beeline KZ"
   },
@@ -300,6 +316,14 @@
   {
    "id": "bite-lt",
    "name": "Bitė LT"
+  },
+  {
+   "id": "twm-tw",
+   "name": "Taiwan Mobile"
+  },
+  {
+   "id": "fet-tw",
+   "name": "FarEasTone"
   },
   {
    "id": "kyivstar-ua",
@@ -590,6 +614,36 @@
    "name": "Sakura Mobile"
   },
   {
+   "id": "rakuten-mobile-jp",
+   "networkId": "rakuten-jp",
+   "name": "Rakuten Mobile"
+  },
+  {
+   "id": "linemo-jp",
+   "networkId": "softbank-jp",
+   "name": "LINEMO"
+  },
+  {
+   "id": "ahamo-jp",
+   "networkId": "docomo-jp",
+   "name": "ahamo"
+  },
+  {
+   "id": "iijmio-jp",
+   "networkId": "docomo-jp",
+   "name": "IIJmio"
+  },
+  {
+   "id": "kt-prepaid-kr",
+   "networkId": "kt-kr",
+   "name": "KT Prepaid"
+  },
+  {
+   "id": "lguplus-prepaid-kr",
+   "networkId": "lguplus-kr",
+   "name": "LG U+ Prepaid"
+  },
+  {
    "id": "beeline-kz-prepaid",
    "networkId": "beeline-kz",
    "name": "Beeline KZ Prepaid"
@@ -788,6 +842,16 @@
    "id": "labas",
    "networkId": "bite-lt",
    "name": "LABAS"
+  },
+  {
+   "id": "taiwan-mobile-tw",
+   "networkId": "twm-tw",
+   "name": "Taiwan Mobile"
+  },
+  {
+   "id": "fareastone-tw",
+   "networkId": "fet-tw",
+   "name": "FarEasTone"
   },
   {
    "id": "kyivstar-prepaid",
@@ -2753,6 +2817,272 @@
    "marketName": "Japan"
   },
   {
+   "id": "rakuten-mobile-jp-2026",
+   "brandId": "rakuten-mobile-jp",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Requires Japanese Residence Card (zairyu card) with >=3 months visa validity remaining (all residence statuses accepted), Rakuten ID, and credit card (Visa/MC/JCB/AmEx; overseas-issued cards often work but sometimes declined). SIM/eSIM delivered to Japanese address.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 0,
+    "landedCny": 0,
+    "fxCheckedAt": "2026-09-27",
+    "state": "no-contract-admin-fee-official"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 1078,
+    "yearCostOriginal": 12936,
+    "yearCostCny": 621,
+    "action": "Official SAIKYO Plan detail page: tiered pricing, cheapest tier 3GB = 1,078 yen/mo incl tax. No PAYG idle mode — cancel = number lost. Retention = keep paying monthly.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Not possible — requires Japanese residence docs and Japan delivery/activation.",
+   "kyc": "Residence Card (zairyu card) REQUIRED, both sides uploaded; visa >=3 months remaining. Not available to tourists or overseas users.",
+   "payment": "Visa/MC/JCB/AmEx or JP bank transfer; overseas cards sometimes declined.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Requires Japanese residence (zairyu card + 3-month visa validity). For non-residents, use povo (residents only too) / mobal / sakura instead.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+   "tariffSummary": "SAIKYO Plan: 3GB tier 1,078 yen/mo (tax incl); 20GB 2,178 yen; unlimited 3,278 yen.",
+   "sourceIds": [
+    "rakuten-mobile-jp-official",
+    "rakuten-mobile-jp-community"
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "linemo-jp-2026",
+   "brandId": "linemo-jp",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "SoftBank online-only brand. NOTE: cheap Mini Plan (990 yen) STOPPED accepting new signups on 2024-07-29 (official terms PDF). Current entry = LINEMO Best Plan 3GB/990 yen per official EN site.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 0,
+    "landedCny": 0,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-site"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 990,
+    "yearCostOriginal": 11880,
+    "yearCostCny": 570,
+    "action": "Subscription-only: Best Plan 3GB = 990 yen/mo (official EN site 'starting at 3GB/990 yen'). No idle PAYG mode. Retention = keep paying monthly.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Not possible — online application requires Japanese residence documents and Japan address.",
+   "kyc": "Japanese residence documents required (foreigners: residence card). Online-only eKYC.",
+   "payment": "Credit card (JP-issued reliably; overseas acceptance unverified).",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Requires Japanese residence; online-only eKYC. Mini Plan (990 yen cheapest tier) closed to new customers 2024-07-29.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.linemo.jp/en/language/",
+   "tariffSummary": "Best Plan 3GB/990 yen per month. Mini Plan closed 2024-07-29.",
+   "sourceIds": [
+    "linemo-jp-official",
+    "linemo-jp-community"
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "ahamo-jp-2026",
+   "brandId": "ahamo-jp",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "docomo online brand. Official site: 30GB = 2,970 yen/mo (tax incl), includes 5-min domestic calls. Online application requires d-account and Japanese residence documents.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 0,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 0,
+    "landedCny": 0,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-site"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 2970,
+    "yearCostOriginal": 35640,
+    "yearCostCny": 1711,
+    "action": "Subscription-only: 2,970 yen/mo (official ahamo.com). No idle PAYG mode. Retention = keep paying monthly — poor fit for number parking.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Not possible — requires Japanese residence and d-account.",
+   "kyc": "Japanese residence documents required.",
+   "payment": "d-payment / credit card; overseas cards unverified.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Requires Japanese residence; 2,970 yen/mo minimum — no retention value for non-residents.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://ahamo.com/",
+   "tariffSummary": "30GB 2,970 yen/mo (official 2026-09).",
+   "sourceIds": [
+    "ahamo-jp-official"
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "iijmio-jp-2026",
+   "brandId": "iijmio-jp",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Japan's cheapest voice SIM: Giga Plan 2GB docomo line = 850 yen/mo; initial fees 3,300 yen admin + 433 yen SIM issuance (kakaku.com listing, 2026-09). Online application; Japanese address for SIM delivery.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 3733,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 3733,
+    "landedCny": 179,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-price-aggregator"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 850,
+    "yearCostOriginal": 10200,
+    "yearCostCny": 490,
+    "action": "Subscription-only: 850 yen/mo for 2GB voice SIM (kakaku.com 2026-09). No idle PAYG mode. Retention = keep paying monthly.",
+    "intervalDays": 30,
+    "state": "community-confirmed-official-listing"
+   },
+   "chinaActivation": "Not possible — Japanese address and payment required; eSIM activation is domestic.",
+   "kyc": "Japanese ID required (foreigners: residence card).",
+   "payment": "Credit card; overseas card acceptance unverified.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Requires Japanese residence/address. Cheapest JP voice SIM (850 yen/mo) but still subscription-gated — povo's 500 yen/yr (residents) beats it for retention.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+   "tariffSummary": "Giga Plan 2GB voice SIM 850 yen/mo + 3,733 yen initial fees.",
+   "sourceIds": [
+    "iijmio-jp-community"
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "kt-prepaid-kr-2026",
+   "brandId": "kt-prepaid-kr",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "KT sells prepaid USIM (LTE/3G) via shop.kt.com and KT roaming centers (airport). Official KT Global Shop requirement: at least 90 days must be left on your visa to subscribe for KT mobile services.",
+   "landedCost": {
+    "currency": "KRW",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-27",
+    "state": "unverified"
+   },
+   "keep": {
+    "currency": "KRW",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Recharge-based validity (Korean prepaid standard); exact extension table unverified. Long-term retention requires ARC (alien registration) for most practical purposes — tourist prepaid SIMs are time-limited.",
+    "intervalDays": null,
+    "state": "partially-verified"
+   },
+   "chinaActivation": "Purchase/activation in Korea (airport roaming center or KT shop); overseas activation unverified.",
+   "kyc": "Passport with visa >=90 days remaining (official KT Global Shop). Long-term: ARC required.",
+   "payment": "Korean/overseas cards at KT shops; unverified.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Official KT requirement: visa >=90 days remaining. Long-term number retention as a non-resident effectively not viable (ARC-gated). Existing skt-prepaid-kr-2026 has similar constraints.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://globalshop.kt.com/support/supportNeed.do",
+   "tariffSummary": "Prepaid USIM available; visa >=90d required (official).",
+   "sourceIds": [
+    "kt-prepaid-kr-official"
+   ],
+   "marketName": "South Korea"
+  },
+  {
+   "id": "lguplus-prepaid-kr-2026",
+   "brandId": "lguplus-prepaid-kr",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "LG U+ prepaid SIMs sold via resellers serving foreigners (e.g., Kimchi Mobile) with recharge credit add-ons; direct purchase requires Korean visa status similar to KT.",
+   "landedCost": {
+    "currency": "KRW",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-27",
+    "state": "unverified"
+   },
+   "keep": {
+    "currency": "KRW",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Recharge-based validity via reseller channels; official long-term retention rules for foreigners unverified. Same structural constraints as KT (visa/ARC).",
+    "intervalDays": null,
+    "state": "partially-verified"
+   },
+   "chinaActivation": "In-Korea purchase/activation expected; overseas activation unverified.",
+   "kyc": "Passport + visa (Korean standard); ARC for long-term.",
+   "payment": "Reseller channels accept international cards (kimchimobile).",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Non-resident retention effectively gated by Korean visa/ARC requirements; reseller channel adds cost and uncertainty.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.kimchimobile.com/product/prepaid-recharge-credit-lg-uplus/",
+   "tariffSummary": "Prepaid via foreigner-facing resellers; long-term retention ARC-gated.",
+   "sourceIds": [
+    "lguplus-prepaid-kr-community"
+   ],
+   "marketName": "South Korea"
+  },
+  {
    "id": "beeline-kz-simka-v-seyfe-2026",
    "brandId": "beeline-kz-prepaid",
    "publishState": "candidate",
@@ -4465,6 +4795,94 @@
     "Directory card — pending."
    ],
    "marketName": "Slovenia"
+  },
+  {
+   "id": "taiwan-mobile-prepaid-tw-2026",
+   "brandId": "taiwan-mobile-tw",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "4G/5G prepaid starter sold at Taiwan Mobile stores, franchise shops and airport counters; foreigners apply with passport (same as CHT). Long-validity recharge packs 60-180 days data + bonus credit.",
+   "landedCost": {
+    "currency": "TWD",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-27",
+    "state": "unverified"
+   },
+   "keep": {
+    "currency": "TWD",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Official promo terms (taiwanmobile.com, effective 2026): 門號效期將自儲值日起重新起算6個月 — number validity resets to 6 months from each recharge. Minimum recharge amount unverified (typical channels NT$100-300). Retention = one recharge per 6 months.",
+    "intervalDays": 180,
+    "state": "official-confirmed-rule-cost-unverified"
+   },
+   "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+   "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+   "payment": "Cash/card in Taiwan stores; online recharge needs TW-friendly payment.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+   "tariffSummary": "Prepaid; number validity = 6 months from each recharge (official).",
+   "sourceIds": [
+    "taiwan-mobile-tw-official"
+   ],
+   "marketName": "Taiwan"
+  },
+  {
+   "id": "fareastone-prepaid-tw-2026",
+   "brandId": "fareastone-tw",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "FarEasTone 超4代易付卡 prepaid starters (NT$300/500 types) sold in FET stores; passport accepted for foreigners. Official product page confirmed live 2026-09-27.",
+   "landedCost": {
+    "currency": "TWD",
+    "providerOrCommunityPrice": 300,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 300,
+    "landedCny": 69,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-starter-price"
+   },
+   "keep": {
+    "currency": "TWD",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "FET-specific number-validity rule not yet officially captured. Taiwan NCC-regulated industry standard (per Taiwan Mobile official terms): validity resets 6 months from each recharge — FET likely identical, unverified.",
+    "intervalDays": null,
+    "state": "partially-verified"
+   },
+   "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+   "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+   "payment": "Cash/card in Taiwan stores.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Retention rule not yet officially verified for FET specifically.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+   "tariffSummary": "Prepaid starters NT$300/500; validity rule pending official capture.",
+   "sourceIds": [
+    "fareastone-tw-official"
+   ],
+   "marketName": "Taiwan"
   },
   {
    "id": "kyivstar-prepaid-274-91-2026",
@@ -6734,6 +7152,54 @@
    "reportedAt": "2026-09-26"
   },
   {
+   "id": "rakuten-mobile-jp-official",
+   "url": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "rakuten-mobile-jp-community",
+   "url": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "linemo-jp-official",
+   "url": "https://www.linemo.jp/en/language/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "linemo-jp-community",
+   "url": "https://www.linemo.jp/en/language/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "ahamo-jp-official",
+   "url": "https://ahamo.com/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "iijmio-jp-community",
+   "url": "https://www.iijmio.jp/gigaplan/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "kt-prepaid-kr-official",
+   "url": "https://globalshop.kt.com/support/supportNeed.do",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "lguplus-prepaid-kr-community",
+   "url": "https://www.kimchimobile.com/product/prepaid-recharge-credit-lg-uplus/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
    "id": "official-beeline-kz-simka-v-seyfe-2026-09-26",
    "url": "https://beeline.kz/",
    "type": "provider-official",
@@ -7026,6 +7492,18 @@
    "url": "https://telemach.si/",
    "type": "provider-official",
    "reportedAt": "2026-09-26"
+  },
+  {
+   "id": "taiwan-mobile-tw-official",
+   "url": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "fareastone-tw-official",
+   "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
   },
   {
    "id": "official-kyivstar-termin-diyi-2026-09-26",
