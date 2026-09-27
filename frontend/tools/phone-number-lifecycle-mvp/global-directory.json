@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "market": "global",
- "checkedAt": "2026-09-27",
+ "checkedAt": "2026-09-26",
  "status": "global-directory",
  "notes": "Merged from UK pilot + 17 backstage batches (2026-09-26).",
  "networks": [
@@ -143,7 +143,11 @@
   },
   {
    "id": "rakuten-jp",
-   "name": "Rakuten Mobile"
+   "name": "Rakuten Mobile (with au partner roaming)"
+  },
+  {
+   "id": "ifmobile-mvno-jp",
+   "name": "IF Mobile (JP MVNO)"
   },
   {
    "id": "softbank-jp",
@@ -412,14 +416,6 @@
   {
    "id": "orange-sn",
    "name": "Orange SN"
-  },
-  {
-   "id": "rakuten-jp",
-   "name": "Rakuten Mobile (with au partner roaming)"
-  },
-  {
-   "id": "ifmobile-mvno-jp",
-   "name": "IF Mobile (JP MVNO)"
   }
  ],
  "brands": [
@@ -612,6 +608,16 @@
    "id": "sakura-jp",
    "networkId": "docomo-jp",
    "name": "Sakura Mobile"
+  },
+  {
+   "id": "calendar-world-jp",
+   "networkId": "rakuten-jp",
+   "name": "CALENDAR (Rakuten prepaid, calendar-world)"
+  },
+  {
+   "id": "ifmobile-jp",
+   "networkId": "ifmobile-mvno-jp",
+   "name": "IF Mobile"
   },
   {
    "id": "rakuten-mobile-jp",
@@ -1032,16 +1038,6 @@
    "id": "orange-sn-prepaid",
    "networkId": "orange-sn",
    "name": "Orange SN Prepaid"
-  },
-  {
-   "id": "calendar-world-jp",
-   "networkId": "rakuten-jp",
-   "name": "CALENDAR (Rakuten prepaid, calendar-world)"
-  },
-  {
-   "id": "ifmobile-jp",
-   "networkId": "ifmobile-mvno-jp",
-   "name": "IF Mobile"
   }
  ],
  "routes": [
@@ -2296,19 +2292,15 @@
    "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "Korea ties every mobile line to verified identity; for foreigners that proof is the physical ARC (Alien Registration Card), issued only after >90-day residence registration. Tourist/short-stay visitors can only get data eSIMs or airport tourist prepaid SIMs whose validity follows the stay (≤90 days). Postpaid conversion requires ARC + Korean bank account (kimchimobile 2026-06).",
+   "acquisitionSummary": "Korea prepaid for foreigners typically airport-pickup tourist SIMs (1-90 day products per trazy/SK roaming). Long-term retention requires ARC (residence card) for postpaid-style registration — prepaid long-term retention terms not captured.",
    "landedCost": {
     "currency": "KRW",
     "state": "insufficient-evidence"
    },
    "keep": {
     "currency": "KRW",
-    "observedActionCost": null,
-    "yearCostOriginal": null,
-    "yearCostCny": null,
-    "action": "BLOCKED for non-residents: no ARC = no long-term Korean number. Tourist prepaid dies with the stay; numbers registered to expiring visas are invalidated (community 2025-12). KYB-resold \"registered\" numbers exist but are gray-market, expensive, and die when the underlying visa lapses.",
-    "intervalDays": 90,
-    "state": "official-plus-community-confirmed-blocker"
+    "action": "Not established; tourist products dominate.",
+    "state": "insufficient-evidence"
    },
    "chinaActivation": "KR foreigner SIMs: tourist (passport, short validity) vs ARC-based (long-term).",
    "kyc": "Passport (tourist) / ARC (resident).",
@@ -2318,21 +2310,18 @@
    "refund": "not reconciled",
    "trend": "watch",
    "guideEligible": false,
-   "holdReason": "Regulatory ARC gate = not viable for overseas retention. Documented as negative-knowledge to save users wasted effort. KR is a dead market for China-based keep-alive as of 2026-09.",
-   "lastVerifiedAt": "2026-09-27",
+   "holdReason": "Korea market = tourist SIMs or ARC-based; no clean long-term foreigner prepaid retention product found.",
+   "lastVerifiedAt": "2026-09-26",
    "acquireUrl": "https://www.skroaming.com/",
    "tariffSummary": "Tourist 1-90 day products; long-term needs ARC.",
    "sourceIds": [
     "trazy-skt-sim-2026",
-    "kimchimobile-korea-sim-guide",
-    "kr-arc-bridge-kimchimobile",
-    "kr-community-naixi-7495"
+    "kimchimobile-korea-sim-guide"
    ],
    "guideSteps": [
     "Directory card — Korea not retention-friendly for non-residents."
    ],
-   "marketName": "South Korea",
-   "avoidRoute": true
+   "marketName": "South Korea"
   },
   {
    "id": "three-ie-prepay-lifecycle-2026",
@@ -2813,6 +2802,111 @@
    ],
    "guideSteps": [
     "Directory card only until abroad-usage terms verified."
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "calendar-rakuten-prepaid-jp-2026",
+   "brandId": "calendar-world-jp",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "No-KYC 1-year prepaid SIM/eSIM on Rakuten Mobile network (+au partner + intl roaming) sold by calendar-world (株式会社CALENDAR) via jpsimshop / Rakuten marketplace / Amazon JP. 3GB/mo plan ¥5,980 new (community 2026-06 & 2026-08 agree); 6-month option from ¥3,300 (official shop page). First month free = up to 13 months on 1-year plan. eSIM delivered digitally (no Japan address needed); physical SIM ships Japan-only (forwarding required). SMS receive-only (can receive, cannot send); NO voice calls. Real JP 070/080/090 number.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 5980,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 5980,
+    "landedCny": 287,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-corroborated-official-listing-live"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 5400,
+    "yearCostOriginal": 5400,
+    "yearCostCny": 259,
+    "action": "Annual extension (通信期限延長) ¥5,400/12mo keeps the SAME number and same SIM/eSIM — remote procedure, no new SIM shipped. Official shop rule: order+payment must complete by 15th 14:00 JST of the expiry month (next business day if holiday); extension requires the SIM's MSN/phone number; buyer name must match original purchaser; credit card only (no Amazon Pay/bank transfer). Shop sends SMS expiry notice ~2 months before deadline. 1/2/3-year upfront variants also listed on Rakuten.",
+    "intervalDays": 365,
+    "state": "official-confirmed-extension-flow"
+   },
+   "chinaActivation": "Yes — designed for it. Community-verified working from mainland China and Taiwan for SMS receiving: 2026-08 linux.do 9-country test scored 8/8 platforms (WhatsApp/Telegram/Google/Apple ID/PayPal/Instagram/TikTok/Amazon); V2EX OP used it in China for eplus/pia ticket registration (2023 thread, re-confirmed 2025-09). Activate by inserting eSIM/SIM with roaming on.",
+   "kyc": "None for direct purchase — it is a data+SMS-receive product, not a voice service, so it sits outside Japan's voice-KYC regime (tightened 2026-04 per fluctlight tracker).",
+   "payment": "Credit card (extension flow is card-only). Community reports some Visa/Mastercard BINs fail on purchase — retry with another card.",
+   "wifiCalling": "not applicable — no voice service on this product",
+   "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on 3GB plan, 128kbps after cap; community measured ~400ms latency from China (Rakuten routes roaming via Orange/France).",
+   "refund": "not reconciled — shop page says unsupported-device use is non-refundable",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": "",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "tariffSummary": "¥5,980 first year (13 mo w/ free month), ¥5,400/yr extension same number. No KYC, eSIM direct. SMS-receive only, no calls. 1GB/mo overseas roaming data.",
+   "sourceIds": [
+    "jp-calendar-community-linuxdo-9country",
+    "jp-calendar-community-naixi-list",
+    "jp-calendar-community-v2ex-975107",
+    "jp-calendar-community-yunjumin",
+    "jp-calendar-official-rakuten-item",
+    "jp-calendar-official-jpsimshop-extension",
+    "jp-calendar-official-jpsimshop-1year"
+   ],
+   "guideSteps": [
+    "Buy the 1-year 3GB eSIM plan from jpsimshop / Rakuten marketplace / Amazon JP (~¥5,980). Choose eSIM to skip Japan-only shipping.",
+    "Install eSIM, enable roaming; SMS receiving works abroad immediately. Do not abuse SMS (carrier can kill all functions).",
+    "Calendar the expiry: shop SMS-notices ~2 months before; extension order+payment must complete by the 15th 14:00 JST of expiry month (¥5,400, same number, remote)."
+   ],
+   "marketName": "Japan"
+  },
+  {
+   "id": "ifmobile-jp-2026",
+   "brandId": "ifmobile-jp",
+   "publishState": "observation-hold",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "JP MVNO (Chinese-run, popular with ticket-lottery users). Full service: voice calls + SMS send/receive, unlike CALENDAR. ¥5,500 opening fee + monthly from ~¥1,408 (1GB, Japan-only data) or ¥14,120/yr prepaid bundle (community 2026-06). eSIM via customer service (¥1,100 per device change); physical SIM EMS overseas ¥2,200. KYC: passport info page + selfie holding passport + SNS account entry. Chinese-language support via WeChat/小红书.",
+   "landedCost": {
+    "currency": "JPY",
+    "providerOrCommunityPrice": 6908,
+    "mandatoryTopup": null,
+    "shipping": 2200,
+    "adapterCostCny": null,
+    "landedOriginal": 6908,
+    "landedCny": 332,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-reported-needs-official-recheck"
+   },
+   "keep": {
+    "currency": "JPY",
+    "observedActionCost": 1408,
+    "yearCostOriginal": 16896,
+    "yearCostCny": 811,
+    "action": "Subscription — ¥1,408/mo (1GB tier) keeps the number; or ¥14,120/yr upfront bundle per community. Receiving SMS abroad is FREE; sending SMS from abroad ¥110-220/msg; roaming calls ¥275/30s (Asia).",
+    "intervalDays": 30,
+    "state": "community-corroborated"
+   },
+   "chinaActivation": "Historically yes — activated from Taiwan (hollen9 2025) and mainland China per community; SIM roams onto local carriers (e.g. Chunghwa) with signal out of the box. BUT see holdReason.",
+   "kyc": "Passport + selfie-holding-passport upload; SNS (e.g. Facebook) account required in signup; name matching loose (kanji variants OK per user report).",
+   "payment": "Credit card on official site.",
+   "wifiCalling": "not established",
+   "roamingSms": "Receiving SMS abroad free (official-ish fee sheet shared in community); sending from abroad ¥110-220/msg.",
+   "refund": "not reconciled",
+   "trend": "at-risk",
+   "guideEligible": false,
+   "holdReason": "Japan tightened voice-service KYC in April 2026 (in-person passport presentation functionally required for voice+SMS services). Non-resident tracker fluctlight: IFMobile works for EXISTING subscribers but a new-customer activation was NOT completed in April 2026. Treat new signups as unproven until community confirms post-2026-04 activations.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.ifmobile.jp/",
+   "tariffSummary": "¥5,500 opening + ~¥1,408/mo (or ¥14,120/yr bundle). Full voice+SMS, free SMS receive abroad. Passport KYC. New activations uncertain since 2026-04 KYC tightening.",
+   "sourceIds": [
+    "jp-ifmobile-community-hollen9",
+    "jp-ifmobile-tutorial-hibaby",
+    "jp-nonresident-tracker-fluctlight",
+    "jp-calendar-community-naixi-list"
+   ],
+   "guideSteps": [
+    "Hold — do not recommend for new users until post-2026-04 activation success is community-confirmed."
    ],
    "marketName": "Japan"
   },
@@ -6469,111 +6563,6 @@
     "Directory card — pending."
    ],
    "marketName": "Tanzania"
-  },
-  {
-   "id": "calendar-rakuten-prepaid-jp-2026",
-   "brandId": "calendar-world-jp",
-   "publishState": "candidate",
-   "numberType": "real-mobile",
-   "simType": "eSIM + physical",
-   "acquisitionSummary": "No-KYC 1-year prepaid SIM/eSIM on Rakuten Mobile network (+au partner + intl roaming) sold by calendar-world (株式会社CALENDAR) via jpsimshop / Rakuten marketplace / Amazon JP. 3GB/mo plan ¥5,980 new (community 2026-06 & 2026-08 agree); 6-month option from ¥3,300 (official shop page). First month free = up to 13 months on 1-year plan. eSIM delivered digitally (no Japan address needed); physical SIM ships Japan-only (forwarding required). SMS receive-only (can receive, cannot send); NO voice calls. Real JP 070/080/090 number.",
-   "landedCost": {
-    "currency": "JPY",
-    "providerOrCommunityPrice": 5980,
-    "mandatoryTopup": null,
-    "shipping": 0,
-    "adapterCostCny": null,
-    "landedOriginal": 5980,
-    "landedCny": 287,
-    "fxCheckedAt": "2026-09-27",
-    "state": "community-corroborated-official-listing-live"
-   },
-   "keep": {
-    "currency": "JPY",
-    "observedActionCost": 5400,
-    "yearCostOriginal": 5400,
-    "yearCostCny": 259,
-    "action": "Annual extension (通信期限延長) ¥5,400/12mo keeps the SAME number and same SIM/eSIM — remote procedure, no new SIM shipped. Official shop rule: order+payment must complete by 15th 14:00 JST of the expiry month (next business day if holiday); extension requires the SIM's MSN/phone number; buyer name must match original purchaser; credit card only (no Amazon Pay/bank transfer). Shop sends SMS expiry notice ~2 months before deadline. 1/2/3-year upfront variants also listed on Rakuten.",
-    "intervalDays": 365,
-    "state": "official-confirmed-extension-flow"
-   },
-   "chinaActivation": "Yes — designed for it. Community-verified working from mainland China and Taiwan for SMS receiving: 2026-08 linux.do 9-country test scored 8/8 platforms (WhatsApp/Telegram/Google/Apple ID/PayPal/Instagram/TikTok/Amazon); V2EX OP used it in China for eplus/pia ticket registration (2023 thread, re-confirmed 2025-09). Activate by inserting eSIM/SIM with roaming on.",
-   "kyc": "None for direct purchase — it is a data+SMS-receive product, not a voice service, so it sits outside Japan's voice-KYC regime (tightened 2026-04 per fluctlight tracker).",
-   "payment": "Credit card (extension flow is card-only). Community reports some Visa/Mastercard BINs fail on purchase — retry with another card.",
-   "wifiCalling": "not applicable — no voice service on this product",
-   "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on 3GB plan, 128kbps after cap; community measured ~400ms latency from China (Rakuten routes roaming via Orange/France).",
-   "refund": "not reconciled — shop page says unsupported-device use is non-refundable",
-   "trend": "stable",
-   "guideEligible": true,
-   "holdReason": "",
-   "lastVerifiedAt": "2026-09-27",
-   "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
-   "tariffSummary": "¥5,980 first year (13 mo w/ free month), ¥5,400/yr extension same number. No KYC, eSIM direct. SMS-receive only, no calls. 1GB/mo overseas roaming data.",
-   "sourceIds": [
-    "jp-calendar-community-linuxdo-9country",
-    "jp-calendar-community-naixi-list",
-    "jp-calendar-community-v2ex-975107",
-    "jp-calendar-community-yunjumin",
-    "jp-calendar-official-rakuten-item",
-    "jp-calendar-official-jpsimshop-extension",
-    "jp-calendar-official-jpsimshop-1year"
-   ],
-   "guideSteps": [
-    "Buy the 1-year 3GB eSIM plan from jpsimshop / Rakuten marketplace / Amazon JP (~¥5,980). Choose eSIM to skip Japan-only shipping.",
-    "Install eSIM, enable roaming; SMS receiving works abroad immediately. Do not abuse SMS (carrier can kill all functions).",
-    "Calendar the expiry: shop SMS-notices ~2 months before; extension order+payment must complete by the 15th 14:00 JST of expiry month (¥5,400, same number, remote)."
-   ],
-   "marketName": "Japan"
-  },
-  {
-   "id": "ifmobile-jp-2026",
-   "brandId": "ifmobile-jp",
-   "publishState": "observation-hold",
-   "numberType": "real-mobile",
-   "simType": "eSIM + physical",
-   "acquisitionSummary": "JP MVNO (Chinese-run, popular with ticket-lottery users). Full service: voice calls + SMS send/receive, unlike CALENDAR. ¥5,500 opening fee + monthly from ~¥1,408 (1GB, Japan-only data) or ¥14,120/yr prepaid bundle (community 2026-06). eSIM via customer service (¥1,100 per device change); physical SIM EMS overseas ¥2,200. KYC: passport info page + selfie holding passport + SNS account entry. Chinese-language support via WeChat/小红书.",
-   "landedCost": {
-    "currency": "JPY",
-    "providerOrCommunityPrice": 6908,
-    "mandatoryTopup": null,
-    "shipping": 2200,
-    "adapterCostCny": null,
-    "landedOriginal": 6908,
-    "landedCny": 332,
-    "fxCheckedAt": "2026-09-27",
-    "state": "community-reported-needs-official-recheck"
-   },
-   "keep": {
-    "currency": "JPY",
-    "observedActionCost": 1408,
-    "yearCostOriginal": 16896,
-    "yearCostCny": 811,
-    "action": "Subscription — ¥1,408/mo (1GB tier) keeps the number; or ¥14,120/yr upfront bundle per community. Receiving SMS abroad is FREE; sending SMS from abroad ¥110-220/msg; roaming calls ¥275/30s (Asia).",
-    "intervalDays": 30,
-    "state": "community-corroborated"
-   },
-   "chinaActivation": "Historically yes — activated from Taiwan (hollen9 2025) and mainland China per community; SIM roams onto local carriers (e.g. Chunghwa) with signal out of the box. BUT see holdReason.",
-   "kyc": "Passport + selfie-holding-passport upload; SNS (e.g. Facebook) account required in signup; name matching loose (kanji variants OK per user report).",
-   "payment": "Credit card on official site.",
-   "wifiCalling": "not established",
-   "roamingSms": "Receiving SMS abroad free (official-ish fee sheet shared in community); sending from abroad ¥110-220/msg.",
-   "refund": "not reconciled",
-   "trend": "at-risk",
-   "guideEligible": false,
-   "holdReason": "Japan tightened voice-service KYC in April 2026 (in-person passport presentation functionally required for voice+SMS services). Non-resident tracker fluctlight: IFMobile works for EXISTING subscribers but a new-customer activation was NOT completed in April 2026. Treat new signups as unproven until community confirms post-2026-04 activations.",
-   "lastVerifiedAt": "2026-09-27",
-   "acquireUrl": "https://www.ifmobile.jp/",
-   "tariffSummary": "¥5,500 opening + ~¥1,408/mo (or ¥14,120/yr bundle). Full voice+SMS, free SMS receive abroad. Passport KYC. New activations uncertain since 2026-04 KYC tightening.",
-   "sourceIds": [
-    "jp-ifmobile-community-hollen9",
-    "jp-ifmobile-tutorial-hibaby",
-    "jp-nonresident-tracker-fluctlight",
-    "jp-calendar-community-naixi-list"
-   ],
-   "guideSteps": [
-    "Hold — do not recommend for new users until post-2026-04 activation success is community-confirmed."
-   ],
-   "marketName": "Japan"
   }
  ],
  "serviceObservations": [
@@ -7150,6 +7139,78 @@
    "url": "https://www.sakuramobile.jp/monthly/voice/",
    "type": "provider-official",
    "reportedAt": "2026-09-26"
+  },
+  {
+   "id": "kr-arc-bridge-kimchimobile",
+   "url": "https://www.skroaming.com/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "kr-community-naixi-7495",
+   "url": "https://www.skroaming.com/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-community-linuxdo-9country",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-community-naixi-list",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-community-v2ex-975107",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-community-yunjumin",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-official-rakuten-item",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-official-jpsimshop-extension",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-calendar-official-jpsimshop-1year",
+   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-ifmobile-community-hollen9",
+   "url": "https://www.ifmobile.jp/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-ifmobile-tutorial-hibaby",
+   "url": "https://www.ifmobile.jp/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "jp-nonresident-tracker-fluctlight",
+   "url": "https://www.ifmobile.jp/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
   },
   {
    "id": "rakuten-mobile-jp-official",
@@ -7858,78 +7919,6 @@
    "url": "https://www.tigo.co.tz/",
    "type": "community-report",
    "reportedAt": "2026-09-26"
-  },
-  {
-   "id": "jp-calendar-community-linuxdo-9country",
-   "url": "https://linux.do/t/topic/2736395",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-community-naixi-list",
-   "url": "https://forum.naixi.net/thread-12891-1-1.html",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-community-v2ex-975107",
-   "url": "https://www.v2ex.com/t/975107",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-community-yunjumin",
-   "url": "https://www.yunjumin.com/2302.html",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-official-rakuten-item",
-   "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
-   "type": "provider-official",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-official-jpsimshop-extension",
-   "url": "https://www.jpsimshop.com/rakuten-au-prepaidsim-ex",
-   "type": "provider-official",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-calendar-official-jpsimshop-1year",
-   "url": "https://www.jpsimshop.com/rakuten-au-prepaidsim-japan1year",
-   "type": "provider-official",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-ifmobile-community-hollen9",
-   "url": "https://blog.hollen9.com/go/tw-ifmobile-pia-eplus/",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-ifmobile-tutorial-hibaby",
-   "url": "https://www.hibabyfunbox.com/blogs/japan-news/if-mobile-help",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "jp-nonresident-tracker-fluctlight",
-   "url": "https://fluctlight.net/jp_numbers",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "kr-arc-bridge-kimchimobile",
-   "url": "https://www.kimchimobile.com/guides/prepaid-to-postpaid-korea/",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
-  },
-  {
-   "id": "kr-community-naixi-7495",
-   "url": "https://forum.naixi.net/thread-7495-1-1.html",
-   "type": "community-report",
-   "reportedAt": "2026-09-27"
   }
  ],
  "fxSnapshot": {
