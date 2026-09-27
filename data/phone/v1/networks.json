@@ -1,8 +1,23 @@
 [
   {
+    "id": "csl-hk",
+    "name": "csl (Hong Kong)",
+    "marketId": "hk"
+  },
+  {
+    "id": "maxis-my",
+    "name": "Maxis",
+    "marketId": "my"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "t-mobile-us",
+    "name": "T-Mobile US",
+    "marketId": "us"
   },
   {
     "id": "vodafone-uk",

@@ -21,6 +21,11 @@
       "countryCode": null
     },
     {
+      "id": "hk",
+      "name": "Hong Kong",
+      "countryCode": "HK"
+    },
+    {
       "id": "hr",
       "name": "Croatia",
       "countryCode": "HR"
@@ -29,6 +34,11 @@
       "id": "jp",
       "name": "Japan",
       "countryCode": "JP"
+    },
+    {
+      "id": "my",
+      "name": "Malaysia",
+      "countryCode": "MY"
     },
     {
       "id": "us",
@@ -43,9 +53,24 @@
   ],
   "networks": [
     {
+      "id": "csl-hk",
+      "name": "csl (Hong Kong)",
+      "marketId": "hk"
+    },
+    {
+      "id": "maxis-my",
+      "name": "Maxis",
+      "marketId": "my"
+    },
+    {
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
+    },
+    {
+      "id": "t-mobile-us",
+      "name": "T-Mobile US",
+      "marketId": "us"
     },
     {
       "id": "vodafone-uk",
@@ -73,6 +98,12 @@
       "name": "ActivateX"
     },
     {
+      "id": "clubsim-hk",
+      "marketId": "hk",
+      "networkId": "csl-hk",
+      "name": "ClubSIM"
+    },
+    {
       "id": "giffgaff-uk",
       "networkId": "o2-uk",
       "name": "Giffgaff",
@@ -83,6 +114,12 @@
       "marketId": "us",
       "networkId": null,
       "name": "H2O Wireless"
+    },
+    {
+      "id": "hotlink-my",
+      "marketId": "my",
+      "networkId": "maxis-my",
+      "name": "Hotlink (Maxis)"
     },
     {
       "id": "lebara-uk",
@@ -197,6 +234,30 @@
       ]
     },
     {
+      "id": "clubsim-hk-service-pack-retention",
+      "marketId": "hk",
+      "networkId": "csl-hk",
+      "brandId": "clubsim-hk",
+      "displayName": "ClubSIM service-pack retention",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.clubsim.com.hk/",
+      "sourceIds": [
+        "clubsim-official-sms-pack-2026-09-26",
+        "clubsim-official-tnc-2026-09-26",
+        "naixi-clubsim-12930",
+        "nodeseek-clubsim-479688",
+        "v2ex-clubsim-1012236",
+        "v2ex-clubsim-1054323",
+        "v2ex-clubsim-1243080",
+        "v2ex-clubsim-927504"
+      ]
+    },
+    {
       "id": "giffgaff-uk-direct-esim-payg",
       "marketId": "gb",
       "networkId": "o2-uk",
@@ -240,6 +301,28 @@
       "acquireUrl": "https://www.h2owireless.com/",
       "sourceIds": [
         "src-d5c503ecd237"
+      ]
+    },
+    {
+      "id": "hotlink-my-pantas-active-period-365",
+      "marketId": "my",
+      "networkId": "maxis-my",
+      "brandId": "hotlink-my",
+      "displayName": "Hotlink Pantas 365-day Active Period Pass",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.hotlink.com.my/",
+      "sourceIds": [
+        "hotlink-official-pantas-passes-faq-2026-09-26",
+        "lowyat-hotlink-3803865",
+        "lowyat-hotlink-4186655",
+        "nodeloc-hotlink-67257",
+        "nodeloc-hotlink-87761",
+        "nodeseek-hotlink-509402"
       ]
     },
     {
@@ -360,6 +443,28 @@
       ]
     },
     {
+      "id": "tello-us-payg-credit",
+      "marketId": "us",
+      "networkId": "t-mobile-us",
+      "brandId": "tello-us",
+      "displayName": "Tello Pay As You Go",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://tello.com/buy/pay_as_you_go",
+      "sourceIds": [
+        "nodeloc-tello-110176",
+        "nodeloc-tello-72344",
+        "nodeseek-tello-534061",
+        "nodeseek-tello-783926",
+        "tello-official-payg-2026-09-26",
+        "v2ex-tello-1178389"
+      ]
+    },
+    {
       "id": "trip-cmlink-china-data",
       "marketId": "cn",
       "networkId": null,
@@ -441,10 +546,31 @@
   ],
   "sources": [
     {
+      "id": "clubsim-official-sms-pack-2026-09-26",
+      "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+      "type": "official-commercial",
+      "reportedAt": "2026-09-26",
+      "label": "ClubSIM web surface listing SMS Pack at HKD 6 / 30 days; number-retention clock is a separate 365-day lifecycle rule"
+    },
+    {
+      "id": "clubsim-official-tnc-2026-09-26",
+      "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
+      "type": "provider-commercial-terms",
+      "reportedAt": "2026-09-26",
+      "label": "ClubSIM general terms — SIM/service may be permanently terminated and number reallocated if no Service Pack is purchased within 365 days of the last purchase"
+    },
+    {
       "id": "giffgaff-official-credit-2026-09-23",
       "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
       "type": "provider-commercial-page",
       "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "hotlink-official-pantas-passes-faq-2026-09-26",
+      "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+      "type": "official",
+      "reportedAt": "2026-09-26",
+      "label": "Hotlink FAQ — separates 365-day internet passes (incl. 1GB/RM2 data pass) from the RM30 365-day Active Period Pass that keeps the account/SIM active"
     },
     {
       "id": "linuxdo-giffgaff-1615582",
@@ -573,10 +699,86 @@
       "reportedAt": "2026-08-11"
     },
     {
+      "id": "lowyat-hotlink-3803865",
+      "url": "https://forum.lowyat.net/topic/3803865/+1300",
+      "type": "community-thread",
+      "reportedAt": "2026-03-19",
+      "label": "Lowyat — fresh comparison citing RM30 one-year SIM validity"
+    },
+    {
+      "id": "lowyat-hotlink-4186655",
+      "url": "https://forum.lowyat.net/topic/4186655/+360",
+      "type": "community-thread",
+      "reportedAt": "2025-10-26",
+      "label": "Lowyat — community confirmation/discussion of Pantas 365-day validity pricing"
+    },
+    {
+      "id": "naixi-clubsim-12930",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-07-01",
+      "label": "Naixi forum — HKD 6 option reported missing in-app for some users; replies cite HKD 15 alternatives"
+    },
+    {
+      "id": "nodeloc-hotlink-67257",
+      "url": "https://www.nodeloc.com/t/topic/67257",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-16",
+      "label": "NodeLoc — RM30/year retention, passport/acquisition and China roaming/SMS discussion"
+    },
+    {
+      "id": "nodeloc-hotlink-87761",
+      "url": "https://www.nodeloc.com/t/topic/87761",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-08",
+      "label": "NodeLoc — fresh RM30/year retention and overseas-use discussion"
+    },
+    {
+      "id": "nodeloc-tello-110176",
+      "url": "https://www.nodeloc.com/t/topic/110176",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-20",
+      "label": "NodeLoc — fresh 2026 activation / China-use discussion"
+    },
+    {
+      "id": "nodeloc-tello-72344",
+      "url": "https://www.nodeloc.com/t/topic/72344",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-12-26",
+      "label": "NodeLoc — current-user discussion: USD 5/month plan, Wi-Fi Calling, China roaming, PAYG economics"
+    },
+    {
       "id": "nodeloc-voxi-102713",
       "url": "https://www.nodeloc.com/t/topic/102713",
       "type": "commercial-community-post",
       "reportedAt": "2026-08-09"
+    },
+    {
+      "id": "nodeseek-clubsim-479688",
+      "url": "https://www.nodeseek.com/post-479688-1",
+      "type": "community-tutorial",
+      "reportedAt": "2025-10-16",
+      "label": "NodeSeek — activation / eSIM / real-name / retention walkthrough (same-author NodeLoc topic/64554 cross-post counted once, not recorded)"
+    },
+    {
+      "id": "nodeseek-hotlink-509402",
+      "url": "https://www.nodeseek.com/post-509402-1",
+      "type": "community-thread",
+      "reportedAt": "2025-11-18",
+      "label": "NodeSeek — acquisition/availability demand"
+    },
+    {
+      "id": "nodeseek-tello-534061",
+      "url": "https://www.nodeseek.com/post-534061-1",
+      "type": "community-tutorial",
+      "label": "NodeSeek — acquisition/activation tutorial and low-cost-number use case"
+    },
+    {
+      "id": "nodeseek-tello-783926",
+      "url": "https://www.nodeseek.com/post-783926-1",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-19",
+      "label": "NodeSeek — longer-term first-hand comparison including a Tello account/risk-control failure and abandonment"
     },
     {
       "id": "src-0b42956d1b40",
@@ -795,6 +997,48 @@
       "label": "Tello — When do autopay & plan renewal occur?"
     },
     {
+      "id": "tello-official-payg-2026-09-26",
+      "url": "https://tello.com/buy/pay_as_you_go",
+      "type": "official-commercial",
+      "reportedAt": "2026-09-26",
+      "label": "Tello official PAYG page — credit from USD 20, 90-day validity, usable for international roaming"
+    },
+    {
+      "id": "v2ex-clubsim-1012236",
+      "url": "https://www.v2ex.com/t/1012236",
+      "type": "community-incident-thread",
+      "reportedAt": "2024-01-28",
+      "label": "V2EX — negative account/SMS experience"
+    },
+    {
+      "id": "v2ex-clubsim-1054323",
+      "url": "https://www.v2ex.com/t/1054323",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2024-07-02",
+      "label": "V2EX — mainland receive-SMS / KYC discussion and later re-verification friction"
+    },
+    {
+      "id": "v2ex-clubsim-1243080",
+      "url": "https://www.v2ex.com/t/1243080",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-09-18",
+      "label": "V2EX — fresh mainland roaming verification: Telegram/WhatsApp outcomes varied with network/data context while Google/Apple worked"
+    },
+    {
+      "id": "v2ex-clubsim-927504",
+      "url": "https://www.v2ex.com/t/927504",
+      "type": "community-thread",
+      "reportedAt": "2023-03-27",
+      "label": "V2EX — 365-day retention discussion and low-cost service-pack method"
+    },
+    {
+      "id": "v2ex-tello-1178389",
+      "url": "https://www.v2ex.com/t/1178389",
+      "type": "community-thread",
+      "reportedAt": "2025-12-11",
+      "label": "V2EX — independent user demand/comparison for a low-cost overseas number including Tello"
+    },
+    {
       "id": "vodafone-official-network-trial-2026",
       "url": "https://binaries.vodafone.co.uk/gbnnsauqav4t/46FjjluZ6iqfd7d0OcvCiX/af7b13abd16aad45fffd9bcb1179f9cf/network-trial-may-2026.pdf",
       "type": "provider-commercial-terms",
@@ -809,48 +1053,15 @@
   ],
   "observations": [
     {
-      "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
-      "routeId": "lebara-uk-direct-esim-china",
-      "service": "WhatsApp",
+      "id": "obs-clubsim-hk-roaming-context-2026-09-18",
+      "routeId": "clubsim-hk-service-pack-retention",
+      "service": "multiple (Telegram/WhatsApp/Google/Apple)",
       "operation": "registration-verification",
-      "outcome": "success",
-      "reportedAt": "2026-08-12",
+      "outcome": "context-dependent",
+      "reportedAt": "2026-09-18",
       "geography": "mainland-China",
-      "sourceId": "linuxdo-lebara-2745784-op",
-      "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
-    },
-    {
-      "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
-      "routeId": "lebara-uk-direct-esim-china",
-      "service": "WhatsApp",
-      "operation": "registration-verification",
-      "outcome": "success",
-      "reportedAt": "2026-08-13",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-lebara-2745784-op",
-      "dedupeKey": "lebara-2745784-lzd2-whatsapp"
-    },
-    {
-      "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
-      "routeId": "lebara-uk-direct-esim-china",
-      "service": "Telegram",
-      "operation": "registration-verification",
-      "outcome": "success",
-      "reportedAt": "2026-08-12",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-lebara-2745784-op",
-      "dedupeKey": "lebara-2745784-chenliujun-telegram"
-    },
-    {
-      "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
-      "routeId": "lebara-uk-direct-esim-china",
-      "service": "Telegram",
-      "operation": "registration-verification",
-      "outcome": "success",
-      "reportedAt": "2026-08-13",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-lebara-2745784-op",
-      "dedupeKey": "lebara-2745784-lzd2-telegram"
+      "sourceId": "v2ex-clubsim-1243080",
+      "dedupeKey": "v2ex-1243080-roaming-context"
     },
     {
       "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
@@ -895,9 +1106,62 @@
       "geography": "mainland-China",
       "sourceId": "linuxdo-giffgaff-2322268",
       "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-2-ccd2fc",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-whatsapp"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-3-c32d4a",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-12",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-chenliujun-telegram"
+    },
+    {
+      "id": "obs-lebara-uk-direct-esim-china-4-9112b0",
+      "routeId": "lebara-uk-direct-esim-china",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-08-13",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-lebara-2745784-op",
+      "dedupeKey": "lebara-2745784-lzd2-telegram"
     }
   ],
   "events": [
+    {
+      "id": "evt-clubsim-hkd6-availability-conflict-2026-07",
+      "routeId": "clubsim-hk-service-pack-retention",
+      "type": "price-availability-conflict",
+      "reportedAt": "2026-07-01",
+      "scope": "multiple-same-thread-observations",
+      "outcome": "HKD 6 SMS pack reported missing in-app for some users with HKD 15 alternatives cited, while the current first-party web surface still lists HKD 6. Channel/availability conflict preserved; do not convert HKD 6 into a guaranteed annual price.",
+      "sourceId": "naixi-clubsim-12930"
+    },
     {
       "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
       "routeId": "giffgaff-uk-direct-esim-payg",
@@ -935,6 +1199,15 @@
       "sourceId": "linuxdo-giffgaff-2903412"
     },
     {
+      "id": "evt-hotlink-rm30-retention-confirmation-2026",
+      "routeId": "hotlink-my-pantas-active-period-365",
+      "type": "retention-cost-confirmation",
+      "reportedAt": "2026-06-08",
+      "scope": "multiple-observations",
+      "outcome": "Multiple independent community reports confirm the RM30 / 365-day Active Period Pass as the real keep-alive workflow; the RM2/365-day figure is a data-only pass and is refuted as a number-retention metric.",
+      "sourceId": "nodeloc-hotlink-87761"
+    },
+    {
       "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
       "routeId": "lebara-uk-direct-esim-china",
       "type": "outgoing-service-friction",
@@ -942,6 +1215,15 @@
       "scope": "multiple-same-thread-observations",
       "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
       "sourceId": "linuxdo-lebara-2745784-op"
+    },
+    {
+      "id": "evt-tello-us-payg-risk-control-783926",
+      "routeId": "tello-us-payg-credit",
+      "type": "account-risk-control-closure",
+      "reportedAt": "2026-06-19",
+      "scope": "single-observation",
+      "outcome": "User reported Tello account/risk-control failure and abandoned the route; preserved as visible route risk, not as a generic success-rate input.",
+      "sourceId": "nodeseek-tello-783926"
     }
   ],
   "snapshots": [
@@ -3680,6 +3962,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "clubsim-hk-service-pack-retention",
+      "checkedAt": "2026-09-26",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -3694,6 +3988,18 @@
     {
       "routeId": "h2o-paygo-us",
       "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "hotlink-my-pantas-active-period-365",
+      "checkedAt": "2026-09-26",
       "metricState": "not-normalized",
       "acquisitionCurrency": null,
       "acquisitionCostOriginal": null,
@@ -3766,6 +4072,18 @@
     {
       "routeId": "tello-us",
       "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "tello-us-payg-credit",
+      "checkedAt": "2026-09-26",
       "metricState": "not-normalized",
       "acquisitionCurrency": null,
       "acquisitionCostOriginal": null,

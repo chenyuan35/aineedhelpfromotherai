@@ -38,6 +38,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "clubsim-hk-service-pack-retention",
+      "checkedAt": "2026-09-26",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -52,6 +64,18 @@
     {
       "routeId": "h2o-paygo-us",
       "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "hotlink-my-pantas-active-period-365",
+      "checkedAt": "2026-09-26",
       "metricState": "not-normalized",
       "acquisitionCurrency": null,
       "acquisitionCostOriginal": null,
@@ -124,6 +148,18 @@
     {
       "routeId": "tello-us",
       "checkedAt": "2026-09-16",
+      "metricState": "not-normalized",
+      "acquisitionCurrency": null,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": null,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "tello-us-payg-credit",
+      "checkedAt": "2026-09-26",
       "metricState": "not-normalized",
       "acquisitionCurrency": null,
       "acquisitionCostOriginal": null,

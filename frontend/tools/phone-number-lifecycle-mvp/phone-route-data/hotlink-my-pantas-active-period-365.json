@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "hotlink-my-pantas-active-period-365",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "brandId": "hotlink-my",
+    "displayName": "Hotlink Pantas 365-day Active Period Pass",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.hotlink.com.my/",
+    "sourceIds": [
+      "hotlink-official-pantas-passes-faq-2026-09-26",
+      "lowyat-hotlink-3803865",
+      "lowyat-hotlink-4186655",
+      "nodeloc-hotlink-67257",
+      "nodeloc-hotlink-87761",
+      "nodeseek-hotlink-509402"
+    ]
+  },
+  "market": {
+    "id": "my",
+    "name": "Malaysia",
+    "countryCode": "MY"
+  },
+  "network": {
+    "id": "maxis-my",
+    "name": "Maxis",
+    "marketId": "my"
+  },
+  "brand": {
+    "id": "hotlink-my",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "name": "Hotlink (Maxis)"
+  },
+  "metrics": {
+    "routeId": "hotlink-my-pantas-active-period-365",
+    "checkedAt": "2026-09-26",
+    "metricState": "not-normalized",
+    "acquisitionCurrency": null,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": null,
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "hotlink-official-pantas-passes-faq-2026-09-26",
+      "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+      "type": "official",
+      "reportedAt": "2026-09-26",
+      "label": "Hotlink FAQ — separates 365-day internet passes (incl. 1GB/RM2 data pass) from the RM30 365-day Active Period Pass that keeps the account/SIM active"
+    },
+    {
+      "id": "lowyat-hotlink-3803865",
+      "url": "https://forum.lowyat.net/topic/3803865/+1300",
+      "type": "community-thread",
+      "reportedAt": "2026-03-19",
+      "label": "Lowyat — fresh comparison citing RM30 one-year SIM validity"
+    },
+    {
+      "id": "lowyat-hotlink-4186655",
+      "url": "https://forum.lowyat.net/topic/4186655/+360",
+      "type": "community-thread",
+      "reportedAt": "2025-10-26",
+      "label": "Lowyat — community confirmation/discussion of Pantas 365-day validity pricing"
+    },
+    {
+      "id": "nodeloc-hotlink-67257",
+      "url": "https://www.nodeloc.com/t/topic/67257",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-11-16",
+      "label": "NodeLoc — RM30/year retention, passport/acquisition and China roaming/SMS discussion"
+    },
+    {
+      "id": "nodeloc-hotlink-87761",
+      "url": "https://www.nodeloc.com/t/topic/87761",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-06-08",
+      "label": "NodeLoc — fresh RM30/year retention and overseas-use discussion"
+    },
+    {
+      "id": "nodeseek-hotlink-509402",
+      "url": "https://www.nodeseek.com/post-509402-1",
+      "type": "community-thread",
+      "reportedAt": "2025-11-18",
+      "label": "NodeSeek — acquisition/availability demand"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-hotlink-rm30-retention-confirmation-2026",
+      "routeId": "hotlink-my-pantas-active-period-365",
+      "type": "retention-cost-confirmation",
+      "reportedAt": "2026-06-08",
+      "scope": "multiple-observations",
+      "outcome": "Multiple independent community reports confirm the RM30 / 365-day Active Period Pass as the real keep-alive workflow; the RM2/365-day figure is a data-only pass and is refuted as a number-retention metric.",
+      "sourceId": "nodeloc-hotlink-87761"
+    }
+  ],
+  "snapshots": []
+}

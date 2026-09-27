@@ -18,6 +18,12 @@
     "name": "ActivateX"
   },
   {
+    "id": "clubsim-hk",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "name": "ClubSIM"
+  },
+  {
     "id": "giffgaff-uk",
     "networkId": "o2-uk",
     "name": "Giffgaff",
@@ -28,6 +34,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "H2O Wireless"
+  },
+  {
+    "id": "hotlink-my",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "name": "Hotlink (Maxis)"
   },
   {
     "id": "lebara-uk",

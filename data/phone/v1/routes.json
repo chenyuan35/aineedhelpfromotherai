@@ -56,6 +56,30 @@
     ]
   },
   {
+    "id": "clubsim-hk-service-pack-retention",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "clubsim-hk",
+    "displayName": "ClubSIM service-pack retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.clubsim.com.hk/",
+    "sourceIds": [
+      "clubsim-official-sms-pack-2026-09-26",
+      "clubsim-official-tnc-2026-09-26",
+      "naixi-clubsim-12930",
+      "nodeseek-clubsim-479688",
+      "v2ex-clubsim-1012236",
+      "v2ex-clubsim-1054323",
+      "v2ex-clubsim-1243080",
+      "v2ex-clubsim-927504"
+    ]
+  },
+  {
     "id": "giffgaff-uk-direct-esim-payg",
     "marketId": "gb",
     "networkId": "o2-uk",
@@ -99,6 +123,28 @@
     "acquireUrl": "https://www.h2owireless.com/",
     "sourceIds": [
       "src-d5c503ecd237"
+    ]
+  },
+  {
+    "id": "hotlink-my-pantas-active-period-365",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "brandId": "hotlink-my",
+    "displayName": "Hotlink Pantas 365-day Active Period Pass",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.hotlink.com.my/",
+    "sourceIds": [
+      "hotlink-official-pantas-passes-faq-2026-09-26",
+      "lowyat-hotlink-3803865",
+      "lowyat-hotlink-4186655",
+      "nodeloc-hotlink-67257",
+      "nodeloc-hotlink-87761",
+      "nodeseek-hotlink-509402"
     ]
   },
   {
@@ -216,6 +262,28 @@
       "src-573da827b0ea",
       "src-ed3f565a3e3a",
       "src-f2d3210589df"
+    ]
+  },
+  {
+    "id": "tello-us-payg-credit",
+    "marketId": "us",
+    "networkId": "t-mobile-us",
+    "brandId": "tello-us",
+    "displayName": "Tello Pay As You Go",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://tello.com/buy/pay_as_you_go",
+    "sourceIds": [
+      "nodeloc-tello-110176",
+      "nodeloc-tello-72344",
+      "nodeseek-tello-534061",
+      "nodeseek-tello-783926",
+      "tello-official-payg-2026-09-26",
+      "v2ex-tello-1178389"
     ]
   },
   {

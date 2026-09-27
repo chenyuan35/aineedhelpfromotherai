@@ -15,6 +15,11 @@
     "countryCode": null
   },
   {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  {
     "id": "hr",
     "name": "Croatia",
     "countryCode": "HR"
@@ -23,6 +28,11 @@
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
+  },
+  {
+    "id": "my",
+    "name": "Malaysia",
+    "countryCode": "MY"
   },
   {
     "id": "us",
