@@ -20,8 +20,8 @@ const required = [
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
 
-check('all public carrier-mobile routes have retention records', () => {
-  for (const id of carrierIds) assert(data.routes[id], `${id} missing retention record`);
+check('all carrier-mobile routes have retention records', () => {
+  assert.deepEqual([...carrierIds].sort(), Object.keys(data.routes).sort());
 });
 
 for (const id of carrierIds) {
