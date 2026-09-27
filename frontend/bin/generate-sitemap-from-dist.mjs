@@ -40,6 +40,9 @@ function walk(dir) {
     if (name === 'index.html') url = rel.slice(0, -'index.html'.length);
     else url = rel;
     if (excludeUrls.has(url)) continue;
+    const html = readFileSync(p, 'utf8');
+    if (/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html) ||
+        /<meta[^>]+content=["'][^"']*noindex[^"']*["'][^>]+name=["']robots["']/i.test(html)) continue;
     urls.push(url);
   }
 }

@@ -7,15 +7,16 @@ interface Props {
   canonical: string;
   ogType?: string;
   jsonLd?: object[];
+  robots?: string;
 }
-const { title, desc, canonical, ogType = 'website', jsonLd: schemas = [] } = Astro.props;
+const { title, desc, canonical, ogType = 'website', jsonLd: schemas = [], robots = 'index,follow,max-image-preview:large' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
-<meta name="description" content={desc}><meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="description" content={desc}><meta name="robots" content={robots}>
 <link rel="canonical" href={canonical}>
 <meta property="og:type" content={ogType}><meta property="og:title" content={title}><meta property="og:description" content={desc}><meta property="og:url" content={canonical}>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site.css">

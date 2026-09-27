@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "defaultRouteState": "comparison-visible",
+  "defaultMarketState": "database-only",
+  "routeStates": {
+    "voxi-uk-esim-payg-retention": "indexable",
+    "lebara-uk-direct-esim-china": "indexable",
+    "giffgaff-uk-direct-esim-payg": "indexable"
+  },
+  "marketStates": {},
+  "notes": [
+    "The normalized global directory may be broad. Publication is a separate editorial decision.",
+    "Routes default to comparison-visible after admission to the normalized directory; raw delegated research must remain outside this admitted packet until reviewed.",
+    "Only detail-eligible/indexable routes get standalone route/keep-alive pages. Only indexable pages belong in the sitemap.",
+    "Markets default to database-only; market-specific SEO pages require explicit editorial admission rather than row-count generation."
+  ]
+}

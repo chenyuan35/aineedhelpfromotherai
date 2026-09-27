@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-09-26
+Last updated: 2026-09-28
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -19,11 +19,11 @@ A candidate advances only when the project can state a concrete durable advantag
 
 Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
 
-## Phone operating correction — 2026-09-24
+## Phone operating correction — 2026-09-24, architecture enforcement — 2026-09-28
 
-The UK matrix is the public baseline, but Phone growth cannot depend on waiting passively for Search Console. Public product changes remain measurement/evidence-gated while backstage evidence acquisition runs continuously.
+The UK matrix was the first public baseline, and backstage evidence acquisition continues independently of Search Console. After the global data expansion, PR #261 separates broad database coverage from public/indexable page coverage so the database can grow without recreating programmatic SEO families.
 
-The active operating model is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`:
+The active operating model is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` and `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`:
 
 - the existing Phone canonical remains the visual index/comparison surface;
 - a lightweight community observer continuously finds current route outcomes, service-specific compatibility, acquisition channels, seller/platform incidents and candidate public domains;
@@ -31,6 +31,9 @@ The active operating model is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-0
 - observations are deduplicated/reconciled into normalized route events and snapshots before publication;
 - separate route detail pages are allowed only when they have substantial route-specific execution value and evidence; country/provider keyword doorway families remain prohibited;
 - production measurement hold means avoid public churn, not stop research.
+- admitted normalized routes may power the comparison/search UI without receiving standalone URLs;
+- route/market/keep-alive detail generation and sitemap inclusion require explicit publication state;
+- the directory uses a deferred shallow comparison index rather than embedding the full route database in initial HTML.
 
 ## Product hierarchy
 
@@ -82,7 +85,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 | P3 First search signals | Obtain real page/query evidence | DONE | Completed |
 | P4 Product-direction correction | Reject weak/commodity product jobs and choose a defensible growth surface | **DONE** | Product hierarchy and dual substitution gates accepted |
 | P5 Phone canonical growth | Turn the existing Phone canonical into the accepted carrier/number directory and comparison matrix | **DONE — UK PILOT SHIPPED / PRODUCTION VERIFIED** | PR #203 merged; Eval #693 passed; Vercel production succeeded; live canonical verified HTTP 200 with grouped UK matrix + guide flow |
-| P6 Phone evidence-gated depth | Continuously acquire evidence; deepen only routes/surfaces that survive value + competition gates | **ACTIVE — WATCHER V1.1 DEPLOYED / RUNTIME VERIFIED / PUBLIC EXPANSION MEASUREMENT-GATED** | Verified observer/review loop plus at least one evidence-qualified improvement/detail candidate with measurable user/search value |
+| P6 Phone evidence-gated depth | Continuously acquire evidence; deepen only routes/surfaces that survive value + competition gates | **ACTIVE — LAYERED PUBLICATION ENFORCED / EVIDENCE PIPELINE CONTINUES** | Broad maintained database + explicit admission/publication gates + measurable user/search value before further standalone URL expansion |
 | P7 Distribution, authority & AI discovery | Earn relevant referral/link/citation visibility | ACTIVE PILOT | At least one repeatable relevant source plus measurable visibility |
 | P8 Monetization | Turn useful traffic into stable AdSense/partner revenue without compromising trust | QUEUED | Cover annual domain cost, then first ~RMB 100/month target |
 
@@ -109,10 +112,11 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 19. **DONE — PR #233 disposition review: REWORK / Draft.** The keep-alive deadline/reminder job retains computation/repeat-use value, but the current implementation conflicts with the KEEP instruction and publication/evidence rules: obsolete bulk-expansion doc contamination, unsourced 15% safety buffer, five-URL expansion with template-heavy brand pages, assumed-today input and drifting fixed recurrence. PR #233 is Draft and must be reworked before any later eligible release review.
 20. **DONE — first Kimi/Qwen provenance-admission batch.** `docs/PHONE_FIVE_ROUTE_PROVENANCE_ADMISSION_REVIEW_2026-09-26.md` classifies Tello / ClubSIM / Hotlink Pantas as ADMIT-BACKSTAGE and Globe / povo 2.0 as HOLD. Tello `$0.06/year` and Hotlink `RM2/year` were rejected as stale/wrong economics; ClubSIM keeps a current channel-availability conflict rather than a guaranteed HKD 6/year claim.
 21. **DONE — PR #253 normalized Phone data foundation release.** Correct Vercel scope access was restored and the repeated Preview failure was isolated to a redundant repo-level Phone database check executed from the frontend build. The call was removed while CI retains the data/staging gates; final head `0cde866` passed Eval Gate #804, CI #151 and Vercel Preview. PR #253 squash-merged as `640341d4a79a00a688eb36bffce7cf57e4d05e27`; production reached READY and the live Phone canonical returned HTTP 200.
-22. **NEXT SESSION — importer-based backstage admission of Tello / ClubSIM / Hotlink Pantas.** Use the standard reviewed-packet importer added by PR #253. Preserve Tello's rejected `$0.06/year` claim, Hotlink's rejected `RM2/year` keep-alive claim, and ClubSIM's HKD 6 web-vs-app availability conflict. No public Phone UI/URL change in this ingestion task.
-23. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
-24. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-25. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+22. **DONE — Phone publication-state reconciliation / PR #261.** Broad global data remains usable for comparison, but standalone route/market/keep-alive details and sitemap publication now obey an explicit policy. The directory defers a lightweight comparison index; the old all-route/all-market page-count tests were replaced with boundary tests. The unsourced default 15% keep-alive buffer, assumed-today input and fixed recurring calendar reminder were also removed.
+23. **NEXT SESSION — harden Qwen/Kimi data admission.** Replace/guard wildcard batch merging with an explicit reviewed manifest or staging-to-admission contract so new raw delegated batches cannot become comparison-visible by file placement. Preserve the current broad database; do not solve this by deleting routes.
+24. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
+25. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+26. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
 
 ## Phone directory implementation contract
 

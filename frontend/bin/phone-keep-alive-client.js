@@ -32,11 +32,12 @@
   function gcalUrl(m, start) {
     var end = new Date(start.getTime() + DAY);
     var text = m.brandName + ' keep-alive: ' + m.shortAction;
-    var details = m.action + ' Cost per action ' + m.perActionLabel + '. Safe rhythm: every ' + m.safe +
-      ' days inside a ' + m.interval + '-day window. Source: Phone Radar Keep-Alive Assistant.';
+    var timing = m.hasEvidenceBuffer
+      ? 'Evidence-backed reminder date at day ' + m.safe + ' inside the documented ' + m.interval + '-day window.'
+      : 'Documented keep-alive deadline at day ' + m.interval + '; no unsupported early buffer is assumed.';
+    var details = m.action + ' Cost per action ' + m.perActionLabel + '. ' + timing + ' Recalculate after the next real action. Source: Phone Radar Keep-Alive Assistant.';
     return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(text) +
       '&dates=' + fI(start) + '/' + fI(end) +
-      '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;INTERVAL=' + m.safe) +
       '&details=' + encodeURIComponent(details);
   }
 
@@ -53,8 +54,7 @@
       'DTSTAMP:' + stamp,
       'DTSTART;VALUE=DATE:' + fI(start),
       'SUMMARY:' + m.brandName + ' keep-alive: ' + m.shortAction,
-      'RRULE:FREQ=DAILY;INTERVAL=' + m.safe,
-      'DESCRIPTION:' + desc + ' Safe rhythm: every ' + m.safe + ' days inside a ' + m.interval + '-day window.',
+      'DESCRIPTION:' + desc + ' ' + (m.hasEvidenceBuffer ? 'Evidence-backed reminder at day ' + m.safe + ' inside the documented ' + m.interval + '-day window.' : 'Documented deadline at day ' + m.interval + '; no unsupported early buffer is assumed.') + ' Recalculate after the next real action.',
       'END:VEVENT',
       'END:VCALENDAR'
     ];
@@ -77,31 +77,35 @@
       res.innerHTML = '<p class="ka-muted">Pick the date of your last keep-alive action to see the next deadline.</p>';
       return;
     }
-    var safeBy = new Date(last.getTime() + m.safe * DAY);
+    var reminderBy = new Date(last.getTime() + m.safe * DAY);
     var hardBy = new Date(last.getTime() + m.interval * DAY);
-    var left = Math.ceil((safeBy.getTime() - today.getTime()) / DAY);
+    var left = Math.ceil((reminderBy.getTime() - today.getTime()) / DAY);
     var cls = 'ka-ok';
     var note;
+    var label = m.hasEvidenceBuffer ? 'Evidence-backed reminder' : 'Documented deadline';
     if (left < 0) {
       cls = 'ka-bad';
-      note = 'The safe date passed ' + (-left) + ' day(s) ago — act now. The hard window closes ' + fD(hardBy) + '.';
+      note = label + ' passed ' + (-left) + ' day(s) ago — act now. The documented window closes ' + fD(hardBy) + '.';
     } else if (left <= 14) {
       cls = 'ka-bad';
-      note = 'Act now — only ' + left + ' day(s) of safety buffer left.';
+      note = 'Act now — ' + left + ' day(s) until the ' + label.toLowerCase() + '.';
     } else if (left <= 30) {
       cls = 'ka-warn';
-      note = 'Coming up — ' + left + ' day(s) left inside the safe window.';
+      note = 'Coming up — ' + left + ' day(s) until the ' + label.toLowerCase() + '.';
     } else {
-      note = left + ' day(s) left inside the safe window.';
+      note = left + ' day(s) until the ' + label.toLowerCase() + '.';
     }
-    res.innerHTML = '<div class="ka-countdown ' + cls + '"><strong>' + fD(safeBy) + '</strong><span>' + esc(note) + '</span></div>' +
-      '<p class="ka-muted">Act by <b>' + fD(safeBy) + '</b> (safe) · hard window limit <b>' + fD(hardBy) + '</b> (' + m.interval + ' days after the last action).</p>' +
-      '<div class="ka-cal-actions"><button type="button" id="ka-ics-' + m.id + '">Download .ics reminder</button>' +
-      '<a id="ka-gcal-' + m.id + '" target="_blank" rel="noopener noreferrer" href="' + gcalUrl(m, safeBy) + '">Add to Google Calendar ↗</a></div>';
+    var detail = m.hasEvidenceBuffer
+      ? 'Evidence-backed reminder <b>' + fD(reminderBy) + '</b> · documented window limit <b>' + fD(hardBy) + '</b>.'
+      : 'Documented window limit <b>' + fD(hardBy) + '</b>. No unsupported early buffer is assumed.';
+    res.innerHTML = '<div class="ka-countdown ' + cls + '"><strong>' + fD(reminderBy) + '</strong><span>' + esc(note) + '</span></div>' +
+      '<p class="ka-muted">' + detail + '</p>' +
+      '<div class="ka-cal-actions"><button type="button" id="ka-ics-' + m.id + '">Download one-time .ics reminder</button>' +
+      '<a id="ka-gcal-' + m.id + '" target="_blank" rel="noopener noreferrer" href="' + gcalUrl(m, reminderBy) + '">Add one-time Google Calendar reminder ↗</a></div>';
     save({ routeId: m.id, last: inp.value });
     track('phone_keepalive_calculate', { route_id: m.id, days_left: left });
     var b = $('ka-ics-' + m.id);
-    if (b) b.addEventListener('click', function () { downloadIcs(m, safeBy); });
+    if (b) b.addEventListener('click', function () { downloadIcs(m, reminderBy); });
     var g = $('ka-gcal-' + m.id);
     if (g) g.addEventListener('click', function () { track('phone_keepalive_gcal', { route_id: m.id }); });
   }
@@ -144,7 +148,6 @@
   var inputs = document.querySelectorAll('.ka-date-input');
   for (i = 0; i < inputs.length; i++) {
     (function (inp) {
-      if (!inp.value) inp.value = fD(today);
       inp.addEventListener('change', function () { var m = model(inp.getAttribute('data-route')); if (m) compute(m); });
       inp.addEventListener('input', function () { var m = model(inp.getAttribute('data-route')); if (m) compute(m); });
     })(inputs[i]);
@@ -155,8 +158,7 @@
     if (sm && !sm.hold) {
       var inp = $('ka-date-' + startId);
       if (inp) {
-        if (saved && saved.routeId === startId && saved.last) inp.value = saved.last;
-        compute(sm);
+        if (saved && saved.routeId === startId && saved.last) { inp.value = saved.last; compute(sm); }
       }
     }
   }

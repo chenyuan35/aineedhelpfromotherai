@@ -1,9 +1,9 @@
 ---
 import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
-import { data, brandOf, networkOf, statusLabel, serviceSummary, sourcesOf, eventsOf, money, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+import { data, brandOf, networkOf, statusLabel, serviceSummary, sourcesOf, eventsOf, money, hasRouteDetail, isRouteIndexable, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
 
 export function getStaticPaths() {
-  return data.routes.map((r) => ({ params: { id: r.id } }));
+  return data.routes.filter(hasRouteDetail).map((r) => ({ params: { id: r.id } }));
 }
 
 const { id } = Astro.params;
@@ -31,7 +31,7 @@ const schema = {
 };
 const services = ['OpenAI/Codex', 'Telegram', 'WhatsApp'];
 ---
-<PhoneLayout title={`${name} ${market} number retention guide – Phone Radar`} desc={desc} canonical={canonical} ogType="article" jsonLd={[schema]}>
+<PhoneLayout title={`${name} ${market} number retention guide – Phone Radar`} desc={desc} canonical={canonical} ogType="article" robots={isRouteIndexable(r) ? "index,follow,max-image-preview:large" : "noindex,follow"} jsonLd={[schema]}>
 <style is:global>
 .route-detail{max-width:900px;padding-bottom:70px}.route-detail h1{font-size:clamp(2rem,5vw,3.4rem);margin:.2em 0}.route-lead{font-size:1.05rem;color:var(--muted);max-width:760px}.route-meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px}.route-pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;background:var(--panel);font-size:.76rem;font-weight:800}.route-hold{padding:14px 16px;border:1px solid #d9a441;border-radius:14px;background:#fff8e8;margin:18px 0}.route-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 28px}.route-summary div,.route-section{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px}.route-summary small{display:block;color:var(--muted);text-transform:uppercase;font-size:.68rem;font-weight:850;letter-spacing:.05em}.route-summary strong{display:block;margin-top:5px;font-size:1rem}.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.route-section.wide{grid-column:1/-1}.route-section h2{font-size:1rem;margin:0 0 9px}.route-section p,.route-section li{font-size:.91rem}.route-actions{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.route-actions a{display:inline-flex;min-height:40px;align-items:center;padding:0 13px;border:1px solid var(--line);border-radius:10px;font-weight:800}.route-actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}.route-sources{margin-top:26px}.route-sources a{overflow-wrap:anywhere}@media(max-width:700px){.route-summary,.route-grid{grid-template-columns:1fr}.route-section.wide{grid-column:auto}}
 </style>

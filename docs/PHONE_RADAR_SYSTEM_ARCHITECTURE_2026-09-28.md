@@ -1,6 +1,6 @@
 # Phone Radar System Architecture — 2026-09-28
 
-Status: proposed durable architecture contract.
+Status: ACTIVE durable architecture contract; publication-state enforcement implemented in PR #261.
 
 This document separates Phone Radar's **data coverage**, **interactive product UI**, and **SEO/publication** concerns. A large database is expected and desirable; it must not be interpreted as authorization to create the same number of public/indexable pages.
 

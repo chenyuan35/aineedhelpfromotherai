@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-09-26
+Last updated: 2026-09-28
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -12,8 +12,8 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 |---|---|---|
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
-| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / UK DIRECTORY PILOT SHIPPED + PRODUCTION VERIFIED.** The existing canonical is the visual index/comparison surface. Public expansion remains evidence-gated, while backstage evidence acquisition should run continuously. | Keep production stable while search/interaction evidence accrues; operate the Phone evidence pipeline in parallel and deepen only evidence-qualified routes. |
-| Phone data foundation | **SHIPPED / PRODUCTION VERIFIED.** PR #253 merged as `640341d4a79a00a688eb36bffce7cf57e4d05e27`. The release blocker was a Vercel-only `module_not_found` failure caused by invoking the repo-level Phone database check from `frontend/bin/build.mjs`; the redundant call was removed while CI keeps the same Phone data/staging checks. Final head `0cde866` passed Eval Gate #804, CI #151 and Vercel Preview; production deployment `dpl_9rKb3q9QBvifsQZdjTXFVTdQZ5RU` reached READY and the live Phone canonical returned HTTP 200. | Next independent session: use the standard reviewed-packet importer to ingest Tello / ClubSIM / Hotlink Pantas backstage only, preserving the audited correction/conflict fields. |
+| Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / LAYERED PUBLICATION ARCHITECTURE ENFORCED BY PR #261.** The broad normalized global dataset remains available to the visual comparison tool, while database admission, comparison visibility, detail eligibility and SEO indexability are separate release decisions. | Keep expanding evidence/data backstage, but publish standalone URLs only through explicit publication state. Next harden the intake/admission path so new Qwen/Kimi batches cannot enter comparison-visible data by filename placement alone. |
+| Phone data / publication foundation | **BROAD DATA PRESERVED / PUBLICATION BOUNDARY IMPLEMENTED IN PR #261.** Current main-derived dataset contains 135 routes across 83 markets. The new policy defaults admitted normalized routes to comparison-visible, generates standalone detail pages only for explicit `detail-eligible` / `indexable` states, and defaults market landing pages to database-only. The initial explicit indexable route set is VOXI, Lebara UK and Giffgaff; the global directory loads a shallow 135-route comparison index after page load instead of rendering the full database into initial HTML. | Harden database admission next; raw delegated research remains staging/RESEARCH CANDIDATE until reviewed. |
 | Phone evidence acquisition | **WATCHER V1.1 HEALTHY / BATCH-2 FULLY DISPOSITIONED.** Globe Philippines remains HOLD; Holafly Always On is PROMOTE / backstage Data-eSIM only after PR #231 (`413e6c3`) closed the bounded review. Community-first candidate discovery continues in parallel; provider pages verify existing candidates but do not create them. | Continue high-throughput community/forum evidence acquisition backstage, keep raw delegated findings as `RESEARCH CANDIDATE`, and admit nothing public until the evidence/value gates pass. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains: Cursor DOWNGRADE; Claude REPURPOSE; GitHub Copilot KEEP/DIFFERENTIATE; Manus DOWNGRADE; Replit DOWNGRADE; Bolt REPURPOSE; AI Credit Burn KEEP/DIFFERENTIATE. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
@@ -28,11 +28,11 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 
 ## Immediate priority
 
-**Run two tracks in parallel: keep the public Phone surface stable for measurement, and continuously acquire/normalize Phone evidence backstage.**
+**Run two tracks in parallel: continuously expand/reconcile the Phone evidence database, while keeping public publication selective and explicitly gated.**
 
-The public UK comparison pilot remains the current production baseline on `/tools/phone-number-survival-guide/`. The first settled read is still only three impressions, so the current instruction is KEEP: do not churn it or add weak global rows just to increase URL/page count.
+PR #261 is the architecture correction for the Sep 27 global expansion: broad database coverage is retained as product input, but it no longer implies a route page, market page or sitemap entry. The canonical hub + directory remain the discovery/comparison surface; the directory defers its shallow comparison index instead of embedding all routes in initial HTML.
 
-At the same time, a measurement hold is not a research hold. Phone Radar only becomes defensible if the project continuously captures changing operational evidence: acquisition paths, real landed prices, discounts, app-specific success/failure, activation friction, seller/platform failures, number loss/recycling, recovery/refunds and route freshness.
+Search measurement remains important after the corrected surface stabilizes, but tiny historical samples do not justify recreating programmatic URL families. Evidence acquisition continues independently of public-page count.
 
 Current execution sequence:
 
@@ -55,7 +55,7 @@ Current execution sequence:
 17. improve the existing index first when evidence warrants it;
 18. publish a separate route detail URL only when the route has substantial unique execution content and passes the route-page gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 
-**Next independent session: importer-based backstage ingestion of Tello / ClubSIM / Hotlink Pantas.** Use the standard reviewed-packet path added by PR #253; preserve the audited stale-claim corrections and ClubSIM channel-availability conflict. Keep the public Phone surface unchanged, and do not bulk-merge frozen PRs #234–#241.
+**Next independent session: harden Phone data admission for Qwen/Kimi batches.** Replace or guard the wildcard `*batch*.json` merge path so raw delegated research cannot become comparison-visible merely by being placed beside reviewed data. Preserve the broad current database and use a reviewed manifest/staging-to-admission boundary rather than shrinking coverage.
 
 ## Product rules
 
@@ -100,7 +100,7 @@ The visual layer must let the user compare at a glance:
 
 Ranking may be use-case-specific and transparent. Missing data must not improve rank. Observed percentages require route + service + operation-specific evidence and visible sample size/date.
 
-The first shipped pilot is UK-only and intentionally bounded. Lebara UK, Giffgaff and VOXI are actionable pilot candidates; Vodafone UK direct remains an observation/hold route unless a legitimate current long-term path is re-verified. Giffgaff continuity/closure/recovery/refund history is surfaced prominently rather than hidden behind a generic stability label.
+The first shipped pilot was UK-only and remains the initial explicit indexable detail set: Lebara UK, Giffgaff and VOXI. The normalized database is now broader, but non-indexable routes stay comparison-only by default; Vodafone UK direct remains an observation/hold entry unless a legitimate current long-term path is re-verified. Giffgaff continuity/closure/recovery/refund history remains surfaced prominently rather than hidden behind a generic stability label.
 
 A separate route detail page is not forbidden, but it must not be a doorway page. It must solve a distinct execution job with substantial route-specific evidence, current commercial facts, operational corroboration, visible freshness/conflicts and durable user value beyond the comparison row. The publication gate is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
 

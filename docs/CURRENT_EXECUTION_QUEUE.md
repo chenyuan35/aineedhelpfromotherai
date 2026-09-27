@@ -15,48 +15,48 @@ Last updated: 2026-09-28
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 
-## JUST COMPLETED — core progress / publication audit
+## JUST COMPLETED — Phone publication-state reconciliation / PR #261
 
-The Sep 27–28 audit reconciled GitHub rules against verified production and corrected one interpretation:
+The global Phone expansion is now reconciled with the product architecture without shrinking the database:
 
-- production currently exposes a large global Phone dataset and many public URL families;
-- **the large database is not itself the defect** — broad backstage coverage was intentionally delegated to Qwen/Kimi;
-- the actual issue is that database admission, interactive comparison visibility and SEO/indexability are not yet enforced as separate release states;
-- representative observation/unknown routes are currently indexable even when retention cost/rule/app evidence is incomplete;
-- current fresh Search Console Phone-path exposure still appears only on the canonical Phone URL in the sampled window;
-- GA4 instrumentation is live, Windsor authorization exists, but the current GA4 read path returns zero rows and remains a measurement-path issue rather than proof of zero traffic.
+- current normalized dataset remains **135 routes / 83 markets**;
+- `publication-policy.json` separates database/comparison state from standalone publication;
+- normalized routes default to `comparison-visible`, not indexable;
+- only VOXI, Lebara UK and Giffgaff are initially explicit `indexable` route details;
+- market detail pages default to `database-only`, so the former 83-row market URL family is no longer auto-generated;
+- standalone route / market / keep-alive details are generated only for explicit `detail-eligible` / `indexable` states;
+- sitemap generation omits `noindex` pages and boundary tests reject non-indexable URL leakage;
+- the global Directory initial HTML contains **0 database rows** and defers a shallow comparison index (135 routes) after page load; deep route evidence is not part of that initial payload;
+- crawler-visible Phone internal-link validation prevents removed detail URLs from leaving 404 links;
+- retention tests now treat deep retention intelligence as a subset of the carrier catalog rather than requiring every database route to have deep evidence;
+- Keep-Alive no longer invents a 15% buffer, no longer assumes today is the user's last action, and calendar export is one-time rather than a drifting recurring rule.
 
-PR #258 is Draft. Its Tello / ClubSIM / Hotlink backstage reviewed-packet work and Node-24 CI correction are useful, but the PR must not implicitly redefine all global database rows as valid public/indexable product surfaces.
+Local pre-PR verification passed the Phone lifecycle, retention, supply, publication-state, public-release, watcher, Relay and golden Eval gates plus a full frontend build. Remote CI / Preview and production verification remain release gates before final closure.
 
-PR #259 is a Draft audit record. It must be reconciled with the clarified database-vs-public architecture before merge.
+## NEXT SESSION — harden Qwen/Kimi data admission
 
-## NEXT SESSION — Phone publication-state reconciliation
-
-**Session task:** implement and verify the separation between normalized database coverage, interactive comparison visibility and SEO/indexability.
+**Session task:** make the route from delegated research into the normalized/comparison database explicit and auditable.
 
 ### Scope
 
-1. inspect the current Phone data/build path and identify the smallest durable place for publication state;
-2. define/normalize the release states: `research-only` → `database-only` → `comparison-visible` → `detail-eligible` → `indexable`;
-3. make the frontend/search layer able to use broad database coverage without requiring every route to be emitted as initial HTML or a standalone indexable URL;
-4. make sitemap/route generation honor the explicit `indexable` gate;
-5. preserve useful global search/filter data and do **not** shrink the database merely to reduce URL count;
-6. add tests that fail when an observation/unknown route becomes indexable without passing the publication gate;
-7. keep the change bounded and reversible, then follow PR → CI/Eval/Preview → production verification.
+1. inspect `merge-global-directory.py`, reviewed-packet importer/staging paths and current batch-file ownership;
+2. replace or guard wildcard `*batch*.json` ingestion with an explicit reviewed manifest or equivalent admission contract;
+3. keep raw Qwen/Kimi output outside comparison-visible data until sampled/reviewed;
+4. preserve all currently admitted broad database coverage; do not delete routes merely to make the gate easier;
+5. add regression tests proving an unlisted/raw batch cannot enter the comparison dataset;
+6. keep publication policy independent so database admission still does not imply SEO/indexability.
 
 ### Definition of done
 
-- broad database coverage remains intact;
-- comparison/search can still retrieve appropriate routes;
-- standalone route/market/keep-alive sitemap publication is controlled by explicit publication state rather than row existence;
-- at least representative low-evidence routes no longer become indexable by default;
-- evidence-qualified published routes still work;
-- automated tests protect the layer boundary;
-- canonical GitHub facts and the Daily Project Journal are updated with the verified result.
+- new delegated research has a clear staging state;
+- admission into the broad comparison database requires an explicit reviewed action;
+- existing 135-route coverage is preserved unless a record is independently found invalid;
+- tests protect the staging → database → publication boundaries;
+- Qwen/Kimi can continue high-throughput research without gaining release authority.
 
 ### Stop conditions
 
-Stop and split the task if the current build architecture requires a broad frontend rewrite, backend service introduction, irreversible URL deletion/redirect policy, or privacy/infrastructure change. Do not introduce a server/API merely because the database is large; prefer the simplest static/generated/queryable design until performance proves otherwise.
+Do not redesign the data schema or add a backend service unless the existing static/importer path truly cannot enforce admission. Do not weaken provenance/evidence requirements just to automate throughput.
 
 ## Qwen / Kimi work lane
 

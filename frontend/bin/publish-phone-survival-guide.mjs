@@ -54,7 +54,30 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;'
 const dataPath = join(newDir, 'uk-directory-pilot.json');
 if (!existsSync(dataPath)) throw new Error('Phone Radar UK directory packet missing from public build');
 const pilot = JSON.parse(readFileSync(dataPath, 'utf8'));
-const routeLinks = (pilot.routes || []).map(r => {
+const publicationPath = join(root, 'tools', 'phone-number-lifecycle-mvp', 'publication-policy.json');
+if (!existsSync(publicationPath)) throw new Error('Phone Radar publication policy missing');
+const publication = JSON.parse(readFileSync(publicationPath, 'utf8'));
+const routeState = id => publication.routeStates?.[id] || publication.defaultRouteState || 'database-only';
+const comparisonStates = new Set(['comparison-visible','detail-eligible','indexable']);
+const globalDataPath = join(newDir, 'global-directory.json');
+if (!existsSync(globalDataPath)) throw new Error('Phone Radar global directory missing from public build');
+const globalData = JSON.parse(readFileSync(globalDataPath, 'utf8'));
+const brandById = new Map((globalData.brands || []).map(b => [b.id, b]));
+const statusLabel = r => r.avoidRoute ? 'Avoid — not viable'
+  : r.publishState === 'observation-hold' ? 'Observation / hold'
+  : r.publishState === 'candidate-with-prominent-continuity-warning' ? 'Candidate — continuity warning'
+  : r.publishState === 'candidate' ? 'Candidate — evidence captured'
+  : r.publishState === 'observation' ? 'Observation — needs verification'
+  : (r.publishState || 'Tracked');
+const comparisonRoutes = (globalData.routes || []).filter(r => comparisonStates.has(routeState(r.id))).map(r => {
+  const brandName = brandById.get(r.brandId)?.name || r.id;
+  const original = Number.isFinite(r.keep?.yearCostOriginal) ? `${r.keep.currency || ''} ${r.keep.yearCostOriginal}/yr`.trim() : '—';
+  const detail = ['detail-eligible','indexable'].includes(routeState(r.id)) ? `/tools/phone-number-survival-guide/route/${r.id}/` : null;
+  return { id:r.id, brandName, market:r.marketName || 'Global', status:statusLabel(r), keepLabel:original, cny:Number.isFinite(r.keep?.yearCostCny)?r.keep.yearCostCny:null, intervalLabel:Number.isFinite(r.keep?.intervalDays)?`${r.keep.intervalDays}d`:'—', verified:r.lastVerifiedAt || globalData.checkedAt || '', detailHref:detail, searchable:`${brandName} ${r.id} ${r.marketName || 'Global'}`.toLowerCase() };
+});
+const comparisonIndexPath = join(newDir, 'directory', 'comparison-index.json');
+writeFileSync(comparisonIndexPath, JSON.stringify({ schemaVersion:1, checkedAt:globalData.checkedAt, routeCount:comparisonRoutes.length, routes:comparisonRoutes }));
+const routeLinks = (pilot.routes || []).filter(r => ['detail-eligible','indexable'].includes(routeState(r.id))).map(r => {
   const brand = (pilot.brands || []).find(x => x.id === r.brandId);
   return `<a href="/tools/phone-number-survival-guide/route/${esc(r.id)}/">${esc(brand?.name || r.id)} route guide</a>`;
 }).join('');

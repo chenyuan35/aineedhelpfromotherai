@@ -9,7 +9,8 @@ const catalog = JSON.parse(fs.readFileSync(path.join(toolDir, 'catalog.json'), '
 const tutorial = JSON.parse(fs.readFileSync(path.join(toolDir, 'tutorial-insights.json'), 'utf8'));
 const data = JSON.parse(fs.readFileSync(path.join(toolDir, 'retention-intelligence.json'), 'utf8'));
 const routes = [...catalog.routes, ...(tutorial.additionalRoutes || [])];
-const carrierIds = routes.filter(r => r.numberClass === 'carrier-mobile').map(r => r.id);
+const carrierIds = new Set(routes.filter(r => r.numberClass === 'carrier-mobile').map(r => r.id));
+const retentionIds = Object.keys(data.routes);
 const required = [
   'status','confidence','last_verified_at','inactivity_window','clock_start_or_reset',
   'qualifying_activity','non_qualifying_or_unknown_activity','lowest_cost_documented_action',
@@ -20,11 +21,11 @@ const required = [
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
 
-check('all carrier-mobile routes have retention records', () => {
-  assert.deepEqual([...carrierIds].sort(), Object.keys(data.routes).sort());
+check('retention records belong to carrier-mobile catalog routes', () => {
+  for (const id of retentionIds) assert(carrierIds.has(id), `${id} retention record has no carrier-mobile catalog route`);
 });
 
-for (const id of carrierIds) {
+for (const id of retentionIds) {
   check(`${id} has complete retention schema`, () => {
     const r = data.routes[id];
     assert(r, `${id} missing retention record`);

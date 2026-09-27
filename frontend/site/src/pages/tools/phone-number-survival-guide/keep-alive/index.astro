@@ -14,7 +14,7 @@ const kaData = {
   checkedAt: data.checkedAt,
   routes: models.map((m) => ({
     id: m.id, brandName: m.brandName, hold: m.hold, action: m.action,
-    interval: m.interval, safe: m.safe, shortAction: m.shortAction,
+    interval: m.interval, safe: m.safe, hasEvidenceBuffer: m.hasEvidenceBuffer, shortAction: m.shortAction,
     perActionLabel: m.perAction !== null ? `~${moneyShort(m.perAction, m.currency)}` : 'n/a'
   }))
 };
@@ -22,7 +22,7 @@ const kaScript = `window.KA_DATA=${JSON.stringify(kaData).replace(/</g, '\\u003c
 if (kaScript.includes('</script>')) throw new Error('Keep-alive client script must not contain a closing script tag');
 
 const title = `Keep-Alive Assistant – SIM retention deadlines & reminders (${models.length} routes) – Phone Radar`;
-const desc = 'Pick your SIM to get its exact keep-alive action, cost per action, safe repeat window, next deadline and a calendar reminder (.ics / Google Calendar). Evidence-graded; unproven routes are marked, not guessed.';
+const desc = 'Pick your SIM to get its documented keep-alive action, cost, retention window, next deadline and a one-time calendar reminder. An earlier reminder is used only when the evidence packet supports one.';
 const webApp = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Phone Radar Keep-Alive Assistant', applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', description: desc, isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: base };
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: keepAliveFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -82,7 +82,7 @@ function perYearLabel(m: any) {
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href={GUIDE_BASE}>Phone Radar</a><span>›</span><span>Keep-Alive Assistant</span></nav>
 <p class="eyebrow">Phone Radar · Global</p>
 <h1>Keep-Alive Assistant</h1>
-<p class="ka-lead">Pick your SIM and get the exact retention action, what it costs, how often to repeat it and your next safe deadline — then export a calendar reminder so the number never lapses. Every rule is evidence-graded; routes without an established rule are excluded rather than guessed.</p>
+<p class="ka-lead">Pick your SIM and get the documented retention action, cost, window and next deadline — then export a one-time calendar reminder. An earlier reminder is shown only when current evidence supports one; routes without an established rule are excluded rather than guessed.</p>
 <input id="ka-q" type="search" placeholder="Filter routes by brand or market..." aria-label="Filter routes" style="width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;font:inherit;margin:14px 0 4px">
 <div class="ka-sel">{models.map((m) => (
 <button type="button" class="ka-sel-btn" data-route={m.id} data-q={`${m.brandName} ${m.marketName}`.toLowerCase()}><strong>{m.brandName}</strong><small>{m.marketName} · {m.interval}-day window · {moneyShort(m.yearOriginal, m.currency)}/yr</small></button>
@@ -95,14 +95,14 @@ function perYearLabel(m: any) {
 <>
 <div class="ka-hold"><strong>On hold — no calculator offered.</strong><br>{m.holdReason}</div>
 <p class="ka-note">This tool only computes deadlines where a durable retention rule is established on current evidence. {m.brandName} does not currently qualify, so no date math is shown rather than a guessed one.</p>
-<div class="ka-links"><a href={`${GUIDE_BASE}route/${m.id}/`}>Full {m.brandName} route evidence →</a></div>
+<div class="ka-links">{m.routeDetailHref && <a href={m.routeDetailHref}>Full {m.brandName} route evidence →</a>}<a href={`${GUIDE_BASE}directory/?q=${encodeURIComponent(m.brandName)}`}>Find in directory →</a></div>
 </>
 ) : (
 <>
 {m.continuityWarning && <div class="ka-warnbox"><strong>Continuity warning:</strong> {m.continuityWarning}</div>}
 <div class="ka-stats">
 <div><small>Window</small><strong>{m.interval} days</strong></div>
-<div><small>Safe rhythm</small><strong>every {m.safe} days</strong></div>
+<div><small>{m.hasEvidenceBuffer ? 'Evidence reminder' : 'Documented window'}</small><strong>{m.safe} days</strong></div>
 <div><small>Cost per action</small><strong>{m.perAction !== null ? `~${moneyShort(m.perAction, m.currency)}` : 'n/a'}</strong></div>
 <div><small>Keep cost / year</small><strong>{perYearLabel(m)}</strong></div>
 </div>
@@ -114,7 +114,7 @@ function perYearLabel(m: any) {
 <input type="date" class="ka-date-input" id={`ka-date-${m.id}`} data-route={m.id}>
 <div id={`ka-result-${m.id}`} aria-live="polite"></div>
 </div>
-<div class="ka-links"><a href={`${GUIDE_BASE}keep-alive/${m.id}/`}>Static {m.brandName} keep-alive page →</a><a href={`${GUIDE_BASE}route/${m.id}/`}>Full route evidence →</a></div>
+<div class="ka-links">{m.keepAliveDetailHref && <a href={m.keepAliveDetailHref}>Static {m.brandName} keep-alive page →</a>}{m.routeDetailHref && <a href={m.routeDetailHref}>Full route evidence →</a>}<a href={`${GUIDE_BASE}directory/?q=${encodeURIComponent(m.brandName)}`}>Find in directory →</a></div>
 </>
 )}
 </section>

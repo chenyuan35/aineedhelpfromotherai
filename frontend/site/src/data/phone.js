@@ -7,11 +7,25 @@ import { join } from 'path';
 // NOTE: import.meta.url points at the prerender bundle after Vite bundles this
 // module, so resolve the packet from the Astro project cwd instead (site/).
 const dataPath = join(process.cwd(), '..', 'tools', 'phone-number-lifecycle-mvp', 'global-directory.json');
+const publicationPath = join(process.cwd(), '..', 'tools', 'phone-number-lifecycle-mvp', 'publication-policy.json');
 export const data = JSON.parse(readFileSync(dataPath, 'utf8'));
+export const publicationPolicy = JSON.parse(readFileSync(publicationPath, 'utf8'));
 
 export const SITE = 'https://aineedhelpfromotherai.com';
 export const GUIDE_BASE = '/tools/phone-number-survival-guide/';
 export const PHONE_BASE = `${SITE}${GUIDE_BASE}`;
+
+const DETAIL_STATES = new Set(['detail-eligible', 'indexable']);
+const COMPARISON_STATES = new Set(['comparison-visible', 'detail-eligible', 'indexable']);
+export const routePublicationState = (r) => publicationPolicy.routeStates?.[r.id] || publicationPolicy.defaultRouteState || 'database-only';
+export const isComparisonVisible = (r) => COMPARISON_STATES.has(routePublicationState(r));
+export const hasRouteDetail = (r) => DETAIL_STATES.has(routePublicationState(r));
+export const isRouteIndexable = (r) => routePublicationState(r) === 'indexable';
+export const routeDetailHref = (r) => hasRouteDetail(r) ? `${GUIDE_BASE}route/${r.id}/` : null;
+export const marketPublicationState = (market) => publicationPolicy.marketStates?.[market] || publicationPolicy.defaultMarketState || 'database-only';
+export const hasMarketDetail = (market) => DETAIL_STATES.has(marketPublicationState(market));
+export const isMarketIndexable = (market) => marketPublicationState(market) === 'indexable';
+export const comparisonRoutes = () => (data.routes || []).filter(isComparisonVisible);
 
 export const brandOf = (r) => data.brands.find((b) => b.id === r.brandId);
 export const networkOf = (r) => data.networks.find((n) => n.id === brandOf(r)?.networkId);
@@ -51,7 +65,7 @@ export const eventsOf = (r) => (data.continuityEvents || []).filter((x) => x.rou
 
 export function marketGroups() {
   const byMarket = new Map();
-  for (const r of data.routes) {
+  for (const r of comparisonRoutes()) {
     const m = r.marketName || 'Global';
     if (!byMarket.has(m)) byMarket.set(m, []);
     byMarket.get(m).push(r);
@@ -115,7 +129,7 @@ const shortActionByRoute = {
 };
 
 export function keepAliveModels() {
-  return (data.routes || [])
+  return comparisonRoutes()
     .filter((r) => Number.isFinite(r.keep?.intervalDays) && r.keep?.action && r.publishState !== 'observation-hold')
     .map((r) => {
       const brand = brandOf(r) || {};
@@ -133,8 +147,8 @@ export function keepAliveModels() {
           }
         }
         if (!safe) {
-          safe = interval - Math.ceil(interval * 0.15);
-          bufferNote = `Default safety buffer: 15% of the ${interval}-day window, so repeat the action at least every ${safe} days.`;
+          safe = interval;
+          bufferNote = `No evidence-backed early buffer is documented. The calculator uses the documented ${interval}-day window as the reminder date; choose an earlier personal reminder if you want extra margin.`;
         }
       }
       const verifiedDaysAgo = r.lastVerifiedAt && data.checkedAt
@@ -143,6 +157,12 @@ export function keepAliveModels() {
       return {
         id: r.id,
         brandName: brand.name || r.id,
+        publicationState: routePublicationState(r),
+        hasDetail: hasRouteDetail(r),
+        indexable: isRouteIndexable(r),
+        routeDetailHref: routeDetailHref(r),
+        keepAliveDetailHref: hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : null,
+        hasEvidenceBuffer: Boolean(interval && safe < interval),
         hold,
         holdReason: r.holdReason || 'Current durable retention is not established.',
         action: keep.action || '',
@@ -173,7 +193,7 @@ export function keepAliveModels() {
 
 export const keepAliveFaq = [
   ['How often do I need to keep a prepaid number active?',
-   'It depends on the operator. Windows range from 60 days to a full year depending on the route. Pick your operator above to see its exact window and a safe repeat rhythm with a 15% buffer.'],
+   'It depends on the operator. Windows range from 60 days to a full year depending on the route. Pick your operator above to see the documented window; an earlier reminder is shown only when the evidence packet supports one.'],
   ['What does it cost per year to keep a number alive?',
    'The cheapest established routes cost under a few CNY per year — a single small SMS or top-up inside the window. Costs shown are community-measured action costs; any balance you top up remains yours.'],
   ['Why is a route missing from this tool?',
