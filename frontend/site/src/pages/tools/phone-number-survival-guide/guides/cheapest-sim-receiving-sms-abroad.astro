@@ -1,6 +1,6 @@
 ---
 import GuideArticle from '../../../../components/GuideArticle.astro';
-import { data, routeOf, brandOf, GUIDE_BASE } from '../../../../data/phone.js';
+import { data, routeOf, brandOf, GUIDE_BASE, routeDetailHref, hasRouteDetail } from '../../../../data/phone.js';
 
 const ranked = (data.routes as any[])
   .filter((r) => Number.isFinite(r.keep?.yearCostCny) && r.publishState !== 'observation-hold' && !r.avoidRoute)
@@ -11,6 +11,9 @@ const clubsim = routeOf('clubsim-sms-pack-6hkd-2026');
 const hotlink = routeOf('hotlink-pantas-365-pass-2026');
 const globe = routeOf('globe-prepaid-1yr-2026');
 const voxi = routeOf('voxi-uk-esim-payg-retention');
+
+const guideRouteHref = (r: any) => routeDetailHref(r) || `${GUIDE_BASE}directory/?q=${encodeURIComponent(r.id)}`;
+const keepAliveHref = (r: any) => hasRouteDetail(r) ? `${GUIDE_BASE}keep-alive/${r.id}/` : `${GUIDE_BASE}keep-alive/#${r.id}`;
 ---
 <GuideArticle slug="cheapest-sim-receiving-sms-abroad"
   h1="Cheapest SIM cards for receiving SMS & OTP abroad"
@@ -21,7 +24,7 @@ const voxi = routeOf('voxi-uk-esim-payg-retention');
 <section class="gd-sec"><h2>The ranking</h2>
 <table class="gd-tbl"><thead><tr><th>#</th><th>Route</th><th>Keep/yr</th><th>≈CNY</th><th>Interval</th></tr></thead>
 <tbody>{ranked.map((r, i) => (
-<tr><td>#{i + 1}</td><td><a href={`${GUIDE_BASE}route/${r.id}/`}><strong>{brandOf(r)?.name || r.id}</strong></a><br><small style="color:var(--muted)">{r.marketName || ''}</small></td><td>{r.keep.currency} {r.keep.yearCostOriginal}</td><td>≈¥{r.keep.yearCostCny}</td><td>{r.keep.intervalDays}d</td></tr>
+<tr><td>#{i + 1}</td><td><a href={guideRouteHref(r)}><strong>{brandOf(r)?.name || r.id}</strong></a><br><small style="color:var(--muted)">{r.marketName || ''}</small></td><td>{r.keep.currency} {r.keep.yearCostOriginal}</td><td>≈¥{r.keep.yearCostCny}</td><td>{r.keep.intervalDays}d</td></tr>
 ))}</tbody></table>
 <p style="color:var(--muted);font-size:.85rem">Ranking recomputed from the directory packet on every build (last check {data.checkedAt}). CNY figures use the packet reference rates.</p></section>
 
@@ -35,10 +38,10 @@ const voxi = routeOf('voxi-uk-esim-payg-retention');
 <section class="gd-sec"><h2>The realistic shortlist for people outside the country</h2>
 <p>Filtering for routes you can actually acquire without local residency, the practical top tier is:</p>
 <ul>
-{clubsim && <li><a href={`${GUIDE_BASE}route/${clubsim.id}/`}><strong>ClubSIM (Hong Kong)</strong></a> — ≈¥{clubsim.keep?.yearCostCny}/yr, eSIM, minimal KYC.</li>}
-{hotlink && <li><a href={`${GUIDE_BASE}route/${hotlink.id}/`}><strong>{brandOf(hotlink)?.name}</strong></a> — ≈¥{hotlink.keep?.yearCostCny}/yr, one annual action.</li>}
-{globe && <li><a href={`${GUIDE_BASE}route/${globe.id}/`}><strong>{brandOf(globe)?.name}</strong></a> — ≈¥{globe.keep?.yearCostCny}/yr, 1-year official validity.</li>}
-{voxi && <li><a href={`${GUIDE_BASE}route/${voxi.id}/`}><strong>VOXI (UK)</strong></a> — ≈¥{voxi.keep?.yearCostCny}/yr with eSIM delivery.</li>}
+{clubsim && <li><a href={guideRouteHref(clubsim)}><strong>ClubSIM (Hong Kong)</strong></a> — ≈¥{clubsim.keep?.yearCostCny}/yr, eSIM, minimal KYC.</li>}
+{hotlink && <li><a href={guideRouteHref(hotlink)}><strong>{brandOf(hotlink)?.name}</strong></a> — ≈¥{hotlink.keep?.yearCostCny}/yr, one annual action.</li>}
+{globe && <li><a href={guideRouteHref(globe)}><strong>{brandOf(globe)?.name}</strong></a> — ≈¥{globe.keep?.yearCostCny}/yr, 1-year official validity.</li>}
+{voxi && <li><a href={guideRouteHref(voxi)}><strong>VOXI (UK)</strong></a> — ≈¥{voxi.keep?.yearCostCny}/yr with eSIM delivery.</li>}
 </ul></section>
 
 <section class="gd-sec"><h2>Dead ends to skip</h2>

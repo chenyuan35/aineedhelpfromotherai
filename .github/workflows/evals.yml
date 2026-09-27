@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
@@ -48,6 +48,9 @@ jobs:
 
       - name: Audit phone-number retention intelligence
         run: node scripts/test-phone-number-retention-intelligence.mjs
+
+      - name: Audit Phone publication-state boundaries
+        run: node scripts/test-phone-publication-state.mjs
 
       - name: Audit phone-number supply intelligence
         run: node scripts/test-phone-number-supply-intelligence.mjs

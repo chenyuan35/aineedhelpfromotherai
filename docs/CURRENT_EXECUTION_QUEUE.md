@@ -1,154 +1,117 @@
 # Current Execution Queue
 
-Last updated: 2026-09-26
+Last updated: 2026-09-28
 
-`PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` are canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic execution queue.
-
-## Execution rule
-
-Execute all eligible work continuously. For confirmed bounded defects inside the active task, continue through diagnosis → smallest safe fix → verification → fact-source update when reversible and authorized. Stop only for an authorization boundary, irreversible/high-impact choice, contradictory facts, or a documented blocker/wait condition.
+`PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is intentionally short: one current task, current blockers/waits, and do-not-do rules. Historical detail belongs in PRs, Git history, task-specific docs and the Daily Project Journal.
 
 ## Current decision
 
-1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT / UK PILOT LIVE / BACKSTAGE EVIDENCE ACQUISITION ACTIVE / PUBLIC EXPANSION MEASUREMENT-GATED.**
-2. **AI Reset Radar — FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.**
-3. **Relay Exit Risk — DATA-ACCRUAL EXPERIMENT.**
+1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
+2. **Phone database coverage and public/indexable coverage are separate concerns.** A broad 90%+ relevant-route database is an acceptable internal goal; it does not authorize equivalent public URL growth.
+3. **Frontend target — visual search/decision UI.** Search/filter/compare first, progressive disclosure and on-demand loading, with deep evidence loaded only when the user touches the route.
+4. **SEO target — selective publication.** Database rows may be `research-only`, `database-only`, `comparison-visible`, `detail-eligible` or `indexable`; only the last state earns a standalone search page/sitemap entry.
+5. **AI Reset Radar — FROZEN / direct URLs preserved.**
+6. **Relay Exit Risk — data-accrual experiment only.**
 
-Phone public production should not churn from tiny search samples, but the Phone research/data pipeline must continue running. A measurement hold is not a research hold.
+Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 
-## JUST COMPLETED — Holafly Always On backstage Data eSIM review / watcher batch-2 closeout
+## JUST COMPLETED — Phone publication-state reconciliation / PR #261
 
-`docs/PHONE_HOLAFLY_ALWAYS_ON_REVIEW_2026-09-26.md` classifies Holafly Always On **PROMOTE / BACKSTAGE DATA-ESIM PACKET / NO PUBLIC PRODUCTION CHANGE**. PR #231 passed Eval Gate #763 and squash-merged as `413e6c3ec919225b12472dbeaa27ac6b820e9397`.
+The global Phone expansion is now reconciled with the product architecture without shrinking the database:
 
-Current first-party material supports 1 GB/month backup data, automatic 30-day refresh from installation, no roll-over, coverage including China / Hong Kong / Singapore / Taiwan / Japan / Macao, and a keep-installed/no-delete lifecycle constraint. Always On is data-only and must not be represented as a long-term SMS/OTP-number route.
+- current normalized dataset remains **135 routes / 83 markets**;
+- `publication-policy.json` separates database/comparison state from standalone publication;
+- normalized routes default to `comparison-visible`, not indexable;
+- only VOXI, Lebara UK and Giffgaff are initially explicit `indexable` route details;
+- market detail pages default to `database-only`, so the former 83-row market URL family is no longer auto-generated;
+- standalone route / market / keep-alive details are generated only for explicit `detail-eligible` / `indexable` states;
+- sitemap generation omits `noindex` pages and boundary tests reject non-indexable URL leakage;
+- the global Directory initial HTML contains **0 database rows** and defers a shallow comparison index (135 routes) after page load; deep route evidence is not part of that initial payload;
+- crawler-visible Phone internal-link validation prevents removed detail URLs from leaving 404 links;
+- retention tests now treat deep retention intelligence as a subset of the carrier catalog rather than requiring every database route to have deep evidence;
+- Keep-Alive no longer invents a 15% buffer, no longer assumes today is the user's last action, and calendar export is one-time rather than a drifting recurring rule.
 
-Three unresolved fields remain: (1) explicit Always-On service duration ceiling, (2) explicit device-transfer policy beyond keep-installed/do-not-delete, and (3) first-party coverage metadata inconsistency (`70+` in meta description vs `150+`/enumerated destinations in page body). A separate evidence gap remains: no independent 2026 end-to-end reproduction was obtained for monthly-refresh arrival, speed/availability, or failure/refund behavior. These are re-open triggers, not blockers to the backstage classification.
+Local pre-PR verification passed the Phone lifecycle, retention, supply, publication-state, public-release, watcher, Relay and golden Eval gates plus a full frontend build. Remote CI / Preview and production verification remain release gates before final closure.
 
-Watcher batch-2 is now fully dispositioned. No public Phone route/page changed.
+## NEXT SESSION — harden Qwen/Kimi data admission
 
-## JUST COMPLETED — first settled Search Console decision read — KEEP
+**Session task:** make the route from delegated research into the normalized/comparison database explicit and auditable.
 
-**Decision: KEEP** the existing UK Phone pilot unchanged. This is a measurement-hold decision, not proof that the current surface has won.
+### Scope
 
-Windsor.ai `searchconsole` was read in finalized mode (`include_fresh_data=false`) for `2026-09-16` through `2026-09-23` on `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/`:
+1. inspect `merge-global-directory.py`, reviewed-packet importer/staging paths and current batch-file ownership;
+2. replace or guard wildcard `*batch*.json` ingestion with an explicit reviewed manifest or equivalent admission contract;
+3. keep raw Qwen/Kimi output outside comparison-visible data until sampled/reviewed;
+4. preserve all currently admitted broad database coverage; do not delete routes merely to make the gate easier;
+5. add regression tests proving an unlisted/raw batch cannot enter the comparison dataset;
+6. keep publication policy independent so database admission still does not imply SEO/indexability.
 
-- page-level settled data: `2026-09-21` = 1 impression / 0 clicks / position 9; `2026-09-23` = 2 impressions / 0 clicks / average position 13.5;
-- cumulative page-level sample = **3 impressions / 0 clicks / 0% CTR / weighted average position 12.0**;
-- query-level visible data contains only `survival number` = 1 impression / 0 clicks / position 22 on `2026-09-23`; the other two page impressions are not exposed at query granularity in this low-volume sample.
+### Definition of done
 
-The sample is too small to support **ADJUST** or **NARROW**. Zero clicks across three impressions is not a reliable CTR signal, while one settled impression already occurred at page-level position 9. Therefore public Phone production stays stable and backstage evidence acquisition continues.
+- new delegated research has a clear staging state;
+- admission into the broad comparison database requires an explicit reviewed action;
+- existing 135-route coverage is preserved unless a record is independently found invalid;
+- tests protect the staging → database → publication boundaries;
+- Qwen/Kimi can continue high-throughput research without gaining release authority.
 
-**Next measurement trigger:** repeat the settled decision read after at least 7 additional finalized days **and** at least 20 cumulative settled impressions on the canonical, unless a clear indexing regression or materially different query pattern appears earlier. If the date gate arrives but the impression threshold does not, continue KEEP rather than forcing a redesign from noise.
+### Stop conditions
 
-## JUST COMPLETED — PR #233 disposition — REWORK / Draft
+Do not redesign the data schema or add a backend service unless the existing static/importer path truly cannot enforce admission. Do not weaken provenance/evidence requirements just to automate throughput.
 
-PR #233 (`Keep-Alive Assistant`) is **REWORK**, not merge-ready. It was converted back to Draft after reviewing the actual four-file diff against the current KEEP decision and Phone value/publication gates.
+## Qwen / Kimi work lane
 
-The underlying user job remains valid: a user-entered real keep-alive action date can be transformed into a next-deadline reminder, which has computation and repeat-use value beyond a static carrier rule. The current implementation is not acceptable for release because it: (1) mixes in `docs/PHONE_DATABASE_EXPANSION.md`, an obsolete bulk global-coverage/Tier-2 placeholder strategy; (2) invents a default 15% "safe" buffer where route evidence does not provide one; (3) adds five public URLs, including four template-heavy brand pages that do not independently clear the publication gate; (4) prefills the last-action date with today and immediately computes from that unverified assumption; and (5) uses a fixed recurring calendar RRULE that can drift from the user's real later action dates.
+QwenPaw/Kimi remain **high-throughput backstage workers**, not project managers.
 
-Re-open only after the branch is rebased on current `main`, the obsolete database-expansion file is removed, the interaction is narrowed to evidence-derived or explicitly user-configured logic, user dates require explicit input, calendar semantics follow real actions, and a later eligible production task authorizes a public change.
+Eligible parallel work:
 
-## JUST COMPLETED — first Kimi/Qwen five-route provenance/admission batch
+- expand low-cost route coverage;
+- retrieve and timestamp sources;
+- fill normalized fields;
+- detect stale prices/rules and contradictions;
+- dedupe same-author/circular reports;
+- collect service-specific operational evidence;
+- produce bounded research/data batches.
 
-`docs/PHONE_FIVE_ROUTE_PROVENANCE_ADMISSION_REVIEW_2026-09-26.md` reviewed actual independent discovery/operational evidence plus current first-party verification for Tello PAYG, ClubSIM, Hotlink Pantas, Globe Prepaid and povo 2.0.
+Every delegated result is `RESEARCH CANDIDATE` until sampled/reviewed by the coordinating session. Qwen/Kimi must not independently change the roadmap, production/publication state, sitemap/indexability, ranking policy, infrastructure roles, billing/account settings, or merge/deploy state.
 
-- **Tello — ADMIT-BACKSTAGE.** Multiple independent community sources support the route and its overseas-number use case. The frozen `$0.06/year` value is rejected; current PAYG starts at USD 20 / 90 days, and risk-control/account-closure evidence must remain visible.
-- **ClubSIM — ADMIT-BACKSTAGE.** Current first-party terms preserve the 365-day service-pack lifecycle and the current web surface still lists the HKD 6 SMS pack. July 2026 users reported the HKD 6 option missing in-app, so availability remains a live conflict rather than a guaranteed annual-price claim. The NodeSeek/NodeLoc same-author cross-post counts once.
-- **Hotlink Pantas — ADMIT-BACKSTAGE.** Current Hotlink FAQ directly confirms RM30 for the 365-day Active Period Pass. The old RM2/year claim is rejected: RM2 is a 1GB/365-day internet pass and does not keep an inactive SIM active.
-- **Globe Prepaid — HOLD.** Existing lawful-eligibility gate remains unresolved; raw Kimi `PROMOTE` does not supersede canonical evidence.
-- **povo 2.0 — HOLD.** The 180-day topping lifecycle is current, but the SMS-capable voice+data route remains gated by Japanese identity/residency documents; data-only is a separate non-SMS product.
+Before accepting a large batch, sample-audit source quality, duplicate rate, unsupported inference and stale facts. High throughput should increase evidence/database coverage, not unreviewed public page volume.
 
-No public Phone route/page changed, and frozen PRs #234–#241 remain unaccepted raw research.
+## Daily work discipline
 
-## JUST COMPLETED — PR #253 normalized Phone data foundation release
+Every project workday:
 
-Correct Vercel scope access to `chenyuan-s-projects` was restored. Deployment `dpl_6jPnLTVtJS21UGLN3ptFDYeMKA6X` exposed `module_not_found` with `node frontend/bin/build.mjs`. The only new frontend-build dependency was the redundant `node ../scripts/build-phone-database.mjs --check` call; Phone data/staging validation already runs in CI. Removing that cross-tree build call produced a real green Preview on head `0cde866ae4a2b8accffb7373c7937639885e363c`.
+1. read the GitHub startup chain;
+2. create one bounded Session Card/checklist;
+3. delegate parallelizable evidence/data tasks when useful;
+4. execute and verify the selected task;
+5. update the correct GitHub facts/queue when state changes;
+6. append one dated entry to `aineedhelpfromotherai — Daily Project Journal`;
+7. close with completed work, failures/blockers, unfinished work, evidence state, next-session order and do-not-do list.
 
-Final release gates: **Vercel Preview PASS**, **Eval Gate #804 PASS**, **CI #151 PASS**. PR #253 squash-merged as `640341d4a79a00a688eb36bffce7cf57e4d05e27`. Production deployment `dpl_9rKb3q9QBvifsQZdjTXFVTdQZ5RU` reached READY and `https://aineedhelpfromotherai.com/tools/phone-number-survival-guide/` returned HTTP 200. Public Phone behavior remains unchanged; the normalized data foundation, search artifacts, staging isolation, reviewed-packet importer and maintenance path are now on `main`.
+The journal is chronology only. GitHub `main` + verified production remains final truth.
 
-## NEXT SESSION — importer-based backstage admission of Tello / ClubSIM / Hotlink Pantas
+## Measurement lane
 
-Use the standard reviewed-packet path added by PR #253. This is a backstage ingestion task only; do not hand-edit public Phone cards or create new public URLs.
-
-Required preserved corrections/conflicts:
-- Tello: do not revive `$0.06/year`; current audited economics and account/risk-control evidence must remain explicit.
-- ClubSIM: preserve the HKD 6 web listing versus 2026 in-app availability conflict; do not convert it into a guaranteed annual-price claim.
-- Hotlink Pantas: do not revive `RM2/year`; the current keep-alive basis is the RM30 / 365-day Active Period Pass.
-
-**Definition of done:** three reviewed packets pass `--check`, apply cleanly to canonical backstage data, Phone data/candidate tests pass, staging/public isolation remains intact, and the resulting change follows the normal PR → CI/Eval/Preview → merge → production verification path.
-
-**Stop / do not substitute:** no public Phone churn; no bulk-merge of frozen PRs #234–#241; no weak global-row expansion; no unrelated infrastructure work.
-
-## Backstage packet set — batch-2 fully dispositioned
-
-- **Saily Switzerland — backstage research packet / PROMOTE.** Retained as the earlier data-eSIM incident/recovery packet from the first six watcher candidates.
-- **haha SIM — HOLD.** Re-open only on a fresh independent 2026+ end-to-end activation/registration outcome or a current failure/recovery reproduction showing the ICCID/registration path is predictably recoverable.
-- **Globe Philippines — HOLD.** A lawful long-term class exists for qualifying non-tourist visa holders, but ordinary tourist registration remains 30-day-limited unless an approved visa extension is presented; current evidence still lacks a qualifying-foreigner end-to-end mainland-China long-term OTP reproduction.
-- **Holafly Always On — PROMOTE / backstage Data eSIM only.** Re-open on a first-party explicit duration ceiling, an explicit device-transfer rule, resolution of the `70+` vs `150+` coverage inconsistency, or fresh 2026+ independent reproduction of monthly refresh / speed / failure / refund behavior.
-
-## Watcher precision status
-
-**CLOSED 2026-09-25.** PRs #225/#226 repaired V2EX fragment-only duplicate emission, including legacy-state migration compatibility. Final live verification produced no duplicate V2EX candidate and did not suppress the source.
-
-## Phone comparison UI benchmark
-
-PR #218 established the accepted comparison-UI research baseline in `docs/PHONE_RADAR_COMPARISON_UI_BENCHMARK_2026-09-25.md`; Eval Gate #724 passed and the PR squash-merged as `3f8f3fb07531da177697a4e004bc284a7d8f3ea9`.
-
-Future evidence-qualified Phone UI direction remains:
-
-- default **Browse** mode: dense, immediate, filterable comparison with host-network grouping;
-- optional **Compare** mode: pin 2–4 routes into a fixed side-by-side field comparison;
-- **Guide** mode: concise execution text opened from the selected route;
-- graphical components only when driven by real route data: landed-cost breakdown, keep-alive timeline, app-evidence chips and dated route-history timeline;
-- “make the numbers complete” means make each admitted route decision-complete, not bulk-fill countries/providers with weak evidence.
-
-This benchmark does not authorize immediate production churn.
-
-## Active Search Console measurement path
-
-- Use Windsor.ai `searchconsole` for current Search Console reads on `sc-domain:aineedhelpfromotherai.com`.
-- Do not use GSC Wizard for new reads; its free/trial quota is exhausted and it is deprecated for the project.
-- If Windsor.ai later fails, use Google's official Search Console API/export; do not rotate trial accounts or change billing without authorization.
-- The first full settled decision read is complete: 2026-09-16..2026-09-23 yielded 3 page impressions, 0 clicks and weighted average page position 12.0; the only exposed query was `survival number` with 1 impression at position 22.
-- Current decision is **KEEP** because the sample is too small to justify public churn. Re-read after at least 7 additional finalized days and 20 cumulative settled impressions, unless a clear regression or materially different query pattern appears earlier.
-
-## Phone evidence pipeline state
-
-Community watcher v1.1 is deployed and runtime-verified on the disposable trial observer. Qwen → key-only SSH is the current control path. The first six candidates and the 55-record second batch are fully dispositioned; durable backstage packets now include Saily Switzerland, haha SIM (HOLD), Globe Philippines (HOLD) and Holafly Always On (PROMOTE). The V2EX reply-fragment precision defect found in batch 2 is closed by PRs #225/#226 and final live verification.
-
-`phone-source-watch` remains the separate reviewed official/commercial source-change role. Its Sep 25 Mobal pricing/ID events are reconciled; no production Mobal route fact changed. External linked domains are candidates only and must not be auto-crawled.
-
-No second observer should be assigned merely to satisfy topology. `codex-vps` remains Relay-history and must not be repurposed without a concrete reliability/value reason. Sep 25 handoff verification confirmed both observer hosts are alive: the Phone trial host is reachable by Qwen key-only SSH with healthy latest watcher exits, and `codex-vps` is Tailscale-online with a successful same-day Relay backup. Its interactive Tailscale SSH currently asks for an additional authorization check; do not misclassify that prompt as host death or divert the next session into topology repair.
-
-## Phone publication queue
-
-The current public surface remains the UK index/matrix. Backstage evidence may lead to either an evidence-backed improvement on the existing index or an evidence-rich route detail page only after the route clears the publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md`.
-
-Do not create country/provider pages for coverage. A separate route page requires unambiguous route identity/acquisition, current commercial facts, meaningful independent operational evidence, substantial unique execution content, visible freshness/conflicts and both product-value gates.
-
-A new evidence-qualified route is not an eligible next task merely because a provider exists. Re-open route admission only when a fresh 2026+ independent reproduction appears and clears the evidence gate.
-
-## Search Console 404 notice
-
-The 2026-09-20 Search Console validation notice still concerns intentionally removed former paths unless a currently intended URL appears among affected examples. Do not revive or redirect old `/cases/`, `/learn/`, `/stats/`, historical `.well-known` assets, old feeds/failure-index/OpenAPI assets, or `/mcp/` merely to make validation green.
+- Search Console: use Windsor.ai `searchconsole` while connected; official GSC API/export is fallback.
+- Keep Google organic separate from social/referral, AI referral and direct/repeat.
+- GA4 tag `G-FYKKNKRE58` and behavior events are live in production; Windsor GA4 authorization currently resolves property `553896884` but report reads return zero rows. Treat this as an unresolved GA4 property/data-stream/read-path issue, not as a traffic conclusion.
+- Do not churn Phone public UX from tiny GSC samples.
 
 ## External waits
 
-- **TikTok App Review — WAITING.** Do not Recall/edit submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested.
-- **AIR-4 Authority batch 2 — WAITING.** Learn Cursor + explainx.ai were sent 2026-09-22. No third target or follow-up before 2026-09-29 or later.
+- **TikTok App Review — WAITING.** Do not Recall/edit submitted configuration until Approved or Rejected/Changes requested.
+- **Authority batch 2 — WAITING.** Follow the trigger in `docs/AUTHORITY_AND_AI_DISCOVERY.md`; do not create extra outreach volume merely to stay busy.
 
 ## Do not do next
 
-- current public Phone instruction is **KEEP**; do not add or churn public Phone URLs until a later evidence-backed decision changes that instruction;
-- do not stop Phone research merely because the public page is in a measurement window;
-- do not immediately bulk-add another market/provider/ranking model to production;
-- do not bulk-add weak global Phone rows;
-- do not invent compatibility percentages or a Phone risk score;
-- do not create country/provider doorway pages or a temporary-SMS backend;
-- do not scrape login-gated marketplaces or teach moderation evasion;
-- do not reopen Reset/Codex generic tracker work;
+- do not shrink the Phone research/database layer simply because the current public URL surface is too broad;
+- do not equate a database row with a public page;
+- do not bulk-create country/provider/route SEO pages from coverage data;
+- do not invent compatibility percentages, missing costs or a Phone risk score;
+- do not let Qwen/Kimi raw output bypass the review/admission/publication gates;
+- do not migrate to a new backend merely for architectural neatness;
+- do not reopen generic Reset/Codex tracker work;
 - do not reopen Relay methodology;
-- do not migrate production to Astro as part of Phone work;
-- do not rotate trial accounts or upgrade/pay to bypass tool quotas;
-- do not change DNS, AdSense, billing, paid services, or critical account settings without explicit authorization;
+- do not rotate trial accounts or change billing to bypass quotas;
+- do not change DNS, AdSense, billing, paid services or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.

@@ -1,6 +1,6 @@
 ---
 import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
-import { data, brandOf, marketGroups, slugify, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
+import { data, brandOf, marketGroups, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
 
 const byMarket = marketGroups();
 const markets = [...byMarket.keys()].sort((a, b) => a.localeCompare(b));
@@ -23,7 +23,7 @@ const desc = `SIM number retention by market: ${markets.length} markets, ${data.
   const withCost = routes.filter((r: any) => Number.isFinite(r.keep?.yearCostCny)).sort((a: any, b: any) => a.keep.yearCostCny - b.keep.yearCostCny);
   const cheapest = withCost[0];
   const cheapestTxt = cheapest ? `from ≈¥${cheapest.keep.yearCostCny}/yr` : 'cost pending';
-  return <a class="mkt-card" href={`${GUIDE_BASE}market/${slugify(m)}/`}><strong>{m}</strong><small>{routes.length} route{routes.length === 1 ? '' : 's'} · {cheapestTxt}</small></a>;
+  return <a class="mkt-card" href={`${GUIDE_BASE}directory/?market=${encodeURIComponent(m)}`}><strong>{m}</strong><small>{routes.length} route{routes.length === 1 ? '' : 's'} · {cheapestTxt}</small></a>;
 })}
 </div>
 </main>

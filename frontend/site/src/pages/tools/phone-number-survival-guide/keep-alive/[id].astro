@@ -3,18 +3,20 @@ import PhoneLayout from '../../../../layouts/PhoneLayout.astro';
 import { data, keepAliveModels, moneyShort, PHONE_BASE, GUIDE_BASE } from '../../../../data/phone.js';
 
 export function getStaticPaths() {
-  return keepAliveModels().map((m) => ({ params: { id: m.id } }));
+  return keepAliveModels().filter((m) => m.hasDetail).map((m) => ({ params: { id: m.id } }));
 }
 
 const { id } = Astro.params;
-const m = keepAliveModels().find((x) => x.id === id)!;
+const m = keepAliveModels().find((x) => x.id === id && x.hasDetail)!;
 const base = `${PHONE_BASE}keep-alive/`;
 const canonical = `${base}${m.id}/`;
 
 const title = `${m.brandName} keep-alive rules – ${m.marketName} SIM retention – Phone Radar`;
 const desc = m.hold
   ? `${m.brandName} keep-alive status: on observation hold — no clean durable retention path is currently established. Hold reason and re-open conditions.`
-  : `${m.brandName} keep-alive rules (${m.marketName}): ${m.interval}-day window, act at least every ${m.safe} days, about ${moneyShort(m.perAction, m.currency)} per action and ${moneyShort(m.yearOriginal, m.currency)} per year. Steps, evidence state and a deadline calculator.`;
+  : m.hasEvidenceBuffer
+    ? `${m.brandName} keep-alive rules (${m.marketName}): ${m.interval}-day documented window with an evidence-backed reminder at ${m.safe} days. Steps, cost and deadline calculator.`
+    : `${m.brandName} keep-alive rules (${m.marketName}): ${m.interval}-day documented window. No unsupported early safety buffer is assumed. Steps, cost and deadline calculator.`;
 const pageLd = { '@context': 'https://schema.org', '@type': 'WebPage', name: `${m.brandName} keep-alive rules`, description: desc, url: canonical, dateModified: m.lastVerifiedAt !== 'unknown' ? m.lastVerifiedAt : data.checkedAt, isPartOf: { '@type': 'WebSite', name: 'Phone Radar', url: PHONE_BASE } };
 const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
   { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aineedhelpfromotherai.com/' },
@@ -23,7 +25,7 @@ const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', it
   { '@type': 'ListItem', position: 4, name: m.brandName, item: canonical }
 ]};
 ---
-<PhoneLayout title={title} desc={desc} canonical={canonical} ogType="article" jsonLd={[pageLd, crumbs]}>
+<PhoneLayout title={title} desc={desc} canonical={canonical} ogType="article" robots={m.indexable ? "index,follow,max-image-preview:large" : "noindex,follow"} jsonLd={[pageLd, crumbs]}>
 <style is:global>
 .ka-wrap{max-width:900px;padding-bottom:70px}
 .ka-wrap h1{font-size:clamp(2rem,5vw,3.2rem);margin:.2em 0}
@@ -56,7 +58,7 @@ const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', it
 {m.continuityWarning && <div class="ka-warnbox"><strong>Continuity warning:</strong> {m.continuityWarning}</div>}
 <div class="ka-stats">
 <div><small>Window</small><strong>{m.interval} days</strong></div>
-<div><small>Safe rhythm</small><strong>every {m.safe} days</strong></div>
+<div><small>{m.hasEvidenceBuffer ? 'Evidence reminder' : 'Documented window'}</small><strong>{m.safe} days</strong></div>
 <div><small>Cost per action</small><strong>{m.perAction !== null ? `~${moneyShort(m.perAction, m.currency)}` : 'n/a'}</strong></div>
 <div><small>Keep cost / year</small><strong>{m.yearOriginal !== null ? moneyShort(m.yearOriginal, m.currency) : 'n/a'}</strong></div>
 </div>
@@ -65,6 +67,6 @@ const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', it
 <ol class="ka-steps">{m.steps.map((s) => <li>{s}</li>)}</ol>
 </>
 )}
-<div class="ka-links"><a href={`${base}#${m.id}`}>Open in the deadline calculator →</a><a href={`${GUIDE_BASE}route/${m.id}/`}>Full route evidence →</a></div>
+<div class="ka-links"><a href={`${base}#${m.id}`}>Open in the deadline calculator →</a>{m.routeDetailHref && <a href={m.routeDetailHref}>Full route evidence →</a>}</div>
 </main>
 </PhoneLayout>
