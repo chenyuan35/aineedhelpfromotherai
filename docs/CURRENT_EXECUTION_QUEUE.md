@@ -7,94 +7,69 @@ Last updated: 2026-09-28
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **Phone database coverage and public/indexable coverage are separate concerns.** A broad 90%+ relevant-route database is an acceptable internal goal; it does not authorize equivalent public URL growth.
+2. **Phone database coverage and public/indexable coverage are separate concerns.** Broad reviewed database coverage is desirable; it does not authorize equivalent public URL growth.
 3. **Frontend target — visual search/decision UI.** Search/filter/compare first, progressive disclosure and on-demand loading, with deep evidence loaded only when the user touches the route.
-4. **SEO target — selective publication.** Database rows may be `research-only`, `database-only`, `comparison-visible`, `detail-eligible` or `indexable`; only the last state earns a standalone search page/sitemap entry.
+4. **SEO target — selective publication.** Database rows may be `research-only`, `database-only`, `comparison-visible`, `detail-eligible` or `indexable`; only the last state earns sitemap/indexable publication.
 5. **AI Reset Radar — FROZEN / direct URLs preserved.**
 6. **Relay Exit Risk — data-accrual experiment only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 
-## JUST COMPLETED — Phone publication-state reconciliation / PR #261
+## JUST COMPLETED — Qwen/Kimi data admission hardening / PR #263
 
-The global Phone expansion is now reconciled with the product architecture without shrinking the database:
+The delegated-research → comparison-database boundary is now explicit without shrinking the broad Phone dataset:
 
-- current normalized dataset remains **135 routes / 83 markets**;
-- `publication-policy.json` separates database/comparison state from standalone publication;
-- normalized routes default to `comparison-visible`, not indexable;
-- only VOXI, Lebara UK and Giffgaff are initially explicit `indexable` route details;
-- market detail pages default to `database-only`, so the former 83-row market URL family is no longer auto-generated;
-- standalone route / market / keep-alive details are generated only for explicit `detail-eligible` / `indexable` states;
-- sitemap generation omits `noindex` pages and boundary tests reject non-indexable URL leakage;
-- the global Directory initial HTML contains **0 database rows** and defers a shallow comparison index (135 routes) after page load; deep route evidence is not part of that initial payload;
-- crawler-visible Phone internal-link validation prevents removed detail URLs from leaving 404 links;
-- retention tests now treat deep retention intelligence as a subset of the carrier catalog rather than requiring every database route to have deep evidence;
-- Keep-Alive no longer invents a 15% buffer, no longer assumes today is the user's last action, and calendar export is one-time rather than a drifting recurring rule.
+- both legacy batch merge scripts no longer discover `*batch*.json` by wildcard;
+- `frontend/tools/phone-number-lifecycle-mvp/batch-admission-manifest.json` is the explicit reviewed compatibility allowlist;
+- the currently admitted legacy batch set is preserved and the global comparison artifact remains at least **135 routes**;
+- an unlisted/raw delegated batch is excluded even when placed beside reviewed batch files;
+- normalized `data/phone/v1` review-packet admission remains the preferred new-route path;
+- comparison/database admission still does not grant route detail publication, sitemap inclusion or indexability;
+- `npm run phone:data:check` now regression-tests the delegated-batch boundary and runs inside Eval Gate.
 
-Release closure: Eval Gate #855 passed; Vercel Preview reached READY; PR #261 squash-merged as `11f26865c954b0d39e8515e8fc7b1130f8efa717`; production deployment `dpl_8gqwvxA1W7ZLjFQuGL6YSUwYAvhB` reached READY. Production verification on the custom domain confirmed the Directory returns HTTP 200, representative removed non-indexable route (`tello-paygo-credit-2026`) and market (`united-states`) URLs return HTTP 404/noindex, and `sitemap.xml` contains only the explicitly admitted Phone detail URLs rather than the former bulk market/route families.
+Release closure: Eval Gate #859 passed, Vercel Preview passed, PR #263 squash-merged as `6623b01293c9dd558ac2a9b8a274a5891a5954ea`, main Vercel deployment succeeded, and live `/tools/phone-number-survival-guide/` plus `/tools/phone-number-survival-guide/directory/` both returned HTTP 200.
 
-## NEXT SESSION — harden Qwen/Kimi data admission
+## NEXT SESSION — canonical-to-comparison compatibility audit
 
-**Session task:** make the route from delegated research into the normalized/comparison database explicit and auditable.
+**Session task:** determine whether the legacy comparison compatibility artifact can be derived from reviewed canonical Phone data so database admission has one unambiguous authority.
 
 ### Scope
 
-1. inspect `merge-global-directory.py`, reviewed-packet importer/staging paths and current batch-file ownership;
-2. replace or guard wildcard `*batch*.json` ingestion with an explicit reviewed manifest or equivalent admission contract;
-3. keep raw Qwen/Kimi output outside comparison-visible data until sampled/reviewed;
-4. preserve all currently admitted broad database coverage; do not delete routes merely to make the gate easier;
-5. add regression tests proving an unlisted/raw batch cannot enter the comparison dataset;
-6. keep publication policy independent so database admission still does not imply SEO/indexability.
+1. compare route identity/counts and UI-required fields between canonical `data/phone/v1`, its compiled artifacts, and `frontend/tools/phone-number-lifecycle-mvp/global-directory.json`;
+2. identify exactly what the legacy global directory still provides that canonical normalized data does not;
+3. determine whether the 135-route comparison behavior can be generated losslessly from reviewed canonical truth with a small maintainable adapter/build step;
+4. if the mapping is lossless, implement the smallest convergence and regression tests; if it is not lossless, document the exact incompatibility and stop;
+5. preserve the PR #263 manifest gate until the compatibility layer is actually retired or made redundant;
+6. keep publication/indexability policy independent and unchanged.
 
 ### Definition of done
 
-- new delegated research has a clear staging state;
-- admission into the broad comparison database requires an explicit reviewed action;
-- existing 135-route coverage is preserved unless a record is independently found invalid;
-- tests protect the staging → database → publication boundaries;
-- Qwen/Kimi can continue high-throughput research without gaining release authority.
+- one unambiguous database-admission authority exists, or a precise bounded incompatibility is documented;
+- current 135-route comparison coverage and required decision fields are preserved;
+- raw/staging/Qwen/Kimi output still cannot bypass reviewed admission;
+- no standalone route/market URL expansion occurs;
+- tests protect canonical → comparison → publication boundaries.
 
 ### Stop conditions
 
-Do not redesign the data schema or add a backend service unless the existing static/importer path truly cannot enforce admission. Do not weaken provenance/evidence requirements just to automate throughput.
+Do not redesign the Phone schema, add a backend service, delete valid routes, bulk-publish pages, or weaken provenance/evidence rules merely to remove the compatibility layer.
 
 ## Qwen / Kimi work lane
 
 QwenPaw/Kimi remain **high-throughput backstage workers**, not project managers.
 
-Eligible parallel work:
+Eligible parallel work: expand low-cost route evidence, retrieve/timestamp sources, fill normalized fields, detect stale rules/contradictions, dedupe circular reports, collect service-specific operational evidence, and produce bounded research/data batches.
 
-- expand low-cost route coverage;
-- retrieve and timestamp sources;
-- fill normalized fields;
-- detect stale prices/rules and contradictions;
-- dedupe same-author/circular reports;
-- collect service-specific operational evidence;
-- produce bounded research/data batches.
-
-Every delegated result is `RESEARCH CANDIDATE` until sampled/reviewed by the coordinating session. Qwen/Kimi must not independently change the roadmap, production/publication state, sitemap/indexability, ranking policy, infrastructure roles, billing/account settings, or merge/deploy state.
-
-Before accepting a large batch, sample-audit source quality, duplicate rate, unsupported inference and stale facts. High throughput should increase evidence/database coverage, not unreviewed public page volume.
+Every delegated result is `RESEARCH CANDIDATE` until sampled/reviewed by the coordinating session. Qwen/Kimi must not independently change roadmap, database admission, production/publication state, sitemap/indexability, ranking policy, infrastructure roles, billing/account settings, or merge/deploy state.
 
 ## Daily work discipline
 
-Every project workday:
-
-1. read the GitHub startup chain;
-2. create one bounded Session Card/checklist;
-3. delegate parallelizable evidence/data tasks when useful;
-4. execute and verify the selected task;
-5. update the correct GitHub facts/queue when state changes;
-6. append one dated entry to `aineedhelpfromotherai — Daily Project Journal`;
-7. close with completed work, failures/blockers, unfinished work, evidence state, next-session order and do-not-do list.
-
-The journal is chronology only. GitHub `main` + verified production remains final truth.
+Every project workday: read the GitHub startup chain; define one bounded task; execute/delegate only what serves it; verify; update GitHub facts/queue when state changes; append the Daily Project Journal; close with completed work, blockers, unfinished work, next order and do-not-do list.
 
 ## Measurement lane
 
 - Search Console: use Windsor.ai `searchconsole` while connected; official GSC API/export is fallback.
 - Keep Google organic separate from social/referral, AI referral and direct/repeat.
-- GA4 tag `G-FYKKNKRE58` and behavior events are live in production; Windsor GA4 authorization currently resolves property `553896884` but report reads return zero rows. Treat this as an unresolved GA4 property/data-stream/read-path issue, not as a traffic conclusion.
 - Do not churn Phone public UX from tiny GSC samples.
 
 ## External waits
@@ -104,14 +79,12 @@ The journal is chronology only. GitHub `main` + verified production remains fina
 
 ## Do not do next
 
-- do not shrink the Phone research/database layer simply because the current public URL surface is too broad;
-- do not equate a database row with a public page;
+- do not equate database rows with SEO pages;
 - do not bulk-create country/provider/route SEO pages from coverage data;
 - do not invent compatibility percentages, missing costs or a Phone risk score;
-- do not let Qwen/Kimi raw output bypass the review/admission/publication gates;
-- do not migrate to a new backend merely for architectural neatness;
-- do not reopen generic Reset/Codex tracker work;
-- do not reopen Relay methodology;
+- do not let Qwen/Kimi raw output bypass review/admission/publication gates;
+- do not migrate to a backend merely for architectural neatness;
+- do not reopen generic Reset/Codex tracker work or Relay methodology;
 - do not rotate trial accounts or change billing to bypass quotas;
 - do not change DNS, AdSense, billing, paid services or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.
