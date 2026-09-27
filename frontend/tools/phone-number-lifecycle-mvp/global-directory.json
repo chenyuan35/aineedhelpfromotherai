@@ -194,6 +194,42 @@
    "name": "Cellcard KH"
   },
   {
+   "id": "optus-au",
+   "name": "Optus"
+  },
+  {
+   "id": "bouygues-fr",
+   "name": "Bouygues Telecom"
+  },
+  {
+   "id": "free-fr",
+   "name": "Free Mobile"
+  },
+  {
+   "id": "true-th",
+   "name": "TrueMove H"
+  },
+  {
+   "id": "digi-my",
+   "name": "CelcomDigi"
+  },
+  {
+   "id": "smart-ph",
+   "name": "Smart (PLDT)"
+  },
+  {
+   "id": "vinaphone-vn",
+   "name": "VinaPhone"
+  },
+  {
+   "id": "etisalat-ae",
+   "name": "e& (Etisalat)"
+  },
+  {
+   "id": "starhub-sg",
+   "name": "StarHub"
+  },
+  {
    "id": "mtn-ng",
    "name": "MTN NG"
   },
@@ -688,6 +724,56 @@
    "id": "cellcard-prepaid",
    "networkId": "cellcard-kh",
    "name": "Cellcard Prepaid"
+  },
+  {
+   "id": "optus-au-direct",
+   "networkId": "optus-au",
+   "name": "Optus"
+  },
+  {
+   "id": "good2go-ca",
+   "networkId": "rogers-ca",
+   "name": "Good2Go Mobile (ex Petro-Canada)"
+  },
+  {
+   "id": "lebara-fr",
+   "networkId": "bouygues-fr",
+   "name": "Lebara France"
+  },
+  {
+   "id": "free-mobile-fr",
+   "networkId": "free-fr",
+   "name": "Free Mobile"
+  },
+  {
+   "id": "truemove-th",
+   "networkId": "true-th",
+   "name": "TrueMove H"
+  },
+  {
+   "id": "digi-my",
+   "networkId": "digi-my",
+   "name": "Digi"
+  },
+  {
+   "id": "smart-ph",
+   "networkId": "smart-ph",
+   "name": "Smart Prepaid"
+  },
+  {
+   "id": "vinaphone-vn",
+   "networkId": "vinaphone-vn",
+   "name": "VinaPhone"
+  },
+  {
+   "id": "etisalat-ae",
+   "networkId": "etisalat-ae",
+   "name": "e& Wasel"
+  },
+  {
+   "id": "starhub-sg",
+   "networkId": "starhub-sg",
+   "name": "StarHub Prepaid"
   },
   {
    "id": "mtn-ng-prepaid",
@@ -3525,6 +3611,450 @@
     "Directory card — pending."
    ],
    "marketName": "Cambodia"
+  },
+  {
+   "id": "optus-flex-plus-au-2026",
+   "brandId": "optus-au-direct",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Prepaid SIM sold at Optus stores/airports/retail (starter kits from ~$2 on promo); recharge online or in-app. No ID check needed for standard prepaid (passport OK for visitors).",
+   "landedCost": {
+    "currency": "AUD",
+    "providerOrCommunityPrice": 2,
+    "mandatoryTopup": 59,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 61,
+    "landedCny": 287,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-cis"
+   },
+   "keep": {
+    "currency": "AUD",
+    "observedActionCost": 59,
+    "yearCostOriginal": 116,
+    "yearCostCny": 545,
+    "action": "Official CIS (plan 200503): Flex Plus recharge tiers include $59 = 186-day expiry and $180 = 365-day expiry. Retention = $59 per 186 days (~$116/yr). WARNING: CIS states price changes from 30 Sep 2026 — re-verify after that date.",
+    "intervalDays": 186,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "SIM must be activated on Optus network in Australia; China-first activation unverified. eSIM available.",
+   "kyc": "No strict ID for prepaid; activation via app/online.",
+   "payment": "Australian/international cards online (community-verified); vouchers in AU retail.",
+   "wifiCalling": "Supported on Optus.",
+   "roamingSms": "Roaming packs extra; receiving SMS abroad generally free (unverified specifics).",
+   "refund": "not reconciled",
+   "trend": "price-change-2026-09-30",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.optus.com.au/prepaid/long-expiry",
+   "tariffSummary": "Flex Plus: $59/186d or $180/365d expiry tiers (CIS 200503).",
+   "sourceIds": [
+    "optus-au-official",
+    "optus-au-community"
+   ],
+   "marketName": "Australia"
+  },
+  {
+   "id": "good2go-payg-ca-2026",
+   "brandId": "good2go-ca",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical",
+   "acquisitionSummary": "Good2Go Mobile (formerly Petro-Canada Mobility / Ztar), Rogers network. PAYG vouchers sold at Petro-Canada stations; SIM kits online. Long-standing PAYG tradition: $20 voucher = 180 days validity.",
+   "landedCost": {
+    "currency": "CAD",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": 20,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 30,
+    "landedCny": 159,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-estimated"
+   },
+   "keep": {
+    "currency": "CAD",
+    "observedActionCost": 20,
+    "yearCostOriginal": 40,
+    "yearCostCny": 212,
+    "action": "Community (RedFlagDeals, longstanding): $20 top-up voucher = 180 days validity; 2x per year = ~$40/yr. Post-2025 Rogers 3G shutdown structure unverified (old 3G PAYG users were offered Lucky Mobile migration). Confirm current PAYG terms before relying.",
+    "intervalDays": 180,
+    "state": "community-longstanding-needs-reverify"
+   },
+   "chinaActivation": "Canada activation required; China-first activation unverified.",
+   "kyc": "No ID check for PAYG.",
+   "payment": "Vouchers (cash-friendly) at Petro-Canada; online top-up via good2gomobile.ca.",
+   "wifiCalling": null,
+   "roamingSms": "No roaming on PAYG (Canada-only service historically).",
+   "refund": "not reconciled",
+   "trend": "structural-change-2025",
+   "guideEligible": false,
+   "holdReason": "Post-3G-shutdown PAYG structure unverified; community evidence dated. SpeakOut 7-Eleven ($25/yr voucher) remains the proven CA retention route.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://good2gomobile.ca/",
+   "tariffSummary": "PAYG $20/180d voucher tradition (community); needs current re-verification.",
+   "sourceIds": [
+    "good2go-ca-community"
+   ],
+   "marketName": "Canada"
+  },
+  {
+   "id": "lebara-fr-2026",
+   "brandId": "lebara-fr",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Lebara FR SIM available online (lebara.fr) and in French tabacs/supermarkets; eSIM available. Bouygues network. Top-ups from 5 EUR (official recharge page).",
+   "landedCost": {
+    "currency": "EUR",
+    "providerOrCommunityPrice": 5,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 5,
+    "landedCny": 39,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-min-topup"
+   },
+   "keep": {
+    "currency": "EUR",
+    "observedActionCost": 15,
+    "yearCostOriginal": 60,
+    "yearCostCny": 468,
+    "action": "Recharge validity ladder (community reseller + official recharge page): 15 EUR = 90 days validity. Retention = 15 EUR per 90 days = 60 EUR/yr. Smaller top-ups (5 EUR) carry shorter validity.",
+    "intervalDays": 90,
+    "state": "community-plus-official-partial"
+   },
+   "chinaActivation": "France activation expected; China-first activation unverified.",
+   "kyc": "France requires SIM registration (ID/passport) for prepaid activation.",
+   "payment": "International cards generally accepted online (community).",
+   "wifiCalling": null,
+   "roamingSms": "EU roaming included for EU residents; receiving SMS abroad typically free.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.lebara.fr/en/recharger.html",
+   "tariffSummary": "Top-up from 5 EUR; 15 EUR = 90d validity (~60 EUR/yr retention).",
+   "sourceIds": [
+    "lebara-fr-official",
+    "lebara-fr-community"
+   ],
+   "marketName": "France"
+  },
+  {
+   "id": "free-mobile-fr-2026",
+   "brandId": "free-mobile-fr",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "eSIM + physical",
+   "acquisitionSummary": "Free Mobile 2 EUR/mo plan (official fiche-forfait-2-euros). Online signup with SIM delivered to a French address; France practical requirement: French address + SEPA bank/card payment.",
+   "landedCost": {
+    "currency": "EUR",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 78,
+    "fxCheckedAt": "2026-09-27",
+    "state": "official-sim-fee"
+   },
+   "keep": {
+    "currency": "EUR",
+    "observedActionCost": 2,
+    "yearCostOriginal": 24,
+    "yearCostCny": 187,
+    "action": "Subscription 2 EUR/mo keeps number (official). Cheap retention BUT requires French address for delivery and FR/EU payment — effectively France-resident only.",
+    "intervalDays": 30,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Not possible — SIM shipped to French address; activation in France.",
+   "kyc": "French address + identity info at signup.",
+   "payment": "SEPA bank/card required.",
+   "wifiCalling": "Supported (Free network).",
+   "roamingSms": "EU roaming; receiving SMS abroad generally free.",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": false,
+   "holdReason": "Requires French address + SEPA payment — not viable for non-residents despite cheap 2 EUR/mo.",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
+   "tariffSummary": "2 EUR/mo plan; France-resident gated.",
+   "sourceIds": [
+    "free-mobile-fr-official",
+    "free-mobile-fr-community"
+   ],
+   "marketName": "France"
+  },
+  {
+   "id": "truemove-validity-pack-th-2026",
+   "brandId": "truemove-th",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "TrueMove H prepaid SIM widely sold in Thailand (7-Eleven, True shops, airport); passport registration required (Thai law). Existing holders abroad can extend validity remotely.",
+   "landedCost": {
+    "currency": "THB",
+    "providerOrCommunityPrice": 49,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 49,
+    "landedCny": 10,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-typical-starter"
+   },
+   "keep": {
+    "currency": "THB",
+    "observedActionCost": 70,
+    "yearCostOriginal": 140,
+    "yearCostCny": 28,
+    "action": "Validity extension packages (MobileTopup help, updated 2026-09-03): 90 days = 35 THB, 180 days = 70 THB, purchasable for any Thai prepaid number from abroad. Retention = 70 THB per 180 days = 140 THB/yr. Check expiry via #123# (TrueMove). Carrier may cap max validity.",
+    "intervalDays": 180,
+    "state": "community-fresh-2026"
+   },
+   "chinaActivation": "Initial activation in Thailand on TrueMove network; subsequent extensions work from anywhere (online top-up).",
+   "kyc": "Passport registration required (Thai law, all prepaid).",
+   "payment": "International top-up sites (MobileTopup etc.) accept foreign cards; True app needs TH-friendly payment.",
+   "wifiCalling": null,
+   "roamingSms": "Receiving SMS abroad works while SIM active (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.true.th/",
+   "tariffSummary": "Validity packs 35 THB/90d, 70 THB/180d = 140 THB/yr retention.",
+   "sourceIds": [
+    "truemove-th-community",
+    "truemove-th-official"
+   ],
+   "marketName": "Thailand"
+  },
+  {
+   "id": "digi-reload-validity-my-2026",
+   "brandId": "digi-my",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Digi prepaid sold nationwide in Malaysia (7-Eleven, Digi stores); passport registration for foreigners.",
+   "landedCost": {
+    "currency": "MYR",
+    "providerOrCommunityPrice": 10,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 10,
+    "landedCny": 17,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-typical-starter"
+   },
+   "keep": {
+    "currency": "MYR",
+    "observedActionCost": 198,
+    "yearCostOriginal": 198,
+    "yearCostCny": 337,
+    "action": "Official CelcomDigi help (updated 2026-08-12): reload validity ladder (RM100 = 120 days) PLUS dedicated validity extensions via *118*3# or app: RM1/1day, RM12/15days, RM198/365days. Cheapest annual retention = RM198/365d extension. Alternative: RM100 reload per 120d = RM300/yr.",
+    "intervalDays": 365,
+    "state": "official-confirmed"
+   },
+   "chinaActivation": "Malaysia activation expected; extension purchases work from anywhere via app/USSD.",
+   "kyc": "Passport registration required for foreigners (Malaysian law).",
+   "payment": "App/online reload; international cards partially accepted (community).",
+   "wifiCalling": null,
+   "roamingSms": "Receiving SMS abroad works while active (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+   "tariffSummary": "RM198 = 365-day validity extension (official); reload RM100 = 120d.",
+   "sourceIds": [
+    "digi-my-official"
+   ],
+   "marketName": "Malaysia"
+  },
+  {
+   "id": "smart-prepaid-ph-2026",
+   "brandId": "smart-ph",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "Smart Prepaid SIM (~PHP 40) sold everywhere in PH; SIM registration law (RA 11934) requires passport + photo for foreigners.",
+   "landedCost": {
+    "currency": "PHP",
+    "providerOrCommunityPrice": 40,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 40,
+    "landedCny": 5,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-typical-starter"
+   },
+   "keep": {
+    "currency": "PHP",
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Official Smart help (2024-09): loaded value valid 365 days; when balance hits zero you have 180 days to reload before disconnection (receive-only meanwhile). Retention = keep any small balance + reload at least once per ~180-365 days. Minimum e-load amount unverified (~PHP 10-20 typical).",
+    "intervalDays": 180,
+    "state": "official-confirmed-rule"
+   },
+   "chinaActivation": "Philippines activation expected; GigaLife app works abroad for loading (community).",
+   "kyc": "Mandatory SIM registration (RA 11934): passport + selfie for foreigners.",
+   "payment": "GigaLife app / load resellers; international cards partially accepted.",
+   "wifiCalling": null,
+   "roamingSms": "Receiving SMS abroad works while active (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://help.smart.com.ph/prepaid-call-and-text-card-expiry-and-validity/",
+   "tariffSummary": "Load valid 365d; zero-balance 180d grace before disconnection (official).",
+   "sourceIds": [
+    "smart-ph-official"
+   ],
+   "marketName": "Philippines"
+  },
+  {
+   "id": "vinaphone-giu-so-vn-2026",
+   "brandId": "vinaphone-vn",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "VinaPhone prepaid sold nationwide in Vietnam; passport registration for foreigners (Vietnamese law).",
+   "landedCost": {
+    "currency": "VND",
+    "providerOrCommunityPrice": 50000,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 50000,
+    "landedCny": 1.4,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-typical-starter"
+   },
+   "keep": {
+    "currency": "VND",
+    "observedActionCost": 120000,
+    "yearCostOriginal": 120000,
+    "yearCostCny": 3.4,
+    "action": "Community (dichvudidong.vn): official keep-number packages GS1/GS2 — 60,000 VND adds 180 days, 120,000 VND adds up to 360 days, registered via SMS syntax, available to all subscribers nationwide. Retention = 120,000 VND/yr. NOTE: source dated 2022-10; re-verify package codes still live.",
+    "intervalDays": 360,
+    "state": "community-needs-reverify"
+   },
+   "chinaActivation": "Vietnam activation expected; SMS package registration needs active SIM.",
+   "kyc": "Passport registration required for foreigners.",
+   "payment": "Vietnamese channels (vouchers, banks); international top-up sites partially support VN.",
+   "wifiCalling": null,
+   "roamingSms": "Receiving SMS abroad works while active (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://vinaphone.com.vn/",
+   "tariffSummary": "GS keep-number packs: 60K/180d or 120K/360d VND (community 2022).",
+   "sourceIds": [
+    "vinaphone-vn-community"
+   ],
+   "marketName": "Vietnam"
+  },
+  {
+   "id": "etisalat-wasel-ae-2026",
+   "brandId": "etisalat-ae",
+   "publishState": "candidate",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "e& (Etisalat) Wasel prepaid sold at UAE airports/stores; Emirates ID for residents, passport for visitors (tourist prepaid variants exist).",
+   "landedCost": {
+    "currency": "AED",
+    "providerOrCommunityPrice": null,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-27",
+    "state": "unverified"
+   },
+   "keep": {
+    "currency": "AED",
+    "observedActionCost": 10,
+    "yearCostOriginal": 40,
+    "yearCostCny": 77,
+    "action": "Official Wasel Free Lifetime Validity Rules PDF: line has lifetime validity; if unused for 3 consecutive months, AED 10/quarter is auto-charged to remain in lifetime validity. Without 10 AED balance the line deactivates but number is retained 12 months (revivable by recharge). Retention = keep 40 AED/yr balance, or one usage per quarter. NOTE: PDF dated 2017 — re-verify current terms.",
+    "intervalDays": 90,
+    "state": "official-2017-needs-reverify"
+   },
+   "chinaActivation": "UAE activation expected; China-first activation unverified.",
+   "kyc": "Passport for visitors / Emirates ID for residents.",
+   "payment": "UAE cards / international top-up sites (community).",
+   "wifiCalling": null,
+   "roamingSms": "Receiving SMS abroad typically free while active (community).",
+   "refund": "not reconciled",
+   "trend": "stable",
+   "guideEligible": true,
+   "holdReason": null,
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
+   "tariffSummary": "Lifetime validity; AED 10/quarter if unused (official 2017 rules).",
+   "sourceIds": [
+    "etisalat-ae-official"
+   ],
+   "marketName": "UAE"
+  },
+  {
+   "id": "starhub-prepaid-sg-2026",
+   "brandId": "starhub-sg",
+   "publishState": "observation",
+   "numberType": "real-mobile",
+   "simType": "physical + eSIM",
+   "acquisitionSummary": "StarHub Happy prepaid sold at Changi/7-Eleven/StarHub shops; Singapore requires registration — for foreigners the rules are murky (Singtel limits passport-registered prepaid to 30 days; StarHub likely similar constraints).",
+   "landedCost": {
+    "currency": "SGD",
+    "providerOrCommunityPrice": 8,
+    "mandatoryTopup": null,
+    "shipping": 0,
+    "adapterCostCny": null,
+    "landedOriginal": 8,
+    "landedCny": 44,
+    "fxCheckedAt": "2026-09-27",
+    "state": "community-typical-starter"
+   },
+   "keep": {
+    "currency": "SGD",
+    "observedActionCost": 10,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Community (HardwareZone 2024): top-up ($10 via app) extends validity; USSD *123*200# extension path; old $1.40/90d call-in method ended 2024-07. Exact validity ladder + foreigner passport limits unverified.",
+    "intervalDays": null,
+    "state": "community-mixed-unverified"
+   },
+   "chinaActivation": "Singapore activation expected; China-first activation unverified.",
+   "kyc": "Singapore prepaid registration required; foreigner (passport) long-term retention unverified — Singtel restricts passport cards to 30 days (see avoid route), StarHub likely similar.",
+   "payment": "StarHub app / SG channels.",
+   "wifiCalling": null,
+   "roamingSms": null,
+   "refund": "not reconciled",
+   "trend": "rule-flux-2024",
+   "guideEligible": false,
+   "holdReason": "Foreigner passport registration constraints unverified; likely restricted like Singtel (30-day limit).",
+   "lastVerifiedAt": "2026-09-27",
+   "acquireUrl": "https://www.starhub.com/personal/mobile/prepaid.html",
+   "tariffSummary": "Top-up extends validity (community); foreigner rules unclear.",
+   "sourceIds": [
+    "starhub-sg-community"
+   ],
+   "marketName": "Singapore"
   },
   {
    "id": "safaricom-daima-2026",
@@ -7313,6 +7843,90 @@
    "url": "https://www.cellcard.com.kh/",
    "type": "provider-official",
    "reportedAt": "2026-09-26"
+  },
+  {
+   "id": "optus-au-official",
+   "url": "https://www.optus.com.au/prepaid/long-expiry",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "optus-au-community",
+   "url": "https://www.optus.com.au/prepaid/long-expiry",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "good2go-ca-community",
+   "url": "https://good2gomobile.ca/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "lebara-fr-official",
+   "url": "https://www.lebara.fr/en/recharger.html",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "lebara-fr-community",
+   "url": "https://www.lebara.fr/en/recharger.html",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "free-mobile-fr-official",
+   "url": "https://mobile.free.fr/fiche-forfait-2-euros",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "free-mobile-fr-community",
+   "url": "https://mobile.free.fr/fiche-forfait-2-euros",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "truemove-th-community",
+   "url": "https://www.true.th/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "truemove-th-official",
+   "url": "https://www.true.th/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "digi-my-official",
+   "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "smart-ph-official",
+   "url": "https://help.smart.com.ph/prepaid-call-and-text-card-expiry-and-validity/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "vinaphone-vn-community",
+   "url": "https://vinaphone.com.vn/",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "etisalat-ae-official",
+   "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
+   "type": "provider-official",
+   "reportedAt": "2026-09-27"
+  },
+  {
+   "id": "starhub-sg-community",
+   "url": "https://www.starhub.com/personal/mobile/prepaid.html",
+   "type": "community-report",
+   "reportedAt": "2026-09-27"
   },
   {
    "id": "official-safaricom-daima-2026-09-26",
