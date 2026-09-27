@@ -1,171 +1,313 @@
-# Phone Radar Operating Plan — 2026-09-24
+# Phone Radar Operating Plan
 
 Status: ACTIVE PRIMARY GROWTH PLAN
 
+Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
+
+This document defines how Phone Radar should be operated as a maintainable product. Current task state belongs in `PROJECT_CONTEXT.md` and `docs/CURRENT_EXECUTION_QUEUE.md`; historical execution belongs in PRs, Git history and the Daily Project Journal.
+
 ## Business objective
 
-Phone Radar is the site's primary growth product. The practical business floor is to grow enough useful organic traffic and repeat usage to cover the domain's annual cost, then move toward the existing first monetization target of roughly RMB 100/month without adding recurring infrastructure cost that traffic cannot support.
+Build a low-cost, maintainable phone-route decision product that earns organic traffic and repeat usage because it saves users substantial research and decision time.
 
-The product wins only if it reduces a real user's decision time. It is not a carrier encyclopedia and not a mass-generated SEO directory.
+Phone Radar is not a carrier encyclopedia and not a mass-generated SEO directory.
 
-## User job
+Its durable value is the combination of:
 
-The target user needs a real phone-number/data/SMS route for overseas apps and services and does not want to reconstruct the answer from fragmented forums, carrier pages, reseller sites and anecdotes.
+- broad route coverage;
+- fragmented real-world evidence;
+- current acquisition and retention economics;
+- service-specific compatibility observations;
+- KYC/activation/payment constraints;
+- incident/recovery/refund history;
+- freshness and contradiction tracking;
+- fast visual comparison and search.
 
-Phone Radar should let that user answer, quickly:
+## Core user job
 
-- what route can I actually obtain now;
-- what is the real landed price and cheapest current acquisition path;
-- what does it cost and require to keep the number;
-- which services have current observed success/failure evidence;
-- what device/KYC/payment/activation constraints exist;
-- what seller/platform/number-loss/recycling/recovery/refund problems have occurred;
-- how fresh and how well-supported the evidence is;
-- where to buy, activate, test, keep and recover the route.
+The target user wants an actual phone-number/data/SMS route and needs to answer quickly:
 
-## Product surface architecture
+- what can I obtain now;
+- what does it really cost to acquire;
+- what does it cost and require to keep alive;
+- can I activate/use it from my location;
+- what KYC/payment/device constraints apply;
+- what services have current success/failure evidence;
+- what failures, recycling, suspension, seller or recovery incidents exist;
+- how fresh and well-supported the evidence is;
+- what exact next action should I take.
 
-### 1. Phone index / comparison surface
+The product should reduce the need to manually read many carrier pages, forum threads and seller listings.
 
-The existing canonical `/tools/phone-number-survival-guide/` remains the default visual index and comparison layer.
+## Product/data separation
 
-It should answer the comparison job first: market → network → brand/MVNO → concrete route/acquisition path → current evidence. Users must be able to compare cost, keep-alive, app evidence, incidents, recovery and freshness without opening every guide.
+Phone Radar operates as five separate layers:
 
-### 2. Evidence-rich route detail pages
+1. **Evidence intake** — broad discovery and source collection.
+2. **Normalized database** — large internal route/evidence base.
+3. **Query/search layer** — returns the subset relevant to the user's request.
+4. **Interactive visual UI** — search, browse, compare, inspect and guide.
+5. **Selective SEO publication** — only evidence-rich distinct search tasks become indexable URLs.
 
-A route may later earn a separate detail URL only when it has enough distinct, maintainable material to solve an execution job that the index cannot solve cleanly. A detail page must contain substantial route-specific evidence such as acquisition paths, cost history, activation steps, service observations, incident/recovery history, current pitfalls, seller/platform information and freshness.
+Database coverage may be much larger than the public/indexable page set.
 
-Do not create pages merely because a country/carrier/keyword exists. No country/provider doorway families and no template page whose only unique text is the carrier name.
+A broad 90%+ relevant-route database coverage goal is acceptable when provenance and maintenance remain tractable. It is not a target for page count or sitemap size.
 
-Initial publication gate for a route detail page:
+## Normalized data model
 
-- route identity and acquisition path are unambiguous;
-- current commercial source exists for provider-controlled facts;
-- at least two useful independent operational evidence items, or one unusually detailed first-hand reproduction plus an independent corroborating signal;
-- the page has a real execution/decision job beyond the index row;
-- freshness date and unresolved conflicts are visible;
-- the page survives both product-value substitution gates.
+Use the hierarchy:
+
+`market → network → brand/MVNO → concrete route/product/acquisition path → observations/events/snapshots/sources`
+
+Keep provider-controlled facts distinct from operational evidence.
+
+### Provider-controlled facts
+
+Examples:
+
+- official price;
+- package allowance;
+- published validity/deactivation rule;
+- formal KYC requirement;
+- supported form factors;
+- official roaming/Wi-Fi Calling support;
+- official purchase/activation path.
+
+### Operational evidence
+
+Examples:
+
+- actual overseas acquisition/activation outcomes;
+- ChatGPT/OpenAI, Telegram, WhatsApp and other service outcomes;
+- number-range or prefix effects;
+- account closure/suspension/recycling;
+- seller non-delivery or invalid-number incidents;
+- refunds, replacements, recovery and port-out outcomes;
+- current app/payment/onboarding failures;
+- actual retention workflow reproduction.
+
+Official pages validate official facts; they do not automatically prove real-world operational behavior.
+
+Missing data stays missing. Do not convert anecdotes into population probabilities. App compatibility percentages require visible sample size, date and route+service+operation-specific evidence.
+
+## Interactive product surface
+
+The main Phone experience should behave like a visual search and decision tool.
+
+### Search / Browse
+
+Allow users to narrow the database by task and constraints, including market, cost, route family, number type, eSIM/physical, retention cost/interval, remote activation, KYC/payment constraints, app evidence, incident state and freshness where supported.
+
+### Compare
+
+Allow a small number of routes to be pinned and compared across equivalent fields.
+
+### Inspect
+
+Expand a route into its deeper evidence only when requested.
+
+### Guide
+
+Show route-specific execution instructions when the user intends to act.
+
+The UI should answer the comparison job before forcing the user to read prose.
+
+## Progressive disclosure and loading
+
+Treat performance and cognitive load as one product problem.
+
+Prefer:
+
+- small first-load payloads;
+- loading only the market/family/result slice required by the current query;
+- deeper route evidence only after route expansion;
+- history/incidents/sources only on demand;
+- no requirement to render every database row in initial HTML;
+- client-side/static generation while it remains simpler and cheaper than introducing a backend service.
+
+Do not add a server/API merely because the database is large. Add backend complexity only when data volume, freshness, privacy or performance proves the need.
+
+## Publication states
+
+Every route should have an explicit public-surface state independent from database admission:
+
+- `research-only` — unreconciled/raw candidate;
+- `database-only` — normalized internal record;
+- `comparison-visible` — eligible for search/filter/comparison UI;
+- `detail-eligible` — enough evidence for a deep route view;
+- `indexable` — standalone public search page passes the publication gate.
+
+These states are monotonic only when evidence remains valid; a route may be downgraded if facts become stale or conflicts appear.
+
+## SEO publication gate
+
+A database row does not earn an SEO page merely because it exists.
+
+An indexable detail URL requires:
+
+- unambiguous route identity and acquisition path;
+- current provider-controlled commercial facts;
+- meaningful independent operational evidence;
+- a distinct search/execution job beyond the comparison row;
+- substantial route-specific content;
+- visible freshness and unresolved conflicts;
+- a reason to exist even when the provider's official page is one click away;
+- a reason to exist even when the strongest independent competitor is one click away.
+
+Do not create country/provider/route page families simply for coverage.
+
+Low-evidence/unknown routes may still be valuable in the searchable comparison database while remaining non-indexable and absent from sitemap publication.
 
 ## Evidence acquisition loop
 
-Production measurement and backstage evidence acquisition run in parallel. A measurement hold means "do not churn the public product without evidence"; it does not mean "stop collecting evidence."
+The durable evidence flow is:
 
-### Observer A — community intelligence
+`community discovery / reviewed sources → candidate evidence → dedupe/provenance review → normalized records → database admission → comparison decision → optional publication decision`
 
-Use the lightweight `phone-demand-watch` on a disposable observer VPS.
+Database admission, comparison visibility and SEO publication are three separate decisions.
 
-Purpose:
+### Community watcher
 
-- find current route questions and first-hand outcomes;
-- capture service-specific mentions such as OpenAI/ChatGPT/Codex, Claude, Telegram, WhatsApp, TikTok and Google;
-- capture purchase/reseller/marketplace/deal/non-delivery/refund/seller-trust signals;
-- discover externally linked public provider/seller/tutorial domains for later review;
-- preserve only bounded metadata and short excerpts, not full forum archives.
+Use `phone-demand-watch` only as a bounded discovery worker.
 
-Repository v1.1 runs hourly with randomized delay because NodeSeek and similar feeds are shallow enough that four-hour checks can miss fast-moving threads. It does not crawl whole forums or bypass 403/429/login/anti-bot controls.
+Capture current questions, first-hand outcomes, service-specific mentions, acquisition channels, seller/refund incidents and candidate public domains. Preserve bounded metadata and short excerpts rather than forum archives. Do not bypass login, anti-bot, robots or platform controls.
 
-### Observer B — reviewed source-change watch
+### Reviewed source watcher
 
-Use `phone-source-watch` on a separate disposable observer when available.
+Use `phone-source-watch` for explicitly accepted official/commercial URLs whose price, package, stock, purchase path or published rules matter.
 
-Purpose:
+New domains discovered by community research are candidates only; they are not automatically approved monitoring targets.
 
-- monitor explicitly reviewed public official/commercial URLs for price, package, stock, purchase-link and published-rule changes;
-- check robots before requests;
-- keep ETag/Last-Modified state and small normalized summaries;
-- classify fetch failures separately from real content changes.
+### Disposable observer rule
 
-New seller/provider domains discovered by Observer A are not auto-added. Review source value, robots/terms and whether the page provides a decision-critical fact before adding it to Observer B.
+Observer VPS hosts are not production infrastructure. Valuable normalized evidence must move into durable project sources; no unique state may remain only on a trial host.
 
-### Disposable-host rule
+## QwenPaw / Kimi collaboration
 
-Neither observer is production infrastructure. Raw state may be lost. Valuable normalized candidate summaries must be periodically moved to durable project facts/versioned research before host expiry. No unique production dependency or irreplaceable evidence may exist only on a trial VPS.
+QwenPaw/Kimi are high-throughput backstage workers.
 
-## Current evidence confirming the direction
+Preferred assignments:
 
-Recent public evidence already shows the exact information asymmetry Phone Radar should capture:
+- broad route discovery;
+- forum/source retrieval;
+- provenance and timestamps;
+- structured field completion;
+- contradiction/stale-price checks;
+- deduplication and circular-report detection;
+- bounded batch triage;
+- draft data/test artifacts.
 
-- ESIM.gg's current public site sells a +372 Estonian number and states that using it at least once a year keeps the number active; current community walkthroughs report different OpenAI/WhatsApp/Telegram outcomes by number range and sometimes by time since activation.
-- A September 2026 LINUX DO discussion records both successes and failures for ESIM.gg prefixes across OpenAI/Codex, WhatsApp, Telegram and other apps. This is a route + prefix + service + time-context problem, not a stable carrier rule.
-- Saily now sells a US phone-number add-on, while its own help center warns that some services may classify the number as VoIP and OTP/2FA may fail. Official marketing alone is therefore insufficient; route-specific operational outcomes remain valuable.
-- Roamless now offers app-based phone numbers for multiple country codes independently of its data eSIM, creating another route whose price, number type, OTP behavior and persistence need to be separated rather than flattened into "travel eSIM".
+Their output is `RESEARCH CANDIDATE` until reviewed.
 
-These are research candidates, not automatic production additions.
+They must not independently:
 
-## Normalized data pipeline
+- change product direction or current queue;
+- redefine schemas/publication rules;
+- turn database records into public/indexable pages;
+- change rankings without an accepted rule;
+- assign infrastructure roles;
+- modify DNS/billing/AdSense/account-critical settings;
+- merge or deploy production changes.
 
-The durable data flow is:
+Before accepting a large batch, sample-audit source quality, duplication, classification and unsupported inference. High throughput should increase database/evidence coverage, not unreviewed page volume.
 
-`public feeds / reviewed sources → candidate observations → dedupe/provenance review → normalized route events/snapshots → index aggregates → optional evidence-rich route detail page`
+## Coordinating ChatGPT role
 
-Keep separate records for:
+The coordinating session owns:
 
-- market/network/brand/route identity;
-- acquisition paths and seller/provider domains;
-- current price/discount/shipping/top-up/real landed cost;
-- keep-alive cost/action/interval;
-- service + operation success/failure observations;
-- device/location/KYC/payment context;
-- continuity incidents and number-range/prefix effects when supported;
-- seller/platform non-delivery/refund/recovery/trust incidents;
-- source URL, source date, fetch/review date and dedupe identity.
+- canonical startup/reconciliation;
+- product/value decisions;
+- bounded task selection;
+- batch quality control;
+- evidence admission and public-surface gates;
+- frontend/search/SEO architecture;
+- Search Console and analytics interpretation;
+- PR review and merge/release verification;
+- canonical fact-source updates;
+- Daily Project Journal closeout.
 
-Do not replace missing data with neutral values. Do not convert anecdotes into population probabilities.
-
-## Marketplace and seller intelligence boundary
-
-Public marketplace/community evidence may identify acquisition channels and seller/platform risks. Record observable facts such as non-delivery, invalid number, refund outcome, replacement outcome, price and last verified date.
-
-Do not automate login-gated marketplace scraping, bypass anti-bot controls, reproduce code words intended to evade marketplace moderation, or tell users how to defeat platform restrictions. Restricted-marketplace mentions can be stored only as a research signal that an acquisition channel is unstable or policy-sensitive.
+GitHub `main` remains the shared control plane.
 
 ## Growth loop
 
-1. **Acquire evidence continuously.** Keep the research funnel alive even while the public page is held for measurement.
-2. **Improve the existing index first.** Add only evidence-backed fields/routes that materially improve a user's decision.
-3. **Publish route detail pages selectively.** A page exists because it solves a distinct execution job, not to manufacture URL count.
-4. **Measure organic separately.** Use Windsor.ai Search Console while available; keep Google organic separate from referral/social/direct/AI traffic.
-5. **Deepen winners.** If a route/query receives real impressions/clicks/usage, improve that route's evidence, guide and comparison before broad expansion.
-6. **Build authority around primary evidence.** Useful route histories, dated observations and transparent source roles should be citeable by search/AI systems and communities.
-7. **Monetize after trust/traffic.** Later acquisition/affiliate/partner links may be used when a real provider/reseller relationship exists, but commercial relationships must be visibly disclosed and must not silently buy rank or suppress negative evidence.
+1. continuously acquire and normalize evidence;
+2. improve search/filter/comparison usefulness before multiplying pages;
+3. measure how users/search engines interact with the existing surface;
+4. deepen routes that receive real demand/usage and have enough evidence;
+5. publish standalone pages selectively;
+6. build authority around citeable dated primary/operational evidence;
+7. monetize only after trust and traffic are meaningful.
 
-## Metrics that matter
+## Metrics
 
-Product/evidence metrics:
+### Data/evidence metrics
 
-- number of current, evidence-qualified routes;
-- percentage of surfaced routes checked within their required freshness window;
-- number of service-specific independent observations;
-- number of unresolved conflicts/incidents with later resolution tracked;
-- useful seller/provider domains reviewed and source health.
+- relevant route coverage;
+- normalized-field completeness by route class;
+- percentage of surfaced routes inside freshness windows;
+- current independent observations per route/service;
+- unresolved conflicts/incidents and later resolution rate;
+- duplicate/rejected candidate rate;
+- source health.
 
-Growth metrics:
+### Product metrics
 
-- Phone canonical impressions, clicks, CTR and query mix;
-- route/guide opens and filter/sort use when authorized analytics is available;
-- outbound acquisition clicks separated by route;
+- searches and filters used;
+- result → inspect rate;
+- compare usage;
+- guide opens;
+- outbound acquisition clicks;
 - repeat/direct usage;
-- later, AdSense revenue/RPM only after traffic is meaningful.
+- route-level interaction where authorized analytics is available.
 
-## Current state and next execution order
+### Search/growth metrics
 
-Current state after the 2026-09-24 observer-topology verification:
+- canonical and approved indexable-page impressions/clicks/CTR/query mix;
+- indexed vs intentionally non-indexed state;
+- organic vs referral/social vs AI referral vs direct/repeat;
+- later AdSense RPM/revenue only when traffic is meaningful.
 
-- UK comparison pilot is live and production-verified;
-- the first observed Search Console exposure for the Phone canonical is 1 impression for `survival number` on 2026-09-23, position 22, with no click; this sample is too small for a product change;
-- the repository contains two bounded observer roles (`phone-demand-watch` and `phone-source-watch`);
-- community watcher v1.1 is already merged and Eval-validated in GitHub via PR #211;
-- Qwen is the verified control/jump path, not the Phone systemd observer host; its later freed RAM does not change that assigned role;
-- the primary 128 MiB / 1 GiB Debian 13 trial observer is identified from Qwen SSH history, historical RDC enrollment and a still-matching SSH host key. The host still answers at its original NAT SSH endpoint, but current non-interactive authentication is rejected; the blocker is authentication/control recovery, not host discovery;
-- Qwen has a trial-backup SSH key, but there is no successful record that the public key was installed on the trial host, so key-based access must not be assumed;
-- `codex-vps` is the other known Qwen-managed/Tailscale node, requires fresh SSH authorization and already has a Relay-history role; it is not automatically the second Phone observer;
-- any remaining unnamed/offline RDC device remains unverified and must not be guessed from old chat state.
+Do not treat temporary referral/social traffic as SEO success.
 
-Execution order:
+## Maintenance rules
 
-1. recover legitimate authorized access from Qwen to the identified 128 MiB trial observer;
-2. before restart/reinstall/deployment, inspect RDC/watcher services, timers, journals, boot/OOM history, memory/disk state and stored evidence;
-3. only after that inspection, deploy/verify watcher v1.1 on the trial observer if the host is healthy enough, checking a real systemd run, source health, memory peak and next timer;
-4. separately verify the intended second disposable-observer role before assigning `phone-source-watch`; do not repurpose `codex-vps` by assumption;
-5. begin periodic review of `candidates.tsv`, promoting only evidence-rich candidates into durable Phone research packets;
-6. keep public Phone production stable until search/interaction evidence or a clearly superior evidence-backed route justifies a bounded change;
-7. when a route has enough unique execution value, evaluate a separate detail URL under the route-page publication gate above.
+Prefer one data-driven system over duplicated route-specific code.
+
+Maintain:
+
+- one normalized schema;
+- importer/admission paths;
+- deterministic derived search/index artifacts;
+- explicit publication state;
+- generated UI from data;
+- automated data integrity and publication-isolation tests;
+- easy rollback through bounded PRs;
+- no production dependency on disposable observer state.
+
+A failure in one route/data batch should be repairable without rebuilding the whole product.
+
+## Daily execution loop
+
+Follow `docs/DAILY_PROJECT_JOURNAL.md` and `docs/SESSION_EXECUTION_PROTOCOL.md`.
+
+Every workday:
+
+1. read GitHub startup chain;
+2. choose one bounded task;
+3. delegate parallelizable evidence/data work;
+4. execute and sample-audit;
+5. persist accepted facts/code/data through GitHub;
+6. verify;
+7. measure when relevant;
+8. journal actual work and blockers;
+9. leave exactly one next-session task in `docs/CURRENT_EXECUTION_QUEUE.md`.
+
+## Current reconciliation principle
+
+The current broad global database should not be reduced merely because public route/page generation became too broad.
+
+The correction target is the boundary:
+
+`database coverage ≠ comparison visibility ≠ detail eligibility ≠ SEO indexability`
+
+Preserve useful data. Fix the release states and frontend/publication behavior.
