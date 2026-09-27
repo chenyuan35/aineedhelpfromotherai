@@ -60,7 +60,10 @@ for (const route of ukPilot.routes) {
   assert.match(page, new RegExp(`href="${routeUrl.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}"`), `${route.id} must have a crawler-visible hub link`);
   for (let n = 1; n <= 9; n += 1) assert.match(routePage, new RegExp(`<h2>${n}\.`), `${route.id} missing section ${n}`);
   if (route.publishState === 'observation-hold') {
-    assert.match(routePage, /Why this route is on hold:/);
+    // Hold pages must visibly explain the hold and must not offer an acquisition action.
+    // The current template renders this as either the avoid-route banner or the hold block.
+    assert.match(routePage, /route-hold/, `${route.id} hold explanation block missing`);
+    if (route.holdReason) assert.ok(routePage.includes(String(route.holdReason).slice(0, 40)), `${route.id} hold reason not visible`);
     assert.doesNotMatch(routePage, /Acquire \/ open ↗/);
   }
 }
