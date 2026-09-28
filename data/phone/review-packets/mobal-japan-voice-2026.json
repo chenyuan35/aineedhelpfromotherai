@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "route": {
+    "id": "mobal-japan-voice-2026",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "mobal-japan-jp",
+    "displayName": "Mobal Japan Voice-Only",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+    "sourceIds": [
+      "official-mobal-japan-sim-2026-09-29",
+      "official-mobal-id-requirements-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-mobal-japan-sim-2026-09-29",
+      "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobal-id-requirements-2026-09-29",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-mobal-japan-sim-2026-09-29",
+    "official-mobal-id-requirements-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-mobal-japan-voice-2026-current-profile-20260929",
+      "routeId": "mobal-japan-voice-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "jp-directory-batch-b.json",
+      "data": {
+        "id": "mobal-japan-voice-2026",
+        "brandId": "mobal-japan-jp",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Mobal's current Japan Voice-Only product is distinct from Voice+Data: real Japanese 070/080/090 number + SMS, ¥4,950 regular setup and ¥1,430/month. A temporary 10% setup promotion to ¥4,455 is currently shown but is not used as the durable baseline. Worldwide delivery is advertised.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 4950,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 4950,
+          "landedCny": 238,
+          "fxCheckedAt": "2026-09-29",
+          "state": "current-official-regular-setup;temporary-4455-promo-observed"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 1430,
+          "yearCostOriginal": 17160,
+          "yearCostCny": 824,
+          "action": "Keep the Voice-Only subscription paid at ¥1,430/month. Incoming SMS is free under the current product terms; ordinary usage does not replace the monthly subscription charge.",
+          "intervalDays": 30,
+          "state": "official-confirmed-current"
+        },
+        "chinaActivation": "Worldwide delivery is offered. For use outside Japan, enable the optional Voice/SMS roaming service; do not assume first activation from abroad without rechecking the current activation flow.",
+        "kyc": "Identity verification is required for voice products; Mobal documents a passport-based path for eligible customers.",
+        "payment": "Card payment required; verify current supported issuer/country at checkout.",
+        "wifiCalling": "Not relied on; overseas continuity is documented through Voice/SMS roaming rather than a Wi-Fi Calling assumption.",
+        "roamingSms": "The current Voice-Only product page explicitly supports roaming outside Japan. Voice/SMS roaming can be enabled; data roaming is not part of this Voice-Only route.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+        "tariffSummary": "¥4,950 regular setup + ¥1,430/month for the distinct Voice-Only route; temporary ¥4,455 setup promotion observed. Real JP number and optional Voice/SMS roaming.",
+        "sourceIds": [
+          "official-mobal-japan-sim-2026-09-29",
+          "official-mobal-id-requirements-2026-09-29"
+        ],
+        "guideSteps": [
+          "Order the distinct Voice-Only SIM/eSIM route; use ¥4,950 as the durable setup baseline rather than the temporary promotion.",
+          "Complete the voice-product identity-verification path.",
+          "Enable optional Voice/SMS roaming before relying on the number outside Japan.",
+          "Keep the ¥1,430 monthly subscription paid to retain service."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

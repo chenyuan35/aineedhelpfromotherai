@@ -182,6 +182,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "mobal-japan-voice-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 4950,
+      "acquisitionCostCny": 238,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 17160,
+      "keepYearCostCny": 824,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "mobal-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -215,6 +227,18 @@
       "keepCurrency": "GBP",
       "keepYearCostOriginal": 0.04,
       "keepYearCostCny": 0.4,
+      "keepIntervalDays": 180
+    },
+    {
+      "routeId": "povo20-zero-base-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": 0,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
       "keepIntervalDays": 180
     },
     {

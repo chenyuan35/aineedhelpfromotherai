@@ -1,6 +1,6 @@
 # Phone Japan batch-B identity / provenance reconciliation — 2026-09-29
 
-Status: **RECONCILIATION COMPLETE / MIGRATION NOT STARTED**
+Status: **RECONCILIATION + BOUNDED MIGRATION COMPLETE**
 
 Scope is limited to `frontend/tools/phone-number-lifecycle-mvp/jp-directory-batch-b.json`:
 
@@ -121,3 +121,16 @@ The comparison remains 135 routes, the reviewed batch manifest remains intact, a
 ## Next bounded task
 
 Reconcile the three Japan legacy comparison rows to the current facts above **without changing route count or publication state**, then decide the smallest comparison-only legacy-ID mapping needed for Sakura. Only after that should povo/Mobal canonical-adapter migration be attempted.
+
+## Execution closeout — 2026-09-29
+
+The bounded follow-up completed without widening publication.
+
+- The three legacy comparison rows were reconciled to the current facts in this review.
+- `povo20-zero-base-2026` was admitted to canonical v1 backstage with `evidenceState: hold`; its generic adapter output deep-equals the reviewed comparison row.
+- `mobal-japan-voice-2026` was admitted as a separate Voice-Only canonical route, preserving the existing `mobal-japan-voice-data` Voice+Data product; its adapter output also deep-equals the reviewed comparison row.
+- `sakura-mobile-voice-2026` was deliberately not added to canonical. Existing `sakura-japan-voice-data` remains the single normalized Sakura Voice+Data product. The current add-only importer and route-ID-preserving adapter cannot reproduce the different legacy comparison ID without broader update/alias semantics, so the compatibility row remains legacy-authoritative rather than creating a duplicate product.
+- A dedicated Japan regression protects povo/Mobal parity, Sakura single-product identity, the 135-route comparison count and the 3-route indexability boundary.
+- Post-build state: canonical 37 routes / 16 markets / 34 brands / 20 networks / 119 sources; comparison 135; route-ID overlap 26; legacy-only 109; explicit indexability 3.
+
+No standalone route URL, sitemap entry or ranking claim was added.

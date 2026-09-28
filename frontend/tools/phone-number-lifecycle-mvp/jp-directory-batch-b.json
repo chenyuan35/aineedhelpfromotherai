@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "market": "jp",
-  "checkedAt": "2026-09-26",
-  "status": "batch-b-evidence-captured",
-  "notes": "Japan routes. Evidence: auto-ops/phone-discovery/evidence/japan-official-2026-09-26.json, japan-povo-topping-mobal-2026-09-26.json + JP web sources (noiat/getnine/mineo 2026-09). povo requires Japan-based identity verification (eKYC with JP documents) — NOT a viable route for most overseas users; documented for completeness and for users with JP ties.",
+  "checkedAt": "2026-09-29",
+  "status": "batch-b-reviewed-current",
+  "notes": "Japan batch B reconciled 2026-09-29 against current first-party sources. povo remains HOLD for the general overseas-user route; Mobal Voice-Only is distinct from Mobal Voice+Data; Sakura legacy Voice+Data is the same product as canonical sakura-japan-voice-data and must not be duplicated merely to preserve the legacy ID.",
   "networks": [
     { "id": "au-jp", "name": "au (KDDI)" },
     { "id": "docomo-jp", "name": "NTT docomo" }
   ],
   "brands": [
     { "id": "povo-jp", "networkId": "au-jp", "name": "povo 2.0" },
-    { "id": "mobal-jp", "networkId": "docomo-jp", "name": "Mobal" },
-    { "id": "sakura-jp", "networkId": "docomo-jp", "name": "Sakura Mobile" }
+    { "id": "mobal-japan-jp", "networkId": null, "name": "Mobal Japan" },
+    { "id": "sakura-mobile-jp", "networkId": null, "name": "Sakura Mobile" }
   ],
   "routes": [
     {
@@ -20,7 +20,7 @@
       "publishState": "observation",
       "numberType": "real-mobile",
       "simType": "eSIM + physical",
-      "acquisitionSummary": "au online-only plan: 0 yen base fee, pay-per-use toppings. Official spec: if no paid topping purchased for 180+ days, service may be suspended then contract cancelled (suspension-warning email first; cannot buy toppings while suspended).",
+      "acquisitionSummary": "povo 2.0 Voice+Data keeps a ¥0 base plan, but signup requires an accepted Japan identity-verification path such as My Number Card, a Japanese driver's license or a residence card. A typical overseas-only applicant with only a foreign passport does not satisfy this path.",
       "landedCost": {
         "currency": "JPY",
         "providerOrCommunityPrice": 0,
@@ -29,136 +29,212 @@
         "adapterCostCny": null,
         "landedOriginal": 0,
         "landedCny": 0,
-        "fxCheckedAt": "2026-09-26",
+        "fxCheckedAt": "2026-09-29",
         "state": "current-official-zero-base-but-ekyc-gated"
       },
       "keep": {
         "currency": "JPY",
-        "observedActionCost": 250,
-        "yearCostOriginal": 500,
-        "yearCostCny": 24,
-        "action": "Buy any paid topping once per 180 days. Cheapest always-available topping 250 yen (2026-09 JP media, official提供条件書-based); povo-gacha promos can lower to ~100 yen/180d. Domestic SMS receive free.",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Purchase a qualifying paid topping before the applicable 180-day no-paid-topping window expires. The official lifecycle rule is topping-based; do not treat ¥250 as a universal minimum keep-alive price because available qualifying toppings/promotions can change.",
         "intervalDays": 180,
-        "state": "official-confirmed-plus-jp-media-multi-source"
+        "state": "official-paid-topping-window-cost-variable"
       },
-      "chinaActivation": "BLOCKER: signup requires eKYC with Japanese identity documents (mynumber/driver license) and a Japanese address — not viable for typical overseas users.",
-      "kyc": "Mandatory eKYC with JP documents.",
-      "payment": "Credit card (foreign cards reportedly hit-or-miss).",
-      "wifiCalling": "au VoLTE/VoWiFi supported on capable devices.",
-      "roamingSms": "International roaming exists as paid topping; receiving SMS abroad unverified for 0-yen state — 验证中.",
+      "chinaActivation": "BLOCKER for the general overseas route: application requires an accepted Japan identity credential path. Residence cards are supported, but a foreign-passport-only overseas applicant is not covered by the reviewed Voice+Data signup path.",
+      "kyc": "Mandatory identity verification using an accepted Japan credential path, including My Number Card, Japanese driver's license or residence card.",
+      "payment": "Credit card; current card-issuer/country acceptance should be checked at application time.",
+      "wifiCalling": "Not relied on for this route's retention or overseas-SMS decision.",
+      "roamingSms": "Current povo Voice+Data international roaming supports SMS after the required roaming/identity-verification setup; the prior 'overseas SMS unverified' wording is stale.",
       "refund": "not reconciled",
       "trend": "stable",
       "guideEligible": false,
-      "holdReason": "Japan-only eKYC gates acquisition for overseas users. Documented as reference route for JP-resident users.",
-      "lastVerifiedAt": "2026-09-26",
+      "holdReason": "The route remains HOLD for typical overseas-only users because acquisition requires an accepted Japan identity credential path even though overseas SMS is officially supported after setup.",
+      "lastVerifiedAt": "2026-09-29",
       "acquireUrl": "https://povo.jp/",
-      "tariffSummary": "0 yen base; keep = 1 topping/180d (from 250 yen). SMS receive free domestically.",
+      "tariffSummary": "¥0 base; keep-alive follows the official paid-topping / 180-day rule. Exact cheapest qualifying topping is variable, not a fixed ¥250 baseline.",
       "sourceIds": [
-        "official-povo-spec-detail-2026-09-26",
-        "official-povo-faq-180day-suspension-2026-07",
-        "jpmedia-noiat-povo-cost-2026-09",
-        "jpmedia-getnine-povo-2026-09"
+        "official-povo-spec-detail-2026-09-29",
+        "official-povo-faq-904-2026-09-29",
+        "official-povo-faq-858-2026-09-29",
+        "official-povo-procedure-other-2026-09-29",
+        "official-povo-faq-882-2026-09-29"
       ],
       "guideSteps": [
-        "JP-resident users only (eKYC).",
-        "Set 170-day reminder; buy cheapest topping each cycle."
+        "Use only if you can complete the current accepted Japan identity-verification path.",
+        "Track the official 180-day no-paid-topping window and buy a qualifying paid topping before suspension risk.",
+        "For overseas use, complete povo's documented international-roaming setup before relying on SMS."
       ]
     },
     {
       "id": "mobal-japan-voice-2026",
-      "brandId": "mobal-jp",
+      "brandId": "mobal-japan-jp",
       "publishState": "candidate",
       "numberType": "real-mobile",
       "simType": "eSIM + physical",
-      "acquisitionSummary": "Japan Voice SIM: real JP number (070/080/090), unlimited FREE incoming SMS worldwide, incoming calls free, no contract. ¥4,455 pay-today (10% promo from ¥4,950) + ¥1,430/mo. Worldwide delivery available; designed for use outside Japan.",
+      "acquisitionSummary": "Mobal's current Japan Voice-Only product is distinct from Voice+Data: real Japanese 070/080/090 number + SMS, ¥4,950 regular setup and ¥1,430/month. A temporary 10% setup promotion to ¥4,455 is currently shown but is not used as the durable baseline. Worldwide delivery is advertised.",
       "landedCost": {
         "currency": "JPY",
-        "providerOrCommunityPrice": 4455,
+        "providerOrCommunityPrice": 4950,
         "mandatoryTopup": null,
         "shipping": 0,
         "adapterCostCny": null,
-        "landedOriginal": 4455,
-        "landedCny": 214,
-        "fxCheckedAt": "2026-09-26",
-        "state": "current-official"
+        "landedOriginal": 4950,
+        "landedCny": 238,
+        "fxCheckedAt": "2026-09-29",
+        "state": "current-official-regular-setup;temporary-4455-promo-observed"
       },
       "keep": {
         "currency": "JPY",
         "observedActionCost": 1430,
         "yearCostOriginal": 17160,
         "yearCostCny": 824,
-        "action": "Subscription model — ¥1,430/mo keeps number active; incoming SMS free worldwide including outside Japan (official marketing).",
+        "action": "Keep the Voice-Only subscription paid at ¥1,430/month. Incoming SMS is free under the current product terms; ordinary usage does not replace the monthly subscription charge.",
         "intervalDays": 30,
-        "state": "official-confirmed"
+        "state": "official-confirmed-current"
       },
-      "chinaActivation": "Worldwide delivery + activate-from-abroad is the product's stated purpose. Only Voice+Data 5G SIM/eSIM products support international roaming (one-off enablement fee).",
-      "kyc": "Passport-based, foreigner-friendly, full English support.",
-      "payment": "International cards accepted (US/UK company).",
-      "wifiCalling": "n/a — service works via roaming, not dependent on Wi-Fi Calling.",
-      "roamingSms": "Incoming SMS free worldwide (official). Outgoing SMS charged separately.",
+      "chinaActivation": "Worldwide delivery is offered. For use outside Japan, enable the optional Voice/SMS roaming service; do not assume first activation from abroad without rechecking the current activation flow.",
+      "kyc": "Identity verification is required for voice products; Mobal documents a passport-based path for eligible customers.",
+      "payment": "Card payment required; verify current supported issuer/country at checkout.",
+      "wifiCalling": "Not relied on; overseas continuity is documented through Voice/SMS roaming rather than a Wi-Fi Calling assumption.",
+      "roamingSms": "The current Voice-Only product page explicitly supports roaming outside Japan. Voice/SMS roaming can be enabled; data roaming is not part of this Voice-Only route.",
       "refund": "not reconciled",
       "trend": "stable",
       "guideEligible": true,
       "holdReason": null,
-      "lastVerifiedAt": "2026-09-26",
+      "lastVerifiedAt": "2026-09-29",
       "acquireUrl": "https://www.mobal.com/japan-sim-card/",
-      "tariffSummary": "¥1,430/mo, real JP number, free incoming SMS worldwide. The foreigner-friendly JP-number route.",
+      "tariffSummary": "¥4,950 regular setup + ¥1,430/month for the distinct Voice-Only route; temporary ¥4,455 setup promotion observed. Real JP number and optional Voice/SMS roaming.",
       "sourceIds": [
-        "official-mobal-japan-sim-2026-09-26",
-        "official-mobal-helpdesk-roaming-2026-07",
-        "official-mobal-helpdesk-product-compare-2026-07"
+        "official-mobal-japan-sim-2026-09-29",
+        "official-mobal-id-requirements-2026-09-29"
       ],
       "guideSteps": [
-        "Order Voice SIM with worldwide delivery (¥4,455 today + ¥1,430/mo).",
-        "Enable international roaming (one-off fee) during activation for 5G products.",
-        "Receive verification SMS anywhere at no per-message cost."
+        "Order the distinct Voice-Only SIM/eSIM route; use ¥4,950 as the durable setup baseline rather than the temporary promotion.",
+        "Complete the voice-product identity-verification path.",
+        "Enable optional Voice/SMS roaming before relying on the number outside Japan.",
+        "Keep the ¥1,430 monthly subscription paid to retain service."
       ]
     },
     {
       "id": "sakura-mobile-voice-2026",
-      "brandId": "sakura-jp",
+      "brandId": "sakura-mobile-jp",
       "publishState": "candidate",
       "numberType": "real-mobile",
       "simType": "eSIM + physical",
-      "acquisitionSummary": "Voice+Data SIM on docomo network, from ¥2,980/mo (5GB) + ¥5,500 activation fee. Real JP number, full English signup, no Japanese bank account required.",
+      "acquisitionSummary": "Sakura Mobile monthly Voice+Data 5GB is ¥3,278/month tax included plus a ¥5,500 activation fee. The non-resident passport path requires face-to-face identity verification/pickup in Japan. This legacy row represents the same underlying product as canonical sakura-japan-voice-data.",
       "landedCost": {
         "currency": "JPY",
         "providerOrCommunityPrice": 5500,
         "mandatoryTopup": null,
         "shipping": 0,
         "adapterCostCny": null,
-        "landedOriginal": 8478,
-        "landedCny": 407,
-        "fxCheckedAt": "2026-09-26",
-        "state": "current-official-activation-plus-first-month"
+        "landedOriginal": 8778,
+        "landedCny": 421,
+        "fxCheckedAt": "2026-09-29",
+        "state": "current-official-tax-included-activation-plus-first-month"
       },
       "keep": {
         "currency": "JPY",
-        "observedActionCost": 2980,
-        "yearCostOriginal": 35760,
-        "yearCostCny": 1716,
-        "action": "Subscription model — monthly billing keeps number. Premium-priced; value is English support + docomo reliability, not cost.",
+        "observedActionCost": 3278,
+        "yearCostOriginal": 39336,
+        "yearCostCny": 1888,
+        "action": "Keep the normal Voice+Data monthly plan paid at ¥3,278/month tax included when ongoing calls/SMS are required. This legacy comparison row must not create a second canonical product identity.",
         "intervalDays": 30,
-        "state": "official-confirmed"
+        "state": "official-confirmed-tax-included"
       },
-      "chinaActivation": "Supports delivery abroad / pickup in Japan; aimed at residents and long-term visitors. Abroad long-term keep-alive policy unverified — 验证中.",
-      "kyc": "Passport, foreigner-friendly.",
-      "payment": "International cards accepted.",
+      "chinaActivation": "The non-resident passport route requires face-to-face identity verification/pickup in Japan; it is not an abroad-only acquisition path.",
+      "kyc": "Passport is accepted for the non-resident route, with face-to-face identity verification/pickup in Japan.",
+      "payment": "International-card support is offered; verify the current checkout requirements before relying on a specific issuer.",
       "wifiCalling": "unverified",
-      "roamingSms": "International roaming availability/cost on monthly voice plan unverified — 验证中.",
+      "roamingSms": "Current Sakura support states that monthly Voice+Data calls and SMS can be used outside Japan; cellular data cannot be used abroad on this route.",
       "refund": "not reconciled",
       "trend": "stable",
       "guideEligible": false,
-      "holdReason": "Cost is 2x Mobal for keep-alive purpose; hold as premium alternative pending roaming confirmation.",
-      "lastVerifiedAt": "2026-09-26",
+      "holdReason": "Premium-cost alternative. Same underlying product as canonical sakura-japan-voice-data; keep the legacy comparison identity only until a narrow comparison-ID compatibility path is proven.",
+      "lastVerifiedAt": "2026-09-29",
       "acquireUrl": "https://www.sakuramobile.jp/monthly/voice/",
-      "tariffSummary": "From ¥2,980/mo + ¥5,500 activation, docomo network, English support.",
+      "tariffSummary": "¥5,500 activation + ¥3,278/month tax included for 5GB Voice+Data; passport route requires in-person verification/pickup in Japan; calls/SMS can roam abroad but data cannot.",
       "sourceIds": [
-        "official-sakura-monthly-voice-2026-09-26"
+        "official-sakura-monthly-price-2026-09-29",
+        "official-sakura-monthly-voice-2026-09-29",
+        "official-sakura-monthly-roaming-2026-09-29",
+        "official-sakura-nonresident-eligibility-2026-09-29"
       ],
       "guideSteps": [
-        "Directory card only until abroad-usage terms verified."
+        "Treat this as the same underlying Sakura Voice+Data product already represented by canonical sakura-japan-voice-data.",
+        "Use the tax-included ¥3,278 monthly price and ¥5,500 activation fee.",
+        "Complete the passport-route face-to-face verification/pickup in Japan.",
+        "Outside Japan, rely only on documented calls/SMS roaming; cellular data is unavailable."
       ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official-povo-spec-detail-2026-09-29",
+      "url": "https://povo.jp/spec/detail/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-povo-faq-904-2026-09-29",
+      "url": "https://faq.povo.jp/faq/show/904?site_domain=default",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-povo-faq-858-2026-09-29",
+      "url": "https://faq.povo.jp/faq/show/858?site_domain=default",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-povo-procedure-other-2026-09-29",
+      "url": "https://povo.jp/en/procedure/other/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-povo-faq-882-2026-09-29",
+      "url": "https://faq.povo.jp/faq/show/882?category_id=9&site_domain=default",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobal-japan-sim-2026-09-29",
+      "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobal-id-requirements-2026-09-29",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sakura-monthly-price-2026-09-29",
+      "url": "https://www.sakuramobile.jp/monthly/price/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sakura-monthly-voice-2026-09-29",
+      "url": "https://www.sakuramobile.jp/monthly/voice/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sakura-monthly-roaming-2026-09-29",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/360020533651-Can-I-use-the-Monthly-service-outside-of-Japan",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sakura-nonresident-eligibility-2026-09-29",
+      "url": "https://support.sakuramobile.jp/hc/en-us/articles/40337436227225-Do-I-need-to-be-a-resident-to-apply-for-Monthly-contracts",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     }
   ]
 }
