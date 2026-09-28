@@ -1970,26 +1970,26 @@
    "publishState": "candidate",
    "numberType": "real-mobile",
    "simType": "eSIM + physical",
-   "acquisitionSummary": "csl sub-brand. Buy ClubSIM + any service pack. Official FAQ: number retained as long as ANY service pack subscription is made within 365 days after previous validity expires.",
+   "acquisitionSummary": "ClubSIM supports physical SIM and eSIM. Current official web surfaces list the HK$6 SMS pack; a 2026 first-hand guide reports HK$50 minimum first-activation spend. Exact checkout minimum can vary by selected service pack.",
    "landedCost": {
     "currency": "HKD",
-    "providerOrCommunityPrice": 58,
+    "providerOrCommunityPrice": 50,
     "mandatoryTopup": null,
     "shipping": 0,
     "adapterCostCny": null,
-    "landedOriginal": 58,
-    "landedCny": 53,
-    "fxCheckedAt": "2026-09-26",
-    "state": "community-reported-entry-needs-official-refresh"
+    "landedOriginal": 50,
+    "landedCny": 46,
+    "fxCheckedAt": "2026-09-28",
+    "state": "community-2026-entry-cost-current-web-pack"
    },
    "keep": {
     "currency": "HKD",
     "observedActionCost": 6,
     "yearCostOriginal": 6,
     "yearCostCny": 5.5,
-    "action": "Buy the HK$6 SMS pack once per 365 days (community guide vocus.cc 2026-04, corroborated by official FAQ 365-day repurchase window). Single purchase, no monthly deduction; pack purchase resets the retention window.",
+    "action": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6 option was temporarily absent in-app. Treat HK$6 as the current web price, not a guaranteed all-channel annual price; buy any available service pack before the 365-day deadline.",
     "intervalDays": 365,
-    "state": "official-window-plus-community-cheapest-pack"
+    "state": "official-rule-current-web-price-channel-conflict"
    },
    "chinaActivation": "eSIM purchasable online from abroad; real-name registration via app (passport accepted for non-HK residents).",
    "kyc": "Real-name registration mandatory (HK law); passport supported.",
@@ -2000,17 +2000,19 @@
    "trend": "stable",
    "guideEligible": true,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-26",
+   "lastVerifiedAt": "2026-09-28",
    "acquireUrl": "https://www.clubsim.com.hk/",
-   "tariffSummary": "HK$6 SMS pack per 365 days = cheapest HK number retention known.",
+   "tariffSummary": "365-day service-pack clock; HK$6 SMS pack currently listed on web, with 2026 app-availability conflict.",
    "sourceIds": [
     "official-clubsim-faq-365-window-2026-09-26",
-    "community-vocus-clubsim-6hkd-guide-2026-04"
+    "community-vocus-clubsim-6hkd-guide-2026-04",
+    "community-naixi-clubsim-pack-availability-2026-07",
+    "official-clubsim-sms-pack-6hkd-2026-09-28"
    ],
    "guideSteps": [
-    "Buy ClubSIM eSIM online; complete real-name registration with passport in app.",
-    "Purchase HK$6 SMS pack; set 350-day reminder.",
-    "Repeat yearly to retain number."
+    "Acquire ClubSIM physical SIM or eSIM and complete required real-name registration.",
+    "Before the 365-day service-pack deadline, check the current web/app pack list.",
+    "If the HK$6 SMS pack is available, one purchase resets the service-pack clock; otherwise buy another available service pack rather than assuming HK$6 is guaranteed."
    ],
    "marketName": "Hong Kong"
   },
@@ -2020,7 +2022,7 @@
    "publishState": "candidate",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "3HK sub-brand sold at ParknShop/Watsons (400+ stores). Official recharge ladder: $50→90 days, $100→180 days, $200→365 days, $500+→730 days validity extension.",
+   "acquisitionSummary": "Current SoSIM FAQ/eShop: new physical SIM or eSIM is HK$33. SIM/mobile-number validity is independent from service-package validity; recharge extends SIM validity.",
    "landedCost": {
     "currency": "HKD",
     "providerOrCommunityPrice": 33,
@@ -2029,17 +2031,17 @@
     "adapterCostCny": null,
     "landedOriginal": 33,
     "landedCny": 30,
-    "fxCheckedAt": "2026-09-26",
-    "state": "community-reported-sticker-price"
+    "fxCheckedAt": "2026-09-28",
+    "state": "official-current-33-entry"
    },
    "keep": {
     "currency": "HKD",
     "observedActionCost": 100,
     "yearCostOriginal": 200,
     "yearCostCny": 183,
-    "action": "Recharge $100 twice yearly (180d each) or $200 once (365d). Official top-up table 2026-09-26. Expired numbers can be reactivated via app 'Get Back & Reactivate My Number' (grace window applies).",
+    "action": "Current official recharge ladder: HK$100-HK$199.9 extends SIM validity 180 days; HK$200-HK$499.9 extends 365 days; HK$500+ extends 730 days. Expired numbers may be recoverable through Get Back & Reactivate My Number if still unused, with the existing SIM and a new recharge.",
     "intervalDays": 180,
-    "state": "official-confirmed"
+    "state": "official-confirmed-2026-09-28"
    },
    "chinaActivation": "Purchase nominally in HK stores; eSIM available in app after real-name registration — online-first purchase from abroad unverified.",
    "kyc": "Real-name registration mandatory (HK law).",
@@ -2050,17 +2052,18 @@
    "trend": "stable",
    "guideEligible": true,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-26",
+   "lastVerifiedAt": "2026-09-28",
    "acquireUrl": "https://www.sosimhk.com/",
-   "tariffSummary": "$100→180d / $200→365d validity ladder (official).",
+   "tariffSummary": "HK$100 → 180d / HK$200 → 365d / HK$500+ → 730d validity (current official ladder).",
    "sourceIds": [
     "official-sosim-topup-renewal-2026-09-26",
-    "official-sosim-retrieve-expired-number-2026-09-26"
+    "official-sosim-retrieve-expired-number-2026-09-26",
+    "official-sosim-faq-esim-33-2026-09-28"
    ],
    "guideSteps": [
-    "Acquire SoSIM (HK store or eSIM channel).",
-    "Real-name registration in app.",
-    "Recharge $100 every ~170 days or $200 yearly."
+    "Buy the current HK$33 SoSIM physical SIM or eSIM and complete required real-name registration for number service.",
+    "Recharge HK$100 about every 180 days or HK$200 about yearly to extend SIM/mobile-number validity.",
+    "If the number expires, use the official reactivation flow immediately; recovery is conditional on the number still being unused."
    ],
    "marketName": "Hong Kong"
   },
@@ -2070,26 +2073,26 @@
    "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "eSIM + physical",
-   "acquisitionSummary": "3HK DIY prepaid, fully online eSIM purchase flow (official site). Official recharge page: recharge ≥HK$100 auto-extends validity from recharge date.",
+   "acquisitionSummary": "3HK DIY prepaid supports online eSIM purchase. Official DIY sales material says activation must be completed within 60 days of purchase and the card is initially valid for 180 days after activation; current plan pricing varies by selected local/travel package.",
    "landedCost": {
     "currency": "HKD",
-    "providerOrCommunityPrice": 0,
+    "providerOrCommunityPrice": null,
     "mandatoryTopup": null,
     "shipping": 0,
     "adapterCostCny": null,
     "landedOriginal": null,
     "landedCny": null,
-    "fxCheckedAt": "2026-09-26",
-    "state": "official-pages-js-blocked-partial"
+    "fxCheckedAt": "2026-09-28",
+    "state": "entry-cost-varies-by-selected-service-plan"
    },
    "keep": {
     "currency": "HKD",
-    "observedActionCost": 50,
-    "yearCostOriginal": 100,
-    "yearCostCny": 92,
-    "action": "Community multi-source: recharge HK$50 extends ~180 days (official 3HK SIM World page shows $50-tier extension table, exact days truncated in capture). ≥$100 confirmed to extend (official). Treat $100/yr as conservative figure.",
+    "observedActionCost": 100,
+    "yearCostOriginal": 200,
+    "yearCostCny": 183,
+    "action": "A 2025-10-21 independent end-to-end DIY recharge reproduction shows HK$100-HK$199.9 extends card validity 180 days and HK$200+ extends 365 days. Official DIY sales material separately confirms 180-day initial card validity. Do not use the SIM World HK$50/365-day table for DIY: that page explicitly applies its voucher workflow to International Supreme Card, not DIY.",
     "intervalDays": 180,
-    "state": "official-partial-plus-community"
+    "state": "community-reproduced-plus-official-diy-baseline"
    },
    "chinaActivation": "Online eSIM purchase supported (official DIY flow); real-name registration required.",
    "kyc": "Real-name registration mandatory (HK law); passport supported.",
@@ -2100,16 +2103,19 @@
    "trend": "stable",
    "guideEligible": true,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-26",
+   "lastVerifiedAt": "2026-09-28",
    "acquireUrl": "https://www.three.com.hk/prepaid/DIY/en/",
-   "tariffSummary": "Recharge-to-extend validity; ≥$100 auto-extends (official).",
+   "tariffSummary": "DIY retention: independently reproduced HK$100 → 180d / HK$200+ → 365d; SIM World HK$50/365d table is a different product and excluded.",
    "sourceIds": [
     "official-3hk-online-recharge-2026-09-26",
-    "official-3hk-simworld-recharge-table-2026-09-26"
+    "official-3hk-simworld-recharge-table-2026-09-26",
+    "official-3hk-diy-sales-kit-2024-04",
+    "community-3hk-diy-recharge-reproduction-2025-10-21"
    ],
    "guideSteps": [
-    "Buy DIY eSIM online; real-name register.",
-    "Recharge HK$100+ yearly to extend validity."
+    "Buy a DIY eSIM/physical route and activate it within the current activation window; complete required real-name registration for number service.",
+    "For number retention, use the DIY account/App recharge path: HK$100 for about 180 days or HK$200+ for about 365 days, based on current independent reproduction.",
+    "Do not apply SIM World International Supreme Card recharge-voucher validity rules to DIY."
    ],
    "marketName": "Hong Kong"
   },
@@ -7486,39 +7492,69 @@
   },
   {
    "id": "official-clubsim-faq-365-window-2026-09-26",
-   "url": "https://www.clubsim.com.hk/",
+   "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
    "type": "provider-official",
-   "reportedAt": "2026-09-26"
+   "reportedAt": "2026-09-28"
   },
   {
    "id": "community-vocus-clubsim-6hkd-guide-2026-04",
-   "url": "https://www.clubsim.com.hk/",
+   "url": "https://vocus.cc/article/69e62705fd89780001d6685f",
    "type": "community-report",
-   "reportedAt": "2026-09-26"
+   "reportedAt": "2026-04-20"
+  },
+  {
+   "id": "community-naixi-clubsim-pack-availability-2026-07",
+   "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+   "type": "community-report",
+   "reportedAt": "2026-07-01"
+  },
+  {
+   "id": "official-clubsim-sms-pack-6hkd-2026-09-28",
+   "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+   "type": "provider-official",
+   "reportedAt": "2026-09-28"
   },
   {
    "id": "official-sosim-topup-renewal-2026-09-26",
-   "url": "https://www.sosimhk.com/",
+   "url": "https://www.sosimhk.com/en/guide/top-up-renewal.html",
    "type": "provider-official",
-   "reportedAt": "2026-09-26"
+   "reportedAt": "2026-09-28"
   },
   {
    "id": "official-sosim-retrieve-expired-number-2026-09-26",
-   "url": "https://www.sosimhk.com/",
+   "url": "https://www.sosimhk.com/en/guide/retrieve-expired-number.html",
    "type": "provider-official",
-   "reportedAt": "2026-09-26"
+   "reportedAt": "2026-09-28"
+  },
+  {
+   "id": "official-sosim-faq-esim-33-2026-09-28",
+   "url": "https://www.sosimhk.com/en/faq.html",
+   "type": "provider-official",
+   "reportedAt": "2026-09-28"
   },
   {
    "id": "official-3hk-online-recharge-2026-09-26",
-   "url": "https://www.three.com.hk/prepaid/DIY/en/",
-   "type": "provider-official",
-   "reportedAt": "2026-09-26"
+   "url": "https://www.three.com.hk/3Care/eng/prepay/payonline1.jsp",
+   "type": "provider-official-generic-prepaid",
+   "reportedAt": "2026-09-28"
   },
   {
    "id": "official-3hk-simworld-recharge-table-2026-09-26",
-   "url": "https://www.three.com.hk/prepaid/DIY/en/",
-   "type": "provider-official",
-   "reportedAt": "2026-09-26"
+   "url": "https://web.three.com.hk/simworld/en/buy-recharge.html",
+   "type": "provider-official-exclusion",
+   "reportedAt": "2026-09-28"
+  },
+  {
+   "id": "official-3hk-diy-sales-kit-2024-04",
+   "url": "https://web.three.com.hk/epop/SalesKit-DIYprepaidSIMsalesKit20240430.pdf",
+   "type": "provider-official-diy",
+   "reportedAt": "2024-04-30"
+  },
+  {
+   "id": "community-3hk-diy-recharge-reproduction-2025-10-21",
+   "url": "https://www.10100.com/article/28273558",
+   "type": "independent-reproduction",
+   "reportedAt": "2025-10-21"
   },
   {
    "id": "cmhk-mysim-hk-official",

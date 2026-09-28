@@ -12,6 +12,24 @@
     "reportedAt": "2026-09-27"
   },
   {
+    "id": "community-3hk-diy-recharge-reproduction-2025-10-21",
+    "url": "https://www.10100.com/article/28273558",
+    "type": "independent-reproduction",
+    "reportedAt": "2025-10-21"
+  },
+  {
+    "id": "community-naixi-clubsim-pack-availability-2026-07",
+    "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+    "type": "community-report",
+    "reportedAt": "2026-07-01"
+  },
+  {
+    "id": "community-vocus-clubsim-6hkd-guide-2026-04",
+    "url": "https://vocus.cc/article/69e62705fd89780001d6685f",
+    "type": "community-report",
+    "reportedAt": "2026-04-20"
+  },
+  {
     "id": "fareastone-tw-official",
     "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "type": "provider-official",
@@ -156,6 +174,24 @@
     "reportedAt": "2026-08-09"
   },
   {
+    "id": "official-3hk-diy-sales-kit-2024-04",
+    "url": "https://web.three.com.hk/epop/SalesKit-DIYprepaidSIMsalesKit20240430.pdf",
+    "type": "provider-official-diy",
+    "reportedAt": "2024-04-30"
+  },
+  {
+    "id": "official-3hk-online-recharge-2026-09-26",
+    "url": "https://www.three.com.hk/3Care/eng/prepay/payonline1.jsp",
+    "type": "provider-official-generic-prepaid",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-3hk-simworld-recharge-table-2026-09-26",
+    "url": "https://web.three.com.hk/simworld/en/buy-recharge.html",
+    "type": "provider-official-exclusion",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
     "url": "https://media.medion.com/cms/medion/alditalkde/ALDI-TALK-Aktivitaetszeitfenster-der-SIM-Karte.pdf?v=0426",
     "type": "provider-official",
@@ -168,8 +204,38 @@
     "reportedAt": "2025-08-20"
   },
   {
+    "id": "official-clubsim-faq-365-window-2026-09-26",
+    "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-clubsim-sms-pack-6hkd-2026-09-28",
+    "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "official-hotlink-pantas-passes-faq-2026-09-26",
     "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-sosim-faq-esim-33-2026-09-28",
+    "url": "https://www.sosimhk.com/en/faq.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-sosim-retrieve-expired-number-2026-09-26",
+    "url": "https://www.sosimhk.com/en/guide/retrieve-expired-number.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-sosim-topup-renewal-2026-09-26",
+    "url": "https://www.sosimhk.com/en/guide/top-up-renewal.html",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
   },
