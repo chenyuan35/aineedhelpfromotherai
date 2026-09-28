@@ -38,6 +38,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "aldi-talk-activity-window-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 9.99,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": 117,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "cmhk-mysim-hk-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -84,6 +96,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "hotlink-pantas-365-pass-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MYR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 15,
+      "keepCurrency": "MYR",
+      "keepYearCostOriginal": 30,
+      "keepYearCostCny": 45,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "kpn-prepaid-6mo-2026",
@@ -216,6 +240,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "vodafone-callya-90d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": 0,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": 156,
+      "keepIntervalDays": 90
     },
     {
       "routeId": "vodafone-uk-zero-esim-2026",

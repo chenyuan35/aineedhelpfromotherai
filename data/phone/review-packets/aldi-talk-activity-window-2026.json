@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "de",
+    "name": "Germany",
+    "countryCode": "DE"
+  },
+  "network": {
+    "id": "telefonica-de",
+    "name": "Telefónica DE (O2)",
+    "marketId": "de"
+  },
+  "brand": {
+    "id": "aldi-talk",
+    "networkId": "telefonica-de",
+    "name": "ALDI TALK",
+    "marketId": "de"
+  },
+  "route": {
+    "id": "aldi-talk-activity-window-2026",
+    "marketId": "de",
+    "networkId": "telefonica-de",
+    "brandId": "aldi-talk",
+    "displayName": "ALDI TALK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif"
+  },
+  "sources": [
+    {
+      "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
+      "url": "https://media.medion.com/cms/medion/alditalkde/ALDI-TALK-Aktivitaetszeitfenster-der-SIM-Karte.pdf?v=0426",
+      "type": "provider-official",
+      "reportedAt": "2026-04-01"
+    }
+  ],
+  "sourceIds": [
+    "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-aldi-talk-activity-window-2026-current-profile-20260928",
+      "routeId": "aldi-talk-activity-window-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "aldi-talk-activity-window-2026",
+        "brandId": "aldi-talk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current official ALDI TALK pages: Starter-Set is €9.99 incl. €10 starting credit. Official activity-window PDF valid from 2026-01-01: initial active window 12 months; each top-up starts a new window (€5 → 4 months, €10 → 8, €15 → 12, €30 → 24), followed by 2 months passive reachability.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 9.99,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 9.99,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 15,
+          "yearCostCny": 117,
+          "action": "€5 top-up every 4 months (official ladder) ≈ €15/yr; or larger top-up for longer window. After window lapse, 2-month passive grace before deactivation.",
+          "intervalDays": 120,
+          "state": "official-confirmed"
+        },
+        "chinaActivation": "Registration requires personal data and identity verification. Official ALDI TALK supports online Video-Ident or in-person POSTIDENT/Shop-Ident; China-first completion with a foreign passport remains unverified.",
+        "kyc": "Mandatory identity verification with an accepted valid ID; passport may qualify depending on document/security features.",
+        "payment": "Aldi store vouchers (cash) or bank/card online.",
+        "wifiCalling": "Supported on O2 network (device-dependent).",
+        "roamingSms": "Receiving SMS abroad generally works; EU-roaming focused tariff, China receiving unverified — 验证中.",
+        "refund": "Official PDF: remaining credit refundable on deactivation (on request).",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif",
+        "tariffSummary": "€5/4mo activity window; 12-month initial; 2-month passive grace.",
+        "sourceIds": [
+          "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+        ],
+        "guideSteps": [
+          "Acquire the €9.99 starter set and complete identity verification.",
+          "€5 top-up every ~110 days, or use a larger official top-up for a longer activity window.",
+          "If the active window lapses, top up within the 2-month passive-reachability period."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

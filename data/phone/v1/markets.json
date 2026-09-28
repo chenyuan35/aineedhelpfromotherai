@@ -10,6 +10,11 @@
     "countryCode": "CN"
   },
   {
+    "id": "de",
+    "name": "Germany",
+    "countryCode": "DE"
+  },
+  {
     "id": "gb",
     "name": "United Kingdom",
     "countryCode": "GB"
@@ -33,6 +38,11 @@
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
+  },
+  {
+    "id": "my",
+    "name": "Malaysia",
+    "countryCode": "MY"
   },
   {
     "id": "nl",

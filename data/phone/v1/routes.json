@@ -56,6 +56,23 @@
     ]
   },
   {
+    "id": "aldi-talk-activity-window-2026",
+    "marketId": "de",
+    "networkId": "telefonica-de",
+    "brandId": "aldi-talk",
+    "displayName": "ALDI TALK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif",
+    "sourceIds": [
+      "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+    ]
+  },
+  {
     "id": "cmhk-mysim-hk-2026",
     "marketId": "hk",
     "networkId": "cmhk-hk",
@@ -134,6 +151,23 @@
     "acquireUrl": "https://www.h2owireless.com/",
     "sourceIds": [
       "src-d5c503ecd237"
+    ]
+  },
+  {
+    "id": "hotlink-pantas-365-pass-2026",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "brandId": "hotlink-my",
+    "displayName": "Hotlink Pantas",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+    "sourceIds": [
+      "official-hotlink-pantas-passes-faq-2026-09-26"
     ]
   },
   {
@@ -340,6 +374,24 @@
     "sourceIds": [
       "src-518c6a9bf6f0",
       "src-cbabf70eb1c4"
+    ]
+  },
+  {
+    "id": "vodafone-callya-90d-2026",
+    "marketId": "de",
+    "networkId": "vodafone-de",
+    "brandId": "vodafone-callya",
+    "displayName": "Vodafone CallYa",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
+    "sourceIds": [
+      "official-callya-faq-via-prepaid-deutschland-2025-08",
+      "official-vodafone-prepaid-hilfe-2026-09-26"
     ]
   },
   {

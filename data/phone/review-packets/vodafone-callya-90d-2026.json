@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "de",
+    "name": "Germany",
+    "countryCode": "DE"
+  },
+  "network": {
+    "id": "vodafone-de",
+    "name": "Vodafone DE",
+    "marketId": "de"
+  },
+  "brand": {
+    "id": "vodafone-callya",
+    "networkId": "vodafone-de",
+    "name": "Vodafone CallYa",
+    "marketId": "de"
+  },
+  "route": {
+    "id": "vodafone-callya-90d-2026",
+    "marketId": "de",
+    "networkId": "vodafone-de",
+    "brandId": "vodafone-callya",
+    "displayName": "Vodafone CallYa",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic"
+  },
+  "sources": [
+    {
+      "id": "official-callya-faq-via-prepaid-deutschland-2025-08",
+      "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
+      "type": "specialist-media",
+      "reportedAt": "2025-08-20"
+    },
+    {
+      "id": "official-vodafone-prepaid-hilfe-2026-09-26",
+      "url": "https://www.vodafone.de/hilfe/prepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "sourceIds": [
+    "official-callya-faq-via-prepaid-deutschland-2025-08",
+    "official-vodafone-prepaid-hilfe-2026-09-26"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-callya-90d-2026-current-profile-20260928",
+      "routeId": "vodafone-callya-90d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "vodafone-callya-90d-2026",
+        "brandId": "vodafone-callya",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Vodafone help confirms CallYa is unlimited-duration but may be terminated after more than 90 days without use; Vodafone sends an SMS first and gives 4 weeks to object before blocking. Current CallYa Classic has no basic fee; SIM/eSIM activation and physical-SIM shipping are free.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": 0,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-free-sim-and-shipping"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 20,
+          "yearCostCny": 156,
+          "action": "Conservative remote keep-alive model: €5 direct online top-up at least every 90 days (≈€20/year). Current specialist guidance says a user-initiated paid call, SMS or mobile-data use can also count as activity, but the cheapest China-roaming action cost is not yet verified. 90-day inactivity can trigger a warning SMS, then a 4-week objection window before block.",
+          "intervalDays": 90,
+          "state": "official-faq-via-specialist-media"
+        },
+        "chinaActivation": "Official CallYa registration supports online AutoID/eID/Video-Chat and eSIM delivery by email; registration requires name, address and date of birth. China-first success with a Chinese passport remains unverified and document-dependent.",
+        "kyc": "Mandatory prepaid identity verification; online or Postfiliale methods are available, with accepted method depending on ID document.",
+        "payment": "Card/bank/voucher.",
+        "wifiCalling": "Supported (device-dependent).",
+        "roamingSms": "Receiving abroad works; China rates 验证中.",
+        "refund": "Credit refundable after block (official FAQ).",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Strictest major-market window found (90 days) + Germany KYC barrier; document as reference, not recommendation.",
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
+        "tariffSummary": "No-base-fee CallYa Classic; >90 days inactivity can trigger cancellation warning, with 4 weeks to object.",
+        "sourceIds": [
+          "official-callya-faq-via-prepaid-deutschland-2025-08",
+          "official-vodafone-prepaid-hilfe-2026-09-26"
+        ],
+        "guideSteps": [
+          "Order the free CallYa Classic SIM/eSIM and complete identity verification.",
+          "Use the conservative €5 direct online top-up path at least every 90 days; cheaper paid usage may count, but China-roaming action cost is still unverified."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

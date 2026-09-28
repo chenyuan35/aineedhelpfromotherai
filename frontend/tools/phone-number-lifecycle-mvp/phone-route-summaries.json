@@ -98,6 +98,38 @@
       }
     },
     {
+      "id": "aldi-talk-activity-window-2026",
+      "displayName": "ALDI TALK",
+      "marketId": "de",
+      "marketName": "Germany",
+      "countryCode": "DE",
+      "networkName": "Telefónica DE (O2)",
+      "brandName": "ALDI TALK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "aldi-talk-activity-window-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 9.99,
+        "acquisitionCostCny": 78,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 15,
+        "keepYearCostCny": 117,
+        "keepIntervalDays": 120
+      }
+    },
+    {
       "id": "cmhk-mysim-hk-2026",
       "displayName": "CMHK MySIM 4G prepaid",
       "marketId": "hk",
@@ -258,6 +290,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "hotlink-pantas-365-pass-2026",
+      "displayName": "Hotlink Pantas",
+      "marketId": "my",
+      "marketName": "Malaysia",
+      "countryCode": "MY",
+      "networkName": "Maxis MY",
+      "brandName": "Hotlink",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "hotlink-pantas-365-pass-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "MYR",
+        "acquisitionCostOriginal": 10,
+        "acquisitionCostCny": 15,
+        "keepCurrency": "MYR",
+        "keepYearCostOriginal": 30,
+        "keepYearCostCny": 45,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -634,6 +698,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "vodafone-callya-90d-2026",
+      "displayName": "Vodafone CallYa",
+      "marketId": "de",
+      "marketName": "Germany",
+      "countryCode": "DE",
+      "networkName": "Vodafone DE",
+      "brandName": "Vodafone CallYa",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "vodafone-callya-90d-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 0,
+        "acquisitionCostCny": 0,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 20,
+        "keepYearCostCny": 156,
+        "keepIntervalDays": 90
       }
     },
     {

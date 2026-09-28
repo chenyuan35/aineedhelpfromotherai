@@ -16,6 +16,11 @@
       "countryCode": "CN"
     },
     {
+      "id": "de",
+      "name": "Germany",
+      "countryCode": "DE"
+    },
+    {
       "id": "gb",
       "name": "United Kingdom",
       "countryCode": "GB"
@@ -39,6 +44,11 @@
       "id": "jp",
       "name": "Japan",
       "countryCode": "JP"
+    },
+    {
+      "id": "my",
+      "name": "Malaysia",
+      "countryCode": "MY"
     },
     {
       "id": "nl",
@@ -78,9 +88,19 @@
       "marketId": "nl"
     },
     {
+      "id": "maxis-my",
+      "name": "Maxis MY",
+      "marketId": "my"
+    },
+    {
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
+    },
+    {
+      "id": "telefonica-de",
+      "name": "Telefónica DE (O2)",
+      "marketId": "de"
     },
     {
       "id": "telstra-au",
@@ -91,6 +111,11 @@
       "id": "twm-tw",
       "name": "Taiwan Mobile",
       "marketId": "tw"
+    },
+    {
+      "id": "vodafone-de",
+      "name": "Vodafone DE",
+      "marketId": "de"
     },
     {
       "id": "vodafone-uk",
@@ -118,6 +143,12 @@
       "name": "ActivateX"
     },
     {
+      "id": "aldi-talk",
+      "networkId": "telefonica-de",
+      "name": "ALDI TALK",
+      "marketId": "de"
+    },
+    {
       "id": "cmhk-hk-direct",
       "marketId": "hk",
       "networkId": "cmhk-hk",
@@ -140,6 +171,12 @@
       "marketId": "us",
       "networkId": null,
       "name": "H2O Wireless"
+    },
+    {
+      "id": "hotlink-my",
+      "networkId": "maxis-my",
+      "name": "Hotlink",
+      "marketId": "my"
     },
     {
       "id": "kpn-prepaid",
@@ -200,6 +237,12 @@
       "marketId": "us",
       "networkId": null,
       "name": "Ultra Mobile PayGo"
+    },
+    {
+      "id": "vodafone-callya",
+      "networkId": "vodafone-de",
+      "name": "Vodafone CallYa",
+      "marketId": "de"
     },
     {
       "id": "vodafone-uk-direct",
@@ -269,6 +312,23 @@
       "acquireUrl": "https://activatex.org/",
       "sourceIds": [
         "src-4212005934bd"
+      ]
+    },
+    {
+      "id": "aldi-talk-activity-window-2026",
+      "marketId": "de",
+      "networkId": "telefonica-de",
+      "brandId": "aldi-talk",
+      "displayName": "ALDI TALK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif",
+      "sourceIds": [
+        "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
       ]
     },
     {
@@ -350,6 +410,23 @@
       "acquireUrl": "https://www.h2owireless.com/",
       "sourceIds": [
         "src-d5c503ecd237"
+      ]
+    },
+    {
+      "id": "hotlink-pantas-365-pass-2026",
+      "marketId": "my",
+      "networkId": "maxis-my",
+      "brandId": "hotlink-my",
+      "displayName": "Hotlink Pantas",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+      "sourceIds": [
+        "official-hotlink-pantas-passes-faq-2026-09-26"
       ]
     },
     {
@@ -559,6 +636,24 @@
       ]
     },
     {
+      "id": "vodafone-callya-90d-2026",
+      "marketId": "de",
+      "networkId": "vodafone-de",
+      "brandId": "vodafone-callya",
+      "displayName": "Vodafone CallYa",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
+      "sourceIds": [
+        "official-callya-faq-via-prepaid-deutschland-2025-08",
+        "official-vodafone-prepaid-hilfe-2026-09-26"
+      ]
+    },
+    {
       "id": "vodafone-uk-zero-esim-2026",
       "marketId": "gb",
       "networkId": "vodafone-uk",
@@ -758,6 +853,24 @@
       "reportedAt": "2026-08-09"
     },
     {
+      "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
+      "url": "https://media.medion.com/cms/medion/alditalkde/ALDI-TALK-Aktivitaetszeitfenster-der-SIM-Karte.pdf?v=0426",
+      "type": "provider-official",
+      "reportedAt": "2026-04-01"
+    },
+    {
+      "id": "official-callya-faq-via-prepaid-deutschland-2025-08",
+      "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
+      "type": "specialist-media",
+      "reportedAt": "2025-08-20"
+    },
+    {
+      "id": "official-hotlink-pantas-passes-faq-2026-09-26",
+      "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
       "id": "official-staff-kpn-community-6mo-rule-2026-02",
       "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
       "type": "provider-moderated-community",
@@ -768,6 +881,12 @@
       "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
       "type": "provider-official",
       "reportedAt": "2026-09-26"
+    },
+    {
+      "id": "official-vodafone-prepaid-hilfe-2026-09-26",
+      "url": "https://www.vodafone.de/hilfe/prepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
     },
     {
       "id": "src-0b42956d1b40",
@@ -1398,6 +1517,61 @@
         "summary": "No physical SIM activation is involved; availability depends on the selected service, number country, supplier route and current stock.",
         "outsideHomeNote": "Your physical location is not treated as the number's country. Target-service rules and supplier availability still apply.",
         "sourceUrl": "https://activatex.org/"
+      }
+    },
+    {
+      "id": "snap-aldi-talk-activity-window-2026-current-profile-20260928",
+      "routeId": "aldi-talk-activity-window-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "aldi-talk-activity-window-2026",
+        "brandId": "aldi-talk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current official ALDI TALK pages: Starter-Set is €9.99 incl. €10 starting credit. Official activity-window PDF valid from 2026-01-01: initial active window 12 months; each top-up starts a new window (€5 → 4 months, €10 → 8, €15 → 12, €30 → 24), followed by 2 months passive reachability.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 9.99,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 9.99,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 15,
+          "yearCostCny": 117,
+          "action": "€5 top-up every 4 months (official ladder) ≈ €15/yr; or larger top-up for longer window. After window lapse, 2-month passive grace before deactivation.",
+          "intervalDays": 120,
+          "state": "official-confirmed"
+        },
+        "chinaActivation": "Registration requires personal data and identity verification. Official ALDI TALK supports online Video-Ident or in-person POSTIDENT/Shop-Ident; China-first completion with a foreign passport remains unverified.",
+        "kyc": "Mandatory identity verification with an accepted valid ID; passport may qualify depending on document/security features.",
+        "payment": "Aldi store vouchers (cash) or bank/card online.",
+        "wifiCalling": "Supported on O2 network (device-dependent).",
+        "roamingSms": "Receiving SMS abroad generally works; EU-roaming focused tariff, China receiving unverified — 验证中.",
+        "refund": "Official PDF: remaining credit refundable on deactivation (on request).",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif",
+        "tariffSummary": "€5/4mo activity window; 12-month initial; 2-month passive grace.",
+        "sourceIds": [
+          "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+        ],
+        "guideSteps": [
+          "Acquire the €9.99 starter set and complete identity verification.",
+          "€5 top-up every ~110 days, or use a larger official top-up for a longer activity window.",
+          "If the active window lapses, top up within the 2-month passive-reachability period."
+        ]
       }
     },
     {
@@ -2036,6 +2210,60 @@
           "summary": "Recharge H2O PayGo before refill expiry",
           "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
         }
+      }
+    },
+    {
+      "id": "snap-hotlink-pantas-365-pass-2026-current-profile-20260928",
+      "routeId": "hotlink-pantas-365-pass-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "hotlink-pantas-365-pass-2026",
+        "brandId": "hotlink-my",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current official Hotlink Pantas pages: starter pack RM10 with RM5 credit; the 365-day Active Period Pass costs RM30 and keeps the account/SIM active for 365 days. Separate 365-day internet passes include 1GB/RM2, but those do not keep an inactive SIM active.",
+        "landedCost": {
+          "currency": "MYR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 15,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "MYR",
+          "observedActionCost": 30,
+          "yearCostOriginal": 30,
+          "yearCostCny": 45,
+          "action": "Current Hotlink FAQ: buy the RM30 365-day Active Period Pass in the Hotlink app to keep the account/SIM active for 365 days. The RM2/365-day product is a 1GB data pass and is not a keep-alive substitute.",
+          "intervalDays": 365,
+          "state": "official-policy-verified-2026-09-28"
+        },
+        "chinaActivation": "Malaysia prepaid requires passport registration (MCMC rules); eSIM available in Hotlink app — overseas-first activation unverified.",
+        "kyc": "Passport registration mandatory (MY law); foreigner-friendly.",
+        "payment": "App top-up via card; international acceptance 验证中.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+        "tariffSummary": "RM30 365-day Active Period Pass; RM2 is a separate 1GB/365-day data pass and does not extend SIM validity.",
+        "sourceIds": [
+          "official-hotlink-pantas-passes-faq-2026-09-26"
+        ],
+        "guideSteps": [
+          "Acquire the RM10 Hotlink Pantas starter pack and complete required registration.",
+          "Buy the RM30 365-day Active Period Pass in the Hotlink app once per year."
+        ]
       }
     },
     {
@@ -3836,6 +4064,61 @@
       }
     },
     {
+      "id": "snap-vodafone-callya-90d-2026-current-profile-20260928",
+      "routeId": "vodafone-callya-90d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "vodafone-callya-90d-2026",
+        "brandId": "vodafone-callya",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Vodafone help confirms CallYa is unlimited-duration but may be terminated after more than 90 days without use; Vodafone sends an SMS first and gives 4 weeks to object before blocking. Current CallYa Classic has no basic fee; SIM/eSIM activation and physical-SIM shipping are free.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": 0,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-free-sim-and-shipping"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 20,
+          "yearCostCny": 156,
+          "action": "Conservative remote keep-alive model: €5 direct online top-up at least every 90 days (≈€20/year). Current specialist guidance says a user-initiated paid call, SMS or mobile-data use can also count as activity, but the cheapest China-roaming action cost is not yet verified. 90-day inactivity can trigger a warning SMS, then a 4-week objection window before block.",
+          "intervalDays": 90,
+          "state": "official-faq-via-specialist-media"
+        },
+        "chinaActivation": "Official CallYa registration supports online AutoID/eID/Video-Chat and eSIM delivery by email; registration requires name, address and date of birth. China-first success with a Chinese passport remains unverified and document-dependent.",
+        "kyc": "Mandatory prepaid identity verification; online or Postfiliale methods are available, with accepted method depending on ID document.",
+        "payment": "Card/bank/voucher.",
+        "wifiCalling": "Supported (device-dependent).",
+        "roamingSms": "Receiving abroad works; China rates 验证中.",
+        "refund": "Credit refundable after block (official FAQ).",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Strictest major-market window found (90 days) + Germany KYC barrier; document as reference, not recommendation.",
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
+        "tariffSummary": "No-base-fee CallYa Classic; >90 days inactivity can trigger cancellation warning, with 4 weeks to object.",
+        "sourceIds": [
+          "official-callya-faq-via-prepaid-deutschland-2025-08",
+          "official-vodafone-prepaid-hilfe-2026-09-26"
+        ],
+        "guideSteps": [
+          "Order the free CallYa Classic SIM/eSIM and complete identity verification.",
+          "Use the conservative €5 direct online top-up path at least every 90 days; cheaper paid usage may count, but China-roaming action cost is still unverified."
+        ]
+      }
+    },
+    {
       "id": "snap-vodafone-uk-zero-esim-2026-current-profile-e3cd66",
       "routeId": "vodafone-uk-zero-esim-2026",
       "kind": "current-profile",
@@ -4135,6 +4418,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "aldi-talk-activity-window-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 9.99,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": 117,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "cmhk-mysim-hk-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -4181,6 +4476,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "hotlink-pantas-365-pass-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MYR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 15,
+      "keepCurrency": "MYR",
+      "keepYearCostOriginal": 30,
+      "keepYearCostCny": 45,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "kpn-prepaid-6mo-2026",
@@ -4313,6 +4620,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "vodafone-callya-90d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": 0,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": 156,
+      "keepIntervalDays": 90
     },
     {
       "routeId": "vodafone-uk-zero-esim-2026",
