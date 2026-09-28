@@ -120,6 +120,23 @@
     ]
   },
   {
+    "id": "kpn-prepaid-6mo-2026",
+    "marketId": "nl",
+    "networkId": "kpn-nl",
+    "brandId": "kpn-prepaid",
+    "displayName": "KPN Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+    "sourceIds": [
+      "official-staff-kpn-community-6mo-rule-2026-02"
+    ]
+  },
+  {
     "id": "lebara-uk-direct-esim-china",
     "marketId": "gb",
     "networkId": "vodafone-uk",
@@ -234,6 +251,23 @@
       "src-573da827b0ea",
       "src-ed3f565a3e3a",
       "src-f2d3210589df"
+    ]
+  },
+  {
+    "id": "telstra-prepaid-longexpiry-2026",
+    "marketId": "au",
+    "networkId": "telstra-au",
+    "brandId": "telstra-prepaid",
+    "displayName": "Telstra Pre-Paid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+    "sourceIds": [
+      "official-telstra-prepaid-compare-2026-09-26"
     ]
   },
   {

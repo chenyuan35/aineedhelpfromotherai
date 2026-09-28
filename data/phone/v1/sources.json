@@ -150,6 +150,18 @@
     "reportedAt": "2026-08-09"
   },
   {
+    "id": "official-staff-kpn-community-6mo-rule-2026-02",
+    "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-02-16"
+  },
+  {
+    "id": "official-telstra-prepaid-compare-2026-09-26",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+    "type": "provider-official",
+    "reportedAt": "2026-09-26"
+  },
+  {
     "id": "src-0b42956d1b40",
     "url": "https://support.sakuramobile.jp/hc/en-us/articles/27171487316121--Travel-SIM-eSIM-Can-I-make-phone-calls-or-send-SMS-with-the-Travel-SIM-eSIM",
     "type": "official",

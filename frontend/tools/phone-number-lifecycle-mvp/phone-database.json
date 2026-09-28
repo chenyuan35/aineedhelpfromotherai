@@ -6,6 +6,11 @@
   },
   "markets": [
     {
+      "id": "au",
+      "name": "Australia",
+      "countryCode": "AU"
+    },
+    {
       "id": "cn",
       "name": "China",
       "countryCode": "CN"
@@ -36,6 +41,11 @@
       "countryCode": "JP"
     },
     {
+      "id": "nl",
+      "name": "Netherlands",
+      "countryCode": "NL"
+    },
+    {
       "id": "us",
       "name": "United States",
       "countryCode": "US"
@@ -53,9 +63,19 @@
       "marketId": "hk"
     },
     {
+      "id": "kpn-nl",
+      "name": "KPN",
+      "marketId": "nl"
+    },
+    {
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
+    },
+    {
+      "id": "telstra-au",
+      "name": "Telstra",
+      "marketId": "au"
     },
     {
       "id": "vodafone-uk",
@@ -101,6 +121,12 @@
       "name": "H2O Wireless"
     },
     {
+      "id": "kpn-prepaid",
+      "marketId": "nl",
+      "networkId": "kpn-nl",
+      "name": "KPN Prepaid"
+    },
+    {
       "id": "lebara-uk",
       "networkId": "vodafone-uk",
       "name": "Lebara UK",
@@ -129,6 +155,12 @@
       "marketId": "us",
       "networkId": null,
       "name": "Tello"
+    },
+    {
+      "id": "telstra-prepaid",
+      "marketId": "au",
+      "networkId": "telstra-au",
+      "name": "Telstra Pre-Paid"
     },
     {
       "id": "trip-com-china-mobile-cmlink-cn",
@@ -277,6 +309,23 @@
       ]
     },
     {
+      "id": "kpn-prepaid-6mo-2026",
+      "marketId": "nl",
+      "networkId": "kpn-nl",
+      "brandId": "kpn-prepaid",
+      "displayName": "KPN Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+      "sourceIds": [
+        "official-staff-kpn-community-6mo-rule-2026-02"
+      ]
+    },
+    {
       "id": "lebara-uk-direct-esim-china",
       "marketId": "gb",
       "networkId": "vodafone-uk",
@@ -391,6 +440,23 @@
         "src-573da827b0ea",
         "src-ed3f565a3e3a",
         "src-f2d3210589df"
+      ]
+    },
+    {
+      "id": "telstra-prepaid-longexpiry-2026",
+      "marketId": "au",
+      "networkId": "telstra-au",
+      "brandId": "telstra-prepaid",
+      "displayName": "Telstra Pre-Paid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-26",
+      "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+      "sourceIds": [
+        "official-telstra-prepaid-compare-2026-09-26"
       ]
     },
     {
@@ -623,6 +689,18 @@
       "url": "https://www.nodeloc.com/t/topic/102713",
       "type": "commercial-community-post",
       "reportedAt": "2026-08-09"
+    },
+    {
+      "id": "official-staff-kpn-community-6mo-rule-2026-02",
+      "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-02-16"
+    },
+    {
+      "id": "official-telstra-prepaid-compare-2026-09-26",
+      "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+      "type": "provider-official",
+      "reportedAt": "2026-09-26"
     },
     {
       "id": "src-0b42956d1b40",
@@ -1838,6 +1916,60 @@
       }
     },
     {
+      "id": "snap-kpn-prepaid-6mo-2026-current-profile-20260926",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "nl-au-directory-batch-g.json",
+      "data": {
+        "id": "kpn-prepaid-6mo-2026",
+        "brandId": "kpn-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official-staff answer on KPN Community (2026-02, citing standing policy): prepaid credit is unlimited-validity, but the number must be USED once every 6 months (call, SMS, mobile data, or top-up). Receiving calls/SMS does NOT count.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 4.99,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 15,
+          "landedCny": 117,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.07,
+          "yearCostOriginal": 0.14,
+          "yearCostCny": 1.1,
+          "action": "One user-initiated SMS (~€0.07) per 6 months. Credit never expires; receiving doesn't count as usage.",
+          "intervalDays": 180,
+          "state": "official-staff-community-confirmed"
+        },
+        "chinaActivation": "SIM activation on NL network standard; eSIM available; China-first unverified.",
+        "kyc": "No real-name requirement (NL).",
+        "payment": "Dutch iDEAL dominant; international card top-up 验证中.",
+        "wifiCalling": "Supported on KPN (device-dependent).",
+        "roamingSms": "Receiving SMS abroad works; China 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+        "tariffSummary": "Unlimited credit validity; 1 usage per 6 months keeps number.",
+        "sourceIds": [
+          "official-staff-kpn-community-6mo-rule-2026-02"
+        ],
+        "guideSteps": [
+          "Order KPN prepaid SIM/eSIM.",
+          "Send 1 SMS every ~170 days."
+        ]
+      }
+    },
+    {
       "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
       "routeId": "lebara-uk-direct-esim-china",
       "kind": "capabilities",
@@ -3004,6 +3136,59 @@
       }
     },
     {
+      "id": "snap-telstra-prepaid-longexpiry-2026-current-profile-20260926",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "nl-au-directory-batch-g.json",
+      "data": {
+        "id": "telstra-prepaid-longexpiry-2026",
+        "brandId": "telstra-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official plan table (2026-09-26): recharge $200 → 6-month expiry, $395 → 12-month expiry; lower tiers 7-28 days. Data for use in Australia only.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 2,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2,
+          "landedCny": 9.4,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported-sim-price"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 200,
+          "yearCostOriginal": 395,
+          "yearCostCny": 1860,
+          "action": "Recharge-expiry model: $395/yr (12-month tier) or $200/6mo. Expensive vs global alternatives. Post-expiry grace period for number recovery pending capture — 验证中.",
+          "intervalDays": 365,
+          "state": "official-recharge-ladder-number-grace-pending"
+        },
+        "chinaActivation": "Telstra prepaid activation requires Australia network typically; eSIM available; China-first unverified.",
+        "kyc": "AU prepaid ID check (name/DOB, light-touch; passport OK).",
+        "payment": "Card/PayPal online; international cards generally accepted.",
+        "wifiCalling": "Supported (device-dependent).",
+        "roamingSms": "Receiving SMS abroad works (community); roaming packs for outbound.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "$395/yr is 20-100x pricier than alternatives (Hotlink RM2, ClubSIM HK$6); document as reference unless AU number specifically needed.",
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+        "tariffSummary": "$200/6mo or $395/12mo recharge-expiry model.",
+        "sourceIds": [
+          "official-telstra-prepaid-compare-2026-09-26"
+        ],
+        "guideSteps": [
+          "Directory card only — premium pricing documented for reference."
+        ]
+      }
+    },
+    {
       "id": "snap-trip-cmlink-china-data-frontstage-6d28cb",
       "routeId": "trip-cmlink-china-data",
       "kind": "frontstage",
@@ -3813,6 +3998,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "kpn-prepaid-6mo-2026",
+      "checkedAt": "2026-09-26",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 15,
+      "acquisitionCostCny": 117,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 0.14,
+      "keepYearCostCny": 1.1,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -3883,6 +4080,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "checkedAt": "2026-09-26",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AUD",
+      "acquisitionCostOriginal": 2,
+      "acquisitionCostCny": 9.4,
+      "keepCurrency": "AUD",
+      "keepYearCostOriginal": 395,
+      "keepYearCostCny": 1860,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "trip-cmlink-china-data",

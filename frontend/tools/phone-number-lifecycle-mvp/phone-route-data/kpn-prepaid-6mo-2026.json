@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "kpn-prepaid-6mo-2026",
+    "marketId": "nl",
+    "networkId": "kpn-nl",
+    "brandId": "kpn-prepaid",
+    "displayName": "KPN Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+    "sourceIds": [
+      "official-staff-kpn-community-6mo-rule-2026-02"
+    ]
+  },
+  "market": {
+    "id": "nl",
+    "name": "Netherlands",
+    "countryCode": "NL"
+  },
+  "network": {
+    "id": "kpn-nl",
+    "name": "KPN",
+    "marketId": "nl"
+  },
+  "brand": {
+    "id": "kpn-prepaid",
+    "marketId": "nl",
+    "networkId": "kpn-nl",
+    "name": "KPN Prepaid"
+  },
+  "metrics": {
+    "routeId": "kpn-prepaid-6mo-2026",
+    "checkedAt": "2026-09-26",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 15,
+    "acquisitionCostCny": 117,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 0.14,
+    "keepYearCostCny": 1.1,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-staff-kpn-community-6mo-rule-2026-02",
+      "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-02-16"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-kpn-prepaid-6mo-2026-current-profile-20260926",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "nl-au-directory-batch-g.json",
+      "data": {
+        "id": "kpn-prepaid-6mo-2026",
+        "brandId": "kpn-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official-staff answer on KPN Community (2026-02, citing standing policy): prepaid credit is unlimited-validity, but the number must be USED once every 6 months (call, SMS, mobile data, or top-up). Receiving calls/SMS does NOT count.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 4.99,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 15,
+          "landedCny": 117,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.07,
+          "yearCostOriginal": 0.14,
+          "yearCostCny": 1.1,
+          "action": "One user-initiated SMS (~€0.07) per 6 months. Credit never expires; receiving doesn't count as usage.",
+          "intervalDays": 180,
+          "state": "official-staff-community-confirmed"
+        },
+        "chinaActivation": "SIM activation on NL network standard; eSIM available; China-first unverified.",
+        "kyc": "No real-name requirement (NL).",
+        "payment": "Dutch iDEAL dominant; international card top-up 验证中.",
+        "wifiCalling": "Supported on KPN (device-dependent).",
+        "roamingSms": "Receiving SMS abroad works; China 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+        "tariffSummary": "Unlimited credit validity; 1 usage per 6 months keeps number.",
+        "sourceIds": [
+          "official-staff-kpn-community-6mo-rule-2026-02"
+        ],
+        "guideSteps": [
+          "Order KPN prepaid SIM/eSIM.",
+          "Send 1 SMS every ~170 days."
+        ]
+      }
+    }
+  ]
+}

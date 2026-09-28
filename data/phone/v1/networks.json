@@ -5,9 +5,19 @@
     "marketId": "hk"
   },
   {
+    "id": "kpn-nl",
+    "name": "KPN",
+    "marketId": "nl"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "telstra-au",
+    "name": "Telstra",
+    "marketId": "au"
   },
   {
     "id": "vodafone-uk",
