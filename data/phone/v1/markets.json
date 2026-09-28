@@ -15,6 +15,11 @@
     "countryCode": "DE"
   },
   {
+    "id": "es",
+    "name": "Spain",
+    "countryCode": "ES"
+  },
+  {
     "id": "gb",
     "name": "United Kingdom",
     "countryCode": "GB"
@@ -35,6 +40,11 @@
     "countryCode": "HR"
   },
   {
+    "id": "it",
+    "name": "Italy",
+    "countryCode": "IT"
+  },
+  {
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
@@ -48,6 +58,11 @@
     "id": "nl",
     "name": "Netherlands",
     "countryCode": "NL"
+  },
+  {
+    "id": "sg",
+    "name": "Singapore",
+    "countryCode": "SG"
   },
   {
     "id": "tw",

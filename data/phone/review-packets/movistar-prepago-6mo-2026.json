@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "es",
+    "name": "Spain",
+    "countryCode": "ES"
+  },
+  "network": {
+    "id": "movistar-es",
+    "name": "Movistar ES",
+    "marketId": "es"
+  },
+  "brand": {
+    "id": "movistar-prepago",
+    "networkId": "movistar-es",
+    "name": "Movistar Prepago",
+    "marketId": "es"
+  },
+  "route": {
+    "id": "movistar-prepago-6mo-2026",
+    "marketId": "es",
+    "networkId": "movistar-es",
+    "brandId": "movistar-prepago",
+    "displayName": "Movistar Prepago",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/"
+  },
+  "sources": [
+    {
+      "id": "official-movistar-community-saldo-vigencia-2026-09-26",
+      "url": "https://comunidad.movistar.es/kb/Gestiones/%C2%BFcu%C3%A1l-es-la-vigencia-del-saldo-de-movistar-%C2%BFcuando-caduca/4535087",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-movistar-prepago-lifecycle-2026-09-21",
+      "url": "https://comunidad.movistar.es/discussions/movil/recuperar-saldo-prepago/5366579/replies/5366587",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-21"
+    },
+    {
+      "id": "official-movistar-recharge-min-5-terms-2026-09-28",
+      "url": "https://prod.adb.col.movistar.es/content/dam/movistar/contratos/cp-servicio-recarga-tarjetas.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "sourceIds": [
+    "official-movistar-community-saldo-vigencia-2026-09-26",
+    "official-movistar-prepago-lifecycle-2026-09-21",
+    "official-movistar-recharge-min-5-terms-2026-09-28"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-movistar-prepago-6mo-2026-current-profile-20260928",
+      "routeId": "movistar-prepago-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "it-es-sg-directory-batch-h.json",
+      "data": {
+        "id": "movistar-prepago-6mo-2026",
+        "brandId": "movistar-prepago",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Movistar moderated-community guidance: prepaid validity is 6 months and renews with each recharge. If no recharge occurs, a 54-day tail follows: calls and SMS can be received for 40 days, then only SMS for the final 14 days; no recharge by day 54 means deactivation and number loss.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 10,
+          "yearCostCny": 78,
+          "action": "Recharge at least EUR5 before the 6-month boundary to renew validity. If missed, the 54-day tail is a recovery window rather than the normal keep-alive schedule.",
+          "intervalDays": 180,
+          "state": "official-confirmed-lifecycle-and-minimum-recharge"
+        },
+        "chinaActivation": "Spanish prepaid passport registration; in-store standard; abroad activation unverified.",
+        "kyc": "Passport mandatory (ES law).",
+        "payment": "Official bank-card recharge accepts national or foreign Visa/Mastercard; channel-specific limits can differ.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard; China receive 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
+        "tariffSummary": "6-month validity per recharge; EUR5 minimum official recharge; 54-day recovery/receive tail.",
+        "sourceIds": [
+          "official-movistar-community-saldo-vigencia-2026-09-26",
+          "official-movistar-prepago-lifecycle-2026-09-21",
+          "official-movistar-recharge-min-5-terms-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire Movistar Prepago in Spain and complete required identity registration.",
+          "Recharge at least EUR5 before 6 months elapse from the prior recharge.",
+          "If the deadline is missed, recharge during the first 40 days of the 54-day tail to recover expired balance and avoid final number loss."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

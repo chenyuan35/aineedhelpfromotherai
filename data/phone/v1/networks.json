@@ -25,9 +25,19 @@
     "marketId": "my"
   },
   {
+    "id": "movistar-es",
+    "name": "Movistar ES",
+    "marketId": "es"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "singtel-sg",
+    "name": "Singtel",
+    "marketId": "sg"
   },
   {
     "id": "telefonica-de",
@@ -43,6 +53,11 @@
     "id": "three-hk",
     "name": "3 Hong Kong",
     "marketId": "hk"
+  },
+  {
+    "id": "tim-it",
+    "name": "TIM Italy",
+    "marketId": "it"
   },
   {
     "id": "twm-tw",
