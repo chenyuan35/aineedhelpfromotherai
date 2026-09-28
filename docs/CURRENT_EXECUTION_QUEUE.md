@@ -7,84 +7,71 @@ Last updated: 2026-09-28
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **Phone database coverage and public/indexable coverage are separate concerns.** Broad reviewed database coverage is desirable; it does not authorize equivalent public URL growth.
-3. **Frontend target — visual search/decision UI.** Search/filter/compare first, progressive disclosure and on-demand loading, with deep evidence loaded only when the user touches the route.
-4. **SEO target — selective publication.** Database rows may be `research-only`, `database-only`, `comparison-visible`, `detail-eligible` or `indexable`; only the last state earns sitemap/indexable publication.
-5. **AI Reset Radar — FROZEN / direct URLs preserved.**
-6. **Relay Exit Risk — data-accrual experiment only.**
+2. **Broad comparison coverage stays preserved.** The current 135-route legacy comparison artifact remains valid product input behind the PR #263 manifest gate.
+3. **Canonical v1 is not yet feature/coverage-parity.** It has 15 routes; only four IDs overlap the 135-route comparison set.
+4. **Publication remains separate.** Database migration must not imply new route/market URLs, sitemap entries or indexability.
+5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
+Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — Qwen/Kimi data admission hardening / PR #263
+## JUST COMPLETED — canonical-to-comparison compatibility audit
 
-The delegated-research → comparison-database boundary is now explicit without shrinking the broad Phone dataset:
+Result: **STOP / not lossless yet.**
 
-- both legacy batch merge scripts no longer discover `*batch*.json` by wildcard;
-- `frontend/tools/phone-number-lifecycle-mvp/batch-admission-manifest.json` is the explicit reviewed compatibility allowlist;
-- the currently admitted legacy batch set is preserved and the global comparison artifact remains at least **135 routes**;
-- an unlisted/raw delegated batch is excluded even when placed beside reviewed batch files;
-- normalized `data/phone/v1` review-packet admission remains the preferred new-route path;
-- comparison/database admission still does not grant route detail publication, sitemap inclusion or indexability;
-- `npm run phone:data:check` now regression-tests the delegated-batch boundary and runs inside Eval Gate.
+- canonical `data/phone/v1`: 15 routes / 7 markets / 14 brands / 2 networks / 61 sources;
+- compiled canonical `phone-database.json`: the same 15 routes;
+- legacy `global-directory.json`: 135 routes / 83 route markets / 134 brands / 112 networks / 219 sources;
+- route-ID overlap is only 4; 131 comparison routes are not canonical;
+- canonical snapshots reference only those 15 routes and only four routes have rich `current-profile` data;
+- legacy comparison routes reference 213 distinct source IDs, 192 of which are absent from canonical sources;
+- the comparison/deep-detail UI still consumes rich fields not normalized for the missing legacy routes.
 
-Release closure: Eval Gate #859 passed, Vercel Preview passed, PR #263 squash-merged as `6623b01293c9dd558ac2a9b8a274a5891a5954ea`, main Vercel deployment succeeded, and live `/tools/phone-number-survival-guide/` plus `/tools/phone-number-survival-guide/directory/` both returned HTTP 200.
+Verification on fresh main: `phone:data` compiler check passed at 15 canonical routes; candidate-pipeline test preserved 26 admitted legacy batches / 135 comparison routes; publication-state test preserved 135 database routes / 3 explicit indexable routes. No production/publication change was made.
 
-## NEXT SESSION — canonical-to-comparison compatibility audit
+## NEXT SESSION — one-route canonical migration pilot
 
-**Session task:** determine whether the legacy comparison compatibility artifact can be derived from reviewed canonical Phone data so database admission has one unambiguous authority.
+**Session task:** prove one already-admitted legacy comparison route can be moved into canonical v1 without losing identity, provenance or comparison fields.
+
+Use `hk2-depth-batch-u.json`, which contains one route: `cmhk-mysim-hk-2026`.
 
 ### Scope
 
-1. compare route identity/counts and UI-required fields between canonical `data/phone/v1`, its compiled artifacts, and `frontend/tools/phone-number-lifecycle-mvp/global-directory.json`;
-2. identify exactly what the legacy global directory still provides that canonical normalized data does not;
-3. determine whether the 135-route comparison behavior can be generated losslessly from reviewed canonical truth with a small maintainable adapter/build step;
-4. if the mapping is lossless, implement the smallest convergence and regression tests; if it is not lossless, document the exact incompatibility and stop;
-5. preserve the PR #263 manifest gate until the compatibility layer is actually retired or made redundant;
-6. keep publication/indexability policy independent and unchanged.
+1. map the route's market / network / brand / route IDs and source IDs into canonical v1;
+2. represent its rich comparison profile in the existing canonical snapshot model without inventing fields or weakening evidence;
+3. add the route through a reviewed canonical migration path, keeping the legacy manifest entry in place;
+4. build a small test/adapter proving canonical data can reproduce the route's current comparison fields;
+5. run canonical data checks plus existing admission/publication tests;
+6. do **not** switch the live 135-route comparison artifact in this pilot.
 
 ### Definition of done
 
-- one unambiguous database-admission authority exists, or a precise bounded incompatibility is documented;
-- current 135-route comparison coverage and required decision fields are preserved;
-- raw/staging/Qwen/Kimi output still cannot bypass reviewed admission;
-- no standalone route/market URL expansion occurs;
-- tests protect canonical → comparison → publication boundaries.
+- `cmhk-mysim-hk-2026` exists in canonical v1 with complete references and provenance;
+- canonical-derived comparison output for that route matches the legacy route on the decision fields required by the current UI;
+- current 135-route comparison coverage is unchanged;
+- raw/staging delegated output still cannot bypass review;
+- publication/indexability remains unchanged.
 
 ### Stop conditions
 
-Do not redesign the Phone schema, add a backend service, delete valid routes, bulk-publish pages, or weaken provenance/evidence rules merely to remove the compatibility layer.
+Stop and document the exact blocker if the pilot requires a schema redesign, loses source provenance, requires ambiguous route-ID remapping, changes route semantics, or affects public publication/indexability. Do not compensate by bulk-copying legacy files into canonical truth.
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi remain **high-throughput backstage workers**, not project managers.
-
-Eligible parallel work: expand low-cost route evidence, retrieve/timestamp sources, fill normalized fields, detect stale rules/contradictions, dedupe circular reports, collect service-specific operational evidence, and produce bounded research/data batches.
-
-Every delegated result is `RESEARCH CANDIDATE` until sampled/reviewed by the coordinating session. Qwen/Kimi must not independently change roadmap, database admission, production/publication state, sitemap/indexability, ranking policy, infrastructure roles, billing/account settings, or merge/deploy state.
-
-## Daily work discipline
-
-Every project workday: read the GitHub startup chain; define one bounded task; execute/delegate only what serves it; verify; update GitHub facts/queue when state changes; append the Daily Project Journal; close with completed work, blockers, unfinished work, next order and do-not-do list.
-
-## Measurement lane
-
-- Search Console: use Windsor.ai `searchconsole` while connected; official GSC API/export is fallback.
-- Keep Google organic separate from social/referral, AI referral and direct/repeat.
-- Do not churn Phone public UX from tiny GSC samples.
+QwenPaw/Kimi remain high-throughput backstage research/data workers. Their outputs are `RESEARCH CANDIDATE` until reviewed; they do not control canonical admission, publication, roadmap or deployment.
 
 ## External waits
 
-- **TikTok App Review — WAITING.** Do not Recall/edit submitted configuration until Approved or Rejected/Changes requested.
-- **Authority batch 2 — WAITING.** Follow the trigger in `docs/AUTHORITY_AND_AI_DISCOVERY.md`; do not create extra outreach volume merely to stay busy.
+- **TikTok App Review — WAITING.** Do not alter the submitted configuration until review outcome.
+- **Authority batch 2 — WAITING.** Follow `docs/AUTHORITY_AND_AI_DISCOVERY.md`; no extra outreach merely to create activity.
 
 ## Do not do next
 
-- do not equate database rows with SEO pages;
-- do not bulk-create country/provider/route SEO pages from coverage data;
-- do not invent compatibility percentages, missing costs or a Phone risk score;
+- do not bulk-migrate the remaining legacy batches before the one-route pilot proves the pattern;
+- do not remove the PR #263 manifest gate yet;
+- do not shrink the 135-route comparison surface to match the 15-route canonical set;
+- do not equate canonical admission with SEO/indexability;
+- do not add a backend or redesign the schema for architectural neatness;
 - do not let Qwen/Kimi raw output bypass review/admission/publication gates;
-- do not migrate to a backend merely for architectural neatness;
-- do not reopen generic Reset/Codex tracker work or Relay methodology;
-- do not rotate trial accounts or change billing to bypass quotas;
 - do not change DNS, AdSense, billing, paid services or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.
