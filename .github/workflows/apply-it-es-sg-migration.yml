@@ -1,13 +1,67 @@
 name: Apply IT ES SG migration patch
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - phone/it-es-sg-canonical-migration-20260928
 
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  noop:
+  apply:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - run: echo staging chunks
+      - uses: actions/checkout@v4
+        with:
+          ref: phone/it-es-sg-canonical-migration-20260928
+          fetch-depth: 0
+
+      - name: Apply exact tested patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .tmp/it-es-sg-chunk-* | base64 -d | gzip -d > /tmp/it-es-sg.patch
+          git apply --check /tmp/it-es-sg.patch
+          git apply /tmp/it-es-sg.patch
+
+          cat > /tmp/expected-blobs <<'EOF'
+          09a061dde8f948ebc8215f03cc4ac2ef35f03cb4 data/phone/review-packets/movistar-prepago-6mo-2026.json
+          bed84863d9f94c2b222c5c3b38d7955aaa17ea2f data/phone/review-packets/singtel-hi-prepaid-passport-30d-2026.json
+          bc6837616dd07350286104e38b707f0003ee1bf3 data/phone/review-packets/tim-prepaid-12mo-2026.json
+          5cffa7699876e8de57e8b40729b455aadabb4d46 data/phone/v1/brands.json
+          006d72f093403cdd101c96a61cfb4ed21517521e data/phone/v1/markets.json
+          c53c80d2fafaa59b5860181113a978dd5db211a5 data/phone/v1/networks.json
+          74bac20a274fb2dafa8e623bd149c406b185eab8 data/phone/v1/routes.json
+          3fb4844e1a7ce2aef21d768c2126d844e1dceac4 data/phone/v1/snapshots.json
+          60f3033432db9feefff511fa993d5a07aeceac01 data/phone/v1/sources.json
+          0aaee67a6237fdbb0cae5084fe65820a828f9200 frontend/tools/phone-number-lifecycle-mvp/global-directory.json
+          86febde7bbec709be8f7c022a589247318ae6179 frontend/tools/phone-number-lifecycle-mvp/it-es-sg-directory-batch-h.json
+          62756589bf4ac55fb49c2e568204e9ca8f57da9e frontend/tools/phone-number-lifecycle-mvp/phone-database.json
+          2cdd133332ff7b5eac30b9e84d47d077ffcfc5c6 frontend/tools/phone-number-lifecycle-mvp/phone-route-data/movistar-prepago-6mo-2026.json
+          06ab0e3351b9ce064529aeaa44c40805b5ff099e frontend/tools/phone-number-lifecycle-mvp/phone-route-data/singtel-hi-prepaid-passport-30d-2026.json
+          9d867d05bd0a0fa800b8c971d50b13238a34d2a3 frontend/tools/phone-number-lifecycle-mvp/phone-route-data/tim-prepaid-12mo-2026.json
+          08e04cb8b8482e93d791b9b9db62c01c202c8a7c frontend/tools/phone-number-lifecycle-mvp/phone-route-metrics.json
+          2fad4a2b6eb2652e1c6245d35e412c1f429d0587 frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json
+          014ef4657544e3a4639744a70e5e8cf6d64e38d3 frontend/tools/phone-number-lifecycle-mvp/phone-search-index.json
+          958b451cdb236c2f5043769e8b0ff5b24e4d085a package.json
+          a4fcb2aac1e348d111b16b39c39d1d1b318f05bf scripts/test-phone-canonical-it-es-sg-migration.mjs
+          EOF
+
+          while read -r expected path; do
+            actual="$(git hash-object "$path")"
+            test "$actual" = "$expected" || { echo "blob mismatch: $path expected=$expected actual=$actual"; exit 1; }
+          done < /tmp/expected-blobs
+
+          rm -f .tmp/it-es-sg.patch.gz.b64 .tmp/it-es-sg-chunk-* .github/workflows/apply-it-es-sg-migration.yml
+          rmdir .tmp 2>/dev/null || true
+
+          git config user.name "aineedhelp-bot"
+          git config user.email "bot@aineedhelpfromotherai.com"
+          git add -A
+          git commit -m "phone: migrate IT ES SG routes to canonical v1"
+          git push origin HEAD:phone/it-es-sg-canonical-migration-20260928
