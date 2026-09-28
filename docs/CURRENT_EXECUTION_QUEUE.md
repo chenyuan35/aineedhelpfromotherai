@@ -15,42 +15,41 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — US batch-A identity/provenance reconciliation + migration
+## JUST COMPLETED — Japan batch-B identity/provenance reconciliation
 
-Result: **PASS / Ultra PayGo + Tello PAYG + H2O PayGo migrated backstage after current reconciliation; no publication expansion.**
+Result: **IDENTITIES RECONCILED / MIGRATION NOT STARTED.**
 
-- PR #282 squash-merged as `a72c05b58b708be8e0b22d8bbd3640c29637c1e3`; CI #167, Eval Gate #900, Vercel Preview and production deployment passed;
-- canonical is now 35 routes / 16 markets / 33 brands / 19 networks / 112 sources; overlap is 24 and 111 comparison routes remain legacy-only;
-- 233 unique source IDs are referenced by current comparison routes; 161 remain absent from canonical sources;
-- `tello-us` and `tello-paygo-credit-2026` are distinct products: the former is the 30-day monthly-plan route and the latter the separate PAYG-credit route, so no alias/collapse was used;
-- Tello PAYG now uses the current USD20 minimum web order and 90-day **order-based** expiry; the stale “send one SMS every ~80 days” shorthand was removed;
-- Ultra PayGo remains USD3/30 days but is represented as the PayGo-specific physical-SIM route with current official eBay/select-T-Mobile-store acquisition semantics; no unsupported stable SIM-kit landed price is asserted;
-- H2O PayGo remains observation/HOLD because current International Roaming eligibility excludes PAYG and PAYG-specific Wi-Fi Calling/China continuity is unverified;
-- exact source metadata and reviewed independent Tello provenance are retained; all three canonical-adapter rows deep-equal their reconciled comparison rows;
-- live Phone Directory returned HTTP 200; all three new standalone route URLs returned HTTP 404, confirming publication/indexability stayed unchanged.
+- review: `docs/PHONE_JP_BATCH_B_IDENTITY_PROVENANCE_RECONCILIATION_2026-09-29.md`;
+- `povo20-zero-base-2026` remains HOLD for the general overseas-user route: the current Voice+Data path accepts My Number Card, Japanese driver's license or residence card, so the old “Japanese documents only” shorthand was too broad, but a typical overseas-only applicant with only a foreign passport still cannot use that acquisition path;
+- povo's current official retention rule is paid-topping based over the 180-day window; the legacy row must not present JPY 250 as a universal minimum keep-alive requirement, and its “overseas SMS unverified” wording is stale because current official Voice+Data roaming supports SMS after enablement;
+- `mobal-japan-voice-2026` is a **genuinely distinct Voice-Only product**, not the existing canonical `mobal-japan-voice-data`. Current Mobal separates Voice-Only at JPY 1,430/month from Voice+Data starting JPY 1,650/month; do not alias/collapse them;
+- `sakura-mobile-voice-2026` is the **same underlying Sakura monthly Voice+Data product** already represented by canonical `sakura-japan-voice-data`. Current 5GB billing is JPY 3,278 tax included plus JPY 5,500 activation; calls/SMS can roam abroad while data cannot. Do not create a duplicate canonical product for the legacy ID;
+- current canonical comparison adapter always emits `id: route.id`; it has no comparison-only legacy-ID mapping. Therefore Sakura exact legacy-ID parity hits the documented alias/schema stop boundary;
+- no route was migrated, comparison remains 135, reviewed manifest gate remains intact and explicit indexability remains 3.
 
-## NEXT SESSION — Japan batch-B identity/provenance reconciliation before migration
+## NEXT SESSION — Japan batch-B current-fact row reconciliation + Sakura legacy-ID boundary
 
-**Session task:** work only on `jp-directory-batch-b.json`: `povo20-zero-base-2026`, `mobal-japan-voice-2026`, and `sakura-mobile-voice-2026`. Identity/provenance comes before migration.
+**Session task:** work only on the same three Japan batch-B rows. Correct the legacy comparison data to the reconciled current facts without changing route count/publication, then resolve the smallest safe comparison-only handling for Sakura's same-product/different-ID case before attempting canonical migration.
 
 ### Scope
 
-1. reverify current povo 2.0, Mobal Voice and Sakura Mobile Voice provider/source facts;
-2. explicitly reconcile legacy `mobal-japan-voice-2026` against existing canonical `mobal-japan-voice-data`, and legacy `sakura-mobile-voice-2026` against existing canonical `sakura-japan-voice-data`; do not create duplicate canonical products merely to preserve legacy IDs and do not collapse genuinely distinct products;
-3. preserve povo as HOLD unless lawful acquisition/eKYC and overseas continuity evidence materially changes;
-4. migrate only identities that can be represented losslessly with exact canonical-adapter parity;
-5. keep comparison at 135, manifest gate intact and explicit indexability at 3.
+1. correct povo retention/eKYC/overseas-SMS fields to current official facts while preserving HOLD;
+2. correct Mobal Voice-Only pricing/roaming/source provenance and keep it distinct from canonical Voice+Data;
+3. correct Sakura tax-inclusive pricing, passport/pickup and roaming facts without creating a second canonical Sakura product;
+4. determine whether a narrowly scoped comparison-only legacy-ID mapping can preserve exact parity without changing normalized product identity; if that requires broader schema/backend redesign, keep the legacy row authoritative and record the blocker instead;
+5. regenerate/verify derived comparison artifacts, keeping 135 routes, the reviewed manifest and explicit indexability 3 unchanged.
 
 ### Definition of done
 
-- documented identity decisions exist for both Mobal and Sakura legacy/canonical pairs;
-- current commercial/lifecycle/overseas-use facts are reconciled without invented certainty;
-- any migrated row deep-equals the reviewed comparison row after canonical adaptation;
-- no public URL, sitemap or indexability expansion occurs.
+- the three legacy rows no longer contain the stale facts identified in the Sep 29 reconciliation;
+- no duplicate Mobal or Sakura product identity is introduced;
+- comparison route count remains 135 and indexability remains 3;
+- any alias/mapping change, if used, is narrowly comparison-only and covered by an exact-parity regression test;
+- canonical migration proceeds only for identities that can then be represented losslessly.
 
 ### Stop conditions
 
-Stop and record the blocker if identity requires schema/alias redesign, a material provider/community contradiction cannot be represented honestly, source provenance is insufficient, exact parity fails, or publication/indexability would change. Do not compensate by switching to a larger batch.
+Stop and record the blocker if fixing Sakura requires a broad schema/backend redesign, exact comparison parity cannot be preserved, a material provider/community contradiction cannot be represented honestly, provenance is insufficient, or publication/indexability would change. Do not compensate by switching to a larger batch.
 
 ## Qwen / Kimi work lane
 
@@ -63,8 +62,9 @@ QwenPaw/Kimi remain high-throughput backstage research/data workers. Their outpu
 
 ## Do not do next
 
-- do not bulk-migrate the remaining 111 legacy-only routes;
+- do not bulk-migrate the remaining legacy-only routes;
 - do not remove the PR #263 manifest gate or shrink the 135-route comparison surface;
+- do not create duplicate canonical products to preserve legacy IDs;
 - do not equate canonical admission with SEO/indexability;
 - do not redesign schema/backend for architectural neatness;
 - do not let raw delegated output bypass review/admission/publication gates;
