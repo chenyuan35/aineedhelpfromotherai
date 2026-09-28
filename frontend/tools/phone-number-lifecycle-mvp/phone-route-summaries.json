@@ -509,6 +509,38 @@
       }
     },
     {
+      "id": "movistar-prepago-6mo-2026",
+      "displayName": "Movistar Prepago",
+      "marketId": "es",
+      "marketName": "Spain",
+      "countryCode": "ES",
+      "networkName": "Movistar ES",
+      "brandName": "Movistar Prepago",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "movistar-prepago-6mo-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 10,
+        "acquisitionCostCny": 78,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 10,
+        "keepYearCostCny": 78,
+        "keepIntervalDays": 180
+      }
+    },
+    {
       "id": "sakura-japan-voice-data",
       "displayName": "Sakura Mobile Japan Voice+Data (passport route)",
       "marketId": "jp",
@@ -538,6 +570,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "singtel-hi-prepaid-passport-30d-2026",
+      "displayName": "Singtel hi! Prepaid",
+      "marketId": "sg",
+      "marketName": "Singapore",
+      "countryCode": "SG",
+      "networkName": "Singtel",
+      "brandName": "Singtel hi! Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "singtel-hi-prepaid-passport-30d-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "SGD",
+        "acquisitionCostOriginal": 12,
+        "acquisitionCostCny": 64,
+        "keepCurrency": "SGD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 30
       }
     },
     {
@@ -730,6 +794,38 @@
         "keepYearCostOriginal": 200,
         "keepYearCostCny": 183,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "tim-prepaid-12mo-2026",
+      "displayName": "TIM Prepaid",
+      "marketId": "it",
+      "marketName": "Italy",
+      "countryCode": "IT",
+      "networkName": "TIM Italy",
+      "brandName": "TIM Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "tim-prepaid-12mo-2026",
+        "checkedAt": "2026-09-28",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 10,
+        "acquisitionCostCny": 78,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 5,
+        "keepYearCostCny": 39,
+        "keepIntervalDays": 365
       }
     },
     {

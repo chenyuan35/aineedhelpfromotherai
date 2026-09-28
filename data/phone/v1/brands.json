@@ -78,10 +78,22 @@
     "name": "Mobal Japan"
   },
   {
+    "id": "movistar-prepago",
+    "networkId": "movistar-es",
+    "name": "Movistar Prepago",
+    "marketId": "es"
+  },
+  {
     "id": "sakura-mobile-jp",
     "marketId": "jp",
     "networkId": null,
     "name": "Sakura Mobile"
+  },
+  {
+    "id": "singtel-hi",
+    "networkId": "singtel-sg",
+    "name": "Singtel hi! Prepaid",
+    "marketId": "sg"
   },
   {
     "id": "smspool-global",
@@ -118,6 +130,12 @@
     "networkId": "three-hk",
     "name": "3HK DIY",
     "marketId": "hk"
+  },
+  {
+    "id": "tim-prepaid",
+    "networkId": "tim-it",
+    "name": "TIM Prepaid",
+    "marketId": "it"
   },
   {
     "id": "trip-com-china-mobile-cmlink-cn",

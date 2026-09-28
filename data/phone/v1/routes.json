@@ -267,6 +267,25 @@
     ]
   },
   {
+    "id": "movistar-prepago-6mo-2026",
+    "marketId": "es",
+    "networkId": "movistar-es",
+    "brandId": "movistar-prepago",
+    "displayName": "Movistar Prepago",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
+    "sourceIds": [
+      "official-movistar-community-saldo-vigencia-2026-09-26",
+      "official-movistar-prepago-lifecycle-2026-09-21",
+      "official-movistar-recharge-min-5-terms-2026-09-28"
+    ]
+  },
+  {
     "id": "sakura-japan-voice-data",
     "marketId": "jp",
     "networkId": null,
@@ -284,6 +303,24 @@
       "src-7c3acff56130",
       "src-afc386fd0765",
       "src-cc7c7229dc5c"
+    ]
+  },
+  {
+    "id": "singtel-hi-prepaid-passport-30d-2026",
+    "marketId": "sg",
+    "networkId": "singtel-sg",
+    "brandId": "singtel-hi",
+    "displayName": "Singtel hi! Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans",
+    "sourceIds": [
+      "official-singtel-prepaid-faq-pdf-2024-11",
+      "official-singtel-prepaid-registration-2026-09-28"
     ]
   },
   {
@@ -395,6 +432,24 @@
       "official-3hk-diy-sales-kit-2024-04",
       "official-3hk-online-recharge-2026-09-26",
       "official-3hk-simworld-recharge-table-2026-09-26"
+    ]
+  },
+  {
+    "id": "tim-prepaid-12mo-2026",
+    "marketId": "it",
+    "networkId": "tim-it",
+    "brandId": "tim-prepaid",
+    "displayName": "TIM Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+    "sourceIds": [
+      "official-tim-riattivare-sim-2026-09-26",
+      "official-tim-ricarica-5-2026-09-28"
     ]
   },
   {

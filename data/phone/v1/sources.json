@@ -222,6 +222,36 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-movistar-community-saldo-vigencia-2026-09-26",
+    "url": "https://comunidad.movistar.es/kb/Gestiones/%C2%BFcu%C3%A1l-es-la-vigencia-del-saldo-de-movistar-%C2%BFcuando-caduca/4535087",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-movistar-prepago-lifecycle-2026-09-21",
+    "url": "https://comunidad.movistar.es/discussions/movil/recuperar-saldo-prepago/5366579/replies/5366587",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-21"
+  },
+  {
+    "id": "official-movistar-recharge-min-5-terms-2026-09-28",
+    "url": "https://prod.adb.col.movistar.es/content/dam/movistar/contratos/cp-servicio-recarga-tarjetas.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-singtel-prepaid-faq-pdf-2024-11",
+    "url": "https://www.singtel.com/content/dam/singtel/personal/products-services/mobile/prepaid-plans/Terms%20%26%20Conditions/03_FAQ_20241104.pdf",
+    "type": "provider-official",
+    "reportedAt": "2024-11-04"
+  },
+  {
+    "id": "official-singtel-prepaid-registration-2026-09-28",
+    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-sim-cards-id-registration",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "official-sosim-faq-esim-33-2026-09-28",
     "url": "https://www.sosimhk.com/en/faq.html",
     "type": "provider-official",
@@ -250,6 +280,18 @@
     "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "type": "provider-official",
     "reportedAt": "2026-09-26"
+  },
+  {
+    "id": "official-tim-riattivare-sim-2026-09-26",
+    "url": "https://www.tim.it/assistenza/per-la-tua-linea/riattivare-una-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-tim-ricarica-5-2026-09-28",
+    "url": "https://www.tim.it/fisso-e-mobile/mobile/offerta-ricarica-piu",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
   },
   {
     "id": "official-vodafone-prepaid-hilfe-2026-09-26",

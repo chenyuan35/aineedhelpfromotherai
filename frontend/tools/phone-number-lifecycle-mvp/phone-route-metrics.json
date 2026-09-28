@@ -170,6 +170,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "movistar-prepago-6mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": 78,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "sakura-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -180,6 +192,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "singtel-hi-prepaid-passport-30d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "SGD",
+      "acquisitionCostOriginal": 12,
+      "acquisitionCostCny": 64,
+      "keepCurrency": "SGD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "smspool-temp",
@@ -252,6 +276,18 @@
       "keepYearCostOriginal": 200,
       "keepYearCostCny": 183,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "tim-prepaid-12mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 5,
+      "keepYearCostCny": 39,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "trip-cmlink-china-data",

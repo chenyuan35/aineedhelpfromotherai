@@ -21,6 +21,11 @@
       "countryCode": "DE"
     },
     {
+      "id": "es",
+      "name": "Spain",
+      "countryCode": "ES"
+    },
+    {
       "id": "gb",
       "name": "United Kingdom",
       "countryCode": "GB"
@@ -41,6 +46,11 @@
       "countryCode": "HR"
     },
     {
+      "id": "it",
+      "name": "Italy",
+      "countryCode": "IT"
+    },
+    {
       "id": "jp",
       "name": "Japan",
       "countryCode": "JP"
@@ -54,6 +64,11 @@
       "id": "nl",
       "name": "Netherlands",
       "countryCode": "NL"
+    },
+    {
+      "id": "sg",
+      "name": "Singapore",
+      "countryCode": "SG"
     },
     {
       "id": "tw",
@@ -98,9 +113,19 @@
       "marketId": "my"
     },
     {
+      "id": "movistar-es",
+      "name": "Movistar ES",
+      "marketId": "es"
+    },
+    {
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
+    },
+    {
+      "id": "singtel-sg",
+      "name": "Singtel",
+      "marketId": "sg"
     },
     {
       "id": "telefonica-de",
@@ -116,6 +141,11 @@
       "id": "three-hk",
       "name": "3 Hong Kong",
       "marketId": "hk"
+    },
+    {
+      "id": "tim-it",
+      "name": "TIM Italy",
+      "marketId": "it"
     },
     {
       "id": "twm-tw",
@@ -213,10 +243,22 @@
       "name": "Mobal Japan"
     },
     {
+      "id": "movistar-prepago",
+      "networkId": "movistar-es",
+      "name": "Movistar Prepago",
+      "marketId": "es"
+    },
+    {
       "id": "sakura-mobile-jp",
       "marketId": "jp",
       "networkId": null,
       "name": "Sakura Mobile"
+    },
+    {
+      "id": "singtel-hi",
+      "networkId": "singtel-sg",
+      "name": "Singtel hi! Prepaid",
+      "marketId": "sg"
     },
     {
       "id": "smspool-global",
@@ -253,6 +295,12 @@
       "networkId": "three-hk",
       "name": "3HK DIY",
       "marketId": "hk"
+    },
+    {
+      "id": "tim-prepaid",
+      "networkId": "tim-it",
+      "name": "TIM Prepaid",
+      "marketId": "it"
     },
     {
       "id": "trip-com-china-mobile-cmlink-cn",
@@ -554,6 +602,25 @@
       ]
     },
     {
+      "id": "movistar-prepago-6mo-2026",
+      "marketId": "es",
+      "networkId": "movistar-es",
+      "brandId": "movistar-prepago",
+      "displayName": "Movistar Prepago",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
+      "sourceIds": [
+        "official-movistar-community-saldo-vigencia-2026-09-26",
+        "official-movistar-prepago-lifecycle-2026-09-21",
+        "official-movistar-recharge-min-5-terms-2026-09-28"
+      ]
+    },
+    {
       "id": "sakura-japan-voice-data",
       "marketId": "jp",
       "networkId": null,
@@ -571,6 +638,24 @@
         "src-7c3acff56130",
         "src-afc386fd0765",
         "src-cc7c7229dc5c"
+      ]
+    },
+    {
+      "id": "singtel-hi-prepaid-passport-30d-2026",
+      "marketId": "sg",
+      "networkId": "singtel-sg",
+      "brandId": "singtel-hi",
+      "displayName": "Singtel hi! Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans",
+      "sourceIds": [
+        "official-singtel-prepaid-faq-pdf-2024-11",
+        "official-singtel-prepaid-registration-2026-09-28"
       ]
     },
     {
@@ -682,6 +767,24 @@
         "official-3hk-diy-sales-kit-2024-04",
         "official-3hk-online-recharge-2026-09-26",
         "official-3hk-simworld-recharge-table-2026-09-26"
+      ]
+    },
+    {
+      "id": "tim-prepaid-12mo-2026",
+      "marketId": "it",
+      "networkId": "tim-it",
+      "brandId": "tim-prepaid",
+      "displayName": "TIM Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+      "sourceIds": [
+        "official-tim-riattivare-sim-2026-09-26",
+        "official-tim-ricarica-5-2026-09-28"
       ]
     },
     {
@@ -1006,6 +1109,36 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-movistar-community-saldo-vigencia-2026-09-26",
+      "url": "https://comunidad.movistar.es/kb/Gestiones/%C2%BFcu%C3%A1l-es-la-vigencia-del-saldo-de-movistar-%C2%BFcuando-caduca/4535087",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-movistar-prepago-lifecycle-2026-09-21",
+      "url": "https://comunidad.movistar.es/discussions/movil/recuperar-saldo-prepago/5366579/replies/5366587",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-21"
+    },
+    {
+      "id": "official-movistar-recharge-min-5-terms-2026-09-28",
+      "url": "https://prod.adb.col.movistar.es/content/dam/movistar/contratos/cp-servicio-recarga-tarjetas.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-singtel-prepaid-faq-pdf-2024-11",
+      "url": "https://www.singtel.com/content/dam/singtel/personal/products-services/mobile/prepaid-plans/Terms%20%26%20Conditions/03_FAQ_20241104.pdf",
+      "type": "provider-official",
+      "reportedAt": "2024-11-04"
+    },
+    {
+      "id": "official-singtel-prepaid-registration-2026-09-28",
+      "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-sim-cards-id-registration",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
       "id": "official-sosim-faq-esim-33-2026-09-28",
       "url": "https://www.sosimhk.com/en/faq.html",
       "type": "provider-official",
@@ -1034,6 +1167,18 @@
       "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
       "type": "provider-official",
       "reportedAt": "2026-09-26"
+    },
+    {
+      "id": "official-tim-riattivare-sim-2026-09-26",
+      "url": "https://www.tim.it/assistenza/per-la-tua-linea/riattivare-una-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-tim-ricarica-5-2026-09-28",
+      "url": "https://www.tim.it/fisso-e-mobile/mobile/offerta-ricarica-piu",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
     },
     {
       "id": "official-vodafone-prepaid-hilfe-2026-09-26",
@@ -3086,6 +3231,63 @@
       }
     },
     {
+      "id": "snap-movistar-prepago-6mo-2026-current-profile-20260928",
+      "routeId": "movistar-prepago-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "it-es-sg-directory-batch-h.json",
+      "data": {
+        "id": "movistar-prepago-6mo-2026",
+        "brandId": "movistar-prepago",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Movistar moderated-community guidance: prepaid validity is 6 months and renews with each recharge. If no recharge occurs, a 54-day tail follows: calls and SMS can be received for 40 days, then only SMS for the final 14 days; no recharge by day 54 means deactivation and number loss.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 10,
+          "yearCostCny": 78,
+          "action": "Recharge at least EUR5 before the 6-month boundary to renew validity. If missed, the 54-day tail is a recovery window rather than the normal keep-alive schedule.",
+          "intervalDays": 180,
+          "state": "official-confirmed-lifecycle-and-minimum-recharge"
+        },
+        "chinaActivation": "Spanish prepaid passport registration; in-store standard; abroad activation unverified.",
+        "kyc": "Passport mandatory (ES law).",
+        "payment": "Official bank-card recharge accepts national or foreign Visa/Mastercard; channel-specific limits can differ.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard; China receive 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.movistar.es/particulares/movil/tarifas-prepago/",
+        "tariffSummary": "6-month validity per recharge; EUR5 minimum official recharge; 54-day recovery/receive tail.",
+        "sourceIds": [
+          "official-movistar-community-saldo-vigencia-2026-09-26",
+          "official-movistar-prepago-lifecycle-2026-09-21",
+          "official-movistar-recharge-min-5-terms-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire Movistar Prepago in Spain and complete required identity registration.",
+          "Recharge at least EUR5 before 6 months elapse from the prior recharge.",
+          "If the deadline is missed, recharge during the first 40 days of the 54-day tail to recover expired balance and avoid final number loss."
+        ]
+      }
+    },
+    {
       "id": "snap-sakura-japan-voice-data-commercial-d1a4db",
       "routeId": "sakura-japan-voice-data",
       "kind": "commercial",
@@ -3277,6 +3479,61 @@
           "status": "unavailable",
           "reason": "No single verified keep-alive deadline can be generated safely for this monthly route. The documented 25th-of-month cutoff is for plan changes/termination, not a universal payment-expiry deadline."
         }
+      }
+    },
+    {
+      "id": "snap-singtel-hi-prepaid-passport-30d-2026-current-profile-20260928",
+      "routeId": "singtel-hi-prepaid-passport-30d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "it-es-sg-directory-batch-h.json",
+      "data": {
+        "id": "singtel-hi-prepaid-passport-30d-2026",
+        "brandId": "singtel-hi",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Singtel registration guidance reconfirms a 30-day validity cap for passport registration. Passport self-registration grants data-only features; retaining the SIM beyond 30 days requires re-registration with Singpass or an original Singapore-issued ID/work pass through supported Singtel channels.",
+        "landedCost": {
+          "currency": "SGD",
+          "providerOrCommunityPrice": 12,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 12,
+          "landedCny": 64,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "SGD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "BLOCKED for passport-only overseas retention: passport registration is capped at 30 days, and retention beyond that requires Singpass or a Singapore-issued ID/work pass. Passport self-registration only grants data-only features.",
+          "intervalDays": 30,
+          "state": "official-confirmed-passport-only-blocker"
+        },
+        "chinaActivation": "Passport self-registration can activate data-only features, but it does not provide a durable voice/SMS route and remains subject to the 30-day passport cap.",
+        "kyc": "IMDA-mandated registration; passport registration = 30-day cap and data-only self-registration. Durable retention requires Singpass or an original Singapore-issued ID/work pass.",
+        "payment": "hi!App top-up, cards accepted.",
+        "wifiCalling": "n/a",
+        "roamingSms": "Not a viable passport-self-registration OTP/SMS route: current Singtel guidance limits passport self-registration to data-only features.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Passport-only users face a 30-day registration cap; current self-registration with passport is data-only, and durable retention requires Singpass or a Singapore-issued ID/work pass. Keep as negative knowledge, not a recommendation.",
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans",
+        "tariffSummary": "Passport registration: 30-day cap; passport self-registration is data-only; durable retention requires Singapore credentials.",
+        "sourceIds": [
+          "official-singtel-prepaid-faq-pdf-2024-11",
+          "official-singtel-prepaid-registration-2026-09-28"
+        ],
+        "guideSteps": [
+          "Do not recommend this route for passport-only overseas number retention; use it as an avoid-route warning."
+        ],
+        "avoidRoute": true
       }
     },
     {
@@ -3912,6 +4169,62 @@
           "Buy a DIY eSIM/physical route and activate it within the current activation window; complete required real-name registration for number service.",
           "For number retention, use the DIY account/App recharge path: HK$100 for about 180 days or HK$200+ for about 365 days, based on current independent reproduction.",
           "Do not apply SIM World International Supreme Card recharge-voucher validity rules to DIY."
+        ]
+      }
+    },
+    {
+      "id": "snap-tim-prepaid-12mo-2026-current-profile-20260928",
+      "routeId": "tim-prepaid-12mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "it-es-sg-directory-batch-h.json",
+      "data": {
+        "id": "tim-prepaid-12mo-2026",
+        "brandId": "tim-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current TIM support: a TIM Card is valid for 12 months from activation, the latest recharge, or another qualifying customer-requested commercial event; month 13 is receive-calls-and-SMS only before deactivation. Free number reactivation is available for up to 11 months after expiry.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": 39,
+          "action": "A current EUR5 TIM recharge option exists; any recharge resets the 12-month validity clock. Month 13 is receive-only, then deactivation; free number reactivation is available for up to 11 months after expiry.",
+          "intervalDays": 365,
+          "state": "official-confirmed-current-recharge-option"
+        },
+        "chinaActivation": "Italian prepaid requires ID (passport) registration; typically in-store Italy. Online eSIM + passport flow 验证中.",
+        "kyc": "Passport registration mandatory (IT law).",
+        "payment": "Italian/EU cards; international 验证中.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Receiving abroad works (EU roaming zone free; China receive 验证中).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+        "tariffSummary": "12-month validity per recharge; current EUR5 recharge option; month 13 receive-only.",
+        "sourceIds": [
+          "official-tim-riattivare-sim-2026-09-26",
+          "official-tim-ricarica-5-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire TIM prepaid in Italy and complete required identity registration.",
+          "Use a current EUR5 recharge option before the 12-month validity boundary.",
+          "If the number expires, request free reactivation within the documented 11-month recovery window."
         ]
       }
     },
@@ -4876,6 +5189,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "movistar-prepago-6mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": 78,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "sakura-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -4886,6 +5211,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "singtel-hi-prepaid-passport-30d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "SGD",
+      "acquisitionCostOriginal": 12,
+      "acquisitionCostCny": 64,
+      "keepCurrency": "SGD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "smspool-temp",
@@ -4958,6 +5295,18 @@
       "keepYearCostOriginal": 200,
       "keepYearCostCny": 183,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "tim-prepaid-12mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 5,
+      "keepYearCostCny": 39,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "trip-cmlink-china-data",

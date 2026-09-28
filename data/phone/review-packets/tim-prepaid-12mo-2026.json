@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "it",
+    "name": "Italy",
+    "countryCode": "IT"
+  },
+  "network": {
+    "id": "tim-it",
+    "name": "TIM Italy",
+    "marketId": "it"
+  },
+  "brand": {
+    "id": "tim-prepaid",
+    "networkId": "tim-it",
+    "name": "TIM Prepaid",
+    "marketId": "it"
+  },
+  "route": {
+    "id": "tim-prepaid-12mo-2026",
+    "marketId": "it",
+    "networkId": "tim-it",
+    "brandId": "tim-prepaid",
+    "displayName": "TIM Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate"
+  },
+  "sources": [
+    {
+      "id": "official-tim-riattivare-sim-2026-09-26",
+      "url": "https://www.tim.it/assistenza/per-la-tua-linea/riattivare-una-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-tim-ricarica-5-2026-09-28",
+      "url": "https://www.tim.it/fisso-e-mobile/mobile/offerta-ricarica-piu",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "sourceIds": [
+    "official-tim-riattivare-sim-2026-09-26",
+    "official-tim-ricarica-5-2026-09-28"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-tim-prepaid-12mo-2026-current-profile-20260928",
+      "routeId": "tim-prepaid-12mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "it-es-sg-directory-batch-h.json",
+      "data": {
+        "id": "tim-prepaid-12mo-2026",
+        "brandId": "tim-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current TIM support: a TIM Card is valid for 12 months from activation, the latest recharge, or another qualifying customer-requested commercial event; month 13 is receive-calls-and-SMS only before deactivation. Free number reactivation is available for up to 11 months after expiry.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": 39,
+          "action": "A current EUR5 TIM recharge option exists; any recharge resets the 12-month validity clock. Month 13 is receive-only, then deactivation; free number reactivation is available for up to 11 months after expiry.",
+          "intervalDays": 365,
+          "state": "official-confirmed-current-recharge-option"
+        },
+        "chinaActivation": "Italian prepaid requires ID (passport) registration; typically in-store Italy. Online eSIM + passport flow 验证中.",
+        "kyc": "Passport registration mandatory (IT law).",
+        "payment": "Italian/EU cards; international 验证中.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Receiving abroad works (EU roaming zone free; China receive 验证中).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+        "tariffSummary": "12-month validity per recharge; current EUR5 recharge option; month 13 receive-only.",
+        "sourceIds": [
+          "official-tim-riattivare-sim-2026-09-26",
+          "official-tim-ricarica-5-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire TIM prepaid in Italy and complete required identity registration.",
+          "Use a current EUR5 recharge option before the 12-month validity boundary.",
+          "If the number expires, request free reactivation within the documented 11-month recovery window."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}
