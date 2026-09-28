@@ -8,45 +8,48 @@ Last updated: 2026-09-28
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The current 135-route legacy comparison artifact remains valid product input behind the PR #263 manifest gate.
-3. **Canonical v1 staged migration is proven, not yet coverage-parity.** After PR #272 it has 23 routes; twelve IDs overlap the 135-route comparison set and 123 remain legacy-only.
+3. **Canonical v1 staged migration is proven, not yet coverage-parity.** After PR #274 it has 26 routes; fifteen IDs overlap the 135-route comparison set and 120 remain legacy-only.
 4. **Publication remains separate.** Canonical migration does not imply new route/market URLs, sitemap entries or indexability.
 5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — Germany/Malaysia three-route canonical migration
+## JUST COMPLETED — Hong Kong three-route canonical migration
 
-Result: **PASS / three reviewed routes migrated with bounded target-fact reconciliation; no publication expansion.**
+Result: **PASS / three reviewed routes migrated with bounded provenance reconciliation; no publication expansion.**
 
-- PR #272 squash-merged as `2fb0d6517780e90b9e5b5da17f2938b29febb079`; Eval Gate #877, CI #159, Vercel Preview and production deployment `dpl_5uLyAq57fBpbkAA4AaGVXE8ULep8` passed;
-- `aldi-talk-activity-window-2026`, `vodafone-callya-90d-2026`, and `hotlink-pantas-365-pass-2026` now exist in canonical v1 through reviewed packets;
-- canonical `data/phone/v1` is 23 routes / 13 markets / 22 brands / 10 networks / 71 sources;
-- overlap with the 135-route comparison set is 12; 123 comparison routes remain legacy-only;
-- legacy comparison routes reference 213 distinct source IDs; 182 remain absent from canonical sources;
-- target-only reconciliation corrected ALDI TALK starter pricing to €9.99; CallYa Classic acquisition to free SIM/eSIM + shipping while retaining €20/year as the conservative €5 quarterly top-up path; and Hotlink retention wording to the RM30 365-day Active Period Pass rather than the RM2 data pass;
-- the generic adapter reproduces all three corrected comparison rows by exact deep equality;
+- PR #274 squash-merged as `251528d3e279e8a99b075601bb8e2742d186ba5e`; Eval Gate #881, CI #161, Vercel Preview and production passed;
+- `clubsim-sms-pack-6hkd-2026`, `sosim-recharge-ladder-2026`, and `threehk-diy-recharge-2026` now exist in canonical v1 through reviewed packets;
+- canonical `data/phone/v1` is 26 routes / 13 markets / 25 brands / 12 networks / 82 sources;
+- overlap with the 135-route comparison set is 15; 120 comparison routes remain legacy-only;
+- legacy comparison routes reference 218 distinct source IDs; 176 remain absent from canonical sources;
+- ClubSIM retains the current official-web HK$6 SMS-pack price while explicitly preserving the 2026 in-app availability conflict instead of presenting HK$6 as guaranteed across channels;
+- SoSIM now uses the current HK$33 official entry price and the official HK$100→180d / HK$200→365d / HK$500+→730d validity ladder plus conditional expired-number recovery;
+- 3HK DIY no longer inherits the unrelated SIM World International Supreme Card HK$50/365d voucher table; the retained DIY model uses DIY-specific official baseline plus independent recharge reproduction;
+- batch source metadata can now preserve exact per-source URLs through the legacy comparison rebuild;
+- the generic adapter reproduces all three reviewed comparison rows by exact deep equality;
 - comparison coverage remains 135 routes, explicit indexability remains 3 routes, and the reviewed batch manifest remains authoritative;
 - live Directory and comparison-index return HTTP 200; all three migrated standalone route URLs remain HTTP 404/noindex.
 
-## NEXT SESSION — Hong Kong three-route canonical migration
+## NEXT SESSION — Italy/Spain/Singapore three-route canonical migration
 
 **Session task:** continue staged canonical coverage with exactly one already-admitted three-route batch.
 
-Use `hk-directory-batch-c.json`: `clubsim-sms-pack-6hkd-2026`, `sosim-recharge-ladder-2026`, and `threehk-diy-recharge-2026`.
+Use `it-es-sg-directory-batch-h.json`: `tim-prepaid-12mo-2026`, `movistar-prepago-6mo-2026`, and `singtel-hi-prepaid-passport-30d-2026`.
 
 ### Scope
 
-1. reverify all six target source IDs and current provider/community provenance before admission;
-2. preserve known contradictions such as ClubSIM web-vs-app pack availability instead of flattening them;
-3. reconcile only target facts current evidence proves stale, otherwise preserve candidate/observation semantics;
+1. reverify the three target source IDs and current provider/provenance state before admission;
+2. preserve TIM and Movistar candidate semantics unless current evidence proves a target fact stale;
+3. preserve Singtel’s passport-based 30-day validity/registration blocker as negative knowledge rather than converting it into a recommendation;
 4. map market/network/brand/route identities and carry all three profiles through canonical snapshots;
-5. prove exact post-review adapter parity and keep `hk-directory-batch-c.json` in the reviewed manifest;
+5. prove exact post-review adapter parity and keep `it-es-sg-directory-batch-h.json` in the reviewed manifest;
 6. run canonical/admission/publication/release checks; do not migrate another batch or change publication/indexability.
 
 ### Definition of done
 
-- all three HK routes exist in canonical v1 with complete references/provenance;
+- all three IT/ES/SG routes exist in canonical v1 with complete references/provenance;
 - canonical-derived rows deep-equal their reviewed/current comparison rows;
 - comparison remains 135 routes and explicit indexability remains 3;
 - raw delegated output still cannot bypass review;
