@@ -98,6 +98,38 @@
       }
     },
     {
+      "id": "cmhk-mysim-hk-2026",
+      "displayName": "CMHK MySIM 4G prepaid",
+      "marketId": "hk",
+      "marketName": "Hong Kong",
+      "countryCode": "HK",
+      "networkName": "China Mobile Hong Kong",
+      "brandName": "CMHK (China Mobile HK)",
+      "family": "long-term",
+      "numberClass": "carrier-mobile",
+      "form": "physical prepaid SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-27",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "cmhk-mysim-hk-2026",
+        "checkedAt": "2026-09-27",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "HKD",
+        "acquisitionCostOriginal": 33,
+        "acquisitionCostCny": 30.4,
+        "keepCurrency": "HKD",
+        "keepYearCostOriginal": 100,
+        "keepYearCostCny": 92,
+        "keepIntervalDays": 180
+      }
+    },
+    {
       "id": "giffgaff-uk-direct-esim-payg",
       "displayName": "Giffgaff",
       "marketId": "gb",

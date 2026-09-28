@@ -1,5 +1,17 @@
 [
   {
+    "id": "cmhk-mysim-hk-community",
+    "url": "https://prepaid-data-sim-card.fandom.com/wiki/Hong_Kong",
+    "type": "community",
+    "reportedAt": "2026-09-27"
+  },
+  {
+    "id": "cmhk-mysim-hk-official",
+    "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+    "type": "official",
+    "reportedAt": "2026-09-27"
+  },
+  {
     "id": "giffgaff-official-credit-2026-09-23",
     "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
     "type": "provider-commercial-page",

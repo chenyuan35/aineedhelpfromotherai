@@ -1,5 +1,10 @@
 [
   {
+    "id": "cmhk-hk",
+    "name": "China Mobile Hong Kong",
+    "marketId": "hk"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"

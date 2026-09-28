@@ -15,6 +15,11 @@
     "countryCode": null
   },
   {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  {
     "id": "hr",
     "name": "Croatia",
     "countryCode": "HR"

@@ -15,7 +15,7 @@ const read = name => JSON.parse(fs.readFileSync(path.join(root, name), 'utf8'));
 const tables = { markets: read('markets.json'), networks: read('networks.json'), brands: read('brands.json'), routes: read('routes.json'), sources: read('sources.json'), observations: read('observations.json'), events: read('events.json'), snapshots: read('snapshots.json'), numberRanges: read('number-ranges.json') };
 const has = (table, id) => tables[table].some(x => x.id === id);
 if (has('routes', packet.route.id)) throw new Error(`route already exists: ${packet.route.id}`);
-if (!has('markets', packet.route.marketId)) throw new Error(`missing market: ${packet.route.marketId}`);
+if (!has('markets', packet.route.marketId) && packet.market?.id !== packet.route.marketId) throw new Error(`missing market: ${packet.route.marketId}`);
 if (packet.route.networkId && !has('networks', packet.route.networkId) && packet.network?.id !== packet.route.networkId) throw new Error(`missing network: ${packet.route.networkId}`);
 if (!has('brands', packet.route.brandId) && packet.brand?.id !== packet.route.brandId) throw new Error(`missing brand: ${packet.route.brandId}`);
 const incomingIds = new Set();
@@ -34,14 +34,15 @@ for (const row of [...(packet.observations || []), ...(packet.events || [])]) {
   if (row.sourceId && !sourceIds.has(row.sourceId)) throw new Error(`${row.id}: source missing ${row.sourceId}`);
 }
 for (const row of packet.snapshots || []) if (row.routeId !== packet.route.id) throw new Error(`${row.id}: snapshot routeId must equal ${packet.route.id}`);
-for (const row of packet.numberRanges || []) if (!has('markets', row.marketId)) throw new Error(`${row.id}: missing range market ${row.marketId}`);
+for (const row of packet.numberRanges || []) if (!has('markets', row.marketId) && packet.market?.id !== row.marketId) throw new Error(`${row.id}: missing range market ${row.marketId}`);
 const route = { ...packet.route, sourceIds: [...routeSourceIds].sort() };
-const changes = { route: route.id, addBrand: packet.brand && !has('brands', packet.brand.id), addNetwork: packet.network && !has('networks', packet.network.id), sources: (packet.sources || []).length, observations: (packet.observations || []).length, events: (packet.events || []).length, snapshots: (packet.snapshots || []).length, numberRanges: (packet.numberRanges || []).length };
+const changes = { route: route.id, addMarket: packet.market && !has('markets', packet.market.id), addBrand: packet.brand && !has('brands', packet.brand.id), addNetwork: packet.network && !has('networks', packet.network.id), sources: (packet.sources || []).length, observations: (packet.observations || []).length, events: (packet.events || []).length, snapshots: (packet.snapshots || []).length, numberRanges: (packet.numberRanges || []).length };
 console.log(JSON.stringify(changes, null, 2));
 if (!apply) { console.log('CHECK ONLY: canonical data unchanged.'); process.exit(0); }
+if (changes.addMarket) tables.markets.push(packet.market);
 if (changes.addNetwork) tables.networks.push(packet.network);
 if (changes.addBrand) tables.brands.push(packet.brand);
 tables.routes.push(route); tables.sources.push(...(packet.sources || [])); tables.observations.push(...(packet.observations || [])); tables.events.push(...(packet.events || [])); tables.snapshots.push(...(packet.snapshots || [])); tables.numberRanges.push(...(packet.numberRanges || []));
 const atomic = (name, value) => { const file = path.join(root, name); const tmp = `${file}.tmp-${process.pid}`; fs.writeFileSync(tmp, JSON.stringify(value.sort((a,b)=>String(a.id).localeCompare(String(b.id))), null, 2) + '\n'); fs.renameSync(tmp, file); };
-atomic('networks.json', tables.networks); atomic('brands.json', tables.brands); atomic('routes.json', tables.routes); atomic('sources.json', tables.sources); atomic('observations.json', tables.observations); atomic('events.json', tables.events); atomic('snapshots.json', tables.snapshots); atomic('number-ranges.json', tables.numberRanges);
+atomic('markets.json', tables.markets); atomic('networks.json', tables.networks); atomic('brands.json', tables.brands); atomic('routes.json', tables.routes); atomic('sources.json', tables.sources); atomic('observations.json', tables.observations); atomic('events.json', tables.events); atomic('snapshots.json', tables.snapshots); atomic('number-ranges.json', tables.numberRanges);
 console.log(`APPLIED ${route.id}. Run node scripts/build-phone-database.mjs and tests before committing.`);
