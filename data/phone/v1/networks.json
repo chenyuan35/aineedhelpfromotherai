@@ -1,5 +1,15 @@
 [
   {
+    "id": "2degrees-nz",
+    "name": "2degrees",
+    "marketId": "nz"
+  },
+  {
+    "id": "ais-th",
+    "name": "AIS Thailand",
+    "marketId": "th"
+  },
+  {
     "id": "att-us",
     "name": "AT&T US",
     "marketId": "us"
@@ -53,6 +63,11 @@
     "id": "singtel-sg",
     "name": "Singtel",
     "marketId": "sg"
+  },
+  {
+    "id": "spark-nz",
+    "name": "Spark NZ",
+    "marketId": "nz"
   },
   {
     "id": "telefonica-de",

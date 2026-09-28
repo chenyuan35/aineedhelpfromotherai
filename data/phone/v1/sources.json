@@ -198,6 +198,36 @@
     "reportedAt": "2026-08-09"
   },
   {
+    "id": "official-2degrees-prepay-balance-2026-09-29",
+    "url": "https://www.2degrees.nz/help/account-and-billing/billing-and-payment/prepay-balance-and-payments",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-2degrees-prepay-getting-started-2026-09-29",
+    "url": "https://www.2degrees.nz/help/mobile-help/plans/getting-started-on-prepay",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-2degrees-prepay-plans-2026-09-29",
+    "url": "https://www.2degrees.nz/mobile-plans/prepay",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-2degrees-roaming-2026-09-29",
+    "url": "https://www.2degrees.nz/help/mobile-help/roaming/roaming-and-using-your-phone-overseas",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-2degrees-sim-help-2026-09-29",
+    "url": "https://www.2degrees.nz/help/mobile-help/getting-started/help-with-sim-cards",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-3hk-diy-sales-kit-2024-04",
     "url": "https://web.three.com.hk/epop/SalesKit-DIYprepaidSIMsalesKit20240430.pdf",
     "type": "provider-official-diy",
@@ -214,6 +244,30 @@
     "url": "https://web.three.com.hk/simworld/en/buy-recharge.html",
     "type": "provider-official-exclusion",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-ais-sim-registration-2026-09-29",
+    "url": "https://www.ais.th/en/consumers/help-and-support/network-technologies/update-sim-registration",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ais-sim2fly-esim-2026-09-29",
+    "url": "https://www.ais.th/consumers/package/international/roaming/sim2fly/esim-sim2fly",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ais-sim2fly-global15-terms-2026-09-29",
+    "url": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly/terms-and-conditions-global-15gb",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ais-sim2fly-main-2026-09-29",
+    "url": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
@@ -370,6 +424,36 @@
     "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-sim-cards-id-registration",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-skinny-customer-terms-2026-09-29",
+    "url": "https://www.skinny.co.nz/mobileappskinny-terms/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-skinny-esim-2026-09-29",
+    "url": "https://www.skinny.co.nz/skinny-esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-skinny-plans-2026-09-29",
+    "url": "https://www.skinny.co.nz/pricing/plans",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-skinny-roaming-2026-09-29",
+    "url": "https://www.skinny.co.nz/pricing/overseas-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-skinny-trio-sim-2026-09-29",
+    "url": "https://www.skinny.co.nz/shop/skinny-trio-sim/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-sosim-faq-esim-33-2026-09-28",

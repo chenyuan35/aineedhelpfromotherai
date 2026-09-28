@@ -1,5 +1,11 @@
 [
   {
+    "id": "2degrees-nz",
+    "networkId": "2degrees-nz",
+    "name": "2degrees",
+    "marketId": "nz"
+  },
+  {
     "id": "5sim-global",
     "marketId": "global",
     "networkId": null,
@@ -16,6 +22,12 @@
     "marketId": "global",
     "networkId": null,
     "name": "ActivateX"
+  },
+  {
+    "id": "ais-sim2fly",
+    "networkId": "ais-th",
+    "name": "AIS SIM2Fly",
+    "marketId": "th"
   },
   {
     "id": "aldi-talk",
@@ -118,6 +130,12 @@
     "networkId": "singtel-sg",
     "name": "Singtel hi! Prepaid",
     "marketId": "sg"
+  },
+  {
+    "id": "skinny-nz",
+    "networkId": "spark-nz",
+    "name": "Skinny Mobile",
+    "marketId": "nz"
   },
   {
     "id": "smspool-global",
