@@ -8,30 +8,32 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
-3. **Canonical staged migration is lossless so far, not coverage-parity.** NZ/Thailand batch-D migrated Skinny, 2degrees and AIS SIM2Fly backstage as HOLD routes; canonical v1 is now 40 routes / 18 markets / 37 brands / 23 networks / 133 sources; 29 route IDs overlap the comparison set and 106 remain legacy-only.
+3. **Canonical staged migration is lossless so far, not coverage-parity.** CA/FR/CH/MX/IN batch-I migrated five routes backstage as HOLD with exact parity; canonical v1 is now 45 routes / 23 markets / 42 brands / 28 networks / 156 sources; 34 route IDs overlap the comparison set and 101 remain legacy-only.
 4. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
 5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — NZ/Thailand batch-D current-fact reconciliation + bounded canonical migration
+## JUST COMPLETED — CA/FR/CH/MX/IN batch-I current-fact reconciliation + bounded canonical migration
 
-Result: **PASS / THREE EXACT-PARITY HOLD MIGRATIONS.**
+Result: **PASS / FIVE EXACT-PARITY HOLD MIGRATIONS.**
 
-- `skinny-prepay-12mo-2026` now uses Skinny's direct rule: add credit at least once every 12 months; current top-ups start at NZ$5, eSIM is NZ$0 and the physical Trio SIM is NZ$2. New SIMs must activate on a New Zealand network before roaming, so the route remains HOLD for typical overseas-only acquisition;
-- `2degrees-prepay-2026` now uses the current NZ$10 / 365-day keep-active rule and current NZ$8 new-Prepay entry plan. Its old pre-2024 lifecycle HOLD is resolved, but reviewed provider material does not establish first activation of a brand-new line entirely from overseas, so it remains HOLD for that use case;
-- `ais-sim2fly-365d-2026` now distinguishes the current 2,699 THB promotional 365-day package from the 2,799 THB terms price, removes the old passport-free claim, confirms passport-based foreign registration and China-supported first activation, and preserves the provider's right to suspend roaming after more than 60 days of continuous roaming. Minimum durable post-package number-retention economics remain unresolved, so it stays HOLD;
-- all three generic canonical-adapter rows deep-equal the corrected reviewed comparison rows;
-- canonical v1 is 40 routes / 18 markets / 37 brands / 23 networks / 133 sources; comparison remains 135, overlap is 29, legacy-only is 106, reviewed manifest remains intact and explicit indexability remains 3.
+- SpeakOut: legacy CA$25/365-day voucher model is stale; current service requires a rate plan, plans start CA$19/30d, account cancels after 90 days with no active plan, and current service does not roam outside Canada;
+- Telcel Amigo: current Aug-2026 contract uses a 365-day no-activity lifecycle reset by Saldo recharge; current recharge range starts MXN$10. eSIM is available online, but ordinary foreign-user registration remains ambiguous and the separate Tourist eSIM was not conflated with this route;
+- Jio Prepaid: official retention is 90 days non-use followed by Rs.20 Automatic Number Retention deductions per 30-day extension while balance is sufficient; incoming IR SMS is free, but India-centric acquisition/IR setup keeps the route HOLD;
+- Orange Mobicarte: current EUR2.99 entry and EUR10/6-month line-validity path are now verified, but France residence/stable-link eligibility and non-Europe OTP evidence keep it HOLD / avoid-route;
+- Sunrise Prepaid: current inactivity limit is 17 months, CHF10 top-up is qualifying active use and can be done abroad, and foreign-address eSIM registration exists; independent China-first/long-term OTP evidence remains insufficient;
+- all five generic canonical-adapter rows deep-equal the corrected reviewed comparison rows;
+- canonical v1 is 45 routes / 23 markets / 42 brands / 28 networks / 156 sources; comparison remains 135, overlap is 34, legacy-only is 101, reviewed manifest remains intact and explicit indexability remains 3.
 
-## NEXT SESSION — CA/FR/CH/MX/IN batch-I identity/provenance reconciliation before migration
+## NEXT SESSION — PH/TR/AE/VN batch-J identity/provenance reconciliation before migration
 
-**Session task:** work only on `ca-fr-ch-mx-in-directory-batch-i.json`: `speakout-711-365voucher-2026`, `telcel-amigo-lifecycle-2026`, `jio-prepaid-90d-trai-2026`, `orange-mobicarte-2026`, and `sunrise-prepaid-2026`. Reverify identity, current provider facts and source provenance before any canonical admission.
+**Session task:** work only on `ph-tr-ae-vn-directory-batch-j.json`. Reverify identity, current provider facts and source provenance before any canonical admission.
 
 ### Scope
 
-1. reverify current acquisition, retention, KYC/location and overseas SMS/roaming facts for all five routes;
+1. reverify current acquisition, retention, KYC/location and overseas SMS/roaming facts for every route in batch-J;
 2. reconcile stale commercial/lifecycle claims only when current attributable evidence supports the correction;
 3. preserve negative/HOLD knowledge rather than forcing admission;
 4. migrate only rows that can reproduce the reviewed comparison row exactly through the existing generic adapter;
@@ -39,7 +41,7 @@ Result: **PASS / THREE EXACT-PARITY HOLD MIGRATIONS.**
 
 ### Definition of done
 
-- identity/provenance decisions exist for all five routes;
+- identity/provenance decisions exist for every batch-J route;
 - any migrated row has exact canonical-adapter parity;
 - comparison remains 135 and indexability remains 3;
 - no new public Phone URL, sitemap entry or publication-state expansion occurs.

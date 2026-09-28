@@ -11,6 +11,16 @@
       "countryCode": "AU"
     },
     {
+      "id": "ca",
+      "name": "Canada",
+      "countryCode": "CA"
+    },
+    {
+      "id": "ch",
+      "name": "Switzerland",
+      "countryCode": "CH"
+    },
+    {
       "id": "cn",
       "name": "China",
       "countryCode": "CN"
@@ -24,6 +34,11 @@
       "id": "es",
       "name": "Spain",
       "countryCode": "ES"
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "countryCode": "FR"
     },
     {
       "id": "gb",
@@ -46,6 +61,11 @@
       "countryCode": "HR"
     },
     {
+      "id": "in",
+      "name": "India",
+      "countryCode": "IN"
+    },
+    {
       "id": "it",
       "name": "Italy",
       "countryCode": "IT"
@@ -54,6 +74,11 @@
       "id": "jp",
       "name": "Japan",
       "countryCode": "JP"
+    },
+    {
+      "id": "mx",
+      "name": "Mexico",
+      "countryCode": "MX"
     },
     {
       "id": "my",
@@ -138,6 +163,11 @@
       "marketId": "tw"
     },
     {
+      "id": "jio-in",
+      "name": "Reliance Jio",
+      "marketId": "in"
+    },
+    {
       "id": "kpn-nl",
       "name": "KPN",
       "marketId": "nl"
@@ -158,6 +188,16 @@
       "marketId": "gb"
     },
     {
+      "id": "orange-fr",
+      "name": "Orange France",
+      "marketId": "fr"
+    },
+    {
+      "id": "rogers-ca",
+      "name": "Rogers Canada",
+      "marketId": "ca"
+    },
+    {
       "id": "singtel-sg",
       "name": "Singtel",
       "marketId": "sg"
@@ -166,6 +206,16 @@
       "id": "spark-nz",
       "name": "Spark NZ",
       "marketId": "nz"
+    },
+    {
+      "id": "sunrise-ch",
+      "name": "Sunrise Switzerland",
+      "marketId": "ch"
+    },
+    {
+      "id": "telcel-mx",
+      "name": "Telcel Mexico",
+      "marketId": "mx"
     },
     {
       "id": "telefonica-de",
@@ -299,6 +349,12 @@
       "marketId": "my"
     },
     {
+      "id": "jio-prepaid",
+      "networkId": "jio-in",
+      "name": "Jio Prepaid",
+      "marketId": "in"
+    },
+    {
       "id": "kpn-prepaid",
       "marketId": "nl",
       "networkId": "kpn-nl",
@@ -327,6 +383,12 @@
       "networkId": "o2-uk",
       "name": "O2 Classic PAYG",
       "marketId": "gb"
+    },
+    {
+      "id": "orange-mobicarte",
+      "networkId": "orange-fr",
+      "name": "Orange Mobicarte",
+      "marketId": "fr"
     },
     {
       "id": "povo-jp",
@@ -365,10 +427,28 @@
       "marketId": "hk"
     },
     {
+      "id": "speakout-711",
+      "networkId": "rogers-ca",
+      "name": "7-Eleven SpeakOut",
+      "marketId": "ca"
+    },
+    {
+      "id": "sunrise-prepaid",
+      "networkId": "sunrise-ch",
+      "name": "Sunrise Prepaid",
+      "marketId": "ch"
+    },
+    {
       "id": "taiwan-mobile-tw",
       "networkId": "twm-tw",
       "name": "Taiwan Mobile",
       "marketId": "tw"
+    },
+    {
+      "id": "telcel-amigo",
+      "networkId": "telcel-mx",
+      "name": "Telcel Amigo",
+      "marketId": "mx"
     },
     {
       "id": "tello-us",
@@ -712,6 +792,26 @@
       ]
     },
     {
+      "id": "jio-prepaid-90d-trai-2026",
+      "marketId": "in",
+      "networkId": "jio-in",
+      "brandId": "jio-prepaid",
+      "displayName": "Jio Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.jio.com/selfcare/interest/getsim/",
+      "sourceIds": [
+        "official-jio-prepaid-documents-2026-09-29",
+        "official-jio-prepaid-ir-activation-2026-09-29",
+        "official-jio-prepaid-ir-incoming-sms-2026-09-29",
+        "official-jio-regulatory-nonusage-2026-09-29"
+      ]
+    },
+    {
       "id": "kpn-prepaid-6mo-2026",
       "marketId": "nl",
       "networkId": "kpn-nl",
@@ -843,6 +943,26 @@
       ]
     },
     {
+      "id": "orange-mobicarte-2026",
+      "marketId": "fr",
+      "networkId": "orange-fr",
+      "brandId": "orange-mobicarte",
+      "displayName": "Orange Mobicarte",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+      "sourceIds": [
+        "community-orange-mobicarte-validity-2026-05",
+        "official-orange-mobicarte-offers-2026-09-29",
+        "official-orange-mobicarte-recharges-2026-09-29",
+        "official-orange-roaming-partners-2026-09-29"
+      ]
+    },
+    {
       "id": "povo20-zero-base-2026",
       "marketId": "jp",
       "networkId": "au-jp",
@@ -960,6 +1080,47 @@
       ]
     },
     {
+      "id": "speakout-711-365voucher-2026",
+      "marketId": "ca",
+      "networkId": "rogers-ca",
+      "brandId": "speakout-711",
+      "displayName": "7-Eleven SpeakOut",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+      "sourceIds": [
+        "official-speakout-help-2026-09-29",
+        "official-speakout-plans-2026-09-29",
+        "official-speakout-sim-2026-09-29",
+        "official-speakout-terms-2026-09-29"
+      ]
+    },
+    {
+      "id": "sunrise-prepaid-2026",
+      "marketId": "ch",
+      "networkId": "sunrise-ch",
+      "brandId": "sunrise-prepaid",
+      "displayName": "Sunrise Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+      "sourceIds": [
+        "community-sunrise-roaming-sms-nz-2026-01",
+        "official-sunrise-prepaid-2026-09-29",
+        "official-sunrise-prepaid-support-2026-09-29",
+        "official-sunrise-topup-2026-09-29",
+        "official-sunrise-travel-esim-2026-09-29"
+      ]
+    },
+    {
       "id": "taiwan-mobile-prepaid-tw-2026",
       "marketId": "tw",
       "networkId": "twm-tw",
@@ -974,6 +1135,28 @@
       "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
       "sourceIds": [
         "taiwan-mobile-tw-official"
+      ]
+    },
+    {
+      "id": "telcel-amigo-lifecycle-2026",
+      "marketId": "mx",
+      "networkId": "telcel-mx",
+      "brandId": "telcel-amigo",
+      "displayName": "Telcel Amigo",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.telcel.com/esim/amigo",
+      "sourceIds": [
+        "official-telcel-amigo-contract-2026-09-29",
+        "official-telcel-amigo-esim-2026-09-29",
+        "official-telcel-amigo-lifecycle-2026-09-29",
+        "official-telcel-glossary-recharge-2026-09-29",
+        "official-telcel-line-registration-2026-09-29",
+        "official-telcel-roaming-2026-09-29"
       ]
     },
     {
@@ -1257,6 +1440,18 @@
       "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Inactivity-criteria-for-sim-disconnection/td-p/1685980",
       "type": "community-report",
       "reportedAt": "2024-01-16"
+    },
+    {
+      "id": "community-orange-mobicarte-validity-2026-05",
+      "url": "https://communaute.orange.fr/t5/offres-mobile-Orange-et-options/Etude-abonnement-temporaire-Internet-sur-mon-mobile/m-p/3418129",
+      "type": "community-report",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "community-sunrise-roaming-sms-nz-2026-01",
+      "url": "https://community.sunrise.ch/d/47446-cannot-receive-sms-whilst-roaming-in-new-zealand",
+      "type": "community-report",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "community-vocus-clubsim-6hkd-guide-2026-04",
@@ -1559,6 +1754,30 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-jio-prepaid-documents-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/prepaid-offerings/plans/what-documents-do-i-need-to-carry-to-get-a-jio-sim-for-jio-prepaid-plans/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-prepaid-ir-activation-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-activation/how-do-i-activate-international-roaming-ir-on-my-jio-number-under-prepaid-packs/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-prepaid-ir-incoming-sms-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-pack-pricing/will-i-be-charged-for-incoming-messages-while-on-international-roaming-ir-under-jio-prepaid-packs/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-regulatory-nonusage-2026-09-29",
+      "url": "https://www.jio.com/jcms/en-in/regulatory/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-mobal-id-requirements-2026-09-29",
       "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
       "type": "provider-official",
@@ -1593,6 +1812,24 @@
       "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-orange-mobicarte-offers-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-mobicarte-recharges-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrine/rechargements-mobile/mobicarte/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-roaming-partners-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrines/voyage/reseaux-partenaires",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "official-povo-faq-858-2026-09-29",
@@ -1685,10 +1922,94 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-speakout-help-2026-09-29",
+      "url": "https://speakout7eleven.ca/pages/help",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-plans-2026-09-29",
+      "url": "https://speakout7eleven.ca/collections/plans-monthly",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-sim-2026-09-29",
+      "url": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-terms-2026-09-29",
+      "url": "https://speakout7eleven.ca/pages/terms-of-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-staff-kpn-community-6mo-rule-2026-02",
       "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
       "type": "provider-moderated-community",
       "reportedAt": "2026-02-16"
+    },
+    {
+      "id": "official-sunrise-prepaid-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-prepaid-support-2026-09-29",
+      "url": "https://www.sunrise.ch/en/support/mobile/services/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-topup-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid/top-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-travel-esim-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid/travel-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-amigo-contract-2026-09-29",
+      "url": "https://www.telcel.com/personas/politicas-y-codigos/contrato-prestacion-servicios",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-amigo-esim-2026-09-29",
+      "url": "https://www.telcel.com/esim/amigo",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-amigo-lifecycle-2026-09-29",
+      "url": "https://www.telcel.com/personas/politicas-y-codigos/ciclo-vital-linea-amigo-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-glossary-recharge-2026-09-29",
+      "url": "https://www.telcel.com/personas/atencion-a-clientes/glosario",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-line-registration-2026-09-29",
+      "url": "https://www.telcel.com/vinculatulinea",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-roaming-2026-09-29",
+      "url": "https://www.telcel.com/personas/roaming/atencion-al-viajero",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "official-tello-activation-abroad-2026-09-29",
@@ -3444,6 +3765,64 @@
       }
     },
     {
+      "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
+      "routeId": "jio-prepaid-90d-trai-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "jio-prepaid-90d-trai-2026",
+        "brandId": "jio-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Jio prepaid non-use is governed by Jio’s current regulatory policy, not a fixed Rs.199/90-day recharge rule. After 90 days of continuous non-use, a line with main-account balance above Rs.20 enters Automatic Number Retention: Rs.20 is deducted for each additional 30-day non-use period until balance falls below the threshold.",
+        "landedCost": {
+          "currency": "INR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "sim-free-plan-required-price-variable"
+        },
+        "keep": {
+          "currency": "INR",
+          "observedActionCost": 20,
+          "yearCostOriginal": 200,
+          "yearCostCny": null,
+          "action": "After 90 days of continuous non-use, maintain sufficient main-account balance for Automatic Number Retention. Jio deducts Rs.20 per 30-day extension; ten such deductions cover the remaining ~275 days of a 365-day no-use horizon, consuming about Rs.200. Any qualifying usage resets the non-use clock.",
+          "intervalDays": 30,
+          "state": "current-official-automatic-number-retention-after-90d"
+        },
+        "chinaActivation": "BLOCKER for typical remote acquisition: current Jio guidance sends new users to a Jio store/retailer with original identity and address documents. First-time IR activation should be prepared while the number is connected to the Jio network.",
+        "kyc": "New SIM activation requires original Proof of Identity and Proof of Address; current Jio examples include Passport. Aadhaar biometric eKYC is a separate path. The reviewed official flow is India-centric/in-person rather than an overseas-first path.",
+        "payment": "A usable prepaid plan is required for service; ongoing recharges/IR packs are managed through Jio channels. International payment acceptance is not relied on for this HOLD decision.",
+        "wifiCalling": "Supported on compatible devices, but not relied on for retention.",
+        "roamingSms": "Jio prepaid international roaming supports incoming SMS free of charge once IR is enabled. First-time IR preparation should be done while connected to the Jio network; an IR pack activates on first eligible foreign usage.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Current retention is cheaper/more flexible than the old Rs.199/90-day model, but India-centric SIM activation/POI+POA and first-time IR preparation make overseas-first acquisition impractical.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.jio.com/selfcare/interest/getsim/",
+        "tariffSummary": "90d non-use threshold, then Rs.20 automatic 30-day retention deductions while main balance is sufficient; incoming roaming SMS is free after IR setup.",
+        "sourceIds": [
+          "official-jio-regulatory-nonusage-2026-09-29",
+          "official-jio-prepaid-documents-2026-09-29",
+          "official-jio-prepaid-ir-activation-2026-09-29",
+          "official-jio-prepaid-ir-incoming-sms-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire/activate with valid POI+POA through the current Jio onboarding path.",
+          "Before travel, complete first-time international-roaming preparation while connected to Jio.",
+          "For pure non-use retention, keep enough main balance for Rs.20 automatic 30-day extensions after day 90."
+        ]
+      }
+    },
+    {
       "id": "snap-kpn-prepaid-6mo-2026-current-profile-20260926",
       "routeId": "kpn-prepaid-6mo-2026",
       "kind": "current-profile",
@@ -4222,6 +4601,65 @@
       }
     },
     {
+      "id": "snap-orange-mobicarte-2026-current-profile-20260929",
+      "routeId": "orange-mobicarte-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "orange-mobicarte-2026",
+        "brandId": "orange-mobicarte",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Current Orange Mobicarte starts at EUR2.99 online. Orange’s current recharge table directly establishes line-validity tiers: EUR5 extends the line 1 month, while EUR10 and higher eligible recharges extend line validity 6 months. Mobicarte requires identity registration and the current offer is for people resident in or able to justify a stable link with metropolitan France.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 2.99,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 12.99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-mini-plus-six-month-recharge"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 10,
+          "yearCostOriginal": 20,
+          "yearCostCny": null,
+          "action": "Use an eligible EUR10-or-higher recharge before each six-month line-validity period expires. Current Orange recharge tables explicitly show EUR10 recharges extending line validity by 6 months.",
+          "intervalDays": 180,
+          "state": "current-official-six-month-validity"
+        },
+        "chinaActivation": "HOLD for typical overseas-only acquisition: current Mobicarte requires identification and is reserved to people residing in or able to justify a stable link with metropolitan France.",
+        "kyc": "Valid identity/identification is mandatory for prepaid Mobicarte; current offer eligibility also requires residence in or a stable link to metropolitan France.",
+        "payment": "Existing Mobicarte customers can recharge online by bank card 24/7.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Mobicarte can use international mode and current recharges include roaming in Europe on eligible products. Reviewed evidence does not establish the target long-term inbound-SMS/OTP behavior in China or other non-Europe destinations.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Retention economics are now verified, but France residence/stable-link eligibility plus unverified non-Europe inbound OTP behavior keep this route HOLD for the target overseas use case.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+        "tariffSummary": "EUR2.99 Mobicarte Mini; EUR10 recharge extends line validity 6 months, about EUR20/year for retention; France-link/ID constraints apply.",
+        "sourceIds": [
+          "official-orange-mobicarte-offers-2026-09-29",
+          "official-orange-mobicarte-recharges-2026-09-29",
+          "official-orange-roaming-partners-2026-09-29",
+          "community-orange-mobicarte-validity-2026-05"
+        ],
+        "guideSteps": [
+          "Only consider the route if you satisfy Orange’s current France residence/stable-link and identification requirements.",
+          "Use an eligible EUR10+ recharge before each six-month line-validity period expires.",
+          "Do not assume China/non-Europe OTP reception without route-specific current evidence."
+        ],
+        "avoidRoute": true
+      }
+    },
+    {
       "id": "snap-povo20-zero-base-2026-current-profile-20260929",
       "routeId": "povo20-zero-base-2026",
       "kind": "current-profile",
@@ -4815,6 +5253,122 @@
       }
     },
     {
+      "id": "snap-speakout-711-365voucher-2026-current-profile-20260929",
+      "routeId": "speakout-711-365voucher-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "speakout-711-365voucher-2026",
+        "brandId": "speakout-711",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "SpeakOut now uses an active-plan model rather than the legacy 365-day airtime-voucher model. The current physical SIM is CA$10; current plans start at CA$19/30 days and an annual talk/text plan is CA$125/360 days. Service is cancelled after 90 days with no active rate plan.",
+        "landedCost": {
+          "currency": "CAD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 19,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 29,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-sim-plus-cheapest-plan"
+        },
+        "keep": {
+          "currency": "CAD",
+          "observedActionCost": 19,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Keep an active plan or purchase a new plan before the 90-day no-active-plan cancellation window ends. The cheapest currently listed monthly plan is CA$19/30 days; the old CA$25-per-365-day voucher rule is no longer the current service model.",
+          "intervalDays": 90,
+          "state": "current-official-plan-required"
+        },
+        "chinaActivation": "Online activation is available, but SpeakOut service is restricted to Canada and current help/terms say it does not roam outside Canada. It is not an overseas OTP route.",
+        "kyc": "No credit check is advertised. Current service terms collect customer-identifying/contact information for activation; do not generalize this into a no-KYC legal claim.",
+        "payment": "SIMs and plans can be purchased online; account top-ups are available online by credit card or via Canadian 7-Eleven vouchers.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Not supported for the target use case. Current SpeakOut help/terms say service does not roam outside Canada and calls cannot be made or received outside Canada.",
+        "refund": "SIM cards and prepaid service credits are non-refundable under current help/terms.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "Current product no longer supports the legacy CA$25/365-day retention model and does not roam outside Canada, so it cannot serve the overseas SMS/OTP job.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+        "tariffSummary": "CA$10 physical SIM; current plans start CA$19/30d; account cancels after 90 days without an active plan; no roaming outside Canada.",
+        "sourceIds": [
+          "official-speakout-terms-2026-09-29",
+          "official-speakout-plans-2026-09-29",
+          "official-speakout-sim-2026-09-29",
+          "official-speakout-help-2026-09-29"
+        ],
+        "guideSteps": [
+          "Reference/HOLD only — do not use the legacy 365-day voucher economics.",
+          "For Canada-only use, maintain an active rate plan and never let the no-active-plan period reach 90 days."
+        ]
+      }
+    },
+    {
+      "id": "snap-sunrise-prepaid-2026-current-profile-20260929",
+      "routeId": "sunrise-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "sunrise-prepaid-2026",
+        "brandId": "sunrise-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Sunrise Prepaid has no monthly fee; activation including SIM/eSIM costs CHF19.90 with CHF20 starting credit. Sunrise now directly states that a prepaid number is released after 17 months with no active use. Online eSIM registration can use a foreign address.",
+        "landedCost": {
+          "currency": "CHF",
+          "providerOrCommunityPrice": 19.9,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 19.9,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-prepaid-activation"
+        },
+        "keep": {
+          "currency": "CHF",
+          "observedActionCost": 10,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Perform any qualifying active use before 17 months elapse. Sunrise explicitly counts a credit top-up, outgoing call, mobile-data use, outgoing SMS, or option/bundle purchase as active use. Online top-up starts at CHF10 and works abroad with a saved card.",
+          "intervalDays": 510,
+          "state": "current-official-17-month-inactivity-rule"
+        },
+        "chinaActivation": "Sunrise currently supports online prepaid eSIM registration with a foreign address and online activation. Physical SIM delivery is limited to Switzerland/Liechtenstein. Exact successful China-first registration/OTP use is not independently reproduced in the reviewed evidence.",
+        "kyc": "A valid identity document is required for prepaid registration/activation. The current travel-eSIM flow permits a foreign address; do not interpret this as no-KYC.",
+        "payment": "Online top-up starts at CHF10 and can be initiated in Switzerland or abroad; saved Swiss and foreign payment cards are supported subject to current limits.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Sunrise supports prepaid roaming. A current 2026 community troubleshooting thread states ordinary SMS should be receivable while roaming with network signal and roaming enabled, but route-specific China OTP reliability is not established.",
+        "refund": "Prepaid SIM/credit return is generally not available; current provider terms govern exceptions.",
+        "trend": "improving",
+        "guideEligible": false,
+        "holdReason": "The old 12-month rule is resolved to a 17-month inactivity rule and foreign-address eSIM registration exists, but current independent China-first activation plus long-term OTP evidence is still insufficient for promotion.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+        "tariffSummary": "CHF19.90 activation incl. CHF20 credit; number released after 17 months without active use; CHF10 top-up is one qualifying activity and can be done abroad.",
+        "sourceIds": [
+          "official-sunrise-prepaid-2026-09-29",
+          "official-sunrise-prepaid-support-2026-09-29",
+          "official-sunrise-topup-2026-09-29",
+          "official-sunrise-travel-esim-2026-09-29",
+          "community-sunrise-roaming-sms-nz-2026-01"
+        ],
+        "guideSteps": [
+          "Register the prepaid eSIM online with a valid identity document; foreign addresses are supported by the current eSIM flow.",
+          "Perform a qualifying active use before 17 months of inactivity; a CHF10 top-up is the lowest current top-up.",
+          "Treat China/OTP reliability as unverified until current independent evidence exists."
+        ]
+      }
+    },
+    {
       "id": "snap-taiwan-mobile-prepaid-tw-2026-current-profile-20260927",
       "routeId": "taiwan-mobile-prepaid-tw-2026",
       "kind": "current-profile",
@@ -4861,6 +5415,66 @@
         "tariffSummary": "Prepaid; number validity = 6 months from each recharge (official).",
         "sourceIds": [
           "taiwan-mobile-tw-official"
+        ]
+      }
+    },
+    {
+      "id": "snap-telcel-amigo-lifecycle-2026-current-profile-20260929",
+      "routeId": "telcel-amigo-lifecycle-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "telcel-amigo-lifecycle-2026",
+        "brandId": "telcel-amigo",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Telcel Amigo supports physical SIM and online-delivered eSIM. The Aug-2026 prepaid contract says the line lifecycle ends after 365 days without activity and restarts with each Saldo recharge. New Amigo activation still requires the applicable initial package/recharge and mandatory line registration.",
+        "landedCost": {
+          "currency": "MXN",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 50,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-entry-price-varies-initial-recharge-50"
+        },
+        "keep": {
+          "currency": "MXN",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Make a Saldo recharge before 365 days without activity. The current contract says the lifecycle restarts with each Saldo recharge, and current Telcel material lists prepaid recharges from MXN$10.",
+          "intervalDays": 365,
+          "state": "current-official-365-day-lifecycle-min-recharge-10"
+        },
+        "chinaActivation": "Telcel now sells Amigo eSIM online and allows installation over Wi-Fi, but all 2026 mobile lines must be registered before service. The general foreign-user registration page accepts a valid passport but also contains CURP language that makes a passport-only general-Amigo remote path insufficiently clear. Do not substitute the separate Tourist eSIM product for this route.",
+        "kyc": "Mandatory 2026 line registration. Telcel states foreigners may use a valid passport (or temporary CURP for foreigners), and remote registration adds a liveness selfie; the same page also asks for CURP information in all cases, so passport-only completion for ordinary Amigo remains a reviewed ambiguity.",
+        "payment": "Telcel supports online recharge and recharge from abroad; current recharge denominations start at MXN$10. Payment-method/country acceptance can vary by channel.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Telcel supports SMS while roaming. For U.S./Canada Sin Frontera use, prepaid lines must be active and prior Telcel-network traffic in Mexico is required; the service is not intended for permanent international use. Global inbound OTP reliability is not established by the reviewed evidence.",
+        "refund": "not reconciled",
+        "trend": "improving",
+        "guideEligible": false,
+        "holdReason": "The lifecycle economics are attractive, but ordinary Amigo foreign-user remote registration remains ambiguous and route-specific long-term overseas OTP evidence is missing. Keep HOLD rather than conflating it with Telcel Tourist eSIM.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.telcel.com/esim/amigo",
+        "tariffSummary": "Current contract: 365 days without activity; any Saldo recharge resets lifecycle. Recharges start at MXN$10; mandatory 2026 line registration applies.",
+        "sourceIds": [
+          "official-telcel-amigo-contract-2026-09-29",
+          "official-telcel-amigo-lifecycle-2026-09-29",
+          "official-telcel-line-registration-2026-09-29",
+          "official-telcel-amigo-esim-2026-09-29",
+          "official-telcel-glossary-recharge-2026-09-29",
+          "official-telcel-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Use the ordinary Amigo route only after confirming your 2026 registration path; do not substitute Tourist eSIM evidence.",
+          "Recharge Saldo before the 365-day inactivity limit if retaining the number.",
+          "Verify the target roaming country and OTP service before relying on long-term use."
         ]
       }
     },
@@ -6417,6 +7031,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "jio-prepaid-90d-trai-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "INR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "INR",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "kpn-prepaid-6mo-2026",
       "checkedAt": "2026-09-26",
       "metricState": "current-profile",
@@ -6501,6 +7127,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "orange-mobicarte-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 12.99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "povo20-zero-base-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -6573,6 +7211,30 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "speakout-711-365voucher-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CAD",
+      "acquisitionCostOriginal": 29,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CAD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
+      "routeId": "sunrise-prepaid-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CHF",
+      "acquisitionCostOriginal": 19.9,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CHF",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 510
+    },
+    {
       "routeId": "taiwan-mobile-prepaid-tw-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -6583,6 +7245,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "telcel-amigo-lifecycle-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MXN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "MXN",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "tello-paygo-credit-2026",

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "in",
+    "name": "India",
+    "countryCode": "IN"
+  },
+  "route": {
+    "id": "jio-prepaid-90d-trai-2026",
+    "marketId": "in",
+    "networkId": "jio-in",
+    "brandId": "jio-prepaid",
+    "displayName": "Jio Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.jio.com/selfcare/interest/getsim/",
+    "sourceIds": [
+      "official-jio-regulatory-nonusage-2026-09-29",
+      "official-jio-prepaid-documents-2026-09-29",
+      "official-jio-prepaid-ir-activation-2026-09-29",
+      "official-jio-prepaid-ir-incoming-sms-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-jio-regulatory-nonusage-2026-09-29",
+      "url": "https://www.jio.com/jcms/en-in/regulatory/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-prepaid-documents-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/prepaid-offerings/plans/what-documents-do-i-need-to-carry-to-get-a-jio-sim-for-jio-prepaid-plans/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-prepaid-ir-activation-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-activation/how-do-i-activate-international-roaming-ir-on-my-jio-number-under-prepaid-packs/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-jio-prepaid-ir-incoming-sms-2026-09-29",
+      "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-pack-pricing/will-i-be-charged-for-incoming-messages-while-on-international-roaming-ir-under-jio-prepaid-packs/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-jio-regulatory-nonusage-2026-09-29",
+    "official-jio-prepaid-documents-2026-09-29",
+    "official-jio-prepaid-ir-activation-2026-09-29",
+    "official-jio-prepaid-ir-incoming-sms-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
+      "routeId": "jio-prepaid-90d-trai-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "jio-prepaid-90d-trai-2026",
+        "brandId": "jio-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Jio prepaid non-use is governed by Jio’s current regulatory policy, not a fixed Rs.199/90-day recharge rule. After 90 days of continuous non-use, a line with main-account balance above Rs.20 enters Automatic Number Retention: Rs.20 is deducted for each additional 30-day non-use period until balance falls below the threshold.",
+        "landedCost": {
+          "currency": "INR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "sim-free-plan-required-price-variable"
+        },
+        "keep": {
+          "currency": "INR",
+          "observedActionCost": 20,
+          "yearCostOriginal": 200,
+          "yearCostCny": null,
+          "action": "After 90 days of continuous non-use, maintain sufficient main-account balance for Automatic Number Retention. Jio deducts Rs.20 per 30-day extension; ten such deductions cover the remaining ~275 days of a 365-day no-use horizon, consuming about Rs.200. Any qualifying usage resets the non-use clock.",
+          "intervalDays": 30,
+          "state": "current-official-automatic-number-retention-after-90d"
+        },
+        "chinaActivation": "BLOCKER for typical remote acquisition: current Jio guidance sends new users to a Jio store/retailer with original identity and address documents. First-time IR activation should be prepared while the number is connected to the Jio network.",
+        "kyc": "New SIM activation requires original Proof of Identity and Proof of Address; current Jio examples include Passport. Aadhaar biometric eKYC is a separate path. The reviewed official flow is India-centric/in-person rather than an overseas-first path.",
+        "payment": "A usable prepaid plan is required for service; ongoing recharges/IR packs are managed through Jio channels. International payment acceptance is not relied on for this HOLD decision.",
+        "wifiCalling": "Supported on compatible devices, but not relied on for retention.",
+        "roamingSms": "Jio prepaid international roaming supports incoming SMS free of charge once IR is enabled. First-time IR preparation should be done while connected to the Jio network; an IR pack activates on first eligible foreign usage.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Current retention is cheaper/more flexible than the old Rs.199/90-day model, but India-centric SIM activation/POI+POA and first-time IR preparation make overseas-first acquisition impractical.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.jio.com/selfcare/interest/getsim/",
+        "tariffSummary": "90d non-use threshold, then Rs.20 automatic 30-day retention deductions while main balance is sufficient; incoming roaming SMS is free after IR setup.",
+        "sourceIds": [
+          "official-jio-regulatory-nonusage-2026-09-29",
+          "official-jio-prepaid-documents-2026-09-29",
+          "official-jio-prepaid-ir-activation-2026-09-29",
+          "official-jio-prepaid-ir-incoming-sms-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire/activate with valid POI+POA through the current Jio onboarding path.",
+          "Before travel, complete first-time international-roaming preparation while connected to Jio.",
+          "For pure non-use retention, keep enough main balance for Rs.20 automatic 30-day extensions after day 90."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "jio-in",
+    "name": "Reliance Jio",
+    "marketId": "in"
+  },
+  "brand": {
+    "id": "jio-prepaid",
+    "networkId": "jio-in",
+    "name": "Jio Prepaid",
+    "marketId": "in"
+  }
+}

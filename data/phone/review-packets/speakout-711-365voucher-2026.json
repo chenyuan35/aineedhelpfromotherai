@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "ca",
+    "name": "Canada",
+    "countryCode": "CA"
+  },
+  "route": {
+    "id": "speakout-711-365voucher-2026",
+    "marketId": "ca",
+    "networkId": "rogers-ca",
+    "brandId": "speakout-711",
+    "displayName": "7-Eleven SpeakOut",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+    "sourceIds": [
+      "official-speakout-terms-2026-09-29",
+      "official-speakout-plans-2026-09-29",
+      "official-speakout-sim-2026-09-29",
+      "official-speakout-help-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-speakout-terms-2026-09-29",
+      "url": "https://speakout7eleven.ca/pages/terms-of-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-plans-2026-09-29",
+      "url": "https://speakout7eleven.ca/collections/plans-monthly",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-sim-2026-09-29",
+      "url": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-speakout-help-2026-09-29",
+      "url": "https://speakout7eleven.ca/pages/help",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-speakout-terms-2026-09-29",
+    "official-speakout-plans-2026-09-29",
+    "official-speakout-sim-2026-09-29",
+    "official-speakout-help-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-speakout-711-365voucher-2026-current-profile-20260929",
+      "routeId": "speakout-711-365voucher-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "speakout-711-365voucher-2026",
+        "brandId": "speakout-711",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "SpeakOut now uses an active-plan model rather than the legacy 365-day airtime-voucher model. The current physical SIM is CA$10; current plans start at CA$19/30 days and an annual talk/text plan is CA$125/360 days. Service is cancelled after 90 days with no active rate plan.",
+        "landedCost": {
+          "currency": "CAD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 19,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 29,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-sim-plus-cheapest-plan"
+        },
+        "keep": {
+          "currency": "CAD",
+          "observedActionCost": 19,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Keep an active plan or purchase a new plan before the 90-day no-active-plan cancellation window ends. The cheapest currently listed monthly plan is CA$19/30 days; the old CA$25-per-365-day voucher rule is no longer the current service model.",
+          "intervalDays": 90,
+          "state": "current-official-plan-required"
+        },
+        "chinaActivation": "Online activation is available, but SpeakOut service is restricted to Canada and current help/terms say it does not roam outside Canada. It is not an overseas OTP route.",
+        "kyc": "No credit check is advertised. Current service terms collect customer-identifying/contact information for activation; do not generalize this into a no-KYC legal claim.",
+        "payment": "SIMs and plans can be purchased online; account top-ups are available online by credit card or via Canadian 7-Eleven vouchers.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Not supported for the target use case. Current SpeakOut help/terms say service does not roam outside Canada and calls cannot be made or received outside Canada.",
+        "refund": "SIM cards and prepaid service credits are non-refundable under current help/terms.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "Current product no longer supports the legacy CA$25/365-day retention model and does not roam outside Canada, so it cannot serve the overseas SMS/OTP job.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+        "tariffSummary": "CA$10 physical SIM; current plans start CA$19/30d; account cancels after 90 days without an active plan; no roaming outside Canada.",
+        "sourceIds": [
+          "official-speakout-terms-2026-09-29",
+          "official-speakout-plans-2026-09-29",
+          "official-speakout-sim-2026-09-29",
+          "official-speakout-help-2026-09-29"
+        ],
+        "guideSteps": [
+          "Reference/HOLD only — do not use the legacy 365-day voucher economics.",
+          "For Canada-only use, maintain an active rate plan and never let the no-active-plan period reach 90 days."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "rogers-ca",
+    "name": "Rogers Canada",
+    "marketId": "ca"
+  },
+  "brand": {
+    "id": "speakout-711",
+    "networkId": "rogers-ca",
+    "name": "7-Eleven SpeakOut",
+    "marketId": "ca"
+  }
+}

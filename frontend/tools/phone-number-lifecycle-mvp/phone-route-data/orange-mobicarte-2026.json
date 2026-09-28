@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "orange-mobicarte-2026",
+    "marketId": "fr",
+    "networkId": "orange-fr",
+    "brandId": "orange-mobicarte",
+    "displayName": "Orange Mobicarte",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+    "sourceIds": [
+      "community-orange-mobicarte-validity-2026-05",
+      "official-orange-mobicarte-offers-2026-09-29",
+      "official-orange-mobicarte-recharges-2026-09-29",
+      "official-orange-roaming-partners-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "fr",
+    "name": "France",
+    "countryCode": "FR"
+  },
+  "network": {
+    "id": "orange-fr",
+    "name": "Orange France",
+    "marketId": "fr"
+  },
+  "brand": {
+    "id": "orange-mobicarte",
+    "networkId": "orange-fr",
+    "name": "Orange Mobicarte",
+    "marketId": "fr"
+  },
+  "metrics": {
+    "routeId": "orange-mobicarte-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 12.99,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 20,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "community-orange-mobicarte-validity-2026-05",
+      "url": "https://communaute.orange.fr/t5/offres-mobile-Orange-et-options/Etude-abonnement-temporaire-Internet-sur-mon-mobile/m-p/3418129",
+      "type": "community-report",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-mobicarte-offers-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-mobicarte-recharges-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrine/rechargements-mobile/mobicarte/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-roaming-partners-2026-09-29",
+      "url": "https://boutique.orange.fr/vitrines/voyage/reseaux-partenaires",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-orange-mobicarte-2026-current-profile-20260929",
+      "routeId": "orange-mobicarte-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "orange-mobicarte-2026",
+        "brandId": "orange-mobicarte",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Current Orange Mobicarte starts at EUR2.99 online. Orange’s current recharge table directly establishes line-validity tiers: EUR5 extends the line 1 month, while EUR10 and higher eligible recharges extend line validity 6 months. Mobicarte requires identity registration and the current offer is for people resident in or able to justify a stable link with metropolitan France.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 2.99,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 12.99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-mini-plus-six-month-recharge"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 10,
+          "yearCostOriginal": 20,
+          "yearCostCny": null,
+          "action": "Use an eligible EUR10-or-higher recharge before each six-month line-validity period expires. Current Orange recharge tables explicitly show EUR10 recharges extending line validity by 6 months.",
+          "intervalDays": 180,
+          "state": "current-official-six-month-validity"
+        },
+        "chinaActivation": "HOLD for typical overseas-only acquisition: current Mobicarte requires identification and is reserved to people residing in or able to justify a stable link with metropolitan France.",
+        "kyc": "Valid identity/identification is mandatory for prepaid Mobicarte; current offer eligibility also requires residence in or a stable link to metropolitan France.",
+        "payment": "Existing Mobicarte customers can recharge online by bank card 24/7.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Mobicarte can use international mode and current recharges include roaming in Europe on eligible products. Reviewed evidence does not establish the target long-term inbound-SMS/OTP behavior in China or other non-Europe destinations.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Retention economics are now verified, but France residence/stable-link eligibility plus unverified non-Europe inbound OTP behavior keep this route HOLD for the target overseas use case.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+        "tariffSummary": "EUR2.99 Mobicarte Mini; EUR10 recharge extends line validity 6 months, about EUR20/year for retention; France-link/ID constraints apply.",
+        "sourceIds": [
+          "official-orange-mobicarte-offers-2026-09-29",
+          "official-orange-mobicarte-recharges-2026-09-29",
+          "official-orange-roaming-partners-2026-09-29",
+          "community-orange-mobicarte-validity-2026-05"
+        ],
+        "guideSteps": [
+          "Only consider the route if you satisfy Orange’s current France residence/stable-link and identification requirements.",
+          "Use an eligible EUR10+ recharge before each six-month line-validity period expires.",
+          "Do not assume China/non-Europe OTP reception without route-specific current evidence."
+        ],
+        "avoidRoute": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "mx",
+    "name": "Mexico",
+    "countryCode": "MX"
+  },
+  "route": {
+    "id": "telcel-amigo-lifecycle-2026",
+    "marketId": "mx",
+    "networkId": "telcel-mx",
+    "brandId": "telcel-amigo",
+    "displayName": "Telcel Amigo",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.telcel.com/esim/amigo",
+    "sourceIds": [
+      "official-telcel-amigo-contract-2026-09-29",
+      "official-telcel-amigo-lifecycle-2026-09-29",
+      "official-telcel-line-registration-2026-09-29",
+      "official-telcel-amigo-esim-2026-09-29",
+      "official-telcel-glossary-recharge-2026-09-29",
+      "official-telcel-roaming-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-telcel-amigo-contract-2026-09-29",
+      "url": "https://www.telcel.com/personas/politicas-y-codigos/contrato-prestacion-servicios",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-amigo-lifecycle-2026-09-29",
+      "url": "https://www.telcel.com/personas/politicas-y-codigos/ciclo-vital-linea-amigo-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-line-registration-2026-09-29",
+      "url": "https://www.telcel.com/vinculatulinea",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-amigo-esim-2026-09-29",
+      "url": "https://www.telcel.com/esim/amigo",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-glossary-recharge-2026-09-29",
+      "url": "https://www.telcel.com/personas/atencion-a-clientes/glosario",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telcel-roaming-2026-09-29",
+      "url": "https://www.telcel.com/personas/roaming/atencion-al-viajero",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-telcel-amigo-contract-2026-09-29",
+    "official-telcel-amigo-lifecycle-2026-09-29",
+    "official-telcel-line-registration-2026-09-29",
+    "official-telcel-amigo-esim-2026-09-29",
+    "official-telcel-glossary-recharge-2026-09-29",
+    "official-telcel-roaming-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-telcel-amigo-lifecycle-2026-current-profile-20260929",
+      "routeId": "telcel-amigo-lifecycle-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "telcel-amigo-lifecycle-2026",
+        "brandId": "telcel-amigo",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Telcel Amigo supports physical SIM and online-delivered eSIM. The Aug-2026 prepaid contract says the line lifecycle ends after 365 days without activity and restarts with each Saldo recharge. New Amigo activation still requires the applicable initial package/recharge and mandatory line registration.",
+        "landedCost": {
+          "currency": "MXN",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 50,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-entry-price-varies-initial-recharge-50"
+        },
+        "keep": {
+          "currency": "MXN",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Make a Saldo recharge before 365 days without activity. The current contract says the lifecycle restarts with each Saldo recharge, and current Telcel material lists prepaid recharges from MXN$10.",
+          "intervalDays": 365,
+          "state": "current-official-365-day-lifecycle-min-recharge-10"
+        },
+        "chinaActivation": "Telcel now sells Amigo eSIM online and allows installation over Wi-Fi, but all 2026 mobile lines must be registered before service. The general foreign-user registration page accepts a valid passport but also contains CURP language that makes a passport-only general-Amigo remote path insufficiently clear. Do not substitute the separate Tourist eSIM product for this route.",
+        "kyc": "Mandatory 2026 line registration. Telcel states foreigners may use a valid passport (or temporary CURP for foreigners), and remote registration adds a liveness selfie; the same page also asks for CURP information in all cases, so passport-only completion for ordinary Amigo remains a reviewed ambiguity.",
+        "payment": "Telcel supports online recharge and recharge from abroad; current recharge denominations start at MXN$10. Payment-method/country acceptance can vary by channel.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Telcel supports SMS while roaming. For U.S./Canada Sin Frontera use, prepaid lines must be active and prior Telcel-network traffic in Mexico is required; the service is not intended for permanent international use. Global inbound OTP reliability is not established by the reviewed evidence.",
+        "refund": "not reconciled",
+        "trend": "improving",
+        "guideEligible": false,
+        "holdReason": "The lifecycle economics are attractive, but ordinary Amigo foreign-user remote registration remains ambiguous and route-specific long-term overseas OTP evidence is missing. Keep HOLD rather than conflating it with Telcel Tourist eSIM.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.telcel.com/esim/amigo",
+        "tariffSummary": "Current contract: 365 days without activity; any Saldo recharge resets lifecycle. Recharges start at MXN$10; mandatory 2026 line registration applies.",
+        "sourceIds": [
+          "official-telcel-amigo-contract-2026-09-29",
+          "official-telcel-amigo-lifecycle-2026-09-29",
+          "official-telcel-line-registration-2026-09-29",
+          "official-telcel-amigo-esim-2026-09-29",
+          "official-telcel-glossary-recharge-2026-09-29",
+          "official-telcel-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Use the ordinary Amigo route only after confirming your 2026 registration path; do not substitute Tourist eSIM evidence.",
+          "Recharge Saldo before the 365-day inactivity limit if retaining the number.",
+          "Verify the target roaming country and OTP service before relying on long-term use."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "telcel-mx",
+    "name": "Telcel Mexico",
+    "marketId": "mx"
+  },
+  "brand": {
+    "id": "telcel-amigo",
+    "networkId": "telcel-mx",
+    "name": "Telcel Amigo",
+    "marketId": "mx"
+  }
+}

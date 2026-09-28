@@ -84,6 +84,12 @@
     "marketId": "my"
   },
   {
+    "id": "jio-prepaid",
+    "networkId": "jio-in",
+    "name": "Jio Prepaid",
+    "marketId": "in"
+  },
+  {
     "id": "kpn-prepaid",
     "marketId": "nl",
     "networkId": "kpn-nl",
@@ -112,6 +118,12 @@
     "networkId": "o2-uk",
     "name": "O2 Classic PAYG",
     "marketId": "gb"
+  },
+  {
+    "id": "orange-mobicarte",
+    "networkId": "orange-fr",
+    "name": "Orange Mobicarte",
+    "marketId": "fr"
   },
   {
     "id": "povo-jp",
@@ -150,10 +162,28 @@
     "marketId": "hk"
   },
   {
+    "id": "speakout-711",
+    "networkId": "rogers-ca",
+    "name": "7-Eleven SpeakOut",
+    "marketId": "ca"
+  },
+  {
+    "id": "sunrise-prepaid",
+    "networkId": "sunrise-ch",
+    "name": "Sunrise Prepaid",
+    "marketId": "ch"
+  },
+  {
     "id": "taiwan-mobile-tw",
     "networkId": "twm-tw",
     "name": "Taiwan Mobile",
     "marketId": "tw"
+  },
+  {
+    "id": "telcel-amigo",
+    "networkId": "telcel-mx",
+    "name": "Telcel Amigo",
+    "marketId": "mx"
   },
   {
     "id": "tello-us",

@@ -170,6 +170,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "jio-prepaid-90d-trai-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "INR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "INR",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "kpn-prepaid-6mo-2026",
       "checkedAt": "2026-09-26",
       "metricState": "current-profile",
@@ -254,6 +266,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "orange-mobicarte-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 12.99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "povo20-zero-base-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -326,6 +350,30 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "speakout-711-365voucher-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CAD",
+      "acquisitionCostOriginal": 29,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CAD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
+      "routeId": "sunrise-prepaid-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CHF",
+      "acquisitionCostOriginal": 19.9,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CHF",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 510
+    },
+    {
       "routeId": "taiwan-mobile-prepaid-tw-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -336,6 +384,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "telcel-amigo-lifecycle-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MXN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "MXN",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "tello-paygo-credit-2026",
