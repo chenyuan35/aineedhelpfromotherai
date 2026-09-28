@@ -1,0 +1,33 @@
+name: Temp Japan batch B sync
+
+on:
+  push:
+    branches:
+      - phone/jp-batch-b-current-facts-20260929
+    paths:
+      - .github/workflows/temp-jp-batch-b-sync.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download verified patch
+        run: |
+          curl -fsSL --retry 3 -o /tmp/jp-batch-b.patch https://a3a94b5b61ecf3.lhr.life/8f6c2d91-jp-batch-b.patch
+          echo "f2b9e8a1fc700777f6acf4ee6ce22364a9d607973ab150622dcca9f0ec2d50b8  /tmp/jp-batch-b.patch" | sha256sum -c -
+      - name: Apply and push verified tree
+        run: |
+          git apply --check /tmp/jp-batch-b.patch
+          git apply /tmp/jp-batch-b.patch
+          rm .github/workflows/temp-jp-batch-b-sync.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "phone: reconcile and migrate Japan batch B"
+          git push origin HEAD:phone/jp-batch-b-current-facts-20260929
