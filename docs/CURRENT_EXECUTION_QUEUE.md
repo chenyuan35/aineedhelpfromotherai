@@ -8,50 +8,49 @@ Last updated: 2026-09-28
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The current 135-route legacy comparison artifact remains valid product input behind the PR #263 manifest gate.
-3. **Canonical v1 staged migration is proven, not yet coverage-parity.** After PR #274 it has 26 routes; fifteen IDs overlap the 135-route comparison set and 120 remain legacy-only.
+3. **Canonical v1 staged migration is proven, not yet coverage-parity.** After PR #276 it has 29 routes; 18 IDs overlap the 135-route comparison set and 117 remain legacy-only.
 4. **Publication remains separate.** Canonical migration does not imply new route/market URLs, sitemap entries or indexability.
 5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — Hong Kong three-route canonical migration
+## JUST COMPLETED — Italy/Spain/Singapore three-route canonical migration
 
-Result: **PASS / three reviewed routes migrated with bounded provenance reconciliation; no publication expansion.**
+Result: **PASS / three reviewed routes migrated with current provenance reconciliation; no publication expansion.**
 
-- PR #274 squash-merged as `251528d3e279e8a99b075601bb8e2742d186ba5e`; Eval Gate #881, CI #161, Vercel Preview and production passed;
-- `clubsim-sms-pack-6hkd-2026`, `sosim-recharge-ladder-2026`, and `threehk-diy-recharge-2026` now exist in canonical v1 through reviewed packets;
-- canonical `data/phone/v1` is 26 routes / 13 markets / 25 brands / 12 networks / 82 sources;
-- overlap with the 135-route comparison set is 15; 120 comparison routes remain legacy-only;
-- legacy comparison routes reference 218 distinct source IDs; 176 remain absent from canonical sources;
-- ClubSIM retains the current official-web HK$6 SMS-pack price while explicitly preserving the 2026 in-app availability conflict instead of presenting HK$6 as guaranteed across channels;
-- SoSIM now uses the current HK$33 official entry price and the official HK$100→180d / HK$200→365d / HK$500+→730d validity ladder plus conditional expired-number recovery;
-- 3HK DIY no longer inherits the unrelated SIM World International Supreme Card HK$50/365d voucher table; the retained DIY model uses DIY-specific official baseline plus independent recharge reproduction;
-- batch source metadata can now preserve exact per-source URLs through the legacy comparison rebuild;
+- PR #276 squash-merged as `952b6d13516bbb7756078c90d0c6d4e4880e4545`; Eval Gate #885 and CI #163 passed;
+- `tim-prepaid-12mo-2026`, `movistar-prepago-6mo-2026`, and `singtel-hi-prepaid-passport-30d-2026` now exist in canonical v1 through reviewed packets;
+- canonical `data/phone/v1` is 29 routes / 16 markets / 28 brands / 15 networks / 89 sources;
+- overlap with the 135-route comparison set is 18; 117 comparison routes remain legacy-only;
+- TIM retains the official 12-month lifecycle, current EUR5 recharge path, month-13 receive-only behavior and documented post-expiry reactivation window;
+- Movistar retains the official six-month recharge lifecycle, EUR5 minimum recharge and 54-day receive/recovery tail;
+- Singtel remains HOLD / negative knowledge for passport-only users: passport registration is capped at 30 days, self-registration is data-only, and durable retention requires Singpass or a Singapore-issued ID/work pass;
 - the generic adapter reproduces all three reviewed comparison rows by exact deep equality;
 - comparison coverage remains 135 routes, explicit indexability remains 3 routes, and the reviewed batch manifest remains authoritative;
-- live Directory and comparison-index return HTTP 200; all three migrated standalone route URLs remain HTTP 404/noindex.
+- live Phone Directory returns HTTP 200; all three migrated standalone route URLs remain HTTP 404, confirming no publication expansion.
 
-## NEXT SESSION — Italy/Spain/Singapore three-route canonical migration
+## NEXT SESSION — UK MNO three-route canonical migration
 
 **Session task:** continue staged canonical coverage with exactly one already-admitted three-route batch.
 
-Use `it-es-sg-directory-batch-h.json`: `tim-prepaid-12mo-2026`, `movistar-prepago-6mo-2026`, and `singtel-hi-prepaid-passport-30d-2026`.
+Use `uk-mno-directory-batch-e.json`: `three-uk-payg-180d-2026`, `o2-uk-classic-payg-6mo-2026`, and `ee-uk-payg-180d-2026`.
 
 ### Scope
 
 1. reverify the three target source IDs and current provider/provenance state before admission;
-2. preserve TIM and Movistar candidate semantics unless current evidence proves a target fact stale;
-3. preserve Singtel’s passport-based 30-day validity/registration blocker as negative knowledge rather than converting it into a recommendation;
-4. map market/network/brand/route identities and carry all three profiles through canonical snapshots;
-5. prove exact post-review adapter parity and keep `it-es-sg-directory-batch-h.json` in the reviewed manifest;
+2. preserve Three UK and EE candidate semantics unless current evidence proves a target fact stale;
+3. preserve O2 Classic PAYG as observation/HOLD negative knowledge unless current first-party evidence establishes a valid current route;
+4. map market/network/brand/route identities and carry all three profiles through canonical snapshots without disturbing the existing UK pilot routes;
+5. prove exact post-review adapter parity and keep `uk-mno-directory-batch-e.json` in the reviewed manifest;
 6. run canonical/admission/publication/release checks; do not migrate another batch or change publication/indexability.
 
 ### Definition of done
 
-- all three IT/ES/SG routes exist in canonical v1 with complete references/provenance;
+- all three UK MNO batch routes exist in canonical v1 with complete references/provenance;
 - canonical-derived rows deep-equal their reviewed/current comparison rows;
 - comparison remains 135 routes and explicit indexability remains 3;
+- existing Lebara/Giffgaff/VOXI public pilot behavior is unchanged;
 - raw delegated output still cannot bypass review;
 - no public comparison cutover or new standalone URL occurs.
 
