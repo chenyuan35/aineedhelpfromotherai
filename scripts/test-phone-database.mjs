@@ -24,7 +24,7 @@ assert.equal(croatia[0]?.id, 'a1-croatia-prepaid-esim');
 const temp = searchPhoneRoutes(idx.routes, '', { family: 'temporary' });
 assert.ok(temp.length >= 3);
 const gb = searchPhoneRoutes(idx.routes, '', { marketId: 'gb' });
-assert.equal(gb.length, 4);
+assert.equal(gb.length, 7);
 
 const whatsapp = searchPhoneRoutes(idx.routes, 'WhatsApp', { marketId: 'gb' });
 assert.ok(whatsapp.some(x => x.id === 'lebara-uk-direct-esim-china'));
@@ -34,11 +34,11 @@ for (const route of db.routes) {
   assert.equal(detail.route.id, route.id, `detail bundle mismatch for ${route.id}`);
 }
 
-const keepCheap = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', family: 'long-term', sort: 'keep-cost' });
+const keepCheap = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', family: 'long-term', surfaceState: 'public-pilot', sort: 'keep-cost' });
 assert.equal(keepCheap[0]?.id, 'voxi-uk-esim-payg-retention');
-const keepLongest = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', family: 'long-term', sort: 'keep-window' });
+const keepLongest = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', family: 'long-term', surfaceState: 'public-pilot', sort: 'keep-window' });
 assert.ok(['voxi-uk-esim-payg-retention','giffgaff-uk-direct-esim-payg'].includes(keepLongest[0]?.id));
-const waEvidence = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', serviceId: 'whatsapp', sort: 'service-evidence' });
+const waEvidence = searchPhoneRoutes(idx.routes, '', { marketId: 'gb', surfaceState: 'public-pilot', serviceId: 'whatsapp', sort: 'service-evidence' });
 assert.equal(waEvidence[0]?.id, 'lebara-uk-direct-esim-china');
 const fixtureRanges = [
   {id:'r-short',marketId:'gb',e164Prefix:'+4477',allocationProviderName:'Example A'},

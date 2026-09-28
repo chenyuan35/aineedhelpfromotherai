@@ -36,6 +36,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "ee-uk-payg",
+    "networkId": "ee-uk",
+    "name": "EE PAYG",
+    "marketId": "gb"
+  },
+  {
     "id": "fareastone-tw",
     "networkId": "fet-tw",
     "name": "FarEasTone",
@@ -84,6 +90,12 @@
     "marketId": "es"
   },
   {
+    "id": "o2-uk-classic",
+    "networkId": "o2-uk",
+    "name": "O2 Classic PAYG",
+    "marketId": "gb"
+  },
+  {
     "id": "sakura-mobile-jp",
     "marketId": "jp",
     "networkId": null,
@@ -124,6 +136,12 @@
     "marketId": "au",
     "networkId": "telstra-au",
     "name": "Telstra Pre-Paid"
+  },
+  {
+    "id": "three-uk-payg",
+    "networkId": "three-uk",
+    "name": "Three UK PAYG",
+    "marketId": "gb"
   },
   {
     "id": "threehk-diy",

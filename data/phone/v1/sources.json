@@ -18,10 +18,22 @@
     "reportedAt": "2025-10-21"
   },
   {
+    "id": "community-ee-payg-no-esim-2025-06-30",
+    "url": "https://community.ee.co.uk/t5/Pay-as-you-go/E-sim/td-p/1544801",
+    "type": "provider-moderated-community",
+    "reportedAt": "2025-06-30"
+  },
+  {
     "id": "community-naixi-clubsim-pack-availability-2026-07",
     "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
     "type": "community-report",
     "reportedAt": "2026-07-01"
+  },
+  {
+    "id": "community-o2-inactivity-criteria-2024",
+    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Inactivity-criteria-for-sim-disconnection/td-p/1685980",
+    "type": "community-report",
+    "reportedAt": "2024-01-16"
   },
   {
     "id": "community-vocus-clubsim-6hkd-guide-2026-04",
@@ -216,6 +228,36 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-ee-free-sim-2026-09-28",
+    "url": "https://ee.co.uk/mobile/free-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-ee-payg-hibernation-2026-09-28",
+    "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/pay-as-you-go-credit-run-out-when-i-havent-made-calls",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-ee-payg-plan-terms-2026-08-24",
+    "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/mobile/pay-as-you-go/packs/ee-pay-as-you-go-plan-terms-24-august-2026.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-08-24"
+  },
+  {
+    "id": "official-ee-payg-priceguide-2026-06-03",
+    "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/price-plans/mobile/pay-as-you-go-price-plans/ee-pay-as-you-go-non-standard-charges-price-guide-3rd_June_2026.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-06-03"
+  },
+  {
+    "id": "official-ee-payg-topup-help-2026-09-28",
+    "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "official-hotlink-pantas-passes-faq-2026-09-26",
     "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
     "type": "provider-official",
@@ -236,6 +278,12 @@
   {
     "id": "official-movistar-recharge-min-5-terms-2026-09-28",
     "url": "https://prod.adb.col.movistar.es/content/dam/movistar/contratos/cp-servicio-recarga-tarjetas.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-o2-classic-payg-help-2026-09-28",
+    "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
   },
@@ -280,6 +328,24 @@
     "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "type": "provider-official",
     "reportedAt": "2026-09-26"
+  },
+  {
+    "id": "official-three-newpayg-priceguide-2026-04-19",
+    "url": "https://www.three.co.uk/content/dam/threedigital/terms-and-conditions/price-guides/latest-price-guides/newpaygplans-priceguide-19042026.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-04-19"
+  },
+  {
+    "id": "official-three-payg-datapacks-2026-09-28",
+    "url": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-three-payg-support-2026-09-28",
+    "url": "https://www.three.co.uk/support/pay-as-you-go",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
   },
   {
     "id": "official-tim-riattivare-sim-2026-09-26",

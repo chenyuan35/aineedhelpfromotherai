@@ -111,6 +111,28 @@
     ]
   },
   {
+    "id": "ee-uk-payg-180d-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "ee-uk-payg",
+    "displayName": "EE PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://ee.co.uk/mobile/pay-as-you-go-sim-only",
+    "sourceIds": [
+      "community-ee-payg-no-esim-2025-06-30",
+      "official-ee-free-sim-2026-09-28",
+      "official-ee-payg-hibernation-2026-09-28",
+      "official-ee-payg-plan-terms-2026-08-24",
+      "official-ee-payg-priceguide-2026-06-03",
+      "official-ee-payg-topup-help-2026-09-28"
+    ]
+  },
+  {
     "id": "fareastone-prepaid-tw-2026",
     "marketId": "tw",
     "networkId": "fet-tw",
@@ -286,6 +308,24 @@
     ]
   },
   {
+    "id": "o2-uk-classic-payg-6mo-2026",
+    "marketId": "gb",
+    "networkId": "o2-uk",
+    "brandId": "o2-uk-classic",
+    "displayName": "O2 Classic PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
+    "sourceIds": [
+      "community-o2-inactivity-criteria-2024",
+      "official-o2-classic-payg-help-2026-09-28"
+    ]
+  },
+  {
     "id": "sakura-japan-voice-data",
     "marketId": "jp",
     "networkId": null,
@@ -412,6 +452,25 @@
     "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "sourceIds": [
       "official-telstra-prepaid-compare-2026-09-26"
+    ]
+  },
+  {
+    "id": "three-uk-payg-180d-2026",
+    "marketId": "gb",
+    "networkId": "three-uk",
+    "brandId": "three-uk-payg",
+    "displayName": "Three UK PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+    "sourceIds": [
+      "official-three-newpayg-priceguide-2026-04-19",
+      "official-three-payg-datapacks-2026-09-28",
+      "official-three-payg-support-2026-09-28"
     ]
   },
   {
