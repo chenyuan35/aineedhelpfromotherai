@@ -5467,7 +5467,7 @@
   {
    "id": "fareastone-prepaid-tw-2026",
    "brandId": "fareastone-tw",
-   "publishState": "observation",
+   "publishState": "candidate",
    "numberType": "real-mobile",
    "simType": "physical",
    "acquisitionSummary": "FarEasTone 超4代易付卡 prepaid starters (NT$300/500 types) sold in FET stores; passport accepted for foreigners. Official product page confirmed live 2026-09-27.",
@@ -5484,12 +5484,12 @@
    },
    "keep": {
     "currency": "TWD",
-    "observedActionCost": null,
-    "yearCostOriginal": null,
-    "yearCostCny": null,
-    "action": "FET-specific number-validity rule not yet officially captured. Taiwan NCC-regulated industry standard (per Taiwan Mobile official terms): validity resets 6 months from each recharge — FET likely identical, unverified.",
-    "intervalDays": null,
-    "state": "partially-verified"
+    "observedActionCost": 100,
+    "yearCostOriginal": 200,
+    "yearCostCny": 46,
+    "action": "Official FarEasTone prepaid terms: number validity is 6 months from activation and each recharge; communication-credit recharge denominations include NT$100, NT$300, NT$500 and NT$1000. Minimum keep-alive path is one NT$100 recharge per 6 months.",
+    "intervalDays": 180,
+    "state": "official-confirmed-rule-and-minimum-recharge"
    },
    "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
    "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
@@ -5498,11 +5498,11 @@
    "roamingSms": null,
    "refund": "not reconciled",
    "trend": "stable",
-   "guideEligible": false,
-   "holdReason": "Retention rule not yet officially verified for FET specifically.",
+   "guideEligible": true,
+   "holdReason": null,
    "lastVerifiedAt": "2026-09-27",
    "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
-   "tariffSummary": "Prepaid starters NT$300/500; validity rule pending official capture.",
+   "tariffSummary": "Prepaid starters NT$300/500; number valid 6 months from activation/recharge; communication-credit top-up from NT$100.",
    "sourceIds": [
     "fareastone-tw-official"
    ],

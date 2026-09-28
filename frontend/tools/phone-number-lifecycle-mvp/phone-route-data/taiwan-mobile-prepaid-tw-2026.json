@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "taiwan-mobile-prepaid-tw-2026",
+    "marketId": "tw",
+    "networkId": "twm-tw",
+    "brandId": "taiwan-mobile-tw",
+    "displayName": "Taiwan Mobile",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-27",
+    "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+    "sourceIds": [
+      "taiwan-mobile-tw-official"
+    ]
+  },
+  "market": {
+    "id": "tw",
+    "name": "Taiwan",
+    "countryCode": "TW"
+  },
+  "network": {
+    "id": "twm-tw",
+    "name": "Taiwan Mobile",
+    "marketId": "tw"
+  },
+  "brand": {
+    "id": "taiwan-mobile-tw",
+    "networkId": "twm-tw",
+    "name": "Taiwan Mobile",
+    "marketId": "tw"
+  },
+  "metrics": {
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "checkedAt": "2026-09-27",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "TWD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "TWD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "taiwan-mobile-tw-official",
+      "url": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-27"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-taiwan-mobile-prepaid-tw-2026-current-profile-20260927",
+      "routeId": "taiwan-mobile-prepaid-tw-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-27",
+      "sourceDataset": "tw-depth-batch-w.json",
+      "data": {
+        "id": "taiwan-mobile-prepaid-tw-2026",
+        "brandId": "taiwan-mobile-tw",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "4G/5G prepaid starter sold at Taiwan Mobile stores, franchise shops and airport counters; foreigners apply with passport (same as CHT). Long-validity recharge packs 60-180 days data + bonus credit.",
+        "landedCost": {
+          "currency": "TWD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": "2026-09-27",
+          "state": "unverified"
+        },
+        "keep": {
+          "currency": "TWD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Official promo terms (taiwanmobile.com, effective 2026): 門號效期將自儲值日起重新起算6個月 — number validity resets to 6 months from each recharge. Minimum recharge amount unverified (typical channels NT$100-300). Retention = one recharge per 6 months.",
+          "intervalDays": 180,
+          "state": "official-confirmed-rule-cost-unverified"
+        },
+        "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+        "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+        "payment": "Cash/card in Taiwan stores; online recharge needs TW-friendly payment.",
+        "wifiCalling": null,
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-27",
+        "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+        "tariffSummary": "Prepaid; number validity = 6 months from each recharge (official).",
+        "sourceIds": [
+          "taiwan-mobile-tw-official"
+        ]
+      }
+    }
+  ]
+}

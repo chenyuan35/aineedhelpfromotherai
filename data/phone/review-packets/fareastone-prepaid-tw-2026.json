@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "tw",
+    "name": "Taiwan",
+    "countryCode": "TW"
+  },
+  "network": {
+    "id": "fet-tw",
+    "name": "FarEasTone",
+    "marketId": "tw"
+  },
+  "brand": {
+    "id": "fareastone-tw",
+    "networkId": "fet-tw",
+    "name": "FarEasTone",
+    "marketId": "tw"
+  },
+  "route": {
+    "id": "fareastone-prepaid-tw-2026",
+    "marketId": "tw",
+    "networkId": "fet-tw",
+    "brandId": "fareastone-tw",
+    "displayName": "FarEasTone",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-27",
+    "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html"
+  },
+  "sources": [
+    {
+      "id": "fareastone-tw-official",
+      "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-27"
+    }
+  ],
+  "sourceIds": [
+    "fareastone-tw-official"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-fareastone-prepaid-tw-2026-current-profile-20260927",
+      "routeId": "fareastone-prepaid-tw-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-27",
+      "sourceDataset": "tw-depth-batch-w.json",
+      "data": {
+        "id": "fareastone-prepaid-tw-2026",
+        "brandId": "fareastone-tw",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "FarEasTone 超4代易付卡 prepaid starters (NT$300/500 types) sold in FET stores; passport accepted for foreigners. Official product page confirmed live 2026-09-27.",
+        "landedCost": {
+          "currency": "TWD",
+          "providerOrCommunityPrice": 300,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 300,
+          "landedCny": 69,
+          "fxCheckedAt": "2026-09-27",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "TWD",
+          "observedActionCost": 100,
+          "yearCostOriginal": 200,
+          "yearCostCny": 46,
+          "action": "Official FarEasTone prepaid terms: number validity is 6 months from activation and each recharge; communication-credit recharge denominations include NT$100, NT$300, NT$500 and NT$1000. Minimum keep-alive path is one NT$100 recharge per 6 months.",
+          "intervalDays": 180,
+          "state": "official-confirmed-rule-and-minimum-recharge"
+        },
+        "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+        "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+        "payment": "Cash/card in Taiwan stores.",
+        "wifiCalling": null,
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-27",
+        "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+        "tariffSummary": "Prepaid starters NT$300/500; number valid 6 months from activation/recharge; communication-credit top-up from NT$100.",
+        "sourceIds": [
+          "fareastone-tw-official"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

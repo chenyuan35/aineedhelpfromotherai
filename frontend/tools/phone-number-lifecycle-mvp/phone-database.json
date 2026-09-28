@@ -46,6 +46,11 @@
       "countryCode": "NL"
     },
     {
+      "id": "tw",
+      "name": "Taiwan",
+      "countryCode": "TW"
+    },
+    {
       "id": "us",
       "name": "United States",
       "countryCode": "US"
@@ -63,6 +68,11 @@
       "marketId": "hk"
     },
     {
+      "id": "fet-tw",
+      "name": "FarEasTone",
+      "marketId": "tw"
+    },
+    {
       "id": "kpn-nl",
       "name": "KPN",
       "marketId": "nl"
@@ -76,6 +86,11 @@
       "id": "telstra-au",
       "name": "Telstra",
       "marketId": "au"
+    },
+    {
+      "id": "twm-tw",
+      "name": "Taiwan Mobile",
+      "marketId": "tw"
     },
     {
       "id": "vodafone-uk",
@@ -107,6 +122,12 @@
       "marketId": "hk",
       "networkId": "cmhk-hk",
       "name": "CMHK (China Mobile HK)"
+    },
+    {
+      "id": "fareastone-tw",
+      "networkId": "fet-tw",
+      "name": "FarEasTone",
+      "marketId": "tw"
     },
     {
       "id": "giffgaff-uk",
@@ -149,6 +170,12 @@
       "marketId": "global",
       "networkId": null,
       "name": "SMSPool"
+    },
+    {
+      "id": "taiwan-mobile-tw",
+      "networkId": "twm-tw",
+      "name": "Taiwan Mobile",
+      "marketId": "tw"
     },
     {
       "id": "tello-us",
@@ -260,6 +287,23 @@
       "sourceIds": [
         "cmhk-mysim-hk-community",
         "cmhk-mysim-hk-official"
+      ]
+    },
+    {
+      "id": "fareastone-prepaid-tw-2026",
+      "marketId": "tw",
+      "networkId": "fet-tw",
+      "brandId": "fareastone-tw",
+      "displayName": "FarEasTone",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-27",
+      "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+      "sourceIds": [
+        "fareastone-tw-official"
       ]
     },
     {
@@ -423,6 +467,23 @@
       ]
     },
     {
+      "id": "taiwan-mobile-prepaid-tw-2026",
+      "marketId": "tw",
+      "networkId": "twm-tw",
+      "brandId": "taiwan-mobile-tw",
+      "displayName": "Taiwan Mobile",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-27",
+      "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+      "sourceIds": [
+        "taiwan-mobile-tw-official"
+      ]
+    },
+    {
       "id": "tello-us",
       "marketId": "us",
       "networkId": null,
@@ -550,6 +611,12 @@
       "id": "cmhk-mysim-hk-official",
       "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
       "type": "official",
+      "reportedAt": "2026-09-27"
+    },
+    {
+      "id": "fareastone-tw-official",
+      "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+      "type": "provider-official",
       "reportedAt": "2026-09-27"
     },
     {
@@ -917,6 +984,12 @@
       "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
       "type": "official",
       "label": "Tello — When do autopay & plan renewal occur?"
+    },
+    {
+      "id": "taiwan-mobile-tw-official",
+      "url": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-27"
     },
     {
       "id": "vodafone-official-network-trial-2026",
@@ -1375,6 +1448,56 @@
         "sourceIds": [
           "cmhk-mysim-hk-official",
           "cmhk-mysim-hk-community"
+        ]
+      }
+    },
+    {
+      "id": "snap-fareastone-prepaid-tw-2026-current-profile-20260927",
+      "routeId": "fareastone-prepaid-tw-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-27",
+      "sourceDataset": "tw-depth-batch-w.json",
+      "data": {
+        "id": "fareastone-prepaid-tw-2026",
+        "brandId": "fareastone-tw",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "FarEasTone 超4代易付卡 prepaid starters (NT$300/500 types) sold in FET stores; passport accepted for foreigners. Official product page confirmed live 2026-09-27.",
+        "landedCost": {
+          "currency": "TWD",
+          "providerOrCommunityPrice": 300,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 300,
+          "landedCny": 69,
+          "fxCheckedAt": "2026-09-27",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "TWD",
+          "observedActionCost": 100,
+          "yearCostOriginal": 200,
+          "yearCostCny": 46,
+          "action": "Official FarEasTone prepaid terms: number validity is 6 months from activation and each recharge; communication-credit recharge denominations include NT$100, NT$300, NT$500 and NT$1000. Minimum keep-alive path is one NT$100 recharge per 6 months.",
+          "intervalDays": 180,
+          "state": "official-confirmed-rule-and-minimum-recharge"
+        },
+        "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+        "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+        "payment": "Cash/card in Taiwan stores.",
+        "wifiCalling": null,
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-27",
+        "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+        "tariffSummary": "Prepaid starters NT$300/500; number valid 6 months from activation/recharge; communication-credit top-up from NT$100.",
+        "sourceIds": [
+          "fareastone-tw-official"
         ]
       }
     },
@@ -2887,6 +3010,56 @@
       }
     },
     {
+      "id": "snap-taiwan-mobile-prepaid-tw-2026-current-profile-20260927",
+      "routeId": "taiwan-mobile-prepaid-tw-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-27",
+      "sourceDataset": "tw-depth-batch-w.json",
+      "data": {
+        "id": "taiwan-mobile-prepaid-tw-2026",
+        "brandId": "taiwan-mobile-tw",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "4G/5G prepaid starter sold at Taiwan Mobile stores, franchise shops and airport counters; foreigners apply with passport (same as CHT). Long-validity recharge packs 60-180 days data + bonus credit.",
+        "landedCost": {
+          "currency": "TWD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": "2026-09-27",
+          "state": "unverified"
+        },
+        "keep": {
+          "currency": "TWD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Official promo terms (taiwanmobile.com, effective 2026): 門號效期將自儲值日起重新起算6個月 — number validity resets to 6 months from each recharge. Minimum recharge amount unverified (typical channels NT$100-300). Retention = one recharge per 6 months.",
+          "intervalDays": 180,
+          "state": "official-confirmed-rule-cost-unverified"
+        },
+        "chinaActivation": "In-Taiwan purchase/activation; overseas activation unverified.",
+        "kyc": "Passport accepted for foreigners (Taiwan prepaid standard).",
+        "payment": "Cash/card in Taiwan stores; online recharge needs TW-friendly payment.",
+        "wifiCalling": null,
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-27",
+        "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+        "tariffSummary": "Prepaid; number validity = 6 months from each recharge (official).",
+        "sourceIds": [
+          "taiwan-mobile-tw-official"
+        ]
+      }
+    },
+    {
       "id": "snap-tello-us-capabilities-bb2150",
       "routeId": "tello-us",
       "kind": "capabilities",
@@ -3974,6 +4147,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "fareastone-prepaid-tw-2026",
+      "checkedAt": "2026-09-27",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TWD",
+      "acquisitionCostOriginal": 300,
+      "acquisitionCostCny": 69,
+      "keepCurrency": "TWD",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": 46,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -4068,6 +4253,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "taiwan-mobile-prepaid-tw-2026",
+      "checkedAt": "2026-09-27",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TWD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TWD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "tello-us",
