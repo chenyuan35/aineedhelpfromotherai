@@ -66,7 +66,7 @@
     "test:relay-risk": "node scripts/test-relay-risk-score.js",
     "test:relay-risk-ingestion": "node scripts/test-relay-risk-ingestion.js",
     "phone:data:build": "node scripts/build-phone-database.mjs",
-    "phone:data:check": "node scripts/build-phone-database.mjs --check && node scripts/test-phone-database.mjs && node scripts/test-phone-candidate-pipeline.mjs && node scripts/test-phone-canonical-comparison-pilot.mjs",
+    "phone:data:check": "node scripts/build-phone-database.mjs --check && node scripts/test-phone-database.mjs && node scripts/test-phone-candidate-pipeline.mjs && node scripts/test-phone-canonical-comparison-pilot.mjs && node scripts/test-phone-canonical-repeatability-pilot.mjs",
     "phone:candidates:validate": "node scripts/validate-phone-candidate-pack.mjs",
     "phone:candidates:stage": "node scripts/stage-phone-candidates.mjs",
     "phone:packet:check": "node scripts/apply-phone-review-packet.mjs"

@@ -229,6 +229,38 @@
       }
     },
     {
+      "id": "kpn-prepaid-6mo-2026",
+      "displayName": "KPN Prepaid",
+      "marketId": "nl",
+      "marketName": "Netherlands",
+      "countryCode": "NL",
+      "networkName": "KPN",
+      "brandName": "KPN Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-26",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "kpn-prepaid-6mo-2026",
+        "checkedAt": "2026-09-26",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 15,
+        "acquisitionCostCny": 117,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 0.14,
+        "keepYearCostCny": 1.1,
+        "keepIntervalDays": 180
+      }
+    },
+    {
       "id": "lebara-uk-direct-esim-china",
       "displayName": "Lebara UK",
       "marketId": "gb",
@@ -442,6 +474,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "telstra-prepaid-longexpiry-2026",
+      "displayName": "Telstra Pre-Paid",
+      "marketId": "au",
+      "marketName": "Australia",
+      "countryCode": "AU",
+      "networkName": "Telstra",
+      "brandName": "Telstra Pre-Paid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-26",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "telstra-prepaid-longexpiry-2026",
+        "checkedAt": "2026-09-26",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "AUD",
+        "acquisitionCostOriginal": 2,
+        "acquisitionCostCny": 9.4,
+        "keepCurrency": "AUD",
+        "keepYearCostOriginal": 395,
+        "keepYearCostCny": 1860,
+        "keepIntervalDays": 365
       }
     },
     {

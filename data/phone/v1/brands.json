@@ -36,6 +36,12 @@
     "name": "H2O Wireless"
   },
   {
+    "id": "kpn-prepaid",
+    "marketId": "nl",
+    "networkId": "kpn-nl",
+    "name": "KPN Prepaid"
+  },
+  {
     "id": "lebara-uk",
     "networkId": "vodafone-uk",
     "name": "Lebara UK",
@@ -64,6 +70,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "Tello"
+  },
+  {
+    "id": "telstra-prepaid",
+    "marketId": "au",
+    "networkId": "telstra-au",
+    "name": "Telstra Pre-Paid"
   },
   {
     "id": "trip-com-china-mobile-cmlink-cn",

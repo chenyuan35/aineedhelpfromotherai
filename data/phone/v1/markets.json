@@ -1,5 +1,10 @@
 [
   {
+    "id": "au",
+    "name": "Australia",
+    "countryCode": "AU"
+  },
+  {
     "id": "cn",
     "name": "China",
     "countryCode": "CN"
@@ -28,6 +33,11 @@
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
+  },
+  {
+    "id": "nl",
+    "name": "Netherlands",
+    "countryCode": "NL"
   },
   {
     "id": "us",

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "telstra-prepaid-longexpiry-2026",
+    "marketId": "au",
+    "networkId": "telstra-au",
+    "brandId": "telstra-prepaid",
+    "displayName": "Telstra Pre-Paid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-26",
+    "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+    "sourceIds": [
+      "official-telstra-prepaid-compare-2026-09-26"
+    ]
+  },
+  "market": {
+    "id": "au",
+    "name": "Australia",
+    "countryCode": "AU"
+  },
+  "network": {
+    "id": "telstra-au",
+    "name": "Telstra",
+    "marketId": "au"
+  },
+  "brand": {
+    "id": "telstra-prepaid",
+    "marketId": "au",
+    "networkId": "telstra-au",
+    "name": "Telstra Pre-Paid"
+  },
+  "metrics": {
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "checkedAt": "2026-09-26",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "AUD",
+    "acquisitionCostOriginal": 2,
+    "acquisitionCostCny": 9.4,
+    "keepCurrency": "AUD",
+    "keepYearCostOriginal": 395,
+    "keepYearCostCny": 1860,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-telstra-prepaid-compare-2026-09-26",
+      "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+      "type": "provider-official",
+      "reportedAt": "2026-09-26"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-telstra-prepaid-longexpiry-2026-current-profile-20260926",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-26",
+      "sourceDataset": "nl-au-directory-batch-g.json",
+      "data": {
+        "id": "telstra-prepaid-longexpiry-2026",
+        "brandId": "telstra-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official plan table (2026-09-26): recharge $200 → 6-month expiry, $395 → 12-month expiry; lower tiers 7-28 days. Data for use in Australia only.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 2,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2,
+          "landedCny": 9.4,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported-sim-price"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 200,
+          "yearCostOriginal": 395,
+          "yearCostCny": 1860,
+          "action": "Recharge-expiry model: $395/yr (12-month tier) or $200/6mo. Expensive vs global alternatives. Post-expiry grace period for number recovery pending capture — 验证中.",
+          "intervalDays": 365,
+          "state": "official-recharge-ladder-number-grace-pending"
+        },
+        "chinaActivation": "Telstra prepaid activation requires Australia network typically; eSIM available; China-first unverified.",
+        "kyc": "AU prepaid ID check (name/DOB, light-touch; passport OK).",
+        "payment": "Card/PayPal online; international cards generally accepted.",
+        "wifiCalling": "Supported (device-dependent).",
+        "roamingSms": "Receiving SMS abroad works (community); roaming packs for outbound.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "$395/yr is 20-100x pricier than alternatives (Hotlink RM2, ClubSIM HK$6); document as reference unless AU number specifically needed.",
+        "lastVerifiedAt": "2026-09-26",
+        "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+        "tariffSummary": "$200/6mo or $395/12mo recharge-expiry model.",
+        "sourceIds": [
+          "official-telstra-prepaid-compare-2026-09-26"
+        ],
+        "guideSteps": [
+          "Directory card only — premium pricing documented for reference."
+        ]
+      }
+    }
+  ]
+}

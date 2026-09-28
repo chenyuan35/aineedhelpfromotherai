@@ -74,6 +74,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "kpn-prepaid-6mo-2026",
+      "checkedAt": "2026-09-26",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 15,
+      "acquisitionCostCny": 117,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 0.14,
+      "keepYearCostCny": 1.1,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -144,6 +156,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "checkedAt": "2026-09-26",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AUD",
+      "acquisitionCostOriginal": 2,
+      "acquisitionCostCny": 9.4,
+      "keepCurrency": "AUD",
+      "keepYearCostOriginal": 395,
+      "keepYearCostCny": 1860,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "trip-cmlink-china-data",
