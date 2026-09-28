@@ -156,6 +156,24 @@
     "reportedAt": "2026-08-09"
   },
   {
+    "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
+    "url": "https://media.medion.com/cms/medion/alditalkde/ALDI-TALK-Aktivitaetszeitfenster-der-SIM-Karte.pdf?v=0426",
+    "type": "provider-official",
+    "reportedAt": "2026-04-01"
+  },
+  {
+    "id": "official-callya-faq-via-prepaid-deutschland-2025-08",
+    "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
+    "type": "specialist-media",
+    "reportedAt": "2025-08-20"
+  },
+  {
+    "id": "official-hotlink-pantas-passes-faq-2026-09-26",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "official-staff-kpn-community-6mo-rule-2026-02",
     "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
     "type": "provider-moderated-community",
@@ -166,6 +184,12 @@
     "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "type": "provider-official",
     "reportedAt": "2026-09-26"
+  },
+  {
+    "id": "official-vodafone-prepaid-hilfe-2026-09-26",
+    "url": "https://www.vodafone.de/hilfe/prepaid.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-28"
   },
   {
     "id": "src-0b42956d1b40",

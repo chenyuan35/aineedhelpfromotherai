@@ -18,6 +18,12 @@
     "name": "ActivateX"
   },
   {
+    "id": "aldi-talk",
+    "networkId": "telefonica-de",
+    "name": "ALDI TALK",
+    "marketId": "de"
+  },
+  {
     "id": "cmhk-hk-direct",
     "marketId": "hk",
     "networkId": "cmhk-hk",
@@ -40,6 +46,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "H2O Wireless"
+  },
+  {
+    "id": "hotlink-my",
+    "networkId": "maxis-my",
+    "name": "Hotlink",
+    "marketId": "my"
   },
   {
     "id": "kpn-prepaid",
@@ -100,6 +112,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "Ultra Mobile PayGo"
+  },
+  {
+    "id": "vodafone-callya",
+    "networkId": "vodafone-de",
+    "name": "Vodafone CallYa",
+    "marketId": "de"
   },
   {
     "id": "vodafone-uk-direct",

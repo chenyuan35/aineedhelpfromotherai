@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "my",
+    "name": "Malaysia",
+    "countryCode": "MY"
+  },
+  "network": {
+    "id": "maxis-my",
+    "name": "Maxis MY",
+    "marketId": "my"
+  },
+  "brand": {
+    "id": "hotlink-my",
+    "networkId": "maxis-my",
+    "name": "Hotlink",
+    "marketId": "my"
+  },
+  "route": {
+    "id": "hotlink-pantas-365-pass-2026",
+    "marketId": "my",
+    "networkId": "maxis-my",
+    "brandId": "hotlink-my",
+    "displayName": "Hotlink Pantas",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/"
+  },
+  "sources": [
+    {
+      "id": "official-hotlink-pantas-passes-faq-2026-09-26",
+      "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "sourceIds": [
+    "official-hotlink-pantas-passes-faq-2026-09-26"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-hotlink-pantas-365-pass-2026-current-profile-20260928",
+      "routeId": "hotlink-pantas-365-pass-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "de-my-directory-batch-f.json",
+      "data": {
+        "id": "hotlink-pantas-365-pass-2026",
+        "brandId": "hotlink-my",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current official Hotlink Pantas pages: starter pack RM10 with RM5 credit; the 365-day Active Period Pass costs RM30 and keeps the account/SIM active for 365 days. Separate 365-day internet passes include 1GB/RM2, but those do not keep an inactive SIM active.",
+        "landedCost": {
+          "currency": "MYR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 15,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "MYR",
+          "observedActionCost": 30,
+          "yearCostOriginal": 30,
+          "yearCostCny": 45,
+          "action": "Current Hotlink FAQ: buy the RM30 365-day Active Period Pass in the Hotlink app to keep the account/SIM active for 365 days. The RM2/365-day product is a 1GB data pass and is not a keep-alive substitute.",
+          "intervalDays": 365,
+          "state": "official-policy-verified-2026-09-28"
+        },
+        "chinaActivation": "Malaysia prepaid requires passport registration (MCMC rules); eSIM available in Hotlink app — overseas-first activation unverified.",
+        "kyc": "Passport registration mandatory (MY law); foreigner-friendly.",
+        "payment": "App top-up via card; international acceptance 验证中.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+        "tariffSummary": "RM30 365-day Active Period Pass; RM2 is a separate 1GB/365-day data pass and does not extend SIM validity.",
+        "sourceIds": [
+          "official-hotlink-pantas-passes-faq-2026-09-26"
+        ],
+        "guideSteps": [
+          "Acquire the RM10 Hotlink Pantas starter pack and complete required registration.",
+          "Buy the RM30 365-day Active Period Pass in the Hotlink app once per year."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

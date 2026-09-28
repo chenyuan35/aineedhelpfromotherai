@@ -15,9 +15,19 @@
     "marketId": "nl"
   },
   {
+    "id": "maxis-my",
+    "name": "Maxis MY",
+    "marketId": "my"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "telefonica-de",
+    "name": "Telefónica DE (O2)",
+    "marketId": "de"
   },
   {
     "id": "telstra-au",
@@ -28,6 +38,11 @@
     "id": "twm-tw",
     "name": "Taiwan Mobile",
     "marketId": "tw"
+  },
+  {
+    "id": "vodafone-de",
+    "name": "Vodafone DE",
+    "marketId": "de"
   },
   {
     "id": "vodafone-uk",
