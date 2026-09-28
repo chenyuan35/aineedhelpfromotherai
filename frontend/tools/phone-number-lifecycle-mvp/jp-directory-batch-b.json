@@ -10,8 +10,8 @@
   ],
   "brands": [
     { "id": "povo-jp", "networkId": "au-jp", "name": "povo 2.0" },
-    { "id": "mobal-jp", "networkId": "docomo-jp", "name": "Mobal" },
-    { "id": "sakura-jp", "networkId": "docomo-jp", "name": "Sakura Mobile" }
+    { "id": "mobal-japan-jp", "networkId": null, "name": "Mobal Japan" },
+    { "id": "sakura-mobile-jp", "networkId": null, "name": "Sakura Mobile" }
   ],
   "routes": [
     {
@@ -68,7 +68,7 @@
     },
     {
       "id": "mobal-japan-voice-2026",
-      "brandId": "mobal-jp",
+      "brandId": "mobal-japan-jp",
       "publishState": "candidate",
       "numberType": "real-mobile",
       "simType": "eSIM + physical",
@@ -118,7 +118,7 @@
     },
     {
       "id": "sakura-mobile-voice-2026",
-      "brandId": "sakura-jp",
+      "brandId": "sakura-mobile-jp",
       "publishState": "candidate",
       "numberType": "real-mobile",
       "simType": "eSIM + physical",

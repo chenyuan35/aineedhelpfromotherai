@@ -102,6 +102,12 @@
     "marketId": "gb"
   },
   {
+    "id": "povo-jp",
+    "networkId": "au-jp",
+    "name": "povo 2.0",
+    "marketId": "jp"
+  },
+  {
     "id": "sakura-mobile-jp",
     "marketId": "jp",
     "networkId": null,

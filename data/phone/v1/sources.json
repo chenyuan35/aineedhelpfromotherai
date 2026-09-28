@@ -294,6 +294,18 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-mobal-id-requirements-2026-09-29",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-mobal-japan-sim-2026-09-29",
+    "url": "https://www.mobal.com/japan-sim-card/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-movistar-community-saldo-vigencia-2026-09-26",
     "url": "https://comunidad.movistar.es/kb/Gestiones/%C2%BFcu%C3%A1l-es-la-vigencia-del-saldo-de-movistar-%C2%BFcuando-caduca/4535087",
     "type": "provider-moderated-community",
@@ -316,6 +328,36 @@
     "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-povo-faq-858-2026-09-29",
+    "url": "https://faq.povo.jp/faq/show/858?site_domain=default",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-povo-faq-882-2026-09-29",
+    "url": "https://faq.povo.jp/faq/show/882?category_id=9&site_domain=default",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-povo-faq-904-2026-09-29",
+    "url": "https://faq.povo.jp/faq/show/904?site_domain=default",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-povo-procedure-other-2026-09-29",
+    "url": "https://povo.jp/en/procedure/other/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-povo-spec-detail-2026-09-29",
+    "url": "https://povo.jp/spec/detail/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-singtel-prepaid-faq-pdf-2024-11",

@@ -288,6 +288,24 @@
     ]
   },
   {
+    "id": "mobal-japan-voice-2026",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "mobal-japan-jp",
+    "displayName": "Mobal Japan Voice-Only",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+    "sourceIds": [
+      "official-mobal-id-requirements-2026-09-29",
+      "official-mobal-japan-sim-2026-09-29"
+    ]
+  },
+  {
     "id": "mobal-japan-voice-data",
     "marketId": "jp",
     "networkId": null,
@@ -342,6 +360,27 @@
     "sourceIds": [
       "community-o2-inactivity-criteria-2024",
       "official-o2-classic-payg-help-2026-09-28"
+    ]
+  },
+  {
+    "id": "povo20-zero-base-2026",
+    "marketId": "jp",
+    "networkId": "au-jp",
+    "brandId": "povo-jp",
+    "displayName": "povo 2.0 (Japan)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://povo.jp/",
+    "sourceIds": [
+      "official-povo-faq-858-2026-09-29",
+      "official-povo-faq-882-2026-09-29",
+      "official-povo-faq-904-2026-09-29",
+      "official-povo-procedure-other-2026-09-29",
+      "official-povo-spec-detail-2026-09-29"
     ]
   },
   {

@@ -5,6 +5,11 @@
     "marketId": "us"
   },
   {
+    "id": "au-jp",
+    "name": "au (KDDI)",
+    "marketId": "jp"
+  },
+  {
     "id": "cmhk-hk",
     "name": "China Mobile Hong Kong",
     "marketId": "hk"
