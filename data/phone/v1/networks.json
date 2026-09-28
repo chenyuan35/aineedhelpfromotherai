@@ -5,6 +5,11 @@
     "marketId": "hk"
   },
   {
+    "id": "fet-tw",
+    "name": "FarEasTone",
+    "marketId": "tw"
+  },
+  {
     "id": "kpn-nl",
     "name": "KPN",
     "marketId": "nl"
@@ -18,6 +23,11 @@
     "id": "telstra-au",
     "name": "Telstra",
     "marketId": "au"
+  },
+  {
+    "id": "twm-tw",
+    "name": "Taiwan Mobile",
+    "marketId": "tw"
   },
   {
     "id": "vodafone-uk",

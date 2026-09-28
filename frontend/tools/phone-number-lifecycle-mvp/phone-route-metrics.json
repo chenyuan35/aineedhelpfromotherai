@@ -50,6 +50,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "fareastone-prepaid-tw-2026",
+      "checkedAt": "2026-09-27",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TWD",
+      "acquisitionCostOriginal": 300,
+      "acquisitionCostCny": 69,
+      "keepCurrency": "TWD",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": 46,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -144,6 +156,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "taiwan-mobile-prepaid-tw-2026",
+      "checkedAt": "2026-09-27",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TWD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TWD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "tello-us",

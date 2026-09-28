@@ -24,6 +24,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "fareastone-tw",
+    "networkId": "fet-tw",
+    "name": "FarEasTone",
+    "marketId": "tw"
+  },
+  {
     "id": "giffgaff-uk",
     "networkId": "o2-uk",
     "name": "Giffgaff",
@@ -64,6 +70,12 @@
     "marketId": "global",
     "networkId": null,
     "name": "SMSPool"
+  },
+  {
+    "id": "taiwan-mobile-tw",
+    "networkId": "twm-tw",
+    "name": "Taiwan Mobile",
+    "marketId": "tw"
   },
   {
     "id": "tello-us",

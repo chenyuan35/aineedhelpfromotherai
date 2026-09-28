@@ -74,6 +74,23 @@
     ]
   },
   {
+    "id": "fareastone-prepaid-tw-2026",
+    "marketId": "tw",
+    "networkId": "fet-tw",
+    "brandId": "fareastone-tw",
+    "displayName": "FarEasTone",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-27",
+    "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+    "sourceIds": [
+      "fareastone-tw-official"
+    ]
+  },
+  {
     "id": "giffgaff-uk-direct-esim-payg",
     "marketId": "gb",
     "networkId": "o2-uk",
@@ -231,6 +248,23 @@
     "sourceIds": [
       "src-33ac07e70ef6",
       "src-7f446ed92df8"
+    ]
+  },
+  {
+    "id": "taiwan-mobile-prepaid-tw-2026",
+    "marketId": "tw",
+    "networkId": "twm-tw",
+    "brandId": "taiwan-mobile-tw",
+    "displayName": "Taiwan Mobile",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-27",
+    "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+    "sourceIds": [
+      "taiwan-mobile-tw-official"
     ]
   },
   {
