@@ -139,11 +139,13 @@ def main():
             r2 = dict(r)
             r2['marketName'] = resolve_country(bname, r, brands)
             out['routes'].append(r2)
+        source_meta = {s.get('id'): s for s in batch.get('sources', []) if isinstance(s, dict) and s.get('id')}
         for r in batch.get('routes', []):
             for sid in r.get('sourceIds', []):
                 if sid not in seen_src:
                     seen_src.add(sid)
-                    out['sources'].append({
+                    exact = source_meta.get(sid)
+                    out['sources'].append(dict(exact) if exact else {
                         'id': sid,
                         'url': r.get('acquireUrl', ''),
                         'type': 'provider-official' if 'official' in sid else 'community-report',

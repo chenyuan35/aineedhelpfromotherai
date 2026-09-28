@@ -18,7 +18,10 @@ assert.ok(build.includes("path.join(repo, 'data/phone/v1')"));
 assert.ok(!build.includes('data/phone/staging'));
 assert.ok(!build.includes('data/phone/inbox'));
 const canonical = JSON.parse(fs.readFileSync(path.join(repo, 'data/phone/v1/routes.json'), 'utf8'));
-assert.ok(!canonical.some(x => x.id === 'clubsim-sms-pack-6hkd-2026'), 'staging candidate must not leak into canonical routes');
+const reviewedOverlap = JSON.parse(fs.readFileSync(path.join(repo, 'data/phone/review-packets/clubsim-sms-pack-6hkd-2026.json'), 'utf8'));
+assert.ok(canonical.some(x => x.id === 'clubsim-sms-pack-6hkd-2026'), 'reviewed ClubSIM migration must reach canonical routes');
+assert.equal(reviewedOverlap.reviewState, 'approved-backstage', 'staging overlap may reach canonical only through reviewed admission');
+assert.equal(reviewedOverlap.route.id, 'clubsim-sms-pack-6hkd-2026');
 
 const legacyDir = path.join(repo, 'frontend/tools/phone-number-lifecycle-mvp');
 const manifest = JSON.parse(fs.readFileSync(path.join(legacyDir, 'batch-admission-manifest.json'), 'utf8'));
@@ -56,4 +59,4 @@ try {
 
 const globalDirectory = JSON.parse(fs.readFileSync(path.join(legacyDir, 'global-directory.json'), 'utf8'));
 assert.ok(globalDirectory.routes.length >= 135, `current broad comparison coverage shrank: ${globalDirectory.routes.length}`);
-console.log(`Phone candidate pipeline tests passed: ${rows.length} staged routes isolated from ${canonical.length} canonical routes; ${manifest.admittedBatches.length} legacy batches explicitly admitted; ${globalDirectory.routes.length} comparison routes preserved.`);
+console.log(`Phone candidate pipeline tests passed: ${rows.length} staged routes cannot feed the canonical builder directly; reviewed overlaps require explicit packets; ${manifest.admittedBatches.length} legacy batches explicitly admitted; ${globalDirectory.routes.length} comparison routes preserved.`);

@@ -50,6 +50,18 @@
       "keepIntervalDays": 120
     },
     {
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": 50,
+      "acquisitionCostCny": 46,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 6,
+      "keepYearCostCny": 5.5,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "cmhk-mysim-hk-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -182,6 +194,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "sosim-recharge-ladder-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": 33,
+      "acquisitionCostCny": 30,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": 183,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "taiwan-mobile-prepaid-tw-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -216,6 +240,18 @@
       "keepYearCostOriginal": 395,
       "keepYearCostCny": 1860,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "threehk-diy-recharge-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": 183,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "trip-cmlink-china-data",

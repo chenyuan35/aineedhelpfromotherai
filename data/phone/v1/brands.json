@@ -24,6 +24,12 @@
     "marketId": "de"
   },
   {
+    "id": "clubsim-hk",
+    "networkId": "csl-hk",
+    "name": "ClubSIM",
+    "marketId": "hk"
+  },
+  {
     "id": "cmhk-hk-direct",
     "marketId": "hk",
     "networkId": "cmhk-hk",
@@ -84,6 +90,12 @@
     "name": "SMSPool"
   },
   {
+    "id": "sosim-hk",
+    "networkId": "three-hk",
+    "name": "SoSIM",
+    "marketId": "hk"
+  },
+  {
     "id": "taiwan-mobile-tw",
     "networkId": "twm-tw",
     "name": "Taiwan Mobile",
@@ -100,6 +112,12 @@
     "marketId": "au",
     "networkId": "telstra-au",
     "name": "Telstra Pre-Paid"
+  },
+  {
+    "id": "threehk-diy",
+    "networkId": "three-hk",
+    "name": "3HK DIY",
+    "marketId": "hk"
   },
   {
     "id": "trip-com-china-mobile-cmlink-cn",

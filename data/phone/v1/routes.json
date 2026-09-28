@@ -73,6 +73,26 @@
     ]
   },
   {
+    "id": "clubsim-sms-pack-6hkd-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "clubsim-hk",
+    "displayName": "ClubSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.clubsim.com.hk/",
+    "sourceIds": [
+      "community-naixi-clubsim-pack-availability-2026-07",
+      "community-vocus-clubsim-6hkd-guide-2026-04",
+      "official-clubsim-faq-365-window-2026-09-26",
+      "official-clubsim-sms-pack-6hkd-2026-09-28"
+    ]
+  },
+  {
     "id": "cmhk-mysim-hk-2026",
     "marketId": "hk",
     "networkId": "cmhk-hk",
@@ -285,6 +305,25 @@
     ]
   },
   {
+    "id": "sosim-recharge-ladder-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "sosim-hk",
+    "displayName": "SoSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.sosimhk.com/",
+    "sourceIds": [
+      "official-sosim-faq-esim-33-2026-09-28",
+      "official-sosim-retrieve-expired-number-2026-09-26",
+      "official-sosim-topup-renewal-2026-09-26"
+    ]
+  },
+  {
     "id": "taiwan-mobile-prepaid-tw-2026",
     "marketId": "tw",
     "networkId": "twm-tw",
@@ -336,6 +375,26 @@
     "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "sourceIds": [
       "official-telstra-prepaid-compare-2026-09-26"
+    ]
+  },
+  {
+    "id": "threehk-diy-recharge-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "threehk-diy",
+    "displayName": "3HK DIY",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.three.com.hk/prepaid/DIY/en/",
+    "sourceIds": [
+      "community-3hk-diy-recharge-reproduction-2025-10-21",
+      "official-3hk-diy-sales-kit-2024-04",
+      "official-3hk-online-recharge-2026-09-26",
+      "official-3hk-simworld-recharge-table-2026-09-26"
     ]
   },
   {

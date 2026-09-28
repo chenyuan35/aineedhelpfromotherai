@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "clubsim-sms-pack-6hkd-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "clubsim-hk",
+    "displayName": "ClubSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.clubsim.com.hk/",
+    "sourceIds": [
+      "community-naixi-clubsim-pack-availability-2026-07",
+      "community-vocus-clubsim-6hkd-guide-2026-04",
+      "official-clubsim-faq-365-window-2026-09-26",
+      "official-clubsim-sms-pack-6hkd-2026-09-28"
+    ]
+  },
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "csl-hk",
+    "name": "csl (HKT)",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "clubsim-hk",
+    "networkId": "csl-hk",
+    "name": "ClubSIM",
+    "marketId": "hk"
+  },
+  "metrics": {
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "checkedAt": "2026-09-28",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "HKD",
+    "acquisitionCostOriginal": 50,
+    "acquisitionCostCny": 46,
+    "keepCurrency": "HKD",
+    "keepYearCostOriginal": 6,
+    "keepYearCostCny": 5.5,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "community-naixi-clubsim-pack-availability-2026-07",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
+      "type": "community-report",
+      "reportedAt": "2026-07-01"
+    },
+    {
+      "id": "community-vocus-clubsim-6hkd-guide-2026-04",
+      "url": "https://vocus.cc/article/69e62705fd89780001d6685f",
+      "type": "community-report",
+      "reportedAt": "2026-04-20"
+    },
+    {
+      "id": "official-clubsim-faq-365-window-2026-09-26",
+      "url": "https://clubsim.com.hk/en/go/clubSim-tnc",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-clubsim-sms-pack-6hkd-2026-09-28",
+      "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-clubsim-sms-pack-6hkd-2026-current-profile-20260928",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "hk-directory-batch-c.json",
+      "data": {
+        "id": "clubsim-sms-pack-6hkd-2026",
+        "brandId": "clubsim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "ClubSIM supports physical SIM and eSIM. Current official web surfaces list the HK$6 SMS pack; a 2026 first-hand guide reports HK$50 minimum first-activation spend. Exact checkout minimum can vary by selected service pack.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 50,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 50,
+          "landedCny": 46,
+          "fxCheckedAt": "2026-09-28",
+          "state": "community-2026-entry-cost-current-web-pack"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 6,
+          "yearCostOriginal": 6,
+          "yearCostCny": 5.5,
+          "action": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6 option was temporarily absent in-app. Treat HK$6 as the current web price, not a guaranteed all-channel annual price; buy any available service pack before the 365-day deadline.",
+          "intervalDays": 365,
+          "state": "official-rule-current-web-price-channel-conflict"
+        },
+        "chinaActivation": "eSIM purchasable online from abroad; real-name registration via app (passport accepted for non-HK residents).",
+        "kyc": "Real-name registration mandatory (HK law); passport supported.",
+        "payment": "International cards + Alipay/WeChat Pay HK reportedly accepted.",
+        "wifiCalling": "n/a",
+        "roamingSms": "Receiving SMS abroad on ClubSIM works without roaming pack (community consensus); sending requires roaming pack — 验证中 for exact rates.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.clubsim.com.hk/",
+        "tariffSummary": "365-day service-pack clock; HK$6 SMS pack currently listed on web, with 2026 app-availability conflict.",
+        "sourceIds": [
+          "official-clubsim-faq-365-window-2026-09-26",
+          "community-vocus-clubsim-6hkd-guide-2026-04",
+          "community-naixi-clubsim-pack-availability-2026-07",
+          "official-clubsim-sms-pack-6hkd-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire ClubSIM physical SIM or eSIM and complete required real-name registration.",
+          "Before the 365-day service-pack deadline, check the current web/app pack list.",
+          "If the HK$6 SMS pack is available, one purchase resets the service-pack clock; otherwise buy another available service pack rather than assuming HK$6 is guaranteed."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "three-hk",
+    "name": "3 Hong Kong",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "sosim-hk",
+    "networkId": "three-hk",
+    "name": "SoSIM",
+    "marketId": "hk"
+  },
+  "route": {
+    "id": "sosim-recharge-ladder-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "sosim-hk",
+    "displayName": "SoSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.sosimhk.com/"
+  },
+  "sources": [
+    {
+      "id": "official-sosim-topup-renewal-2026-09-26",
+      "url": "https://www.sosimhk.com/en/guide/top-up-renewal.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-sosim-retrieve-expired-number-2026-09-26",
+      "url": "https://www.sosimhk.com/en/guide/retrieve-expired-number.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-sosim-faq-esim-33-2026-09-28",
+      "url": "https://www.sosimhk.com/en/faq.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "sourceIds": [
+    "official-sosim-topup-renewal-2026-09-26",
+    "official-sosim-retrieve-expired-number-2026-09-26",
+    "official-sosim-faq-esim-33-2026-09-28"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-sosim-recharge-ladder-2026-current-profile-20260928",
+      "routeId": "sosim-recharge-ladder-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "hk-directory-batch-c.json",
+      "data": {
+        "id": "sosim-recharge-ladder-2026",
+        "brandId": "sosim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current SoSIM FAQ/eShop: new physical SIM or eSIM is HK$33. SIM/mobile-number validity is independent from service-package validity; recharge extends SIM validity.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 33,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 33,
+          "landedCny": 30,
+          "fxCheckedAt": "2026-09-28",
+          "state": "official-current-33-entry"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 100,
+          "yearCostOriginal": 200,
+          "yearCostCny": 183,
+          "action": "Current official recharge ladder: HK$100-HK$199.9 extends SIM validity 180 days; HK$200-HK$499.9 extends 365 days; HK$500+ extends 730 days. Expired numbers may be recoverable through Get Back & Reactivate My Number if still unused, with the existing SIM and a new recharge.",
+          "intervalDays": 180,
+          "state": "official-confirmed-2026-09-28"
+        },
+        "chinaActivation": "Purchase nominally in HK stores; eSIM available in app after real-name registration — online-first purchase from abroad unverified.",
+        "kyc": "Real-name registration mandatory (HK law).",
+        "payment": "Online recharge via card; in-store cash/Octopus.",
+        "wifiCalling": "n/a",
+        "roamingSms": "Receiving SMS abroad reported working (community); exact roaming arrangement 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.sosimhk.com/",
+        "tariffSummary": "HK$100 → 180d / HK$200 → 365d / HK$500+ → 730d validity (current official ladder).",
+        "sourceIds": [
+          "official-sosim-topup-renewal-2026-09-26",
+          "official-sosim-retrieve-expired-number-2026-09-26",
+          "official-sosim-faq-esim-33-2026-09-28"
+        ],
+        "guideSteps": [
+          "Buy the current HK$33 SoSIM physical SIM or eSIM and complete required real-name registration for number service.",
+          "Recharge HK$100 about every 180 days or HK$200 about yearly to extend SIM/mobile-number validity.",
+          "If the number expires, use the official reactivation flow immediately; recovery is conditional on the number still being unused."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

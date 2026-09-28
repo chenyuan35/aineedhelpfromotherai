@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "threehk-diy-recharge-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "threehk-diy",
+    "displayName": "3HK DIY",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://www.three.com.hk/prepaid/DIY/en/",
+    "sourceIds": [
+      "community-3hk-diy-recharge-reproduction-2025-10-21",
+      "official-3hk-diy-sales-kit-2024-04",
+      "official-3hk-online-recharge-2026-09-26",
+      "official-3hk-simworld-recharge-table-2026-09-26"
+    ]
+  },
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "three-hk",
+    "name": "3 Hong Kong",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "threehk-diy",
+    "networkId": "three-hk",
+    "name": "3HK DIY",
+    "marketId": "hk"
+  },
+  "metrics": {
+    "routeId": "threehk-diy-recharge-2026",
+    "checkedAt": "2026-09-28",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "HKD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "HKD",
+    "keepYearCostOriginal": 200,
+    "keepYearCostCny": 183,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "community-3hk-diy-recharge-reproduction-2025-10-21",
+      "url": "https://www.10100.com/article/28273558",
+      "type": "independent-reproduction",
+      "reportedAt": "2025-10-21"
+    },
+    {
+      "id": "official-3hk-diy-sales-kit-2024-04",
+      "url": "https://web.three.com.hk/epop/SalesKit-DIYprepaidSIMsalesKit20240430.pdf",
+      "type": "provider-official-diy",
+      "reportedAt": "2024-04-30"
+    },
+    {
+      "id": "official-3hk-online-recharge-2026-09-26",
+      "url": "https://www.three.com.hk/3Care/eng/prepay/payonline1.jsp",
+      "type": "provider-official-generic-prepaid",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-3hk-simworld-recharge-table-2026-09-26",
+      "url": "https://web.three.com.hk/simworld/en/buy-recharge.html",
+      "type": "provider-official-exclusion",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-threehk-diy-recharge-2026-current-profile-20260928",
+      "routeId": "threehk-diy-recharge-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "hk-directory-batch-c.json",
+      "data": {
+        "id": "threehk-diy-recharge-2026",
+        "brandId": "threehk-diy",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "3HK DIY prepaid supports online eSIM purchase. Official DIY sales material says activation must be completed within 60 days of purchase and the card is initially valid for 180 days after activation; current plan pricing varies by selected local/travel package.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": "2026-09-28",
+          "state": "entry-cost-varies-by-selected-service-plan"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 100,
+          "yearCostOriginal": 200,
+          "yearCostCny": 183,
+          "action": "A 2025-10-21 independent end-to-end DIY recharge reproduction shows HK$100-HK$199.9 extends card validity 180 days and HK$200+ extends 365 days. Official DIY sales material separately confirms 180-day initial card validity. Do not use the SIM World HK$50/365-day table for DIY: that page explicitly applies its voucher workflow to International Supreme Card, not DIY.",
+          "intervalDays": 180,
+          "state": "community-reproduced-plus-official-diy-baseline"
+        },
+        "chinaActivation": "Online eSIM purchase supported (official DIY flow); real-name registration required.",
+        "kyc": "Real-name registration mandatory (HK law); passport supported.",
+        "payment": "Credit card online (Visa/MC/UnionPay per official recharge page).",
+        "wifiCalling": "n/a",
+        "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.three.com.hk/prepaid/DIY/en/",
+        "tariffSummary": "DIY retention: independently reproduced HK$100 → 180d / HK$200+ → 365d; SIM World HK$50/365d table is a different product and excluded.",
+        "sourceIds": [
+          "official-3hk-online-recharge-2026-09-26",
+          "official-3hk-simworld-recharge-table-2026-09-26",
+          "official-3hk-diy-sales-kit-2024-04",
+          "community-3hk-diy-recharge-reproduction-2025-10-21"
+        ],
+        "guideSteps": [
+          "Buy a DIY eSIM/physical route and activate it within the current activation window; complete required real-name registration for number service.",
+          "For number retention, use the DIY account/App recharge path: HK$100 for about 180 days or HK$200+ for about 365 days, based on current independent reproduction.",
+          "Do not apply SIM World International Supreme Card recharge-voucher validity rules to DIY."
+        ]
+      }
+    }
+  ]
+}
