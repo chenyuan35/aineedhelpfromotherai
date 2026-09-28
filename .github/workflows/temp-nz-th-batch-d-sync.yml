@@ -1,0 +1,33 @@
+name: Temp NZ Thailand batch D sync
+
+on:
+  push:
+    branches:
+      - phone/nz-th-batch-d-current-facts-20260929
+    paths:
+      - .github/workflows/temp-nz-th-batch-d-sync.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download verified patch
+        run: |
+          curl -fsSL --retry 3 -o /tmp/nz-th-batch-d.patch 'https://tmpfiles.org/dl/1790629493.a72dc8c4e782f299/wrAwwfoG8edl/nz-th-batch-d.patch'
+          echo '81bdd9a41558f5834cf794d5c9ac949904a50f42c163615c0798e139547ee066  /tmp/nz-th-batch-d.patch' | sha256sum -c -
+      - name: Apply and push verified tree
+        run: |
+          git apply --check /tmp/nz-th-batch-d.patch
+          git apply /tmp/nz-th-batch-d.patch
+          rm .github/workflows/temp-nz-th-batch-d-sync.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'phone: reconcile and migrate NZ Thailand batch D'
+          git push origin HEAD:phone/nz-th-batch-d-current-facts-20260929
