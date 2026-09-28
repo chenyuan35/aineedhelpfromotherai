@@ -1,5 +1,10 @@
 [
   {
+    "id": "att-us",
+    "name": "AT&T US",
+    "marketId": "us"
+  },
+  {
     "id": "cmhk-hk",
     "name": "China Mobile Hong Kong",
     "marketId": "hk"
@@ -68,6 +73,11 @@
     "id": "tim-it",
     "name": "TIM Italy",
     "marketId": "it"
+  },
+  {
+    "id": "tmobile-us",
+    "name": "T-Mobile US",
+    "marketId": "us"
   },
   {
     "id": "twm-tw",

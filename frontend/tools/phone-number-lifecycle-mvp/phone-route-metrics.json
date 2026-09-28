@@ -110,6 +110,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "h2o-paygo-10-90d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 71,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": 284,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "h2o-paygo-us",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -266,6 +278,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "tello-paygo-credit-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 20,
+      "acquisitionCostCny": 142,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 80,
+      "keepYearCostCny": 568,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "tello-us",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -336,6 +360,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 36,
+      "keepYearCostCny": 255.6,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "ultra-paygo-us",

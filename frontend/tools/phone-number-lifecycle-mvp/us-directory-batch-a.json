@@ -1,9 +1,9 @@
 {
  "schemaVersion": "1.0",
  "market": "us",
- "checkedAt": "2026-09-26",
- "status": "batch-a-evidence-captured",
- "notes": "Batch A US routes. All rates from official pages retrieved 2026-09-26 via Exa content extraction (bypasses Cloudflare). Evidence files: auto-ops/phone-discovery/evidence/ultra-paygo-official-2026-09-26.json, tello-h2o-official-2026-09-26.json, tello-community-terms-2026-09-26.json",
+ "checkedAt": "2026-09-29",
+ "status": "batch-a-reviewed-current",
+ "notes": "US batch A reconciled 2026-09-29 against current provider sources. Tello PAYG is distinct from the canonical Tello monthly-plan route; Ultra PayGo acquisition/form and H2O PAYG roaming claims were corrected.",
  "networks": [
   {
    "id": "tmobile-us",
@@ -22,7 +22,7 @@
   },
   {
    "id": "tello-us",
-   "networkId": "tmobile-us",
+   "networkId": null,
    "name": "Tello"
   },
   {
@@ -37,49 +37,50 @@
    "brandId": "ultra-mobile-us",
    "publishState": "candidate",
    "numberType": "real-mobile",
-   "simType": "eSIM + physical",
-   "acquisitionSummary": "Official PayGo plan: $3/mo for 100 min talk + 100 texts + 100MB 5G/4G LTE data. Overage 3¢/min, 1¢/text, 3¢/MB. Sold at ultramobile.com/paygo; T-Mobile network MVNO.",
+   "simType": "physical SIM",
+   "acquisitionSummary": "Official PayGo service is $3 per 30-day cycle for 100 minutes, 100 texts and 100MB. Ultra says PayGo is purchased through eBay or select T-Mobile stores; current direct SIM-kit price/stock is not guaranteed by the provider page.",
    "landedCost": {
     "currency": "USD",
-    "providerOrCommunityPrice": 3,
+    "providerOrCommunityPrice": null,
     "mandatoryTopup": null,
     "shipping": 0,
     "adapterCostCny": null,
-    "landedOriginal": 3,
-    "landedCny": 21.3,
-    "fxCheckedAt": "2026-09-26",
-    "state": "current-official"
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": "2026-09-29",
+    "state": "sim-kit-entry-cost-unverified;-service-3-per-30d"
    },
    "keep": {
     "currency": "USD",
     "observedActionCost": 3,
     "yearCostOriginal": 36,
     "yearCostCny": 255.6,
-    "action": "Subscription model — $3/mo auto-renew keeps number active; no action-window reset needed. Optional: receiving SMS while roaming in China costs $0.10/SMS from wallet balance.",
+    "action": "Maintain at least $3 in the PayGo wallet for each 30-day renewal. If renewal fails, the account enters suspension; current terms allow cancellation after the documented nonpayment window.",
     "intervalDays": 30,
-    "state": "official-confirmed"
+    "state": "official-confirmed-current"
    },
-   "chinaActivation": "Activation requires US network or Wi-Fi Calling setup; eSIM activation from abroad unverified — pending community confirmation.",
+   "chinaActivation": "PayGo terms require activation with the enclosed SIM. First activation from China/abroad is not verified; do not assume remote activation.",
    "kyc": "No ID verification for prepaid; US card or PayPal typically required for payment.",
    "payment": "US credit/debit card; international card acceptance varies (community reports mixed).",
-   "wifiCalling": "Supported (T-Mobile MVNO standard); enables US-number SMS over Wi-Fi abroad.",
+   "wifiCalling": "Not reverified for this PayGo-specific route; do not rely on Wi-Fi Calling as a keep-alive or China-continuity mechanism.",
    "roamingSms": "Official rates 2026-09-26: China receive $0.10/SMS, send $0.50/SMS; voice $3.59/min; no data roaming. Roaming paid from PayGo wallet balance.",
    "refund": "not reconciled",
    "trend": "stable",
    "guideEligible": true,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-26",
+   "lastVerifiedAt": "2026-09-29",
    "acquireUrl": "https://www.ultramobile.com/paygo/",
-   "tariffSummary": "$3/mo = 100 min + 100 SMS + 100MB. China roaming SMS receive $0.10. Wi-Fi Calling supported. Cannot switch from PayGo to other Ultra plans (official FAQ).",
+   "tariffSummary": "$3/30 days = 100 min + 100 texts + 100MB. PayGo uses the enclosed physical SIM; official purchase channels are eBay/select T-Mobile stores. China roaming SMS receive $0.10; no data roaming.",
    "sourceIds": [
-    "official-ultramobile-paygo-2026-09-26",
-    "official-ultramobile-paygo-intl-roaming-2026-09-26"
+    "official-ultramobile-paygo-2026-09-29",
+    "official-ultramobile-paygo-roaming-2026-09-29",
+    "official-ultramobile-paygo-terms-2026-09-29"
    ],
    "guideSteps": [
-    "Order PayGo eSIM at ultramobile.com/paygo ($3/mo).",
-    "Activate on US network (or attempt Wi-Fi Calling activation abroad — verify first).",
-    "Keep auto-renew on; number stays alive at $36/yr.",
-    "To receive verification SMS in China: enable international roaming, maintain wallet balance; each received SMS costs $0.10."
+    "Acquire a PayGo physical SIM through an official listed channel (eBay or a select T-Mobile store); verify current stock and kit price before purchase.",
+    "Activate the enclosed SIM; first activation outside the United States is not verified for this route.",
+    "Keep at least $3 in the PayGo wallet for each 30-day renewal.",
+    "For China roaming, current official PayGo rates list SMS receive at $0.10 and send at $0.50; PayGo has no data roaming."
    ]
   },
   {
@@ -88,7 +89,7 @@
    "publishState": "candidate",
    "numberType": "real-mobile",
    "simType": "eSIM + physical",
-   "acquisitionSummary": "Pay As You Go credit: min top-up $20 (also $30/$40/$50). Domestic rates 1¢/min, 1¢/SMS, 2¢/MB. Credit usable for international roaming. T-Mobile network MVNO.",
+   "acquisitionSummary": "Tello Pay As You Go is a separate credit product from the monthly-plan route. Web PAYG orders start at $20; domestic rates are 1¢/min, 1¢/SMS and 2¢/MB.",
    "landedCost": {
     "currency": "USD",
     "providerOrCommunityPrice": 20,
@@ -102,36 +103,38 @@
    },
    "keep": {
     "currency": "USD",
-    "observedActionCost": 5,
-    "yearCostOriginal": 60,
-    "yearCostCny": 430,
-    "action": "Official terms (tello.com/terms): PAYG credit expires 90 days after last order and service disconnects. Cheapest durable path is the $5/month plan (unlimited texts + 100 min) = $60/yr; pure PAYG path needs a $20 top-up every 90 days = $80/yr. WiFi Calling works abroad for free SMS/calls. No KYC but billing info must be real.",
-    "intervalDays": 30,
-    "state": "official-policy-verified-2026-09-26"
+    "observedActionCost": 20,
+    "yearCostOriginal": 80,
+    "yearCostCny": 568,
+    "action": "Place a new PAYG order before 90 days have elapsed since the last PAYG order when no active monthly plan is keeping the credit valid. Usage such as sending an SMS does not reset this order-based expiry.",
+    "intervalDays": 90,
+    "state": "official-order-based-90d"
    },
-   "chinaActivation": "eSIM activation generally works via app/website with Wi-Fi; Tello officially supports activation abroad via Wi-Fi Calling setup (community-confirmed route).",
+   "chinaActivation": "Initial SIM/eSIM activation or port-in must be completed while physically in the United States and connected to Tello US network towers. After US activation, Wi-Fi Calling & Text or international roaming may be used abroad.",
    "kyc": "No ID verification; email + payment method only.",
    "payment": "International cards widely reported accepted; PayPal also accepted.",
    "wifiCalling": "Supported and documented by Tello; primary route for using US number abroad.",
-   "roamingSms": "Official 2026-09-26: China roaming voice 5¢/min, SMS 1¢/SMS, data 1¢/MB, charged from PAYG balance. Wi-Fi Calling SMS bills as domestic (~1¢).",
+   "roamingSms": "Standard international roaming in 200+ countries uses PAYG credit and requires prior use of the line in the United States. Destination-specific China rates are not asserted here without a current direct destination quote.",
    "refund": "not reconciled",
    "trend": "stable",
    "guideEligible": true,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-26",
+   "lastVerifiedAt": "2026-09-29",
    "acquireUrl": "https://tello.com/buy/pay_as_you_go",
-   "tariffSummary": "$20 min top-up. US: 1¢/min, 1¢/SMS. China roaming: 5¢/min, 1¢/SMS. Keep-alive ≈ send 1 SMS per 80 days.",
+   "tariffSummary": "$20 minimum web PAYG order; credit expires 90 days after the last PAYG order unless an active plan keeps it valid. US rates: 1¢/min, 1¢/SMS, 2¢/MB. Sending an SMS does not reset PAYG expiry.",
    "sourceIds": [
-    "official-tello-payg-purchase-2026-09-26",
-    "official-tello-roaming-china-2026-09-26",
-    "community-howardforums-tello-credit-expiration",
-    "community-nthcircle-tello-no-plan-no-balance"
+    "official-tello-payg-purchase-2026-09-29",
+    "official-tello-terms-2026-09-29",
+    "official-tello-activation-abroad-2026-09-29",
+    "official-tello-roaming-2026-09-29",
+    "community-nodeloc-tello-china-2026-09-20",
+    "community-nodeseek-tello-risk-2026-06-19"
    ],
    "guideSteps": [
-    "Create Tello account, order eSIM, add $20 PAYG credit.",
-    "Activate eSIM (works abroad via Wi-Fi per community).",
-    "Enable Wi-Fi Calling to use the number over Wi-Fi.",
-    "Calendar reminder: send one SMS every 80 days (~1¢) to satisfy the 3-month activity policy."
+    "Order at least $20 of Tello PAYG credit.",
+    "Complete first SIM/eSIM activation in the United States on Tello network towers.",
+    "If no active monthly plan is preserving the credit, place a new PAYG order before 90 days elapse; ordinary SMS usage does not reset this clock.",
+    "After prior US use, enable Wi-Fi Calling & Text or international roaming as needed abroad."
    ]
   },
   {
@@ -157,30 +160,105 @@
     "observedActionCost": 10,
     "yearCostOriginal": 40,
     "yearCostCny": 284,
-    "action": "Balance-expiry model: recharge before expiration to keep number. $10/90d ≈ $40/yr, or $100/365d single recharge. No per-action reset documented.",
+    "action": "Recharge before the PAYG expiration date to roll eligible balance forward. The $10 and $30 options expire after 90 days; $100 expires after 365 days. A zero balance for 30 consecutive days can cancel the account and number.",
     "intervalDays": 90,
-    "state": "official-confirmed"
+    "state": "official-confirmed-current"
    },
-   "chinaActivation": "Physical SIM historically requires US activation; eSIM availability/flow unverified — 验证中.",
+   "chinaActivation": "US PayGo activation and first-use path only; China-first activation is not verified.",
    "kyc": "No ID verification for prepaid.",
    "payment": "US card typically; international card acceptance unverified.",
-   "wifiCalling": "Uncertain on PAYG tier — 验证中.",
-   "roamingSms": "International roaming page covers Mexico/Canada/Caribbean + 'selected global destinations'; whether China roaming works on PAYG tier NOT confirmed — 验证中. Do not publish China receive-SMS claims for H2O until confirmed.",
+   "wifiCalling": "PAYG-specific Wi-Fi Calling support is not currently verified.",
+   "roamingSms": "Current H2O terms restrict International Roaming to eligible Unlimited Talk & Text plans; the PAYG route is not an eligible roaming route and should not be presented as a China roaming/OTP option.",
    "refund": "not reconciled",
    "trend": "watch",
    "guideEligible": false,
-   "holdReason": "China roaming + Wi-Fi Calling support on PAYG tier unconfirmed; cannot yet recommend for the China-based keep-alive use case.",
-   "lastVerifiedAt": "2026-09-26",
+   "holdReason": "Current terms exclude PAYG from International Roaming, and PAYG-specific Wi-Fi Calling/China continuity is not verified. Keep as observation/HOLD rather than recommending it for overseas number retention.",
+   "lastVerifiedAt": "2026-09-29",
    "acquireUrl": "https://www.h2owireless.com/plan/minute",
-   "tariffSummary": "$10/90d or $100/365d, 5¢ talk&text. AT&T network.",
+   "tariffSummary": "$10/90d or $100/365d, 5¢ talk & text, 10¢/MB. PAYG international roaming is not available under current terms.",
    "sourceIds": [
-    "official-h2o-payg-minute-plan-2026-09-26",
-    "official-h2o-international-roaming-2026-09-26"
+    "official-h2o-payg-2026-09-29",
+    "official-h2o-terms-2026-09-29",
+    "official-h2o-roaming-2026-09-29"
    ],
    "guideSteps": [
-    "Directory card only — China use case unverified.",
-    "Confirm PAYG-tier international roaming in China and Wi-Fi Calling support before upgrade to guide."
+    "Directory observation only; PAYG is not eligible for current H2O international roaming.",
+    "Re-open only if current PAYG-specific Wi-Fi Calling or overseas continuity evidence materially changes."
    ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "official-ultramobile-paygo-2026-09-29",
+   "url": "https://www.ultramobile.com/paygo/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-ultramobile-paygo-roaming-2026-09-29",
+   "url": "https://www.ultramobile.com/paygo/international-roaming/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-ultramobile-paygo-terms-2026-09-29",
+   "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-tello-payg-purchase-2026-09-29",
+   "url": "https://tello.com/buy/pay_as_you_go",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-tello-terms-2026-09-29",
+   "url": "https://tello.com/terms",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-tello-activation-abroad-2026-09-29",
+   "url": "https://tello.com/help_center/activate-port-in/can-i-activate-tello-while-i-m-abroad",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-tello-roaming-2026-09-29",
+   "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "community-nodeloc-tello-china-2026-09-20",
+   "url": "https://www.nodeloc.com/t/topic/110176",
+   "type": "community-report",
+   "reportedAt": "2026-09-20"
+  },
+  {
+   "id": "community-nodeseek-tello-risk-2026-06-19",
+   "url": "https://www.nodeseek.com/post-783926-1",
+   "type": "community-report",
+   "reportedAt": "2026-06-19"
+  },
+  {
+   "id": "official-h2o-payg-2026-09-29",
+   "url": "https://www.h2owireless.com/plan/minute",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-h2o-terms-2026-09-29",
+   "url": "https://www.h2owireless.com/terms-conditions",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
+  },
+  {
+   "id": "official-h2o-roaming-2026-09-29",
+   "url": "https://www.h2owireless.com/international-roaming",
+   "type": "provider-official",
+   "reportedAt": "2026-09-29"
   }
  ]
 }

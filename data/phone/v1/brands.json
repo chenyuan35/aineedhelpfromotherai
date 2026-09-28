@@ -54,6 +54,12 @@
     "marketId": "gb"
   },
   {
+    "id": "h2o-us",
+    "networkId": "att-us",
+    "name": "H2O Wireless",
+    "marketId": "us"
+  },
+  {
     "id": "h2o-wireless-us",
     "marketId": "us",
     "networkId": null,
@@ -166,6 +172,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "Ultra Mobile PayGo"
+  },
+  {
+    "id": "ultra-mobile-us",
+    "networkId": "tmobile-us",
+    "name": "Ultra Mobile",
+    "marketId": "us"
   },
   {
     "id": "vodafone-callya",
