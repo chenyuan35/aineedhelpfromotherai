@@ -15,7 +15,8 @@ assert.ok(db.aliases.some(x => x.aliasId === 'giffgaff-uk' && x.routeId === 'gif
 assert.ok(!ids.has('giffgaff-uk'), 'legacy alias must not appear as duplicate canonical route');
 
 const tello = searchPhoneRoutes(idx.routes, 'Tello');
-assert.equal(tello[0]?.id, 'tello-us');
+assert.ok(tello.some(x => x.id === 'tello-us'));
+assert.ok(tello.some(x => x.id === 'tello-paygo-credit-2026'));
 const japan = searchPhoneRoutes(idx.routes, 'Japan', { family: 'long-term' });
 assert.ok(japan.some(x => x.id === 'mobal-japan-voice-data'));
 assert.ok(japan.some(x => x.id === 'sakura-japan-voice-data'));

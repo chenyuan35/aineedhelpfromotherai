@@ -30,6 +30,18 @@
     "reportedAt": "2026-07-01"
   },
   {
+    "id": "community-nodeloc-tello-china-2026-09-20",
+    "url": "https://www.nodeloc.com/t/topic/110176",
+    "type": "community-report",
+    "reportedAt": "2026-09-20"
+  },
+  {
+    "id": "community-nodeseek-tello-risk-2026-06-19",
+    "url": "https://www.nodeseek.com/post-783926-1",
+    "type": "community-report",
+    "reportedAt": "2026-06-19"
+  },
+  {
     "id": "community-o2-inactivity-criteria-2024",
     "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Inactivity-criteria-for-sim-disconnection/td-p/1685980",
     "type": "community-report",
@@ -258,6 +270,24 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-h2o-payg-2026-09-29",
+    "url": "https://www.h2owireless.com/plan/minute",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-h2o-roaming-2026-09-29",
+    "url": "https://www.h2owireless.com/international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-h2o-terms-2026-09-29",
+    "url": "https://www.h2owireless.com/terms-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-hotlink-pantas-passes-faq-2026-09-26",
     "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
     "type": "provider-official",
@@ -324,6 +354,30 @@
     "reportedAt": "2026-02-16"
   },
   {
+    "id": "official-tello-activation-abroad-2026-09-29",
+    "url": "https://tello.com/help_center/activate-port-in/can-i-activate-tello-while-i-m-abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-tello-payg-purchase-2026-09-29",
+    "url": "https://tello.com/buy/pay_as_you_go",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-tello-roaming-2026-09-29",
+    "url": "https://tello.com/help_center/roaming/how-can-i-use-my-device-overseas",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-tello-terms-2026-09-29",
+    "url": "https://tello.com/terms",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-telstra-prepaid-compare-2026-09-26",
     "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "type": "provider-official",
@@ -358,6 +412,24 @@
     "url": "https://www.tim.it/fisso-e-mobile/mobile/offerta-ricarica-piu",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-ultramobile-paygo-2026-09-29",
+    "url": "https://www.ultramobile.com/paygo/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ultramobile-paygo-roaming-2026-09-29",
+    "url": "https://www.ultramobile.com/paygo/international-roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ultramobile-paygo-terms-2026-09-29",
+    "url": "https://www.ultramobile.com/mobile-plans-terms-conditions/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-vodafone-prepaid-hilfe-2026-09-26",

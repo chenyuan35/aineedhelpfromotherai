@@ -179,6 +179,25 @@
     ]
   },
   {
+    "id": "h2o-paygo-10-90d-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "h2o-us",
+    "displayName": "H2O Wireless PayGo",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.h2owireless.com/plan/minute",
+    "sourceIds": [
+      "official-h2o-payg-2026-09-29",
+      "official-h2o-roaming-2026-09-29",
+      "official-h2o-terms-2026-09-29"
+    ]
+  },
+  {
     "id": "h2o-paygo-us",
     "marketId": "us",
     "networkId": null,
@@ -418,6 +437,28 @@
     ]
   },
   {
+    "id": "tello-paygo-credit-2026",
+    "marketId": "us",
+    "networkId": null,
+    "brandId": "tello-us",
+    "displayName": "Tello PAYG credit",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://tello.com/buy/pay_as_you_go",
+    "sourceIds": [
+      "community-nodeloc-tello-china-2026-09-20",
+      "community-nodeseek-tello-risk-2026-06-19",
+      "official-tello-activation-abroad-2026-09-29",
+      "official-tello-payg-purchase-2026-09-29",
+      "official-tello-roaming-2026-09-29",
+      "official-tello-terms-2026-09-29"
+    ]
+  },
+  {
     "id": "tello-us",
     "marketId": "us",
     "networkId": null,
@@ -529,6 +570,25 @@
       "src-3e3106e8c4c3",
       "src-6cc1d36dff5e",
       "src-981c29b0af43"
+    ]
+  },
+  {
+    "id": "ultra-mobile-paygo-3-2026",
+    "marketId": "us",
+    "networkId": "tmobile-us",
+    "brandId": "ultra-mobile-us",
+    "displayName": "Ultra Mobile PayGo",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.ultramobile.com/paygo/",
+    "sourceIds": [
+      "official-ultramobile-paygo-2026-09-29",
+      "official-ultramobile-paygo-roaming-2026-09-29",
+      "official-ultramobile-paygo-terms-2026-09-29"
     ]
   },
   {

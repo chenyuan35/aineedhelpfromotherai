@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "h2o-paygo-10-90d-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "h2o-us",
+    "displayName": "H2O Wireless PayGo",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.h2owireless.com/plan/minute",
+    "sourceIds": [
+      "official-h2o-payg-2026-09-29",
+      "official-h2o-roaming-2026-09-29",
+      "official-h2o-terms-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "att-us",
+    "name": "AT&T US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "h2o-us",
+    "networkId": "att-us",
+    "name": "H2O Wireless",
+    "marketId": "us"
+  },
+  "metrics": {
+    "routeId": "h2o-paygo-10-90d-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": 10,
+    "acquisitionCostCny": 71,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": 40,
+    "keepYearCostCny": 284,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-h2o-payg-2026-09-29",
+      "url": "https://www.h2owireless.com/plan/minute",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-h2o-roaming-2026-09-29",
+      "url": "https://www.h2owireless.com/international-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-h2o-terms-2026-09-29",
+      "url": "https://www.h2owireless.com/terms-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-h2o-paygo-10-90d-2026-current-profile-20260929",
+      "routeId": "h2o-paygo-10-90d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "us-directory-batch-a.json",
+      "data": {
+        "id": "h2o-paygo-10-90d-2026",
+        "brandId": "h2o-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Pay As You Go: $10 or $30 top-up = 90-day validity; $100 = 365-day validity. Rates 5¢ talk & text, 10¢/MB data. AT&T network MVNO.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 71,
+          "fxCheckedAt": "2026-09-26",
+          "state": "current-official"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 40,
+          "yearCostCny": 284,
+          "action": "Recharge before the PAYG expiration date to roll eligible balance forward. The $10 and $30 options expire after 90 days; $100 expires after 365 days. A zero balance for 30 consecutive days can cancel the account and number.",
+          "intervalDays": 90,
+          "state": "official-confirmed-current"
+        },
+        "chinaActivation": "US PayGo activation and first-use path only; China-first activation is not verified.",
+        "kyc": "No ID verification for prepaid.",
+        "payment": "US card typically; international card acceptance unverified.",
+        "wifiCalling": "PAYG-specific Wi-Fi Calling support is not currently verified.",
+        "roamingSms": "Current H2O terms restrict International Roaming to eligible Unlimited Talk & Text plans; the PAYG route is not an eligible roaming route and should not be presented as a China roaming/OTP option.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current terms exclude PAYG from International Roaming, and PAYG-specific Wi-Fi Calling/China continuity is not verified. Keep as observation/HOLD rather than recommending it for overseas number retention.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.h2owireless.com/plan/minute",
+        "tariffSummary": "$10/90d or $100/365d, 5¢ talk & text, 10¢/MB. PAYG international roaming is not available under current terms.",
+        "sourceIds": [
+          "official-h2o-payg-2026-09-29",
+          "official-h2o-terms-2026-09-29",
+          "official-h2o-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Directory observation only; PAYG is not eligible for current H2O international roaming.",
+          "Re-open only if current PAYG-specific Wi-Fi Calling or overseas continuity evidence materially changes."
+        ]
+      }
+    }
+  ]
+}
