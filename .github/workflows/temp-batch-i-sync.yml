@@ -1,0 +1,30 @@
+name: temp batch-i sync
+on:
+  push:
+    branches:
+      - phone/ca-fr-ch-mx-in-batch-i-current-facts-20260929
+permissions:
+  contents: write
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phone/ca-fr-ch-mx-in-batch-i-current-facts-20260929
+          fetch-depth: 0
+      - name: Apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fSL 'https://eff85d6d51f5f569-47-84-122-196.serveousercontent.com/batch-i.patch' -o /tmp/batch-i.patch
+          echo 'abf53d2206a876616debb8cf2722e437f6c8bbee6b740c6d6509734cc27b1760  /tmp/batch-i.patch' | sha256sum -c -
+          git apply --check /tmp/batch-i.patch
+          git apply /tmp/batch-i.patch
+          git rm .github/workflows/temp-batch-i-sync.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'phone: reconcile and migrate CA FR CH MX IN batch I'
+          git push origin HEAD:phone/ca-fr-ch-mx-in-batch-i-current-facts-20260929
