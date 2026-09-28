@@ -56,6 +56,24 @@
     ]
   },
   {
+    "id": "cmhk-mysim-hk-2026",
+    "marketId": "hk",
+    "networkId": "cmhk-hk",
+    "brandId": "cmhk-hk-direct",
+    "displayName": "CMHK MySIM 4G prepaid",
+    "family": "long-term",
+    "numberClass": "carrier-mobile",
+    "form": "physical prepaid SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-27",
+    "acquireUrl": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+    "sourceIds": [
+      "cmhk-mysim-hk-community",
+      "cmhk-mysim-hk-official"
+    ]
+  },
+  {
     "id": "giffgaff-uk-direct-esim-payg",
     "marketId": "gb",
     "networkId": "o2-uk",

@@ -18,6 +18,12 @@
     "name": "ActivateX"
   },
   {
+    "id": "cmhk-hk-direct",
+    "marketId": "hk",
+    "networkId": "cmhk-hk",
+    "name": "CMHK (China Mobile HK)"
+  },
+  {
     "id": "giffgaff-uk",
     "networkId": "o2-uk",
     "name": "Giffgaff",
