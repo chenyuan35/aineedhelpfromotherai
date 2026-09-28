@@ -48,6 +48,18 @@
     "reportedAt": "2024-01-16"
   },
   {
+    "id": "community-orange-mobicarte-validity-2026-05",
+    "url": "https://communaute.orange.fr/t5/offres-mobile-Orange-et-options/Etude-abonnement-temporaire-Internet-sur-mon-mobile/m-p/3418129",
+    "type": "community-report",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "community-sunrise-roaming-sms-nz-2026-01",
+    "url": "https://community.sunrise.ch/d/47446-cannot-receive-sms-whilst-roaming-in-new-zealand",
+    "type": "community-report",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "community-vocus-clubsim-6hkd-guide-2026-04",
     "url": "https://vocus.cc/article/69e62705fd89780001d6685f",
     "type": "community-report",
@@ -348,6 +360,30 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-jio-prepaid-documents-2026-09-29",
+    "url": "https://www.jio.com/help/faq/mobile/prepaid-offerings/plans/what-documents-do-i-need-to-carry-to-get-a-jio-sim-for-jio-prepaid-plans/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-jio-prepaid-ir-activation-2026-09-29",
+    "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-activation/how-do-i-activate-international-roaming-ir-on-my-jio-number-under-prepaid-packs/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-jio-prepaid-ir-incoming-sms-2026-09-29",
+    "url": "https://www.jio.com/help/faq/mobile/international-services/prepaid-ir-pack-pricing/will-i-be-charged-for-incoming-messages-while-on-international-roaming-ir-under-jio-prepaid-packs/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-jio-regulatory-nonusage-2026-09-29",
+    "url": "https://www.jio.com/jcms/en-in/regulatory/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-mobal-id-requirements-2026-09-29",
     "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
     "type": "provider-official",
@@ -382,6 +418,24 @@
     "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-orange-mobicarte-offers-2026-09-29",
+    "url": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-orange-mobicarte-recharges-2026-09-29",
+    "url": "https://boutique.orange.fr/vitrine/rechargements-mobile/mobicarte/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-orange-roaming-partners-2026-09-29",
+    "url": "https://boutique.orange.fr/vitrines/voyage/reseaux-partenaires",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-povo-faq-858-2026-09-29",
@@ -474,10 +528,94 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-speakout-help-2026-09-29",
+    "url": "https://speakout7eleven.ca/pages/help",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-speakout-plans-2026-09-29",
+    "url": "https://speakout7eleven.ca/collections/plans-monthly",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-speakout-sim-2026-09-29",
+    "url": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-speakout-terms-2026-09-29",
+    "url": "https://speakout7eleven.ca/pages/terms-of-service",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-staff-kpn-community-6mo-rule-2026-02",
     "url": "https://community.kpn.com/prepaid-16/kpn-prepaid-geldig-tot-19-08-26-terwijl-dit-volgens-de-informatie-onbeperkt-houdbaar-is-645988",
     "type": "provider-moderated-community",
     "reportedAt": "2026-02-16"
+  },
+  {
+    "id": "official-sunrise-prepaid-2026-09-29",
+    "url": "https://www.sunrise.ch/en/mobile/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-sunrise-prepaid-support-2026-09-29",
+    "url": "https://www.sunrise.ch/en/support/mobile/services/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-sunrise-topup-2026-09-29",
+    "url": "https://www.sunrise.ch/en/mobile/prepaid/top-up",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-sunrise-travel-esim-2026-09-29",
+    "url": "https://www.sunrise.ch/en/mobile/prepaid/travel-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-amigo-contract-2026-09-29",
+    "url": "https://www.telcel.com/personas/politicas-y-codigos/contrato-prestacion-servicios",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-amigo-esim-2026-09-29",
+    "url": "https://www.telcel.com/esim/amigo",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-amigo-lifecycle-2026-09-29",
+    "url": "https://www.telcel.com/personas/politicas-y-codigos/ciclo-vital-linea-amigo-prepago",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-glossary-recharge-2026-09-29",
+    "url": "https://www.telcel.com/personas/atencion-a-clientes/glosario",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-line-registration-2026-09-29",
+    "url": "https://www.telcel.com/vinculatulinea",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-telcel-roaming-2026-09-29",
+    "url": "https://www.telcel.com/personas/roaming/atencion-al-viajero",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-tello-activation-abroad-2026-09-29",

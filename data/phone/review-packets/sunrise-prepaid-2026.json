@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "ch",
+    "name": "Switzerland",
+    "countryCode": "CH"
+  },
+  "route": {
+    "id": "sunrise-prepaid-2026",
+    "marketId": "ch",
+    "networkId": "sunrise-ch",
+    "brandId": "sunrise-prepaid",
+    "displayName": "Sunrise Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+    "sourceIds": [
+      "official-sunrise-prepaid-2026-09-29",
+      "official-sunrise-prepaid-support-2026-09-29",
+      "official-sunrise-topup-2026-09-29",
+      "official-sunrise-travel-esim-2026-09-29",
+      "community-sunrise-roaming-sms-nz-2026-01"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-sunrise-prepaid-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-prepaid-support-2026-09-29",
+      "url": "https://www.sunrise.ch/en/support/mobile/services/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-topup-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid/top-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-sunrise-travel-esim-2026-09-29",
+      "url": "https://www.sunrise.ch/en/mobile/prepaid/travel-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "community-sunrise-roaming-sms-nz-2026-01",
+      "url": "https://community.sunrise.ch/d/47446-cannot-receive-sms-whilst-roaming-in-new-zealand",
+      "type": "community-report",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-sunrise-prepaid-2026-09-29",
+    "official-sunrise-prepaid-support-2026-09-29",
+    "official-sunrise-topup-2026-09-29",
+    "official-sunrise-travel-esim-2026-09-29",
+    "community-sunrise-roaming-sms-nz-2026-01"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-sunrise-prepaid-2026-current-profile-20260929",
+      "routeId": "sunrise-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ca-fr-ch-mx-in-directory-batch-i.json",
+      "data": {
+        "id": "sunrise-prepaid-2026",
+        "brandId": "sunrise-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Sunrise Prepaid has no monthly fee; activation including SIM/eSIM costs CHF19.90 with CHF20 starting credit. Sunrise now directly states that a prepaid number is released after 17 months with no active use. Online eSIM registration can use a foreign address.",
+        "landedCost": {
+          "currency": "CHF",
+          "providerOrCommunityPrice": 19.9,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 19.9,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-prepaid-activation"
+        },
+        "keep": {
+          "currency": "CHF",
+          "observedActionCost": 10,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Perform any qualifying active use before 17 months elapse. Sunrise explicitly counts a credit top-up, outgoing call, mobile-data use, outgoing SMS, or option/bundle purchase as active use. Online top-up starts at CHF10 and works abroad with a saved card.",
+          "intervalDays": 510,
+          "state": "current-official-17-month-inactivity-rule"
+        },
+        "chinaActivation": "Sunrise currently supports online prepaid eSIM registration with a foreign address and online activation. Physical SIM delivery is limited to Switzerland/Liechtenstein. Exact successful China-first registration/OTP use is not independently reproduced in the reviewed evidence.",
+        "kyc": "A valid identity document is required for prepaid registration/activation. The current travel-eSIM flow permits a foreign address; do not interpret this as no-KYC.",
+        "payment": "Online top-up starts at CHF10 and can be initiated in Switzerland or abroad; saved Swiss and foreign payment cards are supported subject to current limits.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Sunrise supports prepaid roaming. A current 2026 community troubleshooting thread states ordinary SMS should be receivable while roaming with network signal and roaming enabled, but route-specific China OTP reliability is not established.",
+        "refund": "Prepaid SIM/credit return is generally not available; current provider terms govern exceptions.",
+        "trend": "improving",
+        "guideEligible": false,
+        "holdReason": "The old 12-month rule is resolved to a 17-month inactivity rule and foreign-address eSIM registration exists, but current independent China-first activation plus long-term OTP evidence is still insufficient for promotion.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+        "tariffSummary": "CHF19.90 activation incl. CHF20 credit; number released after 17 months without active use; CHF10 top-up is one qualifying activity and can be done abroad.",
+        "sourceIds": [
+          "official-sunrise-prepaid-2026-09-29",
+          "official-sunrise-prepaid-support-2026-09-29",
+          "official-sunrise-topup-2026-09-29",
+          "official-sunrise-travel-esim-2026-09-29",
+          "community-sunrise-roaming-sms-nz-2026-01"
+        ],
+        "guideSteps": [
+          "Register the prepaid eSIM online with a valid identity document; foreign addresses are supported by the current eSIM flow.",
+          "Perform a qualifying active use before 17 months of inactivity; a CHF10 top-up is the lowest current top-up.",
+          "Treat China/OTP reliability as unverified until current independent evidence exists."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "sunrise-ch",
+    "name": "Sunrise Switzerland",
+    "marketId": "ch"
+  },
+  "brand": {
+    "id": "sunrise-prepaid",
+    "networkId": "sunrise-ch",
+    "name": "Sunrise Prepaid",
+    "marketId": "ch"
+  }
+}

@@ -273,6 +273,26 @@
     ]
   },
   {
+    "id": "jio-prepaid-90d-trai-2026",
+    "marketId": "in",
+    "networkId": "jio-in",
+    "brandId": "jio-prepaid",
+    "displayName": "Jio Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.jio.com/selfcare/interest/getsim/",
+    "sourceIds": [
+      "official-jio-prepaid-documents-2026-09-29",
+      "official-jio-prepaid-ir-activation-2026-09-29",
+      "official-jio-prepaid-ir-incoming-sms-2026-09-29",
+      "official-jio-regulatory-nonusage-2026-09-29"
+    ]
+  },
+  {
     "id": "kpn-prepaid-6mo-2026",
     "marketId": "nl",
     "networkId": "kpn-nl",
@@ -404,6 +424,26 @@
     ]
   },
   {
+    "id": "orange-mobicarte-2026",
+    "marketId": "fr",
+    "networkId": "orange-fr",
+    "brandId": "orange-mobicarte",
+    "displayName": "Orange Mobicarte",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://boutique.orange.fr/vitrine/offres-prepayees/",
+    "sourceIds": [
+      "community-orange-mobicarte-validity-2026-05",
+      "official-orange-mobicarte-offers-2026-09-29",
+      "official-orange-mobicarte-recharges-2026-09-29",
+      "official-orange-roaming-partners-2026-09-29"
+    ]
+  },
+  {
     "id": "povo20-zero-base-2026",
     "marketId": "jp",
     "networkId": "au-jp",
@@ -521,6 +561,47 @@
     ]
   },
   {
+    "id": "speakout-711-365voucher-2026",
+    "marketId": "ca",
+    "networkId": "rogers-ca",
+    "brandId": "speakout-711",
+    "displayName": "7-Eleven SpeakOut",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.speakout7eleven.ca/sim-cards/speakout-prepaid-sim-card",
+    "sourceIds": [
+      "official-speakout-help-2026-09-29",
+      "official-speakout-plans-2026-09-29",
+      "official-speakout-sim-2026-09-29",
+      "official-speakout-terms-2026-09-29"
+    ]
+  },
+  {
+    "id": "sunrise-prepaid-2026",
+    "marketId": "ch",
+    "networkId": "sunrise-ch",
+    "brandId": "sunrise-prepaid",
+    "displayName": "Sunrise Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.sunrise.ch/en/mobile/prepaid",
+    "sourceIds": [
+      "community-sunrise-roaming-sms-nz-2026-01",
+      "official-sunrise-prepaid-2026-09-29",
+      "official-sunrise-prepaid-support-2026-09-29",
+      "official-sunrise-topup-2026-09-29",
+      "official-sunrise-travel-esim-2026-09-29"
+    ]
+  },
+  {
     "id": "taiwan-mobile-prepaid-tw-2026",
     "marketId": "tw",
     "networkId": "twm-tw",
@@ -535,6 +616,28 @@
     "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
     "sourceIds": [
       "taiwan-mobile-tw-official"
+    ]
+  },
+  {
+    "id": "telcel-amigo-lifecycle-2026",
+    "marketId": "mx",
+    "networkId": "telcel-mx",
+    "brandId": "telcel-amigo",
+    "displayName": "Telcel Amigo",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.telcel.com/esim/amigo",
+    "sourceIds": [
+      "official-telcel-amigo-contract-2026-09-29",
+      "official-telcel-amigo-esim-2026-09-29",
+      "official-telcel-amigo-lifecycle-2026-09-29",
+      "official-telcel-glossary-recharge-2026-09-29",
+      "official-telcel-line-registration-2026-09-29",
+      "official-telcel-roaming-2026-09-29"
     ]
   },
   {

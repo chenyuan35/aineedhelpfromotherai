@@ -40,6 +40,11 @@
     "marketId": "tw"
   },
   {
+    "id": "jio-in",
+    "name": "Reliance Jio",
+    "marketId": "in"
+  },
+  {
     "id": "kpn-nl",
     "name": "KPN",
     "marketId": "nl"
@@ -60,6 +65,16 @@
     "marketId": "gb"
   },
   {
+    "id": "orange-fr",
+    "name": "Orange France",
+    "marketId": "fr"
+  },
+  {
+    "id": "rogers-ca",
+    "name": "Rogers Canada",
+    "marketId": "ca"
+  },
+  {
     "id": "singtel-sg",
     "name": "Singtel",
     "marketId": "sg"
@@ -68,6 +83,16 @@
     "id": "spark-nz",
     "name": "Spark NZ",
     "marketId": "nz"
+  },
+  {
+    "id": "sunrise-ch",
+    "name": "Sunrise Switzerland",
+    "marketId": "ch"
+  },
+  {
+    "id": "telcel-mx",
+    "name": "Telcel Mexico",
+    "marketId": "mx"
   },
   {
     "id": "telefonica-de",

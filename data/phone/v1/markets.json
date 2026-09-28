@@ -5,6 +5,16 @@
     "countryCode": "AU"
   },
   {
+    "id": "ca",
+    "name": "Canada",
+    "countryCode": "CA"
+  },
+  {
+    "id": "ch",
+    "name": "Switzerland",
+    "countryCode": "CH"
+  },
+  {
     "id": "cn",
     "name": "China",
     "countryCode": "CN"
@@ -18,6 +28,11 @@
     "id": "es",
     "name": "Spain",
     "countryCode": "ES"
+  },
+  {
+    "id": "fr",
+    "name": "France",
+    "countryCode": "FR"
   },
   {
     "id": "gb",
@@ -40,6 +55,11 @@
     "countryCode": "HR"
   },
   {
+    "id": "in",
+    "name": "India",
+    "countryCode": "IN"
+  },
+  {
     "id": "it",
     "name": "Italy",
     "countryCode": "IT"
@@ -48,6 +68,11 @@
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
+  },
+  {
+    "id": "mx",
+    "name": "Mexico",
+    "countryCode": "MX"
   },
   {
     "id": "my",
