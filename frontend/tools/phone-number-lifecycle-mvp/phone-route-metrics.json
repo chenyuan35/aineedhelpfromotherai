@@ -74,6 +74,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "ee-uk-payg-180d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 47,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.4,
+      "keepYearCostCny": 3.7,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "fareastone-prepaid-tw-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -182,6 +194,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 93,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.04,
+      "keepYearCostCny": 0.4,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "sakura-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -264,6 +288,18 @@
       "keepYearCostOriginal": 395,
       "keepYearCostCny": 1860,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "three-uk-payg-180d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 47,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.3,
+      "keepYearCostCny": 2.8,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "threehk-diy-recharge-2026",

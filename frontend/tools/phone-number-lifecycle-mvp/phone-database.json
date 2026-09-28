@@ -98,6 +98,11 @@
       "marketId": "hk"
     },
     {
+      "id": "ee-uk",
+      "name": "EE UK",
+      "marketId": "gb"
+    },
+    {
       "id": "fet-tw",
       "name": "FarEasTone",
       "marketId": "tw"
@@ -141,6 +146,11 @@
       "id": "three-hk",
       "name": "3 Hong Kong",
       "marketId": "hk"
+    },
+    {
+      "id": "three-uk",
+      "name": "Three UK",
+      "marketId": "gb"
     },
     {
       "id": "tim-it",
@@ -201,6 +211,12 @@
       "name": "CMHK (China Mobile HK)"
     },
     {
+      "id": "ee-uk-payg",
+      "networkId": "ee-uk",
+      "name": "EE PAYG",
+      "marketId": "gb"
+    },
+    {
       "id": "fareastone-tw",
       "networkId": "fet-tw",
       "name": "FarEasTone",
@@ -249,6 +265,12 @@
       "marketId": "es"
     },
     {
+      "id": "o2-uk-classic",
+      "networkId": "o2-uk",
+      "name": "O2 Classic PAYG",
+      "marketId": "gb"
+    },
+    {
       "id": "sakura-mobile-jp",
       "marketId": "jp",
       "networkId": null,
@@ -289,6 +311,12 @@
       "marketId": "au",
       "networkId": "telstra-au",
       "name": "Telstra Pre-Paid"
+    },
+    {
+      "id": "three-uk-payg",
+      "networkId": "three-uk",
+      "name": "Three UK PAYG",
+      "marketId": "gb"
     },
     {
       "id": "threehk-diy",
@@ -443,6 +471,28 @@
       "sourceIds": [
         "cmhk-mysim-hk-community",
         "cmhk-mysim-hk-official"
+      ]
+    },
+    {
+      "id": "ee-uk-payg-180d-2026",
+      "marketId": "gb",
+      "networkId": "ee-uk",
+      "brandId": "ee-uk-payg",
+      "displayName": "EE PAYG",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://ee.co.uk/mobile/pay-as-you-go-sim-only",
+      "sourceIds": [
+        "community-ee-payg-no-esim-2025-06-30",
+        "official-ee-free-sim-2026-09-28",
+        "official-ee-payg-hibernation-2026-09-28",
+        "official-ee-payg-plan-terms-2026-08-24",
+        "official-ee-payg-priceguide-2026-06-03",
+        "official-ee-payg-topup-help-2026-09-28"
       ]
     },
     {
@@ -621,6 +671,24 @@
       ]
     },
     {
+      "id": "o2-uk-classic-payg-6mo-2026",
+      "marketId": "gb",
+      "networkId": "o2-uk",
+      "brandId": "o2-uk-classic",
+      "displayName": "O2 Classic PAYG",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
+      "sourceIds": [
+        "community-o2-inactivity-criteria-2024",
+        "official-o2-classic-payg-help-2026-09-28"
+      ]
+    },
+    {
       "id": "sakura-japan-voice-data",
       "marketId": "jp",
       "networkId": null,
@@ -747,6 +815,25 @@
       "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
       "sourceIds": [
         "official-telstra-prepaid-compare-2026-09-26"
+      ]
+    },
+    {
+      "id": "three-uk-payg-180d-2026",
+      "marketId": "gb",
+      "networkId": "three-uk",
+      "brandId": "three-uk-payg",
+      "displayName": "Three UK PAYG",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-28",
+      "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+      "sourceIds": [
+        "official-three-newpayg-priceguide-2026-04-19",
+        "official-three-payg-datapacks-2026-09-28",
+        "official-three-payg-support-2026-09-28"
       ]
     },
     {
@@ -905,10 +992,22 @@
       "reportedAt": "2025-10-21"
     },
     {
+      "id": "community-ee-payg-no-esim-2025-06-30",
+      "url": "https://community.ee.co.uk/t5/Pay-as-you-go/E-sim/td-p/1544801",
+      "type": "provider-moderated-community",
+      "reportedAt": "2025-06-30"
+    },
+    {
       "id": "community-naixi-clubsim-pack-availability-2026-07",
       "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=12930",
       "type": "community-report",
       "reportedAt": "2026-07-01"
+    },
+    {
+      "id": "community-o2-inactivity-criteria-2024",
+      "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Inactivity-criteria-for-sim-disconnection/td-p/1685980",
+      "type": "community-report",
+      "reportedAt": "2024-01-16"
     },
     {
       "id": "community-vocus-clubsim-6hkd-guide-2026-04",
@@ -1103,6 +1202,36 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-ee-free-sim-2026-09-28",
+      "url": "https://ee.co.uk/mobile/free-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-ee-payg-hibernation-2026-09-28",
+      "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/pay-as-you-go-credit-run-out-when-i-havent-made-calls",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-ee-payg-plan-terms-2026-08-24",
+      "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/mobile/pay-as-you-go/packs/ee-pay-as-you-go-plan-terms-24-august-2026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-08-24"
+    },
+    {
+      "id": "official-ee-payg-priceguide-2026-06-03",
+      "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/price-plans/mobile/pay-as-you-go-price-plans/ee-pay-as-you-go-non-standard-charges-price-guide-3rd_June_2026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-06-03"
+    },
+    {
+      "id": "official-ee-payg-topup-help-2026-09-28",
+      "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
       "id": "official-hotlink-pantas-passes-faq-2026-09-26",
       "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
       "type": "provider-official",
@@ -1123,6 +1252,12 @@
     {
       "id": "official-movistar-recharge-min-5-terms-2026-09-28",
       "url": "https://prod.adb.col.movistar.es/content/dam/movistar/contratos/cp-servicio-recarga-tarjetas.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-o2-classic-payg-help-2026-09-28",
+      "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
     },
@@ -1167,6 +1302,24 @@
       "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
       "type": "provider-official",
       "reportedAt": "2026-09-26"
+    },
+    {
+      "id": "official-three-newpayg-priceguide-2026-04-19",
+      "url": "https://www.three.co.uk/content/dam/threedigital/terms-and-conditions/price-guides/latest-price-guides/newpaygplans-priceguide-19042026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-04-19"
+    },
+    {
+      "id": "official-three-payg-datapacks-2026-09-28",
+      "url": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-three-payg-support-2026-09-28",
+      "url": "https://www.three.co.uk/support/pay-as-you-go",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
     },
     {
       "id": "official-tim-riattivare-sim-2026-09-26",
@@ -1978,6 +2131,66 @@
         "sourceIds": [
           "cmhk-mysim-hk-official",
           "cmhk-mysim-hk-community"
+        ]
+      }
+    },
+    {
+      "id": "snap-ee-uk-payg-180d-2026-current-profile-20260928",
+      "routeId": "ee-uk-payg-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "uk-mno-directory-batch-e.json",
+      "data": {
+        "id": "ee-uk-payg-180d-2026",
+        "brandId": "ee-uk-payg",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current EE PAYG support sends a warning around day 160, moves the account into hibernation at 180 days, allows a 90-day recovery window, and closes the account at 270 days. Qualifying activity includes calls, texts/picture messages, voicemail, mobile data, top-ups and plan/add-on purchases, in the UK or abroad. Current out-of-plan UK SMS price is 20p.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 47,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-current-min-topup-5"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.2,
+          "yearCostOriginal": 0.4,
+          "yearCostCny": 3.7,
+          "action": "Before 180 days elapse, perform any EE-listed usage action. A standard out-of-plan UK SMS is currently £0.20. If the line enters hibernation at day 180, call EE within the next 90 days to recover the number and credit; after day 270 the account is closed.",
+          "intervalDays": 180,
+          "state": "official-confirmed-current-with-recovery"
+        },
+        "chinaActivation": "Current EE PAYG voice SIM acquisition is physical; China-first activation and long-term China OTP behavior remain unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "EE online/app/phone top-up accepts GBP5–95 in GBP5 increments and supports international credit/debit cards.",
+        "wifiCalling": "unverified as a keep-alive mechanism.",
+        "roamingSms": "PAYG can roam subject to destination rules; EE community/support evidence says receiving SMS is free while abroad. China OTP reliability remains unverified.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://ee.co.uk/mobile/pay-as-you-go-sim-only",
+        "tariffSummary": "160-day warning; 180-day hibernation; 90-day recovery; 270-day hard closure; current standard SMS 20p; minimum top-up £5; current EE PAYG voice SIM is physical.",
+        "sourceIds": [
+          "official-ee-payg-hibernation-2026-09-28",
+          "official-ee-payg-plan-terms-2026-08-24",
+          "official-ee-payg-topup-help-2026-09-28",
+          "official-ee-payg-priceguide-2026-06-03",
+          "official-ee-free-sim-2026-09-28",
+          "community-ee-payg-no-esim-2025-06-30"
+        ],
+        "guideSteps": [
+          "Acquire a current EE PAYG physical SIM. Current direct 30-day plans start at GBP10; top-ups can be as low as GBP5.",
+          "Before 180 days elapse, perform one listed activity; a standard out-of-plan UK SMS is currently 20p.",
+          "If EE puts the line into hibernation, contact EE within the following 90 days; after day 270 the number and remaining credit are lost."
         ]
       }
     },
@@ -3288,6 +3501,62 @@
       }
     },
     {
+      "id": "snap-o2-uk-classic-payg-6mo-2026-current-profile-20260928",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "uk-mno-directory-batch-e.json",
+      "data": {
+        "id": "o2-uk-classic-payg-6mo-2026",
+        "brandId": "o2-uk-classic",
+        "publishState": "observation-hold",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "NOT A GENERAL NEW-USER ROUTE. O2 currently labels Classic Pay As You Go an older/legacy tariff and says customers who are not already on it cannot switch to it. Existing Classic lines remain subject to the six-month activity rule and £10 minimum top-up.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 93,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-min-topup-10"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.02,
+          "yearCostOriginal": 0.04,
+          "yearCostCny": 0.4,
+          "action": "Legacy Classic holders: carry out a chargeable activity at least once in every 6-month period; the current Classic page lists a standard text at £0.02. The same page lists a GBP10 minimum top-up. This is retention guidance for existing holders, not a route for new users.",
+          "intervalDays": 180,
+          "state": "official-confirmed-legacy-only"
+        },
+        "chinaActivation": "UK-network first activation standard; China-first unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "UK card standard; international varies.",
+        "wifiCalling": "O2 Wi-Fi Calling PAYG support limited — 验证中.",
+        "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Classic Pay As You Go is a legacy tariff. O2 currently says customers who are not already on it cannot switch to it; keep this as negative/legacy-holder knowledge rather than a recommendation.",
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
+        "tariffSummary": "Legacy-only Classic PAYG: six-month activity rule, 2p text, GBP10 minimum top-up; not generally available to new users.",
+        "sourceIds": [
+          "official-o2-classic-payg-help-2026-09-28",
+          "community-o2-inactivity-criteria-2024"
+        ],
+        "guideSteps": [
+          "If you already hold Classic PAYG, perform a chargeable activity before six months elapse.",
+          "Do not buy or recommend this as a current new-user route; O2 marks Classic as an older legacy tariff and says non-holders cannot switch to it."
+        ],
+        "avoidRoute": true
+      }
+    },
+    {
       "id": "snap-sakura-japan-voice-data-commercial-d1a4db",
       "routeId": "sakura-japan-voice-data",
       "kind": "commercial",
@@ -4111,6 +4380,63 @@
         ],
         "guideSteps": [
           "Directory card only — premium pricing documented for reference."
+        ]
+      }
+    },
+    {
+      "id": "snap-three-uk-payg-180d-2026-current-profile-20260928",
+      "routeId": "three-uk-payg-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "uk-mno-directory-batch-e.json",
+      "data": {
+        "id": "three-uk-payg-180d-2026",
+        "brandId": "three-uk-payg",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Current Three PAYG support requires at least one chargeable activity every 180 days. Buying a top-up/Data Pack/Add-on counts; calls, texts and data count only on Three mobile service, not Wi-Fi. Current standard SMS is 15p and current PAYG price guidance includes a £5 top-up. A PAYG SIM intended for use abroad must first be provisioned by a UK purchase/activation step.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 47,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-current-min-topup-5"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.15,
+          "yearCostOriginal": 0.3,
+          "yearCostCny": 2.8,
+          "action": "Before 180 days elapse, perform one qualifying chargeable activity. A standard UK SMS is currently £0.15; buying a top-up also resets the clock. Wi-Fi-only activity does not count. Once disconnected, the number cannot be reconnected.",
+          "intervalDays": 180,
+          "state": "official-confirmed-current"
+        },
+        "chinaActivation": "Three requires a purchase associated with the SIM in the UK before using Three services abroad; PAYG eSIM is currently offered.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "Three app/My3/web top-up by card; current top-up denominations include GBP5. International-card acceptance not independently reconciled.",
+        "wifiCalling": "unverified for the keep-alive event; Wi-Fi activity does not satisfy the 180-day rule.",
+        "roamingSms": "Receiving SMS abroad free (UK operator standard). Sending from China requires roaming — Three roaming add-on structure applies; receiving-only strategy viable.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+        "tariffSummary": "180-day chargeable-activity rule; 15p standard SMS; top-up credit available from £5; disconnected number cannot be restored.",
+        "sourceIds": [
+          "official-three-payg-support-2026-09-28",
+          "official-three-newpayg-priceguide-2026-04-19",
+          "official-three-payg-datapacks-2026-09-28"
+        ],
+        "guideSteps": [
+          "Order the Three PAYG SIM/eSIM. If you plan to use it abroad, complete the required UK purchase/provisioning step first.",
+          "Keep some PAYG credit, then before 180 days elapse send one standard SMS on the mobile network (currently 15p), or perform another listed chargeable activity.",
+          "Do not rely on Wi-Fi-only activity; Three says it does not count, and a disconnected number cannot be restored."
         ]
       }
     },
@@ -5093,6 +5419,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "ee-uk-payg-180d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 47,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.4,
+      "keepYearCostCny": 3.7,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "fareastone-prepaid-tw-2026",
       "checkedAt": "2026-09-27",
       "metricState": "current-profile",
@@ -5201,6 +5539,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 93,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.04,
+      "keepYearCostCny": 0.4,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "sakura-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",
@@ -5283,6 +5633,18 @@
       "keepYearCostOriginal": 395,
       "keepYearCostCny": 1860,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "three-uk-payg-180d-2026",
+      "checkedAt": "2026-09-28",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 47,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.3,
+      "keepYearCostCny": 2.8,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "threehk-diy-recharge-2026",

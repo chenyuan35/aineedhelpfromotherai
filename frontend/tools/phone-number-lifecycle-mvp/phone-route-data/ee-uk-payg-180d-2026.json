@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "ee-uk-payg-180d-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "ee-uk-payg",
+    "displayName": "EE PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-28",
+    "acquireUrl": "https://ee.co.uk/mobile/pay-as-you-go-sim-only",
+    "sourceIds": [
+      "community-ee-payg-no-esim-2025-06-30",
+      "official-ee-free-sim-2026-09-28",
+      "official-ee-payg-hibernation-2026-09-28",
+      "official-ee-payg-plan-terms-2026-08-24",
+      "official-ee-payg-priceguide-2026-06-03",
+      "official-ee-payg-topup-help-2026-09-28"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "ee-uk",
+    "name": "EE UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "ee-uk-payg",
+    "networkId": "ee-uk",
+    "name": "EE PAYG",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "ee-uk-payg-180d-2026",
+    "checkedAt": "2026-09-28",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 5,
+    "acquisitionCostCny": 47,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": 0.4,
+    "keepYearCostCny": 3.7,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "community-ee-payg-no-esim-2025-06-30",
+      "url": "https://community.ee.co.uk/t5/Pay-as-you-go/E-sim/td-p/1544801",
+      "type": "provider-moderated-community",
+      "reportedAt": "2025-06-30"
+    },
+    {
+      "id": "official-ee-free-sim-2026-09-28",
+      "url": "https://ee.co.uk/mobile/free-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-ee-payg-hibernation-2026-09-28",
+      "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/pay-as-you-go-credit-run-out-when-i-havent-made-calls",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-ee-payg-plan-terms-2026-08-24",
+      "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/mobile/pay-as-you-go/packs/ee-pay-as-you-go-plan-terms-24-august-2026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-08-24"
+    },
+    {
+      "id": "official-ee-payg-priceguide-2026-06-03",
+      "url": "https://ee.co.uk/content/dam/help/terms-and-conditions/price-plans/mobile/pay-as-you-go-price-plans/ee-pay-as-you-go-non-standard-charges-price-guide-3rd_June_2026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-06-03"
+    },
+    {
+      "id": "official-ee-payg-topup-help-2026-09-28",
+      "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
+      "type": "provider-official",
+      "reportedAt": "2026-09-28"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-ee-uk-payg-180d-2026-current-profile-20260928",
+      "routeId": "ee-uk-payg-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-28",
+      "sourceDataset": "uk-mno-directory-batch-e.json",
+      "data": {
+        "id": "ee-uk-payg-180d-2026",
+        "brandId": "ee-uk-payg",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current EE PAYG support sends a warning around day 160, moves the account into hibernation at 180 days, allows a 90-day recovery window, and closes the account at 270 days. Qualifying activity includes calls, texts/picture messages, voicemail, mobile data, top-ups and plan/add-on purchases, in the UK or abroad. Current out-of-plan UK SMS price is 20p.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 47,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-current-min-topup-5"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.2,
+          "yearCostOriginal": 0.4,
+          "yearCostCny": 3.7,
+          "action": "Before 180 days elapse, perform any EE-listed usage action. A standard out-of-plan UK SMS is currently £0.20. If the line enters hibernation at day 180, call EE within the next 90 days to recover the number and credit; after day 270 the account is closed.",
+          "intervalDays": 180,
+          "state": "official-confirmed-current-with-recovery"
+        },
+        "chinaActivation": "Current EE PAYG voice SIM acquisition is physical; China-first activation and long-term China OTP behavior remain unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "EE online/app/phone top-up accepts GBP5–95 in GBP5 increments and supports international credit/debit cards.",
+        "wifiCalling": "unverified as a keep-alive mechanism.",
+        "roamingSms": "PAYG can roam subject to destination rules; EE community/support evidence says receiving SMS is free while abroad. China OTP reliability remains unverified.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-28",
+        "acquireUrl": "https://ee.co.uk/mobile/pay-as-you-go-sim-only",
+        "tariffSummary": "160-day warning; 180-day hibernation; 90-day recovery; 270-day hard closure; current standard SMS 20p; minimum top-up £5; current EE PAYG voice SIM is physical.",
+        "sourceIds": [
+          "official-ee-payg-hibernation-2026-09-28",
+          "official-ee-payg-plan-terms-2026-08-24",
+          "official-ee-payg-topup-help-2026-09-28",
+          "official-ee-payg-priceguide-2026-06-03",
+          "official-ee-free-sim-2026-09-28",
+          "community-ee-payg-no-esim-2025-06-30"
+        ],
+        "guideSteps": [
+          "Acquire a current EE PAYG physical SIM. Current direct 30-day plans start at GBP10; top-ups can be as low as GBP5.",
+          "Before 180 days elapse, perform one listed activity; a standard out-of-plan UK SMS is currently 20p.",
+          "If EE puts the line into hibernation, contact EE within the following 90 days; after day 270 the number and remaining credit are lost."
+        ]
+      }
+    }
+  ]
+}
