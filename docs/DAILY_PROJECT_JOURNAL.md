@@ -116,3 +116,33 @@ At the end of each project workday, the final journal entry must explicitly cove
 6. Prefer one concise dated entry plus an end-of-day closeout over many fragmented status notes.
 
 This replaced the writable Notion daily journal as of 2026-09-22. `docs/DAILY_NOTION_JOURNAL.md` remains historical only.
+
+
+## 2026-09-29 — Workday entry
+
+**Session task**
+- Reconcile and migrate US batch-A only: Ultra Mobile PayGo, Tello PAYG credit and H2O PayGo.
+
+**Completed**
+- PR #282 passed identity/provenance reconciliation and migrated all three routes backstage.
+- Confirmed `tello-us` monthly-plan and `tello-paygo-credit-2026` PAYG are distinct products.
+- Corrected Tello PAYG to USD20 minimum web order / 90-day order-based expiry; corrected Ultra PayGo physical-SIM acquisition semantics; retained H2O PAYG as HOLD.
+- Canonical reached 35 routes / 16 markets / 33 brands / 19 networks / 112 sources; comparison stayed 135 and explicit indexability stayed 3.
+
+**Verification**
+- `npm run phone:data:check` PASS; `npm run verify` PASS.
+- CI #167 PASS; Eval Gate #900 PASS; Vercel Preview PASS.
+- PR #282 squash-merged as `a72c05b58b708be8e0b22d8bbd3640c29637c1e3`; production deployment succeeded.
+- Live Directory HTTP 200; Ultra/Tello/H2O standalone route URLs HTTP 404.
+
+**Failed / blocked / rolled back**
+- Root `npm test` still reflects unrelated retired live-API expectations (308/404); no unrelated repair was mixed into this Phone task.
+
+**Unfinished**
+- 111 comparison routes remain legacy-only; 161 of 233 current comparison route-source IDs remain absent from canonical sources.
+
+**Next-session task**
+- Reconcile `jp-directory-batch-b.json` identity/provenance before migration, especially Mobal/Sakura legacy IDs versus existing canonical products; keep povo HOLD unless evidence changes.
+
+**Do not do**
+- No bulk migration, publication expansion, schema redesign, or raw delegated admission.
