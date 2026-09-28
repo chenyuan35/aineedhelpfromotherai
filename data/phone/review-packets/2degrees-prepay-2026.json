@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "nz",
+    "name": "New Zealand",
+    "countryCode": "NZ"
+  },
+  "route": {
+    "id": "2degrees-prepay-2026",
+    "marketId": "nz",
+    "networkId": "2degrees-nz",
+    "brandId": "2degrees-nz",
+    "displayName": "2degrees Prepay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.2degrees.nz/mobile-plans/prepay",
+    "sourceIds": [
+      "official-2degrees-prepay-getting-started-2026-09-29",
+      "official-2degrees-prepay-balance-2026-09-29",
+      "official-2degrees-prepay-plans-2026-09-29",
+      "official-2degrees-sim-help-2026-09-29",
+      "official-2degrees-roaming-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-2degrees-prepay-getting-started-2026-09-29",
+      "url": "https://www.2degrees.nz/help/mobile-help/plans/getting-started-on-prepay",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-2degrees-prepay-balance-2026-09-29",
+      "url": "https://www.2degrees.nz/help/account-and-billing/billing-and-payment/prepay-balance-and-payments",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-2degrees-prepay-plans-2026-09-29",
+      "url": "https://www.2degrees.nz/mobile-plans/prepay",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-2degrees-sim-help-2026-09-29",
+      "url": "https://www.2degrees.nz/help/mobile-help/getting-started/help-with-sim-cards",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-2degrees-roaming-2026-09-29",
+      "url": "https://www.2degrees.nz/help/mobile-help/roaming/roaming-and-using-your-phone-overseas",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-2degrees-prepay-getting-started-2026-09-29",
+    "official-2degrees-prepay-balance-2026-09-29",
+    "official-2degrees-prepay-plans-2026-09-29",
+    "official-2degrees-sim-help-2026-09-29",
+    "official-2degrees-roaming-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-2degrees-prepay-2026-current-profile-20260929",
+      "routeId": "2degrees-prepay-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "nz-th-directory-batch-d.json",
+      "data": {
+        "id": "2degrees-prepay-2026",
+        "brandId": "2degrees-nz",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "2degrees currently offers new Prepay customers a physical SIM or eSIM with free delivery and adds the NZ$8 Monthly Plan to the new SIM. Current official Prepay guidance requires a minimum NZ$10 top-up every 365 days to keep the account active.",
+        "landedCost": {
+          "currency": "NZD",
+          "providerOrCommunityPrice": 8,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 8,
+          "landedCny": 34.4,
+          "fxCheckedAt": "2026-09-26",
+          "state": "current-official-new-sim-with-8-monthly-plan"
+        },
+        "keep": {
+          "currency": "NZD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": 43,
+          "action": "Top up at least NZ$10 every 365 days to keep the Prepay account active. Current official guidance says unused balance is forfeited and the SIM expires if this is not done.",
+          "intervalDays": 365,
+          "state": "current-official-365-day-rule"
+        },
+        "chinaActivation": "Current official material supports online eSIM/SIM ordering and eSIM QR installation, but the reviewed sources do not establish that a brand-new Prepay line can complete first activation from overseas. Roaming requires an active Prepay plan, so do not rely on overseas-first activation without a fresh explicit provider statement.",
+        "kyc": "The reviewed ordinary 2degrees Prepay activation/help flow does not state an identity-document verification step. This is provider-flow evidence only, not a blanket legal claim about New Zealand prepaid registration.",
+        "payment": "Prepay top-up is supported in the 2degrees app and online; current minimum top-up is NZ$10. Card/Online EFTPOS/voucher methods are documented, with issuer/country acceptance to be checked at payment time.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "2degrees documents Prepay roaming and text use abroad. Its current Daily Roaming trigger list names sending a text but does not name receiving a text as a trigger; exact inbound-SMS charging and service-specific OTP reliability should not be overstated.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "The stale retention-terms blocker is resolved, but overseas-first activation of a brand-new Prepay line is not established by the reviewed current official material. Keep as HOLD for the typical overseas-only acquisition use case.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.2degrees.nz/mobile-plans/prepay",
+        "tariffSummary": "New SIM/eSIM currently starts with the NZ$8 Monthly Plan; minimum NZ$10 top-up every 365 days keeps Prepay active. Overseas-first activation remains unverified.",
+        "sourceIds": [
+          "official-2degrees-prepay-getting-started-2026-09-29",
+          "official-2degrees-prepay-balance-2026-09-29",
+          "official-2degrees-prepay-plans-2026-09-29",
+          "official-2degrees-sim-help-2026-09-29",
+          "official-2degrees-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Order a new physical SIM or eSIM with the current Prepay entry plan.",
+          "Do not assume a brand-new line can first-activate abroad; establish activation before relying on roaming.",
+          "Top up at least NZ$10 every 365 days to prevent account/SIM expiry."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "2degrees-nz",
+    "name": "2degrees",
+    "marketId": "nz"
+  },
+  "brand": {
+    "id": "2degrees-nz",
+    "networkId": "2degrees-nz",
+    "name": "2degrees",
+    "marketId": "nz"
+  }
+}

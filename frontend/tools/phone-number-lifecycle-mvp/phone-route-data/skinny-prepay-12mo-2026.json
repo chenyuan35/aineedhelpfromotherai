@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "skinny-prepay-12mo-2026",
+    "marketId": "nz",
+    "networkId": "spark-nz",
+    "brandId": "skinny-nz",
+    "displayName": "Skinny Prepay 12-month retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.skinny.co.nz/wheretobuy",
+    "sourceIds": [
+      "official-skinny-customer-terms-2026-09-29",
+      "official-skinny-esim-2026-09-29",
+      "official-skinny-plans-2026-09-29",
+      "official-skinny-roaming-2026-09-29",
+      "official-skinny-trio-sim-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "nz",
+    "name": "New Zealand",
+    "countryCode": "NZ"
+  },
+  "network": {
+    "id": "spark-nz",
+    "name": "Spark NZ",
+    "marketId": "nz"
+  },
+  "brand": {
+    "id": "skinny-nz",
+    "networkId": "spark-nz",
+    "name": "Skinny Mobile",
+    "marketId": "nz"
+  },
+  "metrics": {
+    "routeId": "skinny-prepay-12mo-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "NZD",
+    "acquisitionCostOriginal": 0,
+    "acquisitionCostCny": 0,
+    "keepCurrency": "NZD",
+    "keepYearCostOriginal": 5,
+    "keepYearCostCny": 21.5,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-skinny-customer-terms-2026-09-29",
+      "url": "https://www.skinny.co.nz/mobileappskinny-terms/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-skinny-esim-2026-09-29",
+      "url": "https://www.skinny.co.nz/skinny-esim/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-skinny-plans-2026-09-29",
+      "url": "https://www.skinny.co.nz/pricing/plans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-skinny-roaming-2026-09-29",
+      "url": "https://www.skinny.co.nz/pricing/overseas-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-skinny-trio-sim-2026-09-29",
+      "url": "https://www.skinny.co.nz/shop/skinny-trio-sim/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-skinny-prepay-12mo-2026-current-profile-20260929",
+      "routeId": "skinny-prepay-12mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "nz-th-directory-batch-d.json",
+      "data": {
+        "id": "skinny-prepay-12mo-2026",
+        "brandId": "skinny-nz",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Skinny Prepaid offers a $0 eSIM and a $2 physical Trio SIM. Current Skinny terms require adding credit at least once every 12 months; current top-up amounts start at NZ$5. New SIMs must be activated on a New Zealand network before roaming, so this is not a direct overseas-first acquisition route.",
+        "landedCost": {
+          "currency": "NZD",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": 0,
+          "fxCheckedAt": "2026-09-29",
+          "state": "current-official-free-esim-physical-sim-2"
+        },
+        "keep": {
+          "currency": "NZD",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": 21.5,
+          "action": "Add credit at least once every 12 months. Current Skinny top-up amounts start at NZ$5, so NZ$5/year is the current minimum direct top-up model; recheck before each renewal because prices can change.",
+          "intervalDays": 365,
+          "state": "current-official-direct-skinny-terms"
+        },
+        "chinaActivation": "BLOCKER for overseas-first acquisition: Skinny states new SIMs must be activated on New Zealand networks before a roaming pack can be used. Physical SIM and eSIM are both available, but first activation should not be assumed to work from China or another overseas location.",
+        "kyc": "The reviewed ordinary Skinny prepaid activation flow does not state an identity-document verification step. Do not generalize this into a jurisdiction-wide no-ID claim; the hard current constraint is first activation on a New Zealand network.",
+        "payment": "Skinny terms support top-up by Visa/Mastercard credit or debit card, voucher and other accepted methods; issuer/country acceptance should be checked at payment time.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Skinny Global Roaming supports sending and receiving text messages where the overseas network supports the service. New SIMs must first be activated on New Zealand networks.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "HOLD for typical overseas-only users because a new Skinny SIM/eSIM must first be activated on a New Zealand network before roaming; the retention rule itself is now directly verified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.skinny.co.nz/wheretobuy",
+        "tariffSummary": "$0 eSIM / $2 physical SIM; current top-ups start at NZ$5 and at least one credit addition is required each 12 months. First activation must occur on a New Zealand network.",
+        "sourceIds": [
+          "official-skinny-customer-terms-2026-09-29",
+          "official-skinny-plans-2026-09-29",
+          "official-skinny-trio-sim-2026-09-29",
+          "official-skinny-esim-2026-09-29",
+          "official-skinny-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire a Skinny eSIM or physical SIM.",
+          "Activate the new SIM on a New Zealand network before relying on roaming.",
+          "Add at least NZ$5 credit before each 12-month no-top-up window expires; recheck the current minimum before renewal."
+        ]
+      }
+    }
+  ]
+}

@@ -60,9 +60,19 @@
     "countryCode": "NL"
   },
   {
+    "id": "nz",
+    "name": "New Zealand",
+    "countryCode": "NZ"
+  },
+  {
     "id": "sg",
     "name": "Singapore",
     "countryCode": "SG"
+  },
+  {
+    "id": "th",
+    "name": "Thailand",
+    "countryCode": "TH"
   },
   {
     "id": "tw",

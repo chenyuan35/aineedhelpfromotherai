@@ -1,5 +1,26 @@
 [
   {
+    "id": "2degrees-prepay-2026",
+    "marketId": "nz",
+    "networkId": "2degrees-nz",
+    "brandId": "2degrees-nz",
+    "displayName": "2degrees Prepay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.2degrees.nz/mobile-plans/prepay",
+    "sourceIds": [
+      "official-2degrees-prepay-balance-2026-09-29",
+      "official-2degrees-prepay-getting-started-2026-09-29",
+      "official-2degrees-prepay-plans-2026-09-29",
+      "official-2degrees-roaming-2026-09-29",
+      "official-2degrees-sim-help-2026-09-29"
+    ]
+  },
+  {
     "id": "5sim-temp",
     "marketId": "global",
     "networkId": null,
@@ -53,6 +74,26 @@
     "acquireUrl": "https://activatex.org/",
     "sourceIds": [
       "src-4212005934bd"
+    ]
+  },
+  {
+    "id": "ais-sim2fly-365d-2026",
+    "marketId": "th",
+    "networkId": "ais-th",
+    "brandId": "ais-sim2fly",
+    "displayName": "AIS SIM2Fly 1-Year Global",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+    "sourceIds": [
+      "official-ais-sim-registration-2026-09-29",
+      "official-ais-sim2fly-esim-2026-09-29",
+      "official-ais-sim2fly-global15-terms-2026-09-29",
+      "official-ais-sim2fly-main-2026-09-29"
     ]
   },
   {
@@ -419,6 +460,27 @@
     "sourceIds": [
       "official-singtel-prepaid-faq-pdf-2024-11",
       "official-singtel-prepaid-registration-2026-09-28"
+    ]
+  },
+  {
+    "id": "skinny-prepay-12mo-2026",
+    "marketId": "nz",
+    "networkId": "spark-nz",
+    "brandId": "skinny-nz",
+    "displayName": "Skinny Prepay 12-month retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.skinny.co.nz/wheretobuy",
+    "sourceIds": [
+      "official-skinny-customer-terms-2026-09-29",
+      "official-skinny-esim-2026-09-29",
+      "official-skinny-plans-2026-09-29",
+      "official-skinny-roaming-2026-09-29",
+      "official-skinny-trio-sim-2026-09-29"
     ]
   },
   {

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "th",
+    "name": "Thailand",
+    "countryCode": "TH"
+  },
+  "route": {
+    "id": "ais-sim2fly-365d-2026",
+    "marketId": "th",
+    "networkId": "ais-th",
+    "brandId": "ais-sim2fly",
+    "displayName": "AIS SIM2Fly 1-Year Global",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+    "sourceIds": [
+      "official-ais-sim2fly-main-2026-09-29",
+      "official-ais-sim2fly-global15-terms-2026-09-29",
+      "official-ais-sim-registration-2026-09-29",
+      "official-ais-sim2fly-esim-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-ais-sim2fly-main-2026-09-29",
+      "url": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-ais-sim2fly-global15-terms-2026-09-29",
+      "url": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly/terms-and-conditions-global-15gb",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-ais-sim-registration-2026-09-29",
+      "url": "https://www.ais.th/en/consumers/help-and-support/network-technologies/update-sim-registration",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-ais-sim2fly-esim-2026-09-29",
+      "url": "https://www.ais.th/consumers/package/international/roaming/sim2fly/esim-sim2fly",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-ais-sim2fly-main-2026-09-29",
+    "official-ais-sim2fly-global15-terms-2026-09-29",
+    "official-ais-sim-registration-2026-09-29",
+    "official-ais-sim2fly-esim-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-ais-sim2fly-365d-2026-current-profile-20260929",
+      "routeId": "ais-sim2fly-365d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "nz-th-directory-batch-d.json",
+      "data": {
+        "id": "ais-sim2fly-365d-2026",
+        "brandId": "ais-sim2fly",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "AIS currently advertises the SIM2Fly 1-Year Global roaming SIM at 2,699 baht promotional price (regular/terms price 2,799) for 15GB over 365 days. SIM2Fly can first-activate in Thailand or a supported destination including China, but SIM registration/identity verification is required and long-term continuous roaming has explicit limitations.",
+        "landedCost": {
+          "currency": "THB",
+          "providerOrCommunityPrice": 2699,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2699,
+          "landedCny": 540,
+          "fxCheckedAt": "2026-09-26",
+          "state": "current-official-2699-promo-2799-terms-price"
+        },
+        "keep": {
+          "currency": "THB",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "AIS says topping up can add SIM validity and On-Top packages can add validity days, but the reviewed current sources do not establish the cheapest durable number-retention top-up ladder beyond the packaged validity. Do not treat the 365-day data-package price as the minimum annual keep-alive cost.",
+          "intervalDays": null,
+          "state": "official-validity-extension-minimum-retention-cost-unresolved"
+        },
+        "chinaActivation": "First activation is allowed in Thailand or any supported SIM2Fly country; China (including Tibet) is listed for the Global package. The activated SIM must be used in a designated country within 60 days or the roaming package can be voided. Identity registration still applies.",
+        "kyc": "SIM registration is required. AIS states all mobile numbers must be registered; foreign nationals can use passport information for registration/verification. The prior passport-free wording is removed.",
+        "payment": "SIM2Fly is sold through AIS online and retail channels; exact foreign-card acceptance for the selected purchase channel should be verified at checkout.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "AIS SIM2Fly documentation says calls and SMS can be received normally while abroad, and China is a supported destination. However, AIS reserves the right to suspend roaming after more than 60 days of continuous roaming, so long-term inbound SMS/OTP continuity must not be assumed.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "HOLD for long-term overseas number-retention/OTP use: exact minimum post-package number-retention economics are unresolved and AIS reserves the right to suspend roaming after more than 60 days of continuous roaming. Identity registration is also required.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.ais.th/en/consumers/package/international/roaming/sim2fly",
+        "tariffSummary": "Current 1-Year Global card shows 2,699 THB promo versus 2,799 THB terms price for 15GB/365d. This is a roaming-data product price, not a proven minimum annual number-retention cost.",
+        "sourceIds": [
+          "official-ais-sim2fly-main-2026-09-29",
+          "official-ais-sim2fly-global15-terms-2026-09-29",
+          "official-ais-sim-registration-2026-09-29",
+          "official-ais-sim2fly-esim-2026-09-29"
+        ],
+        "guideSteps": [
+          "Complete AIS SIM registration/identity verification; foreign nationals should expect passport-based verification.",
+          "First-activate in Thailand or a supported SIM2Fly destination such as China and use it in a designated country within 60 days.",
+          "Do not rely on continuous roaming beyond 60 days or on a fixed post-year keep-alive cost until AIS publishes/validates the relevant retention mechanics."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "ais-th",
+    "name": "AIS Thailand",
+    "marketId": "th"
+  },
+  "brand": {
+    "id": "ais-sim2fly",
+    "networkId": "ais-th",
+    "name": "AIS SIM2Fly",
+    "marketId": "th"
+  }
+}

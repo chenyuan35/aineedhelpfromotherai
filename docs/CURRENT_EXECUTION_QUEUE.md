@@ -8,31 +8,30 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
-3. **Canonical staged migration is lossless so far, not coverage-parity.** Japan batch-B current-fact reconciliation migrated povo + Mobal Voice-Only backstage; canonical v1 is now 37 routes / 16 markets / 34 brands / 20 networks / 119 sources; 26 route IDs overlap the comparison set and 109 remain legacy-only.
+3. **Canonical staged migration is lossless so far, not coverage-parity.** NZ/Thailand batch-D migrated Skinny, 2degrees and AIS SIM2Fly backstage as HOLD routes; canonical v1 is now 40 routes / 18 markets / 37 brands / 23 networks / 133 sources; 29 route IDs overlap the comparison set and 106 remain legacy-only.
 4. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
 5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — Japan batch-B current-fact reconciliation + bounded canonical migration
+## JUST COMPLETED — NZ/Thailand batch-D current-fact reconciliation + bounded canonical migration
 
-Result: **PASS / TWO LOSSLESS MIGRATIONS + ONE EXPLICIT SAME-PRODUCT LEGACY-ID HOLD.**
+Result: **PASS / THREE EXACT-PARITY HOLD MIGRATIONS.**
 
-- `povo20-zero-base-2026` legacy data now uses the current paid-topping / 180-day lifecycle, accepted Japan credential paths and documented overseas SMS support; it migrated backstage as canonical **HOLD**;
-- `mobal-japan-voice-2026` now uses current Voice-Only economics (JPY 4,950 regular setup + JPY 1,430/month) and current Voice/SMS roaming evidence; it migrated backstage as a product distinct from `mobal-japan-voice-data`;
-- `sakura-mobile-voice-2026` now uses JPY 3,278/month tax-included + JPY 5,500 activation, passport/pickup and overseas calls/SMS facts, but it was **not** duplicated into canonical because existing `sakura-japan-voice-data` is the same underlying product;
-- current importer is add-only and the generic comparison adapter emits canonical `route.id`, so Sakura's different legacy comparison ID cannot be cut over losslessly without broader update/alias semantics. The legacy comparison row remains authoritative for that ID; no schema/backend redesign was introduced;
-- Povo and Mobal canonical-adapter rows deep-equal the reviewed comparison rows; dedicated regression also asserts Sakura stays single-product canonical;
-- canonical v1 is 37 routes / 16 markets / 34 brands / 20 networks / 119 sources; comparison remains 135, overlap is 26, legacy-only is 109, reviewed manifest remains intact and explicit indexability remains 3.
+- `skinny-prepay-12mo-2026` now uses Skinny's direct rule: add credit at least once every 12 months; current top-ups start at NZ$5, eSIM is NZ$0 and the physical Trio SIM is NZ$2. New SIMs must activate on a New Zealand network before roaming, so the route remains HOLD for typical overseas-only acquisition;
+- `2degrees-prepay-2026` now uses the current NZ$10 / 365-day keep-active rule and current NZ$8 new-Prepay entry plan. Its old pre-2024 lifecycle HOLD is resolved, but reviewed provider material does not establish first activation of a brand-new line entirely from overseas, so it remains HOLD for that use case;
+- `ais-sim2fly-365d-2026` now distinguishes the current 2,699 THB promotional 365-day package from the 2,799 THB terms price, removes the old passport-free claim, confirms passport-based foreign registration and China-supported first activation, and preserves the provider's right to suspend roaming after more than 60 days of continuous roaming. Minimum durable post-package number-retention economics remain unresolved, so it stays HOLD;
+- all three generic canonical-adapter rows deep-equal the corrected reviewed comparison rows;
+- canonical v1 is 40 routes / 18 markets / 37 brands / 23 networks / 133 sources; comparison remains 135, overlap is 29, legacy-only is 106, reviewed manifest remains intact and explicit indexability remains 3.
 
-## NEXT SESSION — NZ/Thailand batch-D identity/provenance reconciliation before migration
+## NEXT SESSION — CA/FR/CH/MX/IN batch-I identity/provenance reconciliation before migration
 
-**Session task:** work only on `nz-th-directory-batch-d.json`: `skinny-prepay-12mo-2026`, `2degrees-prepay-2026`, and `ais-sim2fly-365d-2026`. Reverify identity, current provider facts and source provenance before any canonical admission.
+**Session task:** work only on `ca-fr-ch-mx-in-directory-batch-i.json`: `speakout-711-365voucher-2026`, `telcel-amigo-lifecycle-2026`, `jio-prepaid-90d-trai-2026`, `orange-mobicarte-2026`, and `sunrise-prepaid-2026`. Reverify identity, current provider facts and source provenance before any canonical admission.
 
 ### Scope
 
-1. reverify current acquisition, retention, KYC/location and overseas SMS/roaming facts for all three routes;
+1. reverify current acquisition, retention, KYC/location and overseas SMS/roaming facts for all five routes;
 2. reconcile stale commercial/lifecycle claims only when current attributable evidence supports the correction;
 3. preserve negative/HOLD knowledge rather than forcing admission;
 4. migrate only rows that can reproduce the reviewed comparison row exactly through the existing generic adapter;
@@ -40,7 +39,7 @@ Result: **PASS / TWO LOSSLESS MIGRATIONS + ONE EXPLICIT SAME-PRODUCT LEGACY-ID H
 
 ### Definition of done
 
-- identity/provenance decisions exist for all three routes;
+- identity/provenance decisions exist for all five routes;
 - any migrated row has exact canonical-adapter parity;
 - comparison remains 135 and indexability remains 3;
 - no new public Phone URL, sitemap entry or publication-state expansion occurs.
