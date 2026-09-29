@@ -10,7 +10,7 @@ Last updated: 2026-09-29
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
 3. **Named batch A–K migration is complete.** Canonical v1 remains 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
 4. **The only named-batch legacy ID not represented by the same canonical ID is the known Sakura same-product alias blocker.** Do not duplicate that product.
-5. **Post-A–K value checkpoint selected existing-URL deepening, not batch-L.** Fresh first-party Phone data is only 4 hub impressions / 0 clicks through 2026-09-25, and the three currently indexable route URLs have no Search Console rows in the checked window.
+5. **Post-A–K value checkpoint selected existing-URL deepening, not batch-L.** Fresh first-party Phone data remains only 4 hub impressions / 0 clicks through 2026-09-25 after the 2026-09-29 measurement re-read; the three currently indexable route URLs have no Search Console rows in the checked window.
 6. **Global Phone finder is now RELEASED.** PR #291 squash-merged as `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree is `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`. Production Vercel deployment succeeded. Live verification: Phone hub HTTP 200, `comparison-route-index.json` HTTP 200, admitted VOXI route HTTP 200, representative non-indexable Three IE route HTTP 404.
 7. **Publication remains separate.** Comparison stays 135 and explicit route indexability stays 3; the global finder does not create new route/market SEO URLs or sitemap entries.
 8. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
@@ -31,6 +31,15 @@ Result: **PASS / MERGED / PRODUCTION-VERIFIED.**
 - squash merge SHA is `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree matches the locally verified tree `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`;
 - production deployment completed successfully;
 - live boundary check: hub 200, compact index 200, VOXI admitted route 200, Three IE non-indexable route 404.
+
+## MEASUREMENT CHECK — 2026-09-29
+
+Result: **WAIT / THRESHOLD NOT MET.**
+
+- Windsor.ai Search Console re-read for 2026-09-16..2026-09-29 still returns only the Phone hub rows already finalized on Sep 21, Sep 23 and Sep 25: 4 impressions, 0 clicks total; no later finalized Phone row was returned;
+- the decision trigger is therefore not satisfied: neither 7 additional finalized days nor 20 cumulative settled Phone impressions exists yet;
+- the connected GA4 account returned no rows for the Sep 25..29 and Sep 28..29 reads, so there is not yet usable first-party finder interaction evidence from that connector; treat this as unavailable/empty measurement, not as proof of zero use;
+- no regression signal was found from the Search Console read, so production remains unchanged and no migration/publication task is unlocked.
 
 ## NEXT SESSION — Measure the global finder before another migration/publication move
 
