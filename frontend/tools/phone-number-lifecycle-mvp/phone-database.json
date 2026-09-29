@@ -11,6 +11,11 @@
       "countryCode": "AE"
     },
     {
+      "id": "at",
+      "name": "Austria",
+      "countryCode": "AT"
+    },
+    {
       "id": "au",
       "name": "Australia",
       "countryCode": "AU"
@@ -19,6 +24,11 @@
       "id": "bd",
       "name": "Bangladesh",
       "countryCode": "BD"
+    },
+    {
+      "id": "be",
+      "name": "Belgium",
+      "countryCode": "BE"
     },
     {
       "id": "ca",
@@ -34,6 +44,11 @@
       "id": "cn",
       "name": "China",
       "countryCode": "CN"
+    },
+    {
+      "id": "cz",
+      "name": "Czech Republic",
+      "countryCode": "CZ"
     },
     {
       "id": "de",
@@ -76,6 +91,11 @@
       "countryCode": "HR"
     },
     {
+      "id": "hu",
+      "name": "Hungary",
+      "countryCode": "HU"
+    },
+    {
       "id": "id",
       "name": "Indonesia",
       "countryCode": "ID"
@@ -99,6 +119,11 @@
       "id": "jp",
       "name": "Japan",
       "countryCode": "JP"
+    },
+    {
+      "id": "kh",
+      "name": "Cambodia",
+      "countryCode": "KH"
     },
     {
       "id": "kz",
@@ -144,6 +169,11 @@
       "id": "pt",
       "name": "Portugal",
       "countryCode": "PT"
+    },
+    {
+      "id": "rs",
+      "name": "Serbia",
+      "countryCode": "RS"
     },
     {
       "id": "sg",
@@ -193,6 +223,11 @@
       "marketId": "nz"
     },
     {
+      "id": "a1-at",
+      "name": "A1 Austria",
+      "marketId": "at"
+    },
+    {
       "id": "a1-hr",
       "name": "A1 Croatia",
       "marketId": "hr"
@@ -216,6 +251,11 @@
       "id": "beeline-kz",
       "name": "Beeline Kazakhstan",
       "marketId": "kz"
+    },
+    {
+      "id": "cellcard-kh",
+      "name": "Cellcard Cambodia",
+      "marketId": "kh"
     },
     {
       "id": "cmhk-hk",
@@ -278,6 +318,11 @@
       "marketId": "es"
     },
     {
+      "id": "o2-cz",
+      "name": "O2 Czech Republic",
+      "marketId": "cz"
+    },
+    {
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
@@ -291,6 +336,11 @@
       "id": "orange-pl",
       "name": "Orange Polska",
       "marketId": "pl"
+    },
+    {
+      "id": "proximus-be",
+      "name": "Proximus Belgium",
+      "marketId": "be"
     },
     {
       "id": "rogers-ca",
@@ -388,6 +438,11 @@
       "marketId": "de"
     },
     {
+      "id": "vodafone-hu",
+      "name": "One Hungary (legacy Vodafone HU id)",
+      "marketId": "hu"
+    },
+    {
       "id": "vodafone-pt",
       "name": "Vodafone Portugal",
       "marketId": "pt"
@@ -396,6 +451,11 @@
       "id": "vodafone-uk",
       "name": "Vodafone UK",
       "marketId": "gb"
+    },
+    {
+      "id": "yettel-rs",
+      "name": "Yettel Serbia",
+      "marketId": "rs"
     }
   ],
   "brands": [
@@ -410,6 +470,12 @@
       "marketId": "global",
       "networkId": null,
       "name": "5SIM"
+    },
+    {
+      "id": "a1-bfree",
+      "networkId": "a1-at",
+      "name": "A1 B.free",
+      "marketId": "at"
     },
     {
       "id": "a1-croatia-hr",
@@ -446,6 +512,12 @@
       "networkId": "beeline-kz",
       "name": "Beeline KZ Prepaid",
       "marketId": "kz"
+    },
+    {
+      "id": "cellcard-prepaid",
+      "networkId": "cellcard-kh",
+      "name": "Cellcard Prepaid",
+      "marketId": "kh"
     },
     {
       "id": "clubsim-hk",
@@ -556,6 +628,12 @@
       "marketId": "es"
     },
     {
+      "id": "o2-cz-prepaid",
+      "networkId": "o2-cz",
+      "name": "O2 CZ Prepaid",
+      "marketId": "cz"
+    },
+    {
       "id": "o2-uk-classic",
       "networkId": "o2-uk",
       "name": "O2 Classic PAYG",
@@ -578,6 +656,12 @@
       "networkId": "au-jp",
       "name": "povo 2.0",
       "marketId": "jp"
+    },
+    {
+      "id": "proximus-paygo",
+      "networkId": "proximus-be",
+      "name": "Proximus Pay&Go+",
+      "marketId": "be"
     },
     {
       "id": "sakura-mobile-jp",
@@ -718,6 +802,12 @@
       "marketId": "de"
     },
     {
+      "id": "vodafone-tuti",
+      "networkId": "vodafone-hu",
+      "name": "One Tuti Prepaid (legacy Vodafone TUTI id)",
+      "marketId": "hu"
+    },
+    {
       "id": "vodafone-uk-direct",
       "networkId": "vodafone-uk",
       "name": "Vodafone UK",
@@ -734,6 +824,12 @@
       "networkId": "vodafone-uk",
       "name": "VOXI",
       "marketId": "gb"
+    },
+    {
+      "id": "yettel-rs-prepaid",
+      "networkId": "yettel-rs",
+      "name": "Yettel Serbia Prepaid",
+      "marketId": "rs"
     }
   ],
   "routes": [
@@ -775,6 +871,25 @@
         "src-3545efe8deb4",
         "src-6acad0e79070",
         "src-a19054e9d137"
+      ]
+    },
+    {
+      "id": "a1-bfree-at-2026",
+      "marketId": "at",
+      "networkId": "a1-at",
+      "brandId": "a1-bfree",
+      "displayName": "A1 B.free",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+      "sourceIds": [
+        "official-a1-bfree-current-2026-09-29",
+        "official-a1-bfree-registration-2026-09-29",
+        "official-a1-bfree-validity-2026-09-29"
       ]
     },
     {
@@ -890,6 +1005,27 @@
         "official-beeline-kz-registration-2026-09-29",
         "official-beeline-kz-sim-safe-2026-09-29",
         "travelask-beeline-sim-safe-incident-2026-09"
+      ]
+    },
+    {
+      "id": "cellcard-kh-2026",
+      "marketId": "kh",
+      "networkId": "cellcard-kh",
+      "brandId": "cellcard-prepaid",
+      "displayName": "Cellcard Cambodia Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://getsim.cellcard.com.kh/",
+      "sourceIds": [
+        "official-cellcard-esim-earrival-2026-06-10",
+        "official-cellcard-getsim-2026-09-29",
+        "official-cellcard-terms-en-2026-09-29",
+        "official-cellcard-terms-kh-2026-09-29",
+        "official-cellcard-topup-2026-09-29"
       ]
     },
     {
@@ -1286,6 +1422,24 @@
       ]
     },
     {
+      "id": "o2-cz-prepaid-2026",
+      "marketId": "cz",
+      "networkId": "o2-cz",
+      "brandId": "o2-cz-prepaid",
+      "displayName": "O2 CZ Prepaid GO",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+      "sourceIds": [
+        "official-o2cz-prepaid-current-2026-09-29",
+        "official-o2cz-prepaid-documents-2026-09-29"
+      ]
+    },
+    {
       "id": "o2-uk-classic-payg-6mo-2026",
       "marketId": "gb",
       "networkId": "o2-uk",
@@ -1361,6 +1515,26 @@
         "official-povo-faq-904-2026-09-29",
         "official-povo-procedure-other-2026-09-29",
         "official-povo-spec-detail-2026-09-29"
+      ]
+    },
+    {
+      "id": "proximus-paygo-be-2026",
+      "marketId": "be",
+      "networkId": "proximus-be",
+      "brandId": "proximus-paygo",
+      "displayName": "Proximus Pay&Go+",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+      "sourceIds": [
+        "official-proximus-identification-2026-09-29",
+        "official-proximus-paygo-current-2026-09-29",
+        "official-proximus-paygo-faq-2026-09-29",
+        "proximus-forum-foreign-id-friction-2026-07-03"
       ]
     },
     {
@@ -1826,6 +2000,25 @@
       ]
     },
     {
+      "id": "vodafone-tuti-hu-2026",
+      "marketId": "hu",
+      "networkId": "vodafone-hu",
+      "brandId": "vodafone-tuti",
+      "displayName": "One Tuti Prepaid (legacy Vodafone TUTI ID)",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+      "sourceIds": [
+        "official-one-prepaid-data-validation-2026-09-29",
+        "official-one-topup-current-2026-09-29",
+        "official-one-tuti-current-2026-09-29"
+      ]
+    },
+    {
       "id": "vodafone-uk-zero-esim-2026",
       "marketId": "gb",
       "networkId": "vodafone-uk",
@@ -1884,6 +2077,27 @@
         "linuxdo-voxi-2737575",
         "nodeloc-voxi-102713",
         "voxi-official-plans-2026-09-23"
+      ]
+    },
+    {
+      "id": "yettel-rs-2026",
+      "marketId": "rs",
+      "networkId": "yettel-rs",
+      "brandId": "yettel-rs-prepaid",
+      "displayName": "Yettel Serbia Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+      "sourceIds": [
+        "official-yettel-rs-prepaid-current-2026-09-29",
+        "official-yettel-rs-registration-2026-09-29",
+        "official-yettel-rs-registration-eid-2026-09-29",
+        "official-yettel-rs-roaming-prepaid-2026-09-29",
+        "official-yettel-rs-topup-validity-2026-09-29"
       ]
     }
   ],
@@ -2165,6 +2379,24 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-a1-bfree-current-2026-09-29",
+      "url": "https://www.a1.net/handys-tarife/wertkartentarife",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-bfree-registration-2026-09-29",
+      "url": "https://www.a1.net/handys-tarife/wertkartentarife/wertkartenregistrierung",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-bfree-validity-2026-09-29",
+      "url": "https://www.a1.net/faq/telefonie/b-free-wertkarte/bfree-guthaben-nicht-aufladen",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-a1-hr-prepaid-registration-2026-09-29",
       "url": "https://www.a1.hr/privatni/mobiteli/a1-na-bonove/pristupnica",
       "type": "provider-official",
@@ -2241,6 +2473,36 @@
       "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
       "type": "specialist-media",
       "reportedAt": "2025-08-20"
+    },
+    {
+      "id": "official-cellcard-esim-earrival-2026-06-10",
+      "url": "https://www.cellcard.com.kh/en/news/cellcard-launches-on-cambodia-e-arrival-app",
+      "type": "provider-official",
+      "reportedAt": "2026-06-10"
+    },
+    {
+      "id": "official-cellcard-getsim-2026-09-29",
+      "url": "https://getsim.cellcard.com.kh/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-terms-en-2026-09-29",
+      "url": "https://bizccself.cellcard.com.kh/en/terms-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-terms-kh-2026-09-29",
+      "url": "https://www.cellcard.com.kh/terms-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-topup-2026-09-29",
+      "url": "https://www.cellcard.com.kh/en/online-top-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "official-clubsim-faq-365-window-2026-09-26",
@@ -2483,6 +2745,36 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-o2cz-prepaid-current-2026-09-29",
+      "url": "https://www.o2.cz/osobni/volani/predplacena-karta",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-o2cz-prepaid-documents-2026-09-29",
+      "url": "https://www.o2.cz/osobni/ceniky-a-dokumenty",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-one-prepaid-data-validation-2026-09-29",
+      "url": "https://www.one.hu/shop/feltoltokartyas-adategyeztetes",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-one-topup-current-2026-09-29",
+      "url": "https://www.one.hu/shop/egyenlegfeltoltes",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-one-tuti-current-2026-09-29",
+      "url": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-orange-mobicarte-offers-2026-09-29",
       "url": "https://boutique.orange.fr/vitrine/offres-prepayees/",
       "type": "provider-official",
@@ -2545,6 +2837,24 @@
     {
       "id": "official-povo-spec-detail-2026-09-29",
       "url": "https://povo.jp/spec/detail/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-proximus-identification-2026-09-29",
+      "url": "https://www.proximus.be/en/id_cr_dkyc_faqs/personal/mobile/mobile-subscriptions/identification-order-faq.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-proximus-paygo-current-2026-09-29",
+      "url": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-proximus-paygo-faq-2026-09-29",
+      "url": "https://www.proximus.be/en/id_cr_paygo_faq/personal/mobile/prepaid-cards/pay-and-go-plus-frequently-asked-questions.html",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
@@ -2849,6 +3159,36 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-yettel-rs-prepaid-current-2026-09-29",
+      "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-registration-2026-09-29",
+      "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/registracija",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-registration-eid-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/offer/tariff-packages/prepaid-tariff-package/registration/identification/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-roaming-prepaid-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/services/roaming/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-topup-validity-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/support/prepaid-top-ups/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-yorn-eligibility-2026-09-29",
       "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
       "type": "provider-official",
@@ -2871,6 +3211,12 @@
       "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/os-meus-minutos-e-mensagens-renovam-a-semana-ou-ao-mes.html?PageSpeed=noscript",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "proximus-forum-foreign-id-friction-2026-07-03",
+      "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
+      "type": "provider-community-support-thread",
+      "reportedAt": "2026-07-03"
     },
     {
       "id": "reddit-gp-visitor-biometric-2026-03-21",
@@ -3238,6 +3584,15 @@
       "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
     },
     {
+      "id": "evt-cellcard-expired-balance-recovery-conflict-20260929",
+      "routeId": "cellcard-kh-2026",
+      "type": "lifecycle-source-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "provider-surfaces",
+      "outcome": "Current Cellcard official surfaces conflict on the post-expiry top-up recovery window: the English business/self-service terms say expired balance can be restored by top-up within 30 calendar days, while the current Khmer main-site terms state 180 days. Do not infer number-retention/recycling timing from either balance-recovery window until reconciled.",
+      "sourceId": "official-cellcard-terms-en-2026-09-29"
+    },
+    {
       "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
       "routeId": "giffgaff-uk-direct-esim-payg",
       "type": "recycled-number-observation",
@@ -3310,6 +3665,24 @@
       "sourceId": "official-mobitel-number-retention-2026-09-29"
     },
     {
+      "id": "evt-o2cz-credit-vs-sim-validity-distinction-20260929",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "lifecycle-clarification",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
+      "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+    },
+    {
+      "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
+      "routeId": "proximus-paygo-be-2026",
+      "type": "lifecycle-condition-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Proximus pages say Pay&Go is valid 12 months after first call and >EUR5 top-up extends 12 months, but the current FAQ separately says a card not used for more than 6 months is automatically deactivated. The reviewed page does not define exactly which activity satisfies “used”; annual top-up alone must not be treated as sufficient.",
+      "sourceId": "official-proximus-paygo-faq-2026-09-29"
+    },
+    {
       "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
       "routeId": "telkomsel-simpati-365d-2026",
       "type": "retention-cost-correction",
@@ -3326,6 +3699,24 @@
       "scope": "route",
       "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
       "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
+    },
+    {
+      "id": "evt-vodafone-tuti-brand-migration-one-20260929",
+      "routeId": "vodafone-tuti-hu-2026",
+      "type": "brand-rename",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The legacy route ID/brand refers to Vodafone TUTI. The current provider surface is One Hungary and the active product is Tuti Feltöltőkártya. Preserve the legacy ID for comparison continuity but use the current One/Tuti product identity.",
+      "sourceId": "official-one-tuti-current-2026-09-29"
+    },
+    {
+      "id": "evt-yettel-rs-transfer-topup-does-not-extend-20260929",
+      "routeId": "yettel-rs-2026",
+      "type": "retention-action-constraint",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Yettel explicitly says top-up sent from another Yettel prepaid/postpaid number does not prolong card expiry. Use a standard top-up channel for lifecycle renewal.",
+      "sourceId": "official-yettel-rs-topup-validity-2026-09-29"
     }
   ],
   "snapshots": [
@@ -3560,6 +3951,63 @@
         "summary": "No physical SIM activation is involved; service/country/operator inventory is dynamic.",
         "outsideHomeNote": "Physical location is not the same thing as the selected number country. Recheck target-service eligibility before purchase.",
         "sourceUrl": "https://5sim.net/prices"
+      }
+    },
+    {
+      "id": "snap-a1-bfree-at-2026-current-profile-20260929",
+      "routeId": "a1-bfree-at-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "a1-bfree-at-2026",
+        "brandId": "a1-bfree",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "A1 currently sells B.free as physical SIM or eSIM with online/shop acquisition. Current B.free S service is listed at EUR 9.90 per 28 days, but this review does not treat the tariff fee as a separately verified bare starter-SIM landed cost.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-confirmed-bare-starter-price-unresolved"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 20,
+          "yearCostOriginal": 18.46,
+          "yearCostCny": null,
+          "action": "A single top-up of at least EUR 20 extends B.free SIM validity by another 13 months. Two separate EUR 10 top-ups do not qualify for that extension.",
+          "intervalDays": 396,
+          "state": "current-provider-official-13-month-extension-annualized"
+        },
+        "chinaActivation": "A new B.free prepaid SIM must be identity-registered before activation. A1 supports online FotoIdent, but foreign-country purchase/first activation is not established here.",
+        "kyc": "Prepaid identity registration is mandatory. A1 supports photo ID through FotoIdent and other Austrian identification methods.",
+        "payment": "A1 documents online top-up by card/online payment plus vouchers and ATMs.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified for long-term non-EU use",
+        "refund": "Remaining prepaid credit may be claimed after contract end under A1 conditions; a EUR20 processing fee is documented.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Retention rule is current and clear, but foreign acquisition/first activation and long-term non-EU continuity are not verified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+        "tariffSummary": "Top up EUR20 in one transaction to extend SIM validity by 13 months; identity registration required.",
+        "sourceIds": [
+          "official-a1-bfree-current-2026-09-29",
+          "official-a1-bfree-validity-2026-09-29",
+          "official-a1-bfree-registration-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire a current B.free physical SIM or eSIM and complete required identity registration.",
+          "Before the 13-month validity ends, top up at least EUR20 in one transaction.",
+          "Do not assume two EUR10 top-ups or unverified overseas-first activation provide the same lifecycle result."
+        ]
       }
     },
     {
@@ -3872,6 +4320,65 @@
           "Acquire/register a Beeline Kazakhstan number under current rules.",
           "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
           "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
+        ]
+      }
+    },
+    {
+      "id": "snap-cellcard-kh-2026-current-profile-20260929",
+      "routeId": "cellcard-kh-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "cellcard-kh-2026",
+        "brandId": "cellcard-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Cellcard currently sells physical SIM and eSIM. Current get-SIM surface lists a free eSIM with AO MOBILE 5G plans starting at USD2/7 days; international travelers can also buy/activate a 5G eSIM through Cambodia eArrival. Exact generic bare-number fee is not assigned here.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-esim-acquisition-confirmed-bare-number-fee-unresolved"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 50,
+          "yearCostOriginal": 101.39,
+          "yearCostCny": null,
+          "action": "Current Cellcard top-up table gives USD50 a 180-day main-balance Active Period; smaller denominations give shorter periods. This supports a conservative roughly two-top-up-per-year balance-validity path, but the exact phone-number suspension/recycling lifecycle after Active Period expiry is not established and must not be equated with balance expiry.",
+          "intervalDays": 180,
+          "state": "current-provider-main-balance-validity-number-lifecycle-unresolved"
+        },
+        "chinaActivation": "International-traveler eSIM acquisition is documented through Cambodia eArrival, but this review does not establish China-first activation or durable use from China.",
+        "kyc": "Cellcard requires accurate subscriber profile/ID information; exact foreign-passport registration workflow for this generic route is not fully reconciled.",
+        "payment": "Online top-up currently supports credit/debit card, Alipay, WeChat Pay and local bank methods.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified for long-term foreign OTP use",
+        "refund": "Prepaid main balance is stated non-refundable.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current top-up Active Periods are clear, but provider surfaces conflict on expired-balance recovery (30 vs 180 days) and do not establish the exact number suspension/recycling lifecycle.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://getsim.cellcard.com.kh/",
+        "tariffSummary": "Top-up validity currently ranges from 7 days at USD1 to 180 days at USD50; exact number lifecycle after balance expiry remains unresolved.",
+        "sourceIds": [
+          "official-cellcard-terms-en-2026-09-29",
+          "official-cellcard-terms-kh-2026-09-29",
+          "official-cellcard-topup-2026-09-29",
+          "official-cellcard-getsim-2026-09-29",
+          "official-cellcard-esim-earrival-2026-06-10"
+        ],
+        "guideSteps": [
+          "Acquire/register a current Cellcard SIM/eSIM using an official channel.",
+          "If preserving balance validity, use the current top-up validity table and renew before the Active Period ends.",
+          "Do not treat the 30-day or 180-day expired-balance recovery text as a confirmed phone-number recycling deadline until Cellcard reconciles the official-source conflict."
         ]
       }
     },
@@ -5811,6 +6318,62 @@
       }
     },
     {
+      "id": "snap-o2-cz-prepaid-2026-current-profile-20260929",
+      "routeId": "o2-cz-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "o2-cz-prepaid-2026",
+        "brandId": "o2-cz-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current O2 GO na den prepaid starter is listed at 99 CZK with 100 CZK preloaded credit. O2 sells additional prepaid variants; this route uses the current low-entry GO prepaid baseline.",
+        "landedCost": {
+          "currency": "CZK",
+          "providerOrCommunityPrice": 99,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-go-na-den"
+        },
+        "keep": {
+          "currency": "CZK",
+          "observedActionCost": 300,
+          "yearCostOriginal": 300,
+          "yearCostCny": null,
+          "action": "Top up at least the current self-service minimum of 300 CZK before 12 months since the last top-up. O2 states the prepaid card itself is valid 12 months from the last top-up. A 300–499 CZK top-up credit balance expires after six months, but that shorter credit-validity period is not the SIM-validity period.",
+          "intervalDays": 365,
+          "state": "current-provider-official-sim-validity"
+        },
+        "chinaActivation": "Overseas-first acquisition/activation is not established in this review.",
+        "kyc": "A mandatory identity/KYC requirement was not established from the reviewed current O2 prepaid surface; do not infer either KYC-free or foreign-passport support from absence of a notice.",
+        "payment": "O2 supports online top-up; exact foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU and non-EU roaming pricing exists; long-term incoming-SMS/OTP reliability is unverified.",
+        "refund": "O2 documents prepaid credit rules; refund conditions are not reconciled here.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+        "tariffSummary": "99 CZK GO starter; 300 CZK minimum self top-up; SIM validity is 12 months from last top-up.",
+        "sourceIds": [
+          "official-o2cz-prepaid-current-2026-09-29",
+          "official-o2cz-prepaid-documents-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire a current O2 GO prepaid SIM.",
+          "Before 12 months from the last top-up, top up at least 300 CZK.",
+          "Treat the six-month validity of 300–499 CZK credit as credit expiry, not as the SIM/number expiry date."
+        ]
+      }
+    },
+    {
       "id": "snap-o2-uk-classic-payg-6mo-2026-current-profile-20260928",
       "routeId": "o2-uk-classic-payg-6mo-2026",
       "kind": "current-profile",
@@ -6037,6 +6600,64 @@
           "Use only if you can complete the current accepted Japan identity-verification path.",
           "Track the official 180-day no-paid-topping window and buy a qualifying paid topping before suspension risk.",
           "For overseas use, complete povo's documented international-roaming setup before relying on SMS."
+        ]
+      }
+    },
+    {
+      "id": "snap-proximus-paygo-be-2026-current-profile-20260929",
+      "routeId": "proximus-paygo-be-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "proximus-paygo-be-2026",
+        "brandId": "proximus-paygo",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current Pay&Go+ web promo lists EUR5 purchase for EUR10 credit + 3GB and free SIM delivery, valid through 2026-11-01. Identity verification is mandatory before first use.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-promo-through-2026-11-01"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 10,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "A top-up above EUR5 extends formal card validity 12 months; EUR5 extends only one month. Separately, Proximus says a Pay&Go card not used for more than 6 months is automatically deactivated, so perform qualifying use inside six months and do not model this as a simple EUR10/year passive-retention route.",
+          "intervalDays": null,
+          "state": "official-12m-topup-rule-plus-6m-inactivity-condition"
+        },
+        "chinaActivation": "International identity documents are accepted, but current online identity verification for international documents requires proof of residence in Belgium; this is not a China-first acquisition route.",
+        "kyc": "Mandatory prepaid identification. International passport/EU ID is accepted; current online flow also requests Belgian proof of residence for international documents.",
+        "payment": "Current web page supports secure online payment; exact foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU-zone roaming is documented; non-EU long-term incoming-SMS reliability is unverified.",
+        "refund": "Unused credit refund can be requested in some operator-switch cases, but automatic deactivation after >6 months no use is stated as non-refundable.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Formal 12-month top-up validity is constrained by a separate 6-month no-use deactivation rule whose qualifying-use semantics are not fully defined; foreign online KYC also requires Belgian residence proof.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+        "tariffSummary": "Pay&Go+: >EUR5 top-up extends 12 months, but >6 months without use can auto-deactivate the card.",
+        "sourceIds": [
+          "official-proximus-paygo-current-2026-09-29",
+          "official-proximus-paygo-faq-2026-09-29",
+          "official-proximus-identification-2026-09-29",
+          "proximus-forum-foreign-id-friction-2026-07-03"
+        ],
+        "guideSteps": [
+          "Acquire and identify the Pay&Go+ SIM under current Belgian rules.",
+          "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
+          "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
         ]
       }
     },
@@ -8205,6 +8826,63 @@
       }
     },
     {
+      "id": "snap-vodafone-tuti-hu-2026-current-profile-20260929",
+      "routeId": "vodafone-tuti-hu-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "vodafone-tuti-hu-2026",
+        "brandId": "vodafone-tuti",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current One Hungary Tuti prepaid SIM is listed at 500 HUF online/reseller or 1500 HUF in One stores. The old Vodafone TUTI identity has migrated to One; the legacy route ID is retained only for data continuity.",
+        "landedCost": {
+          "currency": "HUF",
+          "providerOrCommunityPrice": 500,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 500,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-online-sim-price"
+        },
+        "keep": {
+          "currency": "HUF",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "The initial service period is 370 days. A successful legally required annual prepaid data validation can create a new 370-day fixed service period even without a top-up. Top-up alternatives also create a new service period according to denomination rules, but this review does not assign a cheapest monetary top-up path.",
+          "intervalDays": 370,
+          "state": "current-provider-official-data-validation-renewal"
+        },
+        "chinaActivation": "Non-Hungarian citizens must visit a One store for prepaid annual data validation, so this is not a fully remote long-term route for foreign users.",
+        "kyc": "Annual prepaid identity/data validation is mandatory. One explicitly requires non-Hungarian citizens to visit a local One store and bring passport/EU identity or EU driving licence plus other requested details.",
+        "payment": "Current online top-up offers 1000/2000/3000/5000/7000 HUF options via SimplePay; foreign-card behavior is not separately verified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming use is documented; long-term non-EU incoming-SMS reliability is unverified.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "The number can be renewed through annual data validation, but non-Hungarian users are currently required to visit a One store for that validation; remote long-term foreign use is therefore operationally weak.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+        "tariffSummary": "One Tuti: 500 HUF online SIM; 370-day initial service period; successful annual data validation can renew a 370-day period without top-up.",
+        "sourceIds": [
+          "official-one-tuti-current-2026-09-29",
+          "official-one-topup-current-2026-09-29",
+          "official-one-prepaid-data-validation-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire the current One Tuti prepaid SIM; do not use the old Vodafone branding as current product identity.",
+          "Complete mandatory annual data validation before the service period ends.",
+          "If you are not a Hungarian citizen, plan for the current One-store visit requirement rather than assuming remote renewal."
+        ]
+      }
+    },
+    {
       "id": "snap-vodafone-uk-zero-esim-2026-current-profile-e3cd66",
       "routeId": "vodafone-uk-zero-esim-2026",
       "kind": "current-profile",
@@ -8374,6 +9052,65 @@
           "Activate the line and test inbound SMS before moving important accounts.",
           "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
           "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+        ]
+      }
+    },
+    {
+      "id": "snap-yettel-rs-2026-current-profile-20260929",
+      "routeId": "yettel-rs-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "yettel-rs-2026",
+        "brandId": "yettel-rs-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Yettel currently sells standard prepaid physical/eSIM packages; the standard prepaid eSIM is listed at 600 RSD and delivered online. Registration is mandatory before normal service use.",
+        "landedCost": {
+          "currency": "RSD",
+          "providerOrCommunityPrice": 600,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 600,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-standard-prepaid-esim"
+        },
+        "keep": {
+          "currency": "RSD",
+          "observedActionCost": 300,
+          "yearCostOriginal": 280.77,
+          "yearCostCny": null,
+          "action": "Use a standard prepaid top-up of at least 300 RSD. Yettel states prepaid credit is valid 60 days, followed by an additional 330-day period in which a new top-up can keep/extend the prepaid SIM. Top-up transferred from another Yettel number does not prolong card expiry.",
+          "intervalDays": 390,
+          "state": "current-provider-official-60-plus-330-lifecycle-annualized"
+        },
+        "chinaActivation": "Yettel provides online prepaid registration including foreign-national identity documents, but first network/eSIM activation from China is not explicitly guaranteed.",
+        "kyc": "Registration is mandatory. Foreign nationals without Serbian residence can use a passport, or an eligible national ID where Serbia allows ID-card entry. Online Yettel eID supports foreign identity/travel documents.",
+        "payment": "Current standard top-up channels include retail/ATM and digital channels; international-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Prepaid roaming is documented including China in Zone 3; incoming-SMS/OTP reliability is not converted into a service-success claim.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+        "tariffSummary": "600 RSD standard prepaid eSIM; 300 RSD minimum standard top-up; 60-day credit validity plus 330-day top-up grace for SIM continuity.",
+        "sourceIds": [
+          "official-yettel-rs-topup-validity-2026-09-29",
+          "official-yettel-rs-prepaid-current-2026-09-29",
+          "official-yettel-rs-registration-2026-09-29",
+          "official-yettel-rs-registration-eid-2026-09-29",
+          "official-yettel-rs-roaming-prepaid-2026-09-29"
+        ],
+        "guideSteps": [
+          "Buy/register the prepaid SIM or eSIM; foreign passport registration is supported.",
+          "Use a standard top-up channel of at least 300 RSD before the 60+330-day lifecycle expires.",
+          "Do not rely on balance transferred from another Yettel number to extend card expiry."
         ]
       }
     }
@@ -8549,6 +9286,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "a1-bfree-at-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 18.46,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 396
+    },
+    {
       "routeId": "a1-croatia-prepaid-esim",
       "checkedAt": "Apr 2026",
       "metricState": "not-normalized",
@@ -8619,6 +9368,18 @@
       "keepYearCostOriginal": 12,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "cellcard-kh-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 101.39,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "clubsim-sms-pack-6hkd-2026",
@@ -8861,6 +9622,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "o2-cz-prepaid-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CZK",
+      "acquisitionCostOriginal": 99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CZK",
+      "keepYearCostOriginal": 300,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "o2-uk-classic-payg-6mo-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -8907,6 +9680,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "proximus-paygo-be-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "sakura-japan-voice-data",
@@ -9197,6 +9982,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "vodafone-tuti-hu-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HUF",
+      "acquisitionCostOriginal": 500,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HUF",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 370
+    },
+    {
       "routeId": "vodafone-uk-zero-esim-2026",
       "checkedAt": "2026-06-16",
       "metricState": "current-profile",
@@ -9231,6 +10028,18 @@
       "keepYearCostOriginal": 0.16,
       "keepYearCostCny": 1.43,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "yettel-rs-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "RSD",
+      "acquisitionCostOriginal": 600,
+      "acquisitionCostCny": null,
+      "keepCurrency": "RSD",
+      "keepYearCostOriginal": 280.77,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 390
     }
   ]
 }

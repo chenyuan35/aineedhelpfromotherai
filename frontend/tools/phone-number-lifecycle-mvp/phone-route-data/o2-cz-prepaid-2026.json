@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "o2-cz-prepaid-2026",
+    "marketId": "cz",
+    "networkId": "o2-cz",
+    "brandId": "o2-cz-prepaid",
+    "displayName": "O2 CZ Prepaid GO",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+    "sourceIds": [
+      "official-o2cz-prepaid-current-2026-09-29",
+      "official-o2cz-prepaid-documents-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "cz",
+    "name": "Czech Republic",
+    "countryCode": "CZ"
+  },
+  "network": {
+    "id": "o2-cz",
+    "name": "O2 Czech Republic",
+    "marketId": "cz"
+  },
+  "brand": {
+    "id": "o2-cz-prepaid",
+    "networkId": "o2-cz",
+    "name": "O2 CZ Prepaid",
+    "marketId": "cz"
+  },
+  "metrics": {
+    "routeId": "o2-cz-prepaid-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "CZK",
+    "acquisitionCostOriginal": 99,
+    "acquisitionCostCny": null,
+    "keepCurrency": "CZK",
+    "keepYearCostOriginal": 300,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-o2cz-prepaid-current-2026-09-29",
+      "url": "https://www.o2.cz/osobni/volani/predplacena-karta",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-o2cz-prepaid-documents-2026-09-29",
+      "url": "https://www.o2.cz/osobni/ceniky-a-dokumenty",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-o2cz-credit-vs-sim-validity-distinction-20260929",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "lifecycle-clarification",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
+      "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-o2-cz-prepaid-2026-current-profile-20260929",
+      "routeId": "o2-cz-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "o2-cz-prepaid-2026",
+        "brandId": "o2-cz-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current O2 GO na den prepaid starter is listed at 99 CZK with 100 CZK preloaded credit. O2 sells additional prepaid variants; this route uses the current low-entry GO prepaid baseline.",
+        "landedCost": {
+          "currency": "CZK",
+          "providerOrCommunityPrice": 99,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-go-na-den"
+        },
+        "keep": {
+          "currency": "CZK",
+          "observedActionCost": 300,
+          "yearCostOriginal": 300,
+          "yearCostCny": null,
+          "action": "Top up at least the current self-service minimum of 300 CZK before 12 months since the last top-up. O2 states the prepaid card itself is valid 12 months from the last top-up. A 300–499 CZK top-up credit balance expires after six months, but that shorter credit-validity period is not the SIM-validity period.",
+          "intervalDays": 365,
+          "state": "current-provider-official-sim-validity"
+        },
+        "chinaActivation": "Overseas-first acquisition/activation is not established in this review.",
+        "kyc": "A mandatory identity/KYC requirement was not established from the reviewed current O2 prepaid surface; do not infer either KYC-free or foreign-passport support from absence of a notice.",
+        "payment": "O2 supports online top-up; exact foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU and non-EU roaming pricing exists; long-term incoming-SMS/OTP reliability is unverified.",
+        "refund": "O2 documents prepaid credit rules; refund conditions are not reconciled here.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+        "tariffSummary": "99 CZK GO starter; 300 CZK minimum self top-up; SIM validity is 12 months from last top-up.",
+        "sourceIds": [
+          "official-o2cz-prepaid-current-2026-09-29",
+          "official-o2cz-prepaid-documents-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire a current O2 GO prepaid SIM.",
+          "Before 12 months from the last top-up, top up at least 300 CZK.",
+          "Treat the six-month validity of 300–499 CZK credit as credit expiry, not as the SIM/number expiry date."
+        ]
+      }
+    }
+  ]
+}

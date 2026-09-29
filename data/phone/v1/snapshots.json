@@ -233,6 +233,63 @@
     }
   },
   {
+    "id": "snap-a1-bfree-at-2026-current-profile-20260929",
+    "routeId": "a1-bfree-at-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "a1-bfree-at-2026",
+      "brandId": "a1-bfree",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "A1 currently sells B.free as physical SIM or eSIM with online/shop acquisition. Current B.free S service is listed at EUR 9.90 per 28 days, but this review does not treat the tariff fee as a separately verified bare starter-SIM landed cost.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-product-confirmed-bare-starter-price-unresolved"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 20,
+        "yearCostOriginal": 18.46,
+        "yearCostCny": null,
+        "action": "A single top-up of at least EUR 20 extends B.free SIM validity by another 13 months. Two separate EUR 10 top-ups do not qualify for that extension.",
+        "intervalDays": 396,
+        "state": "current-provider-official-13-month-extension-annualized"
+      },
+      "chinaActivation": "A new B.free prepaid SIM must be identity-registered before activation. A1 supports online FotoIdent, but foreign-country purchase/first activation is not established here.",
+      "kyc": "Prepaid identity registration is mandatory. A1 supports photo ID through FotoIdent and other Austrian identification methods.",
+      "payment": "A1 documents online top-up by card/online payment plus vouchers and ATMs.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified for long-term non-EU use",
+      "refund": "Remaining prepaid credit may be claimed after contract end under A1 conditions; a EUR20 processing fee is documented.",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Retention rule is current and clear, but foreign acquisition/first activation and long-term non-EU continuity are not verified.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+      "tariffSummary": "Top up EUR20 in one transaction to extend SIM validity by 13 months; identity registration required.",
+      "sourceIds": [
+        "official-a1-bfree-current-2026-09-29",
+        "official-a1-bfree-validity-2026-09-29",
+        "official-a1-bfree-registration-2026-09-29"
+      ],
+      "guideSteps": [
+        "Acquire a current B.free physical SIM or eSIM and complete required identity registration.",
+        "Before the 13-month validity ends, top up at least EUR20 in one transaction.",
+        "Do not assume two EUR10 top-ups or unverified overseas-first activation provide the same lifecycle result."
+      ]
+    }
+  },
+  {
     "id": "snap-a1-croatia-prepaid-esim-frontstage-fc8ec3",
     "routeId": "a1-croatia-prepaid-esim",
     "kind": "frontstage",
@@ -542,6 +599,65 @@
         "Acquire/register a Beeline Kazakhstan number under current rules.",
         "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
         "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
+      ]
+    }
+  },
+  {
+    "id": "snap-cellcard-kh-2026-current-profile-20260929",
+    "routeId": "cellcard-kh-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "cellcard-kh-2026",
+      "brandId": "cellcard-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Cellcard currently sells physical SIM and eSIM. Current get-SIM surface lists a free eSIM with AO MOBILE 5G plans starting at USD2/7 days; international travelers can also buy/activate a 5G eSIM through Cambodia eArrival. Exact generic bare-number fee is not assigned here.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-esim-acquisition-confirmed-bare-number-fee-unresolved"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 50,
+        "yearCostOriginal": 101.39,
+        "yearCostCny": null,
+        "action": "Current Cellcard top-up table gives USD50 a 180-day main-balance Active Period; smaller denominations give shorter periods. This supports a conservative roughly two-top-up-per-year balance-validity path, but the exact phone-number suspension/recycling lifecycle after Active Period expiry is not established and must not be equated with balance expiry.",
+        "intervalDays": 180,
+        "state": "current-provider-main-balance-validity-number-lifecycle-unresolved"
+      },
+      "chinaActivation": "International-traveler eSIM acquisition is documented through Cambodia eArrival, but this review does not establish China-first activation or durable use from China.",
+      "kyc": "Cellcard requires accurate subscriber profile/ID information; exact foreign-passport registration workflow for this generic route is not fully reconciled.",
+      "payment": "Online top-up currently supports credit/debit card, Alipay, WeChat Pay and local bank methods.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified for long-term foreign OTP use",
+      "refund": "Prepaid main balance is stated non-refundable.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current top-up Active Periods are clear, but provider surfaces conflict on expired-balance recovery (30 vs 180 days) and do not establish the exact number suspension/recycling lifecycle.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://getsim.cellcard.com.kh/",
+      "tariffSummary": "Top-up validity currently ranges from 7 days at USD1 to 180 days at USD50; exact number lifecycle after balance expiry remains unresolved.",
+      "sourceIds": [
+        "official-cellcard-terms-en-2026-09-29",
+        "official-cellcard-terms-kh-2026-09-29",
+        "official-cellcard-topup-2026-09-29",
+        "official-cellcard-getsim-2026-09-29",
+        "official-cellcard-esim-earrival-2026-06-10"
+      ],
+      "guideSteps": [
+        "Acquire/register a current Cellcard SIM/eSIM using an official channel.",
+        "If preserving balance validity, use the current top-up validity table and renew before the Active Period ends.",
+        "Do not treat the 30-day or 180-day expired-balance recovery text as a confirmed phone-number recycling deadline until Cellcard reconciles the official-source conflict."
       ]
     }
   },
@@ -2481,6 +2597,62 @@
     }
   },
   {
+    "id": "snap-o2-cz-prepaid-2026-current-profile-20260929",
+    "routeId": "o2-cz-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "o2-cz-prepaid-2026",
+      "brandId": "o2-cz-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "Current O2 GO na den prepaid starter is listed at 99 CZK with 100 CZK preloaded credit. O2 sells additional prepaid variants; this route uses the current low-entry GO prepaid baseline.",
+      "landedCost": {
+        "currency": "CZK",
+        "providerOrCommunityPrice": 99,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 99,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-official-go-na-den"
+      },
+      "keep": {
+        "currency": "CZK",
+        "observedActionCost": 300,
+        "yearCostOriginal": 300,
+        "yearCostCny": null,
+        "action": "Top up at least the current self-service minimum of 300 CZK before 12 months since the last top-up. O2 states the prepaid card itself is valid 12 months from the last top-up. A 300–499 CZK top-up credit balance expires after six months, but that shorter credit-validity period is not the SIM-validity period.",
+        "intervalDays": 365,
+        "state": "current-provider-official-sim-validity"
+      },
+      "chinaActivation": "Overseas-first acquisition/activation is not established in this review.",
+      "kyc": "A mandatory identity/KYC requirement was not established from the reviewed current O2 prepaid surface; do not infer either KYC-free or foreign-passport support from absence of a notice.",
+      "payment": "O2 supports online top-up; exact foreign-card acceptance is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU and non-EU roaming pricing exists; long-term incoming-SMS/OTP reliability is unverified.",
+      "refund": "O2 documents prepaid credit rules; refund conditions are not reconciled here.",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+      "tariffSummary": "99 CZK GO starter; 300 CZK minimum self top-up; SIM validity is 12 months from last top-up.",
+      "sourceIds": [
+        "official-o2cz-prepaid-current-2026-09-29",
+        "official-o2cz-prepaid-documents-2026-09-29"
+      ],
+      "guideSteps": [
+        "Acquire a current O2 GO prepaid SIM.",
+        "Before 12 months from the last top-up, top up at least 300 CZK.",
+        "Treat the six-month validity of 300–499 CZK credit as credit expiry, not as the SIM/number expiry date."
+      ]
+    }
+  },
+  {
     "id": "snap-o2-uk-classic-payg-6mo-2026-current-profile-20260928",
     "routeId": "o2-uk-classic-payg-6mo-2026",
     "kind": "current-profile",
@@ -2707,6 +2879,64 @@
         "Use only if you can complete the current accepted Japan identity-verification path.",
         "Track the official 180-day no-paid-topping window and buy a qualifying paid topping before suspension risk.",
         "For overseas use, complete povo's documented international-roaming setup before relying on SMS."
+      ]
+    }
+  },
+  {
+    "id": "snap-proximus-paygo-be-2026-current-profile-20260929",
+    "routeId": "proximus-paygo-be-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "proximus-paygo-be-2026",
+      "brandId": "proximus-paygo",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "Current Pay&Go+ web promo lists EUR5 purchase for EUR10 credit + 3GB and free SIM delivery, valid through 2026-11-01. Identity verification is mandatory before first use.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 5,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-promo-through-2026-11-01"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 10,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "A top-up above EUR5 extends formal card validity 12 months; EUR5 extends only one month. Separately, Proximus says a Pay&Go card not used for more than 6 months is automatically deactivated, so perform qualifying use inside six months and do not model this as a simple EUR10/year passive-retention route.",
+        "intervalDays": null,
+        "state": "official-12m-topup-rule-plus-6m-inactivity-condition"
+      },
+      "chinaActivation": "International identity documents are accepted, but current online identity verification for international documents requires proof of residence in Belgium; this is not a China-first acquisition route.",
+      "kyc": "Mandatory prepaid identification. International passport/EU ID is accepted; current online flow also requests Belgian proof of residence for international documents.",
+      "payment": "Current web page supports secure online payment; exact foreign-card acceptance is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU-zone roaming is documented; non-EU long-term incoming-SMS reliability is unverified.",
+      "refund": "Unused credit refund can be requested in some operator-switch cases, but automatic deactivation after >6 months no use is stated as non-refundable.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Formal 12-month top-up validity is constrained by a separate 6-month no-use deactivation rule whose qualifying-use semantics are not fully defined; foreign online KYC also requires Belgian residence proof.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+      "tariffSummary": "Pay&Go+: >EUR5 top-up extends 12 months, but >6 months without use can auto-deactivate the card.",
+      "sourceIds": [
+        "official-proximus-paygo-current-2026-09-29",
+        "official-proximus-paygo-faq-2026-09-29",
+        "official-proximus-identification-2026-09-29",
+        "proximus-forum-foreign-id-friction-2026-07-03"
+      ],
+      "guideSteps": [
+        "Acquire and identify the Pay&Go+ SIM under current Belgian rules.",
+        "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
+        "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
       ]
     }
   },
@@ -4875,6 +5105,63 @@
     }
   },
   {
+    "id": "snap-vodafone-tuti-hu-2026-current-profile-20260929",
+    "routeId": "vodafone-tuti-hu-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "vodafone-tuti-hu-2026",
+      "brandId": "vodafone-tuti",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "Current One Hungary Tuti prepaid SIM is listed at 500 HUF online/reseller or 1500 HUF in One stores. The old Vodafone TUTI identity has migrated to One; the legacy route ID is retained only for data continuity.",
+      "landedCost": {
+        "currency": "HUF",
+        "providerOrCommunityPrice": 500,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 500,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-official-online-sim-price"
+      },
+      "keep": {
+        "currency": "HUF",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "The initial service period is 370 days. A successful legally required annual prepaid data validation can create a new 370-day fixed service period even without a top-up. Top-up alternatives also create a new service period according to denomination rules, but this review does not assign a cheapest monetary top-up path.",
+        "intervalDays": 370,
+        "state": "current-provider-official-data-validation-renewal"
+      },
+      "chinaActivation": "Non-Hungarian citizens must visit a One store for prepaid annual data validation, so this is not a fully remote long-term route for foreign users.",
+      "kyc": "Annual prepaid identity/data validation is mandatory. One explicitly requires non-Hungarian citizens to visit a local One store and bring passport/EU identity or EU driving licence plus other requested details.",
+      "payment": "Current online top-up offers 1000/2000/3000/5000/7000 HUF options via SimplePay; foreign-card behavior is not separately verified.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming use is documented; long-term non-EU incoming-SMS reliability is unverified.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "The number can be renewed through annual data validation, but non-Hungarian users are currently required to visit a One store for that validation; remote long-term foreign use is therefore operationally weak.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+      "tariffSummary": "One Tuti: 500 HUF online SIM; 370-day initial service period; successful annual data validation can renew a 370-day period without top-up.",
+      "sourceIds": [
+        "official-one-tuti-current-2026-09-29",
+        "official-one-topup-current-2026-09-29",
+        "official-one-prepaid-data-validation-2026-09-29"
+      ],
+      "guideSteps": [
+        "Acquire the current One Tuti prepaid SIM; do not use the old Vodafone branding as current product identity.",
+        "Complete mandatory annual data validation before the service period ends.",
+        "If you are not a Hungarian citizen, plan for the current One-store visit requirement rather than assuming remote renewal."
+      ]
+    }
+  },
+  {
     "id": "snap-vodafone-uk-zero-esim-2026-current-profile-e3cd66",
     "routeId": "vodafone-uk-zero-esim-2026",
     "kind": "current-profile",
@@ -5044,6 +5331,65 @@
         "Activate the line and test inbound SMS before moving important accounts.",
         "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
         "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+      ]
+    }
+  },
+  {
+    "id": "snap-yettel-rs-2026-current-profile-20260929",
+    "routeId": "yettel-rs-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "yettel-rs-2026",
+      "brandId": "yettel-rs-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Yettel currently sells standard prepaid physical/eSIM packages; the standard prepaid eSIM is listed at 600 RSD and delivered online. Registration is mandatory before normal service use.",
+      "landedCost": {
+        "currency": "RSD",
+        "providerOrCommunityPrice": 600,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 600,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-official-standard-prepaid-esim"
+      },
+      "keep": {
+        "currency": "RSD",
+        "observedActionCost": 300,
+        "yearCostOriginal": 280.77,
+        "yearCostCny": null,
+        "action": "Use a standard prepaid top-up of at least 300 RSD. Yettel states prepaid credit is valid 60 days, followed by an additional 330-day period in which a new top-up can keep/extend the prepaid SIM. Top-up transferred from another Yettel number does not prolong card expiry.",
+        "intervalDays": 390,
+        "state": "current-provider-official-60-plus-330-lifecycle-annualized"
+      },
+      "chinaActivation": "Yettel provides online prepaid registration including foreign-national identity documents, but first network/eSIM activation from China is not explicitly guaranteed.",
+      "kyc": "Registration is mandatory. Foreign nationals without Serbian residence can use a passport, or an eligible national ID where Serbia allows ID-card entry. Online Yettel eID supports foreign identity/travel documents.",
+      "payment": "Current standard top-up channels include retail/ATM and digital channels; international-card acceptance is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Prepaid roaming is documented including China in Zone 3; incoming-SMS/OTP reliability is not converted into a service-success claim.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+      "tariffSummary": "600 RSD standard prepaid eSIM; 300 RSD minimum standard top-up; 60-day credit validity plus 330-day top-up grace for SIM continuity.",
+      "sourceIds": [
+        "official-yettel-rs-topup-validity-2026-09-29",
+        "official-yettel-rs-prepaid-current-2026-09-29",
+        "official-yettel-rs-registration-2026-09-29",
+        "official-yettel-rs-registration-eid-2026-09-29",
+        "official-yettel-rs-roaming-prepaid-2026-09-29"
+      ],
+      "guideSteps": [
+        "Buy/register the prepaid SIM or eSIM; foreign passport registration is supported.",
+        "Use a standard top-up channel of at least 300 RSD before the 60+330-day lifecycle expires.",
+        "Do not rely on balance transferred from another Yettel number to extend card expiry."
       ]
     }
   }

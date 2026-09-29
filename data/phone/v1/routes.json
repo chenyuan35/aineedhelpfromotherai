@@ -40,6 +40,25 @@
     ]
   },
   {
+    "id": "a1-bfree-at-2026",
+    "marketId": "at",
+    "networkId": "a1-at",
+    "brandId": "a1-bfree",
+    "displayName": "A1 B.free",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+    "sourceIds": [
+      "official-a1-bfree-current-2026-09-29",
+      "official-a1-bfree-registration-2026-09-29",
+      "official-a1-bfree-validity-2026-09-29"
+    ]
+  },
+  {
     "id": "a1-croatia-prepaid-esim",
     "marketId": "hr",
     "networkId": null,
@@ -152,6 +171,27 @@
       "official-beeline-kz-registration-2026-09-29",
       "official-beeline-kz-sim-safe-2026-09-29",
       "travelask-beeline-sim-safe-incident-2026-09"
+    ]
+  },
+  {
+    "id": "cellcard-kh-2026",
+    "marketId": "kh",
+    "networkId": "cellcard-kh",
+    "brandId": "cellcard-prepaid",
+    "displayName": "Cellcard Cambodia Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://getsim.cellcard.com.kh/",
+    "sourceIds": [
+      "official-cellcard-esim-earrival-2026-06-10",
+      "official-cellcard-getsim-2026-09-29",
+      "official-cellcard-terms-en-2026-09-29",
+      "official-cellcard-terms-kh-2026-09-29",
+      "official-cellcard-topup-2026-09-29"
     ]
   },
   {
@@ -548,6 +588,24 @@
     ]
   },
   {
+    "id": "o2-cz-prepaid-2026",
+    "marketId": "cz",
+    "networkId": "o2-cz",
+    "brandId": "o2-cz-prepaid",
+    "displayName": "O2 CZ Prepaid GO",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
+    "sourceIds": [
+      "official-o2cz-prepaid-current-2026-09-29",
+      "official-o2cz-prepaid-documents-2026-09-29"
+    ]
+  },
+  {
     "id": "o2-uk-classic-payg-6mo-2026",
     "marketId": "gb",
     "networkId": "o2-uk",
@@ -623,6 +681,26 @@
       "official-povo-faq-904-2026-09-29",
       "official-povo-procedure-other-2026-09-29",
       "official-povo-spec-detail-2026-09-29"
+    ]
+  },
+  {
+    "id": "proximus-paygo-be-2026",
+    "marketId": "be",
+    "networkId": "proximus-be",
+    "brandId": "proximus-paygo",
+    "displayName": "Proximus Pay&Go+",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+    "sourceIds": [
+      "official-proximus-identification-2026-09-29",
+      "official-proximus-paygo-current-2026-09-29",
+      "official-proximus-paygo-faq-2026-09-29",
+      "proximus-forum-foreign-id-friction-2026-07-03"
     ]
   },
   {
@@ -1088,6 +1166,25 @@
     ]
   },
   {
+    "id": "vodafone-tuti-hu-2026",
+    "marketId": "hu",
+    "networkId": "vodafone-hu",
+    "brandId": "vodafone-tuti",
+    "displayName": "One Tuti Prepaid (legacy Vodafone TUTI ID)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+    "sourceIds": [
+      "official-one-prepaid-data-validation-2026-09-29",
+      "official-one-topup-current-2026-09-29",
+      "official-one-tuti-current-2026-09-29"
+    ]
+  },
+  {
     "id": "vodafone-uk-zero-esim-2026",
     "marketId": "gb",
     "networkId": "vodafone-uk",
@@ -1146,6 +1243,27 @@
       "linuxdo-voxi-2737575",
       "nodeloc-voxi-102713",
       "voxi-official-plans-2026-09-23"
+    ]
+  },
+  {
+    "id": "yettel-rs-2026",
+    "marketId": "rs",
+    "networkId": "yettel-rs",
+    "brandId": "yettel-rs-prepaid",
+    "displayName": "Yettel Serbia Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+    "sourceIds": [
+      "official-yettel-rs-prepaid-current-2026-09-29",
+      "official-yettel-rs-registration-2026-09-29",
+      "official-yettel-rs-registration-eid-2026-09-29",
+      "official-yettel-rs-roaming-prepaid-2026-09-29",
+      "official-yettel-rs-topup-validity-2026-09-29"
     ]
   }
 ]

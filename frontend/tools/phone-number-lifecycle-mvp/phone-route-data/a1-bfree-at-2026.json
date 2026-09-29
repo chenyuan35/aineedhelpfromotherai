@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "a1-bfree-at-2026",
+    "marketId": "at",
+    "networkId": "a1-at",
+    "brandId": "a1-bfree",
+    "displayName": "A1 B.free",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+    "sourceIds": [
+      "official-a1-bfree-current-2026-09-29",
+      "official-a1-bfree-registration-2026-09-29",
+      "official-a1-bfree-validity-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "at",
+    "name": "Austria",
+    "countryCode": "AT"
+  },
+  "network": {
+    "id": "a1-at",
+    "name": "A1 Austria",
+    "marketId": "at"
+  },
+  "brand": {
+    "id": "a1-bfree",
+    "networkId": "a1-at",
+    "name": "A1 B.free",
+    "marketId": "at"
+  },
+  "metrics": {
+    "routeId": "a1-bfree-at-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 18.46,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 396
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-a1-bfree-current-2026-09-29",
+      "url": "https://www.a1.net/handys-tarife/wertkartentarife",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-bfree-registration-2026-09-29",
+      "url": "https://www.a1.net/handys-tarife/wertkartentarife/wertkartenregistrierung",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-bfree-validity-2026-09-29",
+      "url": "https://www.a1.net/faq/telefonie/b-free-wertkarte/bfree-guthaben-nicht-aufladen",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-a1-bfree-at-2026-current-profile-20260929",
+      "routeId": "a1-bfree-at-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "a1-bfree-at-2026",
+        "brandId": "a1-bfree",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "A1 currently sells B.free as physical SIM or eSIM with online/shop acquisition. Current B.free S service is listed at EUR 9.90 per 28 days, but this review does not treat the tariff fee as a separately verified bare starter-SIM landed cost.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-confirmed-bare-starter-price-unresolved"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 20,
+          "yearCostOriginal": 18.46,
+          "yearCostCny": null,
+          "action": "A single top-up of at least EUR 20 extends B.free SIM validity by another 13 months. Two separate EUR 10 top-ups do not qualify for that extension.",
+          "intervalDays": 396,
+          "state": "current-provider-official-13-month-extension-annualized"
+        },
+        "chinaActivation": "A new B.free prepaid SIM must be identity-registered before activation. A1 supports online FotoIdent, but foreign-country purchase/first activation is not established here.",
+        "kyc": "Prepaid identity registration is mandatory. A1 supports photo ID through FotoIdent and other Austrian identification methods.",
+        "payment": "A1 documents online top-up by card/online payment plus vouchers and ATMs.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified for long-term non-EU use",
+        "refund": "Remaining prepaid credit may be claimed after contract end under A1 conditions; a EUR20 processing fee is documented.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Retention rule is current and clear, but foreign acquisition/first activation and long-term non-EU continuity are not verified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.a1.net/handys-tarife/wertkartentarife",
+        "tariffSummary": "Top up EUR20 in one transaction to extend SIM validity by 13 months; identity registration required.",
+        "sourceIds": [
+          "official-a1-bfree-current-2026-09-29",
+          "official-a1-bfree-validity-2026-09-29",
+          "official-a1-bfree-registration-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire a current B.free physical SIM or eSIM and complete required identity registration.",
+          "Before the 13-month validity ends, top up at least EUR20 in one transaction.",
+          "Do not assume two EUR10 top-ups or unverified overseas-first activation provide the same lifecycle result."
+        ]
+      }
+    }
+  ]
+}

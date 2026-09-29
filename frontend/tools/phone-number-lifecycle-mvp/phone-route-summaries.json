@@ -66,6 +66,38 @@
       }
     },
     {
+      "id": "a1-bfree-at-2026",
+      "displayName": "A1 B.free",
+      "marketId": "at",
+      "marketName": "Austria",
+      "countryCode": "AT",
+      "networkName": "A1 Austria",
+      "brandName": "A1 B.free",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 0,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "a1-bfree-at-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 18.46,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 396
+      }
+    },
+    {
       "id": "a1-croatia-prepaid-esim",
       "displayName": "A1 Croatia prepaid eSIM",
       "marketId": "hr",
@@ -255,6 +287,38 @@
         "keepYearCostOriginal": 12,
         "keepYearCostCny": null,
         "keepIntervalDays": 30
+      }
+    },
+    {
+      "id": "cellcard-kh-2026",
+      "displayName": "Cellcard Cambodia Prepaid",
+      "marketId": "kh",
+      "marketName": "Cambodia",
+      "countryCode": "KH",
+      "networkName": "Cellcard Cambodia",
+      "brandName": "Cellcard Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "cellcard-kh-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "USD",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "USD",
+        "keepYearCostOriginal": 101.39,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 180
       }
     },
     {
@@ -957,6 +1021,38 @@
       }
     },
     {
+      "id": "o2-cz-prepaid-2026",
+      "displayName": "O2 CZ Prepaid GO",
+      "marketId": "cz",
+      "marketName": "Czech Republic",
+      "countryCode": "CZ",
+      "networkName": "O2 Czech Republic",
+      "brandName": "O2 CZ Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "o2-cz-prepaid-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "CZK",
+        "acquisitionCostOriginal": 99,
+        "acquisitionCostCny": null,
+        "keepCurrency": "CZK",
+        "keepYearCostOriginal": 300,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
+      }
+    },
+    {
       "id": "o2-uk-classic-payg-6mo-2026",
       "displayName": "O2 Classic PAYG",
       "marketId": "gb",
@@ -1082,6 +1178,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "proximus-paygo-be-2026",
+      "displayName": "Proximus Pay&Go+",
+      "marketId": "be",
+      "marketName": "Belgium",
+      "countryCode": "BE",
+      "networkName": "Proximus Belgium",
+      "brandName": "Proximus Pay&Go+",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "proximus-paygo-be-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": 5,
+        "acquisitionCostCny": null,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": null
       }
     },
     {
@@ -1853,6 +1981,38 @@
       }
     },
     {
+      "id": "vodafone-tuti-hu-2026",
+      "displayName": "One Tuti Prepaid (legacy Vodafone TUTI ID)",
+      "marketId": "hu",
+      "marketName": "Hungary",
+      "countryCode": "HU",
+      "networkName": "One Hungary (legacy Vodafone HU id)",
+      "brandName": "One Tuti Prepaid (legacy Vodafone TUTI id)",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "vodafone-tuti-hu-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "HUF",
+        "acquisitionCostOriginal": 500,
+        "acquisitionCostCny": null,
+        "keepCurrency": "HUF",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 370
+      }
+    },
+    {
       "id": "vodafone-uk-zero-esim-2026",
       "displayName": "Vodafone UK",
       "marketId": "gb",
@@ -1946,6 +2106,38 @@
         "keepYearCostOriginal": 0.16,
         "keepYearCostCny": 1.43,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "yettel-rs-2026",
+      "displayName": "Yettel Serbia Prepaid",
+      "marketId": "rs",
+      "marketName": "Serbia",
+      "countryCode": "RS",
+      "networkName": "Yettel Serbia",
+      "brandName": "Yettel Serbia Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "yettel-rs-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "RSD",
+        "acquisitionCostOriginal": 600,
+        "acquisitionCostCny": null,
+        "keepCurrency": "RSD",
+        "keepYearCostOriginal": 280.77,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 390
       }
     }
   ]

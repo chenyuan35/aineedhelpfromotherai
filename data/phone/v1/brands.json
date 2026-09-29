@@ -12,6 +12,12 @@
     "name": "5SIM"
   },
   {
+    "id": "a1-bfree",
+    "networkId": "a1-at",
+    "name": "A1 B.free",
+    "marketId": "at"
+  },
+  {
     "id": "a1-croatia-hr",
     "marketId": "hr",
     "networkId": null,
@@ -46,6 +52,12 @@
     "networkId": "beeline-kz",
     "name": "Beeline KZ Prepaid",
     "marketId": "kz"
+  },
+  {
+    "id": "cellcard-prepaid",
+    "networkId": "cellcard-kh",
+    "name": "Cellcard Prepaid",
+    "marketId": "kh"
   },
   {
     "id": "clubsim-hk",
@@ -156,6 +168,12 @@
     "marketId": "es"
   },
   {
+    "id": "o2-cz-prepaid",
+    "networkId": "o2-cz",
+    "name": "O2 CZ Prepaid",
+    "marketId": "cz"
+  },
+  {
     "id": "o2-uk-classic",
     "networkId": "o2-uk",
     "name": "O2 Classic PAYG",
@@ -178,6 +196,12 @@
     "networkId": "au-jp",
     "name": "povo 2.0",
     "marketId": "jp"
+  },
+  {
+    "id": "proximus-paygo",
+    "networkId": "proximus-be",
+    "name": "Proximus Pay&Go+",
+    "marketId": "be"
   },
   {
     "id": "sakura-mobile-jp",
@@ -318,6 +342,12 @@
     "marketId": "de"
   },
   {
+    "id": "vodafone-tuti",
+    "networkId": "vodafone-hu",
+    "name": "One Tuti Prepaid (legacy Vodafone TUTI id)",
+    "marketId": "hu"
+  },
+  {
     "id": "vodafone-uk-direct",
     "networkId": "vodafone-uk",
     "name": "Vodafone UK",
@@ -334,5 +364,11 @@
     "networkId": "vodafone-uk",
     "name": "VOXI",
     "marketId": "gb"
+  },
+  {
+    "id": "yettel-rs-prepaid",
+    "networkId": "yettel-rs",
+    "name": "Yettel Serbia Prepaid",
+    "marketId": "rs"
   }
 ]

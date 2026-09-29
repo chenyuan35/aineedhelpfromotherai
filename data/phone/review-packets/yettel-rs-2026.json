@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "ADMIT-BACKSTAGE. Current Yettel pages provide a complete retention path: 60-day prepaid credit validity plus 330 days to make a new standard top-up, with 300 RSD minimum standard top-up. Current online registration supports foreign passports and eSIM purchase is available.",
+  "market": {
+    "id": "rs",
+    "name": "Serbia",
+    "countryCode": "RS"
+  },
+  "network": {
+    "id": "yettel-rs",
+    "name": "Yettel Serbia",
+    "marketId": "rs"
+  },
+  "brand": {
+    "id": "yettel-rs-prepaid",
+    "networkId": "yettel-rs",
+    "name": "Yettel Serbia Prepaid",
+    "marketId": "rs"
+  },
+  "route": {
+    "id": "yettel-rs-2026",
+    "marketId": "rs",
+    "networkId": "yettel-rs",
+    "brandId": "yettel-rs-prepaid",
+    "displayName": "Yettel Serbia Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+    "sourceIds": [
+      "official-yettel-rs-topup-validity-2026-09-29",
+      "official-yettel-rs-prepaid-current-2026-09-29",
+      "official-yettel-rs-registration-2026-09-29",
+      "official-yettel-rs-registration-eid-2026-09-29",
+      "official-yettel-rs-roaming-prepaid-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-yettel-rs-topup-validity-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/support/prepaid-top-ups/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-prepaid-current-2026-09-29",
+      "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-registration-2026-09-29",
+      "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/registracija",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-registration-eid-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/offer/tariff-packages/prepaid-tariff-package/registration/identification/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yettel-rs-roaming-prepaid-2026-09-29",
+      "url": "https://www.yettel.rs/en/consumer/services/roaming/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-yettel-rs-topup-validity-2026-09-29",
+    "official-yettel-rs-prepaid-current-2026-09-29",
+    "official-yettel-rs-registration-2026-09-29",
+    "official-yettel-rs-registration-eid-2026-09-29",
+    "official-yettel-rs-roaming-prepaid-2026-09-29"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-yettel-rs-transfer-topup-does-not-extend-20260929",
+      "routeId": "yettel-rs-2026",
+      "type": "retention-action-constraint",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Yettel explicitly says top-up sent from another Yettel prepaid/postpaid number does not prolong card expiry. Use a standard top-up channel for lifecycle renewal.",
+      "sourceId": "official-yettel-rs-topup-validity-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-yettel-rs-2026-current-profile-20260929",
+      "routeId": "yettel-rs-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "yettel-rs-2026",
+        "brandId": "yettel-rs-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Yettel currently sells standard prepaid physical/eSIM packages; the standard prepaid eSIM is listed at 600 RSD and delivered online. Registration is mandatory before normal service use.",
+        "landedCost": {
+          "currency": "RSD",
+          "providerOrCommunityPrice": 600,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 600,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-standard-prepaid-esim"
+        },
+        "keep": {
+          "currency": "RSD",
+          "observedActionCost": 300,
+          "yearCostOriginal": 280.77,
+          "yearCostCny": null,
+          "action": "Use a standard prepaid top-up of at least 300 RSD. Yettel states prepaid credit is valid 60 days, followed by an additional 330-day period in which a new top-up can keep/extend the prepaid SIM. Top-up transferred from another Yettel number does not prolong card expiry.",
+          "intervalDays": 390,
+          "state": "current-provider-official-60-plus-330-lifecycle-annualized"
+        },
+        "chinaActivation": "Yettel provides online prepaid registration including foreign-national identity documents, but first network/eSIM activation from China is not explicitly guaranteed.",
+        "kyc": "Registration is mandatory. Foreign nationals without Serbian residence can use a passport, or an eligible national ID where Serbia allows ID-card entry. Online Yettel eID supports foreign identity/travel documents.",
+        "payment": "Current standard top-up channels include retail/ATM and digital channels; international-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Prepaid roaming is documented including China in Zone 3; incoming-SMS/OTP reliability is not converted into a service-success claim.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+        "tariffSummary": "600 RSD standard prepaid eSIM; 300 RSD minimum standard top-up; 60-day credit validity plus 330-day top-up grace for SIM continuity.",
+        "sourceIds": [
+          "official-yettel-rs-topup-validity-2026-09-29",
+          "official-yettel-rs-prepaid-current-2026-09-29",
+          "official-yettel-rs-registration-2026-09-29",
+          "official-yettel-rs-registration-eid-2026-09-29",
+          "official-yettel-rs-roaming-prepaid-2026-09-29"
+        ],
+        "guideSteps": [
+          "Buy/register the prepaid SIM or eSIM; foreign passport registration is supported.",
+          "Use a standard top-up channel of at least 300 RSD before the 60+330-day lifecycle expires.",
+          "Do not rely on balance transferred from another Yettel number to extend card expiry."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

@@ -2,82 +2,88 @@
 
 Status: **ACTIVE BACKEND COVERAGE TRACK / NO PUBLICATION CHANGE**
 
-## Correction
-
-Phone Radar's database and its frontend/SEO publication layer are separate systems. The normalized database is an internal product knowledge base; it is expected to become much larger than the set of public/indexable URLs.
-
-Verified at GitHub main `d65ef00850d841c0ef46b17d7e5c347eb91eb64b`:
-
-- comparison artifact: **135 routes**;
-- canonical normalized `data/phone/v1`: **53 routes / 30 markets / 50 brands / 36 networks / 182 sources**;
-- route-ID overlap between comparison and canonical: **42**;
-- comparison routes still legacy-only: **93**;
-- explicit route indexability: **3**.
-
-Conclusion: the backend normalized database is **not complete**. The post-A–K SEO/value checkpoint correctly limited public publication, but that public constraint must not be interpreted as a reason to stop backend database coverage work.
+Phone Radar's normalized database is an internal product knowledge base. It is intentionally broader than the public/indexable URL set. Canonical admission and SEO publication are separate gates.
 
 ## Coverage objective
 
-Use the active architecture target: approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided provenance and maintenance remain tractable.
+Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-This is a data objective, not a page-count objective.
+## Current verified state after DB-C1
+
+- comparison artifact: **135 routes**;
+- canonical normalized database: **65 routes / 42 markets / 230 sources**;
+- comparison↔canonical route-ID overlap: **54**;
+- comparison routes still legacy-only: **81**;
+- explicit route indexability: **3**.
 
 ## Processing model
 
-Work in repeatable reviewed database batches (`DB-C1`, `DB-C2`, ...), not public migration batches.
+Work in reviewed database batches (`DB-C1`, `DB-C2`, ...). For every route preserve current product identity, acquisition, retention lifecycle, KYC/location/payment constraints, SIM form, sourced roaming/SMS facts, incident/recovery/recycling evidence, source URL/date/type, explicit conflicts/unknowns, and duplicate checks. Missing stays missing; isolated incidents never become product-wide rates.
 
-For every candidate route:
+## DB-C1 — COMPLETE
 
-- preserve concrete route/product identity;
-- acquisition path/current landed cost when evidenced;
-- keep-alive action/cost/interval;
-- KYC/location/payment/device constraints;
-- eSIM/physical/number class;
-- roaming, SMS and Wi-Fi Calling only when evidenced;
-- service-specific OTP observations only at the exact observed service/operation scope;
-- suspension/recycling/recovery/refund incidents;
-- source URL, date, type and provenance;
-- explicit conflicts and unresolved values;
-- duplicate/same-product check.
+Research task: `task-1e549d80fe6d`; independent review overrode delegated output where fresher first-party evidence conflicted.
 
-Missing stays missing. Community incidents do not become product-wide rates. Official provider pages verify provider-controlled facts; they do not erase current independent conflict evidence.
+Final dispositions:
 
-## DB-C1 — dispatched 2026-09-29
+- HOLD: `a1-bfree-at-2026`
+- HOLD: `proximus-paygo-be-2026`
+- ADMIT-BACKSTAGE: `o2-cz-prepaid-2026`
+- HOLD: `vodafone-tuti-hu-2026`
+- HOLD: `telkomsel-simpati-365d-2026`
+- HOLD: `vodacom-prepaid-83d-2026`
+- HOLD: `beeline-kz-simka-v-seyfe-2026`
+- ADMIT-BACKSTAGE: `magticom-number-maintenance-2026`
+- HOLD: `mobitel-lk-retention-2026`
+- ADMIT-BACKSTAGE: `yettel-rs-2026`
+- HOLD: `cellcard-kh-2026`
+- HOLD: `grameenphone-validity-pack-2026`
 
-QwenPaw/Kimi K3 background task: `task-1e549d80fe6d`.
+All 12 are normalized in the backend with provenance/conflicts; HOLD means not ready for recommendation/public treatment, not exclusion from the internal evidence database.
 
-Candidates:
+Important corrections made during DB-C1:
 
-1. `a1-bfree-at-2026`
-2. `proximus-paygo-be-2026`
-3. `o2-cz-prepaid-2026`
-4. `vodafone-tuti-hu-2026`
-5. `telkomsel-simpati-365d-2026`
-6. `vodacom-prepaid-83d-2026`
-7. `beeline-kz-simka-v-seyfe-2026`
-8. `magticom-number-maintenance-2026`
-9. `mobitel-lk-retention-2026`
-10. `yettel-rs-2026`
-11. `cellcard-kh-2026`
-12. `grameenphone-validity-pack-2026`
+- Telkomsel legacy Rp5,000/year minimum withdrawn;
+- Vodacom legacy 83-day rule replaced by current official >110-day no-use threshold, with recycle timing unresolved;
+- Grameenphone stale five-year price withdrawn in favor of clean BDT300/365-day current rule plus conflict preservation;
+- A1 13-month/EUR20 extension resolved from current official FAQ;
+- Proximus separate 6-month no-use deactivation preserved alongside 12-month top-up validity;
+- Vodafone Hungary legacy identity mapped to current One Tuti without changing the stable route ID;
+- Cellcard 30-vs-180-day official expired-balance recovery conflict preserved rather than guessed away.
 
-Delegated output is research-only. No repository writes were delegated.
+## DB-C2 — ACTIVE
+
+Next 12 legacy-only candidates, chosen from current low-cost legacy signals and distinct-product value:
+
+1. `tesco-mobile-payg-uk-2026`
+2. `vinaphone-giu-so-vn-2026`
+3. `cellfie-ge-90-45d-2026`
+4. `kyivstar-prepaid-274-91-2026`
+5. `dialog-lk-365d-2026`
+6. `safaricom-daima-2026`
+7. `truemove-validity-pack-th-2026`
+8. `cht-ruyi-180d-2026`
+9. `telia-ee-180d-2026`
+10. `mts-sokhranyayu-nomer-2026`
+11. `etisalat-wasel-ae-2026`
+12. `claro-pre-br-90d-2026`
+
+Legacy costs are discovery hints only. Reverify product existence, current price, lifecycle and constraints before admission. Dedicated retention products (for example Safaricom Daima or MTS number preservation) should be modeled as services attached to the underlying prepaid line, not invented as separate products if the canonical schema can represent that relation without duplication.
 
 ## Quality gate
 
-Before canonical admission:
-
-1. independently sample-audit at least three DB-C1 routes;
-2. reject stale, duplicate, circular or unsupported claims;
-3. disposition all candidates as `REJECT`, `HOLD` or `ADMIT-BACKSTAGE`;
-4. generate/import reviewed packets only for accepted routes;
-5. rebuild/validate canonical artifacts and publication-boundary tests;
-6. keep frontend/indexability/sitemap unchanged.
+- first-party current provider facts for provider-controlled claims;
+- independent evidence where useful for operational conflicts;
+- sample audit ≥3 candidates per batch;
+- `REJECT` / `HOLD` / `ADMIT-BACKSTAGE` disposition;
+- importer-based canonical write only after review;
+- full Phone data/integrity/publication-boundary tests;
+- public/indexability/sitemap unchanged unless a separate publication trigger opens.
 
 ## What this track does not do
 
 - no new SEO URL because a database row exists;
 - no automatic public ranking/recommendation;
 - no forced completion of unknown fields;
-- no SQL/API migration merely to call the data layer a backend;
-- no mass raw import of the 93 legacy-only rows without evidence review.
+- no SQL/API redesign merely to call the data layer a backend;
+- no mass raw import of legacy rows without evidence review.

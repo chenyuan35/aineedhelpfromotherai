@@ -7,65 +7,62 @@ Last updated: 2026-09-29
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **Backend database coverage and public/SEO publication are separate tracks.** A large normalized backend database is expected; database admission does not authorize an indexable URL.
-3. Current inventory: **135 comparison routes / 53 canonical normalized routes / 3 indexable routes**. Of the comparison set, 42 route IDs overlap canonical and **93 remain legacy-only**.
-4. The backend database is therefore **not complete**. Continue reviewed canonical coverage expansion toward roughly **90%+ of the relevant low-cost route universe**, per the active architecture contract.
-5. **Public surface stays stable.** Do not turn backend coverage work into route-page, sitemap or indexability expansion without a separate publication decision.
+2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
+3. After DB-C1: **135 comparison routes / 65 canonical normalized routes / 54 comparison↔canonical route-ID overlaps / 81 comparison routes still legacy-only / 3 indexable routes**.
+4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
+5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 
-## ACTIVE — Backend Phone database coverage DB-C1
+## JUST COMPLETED — Backend database coverage DB-C1
 
-**Session task:** expand the normalized backend database without changing frontend publication.
+12/12 legacy-only candidates were independently dispositioned and normalized through reviewed packets.
 
-QwenPaw/Kimi K3 task `task-1e549d80fe6d` is researching these 12 existing legacy comparison routes as `RESEARCH CANDIDATE` material:
+Result: **3 ADMIT-BACKSTAGE / 9 HOLD / 0 REJECT**, all retained as provenance-bearing canonical rows with uncertainty preserved.
 
-- `a1-bfree-at-2026`
-- `proximus-paygo-be-2026`
-- `o2-cz-prepaid-2026`
-- `vodafone-tuti-hu-2026`
-- `telkomsel-simpati-365d-2026`
-- `vodacom-prepaid-83d-2026`
-- `beeline-kz-simka-v-seyfe-2026`
-- `magticom-number-maintenance-2026`
-- `mobitel-lk-retention-2026`
-- `yettel-rs-2026`
-- `cellcard-kh-2026`
-- `grameenphone-validity-pack-2026`
+Material stale/conflicting legacy claims corrected in DB-C1 include Telkomsel Rp5,000/year, Vodacom 83-day inactivity, Grameenphone BDT995/5-year pricing, A1 12-vs-13-month validity, Vodafone→One Hungary product identity, Proximus 12-month validity vs 6-month no-use deactivation, and Cellcard's conflicting 30-vs-180-day expired-balance recovery wording.
 
-### Acceptance flow
+Canonical result after DB-C1: **65 routes / 42 markets / 230 sources**. Comparison remains 135 and indexability remains 3.
 
-1. require source URL/date/type, current acquisition + retention facts, constraints, conflicts and unknowns;
-2. sample-audit at least 3 routes independently for stale claims, unsupported inference, duplicates and circular evidence;
-3. classify every route `REJECT`, `HOLD` or `ADMIT-BACKSTAGE`;
-4. create reviewed packets only for accepted routes and apply through the canonical importer;
-5. run canonical DB/integrity/publication-boundary tests;
-6. merge only after Eval Gate + Preview pass;
-7. repeat with the next backend coverage batch until the coverage target or a real maintenance/evidence stop condition is reached.
+## ACTIVE — Backend database coverage DB-C2
 
-### Definition of done for DB-C1
+Process the next low-cost legacy-only evidence batch, selected from the current comparison set by legacy keep-cost signal and product distinctness. Legacy prices are only prioritization hints; every figure must be reverified before canonical admission.
 
-- all 12 candidates dispositioned;
-- accepted routes are normalized in `data/phone/v1` with provenance and unresolved conflicts preserved;
-- canonical/comparison overlap counts are updated;
-- no indexable URL, sitemap, public ranking or publication state is added by this batch.
+Candidates:
 
-### Stop conditions
+1. `tesco-mobile-payg-uk-2026`
+2. `vinaphone-giu-so-vn-2026`
+3. `cellfie-ge-90-45d-2026`
+4. `kyivstar-prepaid-274-91-2026`
+5. `dialog-lk-365d-2026`
+6. `safaricom-daima-2026`
+7. `truemove-validity-pack-th-2026`
+8. `cht-ruyi-180d-2026`
+9. `telia-ee-180d-2026`
+10. `mts-sokhranyayu-nomer-2026`
+11. `etisalat-wasel-ae-2026`
+12. `claro-pre-br-90d-2026`
 
-- evidence is too weak to identify the current product/retention rule;
-- candidate is a duplicate/same underlying product (use alias/REJECT rather than duplicate row);
-- delegated batch shows systematic stale/unsupported data beyond the sample tolerance;
-- work would require frontend publication, schema redesign or infrastructure change.
+### DB-C2 acceptance flow
+
+1. fetch current first-party acquisition, lifecycle/retention, KYC, payment and SIM/eSIM facts;
+2. collect current independent evidence where it materially tests real use or conflicts;
+3. independently sample-audit at least 3 routes;
+4. classify every candidate `REJECT`, `HOLD` or `ADMIT-BACKSTAGE`;
+5. create reviewed packets only after evidence review and apply through the canonical importer;
+6. run canonical/integrity/publication-boundary tests;
+7. merge only after Eval Gate + Preview pass;
+8. continue to DB-C3 rather than waiting on public SEO measurement, unless a real evidence/maintenance stop condition is reached.
 
 ## Measurement wait
 
-Search Console remains too small for publication expansion. Do not block backend database coverage on this wait, and do not use backend coverage as a reason to publish more URLs.
+Search Console remains too small for publication expansion. This does **not** block backend database coverage.
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi are high-throughput backstage research/data workers. They may aggressively expand evidence/database coverage, but all raw output remains `RESEARCH CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment.
+QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment.
 
 ## External waits
 
@@ -74,11 +71,11 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. They may aggre
 
 ## Do not do next
 
-- do not stop backend database expansion merely because public SEO measurement is waiting;
-- do not bulk-admit the 93 legacy-only routes without provenance + sample QC;
-- do not duplicate Sakura or any same-product alias;
-- do not equate canonical/database admission with SEO/indexability;
-- do not redesign backend/schema just for neatness;
+- do not stop backend coverage because public SEO measurement is waiting;
+- do not bulk-admit the remaining 81 legacy-only routes without provenance + QC;
+- do not equate canonical admission with SEO/indexability;
+- do not duplicate same-product aliases;
+- do not redesign backend/schema merely for neatness;
 - do not let delegated output bypass review/admission gates;
 - do not change DNS, AdSense, billing, paid services or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.

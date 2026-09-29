@@ -276,6 +276,24 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-a1-bfree-current-2026-09-29",
+    "url": "https://www.a1.net/handys-tarife/wertkartentarife",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-a1-bfree-registration-2026-09-29",
+    "url": "https://www.a1.net/handys-tarife/wertkartentarife/wertkartenregistrierung",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-a1-bfree-validity-2026-09-29",
+    "url": "https://www.a1.net/faq/telefonie/b-free-wertkarte/bfree-guthaben-nicht-aufladen",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-a1-hr-prepaid-registration-2026-09-29",
     "url": "https://www.a1.hr/privatni/mobiteli/a1-na-bonove/pristupnica",
     "type": "provider-official",
@@ -352,6 +370,36 @@
     "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
     "type": "specialist-media",
     "reportedAt": "2025-08-20"
+  },
+  {
+    "id": "official-cellcard-esim-earrival-2026-06-10",
+    "url": "https://www.cellcard.com.kh/en/news/cellcard-launches-on-cambodia-e-arrival-app",
+    "type": "provider-official",
+    "reportedAt": "2026-06-10"
+  },
+  {
+    "id": "official-cellcard-getsim-2026-09-29",
+    "url": "https://getsim.cellcard.com.kh/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-cellcard-terms-en-2026-09-29",
+    "url": "https://bizccself.cellcard.com.kh/en/terms-conditions/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-cellcard-terms-kh-2026-09-29",
+    "url": "https://www.cellcard.com.kh/terms-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-cellcard-topup-2026-09-29",
+    "url": "https://www.cellcard.com.kh/en/online-top-up",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-clubsim-faq-365-window-2026-09-26",
@@ -594,6 +642,36 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-o2cz-prepaid-current-2026-09-29",
+    "url": "https://www.o2.cz/osobni/volani/predplacena-karta",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-o2cz-prepaid-documents-2026-09-29",
+    "url": "https://www.o2.cz/osobni/ceniky-a-dokumenty",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-one-prepaid-data-validation-2026-09-29",
+    "url": "https://www.one.hu/shop/feltoltokartyas-adategyeztetes",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-one-topup-current-2026-09-29",
+    "url": "https://www.one.hu/shop/egyenlegfeltoltes",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-one-tuti-current-2026-09-29",
+    "url": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-orange-mobicarte-offers-2026-09-29",
     "url": "https://boutique.orange.fr/vitrine/offres-prepayees/",
     "type": "provider-official",
@@ -656,6 +734,24 @@
   {
     "id": "official-povo-spec-detail-2026-09-29",
     "url": "https://povo.jp/spec/detail/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-proximus-identification-2026-09-29",
+    "url": "https://www.proximus.be/en/id_cr_dkyc_faqs/personal/mobile/mobile-subscriptions/identification-order-faq.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-proximus-paygo-current-2026-09-29",
+    "url": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-proximus-paygo-faq-2026-09-29",
+    "url": "https://www.proximus.be/en/id_cr_paygo_faq/personal/mobile/prepaid-cards/pay-and-go-plus-frequently-asked-questions.html",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
@@ -960,6 +1056,36 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-yettel-rs-prepaid-current-2026-09-29",
+    "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yettel-rs-registration-2026-09-29",
+    "url": "https://www.yettel.rs/sr/privatni/ponuda/tarifni-paketi/pripejd/registracija",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yettel-rs-registration-eid-2026-09-29",
+    "url": "https://www.yettel.rs/en/consumer/offer/tariff-packages/prepaid-tariff-package/registration/identification/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yettel-rs-roaming-prepaid-2026-09-29",
+    "url": "https://www.yettel.rs/en/consumer/services/roaming/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yettel-rs-topup-validity-2026-09-29",
+    "url": "https://www.yettel.rs/en/consumer/support/prepaid-top-ups/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-yorn-eligibility-2026-09-29",
     "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
     "type": "provider-official",
@@ -982,6 +1108,12 @@
     "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/os-meus-minutos-e-mensagens-renovam-a-semana-ou-ao-mes.html?PageSpeed=noscript",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "proximus-forum-foreign-id-friction-2026-07-03",
+    "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
+    "type": "provider-community-support-thread",
+    "reportedAt": "2026-07-03"
   },
   {
     "id": "reddit-gp-visitor-biometric-2026-03-21",

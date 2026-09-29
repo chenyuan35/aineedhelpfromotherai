@@ -26,6 +26,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "a1-bfree-at-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 18.46,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 396
+    },
+    {
       "routeId": "a1-croatia-prepaid-esim",
       "checkedAt": "Apr 2026",
       "metricState": "not-normalized",
@@ -96,6 +108,18 @@
       "keepYearCostOriginal": 12,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "cellcard-kh-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 101.39,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "clubsim-sms-pack-6hkd-2026",
@@ -338,6 +362,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "o2-cz-prepaid-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CZK",
+      "acquisitionCostOriginal": 99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CZK",
+      "keepYearCostOriginal": 300,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "o2-uk-classic-payg-6mo-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -384,6 +420,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "proximus-paygo-be-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "sakura-japan-voice-data",
@@ -674,6 +722,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "vodafone-tuti-hu-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HUF",
+      "acquisitionCostOriginal": 500,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HUF",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 370
+    },
+    {
       "routeId": "vodafone-uk-zero-esim-2026",
       "checkedAt": "2026-06-16",
       "metricState": "current-profile",
@@ -708,6 +768,18 @@
       "keepYearCostOriginal": 0.16,
       "keepYearCostCny": 1.43,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "yettel-rs-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "RSD",
+      "acquisitionCostOriginal": 600,
+      "acquisitionCostCny": null,
+      "keepCurrency": "RSD",
+      "keepYearCostOriginal": 280.77,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 390
     }
   ]
 }

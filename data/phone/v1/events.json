@@ -9,6 +9,15 @@
     "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
   },
   {
+    "id": "evt-cellcard-expired-balance-recovery-conflict-20260929",
+    "routeId": "cellcard-kh-2026",
+    "type": "lifecycle-source-conflict",
+    "reportedAt": "2026-09-29",
+    "scope": "provider-surfaces",
+    "outcome": "Current Cellcard official surfaces conflict on the post-expiry top-up recovery window: the English business/self-service terms say expired balance can be restored by top-up within 30 calendar days, while the current Khmer main-site terms state 180 days. Do not infer number-retention/recycling timing from either balance-recovery window until reconciled.",
+    "sourceId": "official-cellcard-terms-en-2026-09-29"
+  },
+  {
     "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
     "routeId": "giffgaff-uk-direct-esim-payg",
     "type": "recycled-number-observation",
@@ -81,6 +90,24 @@
     "sourceId": "official-mobitel-number-retention-2026-09-29"
   },
   {
+    "id": "evt-o2cz-credit-vs-sim-validity-distinction-20260929",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "lifecycle-clarification",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
+    "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+  },
+  {
+    "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
+    "routeId": "proximus-paygo-be-2026",
+    "type": "lifecycle-condition-conflict",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Proximus pages say Pay&Go is valid 12 months after first call and >EUR5 top-up extends 12 months, but the current FAQ separately says a card not used for more than 6 months is automatically deactivated. The reviewed page does not define exactly which activity satisfies “used”; annual top-up alone must not be treated as sufficient.",
+    "sourceId": "official-proximus-paygo-faq-2026-09-29"
+  },
+  {
     "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
     "routeId": "telkomsel-simpati-365d-2026",
     "type": "retention-cost-correction",
@@ -97,5 +124,23 @@
     "scope": "route",
     "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
     "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
+  },
+  {
+    "id": "evt-vodafone-tuti-brand-migration-one-20260929",
+    "routeId": "vodafone-tuti-hu-2026",
+    "type": "brand-rename",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The legacy route ID/brand refers to Vodafone TUTI. The current provider surface is One Hungary and the active product is Tuti Feltöltőkártya. Preserve the legacy ID for comparison continuity but use the current One/Tuti product identity.",
+    "sourceId": "official-one-tuti-current-2026-09-29"
+  },
+  {
+    "id": "evt-yettel-rs-transfer-topup-does-not-extend-20260929",
+    "routeId": "yettel-rs-2026",
+    "type": "retention-action-constraint",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Yettel explicitly says top-up sent from another Yettel prepaid/postpaid number does not prolong card expiry. Use a standard top-up channel for lifecycle renewal.",
+    "sourceId": "official-yettel-rs-topup-validity-2026-09-29"
   }
 ]
