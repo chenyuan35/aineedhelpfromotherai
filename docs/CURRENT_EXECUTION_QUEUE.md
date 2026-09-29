@@ -24,6 +24,8 @@ Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. US Mobile Light is HOLD: USD 
 
 Canonical result after DB-C4C: **98 routes / 54 markets / 95 brands / 74 networks / 323 sources**. Comparison remains **135**, comparison↔canonical overlap is **87**, **48 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve the 135-route comparison surface and 3-route publication boundary.
 
+Release: PR #311 (`a9bcc8a4628ab77a69f956cddbebc33800bcd84c`) merged after Eval Gate #961, CI #185 and Vercel Preview passed; production succeeded. Live checks confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Orange Senegal route at HTTP 404.
+
 ## ACTIVE — Backend database coverage DB-C4
 
 Continue with the next distinct low-cost / decision-useful legacy-only routes. Legacy prices and labels are prioritization hints, not admission facts.
