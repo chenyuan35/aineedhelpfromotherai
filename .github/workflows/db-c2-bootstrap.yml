@@ -5,7 +5,6 @@ on:
     branches:
       - data/phone-db-c2-20260929
     paths:
-      - .github/db-c2.patch.gz.b64
       - .github/workflows/db-c2-bootstrap.yml
 
 permissions:
@@ -21,31 +20,51 @@ jobs:
           ref: data/phone-db-c2-20260929
           fetch-depth: 0
 
-      - name: Decode and verify patch
+      - name: Restore and verify reviewed inputs
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d .github/db-c2.patch.gz.b64 | gzip -d > /tmp/db-c2.patch
-          echo "efcd2447131ad3cb24fa4a3f5f93b24f7a665403c4172692b981a12bd70e9b55  /tmp/db-c2.patch" | sha256sum -c -
+          cat .github/db-c2.in.00 .github/db-c2.in.01 .github/db-c2.in.02 > /tmp/db-c2-inputs.b64
+          echo "5f49942a67b198c6d90d0e47400da80c427c42dfbbf831e2978c83df8fe0b28e  /tmp/db-c2-inputs.b64" | sha256sum -c -
+          base64 -d /tmp/db-c2-inputs.b64 > /tmp/db-c2-inputs.tar.gz
+          echo "39576ca15c933dc259c6bde44377398a13a16f356840d5a9b1026b2c4365e150  /tmp/db-c2-inputs.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/db-c2-inputs.tar.gz
 
-      - name: Apply DB-C2 patch
+      - name: Apply reviewed DB-C2 packets
         shell: bash
         run: |
           set -euo pipefail
-          git apply --index --binary /tmp/db-c2.patch
-          git diff --cached --check
+          for id in \
+            tesco-mobile-payg-uk-2026 \
+            vinaphone-giu-so-vn-2026 \
+            cellfie-ge-90-45d-2026 \
+            kyivstar-prepaid-274-91-2026 \
+            dialog-lk-365d-2026 \
+            safaricom-daima-2026 \
+            truemove-validity-pack-th-2026 \
+            cht-ruyi-180d-2026 \
+            telia-ee-180d-2026 \
+            mts-sokhranyayu-nomer-2026 \
+            etisalat-wasel-ae-2026 \
+            claro-pre-br-90d-2026
+          do
+            node scripts/apply-phone-review-packet.mjs "data/phone/review-packets/${id}.json" --check
+            node scripts/apply-phone-review-packet.mjs "data/phone/review-packets/${id}.json" --apply
+          done
+          node scripts/build-phone-database.mjs
 
       - name: Verify Phone database
         shell: bash
         run: |
           set -euo pipefail
           npm run phone:data:check
+          git diff --check
 
       - name: Commit DB-C2 and remove bootstrap files
         shell: bash
         run: |
           set -euo pipefail
-          rm .github/db-c2.patch.gz.b64 .github/workflows/db-c2-bootstrap.yml
+          rm -f .github/db-c2.patch.gz.b64 .github/db-c2.part.00 .github/db-c2.in.00 .github/db-c2.in.01 .github/db-c2.in.02 .github/workflows/db-c2-bootstrap.yml
           git add -A
           git diff --cached --check
           git config user.name "github-actions[bot]"
