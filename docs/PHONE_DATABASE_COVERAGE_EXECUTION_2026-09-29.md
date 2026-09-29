@@ -158,4 +158,6 @@ The final three DB-C4 legacy-only candidates were independently reviewed and nor
 
 Post-DB-C4D state: **101 canonical routes / 57 markets / 98 brands / 77 networks / 334 sources / 90 comparison-overlap route IDs / 45 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone data checks and the frontend build preserve **135 comparison routes / 3 explicit indexable routes**.
 
+Release: PR #313 (`7c435d1ef0c897dbaf249f8caa2e098cbeb920ff`) merged after Eval Gate #965, CI #187 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Elisa route at HTTP 404.
+
 DB-C4 is complete. Continue DB-C5 through the bounded candidates in `docs/CURRENT_EXECUTION_QUEUE.md`.
