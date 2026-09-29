@@ -66,3 +66,5 @@ jobs:
           git add -A
           git commit -m 'Docs: close DB-C4C release facts'
           git push origin "HEAD:${GITHUB_REF_NAME}"
+
+# second push activates branch-local workflow
