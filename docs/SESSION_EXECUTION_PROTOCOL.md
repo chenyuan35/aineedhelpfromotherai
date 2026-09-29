@@ -36,6 +36,7 @@ Before substantial tool calls, state a compact Session Card:
 - **Deliverable** — concrete artifact, code change, audit result, decision, or verification expected by the end of this session;
 - **Steps** — normally 3–5 bounded actions;
 - **Parallel lane** — if the current queue explicitly defines an already-authorized delegated/background lane, name the worker and bounded backstage job; otherwise state none;
+- **Write target** — for any GitHub mutation, name the non-`main` branch/worktree before the first write;
 - **Definition of done** — observable completion condition;
 - **Stop conditions** — blocker, authorization need, provider quota, missing evidence, or task proving too large for the remaining window.
 
@@ -54,6 +55,17 @@ At session start, after reading the queue, perform one explicit parallel-lane ch
 5. background delegation does not authorize a second coordinator roadmap task. The coordinating session still owns exactly one bounded decision/release task.
 
 A session that ignores an explicitly active parallel lane without recording a blocker is incomplete even if the coordinator's narrow measurement or review step succeeded.
+
+## GitHub write-target guardrail
+
+Before the first repository mutation in a session, verify the target branch/worktree explicitly. Normal project changes must never use `main` as the write target.
+
+- Create or select the dedicated branch before any `create_file`, `update_file`, `delete_file`, commit, push, or equivalent mutation.
+- Treat an omitted branch/ref on a write-capable GitHub action as unsafe unless the action is provably non-mutating.
+- If an accidental direct-`main` write occurs, stop normal work, revert only that accidental mutation immediately, record the incident, then resume through a fresh branch/PR.
+- Emergency cleanup of the coordinator's own accidental direct-`main` mutation is the only exception; it must restore prior content and must not bundle unrelated changes.
+
+A session cannot be marked complete if it knowingly leaves an accidental direct-`main` mutation unreconciled.
 
 ## 25-minute planning budget
 
