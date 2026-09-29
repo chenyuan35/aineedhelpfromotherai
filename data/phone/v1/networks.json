@@ -5,6 +5,11 @@
     "marketId": "nz"
   },
   {
+    "id": "a1-at",
+    "name": "A1 Austria",
+    "marketId": "at"
+  },
+  {
     "id": "a1-hr",
     "name": "A1 Croatia",
     "marketId": "hr"
@@ -28,6 +33,11 @@
     "id": "beeline-kz",
     "name": "Beeline Kazakhstan",
     "marketId": "kz"
+  },
+  {
+    "id": "cellcard-kh",
+    "name": "Cellcard Cambodia",
+    "marketId": "kh"
   },
   {
     "id": "cmhk-hk",
@@ -90,6 +100,11 @@
     "marketId": "es"
   },
   {
+    "id": "o2-cz",
+    "name": "O2 Czech Republic",
+    "marketId": "cz"
+  },
+  {
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
@@ -103,6 +118,11 @@
     "id": "orange-pl",
     "name": "Orange Polska",
     "marketId": "pl"
+  },
+  {
+    "id": "proximus-be",
+    "name": "Proximus Belgium",
+    "marketId": "be"
   },
   {
     "id": "rogers-ca",
@@ -200,6 +220,11 @@
     "marketId": "de"
   },
   {
+    "id": "vodafone-hu",
+    "name": "One Hungary (legacy Vodafone HU id)",
+    "marketId": "hu"
+  },
+  {
     "id": "vodafone-pt",
     "name": "Vodafone Portugal",
     "marketId": "pt"
@@ -208,5 +233,10 @@
     "id": "vodafone-uk",
     "name": "Vodafone UK",
     "marketId": "gb"
+  },
+  {
+    "id": "yettel-rs",
+    "name": "Yettel Serbia",
+    "marketId": "rs"
   }
 ]

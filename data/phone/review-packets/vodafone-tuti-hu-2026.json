@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "HOLD / canonical-backstage. Current One Hungary pages resolve the legacy Vodafone TUTI product identity and show a 370-day service period renewable via successful annual data validation. Non-Hungarian citizens currently must visit a One store for that validation, so the route is not treated as remote-retention friendly.",
+  "market": {
+    "id": "hu",
+    "name": "Hungary",
+    "countryCode": "HU"
+  },
+  "network": {
+    "id": "vodafone-hu",
+    "name": "One Hungary (legacy Vodafone HU id)",
+    "marketId": "hu"
+  },
+  "brand": {
+    "id": "vodafone-tuti",
+    "networkId": "vodafone-hu",
+    "name": "One Tuti Prepaid (legacy Vodafone TUTI id)",
+    "marketId": "hu"
+  },
+  "route": {
+    "id": "vodafone-tuti-hu-2026",
+    "marketId": "hu",
+    "networkId": "vodafone-hu",
+    "brandId": "vodafone-tuti",
+    "displayName": "One Tuti Prepaid (legacy Vodafone TUTI ID)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+    "sourceIds": [
+      "official-one-tuti-current-2026-09-29",
+      "official-one-topup-current-2026-09-29",
+      "official-one-prepaid-data-validation-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-one-tuti-current-2026-09-29",
+      "url": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-one-topup-current-2026-09-29",
+      "url": "https://www.one.hu/shop/egyenlegfeltoltes",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-one-prepaid-data-validation-2026-09-29",
+      "url": "https://www.one.hu/shop/feltoltokartyas-adategyeztetes",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-one-tuti-current-2026-09-29",
+    "official-one-topup-current-2026-09-29",
+    "official-one-prepaid-data-validation-2026-09-29"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-vodafone-tuti-brand-migration-one-20260929",
+      "routeId": "vodafone-tuti-hu-2026",
+      "type": "brand-rename",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The legacy route ID/brand refers to Vodafone TUTI. The current provider surface is One Hungary and the active product is Tuti Feltöltőkártya. Preserve the legacy ID for comparison continuity but use the current One/Tuti product identity.",
+      "sourceId": "official-one-tuti-current-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-tuti-hu-2026-current-profile-20260929",
+      "routeId": "vodafone-tuti-hu-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "vodafone-tuti-hu-2026",
+        "brandId": "vodafone-tuti",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current One Hungary Tuti prepaid SIM is listed at 500 HUF online/reseller or 1500 HUF in One stores. The old Vodafone TUTI identity has migrated to One; the legacy route ID is retained only for data continuity.",
+        "landedCost": {
+          "currency": "HUF",
+          "providerOrCommunityPrice": 500,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 500,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-online-sim-price"
+        },
+        "keep": {
+          "currency": "HUF",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "The initial service period is 370 days. A successful legally required annual prepaid data validation can create a new 370-day fixed service period even without a top-up. Top-up alternatives also create a new service period according to denomination rules, but this review does not assign a cheapest monetary top-up path.",
+          "intervalDays": 370,
+          "state": "current-provider-official-data-validation-renewal"
+        },
+        "chinaActivation": "Non-Hungarian citizens must visit a One store for prepaid annual data validation, so this is not a fully remote long-term route for foreign users.",
+        "kyc": "Annual prepaid identity/data validation is mandatory. One explicitly requires non-Hungarian citizens to visit a local One store and bring passport/EU identity or EU driving licence plus other requested details.",
+        "payment": "Current online top-up offers 1000/2000/3000/5000/7000 HUF options via SimplePay; foreign-card behavior is not separately verified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming use is documented; long-term non-EU incoming-SMS reliability is unverified.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "The number can be renewed through annual data validation, but non-Hungarian users are currently required to visit a One store for that validation; remote long-term foreign use is therefore operationally weak.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.one.hu/mobilszolgaltatasok/feltoltokartyas-tarifacsomag",
+        "tariffSummary": "One Tuti: 500 HUF online SIM; 370-day initial service period; successful annual data validation can renew a 370-day period without top-up.",
+        "sourceIds": [
+          "official-one-tuti-current-2026-09-29",
+          "official-one-topup-current-2026-09-29",
+          "official-one-prepaid-data-validation-2026-09-29"
+        ],
+        "guideSteps": [
+          "Acquire the current One Tuti prepaid SIM; do not use the old Vodafone branding as current product identity.",
+          "Complete mandatory annual data validation before the service period ends.",
+          "If you are not a Hungarian citizen, plan for the current One-store visit requirement rather than assuming remote renewal."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "HOLD / canonical-backstage. Current first-party evidence establishes the Pay&Go+ starter promo and top-up validity, but also a separate automatic-deactivation rule after more than six months without use. Preserve that condition instead of flattening the route to EUR10/year.",
+  "market": {
+    "id": "be",
+    "name": "Belgium",
+    "countryCode": "BE"
+  },
+  "network": {
+    "id": "proximus-be",
+    "name": "Proximus Belgium",
+    "marketId": "be"
+  },
+  "brand": {
+    "id": "proximus-paygo",
+    "networkId": "proximus-be",
+    "name": "Proximus Pay&Go+",
+    "marketId": "be"
+  },
+  "route": {
+    "id": "proximus-paygo-be-2026",
+    "marketId": "be",
+    "networkId": "proximus-be",
+    "brandId": "proximus-paygo",
+    "displayName": "Proximus Pay&Go+",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+    "sourceIds": [
+      "official-proximus-paygo-current-2026-09-29",
+      "official-proximus-paygo-faq-2026-09-29",
+      "official-proximus-identification-2026-09-29",
+      "proximus-forum-foreign-id-friction-2026-07-03"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-proximus-paygo-current-2026-09-29",
+      "url": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-proximus-paygo-faq-2026-09-29",
+      "url": "https://www.proximus.be/en/id_cr_paygo_faq/personal/mobile/prepaid-cards/pay-and-go-plus-frequently-asked-questions.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-proximus-identification-2026-09-29",
+      "url": "https://www.proximus.be/en/id_cr_dkyc_faqs/personal/mobile/mobile-subscriptions/identification-order-faq.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "proximus-forum-foreign-id-friction-2026-07-03",
+      "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
+      "type": "provider-community-support-thread",
+      "reportedAt": "2026-07-03"
+    }
+  ],
+  "sourceIds": [
+    "official-proximus-paygo-current-2026-09-29",
+    "official-proximus-paygo-faq-2026-09-29",
+    "official-proximus-identification-2026-09-29",
+    "proximus-forum-foreign-id-friction-2026-07-03"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
+      "routeId": "proximus-paygo-be-2026",
+      "type": "lifecycle-condition-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Proximus pages say Pay&Go is valid 12 months after first call and >EUR5 top-up extends 12 months, but the current FAQ separately says a card not used for more than 6 months is automatically deactivated. The reviewed page does not define exactly which activity satisfies “used”; annual top-up alone must not be treated as sufficient.",
+      "sourceId": "official-proximus-paygo-faq-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-proximus-paygo-be-2026-current-profile-20260929",
+      "routeId": "proximus-paygo-be-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "proximus-paygo-be-2026",
+        "brandId": "proximus-paygo",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "Current Pay&Go+ web promo lists EUR5 purchase for EUR10 credit + 3GB and free SIM delivery, valid through 2026-11-01. Identity verification is mandatory before first use.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-promo-through-2026-11-01"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 10,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "A top-up above EUR5 extends formal card validity 12 months; EUR5 extends only one month. Separately, Proximus says a Pay&Go card not used for more than 6 months is automatically deactivated, so perform qualifying use inside six months and do not model this as a simple EUR10/year passive-retention route.",
+          "intervalDays": null,
+          "state": "official-12m-topup-rule-plus-6m-inactivity-condition"
+        },
+        "chinaActivation": "International identity documents are accepted, but current online identity verification for international documents requires proof of residence in Belgium; this is not a China-first acquisition route.",
+        "kyc": "Mandatory prepaid identification. International passport/EU ID is accepted; current online flow also requests Belgian proof of residence for international documents.",
+        "payment": "Current web page supports secure online payment; exact foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU-zone roaming is documented; non-EU long-term incoming-SMS reliability is unverified.",
+        "refund": "Unused credit refund can be requested in some operator-switch cases, but automatic deactivation after >6 months no use is stated as non-refundable.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Formal 12-month top-up validity is constrained by a separate 6-month no-use deactivation rule whose qualifying-use semantics are not fully defined; foreign online KYC also requires Belgian residence proof.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.proximus.be/en/personal/catr_m/cr_prepaid_cards.html",
+        "tariffSummary": "Pay&Go+: >EUR5 top-up extends 12 months, but >6 months without use can auto-deactivate the card.",
+        "sourceIds": [
+          "official-proximus-paygo-current-2026-09-29",
+          "official-proximus-paygo-faq-2026-09-29",
+          "official-proximus-identification-2026-09-29",
+          "proximus-forum-foreign-id-friction-2026-07-03"
+        ],
+        "guideSteps": [
+          "Acquire and identify the Pay&Go+ SIM under current Belgian rules.",
+          "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
+          "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

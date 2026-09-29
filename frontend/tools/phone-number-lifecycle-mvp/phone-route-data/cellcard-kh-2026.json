@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "cellcard-kh-2026",
+    "marketId": "kh",
+    "networkId": "cellcard-kh",
+    "brandId": "cellcard-prepaid",
+    "displayName": "Cellcard Cambodia Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://getsim.cellcard.com.kh/",
+    "sourceIds": [
+      "official-cellcard-esim-earrival-2026-06-10",
+      "official-cellcard-getsim-2026-09-29",
+      "official-cellcard-terms-en-2026-09-29",
+      "official-cellcard-terms-kh-2026-09-29",
+      "official-cellcard-topup-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "kh",
+    "name": "Cambodia",
+    "countryCode": "KH"
+  },
+  "network": {
+    "id": "cellcard-kh",
+    "name": "Cellcard Cambodia",
+    "marketId": "kh"
+  },
+  "brand": {
+    "id": "cellcard-prepaid",
+    "networkId": "cellcard-kh",
+    "name": "Cellcard Prepaid",
+    "marketId": "kh"
+  },
+  "metrics": {
+    "routeId": "cellcard-kh-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": 101.39,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-cellcard-esim-earrival-2026-06-10",
+      "url": "https://www.cellcard.com.kh/en/news/cellcard-launches-on-cambodia-e-arrival-app",
+      "type": "provider-official",
+      "reportedAt": "2026-06-10"
+    },
+    {
+      "id": "official-cellcard-getsim-2026-09-29",
+      "url": "https://getsim.cellcard.com.kh/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-terms-en-2026-09-29",
+      "url": "https://bizccself.cellcard.com.kh/en/terms-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-terms-kh-2026-09-29",
+      "url": "https://www.cellcard.com.kh/terms-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-cellcard-topup-2026-09-29",
+      "url": "https://www.cellcard.com.kh/en/online-top-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-cellcard-expired-balance-recovery-conflict-20260929",
+      "routeId": "cellcard-kh-2026",
+      "type": "lifecycle-source-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "provider-surfaces",
+      "outcome": "Current Cellcard official surfaces conflict on the post-expiry top-up recovery window: the English business/self-service terms say expired balance can be restored by top-up within 30 calendar days, while the current Khmer main-site terms state 180 days. Do not infer number-retention/recycling timing from either balance-recovery window until reconciled.",
+      "sourceId": "official-cellcard-terms-en-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-cellcard-kh-2026-current-profile-20260929",
+      "routeId": "cellcard-kh-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "cellcard-kh-2026",
+        "brandId": "cellcard-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Cellcard currently sells physical SIM and eSIM. Current get-SIM surface lists a free eSIM with AO MOBILE 5G plans starting at USD2/7 days; international travelers can also buy/activate a 5G eSIM through Cambodia eArrival. Exact generic bare-number fee is not assigned here.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-esim-acquisition-confirmed-bare-number-fee-unresolved"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 50,
+          "yearCostOriginal": 101.39,
+          "yearCostCny": null,
+          "action": "Current Cellcard top-up table gives USD50 a 180-day main-balance Active Period; smaller denominations give shorter periods. This supports a conservative roughly two-top-up-per-year balance-validity path, but the exact phone-number suspension/recycling lifecycle after Active Period expiry is not established and must not be equated with balance expiry.",
+          "intervalDays": 180,
+          "state": "current-provider-main-balance-validity-number-lifecycle-unresolved"
+        },
+        "chinaActivation": "International-traveler eSIM acquisition is documented through Cambodia eArrival, but this review does not establish China-first activation or durable use from China.",
+        "kyc": "Cellcard requires accurate subscriber profile/ID information; exact foreign-passport registration workflow for this generic route is not fully reconciled.",
+        "payment": "Online top-up currently supports credit/debit card, Alipay, WeChat Pay and local bank methods.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified for long-term foreign OTP use",
+        "refund": "Prepaid main balance is stated non-refundable.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current top-up Active Periods are clear, but provider surfaces conflict on expired-balance recovery (30 vs 180 days) and do not establish the exact number suspension/recycling lifecycle.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://getsim.cellcard.com.kh/",
+        "tariffSummary": "Top-up validity currently ranges from 7 days at USD1 to 180 days at USD50; exact number lifecycle after balance expiry remains unresolved.",
+        "sourceIds": [
+          "official-cellcard-terms-en-2026-09-29",
+          "official-cellcard-terms-kh-2026-09-29",
+          "official-cellcard-topup-2026-09-29",
+          "official-cellcard-getsim-2026-09-29",
+          "official-cellcard-esim-earrival-2026-06-10"
+        ],
+        "guideSteps": [
+          "Acquire/register a current Cellcard SIM/eSIM using an official channel.",
+          "If preserving balance validity, use the current top-up validity table and renew before the Active Period ends.",
+          "Do not treat the 30-day or 180-day expired-balance recovery text as a confirmed phone-number recycling deadline until Cellcard reconciles the official-source conflict."
+        ]
+      }
+    }
+  ]
+}
