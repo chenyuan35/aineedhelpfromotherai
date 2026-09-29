@@ -8,40 +8,43 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
-3. **Named batch A–K migration is complete.** Batch-K migrated four HOLD routes with exact parity; canonical v1 is now 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
+3. **Named batch A–K migration is complete.** Canonical v1 remains 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
 4. **The only named-batch legacy ID not represented by the same canonical ID is the known Sakura same-product alias blocker.** Do not duplicate that product.
 5. **Post-A–K value checkpoint selected existing-URL deepening, not batch-L.** Fresh first-party Phone data is only 4 hub impressions / 0 clicks through 2026-09-25, and the three currently indexable route URLs have no Search Console rows in the checked window.
-6. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
-7. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
+6. **Global Phone finder is now RELEASED.** PR #291 squash-merged as `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree is `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`. Production Vercel deployment succeeded. Live verification: Phone hub HTTP 200, `comparison-route-index.json` HTTP 200, admitted VOXI route HTTP 200, representative non-indexable Three IE route HTTP 404.
+7. **Publication remains separate.** Comparison stays 135 and explicit route indexability stays 3; the global finder does not create new route/market SEO URLs or sitemap entries.
+8. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
-Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
+Post-A–K checkpoint: `docs/PHONE_POST_AK_VALUE_CHECKPOINT_2026-09-29.md`.
 
-## CURRENT TASK — Global Phone finder progressive UI on the existing canonical hub
+## JUST COMPLETED — Global Phone finder progressive UI on the existing canonical hub
 
-Result so far: **IMPLEMENTED LOCALLY / RELEASE GATE PENDING.**
+Result: **PASS / MERGED / PRODUCTION-VERIFIED.**
 
-- post-A–K checkpoint is documented in `docs/PHONE_POST_AK_VALUE_CHECKPOINT_2026-09-29.md`;
-- the 93 legacy-only routes were triaged as migration debt versus user-facing value; no batch-L was authorized;
-- Windsor.ai fresh Search Console data shows the Phone hub at 4 impressions / 0 clicks through 2026-09-25, while the three current indexable route URLs return no rows for the checked September window;
-- the existing Phone hub still presented a UK-pilot-only long-term comparison despite the already-admitted 135-route global comparison layer;
-- the bounded fix adds a compact 135-route comparison index, global market overview and country/carrier/route search;
-- full `global-directory.json` is loaded only after a user selects a market or opens route evidence;
-- no backend/API, new SEO URL, sitemap expansion or publication-policy relaxation is included;
-- local Phone data checks, static build, public-release audit, standard verify and diff check pass; generated output remains 3 route detail pages / 0 market detail pages.
+- PR #291 replaced the UK-pilot-only long-term landing experience with a global market overview plus country/carrier/route search over the admitted 135-route comparison layer;
+- initial loading uses the generated compact comparison index; full `global-directory.json` loads only after a user selects a market or opens route evidence;
+- existing comparison / inspect / guide behavior is reused across markets and currencies;
+- no backend/API, new SEO URL, sitemap expansion or publication-policy relaxation was introduced;
+- local `npm run phone:data:check`, static frontend build, public-release audit, `npm run verify`, inline-JS syntax check and `git diff --check` passed before release;
+- PR Eval Gate #917 passed and Vercel Preview succeeded;
+- squash merge SHA is `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree matches the locally verified tree `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`;
+- production deployment completed successfully;
+- live boundary check: hub 200, compact index 200, VOXI admitted route 200, Three IE non-indexable route 404.
 
 ## NEXT SESSION — Measure the global finder before another migration/publication move
 
-**Session task:** after the global finder release is production-verified, keep the Phone surface stable long enough to collect real search and product-interaction evidence before selecting another migration cohort or indexable route.
+**Session task:** keep the released Phone surface stable and collect real search + product-interaction evidence before selecting another migration cohort or indexable route.
 
 ### Scope
 
-1. verify the production Phone hub, compact comparison index and lazy global-directory path remain healthy;
+1. confirm production health only if a regression signal appears; do not re-audit the release from scratch;
 2. preserve comparison at 135, canonical at 53 unless a separately justified data correction lands, and explicit indexability at 3;
-3. re-read first-party Search Console after at least 7 additional finalized days or 20 cumulative settled Phone impressions, unless a regression appears sooner;
-4. inspect product events for search/filter, market-open, guide-open, compare and outbound behavior when sufficient data exists;
+3. re-read first-party Search Console after at least 7 additional finalized days or 20 cumulative settled Phone impressions, unless a clear regression appears sooner;
+4. inspect product events for search/filter, market-open, guide-open, compare and outbound behavior once sufficient data exists;
 5. only then choose either one small evidence-backed migration cohort or one existing route/market experience to deepen;
-6. require the full publication gate before any new standalone indexable URL.
+6. require the full publication gate before any new standalone indexable URL;
+7. while waiting for enough data, continue only non-destructive backstage evidence acquisition/reconciliation with Qwen/Kimi.
 
 ### Stop conditions
 
