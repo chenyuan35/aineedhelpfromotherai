@@ -53,7 +53,7 @@ jobs:
               flags=re.M,
           )
           if (n1, n2, n3) != (1, 1, 1):
-              raise SystemExit(f'PROJECT_CONTEXT replacement counts: {(n1,n2,n3)}')
+              raise SystemExit(f'PROJECT_CONTEXT replacement counts: {(n1, n2, n3)}')
           p.write_text(s)
 
           p = Path('docs/MASTER_PLAN.md')
@@ -62,16 +62,18 @@ jobs:
           new_para = 'The UK matrix was the first public baseline, and backstage evidence acquisition continues independently of Search Console. After the global data expansion, PR #261 separates broad database coverage from public/indexable page coverage so the database can grow without recreating programmatic SEO families. PR #263 separately makes legacy comparison-database admission explicit: wildcard batch discovery is gone, existing admitted legacy batches are named in a reviewed manifest, and unlisted delegated research stays outside comparison inputs. The Sep 28 compatibility audit found canonical v1 at 15 routes with only four route-ID overlaps; staged reviewed migrations plus backend coverage batches DB-C1 and DB-C2 have since raised canonical v1 to 77 routes / 47 markets / 74 brands / 59 networks / 264 sources with 66 route-ID overlaps. Sixty-nine comparison routes remain legacy-only; the 135-route comparison surface and 3-route explicit publication boundary remain unchanged.'
           s, n4 = old_para_re.subn(new_para, s, count=1)
           block_re = re.compile(r'^38\. \*\*NEXT SESSION — post-A–K Phone checkpoint / bounded next-value selection\.\*\*.*\n39\. \*\*BACKLOG / separate review — second observer/source-change role\.\*\*.*\n40\. \*\*ONGOING — Relay data accrual\.\*\*.*\n41\. \*\*WAIT — TikTok review and authority batch 2\.\*\*.*$', re.M)
-          new_block = '''38. **DONE — post-A–K Phone checkpoint + bounded public move.** PR #291 shipped the existing Phone hub as a progressive global finder over the admitted 135-route comparison layer while preserving only 3 explicit indexable routes. Search Console remained too small to justify route-page expansion, so backend coverage and public publication were explicitly separated.
-39. **DONE — backend database coverage DB-C1.** Twelve legacy-only candidates were independently dispositioned and normalized through reviewed packets, raising canonical coverage to 65 routes / 42 markets / 230 sources while keeping the 135-route comparison surface and 3-route publication boundary unchanged.
-40. **DONE — backend database coverage DB-C2 / PR #303.** Twelve more legacy-only routes were researched, sample-audited and normalized; canonical coverage is now 77 routes / 47 markets / 74 brands / 59 networks / 264 sources, with 66 comparison↔canonical route-ID overlaps and 69 comparison routes still legacy-only. PR #303 squash-merged as `11177dd8d1e316e0069dcc5f78203d4af7da60dd`; Eval Gate #945 and Vercel Preview/production passed, and publication remains 135 comparison routes / 3 explicit indexable routes.
-41. **ACTIVE — backend database coverage DB-C3.** Continue the next reviewed low-cost/mechanically distinct legacy-only batch from `docs/CURRENT_EXECUTION_QUEUE.md`; preserve provenance, uncertainty and the independent publication gate.
-42. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
-43. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-44. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.'''
+          new_block = '\n'.join([
+              '38. **DONE — post-A–K Phone checkpoint + bounded public move.** PR #291 shipped the existing Phone hub as a progressive global finder over the admitted 135-route comparison layer while preserving only 3 explicit indexable routes. Search Console remained too small to justify route-page expansion, so backend coverage and public publication were explicitly separated.',
+              '39. **DONE — backend database coverage DB-C1.** Twelve legacy-only candidates were independently dispositioned and normalized through reviewed packets, raising canonical coverage to 65 routes / 42 markets / 230 sources while keeping the 135-route comparison surface and 3-route publication boundary unchanged.',
+              '40. **DONE — backend database coverage DB-C2 / PR #303.** Twelve more legacy-only routes were researched, sample-audited and normalized; canonical coverage is now 77 routes / 47 markets / 74 brands / 59 networks / 264 sources, with 66 comparison↔canonical route-ID overlaps and 69 comparison routes still legacy-only. PR #303 squash-merged as `11177dd8d1e316e0069dcc5f78203d4af7da60dd`; Eval Gate #945 and Vercel Preview/production passed, and publication remains 135 comparison routes / 3 explicit indexable routes.',
+              '41. **ACTIVE — backend database coverage DB-C3.** Continue the next reviewed low-cost/mechanically distinct legacy-only batch from `docs/CURRENT_EXECUTION_QUEUE.md`; preserve provenance, uncertainty and the independent publication gate.',
+              '42. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.',
+              '43. **ONGOING — Relay data accrual.** No search-led expansion without evidence.',
+              '44. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.',
+          ])
           s, n5 = block_re.subn(new_block, s, count=1)
           if (n4, n5) != (1, 1):
-              raise SystemExit(f'MASTER_PLAN replacement counts: {(n4,n5)}')
+              raise SystemExit(f'MASTER_PLAN replacement counts: {(n4, n5)}')
           p.write_text(s)
           PY
           git diff --check
