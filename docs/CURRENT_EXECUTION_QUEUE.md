@@ -62,7 +62,29 @@ A fresh NodeSeek community post (`https://www.nodeseek.com/post-954805-1`) was c
 
 It contains **8 providers / 9 offer mechanisms**: Airvoy, eSIM.io (free trial + wallet/PAYG), Nomad, Roamless, Firsty, USIMS, Eskimo and Jetpac. This lane intentionally preserves community-discovered/hidden mechanics even when provider public pages do not document them. Claims retain their provenance strength and uncertainty; lack of an official page is not by itself a rejection criterion.
 
-QwenPaw/Kimi task `task-f93841364ef7` is collecting independent community corroboration/contradiction for these mechanisms. No frontend publication or public recommendation is authorized by raw intake.
+QwenPaw/Kimi task `task-f93841364ef7` was started to collect independent community corroboration/contradiction but hit model quota before completing. The raw NodeSeek signal itself is already merged on main via PR #301; do not discard it because corroboration is incomplete.
+
+No frontend publication or public recommendation is authorized by raw intake.
+
+## SESSION HANDOFF — 2026-09-29 17:31 +08
+
+**GitHub main truth at handoff:** PR #301 is merged at `d41a3f88f672bd7cde1b5cf9b76fcc9b8d374516`. Therefore main still has the post-DB-C1 canonical state: **65 routes / 42 markets / 230 sources** until DB-C2 is actually merged.
+
+**DB-C2 work is complete locally but NOT on GitHub yet.** On the Qwen VPS, fresh worktree `/tmp/aineedhelp-phone-db-c2-20260929` contains local branch `data/phone-db-c2-20260929` with local commit `e986e8e` (`data(phone): complete DB-C2 coverage batch`). The GitHub branch with the same name was created from main but currently does **not** contain that local commit because the Qwen VPS has no GitHub push credential.
+
+The local DB-C2 result is **77 canonical routes / 47 markets / 264 sources**, with **66 comparison↔canonical route-ID overlaps / 69 comparison routes still legacy-only**. All 12 DB-C2 candidates have reviewed packets and were applied to canonical. `TrueMove` and `Claro` remain uncertainty-preserving HOLD rows rather than being dropped.
+
+Local validation already passed:
+
+- `npm run phone:data:check` — PASS after replacing the stale hard-coded UK route count assertion with an inclusion-based assertion;
+- Phone canonical migration tests — PASS;
+- frontend production build — PASS;
+- Phone public-release audit — PASS;
+- public boundary remains **135 comparison routes / 3 explicit indexable routes**; DB-C2 did not authorize new frontend/index/sitemap pages.
+
+**NEXT SESSION FIRST ACTION — do not start DB-C3 before this:** safely transfer the local DB-C2 commit/changes into the GitHub branch `data/phone-db-c2-20260929`, open a PR, run Eval Gate + Vercel Preview, merge only if green, then verify main is 77 / 47 / 264 and publication remains 135 / 3. Do not touch the dirty production worktree. If direct Git push is still unavailable, use the GitHub connector/API path rather than adding credentials to the VPS.
+
+After DB-C2 is merged and main verified, immediately select DB-C3 from the remaining **69 legacy-only** comparison routes, prioritizing low-cost or mechanically distinct routes. Do not pause backend expansion merely because SEO measurement is still waiting.
 
 ## Measurement wait
 
@@ -80,7 +102,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 81 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
