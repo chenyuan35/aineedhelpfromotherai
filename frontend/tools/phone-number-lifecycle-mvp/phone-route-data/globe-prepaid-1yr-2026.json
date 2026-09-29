@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "globe-prepaid-1yr-2026",
+    "marketId": "ph",
+    "networkId": "globe-ph",
+    "brandId": "globe-prepaid",
+    "displayName": "Globe Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+    "sourceIds": [
+      "official-globe-esim-terms-2026-09-29",
+      "official-globe-prepaid-roaming-2026-09-29",
+      "official-globe-sim-registration-2026-09-29",
+      "official-globe-sim-terms-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "ph",
+    "name": "Philippines",
+    "countryCode": "PH"
+  },
+  "network": {
+    "id": "globe-ph",
+    "name": "Globe Philippines",
+    "marketId": "ph"
+  },
+  "brand": {
+    "id": "globe-prepaid",
+    "networkId": "globe-ph",
+    "name": "Globe Prepaid",
+    "marketId": "ph"
+  },
+  "metrics": {
+    "routeId": "globe-prepaid-1yr-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "PHP",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "PHP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-globe-esim-terms-2026-09-29",
+      "url": "https://www.globe.com.ph/prepaid/local-esim-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-prepaid-roaming-2026-09-29",
+      "url": "https://www.globe.com.ph/help/international/prepaid-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-sim-registration-2026-09-29",
+      "url": "https://www.globe.com.ph/help/sim-registration-act",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-sim-terms-2026-09-29",
+      "url": "https://www.globe.com.ph/prepaid/sim-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-globe-prepaid-1yr-2026-current-profile-20260929",
+      "routeId": "globe-prepaid-1yr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "globe-prepaid-1yr-2026",
+        "brandId": "globe-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Globe prepaid terms still contain a one-year regular-load rule for ordinary registered prepaid lines, but foreign nationals registered as tourists are a separate case: their SIM/eSIM automatically expires 30 days after registration. The old cheap yearly-keep framing therefore does not apply to the target foreign-tourist route.",
+        "landedCost": {
+          "currency": "PHP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "not-relied-on-for-tourist-hold"
+        },
+        "keep": {
+          "currency": "PHP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Foreign-tourist registration is the binding rule for this use case: Globe states the tourist SIM/eSIM automatically expires 30 days after registration. The ordinary one-year regular-load rule is not an annual keep path for a tourist-registered line.",
+          "intervalDays": 30,
+          "state": "official-tourist-hard-cap"
+        },
+        "chinaActivation": "Foreign tourists must register the SIM with passport bio page, current visa stamp, proof of Philippine address and a return/onward ticket. Tourist registration is short-lived rather than a China-first long-term retention route.",
+        "kyc": "SIM registration is mandatory. Globe states foreign tourists need passport, current visa stamp, Philippine address proof and return/onward ticket; tourist SIM registration expires after 30 days.",
+        "payment": "GlobeOne and GCash support reloads while abroad, but payment convenience does not override the 30-day tourist-registration lifetime.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Official Globe prepaid roaming support says a prepaid line can keep roaming signal with zero load and can receive incoming texts for free while abroad.",
+        "refund": "Globe terms state load on a permanently disconnected SIM is not refundable for cash.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "Foreign-tourist SIM/eSIM registration automatically expires after 30 days, so the legacy one-top-up-per-year framing is not valid for the target overseas foreign-user retention job.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+        "tariffSummary": "Tourist registration: 30-day automatic expiry. Ordinary prepaid one-year load rule exists but is not a tourist keep-number path.",
+        "sourceIds": [
+          "official-globe-sim-terms-2026-09-29",
+          "official-globe-esim-terms-2026-09-29",
+          "official-globe-sim-registration-2026-09-29",
+          "official-globe-prepaid-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
+          "Do not model the ordinary one-year load rule as a tourist annual keep cost."
+        ]
+      }
+    }
+  ]
+}

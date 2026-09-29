@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "turkcell-tourist-90d-blocker-2026",
+    "marketId": "tr",
+    "networkId": "turkcell-tr",
+    "brandId": "turkcell-tourist",
+    "displayName": "Turkcell Tourist SIM",
+    "family": "temporary",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+    "sourceIds": [
+      "official-btk-7571-rule-change-2026-09-29",
+      "official-turkcell-tourist-sim-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "tr",
+    "name": "Turkey",
+    "countryCode": "TR"
+  },
+  "network": {
+    "id": "turkcell-tr",
+    "name": "Turkcell Türkiye",
+    "marketId": "tr"
+  },
+  "brand": {
+    "id": "turkcell-tourist",
+    "networkId": "turkcell-tr",
+    "name": "Turkcell Tourist SIM",
+    "marketId": "tr"
+  },
+  "metrics": {
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "TRY",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "TRY",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-btk-7571-rule-change-2026-09-29",
+      "url": "https://www.btk.gov.tr/kurul-kararlari",
+      "type": "official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-turkcell-tourist-sim-2026-09-29",
+      "url": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-turkcell-tourist-90d-blocker-2026-current-profile-20260929",
+      "routeId": "turkcell-tourist-90d-blocker-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "turkcell-tourist-90d-blocker-2026",
+        "brandId": "turkcell-tourist",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "The legacy fixed 90-day passport/YKN blocker is stale. BTK Decision 2026/IK-THD/125 removed the old technical clauses that forced passport-registered foreign lines into the 90-day YKN-conversion shutdown path, effective 25 June 2026. Turkcell now offers a current Tourist SIM/eSIM flow using passport identity checks and Türkiye-arrival activation.",
+        "landedCost": {
+          "currency": "TRY",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-price-not-captured"
+        },
+        "keep": {
+          "currency": "TRY",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not use the historical 90-day passport cap as the current retention rule. That technical rule was repealed in 2026; a current long-term Tourist-SIM inactivity/number-retention rule has not been established in this packet.",
+          "intervalDays": null,
+          "state": "legacy-blocker-repealed-current-retention-unverified"
+        },
+        "chinaActivation": "Application can start online, but Turkcell states the Tourist line becomes usable after arrival in Türkiye. App self-activation for eSIM requires an eSIM/NFC phone, biometric passport scan, NFC passport read, liveness check and video contract confirmation.",
+        "kyc": "Current Tourist flow accepts a valid passport; in-app activation requires a biometric passport. Türkiye strengthened electronic/biometric subscriber identity rules in 2026, while the old fixed 90-day YKN conversion clause was removed.",
+        "payment": "Current Tourist application accepts debit/credit cards supporting international and online transactions.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Current Turkcell Tourist package page says the package is valid only in Türkiye; this packet does not establish reliable overseas incoming OTP/SMS after departure.",
+        "refund": "Turkcell states Tourist SIM refunds go back to the same credit card after cancellation through customer service.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "The old 90-day passport blocker is no longer current, but the route still lacks a verified long-term retention rule and overseas incoming-SMS path; activation/use is Türkiye-centered.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+        "tariffSummary": "Legacy 90-day YKN blocker repealed in 2026; current Tourist SIM supports passport-based online application/eSIM flow, but long-term retention and overseas OTP remain unverified.",
+        "sourceIds": [
+          "official-turkcell-tourist-sim-2026-09-29",
+          "official-btk-7571-rule-change-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: do not repeat the pre-June-2026 fixed 90-day passport-cap claim.",
+          "Treat as Türkiye tourist connectivity until current long-term retention and overseas OTP evidence exists."
+        ],
+        "avoidRoute": true
+      }
+    }
+  ]
+}

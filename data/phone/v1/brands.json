@@ -48,6 +48,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "du-prepaid",
+    "networkId": "du-ae",
+    "name": "du Prepaid",
+    "marketId": "ae"
+  },
+  {
     "id": "ee-uk-payg",
     "networkId": "ee-uk",
     "name": "EE PAYG",
@@ -64,6 +70,12 @@
     "networkId": "o2-uk",
     "name": "Giffgaff",
     "marketId": "gb"
+  },
+  {
+    "id": "globe-prepaid",
+    "networkId": "globe-ph",
+    "name": "Globe Prepaid",
+    "marketId": "ph"
   },
   {
     "id": "h2o-us",
@@ -222,6 +234,12 @@
     "name": "Trip.com / China Mobile CMLink"
   },
   {
+    "id": "turkcell-tourist",
+    "networkId": "turkcell-tr",
+    "name": "Turkcell Tourist SIM",
+    "marketId": "tr"
+  },
+  {
     "id": "ultra-mobile-paygo-us",
     "marketId": "us",
     "networkId": null,
@@ -232,6 +250,12 @@
     "networkId": "tmobile-us",
     "name": "Ultra Mobile",
     "marketId": "us"
+  },
+  {
+    "id": "viettel-prepaid",
+    "networkId": "viettel-vn",
+    "name": "Viettel Prepaid",
+    "marketId": "vn"
   },
   {
     "id": "vodafone-callya",

@@ -6,6 +6,11 @@
   },
   "markets": [
     {
+      "id": "ae",
+      "name": "UAE",
+      "countryCode": "AE"
+    },
+    {
       "id": "au",
       "name": "Australia",
       "countryCode": "AU"
@@ -96,6 +101,11 @@
       "countryCode": "NZ"
     },
     {
+      "id": "ph",
+      "name": "Philippines",
+      "countryCode": "PH"
+    },
+    {
       "id": "sg",
       "name": "Singapore",
       "countryCode": "SG"
@@ -104,6 +114,11 @@
       "id": "th",
       "name": "Thailand",
       "countryCode": "TH"
+    },
+    {
+      "id": "tr",
+      "name": "Turkey",
+      "countryCode": "TR"
     },
     {
       "id": "tw",
@@ -119,6 +134,11 @@
       "id": "various",
       "name": "Destination-specific",
       "countryCode": null
+    },
+    {
+      "id": "vn",
+      "name": "Vietnam",
+      "countryCode": "VN"
     }
   ],
   "networks": [
@@ -153,6 +173,11 @@
       "marketId": "hk"
     },
     {
+      "id": "du-ae",
+      "name": "du UAE",
+      "marketId": "ae"
+    },
+    {
       "id": "ee-uk",
       "name": "EE UK",
       "marketId": "gb"
@@ -161,6 +186,11 @@
       "id": "fet-tw",
       "name": "FarEasTone",
       "marketId": "tw"
+    },
+    {
+      "id": "globe-ph",
+      "name": "Globe Philippines",
+      "marketId": "ph"
     },
     {
       "id": "jio-in",
@@ -248,9 +278,19 @@
       "marketId": "us"
     },
     {
+      "id": "turkcell-tr",
+      "name": "Turkcell Türkiye",
+      "marketId": "tr"
+    },
+    {
       "id": "twm-tw",
       "name": "Taiwan Mobile",
       "marketId": "tw"
+    },
+    {
+      "id": "viettel-vn",
+      "name": "Viettel Vietnam",
+      "marketId": "vn"
     },
     {
       "id": "vodafone-de",
@@ -313,6 +353,12 @@
       "name": "CMHK (China Mobile HK)"
     },
     {
+      "id": "du-prepaid",
+      "networkId": "du-ae",
+      "name": "du Prepaid",
+      "marketId": "ae"
+    },
+    {
       "id": "ee-uk-payg",
       "networkId": "ee-uk",
       "name": "EE PAYG",
@@ -329,6 +375,12 @@
       "networkId": "o2-uk",
       "name": "Giffgaff",
       "marketId": "gb"
+    },
+    {
+      "id": "globe-prepaid",
+      "networkId": "globe-ph",
+      "name": "Globe Prepaid",
+      "marketId": "ph"
     },
     {
       "id": "h2o-us",
@@ -487,6 +539,12 @@
       "name": "Trip.com / China Mobile CMLink"
     },
     {
+      "id": "turkcell-tourist",
+      "networkId": "turkcell-tr",
+      "name": "Turkcell Tourist SIM",
+      "marketId": "tr"
+    },
+    {
       "id": "ultra-mobile-paygo-us",
       "marketId": "us",
       "networkId": null,
@@ -497,6 +555,12 @@
       "networkId": "tmobile-us",
       "name": "Ultra Mobile",
       "marketId": "us"
+    },
+    {
+      "id": "viettel-prepaid",
+      "networkId": "viettel-vn",
+      "name": "Viettel Prepaid",
+      "marketId": "vn"
     },
     {
       "id": "vodafone-callya",
@@ -671,6 +735,25 @@
       ]
     },
     {
+      "id": "du-prepaid-ae-2026",
+      "marketId": "ae",
+      "networkId": "du-ae",
+      "brandId": "du-prepaid",
+      "displayName": "du Prepaid",
+      "family": "temporary",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+      "sourceIds": [
+        "official-du-prepaid-lifecycle-2026-09-29",
+        "official-du-tourist-renewal-2026-09-29",
+        "official-du-tourist-sim-2026-09-29"
+      ]
+    },
+    {
       "id": "ee-uk-payg-180d-2026",
       "marketId": "gb",
       "networkId": "ee-uk",
@@ -736,6 +819,26 @@
         "src-7bc565362f29",
         "src-9e494ffc524e",
         "src-ea6b2a6ebb26"
+      ]
+    },
+    {
+      "id": "globe-prepaid-1yr-2026",
+      "marketId": "ph",
+      "networkId": "globe-ph",
+      "brandId": "globe-prepaid",
+      "displayName": "Globe Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+      "sourceIds": [
+        "official-globe-esim-terms-2026-09-29",
+        "official-globe-prepaid-roaming-2026-09-29",
+        "official-globe-sim-registration-2026-09-29",
+        "official-globe-sim-terms-2026-09-29"
       ]
     },
     {
@@ -1296,6 +1399,24 @@
       ]
     },
     {
+      "id": "turkcell-tourist-90d-blocker-2026",
+      "marketId": "tr",
+      "networkId": "turkcell-tr",
+      "brandId": "turkcell-tourist",
+      "displayName": "Turkcell Tourist SIM",
+      "family": "temporary",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+      "sourceIds": [
+        "official-btk-7571-rule-change-2026-09-29",
+        "official-turkcell-tourist-sim-2026-09-29"
+      ]
+    },
+    {
       "id": "ultra-mobile-paygo-3-2026",
       "marketId": "us",
       "networkId": "tmobile-us",
@@ -1330,6 +1451,24 @@
       "sourceIds": [
         "src-518c6a9bf6f0",
         "src-cbabf70eb1c4"
+      ]
+    },
+    {
+      "id": "viettel-vtvang-keepnumber-2026",
+      "marketId": "vn",
+      "networkId": "viettel-vn",
+      "brandId": "viettel-prepaid",
+      "displayName": "Viettel Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.vietteltelecom.vn/",
+      "sourceIds": [
+        "official-viettel-kyc-roaming-otp-2026-09-29",
+        "specialist-3gviettel-vtvang-2026-09-29"
       ]
     },
     {
@@ -1682,6 +1821,12 @@
       "reportedAt": "2026-04-01"
     },
     {
+      "id": "official-btk-7571-rule-change-2026-09-29",
+      "url": "https://www.btk.gov.tr/kurul-kararlari",
+      "type": "official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-callya-faq-via-prepaid-deutschland-2025-08",
       "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
       "type": "specialist-media",
@@ -1698,6 +1843,24 @@
       "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-du-prepaid-lifecycle-2026-09-29",
+      "url": "https://www.du.ae/support-articledetail?artid=PROD-89276&lang=en-GB&userType=business&version=2.0",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-du-tourist-renewal-2026-09-29",
+      "url": "https://www.du.ae/support-articledetail?artid=PROD-8773&lang=en-GB&userType=business&version=2.0",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-du-tourist-sim-2026-09-29",
+      "url": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/plan-details/plan-information",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "official-ee-free-sim-2026-09-28",
@@ -1728,6 +1891,30 @@
       "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "official-globe-esim-terms-2026-09-29",
+      "url": "https://www.globe.com.ph/prepaid/local-esim-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-prepaid-roaming-2026-09-29",
+      "url": "https://www.globe.com.ph/help/international/prepaid-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-sim-registration-2026-09-29",
+      "url": "https://www.globe.com.ph/help/sim-registration-act",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-globe-sim-terms-2026-09-29",
+      "url": "https://www.globe.com.ph/prepaid/sim-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "official-h2o-payg-2026-09-29",
@@ -2072,6 +2259,12 @@
       "reportedAt": "2026-09-28"
     },
     {
+      "id": "official-turkcell-tourist-sim-2026-09-29",
+      "url": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-ultramobile-paygo-2026-09-29",
       "url": "https://www.ultramobile.com/paygo/",
       "type": "provider-official",
@@ -2090,10 +2283,22 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "official-viettel-kyc-roaming-otp-2026-09-29",
+      "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-thue-bao-viettel-bi-chan-do-chua-xac-thuc-thong-tin-huong-dan-cach-xu-ly/15333972",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-vodafone-prepaid-hilfe-2026-09-26",
       "url": "https://www.vodafone.de/hilfe/prepaid.html",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "specialist-3gviettel-vtvang-2026-09-29",
+      "url": "https://3gviettel.com.vn/gia-tang-thoi-gian-giu-sim-viettel-voi-goi-vt-vang.html",
+      "type": "specialist-media",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "src-0b42956d1b40",
@@ -3008,6 +3213,62 @@
       }
     },
     {
+      "id": "snap-du-prepaid-ae-2026-current-profile-20260929",
+      "routeId": "du-prepaid-ae-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "du-prepaid-ae-2026",
+        "brandId": "du-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current du Tourist SIM material establishes a 90-day visitor-line validity. du support also documents an AED5 renewal/extension action during the 90-day validity, while current tourist eSIM bundles are positioned as short-stay products. This is not evidence of indefinite annual retention.",
+        "landedCost": {
+          "currency": "AED",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "tourist-price-not-used-for-retention"
+        },
+        "keep": {
+          "currency": "AED",
+          "observedActionCost": 5,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Tourist SIM is valid for 90 days. du support documents an AED5 renewal/extension action during that validity; current evidence does not establish an indefinitely repeatable one-year keep-number path.",
+          "intervalDays": 90,
+          "state": "official-short-term-extension"
+        },
+        "chinaActivation": "This is a UAE visitor product. Current du pages support tourist SIM/eSIM purchase and activation, but the identity flow is tied to valid UAE tourist/transit documentation rather than a location-independent long-term number product.",
+        "kyc": "Tourist customers require valid tourist or transit visa documentation; resident/expatriate prepaid identity paths use Emirates ID or employment/residence documentation.",
+        "payment": "Current Tourist eSIM purchase is digital; ordinary prepaid recharge/app payment is available.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "du states international roaming can be activated for the Tourist plan; this packet does not establish free or reliable incoming OTP SMS abroad.",
+        "refund": "Not relied on for this route decision.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "The documented product is a short-term Tourist SIM with 90-day validity and an extension path, not a verified indefinite low-cost retention product; long-term overseas OTP evidence is missing.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+        "tariffSummary": "Tourist SIM: 90-day validity; official support documents AED5 renewal/extension; no verified annual/indefinite keep path.",
+        "sourceIds": [
+          "official-du-tourist-sim-2026-09-29",
+          "official-du-tourist-renewal-2026-09-29",
+          "official-du-prepaid-lifecycle-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD for long-term number retention.",
+          "Do not extrapolate a documented 90-day extension into indefinite annual survival."
+        ]
+      }
+    },
+    {
       "id": "snap-ee-uk-payg-180d-2026-current-profile-20260928",
       "routeId": "ee-uk-payg-180d-2026",
       "kind": "current-profile",
@@ -3422,6 +3683,63 @@
           "summary": "Take a qualifying giffgaff keep-alive action",
           "description": "Complete a documented qualifying action before the six-month inactivity deadline. The calendar event is placed 30 days early as a product-side buffer."
         }
+      }
+    },
+    {
+      "id": "snap-globe-prepaid-1yr-2026-current-profile-20260929",
+      "routeId": "globe-prepaid-1yr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "globe-prepaid-1yr-2026",
+        "brandId": "globe-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Globe prepaid terms still contain a one-year regular-load rule for ordinary registered prepaid lines, but foreign nationals registered as tourists are a separate case: their SIM/eSIM automatically expires 30 days after registration. The old cheap yearly-keep framing therefore does not apply to the target foreign-tourist route.",
+        "landedCost": {
+          "currency": "PHP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "not-relied-on-for-tourist-hold"
+        },
+        "keep": {
+          "currency": "PHP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Foreign-tourist registration is the binding rule for this use case: Globe states the tourist SIM/eSIM automatically expires 30 days after registration. The ordinary one-year regular-load rule is not an annual keep path for a tourist-registered line.",
+          "intervalDays": 30,
+          "state": "official-tourist-hard-cap"
+        },
+        "chinaActivation": "Foreign tourists must register the SIM with passport bio page, current visa stamp, proof of Philippine address and a return/onward ticket. Tourist registration is short-lived rather than a China-first long-term retention route.",
+        "kyc": "SIM registration is mandatory. Globe states foreign tourists need passport, current visa stamp, Philippine address proof and return/onward ticket; tourist SIM registration expires after 30 days.",
+        "payment": "GlobeOne and GCash support reloads while abroad, but payment convenience does not override the 30-day tourist-registration lifetime.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Official Globe prepaid roaming support says a prepaid line can keep roaming signal with zero load and can receive incoming texts for free while abroad.",
+        "refund": "Globe terms state load on a permanently disconnected SIM is not refundable for cash.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "Foreign-tourist SIM/eSIM registration automatically expires after 30 days, so the legacy one-top-up-per-year framing is not valid for the target overseas foreign-user retention job.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+        "tariffSummary": "Tourist registration: 30-day automatic expiry. Ordinary prepaid one-year load rule exists but is not a tourist keep-number path.",
+        "sourceIds": [
+          "official-globe-sim-terms-2026-09-29",
+          "official-globe-esim-terms-2026-09-29",
+          "official-globe-sim-registration-2026-09-29",
+          "official-globe-prepaid-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
+          "Do not model the ordinary one-year load rule as a tourist annual keep cost."
+        ]
       }
     },
     {
@@ -6033,6 +6351,62 @@
       }
     },
     {
+      "id": "snap-turkcell-tourist-90d-blocker-2026-current-profile-20260929",
+      "routeId": "turkcell-tourist-90d-blocker-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "turkcell-tourist-90d-blocker-2026",
+        "brandId": "turkcell-tourist",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "The legacy fixed 90-day passport/YKN blocker is stale. BTK Decision 2026/IK-THD/125 removed the old technical clauses that forced passport-registered foreign lines into the 90-day YKN-conversion shutdown path, effective 25 June 2026. Turkcell now offers a current Tourist SIM/eSIM flow using passport identity checks and Türkiye-arrival activation.",
+        "landedCost": {
+          "currency": "TRY",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-price-not-captured"
+        },
+        "keep": {
+          "currency": "TRY",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not use the historical 90-day passport cap as the current retention rule. That technical rule was repealed in 2026; a current long-term Tourist-SIM inactivity/number-retention rule has not been established in this packet.",
+          "intervalDays": null,
+          "state": "legacy-blocker-repealed-current-retention-unverified"
+        },
+        "chinaActivation": "Application can start online, but Turkcell states the Tourist line becomes usable after arrival in Türkiye. App self-activation for eSIM requires an eSIM/NFC phone, biometric passport scan, NFC passport read, liveness check and video contract confirmation.",
+        "kyc": "Current Tourist flow accepts a valid passport; in-app activation requires a biometric passport. Türkiye strengthened electronic/biometric subscriber identity rules in 2026, while the old fixed 90-day YKN conversion clause was removed.",
+        "payment": "Current Tourist application accepts debit/credit cards supporting international and online transactions.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Current Turkcell Tourist package page says the package is valid only in Türkiye; this packet does not establish reliable overseas incoming OTP/SMS after departure.",
+        "refund": "Turkcell states Tourist SIM refunds go back to the same credit card after cancellation through customer service.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "The old 90-day passport blocker is no longer current, but the route still lacks a verified long-term retention rule and overseas incoming-SMS path; activation/use is Türkiye-centered.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+        "tariffSummary": "Legacy 90-day YKN blocker repealed in 2026; current Tourist SIM supports passport-based online application/eSIM flow, but long-term retention and overseas OTP remain unverified.",
+        "sourceIds": [
+          "official-turkcell-tourist-sim-2026-09-29",
+          "official-btk-7571-rule-change-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: do not repeat the pre-June-2026 fixed 90-day passport-cap claim.",
+          "Treat as Türkiye tourist connectivity until current long-term retention and overseas OTP evidence exists."
+        ],
+        "avoidRoute": true
+      }
+    },
+    {
       "id": "snap-ultra-mobile-paygo-3-2026-current-profile-20260929",
       "routeId": "ultra-mobile-paygo-3-2026",
       "kind": "current-profile",
@@ -6545,6 +6919,61 @@
       }
     },
     {
+      "id": "snap-viettel-vtvang-keepnumber-2026-current-profile-20260929",
+      "routeId": "viettel-vtvang-keepnumber-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "viettel-vtvang-keepnumber-2026",
+        "brandId": "viettel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Recent Viettel-specialist reporting dated February 2026 describes VTVANG as a 12-month keep-number service for eligible prepaid lines. The same current report gives a 50,000 VND registration fee. A first-party Viettel product page for VTVANG was not located in this review, so the keep product remains specialist-reported rather than provider-official.",
+        "landedCost": {
+          "currency": "VND",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "acquisition-cost-not-established"
+        },
+        "keep": {
+          "currency": "VND",
+          "observedActionCost": 50000,
+          "yearCostOriginal": 50000,
+          "yearCostCny": null,
+          "action": "Recent February-2026 Viettel-specialist evidence reports VTVANG at 50,000 VND for 12 months of number retention without normal recharge/activity; eligibility exclusions apply.",
+          "intervalDays": 365,
+          "state": "current-specialist-reported"
+        },
+        "chinaActivation": "Viettel requires real-name subscriber verification. Current first-party 2026 guidance shows unverified subscribers can have outgoing calls/SMS blocked and overseas subscribers may need My Viettel/Tammi identity remediation. A reliable foreigner-acquisition path is not established here.",
+        "kyc": "Mandatory subscriber identity verification. Current 2026 Viettel notice emphasizes chip-ID/VNeID-based remediation for affected subscribers; foreign-user onboarding eligibility is not established by first-party evidence in this packet.",
+        "payment": "VTVANG is reported as an account/SMS service for eligible prepaid lines; foreign payment/onboarding is not established.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Current Viettel guidance for subscribers abroad states roaming must be active to receive OTP, supporting inbound SMS capability when roaming is active; independent long-term OTP reliability is still unverified.",
+        "refund": "Not established.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "The 50,000 VND/12-month keep package is current specialist evidence but lacks a located first-party product page, and foreign-user acquisition/KYC plus long-term OTP reliability remain unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.vietteltelecom.vn/",
+        "tariffSummary": "VTVANG reported at 50,000 VND/12 months for eligible prepaid lines; keep as HOLD until first-party product/eligibility and foreign acquisition are verified.",
+        "sourceIds": [
+          "specialist-3gviettel-vtvang-2026-09-29",
+          "official-viettel-kyc-roaming-otp-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
+          "Require first-party package/eligibility and foreign-acquisition verification before promotion."
+        ]
+      }
+    },
+    {
       "id": "snap-vodafone-callya-90d-2026-current-profile-20260928",
       "routeId": "vodafone-callya-90d-2026",
       "kind": "current-profile",
@@ -6959,6 +7388,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "du-prepaid-ae-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AED",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AED",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "ee-uk-payg-180d-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -6993,6 +7434,18 @@
       "keepYearCostOriginal": 0.6,
       "keepYearCostCny": 5.36,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "globe-prepaid-1yr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PHP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PHP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "h2o-paygo-10-90d-2026",
@@ -7343,6 +7796,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "turkcell-tourist-90d-blocker-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TRY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TRY",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "ultra-mobile-paygo-3-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -7365,6 +7830,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "viettel-vtvang-keepnumber-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "VND",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "VND",
+      "keepYearCostOriginal": 50000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "vodafone-callya-90d-2026",
