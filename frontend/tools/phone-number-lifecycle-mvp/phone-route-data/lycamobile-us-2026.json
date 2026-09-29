@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "lycamobile-us-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "lycamobile-us",
+    "displayName": "Lyca Mobile US",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+    "sourceIds": [
+      "lyca-us-att-community-20260109",
+      "lyca-us-att-guide-202606",
+      "lyca-us-longterm-20260929",
+      "lyca-us-migration-incident-20260318"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "att-us",
+    "name": "AT&T US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "lycamobile-us",
+    "networkId": "att-us",
+    "name": "Lyca Mobile US",
+    "marketId": "us"
+  },
+  "metrics": {
+    "routeId": "lycamobile-us-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": 108,
+    "acquisitionCostCny": null,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 60
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "lyca-us-att-community-20260109",
+      "url": "https://www.reddit.com/r/NoContract/comments/1q7u1ba/did_lycamobile_switch_to_att_network_the_last/",
+      "type": "independent-community",
+      "reportedAt": "2026-01-09"
+    },
+    {
+      "id": "lyca-us-att-guide-202606",
+      "url": "https://www.lycamobile.us/blog/en/world-cup-2026-esim-guide-host-cities/",
+      "type": "provider-official",
+      "reportedAt": "2026-06-01"
+    },
+    {
+      "id": "lyca-us-longterm-20260929",
+      "url": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lyca-us-migration-incident-20260318",
+      "url": "https://www.reddit.com/r/NoContract/comments/1rxdofr/dont_use_lyca_mobile/",
+      "type": "independent-community",
+      "reportedAt": "2026-03-18"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-lycamobile-us-2026-att-migration-20260318",
+      "routeId": "lycamobile-us-2026",
+      "type": "network-migration-incident",
+      "reportedAt": "2026-03-18",
+      "scope": "route",
+      "outcome": "Independent 2026 reports confirm the AT&T migration and include service/account/SIM-swap failures during transition. These are incident evidence, not a route-wide failure rate.",
+      "sourceId": "lyca-us-migration-incident-20260318"
+    },
+    {
+      "id": "evt-lycamobile-us-2026-db-c4c-cost-20260929",
+      "routeId": "lycamobile-us-2026",
+      "type": "retention-cost-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current official terms retain the 60-day non-use expiry. A current 12-month 8 GB plan is USD 108, so the old USD 120/year claim is not a valid minimum-retention fact; exact PAYG keep-alive cost remains unresolved.",
+      "sourceId": "lyca-us-longterm-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-lycamobile-us-2026-current-profile-20260929",
+      "routeId": "lycamobile-us-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4c-reviewed-2026-09-29",
+      "data": {
+        "id": "lycamobile-us-2026",
+        "brandId": "lycamobile-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Lyca Mobile US sells physical SIM and eSIM prepaid service. Current official 2026 material identifies AT&T coverage; a current long-term 8 GB plan is USD 108 for 12 months.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 108,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 108,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-12m-plan-reference-not-minimum-entry"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Official plan terms say the SIM and assigned number expire after 60 days of non-use. Use within that interval is required; exact minimum PAYG/top-up action cost is not established in current evidence.",
+          "intervalDays": 60,
+          "state": "provider-official-60d-use-clock-cost-unresolved"
+        },
+        "chinaActivation": "Current eSIM material does not establish a reliable China-first activation path. Earlier VPN/address workaround claims are not promoted without current independent reproduction.",
+        "kyc": "Current Lyca material markets prepaid service without credit checks; identity requirements for every path are not established here.",
+        "payment": "A valid payment method is required; foreign-card/crypto-funded-card reliability is not promoted as verified.",
+        "wifiCalling": "not reconciled",
+        "roamingSms": "The current long-term offer includes USD 5 roaming credit, but China-specific incoming-SMS behavior and minimum roaming-credit mechanics are unresolved.",
+        "refund": "Prepaid plans are described as non-refundable in current plan terms.",
+        "trend": "hold-migration-and-minimum-retention-cost",
+        "guideEligible": false,
+        "holdReason": "The 60-day non-use clock is current, but the exact lowest-cost keep-alive action and China-first activation/roaming path remain unresolved. 2026 AT&T migration incidents also lower operational confidence.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+        "tariffSummary": "60-day non-use expiry is current. USD 108/12-month 8 GB plan is current, but it is not treated as the minimum keep-alive cost.",
+        "sourceIds": [
+          "lyca-us-longterm-20260929",
+          "lyca-us-att-guide-202606",
+          "lyca-us-att-community-20260109",
+          "lyca-us-migration-incident-20260318"
+        ],
+        "guideSteps": [
+          "Do not use the old USD 120/year figure as a minimum-retention rule.",
+          "Keep activity inside the official 60-day non-use window.",
+          "Treat overseas activation and China SMS behavior as unresolved until reproduced."
+        ]
+      }
+    }
+  ]
+}

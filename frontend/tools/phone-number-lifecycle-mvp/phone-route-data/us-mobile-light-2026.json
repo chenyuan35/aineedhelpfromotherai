@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "us-mobile-light-2026",
+    "marketId": "us",
+    "networkId": "multi-us",
+    "brandId": "us-mobile-us",
+    "displayName": "US Mobile Light",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.usmobile.com/get-started-bundles",
+    "sourceIds": [
+      "us-mobile-light-plan-20260929",
+      "us-mobile-roaming-provisioning-20260929",
+      "us-mobile-wifi-calling-20260929"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "multi-us",
+    "name": "US Mobile multi-network",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "us-mobile-us",
+    "networkId": "multi-us",
+    "name": "US Mobile",
+    "marketId": "us"
+  },
+  "metrics": {
+    "routeId": "us-mobile-light-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": 10,
+    "acquisitionCostCny": null,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": 96,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "us-mobile-light-plan-20260929",
+      "url": "https://www.usmobile.com/get-started-bundles",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "us-mobile-roaming-provisioning-20260929",
+      "url": "https://www.usmobile.com/help/docs/international-travel/international-data-coverage-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "us-mobile-wifi-calling-20260929",
+      "url": "https://www.usmobile.com/help/docs/troubleshooting-and-setup/setting-up-device/wifi-calling",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-us-mobile-light-2026-db-c4c-review-20260929",
+      "routeId": "us-mobile-light-2026",
+      "type": "overseas-activation-constraint-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Light remains USD 10 monthly or USD 96/year. Native roaming cannot work until the line has domestic U.S. usage; Warp/Dark Star Wi-Fi Calling setup also requires U.S. coverage.",
+      "sourceId": "us-mobile-roaming-provisioning-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-us-mobile-light-2026-current-profile-20260929",
+      "routeId": "us-mobile-light-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4c-reviewed-2026-09-29",
+      "data": {
+        "id": "us-mobile-light-2026",
+        "brandId": "us-mobile-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Light is currently USD 10/month or USD 96 for 12 months, with 2 GB and unlimited domestic talk/text.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-price"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 96,
+          "yearCostOriginal": 96,
+          "yearCostCny": null,
+          "action": "Use the annual Light subscription for a current USD 96/year service path. No PAYG retention route or post-lapse number-hold interval is established here.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan"
+        },
+        "chinaActivation": "eSIM delivery alone does not establish a complete overseas-first route. Native roaming requires prior domestic U.S. usage.",
+        "kyc": "not reconciled",
+        "payment": "Foreign-card acceptance is not treated as verified in this review.",
+        "wifiCalling": "Included on Light. Warp and Dark Star setup requires U.S. coverage; Light Speed has a dashboard enablement flow.",
+        "roamingSms": "Native roaming requires prior domestic U.S. usage; Light-specific China roaming/SMS availability is unresolved.",
+        "refund": "not reconciled",
+        "trend": "stable-plan-hold-overseas-first",
+        "guideEligible": false,
+        "holdReason": "USD 96/year is current, but native roaming requires prior domestic U.S. usage and some network choices require U.S.-side Wi-Fi Calling setup. China-first use is not established.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.usmobile.com/get-started-bundles",
+        "tariffSummary": "Light: USD 10 monthly or USD 96/year; native roaming requires prior domestic U.S. usage.",
+        "sourceIds": [
+          "us-mobile-light-plan-20260929",
+          "us-mobile-roaming-provisioning-20260929",
+          "us-mobile-wifi-calling-20260929"
+        ],
+        "guideSteps": [
+          "Treat this as a U.S.-first route, not a China-first route.",
+          "If relying on roaming, establish domestic U.S. usage before departure.",
+          "Configure Wi-Fi Calling before departure when the selected network requires U.S. coverage for setup."
+        ]
+      }
+    }
+  ]
+}

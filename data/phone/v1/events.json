@@ -234,6 +234,24 @@
     "sourceId": "lyca-uk-home-20260929"
   },
   {
+    "id": "evt-lycamobile-us-2026-att-migration-20260318",
+    "routeId": "lycamobile-us-2026",
+    "type": "network-migration-incident",
+    "reportedAt": "2026-03-18",
+    "scope": "route",
+    "outcome": "Independent 2026 reports confirm the AT&T migration and include service/account/SIM-swap failures during transition. These are incident evidence, not a route-wide failure rate.",
+    "sourceId": "lyca-us-migration-incident-20260318"
+  },
+  {
+    "id": "evt-lycamobile-us-2026-db-c4c-cost-20260929",
+    "routeId": "lycamobile-us-2026",
+    "type": "retention-cost-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current official terms retain the 60-day non-use expiry. A current 12-month 8 GB plan is USD 108, so the old USD 120/year claim is not a valid minimum-retention fact; exact PAYG keep-alive cost remains unresolved.",
+    "sourceId": "lyca-us-longterm-20260929"
+  },
+  {
     "id": "evt-magti-first-year-cash-vs-runrate-20260929",
     "routeId": "magticom-number-maintenance-2026",
     "type": "retention-cost-clarification",
@@ -295,6 +313,15 @@
     "scope": "route",
     "outcome": "Current Orange rules confirm the active/grace ladder and show the legacy €42/year estimate was not defensible: a €5 recharge grants 30 active days plus 300 grace days, while grace can receive calls/SMS.",
     "sourceId": "orange-validity-20260929"
+  },
+  {
+    "id": "evt-orange-sn-sama-numero-2026-db-c4c-price-20260929",
+    "routeId": "orange-sn-sama-numero-2026",
+    "type": "retention-price-resolution",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The previously unresolved fee is now explicit: XOF 3,000/6 months, XOF 5,000/12 months and XOF 10,000/24 months. Subscription is available via airtime USSD or Orange Money, and the extension starts on the subscription date.",
+    "sourceId": "orange-sn-sama-numero-20260929"
   },
   {
     "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
@@ -376,6 +403,15 @@
     "scope": "route",
     "outcome": "The legacy THB35/90d and THB70/180d validity-extension mechanism remains useful community intelligence, but current 2026 first-party terms were not reachable. Keep the row as HOLD and do not present the price as current-guaranteed.",
     "sourceId": "truemove-community-signal-2026-09-27"
+  },
+  {
+    "id": "evt-us-mobile-light-2026-db-c4c-review-20260929",
+    "routeId": "us-mobile-light-2026",
+    "type": "overseas-activation-constraint-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Light remains USD 10 monthly or USD 96/year. Native roaming cannot work until the line has domestic U.S. usage; Warp/Dark Star Wi-Fi Calling setup also requires U.S. coverage.",
+    "sourceId": "us-mobile-roaming-provisioning-20260929"
   },
   {
     "id": "evt-vinaphone-giu-so-vn-2026-db-c2-review-20260929",

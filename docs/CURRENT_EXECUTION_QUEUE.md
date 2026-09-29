@@ -8,7 +8,7 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. After DB-C4B: **135 comparison routes / 95 canonical normalized routes / 84 comparison↔canonical route-ID overlaps / 51 comparison routes still legacy-only / 3 indexable routes**.
+3. After DB-C4C: **135 comparison routes / 98 canonical normalized routes / 87 comparison↔canonical route-ID overlaps / 48 comparison routes still legacy-only / 3 indexable routes**.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -16,15 +16,13 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 
-## JUST COMPLETED — Backend database coverage DB-C4B
+## JUST COMPLETED — Backend database coverage DB-C4C
 
 The next 3 DB-C4 legacy-only routes were independently reviewed and normalized through approved backstage packets.
 
-Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. Smart Prepaid is HOLD because its ordinary 365-day loaded-value / 180-day zero-balance lifecycle is separate from the 30-day foreign-tourist SIM-registration cap. MTN Nigeria Keep My Number is ADMIT-BACKSTAGE with current NGN3,500/1y, NGN5,000/2y and NGN7,500/3y pricing plus the current visitor registration exception to NIN for stays under 24 months. iD Mobile is HOLD because current legal PAYG terms use a 120-day/four-month inactivity clock while current iD marketing/community copy says 180 days.
+Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. US Mobile Light is HOLD: USD 96/year remains current, but native roaming requires prior U.S. domestic usage and some Wi-Fi Calling setup is U.S.-side. Lyca Mobile US is HOLD: the official 60-day non-use clock remains current, while the legacy USD 120/year minimum is withdrawn and exact lowest-cost keep-alive plus China-first behavior remain unresolved; 2026 AT&T-migration incidents are retained. Orange Senegal Sama Numéro is ADMIT-BACKSTAGE with current XOF3,000/6mo, XOF5,000/12mo and XOF10,000/24mo provider pricing and explicit airtime/Orange Money subscription paths.
 
-Canonical result after DB-C4B: **95 routes / 53 markets / 92 brands / 72 networks / 313 sources**. Comparison remains **135**, comparison↔canonical overlap is **84**, **51 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve 135 comparison routes and the 3-route publication boundary.
-
-Release: PR #309 (`518e7ab737e4ec53a8dba2740e1e752e83adc96a`) merged after Eval Gate #957, CI #183 and Vercel Preview passed; production deployed successfully. Live verification returned 200 for the Phone hub and VOXI route, while the non-indexable MTN Nigeria route returned 404.
+Canonical result after DB-C4C: **98 routes / 54 markets / 95 brands / 74 networks / 323 sources**. Comparison remains **135**, comparison↔canonical overlap is **87**, **48 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve the 135-route comparison surface and 3-route publication boundary.
 
 ## ACTIVE — Backend database coverage DB-C4
 
@@ -32,12 +30,9 @@ Continue with the next distinct low-cost / decision-useful legacy-only routes. L
 
 Candidates:
 
-1. `us-mobile-light-2026`
-2. `lycamobile-us-2026`
-3. `orange-sn-sama-numero-2026`
-4. `elisa-prepaid-fi-2026`
-5. `cyta-soeasy-cy-2026`
-6. `hotmobile-il-2026`
+1. `elisa-prepaid-fi-2026`
+2. `cyta-soeasy-cy-2026`
+3. `hotmobile-il-2026`
 
 ### DB-C4 acceptance flow
 
@@ -73,7 +68,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 51 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 48 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;

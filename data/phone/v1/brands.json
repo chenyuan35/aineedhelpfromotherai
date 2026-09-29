@@ -252,6 +252,12 @@
     "marketId": "gb"
   },
   {
+    "id": "lycamobile-us",
+    "networkId": "att-us",
+    "name": "Lyca Mobile US",
+    "marketId": "us"
+  },
+  {
     "id": "magticom-prepaid",
     "networkId": "magticom-ge",
     "name": "Magticom Prepaid",
@@ -322,6 +328,12 @@
     "networkId": "orange-ro",
     "name": "Orange Romania PrePay",
     "marketId": "ro"
+  },
+  {
+    "id": "orange-sn-prepaid",
+    "networkId": "orange-sn",
+    "name": "Orange Senegal Prepaid",
+    "marketId": "sn"
   },
   {
     "id": "povo-jp",
@@ -495,6 +507,12 @@
     "id": "ultra-mobile-us",
     "networkId": "tmobile-us",
     "name": "Ultra Mobile",
+    "marketId": "us"
+  },
+  {
+    "id": "us-mobile-us",
+    "networkId": "multi-us",
+    "name": "US Mobile",
     "marketId": "us"
   },
   {

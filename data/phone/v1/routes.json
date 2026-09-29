@@ -811,6 +811,26 @@
     ]
   },
   {
+    "id": "lycamobile-us-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "lycamobile-us",
+    "displayName": "Lyca Mobile US",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+    "sourceIds": [
+      "lyca-us-att-community-20260109",
+      "lyca-us-att-guide-202606",
+      "lyca-us-longterm-20260929",
+      "lyca-us-migration-incident-20260318"
+    ]
+  },
+  {
     "id": "magticom-number-maintenance-2026",
     "marketId": "ge",
     "networkId": "magticom-ge",
@@ -1072,6 +1092,25 @@
       "orange-active-grace-20260929",
       "orange-prepay-tariff-202603",
       "orange-validity-20260929"
+    ]
+  },
+  {
+    "id": "orange-sn-sama-numero-2026",
+    "marketId": "sn",
+    "networkId": "orange-sn",
+    "brandId": "orange-sn-prepaid",
+    "displayName": "Orange Senegal Sama Numéro",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.orange.sn/actualite/sama-numero",
+    "sourceIds": [
+      "orange-sn-sama-numero-20260929",
+      "orange-sn-sama-tutorial-20260929",
+      "orange-sn-teeru-20260929"
     ]
   },
   {
@@ -1651,6 +1690,25 @@
     "sourceIds": [
       "src-518c6a9bf6f0",
       "src-cbabf70eb1c4"
+    ]
+  },
+  {
+    "id": "us-mobile-light-2026",
+    "marketId": "us",
+    "networkId": "multi-us",
+    "brandId": "us-mobile-us",
+    "displayName": "US Mobile Light",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.usmobile.com/get-started-bundles",
+    "sourceIds": [
+      "us-mobile-light-plan-20260929",
+      "us-mobile-roaming-provisioning-20260929",
+      "us-mobile-wifi-calling-20260929"
     ]
   },
   {
