@@ -1,0 +1,31 @@
+name: Temp apply DB-C5 verified patch
+
+on:
+  push:
+    branches:
+      - phone/db-c5-one-bh-yettel-20260930
+    paths:
+      - .github/workflows/tmp-apply-db-c5.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply verified DB-C5 patch and remove bootstrap files
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .tmp/db-c5.patch.gz.b64 | gzip -d > /tmp/db-c5.patch
+          git apply --index /tmp/db-c5.patch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .tmp/db-c5.patch.gz.b64 .github/workflows/tmp-apply-db-c5.yml
+          git commit -m "Phone DB-C5: normalize One ME BH Telecom and Yettel"
+          git push origin HEAD:${GITHUB_REF_NAME}
