@@ -11,53 +11,62 @@ Last updated: 2026-09-29
 3. **Named batch A–K migration is complete.** Canonical v1 remains 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
 4. **The only named-batch legacy ID not represented by the same canonical ID is the known Sakura same-product alias blocker.** Do not duplicate that product.
 5. **Post-A–K value checkpoint selected existing-URL deepening, not batch-L.** Fresh first-party Phone data remains only 4 hub impressions / 0 clicks through 2026-09-25 after the 2026-09-29 measurement re-read; the three currently indexable route URLs have no Search Console rows in the checked window.
-6. **Global Phone finder is now RELEASED.** PR #291 squash-merged as `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree is `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`. Production Vercel deployment succeeded. Live verification: Phone hub HTTP 200, `comparison-route-index.json` HTTP 200, admitted VOXI route HTTP 200, representative non-indexable Three IE route HTTP 404.
+6. **Global Phone finder is RELEASED and stays stable while data accrues.** PR #291 squash-merged as `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; production verification passed.
 7. **Publication remains separate.** Comparison stays 135 and explicit route indexability stays 3; the global finder does not create new route/market SEO URLs or sitemap entries.
 8. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Post-A–K checkpoint: `docs/PHONE_POST_AK_VALUE_CHECKPOINT_2026-09-29.md`.
 
-## JUST COMPLETED — Global Phone finder progressive UI on the existing canonical hub
+## JUST COMPLETED — LMT Latvia evidence reconciliation
 
-Result: **PASS / MERGED / PRODUCTION-VERIFIED.**
+Result: **ADMIT-BACKSTAGE EVIDENCE UPDATE / NO PUBLICATION CHANGE.**
 
-- PR #291 replaced the UK-pilot-only long-term landing experience with a global market overview plus country/carrier/route search over the admitted 135-route comparison layer;
-- initial loading uses the generated compact comparison index; full `global-directory.json` loads only after a user selects a market or opens route evidence;
-- existing comparison / inspect / guide behavior is reused across markets and currencies;
-- no backend/API, new SEO URL, sitemap expansion or publication-policy relaxation was introduced;
-- local `npm run phone:data:check`, static frontend build, public-release audit, `npm run verify`, inline-JS syntax check and `git diff --check` passed before release;
-- PR Eval Gate #917 passed and Vercel Preview succeeded;
-- squash merge SHA is `3b0ec6e03c078bd0121b378b4d535aa2adda81ff`; main tree matches the locally verified tree `1d2dd9b668c660f91b9b287d60d435b1b5fa4200`;
-- production deployment completed successfully;
-- live boundary check: hub 200, compact index 200, VOXI admitted route 200, Three IE non-indexable route 404.
+`docs/PHONE_LMT_LATVIA_EVIDENCE_RECONCILIATION_2026-09-29.md` corrects the existing legacy interpretation for `lmt-karte-60-60d-2026`:
 
-## MEASUREMENT CHECK — 2026-09-29
+- current base new number is EUR 1.50 with physical SIM + eSIM availability;
+- current official wording is 60-day advance validity + 60 days for receiving calls/texts, while the same page also labels the base offer a 120-day active number;
+- `Time Limit+` currently costs EUR 0.30 for +30 days to both balance-expiry and use-by dates, so the legacy ~EUR18/year top-up-only estimate is not the cheapest documented path;
+- exact minimum annual keep cost remains unresolved; do not publish EUR3.60/year as guaranteed;
+- ordinary LMT Karte use does not require prior customer registration; optional registration exists for extra account/recovery services;
+- current LMT guidance asks users to activate in Latvia and warns foreign activation may be limited;
+- sending SMS while abroad is disabled by default until LMT removes the restriction after connection identification;
+- missed-expiry recovery is possible free within six months with the original PIN1, followed by refill within three days.
 
-Result: **WAIT / THRESHOLD NOT MET.**
+No canonical migration, comparison-count change, indexability change, sitemap change or public copy change is authorized by this packet.
 
-- Windsor.ai Search Console re-read for 2026-09-16..2026-09-29 still returns only the Phone hub rows already finalized on Sep 21, Sep 23 and Sep 25: 4 impressions, 0 clicks total; no later finalized Phone row was returned;
-- the decision trigger is therefore not satisfied: neither 7 additional finalized days nor 20 cumulative settled Phone impressions exists yet;
-- the connected GA4 account returned no rows for the Sep 25..29 and Sep 28..29 reads, so there is not yet usable first-party finder interaction evidence from that connector; treat this as unavailable/empty measurement, not as proof of zero use;
-- no regression signal was found from the Search Console read, so production remains unchanged and no migration/publication task is unlocked.
+## MEASUREMENT WAIT — trigger not met
 
-## NEXT SESSION — Measure the global finder before another migration/publication move
+Result of the 2026-09-29 first-party re-read: **WAIT.**
 
-**Session task:** keep the released Phone surface stable and collect real search + product-interaction evidence before selecting another migration cohort or indexable route.
+- Search Console still returns only 4 Phone hub impressions / 0 clicks through 2026-09-25;
+- connected GA4 returned no usable rows for the checked dates;
+- do **not** re-read merely because a new session starts;
+- re-open measurement only after at least 7 additional finalized days, 20 cumulative settled Phone impressions, or a clear regression signal.
 
-### Scope
+## NEXT SESSION — Backstage Phone evidence reconciliation round
 
-1. confirm production health only if a regression signal appears; do not re-audit the release from scratch;
-2. preserve comparison at 135, canonical at 53 unless a separately justified data correction lands, and explicit indexability at 3;
-3. re-read first-party Search Console after at least 7 additional finalized days or 20 cumulative settled Phone impressions, unless a clear regression appears sooner;
-4. inspect product events for search/filter, market-open, guide-open, compare and outbound behavior once sufficient data exists;
-5. only then choose either one small evidence-backed migration cohort or one existing route/market experience to deepen;
-6. require the full publication gate before any new standalone indexable URL;
-7. while waiting for enough data, continue only non-destructive backstage evidence acquisition/reconciliation with Qwen/Kimi.
+**Session task:** process one small evidence batch while the public finder remains stable.
+
+### Priority order
+
+1. fetch and review the currently running QwenPaw/Kimi K3 Phone research task when it finishes;
+2. sample-audit at most 1–3 candidate routes for source quality, duplication, stale claims, unsupported inference and conflicts;
+3. if the delegated batch is still unavailable, reconcile one already-identified legacy-only candidate from the post-A–K shortlist rather than inventing a new batch; Telia Estonia is the first fallback candidate after the completed LMT Latvia review;
+4. classify each reviewed candidate as `REJECT`, `HOLD` or `ADMIT-BACKSTAGE` and persist only accepted evidence through branch/PR workflow;
+5. do not migrate canonical rows, add indexable URLs or alter ranking/publication state unless a separately documented trigger opens that work.
+
+### Definition of done
+
+- one bounded evidence batch is fully dispositioned;
+- accepted facts have source URL/date/provenance and unresolved conflicts recorded;
+- duplicates/stale claims are rejected or corrected;
+- no public/indexability change occurs;
+- Kimi/Qwen parallel lane is dispatched or its status/blocker is explicitly recorded.
 
 ### Stop conditions
 
-Do not manufacture a next task from low data. If search/usage samples remain too small, keep production stable and continue backstage evidence acquisition rather than adding pages or migrating rows for activity's sake.
+Stop if evidence is insufficient to classify the selected candidate(s), if the candidate is a duplicate of the same underlying product, or if the work would require publication/schema/infrastructure changes. Do not manufacture batch-L or use database coverage as a reason to publish.
 
 ## Qwen / Kimi work lane
 
@@ -70,6 +79,7 @@ QwenPaw/Kimi remain high-throughput backstage research/data workers. Their outpu
 
 ## Do not do next
 
+- do not re-run Search Console before its measurement trigger merely to create activity;
 - do not invent batch-L or bulk-migrate the 93 legacy-only routes;
 - do not remove the PR #263 manifest gate or shrink the 135-route comparison surface;
 - do not duplicate Sakura or any other same underlying product merely to preserve a legacy ID;
