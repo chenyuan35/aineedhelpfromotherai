@@ -20,17 +20,20 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo '2b39343f52bfbba1fad6bf5f721c86994a6181f0a80b8fcd9714cab1096edc6a  .tmp/db-c4a.patch.gz.b64' | sha256sum -c -
-          base64 -d .tmp/db-c4a.patch.gz.b64 > /tmp/db-c4a.patch.gz
+          cat .tmp/db-c4a.part.* > /tmp/db-c4a.patch.gz.b64
+          echo '2b39343f52bfbba1fad6bf5f721c86994a6181f0a80b8fcd9714cab1096edc6a  /tmp/db-c4a.patch.gz.b64' | sha256sum -c -
+          base64 -d /tmp/db-c4a.patch.gz.b64 > /tmp/db-c4a.patch.gz
           echo 'b9ced112dd8c9322eea8218b12922b1f8f0914855209e3a0b029125285e009c7  /tmp/db-c4a.patch.gz' | sha256sum -c -
           gzip -dc /tmp/db-c4a.patch.gz > /tmp/db-c4a.patch
           git apply --check /tmp/db-c4a.patch
           git apply /tmp/db-c4a.patch
-          rm -f .tmp/db-c4a.patch.gz.b64 .github/workflows/db-c4a-materialize.yml
+          rm -f .tmp/db-c4a.part.* .github/workflows/db-c4a-materialize.yml
           rmdir .tmp 2>/dev/null || true
           git diff --check
-          count=$(git status --short | wc -l | tr -d ' ')
-          test "$count" = "23"
+          mapfile -t changed < <(git diff --name-only origin/main)
+          test "${#changed[@]}" = "23"
+          printf '%s\n' "${changed[@]}" | grep -vq '^\.tmp/'
+          printf '%s\n' "${changed[@]}" | grep -vq '^\.github/workflows/db-c4a-materialize.yml$'
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
