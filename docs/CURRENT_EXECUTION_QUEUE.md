@@ -56,13 +56,21 @@ Candidates:
 7. merge only after Eval Gate + Preview pass;
 8. continue to DB-C3 rather than waiting on public SEO measurement, unless a real evidence/maintenance stop condition is reached.
 
+## PARALLEL — Community-discovered data eSIM signal intake
+
+A fresh NodeSeek community post (`https://www.nodeseek.com/post-954805-1`) was captured on 2026-09-29 as a backstage-only raw signal pack: `data/phone/inbox/community-free-esim-nodeseek-954805-2026-09-29.json`.
+
+It contains **8 providers / 9 offer mechanisms**: Airvoy, eSIM.io (free trial + wallet/PAYG), Nomad, Roamless, Firsty, USIMS, Eskimo and Jetpac. This lane intentionally preserves community-discovered/hidden mechanics even when provider public pages do not document them. Claims retain their provenance strength and uncertainty; lack of an official page is not by itself a rejection criterion.
+
+QwenPaw/Kimi task `task-f93841364ef7` is collecting independent community corroboration/contradiction for these mechanisms. No frontend publication or public recommendation is authorized by raw intake.
+
 ## Measurement wait
 
 Search Console remains too small for publication expansion. This does **not** block backend database coverage.
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment.
+QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment.
 
 ## External waits
 
