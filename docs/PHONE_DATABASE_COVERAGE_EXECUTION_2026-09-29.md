@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C4B
+## Current verified state after DB-C4C
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **95 routes / 53 markets / 313 sources**;
-- comparison↔canonical route-ID overlap: **84**;
-- comparison routes still legacy-only: **51**;
+- canonical normalized database: **98 routes / 54 markets / 95 brands / 74 networks / 323 sources**;
+- comparison↔canonical route-ID overlap: **87**;
+- comparison routes still legacy-only: **48**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -143,5 +143,7 @@ The next three DB-C4 candidates were independently reviewed and normalized throu
 - `orange-sn-sama-numero-2026` — ADMIT-BACKSTAGE. Current Sama Numéro pricing is XOF3,000/6 months, XOF5,000/12 months and XOF10,000/24 months, payable from airtime or Orange Money; validity begins at subscription. Teeru tourist SIM/eSIM also explicitly supports extension through Sama Numéro.
 
 Post-DB-C4C state: **98 canonical routes / 54 markets / 95 brands / 74 networks / 323 sources / 87 comparison-overlap route IDs / 48 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks preserve **135 comparison routes / 3 explicit indexable routes**.
+
+Release: PR #311 (`a9bcc8a4628ab77a69f956cddbebc33800bcd84c`) merged after Eval Gate #961, CI #185 and Vercel Preview passed; production succeeded. Live checks confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Orange Senegal route at HTTP 404.
 
 DB-C4 remains active with `elisa-prepaid-fi-2026`, `cyta-soeasy-cy-2026` and `hotmobile-il-2026` as the next bounded candidates.
