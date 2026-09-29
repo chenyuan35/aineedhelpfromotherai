@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "vodafone-yorn-pt-2026",
+    "marketId": "pt",
+    "networkId": "vodafone-pt",
+    "brandId": "vodafone-yorn",
+    "displayName": "Yorn (Vodafone PT)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+    "sourceIds": [
+      "official-yorn-eligibility-2026-09-29",
+      "official-yorn-nonpayment-block-2026-09-29",
+      "official-yorn-roaming-2026-09-29",
+      "official-yorn-weekly-cost-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "pt",
+    "name": "Portugal",
+    "countryCode": "PT"
+  },
+  "network": {
+    "id": "vodafone-pt",
+    "name": "Vodafone Portugal",
+    "marketId": "pt"
+  },
+  "brand": {
+    "id": "vodafone-yorn",
+    "networkId": "vodafone-pt",
+    "name": "Yorn (Vodafone PT)",
+    "marketId": "pt"
+  },
+  "metrics": {
+    "routeId": "vodafone-yorn-pt-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 7
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-yorn-eligibility-2026-09-29",
+      "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yorn-nonpayment-block-2026-09-29",
+      "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/o-que-acontece-se-nao-tiver-saldo-suficiente-na-data-do-custo-semanal.html?PageSpeed=noscript",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yorn-roaming-2026-09-29",
+      "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/internet-fixa/posso-usar-o-meu-yorn-fora-de-portugal-roaming.html?PageSpeed=noscript",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-yorn-weekly-cost-2026-09-29",
+      "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/os-meus-minutos-e-mensagens-renovam-a-semana-ou-ao-mes.html?PageSpeed=noscript",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-yorn-pt-2026-current-profile-20260929",
+      "routeId": "vodafone-yorn-pt-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+      "data": {
+        "id": "vodafone-yorn-pt-2026",
+        "brandId": "vodafone-yorn",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Vodafone Yorn remains a recurring tariff rather than a low-cost PAYG retention product. Vodafone states Yorn tariffs carry a weekly cost. If the tariff charge remains unpaid for 7 days after its due date, incoming calls and SMS are also blocked until sufficient balance is available and the overdue tariff cost is debited.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "recurring-tariff-not-retention-priced"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Weekly-cost tariff model. If the scheduled tariff charge is not paid within 7 days, Vodafone says incoming calls and SMS are blocked; restoring sufficient balance causes the overdue tariff cost to be collected. This is structurally unsuitable for cheap passive number retention.",
+          "intervalDays": 7,
+          "state": "official-recurring-tariff-incoming-block"
+        },
+        "chinaActivation": "Yorn is a Portugal consumer tariff. New users can request a Yorn SIM or port a number, but the product is not designed as an overseas-first passive retention route.",
+        "kyc": "Yorn eligibility is generally age 35 or under, with a student exception. Signup asks for Portuguese Citizen Card number or another identification document for non-Portuguese users; one Yorn number per identity document.",
+        "payment": "Recurring tariff cost must remain funded; unpaid cost leads to service restrictions and later collection when balance becomes sufficient.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Vodafone states Yorn works in roaming. In the EEA/UK received communications are free; outside the EEA country-specific roaming charges apply. This does not remove the underlying weekly tariff funding requirement.",
+        "refund": "Not relied on for this route decision.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "Weekly recurring tariff cost plus blocking of incoming calls/SMS after 7 days unpaid makes Yorn structurally unsuitable for cheap passive retention.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+        "tariffSummary": "HOLD: weekly-cost Yorn tariff; after 7 days unpaid, incoming calls/SMS are blocked until balance covers the overdue tariff.",
+        "sourceIds": [
+          "official-yorn-weekly-cost-2026-09-29",
+          "official-yorn-nonpayment-block-2026-09-29",
+          "official-yorn-eligibility-2026-09-29",
+          "official-yorn-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "Negative-knowledge card: recurring weekly tariff is not a low-cost retention route.",
+          "Do not convert the weekly charge into a misleading annual “keep cost”."
+        ]
+      }
+    }
+  ]
+}

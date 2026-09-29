@@ -258,6 +258,63 @@
     }
   },
   {
+    "id": "snap-a1-hr-prepaid-2026-current-profile-20260929",
+    "routeId": "a1-hr-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+    "data": {
+      "id": "a1-hr-prepaid-2026",
+      "brandId": "a1-hr-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Current A1 Croatia standard prepaid can be ordered online; current SIM promo pricing is EUR3 and physical SIM delivery requires showing an identity card, while A1 also exposes a prepaid data-registration flow accepting an identity card or passport. Current online recharge supports EUR5/10/15/20/35 standard voucher amounts and card/Apple Pay/Google Pay/Revolut/KEKS Pay/PayPal. A1 confirms those recharges extend account validity, but current first-party material captured here does not state the validity duration produced by each voucher amount.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 3,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 3,
+        "landedCny": null,
+        "fxCheckedAt": "2026-09-29",
+        "state": "official-current-sim-price"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "EUR5 is the lowest currently displayed standard voucher amount, and A1 says standard vouchers extend account validity. The captured current first-party pages do not specify how many validity days each voucher amount adds, so no yearly keep cost or safe interval is modeled.",
+        "intervalDays": null,
+        "state": "official-recharge-minimum-validity-duration-unresolved"
+      },
+      "chinaActivation": "A1 sells standard prepaid SIM online with delivery and first-call activation; physical delivery requires identity-card presentation. This packet does not establish international delivery or a China-first activation path.",
+      "kyc": "A1 offers prepaid data registration using a digital photo of an identity card or passport. Delivery of the current standard prepaid SIM requires identity-card presentation; foreign remote onboarding remains unresolved.",
+      "payment": "Online recharge can be made regardless of location using bank card, Apple Pay/Google Pay, Revolut, KEKS Pay or PayPal. Current standard voucher amounts start at EUR5.",
+      "wifiCalling": "Not relied on for this route decision.",
+      "roamingSms": "A1 publishes a prepaid roaming tariff and says prepaid users automatically connect to available networks abroad. The packet does not establish China-specific incoming OTP reliability.",
+      "refund": "Not established.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current online acquisition/recharge/KYC/roaming evidence is stronger, but the key standard-voucher validity duration is still absent from captured current first-party material; annual retention cost cannot be calculated safely.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "tariffSummary": "HOLD: SIM EUR3; recharge starts EUR5 and extends validity, but current first-party voucher-to-validity duration remains unresolved.",
+      "sourceIds": [
+        "official-a1-hr-sim-prepaid-2026-09-29",
+        "official-a1-hr-recharge-2026-09-29",
+        "official-a1-hr-prepaid-registration-2026-09-29",
+        "official-a1-hr-prepaid-roaming-2026-09-29"
+      ],
+      "guideSteps": [
+        "HOLD: do not infer a yearly keep cost from the EUR5 minimum voucher.",
+        "Re-open when current first-party voucher validity days are captured."
+      ]
+    }
+  },
+  {
     "id": "snap-activatex-temp-capabilities-aa7a7c",
     "routeId": "activatex-temp",
     "kind": "capabilities",
@@ -2304,6 +2361,62 @@
     }
   },
   {
+    "id": "snap-orange-pl-nakarte-2026-current-profile-20260929",
+    "routeId": "orange-pl-nakarte-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+    "data": {
+      "id": "orange-pl-nakarte-2026",
+      "brandId": "orange-pl-nakarte",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Orange Polska prepaid pricing explicitly offers account-validity extensions of +31 days for PLN9, +93 days for PLN19, and +365 days for PLN39. The old PLN5 inactivity-maintenance fee remains abolished since 24 January 2024. Current ordinary reload validity is also amount-dependent. The legacy PLN10/year model is therefore stale.",
+      "landedCost": {
+        "currency": "PLN",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "starter-price-not-relied-on"
+      },
+      "keep": {
+        "currency": "PLN",
+        "observedActionCost": 39,
+        "yearCostOriginal": 39,
+        "yearCostCny": null,
+        "action": "Current Orange prepaid page explicitly offers +365 days of account validity for PLN39. Shorter extensions are +31d/PLN9 and +93d/PLN19. The former PLN5 inactivity fee was abolished in 2024.",
+        "intervalDays": 365,
+        "state": "official-current-validity-extension"
+      },
+      "chinaActivation": "Polish prepaid numbers require registration. Orange supports several registration methods, but in-person registration accepts an identity card or passport; a reliable China-first new-number acquisition/activation path is not established.",
+      "kyc": "Registration is mandatory. Orange explicitly accepts identity card or passport for in-person prepaid registration.",
+      "payment": "Orange prepaid supports reloads and paid validity extensions; local online identity/payment rails may still make acquisition Poland-centered.",
+      "wifiCalling": "Not relied on for this route decision.",
+      "roamingSms": "Orange prepaid supports roaming; current packet does not establish China-specific incoming OTP reliability or whether all desired verification senders deliver consistently abroad.",
+      "refund": "The former inactivity fee was withdrawn/refunded following regulatory intervention; no refund assumption is used for current prepaid validity extensions.",
+      "trend": "changed",
+      "guideEligible": false,
+      "holdReason": "Current annual validity economics are clear at PLN39/365 days, but new-number registration/acquisition remains Poland-centered and China/overseas OTP reliability is not independently verified.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.orange.pl/view/oferta-na-karte",
+      "tariffSummary": "Current official account-validity extension: PLN39 for +365 days; old PLN5 inactivity fee abolished in 2024.",
+      "sourceIds": [
+        "official-orange-pl-prepaid-validity-2026-09-29",
+        "official-orange-pl-registration-2026-09-29",
+        "official-orange-pl-inactivity-fee-abolished-2026-09-29"
+      ],
+      "guideSteps": [
+        "HOLD: PLN39/365-day validity is current first-party pricing.",
+        "Require stronger foreign acquisition and overseas OTP evidence before promotion."
+      ]
+    }
+  },
+  {
     "id": "snap-povo20-zero-base-2026-current-profile-20260929",
     "routeId": "povo20-zero-base-2026",
     "kind": "current-profile",
@@ -3486,6 +3599,63 @@
     }
   },
   {
+    "id": "snap-three-ie-prepay-lifecycle-2026-current-profile-20260929",
+    "routeId": "three-ie-prepay-lifecycle-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+    "data": {
+      "id": "three-ie-prepay-lifecycle-2026",
+      "brandId": "three-ie-prepay",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Three Ireland provider terms and provider-moderated help agree that a prepay number can be terminated for extended inactivity, but the current guidance is internally inconsistent on the safe timing: a 2026 help article describes an alert after at least 90 days plus another 180 days before removal, while other Three guidance says to top up at least every 6 months and the General Terms permit restriction/termination after 12 months without top-up or chargeable use. Credit expiry is a separate rule. The legacy “one SMS every ~80 days” recommendation therefore overstates certainty.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "sim-free-current-keep-cost-not-modeled"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Three consistently says a top-up or credit-reducing call/text/data resets dormancy, but current provider guidance conflicts on the relevant inactivity threshold (90+180 days, six-month advice, and a 12-month contractual termination threshold). Do not publish a single cheapest cadence until Three reconciles these rules.",
+        "intervalDays": null,
+        "state": "current-provider-lifecycle-conflict"
+      },
+      "chinaActivation": "Three Prepay SIM/eSIM is an Irish consumer product. Online/self-service top-up exists, but a reliable China-first acquisition/activation path is not established in this packet.",
+      "kyc": "No evidence in the current Three consumer prepay flow establishes a mandatory national real-name registration regime; acquisition/activation still remains Ireland-centered for this use case.",
+      "payment": "My3 supports top-up and scheduled top-up; current keep-cost is not modeled because lifecycle timing is internally inconsistent.",
+      "wifiCalling": "Not relied on for this route decision.",
+      "roamingSms": "Three provider-moderated support confirms that while abroad the phone can connect automatically to a roaming network and receive calls/texts without enabling mobile-data roaming; exact OTP reliability outside the EU is not independently established.",
+      "refund": "Not relied on for this route decision.",
+      "trend": "conflicted",
+      "guideEligible": false,
+      "holdReason": "Current Three provider guidance conflicts on the dormancy timeline, so the prior €0.30/year / 80-day recommendation is not decision-safe. Keep as HOLD until one current lifecycle rule can be reconciled.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.three.ie/plans/prepay-sim-only.html",
+      "tariffSummary": "HOLD: top-up or chargeable use preserves activity, but current Three materials conflict on 90+180 days vs six-month advice vs 12-month contractual threshold.",
+      "sourceIds": [
+        "official-three-ie-prepay-terms-2026-09-29",
+        "official-three-ie-keeping-active-2026-09-29",
+        "official-three-ie-recycling-2026-09-29",
+        "official-three-ie-roaming-activity-2026-09-29"
+      ],
+      "guideSteps": [
+        "HOLD: do not use the legacy 1-SMS/80-day cost model.",
+        "Wait for one current provider lifecycle rule before promotion."
+      ]
+    }
+  },
+  {
     "id": "snap-three-uk-payg-180d-2026-current-profile-20260928",
     "routeId": "three-uk-payg-180d-2026",
     "kind": "current-profile",
@@ -4408,6 +4578,63 @@
         "Check the current Vodafone offer and eligibility before attempting any order.",
         "Do not use fabricated address or identity information to satisfy UK eligibility.",
         "If you need a durable overseas number, compare an actionable pilot route instead."
+      ]
+    }
+  },
+  {
+    "id": "snap-vodafone-yorn-pt-2026-current-profile-20260929",
+    "routeId": "vodafone-yorn-pt-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+    "data": {
+      "id": "vodafone-yorn-pt-2026",
+      "brandId": "vodafone-yorn",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Vodafone Yorn remains a recurring tariff rather than a low-cost PAYG retention product. Vodafone states Yorn tariffs carry a weekly cost. If the tariff charge remains unpaid for 7 days after its due date, incoming calls and SMS are also blocked until sufficient balance is available and the overdue tariff cost is debited.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "recurring-tariff-not-retention-priced"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Weekly-cost tariff model. If the scheduled tariff charge is not paid within 7 days, Vodafone says incoming calls and SMS are blocked; restoring sufficient balance causes the overdue tariff cost to be collected. This is structurally unsuitable for cheap passive number retention.",
+        "intervalDays": 7,
+        "state": "official-recurring-tariff-incoming-block"
+      },
+      "chinaActivation": "Yorn is a Portugal consumer tariff. New users can request a Yorn SIM or port a number, but the product is not designed as an overseas-first passive retention route.",
+      "kyc": "Yorn eligibility is generally age 35 or under, with a student exception. Signup asks for Portuguese Citizen Card number or another identification document for non-Portuguese users; one Yorn number per identity document.",
+      "payment": "Recurring tariff cost must remain funded; unpaid cost leads to service restrictions and later collection when balance becomes sufficient.",
+      "wifiCalling": "Not relied on for this route decision.",
+      "roamingSms": "Vodafone states Yorn works in roaming. In the EEA/UK received communications are free; outside the EEA country-specific roaming charges apply. This does not remove the underlying weekly tariff funding requirement.",
+      "refund": "Not relied on for this route decision.",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": "Weekly recurring tariff cost plus blocking of incoming calls/SMS after 7 days unpaid makes Yorn structurally unsuitable for cheap passive retention.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+      "tariffSummary": "HOLD: weekly-cost Yorn tariff; after 7 days unpaid, incoming calls/SMS are blocked until balance covers the overdue tariff.",
+      "sourceIds": [
+        "official-yorn-weekly-cost-2026-09-29",
+        "official-yorn-nonpayment-block-2026-09-29",
+        "official-yorn-eligibility-2026-09-29",
+        "official-yorn-roaming-2026-09-29"
+      ],
+      "guideSteps": [
+        "Negative-knowledge card: recurring weekly tariff is not a low-cost retention route.",
+        "Do not convert the weekly charge into a misleading annual “keep cost”."
       ]
     }
   },

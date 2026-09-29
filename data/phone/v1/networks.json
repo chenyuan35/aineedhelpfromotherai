@@ -5,6 +5,11 @@
     "marketId": "nz"
   },
   {
+    "id": "a1-hr",
+    "name": "A1 Croatia",
+    "marketId": "hr"
+  },
+  {
     "id": "ais-th",
     "name": "AIS Thailand",
     "marketId": "th"
@@ -80,6 +85,11 @@
     "marketId": "fr"
   },
   {
+    "id": "orange-pl",
+    "name": "Orange Polska",
+    "marketId": "pl"
+  },
+  {
     "id": "rogers-ca",
     "name": "Rogers Canada",
     "marketId": "ca"
@@ -120,6 +130,11 @@
     "marketId": "hk"
   },
   {
+    "id": "three-ie",
+    "name": "Three Ireland",
+    "marketId": "ie"
+  },
+  {
     "id": "three-uk",
     "name": "Three UK",
     "marketId": "gb"
@@ -153,6 +168,11 @@
     "id": "vodafone-de",
     "name": "Vodafone DE",
     "marketId": "de"
+  },
+  {
+    "id": "vodafone-pt",
+    "name": "Vodafone Portugal",
+    "marketId": "pt"
   },
   {
     "id": "vodafone-uk",

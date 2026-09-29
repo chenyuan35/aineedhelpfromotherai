@@ -258,6 +258,30 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-a1-hr-prepaid-registration-2026-09-29",
+    "url": "https://www.a1.hr/privatni/mobiteli/a1-na-bonove/pristupnica",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-a1-hr-prepaid-roaming-2026-09-29",
+    "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-a1-hr-recharge-2026-09-29",
+    "url": "https://www.a1.hr/privatni/mobiteli/mobilno-placanje/obnova-a1-racuna",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-a1-hr-sim-prepaid-2026-09-29",
+    "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-ais-sim-registration-2026-09-29",
     "url": "https://www.ais.th/en/consumers/help-and-support/network-technologies/update-sim-registration",
     "type": "provider-official",
@@ -480,6 +504,24 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-orange-pl-inactivity-fee-abolished-2026-09-29",
+    "url": "https://www.orange.pl/view/utrzymanie-numeru",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-orange-pl-prepaid-validity-2026-09-29",
+    "url": "https://www.orange.pl/view/oferta-na-karte",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-orange-pl-registration-2026-09-29",
+    "url": "https://www.orange.pl/view/zarejestruj-numer",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-orange-roaming-partners-2026-09-29",
     "url": "https://boutique.orange.fr/vitrines/voyage/reseaux-partenaires",
     "type": "provider-official",
@@ -696,6 +738,30 @@
     "reportedAt": "2026-09-26"
   },
   {
+    "id": "official-three-ie-keeping-active-2026-09-29",
+    "url": "https://community.three.ie/t5/Prepay/Keeping-your-Prepay-Number-Active/ta-p/804841",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-three-ie-prepay-terms-2026-09-29",
+    "url": "https://www.three.ie/legal/terms/prepay.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-three-ie-recycling-2026-09-29",
+    "url": "https://community.three.ie/t5/Prepay/Recycling-Inactive-Prepay-Numbers/ta-p/800862",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-three-ie-roaming-activity-2026-09-29",
+    "url": "https://community.three.ie/t5/Prepay-Plans-and-Services/Data-roaming-and-keeping-phone-number-active/td-p/791338",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-three-newpayg-priceguide-2026-04-19",
     "url": "https://www.three.co.uk/content/dam/threedigital/terms-and-conditions/price-guides/latest-price-guides/newpaygplans-priceguide-19042026.pdf",
     "type": "provider-official",
@@ -760,6 +826,30 @@
     "url": "https://www.vodafone.de/hilfe/prepaid.html",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-yorn-eligibility-2026-09-29",
+    "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yorn-nonpayment-block-2026-09-29",
+    "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/o-que-acontece-se-nao-tiver-saldo-suficiente-na-data-do-custo-semanal.html?PageSpeed=noscript",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yorn-roaming-2026-09-29",
+    "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/internet-fixa/posso-usar-o-meu-yorn-fora-de-portugal-roaming.html?PageSpeed=noscript",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-yorn-weekly-cost-2026-09-29",
+    "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/os-meus-minutos-e-mensagens-renovam-a-semana-ou-ao-mes.html?PageSpeed=noscript",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "specialist-3gviettel-vtvang-2026-09-29",
