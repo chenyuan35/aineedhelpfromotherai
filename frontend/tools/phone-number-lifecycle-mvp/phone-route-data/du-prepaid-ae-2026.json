@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "du-prepaid-ae-2026",
+    "marketId": "ae",
+    "networkId": "du-ae",
+    "brandId": "du-prepaid",
+    "displayName": "du Prepaid",
+    "family": "temporary",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+    "sourceIds": [
+      "official-du-prepaid-lifecycle-2026-09-29",
+      "official-du-tourist-renewal-2026-09-29",
+      "official-du-tourist-sim-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "ae",
+    "name": "UAE",
+    "countryCode": "AE"
+  },
+  "network": {
+    "id": "du-ae",
+    "name": "du UAE",
+    "marketId": "ae"
+  },
+  "brand": {
+    "id": "du-prepaid",
+    "networkId": "du-ae",
+    "name": "du Prepaid",
+    "marketId": "ae"
+  },
+  "metrics": {
+    "routeId": "du-prepaid-ae-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "AED",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "AED",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-du-prepaid-lifecycle-2026-09-29",
+      "url": "https://www.du.ae/support-articledetail?artid=PROD-89276&lang=en-GB&userType=business&version=2.0",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-du-tourist-renewal-2026-09-29",
+      "url": "https://www.du.ae/support-articledetail?artid=PROD-8773&lang=en-GB&userType=business&version=2.0",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-du-tourist-sim-2026-09-29",
+      "url": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/plan-details/plan-information",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-du-prepaid-ae-2026-current-profile-20260929",
+      "routeId": "du-prepaid-ae-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "du-prepaid-ae-2026",
+        "brandId": "du-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current du Tourist SIM material establishes a 90-day visitor-line validity. du support also documents an AED5 renewal/extension action during the 90-day validity, while current tourist eSIM bundles are positioned as short-stay products. This is not evidence of indefinite annual retention.",
+        "landedCost": {
+          "currency": "AED",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "tourist-price-not-used-for-retention"
+        },
+        "keep": {
+          "currency": "AED",
+          "observedActionCost": 5,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Tourist SIM is valid for 90 days. du support documents an AED5 renewal/extension action during that validity; current evidence does not establish an indefinitely repeatable one-year keep-number path.",
+          "intervalDays": 90,
+          "state": "official-short-term-extension"
+        },
+        "chinaActivation": "This is a UAE visitor product. Current du pages support tourist SIM/eSIM purchase and activation, but the identity flow is tied to valid UAE tourist/transit documentation rather than a location-independent long-term number product.",
+        "kyc": "Tourist customers require valid tourist or transit visa documentation; resident/expatriate prepaid identity paths use Emirates ID or employment/residence documentation.",
+        "payment": "Current Tourist eSIM purchase is digital; ordinary prepaid recharge/app payment is available.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "du states international roaming can be activated for the Tourist plan; this packet does not establish free or reliable incoming OTP SMS abroad.",
+        "refund": "Not relied on for this route decision.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "The documented product is a short-term Tourist SIM with 90-day validity and an extension path, not a verified indefinite low-cost retention product; long-term overseas OTP evidence is missing.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+        "tariffSummary": "Tourist SIM: 90-day validity; official support documents AED5 renewal/extension; no verified annual/indefinite keep path.",
+        "sourceIds": [
+          "official-du-tourist-sim-2026-09-29",
+          "official-du-tourist-renewal-2026-09-29",
+          "official-du-prepaid-lifecycle-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD for long-term number retention.",
+          "Do not extrapolate a documented 90-day extension into indefinite annual survival."
+        ]
+      }
+    }
+  ]
+}

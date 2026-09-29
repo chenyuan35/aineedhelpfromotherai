@@ -1,9 +1,9 @@
 {
  "schemaVersion": "1.0",
  "market": "ph-tr-ae-vn",
- "checkedAt": "2026-09-26",
- "status": "batch-j-evidence-captured",
- "notes": "Philippines + Turkey + UAE + Vietnam. Globe official SIM terms (1-year top-up rule, SIM Registration Act). Turkey: tourist SIM 90-day expiry without residence permit (ikamet) — regulatory blocker for foreigners. Viettel VT Vàng keep-number package documented via VN telecom media.",
+ "checkedAt": "2026-09-29",
+ "status": "batch-j-current-facts-reconciled",
+ "notes": "PH/TR/AE/VN current-fact reconciliation: Globe tourist 30-day hard cap; Turkey legacy 90-day YKN cap repealed in 2026; du Tourist SIM 90-day + documented AED5 extension; Viettel VTVANG 50,000 VND/12mo specialist-reported with foreign-acquisition/KYC constraints.",
  "networks": [
   {
    "id": "globe-ph",
@@ -48,49 +48,51 @@
   {
    "id": "globe-prepaid-1yr-2026",
    "brandId": "globe-prepaid",
-   "publishState": "candidate",
+   "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "Official SIM terms (2026-09-26): SIM permanently disconnected if no regular load top-up activity for ONE (1) YEAR. Since 2018-07-05 all Globe prepaid load carries 1-year validity (media-confirmed, DTI directive). Zero-rated/emergency activity does NOT count as valid activity.",
+   "acquisitionSummary": "Current Globe prepaid terms still contain a one-year regular-load rule for ordinary registered prepaid lines, but foreign nationals registered as tourists are a separate case: their SIM/eSIM automatically expires 30 days after registration. The old cheap yearly-keep framing therefore does not apply to the target foreign-tourist route.",
    "landedCost": {
     "currency": "PHP",
-    "providerOrCommunityPrice": 40,
+    "providerOrCommunityPrice": null,
     "mandatoryTopup": null,
-    "shipping": 0,
+    "shipping": null,
     "adapterCostCny": null,
-    "landedOriginal": 40,
-    "landedCny": 5,
-    "fxCheckedAt": "2026-09-26",
-    "state": "community-reported-sim-price"
+    "landedOriginal": null,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "not-relied-on-for-tourist-hold"
    },
    "keep": {
     "currency": "PHP",
-    "observedActionCost": 10,
-    "yearCostOriginal": 10,
-    "yearCostCny": 1.3,
-    "action": "Any load top-up (min ~₱10) per 365 days keeps SIM active (official 1-year rule). ₱10/yr ≈ ¥1.3 — among global cheapest.",
-    "intervalDays": 365,
-    "state": "official-confirmed"
+    "observedActionCost": null,
+    "yearCostOriginal": null,
+    "yearCostCny": null,
+    "action": "Foreign-tourist registration is the binding rule for this use case: Globe states the tourist SIM/eSIM automatically expires 30 days after registration. The ordinary one-year regular-load rule is not an annual keep path for a tourist-registered line.",
+    "intervalDays": 30,
+    "state": "official-tourist-hard-cap"
    },
-   "chinaActivation": "PH SIM Registration Act (2022) requires registration with valid ID (passport OK for foreigners); online registration available — but SIM acquisition typically local. eSIM via GlobeOne app 验证中.",
-   "kyc": "SIM Registration Act mandatory; passport accepted for foreign nationals.",
-   "payment": "GCash/local rails; international card top-up 验证中.",
-   "wifiCalling": "Supported on select devices.",
-   "roamingSms": "Receiving SMS abroad works (community); roaming load needed for outbound.",
-   "refund": "not reconciled",
-   "trend": "stable",
+   "chinaActivation": "Foreign tourists must register the SIM with passport bio page, current visa stamp, proof of Philippine address and a return/onward ticket. Tourist registration is short-lived rather than a China-first long-term retention route.",
+   "kyc": "SIM registration is mandatory. Globe states foreign tourists need passport, current visa stamp, Philippine address proof and return/onward ticket; tourist SIM registration expires after 30 days.",
+   "payment": "GlobeOne and GCash support reloads while abroad, but payment convenience does not override the 30-day tourist-registration lifetime.",
+   "wifiCalling": "Not relied on for this route decision.",
+   "roamingSms": "Official Globe prepaid roaming support says a prepaid line can keep roaming signal with zero load and can receive incoming texts for free while abroad.",
+   "refund": "Globe terms state load on a permanently disconnected SIM is not refundable for cash.",
+   "trend": "changed",
    "guideEligible": false,
-   "holdReason": "Acquisition requires PH presence or proxy; keep as reference + cheap-cost benchmark.",
-   "lastVerifiedAt": "2026-09-26",
-   "acquireUrl": "https://www.globe.com.ph/prepaid",
-   "tariffSummary": "1 top-up/year keeps SIM; ₱10 min; 1-year load validity.",
+   "holdReason": "Foreign-tourist SIM/eSIM registration automatically expires after 30 days, so the legacy one-top-up-per-year framing is not valid for the target overseas foreign-user retention job.",
+   "lastVerifiedAt": "2026-09-29",
+   "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+   "tariffSummary": "Tourist registration: 30-day automatic expiry. Ordinary prepaid one-year load rule exists but is not a tourist keep-number path.",
    "sourceIds": [
-    "official-globe-sim-terms-2026-09-26",
-    "media-rappler-globe-1yr-load-2018"
+    "official-globe-sim-terms-2026-09-29",
+    "official-globe-esim-terms-2026-09-29",
+    "official-globe-sim-registration-2026-09-29",
+    "official-globe-prepaid-roaming-2026-09-29"
    ],
    "guideSteps": [
-    "Acquire Globe SIM in PH; register with passport.",
-    "₱10 top-up yearly via GlobeOne app."
+    "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
+    "Do not model the ordinary one-year load rule as a tourist annual keep cost."
    ]
   },
   {
@@ -99,7 +101,7 @@
    "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "Turkey regulatory rule: prepaid SIMs registered on foreign passport WITHOUT residence permit (ikamet) expire after 90 days (long-standing rule, community-documented 2021-2026). To keep beyond 90 days, must update registration with ikamet.",
+   "acquisitionSummary": "The legacy fixed 90-day passport/YKN blocker is stale. BTK Decision 2026/IK-THD/125 removed the old technical clauses that forced passport-registered foreign lines into the 90-day YKN-conversion shutdown path, effective 25 June 2026. Turkcell now offers a current Tourist SIM/eSIM flow using passport identity checks and Türkiye-arrival activation.",
    "landedCost": {
     "currency": "TRY",
     "providerOrCommunityPrice": null,
@@ -109,35 +111,36 @@
     "landedOriginal": null,
     "landedCny": null,
     "fxCheckedAt": null,
-    "state": "insufficient-evidence"
+    "state": "current-price-not-captured"
    },
    "keep": {
     "currency": "TRY",
     "observedActionCost": null,
     "yearCostOriginal": null,
     "yearCostCny": null,
-    "action": "BLOCKED for non-residents: 90-day passport cap without ikamet.",
-    "intervalDays": 90,
-    "state": "regulatory-blocker-community-confirmed"
+    "action": "Do not use the historical 90-day passport cap as the current retention rule. That technical rule was repealed in 2026; a current long-term Tourist-SIM inactivity/number-retention rule has not been established in this packet.",
+    "intervalDays": null,
+    "state": "legacy-blocker-repealed-current-retention-unverified"
    },
-   "chinaActivation": "In-country purchase + passport registration.",
-   "kyc": "Passport (90-day cap) or ikamet (unlimited).",
-   "payment": "n/a given blocker",
-   "wifiCalling": "n/a",
-   "roamingSms": "n/a given blocker",
-   "refund": "not reconciled",
-   "trend": "stable",
+   "chinaActivation": "Application can start online, but Turkcell states the Tourist line becomes usable after arrival in Türkiye. App self-activation for eSIM requires an eSIM/NFC phone, biometric passport scan, NFC passport read, liveness check and video contract confirmation.",
+   "kyc": "Current Tourist flow accepts a valid passport; in-app activation requires a biometric passport. Türkiye strengthened electronic/biometric subscriber identity rules in 2026, while the old fixed 90-day YKN conversion clause was removed.",
+   "payment": "Current Tourist application accepts debit/credit cards supporting international and online transactions.",
+   "wifiCalling": "Not relied on for this route decision.",
+   "roamingSms": "Current Turkcell Tourist package page says the package is valid only in Türkiye; this packet does not establish reliable overseas incoming OTP/SMS after departure.",
+   "refund": "Turkcell states Tourist SIM refunds go back to the same credit card after cancellation through customer service.",
+   "trend": "changed",
    "guideEligible": false,
-   "holdReason": "Negative knowledge: Turkey not viable for non-resident retention (90-day passport cap). Document to save user effort.",
-   "lastVerifiedAt": "2026-09-26",
-   "acquireUrl": "https://www.turkcell.com.tr/",
-   "tariffSummary": "Tourist SIM: 90 days max without residence permit.",
+   "holdReason": "The old 90-day passport blocker is no longer current, but the route still lacks a verified long-term retention rule and overseas incoming-SMS path; activation/use is Türkiye-centered.",
+   "lastVerifiedAt": "2026-09-29",
+   "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+   "tariffSummary": "Legacy 90-day YKN blocker repealed in 2026; current Tourist SIM supports passport-based online application/eSIM flow, but long-term retention and overseas OTP remain unverified.",
    "sourceIds": [
-    "community-turkishliving-turkcell-90d-2021",
-    "media-investment-tr-tourist-sim-90d"
+    "official-turkcell-tourist-sim-2026-09-29",
+    "official-btk-7571-rule-change-2026-09-29"
    ],
    "guideSteps": [
-    "Avoid-route for overseas retention."
+    "HOLD: do not repeat the pre-June-2026 fixed 90-day passport-cap claim.",
+    "Treat as Türkiye tourist connectivity until current long-term retention and overseas OTP evidence exists."
    ],
    "avoidRoute": true
   },
@@ -147,7 +150,7 @@
    "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "du prepaid; app-based management with 90-day free-data recharge incentive (official psim page, partial capture 1144 chars — page JS-heavy). Validity/deactivation rule not captured.",
+   "acquisitionSummary": "Current du Tourist SIM material establishes a 90-day visitor-line validity. du support also documents an AED5 renewal/extension action during the 90-day validity, while current tourist eSIM bundles are positioned as short-stay products. This is not evidence of indefinite annual retention.",
    "landedCost": {
     "currency": "AED",
     "providerOrCommunityPrice": null,
@@ -157,34 +160,37 @@
     "landedOriginal": null,
     "landedCny": null,
     "fxCheckedAt": null,
-    "state": "insufficient-evidence"
+    "state": "tourist-price-not-used-for-retention"
    },
    "keep": {
     "currency": "AED",
-    "observedActionCost": null,
+    "observedActionCost": 5,
     "yearCostOriginal": null,
     "yearCostCny": null,
-    "action": "Not established — validity terms need capture (JS-blocked).",
-    "intervalDays": null,
-    "state": "insufficient-evidence"
+    "action": "Tourist SIM is valid for 90 days. du support documents an AED5 renewal/extension action during that validity; current evidence does not establish an indefinitely repeatable one-year keep-number path.",
+    "intervalDays": 90,
+    "state": "official-short-term-extension"
    },
-   "chinaActivation": "UAE prepaid requires Emirates ID (residents) or passport (tourist SIMs, limited validity); tourist focus suggests short-validity products.",
-   "kyc": "Emirates ID / passport.",
-   "payment": "App/card.",
-   "wifiCalling": "unverified",
-   "roamingSms": "unverified",
-   "refund": "not reconciled",
-   "trend": "watch",
+   "chinaActivation": "This is a UAE visitor product. Current du pages support tourist SIM/eSIM purchase and activation, but the identity flow is tied to valid UAE tourist/transit documentation rather than a location-independent long-term number product.",
+   "kyc": "Tourist customers require valid tourist or transit visa documentation; resident/expatriate prepaid identity paths use Emirates ID or employment/residence documentation.",
+   "payment": "Current Tourist eSIM purchase is digital; ordinary prepaid recharge/app payment is available.",
+   "wifiCalling": "Not relied on for this route decision.",
+   "roamingSms": "du states international roaming can be activated for the Tourist plan; this packet does not establish free or reliable incoming OTP SMS abroad.",
+   "refund": "Not relied on for this route decision.",
+   "trend": "changed",
    "guideEligible": false,
-   "holdReason": "Terms not captured; UAE tourist-SIM focus suggests poor retention fit.",
-   "lastVerifiedAt": "2026-09-26",
-   "acquireUrl": "https://www.du.ae/psim",
-   "tariffSummary": "Pending capture.",
+   "holdReason": "The documented product is a short-term Tourist SIM with 90-day validity and an extension path, not a verified indefinite low-cost retention product; long-term overseas OTP evidence is missing.",
+   "lastVerifiedAt": "2026-09-29",
+   "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+   "tariffSummary": "Tourist SIM: 90-day validity; official support documents AED5 renewal/extension; no verified annual/indefinite keep path.",
    "sourceIds": [
-    "official-du-psim-partial-2026-09-26"
+    "official-du-tourist-sim-2026-09-29",
+    "official-du-tourist-renewal-2026-09-29",
+    "official-du-prepaid-lifecycle-2026-09-29"
    ],
    "guideSteps": [
-    "Directory card — pending."
+    "HOLD for long-term number retention.",
+    "Do not extrapolate a documented 90-day extension into indefinite annual survival."
    ]
   },
   {
@@ -193,7 +199,7 @@
    "publishState": "observation",
    "numberType": "real-mobile",
    "simType": "physical + eSIM",
-   "acquisitionSummary": "Viettel offers 'VT Vàng' (VT Gold) keep-number package — 1-year number retention product (VN telecom media 2026-10). Vietnam #1 operator.",
+   "acquisitionSummary": "Recent Viettel-specialist reporting dated February 2026 describes VTVANG as a 12-month keep-number service for eligible prepaid lines. The same current report gives a 50,000 VND registration fee. A first-party Viettel product page for VTVANG was not located in this review, so the keep product remains specialist-reported rather than provider-official.",
    "landedCost": {
     "currency": "VND",
     "providerOrCommunityPrice": null,
@@ -203,34 +209,36 @@
     "landedOriginal": null,
     "landedCny": null,
     "fxCheckedAt": null,
-    "state": "insufficient-evidence-price-pending"
+    "state": "acquisition-cost-not-established"
    },
    "keep": {
     "currency": "VND",
-    "observedActionCost": null,
-    "yearCostOriginal": null,
+    "observedActionCost": 50000,
+    "yearCostOriginal": 50000,
     "yearCostCny": null,
-    "action": "VT Vàng package extends number retention to 1 year (media); exact fee pending capture (page partially extracted).",
+    "action": "Recent February-2026 Viettel-specialist evidence reports VTVANG at 50,000 VND for 12 months of number retention without normal recharge/activity; eligibility exclusions apply.",
     "intervalDays": 365,
-    "state": "media-reported-fee-pending"
+    "state": "current-specialist-reported"
    },
-   "chinaActivation": "VN prepaid requires registration; foreigner acquisition typically in-country.",
-   "kyc": "VN SIM registration mandatory.",
-   "payment": "local rails",
-   "wifiCalling": "unverified",
-   "roamingSms": "unverified",
-   "refund": "not reconciled",
+   "chinaActivation": "Viettel requires real-name subscriber verification. Current first-party 2026 guidance shows unverified subscribers can have outgoing calls/SMS blocked and overseas subscribers may need My Viettel/Tammi identity remediation. A reliable foreigner-acquisition path is not established here.",
+   "kyc": "Mandatory subscriber identity verification. Current 2026 Viettel notice emphasizes chip-ID/VNeID-based remediation for affected subscribers; foreign-user onboarding eligibility is not established by first-party evidence in this packet.",
+   "payment": "VTVANG is reported as an account/SMS service for eligible prepaid lines; foreign payment/onboarding is not established.",
+   "wifiCalling": "Not relied on for this route decision.",
+   "roamingSms": "Current Viettel guidance for subscribers abroad states roaming must be active to receive OTP, supporting inbound SMS capability when roaming is active; independent long-term OTP reliability is still unverified.",
+   "refund": "Not established.",
    "trend": "stable",
    "guideEligible": false,
-   "holdReason": "Fee + acquisition terms pending; VN low-priority market for CN users.",
-   "lastVerifiedAt": "2026-09-26",
-   "acquireUrl": "https://vietteltelecom.vn/",
-   "tariffSummary": "VT Vàng 1-year keep-number package exists; fee pending.",
+   "holdReason": "The 50,000 VND/12-month keep package is current specialist evidence but lacks a located first-party product page, and foreign-user acquisition/KYC plus long-term OTP reliability remain unresolved.",
+   "lastVerifiedAt": "2026-09-29",
+   "acquireUrl": "https://www.vietteltelecom.vn/",
+   "tariffSummary": "VTVANG reported at 50,000 VND/12 months for eligible prepaid lines; keep as HOLD until first-party product/eligibility and foreign acquisition are verified.",
    "sourceIds": [
-    "media-3gviettel-vtvang-2026-10"
+    "specialist-3gviettel-vtvang-2026-09-29",
+    "official-viettel-kyc-roaming-otp-2026-09-29"
    ],
    "guideSteps": [
-    "Directory card — pending."
+    "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
+    "Require first-party package/eligibility and foreign-acquisition verification before promotion."
    ]
   }
  ]

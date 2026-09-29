@@ -30,6 +30,11 @@
     "marketId": "hk"
   },
   {
+    "id": "du-ae",
+    "name": "du UAE",
+    "marketId": "ae"
+  },
+  {
     "id": "ee-uk",
     "name": "EE UK",
     "marketId": "gb"
@@ -38,6 +43,11 @@
     "id": "fet-tw",
     "name": "FarEasTone",
     "marketId": "tw"
+  },
+  {
+    "id": "globe-ph",
+    "name": "Globe Philippines",
+    "marketId": "ph"
   },
   {
     "id": "jio-in",
@@ -125,9 +135,19 @@
     "marketId": "us"
   },
   {
+    "id": "turkcell-tr",
+    "name": "Turkcell Türkiye",
+    "marketId": "tr"
+  },
+  {
     "id": "twm-tw",
     "name": "Taiwan Mobile",
     "marketId": "tw"
+  },
+  {
+    "id": "viettel-vn",
+    "name": "Viettel Vietnam",
+    "marketId": "vn"
   },
   {
     "id": "vodafone-de",

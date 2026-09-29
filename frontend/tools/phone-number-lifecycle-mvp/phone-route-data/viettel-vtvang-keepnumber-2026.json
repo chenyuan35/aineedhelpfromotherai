@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "viettel-vtvang-keepnumber-2026",
+    "marketId": "vn",
+    "networkId": "viettel-vn",
+    "brandId": "viettel-prepaid",
+    "displayName": "Viettel Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vietteltelecom.vn/",
+    "sourceIds": [
+      "official-viettel-kyc-roaming-otp-2026-09-29",
+      "specialist-3gviettel-vtvang-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "vn",
+    "name": "Vietnam",
+    "countryCode": "VN"
+  },
+  "network": {
+    "id": "viettel-vn",
+    "name": "Viettel Vietnam",
+    "marketId": "vn"
+  },
+  "brand": {
+    "id": "viettel-prepaid",
+    "networkId": "viettel-vn",
+    "name": "Viettel Prepaid",
+    "marketId": "vn"
+  },
+  "metrics": {
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "VND",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "VND",
+    "keepYearCostOriginal": 50000,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-viettel-kyc-roaming-otp-2026-09-29",
+      "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-thue-bao-viettel-bi-chan-do-chua-xac-thuc-thong-tin-huong-dan-cach-xu-ly/15333972",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "specialist-3gviettel-vtvang-2026-09-29",
+      "url": "https://3gviettel.com.vn/gia-tang-thoi-gian-giu-sim-viettel-voi-goi-vt-vang.html",
+      "type": "specialist-media",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-viettel-vtvang-keepnumber-2026-current-profile-20260929",
+      "routeId": "viettel-vtvang-keepnumber-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+      "data": {
+        "id": "viettel-vtvang-keepnumber-2026",
+        "brandId": "viettel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Recent Viettel-specialist reporting dated February 2026 describes VTVANG as a 12-month keep-number service for eligible prepaid lines. The same current report gives a 50,000 VND registration fee. A first-party Viettel product page for VTVANG was not located in this review, so the keep product remains specialist-reported rather than provider-official.",
+        "landedCost": {
+          "currency": "VND",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "acquisition-cost-not-established"
+        },
+        "keep": {
+          "currency": "VND",
+          "observedActionCost": 50000,
+          "yearCostOriginal": 50000,
+          "yearCostCny": null,
+          "action": "Recent February-2026 Viettel-specialist evidence reports VTVANG at 50,000 VND for 12 months of number retention without normal recharge/activity; eligibility exclusions apply.",
+          "intervalDays": 365,
+          "state": "current-specialist-reported"
+        },
+        "chinaActivation": "Viettel requires real-name subscriber verification. Current first-party 2026 guidance shows unverified subscribers can have outgoing calls/SMS blocked and overseas subscribers may need My Viettel/Tammi identity remediation. A reliable foreigner-acquisition path is not established here.",
+        "kyc": "Mandatory subscriber identity verification. Current 2026 Viettel notice emphasizes chip-ID/VNeID-based remediation for affected subscribers; foreign-user onboarding eligibility is not established by first-party evidence in this packet.",
+        "payment": "VTVANG is reported as an account/SMS service for eligible prepaid lines; foreign payment/onboarding is not established.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Current Viettel guidance for subscribers abroad states roaming must be active to receive OTP, supporting inbound SMS capability when roaming is active; independent long-term OTP reliability is still unverified.",
+        "refund": "Not established.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": "The 50,000 VND/12-month keep package is current specialist evidence but lacks a located first-party product page, and foreign-user acquisition/KYC plus long-term OTP reliability remain unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.vietteltelecom.vn/",
+        "tariffSummary": "VTVANG reported at 50,000 VND/12 months for eligible prepaid lines; keep as HOLD until first-party product/eligibility and foreign acquisition are verified.",
+        "sourceIds": [
+          "specialist-3gviettel-vtvang-2026-09-29",
+          "official-viettel-kyc-roaming-otp-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
+          "Require first-party package/eligibility and foreign-acquisition verification before promotion."
+        ]
+      }
+    }
+  ]
+}

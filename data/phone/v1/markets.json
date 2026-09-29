@@ -1,5 +1,10 @@
 [
   {
+    "id": "ae",
+    "name": "UAE",
+    "countryCode": "AE"
+  },
+  {
     "id": "au",
     "name": "Australia",
     "countryCode": "AU"
@@ -90,6 +95,11 @@
     "countryCode": "NZ"
   },
   {
+    "id": "ph",
+    "name": "Philippines",
+    "countryCode": "PH"
+  },
+  {
     "id": "sg",
     "name": "Singapore",
     "countryCode": "SG"
@@ -98,6 +108,11 @@
     "id": "th",
     "name": "Thailand",
     "countryCode": "TH"
+  },
+  {
+    "id": "tr",
+    "name": "Turkey",
+    "countryCode": "TR"
   },
   {
     "id": "tw",
@@ -113,5 +128,10 @@
     "id": "various",
     "name": "Destination-specific",
     "countryCode": null
+  },
+  {
+    "id": "vn",
+    "name": "Vietnam",
+    "countryCode": "VN"
   }
 ]

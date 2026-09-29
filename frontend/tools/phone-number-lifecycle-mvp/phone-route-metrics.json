@@ -98,6 +98,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "du-prepaid-ae-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AED",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AED",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "ee-uk-payg-180d-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -132,6 +144,18 @@
       "keepYearCostOriginal": 0.6,
       "keepYearCostCny": 5.36,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "globe-prepaid-1yr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PHP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PHP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "h2o-paygo-10-90d-2026",
@@ -482,6 +506,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "turkcell-tourist-90d-blocker-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TRY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TRY",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "ultra-mobile-paygo-3-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -504,6 +540,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "viettel-vtvang-keepnumber-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "VND",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "VND",
+      "keepYearCostOriginal": 50000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "vodafone-callya-90d-2026",

@@ -152,6 +152,25 @@
     ]
   },
   {
+    "id": "du-prepaid-ae-2026",
+    "marketId": "ae",
+    "networkId": "du-ae",
+    "brandId": "du-prepaid",
+    "displayName": "du Prepaid",
+    "family": "temporary",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/registration",
+    "sourceIds": [
+      "official-du-prepaid-lifecycle-2026-09-29",
+      "official-du-tourist-renewal-2026-09-29",
+      "official-du-tourist-sim-2026-09-29"
+    ]
+  },
+  {
     "id": "ee-uk-payg-180d-2026",
     "marketId": "gb",
     "networkId": "ee-uk",
@@ -217,6 +236,26 @@
       "src-7bc565362f29",
       "src-9e494ffc524e",
       "src-ea6b2a6ebb26"
+    ]
+  },
+  {
+    "id": "globe-prepaid-1yr-2026",
+    "marketId": "ph",
+    "networkId": "globe-ph",
+    "brandId": "globe-prepaid",
+    "displayName": "Globe Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.globe.com.ph/prepaid/local-esim",
+    "sourceIds": [
+      "official-globe-esim-terms-2026-09-29",
+      "official-globe-prepaid-roaming-2026-09-29",
+      "official-globe-sim-registration-2026-09-29",
+      "official-globe-sim-terms-2026-09-29"
     ]
   },
   {
@@ -777,6 +816,24 @@
     ]
   },
   {
+    "id": "turkcell-tourist-90d-blocker-2026",
+    "marketId": "tr",
+    "networkId": "turkcell-tr",
+    "brandId": "turkcell-tourist",
+    "displayName": "Turkcell Tourist SIM",
+    "family": "temporary",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+    "sourceIds": [
+      "official-btk-7571-rule-change-2026-09-29",
+      "official-turkcell-tourist-sim-2026-09-29"
+    ]
+  },
+  {
     "id": "ultra-mobile-paygo-3-2026",
     "marketId": "us",
     "networkId": "tmobile-us",
@@ -811,6 +868,24 @@
     "sourceIds": [
       "src-518c6a9bf6f0",
       "src-cbabf70eb1c4"
+    ]
+  },
+  {
+    "id": "viettel-vtvang-keepnumber-2026",
+    "marketId": "vn",
+    "networkId": "viettel-vn",
+    "brandId": "viettel-prepaid",
+    "displayName": "Viettel Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vietteltelecom.vn/",
+    "sourceIds": [
+      "official-viettel-kyc-roaming-otp-2026-09-29",
+      "specialist-3gviettel-vtvang-2026-09-29"
     ]
   },
   {

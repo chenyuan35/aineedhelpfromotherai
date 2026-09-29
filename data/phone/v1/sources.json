@@ -288,6 +288,12 @@
     "reportedAt": "2026-04-01"
   },
   {
+    "id": "official-btk-7571-rule-change-2026-09-29",
+    "url": "https://www.btk.gov.tr/kurul-kararlari",
+    "type": "official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-callya-faq-via-prepaid-deutschland-2025-08",
     "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
     "type": "specialist-media",
@@ -304,6 +310,24 @@
     "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-du-prepaid-lifecycle-2026-09-29",
+    "url": "https://www.du.ae/support-articledetail?artid=PROD-89276&lang=en-GB&userType=business&version=2.0",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-du-tourist-renewal-2026-09-29",
+    "url": "https://www.du.ae/support-articledetail?artid=PROD-8773&lang=en-GB&userType=business&version=2.0",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-du-tourist-sim-2026-09-29",
+    "url": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/plan-details/plan-information",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-ee-free-sim-2026-09-28",
@@ -334,6 +358,30 @@
     "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-globe-esim-terms-2026-09-29",
+    "url": "https://www.globe.com.ph/prepaid/local-esim-terms",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-globe-prepaid-roaming-2026-09-29",
+    "url": "https://www.globe.com.ph/help/international/prepaid-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-globe-sim-registration-2026-09-29",
+    "url": "https://www.globe.com.ph/help/sim-registration-act",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-globe-sim-terms-2026-09-29",
+    "url": "https://www.globe.com.ph/prepaid/sim-terms",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "official-h2o-payg-2026-09-29",
@@ -678,6 +726,12 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-turkcell-tourist-sim-2026-09-29",
+    "url": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-ultramobile-paygo-2026-09-29",
     "url": "https://www.ultramobile.com/paygo/",
     "type": "provider-official",
@@ -696,10 +750,22 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-viettel-kyc-roaming-otp-2026-09-29",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-thue-bao-viettel-bi-chan-do-chua-xac-thuc-thong-tin-huong-dan-cach-xu-ly/15333972",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "official-vodafone-prepaid-hilfe-2026-09-26",
     "url": "https://www.vodafone.de/hilfe/prepaid.html",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "specialist-3gviettel-vtvang-2026-09-29",
+    "url": "https://3gviettel.com.vn/gia-tang-thoi-gian-giu-sim-viettel-voi-goi-vt-vang.html",
+    "type": "specialist-media",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "src-0b42956d1b40",
