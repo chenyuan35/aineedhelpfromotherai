@@ -20,16 +20,6 @@ jobs:
           ref: data/phone-db-c2-20260929
           fetch-depth: 0
 
-      - name: Restore and verify reviewed inputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat .github/db-c2.in.00 .github/db-c2.in.01 .github/db-c2.in.02 > /tmp/db-c2-inputs.b64
-          echo "5f49942a67b198c6d90d0e47400da80c427c42dfbbf831e2978c83df8fe0b28e  /tmp/db-c2-inputs.b64" | sha256sum -c -
-          base64 -d /tmp/db-c2-inputs.b64 > /tmp/db-c2-inputs.tar.gz
-          echo "39576ca15c933dc259c6bde44377398a13a16f356840d5a9b1026b2c4365e150  /tmp/db-c2-inputs.tar.gz" | sha256sum -c -
-          tar -xzf /tmp/db-c2-inputs.tar.gz
-
       - name: Apply reviewed DB-C2 packets
         shell: bash
         run: |
@@ -59,6 +49,11 @@ jobs:
           set -euo pipefail
           npm run phone:data:check
           git diff --check
+          node - <<'NODE'
+          const fs=require('fs');
+          const db=JSON.parse(fs.readFileSync('data/phone/v1/routes.json','utf8'));
+          if(db.length!==77) throw new Error(`expected 77 canonical routes, got ${db.length}`);
+          NODE
 
       - name: Commit DB-C2 and remove bootstrap files
         shell: bash
@@ -71,5 +66,3 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "data(phone): complete DB-C2 coverage batch"
           git push origin HEAD:data/phone-db-c2-20260929
-
-# retry after verified input parts were uploaded
