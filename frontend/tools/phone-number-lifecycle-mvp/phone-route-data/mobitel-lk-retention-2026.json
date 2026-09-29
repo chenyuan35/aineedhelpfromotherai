@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "mobitel-lk-retention-2026",
+    "marketId": "lk",
+    "networkId": "slt-mobitel-lk",
+    "brandId": "mobitel-prepaid",
+    "displayName": "SLT-Mobitel Prepaid Number Retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.mobitel.lk/node/2617",
+    "sourceIds": [
+      "official-mobitel-new-connection-2026-09-29",
+      "official-mobitel-number-retention-2026-09-29",
+      "official-mobitel-recycling-2026-09-29",
+      "official-mobitel-tourist-esim-2026-09-29",
+      "reddit-srilanka-number-keep-job-2026-08-13"
+    ]
+  },
+  "market": {
+    "id": "lk",
+    "name": "Sri Lanka",
+    "countryCode": "LK"
+  },
+  "network": {
+    "id": "slt-mobitel-lk",
+    "name": "SLT-Mobitel",
+    "marketId": "lk"
+  },
+  "brand": {
+    "id": "mobitel-prepaid",
+    "networkId": "slt-mobitel-lk",
+    "name": "SLT-Mobitel Prepaid",
+    "marketId": "lk"
+  },
+  "metrics": {
+    "routeId": "mobitel-lk-retention-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "LKR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "LKR",
+    "keepYearCostOriginal": 600,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-mobitel-new-connection-2026-09-29",
+      "url": "https://www.mobitel.lk/node/110",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-number-retention-2026-09-29",
+      "url": "https://www.mobitel.lk/node/2617",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-recycling-2026-09-29",
+      "url": "https://www.mobitel.lk/node/7995",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-tourist-esim-2026-09-29",
+      "url": "https://www.mobitel.lk/new-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "reddit-srilanka-number-keep-job-2026-08-13",
+      "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
+      "type": "community-demand-thread",
+      "reportedAt": "2026-08-13"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
+      "routeId": "mobitel-lk-retention-2026",
+      "type": "eligibility-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Tourist prepaid acquisition explicitly accepts a foreign passport, but the Number Retention page says outlet enrollment or a letter enclosing NIC. Foreign-passport holder retention enrollment, especially remotely, remains unresolved.",
+      "sourceId": "official-mobitel-number-retention-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-mobitel-lk-retention-2026-current-profile-20260929",
+      "routeId": "mobitel-lk-retention-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "mobitel-lk-retention-2026",
+        "brandId": "mobitel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "SLT-Mobitel currently offers tourist prepaid physical SIM/eSIM at airports/outlets and states a foreign passport is sufficient. Tourist package prices vary; no bare-SIM landed-cost floor is assigned here.",
+        "landedCost": {
+          "currency": "LKR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "tourist-plan-options-current-bare-entry-floor-unresolved"
+        },
+        "keep": {
+          "currency": "LKR",
+          "observedActionCost": 50,
+          "yearCostOriginal": 600,
+          "yearCostCny": null,
+          "action": "For the 1-year Number Retention option, Mobitel lists Rs50 + taxes per month. The retention fee for the selected retaining period is loaded to the account and deducted at once when the facility is enabled.",
+          "intervalDays": 30,
+          "state": "current-provider-official-retention-fee-plus-taxes"
+        },
+        "chinaActivation": "No overseas-first activation path is established. Tourist physical SIM/eSIM acquisition is local at airports/outlets.",
+        "kyc": "Tourist acquisition accepts a foreign passport. Number Retention remote enrollment wording refers to an NIC copy, so foreign-passport eligibility for that facility remains unresolved.",
+        "payment": "Mobitel online pay supports credit/debit-card top-up; issuer/country acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Dedicated retention service is current, but foreign-passport eligibility/remote enrollment for Number Retention is not clearly established by the provider page.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.mobitel.lk/node/2617",
+        "tariffSummary": "1-year Number Retention: Rs50 + taxes per month, retaining-period fee deducted upfront; foreigner retention enrollment unresolved.",
+        "sourceIds": [
+          "official-mobitel-number-retention-2026-09-29",
+          "official-mobitel-tourist-esim-2026-09-29",
+          "official-mobitel-new-connection-2026-09-29",
+          "official-mobitel-recycling-2026-09-29",
+          "reddit-srilanka-number-keep-job-2026-08-13"
+        ],
+        "guideSteps": [
+          "Acquire/register SLT-Mobitel prepaid locally; foreign passport is documented for tourist SIM.",
+          "Before relying on Number Retention, confirm that your identity-document type is accepted for the facility.",
+          "For the 1-year tier, budget Rs50 + taxes per month with the retaining-period fee deducted when enabling the facility."
+        ]
+      }
+    }
+  ]
+}

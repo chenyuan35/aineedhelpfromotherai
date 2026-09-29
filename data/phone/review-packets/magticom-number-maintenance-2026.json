@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "ADMIT-BACKSTAGE. Current Magti first-party terms confirm a dedicated Number Maintenance Service at 1 GEL per 180 days, current network connection/eSIM price 10 GEL, foreign-citizen passport/ID acceptance, and remote new-number eSIM acquisition from abroad via MyMagti. Annualized retention run-rate is about 2.03 GEL/year after activation; because a new line pays the initial 1 GEL activation and the next charges occur on day 181 and thereafter, do not present 2 GEL as an exact first-calendar-year cash total.",
+  "market": {
+    "id": "ge",
+    "name": "Georgia",
+    "countryCode": "GE"
+  },
+  "network": {
+    "id": "magticom-ge",
+    "name": "Magticom",
+    "marketId": "ge"
+  },
+  "brand": {
+    "id": "magticom-prepaid",
+    "networkId": "magticom-ge",
+    "name": "Magticom Prepaid",
+    "marketId": "ge"
+  },
+  "route": {
+    "id": "magticom-number-maintenance-2026",
+    "marketId": "ge",
+    "networkId": "magticom-ge",
+    "brandId": "magticom-prepaid",
+    "displayName": "Magticom Number Maintenance",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+    "sourceIds": [
+      "official-magti-mobile-terms-2026-09-29",
+      "official-magti-number-maintenance-2026-09-29",
+      "official-magti-esim-2026-09-29",
+      "official-magti-tourist-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-magti-mobile-terms-2026-09-29",
+      "url": "https://www.magticom.ge/en/useful-info/terms/mobile-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-number-maintenance-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-esim-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/mobile-services/esim-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-tourist-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/tariffs/other-tariffs/welcome-to-georgia-offer",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-magti-mobile-terms-2026-09-29",
+    "official-magti-number-maintenance-2026-09-29",
+    "official-magti-esim-2026-09-29",
+    "official-magti-tourist-2026-09-29"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-magti-first-year-cash-vs-runrate-20260929",
+      "routeId": "magticom-number-maintenance-2026",
+      "type": "retention-cost-clarification",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Provider charges 1 GEL at service activation on a new number and the next 1 GEL on day 181. Treat ~2.03 GEL/year as the annualized 180-day run-rate, not an exact first-year cash-total guarantee.",
+      "sourceId": "official-magti-number-maintenance-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-magticom-number-maintenance-2026-current-profile-20260929",
+      "routeId": "magticom-number-maintenance-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "magticom-number-maintenance-2026",
+        "brandId": "magticom-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Magti network connection price is 10 GEL for physical SIM or eSIM. Foreign citizens may register using a foreign passport or ID card. Magti states that a new eSIM number can be obtained remotely/from abroad via MyMagti.",
+        "landedCost": {
+          "currency": "GEL",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-network-connection-price"
+        },
+        "keep": {
+          "currency": "GEL",
+          "observedActionCost": 1,
+          "yearCostOriginal": 2.03,
+          "yearCostCny": null,
+          "action": "Enable Number Maintenance via *180# or MyMagti. The service protects the number from termination for 180 days and charges 1 GEL; the next charge on a new number occurs on day 181, with subsequent 180-day charging. Keep at least 1 GEL available before each charge.",
+          "intervalDays": 180,
+          "state": "current-provider-official-dedicated-retention-annualized"
+        },
+        "chinaActivation": "Current Magti eSIM guidance explicitly says a new eSIM number can be obtained remotely/from abroad through MyMagti; internet is required for QR/download activation.",
+        "kyc": "Foreign citizens can present a foreign passport or ID card under current Magti network-connection terms.",
+        "payment": "MyMagti/web recharge is documented; exact foreign-card acceptance not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Standard roaming can be activated from anywhere through MyMagti; exact inbound-SMS/OTP reliability is not established in this review.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+        "tariffSummary": "10 GEL new SIM/eSIM; Number Maintenance 1 GEL per 180 days; remote new eSIM acquisition from abroad is provider-documented.",
+        "sourceIds": [
+          "official-magti-mobile-terms-2026-09-29",
+          "official-magti-number-maintenance-2026-09-29",
+          "official-magti-esim-2026-09-29",
+          "official-magti-tourist-2026-09-29"
+        ],
+        "guideSteps": [
+          "Obtain/register a physical SIM or eSIM; current provider guidance supports remote new eSIM acquisition from abroad.",
+          "Enable Number Maintenance with *180# or MyMagti.",
+          "Keep enough balance for the 1 GEL maintenance charge before each 180-day renewal point."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

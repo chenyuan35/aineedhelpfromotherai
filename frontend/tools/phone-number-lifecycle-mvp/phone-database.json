@@ -56,6 +56,11 @@
       "countryCode": "GB"
     },
     {
+      "id": "ge",
+      "name": "Georgia",
+      "countryCode": "GE"
+    },
+    {
       "id": "global",
       "name": "Global / multi-market",
       "countryCode": null
@@ -99,6 +104,11 @@
       "id": "kz",
       "name": "Kazakhstan",
       "countryCode": "KZ"
+    },
+    {
+      "id": "lk",
+      "name": "Sri Lanka",
+      "countryCode": "LK"
     },
     {
       "id": "mx",
@@ -169,6 +179,11 @@
       "id": "vn",
       "name": "Vietnam",
       "countryCode": "VN"
+    },
+    {
+      "id": "za",
+      "name": "South Africa",
+      "countryCode": "ZA"
     }
   ],
   "networks": [
@@ -248,6 +263,11 @@
       "marketId": "nl"
     },
     {
+      "id": "magticom-ge",
+      "name": "Magticom",
+      "marketId": "ge"
+    },
+    {
       "id": "maxis-my",
       "name": "Maxis MY",
       "marketId": "my"
@@ -281,6 +301,11 @@
       "id": "singtel-sg",
       "name": "Singtel",
       "marketId": "sg"
+    },
+    {
+      "id": "slt-mobitel-lk",
+      "name": "SLT-Mobitel",
+      "marketId": "lk"
     },
     {
       "id": "spark-nz",
@@ -351,6 +376,11 @@
       "id": "viettel-vn",
       "name": "Viettel Vietnam",
       "marketId": "vn"
+    },
+    {
+      "id": "vodacom-za",
+      "name": "Vodacom South Africa",
+      "marketId": "za"
     },
     {
       "id": "vodafone-de",
@@ -502,10 +532,22 @@
       "marketId": "gb"
     },
     {
+      "id": "magticom-prepaid",
+      "networkId": "magticom-ge",
+      "name": "Magticom Prepaid",
+      "marketId": "ge"
+    },
+    {
       "id": "mobal-japan-jp",
       "marketId": "jp",
       "networkId": null,
       "name": "Mobal Japan"
+    },
+    {
+      "id": "mobitel-prepaid",
+      "networkId": "slt-mobitel-lk",
+      "name": "SLT-Mobitel Prepaid",
+      "marketId": "lk"
     },
     {
       "id": "movistar-prepago",
@@ -662,6 +704,12 @@
       "networkId": "viettel-vn",
       "name": "Viettel Prepaid",
       "marketId": "vn"
+    },
+    {
+      "id": "vodacom-prepaid",
+      "networkId": "vodacom-za",
+      "name": "Vodacom Prepaid",
+      "marketId": "za"
     },
     {
       "id": "vodafone-callya",
@@ -1123,6 +1171,26 @@
       ]
     },
     {
+      "id": "magticom-number-maintenance-2026",
+      "marketId": "ge",
+      "networkId": "magticom-ge",
+      "brandId": "magticom-prepaid",
+      "displayName": "Magticom Number Maintenance",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+      "sourceIds": [
+        "official-magti-esim-2026-09-29",
+        "official-magti-mobile-terms-2026-09-29",
+        "official-magti-number-maintenance-2026-09-29",
+        "official-magti-tourist-2026-09-29"
+      ]
+    },
+    {
       "id": "mobal-japan-data-physical",
       "marketId": "jp",
       "networkId": null,
@@ -1175,6 +1243,27 @@
         "src-2bbba2c2f064",
         "src-55ebde488d35",
         "src-8a5a1ea3e316"
+      ]
+    },
+    {
+      "id": "mobitel-lk-retention-2026",
+      "marketId": "lk",
+      "networkId": "slt-mobitel-lk",
+      "brandId": "mobitel-prepaid",
+      "displayName": "SLT-Mobitel Prepaid Number Retention",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.mobitel.lk/node/2617",
+      "sourceIds": [
+        "official-mobitel-new-connection-2026-09-29",
+        "official-mobitel-number-retention-2026-09-29",
+        "official-mobitel-recycling-2026-09-29",
+        "official-mobitel-tourist-esim-2026-09-29",
+        "reddit-srilanka-number-keep-job-2026-08-13"
       ]
     },
     {
@@ -1700,6 +1789,25 @@
       ]
     },
     {
+      "id": "vodacom-prepaid-83d-2026",
+      "marketId": "za",
+      "networkId": "vodacom-za",
+      "brandId": "vodacom-prepaid",
+      "displayName": "Vodacom Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+      "sourceIds": [
+        "mybroadband-vodacom-overseas-2024-12-18",
+        "official-vodacom-prepaid-rates-2026-09-29",
+        "official-vodacom-prepaid-terms-2026-09-29"
+      ]
+    },
+    {
       "id": "vodafone-callya-90d-2026",
       "marketId": "de",
       "networkId": "vodafone-de",
@@ -1997,6 +2105,12 @@
       "reportedAt": "2026-08-11"
     },
     {
+      "id": "mybroadband-vodacom-overseas-2024-12-18",
+      "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
+      "type": "community-thread",
+      "reportedAt": "2024-12-18"
+    },
+    {
       "id": "nodeloc-voxi-102713",
       "url": "https://www.nodeloc.com/t/topic/102713",
       "type": "commercial-community-post",
@@ -2285,6 +2399,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "official-magti-esim-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/mobile-services/esim-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-mobile-terms-2026-09-29",
+      "url": "https://www.magticom.ge/en/useful-info/terms/mobile-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-number-maintenance-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-magti-tourist-2026-09-29",
+      "url": "https://www.magticom.ge/en/mobile/tariffs/other-tariffs/welcome-to-georgia-offer",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-mobal-id-requirements-2026-09-29",
       "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
       "type": "provider-official",
@@ -2293,6 +2431,30 @@
     {
       "id": "official-mobal-japan-sim-2026-09-29",
       "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-new-connection-2026-09-29",
+      "url": "https://www.mobitel.lk/node/110",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-number-retention-2026-09-29",
+      "url": "https://www.mobitel.lk/node/2617",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-recycling-2026-09-29",
+      "url": "https://www.mobitel.lk/node/7995",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-mobitel-tourist-esim-2026-09-29",
+      "url": "https://www.mobitel.lk/new-esim",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
@@ -2669,6 +2831,18 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "official-vodacom-prepaid-rates-2026-09-29",
+      "url": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-vodacom-prepaid-terms-2026-09-29",
+      "url": "https://www.vodacom.co.za/vodacom/terms/prepaid-sim-terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "official-vodafone-prepaid-hilfe-2026-09-26",
       "url": "https://www.vodafone.de/hilfe/prepaid.html",
       "type": "provider-official",
@@ -2703,6 +2877,12 @@
       "url": "https://www.reddit.com/r/bangladesh/comments/1rzl9ms/the_biometric_sim_card_registration_at_dhaka/",
       "type": "first-hand-community-thread",
       "reportedAt": "2026-03-21"
+    },
+    {
+      "id": "reddit-srilanka-number-keep-job-2026-08-13",
+      "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
+      "type": "community-demand-thread",
+      "reportedAt": "2026-08-13"
     },
     {
       "id": "reddit-telkomsel-bali-2026-08-05",
@@ -3112,6 +3292,24 @@
       "sourceId": "linuxdo-lebara-2745784-op"
     },
     {
+      "id": "evt-magti-first-year-cash-vs-runrate-20260929",
+      "routeId": "magticom-number-maintenance-2026",
+      "type": "retention-cost-clarification",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Provider charges 1 GEL at service activation on a new number and the next 1 GEL on day 181. Treat ~2.03 GEL/year as the annualized 180-day run-rate, not an exact first-year cash-total guarantee.",
+      "sourceId": "official-magti-number-maintenance-2026-09-29"
+    },
+    {
+      "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
+      "routeId": "mobitel-lk-retention-2026",
+      "type": "eligibility-conflict",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Tourist prepaid acquisition explicitly accepts a foreign passport, but the Number Retention page says outlet enrollment or a letter enclosing NIC. Foreign-passport holder retention enrollment, especially remotely, remains unresolved.",
+      "sourceId": "official-mobitel-number-retention-2026-09-29"
+    },
+    {
       "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
       "routeId": "telkomsel-simpati-365d-2026",
       "type": "retention-cost-correction",
@@ -3119,6 +3317,15 @@
       "scope": "route",
       "outcome": "Legacy Rp5,000/year keep-cost inference is unsupported by current rules. Rp5,000 top-up is not documented as a 365-day extension; official extension options include Rp115,000/360 days, while qualifying usage/top-up/package rules may yield cheaper paths whose durable annual minimum remains unresolved.",
       "sourceId": "official-telkomsel-active-extension-2026-09-29"
+    },
+    {
+      "id": "evt-vodacom-83d-rule-refuted-20260929",
+      "routeId": "vodacom-prepaid-83d-2026",
+      "type": "lifecycle-rule-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
+      "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
     }
   ],
   "snapshots": [
@@ -5014,6 +5221,64 @@
       }
     },
     {
+      "id": "snap-magticom-number-maintenance-2026-current-profile-20260929",
+      "routeId": "magticom-number-maintenance-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "magticom-number-maintenance-2026",
+        "brandId": "magticom-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Magti network connection price is 10 GEL for physical SIM or eSIM. Foreign citizens may register using a foreign passport or ID card. Magti states that a new eSIM number can be obtained remotely/from abroad via MyMagti.",
+        "landedCost": {
+          "currency": "GEL",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-network-connection-price"
+        },
+        "keep": {
+          "currency": "GEL",
+          "observedActionCost": 1,
+          "yearCostOriginal": 2.03,
+          "yearCostCny": null,
+          "action": "Enable Number Maintenance via *180# or MyMagti. The service protects the number from termination for 180 days and charges 1 GEL; the next charge on a new number occurs on day 181, with subsequent 180-day charging. Keep at least 1 GEL available before each charge.",
+          "intervalDays": 180,
+          "state": "current-provider-official-dedicated-retention-annualized"
+        },
+        "chinaActivation": "Current Magti eSIM guidance explicitly says a new eSIM number can be obtained remotely/from abroad through MyMagti; internet is required for QR/download activation.",
+        "kyc": "Foreign citizens can present a foreign passport or ID card under current Magti network-connection terms.",
+        "payment": "MyMagti/web recharge is documented; exact foreign-card acceptance not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Standard roaming can be activated from anywhere through MyMagti; exact inbound-SMS/OTP reliability is not established in this review.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+        "tariffSummary": "10 GEL new SIM/eSIM; Number Maintenance 1 GEL per 180 days; remote new eSIM acquisition from abroad is provider-documented.",
+        "sourceIds": [
+          "official-magti-mobile-terms-2026-09-29",
+          "official-magti-number-maintenance-2026-09-29",
+          "official-magti-esim-2026-09-29",
+          "official-magti-tourist-2026-09-29"
+        ],
+        "guideSteps": [
+          "Obtain/register a physical SIM or eSIM; current provider guidance supports remote new eSIM acquisition from abroad.",
+          "Enable Number Maintenance with *180# or MyMagti.",
+          "Keep enough balance for the 1 GEL maintenance charge before each 180-day renewal point."
+        ]
+      }
+    },
+    {
       "id": "snap-mobal-japan-data-physical-commercial-6a2373",
       "routeId": "mobal-japan-data-physical",
       "kind": "commercial",
@@ -5427,6 +5692,65 @@
           "summary": "Check Mobal monthly payment",
           "description": "Mobal posts the long-term invoice on the 1st and automatically charges the stored payment method on the 8th. This recurring reminder falls on the 5th, three days before the documented charge date."
         }
+      }
+    },
+    {
+      "id": "snap-mobitel-lk-retention-2026-current-profile-20260929",
+      "routeId": "mobitel-lk-retention-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "mobitel-lk-retention-2026",
+        "brandId": "mobitel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "SLT-Mobitel currently offers tourist prepaid physical SIM/eSIM at airports/outlets and states a foreign passport is sufficient. Tourist package prices vary; no bare-SIM landed-cost floor is assigned here.",
+        "landedCost": {
+          "currency": "LKR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "tourist-plan-options-current-bare-entry-floor-unresolved"
+        },
+        "keep": {
+          "currency": "LKR",
+          "observedActionCost": 50,
+          "yearCostOriginal": 600,
+          "yearCostCny": null,
+          "action": "For the 1-year Number Retention option, Mobitel lists Rs50 + taxes per month. The retention fee for the selected retaining period is loaded to the account and deducted at once when the facility is enabled.",
+          "intervalDays": 30,
+          "state": "current-provider-official-retention-fee-plus-taxes"
+        },
+        "chinaActivation": "No overseas-first activation path is established. Tourist physical SIM/eSIM acquisition is local at airports/outlets.",
+        "kyc": "Tourist acquisition accepts a foreign passport. Number Retention remote enrollment wording refers to an NIC copy, so foreign-passport eligibility for that facility remains unresolved.",
+        "payment": "Mobitel online pay supports credit/debit-card top-up; issuer/country acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Dedicated retention service is current, but foreign-passport eligibility/remote enrollment for Number Retention is not clearly established by the provider page.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.mobitel.lk/node/2617",
+        "tariffSummary": "1-year Number Retention: Rs50 + taxes per month, retaining-period fee deducted upfront; foreigner retention enrollment unresolved.",
+        "sourceIds": [
+          "official-mobitel-number-retention-2026-09-29",
+          "official-mobitel-tourist-esim-2026-09-29",
+          "official-mobitel-new-connection-2026-09-29",
+          "official-mobitel-recycling-2026-09-29",
+          "reddit-srilanka-number-keep-job-2026-08-13"
+        ],
+        "guideSteps": [
+          "Acquire/register SLT-Mobitel prepaid locally; foreign passport is documented for tourist SIM.",
+          "Before relying on Number Retention, confirm that your identity-document type is accepted for the facility.",
+          "For the 1-year tier, budget Rs50 + taxes per month with the retaining-period fee deducted when enabling the facility."
+        ]
       }
     },
     {
@@ -7769,6 +8093,63 @@
       }
     },
     {
+      "id": "snap-vodacom-prepaid-83d-2026-current-profile-20260929",
+      "routeId": "vodacom-prepaid-83d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "vodacom-prepaid-83d-2026",
+        "brandId": "vodacom-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Vodacom prepaid is a South African mobile line. Exact cheapest current new-SIM/eSIM acquisition price is not reconciled in this review.",
+        "landedCost": {
+          "currency": "ZAR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-entry-cost-unresolved"
+        },
+        "keep": {
+          "currency": "ZAR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current Vodacom prepaid terms allow suspension/disconnection when the service has not been used for more than 110 days. Maintain actual service usage inside that window; the exact cheapest qualifying action and final number-recycling timing are not established by the current first-party terms.",
+          "intervalDays": 110,
+          "state": "current-provider-official-inactivity-threshold-cost-unresolved"
+        },
+        "chinaActivation": "Local RICA/activation constraints apply; overseas-first activation is not established here.",
+        "kyc": "RICA applies to new activations; exact foreigner workflow not reconciled in this packet.",
+        "payment": "Local/app recharge methods exist; foreign-card acceptance not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Community overseas-use evidence exists, but this review does not convert it into an exact SMS keep-alive cost or OTP-success rate.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "The old 83-day/100-day rule is refuted by current provider terms. Current 110-day inactivity threshold is clear, but exact cheapest qualifying keep action, acquisition path and final recycle timing remain unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+        "tariffSummary": "Current first-party inactivity threshold: more than 110 days without service use may trigger suspension/disconnection; legacy 83-day rule withdrawn.",
+        "sourceIds": [
+          "official-vodacom-prepaid-terms-2026-09-29",
+          "official-vodacom-prepaid-rates-2026-09-29",
+          "mybroadband-vodacom-overseas-2024-12-18"
+        ],
+        "guideSteps": [
+          "Acquire/register Vodacom prepaid under current RICA rules.",
+          "Perform real service usage within the current 110-day inactivity window.",
+          "Do not use the stale 83-day/100-day lifecycle claim or an unverified fixed annual keep cost."
+        ]
+      }
+    },
+    {
       "id": "snap-vodafone-callya-90d-2026-current-profile-20260928",
       "routeId": "vodafone-callya-90d-2026",
       "kind": "current-profile",
@@ -8408,6 +8789,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "magticom-number-maintenance-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GEL",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GEL",
+      "keepYearCostOriginal": 2.03,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "mobal-japan-data-physical",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -8442,6 +8835,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "mobitel-lk-retention-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "LKR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "LKR",
+      "keepYearCostOriginal": 600,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "movistar-prepago-6mo-2026",
@@ -8766,6 +9171,18 @@
       "keepYearCostOriginal": 50000,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "vodacom-prepaid-83d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "ZAR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "ZAR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 110
     },
     {
       "routeId": "vodafone-callya-90d-2026",
