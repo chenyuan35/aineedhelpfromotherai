@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "hotmobile-il-2026",
+    "marketId": "il",
+    "networkId": "hotmobile-il",
+    "brandId": "hotmobile-prepaid",
+    "displayName": "HOT Mobile HOTALK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+    "sourceIds": [
+      "hotmobile-hotalk-cards-20260929",
+      "simtalk-hotmobile-66-180d-20260929",
+      "tokman-hotmobile-66-180d-20260929"
+    ]
+  },
+  "market": {
+    "id": "il",
+    "name": "Israel",
+    "countryCode": "IL"
+  },
+  "network": {
+    "id": "hotmobile-il",
+    "name": "HOT Mobile Israel",
+    "marketId": "il"
+  },
+  "brand": {
+    "id": "hotmobile-prepaid",
+    "networkId": "hotmobile-il",
+    "name": "HOT Mobile HOTALK",
+    "marketId": "il"
+  },
+  "metrics": {
+    "routeId": "hotmobile-il-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "ILS",
+    "acquisitionCostOriginal": 29,
+    "acquisitionCostCny": null,
+    "keepCurrency": "ILS",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "hotmobile-hotalk-cards-20260929",
+      "url": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "simtalk-hotmobile-66-180d-20260929",
+      "url": "https://simtalk.co.il/en/product-category/%D7%9E%D7%95%D7%A7%D7%93-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%A1%D7%9C%D7%95%D7%9C%D7%A8%D7%99-%D7%90%D7%95%D7%9F-%D7%9C%D7%99%D7%99%D7%9F-%D7%9E%D7%99%D7%93%D7%99%D7%AA-%D7%9C%D7%A0%D7%99%D7%99%D7%93/%D7%94%D7%95%D7%98-%D7%9E%D7%95%D7%91%D7%99%D7%99%D7%9C-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%9E%D7%99%D7%99%D7%93%D7%99%D7%AA-%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F/",
+      "type": "commercial-reseller",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "tokman-hotmobile-66-180d-20260929",
+      "url": "https://tokman.co.il/hot-mobile-50-nis-charge-valid-for-a180-days",
+      "type": "commercial-reseller",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-hotmobile-il-2026-db-c4d-hold-20260929",
+      "routeId": "hotmobile-il-2026",
+      "type": "retention-evidence-gap",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Israeli recharge retailers consistently advertise a HOTALK 66 ILS pay-per-use balance load with 180-day validity, but current first-party evidence tying that balance validity to the phone-number deactivation/recycling lifecycle was not located. The legacy no-KYC claim is also withdrawn as unverified.",
+      "sourceId": "tokman-hotmobile-66-180d-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-hotmobile-il-2026-current-profile-20260929",
+      "routeId": "hotmobile-il-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4d-reviewed-2026-09-29",
+      "data": {
+        "id": "hotmobile-il-2026",
+        "brandId": "hotmobile-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "HOT Mobile's HOTALK prepaid family remains available. Current local reseller channels sell new HOTALK SIMs and recharge products, but provider-native online acquisition/eSIM availability and foreign-user onboarding are not established by the evidence used here.",
+        "landedCost": {
+          "currency": "ILS",
+          "providerOrCommunityPrice": 29,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 29,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-reseller-new-sim-no-topup"
+        },
+        "keep": {
+          "currency": "ILS",
+          "observedActionCost": 66,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Multiple current Israeli recharge retailers list a 66 ILS HOTALK pay-per-use balance load valid for 180 days. Preserve this as balance-validity evidence only; a provider-verified number-retention/deactivation interval is not established.",
+          "intervalDays": 180,
+          "state": "multi-reseller-balance-validity-not-number-lifecycle"
+        },
+        "chinaActivation": "Israel-side acquisition/onboarding is the only currently supported assumption. China-first activation is unverified.",
+        "kyc": "The legacy blanket claim that Israeli prepaid requires no KYC is withdrawn. Current HOTALK identification requirements for a foreign buyer remain unverified in this review.",
+        "payment": "Current local recharge resellers support online HOTALK loads; provider-native minimum recharge and foreign-card acceptance are unverified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "HOT Mobile offers roaming services generally, but HOTALK China-specific incoming SMS/OTP behavior is unverified.",
+        "refund": "not reconciled",
+        "trend": "hold-commercial-retention-signal",
+        "guideEligible": false,
+        "holdReason": "The 66 ILS/180-day balance-validity mechanic is corroborated by current local recharge retailers, but a current HOT Mobile first-party number-deactivation/recycling rule and foreign-user identification flow were not located.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+        "tariffSummary": "Current reseller signal: 66 ILS pay-per-use balance valid 180 days; number-lifecycle and KYC remain unresolved.",
+        "sourceIds": [
+          "hotmobile-hotalk-cards-20260929",
+          "tokman-hotmobile-66-180d-20260929",
+          "simtalk-hotmobile-66-180d-20260929"
+        ],
+        "guideSteps": [
+          "Treat current HOTALK availability as established, but verify the buyer/identification path before acquisition.",
+          "Do not equate the retailer-advertised 180-day balance validity with provider-confirmed number retention.",
+          "Re-open for admission when HOT Mobile publishes a current number lifecycle or a strong recent end-to-end reproduction establishes the retention rule."
+        ]
+      }
+    }
+  ]
+}

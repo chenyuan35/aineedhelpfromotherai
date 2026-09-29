@@ -114,6 +114,12 @@
     "marketId": "gr"
   },
   {
+    "id": "cyta-soeasy",
+    "networkId": "cyta-cy",
+    "name": "Cyta soeasy",
+    "marketId": "cy"
+  },
+  {
     "id": "dialog-prepaid",
     "networkId": "dialog-lk",
     "name": "Dialog Prepaid",
@@ -136,6 +142,12 @@
     "networkId": "ee-uk",
     "name": "EE PAYG",
     "marketId": "gb"
+  },
+  {
+    "id": "elisa-prepaid",
+    "networkId": "elisa-fi",
+    "name": "Elisa Prepaid",
+    "marketId": "fi"
   },
   {
     "id": "etisalat-ae",
@@ -196,6 +208,12 @@
     "networkId": "maxis-my",
     "name": "Hotlink",
     "marketId": "my"
+  },
+  {
+    "id": "hotmobile-prepaid",
+    "networkId": "hotmobile-il",
+    "name": "HOT Mobile HOTALK",
+    "marketId": "il"
   },
   {
     "id": "id-mobile-uk",

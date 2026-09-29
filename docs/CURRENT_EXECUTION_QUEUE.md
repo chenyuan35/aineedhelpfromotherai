@@ -8,7 +8,7 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. After DB-C4C: **135 comparison routes / 98 canonical normalized routes / 87 comparison↔canonical route-ID overlaps / 48 comparison routes still legacy-only / 3 indexable routes**.
+3. After DB-C4D: **135 comparison routes / 101 canonical normalized routes / 90 comparison↔canonical route-ID overlaps / 45 comparison routes still legacy-only / 3 indexable routes**.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -16,27 +16,27 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 
-## JUST COMPLETED — Backend database coverage DB-C4C
+## JUST COMPLETED — Backend database coverage DB-C4D
 
-The next 3 DB-C4 legacy-only routes were independently reviewed and normalized through approved backstage packets.
+The final 3 DB-C4 legacy-only routes were independently reviewed and normalized through approved backstage packets.
 
-Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. US Mobile Light is HOLD: USD 96/year remains current, but native roaming requires prior U.S. domestic usage and some Wi-Fi Calling setup is U.S.-side. Lyca Mobile US is HOLD: the official 60-day non-use clock remains current, while the legacy USD 120/year minimum is withdrawn and exact lowest-cost keep-alive plus China-first behavior remain unresolved; 2026 AT&T-migration incidents are retained. Orange Senegal Sama Numéro is ADMIT-BACKSTAGE with current XOF3,000/6mo, XOF5,000/12mo and XOF10,000/24mo provider pricing and explicit airtime/Orange Money subscription paths.
+Result: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**. Elisa Prepaid Finland is ADMIT-BACKSTAGE: current provider material establishes EUR10 as the minimum balance top-up, 12 months validity after every recharge, a one-month expired receive/recharge window, and Finland-first activation. Cyta soeasy Cyprus is ADMIT-BACKSTAGE: EUR5 grants 365 days, followed by 7 days incoming-only plus 15 days before cancellation; prepaid identification is mandatory and non-EU passport identification is supported. HOT Mobile HOTALK is HOLD: current local recharge retailers corroborate a 66 ILS/180-day balance-validity mechanic, but a current provider number-deactivation/recycling rule and foreign-user identification flow remain unresolved; the old blanket no-KYC claim is withdrawn.
 
-Canonical result after DB-C4C: **98 routes / 54 markets / 95 brands / 74 networks / 323 sources**. Comparison remains **135**, comparison↔canonical overlap is **87**, **48 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve the 135-route comparison surface and 3-route publication boundary.
+Canonical result after DB-C4D: **101 routes / 57 markets / 98 brands / 77 networks / 334 sources**. Comparison remains **135**, comparison↔canonical overlap is **90**, **45 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve the 135-route comparison surface and 3-route publication boundary.
 
-Release: PR #311 (`a9bcc8a4628ab77a69f956cddbebc33800bcd84c`) merged after Eval Gate #961, CI #185 and Vercel Preview passed; production succeeded. Live checks confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Orange Senegal route at HTTP 404.
+Release status: implementation and local verification complete on the DB-C4D branch; merge/production verification must be recorded before closeout.
 
-## ACTIVE — Backend database coverage DB-C4
+## ACTIVE — Backend database coverage DB-C5
 
 Continue with the next distinct low-cost / decision-useful legacy-only routes. Legacy prices and labels are prioritization hints, not admission facts.
 
 Candidates:
 
-1. `elisa-prepaid-fi-2026`
-2. `cyta-soeasy-cy-2026`
-3. `hotmobile-il-2026`
+1. `one-me-2026`
+2. `bhtelecom-ba-2026`
+3. `yettel-prepaid-bg-2026`
 
-### DB-C4 acceptance flow
+### DB-C5 acceptance flow
 
 1. preserve community/forum-discovered hidden mechanics even when provider public pages omit them; do not reject a mechanism merely because search cannot see it;
 2. use first-party evidence for provider-controlled facts when available, but retain independent/community evidence and conflicts as separate provenance;
@@ -44,7 +44,7 @@ Candidates:
 4. classify every candidate `REJECT`, `HOLD` or `ADMIT-BACKSTAGE`;
 5. normalize accepted/HOLD routes through reviewed packets with missing fields left missing;
 6. run canonical/integrity/publication-boundary tests and keep frontend/indexability unchanged;
-7. merge only after Eval Gate + Preview pass, then continue to DB-C5 unless a real maintenance/evidence stop condition is reached.
+7. merge only after Eval Gate + Preview pass, then continue the coverage track unless a real maintenance/evidence stop condition is reached.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 

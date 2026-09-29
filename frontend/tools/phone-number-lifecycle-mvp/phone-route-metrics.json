@@ -230,6 +230,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "cyta-soeasy-cy-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 5,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "dialog-lk-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -276,6 +288,18 @@
       "keepYearCostOriginal": 0.4,
       "keepYearCostCny": 3.7,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "elisa-prepaid-fi-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "etisalat-wasel-ae-2026",
@@ -396,6 +420,18 @@
       "keepYearCostOriginal": 30,
       "keepYearCostCny": 45,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "hotmobile-il-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "ILS",
+      "acquisitionCostOriginal": 29,
+      "acquisitionCostCny": null,
+      "keepCurrency": "ILS",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "id-mobile-uk-2026",

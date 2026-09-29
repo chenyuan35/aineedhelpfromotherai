@@ -45,6 +45,11 @@
     "countryCode": "CN"
   },
   {
+    "id": "cy",
+    "name": "Cyprus",
+    "countryCode": "CY"
+  },
+  {
     "id": "cz",
     "name": "Czech Republic",
     "countryCode": "CZ"
@@ -63,6 +68,11 @@
     "id": "es",
     "name": "Spain",
     "countryCode": "ES"
+  },
+  {
+    "id": "fi",
+    "name": "Finland",
+    "countryCode": "FI"
   },
   {
     "id": "fr",
@@ -113,6 +123,11 @@
     "id": "ie",
     "name": "Ireland",
     "countryCode": "IE"
+  },
+  {
+    "id": "il",
+    "name": "Israel",
+    "countryCode": "IL"
   },
   {
     "id": "in",

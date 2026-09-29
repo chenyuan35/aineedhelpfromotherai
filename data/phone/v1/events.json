@@ -81,6 +81,15 @@
     "sourceId": "frog-general-terms-20260929"
   },
   {
+    "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
+    "routeId": "cyta-soeasy-cy-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Cyta material resolves the legacy gap: EUR 5, 10, 20, 35 or 50 credit top-ups each grant 365 days; after the 365-day deadline outgoing service stops, followed by 7 days incoming-only and 15 additional days before number cancellation.",
+    "sourceId": "cyta-soeasy-faq-20260929"
+  },
+  {
     "id": "evt-dialog-lk-365d-2026-db-c2-review-20260929",
     "routeId": "dialog-lk-365d-2026",
     "type": "retention-cost-correction",
@@ -97,6 +106,15 @@
     "scope": "route",
     "outcome": "Current CelcomDigi documentation directly confirms Digi RM100=120-day reload validity and an explicit RM198/365-day validity extension.",
     "sourceId": "celcomdigi-validity-20260929"
+  },
+  {
+    "id": "evt-elisa-prepaid-fi-2026-db-c4d-validity-20260929",
+    "routeId": "elisa-prepaid-fi-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current provider instructions resolve the legacy validity gap: three months from first activation, twelve months after every recharge, then a one-month expired window in which incoming calls/messages and recharging remain possible.",
+    "sourceId": "elisa-prepaid-validity-20260929"
   },
   {
     "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
@@ -169,6 +187,15 @@
     "scope": "route",
     "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
     "sourceId": "official-gp-recharge-validity-2026-09-29"
+  },
+  {
+    "id": "evt-hotmobile-il-2026-db-c4d-hold-20260929",
+    "routeId": "hotmobile-il-2026",
+    "type": "retention-evidence-gap",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Israeli recharge retailers consistently advertise a HOTALK 66 ILS pay-per-use balance load with 180-day validity, but current first-party evidence tying that balance validity to the phone-number deactivation/recycling lifecycle was not located. The legacy no-KYC claim is also withdrawn as unverified.",
+    "sourceId": "tokman-hotmobile-66-180d-20260929"
   },
   {
     "id": "evt-id-mobile-uk-2026-db-c4b-review-20260929",

@@ -162,6 +162,30 @@
     "reportedAt": "2026-04-20"
   },
   {
+    "id": "cyta-soeasy-faq-20260929",
+    "url": "https://www.cyta.com.cy/faq-soeasy/en",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cyta-soeasy-identification-20260929",
+    "url": "https://www.cyta.com.cy/soeasy-identification/en",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cyta-soeasy-terms-20260929",
+    "url": "https://www.cyta.com.cy/soeasy-terms/en",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cyta-soeasy-topup-20260929",
+    "url": "https://www.cyta.com.cy/faq-soeasy-top-up/en",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "dialog-number-recycling-2026-09-29",
     "url": "https://dialog.lk/number-recycling-process",
     "type": "provider-official",
@@ -194,6 +218,30 @@
   {
     "id": "eand-wasel-line-2026-09-29",
     "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "elisa-prepaid-en-instructions-20260929",
+    "url": "https://elisa.fi/asiakaspalvelu/english/prepaid-instructions/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "elisa-prepaid-esim-shop-20260929",
+    "url": "https://lataa.elisa.fi/en/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "elisa-prepaid-shop-20260929",
+    "url": "https://elisa.fi/kauppa/puhelinliittymat/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "elisa-prepaid-validity-20260929",
+    "url": "https://elisa.fi/asiakaspalvelu/puheliittymat/prepaid/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
@@ -262,6 +310,12 @@
     "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
     "type": "first-hand-app-review",
     "reportedAt": "2026-08-28"
+  },
+  {
+    "id": "hotmobile-hotalk-cards-20260929",
+    "url": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "id-mobile-180d-community-20251121",
@@ -1572,6 +1626,12 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "simtalk-hotmobile-66-180d-20260929",
+    "url": "https://simtalk.co.il/en/product-category/%D7%9E%D7%95%D7%A7%D7%93-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%A1%D7%9C%D7%95%D7%9C%D7%A8%D7%99-%D7%90%D7%95%D7%9F-%D7%9C%D7%99%D7%99%D7%9F-%D7%9E%D7%99%D7%93%D7%99%D7%AA-%D7%9C%D7%A0%D7%99%D7%99%D7%93/%D7%94%D7%95%D7%98-%D7%9E%D7%95%D7%91%D7%99%D7%99%D7%9C-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%9E%D7%99%D7%99%D7%93%D7%99%D7%AA-%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F/",
+    "type": "commercial-reseller",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "smart-esim-20260929",
     "url": "https://smart.com.ph/Pages/esim",
     "type": "provider-official",
@@ -1863,6 +1923,12 @@
     "id": "tesco-payg-service-terms-2026-09-29",
     "url": "https://www.tescomobile.com/content/dam/tesco-mobile/terms-and-conditions/pay-as-you-go/tesco-mobile-pay-as-you-go-service-january-2026.pdf",
     "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tokman-hotmobile-66-180d-20260929",
+    "url": "https://tokman.co.il/hot-mobile-50-nis-charge-valid-for-a180-days",
+    "type": "commercial-reseller",
     "reportedAt": "2026-09-29"
   },
   {

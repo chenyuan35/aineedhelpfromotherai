@@ -51,6 +51,11 @@
       "countryCode": "CN"
     },
     {
+      "id": "cy",
+      "name": "Cyprus",
+      "countryCode": "CY"
+    },
+    {
       "id": "cz",
       "name": "Czech Republic",
       "countryCode": "CZ"
@@ -69,6 +74,11 @@
       "id": "es",
       "name": "Spain",
       "countryCode": "ES"
+    },
+    {
+      "id": "fi",
+      "name": "Finland",
+      "countryCode": "FI"
     },
     {
       "id": "fr",
@@ -119,6 +129,11 @@
       "id": "ie",
       "name": "Ireland",
       "countryCode": "IE"
+    },
+    {
+      "id": "il",
+      "name": "Israel",
+      "countryCode": "IL"
     },
     {
       "id": "in",
@@ -358,6 +373,11 @@
       "marketId": "hk"
     },
     {
+      "id": "cyta-cy",
+      "name": "Cyta Cyprus",
+      "marketId": "cy"
+    },
+    {
       "id": "dialog-lk",
       "name": "Dialog LK",
       "marketId": "lk"
@@ -371,6 +391,11 @@
       "id": "ee-uk",
       "name": "EE UK",
       "marketId": "gb"
+    },
+    {
+      "id": "elisa-fi",
+      "name": "Elisa Finland",
+      "marketId": "fi"
     },
     {
       "id": "etisalat-ae",
@@ -396,6 +421,11 @@
       "id": "grameenphone-bd",
       "name": "Grameenphone",
       "marketId": "bd"
+    },
+    {
+      "id": "hotmobile-il",
+      "name": "HOT Mobile Israel",
+      "marketId": "il"
     },
     {
       "id": "jio-in",
@@ -764,6 +794,12 @@
       "marketId": "gr"
     },
     {
+      "id": "cyta-soeasy",
+      "networkId": "cyta-cy",
+      "name": "Cyta soeasy",
+      "marketId": "cy"
+    },
+    {
       "id": "dialog-prepaid",
       "networkId": "dialog-lk",
       "name": "Dialog Prepaid",
@@ -786,6 +822,12 @@
       "networkId": "ee-uk",
       "name": "EE PAYG",
       "marketId": "gb"
+    },
+    {
+      "id": "elisa-prepaid",
+      "networkId": "elisa-fi",
+      "name": "Elisa Prepaid",
+      "marketId": "fi"
     },
     {
       "id": "etisalat-ae",
@@ -846,6 +888,12 @@
       "networkId": "maxis-my",
       "name": "Hotlink",
       "marketId": "my"
+    },
+    {
+      "id": "hotmobile-prepaid",
+      "networkId": "hotmobile-il",
+      "name": "HOT Mobile HOTALK",
+      "marketId": "il"
     },
     {
       "id": "id-mobile-uk",
@@ -1585,6 +1633,26 @@
       ]
     },
     {
+      "id": "cyta-soeasy-cy-2026",
+      "marketId": "cy",
+      "networkId": "cyta-cy",
+      "brandId": "cyta-soeasy",
+      "displayName": "Cyta soeasy Cyprus",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.cyta.com.cy/soeasy/en",
+      "sourceIds": [
+        "cyta-soeasy-faq-20260929",
+        "cyta-soeasy-identification-20260929",
+        "cyta-soeasy-terms-20260929",
+        "cyta-soeasy-topup-20260929"
+      ]
+    },
+    {
       "id": "dialog-lk-365d-2026",
       "marketId": "lk",
       "networkId": "dialog-lk",
@@ -1661,6 +1729,26 @@
         "official-ee-payg-plan-terms-2026-08-24",
         "official-ee-payg-priceguide-2026-06-03",
         "official-ee-payg-topup-help-2026-09-28"
+      ]
+    },
+    {
+      "id": "elisa-prepaid-fi-2026",
+      "marketId": "fi",
+      "networkId": "elisa-fi",
+      "brandId": "elisa-prepaid",
+      "displayName": "Elisa Prepaid Finland",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://elisa.fi/kauppa/puhelinliittymat/prepaid",
+      "sourceIds": [
+        "elisa-prepaid-en-instructions-20260929",
+        "elisa-prepaid-esim-shop-20260929",
+        "elisa-prepaid-shop-20260929",
+        "elisa-prepaid-validity-20260929"
       ]
     },
     {
@@ -1855,6 +1943,25 @@
       "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
       "sourceIds": [
         "official-hotlink-pantas-passes-faq-2026-09-26"
+      ]
+    },
+    {
+      "id": "hotmobile-il-2026",
+      "marketId": "il",
+      "networkId": "hotmobile-il",
+      "brandId": "hotmobile-prepaid",
+      "displayName": "HOT Mobile HOTALK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+      "sourceIds": [
+        "hotmobile-hotalk-cards-20260929",
+        "simtalk-hotmobile-66-180d-20260929",
+        "tokman-hotmobile-66-180d-20260929"
       ]
     },
     {
@@ -3274,6 +3381,30 @@
       "reportedAt": "2026-04-20"
     },
     {
+      "id": "cyta-soeasy-faq-20260929",
+      "url": "https://www.cyta.com.cy/faq-soeasy/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-identification-20260929",
+      "url": "https://www.cyta.com.cy/soeasy-identification/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-terms-20260929",
+      "url": "https://www.cyta.com.cy/soeasy-terms/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-topup-20260929",
+      "url": "https://www.cyta.com.cy/faq-soeasy-top-up/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "dialog-number-recycling-2026-09-29",
       "url": "https://dialog.lk/number-recycling-process",
       "type": "provider-official",
@@ -3306,6 +3437,30 @@
     {
       "id": "eand-wasel-line-2026-09-29",
       "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "elisa-prepaid-en-instructions-20260929",
+      "url": "https://elisa.fi/asiakaspalvelu/english/prepaid-instructions/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "elisa-prepaid-esim-shop-20260929",
+      "url": "https://lataa.elisa.fi/en/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "elisa-prepaid-shop-20260929",
+      "url": "https://elisa.fi/kauppa/puhelinliittymat/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "elisa-prepaid-validity-20260929",
+      "url": "https://elisa.fi/asiakaspalvelu/puheliittymat/prepaid/",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
@@ -3374,6 +3529,12 @@
       "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
       "type": "first-hand-app-review",
       "reportedAt": "2026-08-28"
+    },
+    {
+      "id": "hotmobile-hotalk-cards-20260929",
+      "url": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "id-mobile-180d-community-20251121",
@@ -4684,6 +4845,12 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "simtalk-hotmobile-66-180d-20260929",
+      "url": "https://simtalk.co.il/en/product-category/%D7%9E%D7%95%D7%A7%D7%93-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%A1%D7%9C%D7%95%D7%9C%D7%A8%D7%99-%D7%90%D7%95%D7%9F-%D7%9C%D7%99%D7%99%D7%9F-%D7%9E%D7%99%D7%93%D7%99%D7%AA-%D7%9C%D7%A0%D7%99%D7%99%D7%93/%D7%94%D7%95%D7%98-%D7%9E%D7%95%D7%91%D7%99%D7%99%D7%9C-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%9E%D7%99%D7%99%D7%93%D7%99%D7%AA-%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F/",
+      "type": "commercial-reseller",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "smart-esim-20260929",
       "url": "https://smart.com.ph/Pages/esim",
       "type": "provider-official",
@@ -4978,6 +5145,12 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "tokman-hotmobile-66-180d-20260929",
+      "url": "https://tokman.co.il/hot-mobile-50-nis-charge-valid-for-a180-days",
+      "type": "commercial-reseller",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "travelask-beeline-sim-safe-incident-2026-09",
       "url": "https://travelask.ru/questions/6973672_kz_u-bilayna-kz-posle-tehnicheskih-rabot-propala-usluga-simka-v",
       "type": "community-incident-thread",
@@ -5223,6 +5396,15 @@
       "sourceId": "frog-general-terms-20260929"
     },
     {
+      "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
+      "routeId": "cyta-soeasy-cy-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Cyta material resolves the legacy gap: EUR 5, 10, 20, 35 or 50 credit top-ups each grant 365 days; after the 365-day deadline outgoing service stops, followed by 7 days incoming-only and 15 additional days before number cancellation.",
+      "sourceId": "cyta-soeasy-faq-20260929"
+    },
+    {
       "id": "evt-dialog-lk-365d-2026-db-c2-review-20260929",
       "routeId": "dialog-lk-365d-2026",
       "type": "retention-cost-correction",
@@ -5239,6 +5421,15 @@
       "scope": "route",
       "outcome": "Current CelcomDigi documentation directly confirms Digi RM100=120-day reload validity and an explicit RM198/365-day validity extension.",
       "sourceId": "celcomdigi-validity-20260929"
+    },
+    {
+      "id": "evt-elisa-prepaid-fi-2026-db-c4d-validity-20260929",
+      "routeId": "elisa-prepaid-fi-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current provider instructions resolve the legacy validity gap: three months from first activation, twelve months after every recharge, then a one-month expired window in which incoming calls/messages and recharging remain possible.",
+      "sourceId": "elisa-prepaid-validity-20260929"
     },
     {
       "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
@@ -5311,6 +5502,15 @@
       "scope": "route",
       "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
       "sourceId": "official-gp-recharge-validity-2026-09-29"
+    },
+    {
+      "id": "evt-hotmobile-il-2026-db-c4d-hold-20260929",
+      "routeId": "hotmobile-il-2026",
+      "type": "retention-evidence-gap",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Israeli recharge retailers consistently advertise a HOTALK 66 ILS pay-per-use balance load with 180-day validity, but current first-party evidence tying that balance validity to the phone-number deactivation/recycling lifecycle was not located. The legacy no-KYC claim is also withdrawn as unverified.",
+      "sourceId": "tokman-hotmobile-66-180d-20260929"
     },
     {
       "id": "evt-id-mobile-uk-2026-db-c4b-review-20260929",
@@ -6745,6 +6945,64 @@
       }
     },
     {
+      "id": "snap-cyta-soeasy-cy-2026-current-profile-20260929",
+      "routeId": "cyta-soeasy-cy-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4d-reviewed-2026-09-29",
+      "data": {
+        "id": "cyta-soeasy-cy-2026",
+        "brandId": "cyta-soeasy",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Cyta sells soeasy as prepaid physical SIM/eSIM. Current terms require owner/user identification before activation. Current provider materials support online or store identification and passport-based identification for non-EU customers.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "connection-pack-price-not-captured"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": null,
+          "action": "Top up EUR 5 or more before the 365-day validity deadline. Each listed credit top-up value grants 365 days. After expiry, outgoing calls stop, then 7 days incoming-only plus 15 additional days remain before cancellation.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-topup"
+        },
+        "chinaActivation": "Current provider flow requires prepaid identification before activation. Top-up can be performed while abroad, but China-first activation and end-to-end China acquisition are not established.",
+        "kyc": "Identification is mandatory under Cyta's current prepaid terms. EU customers may use ID or passport; non-EU customers may use passport, with an in-store path documented for non-EU customers without a passport.",
+        "payment": "Online top-up supports Visa, Mastercard, Maestro and American Express through My Cyta or as a visitor without login; Cyta states top-up can be done while abroad.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "current-provider-retention-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.cyta.com.cy/soeasy/en",
+        "tariffSummary": "EUR 5 minimum listed credit top-up grants 365 days; 7-day incoming-only window plus 15 days before cancellation; identification required.",
+        "sourceIds": [
+          "cyta-soeasy-faq-20260929",
+          "cyta-soeasy-terms-20260929",
+          "cyta-soeasy-identification-20260929",
+          "cyta-soeasy-topup-20260929"
+        ],
+        "guideSteps": [
+          "Acquire a soeasy SIM/eSIM and complete Cyta's prepaid identification flow.",
+          "Top up at least EUR 5 before the 365-day validity deadline; remote web top-up is available.",
+          "Do not plan around the 7+15 day post-expiry recovery window as the normal maintenance interval."
+        ]
+      }
+    },
+    {
       "id": "snap-dialog-lk-365d-2026-current-profile-20260929",
       "routeId": "dialog-lk-365d-2026",
       "kind": "current-profile",
@@ -6964,6 +7222,64 @@
           "Acquire a current EE PAYG physical SIM. Current direct 30-day plans start at GBP10; top-ups can be as low as GBP5.",
           "Before 180 days elapse, perform one listed activity; a standard out-of-plan UK SMS is currently 20p.",
           "If EE puts the line into hibernation, contact EE within the following 90 days; after day 270 the number and remaining credit are lost."
+        ]
+      }
+    },
+    {
+      "id": "snap-elisa-prepaid-fi-2026-current-profile-20260929",
+      "routeId": "elisa-prepaid-fi-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4d-reviewed-2026-09-29",
+      "data": {
+        "id": "elisa-prepaid-fi-2026",
+        "brandId": "elisa-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Elisa Prepaid is sold through Elisa and Finnish retail channels and has no bills or monthly fee. Elisa states that the prepaid subscription cannot be registered under the subscriber's name or personal identity number. The subscription must be activated in Finland before it can be used abroad; eSIM activation is also Finland-only.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "starter-price-not-captured"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Recharge at least EUR 10 before expiry. Every recharge extends the subscription for 12 months; after expiry there is a one-month receive/recharge recovery window before closure.",
+          "intervalDays": 365,
+          "state": "current-provider-12mo-recharge"
+        },
+        "chinaActivation": "Elisa states that the subscription must be activated in Finland before use abroad. China-first activation is therefore not supported by current provider instructions.",
+        "kyc": "Elisa states that Prepaid cannot be registered under the subscriber's name or personal identity number; do not generalize this into a broader legal claim beyond this product.",
+        "payment": "Balance can be topped up EUR 10-100 through the Prepaid shop/app and supported Finnish retail channels; card payment is supported in the app.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Elisa states that Prepaid works abroad for calls/messages/data, but China-specific incoming SMS and OTP reliability are unverified.",
+        "refund": "Balance or packages are non-refundable on the eSIM shop.",
+        "trend": "current-provider-retention-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://elisa.fi/kauppa/puhelinliittymat/prepaid",
+        "tariffSummary": "3 months from first activation; every recharge extends 12 months; minimum balance top-up EUR 10; one-month expired receive/recharge window.",
+        "sourceIds": [
+          "elisa-prepaid-validity-20260929",
+          "elisa-prepaid-en-instructions-20260929",
+          "elisa-prepaid-esim-shop-20260929",
+          "elisa-prepaid-shop-20260929"
+        ],
+        "guideSteps": [
+          "Acquire and activate Elisa Prepaid in Finland.",
+          "Before each 12-month validity window expires, recharge at least EUR 10.",
+          "Treat the extra one-month expired receive/recharge period as recovery, not the normal maintenance target."
         ]
       }
     },
@@ -7934,6 +8250,63 @@
         "guideSteps": [
           "Acquire the RM10 Hotlink Pantas starter pack and complete required registration.",
           "Buy the RM30 365-day Active Period Pass in the Hotlink app once per year."
+        ]
+      }
+    },
+    {
+      "id": "snap-hotmobile-il-2026-current-profile-20260929",
+      "routeId": "hotmobile-il-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4d-reviewed-2026-09-29",
+      "data": {
+        "id": "hotmobile-il-2026",
+        "brandId": "hotmobile-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "HOT Mobile's HOTALK prepaid family remains available. Current local reseller channels sell new HOTALK SIMs and recharge products, but provider-native online acquisition/eSIM availability and foreign-user onboarding are not established by the evidence used here.",
+        "landedCost": {
+          "currency": "ILS",
+          "providerOrCommunityPrice": 29,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 29,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-reseller-new-sim-no-topup"
+        },
+        "keep": {
+          "currency": "ILS",
+          "observedActionCost": 66,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Multiple current Israeli recharge retailers list a 66 ILS HOTALK pay-per-use balance load valid for 180 days. Preserve this as balance-validity evidence only; a provider-verified number-retention/deactivation interval is not established.",
+          "intervalDays": 180,
+          "state": "multi-reseller-balance-validity-not-number-lifecycle"
+        },
+        "chinaActivation": "Israel-side acquisition/onboarding is the only currently supported assumption. China-first activation is unverified.",
+        "kyc": "The legacy blanket claim that Israeli prepaid requires no KYC is withdrawn. Current HOTALK identification requirements for a foreign buyer remain unverified in this review.",
+        "payment": "Current local recharge resellers support online HOTALK loads; provider-native minimum recharge and foreign-card acceptance are unverified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "HOT Mobile offers roaming services generally, but HOTALK China-specific incoming SMS/OTP behavior is unverified.",
+        "refund": "not reconciled",
+        "trend": "hold-commercial-retention-signal",
+        "guideEligible": false,
+        "holdReason": "The 66 ILS/180-day balance-validity mechanic is corroborated by current local recharge retailers, but a current HOT Mobile first-party number-deactivation/recycling rule and foreign-user identification flow were not located.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+        "tariffSummary": "Current reseller signal: 66 ILS pay-per-use balance valid 180 days; number-lifecycle and KYC remain unresolved.",
+        "sourceIds": [
+          "hotmobile-hotalk-cards-20260929",
+          "tokman-hotmobile-66-180d-20260929",
+          "simtalk-hotmobile-66-180d-20260929"
+        ],
+        "guideSteps": [
+          "Treat current HOTALK availability as established, but verify the buyer/identification path before acquisition.",
+          "Do not equate the retailer-advertised 180-day balance validity with provider-confirmed number retention.",
+          "Re-open for admission when HOT Mobile publishes a current number lifecycle or a strong recent end-to-end reproduction establishes the retention rule."
         ]
       }
     },
@@ -13165,6 +13538,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "cyta-soeasy-cy-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 5,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "dialog-lk-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -13211,6 +13596,18 @@
       "keepYearCostOriginal": 0.4,
       "keepYearCostCny": 3.7,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "elisa-prepaid-fi-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 10,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "etisalat-wasel-ae-2026",
@@ -13331,6 +13728,18 @@
       "keepYearCostOriginal": 30,
       "keepYearCostCny": 45,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "hotmobile-il-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "ILS",
+      "acquisitionCostOriginal": 29,
+      "acquisitionCostCny": null,
+      "keepCurrency": "ILS",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "id-mobile-uk-2026",

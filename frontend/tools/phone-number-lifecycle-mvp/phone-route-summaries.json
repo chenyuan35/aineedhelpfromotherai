@@ -610,6 +610,38 @@
       }
     },
     {
+      "id": "cyta-soeasy-cy-2026",
+      "displayName": "Cyta soeasy Cyprus",
+      "marketId": "cy",
+      "marketName": "Cyprus",
+      "countryCode": "CY",
+      "networkName": "Cyta Cyprus",
+      "brandName": "Cyta soeasy",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "cyta-soeasy-cy-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 5,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
+      }
+    },
+    {
       "id": "dialog-lk-365d-2026",
       "displayName": "Dialog Prepaid",
       "marketId": "lk",
@@ -735,6 +767,38 @@
         "keepYearCostOriginal": 0.4,
         "keepYearCostCny": 3.7,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "elisa-prepaid-fi-2026",
+      "displayName": "Elisa Prepaid Finland",
+      "marketId": "fi",
+      "marketName": "Finland",
+      "countryCode": "FI",
+      "networkName": "Elisa Finland",
+      "brandName": "Elisa Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "elisa-prepaid-fi-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": 10,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -1090,6 +1154,38 @@
         "keepYearCostOriginal": 30,
         "keepYearCostCny": 45,
         "keepIntervalDays": 365
+      }
+    },
+    {
+      "id": "hotmobile-il-2026",
+      "displayName": "HOT Mobile HOTALK",
+      "marketId": "il",
+      "marketName": "Israel",
+      "countryCode": "IL",
+      "networkName": "HOT Mobile Israel",
+      "brandName": "HOT Mobile HOTALK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "hotmobile-il-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "ILS",
+        "acquisitionCostOriginal": 29,
+        "acquisitionCostCny": null,
+        "keepCurrency": "ILS",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 180
       }
     },
     {

@@ -363,6 +363,26 @@
     ]
   },
   {
+    "id": "cyta-soeasy-cy-2026",
+    "marketId": "cy",
+    "networkId": "cyta-cy",
+    "brandId": "cyta-soeasy",
+    "displayName": "Cyta soeasy Cyprus",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.cyta.com.cy/soeasy/en",
+    "sourceIds": [
+      "cyta-soeasy-faq-20260929",
+      "cyta-soeasy-identification-20260929",
+      "cyta-soeasy-terms-20260929",
+      "cyta-soeasy-topup-20260929"
+    ]
+  },
+  {
     "id": "dialog-lk-365d-2026",
     "marketId": "lk",
     "networkId": "dialog-lk",
@@ -439,6 +459,26 @@
       "official-ee-payg-plan-terms-2026-08-24",
       "official-ee-payg-priceguide-2026-06-03",
       "official-ee-payg-topup-help-2026-09-28"
+    ]
+  },
+  {
+    "id": "elisa-prepaid-fi-2026",
+    "marketId": "fi",
+    "networkId": "elisa-fi",
+    "brandId": "elisa-prepaid",
+    "displayName": "Elisa Prepaid Finland",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://elisa.fi/kauppa/puhelinliittymat/prepaid",
+    "sourceIds": [
+      "elisa-prepaid-en-instructions-20260929",
+      "elisa-prepaid-esim-shop-20260929",
+      "elisa-prepaid-shop-20260929",
+      "elisa-prepaid-validity-20260929"
     ]
   },
   {
@@ -633,6 +673,25 @@
     "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
     "sourceIds": [
       "official-hotlink-pantas-passes-faq-2026-09-26"
+    ]
+  },
+  {
+    "id": "hotmobile-il-2026",
+    "marketId": "il",
+    "networkId": "hotmobile-il",
+    "brandId": "hotmobile-prepaid",
+    "displayName": "HOT Mobile HOTALK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
+    "sourceIds": [
+      "hotmobile-hotalk-cards-20260929",
+      "simtalk-hotmobile-66-180d-20260929",
+      "tokman-hotmobile-66-180d-20260929"
     ]
   },
   {
