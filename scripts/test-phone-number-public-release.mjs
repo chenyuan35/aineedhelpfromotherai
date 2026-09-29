@@ -23,6 +23,12 @@ assert.doesNotMatch(page, /noindex/);
 assert.doesNotMatch(page, /\/theme-toggle\.js/);
 assert.match(page, /id="theme-runtime"/);
 assert.match(page, /Find the right phone route fast\./);
+assert.match(page, /id="route-search"/);
+assert.match(page, /Global long-term number finder\./);
+assert.match(page, /comparison-route-index\.json/);
+assert.doesNotMatch(page, /const files=\[[^\]]*uk-directory-pilot\.json/);
+assert.match(page, /fetch\('\.\/global-directory\.json'/);
+assert.doesNotMatch(page, /UK long-term-number pilot\./);
 assert.match(page, /Long-term SMS \/ OTP/);
 assert.match(page, /Data SIM \/ eSIM/);
 assert.match(page, /Temporary SMS/);
@@ -42,7 +48,7 @@ assert.equal((tools.match(/\/tools\/phone-number-survival-guide\//g)||[]).length
 assert.equal((sitemap.match(new RegExp(`<loc>${canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}<\/loc>`,'g'))||[]).length, 1);
 assert.doesNotMatch(sitemap, /phone-number-lifecycle-mvp/);
 
-for (const name of ['audit-rules.json','catalog.json','location-constraints.json','number-supply-intelligence.json','purchase-intelligence.json','retention-intelligence.json','route-capabilities.json','tutorial-insights.json','radar-view.json','uk-directory-pilot.json']) {
+for (const name of ['audit-rules.json','catalog.json','location-constraints.json','number-supply-intelligence.json','purchase-intelligence.json','retention-intelligence.json','route-capabilities.json','tutorial-insights.json','radar-view.json','uk-directory-pilot.json','comparison-route-index.json']) {
   assert.equal(fs.readFileSync(path.join(publicDir,name),'utf8'), fs.readFileSync(path.join(source,name),'utf8'), `${name} must be byte-identical to source data`);
 }
 

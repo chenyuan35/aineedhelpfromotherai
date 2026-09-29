@@ -48,4 +48,11 @@ const fixtureRanges = [
 assert.equal(lookupNumberRange(fixtureRanges, '+44 7700 900123')?.id, 'r-long');
 assert.match(lookupNumberRange(fixtureRanges, '+44 7700 900123')?.portabilityNotice || '', /ported number/i);
 
+const comparisonIdx = JSON.parse(fs.readFileSync(new URL('../frontend/tools/phone-number-lifecycle-mvp/comparison-route-index.json', import.meta.url), 'utf8'));
+assert.equal(comparisonIdx.routeCount, 135, 'comparison route index must preserve 135 routes');
+assert.equal(comparisonIdx.routes.length, 135, 'comparison route index row count must preserve 135 routes');
+assert.ok(comparisonIdx.routes.some(r => r.marketName === 'United Kingdom'));
+assert.ok(comparisonIdx.routes.some(r => r.marketName !== 'United Kingdom'));
+assert.ok(comparisonIdx.routes.every(r => ['comparison-visible','detail-eligible','indexable'].includes(r.publicationState)));
+
 console.log(`Phone DB tests passed: ${db.routes.length} routes, ${db.markets.length} markets, ${idx.routes.length} searchable records.`);
