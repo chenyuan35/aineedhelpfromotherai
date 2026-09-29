@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "cht-ruyi-180d-2026",
+    "marketId": "tw",
+    "networkId": "chunghwa-tw",
+    "brandId": "cht-ruyi",
+    "displayName": "Chunghwa Telecom Prepaid (Ruyi)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+    "sourceIds": [
+      "cht-prepaid-apply-2026-09-29",
+      "cht-prepaid-intro-2026-09-29",
+      "cht-prepaid-recharge-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "tw",
+    "name": "Taiwan",
+    "countryCode": "TW"
+  },
+  "network": {
+    "id": "chunghwa-tw",
+    "name": "Chunghwa Telecom TW",
+    "marketId": "tw"
+  },
+  "brand": {
+    "id": "cht-ruyi",
+    "networkId": "chunghwa-tw",
+    "name": "中華電信如意卡",
+    "marketId": "tw"
+  },
+  "metrics": {
+    "routeId": "cht-ruyi-180d-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "TWD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "TWD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "cht-prepaid-apply-2026-09-29",
+      "url": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cht-prepaid-intro-2026-09-29",
+      "url": "https://www.cht.com.tw/home/campaign/prepaidcard/intro",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cht-prepaid-recharge-2026-09-29",
+      "url": "https://www.cht.com.tw/home/campaign/prepaidcard/recharge",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-cht-ruyi-180d-2026-db-c2-review-20260929",
+      "routeId": "cht-ruyi-180d-2026",
+      "type": "minimum-cost-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The 180-day lifecycle is current and confirmed, but the legacy NT$100/NT$200-per-year floor was not re-established as the current minimum qualifying recharge. Preserve the lifecycle and leave the minimum cost unresolved.",
+      "sourceId": "cht-prepaid-recharge-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-cht-ruyi-180d-2026-current-profile-20260929",
+      "routeId": "cht-ruyi-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+      "data": {
+        "id": "cht-ruyi-180d-2026",
+        "brandId": "cht-ruyi",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Chunghwa Telecom prepaid (Ruyi/Ideal) cards are sold through CHT channels. Current pages document prepaid application and recharge products; eSIM availability for this prepaid route was not confirmed.",
+        "landedCost": {
+          "currency": "TWD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-confirmed-starter-cost-varies"
+        },
+        "keep": {
+          "currency": "TWD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Recharge qualifying main-account credit before expiry. Current CHT prepaid guidance states the number is valid for 180 days from activation and that qualifying recharge restarts the number-validity period at 180 days.",
+          "intervalDays": 180,
+          "state": "current-official-180-day-recharge-rule-minimum-amount-unresolved"
+        },
+        "chinaActivation": "Application is Taiwan-oriented and requires identity verification; overseas-first activation is not established.",
+        "kyc": "CHT prepaid application requires valid identity documents; current application page should be followed for eligible document combinations.",
+        "payment": "CHT online/service-center/convenience-store recharge channels.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Prepaid mobile data is domestic-only on the reviewed page; voice/SMS roaming details were not fully reconciled.",
+        "refund": "Unused main-account balance can be claimed/transferred under CHT prepaid rules within the documented post-expiry window; promo balances differ.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+        "tariffSummary": "180-day prepaid number validity; qualifying main-account recharge restarts the 180-day period. Current minimum qualifying recharge amount remains unresolved.",
+        "sourceIds": [
+          "cht-prepaid-recharge-2026-09-29",
+          "cht-prepaid-apply-2026-09-29",
+          "cht-prepaid-intro-2026-09-29"
+        ],
+        "guideSteps": [],
+        "marketName": "Taiwan"
+      }
+    }
+  ]
+}

@@ -40,6 +40,21 @@
     "marketId": "kh"
   },
   {
+    "id": "cellfie-ge",
+    "name": "Cellfie GE",
+    "marketId": "ge"
+  },
+  {
+    "id": "chunghwa-tw",
+    "name": "Chunghwa Telecom TW",
+    "marketId": "tw"
+  },
+  {
+    "id": "claro-br",
+    "name": "Claro BR",
+    "marketId": "br"
+  },
+  {
     "id": "cmhk-hk",
     "name": "China Mobile Hong Kong",
     "marketId": "hk"
@@ -50,6 +65,11 @@
     "marketId": "hk"
   },
   {
+    "id": "dialog-lk",
+    "name": "Dialog LK",
+    "marketId": "lk"
+  },
+  {
     "id": "du-ae",
     "name": "du UAE",
     "marketId": "ae"
@@ -58,6 +78,11 @@
     "id": "ee-uk",
     "name": "EE UK",
     "marketId": "gb"
+  },
+  {
+    "id": "etisalat-ae",
+    "name": "e& (Etisalat)",
+    "marketId": "ae"
   },
   {
     "id": "fet-tw",
@@ -85,6 +110,11 @@
     "marketId": "nl"
   },
   {
+    "id": "kyivstar-ua",
+    "name": "Kyivstar UA",
+    "marketId": "ua"
+  },
+  {
     "id": "magticom-ge",
     "name": "Magticom",
     "marketId": "ge"
@@ -98,6 +128,11 @@
     "id": "movistar-es",
     "name": "Movistar ES",
     "marketId": "es"
+  },
+  {
+    "id": "mts-ru",
+    "name": "MTS RU",
+    "marketId": "ru"
   },
   {
     "id": "o2-cz",
@@ -130,6 +165,11 @@
     "marketId": "ca"
   },
   {
+    "id": "safaricom-ke",
+    "name": "Safaricom KE",
+    "marketId": "ke"
+  },
+  {
     "id": "singtel-sg",
     "name": "Singtel",
     "marketId": "sg"
@@ -158,6 +198,11 @@
     "id": "telefonica-de",
     "name": "Telefónica DE (O2)",
     "marketId": "de"
+  },
+  {
+    "id": "telia-ee",
+    "name": "Telia EE",
+    "marketId": "ee"
   },
   {
     "id": "telkomsel-id",
@@ -195,6 +240,11 @@
     "marketId": "us"
   },
   {
+    "id": "true-th",
+    "name": "TrueMove H",
+    "marketId": "th"
+  },
+  {
     "id": "turkcell-tr",
     "name": "Turkcell Türkiye",
     "marketId": "tr"
@@ -207,6 +257,11 @@
   {
     "id": "viettel-vn",
     "name": "Viettel Vietnam",
+    "marketId": "vn"
+  },
+  {
+    "id": "vinaphone-vn",
+    "name": "VinaPhone",
     "marketId": "vn"
   },
   {

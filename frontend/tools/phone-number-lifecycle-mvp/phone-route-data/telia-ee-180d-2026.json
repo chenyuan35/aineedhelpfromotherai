@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "telia-ee-180d-2026",
+    "marketId": "ee",
+    "networkId": "telia-ee",
+    "brandId": "telia-konekaart",
+    "displayName": "Telia Super Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.super.ee/en/stardikas",
+    "sourceIds": [
+      "telia-super-starter-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "ee",
+    "name": "Estonia",
+    "countryCode": "EE"
+  },
+  "network": {
+    "id": "telia-ee",
+    "name": "Telia EE",
+    "marketId": "ee"
+  },
+  "brand": {
+    "id": "telia-konekaart",
+    "networkId": "telia-ee",
+    "name": "Telia Kõnekaart",
+    "marketId": "ee"
+  },
+  "metrics": {
+    "routeId": "telia-ee-180d-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 1,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 6,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "telia-super-starter-2026-09-29",
+      "url": "https://www.super.ee/en/stardikas",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",
+      "routeId": "telia-ee-180d-2026",
+      "type": "evidence-refresh",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Super guidance directly confirms the 180-day validity rule, EUR3 single-top-up threshold, 30-day receive-only recovery window, and eSIM starter availability.",
+      "sourceId": "telia-super-starter-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telia-ee-180d-2026-current-profile-20260929",
+      "routeId": "telia-ee-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+      "data": {
+        "id": "telia-ee-180d-2026",
+        "brandId": "telia-konekaart",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Telia Estonia Super prepaid starter kits are sold online and at more than 1,500 outlets. Current starter options begin at EUR1, and an eSIM starter can be downloaded from the Super app.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 1,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 1,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-eur1-starter"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 3,
+          "yearCostOriginal": 6,
+          "yearCostCny": null,
+          "action": "Top up at least EUR3 in a single transaction every 180 days. Splitting EUR3 into smaller top-ups does not extend card validity.",
+          "intervalDays": 180,
+          "state": "current-official-180-day-eur3-rule"
+        },
+        "chinaActivation": "The calling card can only be activated in Estonia according to current Super guidance; do not rely on overseas-first activation.",
+        "kyc": "Exact prepaid ID requirements were not fully reconciled in this review.",
+        "payment": "Online/card/app plus retail top-up channels are supported.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming is supported for relevant allowances; broader non-EU inbound-SMS behavior is unresolved.",
+        "refund": "After the 180-day validity period there is a 30-day receive/read/top-up window; without a EUR3 single top-up the number and unused prepaid funds are lost.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.super.ee/en/stardikas",
+        "tariffSummary": "EUR3 single top-up extends validity 180 days; after 180 days there is a 30-day incoming/read-message recovery window.",
+        "sourceIds": [
+          "telia-super-starter-2026-09-29"
+        ],
+        "guideSteps": [],
+        "marketName": "Estonia"
+      }
+    }
+  ]
+}

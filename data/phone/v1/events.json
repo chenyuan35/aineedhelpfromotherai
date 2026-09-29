@@ -18,6 +18,51 @@
     "sourceId": "official-cellcard-terms-en-2026-09-29"
   },
   {
+    "id": "evt-cellfie-ge-90-45d-2026-db-c2-review-20260929",
+    "routeId": "cellfie-ge-90-45d-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy GEL2/year was a rough estimate. Current official unit pricing and 90-day lifecycle imply a lower theoretical paid-action floor, but passive incoming SMS should not be relied on as the reset action.",
+    "sourceId": "cellfie-number-validity-2026-09-29"
+  },
+  {
+    "id": "evt-cht-ruyi-180d-2026-db-c2-review-20260929",
+    "routeId": "cht-ruyi-180d-2026",
+    "type": "minimum-cost-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The 180-day lifecycle is current and confirmed, but the legacy NT$100/NT$200-per-year floor was not re-established as the current minimum qualifying recharge. Preserve the lifecycle and leave the minimum cost unresolved.",
+    "sourceId": "cht-prepaid-recharge-2026-09-29"
+  },
+  {
+    "id": "evt-claro-pre-br-90d-2026-db-c2-review-20260929",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "evidence-hold",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The legacy 90-day recharge and recycle timing could not be independently reverified against current 2026 Claro pages in this round. Preserve it only as a HOLD signal, not a current-guaranteed rule.",
+    "sourceId": "claro-prepaid-plan-legacy-2026-09-26"
+  },
+  {
+    "id": "evt-dialog-lk-365d-2026-db-c2-review-20260929",
+    "routeId": "dialog-lk-365d-2026",
+    "type": "retention-cost-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy LKR500/365d was not found in the current official ladder. Current documented options are LKR400/180d and LKR1000/365d; exact additive stacking behavior remains a caveat.",
+    "sourceId": "dialog-number-recycling-2026-09-29"
+  },
+  {
+    "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
+    "routeId": "etisalat-wasel-ae-2026",
+    "type": "legacy-rule-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The old AED10-per-quarter framing is not needed for the current normalized rule. Current e& pages state lifetime validity with continued use and a 12-month retention/revival window after non-use; exact minimum annual cash cost is therefore left unresolved.",
+    "sourceId": "eand-wasel-line-2026-09-29"
+  },
+  {
     "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
     "routeId": "giffgaff-uk-direct-esim-payg",
     "type": "recycled-number-observation",
@@ -63,6 +108,15 @@
     "sourceId": "official-gp-recharge-validity-2026-09-29"
   },
   {
+    "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",
+    "routeId": "kyivstar-prepaid-274-91-2026",
+    "type": "evidence-refresh",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The 274-day active plus 91-day suspension rule and UAH30 restoration threshold are supported by current operator material and 2026 enforcement reporting.",
+    "sourceId": "kyivstar-additional-prepaid-2026-09-29"
+  },
+  {
     "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
     "routeId": "lebara-uk-direct-esim-china",
     "type": "outgoing-service-friction",
@@ -90,6 +144,15 @@
     "sourceId": "official-mobitel-number-retention-2026-09-29"
   },
   {
+    "id": "evt-mts-sokhranyayu-nomer-2026-db-c2-review-20260929",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "evidence-refresh",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "MTS support updated in 2026 confirms the Сохраняю номер service exists for eligible no-monthly-fee tariffs and that most lines face termination after roughly six months without qualifying top-up or spend. The product-price page remains geo-fragile, so tariff eligibility should stay constrained.",
+    "sourceId": "mts-long-inactivity-support-2026-09-29"
+  },
+  {
     "id": "evt-o2cz-credit-vs-sim-validity-distinction-20260929",
     "routeId": "o2-cz-prepaid-2026",
     "type": "lifecycle-clarification",
@@ -108,6 +171,24 @@
     "sourceId": "official-proximus-paygo-faq-2026-09-29"
   },
   {
+    "id": "evt-safaricom-daima-2026-db-c2-review-20260929",
+    "routeId": "safaricom-daima-2026",
+    "type": "evidence-refresh",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Daima pricing remains directly documented on Safaricom pages: KSh200/6 months, KSh500/1 year and KSh1000/2 years. The product pages are older, so continued live availability remains a monitoring item.",
+    "sourceId": "safaricom-daima-faq-2026-09-29"
+  },
+  {
+    "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",
+    "routeId": "telia-ee-180d-2026",
+    "type": "evidence-refresh",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Super guidance directly confirms the 180-day validity rule, EUR3 single-top-up threshold, 30-day receive-only recovery window, and eSIM starter availability.",
+    "sourceId": "telia-super-starter-2026-09-29"
+  },
+  {
     "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
     "routeId": "telkomsel-simpati-365d-2026",
     "type": "retention-cost-correction",
@@ -115,6 +196,33 @@
     "scope": "route",
     "outcome": "Legacy Rp5,000/year keep-cost inference is unsupported by current rules. Rp5,000 top-up is not documented as a 365-day extension; official extension options include Rp115,000/360 days, while qualifying usage/top-up/package rules may yield cheaper paths whose durable annual minimum remains unresolved.",
     "sourceId": "official-telkomsel-active-extension-2026-09-29"
+  },
+  {
+    "id": "evt-tesco-mobile-payg-uk-2026-db-c2-review-20260929",
+    "routeId": "tesco-mobile-payg-uk-2026",
+    "type": "tariff-and-cost-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy 4p-text / GBP0.08-year keep estimate belonged to retired PAYG pricing. Current Essentials standard SMS is 10p, so a two-actions-per-year theoretical floor is about GBP0.20 after the required initial top-up.",
+    "sourceId": "tesco-payg-service-terms-2026-09-29"
+  },
+  {
+    "id": "evt-truemove-validity-pack-th-2026-db-c2-review-20260929",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "evidence-hold",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The legacy THB35/90d and THB70/180d validity-extension mechanism remains useful community intelligence, but current 2026 first-party terms were not reachable. Keep the row as HOLD and do not present the price as current-guaranteed.",
+    "sourceId": "truemove-community-signal-2026-09-27"
+  },
+  {
+    "id": "evt-vinaphone-giu-so-vn-2026-db-c2-review-20260929",
+    "routeId": "vinaphone-giu-so-vn-2026",
+    "type": "evidence-upgrade",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy GS2 pricing was community-only; the current VinaPhone GS2 product page directly supports VND120,000 for a 360-day validity extension.",
+    "sourceId": "vinaphone-gs2-official-2026-09-29"
   },
   {
     "id": "evt-vodacom-83d-rule-refuted-20260929",

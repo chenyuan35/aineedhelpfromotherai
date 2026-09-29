@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "kyivstar-prepaid-274-91-2026",
+    "marketId": "ua",
+    "networkId": "kyivstar-ua",
+    "brandId": "kyivstar-prepaid",
+    "displayName": "Kyivstar Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://kyivstar.ua/additional-prepaid",
+    "sourceIds": [
+      "kyivstar-additional-prepaid-2026-09-29",
+      "kyivstar-enforcement-news-2026-02-04",
+      "kyivstar-esim-starter-2026-09-29",
+      "kyivstar-sim-restore-2026-02-09"
+    ]
+  },
+  "market": {
+    "id": "ua",
+    "name": "Ukraine",
+    "countryCode": "UA"
+  },
+  "network": {
+    "id": "kyivstar-ua",
+    "name": "Kyivstar UA",
+    "marketId": "ua"
+  },
+  "brand": {
+    "id": "kyivstar-prepaid",
+    "networkId": "kyivstar-ua",
+    "name": "Kyivstar Prepaid",
+    "marketId": "ua"
+  },
+  "metrics": {
+    "routeId": "kyivstar-prepaid-274-91-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "UAH",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "UAH",
+    "keepYearCostOriginal": 40,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 274
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "kyivstar-additional-prepaid-2026-09-29",
+      "url": "https://kyivstar.ua/additional-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "kyivstar-enforcement-news-2026-02-04",
+      "url": "https://tehnofan.com.ua/2026/02/04/z-6-lyutoho-kyyivstar-pochne-blokuvaty-nomery-yaki-dovho-ne-popovnyalysya-podrobytsi/",
+      "type": "independent-news",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "kyivstar-esim-starter-2026-09-29",
+      "url": "https://shop.kyivstar.ua/tariffplan/starter-packs-esim/startpack-kyivstar-esim-vse-razom-lehkyi.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "kyivstar-sim-restore-2026-02-09",
+      "url": "https://kyivstar.ua/services/prepaid/simcard-rest",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",
+      "routeId": "kyivstar-prepaid-274-91-2026",
+      "type": "evidence-refresh",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The 274-day active plus 91-day suspension rule and UAH30 restoration threshold are supported by current operator material and 2026 enforcement reporting.",
+      "sourceId": "kyivstar-additional-prepaid-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-kyivstar-prepaid-274-91-2026-current-profile-20260929",
+      "routeId": "kyivstar-prepaid-274-91-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+      "data": {
+        "id": "kyivstar-prepaid-274-91-2026",
+        "brandId": "kyivstar-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Kyivstar prepaid can be activated without passport registration according to current operator material; physical and eSIM starter packs are sold through Kyivstar channels.",
+        "landedCost": {
+          "currency": "UAH",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 30,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-starter-price-varies-retention-threshold-confirmed"
+        },
+        "keep": {
+          "currency": "UAH",
+          "observedActionCost": 30,
+          "yearCostOriginal": 40,
+          "yearCostCny": null,
+          "action": "Make a single top-up of at least UAH30 before the 274-day active period expires. After suspension, the same threshold can restore service within the 91-day recovery window.",
+          "intervalDays": 274,
+          "state": "current-official-274-plus-91-rule"
+        },
+        "chinaActivation": "Acquisition is Ukraine-oriented; overseas-first activation and wartime service continuity are not guaranteed.",
+        "kyc": "Kyivstar describes prepaid as connectable without passport.",
+        "payment": "Kyivstar online/app and local recharge methods.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Some tariffs support roaming bundles; inbound-SMS-abroad behavior was not separately sourced.",
+        "refund": "After the 91-day suspended window, self-service restoration may no longer be available and the number can be reassigned.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://kyivstar.ua/additional-prepaid",
+        "tariffSummary": "274 days active after qualifying top-up/payment, then 91 days suspended/recoverable; UAH30 single top-up restores/extends.",
+        "sourceIds": [
+          "kyivstar-additional-prepaid-2026-09-29",
+          "kyivstar-sim-restore-2026-02-09",
+          "kyivstar-esim-starter-2026-09-29",
+          "kyivstar-enforcement-news-2026-02-04"
+        ],
+        "guideSteps": [],
+        "marketName": "Ukraine"
+      }
+    }
+  ]
+}
