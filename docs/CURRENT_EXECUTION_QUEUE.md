@@ -8,7 +8,7 @@ Last updated: 2026-09-30
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C5 local implementation now has **135 comparison routes / 104 canonical normalized routes / 93 comparison↔canonical route-ID overlaps / 42 comparison routes still legacy-only / 3 indexable routes**; release gates are still pending.
+3. DB-C5 is released with **135 comparison routes / 104 canonical normalized routes / 93 comparison↔canonical route-ID overlaps / 42 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -26,17 +26,19 @@ Canonical result after DB-C4D: **101 routes / 57 markets / 98 brands / 77 networ
 
 Release: PR #313 (`7c435d1ef0c897dbaf249f8caa2e098cbeb920ff`) merged after Eval Gate #965, CI #187 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Elisa route at HTTP 404.
 
-## ACTIVE — DB-C5 release gates
+## JUST COMPLETED — Backend database coverage DB-C5
 
-DB-C5 local implementation and verification are complete on the dedicated branch/worktree. Current disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+DB-C5 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
 - `one-me-2026` — HOLD: current 90-day/EUR2 retention economics are documented, but Tourist Package roaming is unavailable outside Montenegro.
 - `bhtelecom-ba-2026` — ADMIT-BACKSTAGE: current Ultra lifecycle, foreign-card top-up and visitor eSIM evidence are documented; China-specific OTP remains unverified.
 - `yettel-prepaid-bg-2026` — HOLD: 365/395-day validity and EUR4.09 online top-up are documented, but the current remote foreign-passport registration path remains unresolved.
 
-Local verification: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison overlaps / 42 legacy-only / 3 indexable**. `npm run phone:data:check` and the full frontend build pass; the build still emits only the existing 3 route detail pages.
+Released state: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison overlaps / 42 legacy-only / 3 indexable**. PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb`; Eval Gate #969, CI #189 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `bhtelecom-ba-2026` route 404.
 
-Next actions inside DB-C5 only: record the failed QwenPaw/Kimi One-Montenegro audit, review the final diff, commit/push the dedicated branch, open the PR, require Eval Gate + CI + Vercel Preview, merge only when green, then verify production hub/VOXI 200 and a representative DB-C5 non-indexable route 404. Do not start DB-C6 in this session.
+## NEXT — Backend database coverage DB-C6
+
+Bounded first batch: `stc-sawa-sa-2026`, `claro-pre-ar-2026`, `skt-prepaid-kr-2026`. Reverify current lifecycle, minimum keep cost, foreign-user/KYC/acquisition constraints and overseas SMS/OTP utility. Use real QwenPaw agent delegation for at least one independent lane and reconcile all delegated output before admission. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
