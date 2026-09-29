@@ -19,4 +19,4 @@ All 12 routes received independent source review, exceeding the >=3-route sample
 
 `npm run phone:data:check` passes after import/build, including candidate-pipeline, canonical compatibility and publication-boundary checks. The 135-route comparison surface and 3-route indexability boundary are unchanged.
 
-No route page, market page, sitemap, ranking or SEO publication expansion is authorized by DB-C3. Merge remains gated on Eval Gate and a real Vercel Preview.
+No route page, market page, sitemap, ranking or SEO publication expansion is authorized by DB-C3. PR #305 squash-merged as `82299c03500f029db1fb6241fbaaf4d5bcbcb3f0`; Eval Gate #949, Vercel Preview and production passed. Post-merge live verification: Phone hub HTTP 200, VOXI indexable route HTTP 200, ASDA non-indexable route HTTP 404.

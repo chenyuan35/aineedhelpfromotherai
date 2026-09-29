@@ -24,7 +24,7 @@ Result: **7 ADMIT-BACKSTAGE / 5 HOLD / 0 REJECT**. HOLD preserves unresolved cur
 
 Material corrections include ASDA activity-vs-credit-expiry separation, Lyca UK's O2→EE network correction, LMT's withdrawn EUR18/year estimate, Telekom Easy's current 180-day post-top-up validity, CALENDAR's JPY7,860 entry + JPY5,400 extension, RedPocket's current USD110 annual renewal, and removal of Orange Romania's unsupported EUR42/year estimate.
 
-Canonical result after DB-C3: **89 routes / 51 markets / 86 brands / 67 networks / 293 sources**. Comparison remains **135**, comparison↔canonical overlap is **78**, **57 comparison routes remain legacy-only**, and explicit indexability remains **3**.
+Canonical result after DB-C3: **89 routes / 51 markets / 86 brands / 67 networks / 293 sources**. Comparison remains **135**, comparison↔canonical overlap is **78**, **57 comparison routes remain legacy-only**, and explicit indexability remains **3**. PR #305 squash-merged as `82299c03500f029db1fb6241fbaaf4d5bcbcb3f0`; Eval Gate #949 and Vercel Preview/production passed. Live hub + VOXI route are HTTP 200; non-indexable ASDA route remains HTTP 404.
 
 ## ACTIVE — Backend database coverage DB-C4
 
