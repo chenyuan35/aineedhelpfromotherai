@@ -2344,6 +2344,63 @@
     }
   },
   {
+    "id": "snap-id-mobile-uk-2026-current-profile-20260929",
+    "routeId": "id-mobile-uk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4b-reviewed-2026-09-29",
+    "data": {
+      "id": "id-mobile-uk-2026",
+      "brandId": "id-mobile-uk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current iD PAYG is sold as one-off 30-day plans and supports physical SIM or eSIM. After a plan expires, PAYG credit can be used at 3p/min, 2p/text and 1p/MB.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 6,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 6,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-cheapest-30d-plan"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 0.02,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current legal terms allow disconnection after four months without applying credit, buying a bundle or making a chargeable event; unused credit expires after 365 days unless an additional top-up is made. A 2p text is a chargeable event while usable credit remains, but the minimum top-up amount is not treated as provider-verified here.",
+        "intervalDays": 120,
+        "state": "provider-terms-120d-conflicts-with-provider-180d-copy"
+      },
+      "chinaActivation": "Physical SIM is delivered to UK addresses; eSIM QR is emailed. China-first eSIM use/activation and overseas-only retention are not established.",
+      "kyc": "Current PAYG product states no credit check; additional identity requirements for all acquisition paths are not established here.",
+      "payment": "Top-up is available in the iD app/account; minimum top-up and foreign-card acceptance are not established by current provider pages used here.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "Credit and allowances are non-refundable under current PAYG terms.",
+      "trend": "hold-first-party-lifecycle-conflict",
+      "guideEligible": false,
+      "holdReason": "Current iD PAYG legal terms use a 120-day/four-month inactivity clock, while current iD marketing and an employee community answer say 180 days. Use the stricter 120-day clock until the provider resolves the conflict.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.idmobile.co.uk/sim-only-deals/pay-as-you-go",
+      "tariffSummary": "Current PAYG: plans from £6/30d; standard post-plan rates 3p/min, 2p/text, 1p/MB; legal terms use 120-day inactivity and 365-day credit expiry.",
+      "sourceIds": [
+        "id-mobile-payg-terms-20260929",
+        "id-mobile-payg-product-20260929",
+        "id-mobile-180d-community-20251121"
+      ],
+      "guideSteps": [
+        "Choose physical SIM or eSIM and activate the PAYG line.",
+        "Use the stricter 120-day chargeable-activity clock from the current legal terms while the 180-day provider copy remains unresolved.",
+        "Track the separate 365-day unused-credit expiry and top up before that deadline if retaining credit."
+      ]
+    }
+  },
+  {
     "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
     "routeId": "jio-prepaid-90d-trai-2026",
     "kind": "current-profile",
@@ -3514,6 +3571,62 @@
     }
   },
   {
+    "id": "snap-mtn-ng-keepmynumber-2026-current-profile-20260929",
+    "routeId": "mtn-ng-keepmynumber-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4b-reviewed-2026-09-29",
+    "data": {
+      "id": "mtn-ng-keepmynumber-2026",
+      "brandId": "mtn-ng-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "MTN prepaid lines can use the dedicated Keep My Number service. SIM registration is required; visitors staying under 24 months do not need a NIN for purchase but do need a valid visa and international passport/travel document. A revenue-generating event is required within 48 hours after registration.",
+      "landedCost": {
+        "currency": "NGN",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "sim-acquisition-price-not-established"
+      },
+      "keep": {
+        "currency": "NGN",
+        "observedActionCost": 7500,
+        "yearCostOriginal": 2500,
+        "yearCostCny": null,
+        "action": "Keep My Number plans are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. The 3-year option has the lowest annualized current provider price. Fund sufficient airtime, then subscribe with *365# / *365*3# or the corresponding SMS keyword.",
+        "intervalDays": 1095,
+        "state": "current-provider-official"
+      },
+      "chinaActivation": "Initial SIM registration/activation is a Nigeria-side process in current provider terms; remote China-first acquisition is not established.",
+      "kyc": "NIN is generally required, but visitors staying less than 24 months are expressly exempt from the NIN purchase requirement if they provide a valid visa and international passport/travel document.",
+      "payment": "Keep My Number subscription is deducted from sufficient airtime balance; remote foreign-card/top-up reliability is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "stable-current-kmn",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
+      "tariffSummary": "Keep My Number: NGN3,500/1y, NGN5,000/2y, NGN7,500/3y; 3y = NGN2,500/year annualized.",
+      "sourceIds": [
+        "mtn-ng-kmn-20260929",
+        "mtn-ng-prepaid-terms-20260929"
+      ],
+      "guideSteps": [
+        "Register and activate the prepaid line with the applicable identity documents.",
+        "Perform the required revenue-generating event after registration.",
+        "Fund sufficient airtime and subscribe to the chosen Keep My Number duration using the official *365# flow."
+      ]
+    }
+  },
+  {
     "id": "snap-mts-sokhranyayu-nomer-2026-current-profile-20260929",
     "routeId": "mts-sokhranyayu-nomer-2026",
     "kind": "current-profile",
@@ -4434,6 +4547,63 @@
         "Acquire a Skinny eSIM or physical SIM.",
         "Activate the new SIM on a New Zealand network before relying on roaming.",
         "Add at least NZ$5 credit before each 12-month no-top-up window expires; recheck the current minimum before renewal."
+      ]
+    }
+  },
+  {
+    "id": "snap-smart-prepaid-ph-2026-current-profile-20260929",
+    "routeId": "smart-prepaid-ph-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4b-reviewed-2026-09-29",
+    "data": {
+      "id": "smart-prepaid-ph-2026",
+      "brandId": "smart-ph",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Smart currently offers a P99 prepaid eSIM. Registration is mandatory. Foreign tourists receive only 30 days of SIM validity unless they submit an approved visa extension; foreign nationals with other visa types can acquire without that temporary 30-day cap.",
+      "landedCost": {
+        "currency": "PHP",
+        "providerOrCommunityPrice": 99,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 99,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-esim-price"
+      },
+      "keep": {
+        "currency": "PHP",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Loaded prepaid value must be used within 365 days. If the balance reaches zero, reload within 180 days to avoid disconnection. These are separate lifecycle clocks; no fixed minimum annual retention cost is established here.",
+        "intervalDays": null,
+        "state": "provider-official-dual-lifecycle-no-fixed-cost"
+      },
+      "chinaActivation": "Remote/China-first registration and activation are not established by current provider material.",
+      "kyc": "SIM registration is mandatory. Foreign tourists are capped at 30 days unless an approved visa extension is supplied; foreign nationals holding other visa types are not subject to that temporary 30-day validity period.",
+      "payment": "Smart supports prepaid loading; the minimum universally available reload amount and foreign-card acceptance are not established here.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "hold-foreign-tourist-30d",
+      "guideEligible": false,
+      "holdReason": "Foreign-tourist registrations are automatically deactivated after 30 days unless an approved visa extension is supplied. Long-term eligibility exists for other visa categories, but no current foreign-user end-to-end reproduction is captured.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://smart.com.ph/Pages/esim",
+      "tariffSummary": "P99 prepaid eSIM; ordinary prepaid value is valid 365 days, with a separate 180-day reload grace after balance reaches zero.",
+      "sourceIds": [
+        "smart-prepaid-validity-20260929",
+        "smart-simreg-foreigners-20260929",
+        "smart-esim-20260929"
+      ],
+      "guideSteps": [
+        "Register the SIM under the correct foreign-national eligibility category.",
+        "Track loaded-value expiry separately from the zero-balance reload grace.",
+        "Do not treat a tourist-registered SIM as a long-term route without an approved visa extension."
       ]
     }
   },

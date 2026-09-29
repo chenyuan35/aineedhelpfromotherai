@@ -170,6 +170,11 @@
     "countryCode": "MY"
   },
   {
+    "id": "ng",
+    "name": "Nigeria",
+    "countryCode": "NG"
+  },
+  {
     "id": "nl",
     "name": "Netherlands",
     "countryCode": "NL"

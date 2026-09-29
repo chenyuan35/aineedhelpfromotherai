@@ -636,6 +636,25 @@
     ]
   },
   {
+    "id": "id-mobile-uk-2026",
+    "marketId": "gb",
+    "networkId": "three-uk",
+    "brandId": "id-mobile-uk",
+    "displayName": "iD Mobile PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.idmobile.co.uk/sim-only-deals/pay-as-you-go",
+    "sourceIds": [
+      "id-mobile-180d-community-20251121",
+      "id-mobile-payg-product-20260929",
+      "id-mobile-payg-terms-20260929"
+    ]
+  },
+  {
     "id": "jio-prepaid-90d-trai-2026",
     "marketId": "in",
     "networkId": "jio-in",
@@ -907,6 +926,24 @@
     ]
   },
   {
+    "id": "mtn-ng-keepmynumber-2026",
+    "marketId": "ng",
+    "networkId": "mtn-ng",
+    "brandId": "mtn-ng-prepaid",
+    "displayName": "MTN Nigeria Keep My Number",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
+    "sourceIds": [
+      "mtn-ng-kmn-20260929",
+      "mtn-ng-prepaid-terms-20260929"
+    ]
+  },
+  {
     "id": "mts-sokhranyayu-nomer-2026",
     "marketId": "ru",
     "networkId": "mts-ru",
@@ -1173,6 +1210,25 @@
       "official-skinny-plans-2026-09-29",
       "official-skinny-roaming-2026-09-29",
       "official-skinny-trio-sim-2026-09-29"
+    ]
+  },
+  {
+    "id": "smart-prepaid-ph-2026",
+    "marketId": "ph",
+    "networkId": "smart-ph",
+    "brandId": "smart-ph",
+    "displayName": "Smart Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://smart.com.ph/Pages/esim",
+    "sourceIds": [
+      "smart-esim-20260929",
+      "smart-prepaid-validity-20260929",
+      "smart-simreg-foreigners-20260929"
     ]
   },
   {
