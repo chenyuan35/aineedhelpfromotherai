@@ -1,6 +1,6 @@
 # Session Execution Protocol — 25-minute work window
 
-Last updated: 2026-09-25
+Last updated: 2026-09-29
 
 This document governs **conversation/session-level execution** for `aineedhelpfromotherai.com`. It does not replace project planning or project facts.
 
@@ -35,10 +35,25 @@ Before substantial tool calls, state a compact Session Card:
 - **Why now** — which current project priority/blocker it serves;
 - **Deliverable** — concrete artifact, code change, audit result, decision, or verification expected by the end of this session;
 - **Steps** — normally 3–5 bounded actions;
+- **Parallel lane** — if the current queue explicitly defines an already-authorized delegated/background lane, name the worker and bounded backstage job; otherwise state none;
 - **Definition of done** — observable completion condition;
 - **Stop conditions** — blocker, authorization need, provider quota, missing evidence, or task proving too large for the remaining window.
 
 If the task cannot reasonably be completed or brought to a clean verified checkpoint in one tool window, split it **before execution begins**.
+
+## Parallel delegated-lane guardrail
+
+The one-session-task rule constrains the coordinating session's decision and production scope. It does **not** cancel an explicitly authorized parallel backstage lane already defined by `docs/CURRENT_EXECUTION_QUEUE.md` or the applicable operating plan.
+
+At session start, after reading the queue, perform one explicit parallel-lane check:
+
+1. if the queue says a delegated worker such as QwenPaw/Kimi should continue bounded backstage research, evidence acquisition, reconciliation, or another non-destructive task while the coordinator measures/waits/reviews, dispatch or verify that lane before calling the session complete;
+2. if the delegated lane is already running, record its task/status and continue the coordinator's bounded main task without waiting for the worker unless its result is required for the current definition of done;
+3. if the delegated lane is unavailable or blocked, record that fact explicitly instead of silently reverting to single-agent execution;
+4. delegated output remains `RESEARCH CANDIDATE` by default and cannot change production, canonical admission, publication, roadmap, DNS, billing, account settings, or other protected state without normal coordinator review and release gates;
+5. background delegation does not authorize a second coordinator roadmap task. The coordinating session still owns exactly one bounded decision/release task.
+
+A session that ignores an explicitly active parallel lane without recording a blocker is incomplete even if the coordinator's narrow measurement or review step succeeded.
 
 ## 25-minute planning budget
 
