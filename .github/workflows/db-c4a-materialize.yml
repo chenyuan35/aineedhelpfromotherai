@@ -30,12 +30,12 @@ jobs:
           git apply /tmp/db-c4a.patch
           rm -f .tmp/db-c4a.part.* .github/workflows/db-c4a-materialize.yml
           rmdir .tmp 2>/dev/null || true
-          git diff --check
-          mapfile -t changed < <(git diff --name-only origin/main)
-          test "${#changed[@]}" = "23"
-          if printf '%s\n' "${changed[@]}" | grep -Eq '^(\.tmp/|\.github/workflows/db-c4a-materialize\.yml$)'; then exit 1; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
+          git diff --cached --check
+          mapfile -t changed < <(git diff --cached --name-only origin/main)
+          test "${#changed[@]}" = "23"
+          if printf '%s\n' "${changed[@]}" | grep -Eq '^(\.tmp/|\.github/workflows/db-c4a-materialize\.yml$)'; then exit 1; fi
           git commit -m 'Phone: process DB-C4 sample routes'
           git push origin "HEAD:${GITHUB_REF_NAME}"
