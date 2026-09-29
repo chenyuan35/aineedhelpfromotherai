@@ -60,6 +60,11 @@
     "countryCode": "HR"
   },
   {
+    "id": "ie",
+    "name": "Ireland",
+    "countryCode": "IE"
+  },
+  {
     "id": "in",
     "name": "India",
     "countryCode": "IN"
@@ -98,6 +103,16 @@
     "id": "ph",
     "name": "Philippines",
     "countryCode": "PH"
+  },
+  {
+    "id": "pl",
+    "name": "Poland",
+    "countryCode": "PL"
+  },
+  {
+    "id": "pt",
+    "name": "Portugal",
+    "countryCode": "PT"
   },
   {
     "id": "sg",

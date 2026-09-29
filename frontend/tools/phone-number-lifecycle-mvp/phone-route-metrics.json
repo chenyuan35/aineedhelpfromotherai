@@ -38,6 +38,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "a1-hr-prepaid-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 3,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "activatex-temp",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -302,6 +314,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "orange-pl-nakarte-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PLN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PLN",
+      "keepYearCostOriginal": 39,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "povo20-zero-base-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -458,6 +482,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "three-ie-prepay-lifecycle-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "three-uk-payg-180d-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -576,6 +612,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "vodafone-yorn-pt-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 7
     },
     {
       "routeId": "voxi-uk-esim-payg-retention",

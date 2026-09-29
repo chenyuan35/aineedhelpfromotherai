@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": {
+    "id": "pl",
+    "name": "Poland",
+    "countryCode": "PL"
+  },
+  "route": {
+    "id": "orange-pl-nakarte-2026",
+    "marketId": "pl",
+    "networkId": "orange-pl",
+    "brandId": "orange-pl-nakarte",
+    "displayName": "Orange na kartę",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.orange.pl/view/oferta-na-karte",
+    "sourceIds": [
+      "official-orange-pl-prepaid-validity-2026-09-29",
+      "official-orange-pl-registration-2026-09-29",
+      "official-orange-pl-inactivity-fee-abolished-2026-09-29"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-orange-pl-prepaid-validity-2026-09-29",
+      "url": "https://www.orange.pl/view/oferta-na-karte",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-pl-registration-2026-09-29",
+      "url": "https://www.orange.pl/view/zarejestruj-numer",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-orange-pl-inactivity-fee-abolished-2026-09-29",
+      "url": "https://www.orange.pl/view/utrzymanie-numeru",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "sourceIds": [
+    "official-orange-pl-prepaid-validity-2026-09-29",
+    "official-orange-pl-registration-2026-09-29",
+    "official-orange-pl-inactivity-fee-abolished-2026-09-29"
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-orange-pl-nakarte-2026-current-profile-20260929",
+      "routeId": "orange-pl-nakarte-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+      "data": {
+        "id": "orange-pl-nakarte-2026",
+        "brandId": "orange-pl-nakarte",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Orange Polska prepaid pricing explicitly offers account-validity extensions of +31 days for PLN9, +93 days for PLN19, and +365 days for PLN39. The old PLN5 inactivity-maintenance fee remains abolished since 24 January 2024. Current ordinary reload validity is also amount-dependent. The legacy PLN10/year model is therefore stale.",
+        "landedCost": {
+          "currency": "PLN",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "starter-price-not-relied-on"
+        },
+        "keep": {
+          "currency": "PLN",
+          "observedActionCost": 39,
+          "yearCostOriginal": 39,
+          "yearCostCny": null,
+          "action": "Current Orange prepaid page explicitly offers +365 days of account validity for PLN39. Shorter extensions are +31d/PLN9 and +93d/PLN19. The former PLN5 inactivity fee was abolished in 2024.",
+          "intervalDays": 365,
+          "state": "official-current-validity-extension"
+        },
+        "chinaActivation": "Polish prepaid numbers require registration. Orange supports several registration methods, but in-person registration accepts an identity card or passport; a reliable China-first new-number acquisition/activation path is not established.",
+        "kyc": "Registration is mandatory. Orange explicitly accepts identity card or passport for in-person prepaid registration.",
+        "payment": "Orange prepaid supports reloads and paid validity extensions; local online identity/payment rails may still make acquisition Poland-centered.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Orange prepaid supports roaming; current packet does not establish China-specific incoming OTP reliability or whether all desired verification senders deliver consistently abroad.",
+        "refund": "The former inactivity fee was withdrawn/refunded following regulatory intervention; no refund assumption is used for current prepaid validity extensions.",
+        "trend": "changed",
+        "guideEligible": false,
+        "holdReason": "Current annual validity economics are clear at PLN39/365 days, but new-number registration/acquisition remains Poland-centered and China/overseas OTP reliability is not independently verified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.orange.pl/view/oferta-na-karte",
+        "tariffSummary": "Current official account-validity extension: PLN39 for +365 days; old PLN5 inactivity fee abolished in 2024.",
+        "sourceIds": [
+          "official-orange-pl-prepaid-validity-2026-09-29",
+          "official-orange-pl-registration-2026-09-29",
+          "official-orange-pl-inactivity-fee-abolished-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: PLN39/365-day validity is current first-party pricing.",
+          "Require stronger foreign acquisition and overseas OTP evidence before promotion."
+        ]
+      }
+    }
+  ],
+  "numberRanges": [],
+  "network": {
+    "id": "orange-pl",
+    "name": "Orange Polska",
+    "marketId": "pl"
+  },
+  "brand": {
+    "id": "orange-pl-nakarte",
+    "networkId": "orange-pl",
+    "name": "Orange na kartę",
+    "marketId": "pl"
+  }
+}

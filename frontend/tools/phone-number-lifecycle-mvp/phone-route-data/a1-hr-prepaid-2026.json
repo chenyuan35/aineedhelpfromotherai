@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "a1-hr-prepaid-2026",
+    "marketId": "hr",
+    "networkId": "a1-hr",
+    "brandId": "a1-hr-prepaid",
+    "displayName": "A1 HR Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+    "sourceIds": [
+      "official-a1-hr-prepaid-registration-2026-09-29",
+      "official-a1-hr-prepaid-roaming-2026-09-29",
+      "official-a1-hr-recharge-2026-09-29",
+      "official-a1-hr-sim-prepaid-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "hr",
+    "name": "Croatia",
+    "countryCode": "HR"
+  },
+  "network": {
+    "id": "a1-hr",
+    "name": "A1 Croatia",
+    "marketId": "hr"
+  },
+  "brand": {
+    "id": "a1-hr-prepaid",
+    "networkId": "a1-hr",
+    "name": "A1 HR Prepaid",
+    "marketId": "hr"
+  },
+  "metrics": {
+    "routeId": "a1-hr-prepaid-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 3,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-a1-hr-prepaid-registration-2026-09-29",
+      "url": "https://www.a1.hr/privatni/mobiteli/a1-na-bonove/pristupnica",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-hr-prepaid-roaming-2026-09-29",
+      "url": "https://www.a1.hr/privatni/inozemstvo/cjenik-bonovi",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-hr-recharge-2026-09-29",
+      "url": "https://www.a1.hr/privatni/mobiteli/mobilno-placanje/obnova-a1-racuna",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-a1-hr-sim-prepaid-2026-09-29",
+      "url": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-a1-hr-prepaid-2026-current-profile-20260929",
+      "routeId": "a1-hr-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+      "data": {
+        "id": "a1-hr-prepaid-2026",
+        "brandId": "a1-hr-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Current A1 Croatia standard prepaid can be ordered online; current SIM promo pricing is EUR3 and physical SIM delivery requires showing an identity card, while A1 also exposes a prepaid data-registration flow accepting an identity card or passport. Current online recharge supports EUR5/10/15/20/35 standard voucher amounts and card/Apple Pay/Google Pay/Revolut/KEKS Pay/PayPal. A1 confirms those recharges extend account validity, but current first-party material captured here does not state the validity duration produced by each voucher amount.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 3,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 3,
+          "landedCny": null,
+          "fxCheckedAt": "2026-09-29",
+          "state": "official-current-sim-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "EUR5 is the lowest currently displayed standard voucher amount, and A1 says standard vouchers extend account validity. The captured current first-party pages do not specify how many validity days each voucher amount adds, so no yearly keep cost or safe interval is modeled.",
+          "intervalDays": null,
+          "state": "official-recharge-minimum-validity-duration-unresolved"
+        },
+        "chinaActivation": "A1 sells standard prepaid SIM online with delivery and first-call activation; physical delivery requires identity-card presentation. This packet does not establish international delivery or a China-first activation path.",
+        "kyc": "A1 offers prepaid data registration using a digital photo of an identity card or passport. Delivery of the current standard prepaid SIM requires identity-card presentation; foreign remote onboarding remains unresolved.",
+        "payment": "Online recharge can be made regardless of location using bank card, Apple Pay/Google Pay, Revolut, KEKS Pay or PayPal. Current standard voucher amounts start at EUR5.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "A1 publishes a prepaid roaming tariff and says prepaid users automatically connect to available networks abroad. The packet does not establish China-specific incoming OTP reliability.",
+        "refund": "Not established.",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current online acquisition/recharge/KYC/roaming evidence is stronger, but the key standard-voucher validity duration is still absent from captured current first-party material; annual retention cost cannot be calculated safely.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+        "tariffSummary": "HOLD: SIM EUR3; recharge starts EUR5 and extends validity, but current first-party voucher-to-validity duration remains unresolved.",
+        "sourceIds": [
+          "official-a1-hr-sim-prepaid-2026-09-29",
+          "official-a1-hr-recharge-2026-09-29",
+          "official-a1-hr-prepaid-registration-2026-09-29",
+          "official-a1-hr-prepaid-roaming-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: do not infer a yearly keep cost from the EUR5 minimum voucher.",
+          "Re-open when current first-party voucher validity days are captured."
+        ]
+      }
+    }
+  ]
+}

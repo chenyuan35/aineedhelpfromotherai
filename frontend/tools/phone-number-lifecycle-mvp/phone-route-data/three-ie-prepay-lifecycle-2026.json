@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "three-ie-prepay-lifecycle-2026",
+    "marketId": "ie",
+    "networkId": "three-ie",
+    "brandId": "three-ie-prepay",
+    "displayName": "Three IE Prepay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.three.ie/plans/prepay-sim-only.html",
+    "sourceIds": [
+      "official-three-ie-keeping-active-2026-09-29",
+      "official-three-ie-prepay-terms-2026-09-29",
+      "official-three-ie-recycling-2026-09-29",
+      "official-three-ie-roaming-activity-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "ie",
+    "name": "Ireland",
+    "countryCode": "IE"
+  },
+  "network": {
+    "id": "three-ie",
+    "name": "Three Ireland",
+    "marketId": "ie"
+  },
+  "brand": {
+    "id": "three-ie-prepay",
+    "networkId": "three-ie",
+    "name": "Three IE Prepay",
+    "marketId": "ie"
+  },
+  "metrics": {
+    "routeId": "three-ie-prepay-lifecycle-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "official-three-ie-keeping-active-2026-09-29",
+      "url": "https://community.three.ie/t5/Prepay/Keeping-your-Prepay-Number-Active/ta-p/804841",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-three-ie-prepay-terms-2026-09-29",
+      "url": "https://www.three.ie/legal/terms/prepay.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-three-ie-recycling-2026-09-29",
+      "url": "https://community.three.ie/t5/Prepay/Recycling-Inactive-Prepay-Numbers/ta-p/800862",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-three-ie-roaming-activity-2026-09-29",
+      "url": "https://community.three.ie/t5/Prepay-Plans-and-Services/Data-roaming-and-keeping-phone-number-active/td-p/791338",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [],
+  "snapshots": [
+    {
+      "id": "snap-three-ie-prepay-lifecycle-2026-current-profile-20260929",
+      "routeId": "three-ie-prepay-lifecycle-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "ie-pl-pt-hr-directory-batch-k.json",
+      "data": {
+        "id": "three-ie-prepay-lifecycle-2026",
+        "brandId": "three-ie-prepay",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Three Ireland provider terms and provider-moderated help agree that a prepay number can be terminated for extended inactivity, but the current guidance is internally inconsistent on the safe timing: a 2026 help article describes an alert after at least 90 days plus another 180 days before removal, while other Three guidance says to top up at least every 6 months and the General Terms permit restriction/termination after 12 months without top-up or chargeable use. Credit expiry is a separate rule. The legacy “one SMS every ~80 days” recommendation therefore overstates certainty.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "sim-free-current-keep-cost-not-modeled"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Three consistently says a top-up or credit-reducing call/text/data resets dormancy, but current provider guidance conflicts on the relevant inactivity threshold (90+180 days, six-month advice, and a 12-month contractual termination threshold). Do not publish a single cheapest cadence until Three reconciles these rules.",
+          "intervalDays": null,
+          "state": "current-provider-lifecycle-conflict"
+        },
+        "chinaActivation": "Three Prepay SIM/eSIM is an Irish consumer product. Online/self-service top-up exists, but a reliable China-first acquisition/activation path is not established in this packet.",
+        "kyc": "No evidence in the current Three consumer prepay flow establishes a mandatory national real-name registration regime; acquisition/activation still remains Ireland-centered for this use case.",
+        "payment": "My3 supports top-up and scheduled top-up; current keep-cost is not modeled because lifecycle timing is internally inconsistent.",
+        "wifiCalling": "Not relied on for this route decision.",
+        "roamingSms": "Three provider-moderated support confirms that while abroad the phone can connect automatically to a roaming network and receive calls/texts without enabling mobile-data roaming; exact OTP reliability outside the EU is not independently established.",
+        "refund": "Not relied on for this route decision.",
+        "trend": "conflicted",
+        "guideEligible": false,
+        "holdReason": "Current Three provider guidance conflicts on the dormancy timeline, so the prior €0.30/year / 80-day recommendation is not decision-safe. Keep as HOLD until one current lifecycle rule can be reconciled.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.three.ie/plans/prepay-sim-only.html",
+        "tariffSummary": "HOLD: top-up or chargeable use preserves activity, but current Three materials conflict on 90+180 days vs six-month advice vs 12-month contractual threshold.",
+        "sourceIds": [
+          "official-three-ie-prepay-terms-2026-09-29",
+          "official-three-ie-keeping-active-2026-09-29",
+          "official-three-ie-recycling-2026-09-29",
+          "official-three-ie-roaming-activity-2026-09-29"
+        ],
+        "guideSteps": [
+          "HOLD: do not use the legacy 1-SMS/80-day cost model.",
+          "Wait for one current provider lifecycle rule before promotion."
+        ]
+      }
+    }
+  ]
+}

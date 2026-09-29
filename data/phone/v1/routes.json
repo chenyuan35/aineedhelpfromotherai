@@ -60,6 +60,26 @@
     ]
   },
   {
+    "id": "a1-hr-prepaid-2026",
+    "marketId": "hr",
+    "networkId": "a1-hr",
+    "brandId": "a1-hr-prepaid",
+    "displayName": "A1 HR Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
+    "sourceIds": [
+      "official-a1-hr-prepaid-registration-2026-09-29",
+      "official-a1-hr-prepaid-roaming-2026-09-29",
+      "official-a1-hr-recharge-2026-09-29",
+      "official-a1-hr-sim-prepaid-2026-09-29"
+    ]
+  },
+  {
     "id": "activatex-temp",
     "marketId": "global",
     "networkId": null,
@@ -483,6 +503,25 @@
     ]
   },
   {
+    "id": "orange-pl-nakarte-2026",
+    "marketId": "pl",
+    "networkId": "orange-pl",
+    "brandId": "orange-pl-nakarte",
+    "displayName": "Orange na kartę",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.orange.pl/view/oferta-na-karte",
+    "sourceIds": [
+      "official-orange-pl-inactivity-fee-abolished-2026-09-29",
+      "official-orange-pl-prepaid-validity-2026-09-29",
+      "official-orange-pl-registration-2026-09-29"
+    ]
+  },
+  {
     "id": "povo20-zero-base-2026",
     "marketId": "jp",
     "networkId": "au-jp",
@@ -739,6 +778,26 @@
     ]
   },
   {
+    "id": "three-ie-prepay-lifecycle-2026",
+    "marketId": "ie",
+    "networkId": "three-ie",
+    "brandId": "three-ie-prepay",
+    "displayName": "Three IE Prepay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.three.ie/plans/prepay-sim-only.html",
+    "sourceIds": [
+      "official-three-ie-keeping-active-2026-09-29",
+      "official-three-ie-prepay-terms-2026-09-29",
+      "official-three-ie-recycling-2026-09-29",
+      "official-three-ie-roaming-activity-2026-09-29"
+    ]
+  },
+  {
     "id": "three-uk-payg-180d-2026",
     "marketId": "gb",
     "networkId": "three-uk",
@@ -924,6 +983,26 @@
       "linuxdo-vodafone-2404421",
       "linuxdo-vodafone-2417339",
       "vodafone-official-network-trial-2026"
+    ]
+  },
+  {
+    "id": "vodafone-yorn-pt-2026",
+    "marketId": "pt",
+    "networkId": "vodafone-pt",
+    "brandId": "vodafone-yorn",
+    "displayName": "Yorn (Vodafone PT)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/aderir-yorn/como-posso-aderir-a-yorn.html",
+    "sourceIds": [
+      "official-yorn-eligibility-2026-09-29",
+      "official-yorn-nonpayment-block-2026-09-29",
+      "official-yorn-roaming-2026-09-29",
+      "official-yorn-weekly-cost-2026-09-29"
     ]
   },
   {

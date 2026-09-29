@@ -8,39 +8,42 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
-3. **Canonical staged migration is lossless so far, not coverage-parity.** PH/TR/AE/VN batch-J migrated four routes backstage as HOLD with exact parity; canonical v1 is now 49 routes / 27 markets / 46 brands / 32 networks / 167 sources; 38 route IDs overlap the comparison set and 97 remain legacy-only.
-4. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
-5. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
+3. **Named batch A–K migration is complete.** Batch-K migrated four HOLD routes with exact parity; canonical v1 is now 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
+4. **The only named-batch legacy ID not represented by the same canonical ID is the known Sakura same-product alias blocker.** Do not duplicate that product.
+5. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
+6. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — PH/TR/AE/VN batch-J current-fact reconciliation + bounded canonical migration
+## JUST COMPLETED — IE/PL/PT/HR batch-K current-fact reconciliation + bounded canonical migration
 
 Result: **PASS / FOUR EXACT-PARITY HOLD MIGRATIONS.**
 
-- Globe: foreign-tourist registration is a 30-day hard cap; the ordinary one-year load rule must not be modeled as a foreign-tourist annual keep path; free incoming roaming SMS is first-party confirmed;
-- Turkcell Tourist: the old fixed 90-day passport/YKN blocker was removed by 2026 BTK rule changes; current long-term retention and overseas OTP remain unverified, so the route stays HOLD / avoid-route;
-- du: current Tourist SIM is 90 days and du documents an AED5 renewal/extension action, but no indefinitely repeatable annual keep path is established;
-- Viettel VTVANG: current specialist evidence reports VND50,000/12 months; first-party VTVANG product/eligibility and foreign acquisition remain unresolved, while current Viettel guidance confirms roaming is needed for OTP reception abroad;
+- Three IE: withdraw the old 1-SMS/80-day / EUR0.30-year recommendation because current Three-controlled materials conflict on the dormancy timeline; keep HOLD until one current rule can be reconciled;
+- Orange PL: current official paid validity extension is PLN39 for +365 days; the former inactivity fee remains abolished; keep HOLD because acquisition/KYC remains Poland-centered and overseas OTP evidence is still weak;
+- Yorn PT: current weekly-cost tariff blocks incoming calls/SMS after seven days unpaid; keep as HOLD negative knowledge rather than inventing a cheap annual keep cost;
+- A1 HR: current SIM/recharge/KYC/roaming paths are captured, including EUR5 minimum displayed voucher, but current first-party voucher-to-validity duration is still unresolved; no annual cost is invented;
 - all four generic canonical-adapter rows deep-equal the corrected reviewed comparison rows;
-- canonical v1 is 49 routes / 27 markets / 46 brands / 32 networks / 167 sources; comparison remains 135, overlap is 38, legacy-only is 97, reviewed manifest remains intact and explicit indexability remains 3.
+- canonical v1 is 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; comparison remains 135, overlap is 42, legacy-only is 93, reviewed manifest remains intact and explicit indexability remains 3;
+- all named A–K batch files are now dispositioned: 36 unique batch route IDs, 35 same-ID canonical representations, plus the already documented Sakura same-product legacy-ID blocker.
 
-## NEXT SESSION — IE/PL/PT/HR batch-K identity/provenance reconciliation before migration
+## NEXT SESSION — Post-A–K Phone checkpoint: choose the next bounded value move
 
-**Session task:** work only on `ie-pl-pt-hr-directory-batch-k.json`. Reverify identity, current provider facts and source provenance before any canonical admission.
+**Session task:** do not invent batch-L. Inspect the 93 remaining legacy-only routes together with current Phone search/product evidence, then select at most one small next migration cohort **or** one existing route/market experience to deepen.
 
 ### Scope
 
-1. reverify current acquisition, retention, KYC/location and overseas SMS/roaming facts for every route in batch-K;
-2. correct stale commercial/lifecycle claims only with current attributable evidence;
-3. preserve negative/HOLD knowledge rather than forcing admission;
-4. migrate only rows that reproduce the reviewed comparison row exactly through the existing generic adapter;
-5. keep comparison at 135, reviewed manifest intact and explicit indexability at 3.
+1. inventory remaining legacy-only routes by user job, evidence freshness, identity confidence and decision value;
+2. distinguish migration debt from actual user-facing growth opportunity;
+3. check current Search Console/product signals before proposing any new indexable URL;
+4. if a next migration cohort is selected, keep it small and require current-fact reconciliation + exact adapter parity;
+5. if an existing route is selected for deeper publication, require the full SEO publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` before any indexability change;
+6. keep comparison at 135, reviewed manifest intact and explicit indexability at 3 until a separate publication decision passes.
 
 ### Stop conditions
 
-Stop and record the blocker if identity requires schema/alias redesign, current evidence is materially contradictory or insufficient, exact parity fails, or publication/indexability would change. Do not broaden into another batch.
+Stop and record the blocker if evidence is stale/contradictory, identity needs schema/alias redesign, exact parity fails, or publication value is not clearly stronger than the provider page and existing competitors. Do not bulk-migrate merely to increase canonical coverage.
 
 ## Qwen / Kimi work lane
 
@@ -53,9 +56,9 @@ QwenPaw/Kimi remain high-throughput backstage research/data workers. Their outpu
 
 ## Do not do next
 
-- do not bulk-migrate the remaining legacy-only routes;
+- do not invent batch-L or bulk-migrate the 93 legacy-only routes;
 - do not remove the PR #263 manifest gate or shrink the 135-route comparison surface;
-- do not create duplicate canonical products to preserve legacy IDs;
+- do not duplicate Sakura or any other same underlying product merely to preserve a legacy ID;
 - do not equate canonical admission with SEO/indexability;
 - do not redesign schema/backend for architectural neatness;
 - do not let raw delegated output bypass review/admission/publication gates;
