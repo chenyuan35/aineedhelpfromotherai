@@ -161,3 +161,17 @@ Post-DB-C4D state: **101 canonical routes / 57 markets / 98 brands / 77 networks
 Release: PR #313 (`7c435d1ef0c897dbaf249f8caa2e098cbeb920ff`) merged after Eval Gate #965, CI #187 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Elisa route at HTTP 404.
 
 DB-C4 is complete. Continue DB-C5 through the bounded candidates in `docs/CURRENT_EXECUTION_QUEUE.md`.
+
+## DB-C5 — implementation/local verification complete 2026-09-30; release pending
+
+The next three legacy-only routes were reviewed and normalized through approved backstage packets. Current DB-C5 disposition is **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `one-me-2026` — HOLD. Current One Montenegro material resolves a 90-day active window and EUR2 online top-up floor, but Tourist Package roaming is explicitly unavailable outside Montenegro. Preserve the cheap retention mechanic without presenting the tourist route as an overseas SMS/OTP option.
+- `bhtelecom-ba-2026` — ADMIT-BACKSTAGE. Current BH Telecom Ultra material establishes the recharge-validity ladder, BAM20/180-day operating tier and a further 150-day retention/recovery window. Current webshop material supports foreign-issued cards and visitor eSIM products; China-specific OTP remains unverified.
+- `yettel-prepaid-bg-2026` — HOLD. Current Yettel Bulgaria material resolves 365/395-day SIM-validity tiers and EUR4.09 online top-up, with incoming roaming SMS free. The documented digital prepaid-registration flow uses selfie plus ID-card capture; a current remote foreign-passport path was not established.
+
+Delegated-agent lane was actually exercised through the running QwenPaw console rather than treating the Qwen host as the worker. QwenPaw task `task-4915eea85664` (QA Agent / DeepSeek) independently audited BH Telecom and returned ADMIT-BACKSTAGE, corroborating the lifecycle and adding that foreign-user prepaid eSIM purchase is explicitly supported while ordinary registration is not a hard purchase gate. Task `task-a71d7e8af5fd` (Default / Kimi K3) was dispatched for One Montenegro but ended `failed / Task cancelled`; no result was accepted. One Montenegro therefore remains based on the coordinator's independent provider-source review, and the delegated-worker failure is recorded explicitly rather than silently reverting to claimed multi-agent confirmation.
+
+Post-DB-C5 local state: **104 canonical routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison-overlap route IDs / 42 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check` passed including DB-C5 migration coverage. The full frontend build passed and generated only the existing **3 route detail pages**; the comparison surface remains **135 routes** and publication/indexability remains unchanged.
+
+Release status: dedicated branch/worktree only; PR / Eval Gate / CI / Vercel Preview / production verification are still pending.

@@ -66,6 +66,12 @@
     "marketId": "kz"
   },
   {
+    "id": "bhtelecom-prepaid",
+    "networkId": "bhtelecom-ba",
+    "name": "BH Telecom Prepaid",
+    "marketId": "ba"
+  },
+  {
     "id": "calendar-world-jp",
     "networkId": "rakuten-mobile-jp",
     "name": "CALENDAR Rakuten Prepaid",
@@ -324,6 +330,12 @@
     "marketId": "gb"
   },
   {
+    "id": "one-me-tourist",
+    "networkId": "one-me",
+    "name": "One ME Tourist",
+    "marketId": "me"
+  },
+  {
     "id": "optus-au-direct",
     "networkId": "optus-au",
     "name": "Optus Prepaid",
@@ -580,6 +592,12 @@
     "networkId": "vodafone-uk",
     "name": "VOXI",
     "marketId": "gb"
+  },
+  {
+    "id": "yettel-prepaid",
+    "networkId": "yettel-bg",
+    "name": "Yettel Prepaid",
+    "marketId": "bg"
   },
   {
     "id": "yettel-rs-prepaid",

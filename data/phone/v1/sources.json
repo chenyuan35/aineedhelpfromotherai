@@ -18,6 +18,24 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "bh-ultra-esim-20260930",
+    "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/ViewProduct-Start?SKU=908992",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "bh-ultra-topup-20260930",
+    "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/AktivacijaDigitalnogServisa-Start?AKTIVACIJA=A&SKU=dopuneultrakredita",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "bh-ultra-tourist-20260930",
+    "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/AktivacijaDigitalnogServisa-Start?SKU=utratourist1webrdvneng",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
     "id": "calendar-extension-20260929",
     "url": "https://www.jpsimshop.com/view/item/000000000110?category_page_id=ct19",
     "type": "provider-official",
@@ -1506,6 +1524,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "one-me-privacy-20260930",
+    "url": "https://1.me/cg/o-kompaniji/terms-and-conditions/customer-data-privacy/how-we-process-personal-data",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "one-me-roaming-20260930",
+    "url": "https://1.me/cg/o-kompaniji/o-nama/uslovi-koriscenja/roming-uslovi-koriscenja",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "one-me-tourist-20260930",
+    "url": "https://1.me/cg/for-tourists",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "one-me-webshop-terms-20260930",
+    "url": "https://1.me/cg/privatni/ponuda/mobilni-uredjaji/webshop-terms-and-conditions/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
     "id": "optus-activate-20260929",
     "url": "https://www.optus.com.au/prepaid/activate",
     "type": "provider-official",
@@ -2002,5 +2044,35 @@
     "url": "https://www.voxi.co.uk/acquisition/plans",
     "type": "provider-commercial-page",
     "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "yettel-bg-esim-20260930",
+    "url": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "yettel-bg-online-topup-20260930",
+    "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/onlayn-zarezhdane-na-predplaten-plan-s-kreditna-debitna-karta",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "yettel-bg-register-20260930",
+    "url": "https://www.yettel.bg/bg/news/registraciya-na-predplatena-karta-veche-mozhesh-i-v-prilozhenieto-yettel",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "yettel-bg-roaming-sms-20260930",
+    "url": "https://www.yettel.bg/bg/uslugi/sobscheniya-i-informaciya/sms",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "yettel-bg-validity-20260930",
+    "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/prezarezhdane-s-vaucheri",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
   }
 ]

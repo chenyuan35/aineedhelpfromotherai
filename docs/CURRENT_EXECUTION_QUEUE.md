@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-29
+Last updated: 2026-09-30
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
@@ -8,7 +8,7 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. After DB-C4D: **135 comparison routes / 101 canonical normalized routes / 90 comparison↔canonical route-ID overlaps / 45 comparison routes still legacy-only / 3 indexable routes**.
+3. DB-C5 local implementation now has **135 comparison routes / 104 canonical normalized routes / 93 comparison↔canonical route-ID overlaps / 42 comparison routes still legacy-only / 3 indexable routes**; release gates are still pending.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -26,25 +26,17 @@ Canonical result after DB-C4D: **101 routes / 57 markets / 98 brands / 77 networ
 
 Release: PR #313 (`7c435d1ef0c897dbaf249f8caa2e098cbeb920ff`) merged after Eval Gate #965, CI #187 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Elisa route at HTTP 404.
 
-## ACTIVE — Backend database coverage DB-C5
+## ACTIVE — DB-C5 release gates
 
-Continue with the next distinct low-cost / decision-useful legacy-only routes. Legacy prices and labels are prioritization hints, not admission facts.
+DB-C5 local implementation and verification are complete on the dedicated branch/worktree. Current disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
-Candidates:
+- `one-me-2026` — HOLD: current 90-day/EUR2 retention economics are documented, but Tourist Package roaming is unavailable outside Montenegro.
+- `bhtelecom-ba-2026` — ADMIT-BACKSTAGE: current Ultra lifecycle, foreign-card top-up and visitor eSIM evidence are documented; China-specific OTP remains unverified.
+- `yettel-prepaid-bg-2026` — HOLD: 365/395-day validity and EUR4.09 online top-up are documented, but the current remote foreign-passport registration path remains unresolved.
 
-1. `one-me-2026`
-2. `bhtelecom-ba-2026`
-3. `yettel-prepaid-bg-2026`
+Local verification: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison overlaps / 42 legacy-only / 3 indexable**. `npm run phone:data:check` and the full frontend build pass; the build still emits only the existing 3 route detail pages.
 
-### DB-C5 acceptance flow
-
-1. preserve community/forum-discovered hidden mechanics even when provider public pages omit them; do not reject a mechanism merely because search cannot see it;
-2. use first-party evidence for provider-controlled facts when available, but retain independent/community evidence and conflicts as separate provenance;
-3. independently sample-audit at least 3 routes for stale claims, duplicate identity, hidden constraints and unsupported inference;
-4. classify every candidate `REJECT`, `HOLD` or `ADMIT-BACKSTAGE`;
-5. normalize accepted/HOLD routes through reviewed packets with missing fields left missing;
-6. run canonical/integrity/publication-boundary tests and keep frontend/indexability unchanged;
-7. merge only after Eval Gate + Preview pass, then continue the coverage track unless a real maintenance/evidence stop condition is reached.
+Next actions inside DB-C5 only: record the failed QwenPaw/Kimi One-Montenegro audit, review the final diff, commit/push the dedicated branch, open the PR, require Eval Gate + CI + Vercel Preview, merge only when green, then verify production hub/VOXI 200 and a representative DB-C5 non-indexable route 404. Do not start DB-C6 in this session.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -60,7 +52,7 @@ Search Console remains too small for publication expansion. This does **not** bl
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment.
+QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment. DB-C5 used real console delegation: BH Telecom task `task-4915eea85664` completed and was reconciled; One Montenegro task `task-a71d7e8af5fd` ended `failed / Task cancelled`; no delegated result was accepted, and the failure is an explicit worker blocker rather than hidden single-agent fallback.
 
 ## External waits
 
@@ -70,7 +62,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 48 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 42 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;

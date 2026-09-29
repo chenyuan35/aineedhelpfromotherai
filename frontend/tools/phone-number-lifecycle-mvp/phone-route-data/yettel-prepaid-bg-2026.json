@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "yettel-prepaid-bg-2026",
+    "marketId": "bg",
+    "networkId": "yettel-bg",
+    "brandId": "yettel-prepaid",
+    "displayName": "Yettel Prepaid Bulgaria",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+    "sourceIds": [
+      "yettel-bg-esim-20260930",
+      "yettel-bg-online-topup-20260930",
+      "yettel-bg-register-20260930",
+      "yettel-bg-roaming-sms-20260930",
+      "yettel-bg-validity-20260930"
+    ]
+  },
+  "market": {
+    "id": "bg",
+    "name": "Bulgaria",
+    "countryCode": "BG"
+  },
+  "network": {
+    "id": "yettel-bg",
+    "name": "Yettel BG",
+    "marketId": "bg"
+  },
+  "brand": {
+    "id": "yettel-prepaid",
+    "networkId": "yettel-bg",
+    "name": "Yettel Prepaid",
+    "marketId": "bg"
+  },
+  "metrics": {
+    "routeId": "yettel-prepaid-bg-2026",
+    "checkedAt": "2026-09-30",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 10.23,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 4.09,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "yettel-bg-esim-20260930",
+      "url": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-online-topup-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/onlayn-zarezhdane-na-predplaten-plan-s-kreditna-debitna-karta",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-register-20260930",
+      "url": "https://www.yettel.bg/bg/news/registraciya-na-predplatena-karta-veche-mozhesh-i-v-prilozhenieto-yettel",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-roaming-sms-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/sobscheniya-i-informaciya/sms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-validity-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/prezarezhdane-s-vaucheri",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-yettel-prepaid-bg-2026-db-c5-20260930",
+      "routeId": "yettel-prepaid-bg-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current Yettel material resolves SIM validity and online top-up, but the available digital-registration instructions document selfie plus ID-card capture rather than a verified foreign-passport path.",
+      "sourceId": "yettel-bg-validity-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-yettel-prepaid-bg-2026-current-profile-20260930",
+      "routeId": "yettel-prepaid-bg-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c5-reviewed-2026-09-30",
+      "data": {
+        "id": "yettel-prepaid-bg-2026",
+        "brandId": "yettel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Yettel Bulgaria sells prepaid physical SIM and eSIM products online and in stores; prepaid registration is required.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10.23,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10.23,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "provider-current-esim-tourist"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 4.09,
+          "yearCostOriginal": 4.09,
+          "yearCostCny": null,
+          "action": "Online top-up minimum is EUR4.09. The current validity table gives 365 days of SIM validity for lower recharge tiers and 395 days from EUR5.11 upward when the remaining validity is shorter.",
+          "intervalDays": 365,
+          "state": "current-provider-validity-table"
+        },
+        "chinaActivation": "Digital prepaid eSIM purchase exists, but the documented app registration flow uses Yettel ID with selfie and ID-card capture; a foreign-passport remote path was not established in this review.",
+        "kyc": "Prepaid registration is required. Current app registration documentation specifies selfie plus ID card; foreign-user/passport handling remains unresolved.",
+        "payment": "Online top-up through Yettel app/web portal supports payment cards; current online amounts start at EUR4.09.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Yettel states incoming SMS in roaming is free; China-specific OTP reliability remains unverified.",
+        "refund": "not reconciled",
+        "trend": "hold-foreign-registration-path",
+        "guideEligible": false,
+        "holdReason": "Lifecycle and remote top-up are clear, but a current remote registration path for foreign passport holders was not established.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+        "tariffSummary": "EUR4.09 online top-up can preserve a 365-day SIM-validity window; incoming roaming SMS is free, but foreign-user registration remains unresolved.",
+        "sourceIds": [
+          "yettel-bg-validity-20260930",
+          "yettel-bg-online-topup-20260930",
+          "yettel-bg-register-20260930",
+          "yettel-bg-roaming-sms-20260930",
+          "yettel-bg-esim-20260930"
+        ],
+        "guideSteps": [
+          "Acquire and register a Yettel prepaid SIM/eSIM.",
+          "Top up at least EUR4.09 before expiry to maintain the validity window.",
+          "Verify foreign-ID registration eligibility before treating the route as generally available to visitors."
+        ]
+      }
+    }
+  ]
+}

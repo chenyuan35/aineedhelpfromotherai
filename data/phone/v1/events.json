@@ -27,6 +27,15 @@
     "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
   },
   {
+    "id": "evt-bhtelecom-ba-2026-db-c5-20260930",
+    "routeId": "bhtelecom-ba-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current BH Telecom webshop material establishes the Ultra top-up validity ladder and a 150-day post-credit number-retention/recovery period; visitor eSIM products and foreign-issued-card top-ups are current.",
+    "sourceId": "bh-ultra-topup-20260930"
+  },
+  {
     "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
     "routeId": "calendar-rakuten-prepaid-jp-2026",
     "type": "cost-and-lifecycle-correction",
@@ -324,6 +333,15 @@
     "sourceId": "official-o2cz-prepaid-current-2026-09-29"
   },
   {
+    "id": "evt-one-me-2026-db-c5-20260930",
+    "routeId": "one-me-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current provider pages establish a 90-day active window, EUR2 online top-up floor and an extended tourist-eSIM recharge grace period, while roaming terms explicitly exclude Tourist Package users from roaming outside Montenegro.",
+    "sourceId": "one-me-tourist-20260930"
+  },
+  {
     "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",
     "routeId": "optus-flex-plus-au-2026",
     "type": "cost-and-lifecycle-correction",
@@ -466,6 +484,15 @@
     "scope": "route",
     "outcome": "The legacy route ID/brand refers to Vodafone TUTI. The current provider surface is One Hungary and the active product is Tuti Feltöltőkártya. Preserve the legacy ID for comparison continuity but use the current One/Tuti product identity.",
     "sourceId": "official-one-tuti-current-2026-09-29"
+  },
+  {
+    "id": "evt-yettel-prepaid-bg-2026-db-c5-20260930",
+    "routeId": "yettel-prepaid-bg-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current Yettel material resolves SIM validity and online top-up, but the available digital-registration instructions document selfie plus ID-card capture rather than a verified foreign-passport path.",
+    "sourceId": "yettel-bg-validity-20260930"
   },
   {
     "id": "evt-yettel-rs-transfer-topup-does-not-extend-20260929",
