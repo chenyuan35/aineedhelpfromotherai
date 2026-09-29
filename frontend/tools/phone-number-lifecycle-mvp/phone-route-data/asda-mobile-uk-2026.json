@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "asda-mobile-uk-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "asda-mobile-uk",
+    "displayName": "ASDA Mobile PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://mobile.asda.com/support/topping-up",
+    "sourceIds": [
+      "asda-support-20260929",
+      "asda-terms-20260929"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "asda-mobile-uk",
+    "networkId": "vodafone-uk",
+    "name": "ASDA Mobile PAYG",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "asda-mobile-uk-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 5,
+    "acquisitionCostCny": 46.5,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "asda-support-20260929",
+      "url": "https://mobile.asda.com/support/topping-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "asda-terms-20260929",
+      "url": "https://mobile.asda.com/pdf/Asda-Mobile-Terms-and-Conditions.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
+      "routeId": "asda-mobile-uk-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current official support separates a 180-day chargeable-use rule from a 180-day top-up/plan credit rule; the old £5/180-day model is not safe to publish as a settled minimum.",
+      "sourceId": "asda-support-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-asda-mobile-uk-2026-current-profile-20260929",
+      "routeId": "asda-mobile-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "asda-mobile-uk-2026",
+        "brandId": "asda-mobile-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Free SIM from mobile.asda.com (UK delivery). PAYG rates 15p/min, 10p/text, 10p/MB on Vodafone network. 4G only unless spending >=£10/mo.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 46.5,
+          "fxCheckedAt": "2026-09-27",
+          "state": "official-min-topup-5"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Use a chargeable call, text or data event within each 180-day period to keep the line fully active; separately, account credit is restricted after 180 days without a top-up or plan purchase and expires after a further 90 days. Exact cheapest sustainable cost remains unreconciled.",
+          "intervalDays": 180,
+          "state": "official-rules-conflict-needs-reconciliation"
+        },
+        "chinaActivation": "UK network activation expected; China-first activation unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "UK card / ASDA top-up card; international card acceptance unverified.",
+        "wifiCalling": null,
+        "roamingSms": "Receiving SMS abroad generally free on UK networks (unverified for ASDA specifics).",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Official activity and credit-expiry rules are both current, but the exact minimum sustainable retention cost is unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://mobile.asda.com/",
+        "tariffSummary": "15p/min, 10p/text, 10p/MB. £5 top-up per 180 days = £10/yr retention.",
+        "sourceIds": [
+          "asda-support-20260929",
+          "asda-terms-20260929"
+        ],
+        "marketName": "United Kingdom"
+      }
+    }
+  ]
+}

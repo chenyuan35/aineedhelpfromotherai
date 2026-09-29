@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "orange-prepay-ro-ladder-2026",
+    "marketId": "ro",
+    "networkId": "orange-ro",
+    "brandId": "orange-prepay-ro",
+    "displayName": "Orange Romania PrePay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+    "sourceIds": [
+      "orange-active-grace-20260929",
+      "orange-prepay-tariff-202603",
+      "orange-validity-20260929"
+    ]
+  },
+  "market": {
+    "id": "ro",
+    "name": "Romania",
+    "countryCode": "RO"
+  },
+  "network": {
+    "id": "orange-ro",
+    "name": "Orange Romania",
+    "marketId": "ro"
+  },
+  "brand": {
+    "id": "orange-prepay-ro",
+    "networkId": "orange-ro",
+    "name": "Orange Romania PrePay",
+    "marketId": "ro"
+  },
+  "metrics": {
+    "routeId": "orange-prepay-ro-ladder-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 5,
+    "acquisitionCostCny": 39,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "orange-active-grace-20260929",
+      "url": "https://www.orange.ro/help/perioada-de-activitate-si-de-gratie-47",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "orange-prepay-tariff-202603",
+      "url": "https://www.orange.ro/docs/termeni-si-conditii/pdf/2026-03/brosura-tarife-PrePay-web_mar26.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "orange-validity-20260929",
+      "url": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-orange-prepay-ro-ladder-2026-db-c3-review-20260929",
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Orange rules confirm the active/grace ladder and show the legacy €42/year estimate was not defensible: a €5 recharge grants 30 active days plus 300 grace days, while grace can receive calls/SMS.",
+      "sourceId": "orange-validity-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-orange-prepay-ro-ladder-2026-current-profile-20260929",
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "orange-prepay-ro-ladder-2026",
+        "brandId": "orange-prepay-ro",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official recharge ladder (orange.ro): €1-3 → 15 active days; €5-6 → 30 days; €7-11 → 60 days; higher tiers longer; grace period up to 300 days after active period. After grace expiry, SIM unusable.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 39,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "For number retention, current rules give a €5 recharge 30 active days plus 300 grace days. During grace the line can receive calls/SMS but cannot originate normal service; recharge before grace expires to avoid losing the number. Do not equate this receive-only retention path with continuous full activity.",
+          "intervalDays": null,
+          "state": "official-active-grace-ladder"
+        },
+        "chinaActivation": "RO prepaid registration; local acquisition standard.",
+        "kyc": "Registration (RO law).",
+        "payment": "My Orange app card top-up.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard; China 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.orange.ro/prepay/",
+        "tariffSummary": "€5-6 recharge: 30 active days + 300 grace days; €8/12/16 options provide 60 active + 300 grace days. Account caps are 180 active / 360 grace days.",
+        "sourceIds": [
+          "orange-validity-20260929",
+          "orange-active-grace-20260929",
+          "orange-prepay-tariff-202603"
+        ],
+        "guideSteps": [
+          "Directory card."
+        ],
+        "marketName": "Romania"
+      }
+    }
+  ]
+}

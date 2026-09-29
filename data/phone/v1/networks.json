@@ -35,6 +35,16 @@
     "marketId": "kz"
   },
   {
+    "id": "bite-lt",
+    "name": "Bitė Lithuania",
+    "marketId": "lt"
+  },
+  {
+    "id": "celcomdigi-my",
+    "name": "CelcomDigi Malaysia",
+    "marketId": "my"
+  },
+  {
     "id": "cellcard-kh",
     "name": "Cellcard Cambodia",
     "marketId": "kh"
@@ -90,6 +100,11 @@
     "marketId": "tw"
   },
   {
+    "id": "free-fr",
+    "name": "Free Mobile France",
+    "marketId": "fr"
+  },
+  {
     "id": "globe-ph",
     "name": "Globe Philippines",
     "marketId": "ph"
@@ -113,6 +128,11 @@
     "id": "kyivstar-ua",
     "name": "Kyivstar UA",
     "marketId": "ua"
+  },
+  {
+    "id": "lmt-lv",
+    "name": "LMT Latvia",
+    "marketId": "lv"
   },
   {
     "id": "magticom-ge",
@@ -155,9 +175,24 @@
     "marketId": "pl"
   },
   {
+    "id": "orange-ro",
+    "name": "Orange Romania",
+    "marketId": "ro"
+  },
+  {
     "id": "proximus-be",
     "name": "Proximus Belgium",
     "marketId": "be"
+  },
+  {
+    "id": "rakuten-mobile-jp",
+    "name": "Rakuten Mobile Japan",
+    "marketId": "jp"
+  },
+  {
+    "id": "redpocket-us-multi",
+    "name": "RedPocket multi-network US",
+    "marketId": "us"
   },
   {
     "id": "rogers-ca",
@@ -198,6 +233,11 @@
     "id": "telefonica-de",
     "name": "Telefónica DE (O2)",
     "marketId": "de"
+  },
+  {
+    "id": "telekom-sk",
+    "name": "Slovak Telekom",
+    "marketId": "sk"
   },
   {
     "id": "telia-ee",

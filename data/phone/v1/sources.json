@@ -1,5 +1,53 @@
 [
   {
+    "id": "1pmobile-terms-20260929",
+    "url": "https://www.1pmobile.com/tacs",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "asda-support-20260929",
+    "url": "https://mobile.asda.com/support/topping-up",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "asda-terms-20260929",
+    "url": "https://mobile.asda.com/pdf/Asda-Mobile-Terms-and-Conditions.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "calendar-extension-20260929",
+    "url": "https://www.jpsimshop.com/view/item/000000000110?category_page_id=ct19",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "calendar-rakuten-item-20260929",
+    "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "calendar-rakuten-reviews-20260929",
+    "url": "https://review.rakuten.co.jp/item/1/269312_10001944/1.1/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "celcomdigi-kuning-20260929",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660913-faq-celcomdigi-prepaid-5g-kuning-reload-and-validity",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "celcomdigi-validity-20260929",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "cellfie-esim-2026-09-29",
     "url": "https://cellfie.ge/en/esim",
     "type": "provider-official",
@@ -162,10 +210,28 @@
     "reportedAt": "2026-04-13"
   },
   {
+    "id": "free-2eur-20260929",
+    "url": "https://mobile.free.fr/fiche-forfait-2-euros",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "free-contract-20260929",
+    "url": "https://mobile.free.fr/docs/bt/tarifs.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "giffgaff-official-credit-2026-09-23",
     "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
     "type": "provider-commercial-page",
     "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "good2go-home-20260929",
+    "url": "https://good2gomobile.ca/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "googleplay-beeline-sim-safe-incident-2026-08-28",
@@ -194,6 +260,18 @@
   {
     "id": "kyivstar-sim-restore-2026-02-09",
     "url": "https://kyivstar.ua/services/prepaid/simcard-rest",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "labas-help-20260929",
+    "url": "https://www.labas.lt/en/help",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "labas-rules-20260929",
+    "url": "https://www.labas.lt/en/service-rules",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
@@ -322,6 +400,42 @@
     "url": "https://linux.do/t/topic/2737575",
     "type": "community-thread",
     "reportedAt": "2026-08-11"
+  },
+  {
+    "id": "lmt-new-number-20260929",
+    "url": "https://www.lmt.lv/en/lmt-karte/new-number",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lmt-refill-card-20260929",
+    "url": "https://www.lmt.lv/en/helpdesk/agreements-and-terms-and-conditions/legal-information/refilling-lmt-karte-with-payment-card",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lmt-useby-20260929",
+    "url": "https://www.lmt.lv/en/helpdesk/lmt-karte/lmt-karte-time-limits/use-by-date",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lyca-uk-home-20260929",
+    "url": "https://www.lycamobile.co.uk/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lyca-uk-keep-20260424",
+    "url": "https://shkspr.mobi/blog/2026/04/cheapest-way-to-keep-a-uk-mobile-number-using-an-esim/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lyca-uk-network-20260929",
+    "url": "https://www.mobilecoverage.co.uk/networks/lycamobile/compare-ee",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "mts-keep-number-product-2026-09-29",
@@ -1230,6 +1344,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "orange-active-grace-20260929",
+    "url": "https://www.orange.ro/help/perioada-de-activitate-si-de-gratie-47",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "orange-prepay-tariff-202603",
+    "url": "https://www.orange.ro/docs/termeni-si-conditii/pdf/2026-03/brosura-tarife-PrePay-web_mar26.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "orange-validity-20260929",
+    "url": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "petro-legacy-expiry-history-20120401",
+    "url": "https://www.howardforums.com/threads/recommend-a-good-pay-as-you-go-service-with-long-expiration-period.1742764/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "proximus-forum-foreign-id-friction-2026-07-03",
     "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
     "type": "provider-community-support-thread",
@@ -1252,6 +1390,24 @@
     "url": "https://www.reddit.com/r/bali/comments/1vg1edu/telkomsel_sim_card/",
     "type": "first-hand-community-thread",
     "reportedAt": "2026-08-05"
+  },
+  {
+    "id": "redpocket-annual-20260929",
+    "url": "https://www.redpocket.com/plans/annual",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "redpocket-esim-activation-20260929",
+    "url": "https://help.redpocket.com/how-to-activate-your-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "redpocket-roaming-20260929",
+    "url": "https://help.redpocket.com/does-red-pocket-mobile-allow-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "safaricom-daima-faq-2026-09-29",
@@ -1498,6 +1654,24 @@
     "url": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
     "type": "provider-official",
     "reportedAt": "2026-09-27"
+  },
+  {
+    "id": "telekom-credit-validity-20260929",
+    "url": "https://www.telekom.sk/wiki/volania/vyska-a-platnost-kreditu",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "telekom-easy-en-20260929",
+    "url": "https://www.telekom.sk/wiki/volania/easy-en",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "telekom-topup-20260929",
+    "url": "https://www.telekom.sk/wiki/volania/dobitie-kreditu",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "telia-super-starter-2026-09-29",

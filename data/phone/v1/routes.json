@@ -1,5 +1,22 @@
 [
   {
+    "id": "1pmobile-uk-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "1pmobile-uk",
+    "displayName": "1pMobile PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.1pmobile.com/tacs",
+    "sourceIds": [
+      "1pmobile-terms-20260929"
+    ]
+  },
+  {
     "id": "2degrees-prepay-2026",
     "marketId": "nz",
     "networkId": "2degrees-nz",
@@ -153,6 +170,24 @@
     ]
   },
   {
+    "id": "asda-mobile-uk-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "asda-mobile-uk",
+    "displayName": "ASDA Mobile PAYG",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://mobile.asda.com/support/topping-up",
+    "sourceIds": [
+      "asda-support-20260929",
+      "asda-terms-20260929"
+    ]
+  },
+  {
     "id": "beeline-kz-simka-v-seyfe-2026",
     "marketId": "kz",
     "networkId": "beeline-kz",
@@ -171,6 +206,25 @@
       "official-beeline-kz-registration-2026-09-29",
       "official-beeline-kz-sim-safe-2026-09-29",
       "travelask-beeline-sim-safe-incident-2026-09"
+    ]
+  },
+  {
+    "id": "calendar-rakuten-prepaid-jp-2026",
+    "marketId": "jp",
+    "networkId": "rakuten-mobile-jp",
+    "brandId": "calendar-world-jp",
+    "displayName": "CALENDAR Rakuten Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+    "sourceIds": [
+      "calendar-extension-20260929",
+      "calendar-rakuten-item-20260929",
+      "calendar-rakuten-reviews-20260929"
     ]
   },
   {
@@ -309,6 +363,24 @@
     ]
   },
   {
+    "id": "digi-reload-validity-my-2026",
+    "marketId": "my",
+    "networkId": "celcomdigi-my",
+    "brandId": "digi-my",
+    "displayName": "Digi / CelcomDigi Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+    "sourceIds": [
+      "celcomdigi-kuning-20260929",
+      "celcomdigi-validity-20260929"
+    ]
+  },
+  {
     "id": "du-prepaid-ae-2026",
     "marketId": "ae",
     "networkId": "du-ae",
@@ -385,6 +457,24 @@
     ]
   },
   {
+    "id": "free-mobile-fr-2026",
+    "marketId": "fr",
+    "networkId": "free-fr",
+    "brandId": "free-mobile-fr",
+    "displayName": "Free Mobile Forfait 2€",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
+    "sourceIds": [
+      "free-2eur-20260929",
+      "free-contract-20260929"
+    ]
+  },
+  {
     "id": "giffgaff-uk-direct-esim-payg",
     "marketId": "gb",
     "networkId": "o2-uk",
@@ -431,6 +521,24 @@
       "official-globe-prepaid-roaming-2026-09-29",
       "official-globe-sim-registration-2026-09-29",
       "official-globe-sim-terms-2026-09-29"
+    ]
+  },
+  {
+    "id": "good2go-payg-ca-2026",
+    "marketId": "ca",
+    "networkId": "rogers-ca",
+    "brandId": "good2go-ca",
+    "displayName": "Good2Go Mobile Canada",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://good2gomobile.ca/",
+    "sourceIds": [
+      "good2go-home-20260929",
+      "petro-legacy-expiry-history-20120401"
     ]
   },
   {
@@ -565,6 +673,24 @@
     ]
   },
   {
+    "id": "labas-90-120d-2026",
+    "marketId": "lt",
+    "networkId": "bite-lt",
+    "brandId": "labas",
+    "displayName": "LABAS",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.labas.lt/en/service-rules",
+    "sourceIds": [
+      "labas-help-20260929",
+      "labas-rules-20260929"
+    ]
+  },
+  {
     "id": "lebara-uk-direct-esim-china",
     "marketId": "gb",
     "networkId": "vodafone-uk",
@@ -584,6 +710,44 @@
       "src-2948194201a0",
       "src-337a1e0a1330",
       "src-aa91ae8faea1"
+    ]
+  },
+  {
+    "id": "lmt-karte-60-60d-2026",
+    "marketId": "lv",
+    "networkId": "lmt-lv",
+    "brandId": "lmt-karte",
+    "displayName": "LMT Karte",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.lmt.lv/en/lmt-karte/new-number",
+    "sourceIds": [
+      "lmt-new-number-20260929",
+      "lmt-refill-card-20260929",
+      "lmt-useby-20260929"
+    ]
+  },
+  {
+    "id": "lycamobile-uk-keep-number-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "lycamobile-uk",
+    "displayName": "Lyca Mobile UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.lycamobile.co.uk/",
+    "sourceIds": [
+      "lyca-uk-home-20260929",
+      "lyca-uk-keep-20260424",
+      "lyca-uk-network-20260929"
     ]
   },
   {
@@ -795,6 +959,25 @@
     ]
   },
   {
+    "id": "orange-prepay-ro-ladder-2026",
+    "marketId": "ro",
+    "networkId": "orange-ro",
+    "brandId": "orange-prepay-ro",
+    "displayName": "Orange Romania PrePay",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+    "sourceIds": [
+      "orange-active-grace-20260929",
+      "orange-prepay-tariff-202603",
+      "orange-validity-20260929"
+    ]
+  },
+  {
     "id": "povo20-zero-base-2026",
     "marketId": "jp",
     "networkId": "au-jp",
@@ -833,6 +1016,25 @@
       "official-proximus-paygo-current-2026-09-29",
       "official-proximus-paygo-faq-2026-09-29",
       "proximus-forum-foreign-id-friction-2026-07-03"
+    ]
+  },
+  {
+    "id": "redpocket-annual-2026",
+    "marketId": "us",
+    "networkId": "redpocket-us-multi",
+    "brandId": "redpocket-us",
+    "displayName": "RedPocket Annual Essentials",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.redpocket.com/plans/annual",
+    "sourceIds": [
+      "redpocket-annual-20260929",
+      "redpocket-esim-activation-20260929",
+      "redpocket-roaming-20260929"
     ]
   },
   {
@@ -1028,6 +1230,25 @@
       "official-telcel-glossary-recharge-2026-09-29",
       "official-telcel-line-registration-2026-09-29",
       "official-telcel-roaming-2026-09-29"
+    ]
+  },
+  {
+    "id": "telekom-easy-sk-90d-2026",
+    "marketId": "sk",
+    "networkId": "telekom-sk",
+    "brandId": "telekom-easy",
+    "displayName": "Telekom Easy",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.telekom.sk/wiki/volania/easy-en",
+    "sourceIds": [
+      "telekom-credit-validity-20260929",
+      "telekom-easy-en-20260929",
+      "telekom-topup-20260929"
     ]
   },
   {

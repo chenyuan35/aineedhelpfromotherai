@@ -145,6 +145,16 @@
     "countryCode": "LK"
   },
   {
+    "id": "lt",
+    "name": "Lithuania",
+    "countryCode": "LT"
+  },
+  {
+    "id": "lv",
+    "name": "Latvia",
+    "countryCode": "LV"
+  },
+  {
     "id": "mx",
     "name": "Mexico",
     "countryCode": "MX"
@@ -180,6 +190,11 @@
     "countryCode": "PT"
   },
   {
+    "id": "ro",
+    "name": "Romania",
+    "countryCode": "RO"
+  },
+  {
     "id": "rs",
     "name": "Serbia",
     "countryCode": "RS"
@@ -193,6 +208,11 @@
     "id": "sg",
     "name": "Singapore",
     "countryCode": "SG"
+  },
+  {
+    "id": "sk",
+    "name": "Slovakia",
+    "countryCode": "SK"
   },
   {
     "id": "th",

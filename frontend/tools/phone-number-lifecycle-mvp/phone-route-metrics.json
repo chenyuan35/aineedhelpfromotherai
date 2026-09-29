@@ -2,6 +2,18 @@
   "schemaVersion": 1,
   "metrics": [
     {
+      "routeId": "1pmobile-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 93,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "2degrees-prepay-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -98,6 +110,18 @@
       "keepIntervalDays": 120
     },
     {
+      "routeId": "asda-mobile-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 46.5,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "beeline-kz-simka-v-seyfe-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -108,6 +132,18 @@
       "keepYearCostOriginal": 12,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 7860,
+      "acquisitionCostCny": 287,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 5400,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "cellcard-kh-2026",
@@ -194,6 +230,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "digi-reload-validity-my-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MYR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 17,
+      "keepCurrency": "MYR",
+      "keepYearCostOriginal": 198,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "du-prepaid-ae-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -242,6 +290,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "free-mobile-fr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 24,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -264,6 +324,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "good2go-payg-ca-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CAD",
+      "acquisitionCostOriginal": 30,
+      "acquisitionCostCny": 159,
+      "keepCurrency": "CAD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "grameenphone-validity-pack-2026",
@@ -350,6 +422,18 @@
       "keepIntervalDays": 274
     },
     {
+      "routeId": "labas-90-120d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 3,
+      "acquisitionCostCny": 23,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 12,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -360,6 +444,30 @@
       "keepYearCostOriginal": 1.96,
       "keepYearCostCny": 17.5,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "lmt-karte-60-60d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 1.5,
+      "acquisitionCostCny": 12,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "lycamobile-uk-keep-number-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "magticom-number-maintenance-2026",
@@ -494,6 +602,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 39,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "povo20-zero-base-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -516,6 +636,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "redpocket-annual-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 80,
+      "acquisitionCostCny": 426,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 110,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "safaricom-daima-2026",
@@ -636,6 +768,18 @@
       "keepYearCostOriginal": 10,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "telekom-easy-sk-90d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 39,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "telia-ee-180d-2026",

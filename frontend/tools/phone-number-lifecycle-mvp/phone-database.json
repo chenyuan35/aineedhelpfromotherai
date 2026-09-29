@@ -151,6 +151,16 @@
       "countryCode": "LK"
     },
     {
+      "id": "lt",
+      "name": "Lithuania",
+      "countryCode": "LT"
+    },
+    {
+      "id": "lv",
+      "name": "Latvia",
+      "countryCode": "LV"
+    },
+    {
       "id": "mx",
       "name": "Mexico",
       "countryCode": "MX"
@@ -186,6 +196,11 @@
       "countryCode": "PT"
     },
     {
+      "id": "ro",
+      "name": "Romania",
+      "countryCode": "RO"
+    },
+    {
       "id": "rs",
       "name": "Serbia",
       "countryCode": "RS"
@@ -199,6 +214,11 @@
       "id": "sg",
       "name": "Singapore",
       "countryCode": "SG"
+    },
+    {
+      "id": "sk",
+      "name": "Slovakia",
+      "countryCode": "SK"
     },
     {
       "id": "th",
@@ -278,6 +298,16 @@
       "marketId": "kz"
     },
     {
+      "id": "bite-lt",
+      "name": "Bitė Lithuania",
+      "marketId": "lt"
+    },
+    {
+      "id": "celcomdigi-my",
+      "name": "CelcomDigi Malaysia",
+      "marketId": "my"
+    },
+    {
       "id": "cellcard-kh",
       "name": "Cellcard Cambodia",
       "marketId": "kh"
@@ -333,6 +363,11 @@
       "marketId": "tw"
     },
     {
+      "id": "free-fr",
+      "name": "Free Mobile France",
+      "marketId": "fr"
+    },
+    {
       "id": "globe-ph",
       "name": "Globe Philippines",
       "marketId": "ph"
@@ -356,6 +391,11 @@
       "id": "kyivstar-ua",
       "name": "Kyivstar UA",
       "marketId": "ua"
+    },
+    {
+      "id": "lmt-lv",
+      "name": "LMT Latvia",
+      "marketId": "lv"
     },
     {
       "id": "magticom-ge",
@@ -398,9 +438,24 @@
       "marketId": "pl"
     },
     {
+      "id": "orange-ro",
+      "name": "Orange Romania",
+      "marketId": "ro"
+    },
+    {
       "id": "proximus-be",
       "name": "Proximus Belgium",
       "marketId": "be"
+    },
+    {
+      "id": "rakuten-mobile-jp",
+      "name": "Rakuten Mobile Japan",
+      "marketId": "jp"
+    },
+    {
+      "id": "redpocket-us-multi",
+      "name": "RedPocket multi-network US",
+      "marketId": "us"
     },
     {
       "id": "rogers-ca",
@@ -441,6 +496,11 @@
       "id": "telefonica-de",
       "name": "Telefónica DE (O2)",
       "marketId": "de"
+    },
+    {
+      "id": "telekom-sk",
+      "name": "Slovak Telekom",
+      "marketId": "sk"
     },
     {
       "id": "telia-ee",
@@ -540,6 +600,12 @@
   ],
   "brands": [
     {
+      "id": "1pmobile-uk",
+      "networkId": "ee-uk",
+      "name": "1pMobile PAYG",
+      "marketId": "gb"
+    },
+    {
       "id": "2degrees-nz",
       "networkId": "2degrees-nz",
       "name": "2degrees",
@@ -588,10 +654,22 @@
       "marketId": "de"
     },
     {
+      "id": "asda-mobile-uk",
+      "networkId": "vodafone-uk",
+      "name": "ASDA Mobile PAYG",
+      "marketId": "gb"
+    },
+    {
       "id": "beeline-kz-prepaid",
       "networkId": "beeline-kz",
       "name": "Beeline KZ Prepaid",
       "marketId": "kz"
+    },
+    {
+      "id": "calendar-world-jp",
+      "networkId": "rakuten-mobile-jp",
+      "name": "CALENDAR Rakuten Prepaid",
+      "marketId": "jp"
     },
     {
       "id": "cellcard-prepaid",
@@ -636,6 +714,12 @@
       "marketId": "lk"
     },
     {
+      "id": "digi-my",
+      "networkId": "celcomdigi-my",
+      "name": "Digi / CelcomDigi Prepaid",
+      "marketId": "my"
+    },
+    {
       "id": "du-prepaid",
       "networkId": "du-ae",
       "name": "du Prepaid",
@@ -660,6 +744,12 @@
       "marketId": "tw"
     },
     {
+      "id": "free-mobile-fr",
+      "networkId": "free-fr",
+      "name": "Free Mobile Forfait 2€",
+      "marketId": "fr"
+    },
+    {
       "id": "giffgaff-uk",
       "networkId": "o2-uk",
       "name": "Giffgaff",
@@ -670,6 +760,12 @@
       "networkId": "globe-ph",
       "name": "Globe Prepaid",
       "marketId": "ph"
+    },
+    {
+      "id": "good2go-ca",
+      "networkId": "rogers-ca",
+      "name": "Good2Go Mobile Canada",
+      "marketId": "ca"
     },
     {
       "id": "gp-prepaid",
@@ -714,9 +810,27 @@
       "marketId": "ua"
     },
     {
+      "id": "labas",
+      "networkId": "bite-lt",
+      "name": "LABAS",
+      "marketId": "lt"
+    },
+    {
       "id": "lebara-uk",
       "networkId": "vodafone-uk",
       "name": "Lebara UK",
+      "marketId": "gb"
+    },
+    {
+      "id": "lmt-karte",
+      "networkId": "lmt-lv",
+      "name": "LMT Karte",
+      "marketId": "lv"
+    },
+    {
+      "id": "lycamobile-uk",
+      "networkId": "ee-uk",
+      "name": "Lyca Mobile UK",
       "marketId": "gb"
     },
     {
@@ -774,6 +888,12 @@
       "marketId": "pl"
     },
     {
+      "id": "orange-prepay-ro",
+      "networkId": "orange-ro",
+      "name": "Orange Romania PrePay",
+      "marketId": "ro"
+    },
+    {
       "id": "povo-jp",
       "networkId": "au-jp",
       "name": "povo 2.0",
@@ -784,6 +904,12 @@
       "networkId": "proximus-be",
       "name": "Proximus Pay&Go+",
       "marketId": "be"
+    },
+    {
+      "id": "redpocket-us",
+      "networkId": "redpocket-us-multi",
+      "name": "RedPocket Annual Essentials",
+      "marketId": "us"
     },
     {
       "id": "safaricom-prepaid",
@@ -844,6 +970,12 @@
       "networkId": "telcel-mx",
       "name": "Telcel Amigo",
       "marketId": "mx"
+    },
+    {
+      "id": "telekom-easy",
+      "networkId": "telekom-sk",
+      "name": "Telekom Easy",
+      "marketId": "sk"
     },
     {
       "id": "telia-konekaart",
@@ -985,6 +1117,23 @@
     }
   ],
   "routes": [
+    {
+      "id": "1pmobile-uk-2026",
+      "marketId": "gb",
+      "networkId": "ee-uk",
+      "brandId": "1pmobile-uk",
+      "displayName": "1pMobile PAYG",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.1pmobile.com/tacs",
+      "sourceIds": [
+        "1pmobile-terms-20260929"
+      ]
+    },
     {
       "id": "2degrees-prepay-2026",
       "marketId": "nz",
@@ -1139,6 +1288,24 @@
       ]
     },
     {
+      "id": "asda-mobile-uk-2026",
+      "marketId": "gb",
+      "networkId": "vodafone-uk",
+      "brandId": "asda-mobile-uk",
+      "displayName": "ASDA Mobile PAYG",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://mobile.asda.com/support/topping-up",
+      "sourceIds": [
+        "asda-support-20260929",
+        "asda-terms-20260929"
+      ]
+    },
+    {
       "id": "beeline-kz-simka-v-seyfe-2026",
       "marketId": "kz",
       "networkId": "beeline-kz",
@@ -1157,6 +1324,25 @@
         "official-beeline-kz-registration-2026-09-29",
         "official-beeline-kz-sim-safe-2026-09-29",
         "travelask-beeline-sim-safe-incident-2026-09"
+      ]
+    },
+    {
+      "id": "calendar-rakuten-prepaid-jp-2026",
+      "marketId": "jp",
+      "networkId": "rakuten-mobile-jp",
+      "brandId": "calendar-world-jp",
+      "displayName": "CALENDAR Rakuten Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+      "sourceIds": [
+        "calendar-extension-20260929",
+        "calendar-rakuten-item-20260929",
+        "calendar-rakuten-reviews-20260929"
       ]
     },
     {
@@ -1295,6 +1481,24 @@
       ]
     },
     {
+      "id": "digi-reload-validity-my-2026",
+      "marketId": "my",
+      "networkId": "celcomdigi-my",
+      "brandId": "digi-my",
+      "displayName": "Digi / CelcomDigi Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+      "sourceIds": [
+        "celcomdigi-kuning-20260929",
+        "celcomdigi-validity-20260929"
+      ]
+    },
+    {
       "id": "du-prepaid-ae-2026",
       "marketId": "ae",
       "networkId": "du-ae",
@@ -1371,6 +1575,24 @@
       ]
     },
     {
+      "id": "free-mobile-fr-2026",
+      "marketId": "fr",
+      "networkId": "free-fr",
+      "brandId": "free-mobile-fr",
+      "displayName": "Free Mobile Forfait 2€",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
+      "sourceIds": [
+        "free-2eur-20260929",
+        "free-contract-20260929"
+      ]
+    },
+    {
       "id": "giffgaff-uk-direct-esim-payg",
       "marketId": "gb",
       "networkId": "o2-uk",
@@ -1417,6 +1639,24 @@
         "official-globe-prepaid-roaming-2026-09-29",
         "official-globe-sim-registration-2026-09-29",
         "official-globe-sim-terms-2026-09-29"
+      ]
+    },
+    {
+      "id": "good2go-payg-ca-2026",
+      "marketId": "ca",
+      "networkId": "rogers-ca",
+      "brandId": "good2go-ca",
+      "displayName": "Good2Go Mobile Canada",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://good2gomobile.ca/",
+      "sourceIds": [
+        "good2go-home-20260929",
+        "petro-legacy-expiry-history-20120401"
       ]
     },
     {
@@ -1551,6 +1791,24 @@
       ]
     },
     {
+      "id": "labas-90-120d-2026",
+      "marketId": "lt",
+      "networkId": "bite-lt",
+      "brandId": "labas",
+      "displayName": "LABAS",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.labas.lt/en/service-rules",
+      "sourceIds": [
+        "labas-help-20260929",
+        "labas-rules-20260929"
+      ]
+    },
+    {
       "id": "lebara-uk-direct-esim-china",
       "marketId": "gb",
       "networkId": "vodafone-uk",
@@ -1570,6 +1828,44 @@
         "src-2948194201a0",
         "src-337a1e0a1330",
         "src-aa91ae8faea1"
+      ]
+    },
+    {
+      "id": "lmt-karte-60-60d-2026",
+      "marketId": "lv",
+      "networkId": "lmt-lv",
+      "brandId": "lmt-karte",
+      "displayName": "LMT Karte",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lmt.lv/en/lmt-karte/new-number",
+      "sourceIds": [
+        "lmt-new-number-20260929",
+        "lmt-refill-card-20260929",
+        "lmt-useby-20260929"
+      ]
+    },
+    {
+      "id": "lycamobile-uk-keep-number-2026",
+      "marketId": "gb",
+      "networkId": "ee-uk",
+      "brandId": "lycamobile-uk",
+      "displayName": "Lyca Mobile UK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lycamobile.co.uk/",
+      "sourceIds": [
+        "lyca-uk-home-20260929",
+        "lyca-uk-keep-20260424",
+        "lyca-uk-network-20260929"
       ]
     },
     {
@@ -1781,6 +2077,25 @@
       ]
     },
     {
+      "id": "orange-prepay-ro-ladder-2026",
+      "marketId": "ro",
+      "networkId": "orange-ro",
+      "brandId": "orange-prepay-ro",
+      "displayName": "Orange Romania PrePay",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+      "sourceIds": [
+        "orange-active-grace-20260929",
+        "orange-prepay-tariff-202603",
+        "orange-validity-20260929"
+      ]
+    },
+    {
       "id": "povo20-zero-base-2026",
       "marketId": "jp",
       "networkId": "au-jp",
@@ -1819,6 +2134,25 @@
         "official-proximus-paygo-current-2026-09-29",
         "official-proximus-paygo-faq-2026-09-29",
         "proximus-forum-foreign-id-friction-2026-07-03"
+      ]
+    },
+    {
+      "id": "redpocket-annual-2026",
+      "marketId": "us",
+      "networkId": "redpocket-us-multi",
+      "brandId": "redpocket-us",
+      "displayName": "RedPocket Annual Essentials",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.redpocket.com/plans/annual",
+      "sourceIds": [
+        "redpocket-annual-20260929",
+        "redpocket-esim-activation-20260929",
+        "redpocket-roaming-20260929"
       ]
     },
     {
@@ -2014,6 +2348,25 @@
         "official-telcel-glossary-recharge-2026-09-29",
         "official-telcel-line-registration-2026-09-29",
         "official-telcel-roaming-2026-09-29"
+      ]
+    },
+    {
+      "id": "telekom-easy-sk-90d-2026",
+      "marketId": "sk",
+      "networkId": "telekom-sk",
+      "brandId": "telekom-easy",
+      "displayName": "Telekom Easy",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.telekom.sk/wiki/volania/easy-en",
+      "sourceIds": [
+        "telekom-credit-validity-20260929",
+        "telekom-easy-en-20260929",
+        "telekom-topup-20260929"
       ]
     },
     {
@@ -2481,6 +2834,54 @@
   ],
   "sources": [
     {
+      "id": "1pmobile-terms-20260929",
+      "url": "https://www.1pmobile.com/tacs",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "asda-support-20260929",
+      "url": "https://mobile.asda.com/support/topping-up",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "asda-terms-20260929",
+      "url": "https://mobile.asda.com/pdf/Asda-Mobile-Terms-and-Conditions.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "calendar-extension-20260929",
+      "url": "https://www.jpsimshop.com/view/item/000000000110?category_page_id=ct19",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "calendar-rakuten-item-20260929",
+      "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "calendar-rakuten-reviews-20260929",
+      "url": "https://review.rakuten.co.jp/item/1/269312_10001944/1.1/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "celcomdigi-kuning-20260929",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660913-faq-celcomdigi-prepaid-5g-kuning-reload-and-validity",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "celcomdigi-validity-20260929",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "cellfie-esim-2026-09-29",
       "url": "https://cellfie.ge/en/esim",
       "type": "provider-official",
@@ -2643,10 +3044,28 @@
       "reportedAt": "2026-04-13"
     },
     {
+      "id": "free-2eur-20260929",
+      "url": "https://mobile.free.fr/fiche-forfait-2-euros",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "free-contract-20260929",
+      "url": "https://mobile.free.fr/docs/bt/tarifs.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "giffgaff-official-credit-2026-09-23",
       "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
       "type": "provider-commercial-page",
       "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "good2go-home-20260929",
+      "url": "https://good2gomobile.ca/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "googleplay-beeline-sim-safe-incident-2026-08-28",
@@ -2675,6 +3094,18 @@
     {
       "id": "kyivstar-sim-restore-2026-02-09",
       "url": "https://kyivstar.ua/services/prepaid/simcard-rest",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "labas-help-20260929",
+      "url": "https://www.labas.lt/en/help",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "labas-rules-20260929",
+      "url": "https://www.labas.lt/en/service-rules",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
@@ -2803,6 +3234,42 @@
       "url": "https://linux.do/t/topic/2737575",
       "type": "community-thread",
       "reportedAt": "2026-08-11"
+    },
+    {
+      "id": "lmt-new-number-20260929",
+      "url": "https://www.lmt.lv/en/lmt-karte/new-number",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lmt-refill-card-20260929",
+      "url": "https://www.lmt.lv/en/helpdesk/agreements-and-terms-and-conditions/legal-information/refilling-lmt-karte-with-payment-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lmt-useby-20260929",
+      "url": "https://www.lmt.lv/en/helpdesk/lmt-karte/lmt-karte-time-limits/use-by-date",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lyca-uk-home-20260929",
+      "url": "https://www.lycamobile.co.uk/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lyca-uk-keep-20260424",
+      "url": "https://shkspr.mobi/blog/2026/04/cheapest-way-to-keep-a-uk-mobile-number-using-an-esim/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lyca-uk-network-20260929",
+      "url": "https://www.mobilecoverage.co.uk/networks/lycamobile/compare-ee",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "mts-keep-number-product-2026-09-29",
@@ -3711,6 +4178,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "orange-active-grace-20260929",
+      "url": "https://www.orange.ro/help/perioada-de-activitate-si-de-gratie-47",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "orange-prepay-tariff-202603",
+      "url": "https://www.orange.ro/docs/termeni-si-conditii/pdf/2026-03/brosura-tarife-PrePay-web_mar26.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "orange-validity-20260929",
+      "url": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "petro-legacy-expiry-history-20120401",
+      "url": "https://www.howardforums.com/threads/recommend-a-good-pay-as-you-go-service-with-long-expiration-period.1742764/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "proximus-forum-foreign-id-friction-2026-07-03",
       "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
       "type": "provider-community-support-thread",
@@ -3733,6 +4224,24 @@
       "url": "https://www.reddit.com/r/bali/comments/1vg1edu/telkomsel_sim_card/",
       "type": "first-hand-community-thread",
       "reportedAt": "2026-08-05"
+    },
+    {
+      "id": "redpocket-annual-20260929",
+      "url": "https://www.redpocket.com/plans/annual",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "redpocket-esim-activation-20260929",
+      "url": "https://help.redpocket.com/how-to-activate-your-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "redpocket-roaming-20260929",
+      "url": "https://help.redpocket.com/does-red-pocket-mobile-allow-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
     },
     {
       "id": "safaricom-daima-faq-2026-09-29",
@@ -3981,6 +4490,24 @@
       "reportedAt": "2026-09-27"
     },
     {
+      "id": "telekom-credit-validity-20260929",
+      "url": "https://www.telekom.sk/wiki/volania/vyska-a-platnost-kreditu",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "telekom-easy-en-20260929",
+      "url": "https://www.telekom.sk/wiki/volania/easy-en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "telekom-topup-20260929",
+      "url": "https://www.telekom.sk/wiki/volania/dobitie-kreditu",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "telia-super-starter-2026-09-29",
       "url": "https://www.super.ee/en/stardikas",
       "type": "provider-official",
@@ -4157,6 +4684,24 @@
   ],
   "events": [
     {
+      "id": "evt-1pmobile-uk-2026-db-c3-review-20260929",
+      "routeId": "1pmobile-uk-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Terms updated 24 July 2026 establish cohort-specific commitment periods; the legacy blanket rule for earlier customers is corrected.",
+      "sourceId": "1pmobile-terms-20260929"
+    },
+    {
+      "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
+      "routeId": "asda-mobile-uk-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current official support separates a 180-day chargeable-use rule from a 180-day top-up/plan credit rule; the old £5/180-day model is not safe to publish as a settled minimum.",
+      "sourceId": "asda-support-20260929"
+    },
+    {
       "id": "evt-beeline-kz-sim-safe-remote-enable-friction-202609",
       "routeId": "beeline-kz-simka-v-seyfe-2026",
       "type": "service-activation-friction",
@@ -4164,6 +4709,15 @@
       "scope": "multiple-community-reports",
       "outcome": "Users reported SIM in Safe disappearing from the app and remote re-activation failing after technical changes; support reportedly confirmed the service could still be attached even when not visible. Treat remote enablement/status visibility as a live operational risk.",
       "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
+    },
+    {
+      "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The product and same-number extension path are current: 3GB annual entry is now ¥7,860 and the dedicated extension product is ¥5,400, with SMS reception and extension support explicitly listed.",
+      "sourceId": "calendar-rakuten-item-20260929"
     },
     {
       "id": "evt-cellcard-expired-balance-recovery-conflict-20260929",
@@ -4211,6 +4765,15 @@
       "sourceId": "dialog-number-recycling-2026-09-29"
     },
     {
+      "id": "evt-digi-reload-validity-my-2026-db-c3-review-20260929",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current CelcomDigi documentation directly confirms Digi RM100=120-day reload validity and an explicit RM198/365-day validity extension.",
+      "sourceId": "celcomdigi-validity-20260929"
+    },
+    {
       "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
       "routeId": "etisalat-wasel-ae-2026",
       "type": "legacy-rule-correction",
@@ -4218,6 +4781,15 @@
       "scope": "route",
       "outcome": "The old AED10-per-quarter framing is not needed for the current normalized rule. Current e& pages state lifetime validity with continued use and a 12-month retention/revival window after non-use; exact minimum annual cash cost is therefore left unresolved.",
       "sourceId": "eand-wasel-line-2026-09-29"
+    },
+    {
+      "id": "evt-free-mobile-fr-2026-db-c3-review-20260929",
+      "routeId": "free-mobile-fr-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The €2/month plan remains current, but eligibility is expressly limited to people residing in metropolitan France or able to justify a stable link with metropolitan France; it is not a general non-resident acquisition route.",
+      "sourceId": "free-2eur-20260929"
     },
     {
       "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
@@ -4256,6 +4828,15 @@
       "sourceId": "linuxdo-giffgaff-2903412"
     },
     {
+      "id": "evt-good2go-payg-ca-2026-db-c3-review-20260929",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
+      "sourceId": "good2go-home-20260929"
+    },
+    {
       "id": "evt-gp-five-year-price-correction-20260929",
       "routeId": "grameenphone-validity-pack-2026",
       "type": "retention-price-correction",
@@ -4274,6 +4855,15 @@
       "sourceId": "kyivstar-additional-prepaid-2026-09-29"
     },
     {
+      "id": "evt-labas-90-120d-2026-db-c3-review-20260929",
+      "routeId": "labas-90-120d-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current LABAS rules directly confirm the €3/90-day account rule and 120-day hard number-loss boundary.",
+      "sourceId": "labas-rules-20260929"
+    },
+    {
       "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
       "routeId": "lebara-uk-direct-esim-china",
       "type": "outgoing-service-friction",
@@ -4281,6 +4871,24 @@
       "scope": "multiple-same-thread-observations",
       "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
       "sourceId": "linuxdo-lebara-2745784-op"
+    },
+    {
+      "id": "evt-lmt-karte-60-60d-2026-db-c3-review-20260929",
+      "routeId": "lmt-karte-60-60d-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "LMT confirms a 60-day advance-validity plus 60-day receive-only structure and a €1 online refill minimum, but the old €3 every 60 days / €18-year model does not follow from the current pages.",
+      "sourceId": "lmt-new-number-20260929"
+    },
+    {
+      "id": "evt-lycamobile-uk-keep-number-2026-db-c3-review-20260929",
+      "routeId": "lycamobile-uk-keep-number-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The 120-day / £15 annual keep-number mechanism has fresh independent corroboration, and the legacy O2 host-network field is stale: current UK service runs on EE. The UK first-party FAQ text was not retrievable in this audit.",
+      "sourceId": "lyca-uk-home-20260929"
     },
     {
       "id": "evt-magti-first-year-cash-vs-runrate-20260929",
@@ -4319,6 +4927,15 @@
       "sourceId": "official-o2cz-prepaid-current-2026-09-29"
     },
     {
+      "id": "evt-orange-prepay-ro-ladder-2026-db-c3-review-20260929",
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Orange rules confirm the active/grace ladder and show the legacy €42/year estimate was not defensible: a €5 recharge grants 30 active days plus 300 grace days, while grace can receive calls/SMS.",
+      "sourceId": "orange-validity-20260929"
+    },
+    {
       "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
       "routeId": "proximus-paygo-be-2026",
       "type": "lifecycle-condition-conflict",
@@ -4328,6 +4945,15 @@
       "sourceId": "official-proximus-paygo-faq-2026-09-29"
     },
     {
+      "id": "evt-redpocket-annual-2026-db-c3-review-20260929",
+      "routeId": "redpocket-annual-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The annual product remains current, but the legacy $60/$30 economics are stale. Current Essentials is $80 first year and renews at $110/year; activation must occur in the United States.",
+      "sourceId": "redpocket-annual-20260929"
+    },
+    {
       "id": "evt-safaricom-daima-2026-db-c2-review-20260929",
       "routeId": "safaricom-daima-2026",
       "type": "evidence-refresh",
@@ -4335,6 +4961,15 @@
       "scope": "route",
       "outcome": "Daima pricing remains directly documented on Safaricom pages: KSh200/6 months, KSh500/1 year and KSh1000/2 years. The product pages are older, so continued live availability remains a monitoring item.",
       "sourceId": "safaricom-daima-faq-2026-09-29"
+    },
+    {
+      "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",
+      "routeId": "telekom-easy-sk-90d-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Telekom rules replace the legacy recurring 90-day assumption: the first top-up is due within 90 days of activation, then each top-up extends the SIM and nominal credit by 180 days.",
+      "sourceId": "telekom-easy-en-20260929"
     },
     {
       "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",
@@ -4410,6 +5045,57 @@
     }
   ],
   "snapshots": [
+    {
+      "id": "snap-1pmobile-uk-2026-current-profile-20260929",
+      "routeId": "1pmobile-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "1pmobile-uk-2026",
+        "brandId": "1pmobile-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM (eSIM availability per official site; verify at checkout)",
+        "acquisitionSummary": "Order SIM from 1pmobile.com (free SIM, requires UK delivery address). First top-up £10 activates. EE network, 1p/min, 1p/text, 1p/MB PAYG rates.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 93,
+          "fxCheckedAt": "2026-09-27",
+          "state": "official-min-topup-10"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 10,
+          "yearCostOriginal": 40,
+          "yearCostCny": null,
+          "action": "For customers joining from 1 August 2026, spend/use at least £10 every 90 days. Customers joining 15 Oct 2025–31 Jul 2026 are on £10/120 days; customers joining before 15 Oct 2025 are on £10/60 days.",
+          "intervalDays": 90,
+          "state": "official-2026-new-customer-rule"
+        },
+        "chinaActivation": "SIM dispatched to UK addresses; activate on EE network. China-first activation unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "UK card for online top-up; international card acceptance unverified.",
+        "wifiCalling": "Supported (EE MVNO, per official feature list).",
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.1pmobile.com/",
+        "tariffSummary": "1p/min, 1p/text, 1p/MB. Minimum spend £10/90d for new customers (2026-08+).",
+        "sourceIds": [
+          "1pmobile-terms-20260929"
+        ],
+        "marketName": "United Kingdom"
+      }
+    },
     {
       "id": "snap-2degrees-prepay-2026-current-profile-20260929",
       "routeId": "2degrees-prepay-2026",
@@ -4955,6 +5641,58 @@
       }
     },
     {
+      "id": "snap-asda-mobile-uk-2026-current-profile-20260929",
+      "routeId": "asda-mobile-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "asda-mobile-uk-2026",
+        "brandId": "asda-mobile-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Free SIM from mobile.asda.com (UK delivery). PAYG rates 15p/min, 10p/text, 10p/MB on Vodafone network. 4G only unless spending >=£10/mo.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 46.5,
+          "fxCheckedAt": "2026-09-27",
+          "state": "official-min-topup-5"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Use a chargeable call, text or data event within each 180-day period to keep the line fully active; separately, account credit is restricted after 180 days without a top-up or plan purchase and expires after a further 90 days. Exact cheapest sustainable cost remains unreconciled.",
+          "intervalDays": 180,
+          "state": "official-rules-conflict-needs-reconciliation"
+        },
+        "chinaActivation": "UK network activation expected; China-first activation unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "UK card / ASDA top-up card; international card acceptance unverified.",
+        "wifiCalling": null,
+        "roamingSms": "Receiving SMS abroad generally free on UK networks (unverified for ASDA specifics).",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Official activity and credit-expiry rules are both current, but the exact minimum sustainable retention cost is unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://mobile.asda.com/",
+        "tariffSummary": "15p/min, 10p/text, 10p/MB. £5 top-up per 180 days = £10/yr retention.",
+        "sourceIds": [
+          "asda-support-20260929",
+          "asda-terms-20260929"
+        ],
+        "marketName": "United Kingdom"
+      }
+    },
+    {
       "id": "snap-beeline-kz-simka-v-seyfe-2026-current-profile-20260929",
       "routeId": "beeline-kz-simka-v-seyfe-2026",
       "kind": "current-profile",
@@ -5011,6 +5749,64 @@
           "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
           "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
         ]
+      }
+    },
+    {
+      "id": "snap-calendar-rakuten-prepaid-jp-2026-current-profile-20260929",
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "calendar-rakuten-prepaid-jp-2026",
+        "brandId": "calendar-world-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "No-KYC 1-year prepaid SIM/eSIM on Rakuten Mobile network (+au partner + intl roaming) sold by calendar-world (株式会社CALENDAR) via jpsimshop / Rakuten marketplace / Amazon JP. 3GB/mo plan ¥5,980 new (community 2026-06 & 2026-08 agree); 6-month option from ¥3,300 (official shop page). First month free = up to 13 months on 1-year plan. eSIM delivered digitally (no Japan address needed); physical SIM ships Japan-only (forwarding required). SMS receive-only (can receive, cannot send); NO voice calls. Real JP 070/080/090 number.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 7860,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 7860,
+          "landedCny": 287,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-3gb-annual"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 5400,
+          "yearCostOriginal": 5400,
+          "yearCostCny": null,
+          "action": "Before expiry, purchase the dedicated CALENDAR Rakuten-line extension for the existing assigned MSN/phone number. Current extension listing is ¥5,400.",
+          "intervalDays": 365,
+          "state": "current-official-extension"
+        },
+        "chinaActivation": "Yes — designed for it. Community-verified working from mainland China and Taiwan for SMS receiving: 2026-08 linux.do 9-country test scored 8/8 platforms (WhatsApp/Telegram/Google/Apple ID/PayPal/Instagram/TikTok/Amazon); V2EX OP used it in China for eplus/pia ticket registration (2023 thread, re-confirmed 2025-09). Activate by inserting eSIM/SIM with roaming on.",
+        "kyc": "None for direct purchase — it is a data+SMS-receive product, not a voice service, so it sits outside Japan's voice-KYC regime (tightened 2026-04 per fluctlight tracker).",
+        "payment": "Credit card (extension flow is card-only). Community reports some Visa/Mastercard BINs fail on purchase — retry with another card.",
+        "wifiCalling": "not applicable — no voice service on this product",
+        "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on 3GB plan, 128kbps after cap; community measured ~400ms latency from China (Rakuten routes roaming via Orange/France).",
+        "refund": "not reconciled — shop page says unsupported-device use is non-refundable",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+        "tariffSummary": "Current 3GB annual physical SIM starts at ¥7,860; SMS reception is supported; dedicated physical/eSIM extension is ¥5,400 for eligible CALENDAR Rakuten-line plans.",
+        "sourceIds": [
+          "calendar-rakuten-item-20260929",
+          "calendar-extension-20260929",
+          "calendar-rakuten-reviews-20260929"
+        ],
+        "guideSteps": [
+          "Buy the 1-year 3GB eSIM plan from jpsimshop / Rakuten marketplace / Amazon JP (~¥5,980). Choose eSIM to skip Japan-only shipping.",
+          "Install eSIM, enable roaming; SMS receiving works abroad immediately. Do not abuse SMS (carrier can kill all functions).",
+          "Calendar the expiry: shop SMS-notices ~2 months before; extension order+payment must complete by the 15th 14:00 JST of expiry month (¥5,400, same number, remote)."
+        ],
+        "marketName": "Japan"
       }
     },
     {
@@ -5398,6 +6194,58 @@
       }
     },
     {
+      "id": "snap-digi-reload-validity-my-2026-current-profile-20260929",
+      "routeId": "digi-reload-validity-my-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "digi-reload-validity-my-2026",
+        "brandId": "digi-my",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Digi prepaid sold nationwide in Malaysia (7-Eleven, Digi stores); passport registration for foreigners.",
+        "landedCost": {
+          "currency": "MYR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 17,
+          "fxCheckedAt": "2026-09-27",
+          "state": "community-typical-starter"
+        },
+        "keep": {
+          "currency": "MYR",
+          "observedActionCost": 198,
+          "yearCostOriginal": 198,
+          "yearCostCny": null,
+          "action": "Use the official RM198 validity extension for 365 days, or maintain validity through qualifying reloads such as Digi RM100 for 120 days.",
+          "intervalDays": 365,
+          "state": "official-confirmed"
+        },
+        "chinaActivation": "Malaysia activation expected; extension purchases work from anywhere via app/USSD.",
+        "kyc": "Passport registration required for foreigners (Malaysian law).",
+        "payment": "App/online reload; international cards partially accepted (community).",
+        "wifiCalling": null,
+        "roamingSms": "Receiving SMS abroad works while active (community).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+        "tariffSummary": "RM198 = 365-day validity extension (official); reload RM100 = 120d.",
+        "sourceIds": [
+          "celcomdigi-validity-20260929",
+          "celcomdigi-kuning-20260929"
+        ],
+        "marketName": "Malaysia"
+      }
+    },
+    {
       "id": "snap-du-prepaid-ae-2026-current-profile-20260929",
       "routeId": "du-prepaid-ae-2026",
       "kind": "current-profile",
@@ -5614,6 +6462,58 @@
         "sourceIds": [
           "fareastone-tw-official"
         ]
+      }
+    },
+    {
+      "id": "snap-free-mobile-fr-2026-current-profile-20260929",
+      "routeId": "free-mobile-fr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "free-mobile-fr-2026",
+        "brandId": "free-mobile-fr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Free Mobile 2 EUR/mo plan (official fiche-forfait-2-euros). Online signup with SIM delivered to a French address; France practical requirement: French address + SEPA bank/card payment.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-sim-fee"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 2,
+          "yearCostOriginal": 24,
+          "yearCostCny": null,
+          "action": "Maintain the ongoing €2/month subscription. This is a recurring mobile plan, not a low-touch prepaid inactivity rule.",
+          "intervalDays": 30,
+          "state": "current-official-subscription"
+        },
+        "chinaActivation": "Not possible — SIM shipped to French address; activation in France.",
+        "kyc": "Offer is reserved to subscribers residing in metropolitan France or able to justify a stable link with metropolitan France.",
+        "payment": "Current subscription payment requirements should be verified during checkout; do not assume foreign payment acceptance.",
+        "wifiCalling": "Supported (Free network).",
+        "roamingSms": "EU roaming; receiving SMS abroad generally free.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current product is verified, but non-resident eligibility is materially constrained and foreign acquisition/payment viability is not established.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
+        "tariffSummary": "2 EUR/mo plan; France-resident gated.",
+        "sourceIds": [
+          "free-2eur-20260929",
+          "free-contract-20260929"
+        ],
+        "marketName": "France"
       }
     },
     {
@@ -5978,6 +6878,58 @@
           "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
           "Do not model the ordinary one-year load rule as a tourist annual keep cost."
         ]
+      }
+    },
+    {
+      "id": "snap-good2go-payg-ca-2026-current-profile-20260929",
+      "routeId": "good2go-payg-ca-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "good2go-payg-ca-2026",
+        "brandId": "good2go-ca",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Good2Go Mobile (formerly Petro-Canada Mobility / Ztar), Rogers network. PAYG vouchers sold at Petro-Canada stations; SIM kits online. Long-standing PAYG tradition: $20 voucher = 180 days validity.",
+        "landedCost": {
+          "currency": "CAD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 20,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 30,
+          "landedCny": 159,
+          "fxCheckedAt": "2026-09-27",
+          "state": "community-estimated"
+        },
+        "keep": {
+          "currency": "CAD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not rely on the historical $20/180-day top-up rule until current Good2Go terms confirm it.",
+          "intervalDays": null,
+          "state": "historical-mechanic-unverified-current"
+        },
+        "chinaActivation": "Canada activation required; China-first activation unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "Vouchers (cash-friendly) at Petro-Canada; online top-up via good2gomobile.ca.",
+        "wifiCalling": null,
+        "roamingSms": "No roaming on PAYG (Canada-only service historically).",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current provider-controlled PAYG expiry/top-up rule was not located; historical evidence is too stale for admission as a settled mechanic.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://good2gomobile.ca/",
+        "tariffSummary": "PAYG $20/180d voucher tradition (community); needs current re-verification.",
+        "sourceIds": [
+          "good2go-home-20260929",
+          "petro-legacy-expiry-history-20120401"
+        ],
+        "marketName": "Canada"
       }
     },
     {
@@ -6547,6 +7499,61 @@
       }
     },
     {
+      "id": "snap-labas-90-120d-2026-current-profile-20260929",
+      "routeId": "labas-90-120d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "labas-90-120d-2026",
+        "brandId": "labas",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official T&C (effective 2026-04-02): account valid 3 months (90 days) from activation or last top-up ≥ €3. After 90d without top-up: receive-only (calls/SMS in, emergency out). After 4 months (120 days): number blocked, invalid, cancelled, NOT restorable.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 3,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 3,
+          "landedCny": 23,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-min-topup"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 3,
+          "yearCostOriginal": 12,
+          "yearCostCny": null,
+          "action": "Top up at least €3 every 90 days. After 90 days without a qualifying top-up the line becomes receive-only; after 120 days the number is cancelled and is not restorable.",
+          "intervalDays": 90,
+          "state": "official-confirmed"
+        },
+        "chinaActivation": "LT prepaid registration required (activation within 90 days of purchase).",
+        "kyc": "Registration required (LT).",
+        "payment": "Online top-up.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard; China 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.labas.lt/",
+        "tariffSummary": "€3/90d; 120d hard cutoff.",
+        "sourceIds": [
+          "labas-rules-20260929",
+          "labas-help-20260929"
+        ],
+        "guideSteps": [
+          "Directory card."
+        ],
+        "marketName": "Lithuania"
+      }
+    },
+    {
       "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
       "routeId": "lebara-uk-direct-esim-china",
       "kind": "capabilities",
@@ -6739,6 +7746,115 @@
           "summary": "Use the Lebara line before temporary barring",
           "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
         }
+      }
+    },
+    {
+      "id": "snap-lmt-karte-60-60d-2026-current-profile-20260929",
+      "routeId": "lmt-karte-60-60d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "lmt-karte-60-60d-2026",
+        "brandId": "lmt-karte",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official (lmt.lv/en): if account not topped up, advance validity 60 days + 60 days for receiving calls/SMS. Keep account funded to continue. Starter mentions '120-day active number'.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 1.5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 1.5,
+          "landedCny": 12,
+          "fxCheckedAt": "2026-09-26",
+          "state": "official-starter-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "If the account is not topped up, LMT states a 60-day advance-validity period followed by 60 days for receiving calls and SMS. Online card refill minimum is €1, but the exact use-by extension created by a €1 refill is not established in the retrieved rules.",
+          "intervalDays": null,
+          "state": "official-lifecycle-cost-unresolved"
+        },
+        "chinaActivation": "LV prepaid registration required.",
+        "kyc": "Registration (LV).",
+        "payment": "Online/local.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current lifecycle is verified; exact refill-to-validity mapping needed to compute a defensible annual keep cost.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.lmt.lv/",
+        "tariffSummary": "60d active + 60d receive-only.",
+        "sourceIds": [
+          "lmt-new-number-20260929",
+          "lmt-useby-20260929",
+          "lmt-refill-card-20260929"
+        ],
+        "guideSteps": [
+          "Directory card."
+        ],
+        "marketName": "Latvia"
+      }
+    },
+    {
+      "id": "snap-lycamobile-uk-keep-number-2026-current-profile-20260929",
+      "routeId": "lycamobile-uk-keep-number-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "lycamobile-uk-keep-number-2026",
+        "brandId": "lycamobile-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Free SIM/eSIM from lycamobile.co.uk (UK delivery for physical). O2 network. International-call focused MVNO.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": "2026-09-27",
+          "state": "free-sim-topup-unverified"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 15,
+          "yearCostOriginal": 15,
+          "yearCostCny": null,
+          "action": "Fresh 2026 independent evidence quotes Lyca UK as keeping an unused number for 120 days by default, or up to one year after dialing *139*9999# and paying £15 from balance. Treat the price as corroborated rather than current first-party until the UK FAQ is directly retrievable.",
+          "intervalDays": 365,
+          "state": "current-independent-corroboration"
+        },
+        "chinaActivation": "UK network activation expected; China-first activation unverified. eSIM available per official site.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "UK card; international card acceptance varies (community reports mixed).",
+        "wifiCalling": null,
+        "roamingSms": null,
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Keep-number rule is freshly corroborated but direct current UK provider text was not retrievable; legacy host network corrected from O2 to EE.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.lycamobile.co.uk/",
+        "tariffSummary": "£15/yr official keep-number plan (dial *139*9999#), or activity per 120d.",
+        "sourceIds": [
+          "lyca-uk-home-20260929",
+          "lyca-uk-keep-20260424",
+          "lyca-uk-network-20260929"
+        ],
+        "marketName": "United Kingdom"
       }
     },
     {
@@ -7612,6 +8728,62 @@
       }
     },
     {
+      "id": "snap-orange-prepay-ro-ladder-2026-current-profile-20260929",
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "orange-prepay-ro-ladder-2026",
+        "brandId": "orange-prepay-ro",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official recharge ladder (orange.ro): €1-3 → 15 active days; €5-6 → 30 days; €7-11 → 60 days; higher tiers longer; grace period up to 300 days after active period. After grace expiry, SIM unusable.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 39,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "For number retention, current rules give a €5 recharge 30 active days plus 300 grace days. During grace the line can receive calls/SMS but cannot originate normal service; recharge before grace expires to avoid losing the number. Do not equate this receive-only retention path with continuous full activity.",
+          "intervalDays": null,
+          "state": "official-active-grace-ladder"
+        },
+        "chinaActivation": "RO prepaid registration; local acquisition standard.",
+        "kyc": "Registration (RO law).",
+        "payment": "My Orange app card top-up.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming standard; China 验证中.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.orange.ro/prepay/",
+        "tariffSummary": "€5-6 recharge: 30 active days + 300 grace days; €8/12/16 options provide 60 active + 300 grace days. Account caps are 180 active / 360 grace days.",
+        "sourceIds": [
+          "orange-validity-20260929",
+          "orange-active-grace-20260929",
+          "orange-prepay-tariff-202603"
+        ],
+        "guideSteps": [
+          "Directory card."
+        ],
+        "marketName": "Romania"
+      }
+    },
+    {
       "id": "snap-povo20-zero-base-2026-current-profile-20260929",
       "routeId": "povo20-zero-base-2026",
       "kind": "current-profile",
@@ -7726,6 +8898,63 @@
           "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
           "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
         ]
+      }
+    },
+    {
+      "id": "snap-redpocket-annual-2026-current-profile-20260929",
+      "routeId": "redpocket-annual-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "redpocket-annual-2026",
+        "brandId": "redpocket-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Official 360-day annual plans from $60 (500MB/mo, $5/mo effective) at redpocket.com/plans/annual; eBay channel sells a $30/360-day unlimited talk+text+200MB/mo plan (still listed Feb 2026). eSIM available on annual plans, all networks (GSMA=AT&T / GSMT=T-Mobile / CDMA=Verizon).",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 80,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 80,
+          "landedCny": 426,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-first-year"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 110,
+          "yearCostOriginal": 110,
+          "yearCostCny": null,
+          "action": "Renew the Essentials annual plan; current official renewal is $110/year after the first-year promotional price.",
+          "intervalDays": 365,
+          "state": "current-official-annual-renewal"
+        },
+        "chinaActivation": "SIM/eSIM activation can only be completed from the United States.",
+        "kyc": "No credit check (prepaid).",
+        "payment": "Plans are sold for purchase in the 50 U.S. states and Washington, D.C.; physical SIM shipping is domestic only.",
+        "wifiCalling": "Officially supported on ALL networks and works with SMS texting; e911 US address required at setup.",
+        "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not published (null).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.redpocket.com/plans/annual",
+        "tariffSummary": "Essentials annual: $80 first year promotion, renews at $110/year; standard annual price label is $120.",
+        "sourceIds": [
+          "redpocket-annual-20260929",
+          "redpocket-esim-activation-20260929",
+          "redpocket-roaming-20260929"
+        ],
+        "guideSteps": [
+          "Directory card: cheapest US annual number, but China-based users cannot activate without US help.",
+          "If you have US access: buy $60 annual (GSMA for roaming option), enable Wi-Fi Calling, renew every 360 days."
+        ],
+        "marketName": "United States"
       }
     },
     {
@@ -8540,6 +9769,62 @@
           "Recharge Saldo before the 365-day inactivity limit if retaining the number.",
           "Verify the target roaming country and OTP service before relying on long-term use."
         ]
+      }
+    },
+    {
+      "id": "snap-telekom-easy-sk-90d-2026-current-profile-20260929",
+      "routeId": "telekom-easy-sk-90d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "telekom-easy-sk-90d-2026",
+        "brandId": "telekom-easy",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Official wiki: initial credit valid 30 days from SIM activation; SIM valid 90 days from activation. If not topped up within 90 days → service deactivated. After top-up, SIM validity extends (per wiki). Check via *121# or app; free from roaming.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": 39,
+          "fxCheckedAt": "2026-09-26",
+          "state": "community-reported"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Make the first top-up within 90 days of activation. Each later top-up extends SIM/service and nominal credit validity by 180 days, regardless of top-up amount; exact lowest online top-up denomination is not asserted here.",
+          "intervalDays": 180,
+          "state": "official-confirmed-180-day-post-topup"
+        },
+        "chinaActivation": "SK prepaid no strict real-name law historically; 验证中.",
+        "kyc": "Lighter than EU average (SK); 验证中.",
+        "payment": "Online/local.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming; check balance free from roaming (*121#).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.telekom.sk/",
+        "tariffSummary": "90-day SIM validity; top-up extends.",
+        "sourceIds": [
+          "telekom-easy-en-20260929",
+          "telekom-credit-validity-20260929",
+          "telekom-topup-20260929"
+        ],
+        "guideSteps": [
+          "Directory card."
+        ],
+        "marketName": "Slovakia"
       }
     },
     {
@@ -10598,6 +11883,18 @@
   ],
   "routeMetrics": [
     {
+      "routeId": "1pmobile-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 93,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "2degrees-prepay-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -10694,6 +11991,18 @@
       "keepIntervalDays": 120
     },
     {
+      "routeId": "asda-mobile-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 46.5,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "beeline-kz-simka-v-seyfe-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -10704,6 +12013,18 @@
       "keepYearCostOriginal": 12,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 7860,
+      "acquisitionCostCny": 287,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 5400,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "cellcard-kh-2026",
@@ -10790,6 +12111,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "digi-reload-validity-my-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "MYR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 17,
+      "keepCurrency": "MYR",
+      "keepYearCostOriginal": 198,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "du-prepaid-ae-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -10838,6 +12171,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "free-mobile-fr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 78,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 24,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "giffgaff-uk-direct-esim-payg",
       "checkedAt": "2026-09-15",
       "metricState": "current-profile",
@@ -10860,6 +12205,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "good2go-payg-ca-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CAD",
+      "acquisitionCostOriginal": 30,
+      "acquisitionCostCny": 159,
+      "keepCurrency": "CAD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "grameenphone-validity-pack-2026",
@@ -10946,6 +12303,18 @@
       "keepIntervalDays": 274
     },
     {
+      "routeId": "labas-90-120d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 3,
+      "acquisitionCostCny": 23,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 12,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -10956,6 +12325,30 @@
       "keepYearCostOriginal": 1.96,
       "keepYearCostCny": 17.5,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "lmt-karte-60-60d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 1.5,
+      "acquisitionCostCny": 12,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "lycamobile-uk-keep-number-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "magticom-number-maintenance-2026",
@@ -11090,6 +12483,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "orange-prepay-ro-ladder-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 39,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "povo20-zero-base-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -11112,6 +12517,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "redpocket-annual-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 80,
+      "acquisitionCostCny": 426,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 110,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "safaricom-daima-2026",
@@ -11232,6 +12649,18 @@
       "keepYearCostOriginal": 10,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "telekom-easy-sk-90d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": 39,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "telia-ee-180d-2026",

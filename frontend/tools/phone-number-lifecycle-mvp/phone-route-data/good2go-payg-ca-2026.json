@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "good2go-payg-ca-2026",
+    "marketId": "ca",
+    "networkId": "rogers-ca",
+    "brandId": "good2go-ca",
+    "displayName": "Good2Go Mobile Canada",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://good2gomobile.ca/",
+    "sourceIds": [
+      "good2go-home-20260929",
+      "petro-legacy-expiry-history-20120401"
+    ]
+  },
+  "market": {
+    "id": "ca",
+    "name": "Canada",
+    "countryCode": "CA"
+  },
+  "network": {
+    "id": "rogers-ca",
+    "name": "Rogers Canada",
+    "marketId": "ca"
+  },
+  "brand": {
+    "id": "good2go-ca",
+    "networkId": "rogers-ca",
+    "name": "Good2Go Mobile Canada",
+    "marketId": "ca"
+  },
+  "metrics": {
+    "routeId": "good2go-payg-ca-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "CAD",
+    "acquisitionCostOriginal": 30,
+    "acquisitionCostCny": 159,
+    "keepCurrency": "CAD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "good2go-home-20260929",
+      "url": "https://good2gomobile.ca/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "petro-legacy-expiry-history-20120401",
+      "url": "https://www.howardforums.com/threads/recommend-a-good-pay-as-you-go-service-with-long-expiration-period.1742764/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-good2go-payg-ca-2026-db-c3-review-20260929",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
+      "sourceId": "good2go-home-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-good2go-payg-ca-2026-current-profile-20260929",
+      "routeId": "good2go-payg-ca-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "good2go-payg-ca-2026",
+        "brandId": "good2go-ca",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Good2Go Mobile (formerly Petro-Canada Mobility / Ztar), Rogers network. PAYG vouchers sold at Petro-Canada stations; SIM kits online. Long-standing PAYG tradition: $20 voucher = 180 days validity.",
+        "landedCost": {
+          "currency": "CAD",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 20,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 30,
+          "landedCny": 159,
+          "fxCheckedAt": "2026-09-27",
+          "state": "community-estimated"
+        },
+        "keep": {
+          "currency": "CAD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not rely on the historical $20/180-day top-up rule until current Good2Go terms confirm it.",
+          "intervalDays": null,
+          "state": "historical-mechanic-unverified-current"
+        },
+        "chinaActivation": "Canada activation required; China-first activation unverified.",
+        "kyc": "No ID check for PAYG.",
+        "payment": "Vouchers (cash-friendly) at Petro-Canada; online top-up via good2gomobile.ca.",
+        "wifiCalling": null,
+        "roamingSms": "No roaming on PAYG (Canada-only service historically).",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current provider-controlled PAYG expiry/top-up rule was not located; historical evidence is too stale for admission as a settled mechanic.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://good2gomobile.ca/",
+        "tariffSummary": "PAYG $20/180d voucher tradition (community); needs current re-verification.",
+        "sourceIds": [
+          "good2go-home-20260929",
+          "petro-legacy-expiry-history-20120401"
+        ],
+        "marketName": "Canada"
+      }
+    }
+  ]
+}

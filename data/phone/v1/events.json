@@ -1,5 +1,23 @@
 [
   {
+    "id": "evt-1pmobile-uk-2026-db-c3-review-20260929",
+    "routeId": "1pmobile-uk-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Terms updated 24 July 2026 establish cohort-specific commitment periods; the legacy blanket rule for earlier customers is corrected.",
+    "sourceId": "1pmobile-terms-20260929"
+  },
+  {
+    "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current official support separates a 180-day chargeable-use rule from a 180-day top-up/plan credit rule; the old £5/180-day model is not safe to publish as a settled minimum.",
+    "sourceId": "asda-support-20260929"
+  },
+  {
     "id": "evt-beeline-kz-sim-safe-remote-enable-friction-202609",
     "routeId": "beeline-kz-simka-v-seyfe-2026",
     "type": "service-activation-friction",
@@ -7,6 +25,15 @@
     "scope": "multiple-community-reports",
     "outcome": "Users reported SIM in Safe disappearing from the app and remote re-activation failing after technical changes; support reportedly confirmed the service could still be attached even when not visible. Treat remote enablement/status visibility as a live operational risk.",
     "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
+  },
+  {
+    "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
+    "routeId": "calendar-rakuten-prepaid-jp-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The product and same-number extension path are current: 3GB annual entry is now ¥7,860 and the dedicated extension product is ¥5,400, with SMS reception and extension support explicitly listed.",
+    "sourceId": "calendar-rakuten-item-20260929"
   },
   {
     "id": "evt-cellcard-expired-balance-recovery-conflict-20260929",
@@ -54,6 +81,15 @@
     "sourceId": "dialog-number-recycling-2026-09-29"
   },
   {
+    "id": "evt-digi-reload-validity-my-2026-db-c3-review-20260929",
+    "routeId": "digi-reload-validity-my-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current CelcomDigi documentation directly confirms Digi RM100=120-day reload validity and an explicit RM198/365-day validity extension.",
+    "sourceId": "celcomdigi-validity-20260929"
+  },
+  {
     "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
     "routeId": "etisalat-wasel-ae-2026",
     "type": "legacy-rule-correction",
@@ -61,6 +97,15 @@
     "scope": "route",
     "outcome": "The old AED10-per-quarter framing is not needed for the current normalized rule. Current e& pages state lifetime validity with continued use and a 12-month retention/revival window after non-use; exact minimum annual cash cost is therefore left unresolved.",
     "sourceId": "eand-wasel-line-2026-09-29"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-db-c3-review-20260929",
+    "routeId": "free-mobile-fr-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The €2/month plan remains current, but eligibility is expressly limited to people residing in metropolitan France or able to justify a stable link with metropolitan France; it is not a general non-resident acquisition route.",
+    "sourceId": "free-2eur-20260929"
   },
   {
     "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
@@ -99,6 +144,15 @@
     "sourceId": "linuxdo-giffgaff-2903412"
   },
   {
+    "id": "evt-good2go-payg-ca-2026-db-c3-review-20260929",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
+    "sourceId": "good2go-home-20260929"
+  },
+  {
     "id": "evt-gp-five-year-price-correction-20260929",
     "routeId": "grameenphone-validity-pack-2026",
     "type": "retention-price-correction",
@@ -117,6 +171,15 @@
     "sourceId": "kyivstar-additional-prepaid-2026-09-29"
   },
   {
+    "id": "evt-labas-90-120d-2026-db-c3-review-20260929",
+    "routeId": "labas-90-120d-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current LABAS rules directly confirm the €3/90-day account rule and 120-day hard number-loss boundary.",
+    "sourceId": "labas-rules-20260929"
+  },
+  {
     "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
     "routeId": "lebara-uk-direct-esim-china",
     "type": "outgoing-service-friction",
@@ -124,6 +187,24 @@
     "scope": "multiple-same-thread-observations",
     "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
     "sourceId": "linuxdo-lebara-2745784-op"
+  },
+  {
+    "id": "evt-lmt-karte-60-60d-2026-db-c3-review-20260929",
+    "routeId": "lmt-karte-60-60d-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "LMT confirms a 60-day advance-validity plus 60-day receive-only structure and a €1 online refill minimum, but the old €3 every 60 days / €18-year model does not follow from the current pages.",
+    "sourceId": "lmt-new-number-20260929"
+  },
+  {
+    "id": "evt-lycamobile-uk-keep-number-2026-db-c3-review-20260929",
+    "routeId": "lycamobile-uk-keep-number-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The 120-day / £15 annual keep-number mechanism has fresh independent corroboration, and the legacy O2 host-network field is stale: current UK service runs on EE. The UK first-party FAQ text was not retrievable in this audit.",
+    "sourceId": "lyca-uk-home-20260929"
   },
   {
     "id": "evt-magti-first-year-cash-vs-runrate-20260929",
@@ -162,6 +243,15 @@
     "sourceId": "official-o2cz-prepaid-current-2026-09-29"
   },
   {
+    "id": "evt-orange-prepay-ro-ladder-2026-db-c3-review-20260929",
+    "routeId": "orange-prepay-ro-ladder-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Orange rules confirm the active/grace ladder and show the legacy €42/year estimate was not defensible: a €5 recharge grants 30 active days plus 300 grace days, while grace can receive calls/SMS.",
+    "sourceId": "orange-validity-20260929"
+  },
+  {
     "id": "evt-proximus-12m-validity-vs-6m-no-use-20260929",
     "routeId": "proximus-paygo-be-2026",
     "type": "lifecycle-condition-conflict",
@@ -171,6 +261,15 @@
     "sourceId": "official-proximus-paygo-faq-2026-09-29"
   },
   {
+    "id": "evt-redpocket-annual-2026-db-c3-review-20260929",
+    "routeId": "redpocket-annual-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "The annual product remains current, but the legacy $60/$30 economics are stale. Current Essentials is $80 first year and renews at $110/year; activation must occur in the United States.",
+    "sourceId": "redpocket-annual-20260929"
+  },
+  {
     "id": "evt-safaricom-daima-2026-db-c2-review-20260929",
     "routeId": "safaricom-daima-2026",
     "type": "evidence-refresh",
@@ -178,6 +277,15 @@
     "scope": "route",
     "outcome": "Daima pricing remains directly documented on Safaricom pages: KSh200/6 months, KSh500/1 year and KSh1000/2 years. The product pages are older, so continued live availability remains a monitoring item.",
     "sourceId": "safaricom-daima-faq-2026-09-29"
+  },
+  {
+    "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",
+    "routeId": "telekom-easy-sk-90d-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current Telekom rules replace the legacy recurring 90-day assumption: the first top-up is due within 90 days of activation, then each top-up extends the SIM and nominal credit by 180 days.",
+    "sourceId": "telekom-easy-en-20260929"
   },
   {
     "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",

@@ -1,5 +1,11 @@
 [
   {
+    "id": "1pmobile-uk",
+    "networkId": "ee-uk",
+    "name": "1pMobile PAYG",
+    "marketId": "gb"
+  },
+  {
     "id": "2degrees-nz",
     "networkId": "2degrees-nz",
     "name": "2degrees",
@@ -48,10 +54,22 @@
     "marketId": "de"
   },
   {
+    "id": "asda-mobile-uk",
+    "networkId": "vodafone-uk",
+    "name": "ASDA Mobile PAYG",
+    "marketId": "gb"
+  },
+  {
     "id": "beeline-kz-prepaid",
     "networkId": "beeline-kz",
     "name": "Beeline KZ Prepaid",
     "marketId": "kz"
+  },
+  {
+    "id": "calendar-world-jp",
+    "networkId": "rakuten-mobile-jp",
+    "name": "CALENDAR Rakuten Prepaid",
+    "marketId": "jp"
   },
   {
     "id": "cellcard-prepaid",
@@ -96,6 +114,12 @@
     "marketId": "lk"
   },
   {
+    "id": "digi-my",
+    "networkId": "celcomdigi-my",
+    "name": "Digi / CelcomDigi Prepaid",
+    "marketId": "my"
+  },
+  {
     "id": "du-prepaid",
     "networkId": "du-ae",
     "name": "du Prepaid",
@@ -120,6 +144,12 @@
     "marketId": "tw"
   },
   {
+    "id": "free-mobile-fr",
+    "networkId": "free-fr",
+    "name": "Free Mobile Forfait 2€",
+    "marketId": "fr"
+  },
+  {
     "id": "giffgaff-uk",
     "networkId": "o2-uk",
     "name": "Giffgaff",
@@ -130,6 +160,12 @@
     "networkId": "globe-ph",
     "name": "Globe Prepaid",
     "marketId": "ph"
+  },
+  {
+    "id": "good2go-ca",
+    "networkId": "rogers-ca",
+    "name": "Good2Go Mobile Canada",
+    "marketId": "ca"
   },
   {
     "id": "gp-prepaid",
@@ -174,9 +210,27 @@
     "marketId": "ua"
   },
   {
+    "id": "labas",
+    "networkId": "bite-lt",
+    "name": "LABAS",
+    "marketId": "lt"
+  },
+  {
     "id": "lebara-uk",
     "networkId": "vodafone-uk",
     "name": "Lebara UK",
+    "marketId": "gb"
+  },
+  {
+    "id": "lmt-karte",
+    "networkId": "lmt-lv",
+    "name": "LMT Karte",
+    "marketId": "lv"
+  },
+  {
+    "id": "lycamobile-uk",
+    "networkId": "ee-uk",
+    "name": "Lyca Mobile UK",
     "marketId": "gb"
   },
   {
@@ -234,6 +288,12 @@
     "marketId": "pl"
   },
   {
+    "id": "orange-prepay-ro",
+    "networkId": "orange-ro",
+    "name": "Orange Romania PrePay",
+    "marketId": "ro"
+  },
+  {
     "id": "povo-jp",
     "networkId": "au-jp",
     "name": "povo 2.0",
@@ -244,6 +304,12 @@
     "networkId": "proximus-be",
     "name": "Proximus Pay&Go+",
     "marketId": "be"
+  },
+  {
+    "id": "redpocket-us",
+    "networkId": "redpocket-us-multi",
+    "name": "RedPocket Annual Essentials",
+    "marketId": "us"
   },
   {
     "id": "safaricom-prepaid",
@@ -304,6 +370,12 @@
     "networkId": "telcel-mx",
     "name": "Telcel Amigo",
     "marketId": "mx"
+  },
+  {
+    "id": "telekom-easy",
+    "networkId": "telekom-sk",
+    "name": "Telekom Easy",
+    "marketId": "sk"
   },
   {
     "id": "telia-konekaart",
