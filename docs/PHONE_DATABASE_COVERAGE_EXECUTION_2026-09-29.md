@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C2
+## Current verified state after DB-C3
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **77 routes / 47 markets / 264 sources**;
-- comparison↔canonical route-ID overlap: **66**;
-- comparison routes still legacy-only: **69**;
+- canonical normalized database: **89 routes / 51 markets / 293 sources**;
+- comparison↔canonical route-ID overlap: **78**;
+- comparison routes still legacy-only: **57**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -96,4 +96,14 @@ Post-DB-C2 state: **77 canonical routes / 47 markets / 264 sources / 66 comparis
 
 The two HOLD routes (`truemove-validity-pack-th-2026`, `claro-pre-br-90d-2026`) remain in the normalized backend with uncertainty preserved. Community or legacy mechanisms are not discarded merely because a current public provider page is inaccessible.
 
-DB-C3 is now active with 12 next low-cost/distinct legacy-only routes listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
+## DB-C3 — completed 2026-09-29
+
+DB-C3 independently reviewed and normalized 12 additional legacy-only routes through approved backstage packets. Final disposition: **7 ADMIT-BACKSTAGE / 5 HOLD / 0 REJECT**.
+
+Post-DB-C3 state: **89 canonical routes / 51 markets / 86 brands / 67 networks / 293 sources / 78 comparison-overlap route IDs / 57 comparison routes still legacy-only / 3 explicit indexable routes**.
+
+The five HOLD routes are `asda-mobile-uk-2026`, `lycamobile-uk-keep-number-2026`, `lmt-karte-60-60d-2026`, `free-mobile-fr-2026`, and `good2go-payg-ca-2026`. Their current unresolved provider-text, exact-cost or eligibility constraints remain explicit rather than inferred.
+
+Material corrections include ASDA activity-vs-credit-expiry separation; Lyca UK's current EE host network; withdrawal of LMT's unsupported EUR18/year estimate; Telekom Easy's 180-day post-top-up validity; CALENDAR's current JPY7,860 entry and JPY5,400 same-number extension; Orange Romania active/grace separation; 1pMobile's cohort-specific 2026 rules; and RedPocket's current USD110 annual renewal plus U.S.-only activation.
+
+DB-C4 is now active with 12 next distinct low-cost/decision-useful legacy-only routes listed in `docs/CURRENT_EXECUTION_QUEUE.md`.

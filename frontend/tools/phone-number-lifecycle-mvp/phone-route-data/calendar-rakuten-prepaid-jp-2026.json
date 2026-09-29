@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "calendar-rakuten-prepaid-jp-2026",
+    "marketId": "jp",
+    "networkId": "rakuten-mobile-jp",
+    "brandId": "calendar-world-jp",
+    "displayName": "CALENDAR Rakuten Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+    "sourceIds": [
+      "calendar-extension-20260929",
+      "calendar-rakuten-item-20260929",
+      "calendar-rakuten-reviews-20260929"
+    ]
+  },
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "network": {
+    "id": "rakuten-mobile-jp",
+    "name": "Rakuten Mobile Japan",
+    "marketId": "jp"
+  },
+  "brand": {
+    "id": "calendar-world-jp",
+    "networkId": "rakuten-mobile-jp",
+    "name": "CALENDAR Rakuten Prepaid",
+    "marketId": "jp"
+  },
+  "metrics": {
+    "routeId": "calendar-rakuten-prepaid-jp-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "JPY",
+    "acquisitionCostOriginal": 7860,
+    "acquisitionCostCny": 287,
+    "keepCurrency": "JPY",
+    "keepYearCostOriginal": 5400,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "calendar-extension-20260929",
+      "url": "https://www.jpsimshop.com/view/item/000000000110?category_page_id=ct19",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "calendar-rakuten-item-20260929",
+      "url": "https://item.rakuten.co.jp/calendar-world/10001944/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "calendar-rakuten-reviews-20260929",
+      "url": "https://review.rakuten.co.jp/item/1/269312_10001944/1.1/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The product and same-number extension path are current: 3GB annual entry is now ¥7,860 and the dedicated extension product is ¥5,400, with SMS reception and extension support explicitly listed.",
+      "sourceId": "calendar-rakuten-item-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-calendar-rakuten-prepaid-jp-2026-current-profile-20260929",
+      "routeId": "calendar-rakuten-prepaid-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "calendar-rakuten-prepaid-jp-2026",
+        "brandId": "calendar-world-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "No-KYC 1-year prepaid SIM/eSIM on Rakuten Mobile network (+au partner + intl roaming) sold by calendar-world (株式会社CALENDAR) via jpsimshop / Rakuten marketplace / Amazon JP. 3GB/mo plan ¥5,980 new (community 2026-06 & 2026-08 agree); 6-month option from ¥3,300 (official shop page). First month free = up to 13 months on 1-year plan. eSIM delivered digitally (no Japan address needed); physical SIM ships Japan-only (forwarding required). SMS receive-only (can receive, cannot send); NO voice calls. Real JP 070/080/090 number.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 7860,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 7860,
+          "landedCny": 287,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-3gb-annual"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 5400,
+          "yearCostOriginal": 5400,
+          "yearCostCny": null,
+          "action": "Before expiry, purchase the dedicated CALENDAR Rakuten-line extension for the existing assigned MSN/phone number. Current extension listing is ¥5,400.",
+          "intervalDays": 365,
+          "state": "current-official-extension"
+        },
+        "chinaActivation": "Yes — designed for it. Community-verified working from mainland China and Taiwan for SMS receiving: 2026-08 linux.do 9-country test scored 8/8 platforms (WhatsApp/Telegram/Google/Apple ID/PayPal/Instagram/TikTok/Amazon); V2EX OP used it in China for eplus/pia ticket registration (2023 thread, re-confirmed 2025-09). Activate by inserting eSIM/SIM with roaming on.",
+        "kyc": "None for direct purchase — it is a data+SMS-receive product, not a voice service, so it sits outside Japan's voice-KYC regime (tightened 2026-04 per fluctlight tracker).",
+        "payment": "Credit card (extension flow is card-only). Community reports some Visa/Mastercard BINs fail on purchase — retry with another card.",
+        "wifiCalling": "not applicable — no voice service on this product",
+        "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on 3GB plan, 128kbps after cap; community measured ~400ms latency from China (Rakuten routes roaming via Orange/France).",
+        "refund": "not reconciled — shop page says unsupported-device use is non-refundable",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+        "tariffSummary": "Current 3GB annual physical SIM starts at ¥7,860; SMS reception is supported; dedicated physical/eSIM extension is ¥5,400 for eligible CALENDAR Rakuten-line plans.",
+        "sourceIds": [
+          "calendar-rakuten-item-20260929",
+          "calendar-extension-20260929",
+          "calendar-rakuten-reviews-20260929"
+        ],
+        "guideSteps": [
+          "Buy the 1-year 3GB eSIM plan from jpsimshop / Rakuten marketplace / Amazon JP (~¥5,980). Choose eSIM to skip Japan-only shipping.",
+          "Install eSIM, enable roaming; SMS receiving works abroad immediately. Do not abuse SMS (carrier can kill all functions).",
+          "Calendar the expiry: shop SMS-notices ~2 months before; extension order+payment must complete by the 15th 14:00 JST of expiry month (¥5,400, same number, remote)."
+        ],
+        "marketName": "Japan"
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "redpocket-annual-2026",
+    "marketId": "us",
+    "networkId": "redpocket-us-multi",
+    "brandId": "redpocket-us",
+    "displayName": "RedPocket Annual Essentials",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.redpocket.com/plans/annual",
+    "sourceIds": [
+      "redpocket-annual-20260929",
+      "redpocket-esim-activation-20260929",
+      "redpocket-roaming-20260929"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "redpocket-us-multi",
+    "name": "RedPocket multi-network US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "redpocket-us",
+    "networkId": "redpocket-us-multi",
+    "name": "RedPocket Annual Essentials",
+    "marketId": "us"
+  },
+  "metrics": {
+    "routeId": "redpocket-annual-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": 80,
+    "acquisitionCostCny": 426,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": 110,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "redpocket-annual-20260929",
+      "url": "https://www.redpocket.com/plans/annual",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "redpocket-esim-activation-20260929",
+      "url": "https://help.redpocket.com/how-to-activate-your-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "redpocket-roaming-20260929",
+      "url": "https://help.redpocket.com/does-red-pocket-mobile-allow-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-redpocket-annual-2026-db-c3-review-20260929",
+      "routeId": "redpocket-annual-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "The annual product remains current, but the legacy $60/$30 economics are stale. Current Essentials is $80 first year and renews at $110/year; activation must occur in the United States.",
+      "sourceId": "redpocket-annual-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-redpocket-annual-2026-current-profile-20260929",
+      "routeId": "redpocket-annual-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "data": {
+        "id": "redpocket-annual-2026",
+        "brandId": "redpocket-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Official 360-day annual plans from $60 (500MB/mo, $5/mo effective) at redpocket.com/plans/annual; eBay channel sells a $30/360-day unlimited talk+text+200MB/mo plan (still listed Feb 2026). eSIM available on annual plans, all networks (GSMA=AT&T / GSMT=T-Mobile / CDMA=Verizon).",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 80,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 80,
+          "landedCny": 426,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-first-year"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 110,
+          "yearCostOriginal": 110,
+          "yearCostCny": null,
+          "action": "Renew the Essentials annual plan; current official renewal is $110/year after the first-year promotional price.",
+          "intervalDays": 365,
+          "state": "current-official-annual-renewal"
+        },
+        "chinaActivation": "SIM/eSIM activation can only be completed from the United States.",
+        "kyc": "No credit check (prepaid).",
+        "payment": "Plans are sold for purchase in the 50 U.S. states and Washington, D.C.; physical SIM shipping is domestic only.",
+        "wifiCalling": "Officially supported on ALL networks and works with SMS texting; e911 US address required at setup.",
+        "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not published (null).",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.redpocket.com/plans/annual",
+        "tariffSummary": "Essentials annual: $80 first year promotion, renews at $110/year; standard annual price label is $120.",
+        "sourceIds": [
+          "redpocket-annual-20260929",
+          "redpocket-esim-activation-20260929",
+          "redpocket-roaming-20260929"
+        ],
+        "guideSteps": [
+          "Directory card: cheapest US annual number, but China-based users cannot activate without US help.",
+          "If you have US access: buy $60 annual (GSMA for roaming option), enable Wi-Fi Calling, renew every 360 days."
+        ],
+        "marketName": "United States"
+      }
+    }
+  ]
+}

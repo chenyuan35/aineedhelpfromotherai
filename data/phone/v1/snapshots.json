@@ -1,5 +1,56 @@
 [
   {
+    "id": "snap-1pmobile-uk-2026-current-profile-20260929",
+    "routeId": "1pmobile-uk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "1pmobile-uk-2026",
+      "brandId": "1pmobile-uk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM (eSIM availability per official site; verify at checkout)",
+      "acquisitionSummary": "Order SIM from 1pmobile.com (free SIM, requires UK delivery address). First top-up £10 activates. EE network, 1p/min, 1p/text, 1p/MB PAYG rates.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": 10,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 93,
+        "fxCheckedAt": "2026-09-27",
+        "state": "official-min-topup-10"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 10,
+        "yearCostOriginal": 40,
+        "yearCostCny": null,
+        "action": "For customers joining from 1 August 2026, spend/use at least £10 every 90 days. Customers joining 15 Oct 2025–31 Jul 2026 are on £10/120 days; customers joining before 15 Oct 2025 are on £10/60 days.",
+        "intervalDays": 90,
+        "state": "official-2026-new-customer-rule"
+      },
+      "chinaActivation": "SIM dispatched to UK addresses; activate on EE network. China-first activation unverified.",
+      "kyc": "No ID check for PAYG.",
+      "payment": "UK card for online top-up; international card acceptance unverified.",
+      "wifiCalling": "Supported (EE MVNO, per official feature list).",
+      "roamingSms": null,
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.1pmobile.com/",
+      "tariffSummary": "1p/min, 1p/text, 1p/MB. Minimum spend £10/90d for new customers (2026-08+).",
+      "sourceIds": [
+        "1pmobile-terms-20260929"
+      ],
+      "marketName": "United Kingdom"
+    }
+  },
+  {
     "id": "snap-2degrees-prepay-2026-current-profile-20260929",
     "routeId": "2degrees-prepay-2026",
     "kind": "current-profile",
@@ -544,6 +595,58 @@
     }
   },
   {
+    "id": "snap-asda-mobile-uk-2026-current-profile-20260929",
+    "routeId": "asda-mobile-uk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "asda-mobile-uk-2026",
+      "brandId": "asda-mobile-uk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Free SIM from mobile.asda.com (UK delivery). PAYG rates 15p/min, 10p/text, 10p/MB on Vodafone network. 4G only unless spending >=£10/mo.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": 5,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": 46.5,
+        "fxCheckedAt": "2026-09-27",
+        "state": "official-min-topup-5"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Use a chargeable call, text or data event within each 180-day period to keep the line fully active; separately, account credit is restricted after 180 days without a top-up or plan purchase and expires after a further 90 days. Exact cheapest sustainable cost remains unreconciled.",
+        "intervalDays": 180,
+        "state": "official-rules-conflict-needs-reconciliation"
+      },
+      "chinaActivation": "UK network activation expected; China-first activation unverified.",
+      "kyc": "No ID check for PAYG.",
+      "payment": "UK card / ASDA top-up card; international card acceptance unverified.",
+      "wifiCalling": null,
+      "roamingSms": "Receiving SMS abroad generally free on UK networks (unverified for ASDA specifics).",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Official activity and credit-expiry rules are both current, but the exact minimum sustainable retention cost is unresolved.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://mobile.asda.com/",
+      "tariffSummary": "15p/min, 10p/text, 10p/MB. £5 top-up per 180 days = £10/yr retention.",
+      "sourceIds": [
+        "asda-support-20260929",
+        "asda-terms-20260929"
+      ],
+      "marketName": "United Kingdom"
+    }
+  },
+  {
     "id": "snap-beeline-kz-simka-v-seyfe-2026-current-profile-20260929",
     "routeId": "beeline-kz-simka-v-seyfe-2026",
     "kind": "current-profile",
@@ -600,6 +703,64 @@
         "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
         "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
       ]
+    }
+  },
+  {
+    "id": "snap-calendar-rakuten-prepaid-jp-2026-current-profile-20260929",
+    "routeId": "calendar-rakuten-prepaid-jp-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "calendar-rakuten-prepaid-jp-2026",
+      "brandId": "calendar-world-jp",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "No-KYC 1-year prepaid SIM/eSIM on Rakuten Mobile network (+au partner + intl roaming) sold by calendar-world (株式会社CALENDAR) via jpsimshop / Rakuten marketplace / Amazon JP. 3GB/mo plan ¥5,980 new (community 2026-06 & 2026-08 agree); 6-month option from ¥3,300 (official shop page). First month free = up to 13 months on 1-year plan. eSIM delivered digitally (no Japan address needed); physical SIM ships Japan-only (forwarding required). SMS receive-only (can receive, cannot send); NO voice calls. Real JP 070/080/090 number.",
+      "landedCost": {
+        "currency": "JPY",
+        "providerOrCommunityPrice": 7860,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 7860,
+        "landedCny": 287,
+        "fxCheckedAt": "2026-09-27",
+        "state": "current-official-3gb-annual"
+      },
+      "keep": {
+        "currency": "JPY",
+        "observedActionCost": 5400,
+        "yearCostOriginal": 5400,
+        "yearCostCny": null,
+        "action": "Before expiry, purchase the dedicated CALENDAR Rakuten-line extension for the existing assigned MSN/phone number. Current extension listing is ¥5,400.",
+        "intervalDays": 365,
+        "state": "current-official-extension"
+      },
+      "chinaActivation": "Yes — designed for it. Community-verified working from mainland China and Taiwan for SMS receiving: 2026-08 linux.do 9-country test scored 8/8 platforms (WhatsApp/Telegram/Google/Apple ID/PayPal/Instagram/TikTok/Amazon); V2EX OP used it in China for eplus/pia ticket registration (2023 thread, re-confirmed 2025-09). Activate by inserting eSIM/SIM with roaming on.",
+      "kyc": "None for direct purchase — it is a data+SMS-receive product, not a voice service, so it sits outside Japan's voice-KYC regime (tightened 2026-04 per fluctlight tracker).",
+      "payment": "Credit card (extension flow is card-only). Community reports some Visa/Mastercard BINs fail on purchase — retry with another card.",
+      "wifiCalling": "not applicable — no voice service on this product",
+      "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on 3GB plan, 128kbps after cap; community measured ~400ms latency from China (Rakuten routes roaming via Orange/France).",
+      "refund": "not reconciled — shop page says unsupported-device use is non-refundable",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://item.rakuten.co.jp/calendar-world/10001944/",
+      "tariffSummary": "Current 3GB annual physical SIM starts at ¥7,860; SMS reception is supported; dedicated physical/eSIM extension is ¥5,400 for eligible CALENDAR Rakuten-line plans.",
+      "sourceIds": [
+        "calendar-rakuten-item-20260929",
+        "calendar-extension-20260929",
+        "calendar-rakuten-reviews-20260929"
+      ],
+      "guideSteps": [
+        "Buy the 1-year 3GB eSIM plan from jpsimshop / Rakuten marketplace / Amazon JP (~¥5,980). Choose eSIM to skip Japan-only shipping.",
+        "Install eSIM, enable roaming; SMS receiving works abroad immediately. Do not abuse SMS (carrier can kill all functions).",
+        "Calendar the expiry: shop SMS-notices ~2 months before; extension order+payment must complete by the 15th 14:00 JST of expiry month (¥5,400, same number, remote)."
+      ],
+      "marketName": "Japan"
     }
   },
   {
@@ -987,6 +1148,58 @@
     }
   },
   {
+    "id": "snap-digi-reload-validity-my-2026-current-profile-20260929",
+    "routeId": "digi-reload-validity-my-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "digi-reload-validity-my-2026",
+      "brandId": "digi-my",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Digi prepaid sold nationwide in Malaysia (7-Eleven, Digi stores); passport registration for foreigners.",
+      "landedCost": {
+        "currency": "MYR",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 17,
+        "fxCheckedAt": "2026-09-27",
+        "state": "community-typical-starter"
+      },
+      "keep": {
+        "currency": "MYR",
+        "observedActionCost": 198,
+        "yearCostOriginal": 198,
+        "yearCostCny": null,
+        "action": "Use the official RM198 validity extension for 365 days, or maintain validity through qualifying reloads such as Digi RM100 for 120 days.",
+        "intervalDays": 365,
+        "state": "official-confirmed"
+      },
+      "chinaActivation": "Malaysia activation expected; extension purchases work from anywhere via app/USSD.",
+      "kyc": "Passport registration required for foreigners (Malaysian law).",
+      "payment": "App/online reload; international cards partially accepted (community).",
+      "wifiCalling": null,
+      "roamingSms": "Receiving SMS abroad works while active (community).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+      "tariffSummary": "RM198 = 365-day validity extension (official); reload RM100 = 120d.",
+      "sourceIds": [
+        "celcomdigi-validity-20260929",
+        "celcomdigi-kuning-20260929"
+      ],
+      "marketName": "Malaysia"
+    }
+  },
+  {
     "id": "snap-du-prepaid-ae-2026-current-profile-20260929",
     "routeId": "du-prepaid-ae-2026",
     "kind": "current-profile",
@@ -1203,6 +1416,58 @@
       "sourceIds": [
         "fareastone-tw-official"
       ]
+    }
+  },
+  {
+    "id": "snap-free-mobile-fr-2026-current-profile-20260929",
+    "routeId": "free-mobile-fr-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "free-mobile-fr-2026",
+      "brandId": "free-mobile-fr",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Free Mobile 2 EUR/mo plan (official fiche-forfait-2-euros). Online signup with SIM delivered to a French address; France practical requirement: French address + SEPA bank/card payment.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": 78,
+        "fxCheckedAt": "2026-09-27",
+        "state": "current-official-sim-fee"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 2,
+        "yearCostOriginal": 24,
+        "yearCostCny": null,
+        "action": "Maintain the ongoing €2/month subscription. This is a recurring mobile plan, not a low-touch prepaid inactivity rule.",
+        "intervalDays": 30,
+        "state": "current-official-subscription"
+      },
+      "chinaActivation": "Not possible — SIM shipped to French address; activation in France.",
+      "kyc": "Offer is reserved to subscribers residing in metropolitan France or able to justify a stable link with metropolitan France.",
+      "payment": "Current subscription payment requirements should be verified during checkout; do not assume foreign payment acceptance.",
+      "wifiCalling": "Supported (Free network).",
+      "roamingSms": "EU roaming; receiving SMS abroad generally free.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current product is verified, but non-resident eligibility is materially constrained and foreign acquisition/payment viability is not established.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
+      "tariffSummary": "2 EUR/mo plan; France-resident gated.",
+      "sourceIds": [
+        "free-2eur-20260929",
+        "free-contract-20260929"
+      ],
+      "marketName": "France"
     }
   },
   {
@@ -1567,6 +1832,58 @@
         "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
         "Do not model the ordinary one-year load rule as a tourist annual keep cost."
       ]
+    }
+  },
+  {
+    "id": "snap-good2go-payg-ca-2026-current-profile-20260929",
+    "routeId": "good2go-payg-ca-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "good2go-payg-ca-2026",
+      "brandId": "good2go-ca",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Good2Go Mobile (formerly Petro-Canada Mobility / Ztar), Rogers network. PAYG vouchers sold at Petro-Canada stations; SIM kits online. Long-standing PAYG tradition: $20 voucher = 180 days validity.",
+      "landedCost": {
+        "currency": "CAD",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": 20,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 30,
+        "landedCny": 159,
+        "fxCheckedAt": "2026-09-27",
+        "state": "community-estimated"
+      },
+      "keep": {
+        "currency": "CAD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Do not rely on the historical $20/180-day top-up rule until current Good2Go terms confirm it.",
+        "intervalDays": null,
+        "state": "historical-mechanic-unverified-current"
+      },
+      "chinaActivation": "Canada activation required; China-first activation unverified.",
+      "kyc": "No ID check for PAYG.",
+      "payment": "Vouchers (cash-friendly) at Petro-Canada; online top-up via good2gomobile.ca.",
+      "wifiCalling": null,
+      "roamingSms": "No roaming on PAYG (Canada-only service historically).",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current provider-controlled PAYG expiry/top-up rule was not located; historical evidence is too stale for admission as a settled mechanic.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://good2gomobile.ca/",
+      "tariffSummary": "PAYG $20/180d voucher tradition (community); needs current re-verification.",
+      "sourceIds": [
+        "good2go-home-20260929",
+        "petro-legacy-expiry-history-20120401"
+      ],
+      "marketName": "Canada"
     }
   },
   {
@@ -2136,6 +2453,61 @@
     }
   },
   {
+    "id": "snap-labas-90-120d-2026-current-profile-20260929",
+    "routeId": "labas-90-120d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "labas-90-120d-2026",
+      "brandId": "labas",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official T&C (effective 2026-04-02): account valid 3 months (90 days) from activation or last top-up ≥ €3. After 90d without top-up: receive-only (calls/SMS in, emergency out). After 4 months (120 days): number blocked, invalid, cancelled, NOT restorable.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 3,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 3,
+        "landedCny": 23,
+        "fxCheckedAt": "2026-09-26",
+        "state": "official-min-topup"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 3,
+        "yearCostOriginal": 12,
+        "yearCostCny": null,
+        "action": "Top up at least €3 every 90 days. After 90 days without a qualifying top-up the line becomes receive-only; after 120 days the number is cancelled and is not restorable.",
+        "intervalDays": 90,
+        "state": "official-confirmed"
+      },
+      "chinaActivation": "LT prepaid registration required (activation within 90 days of purchase).",
+      "kyc": "Registration required (LT).",
+      "payment": "Online top-up.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.labas.lt/",
+      "tariffSummary": "€3/90d; 120d hard cutoff.",
+      "sourceIds": [
+        "labas-rules-20260929",
+        "labas-help-20260929"
+      ],
+      "guideSteps": [
+        "Directory card."
+      ],
+      "marketName": "Lithuania"
+    }
+  },
+  {
     "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
     "routeId": "lebara-uk-direct-esim-china",
     "kind": "capabilities",
@@ -2328,6 +2700,115 @@
         "summary": "Use the Lebara line before temporary barring",
         "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
       }
+    }
+  },
+  {
+    "id": "snap-lmt-karte-60-60d-2026-current-profile-20260929",
+    "routeId": "lmt-karte-60-60d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "lmt-karte-60-60d-2026",
+      "brandId": "lmt-karte",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official (lmt.lv/en): if account not topped up, advance validity 60 days + 60 days for receiving calls/SMS. Keep account funded to continue. Starter mentions '120-day active number'.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 1.5,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 1.5,
+        "landedCny": 12,
+        "fxCheckedAt": "2026-09-26",
+        "state": "official-starter-price"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "If the account is not topped up, LMT states a 60-day advance-validity period followed by 60 days for receiving calls and SMS. Online card refill minimum is €1, but the exact use-by extension created by a €1 refill is not established in the retrieved rules.",
+        "intervalDays": null,
+        "state": "official-lifecycle-cost-unresolved"
+      },
+      "chinaActivation": "LV prepaid registration required.",
+      "kyc": "Registration (LV).",
+      "payment": "Online/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current lifecycle is verified; exact refill-to-validity mapping needed to compute a defensible annual keep cost.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lmt.lv/",
+      "tariffSummary": "60d active + 60d receive-only.",
+      "sourceIds": [
+        "lmt-new-number-20260929",
+        "lmt-useby-20260929",
+        "lmt-refill-card-20260929"
+      ],
+      "guideSteps": [
+        "Directory card."
+      ],
+      "marketName": "Latvia"
+    }
+  },
+  {
+    "id": "snap-lycamobile-uk-keep-number-2026-current-profile-20260929",
+    "routeId": "lycamobile-uk-keep-number-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "lycamobile-uk-keep-number-2026",
+      "brandId": "lycamobile-uk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Free SIM/eSIM from lycamobile.co.uk (UK delivery for physical). O2 network. International-call focused MVNO.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": "2026-09-27",
+        "state": "free-sim-topup-unverified"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 15,
+        "yearCostOriginal": 15,
+        "yearCostCny": null,
+        "action": "Fresh 2026 independent evidence quotes Lyca UK as keeping an unused number for 120 days by default, or up to one year after dialing *139*9999# and paying £15 from balance. Treat the price as corroborated rather than current first-party until the UK FAQ is directly retrievable.",
+        "intervalDays": 365,
+        "state": "current-independent-corroboration"
+      },
+      "chinaActivation": "UK network activation expected; China-first activation unverified. eSIM available per official site.",
+      "kyc": "No ID check for PAYG.",
+      "payment": "UK card; international card acceptance varies (community reports mixed).",
+      "wifiCalling": null,
+      "roamingSms": null,
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Keep-number rule is freshly corroborated but direct current UK provider text was not retrievable; legacy host network corrected from O2 to EE.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lycamobile.co.uk/",
+      "tariffSummary": "£15/yr official keep-number plan (dial *139*9999#), or activity per 120d.",
+      "sourceIds": [
+        "lyca-uk-home-20260929",
+        "lyca-uk-keep-20260424",
+        "lyca-uk-network-20260929"
+      ],
+      "marketName": "United Kingdom"
     }
   },
   {
@@ -3201,6 +3682,62 @@
     }
   },
   {
+    "id": "snap-orange-prepay-ro-ladder-2026-current-profile-20260929",
+    "routeId": "orange-prepay-ro-ladder-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "orange-prepay-ro-ladder-2026",
+      "brandId": "orange-prepay-ro",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official recharge ladder (orange.ro): €1-3 → 15 active days; €5-6 → 30 days; €7-11 → 60 days; higher tiers longer; grace period up to 300 days after active period. After grace expiry, SIM unusable.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 5,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": 39,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "For number retention, current rules give a €5 recharge 30 active days plus 300 grace days. During grace the line can receive calls/SMS but cannot originate normal service; recharge before grace expires to avoid losing the number. Do not equate this receive-only retention path with continuous full activity.",
+        "intervalDays": null,
+        "state": "official-active-grace-ladder"
+      },
+      "chinaActivation": "RO prepaid registration; local acquisition standard.",
+      "kyc": "Registration (RO law).",
+      "payment": "My Orange app card top-up.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming standard; China 验证中.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.orange.ro/prepay/",
+      "tariffSummary": "€5-6 recharge: 30 active days + 300 grace days; €8/12/16 options provide 60 active + 300 grace days. Account caps are 180 active / 360 grace days.",
+      "sourceIds": [
+        "orange-validity-20260929",
+        "orange-active-grace-20260929",
+        "orange-prepay-tariff-202603"
+      ],
+      "guideSteps": [
+        "Directory card."
+      ],
+      "marketName": "Romania"
+    }
+  },
+  {
     "id": "snap-povo20-zero-base-2026-current-profile-20260929",
     "routeId": "povo20-zero-base-2026",
     "kind": "current-profile",
@@ -3315,6 +3852,63 @@
         "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
         "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
       ]
+    }
+  },
+  {
+    "id": "snap-redpocket-annual-2026-current-profile-20260929",
+    "routeId": "redpocket-annual-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "redpocket-annual-2026",
+      "brandId": "redpocket-us",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Official 360-day annual plans from $60 (500MB/mo, $5/mo effective) at redpocket.com/plans/annual; eBay channel sells a $30/360-day unlimited talk+text+200MB/mo plan (still listed Feb 2026). eSIM available on annual plans, all networks (GSMA=AT&T / GSMT=T-Mobile / CDMA=Verizon).",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 80,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 80,
+        "landedCny": 426,
+        "fxCheckedAt": "2026-09-27",
+        "state": "current-official-first-year"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 110,
+        "yearCostOriginal": 110,
+        "yearCostCny": null,
+        "action": "Renew the Essentials annual plan; current official renewal is $110/year after the first-year promotional price.",
+        "intervalDays": 365,
+        "state": "current-official-annual-renewal"
+      },
+      "chinaActivation": "SIM/eSIM activation can only be completed from the United States.",
+      "kyc": "No credit check (prepaid).",
+      "payment": "Plans are sold for purchase in the 50 U.S. states and Washington, D.C.; physical SIM shipping is domestic only.",
+      "wifiCalling": "Officially supported on ALL networks and works with SMS texting; e911 US address required at setup.",
+      "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not published (null).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.redpocket.com/plans/annual",
+      "tariffSummary": "Essentials annual: $80 first year promotion, renews at $110/year; standard annual price label is $120.",
+      "sourceIds": [
+        "redpocket-annual-20260929",
+        "redpocket-esim-activation-20260929",
+        "redpocket-roaming-20260929"
+      ],
+      "guideSteps": [
+        "Directory card: cheapest US annual number, but China-based users cannot activate without US help.",
+        "If you have US access: buy $60 annual (GSMA for roaming option), enable Wi-Fi Calling, renew every 360 days."
+      ],
+      "marketName": "United States"
     }
   },
   {
@@ -4129,6 +4723,62 @@
         "Recharge Saldo before the 365-day inactivity limit if retaining the number.",
         "Verify the target roaming country and OTP service before relying on long-term use."
       ]
+    }
+  },
+  {
+    "id": "snap-telekom-easy-sk-90d-2026-current-profile-20260929",
+    "routeId": "telekom-easy-sk-90d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "data": {
+      "id": "telekom-easy-sk-90d-2026",
+      "brandId": "telekom-easy",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Official wiki: initial credit valid 30 days from SIM activation; SIM valid 90 days from activation. If not topped up within 90 days → service deactivated. After top-up, SIM validity extends (per wiki). Check via *121# or app; free from roaming.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 5,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": 39,
+        "fxCheckedAt": "2026-09-26",
+        "state": "community-reported"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Make the first top-up within 90 days of activation. Each later top-up extends SIM/service and nominal credit validity by 180 days, regardless of top-up amount; exact lowest online top-up denomination is not asserted here.",
+        "intervalDays": 180,
+        "state": "official-confirmed-180-day-post-topup"
+      },
+      "chinaActivation": "SK prepaid no strict real-name law historically; 验证中.",
+      "kyc": "Lighter than EU average (SK); 验证中.",
+      "payment": "Online/local.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming; check balance free from roaming (*121#).",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.telekom.sk/",
+      "tariffSummary": "90-day SIM validity; top-up extends.",
+      "sourceIds": [
+        "telekom-easy-en-20260929",
+        "telekom-credit-validity-20260929",
+        "telekom-topup-20260929"
+      ],
+      "guideSteps": [
+        "Directory card."
+      ],
+      "marketName": "Slovakia"
     }
   },
   {
