@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "cosmote-frog-13mo-2026",
+    "marketId": "gr",
+    "networkId": "cosmote-gr",
+    "brandId": "cosmote-frog",
+    "displayName": "FROG Mobile prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.frogmobile.gr/en/frog-online-sim-card",
+    "sourceIds": [
+      "frog-general-terms-20260929",
+      "frog-online-sim-20260929",
+      "frog-privacy-20260929",
+      "frog-topup-min-20260330"
+    ]
+  },
+  "market": {
+    "id": "gr",
+    "name": "Greece",
+    "countryCode": "GR"
+  },
+  "network": {
+    "id": "cosmote-gr",
+    "name": "COSMOTE / Telekom Greece",
+    "marketId": "gr"
+  },
+  "brand": {
+    "id": "cosmote-frog",
+    "networkId": "cosmote-gr",
+    "name": "FROG Mobile",
+    "marketId": "gr"
+  },
+  "metrics": {
+    "routeId": "cosmote-frog-13mo-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 13,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 13,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "frog-general-terms-20260929",
+      "url": "https://www.frogmobile.gr/en/content/general-terms-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-online-sim-20260929",
+      "url": "https://www.frogmobile.gr/en/frog-online-sim-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-privacy-20260929",
+      "url": "https://www.frogmobile.gr/en/data-privacy-notices",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-topup-min-20260330",
+      "url": "https://www.whatsup.gr/api/strapi/uploads/allages_kartokinitis27022026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-03-30"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
+      "routeId": "cosmote-frog-13mo-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current official FROG terms retain the number for up to 13 months from activation/last balance renewal, while the current electronic minimum top-up for FROG is EUR13; the legacy EUR10 keep-alive estimate is withdrawn.",
+      "sourceId": "frog-general-terms-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-cosmote-frog-13mo-2026-current-profile-20260929",
+      "routeId": "cosmote-frog-13mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4-reviewed-2026-09-29",
+      "data": {
+        "id": "cosmote-frog-13mo-2026",
+        "brandId": "cosmote-frog",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "FROG supports online SIM ordering. A current 2026 operator notice states FROG's minimum electronic top-up remains EUR13; exact standalone SIM-kit pricing is not separately established here.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 13,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 13,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-min-online-topup"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 13,
+          "yearCostOriginal": 13,
+          "yearCostCny": null,
+          "action": "Renew the monetary balance with at least the current EUR13 electronic minimum before the 13-month line-renewal deadline; use a conservative annual reminder rather than relying on the final month. Balance-expiry/service-interruption timing is a separate rule and does not reduce the number-retention cost.",
+          "intervalDays": 365,
+          "state": "current-provider-official-13-month-number-window-conservative"
+        },
+        "chinaActivation": "Remote/China-first activation is not established by the current provider material.",
+        "kyc": "Online order/registration collects subscriber identity-document and personal details; treat valid identity verification as required.",
+        "payment": "Electronic top-up is supported; current FROG electronic minimum is EUR13. Foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming exists; China incoming-SMS/OTP behavior is not verified.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.frogmobile.gr/en/frog-online-sim-card",
+        "tariffSummary": "Current FROG electronic top-up minimum EUR13; number renewable within 13 months of the last balance renewal.",
+        "sourceIds": [
+          "frog-general-terms-20260929",
+          "frog-topup-min-20260330",
+          "frog-online-sim-20260929",
+          "frog-privacy-20260929"
+        ],
+        "guideSteps": [
+          "Order/register the FROG SIM or eSIM with valid identity details.",
+          "Use a normal electronic top-up of at least EUR13 before the 13-month number-renewal deadline.",
+          "Do not confuse balance-expiry/service-interruption timing with final number deactivation."
+        ]
+      }
+    }
+  ]
+}

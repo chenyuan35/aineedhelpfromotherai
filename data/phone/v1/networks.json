@@ -70,6 +70,11 @@
     "marketId": "hk"
   },
   {
+    "id": "cosmote-gr",
+    "name": "COSMOTE / Telekom Greece",
+    "marketId": "gr"
+  },
+  {
     "id": "csl-hk",
     "name": "csl (HKT)",
     "marketId": "hk"
@@ -165,6 +170,11 @@
     "marketId": "gb"
   },
   {
+    "id": "optus-au",
+    "name": "Optus Australia",
+    "marketId": "au"
+  },
+  {
     "id": "orange-fr",
     "name": "Orange France",
     "marketId": "fr"
@@ -203,6 +213,11 @@
     "id": "safaricom-ke",
     "name": "Safaricom KE",
     "marketId": "ke"
+  },
+  {
+    "id": "sfr-fr",
+    "name": "SFR France",
+    "marketId": "fr"
   },
   {
     "id": "singtel-sg",

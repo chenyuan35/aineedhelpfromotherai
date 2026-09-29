@@ -72,6 +72,15 @@
     "sourceId": "claro-prepaid-plan-legacy-2026-09-26"
   },
   {
+    "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
+    "routeId": "cosmote-frog-13mo-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current official FROG terms retain the number for up to 13 months from activation/last balance renewal, while the current electronic minimum top-up for FROG is EUR13; the legacy EUR10 keep-alive estimate is withdrawn.",
+    "sourceId": "frog-general-terms-20260929"
+  },
+  {
     "id": "evt-dialog-lk-365d-2026-db-c2-review-20260929",
     "routeId": "dialog-lk-365d-2026",
     "type": "retention-cost-correction",
@@ -180,6 +189,15 @@
     "sourceId": "labas-rules-20260929"
   },
   {
+    "id": "evt-lebara-fr-2026-db-c4-review-20260929",
+    "routeId": "lebara-fr-2026",
+    "type": "network-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Lebara France currently runs on SFR. Top-ups from EUR5 are described as valid for 90 days, but contract summaries separately permit termination after 90 consecutive days without service use; the legacy EUR15/90-day top-up-only retention claim is withdrawn.",
+    "sourceId": "lebara-fr-legal-use-20260929"
+  },
+  {
     "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
     "routeId": "lebara-uk-direct-esim-china",
     "type": "outgoing-service-friction",
@@ -241,6 +259,15 @@
     "scope": "route",
     "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
     "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+  },
+  {
+    "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",
+    "routeId": "optus-flex-plus-au-2026",
+    "type": "cost-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy A$59/186-day and A$180/365-day retention economics are stale. Current official long-expiry options are A$180/186 days and A$350/365 days, while Optus states the 365-day A$350 price rises to A$395 on 2026-09-30.",
+    "sourceId": "optus-prepaidplans-20260929"
   },
   {
     "id": "evt-orange-prepay-ro-ladder-2026-db-c3-review-20260929",

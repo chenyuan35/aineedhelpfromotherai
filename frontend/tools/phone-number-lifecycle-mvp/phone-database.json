@@ -91,6 +91,11 @@
       "countryCode": null
     },
     {
+      "id": "gr",
+      "name": "Greece",
+      "countryCode": "GR"
+    },
+    {
       "id": "hk",
       "name": "Hong Kong",
       "countryCode": "HK"
@@ -333,6 +338,11 @@
       "marketId": "hk"
     },
     {
+      "id": "cosmote-gr",
+      "name": "COSMOTE / Telekom Greece",
+      "marketId": "gr"
+    },
+    {
       "id": "csl-hk",
       "name": "csl (HKT)",
       "marketId": "hk"
@@ -428,6 +438,11 @@
       "marketId": "gb"
     },
     {
+      "id": "optus-au",
+      "name": "Optus Australia",
+      "marketId": "au"
+    },
+    {
       "id": "orange-fr",
       "name": "Orange France",
       "marketId": "fr"
@@ -466,6 +481,11 @@
       "id": "safaricom-ke",
       "name": "Safaricom KE",
       "marketId": "ke"
+    },
+    {
+      "id": "sfr-fr",
+      "name": "SFR France",
+      "marketId": "fr"
     },
     {
       "id": "singtel-sg",
@@ -708,6 +728,12 @@
       "name": "CMHK (China Mobile HK)"
     },
     {
+      "id": "cosmote-frog",
+      "networkId": "cosmote-gr",
+      "name": "FROG Mobile",
+      "marketId": "gr"
+    },
+    {
       "id": "dialog-prepaid",
       "networkId": "dialog-lk",
       "name": "Dialog Prepaid",
@@ -816,6 +842,12 @@
       "marketId": "lt"
     },
     {
+      "id": "lebara-fr",
+      "networkId": "sfr-fr",
+      "name": "Lebara France",
+      "marketId": "fr"
+    },
+    {
       "id": "lebara-uk",
       "networkId": "vodafone-uk",
       "name": "Lebara UK",
@@ -874,6 +906,12 @@
       "networkId": "o2-uk",
       "name": "O2 Classic PAYG",
       "marketId": "gb"
+    },
+    {
+      "id": "optus-au-direct",
+      "networkId": "optus-au",
+      "name": "Optus Prepaid",
+      "marketId": "au"
     },
     {
       "id": "orange-mobicarte",
@@ -1461,6 +1499,26 @@
       ]
     },
     {
+      "id": "cosmote-frog-13mo-2026",
+      "marketId": "gr",
+      "networkId": "cosmote-gr",
+      "brandId": "cosmote-frog",
+      "displayName": "FROG Mobile prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.frogmobile.gr/en/frog-online-sim-card",
+      "sourceIds": [
+        "frog-general-terms-20260929",
+        "frog-online-sim-20260929",
+        "frog-privacy-20260929",
+        "frog-topup-min-20260330"
+      ]
+    },
+    {
       "id": "dialog-lk-365d-2026",
       "marketId": "lk",
       "networkId": "dialog-lk",
@@ -1809,6 +1867,27 @@
       ]
     },
     {
+      "id": "lebara-fr-2026",
+      "marketId": "fr",
+      "networkId": "sfr-fr",
+      "brandId": "lebara-fr",
+      "displayName": "Lebara France prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lebara.fr/fr/prepaye.html",
+      "sourceIds": [
+        "lebara-fr-legal-use-20260929",
+        "lebara-fr-network-20260929",
+        "lebara-fr-prepaid-20260929",
+        "lebara-fr-recharge-20260706",
+        "lebara-fr-registration-20260929"
+      ]
+    },
+    {
       "id": "lebara-uk-direct-esim-china",
       "marketId": "gb",
       "networkId": "vodafone-uk",
@@ -2035,6 +2114,25 @@
       "sourceIds": [
         "community-o2-inactivity-criteria-2024",
         "official-o2-classic-payg-help-2026-09-28"
+      ]
+    },
+    {
+      "id": "optus-flex-plus-au-2026",
+      "marketId": "au",
+      "networkId": "optus-au",
+      "brandId": "optus-au-direct",
+      "displayName": "Optus Flex Plus long-expiry prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM-or-physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://optus.com.au/prepaidplans",
+      "sourceIds": [
+        "optus-activate-20260929",
+        "optus-longexpiry-20260818",
+        "optus-prepaidplans-20260929"
       ]
     },
     {
@@ -3056,6 +3154,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "frog-general-terms-20260929",
+      "url": "https://www.frogmobile.gr/en/content/general-terms-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-online-sim-20260929",
+      "url": "https://www.frogmobile.gr/en/frog-online-sim-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-privacy-20260929",
+      "url": "https://www.frogmobile.gr/en/data-privacy-notices",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "frog-topup-min-20260330",
+      "url": "https://www.whatsup.gr/api/strapi/uploads/allages_kartokinitis27022026.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-03-30"
+    },
+    {
       "id": "giffgaff-official-credit-2026-09-23",
       "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
       "type": "provider-commercial-page",
@@ -3106,6 +3228,36 @@
     {
       "id": "labas-rules-20260929",
       "url": "https://www.labas.lt/en/service-rules",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lebara-fr-legal-use-20260929",
+      "url": "https://www.lebara.fr/content/dam/lebara/markets/fr/legal-files/terms-and-conditions/clients-existants/sfr/december24/Recapitulatif%20contractuel%20Forfait%20mensuel%20Lebara%20clients%20existants%202H%20201224.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lebara-fr-network-20260929",
+      "url": "https://www.lebara.fr/fr/faq/utiliser-les-services-internet/internet-4g.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lebara-fr-prepaid-20260929",
+      "url": "https://www.lebara.fr/fr/prepaye.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "lebara-fr-recharge-20260706",
+      "url": "https://www.lebara.fr/fr/blog/recharge-mobile.html",
+      "type": "provider-official",
+      "reportedAt": "2026-07-06"
+    },
+    {
+      "id": "lebara-fr-registration-20260929",
+      "url": "https://www.lebara.fr/fr/enregistrement.html",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
@@ -4178,6 +4330,24 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "optus-activate-20260929",
+      "url": "https://www.optus.com.au/prepaid/activate",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "optus-longexpiry-20260818",
+      "url": "https://optus.com.au/connected/tech/long-expiry-prepaid-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "optus-prepaidplans-20260929",
+      "url": "https://optus.com.au/prepaidplans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "orange-active-grace-20260929",
       "url": "https://www.orange.ro/help/perioada-de-activitate-si-de-gratie-47",
       "type": "provider-official",
@@ -4756,6 +4926,15 @@
       "sourceId": "claro-prepaid-plan-legacy-2026-09-26"
     },
     {
+      "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
+      "routeId": "cosmote-frog-13mo-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current official FROG terms retain the number for up to 13 months from activation/last balance renewal, while the current electronic minimum top-up for FROG is EUR13; the legacy EUR10 keep-alive estimate is withdrawn.",
+      "sourceId": "frog-general-terms-20260929"
+    },
+    {
       "id": "evt-dialog-lk-365d-2026-db-c2-review-20260929",
       "routeId": "dialog-lk-365d-2026",
       "type": "retention-cost-correction",
@@ -4864,6 +5043,15 @@
       "sourceId": "labas-rules-20260929"
     },
     {
+      "id": "evt-lebara-fr-2026-db-c4-review-20260929",
+      "routeId": "lebara-fr-2026",
+      "type": "network-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Lebara France currently runs on SFR. Top-ups from EUR5 are described as valid for 90 days, but contract summaries separately permit termination after 90 consecutive days without service use; the legacy EUR15/90-day top-up-only retention claim is withdrawn.",
+      "sourceId": "lebara-fr-legal-use-20260929"
+    },
+    {
       "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
       "routeId": "lebara-uk-direct-esim-china",
       "type": "outgoing-service-friction",
@@ -4925,6 +5113,15 @@
       "scope": "route",
       "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
       "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+    },
+    {
+      "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy A$59/186-day and A$180/365-day retention economics are stale. Current official long-expiry options are A$180/186 days and A$350/365 days, while Optus states the 365-day A$350 price rises to A$395 on 2026-09-30.",
+      "sourceId": "optus-prepaidplans-20260929"
     },
     {
       "id": "evt-orange-prepay-ro-ladder-2026-db-c3-review-20260929",
@@ -6135,6 +6332,64 @@
         "sourceIds": [
           "cmhk-mysim-hk-official",
           "cmhk-mysim-hk-community"
+        ]
+      }
+    },
+    {
+      "id": "snap-cosmote-frog-13mo-2026-current-profile-20260929",
+      "routeId": "cosmote-frog-13mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4-reviewed-2026-09-29",
+      "data": {
+        "id": "cosmote-frog-13mo-2026",
+        "brandId": "cosmote-frog",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "FROG supports online SIM ordering. A current 2026 operator notice states FROG's minimum electronic top-up remains EUR13; exact standalone SIM-kit pricing is not separately established here.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 13,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 13,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-min-online-topup"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 13,
+          "yearCostOriginal": 13,
+          "yearCostCny": null,
+          "action": "Renew the monetary balance with at least the current EUR13 electronic minimum before the 13-month line-renewal deadline; use a conservative annual reminder rather than relying on the final month. Balance-expiry/service-interruption timing is a separate rule and does not reduce the number-retention cost.",
+          "intervalDays": 365,
+          "state": "current-provider-official-13-month-number-window-conservative"
+        },
+        "chinaActivation": "Remote/China-first activation is not established by the current provider material.",
+        "kyc": "Online order/registration collects subscriber identity-document and personal details; treat valid identity verification as required.",
+        "payment": "Electronic top-up is supported; current FROG electronic minimum is EUR13. Foreign-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "EU roaming exists; China incoming-SMS/OTP behavior is not verified.",
+        "refund": "not reconciled",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.frogmobile.gr/en/frog-online-sim-card",
+        "tariffSummary": "Current FROG electronic top-up minimum EUR13; number renewable within 13 months of the last balance renewal.",
+        "sourceIds": [
+          "frog-general-terms-20260929",
+          "frog-topup-min-20260330",
+          "frog-online-sim-20260929",
+          "frog-privacy-20260929"
+        ],
+        "guideSteps": [
+          "Order/register the FROG SIM or eSIM with valid identity details.",
+          "Use a normal electronic top-up of at least EUR13 before the 13-month number-renewal deadline.",
+          "Do not confuse balance-expiry/service-interruption timing with final number deactivation."
         ]
       }
     },
@@ -7554,6 +7809,60 @@
       }
     },
     {
+      "id": "snap-lebara-fr-2026-current-profile-20260929",
+      "routeId": "lebara-fr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4-reviewed-2026-09-29",
+      "data": {
+        "id": "lebara-fr-2026",
+        "brandId": "lebara-fr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Lebara France currently offers free physical SIM delivery and free eSIM with eligible prepaid purchase. Recharge values start at EUR5. Legal SIM registration requires a valid identity document within 5 days of first use.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 5,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-free-sim-plus-min-recharge"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not rely on recharge validity alone. Lebara says recharges from EUR5 are valid 90 days, while current contract summaries state that 90 consecutive days without use of the service can terminate the contract. A qualifying recurring-use action and its minimum sustainable cost remain unresolved.",
+          "intervalDays": 90,
+          "state": "provider-rule-conflict-recharge-validity-vs-service-use"
+        },
+        "chinaActivation": "Physical/eSIM ordering is documented, but China-first activation and long-term overseas-only use are not established.",
+        "kyc": "Legal registration requires a valid identity document; Lebara says registration should be completed within 5 days after first use.",
+        "payment": "MyLebara supports bank card and PayPal for recharge; foreign-card acceptance is not separately guaranteed.",
+        "wifiCalling": null,
+        "roamingSms": "Travel passes and roaming are supported, but China incoming-SMS/OTP reliability is not established.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Current contract language ties termination to 90 days without service use; top-up validity does not by itself prove a keep-number action, so minimum retention cost is unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.lebara.fr/fr/prepaye.html",
+        "tariffSummary": "SFR network; top-ups from EUR5 valid 90 days; separate 90-day no-service-use termination rule requires reconciliation.",
+        "sourceIds": [
+          "lebara-fr-recharge-20260706",
+          "lebara-fr-legal-use-20260929",
+          "lebara-fr-registration-20260929",
+          "lebara-fr-network-20260929",
+          "lebara-fr-prepaid-20260929"
+        ]
+      }
+    },
+    {
       "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
       "routeId": "lebara-uk-direct-esim-china",
       "kind": "capabilities",
@@ -8610,6 +8919,58 @@
           "Do not buy or recommend this as a current new-user route; O2 marks Classic as an older legacy tariff and says non-holders cannot switch to it."
         ],
         "avoidRoute": true
+      }
+    },
+    {
+      "id": "snap-optus-flex-plus-au-2026-current-profile-20260929",
+      "routeId": "optus-flex-plus-au-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4-reviewed-2026-09-29",
+      "data": {
+        "id": "optus-flex-plus-au-2026",
+        "brandId": "optus-au-direct",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Optus currently sells Flex Plus SIM/eSIM online. On 2026-09-29 the 365-day starter is advertised at A$199 for new services, then A$350; Optus says the A$350 price becomes A$395 from 2026-09-30.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 199,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 199,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-sale-ends-2026-09-29"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 350,
+          "yearCostOriginal": 350,
+          "yearCostCny": null,
+          "action": "Current official long-expiry choices are A$180 for 186 days or A$350 for 365 days. The 365-day price is scheduled to become A$395 from 2026-09-30, so reverify before relying on a settled annual retention cost.",
+          "intervalDays": 365,
+          "state": "scheduled-price-change-2026-09-30"
+        },
+        "chinaActivation": "Optus offers eSIM and physical SIM, but activation requires a valid form of ID; remote/China-first completion is not established here.",
+        "kyc": "A valid form of ID is required for Optus prepaid activation.",
+        "payment": "Credit or debit card is required for online activation; broader foreign-card acceptance is not reconciled.",
+        "wifiCalling": "supported on compatible Optus services/devices; route-specific overseas behavior unverified",
+        "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+        "refund": "not reconciled",
+        "trend": "scheduled-price-change-2026-09-30",
+        "guideEligible": false,
+        "holdReason": "Optus has a provider-announced price change effective 2026-09-30; exact post-change long-expiry retention economics must be reverified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://optus.com.au/prepaidplans",
+        "tariffSummary": "As of 2026-09-29: A$180/186d or A$350/365d; 365-day price scheduled to A$395 from 2026-09-30.",
+        "sourceIds": [
+          "optus-prepaidplans-20260929",
+          "optus-activate-20260929",
+          "optus-longexpiry-20260818"
+        ]
       }
     },
     {
@@ -12099,6 +12460,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "cosmote-frog-13mo-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 13,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 13,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "dialog-lk-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -12315,6 +12688,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "lebara-fr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -12457,6 +12842,18 @@
       "keepYearCostOriginal": 0.04,
       "keepYearCostCny": 0.4,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "optus-flex-plus-au-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AUD",
+      "acquisitionCostOriginal": 199,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AUD",
+      "keepYearCostOriginal": 350,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "orange-mobicarte-2026",

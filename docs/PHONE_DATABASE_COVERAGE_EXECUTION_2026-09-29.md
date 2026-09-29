@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C3
+## Current verified state after DB-C4A
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **89 routes / 51 markets / 293 sources**;
-- comparison↔canonical route-ID overlap: **78**;
-- comparison routes still legacy-only: **57**;
+- canonical normalized database: **92 routes / 52 markets / 305 sources**;
+- comparison↔canonical route-ID overlap: **81**;
+- comparison routes still legacy-only: **54**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -108,4 +108,14 @@ Material corrections include ASDA activity-vs-credit-expiry separation; Lyca UK'
 
 Release: PR #305 squash-merged as `82299c03500f029db1fb6241fbaaf4d5bcbcb3f0`; Eval Gate #949, Vercel Preview/production and live publication-boundary verification passed.
 
-DB-C4 is now active with 12 next distinct low-cost/decision-useful legacy-only routes listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
+## DB-C4A — completed 2026-09-29
+
+The first three DB-C4 candidates were independently reviewed as the required sample audit and normalized through approved backstage packets. Final DB-C4A disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `cosmote-frog-13mo-2026` — ADMIT-BACKSTAGE. Current provider evidence keeps the 13-month number-renewal window, while the current FROG electronic top-up minimum is EUR13; the old EUR10 estimate is withdrawn.
+- `optus-flex-plus-au-2026` — HOLD. Current long-expiry prices are A$180/186 days and A$350/365 days, and Optus has a provider-announced 2026-09-30 price change; the old A$59/A$180 ladder is stale.
+- `lebara-fr-2026` — HOLD. Lebara France now uses SFR. Current provider material separates 90-day recharge validity from a 90-consecutive-day no-service-use termination rule, so the legacy top-up-only retention cost is not treated as proven.
+
+Post-DB-C4A state: **92 canonical routes / 52 markets / 89 brands / 70 networks / 305 sources / 81 comparison-overlap route IDs / 54 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks and the frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages**.
+
+DB-C4 remains active with the remaining nine candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
