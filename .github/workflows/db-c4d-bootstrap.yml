@@ -1,0 +1,31 @@
+name: DB-C4D branch bootstrap
+
+on:
+  push:
+    branches:
+      - phone/db-c4d-elisa-cyta-hotmobile-20260929
+    paths:
+      - '.bootstrap/**'
+      - '.github/workflows/db-c4d-bootstrap.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - name: Reconstruct and apply reviewed DB-C4D patch
+        shell: bash
+        run: |
+          cat .bootstrap/db-c4d.b64part.* | tr -d '\n' | base64 -d | gzip -d > /tmp/db-c4d.patch
+          git apply --check /tmp/db-c4d.patch
+          git apply --index /tmp/db-c4d.patch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Phone DB-C4D: normalize Elisa Cyta and HOT Mobile"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
