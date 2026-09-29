@@ -209,6 +209,25 @@
     ]
   },
   {
+    "id": "bhtelecom-ba-2026",
+    "marketId": "ba",
+    "networkId": "bhtelecom-ba",
+    "brandId": "bhtelecom-prepaid",
+    "displayName": "BH Telecom Ultra Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://mojwebshop.bhtelecom.ba/",
+    "sourceIds": [
+      "bh-ultra-esim-20260930",
+      "bh-ultra-topup-20260930",
+      "bh-ultra-tourist-20260930"
+    ]
+  },
+  {
     "id": "calendar-rakuten-prepaid-jp-2026",
     "marketId": "jp",
     "networkId": "rakuten-mobile-jp",
@@ -1077,6 +1096,26 @@
     ]
   },
   {
+    "id": "one-me-2026",
+    "marketId": "me",
+    "networkId": "one-me",
+    "brandId": "one-me-tourist",
+    "displayName": "One Montenegro Tourist",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://1.me/cg/for-tourists",
+    "sourceIds": [
+      "one-me-privacy-20260930",
+      "one-me-roaming-20260930",
+      "one-me-tourist-20260930",
+      "one-me-webshop-terms-20260930"
+    ]
+  },
+  {
     "id": "optus-flex-plus-au-2026",
     "marketId": "au",
     "networkId": "optus-au",
@@ -1923,6 +1962,27 @@
       "linuxdo-voxi-2737575",
       "nodeloc-voxi-102713",
       "voxi-official-plans-2026-09-23"
+    ]
+  },
+  {
+    "id": "yettel-prepaid-bg-2026",
+    "marketId": "bg",
+    "networkId": "yettel-bg",
+    "brandId": "yettel-prepaid",
+    "displayName": "Yettel Prepaid Bulgaria",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+    "sourceIds": [
+      "yettel-bg-esim-20260930",
+      "yettel-bg-online-topup-20260930",
+      "yettel-bg-register-20260930",
+      "yettel-bg-roaming-sms-20260930",
+      "yettel-bg-validity-20260930"
     ]
   },
   {

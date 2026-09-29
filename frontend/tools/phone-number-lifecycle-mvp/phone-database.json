@@ -21,6 +21,11 @@
       "countryCode": "AU"
     },
     {
+      "id": "ba",
+      "name": "Bosnia and Herzegovina",
+      "countryCode": "BA"
+    },
+    {
       "id": "bd",
       "name": "Bangladesh",
       "countryCode": "BD"
@@ -29,6 +34,11 @@
       "id": "be",
       "name": "Belgium",
       "countryCode": "BE"
+    },
+    {
+      "id": "bg",
+      "name": "Bulgaria",
+      "countryCode": "BG"
     },
     {
       "id": "br",
@@ -181,6 +191,11 @@
       "countryCode": "LV"
     },
     {
+      "id": "me",
+      "name": "Montenegro",
+      "countryCode": "ME"
+    },
+    {
       "id": "mx",
       "name": "Mexico",
       "countryCode": "MX"
@@ -326,6 +341,11 @@
       "id": "beeline-kz",
       "name": "Beeline Kazakhstan",
       "marketId": "kz"
+    },
+    {
+      "id": "bhtelecom-ba",
+      "name": "BH Telecom BA",
+      "marketId": "ba"
     },
     {
       "id": "bite-lt",
@@ -486,6 +506,11 @@
       "id": "o2-uk",
       "name": "O2 UK",
       "marketId": "gb"
+    },
+    {
+      "id": "one-me",
+      "name": "One Montenegro",
+      "marketId": "me"
     },
     {
       "id": "optus-au",
@@ -673,6 +698,11 @@
       "marketId": "gb"
     },
     {
+      "id": "yettel-bg",
+      "name": "Yettel BG",
+      "marketId": "bg"
+    },
+    {
       "id": "yettel-rs",
       "name": "Yettel Serbia",
       "marketId": "rs"
@@ -744,6 +774,12 @@
       "networkId": "beeline-kz",
       "name": "Beeline KZ Prepaid",
       "marketId": "kz"
+    },
+    {
+      "id": "bhtelecom-prepaid",
+      "networkId": "bhtelecom-ba",
+      "name": "BH Telecom Prepaid",
+      "marketId": "ba"
     },
     {
       "id": "calendar-world-jp",
@@ -1004,6 +1040,12 @@
       "marketId": "gb"
     },
     {
+      "id": "one-me-tourist",
+      "networkId": "one-me",
+      "name": "One ME Tourist",
+      "marketId": "me"
+    },
+    {
       "id": "optus-au-direct",
       "networkId": "optus-au",
       "name": "Optus Prepaid",
@@ -1262,6 +1304,12 @@
       "marketId": "gb"
     },
     {
+      "id": "yettel-prepaid",
+      "networkId": "yettel-bg",
+      "name": "Yettel Prepaid",
+      "marketId": "bg"
+    },
+    {
       "id": "yettel-rs-prepaid",
       "networkId": "yettel-rs",
       "name": "Yettel Serbia Prepaid",
@@ -1476,6 +1524,25 @@
         "official-beeline-kz-registration-2026-09-29",
         "official-beeline-kz-sim-safe-2026-09-29",
         "travelask-beeline-sim-safe-incident-2026-09"
+      ]
+    },
+    {
+      "id": "bhtelecom-ba-2026",
+      "marketId": "ba",
+      "networkId": "bhtelecom-ba",
+      "brandId": "bhtelecom-prepaid",
+      "displayName": "BH Telecom Ultra Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://mojwebshop.bhtelecom.ba/",
+      "sourceIds": [
+        "bh-ultra-esim-20260930",
+        "bh-ultra-topup-20260930",
+        "bh-ultra-tourist-20260930"
       ]
     },
     {
@@ -2347,6 +2414,26 @@
       ]
     },
     {
+      "id": "one-me-2026",
+      "marketId": "me",
+      "networkId": "one-me",
+      "brandId": "one-me-tourist",
+      "displayName": "One Montenegro Tourist",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://1.me/cg/for-tourists",
+      "sourceIds": [
+        "one-me-privacy-20260930",
+        "one-me-roaming-20260930",
+        "one-me-tourist-20260930",
+        "one-me-webshop-terms-20260930"
+      ]
+    },
+    {
       "id": "optus-flex-plus-au-2026",
       "marketId": "au",
       "networkId": "optus-au",
@@ -3196,6 +3283,27 @@
       ]
     },
     {
+      "id": "yettel-prepaid-bg-2026",
+      "marketId": "bg",
+      "networkId": "yettel-bg",
+      "brandId": "yettel-prepaid",
+      "displayName": "Yettel Prepaid Bulgaria",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+      "sourceIds": [
+        "yettel-bg-esim-20260930",
+        "yettel-bg-online-topup-20260930",
+        "yettel-bg-register-20260930",
+        "yettel-bg-roaming-sms-20260930",
+        "yettel-bg-validity-20260930"
+      ]
+    },
+    {
       "id": "yettel-rs-2026",
       "marketId": "rs",
       "networkId": "yettel-rs",
@@ -3235,6 +3343,24 @@
       "url": "https://mobile.asda.com/pdf/Asda-Mobile-Terms-and-Conditions.pdf",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "bh-ultra-esim-20260930",
+      "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/ViewProduct-Start?SKU=908992",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "bh-ultra-topup-20260930",
+      "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/AktivacijaDigitalnogServisa-Start?AKTIVACIJA=A&SKU=dopuneultrakredita",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "bh-ultra-tourist-20260930",
+      "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/AktivacijaDigitalnogServisa-Start?SKU=utratourist1webrdvneng",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
     },
     {
       "id": "calendar-extension-20260929",
@@ -4725,6 +4851,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "one-me-privacy-20260930",
+      "url": "https://1.me/cg/o-kompaniji/terms-and-conditions/customer-data-privacy/how-we-process-personal-data",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "one-me-roaming-20260930",
+      "url": "https://1.me/cg/o-kompaniji/o-nama/uslovi-koriscenja/roming-uslovi-koriscenja",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "one-me-tourist-20260930",
+      "url": "https://1.me/cg/for-tourists",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "one-me-webshop-terms-20260930",
+      "url": "https://1.me/cg/privatni/ponuda/mobilni-uredjaji/webshop-terms-and-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
       "id": "optus-activate-20260929",
       "url": "https://www.optus.com.au/prepaid/activate",
       "type": "provider-official",
@@ -5221,6 +5371,36 @@
       "url": "https://www.voxi.co.uk/acquisition/plans",
       "type": "provider-commercial-page",
       "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "yettel-bg-esim-20260930",
+      "url": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-online-topup-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/onlayn-zarezhdane-na-predplaten-plan-s-kreditna-debitna-karta",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-register-20260930",
+      "url": "https://www.yettel.bg/bg/news/registraciya-na-predplatena-karta-veche-mozhesh-i-v-prilozhenieto-yettel",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-roaming-sms-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/sobscheniya-i-informaciya/sms",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "yettel-bg-validity-20260930",
+      "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/prezarezhdane-s-vaucheri",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
     }
   ],
   "observations": [
@@ -5340,6 +5520,15 @@
       "scope": "multiple-community-reports",
       "outcome": "Users reported SIM in Safe disappearing from the app and remote re-activation failing after technical changes; support reportedly confirmed the service could still be attached even when not visible. Treat remote enablement/status visibility as a live operational risk.",
       "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
+    },
+    {
+      "id": "evt-bhtelecom-ba-2026-db-c5-20260930",
+      "routeId": "bhtelecom-ba-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current BH Telecom webshop material establishes the Ultra top-up validity ladder and a 150-day post-credit number-retention/recovery period; visitor eSIM products and foreign-issued-card top-ups are current.",
+      "sourceId": "bh-ultra-topup-20260930"
     },
     {
       "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
@@ -5639,6 +5828,15 @@
       "sourceId": "official-o2cz-prepaid-current-2026-09-29"
     },
     {
+      "id": "evt-one-me-2026-db-c5-20260930",
+      "routeId": "one-me-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current provider pages establish a 90-day active window, EUR2 online top-up floor and an extended tourist-eSIM recharge grace period, while roaming terms explicitly exclude Tourist Package users from roaming outside Montenegro.",
+      "sourceId": "one-me-tourist-20260930"
+    },
+    {
       "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",
       "routeId": "optus-flex-plus-au-2026",
       "type": "cost-and-lifecycle-correction",
@@ -5781,6 +5979,15 @@
       "scope": "route",
       "outcome": "The legacy route ID/brand refers to Vodafone TUTI. The current provider surface is One Hungary and the active product is Tuti Feltöltőkártya. Preserve the legacy ID for comparison continuity but use the current One/Tuti product identity.",
       "sourceId": "official-one-tuti-current-2026-09-29"
+    },
+    {
+      "id": "evt-yettel-prepaid-bg-2026-db-c5-20260930",
+      "routeId": "yettel-prepaid-bg-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current Yettel material resolves SIM validity and online top-up, but the available digital-registration instructions document selfie plus ID-card capture rather than a verified foreign-passport path.",
+      "sourceId": "yettel-bg-validity-20260930"
     },
     {
       "id": "evt-yettel-rs-transfer-topup-does-not-extend-20260929",
@@ -6496,6 +6703,63 @@
           "Acquire/register a Beeline Kazakhstan number under current rules.",
           "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
           "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
+        ]
+      }
+    },
+    {
+      "id": "snap-bhtelecom-ba-2026-current-profile-20260930",
+      "routeId": "bhtelecom-ba-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c5-reviewed-2026-09-30",
+      "data": {
+        "id": "bhtelecom-ba-2026",
+        "brandId": "bhtelecom-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "BH Telecom Ultra prepaid is available as physical SIM and eSIM; current Ultra Tourist eSIM products are explicitly marketed to visitors.",
+        "landedCost": {
+          "currency": "BAM",
+          "providerOrCommunityPrice": 16.7,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 16.7,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "provider-current-esim-starter"
+        },
+        "keep": {
+          "currency": "BAM",
+          "observedActionCost": 20,
+          "yearCostOriginal": 40,
+          "yearCostCny": null,
+          "action": "A BAM20 top-up gives 180 days of credit validity. After credit expiry the Ultra number has a 150-day retention/recovery period before permanent loss; treat that period as recovery rather than the normal maintenance target.",
+          "intervalDays": 180,
+          "state": "current-provider-lifecycle"
+        },
+        "chinaActivation": "Tourist eSIM acquisition is aimed at visitors, but mainland-China activation and China-specific OTP behavior remain unverified.",
+        "kyc": "BH Telecom documents registration at sales points using identity documents including a passport; exact remote eSIM identity flow for foreign buyers remains partly dependent on the purchase path.",
+        "payment": "BH Telecom webshop top-up accepts bank cards issued in Bosnia and abroad; webshop minimum top-up is BAM2.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Ultra supports roaming generally; China-specific incoming SMS/OTP behavior is unverified.",
+        "refund": "not reconciled",
+        "trend": "current-provider-retention-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://mojwebshop.bhtelecom.ba/",
+        "tariffSummary": "BAM20 top-up gives 180 days credit validity; a further 150-day number-retention/recovery window follows credit expiry.",
+        "sourceIds": [
+          "bh-ultra-topup-20260930",
+          "bh-ultra-esim-20260930",
+          "bh-ultra-tourist-20260930"
+        ],
+        "guideSteps": [
+          "Acquire an Ultra/Ultra Tourist SIM or eSIM.",
+          "Use BAM20 top-up for a 180-day credit-validity tier.",
+          "Treat the following 150-day period as recovery rather than the routine maintenance target."
         ]
       }
     },
@@ -9817,6 +10081,57 @@
       }
     },
     {
+      "id": "snap-one-me-2026-current-profile-20260930",
+      "routeId": "one-me-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c5-reviewed-2026-09-30",
+      "data": {
+        "id": "one-me-2026",
+        "brandId": "one-me-tourist",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "One Montenegro sells tourist prepaid SIM/eSIM products. Prepaid registration uses personal identity data including an ID card or passport number.",
+        "landedCost": {
+          "currency": "EUR",
+          "state": "starter-price-varies"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 2,
+          "yearCostOriginal": 8,
+          "yearCostCny": null,
+          "action": "Online top-up minimum is EUR2. Maintain active status by topping up within each 90-day window; the tourist eSIM has a longer post-active recharge grace period before final deactivation.",
+          "intervalDays": 90,
+          "state": "current-provider-90d"
+        },
+        "chinaActivation": "Tourist eSIM can be purchased for visitors, but One roaming terms state Tourist Package services can be used only in Montenegro; do not treat this as an overseas OTP route.",
+        "kyc": "Prepaid registration requires personal data; One lists ID card or passport number among registration data.",
+        "payment": "Online top-up accepts Visa/Mastercard; minimum EUR2 and maximum EUR50.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Tourist Package users are excluded from roaming service outside Montenegro; overseas SMS/OTP utility is therefore not established for this route.",
+        "refund": "not reconciled",
+        "trend": "hold-no-tourist-roaming",
+        "guideEligible": false,
+        "holdReason": "Current Tourist Package terms prohibit roaming outside Montenegro, so retention is documented but overseas SMS/OTP utility is unavailable on this route.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://1.me/cg/for-tourists",
+        "tariffSummary": "EUR2 online top-up; 90-day active window; tourist eSIM has an extended recharge grace period, but Tourist Package roaming is unavailable.",
+        "sourceIds": [
+          "one-me-tourist-20260930",
+          "one-me-roaming-20260930",
+          "one-me-webshop-terms-20260930",
+          "one-me-privacy-20260930"
+        ],
+        "guideSteps": [
+          "Register and acquire the tourist SIM/eSIM.",
+          "Use online top-up before the desired retention deadline.",
+          "Do not rely on Tourist Package for roaming SMS/OTP outside Montenegro."
+        ]
+      }
+    },
+    {
       "id": "snap-optus-flex-plus-au-2026-current-profile-20260929",
       "routeId": "optus-flex-plus-au-2026",
       "kind": "current-profile",
@@ -13104,6 +13419,65 @@
       }
     },
     {
+      "id": "snap-yettel-prepaid-bg-2026-current-profile-20260930",
+      "routeId": "yettel-prepaid-bg-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c5-reviewed-2026-09-30",
+      "data": {
+        "id": "yettel-prepaid-bg-2026",
+        "brandId": "yettel-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Yettel Bulgaria sells prepaid physical SIM and eSIM products online and in stores; prepaid registration is required.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10.23,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 10.23,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "provider-current-esim-tourist"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 4.09,
+          "yearCostOriginal": 4.09,
+          "yearCostCny": null,
+          "action": "Online top-up minimum is EUR4.09. The current validity table gives 365 days of SIM validity for lower recharge tiers and 395 days from EUR5.11 upward when the remaining validity is shorter.",
+          "intervalDays": 365,
+          "state": "current-provider-validity-table"
+        },
+        "chinaActivation": "Digital prepaid eSIM purchase exists, but the documented app registration flow uses Yettel ID with selfie and ID-card capture; a foreign-passport remote path was not established in this review.",
+        "kyc": "Prepaid registration is required. Current app registration documentation specifies selfie plus ID card; foreign-user/passport handling remains unresolved.",
+        "payment": "Online top-up through Yettel app/web portal supports payment cards; current online amounts start at EUR4.09.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Yettel states incoming SMS in roaming is free; China-specific OTP reliability remains unverified.",
+        "refund": "not reconciled",
+        "trend": "hold-foreign-registration-path",
+        "guideEligible": false,
+        "holdReason": "Lifecycle and remote top-up are clear, but a current remote registration path for foreign passport holders was not established.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+        "tariffSummary": "EUR4.09 online top-up can preserve a 365-day SIM-validity window; incoming roaming SMS is free, but foreign-user registration remains unresolved.",
+        "sourceIds": [
+          "yettel-bg-validity-20260930",
+          "yettel-bg-online-topup-20260930",
+          "yettel-bg-register-20260930",
+          "yettel-bg-roaming-sms-20260930",
+          "yettel-bg-esim-20260930"
+        ],
+        "guideSteps": [
+          "Acquire and register a Yettel prepaid SIM/eSIM.",
+          "Top up at least EUR4.09 before expiry to maintain the validity window.",
+          "Verify foreign-ID registration eligibility before treating the route as generally available to visitors."
+        ]
+      }
+    },
+    {
       "id": "snap-yettel-rs-2026-current-profile-20260929",
       "routeId": "yettel-rs-2026",
       "kind": "current-profile",
@@ -13440,6 +13814,18 @@
       "keepYearCostOriginal": 12,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "bhtelecom-ba-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "BAM",
+      "acquisitionCostOriginal": 16.7,
+      "acquisitionCostCny": null,
+      "keepCurrency": "BAM",
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "calendar-rakuten-prepaid-jp-2026",
@@ -13982,6 +14368,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "one-me-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 8,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "optus-flex-plus-au-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -14508,6 +14906,18 @@
       "keepYearCostOriginal": 0.16,
       "keepYearCostCny": 1.43,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "yettel-prepaid-bg-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 10.23,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 4.09,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "yettel-rs-2026",

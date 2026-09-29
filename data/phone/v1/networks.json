@@ -35,6 +35,11 @@
     "marketId": "kz"
   },
   {
+    "id": "bhtelecom-ba",
+    "name": "BH Telecom BA",
+    "marketId": "ba"
+  },
+  {
     "id": "bite-lt",
     "name": "Bitė Lithuania",
     "marketId": "lt"
@@ -193,6 +198,11 @@
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "one-me",
+    "name": "One Montenegro",
+    "marketId": "me"
   },
   {
     "id": "optus-au",
@@ -378,6 +388,11 @@
     "id": "vodafone-uk",
     "name": "Vodafone UK",
     "marketId": "gb"
+  },
+  {
+    "id": "yettel-bg",
+    "name": "Yettel BG",
+    "marketId": "bg"
   },
   {
     "id": "yettel-rs",

@@ -706,6 +706,63 @@
     }
   },
   {
+    "id": "snap-bhtelecom-ba-2026-current-profile-20260930",
+    "routeId": "bhtelecom-ba-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c5-reviewed-2026-09-30",
+    "data": {
+      "id": "bhtelecom-ba-2026",
+      "brandId": "bhtelecom-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "BH Telecom Ultra prepaid is available as physical SIM and eSIM; current Ultra Tourist eSIM products are explicitly marketed to visitors.",
+      "landedCost": {
+        "currency": "BAM",
+        "providerOrCommunityPrice": 16.7,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 16.7,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "provider-current-esim-starter"
+      },
+      "keep": {
+        "currency": "BAM",
+        "observedActionCost": 20,
+        "yearCostOriginal": 40,
+        "yearCostCny": null,
+        "action": "A BAM20 top-up gives 180 days of credit validity. After credit expiry the Ultra number has a 150-day retention/recovery period before permanent loss; treat that period as recovery rather than the normal maintenance target.",
+        "intervalDays": 180,
+        "state": "current-provider-lifecycle"
+      },
+      "chinaActivation": "Tourist eSIM acquisition is aimed at visitors, but mainland-China activation and China-specific OTP behavior remain unverified.",
+      "kyc": "BH Telecom documents registration at sales points using identity documents including a passport; exact remote eSIM identity flow for foreign buyers remains partly dependent on the purchase path.",
+      "payment": "BH Telecom webshop top-up accepts bank cards issued in Bosnia and abroad; webshop minimum top-up is BAM2.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Ultra supports roaming generally; China-specific incoming SMS/OTP behavior is unverified.",
+      "refund": "not reconciled",
+      "trend": "current-provider-retention-resolved",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://mojwebshop.bhtelecom.ba/",
+      "tariffSummary": "BAM20 top-up gives 180 days credit validity; a further 150-day number-retention/recovery window follows credit expiry.",
+      "sourceIds": [
+        "bh-ultra-topup-20260930",
+        "bh-ultra-esim-20260930",
+        "bh-ultra-tourist-20260930"
+      ],
+      "guideSteps": [
+        "Acquire an Ultra/Ultra Tourist SIM or eSIM.",
+        "Use BAM20 top-up for a 180-day credit-validity tier.",
+        "Treat the following 150-day period as recovery rather than the routine maintenance target."
+      ]
+    }
+  },
+  {
     "id": "snap-calendar-rakuten-prepaid-jp-2026-current-profile-20260929",
     "routeId": "calendar-rakuten-prepaid-jp-2026",
     "kind": "current-profile",
@@ -4023,6 +4080,57 @@
     }
   },
   {
+    "id": "snap-one-me-2026-current-profile-20260930",
+    "routeId": "one-me-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c5-reviewed-2026-09-30",
+    "data": {
+      "id": "one-me-2026",
+      "brandId": "one-me-tourist",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "One Montenegro sells tourist prepaid SIM/eSIM products. Prepaid registration uses personal identity data including an ID card or passport number.",
+      "landedCost": {
+        "currency": "EUR",
+        "state": "starter-price-varies"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 2,
+        "yearCostOriginal": 8,
+        "yearCostCny": null,
+        "action": "Online top-up minimum is EUR2. Maintain active status by topping up within each 90-day window; the tourist eSIM has a longer post-active recharge grace period before final deactivation.",
+        "intervalDays": 90,
+        "state": "current-provider-90d"
+      },
+      "chinaActivation": "Tourist eSIM can be purchased for visitors, but One roaming terms state Tourist Package services can be used only in Montenegro; do not treat this as an overseas OTP route.",
+      "kyc": "Prepaid registration requires personal data; One lists ID card or passport number among registration data.",
+      "payment": "Online top-up accepts Visa/Mastercard; minimum EUR2 and maximum EUR50.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Tourist Package users are excluded from roaming service outside Montenegro; overseas SMS/OTP utility is therefore not established for this route.",
+      "refund": "not reconciled",
+      "trend": "hold-no-tourist-roaming",
+      "guideEligible": false,
+      "holdReason": "Current Tourist Package terms prohibit roaming outside Montenegro, so retention is documented but overseas SMS/OTP utility is unavailable on this route.",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://1.me/cg/for-tourists",
+      "tariffSummary": "EUR2 online top-up; 90-day active window; tourist eSIM has an extended recharge grace period, but Tourist Package roaming is unavailable.",
+      "sourceIds": [
+        "one-me-tourist-20260930",
+        "one-me-roaming-20260930",
+        "one-me-webshop-terms-20260930",
+        "one-me-privacy-20260930"
+      ],
+      "guideSteps": [
+        "Register and acquire the tourist SIM/eSIM.",
+        "Use online top-up before the desired retention deadline.",
+        "Do not rely on Tourist Package for roaming SMS/OTP outside Montenegro."
+      ]
+    }
+  },
+  {
     "id": "snap-optus-flex-plus-au-2026-current-profile-20260929",
     "routeId": "optus-flex-plus-au-2026",
     "kind": "current-profile",
@@ -7306,6 +7414,65 @@
         "Activate the line and test inbound SMS before moving important accounts.",
         "If you stop the 30-day plan, keep sufficient PAYG credit for the balance-changing activity you intend to use.",
         "Perform and verify a qualifying balance-changing activity well before 180 days; community users report Wi-Fi Calling SMS or tiny roaming-data usage, but setup can vary."
+      ]
+    }
+  },
+  {
+    "id": "snap-yettel-prepaid-bg-2026-current-profile-20260930",
+    "routeId": "yettel-prepaid-bg-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c5-reviewed-2026-09-30",
+    "data": {
+      "id": "yettel-prepaid-bg-2026",
+      "brandId": "yettel-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Yettel Bulgaria sells prepaid physical SIM and eSIM products online and in stores; prepaid registration is required.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 10.23,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 10.23,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "provider-current-esim-tourist"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 4.09,
+        "yearCostOriginal": 4.09,
+        "yearCostCny": null,
+        "action": "Online top-up minimum is EUR4.09. The current validity table gives 365 days of SIM validity for lower recharge tiers and 395 days from EUR5.11 upward when the remaining validity is shorter.",
+        "intervalDays": 365,
+        "state": "current-provider-validity-table"
+      },
+      "chinaActivation": "Digital prepaid eSIM purchase exists, but the documented app registration flow uses Yettel ID with selfie and ID-card capture; a foreign-passport remote path was not established in this review.",
+      "kyc": "Prepaid registration is required. Current app registration documentation specifies selfie plus ID card; foreign-user/passport handling remains unresolved.",
+      "payment": "Online top-up through Yettel app/web portal supports payment cards; current online amounts start at EUR4.09.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Yettel states incoming SMS in roaming is free; China-specific OTP reliability remains unverified.",
+      "refund": "not reconciled",
+      "trend": "hold-foreign-registration-path",
+      "guideEligible": false,
+      "holdReason": "Lifecycle and remote top-up are clear, but a current remote registration path for foreign passport holders was not established.",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.yettel.bg/bg/planove/predplateni-planove/predplatena-esim",
+      "tariffSummary": "EUR4.09 online top-up can preserve a 365-day SIM-validity window; incoming roaming SMS is free, but foreign-user registration remains unresolved.",
+      "sourceIds": [
+        "yettel-bg-validity-20260930",
+        "yettel-bg-online-topup-20260930",
+        "yettel-bg-register-20260930",
+        "yettel-bg-roaming-sms-20260930",
+        "yettel-bg-esim-20260930"
+      ],
+      "guideSteps": [
+        "Acquire and register a Yettel prepaid SIM/eSIM.",
+        "Top up at least EUR4.09 before expiry to maintain the validity window.",
+        "Verify foreign-ID registration eligibility before treating the route as generally available to visitors."
       ]
     }
   },

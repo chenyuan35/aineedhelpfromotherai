@@ -15,6 +15,11 @@
     "countryCode": "AU"
   },
   {
+    "id": "ba",
+    "name": "Bosnia and Herzegovina",
+    "countryCode": "BA"
+  },
+  {
     "id": "bd",
     "name": "Bangladesh",
     "countryCode": "BD"
@@ -23,6 +28,11 @@
     "id": "be",
     "name": "Belgium",
     "countryCode": "BE"
+  },
+  {
+    "id": "bg",
+    "name": "Bulgaria",
+    "countryCode": "BG"
   },
   {
     "id": "br",
@@ -173,6 +183,11 @@
     "id": "lv",
     "name": "Latvia",
     "countryCode": "LV"
+  },
+  {
+    "id": "me",
+    "name": "Montenegro",
+    "countryCode": "ME"
   },
   {
     "id": "mx",
