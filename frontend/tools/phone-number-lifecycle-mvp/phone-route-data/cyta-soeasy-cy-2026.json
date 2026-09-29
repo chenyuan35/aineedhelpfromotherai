@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "cyta-soeasy-cy-2026",
+    "marketId": "cy",
+    "networkId": "cyta-cy",
+    "brandId": "cyta-soeasy",
+    "displayName": "Cyta soeasy Cyprus",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.cyta.com.cy/soeasy/en",
+    "sourceIds": [
+      "cyta-soeasy-faq-20260929",
+      "cyta-soeasy-identification-20260929",
+      "cyta-soeasy-terms-20260929",
+      "cyta-soeasy-topup-20260929"
+    ]
+  },
+  "market": {
+    "id": "cy",
+    "name": "Cyprus",
+    "countryCode": "CY"
+  },
+  "network": {
+    "id": "cyta-cy",
+    "name": "Cyta Cyprus",
+    "marketId": "cy"
+  },
+  "brand": {
+    "id": "cyta-soeasy",
+    "networkId": "cyta-cy",
+    "name": "Cyta soeasy",
+    "marketId": "cy"
+  },
+  "metrics": {
+    "routeId": "cyta-soeasy-cy-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 5,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "cyta-soeasy-faq-20260929",
+      "url": "https://www.cyta.com.cy/faq-soeasy/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-identification-20260929",
+      "url": "https://www.cyta.com.cy/soeasy-identification/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-terms-20260929",
+      "url": "https://www.cyta.com.cy/soeasy-terms/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "cyta-soeasy-topup-20260929",
+      "url": "https://www.cyta.com.cy/faq-soeasy-top-up/en",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
+      "routeId": "cyta-soeasy-cy-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Current Cyta material resolves the legacy gap: EUR 5, 10, 20, 35 or 50 credit top-ups each grant 365 days; after the 365-day deadline outgoing service stops, followed by 7 days incoming-only and 15 additional days before number cancellation.",
+      "sourceId": "cyta-soeasy-faq-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-cyta-soeasy-cy-2026-current-profile-20260929",
+      "routeId": "cyta-soeasy-cy-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4d-reviewed-2026-09-29",
+      "data": {
+        "id": "cyta-soeasy-cy-2026",
+        "brandId": "cyta-soeasy",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Cyta sells soeasy as prepaid physical SIM/eSIM. Current terms require owner/user identification before activation. Current provider materials support online or store identification and passport-based identification for non-EU customers.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "connection-pack-price-not-captured"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": null,
+          "action": "Top up EUR 5 or more before the 365-day validity deadline. Each listed credit top-up value grants 365 days. After expiry, outgoing calls stop, then 7 days incoming-only plus 15 additional days remain before cancellation.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-topup"
+        },
+        "chinaActivation": "Current provider flow requires prepaid identification before activation. Top-up can be performed while abroad, but China-first activation and end-to-end China acquisition are not established.",
+        "kyc": "Identification is mandatory under Cyta's current prepaid terms. EU customers may use ID or passport; non-EU customers may use passport, with an in-store path documented for non-EU customers without a passport.",
+        "payment": "Online top-up supports Visa, Mastercard, Maestro and American Express through My Cyta or as a visitor without login; Cyta states top-up can be done while abroad.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "current-provider-retention-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.cyta.com.cy/soeasy/en",
+        "tariffSummary": "EUR 5 minimum listed credit top-up grants 365 days; 7-day incoming-only window plus 15 days before cancellation; identification required.",
+        "sourceIds": [
+          "cyta-soeasy-faq-20260929",
+          "cyta-soeasy-terms-20260929",
+          "cyta-soeasy-identification-20260929",
+          "cyta-soeasy-topup-20260929"
+        ],
+        "guideSteps": [
+          "Acquire a soeasy SIM/eSIM and complete Cyta's prepaid identification flow.",
+          "Top up at least EUR 5 before the 365-day validity deadline; remote web top-up is available.",
+          "Do not plan around the 7+15 day post-expiry recovery window as the normal maintenance interval."
+        ]
+      }
+    }
+  ]
+}

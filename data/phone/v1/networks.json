@@ -80,6 +80,11 @@
     "marketId": "hk"
   },
   {
+    "id": "cyta-cy",
+    "name": "Cyta Cyprus",
+    "marketId": "cy"
+  },
+  {
     "id": "dialog-lk",
     "name": "Dialog LK",
     "marketId": "lk"
@@ -93,6 +98,11 @@
     "id": "ee-uk",
     "name": "EE UK",
     "marketId": "gb"
+  },
+  {
+    "id": "elisa-fi",
+    "name": "Elisa Finland",
+    "marketId": "fi"
   },
   {
     "id": "etisalat-ae",
@@ -118,6 +128,11 @@
     "id": "grameenphone-bd",
     "name": "Grameenphone",
     "marketId": "bd"
+  },
+  {
+    "id": "hotmobile-il",
+    "name": "HOT Mobile Israel",
+    "marketId": "il"
   },
   {
     "id": "jio-in",

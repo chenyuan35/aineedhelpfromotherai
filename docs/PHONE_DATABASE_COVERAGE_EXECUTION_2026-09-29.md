@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C4C
+## Current verified state after DB-C4D
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **98 routes / 54 markets / 95 brands / 74 networks / 323 sources**;
-- comparison↔canonical route-ID overlap: **87**;
-- comparison routes still legacy-only: **48**;
+- canonical normalized database: **101 routes / 57 markets / 98 brands / 77 networks / 334 sources**;
+- comparison↔canonical route-ID overlap: **90**;
+- comparison routes still legacy-only: **45**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -146,4 +146,16 @@ Post-DB-C4C state: **98 canonical routes / 54 markets / 95 brands / 74 networks 
 
 Release: PR #311 (`a9bcc8a4628ab77a69f956cddbebc33800bcd84c`) merged after Eval Gate #961, CI #185 and Vercel Preview passed; production succeeded. Live checks confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable Orange Senegal route at HTTP 404.
 
-DB-C4 remains active with `elisa-prepaid-fi-2026`, `cyta-soeasy-cy-2026` and `hotmobile-il-2026` as the next bounded candidates.
+DB-C4D completed the remaining bounded DB-C4 candidates.
+
+## DB-C4D — completed 2026-09-29
+
+The final three DB-C4 legacy-only candidates were independently reviewed and normalized through approved backstage packets. Final DB-C4D disposition: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**.
+
+- `elisa-prepaid-fi-2026` — ADMIT-BACKSTAGE. Current Elisa material resolves the validity gap: 3 months from first activation, 12 months after every recharge, then a one-month expired receive/recharge window. Balance top-ups are EUR10-100. Elisa states Prepaid cannot be registered to the subscriber name/personal identity number and must be activated in Finland before use abroad.
+- `cyta-soeasy-cy-2026` — ADMIT-BACKSTAGE. Current Cyta material establishes EUR5 as the lowest listed credit top-up granting 365 days, followed by 7 days incoming-only plus 15 days before cancellation. Current prepaid terms require identification; non-EU customers may use a passport, and remote top-up is available while abroad.
+- `hotmobile-il-2026` — HOLD. Current Israeli recharge retailers consistently list a HOTALK 66 ILS pay-per-use balance load valid for 180 days, but a current HOT Mobile first-party number-deactivation/recycling rule was not located. The legacy blanket no-KYC claim is withdrawn as unverified.
+
+Post-DB-C4D state: **101 canonical routes / 57 markets / 98 brands / 77 networks / 334 sources / 90 comparison-overlap route IDs / 45 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone data checks and the frontend build preserve **135 comparison routes / 3 explicit indexable routes**.
+
+DB-C4 is complete. Continue DB-C5 through the bounded candidates in `docs/CURRENT_EXECUTION_QUEUE.md`.
