@@ -71,3 +71,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "data(phone): complete DB-C2 coverage batch"
           git push origin HEAD:data/phone-db-c2-20260929
+
+# retry after verified input parts were uploaded
