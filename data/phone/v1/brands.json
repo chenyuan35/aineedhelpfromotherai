@@ -108,6 +108,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "cosmote-frog",
+    "networkId": "cosmote-gr",
+    "name": "FROG Mobile",
+    "marketId": "gr"
+  },
+  {
     "id": "dialog-prepaid",
     "networkId": "dialog-lk",
     "name": "Dialog Prepaid",
@@ -216,6 +222,12 @@
     "marketId": "lt"
   },
   {
+    "id": "lebara-fr",
+    "networkId": "sfr-fr",
+    "name": "Lebara France",
+    "marketId": "fr"
+  },
+  {
     "id": "lebara-uk",
     "networkId": "vodafone-uk",
     "name": "Lebara UK",
@@ -274,6 +286,12 @@
     "networkId": "o2-uk",
     "name": "O2 Classic PAYG",
     "marketId": "gb"
+  },
+  {
+    "id": "optus-au-direct",
+    "networkId": "optus-au",
+    "name": "Optus Prepaid",
+    "marketId": "au"
   },
   {
     "id": "orange-mobicarte",

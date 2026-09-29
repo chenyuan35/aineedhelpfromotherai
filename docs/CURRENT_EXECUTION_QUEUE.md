@@ -8,7 +8,7 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. After DB-C3: **135 comparison routes / 89 canonical normalized routes / 78 comparison↔canonical route-ID overlaps / 57 comparison routes still legacy-only / 3 indexable routes**.
+3. After DB-C4A: **135 comparison routes / 92 canonical normalized routes / 81 comparison↔canonical route-ID overlaps / 54 comparison routes still legacy-only / 3 indexable routes**.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -16,15 +16,13 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 
-## JUST COMPLETED — Backend database coverage DB-C3
+## JUST COMPLETED — Backend database coverage DB-C4A
 
-12/12 DB-C3 legacy-only routes were independently reviewed and normalized through reviewed packets.
+The first 3/12 DB-C4 legacy-only routes were independently reviewed and normalized through reviewed packets.
 
-Result: **7 ADMIT-BACKSTAGE / 5 HOLD / 0 REJECT**. HOLD preserves unresolved current-cost, provider-text or eligibility constraints for ASDA Mobile, Lyca Mobile UK, LMT Karte, Free Mobile France and Good2Go Canada rather than guessing them away.
+Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. FROG is admitted backstage with the current EUR13 electronic top-up minimum and the provider's 13-month number-renewal window kept distinct from balance/service timing. Optus Flex Plus is HOLD because its legacy long-expiry economics are stale and the provider has a scheduled 2026-09-30 price change. Lebara France is HOLD because it now uses SFR and current provider material separates 90-day recharge validity from a 90-consecutive-day no-service-use termination rule.
 
-Material corrections include ASDA activity-vs-credit-expiry separation, Lyca UK's O2→EE network correction, LMT's withdrawn EUR18/year estimate, Telekom Easy's current 180-day post-top-up validity, CALENDAR's JPY7,860 entry + JPY5,400 extension, RedPocket's current USD110 annual renewal, and removal of Orange Romania's unsupported EUR42/year estimate.
-
-Canonical result after DB-C3: **89 routes / 51 markets / 86 brands / 67 networks / 293 sources**. Comparison remains **135**, comparison↔canonical overlap is **78**, **57 comparison routes remain legacy-only**, and explicit indexability remains **3**. PR #305 squash-merged as `82299c03500f029db1fb6241fbaaf4d5bcbcb3f0`; Eval Gate #949 and Vercel Preview/production passed. Live hub + VOXI route are HTTP 200; non-indexable ASDA route remains HTTP 404.
+Canonical result after DB-C4A: **92 routes / 52 markets / 89 brands / 70 networks / 305 sources**. Comparison remains **135**, comparison↔canonical overlap is **81**, **54 comparison routes remain legacy-only**, and explicit indexability remains **3**. Local Phone checks and the full frontend build preserve 135 comparison routes / 3 route detail pages / 0 market detail pages.
 
 ## ACTIVE — Backend database coverage DB-C4
 
@@ -32,18 +30,15 @@ Continue with the next distinct low-cost / decision-useful legacy-only routes. L
 
 Candidates:
 
-1. `cosmote-frog-13mo-2026`
-2. `optus-flex-plus-au-2026`
-3. `lebara-fr-2026`
-4. `smart-prepaid-ph-2026`
-5. `mtn-ng-keepmynumber-2026`
-6. `id-mobile-uk-2026`
-7. `us-mobile-light-2026`
-8. `lycamobile-us-2026`
-9. `orange-sn-sama-numero-2026`
-10. `elisa-prepaid-fi-2026`
-11. `cyta-soeasy-cy-2026`
-12. `hotmobile-il-2026`
+1. `smart-prepaid-ph-2026`
+2. `mtn-ng-keepmynumber-2026`
+3. `id-mobile-uk-2026`
+4. `us-mobile-light-2026`
+5. `lycamobile-us-2026`
+6. `orange-sn-sama-numero-2026`
+7. `elisa-prepaid-fi-2026`
+8. `cyta-soeasy-cy-2026`
+9. `hotmobile-il-2026`
 
 ### DB-C4 acceptance flow
 
@@ -79,7 +74,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 57 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 54 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;

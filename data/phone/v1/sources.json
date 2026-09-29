@@ -222,6 +222,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "frog-general-terms-20260929",
+    "url": "https://www.frogmobile.gr/en/content/general-terms-prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "frog-online-sim-20260929",
+    "url": "https://www.frogmobile.gr/en/frog-online-sim-card",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "frog-privacy-20260929",
+    "url": "https://www.frogmobile.gr/en/data-privacy-notices",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "frog-topup-min-20260330",
+    "url": "https://www.whatsup.gr/api/strapi/uploads/allages_kartokinitis27022026.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-03-30"
+  },
+  {
     "id": "giffgaff-official-credit-2026-09-23",
     "url": "https://help.giffgaff.com/en/articles/240847-everything-to-know-about-credit",
     "type": "provider-commercial-page",
@@ -272,6 +296,36 @@
   {
     "id": "labas-rules-20260929",
     "url": "https://www.labas.lt/en/service-rules",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lebara-fr-legal-use-20260929",
+    "url": "https://www.lebara.fr/content/dam/lebara/markets/fr/legal-files/terms-and-conditions/clients-existants/sfr/december24/Recapitulatif%20contractuel%20Forfait%20mensuel%20Lebara%20clients%20existants%202H%20201224.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lebara-fr-network-20260929",
+    "url": "https://www.lebara.fr/fr/faq/utiliser-les-services-internet/internet-4g.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lebara-fr-prepaid-20260929",
+    "url": "https://www.lebara.fr/fr/prepaye.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lebara-fr-recharge-20260706",
+    "url": "https://www.lebara.fr/fr/blog/recharge-mobile.html",
+    "type": "provider-official",
+    "reportedAt": "2026-07-06"
+  },
+  {
+    "id": "lebara-fr-registration-20260929",
+    "url": "https://www.lebara.fr/fr/enregistrement.html",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
@@ -1340,6 +1394,24 @@
   {
     "id": "official-yorn-weekly-cost-2026-09-29",
     "url": "https://www.vodafone.pt/content/digital-yorn/pt/yorn/ajuda/tarifario-yorn/os-meus-minutos-e-mensagens-renovam-a-semana-ou-ao-mes.html?PageSpeed=noscript",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "optus-activate-20260929",
+    "url": "https://www.optus.com.au/prepaid/activate",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "optus-longexpiry-20260818",
+    "url": "https://optus.com.au/connected/tech/long-expiry-prepaid-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-08-18"
+  },
+  {
+    "id": "optus-prepaidplans-20260929",
+    "url": "https://optus.com.au/prepaidplans",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },

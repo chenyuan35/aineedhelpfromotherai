@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "optus-flex-plus-au-2026",
+    "marketId": "au",
+    "networkId": "optus-au",
+    "brandId": "optus-au-direct",
+    "displayName": "Optus Flex Plus long-expiry prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://optus.com.au/prepaidplans",
+    "sourceIds": [
+      "optus-activate-20260929",
+      "optus-longexpiry-20260818",
+      "optus-prepaidplans-20260929"
+    ]
+  },
+  "market": {
+    "id": "au",
+    "name": "Australia",
+    "countryCode": "AU"
+  },
+  "network": {
+    "id": "optus-au",
+    "name": "Optus Australia",
+    "marketId": "au"
+  },
+  "brand": {
+    "id": "optus-au-direct",
+    "networkId": "optus-au",
+    "name": "Optus Prepaid",
+    "marketId": "au"
+  },
+  "metrics": {
+    "routeId": "optus-flex-plus-au-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "AUD",
+    "acquisitionCostOriginal": 199,
+    "acquisitionCostCny": null,
+    "keepCurrency": "AUD",
+    "keepYearCostOriginal": 350,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "optus-activate-20260929",
+      "url": "https://www.optus.com.au/prepaid/activate",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "optus-longexpiry-20260818",
+      "url": "https://optus.com.au/connected/tech/long-expiry-prepaid-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "optus-prepaidplans-20260929",
+      "url": "https://optus.com.au/prepaidplans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",
+      "routeId": "optus-flex-plus-au-2026",
+      "type": "cost-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy A$59/186-day and A$180/365-day retention economics are stale. Current official long-expiry options are A$180/186 days and A$350/365 days, while Optus states the 365-day A$350 price rises to A$395 on 2026-09-30.",
+      "sourceId": "optus-prepaidplans-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-optus-flex-plus-au-2026-current-profile-20260929",
+      "routeId": "optus-flex-plus-au-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4-reviewed-2026-09-29",
+      "data": {
+        "id": "optus-flex-plus-au-2026",
+        "brandId": "optus-au-direct",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Optus currently sells Flex Plus SIM/eSIM online. On 2026-09-29 the 365-day starter is advertised at A$199 for new services, then A$350; Optus says the A$350 price becomes A$395 from 2026-09-30.",
+        "landedCost": {
+          "currency": "AUD",
+          "providerOrCommunityPrice": 199,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 199,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-sale-ends-2026-09-29"
+        },
+        "keep": {
+          "currency": "AUD",
+          "observedActionCost": 350,
+          "yearCostOriginal": 350,
+          "yearCostCny": null,
+          "action": "Current official long-expiry choices are A$180 for 186 days or A$350 for 365 days. The 365-day price is scheduled to become A$395 from 2026-09-30, so reverify before relying on a settled annual retention cost.",
+          "intervalDays": 365,
+          "state": "scheduled-price-change-2026-09-30"
+        },
+        "chinaActivation": "Optus offers eSIM and physical SIM, but activation requires a valid form of ID; remote/China-first completion is not established here.",
+        "kyc": "A valid form of ID is required for Optus prepaid activation.",
+        "payment": "Credit or debit card is required for online activation; broader foreign-card acceptance is not reconciled.",
+        "wifiCalling": "supported on compatible Optus services/devices; route-specific overseas behavior unverified",
+        "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+        "refund": "not reconciled",
+        "trend": "scheduled-price-change-2026-09-30",
+        "guideEligible": false,
+        "holdReason": "Optus has a provider-announced price change effective 2026-09-30; exact post-change long-expiry retention economics must be reverified.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://optus.com.au/prepaidplans",
+        "tariffSummary": "As of 2026-09-29: A$180/186d or A$350/365d; 365-day price scheduled to A$395 from 2026-09-30.",
+        "sourceIds": [
+          "optus-prepaidplans-20260929",
+          "optus-activate-20260929",
+          "optus-longexpiry-20260818"
+        ]
+      }
+    }
+  ]
+}

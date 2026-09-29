@@ -343,6 +343,26 @@
     ]
   },
   {
+    "id": "cosmote-frog-13mo-2026",
+    "marketId": "gr",
+    "networkId": "cosmote-gr",
+    "brandId": "cosmote-frog",
+    "displayName": "FROG Mobile prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.frogmobile.gr/en/frog-online-sim-card",
+    "sourceIds": [
+      "frog-general-terms-20260929",
+      "frog-online-sim-20260929",
+      "frog-privacy-20260929",
+      "frog-topup-min-20260330"
+    ]
+  },
+  {
     "id": "dialog-lk-365d-2026",
     "marketId": "lk",
     "networkId": "dialog-lk",
@@ -691,6 +711,27 @@
     ]
   },
   {
+    "id": "lebara-fr-2026",
+    "marketId": "fr",
+    "networkId": "sfr-fr",
+    "brandId": "lebara-fr",
+    "displayName": "Lebara France prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.lebara.fr/fr/prepaye.html",
+    "sourceIds": [
+      "lebara-fr-legal-use-20260929",
+      "lebara-fr-network-20260929",
+      "lebara-fr-prepaid-20260929",
+      "lebara-fr-recharge-20260706",
+      "lebara-fr-registration-20260929"
+    ]
+  },
+  {
     "id": "lebara-uk-direct-esim-china",
     "marketId": "gb",
     "networkId": "vodafone-uk",
@@ -917,6 +958,25 @@
     "sourceIds": [
       "community-o2-inactivity-criteria-2024",
       "official-o2-classic-payg-help-2026-09-28"
+    ]
+  },
+  {
+    "id": "optus-flex-plus-au-2026",
+    "marketId": "au",
+    "networkId": "optus-au",
+    "brandId": "optus-au-direct",
+    "displayName": "Optus Flex Plus long-expiry prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM-or-physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://optus.com.au/prepaidplans",
+    "sourceIds": [
+      "optus-activate-20260929",
+      "optus-longexpiry-20260818",
+      "optus-prepaidplans-20260929"
     ]
   },
   {

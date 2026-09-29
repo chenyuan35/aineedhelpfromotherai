@@ -218,6 +218,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "cosmote-frog-13mo-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 13,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 13,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "dialog-lk-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -434,6 +446,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "lebara-fr-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -576,6 +600,18 @@
       "keepYearCostOriginal": 0.04,
       "keepYearCostCny": 0.4,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "optus-flex-plus-au-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AUD",
+      "acquisitionCostOriginal": 199,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AUD",
+      "keepYearCostOriginal": 350,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "orange-mobicarte-2026",
