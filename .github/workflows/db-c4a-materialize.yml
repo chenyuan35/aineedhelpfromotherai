@@ -20,6 +20,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git fetch origin main:refs/remotes/origin/main
           cat .tmp/db-c4a.part.* > /tmp/db-c4a.patch.gz.b64
           echo '2b39343f52bfbba1fad6bf5f721c86994a6181f0a80b8fcd9714cab1096edc6a  /tmp/db-c4a.patch.gz.b64' | sha256sum -c -
           base64 -d /tmp/db-c4a.patch.gz.b64 > /tmp/db-c4a.patch.gz
@@ -32,8 +33,7 @@ jobs:
           git diff --check
           mapfile -t changed < <(git diff --name-only origin/main)
           test "${#changed[@]}" = "23"
-          printf '%s\n' "${changed[@]}" | grep -vq '^\.tmp/'
-          printf '%s\n' "${changed[@]}" | grep -vq '^\.github/workflows/db-c4a-materialize.yml$'
+          if printf '%s\n' "${changed[@]}" | grep -Eq '^(\.tmp/|\.github/workflows/db-c4a-materialize\.yml$)'; then exit 1; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
