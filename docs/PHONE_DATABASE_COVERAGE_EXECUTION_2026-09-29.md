@@ -106,4 +106,6 @@ The five HOLD routes are `asda-mobile-uk-2026`, `lycamobile-uk-keep-number-2026`
 
 Material corrections include ASDA activity-vs-credit-expiry separation; Lyca UK's current EE host network; withdrawal of LMT's unsupported EUR18/year estimate; Telekom Easy's 180-day post-top-up validity; CALENDAR's current JPY7,860 entry and JPY5,400 same-number extension; Orange Romania active/grace separation; 1pMobile's cohort-specific 2026 rules; and RedPocket's current USD110 annual renewal plus U.S.-only activation.
 
+Release: PR #305 squash-merged as `82299c03500f029db1fb6241fbaaf4d5bcbcb3f0`; Eval Gate #949, Vercel Preview/production and live publication-boundary verification passed.
+
 DB-C4 is now active with 12 next distinct low-cost/decision-useful legacy-only routes listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
