@@ -10,40 +10,42 @@ Last updated: 2026-09-29
 2. **Broad comparison coverage stays preserved.** The 135-route legacy comparison artifact remains authoritative behind the PR #263 reviewed-manifest gate.
 3. **Named batch A–K migration is complete.** Batch-K migrated four HOLD routes with exact parity; canonical v1 is now 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; 42 route IDs overlap the comparison set and 93 remain legacy-only.
 4. **The only named-batch legacy ID not represented by the same canonical ID is the known Sakura same-product alias blocker.** Do not duplicate that product.
-5. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
-6. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
+5. **Post-A–K value checkpoint selected existing-URL deepening, not batch-L.** Fresh first-party Phone data is only 4 hub impressions / 0 clicks through 2026-09-25, and the three currently indexable route URLs have no Search Console rows in the checked window.
+6. **Publication remains separate.** Explicit indexability remains 3; canonical migration does not imply route/market URLs, sitemap entries or ranking claims.
+7. **AI Reset Radar — FROZEN. Relay Exit Risk — data-accrual only.**
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Compatibility audit: `docs/PHONE_CANONICAL_COMPARISON_COMPATIBILITY_AUDIT_2026-09-28.md`.
 
-## JUST COMPLETED — IE/PL/PT/HR batch-K current-fact reconciliation + bounded canonical migration
+## CURRENT TASK — Global Phone finder progressive UI on the existing canonical hub
 
-Result: **PASS / FOUR EXACT-PARITY HOLD MIGRATIONS.**
+Result so far: **IMPLEMENTED LOCALLY / RELEASE GATE PENDING.**
 
-- Three IE: withdraw the old 1-SMS/80-day / EUR0.30-year recommendation because current Three-controlled materials conflict on the dormancy timeline; keep HOLD until one current rule can be reconciled;
-- Orange PL: current official paid validity extension is PLN39 for +365 days; the former inactivity fee remains abolished; keep HOLD because acquisition/KYC remains Poland-centered and overseas OTP evidence is still weak;
-- Yorn PT: current weekly-cost tariff blocks incoming calls/SMS after seven days unpaid; keep as HOLD negative knowledge rather than inventing a cheap annual keep cost;
-- A1 HR: current SIM/recharge/KYC/roaming paths are captured, including EUR5 minimum displayed voucher, but current first-party voucher-to-validity duration is still unresolved; no annual cost is invented;
-- all four generic canonical-adapter rows deep-equal the corrected reviewed comparison rows;
-- canonical v1 is 53 routes / 30 markets / 50 brands / 36 networks / 182 sources; comparison remains 135, overlap is 42, legacy-only is 93, reviewed manifest remains intact and explicit indexability remains 3;
-- all named A–K batch files are now dispositioned: 36 unique batch route IDs, 35 same-ID canonical representations, plus the already documented Sakura same-product legacy-ID blocker.
+- post-A–K checkpoint is documented in `docs/PHONE_POST_AK_VALUE_CHECKPOINT_2026-09-29.md`;
+- the 93 legacy-only routes were triaged as migration debt versus user-facing value; no batch-L was authorized;
+- Windsor.ai fresh Search Console data shows the Phone hub at 4 impressions / 0 clicks through 2026-09-25, while the three current indexable route URLs return no rows for the checked September window;
+- the existing Phone hub still presented a UK-pilot-only long-term comparison despite the already-admitted 135-route global comparison layer;
+- the bounded fix adds a compact 135-route comparison index, global market overview and country/carrier/route search;
+- full `global-directory.json` is loaded only after a user selects a market or opens route evidence;
+- no backend/API, new SEO URL, sitemap expansion or publication-policy relaxation is included;
+- local Phone data checks, static build, public-release audit, standard verify and diff check pass; generated output remains 3 route detail pages / 0 market detail pages.
 
-## NEXT SESSION — Post-A–K Phone checkpoint: choose the next bounded value move
+## NEXT SESSION — Measure the global finder before another migration/publication move
 
-**Session task:** do not invent batch-L. Inspect the 93 remaining legacy-only routes together with current Phone search/product evidence, then select at most one small next migration cohort **or** one existing route/market experience to deepen.
+**Session task:** after the global finder release is production-verified, keep the Phone surface stable long enough to collect real search and product-interaction evidence before selecting another migration cohort or indexable route.
 
 ### Scope
 
-1. inventory remaining legacy-only routes by user job, evidence freshness, identity confidence and decision value;
-2. distinguish migration debt from actual user-facing growth opportunity;
-3. check current Search Console/product signals before proposing any new indexable URL;
-4. if a next migration cohort is selected, keep it small and require current-fact reconciliation + exact adapter parity;
-5. if an existing route is selected for deeper publication, require the full SEO publication gate in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` before any indexability change;
-6. keep comparison at 135, reviewed manifest intact and explicit indexability at 3 until a separate publication decision passes.
+1. verify the production Phone hub, compact comparison index and lazy global-directory path remain healthy;
+2. preserve comparison at 135, canonical at 53 unless a separately justified data correction lands, and explicit indexability at 3;
+3. re-read first-party Search Console after at least 7 additional finalized days or 20 cumulative settled Phone impressions, unless a regression appears sooner;
+4. inspect product events for search/filter, market-open, guide-open, compare and outbound behavior when sufficient data exists;
+5. only then choose either one small evidence-backed migration cohort or one existing route/market experience to deepen;
+6. require the full publication gate before any new standalone indexable URL.
 
 ### Stop conditions
 
-Stop and record the blocker if evidence is stale/contradictory, identity needs schema/alias redesign, exact parity fails, or publication value is not clearly stronger than the provider page and existing competitors. Do not bulk-migrate merely to increase canonical coverage.
+Do not manufacture a next task from low data. If search/usage samples remain too small, keep production stable and continue backstage evidence acquisition rather than adding pages or migrating rows for activity's sake.
 
 ## Qwen / Kimi work lane
 

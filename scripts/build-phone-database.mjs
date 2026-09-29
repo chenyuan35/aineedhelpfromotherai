@@ -169,9 +169,44 @@ const databaseText = JSON.stringify(bundle, null, 2) + '\n';
 const searchText = JSON.stringify({ schemaVersion: meta.schemaVersion, routes: searchIndex }, null, 2) + '\n';
 const summaryRows = searchIndex.map(({ tokens, ...row }) => row);
 const summaryText = JSON.stringify({ schemaVersion: meta.schemaVersion, routes: summaryRows }, null, 2) + '\n';
+const globalDirectory = JSON.parse(fs.readFileSync(path.join(out, 'global-directory.json'), 'utf8'));
+const publicationPolicy = JSON.parse(fs.readFileSync(path.join(out, 'publication-policy.json'), 'utf8'));
+const globalBrandById = new Map((globalDirectory.brands || []).map(x => [x.id, x]));
+const globalNetworkById = new Map((globalDirectory.networks || []).map(x => [x.id, x]));
+const publicationState = id => publicationPolicy.routeStates?.[id] || publicationPolicy.defaultRouteState || 'database-only';
+const comparisonIndexRows = (globalDirectory.routes || [])
+  .filter(r => ['comparison-visible', 'detail-eligible', 'indexable'].includes(publicationState(r.id)))
+  .map(r => {
+    const brand = globalBrandById.get(r.brandId); const network = brand?.networkId ? globalNetworkById.get(brand.networkId) : null;
+    const landed = r.landedCost || {}; const keep = r.keep || {};
+    return {
+      id: r.id,
+      brandName: brand?.name || r.brandId,
+      networkName: network?.name || null,
+      marketName: r.marketName || 'Global',
+      publicationState: publicationState(r.id),
+      publishState: r.publishState || null,
+      numberType: r.numberType || null,
+      simType: r.simType || null,
+      acquisitionCurrency: landed.currency || null,
+      acquisitionCostOriginal: Number.isFinite(landed.landedOriginal) ? landed.landedOriginal : (Number.isFinite(landed.providerOrCommunityPrice) ? landed.providerOrCommunityPrice : null),
+      acquisitionCostCny: Number.isFinite(landed.landedCny) ? landed.landedCny : null,
+      keepCurrency: keep.currency || landed.currency || null,
+      keepYearCostOriginal: Number.isFinite(keep.yearCostOriginal) ? keep.yearCostOriginal : null,
+      keepYearCostCny: Number.isFinite(keep.yearCostCny) ? keep.yearCostCny : null,
+      keepIntervalDays: Number.isFinite(keep.intervalDays) ? keep.intervalDays : null,
+      evidenceState: keep.state || r.publishState || null,
+      trend: r.trend || null,
+      lastVerifiedAt: r.lastVerifiedAt || globalDirectory.checkedAt || null,
+      sourceCount: (r.sourceIds || []).length,
+      searchable: normalize([r.id, brand?.name, network?.name, r.marketName, r.numberType, r.simType].filter(Boolean).join(' ')),
+    };
+  });
+const comparisonIndexText = JSON.stringify({ schemaVersion: meta.schemaVersion, checkedAt: globalDirectory.checkedAt || null, routeCount: comparisonIndexRows.length, routes: comparisonIndexRows }, null, 2) + '\n';
 const databasePath = path.join(out, 'phone-database.json');
 const searchPath = path.join(out, 'phone-search-index.json');
 const summaryPath = path.join(out, 'phone-route-summaries.json');
+const comparisonIndexPath = path.join(out, 'comparison-route-index.json');
 const serviceAggPath = path.join(out, 'phone-service-evidence.json');
 const metricsPath = path.join(out, 'phone-route-metrics.json');
 const rangesPath = path.join(out, 'phone-number-ranges.json');
@@ -185,7 +220,7 @@ const expectedDetails = new Map(routes.map(route => {
   return [path.join(detailDir, `${route.id}.json`), JSON.stringify(detail, null, 2) + '\n'];
 }));
 if (process.argv.includes('--check')) {
-  for (const [file, expected] of [[databasePath, databaseText], [searchPath, searchText], [summaryPath, summaryText], [serviceAggPath, serviceAggText], [metricsPath, metricsText], [rangesPath, rangesText], ...expectedDetails]) {
+  for (const [file, expected] of [[databasePath, databaseText], [searchPath, searchText], [summaryPath, summaryText], [comparisonIndexPath, comparisonIndexText], [serviceAggPath, serviceAggText], [metricsPath, metricsText], [rangesPath, rangesText], ...expectedDetails]) {
     if (!fs.existsSync(file) || fs.readFileSync(file, 'utf8') !== expected) throw new Error(`Phone database generated artifact is stale: ${path.relative(repo, file)}`);
   }
   const actualDetailFiles = fs.existsSync(detailDir) ? fs.readdirSync(detailDir).filter(x => x.endsWith('.json')).sort() : [];
@@ -199,6 +234,7 @@ if (process.argv.includes('--check')) {
   writeAtomic(databasePath, databaseText);
   writeAtomic(searchPath, searchText);
   writeAtomic(summaryPath, summaryText);
+  writeAtomic(comparisonIndexPath, comparisonIndexText);
   writeAtomic(serviceAggPath, serviceAggText);
   writeAtomic(metricsPath, metricsText);
   writeAtomic(rangesPath, rangesText);
