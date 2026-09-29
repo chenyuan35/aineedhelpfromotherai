@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "smart-prepaid-ph-2026",
+    "marketId": "ph",
+    "networkId": "smart-ph",
+    "brandId": "smart-ph",
+    "displayName": "Smart Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://smart.com.ph/Pages/esim",
+    "sourceIds": [
+      "smart-esim-20260929",
+      "smart-prepaid-validity-20260929",
+      "smart-simreg-foreigners-20260929"
+    ]
+  },
+  "market": {
+    "id": "ph",
+    "name": "Philippines",
+    "countryCode": "PH"
+  },
+  "network": {
+    "id": "smart-ph",
+    "name": "Smart (PLDT)",
+    "marketId": "ph"
+  },
+  "brand": {
+    "id": "smart-ph",
+    "networkId": "smart-ph",
+    "name": "Smart Prepaid",
+    "marketId": "ph"
+  },
+  "metrics": {
+    "routeId": "smart-prepaid-ph-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "PHP",
+    "acquisitionCostOriginal": 99,
+    "acquisitionCostCny": null,
+    "keepCurrency": "PHP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "smart-esim-20260929",
+      "url": "https://smart.com.ph/Pages/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "smart-prepaid-validity-20260929",
+      "url": "https://help.smart.com.ph/prepaid-call-and-text-card-expiry-and-validity/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "smart-simreg-foreigners-20260929",
+      "url": "https://smart.com.ph/Corporate/docs/default-source/default-document-library/simreg/Prepaid_Individual_Registration.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-smart-prepaid-ph-2026-db-c4b-review-20260929",
+      "routeId": "smart-prepaid-ph-2026",
+      "type": "eligibility-and-lifecycle-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Smart ordinary prepaid lifecycle remains 365 days for loaded value plus a 180-day reload grace after balance reaches zero, but foreign tourists face a separate 30-day SIM-registration validity cap unless an approved visa extension is supplied. The legacy route is therefore not treated as a generally available long-term foreign-user route.",
+      "sourceId": "smart-simreg-foreigners-20260929"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-smart-prepaid-ph-2026-current-profile-20260929",
+      "routeId": "smart-prepaid-ph-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "db-c4b-reviewed-2026-09-29",
+      "data": {
+        "id": "smart-prepaid-ph-2026",
+        "brandId": "smart-ph",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Smart currently offers a P99 prepaid eSIM. Registration is mandatory. Foreign tourists receive only 30 days of SIM validity unless they submit an approved visa extension; foreign nationals with other visa types can acquire without that temporary 30-day cap.",
+        "landedCost": {
+          "currency": "PHP",
+          "providerOrCommunityPrice": 99,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-esim-price"
+        },
+        "keep": {
+          "currency": "PHP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Loaded prepaid value must be used within 365 days. If the balance reaches zero, reload within 180 days to avoid disconnection. These are separate lifecycle clocks; no fixed minimum annual retention cost is established here.",
+          "intervalDays": null,
+          "state": "provider-official-dual-lifecycle-no-fixed-cost"
+        },
+        "chinaActivation": "Remote/China-first registration and activation are not established by current provider material.",
+        "kyc": "SIM registration is mandatory. Foreign tourists are capped at 30 days unless an approved visa extension is supplied; foreign nationals holding other visa types are not subject to that temporary 30-day validity period.",
+        "payment": "Smart supports prepaid loading; the minimum universally available reload amount and foreign-card acceptance are not established here.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "hold-foreign-tourist-30d",
+        "guideEligible": false,
+        "holdReason": "Foreign-tourist registrations are automatically deactivated after 30 days unless an approved visa extension is supplied. Long-term eligibility exists for other visa categories, but no current foreign-user end-to-end reproduction is captured.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://smart.com.ph/Pages/esim",
+        "tariffSummary": "P99 prepaid eSIM; ordinary prepaid value is valid 365 days, with a separate 180-day reload grace after balance reaches zero.",
+        "sourceIds": [
+          "smart-prepaid-validity-20260929",
+          "smart-simreg-foreigners-20260929",
+          "smart-esim-20260929"
+        ],
+        "guideSteps": [
+          "Register the SIM under the correct foreign-national eligibility category.",
+          "Track loaded-value expiry separately from the zero-balance reload grace.",
+          "Do not treat a tourist-registered SIM as a long-term route without an approved visa extension."
+        ]
+      }
+    }
+  ]
+}

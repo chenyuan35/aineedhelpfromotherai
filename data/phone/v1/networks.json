@@ -155,6 +155,11 @@
     "marketId": "es"
   },
   {
+    "id": "mtn-ng",
+    "name": "MTN Nigeria",
+    "marketId": "ng"
+  },
+  {
     "id": "mts-ru",
     "name": "MTS RU",
     "marketId": "ru"
@@ -228,6 +233,11 @@
     "id": "slt-mobitel-lk",
     "name": "SLT-Mobitel",
     "marketId": "lk"
+  },
+  {
+    "id": "smart-ph",
+    "name": "Smart (PLDT)",
+    "marketId": "ph"
   },
   {
     "id": "spark-nz",

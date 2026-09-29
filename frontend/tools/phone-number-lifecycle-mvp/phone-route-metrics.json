@@ -398,6 +398,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "id-mobile-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 6,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "jio-prepaid-90d-trai-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -566,6 +578,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "mtn-ng-keepmynumber-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "NGN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "NGN",
+      "keepYearCostOriginal": 2500,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 1095
+    },
+    {
       "routeId": "mts-sokhranyayu-nomer-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -732,6 +756,18 @@
       "keepYearCostOriginal": 5,
       "keepYearCostCny": 21.5,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "smart-prepaid-ph-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PHP",
+      "acquisitionCostOriginal": 99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PHP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "smspool-temp",

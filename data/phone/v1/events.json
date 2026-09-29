@@ -171,6 +171,15 @@
     "sourceId": "official-gp-recharge-validity-2026-09-29"
   },
   {
+    "id": "evt-id-mobile-uk-2026-db-c4b-review-20260929",
+    "routeId": "id-mobile-uk-2026",
+    "type": "lifecycle-conflict-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current PAYG legal terms permit disconnection after four months without credit, a bundle or a chargeable event and expire unused credit after 365 days without an additional top-up. Current iD marketing/community wording also says 180 days, so the conflict is preserved rather than silently choosing the looser interval.",
+    "sourceId": "id-mobile-payg-terms-20260929"
+  },
+  {
     "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",
     "routeId": "kyivstar-prepaid-274-91-2026",
     "type": "evidence-refresh",
@@ -243,6 +252,15 @@
     "sourceId": "official-mobitel-number-retention-2026-09-29"
   },
   {
+    "id": "evt-mtn-ng-keepmynumber-2026-db-c4b-review-20260929",
+    "routeId": "mtn-ng-keepmynumber-2026",
+    "type": "cost-and-eligibility-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Current MTN prices are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. Current prepaid terms also establish a visitor registration path without NIN for stays under 24 months, subject to valid visa and passport/travel documentation.",
+    "sourceId": "mtn-ng-kmn-20260929"
+  },
+  {
     "id": "evt-mts-sokhranyayu-nomer-2026-db-c2-review-20260929",
     "routeId": "mts-sokhranyayu-nomer-2026",
     "type": "evidence-refresh",
@@ -304,6 +322,15 @@
     "scope": "route",
     "outcome": "Daima pricing remains directly documented on Safaricom pages: KSh200/6 months, KSh500/1 year and KSh1000/2 years. The product pages are older, so continued live availability remains a monitoring item.",
     "sourceId": "safaricom-daima-faq-2026-09-29"
+  },
+  {
+    "id": "evt-smart-prepaid-ph-2026-db-c4b-review-20260929",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "eligibility-and-lifecycle-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Smart ordinary prepaid lifecycle remains 365 days for loaded value plus a 180-day reload grace after balance reaches zero, but foreign tourists face a separate 30-day SIM-registration validity cap unless an approved visa extension is supplied. The legacy route is therefore not treated as a generally available long-term foreign-user route.",
+    "sourceId": "smart-simreg-foreigners-20260929"
   },
   {
     "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",

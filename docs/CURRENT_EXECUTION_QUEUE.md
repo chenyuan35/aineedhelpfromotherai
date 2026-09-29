@@ -8,7 +8,7 @@ Last updated: 2026-09-29
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. After DB-C4A: **135 comparison routes / 92 canonical normalized routes / 81 comparison↔canonical route-ID overlaps / 54 comparison routes still legacy-only / 3 indexable routes**.
+3. After DB-C4B: **135 comparison routes / 95 canonical normalized routes / 84 comparison↔canonical route-ID overlaps / 51 comparison routes still legacy-only / 3 indexable routes**.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -16,13 +16,13 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 
-## JUST COMPLETED — Backend database coverage DB-C4A
+## JUST COMPLETED — Backend database coverage DB-C4B
 
-The first 3/12 DB-C4 legacy-only routes were independently reviewed and normalized through reviewed packets.
+The next 3 DB-C4 legacy-only routes were independently reviewed and normalized through approved backstage packets.
 
-Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. FROG is admitted backstage with the current EUR13 electronic top-up minimum and the provider's 13-month number-renewal window kept distinct from balance/service timing. Optus Flex Plus is HOLD because its legacy long-expiry economics are stale and the provider has a scheduled 2026-09-30 price change. Lebara France is HOLD because it now uses SFR and current provider material separates 90-day recharge validity from a 90-consecutive-day no-service-use termination rule.
+Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. Smart Prepaid is HOLD because its ordinary 365-day loaded-value / 180-day zero-balance lifecycle is separate from the 30-day foreign-tourist SIM-registration cap. MTN Nigeria Keep My Number is ADMIT-BACKSTAGE with current NGN3,500/1y, NGN5,000/2y and NGN7,500/3y pricing plus the current visitor registration exception to NIN for stays under 24 months. iD Mobile is HOLD because current legal PAYG terms use a 120-day/four-month inactivity clock while current iD marketing/community copy says 180 days.
 
-Canonical result after DB-C4A: **92 routes / 52 markets / 89 brands / 70 networks / 305 sources**. Comparison remains **135**, comparison↔canonical overlap is **81**, **54 comparison routes remain legacy-only**, and explicit indexability remains **3**. Local Phone checks and the full frontend build preserve 135 comparison routes / 3 route detail pages / 0 market detail pages.
+Canonical result after DB-C4B: **95 routes / 53 markets / 92 brands / 72 networks / 313 sources**. Comparison remains **135**, comparison↔canonical overlap is **84**, **51 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve 135 comparison routes and the 3-route publication boundary.
 
 ## ACTIVE — Backend database coverage DB-C4
 
@@ -30,15 +30,12 @@ Continue with the next distinct low-cost / decision-useful legacy-only routes. L
 
 Candidates:
 
-1. `smart-prepaid-ph-2026`
-2. `mtn-ng-keepmynumber-2026`
-3. `id-mobile-uk-2026`
-4. `us-mobile-light-2026`
-5. `lycamobile-us-2026`
-6. `orange-sn-sama-numero-2026`
-7. `elisa-prepaid-fi-2026`
-8. `cyta-soeasy-cy-2026`
-9. `hotmobile-il-2026`
+1. `us-mobile-light-2026`
+2. `lycamobile-us-2026`
+3. `orange-sn-sama-numero-2026`
+4. `elisa-prepaid-fi-2026`
+5. `cyta-soeasy-cy-2026`
+6. `hotmobile-il-2026`
 
 ### DB-C4 acceptance flow
 

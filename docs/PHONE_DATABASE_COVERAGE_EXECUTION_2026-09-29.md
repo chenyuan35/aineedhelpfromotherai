@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C4A
+## Current verified state after DB-C4B
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **92 routes / 52 markets / 305 sources**;
-- comparison↔canonical route-ID overlap: **81**;
-- comparison routes still legacy-only: **54**;
+- canonical normalized database: **95 routes / 53 markets / 313 sources**;
+- comparison↔canonical route-ID overlap: **84**;
+- comparison routes still legacy-only: **51**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -118,4 +118,16 @@ The first three DB-C4 candidates were independently reviewed as the required sam
 
 Post-DB-C4A state: **92 canonical routes / 52 markets / 89 brands / 70 networks / 305 sources / 81 comparison-overlap route IDs / 54 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks and the frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages**.
 
-DB-C4 remains active with the remaining nine candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
+DB-C4 remains active with the remaining six candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
+
+## DB-C4B — completed 2026-09-29
+
+The next three DB-C4 candidates were independently reviewed and normalized through approved backstage packets. Final DB-C4B disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `smart-prepaid-ph-2026` — HOLD. Current provider material keeps ordinary loaded value valid for 365 days and gives a 180-day reload grace after balance reaches zero, but tourist-registered foreign SIMs are valid only 30 days unless an approved visa extension is supplied; other visa categories are not subject to that temporary cap.
+- `mtn-ng-keepmynumber-2026` — ADMIT-BACKSTAGE. Current MTN Keep My Number prices are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. Current prepaid terms also correct the old blanket NIN assumption: visitors staying under 24 months may register with a valid visa and passport/travel document instead of NIN.
+- `id-mobile-uk-2026` — HOLD. Current PAYG legal terms use a four-month/120-day inactivity clock and 365-day unused-credit expiry, while current iD marketing and a provider employee community answer say 180 days; the stricter legal clock is retained operationally and the conflict stays explicit.
+
+Post-DB-C4B state: **95 canonical routes / 53 markets / 92 brands / 72 networks / 313 sources / 84 comparison-overlap route IDs / 51 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks preserve **135 comparison routes / 3 explicit indexable routes**.
+
+DB-C4 remains active with the remaining six candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.

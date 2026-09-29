@@ -264,6 +264,24 @@
     "reportedAt": "2026-08-28"
   },
   {
+    "id": "id-mobile-180d-community-20251121",
+    "url": "https://community.idmobile.co.uk/bills-payments-charges-21/what-are-the-pay-as-you-go-rates-and-conditions-please-86563",
+    "type": "provider-moderated-community",
+    "reportedAt": "2025-11-21"
+  },
+  {
+    "id": "id-mobile-payg-product-20260929",
+    "url": "https://www.idmobile.co.uk/sim-only-deals/pay-as-you-go",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "id-mobile-payg-terms-20260929",
+    "url": "https://www.idmobile.co.uk/legal/terms-and-conditions/pay-as-you-go",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "kyivstar-additional-prepaid-2026-09-29",
     "url": "https://kyivstar.ua/additional-prepaid",
     "type": "provider-official",
@@ -489,6 +507,18 @@
     "id": "lyca-uk-network-20260929",
     "url": "https://www.mobilecoverage.co.uk/networks/lycamobile/compare-ee",
     "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "mtn-ng-kmn-20260929",
+    "url": "https://www.mtn.ng/sim/keep-my-number/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "mtn-ng-prepaid-terms-20260929",
+    "url": "https://www.mtn.ng/legal/prepaid/",
+    "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
   {
@@ -1496,6 +1526,24 @@
   {
     "id": "safaricom-daima-terms-2026-09-29",
     "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-the-safaricom-daima-bundles-service",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "smart-esim-20260929",
+    "url": "https://smart.com.ph/Pages/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "smart-prepaid-validity-20260929",
+    "url": "https://help.smart.com.ph/prepaid-call-and-text-card-expiry-and-validity/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "smart-simreg-foreigners-20260929",
+    "url": "https://smart.com.ph/Corporate/docs/default-source/default-document-library/simreg/Prepaid_Individual_Registration.pdf",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },

@@ -198,6 +198,12 @@
     "marketId": "my"
   },
   {
+    "id": "id-mobile-uk",
+    "networkId": "three-uk",
+    "name": "iD Mobile",
+    "marketId": "gb"
+  },
+  {
     "id": "jio-prepaid",
     "networkId": "jio-in",
     "name": "Jio Prepaid",
@@ -268,6 +274,12 @@
     "networkId": "movistar-es",
     "name": "Movistar Prepago",
     "marketId": "es"
+  },
+  {
+    "id": "mtn-ng-prepaid",
+    "networkId": "mtn-ng",
+    "name": "MTN Nigeria Prepaid",
+    "marketId": "ng"
   },
   {
     "id": "mts-prepaid",
@@ -352,6 +364,12 @@
     "networkId": "spark-nz",
     "name": "Skinny Mobile",
     "marketId": "nz"
+  },
+  {
+    "id": "smart-ph",
+    "networkId": "smart-ph",
+    "name": "Smart Prepaid",
+    "marketId": "ph"
   },
   {
     "id": "smspool-global",
