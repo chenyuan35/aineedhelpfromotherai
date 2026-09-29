@@ -1405,6 +1405,38 @@
       }
     },
     {
+      "id": "lycamobile-us-2026",
+      "displayName": "Lyca Mobile US",
+      "marketId": "us",
+      "marketName": "United States",
+      "countryCode": "US",
+      "networkName": "AT&T US",
+      "brandName": "Lyca Mobile US",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 2,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "lycamobile-us-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "USD",
+        "acquisitionCostOriginal": 108,
+        "acquisitionCostCny": null,
+        "keepCurrency": "USD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 60
+      }
+    },
+    {
       "id": "magticom-number-maintenance-2026",
       "displayName": "Magticom Number Maintenance",
       "marketId": "ge",
@@ -1850,6 +1882,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "orange-sn-sama-numero-2026",
+      "displayName": "Orange Senegal Sama Numéro",
+      "marketId": "sn",
+      "marketName": "Senegal",
+      "countryCode": "SN",
+      "networkName": "Orange Senegal",
+      "brandName": "Orange Senegal Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "orange-sn-sama-numero-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "XOF",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "XOF",
+        "keepYearCostOriginal": 5000,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -2810,6 +2874,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "us-mobile-light-2026",
+      "displayName": "US Mobile Light",
+      "marketId": "us",
+      "marketName": "United States",
+      "countryCode": "US",
+      "networkName": "US Mobile multi-network",
+      "brandName": "US Mobile",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "us-mobile-light-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "USD",
+        "acquisitionCostOriginal": 10,
+        "acquisitionCostCny": null,
+        "keepCurrency": "USD",
+        "keepYearCostOriginal": 96,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {

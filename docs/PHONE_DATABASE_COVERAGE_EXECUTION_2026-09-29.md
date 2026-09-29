@@ -133,3 +133,15 @@ Post-DB-C4B state: **95 canonical routes / 53 markets / 92 brands / 72 networks 
 Release: PR #309 (`518e7ab737e4ec53a8dba2740e1e752e83adc96a`) merged after Eval Gate #957, CI #183 and Vercel Preview passed; production succeeded. Live checks confirmed the hub and existing VOXI detail at HTTP 200 and the non-indexable MTN Nigeria route at HTTP 404.
 
 DB-C4 remains active with the remaining six candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
+
+## DB-C4C — completed 2026-09-29
+
+The next three DB-C4 candidates were independently reviewed and normalized through approved backstage packets. Final DB-C4C disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `us-mobile-light-2026` — HOLD. Current Light pricing remains USD10/month or USD96/year. Native roaming requires prior domestic U.S. usage, and Warp/Dark Star Wi-Fi Calling setup requires U.S. coverage; a general China-first route is not established.
+- `lycamobile-us-2026` — HOLD. Current official terms retain the 60-day non-use expiry. The old USD120/year minimum is withdrawn because current long-term pricing includes USD108/12 months, while exact minimum PAYG keep-alive economics remain unresolved. Current evidence places service on AT&T and preserves 2026 migration incidents without converting them into a failure-rate claim.
+- `orange-sn-sama-numero-2026` — ADMIT-BACKSTAGE. Current Sama Numéro pricing is XOF3,000/6 months, XOF5,000/12 months and XOF10,000/24 months, payable from airtime or Orange Money; validity begins at subscription. Teeru tourist SIM/eSIM also explicitly supports extension through Sama Numéro.
+
+Post-DB-C4C state: **98 canonical routes / 54 markets / 95 brands / 74 networks / 323 sources / 87 comparison-overlap route IDs / 48 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks preserve **135 comparison routes / 3 explicit indexable routes**.
+
+DB-C4 remains active with `elisa-prepaid-fi-2026`, `cyta-soeasy-cy-2026` and `hotmobile-il-2026` as the next bounded candidates.

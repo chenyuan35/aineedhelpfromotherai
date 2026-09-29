@@ -510,6 +510,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "lyca-us-att-community-20260109",
+    "url": "https://www.reddit.com/r/NoContract/comments/1q7u1ba/did_lycamobile_switch_to_att_network_the_last/",
+    "type": "independent-community",
+    "reportedAt": "2026-01-09"
+  },
+  {
+    "id": "lyca-us-att-guide-202606",
+    "url": "https://www.lycamobile.us/blog/en/world-cup-2026-esim-guide-host-cities/",
+    "type": "provider-official",
+    "reportedAt": "2026-06-01"
+  },
+  {
+    "id": "lyca-us-longterm-20260929",
+    "url": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lyca-us-migration-incident-20260318",
+    "url": "https://www.reddit.com/r/NoContract/comments/1rxdofr/dont_use_lyca_mobile/",
+    "type": "independent-community",
+    "reportedAt": "2026-03-18"
+  },
+  {
     "id": "mtn-ng-kmn-20260929",
     "url": "https://www.mtn.ng/sim/keep-my-number/",
     "type": "provider-official",
@@ -1458,6 +1482,24 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "orange-sn-sama-numero-20260929",
+    "url": "https://www.orange.sn/actualite/sama-numero",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "orange-sn-sama-tutorial-20260929",
+    "url": "https://orange.sn/assistance/tutoriels/sama-numero-conserver-mon-numero-plus-longtemps",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "orange-sn-teeru-20260929",
+    "url": "https://orange.sn/offers/teeru",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "orange-validity-20260929",
     "url": "https://www.orange.ro/help/Ce-inseamna-valabilitate-optiune-si-valabilitate-cartela-Prepay-9568",
     "type": "provider-official",
@@ -1838,6 +1880,24 @@
   {
     "id": "truemove-provider-root-2026-09-27",
     "url": "https://www.true.th/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "us-mobile-light-plan-20260929",
+    "url": "https://www.usmobile.com/get-started-bundles",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "us-mobile-roaming-provisioning-20260929",
+    "url": "https://www.usmobile.com/help/docs/international-travel/international-data-coverage-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "us-mobile-wifi-calling-20260929",
+    "url": "https://www.usmobile.com/help/docs/troubleshooting-and-setup/setting-up-device/wifi-calling",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },

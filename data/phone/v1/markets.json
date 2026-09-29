@@ -225,6 +225,11 @@
     "countryCode": "SK"
   },
   {
+    "id": "sn",
+    "name": "Senegal",
+    "countryCode": "SN"
+  },
+  {
     "id": "th",
     "name": "Thailand",
     "countryCode": "TH"

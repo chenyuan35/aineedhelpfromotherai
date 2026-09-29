@@ -2981,6 +2981,64 @@
     }
   },
   {
+    "id": "snap-lycamobile-us-2026-current-profile-20260929",
+    "routeId": "lycamobile-us-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4c-reviewed-2026-09-29",
+    "data": {
+      "id": "lycamobile-us-2026",
+      "brandId": "lycamobile-us",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Lyca Mobile US sells physical SIM and eSIM prepaid service. Current official 2026 material identifies AT&T coverage; a current long-term 8 GB plan is USD 108 for 12 months.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 108,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 108,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-12m-plan-reference-not-minimum-entry"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Official plan terms say the SIM and assigned number expire after 60 days of non-use. Use within that interval is required; exact minimum PAYG/top-up action cost is not established in current evidence.",
+        "intervalDays": 60,
+        "state": "provider-official-60d-use-clock-cost-unresolved"
+      },
+      "chinaActivation": "Current eSIM material does not establish a reliable China-first activation path. Earlier VPN/address workaround claims are not promoted without current independent reproduction.",
+      "kyc": "Current Lyca material markets prepaid service without credit checks; identity requirements for every path are not established here.",
+      "payment": "A valid payment method is required; foreign-card/crypto-funded-card reliability is not promoted as verified.",
+      "wifiCalling": "not reconciled",
+      "roamingSms": "The current long-term offer includes USD 5 roaming credit, but China-specific incoming-SMS behavior and minimum roaming-credit mechanics are unresolved.",
+      "refund": "Prepaid plans are described as non-refundable in current plan terms.",
+      "trend": "hold-migration-and-minimum-retention-cost",
+      "guideEligible": false,
+      "holdReason": "The 60-day non-use clock is current, but the exact lowest-cost keep-alive action and China-first activation/roaming path remain unresolved. 2026 AT&T migration incidents also lower operational confidence.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.lycamobile.us/en/plan/23-unlimited-international-plan-longterm/",
+      "tariffSummary": "60-day non-use expiry is current. USD 108/12-month 8 GB plan is current, but it is not treated as the minimum keep-alive cost.",
+      "sourceIds": [
+        "lyca-us-longterm-20260929",
+        "lyca-us-att-guide-202606",
+        "lyca-us-att-community-20260109",
+        "lyca-us-migration-incident-20260318"
+      ],
+      "guideSteps": [
+        "Do not use the old USD 120/year figure as a minimum-retention rule.",
+        "Keep activity inside the official 60-day non-use window.",
+        "Treat overseas activation and China SMS behavior as unresolved until reproduced."
+      ]
+    }
+  },
+  {
     "id": "snap-magticom-number-maintenance-2026-current-profile-20260929",
     "routeId": "magticom-number-maintenance-2026",
     "kind": "current-profile",
@@ -4012,6 +4070,63 @@
         "Directory card."
       ],
       "marketName": "Romania"
+    }
+  },
+  {
+    "id": "snap-orange-sn-sama-numero-2026-current-profile-20260929",
+    "routeId": "orange-sn-sama-numero-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4c-reviewed-2026-09-29",
+    "data": {
+      "id": "orange-sn-sama-numero-2026",
+      "brandId": "orange-sn-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Sama Numéro is a retention add-on for eligible Orange/Kirène lines rather than a standalone SIM. Orange currently sells the Teeru tourist SIM/eSIM for XOF 9,900 with 30-day number validity and explicitly allows extension through Sama Numéro.",
+      "landedCost": {
+        "currency": "XOF",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "base-line-acquisition-varies-teeru-reference-9900"
+      },
+      "keep": {
+        "currency": "XOF",
+        "observedActionCost": 5000,
+        "yearCostOriginal": 5000,
+        "yearCostCny": null,
+        "action": "Buy Sama Numéro validity: XOF 3,000/6 months, XOF 5,000/12 months or XOF 10,000/24 months. Pay from airtime via #165#/#166# or Orange Money via #144#. Validity starts on the subscription date.",
+        "intervalDays": 365,
+        "state": "current-provider-dedicated-retention"
+      },
+      "chinaActivation": "Initial line acquisition/registration is a Senegal-side process in current provider material. Sama Numéro is intended for customers who will be abroad for long periods after acquiring the line.",
+      "kyc": "The Teeru tourist acquisition path requires identity/travel documentation; Sama Numéro preserves an already registered eligible line.",
+      "payment": "Sama Numéro can be paid from telephone credit via #165#/#166# or Orange Money via #144#.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Sama Numéro preserves the number/account, but current evidence does not establish China-specific incoming SMS or OTP reliability.",
+      "refund": "not reconciled",
+      "trend": "current-dedicated-retention",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.orange.sn/actualite/sama-numero",
+      "tariffSummary": "Sama Numéro: XOF 3,000/6mo, XOF 5,000/12mo, XOF 10,000/24mo; no regular recharge required during purchased validity.",
+      "sourceIds": [
+        "orange-sn-sama-numero-20260929",
+        "orange-sn-sama-tutorial-20260929",
+        "orange-sn-teeru-20260929"
+      ],
+      "guideSteps": [
+        "Acquire and register an eligible Orange/Kirène line in Senegal.",
+        "Before a long absence, subscribe to Sama Numéro with airtime or Orange Money.",
+        "Choose 6, 12 or 24 months and track validity from the subscription date."
+      ]
     }
   },
   {
@@ -6510,6 +6625,63 @@
         "summary": "Check Ultra PayGo renewal balance",
         "description": "Make sure the PayGo wallet can cover the recurring $3 charge before the 30-day renewal boundary. The calendar event is placed 3 days early as a product-side buffer."
       }
+    }
+  },
+  {
+    "id": "snap-us-mobile-light-2026-current-profile-20260929",
+    "routeId": "us-mobile-light-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c4c-reviewed-2026-09-29",
+    "data": {
+      "id": "us-mobile-light-2026",
+      "brandId": "us-mobile-us",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Light is currently USD 10/month or USD 96 for 12 months, with 2 GB and unlimited domestic talk/text.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-monthly-price"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 96,
+        "yearCostOriginal": 96,
+        "yearCostCny": null,
+        "action": "Use the annual Light subscription for a current USD 96/year service path. No PAYG retention route or post-lapse number-hold interval is established here.",
+        "intervalDays": 365,
+        "state": "current-provider-annual-plan"
+      },
+      "chinaActivation": "eSIM delivery alone does not establish a complete overseas-first route. Native roaming requires prior domestic U.S. usage.",
+      "kyc": "not reconciled",
+      "payment": "Foreign-card acceptance is not treated as verified in this review.",
+      "wifiCalling": "Included on Light. Warp and Dark Star setup requires U.S. coverage; Light Speed has a dashboard enablement flow.",
+      "roamingSms": "Native roaming requires prior domestic U.S. usage; Light-specific China roaming/SMS availability is unresolved.",
+      "refund": "not reconciled",
+      "trend": "stable-plan-hold-overseas-first",
+      "guideEligible": false,
+      "holdReason": "USD 96/year is current, but native roaming requires prior domestic U.S. usage and some network choices require U.S.-side Wi-Fi Calling setup. China-first use is not established.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.usmobile.com/get-started-bundles",
+      "tariffSummary": "Light: USD 10 monthly or USD 96/year; native roaming requires prior domestic U.S. usage.",
+      "sourceIds": [
+        "us-mobile-light-plan-20260929",
+        "us-mobile-roaming-provisioning-20260929",
+        "us-mobile-wifi-calling-20260929"
+      ],
+      "guideSteps": [
+        "Treat this as a U.S.-first route, not a China-first route.",
+        "If relying on roaming, establish domestic U.S. usage before departure.",
+        "Configure Wi-Fi Calling before departure when the selected network requires U.S. coverage for setup."
+      ]
     }
   },
   {
