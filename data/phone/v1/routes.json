@@ -195,6 +195,62 @@
     ]
   },
   {
+    "id": "cellfie-ge-90-45d-2026",
+    "marketId": "ge",
+    "networkId": "cellfie-ge",
+    "brandId": "cellfie-prepaid",
+    "displayName": "Cellfie Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://cellfie.ge/en/numbers/plans",
+    "sourceIds": [
+      "cellfie-esim-2026-09-29",
+      "cellfie-number-validity-2026-09-29",
+      "cellfie-plans-2026-09-29",
+      "cellfie-tbilisi-expats-2026-07-17"
+    ]
+  },
+  {
+    "id": "cht-ruyi-180d-2026",
+    "marketId": "tw",
+    "networkId": "chunghwa-tw",
+    "brandId": "cht-ruyi",
+    "displayName": "Chunghwa Telecom Prepaid (Ruyi)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+    "sourceIds": [
+      "cht-prepaid-apply-2026-09-29",
+      "cht-prepaid-intro-2026-09-29",
+      "cht-prepaid-recharge-2026-09-29"
+    ]
+  },
+  {
+    "id": "claro-pre-br-90d-2026",
+    "marketId": "br",
+    "networkId": "claro-br",
+    "brandId": "claro-pre-br",
+    "displayName": "Claro Pré Brazil",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.claro.com.br/celular/planos-pre",
+    "sourceIds": [
+      "claro-prepaid-plan-legacy-2026-09-26"
+    ]
+  },
+  {
     "id": "clubsim-sms-pack-6hkd-2026",
     "marketId": "hk",
     "networkId": "csl-hk",
@@ -230,6 +286,26 @@
     "sourceIds": [
       "cmhk-mysim-hk-community",
       "cmhk-mysim-hk-official"
+    ]
+  },
+  {
+    "id": "dialog-lk-365d-2026",
+    "marketId": "lk",
+    "networkId": "dialog-lk",
+    "brandId": "dialog-prepaid",
+    "displayName": "Dialog Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://dialog.lk/mobile/recharge-cards",
+    "sourceIds": [
+      "dialog-number-recycling-2026-09-29",
+      "dialog-prepaid-terms-2026-09-29",
+      "dialog-recharge-cards-2026-09-29",
+      "dialog-travel-guide-2026-08"
     ]
   },
   {
@@ -271,6 +347,24 @@
       "official-ee-payg-plan-terms-2026-08-24",
       "official-ee-payg-priceguide-2026-06-03",
       "official-ee-payg-topup-help-2026-09-28"
+    ]
+  },
+  {
+    "id": "etisalat-wasel-ae-2026",
+    "marketId": "ae",
+    "networkId": "etisalat-ae",
+    "brandId": "etisalat-ae",
+    "displayName": "e& Wasel Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+    "sourceIds": [
+      "eand-wasel-faq-2026-09-29",
+      "eand-wasel-line-2026-09-29"
     ]
   },
   {
@@ -451,6 +545,26 @@
     ]
   },
   {
+    "id": "kyivstar-prepaid-274-91-2026",
+    "marketId": "ua",
+    "networkId": "kyivstar-ua",
+    "brandId": "kyivstar-prepaid",
+    "displayName": "Kyivstar Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://kyivstar.ua/additional-prepaid",
+    "sourceIds": [
+      "kyivstar-additional-prepaid-2026-09-29",
+      "kyivstar-enforcement-news-2026-02-04",
+      "kyivstar-esim-starter-2026-09-29",
+      "kyivstar-sim-restore-2026-02-09"
+    ]
+  },
+  {
     "id": "lebara-uk-direct-esim-china",
     "marketId": "gb",
     "networkId": "vodafone-uk",
@@ -588,6 +702,24 @@
     ]
   },
   {
+    "id": "mts-sokhranyayu-nomer-2026",
+    "marketId": "ru",
+    "networkId": "mts-ru",
+    "brandId": "mts-prepaid",
+    "displayName": "MTS Сохраняю номер",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+    "sourceIds": [
+      "mts-keep-number-product-2026-09-29",
+      "mts-long-inactivity-support-2026-09-29"
+    ]
+  },
+  {
     "id": "o2-cz-prepaid-2026",
     "marketId": "cz",
     "networkId": "o2-cz",
@@ -701,6 +833,25 @@
       "official-proximus-paygo-current-2026-09-29",
       "official-proximus-paygo-faq-2026-09-29",
       "proximus-forum-foreign-id-friction-2026-07-03"
+    ]
+  },
+  {
+    "id": "safaricom-daima-2026",
+    "marketId": "ke",
+    "networkId": "safaricom-ke",
+    "brandId": "safaricom-prepaid",
+    "displayName": "Safaricom Daima",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.safaricom.co.ke/media-center-landing/frequently-asked-questions/daima-service",
+    "sourceIds": [
+      "safaricom-daima-faq-2026-09-29",
+      "safaricom-daima-press-2022-10-26",
+      "safaricom-daima-terms-2026-09-29"
     ]
   },
   {
@@ -880,6 +1031,23 @@
     ]
   },
   {
+    "id": "telia-ee-180d-2026",
+    "marketId": "ee",
+    "networkId": "telia-ee",
+    "brandId": "telia-konekaart",
+    "displayName": "Telia Super Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.super.ee/en/stardikas",
+    "sourceIds": [
+      "telia-super-starter-2026-09-29"
+    ]
+  },
+  {
     "id": "telkomsel-simpati-365d-2026",
     "marketId": "id",
     "networkId": "telkomsel-id",
@@ -956,6 +1124,26 @@
     "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "sourceIds": [
       "official-telstra-prepaid-compare-2026-09-26"
+    ]
+  },
+  {
+    "id": "tesco-mobile-payg-uk-2026",
+    "marketId": "gb",
+    "networkId": "o2-uk",
+    "brandId": "tesco-mobile-uk",
+    "displayName": "Tesco Mobile PAYG Essentials",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.tescomobile.com/no-contract-sim",
+    "sourceIds": [
+      "tesco-payg-essentials-2026-09-29",
+      "tesco-payg-mse-migration-2025-09-23",
+      "tesco-payg-no-contract-2026-09-29",
+      "tesco-payg-service-terms-2026-09-29"
     ]
   },
   {
@@ -1056,6 +1244,24 @@
     ]
   },
   {
+    "id": "truemove-validity-pack-th-2026",
+    "marketId": "th",
+    "networkId": "true-th",
+    "brandId": "truemove-th",
+    "displayName": "TrueMove H Prepaid Validity Extension",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.true.th/",
+    "sourceIds": [
+      "truemove-community-signal-2026-09-27",
+      "truemove-provider-root-2026-09-27"
+    ]
+  },
+  {
     "id": "turkcell-tourist-90d-blocker-2026",
     "marketId": "tr",
     "networkId": "turkcell-tr",
@@ -1126,6 +1332,26 @@
     "sourceIds": [
       "official-viettel-kyc-roaming-otp-2026-09-29",
       "specialist-3gviettel-vtvang-2026-09-29"
+    ]
+  },
+  {
+    "id": "vinaphone-giu-so-vn-2026",
+    "marketId": "vn",
+    "networkId": "vinaphone-vn",
+    "brandId": "vinaphone-vn",
+    "displayName": "VinaPhone GS2 Keep Number",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://vinaphone.com.vn/di-dong/gs2/",
+    "sourceIds": [
+      "vinaphone-gs-community-channel-2024-05-23",
+      "vinaphone-gs2-official-2026-09-29",
+      "vinaphone-lifecycle-vnpt-2026-09-29",
+      "vinaphone-sim-price-vnpt-2024-04-13"
     ]
   },
   {

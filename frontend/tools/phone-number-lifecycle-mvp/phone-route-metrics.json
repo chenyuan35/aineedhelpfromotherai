@@ -122,6 +122,42 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "cellfie-ge-90-45d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GEL",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GEL",
+      "keepYearCostOriginal": 0.24,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
+      "routeId": "cht-ruyi-180d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TWD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TWD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
+      "routeId": "claro-pre-br-90d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "BRL",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": null,
+      "keepCurrency": "BRL",
+      "keepYearCostOriginal": 60,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "clubsim-sms-pack-6hkd-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -143,6 +179,18 @@
       "keepCurrency": "HKD",
       "keepYearCostOriginal": 100,
       "keepYearCostCny": 92,
+      "keepIntervalDays": 180
+    },
+    {
+      "routeId": "dialog-lk-365d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "LKR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "LKR",
+      "keepYearCostOriginal": 800,
+      "keepYearCostCny": null,
       "keepIntervalDays": 180
     },
     {
@@ -168,6 +216,18 @@
       "keepYearCostOriginal": 0.4,
       "keepYearCostCny": 3.7,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "etisalat-wasel-ae-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AED",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AED",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "fareastone-prepaid-tw-2026",
@@ -278,6 +338,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "kyivstar-prepaid-274-91-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "UAH",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "UAH",
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 274
+    },
+    {
       "routeId": "lebara-uk-direct-esim-china",
       "checkedAt": "2026-09-12",
       "metricState": "current-profile",
@@ -362,6 +434,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "RUB",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "RUB",
+      "keepYearCostOriginal": 698,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "o2-cz-prepaid-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -432,6 +516,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "safaricom-daima-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KES",
+      "acquisitionCostOriginal": 50,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KES",
+      "keepYearCostOriginal": 500,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "sakura-japan-voice-data",
@@ -542,6 +638,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "telia-ee-180d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 1,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 6,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "telkomsel-simpati-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -588,6 +696,18 @@
       "keepYearCostOriginal": 395,
       "keepYearCostCny": 1860,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "tesco-mobile-payg-uk-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 0.2,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "three-ie-prepay-lifecycle-2026",
@@ -650,6 +770,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "truemove-validity-pack-th-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "THB",
+      "acquisitionCostOriginal": 49,
+      "acquisitionCostCny": null,
+      "keepCurrency": "THB",
+      "keepYearCostOriginal": 140,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "turkcell-tourist-90d-blocker-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -696,6 +828,18 @@
       "keepYearCostOriginal": 50000,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "vinaphone-giu-so-vn-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "VND",
+      "acquisitionCostOriginal": 50000,
+      "acquisitionCostCny": null,
+      "keepCurrency": "VND",
+      "keepYearCostOriginal": 120000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 360
     },
     {
       "routeId": "vodacom-prepaid-83d-2026",

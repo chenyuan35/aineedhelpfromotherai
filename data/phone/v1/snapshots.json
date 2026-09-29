@@ -662,6 +662,167 @@
     }
   },
   {
+    "id": "snap-cellfie-ge-90-45d-2026-current-profile-20260929",
+    "routeId": "cellfie-ge-90-45d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "cellfie-ge-90-45d-2026",
+      "brandId": "cellfie-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Cellfie lists prepaid SIM acquisition online and supports eSIM purchase. Current official web pricing shows a zero-GEL SIM line item with plan selection; shop pricing may differ.",
+      "landedCost": {
+        "currency": "GEL",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 0,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-official-online-sim-listing"
+      },
+      "keep": {
+        "currency": "GEL",
+        "observedActionCost": 0.06,
+        "yearCostOriginal": 0.24,
+        "yearCostCny": null,
+        "action": "Perform a qualifying transaction before 90 days of non-use. The official lifecycle page restarts the 90-day clock after calls/service purchases or similar transactions; use an outgoing paid action rather than relying on passive SMS receipt.",
+        "intervalDays": 90,
+        "state": "current-official-90-day-activity-rule"
+      },
+      "chinaActivation": "Local registration/acquisition remains the practical path; overseas-first activation is not established.",
+      "kyc": "Passport/identity registration is reported by current independent Georgia SIM guides.",
+      "payment": "Local/online Cellfie purchase and top-up methods; foreign-payment acceptance not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "eSIM roaming is supported, but inbound SMS pricing/continuity abroad remains unresolved.",
+      "refund": "No post-cancellation recovery guarantee was found.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://cellfie.ge/en/numbers/plans",
+      "tariffSummary": "90-day non-use clock; from day 91 a GEL0.50/day fee can drain balance, followed by 45-day unilateral block and later cancellation.",
+      "sourceIds": [
+        "cellfie-number-validity-2026-09-29",
+        "cellfie-plans-2026-09-29",
+        "cellfie-esim-2026-09-29",
+        "cellfie-tbilisi-expats-2026-07-17"
+      ],
+      "guideSteps": [],
+      "marketName": "Georgia"
+    }
+  },
+  {
+    "id": "snap-cht-ruyi-180d-2026-current-profile-20260929",
+    "routeId": "cht-ruyi-180d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "cht-ruyi-180d-2026",
+      "brandId": "cht-ruyi",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Chunghwa Telecom prepaid (Ruyi/Ideal) cards are sold through CHT channels. Current pages document prepaid application and recharge products; eSIM availability for this prepaid route was not confirmed.",
+      "landedCost": {
+        "currency": "TWD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-product-confirmed-starter-cost-varies"
+      },
+      "keep": {
+        "currency": "TWD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Recharge qualifying main-account credit before expiry. Current CHT prepaid guidance states the number is valid for 180 days from activation and that qualifying recharge restarts the number-validity period at 180 days.",
+        "intervalDays": 180,
+        "state": "current-official-180-day-recharge-rule-minimum-amount-unresolved"
+      },
+      "chinaActivation": "Application is Taiwan-oriented and requires identity verification; overseas-first activation is not established.",
+      "kyc": "CHT prepaid application requires valid identity documents; current application page should be followed for eligible document combinations.",
+      "payment": "CHT online/service-center/convenience-store recharge channels.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Prepaid mobile data is domestic-only on the reviewed page; voice/SMS roaming details were not fully reconciled.",
+      "refund": "Unused main-account balance can be claimed/transferred under CHT prepaid rules within the documented post-expiry window; promo balances differ.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+      "tariffSummary": "180-day prepaid number validity; qualifying main-account recharge restarts the 180-day period. Current minimum qualifying recharge amount remains unresolved.",
+      "sourceIds": [
+        "cht-prepaid-recharge-2026-09-29",
+        "cht-prepaid-apply-2026-09-29",
+        "cht-prepaid-intro-2026-09-29"
+      ],
+      "guideSteps": [],
+      "marketName": "Taiwan"
+    }
+  },
+  {
+    "id": "snap-claro-pre-br-90d-2026-current-profile-20260929",
+    "routeId": "claro-pre-br-90d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "claro-pre-br-90d-2026",
+      "brandId": "claro-pre-br",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Claro Pré is a real Brazilian prepaid product, but current 2026 lifecycle/recharge details could not be re-captured reliably in this review. Preserve the existing route as a HOLD candidate instead of deleting it.",
+      "landedCost": {
+        "currency": "BRL",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "legacy-price-not-currently-reverified"
+      },
+      "keep": {
+        "currency": "BRL",
+        "observedActionCost": 15,
+        "yearCostOriginal": 60,
+        "yearCostCny": null,
+        "action": "Legacy evidence describes a recharge cadence around 90 days and a later recycle window. Current 2026 terms were not reachable in this review; do not present the BRL15/90-day value as guaranteed current.",
+        "intervalDays": 90,
+        "state": "hold-legacy-lifecycle-current-terms-unavailable"
+      },
+      "chinaActivation": "Brazil prepaid registration/payment constraints apply; overseas-first activation not established.",
+      "kyc": "Brazil subscriber registration applies; exact current non-resident flow unresolved.",
+      "payment": "Local Claro/recharge channels; foreign-payment support unresolved.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Not reverified.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current Claro lifecycle/recharge policy was not retrievable in this evidence round. Keep the route normalized as HOLD with the legacy signal clearly marked unverified.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.claro.com.br/celular/planos-pre",
+      "tariffSummary": "HOLD: legacy ~90-day recharge cadence / later recycle signal; current price and lifecycle need fresh replication.",
+      "sourceIds": [
+        "claro-prepaid-plan-legacy-2026-09-26"
+      ],
+      "guideSteps": [],
+      "marketName": "Brazil"
+    }
+  },
+  {
     "id": "snap-clubsim-sms-pack-6hkd-2026-current-profile-20260928",
     "routeId": "clubsim-sms-pack-6hkd-2026",
     "kind": "current-profile",
@@ -768,6 +929,61 @@
         "cmhk-mysim-hk-official",
         "cmhk-mysim-hk-community"
       ]
+    }
+  },
+  {
+    "id": "snap-dialog-lk-365d-2026-current-profile-20260929",
+    "routeId": "dialog-lk-365d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "dialog-lk-365d-2026",
+      "brandId": "dialog-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Dialog prepaid supports online purchase and eSIM conversion; tourist SIM/eSIM paths are separately available. Current local bare starter pricing was not captured.",
+      "landedCost": {
+        "currency": "LKR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-product-confirmed-local-starter-price-unresolved"
+      },
+      "keep": {
+        "currency": "LKR",
+        "observedActionCost": 400,
+        "yearCostOriginal": 800,
+        "yearCostCny": null,
+        "action": "Use the recharge-validity ladder. Current official values include LKR400 for 180 days and LKR1000 for 365 days; two LKR400 recharges are the cheaper near-year path if validity extends cumulatively up to the 365-day cap.",
+        "intervalDays": 180,
+        "state": "current-official-recharge-ladder-with-stacking-caveat"
+      },
+      "chinaActivation": "Local/tourist activation with identity registration is the practical path; overseas-first activation is not established.",
+      "kyc": "Sri Lanka SIM registration applies; passport registration is used for tourist connections.",
+      "payment": "Dialog online/local recharge channels.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Not sourced in this review.",
+      "refund": "Dedicated recycling guidance states 52-day grace before permanent disconnection and a later recycle window; general T&C wording conflicts on exact timing.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://dialog.lk/mobile/recharge-cards",
+      "tariffSummary": "Current recharge ladder: LKR400/180d or LKR1000/365d. Legacy LKR500/365d claim is stale.",
+      "sourceIds": [
+        "dialog-number-recycling-2026-09-29",
+        "dialog-recharge-cards-2026-09-29",
+        "dialog-prepaid-terms-2026-09-29",
+        "dialog-travel-guide-2026-08"
+      ],
+      "guideSteps": [],
+      "marketName": "Sri Lanka"
     }
   },
   {
@@ -884,6 +1100,59 @@
         "Before 180 days elapse, perform one listed activity; a standard out-of-plan UK SMS is currently 20p.",
         "If EE puts the line into hibernation, contact EE within the following 90 days; after day 270 the number and remaining credit are lost."
       ]
+    }
+  },
+  {
+    "id": "snap-etisalat-wasel-ae-2026-current-profile-20260929",
+    "routeId": "etisalat-wasel-ae-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "etisalat-wasel-ae-2026",
+      "brandId": "etisalat-ae",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "e& UAE Wasel is a prepaid line with lifetime validity tied to continued use. Current pages show prepaid SIM benefits and e& app/self-care account management.",
+      "landedCost": {
+        "currency": "AED",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-product-confirmed-entry-cost-promotion-dependent"
+      },
+      "keep": {
+        "currency": "AED",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Keep using the line by recharging, making or receiving calls, or sending SMS. If the line becomes unused, e& says the number is retained for 12 months and can be revived during that period by a recharge or call.",
+        "intervalDays": 365,
+        "state": "current-official-lifetime-validity-with-12-month-retention"
+      },
+      "chinaActivation": "UAE subscriber registration rules apply; overseas-first acquisition is not assumed.",
+      "kyc": "UAE SIM registration/identity verification required.",
+      "payment": "e& UAE app/self-care and recharge channels.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Wasel supports international roaming; current FAQ explicitly says incoming SMS while roaming is free.",
+      "refund": "If unused, the line is retained for 12 months before final release; exact post-release recovery not guaranteed.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+      "tariffSummary": "Free lifetime validity while the line is used; if unused, number retained 12 months and revivable by recharge or call.",
+      "sourceIds": [
+        "eand-wasel-line-2026-09-29",
+        "eand-wasel-faq-2026-09-29"
+      ],
+      "marketName": "UAE",
+      "guideSteps": []
     }
   },
   {
@@ -1812,6 +2081,61 @@
     }
   },
   {
+    "id": "snap-kyivstar-prepaid-274-91-2026-current-profile-20260929",
+    "routeId": "kyivstar-prepaid-274-91-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "kyivstar-prepaid-274-91-2026",
+      "brandId": "kyivstar-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Kyivstar prepaid can be activated without passport registration according to current operator material; physical and eSIM starter packs are sold through Kyivstar channels.",
+      "landedCost": {
+        "currency": "UAH",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": 30,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-starter-price-varies-retention-threshold-confirmed"
+      },
+      "keep": {
+        "currency": "UAH",
+        "observedActionCost": 30,
+        "yearCostOriginal": 40,
+        "yearCostCny": null,
+        "action": "Make a single top-up of at least UAH30 before the 274-day active period expires. After suspension, the same threshold can restore service within the 91-day recovery window.",
+        "intervalDays": 274,
+        "state": "current-official-274-plus-91-rule"
+      },
+      "chinaActivation": "Acquisition is Ukraine-oriented; overseas-first activation and wartime service continuity are not guaranteed.",
+      "kyc": "Kyivstar describes prepaid as connectable without passport.",
+      "payment": "Kyivstar online/app and local recharge methods.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Some tariffs support roaming bundles; inbound-SMS-abroad behavior was not separately sourced.",
+      "refund": "After the 91-day suspended window, self-service restoration may no longer be available and the number can be reassigned.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://kyivstar.ua/additional-prepaid",
+      "tariffSummary": "274 days active after qualifying top-up/payment, then 91 days suspended/recoverable; UAH30 single top-up restores/extends.",
+      "sourceIds": [
+        "kyivstar-additional-prepaid-2026-09-29",
+        "kyivstar-sim-restore-2026-02-09",
+        "kyivstar-esim-starter-2026-09-29",
+        "kyivstar-enforcement-news-2026-02-04"
+      ],
+      "guideSteps": [],
+      "marketName": "Ukraine"
+    }
+  },
+  {
     "id": "snap-lebara-uk-direct-esim-china-capabilities-7141f5",
     "routeId": "lebara-uk-direct-esim-china",
     "kind": "capabilities",
@@ -2597,6 +2921,59 @@
     }
   },
   {
+    "id": "snap-mts-sokhranyayu-nomer-2026-current-profile-20260929",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "mts-sokhranyayu-nomer-2026",
+      "brandId": "mts-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "MTS \"Сохраняю номер\" is a keep-number add-on for eligible tariffs without a monthly fee. It is managed through My MTS / personal account; this is a retention service on an existing MTS line, not a starter tariff.",
+      "landedCost": {
+        "currency": "RUB",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "existing-line-retention-service-starter-cost-not-applicable"
+      },
+      "keep": {
+        "currency": "RUB",
+        "observedActionCost": 349,
+        "yearCostOriginal": 698,
+        "yearCostCny": null,
+        "action": "Use the Сохраняю номер service for eligible non-monthly-fee tariffs. The reviewed product evidence lists RUB349 for six months; current MTS support separately confirms the service and the default long-inactivity blocking logic.",
+        "intervalDays": 180,
+        "state": "current-provider-service-price-captured-product-page-geo-fragile"
+      },
+      "chinaActivation": "Russian SIM/KYC and payment constraints apply; foreign acquisition and payment from abroad can be difficult.",
+      "kyc": "Subscriber identity registration is required; foreign-citizen rules are more restrictive and should be checked at acquisition.",
+      "payment": "My MTS/personal-account payment; cross-border card/payment reliability is not assumed.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Not used as an admission claim in this packet.",
+      "refund": "If a number is blocked for non-use, MTS says recovery may be possible if it has not been reassigned.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Product/service is admitted backstage, but cross-border acquisition/payment and exact tariff eligibility remain material constraints.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+      "tariffSummary": "Сохраняю номер: reviewed product evidence RUB349/6 months; current MTS support confirms service availability and ~6-month default non-use termination patterns.",
+      "sourceIds": [
+        "mts-long-inactivity-support-2026-09-29",
+        "mts-keep-number-product-2026-09-29"
+      ],
+      "guideSteps": [],
+      "marketName": "Russia"
+    }
+  },
+  {
     "id": "snap-o2-cz-prepaid-2026-current-profile-20260929",
     "routeId": "o2-cz-prepaid-2026",
     "kind": "current-profile",
@@ -2938,6 +3315,60 @@
         "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
         "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
       ]
+    }
+  },
+  {
+    "id": "snap-safaricom-daima-2026-current-profile-20260929",
+    "routeId": "safaricom-daima-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "safaricom-daima-2026",
+      "brandId": "safaricom-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Daima is a retention add-on for an existing active Safaricom Individual Prepay line. Safaricom prepaid acquisition requires subscriber registration; eSIM is available through Safaricom channels.",
+      "landedCost": {
+        "currency": "KES",
+        "providerOrCommunityPrice": 50,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 50,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "community-current-starter-reference"
+      },
+      "keep": {
+        "currency": "KES",
+        "observedActionCost": 500,
+        "yearCostOriginal": 500,
+        "yearCostCny": null,
+        "action": "Purchase Daima for KSh500 to keep an active Individual Prepay line covered for one year. Official options also include KSh200/6 months and KSh1000/2 years.",
+        "intervalDays": 365,
+        "state": "provider-documented-daima-retention-service"
+      },
+      "chinaActivation": "Base SIM acquisition/registration is Kenya-oriented; roaming continuity and overseas-first activation are not established here.",
+      "kyc": "National ID/passport registration is required for Safaricom subscribers.",
+      "payment": "Daima can be purchased through Safaricom USSD/app/web and supported payment rails.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Daima resources are not roaming resources; inbound-SMS-abroad behavior was not sourced.",
+      "refund": "Daima refunds are not allowed after purchase; base-line dormancy/recycling follows Safaricom and regulator rules.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.safaricom.co.ke/media-center-landing/frequently-asked-questions/daima-service",
+      "tariffSummary": "Daima retention: KSh200/6mo, KSh500/1yr, KSh1000/2yr; one active subscription at a time.",
+      "sourceIds": [
+        "safaricom-daima-faq-2026-09-29",
+        "safaricom-daima-terms-2026-09-29",
+        "safaricom-daima-press-2022-10-26"
+      ],
+      "guideSteps": [],
+      "marketName": "Kenya"
     }
   },
   {
@@ -3701,6 +4132,58 @@
     }
   },
   {
+    "id": "snap-telia-ee-180d-2026-current-profile-20260929",
+    "routeId": "telia-ee-180d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "telia-ee-180d-2026",
+      "brandId": "telia-konekaart",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Telia Estonia Super prepaid starter kits are sold online and at more than 1,500 outlets. Current starter options begin at EUR1, and an eSIM starter can be downloaded from the Super app.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 1,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 1,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-official-eur1-starter"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 3,
+        "yearCostOriginal": 6,
+        "yearCostCny": null,
+        "action": "Top up at least EUR3 in a single transaction every 180 days. Splitting EUR3 into smaller top-ups does not extend card validity.",
+        "intervalDays": 180,
+        "state": "current-official-180-day-eur3-rule"
+      },
+      "chinaActivation": "The calling card can only be activated in Estonia according to current Super guidance; do not rely on overseas-first activation.",
+      "kyc": "Exact prepaid ID requirements were not fully reconciled in this review.",
+      "payment": "Online/card/app plus retail top-up channels are supported.",
+      "wifiCalling": "unverified",
+      "roamingSms": "EU roaming is supported for relevant allowances; broader non-EU inbound-SMS behavior is unresolved.",
+      "refund": "After the 180-day validity period there is a 30-day receive/read/top-up window; without a EUR3 single top-up the number and unused prepaid funds are lost.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.super.ee/en/stardikas",
+      "tariffSummary": "EUR3 single top-up extends validity 180 days; after 180 days there is a 30-day incoming/read-message recovery window.",
+      "sourceIds": [
+        "telia-super-starter-2026-09-29"
+      ],
+      "guideSteps": [],
+      "marketName": "Estonia"
+    }
+  },
+  {
     "id": "snap-telkomsel-simpati-365d-2026-current-profile-20260929",
     "routeId": "telkomsel-simpati-365d-2026",
     "kind": "current-profile",
@@ -4122,6 +4605,61 @@
     }
   },
   {
+    "id": "snap-tesco-mobile-payg-uk-2026-current-profile-20260929",
+    "routeId": "tesco-mobile-payg-uk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "tesco-mobile-payg-uk-2026",
+      "brandId": "tesco-mobile-uk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Tesco Mobile PAYG Essentials replaced the older Rocket Packs/Triple Credit/Lite range. A new PAYG Essentials SIM requires a GBP10 minimum initial top-up; bundles are optional and the balance can be used at standard PAYG rates.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": 10,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-official-free-sim-with-gbp10-initial-topup"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 0.1,
+        "yearCostOriginal": 0.2,
+        "yearCostCny": null,
+        "action": "Perform chargeable usage at least once every six months. Current PAYG service terms disconnect accounts after six months of non-use; a standard SMS at the current 10p rate is a low-cost qualifying action.",
+        "intervalDays": 180,
+        "state": "current-official-six-month-usage-rule"
+      },
+      "chinaActivation": "UK activation is expected; overseas-first activation and PAYG eSIM availability are not established by the reviewed evidence.",
+      "kyc": "No mandatory prepaid identity-registration flow was found for Tesco Mobile PAYG.",
+      "payment": "Top up by Tesco Mobile app/card, 4488 voucher/card flow, or store voucher.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Official PAYG roaming exists; incoming-SMS-abroad behavior was not separately documented.",
+      "refund": "Unused credit recovery may be available when leaving; reconnection after inactivity is subject to Customer Care approval and a fee.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.tescomobile.com/no-contract-sim",
+      "tariffSummary": "PAYG Essentials; GBP10 minimum initial top-up; use at least once every 6 months to avoid disconnection. Current standard SMS rate is 10p.",
+      "sourceIds": [
+        "tesco-payg-service-terms-2026-09-29",
+        "tesco-payg-essentials-2026-09-29",
+        "tesco-payg-no-contract-2026-09-29",
+        "tesco-payg-mse-migration-2025-09-23"
+      ],
+      "marketName": "United Kingdom",
+      "guideSteps": []
+    }
+  },
+  {
     "id": "snap-three-ie-prepay-lifecycle-2026-current-profile-20260929",
     "routeId": "three-ie-prepay-lifecycle-2026",
     "kind": "current-profile",
@@ -4367,6 +4905,59 @@
       "numberIncluded": "Data only · no durable number",
       "stability": "Watch",
       "caveat": "Cheap mainland-China data route with mixed performance: recent users report 4G-only periods, evening slowdowns and device variation. Treat the 5G label as best-effort, not guaranteed."
+    }
+  },
+  {
+    "id": "snap-truemove-validity-pack-th-2026-current-profile-20260929",
+    "routeId": "truemove-validity-pack-th-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+    "data": {
+      "id": "truemove-validity-pack-th-2026",
+      "brandId": "truemove-th",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "TrueMove H prepaid identity is established, but the current 2026 validity-extension offer could not be independently re-captured in this review. Preserve the legacy/community mechanism as a hold rather than deleting it.",
+      "landedCost": {
+        "currency": "THB",
+        "providerOrCommunityPrice": 49,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 49,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "legacy-community-price-not-currently-reverified"
+      },
+      "keep": {
+        "currency": "THB",
+        "observedActionCost": 70,
+        "yearCostOriginal": 140,
+        "yearCostCny": null,
+        "action": "Legacy/community evidence describes validity-extension packs around THB35/90d and THB70/180d. Current 2026 terms were not reachable in this review, so do not treat these prices as guaranteed current.",
+        "intervalDays": 180,
+        "state": "hold-community-mechanism-current-price-unverified"
+      },
+      "chinaActivation": "Thai prepaid registration applies; overseas purchase/first activation not established here.",
+      "kyc": "Thai SIM registration required; exact current foreign-passport flow not reverified in this packet.",
+      "payment": "Community reports remote top-up/validity-extension access; exact current payment rails unresolved.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Roaming/inbound SMS not reverified.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Current first-party validity-extension terms and price were not retrievable; preserve the community-discovered mechanism as HOLD pending replication.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.true.th/",
+      "tariffSummary": "HOLD: community-described validity-extension packs; legacy THB70/180d retained as an unverified signal, not a guaranteed current price.",
+      "sourceIds": [
+        "truemove-community-signal-2026-09-27",
+        "truemove-provider-root-2026-09-27"
+      ],
+      "marketName": "Thailand",
+      "guideSteps": []
     }
   },
   {
@@ -4990,6 +5581,61 @@
         "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
         "Require first-party package/eligibility and foreign-acquisition verification before promotion."
       ]
+    }
+  },
+  {
+    "id": "snap-vinaphone-giu-so-vn-2026-current-profile-20260929",
+    "routeId": "vinaphone-giu-so-vn-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "db-c2-lane-a-reviewed-2026-09-29",
+    "data": {
+      "id": "vinaphone-giu-so-vn-2026",
+      "brandId": "vinaphone-vn",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "VinaPhone prepaid supports physical SIM and eSIM. The GS2 keep-number add-on is a retention service on a base prepaid line rather than a standalone tariff.",
+      "landedCost": {
+        "currency": "VND",
+        "providerOrCommunityPrice": 50000,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 50000,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-official-esim-price-reference"
+      },
+      "keep": {
+        "currency": "VND",
+        "observedActionCost": 120000,
+        "yearCostOriginal": 120000,
+        "yearCostCny": null,
+        "action": "Register GS2 by SMS to add 360 days of SIM validity. The current GS2 page lists VND120,000 and permits repeated registrations with cumulative validity.",
+        "intervalDays": 360,
+        "state": "current-official-gs2-360-day-rule"
+      },
+      "chinaActivation": "A base line must be activated and subscriber information standardized; overseas-first activation is not established.",
+      "kyc": "Subscriber identity registration/standardization is required.",
+      "payment": "Vietnamese prepaid/recharge channels; exact foreign-card support not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Incoming-SMS-abroad behavior was not sourced in this review.",
+      "refund": "Expired lines follow VinaPhone lock/recovery windows; post-cancellation number recovery is not guaranteed.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://vinaphone.com.vn/di-dong/gs2/",
+      "tariffSummary": "GS2 keep-number add-on: VND120,000 for +360 days; repeatable/cumulative.",
+      "sourceIds": [
+        "vinaphone-gs2-official-2026-09-29",
+        "vinaphone-lifecycle-vnpt-2026-09-29",
+        "vinaphone-sim-price-vnpt-2024-04-13",
+        "vinaphone-gs-community-channel-2024-05-23"
+      ],
+      "marketName": "Vietnam",
+      "guideSteps": []
     }
   },
   {

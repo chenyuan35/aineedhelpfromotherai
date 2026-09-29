@@ -1,5 +1,53 @@
 [
   {
+    "id": "cellfie-esim-2026-09-29",
+    "url": "https://cellfie.ge/en/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cellfie-number-validity-2026-09-29",
+    "url": "https://cellfie.ge/en/damatebiti-informatsia/nomris-vada",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cellfie-plans-2026-09-29",
+    "url": "https://cellfie.ge/en/numbers/plans",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cellfie-tbilisi-expats-2026-07-17",
+    "url": "https://www.tbilisiexpats.com/living/sim-cards/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cht-prepaid-apply-2026-09-29",
+    "url": "https://www.cht.com.tw/home/campaign/prepaidcard/applynew",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cht-prepaid-intro-2026-09-29",
+    "url": "https://www.cht.com.tw/home/campaign/prepaidcard/intro",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "cht-prepaid-recharge-2026-09-29",
+    "url": "https://www.cht.com.tw/home/campaign/prepaidcard/recharge",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "claro-prepaid-plan-legacy-2026-09-26",
+    "url": "https://www.claro.com.br/celular/planos-pre",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "cmhk-mysim-hk-community",
     "url": "https://prepaid-data-sim-card.fandom.com/wiki/Hong_Kong",
     "type": "community",
@@ -66,6 +114,42 @@
     "reportedAt": "2026-04-20"
   },
   {
+    "id": "dialog-number-recycling-2026-09-29",
+    "url": "https://dialog.lk/number-recycling-process",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "dialog-prepaid-terms-2026-09-29",
+    "url": "https://dialog.lk/tc/prepaid-mobile-terms-and-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "dialog-recharge-cards-2026-09-29",
+    "url": "https://dialog.lk/mobile/recharge-cards",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "dialog-travel-guide-2026-08",
+    "url": "https://gigago.com/dialog-srilanka-sim-cards/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "eand-wasel-faq-2026-09-29",
+    "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "eand-wasel-line-2026-09-29",
+    "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "fareastone-tw-official",
     "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "type": "provider-official",
@@ -88,6 +172,30 @@
     "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
     "type": "first-hand-app-review",
     "reportedAt": "2026-08-28"
+  },
+  {
+    "id": "kyivstar-additional-prepaid-2026-09-29",
+    "url": "https://kyivstar.ua/additional-prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "kyivstar-enforcement-news-2026-02-04",
+    "url": "https://tehnofan.com.ua/2026/02/04/z-6-lyutoho-kyyivstar-pochne-blokuvaty-nomery-yaki-dovho-ne-popovnyalysya-podrobytsi/",
+    "type": "independent-news",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "kyivstar-esim-starter-2026-09-29",
+    "url": "https://shop.kyivstar.ua/tariffplan/starter-packs-esim/startpack-kyivstar-esim-vse-razom-lehkyi.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "kyivstar-sim-restore-2026-02-09",
+    "url": "https://kyivstar.ua/services/prepaid/simcard-rest",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "linuxdo-giffgaff-1615582",
@@ -214,6 +322,18 @@
     "url": "https://linux.do/t/topic/2737575",
     "type": "community-thread",
     "reportedAt": "2026-08-11"
+  },
+  {
+    "id": "mts-keep-number-product-2026-09-29",
+    "url": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "mts-long-inactivity-support-2026-09-29",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/blokirovka-nomera-problemi-so-svyazyu/blokirovka-iz-za-dolgogo-neispolzovaniya-nomera",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "mybroadband-vodacom-overseas-2024-12-18",
@@ -1134,6 +1254,24 @@
     "reportedAt": "2026-08-05"
   },
   {
+    "id": "safaricom-daima-faq-2026-09-29",
+    "url": "https://www.safaricom.co.ke/media-center-landing/frequently-asked-questions/daima-service",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "safaricom-daima-press-2022-10-26",
+    "url": "https://www.safaricom.co.ke/media-center-landing/press-releases/safaricom-launches-daima-service-to-enable-customers-keep-numbers-active-up-to-2-years",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "safaricom-daima-terms-2026-09-29",
+    "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-the-safaricom-daima-bundles-service",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "specialist-3gviettel-vtvang-2026-09-29",
     "url": "https://3gviettel.com.vn/gia-tang-thoi-gian-giu-sim-viettel-voi-goi-vt-vang.html",
     "type": "specialist-media",
@@ -1362,10 +1500,76 @@
     "reportedAt": "2026-09-27"
   },
   {
+    "id": "telia-super-starter-2026-09-29",
+    "url": "https://www.super.ee/en/stardikas",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tesco-payg-essentials-2026-09-29",
+    "url": "https://www.tescomobile.com/content/dam/tesco-mobile/terms-and-conditions/pay-as-you-go/Pay%20as%20you%20go%20essentials%20terms%20and%20conditions%20July%202025.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tesco-payg-mse-migration-2025-09-23",
+    "url": "https://forums.moneysavingexpert.com/discussion/6630473/tesco-mobile-pay-as-you-go-customer-be-prepared-it-may-push-you-to-buy-a-bundle",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tesco-payg-no-contract-2026-09-29",
+    "url": "https://www.tescomobile.com/no-contract-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tesco-payg-service-terms-2026-09-29",
+    "url": "https://www.tescomobile.com/content/dam/tesco-mobile/terms-and-conditions/pay-as-you-go/tesco-mobile-pay-as-you-go-service-january-2026.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "travelask-beeline-sim-safe-incident-2026-09",
     "url": "https://travelask.ru/questions/6973672_kz_u-bilayna-kz-posle-tehnicheskih-rabot-propala-usluga-simka-v",
     "type": "community-incident-thread",
     "reportedAt": "2026-09-25"
+  },
+  {
+    "id": "truemove-community-signal-2026-09-27",
+    "url": "https://www.true.th/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "truemove-provider-root-2026-09-27",
+    "url": "https://www.true.th/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "vinaphone-gs-community-channel-2024-05-23",
+    "url": "https://3gvinaphone.com.vn/goi-cuoc-giu-so-vinaphone.html",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "vinaphone-gs2-official-2026-09-29",
+    "url": "https://vinaphone.com.vn/di-dong/gs2/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "vinaphone-lifecycle-vnpt-2026-09-29",
+    "url": "https://vnptquangngai.vn/page/thoi-han-giu-so-thue-bao",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "vinaphone-sim-price-vnpt-2024-04-13",
+    "url": "https://digishop.vnpt.vn/tin-tuc-km/tu-van/sim-vinaphone-gia-bao-nhieu",
+    "type": "provider-official",
+    "reportedAt": "2026-09-29"
   },
   {
     "id": "vodafone-official-network-trial-2026",

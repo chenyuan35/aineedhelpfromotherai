@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "market": null,
+  "route": {
+    "id": "tesco-mobile-payg-uk-2026",
+    "marketId": "gb",
+    "networkId": "o2-uk",
+    "brandId": "tesco-mobile-uk",
+    "displayName": "Tesco Mobile PAYG Essentials",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.tescomobile.com/no-contract-sim",
+    "sourceIds": [
+      "tesco-payg-service-terms-2026-09-29",
+      "tesco-payg-essentials-2026-09-29",
+      "tesco-payg-no-contract-2026-09-29",
+      "tesco-payg-mse-migration-2025-09-23"
+    ]
+  },
+  "sources": [
+    {"id":"tesco-payg-service-terms-2026-09-29","url":"https://www.tescomobile.com/content/dam/tesco-mobile/terms-and-conditions/pay-as-you-go/tesco-mobile-pay-as-you-go-service-january-2026.pdf","type":"provider-official","reportedAt":"2026-09-29"},
+    {"id":"tesco-payg-essentials-2026-09-29","url":"https://www.tescomobile.com/content/dam/tesco-mobile/terms-and-conditions/pay-as-you-go/Pay%20as%20you%20go%20essentials%20terms%20and%20conditions%20July%202025.pdf","type":"provider-official","reportedAt":"2026-09-29"},
+    {"id":"tesco-payg-no-contract-2026-09-29","url":"https://www.tescomobile.com/no-contract-sim","type":"provider-official","reportedAt":"2026-09-29"},
+    {"id":"tesco-payg-mse-migration-2025-09-23","url":"https://forums.moneysavingexpert.com/discussion/6630473/tesco-mobile-pay-as-you-go-customer-be-prepared-it-may-push-you-to-buy-a-bundle","type":"independent-community","reportedAt":"2026-09-29"}
+  ],
+  "sourceIds": ["tesco-payg-service-terms-2026-09-29","tesco-payg-essentials-2026-09-29","tesco-payg-no-contract-2026-09-29","tesco-payg-mse-migration-2025-09-23"],
+  "observations": [],
+  "events": [{
+    "id":"evt-tesco-mobile-payg-uk-2026-db-c2-review-20260929","routeId":"tesco-mobile-payg-uk-2026","type":"tariff-and-cost-correction","reportedAt":"2026-09-29","scope":"route","outcome":"Legacy 4p-text / GBP0.08-year keep estimate belonged to retired PAYG pricing. Current Essentials standard SMS is 10p, so a two-actions-per-year theoretical floor is about GBP0.20 after the required initial top-up.","sourceId":"tesco-payg-service-terms-2026-09-29"
+  }],
+  "snapshots": [{
+    "id":"snap-tesco-mobile-payg-uk-2026-current-profile-20260929","routeId":"tesco-mobile-payg-uk-2026","kind":"current-profile","checkedAt":"2026-09-29","sourceDataset":"db-c2-lane-a-reviewed-2026-09-29","data":{
+      "id":"tesco-mobile-payg-uk-2026","brandId":"tesco-mobile-uk","publishState":"observation","numberType":"real-mobile","simType":"physical","acquisitionSummary":"Tesco Mobile PAYG Essentials replaced the older Rocket Packs/Triple Credit/Lite range. A new PAYG Essentials SIM requires a GBP10 minimum initial top-up; bundles are optional and the balance can be used at standard PAYG rates.",
+      "landedCost":{"currency":"GBP","providerOrCommunityPrice":0,"mandatoryTopup":10,"shipping":0,"adapterCostCny":null,"landedOriginal":10,"landedCny":null,"fxCheckedAt":null,"state":"current-official-free-sim-with-gbp10-initial-topup"},
+      "keep":{"currency":"GBP","observedActionCost":0.1,"yearCostOriginal":0.2,"yearCostCny":null,"action":"Perform chargeable usage at least once every six months. Current PAYG service terms disconnect accounts after six months of non-use; a standard SMS at the current 10p rate is a low-cost qualifying action.","intervalDays":180,"state":"current-official-six-month-usage-rule"},
+      "chinaActivation":"UK activation is expected; overseas-first activation and PAYG eSIM availability are not established by the reviewed evidence.","kyc":"No mandatory prepaid identity-registration flow was found for Tesco Mobile PAYG.","payment":"Top up by Tesco Mobile app/card, 4488 voucher/card flow, or store voucher.","wifiCalling":"unverified","roamingSms":"Official PAYG roaming exists; incoming-SMS-abroad behavior was not separately documented.","refund":"Unused credit recovery may be available when leaving; reconnection after inactivity is subject to Customer Care approval and a fee.","trend":"watch","guideEligible":false,"holdReason":null,"lastVerifiedAt":"2026-09-29","acquireUrl":"https://www.tescomobile.com/no-contract-sim","tariffSummary":"PAYG Essentials; GBP10 minimum initial top-up; use at least once every 6 months to avoid disconnection. Current standard SMS rate is 10p.","sourceIds":["tesco-payg-service-terms-2026-09-29","tesco-payg-essentials-2026-09-29","tesco-payg-no-contract-2026-09-29","tesco-payg-mse-migration-2025-09-23"],"marketName":"United Kingdom","guideSteps":[]
+    }
+  }],
+  "numberRanges": [],
+  "network": {"id":"o2-uk","name":"O2 UK","marketId":"gb"},
+  "brand": {"id":"tesco-mobile-uk","networkId":"o2-uk","name":"Tesco Mobile","marketId":"gb"}
+}

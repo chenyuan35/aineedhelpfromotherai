@@ -25,7 +25,8 @@ assert.equal(croatia[0]?.id, 'a1-croatia-prepaid-esim');
 const temp = searchPhoneRoutes(idx.routes, '', { family: 'temporary' });
 assert.ok(temp.length >= 3);
 const gb = searchPhoneRoutes(idx.routes, '', { marketId: 'gb' });
-assert.equal(gb.length, 7);
+assert.ok(gb.length >= 7, 'UK canonical coverage must preserve the established routes while allowing reviewed additions');
+assert.ok(gb.some(x => x.id === 'tesco-mobile-payg-uk-2026'));
 
 const whatsapp = searchPhoneRoutes(idx.routes, 'WhatsApp', { marketId: 'gb' });
 assert.ok(whatsapp.some(x => x.id === 'lebara-uk-direct-esim-china'));

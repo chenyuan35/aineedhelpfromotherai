@@ -60,6 +60,24 @@
     "marketId": "kh"
   },
   {
+    "id": "cellfie-prepaid",
+    "networkId": "cellfie-ge",
+    "name": "Cellfie Prepaid",
+    "marketId": "ge"
+  },
+  {
+    "id": "cht-ruyi",
+    "networkId": "chunghwa-tw",
+    "name": "中華電信如意卡",
+    "marketId": "tw"
+  },
+  {
+    "id": "claro-pre-br",
+    "networkId": "claro-br",
+    "name": "Claro Pré",
+    "marketId": "br"
+  },
+  {
     "id": "clubsim-hk",
     "networkId": "csl-hk",
     "name": "ClubSIM",
@@ -72,6 +90,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "dialog-prepaid",
+    "networkId": "dialog-lk",
+    "name": "Dialog Prepaid",
+    "marketId": "lk"
+  },
+  {
     "id": "du-prepaid",
     "networkId": "du-ae",
     "name": "du Prepaid",
@@ -82,6 +106,12 @@
     "networkId": "ee-uk",
     "name": "EE PAYG",
     "marketId": "gb"
+  },
+  {
+    "id": "etisalat-ae",
+    "networkId": "etisalat-ae",
+    "name": "e& Wasel",
+    "marketId": "ae"
   },
   {
     "id": "fareastone-tw",
@@ -138,6 +168,12 @@
     "name": "KPN Prepaid"
   },
   {
+    "id": "kyivstar-prepaid",
+    "networkId": "kyivstar-ua",
+    "name": "Kyivstar Prepaid",
+    "marketId": "ua"
+  },
+  {
     "id": "lebara-uk",
     "networkId": "vodafone-uk",
     "name": "Lebara UK",
@@ -166,6 +202,12 @@
     "networkId": "movistar-es",
     "name": "Movistar Prepago",
     "marketId": "es"
+  },
+  {
+    "id": "mts-prepaid",
+    "networkId": "mts-ru",
+    "name": "MTS Prepaid",
+    "marketId": "ru"
   },
   {
     "id": "o2-cz-prepaid",
@@ -202,6 +244,12 @@
     "networkId": "proximus-be",
     "name": "Proximus Pay&Go+",
     "marketId": "be"
+  },
+  {
+    "id": "safaricom-prepaid",
+    "networkId": "safaricom-ke",
+    "name": "Safaricom Prepaid",
+    "marketId": "ke"
   },
   {
     "id": "sakura-mobile-jp",
@@ -258,6 +306,12 @@
     "marketId": "mx"
   },
   {
+    "id": "telia-konekaart",
+    "networkId": "telia-ee",
+    "name": "Telia Kõnekaart",
+    "marketId": "ee"
+  },
+  {
     "id": "telkomsel-simpati",
     "networkId": "telkomsel-id",
     "name": "Telkomsel SIMPATI",
@@ -274,6 +328,12 @@
     "marketId": "au",
     "networkId": "telstra-au",
     "name": "Telstra Pre-Paid"
+  },
+  {
+    "id": "tesco-mobile-uk",
+    "networkId": "o2-uk",
+    "name": "Tesco Mobile",
+    "marketId": "gb"
   },
   {
     "id": "three-ie-prepay",
@@ -306,6 +366,12 @@
     "name": "Trip.com / China Mobile CMLink"
   },
   {
+    "id": "truemove-th",
+    "networkId": "true-th",
+    "name": "TrueMove H",
+    "marketId": "th"
+  },
+  {
     "id": "turkcell-tourist",
     "networkId": "turkcell-tr",
     "name": "Turkcell Tourist SIM",
@@ -327,6 +393,12 @@
     "id": "viettel-prepaid",
     "networkId": "viettel-vn",
     "name": "Viettel Prepaid",
+    "marketId": "vn"
+  },
+  {
+    "id": "vinaphone-vn",
+    "networkId": "vinaphone-vn",
+    "name": "VinaPhone",
     "marketId": "vn"
   },
   {

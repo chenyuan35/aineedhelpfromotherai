@@ -25,6 +25,11 @@
     "countryCode": "BE"
   },
   {
+    "id": "br",
+    "name": "Brazil",
+    "countryCode": "BR"
+  },
+  {
     "id": "ca",
     "name": "Canada",
     "countryCode": "CA"
@@ -48,6 +53,11 @@
     "id": "de",
     "name": "Germany",
     "countryCode": "DE"
+  },
+  {
+    "id": "ee",
+    "name": "Estonia",
+    "countryCode": "EE"
   },
   {
     "id": "es",
@@ -115,6 +125,11 @@
     "countryCode": "JP"
   },
   {
+    "id": "ke",
+    "name": "Kenya",
+    "countryCode": "KE"
+  },
+  {
     "id": "kh",
     "name": "Cambodia",
     "countryCode": "KH"
@@ -170,6 +185,11 @@
     "countryCode": "RS"
   },
   {
+    "id": "ru",
+    "name": "Russia",
+    "countryCode": "RU"
+  },
+  {
     "id": "sg",
     "name": "Singapore",
     "countryCode": "SG"
@@ -188,6 +208,11 @@
     "id": "tw",
     "name": "Taiwan",
     "countryCode": "TW"
+  },
+  {
+    "id": "ua",
+    "name": "Ukraine",
+    "countryCode": "UA"
   },
   {
     "id": "us",

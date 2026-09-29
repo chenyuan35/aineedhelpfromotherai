@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C1
+## Current verified state after DB-C2
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **65 routes / 42 markets / 230 sources**;
-- comparison↔canonical route-ID overlap: **54**;
-- comparison routes still legacy-only: **81**;
+- canonical normalized database: **77 routes / 47 markets / 264 sources**;
+- comparison↔canonical route-ID overlap: **66**;
+- comparison routes still legacy-only: **69**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -51,9 +51,9 @@ Important corrections made during DB-C1:
 - Vodafone Hungary legacy identity mapped to current One Tuti without changing the stable route ID;
 - Cellcard 30-vs-180-day official expired-balance recovery conflict preserved rather than guessed away.
 
-## DB-C2 — ACTIVE
+## DB-C2 — COMPLETE batch members
 
-Next 12 legacy-only candidates, chosen from current low-cost legacy signals and distinct-product value:
+The 12 legacy-only candidates processed in DB-C2 were:
 
 1. `tesco-mobile-payg-uk-2026`
 2. `vinaphone-giu-so-vn-2026`
@@ -87,3 +87,13 @@ Legacy costs are discovery hints only. Reverify product existence, current price
 - no forced completion of unknown fields;
 - no SQL/API redesign merely to call the data layer a backend;
 - no mass raw import of legacy rows without evidence review.
+
+## DB-C2 — completed 2026-09-29
+
+DB-C2 normalized 12 more existing comparison routes through reviewed packets after two delegated research lanes plus an independent sample audit. Final DB-C2 disposition: **10 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+Post-DB-C2 state: **77 canonical routes / 47 markets / 264 sources / 66 comparison-overlap route IDs / 69 comparison routes still legacy-only / 3 explicit indexable routes**.
+
+The two HOLD routes (`truemove-validity-pack-th-2026`, `claro-pre-br-90d-2026`) remain in the normalized backend with uncertainty preserved. Community or legacy mechanisms are not discarded merely because a current public provider page is inaccessible.
+
+DB-C3 is now active with 12 next low-cost/distinct legacy-only routes listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
