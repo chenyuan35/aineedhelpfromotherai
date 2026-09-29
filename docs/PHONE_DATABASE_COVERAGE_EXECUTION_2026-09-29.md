@@ -130,4 +130,6 @@ The next three DB-C4 candidates were independently reviewed and normalized throu
 
 Post-DB-C4B state: **95 canonical routes / 53 markets / 92 brands / 72 networks / 313 sources / 84 comparison-overlap route IDs / 51 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks preserve **135 comparison routes / 3 explicit indexable routes**.
 
+Release: PR #309 (`518e7ab737e4ec53a8dba2740e1e752e83adc96a`) merged after Eval Gate #957, CI #183 and Vercel Preview passed; production succeeded. Live checks confirmed the hub and existing VOXI detail at HTTP 200 and the non-indexable MTN Nigeria route at HTTP 404.
+
 DB-C4 remains active with the remaining six candidates listed in `docs/CURRENT_EXECUTION_QUEUE.md`.
