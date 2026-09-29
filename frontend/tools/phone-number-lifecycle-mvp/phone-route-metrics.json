@@ -86,6 +86,18 @@
       "keepIntervalDays": 120
     },
     {
+      "routeId": "beeline-kz-simka-v-seyfe-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KZT",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KZT",
+      "keepYearCostOriginal": 12,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "clubsim-sms-pack-6hkd-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -168,6 +180,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 30
+    },
+    {
+      "routeId": "grameenphone-validity-pack-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "BDT",
+      "acquisitionCostOriginal": 400,
+      "acquisitionCostCny": null,
+      "keepCurrency": "BDT",
+      "keepYearCostOriginal": 300,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "h2o-paygo-10-90d-2026",
@@ -444,6 +468,18 @@
       "keepYearCostOriginal": 10,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "telkomsel-simpati-365d-2026",
+      "checkedAt": "2026-09-29",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "IDR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "IDR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "tello-paygo-credit-2026",

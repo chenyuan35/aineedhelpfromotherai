@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "HOLD / canonical-backstage. Current official recharge matrix confirms BDT300+ recharge gives 365-day main-account validity. Current official eSIM/physical prepaid entry surfaces show BDT400. Legacy 5-year BDT995 claim is stale/conflicted: current first-party pages show roughly BDT1497/1498 for five years, while one current page differs by BDT1. Preserve the conflict. Online delivery requires NID; fresh community evidence supports passport+biometric visitor registration in person, but the exact official foreigner purchase flow is not fully captured.",
+  "market": {
+    "id": "bd",
+    "name": "Bangladesh",
+    "countryCode": "BD"
+  },
+  "network": {
+    "id": "grameenphone-bd",
+    "name": "Grameenphone",
+    "marketId": "bd"
+  },
+  "brand": {
+    "id": "gp-prepaid",
+    "networkId": "grameenphone-bd",
+    "name": "Grameenphone Prepaid",
+    "marketId": "bd"
+  },
+  "route": {
+    "id": "grameenphone-validity-pack-2026",
+    "marketId": "bd",
+    "networkId": "grameenphone-bd",
+    "brandId": "gp-prepaid",
+    "displayName": "Grameenphone Prepaid validity",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.grameenphone.com/",
+    "sourceIds": [
+      "official-gp-recharge-validity-2026-09-29",
+      "official-gp-account-validity-extender-2026-09-29",
+      "official-gp-esim-2026-09-29",
+      "official-gp-prepaid-shop-2026-09-29",
+      "reddit-gp-visitor-biometric-2026-03-21"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-gp-recharge-validity-2026-09-29",
+      "url": "https://amp.grameenphone.com/personal/plans-offers/offers/recharge-validity-matrix",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-gp-account-validity-extender-2026-09-29",
+      "url": "https://www.grameenphone.com/bn/personal/plans-offers/offers/account-validity-extender",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-gp-esim-2026-09-29",
+      "url": "https://www.grameenphone.com/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-gp-prepaid-shop-2026-09-29",
+      "url": "https://www.grameenphone.com/shop/devices/sim/buynow/215",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "reddit-gp-visitor-biometric-2026-03-21",
+      "url": "https://www.reddit.com/r/bangladesh/comments/1rzl9ms/the_biometric_sim_card_registration_at_dhaka/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-03-21"
+    }
+  ],
+  "sourceIds": [
+    "official-gp-recharge-validity-2026-09-29",
+    "official-gp-account-validity-extender-2026-09-29",
+    "official-gp-esim-2026-09-29",
+    "official-gp-prepaid-shop-2026-09-29",
+    "reddit-gp-visitor-biometric-2026-03-21"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-gp-five-year-price-correction-20260929",
+      "routeId": "grameenphone-validity-pack-2026",
+      "type": "retention-price-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
+      "sourceId": "official-gp-recharge-validity-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-grameenphone-validity-pack-2026-current-profile-20260929",
+      "routeId": "grameenphone-validity-pack-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "grameenphone-validity-pack-2026",
+        "brandId": "gp-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Grameenphone shop/eSIM surfaces list prepaid physical SIM/eSIM entry around BDT400. Online delivery flow requires NID and biometric verification; a fresh visitor report describes passport scanning plus biometrics at Dhaka airport, but the exact official foreigner purchase path is not fully captured.",
+        "landedCost": {
+          "currency": "BDT",
+          "providerOrCommunityPrice": 400,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 400,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-official-prepaid-entry"
+        },
+        "keep": {
+          "currency": "BDT",
+          "observedActionCost": 300,
+          "yearCostOriginal": 300,
+          "yearCostCny": null,
+          "action": "Recharge BDT300 or more to receive 365 days of main-account validity under the current official matrix. Longer validity extensions exist, but the current five-year price is inconsistent across official surfaces (about BDT1497-1498), so do not reuse the stale BDT995 figure.",
+          "intervalDays": 365,
+          "state": "current-official-annual-rule-five-year-price-conflict"
+        },
+        "chinaActivation": "Local registration/biometric acquisition is required; no overseas-first activation path is established.",
+        "kyc": "Online shop surfaces require NID and biometric verification. Fresh community evidence reports passport plus biometric processing for non-resident visitors at Dhaka airport; official foreigner-document flow still needs a cleaner first-party capture.",
+        "payment": "Local/authorized recharge channels documented; foreign-card acceptance not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Annual retention rule is strong, but foreigner acquisition is local/KYC-heavy and the current five-year extension price conflicts across first-party surfaces.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.grameenphone.com/",
+        "tariffSummary": "BDT300+ recharge = 365-day main-account validity; current five-year extension is roughly BDT1497-1498, not the stale BDT995.",
+        "sourceIds": [
+          "official-gp-recharge-validity-2026-09-29",
+          "official-gp-account-validity-extender-2026-09-29",
+          "official-gp-esim-2026-09-29",
+          "official-gp-prepaid-shop-2026-09-29",
+          "reddit-gp-visitor-biometric-2026-03-21"
+        ],
+        "guideSteps": [
+          "Acquire and complete local biometric registration.",
+          "Recharge at least BDT300 for a clean 365-day main-account validity cycle.",
+          "Do not use the stale BDT995/5-year claim; re-check the official long-validity pack price if choosing that path."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

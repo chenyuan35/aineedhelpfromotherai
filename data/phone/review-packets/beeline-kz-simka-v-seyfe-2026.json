@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "HOLD / canonical-backstage. The current provider page confirms SIM in Safe at 1 KZT/month and explicitly targets users leaving the country. Legacy IIN-only wording is stale: Beeline documents passport-based number/device registration for non-residents. 2026 community reports show app/USSD visibility/activation failures after technical changes, so treat remote enablement as currently unreliable rather than guaranteed.",
+  "market": {
+    "id": "kz",
+    "name": "Kazakhstan",
+    "countryCode": "KZ"
+  },
+  "network": {
+    "id": "beeline-kz",
+    "name": "Beeline Kazakhstan",
+    "marketId": "kz"
+  },
+  "brand": {
+    "id": "beeline-kz-prepaid",
+    "networkId": "beeline-kz",
+    "name": "Beeline KZ Prepaid",
+    "marketId": "kz"
+  },
+  "route": {
+    "id": "beeline-kz-simka-v-seyfe-2026",
+    "marketId": "kz",
+    "networkId": "beeline-kz",
+    "brandId": "beeline-kz-prepaid",
+    "displayName": "Beeline Kazakhstan SIM in Safe",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://beeline.kz/ru/products/services/simka-v-seyfe",
+    "sourceIds": [
+      "official-beeline-kz-sim-safe-2026-09-29",
+      "official-beeline-kz-registration-2026-09-29",
+      "forum-awd-beeline-sim-safe-2026-04-13",
+      "googleplay-beeline-sim-safe-incident-2026-08-28",
+      "travelask-beeline-sim-safe-incident-2026-09"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-beeline-kz-sim-safe-2026-09-29",
+      "url": "https://beeline.kz/ru/products/services/simka-v-seyfe",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-beeline-kz-registration-2026-09-29",
+      "url": "https://beeline.kz/ru/ctn-registration",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "forum-awd-beeline-sim-safe-2026-04-13",
+      "url": "https://forum.awd.ru/viewtopic.php?t=439790",
+      "type": "community-thread",
+      "reportedAt": "2026-04-13"
+    },
+    {
+      "id": "googleplay-beeline-sim-safe-incident-2026-08-28",
+      "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
+      "type": "first-hand-app-review",
+      "reportedAt": "2026-08-28"
+    },
+    {
+      "id": "travelask-beeline-sim-safe-incident-2026-09",
+      "url": "https://travelask.ru/questions/6973672_kz_u-bilayna-kz-posle-tehnicheskih-rabot-propala-usluga-simka-v",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-09-25"
+    }
+  ],
+  "sourceIds": [
+    "official-beeline-kz-sim-safe-2026-09-29",
+    "official-beeline-kz-registration-2026-09-29",
+    "forum-awd-beeline-sim-safe-2026-04-13",
+    "googleplay-beeline-sim-safe-incident-2026-08-28",
+    "travelask-beeline-sim-safe-incident-2026-09"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-beeline-kz-sim-safe-remote-enable-friction-202609",
+      "routeId": "beeline-kz-simka-v-seyfe-2026",
+      "type": "service-activation-friction",
+      "reportedAt": "2026-09-25",
+      "scope": "multiple-community-reports",
+      "outcome": "Users reported SIM in Safe disappearing from the app and remote re-activation failing after technical changes; support reportedly confirmed the service could still be attached even when not visible. Treat remote enablement/status visibility as a live operational risk.",
+      "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-beeline-kz-simka-v-seyfe-2026-current-profile-20260929",
+      "routeId": "beeline-kz-simka-v-seyfe-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "beeline-kz-simka-v-seyfe-2026",
+        "brandId": "beeline-kz-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Beeline Kazakhstan currently offers the dedicated SIM in Safe service for an existing Beeline number. Exact cheapest new-SIM acquisition price is not reconciled in this review.",
+        "landedCost": {
+          "currency": "KZT",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "new-sim-entry-cost-unresolved"
+        },
+        "keep": {
+          "currency": "KZT",
+          "observedActionCost": 1,
+          "yearCostOriginal": 12,
+          "yearCostCny": null,
+          "action": "Enable SIM in Safe. Connection is free and the provider charges 1 KZT per month until disabled. If balance is below 1 KZT, the service is suspended until the balance is replenished.",
+          "intervalDays": 30,
+          "state": "current-provider-official-dedicated-retention"
+        },
+        "chinaActivation": "Do not assume a brand-new Kazakhstan line can be acquired/activated from China. For an existing line, the service is designed for long absence, but 2026 reports show remote service-enable/status friction.",
+        "kyc": "Legacy IIN-only wording is incorrect. Beeline documents IIN for residents and foreign-passport details for non-residents when registering a number/device.",
+        "payment": "Local balance/top-up rails; international payment acceptance is unresolved.",
+        "wifiCalling": "unverified",
+        "roamingSms": "unverified",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Retention price is exceptionally strong, but new-line acquisition/payment are unresolved and fresh 2026 reports show remote SIM-in-Safe enablement/status friction.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://beeline.kz/ru/products/services/simka-v-seyfe",
+        "tariffSummary": "Dedicated number-retention service: 1 KZT/month, with current remote-management friction noted.",
+        "sourceIds": [
+          "official-beeline-kz-sim-safe-2026-09-29",
+          "official-beeline-kz-registration-2026-09-29",
+          "forum-awd-beeline-sim-safe-2026-04-13",
+          "googleplay-beeline-sim-safe-incident-2026-08-28",
+          "travelask-beeline-sim-safe-incident-2026-09"
+        ],
+        "guideSteps": [
+          "Acquire/register a Beeline Kazakhstan number under current rules.",
+          "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
+          "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

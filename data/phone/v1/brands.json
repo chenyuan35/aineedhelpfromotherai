@@ -42,6 +42,12 @@
     "marketId": "de"
   },
   {
+    "id": "beeline-kz-prepaid",
+    "networkId": "beeline-kz",
+    "name": "Beeline KZ Prepaid",
+    "marketId": "kz"
+  },
+  {
     "id": "clubsim-hk",
     "networkId": "csl-hk",
     "name": "ClubSIM",
@@ -82,6 +88,12 @@
     "networkId": "globe-ph",
     "name": "Globe Prepaid",
     "marketId": "ph"
+  },
+  {
+    "id": "gp-prepaid",
+    "networkId": "grameenphone-bd",
+    "name": "Grameenphone Prepaid",
+    "marketId": "bd"
   },
   {
     "id": "h2o-us",
@@ -208,6 +220,12 @@
     "networkId": "telcel-mx",
     "name": "Telcel Amigo",
     "marketId": "mx"
+  },
+  {
+    "id": "telkomsel-simpati",
+    "networkId": "telkomsel-id",
+    "name": "Telkomsel SIMPATI",
+    "marketId": "id"
   },
   {
     "id": "tello-us",
