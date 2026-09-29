@@ -18,22 +18,19 @@ Last updated: 2026-09-29
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Post-A–K checkpoint: `docs/PHONE_POST_AK_VALUE_CHECKPOINT_2026-09-29.md`.
 
-## JUST COMPLETED — LMT Latvia evidence reconciliation
+## JUST COMPLETED — QwenPaw / Kimi K3 Phone evidence sample review
 
-Result: **ADMIT-BACKSTAGE EVIDENCE UPDATE / NO PUBLICATION CHANGE.**
+Result: **BOUNDED BACKSTAGE REVIEW COMPLETE / NO PUBLICATION CHANGE.**
 
-`docs/PHONE_LMT_LATVIA_EVIDENCE_RECONCILIATION_2026-09-29.md` corrects the existing legacy interpretation for `lmt-karte-60-60d-2026`:
+`docs/PHONE_PARALLEL_RESEARCH_REVIEW_2026-09-29.md` independently reviews three high-impact candidates from the completed delegated batch:
 
-- current base new number is EUR 1.50 with physical SIM + eSIM availability;
-- current official wording is 60-day advance validity + 60 days for receiving calls/texts, while the same page also labels the base offer a 120-day active number;
-- `Time Limit+` currently costs EUR 0.30 for +30 days to both balance-expiry and use-by dates, so the legacy ~EUR18/year top-up-only estimate is not the cheapest documented path;
-- exact minimum annual keep cost remains unresolved; do not publish EUR3.60/year as guaranteed;
-- ordinary LMT Karte use does not require prior customer registration; optional registration exists for extra account/recovery services;
-- current LMT guidance asks users to activate in Latvia and warns foreign activation may be limited;
-- sending SMS while abroad is disabled by default until LMT removes the restriction after connection identification;
-- missed-expiry recovery is possible free within six months with the original PIN1, followed by refill within three days.
+- **ClubSIM HK — ADMIT-BACKSTAGE EVIDENCE CORRECTION.** The 365-day service-pack lifecycle remains supported, but the prior claim that the current official web surface still lists the standalone HK$6 SMS pack is stale. Do not treat HK$6/year as a currently guaranteed keep cost; exact cheapest currently purchasable Service Pack remains unresolved.
+- **Optus AU — ADMIT-BACKSTAGE EVIDENCE CORRECTION.** The legacy summary `$59/186d or $180/365d` is mis-mapped/stale. Current first-party evidence shows AUD180/186d and AUD350/365d standard prices before the announced 2026-09-30 change, with AUD200/186d and AUD395/365d scheduled from that date. Reverify after the effective date before treating the new prices as current.
+- **Ultra Mobile PayGo US — HOLD.** 2026 incidents support a reseller/payment-channel risk signal, not a route-wide product-instability conclusion. Keep the current official-channel acquisition guidance and do not generalize a ban probability.
 
-No canonical migration, comparison-count change, indexability change, sitemap change or public copy change is authorized by this packet.
+The QwenPaw/Kimi K3 task completed successfully with 13 research candidates. Only the three candidates above are dispositioned by this review; the other raw findings remain `RESEARCH CANDIDATE`.
+
+No canonical migration, comparison-count change, indexability change, sitemap change or public copy change is authorized by this review.
 
 ## MEASUREMENT WAIT — trigger not met
 
@@ -44,29 +41,29 @@ Result of the 2026-09-29 first-party re-read: **WAIT.**
 - do **not** re-read merely because a new session starts;
 - re-open measurement only after at least 7 additional finalized days, 20 cumulative settled Phone impressions, or a clear regression signal.
 
-## NEXT SESSION — Backstage Phone evidence reconciliation round
+## NEXT SESSION — Optus effective-date check or Telia Estonia fallback
 
-**Session task:** process one small evidence batch while the public finder remains stable.
+**Session task:** continue one bounded Phone evidence reconciliation while the public finder remains stable.
 
 ### Priority order
 
-1. fetch and review the currently running QwenPaw/Kimi K3 Phone research task when it finishes;
-2. sample-audit at most 1–3 candidate routes for source quality, duplication, stale claims, unsupported inference and conflicts;
-3. if the delegated batch is still unavailable, reconcile one already-identified legacy-only candidate from the post-A–K shortlist rather than inventing a new batch; Telia Estonia is the first fallback candidate after the completed LMT Latvia review;
-4. classify each reviewed candidate as `REJECT`, `HOLD` or `ADMIT-BACKSTAGE` and persist only accepted evidence through branch/PR workflow;
+1. on or after **2026-09-30**, verify the live Optus long-expiry page after the announced price change;
+2. if Optus has switched, reconcile the existing `optus-flex-plus-au-2026` legacy evidence so future work cannot reuse the stale `$59/186d` / `$180/365d` mapping; keep publication/indexability unchanged unless a separate correction task explicitly authorizes public mutation;
+3. if the effective-date check is premature, unavailable or still transitional, reconcile **Telia Estonia**, the already-identified legacy-only fallback candidate from the post-A–K shortlist;
+4. classify the selected route as `REJECT`, `HOLD` or `ADMIT-BACKSTAGE` and persist only accepted evidence through branch/PR workflow;
 5. do not migrate canonical rows, add indexable URLs or alter ranking/publication state unless a separately documented trigger opens that work.
 
 ### Definition of done
 
-- one bounded evidence batch is fully dispositioned;
+- one route is fully dispositioned;
 - accepted facts have source URL/date/provenance and unresolved conflicts recorded;
-- duplicates/stale claims are rejected or corrected;
+- stale claims are explicitly blocked from future reuse;
 - no public/indexability change occurs;
-- Kimi/Qwen parallel lane is dispatched or its status/blocker is explicitly recorded.
+- Qwen/Kimi parallel lane status is recorded if used.
 
 ### Stop conditions
 
-Stop if evidence is insufficient to classify the selected candidate(s), if the candidate is a duplicate of the same underlying product, or if the work would require publication/schema/infrastructure changes. Do not manufacture batch-L or use database coverage as a reason to publish.
+Stop if evidence is insufficient to classify the selected route, if the route is a duplicate of the same underlying product, or if the work would require publication/schema/infrastructure changes. Do not manufacture batch-L or use database coverage as a reason to publish.
 
 ## Qwen / Kimi work lane
 
