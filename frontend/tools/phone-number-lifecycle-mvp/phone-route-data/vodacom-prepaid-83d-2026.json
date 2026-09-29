@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "vodacom-prepaid-83d-2026",
+    "marketId": "za",
+    "networkId": "vodacom-za",
+    "brandId": "vodacom-prepaid",
+    "displayName": "Vodacom Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+    "sourceIds": [
+      "mybroadband-vodacom-overseas-2024-12-18",
+      "official-vodacom-prepaid-rates-2026-09-29",
+      "official-vodacom-prepaid-terms-2026-09-29"
+    ]
+  },
+  "market": {
+    "id": "za",
+    "name": "South Africa",
+    "countryCode": "ZA"
+  },
+  "network": {
+    "id": "vodacom-za",
+    "name": "Vodacom South Africa",
+    "marketId": "za"
+  },
+  "brand": {
+    "id": "vodacom-prepaid",
+    "networkId": "vodacom-za",
+    "name": "Vodacom Prepaid",
+    "marketId": "za"
+  },
+  "metrics": {
+    "routeId": "vodacom-prepaid-83d-2026",
+    "checkedAt": "2026-09-29",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "ZAR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "ZAR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 110
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "mybroadband-vodacom-overseas-2024-12-18",
+      "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
+      "type": "community-thread",
+      "reportedAt": "2024-12-18"
+    },
+    {
+      "id": "official-vodacom-prepaid-rates-2026-09-29",
+      "url": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-vodacom-prepaid-terms-2026-09-29",
+      "url": "https://www.vodacom.co.za/vodacom/terms/prepaid-sim-terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-vodacom-83d-rule-refuted-20260929",
+      "routeId": "vodacom-prepaid-83d-2026",
+      "type": "lifecycle-rule-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
+      "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-vodacom-prepaid-83d-2026-current-profile-20260929",
+      "routeId": "vodacom-prepaid-83d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "vodacom-prepaid-83d-2026",
+        "brandId": "vodacom-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Vodacom prepaid is a South African mobile line. Exact cheapest current new-SIM/eSIM acquisition price is not reconciled in this review.",
+        "landedCost": {
+          "currency": "ZAR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-entry-cost-unresolved"
+        },
+        "keep": {
+          "currency": "ZAR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current Vodacom prepaid terms allow suspension/disconnection when the service has not been used for more than 110 days. Maintain actual service usage inside that window; the exact cheapest qualifying action and final number-recycling timing are not established by the current first-party terms.",
+          "intervalDays": 110,
+          "state": "current-provider-official-inactivity-threshold-cost-unresolved"
+        },
+        "chinaActivation": "Local RICA/activation constraints apply; overseas-first activation is not established here.",
+        "kyc": "RICA applies to new activations; exact foreigner workflow not reconciled in this packet.",
+        "payment": "Local/app recharge methods exist; foreign-card acceptance not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Community overseas-use evidence exists, but this review does not convert it into an exact SMS keep-alive cost or OTP-success rate.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "The old 83-day/100-day rule is refuted by current provider terms. Current 110-day inactivity threshold is clear, but exact cheapest qualifying keep action, acquisition path and final recycle timing remain unresolved.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+        "tariffSummary": "Current first-party inactivity threshold: more than 110 days without service use may trigger suspension/disconnection; legacy 83-day rule withdrawn.",
+        "sourceIds": [
+          "official-vodacom-prepaid-terms-2026-09-29",
+          "official-vodacom-prepaid-rates-2026-09-29",
+          "mybroadband-vodacom-overseas-2024-12-18"
+        ],
+        "guideSteps": [
+          "Acquire/register Vodacom prepaid under current RICA rules.",
+          "Perform real service usage within the current 110-day inactivity window.",
+          "Do not use the stale 83-day/100-day lifecycle claim or an unverified fixed annual keep cost."
+        ]
+      }
+    }
+  ]
+}

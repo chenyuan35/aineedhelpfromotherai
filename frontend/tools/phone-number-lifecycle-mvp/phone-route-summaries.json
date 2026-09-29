@@ -765,6 +765,38 @@
       }
     },
     {
+      "id": "magticom-number-maintenance-2026",
+      "displayName": "Magticom Number Maintenance",
+      "marketId": "ge",
+      "marketName": "Georgia",
+      "countryCode": "GE",
+      "networkName": "Magticom",
+      "brandName": "Magticom Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "magticom-number-maintenance-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "GEL",
+        "acquisitionCostOriginal": 10,
+        "acquisitionCostCny": null,
+        "keepCurrency": "GEL",
+        "keepYearCostOriginal": 2.03,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 180
+      }
+    },
+    {
       "id": "mobal-japan-data-physical",
       "displayName": "Mobal Japan Tourist Data SIM (physical)",
       "marketId": "jp",
@@ -858,6 +890,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": null
+      }
+    },
+    {
+      "id": "mobitel-lk-retention-2026",
+      "displayName": "SLT-Mobitel Prepaid Number Retention",
+      "marketId": "lk",
+      "marketName": "Sri Lanka",
+      "countryCode": "LK",
+      "networkName": "SLT-Mobitel",
+      "brandName": "SLT-Mobitel Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "mobitel-lk-retention-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "LKR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "LKR",
+        "keepYearCostOriginal": 600,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 30
       }
     },
     {
@@ -1722,6 +1786,38 @@
         "keepYearCostOriginal": 50000,
         "keepYearCostCny": null,
         "keepIntervalDays": 365
+      }
+    },
+    {
+      "id": "vodacom-prepaid-83d-2026",
+      "displayName": "Vodacom Prepaid",
+      "marketId": "za",
+      "marketName": "South Africa",
+      "countryCode": "ZA",
+      "networkName": "Vodacom South Africa",
+      "brandName": "Vodacom Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "vodacom-prepaid-83d-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "ZAR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "ZAR",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 110
       }
     },
     {

@@ -50,6 +50,11 @@
     "countryCode": "GB"
   },
   {
+    "id": "ge",
+    "name": "Georgia",
+    "countryCode": "GE"
+  },
+  {
     "id": "global",
     "name": "Global / multi-market",
     "countryCode": null
@@ -93,6 +98,11 @@
     "id": "kz",
     "name": "Kazakhstan",
     "countryCode": "KZ"
+  },
+  {
+    "id": "lk",
+    "name": "Sri Lanka",
+    "countryCode": "LK"
   },
   {
     "id": "mx",
@@ -163,5 +173,10 @@
     "id": "vn",
     "name": "Vietnam",
     "countryCode": "VN"
+  },
+  {
+    "id": "za",
+    "name": "South Africa",
+    "countryCode": "ZA"
   }
 ]

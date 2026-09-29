@@ -75,6 +75,11 @@
     "marketId": "nl"
   },
   {
+    "id": "magticom-ge",
+    "name": "Magticom",
+    "marketId": "ge"
+  },
+  {
     "id": "maxis-my",
     "name": "Maxis MY",
     "marketId": "my"
@@ -108,6 +113,11 @@
     "id": "singtel-sg",
     "name": "Singtel",
     "marketId": "sg"
+  },
+  {
+    "id": "slt-mobitel-lk",
+    "name": "SLT-Mobitel",
+    "marketId": "lk"
   },
   {
     "id": "spark-nz",
@@ -178,6 +188,11 @@
     "id": "viettel-vn",
     "name": "Viettel Vietnam",
     "marketId": "vn"
+  },
+  {
+    "id": "vodacom-za",
+    "name": "Vodacom South Africa",
+    "marketId": "za"
   },
   {
     "id": "vodafone-de",

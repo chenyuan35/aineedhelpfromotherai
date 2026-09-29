@@ -63,6 +63,24 @@
     "sourceId": "linuxdo-lebara-2745784-op"
   },
   {
+    "id": "evt-magti-first-year-cash-vs-runrate-20260929",
+    "routeId": "magticom-number-maintenance-2026",
+    "type": "retention-cost-clarification",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Provider charges 1 GEL at service activation on a new number and the next 1 GEL on day 181. Treat ~2.03 GEL/year as the annualized 180-day run-rate, not an exact first-year cash-total guarantee.",
+    "sourceId": "official-magti-number-maintenance-2026-09-29"
+  },
+  {
+    "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
+    "routeId": "mobitel-lk-retention-2026",
+    "type": "eligibility-conflict",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Tourist prepaid acquisition explicitly accepts a foreign passport, but the Number Retention page says outlet enrollment or a letter enclosing NIC. Foreign-passport holder retention enrollment, especially remotely, remains unresolved.",
+    "sourceId": "official-mobitel-number-retention-2026-09-29"
+  },
+  {
     "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
     "routeId": "telkomsel-simpati-365d-2026",
     "type": "retention-cost-correction",
@@ -70,5 +88,14 @@
     "scope": "route",
     "outcome": "Legacy Rp5,000/year keep-cost inference is unsupported by current rules. Rp5,000 top-up is not documented as a 365-day extension; official extension options include Rp115,000/360 days, while qualifying usage/top-up/package rules may yield cheaper paths whose durable annual minimum remains unresolved.",
     "sourceId": "official-telkomsel-active-extension-2026-09-29"
+  },
+  {
+    "id": "evt-vodacom-83d-rule-refuted-20260929",
+    "routeId": "vodacom-prepaid-83d-2026",
+    "type": "lifecycle-rule-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
+    "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
   }
 ]

@@ -132,10 +132,22 @@
     "marketId": "gb"
   },
   {
+    "id": "magticom-prepaid",
+    "networkId": "magticom-ge",
+    "name": "Magticom Prepaid",
+    "marketId": "ge"
+  },
+  {
     "id": "mobal-japan-jp",
     "marketId": "jp",
     "networkId": null,
     "name": "Mobal Japan"
+  },
+  {
+    "id": "mobitel-prepaid",
+    "networkId": "slt-mobitel-lk",
+    "name": "SLT-Mobitel Prepaid",
+    "marketId": "lk"
   },
   {
     "id": "movistar-prepago",
@@ -292,6 +304,12 @@
     "networkId": "viettel-vn",
     "name": "Viettel Prepaid",
     "marketId": "vn"
+  },
+  {
+    "id": "vodacom-prepaid",
+    "networkId": "vodacom-za",
+    "name": "Vodacom Prepaid",
+    "marketId": "za"
   },
   {
     "id": "vodafone-callya",

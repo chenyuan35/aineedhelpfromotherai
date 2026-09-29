@@ -433,6 +433,26 @@
     ]
   },
   {
+    "id": "magticom-number-maintenance-2026",
+    "marketId": "ge",
+    "networkId": "magticom-ge",
+    "brandId": "magticom-prepaid",
+    "displayName": "Magticom Number Maintenance",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+    "sourceIds": [
+      "official-magti-esim-2026-09-29",
+      "official-magti-mobile-terms-2026-09-29",
+      "official-magti-number-maintenance-2026-09-29",
+      "official-magti-tourist-2026-09-29"
+    ]
+  },
+  {
     "id": "mobal-japan-data-physical",
     "marketId": "jp",
     "networkId": null,
@@ -485,6 +505,27 @@
       "src-2bbba2c2f064",
       "src-55ebde488d35",
       "src-8a5a1ea3e316"
+    ]
+  },
+  {
+    "id": "mobitel-lk-retention-2026",
+    "marketId": "lk",
+    "networkId": "slt-mobitel-lk",
+    "brandId": "mobitel-prepaid",
+    "displayName": "SLT-Mobitel Prepaid Number Retention",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.mobitel.lk/node/2617",
+    "sourceIds": [
+      "official-mobitel-new-connection-2026-09-29",
+      "official-mobitel-number-retention-2026-09-29",
+      "official-mobitel-recycling-2026-09-29",
+      "official-mobitel-tourist-esim-2026-09-29",
+      "reddit-srilanka-number-keep-job-2026-08-13"
     ]
   },
   {
@@ -1007,6 +1048,25 @@
     "sourceIds": [
       "official-viettel-kyc-roaming-otp-2026-09-29",
       "specialist-3gviettel-vtvang-2026-09-29"
+    ]
+  },
+  {
+    "id": "vodacom-prepaid-83d-2026",
+    "marketId": "za",
+    "networkId": "vodacom-za",
+    "brandId": "vodacom-prepaid",
+    "displayName": "Vodacom Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+    "sourceIds": [
+      "mybroadband-vodacom-overseas-2024-12-18",
+      "official-vodacom-prepaid-rates-2026-09-29",
+      "official-vodacom-prepaid-terms-2026-09-29"
     ]
   },
   {

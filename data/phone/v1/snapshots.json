@@ -1891,6 +1891,64 @@
     }
   },
   {
+    "id": "snap-magticom-number-maintenance-2026-current-profile-20260929",
+    "routeId": "magticom-number-maintenance-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "magticom-number-maintenance-2026",
+      "brandId": "magticom-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Magti network connection price is 10 GEL for physical SIM or eSIM. Foreign citizens may register using a foreign passport or ID card. Magti states that a new eSIM number can be obtained remotely/from abroad via MyMagti.",
+      "landedCost": {
+        "currency": "GEL",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-official-network-connection-price"
+      },
+      "keep": {
+        "currency": "GEL",
+        "observedActionCost": 1,
+        "yearCostOriginal": 2.03,
+        "yearCostCny": null,
+        "action": "Enable Number Maintenance via *180# or MyMagti. The service protects the number from termination for 180 days and charges 1 GEL; the next charge on a new number occurs on day 181, with subsequent 180-day charging. Keep at least 1 GEL available before each charge.",
+        "intervalDays": 180,
+        "state": "current-provider-official-dedicated-retention-annualized"
+      },
+      "chinaActivation": "Current Magti eSIM guidance explicitly says a new eSIM number can be obtained remotely/from abroad through MyMagti; internet is required for QR/download activation.",
+      "kyc": "Foreign citizens can present a foreign passport or ID card under current Magti network-connection terms.",
+      "payment": "MyMagti/web recharge is documented; exact foreign-card acceptance not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Standard roaming can be activated from anywhere through MyMagti; exact inbound-SMS/OTP reliability is not established in this review.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.magticom.ge/en/mobile/mobile-services/other-mobile-services/number-maintance-service",
+      "tariffSummary": "10 GEL new SIM/eSIM; Number Maintenance 1 GEL per 180 days; remote new eSIM acquisition from abroad is provider-documented.",
+      "sourceIds": [
+        "official-magti-mobile-terms-2026-09-29",
+        "official-magti-number-maintenance-2026-09-29",
+        "official-magti-esim-2026-09-29",
+        "official-magti-tourist-2026-09-29"
+      ],
+      "guideSteps": [
+        "Obtain/register a physical SIM or eSIM; current provider guidance supports remote new eSIM acquisition from abroad.",
+        "Enable Number Maintenance with *180# or MyMagti.",
+        "Keep enough balance for the 1 GEL maintenance charge before each 180-day renewal point."
+      ]
+    }
+  },
+  {
     "id": "snap-mobal-japan-data-physical-commercial-6a2373",
     "routeId": "mobal-japan-data-physical",
     "kind": "commercial",
@@ -2304,6 +2362,65 @@
         "summary": "Check Mobal monthly payment",
         "description": "Mobal posts the long-term invoice on the 1st and automatically charges the stored payment method on the 8th. This recurring reminder falls on the 5th, three days before the documented charge date."
       }
+    }
+  },
+  {
+    "id": "snap-mobitel-lk-retention-2026-current-profile-20260929",
+    "routeId": "mobitel-lk-retention-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "mobitel-lk-retention-2026",
+      "brandId": "mobitel-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "SLT-Mobitel currently offers tourist prepaid physical SIM/eSIM at airports/outlets and states a foreign passport is sufficient. Tourist package prices vary; no bare-SIM landed-cost floor is assigned here.",
+      "landedCost": {
+        "currency": "LKR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "tourist-plan-options-current-bare-entry-floor-unresolved"
+      },
+      "keep": {
+        "currency": "LKR",
+        "observedActionCost": 50,
+        "yearCostOriginal": 600,
+        "yearCostCny": null,
+        "action": "For the 1-year Number Retention option, Mobitel lists Rs50 + taxes per month. The retention fee for the selected retaining period is loaded to the account and deducted at once when the facility is enabled.",
+        "intervalDays": 30,
+        "state": "current-provider-official-retention-fee-plus-taxes"
+      },
+      "chinaActivation": "No overseas-first activation path is established. Tourist physical SIM/eSIM acquisition is local at airports/outlets.",
+      "kyc": "Tourist acquisition accepts a foreign passport. Number Retention remote enrollment wording refers to an NIC copy, so foreign-passport eligibility for that facility remains unresolved.",
+      "payment": "Mobitel online pay supports credit/debit-card top-up; issuer/country acceptance is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Dedicated retention service is current, but foreign-passport eligibility/remote enrollment for Number Retention is not clearly established by the provider page.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.mobitel.lk/node/2617",
+      "tariffSummary": "1-year Number Retention: Rs50 + taxes per month, retaining-period fee deducted upfront; foreigner retention enrollment unresolved.",
+      "sourceIds": [
+        "official-mobitel-number-retention-2026-09-29",
+        "official-mobitel-tourist-esim-2026-09-29",
+        "official-mobitel-new-connection-2026-09-29",
+        "official-mobitel-recycling-2026-09-29",
+        "reddit-srilanka-number-keep-job-2026-08-13"
+      ],
+      "guideSteps": [
+        "Acquire/register SLT-Mobitel prepaid locally; foreign passport is documented for tourist SIM.",
+        "Before relying on Number Retention, confirm that your identity-document type is accepted for the facility.",
+        "For the 1-year tier, budget Rs50 + taxes per month with the retaining-period fee deducted when enabling the facility."
+      ]
     }
   },
   {
@@ -4642,6 +4759,63 @@
       "guideSteps": [
         "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
         "Require first-party package/eligibility and foreign-acquisition verification before promotion."
+      ]
+    }
+  },
+  {
+    "id": "snap-vodacom-prepaid-83d-2026-current-profile-20260929",
+    "routeId": "vodacom-prepaid-83d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "vodacom-prepaid-83d-2026",
+      "brandId": "vodacom-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Vodacom prepaid is a South African mobile line. Exact cheapest current new-SIM/eSIM acquisition price is not reconciled in this review.",
+      "landedCost": {
+        "currency": "ZAR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-entry-cost-unresolved"
+      },
+      "keep": {
+        "currency": "ZAR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current Vodacom prepaid terms allow suspension/disconnection when the service has not been used for more than 110 days. Maintain actual service usage inside that window; the exact cheapest qualifying action and final number-recycling timing are not established by the current first-party terms.",
+        "intervalDays": 110,
+        "state": "current-provider-official-inactivity-threshold-cost-unresolved"
+      },
+      "chinaActivation": "Local RICA/activation constraints apply; overseas-first activation is not established here.",
+      "kyc": "RICA applies to new activations; exact foreigner workflow not reconciled in this packet.",
+      "payment": "Local/app recharge methods exist; foreign-card acceptance not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Community overseas-use evidence exists, but this review does not convert it into an exact SMS keep-alive cost or OTP-success rate.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "The old 83-day/100-day rule is refuted by current provider terms. Current 110-day inactivity threshold is clear, but exact cheapest qualifying keep action, acquisition path and final recycle timing remain unresolved.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.vodacom.co.za/vodacom/shopping/plans/prepaid-plans",
+      "tariffSummary": "Current first-party inactivity threshold: more than 110 days without service use may trigger suspension/disconnection; legacy 83-day rule withdrawn.",
+      "sourceIds": [
+        "official-vodacom-prepaid-terms-2026-09-29",
+        "official-vodacom-prepaid-rates-2026-09-29",
+        "mybroadband-vodacom-overseas-2024-12-18"
+      ],
+      "guideSteps": [
+        "Acquire/register Vodacom prepaid under current RICA rules.",
+        "Perform real service usage within the current 110-day inactivity window.",
+        "Do not use the stale 83-day/100-day lifecycle claim or an unverified fixed annual keep cost."
       ]
     }
   },
