@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C4D
+## Current verified state after DB-C5
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **101 routes / 57 markets / 98 brands / 77 networks / 334 sources**;
-- comparison↔canonical route-ID overlap: **90**;
-- comparison routes still legacy-only: **45**;
+- canonical normalized database: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources**;
+- comparison↔canonical route-ID overlap: **93**;
+- comparison routes still legacy-only: **42**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -162,7 +162,7 @@ Release: PR #313 (`7c435d1ef0c897dbaf249f8caa2e098cbeb920ff`) merged after Eval 
 
 DB-C4 is complete. Continue DB-C5 through the bounded candidates in `docs/CURRENT_EXECUTION_QUEUE.md`.
 
-## DB-C5 — implementation/local verification complete 2026-09-30; release pending
+## DB-C5 — completed 2026-09-30
 
 The next three legacy-only routes were reviewed and normalized through approved backstage packets. Current DB-C5 disposition is **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
@@ -172,6 +172,8 @@ The next three legacy-only routes were reviewed and normalized through approved 
 
 Delegated-agent lane was actually exercised through the running QwenPaw console rather than treating the Qwen host as the worker. QwenPaw task `task-4915eea85664` (QA Agent / DeepSeek) independently audited BH Telecom and returned ADMIT-BACKSTAGE, corroborating the lifecycle and adding that foreign-user prepaid eSIM purchase is explicitly supported while ordinary registration is not a hard purchase gate. Task `task-a71d7e8af5fd` (Default / Kimi K3) was dispatched for One Montenegro but ended `failed / Task cancelled`; no result was accepted. One Montenegro therefore remains based on the coordinator's independent provider-source review, and the delegated-worker failure is recorded explicitly rather than silently reverting to claimed multi-agent confirmation.
 
-Post-DB-C5 local state: **104 canonical routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison-overlap route IDs / 42 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check` passed including DB-C5 migration coverage. The full frontend build passed and generated only the existing **3 route detail pages**; the comparison surface remains **135 routes** and publication/indexability remains unchanged.
+Post-DB-C5 state: **104 canonical routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison-overlap route IDs / 42 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check` passed including DB-C5 migration coverage. The full frontend build passed and generated only the existing **3 route detail pages**; the comparison surface remains **135 routes** and publication/indexability remains unchanged.
 
-Release status: dedicated branch/worktree only; PR / Eval Gate / CI / Vercel Preview / production verification are still pending.
+Release: PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb` after Eval Gate #969, CI #189 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable BH Telecom route at HTTP 404.
+
+DB-C6 next bounded batch: `stc-sawa-sa-2026`, `claro-pre-ar-2026`, `skt-prepaid-kr-2026`. Keep the 3-route publication boundary unchanged and require reviewed provenance before canonical admission.
