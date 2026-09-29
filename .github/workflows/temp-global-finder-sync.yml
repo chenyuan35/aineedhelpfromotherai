@@ -1,0 +1,31 @@
+name: temp global finder sync
+on:
+  push:
+    branches:
+      - phone/global-finder-progressive-ui-20260929
+permissions:
+  contents: write
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phone/global-finder-progressive-ui-20260929
+          fetch-depth: 0
+      - name: Apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fSL 'https://fa7e624228133e8f-47-84-122-196.serveousercontent.com/global-finder.patch' -o /tmp/global-finder.patch
+          echo 'abca2e373e7fe5568f17c1e3f344b0c23ce952b6f6459e6a42c9ab53b765cea2  /tmp/global-finder.patch' | sha256sum -c -
+          git apply --check /tmp/global-finder.patch
+          git apply /tmp/global-finder.patch
+          git rm .github/workflows/temp-global-finder-sync.yml
+          git rm .global-finder-sync-trigger
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'phone: add global progressive route finder'
+          git push origin HEAD:phone/global-finder-progressive-ui-20260929
