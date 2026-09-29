@@ -226,6 +226,38 @@
       }
     },
     {
+      "id": "beeline-kz-simka-v-seyfe-2026",
+      "displayName": "Beeline Kazakhstan SIM in Safe",
+      "marketId": "kz",
+      "marketName": "Kazakhstan",
+      "countryCode": "KZ",
+      "networkName": "Beeline Kazakhstan",
+      "brandName": "Beeline KZ Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "beeline-kz-simka-v-seyfe-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "KZT",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "KZT",
+        "keepYearCostOriginal": 12,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 30
+      }
+    },
+    {
       "id": "clubsim-sms-pack-6hkd-2026",
       "displayName": "ClubSIM",
       "marketId": "hk",
@@ -482,6 +514,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": 30
+      }
+    },
+    {
+      "id": "grameenphone-validity-pack-2026",
+      "displayName": "Grameenphone Prepaid validity",
+      "marketId": "bd",
+      "marketName": "Bangladesh",
+      "countryCode": "BD",
+      "networkName": "Grameenphone",
+      "brandName": "Grameenphone Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "grameenphone-validity-pack-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "BDT",
+        "acquisitionCostOriginal": 400,
+        "acquisitionCostCny": null,
+        "keepCurrency": "BDT",
+        "keepYearCostOriginal": 300,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -1242,6 +1306,38 @@
         "keepYearCostOriginal": 10,
         "keepYearCostCny": null,
         "keepIntervalDays": 365
+      }
+    },
+    {
+      "id": "telkomsel-simpati-365d-2026",
+      "displayName": "Telkomsel SIMPATI",
+      "marketId": "id",
+      "marketName": "Indonesia",
+      "countryCode": "ID",
+      "networkName": "Telkomsel",
+      "brandName": "Telkomsel SIMPATI",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-29",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "telkomsel-simpati-365d-2026",
+        "checkedAt": "2026-09-29",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "IDR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "IDR",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": null
       }
     },
     {

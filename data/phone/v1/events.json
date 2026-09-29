@@ -1,5 +1,14 @@
 [
   {
+    "id": "evt-beeline-kz-sim-safe-remote-enable-friction-202609",
+    "routeId": "beeline-kz-simka-v-seyfe-2026",
+    "type": "service-activation-friction",
+    "reportedAt": "2026-09-25",
+    "scope": "multiple-community-reports",
+    "outcome": "Users reported SIM in Safe disappearing from the app and remote re-activation failing after technical changes; support reportedly confirmed the service could still be attached even when not visible. Treat remote enablement/status visibility as a live operational risk.",
+    "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
+  },
+  {
     "id": "evt-giffgaff-uk-direct-esim-payg-1-74e2a4",
     "routeId": "giffgaff-uk-direct-esim-payg",
     "type": "recycled-number-observation",
@@ -36,6 +45,15 @@
     "sourceId": "linuxdo-giffgaff-2903412"
   },
   {
+    "id": "evt-gp-five-year-price-correction-20260929",
+    "routeId": "grameenphone-validity-pack-2026",
+    "type": "retention-price-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
+    "sourceId": "official-gp-recharge-validity-2026-09-29"
+  },
+  {
     "id": "evt-lebara-uk-direct-esim-china-5-ef3e9b",
     "routeId": "lebara-uk-direct-esim-china",
     "type": "outgoing-service-friction",
@@ -43,5 +61,14 @@
     "scope": "multiple-same-thread-observations",
     "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
     "sourceId": "linuxdo-lebara-2745784-op"
+  },
+  {
+    "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
+    "routeId": "telkomsel-simpati-365d-2026",
+    "type": "retention-cost-correction",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "Legacy Rp5,000/year keep-cost inference is unsupported by current rules. Rp5,000 top-up is not documented as a 365-day extension; official extension options include Rp115,000/360 days, while qualifying usage/top-up/package rules may yield cheaper paths whose durable annual minimum remains unresolved.",
+    "sourceId": "official-telkomsel-active-extension-2026-09-29"
   }
 ]

@@ -487,6 +487,65 @@
     }
   },
   {
+    "id": "snap-beeline-kz-simka-v-seyfe-2026-current-profile-20260929",
+    "routeId": "beeline-kz-simka-v-seyfe-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "beeline-kz-simka-v-seyfe-2026",
+      "brandId": "beeline-kz-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Beeline Kazakhstan currently offers the dedicated SIM in Safe service for an existing Beeline number. Exact cheapest new-SIM acquisition price is not reconciled in this review.",
+      "landedCost": {
+        "currency": "KZT",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "new-sim-entry-cost-unresolved"
+      },
+      "keep": {
+        "currency": "KZT",
+        "observedActionCost": 1,
+        "yearCostOriginal": 12,
+        "yearCostCny": null,
+        "action": "Enable SIM in Safe. Connection is free and the provider charges 1 KZT per month until disabled. If balance is below 1 KZT, the service is suspended until the balance is replenished.",
+        "intervalDays": 30,
+        "state": "current-provider-official-dedicated-retention"
+      },
+      "chinaActivation": "Do not assume a brand-new Kazakhstan line can be acquired/activated from China. For an existing line, the service is designed for long absence, but 2026 reports show remote service-enable/status friction.",
+      "kyc": "Legacy IIN-only wording is incorrect. Beeline documents IIN for residents and foreign-passport details for non-residents when registering a number/device.",
+      "payment": "Local balance/top-up rails; international payment acceptance is unresolved.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Retention price is exceptionally strong, but new-line acquisition/payment are unresolved and fresh 2026 reports show remote SIM-in-Safe enablement/status friction.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://beeline.kz/ru/products/services/simka-v-seyfe",
+      "tariffSummary": "Dedicated number-retention service: 1 KZT/month, with current remote-management friction noted.",
+      "sourceIds": [
+        "official-beeline-kz-sim-safe-2026-09-29",
+        "official-beeline-kz-registration-2026-09-29",
+        "forum-awd-beeline-sim-safe-2026-04-13",
+        "googleplay-beeline-sim-safe-incident-2026-08-28",
+        "travelask-beeline-sim-safe-incident-2026-09"
+      ],
+      "guideSteps": [
+        "Acquire/register a Beeline Kazakhstan number under current rules.",
+        "Enable SIM in Safe while the service is reachable; keep at least enough balance for monthly 1 KZT deductions.",
+        "Because remote app/USSD state has shown 2026 failures, verify the service is actually active before relying on a long absence."
+      ]
+    }
+  },
+  {
     "id": "snap-clubsim-sms-pack-6hkd-2026-current-profile-20260928",
     "routeId": "clubsim-sms-pack-6hkd-2026",
     "kind": "current-profile",
@@ -1122,6 +1181,65 @@
       "guideSteps": [
         "HOLD for foreign-tourist long-term retention: registration expires after 30 days.",
         "Do not model the ordinary one-year load rule as a tourist annual keep cost."
+      ]
+    }
+  },
+  {
+    "id": "snap-grameenphone-validity-pack-2026-current-profile-20260929",
+    "routeId": "grameenphone-validity-pack-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "grameenphone-validity-pack-2026",
+      "brandId": "gp-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Grameenphone shop/eSIM surfaces list prepaid physical SIM/eSIM entry around BDT400. Online delivery flow requires NID and biometric verification; a fresh visitor report describes passport scanning plus biometrics at Dhaka airport, but the exact official foreigner purchase path is not fully captured.",
+      "landedCost": {
+        "currency": "BDT",
+        "providerOrCommunityPrice": 400,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 400,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-official-prepaid-entry"
+      },
+      "keep": {
+        "currency": "BDT",
+        "observedActionCost": 300,
+        "yearCostOriginal": 300,
+        "yearCostCny": null,
+        "action": "Recharge BDT300 or more to receive 365 days of main-account validity under the current official matrix. Longer validity extensions exist, but the current five-year price is inconsistent across official surfaces (about BDT1497-1498), so do not reuse the stale BDT995 figure.",
+        "intervalDays": 365,
+        "state": "current-official-annual-rule-five-year-price-conflict"
+      },
+      "chinaActivation": "Local registration/biometric acquisition is required; no overseas-first activation path is established.",
+      "kyc": "Online shop surfaces require NID and biometric verification. Fresh community evidence reports passport plus biometric processing for non-resident visitors at Dhaka airport; official foreigner-document flow still needs a cleaner first-party capture.",
+      "payment": "Local/authorized recharge channels documented; foreign-card acceptance not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "unverified",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Annual retention rule is strong, but foreigner acquisition is local/KYC-heavy and the current five-year extension price conflicts across first-party surfaces.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.grameenphone.com/",
+      "tariffSummary": "BDT300+ recharge = 365-day main-account validity; current five-year extension is roughly BDT1497-1498, not the stale BDT995.",
+      "sourceIds": [
+        "official-gp-recharge-validity-2026-09-29",
+        "official-gp-account-validity-extender-2026-09-29",
+        "official-gp-esim-2026-09-29",
+        "official-gp-prepaid-shop-2026-09-29",
+        "reddit-gp-visitor-biometric-2026-03-21"
+      ],
+      "guideSteps": [
+        "Acquire and complete local biometric registration.",
+        "Recharge at least BDT300 for a clean 365-day main-account validity cycle.",
+        "Do not use the stale BDT995/5-year claim; re-check the official long-validity pack price if choosing that path."
       ]
     }
   },
@@ -3232,6 +3350,64 @@
         "Use the ordinary Amigo route only after confirming your 2026 registration path; do not substitute Tourist eSIM evidence.",
         "Recharge Saldo before the 365-day inactivity limit if retaining the number.",
         "Verify the target roaming country and OTP service before relying on long-term use."
+      ]
+    }
+  },
+  {
+    "id": "snap-telkomsel-simpati-365d-2026-current-profile-20260929",
+    "routeId": "telkomsel-simpati-365d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-29",
+    "sourceDataset": "global-directory.json",
+    "data": {
+      "id": "telkomsel-simpati-365d-2026",
+      "brandId": "telkomsel-simpati",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "SIMPATI is an Indonesian prepaid mobile line. Current Telkomsel terms say SIM activation is performed in Indonesia. Exact current starter-kit price is not reconciled in this review.",
+      "landedCost": {
+        "currency": "IDR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-entry-cost-unresolved"
+      },
+      "keep": {
+        "currency": "IDR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current official mechanisms include credit top-up, qualifying credit usage/package purchase and Active Period Extension packages. The dedicated extension menu currently lists 360 days at Rp115,000. A qualifying minimum Rp1 usage can extend 30 days under stated conditions, so do not label Rp115,000 as the theoretical minimum; exact lowest durable annual path remains unresolved.",
+        "intervalDays": null,
+        "state": "official-multiple-mechanisms-minimum-unresolved"
+      },
+      "chinaActivation": "New SIM activation is documented as occurring in Indonesia. Do not assume first activation from China or another foreign country.",
+      "kyc": "Activation/identity requirements follow Indonesian telecom rules; this review does not reduce them to a simple passport-only claim.",
+      "payment": "Local/app top-up channels exist; international-card acceptance is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Not used for admission. Current long-term overseas continuity is constrained by Telkomsel rule that 90 consecutive days without connection can trigger the lifecycle/grace process.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "Exact cheapest durable annual retention path is unresolved; activation is Indonesia-local and the current 90-day no-network-connection rule creates overseas continuity risk.",
+      "lastVerifiedAt": "2026-09-29",
+      "acquireUrl": "https://www.telkomsel.com/",
+      "tariffSummary": "Multiple official active-period mechanisms; 360-day extension Rp115,000 is documented, but the true minimum annual keep cost is unresolved.",
+      "sourceIds": [
+        "official-telkomsel-active-period-faq-2026-09-29",
+        "official-telkomsel-active-extension-2026-09-29",
+        "official-telkomsel-terms-2026-09-29",
+        "reddit-telkomsel-bali-2026-08-05"
+      ],
+      "guideSteps": [
+        "Activate in Indonesia under current identity/device rules.",
+        "Use a current official active-period mechanism before expiry.",
+        "Do not rely on the stale Rp5,000/year estimate or assume an overseas-only line can remain disconnected from Telkomsel indefinitely."
       ]
     }
   },

@@ -10,6 +10,11 @@
     "countryCode": "AU"
   },
   {
+    "id": "bd",
+    "name": "Bangladesh",
+    "countryCode": "BD"
+  },
+  {
     "id": "ca",
     "name": "Canada",
     "countryCode": "CA"
@@ -60,6 +65,11 @@
     "countryCode": "HR"
   },
   {
+    "id": "id",
+    "name": "Indonesia",
+    "countryCode": "ID"
+  },
+  {
     "id": "ie",
     "name": "Ireland",
     "countryCode": "IE"
@@ -78,6 +88,11 @@
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
+  },
+  {
+    "id": "kz",
+    "name": "Kazakhstan",
+    "countryCode": "KZ"
   },
   {
     "id": "mx",

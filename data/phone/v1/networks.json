@@ -25,6 +25,11 @@
     "marketId": "jp"
   },
   {
+    "id": "beeline-kz",
+    "name": "Beeline Kazakhstan",
+    "marketId": "kz"
+  },
+  {
     "id": "cmhk-hk",
     "name": "China Mobile Hong Kong",
     "marketId": "hk"
@@ -53,6 +58,11 @@
     "id": "globe-ph",
     "name": "Globe Philippines",
     "marketId": "ph"
+  },
+  {
+    "id": "grameenphone-bd",
+    "name": "Grameenphone",
+    "marketId": "bd"
   },
   {
     "id": "jio-in",
@@ -118,6 +128,11 @@
     "id": "telefonica-de",
     "name": "Telefónica DE (O2)",
     "marketId": "de"
+  },
+  {
+    "id": "telkomsel-id",
+    "name": "Telkomsel",
+    "marketId": "id"
   },
   {
     "id": "telstra-au",

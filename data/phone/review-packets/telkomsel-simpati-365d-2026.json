@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-29",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c1",
+  "reviewNotes": "HOLD / canonical-backstage. Legacy Rp5,000/year inference is withdrawn. Current Telkomsel rules provide multiple extension mechanisms, including Rp115,000/360-day extension and minimum Rp1 qualifying usage for a 30-day extension, but the true durable minimum annual keep cost is not established. Activation is in Indonesia and 90 consecutive days without network connection can trigger the lifecycle/grace process.",
+  "market": {
+    "id": "id",
+    "name": "Indonesia",
+    "countryCode": "ID"
+  },
+  "network": {
+    "id": "telkomsel-id",
+    "name": "Telkomsel",
+    "marketId": "id"
+  },
+  "brand": {
+    "id": "telkomsel-simpati",
+    "networkId": "telkomsel-id",
+    "name": "Telkomsel SIMPATI",
+    "marketId": "id"
+  },
+  "route": {
+    "id": "telkomsel-simpati-365d-2026",
+    "marketId": "id",
+    "networkId": "telkomsel-id",
+    "brandId": "telkomsel-simpati",
+    "displayName": "Telkomsel SIMPATI",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.telkomsel.com/",
+    "sourceIds": [
+      "official-telkomsel-active-period-faq-2026-09-29",
+      "official-telkomsel-active-extension-2026-09-29",
+      "official-telkomsel-terms-2026-09-29",
+      "reddit-telkomsel-bali-2026-08-05"
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-telkomsel-active-period-faq-2026-09-29",
+      "url": "https://www.telkomsel.com/en/support/faq/how-do-i-extend-active-period-simpati-card",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telkomsel-active-extension-2026-09-29",
+      "url": "https://www.telkomsel.com/en/vas/perpanjangan-masa-aktif",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-telkomsel-terms-2026-09-29",
+      "url": "https://www.telkomsel.com/en/terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "reddit-telkomsel-bali-2026-08-05",
+      "url": "https://www.reddit.com/r/bali/comments/1vg1edu/telkomsel_sim_card/",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2026-08-05"
+    }
+  ],
+  "sourceIds": [
+    "official-telkomsel-active-period-faq-2026-09-29",
+    "official-telkomsel-active-extension-2026-09-29",
+    "official-telkomsel-terms-2026-09-29",
+    "reddit-telkomsel-bali-2026-08-05"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-telkomsel-legacy-5k-year-refuted-20260929",
+      "routeId": "telkomsel-simpati-365d-2026",
+      "type": "retention-cost-correction",
+      "reportedAt": "2026-09-29",
+      "scope": "route",
+      "outcome": "Legacy Rp5,000/year keep-cost inference is unsupported by current rules. Rp5,000 top-up is not documented as a 365-day extension; official extension options include Rp115,000/360 days, while qualifying usage/top-up/package rules may yield cheaper paths whose durable annual minimum remains unresolved.",
+      "sourceId": "official-telkomsel-active-extension-2026-09-29"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telkomsel-simpati-365d-2026-current-profile-20260929",
+      "routeId": "telkomsel-simpati-365d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-29",
+      "sourceDataset": "global-directory.json",
+      "data": {
+        "id": "telkomsel-simpati-365d-2026",
+        "brandId": "telkomsel-simpati",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "SIMPATI is an Indonesian prepaid mobile line. Current Telkomsel terms say SIM activation is performed in Indonesia. Exact current starter-kit price is not reconciled in this review.",
+        "landedCost": {
+          "currency": "IDR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-entry-cost-unresolved"
+        },
+        "keep": {
+          "currency": "IDR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current official mechanisms include credit top-up, qualifying credit usage/package purchase and Active Period Extension packages. The dedicated extension menu currently lists 360 days at Rp115,000. A qualifying minimum Rp1 usage can extend 30 days under stated conditions, so do not label Rp115,000 as the theoretical minimum; exact lowest durable annual path remains unresolved.",
+          "intervalDays": null,
+          "state": "official-multiple-mechanisms-minimum-unresolved"
+        },
+        "chinaActivation": "New SIM activation is documented as occurring in Indonesia. Do not assume first activation from China or another foreign country.",
+        "kyc": "Activation/identity requirements follow Indonesian telecom rules; this review does not reduce them to a simple passport-only claim.",
+        "payment": "Local/app top-up channels exist; international-card acceptance is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Not used for admission. Current long-term overseas continuity is constrained by Telkomsel rule that 90 consecutive days without connection can trigger the lifecycle/grace process.",
+        "refund": "not reconciled",
+        "trend": "watch",
+        "guideEligible": false,
+        "holdReason": "Exact cheapest durable annual retention path is unresolved; activation is Indonesia-local and the current 90-day no-network-connection rule creates overseas continuity risk.",
+        "lastVerifiedAt": "2026-09-29",
+        "acquireUrl": "https://www.telkomsel.com/",
+        "tariffSummary": "Multiple official active-period mechanisms; 360-day extension Rp115,000 is documented, but the true minimum annual keep cost is unresolved.",
+        "sourceIds": [
+          "official-telkomsel-active-period-faq-2026-09-29",
+          "official-telkomsel-active-extension-2026-09-29",
+          "official-telkomsel-terms-2026-09-29",
+          "reddit-telkomsel-bali-2026-08-05"
+        ],
+        "guideSteps": [
+          "Activate in Indonesia under current identity/device rules.",
+          "Use a current official active-period mechanism before expiry.",
+          "Do not rely on the stale Rp5,000/year estimate or assume an overseas-only line can remain disconnected from Telkomsel indefinitely."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

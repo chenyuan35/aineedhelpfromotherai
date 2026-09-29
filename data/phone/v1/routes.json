@@ -134,6 +134,27 @@
     ]
   },
   {
+    "id": "beeline-kz-simka-v-seyfe-2026",
+    "marketId": "kz",
+    "networkId": "beeline-kz",
+    "brandId": "beeline-kz-prepaid",
+    "displayName": "Beeline Kazakhstan SIM in Safe",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://beeline.kz/ru/products/services/simka-v-seyfe",
+    "sourceIds": [
+      "forum-awd-beeline-sim-safe-2026-04-13",
+      "googleplay-beeline-sim-safe-incident-2026-08-28",
+      "official-beeline-kz-registration-2026-09-29",
+      "official-beeline-kz-sim-safe-2026-09-29",
+      "travelask-beeline-sim-safe-incident-2026-09"
+    ]
+  },
+  {
     "id": "clubsim-sms-pack-6hkd-2026",
     "marketId": "hk",
     "networkId": "csl-hk",
@@ -276,6 +297,27 @@
       "official-globe-prepaid-roaming-2026-09-29",
       "official-globe-sim-registration-2026-09-29",
       "official-globe-sim-terms-2026-09-29"
+    ]
+  },
+  {
+    "id": "grameenphone-validity-pack-2026",
+    "marketId": "bd",
+    "networkId": "grameenphone-bd",
+    "brandId": "gp-prepaid",
+    "displayName": "Grameenphone Prepaid validity",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.grameenphone.com/",
+    "sourceIds": [
+      "official-gp-account-validity-extender-2026-09-29",
+      "official-gp-esim-2026-09-29",
+      "official-gp-prepaid-shop-2026-09-29",
+      "official-gp-recharge-validity-2026-09-29",
+      "reddit-gp-visitor-biometric-2026-03-21"
     ]
   },
   {
@@ -716,6 +758,26 @@
       "official-telcel-glossary-recharge-2026-09-29",
       "official-telcel-line-registration-2026-09-29",
       "official-telcel-roaming-2026-09-29"
+    ]
+  },
+  {
+    "id": "telkomsel-simpati-365d-2026",
+    "marketId": "id",
+    "networkId": "telkomsel-id",
+    "brandId": "telkomsel-simpati",
+    "displayName": "Telkomsel SIMPATI",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-29",
+    "acquireUrl": "https://www.telkomsel.com/",
+    "sourceIds": [
+      "official-telkomsel-active-extension-2026-09-29",
+      "official-telkomsel-active-period-faq-2026-09-29",
+      "official-telkomsel-terms-2026-09-29",
+      "reddit-telkomsel-bali-2026-08-05"
     ]
   },
   {
