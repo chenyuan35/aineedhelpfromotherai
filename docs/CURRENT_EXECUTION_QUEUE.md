@@ -24,6 +24,8 @@ Result: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**. Smart Prepaid is HOLD because
 
 Canonical result after DB-C4B: **95 routes / 53 markets / 92 brands / 72 networks / 313 sources**. Comparison remains **135**, comparison↔canonical overlap is **84**, **51 comparison routes remain legacy-only**, and explicit indexability remains **3**. Full Phone checks preserve 135 comparison routes and the 3-route publication boundary.
 
+Release: PR #309 (`518e7ab737e4ec53a8dba2740e1e752e83adc96a`) merged after Eval Gate #957, CI #183 and Vercel Preview passed; production deployed successfully. Live verification returned 200 for the Phone hub and VOXI route, while the non-indexable MTN Nigeria route returned 404.
+
 ## ACTIVE — Backend database coverage DB-C4
 
 Continue with the next distinct low-cost / decision-useful legacy-only routes. Legacy prices and labels are prioritization hints, not admission facts.
@@ -71,7 +73,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 54 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 51 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
