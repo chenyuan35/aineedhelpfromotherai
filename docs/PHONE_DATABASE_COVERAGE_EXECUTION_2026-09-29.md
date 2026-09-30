@@ -209,3 +209,19 @@ Release: PR #320 squash-merged as `1efb329a35ecf4f8a47e3c95d0e7041013fd0923` aft
 Delegated evidence was exercised rather than claimed. Kimi task `task-e22548697159` independently returned HOLD for IF Mobile and highlighted conflicting post-April-2026 signup evidence. QA task `task-40c3bef1495c` remained running when release gates closed; no result was accepted, and Rakuten/LINEMO were admitted to canonical HOLD status only after direct current first-party reconciliation and full automated checks.
 
 DB-C8 next bounded batch: `ahamo-jp-2026`, `iijmio-jp-2026`, `kt-prepaid-kr-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not duplicate it to raise overlap. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C8 — completed 2026-10-01
+
+The bounded DB-C8 Japan/Korea batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `ahamo-jp-2026` — HOLD. Current 30GB pricing remains JPY2,970/month through 2026-11-30, while foreign-national online acquisition remains residence-card/address gated. Existing lines support overseas voice/SMS in more than 200 countries/regions, but China-specific OTP remains unverified. Official materials schedule a JPY3,135/40GB entry tier from 2026-12-01.
+- `iijmio-jp-2026` — HOLD. Current 2GB voice pricing is JPY850/month; signup requires a Japanese address, supported identity document and subscriber-name credit card. Voice SIM/eSIM supports overseas voice/SMS but not overseas data, while overseas-card reliability and China-specific OTP remain unresolved.
+- `kt-prepaid-kr-2026` — HOLD. Current KT evidence resolves the recharge ladder through KRW50,000/365 days, but passport-only/visitor service remains time-limited unless identity is reverified/extended in store. Welcome Prepaid explicitly excludes roaming, so it is not an overseas OTP-retention route.
+
+Post-DB-C8 state: **113 canonical routes / 63 markets / 110 brands / 86 networks / 386 sources / 102 comparison-overlap route IDs / 33 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check`, `npm run verify` and the full frontend build passed. The frontend still produces **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
+
+Release: PR #322 squash-merged as `bc3a090dee5ff892666d633c159a91651099ab5b` after Eval Gate #983, CI #195 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and non-indexable `ahamo-jp-2026` at HTTP 404.
+
+Delegated evidence was exercised through QwenPaw's inter-agent path. Kimi task `task-d802cb1b57d4` completed and was reconciled; QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. Initial headless task attempts failed because that execution path did not expose the configured active models, and no failed worker output was treated as evidence.
+
+DB-C9 next bounded batch: `lguplus-prepaid-kr-2026`, `mts-by-2026`, `bakcell-cin-az-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not duplicate it to inflate overlap. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
