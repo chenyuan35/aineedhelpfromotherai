@@ -36,9 +36,19 @@ DB-C5 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE 
 
 Released state: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison overlaps / 42 legacy-only / 3 indexable**. PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb`; Eval Gate #969, CI #189 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `bhtelecom-ba-2026` route 404.
 
-## NEXT — Backend database coverage DB-C6
+## IN PROGRESS — Backend database coverage DB-C6
 
-Bounded first batch: `stc-sawa-sa-2026`, `claro-pre-ar-2026`, `skt-prepaid-kr-2026`. Reverify current lifecycle, minimum keep cost, foreign-user/KYC/acquisition constraints and overseas SMS/OTP utility. Use real QwenPaw agent delegation for at least one independent lane and reconcile all delegated output before admission. No public/indexability change.
+Research and independent reconciliation are complete for the bounded batch; **canonical apply/release is not complete**. Remote work branch: `phone/db-c6-stc-claro-skt-20260930`, WIP checkpoint `720ddb7`. The branch currently contains only the three reviewed packet drafts; released `main` still has none of these route IDs in canonical `data/phone/v1`.
+
+Current reviewed dispositions:
+
+- `stc-sawa-sa-2026` — **HOLD**. Current STC material conflicts internally on prepaid validity (180 days in current mobile terms vs 360 days on another still-live recharge page), and non-citizen ID expiry/final departure can trigger suspension/cancellation. QwenPaw/Kimi task `task-b8c31337863b` independently supported HOLD.
+- `claro-pre-ar-2026` — **ADMIT-BACKSTAGE**. Final packet uses current first-party Claro evidence: recharge validity 180 days plus a 60-day active grace period after credit expiry; passport tourist-SIM and foreigner prepaid-eSIM paths exist; the lowest visible recharge tier is ARS2000 but is not treated as a contractual minimum; prepaid roaming exists while destination-specific OTP reliability remains unverified. QwenPaw/QA task `task-4f112e9f94f5` was reconciled rather than accepted verbatim: its reported 60-day inactivity interpretation must not override the current first-party 180+60 contract model.
+- `skt-prepaid-kr-2026` — **HOLD**. Official PPS mechanics are KRW5000 = 30 days outgoing / 40 days incoming / 120 days number retention; passport onboarding exists, but recharge continuation is constrained after permitted stay expiry. Final coordinator recheck corrected the roaming field: current T roaming guidance classifies PPS as roaming-unavailable.
+
+**Exact next-session task:** fetch/checkout `phone/db-c6-stc-claro-skt-20260930` at or after `720ddb7`; run packet/schema/source sanity checks; apply the three packets through `scripts/apply-phone-review-packet.mjs`; add/update DB-C6 migration coverage as required; run `npm run phone:data:check` plus the normal frontend/build/publication-boundary checks; then push one consolidated production-affecting head, open/review PR, require Eval Gate + CI + real Vercel Preview, merge only if green, production-verify hub/VOXI 200 and a DB-C6 non-indexable route 404, and update canonical facts. No public/indexability change.
+
+Stop only if validation exposes a real source/schema conflict, provider quota blocks the release, or a protected authorization boundary appears. Do **not** redo all three route audits from scratch and do not start DB-C7 before DB-C6 is closed.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
