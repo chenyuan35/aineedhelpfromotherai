@@ -307,6 +307,28 @@
     ]
   },
   {
+    "id": "claro-pre-ar-2026",
+    "marketId": "ar",
+    "networkId": "claro-ar",
+    "brandId": "claro-pre-ar",
+    "displayName": "Claro Prepago Argentina",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+    "sourceIds": [
+      "claro-ar-esim-foreigner-20260930",
+      "claro-ar-prepaid-contract-20260930",
+      "claro-ar-prepaid-terms-20260930",
+      "claro-ar-recharge-20260930",
+      "claro-ar-roaming-prepaid-20260930",
+      "claro-ar-tourist-sim-20260930"
+    ]
+  },
+  {
     "id": "claro-pre-br-90d-2026",
     "marketId": "br",
     "networkId": "claro-br",
@@ -1350,6 +1372,26 @@
     ]
   },
   {
+    "id": "skt-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "skt-kr",
+    "brandId": "skt-prepaid-kr",
+    "displayName": "SKT PPS Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://m.tworld.co.kr/product/callplan?prod_id=NA00004265",
+    "sourceIds": [
+      "skt-pps-foreigner-20260930",
+      "skt-pps-lifecycle-20260930",
+      "skt-pps-recharge-20260930",
+      "skt-pps-roaming-unavailable-20260930"
+    ]
+  },
+  {
     "id": "smart-prepaid-ph-2026",
     "marketId": "ph",
     "networkId": "smart-ph",
@@ -1423,6 +1465,26 @@
       "official-speakout-plans-2026-09-29",
       "official-speakout-sim-2026-09-29",
       "official-speakout-terms-2026-09-29"
+    ]
+  },
+  {
+    "id": "stc-sawa-sa-2026",
+    "marketId": "sa",
+    "networkId": "stc-sa",
+    "brandId": "stc-sawa",
+    "displayName": "STC sawa prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.stc.com.sa/en/personal/mobile/packages/prepaid.html",
+    "sourceIds": [
+      "stc-general-termination-20260930",
+      "stc-sawa-mobile-terms-20260930",
+      "stc-sawa-recharge-legacy-conflict-20260930",
+      "stc-sawa-recharge-min-20260930"
     ]
   },
   {

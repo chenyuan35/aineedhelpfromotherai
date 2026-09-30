@@ -11,6 +11,11 @@
       "countryCode": "AE"
     },
     {
+      "id": "ar",
+      "name": "Argentina",
+      "countryCode": "AR"
+    },
+    {
       "id": "at",
       "name": "Austria",
       "countryCode": "AT"
@@ -171,6 +176,11 @@
       "countryCode": "KH"
     },
     {
+      "id": "kr",
+      "name": "South Korea",
+      "countryCode": "KR"
+    },
+    {
       "id": "kz",
       "name": "Kazakhstan",
       "countryCode": "KZ"
@@ -249,6 +259,11 @@
       "id": "ru",
       "name": "Russia",
       "countryCode": "RU"
+    },
+    {
+      "id": "sa",
+      "name": "Saudi Arabia",
+      "countryCode": "SA"
     },
     {
       "id": "sg",
@@ -371,6 +386,11 @@
       "id": "chunghwa-tw",
       "name": "Chunghwa Telecom TW",
       "marketId": "tw"
+    },
+    {
+      "id": "claro-ar",
+      "name": "Claro AR",
+      "marketId": "ar"
     },
     {
       "id": "claro-br",
@@ -573,6 +593,11 @@
       "marketId": "sg"
     },
     {
+      "id": "skt-kr",
+      "name": "SK Telecom KR",
+      "marketId": "kr"
+    },
+    {
       "id": "slt-mobitel-lk",
       "name": "SLT-Mobitel",
       "marketId": "lk"
@@ -586,6 +611,11 @@
       "id": "spark-nz",
       "name": "Spark NZ",
       "marketId": "nz"
+    },
+    {
+      "id": "stc-sa",
+      "name": "STC SA",
+      "marketId": "sa"
     },
     {
       "id": "sunrise-ch",
@@ -804,6 +834,12 @@
       "networkId": "chunghwa-tw",
       "name": "中華電信如意卡",
       "marketId": "tw"
+    },
+    {
+      "id": "claro-pre-ar",
+      "networkId": "claro-ar",
+      "name": "Claro Prepago AR",
+      "marketId": "ar"
     },
     {
       "id": "claro-pre-br",
@@ -1118,6 +1154,12 @@
       "marketId": "nz"
     },
     {
+      "id": "skt-prepaid-kr",
+      "networkId": "skt-kr",
+      "name": "SKT Prepaid",
+      "marketId": "kr"
+    },
+    {
       "id": "smart-ph",
       "networkId": "smart-ph",
       "name": "Smart Prepaid",
@@ -1140,6 +1182,12 @@
       "networkId": "rogers-ca",
       "name": "7-Eleven SpeakOut",
       "marketId": "ca"
+    },
+    {
+      "id": "stc-sawa",
+      "networkId": "stc-sa",
+      "name": "STC sawa",
+      "marketId": "sa"
     },
     {
       "id": "sunrise-prepaid",
@@ -1622,6 +1670,28 @@
         "cht-prepaid-apply-2026-09-29",
         "cht-prepaid-intro-2026-09-29",
         "cht-prepaid-recharge-2026-09-29"
+      ]
+    },
+    {
+      "id": "claro-pre-ar-2026",
+      "marketId": "ar",
+      "networkId": "claro-ar",
+      "brandId": "claro-pre-ar",
+      "displayName": "Claro Prepago Argentina",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+      "sourceIds": [
+        "claro-ar-esim-foreigner-20260930",
+        "claro-ar-prepaid-contract-20260930",
+        "claro-ar-prepaid-terms-20260930",
+        "claro-ar-recharge-20260930",
+        "claro-ar-roaming-prepaid-20260930",
+        "claro-ar-tourist-sim-20260930"
       ]
     },
     {
@@ -2668,6 +2738,26 @@
       ]
     },
     {
+      "id": "skt-prepaid-kr-2026",
+      "marketId": "kr",
+      "networkId": "skt-kr",
+      "brandId": "skt-prepaid-kr",
+      "displayName": "SKT PPS Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical SIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://m.tworld.co.kr/product/callplan?prod_id=NA00004265",
+      "sourceIds": [
+        "skt-pps-foreigner-20260930",
+        "skt-pps-lifecycle-20260930",
+        "skt-pps-recharge-20260930",
+        "skt-pps-roaming-unavailable-20260930"
+      ]
+    },
+    {
       "id": "smart-prepaid-ph-2026",
       "marketId": "ph",
       "networkId": "smart-ph",
@@ -2741,6 +2831,26 @@
         "official-speakout-plans-2026-09-29",
         "official-speakout-sim-2026-09-29",
         "official-speakout-terms-2026-09-29"
+      ]
+    },
+    {
+      "id": "stc-sawa-sa-2026",
+      "marketId": "sa",
+      "networkId": "stc-sa",
+      "brandId": "stc-sawa",
+      "displayName": "STC sawa prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.stc.com.sa/en/personal/mobile/packages/prepaid.html",
+      "sourceIds": [
+        "stc-general-termination-20260930",
+        "stc-sawa-mobile-terms-20260930",
+        "stc-sawa-recharge-legacy-conflict-20260930",
+        "stc-sawa-recharge-min-20260930"
       ]
     },
     {
@@ -3433,6 +3543,42 @@
       "url": "https://www.cht.com.tw/home/campaign/prepaidcard/recharge",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "claro-ar-esim-foreigner-20260930",
+      "url": "https://simple.claro.com.ar/esimple/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-prepaid-contract-20260930",
+      "url": "https://landing.claro.com.ar/p/legales/1581383838282-Archivo.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-prepaid-terms-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/terminos-condiciones-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-recharge-20260930",
+      "url": "https://asistencia.claro.com.ar/asistencia/servicios-en-tu-celu/packs-y-recargas/como-recargo-mi-linea-prepaga",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-roaming-prepaid-20260930",
+      "url": "https://www.claro.com.ar/personas/roaming/terminos-condiciones-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-tourist-sim-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
     },
     {
       "id": "claro-prepaid-plan-legacy-2026-09-26",
@@ -5001,6 +5147,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "skt-pps-foreigner-20260930",
+      "url": "https://www.tworld.co.kr/poc/eng/html/EN1.2T.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-lifecycle-20260930",
+      "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=1000060982",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-recharge-20260930",
+      "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=0000000348",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-roaming-unavailable-20260930",
+      "url": "https://m.tworld.co.kr/product/callplan?prod_id=NA00003157",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
       "id": "smart-esim-20260929",
       "url": "https://smart.com.ph/Pages/esim",
       "type": "provider-official",
@@ -5239,6 +5409,30 @@
       "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
       "type": "official",
       "label": "Tello — When do autopay & plan renewal occur?"
+    },
+    {
+      "id": "stc-general-termination-20260930",
+      "url": "https://www.stc.com.sa/en/content-page/termsandconditions.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-mobile-terms-20260930",
+      "url": "https://www.stc.com.sa/en/personal/mobile/terms-conditions-mobile.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-recharge-legacy-conflict-20260930",
+      "url": "https://www.stc.com.sa/ar/personal/mobile/packages/sawa-visitor/recharge-cards.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-recharge-min-20260930",
+      "url": "https://www.stc.com.sa/en/personal/mobile/other-services/recharge-sawa-postpaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
     },
     {
       "id": "taiwan-mobile-tw-official",
@@ -5567,6 +5761,15 @@
       "sourceId": "cht-prepaid-recharge-2026-09-29"
     },
     {
+      "id": "evt-claro-pre-ar-2026-db-c6-20260930",
+      "routeId": "claro-pre-ar-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Claro terms establish 180-day recharge validity plus a 60-day active grace period; current foreigner acquisition and prepaid roaming paths are also documented.",
+      "sourceId": "claro-ar-prepaid-contract-20260930"
+    },
+    {
       "id": "evt-claro-pre-br-90d-2026-db-c2-review-20260929",
       "routeId": "claro-pre-br-90d-2026",
       "type": "evidence-hold",
@@ -5891,6 +6094,15 @@
       "sourceId": "safaricom-daima-faq-2026-09-29"
     },
     {
+      "id": "evt-skt-prepaid-kr-2026-db-c6-20260930",
+      "routeId": "skt-prepaid-kr-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current SK Telecom material establishes the PPS recharge lifecycle, passport onboarding and stay-expiry recharge constraint; current roaming guidance classifies PPS as roaming-unavailable.",
+      "sourceId": "skt-pps-lifecycle-20260930"
+    },
+    {
       "id": "evt-smart-prepaid-ph-2026-db-c4b-review-20260929",
       "routeId": "smart-prepaid-ph-2026",
       "type": "eligibility-and-lifecycle-correction",
@@ -5898,6 +6110,15 @@
       "scope": "route",
       "outcome": "Smart ordinary prepaid lifecycle remains 365 days for loaded value plus a 180-day reload grace after balance reaches zero, but foreign tourists face a separate 30-day SIM-registration validity cap unless an approved visa extension is supplied. The legacy route is therefore not treated as a generally available long-term foreign-user route.",
       "sourceId": "smart-simreg-foreigners-20260929"
+    },
+    {
+      "id": "evt-stc-sawa-sa-2026-db-c6-20260930",
+      "routeId": "stc-sawa-sa-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current STC personal prepaid terms document 180-day SIM validity from paid activity, while a still-live STC recharge page says 360 days; non-citizen final-departure/ID-expiry cancellation remains a structural blocker.",
+      "sourceId": "stc-sawa-mobile-terms-20260930"
     },
     {
       "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",
@@ -6987,6 +7208,59 @@
         ],
         "guideSteps": [],
         "marketName": "Taiwan"
+      }
+    },
+    {
+      "id": "snap-claro-pre-ar-2026-current-profile-20260930",
+      "routeId": "claro-pre-ar-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "claro-pre-ar-2026",
+        "brandId": "claro-pre-ar",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Claro sells a passport-activated prepaid tourist physical SIM and exposes a prepaid eSIM flow with an explicit foreigner path.",
+        "landedCost": {
+          "currency": "ARS",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "ARS",
+          "observedActionCost": 2000,
+          "yearCostOriginal": 4000,
+          "yearCostCny": null,
+          "action": "Recharge within 180 days to reset credit validity; Claro current public pages show ARS2000 as the lowest visible recharge promotion tier. The dedicated prepaid contract keeps the line active for another 60 days after the last credited balance expires.",
+          "intervalDays": 180,
+          "state": "current-provider-lifecycle-observed-tier"
+        },
+        "chinaActivation": "Acquisition is supported for foreigners, but the tourist physical SIM is local-store oriented; the eSIM flow explicitly offers a foreigner path. Remote-from-China completion is not proven.",
+        "kyc": "Passport is explicitly required for tourist SIM activation; the prepaid eSIM flow includes Soy extranjero.",
+        "payment": "Claro supports online recharge by credit/debit card or Claro Pay plus physical/payment-network channels; foreign-card acceptance from abroad is not guaranteed.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Claro documents prepaid roaming with calls/SMS/data subject to destination coverage and pricing. China-specific SMS/OTP delivery is not verified and should not be inferred.",
+        "refund": "not reconciled",
+        "trend": "admit-backstage-current-lifecycle",
+        "guideEligible": false,
+        "holdReason": "Backstage only until remote foreign-card recharge and China-specific OTP reception have independent evidence.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+        "tariffSummary": "180-day recharge validity + 60-day active grace; ARS2000 is an observed current public recharge tier, not a contractual minimum.",
+        "sourceIds": [
+          "claro-ar-prepaid-terms-20260930",
+          "claro-ar-prepaid-contract-20260930",
+          "claro-ar-tourist-sim-20260930",
+          "claro-ar-esim-foreigner-20260930",
+          "claro-ar-recharge-20260930",
+          "claro-ar-roaming-prepaid-20260930"
+        ],
+        "guideSteps": [
+          "Activate via passport-based tourist SIM or the foreigner eSIM path.",
+          "Recharge before 180 days if preserving credited balance/continuity.",
+          "Treat the additional 60 days as grace, not a preferred keep cadence."
+        ]
       }
     },
     {
@@ -10948,6 +11222,57 @@
       }
     },
     {
+      "id": "snap-skt-prepaid-kr-2026-current-profile-20260930",
+      "routeId": "skt-prepaid-kr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "skt-prepaid-kr-2026",
+        "brandId": "skt-prepaid-kr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "SK Telecom PPS can be opened by a foreign customer using a valid passport even without an alien registration card; foreign customers are limited to one prepaid line.",
+        "landedCost": {
+          "currency": "KRW",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "KRW",
+          "observedActionCost": 5000,
+          "yearCostOriginal": 15000,
+          "yearCostCny": null,
+          "action": "A KRW5000 voice/SMS recharge gives 30 days outgoing, 40 days incoming and 120 days number retention. The number-retention floor is roughly three KRW5000 actions per 360 days; continuous incoming-SMS availability would require a materially shorter cadence than the 120-day retention window.",
+          "intervalDays": 120,
+          "state": "current-provider-lifecycle"
+        },
+        "chinaActivation": "A valid passport can open PPS, but passport-opened customers cannot keep recharging after their permitted stay expires without returning to an SKT branch/dealer for identity verification and a limited extension.",
+        "kyc": "Valid passport is accepted without an alien registration card. After stay expiry, further recharge is blocked unless the customer visits an SKT branch/dealer with the passport for identity verification; SKT documents an additional three-month extension path.",
+        "payment": "T world, stores and ARS support PPS recharge. Published card support is Korea-centric; dependable remote foreign-card recharge is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "SK Telecom current roaming guidance classifies PPS among roaming-unavailable plans. Overseas SMS/OTP reception is therefore not established for this PPS line.",
+        "refund": "not reconciled",
+        "trend": "hold-stay-expiry-and-roaming-friction",
+        "guideEligible": false,
+        "holdReason": "Passport onboarding is possible, but recharge stops after stay expiry unless identity is re-verified in person, and current SKT roaming guidance classifies PPS as roaming-unavailable; not a clean long-term nonresident OTP route.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://m.tworld.co.kr/product/callplan?prod_id=NA00004265",
+        "tariffSummary": "KRW5000 gives 30 days outgoing, 40 days incoming and 120 days number retention; passport users face a stay-expiry recharge stop and PPS is classified as roaming-unavailable.",
+        "sourceIds": [
+          "skt-pps-lifecycle-20260930",
+          "skt-pps-foreigner-20260930",
+          "skt-pps-recharge-20260930",
+          "skt-pps-roaming-unavailable-20260930"
+        ],
+        "guideSteps": [
+          "Open PPS in Korea using an accepted identity document such as a valid passport.",
+          "Distinguish the 120-day number-retention window from the shorter 40-day incoming-service window.",
+          "Do not rely on PPS for long-term overseas OTP unless stay-validity and temporary-roaming requirements are satisfied."
+        ]
+      }
+    },
+    {
       "id": "snap-smart-prepaid-ph-2026-current-profile-20260929",
       "routeId": "smart-prepaid-ph-2026",
       "kind": "current-profile",
@@ -11284,6 +11609,53 @@
         "guideSteps": [
           "Reference/HOLD only — do not use the legacy 365-day voucher economics.",
           "For Canada-only use, maintain an active rate plan and never let the no-active-plan period reach 90 days."
+        ]
+      }
+    },
+    {
+      "id": "snap-stc-sawa-sa-2026-current-profile-20260930",
+      "routeId": "stc-sawa-sa-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "stc-sawa-sa-2026",
+        "brandId": "stc-sawa",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current STC Sawa prepaid is locally sold through STC channels; non-citizen continuity depends on valid Saudi identity/legal status.",
+        "landedCost": {
+          "currency": "SAR",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "SAR",
+          "action": "Any paid activity can extend prepaid validity, but current STC pages conflict on whether the SIM ceiling is 180 or 360 days. Minimum documented recharge via postpaid-to-Sawa is SAR15; do not treat this as a proven annual keep minimum.",
+          "state": "provider-conflict"
+        },
+        "chinaActivation": "Local Saudi activation/identity status required; not a remote China activation route.",
+        "kyc": "STC general terms permit cancellation after ID validity expires or final departure from Saudi Arabia for a non-citizen.",
+        "payment": "mystc/recharge cards and other STC channels; one documented recharge channel has SAR15 minimum.",
+        "wifiCalling": "unverified",
+        "roamingSms": "STC offers roaming generally, but long-term OTP utility after non-citizen final departure is not a stable use case.",
+        "refund": "remaining balance can be depleted/transferred in some disconnection/operator-transfer cases; not fully reconciled.",
+        "trend": "hold-provider-conflict-and-legal-status",
+        "guideEligible": false,
+        "holdReason": "Provider pages conflict on 180 vs 360-day SIM retention, and STC may cancel a non-citizen line after final departure or ID expiry.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.stc.com.sa/en/personal/mobile/packages/prepaid.html",
+        "tariffSummary": "Paid activity extends Sawa validity; current first-party pages conflict on 180 vs 360 days and non-citizen legal-status termination is material.",
+        "sourceIds": [
+          "stc-sawa-mobile-terms-20260930",
+          "stc-sawa-recharge-legacy-conflict-20260930",
+          "stc-general-termination-20260930",
+          "stc-sawa-recharge-min-20260930"
+        ],
+        "guideSteps": [
+          "Treat current 180/360-day conflict as unresolved.",
+          "Do not model SAR15 as a guaranteed annual keep-alive floor.",
+          "Do not recommend for nonresident long-term OTP while final-departure cancellation remains in STC terms."
         ]
       }
     },
@@ -13876,6 +14248,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "claro-pre-ar-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "ARS",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "ARS",
+      "keepYearCostOriginal": 4000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
+    },
+    {
       "routeId": "claro-pre-br-90d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -14524,6 +14908,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "skt-prepaid-kr-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KRW",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KRW",
+      "keepYearCostOriginal": 15000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "smart-prepaid-ph-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -14570,6 +14966,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "stc-sawa-sa-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "SAR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "SAR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "sunrise-prepaid-2026",

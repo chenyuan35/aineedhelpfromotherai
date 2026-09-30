@@ -96,6 +96,12 @@
     "marketId": "tw"
   },
   {
+    "id": "claro-pre-ar",
+    "networkId": "claro-ar",
+    "name": "Claro Prepago AR",
+    "marketId": "ar"
+  },
+  {
     "id": "claro-pre-br",
     "networkId": "claro-br",
     "name": "Claro Pré",
@@ -408,6 +414,12 @@
     "marketId": "nz"
   },
   {
+    "id": "skt-prepaid-kr",
+    "networkId": "skt-kr",
+    "name": "SKT Prepaid",
+    "marketId": "kr"
+  },
+  {
     "id": "smart-ph",
     "networkId": "smart-ph",
     "name": "Smart Prepaid",
@@ -430,6 +442,12 @@
     "networkId": "rogers-ca",
     "name": "7-Eleven SpeakOut",
     "marketId": "ca"
+  },
+  {
+    "id": "stc-sawa",
+    "networkId": "stc-sa",
+    "name": "STC sawa",
+    "marketId": "sa"
   },
   {
     "id": "sunrise-prepaid",

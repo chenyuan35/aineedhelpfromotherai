@@ -108,6 +108,42 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "claro-ar-esim-foreigner-20260930",
+    "url": "https://simple.claro.com.ar/esimple/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-ar-prepaid-contract-20260930",
+    "url": "https://landing.claro.com.ar/p/legales/1581383838282-Archivo.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-ar-prepaid-terms-20260930",
+    "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/terminos-condiciones-prepago",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-ar-recharge-20260930",
+    "url": "https://asistencia.claro.com.ar/asistencia/servicios-en-tu-celu/packs-y-recargas/como-recargo-mi-linea-prepaga",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-ar-roaming-prepaid-20260930",
+    "url": "https://www.claro.com.ar/personas/roaming/terminos-condiciones-prepago",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-ar-tourist-sim-20260930",
+    "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
     "id": "claro-prepaid-plan-legacy-2026-09-26",
     "url": "https://www.claro.com.br/celular/planos-pre",
     "type": "provider-official",
@@ -1674,6 +1710,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "skt-pps-foreigner-20260930",
+    "url": "https://www.tworld.co.kr/poc/eng/html/EN1.2T.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "skt-pps-lifecycle-20260930",
+    "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=1000060982",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "skt-pps-recharge-20260930",
+    "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=0000000348",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "skt-pps-roaming-unavailable-20260930",
+    "url": "https://m.tworld.co.kr/product/callplan?prod_id=NA00003157",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
     "id": "smart-esim-20260929",
     "url": "https://smart.com.ph/Pages/esim",
     "type": "provider-official",
@@ -1912,6 +1972,30 @@
     "url": "https://tello.com/help_center/plans-pricing/when-do-autopay-plan-renewal-occur",
     "type": "official",
     "label": "Tello — When do autopay & plan renewal occur?"
+  },
+  {
+    "id": "stc-general-termination-20260930",
+    "url": "https://www.stc.com.sa/en/content-page/termsandconditions.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "stc-sawa-mobile-terms-20260930",
+    "url": "https://www.stc.com.sa/en/personal/mobile/terms-conditions-mobile.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "stc-sawa-recharge-legacy-conflict-20260930",
+    "url": "https://www.stc.com.sa/ar/personal/mobile/packages/sawa-visitor/recharge-cards.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "stc-sawa-recharge-min-20260930",
+    "url": "https://www.stc.com.sa/en/personal/mobile/other-services/recharge-sawa-postpaid.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
   },
   {
     "id": "taiwan-mobile-tw-official",

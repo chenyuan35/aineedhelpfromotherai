@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "stc-sawa-sa-2026",
+    "marketId": "sa",
+    "networkId": "stc-sa",
+    "brandId": "stc-sawa",
+    "displayName": "STC sawa prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.stc.com.sa/en/personal/mobile/packages/prepaid.html",
+    "sourceIds": [
+      "stc-general-termination-20260930",
+      "stc-sawa-mobile-terms-20260930",
+      "stc-sawa-recharge-legacy-conflict-20260930",
+      "stc-sawa-recharge-min-20260930"
+    ]
+  },
+  "market": {
+    "id": "sa",
+    "name": "Saudi Arabia",
+    "countryCode": "SA"
+  },
+  "network": {
+    "id": "stc-sa",
+    "name": "STC SA",
+    "marketId": "sa"
+  },
+  "brand": {
+    "id": "stc-sawa",
+    "networkId": "stc-sa",
+    "name": "STC sawa",
+    "marketId": "sa"
+  },
+  "metrics": {
+    "routeId": "stc-sawa-sa-2026",
+    "checkedAt": "2026-09-30",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "SAR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "SAR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "stc-general-termination-20260930",
+      "url": "https://www.stc.com.sa/en/content-page/termsandconditions.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-mobile-terms-20260930",
+      "url": "https://www.stc.com.sa/en/personal/mobile/terms-conditions-mobile.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-recharge-legacy-conflict-20260930",
+      "url": "https://www.stc.com.sa/ar/personal/mobile/packages/sawa-visitor/recharge-cards.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "stc-sawa-recharge-min-20260930",
+      "url": "https://www.stc.com.sa/en/personal/mobile/other-services/recharge-sawa-postpaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-stc-sawa-sa-2026-db-c6-20260930",
+      "routeId": "stc-sawa-sa-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current STC personal prepaid terms document 180-day SIM validity from paid activity, while a still-live STC recharge page says 360 days; non-citizen final-departure/ID-expiry cancellation remains a structural blocker.",
+      "sourceId": "stc-sawa-mobile-terms-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-stc-sawa-sa-2026-current-profile-20260930",
+      "routeId": "stc-sawa-sa-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "stc-sawa-sa-2026",
+        "brandId": "stc-sawa",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current STC Sawa prepaid is locally sold through STC channels; non-citizen continuity depends on valid Saudi identity/legal status.",
+        "landedCost": {
+          "currency": "SAR",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "SAR",
+          "action": "Any paid activity can extend prepaid validity, but current STC pages conflict on whether the SIM ceiling is 180 or 360 days. Minimum documented recharge via postpaid-to-Sawa is SAR15; do not treat this as a proven annual keep minimum.",
+          "state": "provider-conflict"
+        },
+        "chinaActivation": "Local Saudi activation/identity status required; not a remote China activation route.",
+        "kyc": "STC general terms permit cancellation after ID validity expires or final departure from Saudi Arabia for a non-citizen.",
+        "payment": "mystc/recharge cards and other STC channels; one documented recharge channel has SAR15 minimum.",
+        "wifiCalling": "unverified",
+        "roamingSms": "STC offers roaming generally, but long-term OTP utility after non-citizen final departure is not a stable use case.",
+        "refund": "remaining balance can be depleted/transferred in some disconnection/operator-transfer cases; not fully reconciled.",
+        "trend": "hold-provider-conflict-and-legal-status",
+        "guideEligible": false,
+        "holdReason": "Provider pages conflict on 180 vs 360-day SIM retention, and STC may cancel a non-citizen line after final departure or ID expiry.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.stc.com.sa/en/personal/mobile/packages/prepaid.html",
+        "tariffSummary": "Paid activity extends Sawa validity; current first-party pages conflict on 180 vs 360 days and non-citizen legal-status termination is material.",
+        "sourceIds": [
+          "stc-sawa-mobile-terms-20260930",
+          "stc-sawa-recharge-legacy-conflict-20260930",
+          "stc-general-termination-20260930",
+          "stc-sawa-recharge-min-20260930"
+        ],
+        "guideSteps": [
+          "Treat current 180/360-day conflict as unresolved.",
+          "Do not model SAR15 as a guaranteed annual keep-alive floor.",
+          "Do not recommend for nonresident long-term OTP while final-departure cancellation remains in STC terms."
+        ]
+      }
+    }
+  ]
+}

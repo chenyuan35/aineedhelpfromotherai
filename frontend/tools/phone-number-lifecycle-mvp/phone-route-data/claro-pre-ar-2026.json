@@ -1,10 +1,27 @@
 {
   "schemaVersion": 1,
-  "operation": "add",
-  "reviewState": "approved-backstage",
-  "reviewedAt": "2026-09-30",
-  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c6",
-  "reviewNotes": "ADMIT-BACKSTAGE. Claro Argentina currently documents 180-day recharge validity; its prepaid-line contract adds a 60-day active grace period after the last credit expires. Foreigners have a passport-based tourist SIM path and the new prepaid eSIM flow explicitly offers a foreigner path. Current public promotion pages expose ARS2000 as the lowest visible recharge tier, but it is an observed tier rather than a contractual minimum. Roaming for prepaid is supported, but OTP reliability by destination remains unverified.",
+  "route": {
+    "id": "claro-pre-ar-2026",
+    "marketId": "ar",
+    "networkId": "claro-ar",
+    "brandId": "claro-pre-ar",
+    "displayName": "Claro Prepago Argentina",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+    "sourceIds": [
+      "claro-ar-esim-foreigner-20260930",
+      "claro-ar-prepaid-contract-20260930",
+      "claro-ar-prepaid-terms-20260930",
+      "claro-ar-recharge-20260930",
+      "claro-ar-roaming-prepaid-20260930",
+      "claro-ar-tourist-sim-20260930"
+    ]
+  },
   "market": {
     "id": "ar",
     "name": "Argentina",
@@ -21,32 +38,24 @@
     "name": "Claro Prepago AR",
     "marketId": "ar"
   },
-  "route": {
-    "id": "claro-pre-ar-2026",
-    "marketId": "ar",
-    "networkId": "claro-ar",
-    "brandId": "claro-pre-ar",
-    "displayName": "Claro Prepago Argentina",
-    "family": "long-term",
-    "numberClass": "real-mobile",
-    "form": "physical + eSIM",
-    "surfaceState": "backstage-only",
-    "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-30",
-    "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
-    "sourceIds": [
-      "claro-ar-prepaid-terms-20260930",
-      "claro-ar-prepaid-contract-20260930",
-      "claro-ar-tourist-sim-20260930",
-      "claro-ar-esim-foreigner-20260930",
-      "claro-ar-recharge-20260930",
-      "claro-ar-roaming-prepaid-20260930"
-    ]
+  "metrics": {
+    "routeId": "claro-pre-ar-2026",
+    "checkedAt": "2026-09-30",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "ARS",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "ARS",
+    "keepYearCostOriginal": 4000,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
   },
+  "numberRanges": [],
+  "serviceEvidence": [],
   "sources": [
     {
-      "id": "claro-ar-prepaid-terms-20260930",
-      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/terminos-condiciones-prepago",
+      "id": "claro-ar-esim-foreigner-20260930",
+      "url": "https://simple.claro.com.ar/esimple/",
       "type": "provider-official",
       "reportedAt": "2026-09-30"
     },
@@ -57,14 +66,8 @@
       "reportedAt": "2026-09-30"
     },
     {
-      "id": "claro-ar-tourist-sim-20260930",
-      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
-      "type": "provider-official",
-      "reportedAt": "2026-09-30"
-    },
-    {
-      "id": "claro-ar-esim-foreigner-20260930",
-      "url": "https://simple.claro.com.ar/esimple/",
+      "id": "claro-ar-prepaid-terms-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/terminos-condiciones-prepago",
       "type": "provider-official",
       "reportedAt": "2026-09-30"
     },
@@ -79,15 +82,13 @@
       "url": "https://www.claro.com.ar/personas/roaming/terminos-condiciones-prepago",
       "type": "provider-official",
       "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-tourist-sim-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
     }
-  ],
-  "sourceIds": [
-    "claro-ar-prepaid-terms-20260930",
-    "claro-ar-prepaid-contract-20260930",
-    "claro-ar-tourist-sim-20260930",
-    "claro-ar-esim-foreigner-20260930",
-    "claro-ar-recharge-20260930",
-    "claro-ar-roaming-prepaid-20260930"
   ],
   "observations": [],
   "events": [
@@ -155,6 +156,5 @@
         ]
       }
     }
-  ],
-  "numberRanges": []
+  ]
 }
