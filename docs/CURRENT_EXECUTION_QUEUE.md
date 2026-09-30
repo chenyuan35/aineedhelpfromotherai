@@ -8,7 +8,7 @@ Last updated: 2026-09-30
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C6 is released with **135 comparison routes / 107 canonical normalized routes / 96 comparison↔canonical route-ID overlaps / 39 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C7 is released with **135 comparison routes / 110 canonical normalized routes / 99 comparison↔canonical route-ID overlaps / 36 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -48,9 +48,21 @@ Released state: **107 routes / 63 markets / 104 brands / 83 networks / 360 sourc
 
 The previously completed DB-C6 delegated lanes remain the accepted worker evidence (`task-b8c31337863b` and `task-4f112e9f94f5`, both reconciled by the coordinator). One extra final Kimi recheck attempt failed because the current agent runtime had no active model configured; no output was accepted and this did not bypass coordinator QC.
 
-## NEXT — Backend database coverage DB-C7
+## JUST COMPLETED — Backend database coverage DB-C7
 
-Bounded batch: `ifmobile-jp-2026`, `rakuten-mobile-jp-2026`, `linemo-jp-2026`. Reverify current lifecycle, minimum keep cost, foreign-user/KYC/acquisition constraints, overseas SMS/OTP utility and route identity before admission. `sakura-mobile-voice-2026` remains excluded because it is the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not create a duplicate just to raise overlap. Use real delegated-agent work where available, but treat all raw output as `RESEARCH_CANDIDATE` until independently reconciled. No public/indexability change.
+DB-C7 is merged and production-verified. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `ifmobile-jp-2026` — **HOLD**: current 1GB voice-SIM price is JPY1,408/month, but IF Mobile ended the former identity-document-image + face-image web KYC flow on 2026-03-31. Current web verification uses JPKI or IC-chip reading + face verification, with an in-store counter as the documented alternative. Current passport-only nonresident remote signup and mainland-China SMS behavior remain unresolved.
+- `rakuten-mobile-jp-2026` — **HOLD**: current SAIKYO floor is JPY1,078/month through 3GB and international service exists, but current foreign-national onboarding is a Japanese residence-card/special-permanent-resident-card identity path with matching address semantics. Rakuten also instructs customers to initialize Rakuten Link in Japan before travel.
+- `linemo-jp-2026` — **HOLD**: LINEMO Best Plan is JPY990/month through 3GB plus a current JPY3,850 contract administration fee. Foreign applicants require residence-card based KYC; overseas SMS reception is free with World Support, but new-number contracts cannot enroll in World Support until the fifth billing month.
+
+Released state: **110 routes / 63 markets / 107 brands / 84 networks / 372 sources / 99 comparison overlaps / 36 legacy-only / 3 indexable**. `npm run phone:data:check`, `npm run verify` and the full frontend build passed; the build still emits only the existing 3 route detail pages and 31 sitemap URLs. PR #320 squash-merged as `1efb329a35ecf4f8a47e3c95d0e7041013fd0923`; Eval Gate #979, CI #193 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `ifmobile-jp-2026` route 404.
+
+Kimi worker task `task-e22548697159` independently returned HOLD for IF Mobile and exposed the post-April-2026 signup conflict; coordinator evidence remained more conservative where exact current first-party support was absent. QA task `task-40c3bef1495c` was still running when release gates closed, so no Rakuten/LINEMO delegated output was accepted; those two routes were released only from direct current first-party reconciliation plus automated checks.
+
+## NEXT — Backend database coverage DB-C8
+
+Bounded batch: `ahamo-jp-2026`, `iijmio-jp-2026`, `kt-prepaid-kr-2026`. Reverify current product identity, lifecycle/keep economics, resident/nonresident KYC and acquisition path, overseas SMS/OTP behavior and payment constraints before admission. `sakura-mobile-voice-2026` remains excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`. Use delegated workers where useful, but raw output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -76,7 +88,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 39 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 36 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
