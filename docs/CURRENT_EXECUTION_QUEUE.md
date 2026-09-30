@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-09-30
+Last updated: 2026-10-01
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict.
 
@@ -8,7 +8,7 @@ Last updated: 2026-09-30
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C7 is released with **135 comparison routes / 110 canonical normalized routes / 99 comparison↔canonical route-ID overlaps / 36 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C8 is released with **135 comparison routes / 113 canonical normalized routes / 102 comparison↔canonical route-ID overlaps / 33 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -60,9 +60,21 @@ Released state: **110 routes / 63 markets / 107 brands / 84 networks / 372 sourc
 
 Kimi worker task `task-e22548697159` independently returned HOLD for IF Mobile and exposed the post-April-2026 signup conflict; coordinator evidence remained more conservative where exact current first-party support was absent. QA task `task-40c3bef1495c` was still running when release gates closed, so no Rakuten/LINEMO delegated output was accepted; those two routes were released only from direct current first-party reconciliation plus automated checks.
 
-## NEXT — Backend database coverage DB-C8
+## JUST COMPLETED — Backend database coverage DB-C8
 
-Bounded batch: `ahamo-jp-2026`, `iijmio-jp-2026`, `kt-prepaid-kr-2026`. Reverify current product identity, lifecycle/keep economics, resident/nonresident KYC and acquisition path, overseas SMS/OTP behavior and payment constraints before admission. `sakura-mobile-voice-2026` remains excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`. Use delegated workers where useful, but raw output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
+DB-C8 is merged and production-verified. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `ahamo-jp-2026` — **HOLD**: current ahamo is JPY2,970/month for 30GB through 2026-11-30, with no application fee. Foreign-national onboarding remains residence-card/address gated; existing lines support overseas voice/SMS in more than 200 countries/regions, but mainland-China OTP is unverified. Official materials schedule a new JPY3,135/40GB entry tier from 2026-12-01.
+- `iijmio-jp-2026` — **HOLD**: current 2GB voice service is JPY850/month. New voice/SMS signup requires a Japanese current address, compatible identity document and subscriber-name credit card; overseas-issued cards may fail. Voice SIM/eSIM supports overseas voice and SMS but not overseas data.
+- `kt-prepaid-kr-2026` — **HOLD**: KT now exposes an exact prepaid recharge ladder up to KRW50,000/365 days, but passport-only/visitor service is short-term/90-day constrained unless identity is reverified/extended in-store. Welcome Prepaid explicitly provides no roaming, so it is not an overseas SMS/OTP route.
+
+Released state: **113 routes / 63 markets / 110 brands / 86 networks / 386 sources / 102 comparison overlaps / 33 legacy-only / 3 indexable**. `npm run phone:data:check`, `npm run verify` and the full frontend build passed; the build still emits only the existing 3 route detail pages and 31 sitemap URLs. PR #322 squash-merged as `bc3a090dee5ff892666d633c159a91651099ab5b`; Eval Gate #983, CI #195 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `ahamo-jp-2026` route 404.
+
+Kimi worker task `task-d802cb1b57d4` completed and was coordinator-reconciled. QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. The initial headless QwenPaw task path also failed because it did not expose the configured active models; the working inter-agent background path was used instead.
+
+## NEXT — Backend database coverage DB-C9
+
+Bounded batch: `lguplus-prepaid-kr-2026`, `mts-by-2026`, `bakcell-cin-az-2026`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. `sakura-mobile-voice-2026` remains excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`. Use delegated workers where useful, but raw output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -78,7 +90,7 @@ Search Console remains too small for publication expansion. This does **not** bl
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment. DB-C5 used real console delegation: BH Telecom task `task-4915eea85664` completed and was reconciled; One Montenegro task `task-a71d7e8af5fd` ended `failed / Task cancelled`; no delegated result was accepted, and the failure is an explicit worker blocker rather than hidden single-agent fallback.
+QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment. DB-C8 used the live inter-agent background path: Kimi task `task-d802cb1b57d4` completed and was reconciled; QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. Earlier headless task attempts failed because that path did not expose the configured active models, so worker availability must be verified through the inter-agent path rather than assumed.
 
 ## External waits
 
@@ -88,7 +100,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 36 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 33 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
