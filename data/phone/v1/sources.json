@@ -42,6 +42,36 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "bakcell-active-period-20261001",
+    "url": "https://bakcell.com/en/active-period-of-the-number-based-on-the-tariffs",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "bakcell-cin1-archive-20261001",
+    "url": "https://bakcell.com/en/tariffs-archive",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "bakcell-current-tariffs-20261001",
+    "url": "https://bakcell.com/tariffs",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "bakcell-lifecycle-media-20261001",
+    "url": "https://www.xezerxeber.az/news/texnologiya/193717/istifadesiz-qalan-mobil-telefon-nomrelerinin-taleyi-nece-olur",
+    "type": "independent-news",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "bakcell-roaming-support-20261001",
+    "url": "https://bakcell.com/support",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "bh-ultra-esim-20260930",
     "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/ViewProduct-Start?SKU=908992",
     "type": "provider-official",
@@ -462,6 +492,12 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "korea-prepaid-lifecycle-community-20261001",
+    "url": "https://constellation-00.tistory.com/322",
+    "type": "community-tutorial",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "kt-prepaid-plan-20261001",
     "url": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
     "type": "provider-official",
@@ -556,6 +592,12 @@
     "url": "https://www.lebara.fr/fr/enregistrement.html",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lguplus-tourist-sim-20261001",
+    "url": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "linemo-best-plan-20260930",
@@ -784,6 +826,36 @@
     "url": "https://www.mtn.ng/legal/prepaid/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "mts-by-guest-tariff-20261001",
+    "url": "https://www.mts.by/services/mobile/tariffs/for_guest/gostevoi/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mts-by-id-docs-20261001",
+    "url": "https://www.mts.by/help/obsluzhivanie/stat-abonentom-mts/dokumenty-udostoveryayushchie-lichnost-dlya-zaklyucheniya-dogovora/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mts-by-inactivity-community-20261001",
+    "url": "https://forum.onliner.by/viewtopic.php?p=86066830",
+    "type": "community-thread",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mts-by-number-preservation-20261001",
+    "url": "https://www.mts.by/help/upravlenie-nomerom/sohranenie-nomera/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mts-by-number-recovery-20261001",
+    "url": "https://www.mts.by/help/upravlenie-nomerom/blokirovka/kak-vernut-izyatyy-nomer-telefona-usluga-predostavlenie-nomera-prezhnemu-vladeltsu/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "mts-keep-number-product-2026-09-29",
@@ -2230,6 +2302,18 @@
     "url": "https://www.true.th/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "uplus-umobile-prepaid-faq-20261001",
+    "url": "https://pps.uplussave.com/prepay/faq/ppFaqList.mpp",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "uplus-umobile-prepaid-plan-20261001",
+    "url": "https://pps.uplussave.com/prepay/common/priceInfo.mpp",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "us-mobile-light-plan-20260929",

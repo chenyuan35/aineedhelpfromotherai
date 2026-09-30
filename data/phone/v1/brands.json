@@ -66,6 +66,12 @@
     "marketId": "gb"
   },
   {
+    "id": "bakcell-cin",
+    "networkId": "bakcell-az",
+    "name": "Bakcell CIN",
+    "marketId": "az"
+  },
+  {
     "id": "beeline-kz-prepaid",
     "networkId": "beeline-kz",
     "name": "Beeline KZ Prepaid",
@@ -294,6 +300,12 @@
     "marketId": "gb"
   },
   {
+    "id": "lguplus-prepaid-kr",
+    "networkId": "lguplus-kr",
+    "name": "LG U+ Prepaid (legacy candidate)",
+    "marketId": "kr"
+  },
+  {
     "id": "linemo-jp",
     "networkId": "softbank-jp",
     "name": "LINEMO",
@@ -346,6 +358,12 @@
     "networkId": "mtn-ng",
     "name": "MTN Nigeria Prepaid",
     "marketId": "ng"
+  },
+  {
+    "id": "mts-by-prepaid",
+    "networkId": "mts-by",
+    "name": "MTS Belarus",
+    "marketId": "by"
   },
   {
     "id": "mts-prepaid",

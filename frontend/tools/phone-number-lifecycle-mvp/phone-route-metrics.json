@@ -134,6 +134,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "bakcell-cin-az-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "AZN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "AZN",
+      "keepYearCostOriginal": 47.88,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "beeline-kz-simka-v-seyfe-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -590,6 +602,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "lguplus-prepaid-kr-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KRW",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KRW",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "linemo-jp-2026",
       "checkedAt": "2026-09-30",
       "metricState": "current-profile",
@@ -720,6 +744,18 @@
       "keepYearCostOriginal": 2500,
       "keepYearCostCny": null,
       "keepIntervalDays": 1095
+    },
+    {
+      "routeId": "mts-by-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "BYN",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "BYN",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "mts-sokhranyayu-nomer-2026",
