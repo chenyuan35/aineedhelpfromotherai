@@ -9,6 +9,15 @@
     "sourceId": "1pmobile-terms-20260929"
   },
   {
+    "id": "evt-ahamo-jp-2026-db-c8-20261001",
+    "routeId": "ahamo-jp-2026",
+    "type": "scheduled-repricing",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current 30GB JPY2,970/month remains valid through 2026-11-30; official ahamo materials schedule a tiered JPY3,135/40GB entry plan from 2026-12-01.",
+    "sourceId": "ahamo-reprice-20261001"
+  },
+  {
     "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
     "routeId": "asda-mobile-uk-2026",
     "type": "cost-and-lifecycle-correction",
@@ -232,6 +241,24 @@
     "scope": "route",
     "outcome": "Current IF Mobile pricing remains available, but the prior remote image-plus-selfie identity flow ended 2026-03-31; current nonresident remote signup and mainland-China SMS utility remain unresolved.",
     "sourceId": "ifmobile-ekyc-change-20260930"
+  },
+  {
+    "id": "evt-iijmio-jp-2026-db-c8-20261001",
+    "routeId": "iijmio-jp-2026",
+    "type": "identity-roaming-resolution",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current provider evidence confirms JPY850/month 2GB voice pricing, Japan-address/identity/payment gating, and overseas voice/SMS availability for voice SIM/eSIM.",
+    "sourceId": "iijmio-address-kyc-20261001"
+  },
+  {
+    "id": "evt-kt-prepaid-kr-2026-db-c8-20261001",
+    "routeId": "kt-prepaid-kr-2026",
+    "type": "lifecycle-roaming-resolution",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "KT now provides an exact recharge-validity ladder up to KRW50,000/365 days, but passport-only usage is short-term/90-day constrained without further identity verification and Welcome Prepaid excludes roaming.",
+    "sourceId": "kt-prepaid-plan-20261001"
   },
   {
     "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",

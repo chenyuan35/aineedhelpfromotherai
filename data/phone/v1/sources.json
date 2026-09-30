@@ -6,6 +6,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "ahamo-kyc-20261001",
+    "url": "https://ahamo.com/support/procedure/other/requirements/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ahamo-plan-20261001",
+    "url": "https://ahamo.com/plan/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ahamo-reprice-20261001",
+    "url": "https://ahamo.com/new-ahamo/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ahamo-roaming-20261001",
+    "url": "https://faq.ahamo.com/faq/show/2441?category_id=30&site_domain=default",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "asda-support-20260929",
     "url": "https://mobile.asda.com/support/topping-up",
     "type": "provider-official",
@@ -406,6 +430,66 @@
     "url": "https://www.ifmobile.jp/",
     "type": "provider-official",
     "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "iijmio-address-kyc-20261001",
+    "url": "https://help.iijmio.jp/answer/6114939f2b2265001db02e41/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iijmio-id-docs-20261001",
+    "url": "https://help.iijmio.jp/answer/6114a05f73cc70001c0083b5/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iijmio-payment-20261001",
+    "url": "https://help.iijmio.jp/answer/5fd5f8f7de5cc700127554fc/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iijmio-plan-20261001",
+    "url": "https://www.iijmio.jp/gigaplan/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iijmio-roaming-20261001",
+    "url": "https://help.iijmio.jp/answer/611479d52b2265001db02b61/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kt-prepaid-plan-20261001",
+    "url": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kt-prepaid-roaming-20261001",
+    "url": "https://product.kt.com/wDic/productDetail.do?ItemCode=1612",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kt-prepaid-shop-20261001",
+    "url": "https://shop.kt.com/smart/prepayUsimProductView.do?prodNo=WL00000460&sntyNo=WL0000046",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kt-prepaid-support-20261001",
+    "url": "https://globalshop.kt.com/support/supportNeed.do",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kt-prepaid-visa-20261001",
+    "url": "https://globalshop.kt.com/support/visaplans.do",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "kyivstar-additional-prepaid-2026-09-29",

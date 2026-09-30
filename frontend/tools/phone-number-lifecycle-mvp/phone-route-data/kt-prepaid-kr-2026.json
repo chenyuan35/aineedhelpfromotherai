@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "kt-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "kt-kr",
+    "brandId": "kt-prepaid-kr",
+    "displayName": "KT Prepaid Korea",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+    "sourceIds": [
+      "kt-prepaid-plan-20261001",
+      "kt-prepaid-roaming-20261001",
+      "kt-prepaid-shop-20261001",
+      "kt-prepaid-support-20261001",
+      "kt-prepaid-visa-20261001"
+    ]
+  },
+  "market": {
+    "id": "kr",
+    "name": "South Korea",
+    "countryCode": "KR"
+  },
+  "network": {
+    "id": "kt-kr",
+    "name": "KT (Korea Telecom)",
+    "marketId": "kr"
+  },
+  "brand": {
+    "id": "kt-prepaid-kr",
+    "networkId": "kt-kr",
+    "name": "KT Prepaid",
+    "marketId": "kr"
+  },
+  "metrics": {
+    "routeId": "kt-prepaid-kr-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "KRW",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "KRW",
+    "keepYearCostOriginal": 50000,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "kt-prepaid-plan-20261001",
+      "url": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-roaming-20261001",
+      "url": "https://product.kt.com/wDic/productDetail.do?ItemCode=1612",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-shop-20261001",
+      "url": "https://shop.kt.com/smart/prepayUsimProductView.do?prodNo=WL00000460&sntyNo=WL0000046",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-support-20261001",
+      "url": "https://globalshop.kt.com/support/supportNeed.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-visa-20261001",
+      "url": "https://globalshop.kt.com/support/visaplans.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-kt-prepaid-kr-2026-db-c8-20261001",
+      "routeId": "kt-prepaid-kr-2026",
+      "type": "lifecycle-roaming-resolution",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "KT now provides an exact recharge-validity ladder up to KRW50,000/365 days, but passport-only usage is short-term/90-day constrained without further identity verification and Welcome Prepaid excludes roaming.",
+      "sourceId": "kt-prepaid-plan-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-kt-prepaid-kr-2026-current-profile-20261001",
+      "routeId": "kt-prepaid-kr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "kt-prepaid-kr-2026",
+        "brandId": "kt-prepaid-kr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "KT Welcome Prepaid is available to foreign visitors and can be activated with a passport; KT also documents one prepaid line per subscriber. Short-stay/tourist positioning remains explicit.",
+        "landedCost": {
+          "currency": "KRW",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "KRW",
+          "observedActionCost": 50000,
+          "yearCostOriginal": 50000,
+          "yearCostCny": null,
+          "action": "A KRW50,000 prepaid recharge grants 365 days validity on the standard prepaid recharge table. This does not override immigration/stay-period identity limits; users without foreigner-ID registration are limited to 90 days unless identity is reverified/extended in-store.",
+          "intervalDays": 365,
+          "state": "conditional-provider-recharge"
+        },
+        "chinaActivation": "New signup is an in-Korea/visitor acquisition path. Overseas activation is not established, and the current Welcome Prepaid product explicitly does not provide roaming.",
+        "kyc": "KT states prepaid can be signed up with a standard passport. Short-term C-type visitors are directed to Welcome Prepaid; users without a registered foreigner identification number can use service only for 90 days unless they visit a store for real-name verification/extension.",
+        "payment": "Recharge is available online/ARS, at KT retailers, and via automatic top-off; exact overseas-card acceptance is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current KT Welcome Prepaid product terms state roaming is not provided, so this route is not an overseas SMS/OTP route.",
+        "refund": "Recharge amounts are non-refundable; remaining balance is not returned on cancellation.",
+        "trend": "stable-tourist-prepaid-roaming-blocked",
+        "guideEligible": false,
+        "holdReason": "The recharge table supports up to 365-day balance validity, but tourist/passport-only service is time-limited unless identity status is extended and the current prepaid product does not provide roaming. It is unsuitable for overseas OTP retention.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+        "tariffSummary": "Welcome Prepaid starts at KRW35,000/30 days; standard prepaid recharge validity reaches 365 days at KRW50,000, subject to identity/stay-period limits.",
+        "sourceIds": [
+          "kt-prepaid-plan-20261001",
+          "kt-prepaid-support-20261001",
+          "kt-prepaid-visa-20261001",
+          "kt-prepaid-shop-20261001",
+          "kt-prepaid-roaming-20261001"
+        ],
+        "guideSteps": [
+          "Do not equate a 365-day recharge validity with 365-day tourist eligibility.",
+          "Treat passport-only acquisition as a short-stay path unless in-store identity extension is completed.",
+          "Do not market this route for overseas SMS/OTP because roaming is excluded."
+        ]
+      }
+    }
+  ]
+}
