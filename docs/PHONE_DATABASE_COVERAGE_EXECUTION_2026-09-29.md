@@ -225,3 +225,19 @@ Release: PR #322 squash-merged as `bc3a090dee5ff892666d633c159a91651099ab5b` aft
 Delegated evidence was exercised through QwenPaw's inter-agent path. Kimi task `task-d802cb1b57d4` completed and was reconciled; QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. Initial headless task attempts failed because that execution path did not expose the configured active models, and no failed worker output was treated as evidence.
 
 DB-C9 next bounded batch: `lguplus-prepaid-kr-2026`, `mts-by-2026`, `bakcell-cin-az-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not duplicate it to inflate overlap. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C9 — completed 2026-10-01
+
+The bounded DB-C9 Korea/Belarus/Azerbaijan batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `lguplus-prepaid-kr-2026` — HOLD. The legacy label does not map cleanly to one current product: LG U+ directly documents a short-stay visitor SIM, while U+ UMobile separately documents LG U+ network MVNO prepaid service and lists roaming unavailable. The identity mismatch is preserved instead of combining products.
+- `mts-by-2026` — HOLD. Current MTS Belarus evidence resolves number withdrawal after 60 days without top-up following forced blocking or 180 days with positive balance but no operations. The foreign-guest tariff explicitly disables Roaming and SMS Roaming, blocking the overseas OTP use case.
+- `bakcell-cin-az-2026` — HOLD. Current Bakcell material documents CIN 1 existing-line economics and short extension mechanics, but CIN 1 is archived and a current new-acquisition path is not established. Historical closure timing is retained only as dated corroboration.
+
+Post-DB-C9 state: **116 canonical routes / 65 markets / 113 brands / 89 networks / 400 sources / 105 comparison-overlap route IDs / 30 comparison routes still legacy-only / 3 explicit indexable routes**. Full Phone checks and frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
+
+Release: PR #324 squash-merged as `ac742c7398053a057a9b0e06d2ffcab717d28146` after Eval Gate #987, CI #197 and Vercel Preview passed. Production verification confirmed the Phone hub and VOXI detail at HTTP 200, `lguplus-prepaid-kr-2026` at HTTP 404, and 31 sitemap URLs.
+
+Delegated research was exercised but not trusted automatically. QwenPaw/Kimi task `task-24b1c44a3cc4` produced useful candidate evidence before a terminal model-execution failure; the coordinator independently reverified accepted facts. No enabled ACP runner was available for the requested qwen-code second pass, and Tavily returned 403.
+
+DB-C10 next bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
