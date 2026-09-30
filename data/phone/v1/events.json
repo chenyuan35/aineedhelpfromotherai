@@ -72,6 +72,15 @@
     "sourceId": "cht-prepaid-recharge-2026-09-29"
   },
   {
+    "id": "evt-claro-pre-ar-2026-db-c6-20260930",
+    "routeId": "claro-pre-ar-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Claro terms establish 180-day recharge validity plus a 60-day active grace period; current foreigner acquisition and prepaid roaming paths are also documented.",
+    "sourceId": "claro-ar-prepaid-contract-20260930"
+  },
+  {
     "id": "evt-claro-pre-br-90d-2026-db-c2-review-20260929",
     "routeId": "claro-pre-br-90d-2026",
     "type": "evidence-hold",
@@ -396,6 +405,15 @@
     "sourceId": "safaricom-daima-faq-2026-09-29"
   },
   {
+    "id": "evt-skt-prepaid-kr-2026-db-c6-20260930",
+    "routeId": "skt-prepaid-kr-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current SK Telecom material establishes the PPS recharge lifecycle, passport onboarding and stay-expiry recharge constraint; current roaming guidance classifies PPS as roaming-unavailable.",
+    "sourceId": "skt-pps-lifecycle-20260930"
+  },
+  {
     "id": "evt-smart-prepaid-ph-2026-db-c4b-review-20260929",
     "routeId": "smart-prepaid-ph-2026",
     "type": "eligibility-and-lifecycle-correction",
@@ -403,6 +421,15 @@
     "scope": "route",
     "outcome": "Smart ordinary prepaid lifecycle remains 365 days for loaded value plus a 180-day reload grace after balance reaches zero, but foreign tourists face a separate 30-day SIM-registration validity cap unless an approved visa extension is supplied. The legacy route is therefore not treated as a generally available long-term foreign-user route.",
     "sourceId": "smart-simreg-foreigners-20260929"
+  },
+  {
+    "id": "evt-stc-sawa-sa-2026-db-c6-20260930",
+    "routeId": "stc-sawa-sa-2026",
+    "type": "retention-rule-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current STC personal prepaid terms document 180-day SIM validity from paid activity, while a still-live STC recharge page says 360 days; non-citizen final-departure/ID-expiry cancellation remains a structural blocker.",
+    "sourceId": "stc-sawa-mobile-terms-20260930"
   },
   {
     "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",

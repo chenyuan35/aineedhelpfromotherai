@@ -65,6 +65,11 @@
     "marketId": "tw"
   },
   {
+    "id": "claro-ar",
+    "name": "Claro AR",
+    "marketId": "ar"
+  },
+  {
     "id": "claro-br",
     "name": "Claro BR",
     "marketId": "br"
@@ -265,6 +270,11 @@
     "marketId": "sg"
   },
   {
+    "id": "skt-kr",
+    "name": "SK Telecom KR",
+    "marketId": "kr"
+  },
+  {
     "id": "slt-mobitel-lk",
     "name": "SLT-Mobitel",
     "marketId": "lk"
@@ -278,6 +288,11 @@
     "id": "spark-nz",
     "name": "Spark NZ",
     "marketId": "nz"
+  },
+  {
+    "id": "stc-sa",
+    "name": "STC SA",
+    "marketId": "sa"
   },
   {
     "id": "sunrise-ch",
