@@ -86,6 +86,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "ahamo-jp-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 35640,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "ais-sim2fly-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -482,6 +494,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "iijmio-jp-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 10200,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "jio-prepaid-90d-trai-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -504,6 +528,18 @@
       "keepYearCostOriginal": 0.14,
       "keepYearCostCny": 1.1,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "kt-prepaid-kr-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KRW",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KRW",
+      "keepYearCostOriginal": 50000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "kyivstar-prepaid-274-91-2026",

@@ -423,6 +423,11 @@
       "marketId": "lk"
     },
     {
+      "id": "docomo-jp",
+      "name": "NTT docomo",
+      "marketId": "jp"
+    },
+    {
       "id": "du-ae",
       "name": "du UAE",
       "marketId": "ae"
@@ -476,6 +481,11 @@
       "id": "kpn-nl",
       "name": "KPN",
       "marketId": "nl"
+    },
+    {
+      "id": "kt-kr",
+      "name": "KT (Korea Telecom)",
+      "marketId": "kr"
     },
     {
       "id": "kyivstar-ua",
@@ -787,6 +797,12 @@
       "name": "ActivateX"
     },
     {
+      "id": "ahamo-jp",
+      "networkId": "docomo-jp",
+      "name": "ahamo",
+      "marketId": "jp"
+    },
+    {
       "id": "ais-sim2fly",
       "networkId": "ais-th",
       "name": "AIS SIM2Fly",
@@ -985,6 +1001,12 @@
       "marketId": "jp"
     },
     {
+      "id": "iijmio-jp",
+      "networkId": "docomo-jp",
+      "name": "IIJmio",
+      "marketId": "jp"
+    },
+    {
       "id": "jio-prepaid",
       "networkId": "jio-in",
       "name": "Jio Prepaid",
@@ -995,6 +1017,12 @@
       "marketId": "nl",
       "networkId": "kpn-nl",
       "name": "KPN Prepaid"
+    },
+    {
+      "id": "kt-prepaid-kr",
+      "networkId": "kt-kr",
+      "name": "KT Prepaid",
+      "marketId": "kr"
     },
     {
       "id": "kyivstar-prepaid",
@@ -1519,6 +1547,26 @@
       "acquireUrl": "https://activatex.org/",
       "sourceIds": [
         "src-4212005934bd"
+      ]
+    },
+    {
+      "id": "ahamo-jp-2026",
+      "marketId": "jp",
+      "networkId": "docomo-jp",
+      "brandId": "ahamo-jp",
+      "displayName": "ahamo Japan",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM + physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://ahamo.com/",
+      "sourceIds": [
+        "ahamo-kyc-20261001",
+        "ahamo-plan-20261001",
+        "ahamo-reprice-20261001",
+        "ahamo-roaming-20261001"
       ]
     },
     {
@@ -2163,6 +2211,27 @@
       ]
     },
     {
+      "id": "iijmio-jp-2026",
+      "marketId": "jp",
+      "networkId": "docomo-jp",
+      "brandId": "iijmio-jp",
+      "displayName": "IIJmio Giga Plan Japan",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM + physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+      "sourceIds": [
+        "iijmio-address-kyc-20261001",
+        "iijmio-id-docs-20261001",
+        "iijmio-payment-20261001",
+        "iijmio-plan-20261001",
+        "iijmio-roaming-20261001"
+      ]
+    },
+    {
       "id": "jio-prepaid-90d-trai-2026",
       "marketId": "in",
       "networkId": "jio-in",
@@ -2197,6 +2266,27 @@
       "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
       "sourceIds": [
         "official-staff-kpn-community-6mo-rule-2026-02"
+      ]
+    },
+    {
+      "id": "kt-prepaid-kr-2026",
+      "marketId": "kr",
+      "networkId": "kt-kr",
+      "brandId": "kt-prepaid-kr",
+      "displayName": "KT Prepaid Korea",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+      "sourceIds": [
+        "kt-prepaid-plan-20261001",
+        "kt-prepaid-roaming-20261001",
+        "kt-prepaid-shop-20261001",
+        "kt-prepaid-support-20261001",
+        "kt-prepaid-visa-20261001"
       ]
     },
     {
@@ -3526,6 +3616,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "ahamo-kyc-20261001",
+      "url": "https://ahamo.com/support/procedure/other/requirements/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-plan-20261001",
+      "url": "https://ahamo.com/plan/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-reprice-20261001",
+      "url": "https://ahamo.com/new-ahamo/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-roaming-20261001",
+      "url": "https://faq.ahamo.com/faq/show/2441?category_id=30&site_domain=default",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
       "id": "asda-support-20260929",
       "url": "https://mobile.asda.com/support/topping-up",
       "type": "provider-official",
@@ -3926,6 +4040,66 @@
       "url": "https://www.ifmobile.jp/",
       "type": "provider-official",
       "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "iijmio-address-kyc-20261001",
+      "url": "https://help.iijmio.jp/answer/6114939f2b2265001db02e41/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-id-docs-20261001",
+      "url": "https://help.iijmio.jp/answer/6114a05f73cc70001c0083b5/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-payment-20261001",
+      "url": "https://help.iijmio.jp/answer/5fd5f8f7de5cc700127554fc/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-plan-20261001",
+      "url": "https://www.iijmio.jp/gigaplan/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-roaming-20261001",
+      "url": "https://help.iijmio.jp/answer/611479d52b2265001db02b61/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-plan-20261001",
+      "url": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-roaming-20261001",
+      "url": "https://product.kt.com/wDic/productDetail.do?ItemCode=1612",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-shop-20261001",
+      "url": "https://shop.kt.com/smart/prepayUsimProductView.do?prodNo=WL00000460&sntyNo=WL0000046",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-support-20261001",
+      "url": "https://globalshop.kt.com/support/supportNeed.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kt-prepaid-visa-20261001",
+      "url": "https://globalshop.kt.com/support/visaplans.do",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
     },
     {
       "id": "kyivstar-additional-prepaid-2026-09-29",
@@ -5853,6 +6027,15 @@
       "sourceId": "1pmobile-terms-20260929"
     },
     {
+      "id": "evt-ahamo-jp-2026-db-c8-20261001",
+      "routeId": "ahamo-jp-2026",
+      "type": "scheduled-repricing",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current 30GB JPY2,970/month remains valid through 2026-11-30; official ahamo materials schedule a tiered JPY3,135/40GB entry plan from 2026-12-01.",
+      "sourceId": "ahamo-reprice-20261001"
+    },
+    {
       "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
       "routeId": "asda-mobile-uk-2026",
       "type": "cost-and-lifecycle-correction",
@@ -6076,6 +6259,24 @@
       "scope": "route",
       "outcome": "Current IF Mobile pricing remains available, but the prior remote image-plus-selfie identity flow ended 2026-03-31; current nonresident remote signup and mainland-China SMS utility remain unresolved.",
       "sourceId": "ifmobile-ekyc-change-20260930"
+    },
+    {
+      "id": "evt-iijmio-jp-2026-db-c8-20261001",
+      "routeId": "iijmio-jp-2026",
+      "type": "identity-roaming-resolution",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current provider evidence confirms JPY850/month 2GB voice pricing, Japan-address/identity/payment gating, and overseas voice/SMS availability for voice SIM/eSIM.",
+      "sourceId": "iijmio-address-kyc-20261001"
+    },
+    {
+      "id": "evt-kt-prepaid-kr-2026-db-c8-20261001",
+      "routeId": "kt-prepaid-kr-2026",
+      "type": "lifecycle-roaming-resolution",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "KT now provides an exact recharge-validity ladder up to KRW50,000/365 days, but passport-only usage is short-term/90-day constrained without further identity verification and Welcome Prepaid excludes roaming.",
+      "sourceId": "kt-prepaid-plan-20261001"
     },
     {
       "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",
@@ -6883,6 +7084,63 @@
         "summary": "No physical SIM activation is involved; availability depends on the selected service, number country, supplier route and current stock.",
         "outsideHomeNote": "Your physical location is not treated as the number's country. Target-service rules and supplier availability still apply.",
         "sourceUrl": "https://activatex.org/"
+      }
+    },
+    {
+      "id": "snap-ahamo-jp-2026-current-profile-20261001",
+      "routeId": "ahamo-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "ahamo-jp-2026",
+        "brandId": "ahamo-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Current ahamo is JPY2,970/month for 30GB through 2026-11-30 with no application fee. Foreign-national online identity verification uses a residence card whose name/address must match the application; the current online flow does not provide a passport-only nonresident path.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": null,
+          "state": "current-provider-no-application-fee"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 2970,
+          "yearCostOriginal": 35640,
+          "yearCostCny": null,
+          "action": "Maintain the monthly ahamo subscription. There is no verified idle/PAYG number-parking mode.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "New nonresident activation from mainland China is not established. Existing ahamo lines support overseas voice/SMS in more than 200 countries/regions, but subscriber eligibility still depends on the Japan identity/address path.",
+        "kyc": "Foreign-national applicants are directed to use a residence card; application name/address must match the identity document. Since 2026-03-12 online verification is IC/JPKI-based, and some second-generation residence-card variants issued from 2026-06-14 are not accepted in the online flow.",
+        "payment": "Monthly payment supports credit card or bank-account transfer. Overseas-issued card acceptance is not established by current official evidence.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Official ahamo support states voice and SMS are available in more than 200 countries/regions. Service-specific OTP success in mainland China is not separately verified.",
+        "refund": "not reconciled",
+        "trend": "scheduled-repricing-2026-12-01",
+        "guideEligible": false,
+        "holdReason": "Resident-document/address acquisition constraints make this unsuitable as a general nonresident route, and the current JPY2,970/30GB profile is scheduled to change on 2026-12-01 to a JPY3,135/40GB entry tier.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://ahamo.com/",
+        "tariffSummary": "Current through 2026-11-30: 30GB JPY2,970/month. From 2026-12-01: tiered 40GB JPY3,135 / 60GB JPY4,125 / 120GB JPY5,115.",
+        "sourceIds": [
+          "ahamo-plan-20261001",
+          "ahamo-kyc-20261001",
+          "ahamo-roaming-20261001",
+          "ahamo-reprice-20261001"
+        ],
+        "guideSteps": [
+          "Treat JPY2,970/month as a time-bounded current price only through 2026-11-30.",
+          "Do not present passport-only/nonresident remote signup as supported.",
+          "Reverify price and overseas behavior on or after 2026-12-01 before changing status."
+        ]
       }
     },
     {
@@ -9138,6 +9396,58 @@
       }
     },
     {
+      "id": "snap-iijmio-jp-2026-current-profile-20261001",
+      "routeId": "iijmio-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "iijmio-jp-2026",
+        "brandId": "iijmio-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Giga Plan voice service currently starts at JPY850/month for 2GB. Voice/SMS service requires a Japanese residential address and a matching accepted identity document; there is no supported no-Japan-address signup path.",
+        "landedCost": {
+          "currency": "JPY",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 850,
+          "yearCostOriginal": 10200,
+          "yearCostCny": null,
+          "action": "Maintain the 2GB voice subscription at JPY850/month. No verified idle/PAYG retention mode exists for this route.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "A new voice/SMS contract requires a Japanese current address, Japanese contact number and compatible monthly-settlement credit card, so direct nonresident activation from mainland China is not supported.",
+        "kyc": "Online voice/SMS signup requires identity verification. Current accepted online documents include residence cards and other Japan-issued identity documents; a Japanese current address matching the identity document is required.",
+        "payment": "Credit card only, in the individual subscriber's own name. IIJmio warns that overseas-issued cards may not work.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Voice SIM and voice eSIM support overseas voice and SMS; overseas data is not available. Exact app-specific OTP success is unverified.",
+        "refund": "not reconciled",
+        "trend": "stable-current-resident-gated",
+        "guideEligible": false,
+        "holdReason": "The route is current and cheap by Japanese subscription standards, but new voice/SMS signup requires a Japanese current address and resident-compatible identity/payment path; it is not a general nonresident acquisition route.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+        "tariffSummary": "Giga Plan voice SIM/eSIM 2GB: JPY850/month.",
+        "sourceIds": [
+          "iijmio-plan-20261001",
+          "iijmio-address-kyc-20261001",
+          "iijmio-id-docs-20261001",
+          "iijmio-payment-20261001",
+          "iijmio-roaming-20261001"
+        ],
+        "guideSteps": [
+          "Use JPY850/month as the current 2GB voice floor.",
+          "Do not claim passport-only or no-Japan-address signup.",
+          "Treat overseas voice/SMS support as network capability, not proof of mainland-China OTP reliability."
+        ]
+      }
+    },
+    {
       "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
       "routeId": "jio-prepaid-90d-trai-2026",
       "kind": "current-profile",
@@ -9246,6 +9556,58 @@
         "guideSteps": [
           "Order KPN prepaid SIM/eSIM.",
           "Send 1 SMS every ~170 days."
+        ]
+      }
+    },
+    {
+      "id": "snap-kt-prepaid-kr-2026-current-profile-20261001",
+      "routeId": "kt-prepaid-kr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "kt-prepaid-kr-2026",
+        "brandId": "kt-prepaid-kr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "KT Welcome Prepaid is available to foreign visitors and can be activated with a passport; KT also documents one prepaid line per subscriber. Short-stay/tourist positioning remains explicit.",
+        "landedCost": {
+          "currency": "KRW",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "KRW",
+          "observedActionCost": 50000,
+          "yearCostOriginal": 50000,
+          "yearCostCny": null,
+          "action": "A KRW50,000 prepaid recharge grants 365 days validity on the standard prepaid recharge table. This does not override immigration/stay-period identity limits; users without foreigner-ID registration are limited to 90 days unless identity is reverified/extended in-store.",
+          "intervalDays": 365,
+          "state": "conditional-provider-recharge"
+        },
+        "chinaActivation": "New signup is an in-Korea/visitor acquisition path. Overseas activation is not established, and the current Welcome Prepaid product explicitly does not provide roaming.",
+        "kyc": "KT states prepaid can be signed up with a standard passport. Short-term C-type visitors are directed to Welcome Prepaid; users without a registered foreigner identification number can use service only for 90 days unless they visit a store for real-name verification/extension.",
+        "payment": "Recharge is available online/ARS, at KT retailers, and via automatic top-off; exact overseas-card acceptance is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current KT Welcome Prepaid product terms state roaming is not provided, so this route is not an overseas SMS/OTP route.",
+        "refund": "Recharge amounts are non-refundable; remaining balance is not returned on cancellation.",
+        "trend": "stable-tourist-prepaid-roaming-blocked",
+        "guideEligible": false,
+        "holdReason": "The recharge table supports up to 365-day balance validity, but tourist/passport-only service is time-limited unless identity status is extended and the current prepaid product does not provide roaming. It is unsuitable for overseas OTP retention.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+        "tariffSummary": "Welcome Prepaid starts at KRW35,000/30 days; standard prepaid recharge validity reaches 365 days at KRW50,000, subject to identity/stay-period limits.",
+        "sourceIds": [
+          "kt-prepaid-plan-20261001",
+          "kt-prepaid-support-20261001",
+          "kt-prepaid-visa-20261001",
+          "kt-prepaid-shop-20261001",
+          "kt-prepaid-roaming-20261001"
+        ],
+        "guideSteps": [
+          "Do not equate a 365-day recharge validity with 365-day tourist eligibility.",
+          "Treat passport-only acquisition as a short-stay path unless in-store identity extension is completed.",
+          "Do not market this route for overseas SMS/OTP because roaming is excluded."
         ]
       }
     },
@@ -14481,6 +14843,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "ahamo-jp-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 35640,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "ais-sim2fly-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -14877,6 +15251,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "iijmio-jp-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 10200,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "jio-prepaid-90d-trai-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -14899,6 +15285,18 @@
       "keepYearCostOriginal": 0.14,
       "keepYearCostCny": 1.1,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "kt-prepaid-kr-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KRW",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KRW",
+      "keepYearCostOriginal": 50000,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "kyivstar-prepaid-274-91-2026",

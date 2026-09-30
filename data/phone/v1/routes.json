@@ -133,6 +133,26 @@
     ]
   },
   {
+    "id": "ahamo-jp-2026",
+    "marketId": "jp",
+    "networkId": "docomo-jp",
+    "brandId": "ahamo-jp",
+    "displayName": "ahamo Japan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://ahamo.com/",
+    "sourceIds": [
+      "ahamo-kyc-20261001",
+      "ahamo-plan-20261001",
+      "ahamo-reprice-20261001",
+      "ahamo-roaming-20261001"
+    ]
+  },
+  {
     "id": "ais-sim2fly-365d-2026",
     "marketId": "th",
     "networkId": "ais-th",
@@ -774,6 +794,27 @@
     ]
   },
   {
+    "id": "iijmio-jp-2026",
+    "marketId": "jp",
+    "networkId": "docomo-jp",
+    "brandId": "iijmio-jp",
+    "displayName": "IIJmio Giga Plan Japan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+    "sourceIds": [
+      "iijmio-address-kyc-20261001",
+      "iijmio-id-docs-20261001",
+      "iijmio-payment-20261001",
+      "iijmio-plan-20261001",
+      "iijmio-roaming-20261001"
+    ]
+  },
+  {
     "id": "jio-prepaid-90d-trai-2026",
     "marketId": "in",
     "networkId": "jio-in",
@@ -808,6 +849,27 @@
     "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
     "sourceIds": [
       "official-staff-kpn-community-6mo-rule-2026-02"
+    ]
+  },
+  {
+    "id": "kt-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "kt-kr",
+    "brandId": "kt-prepaid-kr",
+    "displayName": "KT Prepaid Korea",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
+    "sourceIds": [
+      "kt-prepaid-plan-20261001",
+      "kt-prepaid-roaming-20261001",
+      "kt-prepaid-shop-20261001",
+      "kt-prepaid-support-20261001",
+      "kt-prepaid-visa-20261001"
     ]
   },
   {

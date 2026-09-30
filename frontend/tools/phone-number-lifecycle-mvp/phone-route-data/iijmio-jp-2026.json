@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "iijmio-jp-2026",
+    "marketId": "jp",
+    "networkId": "docomo-jp",
+    "brandId": "iijmio-jp",
+    "displayName": "IIJmio Giga Plan Japan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+    "sourceIds": [
+      "iijmio-address-kyc-20261001",
+      "iijmio-id-docs-20261001",
+      "iijmio-payment-20261001",
+      "iijmio-plan-20261001",
+      "iijmio-roaming-20261001"
+    ]
+  },
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "network": {
+    "id": "docomo-jp",
+    "name": "NTT docomo",
+    "marketId": "jp"
+  },
+  "brand": {
+    "id": "iijmio-jp",
+    "networkId": "docomo-jp",
+    "name": "IIJmio",
+    "marketId": "jp"
+  },
+  "metrics": {
+    "routeId": "iijmio-jp-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "JPY",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "JPY",
+    "keepYearCostOriginal": 10200,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "iijmio-address-kyc-20261001",
+      "url": "https://help.iijmio.jp/answer/6114939f2b2265001db02e41/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-id-docs-20261001",
+      "url": "https://help.iijmio.jp/answer/6114a05f73cc70001c0083b5/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-payment-20261001",
+      "url": "https://help.iijmio.jp/answer/5fd5f8f7de5cc700127554fc/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-plan-20261001",
+      "url": "https://www.iijmio.jp/gigaplan/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "iijmio-roaming-20261001",
+      "url": "https://help.iijmio.jp/answer/611479d52b2265001db02b61/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-iijmio-jp-2026-db-c8-20261001",
+      "routeId": "iijmio-jp-2026",
+      "type": "identity-roaming-resolution",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current provider evidence confirms JPY850/month 2GB voice pricing, Japan-address/identity/payment gating, and overseas voice/SMS availability for voice SIM/eSIM.",
+      "sourceId": "iijmio-address-kyc-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-iijmio-jp-2026-current-profile-20261001",
+      "routeId": "iijmio-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "iijmio-jp-2026",
+        "brandId": "iijmio-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Giga Plan voice service currently starts at JPY850/month for 2GB. Voice/SMS service requires a Japanese residential address and a matching accepted identity document; there is no supported no-Japan-address signup path.",
+        "landedCost": {
+          "currency": "JPY",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 850,
+          "yearCostOriginal": 10200,
+          "yearCostCny": null,
+          "action": "Maintain the 2GB voice subscription at JPY850/month. No verified idle/PAYG retention mode exists for this route.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "A new voice/SMS contract requires a Japanese current address, Japanese contact number and compatible monthly-settlement credit card, so direct nonresident activation from mainland China is not supported.",
+        "kyc": "Online voice/SMS signup requires identity verification. Current accepted online documents include residence cards and other Japan-issued identity documents; a Japanese current address matching the identity document is required.",
+        "payment": "Credit card only, in the individual subscriber's own name. IIJmio warns that overseas-issued cards may not work.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Voice SIM and voice eSIM support overseas voice and SMS; overseas data is not available. Exact app-specific OTP success is unverified.",
+        "refund": "not reconciled",
+        "trend": "stable-current-resident-gated",
+        "guideEligible": false,
+        "holdReason": "The route is current and cheap by Japanese subscription standards, but new voice/SMS signup requires a Japanese current address and resident-compatible identity/payment path; it is not a general nonresident acquisition route.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.iijmio.jp/gigaplan/",
+        "tariffSummary": "Giga Plan voice SIM/eSIM 2GB: JPY850/month.",
+        "sourceIds": [
+          "iijmio-plan-20261001",
+          "iijmio-address-kyc-20261001",
+          "iijmio-id-docs-20261001",
+          "iijmio-payment-20261001",
+          "iijmio-roaming-20261001"
+        ],
+        "guideSteps": [
+          "Use JPY850/month as the current 2GB voice floor.",
+          "Do not claim passport-only or no-Japan-address signup.",
+          "Treat overseas voice/SMS support as network capability, not proof of mainland-China OTP reliability."
+        ]
+      }
+    }
+  ]
+}

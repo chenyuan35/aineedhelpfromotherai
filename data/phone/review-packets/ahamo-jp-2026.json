@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c8",
+  "reviewNotes": "HOLD. Current pricing, roaming and identity flow are well documented, but the route remains resident-document/address gated for acquisition and has a scheduled 2026-12-01 tariff change. Preserve as negative/conditional backstage knowledge; no publication change.",
+  "market": null,
+  "network": {
+    "id": "docomo-jp",
+    "name": "NTT docomo",
+    "marketId": "jp"
+  },
+  "brand": {
+    "id": "ahamo-jp",
+    "networkId": "docomo-jp",
+    "name": "ahamo",
+    "marketId": "jp"
+  },
+  "route": {
+    "id": "ahamo-jp-2026",
+    "marketId": "jp",
+    "networkId": "docomo-jp",
+    "brandId": "ahamo-jp",
+    "displayName": "ahamo Japan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://ahamo.com/",
+    "sourceIds": [
+      "ahamo-plan-20261001",
+      "ahamo-kyc-20261001",
+      "ahamo-roaming-20261001",
+      "ahamo-reprice-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "ahamo-plan-20261001",
+      "url": "https://ahamo.com/plan/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-kyc-20261001",
+      "url": "https://ahamo.com/support/procedure/other/requirements/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-roaming-20261001",
+      "url": "https://faq.ahamo.com/faq/show/2441?category_id=30&site_domain=default",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ahamo-reprice-20261001",
+      "url": "https://ahamo.com/new-ahamo/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "ahamo-plan-20261001",
+    "ahamo-kyc-20261001",
+    "ahamo-roaming-20261001",
+    "ahamo-reprice-20261001"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-ahamo-jp-2026-db-c8-20261001",
+      "routeId": "ahamo-jp-2026",
+      "type": "scheduled-repricing",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current 30GB JPY2,970/month remains valid through 2026-11-30; official ahamo materials schedule a tiered JPY3,135/40GB entry plan from 2026-12-01.",
+      "sourceId": "ahamo-reprice-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-ahamo-jp-2026-current-profile-20261001",
+      "routeId": "ahamo-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c8-reviewed-2026-10-01",
+      "data": {
+        "id": "ahamo-jp-2026",
+        "brandId": "ahamo-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Current ahamo is JPY2,970/month for 30GB through 2026-11-30 with no application fee. Foreign-national online identity verification uses a residence card whose name/address must match the application; the current online flow does not provide a passport-only nonresident path.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": null,
+          "state": "current-provider-no-application-fee"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 2970,
+          "yearCostOriginal": 35640,
+          "yearCostCny": null,
+          "action": "Maintain the monthly ahamo subscription. There is no verified idle/PAYG number-parking mode.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "New nonresident activation from mainland China is not established. Existing ahamo lines support overseas voice/SMS in more than 200 countries/regions, but subscriber eligibility still depends on the Japan identity/address path.",
+        "kyc": "Foreign-national applicants are directed to use a residence card; application name/address must match the identity document. Since 2026-03-12 online verification is IC/JPKI-based, and some second-generation residence-card variants issued from 2026-06-14 are not accepted in the online flow.",
+        "payment": "Monthly payment supports credit card or bank-account transfer. Overseas-issued card acceptance is not established by current official evidence.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Official ahamo support states voice and SMS are available in more than 200 countries/regions. Service-specific OTP success in mainland China is not separately verified.",
+        "refund": "not reconciled",
+        "trend": "scheduled-repricing-2026-12-01",
+        "guideEligible": false,
+        "holdReason": "Resident-document/address acquisition constraints make this unsuitable as a general nonresident route, and the current JPY2,970/30GB profile is scheduled to change on 2026-12-01 to a JPY3,135/40GB entry tier.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://ahamo.com/",
+        "tariffSummary": "Current through 2026-11-30: 30GB JPY2,970/month. From 2026-12-01: tiered 40GB JPY3,135 / 60GB JPY4,125 / 120GB JPY5,115.",
+        "sourceIds": [
+          "ahamo-plan-20261001",
+          "ahamo-kyc-20261001",
+          "ahamo-roaming-20261001",
+          "ahamo-reprice-20261001"
+        ],
+        "guideSteps": [
+          "Treat JPY2,970/month as a time-bounded current price only through 2026-11-30.",
+          "Do not present passport-only/nonresident remote signup as supported.",
+          "Reverify price and overseas behavior on or after 2026-12-01 before changing status."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

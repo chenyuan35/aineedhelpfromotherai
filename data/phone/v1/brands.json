@@ -42,6 +42,12 @@
     "name": "ActivateX"
   },
   {
+    "id": "ahamo-jp",
+    "networkId": "docomo-jp",
+    "name": "ahamo",
+    "marketId": "jp"
+  },
+  {
     "id": "ais-sim2fly",
     "networkId": "ais-th",
     "name": "AIS SIM2Fly",
@@ -240,6 +246,12 @@
     "marketId": "jp"
   },
   {
+    "id": "iijmio-jp",
+    "networkId": "docomo-jp",
+    "name": "IIJmio",
+    "marketId": "jp"
+  },
+  {
     "id": "jio-prepaid",
     "networkId": "jio-in",
     "name": "Jio Prepaid",
@@ -250,6 +262,12 @@
     "marketId": "nl",
     "networkId": "kpn-nl",
     "name": "KPN Prepaid"
+  },
+  {
+    "id": "kt-prepaid-kr",
+    "networkId": "kt-kr",
+    "name": "KT Prepaid",
+    "marketId": "kr"
   },
   {
     "id": "kyivstar-prepaid",

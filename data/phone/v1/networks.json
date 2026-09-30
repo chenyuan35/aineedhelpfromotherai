@@ -100,6 +100,11 @@
     "marketId": "lk"
   },
   {
+    "id": "docomo-jp",
+    "name": "NTT docomo",
+    "marketId": "jp"
+  },
+  {
     "id": "du-ae",
     "name": "du UAE",
     "marketId": "ae"
@@ -153,6 +158,11 @@
     "id": "kpn-nl",
     "name": "KPN",
     "marketId": "nl"
+  },
+  {
+    "id": "kt-kr",
+    "name": "KT (Korea Telecom)",
+    "marketId": "kr"
   },
   {
     "id": "kyivstar-ua",
