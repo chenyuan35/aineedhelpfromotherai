@@ -8,7 +8,7 @@ Last updated: 2026-10-01
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C8 is released with **135 comparison routes / 113 canonical normalized routes / 102 comparison↔canonical route-ID overlaps / 33 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C9 is released with **135 comparison routes / 116 canonical normalized routes / 105 comparison↔canonical route-ID overlaps / 30 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -72,9 +72,21 @@ Released state: **113 routes / 63 markets / 110 brands / 86 networks / 386 sourc
 
 Kimi worker task `task-d802cb1b57d4` completed and was coordinator-reconciled. QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. The initial headless QwenPaw task path also failed because it did not expose the configured active models; the working inter-agent background path was used instead.
 
-## NEXT — Backend database coverage DB-C9
+## JUST COMPLETED — Backend database coverage DB-C9
 
-Bounded batch: `lguplus-prepaid-kr-2026`, `mts-by-2026`, `bakcell-cin-az-2026`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. `sakura-mobile-voice-2026` remains excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`. Use delegated workers where useful, but raw output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
+DB-C9 is merged and production-verified. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `lguplus-prepaid-kr-2026` — **HOLD**: current evidence splits the legacy label between LG U+’s short-stay visitor SIM and the separate U+ UMobile MVNO prepaid product. The visitor SIM is not a long-term retention route, while U+ UMobile prepaid lists roaming as unavailable; do not merge the two product identities.
+- `mts-by-2026` — **HOLD**: MTS Belarus now documents the 60-day forced-block and 180-day no-operation withdrawal clocks, but the current foreign-guest tariff explicitly disables both Roaming and SMS Roaming for foreign citizens/stateless persons.
+- `bakcell-cin-az-2026` — **HOLD**: existing CIN 1 lines have current AZN3.99/30-day and AZN0.99/6-day lifecycle mechanics, but CIN 1 is now in Bakcell’s tariff archive and current new acquisition is not established. The deeper closure sequence remains historical-only evidence.
+
+Released state: **116 routes / 65 markets / 113 brands / 89 networks / 400 sources / 105 comparison overlaps / 30 legacy-only / 3 indexable**. `npm run phone:data:check`, `npm run verify` and the full frontend build passed; the frontend remains **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**. PR #324 squash-merged as `ac742c7398053a057a9b0e06d2ffcab717d28146`; Eval Gate #987, CI #197 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `lguplus-prepaid-kr-2026` route 404, sitemap 31 URLs.
+
+QwenPaw/Kimi task `task-24b1c44a3cc4` returned useful research-candidate evidence before a terminal model-execution failure; accepted facts were independently reverified by the coordinator. The requested qwen-code second pass was unavailable because no enabled ACP runner was configured, and Tavily returned 403; neither blocker was treated as evidence.
+
+## NEXT — Backend database coverage DB-C10
+
+Bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. Delegated output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -90,7 +102,7 @@ Search Console remains too small for publication expansion. This does **not** bl
 
 ## Qwen / Kimi work lane
 
-QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment. DB-C8 used the live inter-agent background path: Kimi task `task-d802cb1b57d4` completed and was reconciled; QA task `task-ef149eb596bf` failed on provider quota and contributed no accepted evidence. Earlier headless task attempts failed because that path did not expose the configured active models, so worker availability must be verified through the inter-agent path rather than assumed.
+QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output remains `RESEARCH_CANDIDATE` until reviewed. They do not control publication, roadmap, merge or deployment. DB-C9 used the live inter-agent background path: task `task-24b1c44a3cc4` produced research-candidate evidence before a terminal model-execution failure, and coordinator re-verification decided admission. The requested qwen-code second pass had no enabled ACP runner and Tavily returned 403; those capability failures did not bypass evidence QC.
 
 ## External waits
 
@@ -100,7 +112,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 33 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 30 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
