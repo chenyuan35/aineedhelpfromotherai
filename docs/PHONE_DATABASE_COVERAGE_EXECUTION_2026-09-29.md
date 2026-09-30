@@ -193,3 +193,19 @@ Release: PR #318 squash-merged as `04b116c6de2c09eb614a0fbf1990b355c73d7400` aft
 Delegated evidence remained bounded and coordinator-reviewed. Existing DB-C6 worker tasks `task-b8c31337863b` and `task-4f112e9f94f5` were reconciled before admission. One extra final Kimi recheck attempt failed because the current agent runtime had no active model configured; no result was accepted, and release proceeded only on direct schema/source review plus full automated checks.
 
 DB-C7 next bounded batch: `ifmobile-jp-2026`, `rakuten-mobile-jp-2026`, `linemo-jp-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not inflate coverage by duplicating the product. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C7 — completed 2026-09-30
+
+The bounded DB-C7 Japan batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `ifmobile-jp-2026` — HOLD. IF Mobile currently lists its 1GB voice SIM at JPY1,408/month, but the former uploaded-ID-image + face-image web KYC method ended on 2026-03-31. Current documented alternatives are JPKI, IC-chip reading + face verification, or in-store identity verification. Independent evidence shows overseas use of existing lines, but a current passport-only nonresident remote signup and mainland-China SMS path were not established strongly enough for admission.
+- `rakuten-mobile-jp-2026` — HOLD. Rakuten SAIKYO currently starts at JPY1,078/month through 3GB and supports international services, but current foreign-national online identity verification requires Japanese residence identity/address documents. Rakuten instructs customers to complete Rakuten Link initial setup in Japan before travel, so this is not a clean overseas-first acquisition route.
+- `linemo-jp-2026` — HOLD. LINEMO Best Plan currently starts at JPY990/month through 3GB and the current contract administration fee is JPY3,850. Foreign applicants use residence-card based KYC; World Support enables overseas SMS with free reception, but a newly issued number cannot enroll until the fifth billing month.
+
+Post-DB-C7 state: **110 canonical routes / 63 markets / 107 brands / 84 networks / 372 sources / 99 comparison-overlap route IDs / 36 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check`, `npm run verify` and the full frontend build passed. The frontend still produces **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
+
+Release: PR #320 squash-merged as `1efb329a35ecf4f8a47e3c95d0e7041013fd0923` after Eval Gate #979, CI #193 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and non-indexable `ifmobile-jp-2026` at HTTP 404.
+
+Delegated evidence was exercised rather than claimed. Kimi task `task-e22548697159` independently returned HOLD for IF Mobile and highlighted conflicting post-April-2026 signup evidence. QA task `task-40c3bef1495c` remained running when release gates closed; no result was accepted, and Rakuten/LINEMO were admitted to canonical HOLD status only after direct current first-party reconciliation and full automated checks.
+
+DB-C8 next bounded batch: `ahamo-jp-2026`, `iijmio-jp-2026`, `kt-prepaid-kr-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not duplicate it to raise overlap. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
