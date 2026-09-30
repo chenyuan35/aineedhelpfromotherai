@@ -178,14 +178,18 @@ Release: PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb` aft
 
 DB-C6 next bounded batch: `stc-sawa-sa-2026`, `claro-pre-ar-2026`, `skt-prepaid-kr-2026`. Keep the 3-route publication boundary unchanged and require reviewed provenance before canonical admission.
 
-## DB-C6 — handoff checkpoint 2026-09-30
+## DB-C6 — completed 2026-09-30
 
-DB-C6 research/reconciliation is complete; canonical import/release is pending. Reviewed packet drafts are durably checkpointed on remote branch `phone/db-c6-stc-claro-skt-20260930` at commit `720ddb7`. Released `main` remains at the DB-C5 state (104 canonical routes / 93 comparison overlaps / 42 legacy-only / 3 indexable); none of the three DB-C6 route IDs is canonical yet.
+The bounded DB-C6 batch was reviewed, schema-validated and normalized through approved backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
-Current reviewed dispositions:
+- `stc-sawa-sa-2026` — HOLD. Current STC first-party pages conflict on 180 vs 360-day prepaid validity, and non-citizen ID expiry/final departure can trigger suspension/cancellation.
+- `claro-pre-ar-2026` — ADMIT-BACKSTAGE. Current Claro evidence supports 180-day recharge validity plus a 60-day active grace period, passport tourist-SIM/foreigner eSIM paths and prepaid roaming. ARS2000 is recorded only as the lowest currently visible recharge tier, not a contractual minimum. Import validation caught and corrected the draft-only invalid enum `official-confirmed` to canonical `admitted`.
+- `skt-prepaid-kr-2026` — HOLD. Current SKT material establishes KRW5000 = 30 days outgoing / 40 days incoming / 120 days number retention, passport onboarding with stay-expiry recharge constraints, and PPS as roaming-unavailable.
 
-- `stc-sawa-sa-2026` — HOLD. Preserve the 180-day-vs-360-day current STC validity conflict and the non-citizen ID-expiry/final-departure cancellation risk. Delegated Kimi lane `task-b8c31337863b` supported HOLD.
-- `claro-pre-ar-2026` — ADMIT-BACKSTAGE. Use the final current-provider model in the packet: 180-day recharge validity + 60-day post-expiry active grace; passport tourist-SIM / foreigner eSIM paths; ARS2000 is only the lowest currently visible recharge tier, not a proven contractual minimum; prepaid roaming is supported but OTP reliability by destination remains unverified. Delegated QA lane `task-4f112e9f94f5` returned a conflicting 60-day interpretation and was explicitly reconciled rather than accepted verbatim.
-- `skt-prepaid-kr-2026` — HOLD. PPS lifecycle is KRW5000 for 30d outgoing / 40d incoming / 120d number retention; passport onboarding exists with stay-expiry recharge constraints. Current T roaming material says PPS is roaming-unavailable, correcting the earlier temporary-roaming assumption.
+Post-DB-C6 state: **107 canonical routes / 63 markets / 104 brands / 83 networks / 360 sources / 96 comparison-overlap route IDs / 39 comparison routes still legacy-only / 3 explicit indexable routes**. `npm run phone:data:check` passed including dedicated DB-C6 migration coverage. The full frontend build passed and verified **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
 
-Next session should resume the existing branch, validate these packet drafts, apply them via the canonical importer, add DB-C6 migration regression coverage if needed, run the full Phone/build/publication-boundary suite, then use the normal PR → Eval/CI/Preview → merge → production-verification path. Do not re-research the batch wholesale unless a concrete validator/source gap appears. Public/indexable route count must remain 3 unless a separate publication decision is made.
+Release: PR #318 squash-merged as `04b116c6de2c09eb614a0fbf1990b355c73d7400` after Eval Gate #975, CI #191 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and non-indexable `claro-pre-ar-2026` at HTTP 404.
+
+Delegated evidence remained bounded and coordinator-reviewed. Existing DB-C6 worker tasks `task-b8c31337863b` and `task-4f112e9f94f5` were reconciled before admission. One extra final Kimi recheck attempt failed because the current agent runtime had no active model configured; no result was accepted, and release proceeded only on direct schema/source review plus full automated checks.
+
+DB-C7 next bounded batch: `ifmobile-jp-2026`, `rakuten-mobile-jp-2026`, `linemo-jp-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not inflate coverage by duplicating the product. Public/indexable route count remains 3 unless a separate publication decision passes the full gate.
