@@ -19,6 +19,7 @@ jobs:
       - name: Update canonical fact sources
         run: |
           python3 scripts/tmp-close-db-c8-docs.py
+          python3 -c "from pathlib import Path; p=Path('docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md'); p.write_text(p.read_text().rstrip() + '\\n')"
           git diff --check
       - name: Commit fact-source closeout
         run: |
