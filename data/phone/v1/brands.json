@@ -234,6 +234,12 @@
     "marketId": "gb"
   },
   {
+    "id": "ifmobile-jp",
+    "networkId": null,
+    "name": "IF Mobile",
+    "marketId": "jp"
+  },
+  {
     "id": "jio-prepaid",
     "networkId": "jio-in",
     "name": "Jio Prepaid",
@@ -268,6 +274,12 @@
     "networkId": "vodafone-uk",
     "name": "Lebara UK",
     "marketId": "gb"
+  },
+  {
+    "id": "linemo-jp",
+    "networkId": "softbank-jp",
+    "name": "LINEMO",
+    "marketId": "jp"
   },
   {
     "id": "lmt-karte",
@@ -382,6 +394,12 @@
     "networkId": "proximus-be",
     "name": "Proximus Pay&Go+",
     "marketId": "be"
+  },
+  {
+    "id": "rakuten-mobile-jp",
+    "networkId": "rakuten-mobile-jp",
+    "name": "Rakuten Mobile",
+    "marketId": "jp"
   },
   {
     "id": "redpocket-us",

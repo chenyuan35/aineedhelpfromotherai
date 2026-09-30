@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-30",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c7",
+  "reviewNotes": "HOLD. Rakuten SAIKYO remains JPY1,078/month at the lowest usage tier and supports international services for existing subscribers. Current foreign-national KYC is explicitly residence-card/special-permanent-resident-card based with matching Japanese address semantics; this is not a passport-only nonresident route. Rakuten also instructs users to initialize Rakuten Link in Japan before travel. Preserve as resident-only negative knowledge, not an overseas-acquisition recommendation.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "rakuten-mobile-jp",
+    "networkId": "rakuten-mobile-jp",
+    "name": "Rakuten Mobile",
+    "marketId": "jp"
+  },
+  "route": {
+    "id": "rakuten-mobile-jp-2026",
+    "marketId": "jp",
+    "networkId": "rakuten-mobile-jp",
+    "brandId": "rakuten-mobile-jp",
+    "displayName": "Rakuten Mobile SAIKYO Plan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+    "sourceIds": [
+      "rakuten-saikyo-plan-20260930",
+      "rakuten-foreigner-kyc-20260930",
+      "rakuten-overseas-service-20260930",
+      "rakuten-link-roaming-setup-20260930"
+    ]
+  },
+  "sources": [
+    {
+      "id": "rakuten-saikyo-plan-20260930",
+      "url": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "rakuten-foreigner-kyc-20260930",
+      "url": "https://network.mobile.rakuten.co.jp/guide/verify/nfc-kyc/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "rakuten-overseas-service-20260930",
+      "url": "https://network.mobile.rakuten.co.jp/en/service/global/overseas/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "rakuten-link-roaming-setup-20260930",
+      "url": "https://network.mobile.rakuten.co.jp/faq/detail/00001302/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "sourceIds": [
+    "rakuten-saikyo-plan-20260930",
+    "rakuten-foreigner-kyc-20260930",
+    "rakuten-overseas-service-20260930",
+    "rakuten-link-roaming-setup-20260930"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-rakuten-mobile-jp-2026-db-c7-20260930",
+      "routeId": "rakuten-mobile-jp-2026",
+      "type": "eligibility-and-roaming-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current Rakuten pricing and overseas service are documented, while foreign-customer onboarding remains a Japanese-residence-document path and Rakuten Link should be initialized in Japan before travel.",
+      "sourceId": "rakuten-foreigner-kyc-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-rakuten-mobile-jp-2026-current-profile-20260930",
+      "routeId": "rakuten-mobile-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c7-reviewed-2026-09-30",
+      "data": {
+        "id": "rakuten-mobile-jp-2026",
+        "brandId": "rakuten-mobile-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Rakuten SAIKYO Plan is a Japanese resident mobile subscription. Current foreign-national online identity verification supports photo residence cards or special permanent-resident certificates; the identity document must carry a matching current address. New-generation residence cards that cannot use the current online method are directed to a Rakuten Mobile shop.",
+        "landedCost": {
+          "currency": "JPY",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 1078,
+          "yearCostOriginal": 12936,
+          "yearCostCny": null,
+          "action": "Keep the Rakuten SAIKYO Plan active; the lowest usage tier is JPY1,078/month through 3GB. No idle PAYG number-parking mode is documented.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "A new nonresident signup from mainland China is not supported by the current foreign-resident KYC path. Existing eligible customers can use international services, but Rakuten explicitly instructs users to complete Rakuten Link initial setup in Japan before travel because authentication may fail in some overseas roaming areas.",
+        "kyc": "For foreign nationals, current smartphone identity verification uses a photo residence card or photo special permanent-resident certificate with matching name/address/date-of-birth and valid IC-chip data. This is a Japanese-resident identity path, not a passport-only tourist route.",
+        "payment": "Rakuten Mobile supports credit/debit cards and Japanese bank-account transfer for monthly fees. Dependable overseas-issued-card acceptance is not established by the current evidence.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Rakuten documents international SMS/overseas service for the ordinary SAIKYO Plan. Receiving/sending availability depends on app/OS and destination; service-specific OTP reliability in mainland China is not independently verified.",
+        "refund": "not reconciled",
+        "trend": "hold-resident-identity-required",
+        "guideEligible": false,
+        "holdReason": "The plan and overseas service are current, but ordinary acquisition is tied to Japanese resident identity/address documents. It is not a clean nonresident route, and Rakuten Link setup should be completed in Japan before travel.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+        "tariffSummary": "SAIKYO Plan starts at JPY1,078/month through 3GB; current foreigner KYC uses Japanese residence identity documents, while overseas service is available to existing eligible subscribers.",
+        "sourceIds": [
+          "rakuten-saikyo-plan-20260930",
+          "rakuten-foreigner-kyc-20260930",
+          "rakuten-overseas-service-20260930",
+          "rakuten-link-roaming-setup-20260930"
+        ],
+        "guideSteps": [
+          "Treat JPY1,078/month as the number-retention floor; no idle PAYG mode is documented.",
+          "Do not present the ordinary Rakuten Mobile contract as a passport-only/nonresident acquisition path.",
+          "For an existing eligible line, complete Rakuten Link setup in Japan before relying on overseas service."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

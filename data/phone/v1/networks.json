@@ -285,6 +285,11 @@
     "marketId": "ph"
   },
   {
+    "id": "softbank-jp",
+    "name": "SoftBank Japan",
+    "marketId": "jp"
+  },
+  {
     "id": "spark-nz",
     "name": "Spark NZ",
     "marketId": "nz"

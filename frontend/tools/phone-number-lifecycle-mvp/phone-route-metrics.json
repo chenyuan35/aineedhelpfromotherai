@@ -470,6 +470,18 @@
       "keepIntervalDays": 120
     },
     {
+      "routeId": "ifmobile-jp-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 16896,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "jio-prepaid-90d-trai-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -540,6 +552,18 @@
       "keepYearCostOriginal": 1.96,
       "keepYearCostCny": 17.5,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "linemo-jp-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": 3850,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 11880,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "lmt-karte-60-60d-2026",
@@ -792,6 +816,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "rakuten-mobile-jp-2026",
+      "checkedAt": "2026-09-30",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JPY",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JPY",
+      "keepYearCostOriginal": 12936,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "redpocket-annual-2026",
