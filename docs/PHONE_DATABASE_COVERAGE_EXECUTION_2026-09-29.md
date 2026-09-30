@@ -177,3 +177,15 @@ Post-DB-C5 state: **104 canonical routes / 60 markets / 101 brands / 80 networks
 Release: PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb` after Eval Gate #969, CI #189 and Vercel Preview passed. Production verification confirmed the Phone hub and existing VOXI route at HTTP 200 and the non-indexable BH Telecom route at HTTP 404.
 
 DB-C6 next bounded batch: `stc-sawa-sa-2026`, `claro-pre-ar-2026`, `skt-prepaid-kr-2026`. Keep the 3-route publication boundary unchanged and require reviewed provenance before canonical admission.
+
+## DB-C6 — handoff checkpoint 2026-09-30
+
+DB-C6 research/reconciliation is complete; canonical import/release is pending. Reviewed packet drafts are durably checkpointed on remote branch `phone/db-c6-stc-claro-skt-20260930` at commit `720ddb7`. Released `main` remains at the DB-C5 state (104 canonical routes / 93 comparison overlaps / 42 legacy-only / 3 indexable); none of the three DB-C6 route IDs is canonical yet.
+
+Current reviewed dispositions:
+
+- `stc-sawa-sa-2026` — HOLD. Preserve the 180-day-vs-360-day current STC validity conflict and the non-citizen ID-expiry/final-departure cancellation risk. Delegated Kimi lane `task-b8c31337863b` supported HOLD.
+- `claro-pre-ar-2026` — ADMIT-BACKSTAGE. Use the final current-provider model in the packet: 180-day recharge validity + 60-day post-expiry active grace; passport tourist-SIM / foreigner eSIM paths; ARS2000 is only the lowest currently visible recharge tier, not a proven contractual minimum; prepaid roaming is supported but OTP reliability by destination remains unverified. Delegated QA lane `task-4f112e9f94f5` returned a conflicting 60-day interpretation and was explicitly reconciled rather than accepted verbatim.
+- `skt-prepaid-kr-2026` — HOLD. PPS lifecycle is KRW5000 for 30d outgoing / 40d incoming / 120d number retention; passport onboarding exists with stay-expiry recharge constraints. Current T roaming material says PPS is roaming-unavailable, correcting the earlier temporary-roaming assumption.
+
+Next session should resume the existing branch, validate these packet drafts, apply them via the canonical importer, add DB-C6 migration regression coverage if needed, run the full Phone/build/publication-boundary suite, then use the normal PR → Eval/CI/Preview → merge → production-verification path. Do not re-research the batch wholesale unless a concrete validator/source gap appears. Public/indexable route count must remain 3 unless a separate publication decision is made.
