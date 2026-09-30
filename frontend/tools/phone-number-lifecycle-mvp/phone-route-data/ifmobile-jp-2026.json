@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "ifmobile-jp-2026",
+    "marketId": "jp",
+    "networkId": null,
+    "brandId": "ifmobile-jp",
+    "displayName": "IF Mobile Japan Voice SIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.ifmobile.jp/",
+    "sourceIds": [
+      "ifmobile-ekyc-change-20260930",
+      "ifmobile-overseas-community-20260930",
+      "ifmobile-plan-20260930"
+    ]
+  },
+  "market": {
+    "id": "jp",
+    "name": "Japan",
+    "countryCode": "JP"
+  },
+  "network": null,
+  "brand": {
+    "id": "ifmobile-jp",
+    "networkId": null,
+    "name": "IF Mobile",
+    "marketId": "jp"
+  },
+  "metrics": {
+    "routeId": "ifmobile-jp-2026",
+    "checkedAt": "2026-09-30",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "JPY",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "JPY",
+    "keepYearCostOriginal": 16896,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "ifmobile-ekyc-change-20260930",
+      "url": "https://ifmobile.jp/download/ekyc_notice.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "ifmobile-overseas-community-20260930",
+      "url": "https://meteorv.dev/Japan/if-mobile-japan-sim/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "ifmobile-plan-20260930",
+      "url": "https://www.ifmobile.jp/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-ifmobile-jp-2026-db-c7-20260930",
+      "routeId": "ifmobile-jp-2026",
+      "type": "identity-path-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current IF Mobile pricing remains available, but the prior remote image-plus-selfie identity flow ended 2026-03-31; current nonresident remote signup and mainland-China SMS utility remain unresolved.",
+      "sourceId": "ifmobile-ekyc-change-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-ifmobile-jp-2026-current-profile-20260930",
+      "routeId": "ifmobile-jp-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c7-reviewed-2026-09-30",
+      "data": {
+        "id": "ifmobile-jp-2026",
+        "brandId": "ifmobile-jp",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "IF Mobile currently lists seven voice-SIM tiers, with the 1GB tier at JPY1,408/month. Its former web identity flow based on uploaded identity-document images plus a face image ended on 2026-03-31; current web applications must use JPKI or IC-chip reading plus face verification, with an in-store same-day counter as the documented alternative. A current passport-only nonresident web path is not established.",
+        "landedCost": {
+          "currency": "JPY",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 1408,
+          "yearCostOriginal": 16896,
+          "yearCostCny": null,
+          "action": "Maintain the current 1GB voice-SIM subscription at JPY1,408/month. Current evidence does not establish a cheaper idle/PAYG number-retention mode.",
+          "intervalDays": 30,
+          "state": "current-provider-subscription"
+        },
+        "chinaActivation": "Current direct new-customer activation from mainland China is unproven after the 2026 identity-verification change. Independent user evidence documents an already-acquired IF Mobile line working in Taiwan for calls and SMS, but that does not prove a current post-change remote signup path or mainland-China activation.",
+        "kyc": "The old upload-an-ID-image + selfie web method ended 2026-03-31. Current official options are My Number/JPKI, IC-chip reading + face verification, or the in-store same-day counter. The provider has not been verified to expose a current passport-only nonresident web route.",
+        "payment": "The current site states that a credit card is not required, but the exact current remote payment path for an overseas new applicant is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Independent user evidence documents SMS/call reception in Taiwan on an existing line. Current provider-controlled roaming/SMS pricing and mainland-China OTP delivery are not verified.",
+        "refund": "not reconciled",
+        "trend": "hold-current-kyc-path-unresolved",
+        "guideEligible": false,
+        "holdReason": "The legacy passport-image/selfie remote KYC claim is obsolete after 2026-03-31. Current JPKI/IC-chip/in-store identity methods are documented, but a current passport-only nonresident signup path and mainland-China overseas-SMS behavior are not established.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.ifmobile.jp/",
+        "tariffSummary": "Current 1GB voice SIM is JPY1,408/month; old image+face web KYC ended 2026-03-31, and current nonresident remote eligibility remains unresolved.",
+        "sourceIds": [
+          "ifmobile-plan-20260930",
+          "ifmobile-ekyc-change-20260930",
+          "ifmobile-overseas-community-20260930"
+        ],
+        "guideSteps": [
+          "Treat the JPY1,408/month tier as current pricing, not the older JPY1,080 community figure.",
+          "Do not use the pre-April passport-image/selfie flow as current signup guidance.",
+          "Re-open only when a post-change nonresident signup path and current overseas SMS behavior are independently reproduced."
+        ]
+      }
+    }
+  ]
+}

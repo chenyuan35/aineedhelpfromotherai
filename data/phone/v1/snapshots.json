@@ -2684,6 +2684,56 @@
     }
   },
   {
+    "id": "snap-ifmobile-jp-2026-current-profile-20260930",
+    "routeId": "ifmobile-jp-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c7-reviewed-2026-09-30",
+    "data": {
+      "id": "ifmobile-jp-2026",
+      "brandId": "ifmobile-jp",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "IF Mobile currently lists seven voice-SIM tiers, with the 1GB tier at JPY1,408/month. Its former web identity flow based on uploaded identity-document images plus a face image ended on 2026-03-31; current web applications must use JPKI or IC-chip reading plus face verification, with an in-store same-day counter as the documented alternative. A current passport-only nonresident web path is not established.",
+      "landedCost": {
+        "currency": "JPY",
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "JPY",
+        "observedActionCost": 1408,
+        "yearCostOriginal": 16896,
+        "yearCostCny": null,
+        "action": "Maintain the current 1GB voice-SIM subscription at JPY1,408/month. Current evidence does not establish a cheaper idle/PAYG number-retention mode.",
+        "intervalDays": 30,
+        "state": "current-provider-subscription"
+      },
+      "chinaActivation": "Current direct new-customer activation from mainland China is unproven after the 2026 identity-verification change. Independent user evidence documents an already-acquired IF Mobile line working in Taiwan for calls and SMS, but that does not prove a current post-change remote signup path or mainland-China activation.",
+      "kyc": "The old upload-an-ID-image + selfie web method ended 2026-03-31. Current official options are My Number/JPKI, IC-chip reading + face verification, or the in-store same-day counter. The provider has not been verified to expose a current passport-only nonresident web route.",
+      "payment": "The current site states that a credit card is not required, but the exact current remote payment path for an overseas new applicant is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Independent user evidence documents SMS/call reception in Taiwan on an existing line. Current provider-controlled roaming/SMS pricing and mainland-China OTP delivery are not verified.",
+      "refund": "not reconciled",
+      "trend": "hold-current-kyc-path-unresolved",
+      "guideEligible": false,
+      "holdReason": "The legacy passport-image/selfie remote KYC claim is obsolete after 2026-03-31. Current JPKI/IC-chip/in-store identity methods are documented, but a current passport-only nonresident signup path and mainland-China overseas-SMS behavior are not established.",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.ifmobile.jp/",
+      "tariffSummary": "Current 1GB voice SIM is JPY1,408/month; old image+face web KYC ended 2026-03-31, and current nonresident remote eligibility remains unresolved.",
+      "sourceIds": [
+        "ifmobile-plan-20260930",
+        "ifmobile-ekyc-change-20260930",
+        "ifmobile-overseas-community-20260930"
+      ],
+      "guideSteps": [
+        "Treat the JPY1,408/month tier as current pricing, not the older JPY1,080 community figure.",
+        "Do not use the pre-April passport-image/selfie flow as current signup guidance.",
+        "Re-open only when a post-change nonresident signup path and current overseas SMS behavior are independently reproduced."
+      ]
+    }
+  },
+  {
     "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
     "routeId": "jio-prepaid-90d-trai-2026",
     "kind": "current-profile",
@@ -3152,6 +3202,64 @@
         "summary": "Use the Lebara line before temporary barring",
         "description": "Complete a normal documented call, text or data session before the 90-day inactivity boundary. The calendar event is placed 14 days early as a product-side buffer."
       }
+    }
+  },
+  {
+    "id": "snap-linemo-jp-2026-current-profile-20260930",
+    "routeId": "linemo-jp-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c7-reviewed-2026-09-30",
+    "data": {
+      "id": "linemo-jp-2026",
+      "brandId": "linemo-jp",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "LINEMO Best Plan is SoftBank’s online-only subscription, currently JPY990/month through 3GB. Current application identity rules for foreign nationals require a valid residence card; non-permanent residents also provide a foreign passport, and the application name/address/date-of-birth must match current residence information.",
+      "landedCost": {
+        "currency": "JPY",
+        "providerOrCommunityPrice": 3850,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 3850,
+        "landedCny": null,
+        "state": "current-provider-contract-fee"
+      },
+      "keep": {
+        "currency": "JPY",
+        "observedActionCost": 990,
+        "yearCostOriginal": 11880,
+        "yearCostCny": null,
+        "action": "Maintain LINEMO Best Plan at the lowest usage tier, JPY990/month through 3GB. No idle PAYG number-retention mode is documented.",
+        "intervalDays": 30,
+        "state": "current-provider-subscription"
+      },
+      "chinaActivation": "A new nonresident signup from mainland China is not supported by the current residence-card/address identity path. For an existing qualifying line, China is in LINEMO’s international-roaming region, but a line opened with a new phone number cannot enroll in World Support until the fifth billing month.",
+      "kyc": "Current foreign-national application requires a valid residence card; customers who are not permanent residents also need a foreign passport. Identity/address details must match the application. This is a Japanese-resident KYC route rather than passport-only tourist onboarding.",
+      "payment": "Credit card or bank transfer. Current card support includes Visa, Mastercard, JCB, American Express and Diners Club; the card must be in the subscriber’s name and card registration uses 3D Secure 2.0. Foreign-issued-card reliability is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "With World Support enabled, LINEMO supports overseas SMS; receiving is free and sending is JPY100 per message. China is listed in the supported Asia roaming area. New-number contracts cannot enroll in World Support until the fifth billing month, so immediate overseas OTP use after a new signup is not available.",
+      "refund": "not reconciled",
+      "trend": "hold-resident-identity-and-roaming-wait",
+      "guideEligible": false,
+      "holdReason": "The JPY990/month plan is current and overseas SMS is documented, but new acquisition requires Japanese resident identity/address information. A new-number contract also has a World Support enrollment wait until the fifth billing month, making this a poor nonresident/quick-overseas OTP route.",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://www.linemo.jp/plan/",
+      "tariffSummary": "LINEMO Best Plan is JPY990/month through 3GB plus a current JPY3,850 contract administration fee; foreign applicants use residence-card based KYC, and new-number lines face a roaming-option wait.",
+      "sourceIds": [
+        "linemo-best-plan-20260930",
+        "linemo-costs-20260930",
+        "linemo-foreigner-kyc-20260930",
+        "linemo-overseas-sms-20260930",
+        "linemo-global-roaming-20260930"
+      ],
+      "guideSteps": [
+        "Budget JPY3,850 current contract administration plus JPY990/month at the lowest Best Plan tier.",
+        "Do not present LINEMO as a passport-only/nonresident signup route.",
+        "For a new-number line, account for the World Support eligibility delay before relying on overseas SMS."
+      ]
     }
   },
   {
@@ -4577,6 +4685,57 @@
         "Acquire and identify the Pay&Go+ SIM under current Belgian rules.",
         "Use the line within each six-month inactivity window and keep the exact qualifying-use action documented for your account.",
         "Use a top-up above EUR5 when a full 12-month validity extension is needed; do not assume annual top-up alone defeats the separate inactivity rule."
+      ]
+    }
+  },
+  {
+    "id": "snap-rakuten-mobile-jp-2026-current-profile-20260930",
+    "routeId": "rakuten-mobile-jp-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-09-30",
+    "sourceDataset": "db-c7-reviewed-2026-09-30",
+    "data": {
+      "id": "rakuten-mobile-jp-2026",
+      "brandId": "rakuten-mobile-jp",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Rakuten SAIKYO Plan is a Japanese resident mobile subscription. Current foreign-national online identity verification supports photo residence cards or special permanent-resident certificates; the identity document must carry a matching current address. New-generation residence cards that cannot use the current online method are directed to a Rakuten Mobile shop.",
+      "landedCost": {
+        "currency": "JPY",
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "JPY",
+        "observedActionCost": 1078,
+        "yearCostOriginal": 12936,
+        "yearCostCny": null,
+        "action": "Keep the Rakuten SAIKYO Plan active; the lowest usage tier is JPY1,078/month through 3GB. No idle PAYG number-parking mode is documented.",
+        "intervalDays": 30,
+        "state": "current-provider-subscription"
+      },
+      "chinaActivation": "A new nonresident signup from mainland China is not supported by the current foreign-resident KYC path. Existing eligible customers can use international services, but Rakuten explicitly instructs users to complete Rakuten Link initial setup in Japan before travel because authentication may fail in some overseas roaming areas.",
+      "kyc": "For foreign nationals, current smartphone identity verification uses a photo residence card or photo special permanent-resident certificate with matching name/address/date-of-birth and valid IC-chip data. This is a Japanese-resident identity path, not a passport-only tourist route.",
+      "payment": "Rakuten Mobile supports credit/debit cards and Japanese bank-account transfer for monthly fees. Dependable overseas-issued-card acceptance is not established by the current evidence.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Rakuten documents international SMS/overseas service for the ordinary SAIKYO Plan. Receiving/sending availability depends on app/OS and destination; service-specific OTP reliability in mainland China is not independently verified.",
+      "refund": "not reconciled",
+      "trend": "hold-resident-identity-required",
+      "guideEligible": false,
+      "holdReason": "The plan and overseas service are current, but ordinary acquisition is tied to Japanese resident identity/address documents. It is not a clean nonresident route, and Rakuten Link setup should be completed in Japan before travel.",
+      "lastVerifiedAt": "2026-09-30",
+      "acquireUrl": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+      "tariffSummary": "SAIKYO Plan starts at JPY1,078/month through 3GB; current foreigner KYC uses Japanese residence identity documents, while overseas service is available to existing eligible subscribers.",
+      "sourceIds": [
+        "rakuten-saikyo-plan-20260930",
+        "rakuten-foreigner-kyc-20260930",
+        "rakuten-overseas-service-20260930",
+        "rakuten-link-roaming-setup-20260930"
+      ],
+      "guideSteps": [
+        "Treat JPY1,078/month as the number-retention floor; no idle PAYG mode is documented.",
+        "Do not present the ordinary Rakuten Mobile contract as a passport-only/nonresident acquisition path.",
+        "For an existing eligible line, complete Rakuten Link setup in Japan before relying on overseas service."
       ]
     }
   },

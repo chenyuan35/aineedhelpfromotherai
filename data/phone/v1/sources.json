@@ -390,6 +390,24 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "ifmobile-ekyc-change-20260930",
+    "url": "https://ifmobile.jp/download/ekyc_notice.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "ifmobile-overseas-community-20260930",
+    "url": "https://meteorv.dev/Japan/if-mobile-japan-sim/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "ifmobile-plan-20260930",
+    "url": "https://www.ifmobile.jp/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
     "id": "kyivstar-additional-prepaid-2026-09-29",
     "url": "https://kyivstar.ua/additional-prepaid",
     "type": "provider-official",
@@ -454,6 +472,36 @@
     "url": "https://www.lebara.fr/fr/enregistrement.html",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "linemo-best-plan-20260930",
+    "url": "https://www.linemo.jp/plan/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "linemo-costs-20260930",
+    "url": "https://www.linemo.jp/plan/payment/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "linemo-foreigner-kyc-20260930",
+    "url": "https://www.linemo.jp/process/necessary/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "linemo-global-roaming-20260930",
+    "url": "https://www.linemo.jp/service/global_roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "linemo-overseas-sms-20260930",
+    "url": "https://www.linemo.jp/support/faq/view/27190",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
   },
   {
     "id": "linuxdo-giffgaff-1615582",
@@ -1648,6 +1696,30 @@
     "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
     "type": "provider-community-support-thread",
     "reportedAt": "2026-07-03"
+  },
+  {
+    "id": "rakuten-foreigner-kyc-20260930",
+    "url": "https://network.mobile.rakuten.co.jp/guide/verify/nfc-kyc/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "rakuten-link-roaming-setup-20260930",
+    "url": "https://network.mobile.rakuten.co.jp/faq/detail/00001302/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "rakuten-overseas-service-20260930",
+    "url": "https://network.mobile.rakuten.co.jp/en/service/global/overseas/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "rakuten-saikyo-plan-20260930",
+    "url": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/",
+    "type": "provider-official",
+    "reportedAt": "2026-09-30"
   },
   {
     "id": "reddit-gp-visitor-biometric-2026-03-21",

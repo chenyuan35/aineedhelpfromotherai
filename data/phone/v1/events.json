@@ -225,6 +225,15 @@
     "sourceId": "id-mobile-payg-terms-20260929"
   },
   {
+    "id": "evt-ifmobile-jp-2026-db-c7-20260930",
+    "routeId": "ifmobile-jp-2026",
+    "type": "identity-path-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current IF Mobile pricing remains available, but the prior remote image-plus-selfie identity flow ended 2026-03-31; current nonresident remote signup and mainland-China SMS utility remain unresolved.",
+    "sourceId": "ifmobile-ekyc-change-20260930"
+  },
+  {
     "id": "evt-kyivstar-prepaid-274-91-2026-db-c2-review-20260929",
     "routeId": "kyivstar-prepaid-274-91-2026",
     "type": "evidence-refresh",
@@ -259,6 +268,15 @@
     "scope": "multiple-same-thread-observations",
     "outcome": "inbound verification SMS worked while outgoing SMS/voice/Wi-Fi Calling were initially incomplete or conflicting",
     "sourceId": "linuxdo-lebara-2745784-op"
+  },
+  {
+    "id": "evt-linemo-jp-2026-db-c7-20260930",
+    "routeId": "linemo-jp-2026",
+    "type": "eligibility-and-roaming-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current LINEMO pricing, resident-foreigner identity requirements, contract fee and overseas SMS mechanics are documented; new-number lines cannot enroll in World Support until the fifth billing month.",
+    "sourceId": "linemo-foreigner-kyc-20260930"
   },
   {
     "id": "evt-lmt-karte-60-60d-2026-db-c3-review-20260929",
@@ -385,6 +403,15 @@
     "scope": "route",
     "outcome": "Current Proximus pages say Pay&Go is valid 12 months after first call and >EUR5 top-up extends 12 months, but the current FAQ separately says a card not used for more than 6 months is automatically deactivated. The reviewed page does not define exactly which activity satisfies “used”; annual top-up alone must not be treated as sufficient.",
     "sourceId": "official-proximus-paygo-faq-2026-09-29"
+  },
+  {
+    "id": "evt-rakuten-mobile-jp-2026-db-c7-20260930",
+    "routeId": "rakuten-mobile-jp-2026",
+    "type": "eligibility-and-roaming-resolution",
+    "reportedAt": "2026-09-30",
+    "scope": "route",
+    "outcome": "Current Rakuten pricing and overseas service are documented, while foreign-customer onboarding remains a Japanese-residence-document path and Rakuten Link should be initialized in Japan before travel.",
+    "sourceId": "rakuten-foreigner-kyc-20260930"
   },
   {
     "id": "evt-redpocket-annual-2026-db-c3-review-20260929",
