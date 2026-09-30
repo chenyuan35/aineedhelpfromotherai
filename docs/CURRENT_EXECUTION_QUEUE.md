@@ -8,7 +8,7 @@ Last updated: 2026-09-30
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C5 is released with **135 comparison routes / 104 canonical normalized routes / 93 comparison↔canonical route-ID overlaps / 42 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C6 is released with **135 comparison routes / 107 canonical normalized routes / 96 comparison↔canonical route-ID overlaps / 39 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
 6. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -36,19 +36,21 @@ DB-C5 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE 
 
 Released state: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources / 93 comparison overlaps / 42 legacy-only / 3 indexable**. PR #315 squash-merged as `03370ed11c2922ea93454c9732868a97eeb211cb`; Eval Gate #969, CI #189 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `bhtelecom-ba-2026` route 404.
 
-## IN PROGRESS — Backend database coverage DB-C6
+## JUST COMPLETED — Backend database coverage DB-C6
 
-Research and independent reconciliation are complete for the bounded batch; **canonical apply/release is not complete**. Remote work branch: `phone/db-c6-stc-claro-skt-20260930`, WIP checkpoint `720ddb7`. The branch currently contains only the three reviewed packet drafts; released `main` still has none of these route IDs in canonical `data/phone/v1`.
+DB-C6 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
-Current reviewed dispositions:
+- `stc-sawa-sa-2026` — **HOLD**: current STC pages conflict on 180 vs 360-day prepaid validity, and non-citizen ID expiry/final departure can trigger suspension/cancellation.
+- `claro-pre-ar-2026` — **ADMIT-BACKSTAGE**: current first-party evidence supports 180-day recharge validity plus 60-day active grace, passport tourist-SIM/foreigner eSIM acquisition and prepaid roaming; ARS2000 remains an observed current tier, not a contractual minimum. The pre-apply schema defect `evidenceState=official-confirmed` was corrected to canonical `admitted`.
+- `skt-prepaid-kr-2026` — **HOLD**: KRW5000 maps to 30-day outgoing / 40-day incoming / 120-day number retention; passport onboarding exists, but stay-expiry recharge continuation is constrained and current T roaming guidance classifies PPS as roaming-unavailable.
 
-- `stc-sawa-sa-2026` — **HOLD**. Current STC material conflicts internally on prepaid validity (180 days in current mobile terms vs 360 days on another still-live recharge page), and non-citizen ID expiry/final departure can trigger suspension/cancellation. QwenPaw/Kimi task `task-b8c31337863b` independently supported HOLD.
-- `claro-pre-ar-2026` — **ADMIT-BACKSTAGE**. Final packet uses current first-party Claro evidence: recharge validity 180 days plus a 60-day active grace period after credit expiry; passport tourist-SIM and foreigner prepaid-eSIM paths exist; the lowest visible recharge tier is ARS2000 but is not treated as a contractual minimum; prepaid roaming exists while destination-specific OTP reliability remains unverified. QwenPaw/QA task `task-4f112e9f94f5` was reconciled rather than accepted verbatim: its reported 60-day inactivity interpretation must not override the current first-party 180+60 contract model.
-- `skt-prepaid-kr-2026` — **HOLD**. Official PPS mechanics are KRW5000 = 30 days outgoing / 40 days incoming / 120 days number retention; passport onboarding exists, but recharge continuation is constrained after permitted stay expiry. Final coordinator recheck corrected the roaming field: current T roaming guidance classifies PPS as roaming-unavailable.
+Released state: **107 routes / 63 markets / 104 brands / 83 networks / 360 sources / 96 comparison overlaps / 39 legacy-only / 3 indexable**. `npm run phone:data:check` and the full frontend build passed; the build still emits only the existing 3 route detail pages. PR #318 squash-merged as `04b116c6de2c09eb614a0fbf1990b355c73d7400`; Eval Gate #975, CI #191 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `claro-pre-ar-2026` route 404.
 
-**Exact next-session task:** fetch/checkout `phone/db-c6-stc-claro-skt-20260930` at or after `720ddb7`; run packet/schema/source sanity checks; apply the three packets through `scripts/apply-phone-review-packet.mjs`; add/update DB-C6 migration coverage as required; run `npm run phone:data:check` plus the normal frontend/build/publication-boundary checks; then push one consolidated production-affecting head, open/review PR, require Eval Gate + CI + real Vercel Preview, merge only if green, production-verify hub/VOXI 200 and a DB-C6 non-indexable route 404, and update canonical facts. No public/indexability change.
+The previously completed DB-C6 delegated lanes remain the accepted worker evidence (`task-b8c31337863b` and `task-4f112e9f94f5`, both reconciled by the coordinator). One extra final Kimi recheck attempt failed because the current agent runtime had no active model configured; no output was accepted and this did not bypass coordinator QC.
 
-Stop only if validation exposes a real source/schema conflict, provider quota blocks the release, or a protected authorization boundary appears. Do **not** redo all three route audits from scratch and do not start DB-C7 before DB-C6 is closed.
+## NEXT — Backend database coverage DB-C7
+
+Bounded batch: `ifmobile-jp-2026`, `rakuten-mobile-jp-2026`, `linemo-jp-2026`. Reverify current lifecycle, minimum keep cost, foreign-user/KYC/acquisition constraints, overseas SMS/OTP utility and route identity before admission. `sakura-mobile-voice-2026` remains excluded because it is the known same-product legacy-ID blocker for existing canonical `sakura-japan-voice-data`; do not create a duplicate just to raise overlap. Use real delegated-agent work where available, but treat all raw output as `RESEARCH_CANDIDATE` until independently reconciled. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -74,7 +76,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 42 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 39 legacy-only routes without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not duplicate same-product aliases;
 - do not redesign backend/schema merely for neatness;
