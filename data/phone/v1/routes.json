@@ -208,6 +208,27 @@
     ]
   },
   {
+    "id": "bakcell-cin-az-2026",
+    "marketId": "az",
+    "networkId": "bakcell-az",
+    "brandId": "bakcell-cin",
+    "displayName": "Bakcell CIN 1 Azerbaijan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://bakcell.com/en/tariffs-archive",
+    "sourceIds": [
+      "bakcell-active-period-20261001",
+      "bakcell-cin1-archive-20261001",
+      "bakcell-current-tariffs-20261001",
+      "bakcell-lifecycle-media-20261001",
+      "bakcell-roaming-support-20261001"
+    ]
+  },
+  {
     "id": "beeline-kz-simka-v-seyfe-2026",
     "marketId": "kz",
     "networkId": "beeline-kz",
@@ -954,6 +975,26 @@
     ]
   },
   {
+    "id": "lguplus-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "lguplus-kr",
+    "brandId": "lguplus-prepaid-kr",
+    "displayName": "LG U+ Prepaid Korea (legacy candidate)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+    "sourceIds": [
+      "korea-prepaid-lifecycle-community-20261001",
+      "lguplus-tourist-sim-20261001",
+      "uplus-umobile-prepaid-faq-20261001",
+      "uplus-umobile-prepaid-plan-20261001"
+    ]
+  },
+  {
     "id": "linemo-jp-2026",
     "marketId": "jp",
     "networkId": "softbank-jp",
@@ -1163,6 +1204,27 @@
     "sourceIds": [
       "mtn-ng-kmn-20260929",
       "mtn-ng-prepaid-terms-20260929"
+    ]
+  },
+  {
+    "id": "mts-by-2026",
+    "marketId": "by",
+    "networkId": "mts-by",
+    "brandId": "mts-by-prepaid",
+    "displayName": "MTS Belarus prepaid / guest",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.mts.by/services/mobile/tariffs/for_guest/",
+    "sourceIds": [
+      "mts-by-guest-tariff-20261001",
+      "mts-by-id-docs-20261001",
+      "mts-by-inactivity-community-20261001",
+      "mts-by-number-preservation-20261001",
+      "mts-by-number-recovery-20261001"
     ]
   },
   {

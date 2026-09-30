@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c9",
+  "reviewNotes": "HOLD. The legacy route label conflates two different current products: LG U+ directly documents a short-stay Korea SIM/eSIM for visitors, while U+ UMobile documents a separate LG U+ network MVNO prepaid product for Korea-resident users. Current evidence does not establish a direct LG U+ long-term prepaid route matching the legacy record, and the U+ UMobile prepaid table shows roaming unavailable. Preserve as identity-mismatch/negative knowledge only.",
+  "market": null,
+  "network": {
+    "id": "lguplus-kr",
+    "name": "LG U+",
+    "marketId": "kr"
+  },
+  "brand": {
+    "id": "lguplus-prepaid-kr",
+    "networkId": "lguplus-kr",
+    "name": "LG U+ Prepaid (legacy candidate)",
+    "marketId": "kr"
+  },
+  "route": {
+    "id": "lguplus-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "lguplus-kr",
+    "brandId": "lguplus-prepaid-kr",
+    "displayName": "LG U+ Prepaid Korea (legacy candidate)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+    "sourceIds": [
+      "lguplus-tourist-sim-20261001",
+      "uplus-umobile-prepaid-plan-20261001",
+      "uplus-umobile-prepaid-faq-20261001",
+      "korea-prepaid-lifecycle-community-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "lguplus-tourist-sim-20261001",
+      "url": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "uplus-umobile-prepaid-plan-20261001",
+      "url": "https://pps.uplussave.com/prepay/common/priceInfo.mpp",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "uplus-umobile-prepaid-faq-20261001",
+      "url": "https://pps.uplussave.com/prepay/faq/ppFaqList.mpp",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "korea-prepaid-lifecycle-community-20261001",
+      "url": "https://constellation-00.tistory.com/322",
+      "type": "community-tutorial",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "lguplus-tourist-sim-20261001",
+    "uplus-umobile-prepaid-plan-20261001",
+    "uplus-umobile-prepaid-faq-20261001",
+    "korea-prepaid-lifecycle-community-20261001"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-lguplus-prepaid-kr-2026-db-c9-20261001",
+      "routeId": "lguplus-prepaid-kr-2026",
+      "type": "identity-roaming-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current LG U+ first-party evidence resolves a visitor SIM with a 010 number, while a separate LG U+ network MVNO (U+ UMobile) carries the long-term prepaid product. The legacy route identity is therefore not safely attributable to one current product, and the MVNO prepaid plans list roaming as unavailable.",
+      "sourceId": "lguplus-tourist-sim-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-lguplus-prepaid-kr-2026-current-profile-20261001",
+      "routeId": "lguplus-prepaid-kr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c9-reviewed-2026-10-01",
+      "data": {
+        "id": "lguplus-prepaid-kr-2026",
+        "brandId": "lguplus-prepaid-kr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "LG U+ currently sells a visitor Data+Voice SIM with a Korean 010 number, passport verification and airport pickup. Separately, U+ UMobile (MediaLog, an LG U+ network MVNO) documents prepaid plans for domestic/resident use. Current evidence does not establish that the legacy “LG U+ prepaid” route is a single current long-term product.",
+        "landedCost": {
+          "currency": "KRW",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "KRW",
+          "state": "insufficient-evidence",
+          "action": "Do not derive a long-term keep-alive cost from the LG U+ visitor SIM or from U+ UMobile until the legacy product identity is reconciled."
+        },
+        "chinaActivation": "Direct long-term activation from mainland China is not established. The LG U+ visitor SIM is an in-Korea airport-pickup product; the separate U+ UMobile prepaid service targets domestic/resident users.",
+        "kyc": "LG U+ visitor SIM requires passport verification. U+ UMobile says its prepaid service is suitable for foreigners residing in Korea, but the exact current foreigner document path for this legacy route is not reconciled.",
+        "payment": "LG U+ visitor SIM can be purchased online; U+ UMobile prepaid plans require prepayment/recharge. Cross-border payment compatibility for a long-term line is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "LG U+ visitor SIM supports domestic incoming SMS and app reservation verification, but explicitly does not support banking/government identity verification. The separate U+ UMobile prepaid tariff table lists roaming as unavailable, so overseas OTP use is not established.",
+        "refund": "not reconciled",
+        "trend": "hold-product-identity-mismatch",
+        "guideEligible": false,
+        "holdReason": "The current evidence splits the legacy label across a short-stay LG U+ visitor product and a separate U+ UMobile MVNO prepaid product. Long-term product identity and overseas SMS utility are not established; U+ UMobile prepaid also lists roaming as unavailable.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+        "tariffSummary": "LG U+ visitor Data+Voice SIM starts at KRW6,500 for 1 day. U+ UMobile prepaid plans are separate products and start at KRW24,200 for a 30-day prepaid basic plan; do not merge these into one route.",
+        "sourceIds": [
+          "lguplus-tourist-sim-20261001",
+          "uplus-umobile-prepaid-plan-20261001",
+          "uplus-umobile-prepaid-faq-20261001",
+          "korea-prepaid-lifecycle-community-20261001"
+        ],
+        "guideSteps": [
+          "Keep the legacy route backstage until the exact current operator/product identity is resolved.",
+          "Do not treat the U+ UMobile MVNO prepaid plan as identical to an LG U+ MNO prepaid product.",
+          "Do not market this route for overseas OTP while roaming remains unavailable/unproven."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

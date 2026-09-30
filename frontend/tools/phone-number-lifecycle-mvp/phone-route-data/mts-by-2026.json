@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "mts-by-2026",
+    "marketId": "by",
+    "networkId": "mts-by",
+    "brandId": "mts-by-prepaid",
+    "displayName": "MTS Belarus prepaid / guest",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.mts.by/services/mobile/tariffs/for_guest/",
+    "sourceIds": [
+      "mts-by-guest-tariff-20261001",
+      "mts-by-id-docs-20261001",
+      "mts-by-inactivity-community-20261001",
+      "mts-by-number-preservation-20261001",
+      "mts-by-number-recovery-20261001"
+    ]
+  },
+  "market": {
+    "id": "by",
+    "name": "Belarus",
+    "countryCode": "BY"
+  },
+  "network": {
+    "id": "mts-by",
+    "name": "MTS Belarus",
+    "marketId": "by"
+  },
+  "brand": {
+    "id": "mts-by-prepaid",
+    "networkId": "mts-by",
+    "name": "MTS Belarus",
+    "marketId": "by"
+  },
+  "metrics": {
+    "routeId": "mts-by-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "BYN",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "BYN",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "mts-by-guest-tariff-20261001",
+      "url": "https://www.mts.by/services/mobile/tariffs/for_guest/gostevoi/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mts-by-id-docs-20261001",
+      "url": "https://www.mts.by/help/obsluzhivanie/stat-abonentom-mts/dokumenty-udostoveryayushchie-lichnost-dlya-zaklyucheniya-dogovora/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mts-by-inactivity-community-20261001",
+      "url": "https://forum.onliner.by/viewtopic.php?p=86066830",
+      "type": "community-thread",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mts-by-number-preservation-20261001",
+      "url": "https://www.mts.by/help/upravlenie-nomerom/sohranenie-nomera/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mts-by-number-recovery-20261001",
+      "url": "https://www.mts.by/help/upravlenie-nomerom/blokirovka/kak-vernut-izyatyy-nomer-telefona-usluga-predostavlenie-nomera-prezhnemu-vladeltsu/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-mts-by-2026-db-c9-20261001",
+      "routeId": "mts-by-2026",
+      "type": "lifecycle-roaming-resolution",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "MTS Belarus withdraws a number after 60 days without top-up following forced blocking, or after 180 days with a positive balance but no operations; however the current guest tariff explicitly disables roaming and SMS roaming for foreign citizens/stateless persons.",
+      "sourceId": "mts-by-number-recovery-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-mts-by-2026-current-profile-20261001",
+      "routeId": "mts-by-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c9-reviewed-2026-10-01",
+      "data": {
+        "id": "mts-by-2026",
+        "brandId": "mts-by-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "MTS Belarus maintains guest tariffs for visitors. Current identity-document guidance requires the contract owner to present an accepted identity document; a current MTS guest promotion directs eligible foreign visitors to connect in an MTS retail salon.",
+        "landedCost": {
+          "currency": "BYN",
+          "observedActionCost": 39.9,
+          "state": "current-provider-guest-tariff"
+        },
+        "keep": {
+          "currency": "BYN",
+          "state": "current-provider-lifecycle",
+          "action": "MTS states that a number is withdrawn if, after forced blocking, the account is not topped up within 60 days, or if a positive-balance number has no operations for 180 days. The exact minimum qualifying operation cost is not documented on the reviewed page."
+        },
+        "chinaActivation": "New foreign-visitor acquisition is an in-Belarus retail path, not a mainland-China remote activation path.",
+        "kyc": "MTS requires the contract holder or authorized representative to present an accepted identity document. Guest plans are intended for foreign visitors; remote SIM ON activation reviewed here is not established as the foreigner path.",
+        "payment": "The #Гостевой tariff is BYN39.90/month and is charged daily in equal portions. Exact foreign-card/top-up support from abroad is not reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "For foreign citizens and stateless persons on the current #Гостевой tariff, MTS explicitly states that Roaming and SMS Roaming are unavailable. Therefore an overseas-held guest line is not a valid roaming SMS/OTP route.",
+        "refund": "not reconciled",
+        "trend": "hold-guest-roaming-blocked",
+        "guideEligible": false,
+        "holdReason": "The number lifecycle is now well documented, but the relevant foreign-visitor tariff explicitly disables roaming and SMS roaming. That blocks the core overseas OTP use case, while the cheapest qualifying 180-day “operation” remains unspecified.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.mts.by/services/mobile/tariffs/for_guest/",
+        "tariffSummary": "Current #Гостевой is BYN39.90/month. Number withdrawal occurs after 180 days with positive balance and no operations, or 60 days without top-up after forced blocking; guest subscribers who are foreign citizens/stateless persons cannot use roaming or SMS roaming.",
+        "sourceIds": [
+          "mts-by-guest-tariff-20261001",
+          "mts-by-number-preservation-20261001",
+          "mts-by-number-recovery-20261001",
+          "mts-by-id-docs-20261001",
+          "mts-by-inactivity-community-20261001"
+        ],
+        "guideSteps": [
+          "Treat the 180-day rule as an inactivity ceiling, not as proof of a cheap remote keep-alive action.",
+          "Do not claim overseas SMS reception for foreign guest subscribers because roaming and SMS roaming are explicitly unavailable.",
+          "Re-open only if a foreigner-eligible tariff with overseas roaming/SMS reception is documented."
+        ]
+      }
+    }
+  ]
+}

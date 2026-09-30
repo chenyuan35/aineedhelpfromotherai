@@ -30,6 +30,11 @@
     "marketId": "jp"
   },
   {
+    "id": "bakcell-az",
+    "name": "Bakcell",
+    "marketId": "az"
+  },
+  {
     "id": "beeline-kz",
     "name": "Beeline Kazakhstan",
     "marketId": "kz"
@@ -170,6 +175,11 @@
     "marketId": "ua"
   },
   {
+    "id": "lguplus-kr",
+    "name": "LG U+",
+    "marketId": "kr"
+  },
+  {
     "id": "lmt-lv",
     "name": "LMT Latvia",
     "marketId": "lv"
@@ -193,6 +203,11 @@
     "id": "mtn-ng",
     "name": "MTN Nigeria",
     "marketId": "ng"
+  },
+  {
+    "id": "mts-by",
+    "name": "MTS Belarus",
+    "marketId": "by"
   },
   {
     "id": "mts-ru",

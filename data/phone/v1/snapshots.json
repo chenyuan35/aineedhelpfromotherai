@@ -704,6 +704,58 @@
     }
   },
   {
+    "id": "snap-bakcell-cin-az-2026-current-profile-20261001",
+    "routeId": "bakcell-cin-az-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c9-reviewed-2026-10-01",
+    "data": {
+      "id": "bakcell-cin-az-2026",
+      "brandId": "bakcell-cin",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Bakcell still documents CIN 1 for existing subscribers, but the product is on the tariff-archive page while the current tariff page presents GO plans. A current new-subscription path for CIN 1 is therefore not established.",
+      "landedCost": {
+        "currency": "AZN",
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "AZN",
+        "observedActionCost": 3.99,
+        "yearCostOriginal": 47.88,
+        "yearCostCny": null,
+        "action": "For an existing CIN 1 line, paying the AZN3.99 subscription fee keeps the line open for 30 days. Bakcell also documents an AZN0.99 option that keeps the line active for 6 days from 2025-10-22; neither proves current new acquisition of CIN 1.",
+        "intervalDays": 30,
+        "state": "existing-line-provider-lifecycle"
+      },
+      "chinaActivation": "No mainland-China remote acquisition path for CIN 1 is established. Bakcell has a separate TravelSIM product for visitors, but that is not the CIN 1 route.",
+      "kyc": "Current CIN 1-specific new-customer identity requirements are not reconciled because the tariff is archived. Bakcell’s current ecosystem uses identity verification for SIM activation and provides separate visitor products.",
+      "payment": "Bakcell supports online/app balance top-up and documents top-up amounts from AZN1 to AZN250. Exact foreign-card acceptance is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Bakcell support documents roaming activation, including contacting customer service from abroad. Current incoming-SMS/OTP behavior for CIN 1 while roaming is not independently reproduced.",
+      "refund": "not reconciled",
+      "trend": "hold-archived-tariff",
+      "guideEligible": false,
+      "holdReason": "CIN 1 has clear existing-line lifecycle and low-cost extension rules, but it is now an archived tariff and the current public tariff surface is GO. New acquisition plus current overseas OTP behavior remain unresolved. The deeper 1-month/150-day/90-day closure sequence comes from a dated 2018 Bakcell statement and is not treated as current policy.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://bakcell.com/en/tariffs-archive",
+      "tariffSummary": "Existing CIN 1 lines: AZN3.99/30 days; if not renewed or topped up, the number becomes one-way blocked. From 2025-10-22, AZN0.99 can keep the line active for 6 days. CIN 1 is archived, so current new acquisition is unproven.",
+      "sourceIds": [
+        "bakcell-cin1-archive-20261001",
+        "bakcell-active-period-20261001",
+        "bakcell-current-tariffs-20261001",
+        "bakcell-roaming-support-20261001",
+        "bakcell-lifecycle-media-20261001"
+      ],
+      "guideSteps": [
+        "Use the AZN3.99/30-day rule only for existing CIN 1 lines.",
+        "Do not present CIN 1 as currently purchasable while it remains in Bakcell’s tariff archive.",
+        "Treat the 2018 closure sequence as historical corroboration only until Bakcell republishes a current full deactivation timeline."
+      ]
+    }
+  },
+  {
     "id": "snap-beeline-kz-simka-v-seyfe-2026-current-profile-20260929",
     "routeId": "beeline-kz-simka-v-seyfe-2026",
     "kind": "current-profile",
@@ -3366,6 +3418,53 @@
     }
   },
   {
+    "id": "snap-lguplus-prepaid-kr-2026-current-profile-20261001",
+    "routeId": "lguplus-prepaid-kr-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c9-reviewed-2026-10-01",
+    "data": {
+      "id": "lguplus-prepaid-kr-2026",
+      "brandId": "lguplus-prepaid-kr",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "LG U+ currently sells a visitor Data+Voice SIM with a Korean 010 number, passport verification and airport pickup. Separately, U+ UMobile (MediaLog, an LG U+ network MVNO) documents prepaid plans for domestic/resident use. Current evidence does not establish that the legacy “LG U+ prepaid” route is a single current long-term product.",
+      "landedCost": {
+        "currency": "KRW",
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "KRW",
+        "state": "insufficient-evidence",
+        "action": "Do not derive a long-term keep-alive cost from the LG U+ visitor SIM or from U+ UMobile until the legacy product identity is reconciled."
+      },
+      "chinaActivation": "Direct long-term activation from mainland China is not established. The LG U+ visitor SIM is an in-Korea airport-pickup product; the separate U+ UMobile prepaid service targets domestic/resident users.",
+      "kyc": "LG U+ visitor SIM requires passport verification. U+ UMobile says its prepaid service is suitable for foreigners residing in Korea, but the exact current foreigner document path for this legacy route is not reconciled.",
+      "payment": "LG U+ visitor SIM can be purchased online; U+ UMobile prepaid plans require prepayment/recharge. Cross-border payment compatibility for a long-term line is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "LG U+ visitor SIM supports domestic incoming SMS and app reservation verification, but explicitly does not support banking/government identity verification. The separate U+ UMobile prepaid tariff table lists roaming as unavailable, so overseas OTP use is not established.",
+      "refund": "not reconciled",
+      "trend": "hold-product-identity-mismatch",
+      "guideEligible": false,
+      "holdReason": "The current evidence splits the legacy label across a short-stay LG U+ visitor product and a separate U+ UMobile MVNO prepaid product. Long-term product identity and overseas SMS utility are not established; U+ UMobile prepaid also lists roaming as unavailable.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.lguplus.com/korea-sim/eng/pc/product/simcard?tab=data-voice",
+      "tariffSummary": "LG U+ visitor Data+Voice SIM starts at KRW6,500 for 1 day. U+ UMobile prepaid plans are separate products and start at KRW24,200 for a 30-day prepaid basic plan; do not merge these into one route.",
+      "sourceIds": [
+        "lguplus-tourist-sim-20261001",
+        "uplus-umobile-prepaid-plan-20261001",
+        "uplus-umobile-prepaid-faq-20261001",
+        "korea-prepaid-lifecycle-community-20261001"
+      ],
+      "guideSteps": [
+        "Keep the legacy route backstage until the exact current operator/product identity is resolved.",
+        "Do not treat the U+ UMobile MVNO prepaid plan as identical to an LG U+ MNO prepaid product.",
+        "Do not market this route for overseas OTP while roaming remains unavailable/unproven."
+      ]
+    }
+  },
+  {
     "id": "snap-linemo-jp-2026-current-profile-20260930",
     "routeId": "linemo-jp-2026",
     "kind": "current-profile",
@@ -4233,6 +4332,55 @@
         "Register and activate the prepaid line with the applicable identity documents.",
         "Perform the required revenue-generating event after registration.",
         "Fund sufficient airtime and subscribe to the chosen Keep My Number duration using the official *365# flow."
+      ]
+    }
+  },
+  {
+    "id": "snap-mts-by-2026-current-profile-20261001",
+    "routeId": "mts-by-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c9-reviewed-2026-10-01",
+    "data": {
+      "id": "mts-by-2026",
+      "brandId": "mts-by-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "MTS Belarus maintains guest tariffs for visitors. Current identity-document guidance requires the contract owner to present an accepted identity document; a current MTS guest promotion directs eligible foreign visitors to connect in an MTS retail salon.",
+      "landedCost": {
+        "currency": "BYN",
+        "observedActionCost": 39.9,
+        "state": "current-provider-guest-tariff"
+      },
+      "keep": {
+        "currency": "BYN",
+        "state": "current-provider-lifecycle",
+        "action": "MTS states that a number is withdrawn if, after forced blocking, the account is not topped up within 60 days, or if a positive-balance number has no operations for 180 days. The exact minimum qualifying operation cost is not documented on the reviewed page."
+      },
+      "chinaActivation": "New foreign-visitor acquisition is an in-Belarus retail path, not a mainland-China remote activation path.",
+      "kyc": "MTS requires the contract holder or authorized representative to present an accepted identity document. Guest plans are intended for foreign visitors; remote SIM ON activation reviewed here is not established as the foreigner path.",
+      "payment": "The #Гостевой tariff is BYN39.90/month and is charged daily in equal portions. Exact foreign-card/top-up support from abroad is not reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "For foreign citizens and stateless persons on the current #Гостевой tariff, MTS explicitly states that Roaming and SMS Roaming are unavailable. Therefore an overseas-held guest line is not a valid roaming SMS/OTP route.",
+      "refund": "not reconciled",
+      "trend": "hold-guest-roaming-blocked",
+      "guideEligible": false,
+      "holdReason": "The number lifecycle is now well documented, but the relevant foreign-visitor tariff explicitly disables roaming and SMS roaming. That blocks the core overseas OTP use case, while the cheapest qualifying 180-day “operation” remains unspecified.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.mts.by/services/mobile/tariffs/for_guest/",
+      "tariffSummary": "Current #Гостевой is BYN39.90/month. Number withdrawal occurs after 180 days with positive balance and no operations, or 60 days without top-up after forced blocking; guest subscribers who are foreign citizens/stateless persons cannot use roaming or SMS roaming.",
+      "sourceIds": [
+        "mts-by-guest-tariff-20261001",
+        "mts-by-number-preservation-20261001",
+        "mts-by-number-recovery-20261001",
+        "mts-by-id-docs-20261001",
+        "mts-by-inactivity-community-20261001"
+      ],
+      "guideSteps": [
+        "Treat the 180-day rule as an inactivity ceiling, not as proof of a cheap remote keep-alive action.",
+        "Do not claim overseas SMS reception for foreign guest subscribers because roaming and SMS roaming are explicitly unavailable.",
+        "Re-open only if a foreigner-eligible tariff with overseas roaming/SMS reception is documented."
       ]
     }
   },

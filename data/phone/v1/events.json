@@ -27,6 +27,15 @@
     "sourceId": "asda-support-20260929"
   },
   {
+    "id": "evt-bakcell-cin-az-2026-db-c9-20261001",
+    "routeId": "bakcell-cin-az-2026",
+    "type": "tariff-lifecycle-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "CIN 1 remains documented at AZN3.99/30 days with one-way blocking after expiry if neither the fee nor a top-up is made, plus an AZN0.99/6-day extension option, but CIN 1 now appears in Bakcell’s tariff archive rather than the current GO tariff surface.",
+    "sourceId": "bakcell-cin1-archive-20261001"
+  },
+  {
     "id": "evt-beeline-kz-sim-safe-remote-enable-friction-202609",
     "routeId": "beeline-kz-simka-v-seyfe-2026",
     "type": "service-activation-friction",
@@ -297,6 +306,15 @@
     "sourceId": "linuxdo-lebara-2745784-op"
   },
   {
+    "id": "evt-lguplus-prepaid-kr-2026-db-c9-20261001",
+    "routeId": "lguplus-prepaid-kr-2026",
+    "type": "identity-roaming-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current LG U+ first-party evidence resolves a visitor SIM with a 010 number, while a separate LG U+ network MVNO (U+ UMobile) carries the long-term prepaid product. The legacy route identity is therefore not safely attributable to one current product, and the MVNO prepaid plans list roaming as unavailable.",
+    "sourceId": "lguplus-tourist-sim-20261001"
+  },
+  {
     "id": "evt-linemo-jp-2026-db-c7-20260930",
     "routeId": "linemo-jp-2026",
     "type": "eligibility-and-roaming-resolution",
@@ -367,6 +385,15 @@
     "scope": "route",
     "outcome": "Current MTN prices are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. Current prepaid terms also establish a visitor registration path without NIN for stays under 24 months, subject to valid visa and passport/travel documentation.",
     "sourceId": "mtn-ng-kmn-20260929"
+  },
+  {
+    "id": "evt-mts-by-2026-db-c9-20261001",
+    "routeId": "mts-by-2026",
+    "type": "lifecycle-roaming-resolution",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "MTS Belarus withdraws a number after 60 days without top-up following forced blocking, or after 180 days with a positive balance but no operations; however the current guest tariff explicitly disables roaming and SMS roaming for foreign citizens/stateless persons.",
+    "sourceId": "mts-by-number-recovery-20261001"
   },
   {
     "id": "evt-mts-sokhranyayu-nomer-2026-db-c2-review-20260929",
