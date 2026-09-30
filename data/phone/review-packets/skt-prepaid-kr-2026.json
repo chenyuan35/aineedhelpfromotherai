@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-30",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c6",
+  "reviewNotes": "HOLD. Official SKT sources resolve PPS lifecycle and foreigner onboarding: KRW5000 gives 30 days outgoing, 40 days incoming and 120 days number retention; an unexpired passport can open PPS without an ARC. Passport-opened customers cannot continue recharging after their permitted stay expires without an in-person passport identity check for a limited extension. Current T roaming guidance classifies PPS as roaming-unavailable. Preserve lifecycle mechanics without presenting it as an overseas OTP route.",
+  "market": {
+    "id": "kr",
+    "name": "South Korea",
+    "countryCode": "KR"
+  },
+  "network": {
+    "id": "skt-kr",
+    "name": "SK Telecom KR",
+    "marketId": "kr"
+  },
+  "brand": {
+    "id": "skt-prepaid-kr",
+    "networkId": "skt-kr",
+    "name": "SKT Prepaid",
+    "marketId": "kr"
+  },
+  "route": {
+    "id": "skt-prepaid-kr-2026",
+    "marketId": "kr",
+    "networkId": "skt-kr",
+    "brandId": "skt-prepaid-kr",
+    "displayName": "SKT PPS Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical SIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://m.tworld.co.kr/product/callplan?prod_id=NA00004265",
+    "sourceIds": [
+      "skt-pps-lifecycle-20260930",
+      "skt-pps-foreigner-20260930",
+      "skt-pps-recharge-20260930",
+      "skt-pps-roaming-unavailable-20260930"
+    ]
+  },
+  "sources": [
+    {
+      "id": "skt-pps-lifecycle-20260930",
+      "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=1000060982",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-foreigner-20260930",
+      "url": "https://www.tworld.co.kr/poc/eng/html/EN1.2T.html",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-recharge-20260930",
+      "url": "https://m.tworld.co.kr/customer/faq/view?faq_Id=0000000348",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "skt-pps-roaming-unavailable-20260930",
+      "url": "https://m.tworld.co.kr/product/callplan?prod_id=NA00003157",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "sourceIds": [
+    "skt-pps-lifecycle-20260930",
+    "skt-pps-foreigner-20260930",
+    "skt-pps-recharge-20260930",
+    "skt-pps-roaming-unavailable-20260930"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-skt-prepaid-kr-2026-db-c6-20260930",
+      "routeId": "skt-prepaid-kr-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Current SK Telecom material establishes the PPS recharge lifecycle, passport onboarding and stay-expiry recharge constraint; current roaming guidance classifies PPS as roaming-unavailable.",
+      "sourceId": "skt-pps-lifecycle-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-skt-prepaid-kr-2026-current-profile-20260930",
+      "routeId": "skt-prepaid-kr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "skt-prepaid-kr-2026",
+        "brandId": "skt-prepaid-kr",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "SK Telecom PPS can be opened by a foreign customer using a valid passport even without an alien registration card; foreign customers are limited to one prepaid line.",
+        "landedCost": {
+          "currency": "KRW",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "KRW",
+          "observedActionCost": 5000,
+          "yearCostOriginal": 15000,
+          "yearCostCny": null,
+          "action": "A KRW5000 voice/SMS recharge gives 30 days outgoing, 40 days incoming and 120 days number retention. The number-retention floor is roughly three KRW5000 actions per 360 days; continuous incoming-SMS availability would require a materially shorter cadence than the 120-day retention window.",
+          "intervalDays": 120,
+          "state": "current-provider-lifecycle"
+        },
+        "chinaActivation": "A valid passport can open PPS, but passport-opened customers cannot keep recharging after their permitted stay expires without returning to an SKT branch/dealer for identity verification and a limited extension.",
+        "kyc": "Valid passport is accepted without an alien registration card. After stay expiry, further recharge is blocked unless the customer visits an SKT branch/dealer with the passport for identity verification; SKT documents an additional three-month extension path.",
+        "payment": "T world, stores and ARS support PPS recharge. Published card support is Korea-centric; dependable remote foreign-card recharge is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "SK Telecom current roaming guidance classifies PPS among roaming-unavailable plans. Overseas SMS/OTP reception is therefore not established for this PPS line.",
+        "refund": "not reconciled",
+        "trend": "hold-stay-expiry-and-roaming-friction",
+        "guideEligible": false,
+        "holdReason": "Passport onboarding is possible, but recharge stops after stay expiry unless identity is re-verified in person, and current SKT roaming guidance classifies PPS as roaming-unavailable; not a clean long-term nonresident OTP route.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://m.tworld.co.kr/product/callplan?prod_id=NA00004265",
+        "tariffSummary": "KRW5000 gives 30 days outgoing, 40 days incoming and 120 days number retention; passport users face a stay-expiry recharge stop and PPS is classified as roaming-unavailable.",
+        "sourceIds": [
+          "skt-pps-lifecycle-20260930",
+          "skt-pps-foreigner-20260930",
+          "skt-pps-recharge-20260930",
+          "skt-pps-roaming-unavailable-20260930"
+        ],
+        "guideSteps": [
+          "Open PPS in Korea using an accepted identity document such as a valid passport.",
+          "Distinguish the 120-day number-retention window from the shorter 40-day incoming-service window.",
+          "Do not rely on PPS for long-term overseas OTP unless stay-validity and temporary-roaming requirements are satisfied."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-09-30",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c6",
+  "reviewNotes": "ADMIT-BACKSTAGE. Claro Argentina currently documents 180-day recharge validity; its prepaid-line contract adds a 60-day active grace period after the last credit expires. Foreigners have a passport-based tourist SIM path and the new prepaid eSIM flow explicitly offers a foreigner path. Current public promotion pages expose ARS2000 as the lowest visible recharge tier, but it is an observed tier rather than a contractual minimum. Roaming for prepaid is supported, but OTP reliability by destination remains unverified.",
+  "market": {
+    "id": "ar",
+    "name": "Argentina",
+    "countryCode": "AR"
+  },
+  "network": {
+    "id": "claro-ar",
+    "name": "Claro AR",
+    "marketId": "ar"
+  },
+  "brand": {
+    "id": "claro-pre-ar",
+    "networkId": "claro-ar",
+    "name": "Claro Prepago AR",
+    "marketId": "ar"
+  },
+  "route": {
+    "id": "claro-pre-ar-2026",
+    "marketId": "ar",
+    "networkId": "claro-ar",
+    "brandId": "claro-pre-ar",
+    "displayName": "Claro Prepago Argentina",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "official-confirmed",
+    "lastVerifiedAt": "2026-09-30",
+    "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+    "sourceIds": [
+      "claro-ar-prepaid-terms-20260930",
+      "claro-ar-prepaid-contract-20260930",
+      "claro-ar-tourist-sim-20260930",
+      "claro-ar-esim-foreigner-20260930",
+      "claro-ar-recharge-20260930",
+      "claro-ar-roaming-prepaid-20260930"
+    ]
+  },
+  "sources": [
+    {
+      "id": "claro-ar-prepaid-terms-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/terminos-condiciones-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-prepaid-contract-20260930",
+      "url": "https://landing.claro.com.ar/p/legales/1581383838282-Archivo.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-tourist-sim-20260930",
+      "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-esim-foreigner-20260930",
+      "url": "https://simple.claro.com.ar/esimple/",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-recharge-20260930",
+      "url": "https://asistencia.claro.com.ar/asistencia/servicios-en-tu-celu/packs-y-recargas/como-recargo-mi-linea-prepaga",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    },
+    {
+      "id": "claro-ar-roaming-prepaid-20260930",
+      "url": "https://www.claro.com.ar/personas/roaming/terminos-condiciones-prepago",
+      "type": "provider-official",
+      "reportedAt": "2026-09-30"
+    }
+  ],
+  "sourceIds": [
+    "claro-ar-prepaid-terms-20260930",
+    "claro-ar-prepaid-contract-20260930",
+    "claro-ar-tourist-sim-20260930",
+    "claro-ar-esim-foreigner-20260930",
+    "claro-ar-recharge-20260930",
+    "claro-ar-roaming-prepaid-20260930"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-claro-pre-ar-2026-db-c6-20260930",
+      "routeId": "claro-pre-ar-2026",
+      "type": "retention-rule-resolution",
+      "reportedAt": "2026-09-30",
+      "scope": "route",
+      "outcome": "Claro terms establish 180-day recharge validity plus a 60-day active grace period; current foreigner acquisition and prepaid roaming paths are also documented.",
+      "sourceId": "claro-ar-prepaid-contract-20260930"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-claro-pre-ar-2026-current-profile-20260930",
+      "routeId": "claro-pre-ar-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-09-30",
+      "sourceDataset": "db-c6-reviewed-2026-09-30",
+      "data": {
+        "id": "claro-pre-ar-2026",
+        "brandId": "claro-pre-ar",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Claro sells a passport-activated prepaid tourist physical SIM and exposes a prepaid eSIM flow with an explicit foreigner path.",
+        "landedCost": {
+          "currency": "ARS",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "ARS",
+          "observedActionCost": 2000,
+          "yearCostOriginal": 4000,
+          "yearCostCny": null,
+          "action": "Recharge within 180 days to reset credit validity; Claro current public pages show ARS2000 as the lowest visible recharge promotion tier. The dedicated prepaid contract keeps the line active for another 60 days after the last credited balance expires.",
+          "intervalDays": 180,
+          "state": "current-provider-lifecycle-observed-tier"
+        },
+        "chinaActivation": "Acquisition is supported for foreigners, but the tourist physical SIM is local-store oriented; the eSIM flow explicitly offers a foreigner path. Remote-from-China completion is not proven.",
+        "kyc": "Passport is explicitly required for tourist SIM activation; the prepaid eSIM flow includes Soy extranjero.",
+        "payment": "Claro supports online recharge by credit/debit card or Claro Pay plus physical/payment-network channels; foreign-card acceptance from abroad is not guaranteed.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Claro documents prepaid roaming with calls/SMS/data subject to destination coverage and pricing. China-specific SMS/OTP delivery is not verified and should not be inferred.",
+        "refund": "not reconciled",
+        "trend": "admit-backstage-current-lifecycle",
+        "guideEligible": false,
+        "holdReason": "Backstage only until remote foreign-card recharge and China-specific OTP reception have independent evidence.",
+        "lastVerifiedAt": "2026-09-30",
+        "acquireUrl": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
+        "tariffSummary": "180-day recharge validity + 60-day active grace; ARS2000 is an observed current public recharge tier, not a contractual minimum.",
+        "sourceIds": [
+          "claro-ar-prepaid-terms-20260930",
+          "claro-ar-prepaid-contract-20260930",
+          "claro-ar-tourist-sim-20260930",
+          "claro-ar-esim-foreigner-20260930",
+          "claro-ar-recharge-20260930",
+          "claro-ar-roaming-prepaid-20260930"
+        ],
+        "guideSteps": [
+          "Activate via passport-based tourist SIM or the foreigner eSIM path.",
+          "Recharge before 180 days if preserving credited balance/continuity.",
+          "Treat the additional 60 days as grace, not a preferred keep cadence."
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}
