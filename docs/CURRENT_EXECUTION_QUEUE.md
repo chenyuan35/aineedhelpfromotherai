@@ -8,7 +8,7 @@ Last updated: 2026-10-01
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C10 is released with **135 comparison routes / 119 canonical normalized routes / 108 comparison↔canonical route-ID overlaps / 27 comparison route IDs still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C11 is released with **135 comparison routes / 122 canonical normalized routes / 111 comparison↔canonical route-ID overlaps / 24 comparison route IDs still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Data-eSIM is now a separate normalized backstage family.** PR #328 preserves three reviewed community snapshots as **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 6. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
@@ -106,9 +106,21 @@ Released state: **119 routes / 67 markets / 116 brands / 91 networks / 415 sourc
 
 Qwen/Kimi agents were unavailable and no parallel-agent result was required or accepted for DB-C10; coordinator review, the repository importer and automated gates were sufficient.
 
-## NEXT — Backend database coverage DB-C11
+## JUST COMPLETED — Backend database coverage DB-C11
 
-Bounded batch: `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. No public/indexability change.
+DB-C11 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `telenor-kontant-no-2026` — **HOLD**: current Telenor material establishes a 12-month recharge lifecycle plus a two-month automatic reopening window, but Telenor ID/self-service requires BankID and telenor.no recharge cards must be Norwegian, Danish, Swedish or Finnish; a current passport-only/nonresident acquisition path remains unverified.
+- `go-payasyougo-mt-2026` — **ADMIT-BACKSTAGE**: current GO policy establishes a 90-day chargeable-activity/top-up clock followed by a 275-day grace period; GO explicitly supports visitor eSIM setup before arrival, PAYG roaming is enabled on activation, and China is a listed prepaid roaming destination.
+- `maroc-telecom-prepaid-2026` — **HOLD**: current JAWAL terms establish SIM/eSIM, identity-backed activation, a 12-month validity reset by every recharge, online/app recharge and optional roaming, but ordinary long-term foreign-passport eligibility is not explicit and 2026 visitor-eSIM reports preserve QR/activation fulfillment friction.
+
+Released state: **122 routes / 70 markets / 119 brands / 94 networks / 433 sources / 111 comparison overlaps / 24 legacy-only route IDs / 3 indexable**. `npm run phone:data:check`, `npm run verify`, `git diff --check` and the full frontend build passed; the frontend remains **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**. PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c`; CI #205, Eval Gate #1015 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, all three DB-C11 standalone routes 404, sitemap 31 URLs with no DB-C11 route.
+
+Qwen/Kimi agent output was not required or accepted for DB-C11; coordinator review, current provider/community evidence, the canonical importer and automated gates were sufficient.
+
+## NEXT — Backend database coverage DB-C12
+
+Bounded batch: `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
@@ -138,7 +150,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 27 legacy-only route IDs without provenance + QC;
+- do not bulk-admit the remaining 24 legacy-only route IDs without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not force pure data eSIM into Phone-number/retention canonical routes;
 - do not auto-publish or rank Data-eSIM community evidence;
