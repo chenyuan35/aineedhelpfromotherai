@@ -606,6 +606,48 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "kolbi-esim-20261001",
+    "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/mas-servicios/servicios-adicionales/e-sim-kolbi",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-foreigner-passport-20261001",
+    "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/postpago/Tarifas-y-Requisitos/tarifas-y-requisitos/requisitos-postpago",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-prepago-chip-20261001",
+    "url": "https://www.kolbi.cr/wps/wcm/connect/kolbi%2Bes/kolbi/personas/prepago/primeras%2Bopciones/kit%2Bprepago/chips%2Bkolbi%2Bprepago",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-prepago-terms-20261001",
+    "url": "https://www.kolbi.cr/wps/wcm/connect/www.kolbi.cr/368ea5d8-6765-43b2-94a4-61ac47650971/terminos-y-condiciones-del-servicio-kolbi%20prepago.pdf?CVID=oOe7btb&MOD=AJPERES",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-prepaid-roaming-20261001",
+    "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/roaming/roaming/tarifas-y-activacion-prepago/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-prepaid-roaming-coverage-20261001",
+    "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/roaming/roaming/roamingcobertura/Page%2BComponents/navegacion-secundaria",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "kolbi-tourist-sim-20261001",
+    "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "korea-prepaid-lifecycle-community-20261001",
     "url": "https://constellation-00.tistory.com/322",
     "type": "community-tutorial",
@@ -930,6 +972,36 @@
     "reportedAt": "2026-03-18"
   },
   {
+    "id": "mtn-gh-number-for-life-20261001",
+    "url": "https://help-center.mtn.com.gh/hc/en-us/articles/4415994376466-How-to-Reserve-Your-MTN-Number-Number-for-Life",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mtn-gh-prepaid-roaming-20261001",
+    "url": "https://help-center.mtn.com.gh/hc/en-us/articles/11317435603218-What-is-MTN-Pay-As-You-Go-Prepaid-Roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mtn-gh-roaming-activation-20261001",
+    "url": "https://help-center.mtn.com.gh/hc/en-us/articles/5230413400466-How-do-I-subscribe-to-roaming-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mtn-gh-roaming-zones-20261001",
+    "url": "https://help-center.mtn.com.gh/hc/en-us/articles/18402144365586-Applicable-Destination-Zones",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "mtn-gh-sim-purchase-20261001",
+    "url": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "mtn-ng-kmn-20260929",
     "url": "https://www.mtn.ng/sim/keep-my-number/",
     "type": "provider-official",
@@ -988,6 +1060,42 @@
     "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
     "type": "community-thread",
     "reportedAt": "2024-12-18"
+  },
+  {
+    "id": "nca-gh-registration-process-20261001",
+    "url": "https://nca.org.gh/registration-process-2/",
+    "type": "official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ncell-china-roaming-20261001",
+    "url": "https://www.business.ncell.com.np/en/individual/roaming/28-day-china-combo-pack",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ncell-recharge-validity-20261001",
+    "url": "https://www.ncell.com.np/en/individual/how-to-recharge",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ncell-recharge-web-20261001",
+    "url": "https://www.ncell.com.np/en/individual/recharge",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ncell-roaming-20261001",
+    "url": "https://www.ncell.com.np/en/individual/roaming/ncell-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "ncell-tourist-sim-20261001",
+    "url": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "nodeloc-voxi-102713",

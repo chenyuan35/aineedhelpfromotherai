@@ -279,6 +279,15 @@
     "sourceId": "jazz-sim-purchase-20261001"
   },
   {
+    "id": "evt-kolbi-cr-2026-db-c12-20261001",
+    "routeId": "kolbi-cr-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "kölbi terms tie 90 days without a chargeable main-balance event or recharge to definitive liquidation and number disposal; current tourist/passport acquisition and China roaming make the route usable as backstage evidence without inventing a cheapest annual cost.",
+    "sourceId": "kolbi-prepago-terms-20261001"
+  },
+  {
     "id": "evt-kt-prepaid-kr-2026-db-c8-20261001",
     "routeId": "kt-prepaid-kr-2026",
     "type": "lifecycle-roaming-resolution",
@@ -405,6 +414,15 @@
     "sourceId": "official-mobitel-number-retention-2026-09-29"
   },
   {
+    "id": "evt-mtn-gh-prepaid-2026-db-c12-20261001",
+    "routeId": "mtn-gh-prepaid-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "MTN Number For Life provides 12- or 24-month prepaid number reservation and current prepaid roaming supports SMS, but MTN-specific foreign-user registration guidance conflicts with the regulator’s foreign-prepaid path.",
+    "sourceId": "mtn-gh-number-for-life-20261001"
+  },
+  {
     "id": "evt-mtn-ng-keepmynumber-2026-db-c4b-review-20260929",
     "routeId": "mtn-ng-keepmynumber-2026",
     "type": "cost-and-eligibility-correction",
@@ -430,6 +448,15 @@
     "scope": "route",
     "outcome": "MTS support updated in 2026 confirms the Сохраняю номер service exists for eligible no-monthly-fee tariffs and that most lines face termination after roughly six months without qualifying top-up or spend. The product-price page remains geo-fragile, so tariff eligibility should stay constrained.",
     "sourceId": "mts-long-inactivity-support-2026-09-29"
+  },
+  {
+    "id": "evt-ncell-np-2026-db-c12-20261001",
+    "routeId": "ncell-np-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Ncell now documents both the visitor acquisition path and the long-duration prepaid recharge-validity ladder; China roaming is current, while application-specific OTP behavior remains unverified.",
+    "sourceId": "ncell-recharge-validity-20261001"
   },
   {
     "id": "evt-o2cz-credit-vs-sim-validity-distinction-20260929",

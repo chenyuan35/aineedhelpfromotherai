@@ -276,6 +276,12 @@
     "marketId": "in"
   },
   {
+    "id": "kolbi-prepaid",
+    "networkId": "kolbi-cr",
+    "name": "kölbi Prepago",
+    "marketId": "cr"
+  },
+  {
     "id": "kpn-prepaid",
     "marketId": "nl",
     "networkId": "kpn-nl",
@@ -372,6 +378,12 @@
     "marketId": "es"
   },
   {
+    "id": "mtn-gh-prepaid",
+    "networkId": "mtn-gh",
+    "name": "MTN GH Prepaid",
+    "marketId": "gh"
+  },
+  {
     "id": "mtn-ng-prepaid",
     "networkId": "mtn-ng",
     "name": "MTN Nigeria Prepaid",
@@ -388,6 +400,12 @@
     "networkId": "mts-ru",
     "name": "MTS Prepaid",
     "marketId": "ru"
+  },
+  {
+    "id": "ncell-prepaid",
+    "networkId": "ncell-np",
+    "name": "Ncell Prepaid",
+    "marketId": "np"
   },
   {
     "id": "o2-cz-prepaid",

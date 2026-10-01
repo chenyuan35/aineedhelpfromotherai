@@ -170,6 +170,11 @@
     "marketId": "in"
   },
   {
+    "id": "kolbi-cr",
+    "name": "kölbi Costa Rica",
+    "marketId": "cr"
+  },
+  {
     "id": "kpn-nl",
     "name": "KPN",
     "marketId": "nl"
@@ -215,6 +220,11 @@
     "marketId": "es"
   },
   {
+    "id": "mtn-gh",
+    "name": "MTN Ghana",
+    "marketId": "gh"
+  },
+  {
     "id": "mtn-ng",
     "name": "MTN Nigeria",
     "marketId": "ng"
@@ -233,6 +243,11 @@
     "id": "multi-us",
     "name": "US Mobile multi-network",
     "marketId": "us"
+  },
+  {
+    "id": "ncell-np",
+    "name": "Ncell Nepal",
+    "marketId": "np"
   },
   {
     "id": "o2-cz",

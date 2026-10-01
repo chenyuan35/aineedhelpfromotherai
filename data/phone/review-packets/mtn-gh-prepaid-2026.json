@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c12",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. MTN now has an unusually clear low-cost Number For Life retention product (GHS 15/12 months, GHS 25/24 months) and prepaid roaming supports SMS with China in the destination list. However, MTN’s July 2026 SIM-purchase help says Ghana Card is required while the NCA registration process documents Passport/ECOWAS/Non-Citizen Ghana Card for new foreign prepaid registration. Keep the route normalized but HOLD until the operator-specific nonresident purchase/biometric path is reconciled.",
+  "market": {
+    "id": "gh",
+    "name": "Ghana",
+    "countryCode": "GH"
+  },
+  "network": {
+    "id": "mtn-gh",
+    "name": "MTN Ghana",
+    "marketId": "gh"
+  },
+  "brand": {
+    "id": "mtn-gh-prepaid",
+    "networkId": "mtn-gh",
+    "name": "MTN GH Prepaid",
+    "marketId": "gh"
+  },
+  "route": {
+    "id": "mtn-gh-prepaid-2026",
+    "marketId": "gh",
+    "networkId": "mtn-gh",
+    "brandId": "mtn-gh-prepaid",
+    "displayName": "MTN Ghana Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+    "sourceIds": [
+      "mtn-gh-number-for-life-20261001",
+      "mtn-gh-sim-purchase-20261001",
+      "mtn-gh-prepaid-roaming-20261001",
+      "mtn-gh-roaming-activation-20261001",
+      "mtn-gh-roaming-zones-20261001",
+      "nca-gh-registration-process-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "mtn-gh-number-for-life-20261001",
+      "url": "https://help-center.mtn.com.gh/hc/en-us/articles/4415994376466-How-to-Reserve-Your-MTN-Number-Number-for-Life",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mtn-gh-sim-purchase-20261001",
+      "url": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mtn-gh-prepaid-roaming-20261001",
+      "url": "https://help-center.mtn.com.gh/hc/en-us/articles/11317435603218-What-is-MTN-Pay-As-You-Go-Prepaid-Roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mtn-gh-roaming-activation-20261001",
+      "url": "https://help-center.mtn.com.gh/hc/en-us/articles/5230413400466-How-do-I-subscribe-to-roaming-service",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "mtn-gh-roaming-zones-20261001",
+      "url": "https://help-center.mtn.com.gh/hc/en-us/articles/18402144365586-Applicable-Destination-Zones",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "nca-gh-registration-process-20261001",
+      "url": "https://nca.org.gh/registration-process-2/",
+      "type": "official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "mtn-gh-number-for-life-20261001",
+    "mtn-gh-sim-purchase-20261001",
+    "mtn-gh-prepaid-roaming-20261001",
+    "mtn-gh-roaming-activation-20261001",
+    "mtn-gh-roaming-zones-20261001",
+    "nca-gh-registration-process-20261001"
+  ],
+  "events": [
+    {
+      "id": "evt-mtn-gh-prepaid-2026-db-c12-20261001",
+      "routeId": "mtn-gh-prepaid-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "MTN Number For Life provides 12- or 24-month prepaid number reservation and current prepaid roaming supports SMS, but MTN-specific foreign-user registration guidance conflicts with the regulator’s foreign-prepaid path.",
+      "sourceId": "mtn-gh-number-for-life-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-mtn-gh-prepaid-2026-current-profile-20261001",
+      "routeId": "mtn-gh-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c12-reviewed-2026-10-01",
+      "data": {
+        "id": "mtn-gh-prepaid-2026",
+        "brandId": "mtn-gh-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "MTN lists a GHS 10 SIM sold through its Ghana outlets and its July 2026 help article says Ghana Card is required. Ghana NCA registration material separately documents new foreign prepaid registration using Passport/ECOWAS Card/Non-Citizen Ghana Card, so the provider-specific nonresident flow is not treated as fully reconciled.",
+        "landedCost": {
+          "currency": "GHS",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-sim-price"
+        },
+        "keep": {
+          "currency": "GHS",
+          "observedActionCost": 15,
+          "yearCostOriginal": 15,
+          "yearCostCny": null,
+          "action": "Use MTN Number For Life: GHS 15 reserves a prepaid number for 12 months or GHS 25 for 24 months, preventing deactivation/reassignment during the selected reservation period.",
+          "intervalDays": 365,
+          "state": "current-provider-number-for-life"
+        },
+        "chinaActivation": "Acquisition is Ghana-based. The current MTN retail help article says Ghana Card, while current NCA material documents a passport/ECOWAS/non-citizen-card path for new foreign prepaid registration; do not claim a friction-free tourist path until MTN-specific execution is reconciled.",
+        "kyc": "Current MTN help says Ghana Card is required for SIM purchase and biometric registration. Current NCA registration guidance separately allows Passport/ECOWAS Card/Non-Citizen Ghana Card for new foreign prepaid registration. This provider-vs-regulator operational conflict keeps the route on HOLD.",
+        "payment": "Number For Life is activated by USSD and charged from the line. myMTN/top-up channels exist; foreign-card acceptance is unverified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "MTN prepaid roaming supports making/receiving calls and sending/receiving SMS in supported countries; China appears in MTN roaming destination zones. Application-specific OTP delivery remains unverified.",
+        "refund": "not reconciled",
+        "trend": "strong-retention-product-foreign-registration-conflict",
+        "guideEligible": false,
+        "holdReason": "Current MTN purchase guidance requires Ghana Card while NCA guidance documents a foreign prepaid passport/ECOWAS path; the MTN-specific nonresident onboarding flow is not reconciled.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+        "tariffSummary": "GHS 15/12 months or GHS 25/24 months Number For Life; prepaid roaming includes SMS and China coverage, but foreign-user acquisition remains operationally conflicted.",
+        "sourceIds": [
+          "mtn-gh-number-for-life-20261001",
+          "mtn-gh-sim-purchase-20261001",
+          "mtn-gh-prepaid-roaming-20261001",
+          "mtn-gh-roaming-activation-20261001",
+          "mtn-gh-roaming-zones-20261001",
+          "nca-gh-registration-process-20261001"
+        ],
+        "guideSteps": [
+          "Buy/register through an approved MTN Ghana outlet; do not assume passport-only onboarding from the generic MTN help page.",
+          "After activation, reserve the number through *550# → Number For Life if the route is otherwise eligible for your identity status.",
+          "Treat China roaming support as network capability, not proof of a specific OTP sender."
+        ]
+      }
+    }
+  ]
+}
