@@ -1,0 +1,1429 @@
+{
+  "schemaVersion": 1,
+  "signalId": "nodeseek-935678-esim-price-3-0-2026-10-01",
+  "capturedAt": "2026-10-01",
+  "source": {
+    "type": "independent-community-post",
+    "url": "https://www.nodeseek.com/post-935678-1",
+    "author": "chuzai",
+    "title": "ESIM 漫游流量卡价格 3.0",
+    "sourceTimestampText": "11 days ago at 2026-10-01 capture; exact timestamp not normalized"
+  },
+  "scope": "travel-data-esim-community-price-intelligence",
+  "publicationState": "backstage-candidate-only",
+  "purpose": "Price/validity/IP/throttle/mechanic snapshot, not a recommendation ranking.",
+  "evidencePolicy": {
+    "communityEvidenceIsFirstClass": true,
+    "officialAbsenceIsNotRejection": true,
+    "officialRole": "May corroborate or reveal explicit conflicts; must not erase hidden/community/third-party mechanics solely because they are absent from public provider pages.",
+    "normalizationRule": "Preserve author uncertainty, memory, hearsay, third-party channels and negative tests as separate claim strengths. Do not convert them into provider guarantees."
+  },
+  "recordCount": 46,
+  "records": [
+    {
+      "ordinal": 1,
+      "providerLabel": "Hotlink",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described-current-observation",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 25,
+          "dataUnit": "GB",
+          "price": 75,
+          "currency": "MYR"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 40,
+          "dataUnit": "GB",
+          "price": 100,
+          "currency": "MYR"
+        }
+      ],
+      "ipEgressHint": "Malaysia? (author uncertainty)",
+      "mechanics": [
+        "mainland-China roaming",
+        "currently difficult/unavailable to open"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "providerLabel": "Global",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 25,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "recent promotion"
+      ],
+      "notes": [
+        "IP not tested by author"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "providerLabel": "Trip",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-memory",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": "2.x",
+          "currency": "SGD",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 30,
+          "currency": "SGD",
+          "validityDays": 30
+        }
+      ],
+      "mechanics": [
+        "author recalls Thailand-number option"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "providerLabel": "Airvoy",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 21,
+          "currency": "CNY"
+        }
+      ],
+      "ipEgressHint": "Europe? (not tested)",
+      "mechanics": [
+        "task-reward data available",
+        "task volume high"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "providerLabel": "GG",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-negative-access-test",
+      "offers": [],
+      "notes": [
+        "price page unavailable at source capture; no price admitted in 3.0 snapshot"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "providerLabel": "TF",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described-plus-memory",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 300,
+          "dataUnit": "MB",
+          "price": 1,
+          "currency": "CNY"
+        }
+      ],
+      "ipEgressHint": "selectable: Hong Kong / Singapore / Poland and others (author memory)",
+      "mechanics": [
+        "selectable egress/IP",
+        "payment top-up fee charged when adding balance; subsequent purchases can spend existing balance"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "providerLabel": "BNESIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 49.99,
+          "currency": "EUR"
+        }
+      ],
+      "validityNote": "non-expiring",
+      "mechanics": [
+        "non-expiring data"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "providerLabel": "eSIM.io",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "free-trial",
+          "dataAmount": 500,
+          "dataUnit": "MB",
+          "price": 0,
+          "currency": "USD"
+        },
+        {
+          "kind": "promotion",
+          "dataAmount": 5,
+          "dataUnit": "GB",
+          "price": "1.x",
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.9,
+          "currency": "USD"
+        },
+        {
+          "kind": "payg",
+          "dataAmount": 1,
+          "dataUnit": "MB",
+          "price": 0.0004,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "pay-as-you-go billing",
+        "community arithmetic roughly 4.5 USD/GB"
+      ],
+      "notes": [
+        "100GB/unlimited wording in prose is ambiguous and retained only as source note"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "providerLabel": "Nomad",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 25,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 35,
+          "currency": "USD"
+        },
+        {
+          "kind": "new-user-free",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 0,
+          "currency": "USD",
+          "validityDays": 3
+        }
+      ],
+      "mechanics": [
+        "new-user free data"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "providerLabel": "Airalo",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 5.5,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 62.5,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "providerLabel": "Get",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 11,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 39.99,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "providerLabel": "Plus",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3,
+          "currency": "USD"
+        },
+        {
+          "kind": "promotion",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 39.99,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 125,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "ordinal": 13,
+      "providerLabel": "Yesim",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "MB",
+          "price": 0.41,
+          "currency": "GBP",
+          "validityDays": 1
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.52,
+          "currency": "GBP"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 34.2,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "ordinal": 14,
+      "providerLabel": "MobiMatter",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 2,
+          "dataUnit": "GB",
+          "price": 25,
+          "currency": "CNY",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 141,
+          "currency": "CNY",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 211.5,
+          "currency": "CNY",
+          "validityDays": 30
+        },
+        {
+          "kind": "unlimited",
+          "price": 211.5,
+          "currency": "CNY",
+          "validityDays": 10
+        }
+      ]
+    },
+    {
+      "ordinal": 15,
+      "providerLabel": "CMUK",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 10.8,
+          "currency": "GBP"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 150,
+          "dataUnit": "GB",
+          "price": 16.8,
+          "currency": "GBP"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 15,
+          "dataUnit": "GB",
+          "price": 10,
+          "currency": "GBP",
+          "validityDays": 20
+        },
+        {
+          "kind": "long-validity-unspecified-data",
+          "price": 19,
+          "currency": "GBP",
+          "validityDays": 90,
+          "note": "source prose gives 90 days / GBP19 but does not clearly bind a data amount in the captured wording"
+        }
+      ],
+      "validityNote": "also mentions a 90-day option without an exact data/price pairing in this snapshot",
+      "mechanics": [
+        "roaming data"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "providerLabel": "CTE",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "mixed-author-observation-and-hearsay",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 15,
+          "dataUnit": "GB",
+          "price": 9,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 22,
+          "dataUnit": "GB",
+          "price": 9.9,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 11,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 11.9,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 120,
+          "dataUnit": "GB",
+          "price": 14.9,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "long-validity",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 22,
+          "currency": "GBP",
+          "validityDays": 180
+        },
+        {
+          "kind": "long-validity",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 28,
+          "currency": "GBP",
+          "validityDays": 180
+        },
+        {
+          "kind": "china-trip",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 18,
+          "currency": "GBP",
+          "validityDays": 90
+        }
+      ],
+      "mechanics": [
+        "some plans rumored throttled; author not tested"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "providerLabel": "Redtea / 红茶",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described-plus-memory",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.4,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 28.1,
+          "currency": "USD",
+          "validityDays": 180
+        },
+        {
+          "kind": "global",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "validityDays": 365
+        }
+      ],
+      "mechanics": [
+        "long-validity global plan",
+        "current 365-day global plan described as no longer including calling"
+      ],
+      "aliases": [
+        "红茶"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "providerLabel": "Eskimo",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.9,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 249.9,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 200,
+          "dataUnit": "GB",
+          "price": 489.9,
+          "currency": "USD"
+        }
+      ],
+      "validityNote": "non-expiring",
+      "ipEgressHint": "Singapore",
+      "mechanics": [
+        "non-expiring data",
+        "Asia-Pacific variant may be cheaper"
+      ],
+      "aliases": [
+        "eskim"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "providerLabel": "Firsty",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 0.5,
+          "dataUnit": "GB",
+          "price": 1.61,
+          "currency": "GBP"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.35,
+          "currency": "GBP"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 42.06,
+          "currency": "GBP"
+        },
+        {
+          "kind": "unlimited",
+          "price": 2.48,
+          "currency": "GBP",
+          "validityDays": 1
+        }
+      ],
+      "mechanics": [
+        "day-based unlimited",
+        "1-day tier described as ~5GB high-speed"
+      ],
+      "notes": [
+        "60-day unlimited described around GBP103"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "providerLabel": "Yoho",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 2.48,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "unlimited-with-high-speed-cap",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 35.08,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "mechanics": [
+        "free VPN",
+        "50GB high-speed within unlimited-style package"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "providerLabel": "CMLink",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "mixed-author-described-official-and-third-party",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 50.31,
+          "currency": "CNY",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 140.51,
+          "currency": "CNY",
+          "validityDays": 30
+        },
+        {
+          "kind": "daily-unlimited-high-speed-cap",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 8.78,
+          "currency": "CNY",
+          "validityDays": 1
+        },
+        {
+          "kind": "third-party-channel",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 7.58,
+          "currency": "USD",
+          "validityDays": 365
+        }
+      ],
+      "mechanics": [
+        "third-party route around one year",
+        "after 10GB high speed, unlimited low speed claimed",
+        "invite discount and first-use promo described"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "providerLabel": "StellarSecurity",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": "1.x",
+          "currency": "EUR"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 13.4,
+          "currency": "EUR",
+          "validityDays": 60
+        }
+      ],
+      "mechanics": [
+        "large-volume low-price signal"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "providerLabel": "Jetpac",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "hearsay-plus-memory",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 2,
+          "dataUnit": "GB",
+          "price": 8,
+          "currency": "USD"
+        }
+      ],
+      "ipEgressHint": "Hong Kong? (author memory)",
+      "mechanics": [
+        "author heard periodic/yearly free-data allotments"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "providerLabel": "Roamless",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "payg",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.45,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 5,
+          "dataUnit": "GB",
+          "price": 15.45,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 39.95,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 48.95,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "pay-as-you-go"
+      ]
+    },
+    {
+      "ordinal": 25,
+      "providerLabel": "aloSIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 5,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 22,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "unlimited",
+          "price": 27,
+          "currency": "USD",
+          "validityDays": 7
+        }
+      ]
+    },
+    {
+      "ordinal": 26,
+      "providerLabel": "SimOptions",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 9,
+          "currency": "CNY"
+        },
+        {
+          "kind": "fixed",
+          "price": 34,
+          "currency": "CNY",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 439,
+          "currency": "CNY"
+        }
+      ],
+      "validityNote": "some 1GB offer described as up to one year; exact mapping requires follow-up"
+    },
+    {
+      "ordinal": 27,
+      "providerLabel": "Rakuten",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-memory",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 4,
+          "dataUnit": "GB",
+          "price": 43.5,
+          "currency": "CNY",
+          "validityDays": 365
+        }
+      ],
+      "ipEgressHint": "Japan",
+      "mechanics": [
+        "post-cap speed ~128Kbps",
+        "author remembers SMS reception; unconfirmed"
+      ]
+    },
+    {
+      "ordinal": 28,
+      "providerLabel": "meSIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 23.2,
+          "currency": "USD",
+          "validityDays": 365
+        }
+      ],
+      "ipEgressHint": "United States",
+      "mechanics": [
+        "long validity"
+      ],
+      "aliases": [
+        "mesim"
+      ]
+    },
+    {
+      "ordinal": 29,
+      "providerLabel": "Orange",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 22.16,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "ipEgressHint": "France",
+      "notes": [
+        "community label may refer to reseller/product rather than Orange carrier directly; keep identity unresolved"
+      ]
+    },
+    {
+      "ordinal": 30,
+      "providerLabel": "True",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 6,
+          "dataUnit": "GB",
+          "price": 13.5,
+          "currency": "USD",
+          "validityDays": 60
+        }
+      ],
+      "ipEgressHint": "Thailand",
+      "notes": [
+        "community label unresolved; do not auto-map to TrueMove route"
+      ]
+    },
+    {
+      "ordinal": 31,
+      "providerLabel": "CMLink 52-country",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "promotion",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 12.5,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 21,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "10GB high-speed then 512Kbps unlimited low-speed on described package",
+        "52-country roaming footprint"
+      ],
+      "notes": [
+        "country list retained in source thread; not duplicated here to avoid turning a price snapshot into a coverage guarantee"
+      ],
+      "coverageClaimMarkets": [
+        "中国大陆",
+        "澳门",
+        "日本",
+        "韩国",
+        "新加坡",
+        "美国",
+        "马来西亚",
+        "印度尼西亚",
+        "土耳其",
+        "丹麦",
+        "比利时",
+        "以色列",
+        "加拿大",
+        "立陶宛",
+        "冰岛",
+        "匈牙利",
+        "西班牙",
+        "克罗地亚",
+        "希腊",
+        "孟加拉",
+        "拉脱维亚",
+        "法国",
+        "波兰",
+        "直布罗陀",
+        "芬兰",
+        "保加利亚",
+        "柬埔寨",
+        "英国",
+        "挪威",
+        "泰国",
+        "新西兰",
+        "马耳他",
+        "捷克",
+        "梵蒂冈",
+        "荷兰",
+        "斯洛伐克",
+        "斯洛文尼亚",
+        "菲律宾",
+        "越南",
+        "奥地利",
+        "爱沙尼亚",
+        "爱尔兰",
+        "瑞士",
+        "瑞典",
+        "意大利",
+        "葡萄牙",
+        "老挝",
+        "德国",
+        "澳洲",
+        "卢森堡",
+        "塞浦路斯",
+        "罗马尼亚"
+      ],
+      "coverageClaimStrength": "author-transcribed-plan-list; versioned community claim, not a permanent provider guarantee"
+    },
+    {
+      "ordinal": 32,
+      "providerLabel": "Roamify",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 6,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 35,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 55,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "some package claimed to include mainland-China voice and SMS"
+      ]
+    },
+    {
+      "ordinal": 33,
+      "providerLabel": "Sparks",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-interpretation-of-ambiguous-price",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4.6,
+          "currency": "USD",
+          "validityDays": 60
+        }
+      ],
+      "mechanics": [
+        "source display reportedly showed 460 with missing decimal; price ambiguous"
+      ]
+    },
+    {
+      "ordinal": 34,
+      "providerLabel": "eSIMNow",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 500,
+          "dataUnit": "MB",
+          "price": 8.38,
+          "currency": "CNY"
+        }
+      ],
+      "mechanics": [
+        "China three-network support claimed",
+        "after high-speed quota, unlimited 2G-speed data claimed"
+      ]
+    },
+    {
+      "ordinal": 35,
+      "providerLabel": "CloudOn",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.49,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 39.99,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ]
+    },
+    {
+      "ordinal": 36,
+      "providerLabel": "Maya",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "unlimited-global",
+          "price": 9.9,
+          "currency": "USD",
+          "validityDays": 3
+        },
+        {
+          "kind": "unlimited-global",
+          "price": 27.99,
+          "currency": "USD",
+          "validityDays": 14
+        },
+        {
+          "kind": "unlimited-global",
+          "price": 49.99,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "mechanics": [
+        "global unlimited"
+      ]
+    },
+    {
+      "ordinal": 37,
+      "providerLabel": "Holafly",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "mixed-memory-and-author-observation",
+      "offers": [
+        {
+          "kind": "unlimited",
+          "price": 31,
+          "currency": "CNY",
+          "validityDays": 1
+        },
+        {
+          "kind": "monthly-unlimited",
+          "price": 504,
+          "currency": "CNY",
+          "validityDays": 30
+        }
+      ],
+      "ipEgressHint": "Singapore? datacenter/broadcast IP (author memory/opinion)",
+      "mechanics": [
+        "monthly emergency data ~1GB claimed",
+        "higher tier described with hotspot/global connection/verification-code capability"
+      ]
+    },
+    {
+      "ordinal": 38,
+      "providerLabel": "Saily",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-firsthand-plus-plan-description",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.49,
+          "currency": "USD"
+        },
+        {
+          "kind": "monthly-high-speed-then-throttled",
+          "dataAmount": 30,
+          "dataUnit": "GB",
+          "price": 38.58,
+          "currency": "GBP",
+          "validityDays": 30
+        },
+        {
+          "kind": "youth-plan",
+          "dataAmount": 60,
+          "dataUnit": "GB",
+          "price": 25.5,
+          "currency": "GBP"
+        }
+      ],
+      "ipEgressHint": "selectable multiple regions (author-described purchase experience)",
+      "mechanics": [
+        "free VPN",
+        "selectable egress region",
+        "30GB monthly then ~1Mbps unlimited claimed",
+        "some package described as number/voice capable"
+      ],
+      "notes": [
+        "Source prose appears to describe a daily 5120MB high-speed allowance before ~1Mbps, while the later table summarizes a 30GB monthly high-speed allowance; preserve as an internal source conflict for follow-up rather than choosing one silently."
+      ]
+    },
+    {
+      "ordinal": 39,
+      "providerLabel": "GTesim",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described-provider-page",
+      "offers": [
+        {
+          "kind": "unlimited",
+          "price": 2.59,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 34.29,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "mechanics": [
+        "provider presentation described as 500MB-50GB high-speed then 128Kbps on some unlimited products",
+        "50GB fixed package described as hard cutoff rather than throttled"
+      ]
+    },
+    {
+      "ordinal": 40,
+      "providerLabel": "3HK",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 45,
+          "dataUnit": "GB",
+          "price": 268,
+          "currency": "HKD",
+          "validityDays": 365
+        }
+      ],
+      "mechanics": [
+        "long-validity data"
+      ]
+    },
+    {
+      "ordinal": 41,
+      "providerLabel": "Panda / 熊猫",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-firsthand-plus-memory",
+      "offers": [
+        {
+          "kind": "activation",
+          "price": 1,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "ipEgressHint": "United States",
+      "mechanics": [
+        "education-email requirement for cheap activation",
+        "5GB or 10GB China roaming remembered; amount uncertain",
+        "one-month lifecycle described",
+        "author advises removing payment method"
+      ],
+      "aliases": [
+        "熊猫"
+      ]
+    },
+    {
+      "ordinal": 42,
+      "providerLabel": "Quibity eSIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described-not-tested",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4.9,
+          "currency": "EUR",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 30.6,
+          "currency": "EUR"
+        }
+      ],
+      "mechanics": [
+        "operator selection",
+        "hotspot toggle/default enabled",
+        "optional voice in some markets",
+        "China operator described as China Mobile",
+        "China number option appears unavailable"
+      ]
+    },
+    {
+      "ordinal": 43,
+      "providerLabel": "GoMoWorld",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "provider-claim-plus-author-negative-test",
+      "offers": [
+        {
+          "kind": "claimed-free",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 0
+        }
+      ],
+      "mechanics": [
+        "provider claims free 1GB",
+        "author app failed/offline in tested network environment"
+      ]
+    },
+    {
+      "ordinal": 44,
+      "providerLabel": "Textr eSIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.7,
+          "currency": "USD"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 8.78,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "some-region calling capability mentioned; price unknown"
+      ]
+    },
+    {
+      "ordinal": 45,
+      "providerLabel": "Kolet",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.99,
+          "currency": "EUR"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 36.99,
+          "currency": "EUR"
+        }
+      ],
+      "mechanics": [
+        "data sharing/gifting to friends/family claimed"
+      ]
+    },
+    {
+      "ordinal": 46,
+      "providerLabel": "UPeSIM",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "author-described",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.99,
+          "currency": "EUR"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 5,
+          "dataUnit": "GB",
+          "price": 9.99,
+          "currency": "EUR"
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 19.99,
+          "currency": "EUR"
+        }
+      ],
+      "mechanics": [
+        "free VPN"
+      ]
+    }
+  ],
+  "projectCrossReferences": {
+    "priorInboxSignalId": "nodeseek-954805-free-esim-roundup-2026-09-29",
+    "exactProviderLabelOverlaps": [
+      "Airvoy",
+      "eSIM.io",
+      "Nomad",
+      "Eskimo",
+      "Firsty",
+      "Jetpac",
+      "Roamless"
+    ],
+    "doNotAutoMerge": [
+      "Trip",
+      "CMLink",
+      "Rakuten",
+      "Orange",
+      "True",
+      "3HK"
+    ],
+    "reason": "A community price product can be a reseller/roaming bundle using an underlying carrier brand. Matching words are not sufficient to merge it with a canonical phone-number route."
+  },
+  "threadFollowups": [
+    {
+      "relatedOrdinal": 27,
+      "providerLabel": "Rakuten",
+      "threadReply": "A reader asked where to buy; the original poster replied that the third-party agent is meSIM.",
+      "identityImplication": "Treat this as a meSIM/reseller Rakuten-network data product candidate, not as direct Rakuten Mobile phone service unless separately proven."
+    },
+    {
+      "relatedOrdinal": 6,
+      "providerLabel": "TF",
+      "threadReply": "A reader asked for the full TF website/domain; no resolving author reply is captured in this snapshot.",
+      "identityImplication": "Keep TF identity unresolved; do not guess a domain from name similarity."
+    }
+  ]
+}

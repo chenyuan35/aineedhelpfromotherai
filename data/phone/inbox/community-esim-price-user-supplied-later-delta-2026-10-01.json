@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "signalId": "user-supplied-esim-price-later-delta-2026-10-01",
+  "capturedAt": "2026-10-01",
+  "source": {
+    "type": "user-supplied-community-transcription",
+    "url": null,
+    "authorContext": "same community roundup context; stable public source URL for this later delta not identified in-session"
+  },
+  "extendsSignalId": "nodeseek-935678-esim-price-3-0-2026-10-01",
+  "publicationState": "backstage-candidate-only",
+  "evidencePolicy": {
+    "communityEvidenceIsFirstClass": true,
+    "officialAbsenceIsNotRejection": true,
+    "officialRole": "May corroborate or reveal explicit conflicts; must not erase hidden/community/third-party mechanics solely because they are absent from public provider pages.",
+    "normalizationRule": "Preserve author uncertainty, memory, hearsay, third-party channels and negative tests as separate claim strengths. Do not convert them into provider guarantees."
+  },
+  "purpose": "Versioned delta only. Preserve later price/mechanic changes and entries 47-59 without overwriting the public 3.0 snapshot.",
+  "updates": [
+    {
+      "ordinal": 5,
+      "providerLabel": "GG",
+      "change": "later snapshot supplies prices after 3.0 had page unavailable",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 15,
+          "dataUnit": "GB",
+          "price": 21.99,
+          "currency": "EUR",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 25,
+          "dataUnit": "GB",
+          "price": 33.33,
+          "currency": "EUR",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 25,
+          "dataUnit": "GB",
+          "price": 55.55,
+          "currency": "EUR",
+          "validityDays": 366
+        }
+      ]
+    },
+    {
+      "ordinal": 22,
+      "providerLabel": "StellarSecurity",
+      "change": "later snapshot says 100GB/60-day price had risen above EUR20 from earlier EUR13.4",
+      "priorPrice": 13.4,
+      "priorCurrency": "EUR",
+      "newPriceNote": "above EUR20; exact new amount not supplied"
+    }
+  ],
+  "newRecords": [
+    {
+      "ordinal": 47,
+      "providerLabel": "USIMS",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4,
+          "currency": "USD",
+          "validityDays": 20
+        },
+        {
+          "kind": "unlimited",
+          "price": 45,
+          "currency": "USD",
+          "validityDays": 5
+        }
+      ],
+      "mechanics": [
+        "unlimited tier throttles to 128Kbps after cap",
+        "France IP",
+        "historic free -> USD1 -> USD3 activation price evolution mentioned",
+        "LSP modification reportedly errors"
+      ]
+    },
+    {
+      "ordinal": 48,
+      "providerLabel": "Airnova",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 44,
+          "currency": "USD",
+          "validityDays": 60
+        },
+        {
+          "kind": "unlimited",
+          "price": 6,
+          "currency": "USD",
+          "validityDays": 1
+        }
+      ],
+      "ipEgressHint": "Hong Kong"
+    },
+    {
+      "ordinal": 49,
+      "providerLabel": "AirZlink",
+      "offers": [
+        {
+          "kind": "daily-high-speed-cap",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 19.9,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 22.9,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ],
+      "mechanics": [
+        "7-day package gives 3GB high speed per day then ~1Mbps"
+      ]
+    },
+    {
+      "ordinal": 50,
+      "providerLabel": "CodSIM",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "MB",
+          "price": 0.6,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.02,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4.5,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 5.49,
+          "currency": "USD",
+          "validityDays": 5
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 5.75,
+          "currency": "USD",
+          "validityDays": 90
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 7.49,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 500,
+          "dataUnit": "MB",
+          "price": 1,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 500,
+          "dataUnit": "MB",
+          "price": 1.04,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 500,
+          "dataUnit": "MB",
+          "price": 3.2,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "unlimited-after-cap",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.6,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "unlimited-after-cap",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.84,
+          "currency": "USD",
+          "validityDays": 1
+        }
+      ],
+      "ipEgressHint": "selectable Hong Kong / Singapore / UK-Norway / Macau / UK-Poland / UK",
+      "mechanics": [
+        "selectable IP",
+        "unlimited variants throttle to ~1Mbps after 1GB"
+      ]
+    },
+    {
+      "ordinal": 51,
+      "providerLabel": "eSIMCC",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 1.6,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 100,
+          "dataUnit": "GB",
+          "price": 49.9,
+          "currency": "USD",
+          "validityDays": 365
+        },
+        {
+          "kind": "unlimited-after-cap",
+          "dataAmount": 2,
+          "dataUnit": "GB",
+          "price": 2.99,
+          "currency": "USD",
+          "validityDays": 1
+        }
+      ],
+      "mechanics": [
+        "community coupon mentioned",
+        "unlimited tier throttles to 128Kbps after 2GB high speed"
+      ]
+    },
+    {
+      "ordinal": 52,
+      "providerLabel": "Wise",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 6,
+          "currency": "CAD",
+          "validityDays": 3
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 51.3,
+          "currency": "CAD",
+          "validityDays": 30
+        }
+      ]
+    },
+    {
+      "ordinal": 53,
+      "providerLabel": "UNISIM",
+      "offers": [
+        {
+          "kind": "China Telecom",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.72,
+          "currency": "USD"
+        },
+        {
+          "kind": "China Unicom",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 7.02,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "China carrier-specific pricing"
+      ]
+    },
+    {
+      "ordinal": 54,
+      "providerLabel": "eSIM Card",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.06,
+          "currency": "USD",
+          "validityDays": 3
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.66,
+          "currency": "USD",
+          "validityDays": 3
+        },
+        {
+          "kind": "unlimited",
+          "price": 2.68,
+          "currency": "USD",
+          "validityDays": 1
+        }
+      ],
+      "mechanics": [
+        "unlimited tier throttles to ~512Kbps after cap"
+      ]
+    },
+    {
+      "ordinal": 55,
+      "providerLabel": "Esimatic",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 4.99,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "unlimited-1.25mbps",
+          "price": 5.29,
+          "currency": "USD",
+          "validityDays": 1
+        },
+        {
+          "kind": "unlimited-2mbps",
+          "price": 9.99,
+          "currency": "USD",
+          "validityDays": 1
+        }
+      ],
+      "mechanics": [
+        "speed-capped unlimited tiers at 1.25Mbps / 2Mbps"
+      ]
+    },
+    {
+      "ordinal": 56,
+      "providerLabel": "eSIMX",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 2.8,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 18.8,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ]
+    },
+    {
+      "ordinal": 57,
+      "providerLabel": "VeloeSIM",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 1,
+          "dataUnit": "GB",
+          "price": 3.99,
+          "currency": "USD",
+          "validityDays": 7
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 3,
+          "dataUnit": "GB",
+          "price": 7.99,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "fixed",
+          "dataAmount": 5,
+          "dataUnit": "GB",
+          "price": 9.99,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "promotion",
+          "dataAmount": 10,
+          "dataUnit": "GB",
+          "price": 12.99,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "promotion",
+          "dataAmount": 20,
+          "dataUnit": "GB",
+          "price": 18.99,
+          "currency": "USD",
+          "validityDays": 30
+        },
+        {
+          "kind": "promotion",
+          "dataAmount": 50,
+          "dataUnit": "GB",
+          "price": 34.99,
+          "currency": "USD",
+          "validityDays": 30
+        }
+      ]
+    },
+    {
+      "ordinal": 58,
+      "providerLabel": "eSIM.net",
+      "offers": [
+        {
+          "kind": "fixed",
+          "dataAmount": 5,
+          "dataUnit": "GB",
+          "price": 9,
+          "currency": "USD",
+          "validityDays": 10
+        },
+        {
+          "kind": "prepaid-credit",
+          "price": 20,
+          "currency": "USD"
+        }
+      ],
+      "mechanics": [
+        "global prepaid data credit",
+        "same eSIM reusable across trips",
+        "Rover app cheap voice calls mentioned",
+        "Europe rate from EUR0.60/GB mentioned"
+      ]
+    },
+    {
+      "ordinal": 59,
+      "providerLabel": "World eSIM",
+      "offers": [],
+      "notes": [
+        "later snapshot explicitly says not displayed yet; preserve placeholder only"
+      ]
+    }
+  ],
+  "projectCrossReferences": {
+    "priorInboxSignalId": "nodeseek-954805-free-esim-roundup-2026-09-29",
+    "exactProviderLabelOverlaps": [
+      "USIMS"
+    ]
+  }
+}
