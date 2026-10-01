@@ -1,0 +1,62 @@
+name: DB-C11 Apply
+
+on:
+  push:
+    branches:
+      - data/phone-db-c11-20261001
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: data/phone-db-c11-20261001
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate review packets
+        run: |
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/telenor-kontant-no-2026.json --check
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/go-payasyougo-mt-2026.json --check
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/maroc-telecom-prepaid-2026.json --check
+
+      - name: Apply DB-C11 packets
+        run: |
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/telenor-kontant-no-2026.json --apply
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/go-payasyougo-mt-2026.json --apply
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/maroc-telecom-prepaid-2026.json --apply
+          node scripts/build-phone-database.mjs
+
+      - name: Verify Phone data and repository
+        run: |
+          npm run phone:data:check
+          npm run verify
+          node frontend/bin/build.mjs
+          git diff --check
+
+      - name: Commit generated DB-C11 data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/phone/v1 frontend/tools/phone-number-lifecycle-mvp
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "data(phone): normalize DB-C11 routes"
+            git push origin HEAD:data/phone-db-c11-20261001
+          fi
