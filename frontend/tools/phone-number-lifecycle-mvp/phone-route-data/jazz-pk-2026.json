@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "jazz-pk-2026",
+    "marketId": "pk",
+    "networkId": "jazz-pk",
+    "brandId": "jazz-prepaid",
+    "displayName": "Jazz Prepaid Pakistan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://jazz.com.pk/faqs/1000",
+    "sourceIds": [
+      "jazz-prepaid-roaming-20261001",
+      "jazz-roaming-community-20260911",
+      "jazz-roaming-community-20260914",
+      "jazz-sim-lagao-20261001",
+      "jazz-sim-purchase-20261001"
+    ]
+  },
+  "market": {
+    "id": "pk",
+    "name": "Pakistan",
+    "countryCode": "PK"
+  },
+  "network": {
+    "id": "jazz-pk",
+    "name": "Jazz Pakistan",
+    "marketId": "pk"
+  },
+  "brand": {
+    "id": "jazz-prepaid",
+    "networkId": "jazz-pk",
+    "name": "Jazz Prepaid",
+    "marketId": "pk"
+  },
+  "metrics": {
+    "routeId": "jazz-pk-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "PKR",
+    "acquisitionCostOriginal": 350,
+    "acquisitionCostCny": null,
+    "keepCurrency": "PKR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "jazz-prepaid-roaming-20261001",
+      "url": "https://jazz.com.pk/prepaid/international-roaming-tariff",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "jazz-roaming-community-20260911",
+      "url": "https://www.reddit.com/r/Overseas_Pakistani/comments/1wdkn6b/roaming_in_us/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-11"
+    },
+    {
+      "id": "jazz-roaming-community-20260914",
+      "url": "https://www.reddit.com/r/pakistan/comments/1wfuh5f/jazz_roaming_not_working_in_us/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-14"
+    },
+    {
+      "id": "jazz-sim-lagao-20261001",
+      "url": "https://jazz.com.pk/prepaid/sim-lagao-offer",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "jazz-sim-purchase-20261001",
+      "url": "https://jazz.com.pk/faqs/1000",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-jazz-pk-2026-db-c10-20261001",
+      "routeId": "jazz-pk-2026",
+      "type": "acquisition-roaming-lifecycle-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current Jazz material resolves foreigner purchase requirements and prepaid roaming/incoming-SMS pricing, but SIM Lagao is only a 60-day reactivation promotion and does not establish final number-lifecycle or minimum keep-alive economics.",
+      "sourceId": "jazz-sim-purchase-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-jazz-pk-2026-current-profile-20261001",
+      "routeId": "jazz-pk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c10-reviewed-2026-10-01",
+      "data": {
+        "id": "jazz-pk-2026",
+        "brandId": "jazz-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Jazz Prepaid is currently sold from Jazz TouchPoints. A new prepaid SIM starts at PKR350. Foreigners must appear in person with an original passport and valid visa and complete fingerprint biometric verification.",
+        "landedCost": {
+          "currency": "PKR",
+          "providerOrCommunityPrice": 350,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 350,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-starting-sim-price"
+        },
+        "keep": {
+          "currency": "PKR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current final number-deactivation/recycling timing and a minimum keep-alive transaction were not located. SIM Lagao costs PKR0.01 and lasts 60 days for lines unused for the prior 30 days, but it is a reactivation promotion and must not be converted into a number-retention rule.",
+          "intervalDays": null,
+          "state": "insufficient-current-lifecycle-evidence"
+        },
+        "chinaActivation": "Initial acquisition requires in-person biometric verification in Pakistan. Overseas-first activation is not established.",
+        "kyc": "Foreigner acquisition requires physical presence, original passport, valid visa and fingerprint biometric verification at a Jazz TouchPoint.",
+        "payment": "Local Jazz recharge/app channels exist; foreign-card remote top-up acceptance was not independently established in this review.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Jazz prepaid international roaming lists incoming SMS as free and includes China in the published roaming tariff. Since 2023 roaming is enabled for newly activated prepaid sales, but multiple 2026 community reports describe intermittent network-registration/OTP failures abroad, especially in the US.",
+        "refund": "not reconciled",
+        "trend": "hold-lifecycle-unknown-roaming-variable",
+        "guideEligible": false,
+        "holdReason": "Current Jazz acquisition and roaming evidence is strong enough for backstage knowledge, but no current authoritative prepaid number-deactivation/recycling or minimum keep-alive rule was found. Do not treat the PKR0.01 SIM Lagao reactivation offer as the lifecycle rule; recent community reports also show unstable roaming/OTP operation.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://jazz.com.pk/faqs/1000",
+        "tariffSummary": "New prepaid SIM from PKR350; foreigners need passport + valid visa + fingerprint biometric verification. Incoming roaming SMS is officially free; final prepaid number-retention economics remain unresolved.",
+        "sourceIds": [
+          "jazz-sim-purchase-20261001",
+          "jazz-prepaid-roaming-20261001",
+          "jazz-sim-lagao-20261001",
+          "jazz-roaming-community-20260911",
+          "jazz-roaming-community-20260914"
+        ],
+        "guideSteps": [
+          "Acquire in Pakistan with passport, valid visa and biometric verification.",
+          "Enable/check prepaid roaming before relying on overseas OTP reception.",
+          "Do not use SIM Lagao pricing as a keep-number cost until Jazz publishes a current lifecycle/deactivation rule."
+        ]
+      }
+    }
+  ]
+}

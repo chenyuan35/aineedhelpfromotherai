@@ -90,6 +90,11 @@
     "countryCode": "EE"
   },
   {
+    "id": "eg",
+    "name": "Egypt",
+    "countryCode": "EG"
+  },
+  {
     "id": "es",
     "name": "Spain",
     "countryCode": "ES"
@@ -238,6 +243,11 @@
     "id": "ph",
     "name": "Philippines",
     "countryCode": "PH"
+  },
+  {
+    "id": "pk",
+    "name": "Pakistan",
+    "countryCode": "PK"
   },
   {
     "id": "pl",

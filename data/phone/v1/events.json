@@ -261,6 +261,15 @@
     "sourceId": "iijmio-address-kyc-20261001"
   },
   {
+    "id": "evt-jazz-pk-2026-db-c10-20261001",
+    "routeId": "jazz-pk-2026",
+    "type": "acquisition-roaming-lifecycle-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current Jazz material resolves foreigner purchase requirements and prepaid roaming/incoming-SMS pricing, but SIM Lagao is only a 60-day reactivation promotion and does not establish final number-lifecycle or minimum keep-alive economics.",
+    "sourceId": "jazz-sim-purchase-20261001"
+  },
+  {
     "id": "evt-kt-prepaid-kr-2026-db-c8-20261001",
     "routeId": "kt-prepaid-kr-2026",
     "type": "lifecycle-roaming-resolution",
@@ -504,6 +513,15 @@
     "sourceId": "smart-simreg-foreigners-20260929"
   },
   {
+    "id": "evt-starhub-prepaid-sg-2026-db-c10-20261001",
+    "routeId": "starhub-prepaid-sg-2026",
+    "type": "lifecycle-identity-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current StarHub Prepaid is a monthly-plan product with a 120-day post-expiry grace period. Passport-only prepaid registration is limited to 30 days unless re-registered using an eligible Singapore-issued identity/work pass; the legacy cheap-USSD/top-up retention model is withdrawn.",
+    "sourceId": "starhub-prepaid-terms-20261001"
+  },
+  {
     "id": "evt-stc-sawa-sa-2026-db-c6-20260930",
     "routeId": "stc-sawa-sa-2026",
     "type": "retention-rule-resolution",
@@ -583,6 +601,15 @@
     "scope": "route",
     "outcome": "Legacy 83-day inactivity and 100-day recycle summary is not the current first-party rule. Current Vodacom prepaid terms say suspension/disconnection may occur after service has not been used for more than 110 days. Exact final recycle timing remains unresolved.",
     "sourceId": "official-vodacom-prepaid-terms-2026-09-29"
+  },
+  {
+    "id": "evt-vodafone-eg-2026-db-c10-20261001",
+    "routeId": "vodafone-eg-2026",
+    "type": "product-boundary-lifecycle-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Vodafone Egypt prepaid foreigner KYC and prepaid roaming are current, but Park Your Line is explicitly a postpaid service and Tourist Line is a separate visitor product; neither establishes generic prepaid long-term number retention.",
+    "sourceId": "vodafone-eg-other-services-20261001"
   },
   {
     "id": "evt-vodafone-tuti-brand-migration-one-20260929",

@@ -2895,6 +2895,65 @@
     }
   },
   {
+    "id": "snap-jazz-pk-2026-current-profile-20261001",
+    "routeId": "jazz-pk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c10-reviewed-2026-10-01",
+    "data": {
+      "id": "jazz-pk-2026",
+      "brandId": "jazz-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Jazz Prepaid is currently sold from Jazz TouchPoints. A new prepaid SIM starts at PKR350. Foreigners must appear in person with an original passport and valid visa and complete fingerprint biometric verification.",
+      "landedCost": {
+        "currency": "PKR",
+        "providerOrCommunityPrice": 350,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 350,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-starting-sim-price"
+      },
+      "keep": {
+        "currency": "PKR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current final number-deactivation/recycling timing and a minimum keep-alive transaction were not located. SIM Lagao costs PKR0.01 and lasts 60 days for lines unused for the prior 30 days, but it is a reactivation promotion and must not be converted into a number-retention rule.",
+        "intervalDays": null,
+        "state": "insufficient-current-lifecycle-evidence"
+      },
+      "chinaActivation": "Initial acquisition requires in-person biometric verification in Pakistan. Overseas-first activation is not established.",
+      "kyc": "Foreigner acquisition requires physical presence, original passport, valid visa and fingerprint biometric verification at a Jazz TouchPoint.",
+      "payment": "Local Jazz recharge/app channels exist; foreign-card remote top-up acceptance was not independently established in this review.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Jazz prepaid international roaming lists incoming SMS as free and includes China in the published roaming tariff. Since 2023 roaming is enabled for newly activated prepaid sales, but multiple 2026 community reports describe intermittent network-registration/OTP failures abroad, especially in the US.",
+      "refund": "not reconciled",
+      "trend": "hold-lifecycle-unknown-roaming-variable",
+      "guideEligible": false,
+      "holdReason": "Current Jazz acquisition and roaming evidence is strong enough for backstage knowledge, but no current authoritative prepaid number-deactivation/recycling or minimum keep-alive rule was found. Do not treat the PKR0.01 SIM Lagao reactivation offer as the lifecycle rule; recent community reports also show unstable roaming/OTP operation.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://jazz.com.pk/faqs/1000",
+      "tariffSummary": "New prepaid SIM from PKR350; foreigners need passport + valid visa + fingerprint biometric verification. Incoming roaming SMS is officially free; final prepaid number-retention economics remain unresolved.",
+      "sourceIds": [
+        "jazz-sim-purchase-20261001",
+        "jazz-prepaid-roaming-20261001",
+        "jazz-sim-lagao-20261001",
+        "jazz-roaming-community-20260911",
+        "jazz-roaming-community-20260914"
+      ],
+      "guideSteps": [
+        "Acquire in Pakistan with passport, valid visa and biometric verification.",
+        "Enable/check prepaid roaming before relying on overseas OTP reception.",
+        "Do not use SIM Lagao pricing as a keep-number cost until Jazz publishes a current lifecycle/deactivation rule."
+      ]
+    }
+  },
+  {
     "id": "snap-jio-prepaid-90d-trai-2026-current-profile-20260929",
     "routeId": "jio-prepaid-90d-trai-2026",
     "kind": "current-profile",
@@ -5859,6 +5918,65 @@
     }
   },
   {
+    "id": "snap-starhub-prepaid-sg-2026-current-profile-20261001",
+    "routeId": "starhub-prepaid-sg-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c10-reviewed-2026-10-01",
+    "data": {
+      "id": "starhub-prepaid-sg-2026",
+      "brandId": "starhub-sg",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current StarHub Prepaid starts at SGD12/month and is sold through StarHub/authorised reseller channels. A passport can register prepaid only for 30 days; continued use requires re-registration with an eligible Singapore-issued identity/work pass. StarHub also sells a separate Tourist SIM/eSIM product, which is not treated as this long-term route.",
+      "landedCost": {
+        "currency": "SGD",
+        "providerOrCommunityPrice": 12,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 12,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-min-monthly-plan"
+      },
+      "keep": {
+        "currency": "SGD",
+        "observedActionCost": 12,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current plan validity is one month. After expiry, StarHub provides a 120-day grace period during which incoming calls and SMS remain available; renew a current prepaid plan before that grace period ends. Do not convert this grace window into an unsupported exact annual keep cost.",
+        "intervalDays": 120,
+        "state": "current-provider-120-day-grace-conservative"
+      },
+      "chinaActivation": "Initial registration is Singapore-based for the ordinary Prepaid route. China is listed among current APAC roaming destinations for relevant plans, but overseas-first ordinary Prepaid activation is not established.",
+      "kyc": "Passport-only prepaid registration is valid for 30 days from registration. To continue beyond 30 days, StarHub terms require re-registration at a StarHub Shop with a valid Singapore-issued identity card/work pass. Current plan FAQ lists NRIC/ONE Pass/Employment Pass/S Pass/Work Permit/Student Pass/Dependent Pass/Long Term Visit Pass as ordinary eligibility examples.",
+      "payment": "StarHub App/online top-up accepts Visa, Mastercard and China UnionPay. The old *123# USSD self-service path no longer works after the 3G shutdown.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current prepaid plans include roaming and China is listed among supported APAC destinations. Community reports in 2026 preserve a real OTP-delay/reliability risk on the StarHub network; do not represent OTP delivery as guaranteed.",
+      "refund": "not reconciled",
+      "trend": "current-monthly-plan-passport-30d-blocker",
+      "guideEligible": false,
+      "holdReason": "Ordinary StarHub Prepaid now has a clear 1-month + 120-day grace lifecycle, but passport-only registration is limited to 30 days unless the line is re-registered with an eligible Singapore-issued identity/work pass. This blocks the typical nonresident long-term route, and 2026 community reports preserve OTP reliability uncertainty.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+      "tariffSummary": "Current Prepaid starts at SGD12/month; plan validity 1 month, then 120-day incoming-call/SMS grace. Passport-only registration is limited to 30 days unless re-registered with eligible Singapore ID/work pass.",
+      "sourceIds": [
+        "starhub-prepaid-faq-20261001",
+        "starhub-prepaid-terms-20261001",
+        "starhub-prepaid-topup-20261001",
+        "starhub-prepaid-plans-20261001",
+        "starhub-otp-community-20260412"
+      ],
+      "guideSteps": [
+        "Do not use the legacy $10/USSD validity-extension claim; current Prepaid is a monthly-plan product.",
+        "Treat the 120-day period as a grace/recovery window, not a passport-user entitlement to long-term service.",
+        "For passport-only users, require evidence of eligible Singapore re-registration before considering this a long-term route."
+      ]
+    }
+  },
+  {
     "id": "snap-stc-sawa-sa-2026-current-profile-20260930",
     "routeId": "stc-sawa-sa-2026",
     "kind": "current-profile",
@@ -7803,6 +7921,58 @@
       "guideSteps": [
         "Order the free CallYa Classic SIM/eSIM and complete identity verification.",
         "Use the conservative €5 direct online top-up path at least every 90 days; cheaper paid usage may count, but China-roaming action cost is still unverified."
+      ]
+    }
+  },
+  {
+    "id": "snap-vodafone-eg-2026-current-profile-20261001",
+    "routeId": "vodafone-eg-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c10-reviewed-2026-10-01",
+    "data": {
+      "id": "vodafone-eg-2026",
+      "brandId": "vodafone-eg-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Vodafone Egypt prepaid remains a current product. For foreign customers, Vodafone lists a valid passport plus valid residency/refugee residency, exemption or e-visa among required documents. A separate Tourist Line is sold at airport and retail stores for visitors; it is not treated as the same long-term prepaid lifecycle.",
+      "landedCost": {
+        "currency": "EGP",
+        "state": "insufficient-evidence"
+      },
+      "keep": {
+        "currency": "EGP",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "No current generic prepaid line-deactivation/recycling or minimum keep-alive rule was located. Vodafone's Park Your Line offers 1–12 months for EGP10–120, but Vodafone explicitly classifies that service as postpaid-only; it must not be used for this prepaid route.",
+        "intervalDays": null,
+        "state": "insufficient-current-prepaid-lifecycle-evidence"
+      },
+      "chinaActivation": "Initial foreigner identity verification/acquisition is Egypt-based; overseas-first activation is not established.",
+      "kyc": "Vodafone's current document page requires foreign prepaid customers to provide a valid passport plus valid residency/refugee residency, exemption or e-visa. Tourist Line is a separate visitor product.",
+      "payment": "Vodafone roaming guidance says prepaid/Control/Easy users should maintain sufficient credit and can top up with a registered credit card while roaming; exact foreign-card onboarding acceptance is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Vodafone states prepaid/Control/Easy lines can activate roaming free from day one. Current guidance confirms roaming connectivity and notification SMS, but China-specific OTP reliability was not independently reproduced.",
+      "refund": "not reconciled",
+      "trend": "hold-prepaid-lifecycle-unresolved-postpaid-park-excluded",
+      "guideEligible": false,
+      "holdReason": "Current prepaid identity and roaming rules are documented, but final prepaid number lifecycle/minimum retention cost remains unresolved. Park Your Line is postpaid-only and Tourist Line is a separate visitor product, so neither may be used to manufacture a prepaid keep-alive claim.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://web.vodafone.com.eg/en/required-documents",
+      "tariffSummary": "Foreigner prepaid KYC and day-one roaming are current; generic prepaid long-term number retention remains unresolved. Park Your Line is postpaid-only.",
+      "sourceIds": [
+        "vodafone-eg-required-docs-20261001",
+        "vodafone-eg-roaming-20261001",
+        "vodafone-eg-park-line-20261001",
+        "vodafone-eg-other-services-20261001",
+        "vodafone-eg-tourist-line-20261001"
+      ],
+      "guideSteps": [
+        "Keep Tourist Line separate from generic Vodafone Egypt prepaid.",
+        "Do not apply Park Your Line prices to prepaid; Vodafone identifies the service as postpaid-only.",
+        "Hold public recommendation until a current prepaid number-lifecycle/deactivation rule is located and operational OTP behavior is evidenced."
       ]
     }
   },
