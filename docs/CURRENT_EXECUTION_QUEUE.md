@@ -98,7 +98,7 @@ QwenPaw/Kimi corroboration task `task-f93841364ef7` failed because its model RPM
 
 ## Measurement wait
 
-Search Console remains too small for publication expansion. This does **not** block backend database coverage.
+Search Console remains too small for publication expansion. Finalized data through 2026-09-28 shows 5 Phone impressions / 0 clicks; fresh 2026-09-29..30 adds 5 non-finalized impressions / 0 clicks across the Hong Kong guide and keep-alive index. Re-read when settled Phone impressions reach 20 or finalized data reaches 2026-10-05. This does **not** block backend database coverage.
 
 ## Qwen / Kimi work lane
 

@@ -126,3 +126,32 @@ Interpretation: this is the **first observed Search Console exposure row for the
 3. Keep Google organic separate from referral/social/direct and AI referral.
 4. Do not add another Phone market/network or change the UK matrix from one impression alone unless a concrete production defect is independently verified.
 5. If Windsor.ai capacity/auth fails, classify that as a provider/access blocker and use Google's official Search Console API/export rather than alternate trial accounts.
+
+## 2026-10-01 settled + fresh Phone recheck
+
+Windsor.ai `searchconsole` was re-read on 2026-10-01. Finalized Search Console data is now available through **2026-09-28**.
+
+Site-wide finalized totals for 2026-09-16..2026-09-28 are **6 clicks / 935 impressions**. The largest page-level exposure remains on the frozen Reset family: Cursor 446 impressions / 1 click, Manus 182 / 1, Replit 110 / 0, Bolt 82 / 0, and Claude 56 / 1. These rows describe distribution only and do not reopen the frozen product direction.
+
+Phone page-level finalized rows for the same window:
+
+| Page | Clicks | Impressions | CTR | Avg position |
+|---|---:|---:|---:|---:|
+| `/tools/phone-number-survival-guide/` | 0 | 4 | 0% | 10.25 |
+| `/tools/phone-number-survival-guide/guides/hong-kong-sim-retention-guide/` | 0 | 1 | 0% | 7.0 |
+
+Query-level Phone data still exposes only `survival number` at 1 impression / 0 clicks / position 22. Search Console query rows are privacy-thresholded and are therefore not expected to sum to page/site totals.
+
+A second read with `include_fresh_data=true` returned these additional non-finalized Phone rows for 2026-09-29..2026-09-30:
+
+| Date | Page | Clicks | Impressions | Avg position |
+|---|---|---:|---:|---:|
+| 2026-09-29 | Hong Kong retention guide | 0 | 1 | 4.0 |
+| 2026-09-29 | `/keep-alive/` index | 0 | 2 | 5.0 |
+| 2026-09-30 | Hong Kong retention guide | 0 | 2 | 5.5 |
+
+Interpretation: Google is beginning to surface more than the Phone hub, but the evidence is still only **5 settled impressions / 0 clicks**, with another **5 fresh impressions / 0 clicks**. This is not enough to add route pages, expand indexability, or rewrite the Phone positioning. Keep the released public surface stable and continue backend evidence coverage.
+
+The connected GA4 reader returned no rows for the checked period, so GA4 is not used for this decision; this is a measurement-path limitation, not evidence of zero visits.
+
+Next measurement trigger: re-read when settled Phone impressions reach **20**, or when finalized Search Console data reaches **2026-10-05**, whichever happens first.
