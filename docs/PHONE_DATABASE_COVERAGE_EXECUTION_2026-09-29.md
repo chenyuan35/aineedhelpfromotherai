@@ -273,4 +273,18 @@ Release: PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c` aft
 
 Qwen/Kimi agent output was not required or accepted for this round. The reviewed packets, direct current evidence reconciliation, canonical importer, dedicated DB-C11 regression and full release gates were sufficient.
 
-DB-C12 next bounded batch: `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+## DB-C12 — completed 2026-10-01
+
+The bounded Ghana/Nepal/Costa Rica batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**.
+
+- `mtn-gh-prepaid-2026` — HOLD. Current MTN Ghana material establishes Number For Life at GHS15/12 months and GHS25/24 months, while prepaid roaming supports SMS and lists China. MTN's July 2026 purchase guidance says Ghana Card is required, while current NCA registration guidance documents Passport/ECOWAS/Non-Citizen Ghana Card for new foreign prepaid registration. Keep the route HOLD until the operator-specific nonresident purchase/biometric path is reconciled.
+- `ncell-np-2026` — ADMIT-BACKSTAGE. Current Ncell material supports tourist SIM/eSIM acquisition, recharge-validity mechanics and roaming coverage including China. Keep specific third-party OTP delivery unguaranteed and preserve the exact evidence scope.
+- `kolbi-cr-2026` — ADMIT-BACKSTAGE. Current kölbi terms tie 90 days without a chargeable main-balance event or recharge to definitive liquidation and number disposal. Current first-party material supports tourist/passport acquisition, app/web recharge, prepaid/eSIM service and China roaming. Exact cheapest remote qualifying action remains unpriced rather than converted into an invented annual cost.
+
+Post-DB-C12 state: **125 canonical routes / 73 markets / 122 brands / 98 networks / 451 sources / 114 comparison-overlap route IDs / 21 comparison route IDs still legacy-only / 3 explicit indexable routes**. All three review packets passed `apply-phone-review-packet.mjs --check`; `npm run phone:data:check`, `npm run verify`, `npm run build --prefix frontend` and `git diff --check` passed. Full Phone publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #336 merged as `7e2233a5cf08511bda501701b79655ba11716ca5`; CI #207 and Eval Gate #1019 passed. Current production verification confirms the Phone hub at HTTP 200, all three DB-C12 standalone route URLs at HTTP 404 and 31 sitemap URLs.
+
+Qwen/Kimi agent output was not required or accepted for this round. The reviewed packets, direct current evidence reconciliation, canonical importer, dedicated DB-C12 regression and full release gates were sufficient.
+
+DB-C13 next bounded batch: `telenor-kontantkort-se-2026`, `telia-dk-prepaid-2026`, `telemach-prepaid-si-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
