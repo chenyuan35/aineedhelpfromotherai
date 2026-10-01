@@ -88,15 +88,15 @@ QwenPaw/Kimi task `task-24b1c44a3cc4` returned useful research-candidate evidenc
 
 Bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. Delegated output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
 
-## PARALLEL — Community-discovered data eSIM signal intake
+## JUST COMPLETED — Data-eSIM normalized backstage layer
 
-NodeSeek `https://www.nodeseek.com/post-954805-1` is already captured on `main` as `data/phone/inbox/community-free-esim-nodeseek-954805-2026-09-29.json`, covering **8 providers / 9 offer mechanisms**: Airvoy, eSIM.io (free trial + wallet/PAYG), Nomad, Roamless, Firsty, USIMS, Eskimo and Jetpac.
+PR #328 (`f0057d6c0c067f42d5817bce7e2c17dc1cdfb3ee`) formalized the three reviewed Data-eSIM inbox signals into a separate backstage-only `data/esim/v1` normalization layer. The admitted inputs remain the 9 free mechanisms, the 46-entry NodeSeek price snapshot, and the 13-entry later delta plus its 2 explicit updates; raw inbox evidence remains immutable.
 
-The 2026-10-01 intake additionally captures NodeSeek `https://www.nodeseek.com/post-935678-1` (`ESIM 漫游流量卡价格 3.0`) as a **46-entry versioned community price/validity/IP/throttle snapshot**, plus a separate user-supplied later delta preserving **13 additional entries (47–59)** and later price changes rather than overwriting the 3.0 evidence. Records stay in `data/phone/inbox/` and are not production build inputs.
+The normalizer preserves source-label identity until reviewed resolution, append-only/versioned price history, community claim strength and provenance, third-party/reseller/referral/promotion/task/ad/wallet acquisition signals, IP/egress, FUP/throttle/unlimited mechanics, and independent data/voice/SMS/number capability states. Pure Data-eSIM evidence has `canonicalPhoneRouteId=null` by default and does not enter the Phone-number canonical route database.
 
-This lane intentionally preserves hidden/community-discovered mechanics even when provider public pages do not document them. Community, third-party, agent/reseller, promotion, long-validity, non-expiry, selectable-IP, throttled-unlimited and number/voice/SMS mechanics are first-class research evidence. Claims keep provenance strength and uncertainty; lack of an official page is not a rejection criterion. Official/provider pages may expose a conflict but must not erase the community record merely because the mechanism is not public.
+Verification: **59 source-label providers / 72 evidence records / 159 versioned offers**; `npm run phone:data:check` PASS, `npm run verify` PASS, `git diff --check` PASS, Eval Gate #995 PASS and Vercel PASS. Existing standalone CI did not trigger because its repository path filter excludes `data/**` / `scripts/**`; no no-op commit was added to force it. The **135-route comparison / 116-route Phone canonical / 3-indexable-route** public boundary remains unchanged.
 
-QwenPaw/Kimi corroboration task `task-f93841364ef7` failed because its model RPM quota was exhausted. The 2026-10-01 Kimi corroboration task `task-3b0a626440d0` also failed with a connection-level `MODEL_EXECUTION_ERROR`; QA-agent task `task-924302cba6ce` was dispatched as the fallback. Worker failure never invalidates captured community evidence and never bypasses coordinator QC.
+Qwen/Kimi were explicitly unavailable for this session and were not used. Future Data-eSIM intake stays backstage until separate evidence/value/publication gates authorize any public surface.
 
 ## Measurement wait
 
