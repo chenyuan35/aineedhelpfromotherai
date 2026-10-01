@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c10",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. Current StarHub prepaid has a clear one-month plan plus 120-day grace/termination lifecycle, but passport-only registrations are limited to 30 days and must be re-registered with a Singapore-issued identity/work pass to continue. The legacy $10 top-up/old USSD keep-alive framing is stale under the current monthly Prepaid plans. Current community reports also preserve OTP-delay/reliability uncertainty.",
+  "market": null,
+  "network": {
+    "id": "starhub-sg",
+    "name": "StarHub",
+    "marketId": "sg"
+  },
+  "brand": {
+    "id": "starhub-sg",
+    "networkId": "starhub-sg",
+    "name": "StarHub Prepaid",
+    "marketId": "sg"
+  },
+  "route": {
+    "id": "starhub-prepaid-sg-2026",
+    "marketId": "sg",
+    "networkId": "starhub-sg",
+    "brandId": "starhub-sg",
+    "displayName": "StarHub Prepaid Singapore",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+    "sourceIds": [
+      "starhub-prepaid-faq-20261001",
+      "starhub-prepaid-terms-20261001",
+      "starhub-prepaid-topup-20261001",
+      "starhub-prepaid-plans-20261001",
+      "starhub-otp-community-20260412"
+    ]
+  },
+  "sources": [
+    {
+      "id": "starhub-prepaid-faq-20261001",
+      "url": "https://www.starhub.com/personal/support/article/AVnmWLEB0l4ykV4rkdrnj6.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "starhub-prepaid-terms-20261001",
+      "url": "https://www.starhub.com/content/dam/starhub/legal-notices-and-terms/consumer/mobile-prepaid.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "starhub-prepaid-topup-20261001",
+      "url": "https://www.starhub.com/personal/how-to/how-to-top-up-prepaid-plan.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "starhub-prepaid-plans-20261001",
+      "url": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "starhub-otp-community-20260412",
+      "url": "https://www.reddit.com/r/singapore/comments/1sj69ci/avoid_starhub_for_important_needs_apparently_my/",
+      "type": "independent-community",
+      "reportedAt": "2026-04-12"
+    }
+  ],
+  "sourceIds": [
+    "starhub-prepaid-faq-20261001",
+    "starhub-prepaid-terms-20261001",
+    "starhub-prepaid-topup-20261001",
+    "starhub-prepaid-plans-20261001",
+    "starhub-otp-community-20260412"
+  ],
+  "events": [
+    {
+      "id": "evt-starhub-prepaid-sg-2026-db-c10-20261001",
+      "routeId": "starhub-prepaid-sg-2026",
+      "type": "lifecycle-identity-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current StarHub Prepaid is a monthly-plan product with a 120-day post-expiry grace period. Passport-only prepaid registration is limited to 30 days unless re-registered using an eligible Singapore-issued identity/work pass; the legacy cheap-USSD/top-up retention model is withdrawn.",
+      "sourceId": "starhub-prepaid-terms-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-starhub-prepaid-sg-2026-current-profile-20261001",
+      "routeId": "starhub-prepaid-sg-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c10-reviewed-2026-10-01",
+      "data": {
+        "id": "starhub-prepaid-sg-2026",
+        "brandId": "starhub-sg",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current StarHub Prepaid starts at SGD12/month and is sold through StarHub/authorised reseller channels. A passport can register prepaid only for 30 days; continued use requires re-registration with an eligible Singapore-issued identity/work pass. StarHub also sells a separate Tourist SIM/eSIM product, which is not treated as this long-term route.",
+        "landedCost": {
+          "currency": "SGD",
+          "providerOrCommunityPrice": 12,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 12,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-min-monthly-plan"
+        },
+        "keep": {
+          "currency": "SGD",
+          "observedActionCost": 12,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current plan validity is one month. After expiry, StarHub provides a 120-day grace period during which incoming calls and SMS remain available; renew a current prepaid plan before that grace period ends. Do not convert this grace window into an unsupported exact annual keep cost.",
+          "intervalDays": 120,
+          "state": "current-provider-120-day-grace-conservative"
+        },
+        "chinaActivation": "Initial registration is Singapore-based for the ordinary Prepaid route. China is listed among current APAC roaming destinations for relevant plans, but overseas-first ordinary Prepaid activation is not established.",
+        "kyc": "Passport-only prepaid registration is valid for 30 days from registration. To continue beyond 30 days, StarHub terms require re-registration at a StarHub Shop with a valid Singapore-issued identity card/work pass. Current plan FAQ lists NRIC/ONE Pass/Employment Pass/S Pass/Work Permit/Student Pass/Dependent Pass/Long Term Visit Pass as ordinary eligibility examples.",
+        "payment": "StarHub App/online top-up accepts Visa, Mastercard and China UnionPay. The old *123# USSD self-service path no longer works after the 3G shutdown.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current prepaid plans include roaming and China is listed among supported APAC destinations. Community reports in 2026 preserve a real OTP-delay/reliability risk on the StarHub network; do not represent OTP delivery as guaranteed.",
+        "refund": "not reconciled",
+        "trend": "current-monthly-plan-passport-30d-blocker",
+        "guideEligible": false,
+        "holdReason": "Ordinary StarHub Prepaid now has a clear 1-month + 120-day grace lifecycle, but passport-only registration is limited to 30 days unless the line is re-registered with an eligible Singapore-issued identity/work pass. This blocks the typical nonresident long-term route, and 2026 community reports preserve OTP reliability uncertainty.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+        "tariffSummary": "Current Prepaid starts at SGD12/month; plan validity 1 month, then 120-day incoming-call/SMS grace. Passport-only registration is limited to 30 days unless re-registered with eligible Singapore ID/work pass.",
+        "sourceIds": [
+          "starhub-prepaid-faq-20261001",
+          "starhub-prepaid-terms-20261001",
+          "starhub-prepaid-topup-20261001",
+          "starhub-prepaid-plans-20261001",
+          "starhub-otp-community-20260412"
+        ],
+        "guideSteps": [
+          "Do not use the legacy $10/USSD validity-extension claim; current Prepaid is a monthly-plan product.",
+          "Treat the 120-day period as a grace/recovery window, not a passport-user entitlement to long-term service.",
+          "For passport-only users, require evidence of eligible Singapore re-registration before considering this a long-term route."
+        ]
+      }
+    }
+  ]
+}

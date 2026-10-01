@@ -836,6 +836,27 @@
     ]
   },
   {
+    "id": "jazz-pk-2026",
+    "marketId": "pk",
+    "networkId": "jazz-pk",
+    "brandId": "jazz-prepaid",
+    "displayName": "Jazz Prepaid Pakistan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://jazz.com.pk/faqs/1000",
+    "sourceIds": [
+      "jazz-prepaid-roaming-20261001",
+      "jazz-roaming-community-20260911",
+      "jazz-roaming-community-20260914",
+      "jazz-sim-lagao-20261001",
+      "jazz-sim-purchase-20261001"
+    ]
+  },
+  {
     "id": "jio-prepaid-90d-trai-2026",
     "marketId": "in",
     "networkId": "jio-in",
@@ -1652,6 +1673,27 @@
     ]
   },
   {
+    "id": "starhub-prepaid-sg-2026",
+    "marketId": "sg",
+    "networkId": "starhub-sg",
+    "brandId": "starhub-sg",
+    "displayName": "StarHub Prepaid Singapore",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+    "sourceIds": [
+      "starhub-otp-community-20260412",
+      "starhub-prepaid-faq-20261001",
+      "starhub-prepaid-plans-20261001",
+      "starhub-prepaid-terms-20261001",
+      "starhub-prepaid-topup-20261001"
+    ]
+  },
+  {
     "id": "stc-sawa-sa-2026",
     "marketId": "sa",
     "networkId": "stc-sa",
@@ -2128,6 +2170,27 @@
     "sourceIds": [
       "official-callya-faq-via-prepaid-deutschland-2025-08",
       "official-vodafone-prepaid-hilfe-2026-09-26"
+    ]
+  },
+  {
+    "id": "vodafone-eg-2026",
+    "marketId": "eg",
+    "networkId": "vodafone-eg",
+    "brandId": "vodafone-eg-prepaid",
+    "displayName": "Vodafone Egypt Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://web.vodafone.com.eg/en/required-documents",
+    "sourceIds": [
+      "vodafone-eg-other-services-20261001",
+      "vodafone-eg-park-line-20261001",
+      "vodafone-eg-required-docs-20261001",
+      "vodafone-eg-roaming-20261001",
+      "vodafone-eg-tourist-line-20261001"
     ]
   },
   {

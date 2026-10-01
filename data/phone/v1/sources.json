@@ -492,6 +492,36 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "jazz-prepaid-roaming-20261001",
+    "url": "https://jazz.com.pk/prepaid/international-roaming-tariff",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "jazz-roaming-community-20260911",
+    "url": "https://www.reddit.com/r/Overseas_Pakistani/comments/1wdkn6b/roaming_in_us/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-11"
+  },
+  {
+    "id": "jazz-roaming-community-20260914",
+    "url": "https://www.reddit.com/r/pakistan/comments/1wfuh5f/jazz_roaming_not_working_in_us/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-14"
+  },
+  {
+    "id": "jazz-sim-lagao-20261001",
+    "url": "https://jazz.com.pk/prepaid/sim-lagao-offer",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "jazz-sim-purchase-20261001",
+    "url": "https://jazz.com.pk/faqs/1000",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "korea-prepaid-lifecycle-community-20261001",
     "url": "https://constellation-00.tistory.com/322",
     "type": "community-tutorial",
@@ -2202,6 +2232,36 @@
     "label": "Tello — When do autopay & plan renewal occur?"
   },
   {
+    "id": "starhub-otp-community-20260412",
+    "url": "https://www.reddit.com/r/singapore/comments/1sj69ci/avoid_starhub_for_important_needs_apparently_my/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-12"
+  },
+  {
+    "id": "starhub-prepaid-faq-20261001",
+    "url": "https://www.starhub.com/personal/support/article/AVnmWLEB0l4ykV4rkdrnj6.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "starhub-prepaid-plans-20261001",
+    "url": "https://www.starhub.com/personal/mobile/prepaid-lucky-draw.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "starhub-prepaid-terms-20261001",
+    "url": "https://www.starhub.com/content/dam/starhub/legal-notices-and-terms/consumer/mobile-prepaid.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "starhub-prepaid-topup-20261001",
+    "url": "https://www.starhub.com/personal/how-to/how-to-top-up-prepaid-plan.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "stc-general-termination-20260930",
     "url": "https://www.stc.com.sa/en/content-page/termsandconditions.html",
     "type": "provider-official",
@@ -2356,6 +2416,36 @@
     "url": "https://digishop.vnpt.vn/tin-tuc-km/tu-van/sim-vinaphone-gia-bao-nhieu",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "vodafone-eg-other-services-20261001",
+    "url": "https://web.vodafone.com.eg/en/other-services",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "vodafone-eg-park-line-20261001",
+    "url": "https://web.vodafone.com.eg/en/park-your-line",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "vodafone-eg-required-docs-20261001",
+    "url": "https://web.vodafone.com.eg/en/required-documents",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "vodafone-eg-roaming-20261001",
+    "url": "https://web.vodafone.com.eg/en/roamingmanagement",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "vodafone-eg-tourist-line-20261001",
+    "url": "https://web.vodafone.com.eg/en/tourist-line",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "vodafone-official-network-trial-2026",

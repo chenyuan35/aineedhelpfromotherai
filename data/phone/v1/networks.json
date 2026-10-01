@@ -155,6 +155,11 @@
     "marketId": "il"
   },
   {
+    "id": "jazz-pk",
+    "name": "Jazz Pakistan",
+    "marketId": "pk"
+  },
+  {
     "id": "jio-in",
     "name": "Reliance Jio",
     "marketId": "in"
@@ -320,6 +325,11 @@
     "marketId": "nz"
   },
   {
+    "id": "starhub-sg",
+    "name": "StarHub",
+    "marketId": "sg"
+  },
+  {
     "id": "stc-sa",
     "name": "STC SA",
     "marketId": "sa"
@@ -418,6 +428,11 @@
     "id": "vodafone-de",
     "name": "Vodafone DE",
     "marketId": "de"
+  },
+  {
+    "id": "vodafone-eg",
+    "name": "Vodafone Egypt",
+    "marketId": "eg"
   },
   {
     "id": "vodafone-hu",

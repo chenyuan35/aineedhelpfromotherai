@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c10",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. Vodafone Egypt currently documents foreigner prepaid KYC and free prepaid roaming activation from day one, but no current generic prepaid number-deactivation/recycling or minimum keep-alive lifecycle was located. The tempting Park Your Line service is explicitly postpaid-only and cannot be used as prepaid retention evidence. Vodafone Tourist Line is a separate visitor product and is not merged into this generic prepaid route.",
+  "market": {
+    "id": "eg",
+    "name": "Egypt",
+    "countryCode": "EG"
+  },
+  "network": {
+    "id": "vodafone-eg",
+    "name": "Vodafone Egypt",
+    "marketId": "eg"
+  },
+  "brand": {
+    "id": "vodafone-eg-prepaid",
+    "networkId": "vodafone-eg",
+    "name": "Vodafone Egypt Prepaid",
+    "marketId": "eg"
+  },
+  "route": {
+    "id": "vodafone-eg-2026",
+    "marketId": "eg",
+    "networkId": "vodafone-eg",
+    "brandId": "vodafone-eg-prepaid",
+    "displayName": "Vodafone Egypt Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://web.vodafone.com.eg/en/required-documents",
+    "sourceIds": [
+      "vodafone-eg-required-docs-20261001",
+      "vodafone-eg-roaming-20261001",
+      "vodafone-eg-park-line-20261001",
+      "vodafone-eg-other-services-20261001",
+      "vodafone-eg-tourist-line-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "vodafone-eg-required-docs-20261001",
+      "url": "https://web.vodafone.com.eg/en/required-documents",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "vodafone-eg-roaming-20261001",
+      "url": "https://web.vodafone.com.eg/en/roamingmanagement",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "vodafone-eg-park-line-20261001",
+      "url": "https://web.vodafone.com.eg/en/park-your-line",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "vodafone-eg-other-services-20261001",
+      "url": "https://web.vodafone.com.eg/en/other-services",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "vodafone-eg-tourist-line-20261001",
+      "url": "https://web.vodafone.com.eg/en/tourist-line",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "vodafone-eg-required-docs-20261001",
+    "vodafone-eg-roaming-20261001",
+    "vodafone-eg-park-line-20261001",
+    "vodafone-eg-other-services-20261001",
+    "vodafone-eg-tourist-line-20261001"
+  ],
+  "events": [
+    {
+      "id": "evt-vodafone-eg-2026-db-c10-20261001",
+      "routeId": "vodafone-eg-2026",
+      "type": "product-boundary-lifecycle-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Vodafone Egypt prepaid foreigner KYC and prepaid roaming are current, but Park Your Line is explicitly a postpaid service and Tourist Line is a separate visitor product; neither establishes generic prepaid long-term number retention.",
+      "sourceId": "vodafone-eg-other-services-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-eg-2026-current-profile-20261001",
+      "routeId": "vodafone-eg-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c10-reviewed-2026-10-01",
+      "data": {
+        "id": "vodafone-eg-2026",
+        "brandId": "vodafone-eg-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Vodafone Egypt prepaid remains a current product. For foreign customers, Vodafone lists a valid passport plus valid residency/refugee residency, exemption or e-visa among required documents. A separate Tourist Line is sold at airport and retail stores for visitors; it is not treated as the same long-term prepaid lifecycle.",
+        "landedCost": {
+          "currency": "EGP",
+          "state": "insufficient-evidence"
+        },
+        "keep": {
+          "currency": "EGP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "No current generic prepaid line-deactivation/recycling or minimum keep-alive rule was located. Vodafone's Park Your Line offers 1–12 months for EGP10–120, but Vodafone explicitly classifies that service as postpaid-only; it must not be used for this prepaid route.",
+          "intervalDays": null,
+          "state": "insufficient-current-prepaid-lifecycle-evidence"
+        },
+        "chinaActivation": "Initial foreigner identity verification/acquisition is Egypt-based; overseas-first activation is not established.",
+        "kyc": "Vodafone's current document page requires foreign prepaid customers to provide a valid passport plus valid residency/refugee residency, exemption or e-visa. Tourist Line is a separate visitor product.",
+        "payment": "Vodafone roaming guidance says prepaid/Control/Easy users should maintain sufficient credit and can top up with a registered credit card while roaming; exact foreign-card onboarding acceptance is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Vodafone states prepaid/Control/Easy lines can activate roaming free from day one. Current guidance confirms roaming connectivity and notification SMS, but China-specific OTP reliability was not independently reproduced.",
+        "refund": "not reconciled",
+        "trend": "hold-prepaid-lifecycle-unresolved-postpaid-park-excluded",
+        "guideEligible": false,
+        "holdReason": "Current prepaid identity and roaming rules are documented, but final prepaid number lifecycle/minimum retention cost remains unresolved. Park Your Line is postpaid-only and Tourist Line is a separate visitor product, so neither may be used to manufacture a prepaid keep-alive claim.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://web.vodafone.com.eg/en/required-documents",
+        "tariffSummary": "Foreigner prepaid KYC and day-one roaming are current; generic prepaid long-term number retention remains unresolved. Park Your Line is postpaid-only.",
+        "sourceIds": [
+          "vodafone-eg-required-docs-20261001",
+          "vodafone-eg-roaming-20261001",
+          "vodafone-eg-park-line-20261001",
+          "vodafone-eg-other-services-20261001",
+          "vodafone-eg-tourist-line-20261001"
+        ],
+        "guideSteps": [
+          "Keep Tourist Line separate from generic Vodafone Egypt prepaid.",
+          "Do not apply Park Your Line prices to prepaid; Vodafone identifies the service as postpaid-only.",
+          "Hold public recommendation until a current prepaid number-lifecycle/deactivation rule is located and operational OTP behavior is evidenced."
+        ]
+      }
+    }
+  ]
+}

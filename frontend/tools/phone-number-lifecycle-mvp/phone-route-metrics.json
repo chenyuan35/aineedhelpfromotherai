@@ -518,6 +518,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "jazz-pk-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PKR",
+      "acquisitionCostOriginal": 350,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PKR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "jio-prepaid-90d-trai-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -1022,6 +1034,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "starhub-prepaid-sg-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "SGD",
+      "acquisitionCostOriginal": 12,
+      "acquisitionCostCny": null,
+      "keepCurrency": "SGD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "stc-sawa-sa-2026",
       "checkedAt": "2026-09-30",
       "metricState": "current-profile",
@@ -1320,6 +1344,18 @@
       "keepYearCostOriginal": 20,
       "keepYearCostCny": 156,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "vodafone-eg-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EGP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EGP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "vodafone-tuti-hu-2026",

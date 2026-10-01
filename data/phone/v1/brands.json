@@ -258,6 +258,12 @@
     "marketId": "jp"
   },
   {
+    "id": "jazz-prepaid",
+    "networkId": "jazz-pk",
+    "name": "Jazz Prepaid",
+    "marketId": "pk"
+  },
+  {
     "id": "jio-prepaid",
     "networkId": "jio-in",
     "name": "Jio Prepaid",
@@ -498,6 +504,12 @@
     "marketId": "ca"
   },
   {
+    "id": "starhub-sg",
+    "networkId": "starhub-sg",
+    "name": "StarHub Prepaid",
+    "marketId": "sg"
+  },
+  {
     "id": "stc-sawa",
     "networkId": "stc-sa",
     "name": "STC sawa",
@@ -640,6 +652,12 @@
     "networkId": "vodafone-de",
     "name": "Vodafone CallYa",
     "marketId": "de"
+  },
+  {
+    "id": "vodafone-eg-prepaid",
+    "networkId": "vodafone-eg",
+    "name": "Vodafone Egypt Prepaid",
+    "marketId": "eg"
   },
   {
     "id": "vodafone-tuti",
