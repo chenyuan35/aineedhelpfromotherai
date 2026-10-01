@@ -257,3 +257,20 @@ Release: PR #331 squash-merged as `1bcf3506c808136107da874a95f98fb2c05b8358` aft
 Qwen/Kimi agents were unavailable for this round and no delegated result was accepted. The reviewed packets, canonical importer, dedicated DB-C10 regression and full release gates were sufficient.
 
 DB-C11 next bounded batch: `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+
+## DB-C11 — completed 2026-10-01
+
+The bounded DB-C11 Norway/Malta/Morocco batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `telenor-kontant-no-2026` — HOLD. Current Telenor help/terms establish a 12-month prepaid lifecycle after the last recharge plus a two-month automatic reopening window. Telenor ID creation/self-service requires BankID and web recharge cards are limited to Norwegian, Danish, Swedish or Finnish cards; a current passport-only/nonresident acquisition path remains unverified.
+- `go-payasyougo-mt-2026` — ADMIT-BACKSTAGE. Current GO policy establishes a 90-day chargeable-activity/top-up clock followed by a 275-day grace period; visitor eSIM can be obtained through the GO app before arrival, PAYG roaming is enabled on activation, and China is listed in Prepaid Top-up Zone 4. Specific third-party OTP delivery remains unguaranteed.
+- `maroc-telecom-prepaid-2026` — HOLD. Current JAWAL terms establish SIM/eSIM, identity-backed activation, a 12-month card validity renewed by each recharge, online/app recharge and optional roaming. The reviewed official terms do not resolve ordinary long-term foreign-passport eligibility, while current visitor-eSIM reports preserve QR-code delivery and activation friction.
+
+Post-DB-C11 state: **122 canonical routes / 70 markets / 119 brands / 94 networks / 433 sources / 111 comparison-overlap route IDs / 24 comparison route IDs still legacy-only / 3 explicit indexable routes**. Full Phone checks and frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
+
+Release: PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c` after CI #205, Eval Gate #1015 and Vercel Preview passed. Production verification confirmed the Phone hub and VOXI detail at HTTP 200, all three DB-C11 standalone route URLs at HTTP 404, and 31 sitemap URLs with no DB-C11 route.
+
+Qwen/Kimi agent output was not required or accepted for this round. The reviewed packets, direct current evidence reconciliation, canonical importer, dedicated DB-C11 regression and full release gates were sufficient.
+
+DB-C12 next bounded batch: `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
