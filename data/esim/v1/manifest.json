@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "data-esim-community-v1",
+  "family": "data-esim",
+  "surfaceState": "backstage-only",
+  "publicationState": "not-public",
+  "indexability": "none",
+  "sourceSnapshots": [
+    {
+      "id": "nodeseek-954805-free-esim-roundup-2026-09-29",
+      "path": "data/phone/inbox/community-free-esim-nodeseek-954805-2026-09-29.json",
+      "capturedAt": "2026-09-29",
+      "role": "free-mechanism-snapshot",
+      "expectedRecordCount": 9
+    },
+    {
+      "id": "nodeseek-935678-esim-price-3-0-2026-10-01",
+      "path": "data/phone/inbox/community-esim-price-nodeseek-935678-2026-10-01.json",
+      "capturedAt": "2026-10-01",
+      "role": "price-snapshot",
+      "expectedRecordCount": 46
+    },
+    {
+      "id": "user-supplied-esim-price-later-delta-2026-10-01",
+      "path": "data/phone/inbox/community-esim-price-user-supplied-later-delta-2026-10-01.json",
+      "capturedAt": "2026-10-01",
+      "role": "version-delta",
+      "extends": "nodeseek-935678-esim-price-3-0-2026-10-01",
+      "expectedNewRecordCount": 13,
+      "expectedUpdateCount": 2
+    }
+  ],
+  "normalizationPolicy": {
+    "communityEvidence": "first-class",
+    "officialAbsence": "not-a-rejection-condition",
+    "providerIdentity": "preserve-source-label-until-reviewed-resolution",
+    "priceVersioning": "append-snapshots-and-deltas-never-overwrite-history",
+    "hiddenAndThirdPartyChannels": "preserve-with-source-provenance",
+    "ipEgress": "preserve-explicit-community-hints-and-uncertainty",
+    "fupAndThrottle": "preserve-explicit-speed-cap-throttle-and-high-speed-cap-signals",
+    "capabilities": "data-voice-sms-number-are-independent; unknown-is-not-false",
+    "acquisitionChannel": "preserve-explicit-referral-promotion-task-ad-wallet-reseller-or-third-party-signals",
+    "claimStrength": "mandatory-per-evidence-record-with-source-default-only-when-input-omits-it",
+    "canonicalPhoneRouteLinkage": "none-by-default; pure-data-esim-evidence-must-not-enter-phone-number-canonical-routes",
+    "publication": "separate-review-and-publication-gate-required"
+  }
+}
