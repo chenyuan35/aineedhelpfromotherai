@@ -92,9 +92,11 @@ Bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. Th
 
 NodeSeek `https://www.nodeseek.com/post-954805-1` is already captured on `main` as `data/phone/inbox/community-free-esim-nodeseek-954805-2026-09-29.json`, covering **8 providers / 9 offer mechanisms**: Airvoy, eSIM.io (free trial + wallet/PAYG), Nomad, Roamless, Firsty, USIMS, Eskimo and Jetpac.
 
-This lane intentionally preserves hidden/community-discovered mechanics even when provider public pages do not document them. Claims keep their provenance strength and uncertainty; lack of an official page is not a rejection criterion.
+The 2026-10-01 intake additionally captures NodeSeek `https://www.nodeseek.com/post-935678-1` (`ESIM 漫游流量卡价格 3.0`) as a **46-entry versioned community price/validity/IP/throttle snapshot**, plus a separate user-supplied later delta preserving **13 additional entries (47–59)** and later price changes rather than overwriting the 3.0 evidence. Records stay in `data/phone/inbox/` and are not production build inputs.
 
-QwenPaw/Kimi corroboration task `task-f93841364ef7` failed because its model RPM quota was exhausted. That failure does **not** invalidate or remove the captured NodeSeek signal; future community corroboration can resume when capacity is available.
+This lane intentionally preserves hidden/community-discovered mechanics even when provider public pages do not document them. Community, third-party, agent/reseller, promotion, long-validity, non-expiry, selectable-IP, throttled-unlimited and number/voice/SMS mechanics are first-class research evidence. Claims keep provenance strength and uncertainty; lack of an official page is not a rejection criterion. Official/provider pages may expose a conflict but must not erase the community record merely because the mechanism is not public.
+
+QwenPaw/Kimi corroboration task `task-f93841364ef7` failed because its model RPM quota was exhausted. The 2026-10-01 Kimi corroboration task `task-3b0a626440d0` also failed with a connection-level `MODEL_EXECUTION_ERROR`; QA-agent task `task-924302cba6ce` was dispatched as the fallback. Worker failure never invalidates captured community evidence and never bypasses coordinator QC.
 
 ## Measurement wait
 
