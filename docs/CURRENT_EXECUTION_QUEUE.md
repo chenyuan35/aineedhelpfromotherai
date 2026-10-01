@@ -138,7 +138,7 @@ QwenPaw/Kimi are high-throughput backstage research/data workers. Raw output rem
 ## Do not do next
 
 - do not stop backend coverage because public SEO measurement is waiting;
-- do not bulk-admit the remaining 30 legacy-only routes without provenance + QC;
+- do not bulk-admit the remaining 27 legacy-only route IDs without provenance + QC;
 - do not equate canonical admission with SEO/indexability;
 - do not force pure data eSIM into Phone-number/retention canonical routes;
 - do not auto-publish or rank Data-eSIM community evidence;
