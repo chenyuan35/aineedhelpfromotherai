@@ -241,3 +241,19 @@ Release: PR #324 squash-merged as `ac742c7398053a057a9b0e06d2ffcab717d28146` aft
 Delegated research was exercised but not trusted automatically. QwenPaw/Kimi task `task-24b1c44a3cc4` produced useful candidate evidence before a terminal model-execution failure; the coordinator independently reverified accepted facts. No enabled ACP runner was available for the requested qwen-code second pass, and Tavily returned 403.
 
 DB-C10 next bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C10 — completed 2026-10-01
+
+The bounded DB-C10 Singapore/Pakistan/Egypt batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `starhub-prepaid-sg-2026` — HOLD. Current StarHub material establishes a one-month prepaid plan followed by a 120-day incoming-call/SMS grace period, but passport-only prepaid registration is limited to 30 days unless re-registered with an eligible Singapore-issued identity/work pass. The old cheap-USSD/top-up framing is withdrawn; current community evidence also preserves OTP reliability uncertainty.
+- `jazz-pk-2026` — HOLD. Current Jazz material establishes PKR350 new-SIM pricing, foreigner onboarding with original passport + valid visa + fingerprint biometric verification, and free incoming prepaid roaming SMS including China. Final number-deactivation/recycling timing and minimum keep-alive economics remain unresolved; SIM Lagao is preserved only as a reactivation promotion, not a retention rule.
+- `vodafone-eg-2026` — HOLD. Current Vodafone Egypt material establishes foreigner prepaid identity requirements and day-one prepaid roaming activation, but generic prepaid number lifecycle/minimum keep-alive remains unresolved. `Park Your Line` is explicitly postpaid-only and Tourist Line is a separate visitor product, so neither is used as generic prepaid retention evidence.
+
+Post-DB-C10 state: **119 canonical routes / 67 markets / 116 brands / 91 networks / 415 sources / 108 comparison-overlap route IDs / 27 comparison route IDs still legacy-only / 3 explicit indexable routes**. Full Phone checks and frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.
+
+Release: PR #331 squash-merged as `1bcf3506c808136107da874a95f98fb2c05b8358` after CI #203, Eval Gate #1004 and Vercel Preview passed. Production verification confirmed the Phone hub and VOXI detail at HTTP 200, `starhub-prepaid-sg-2026` at HTTP 404, and 31 sitemap URLs with no DB-C10 route.
+
+Qwen/Kimi agents were unavailable for this round and no delegated result was accepted. The reviewed packets, canonical importer, dedicated DB-C10 regression and full release gates were sufficient.
+
+DB-C11 next bounded batch: `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.

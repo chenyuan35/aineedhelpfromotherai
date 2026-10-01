@@ -8,7 +8,7 @@ Last updated: 2026-10-01
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Backend database coverage and public/SEO publication are separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-3. DB-C9 is released with **135 comparison routes / 116 canonical normalized routes / 105 comparison↔canonical route-ID overlaps / 30 comparison routes still legacy-only / 3 indexable routes**; production publication boundaries are verified.
+3. DB-C10 is released with **135 comparison routes / 119 canonical normalized routes / 108 comparison↔canonical route-ID overlaps / 27 comparison route IDs still legacy-only / 3 indexable routes**; production publication boundaries are verified.
 4. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 5. **Data-eSIM is now a separate normalized backstage family.** PR #328 preserves three reviewed community snapshots as **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 6. **Public surface stays stable.** DB work must not create route pages, sitemap entries or ranking/publication changes without a separate publication decision.
@@ -94,9 +94,21 @@ Current normalized result: **59 source-label providers / 72 evidence records / 1
 
 `npm run phone:data:check`, `npm run verify`, and `git diff --check origin/main...HEAD` passed for PR #328; Eval Gate #995 and Vercel status passed. Standalone repository CI did not trigger because the existing CI path filters do not include `data/**` / `scripts/**`; no unrelated no-op source change was added merely to force it. Publication boundary remains **135 comparison routes / 3 indexable Phone routes**. Data-eSIM `surfaceState=backstage-only`, `publicationState=not-public`, `indexability=none`.
 
-## NEXT — Backend database coverage DB-C10
+## JUST COMPLETED — Backend database coverage DB-C10
 
-Bounded batch: `starhub-prepaid-sg-2026`, `jazz-pk-2026`, `vodafone-eg-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. Delegated output remains `RESEARCH_CANDIDATE` until coordinator reconciliation. No public/indexability change.
+DB-C10 is merged and production-verified. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `starhub-prepaid-sg-2026` — **HOLD**: current StarHub Prepaid is a one-month plan with a 120-day incoming-call/SMS grace period, but passport-only registration is limited to 30 days unless re-registered with an eligible Singapore-issued identity/work pass. The stale cheap-USSD/top-up retention framing is withdrawn; 2026 community evidence also preserves OTP reliability uncertainty.
+- `jazz-pk-2026` — **HOLD**: current Jazz material establishes PKR350 new-SIM pricing, passport + valid visa + in-person biometric onboarding for foreigners, and free incoming roaming SMS including China. Final prepaid number-deactivation/recycling and minimum keep-alive economics remain unresolved; the PKR0.01 SIM Lagao reactivation promotion is not treated as the lifecycle rule.
+- `vodafone-eg-2026` — **HOLD**: current Vodafone Egypt material establishes foreigner prepaid KYC and free day-one prepaid roaming activation, but generic prepaid number lifecycle/minimum keep-alive remains unresolved. `Park Your Line` is explicitly postpaid-only and Tourist Line is a separate visitor product, so neither is used to manufacture a prepaid retention claim.
+
+Released state: **119 routes / 67 markets / 116 brands / 91 networks / 415 sources / 108 comparison overlaps / 27 legacy-only route IDs / 3 indexable**. `npm run phone:data:check`, `npm run verify`, `git diff --check` and the full frontend build passed; the frontend remains **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**. PR #331 squash-merged as `1bcf3506c808136107da874a95f98fb2c05b8358`; CI #203, Eval Gate #1004 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, non-indexable `starhub-prepaid-sg-2026` route 404, sitemap 31 URLs with no DB-C10 route.
+
+Qwen/Kimi agents were unavailable and no parallel-agent result was required or accepted for DB-C10; coordinator review, the repository importer and automated gates were sufficient.
+
+## NEXT — Backend database coverage DB-C11
+
+Bounded batch: `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. No public/indexability change.
 
 ## PARALLEL — Community-discovered data eSIM signal intake
 
