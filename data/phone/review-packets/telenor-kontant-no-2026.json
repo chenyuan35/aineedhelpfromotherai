@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c11",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. Current Telenor terms establish a 12-month prepaid validity clock after the last recharge plus a two-month automatic reopening window, and current product/help pages support eSIM and self-service top-up. However, Telenor ID now requires BankID, the ordinary online ordering/self-service path therefore remains unsuitable for a typical nonresident without Norwegian BankID, and web top-up cards are restricted to Norwegian, Danish, Swedish or Finnish cards. Current passport-only/nonresident acquisition is not established.",
+  "market": {
+    "id": "no",
+    "name": "Norway",
+    "countryCode": "NO"
+  },
+  "network": {
+    "id": "telenor-no",
+    "name": "Telenor Norway",
+    "marketId": "no"
+  },
+  "brand": {
+    "id": "telenor-kontant-no",
+    "networkId": "telenor-no",
+    "name": "Telenor Kontant",
+    "marketId": "no"
+  },
+  "route": {
+    "id": "telenor-kontant-no-2026",
+    "marketId": "no",
+    "networkId": "telenor-no",
+    "brandId": "telenor-kontant-no",
+    "displayName": "Telenor Kontant Norway",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.telenor.no/mobilabonnement/kontantkort/",
+    "sourceIds": [
+      "telenor-no-kontant-help-20261001",
+      "telenor-no-mobile-terms-20261001",
+      "telenor-no-kontant-product-20261001",
+      "telenor-no-id-bankid-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "telenor-no-kontant-help-20261001",
+      "url": "https://www.telenor.no/kundeservice/mobil/abonnement-og-tjenester/kontantkort/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "telenor-no-mobile-terms-20261001",
+      "url": "https://www.telenor.no/vilkar/mobile-tjenester/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "telenor-no-kontant-product-20261001",
+      "url": "https://www.telenor.no/mobilabonnement/kontantkort/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "telenor-no-id-bankid-20261001",
+      "url": "https://www.telenor.no/telenor-id/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "telenor-no-kontant-help-20261001",
+    "telenor-no-mobile-terms-20261001",
+    "telenor-no-kontant-product-20261001",
+    "telenor-no-id-bankid-20261001"
+  ],
+  "events": [
+    {
+      "id": "evt-telenor-kontant-no-2026-db-c11-20261001",
+      "routeId": "telenor-kontant-no-2026",
+      "type": "lifecycle-identity-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Current Telenor Kontant uses a 12-month clock from the last recharge, followed by a two-month automatic reopening window. Current self-service access requires Telenor ID/BankID and web recharge cards are limited to Nordic-issued cards, so nonresident acquisition and maintenance remain constrained.",
+      "sourceId": "telenor-no-mobile-terms-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telenor-kontant-no-2026-current-profile-20261001",
+      "routeId": "telenor-kontant-no-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c11-reviewed-2026-10-01",
+      "data": {
+        "id": "telenor-kontant-no-2026",
+        "brandId": "telenor-kontant-no",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Telenor Kontant supports physical SIM/eSIM and is ordered/managed through Telenor self-service. The current self-service identity layer requires BankID; a current passport-only or nonresident acquisition route was not established.",
+        "landedCost": {
+          "currency": "NOK",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "insufficient-current-acquisition-price-evidence"
+        },
+        "keep": {
+          "currency": "NOK",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Recharge before 12 months have elapsed since the previous recharge. If the line is blocked after 12 months, any allowed recharge can automatically reopen it for up to two additional months. Do not infer a minimum annual recharge cost from the current pages.",
+          "intervalDays": 365,
+          "state": "current-provider-12-month-recharge-rule"
+        },
+        "chinaActivation": "Ordinary activation/acquisition is not established for a nonresident outside Norway. Overseas-first activation was not proven.",
+        "kyc": "Telenor ID creation and app/service access require BankID. Current public material reviewed here does not establish a passport-only/nonresident prepaid acquisition path.",
+        "payment": "Telenor web recharge accepts payment cards issued in Norway, Denmark, Sweden or Finland. Other local/customer-service paths may exist, but a low-friction foreign-card maintenance path was not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Telenor Kontant is marketed for use in many countries and follows EU/EEA roaming rules where applicable. Mainland-China SMS/OTP behavior was not independently verified in this review.",
+        "refund": "not reconciled",
+        "trend": "current-12-month-lifecycle-nonresident-access-blocker",
+        "guideEligible": false,
+        "holdReason": "Lifecycle is clear, but the typical foreign/nonresident acquisition path remains unverified: current Telenor ID/self-service requires BankID and web recharge cards are restricted to Nordic-issued cards.",
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.telenor.no/mobilabonnement/kontantkort/",
+        "tariffSummary": "Recharge resets a 12-month prepaid lifecycle; a blocked number can be automatically reopened by recharge for up to two more months. Nonresident acquisition/payment remain the main blockers.",
+        "sourceIds": [
+          "telenor-no-kontant-help-20261001",
+          "telenor-no-mobile-terms-20261001",
+          "telenor-no-kontant-product-20261001",
+          "telenor-no-id-bankid-20261001"
+        ],
+        "guideSteps": [
+          "Treat the current 12-month rule as authoritative over older 15-month wording.",
+          "Do not claim passport-only remote signup unless a current Telenor path is reproduced.",
+          "Treat Nordic-card-only web recharge as a maintenance constraint for nonresident users."
+        ]
+      }
+    }
+  ]
+}

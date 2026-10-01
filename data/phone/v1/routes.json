@@ -666,6 +666,29 @@
     ]
   },
   {
+    "id": "go-payasyougo-mt-2026",
+    "marketId": "mt",
+    "networkId": "go-mt",
+    "brandId": "go-payasyougo",
+    "displayName": "GO Pay As You GO Malta",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.go.com.mt/top-up-mobile-number-malta/",
+    "sourceIds": [
+      "go-mt-auto-topup-id-20261001",
+      "go-mt-esim-help-20261001",
+      "go-mt-mobile-terms-20261001",
+      "go-mt-payg-base-20261001",
+      "go-mt-payg-disconnection-20261001",
+      "go-mt-roaming-zones-20261001",
+      "go-mt-visitor-esim-20261001"
+    ]
+  },
+  {
     "id": "good2go-payg-ca-2026",
     "marketId": "ca",
     "networkId": "rogers-ca",
@@ -1112,6 +1135,29 @@
       "official-magti-mobile-terms-2026-09-29",
       "official-magti-number-maintenance-2026-09-29",
       "official-magti-tourist-2026-09-29"
+    ]
+  },
+  {
+    "id": "maroc-telecom-prepaid-2026",
+    "marketId": "ma",
+    "networkId": "maroc-telecom",
+    "brandId": "maroc-prepaid",
+    "displayName": "Maroc Telecom JAWAL Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.iam.ma/",
+    "sourceIds": [
+      "iam-esim-delay-community-20260116",
+      "iam-esim-delay-community-20260609",
+      "iam-esim-tourist-community-20260203",
+      "iam-jawal-distance-terms-20261001",
+      "iam-jawal-terms-20261001",
+      "iam-mobile-assistance-20261001",
+      "iam-recharge-20261001"
     ]
   },
   {
@@ -1790,6 +1836,26 @@
       "telekom-credit-validity-20260929",
       "telekom-easy-en-20260929",
       "telekom-topup-20260929"
+    ]
+  },
+  {
+    "id": "telenor-kontant-no-2026",
+    "marketId": "no",
+    "networkId": "telenor-no",
+    "brandId": "telenor-kontant-no",
+    "displayName": "Telenor Kontant Norway",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.telenor.no/mobilabonnement/kontantkort/",
+    "sourceIds": [
+      "telenor-no-id-bankid-20261001",
+      "telenor-no-kontant-help-20261001",
+      "telenor-no-kontant-product-20261001",
+      "telenor-no-mobile-terms-20261001"
     ]
   },
   {

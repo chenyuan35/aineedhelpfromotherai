@@ -1125,6 +1125,38 @@
       }
     },
     {
+      "id": "go-payasyougo-mt-2026",
+      "displayName": "GO Pay As You GO Malta",
+      "marketId": "mt",
+      "marketName": "Malta",
+      "countryCode": "MT",
+      "networkName": "GO Malta",
+      "brandName": "GO Pay As You GO",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-01",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "go-payasyougo-mt-2026",
+        "checkedAt": "2026-10-01",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "EUR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "EUR",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 90
+      }
+    },
+    {
       "id": "good2go-payg-ca-2026",
       "displayName": "Good2Go Mobile Canada",
       "marketId": "ca",
@@ -1882,6 +1914,38 @@
         "keepYearCostOriginal": 2.03,
         "keepYearCostCny": null,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "maroc-telecom-prepaid-2026",
+      "displayName": "Maroc Telecom JAWAL Prepaid",
+      "marketId": "ma",
+      "marketName": "Morocco",
+      "countryCode": "MA",
+      "networkName": "Maroc Telecom",
+      "brandName": "Maroc Telecom Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-01",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "maroc-telecom-prepaid-2026",
+        "checkedAt": "2026-10-01",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "MAD",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "MAD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -3002,6 +3066,38 @@
         "keepYearCostOriginal": null,
         "keepYearCostCny": null,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "telenor-kontant-no-2026",
+      "displayName": "Telenor Kontant Norway",
+      "marketId": "no",
+      "marketName": "Norway",
+      "countryCode": "NO",
+      "networkName": "Telenor Norway",
+      "brandName": "Telenor Kontant",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-01",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "telenor-kontant-no-2026",
+        "checkedAt": "2026-10-01",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "NOK",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "NOK",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {

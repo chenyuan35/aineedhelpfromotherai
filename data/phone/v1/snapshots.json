@@ -2228,6 +2228,67 @@
     }
   },
   {
+    "id": "snap-go-payasyougo-mt-2026-current-profile-20261001",
+    "routeId": "go-payasyougo-mt-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c11-reviewed-2026-10-01",
+    "data": {
+      "id": "go-payasyougo-mt-2026",
+      "brandId": "go-payasyougo",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "GO explicitly offers a Malta mobile number/eSIM to visitors through the GO app, including setup before landing and activation after top-up. The app flow requires SIM registration; the current visitor page does not enumerate the exact identity-document list.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-visitor-esim-acquisition"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 0.1,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Perform at least one chargeable event or top-up before 90 days of inactivity. An outgoing local SMS on the current PAYG Base tariff is EUR0.10 and qualifies as chargeable activity. If the line enters the 275-day grace period, GO documents free SIM reactivation at a retail outlet. Do not convert this into a guaranteed remote annual cost.",
+        "intervalDays": 90,
+        "state": "current-provider-90-day-activity-plus-275-day-grace"
+      },
+      "chinaActivation": "GO markets visitor eSIM setup before arrival in Malta, but activation is completed when the user tops up/starts the service. Overseas-first long-term activation beyond the documented visitor flow is not generalized.",
+      "kyc": "The GO app/new-eSIM flow requires SIM registration. Current visitor material does not enumerate the exact accepted identity document in-app. Separate GO registration terms explicitly allow a passport for manual registration at a GO customer contact centre; this is not treated as proof of every app-registration path.",
+      "payment": "Visitor eSIM can be topped up online from GO's website/app. Current pages support online top-up; no special foreign-card guarantee is inferred.",
+      "wifiCalling": "unverified",
+      "roamingSms": "PAYG international activity and roaming are enabled upon activation. China is listed in GO's Prepaid Top-up Zone 4. Delivery of specific third-party OTPs remains unverified and is not guaranteed.",
+      "refund": "not reconciled",
+      "trend": "current-visitor-esim-explicit-lifecycle",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.go.com.mt/top-up-mobile-number-malta/",
+      "tariffSummary": "Visitor eSIM is directly supported; avoid 90 days without chargeable activity/top-up. GO then provides a 275-day grace/reactivation period before disconnection; PAYG roaming is enabled on activation and China is a listed prepaid roaming destination.",
+      "sourceIds": [
+        "go-mt-payg-disconnection-20261001",
+        "go-mt-mobile-terms-20261001",
+        "go-mt-roaming-zones-20261001",
+        "go-mt-visitor-esim-20261001",
+        "go-mt-esim-help-20261001",
+        "go-mt-payg-base-20261001",
+        "go-mt-auto-topup-id-20261001"
+      ],
+      "guideSteps": [
+        "Use the current visitor eSIM/app path rather than assuming a local-resident-only acquisition route.",
+        "Reset the inactivity clock with a chargeable event or top-up before 90 days.",
+        "Treat China roaming availability as network capability, not as a guarantee that every OTP sender will deliver."
+      ]
+    }
+  },
+  {
     "id": "snap-good2go-payg-ca-2026-current-profile-20260929",
     "routeId": "good2go-payg-ca-2026",
     "kind": "current-profile",
@@ -3803,6 +3864,67 @@
         "Obtain/register a physical SIM or eSIM; current provider guidance supports remote new eSIM acquisition from abroad.",
         "Enable Number Maintenance with *180# or MyMagti.",
         "Keep enough balance for the 1 GEL maintenance charge before each 180-day renewal point."
+      ]
+    }
+  },
+  {
+    "id": "snap-maroc-telecom-prepaid-2026-current-profile-20261001",
+    "routeId": "maroc-telecom-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c11-reviewed-2026-10-01",
+    "data": {
+      "id": "maroc-telecom-prepaid-2026",
+      "brandId": "maroc-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "JAWAL supports SIM/eSIM and requires activation with complete identity backed by a valid current identity document. Current independent 2026 reports show tourists purchasing Maroc Telecom visitor eSIMs, but also QR-code delivery delays and activation/checkout friction; do not convert tourist availability into a guaranteed long-term foreign-user route.",
+      "landedCost": {
+        "currency": "MAD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-current-generic-prepaid-acquisition-price-evidence"
+      },
+      "keep": {
+        "currency": "MAD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Recharge before the 12-month card validity expires; current JAWAL terms state that each recharge renews card validity. Online/app recharge exists, but the reviewed terms do not establish the minimum recharge amount that resets the 12-month clock, so no annual keep cost is inferred.",
+        "intervalDays": 365,
+        "state": "current-provider-12-month-recharge-rule"
+      },
+      "chinaActivation": "Activation requires a first call and identity registration. A current foreign-passport/nonresident long-term activation path outside Morocco was not established.",
+      "kyc": "Current JAWAL terms require complete, accurate identity supported by a valid current identity document. They do not specify in the reviewed text whether every foreign passport holder is eligible for the ordinary long-term prepaid route; recent visitor-eSIM evidence is therefore kept separate from generic long-term eligibility.",
+      "payment": "Recharge is supported through iam.ma, MonEspace MT, MTCash, agencies and approved distributors. The current pages state bank-card recharge but do not guarantee acceptance of every foreign-issued card.",
+      "wifiCalling": "unverified",
+      "roamingSms": "International roaming is an optional JAWAL service activated on request via customer service or an agency before travel. Mainland-China network/OTP delivery was not independently verified in this review.",
+      "refund": "not reconciled",
+      "trend": "current-12-month-lifecycle-tourist-fulfillment-friction",
+      "guideEligible": false,
+      "holdReason": "The 12-month recharge lifecycle is clear, but current official material does not resolve foreign-passport/nonresident long-term eligibility and recent visitor-eSIM reports preserve QR delivery/activation friction. Keep tourist acquisition separate from a generic long-term retention claim.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.iam.ma/",
+      "tariffSummary": "JAWAL card validity is 12 months from activation and is renewed with each recharge. Identity-backed activation and optional roaming are current; foreign-user long-term eligibility and exact minimum keep-alive recharge remain unresolved.",
+      "sourceIds": [
+        "iam-jawal-terms-20261001",
+        "iam-jawal-distance-terms-20261001",
+        "iam-mobile-assistance-20261001",
+        "iam-recharge-20261001",
+        "iam-esim-tourist-community-20260203",
+        "iam-esim-delay-community-20260116",
+        "iam-esim-delay-community-20260609"
+      ],
+      "guideSteps": [
+        "Use the 12-month card-validity rule, but do not invent a minimum annual recharge amount.",
+        "Keep visitor-eSIM acquisition evidence separate from proof of ordinary long-term foreign-passport eligibility.",
+        "Activate roaming before travel and treat OTP delivery as unverified until independently reproduced."
       ]
     }
   },
@@ -6246,6 +6368,64 @@
         "Directory card."
       ],
       "marketName": "Slovakia"
+    }
+  },
+  {
+    "id": "snap-telenor-kontant-no-2026-current-profile-20261001",
+    "routeId": "telenor-kontant-no-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c11-reviewed-2026-10-01",
+    "data": {
+      "id": "telenor-kontant-no-2026",
+      "brandId": "telenor-kontant-no",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Telenor Kontant supports physical SIM/eSIM and is ordered/managed through Telenor self-service. The current self-service identity layer requires BankID; a current passport-only or nonresident acquisition route was not established.",
+      "landedCost": {
+        "currency": "NOK",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-current-acquisition-price-evidence"
+      },
+      "keep": {
+        "currency": "NOK",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Recharge before 12 months have elapsed since the previous recharge. If the line is blocked after 12 months, any allowed recharge can automatically reopen it for up to two additional months. Do not infer a minimum annual recharge cost from the current pages.",
+        "intervalDays": 365,
+        "state": "current-provider-12-month-recharge-rule"
+      },
+      "chinaActivation": "Ordinary activation/acquisition is not established for a nonresident outside Norway. Overseas-first activation was not proven.",
+      "kyc": "Telenor ID creation and app/service access require BankID. Current public material reviewed here does not establish a passport-only/nonresident prepaid acquisition path.",
+      "payment": "Telenor web recharge accepts payment cards issued in Norway, Denmark, Sweden or Finland. Other local/customer-service paths may exist, but a low-friction foreign-card maintenance path was not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Telenor Kontant is marketed for use in many countries and follows EU/EEA roaming rules where applicable. Mainland-China SMS/OTP behavior was not independently verified in this review.",
+      "refund": "not reconciled",
+      "trend": "current-12-month-lifecycle-nonresident-access-blocker",
+      "guideEligible": false,
+      "holdReason": "Lifecycle is clear, but the typical foreign/nonresident acquisition path remains unverified: current Telenor ID/self-service requires BankID and web recharge cards are restricted to Nordic-issued cards.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.telenor.no/mobilabonnement/kontantkort/",
+      "tariffSummary": "Recharge resets a 12-month prepaid lifecycle; a blocked number can be automatically reopened by recharge for up to two more months. Nonresident acquisition/payment remain the main blockers.",
+      "sourceIds": [
+        "telenor-no-kontant-help-20261001",
+        "telenor-no-mobile-terms-20261001",
+        "telenor-no-kontant-product-20261001",
+        "telenor-no-id-bankid-20261001"
+      ],
+      "guideSteps": [
+        "Treat the current 12-month rule as authoritative over older 15-month wording.",
+        "Do not claim passport-only remote signup unless a current Telenor path is reproduced.",
+        "Treat Nordic-card-only web recharge as a maintenance constraint for nonresident users."
+      ]
     }
   },
   {
