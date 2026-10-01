@@ -3073,6 +3073,67 @@
     }
   },
   {
+    "id": "snap-kolbi-cr-2026-current-profile-20261001",
+    "routeId": "kolbi-cr-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c12-reviewed-2026-10-01",
+    "data": {
+      "id": "kolbi-cr-2026",
+      "brandId": "kolbi-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "kölbi currently offers a tourist prepaid SIM and explicitly states elsewhere on its current requirements page that a new foreign customer can acquire kölbi prepaid with a passport. Current eSIM material covers prepaid service but requires pickup/issuance at kölbi/ICE stores.",
+      "landedCost": {
+        "currency": "CRC",
+        "providerOrCommunityPrice": 12095,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 12095,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-tourist-sim-price"
+      },
+      "keep": {
+        "currency": "CRC",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Generate a billable event that deducts from the main prepaid balance, or recharge, before 90 days elapse. kölbi terms say that after 90 days with no such event the service is definitively liquidated and the number resource is disposed. Exact cheapest remote qualifying action is not normalized as a guaranteed annual cost.",
+        "intervalDays": 90,
+        "state": "current-provider-90-day-chargeable-event-lifecycle"
+      },
+      "chinaActivation": "Initial acquisition/registration is a Costa Rica retail/visitor flow. Current first-party material supports foreign passport acquisition, but no China-first remote activation path is claimed.",
+      "kyc": "kölbi offers a tourist SIM, and a current first-party requirements page explicitly says a new foreign customer may acquire kölbi prepaid with a passport. The dedicated prepaid requirements page lists resident/refugee/diplomatic documents for foreigners, so passport support is preserved with its exact source rather than generalized to every sales channel.",
+      "payment": "Recharge is available through App kölbi and Mi kölbi/web as well as physical channels. The tourist plan can continue through recharge after its included plan ends; foreign-card acceptance is unverified.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current prepaid roaming supports making/receiving calls and sending/receiving SMS; China appears in the prepaid roaming coverage list. Specific OTP-sender delivery remains unverified.",
+      "refund": "not reconciled",
+      "trend": "explicit-90-day-lifecycle-tourist-path",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+      "tariffSummary": "Tourist prepaid acquisition is current; 90 days without a chargeable main-balance event/recharge triggers definitive service liquidation and number disposal; prepaid roaming includes China.",
+      "sourceIds": [
+        "kolbi-prepago-terms-20261001",
+        "kolbi-tourist-sim-20261001",
+        "kolbi-prepago-chip-20261001",
+        "kolbi-foreigner-passport-20261001",
+        "kolbi-esim-20261001",
+        "kolbi-prepaid-roaming-20261001",
+        "kolbi-prepaid-roaming-coverage-20261001"
+      ],
+      "guideSteps": [
+        "Acquire through the current tourist/prepaid retail path and use the documented foreign-passport route where accepted.",
+        "Do not let 90 days pass without a qualifying billable event or recharge; the terms tie that period to definitive liquidation and number disposal.",
+        "Treat China prepaid roaming as network capability, not as proof that every OTP sender works."
+      ]
+    }
+  },
+  {
     "id": "snap-kpn-prepaid-6mo-2026-current-profile-20260926",
     "routeId": "kpn-prepaid-6mo-2026",
     "kind": "current-profile",
@@ -4461,6 +4522,66 @@
     }
   },
   {
+    "id": "snap-mtn-gh-prepaid-2026-current-profile-20261001",
+    "routeId": "mtn-gh-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c12-reviewed-2026-10-01",
+    "data": {
+      "id": "mtn-gh-prepaid-2026",
+      "brandId": "mtn-gh-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "MTN lists a GHS 10 SIM sold through its Ghana outlets and its July 2026 help article says Ghana Card is required. Ghana NCA registration material separately documents new foreign prepaid registration using Passport/ECOWAS Card/Non-Citizen Ghana Card, so the provider-specific nonresident flow is not treated as fully reconciled.",
+      "landedCost": {
+        "currency": "GHS",
+        "providerOrCommunityPrice": 10,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 10,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-sim-price"
+      },
+      "keep": {
+        "currency": "GHS",
+        "observedActionCost": 15,
+        "yearCostOriginal": 15,
+        "yearCostCny": null,
+        "action": "Use MTN Number For Life: GHS 15 reserves a prepaid number for 12 months or GHS 25 for 24 months, preventing deactivation/reassignment during the selected reservation period.",
+        "intervalDays": 365,
+        "state": "current-provider-number-for-life"
+      },
+      "chinaActivation": "Acquisition is Ghana-based. The current MTN retail help article says Ghana Card, while current NCA material documents a passport/ECOWAS/non-citizen-card path for new foreign prepaid registration; do not claim a friction-free tourist path until MTN-specific execution is reconciled.",
+      "kyc": "Current MTN help says Ghana Card is required for SIM purchase and biometric registration. Current NCA registration guidance separately allows Passport/ECOWAS Card/Non-Citizen Ghana Card for new foreign prepaid registration. This provider-vs-regulator operational conflict keeps the route on HOLD.",
+      "payment": "Number For Life is activated by USSD and charged from the line. myMTN/top-up channels exist; foreign-card acceptance is unverified.",
+      "wifiCalling": "unverified",
+      "roamingSms": "MTN prepaid roaming supports making/receiving calls and sending/receiving SMS in supported countries; China appears in MTN roaming destination zones. Application-specific OTP delivery remains unverified.",
+      "refund": "not reconciled",
+      "trend": "strong-retention-product-foreign-registration-conflict",
+      "guideEligible": false,
+      "holdReason": "Current MTN purchase guidance requires Ghana Card while NCA guidance documents a foreign prepaid passport/ECOWAS path; the MTN-specific nonresident onboarding flow is not reconciled.",
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+      "tariffSummary": "GHS 15/12 months or GHS 25/24 months Number For Life; prepaid roaming includes SMS and China coverage, but foreign-user acquisition remains operationally conflicted.",
+      "sourceIds": [
+        "mtn-gh-number-for-life-20261001",
+        "mtn-gh-sim-purchase-20261001",
+        "mtn-gh-prepaid-roaming-20261001",
+        "mtn-gh-roaming-activation-20261001",
+        "mtn-gh-roaming-zones-20261001",
+        "nca-gh-registration-process-20261001"
+      ],
+      "guideSteps": [
+        "Buy/register through an approved MTN Ghana outlet; do not assume passport-only onboarding from the generic MTN help page.",
+        "After activation, reserve the number through *550# → Number For Life if the route is otherwise eligible for your identity status.",
+        "Treat China roaming support as network capability, not proof of a specific OTP sender."
+      ]
+    }
+  },
+  {
     "id": "snap-mtn-ng-keepmynumber-2026-current-profile-20260929",
     "routeId": "mtn-ng-keepmynumber-2026",
     "kind": "current-profile",
@@ -4616,6 +4737,65 @@
       ],
       "guideSteps": [],
       "marketName": "Russia"
+    }
+  },
+  {
+    "id": "snap-ncell-np-2026-current-profile-20261001",
+    "routeId": "ncell-np-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-01",
+    "sourceDataset": "db-c12-reviewed-2026-10-01",
+    "data": {
+      "id": "ncell-np-2026",
+      "brandId": "ncell-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Ncell explicitly offers Tourist SIM and eSIM to non-Nepalese visitors. Physical SIM registration uses the original passport; tourist eSIM is offered online. After the tourist pack ends, the line can be topped up and used for Voice PAYG.",
+      "landedCost": {
+        "currency": "NPR",
+        "providerOrCommunityPrice": 595,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 595,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-tourist-entry-plan"
+      },
+      "keep": {
+        "currency": "NPR",
+        "observedActionCost": 500,
+        "yearCostOriginal": 500,
+        "yearCostCny": null,
+        "action": "Recharge NPR 500-999.99 for 360 days of main-balance validity, or NPR 1,000+ for 730 days. If validity expires, outgoing service is interrupted for 14 days and then incoming/outgoing service is interrupted; recharge can resume service.",
+        "intervalDays": 360,
+        "state": "current-provider-recharge-validity"
+      },
+      "chinaActivation": "Tourist physical SIM requires passport registration in Nepal; tourist eSIM is offered online. Long-term overseas-first activation beyond the documented tourist eSIM flow is not generalized.",
+      "kyc": "Tourist SIM is explicitly for non-Nepalese citizens and requires the original passport for physical registration; tourist eSIM is sold online through Ncell’s tourist eSIM platform.",
+      "payment": "Ncell supports web/app recharge and cards/e-wallets/other online payment channels. Foreign-issued-card success is not guaranteed by the reviewed pages.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Ncell roaming is offered by default outside India and current provider pages list dedicated China roaming packs. Specific incoming-SMS pricing and third-party OTP delivery in China remain unverified.",
+      "refund": "not reconciled",
+      "trend": "explicit-tourist-path-long-validity-recharge",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-01",
+      "acquireUrl": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+      "tariffSummary": "Tourist passport/eSIM acquisition is explicit; NPR 500 gives 360-day main-balance validity and NPR 1,000+ gives 730 days; China roaming is currently supported.",
+      "sourceIds": [
+        "ncell-recharge-validity-20261001",
+        "ncell-tourist-sim-20261001",
+        "ncell-roaming-20261001",
+        "ncell-china-roaming-20261001",
+        "ncell-recharge-web-20261001"
+      ],
+      "guideSteps": [
+        "Use the official Tourist SIM/eSIM path and register with the required passport flow.",
+        "After the tourist pack ends, top up the line; use the current recharge-validity ladder rather than the old 2025 community summary.",
+        "Treat China roaming availability as network support, not as a guarantee that every OTP sender will deliver."
+      ]
     }
   },
   {

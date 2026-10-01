@@ -900,6 +900,29 @@
     ]
   },
   {
+    "id": "kolbi-cr-2026",
+    "marketId": "cr",
+    "networkId": "kolbi-cr",
+    "brandId": "kolbi-prepaid",
+    "displayName": "kölbi Costa Rica Prepago",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+    "sourceIds": [
+      "kolbi-esim-20261001",
+      "kolbi-foreigner-passport-20261001",
+      "kolbi-prepago-chip-20261001",
+      "kolbi-prepago-terms-20261001",
+      "kolbi-prepaid-roaming-20261001",
+      "kolbi-prepaid-roaming-coverage-20261001",
+      "kolbi-tourist-sim-20261001"
+    ]
+  },
+  {
     "id": "kpn-prepaid-6mo-2026",
     "marketId": "nl",
     "networkId": "kpn-nl",
@@ -1256,6 +1279,28 @@
     ]
   },
   {
+    "id": "mtn-gh-prepaid-2026",
+    "marketId": "gh",
+    "networkId": "mtn-gh",
+    "brandId": "mtn-gh-prepaid",
+    "displayName": "MTN Ghana Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://help-center.mtn.com.gh/hc/en-us/articles/36651196017938-I-Need-Help-With-SIM-Card",
+    "sourceIds": [
+      "mtn-gh-number-for-life-20261001",
+      "mtn-gh-prepaid-roaming-20261001",
+      "mtn-gh-roaming-activation-20261001",
+      "mtn-gh-roaming-zones-20261001",
+      "mtn-gh-sim-purchase-20261001",
+      "nca-gh-registration-process-20261001"
+    ]
+  },
+  {
     "id": "mtn-ng-keepmynumber-2026",
     "marketId": "ng",
     "networkId": "mtn-ng",
@@ -1310,6 +1355,27 @@
     "sourceIds": [
       "mts-keep-number-product-2026-09-29",
       "mts-long-inactivity-support-2026-09-29"
+    ]
+  },
+  {
+    "id": "ncell-np-2026",
+    "marketId": "np",
+    "networkId": "ncell-np",
+    "brandId": "ncell-prepaid",
+    "displayName": "Ncell Nepal Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+    "sourceIds": [
+      "ncell-china-roaming-20261001",
+      "ncell-recharge-validity-20261001",
+      "ncell-recharge-web-20261001",
+      "ncell-roaming-20261001",
+      "ncell-tourist-sim-20261001"
     ]
   },
   {

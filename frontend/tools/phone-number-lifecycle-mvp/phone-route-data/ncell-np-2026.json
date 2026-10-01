@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "ncell-np-2026",
+    "marketId": "np",
+    "networkId": "ncell-np",
+    "brandId": "ncell-prepaid",
+    "displayName": "Ncell Nepal Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+    "sourceIds": [
+      "ncell-china-roaming-20261001",
+      "ncell-recharge-validity-20261001",
+      "ncell-recharge-web-20261001",
+      "ncell-roaming-20261001",
+      "ncell-tourist-sim-20261001"
+    ]
+  },
+  "market": {
+    "id": "np",
+    "name": "Nepal",
+    "countryCode": "NP"
+  },
+  "network": {
+    "id": "ncell-np",
+    "name": "Ncell Nepal",
+    "marketId": "np"
+  },
+  "brand": {
+    "id": "ncell-prepaid",
+    "networkId": "ncell-np",
+    "name": "Ncell Prepaid",
+    "marketId": "np"
+  },
+  "metrics": {
+    "routeId": "ncell-np-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "NPR",
+    "acquisitionCostOriginal": 595,
+    "acquisitionCostCny": null,
+    "keepCurrency": "NPR",
+    "keepYearCostOriginal": 500,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 360
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "ncell-china-roaming-20261001",
+      "url": "https://www.business.ncell.com.np/en/individual/roaming/28-day-china-combo-pack",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ncell-recharge-validity-20261001",
+      "url": "https://www.ncell.com.np/en/individual/how-to-recharge",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ncell-recharge-web-20261001",
+      "url": "https://www.ncell.com.np/en/individual/recharge",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ncell-roaming-20261001",
+      "url": "https://www.ncell.com.np/en/individual/roaming/ncell-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "ncell-tourist-sim-20261001",
+      "url": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-ncell-np-2026-db-c12-20261001",
+      "routeId": "ncell-np-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "Ncell now documents both the visitor acquisition path and the long-duration prepaid recharge-validity ladder; China roaming is current, while application-specific OTP behavior remains unverified.",
+      "sourceId": "ncell-recharge-validity-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-ncell-np-2026-current-profile-20261001",
+      "routeId": "ncell-np-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c12-reviewed-2026-10-01",
+      "data": {
+        "id": "ncell-np-2026",
+        "brandId": "ncell-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Ncell explicitly offers Tourist SIM and eSIM to non-Nepalese visitors. Physical SIM registration uses the original passport; tourist eSIM is offered online. After the tourist pack ends, the line can be topped up and used for Voice PAYG.",
+        "landedCost": {
+          "currency": "NPR",
+          "providerOrCommunityPrice": 595,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 595,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-tourist-entry-plan"
+        },
+        "keep": {
+          "currency": "NPR",
+          "observedActionCost": 500,
+          "yearCostOriginal": 500,
+          "yearCostCny": null,
+          "action": "Recharge NPR 500-999.99 for 360 days of main-balance validity, or NPR 1,000+ for 730 days. If validity expires, outgoing service is interrupted for 14 days and then incoming/outgoing service is interrupted; recharge can resume service.",
+          "intervalDays": 360,
+          "state": "current-provider-recharge-validity"
+        },
+        "chinaActivation": "Tourist physical SIM requires passport registration in Nepal; tourist eSIM is offered online. Long-term overseas-first activation beyond the documented tourist eSIM flow is not generalized.",
+        "kyc": "Tourist SIM is explicitly for non-Nepalese citizens and requires the original passport for physical registration; tourist eSIM is sold online through Ncell’s tourist eSIM platform.",
+        "payment": "Ncell supports web/app recharge and cards/e-wallets/other online payment channels. Foreign-issued-card success is not guaranteed by the reviewed pages.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Ncell roaming is offered by default outside India and current provider pages list dedicated China roaming packs. Specific incoming-SMS pricing and third-party OTP delivery in China remain unverified.",
+        "refund": "not reconciled",
+        "trend": "explicit-tourist-path-long-validity-recharge",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.business.ncell.com.np/en/individual/tourist-sim",
+        "tariffSummary": "Tourist passport/eSIM acquisition is explicit; NPR 500 gives 360-day main-balance validity and NPR 1,000+ gives 730 days; China roaming is currently supported.",
+        "sourceIds": [
+          "ncell-recharge-validity-20261001",
+          "ncell-tourist-sim-20261001",
+          "ncell-roaming-20261001",
+          "ncell-china-roaming-20261001",
+          "ncell-recharge-web-20261001"
+        ],
+        "guideSteps": [
+          "Use the official Tourist SIM/eSIM path and register with the required passport flow.",
+          "After the tourist pack ends, top up the line; use the current recharge-validity ladder rather than the old 2025 community summary.",
+          "Treat China roaming availability as network support, not as a guarantee that every OTP sender will deliver."
+        ]
+      }
+    }
+  ]
+}

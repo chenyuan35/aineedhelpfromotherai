@@ -554,6 +554,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "kolbi-cr-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CRC",
+      "acquisitionCostOriginal": 12095,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CRC",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "kpn-prepaid-6mo-2026",
       "checkedAt": "2026-09-26",
       "metricState": "current-profile",
@@ -770,6 +782,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "mtn-gh-prepaid-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GHS",
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GHS",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "mtn-ng-keepmynumber-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -804,6 +828,18 @@
       "keepYearCostOriginal": 698,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "ncell-np-2026",
+      "checkedAt": "2026-10-01",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "NPR",
+      "acquisitionCostOriginal": 595,
+      "acquisitionCostCny": null,
+      "keepCurrency": "NPR",
+      "keepYearCostOriginal": 500,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 360
     },
     {
       "routeId": "o2-cz-prepaid-2026",

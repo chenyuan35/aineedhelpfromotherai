@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-01",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c12",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "ADMIT-BACKSTAGE. Current kölbi terms establish a 90-day no-chargeable-event/recharge lifecycle followed by definitive service liquidation and number disposal. Current first-party pages provide tourist prepaid acquisition, foreign-passport eligibility, app/web recharge, prepaid/eSIM support and China roaming. Exact cheapest remote keep-alive action remains unpriced, so do not invent an annual cost.",
+  "market": {
+    "id": "cr",
+    "name": "Costa Rica",
+    "countryCode": "CR"
+  },
+  "network": {
+    "id": "kolbi-cr",
+    "name": "kölbi Costa Rica",
+    "marketId": "cr"
+  },
+  "brand": {
+    "id": "kolbi-prepaid",
+    "networkId": "kolbi-cr",
+    "name": "kölbi Prepago",
+    "marketId": "cr"
+  },
+  "route": {
+    "id": "kolbi-cr-2026",
+    "marketId": "cr",
+    "networkId": "kolbi-cr",
+    "brandId": "kolbi-prepaid",
+    "displayName": "kölbi Costa Rica Prepago",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+    "sourceIds": [
+      "kolbi-prepago-terms-20261001",
+      "kolbi-tourist-sim-20261001",
+      "kolbi-prepago-chip-20261001",
+      "kolbi-foreigner-passport-20261001",
+      "kolbi-esim-20261001",
+      "kolbi-prepaid-roaming-20261001",
+      "kolbi-prepaid-roaming-coverage-20261001"
+    ]
+  },
+  "sources": [
+    {
+      "id": "kolbi-prepago-terms-20261001",
+      "url": "https://www.kolbi.cr/wps/wcm/connect/www.kolbi.cr/368ea5d8-6765-43b2-94a4-61ac47650971/terminos-y-condiciones-del-servicio-kolbi%20prepago.pdf?CVID=oOe7btb&MOD=AJPERES",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-tourist-sim-20261001",
+      "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-prepago-chip-20261001",
+      "url": "https://www.kolbi.cr/wps/wcm/connect/kolbi%2Bes/kolbi/personas/prepago/primeras%2Bopciones/kit%2Bprepago/chips%2Bkolbi%2Bprepago",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-foreigner-passport-20261001",
+      "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/postpago/Tarifas-y-Requisitos/tarifas-y-requisitos/requisitos-postpago",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-esim-20261001",
+      "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/mas-servicios/servicios-adicionales/e-sim-kolbi",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-prepaid-roaming-20261001",
+      "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/roaming/roaming/tarifas-y-activacion-prepago/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "kolbi-prepaid-roaming-coverage-20261001",
+      "url": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/roaming/roaming/roamingcobertura/Page%2BComponents/navegacion-secundaria",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "sourceIds": [
+    "kolbi-prepago-terms-20261001",
+    "kolbi-tourist-sim-20261001",
+    "kolbi-prepago-chip-20261001",
+    "kolbi-foreigner-passport-20261001",
+    "kolbi-esim-20261001",
+    "kolbi-prepaid-roaming-20261001",
+    "kolbi-prepaid-roaming-coverage-20261001"
+  ],
+  "events": [
+    {
+      "id": "evt-kolbi-cr-2026-db-c12-20261001",
+      "routeId": "kolbi-cr-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "kölbi terms tie 90 days without a chargeable main-balance event or recharge to definitive liquidation and number disposal; current tourist/passport acquisition and China roaming make the route usable as backstage evidence without inventing a cheapest annual cost.",
+      "sourceId": "kolbi-prepago-terms-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-kolbi-cr-2026-current-profile-20261001",
+      "routeId": "kolbi-cr-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c12-reviewed-2026-10-01",
+      "data": {
+        "id": "kolbi-cr-2026",
+        "brandId": "kolbi-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "kölbi currently offers a tourist prepaid SIM and explicitly states elsewhere on its current requirements page that a new foreign customer can acquire kölbi prepaid with a passport. Current eSIM material covers prepaid service but requires pickup/issuance at kölbi/ICE stores.",
+        "landedCost": {
+          "currency": "CRC",
+          "providerOrCommunityPrice": 12095,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 12095,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-tourist-sim-price"
+        },
+        "keep": {
+          "currency": "CRC",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Generate a billable event that deducts from the main prepaid balance, or recharge, before 90 days elapse. kölbi terms say that after 90 days with no such event the service is definitively liquidated and the number resource is disposed. Exact cheapest remote qualifying action is not normalized as a guaranteed annual cost.",
+          "intervalDays": 90,
+          "state": "current-provider-90-day-chargeable-event-lifecycle"
+        },
+        "chinaActivation": "Initial acquisition/registration is a Costa Rica retail/visitor flow. Current first-party material supports foreign passport acquisition, but no China-first remote activation path is claimed.",
+        "kyc": "kölbi offers a tourist SIM, and a current first-party requirements page explicitly says a new foreign customer may acquire kölbi prepaid with a passport. The dedicated prepaid requirements page lists resident/refugee/diplomatic documents for foreigners, so passport support is preserved with its exact source rather than generalized to every sales channel.",
+        "payment": "Recharge is available through App kölbi and Mi kölbi/web as well as physical channels. The tourist plan can continue through recharge after its included plan ends; foreign-card acceptance is unverified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current prepaid roaming supports making/receiving calls and sending/receiving SMS; China appears in the prepaid roaming coverage list. Specific OTP-sender delivery remains unverified.",
+        "refund": "not reconciled",
+        "trend": "explicit-90-day-lifecycle-tourist-path",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.kolbi.cr/wps/portal/kolbi/personas/servicios/prepago/chip-prepago/chip-prepago/kolbi-sim-turista",
+        "tariffSummary": "Tourist prepaid acquisition is current; 90 days without a chargeable main-balance event/recharge triggers definitive service liquidation and number disposal; prepaid roaming includes China.",
+        "sourceIds": [
+          "kolbi-prepago-terms-20261001",
+          "kolbi-tourist-sim-20261001",
+          "kolbi-prepago-chip-20261001",
+          "kolbi-foreigner-passport-20261001",
+          "kolbi-esim-20261001",
+          "kolbi-prepaid-roaming-20261001",
+          "kolbi-prepaid-roaming-coverage-20261001"
+        ],
+        "guideSteps": [
+          "Acquire through the current tourist/prepaid retail path and use the documented foreign-passport route where accepted.",
+          "Do not let 90 days pass without a qualifying billable event or recharge; the terms tie that period to definitive liquidation and number disposal.",
+          "Treat China prepaid roaming as network capability, not as proof that every OTP sender works."
+        ]
+      }
+    }
+  ]
+}
