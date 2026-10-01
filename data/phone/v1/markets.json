@@ -210,9 +210,19 @@
     "countryCode": "LV"
   },
   {
+    "id": "ma",
+    "name": "Morocco",
+    "countryCode": "MA"
+  },
+  {
     "id": "me",
     "name": "Montenegro",
     "countryCode": "ME"
+  },
+  {
+    "id": "mt",
+    "name": "Malta",
+    "countryCode": "MT"
   },
   {
     "id": "mx",
@@ -233,6 +243,11 @@
     "id": "nl",
     "name": "Netherlands",
     "countryCode": "NL"
+  },
+  {
+    "id": "no",
+    "name": "Norway",
+    "countryCode": "NO"
   },
   {
     "id": "nz",

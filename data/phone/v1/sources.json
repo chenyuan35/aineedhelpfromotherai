@@ -408,6 +408,48 @@
     "reportedAt": "2026-09-23"
   },
   {
+    "id": "go-mt-auto-topup-id-20261001",
+    "url": "https://www.go.com.mt/terms-and-conditions/auto-topup-and-sms-topup/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-esim-help-20261001",
+    "url": "https://www.go.com.mt/support/how-can-i-get-an-esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-mobile-terms-20261001",
+    "url": "https://www.go.com.mt/terms-and-conditions/mobile-terms-and-conditions/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-payg-base-20261001",
+    "url": "https://www.go.com.mt/terms-and-conditions/pay-as-you-go-base-plan/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-payg-disconnection-20261001",
+    "url": "https://www.go.com.mt/terms-and-conditions/pay-as-you-go-disconnection-policy/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-roaming-zones-20261001",
+    "url": "https://www.go.com.mt/roaming-zones/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "go-mt-visitor-esim-20261001",
+    "url": "https://www.go.com.mt/top-up-mobile-number-malta/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
     "id": "good2go-home-20260929",
     "url": "https://good2gomobile.ca/",
     "type": "provider-official",
@@ -424,6 +466,48 @@
     "url": "https://www.hotmobile.co.il/Hotalk/Pages/cards.aspx",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "iam-esim-delay-community-20260116",
+    "url": "https://www.reddit.com/r/Morocco/comments/1qeo479/maroc_telecom_esim_slow_deliy/",
+    "type": "independent-community",
+    "reportedAt": "2026-01-16"
+  },
+  {
+    "id": "iam-esim-delay-community-20260609",
+    "url": "https://www.reddit.com/r/Morocco/comments/1u1d1ho/esim_visiteur_320dh_qr_code_doesnt_arrive_no/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-09"
+  },
+  {
+    "id": "iam-esim-tourist-community-20260203",
+    "url": "https://www.reddit.com/r/Morocco/comments/1qusysw/esim_from_maroc_telecom_iam_how_to_activate/",
+    "type": "independent-community",
+    "reportedAt": "2026-02-03"
+  },
+  {
+    "id": "iam-jawal-distance-terms-20261001",
+    "url": "https://www.iam.ma/ar/conditions-g%C3%A9n%C3%A9rales-de-vente-%C3%A0-distance-e-boutique-d-abonnement-t%C3%A9l%C3%A9phonie-mobile-pr%C3%A9pay%C3%A9-jawal",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iam-jawal-terms-20261001",
+    "url": "https://www.iam.ma/fr/web/iam-portal/conditions-generales-de-vente-t%C3%A9l%C3%A9phonie-mobile-pr%C3%A9pay%C3%A9e-jawal-",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iam-mobile-assistance-20261001",
+    "url": "https://www.iam.ma/fr/web/iam-portal/w/assistance-mobile",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "iam-recharge-20261001",
+    "url": "https://www.iam.ma/fr/web/iam-portal/recharge",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "id-mobile-180d-community-20251121",
@@ -2308,6 +2392,30 @@
     "url": "https://www.telekom.sk/wiki/volania/dobitie-kreditu",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "telenor-no-id-bankid-20261001",
+    "url": "https://www.telenor.no/telenor-id/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "telenor-no-kontant-help-20261001",
+    "url": "https://www.telenor.no/kundeservice/mobil/abonnement-og-tjenester/kontantkort/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "telenor-no-kontant-product-20261001",
+    "url": "https://www.telenor.no/mobilabonnement/kontantkort/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "telenor-no-mobile-terms-20261001",
+    "url": "https://www.telenor.no/vilkar/mobile-tjenester/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-01"
   },
   {
     "id": "telia-super-starter-2026-09-29",

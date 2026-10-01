@@ -207,6 +207,15 @@
     "sourceId": "linuxdo-giffgaff-2903412"
   },
   {
+    "id": "evt-go-payasyougo-mt-2026-db-c11-20261001",
+    "routeId": "go-payasyougo-mt-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "GO PAYG resets its inactivity clock with a top-up or chargeable event; 90 days without one enters a 275-day grace period, after which the SIM disconnects unless reactivated. Visitor eSIM can be obtained through the GO app before arrival and PAYG roaming is enabled on activation.",
+    "sourceId": "go-mt-payg-disconnection-20261001"
+  },
+  {
     "id": "evt-good2go-payg-ca-2026-db-c3-review-20260929",
     "routeId": "good2go-payg-ca-2026",
     "type": "cost-and-lifecycle-correction",
@@ -378,6 +387,15 @@
     "sourceId": "official-magti-number-maintenance-2026-09-29"
   },
   {
+    "id": "evt-maroc-telecom-prepaid-2026-db-c11-20261001",
+    "routeId": "maroc-telecom-prepaid-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current JAWAL terms establish a 12-month card validity renewed by each recharge, SIM/eSIM support and identity-backed activation. Recent visitor-eSIM reports preserve real tourist acquisition plus fulfillment friction; foreign-passport long-term eligibility is not inferred from generic identity-document language.",
+    "sourceId": "iam-jawal-terms-20261001"
+  },
+  {
     "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
     "routeId": "mobitel-lk-retention-2026",
     "type": "eligibility-conflict",
@@ -538,6 +556,15 @@
     "scope": "route",
     "outcome": "Current Telekom rules replace the legacy recurring 90-day assumption: the first top-up is due within 90 days of activation, then each top-up extends the SIM and nominal credit by 180 days.",
     "sourceId": "telekom-easy-en-20260929"
+  },
+  {
+    "id": "evt-telenor-kontant-no-2026-db-c11-20261001",
+    "routeId": "telenor-kontant-no-2026",
+    "type": "lifecycle-identity-reconciliation",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Current Telenor Kontant uses a 12-month clock from the last recharge, followed by a two-month automatic reopening window. Current self-service access requires Telenor ID/BankID and web recharge cards are limited to Nordic-issued cards, so nonresident acquisition and maintenance remain constrained.",
+    "sourceId": "telenor-no-mobile-terms-20261001"
   },
   {
     "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",

@@ -204,6 +204,12 @@
     "marketId": "ph"
   },
   {
+    "id": "go-payasyougo",
+    "networkId": "go-mt",
+    "name": "GO Pay As You GO",
+    "marketId": "mt"
+  },
+  {
     "id": "good2go-ca",
     "networkId": "rogers-ca",
     "name": "Good2Go Mobile Canada",
@@ -340,6 +346,12 @@
     "networkId": "magticom-ge",
     "name": "Magticom Prepaid",
     "marketId": "ge"
+  },
+  {
+    "id": "maroc-prepaid",
+    "networkId": "maroc-telecom",
+    "name": "Maroc Telecom Prepaid",
+    "marketId": "ma"
   },
   {
     "id": "mobal-japan-jp",
@@ -538,6 +550,12 @@
     "networkId": "telekom-sk",
     "name": "Telekom Easy",
     "marketId": "sk"
+  },
+  {
+    "id": "telenor-kontant-no",
+    "networkId": "telenor-no",
+    "name": "Telenor Kontant",
+    "marketId": "no"
   },
   {
     "id": "telia-konekaart",

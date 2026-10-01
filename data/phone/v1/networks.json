@@ -145,6 +145,11 @@
     "marketId": "ph"
   },
   {
+    "id": "go-mt",
+    "name": "GO Malta",
+    "marketId": "mt"
+  },
+  {
     "id": "grameenphone-bd",
     "name": "Grameenphone",
     "marketId": "bd"
@@ -193,6 +198,11 @@
     "id": "magticom-ge",
     "name": "Magticom",
     "marketId": "ge"
+  },
+  {
+    "id": "maroc-telecom",
+    "name": "Maroc Telecom",
+    "marketId": "ma"
   },
   {
     "id": "maxis-my",
@@ -353,6 +363,11 @@
     "id": "telekom-sk",
     "name": "Slovak Telekom",
     "marketId": "sk"
+  },
+  {
+    "id": "telenor-no",
+    "name": "Telenor Norway",
+    "marketId": "no"
   },
   {
     "id": "telia-ee",

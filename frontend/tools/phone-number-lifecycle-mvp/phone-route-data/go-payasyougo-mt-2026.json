@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "go-payasyougo-mt-2026",
+    "marketId": "mt",
+    "networkId": "go-mt",
+    "brandId": "go-payasyougo",
+    "displayName": "GO Pay As You GO Malta",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-01",
+    "acquireUrl": "https://www.go.com.mt/top-up-mobile-number-malta/",
+    "sourceIds": [
+      "go-mt-auto-topup-id-20261001",
+      "go-mt-esim-help-20261001",
+      "go-mt-mobile-terms-20261001",
+      "go-mt-payg-base-20261001",
+      "go-mt-payg-disconnection-20261001",
+      "go-mt-roaming-zones-20261001",
+      "go-mt-visitor-esim-20261001"
+    ]
+  },
+  "market": {
+    "id": "mt",
+    "name": "Malta",
+    "countryCode": "MT"
+  },
+  "network": {
+    "id": "go-mt",
+    "name": "GO Malta",
+    "marketId": "mt"
+  },
+  "brand": {
+    "id": "go-payasyougo",
+    "networkId": "go-mt",
+    "name": "GO Pay As You GO",
+    "marketId": "mt"
+  },
+  "metrics": {
+    "routeId": "go-payasyougo-mt-2026",
+    "checkedAt": "2026-10-01",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "go-mt-auto-topup-id-20261001",
+      "url": "https://www.go.com.mt/terms-and-conditions/auto-topup-and-sms-topup/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-esim-help-20261001",
+      "url": "https://www.go.com.mt/support/how-can-i-get-an-esim/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-mobile-terms-20261001",
+      "url": "https://www.go.com.mt/terms-and-conditions/mobile-terms-and-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-payg-base-20261001",
+      "url": "https://www.go.com.mt/terms-and-conditions/pay-as-you-go-base-plan/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-payg-disconnection-20261001",
+      "url": "https://www.go.com.mt/terms-and-conditions/pay-as-you-go-disconnection-policy/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-roaming-zones-20261001",
+      "url": "https://www.go.com.mt/roaming-zones/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "go-mt-visitor-esim-20261001",
+      "url": "https://www.go.com.mt/top-up-mobile-number-malta/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-01"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-go-payasyougo-mt-2026-db-c11-20261001",
+      "routeId": "go-payasyougo-mt-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-01",
+      "scope": "route",
+      "outcome": "GO PAYG resets its inactivity clock with a top-up or chargeable event; 90 days without one enters a 275-day grace period, after which the SIM disconnects unless reactivated. Visitor eSIM can be obtained through the GO app before arrival and PAYG roaming is enabled on activation.",
+      "sourceId": "go-mt-payg-disconnection-20261001"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-go-payasyougo-mt-2026-current-profile-20261001",
+      "routeId": "go-payasyougo-mt-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-01",
+      "sourceDataset": "db-c11-reviewed-2026-10-01",
+      "data": {
+        "id": "go-payasyougo-mt-2026",
+        "brandId": "go-payasyougo",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "GO explicitly offers a Malta mobile number/eSIM to visitors through the GO app, including setup before landing and activation after top-up. The app flow requires SIM registration; the current visitor page does not enumerate the exact identity-document list.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-visitor-esim-acquisition"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.1,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Perform at least one chargeable event or top-up before 90 days of inactivity. An outgoing local SMS on the current PAYG Base tariff is EUR0.10 and qualifies as chargeable activity. If the line enters the 275-day grace period, GO documents free SIM reactivation at a retail outlet. Do not convert this into a guaranteed remote annual cost.",
+          "intervalDays": 90,
+          "state": "current-provider-90-day-activity-plus-275-day-grace"
+        },
+        "chinaActivation": "GO markets visitor eSIM setup before arrival in Malta, but activation is completed when the user tops up/starts the service. Overseas-first long-term activation beyond the documented visitor flow is not generalized.",
+        "kyc": "The GO app/new-eSIM flow requires SIM registration. Current visitor material does not enumerate the exact accepted identity document in-app. Separate GO registration terms explicitly allow a passport for manual registration at a GO customer contact centre; this is not treated as proof of every app-registration path.",
+        "payment": "Visitor eSIM can be topped up online from GO's website/app. Current pages support online top-up; no special foreign-card guarantee is inferred.",
+        "wifiCalling": "unverified",
+        "roamingSms": "PAYG international activity and roaming are enabled upon activation. China is listed in GO's Prepaid Top-up Zone 4. Delivery of specific third-party OTPs remains unverified and is not guaranteed.",
+        "refund": "not reconciled",
+        "trend": "current-visitor-esim-explicit-lifecycle",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-01",
+        "acquireUrl": "https://www.go.com.mt/top-up-mobile-number-malta/",
+        "tariffSummary": "Visitor eSIM is directly supported; avoid 90 days without chargeable activity/top-up. GO then provides a 275-day grace/reactivation period before disconnection; PAYG roaming is enabled on activation and China is a listed prepaid roaming destination.",
+        "sourceIds": [
+          "go-mt-payg-disconnection-20261001",
+          "go-mt-mobile-terms-20261001",
+          "go-mt-roaming-zones-20261001",
+          "go-mt-visitor-esim-20261001",
+          "go-mt-esim-help-20261001",
+          "go-mt-payg-base-20261001",
+          "go-mt-auto-topup-id-20261001"
+        ],
+        "guideSteps": [
+          "Use the current visitor eSIM/app path rather than assuming a local-resident-only acquisition route.",
+          "Reset the inactivity clock with a chargeable event or top-up before 90 days.",
+          "Treat China roaming availability as network capability, not as a guarantee that every OTP sender will deliver."
+        ]
+      }
+    }
+  ]
+}
