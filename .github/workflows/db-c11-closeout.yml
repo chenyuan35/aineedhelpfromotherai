@@ -1,0 +1,108 @@
+name: DB-C11 Closeout
+
+on:
+  push:
+    branches:
+      - docs/db-c11-closeout-20261001
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: docs/db-c11-closeout-20261001
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update authoritative facts
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected exactly one match, got {count}: {old[:120]!r}')
+              p.write_text(text.replace(old, new, 1))
+
+          replace_once(
+              'PROJECT_CONTEXT.md',
+              'DB-C10 has now expanded only the backstage normalized database to 119 routes; the public comparison surface remains 135 routes and route indexability remains 3.',
+              'DB-C11 has now expanded only the backstage normalized database to 122 routes; the public comparison surface remains 135 routes and route indexability remains 3.'
+          )
+          replace_once(
+              'PROJECT_CONTEXT.md',
+              '| Phone data / publication foundation | **135-ROUTE COMPARISON / 119-ROUTE CANONICAL / 3 INDEXABLE.** DB-C10 released in PR #331 (`1bcf3506c808136107da874a95f98fb2c05b8358`): StarHub Prepaid Singapore, Jazz Prepaid Pakistan and Vodafone Egypt Prepaid are all HOLD after current lifecycle/KYC/roaming/product-boundary reconciliation. Canonical `data/phone/v1` is 119 routes / 67 markets / 116 brands / 91 networks / 415 sources; 108 route IDs overlap the 135-route comparison set and 27 remain legacy-only, including the known Sakura same-product alias blocker. CI #203, Eval Gate #1004 and Vercel Preview passed; production preserved hub/VOXI HTTP 200, DB-C10 StarHub HTTP 404 and 31 sitemap URLs. | Start bounded DB-C11 with `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, and `maroc-telecom-prepaid-2026`; keep `sakura-mobile-voice-2026` excluded, preserve the 3-route indexability allowlist, and use reviewed provenance/QC before canonical admission. |',
+              '| Phone data / publication foundation | **135-ROUTE COMPARISON / 122-ROUTE CANONICAL / 3 INDEXABLE.** DB-C11 released in PR #334 (`77fca34a5d070d192046afed0e4be33a34b9ef6c`): GO Pay As You GO Malta is ADMIT-BACKSTAGE; Telenor Kontant Norway and Maroc Telecom JAWAL are HOLD after current lifecycle/KYC/roaming/payment reconciliation. Canonical `data/phone/v1` is 122 routes / 70 markets / 119 brands / 94 networks / 433 sources; 111 route IDs overlap the 135-route comparison set and 24 remain legacy-only, including the known Sakura same-product alias blocker. CI #205, Eval Gate #1015 and Vercel Preview passed; production preserved hub/VOXI HTTP 200, all three DB-C11 standalone routes HTTP 404 and 31 sitemap URLs. | Start bounded DB-C12 with `mtn-gh-prepaid-2026`, `ncell-np-2026`, and `kolbi-cr-2026`; keep `sakura-mobile-voice-2026` excluded, preserve the 3-route indexability allowlist, and use reviewed provenance/QC before canonical admission. |'
+          )
+          replace_once(
+              'PROJECT_CONTEXT.md',
+              '**Next independent session: backend database coverage DB-C11.** Process `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, and `maroc-telecom-prepaid-2026` from the remaining 27 legacy-only comparison route IDs; keep Sakura excluded as the known same-product alias blocker and keep this as backstage normalization/evidence work. Any indexability change still requires the full SEO publication gate and a separate reviewed decision.',
+              '**Next independent session: backend database coverage DB-C12.** Process `mtn-gh-prepaid-2026`, `ncell-np-2026`, and `kolbi-cr-2026` from the remaining 24 legacy-only comparison route IDs; keep Sakura excluded as the known same-product alias blocker and keep this as backstage normalization/evidence work. Any indexability change still requires the full SEO publication gate and a separate reviewed decision.'
+          )
+
+          replace_once(
+              'docs/MASTER_PLAN.md',
+              'staged reviewed migrations plus backend coverage through DB-C10 have since raised canonical v1 to 119 routes / 67 markets / 116 brands / 91 networks / 415 sources with 108 route-ID overlaps. Twenty-seven comparison route IDs remain legacy-only, including the known Sakura same-product alias blocker;',
+              'staged reviewed migrations plus backend coverage through DB-C11 have since raised canonical v1 to 122 routes / 70 markets / 119 brands / 94 networks / 433 sources with 111 route-ID overlaps. Twenty-four comparison route IDs remain legacy-only, including the known Sakura same-product alias blocker;'
+          )
+          master = Path('docs/MASTER_PLAN.md')
+          text = master.read_text()
+          anchor = '45. **DONE — backend database coverage DB-C10.** `starhub-prepaid-sg-2026`, `jazz-pk-2026`, and `vodafone-eg-2026` were normalized as backstage HOLD routes after current source reconciliation. StarHub now uses the current one-month plan + 120-day grace lifecycle while preserving the passport-only 30-day registration blocker and withdrawing the stale cheap-USSD/top-up framing; Jazz now preserves PKR350 foreigner acquisition plus free incoming roaming SMS but leaves final number-deactivation/minimum keep-alive unresolved instead of misusing SIM Lagao; Vodafone Egypt now preserves current foreigner KYC/day-one prepaid roaming while explicitly excluding postpaid-only Park Your Line and separate Tourist Line from generic prepaid retention. PR #331 squash-merged as `1bcf3506c808136107da874a95f98fb2c05b8358` after CI #203, Eval Gate #1004 and Vercel Preview passed; production preserved hub/VOXI 200, DB-C10 StarHub non-indexable 404 and 31 sitemap URLs. Canonical coverage is now 119 routes / 67 markets / 116 brands / 91 networks / 415 sources, with 108 comparison↔canonical route-ID overlaps and 27 comparison route IDs still legacy-only. Next bounded DB-C11 batch is `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`; keep the Sakura same-product alias blocker excluded and preserve the 3-route publication boundary.\n'
+          addition = anchor + '46. **DONE — backend database coverage DB-C11.** `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, and `maroc-telecom-prepaid-2026` were normalized through reviewed backstage packets: GO Malta is ADMIT-BACKSTAGE with the current 90-day chargeable-activity/top-up clock, 275-day grace, visitor eSIM path and PAYG roaming; Telenor Norway is HOLD despite a clear 12-month + two-month reopening lifecycle because Telenor ID requires BankID and web recharge cards are Nordic-issued-card restricted; Maroc Telecom is HOLD despite a clear 12-month recharge-reset lifecycle because long-term foreign-passport eligibility and visitor eSIM fulfillment remain uncertain. PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c` after CI #205, Eval Gate #1015 and Vercel Preview passed; production preserved hub/VOXI 200, all three DB-C11 standalone routes 404 and 31 sitemap URLs. Canonical coverage is now 122 routes / 70 markets / 119 brands / 94 networks / 433 sources, with 111 comparison↔canonical route-ID overlaps and 24 comparison route IDs still legacy-only. Next bounded DB-C12 batch is `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`; keep the Sakura same-product alias blocker excluded and preserve the 3-route publication boundary.\n'
+          if text.count(anchor) != 1:
+              raise SystemExit('MASTER_PLAN DB-C10 anchor mismatch')
+          text = text.replace(anchor, addition, 1)
+          text = text.replace('46. **BACKLOG / separate review — second observer/source-change role.**', '47. **BACKLOG / separate review — second observer/source-change role.**', 1)
+          text = text.replace('47. **ONGOING — Relay data accrual.**', '48. **ONGOING — Relay data accrual.**', 1)
+          text = text.replace('48. **WAIT — TikTok review and authority batch 2.**', '49. **WAIT — TikTok review and authority batch 2.**', 1)
+          master.write_text(text)
+
+          replace_once(
+              'docs/CURRENT_EXECUTION_QUEUE.md',
+              '3. DB-C10 is released with **135 comparison routes / 119 canonical normalized routes / 108 comparison↔canonical route-ID overlaps / 27 comparison route IDs still legacy-only / 3 indexable routes**; production publication boundaries are verified.',
+              '3. DB-C11 is released with **135 comparison routes / 122 canonical normalized routes / 111 comparison↔canonical route-ID overlaps / 24 comparison route IDs still legacy-only / 3 indexable routes**; production publication boundaries are verified.'
+          )
+          replace_once(
+              'docs/CURRENT_EXECUTION_QUEUE.md',
+              '## NEXT — Backend database coverage DB-C11\n\nBounded batch: `telenor-kontant-no-2026`, `go-payasyougo-mt-2026`, `maroc-telecom-prepaid-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. No public/indexability change.',
+              '## JUST COMPLETED — Backend database coverage DB-C11\n\nDB-C11 is merged and production-verified. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.\n\n- `telenor-kontant-no-2026` — **HOLD**: current Telenor material establishes a 12-month recharge lifecycle plus a two-month automatic reopening window, but Telenor ID/self-service requires BankID and telenor.no recharge cards must be Norwegian, Danish, Swedish or Finnish; a current passport-only/nonresident acquisition path remains unverified.\n- `go-payasyougo-mt-2026` — **ADMIT-BACKSTAGE**: current GO policy establishes a 90-day chargeable-activity/top-up clock followed by a 275-day grace period; GO explicitly supports visitor eSIM setup before arrival, PAYG roaming is enabled on activation, and China is a listed prepaid roaming destination.\n- `maroc-telecom-prepaid-2026` — **HOLD**: current JAWAL terms establish SIM/eSIM, identity-backed activation, a 12-month validity reset by every recharge, online/app recharge and optional roaming, but ordinary long-term foreign-passport eligibility is not explicit and 2026 visitor-eSIM reports preserve QR/activation fulfillment friction.\n\nReleased state: **122 routes / 70 markets / 119 brands / 94 networks / 433 sources / 111 comparison overlaps / 24 legacy-only route IDs / 3 indexable**. `npm run phone:data:check`, `npm run verify`, `git diff --check` and the full frontend build passed; the frontend remains **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**. PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c`; CI #205, Eval Gate #1015 and Vercel Preview passed. Production verification: Phone hub 200, existing VOXI route 200, all three DB-C11 standalone routes 404, sitemap 31 URLs with no DB-C11 route.\n\nQwen/Kimi agent output was not required or accepted for DB-C11; coordinator review, current provider/community evidence, the canonical importer and automated gates were sufficient.\n\n## NEXT — Backend database coverage DB-C12\n\nBounded batch: `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`. These are the next three legacy-only route IDs after excluding `sakura-mobile-voice-2026`, which remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. Reverify current product identity, lifecycle/keep economics, foreign-user KYC/acquisition path, overseas SMS/OTP/roaming behavior and payment constraints before admission. No public/indexability change.'
+          )
+          replace_once(
+              'docs/CURRENT_EXECUTION_QUEUE.md',
+              '- do not bulk-admit the remaining 27 legacy-only route IDs without provenance + QC;',
+              '- do not bulk-admit the remaining 24 legacy-only route IDs without provenance + QC;'
+          )
+
+          coverage = Path('docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md')
+          text = coverage.read_text()
+          marker = '\n## DB-C11 — completed 2026-10-01\n'
+          if marker in text:
+              raise SystemExit('DB-C11 coverage closeout already present')
+          text += '''\n\n## DB-C11 — completed 2026-10-01\n\nThe bounded DB-C11 Norway/Malta/Morocco batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.\n\n- `telenor-kontant-no-2026` — HOLD. Current Telenor help/terms establish a 12-month prepaid lifecycle after the last recharge plus a two-month automatic reopening window. Telenor ID creation/self-service requires BankID and web recharge cards are limited to Norwegian, Danish, Swedish or Finnish cards; a current passport-only/nonresident acquisition path remains unverified.\n- `go-payasyougo-mt-2026` — ADMIT-BACKSTAGE. Current GO policy establishes a 90-day chargeable-activity/top-up clock followed by a 275-day grace period; visitor eSIM can be obtained through the GO app before arrival, PAYG roaming is enabled on activation, and China is listed in Prepaid Top-up Zone 4. Specific third-party OTP delivery remains unguaranteed.\n- `maroc-telecom-prepaid-2026` — HOLD. Current JAWAL terms establish SIM/eSIM, identity-backed activation, a 12-month card validity renewed by each recharge, online/app recharge and optional roaming. The reviewed official terms do not resolve ordinary long-term foreign-passport eligibility, while current visitor-eSIM reports preserve QR-code delivery and activation friction.\n\nPost-DB-C11 state: **122 canonical routes / 70 markets / 119 brands / 94 networks / 433 sources / 111 comparison-overlap route IDs / 24 comparison route IDs still legacy-only / 3 explicit indexable routes**. Full Phone checks and frontend build preserve **135 comparison routes / 3 route detail pages / 0 market detail pages / 31 sitemap URLs**.\n\nRelease: PR #334 squash-merged as `77fca34a5d070d192046afed0e4be33a34b9ef6c` after CI #205, Eval Gate #1015 and Vercel Preview passed. Production verification confirmed the Phone hub and VOXI detail at HTTP 200, all three DB-C11 standalone route URLs at HTTP 404, and 31 sitemap URLs with no DB-C11 route.\n\nQwen/Kimi agent output was not required or accepted for this round. The reviewed packets, direct current evidence reconciliation, canonical importer, dedicated DB-C11 regression and full release gates were sufficient.\n\nDB-C12 next bounded batch: `mtn-gh-prepaid-2026`, `ncell-np-2026`, `kolbi-cr-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.\n'''
+          coverage.write_text(text)
+          PY
+
+      - name: Verify docs diff
+        run: |
+          git diff --check
+          grep -q 'DB-C12' PROJECT_CONTEXT.md
+          grep -q 'DB-C12' docs/CURRENT_EXECUTION_QUEUE.md
+          grep -q 'DB-C11 — completed 2026-10-01' docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md
+          grep -q '122 routes / 70 markets / 119 brands / 94 networks / 433 sources' docs/MASTER_PLAN.md
+
+      - name: Commit fact sources
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROJECT_CONTEXT.md docs/MASTER_PLAN.md docs/CURRENT_EXECUTION_QUEUE.md docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md
+          git commit -m "docs: close DB-C11 and queue DB-C12"
+          git push origin HEAD:docs/db-c11-closeout-20261001
