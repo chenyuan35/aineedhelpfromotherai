@@ -287,4 +287,18 @@ Release: PR #336 merged as `7e2233a5cf08511bda501701b79655ba11716ca5`; CI #207 a
 
 Qwen/Kimi agent output was not required or accepted for this round. The reviewed packets, direct current evidence reconciliation, canonical importer, dedicated DB-C12 regression and full release gates were sufficient.
 
-DB-C13 next bounded batch: `telenor-kontantkort-se-2026`, `telia-dk-prepaid-2026`, `telemach-prepaid-si-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+## DB-C13 — completed 2026-10-02
+
+The bounded Sweden/Denmark/Slovenia batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `telenor-kontantkort-se-2026` — HOLD. Current Telenor support still recognizes registered prepaid numbers and destination-specific prepaid roaming, but no current 2026 Kontantkort sales/recharge ladder or inactivity/deactivation clock was located. The old SEK 50/365-day figure is explicitly withdrawn as current economics, and the foreign-user registration path remains unresolved.
+- `telia-dk-prepaid-2026` — HOLD. The stable legacy Telia Denmark prepaid route identity is preserved for reconciliation, but the current Norlys consumer mobile surface is subscription-led and no current prepaid/taletidskort successor purchase, recharge-validity or retention rule was established. Current Norlys subscription roaming/billing terms are not transferred to the legacy prepaid route.
+- `telemach-prepaid-si-2026` — ADMIT-BACKSTAGE. Current Telemach FREE2GO is actively sold; the current page displays a EUR2 promotional starter price with EUR5 preloaded credit, recharge vouchers start at EUR5, and provider material establishes the 90/180/270-day lifecycle. Full incoming/outgoing service requires recharge by day 90, later recharge can recover service through day 270, and provider terms allow disconnection thereafter. EU/EEA domestic-price roaming has a separate Slovenia-residence/stable-ties registration rule; China-specific OTP remains unverified.
+
+Post-DB-C13 state: **128 canonical routes / 76 markets / 125 brands / 101 networks / 461 sources / 117 comparison-overlap route IDs / 18 comparison route IDs still legacy-only / 3 explicit indexable routes**. All three review packets passed `apply-phone-review-packet.mjs --check` against clean `origin/main`; `npm run phone:data:check`, `npm run verify`, `npm run build --prefix frontend` and `git diff --check` passed. Full Phone publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #338 squash-merged as `3e5d6f58369eb4f53947f7a611a177ca58e7615c`; CI #209, Eval Gate #1023 and Vercel Preview passed. Production verification confirmed the Phone hub at HTTP 200, all three DB-C13 standalone route URLs at HTTP 404 and 31 sitemap URLs.
+
+No delegated worker output was required or accepted for DB-C13. The coordinator used current provider evidence, reviewed packets, the canonical importer and full automated/release gates.
+
+DB-C14 next bounded batch: `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, `claro-pre-co-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
