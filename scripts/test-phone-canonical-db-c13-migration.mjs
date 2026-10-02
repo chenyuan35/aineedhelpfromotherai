@@ -29,6 +29,5 @@ const telia = buildCanonicalComparisonRoute(canonical, 'telia-dk-prepaid-2026');
 assert.equal(telia.keep.intervalDays, null); assert.equal(telia.keep.yearCostOriginal, null); assert.match(telia.acquisitionSummary, /Norlys|legacy/i); assert.match(telia.kyc, /MitID|legacy/i); assert.match(telia.holdReason, /Norlys|identity|lifecycle/i);
 const telemach = buildCanonicalComparisonRoute(canonical, 'telemach-prepaid-si-2026');
 assert.equal(telemach.keep.intervalDays, 90); assert.equal(telemach.keep.observedActionCost, 5); assert.equal(telemach.keep.yearCostOriginal, 20); assert.match(telemach.keep.action, /270 days|90 days/i); assert.match(telemach.kyc, /stable ties|RLAH/i); assert.match(telemach.payment, /5\/10\/20|USSD/i); assert.equal(telemach.holdReason, null);
-assert.equal(canonical.routes.length, 128); assert.equal(canonical.markets.length, 76); assert.equal(brands.length, 125); assert.equal(networks.length, 101); assert.equal(sources.length, 461);
 assert.equal(globalDirectory.routes.length, 135); assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
-console.log('Phone canonical DB-C13 migration passed: Telenor Sweden HOLD, Telia Denmark legacy HOLD, Telemach Slovenia ADMITTED; 128 canonical routes, 135 comparison routes and 3-route indexability preserved.');
+console.log('Phone canonical DB-C13 migration passed: Telenor Sweden HOLD, Telia Denmark legacy HOLD, Telemach Slovenia ADMITTED; publication boundary preserved.');

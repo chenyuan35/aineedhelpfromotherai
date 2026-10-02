@@ -387,6 +387,47 @@
     ]
   },
   {
+    "id": "claro-pre-cl-2026",
+    "marketId": "cl",
+    "networkId": "claro-cl",
+    "brandId": "claro-pre-cl",
+    "displayName": "Claro Prepago Chile",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+    "sourceIds": [
+      "claro-cl-prepago-20261002",
+      "claro-cl-recargas-validity-20261002",
+      "claro-cl-recovery-id-20261002",
+      "claro-cl-roaming-20261002"
+    ]
+  },
+  {
+    "id": "claro-pre-co-2026",
+    "marketId": "co",
+    "networkId": "claro-co",
+    "brandId": "claro-pre-co",
+    "displayName": "Claro Prepago Colombia",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.claro.com.co/personas/servicios/servicios-moviles/prepago/",
+    "sourceIds": [
+      "claro-co-prepago-lifecycle-20261002",
+      "claro-co-prepago-roaming-20261002",
+      "claro-co-recarga-exterior-20261002",
+      "claro-co-recarga-online-20261002",
+      "claro-co-sim-store-20261002"
+    ]
+  },
+  {
     "id": "clubsim-sms-pack-6hkd-2026",
     "marketId": "hk",
     "networkId": "csl-hk",
@@ -1432,6 +1473,27 @@
       "one-me-roaming-20260930",
       "one-me-tourist-20260930",
       "one-me-webshop-terms-20260930"
+    ]
+  },
+  {
+    "id": "ooredoo-hala-qa-2026",
+    "marketId": "qa",
+    "networkId": "ooredoo-qa",
+    "brandId": "ooredoo-hala",
+    "displayName": "Ooredoo Hala Qatar",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.ooredoo.qa/web/en/prepaid-plans/buy-prepaid-sim/",
+    "sourceIds": [
+      "ooredoo-qa-buy-hala-20261002",
+      "ooredoo-qa-etopup-20261002",
+      "ooredoo-qa-identity-20261002",
+      "ooredoo-qa-prepaid-roaming-20261002",
+      "ooredoo-qa-prepaid-validity-20261002"
     ]
   },
   {

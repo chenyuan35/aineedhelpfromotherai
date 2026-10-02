@@ -108,6 +108,24 @@
     "sourceId": "claro-prepaid-plan-legacy-2026-09-26"
   },
   {
+    "id": "evt-claro-pre-cl-2026-db-c14-20261002",
+    "routeId": "claro-pre-cl-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "Current Claro Chile prepaid evidence establishes subscriber identification and a 180-day total recharge/recovery window, but current foreign-passport new-line activation, prepaid overseas SMS behavior and foreign-card recharge execution remain unresolved.",
+    "sourceId": "claro-cl-recargas-validity-20261002"
+  },
+  {
+    "id": "evt-claro-pre-co-2026-db-c14-20261002",
+    "routeId": "claro-pre-co-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "Current Claro Colombia prepaid evidence establishes a COP1,000 recharge floor, 60-day recharge validity, line-deactivation risk after 60 days without movements and free incoming roaming SMS in supported prepaid destinations; foreign-user initial registration and mainland-China coverage remain unresolved.",
+    "sourceId": "claro-co-prepago-lifecycle-20261002"
+  },
+  {
     "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
     "routeId": "cosmote-frog-13mo-2026",
     "type": "cost-and-lifecycle-correction",
@@ -475,6 +493,15 @@
     "scope": "route",
     "outcome": "Current provider pages establish a 90-day active window, EUR2 online top-up floor and an extended tourist-eSIM recharge grace period, while roaming terms explicitly exclude Tourist Package users from roaming outside Montenegro.",
     "sourceId": "one-me-tourist-20260930"
+  },
+  {
+    "id": "evt-ooredoo-hala-qa-2026-db-c14-20261002",
+    "routeId": "ooredoo-hala-qa-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "Current Hala evidence establishes a QAR10 minimum recharge, 30-day active credit validity followed by 179 days of grace before line deactivation, passport/QID verification and current prepaid roaming coverage including China; OTP reliability remains unverified.",
+    "sourceId": "ooredoo-qa-prepaid-validity-20261002"
   },
   {
     "id": "evt-optus-flex-plus-au-2026-db-c4-review-20260929",

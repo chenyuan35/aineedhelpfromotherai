@@ -80,6 +80,16 @@
     "marketId": "br"
   },
   {
+    "id": "claro-cl",
+    "name": "Claro Chile",
+    "marketId": "cl"
+  },
+  {
+    "id": "claro-co",
+    "name": "Claro Colombia",
+    "marketId": "co"
+  },
+  {
     "id": "cmhk-hk",
     "name": "China Mobile Hong Kong",
     "marketId": "hk"
@@ -268,6 +278,11 @@
     "id": "one-me",
     "name": "One Montenegro",
     "marketId": "me"
+  },
+  {
+    "id": "ooredoo-qa",
+    "name": "Ooredoo Qatar",
+    "marketId": "qa"
   },
   {
     "id": "optus-au",

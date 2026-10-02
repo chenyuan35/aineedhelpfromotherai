@@ -242,6 +242,30 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "claro-pre-cl-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "CLP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "CLP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "claro-pre-co-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "COP",
+      "acquisitionCostOriginal": 15000,
+      "acquisitionCostCny": null,
+      "keepCurrency": "COP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 60
+    },
+    {
       "routeId": "clubsim-sms-pack-6hkd-2026",
       "checkedAt": "2026-09-28",
       "metricState": "current-profile",
@@ -876,6 +900,18 @@
       "keepYearCostOriginal": 8,
       "keepYearCostCny": null,
       "keepIntervalDays": 90
+    },
+    {
+      "routeId": "ooredoo-hala-qa-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "QAR",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": null,
+      "keepCurrency": "QAR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 209
     },
     {
       "routeId": "optus-flex-plus-au-2026",
