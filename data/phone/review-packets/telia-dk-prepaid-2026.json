@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-02",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c13",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. Current Telia-hosted supplier information identifies Norlys Mobil A/S, and the current Norlys consumer mobile storefront sells subscriptions. A current Telia-branded prepaid/taletidskort product, recharge-validity rule, foreign-user acquisition path and overseas SMS behavior were not located. Preserve the legacy route for reconciliation without pretending the old product is currently buyable.",
+  "market": {
+    "id": "dk",
+    "name": "Denmark",
+    "countryCode": "DK"
+  },
+  "network": {
+    "id": "norlys-mobile-dk",
+    "name": "Norlys Mobil Denmark (Telia successor)",
+    "marketId": "dk"
+  },
+  "brand": {
+    "id": "telia-dk-prepaid",
+    "networkId": "norlys-mobile-dk",
+    "name": "Telia DK Prepaid (legacy identity)",
+    "marketId": "dk"
+  },
+  "route": {
+    "id": "telia-dk-prepaid-2026",
+    "marketId": "dk",
+    "networkId": "norlys-mobile-dk",
+    "brandId": "telia-dk-prepaid",
+    "displayName": "Telia DK Prepaid (legacy identity)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://shop.norlys.dk/mobil/",
+    "sourceIds": [
+      "telia-dk-norlys-supplier-20261002",
+      "norlys-dk-mobile-shop-20261002",
+      "norlys-dk-login-transition-20261002"
+    ]
+  },
+  "sources": [
+    {
+      "id": "telia-dk-norlys-supplier-20261002",
+      "url": "https://www.telia.dk/contentassets/bc42b5a3317f4a6db4f7a99478ce12c5/leverandoerinformation-signed-2025.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "norlys-dk-mobile-shop-20261002",
+      "url": "https://shop.norlys.dk/mobil/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "norlys-dk-login-transition-20261002",
+      "url": "https://norlys.dk/login/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    }
+  ],
+  "sourceIds": [
+    "telia-dk-norlys-supplier-20261002",
+    "norlys-dk-mobile-shop-20261002",
+    "norlys-dk-login-transition-20261002"
+  ],
+  "events": [
+    {
+      "id": "evt-telia-dk-prepaid-2026-db-c13-20261002",
+      "routeId": "telia-dk-prepaid-2026",
+      "type": "product-identity-reconciliation",
+      "reportedAt": "2026-10-02",
+      "scope": "route",
+      "outcome": "The legacy Telia DK prepaid label now conflicts with the current Norlys Mobil consumer surface; no current Telia-branded prepaid product/lifecycle was located, so the route remains HOLD.",
+      "sourceId": "telia-dk-norlys-supplier-20261002"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telia-dk-prepaid-2026-current-profile-20261002",
+      "routeId": "telia-dk-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-02",
+      "sourceDataset": "db-c13-reviewed-2026-10-02",
+      "data": {
+        "id": "telia-dk-prepaid-2026",
+        "brandId": "telia-dk-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "The legacy Telia Denmark prepaid label is retained only for database reconciliation. Current Telia-hosted supplier information identifies Norlys Mobil A/S, and current Norlys consumer mobile sales are subscription products. No current Telia-branded prepaid/taletidskort acquisition path was located.",
+        "landedCost": {
+          "currency": "DKK",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-prepaid-product-not-established"
+        },
+        "keep": {
+          "currency": "DKK",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "No current Telia DK prepaid lifecycle or recharge-validity rule was established. Do not infer a keep-alive cost from current Norlys subscription products or old Telia material.",
+          "intervalDays": null,
+          "state": "legacy-product-successor-conflict"
+        },
+        "chinaActivation": "No current Telia DK prepaid acquisition/activation route was established. Current Norlys mobile ordering is subscription-based and uses MitID.",
+        "kyc": "Current Norlys consumer mobile ordering uses MitID for subscription purchase. That does not establish a foreign-user path for the legacy Telia prepaid product, which was not found as a current offer.",
+        "payment": "Current Norlys consumer mobile is sold as monthly subscription service; this is not treated as evidence for legacy prepaid recharge/payment mechanics.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current Norlys subscriptions advertise roaming, but those terms are not mapped onto the unverified legacy Telia prepaid product; overseas SMS/OTP for this route remains unresolved.",
+        "refund": "not reconciled",
+        "trend": "legacy-telia-identity-superseded-by-norlys",
+        "guideEligible": false,
+        "holdReason": "Current Telia DK prepaid product identity and lifecycle were not established. Telia-hosted current supplier information identifies Norlys Mobil A/S, while current Norlys consumer mobile sales are subscription-based.",
+        "lastVerifiedAt": "2026-10-02",
+        "acquireUrl": "https://shop.norlys.dk/mobil/",
+        "tariffSummary": "Legacy Telia DK prepaid identity is preserved for reconciliation, but current consumer mobile is Norlys subscription service and no current prepaid lifecycle was found; HOLD.",
+        "sourceIds": [
+          "telia-dk-norlys-supplier-20261002",
+          "norlys-dk-mobile-shop-20261002",
+          "norlys-dk-login-transition-20261002"
+        ],
+        "guideSteps": [
+          "Treat this as a legacy identity record, not a current purchase recommendation.",
+          "Do not map Norlys subscription pricing onto the former Telia prepaid product.",
+          "Re-open only if a current prepaid/taletidskort product or migration rule is documented."
+        ]
+      }
+    }
+  ]
+}

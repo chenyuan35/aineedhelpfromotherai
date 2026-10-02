@@ -250,6 +250,11 @@
     "marketId": "np"
   },
   {
+    "id": "norlys-mobile-dk",
+    "name": "Norlys Mobil Denmark (Telia successor)",
+    "marketId": "dk"
+  },
+  {
     "id": "o2-cz",
     "name": "O2 Czech Republic",
     "marketId": "cz"
@@ -380,9 +385,19 @@
     "marketId": "sk"
   },
   {
+    "id": "telemach-si",
+    "name": "Telemach Slovenia",
+    "marketId": "si"
+  },
+  {
     "id": "telenor-no",
     "name": "Telenor Norway",
     "marketId": "no"
+  },
+  {
+    "id": "telenor-se",
+    "name": "Telenor Sweden",
+    "marketId": "se"
   },
   {
     "id": "telia-ee",

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "telemach-prepaid-si-2026",
+    "marketId": "si",
+    "networkId": "telemach-si",
+    "brandId": "telemach-free2go",
+    "displayName": "Telemach Free2Go Slovenia",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://telemach.si/mobilna/predplacniski-paketi/mobilni-paket-free2-go",
+    "sourceIds": [
+      "telemach-si-free2go-20261002",
+      "telemach-si-free2go-rlah-registration-20261002",
+      "telemach-si-prepaid-terms-20261002",
+      "telemach-si-prepaid-validity-20261002"
+    ]
+  },
+  "market": {
+    "id": "si",
+    "name": "Slovenia",
+    "countryCode": "SI"
+  },
+  "network": {
+    "id": "telemach-si",
+    "name": "Telemach Slovenia",
+    "marketId": "si"
+  },
+  "brand": {
+    "id": "telemach-free2go",
+    "networkId": "telemach-si",
+    "name": "Telemach Free2Go",
+    "marketId": "si"
+  },
+  "metrics": {
+    "routeId": "telemach-prepaid-si-2026",
+    "checkedAt": "2026-10-02",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 2,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 20,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "telemach-si-free2go-20261002",
+      "url": "https://telemach.si/mobilna/predplacniski-paketi/mobilni-paket-free2-go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "telemach-si-free2go-rlah-registration-20261002",
+      "url": "https://telemach.si/pomoc/mobilna-telefonija/registracija-free2go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "telemach-si-prepaid-terms-20261002",
+      "url": "https://telemach.si/download/terms/splosni-pogoji-uporabe-predplacniskega-sistema-veljavno-od-1-8-2024-spr/12212",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "telemach-si-prepaid-validity-20261002",
+      "url": "https://telemach.si/mobilna/predplacniski-paketi/internet-paketi-net2go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-telemach-prepaid-si-2026-db-c13-20261002",
+      "routeId": "telemach-prepaid-si-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-02",
+      "scope": "route",
+      "outcome": "Current Free2Go material establishes active acquisition, a EUR 5 recharge floor and the 90/180/270-day lifecycle; general prepaid terms allow SIM disconnection after day 270, while China OTP remains unverified.",
+      "sourceId": "telemach-si-prepaid-terms-20261002"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telemach-prepaid-si-2026-current-profile-20261002",
+      "routeId": "telemach-prepaid-si-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-02",
+      "sourceDataset": "db-c13-reviewed-2026-10-02",
+      "data": {
+        "id": "telemach-prepaid-si-2026",
+        "brandId": "telemach-free2go",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Telemach actively sells Free2Go physical prepaid SIMs through its stores and a wide Slovenian retail network. The current page shows a EUR 2 promotional starter price with EUR 5 preloaded credit. Prepaid recharge cards are EUR 5, 10 or 20 and can be applied by USSD at home or abroad.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 2,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-promotional-starter-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 20,
+          "yearCostCny": null,
+          "action": "Recharge at least EUR 5 every 90 days to preserve continuous incoming and outgoing service. Days 91-180 are incoming-only; days 181-270 lose normal service. A recharge during days 91-270 restores service and restarts the 90-day period. The current prepaid terms allow Telemach to disconnect the SIM after 270 days without recharge; 30 days after disconnection the number cannot be reactivated or ported.",
+          "intervalDays": 90,
+          "state": "current-provider-continuous-service-floor"
+        },
+        "chinaActivation": "Free2Go is a Slovenian physical-SIM acquisition route. Current provider material supports domestic retail purchase and prepaid roaming, but China-first activation and mainland-China OTP behavior are not established.",
+        "kyc": "The current Free2Go sales page does not establish a general passport/no-KYC rule. For EU/EEA Roam-Like-At-Home domestic pricing, users activating from 1 October 2020 must register and prove habitual residence or stable ties to Slovenia; unregistered users can still roam in the EU/EEA with surcharges.",
+        "payment": "Recharge vouchers are sold in EUR 5/10/20 denominations and can be redeemed by USSD at home or abroad. Telemach subscribers can also use Polni zame. Foreign-bank-card recharge success is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Telemach explicitly directs prepaid users to its roaming country/operator tariff and documents EU/EEA roaming for Free2Go, including a separate registration rule for domestic-price RLAH. China-specific incoming SMS/OTP was not verified.",
+        "refund": "not reconciled",
+        "trend": "current-product-exact-90-180-270-lifecycle",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-02",
+        "acquireUrl": "https://telemach.si/mobilna/predplacniski-paketi/mobilni-paket-free2-go",
+        "tariffSummary": "Current Free2Go starter is displayed at EUR 2 with EUR 5 credit; EUR 5 is the lowest listed recharge. Full service lasts 90 days after recharge, followed by incoming-only to day 180 and restricted retention through day 270; Telemach may disconnect thereafter.",
+        "sourceIds": [
+          "telemach-si-free2go-20261002",
+          "telemach-si-prepaid-validity-20261002",
+          "telemach-si-free2go-rlah-registration-20261002",
+          "telemach-si-prepaid-terms-20261002"
+        ],
+        "guideSteps": [
+          "Buy Free2Go through a current Telemach/partner retail channel; treat the EUR 2 starter price as a current promotion, not a permanent floor.",
+          "Use EUR 5 recharge before each 90-day active-service deadline if continuous incoming/outgoing service matters.",
+          "For EU/EEA domestic-price roaming, follow Telemach’s RLAH registration/stable-ties rule; do not infer China OTP reliability."
+        ]
+      }
+    }
+  ]
+}

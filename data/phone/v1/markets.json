@@ -90,6 +90,11 @@
     "countryCode": "DE"
   },
   {
+    "id": "dk",
+    "name": "Denmark",
+    "countryCode": "DK"
+  },
+  {
     "id": "ee",
     "name": "Estonia",
     "countryCode": "EE"
@@ -310,9 +315,19 @@
     "countryCode": "SA"
   },
   {
+    "id": "se",
+    "name": "Sweden",
+    "countryCode": "SE"
+  },
+  {
     "id": "sg",
     "name": "Singapore",
     "countryCode": "SG"
+  },
+  {
+    "id": "si",
+    "name": "Slovenia",
+    "countryCode": "SI"
   },
   {
     "id": "sk",

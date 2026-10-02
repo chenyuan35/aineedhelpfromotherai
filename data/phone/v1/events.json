@@ -585,6 +585,15 @@
     "sourceId": "telekom-easy-en-20260929"
   },
   {
+    "id": "evt-telemach-prepaid-si-2026-db-c13-20261002",
+    "routeId": "telemach-prepaid-si-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "Current Free2Go material establishes active acquisition, a EUR 5 recharge floor and the 90/180/270-day lifecycle; general prepaid terms allow SIM disconnection after day 270, while China OTP remains unverified.",
+    "sourceId": "telemach-si-prepaid-terms-20261002"
+  },
+  {
     "id": "evt-telenor-kontant-no-2026-db-c11-20261001",
     "routeId": "telenor-kontant-no-2026",
     "type": "lifecycle-identity-reconciliation",
@@ -592,6 +601,24 @@
     "scope": "route",
     "outcome": "Current Telenor Kontant uses a 12-month clock from the last recharge, followed by a two-month automatic reopening window. Current self-service access requires Telenor ID/BankID and web recharge cards are limited to Nordic-issued cards, so nonresident acquisition and maintenance remain constrained.",
     "sourceId": "telenor-no-mobile-terms-20261001"
+  },
+  {
+    "id": "evt-telenor-kontantkort-se-2026-db-c13-20261002",
+    "routeId": "telenor-kontantkort-se-2026",
+    "type": "product-lifecycle-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "Current Telenor support confirms registered prepaid numbers and destination-specific prepaid roaming, while current purchase/recharge economics and foreign-user registration remain unresolved; legacy cheap annual pricing is withdrawn.",
+    "sourceId": "telenor-se-number-porting-20261002"
+  },
+  {
+    "id": "evt-telia-dk-prepaid-2026-db-c13-20261002",
+    "routeId": "telia-dk-prepaid-2026",
+    "type": "product-identity-reconciliation",
+    "reportedAt": "2026-10-02",
+    "scope": "route",
+    "outcome": "The legacy Telia DK prepaid label now conflicts with the current Norlys Mobil consumer surface; no current Telia-branded prepaid product/lifecycle was located, so the route remains HOLD.",
+    "sourceId": "telia-dk-norlys-supplier-20261002"
   },
   {
     "id": "evt-telia-ee-180d-2026-db-c2-review-20260929",
