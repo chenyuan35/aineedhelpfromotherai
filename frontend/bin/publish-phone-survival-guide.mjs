@@ -93,6 +93,23 @@ if (!hub.includes('pr-keep-alive-tool')) {
   const link = `<nav class="pr-related pr-keep-alive-tool" aria-label="Keep-alive tool"><a href="/tools/phone-number-survival-guide/keep-alive/">Keep-Alive Assistant — turn each route's retention window into a deadline and a calendar reminder</a></nav>`;
   hub = hub.replace(anchor, link + anchor);
 }
+
+const decisionCssPath = join(newDir, 'phone-decision-shortcuts.css');
+const decisionJsPath = join(newDir, 'phone-decision-shortcuts.js');
+if (!existsSync(decisionCssPath) || !existsSync(decisionJsPath)) {
+  throw new Error('Phone Radar decision-shortcut assets missing from public build');
+}
+if (!hub.includes('phone-decision-shortcuts.css')) {
+  if (!hub.includes('</head>')) throw new Error('Phone Radar hub head anchor missing');
+  hub = hub.replace('</head>', '<link rel="stylesheet" href="./phone-decision-shortcuts.css"></head>');
+}
+if (!hub.includes('phone-decision-shortcuts.js')) {
+  if (!hub.includes('</body>')) throw new Error('Phone Radar hub body anchor missing');
+  hub = hub.replace('</body>', '<script src="./phone-decision-shortcuts.js" defer></script></body>');
+}
+if (!hub.includes('phone-decision-shortcuts.css') || !hub.includes('phone-decision-shortcuts.js')) {
+  throw new Error('Phone Radar decision-shortcut markers missing after injection');
+}
 writeFileSync(page, hub);
 
 console.log('Published Phone Radar at canonical public URL (hub merged with Astro content surface).');
