@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "smarty-uk-2026",
+    "marketId": "gb",
+    "networkId": "three-uk",
+    "brandId": "smarty-uk",
+    "displayName": "SMARTY UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://smarty.co.uk/all-plans",
+    "sourceIds": [
+      "smarty-uk-all-plans-20261003",
+      "smarty-uk-billing-20261003",
+      "smarty-uk-china-roaming-20261003",
+      "smarty-uk-esim-20261003",
+      "smarty-uk-inactive-plan-20261003",
+      "smarty-uk-pause-20261003",
+      "smarty-uk-paused-incoming-20261003",
+      "smarty-uk-roaming-fair-use-20261003"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "three-uk",
+    "name": "Three UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "smarty-uk",
+    "networkId": "three-uk",
+    "name": "SMARTY",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "smarty-uk-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": 6,
+    "acquisitionCostCny": null,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 220
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "smarty-uk-all-plans-20261003",
+      "url": "https://smarty.co.uk/all-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-billing-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/952716-how-billing-works-with-smarty",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-china-roaming-20261003",
+      "url": "https://smarty.co.uk/roaming/international/china",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-esim-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/11652679-how-to-order-your-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-inactive-plan-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/1921756-what-happens-if-i-don-t-renew-my-plan",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-pause-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/952720-how-do-i-pause-my-plan",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-paused-incoming-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/1155232-what-happens-if-your-account-isn-t-set-up-to-auto-renew",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "smarty-uk-roaming-fair-use-20261003",
+      "url": "https://help.smarty.co.uk/en/articles/2090500-roaming-and-international",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-smarty-uk-2026-db-c15-20261003",
+      "routeId": "smarty-uk-2026",
+      "type": "lifecycle-roaming-resolution",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current SMARTY material resolves the old monthly-payment-only assumption: a plan can remain inactive before automatic account closure at 220 days, while current China roaming explicitly lists free incoming SMS; active service must be renewed before relying on calls/text/data.",
+      "sourceId": "smarty-uk-pause-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-smarty-uk-2026-current-profile-20261003",
+      "routeId": "smarty-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c15-reviewed-2026-10-03",
+      "data": {
+        "id": "smarty-uk-2026",
+        "brandId": "smarty-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "SMARTY currently sells rolling-monthly voice plans with unlimited calls/texts from GBP6 for 5GB. New customers can choose eSIM during signup and receive activation material by email; physical SIM delivery is UK-only. SMARTY documents no credit search for monthly plan payment, but does not explicitly establish a passport-free/nonresident identity policy or guarantee overseas-first activation.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 6,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 6,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-voice-plan"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 6,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Disable auto-renew to pause. SMARTY says it keeps the account open for six months and automatically closes an account if the plan remains inactive for 220 days, with a warning 40 days before closure. The current lowest rolling voice plan is GBP6; renewing service before the 220-day inactive deadline is the documented recovery/keep action. No annual cost is fabricated because SMARTY does not state an exact long-run renewal cadence beyond the inactive-account clock.",
+          "intervalDays": 220,
+          "state": "current-provider-inactivity-window-entry-plan-known"
+        },
+        "chinaActivation": "Physical SIM delivery is UK-only, while new-customer eSIM ordering is digital and activation material is emailed. Overseas-first activation is not explicitly guaranteed, so China-first acquisition remains unverified.",
+        "kyc": "SMARTY states no credit search is required. Signup requires customer details and payment; the reviewed pages do not explicitly state a no-ID/passport-free policy, so that claim is not made.",
+        "payment": "SMARTY accepts credit/debit card, PayPoint cash, PayPal and Apple/Google Pay; Direct Debit/BACS are not used.",
+        "wifiCalling": "unverified",
+        "roamingSms": "SMARTY's current mainland-China roaming page lists receiving texts from any number as FREE. Its paused-service help also says incoming calls and texts remain available when a plan is not renewed, but the combination of paused service plus overseas roaming is not explicitly guaranteed. SMARTY may suspend all services after 60 consecutive days abroad, with a two-week warning. Third-party OTP delivery remains unguaranteed.",
+        "refund": "not reconciled",
+        "trend": "current-product-pause-window-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://smarty.co.uk/all-plans",
+        "tariffSummary": "Current GBP6 rolling voice entry plan; account auto-closes after 220 days inactive; eSIM available; no credit search; China roaming lists free incoming SMS.",
+        "guideSteps": [
+          "Choose a current rolling voice plan, not the separate GBP5 data-only plan, and select eSIM if desired.",
+          "If parking the number, disable auto-renew and renew before the 220-day inactive-account closure threshold.",
+          "For overseas SMS/OTP, configure roaming and avoid treating the 220-day parking window as permanent-roaming permission: SMARTY may suspend all services after 60 consecutive days abroad."
+        ],
+        "sourceIds": [
+          "smarty-uk-all-plans-20261003",
+          "smarty-uk-pause-20261003",
+          "smarty-uk-inactive-plan-20261003",
+          "smarty-uk-billing-20261003",
+          "smarty-uk-esim-20261003",
+          "smarty-uk-china-roaming-20261003",
+          "smarty-uk-paused-incoming-20261003",
+          "smarty-uk-roaming-fair-use-20261003"
+        ]
+      }
+    }
+  ]
+}

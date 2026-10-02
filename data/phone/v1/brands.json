@@ -384,6 +384,12 @@
     "marketId": "lk"
   },
   {
+    "id": "movistar-pre-pe",
+    "networkId": "movistar-pe",
+    "name": "Movistar Prepago Peru",
+    "marketId": "pe"
+  },
+  {
     "id": "movistar-prepago",
     "networkId": "movistar-es",
     "name": "Movistar Prepago",
@@ -534,6 +540,12 @@
     "marketId": "ph"
   },
   {
+    "id": "smarty-uk",
+    "networkId": "three-uk",
+    "name": "SMARTY",
+    "marketId": "gb"
+  },
+  {
     "id": "smspool-global",
     "marketId": "global",
     "networkId": null,
@@ -574,6 +586,12 @@
     "networkId": "twm-tw",
     "name": "Taiwan Mobile",
     "marketId": "tw"
+  },
+  {
+    "id": "talkmobile-uk",
+    "networkId": "vodafone-uk",
+    "name": "Talkmobile",
+    "marketId": "gb"
   },
   {
     "id": "telcel-amigo",

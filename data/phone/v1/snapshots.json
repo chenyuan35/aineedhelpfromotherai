@@ -4582,6 +4582,65 @@
     }
   },
   {
+    "id": "snap-movistar-pre-pe-2026-current-profile-20261003",
+    "routeId": "movistar-pre-pe-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c15-reviewed-2026-10-03",
+    "data": {
+      "id": "movistar-pre-pe-2026",
+      "brandId": "movistar-pre-pe",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Movistar Peru continues to sell prepaid service. Physical prepaid activation uses the Activa tu Chip Movistar app with SIM-barcode scan, customer data and fingerprint-photo identity validation; Movistar eSIM is currently obtained through authorized service centers. Foreign-national mobile contracting is subject to OSIPTEL current in-person biometric/identity-validation rules.",
+      "landedCost": {
+        "currency": "PEN",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": 5,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "starter-price-unresolved-recharge-floor-known"
+      },
+      "keep": {
+        "currency": "PEN",
+        "observedActionCost": 5,
+        "yearCostOriginal": 10,
+        "yearCostCny": null,
+        "action": "Movistar's current prepaid contract says recharge keeps the mobile line active and the service may be cancelled after seven months without a recharge; unused recharge balance can be recovered for 210 days. Current prepaid benefits begin at S/5. A conservative two-S/5-recharges-per-year schedule stays inside the documented seven-month no-recharge threshold; the provider wording is 'may be cancelled', so this is not an exact day-210 cancellation guarantee.",
+        "intervalDays": 210,
+        "state": "current-provider-recharge-retention-floor"
+      },
+      "chinaActivation": "Acquisition is Peru-oriented. Current OSIPTEL rules require foreign-national contracting in person with biometric/identity validation; China-first acquisition/activation is not established.",
+      "kyc": "Current prepaid activation uses identity validation. Under current OSIPTEL security measures, foreign nationals must contract in person with biometric verification against Migraciones or applicable Foreign Ministry identity validation.",
+      "payment": "Movistar supports prepaid recharges from S/5 through its prepaid channels. Card/digital recharge exists, but reliable execution with a foreign-issued bank card was not explicitly established in the reviewed material.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Movistar pages found for international roaming are postpaid/plan-focused. A current prepaid-specific roaming entitlement, incoming-SMS rule, mainland-China coverage and third-party OTP reliability were not established and are not inferred from postpaid material.",
+      "refund": "not reconciled",
+      "trend": "current-product-lifecycle-resolved-roaming-gap",
+      "guideEligible": false,
+      "holdReason": "Prepaid-specific overseas roaming/incoming-SMS coverage, mainland-China behavior, OTP reliability and reliable foreign-card recharge execution remain unresolved; foreign-national acquisition is in-person/biometric.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+      "tariffSummary": "Current prepaid line; S/5 recharge floor; service may be cancelled after 7 months without recharge; foreign-national signup is in-person/biometric. Prepaid overseas SMS/China route remains unresolved.",
+      "guideSteps": [
+        "Acquire and activate through current Peru channels and complete the applicable identity/biometric checks.",
+        "Recharge before the seven-month no-recharge threshold; do not treat the provider wording as an exact guaranteed cancellation date.",
+        "Do not transfer Movistar postpaid roaming claims to this prepaid route or claim China OTP without prepaid-specific evidence."
+      ],
+      "sourceIds": [
+        "movistar-pe-prepago-contract-20261003",
+        "movistar-pe-prepago-activation-20261003",
+        "movistar-pe-prepago-entry-20261003",
+        "movistar-pe-esim-20261003",
+        "osiptel-pe-mobile-security-20261003"
+      ]
+    }
+  },
+  {
     "id": "snap-movistar-prepago-6mo-2026-current-profile-20260928",
     "routeId": "movistar-prepago-6mo-2026",
     "kind": "current-profile",
@@ -6113,6 +6172,68 @@
     }
   },
   {
+    "id": "snap-smarty-uk-2026-current-profile-20261003",
+    "routeId": "smarty-uk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c15-reviewed-2026-10-03",
+    "data": {
+      "id": "smarty-uk-2026",
+      "brandId": "smarty-uk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "SMARTY currently sells rolling-monthly voice plans with unlimited calls/texts from GBP6 for 5GB. New customers can choose eSIM during signup and receive activation material by email; physical SIM delivery is UK-only. SMARTY documents no credit search for monthly plan payment, but does not explicitly establish a passport-free/nonresident identity policy or guarantee overseas-first activation.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": 6,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 6,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-entry-voice-plan"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": 6,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Disable auto-renew to pause. SMARTY says it keeps the account open for six months and automatically closes an account if the plan remains inactive for 220 days, with a warning 40 days before closure. The current lowest rolling voice plan is GBP6; renewing service before the 220-day inactive deadline is the documented recovery/keep action. No annual cost is fabricated because SMARTY does not state an exact long-run renewal cadence beyond the inactive-account clock.",
+        "intervalDays": 220,
+        "state": "current-provider-inactivity-window-entry-plan-known"
+      },
+      "chinaActivation": "Physical SIM delivery is UK-only, while new-customer eSIM ordering is digital and activation material is emailed. Overseas-first activation is not explicitly guaranteed, so China-first acquisition remains unverified.",
+      "kyc": "SMARTY states no credit search is required. Signup requires customer details and payment; the reviewed pages do not explicitly state a no-ID/passport-free policy, so that claim is not made.",
+      "payment": "SMARTY accepts credit/debit card, PayPoint cash, PayPal and Apple/Google Pay; Direct Debit/BACS are not used.",
+      "wifiCalling": "unverified",
+      "roamingSms": "SMARTY's current mainland-China roaming page lists receiving texts from any number as FREE. Its paused-service help also says incoming calls and texts remain available when a plan is not renewed, but the combination of paused service plus overseas roaming is not explicitly guaranteed. SMARTY may suspend all services after 60 consecutive days abroad, with a two-week warning. Third-party OTP delivery remains unguaranteed.",
+      "refund": "not reconciled",
+      "trend": "current-product-pause-window-resolved",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://smarty.co.uk/all-plans",
+      "tariffSummary": "Current GBP6 rolling voice entry plan; account auto-closes after 220 days inactive; eSIM available; no credit search; China roaming lists free incoming SMS.",
+      "guideSteps": [
+        "Choose a current rolling voice plan, not the separate GBP5 data-only plan, and select eSIM if desired.",
+        "If parking the number, disable auto-renew and renew before the 220-day inactive-account closure threshold.",
+        "For overseas SMS/OTP, configure roaming and avoid treating the 220-day parking window as permanent-roaming permission: SMARTY may suspend all services after 60 consecutive days abroad."
+      ],
+      "sourceIds": [
+        "smarty-uk-all-plans-20261003",
+        "smarty-uk-pause-20261003",
+        "smarty-uk-inactive-plan-20261003",
+        "smarty-uk-billing-20261003",
+        "smarty-uk-esim-20261003",
+        "smarty-uk-china-roaming-20261003",
+        "smarty-uk-paused-incoming-20261003",
+        "smarty-uk-roaming-fair-use-20261003"
+      ]
+    }
+  },
+  {
     "id": "snap-smspool-temp-capabilities-222487",
     "routeId": "smspool-temp",
     "kind": "capabilities",
@@ -6608,6 +6729,64 @@
       "sourceIds": [
         "taiwan-mobile-tw-official"
       ]
+    }
+  },
+  {
+    "id": "snap-talkmobile-uk-payg-closed-2026-current-profile-20261003",
+    "routeId": "talkmobile-uk-payg-closed-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c15-reviewed-2026-10-03",
+    "data": {
+      "id": "talkmobile-uk-payg-closed-2026",
+      "brandId": "talkmobile-uk",
+      "publishState": "observation-hold",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "DISCONTINUED ROUTE. Contemporaneous reporting records Vodafone shutting Talkmobile PAYG on 31 August 2017. Talkmobile current 2026 surface sells 30-day and 12-month SIM-only contracts, and its current terms are explicitly for contract customers. Those current plans are a different commercial route and are not substituted for PAYG.",
+      "landedCost": {
+        "currency": "GBP",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "discontinued"
+      },
+      "keep": {
+        "currency": "GBP",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Not possible on this route: Talkmobile PAYG ended in 2017. Current Talkmobile SIM-only subscriptions are a different product path.",
+        "intervalDays": null,
+        "state": "discontinued"
+      },
+      "chinaActivation": "Not applicable to the discontinued PAYG route. Current Talkmobile contract/SIM-only roaming capabilities are not transferred to this historical route.",
+      "kyc": "Not applicable to the discontinued PAYG route. Current Talkmobile SIM-only deals state no credit check is required, but that does not revive PAYG.",
+      "payment": "Not applicable to the discontinued PAYG route; current Talkmobile subscription payment terms are separate.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Not applicable to the discontinued PAYG route. Current Talkmobile contract plans have current roaming terms, but that evidence is intentionally not transferred to the closed PAYG identity.",
+      "refund": "Historical PAYG closure/refund issues are dated 2017 evidence only.",
+      "trend": "discontinued",
+      "guideEligible": false,
+      "holdReason": "Talkmobile PAYG was discontinued in 2017. Preserve this row as negative/legacy knowledge and do not recommend it or silently replace it with current Talkmobile SIM-only subscriptions.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://talkmobile.co.uk/sim-only",
+      "tariffSummary": "Talkmobile PAYG closed 31 August 2017; current Talkmobile is contract/SIM-only. Historical PAYG remains a HOLD/avoid route.",
+      "guideSteps": [
+        "Do not attempt to acquire Talkmobile PAYG; it no longer exists.",
+        "If evaluating current Talkmobile SIM-only, treat it as a separate product decision rather than reusing PAYG lifecycle/economics."
+      ],
+      "sourceIds": [
+        "talkmobile-uk-current-sim-only-20261003",
+        "talkmobile-uk-current-terms-20261003",
+        "talkmobile-uk-payg-closure-20170607"
+      ],
+      "avoidRoute": true,
+      "avoidReason": "PAYG discontinued in 2017; current Talkmobile SIM-only is a different subscription product."
     }
   },
   {

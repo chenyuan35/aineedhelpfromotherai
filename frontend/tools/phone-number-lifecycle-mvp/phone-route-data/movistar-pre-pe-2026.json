@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "movistar-pre-pe-2026",
+    "marketId": "pe",
+    "networkId": "movistar-pe",
+    "brandId": "movistar-pre-pe",
+    "displayName": "Movistar Prepago Peru",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+    "sourceIds": [
+      "movistar-pe-esim-20261003",
+      "movistar-pe-prepago-activation-20261003",
+      "movistar-pe-prepago-contract-20261003",
+      "movistar-pe-prepago-entry-20261003",
+      "osiptel-pe-mobile-security-20261003"
+    ]
+  },
+  "market": {
+    "id": "pe",
+    "name": "Peru",
+    "countryCode": "PE"
+  },
+  "network": {
+    "id": "movistar-pe",
+    "name": "Movistar Peru",
+    "marketId": "pe"
+  },
+  "brand": {
+    "id": "movistar-pre-pe",
+    "networkId": "movistar-pe",
+    "name": "Movistar Prepago Peru",
+    "marketId": "pe"
+  },
+  "metrics": {
+    "routeId": "movistar-pre-pe-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "PEN",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "PEN",
+    "keepYearCostOriginal": 10,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 210
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "movistar-pe-esim-20261003",
+      "url": "https://www.movistar.com.pe/movil/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "movistar-pe-prepago-activation-20261003",
+      "url": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "movistar-pe-prepago-contract-20261003",
+      "url": "https://cert-cdn.movistar.com.pe/2025/08/PDF_AGO_Contrato-Prepago-Movistar-2025.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "movistar-pe-prepago-entry-20261003",
+      "url": "https://www.movistar.com.pe/movil/prepago/prepagocontrato",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "osiptel-pe-mobile-security-20261003",
+      "url": "https://www.osiptel.gob.pe/portal-del-usuario/preguntas-frecuentes/medidas-temporales-para-seguridad-en-servicio-movil/",
+      "type": "official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-movistar-pre-pe-2026-db-c15-20261003",
+      "routeId": "movistar-pre-pe-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current prepaid contract ties recharge to active service and permits cancellation after seven months without recharge; current foreign-national acquisition is in-person/biometric, while prepaid-specific overseas SMS and China behavior remain unresolved.",
+      "sourceId": "movistar-pe-prepago-contract-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-movistar-pre-pe-2026-current-profile-20261003",
+      "routeId": "movistar-pre-pe-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c15-reviewed-2026-10-03",
+      "data": {
+        "id": "movistar-pre-pe-2026",
+        "brandId": "movistar-pre-pe",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Movistar Peru continues to sell prepaid service. Physical prepaid activation uses the Activa tu Chip Movistar app with SIM-barcode scan, customer data and fingerprint-photo identity validation; Movistar eSIM is currently obtained through authorized service centers. Foreign-national mobile contracting is subject to OSIPTEL current in-person biometric/identity-validation rules.",
+        "landedCost": {
+          "currency": "PEN",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 5,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "starter-price-unresolved-recharge-floor-known"
+        },
+        "keep": {
+          "currency": "PEN",
+          "observedActionCost": 5,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Movistar's current prepaid contract says recharge keeps the mobile line active and the service may be cancelled after seven months without a recharge; unused recharge balance can be recovered for 210 days. Current prepaid benefits begin at S/5. A conservative two-S/5-recharges-per-year schedule stays inside the documented seven-month no-recharge threshold; the provider wording is 'may be cancelled', so this is not an exact day-210 cancellation guarantee.",
+          "intervalDays": 210,
+          "state": "current-provider-recharge-retention-floor"
+        },
+        "chinaActivation": "Acquisition is Peru-oriented. Current OSIPTEL rules require foreign-national contracting in person with biometric/identity validation; China-first acquisition/activation is not established.",
+        "kyc": "Current prepaid activation uses identity validation. Under current OSIPTEL security measures, foreign nationals must contract in person with biometric verification against Migraciones or applicable Foreign Ministry identity validation.",
+        "payment": "Movistar supports prepaid recharges from S/5 through its prepaid channels. Card/digital recharge exists, but reliable execution with a foreign-issued bank card was not explicitly established in the reviewed material.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current Movistar pages found for international roaming are postpaid/plan-focused. A current prepaid-specific roaming entitlement, incoming-SMS rule, mainland-China coverage and third-party OTP reliability were not established and are not inferred from postpaid material.",
+        "refund": "not reconciled",
+        "trend": "current-product-lifecycle-resolved-roaming-gap",
+        "guideEligible": false,
+        "holdReason": "Prepaid-specific overseas roaming/incoming-SMS coverage, mainland-China behavior, OTP reliability and reliable foreign-card recharge execution remain unresolved; foreign-national acquisition is in-person/biometric.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+        "tariffSummary": "Current prepaid line; S/5 recharge floor; service may be cancelled after 7 months without recharge; foreign-national signup is in-person/biometric. Prepaid overseas SMS/China route remains unresolved.",
+        "guideSteps": [
+          "Acquire and activate through current Peru channels and complete the applicable identity/biometric checks.",
+          "Recharge before the seven-month no-recharge threshold; do not treat the provider wording as an exact guaranteed cancellation date.",
+          "Do not transfer Movistar postpaid roaming claims to this prepaid route or claim China OTP without prepaid-specific evidence."
+        ],
+        "sourceIds": [
+          "movistar-pe-prepago-contract-20261003",
+          "movistar-pe-prepago-activation-20261003",
+          "movistar-pe-prepago-entry-20261003",
+          "movistar-pe-esim-20261003",
+          "osiptel-pe-mobile-security-20261003"
+        ]
+      }
+    }
+  ]
+}

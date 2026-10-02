@@ -230,6 +230,11 @@
     "marketId": "es"
   },
   {
+    "id": "movistar-pe",
+    "name": "Movistar Peru",
+    "marketId": "pe"
+  },
+  {
     "id": "mtn-gh",
     "name": "MTN Ghana",
     "marketId": "gh"
