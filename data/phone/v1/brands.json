@@ -120,6 +120,18 @@
     "marketId": "br"
   },
   {
+    "id": "claro-pre-cl",
+    "networkId": "claro-cl",
+    "name": "Claro Prepago Chile",
+    "marketId": "cl"
+  },
+  {
+    "id": "claro-pre-co",
+    "networkId": "claro-co",
+    "name": "Claro Prepago Colombia",
+    "marketId": "co"
+  },
+  {
     "id": "clubsim-hk",
     "networkId": "csl-hk",
     "name": "ClubSIM",
@@ -424,6 +436,12 @@
     "networkId": "one-me",
     "name": "One ME Tourist",
     "marketId": "me"
+  },
+  {
+    "id": "ooredoo-hala",
+    "networkId": "ooredoo-qa",
+    "name": "Ooredoo Hala",
+    "marketId": "qa"
   },
   {
     "id": "optus-au-direct",

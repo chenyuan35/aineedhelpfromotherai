@@ -65,9 +65,19 @@
     "countryCode": "CH"
   },
   {
+    "id": "cl",
+    "name": "Chile",
+    "countryCode": "CL"
+  },
+  {
     "id": "cn",
     "name": "China",
     "countryCode": "CN"
+  },
+  {
+    "id": "co",
+    "name": "Colombia",
+    "countryCode": "CO"
   },
   {
     "id": "cr",
@@ -293,6 +303,11 @@
     "id": "pt",
     "name": "Portugal",
     "countryCode": "PT"
+  },
+  {
+    "id": "qa",
+    "name": "Qatar",
+    "countryCode": "QA"
   },
   {
     "id": "ro",

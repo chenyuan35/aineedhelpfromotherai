@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "claro-pre-cl-2026",
+    "marketId": "cl",
+    "networkId": "claro-cl",
+    "brandId": "claro-pre-cl",
+    "displayName": "Claro Prepago Chile",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+    "sourceIds": [
+      "claro-cl-prepago-20261002",
+      "claro-cl-recargas-validity-20261002",
+      "claro-cl-recovery-id-20261002",
+      "claro-cl-roaming-20261002"
+    ]
+  },
+  "market": {
+    "id": "cl",
+    "name": "Chile",
+    "countryCode": "CL"
+  },
+  "network": {
+    "id": "claro-cl",
+    "name": "Claro Chile",
+    "marketId": "cl"
+  },
+  "brand": {
+    "id": "claro-pre-cl",
+    "networkId": "claro-cl",
+    "name": "Claro Prepago Chile",
+    "marketId": "cl"
+  },
+  "metrics": {
+    "routeId": "claro-pre-cl-2026",
+    "checkedAt": "2026-10-02",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "CLP",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "CLP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "claro-cl-prepago-20261002",
+      "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "claro-cl-recargas-validity-20261002",
+      "url": "https://recargas.clarochile.cl/index_be.epl",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "claro-cl-recovery-id-20261002",
+      "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/retracto/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "claro-cl-roaming-20261002",
+      "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/roaming/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-claro-pre-cl-2026-db-c14-20261002",
+      "routeId": "claro-pre-cl-2026",
+      "type": "lifecycle-acquisition-reconciliation",
+      "reportedAt": "2026-10-02",
+      "scope": "route",
+      "outcome": "Current Claro Chile prepaid evidence establishes subscriber identification and a 180-day total recharge/recovery window, but current foreign-passport new-line activation, prepaid overseas SMS behavior and foreign-card recharge execution remain unresolved.",
+      "sourceId": "claro-cl-recargas-validity-20261002"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-claro-pre-cl-2026-current-profile-20261002",
+      "routeId": "claro-pre-cl-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-02",
+      "sourceDataset": "db-c14-reviewed-2026-10-02",
+      "data": {
+        "id": "claro-pre-cl-2026",
+        "brandId": "claro-pre-cl",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Claro Chile continues to sell Prepago/Plan Simple SIMs through Claro and retail channels. The current activation flow uses *103#, an SMS link, both sides of a valid identity card and a selfie. A current starter-SIM price and a new-line foreign-passport activation path were not reliably established, so the old CLP4,990 acquisition figure is not carried forward.",
+        "landedCost": {
+          "currency": "CLP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-acquisition-price-unresolved"
+        },
+        "keep": {
+          "currency": "CLP",
+          "observedActionCost": 750,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "The current recharge portal lists CLP750-1,999 as the lowest tier: 7 active days plus 173 recovery days, for 180 days total. Higher recharge tiers also total 180 days through different active/recovery splits. This proves a balance recovery window, not a complete number-deactivation clock, so no annual number-retention cost is claimed.",
+          "intervalDays": null,
+          "state": "balance-validity-known-number-lifecycle-unresolved"
+        },
+        "chinaActivation": "Current Claro self-activation is Chile-local and asks for a valid Chilean identity card plus selfie. China-first activation is not established.",
+        "kyc": "Subscriber identification is mandatory under the current prepaid flow. The reviewed new-line flow asks for a current Chilean identity card; Claro service/recovery material can accept passport in some in-person cases, but that does not establish a foreign-passport new-SIM activation route.",
+        "payment": "Claro has a current online recharge portal, but the reviewed material does not establish reliable foreign-bank-card execution. Treat payment from abroad as unresolved.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Claro’s current generic roaming surface confirms roaming service exists, but the reviewed material does not clearly establish current prepaid roaming/incoming-SMS terms for this route or mainland-China OTP behavior.",
+        "refund": "not reconciled",
+        "trend": "current-prepaid-exact-balance-recovery-window",
+        "guideEligible": false,
+        "holdReason": "Foreign-passport new-line activation, full number-deactivation lifecycle, prepaid overseas SMS/OTP behavior and foreign-card recharge execution remain unresolved.",
+        "lastVerifiedAt": "2026-10-02",
+        "acquireUrl": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+        "tariffSummary": "Current recharge tiers provide a 180-day total active/recovery balance window; subscriber identification is mandatory. Full number-retention lifecycle and foreign-user execution remain unresolved; HOLD.",
+        "guideSteps": [
+          "Use only the current subscriber-identification flow; do not market Claro Chile prepago as no-KYC.",
+          "Treat the 180-day rule as balance validity/recovery, not automatically as number ownership duration.",
+          "Do not claim China OTP or foreign-card recharge reliability without current prepaid-specific evidence."
+        ],
+        "sourceIds": [
+          "claro-cl-prepago-20261002",
+          "claro-cl-recargas-validity-20261002",
+          "claro-cl-roaming-20261002",
+          "claro-cl-recovery-id-20261002"
+        ]
+      }
+    }
+  ]
+}

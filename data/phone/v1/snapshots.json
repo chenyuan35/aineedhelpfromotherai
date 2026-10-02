@@ -1203,6 +1203,123 @@
     }
   },
   {
+    "id": "snap-claro-pre-cl-2026-current-profile-20261002",
+    "routeId": "claro-pre-cl-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c14-reviewed-2026-10-02",
+    "data": {
+      "id": "claro-pre-cl-2026",
+      "brandId": "claro-pre-cl",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Claro Chile continues to sell Prepago/Plan Simple SIMs through Claro and retail channels. The current activation flow uses *103#, an SMS link, both sides of a valid identity card and a selfie. A current starter-SIM price and a new-line foreign-passport activation path were not reliably established, so the old CLP4,990 acquisition figure is not carried forward.",
+      "landedCost": {
+        "currency": "CLP",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-acquisition-price-unresolved"
+      },
+      "keep": {
+        "currency": "CLP",
+        "observedActionCost": 750,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "The current recharge portal lists CLP750-1,999 as the lowest tier: 7 active days plus 173 recovery days, for 180 days total. Higher recharge tiers also total 180 days through different active/recovery splits. This proves a balance recovery window, not a complete number-deactivation clock, so no annual number-retention cost is claimed.",
+        "intervalDays": null,
+        "state": "balance-validity-known-number-lifecycle-unresolved"
+      },
+      "chinaActivation": "Current Claro self-activation is Chile-local and asks for a valid Chilean identity card plus selfie. China-first activation is not established.",
+      "kyc": "Subscriber identification is mandatory under the current prepaid flow. The reviewed new-line flow asks for a current Chilean identity card; Claro service/recovery material can accept passport in some in-person cases, but that does not establish a foreign-passport new-SIM activation route.",
+      "payment": "Claro has a current online recharge portal, but the reviewed material does not establish reliable foreign-bank-card execution. Treat payment from abroad as unresolved.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Claro’s current generic roaming surface confirms roaming service exists, but the reviewed material does not clearly establish current prepaid roaming/incoming-SMS terms for this route or mainland-China OTP behavior.",
+      "refund": "not reconciled",
+      "trend": "current-prepaid-exact-balance-recovery-window",
+      "guideEligible": false,
+      "holdReason": "Foreign-passport new-line activation, full number-deactivation lifecycle, prepaid overseas SMS/OTP behavior and foreign-card recharge execution remain unresolved.",
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+      "tariffSummary": "Current recharge tiers provide a 180-day total active/recovery balance window; subscriber identification is mandatory. Full number-retention lifecycle and foreign-user execution remain unresolved; HOLD.",
+      "guideSteps": [
+        "Use only the current subscriber-identification flow; do not market Claro Chile prepago as no-KYC.",
+        "Treat the 180-day rule as balance validity/recovery, not automatically as number ownership duration.",
+        "Do not claim China OTP or foreign-card recharge reliability without current prepaid-specific evidence."
+      ],
+      "sourceIds": [
+        "claro-cl-prepago-20261002",
+        "claro-cl-recargas-validity-20261002",
+        "claro-cl-roaming-20261002",
+        "claro-cl-recovery-id-20261002"
+      ]
+    }
+  },
+  {
+    "id": "snap-claro-pre-co-2026-current-profile-20261002",
+    "routeId": "claro-pre-co-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c14-reviewed-2026-10-02",
+    "data": {
+      "id": "claro-pre-co-2026",
+      "brandId": "claro-pre-co",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Claro Colombia currently sells prepaid physical SIMs; the reviewed online store lists a SIM with a 20-day package at COP15,000, including a COP3,000 SIM component. This is a current retail offer rather than a permanent minimum acquisition floor.",
+      "landedCost": {
+        "currency": "COP",
+        "providerOrCommunityPrice": 15000,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 15000,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-bundled-sim-offer"
+      },
+      "keep": {
+        "currency": "COP",
+        "observedActionCost": 1000,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Claro states that online recharges from COP1,000 are valid for 60 calendar days, and that a prepaid line with no movements for 60 days could be deactivated. A COP1,000 recharge is one documented way to create activity, but the provider wording does not prove that recharge is the only qualifying movement or guarantee an exact day-60 cancellation, so no invented annual keep cost is stored.",
+        "intervalDays": 60,
+        "state": "current-provider-inactivity-risk-threshold"
+      },
+      "chinaActivation": "Current acquisition is Colombia-local. A current foreign-passport initial prepaid registration workflow and China-first activation were not established.",
+      "kyc": "Current Mi Claro account access can use several identity types including passport, but that is not proof of initial SIM registration eligibility. The reviewed current pages do not establish a general foreign-passport new-line registration path.",
+      "payment": "Claro provides current online and exterior-recharge surfaces. Exact foreign-card/processor eligibility was not established from the reviewed material; keep this constraint explicit.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Claro’s current prepaid roaming page explicitly says prepaid users can receive SMS abroad at no cost in supported destinations while sending SMS is unavailable. Mainland China was not established in the reviewed current prepaid coverage list, and third-party OTP delivery remains unverified.",
+      "refund": "not reconciled",
+      "trend": "current-prepaid-60-day-inactivity-risk",
+      "guideEligible": false,
+      "holdReason": "Initial foreign-user registration and mainland-China prepaid roaming/OTP support remain unresolved; the 60-day no-movement rule is a deactivation risk threshold rather than a guaranteed exact cancellation clock.",
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://www.claro.com.co/personas/servicios/servicios-moviles/prepago/",
+      "tariffSummary": "COP1,000 minimum online recharge; recharge validity 60 days; Claro says 60 days without movements can risk line deactivation. Prepaid roaming receives SMS free in supported destinations; foreign-user registration/China remain unresolved; HOLD.",
+      "guideSteps": [
+        "Create a qualifying movement before the 60-day inactivity threshold; do not convert the provider’s “could be deactivated” wording into a guaranteed exact cancellation day.",
+        "Treat free incoming roaming SMS as supported-destination carrier evidence, not proof of third-party OTP delivery.",
+        "Do not claim mainland-China support or foreign-passport initial registration until current provider evidence establishes them."
+      ],
+      "sourceIds": [
+        "claro-co-prepago-lifecycle-20261002",
+        "claro-co-recarga-online-20261002",
+        "claro-co-prepago-roaming-20261002",
+        "claro-co-recarga-exterior-20261002",
+        "claro-co-sim-store-20261002"
+      ]
+    }
+  },
+  {
     "id": "snap-clubsim-sms-pack-6hkd-2026-current-profile-20260928",
     "routeId": "clubsim-sms-pack-6hkd-2026",
     "kind": "current-profile",
@@ -4958,6 +5075,65 @@
         "Register and acquire the tourist SIM/eSIM.",
         "Use online top-up before the desired retention deadline.",
         "Do not rely on Tourist Package for roaming SMS/OTP outside Montenegro."
+      ]
+    }
+  },
+  {
+    "id": "snap-ooredoo-hala-qa-2026-current-profile-20261002",
+    "routeId": "ooredoo-hala-qa-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c14-reviewed-2026-10-02",
+    "data": {
+      "id": "ooredoo-hala-qa-2026",
+      "brandId": "ooredoo-hala",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Ooredoo currently offers Hala prepaid through its eShop with a free SIM and same-day Qatar delivery, plus eSIM activation. Identity verification supports an original QID or passport with selfie/video verification. This establishes a current local/nonresident acquisition path, not China-first remote delivery.",
+      "landedCost": {
+        "currency": "QAR",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 0,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-eshop-sim-price"
+      },
+      "keep": {
+        "currency": "QAR",
+        "observedActionCost": 10,
+        "yearCostOriginal": 20,
+        "yearCostCny": null,
+        "action": "A QAR10-99 recharge gives 30 days of credit/line validity. After expiry Hala remains in grace for 179 days, during which Ooredoo says incoming calls/SMS remain available while outgoing/data are barred. Recharging during grace reactivates the line. Using the QAR10 floor before the 179-day grace ends gives a maximum number-retention cycle of about 209 days; two QAR10 recharges cover more than one year if timed near the provider limits.",
+        "intervalDays": 209,
+        "state": "current-provider-number-retention-floor"
+      },
+      "chinaActivation": "Current eShop fulfillment is Qatar-local. Passport identity verification supports nonresidents, but China-first purchase/delivery or activation was not established.",
+      "kyc": "Current Ooredoo identity flow accepts an original QID or passport and requires selfie/video verification; nonresident passport acquisition is supported by the reviewed flow.",
+      "payment": "Ooredoo eTopUp allows QAR10-QAR500 and states that most local and international debit/credit cards plus Apple Pay are accepted, subject to risk controls.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Ooredoo’s 2026 prepaid roaming tariff includes China. The reviewed current tariff prices sent SMS but does not separately state an incoming-SMS charge; third-party OTP delivery and incoming-SMS reliability in China remain unverified.",
+      "refund": "not reconciled",
+      "trend": "current-product-exact-validity-and-grace",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://www.ooredoo.qa/web/en/prepaid-plans/buy-prepaid-sim/",
+      "tariffSummary": "Free Hala SIM/eSIM online; QAR10 minimum top-up gives 30 active days, followed by 179-day grace before deactivation. Passport/QID verification and prepaid China roaming are currently documented.",
+      "guideSteps": [
+        "Acquire Hala through the current Qatar eShop/local channel and complete QID/passport identity verification.",
+        "For number retention, recharge before the 179-day grace period ends; do not confuse grace-state incoming SMS permission with guaranteed third-party OTP delivery abroad.",
+        "Treat China roaming support as carrier coverage evidence only, not an OTP success-rate claim."
+      ],
+      "sourceIds": [
+        "ooredoo-qa-prepaid-validity-20261002",
+        "ooredoo-qa-buy-hala-20261002",
+        "ooredoo-qa-identity-20261002",
+        "ooredoo-qa-etopup-20261002",
+        "ooredoo-qa-prepaid-roaming-20261002"
       ]
     }
   },

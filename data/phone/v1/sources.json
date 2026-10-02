@@ -198,6 +198,60 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "claro-cl-prepago-20261002",
+    "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/prepago/?tab=plansimple",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-cl-recargas-validity-20261002",
+    "url": "https://recargas.clarochile.cl/index_be.epl",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-cl-recovery-id-20261002",
+    "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/retracto/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-cl-roaming-20261002",
+    "url": "https://www.clarochile.cl/personas/servicios/servicios-moviles/roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-co-prepago-lifecycle-20261002",
+    "url": "https://www.claro.com.co/personas/servicios/servicios-moviles/prepago/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-co-prepago-roaming-20261002",
+    "url": "https://www.claro.com.co/personas/servicios/servicios-moviles/roaming/prepago/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-co-recarga-exterior-20261002",
+    "url": "https://www.claro.com.co/personas/servicios/servicios-moviles/prepago/recarga-en-exterior/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-co-recarga-online-20261002",
+    "url": "https://www.claro.com.co/personas/servicios/servicios-moviles/prepago/recarga-en-linea/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "claro-co-sim-store-20261002",
+    "url": "https://tienda.claro.com.co/detalle-producto/sim-card-por-20-dias",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
     "id": "claro-prepaid-plan-legacy-2026-09-26",
     "url": "https://www.claro.com.br/celular/planos-pre",
     "type": "provider-official",
@@ -2020,6 +2074,36 @@
     "url": "https://1.me/cg/privatni/ponuda/mobilni-uredjaji/webshop-terms-and-conditions/",
     "type": "provider-official",
     "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "ooredoo-qa-buy-hala-20261002",
+    "url": "https://www.ooredoo.qa/web/en/prepaid-plans/buy-prepaid-sim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "ooredoo-qa-etopup-20261002",
+    "url": "https://www.ooredoo.qa/web/en/etopup-tcs/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "ooredoo-qa-identity-20261002",
+    "url": "https://www.ooredoo.qa/prepaid-plans/buy-prepaid-sim/verify-your-indentity",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "ooredoo-qa-prepaid-roaming-20261002",
+    "url": "https://www.ooredoo.qa/web/wp-content/uploads/2026/01/C11-01-Prepaid-Mobile-Services-187.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "ooredoo-qa-prepaid-validity-20261002",
+    "url": "https://www.ooredoo.qa/web/en/prepaid-plans/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-02"
   },
   {
     "id": "optus-activate-20260929",
