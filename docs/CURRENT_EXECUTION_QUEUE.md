@@ -113,7 +113,7 @@ This wait does **not** block DB-C14 or community evidence acquisition.
 
 ## External waits
 
-- TikTok — base application Live; advanced Direct Post audit rejected. User authorized a targeted remediation round. Current gate is the real UX/deployment/demo checklist in `docs/TIKTOK_DIRECT_POST_AUDIT_2026-10-02.md`; no resubmission before those gates pass. This maintenance exception does not replace Phone Radar as the growth priority.
+- TikTok — base application Live; targeted Direct Post remediation and the required genuine `SELF_ONLY` publication proof are complete. The Content Posting API reapplication for app `7686819988157810696` was submitted on 2026-10-02 with the real 28-second demo video; the portal confirmation says review may take approximately 2–4 weeks. Do not claim approval and do not submit again unless TikTok rejects or requests new evidence. See `docs/TIKTOK_DIRECT_POST_AUDIT_2026-10-02.md`.
 - Authority / AI discovery — follow `docs/AUTHORITY_AND_AI_DISCOVERY.md`; verify any claimed citation/link independently.
 - AI-native retrieval — follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md`; do not bypass provider quota/auth blockers.
 
