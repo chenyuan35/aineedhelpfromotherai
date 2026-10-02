@@ -1,0 +1,30 @@
+name: DB-C13 branch import
+
+on:
+  push:
+    branches:
+      - db/db-c13-20261002
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply verified DB-C13 patch and remove importer
+        shell: bash
+        run: |
+          base64 -d .github/db-c13.patch.gz.b64 | gzip -d > /tmp/db-c13.patch
+          git apply --check /tmp/db-c13.patch
+          git apply /tmp/db-c13.patch
+          rm .github/db-c13.patch.gz.b64 .github/workflows/db-c13-import.yml
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'data: normalize phone DB-C13 routes'
+          git push origin HEAD:db/db-c13-20261002
