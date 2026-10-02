@@ -50,7 +50,7 @@ if (html.includes('Register an app or service') || html.includes('Travel or move
 }
 
 // Inject static navigation into the hub (route guides + content surface links).
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const dataPath = join(newDir, 'uk-directory-pilot.json');
 if (!existsSync(dataPath)) throw new Error('Phone Radar UK directory packet missing from public build');
 const pilot = JSON.parse(readFileSync(dataPath, 'utf8'));
