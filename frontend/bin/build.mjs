@@ -55,9 +55,9 @@ const cleanEnv = { ...process.env };
 delete cleanEnv.NPM_CONFIG_GLOBAL;
 delete cleanEnv.NPM_CONFIG_PREFIX;
 if (!existsSync(join(siteDir, 'node_modules', 'astro'))) {
-  execSync('npm install --no-audit --no-fund', { cwd: siteDir, stdio: 'inherit', env: cleanEnv });
+  execSync('npm install --no-audit --no-fund', { cwd: siteDir, stdio:'inherit', env: cleanEnv });
 }
-execSync('npm run build', { cwd: siteDir, stdio: 'inherit', env: cleanEnv });
+execSync('npm run build', { cwd: siteDir, stdio:'inherit', env: cleanEnv });
 
 for (const f of ['index.html','404.html','site.css','robots.txt','sitemap.xml','ads.txt','favicon.svg','llms.txt','ai.txt','tiktok-developers-site-verification.txt','tiktokPsmqCGL7xkhikvs8Stb3TpPWKrvG5RSF.txt','tiktok3DuVMC1KTX8prUrm2XfKgT0y8V7yvO6a.txt']) {
   const src=join(root,f); if(existsSync(src)) cpSync(src,join(dist,f));
@@ -67,6 +67,7 @@ for (const dir of ['tools','tiktok-publish','about','contact','privacy','terms',
 }
 
 execSync('node bin/publish-phone-survival-guide.mjs',{cwd:root,stdio:'inherit'});
+execSync('node bin/refine-phone-first-ui.mjs',{cwd:root,stdio:'inherit'});
 
 // Vercel enforces trailing slashes before proxying; request the final relay API path directly.
 const relayRiskPath=join(dist,'tools','relay-exit-risk-checker','index.html');
