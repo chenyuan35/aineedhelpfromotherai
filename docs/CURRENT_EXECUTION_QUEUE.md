@@ -7,9 +7,9 @@ Last updated: 2026-10-02
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **The user-facing Phone canonical has now advanced beyond a carrier list.** PR #340 (`60ff5457f2cc7982f0916b296427f0c1007c5c76`) released task-first decision shortcuts for lowest known yearly keep cost, longest documented keep window, OpenAI/Codex evidence and recently checked candidate routes. Eval Gate #1027 passed; Vercel production is READY; the production hub and shortcut JS returned HTTP 200.
+2. **The user-facing site now has a Phone-first product identity.** PR #340 released task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) makes Phone Radar the homepage first-screen identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` is READY; homepage, Phone hub and the new isolated visual stylesheet returned HTTP 200. Browser QA passed route search, route-family tabs and a live decision shortcut with no reproduced overlap or horizontal overflow.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current Phone state is **135 comparison routes / 128 canonical normalized routes / 117 comparison↔canonical route-ID overlaps / 18 legacy-only comparison route IDs / 3 indexable routes**.
+4. Current Phone state remains **135 comparison routes / 128 canonical normalized routes / 117 comparison↔canonical route-ID overlaps / 18 legacy-only comparison route IDs / 3 indexable routes**.
 5. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -17,6 +17,33 @@ Last updated: 2026-10-02
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
 Data-eSIM backstage contract: `data/esim/README.md` + `data/esim/v1/manifest.json`.
+
+## JUST COMPLETED — Phone-first homepage + Phone Radar visual identity
+
+PR #342 is a bounded frontend product-identity and visual-quality release. It does not change the database, schema, backend, public URL families, sitemap policy or indexability.
+
+Released behavior:
+
+- homepage first screen now immediately identifies the product as **Phone Radar** instead of the older generic AI interruption framing;
+- homepage H1 is **“Choose a phone number you can actually keep.”** and explains acquisition cost, keep cost, overseas SMS/OTP, signup friction and current evidence;
+- first-screen task panel surfaces lowest keep cost, ChatGPT/OpenAI evidence, longest keep window and recently checked routes;
+- Phone Radar H1 is **“Find a real phone route that still works later.”**;
+- Phone hub explains the four decisions explicitly: **Buy / Keep / Verify / Recover**;
+- existing three route families, global search, market filter, sorting, deep evidence, comparison behavior and task-first decision shortcuts remain intact;
+- a separate responsive/dark-mode visual layer gives the homepage and Phone hub a restrained data-product identity without triggering an Astro rewrite or broad redesign.
+
+Verification:
+
+- PR #342 squash merge: `e5f902250921eaa232779104bdfb4c37c6a0c3ac`;
+- Eval Gate #1032: PASS;
+- Vercel production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB`: READY;
+- apex homepage: HTTP 200 with new Phone-first title/H1;
+- production Phone hub: HTTP 200 with new H1 and Buy / Keep / Verify / Recover panel;
+- production `/media/phone-first-identity.css`: HTTP 200;
+- browser preview QA: homepage layout PASS; Phone route search PASS; three route-family tabs PASS; lowest-keep-cost decision shortcut PASS; no reproduced text overlap/clipping/horizontal overflow at the checked desktop viewport;
+- build/release boundary remains **135 comparison / 128 canonical / 3 indexable / 31 sitemap URLs**.
+
+Do not immediately redesign again. Let this baseline gather behavior/search evidence; repair only a reproduced usability or visual defect.
 
 ## JUST COMPLETED — Phone Radar task-first decision shortcuts
 
@@ -30,15 +57,6 @@ Released shortcuts:
 - **Recently checked** — ranks non-HOLD candidate routes by latest stored verification date, then source count.
 
 The cards show market, network, SIM type, acquisition cost, yearly keep cost, keep window, verification date, evidence state/source count and route state, then open the existing deep route evidence flow. Deep global evidence is still loaded progressively rather than embedded into initial HTML.
-
-Verification:
-
-- PR #340 squash merge: `60ff5457f2cc7982f0916b296427f0c1007c5c76`;
-- Eval Gate #1027: PASS;
-- Vercel production deployment `dpl_BbvDGk4EFrV1dWnRo6JdXJ1i5Rbu`: READY;
-- production Phone hub: HTTP 200;
-- production `phone-decision-shortcuts.js`: HTTP 200;
-- publication boundary unchanged: **135 comparison / 128 canonical / 3 indexable**.
 
 ## JUST COMPLETED — Backend database coverage DB-C13
 
@@ -101,6 +119,7 @@ This wait does **not** block DB-C14 or community evidence acquisition.
 
 ## Do not do next
 
+- do not trigger another broad frontend redesign without measured behavior or a reproduced UX defect;
 - do not treat backend admission as authorization for SEO/indexable pages;
 - do not bulk-admit the remaining 18 legacy-only route IDs without provenance + QC;
 - do not duplicate same-product aliases;
