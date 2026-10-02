@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-10-02
+Last updated: 2026-10-03
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs, Git history and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -13,7 +13,7 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
 | Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / PHONE-FIRST SITE IDENTITY RELEASED.** PR #291 shipped the 135-route progressive global finder; PR #340 added task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) now makes Phone Radar the homepage first-screen product identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; Vercel production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` reached READY; apex homepage, Phone hub and `phone-first-identity.css` returned HTTP 200. Preview browser QA also passed search, route tabs and a live decision shortcut with no reproduced overlap or horizontal overflow. | Keep the released frontend stable and measure behavior/search evidence before another public UX expansion. Continue backend evidence coverage independently. |
-| Phone data / publication foundation | **135-ROUTE COMPARISON / 128-ROUTE CANONICAL / 3 INDEXABLE.** DB-C13 released in PR #338 (`3e5d6f58369eb4f53947f7a611a177ca58e7615c`). Canonical `data/phone/v1` is 128 routes / 76 markets / 125 brands / 101 networks / 461 sources; 117 route IDs overlap the 135-route comparison set and 18 remain legacy-only, including the known Sakura same-product alias blocker. PR #342 changed presentation only; public URL, sitemap and indexability boundaries remain unchanged. | Start bounded DB-C14 with `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, and `claro-pre-co-2026`; keep `sakura-mobile-voice-2026` excluded and preserve the 3-route indexability allowlist. |
+| Phone data / publication foundation | **135-ROUTE COMPARISON / 131-ROUTE CANONICAL / 3 INDEXABLE.** DB-C14 released in PR #346 (`cc7a2e8c79e477481118123bbea21734fddc417e`). Canonical `data/phone/v1` is 131 routes / 79 markets / 128 brands / 104 networks / 475 sources; 120 route IDs overlap the 135-route comparison set and 15 remain legacy-only, including the known Sakura same-product alias blocker. Ooredoo Hala Qatar is ADMIT-BACKSTAGE; Claro Chile and Claro Colombia are HOLD. Public URL, sitemap and indexability boundaries remain unchanged. | Start bounded DB-C15 with `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, and `smarty-uk-2026`; keep `sakura-mobile-voice-2026` excluded and preserve the 3-route indexability allowlist. |
 | Phone evidence acquisition | **COMMUNITY-FIRST / NORMALIZED DATA-ESIM LAYER ACTIVE.** PR #327 captured the reviewed community snapshots; PR #328 (`f0057d6c0c067f42d5817bce7e2c17dc1cdfb3ee`) normalizes them into separate backstage `data/esim/v1` tables: 59 source-label providers / 72 evidence records / 159 versioned offers. Pure data eSIM remains outside Phone canonical routes; surface state is backstage-only / not-public / indexability none. | Continue append-only community/forum evidence acquisition. Require separate reviewed identity-linkage/publication decisions before any Phone canonical or public/indexable use. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains in the reset audit. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
@@ -31,16 +31,16 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 Run two tracks in parallel without confusing them:
 
 1. **User-facing Phone value:** the homepage and Phone canonical now present Phone Radar as the primary product. PR #342 is the current production visual/identity baseline; do not add another design layer or public URL merely to create visible activity. Measure real search/interaction behavior and fix only reproduced usability gaps.
-2. **Backend evidence/database coverage:** continue reviewed normalization toward broad low-cost route coverage. The next bounded batch is DB-C14: `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, `claro-pre-co-2026`.
+2. **Backend evidence/database coverage:** continue reviewed normalization toward broad low-cost route coverage. DB-C14 is released; the next bounded batch is DB-C15: `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, `smarty-uk-2026`.
 
 Public publication remains a separate gate. Canonical/database admission does not create a route page, sitemap entry, market page or ranking claim.
 
 ## Current release baseline
 
 - Phone comparison surface: **135 routes**.
-- Phone normalized canonical: **128 routes / 76 markets / 125 brands / 101 networks / 461 sources**.
-- Comparison↔canonical route-ID overlap: **117**.
-- Legacy-only comparison route IDs: **18**.
+- Phone normalized canonical: **131 routes / 79 markets / 128 brands / 104 networks / 475 sources**.
+- Comparison↔canonical route-ID overlap: **120**.
+- Legacy-only comparison route IDs: **15**.
 - Explicit indexable route pages: **3**.
 - Data-eSIM backstage: **59 provider labels / 72 evidence records / 159 versioned offers**.
 - Phone task-first decision shortcuts: **released in PR #340 / merge `60ff5457f2cc7982f0916b296427f0c1007c5c76`**.
@@ -49,14 +49,15 @@ Public publication remains a separate gate. Canonical/database admission does no
 ## Current execution sequence
 
 1. **DONE — Global progressive Phone finder.** PR #291 exposes the admitted 135-route comparison layer on the existing canonical URL while preserving the 3-route SEO allowlist.
-2. **DONE — Canonical backend coverage through DB-C13.** PR #338 leaves 18 comparison route IDs legacy-only and preserves the publication boundary.
+2. **DONE — Canonical backend coverage through DB-C14.** PR #346 leaves 15 comparison route IDs legacy-only and preserves the publication boundary.
 3. **DONE — Data-eSIM normalized backstage layer.** PR #328 keeps pure data eSIM separate from Phone-number/retention canonical routes and public/indexable surfaces.
 4. **DONE — Phone task-first decision shortcuts.** PR #340 adds lowest keep cost, longest keep window, OpenAI/Codex evidence and recently checked views.
-5. **DONE — Phone-first frontend identity / visual-quality release.** PR #342 changes the homepage first screen from generic AI interruption framing to Phone Radar, gives the Phone hub an explicit Buy / Keep / Verify / Recover value model, preserves the three route families/search/decision shortcuts, and leaves 135 comparison / 128 canonical / 3 indexable unchanged. Eval Gate #1032 and production verification passed.
-6. **NEXT — DB-C14.** Reverify `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, `claro-pre-co-2026` for current product identity, lifecycle/keep economics, foreign-user KYC/acquisition, overseas SMS/OTP/roaming and payment constraints before admission. No public/indexability change.
-7. **PARALLEL — community Data-eSIM evidence intake.** Append versions; do not overwrite provenance or auto-link ambiguous identities.
-8. **WAIT — Search Console publication decision.** Re-read at 20 settled Phone impressions or finalized data through 2026-10-05.
-9. **WAIT — TikTok Direct Post advanced review.** Targeted remediation, genuine production `SELF_ONLY` publication proof and one Content Posting API resubmission are complete. The portal says approximately 2–4 weeks; no repeat submission unless TikTok rejects or requests additional evidence. Authority follow-up remains a separate wait.
+5. **DONE — Phone-first frontend identity / visual-quality release.** PR #342 changes the homepage first screen from generic AI interruption framing to Phone Radar, gives the Phone hub an explicit Buy / Keep / Verify / Recover value model, preserves the three route families/search/decision shortcuts, and leaves the public publication boundary unchanged. Eval Gate #1032 and production verification passed.
+6. **DONE — DB-C14.** PR #346 normalized `ooredoo-hala-qa-2026` as ADMIT-BACKSTAGE and `claro-pre-cl-2026` / `claro-pre-co-2026` as HOLD. CI #213 and Eval Gate #1040 passed; production deployment `dpl_CbrVsm9tunqZhduPZu2Dd7kP76AA` is READY on merge `cc7a2e8c79e477481118123bbea21734fddc417e`. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs with only the existing 3 explicit route pages.
+7. **NEXT — DB-C15.** Reverify `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, `smarty-uk-2026` for current product identity, lifecycle/keep economics, foreign-user KYC/acquisition, overseas SMS/OTP/roaming and payment constraints before admission. No public/indexability change.
+8. **PARALLEL — community Data-eSIM evidence intake.** Append versions; do not overwrite provenance or auto-link ambiguous identities.
+9. **WAIT — Search Console publication decision.** Re-read at 20 settled Phone impressions or finalized data through 2026-10-05.
+10. **WAIT — TikTok Direct Post advanced review.** Targeted remediation, genuine production `SELF_ONLY` publication proof and one Content Posting API resubmission are complete. The portal says approximately 2–4 weeks; no repeat submission unless TikTok rejects or requests additional evidence. Authority follow-up remains a separate wait.
 
 ## Durable source pointers
 
