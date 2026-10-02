@@ -1026,6 +1026,30 @@
     "reportedAt": "2026-03-18"
   },
   {
+    "id": "movistar-pe-esim-20261003",
+    "url": "https://www.movistar.com.pe/movil/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "movistar-pe-prepago-activation-20261003",
+    "url": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "movistar-pe-prepago-contract-20261003",
+    "url": "https://cert-cdn.movistar.com.pe/2025/08/PDF_AGO_Contrato-Prepago-Movistar-2025.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "movistar-pe-prepago-entry-20261003",
+    "url": "https://www.movistar.com.pe/movil/prepago/prepagocontrato",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "mtn-gh-number-for-life-20261001",
     "url": "https://help-center.mtn.com.gh/hc/en-us/articles/4415994376466-How-to-Reserve-Your-MTN-Number-Number-for-Life",
     "type": "provider-official",
@@ -2160,6 +2184,12 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "osiptel-pe-mobile-security-20261003",
+    "url": "https://www.osiptel.gob.pe/portal-del-usuario/preguntas-frecuentes/medidas-temporales-para-seguridad-en-servicio-movil/",
+    "type": "official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "petro-legacy-expiry-history-20120401",
     "url": "https://www.howardforums.com/threads/recommend-a-good-pay-as-you-go-service-with-long-expiration-period.1742764/",
     "type": "independent-community",
@@ -2296,6 +2326,54 @@
     "url": "https://smart.com.ph/Corporate/docs/default-source/default-document-library/simreg/Prepaid_Individual_Registration.pdf",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "smarty-uk-all-plans-20261003",
+    "url": "https://smarty.co.uk/all-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-billing-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/952716-how-billing-works-with-smarty",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-china-roaming-20261003",
+    "url": "https://smarty.co.uk/roaming/international/china",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-esim-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/11652679-how-to-order-your-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-inactive-plan-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/1921756-what-happens-if-i-don-t-renew-my-plan",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-pause-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/952720-how-do-i-pause-my-plan",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-paused-incoming-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/1155232-what-happens-if-your-account-isn-t-set-up-to-auto-renew",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "smarty-uk-roaming-fair-use-20261003",
+    "url": "https://help.smarty.co.uk/en/articles/2090500-roaming-and-international",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "specialist-3gviettel-vtvang-2026-09-29",
@@ -2578,6 +2656,24 @@
     "url": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
     "type": "provider-official",
     "reportedAt": "2026-09-27"
+  },
+  {
+    "id": "talkmobile-uk-current-sim-only-20261003",
+    "url": "https://talkmobile.co.uk/sim-only",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "talkmobile-uk-current-terms-20261003",
+    "url": "https://talkmobile.co.uk/tsandcs-landing",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "talkmobile-uk-payg-closure-20170607",
+    "url": "https://www.moneysavingexpert.com/news/2017/06/talkmobile-payg-customers-could-lose-up-to-50-credit/",
+    "type": "independent-news",
+    "reportedAt": "2017-06-07"
   },
   {
     "id": "telekom-credit-validity-20260929",

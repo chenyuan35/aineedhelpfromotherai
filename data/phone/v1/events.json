@@ -432,6 +432,15 @@
     "sourceId": "official-mobitel-number-retention-2026-09-29"
   },
   {
+    "id": "evt-movistar-pre-pe-2026-db-c15-20261003",
+    "routeId": "movistar-pre-pe-2026",
+    "type": "lifecycle-acquisition-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current prepaid contract ties recharge to active service and permits cancellation after seven months without recharge; current foreign-national acquisition is in-person/biometric, while prepaid-specific overseas SMS and China behavior remain unresolved.",
+    "sourceId": "movistar-pe-prepago-contract-20261003"
+  },
+  {
     "id": "evt-mtn-gh-prepaid-2026-db-c12-20261001",
     "routeId": "mtn-gh-prepaid-2026",
     "type": "lifecycle-acquisition-reconciliation",
@@ -585,6 +594,15 @@
     "sourceId": "smart-simreg-foreigners-20260929"
   },
   {
+    "id": "evt-smarty-uk-2026-db-c15-20261003",
+    "routeId": "smarty-uk-2026",
+    "type": "lifecycle-roaming-resolution",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current SMARTY material resolves the old monthly-payment-only assumption: a plan can remain inactive before automatic account closure at 220 days, while current China roaming explicitly lists free incoming SMS; active service must be renewed before relying on calls/text/data.",
+    "sourceId": "smarty-uk-pause-20261003"
+  },
+  {
     "id": "evt-starhub-prepaid-sg-2026-db-c10-20261001",
     "routeId": "starhub-prepaid-sg-2026",
     "type": "lifecycle-identity-reconciliation",
@@ -601,6 +619,15 @@
     "scope": "route",
     "outcome": "Current STC personal prepaid terms document 180-day SIM validity from paid activity, while a still-live STC recharge page says 360 days; non-citizen final-departure/ID-expiry cancellation remains a structural blocker.",
     "sourceId": "stc-sawa-mobile-terms-20260930"
+  },
+  {
+    "id": "evt-talkmobile-uk-payg-closed-2026-db-c15-20261003",
+    "routeId": "talkmobile-uk-payg-closed-2026",
+    "type": "product-identity-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Historical Talkmobile PAYG ended on 31 August 2017; current Talkmobile sells contract/SIM-only plans only, so the PAYG route remains preserved as discontinued negative knowledge rather than remapped to a current subscription.",
+    "sourceId": "talkmobile-uk-payg-closure-20170607"
   },
   {
     "id": "evt-telekom-easy-sk-90d-2026-db-c3-review-20260929",

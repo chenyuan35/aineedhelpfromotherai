@@ -1301,6 +1301,27 @@
     ]
   },
   {
+    "id": "movistar-pre-pe-2026",
+    "marketId": "pe",
+    "networkId": "movistar-pe",
+    "brandId": "movistar-pre-pe",
+    "displayName": "Movistar Prepago Peru",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.movistar.com.pe/movil/prepago/como-activar-tu-chip",
+    "sourceIds": [
+      "movistar-pe-esim-20261003",
+      "movistar-pe-prepago-activation-20261003",
+      "movistar-pe-prepago-contract-20261003",
+      "movistar-pe-prepago-entry-20261003",
+      "osiptel-pe-mobile-security-20261003"
+    ]
+  },
+  {
     "id": "movistar-prepago-6mo-2026",
     "marketId": "es",
     "networkId": "movistar-es",
@@ -1790,6 +1811,30 @@
     ]
   },
   {
+    "id": "smarty-uk-2026",
+    "marketId": "gb",
+    "networkId": "three-uk",
+    "brandId": "smarty-uk",
+    "displayName": "SMARTY UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://smarty.co.uk/all-plans",
+    "sourceIds": [
+      "smarty-uk-all-plans-20261003",
+      "smarty-uk-billing-20261003",
+      "smarty-uk-china-roaming-20261003",
+      "smarty-uk-esim-20261003",
+      "smarty-uk-inactive-plan-20261003",
+      "smarty-uk-pause-20261003",
+      "smarty-uk-paused-incoming-20261003",
+      "smarty-uk-roaming-fair-use-20261003"
+    ]
+  },
+  {
     "id": "smspool-temp",
     "marketId": "global",
     "networkId": null,
@@ -1923,6 +1968,25 @@
     "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
     "sourceIds": [
       "taiwan-mobile-tw-official"
+    ]
+  },
+  {
+    "id": "talkmobile-uk-payg-closed-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "talkmobile-uk",
+    "displayName": "Talkmobile PAYG (discontinued)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://talkmobile.co.uk/sim-only",
+    "sourceIds": [
+      "talkmobile-uk-current-sim-only-20261003",
+      "talkmobile-uk-current-terms-20261003",
+      "talkmobile-uk-payg-closure-20170607"
     ]
   },
   {

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "talkmobile-uk-payg-closed-2026",
+    "marketId": "gb",
+    "networkId": "vodafone-uk",
+    "brandId": "talkmobile-uk",
+    "displayName": "Talkmobile PAYG (discontinued)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://talkmobile.co.uk/sim-only",
+    "sourceIds": [
+      "talkmobile-uk-current-sim-only-20261003",
+      "talkmobile-uk-current-terms-20261003",
+      "talkmobile-uk-payg-closure-20170607"
+    ]
+  },
+  "market": {
+    "id": "gb",
+    "name": "United Kingdom",
+    "countryCode": "GB"
+  },
+  "network": {
+    "id": "vodafone-uk",
+    "name": "Vodafone UK",
+    "marketId": "gb"
+  },
+  "brand": {
+    "id": "talkmobile-uk",
+    "networkId": "vodafone-uk",
+    "name": "Talkmobile",
+    "marketId": "gb"
+  },
+  "metrics": {
+    "routeId": "talkmobile-uk-payg-closed-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "GBP",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "GBP",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "talkmobile-uk-current-sim-only-20261003",
+      "url": "https://talkmobile.co.uk/sim-only",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "talkmobile-uk-current-terms-20261003",
+      "url": "https://talkmobile.co.uk/tsandcs-landing",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "talkmobile-uk-payg-closure-20170607",
+      "url": "https://www.moneysavingexpert.com/news/2017/06/talkmobile-payg-customers-could-lose-up-to-50-credit/",
+      "type": "independent-news",
+      "reportedAt": "2017-06-07"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-talkmobile-uk-payg-closed-2026-db-c15-20261003",
+      "routeId": "talkmobile-uk-payg-closed-2026",
+      "type": "product-identity-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Historical Talkmobile PAYG ended on 31 August 2017; current Talkmobile sells contract/SIM-only plans only, so the PAYG route remains preserved as discontinued negative knowledge rather than remapped to a current subscription.",
+      "sourceId": "talkmobile-uk-payg-closure-20170607"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-talkmobile-uk-payg-closed-2026-current-profile-20261003",
+      "routeId": "talkmobile-uk-payg-closed-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c15-reviewed-2026-10-03",
+      "data": {
+        "id": "talkmobile-uk-payg-closed-2026",
+        "brandId": "talkmobile-uk",
+        "publishState": "observation-hold",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "DISCONTINUED ROUTE. Contemporaneous reporting records Vodafone shutting Talkmobile PAYG on 31 August 2017. Talkmobile current 2026 surface sells 30-day and 12-month SIM-only contracts, and its current terms are explicitly for contract customers. Those current plans are a different commercial route and are not substituted for PAYG.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "discontinued"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Not possible on this route: Talkmobile PAYG ended in 2017. Current Talkmobile SIM-only subscriptions are a different product path.",
+          "intervalDays": null,
+          "state": "discontinued"
+        },
+        "chinaActivation": "Not applicable to the discontinued PAYG route. Current Talkmobile contract/SIM-only roaming capabilities are not transferred to this historical route.",
+        "kyc": "Not applicable to the discontinued PAYG route. Current Talkmobile SIM-only deals state no credit check is required, but that does not revive PAYG.",
+        "payment": "Not applicable to the discontinued PAYG route; current Talkmobile subscription payment terms are separate.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Not applicable to the discontinued PAYG route. Current Talkmobile contract plans have current roaming terms, but that evidence is intentionally not transferred to the closed PAYG identity.",
+        "refund": "Historical PAYG closure/refund issues are dated 2017 evidence only.",
+        "trend": "discontinued",
+        "guideEligible": false,
+        "holdReason": "Talkmobile PAYG was discontinued in 2017. Preserve this row as negative/legacy knowledge and do not recommend it or silently replace it with current Talkmobile SIM-only subscriptions.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://talkmobile.co.uk/sim-only",
+        "tariffSummary": "Talkmobile PAYG closed 31 August 2017; current Talkmobile is contract/SIM-only. Historical PAYG remains a HOLD/avoid route.",
+        "guideSteps": [
+          "Do not attempt to acquire Talkmobile PAYG; it no longer exists.",
+          "If evaluating current Talkmobile SIM-only, treat it as a separate product decision rather than reusing PAYG lifecycle/economics."
+        ],
+        "sourceIds": [
+          "talkmobile-uk-current-sim-only-20261003",
+          "talkmobile-uk-current-terms-20261003",
+          "talkmobile-uk-payg-closure-20170607"
+        ],
+        "avoidRoute": true,
+        "avoidReason": "PAYG discontinued in 2017; current Talkmobile SIM-only is a different subscription product."
+      }
+    }
+  ]
+}

@@ -285,6 +285,11 @@
     "countryCode": "NZ"
   },
   {
+    "id": "pe",
+    "name": "Peru",
+    "countryCode": "PE"
+  },
+  {
     "id": "ph",
     "name": "Philippines",
     "countryCode": "PH"
