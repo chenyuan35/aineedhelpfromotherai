@@ -84,5 +84,8 @@
     "ssh2": "^1.17.0",
     "winston": "^3.9.0",
     "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
   }
 }
