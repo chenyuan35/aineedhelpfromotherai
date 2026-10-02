@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-02",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c13",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. Current Telenor support still recognizes registered prepaid numbers and destination-specific prepaid roaming, but no current 2026 Kontantkort sales/recharge ladder or current inactivity clock was located. The legacy SEK 50/365-day figure comes from old provider material and is explicitly not carried forward. Foreign-user registration execution also remains unresolved.",
+  "market": {
+    "id": "se",
+    "name": "Sweden",
+    "countryCode": "SE"
+  },
+  "network": {
+    "id": "telenor-se",
+    "name": "Telenor Sweden",
+    "marketId": "se"
+  },
+  "brand": {
+    "id": "telenor-kontant-se",
+    "networkId": "telenor-se",
+    "name": "Telenor Kontantkort",
+    "marketId": "se"
+  },
+  "route": {
+    "id": "telenor-kontantkort-se-2026",
+    "marketId": "se",
+    "networkId": "telenor-se",
+    "brandId": "telenor-kontant-se",
+    "displayName": "Telenor Kontantkort Sweden",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.telenor.se/",
+    "sourceIds": [
+      "telenor-se-number-porting-20261002",
+      "telenor-se-roaming-taiwan-20261002",
+      "telenor-se-mobile-subscriptions-20261002"
+    ]
+  },
+  "sources": [
+    {
+      "id": "telenor-se-number-porting-20261002",
+      "url": "https://www.telenor.se/support/mobiltelefoni/nummerflytt/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "telenor-se-roaming-taiwan-20261002",
+      "url": "https://www.telenor.se/roaming/taiwan/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "telenor-se-mobile-subscriptions-20261002",
+      "url": "https://www.telenor.se/mobilabonnemang/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-02"
+    }
+  ],
+  "sourceIds": [
+    "telenor-se-number-porting-20261002",
+    "telenor-se-roaming-taiwan-20261002",
+    "telenor-se-mobile-subscriptions-20261002"
+  ],
+  "events": [
+    {
+      "id": "evt-telenor-kontantkort-se-2026-db-c13-20261002",
+      "routeId": "telenor-kontantkort-se-2026",
+      "type": "product-lifecycle-reconciliation",
+      "reportedAt": "2026-10-02",
+      "scope": "route",
+      "outcome": "Current Telenor support confirms registered prepaid numbers and destination-specific prepaid roaming, while current purchase/recharge economics and foreign-user registration remain unresolved; legacy cheap annual pricing is withdrawn.",
+      "sourceId": "telenor-se-number-porting-20261002"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-telenor-kontantkort-se-2026-current-profile-20261002",
+      "routeId": "telenor-kontantkort-se-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-02",
+      "sourceDataset": "db-c13-reviewed-2026-10-02",
+      "data": {
+        "id": "telenor-kontantkort-se-2026",
+        "brandId": "telenor-kontant-se",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Telenor still recognizes registered prepaid numbers in current support and roaming material, but the reviewed 2026 public sales surface is subscription-led and no current Kontantkort purchase/recharge price ladder was located. Preserve the route as a current service signal with unresolved new-acquisition economics.",
+        "landedCost": {
+          "currency": "SEK",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-acquisition-price-unresolved"
+        },
+        "keep": {
+          "currency": "SEK",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Do not reuse the old SEK 50/365-day Kontantkort price as a 2026 keep-alive rule. Current Telenor support still recognizes prepaid service, but the present recharge floor and current inactivity/deactivation clock were not established from reviewed 2026 material.",
+          "intervalDays": null,
+          "state": "current-retention-economics-unresolved"
+        },
+        "chinaActivation": "Current Telenor support requires prepaid numbers to be registered. A current foreign-passport/new-customer prepaid registration path and China-first activation were not established.",
+        "kyc": "Current Telenor number-porting support states that prepaid numbers must be registered and points Telenor prepaid users to the registration flow. The reviewed public material does not establish which foreign identity documents are accepted for a new nonresident prepaid line.",
+        "payment": "Current 2026 prepaid recharge amount/payment options were not established from the reviewed public material; do not infer them from historical Kontantkort PDFs.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current Telenor roaming pages still explicitly distinguish supported prepaid destinations; for Taiwan, incoming SMS is listed at SEK 0. Prepaid roaming is country-dependent and China-specific prepaid/OTP behavior was not verified.",
+        "refund": "not reconciled",
+        "trend": "current-prepaid-signals-stale-economics",
+        "guideEligible": false,
+        "holdReason": "Current 2026 Kontantkort purchase/recharge economics, inactivity/deactivation rule, and foreign-user registration path remain unresolved; historical SEK 50/365-day material is not treated as current.",
+        "lastVerifiedAt": "2026-10-02",
+        "acquireUrl": "https://www.telenor.se/",
+        "tariffSummary": "Current Telenor pages still recognize registered prepaid numbers and prepaid roaming, but current purchase/keep-alive economics are unresolved; HOLD.",
+        "sourceIds": [
+          "telenor-se-number-porting-20261002",
+          "telenor-se-roaming-taiwan-20261002",
+          "telenor-se-mobile-subscriptions-20261002"
+        ],
+        "guideSteps": [
+          "Do not operationalize the historical SEK 50/365-day Kontantkort figure as current.",
+          "Treat Telenor prepaid registration as required, with foreign-ID execution still unresolved.",
+          "Treat current roaming support as destination-specific and not proof of third-party OTP delivery."
+        ]
+      }
+    }
+  ]
+}

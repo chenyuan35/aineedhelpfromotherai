@@ -6551,6 +6551,64 @@
     }
   },
   {
+    "id": "snap-telemach-prepaid-si-2026-current-profile-20261002",
+    "routeId": "telemach-prepaid-si-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c13-reviewed-2026-10-02",
+    "data": {
+      "id": "telemach-prepaid-si-2026",
+      "brandId": "telemach-free2go",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Telemach actively sells Free2Go physical prepaid SIMs through its stores and a wide Slovenian retail network. The current page shows a EUR 2 promotional starter price with EUR 5 preloaded credit. Prepaid recharge cards are EUR 5, 10 or 20 and can be applied by USSD at home or abroad.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 2,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 2,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-promotional-starter-price"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": 20,
+        "yearCostCny": null,
+        "action": "Recharge at least EUR 5 every 90 days to preserve continuous incoming and outgoing service. Days 91-180 are incoming-only; days 181-270 lose normal service. A recharge during days 91-270 restores service and restarts the 90-day period. The current prepaid terms allow Telemach to disconnect the SIM after 270 days without recharge; 30 days after disconnection the number cannot be reactivated or ported.",
+        "intervalDays": 90,
+        "state": "current-provider-continuous-service-floor"
+      },
+      "chinaActivation": "Free2Go is a Slovenian physical-SIM acquisition route. Current provider material supports domestic retail purchase and prepaid roaming, but China-first activation and mainland-China OTP behavior are not established.",
+      "kyc": "The current Free2Go sales page does not establish a general passport/no-KYC rule. For EU/EEA Roam-Like-At-Home domestic pricing, users activating from 1 October 2020 must register and prove habitual residence or stable ties to Slovenia; unregistered users can still roam in the EU/EEA with surcharges.",
+      "payment": "Recharge vouchers are sold in EUR 5/10/20 denominations and can be redeemed by USSD at home or abroad. Telemach subscribers can also use Polni zame. Foreign-bank-card recharge success is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Telemach explicitly directs prepaid users to its roaming country/operator tariff and documents EU/EEA roaming for Free2Go, including a separate registration rule for domestic-price RLAH. China-specific incoming SMS/OTP was not verified.",
+      "refund": "not reconciled",
+      "trend": "current-product-exact-90-180-270-lifecycle",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://telemach.si/mobilna/predplacniski-paketi/mobilni-paket-free2-go",
+      "tariffSummary": "Current Free2Go starter is displayed at EUR 2 with EUR 5 credit; EUR 5 is the lowest listed recharge. Full service lasts 90 days after recharge, followed by incoming-only to day 180 and restricted retention through day 270; Telemach may disconnect thereafter.",
+      "sourceIds": [
+        "telemach-si-free2go-20261002",
+        "telemach-si-prepaid-validity-20261002",
+        "telemach-si-free2go-rlah-registration-20261002",
+        "telemach-si-prepaid-terms-20261002"
+      ],
+      "guideSteps": [
+        "Buy Free2Go through a current Telemach/partner retail channel; treat the EUR 2 starter price as a current promotion, not a permanent floor.",
+        "Use EUR 5 recharge before each 90-day active-service deadline if continuous incoming/outgoing service matters.",
+        "For EU/EEA domestic-price roaming, follow Telemach’s RLAH registration/stable-ties rule; do not infer China OTP reliability."
+      ]
+    }
+  },
+  {
     "id": "snap-telenor-kontant-no-2026-current-profile-20261001",
     "routeId": "telenor-kontant-no-2026",
     "kind": "current-profile",
@@ -6605,6 +6663,120 @@
         "Treat the current 12-month rule as authoritative over older 15-month wording.",
         "Do not claim passport-only remote signup unless a current Telenor path is reproduced.",
         "Treat Nordic-card-only web recharge as a maintenance constraint for nonresident users."
+      ]
+    }
+  },
+  {
+    "id": "snap-telenor-kontantkort-se-2026-current-profile-20261002",
+    "routeId": "telenor-kontantkort-se-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c13-reviewed-2026-10-02",
+    "data": {
+      "id": "telenor-kontantkort-se-2026",
+      "brandId": "telenor-kontant-se",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Telenor still recognizes registered prepaid numbers in current support and roaming material, but the reviewed 2026 public sales surface is subscription-led and no current Kontantkort purchase/recharge price ladder was located. Preserve the route as a current service signal with unresolved new-acquisition economics.",
+      "landedCost": {
+        "currency": "SEK",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-acquisition-price-unresolved"
+      },
+      "keep": {
+        "currency": "SEK",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Do not reuse the old SEK 50/365-day Kontantkort price as a 2026 keep-alive rule. Current Telenor support still recognizes prepaid service, but the present recharge floor and current inactivity/deactivation clock were not established from reviewed 2026 material.",
+        "intervalDays": null,
+        "state": "current-retention-economics-unresolved"
+      },
+      "chinaActivation": "Current Telenor support requires prepaid numbers to be registered. A current foreign-passport/new-customer prepaid registration path and China-first activation were not established.",
+      "kyc": "Current Telenor number-porting support states that prepaid numbers must be registered and points Telenor prepaid users to the registration flow. The reviewed public material does not establish which foreign identity documents are accepted for a new nonresident prepaid line.",
+      "payment": "Current 2026 prepaid recharge amount/payment options were not established from the reviewed public material; do not infer them from historical Kontantkort PDFs.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Telenor roaming pages still explicitly distinguish supported prepaid destinations; for Taiwan, incoming SMS is listed at SEK 0. Prepaid roaming is country-dependent and China-specific prepaid/OTP behavior was not verified.",
+      "refund": "not reconciled",
+      "trend": "current-prepaid-signals-stale-economics",
+      "guideEligible": false,
+      "holdReason": "Current 2026 Kontantkort purchase/recharge economics, inactivity/deactivation rule, and foreign-user registration path remain unresolved; historical SEK 50/365-day material is not treated as current.",
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://www.telenor.se/",
+      "tariffSummary": "Current Telenor pages still recognize registered prepaid numbers and prepaid roaming, but current purchase/keep-alive economics are unresolved; HOLD.",
+      "sourceIds": [
+        "telenor-se-number-porting-20261002",
+        "telenor-se-roaming-taiwan-20261002",
+        "telenor-se-mobile-subscriptions-20261002"
+      ],
+      "guideSteps": [
+        "Do not operationalize the historical SEK 50/365-day Kontantkort figure as current.",
+        "Treat Telenor prepaid registration as required, with foreign-ID execution still unresolved.",
+        "Treat current roaming support as destination-specific and not proof of third-party OTP delivery."
+      ]
+    }
+  },
+  {
+    "id": "snap-telia-dk-prepaid-2026-current-profile-20261002",
+    "routeId": "telia-dk-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-02",
+    "sourceDataset": "db-c13-reviewed-2026-10-02",
+    "data": {
+      "id": "telia-dk-prepaid-2026",
+      "brandId": "telia-dk-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "The legacy Telia Denmark prepaid label is retained only for database reconciliation. Current Telia-hosted supplier information identifies Norlys Mobil A/S, and current Norlys consumer mobile sales are subscription products. No current Telia-branded prepaid/taletidskort acquisition path was located.",
+      "landedCost": {
+        "currency": "DKK",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-prepaid-product-not-established"
+      },
+      "keep": {
+        "currency": "DKK",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "No current Telia DK prepaid lifecycle or recharge-validity rule was established. Do not infer a keep-alive cost from current Norlys subscription products or old Telia material.",
+        "intervalDays": null,
+        "state": "legacy-product-successor-conflict"
+      },
+      "chinaActivation": "No current Telia DK prepaid acquisition/activation route was established. Current Norlys mobile ordering is subscription-based and uses MitID.",
+      "kyc": "Current Norlys consumer mobile ordering uses MitID for subscription purchase. That does not establish a foreign-user path for the legacy Telia prepaid product, which was not found as a current offer.",
+      "payment": "Current Norlys consumer mobile is sold as monthly subscription service; this is not treated as evidence for legacy prepaid recharge/payment mechanics.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Norlys subscriptions advertise roaming, but those terms are not mapped onto the unverified legacy Telia prepaid product; overseas SMS/OTP for this route remains unresolved.",
+      "refund": "not reconciled",
+      "trend": "legacy-telia-identity-superseded-by-norlys",
+      "guideEligible": false,
+      "holdReason": "Current Telia DK prepaid product identity and lifecycle were not established. Telia-hosted current supplier information identifies Norlys Mobil A/S, while current Norlys consumer mobile sales are subscription-based.",
+      "lastVerifiedAt": "2026-10-02",
+      "acquireUrl": "https://shop.norlys.dk/mobil/",
+      "tariffSummary": "Legacy Telia DK prepaid identity is preserved for reconciliation, but current consumer mobile is Norlys subscription service and no current prepaid lifecycle was found; HOLD.",
+      "sourceIds": [
+        "telia-dk-norlys-supplier-20261002",
+        "norlys-dk-mobile-shop-20261002",
+        "norlys-dk-login-transition-20261002"
+      ],
+      "guideSteps": [
+        "Treat this as a legacy identity record, not a current purchase recommendation.",
+        "Do not map Norlys subscription pricing onto the former Telia prepaid product.",
+        "Re-open only if a current prepaid/taletidskort product or migration rule is documented."
       ]
     }
   },

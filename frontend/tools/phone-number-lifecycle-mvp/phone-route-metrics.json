@@ -1166,6 +1166,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "telemach-prepaid-si-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 2,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "telenor-kontant-no-2026",
       "checkedAt": "2026-10-01",
       "metricState": "current-profile",
@@ -1176,6 +1188,30 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "telenor-kontantkort-se-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "SEK",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "SEK",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
+      "routeId": "telia-dk-prepaid-2026",
+      "checkedAt": "2026-10-02",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "DKK",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "DKK",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "telia-ee-180d-2026",

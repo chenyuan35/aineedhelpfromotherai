@@ -1905,6 +1905,26 @@
     ]
   },
   {
+    "id": "telemach-prepaid-si-2026",
+    "marketId": "si",
+    "networkId": "telemach-si",
+    "brandId": "telemach-free2go",
+    "displayName": "Telemach Free2Go Slovenia",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://telemach.si/mobilna/predplacniski-paketi/mobilni-paket-free2-go",
+    "sourceIds": [
+      "telemach-si-free2go-20261002",
+      "telemach-si-free2go-rlah-registration-20261002",
+      "telemach-si-prepaid-terms-20261002",
+      "telemach-si-prepaid-validity-20261002"
+    ]
+  },
+  {
     "id": "telenor-kontant-no-2026",
     "marketId": "no",
     "networkId": "telenor-no",
@@ -1922,6 +1942,44 @@
       "telenor-no-kontant-help-20261001",
       "telenor-no-kontant-product-20261001",
       "telenor-no-mobile-terms-20261001"
+    ]
+  },
+  {
+    "id": "telenor-kontantkort-se-2026",
+    "marketId": "se",
+    "networkId": "telenor-se",
+    "brandId": "telenor-kontant-se",
+    "displayName": "Telenor Kontantkort Sweden",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://www.telenor.se/",
+    "sourceIds": [
+      "telenor-se-mobile-subscriptions-20261002",
+      "telenor-se-number-porting-20261002",
+      "telenor-se-roaming-taiwan-20261002"
+    ]
+  },
+  {
+    "id": "telia-dk-prepaid-2026",
+    "marketId": "dk",
+    "networkId": "norlys-mobile-dk",
+    "brandId": "telia-dk-prepaid",
+    "displayName": "Telia DK Prepaid (legacy identity)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-02",
+    "acquireUrl": "https://shop.norlys.dk/mobil/",
+    "sourceIds": [
+      "norlys-dk-login-transition-20261002",
+      "norlys-dk-mobile-shop-20261002",
+      "telia-dk-norlys-supplier-20261002"
     ]
   },
   {
