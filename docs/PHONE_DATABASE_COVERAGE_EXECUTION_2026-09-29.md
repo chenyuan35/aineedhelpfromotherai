@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C5
+## Current verified state after DB-C14
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **104 routes / 60 markets / 101 brands / 80 networks / 346 sources**;
-- comparison↔canonical route-ID overlap: **93**;
-- comparison routes still legacy-only: **42**;
+- canonical normalized database: **131 routes / 79 markets / 128 brands / 104 networks / 475 sources**;
+- comparison↔canonical route-ID overlap: **120**;
+- comparison routes still legacy-only: **15**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -301,4 +301,16 @@ Release: PR #338 squash-merged as `3e5d6f58369eb4f53947f7a611a177ca58e7615c`; CI
 
 No delegated worker output was required or accepted for DB-C13. The coordinator used current provider evidence, reviewed packets, the canonical importer and full automated/release gates.
 
-DB-C14 next bounded batch: `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, `claro-pre-co-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+## DB-C14 — completed 2026-10-02
+
+The bounded Qatar/Chile/Colombia batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `ooredoo-hala-qa-2026` — ADMIT-BACKSTAGE. Current Ooredoo Qatar evidence establishes Hala prepaid, free eShop SIM/eSIM acquisition, QID/passport identity verification, QAR10 eTopUp, 30 active days for QAR10–99 plus 179 days grace before deactivation, and current prepaid roaming coverage including China. Specific third-party OTP delivery and explicit incoming-roaming-SMS pricing/reliability remain unverified.
+- `claro-pre-cl-2026` — HOLD. The current recharge portal establishes a 180-day balance lifecycle at the lowest CLP750–1,999 tier (7 active + 173 recovery days), but that does not establish the full number-deactivation clock. Current self-activation uses a Chilean identity-card flow; foreign-passport new-SIM activation, overseas SMS/OTP behavior and reliable foreign-card recharge execution remain unresolved.
+- `claro-pre-co-2026` — HOLD. Current Claro Colombia material establishes COP1,000 minimum online recharge with 60-day validity and states that a prepaid line with no movements for 60 days could be deactivated. Prepaid roaming documentation says incoming SMS abroad is free in supported destinations. Initial foreign-passport registration, mainland-China prepaid coverage and OTP reliability remain unresolved; the 60-day wording is not converted into an invented exact annual keep cost.
+
+Post-DB-C14 state: **131 canonical routes / 79 markets / 128 brands / 104 networks / 475 sources / 120 comparison-overlap route IDs / 15 comparison route IDs still legacy-only / 3 explicit indexable routes**. Review-packet checks, canonical data build/QC, `npm run verify`, frontend build and DB-C14 regression passed. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #346 squash-merged as `cc7a2e8c79e477481118123bbea21734fddc417e`; CI #213 and Eval Gate #1040 passed, Vercel Preview succeeded, and production deployment `dpl_CbrVsm9tunqZhduPZu2Dd7kP76AA` reached READY for the same merge SHA. Live apex, Phone canonical `/tools/phone-number-survival-guide/` and sitemap return HTTP 200; the sitemap contains only the existing three explicit Phone route pages.
+
+DB-C15 next bounded batch: `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, `smarty-uk-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
