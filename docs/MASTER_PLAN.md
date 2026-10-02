@@ -141,7 +141,7 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 48. **DONE — backend database coverage DB-C13.** `telenor-kontantkort-se-2026` and legacy `telia-dk-prepaid-2026` were normalized as HOLD, while `telemach-prepaid-si-2026` was ADMIT-BACKSTAGE with current EUR2 promotional starter pricing, EUR5 recharge floor and the provider's 90/180/270-day lifecycle. PR #338 squash-merged as `3e5d6f58369eb4f53947f7a611a177ca58e7615c` after CI #209, Eval Gate #1023 and Vercel Preview passed; production preserved the Phone hub at HTTP 200, all three DB-C13 standalone routes at HTTP 404 and 31 sitemap URLs. Canonical coverage is now 128 routes / 76 markets / 125 brands / 101 networks / 461 sources, with 117 comparison↔canonical route-ID overlaps and 18 comparison route IDs still legacy-only. Next bounded DB-C14 batch is `ooredoo-hala-qa-2026`, `claro-pre-cl-2026`, `claro-pre-co-2026`; keep the Sakura same-product alias blocker excluded and preserve the 3-route publication boundary.
 49. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
 50. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-51. **WAIT — TikTok review and authority batch 2.** Do not disturb external waits before their triggers.
+51. **AUTHORIZED — TikTok advanced Direct Post audit remediation.** Base app is Live; the advanced audit is rejected with UX/demo feedback. Complete the bounded existing-tool repair and real-post evidence before resubmission. Authority batch 2 remains waiting.
 
 ## Phone directory implementation contract
 
@@ -221,7 +221,7 @@ No country/provider keyword page is created merely for coverage or SEO.
 
 ### TikTok App Review
 
-Status: **SUBMITTED / WAITING**. Do not Recall or change submitted configuration, demo, credentials, URLs, products or scopes until Approved or Rejected/Changes requested.
+Status: **BASE APP LIVE / ADVANCED DIRECT POST AUDIT REJECTED**. Verified portal feedback on 2026-10-02 requires UX points 1–5 and a real published-video ending. User authorized targeted repair and resubmission; do not expand scopes, turn this into a new product pillar, fabricate public usage, or submit before the verified demo gates in `docs/TIKTOK_DIRECT_POST_AUDIT_2026-10-02.md` pass.
 
 ### Authority batch 2
 

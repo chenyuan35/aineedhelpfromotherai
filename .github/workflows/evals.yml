@@ -61,6 +61,9 @@ jobs:
       - name: Build and audit public Phone Survival release
         run: node frontend/bin/build.mjs && node scripts/test-phone-number-public-release.mjs
 
+      - name: Audit TikTok Direct Post UX and public data disclosures
+        run: node scripts/test-tiktok-content-posting.mjs && node scripts/test-tiktok-public-surface.mjs
+
       - name: Run golden eval suite
         run: npm run eval -- --quiet
         id: evals

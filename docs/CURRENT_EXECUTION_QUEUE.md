@@ -113,7 +113,7 @@ This wait does **not** block DB-C14 or community evidence acquisition.
 
 ## External waits
 
-- TikTok App Review — waiting; do not alter submitted configuration until review changes state.
+- TikTok — base application Live; advanced Direct Post audit rejected. User authorized a targeted remediation round. Current gate is the real UX/deployment/demo checklist in `docs/TIKTOK_DIRECT_POST_AUDIT_2026-10-02.md`; no resubmission before those gates pass. This maintenance exception does not replace Phone Radar as the growth priority.
 - Authority / AI discovery — follow `docs/AUTHORITY_AND_AI_DISCOVERY.md`; verify any claimed citation/link independently.
 - AI-native retrieval — follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md`; do not bypass provider quota/auth blockers.
 
