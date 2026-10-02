@@ -26,13 +26,10 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Apply reviewed DB-C15 inputs
+      - name: Generate DB-C15 canonical state
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d .github/db-c15-input.patch.gz.b64 | gzip -d > /tmp/db-c15-input.patch
-          git apply --check /tmp/db-c15-input.patch
-          git apply /tmp/db-c15-input.patch
           for packet in \
             data/phone/review-packets/movistar-pre-pe-2026.json \
             data/phone/review-packets/talkmobile-uk-payg-closed-2026.json \
