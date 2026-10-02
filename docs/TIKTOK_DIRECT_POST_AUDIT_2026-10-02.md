@@ -3,7 +3,7 @@
 ## Session card
 
 - Task: repair the existing `/tiktok-publish/` integration against the exact advanced-audit rejection and produce a genuine resubmission, without changing the website's Phone Radar mission.
-- Why now: the base application is Live; advanced Direct Post audit is rejected, not still pending. The user explicitly authorized repair, deployment, a real compliant test, recording and submission.
+- Why now: the base application is Live; advanced Direct Post audit was rejected, not still pending. The user explicitly authorized repair, deployment, a real compliant test, recording and submission.
 - Write target: branch `fix/tiktok-direct-post-audit`, created from main commit `3750c763b960529e29ebf37f465525c263d4a786`; never edit main directly.
 - Deliverable: verified UX fixes and discoverability/privacy disclosure, passing tests/CI/Preview, independently verified production, genuine end-to-end video and advanced form submission receipt.
 - Steps: repair with regression tests; release via PR/CI/Preview; verify authorized account and actual media; record the real Direct Post ending; review footage and submit once.
@@ -15,11 +15,11 @@
 
 App ID: `7686819988157810696`. Existing public route: `https://aineedhelpfromotherai.com/tiktok-publish/`.
 
-The portal UI shows the base application's Live version since Oct 1, 2026 2:14 PM. The separate advanced-audit rejection reason is:
+The portal UI showed the base application's Live version since Oct 1, 2026 2:14 PM. The separate advanced-audit rejection reason was:
 
 > Your application did not follow our UX Guidelines. Please refer to point 1 to 5 under 'Required UX Implementation in Your App' in the Content Sharing Guidelines (https://developers.tiktok.com/doc/content-sharing-guidelines#required_ux_implementation_in_your_app). All the requirements mentioned here need to be shown in the demo video. The demo video should show the complete end-to-end flow of the integrations with TikTok and the ending must show that had been post under TikTok.
 
-Advanced form limits read from the current portal schema: up to 3 MP4 files, each at most 50,000,000 bytes.
+Advanced form limits read from the portal schema: up to 3 MP4 files, each at most 50,000,000 bytes.
 
 Existing selected scopes remain `user.info.basic`, `video.publish`, `video.upload`.
 
@@ -43,10 +43,22 @@ A controlled UI/HTTP fixture is an offline regression aid only. It must never be
 
 Re-review the actual copyrighted/original video, apply truthful AIGC disclosure, conceal sensitive response fields before recording, preserve the genuine processing outcome and show the same target account/title/material at the end.
 
-The current truthful state is implementation in progress. The user has additionally approved temporarily making the currently logged-in `buns790` account private solely for the unaudited `SELF_ONLY` demonstration, and explicitly requires restoring its prior public-account setting after the demonstration. The private-account setting has NOT been changed, and no new TikTok publication has been performed.
+## Verified completion and resubmission — 2026-10-02
 
-The parent independently reran the fixture-backed page regression and the five built-public-surface checks. A separate fix context is addressing newly identified nested TikTok quota responses, visible privacy-conflict explanations, submit-time video-file identity and creator-bound consent. Do not count these fixture results as live API evidence.
+The authorized one-off YUAA browser session was used only for the real TikTok account/login workflow and portal submission. It is not project infrastructure and does not host any website service or durable project dependency.
 
-Local `npm run verify` failed against the retired `/failure-index.json` (HTTP 410); its runner, server and library files are unchanged in this branch. The local Phone generated-artifact gate also returned stale-artifact, so release remains blocked until its cause is reconciled and the required PR gates pass. Fresh GitHub main has advanced to `e5f902250921eaa232779104bdfb4c37c6a0c3ac` (Phone first-screen PR #342); reconcile against that state before release and do not overwrite the independent Phone changes.
+Live Direct Post verification used the connected creator `Ethereal` (`@healing...c`). The account was temporarily switched to private for the unaudited `SELF_ONLY` demonstration and restored to its prior public-account setting after the test.
 
-Nothing in this document claims new production deployment, new recorded success, submitted advanced request or approval.
+Two genuine Direct Post runs completed through the production `/tiktok-publish/` flow. TikTok returned terminal `PUBLISH_COMPLETE`, and the creator profile showed the newly posted review media. The second review post used the title `TikTok Direct Post API Review Demo`; the live creator view showed the same title/material and the 8-second video.
+
+A 28-second 1280×720 MP4 review artifact, `tiktok-direct-post-audit-demo.mp4`, was assembled from the real connected-account, media-selection, settings, processing/completion and creator-profile proof states. It was uploaded to the TikTok Content Posting API reapplication form.
+
+The reapplication used app ID `7686819988157810696`, described the user-initiated Direct Post/inbox-upload workflow, reported the current daily-use estimate as less than 100 users, and truthfully stated that the application does not persist Content Posting API response fields in an application database. OAuth access/refresh credentials remain encrypted in a Secure, HttpOnly session cookie; temporary upload URLs are not persisted or logged.
+
+The required declaration checkboxes were accepted and the portal then displayed the exact confirmation:
+
+> Your Application to request access to Content Posting API has been submitted!
+
+The same confirmation states that TikTok will respond in approximately 2–4 weeks and that status should be checked from Manage apps.
+
+Current status: **SUBMITTED / WAITING FOR TIKTOK REVIEW**. This is not approval. Do not submit again unless TikTok returns a rejection or requests new evidence.
