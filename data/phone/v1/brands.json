@@ -186,6 +186,12 @@
     "marketId": "my"
   },
   {
+    "id": "digicel-jm-prepaid",
+    "networkId": "digicel-jm",
+    "name": "Digicel Jamaica Prepaid",
+    "marketId": "jm"
+  },
+  {
     "id": "du-prepaid",
     "networkId": "du-ae",
     "name": "du Prepaid",
@@ -820,6 +826,12 @@
     "networkId": "vodafone-uk",
     "name": "VOXI",
     "marketId": "gb"
+  },
+  {
+    "id": "yas-tz-prepaid",
+    "networkId": "yas-tz",
+    "name": "Yas Tanzania Prepaid",
+    "marketId": "tz"
   },
   {
     "id": "yettel-prepaid",

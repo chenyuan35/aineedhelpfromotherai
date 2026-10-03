@@ -994,6 +994,38 @@
       }
     },
     {
+      "id": "digicel-jm-2026",
+      "displayName": "Digicel Jamaica Prepaid",
+      "marketId": "jm",
+      "marketName": "Jamaica",
+      "countryCode": "JM",
+      "networkName": "Digicel Jamaica",
+      "brandName": "Digicel Jamaica Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + tourist eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "digicel-jm-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "JMD",
+        "acquisitionCostOriginal": 750,
+        "acquisitionCostCny": null,
+        "keepCurrency": "JMD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 120
+      }
+    },
+    {
       "id": "du-prepaid-ae-2026",
       "displayName": "du Prepaid",
       "marketId": "ae",
@@ -3962,6 +3994,38 @@
         "keepYearCostOriginal": 200,
         "keepYearCostCny": 183,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "tigo-tz-2026",
+      "displayName": "Yas Tanzania Prepaid (legacy Tigo ID)",
+      "marketId": "tz",
+      "marketName": "Tanzania",
+      "countryCode": "TZ",
+      "networkName": "Yas Tanzania",
+      "brandName": "Yas Tanzania Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "tigo-tz-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "TZS",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "TZS",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 90
       }
     },
     {

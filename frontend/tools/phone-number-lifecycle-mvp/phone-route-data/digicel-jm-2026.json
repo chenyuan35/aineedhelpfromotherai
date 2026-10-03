@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "digicel-jm-2026",
+    "marketId": "jm",
+    "networkId": "digicel-jm",
+    "brandId": "digicel-jm-prepaid",
+    "displayName": "Digicel Jamaica Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + tourist eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.digicelgroup.com/jm/en/sim-to-go",
+    "sourceIds": [
+      "digicel-jm-international-topup-20261003",
+      "digicel-jm-mobile-terms-20261003",
+      "digicel-jm-prepaid-plans-20261003",
+      "digicel-jm-roaming-20261003",
+      "digicel-jm-sim-to-go-20261003"
+    ]
+  },
+  "market": {
+    "id": "jm",
+    "name": "Jamaica",
+    "countryCode": "JM"
+  },
+  "network": {
+    "id": "digicel-jm",
+    "name": "Digicel Jamaica",
+    "marketId": "jm"
+  },
+  "brand": {
+    "id": "digicel-jm-prepaid",
+    "networkId": "digicel-jm",
+    "name": "Digicel Jamaica Prepaid",
+    "marketId": "jm"
+  },
+  "metrics": {
+    "routeId": "digicel-jm-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "JMD",
+    "acquisitionCostOriginal": 750,
+    "acquisitionCostCny": null,
+    "keepCurrency": "JMD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 120
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "digicel-jm-international-topup-20261003",
+      "url": "https://topup.digicelgroup.com/en/faq/mobile-recharge/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "digicel-jm-mobile-terms-20261003",
+      "url": "https://corporate.digicelgroup.com/en/legal/mobile-services-terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "digicel-jm-prepaid-plans-20261003",
+      "url": "https://www.digicelgroup.com/jm/en/mobile/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "digicel-jm-roaming-20261003",
+      "url": "https://www.digicelgroup.com/jm/en/mobile/roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "digicel-jm-sim-to-go-20261003",
+      "url": "https://www.digicelgroup.com/jm/en/sim-to-go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-digicel-jm-2026-db-c19-20261003",
+      "routeId": "digicel-jm-2026",
+      "type": "lifecycle-acquisition-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Digicel terms establish deactivation after four months with no usage and new-number assignment after reactivation; current visitor acquisition, international top-up and China roaming exist, but the exact clock-resetting keep-alive action is unresolved.",
+      "sourceId": "digicel-jm-mobile-terms-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-digicel-jm-2026-current-profile-20261003",
+      "routeId": "digicel-jm-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c19-reviewed-2026-10-03",
+      "data": {
+        "id": "digicel-jm-2026",
+        "brandId": "digicel-jm-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + tourist eSIM",
+        "acquisitionSummary": "Digicel Jamaica currently sells ordinary prepaid and JMD750 SIM-To-Go packs; SIM-To-Go is explicitly positioned for visitors as well as local users and can be purchased at local retailers. A separate tourist eSIM is also current.",
+        "landedCost": {
+          "currency": "JMD",
+          "providerOrCommunityPrice": 750,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 750,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-sim-to-go-price"
+        },
+        "keep": {
+          "currency": "JMD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Digicel reserves the right to deactivate a prepaid account after four months with no usage. If reactivated after deactivation, the customer is assigned a new number. The reviewed terms do not define which minimum transaction resets the four-month no-usage clock, so no annual keep-alive cost is inferred.",
+          "intervalDays": 120,
+          "state": "current-provider-lifecycle-action-unresolved"
+        },
+        "chinaActivation": "Physical SIM-To-Go requires Jamaica-local purchase/activation; tourist eSIM is sold for visitors, but China-first long-term activation was not established.",
+        "kyc": "Current Digicel prepaid purchase materials require government-issued ID for SIM purchase/porting; passport is explicitly accepted in current switch guidance. SIM-To-Go is marketed to visitors, but its exact activation identity flow is not fully documented on the reviewed page.",
+        "payment": "Digicel International explicitly supports Jamaica top-up/plan purchase online from anywhere in the world with multiple payment methods and recurring top-up options.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current Jamaica Global roaming plans list China. Carrier roaming availability is established, but incoming SMS pricing and third-party OTP reliability in China were not established in this bounded review.",
+        "refund": "not reconciled",
+        "trend": "current-lifecycle-clear-reset-action-uncertain",
+        "guideEligible": false,
+        "holdReason": "The four-month no-usage deactivation clock is current, but the exact minimum qualifying activity that resets that clock is not defined; China-specific incoming SMS/OTP behavior also remains unverified.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.digicelgroup.com/jm/en/sim-to-go",
+        "tariffSummary": "JMD750 SIM-To-Go; current prepaid plans start at JMD300/day. Account may be deactivated after four months with no usage, and reactivation then receives a new number.",
+        "guideSteps": [
+          "Acquire and activate a current Digicel Jamaica prepaid SIM/eSIM using the current visitor/local flow.",
+          "Do not assume a top-up, incoming SMS or balance alone resets the four-month no-usage clock until Digicel defines qualifying usage.",
+          "Treat China roaming coverage as carrier availability only, not an OTP success guarantee."
+        ],
+        "sourceIds": [
+          "digicel-jm-mobile-terms-20261003",
+          "digicel-jm-prepaid-plans-20261003",
+          "digicel-jm-sim-to-go-20261003",
+          "digicel-jm-international-topup-20261003",
+          "digicel-jm-roaming-20261003"
+        ]
+      }
+    }
+  ]
+}

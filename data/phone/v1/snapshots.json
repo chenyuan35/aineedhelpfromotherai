@@ -1832,6 +1832,65 @@
     }
   },
   {
+    "id": "snap-digicel-jm-2026-current-profile-20261003",
+    "routeId": "digicel-jm-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c19-reviewed-2026-10-03",
+    "data": {
+      "id": "digicel-jm-2026",
+      "brandId": "digicel-jm-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + tourist eSIM",
+      "acquisitionSummary": "Digicel Jamaica currently sells ordinary prepaid and JMD750 SIM-To-Go packs; SIM-To-Go is explicitly positioned for visitors as well as local users and can be purchased at local retailers. A separate tourist eSIM is also current.",
+      "landedCost": {
+        "currency": "JMD",
+        "providerOrCommunityPrice": 750,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 750,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-sim-to-go-price"
+      },
+      "keep": {
+        "currency": "JMD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Digicel reserves the right to deactivate a prepaid account after four months with no usage. If reactivated after deactivation, the customer is assigned a new number. The reviewed terms do not define which minimum transaction resets the four-month no-usage clock, so no annual keep-alive cost is inferred.",
+        "intervalDays": 120,
+        "state": "current-provider-lifecycle-action-unresolved"
+      },
+      "chinaActivation": "Physical SIM-To-Go requires Jamaica-local purchase/activation; tourist eSIM is sold for visitors, but China-first long-term activation was not established.",
+      "kyc": "Current Digicel prepaid purchase materials require government-issued ID for SIM purchase/porting; passport is explicitly accepted in current switch guidance. SIM-To-Go is marketed to visitors, but its exact activation identity flow is not fully documented on the reviewed page.",
+      "payment": "Digicel International explicitly supports Jamaica top-up/plan purchase online from anywhere in the world with multiple payment methods and recurring top-up options.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Jamaica Global roaming plans list China. Carrier roaming availability is established, but incoming SMS pricing and third-party OTP reliability in China were not established in this bounded review.",
+      "refund": "not reconciled",
+      "trend": "current-lifecycle-clear-reset-action-uncertain",
+      "guideEligible": false,
+      "holdReason": "The four-month no-usage deactivation clock is current, but the exact minimum qualifying activity that resets that clock is not defined; China-specific incoming SMS/OTP behavior also remains unverified.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.digicelgroup.com/jm/en/sim-to-go",
+      "tariffSummary": "JMD750 SIM-To-Go; current prepaid plans start at JMD300/day. Account may be deactivated after four months with no usage, and reactivation then receives a new number.",
+      "guideSteps": [
+        "Acquire and activate a current Digicel Jamaica prepaid SIM/eSIM using the current visitor/local flow.",
+        "Do not assume a top-up, incoming SMS or balance alone resets the four-month no-usage clock until Digicel defines qualifying usage.",
+        "Treat China roaming coverage as carrier availability only, not an OTP success guarantee."
+      ],
+      "sourceIds": [
+        "digicel-jm-mobile-terms-20261003",
+        "digicel-jm-prepaid-plans-20261003",
+        "digicel-jm-sim-to-go-20261003",
+        "digicel-jm-international-topup-20261003",
+        "digicel-jm-roaming-20261003"
+      ]
+    }
+  },
+  {
     "id": "snap-du-prepaid-ae-2026-current-profile-20260929",
     "routeId": "du-prepaid-ae-2026",
     "kind": "current-profile",
@@ -8188,6 +8247,65 @@
         "Buy a DIY eSIM/physical route and activate it within the current activation window; complete required real-name registration for number service.",
         "For number retention, use the DIY account/App recharge path: HK$100 for about 180 days or HK$200+ for about 365 days, based on current independent reproduction.",
         "Do not apply SIM World International Supreme Card recharge-voucher validity rules to DIY."
+      ]
+    }
+  },
+  {
+    "id": "snap-tigo-tz-2026-current-profile-20261003",
+    "routeId": "tigo-tz-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c19-reviewed-2026-10-03",
+    "data": {
+      "id": "tigo-tz-2026",
+      "brandId": "yas-tz-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Tigo Tanzania is now Yas Tanzania; Yas states the rebrand did not alter core services, pricing or contracts. eSIM is available by visiting a Yas Tanzania shop. The stable legacy route ID is retained to avoid creating a duplicate product.",
+      "landedCost": {
+        "currency": "TZS",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-product-price-unresolved"
+      },
+      "keep": {
+        "currency": "TZS",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current Yas terms say continuous neglect to use the SIM/number for 90 days may lead to suspension and number re-allocation. The exact minimum qualifying use is not defined, so no annual keep-alive cost is inferred.",
+        "intervalDays": 90,
+        "state": "current-provider-lifecycle-action-unresolved"
+      },
+      "chinaActivation": "Current eSIM requires a Yas Tanzania shop visit; China-first remote activation is not established.",
+      "kyc": "TCRA visitor-SIM rules define a visitor as a non-citizen intending to stay in Tanzania for no more than four months and require a dedicated visitor registration procedure. This does not establish a clean long-term visitor retention route beyond that stay category.",
+      "payment": "Yas supports self top-up through Mixx by Yas and airtime transfer. Reliable foreign-card remote top-up from abroad was not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Yas roaming lists China with China Unicom and China Telecommunications Corporation and publishes SMS/call/data rates. The table does not separately prove incoming SMS pricing or third-party OTP reliability.",
+      "refund": "not reconciled",
+      "trend": "rebranded-current-lifecycle-clear-visitor-limit",
+      "guideEligible": false,
+      "holdReason": "Current Yas terms permit number re-allocation after 90 days non-use, but qualifying minimum use is undefined and TCRA visitor registration is scoped to non-citizens staying no more than four months; a durable foreign-user keep-number path is not established.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://yas.co.tz/",
+      "tariffSummary": "Legacy Tigo route continues as Yas Tanzania. Current contract exposes a 90-day non-use re-allocation risk; China roaming exists, but visitor registration and long-term foreign retention remain constrained.",
+      "guideSteps": [
+        "Treat `tigo-tz-2026` as the stable legacy ID for current Yas Tanzania, not as a separate old Tigo product.",
+        "Do not infer a cheap 90-day keep-alive action until Yas defines what qualifying use resets the non-use clock.",
+        "Do not present visitor registration as a long-term foreign-user route; current TCRA visitor guidance is explicitly for stays up to four months."
+      ],
+      "sourceIds": [
+        "yas-tz-about-20261003",
+        "yas-tz-terms-20261003",
+        "yas-tz-faq-20261003",
+        "yas-tz-roaming-20261003",
+        "tcra-tz-visitor-sim-20261003"
       ]
     }
   },
