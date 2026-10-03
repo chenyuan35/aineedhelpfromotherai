@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C14
+## Current verified state after DB-C15
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **131 routes / 79 markets / 128 brands / 104 networks / 475 sources**;
-- comparison↔canonical route-ID overlap: **120**;
-- comparison routes still legacy-only: **15**;
+- canonical normalized database: **134 routes / 80 markets / 131 brands / 105 networks / 491 sources**;
+- comparison↔canonical route-ID overlap: **123**;
+- comparison routes still legacy-only: **12**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -314,3 +314,17 @@ Post-DB-C14 state: **131 canonical routes / 79 markets / 128 brands / 104 networ
 Release: PR #346 squash-merged as `cc7a2e8c79e477481118123bbea21734fddc417e`; CI #213 and Eval Gate #1040 passed, Vercel Preview succeeded, and production deployment `dpl_CbrVsm9tunqZhduPZu2Dd7kP76AA` reached READY for the same merge SHA. Live apex, Phone canonical `/tools/phone-number-survival-guide/` and sitemap return HTTP 200; the sitemap contains only the existing three explicit Phone route pages.
 
 DB-C15 next bounded batch: `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, `smarty-uk-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C15 — completed 2026-10-03
+
+The bounded Peru/UK batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `smarty-uk-2026` — ADMIT-BACKSTAGE. Current first-party SMARTY material establishes a GBP6 rolling voice entry plan, eSIM, no credit search, supported payment methods, paused incoming calls/texts, a 220-day inactive-account closure threshold and free incoming SMS in mainland China. Paused-plus-roaming reception is not explicitly guaranteed, and the 60-consecutive-days-abroad fair-use rule can trigger full-service suspension.
+- `movistar-pre-pe-2026` — HOLD. Current Movistar Peru evidence establishes a live prepaid product, S/5 recharge floor, a seven-month no-recharge cancellation threshold and current foreign-national in-person biometric requirements. Current prepaid-specific overseas incoming SMS, mainland-China coverage, OTP reliability and reliable foreign-card execution remain unresolved.
+- `talkmobile-uk-payg-closed-2026` — HOLD / negative knowledge. Talkmobile PAYG closed on 31 August 2017. Current Talkmobile SIM-only subscriptions are a distinct product and are not silently substituted into the dead PAYG route.
+
+Post-DB-C15 state: **134 canonical routes / 80 markets / 131 brands / 105 networks / 491 sources / 123 comparison-overlap route IDs / 12 comparison route IDs still legacy-only / 3 explicit indexable routes**. Review-packet checks, canonical data build/QC, `npm run phone:data:check`, `npm run verify`, full frontend build and DB-C15 regression passed. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #348 squash-merged as `6bd972ffa7c40642de29a4a9a996736601080c5a`; CI #215, Eval Gate #1044 and Vercel Preview passed. Production deployment `dpl_2R2BiBiCEdRKSaBEb4vVRYH96YAH` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C15 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
+
+DB-C16 next bounded batch: `mint-mobile-us-2026`, `tmobile-prepaid-connect-2026`, `visible-25-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
