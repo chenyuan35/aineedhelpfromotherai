@@ -475,6 +475,11 @@
     "marketId": "tw"
   },
   {
+    "id": "verizon-us",
+    "name": "Verizon US",
+    "marketId": "us"
+  },
+  {
     "id": "viettel-vn",
     "name": "Viettel Vietnam",
     "marketId": "vn"

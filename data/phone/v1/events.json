@@ -423,6 +423,15 @@
     "sourceId": "iam-jawal-terms-20261001"
   },
   {
+    "id": "evt-mint-mobile-us-2026-db-c16-20261003",
+    "routeId": "mint-mobile-us-2026",
+    "type": "lifecycle-and-overseas-use-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current Mint terms establish suspension at plan expiry and cancellation/reassignment risk after 60 days without successful renewal while suspended. The 12-month 6GB plan remains USD180/year. Official Wi-Fi Calling is usable abroad, while reliable China-first activation/payment and standalone China cellular SMS/OTP remain unresolved.",
+    "sourceId": "mint-mobile-terms-20261003"
+  },
+  {
     "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
     "routeId": "mobitel-lk-retention-2026",
     "type": "eligibility-conflict",
@@ -702,6 +711,15 @@
     "sourceId": "tesco-payg-service-terms-2026-09-29"
   },
   {
+    "id": "evt-tmobile-prepaid-connect-2026-db-c16-20261003",
+    "routeId": "tmobile-prepaid-connect-2026",
+    "type": "lifecycle-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Connect remains USD15/month for 5GB. Current prepaid support allows cancellation and number loss after more than 120 days in Not Paid status. Current prepaid roaming publishes USD0.10 incoming SMS outside Canada, includes China in the country table and provides no prepaid data roaming.",
+    "sourceId": "tmobile-prepaid-lifecycle-20261003"
+  },
+  {
     "id": "evt-truemove-validity-pack-th-2026-db-c2-review-20260929",
     "routeId": "truemove-validity-pack-th-2026",
     "type": "evidence-hold",
@@ -727,6 +745,15 @@
     "scope": "route",
     "outcome": "Legacy GS2 pricing was community-only; the current VinaPhone GS2 product page directly supports VND120,000 for a 360-day validity extension.",
     "sourceId": "vinaphone-gs2-official-2026-09-29"
+  },
+  {
+    "id": "evt-visible-25-2026-db-c16-20261003",
+    "routeId": "visible-25-2026",
+    "type": "lifecycle-and-overseas-use-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Visible base remains USD25/month or USD275/year. Current terms suspend nonpayment-deactivated service for 60 days before cancellation/reassignment. Official Wi-Fi Calling works internationally when enabled before leaving the U.S.; current independent evidence corroborates long-duration use abroad, while overseas first activation remains contradictory.",
+    "sourceId": "visible-terms-20261003"
   },
   {
     "id": "evt-vodacom-83d-rule-refuted-20260929",
