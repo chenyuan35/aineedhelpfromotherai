@@ -4,7 +4,7 @@ This directory is the reviewed backstage data layer for travel/data eSIM evidenc
 
 ## v1 contract
 
-`v1/manifest.json` admits exact versioned source snapshots from `data/phone/inbox/` into the Data-eSIM normalization pipeline. The raw inbox files remain immutable evidence records; normalization reads them without rewriting or flattening away uncertainty.
+`v1/manifest.json` admits exact versioned source snapshots from `data/phone/inbox/` into the Data-eSIM normalization pipeline. The raw inbox files remain immutable evidence records; normalization reads them without rewriting or flattening away uncertainty. If a stable public source URL is identified later for an immutable user-supplied snapshot, reviewed `resolvedSource` metadata may be attached in the manifest rather than mutating the raw inbox file.
 
 `scripts/lib/data-esim-normalizer.mjs` converts the admitted snapshots into three in-memory tables:
 

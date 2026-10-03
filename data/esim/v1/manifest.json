@@ -27,7 +27,14 @@
       "role": "version-delta",
       "extends": "nodeseek-935678-esim-price-3-0-2026-10-01",
       "expectedNewRecordCount": 13,
-      "expectedUpdateCount": 2
+      "expectedUpdateCount": 2,
+      "resolvedSource": {
+        "url": "https://linux.do/t/topic/2973469",
+        "title": "ESIM流量漫游合集 4.0",
+        "resolutionStatus": "content-matched",
+        "verifiedAt": "2026-10-03",
+        "matchBasis": "Public post matches the immutable user-supplied delta, including GG and StellarSecurity updates plus entries 47-59."
+      }
     }
   ],
   "normalizationPolicy": {

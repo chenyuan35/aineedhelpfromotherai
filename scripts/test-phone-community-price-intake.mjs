@@ -37,6 +37,7 @@ assert(byLabel.get('GoMoWorld')?.claimStrength === 'provider-claim-plus-author-n
 
 assert(delta.publicationState === 'backstage-candidate-only', 'later delta must stay backstage-only');
 assert(delta.extendsSignalId === base.signalId, 'later delta must version the 3.0 snapshot');
+assert(delta.source?.url === null, 'immutable raw delta must retain its original unresolved source URL');
 assert(delta.newRecords.length === 13, 'later delta must preserve entries 47..59');
 assert(delta.newRecords[0].ordinal === 47 && delta.newRecords.at(-1).ordinal === 59, 'later delta ordinal range mismatch');
 assert(delta.updates.some((u) => u.ordinal === 22 && u.newPriceNote?.includes('EUR20')), 'StellarSecurity price-change signal missing');
@@ -49,10 +50,13 @@ assert(free.offers.some((x) => x.provider === 'Eskimo' && x.ipHint?.includes('Si
 const normalized = loadDataEsimCatalog({ root });
 const evidenceFor = (label) => normalized.evidence.filter((x) => x.providerLabel === label);
 const providerFor = (label) => normalized.providers.find((x) => x.labels.includes(label));
+const resolvedDeltaSource = normalized.sourceSnapshots.find((x) => x.id === 'user-supplied-esim-price-later-delta-2026-10-01')?.source;
 
 assert(normalized.family === 'data-esim', 'normalized family must be data-esim');
 assert(normalized.surfaceState === 'backstage-only' && normalized.indexability === 'none', 'Data-eSIM normalized layer must not publish URLs');
 assert(normalized.sourceSnapshots.length === 3, 'normalized layer must admit exactly the three reviewed source snapshots');
+assert(resolvedDeltaSource?.url === 'https://linux.do/t/topic/2973469', 'reviewed Linux.do source resolution must reach normalized provenance');
+assert(resolvedDeltaSource?.resolution?.resolutionStatus === 'content-matched', 'resolved source must retain review status');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-snapshot-record').length === 46, 'normalized base price snapshot count mismatch');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-delta-new-record').length === 13, 'normalized delta new-record count mismatch');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-delta-update').length === 2, 'normalized delta update count mismatch');
@@ -68,6 +72,7 @@ assert(providerFor('GG')?.evidenceIds.length === 2, 'GG base unavailable state +
 assert(evidenceFor('GG').some((x) => x.recordType === 'price-snapshot-record' && x.raw.offers?.length === 0), 'GG original no-price snapshot must survive');
 assert(evidenceFor('GG').some((x) => x.recordType === 'price-delta-update' && x.raw.offers?.length === 3), 'GG later price version must survive as a delta');
 assert(evidenceFor('StellarSecurity').some((x) => x.recordType === 'price-delta-update' && x.raw.newPriceNote?.includes('EUR20')), 'StellarSecurity price-rise delta must survive normalization');
+assert(evidenceFor('USIMS').some((x) => x.recordType === 'price-delta-new-record' && x.provenance.sourceUrl === 'https://linux.do/t/topic/2973469'), 'delta evidence must inherit the resolved public source URL');
 
 assert(evidenceFor('TF').some((x) => x.networkPolicy.ipEgressSignals.some((s) => /selectable|Hong Kong|Singapore/i.test(s))), 'TF selectable egress must survive normalization');
 assert(evidenceFor('CodSIM').some((x) => x.networkPolicy.ipEgressSignals.length > 0 && x.networkPolicy.throttleOrFupSignals.length > 0), 'CodSIM IP + throttle mechanics must survive normalization');
