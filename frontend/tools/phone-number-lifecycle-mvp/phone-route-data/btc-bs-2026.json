@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "btc-bs-2026",
+    "marketId": "bs",
+    "networkId": "btc-bs",
+    "brandId": "btc-prepaid",
+    "displayName": "BTC Bahamas Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.btcbahamas.com/mobile/plans/prepaid",
+    "sourceIds": [
+      "btc-bs-business-roaming-20261003",
+      "btc-bs-home-prepaid-20261003",
+      "btc-bs-prepaid-plans-20261003"
+    ]
+  },
+  "market": {
+    "id": "bs",
+    "name": "Bahamas",
+    "countryCode": "BS"
+  },
+  "network": {
+    "id": "btc-bs",
+    "name": "BTC Bahamas",
+    "marketId": "bs"
+  },
+  "brand": {
+    "id": "btc-prepaid",
+    "networkId": "btc-bs",
+    "name": "BTC Bahamas Prepaid",
+    "marketId": "bs"
+  },
+  "metrics": {
+    "routeId": "btc-bs-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "BSD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "BSD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "btc-bs-business-roaming-20261003",
+      "url": "https://www.btcbahamas.com/business/enterprise/mobile-integrated-solutions",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "btc-bs-home-prepaid-20261003",
+      "url": "https://www.btcbahamas.com/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "btc-bs-prepaid-plans-20261003",
+      "url": "https://www.btcbahamas.com/mobile/plans/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-btc-bs-2026-db-c18-20261003",
+      "routeId": "btc-bs-2026",
+      "type": "product-current-lifecycle-unresolved",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "BTC prepaid remains current and legacy prepaid plans were replaced in 2025, but current number lifecycle, minimum keep-alive action, foreigner acquisition and China-specific prepaid roaming remain unresolved.",
+      "sourceId": "btc-bs-home-prepaid-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-btc-bs-2026-current-profile-20261003",
+      "routeId": "btc-bs-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c18-reviewed-2026-10-03",
+      "data": {
+        "id": "btc-bs-2026",
+        "brandId": "btc-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "BTC currently markets prepaid service and prepaid SIM purchase channels, and its current site says two legacy prepaid plans were discontinued in April 2025 and replaced by six newer combo plans. This confirms a live prepaid family but does not establish ordinary foreigner/passport onboarding rules.",
+        "landedCost": {
+          "currency": "BSD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "insufficient-current-price-evidence"
+        },
+        "keep": {
+          "currency": "BSD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current BTC public material reviewed here does not state a prepaid number inactivity/deactivation/recycling clock or the minimum transaction needed to preserve a number. Do not infer a keep-alive interval from plan bundle validity.",
+          "intervalDays": null,
+          "state": "insufficient-evidence"
+        },
+        "chinaActivation": "Local Bahamas acquisition is current; China-first purchase/activation is not established.",
+        "kyc": "Current ordinary prepaid identity/foreigner requirements were not established in the reviewed public material.",
+        "payment": "BTC advertises Fast Pay/self-care payment channels; prepaid recharge/card execution from abroad was not sufficiently reconciled.",
+        "wifiCalling": "unverified",
+        "roamingSms": "BTC documents broad international roaming on business mobile and free incoming calls/text for that business roaming context, but this cannot be transferred to ordinary consumer prepaid. China-specific prepaid roaming/SMS and OTP remain unverified.",
+        "refund": "not reconciled",
+        "trend": "current-prepaid-family-lifecycle-unresolved",
+        "guideEligible": false,
+        "holdReason": "Current prepaid service exists, but number lifecycle/recycling, minimum keep-alive action, foreigner onboarding and consumer-prepaid China roaming are not sufficiently established.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.btcbahamas.com/mobile/plans/prepaid",
+        "tariffSummary": "Current prepaid family confirmed; retention economics and consumer-prepaid overseas behavior remain unresolved.",
+        "guideSteps": [
+          "Treat current prepaid marketing as product-existence evidence only.",
+          "Do not convert bundle duration into number-retention duration.",
+          "Re-open when BTC publishes or directly confirms the prepaid inactivity/deactivation clock and ordinary prepaid roaming/foreigner requirements."
+        ],
+        "sourceIds": [
+          "btc-bs-home-prepaid-20261003",
+          "btc-bs-prepaid-plans-20261003",
+          "btc-bs-business-roaming-20261003"
+        ]
+      }
+    }
+  ]
+}

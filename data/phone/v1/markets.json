@@ -50,6 +50,11 @@
     "countryCode": "BR"
   },
   {
+    "id": "bs",
+    "name": "Bahamas",
+    "countryCode": "BS"
+  },
+  {
     "id": "by",
     "name": "Belarus",
     "countryCode": "BY"
@@ -215,6 +220,11 @@
     "countryCode": "KR"
   },
   {
+    "id": "kw",
+    "name": "Kuwait",
+    "countryCode": "KW"
+  },
+  {
     "id": "kz",
     "name": "Kazakhstan",
     "countryCode": "KZ"
@@ -283,6 +293,11 @@
     "id": "nz",
     "name": "New Zealand",
     "countryCode": "NZ"
+  },
+  {
+    "id": "om",
+    "name": "Oman",
+    "countryCode": "OM"
   },
   {
     "id": "pe",

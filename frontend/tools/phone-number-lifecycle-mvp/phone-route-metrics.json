@@ -182,6 +182,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "btc-bs-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "BSD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "BSD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "calendar-rakuten-prepaid-jp-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -950,6 +962,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "omantel-om-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "OMR",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "OMR",
+      "keepYearCostOriginal": 28,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "one-me-2026",
       "checkedAt": "2026-09-30",
       "metricState": "current-profile",
@@ -1680,6 +1704,18 @@
       "keepYearCostOriginal": 280.77,
       "keepYearCostCny": null,
       "keepIntervalDays": 390
+    },
+    {
+      "routeId": "zain-kw-eezee-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "KWD",
+      "acquisitionCostOriginal": 5,
+      "acquisitionCostCny": null,
+      "keepCurrency": "KWD",
+      "keepYearCostOriginal": 13,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     }
   ]
 }

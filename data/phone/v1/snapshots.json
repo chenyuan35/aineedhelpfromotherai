@@ -934,6 +934,63 @@
     }
   },
   {
+    "id": "snap-btc-bs-2026-current-profile-20261003",
+    "routeId": "btc-bs-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c18-reviewed-2026-10-03",
+    "data": {
+      "id": "btc-bs-2026",
+      "brandId": "btc-prepaid",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "BTC currently markets prepaid service and prepaid SIM purchase channels, and its current site says two legacy prepaid plans were discontinued in April 2025 and replaced by six newer combo plans. This confirms a live prepaid family but does not establish ordinary foreigner/passport onboarding rules.",
+      "landedCost": {
+        "currency": "BSD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "insufficient-current-price-evidence"
+      },
+      "keep": {
+        "currency": "BSD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current BTC public material reviewed here does not state a prepaid number inactivity/deactivation/recycling clock or the minimum transaction needed to preserve a number. Do not infer a keep-alive interval from plan bundle validity.",
+        "intervalDays": null,
+        "state": "insufficient-evidence"
+      },
+      "chinaActivation": "Local Bahamas acquisition is current; China-first purchase/activation is not established.",
+      "kyc": "Current ordinary prepaid identity/foreigner requirements were not established in the reviewed public material.",
+      "payment": "BTC advertises Fast Pay/self-care payment channels; prepaid recharge/card execution from abroad was not sufficiently reconciled.",
+      "wifiCalling": "unverified",
+      "roamingSms": "BTC documents broad international roaming on business mobile and free incoming calls/text for that business roaming context, but this cannot be transferred to ordinary consumer prepaid. China-specific prepaid roaming/SMS and OTP remain unverified.",
+      "refund": "not reconciled",
+      "trend": "current-prepaid-family-lifecycle-unresolved",
+      "guideEligible": false,
+      "holdReason": "Current prepaid service exists, but number lifecycle/recycling, minimum keep-alive action, foreigner onboarding and consumer-prepaid China roaming are not sufficiently established.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.btcbahamas.com/mobile/plans/prepaid",
+      "tariffSummary": "Current prepaid family confirmed; retention economics and consumer-prepaid overseas behavior remain unresolved.",
+      "guideSteps": [
+        "Treat current prepaid marketing as product-existence evidence only.",
+        "Do not convert bundle duration into number-retention duration.",
+        "Re-open when BTC publishes or directly confirms the prepaid inactivity/deactivation clock and ordinary prepaid roaming/foreigner requirements."
+      ],
+      "sourceIds": [
+        "btc-bs-home-prepaid-20261003",
+        "btc-bs-prepaid-plans-20261003",
+        "btc-bs-business-roaming-20261003"
+      ]
+    }
+  },
+  {
     "id": "snap-calendar-rakuten-prepaid-jp-2026-current-profile-20260929",
     "routeId": "calendar-rakuten-prepaid-jp-2026",
     "kind": "current-profile",
@@ -5327,6 +5384,65 @@
     }
   },
   {
+    "id": "snap-omantel-om-2026-current-profile-20261003",
+    "routeId": "omantel-om-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c18-reviewed-2026-10-03",
+    "data": {
+      "id": "omantel-om-2026",
+      "brandId": "omantel-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Omantel currently sells Hayyak prepaid and supports eSIM for Hayyak. The eSIM flow accepts ID, passport or residence card plus a personal photo/signature and payment, establishing a current passport-capable digital acquisition flow. Tourist SIM is a separate local-only product and is not substituted for ordinary Hayyak.",
+      "landedCost": {
+        "currency": "OMR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-product-price-unresolved"
+      },
+      "keep": {
+        "currency": "OMR",
+        "observedActionCost": 7,
+        "yearCostOriginal": 28,
+        "yearCostCny": null,
+        "action": "Omantel standard terms give prepaid 90 days of validity from the first call or any recharge/balance transfer, then another 90-day number holding period. Recharging during grace starts a new validity period. The current listed e-voucher denominations start at OMR7, so OMR7 per 90-day active cycle is the conservative documented recharge floor; cheaper balance-transfer possibilities are not modeled.",
+        "intervalDays": 90,
+        "state": "current-provider-lifecycle-conservative-voucher-floor"
+      },
+      "chinaActivation": "Digital Hayyak eSIM acquisition supports passport upload, but this review does not prove China-first activation or remote fulfillment from mainland China.",
+      "kyc": "Omantel eSIM onboarding accepts ID, passport or residence card plus a personal photo and signature.",
+      "payment": "Omantel prepaid supports online/app recharge and says credit/debit cards are accepted. Exact foreign-card execution remains unverified.",
+      "wifiCalling": "Current new Hayyak plans support local VoWiFi; abroad setup/use was not reconciled.",
+      "roamingSms": "Omantel states incoming SMS while roaming is free of charge and Hayyak roaming is available internationally. China-specific roaming partner availability and third-party OTP reliability remain unverified in this bounded review.",
+      "refund": "not reconciled",
+      "trend": "lifecycle-and-passport-esim-resolved",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.omantel.om/en/personal/mobile-prepaid",
+      "tariffSummary": "90-day active prepaid validity from call/recharge/balance transfer, then 90-day number holding; current listed e-vouchers start at OMR7. Passport eSIM and free incoming roaming SMS are documented.",
+      "guideSteps": [
+        "Acquire ordinary Hayyak/eSIM through the current Omantel flow; do not substitute the 30-day local-only Tourist SIM for the long-term route.",
+        "Recharge within 90 days for a clean active-state cycle; the later 90-day holding period is recovery, not the preferred keep-alive target.",
+        "Treat free incoming roaming SMS as carrier capability, not proof of China-specific OTP delivery."
+      ],
+      "sourceIds": [
+        "omantel-hayyak-agreement-20261003",
+        "omantel-hayyak-esim-20261003",
+        "omantel-hayyak-recharge-20261003",
+        "omantel-hayyak-prepaid-20261003",
+        "omantel-roaming-abroad-20261003"
+      ]
+    }
+  },
+  {
     "id": "snap-one-me-2026-current-profile-20260930",
     "routeId": "one-me-2026",
     "kind": "current-profile",
@@ -9566,6 +9682,64 @@
         "Buy/register the prepaid SIM or eSIM; foreign passport registration is supported.",
         "Use a standard top-up channel of at least 300 RSD before the 60+330-day lifecycle expires.",
         "Do not rely on balance transferred from another Yettel number to extend card expiry."
+      ]
+    }
+  },
+  {
+    "id": "snap-zain-kw-eezee-2026-current-profile-20261003",
+    "routeId": "zain-kw-eezee-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c18-reviewed-2026-10-03",
+    "data": {
+      "id": "zain-kw-eezee-2026",
+      "brandId": "zain-eezee",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Zain Kuwait eeZee voice prepaid is sold online/app and in branches. Zain lists a KD5 new voice prepaid line and supports eSIM. Current Zain search/help material says Kuwaiti citizens or expatriates age 18+ with valid Civil ID or passport may buy a new prepaid eeZee SIM.",
+      "landedCost": {
+        "currency": "KWD",
+        "providerOrCommunityPrice": 5,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 5,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-new-voice-prepaid-price"
+      },
+      "keep": {
+        "currency": "KWD",
+        "observedActionCost": 13,
+        "yearCostOriginal": 13,
+        "yearCostCny": null,
+        "action": "Zain currently lists an eeZee validity add-on of 365 days for KD13 (V4). Buy it while the line has sufficient credit/validity; Zain notes that an already-expired line must first recharge credit before purchasing extra validity.",
+        "intervalDays": 365,
+        "state": "current-provider-validity-addon"
+      },
+      "chinaActivation": "New-line activation requires inserting the SIM and making a local call or dialing *142#. This review does not treat China-first activation as proven.",
+      "kyc": "Current Zain eligibility material says Kuwaiti citizens or expatriates age 18+ with valid Civil ID or passport can buy a new prepaid eeZee SIM.",
+      "payment": "Zain supports recharge through the app, website, MyZain, zBot and Travel eeZee while abroad. Exact foreign-card issuer acceptance remains unverified.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Zain states voice and SMS roaming are enabled by default on prepaid SIMs and prepaid lines can be recharged while abroad. The roaming catalogue is current, but China-specific partner/rate and third-party OTP delivery were not established in this bounded review.",
+      "refund": "not reconciled",
+      "trend": "current-product-validity-addon-resolved",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+      "tariffSummary": "KD5 new voice prepaid line; KD13 adds 365 days of eeZee validity. eSIM and expatriate passport/Civil-ID purchase are documented; prepaid voice/SMS roaming is enabled by default.",
+      "guideSteps": [
+        "Acquire eeZee through Zain online/app/branch and complete the required identity authentication.",
+        "For low-frequency retention, use the current KD13/365-day validity add-on before expiry; if already expired, recharge first as Zain instructs.",
+        "Treat default prepaid roaming as carrier-level evidence only; do not claim China OTP reliability until independently reproduced."
+      ],
+      "sourceIds": [
+        "zain-kw-eezee-plans-20261003",
+        "zain-kw-faq-20261003",
+        "zain-kw-esim-eligibility-20261003",
+        "zain-kw-roaming-20261003"
       ]
     }
   }

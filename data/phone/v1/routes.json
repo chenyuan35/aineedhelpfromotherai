@@ -293,6 +293,25 @@
     ]
   },
   {
+    "id": "btc-bs-2026",
+    "marketId": "bs",
+    "networkId": "btc-bs",
+    "brandId": "btc-prepaid",
+    "displayName": "BTC Bahamas Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.btcbahamas.com/mobile/plans/prepaid",
+    "sourceIds": [
+      "btc-bs-business-roaming-20261003",
+      "btc-bs-home-prepaid-20261003",
+      "btc-bs-prepaid-plans-20261003"
+    ]
+  },
+  {
     "id": "calendar-rakuten-prepaid-jp-2026",
     "marketId": "jp",
     "networkId": "rakuten-mobile-jp",
@@ -1565,6 +1584,27 @@
     ]
   },
   {
+    "id": "omantel-om-2026",
+    "marketId": "om",
+    "networkId": "omantel-om",
+    "brandId": "omantel-prepaid",
+    "displayName": "Omantel Hayyak Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.omantel.om/en/personal/mobile-prepaid",
+    "sourceIds": [
+      "omantel-hayyak-agreement-20261003",
+      "omantel-hayyak-esim-20261003",
+      "omantel-hayyak-prepaid-20261003",
+      "omantel-hayyak-recharge-20261003",
+      "omantel-roaming-abroad-20261003"
+    ]
+  },
+  {
     "id": "one-me-2026",
     "marketId": "me",
     "networkId": "one-me",
@@ -2759,6 +2799,26 @@
       "official-yettel-rs-registration-eid-2026-09-29",
       "official-yettel-rs-roaming-prepaid-2026-09-29",
       "official-yettel-rs-topup-validity-2026-09-29"
+    ]
+  },
+  {
+    "id": "zain-kw-eezee-2026",
+    "marketId": "kw",
+    "networkId": "zain-kw",
+    "brandId": "zain-eezee",
+    "displayName": "Zain Kuwait eeZee",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+    "sourceIds": [
+      "zain-kw-eezee-plans-20261003",
+      "zain-kw-esim-eligibility-20261003",
+      "zain-kw-faq-20261003",
+      "zain-kw-roaming-20261003"
     ]
   }
 ]

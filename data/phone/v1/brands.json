@@ -90,6 +90,12 @@
     "marketId": "ba"
   },
   {
+    "id": "btc-prepaid",
+    "networkId": "btc-bs",
+    "name": "BTC Bahamas Prepaid",
+    "marketId": "bs"
+  },
+  {
     "id": "calendar-world-jp",
     "networkId": "rakuten-mobile-jp",
     "name": "CALENDAR Rakuten Prepaid",
@@ -462,6 +468,12 @@
     "marketId": "gb"
   },
   {
+    "id": "omantel-prepaid",
+    "networkId": "omantel-om",
+    "name": "Omantel Hayyak",
+    "marketId": "om"
+  },
+  {
     "id": "one-me-tourist",
     "networkId": "one-me",
     "name": "One ME Tourist",
@@ -820,5 +832,11 @@
     "networkId": "yettel-rs",
     "name": "Yettel Serbia Prepaid",
     "marketId": "rs"
+  },
+  {
+    "id": "zain-eezee",
+    "networkId": "zain-kw",
+    "name": "Zain eeZee",
+    "marketId": "kw"
   }
 ]
