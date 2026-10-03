@@ -7,99 +7,96 @@ Last updated: 2026-10-03
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **Frontend baseline stays stable.** PR #342 remains the released Phone-first homepage/Phone hub identity; do not add another public design layer without measured behavior or a reproduced defect.
-3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current released Phone state is **135 comparison routes / 148 canonical normalized routes / 86 markets / 145 brands / 114 networks / 565 sources / 3 indexable routes**. DB-C20 adds three post-legacy routes outside the 135-route comparison artifact; the legacy same-ID overlap remains 134 with the intentional Sakura alias gap unchanged.
-5. **DB-C20 is merged to `main` via PR #360 / `c6f5ec5e34797745b1d6738ae8936a02510601c2`.** Vodafone Netherlands Prepaid and One NZ Prepay are ADMIT-BACKSTAGE; CTExcel UK is HOLD with its retention conflicts preserved. CMLink UK and DITO Philippines remain deferred behind the gap audit's explicit evidence/eligibility re-open conditions.
-6. **Data-eSIM remains a separate normalized backstage family.** PR #328 established the normalized layer; PR #362 (`86060c1d5e01f460d168005f74b6e3cd0c820478`) resolved the public Linux.do provenance of the existing Oct 1 later-delta; PR #364 (`569849dead592a35178f5fd7f7a13e5f5093aa20`) added one dated multi-user USIMS community-outcome record. Current Data-eSIM state is **59 source-label providers / 73 evidence records / 159 versioned offers**. It is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
-7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
+2. **Frontend visual baseline stays stable.** PR #342 remains the released Phone-first homepage/Phone hub identity; do not add another design layer without a reproduced defect or measured need.
+3. **Backend coverage target is met.** DB-C21, DB-C22 and DB-C23 are released. Current normalized Phone state is **156 routes / 86 markets / 153 brands / 116 networks / 593 sources**.
+4. **Known evidence-qualified database coverage is 98.1%.** `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` defines the denominator: 156 canonical routes plus three distinct unresolved atomic candidates. This is coverage of the relevant low-cost/long-term evidence-qualified Phone route universe, not 98.1% of every carrier/SIM SKU worldwide.
+5. **Broad database expansion stops here.** Do not create DB-C24 from carrier directories, country completion pressure or keyword/page-count pressure. New DB batches require a genuinely distinct evidence-qualified route or a documented residual blocker to clear.
+6. **Public/SEO publication remains separate.** Current public boundary is **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**. Backend admission does not create a route page or ranking.
+7. **Data-eSIM remains separate backstage data.** Current state remains **59 source-label providers / 73 evidence records / 159 versioned offers**; no automatic Phone linkage or publication.
+8. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
-Post-legacy gap audit: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
+Coverage closeout: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
 Data-eSIM backstage contract: `data/esim/README.md` + `data/esim/v1/manifest.json`.
 
-## JUST COMPLETED — Post-legacy Phone coverage-gap audit
+## JUST COMPLETED — DB-C21
 
-Purpose: stop extending the backend by old comparison-list migration or provider-directory enumeration and identify genuinely missing low-cost long-term routes from current community evidence.
+PR #366 squash-merged as `b5d686031b3c8808f65c705c93b8d9910416f856`.
 
-Audit result:
+- `fortress-hahasim-hk-2026` — **ADMIT-BACKSTAGE**.
+- `csl-711-prepaid-hk-2026` — **HOLD** because the current provider page conflicts on 180-day versus promotional 365-day recharge validity.
+- `tunetalk-365-my-2026` — **HOLD** because the current 365-day validity mechanism is not safely generalizable to 2026 tourist-registered users.
+- Post-release state: **151 routes / 86 markets / 148 brands / 114 networks / 574 sources**.
+- Public boundary unchanged.
 
-- exact canonical dedupe confirmed Vodafone Germany and Skinny NZ are already covered and the Sakura same-product alias is not a missing route;
-- five genuinely distinct missing candidates were bounded and sample-audited: Vodafone NL Prepaid, CTExcel UK, One NZ Prepay, CMLink UK retention and DITO Philippines prepaid/eSIM;
-- **selected for DB-C20:** `vodafone-nl-prepaid-2026`, `ctexcel-uk-2026`, `one-nz-prepay-2026`;
-- **deferred:** CMLink UK because current retention eligibility/post-expiry rules remain materially ambiguous; DITO Philippines because tourist registration/current traveler-SIM rules impose a 30-day/local-address/return-ticket constraint that prevents generalizing community ultra-low-cost retention claims to a durable foreign-user route;
-- all five candidates were sample-audited for source quality, duplication and unsupported inference, exceeding the required sample of three;
-- no canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed;
-- release record: PR #358 squash-merged as `ecec30762a819aea5aba311a6dfd6c6c78921b7d`; Eval Gate #1065 and Vercel status passed.
+## JUST COMPLETED — DB-C22
 
-Full evidence and re-open triggers: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
+PR #367 merged as `a7feae58c048afc59af37a086292989cdd47e8fe`; CI #234, Eval Gate #1088 and Vercel passed.
 
-## JUST COMPLETED — Backend database coverage DB-C20
+- `cmlink-uk-keep-number-2026` — **HOLD**. GBP15/365-day keep-number product is current, but enrollment, post-expiry closure timing and mainland-China operations remain constrained.
+- `dito-prepaid-ph-2026` — **HOLD**. Strong 2026 community low-cost retention signal exists, but tourist-registration/Traveler-SIM rules and the PHP5/PHP10 annual keep claim are not provider-reconciled.
+- `ais-local-prepaid-th-2026` — **HOLD**. Distinct from SIM2Fly; provider validity increments and passport eSIM handling exist, but cheap durable annual mechanics and remote/China behavior remain unsettled.
+- Post-release state: **154 routes / 86 markets / 151 brands / 115 networks / 587 sources**.
+- Public boundary unchanged.
 
-Result:
+## JUST COMPLETED — DB-C23 and coverage threshold
 
-- `vodafone-nl-prepaid-2026` — **ADMIT-BACKSTAGE**. Current provider lifecycle supports one paid use or top-up every six months plus a three-month recovery window; remote acquisition/payment and China-specific OTP remain evidence-scoped.
-- `ctexcel-uk-2026` — **HOLD**. Current provider retention product exists, but eligibility, current price and post-expiry mechanics remain insufficiently reconciled; no universal 90-day rule or annual keep cost is asserted.
-- `one-nz-prepay-2026` — **ADMIT-BACKSTAGE**. Current 360-day top-up lifecycle and NZD10 logged-in web/app minimum are established; NZ-first activation and non-guaranteed third-party OTP are preserved.
-- post-release canonical: **148 routes / 86 markets / 145 brands / 114 networks / 565 sources**;
-- publication boundary: **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**; all three DB-C20 standalone route URLs return HTTP 404.
-- release: PR #360 squash-merged as `c6f5ec5e34797745b1d6738ae8936a02510601c2`; CI #226 and Eval Gate #1069 passed; Vercel Preview passed; production `dpl_8dHPdkJX9RybHe9atEKd7bfNDuFT` is READY.
+PR #368 squash-merged as `2d0d727af1f18844b6c344a9402d62de5366dd61`; CI #237, Eval Gate #1092, Vercel Preview and post-merge Vercel production passed.
 
-## JUST COMPLETED — Data-eSIM USIMS community-outcome intake
+- `esimgg-estonia-372-2026` — **ADMIT-BACKSTAGE**. Current provider supports a prepaid +372 phone-number eSIM with calls/SMS and an annual-use keep rule; 2026 community evidence supports China-side operation while preserving prefix-dependent OTP failures.
+- `hkmobi-365-hk-2026` — **ADMIT-BACKSTAGE**. Current csl HK Mobi mechanism supports HKD20/365-day renewal under the published promotion through 2026-12-31; real-name registration and post-promotion revalidation remain explicit.
+- Current canonical: **156 routes / 86 markets / 153 brands / 116 networks / 593 sources**.
+- Coverage audit: **156 / 159 = 98.1%** of the known evidence-qualified relevant route universe.
+- Residual candidates kept out of canonical pending bounded review: LuckySIM Hong Kong, Saily U.S. phone number, China Telecom Macau / Macau blue-card route.
 
-- PR #364 squash-merged as `569849dead592a35178f5fd7f7a13e5f5093aa20`.
-- Added one immutable Linux.do-backed USIMS outcome snapshot preserving a dated sequence: free/128Kbps availability, later USD1 registration, 1GB-then-throttle behavior, device/profile outcome divergence, later no-signal/profile-closure reports and an order-creation failure report.
-- Added the `community-outcome-snapshot` role so direct dated operational evidence can normalize without manufacturing a new price offer.
-- Data-eSIM is now **59 source-label providers / 73 evidence records / 159 versioned offers**; Phone canonical/comparison/publication remains unchanged.
-- Fresh-branch remote-clone checks passed `node scripts/test-phone-community-price-intake.mjs` and full `npm run phone:data:check`; Eval Gate #1077 and Vercel Preview passed; post-merge Vercel production deployment succeeded.
-- Qwen/Kimi read-only delegation was attempted but the headless task path failed on active-model/provider configuration; no delegated output was accepted.
+## NEXT — Backend ↔ frontend integration audit
 
-## NEXT — Trigger-gated Phone decision read
+The user's product requirement is that database growth should not require hand-editing the frontend. The next bounded task is therefore an architecture/product audit, not another broad database batch.
 
-No DB-C21 batch is selected. Do not create one from provider-directory enumeration or from the two deferred routes without new evidence.
+Verify all of the following against current `main` and production:
 
-Next coordinator task becomes eligible when either:
+1. whether the generated frontend runtime artifacts are built directly from canonical Phone data with no manual duplicate-maintenance step;
+2. whether all **156 canonical routes** are available to the user-triggered finder/search path, or whether the UI is still hard-limited to the historical **135 comparison routes**;
+3. if 21 canonical routes are backstage-only, distinguish **not indexable** from **not user-queryable** — publication policy should control SEO/detail pages, not silently make useful database rows unreachable;
+4. HOLD routes must never be presented as confident recommendations, but they may be queryable with explicit uncertainty/constraints if the product contract allows it;
+5. preserve one canonical Phone URL, lazy/progressive loading and the existing 3-route SEO allowlist unless evidence supports changing publication;
+6. prove that a future reviewed canonical route can flow into the user-queryable data layer through the build pipeline without bespoke frontend edits.
 
-- settled Phone Search Console impressions reach **20**, or finalized data reaches **2026-10-05** — then re-read first-party GSC data and make the next KEEP / ADJUST / NARROW decision for the existing Phone surface; or
-- fresh independent operational evidence resolves the documented CMLink UK / DITO Philippines blocker or identifies a genuinely distinct low-cost long-term real-number route — then run a bounded reviewed candidate audit before defining any DB-C21 batch.
+If this audit finds a real disconnect, fix only the minimum data-pipeline/UI boundary needed to connect canonical data to the existing finder. Do not redesign the site.
 
-Until one trigger occurs, keep production stable and continue the already-authorized backstage community evidence lane.
+## PARALLEL — Evidence maintenance
 
-## PARALLEL — Community Data-eSIM evidence intake
+Continue append-only community/provider evidence acquisition for existing Phone routes and the separate Data-eSIM layer. Re-open a DB batch only on a genuinely new distinct route or when one of the residual candidates clears its blocker.
 
-The reviewed snapshots remain normalized only through the explicit `data/esim/v1` manifest. Raw inbox snapshots remain immutable provenance inputs; reviewed source-resolution metadata may be attached at the manifest layer when a previously unknown public source is later content-matched.
-
-Continue to append price/mechanic versions without overwriting history. Preserve community/third-party/referral/promotion, IP/egress, FUP/throttle and voice/SMS/number uncertainty as evidence. Do not auto-publish, auto-rank or force pure data eSIM into Phone-number/retention canonical routes.
-
-Delegated worker output remains `RESEARCH_CANDIDATE` until coordinator review. Worker failure never invalidates already captured evidence and never bypasses QC.
+Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review. DB-C23's parallel Kimi research completed successfully and agreed with the coordinator on the two reviewed candidates, but the canonical packets intentionally kept more conservative claims where worker evidence was more aggressive.
 
 ## Measurement wait
 
-Search Console remains too small for another publication wave. Finalized data through 2026-09-28 shows **5 Phone impressions / 0 clicks**; fresh 2026-09-29..30 adds **5 non-finalized impressions / 0 clicks** and no route-detail row.
+Search Console remains the public expansion gate. The last settled Phone checkpoint remains **5 impressions / 0 clicks through 2026-09-28**, with a small non-finalized 2026-09-29..30 sample after that.
 
-Re-read when either:
+Re-read first-party Search Console data when either:
 
 - settled Phone impressions reach **20**, or
 - finalized data reaches **2026-10-05**.
 
-This wait does **not** block community evidence acquisition.
+This wait does not block backend↔frontend integration auditing or evidence maintenance.
 
 ## External waits
 
-- TikTok — base application Live; targeted Direct Post remediation and genuine `SELF_ONLY` publication proof are complete. The Content Posting API reapplication for app `7686819988157810696` was submitted on 2026-10-02 with the real 28-second demo video; do not submit again unless TikTok rejects or requests new evidence.
+- TikTok — Direct Post Content Posting API reapplication was submitted 2026-10-02; do not resubmit unless TikTok rejects or asks for more evidence.
 - Authority / AI discovery — follow `docs/AUTHORITY_AND_AI_DISCOVERY.md`; verify any claimed citation/link independently.
 - AI-native retrieval — follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md`; do not bypass provider quota/auth blockers.
 
 ## Do not do next
 
-- do not trigger another broad frontend redesign without measured behavior or a reproduced UX defect;
-- do not treat DB-C20 selection or backend admission as authorization for SEO/indexable pages;
-- do not resurrect CMLink UK or DITO Philippines without satisfying their audit re-open conditions;
-- do not duplicate same-product aliases;
-- do not manufacture ranking/recommendation confidence from sparse evidence;
-- do not auto-publish or rank Data-eSIM community evidence;
-- do not redesign the backend/schema merely for neatness;
+- do not create DB-C24 just to increase counts;
+- do not equate 98.1% with a census of all worldwide carrier products;
+- do not turn backend rows into SEO pages automatically;
+- do not keep useful canonical rows unreachable merely because they are not indexable — audit that boundary first;
+- do not auto-rank HOLD routes;
+- do not mix pure data eSIM into Phone-number canonical routes without reviewed identity linkage;
+- do not redesign backend/schema or frontend merely for neatness;
 - do not let delegated output bypass review/admission gates;
 - do not change DNS, AdSense, billing, paid services or critical account settings without explicit authorization;
 - never use `hermes`; `yuan` is not project infrastructure.
