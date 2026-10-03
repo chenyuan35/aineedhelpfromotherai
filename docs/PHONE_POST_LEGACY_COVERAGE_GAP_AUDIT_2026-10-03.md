@@ -156,7 +156,7 @@ Why it is relevant:
 
 Current independent evidence:
 
-- Linux DO, 2026-08, DITO eSIM activation/retention/China OTP thread: https://linux.do/t/topic/2718264
+- Linux DO, 2026-08, DITO eSIM activation/retention/China OTP thread: https://linux.do/t/topic/2765886
 - Reddit, 2026 DITO eSIM registration/device reports: https://www.reddit.com/r/InternetPH/search/?q=DITO%20eSIM&restrict_sr=1
 
 Provider-controlled confirmation:
