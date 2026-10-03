@@ -552,6 +552,25 @@
     ]
   },
   {
+    "id": "csl-711-prepaid-hk-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "csl-711-hk",
+    "displayName": "csl 7-Eleven Local Prepaid SIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+    "sourceIds": [
+      "csl-711-product-20261003",
+      "csl-rnr-20261003",
+      "linuxdo-csl711-2758634-20260815"
+    ]
+  },
+  {
     "id": "ctexcel-uk-2026",
     "marketId": "gb",
     "networkId": "ee-uk",
@@ -746,6 +765,24 @@
     "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "sourceIds": [
       "fareastone-tw-official"
+    ]
+  },
+  {
+    "id": "fortress-hahasim-hk-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "haha-sim-hk",
+    "displayName": "Fortress haha SIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+    "sourceIds": [
+      "fortress-hahasim-faq-20261003",
+      "linuxdo-hahasim-2511282-20260824"
     ]
   },
   {
@@ -2572,6 +2609,26 @@
     "sourceIds": [
       "truemove-community-signal-2026-09-27",
       "truemove-provider-root-2026-09-27"
+    ]
+  },
+  {
+    "id": "tunetalk-365-my-2026",
+    "marketId": "my",
+    "networkId": "celcomdigi-my",
+    "brandId": "tunetalk-my",
+    "displayName": "Tune Talk 1-Year Validity",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.tunetalk.com/",
+    "sourceIds": [
+      "lowyat-tunetalk-365-20250419",
+      "mcmc-prepaid-mandatory-standard-20260226",
+      "tunetalk-network-20261003",
+      "tunetalk-one-year-validity-20261003"
     ]
   },
   {

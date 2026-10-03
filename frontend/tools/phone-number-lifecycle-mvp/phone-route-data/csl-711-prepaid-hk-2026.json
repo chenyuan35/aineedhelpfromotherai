@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "csl-711-prepaid-hk-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "csl-711-hk",
+    "displayName": "csl 7-Eleven Local Prepaid SIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+    "sourceIds": [
+      "csl-711-product-20261003",
+      "csl-rnr-20261003",
+      "linuxdo-csl711-2758634-20260815"
+    ]
+  },
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "csl-hk",
+    "name": "csl (HKT)",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "csl-711-hk",
+    "networkId": "csl-hk",
+    "name": "csl 7-Eleven Local Prepaid SIM",
+    "marketId": "hk"
+  },
+  "metrics": {
+    "routeId": "csl-711-prepaid-hk-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "HKD",
+    "acquisitionCostOriginal": 58,
+    "acquisitionCostCny": null,
+    "keepCurrency": "HKD",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": null
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "csl-711-product-20261003",
+      "url": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "csl-rnr-20261003",
+      "url": "https://www.hkcsl.com/en/real-name-registration/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "linuxdo-csl711-2758634-20260815",
+      "url": "https://linux.do/t/topic/2758634",
+      "type": "independent-community",
+      "reportedAt": "2026-08-15"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-csl-711-prepaid-hk-2026-db-c21-20261003",
+      "routeId": "csl-711-prepaid-hk-2026",
+      "type": "current-provider-lifecycle-conflict",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "The current csl product page lists 180-day base validity and a promotional recharge table where HKD20-49.9 or more extends validity 365 days through 31 Dec 2026, but the same page's terms also state HKD50+ extends validity 180 days. The route is therefore normalized as HOLD rather than assigning one universal keep interval or annual cost.",
+      "sourceId": "csl-711-product-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-csl-711-prepaid-hk-2026-current-profile-20261003",
+      "routeId": "csl-711-prepaid-hk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c21-reviewed-2026-10-03",
+      "data": {
+        "id": "csl-711-prepaid-hk-2026",
+        "brandId": "csl-711-hk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "csl currently lists the 7-Eleven Local Prepaid SIM at HKD58 and 2026 community users report easy physical availability across Hong Kong 7-Eleven stores. Real-name registration is required before use.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 58,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 58,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-card-price"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current official statements conflict. The promotion table says a HKD20-49.9 top-up extends service validity 365 days through 31 Dec 2026, while nearby terms say HKD50+ extends validity 180 days; base card validity is 180 days. Do not model one settled keep action until csl reconciles the page.",
+          "intervalDays": null,
+          "state": "hold-current-provider-internal-validity-conflict"
+        },
+        "chinaActivation": "Hong Kong prepaid real-name registration is required. Mainland-China-first registration/activation is not established by the reviewed provider page.",
+        "kyc": "csl states prepaid real-name registration is required before use; its registration flow supports passport/other travel document as identity-document categories.",
+        "payment": "Top-up is available through csl App and 7-Eleven recharge vouchers. Foreign-card/mainland remote payment execution is not established here.",
+        "wifiCalling": "unverified",
+        "roamingSms": "csl supports roaming functions generally, and 2026 community users discuss the 7-Eleven route as a keep-number/SMS option, but mainland-China incoming-SMS and third-party OTP reliability are not provider-reconciled in this bounded review.",
+        "refund": "not reconciled",
+        "trend": "current-product-provider-lifecycle-conflict",
+        "guideEligible": false,
+        "holdReason": "Current csl page conflicts on whether the relevant recharge extends 180 or 365 days, and the 365-day table is promotional through 31 Dec 2026. Reverify after the promotion or provider clarification before asserting a settled annual keep cost.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+        "tariffSummary": "Current product HKD58; base validity 180 days. Promotional recharge table says HKD20+ extends 365 days, while nearby terms say HKD50+ extends 180 days; HOLD pending reconciliation.",
+        "sourceIds": [
+          "csl-711-product-20261003",
+          "csl-rnr-20261003",
+          "linuxdo-csl711-2758634-20260815"
+        ],
+        "guideSteps": [
+          "Acquire the current 7-Eleven/csl physical prepaid SIM and complete real-name registration.",
+          "Before using it as a long-term route, verify the live recharge-validity display in csl App because the current public page conflicts.",
+          "Do not infer mainland OTP reliability from the Hong Kong lifecycle rule."
+        ]
+      }
+    }
+  ]
+}

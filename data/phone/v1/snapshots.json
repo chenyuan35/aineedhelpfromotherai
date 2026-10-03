@@ -1667,6 +1667,63 @@
     }
   },
   {
+    "id": "snap-csl-711-prepaid-hk-2026-current-profile-20261003",
+    "routeId": "csl-711-prepaid-hk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c21-reviewed-2026-10-03",
+    "data": {
+      "id": "csl-711-prepaid-hk-2026",
+      "brandId": "csl-711-hk",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "csl currently lists the 7-Eleven Local Prepaid SIM at HKD58 and 2026 community users report easy physical availability across Hong Kong 7-Eleven stores. Real-name registration is required before use.",
+      "landedCost": {
+        "currency": "HKD",
+        "providerOrCommunityPrice": 58,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 58,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-card-price"
+      },
+      "keep": {
+        "currency": "HKD",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Current official statements conflict. The promotion table says a HKD20-49.9 top-up extends service validity 365 days through 31 Dec 2026, while nearby terms say HKD50+ extends validity 180 days; base card validity is 180 days. Do not model one settled keep action until csl reconciles the page.",
+        "intervalDays": null,
+        "state": "hold-current-provider-internal-validity-conflict"
+      },
+      "chinaActivation": "Hong Kong prepaid real-name registration is required. Mainland-China-first registration/activation is not established by the reviewed provider page.",
+      "kyc": "csl states prepaid real-name registration is required before use; its registration flow supports passport/other travel document as identity-document categories.",
+      "payment": "Top-up is available through csl App and 7-Eleven recharge vouchers. Foreign-card/mainland remote payment execution is not established here.",
+      "wifiCalling": "unverified",
+      "roamingSms": "csl supports roaming functions generally, and 2026 community users discuss the 7-Eleven route as a keep-number/SMS option, but mainland-China incoming-SMS and third-party OTP reliability are not provider-reconciled in this bounded review.",
+      "refund": "not reconciled",
+      "trend": "current-product-provider-lifecycle-conflict",
+      "guideEligible": false,
+      "holdReason": "Current csl page conflicts on whether the relevant recharge extends 180 or 365 days, and the 365-day table is promotional through 31 Dec 2026. Reverify after the promotion or provider clarification before asserting a settled annual keep cost.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+      "tariffSummary": "Current product HKD58; base validity 180 days. Promotional recharge table says HKD20+ extends 365 days, while nearby terms say HKD50+ extends 180 days; HOLD pending reconciliation.",
+      "sourceIds": [
+        "csl-711-product-20261003",
+        "csl-rnr-20261003",
+        "linuxdo-csl711-2758634-20260815"
+      ],
+      "guideSteps": [
+        "Acquire the current 7-Eleven/csl physical prepaid SIM and complete real-name registration.",
+        "Before using it as a long-term route, verify the live recharge-validity display in csl App because the current public page conflicts.",
+        "Do not infer mainland OTP reliability from the Hong Kong lifecycle rule."
+      ]
+    }
+  },
+  {
     "id": "snap-ctexcel-uk-2026-current-profile-20261003",
     "routeId": "ctexcel-uk-2026",
     "kind": "current-profile",
@@ -2224,6 +2281,62 @@
       "tariffSummary": "Prepaid starters NT$300/500; number valid 6 months from activation/recharge; communication-credit top-up from NT$100.",
       "sourceIds": [
         "fareastone-tw-official"
+      ]
+    }
+  },
+  {
+    "id": "snap-fortress-hahasim-hk-2026-current-profile-20261003",
+    "routeId": "fortress-hahasim-hk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c21-reviewed-2026-10-03",
+    "data": {
+      "id": "fortress-hahasim-hk-2026",
+      "brandId": "haha-sim-hk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical",
+      "acquisitionSummary": "Fortress sells haha SIM through Hong Kong Fortress stores/eStore. Current community users in 2026 report straightforward Fortress retail availability and a typical HKD50 card purchase, but the official FAQ rather than seller/community price claims controls lifecycle facts.",
+      "landedCost": {
+        "currency": "HKD",
+        "providerOrCommunityPrice": 50,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 50,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "community-current-retail-price-reference"
+      },
+      "keep": {
+        "currency": "HKD",
+        "observedActionCost": 10,
+        "yearCostOriginal": 10,
+        "yearCostCny": null,
+        "action": "Top up HKD10 or more before expiry. Current Fortress FAQ says each qualifying top-up automatically extends SIM validity by 365 days; buying a data package does not extend validity.",
+        "intervalDays": 365,
+        "state": "current-provider-365d-hkd10-topup"
+      },
+      "chinaActivation": "Current provider FAQ does not establish a guaranteed mainland-China-first activation path. It states activation occurs when the physical SIM is inserted and activation SMS/number are received; local Hong Kong use requires real-name registration. Preserve overseas-use reports as community evidence rather than a provider guarantee.",
+      "kyc": "Current Fortress FAQ requires real-name registration information including HKID or travel-document details for applicable registration flows. Do not promote community no-KYC workarounds as a supported route.",
+      "payment": "Top-up is managed through the haha TRAVEL App; foreign-card or mainland payment acceptance is not provider-guaranteed in the reviewed material.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current provider FAQ supports roaming text/voice subject to account balance and charges. 2026 community users report mainland-China SMS reception, but service-specific OTP success is not guaranteed; Fortress also warns that recycled numbers can retain third-party platform history.",
+      "refund": "Expired lines may be considered for reactivation within 14 days; approval is not guaranteed and real-name registration may need to be completed again.",
+      "trend": "current-low-cost-retention-with-recycled-number-risk",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+      "tariffSummary": "HKD10-or-more top-up extends SIM validity by 365 days. Physical SIM only; real-name registration rules and third-party platform/recycled-number risk remain material.",
+      "sourceIds": [
+        "fortress-hahasim-faq-20261003",
+        "linuxdo-hahasim-2511282-20260824"
+      ],
+      "guideSteps": [
+        "Acquire a current physical haha SIM from Fortress.",
+        "Complete the applicable real-name registration flow; do not rely on no-KYC workarounds.",
+        "Top up at least HKD10 before the 365-day deadline and treat platform OTP acceptance as evidence-scoped."
       ]
     }
   },
@@ -8615,6 +8728,64 @@
       ],
       "marketName": "Thailand",
       "guideSteps": []
+    }
+  },
+  {
+    "id": "snap-tunetalk-365-my-2026-current-profile-20261003",
+    "routeId": "tunetalk-365-my-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c21-reviewed-2026-10-03",
+    "data": {
+      "id": "tunetalk-365-my-2026",
+      "brandId": "tunetalk-my",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Tune Talk is a Malaysian mobile provider operating with CelcomDigi network collaboration. Current prepaid service supports new-number/eSIM paths, while the one-year validity service is an add-on for eligible existing prepaid plan cohorts rather than a special tourist-retention exception.",
+      "landedCost": {
+        "currency": "MYR",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-entry-price-not-normalized"
+      },
+      "keep": {
+        "currency": "MYR",
+        "observedActionCost": 35,
+        "yearCostOriginal": 35,
+        "yearCostCny": null,
+        "action": "For eligible Tune Talk Pek Epik/Pek Jimat/Hi-Value/Cun Value/Value Prepaid cohorts, subscribe to the RM35 365-day validity service in the app or by supported SMS/USSD flow. It does not auto-renew; re-subscribe annually before expiry.",
+        "intervalDays": 365,
+        "state": "current-provider-365d-service-eligibility-constrained"
+      },
+      "chinaActivation": "A durable mainland-China-first/tourist acquisition path is not supported by current Malaysian regulation. Tourist-registered prepaid lines terminate automatically after a maximum of three months under the 2026 mandatory standard.",
+      "kyc": "Malaysia's 2026 mandatory prepaid-registration standard imposes secure identity verification and stricter non-citizen registration. Tourist lines have a maximum three-month lifetime; longer retention requires an eligible non-tourist registration cohort rather than a workaround.",
+      "payment": "The validity service is purchased through Tune Talk App or supported SMS/USSD mechanisms; foreign-card/remote mainland payment reliability is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current evidence does not establish mainland-China incoming-SMS/OTP reliability for this route. Do not treat general roaming support as proof of third-party OTP delivery.",
+      "refund": "The one-year validity subscription is non-cancellable after subscription according to current FAQ.",
+      "trend": "current-retention-real-tourist-cohort-blocked",
+      "guideEligible": false,
+      "holdReason": "The RM35/365-day provider mechanism is current, but tourist-registered Malaysian prepaid SIMs are automatically terminated after at most three months under the 2026 mandatory standard. A durable foreign-user cohort and China-side roaming/OTP path are unresolved.",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.tunetalk.com/",
+      "tariffSummary": "RM35/365-day validity is current for eligible plan cohorts; tourist-registered prepaid lines are capped at three months by Malaysia's 2026 mandatory registration standard.",
+      "sourceIds": [
+        "tunetalk-one-year-validity-20261003",
+        "tunetalk-network-20261003",
+        "mcmc-prepaid-mandatory-standard-20260226",
+        "lowyat-tunetalk-365-20250419"
+      ],
+      "guideSteps": [
+        "Confirm that the subscriber qualifies for a non-tourist registration cohort before relying on one-year validity.",
+        "Subscribe to RM35 365-day validity through the official Tune Talk flow if the line is eligible.",
+        "Do not use tourist registration or identity workarounds to bypass the three-month regulatory limit."
+      ]
     }
   },
   {
