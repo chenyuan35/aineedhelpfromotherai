@@ -11,7 +11,7 @@ Last updated: 2026-10-03
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
 4. Current released Phone state is **135 comparison routes / 148 canonical normalized routes / 86 markets / 145 brands / 114 networks / 565 sources / 3 indexable routes**. DB-C20 adds three post-legacy routes outside the 135-route comparison artifact; the legacy same-ID overlap remains 134 with the intentional Sakura alias gap unchanged.
 5. **DB-C20 is merged to `main` via PR #360 / `c6f5ec5e34797745b1d6738ae8936a02510601c2`.** Vodafone Netherlands Prepaid and One NZ Prepay are ADMIT-BACKSTAGE; CTExcel UK is HOLD with its retention conflicts preserved. CMLink UK and DITO Philippines remain deferred behind the gap audit's explicit evidence/eligibility re-open conditions.
-6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
+6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; PR #362 (`86060c1d5e01f460d168005f74b6e3cd0c820478`) resolves the public Linux.do provenance of the existing Oct 1 later-delta through manifest-level `resolvedSource` metadata without mutating the raw snapshot. It is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
@@ -46,6 +46,15 @@ Result:
 - publication boundary: **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**; all three DB-C20 standalone route URLs return HTTP 404.
 - release: PR #360 squash-merged as `c6f5ec5e34797745b1d6738ae8936a02510601c2`; CI #226 and Eval Gate #1069 passed; Vercel Preview passed; production `dpl_8dHPdkJX9RybHe9atEKd7bfNDuFT` is READY.
 
+## JUST COMPLETED — Data-eSIM public-source provenance resolution
+
+- PR #362 squash-merged as `86060c1d5e01f460d168005f74b6e3cd0c820478`.
+- The existing immutable `community-esim-price-user-supplied-later-delta-2026-10-01.json` remains unchanged with its original unresolved raw source field.
+- Reviewed manifest metadata now resolves that snapshot to Linux.do `ESIM流量漫游合集 4.0`; normalized source/evidence provenance inherits the resolved URL/title.
+- Full `npm run phone:data:check` passed, Eval Gate #1073 passed, Vercel Preview passed and the post-merge Vercel deployment completed successfully.
+- Data-eSIM counts remain **59 source-label providers / 72 evidence records / 159 versioned offers**; no Phone canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed.
+- No additional unnormalized Data-eSIM inbox snapshot was present in `main` during this session. A bounded Kimi-K3 delegated community-search task was submitted but ended `Task cancelled`; no worker result was accepted as evidence.
+
 ## NEXT — Trigger-gated Phone decision read
 
 No DB-C21 batch is selected. Do not create one from provider-directory enumeration or from the two deferred routes without new evidence.
@@ -59,7 +68,7 @@ Until one trigger occurs, keep production stable and continue the already-author
 
 ## PARALLEL — Community Data-eSIM evidence intake
 
-The reviewed snapshots remain normalized only through the explicit `data/esim/v1` manifest. Raw inbox snapshots remain immutable provenance inputs.
+The reviewed snapshots remain normalized only through the explicit `data/esim/v1` manifest. Raw inbox snapshots remain immutable provenance inputs; reviewed source-resolution metadata may be attached at the manifest layer when a previously unknown public source is later content-matched.
 
 Continue to append price/mechanic versions without overwriting history. Preserve community/third-party/referral/promotion, IP/egress, FUP/throttle and voice/SMS/number uncertainty as evidence. Do not auto-publish, auto-rank or force pure data eSIM into Phone-number/retention canonical routes.
 
@@ -74,7 +83,7 @@ Re-read when either:
 - settled Phone impressions reach **20**, or
 - finalized data reaches **2026-10-05**.
 
-This wait does **not** block DB-C20 or community evidence acquisition.
+This wait does **not** block community evidence acquisition.
 
 ## External waits
 
@@ -86,7 +95,7 @@ This wait does **not** block DB-C20 or community evidence acquisition.
 
 - do not trigger another broad frontend redesign without measured behavior or a reproduced UX defect;
 - do not treat DB-C20 selection or backend admission as authorization for SEO/indexable pages;
-- do not resurrect CMLink UK or DITO Philippines into DB-C20 without satisfying their audit re-open conditions;
+- do not resurrect CMLink UK or DITO Philippines without satisfying their audit re-open conditions;
 - do not duplicate same-product aliases;
 - do not manufacture ranking/recommendation confidence from sparse evidence;
 - do not auto-publish or rank Data-eSIM community evidence;
