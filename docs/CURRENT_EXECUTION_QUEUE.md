@@ -9,7 +9,7 @@ Last updated: 2026-10-03
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **The user-facing site now has a Phone-first product identity.** PR #340 released task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) makes Phone Radar the homepage first-screen identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` is READY; homepage, Phone hub and the new isolated visual stylesheet returned HTTP 200. Browser QA passed route search, route-family tabs and a live decision shortcut with no reproduced overlap or horizontal overflow.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current Phone state is **135 comparison routes / 143 canonical normalized routes / 132 comparison↔canonical route-ID overlaps / 3 legacy-only comparison route IDs / 3 indexable routes**. The three legacy-only IDs are the Sakura same-product alias blocker plus Digicel Jamaica and Tigo Tanzania.
+4. Current Phone state is **135 comparison routes / 145 canonical normalized routes / 134 comparison↔canonical route-ID overlaps / 1 comparison ID without a same-ID canonical row / 3 indexable routes**. The remaining ID is `sakura-mobile-voice-2026`, intentionally excluded as a same-product alias of canonical `sakura-japan-voice-data`.
 5. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -58,41 +58,37 @@ Released shortcuts:
 
 The cards show market, network, SIM type, acquisition cost, yearly keep cost, keep window, verification date, evidence state/source count and route state, then open the existing deep route evidence flow. Deep global evidence is still loaded progressively rather than embedded into initial HTML.
 
-## JUST COMPLETED — Backend database coverage DB-C18
+## JUST COMPLETED — Backend database coverage DB-C19
 
-DB-C17 and DB-C18 are released. DB-C18 final disposition: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**.
+DB-C19 is released. Final disposition: **0 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
-- `zain-kw-eezee-2026` — ADMIT-BACKSTAGE; current eeZee evidence establishes a KD5 new voice prepaid line, KD13/365-day validity extension, eSIM, expatriate passport/Civil-ID purchase, remote recharge and prepaid voice/SMS roaming. China-specific OTP reliability remains unverified.
-- `omantel-om-2026` — ADMIT-BACKSTAGE; current Hayyak evidence establishes 90-day active validity plus a 90-day number-holding period, passport-capable eSIM onboarding, current OMR7 voucher floor and free incoming SMS while roaming. China-specific OTP reliability remains unverified.
-- `btc-bs-2026` — HOLD; BTC prepaid remains current, but a current consumer-prepaid number inactivity/deactivation/recycling clock, minimum keep-alive action, ordinary foreigner onboarding and China-specific prepaid roaming/SMS behavior remain unresolved.
+- `digicel-jm-2026` — HOLD; current Digicel Jamaica terms establish a four-month no-usage deactivation rule and new-number assignment after reactivation. Current visitor acquisition, international top-up and China roaming exist, but the exact qualifying activity that resets the four-month clock is not defined, so no minimum annual keep-alive cost is invented.
+- `tigo-tz-2026` — HOLD; the stable legacy Tigo route ID now maps to current Yas Tanzania rather than duplicating the rebranded product. Current Yas terms allow suspension/number re-allocation after 90 days of continuous non-use and current roaming lists China, while TCRA visitor registration is scoped to non-citizens staying no more than four months. A durable foreign-user keep-number path is not established.
 
-Released backend state: **143 routes / 84 markets / 140 brands / 110 networks / 537 sources / 132 comparison overlaps / 3 legacy-only route IDs / 3 indexable**. PR #354 squash-merged as `02323f3b787a7c11b434a2e495f2739f590d9b58`; CI #222 and Eval Gate #1055 passed. Vercel production deployment `dpl_HWAt3zxuDBosJ8fFkJyd7nH63qTS` is READY. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs and all three DB-C18 standalone route URLs return 404.
+Released backend state: **145 routes / 86 markets / 142 brands / 112 networks / 547 sources / 134 comparison overlaps / 1 comparison ID without a same-ID canonical row / 3 indexable**. The remaining ID is the intentional Sakura same-product alias blocker. PR #356 squash-merged as `f9c151b8a33d3edc1160893977a5c6c60d99a361`; CI #224 and Eval Gate #1059 passed. Vercel Preview `dpl_98FfZqhp1Uv4eVQFvRkXQXgEy4VT` and production `dpl_CtnXBiZ5cP19ggPFTYDbW1feJ1E8` are READY. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs and both DB-C19 standalone route URLs return 404.
 
-DB-C17 immediately before it normalized `cricket-us-2026`, `google-fi-flexible-2026` and `beeline-uz-2026` as HOLD in PR #353 (`09041c1fefe7cb534c138e88769fd50cc27fad4e`); CI #220, Eval Gate #1053 and production verification passed.
+## NEXT — Post-legacy Phone coverage-gap audit
 
-## NEXT — Backend database coverage DB-C19
-
-Bounded batch: `digicel-jm-2026`, `tigo-tz-2026`.
+Purpose: the comparison-to-canonical migration backlog is functionally closed. Before defining DB-C20, identify genuinely missing low-cost long-term number routes outside the existing 135-route comparison set instead of extending the database by provider-directory enumeration.
 
 Definition of done:
 
-- reverify current product identity and whether the route still exists/is purchasable;
-- reverify lifecycle / keep-alive economics;
-- reverify foreign-user KYC and acquisition path;
-- reverify overseas SMS / OTP / roaming behavior;
-- reverify payment constraints;
-- preserve source provenance, uncertainty and reviewed admission states;
-- pass the canonical importer/QC and existing Phone regression gates;
-- **no public URL, sitemap or indexability change**.
+- compare the current 145-route canonical set against current community/watcher evidence and known low-cost long-term number patterns;
+- use community-first research for actual acquisition/retention/overseas-use evidence, then use provider sources only for current commercial/provider-controlled facts;
+- dedupe same-product aliases, rebrands and already-covered acquisition paths against canonical before shortlisting;
+- produce a bounded shortlist of at most five genuinely distinct missing routes with provenance, user-value reason, current product identity and the material unknowns that would affect admission;
+- sample-audit at least three shortlisted candidates for source quality, duplication and unsupported inference;
+- select at most three candidates for a later DB-C20 batch only if the evidence survives the audit;
+- **no canonical admission, public URL, sitemap or indexability change in the audit itself**.
 
 Stop conditions:
 
-- source conflict that cannot be reconciled conservatively;
-- same-product alias collision;
-- missing evidence that makes admission unsafe;
-- provider/account blocker that requires authorization or payment.
+- no genuinely distinct candidate has current independent operational evidence;
+- the apparent gap is only provider-directory coverage, stale/copied material or a duplicate/alias;
+- evidence is too weak to justify a bounded follow-on batch;
+- provider/account access would require authorization or payment.
 
-Keep `sakura-mobile-voice-2026` excluded; it remains the known same-product alias blocker for canonical `sakura-japan-voice-data`. It is not a DB-C19 candidate.
+Keep `sakura-mobile-voice-2026` excluded; it remains the known same-product alias of canonical `sakura-japan-voice-data`, not a missing product candidate.
 
 ## PARALLEL — Community Data-eSIM evidence intake
 
@@ -111,7 +107,7 @@ Re-read when either:
 - settled Phone impressions reach **20**, or
 - finalized data reaches **2026-10-05**.
 
-This wait does **not** block DB-C19 or community evidence acquisition.
+This wait does **not** block the post-legacy coverage-gap audit or community evidence acquisition.
 
 ## External waits
 
