@@ -111,8 +111,8 @@ const makeEvidenceRecord = ({ entry, doc, raw, providerLabel, recordType, record
       sourceSnapshotId: entry.id,
       sourcePath: entry.path,
       sourceType: doc.source?.type || null,
-      sourceUrl: doc.source?.url || null,
-      sourceTitle: doc.source?.title || null,
+      sourceUrl: entry.resolvedSource?.url || doc.source?.url || null,
+      sourceTitle: entry.resolvedSource?.title || doc.source?.title || null,
       sourceAuthor: doc.source?.author || doc.source?.authorContext || null,
       publicationState: doc.publicationState || null,
       extendsSignalId: doc.extendsSignalId || entry.extends || null,
@@ -185,7 +185,12 @@ export const loadDataEsimCatalog = ({ root = repoRoot } = {}) => {
       capturedAt: doc.capturedAt || entry.capturedAt,
       role: entry.role,
       extends: entry.extends || null,
-      source: doc.source || null
+      source: {
+        ...(doc.source || {}),
+        url: entry.resolvedSource?.url || doc.source?.url || null,
+        title: entry.resolvedSource?.title || doc.source?.title || null,
+        resolution: entry.resolvedSource || null
+      }
     });
 
     const pushEvidence = (raw, providerLabel, recordType, recordKey) => {
@@ -210,7 +215,7 @@ export const loadDataEsimCatalog = ({ root = repoRoot } = {}) => {
 
     if (entry.role === 'version-delta') {
       doc.updates.forEach((raw, index) => pushEvidence(raw, raw.providerLabel, 'price-delta-update', `${raw.ordinal ?? 'x'}:${index + 1}`));
-      doc.newRecords.forEach((raw) => pushEvidence(raw, raw.providerLabel, 'price-delta-new-record', String(raw.ordinal)));
+      doc.newRecords.forEach((raw) => pushEvidence(raw, raw.providerLabel, 'price-delta-new-record', String(raw.ordinal));
       continue;
     }
 
