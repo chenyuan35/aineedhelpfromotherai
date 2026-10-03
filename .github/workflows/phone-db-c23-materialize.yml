@@ -1,0 +1,93 @@
+name: Phone DB-C23 Materialize
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/phone/review-packets/esimgg-estonia-372-2026.json'
+      - 'data/phone/review-packets/hkmobi-365-hk-2026.json'
+      - 'scripts/test-phone-canonical-db-c23-migration.mjs'
+      - 'package.json'
+      - '.github/workflows/phone-db-c23-materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install root dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate and apply DB-C23 review packets
+        run: |
+          set -euo pipefail
+          for packet in \
+            data/phone/review-packets/esimgg-estonia-372-2026.json \
+            data/phone/review-packets/hkmobi-365-hk-2026.json; do
+            node scripts/apply-phone-review-packet.mjs "$packet" --check
+            node scripts/apply-phone-review-packet.mjs "$packet" --apply
+          done
+          node scripts/build-phone-database.mjs
+      - name: Update regression totals and register DB-C23 test
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for i in range(15, 23):
+              path = Path(f'scripts/test-phone-canonical-db-c{i}-migration.mjs')
+              text = path.read_text()
+              text = text.replace('canonical.routes.length, 154', 'canonical.routes.length, 156')
+              text = text.replace('brands.length, 151', 'brands.length, 153')
+              text = text.replace('networks.length, 115', 'networks.length, 116')
+              text = text.replace('sources.length, 587', 'sources.length, 593')
+              path.write_text(text)
+          package = Path('package.json')
+          data = json.loads(package.read_text())
+          old = 'node scripts/test-phone-canonical-db-c22-migration.mjs && node scripts/test-phone-community-price-intake.mjs'
+          new = 'node scripts/test-phone-canonical-db-c22-migration.mjs && node scripts/test-phone-canonical-db-c23-migration.mjs && node scripts/test-phone-community-price-intake.mjs'
+          assert old in data['scripts']['phone:data:check']
+          data['scripts']['phone:data:check'] = data['scripts']['phone:data:check'].replace(old, new)
+          package.write_text(json.dumps(data, indent=2) + '\n')
+          PY
+      - name: Verify materialized database and public boundary
+        run: |
+          npm run phone:data:check
+          npm run verify
+          npm run build --prefix frontend
+          git diff --check
+      - name: Commit materialized canonical and runtime artifacts
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            data/phone/v1 \
+            frontend/tools/phone-number-lifecycle-mvp/phone-database.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-metrics.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-search-index.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-data \
+            scripts/test-phone-canonical-db-c15-migration.mjs \
+            scripts/test-phone-canonical-db-c16-migration.mjs \
+            scripts/test-phone-canonical-db-c17-migration.mjs \
+            scripts/test-phone-canonical-db-c18-migration.mjs \
+            scripts/test-phone-canonical-db-c19-migration.mjs \
+            scripts/test-phone-canonical-db-c20-migration.mjs \
+            scripts/test-phone-canonical-db-c21-migration.mjs \
+            scripts/test-phone-canonical-db-c22-migration.mjs \
+            package.json
+          if git diff --cached --quiet; then
+            echo 'No materialization changes to commit.'
+            exit 0
+          fi
+          git commit -m 'data: materialize DB-C23 canonical artifacts'
+          git push origin HEAD:${{ github.head_ref }}
