@@ -385,6 +385,11 @@
     "countryCode": "US"
   },
   {
+    "id": "uz",
+    "name": "Uzbekistan",
+    "countryCode": "UZ"
+  },
+  {
     "id": "various",
     "name": "Destination-specific",
     "countryCode": null

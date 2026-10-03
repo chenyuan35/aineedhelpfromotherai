@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c17",
+  "reviewNotes": "HOLD. Cricket remains current and the 12-month Unlimited plan is USD300 prepaid. Current lifecycle guidance suspends unpaid service and limits number recovery to 60 days after the last pay date. Cricket Passport now lists China and current terms say receiving texts alone does not trigger the Passport charge, but Wi-Fi Calling still requires prior Cricket-network attachment. Foreign-resident/China-first activation and foreign-card execution remain unverified, and USD300/year is outside the low-cost retention target.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "cricket-us",
+    "networkId": "att-us",
+    "name": "Cricket Wireless",
+    "marketId": "us"
+  },
+  "route": {
+    "id": "cricket-us-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "cricket-us",
+    "displayName": "Cricket Wireless Multi-Month",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.cricketwireless.com/plans/phone/multi-month",
+    "sourceIds": [
+      "cricket-multimonth-20261003",
+      "cricket-autopay-20261003",
+      "cricket-payment-due-20261003",
+      "cricket-wifi-calling-20261003",
+      "cricket-passport-countries-20261003",
+      "cricket-passport-terms-20261003",
+      "cricket-prepaid-20261003"
+    ]
+  },
+  "sources": [
+    {
+      "id": "cricket-multimonth-20261003",
+      "url": "https://www.cricketwireless.com/plans/phone/multi-month",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-autopay-20261003",
+      "url": "https://www.cricketwireless.com/manageautopay",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-payment-due-20261003",
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/payment-due-dates",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-wifi-calling-20261003",
+      "url": "https://www.cricketwireless.com/support/mobile-wifi/wifi-calling",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-passport-countries-20261003",
+      "url": "https://espanol.cricketwireless.com/ayuda/9hghn/lista-de-pa%C3%ADses-de-roaming-internacional",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-passport-terms-20261003",
+      "url": "https://www.cricketwireless.com/why-cricket/business",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-prepaid-20261003",
+      "url": "https://www.cricketwireless.com/how-cricket-works/what-is-prepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "sourceIds": [
+    "cricket-multimonth-20261003",
+    "cricket-autopay-20261003",
+    "cricket-payment-due-20261003",
+    "cricket-wifi-calling-20261003",
+    "cricket-passport-countries-20261003",
+    "cricket-passport-terms-20261003",
+    "cricket-prepaid-20261003"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-cricket-us-2026-db-c17-20261003",
+      "routeId": "cricket-us-2026",
+      "type": "current-plan-lifecycle-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Cricket 12-month Unlimited remains USD300 prepaid; unpaid service is suspended with a 60-day number-recovery boundary. Cricket Passport now includes China, while Wi-Fi Calling requires prior Cricket-network attachment and China-first acquisition/payment remain unresolved.",
+      "sourceId": "cricket-multimonth-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-cricket-us-2026-current-profile-20261003",
+      "routeId": "cricket-us-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "cricket-us-2026",
+        "brandId": "cricket-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Cricket currently sells a 12-month Unlimited plan at USD25/month when USD300 is prepaid. It is online-only, requires a new single-line account and a compatible BYOD device. Cricket is prepaid with no credit check; current online activation supports physical SIM and eSIM orders.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 300,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 300,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-12-month-prepay"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 300,
+          "yearCostOriginal": 300,
+          "yearCostCny": null,
+          "action": "Renew the 12-month multi-month plan at the then-current renewal price; current Auto Pay material supports 12-month renewal cadence. If a payment is missed, service is suspended and Cricket allows number recovery only within 60 days of the last pay date; treat that as recovery, not retention cadence.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "No reliable China-first activation path is established. Online/eSIM activation exists, but Cricket Wi-Fi Calling can only be enabled after the device has connected to the Cricket network at least once.",
+        "kyc": "Cricket prepaid explicitly states no credit check. Current reviewed material does not establish a foreign-resident acquisition/KYC path.",
+        "payment": "Credit/debit card payment and Auto Pay are supported. Current checkout requires ordinary card/account validation; reliable foreign-issued-card execution is not established.",
+        "wifiCalling": "Supported, but the device must have previously connected to the Cricket network at least once before Wi-Fi Calling can be enabled.",
+        "roamingSms": "China is on the current Cricket Passport eligible-country list. Current Passport terms say receiving texts does not trigger the Passport service charge, while active voice/text/data use can. Multi-Month plans are currently listed as eligible, but third-party OTP delivery and China-first activation are not guaranteed.",
+        "refund": "Multi-month prepayment is nonrefundable in whole or in part.",
+        "trend": "current-product-china-roaming-added-us-first-setup",
+        "guideEligible": false,
+        "holdReason": "USD300/year is not a low-cost keep route, Wi-Fi Calling requires prior Cricket-network attachment, and reliable foreign-resident/China-first activation and foreign-card execution remain unverified. Preserve as reviewed negative/constraint knowledge rather than a recommendation.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.cricketwireless.com/plans/phone/multi-month",
+        "tariffSummary": "12-month Unlimited: USD300 prepaid. Missed payment suspends service; number recovery is limited to 60 days from the last pay date. China is supported by Cricket Passport on eligible plans, but U.S.-first setup constraints remain.",
+        "guideSteps": [
+          "Acquire and activate through a supported Cricket path with a compatible device.",
+          "Renew the multi-month plan before expiry; do not rely on the 60-day recovery window as a keep-alive strategy.",
+          "If using abroad, verify Cricket-network attachment and Wi-Fi Calling before departure; treat Passport coverage as carrier roaming evidence, not OTP proof."
+        ],
+        "sourceIds": [
+          "cricket-multimonth-20261003",
+          "cricket-autopay-20261003",
+          "cricket-payment-due-20261003",
+          "cricket-wifi-calling-20261003",
+          "cricket-passport-countries-20261003",
+          "cricket-passport-terms-20261003",
+          "cricket-prepaid-20261003"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

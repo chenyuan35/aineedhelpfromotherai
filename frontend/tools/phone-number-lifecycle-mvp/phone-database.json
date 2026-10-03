@@ -391,6 +391,11 @@
       "countryCode": "US"
     },
     {
+      "id": "uz",
+      "name": "Uzbekistan",
+      "countryCode": "UZ"
+    },
+    {
       "id": "various",
       "name": "Destination-specific",
       "countryCode": null
@@ -446,6 +451,11 @@
       "id": "beeline-kz",
       "name": "Beeline Kazakhstan",
       "marketId": "kz"
+    },
+    {
+      "id": "beeline-uz",
+      "name": "Beeline Uzbekistan",
+      "marketId": "uz"
     },
     {
       "id": "bhtelecom-ba",
@@ -1018,6 +1028,12 @@
       "marketId": "kz"
     },
     {
+      "id": "beeline-uz-prepaid",
+      "networkId": "beeline-uz",
+      "name": "Beeline Uzbekistan Prepaid",
+      "marketId": "uz"
+    },
+    {
       "id": "bhtelecom-prepaid",
       "networkId": "bhtelecom-ba",
       "name": "BH Telecom Prepaid",
@@ -1088,6 +1104,12 @@
       "networkId": "cosmote-gr",
       "name": "FROG Mobile",
       "marketId": "gr"
+    },
+    {
+      "id": "cricket-us",
+      "networkId": "att-us",
+      "name": "Cricket Wireless",
+      "marketId": "us"
     },
     {
       "id": "cyta-soeasy",
@@ -1166,6 +1188,12 @@
       "networkId": "rogers-ca",
       "name": "Good2Go Mobile Canada",
       "marketId": "ca"
+    },
+    {
+      "id": "google-fi-us",
+      "networkId": "tmobile-us",
+      "name": "Google Fi Wireless",
+      "marketId": "us"
     },
     {
       "id": "gp-prepaid",
@@ -1996,6 +2024,30 @@
       ]
     },
     {
+      "id": "beeline-uz-2026",
+      "marketId": "uz",
+      "networkId": "beeline-uz",
+      "brandId": "beeline-uz-prepaid",
+      "displayName": "Beeline Uzbekistan Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://beeline.uz/",
+      "sourceIds": [
+        "beeline-uz-esim-20261003",
+        "beeline-uz-hello-20261003",
+        "beeline-uz-international-topup-20261003",
+        "beeline-uz-lifecycle-20261003",
+        "beeline-uz-number-selection-20261003",
+        "beeline-uz-roaming-20261003",
+        "beeline-uz-roaming-85-20261003",
+        "beeline-uz-self-register-20261003"
+      ]
+    },
+    {
       "id": "bhtelecom-ba-2026",
       "marketId": "ba",
       "networkId": "bhtelecom-ba",
@@ -2229,6 +2281,29 @@
         "frog-online-sim-20260929",
         "frog-privacy-20260929",
         "frog-topup-min-20260330"
+      ]
+    },
+    {
+      "id": "cricket-us-2026",
+      "marketId": "us",
+      "networkId": "att-us",
+      "brandId": "cricket-us",
+      "displayName": "Cricket Wireless Multi-Month",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM + physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.cricketwireless.com/plans/phone/multi-month",
+      "sourceIds": [
+        "cricket-autopay-20261003",
+        "cricket-multimonth-20261003",
+        "cricket-passport-countries-20261003",
+        "cricket-passport-terms-20261003",
+        "cricket-payment-due-20261003",
+        "cricket-prepaid-20261003",
+        "cricket-wifi-calling-20261003"
       ]
     },
     {
@@ -2491,6 +2566,27 @@
       "sourceIds": [
         "good2go-home-20260929",
         "petro-legacy-expiry-history-20120401"
+      ]
+    },
+    {
+      "id": "google-fi-flexible-2026",
+      "marketId": "us",
+      "networkId": "tmobile-us",
+      "brandId": "google-fi-us",
+      "displayName": "Google Fi Flexible",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM + physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://fi.google.com/about/plans",
+      "sourceIds": [
+        "google-fi-abroad-policy-20261003",
+        "google-fi-flexible-plan-20261003",
+        "google-fi-international-20261003",
+        "google-fi-payment-options-20261003",
+        "google-fi-signup-us-address-20261003"
       ]
     },
     {
@@ -4514,6 +4610,54 @@
       "reportedAt": "2026-10-01"
     },
     {
+      "id": "beeline-uz-esim-20261003",
+      "url": "https://beeline.uz/en/products/services/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-hello-20261003",
+      "url": "https://beeline.uz/en/welcome-new",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-international-topup-20261003",
+      "url": "https://beeline.uz/en/payments",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-lifecycle-20261003",
+      "url": "https://beeline.uz/en/events/prekrashcheniye-raboty-platformy-beeline-tv/uvazhaemye-klienty-28042026",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-number-selection-20261003",
+      "url": "https://beeline.uz/en/products/services/vibor-i-bronirovanie-nomera",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-roaming-20261003",
+      "url": "https://beeline.uz/en/zoni-rouminga",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-roaming-85-20261003",
+      "url": "https://beeline.uz/en/events/roaming/obnovlenniye-rouming-paketi",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-self-register-20261003",
+      "url": "https://beeline.uz/en/sim-karta-s-samostoyatelnoy-registraciey",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "bh-ultra-esim-20260930",
       "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/ViewProduct-Start?SKU=908992",
       "type": "provider-official",
@@ -4766,6 +4910,48 @@
       "reportedAt": "2026-04-20"
     },
     {
+      "id": "cricket-autopay-20261003",
+      "url": "https://www.cricketwireless.com/manageautopay",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-multimonth-20261003",
+      "url": "https://www.cricketwireless.com/plans/phone/multi-month",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-passport-countries-20261003",
+      "url": "https://espanol.cricketwireless.com/ayuda/9hghn/lista-de-pa%C3%ADses-de-roaming-internacional",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-passport-terms-20261003",
+      "url": "https://www.cricketwireless.com/why-cricket/business",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-payment-due-20261003",
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/payment-due-dates",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-prepaid-20261003",
+      "url": "https://www.cricketwireless.com/how-cricket-works/what-is-prepaid.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cricket-wifi-calling-20261003",
+      "url": "https://www.cricketwireless.com/support/mobile-wifi/wifi-calling",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "cyta-soeasy-faq-20260929",
       "url": "https://www.cyta.com.cy/faq-soeasy/en",
       "type": "provider-official",
@@ -4950,6 +5136,36 @@
       "url": "https://good2gomobile.ca/",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "google-fi-abroad-policy-20261003",
+      "url": "https://support.google.com/fi/answer/6157794?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-flexible-plan-20261003",
+      "url": "https://fi.google.com/about/plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-international-20261003",
+      "url": "https://fi.google.com/about/international-rates",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-payment-options-20261003",
+      "url": "https://support.google.com/fi/answer/6061907?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-signup-us-address-20261003",
+      "url": "https://support.google.com/fi/answer/6172582?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
     },
     {
       "id": "googleplay-beeline-sim-safe-incident-2026-08-28",
@@ -7609,6 +7825,15 @@
       "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
     },
     {
+      "id": "evt-beeline-uz-2026-db-c17-20261003",
+      "routeId": "beeline-uz-2026",
+      "type": "lifecycle-foreigner-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current policy establishes a 90-day no-transaction restriction followed by 275 days of office-restorable retention before termination. China roaming and international top-up are current for eligible prepaid lines, while the foreigner-specific Hello product is local-only and cannot be assumed equivalent to the roaming-capable ordinary prepaid route.",
+      "sourceId": "beeline-uz-lifecycle-20261003"
+    },
+    {
       "id": "evt-bhtelecom-ba-2026-db-c5-20260930",
       "routeId": "bhtelecom-ba-2026",
       "type": "retention-rule-resolution",
@@ -7697,6 +7922,15 @@
       "scope": "route",
       "outcome": "Current official FROG terms retain the number for up to 13 months from activation/last balance renewal, while the current electronic minimum top-up for FROG is EUR13; the legacy EUR10 keep-alive estimate is withdrawn.",
       "sourceId": "frog-general-terms-20260929"
+    },
+    {
+      "id": "evt-cricket-us-2026-db-c17-20261003",
+      "routeId": "cricket-us-2026",
+      "type": "current-plan-lifecycle-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Cricket 12-month Unlimited remains USD300 prepaid; unpaid service is suspended with a 60-day number-recovery boundary. Cricket Passport now includes China, while Wi-Fi Calling requires prior Cricket-network attachment and China-first acquisition/payment remain unresolved.",
+      "sourceId": "cricket-multimonth-20261003"
     },
     {
       "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
@@ -7805,6 +8039,15 @@
       "scope": "route",
       "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
       "sourceId": "good2go-home-20260929"
+    },
+    {
+      "id": "evt-google-fi-flexible-2026-db-c17-20261003",
+      "routeId": "google-fi-flexible-2026",
+      "type": "activation-roaming-terms-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Flexible remains USD20/month + USD10/GB, China is in the international destination list with free texts, but Fi requires a valid U.S. payments address and at least one day of U.S. activation/use before international service; extended overseas data remains restricted.",
+      "sourceId": "google-fi-international-20261003"
     },
     {
       "id": "evt-gp-five-year-price-correction-20260929",
@@ -9182,6 +9425,68 @@
       }
     },
     {
+      "id": "snap-beeline-uz-2026-current-profile-20261003",
+      "routeId": "beeline-uz-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "beeline-uz-2026",
+        "brandId": "beeline-uz-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Beeline Uzbekistan currently supports new-number selection, eSIM, and self-registration of physical SIMs. A current Hello tariff family is explicitly available to foreign citizens/tourists with up to three lines per foreign passport, but Hello is valid only inside Uzbekistan and does not work in international roaming. The reviewed evidence does not establish that the ordinary roaming-capable prepaid tariff can be newly registered by the same foreign-passport path.",
+        "landedCost": {
+          "currency": "UZS",
+          "providerOrCommunityPrice": 12000,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 12000,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-self-register-physical-sim"
+        },
+        "keep": {
+          "currency": "UZS",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current provider policy says that after 90 days with no transactions all communication services, including incoming/outgoing calls, SMS and data, are restricted. Service can then be restored for the next 275 days by visiting a sales/service office; after that the contract terminates. To avoid office-only recovery, make a qualifying transaction before 90 days, but the exact minimum qualifying action/cost is not established in the reviewed material.",
+          "intervalDays": 90,
+          "state": "current-provider-lifecycle-known-action-floor-unresolved"
+        },
+        "chinaActivation": "Local acquisition is established through Beeline Uzbekistan channels. China-first remote activation for a new foreign customer is not established. The foreigner-specific Hello plan is local-only and explicitly excludes international roaming.",
+        "kyc": "Hello explicitly supports foreign citizens/tourists and limits registration to three numbers per foreign passport. Self-registration requires passport data and identity verification, but the reviewed ordinary-prepaid self-registration page does not prove that foreign passports can use the roaming-capable generic tariff.",
+        "payment": "Beeline officially documents international top-up through Ding from abroad; Ding supports Visa, Mastercard, PayPal, American Express, Alipay and UnionPay. This establishes a remote recharge path once a compatible line exists.",
+        "wifiCalling": "Beeline currently lists VoWiFi as a supported service, but foreigner-plan and abroad setup behavior was not reconciled in this bounded review.",
+        "roamingSms": "Beeline prepaid roaming is current and China is listed among the supported roaming-package countries. Current roaming support describes SMS use abroad and real-time charging; a current explicit China incoming-SMS price was not established. The foreigner-specific Hello tariff cannot be used in international roaming, so this roaming evidence applies to ordinary eligible prepaid lines, not automatically to Hello.",
+        "refund": "not reconciled",
+        "trend": "lifecycle-resolved-foreigner-roaming-product-identity-conflict",
+        "guideEligible": false,
+        "holdReason": "A major product-identity gap remains: the explicitly foreign-passport Hello line is not valid in international roaming, while current China roaming applies to ordinary prepaid service whose foreign-passport new-line eligibility was not established. The minimum qualifying transaction/cost needed to avoid the 90-day inactivity restriction is also unresolved.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://beeline.uz/",
+        "tariffSummary": "No-activity rule: restrict all services after 90 days, office restoration available for the next 275 days, then termination at 365 days. China roaming and overseas top-up exist for eligible ordinary prepaid lines; foreigner-specific Hello is local-only.",
+        "guideSteps": [
+          "Do not merge Hello foreigner/tourist evidence with ordinary roaming-capable prepaid evidence.",
+          "For an ordinary eligible line, keep qualifying activity below the 90-day inactivity threshold; do not rely on the later 275-day office-only recovery window.",
+          "Use official international top-up paths once the line is established, but keep foreigner ordinary-prepaid acquisition and China OTP claims unresolved until directly proven."
+        ],
+        "sourceIds": [
+          "beeline-uz-lifecycle-20261003",
+          "beeline-uz-hello-20261003",
+          "beeline-uz-esim-20261003",
+          "beeline-uz-number-selection-20261003",
+          "beeline-uz-international-topup-20261003",
+          "beeline-uz-roaming-20261003",
+          "beeline-uz-roaming-85-20261003",
+          "beeline-uz-self-register-20261003"
+        ]
+      }
+    },
+    {
       "id": "snap-bhtelecom-ba-2026-current-profile-20260930",
       "routeId": "bhtelecom-ba-2026",
       "kind": "current-profile",
@@ -9850,6 +10155,67 @@
           "Order/register the FROG SIM or eSIM with valid identity details.",
           "Use a normal electronic top-up of at least EUR13 before the 13-month number-renewal deadline.",
           "Do not confuse balance-expiry/service-interruption timing with final number deactivation."
+        ]
+      }
+    },
+    {
+      "id": "snap-cricket-us-2026-current-profile-20261003",
+      "routeId": "cricket-us-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "cricket-us-2026",
+        "brandId": "cricket-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Cricket currently sells a 12-month Unlimited plan at USD25/month when USD300 is prepaid. It is online-only, requires a new single-line account and a compatible BYOD device. Cricket is prepaid with no credit check; current online activation supports physical SIM and eSIM orders.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 300,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 300,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-12-month-prepay"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 300,
+          "yearCostOriginal": 300,
+          "yearCostCny": null,
+          "action": "Renew the 12-month multi-month plan at the then-current renewal price; current Auto Pay material supports 12-month renewal cadence. If a payment is missed, service is suspended and Cricket allows number recovery only within 60 days of the last pay date; treat that as recovery, not retention cadence.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "No reliable China-first activation path is established. Online/eSIM activation exists, but Cricket Wi-Fi Calling can only be enabled after the device has connected to the Cricket network at least once.",
+        "kyc": "Cricket prepaid explicitly states no credit check. Current reviewed material does not establish a foreign-resident acquisition/KYC path.",
+        "payment": "Credit/debit card payment and Auto Pay are supported. Current checkout requires ordinary card/account validation; reliable foreign-issued-card execution is not established.",
+        "wifiCalling": "Supported, but the device must have previously connected to the Cricket network at least once before Wi-Fi Calling can be enabled.",
+        "roamingSms": "China is on the current Cricket Passport eligible-country list. Current Passport terms say receiving texts does not trigger the Passport service charge, while active voice/text/data use can. Multi-Month plans are currently listed as eligible, but third-party OTP delivery and China-first activation are not guaranteed.",
+        "refund": "Multi-month prepayment is nonrefundable in whole or in part.",
+        "trend": "current-product-china-roaming-added-us-first-setup",
+        "guideEligible": false,
+        "holdReason": "USD300/year is not a low-cost keep route, Wi-Fi Calling requires prior Cricket-network attachment, and reliable foreign-resident/China-first activation and foreign-card execution remain unverified. Preserve as reviewed negative/constraint knowledge rather than a recommendation.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.cricketwireless.com/plans/phone/multi-month",
+        "tariffSummary": "12-month Unlimited: USD300 prepaid. Missed payment suspends service; number recovery is limited to 60 days from the last pay date. China is supported by Cricket Passport on eligible plans, but U.S.-first setup constraints remain.",
+        "guideSteps": [
+          "Acquire and activate through a supported Cricket path with a compatible device.",
+          "Renew the multi-month plan before expiry; do not rely on the 60-day recovery window as a keep-alive strategy.",
+          "If using abroad, verify Cricket-network attachment and Wi-Fi Calling before departure; treat Passport coverage as carrier roaming evidence, not OTP proof."
+        ],
+        "sourceIds": [
+          "cricket-multimonth-20261003",
+          "cricket-autopay-20261003",
+          "cricket-payment-due-20261003",
+          "cricket-wifi-calling-20261003",
+          "cricket-passport-countries-20261003",
+          "cricket-passport-terms-20261003",
+          "cricket-prepaid-20261003"
         ]
       }
     },
@@ -10822,6 +11188,65 @@
           "petro-legacy-expiry-history-20120401"
         ],
         "marketName": "Canada"
+      }
+    },
+    {
+      "id": "snap-google-fi-flexible-2026-current-profile-20261003",
+      "routeId": "google-fi-flexible-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "google-fi-flexible-2026",
+        "brandId": "google-fi-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Google Fi Flexible remains USD20/month for one line plus USD10/GB. Sign-up requires a Google account, a valid U.S. home address in the Google Payments profile, and a valid payment method. Google Fi is offered only in the U.S.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 20,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 20,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-base"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 20,
+          "yearCostOriginal": 240,
+          "yearCostCny": null,
+          "action": "Keep Flexible active at USD20/month before data/taxes. A line can be paused for up to three months and auto-resumes; Google explicitly says keeping Fi paused for extended periods/repeated pausing violates the Terms, so pause is not treated as a sustainable free keep-alive method.",
+          "intervalDays": 30,
+          "state": "current-provider-monthly-base"
+        },
+        "chinaActivation": "First activation abroad is not allowed. Current Fi policy requires activation and at least one day of use in the United States before international use, for eSIM and physical SIM alike.",
+        "kyc": "No document KYC is established in the reviewed flow, but Fi is U.S.-only and requires a valid U.S. address in payments.google.com.",
+        "payment": "Automatic monthly billing uses a primary credit/debit card. Visa, Mastercard, American Express and Discover are supported, but the Google Payments profile must have a valid U.S. home address and the card billing address must validate; a dependable foreign-resident payment path is therefore not established.",
+        "wifiCalling": "Supported; calls over Wi-Fi to the U.S., Canada and Mexico are included while abroad, with other destinations billed by destination.",
+        "roamingSms": "China is explicitly in the current 200+ destination list for Flexible. International texts are included at no extra charge and cellular calls are generally USD0.20/min; Flexible data is USD10/GB. Extended overseas use can suspend international data after the provider policy threshold, while calls/texts remain active after data suspension. Third-party OTP delivery remains service-specific.",
+        "refund": "not reconciled",
+        "trend": "current-product-us-first-and-extended-abroad-restrictions-confirmed",
+        "guideEligible": false,
+        "holdReason": "Google Fi requires U.S.-first activation/use and a valid U.S. payments-profile address, costs USD240/year before data/taxes, and enforces limits on extended international data use. It is not a China-first or low-cost permanent-abroad keep route.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://fi.google.com/about/plans",
+        "tariffSummary": "Flexible: USD20/month + USD10/GB. China is covered with free international texts, but first activation must occur in the U.S. and extended overseas data use is restricted.",
+        "guideSteps": [
+          "Only acquire if the U.S. account/address and U.S.-first activation requirements can legitimately be met.",
+          "Keep the line on its normal monthly billing cadence; do not use repeated pausing as a retention workaround.",
+          "Treat China roaming/text support as carrier coverage, while keeping third-party OTP compatibility as a separate evidence question."
+        ],
+        "sourceIds": [
+          "google-fi-flexible-plan-20261003",
+          "google-fi-international-20261003",
+          "google-fi-abroad-policy-20261003",
+          "google-fi-signup-us-address-20261003",
+          "google-fi-payment-options-20261003"
+        ]
       }
     },
     {
@@ -18058,6 +18483,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "beeline-uz-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "UZS",
+      "acquisitionCostOriginal": 12000,
+      "acquisitionCostCny": null,
+      "keepCurrency": "UZS",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "bhtelecom-ba-2026",
       "checkedAt": "2026-09-30",
       "metricState": "current-profile",
@@ -18198,6 +18635,18 @@
       "acquisitionCostCny": null,
       "keepCurrency": "EUR",
       "keepYearCostOriginal": 13,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
+      "routeId": "cricket-us-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 300,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 300,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
     },
@@ -18356,6 +18805,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "google-fi-flexible-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 20,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 240,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "grameenphone-validity-pack-2026",

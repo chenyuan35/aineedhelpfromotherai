@@ -78,6 +78,12 @@
     "marketId": "kz"
   },
   {
+    "id": "beeline-uz-prepaid",
+    "networkId": "beeline-uz",
+    "name": "Beeline Uzbekistan Prepaid",
+    "marketId": "uz"
+  },
+  {
     "id": "bhtelecom-prepaid",
     "networkId": "bhtelecom-ba",
     "name": "BH Telecom Prepaid",
@@ -148,6 +154,12 @@
     "networkId": "cosmote-gr",
     "name": "FROG Mobile",
     "marketId": "gr"
+  },
+  {
+    "id": "cricket-us",
+    "networkId": "att-us",
+    "name": "Cricket Wireless",
+    "marketId": "us"
   },
   {
     "id": "cyta-soeasy",
@@ -226,6 +238,12 @@
     "networkId": "rogers-ca",
     "name": "Good2Go Mobile Canada",
     "marketId": "ca"
+  },
+  {
+    "id": "google-fi-us",
+    "networkId": "tmobile-us",
+    "name": "Google Fi Wireless",
+    "marketId": "us"
   },
   {
     "id": "gp-prepaid",

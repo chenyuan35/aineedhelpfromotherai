@@ -45,6 +45,15 @@
     "sourceId": "travelask-beeline-sim-safe-incident-2026-09"
   },
   {
+    "id": "evt-beeline-uz-2026-db-c17-20261003",
+    "routeId": "beeline-uz-2026",
+    "type": "lifecycle-foreigner-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current policy establishes a 90-day no-transaction restriction followed by 275 days of office-restorable retention before termination. China roaming and international top-up are current for eligible prepaid lines, while the foreigner-specific Hello product is local-only and cannot be assumed equivalent to the roaming-capable ordinary prepaid route.",
+    "sourceId": "beeline-uz-lifecycle-20261003"
+  },
+  {
     "id": "evt-bhtelecom-ba-2026-db-c5-20260930",
     "routeId": "bhtelecom-ba-2026",
     "type": "retention-rule-resolution",
@@ -133,6 +142,15 @@
     "scope": "route",
     "outcome": "Current official FROG terms retain the number for up to 13 months from activation/last balance renewal, while the current electronic minimum top-up for FROG is EUR13; the legacy EUR10 keep-alive estimate is withdrawn.",
     "sourceId": "frog-general-terms-20260929"
+  },
+  {
+    "id": "evt-cricket-us-2026-db-c17-20261003",
+    "routeId": "cricket-us-2026",
+    "type": "current-plan-lifecycle-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Cricket 12-month Unlimited remains USD300 prepaid; unpaid service is suspended with a 60-day number-recovery boundary. Cricket Passport now includes China, while Wi-Fi Calling requires prior Cricket-network attachment and China-first acquisition/payment remain unresolved.",
+    "sourceId": "cricket-multimonth-20261003"
   },
   {
     "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
@@ -241,6 +259,15 @@
     "scope": "route",
     "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
     "sourceId": "good2go-home-20260929"
+  },
+  {
+    "id": "evt-google-fi-flexible-2026-db-c17-20261003",
+    "routeId": "google-fi-flexible-2026",
+    "type": "activation-roaming-terms-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Flexible remains USD20/month + USD10/GB, China is in the international destination list with free texts, but Fi requires a valid U.S. payments address and at least one day of U.S. activation/use before international service; extended overseas data remains restricted.",
+    "sourceId": "google-fi-international-20261003"
   },
   {
     "id": "evt-gp-five-year-price-correction-20260929",

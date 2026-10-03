@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c17",
+  "reviewNotes": "HOLD. Current Beeline Uzbekistan policy resolves the lifecycle: 90 days without transactions restricts all services; the line can be restored at an office for another 275 days, then the contract terminates. Current ordinary prepaid roaming includes China and official overseas top-up is available. However, the explicitly foreign-passport Hello tariff is local-only and excludes international roaming, while foreign-passport eligibility for the ordinary roaming-capable prepaid product is not established. The minimum qualifying transaction/cost needed to avoid the 90-day restriction is also unresolved.",
+  "market": {
+    "id": "uz",
+    "name": "Uzbekistan",
+    "countryCode": "UZ"
+  },
+  "network": {
+    "id": "beeline-uz",
+    "name": "Beeline Uzbekistan",
+    "marketId": "uz"
+  },
+  "brand": {
+    "id": "beeline-uz-prepaid",
+    "networkId": "beeline-uz",
+    "name": "Beeline Uzbekistan Prepaid",
+    "marketId": "uz"
+  },
+  "route": {
+    "id": "beeline-uz-2026",
+    "marketId": "uz",
+    "networkId": "beeline-uz",
+    "brandId": "beeline-uz-prepaid",
+    "displayName": "Beeline Uzbekistan Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://beeline.uz/",
+    "sourceIds": [
+      "beeline-uz-lifecycle-20261003",
+      "beeline-uz-hello-20261003",
+      "beeline-uz-esim-20261003",
+      "beeline-uz-number-selection-20261003",
+      "beeline-uz-international-topup-20261003",
+      "beeline-uz-roaming-20261003",
+      "beeline-uz-roaming-85-20261003",
+      "beeline-uz-self-register-20261003"
+    ]
+  },
+  "sources": [
+    {
+      "id": "beeline-uz-lifecycle-20261003",
+      "url": "https://beeline.uz/en/events/prekrashcheniye-raboty-platformy-beeline-tv/uvazhaemye-klienty-28042026",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-hello-20261003",
+      "url": "https://beeline.uz/en/welcome-new",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-esim-20261003",
+      "url": "https://beeline.uz/en/products/services/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-number-selection-20261003",
+      "url": "https://beeline.uz/en/products/services/vibor-i-bronirovanie-nomera",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-international-topup-20261003",
+      "url": "https://beeline.uz/en/payments",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-roaming-20261003",
+      "url": "https://beeline.uz/en/zoni-rouminga",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-roaming-85-20261003",
+      "url": "https://beeline.uz/en/events/roaming/obnovlenniye-rouming-paketi",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "beeline-uz-self-register-20261003",
+      "url": "https://beeline.uz/en/sim-karta-s-samostoyatelnoy-registraciey",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "sourceIds": [
+    "beeline-uz-lifecycle-20261003",
+    "beeline-uz-hello-20261003",
+    "beeline-uz-esim-20261003",
+    "beeline-uz-number-selection-20261003",
+    "beeline-uz-international-topup-20261003",
+    "beeline-uz-roaming-20261003",
+    "beeline-uz-roaming-85-20261003",
+    "beeline-uz-self-register-20261003"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-beeline-uz-2026-db-c17-20261003",
+      "routeId": "beeline-uz-2026",
+      "type": "lifecycle-foreigner-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current policy establishes a 90-day no-transaction restriction followed by 275 days of office-restorable retention before termination. China roaming and international top-up are current for eligible prepaid lines, while the foreigner-specific Hello product is local-only and cannot be assumed equivalent to the roaming-capable ordinary prepaid route.",
+      "sourceId": "beeline-uz-lifecycle-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-beeline-uz-2026-current-profile-20261003",
+      "routeId": "beeline-uz-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "beeline-uz-2026",
+        "brandId": "beeline-uz-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Beeline Uzbekistan currently supports new-number selection, eSIM, and self-registration of physical SIMs. A current Hello tariff family is explicitly available to foreign citizens/tourists with up to three lines per foreign passport, but Hello is valid only inside Uzbekistan and does not work in international roaming. The reviewed evidence does not establish that the ordinary roaming-capable prepaid tariff can be newly registered by the same foreign-passport path.",
+        "landedCost": {
+          "currency": "UZS",
+          "providerOrCommunityPrice": 12000,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 12000,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-self-register-physical-sim"
+        },
+        "keep": {
+          "currency": "UZS",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current provider policy says that after 90 days with no transactions all communication services, including incoming/outgoing calls, SMS and data, are restricted. Service can then be restored for the next 275 days by visiting a sales/service office; after that the contract terminates. To avoid office-only recovery, make a qualifying transaction before 90 days, but the exact minimum qualifying action/cost is not established in the reviewed material.",
+          "intervalDays": 90,
+          "state": "current-provider-lifecycle-known-action-floor-unresolved"
+        },
+        "chinaActivation": "Local acquisition is established through Beeline Uzbekistan channels. China-first remote activation for a new foreign customer is not established. The foreigner-specific Hello plan is local-only and explicitly excludes international roaming.",
+        "kyc": "Hello explicitly supports foreign citizens/tourists and limits registration to three numbers per foreign passport. Self-registration requires passport data and identity verification, but the reviewed ordinary-prepaid self-registration page does not prove that foreign passports can use the roaming-capable generic tariff.",
+        "payment": "Beeline officially documents international top-up through Ding from abroad; Ding supports Visa, Mastercard, PayPal, American Express, Alipay and UnionPay. This establishes a remote recharge path once a compatible line exists.",
+        "wifiCalling": "Beeline currently lists VoWiFi as a supported service, but foreigner-plan and abroad setup behavior was not reconciled in this bounded review.",
+        "roamingSms": "Beeline prepaid roaming is current and China is listed among the supported roaming-package countries. Current roaming support describes SMS use abroad and real-time charging; a current explicit China incoming-SMS price was not established. The foreigner-specific Hello tariff cannot be used in international roaming, so this roaming evidence applies to ordinary eligible prepaid lines, not automatically to Hello.",
+        "refund": "not reconciled",
+        "trend": "lifecycle-resolved-foreigner-roaming-product-identity-conflict",
+        "guideEligible": false,
+        "holdReason": "A major product-identity gap remains: the explicitly foreign-passport Hello line is not valid in international roaming, while current China roaming applies to ordinary prepaid service whose foreign-passport new-line eligibility was not established. The minimum qualifying transaction/cost needed to avoid the 90-day inactivity restriction is also unresolved.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://beeline.uz/",
+        "tariffSummary": "No-activity rule: restrict all services after 90 days, office restoration available for the next 275 days, then termination at 365 days. China roaming and overseas top-up exist for eligible ordinary prepaid lines; foreigner-specific Hello is local-only.",
+        "guideSteps": [
+          "Do not merge Hello foreigner/tourist evidence with ordinary roaming-capable prepaid evidence.",
+          "For an ordinary eligible line, keep qualifying activity below the 90-day inactivity threshold; do not rely on the later 275-day office-only recovery window.",
+          "Use official international top-up paths once the line is established, but keep foreigner ordinary-prepaid acquisition and China OTP claims unresolved until directly proven."
+        ],
+        "sourceIds": [
+          "beeline-uz-lifecycle-20261003",
+          "beeline-uz-hello-20261003",
+          "beeline-uz-esim-20261003",
+          "beeline-uz-number-selection-20261003",
+          "beeline-uz-international-topup-20261003",
+          "beeline-uz-roaming-20261003",
+          "beeline-uz-roaming-85-20261003",
+          "beeline-uz-self-register-20261003"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

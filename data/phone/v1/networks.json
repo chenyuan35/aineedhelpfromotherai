@@ -40,6 +40,11 @@
     "marketId": "kz"
   },
   {
+    "id": "beeline-uz",
+    "name": "Beeline Uzbekistan",
+    "marketId": "uz"
+  },
+  {
     "id": "bhtelecom-ba",
     "name": "BH Telecom BA",
     "marketId": "ba"

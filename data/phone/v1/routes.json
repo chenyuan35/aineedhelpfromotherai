@@ -250,6 +250,30 @@
     ]
   },
   {
+    "id": "beeline-uz-2026",
+    "marketId": "uz",
+    "networkId": "beeline-uz",
+    "brandId": "beeline-uz-prepaid",
+    "displayName": "Beeline Uzbekistan Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://beeline.uz/",
+    "sourceIds": [
+      "beeline-uz-esim-20261003",
+      "beeline-uz-hello-20261003",
+      "beeline-uz-international-topup-20261003",
+      "beeline-uz-lifecycle-20261003",
+      "beeline-uz-number-selection-20261003",
+      "beeline-uz-roaming-20261003",
+      "beeline-uz-roaming-85-20261003",
+      "beeline-uz-self-register-20261003"
+    ]
+  },
+  {
     "id": "bhtelecom-ba-2026",
     "marketId": "ba",
     "networkId": "bhtelecom-ba",
@@ -483,6 +507,29 @@
       "frog-online-sim-20260929",
       "frog-privacy-20260929",
       "frog-topup-min-20260330"
+    ]
+  },
+  {
+    "id": "cricket-us-2026",
+    "marketId": "us",
+    "networkId": "att-us",
+    "brandId": "cricket-us",
+    "displayName": "Cricket Wireless Multi-Month",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.cricketwireless.com/plans/phone/multi-month",
+    "sourceIds": [
+      "cricket-autopay-20261003",
+      "cricket-multimonth-20261003",
+      "cricket-passport-countries-20261003",
+      "cricket-passport-terms-20261003",
+      "cricket-payment-due-20261003",
+      "cricket-prepaid-20261003",
+      "cricket-wifi-calling-20261003"
     ]
   },
   {
@@ -745,6 +792,27 @@
     "sourceIds": [
       "good2go-home-20260929",
       "petro-legacy-expiry-history-20120401"
+    ]
+  },
+  {
+    "id": "google-fi-flexible-2026",
+    "marketId": "us",
+    "networkId": "tmobile-us",
+    "brandId": "google-fi-us",
+    "displayName": "Google Fi Flexible",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://fi.google.com/about/plans",
+    "sourceIds": [
+      "google-fi-abroad-policy-20261003",
+      "google-fi-flexible-plan-20261003",
+      "google-fi-international-20261003",
+      "google-fi-payment-options-20261003",
+      "google-fi-signup-us-address-20261003"
     ]
   },
   {
