@@ -11,7 +11,7 @@ Last updated: 2026-10-03
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
 4. Current released Phone state is **135 comparison routes / 148 canonical normalized routes / 86 markets / 145 brands / 114 networks / 565 sources / 3 indexable routes**. DB-C20 adds three post-legacy routes outside the 135-route comparison artifact; the legacy same-ID overlap remains 134 with the intentional Sakura alias gap unchanged.
 5. **DB-C20 is merged to `main` via PR #360 / `c6f5ec5e34797745b1d6738ae8936a02510601c2`.** Vodafone Netherlands Prepaid and One NZ Prepay are ADMIT-BACKSTAGE; CTExcel UK is HOLD with its retention conflicts preserved. CMLink UK and DITO Philippines remain deferred behind the gap audit's explicit evidence/eligibility re-open conditions.
-6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; PR #362 (`86060c1d5e01f460d168005f74b6e3cd0c820478`) resolves the public Linux.do provenance of the existing Oct 1 later-delta through manifest-level `resolvedSource` metadata without mutating the raw snapshot. It is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
+6. **Data-eSIM remains a separate normalized backstage family.** PR #328 established the normalized layer; PR #362 (`86060c1d5e01f460d168005f74b6e3cd0c820478`) resolved the public Linux.do provenance of the existing Oct 1 later-delta; PR #364 (`569849dead592a35178f5fd7f7a13e5f5093aa20`) added one dated multi-user USIMS community-outcome record. Current Data-eSIM state is **59 source-label providers / 73 evidence records / 159 versioned offers**. It is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
@@ -46,14 +46,14 @@ Result:
 - publication boundary: **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**; all three DB-C20 standalone route URLs return HTTP 404.
 - release: PR #360 squash-merged as `c6f5ec5e34797745b1d6738ae8936a02510601c2`; CI #226 and Eval Gate #1069 passed; Vercel Preview passed; production `dpl_8dHPdkJX9RybHe9atEKd7bfNDuFT` is READY.
 
-## JUST COMPLETED — Data-eSIM public-source provenance resolution
+## JUST COMPLETED — Data-eSIM USIMS community-outcome intake
 
-- PR #362 squash-merged as `86060c1d5e01f460d168005f74b6e3cd0c820478`.
-- The existing immutable `community-esim-price-user-supplied-later-delta-2026-10-01.json` remains unchanged with its original unresolved raw source field.
-- Reviewed manifest metadata now resolves that snapshot to Linux.do `ESIM流量漫游合集 4.0`; normalized source/evidence provenance inherits the resolved URL/title.
-- Full `npm run phone:data:check` passed, Eval Gate #1073 passed, Vercel Preview passed and the post-merge Vercel deployment completed successfully.
-- Data-eSIM counts remain **59 source-label providers / 72 evidence records / 159 versioned offers**; no Phone canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed.
-- No additional unnormalized Data-eSIM inbox snapshot was present in `main` during this session. A bounded Kimi-K3 delegated community-search task was submitted but ended `Task cancelled`; no worker result was accepted as evidence.
+- PR #364 squash-merged as `569849dead592a35178f5fd7f7a13e5f5093aa20`.
+- Added one immutable Linux.do-backed USIMS outcome snapshot preserving a dated sequence: free/128Kbps availability, later USD1 registration, 1GB-then-throttle behavior, device/profile outcome divergence, later no-signal/profile-closure reports and an order-creation failure report.
+- Added the `community-outcome-snapshot` role so direct dated operational evidence can normalize without manufacturing a new price offer.
+- Data-eSIM is now **59 source-label providers / 73 evidence records / 159 versioned offers**; Phone canonical/comparison/publication remains unchanged.
+- Fresh-branch remote-clone checks passed `node scripts/test-phone-community-price-intake.mjs` and full `npm run phone:data:check`; Eval Gate #1077 and Vercel Preview passed; post-merge Vercel production deployment succeeded.
+- Qwen/Kimi read-only delegation was attempted but the headless task path failed on active-model/provider configuration; no delegated output was accepted.
 
 ## NEXT — Trigger-gated Phone decision read
 
