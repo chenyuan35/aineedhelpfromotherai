@@ -9,8 +9,8 @@ Last updated: 2026-10-03
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **Frontend baseline stays stable.** PR #342 remains the released Phone-first homepage/Phone hub identity; do not add another public design layer without measured behavior or a reproduced defect.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current released Phone state is **135 comparison routes / 145 canonical normalized routes / 134 comparison↔canonical route-ID overlaps / 1 intentional same-product alias gap / 3 indexable routes**.
-5. The post-legacy coverage-gap audit is **merged to `main` via PR #358 / `ecec30762a819aea5aba311a6dfd6c6c78921b7d`**. It selected exactly three evidence-backed candidates for DB-C20: Vodafone Netherlands Prepaid, CTExcel UK and One NZ Prepay. CMLink UK and DITO Philippines are deferred behind explicit evidence/eligibility re-open conditions.
+4. Current released Phone state is **135 comparison routes / 148 canonical normalized routes / 86 markets / 145 brands / 114 networks / 565 sources / 3 indexable routes**. DB-C20 adds three post-legacy routes outside the 135-route comparison artifact; the legacy same-ID overlap remains 134 with the intentional Sakura alias gap unchanged.
+5. **DB-C20 is merged to `main` via PR #360 / `c6f5ec5e34797745b1d6738ae8936a02510601c2`.** Vodafone Netherlands Prepaid and One NZ Prepay are ADMIT-BACKSTAGE; CTExcel UK is HOLD with its retention conflicts preserved. CMLink UK and DITO Philippines remain deferred behind the gap audit's explicit evidence/eligibility re-open conditions.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
@@ -35,30 +35,27 @@ Audit result:
 
 Full evidence and re-open triggers: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
 
-## NEXT — Backend database coverage DB-C20
+## JUST COMPLETED — Backend database coverage DB-C20
 
-Bounded batch:
+Result:
 
-1. `vodafone-nl-prepaid-2026`
-2. `ctexcel-uk-2026`
-3. `one-nz-prepay-2026`
+- `vodafone-nl-prepaid-2026` — **ADMIT-BACKSTAGE**. Current provider lifecycle supports one paid use or top-up every six months plus a three-month recovery window; remote acquisition/payment and China-specific OTP remain evidence-scoped.
+- `ctexcel-uk-2026` — **HOLD**. Current provider retention product exists, but eligibility, current price and post-expiry mechanics remain insufficiently reconciled; no universal 90-day rule or annual keep cost is asserted.
+- `one-nz-prepay-2026` — **ADMIT-BACKSTAGE**. Current 360-day top-up lifecycle and NZD10 logged-in web/app minimum are established; NZ-first activation and non-guaranteed third-party OTP are preserved.
+- post-release canonical: **148 routes / 86 markets / 145 brands / 114 networks / 565 sources**;
+- publication boundary: **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**; all three DB-C20 standalone route URLs return HTTP 404.
+- release: PR #360 squash-merged as `c6f5ec5e34797745b1d6738ae8936a02510601c2`; CI #226 and Eval Gate #1069 passed; Vercel Preview passed; production `dpl_8dHPdkJX9RybHe9atEKd7bfNDuFT` is READY.
 
-Definition of done:
+## NEXT — Trigger-gated Phone decision read
 
-- independently reconcile current product identity, acquisition/activation, lifecycle/keep action and cost, roaming/China receive-SMS state, payment/KYC constraints, incident/recovery evidence and provenance for all three routes;
-- preserve current community evidence and conflicts rather than forcing a recommendation;
-- sample-audit the batch before acceptance;
-- assign `ADMIT-BACKSTAGE`, `HOLD`, or `REJECT` per route;
-- if accepted, normalize only through the reviewed canonical importer/data path and run the full Phone data/integrity/publication-boundary checks;
-- preserve **135 comparison routes / 3 explicit indexable routes / current sitemap policy** unless an independent publication gate opens;
-- use a fresh branch/PR; no direct `main` writes.
+No DB-C21 batch is selected. Do not create one from provider-directory enumeration or from the two deferred routes without new evidence.
 
-Stop conditions:
+Next coordinator task becomes eligible when either:
 
-- current evidence disproves the route identity or reveals it is a duplicate/rebrand of an existing canonical route;
-- a provider/account path requires payment, account-critical changes or unavailable authorization;
-- a material lifecycle/acquisition contradiction cannot be represented without guessing;
-- publication/indexability would be required to call the backend batch successful — it is not required and must remain separate.
+- settled Phone Search Console impressions reach **20**, or finalized data reaches **2026-10-05** — then re-read first-party GSC data and make the next KEEP / ADJUST / NARROW decision for the existing Phone surface; or
+- fresh independent operational evidence resolves the documented CMLink UK / DITO Philippines blocker or identifies a genuinely distinct low-cost long-term real-number route — then run a bounded reviewed candidate audit before defining any DB-C21 batch.
+
+Until one trigger occurs, keep production stable and continue the already-authorized backstage community evidence lane.
 
 ## PARALLEL — Community Data-eSIM evidence intake
 
