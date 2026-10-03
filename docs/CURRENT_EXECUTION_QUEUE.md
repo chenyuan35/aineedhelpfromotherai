@@ -34,10 +34,12 @@ PR #370 squash-merged as `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`.
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
-1. **Search Console gate:** re-read first-party Phone data when settled Phone impressions reach **20** or finalized data reaches **2026-10-05**, whichever comes first.
+1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
 2. **Evidence maintenance:** continue append-only community/provider evidence acquisition for existing Phone routes and separate Data-eSIM.
 3. **Residual route review only on evidence:** LuckySIM Hong Kong, Saily U.S. phone number, and China Telecom Macau / Macau blue-card remain outside canonical until their blockers clear.
 4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
+
+Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
 
 Delegated Qwen/Kimi work remains `RESEARCH_CANDIDATE` until coordinator review. The PR #370 read-only Kimi audit confirmed the 156↔135 disconnect and existing lazy-detail infrastructure; it did not change canonical/publication state.
 
