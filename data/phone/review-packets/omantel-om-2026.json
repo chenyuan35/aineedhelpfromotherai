@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c18",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "ADMIT-BACKSTAGE. Current Omantel standard agreement resolves Hayyak lifecycle: prepaid validity is 90 days from first call or recharge/balance transfer, followed by another 90-day number holding period; recharge during grace starts a new validity period. Omantel supports Hayyak eSIM with passport/ID/residence-card upload, online/app recharge/payment, and free incoming SMS while roaming. The currently listed e-voucher floor is OMR7; exact cheaper qualifying balance-transfer mechanics and China-specific partner/OTP reliability remain unresolved.",
+  "market": {
+    "id": "om",
+    "name": "Oman",
+    "countryCode": "OM"
+  },
+  "network": {
+    "id": "omantel-om",
+    "name": "Omantel",
+    "marketId": "om"
+  },
+  "brand": {
+    "id": "omantel-prepaid",
+    "networkId": "omantel-om",
+    "name": "Omantel Hayyak",
+    "marketId": "om"
+  },
+  "route": {
+    "id": "omantel-om-2026",
+    "marketId": "om",
+    "networkId": "omantel-om",
+    "brandId": "omantel-prepaid",
+    "displayName": "Omantel Hayyak Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.omantel.om/en/personal/mobile-prepaid",
+    "sourceIds": [
+      "omantel-hayyak-agreement-20261003",
+      "omantel-hayyak-esim-20261003",
+      "omantel-hayyak-recharge-20261003",
+      "omantel-hayyak-prepaid-20261003",
+      "omantel-roaming-abroad-20261003"
+    ]
+  },
+  "sources": [
+    {
+      "id": "omantel-hayyak-agreement-20261003",
+      "url": "https://webportal.omantel.om/about-us/regulatory/standard-customer-agreement",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "omantel-hayyak-esim-20261003",
+      "url": "https://webportal.omantel.om/en/personal/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "omantel-hayyak-recharge-20261003",
+      "url": "https://www.omantel.om/en/personal/mobile-prepaid/plan-hayyak/add-on-hayyak-recharge",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "omantel-hayyak-prepaid-20261003",
+      "url": "https://www.omantel.om/en/personal/mobile-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "omantel-roaming-abroad-20261003",
+      "url": "https://portal.omantel.om/en/personal/roaming/abroad",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "sourceIds": [
+    "omantel-hayyak-agreement-20261003",
+    "omantel-hayyak-esim-20261003",
+    "omantel-hayyak-recharge-20261003",
+    "omantel-hayyak-prepaid-20261003",
+    "omantel-roaming-abroad-20261003"
+  ],
+  "events": [
+    {
+      "id": "evt-omantel-om-2026-db-c18-20261003",
+      "routeId": "omantel-om-2026",
+      "type": "lifecycle-acquisition-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Omantel agreement establishes 90-day prepaid validity plus a 90-day number-holding period; current Hayyak supports passport eSIM acquisition, card/app recharge and free incoming SMS while roaming.",
+      "sourceId": "omantel-hayyak-agreement-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-omantel-om-2026-current-profile-20261003",
+      "routeId": "omantel-om-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c18-reviewed-2026-10-03",
+      "data": {
+        "id": "omantel-om-2026",
+        "brandId": "omantel-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Omantel currently sells Hayyak prepaid and supports eSIM for Hayyak. The eSIM flow accepts ID, passport or residence card plus a personal photo/signature and payment, establishing a current passport-capable digital acquisition flow. Tourist SIM is a separate local-only product and is not substituted for ordinary Hayyak.",
+        "landedCost": {
+          "currency": "OMR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-product-price-unresolved"
+        },
+        "keep": {
+          "currency": "OMR",
+          "observedActionCost": 7,
+          "yearCostOriginal": 28,
+          "yearCostCny": null,
+          "action": "Omantel standard terms give prepaid 90 days of validity from the first call or any recharge/balance transfer, then another 90-day number holding period. Recharging during grace starts a new validity period. The current listed e-voucher denominations start at OMR7, so OMR7 per 90-day active cycle is the conservative documented recharge floor; cheaper balance-transfer possibilities are not modeled.",
+          "intervalDays": 90,
+          "state": "current-provider-lifecycle-conservative-voucher-floor"
+        },
+        "chinaActivation": "Digital Hayyak eSIM acquisition supports passport upload, but this review does not prove China-first activation or remote fulfillment from mainland China.",
+        "kyc": "Omantel eSIM onboarding accepts ID, passport or residence card plus a personal photo and signature.",
+        "payment": "Omantel prepaid supports online/app recharge and says credit/debit cards are accepted. Exact foreign-card execution remains unverified.",
+        "wifiCalling": "Current new Hayyak plans support local VoWiFi; abroad setup/use was not reconciled.",
+        "roamingSms": "Omantel states incoming SMS while roaming is free of charge and Hayyak roaming is available internationally. China-specific roaming partner availability and third-party OTP reliability remain unverified in this bounded review.",
+        "refund": "not reconciled",
+        "trend": "lifecycle-and-passport-esim-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.omantel.om/en/personal/mobile-prepaid",
+        "tariffSummary": "90-day active prepaid validity from call/recharge/balance transfer, then 90-day number holding; current listed e-vouchers start at OMR7. Passport eSIM and free incoming roaming SMS are documented.",
+        "guideSteps": [
+          "Acquire ordinary Hayyak/eSIM through the current Omantel flow; do not substitute the 30-day local-only Tourist SIM for the long-term route.",
+          "Recharge within 90 days for a clean active-state cycle; the later 90-day holding period is recovery, not the preferred keep-alive target.",
+          "Treat free incoming roaming SMS as carrier capability, not proof of China-specific OTP delivery."
+        ],
+        "sourceIds": [
+          "omantel-hayyak-agreement-20261003",
+          "omantel-hayyak-esim-20261003",
+          "omantel-hayyak-recharge-20261003",
+          "omantel-hayyak-prepaid-20261003",
+          "omantel-roaming-abroad-20261003"
+        ]
+      }
+    }
+  ]
+}

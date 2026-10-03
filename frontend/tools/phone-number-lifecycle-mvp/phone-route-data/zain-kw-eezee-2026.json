@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "zain-kw-eezee-2026",
+    "marketId": "kw",
+    "networkId": "zain-kw",
+    "brandId": "zain-eezee",
+    "displayName": "Zain Kuwait eeZee",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+    "sourceIds": [
+      "zain-kw-eezee-plans-20261003",
+      "zain-kw-esim-eligibility-20261003",
+      "zain-kw-faq-20261003",
+      "zain-kw-roaming-20261003"
+    ]
+  },
+  "market": {
+    "id": "kw",
+    "name": "Kuwait",
+    "countryCode": "KW"
+  },
+  "network": {
+    "id": "zain-kw",
+    "name": "Zain Kuwait",
+    "marketId": "kw"
+  },
+  "brand": {
+    "id": "zain-eezee",
+    "networkId": "zain-kw",
+    "name": "Zain eeZee",
+    "marketId": "kw"
+  },
+  "metrics": {
+    "routeId": "zain-kw-eezee-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "KWD",
+    "acquisitionCostOriginal": 5,
+    "acquisitionCostCny": null,
+    "keepCurrency": "KWD",
+    "keepYearCostOriginal": 13,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "zain-kw-eezee-plans-20261003",
+      "url": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "zain-kw-esim-eligibility-20261003",
+      "url": "https://www.kw.zain.com/en/shop/search?q=e-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "zain-kw-faq-20261003",
+      "url": "https://www.kw.zain.com/en/faq",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "zain-kw-roaming-20261003",
+      "url": "https://www.kw.zain.com/en/shop/roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-zain-kw-eezee-2026-db-c18-20261003",
+      "routeId": "zain-kw-eezee-2026",
+      "type": "lifecycle-acquisition-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current eeZee supports a KD13 365-day validity extension, KD5 new prepaid voice line, expatriate passport/Civil-ID purchase, eSIM, remote recharge and prepaid voice/SMS roaming by default; China-specific OTP remains unverified.",
+      "sourceId": "zain-kw-eezee-plans-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-zain-kw-eezee-2026-current-profile-20261003",
+      "routeId": "zain-kw-eezee-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c18-reviewed-2026-10-03",
+      "data": {
+        "id": "zain-kw-eezee-2026",
+        "brandId": "zain-eezee",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Zain Kuwait eeZee voice prepaid is sold online/app and in branches. Zain lists a KD5 new voice prepaid line and supports eSIM. Current Zain search/help material says Kuwaiti citizens or expatriates age 18+ with valid Civil ID or passport may buy a new prepaid eeZee SIM.",
+        "landedCost": {
+          "currency": "KWD",
+          "providerOrCommunityPrice": 5,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 5,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-new-voice-prepaid-price"
+        },
+        "keep": {
+          "currency": "KWD",
+          "observedActionCost": 13,
+          "yearCostOriginal": 13,
+          "yearCostCny": null,
+          "action": "Zain currently lists an eeZee validity add-on of 365 days for KD13 (V4). Buy it while the line has sufficient credit/validity; Zain notes that an already-expired line must first recharge credit before purchasing extra validity.",
+          "intervalDays": 365,
+          "state": "current-provider-validity-addon"
+        },
+        "chinaActivation": "New-line activation requires inserting the SIM and making a local call or dialing *142#. This review does not treat China-first activation as proven.",
+        "kyc": "Current Zain eligibility material says Kuwaiti citizens or expatriates age 18+ with valid Civil ID or passport can buy a new prepaid eeZee SIM.",
+        "payment": "Zain supports recharge through the app, website, MyZain, zBot and Travel eeZee while abroad. Exact foreign-card issuer acceptance remains unverified.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Zain states voice and SMS roaming are enabled by default on prepaid SIMs and prepaid lines can be recharged while abroad. The roaming catalogue is current, but China-specific partner/rate and third-party OTP delivery were not established in this bounded review.",
+        "refund": "not reconciled",
+        "trend": "current-product-validity-addon-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+        "tariffSummary": "KD5 new voice prepaid line; KD13 adds 365 days of eeZee validity. eSIM and expatriate passport/Civil-ID purchase are documented; prepaid voice/SMS roaming is enabled by default.",
+        "guideSteps": [
+          "Acquire eeZee through Zain online/app/branch and complete the required identity authentication.",
+          "For low-frequency retention, use the current KD13/365-day validity add-on before expiry; if already expired, recharge first as Zain instructs.",
+          "Treat default prepaid roaming as carrier-level evidence only; do not claim China OTP reliability until independently reproduced."
+        ],
+        "sourceIds": [
+          "zain-kw-eezee-plans-20261003",
+          "zain-kw-faq-20261003",
+          "zain-kw-esim-eligibility-20261003",
+          "zain-kw-roaming-20261003"
+        ]
+      }
+    }
+  ]
+}

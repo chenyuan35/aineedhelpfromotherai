@@ -482,6 +482,38 @@
       }
     },
     {
+      "id": "btc-bs-2026",
+      "displayName": "BTC Bahamas Prepaid",
+      "marketId": "bs",
+      "marketName": "Bahamas",
+      "countryCode": "BS",
+      "networkName": "BTC Bahamas",
+      "brandName": "BTC Bahamas Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "btc-bs-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "BSD",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "BSD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": null
+      }
+    },
+    {
       "id": "calendar-rakuten-prepaid-jp-2026",
       "displayName": "CALENDAR Rakuten Prepaid",
       "marketId": "jp",
@@ -2589,6 +2621,38 @@
       }
     },
     {
+      "id": "omantel-om-2026",
+      "displayName": "Omantel Hayyak Prepaid",
+      "marketId": "om",
+      "marketName": "Oman",
+      "countryCode": "OM",
+      "networkName": "Omantel",
+      "brandName": "Omantel Hayyak",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "omantel-om-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "OMR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "OMR",
+        "keepYearCostOriginal": 28,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 90
+      }
+    },
+    {
       "id": "one-me-2026",
       "displayName": "One Montenegro Tourist",
       "marketId": "me",
@@ -4538,6 +4602,38 @@
         "keepYearCostOriginal": 280.77,
         "keepYearCostCny": null,
         "keepIntervalDays": 390
+      }
+    },
+    {
+      "id": "zain-kw-eezee-2026",
+      "displayName": "Zain Kuwait eeZee",
+      "marketId": "kw",
+      "marketName": "Kuwait",
+      "countryCode": "KW",
+      "networkName": "Zain Kuwait",
+      "brandName": "Zain eeZee",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "zain-kw-eezee-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "KWD",
+        "acquisitionCostOriginal": 5,
+        "acquisitionCostCny": null,
+        "keepCurrency": "KWD",
+        "keepYearCostOriginal": 13,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     }
   ]

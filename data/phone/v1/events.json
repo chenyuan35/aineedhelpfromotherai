@@ -63,6 +63,15 @@
     "sourceId": "bh-ultra-topup-20260930"
   },
   {
+    "id": "evt-btc-bs-2026-db-c18-20261003",
+    "routeId": "btc-bs-2026",
+    "type": "product-current-lifecycle-unresolved",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "BTC prepaid remains current and legacy prepaid plans were replaced in 2025, but current number lifecycle, minimum keep-alive action, foreigner acquisition and China-specific prepaid roaming remain unresolved.",
+    "sourceId": "btc-bs-home-prepaid-20261003"
+  },
+  {
     "id": "evt-calendar-rakuten-prepaid-jp-2026-db-c3-review-20260929",
     "routeId": "calendar-rakuten-prepaid-jp-2026",
     "type": "cost-and-lifecycle-correction",
@@ -531,6 +540,15 @@
     "sourceId": "official-o2cz-prepaid-current-2026-09-29"
   },
   {
+    "id": "evt-omantel-om-2026-db-c18-20261003",
+    "routeId": "omantel-om-2026",
+    "type": "lifecycle-acquisition-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current Omantel agreement establishes 90-day prepaid validity plus a 90-day number-holding period; current Hayyak supports passport eSIM acquisition, card/app recharge and free incoming SMS while roaming.",
+    "sourceId": "omantel-hayyak-agreement-20261003"
+  },
+  {
     "id": "evt-one-me-2026-db-c5-20260930",
     "routeId": "one-me-2026",
     "type": "retention-rule-resolution",
@@ -826,5 +844,14 @@
     "scope": "route",
     "outcome": "Yettel explicitly says top-up sent from another Yettel prepaid/postpaid number does not prolong card expiry. Use a standard top-up channel for lifecycle renewal.",
     "sourceId": "official-yettel-rs-topup-validity-2026-09-29"
+  },
+  {
+    "id": "evt-zain-kw-eezee-2026-db-c18-20261003",
+    "routeId": "zain-kw-eezee-2026",
+    "type": "lifecycle-acquisition-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current eeZee supports a KD13 365-day validity extension, KD5 new prepaid voice line, expatriate passport/Civil-ID purchase, eSIM, remote recharge and prepaid voice/SMS roaming by default; China-specific OTP remains unverified.",
+    "sourceId": "zain-kw-eezee-plans-20261003"
   }
 ]

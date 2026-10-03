@@ -55,6 +55,11 @@
     "marketId": "lt"
   },
   {
+    "id": "btc-bs",
+    "name": "BTC Bahamas",
+    "marketId": "bs"
+  },
+  {
     "id": "celcomdigi-my",
     "name": "CelcomDigi Malaysia",
     "marketId": "my"
@@ -283,6 +288,11 @@
     "id": "o2-uk",
     "name": "O2 UK",
     "marketId": "gb"
+  },
+  {
+    "id": "omantel-om",
+    "name": "Omantel",
+    "marketId": "om"
   },
   {
     "id": "one-me",
@@ -533,5 +543,10 @@
     "id": "yettel-rs",
     "name": "Yettel Serbia",
     "marketId": "rs"
+  },
+  {
+    "id": "zain-kw",
+    "name": "Zain Kuwait",
+    "marketId": "kw"
   }
 ]

@@ -138,6 +138,24 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "btc-bs-business-roaming-20261003",
+    "url": "https://www.btcbahamas.com/business/enterprise/mobile-integrated-solutions",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "btc-bs-home-prepaid-20261003",
+    "url": "https://www.btcbahamas.com/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "btc-bs-prepaid-plans-20261003",
+    "url": "https://www.btcbahamas.com/mobile/plans/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "calendar-extension-20260929",
     "url": "https://www.jpsimshop.com/view/item/000000000110?category_page_id=ct19",
     "type": "provider-official",
@@ -2220,6 +2238,36 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "omantel-hayyak-agreement-20261003",
+    "url": "https://webportal.omantel.om/about-us/regulatory/standard-customer-agreement",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "omantel-hayyak-esim-20261003",
+    "url": "https://webportal.omantel.om/en/personal/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "omantel-hayyak-prepaid-20261003",
+    "url": "https://www.omantel.om/en/personal/mobile-prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "omantel-hayyak-recharge-20261003",
+    "url": "https://www.omantel.om/en/personal/mobile-prepaid/plan-hayyak/add-on-hayyak-recharge",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "omantel-roaming-abroad-20261003",
+    "url": "https://portal.omantel.om/en/personal/roaming/abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "one-me-privacy-20260930",
     "url": "https://1.me/cg/o-kompaniji/terms-and-conditions/customer-data-privacy/how-we-process-personal-data",
     "type": "provider-official",
@@ -3148,5 +3196,29 @@
     "url": "https://www.yettel.bg/bg/uslugi/predplateni-uslugi/prezarezhdane-s-vaucheri",
     "type": "provider-official",
     "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "zain-kw-eezee-plans-20261003",
+    "url": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "zain-kw-esim-eligibility-20261003",
+    "url": "https://www.kw.zain.com/en/shop/search?q=e-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "zain-kw-faq-20261003",
+    "url": "https://www.kw.zain.com/en/faq",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "zain-kw-roaming-20261003",
+    "url": "https://www.kw.zain.com/en/shop/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   }
 ]
