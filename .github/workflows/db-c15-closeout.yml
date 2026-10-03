@@ -1,0 +1,58 @@
+name: DB-C15 closeout docs
+
+on:
+  push:
+    branches:
+      - docs/db-c15-closeout-20261003
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/db-c15-closeout-20261003
+          fetch-depth: 0
+      - name: Update Master Plan and coverage ledger
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p=Path('docs/MASTER_PLAN.md')
+          s=p.read_text()
+          old='staged reviewed migrations plus backend coverage through DB-C14 have since raised canonical v1 to 131 routes / 79 markets / 128 brands / 104 networks / 475 sources with 120 route-ID overlaps. Fifteen comparison route IDs remain legacy-only, including the known Sakura same-product alias blocker;'
+          new='staged reviewed migrations plus backend coverage through DB-C15 have since raised canonical v1 to 134 routes / 80 markets / 131 brands / 105 networks / 491 sources with 123 route-ID overlaps. Twelve comparison route IDs remain legacy-only, including the known Sakura same-product alias blocker;'
+          assert old in s
+          s=s.replace(old,new)
+          needle='49. **DONE — backend database coverage DB-C14.** `ooredoo-hala-qa-2026` is ADMIT-BACKSTAGE; `claro-pre-cl-2026` and `claro-pre-co-2026` are HOLD with unresolved foreign-user/number-lifecycle/OTP constraints preserved rather than guessed away. PR #346 squash-merged as `cc7a2e8c79e477481118123bbea21734fddc417e` after CI #213, Eval Gate #1040 and Vercel Preview passed; production `dpl_CbrVsm9tunqZhduPZu2Dd7kP76AA` is READY and live apex/Phone canonical/sitemap return HTTP 200. Canonical coverage is now 131 routes / 79 markets / 128 brands / 104 networks / 475 sources, with 120 comparison↔canonical route-ID overlaps and 15 comparison route IDs still legacy-only. Next bounded DB-C15 batch is `movistar-pre-pe-2026`, `talkmobile-uk-payg-closed-2026`, `smarty-uk-2026`; keep the Sakura same-product alias blocker excluded and preserve the 3-route publication boundary.'
+          assert needle in s
+          addition='50. **DONE — backend database coverage DB-C15.** `smarty-uk-2026` is ADMIT-BACKSTAGE after current first-party evidence corrected the old subscription-only assumption: GBP6 entry plan, 220-day inactive-account closure threshold, paused incoming calls/texts, eSIM, no credit search, multiple payment methods and free incoming SMS in mainland China are documented, with the 60-consecutive-days-abroad suspension caveat preserved. `movistar-pre-pe-2026` is HOLD because prepaid-specific overseas SMS/China/OTP and reliable foreign-card execution remain unresolved despite current S/5 recharge and seven-month no-recharge evidence. `talkmobile-uk-payg-closed-2026` remains HOLD / negative knowledge because PAYG closed in 2017 and current SIM-only subscriptions are a different product. PR #348 squash-merged as `6bd972ffa7c40642de29a4a9a996736601080c5a`; CI #215, Eval Gate #1044 and Vercel Preview passed; production `dpl_2R2BiBiCEdRKSaBEb4vVRYH96YAH` is READY. Canonical coverage is now 134 routes / 80 markets / 131 brands / 105 networks / 491 sources, with 123 comparison overlaps and 12 legacy-only comparison route IDs. Next bounded DB-C16 batch is `mint-mobile-us-2026`, `tmobile-prepaid-connect-2026`, `visible-25-2026`; keep Sakura excluded and preserve the 3-route publication boundary.'
+          s=s.replace(needle,needle+'\n'+addition)
+          s=s.replace('50. **BACKLOG / separate review — second observer/source-change role.**','51. **BACKLOG / separate review — second observer/source-change role.**')
+          s=s.replace('51. **ONGOING — Relay data accrual.**','52. **ONGOING — Relay data accrual.**')
+          s=s.replace('52. **WAIT — TikTok advanced Direct Post review.**','53. **WAIT — TikTok advanced Direct Post review.**')
+          p.write_text(s)
+
+          p=Path('docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md')
+          s=p.read_text()
+          s=s.replace('## Current verified state after DB-C14','## Current verified state after DB-C15')
+          s=s.replace('- canonical normalized database: **131 routes / 79 markets / 128 brands / 104 networks / 475 sources**;\n- comparison↔canonical route-ID overlap: **120**;\n- comparison routes still legacy-only: **15**;', '- canonical normalized database: **134 routes / 80 markets / 131 brands / 105 networks / 491 sources**;\n- comparison↔canonical route-ID overlap: **123**;\n- comparison routes still legacy-only: **12**;')
+          if '## DB-C15 — completed 2026-10-03' not in s:
+              s=s.rstrip()+'''\n\n## DB-C15 — completed 2026-10-03\n\nThe bounded Peru/UK batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.\n\n- `smarty-uk-2026` — ADMIT-BACKSTAGE. Current first-party SMARTY material establishes a GBP6 rolling voice entry plan, eSIM, no credit search, supported payment methods, paused incoming calls/texts, a 220-day inactive-account closure threshold and free incoming SMS in mainland China. Paused-plus-roaming reception is not explicitly guaranteed, and the 60-consecutive-days-abroad fair-use rule can trigger full-service suspension.\n- `movistar-pre-pe-2026` — HOLD. Current Movistar Peru evidence establishes a live prepaid product, S/5 recharge floor, a seven-month no-recharge cancellation threshold and current foreign-national in-person biometric requirements. Current prepaid-specific overseas incoming SMS, mainland-China coverage, OTP reliability and reliable foreign-card execution remain unresolved.\n- `talkmobile-uk-payg-closed-2026` — HOLD / negative knowledge. Talkmobile PAYG closed on 31 August 2017. Current Talkmobile SIM-only subscriptions are a distinct product and are not silently substituted into the dead PAYG route.\n\nPost-DB-C15 state: **134 canonical routes / 80 markets / 131 brands / 105 networks / 491 sources / 123 comparison-overlap route IDs / 12 comparison route IDs still legacy-only / 3 explicit indexable routes**. Review-packet checks, canonical data build/QC, `npm run phone:data:check`, `npm run verify`, full frontend build and DB-C15 regression passed. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.\n\nRelease: PR #348 squash-merged as `6bd972ffa7c40642de29a4a9a996736601080c5a`; CI #215, Eval Gate #1044 and Vercel Preview passed. Production deployment `dpl_2R2BiBiCEdRKSaBEb4vVRYH96YAH` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C15 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.\n\nDB-C16 next bounded batch: `mint-mobile-us-2026`, `tmobile-prepaid-connect-2026`, `visible-25-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.\n'''
+          p.write_text(s.rstrip()+'\n')
+          PY
+          git diff --check
+      - name: Commit docs and self-delete workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/db-c15-closeout.yml
+          git add docs/MASTER_PLAN.md docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md
+          git commit -m 'docs: close out DB-C15 and advance DB-C16'
+          git push origin HEAD:docs/db-c15-closeout-20261003
