@@ -16,6 +16,7 @@ Last updated: 2026-10-04
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Coverage audit: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
+Saily residual review: `docs/PHONE_SAILY_US_NUMBER_REVIEW_2026-10-04.md`.
 
 ## JUST COMPLETED — Canonical finder integration
 
@@ -36,8 +37,9 @@ The next coordinator action is measurement or evidence maintenance, whichever tr
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
 2. **Evidence maintenance:** continue append-only community/provider evidence acquisition for existing Phone routes and separate Data-eSIM.
-3. **Residual route review only on evidence:** LuckySIM Hong Kong, Saily U.S. phone number, and China Telecom Macau / Macau blue-card remain outside canonical until their blockers clear.
-4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
+3. **Saily residual candidate:** the 2026-10-04 bounded review clears the classification blocker. Current evidence supports a distinct long-term VoIP/second-line real-number route, not `real-mobile`, not temporary SMS, and not pure Data-eSIM. **Next independent data task:** admit Saily U.S. phone number backstage as HOLD only, with explicit VoIP class, current US$1.99/month reservation economics, KYC/porting constraints, mixed OTP compatibility, and preserved August 2026 failure evidence. No public/indexability change.
+4. **Other residual routes:** LuckySIM Hong Kong and China Telecom Macau / Macau blue-card remain outside canonical until their existing lifecycle/renewal blockers clear.
+5. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 
 Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
 
@@ -51,7 +53,7 @@ Delegated Qwen/Kimi work remains `RESEARCH_CANDIDATE` until coordinator review. 
 
 ## Do not do next
 
-- do not create DB-C24 merely to increase counts;
+- do not create DB-C24 merely to increase counts; the queued Saily one-route task exists only because a documented residual blocker cleared;
 - do not equate 98.1% with all global carrier products;
 - do not automatically turn canonical rows into SEO pages;
 - do not auto-rank HOLD/needs-reconciliation as recommendations;
