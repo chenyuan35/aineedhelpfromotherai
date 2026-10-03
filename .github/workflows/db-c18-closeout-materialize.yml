@@ -1,0 +1,41 @@
+name: DB-C18 docs closeout materialize
+
+on:
+  push:
+    branches: ["docs/db-c18-closeout-20261003"]
+    paths:
+      - ".github/workflows/db-c18-closeout-materialize.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/db-c18-closeout-20261003
+          fetch-depth: 0
+      - name: Apply exact reviewed docs patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .tmp/db-c18-closeout.patch.gz.b64 | gzip -d > /tmp/db-c18-closeout.patch
+          echo "cca50a40b101a03486d4b55fda9632d207b57bae80ad234ff4e41908ac52fd93  /tmp/db-c18-closeout.patch" | sha256sum -c -
+          git apply --check /tmp/db-c18-closeout.patch
+          git apply /tmp/db-c18-closeout.patch
+          git diff --check
+      - name: Commit docs branch state and clean bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .tmp/db-c18-closeout.patch.gz.b64 .github/workflows/db-c18-closeout-materialize.yml
+          rmdir .tmp 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "docs: close out DB-C18 and advance DB-C19"
+          git push origin HEAD:docs/db-c18-closeout-20261003
+          git push origin --delete should-not-create || true
