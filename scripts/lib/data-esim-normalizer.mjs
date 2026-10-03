@@ -219,6 +219,11 @@ export const loadDataEsimCatalog = ({ root = repoRoot } = {}) => {
       continue;
     }
 
+    if (entry.role === 'community-outcome-snapshot') {
+      doc.records.forEach((raw, index) => pushEvidence(raw, raw.providerLabel, 'community-outcome', String(index + 1)));
+      continue;
+    }
+
     throw new Error(`Unsupported Data-eSIM source role: ${entry.role}`);
   }
 
