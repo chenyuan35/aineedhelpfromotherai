@@ -122,7 +122,7 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
   <div class="pr-tools">
     <input class="pr-search" id="route-search" type="search" autocomplete="off" placeholder="Search country, carrier or route" aria-label="Search phone routes">
     <div class="pr-filter"><label for="country-filter">Country / region</label><select id="country-filter"><option value="all">All countries</option></select></div>
-    <select class="pr-sort" id="dir-sort" aria-label="Sort routes"><option value="recommended">Sort: recommended</option><option value="start-cost">Lowest start cost</option><option value="keep-cost">Lowest keep-alive / year</option><option value="fresh">Recently checked</option></select>
+    <select class="pr-sort" id="dir-sort" aria-label="Sort routes"><option value="evidence">Sort: evidence / freshness</option><option value="start-cost">Lowest start cost</option><option value="keep-cost">Lowest keep-alive / year</option><option value="fresh">Recently checked</option></select>
     <button type="button" class="pr-details-toggle" id="details-toggle" aria-pressed="false">All details</button>
     <span class="pr-count" id="route-count" aria-live="polite"></span>
   </div>
@@ -144,23 +144,24 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
 <div class="pr-compare-overlay" id="pr-compare-overlay" role="dialog" aria-modal="true" aria-label="Compare routes"></div>
 <footer class="site-footer"><div class="shell footer-grid"><div><strong>Everyday Tools</strong><p>Fast decision tools for real user problems.</p></div><nav aria-label="Footer"><a href="/tools/">All tools</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
 <script>
-let catalog,tutorialInsights,auditRules,routeCapabilities,purchaseIntelligence,retentionIntelligence,radarView,comparisonIndex,globalDirectory;
+let catalog,tutorialInsights,auditRules,routeCapabilities,purchaseIntelligence,retentionIntelligence,radarView,canonicalIndex,globalDirectory;
+const canonicalDetailCache=new Map();
 const routeList=document.getElementById('route-list');
 const countryFilter=document.getElementById('country-filter');
 const routeSearch=document.getElementById('route-search');
 const showMore=document.getElementById('show-more');
 const routeCount=document.getElementById('route-count');
 const keepFootnote=document.getElementById('keep-footnote');
-const state={family:'long-term',showAll:false,country:'all',query:'',dirSort:'recommended',details:false,pins:new Set()};
+const state={family:'long-term',showAll:false,country:'all',query:'',dirSort:'evidence',details:false,pins:new Set()};
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
 function trackPhone(name,params={}){try{if(typeof globalThis.gtag==='function')globalThis.gtag('event',name,{source_path:'/tools/phone-number-survival-guide/',...params})}catch{}}
 
 async function init(){
-  const files=['catalog.json','tutorial-insights.json','audit-rules.json','route-capabilities.json','purchase-intelligence.json','retention-intelligence.json','radar-view.json','comparison-route-index.json'];
+  const files=['catalog.json','tutorial-insights.json','audit-rules.json','route-capabilities.json','purchase-intelligence.json','retention-intelligence.json','radar-view.json','phone-route-summaries.json'];
   const responses=await Promise.all(files.map(name=>fetch(`./${name}`,{cache:'no-store'})));
   if(responses.some(r=>!r.ok))throw new Error('Phone Radar data is temporarily unavailable.');
-  [catalog,tutorialInsights,auditRules,routeCapabilities,purchaseIntelligence,retentionIntelligence,radarView,comparisonIndex]=await Promise.all(responses.map(r=>r.json()));
+  [catalog,tutorialInsights,auditRules,routeCapabilities,purchaseIntelligence,retentionIntelligence,radarView,canonicalIndex]=await Promise.all(responses.map(r=>r.json()));
   for(const source of [tutorialInsights,auditRules]){
     for(const route of source.additionalRoutes||[]){if(!catalog.routes.some(r=>r.id===route.id))catalog.routes.push(route)}
     for(const [id,patch] of Object.entries(source.additionalCapabilities||{})){routeCapabilities.routes[id]={...(routeCapabilities.routes[id]||{}),...patch}}
@@ -172,7 +173,7 @@ async function init(){
 
 function bindControls(){
   document.querySelectorAll('[data-family]').forEach(btn=>btn.addEventListener('click',()=>{
-    state.family=btn.dataset.family;state.showAll=false;state.country='all';
+    state.family=btn.dataset.family;state.showAll=false;state.country='all';state.query='';routeSearch.value='';
     document.querySelectorAll('[data-family]').forEach(x=>x.setAttribute('aria-selected',String(x===btn)));
     trackPhone('phone_family_select',{family:state.family});render();
   }));
@@ -209,7 +210,7 @@ function bindControls(){
     const g=ev.target.closest('[data-directory-guide]');if(g){closeCompare();openDirectoryGuide(g.dataset.directoryGuide);return}
     const ob=ev.target.closest('a[data-outbound]');if(ob)trackPhone('phone_outbound_click',{family:state.family,route:ob.dataset.route||'',target:'compare'});
   });
-  document.getElementById('dir-sort').addEventListener('change',ev=>{state.dirSort=ev.target.value;trackPhone('phone_sort_change',{sort:state.dirSort});renderDirectory()});
+  document.getElementById('dir-sort').addEventListener('change',ev=>{state.dirSort=ev.target.value;trackPhone('phone_sort_change',{sort:state.dirSort});renderRoutes()});
   const detailsToggle=document.getElementById('details-toggle');
   detailsToggle.addEventListener('click',()=>{state.details=!state.details;detailsToggle.classList.toggle('on',state.details);detailsToggle.setAttribute('aria-pressed',String(state.details));detailsToggle.textContent=state.details?'Fewer details':'All details';trackPhone('phone_details_toggle',{on:state.details});renderDirectory()});
   document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){closeCompare();const gp=document.getElementById('directory-guide-panel');if(gp&&!gp.hidden){if(dirHashRoute())history.back();else closeDirectoryGuide()}}});
@@ -220,26 +221,35 @@ function routeById(id){return catalog.routes.find(r=>r.id===id)}
 function viewEntries(){
   return Object.entries(radarView.routes).map(([id,v])=>({id,view:v,route:routeById(id)})).filter(x=>x.route&&x.view.family===state.family).sort((a,b)=>(a.view.order||999)-(b.view.order||999));
 }
+function canonicalRows(){return (canonicalIndex?.routes||[]).filter(r=>r.family===state.family)}
 function render(){
   keepFootnote.hidden=state.family!=='long-term';
-  routeSearch.hidden=state.family!=='long-term';
-  if(state.family!=='long-term')state.query='';
+  routeSearch.hidden=false;
   routeSearch.value=state.query;
-  const countries=state.family==='long-term'?[...new Set((comparisonIndex.routes||[]).map(x=>x.marketName).filter(Boolean))].sort():[...new Set(viewEntries().map(x=>x.route.country).filter(Boolean))].sort();
+  const countries=[...new Set([...canonicalRows().map(x=>x.marketName),...viewEntries().map(x=>x.route.country)].filter(Boolean))].sort();
   countryFilter.innerHTML='<option value="all">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
   if(!countries.includes(state.country))state.country='all';
   countryFilter.value=state.country;document.body.classList.toggle('is-directory',state.family==='long-term');renderRoutes();
 }
-function renderRoutes(){
-  if(state.family==='long-term'){renderDirectory();return}
+function legacyEntryMatches(item,q){if(!q)return true;const text=[item.id,item.route?.name,item.route?.country,item.view?.coverage,item.view?.numberType,item.view?.caveat].filter(Boolean).join(' ').toLowerCase();return q.split(/\s+/).filter(Boolean).every(term=>text.includes(term))}
+function renderCuratedFamily(){
   let entries=viewEntries();
   if(state.country!=='all')entries=entries.filter(x=>x.route.country===state.country);
-  const visible=state.country!=='all'?entries:(state.showAll?entries:entries.filter(x=>x.view.shortlist).slice(0,5));
-  routeCount.textContent=`${visible.length}${visible.length<entries.length?` of ${entries.length}`:''} routes shown`;
-  showMore.hidden=state.showAll||visible.length>=entries.length;
-  showMore.textContent=`Show ${entries.length-visible.length} more routes`;
-  if(!visible.length){routeList.innerHTML='<div class="pr-empty">No current route in this filter. Clear the country filter or switch route type.</div>';return}
-  routeList.innerHTML=visible.map(renderCard).join('');
+  if(state.query)entries=entries.filter(x=>legacyEntryMatches(x,state.query));
+  let extras=canonicalRows().filter(r=>indexMatches(r,state.query));
+  if(state.country!=='all')extras=extras.filter(r=>r.marketName===state.country);
+  const entryIds=new Set(entries.map(x=>x.id));extras=canonicalSort(extras.filter(r=>!entryIds.has(r.id)));
+  const visibleEntries=(state.country!=='all'||state.query||state.showAll)?entries:entries.filter(x=>x.view.shortlist).slice(0,5);
+  const total=entries.length+extras.length;const shown=visibleEntries.length+extras.length;
+  routeCount.textContent=`${shown}${shown<total?` of ${total}`:''} routes shown`;
+  showMore.hidden=shown>=total;showMore.textContent=`Show ${total-shown} more routes`;
+  if(!shown){routeList.innerHTML='<div class="pr-empty">No current route in this filter. Clear the country filter or switch route type.</div>';return}
+  const extraHtml=extras.length?`<div class="pr-directory-note"><div><strong>Additional reviewed database routes.</strong> These canonical records are queryable for decision support; backstage/HOLD does not mean recommended or indexable.</div><div class="pr-directory-fx">${extras.length} canonical route${extras.length===1?'':'s'}</div></div><div class="pr-dir-mobile" style="display:grid">${extras.map(indexCard).join('')}</div>`:'';
+  routeList.innerHTML=visibleEntries.map(renderCard).join('')+extraHtml+'<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>';
+}
+function renderRoutes(){
+  if(state.family==='long-term'){renderDirectory();return}
+  renderCuratedFamily();
 }
 function dirData(){return globalDirectory||{routes:[],brands:[],networks:[],sources:[],serviceObservations:[],continuityEvents:[]}}
 function dirBrand(id){return (dirData().brands||[]).find(x=>x.id===id)}
@@ -263,7 +273,7 @@ function pinBtn(id){const on=state.pins.has(id);return `<button type="button" cl
 function togglePin(id){if(state.pins.has(id))state.pins.delete(id);else{if(state.pins.size>=4)return;state.pins.add(id)}trackPhone('phone_pin_toggle',{route:id,pinned:state.pins.has(id)});renderDirectory();renderCompareTray()}
 function dirSortVal(v){return Number.isFinite(v)?v:Number.POSITIVE_INFINITY}
 function dirRecommendScore(r){let s=0;if(Number.isFinite(r.landedCost?.landedOriginal))s+=2;else s-=2;if(Number.isFinite(r.keep?.yearCostOriginal))s+=3;else s-=1;const days=dirDaysSince(r.lastVerifiedAt||dirData().checkedAt);if(days==null)s-=1;else if(days<=21)s+=2;else if(days<=60)s+=1;if(r.publishState==='observation-hold')s-=4;if((r.sourceIds||[]).length>=5)s+=1;return s}
-function sortedDirRoutes(routes){const arr=[...routes];if(state.dirSort==='start-cost')arr.sort((a,b)=>dirSortVal(a.landedCost?.landedOriginal)-dirSortVal(b.landedCost?.landedOriginal));else if(state.dirSort==='keep-cost')arr.sort((a,b)=>dirSortVal(a.keep?.yearCostOriginal)-dirSortVal(b.keep?.yearCostOriginal));else if(state.dirSort==='fresh')arr.sort((a,b)=>String(b.lastVerifiedAt||'').localeCompare(String(a.lastVerifiedAt||'')));else arr.sort((a,b)=>dirRecommendScore(b)-dirRecommendScore(a));return arr}
+function sortedDirRoutes(routes){const arr=[...routes];if(state.dirSort==='start-cost')arr.sort((a,b)=>dirSortVal(a.landedCost?.landedOriginal)-dirSortVal(b.landedCost?.landedOriginal));else if(state.dirSort==='keep-cost')arr.sort((a,b)=>dirSortVal(a.keep?.yearCostOriginal)-dirSortVal(b.keep?.yearCostOriginal));else if(state.dirSort==='fresh')arr.sort((a,b)=>String(b.lastVerifiedAt||'').localeCompare(String(a.lastVerifiedAt||'')));else arr.sort((a,b)=>{const ah=a.publishState==='observation-hold',bh=b.publishState==='observation-hold';if(ah!==bh)return ah?1:-1;return String(b.lastVerifiedAt||'').localeCompare(String(a.lastVerifiedAt||''))||dirRecommendScore(b)-dirRecommendScore(a)});return arr}
 function vizCost(routes){
   const items=routes.map(r=>({id:r.id,name:dirBrand(r.brandId)?.name||r.id,start:r.landedCost?.landedOriginal,startCurrency:r.landedCost?.currency,keep:r.keep?.yearCostOriginal,keepCurrency:r.keep?.currency||r.landedCost?.currency}));
   const maxS=Math.max(...items.map(x=>Number.isFinite(x.start)?x.start:0),0.01);
@@ -325,39 +335,50 @@ async function ensureGlobalDirectory(){
   globalDirectory=await response.json();
   return globalDirectory;
 }
-function comparisonRows(){return (comparisonIndex.routes||[]).filter(r=>r.publicationState==='comparison-visible'||r.publicationState==='detail-eligible'||r.publicationState==='indexable')}
-function indexMatches(r,q){if(!q)return true;return (r.searchable||'').includes(q)||String(r.brandName||'').toLowerCase().includes(q)||String(r.marketName||'').toLowerCase().includes(q)}
-function indexCost(r){return Number.isFinite(r.acquisitionCostOriginal)?money(r.acquisitionCostOriginal,r.acquisitionCurrency):'Unknown'}
-function indexKeep(r){return Number.isFinite(r.keepYearCostOriginal)?`${money(r.keepYearCostOriginal,r.keepCurrency)} / yr`:'Not established'}
+function indexMatches(r,q){if(!q)return true;const terms=String(q).toLowerCase().split(/\s+/).filter(Boolean);const text=[r.id,r.displayName,r.brandName,r.networkName,r.marketName,r.countryCode,r.numberClass,r.form,...(r.tokens||[])].filter(Boolean).join(' ').toLowerCase();return terms.every(term=>text.includes(term))}
+function indexMetric(r,key){return r.metrics?.[key]??r[key]}
+function indexCost(r){const v=indexMetric(r,'acquisitionCostOriginal'),c=indexMetric(r,'acquisitionCurrency');return Number.isFinite(v)?money(v,c):'Unknown'}
+function indexKeep(r){const v=indexMetric(r,'keepYearCostOriginal'),c=indexMetric(r,'keepCurrency');return Number.isFinite(v)?`${money(v,c)} / yr`:'Not established'}
+function canonicalStateLabel(r){if(r.evidenceState==='hold')return'Observation / hold';if(r.evidenceState==='admitted')return r.surfaceState==='backstage-only'?'Backstage reviewed':'Reviewed route';if(r.evidenceState==='needs-reconciliation')return'Needs reconciliation';return r.evidenceState||'Evidence pending'}
+function canonicalStateRank(r){return r.evidenceState==='admitted'?0:r.evidenceState==='hold'?1:r.evidenceState==='needs-reconciliation'?2:3}
+function canonicalSort(rows){const arr=[...rows];arr.sort((a,b)=>{const stateCmp=canonicalStateRank(a)-canonicalStateRank(b);if(stateCmp)return stateCmp;if(state.dirSort==='start-cost')return dirSortVal(indexMetric(a,'acquisitionCostCny'))-dirSortVal(indexMetric(b,'acquisitionCostCny'))||dirSortVal(indexMetric(a,'acquisitionCostOriginal'))-dirSortVal(indexMetric(b,'acquisitionCostOriginal'));if(state.dirSort==='keep-cost')return dirSortVal(indexMetric(a,'keepYearCostCny'))-dirSortVal(indexMetric(b,'keepYearCostCny'))||dirSortVal(indexMetric(a,'keepYearCostOriginal'))-dirSortVal(indexMetric(b,'keepYearCostOriginal'));return String(b.lastVerifiedAt||'').localeCompare(String(a.lastVerifiedAt||''))||String(a.displayName||a.id).localeCompare(String(b.displayName||b.id))});return arr}
+function indexCard(r){const m=r.metrics||{};const hold=r.evidenceState==='hold'||r.evidenceState==='needs-reconciliation';return `<article class="pr-dir-card"><div class="pr-dir-card-head"><div><h3>${esc(r.displayName||r.brandName||r.id)}</h3><span class="pr-route-sub">${esc(r.marketName||'')} · ${esc(r.networkName||'')} · ${esc(r.form||r.numberClass||'')}</span><div>${r.lastVerifiedAt?`<span class="pr-fresh fresh-mid">Checked ${esc(fmtDay(r.lastVerifiedAt))}</span>`:''}</div></div><span class="pr-dir-status" data-state="${hold?'hold':'candidate'}">${esc(canonicalStateLabel(r))}</span></div><div class="pr-dir-mobile-grid"><div class="pr-dir-mobile-metric"><small>Start</small><strong>${esc(indexCost(r))}</strong>${Number.isFinite(m.acquisitionCostCny)?`<span class="pr-cost-sub">${esc(cny(m.acquisitionCostCny))}</span>`:''}</div><div class="pr-dir-mobile-metric"><small>Keep / year</small><strong>${esc(indexKeep(r))}</strong>${Number.isFinite(m.keepIntervalDays)?`<span class="pr-cost-sub">act within ${m.keepIntervalDays}d</span>`:''}</div><div class="pr-dir-mobile-metric"><small>Evidence state</small><strong>${esc(r.evidenceState||'unknown')}</strong></div><div class="pr-dir-mobile-metric"><small>Surface</small><strong>${esc(r.surfaceState||'database')}</strong></div></div><div class="pr-dir-actions"><button type="button" data-index-route="${esc(r.id)}">Open evidence</button>${r.marketName?`<button type="button" data-market-open="${esc(r.marketName)}">Explore market</button>`:''}</div></article>`}
 function renderMarketOverview(){
-  const rows=comparisonRows();const by=new Map();
+  const rows=canonicalRows();const by=new Map();
   for(const r of rows){if(!by.has(r.marketName))by.set(r.marketName,[]);by.get(r.marketName).push(r)}
-  const markets=[...by].map(([name,rs])=>({name,rs,known:rs.filter(x=>Number.isFinite(x.keepYearCostOriginal)),fresh:rs.map(x=>x.lastVerifiedAt).filter(Boolean).sort().at(-1)})).sort((a,b)=>b.rs.length-a.rs.length||a.name.localeCompare(b.name));
-  routeCount.textContent=`${rows.length} comparison routes across ${markets.length} markets`;
+  const markets=[...by].map(([name,rs])=>({name,rs,known:rs.filter(x=>Number.isFinite(indexMetric(x,'keepYearCostOriginal'))),fresh:rs.map(x=>x.lastVerifiedAt).filter(Boolean).sort().at(-1)})).sort((a,b)=>b.rs.length-a.rs.length||a.name.localeCompare(b.name));
+  routeCount.textContent=`${rows.length} reviewed routes across ${markets.length} markets`;
   showMore.hidden=true;
-  routeList.innerHTML=`<div class="pr-directory-note"><div><strong>Global long-term number finder.</strong> Browse the admitted 135-route comparison layer by market. Deep route evidence is loaded only after you choose a market or route; standalone SEO publication remains separate.</div><div class="pr-directory-fx">${markets.length} markets · ${rows.length} routes</div></div><div class="pr-dir-mobile" style="display:grid">${markets.map(m=>{const best=m.known.length?Math.min(...m.known.map(x=>x.keepYearCostOriginal)):null;const cur=m.known.find(x=>x.keepYearCostOriginal===best)?.keepCurrency;return `<article class="pr-dir-card"><div class="pr-dir-card-head"><div><h3>${esc(m.name)}</h3><span class="pr-route-sub">${m.rs.length} comparison route${m.rs.length===1?'':'s'} · checked through ${esc(fmtDay(m.fresh))}</span></div></div><div class="pr-dir-mobile-grid"><div class="pr-dir-mobile-metric"><small>Known yearly floor</small><strong>${Number.isFinite(best)?esc(money(best,cur)):'Not established'}</strong></div><div class="pr-dir-mobile-metric"><small>Evidence</small><strong>${m.known.length}/${m.rs.length} with modeled keep cost</strong></div></div><div class="pr-dir-actions"><button type="button" data-market-open="${esc(m.name)}">Explore ${esc(m.name)}</button></div></article>`}).join('')}</div>`;
+  routeList.innerHTML=`<div class="pr-directory-note"><div><strong>Global long-term number finder.</strong> Browse all reviewed canonical routes by market. Backstage and HOLD records are queryable with their constraints; standalone SEO publication remains separate.</div><div class="pr-directory-fx">${markets.length} markets · ${rows.length} routes</div></div><div class="pr-dir-mobile" style="display:grid">${markets.map(m=>{const best=m.known.length?Math.min(...m.known.map(x=>indexMetric(x,'keepYearCostOriginal'))):null;const cur=m.known.find(x=>indexMetric(x,'keepYearCostOriginal')===best)?.metrics?.keepCurrency;return `<article class="pr-dir-card"><div class="pr-dir-card-head"><div><h3>${esc(m.name)}</h3><span class="pr-route-sub">${m.rs.length} reviewed route${m.rs.length===1?'':'s'} · checked through ${esc(fmtDay(m.fresh))}</span></div></div><div class="pr-dir-mobile-grid"><div class="pr-dir-mobile-metric"><small>Known yearly floor</small><strong>${Number.isFinite(best)?esc(money(best,cur)):'Not established'}</strong></div><div class="pr-dir-mobile-metric"><small>Evidence</small><strong>${m.known.length}/${m.rs.length} with modeled keep cost</strong></div></div><div class="pr-dir-actions"><button type="button" data-market-open="${esc(m.name)}">Explore ${esc(m.name)}</button></div></article>`}).join('')}</div>`;
 }
 function renderIndexSearch(){
-  let rows=comparisonRows().filter(r=>indexMatches(r,state.query));if(state.country!=='all')rows=rows.filter(r=>r.marketName===state.country);
-  rows.sort((a,b)=>dirSortVal(a.keepYearCostOriginal)-dirSortVal(b.keepYearCostOriginal)||String(a.brandName).localeCompare(String(b.brandName)));
-  const visible=state.showAll?rows:rows.slice(0,16);routeCount.textContent=`${visible.length}${visible.length<rows.length?` of ${rows.length}`:''} matching routes`;showMore.hidden=visible.length>=rows.length;showMore.textContent=`Show ${rows.length-visible.length} more routes`;
-  if(!visible.length){routeList.innerHTML='<div class="pr-empty">No matching admitted comparison route. Try a country, carrier or route name.</div>';return}
-  routeList.innerHTML=`<div class="pr-directory-note"><div><strong>Search results.</strong> These are comparison-visible records, not automatically recommended or indexable pages. Open a route to load its current evidence.</div><div class="pr-directory-fx">${rows.length} matches</div></div><div class="pr-dir-mobile" style="display:grid">${visible.map(r=>`<article class="pr-dir-card"><div class="pr-dir-card-head"><div><h3>${esc(r.brandName||r.id)}</h3><span class="pr-route-sub">${esc(r.marketName)} · ${esc(r.networkName||'')} · ${esc(r.simType||'')}</span><div>${r.lastVerifiedAt?`<span class="pr-fresh fresh-mid">Checked ${esc(fmtDay(r.lastVerifiedAt))}</span>`:''}</div></div><span class="pr-trend" data-tone="${esc(r.trend||'watch')}">${esc(r.evidenceState||'unknown')}</span></div><div class="pr-dir-mobile-grid"><div class="pr-dir-mobile-metric"><small>Start</small><strong>${esc(indexCost(r))}</strong>${Number.isFinite(r.acquisitionCostCny)?`<span class="pr-cost-sub">${esc(cny(r.acquisitionCostCny))}</span>`:''}</div><div class="pr-dir-mobile-metric"><small>Keep / year</small><strong>${esc(indexKeep(r))}</strong>${Number.isFinite(r.keepIntervalDays)?`<span class="pr-cost-sub">act within ${r.keepIntervalDays}d</span>`:''}</div></div><div class="pr-dir-actions"><button type="button" data-index-route="${esc(r.id)}">Open evidence</button><button type="button" data-market-open="${esc(r.marketName)}">Explore market</button></div></article>`).join('')}</div>`;
+  let rows=canonicalRows().filter(r=>indexMatches(r,state.query));if(state.country!=='all')rows=rows.filter(r=>r.marketName===state.country);rows=canonicalSort(rows);
+  const visible=state.showAll?rows:rows.slice(0,16);routeCount.textContent=`${visible.length}${visible.length<rows.length?` of ${rows.length}`:''} matching reviewed routes`;showMore.hidden=visible.length>=rows.length;showMore.textContent=`Show ${rows.length-visible.length} more routes`;
+  if(!visible.length){routeList.innerHTML='<div class="pr-empty">No matching reviewed route. Try a country, carrier or route name.</div>';return}
+  routeList.innerHTML=`<div class="pr-directory-note"><div><strong>Reviewed database matches.</strong> These rows are queryable evidence, not automatic recommendations or indexable pages. HOLD means unresolved constraints are preserved.</div><div class="pr-directory-fx">${rows.length} matches</div></div><div class="pr-dir-mobile" style="display:grid">${visible.map(indexCard).join('')}</div><section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>`;
 }
+function currentProfile(detail){return [...(detail.snapshots||[])].filter(x=>x.kind==='current-profile').sort((a,b)=>String(b.checkedAt||'').localeCompare(String(a.checkedAt||'')))[0]?.data||{}}
+function renderCanonicalDetail(detail,panel){const r=detail.route||{},d=currentProfile(detail),m=detail.metrics||{},brand=detail.brand?.name||r.displayName||r.id,network=detail.network?.name||'',market=detail.market?.name||'',hold=r.evidenceState==='hold'||r.evidenceState==='needs-reconciliation';const boundary=hold?`HOLD — unresolved constraints remain. This record is queryable evidence, not a recommendation.`:(r.surfaceState==='backstage-only'?`Backstage reviewed — useful for decision support, but not a recommendation or standalone SEO publication.`:`Reviewed route — publication remains governed separately.`);const start=Number.isFinite(m.acquisitionCostOriginal)?money(m.acquisitionCostOriginal,m.acquisitionCurrency):'Not established';const keep=Number.isFinite(m.keepYearCostOriginal)?`${money(m.keepYearCostOriginal,m.keepCurrency)} / yr`:'Not established';const steps=d.guideSteps||[];const events=detail.events||[];const sources=(detail.sources||[]).slice(0,8);const svc=(detail.serviceEvidence||[]).slice(0,8);panel.innerHTML=`<div class="pr-guide-head"><div><h2>${esc(brand)} — ${esc(market||'route')} evidence</h2><p>${esc(network)} · ${esc(r.form||'')} · ${esc(canonicalStateLabel(r))}</p></div><button class="pr-close" type="button" data-close-directory-guide aria-label="Close evidence">×</button></div><div class="pr-warning"><strong>Evidence boundary</strong>${esc(boundary)}${d.holdReason?` ${esc(d.holdReason)}`:''}</div><div class="pr-guide-grid"><section class="pr-guide-section"><h3>What it costs</h3><p>${esc(start)}. ${esc(d.tariffSummary||d.acquisitionSummary||'Current cost details are incomplete.')}</p></section><section class="pr-guide-section"><h3>Keep / validity</h3><p>${esc(keep)}. ${esc(d.keep?.action||'No settled keep-alive action is normalized.')}</p></section><section class="pr-guide-section"><h3>Requirements</h3><p>${esc(d.kyc||'Unknown')} ${esc(d.payment||'')}</p></section><section class="pr-guide-section"><h3>Use abroad / SMS</h3><p>${esc(d.chinaActivation||'Unknown')} ${esc(d.roamingSms||'')}</p></section><section class="pr-guide-section wide"><h3>Step by step</h3>${steps.length?`<ol>${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`:'<p>No execution guide is published for this record yet.</p>'}</section><section class="pr-guide-section wide"><h3>Service evidence</h3>${svc.length?`<ul>${svc.map(x=>`<li><strong>${esc(x.serviceId||'service')}</strong> · ${esc(x.label||x.grade||'evidence')} · n=${esc(x.sampleSize??0)}${x.lastObservedAt?` · ${esc(x.lastObservedAt)}`:''}</li>`).join('')}</ul>`:'<p>No normalized service-specific aggregate yet.</p>'}</section><section class="pr-guide-section wide"><h3>Continuity history</h3>${events.length?`<ul>${events.map(e=>`<li>${esc(e.reportedAt||'')} — ${esc(e.outcome||e.type||'')}</li>`).join('')}</ul>`:'<p>No normalized continuity event in the current packet.</p>'}</section><section class="pr-guide-section wide"><h3>Strongest current sources</h3>${sources.length?`<ul class="pr-source-list">${sources.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.reportedAt||'')} · ${esc(x.type||'source')}</a></li>`).join('')}</ul>`:'<p>No source link is available in this detail bundle.</p>'}</section></div>`;panel.dataset.route=r.id;panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'nearest'});trackPhone('phone_canonical_detail_open',{family:r.family||state.family,route:r.id,evidence_state:r.evidenceState||'unknown'})}
 async function openIndexedRoute(id){
-  const hit=comparisonRows().find(r=>r.id===id);if(!hit)return;
-  state.country=hit.marketName;countryFilter.value=state.country;routeList.innerHTML='<p class="pr-loading">Loading route evidence…</p>';
-  try{await ensureGlobalDirectory();renderDirectory();setTimeout(()=>openDirectoryGuide(id),0)}catch(err){routeList.innerHTML=`<div class="pr-error"><strong>Phone Radar could not load route evidence.</strong><p>${esc(err.message)}</p></div>`}
+  const hit=(canonicalIndex?.routes||[]).find(r=>r.id===id);if(!hit)return;
+  let panel=document.getElementById('directory-guide-panel');if(!panel){routeList.insertAdjacentHTML('beforeend','<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>');panel=document.getElementById('directory-guide-panel')}
+  panel.hidden=false;panel.innerHTML='<p class="pr-loading">Loading route evidence…</p>';panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  try{let detail=canonicalDetailCache.get(id);if(!detail){const response=await fetch(`./phone-route-data/${encodeURIComponent(id)}.json`,{cache:'no-store'});if(!response.ok)throw new Error('Route detail is temporarily unavailable.');detail=await response.json();canonicalDetailCache.set(id,detail)}renderCanonicalDetail(detail,panel)}catch(err){panel.innerHTML=`<div class="pr-error"><strong>Phone Radar could not load route evidence.</strong><p>${esc(err.message)}</p></div>`}
 }
 function renderDirectory(){
-  if(state.country==='all'){if(state.query)renderIndexSearch();else renderMarketOverview();return}
+  if(state.query){renderIndexSearch();return}
+  if(state.country==='all'){renderMarketOverview();return}
   if(!globalDirectory){routeList.innerHTML='<p class="pr-loading">Loading market evidence…</p>';routeCount.textContent=`Loading ${state.country}`;showMore.hidden=true;ensureGlobalDirectory().then(renderDirectory).catch(err=>{routeList.innerHTML=`<div class="pr-error"><strong>Phone Radar could not load market evidence.</strong><p>${esc(err.message)}</p></div>`});return}
-  let routes=(globalDirectory.routes||[]).filter(r=>r.marketName===state.country);
-  if(state.query)routes=routes.filter(r=>indexMatches(comparisonRows().find(x=>x.id===r.id)||{searchable:[r.id,r.marketName].join(' ').toLowerCase()},state.query));
-  routes=sortedDirRoutes(routes);const total=routes.length;const visible=state.showAll?routes:routes.slice(0,20);routeCount.textContent=`${visible.length}${visible.length<total?` of ${total}`:''} routes in ${state.country}`;showMore.hidden=visible.length>=total;showMore.textContent=`Show ${total-visible.length} more routes`;if(!visible.length){routeList.innerHTML='<div class="pr-empty">No comparison route in this market/filter.</div>';return}
+  const canonicalMarket=canonicalRows().filter(r=>r.marketName===state.country);
+  let routes=(globalDirectory.routes||[]).filter(r=>r.marketName===state.country);routes=sortedDirRoutes(routes);
+  const globalIds=new Set(routes.map(r=>r.id));const extras=canonicalSort(canonicalMarket.filter(r=>!globalIds.has(r.id)));
+  const visible=state.showAll?routes:routes.slice(0,20);routeCount.textContent=`${canonicalMarket.length} reviewed routes in ${state.country}`;showMore.hidden=visible.length>=routes.length;showMore.textContent=`Show ${routes.length-visible.length} more comparison routes`;
   const groupMap=new Map();for(const r of visible){const b=dirBrand(r.brandId),n=dirNetwork(b?.networkId),key=n?.id||'other';if(!groupMap.has(key))groupMap.set(key,{network:n,routes:[]});groupMap.get(key).routes.push(r)}const groups=[...groupMap.values()];
   const header='<thead><tr><th>Brand / route</th><th>Start cost</th><th>Keep / year</th><th class="pr-col-detail">Keep action</th><th class="pr-col-detail">Plan / data</th><th class="pr-col-detail">China / overseas</th><th class="pr-col-detail">KYC / payment</th><th class="pr-col-detail">Wi-Fi / roaming SMS</th><th>App evidence</th><th class="pr-col-detail">ChatGPT / Codex</th><th class="pr-col-detail">Telegram</th><th class="pr-col-detail">WhatsApp</th><th>Loss / closure history</th><th class="pr-col-detail">Refund / recovery</th><th class="pr-col-detail">Trend</th><th>Checked</th><th>Actions</th></tr></thead>';
-  routeList.innerHTML=`<div class="pr-directory-note"><div><strong>${esc(state.country)} comparison view.</strong> Current cost, retention, setup constraints and evidence are shown side by side. Missing data stays missing; HOLD rows are decision warnings, not recommendations.</div><div class="pr-directory-fx">${total} routes · deep data loaded</div></div><section class="pr-viz" aria-label="Visual comparison"><div class="pr-viz-grid"><figure class="pr-viz-card"><figcaption>Start vs yearly keep cost</figcaption>${vizCost(visible)}</figure><figure class="pr-viz-card"><figcaption>Keep-alive window</figcaption>${vizWindow(visible)}</figure><figure class="pr-viz-card"><figcaption>App verification evidence</figcaption>${vizApps(visible)}</figure></div></section>${groups.map(g=>`<section class="pr-network-group">${g.network?`<div class="pr-network-head"><h2>${esc(g.network.name)}</h2><span>${g.routes.length} route${g.routes.length===1?'':'s'}</span></div>`:''}<div class="pr-matrix-wrap"><table class="pr-matrix${state.details?'':' pr-compact'}">${header}<tbody>${g.routes.map(dirRow).join('')}</tbody></table></div><div class="pr-dir-mobile">${g.routes.map(dirMobileCard).join('')}</div></section>`).join('')}<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>`;
+  const comparisonHtml=visible.length?`<div class="pr-directory-note"><div><strong>${esc(state.country)} comparison view.</strong> Current cost, retention, setup constraints and evidence are shown side by side. Missing data stays missing; HOLD rows are decision warnings, not recommendations.</div><div class="pr-directory-fx">${routes.length} comparison routes</div></div><section class="pr-viz" aria-label="Visual comparison"><div class="pr-viz-grid"><figure class="pr-viz-card"><figcaption>Start vs yearly keep cost</figcaption>${vizCost(visible)}</figure><figure class="pr-viz-card"><figcaption>Keep-alive window</figcaption>${vizWindow(visible)}</figure><figure class="pr-viz-card"><figcaption>App verification evidence</figcaption>${vizApps(visible)}</figure></div></section>${groups.map(g=>`<section class="pr-network-group">${g.network?`<div class="pr-network-head"><h2>${esc(g.network.name)}</h2><span>${g.routes.length} route${g.routes.length===1?'':'s'}</span></div>`:''}<div class="pr-matrix-wrap"><table class="pr-matrix${state.details?'':' pr-compact'}">${header}<tbody>${g.routes.map(dirRow).join('')}</tbody></table></div><div class="pr-dir-mobile">${g.routes.map(dirMobileCard).join('')}</div></section>`).join('')}`:'';
+  const extraHtml=extras.length?`<div class="pr-directory-note"><div><strong>Additional reviewed database routes.</strong> These routes are canonical and user-queryable but remain outside the historical comparison artifact. HOLD/backstage status is shown explicitly and does not create an SEO page.</div><div class="pr-directory-fx">${extras.length} additional</div></div><div class="pr-dir-mobile" style="display:grid">${extras.map(indexCard).join('')}</div>`:'';
+  if(!comparisonHtml&&!extraHtml){routeList.innerHTML='<div class="pr-empty">No reviewed route in this market.</div>';return}
+  routeList.innerHTML=comparisonHtml+extraHtml+'<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>';
 }
 function directorySources(r){return (r.sourceIds||[]).map(id=>(dirData().sources||[]).find(s=>s.id===id)).filter(Boolean)}
 function closeDirectoryGuide(){const p=document.getElementById('directory-guide-panel');if(p)p.hidden=true}
