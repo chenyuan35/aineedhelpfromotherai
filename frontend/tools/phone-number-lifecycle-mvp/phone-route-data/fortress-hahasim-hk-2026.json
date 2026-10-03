@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "fortress-hahasim-hk-2026",
+    "marketId": "hk",
+    "networkId": "three-hk",
+    "brandId": "haha-sim-hk",
+    "displayName": "Fortress haha SIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+    "sourceIds": [
+      "fortress-hahasim-faq-20261003",
+      "linuxdo-hahasim-2511282-20260824"
+    ]
+  },
+  "market": {
+    "id": "hk",
+    "name": "Hong Kong",
+    "countryCode": "HK"
+  },
+  "network": {
+    "id": "three-hk",
+    "name": "3 Hong Kong",
+    "marketId": "hk"
+  },
+  "brand": {
+    "id": "haha-sim-hk",
+    "networkId": "three-hk",
+    "name": "Fortress haha SIM",
+    "marketId": "hk"
+  },
+  "metrics": {
+    "routeId": "fortress-hahasim-hk-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "HKD",
+    "acquisitionCostOriginal": 50,
+    "acquisitionCostCny": null,
+    "keepCurrency": "HKD",
+    "keepYearCostOriginal": 10,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "fortress-hahasim-faq-20261003",
+      "url": "https://www.fortress.com.hk/en/services/services?category=Order",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "linuxdo-hahasim-2511282-20260824",
+      "url": "https://linux.do/t/topic/2511282",
+      "type": "independent-community",
+      "reportedAt": "2026-08-24"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-fortress-hahasim-hk-2026-db-c21-20261003",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "retention-and-operational-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Fortress FAQ establishes 365-day validity after activation and another 365 days after a top-up of at least HKD10. Current FAQ also documents real-name registration, physical-SIM-only service, voice/SMS behavior and number-recycling caveats; 2026 community users continue to report HK retail availability and HKD10 annual maintenance.",
+      "sourceId": "fortress-hahasim-faq-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-fortress-hahasim-hk-2026-current-profile-20261003",
+      "routeId": "fortress-hahasim-hk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c21-reviewed-2026-10-03",
+      "data": {
+        "id": "fortress-hahasim-hk-2026",
+        "brandId": "haha-sim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Fortress sells haha SIM through Hong Kong Fortress stores/eStore. Current community users in 2026 report straightforward Fortress retail availability and a typical HKD50 card purchase, but the official FAQ rather than seller/community price claims controls lifecycle facts.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 50,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 50,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "community-current-retail-price-reference"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Top up HKD10 or more before expiry. Current Fortress FAQ says each qualifying top-up automatically extends SIM validity by 365 days; buying a data package does not extend validity.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-hkd10-topup"
+        },
+        "chinaActivation": "Current provider FAQ does not establish a guaranteed mainland-China-first activation path. It states activation occurs when the physical SIM is inserted and activation SMS/number are received; local Hong Kong use requires real-name registration. Preserve overseas-use reports as community evidence rather than a provider guarantee.",
+        "kyc": "Current Fortress FAQ requires real-name registration information including HKID or travel-document details for applicable registration flows. Do not promote community no-KYC workarounds as a supported route.",
+        "payment": "Top-up is managed through the haha TRAVEL App; foreign-card or mainland payment acceptance is not provider-guaranteed in the reviewed material.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current provider FAQ supports roaming text/voice subject to account balance and charges. 2026 community users report mainland-China SMS reception, but service-specific OTP success is not guaranteed; Fortress also warns that recycled numbers can retain third-party platform history.",
+        "refund": "Expired lines may be considered for reactivation within 14 days; approval is not guaranteed and real-name registration may need to be completed again.",
+        "trend": "current-low-cost-retention-with-recycled-number-risk",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+        "tariffSummary": "HKD10-or-more top-up extends SIM validity by 365 days. Physical SIM only; real-name registration rules and third-party platform/recycled-number risk remain material.",
+        "sourceIds": [
+          "fortress-hahasim-faq-20261003",
+          "linuxdo-hahasim-2511282-20260824"
+        ],
+        "guideSteps": [
+          "Acquire a current physical haha SIM from Fortress.",
+          "Complete the applicable real-name registration flow; do not rely on no-KYC workarounds.",
+          "Top up at least HKD10 before the 365-day deadline and treat platform OTP acceptance as evidence-scoped."
+        ]
+      }
+    }
+  ]
+}

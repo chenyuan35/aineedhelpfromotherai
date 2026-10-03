@@ -432,6 +432,18 @@
     "reportedAt": "2026-10-03"
   },
   {
+    "id": "csl-711-product-20261003",
+    "url": "https://www.hkcsl.com/en/7_eleven_prepaid_sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "csl-rnr-20261003",
+    "url": "https://www.hkcsl.com/en/real-name-registration/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "ctexcel-uk-current-site-20261003",
     "url": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
     "type": "provider-official",
@@ -562,6 +574,12 @@
     "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "type": "provider-official",
     "reportedAt": "2026-09-27"
+  },
+  {
+    "id": "fortress-hahasim-faq-20261003",
+    "url": "https://www.fortress.com.hk/en/services/services?category=Order",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "forum-awd-beeline-sim-safe-2026-04-13",
@@ -1026,6 +1044,12 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "linuxdo-csl711-2758634-20260815",
+    "url": "https://linux.do/t/topic/2758634",
+    "type": "independent-community",
+    "reportedAt": "2026-08-15"
+  },
+  {
     "id": "linuxdo-ctexcel-2844702-20260902",
     "url": "https://linux.do/t/topic/2844702",
     "type": "community-independent",
@@ -1102,6 +1126,12 @@
     "url": "https://linux.do/t/topic/2903412",
     "type": "first-hand-community-thread",
     "reportedAt": "2026-09-15"
+  },
+  {
+    "id": "linuxdo-hahasim-2511282-20260824",
+    "url": "https://linux.do/t/topic/2511282",
+    "type": "independent-community",
+    "reportedAt": "2026-08-24"
   },
   {
     "id": "linuxdo-lebara-2745784-op",
@@ -1182,6 +1212,12 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "lowyat-tunetalk-365-20250419",
+    "url": "https://forum.lowyat.net/topic/5517171",
+    "type": "independent-community",
+    "reportedAt": "2025-04-19"
+  },
+  {
     "id": "lyca-uk-home-20260929",
     "url": "https://www.lycamobile.co.uk/",
     "type": "provider-official",
@@ -1222,6 +1258,12 @@
     "url": "https://www.reddit.com/r/NoContract/comments/1rxdofr/dont_use_lyca_mobile/",
     "type": "independent-community",
     "reportedAt": "2026-03-18"
+  },
+  {
+    "id": "mcmc-prepaid-mandatory-standard-20260226",
+    "url": "https://mcmc.bernama.com/news.php?id=2528106",
+    "type": "government-regulator",
+    "reportedAt": "2026-02-26"
   },
   {
     "id": "mint-mobile-overseas-activation-community-20260916",
@@ -3160,6 +3202,18 @@
     "url": "https://www.true.th/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "tunetalk-network-20261003",
+    "url": "https://www.tunetalk.com/corporate/our-company/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "tunetalk-one-year-validity-20261003",
+    "url": "https://www.tunetalk.com/prepaid/services/one-year-validity/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "uplus-umobile-prepaid-faq-20261001",

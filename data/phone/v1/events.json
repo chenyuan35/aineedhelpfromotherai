@@ -162,6 +162,15 @@
     "sourceId": "cricket-multimonth-20261003"
   },
   {
+    "id": "evt-csl-711-prepaid-hk-2026-db-c21-20261003",
+    "routeId": "csl-711-prepaid-hk-2026",
+    "type": "current-provider-lifecycle-conflict",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "The current csl product page lists 180-day base validity and a promotional recharge table where HKD20-49.9 or more extends validity 365 days through 31 Dec 2026, but the same page's terms also state HKD50+ extends validity 180 days. The route is therefore normalized as HOLD rather than assigning one universal keep interval or annual cost.",
+    "sourceId": "csl-711-product-20261003"
+  },
+  {
     "id": "evt-ctexcel-uk-2026-db-c20-20261003",
     "routeId": "ctexcel-uk-2026",
     "type": "lifecycle-retention-conflict-reconciliation",
@@ -223,6 +232,15 @@
     "scope": "route",
     "outcome": "The old AED10-per-quarter framing is not needed for the current normalized rule. Current e& pages state lifetime validity with continued use and a 12-month retention/revival window after non-use; exact minimum annual cash cost is therefore left unresolved.",
     "sourceId": "eand-wasel-line-2026-09-29"
+  },
+  {
+    "id": "evt-fortress-hahasim-hk-2026-db-c21-20261003",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "retention-and-operational-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current Fortress FAQ establishes 365-day validity after activation and another 365 days after a top-up of at least HKD10. Current FAQ also documents real-name registration, physical-SIM-only service, voice/SMS behavior and number-recycling caveats; 2026 community users continue to report HK retail availability and HKD10 annual maintenance.",
+    "sourceId": "fortress-hahasim-faq-20261003"
   },
   {
     "id": "evt-free-mobile-fr-2026-db-c3-review-20260929",
@@ -808,6 +826,15 @@
     "scope": "route",
     "outcome": "The legacy THB35/90d and THB70/180d validity-extension mechanism remains useful community intelligence, but current 2026 first-party terms were not reachable. Keep the row as HOLD and do not present the price as current-guaranteed.",
     "sourceId": "truemove-community-signal-2026-09-27"
+  },
+  {
+    "id": "evt-tunetalk-365-my-2026-db-c21-20261003",
+    "routeId": "tunetalk-365-my-2026",
+    "type": "retention-eligibility-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Tune Talk currently offers RM35 for 365-day validity on listed prepaid plans, but Malaysia's 26 Feb 2026 mandatory prepaid-registration standard limits tourist-registered SIMs to a maximum three months before automatic termination. The one-year validity mechanism is preserved for eligible subscriptions without representing it as a durable tourist route.",
+    "sourceId": "tunetalk-one-year-validity-20261003"
   },
   {
     "id": "evt-us-mobile-light-2026-db-c4c-review-20260929",

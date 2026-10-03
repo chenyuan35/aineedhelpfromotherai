@@ -168,6 +168,12 @@
     "marketId": "us"
   },
   {
+    "id": "csl-711-hk",
+    "networkId": "csl-hk",
+    "name": "csl 7-Eleven Local Prepaid SIM",
+    "marketId": "hk"
+  },
+  {
     "id": "ctexcel-uk",
     "networkId": "ee-uk",
     "name": "CTExcel UK",
@@ -280,6 +286,12 @@
     "marketId": "us",
     "networkId": null,
     "name": "H2O Wireless"
+  },
+  {
+    "id": "haha-sim-hk",
+    "networkId": "three-hk",
+    "name": "Fortress haha SIM",
+    "marketId": "hk"
   },
   {
     "id": "hotlink-my",
@@ -754,6 +766,12 @@
     "networkId": "true-th",
     "name": "TrueMove H",
     "marketId": "th"
+  },
+  {
+    "id": "tunetalk-my",
+    "networkId": "celcomdigi-my",
+    "name": "Tune Talk Malaysia",
+    "marketId": "my"
   },
   {
     "id": "turkcell-tourist",

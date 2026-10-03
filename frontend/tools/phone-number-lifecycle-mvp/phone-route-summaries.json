@@ -898,6 +898,38 @@
       }
     },
     {
+      "id": "csl-711-prepaid-hk-2026",
+      "displayName": "csl 7-Eleven Local Prepaid SIM",
+      "marketId": "hk",
+      "marketName": "Hong Kong",
+      "countryCode": "HK",
+      "networkName": "csl (HKT)",
+      "brandName": "csl 7-Eleven Local Prepaid SIM",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "csl-711-prepaid-hk-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "HKD",
+        "acquisitionCostOriginal": 58,
+        "acquisitionCostCny": null,
+        "keepCurrency": "HKD",
+        "keepYearCostOriginal": null,
+        "keepYearCostCny": null,
+        "keepIntervalDays": null
+      }
+    },
+    {
       "id": "ctexcel-uk-2026",
       "displayName": "CTExcel UK",
       "marketId": "gb",
@@ -1215,6 +1247,38 @@
         "keepYearCostOriginal": 200,
         "keepYearCostCny": 46,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "fortress-hahasim-hk-2026",
+      "displayName": "Fortress haha SIM",
+      "marketId": "hk",
+      "marketName": "Hong Kong",
+      "countryCode": "HK",
+      "networkName": "3 Hong Kong",
+      "brandName": "Fortress haha SIM",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "fortress-hahasim-hk-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "HKD",
+        "acquisitionCostOriginal": 50,
+        "acquisitionCostCny": null,
+        "keepCurrency": "HKD",
+        "keepYearCostOriginal": 10,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {
@@ -4218,6 +4282,38 @@
         "keepYearCostOriginal": 140,
         "keepYearCostCny": null,
         "keepIntervalDays": 180
+      }
+    },
+    {
+      "id": "tunetalk-365-my-2026",
+      "displayName": "Tune Talk 1-Year Validity",
+      "marketId": "my",
+      "marketName": "Malaysia",
+      "countryCode": "MY",
+      "networkName": "CelcomDigi Malaysia",
+      "brandName": "Tune Talk Malaysia",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "observationCount": 0,
+      "eventCount": 1,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "tunetalk-365-my-2026",
+        "checkedAt": "2026-10-03",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "MYR",
+        "acquisitionCostOriginal": null,
+        "acquisitionCostCny": null,
+        "keepCurrency": "MYR",
+        "keepYearCostOriginal": 35,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
       }
     },
     {

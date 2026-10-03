@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "tunetalk-365-my-2026",
+    "marketId": "my",
+    "networkId": "celcomdigi-my",
+    "brandId": "tunetalk-my",
+    "displayName": "Tune Talk 1-Year Validity",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.tunetalk.com/",
+    "sourceIds": [
+      "lowyat-tunetalk-365-20250419",
+      "mcmc-prepaid-mandatory-standard-20260226",
+      "tunetalk-network-20261003",
+      "tunetalk-one-year-validity-20261003"
+    ]
+  },
+  "market": {
+    "id": "my",
+    "name": "Malaysia",
+    "countryCode": "MY"
+  },
+  "network": {
+    "id": "celcomdigi-my",
+    "name": "CelcomDigi Malaysia",
+    "marketId": "my"
+  },
+  "brand": {
+    "id": "tunetalk-my",
+    "networkId": "celcomdigi-my",
+    "name": "Tune Talk Malaysia",
+    "marketId": "my"
+  },
+  "metrics": {
+    "routeId": "tunetalk-365-my-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "MYR",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "MYR",
+    "keepYearCostOriginal": 35,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "lowyat-tunetalk-365-20250419",
+      "url": "https://forum.lowyat.net/topic/5517171",
+      "type": "independent-community",
+      "reportedAt": "2025-04-19"
+    },
+    {
+      "id": "mcmc-prepaid-mandatory-standard-20260226",
+      "url": "https://mcmc.bernama.com/news.php?id=2528106",
+      "type": "government-regulator",
+      "reportedAt": "2026-02-26"
+    },
+    {
+      "id": "tunetalk-network-20261003",
+      "url": "https://www.tunetalk.com/corporate/our-company/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tunetalk-one-year-validity-20261003",
+      "url": "https://www.tunetalk.com/prepaid/services/one-year-validity/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-tunetalk-365-my-2026-db-c21-20261003",
+      "routeId": "tunetalk-365-my-2026",
+      "type": "retention-eligibility-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Tune Talk currently offers RM35 for 365-day validity on listed prepaid plans, but Malaysia's 26 Feb 2026 mandatory prepaid-registration standard limits tourist-registered SIMs to a maximum three months before automatic termination. The one-year validity mechanism is preserved for eligible subscriptions without representing it as a durable tourist route.",
+      "sourceId": "tunetalk-one-year-validity-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-tunetalk-365-my-2026-current-profile-20261003",
+      "routeId": "tunetalk-365-my-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c21-reviewed-2026-10-03",
+      "data": {
+        "id": "tunetalk-365-my-2026",
+        "brandId": "tunetalk-my",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Tune Talk is a Malaysian mobile provider operating with CelcomDigi network collaboration. Current prepaid service supports new-number/eSIM paths, while the one-year validity service is an add-on for eligible existing prepaid plan cohorts rather than a special tourist-retention exception.",
+        "landedCost": {
+          "currency": "MYR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-price-not-normalized"
+        },
+        "keep": {
+          "currency": "MYR",
+          "observedActionCost": 35,
+          "yearCostOriginal": 35,
+          "yearCostCny": null,
+          "action": "For eligible Tune Talk Pek Epik/Pek Jimat/Hi-Value/Cun Value/Value Prepaid cohorts, subscribe to the RM35 365-day validity service in the app or by supported SMS/USSD flow. It does not auto-renew; re-subscribe annually before expiry.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-service-eligibility-constrained"
+        },
+        "chinaActivation": "A durable mainland-China-first/tourist acquisition path is not supported by current Malaysian regulation. Tourist-registered prepaid lines terminate automatically after a maximum of three months under the 2026 mandatory standard.",
+        "kyc": "Malaysia's 2026 mandatory prepaid-registration standard imposes secure identity verification and stricter non-citizen registration. Tourist lines have a maximum three-month lifetime; longer retention requires an eligible non-tourist registration cohort rather than a workaround.",
+        "payment": "The validity service is purchased through Tune Talk App or supported SMS/USSD mechanisms; foreign-card/remote mainland payment reliability is not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current evidence does not establish mainland-China incoming-SMS/OTP reliability for this route. Do not treat general roaming support as proof of third-party OTP delivery.",
+        "refund": "The one-year validity subscription is non-cancellable after subscription according to current FAQ.",
+        "trend": "current-retention-real-tourist-cohort-blocked",
+        "guideEligible": false,
+        "holdReason": "The RM35/365-day provider mechanism is current, but tourist-registered Malaysian prepaid SIMs are automatically terminated after at most three months under the 2026 mandatory standard. A durable foreign-user cohort and China-side roaming/OTP path are unresolved.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.tunetalk.com/",
+        "tariffSummary": "RM35/365-day validity is current for eligible plan cohorts; tourist-registered prepaid lines are capped at three months by Malaysia's 2026 mandatory registration standard.",
+        "sourceIds": [
+          "tunetalk-one-year-validity-20261003",
+          "tunetalk-network-20261003",
+          "mcmc-prepaid-mandatory-standard-20260226",
+          "lowyat-tunetalk-365-20250419"
+        ],
+        "guideSteps": [
+          "Confirm that the subscriber qualifies for a non-tourist registration cohort before relying on one-year validity.",
+          "Subscribe to RM35 365-day validity through the official Tune Talk flow if the line is eligible.",
+          "Do not use tourist registration or identity workarounds to bypass the three-month regulatory limit."
+        ]
+      }
+    }
+  ]
+}
