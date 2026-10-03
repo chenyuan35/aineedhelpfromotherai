@@ -1,0 +1,90 @@
+name: Phone DB-C22 Materialize
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/phone/review-packets/cmlink-uk-keep-number-2026.json'
+      - 'data/phone/review-packets/dito-prepaid-ph-2026.json'
+      - 'data/phone/review-packets/ais-local-prepaid-th-2026.json'
+      - 'scripts/test-phone-canonical-db-c22-migration.mjs'
+      - '.github/workflows/phone-db-c22-materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install root dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Apply DB-C22 review packets
+        run: |
+          set -euo pipefail
+          for packet in \
+            data/phone/review-packets/cmlink-uk-keep-number-2026.json \
+            data/phone/review-packets/dito-prepaid-ph-2026.json \
+            data/phone/review-packets/ais-local-prepaid-th-2026.json; do
+            node scripts/apply-phone-review-packet.mjs "$packet" --check
+            node scripts/apply-phone-review-packet.mjs "$packet" --apply
+          done
+          node scripts/build-phone-database.mjs
+      - name: Update regression totals and test chain
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for i in range(15, 22):
+              path = Path(f'scripts/test-phone-canonical-db-c{i}-migration.mjs')
+              text = path.read_text()
+              text = text.replace('canonical.routes.length, 151', 'canonical.routes.length, 154')
+              text = text.replace('brands.length, 148', 'brands.length, 151')
+              text = text.replace('networks.length, 114', 'networks.length, 115')
+              text = text.replace('sources.length, 574', 'sources.length, 587')
+              path.write_text(text)
+          path = Path('package.json')
+          text = path.read_text()
+          needle = 'node scripts/test-phone-canonical-db-c21-migration.mjs && node scripts/test-phone-community-price-intake.mjs'
+          assert needle in text
+          path.write_text(text.replace(needle, 'node scripts/test-phone-canonical-db-c21-migration.mjs && node scripts/test-phone-canonical-db-c22-migration.mjs && node scripts/test-phone-community-price-intake.mjs'))
+          PY
+      - name: Verify DB-C22 and public boundary
+        run: |
+          npm run phone:data:check
+          npm run verify
+          npm run build --prefix frontend
+          git diff --check
+      - name: Commit materialized artifacts
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo 'No materialization changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            data/phone/v1 \
+            frontend/tools/phone-number-lifecycle-mvp/phone-database.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-metrics.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-search-index.json \
+            frontend/tools/phone-number-lifecycle-mvp/phone-route-data \
+            package.json \
+            scripts/test-phone-canonical-db-c15-migration.mjs \
+            scripts/test-phone-canonical-db-c16-migration.mjs \
+            scripts/test-phone-canonical-db-c17-migration.mjs \
+            scripts/test-phone-canonical-db-c18-migration.mjs \
+            scripts/test-phone-canonical-db-c19-migration.mjs \
+            scripts/test-phone-canonical-db-c20-migration.mjs \
+            scripts/test-phone-canonical-db-c21-migration.mjs
+          git commit -m 'data: materialize DB-C22 canonical artifacts'
+          git push origin HEAD:${{ github.head_ref }}
