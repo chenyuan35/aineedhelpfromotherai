@@ -162,6 +162,15 @@
     "sourceId": "cricket-multimonth-20261003"
   },
   {
+    "id": "evt-ctexcel-uk-2026-db-c20-20261003",
+    "routeId": "ctexcel-uk-2026",
+    "type": "lifecycle-retention-conflict-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "CTExcel UK and its Back to China SIM Retention Plan are current. Community evidence repeatedly reports a 90-day activity rule for some no-plan accounts but also plan-dependent retention and conflicting post-plan behavior. The provider-visible pages do not cleanly expose current retention eligibility, price and post-expiry mechanics, so no universal lifecycle or annual keep cost is asserted.",
+    "sourceId": "ctexcel-uk-current-site-20261003"
+  },
+  {
     "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
     "routeId": "cyta-soeasy-cy-2026",
     "type": "retention-rule-resolution",
@@ -567,6 +576,15 @@
     "sourceId": "one-me-tourist-20260930"
   },
   {
+    "id": "evt-one-nz-prepay-2026-db-c20-20261003",
+    "routeId": "one-nz-prepay-2026",
+    "type": "lifecycle-activation-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current One NZ terms make Prepay credit expire 360 days after top-up and the service inactive with number loss if no new credit is added. Minimum logged-in website/app top-up is NZD10. Physical Prepay activation requires One NZ mobile coverage; China is a current Prepay roaming destination, while service-specific OTP reliability is not guaranteed.",
+    "sourceId": "one-nz-mobile-terms-20261003"
+  },
+  {
     "id": "evt-ooredoo-hala-qa-2026-db-c14-20261002",
     "routeId": "ooredoo-hala-qa-2026",
     "type": "lifecycle-acquisition-reconciliation",
@@ -835,6 +853,15 @@
     "scope": "route",
     "outcome": "Vodafone Egypt prepaid foreigner KYC and prepaid roaming are current, but Park Your Line is explicitly a postpaid service and Tourist Line is a separate visitor product; neither establishes generic prepaid long-term number retention.",
     "sourceId": "vodafone-eg-other-services-20261001"
+  },
+  {
+    "id": "evt-vodafone-nl-prepaid-2026-db-c20-20261003",
+    "routeId": "vodafone-nl-prepaid-2026",
+    "type": "lifecycle-acquisition-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current Vodafone NL prepaid keeps credit and number active with at least one paid call, SMS, mobile-data session or top-up every six months; after six months of inactivity there is a three-month frozen-credit recovery window. Current community evidence shows overseas acquisition/payment variability and successful SMS/OTP reception, while China-specific cellular OTP reliability remains evidence-scoped.",
+    "sourceId": "vodafone-nl-prepaid-lifecycle-20261003"
   },
   {
     "id": "evt-vodafone-tuti-brand-migration-one-20260929",

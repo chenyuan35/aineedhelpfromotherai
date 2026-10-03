@@ -305,6 +305,11 @@
     "marketId": "me"
   },
   {
+    "id": "one-nz",
+    "name": "One New Zealand",
+    "marketId": "nz"
+  },
+  {
     "id": "ooredoo-qa",
     "name": "Ooredoo Qatar",
     "marketId": "qa"
@@ -528,6 +533,11 @@
     "id": "vodafone-hu",
     "name": "One Hungary (legacy Vodafone HU id)",
     "marketId": "hu"
+  },
+  {
+    "id": "vodafone-nl",
+    "name": "Vodafone Netherlands",
+    "marketId": "nl"
   },
   {
     "id": "vodafone-pt",

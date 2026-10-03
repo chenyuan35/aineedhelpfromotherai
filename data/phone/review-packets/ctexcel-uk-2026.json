@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c20",
+  "observations": [],
+  "numberRanges": [],
+  "reviewNotes": "HOLD. The current UK-China route and provider retention product are real and operationally valuable, but current retention-plan eligibility, price and post-expiry mechanics remain opaque and community evidence conflicts on no-plan 90-day activity versus plan-specific retention. Preserve the conflict rather than inventing a universal annual keep cost.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "ctexcel-uk",
+    "networkId": "ee-uk",
+    "name": "CTExcel UK",
+    "marketId": "gb"
+  },
+  "route": {
+    "id": "ctexcel-uk-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "ctexcel-uk",
+    "displayName": "CTExcel UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+    "sourceIds": [
+      "ctexcel-uk-current-site-20261003",
+      "ctexcel-uk-retention-landing-20261003",
+      "naixi-ctexcel-10558-20260301",
+      "naixi-ctexcel-14169-20260804",
+      "linuxdo-ctexcel-2844702-20260902",
+      "nodeloc-ctexcel-101793-20260802"
+    ]
+  },
+  "sources": [
+    {
+      "id": "ctexcel-uk-current-site-20261003",
+      "url": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ctexcel-uk-retention-landing-20261003",
+      "url": "https://www.ctexcel.com/uk/guaranteeNum",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "naixi-ctexcel-10558-20260301",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=10558",
+      "type": "community-independent",
+      "reportedAt": "2026-03-01"
+    },
+    {
+      "id": "naixi-ctexcel-14169-20260804",
+      "url": "https://forum.naixi.net/thread-14169-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-08-04"
+    },
+    {
+      "id": "linuxdo-ctexcel-2844702-20260902",
+      "url": "https://linux.do/t/topic/2844702",
+      "type": "community-independent",
+      "reportedAt": "2026-09-02"
+    },
+    {
+      "id": "nodeloc-ctexcel-101793-20260802",
+      "url": "https://www.nodeloc.com/t/topic/101793",
+      "type": "community-independent",
+      "reportedAt": "2026-08-02"
+    }
+  ],
+  "sourceIds": [
+    "ctexcel-uk-current-site-20261003",
+    "ctexcel-uk-retention-landing-20261003",
+    "naixi-ctexcel-10558-20260301",
+    "naixi-ctexcel-14169-20260804",
+    "linuxdo-ctexcel-2844702-20260902",
+    "nodeloc-ctexcel-101793-20260802"
+  ],
+  "events": [
+    {
+      "id": "evt-ctexcel-uk-2026-db-c20-20261003",
+      "routeId": "ctexcel-uk-2026",
+      "type": "lifecycle-retention-conflict-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "CTExcel UK and its Back to China SIM Retention Plan are current. Community evidence repeatedly reports a 90-day activity rule for some no-plan accounts but also plan-dependent retention and conflicting post-plan behavior. The provider-visible pages do not cleanly expose current retention eligibility, price and post-expiry mechanics, so no universal lifecycle or annual keep cost is asserted.",
+      "sourceId": "ctexcel-uk-current-site-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-ctexcel-uk-2026-current-profile-20261003",
+      "routeId": "ctexcel-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "ctexcel-uk-2026",
+        "brandId": "ctexcel-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "CTExcel UK remains a current EE-hosted UK-China mobile route with UK SIM bundles, annual China data plans and a provider-listed Back to China SIM Retention Plan. Current community reports include purchase and activation from China, with network/IP/eSIM friction in some cases.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-price-not-cleanly-extracted"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Provider currently exposes a Back to China SIM Retention Plan. Community evidence conflicts: some users report roughly 90-day activity for no-plan accounts while plan users follow plan-specific retention. Exact eligibility, current price and post-plan clock are not cleanly provider-reconciled, so no universal interval or annual cost is modeled.",
+          "intervalDays": null,
+          "state": "current-retention-product-with-unresolved-mechanics"
+        },
+        "chinaActivation": "Current first-hand community reports show China-side purchase/activation and service use can work, but some users report UK-network/IP or eSIM setup friction. Treat China-first activation as operationally evidenced but not uniformly guaranteed.",
+        "kyc": "Current provider pages reviewed here do not establish a universal identity/KYC rule for all CTExcel UK acquisition cohorts.",
+        "payment": "Current official ordering/account paths exist; exact foreign-card acceptance and retention-plan payment execution were not independently normalized.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current community evidence supports China-side signal, SMS/number use and support recovery. Service-specific OTP reliability and long-term roaming enforcement remain evidence-scoped.",
+        "refund": "A 2026 first-hand signal-loss case reports fast official support recovery; broader replacement/refund outcomes remain unquantified.",
+        "trend": "current-operational-route-retention-mechanics-conflicted",
+        "guideEligible": false,
+        "holdReason": "The provider confirms a current Back to China retention product, but exact eligibility, price and post-expiry rules are not cleanly extractable; community reports also conflict on no-plan 90-day activity versus plan-dependent retention.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+        "tariffSummary": "Current UK-China plans and retention service exist, but this review intentionally does not publish a single annual keep cost or universal 90-day lifecycle.",
+        "guideSteps": [
+          "Choose the exact CTExcel plan/retention product before relying on any lifecycle rule.",
+          "Do not generalize a community 90-day activity report across plan cohorts.",
+          "Preserve China activation/support incidents and service-specific OTP outcomes as separate evidence."
+        ],
+        "sourceIds": [
+          "ctexcel-uk-current-site-20261003",
+          "ctexcel-uk-retention-landing-20261003",
+          "naixi-ctexcel-10558-20260301",
+          "naixi-ctexcel-14169-20260804",
+          "linuxdo-ctexcel-2844702-20260902",
+          "nodeloc-ctexcel-101793-20260802"
+        ]
+      }
+    }
+  ]
+}

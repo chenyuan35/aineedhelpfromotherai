@@ -168,6 +168,12 @@
     "marketId": "us"
   },
   {
+    "id": "ctexcel-uk",
+    "networkId": "ee-uk",
+    "name": "CTExcel UK",
+    "marketId": "gb"
+  },
+  {
     "id": "cyta-soeasy",
     "networkId": "cyta-cy",
     "name": "Cyta soeasy",
@@ -486,6 +492,12 @@
     "marketId": "me"
   },
   {
+    "id": "one-nz-prepay",
+    "networkId": "one-nz",
+    "name": "One NZ Prepay",
+    "marketId": "nz"
+  },
+  {
     "id": "ooredoo-hala",
     "networkId": "ooredoo-qa",
     "name": "Ooredoo Hala",
@@ -802,6 +814,12 @@
     "networkId": "vodafone-eg",
     "name": "Vodafone Egypt Prepaid",
     "marketId": "eg"
+  },
+  {
+    "id": "vodafone-nl-prepaid",
+    "networkId": "vodafone-nl",
+    "name": "Vodafone Netherlands Prepaid",
+    "marketId": "nl"
   },
   {
     "id": "vodafone-tuti",

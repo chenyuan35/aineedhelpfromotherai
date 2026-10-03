@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "one-nz-prepay-2026",
+    "marketId": "nz",
+    "networkId": "one-nz",
+    "brandId": "one-nz-prepay",
+    "displayName": "One NZ Prepay / Pay & Go",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://one.nz/prepay/pay-and-go/",
+    "sourceIds": [
+      "geekzone-one-nz-expiry-318647-202502",
+      "naixi-one-nz-10577-20260301",
+      "one-nz-mobile-terms-20261003",
+      "one-nz-paygo-20261003",
+      "one-nz-prepay-activation-20261003",
+      "one-nz-prepay-expiry-20261003",
+      "one-nz-prepay-roaming-20261003"
+    ]
+  },
+  "market": {
+    "id": "nz",
+    "name": "New Zealand",
+    "countryCode": "NZ"
+  },
+  "network": {
+    "id": "one-nz",
+    "name": "One New Zealand",
+    "marketId": "nz"
+  },
+  "brand": {
+    "id": "one-nz-prepay",
+    "networkId": "one-nz",
+    "name": "One NZ Prepay",
+    "marketId": "nz"
+  },
+  "metrics": {
+    "routeId": "one-nz-prepay-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "NZD",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "NZD",
+    "keepYearCostOriginal": 10.14,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 360
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "geekzone-one-nz-expiry-318647-202502",
+      "url": "https://www.geekzone.co.nz/forums.asp?forumid=40&page_no=3&topicid=318647",
+      "type": "community-independent",
+      "reportedAt": "2025-02-01"
+    },
+    {
+      "id": "naixi-one-nz-10577-20260301",
+      "url": "https://forum.naixi.net/thread-10577-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-03-01"
+    },
+    {
+      "id": "one-nz-mobile-terms-20261003",
+      "url": "https://one.nz/legal/terms-conditions/mobile/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-paygo-20261003",
+      "url": "https://one.nz/prepay/pay-and-go/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-activation-20261003",
+      "url": "https://one.nz/faq/prepay-activate-a-prepay-sim-using-your-handset",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-expiry-20261003",
+      "url": "https://one.nz/faq/when-does-prepay-credit-expire",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-roaming-20261003",
+      "url": "https://one.nz/prepay-roaming/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-one-nz-prepay-2026-db-c20-20261003",
+      "routeId": "one-nz-prepay-2026",
+      "type": "lifecycle-activation-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current One NZ terms make Prepay credit expire 360 days after top-up and the service inactive with number loss if no new credit is added. Minimum logged-in website/app top-up is NZD10. Physical Prepay activation requires One NZ mobile coverage; China is a current Prepay roaming destination, while service-specific OTP reliability is not guaranteed.",
+      "sourceId": "one-nz-mobile-terms-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-one-nz-prepay-2026-current-profile-20261003",
+      "routeId": "one-nz-prepay-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "one-nz-prepay-2026",
+        "brandId": "one-nz-prepay",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "One NZ currently offers Prepay Pay & Go via physical SIM or eSIM. Ordinary Prepay activation requires the handset to be within One NZ mobile coverage; current community evidence discusses long-term eSIM/top-up use but does not remove the NZ-first activation constraint.",
+        "landedCost": {
+          "currency": "NZD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-minimum-topup-known-sim-price-variable"
+        },
+        "keep": {
+          "currency": "NZD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10.14,
+          "yearCostCny": null,
+          "action": "Add at least NZD10 credit through the logged-in One NZ website or My One NZ app before 360 days since the last top-up. If no credit is added for 360 days, the Prepay service becomes inactive and the number is lost/recycled.",
+          "intervalDays": 360,
+          "state": "current-provider-topup-lifecycle"
+        },
+        "chinaActivation": "Ordinary Prepay initial activation requires One NZ mobile coverage, so China-first activation is not treated as supported. A user can manage/top up an already activated service remotely.",
+        "kyc": "No universal passport/residence KYC requirement was established from the reviewed standard Prepay materials; this review does not infer an exemption beyond those pages.",
+        "payment": "Current website/app top-up supports credit/debit cards and other methods. Community reports include successful overseas card top-ups, but foreign-card execution remains operational evidence rather than a provider guarantee.",
+        "wifiCalling": "Official Prepay roaming guidance supports WiFi Calling overseas; 2026 community users report WiFi Calling use in China.",
+        "roamingSms": "China is explicitly listed as a current Prepay roaming destination. Carrier roaming/TXT availability is established; third-party OTP success is not guaranteed.",
+        "refund": "A 2025 expiry incident documents discretionary one-off credit restoration after expiry, not a guaranteed recovery policy.",
+        "trend": "current-lifecycle-clear-nz-first-activation",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://one.nz/prepay/pay-and-go/",
+        "tariffSummary": "Pay & Go is current. Minimum logged-in website/app top-up is NZD10; top-up credit expires after 360 days and the number is deactivated/recycled if not topped up. China is a current Prepay roaming destination.",
+        "guideSteps": [
+          "Acquire and activate the ordinary Prepay service while within One NZ mobile coverage.",
+          "Top up at least NZD10 before 360 days from the prior top-up.",
+          "Treat China roaming availability and WiFi Calling as carrier capabilities, not a guarantee of every third-party OTP."
+        ],
+        "sourceIds": [
+          "one-nz-prepay-expiry-20261003",
+          "one-nz-mobile-terms-20261003",
+          "one-nz-prepay-activation-20261003",
+          "one-nz-prepay-roaming-20261003",
+          "one-nz-paygo-20261003",
+          "naixi-one-nz-10577-20260301",
+          "geekzone-one-nz-expiry-318647-202502"
+        ]
+      }
+    }
+  ]
+}

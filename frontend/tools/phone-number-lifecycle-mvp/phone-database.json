@@ -743,6 +743,11 @@
       "marketId": "me"
     },
     {
+      "id": "one-nz",
+      "name": "One New Zealand",
+      "marketId": "nz"
+    },
+    {
       "id": "ooredoo-qa",
       "name": "Ooredoo Qatar",
       "marketId": "qa"
@@ -968,6 +973,11 @@
       "marketId": "hu"
     },
     {
+      "id": "vodafone-nl",
+      "name": "Vodafone Netherlands",
+      "marketId": "nl"
+    },
+    {
       "id": "vodafone-pt",
       "name": "Vodafone Portugal",
       "marketId": "pt"
@@ -1166,6 +1176,12 @@
       "networkId": "att-us",
       "name": "Cricket Wireless",
       "marketId": "us"
+    },
+    {
+      "id": "ctexcel-uk",
+      "networkId": "ee-uk",
+      "name": "CTExcel UK",
+      "marketId": "gb"
     },
     {
       "id": "cyta-soeasy",
@@ -1486,6 +1502,12 @@
       "marketId": "me"
     },
     {
+      "id": "one-nz-prepay",
+      "networkId": "one-nz",
+      "name": "One NZ Prepay",
+      "marketId": "nz"
+    },
+    {
       "id": "ooredoo-hala",
       "networkId": "ooredoo-qa",
       "name": "Ooredoo Hala",
@@ -1802,6 +1824,12 @@
       "networkId": "vodafone-eg",
       "name": "Vodafone Egypt Prepaid",
       "marketId": "eg"
+    },
+    {
+      "id": "vodafone-nl-prepaid",
+      "networkId": "vodafone-nl",
+      "name": "Vodafone Netherlands Prepaid",
+      "marketId": "nl"
     },
     {
       "id": "vodafone-tuti",
@@ -2403,6 +2431,28 @@
         "cricket-payment-due-20261003",
         "cricket-prepaid-20261003",
         "cricket-wifi-calling-20261003"
+      ]
+    },
+    {
+      "id": "ctexcel-uk-2026",
+      "marketId": "gb",
+      "networkId": "ee-uk",
+      "brandId": "ctexcel-uk",
+      "displayName": "CTExcel UK",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+      "sourceIds": [
+        "ctexcel-uk-current-site-20261003",
+        "ctexcel-uk-retention-landing-20261003",
+        "linuxdo-ctexcel-2844702-20260902",
+        "naixi-ctexcel-10558-20260301",
+        "naixi-ctexcel-14169-20260804",
+        "nodeloc-ctexcel-101793-20260802"
       ]
     },
     {
@@ -3500,6 +3550,29 @@
       ]
     },
     {
+      "id": "one-nz-prepay-2026",
+      "marketId": "nz",
+      "networkId": "one-nz",
+      "brandId": "one-nz-prepay",
+      "displayName": "One NZ Prepay / Pay & Go",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://one.nz/prepay/pay-and-go/",
+      "sourceIds": [
+        "geekzone-one-nz-expiry-318647-202502",
+        "naixi-one-nz-10577-20260301",
+        "one-nz-mobile-terms-20261003",
+        "one-nz-paygo-20261003",
+        "one-nz-prepay-activation-20261003",
+        "one-nz-prepay-expiry-20261003",
+        "one-nz-prepay-roaming-20261003"
+      ]
+    },
+    {
       "id": "ooredoo-hala-qa-2026",
       "marketId": "qa",
       "networkId": "ooredoo-qa",
@@ -4576,6 +4649,27 @@
       ]
     },
     {
+      "id": "vodafone-nl-prepaid-2026",
+      "marketId": "nl",
+      "networkId": "vodafone-nl",
+      "brandId": "vodafone-nl-prepaid",
+      "displayName": "Vodafone Netherlands Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.vodafone.nl/abonnement/prepaid",
+      "sourceIds": [
+        "linuxdo-vodafone-nl-1872386-20260401",
+        "naixi-vodafone-nl-11013-20260401",
+        "vodafone-nl-prepaid-esim-20261003",
+        "vodafone-nl-prepaid-lifecycle-20261003",
+        "vodafone-nl-prepaid-product-20261003"
+      ]
+    },
+    {
       "id": "vodafone-tuti-hu-2026",
       "marketId": "hu",
       "networkId": "vodafone-hu",
@@ -5152,6 +5246,18 @@
       "reportedAt": "2026-10-03"
     },
     {
+      "id": "ctexcel-uk-current-site-20261003",
+      "url": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ctexcel-uk-retention-landing-20261003",
+      "url": "https://www.ctexcel.com/uk/guaranteeNum",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "cyta-soeasy-faq-20260929",
       "url": "https://www.cyta.com.cy/faq-soeasy/en",
       "type": "provider-official",
@@ -5312,6 +5418,12 @@
       "url": "https://www.whatsup.gr/api/strapi/uploads/allages_kartokinitis27022026.pdf",
       "type": "provider-official",
       "reportedAt": "2026-03-30"
+    },
+    {
+      "id": "geekzone-one-nz-expiry-318647-202502",
+      "url": "https://www.geekzone.co.nz/forums.asp?forumid=40&page_no=3&topicid=318647",
+      "type": "community-independent",
+      "reportedAt": "2025-02-01"
     },
     {
       "id": "giffgaff-official-credit-2026-09-23",
@@ -5728,6 +5840,12 @@
       "reportedAt": "2026-09-30"
     },
     {
+      "id": "linuxdo-ctexcel-2844702-20260902",
+      "url": "https://linux.do/t/topic/2844702",
+      "type": "community-independent",
+      "reportedAt": "2026-09-02"
+    },
+    {
       "id": "linuxdo-giffgaff-1615582",
       "url": "https://linux.do/t/topic/1615582",
       "type": "first-hand-community-thread",
@@ -5834,6 +5952,12 @@
       "url": "https://linux.do/t/topic/2417339",
       "type": "community-thread",
       "reportedAt": "2026-06-16"
+    },
+    {
+      "id": "linuxdo-vodafone-nl-1872386-20260401",
+      "url": "https://linux.do/t/topic/1872386",
+      "type": "community-independent",
+      "reportedAt": "2026-04-01"
     },
     {
       "id": "linuxdo-voxi-2188975",
@@ -6052,6 +6176,30 @@
       "reportedAt": "2024-12-18"
     },
     {
+      "id": "naixi-ctexcel-10558-20260301",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=10558",
+      "type": "community-independent",
+      "reportedAt": "2026-03-01"
+    },
+    {
+      "id": "naixi-ctexcel-14169-20260804",
+      "url": "https://forum.naixi.net/thread-14169-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-08-04"
+    },
+    {
+      "id": "naixi-one-nz-10577-20260301",
+      "url": "https://forum.naixi.net/thread-10577-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-03-01"
+    },
+    {
+      "id": "naixi-vodafone-nl-11013-20260401",
+      "url": "https://forum.naixi.net/thread-11013-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-04-01"
+    },
+    {
       "id": "nca-gh-registration-process-20261001",
       "url": "https://nca.org.gh/registration-process-2/",
       "type": "official",
@@ -6086,6 +6234,12 @@
       "url": "https://www.business.ncell.com.np/en/individual/tourist-sim",
       "type": "provider-official",
       "reportedAt": "2026-10-01"
+    },
+    {
+      "id": "nodeloc-ctexcel-101793-20260802",
+      "url": "https://www.nodeloc.com/t/topic/101793",
+      "type": "community-independent",
+      "reportedAt": "2026-08-02"
     },
     {
       "id": "nodeloc-voxi-102713",
@@ -7042,6 +7196,36 @@
       "reportedAt": "2026-09-30"
     },
     {
+      "id": "one-nz-mobile-terms-20261003",
+      "url": "https://one.nz/legal/terms-conditions/mobile/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-paygo-20261003",
+      "url": "https://one.nz/prepay/pay-and-go/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-activation-20261003",
+      "url": "https://one.nz/faq/prepay-activate-a-prepay-sim-using-your-handset",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-expiry-20261003",
+      "url": "https://one.nz/faq/when-does-prepay-credit-expire",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "one-nz-prepay-roaming-20261003",
+      "url": "https://one.nz/prepay-roaming/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "ooredoo-qa-buy-hala-20261002",
       "url": "https://www.ooredoo.qa/web/en/prepaid-plans/buy-prepaid-sim/",
       "type": "provider-official",
@@ -7912,6 +8096,24 @@
       "reportedAt": "2026-10-01"
     },
     {
+      "id": "vodafone-nl-prepaid-esim-20261003",
+      "url": "https://www.vodafone.nl/support/toestel-en-sim/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "vodafone-nl-prepaid-lifecycle-20261003",
+      "url": "https://www.vodafone.nl/support/prepaid/zo-werkt-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "vodafone-nl-prepaid-product-20261003",
+      "url": "https://www.vodafone.nl/abonnement/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "vodafone-official-network-trial-2026",
       "url": "https://binaries.vodafone.co.uk/gbnnsauqav4t/46FjjluZ6iqfd7d0OcvCiX/af7b13abd16aad45fffd9bcb1179f9cf/network-trial-may-2026.pdf",
       "type": "provider-commercial-terms",
@@ -8254,6 +8456,15 @@
       "scope": "route",
       "outcome": "Cricket 12-month Unlimited remains USD300 prepaid; unpaid service is suspended with a 60-day number-recovery boundary. Cricket Passport now includes China, while Wi-Fi Calling requires prior Cricket-network attachment and China-first acquisition/payment remain unresolved.",
       "sourceId": "cricket-multimonth-20261003"
+    },
+    {
+      "id": "evt-ctexcel-uk-2026-db-c20-20261003",
+      "routeId": "ctexcel-uk-2026",
+      "type": "lifecycle-retention-conflict-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "CTExcel UK and its Back to China SIM Retention Plan are current. Community evidence repeatedly reports a 90-day activity rule for some no-plan accounts but also plan-dependent retention and conflicting post-plan behavior. The provider-visible pages do not cleanly expose current retention eligibility, price and post-expiry mechanics, so no universal lifecycle or annual keep cost is asserted.",
+      "sourceId": "ctexcel-uk-current-site-20261003"
     },
     {
       "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
@@ -8661,6 +8872,15 @@
       "sourceId": "one-me-tourist-20260930"
     },
     {
+      "id": "evt-one-nz-prepay-2026-db-c20-20261003",
+      "routeId": "one-nz-prepay-2026",
+      "type": "lifecycle-activation-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current One NZ terms make Prepay credit expire 360 days after top-up and the service inactive with number loss if no new credit is added. Minimum logged-in website/app top-up is NZD10. Physical Prepay activation requires One NZ mobile coverage; China is a current Prepay roaming destination, while service-specific OTP reliability is not guaranteed.",
+      "sourceId": "one-nz-mobile-terms-20261003"
+    },
+    {
       "id": "evt-ooredoo-hala-qa-2026-db-c14-20261002",
       "routeId": "ooredoo-hala-qa-2026",
       "type": "lifecycle-acquisition-reconciliation",
@@ -8929,6 +9149,15 @@
       "scope": "route",
       "outcome": "Vodafone Egypt prepaid foreigner KYC and prepaid roaming are current, but Park Your Line is explicitly a postpaid service and Tourist Line is a separate visitor product; neither establishes generic prepaid long-term number retention.",
       "sourceId": "vodafone-eg-other-services-20261001"
+    },
+    {
+      "id": "evt-vodafone-nl-prepaid-2026-db-c20-20261003",
+      "routeId": "vodafone-nl-prepaid-2026",
+      "type": "lifecycle-acquisition-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Vodafone NL prepaid keeps credit and number active with at least one paid call, SMS, mobile-data session or top-up every six months; after six months of inactivity there is a three-month frozen-credit recovery window. Current community evidence shows overseas acquisition/payment variability and successful SMS/OTP reception, while China-specific cellular OTP reliability remains evidence-scoped.",
+      "sourceId": "vodafone-nl-prepaid-lifecycle-20261003"
     },
     {
       "id": "evt-vodafone-tuti-brand-migration-one-20260929",
@@ -10632,6 +10861,66 @@
           "cricket-passport-countries-20261003",
           "cricket-passport-terms-20261003",
           "cricket-prepaid-20261003"
+        ]
+      }
+    },
+    {
+      "id": "snap-ctexcel-uk-2026-current-profile-20261003",
+      "routeId": "ctexcel-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "ctexcel-uk-2026",
+        "brandId": "ctexcel-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "CTExcel UK remains a current EE-hosted UK-China mobile route with UK SIM bundles, annual China data plans and a provider-listed Back to China SIM Retention Plan. Current community reports include purchase and activation from China, with network/IP/eSIM friction in some cases.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-price-not-cleanly-extracted"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Provider currently exposes a Back to China SIM Retention Plan. Community evidence conflicts: some users report roughly 90-day activity for no-plan accounts while plan users follow plan-specific retention. Exact eligibility, current price and post-plan clock are not cleanly provider-reconciled, so no universal interval or annual cost is modeled.",
+          "intervalDays": null,
+          "state": "current-retention-product-with-unresolved-mechanics"
+        },
+        "chinaActivation": "Current first-hand community reports show China-side purchase/activation and service use can work, but some users report UK-network/IP or eSIM setup friction. Treat China-first activation as operationally evidenced but not uniformly guaranteed.",
+        "kyc": "Current provider pages reviewed here do not establish a universal identity/KYC rule for all CTExcel UK acquisition cohorts.",
+        "payment": "Current official ordering/account paths exist; exact foreign-card acceptance and retention-plan payment execution were not independently normalized.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current community evidence supports China-side signal, SMS/number use and support recovery. Service-specific OTP reliability and long-term roaming enforcement remain evidence-scoped.",
+        "refund": "A 2026 first-hand signal-loss case reports fast official support recovery; broader replacement/refund outcomes remain unquantified.",
+        "trend": "current-operational-route-retention-mechanics-conflicted",
+        "guideEligible": false,
+        "holdReason": "The provider confirms a current Back to China retention product, but exact eligibility, price and post-expiry rules are not cleanly extractable; community reports also conflict on no-plan 90-day activity versus plan-dependent retention.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+        "tariffSummary": "Current UK-China plans and retention service exist, but this review intentionally does not publish a single annual keep cost or universal 90-day lifecycle.",
+        "guideSteps": [
+          "Choose the exact CTExcel plan/retention product before relying on any lifecycle rule.",
+          "Do not generalize a community 90-day activity report across plan cohorts.",
+          "Preserve China activation/support incidents and service-specific OTP outcomes as separate evidence."
+        ],
+        "sourceIds": [
+          "ctexcel-uk-current-site-20261003",
+          "ctexcel-uk-retention-landing-20261003",
+          "naixi-ctexcel-10558-20260301",
+          "naixi-ctexcel-14169-20260804",
+          "linuxdo-ctexcel-2844702-20260902",
+          "nodeloc-ctexcel-101793-20260802"
         ]
       }
     },
@@ -14518,6 +14807,67 @@
           "Register and acquire the tourist SIM/eSIM.",
           "Use online top-up before the desired retention deadline.",
           "Do not rely on Tourist Package for roaming SMS/OTP outside Montenegro."
+        ]
+      }
+    },
+    {
+      "id": "snap-one-nz-prepay-2026-current-profile-20261003",
+      "routeId": "one-nz-prepay-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "one-nz-prepay-2026",
+        "brandId": "one-nz-prepay",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "One NZ currently offers Prepay Pay & Go via physical SIM or eSIM. Ordinary Prepay activation requires the handset to be within One NZ mobile coverage; current community evidence discusses long-term eSIM/top-up use but does not remove the NZ-first activation constraint.",
+        "landedCost": {
+          "currency": "NZD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": 10,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-minimum-topup-known-sim-price-variable"
+        },
+        "keep": {
+          "currency": "NZD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10.14,
+          "yearCostCny": null,
+          "action": "Add at least NZD10 credit through the logged-in One NZ website or My One NZ app before 360 days since the last top-up. If no credit is added for 360 days, the Prepay service becomes inactive and the number is lost/recycled.",
+          "intervalDays": 360,
+          "state": "current-provider-topup-lifecycle"
+        },
+        "chinaActivation": "Ordinary Prepay initial activation requires One NZ mobile coverage, so China-first activation is not treated as supported. A user can manage/top up an already activated service remotely.",
+        "kyc": "No universal passport/residence KYC requirement was established from the reviewed standard Prepay materials; this review does not infer an exemption beyond those pages.",
+        "payment": "Current website/app top-up supports credit/debit cards and other methods. Community reports include successful overseas card top-ups, but foreign-card execution remains operational evidence rather than a provider guarantee.",
+        "wifiCalling": "Official Prepay roaming guidance supports WiFi Calling overseas; 2026 community users report WiFi Calling use in China.",
+        "roamingSms": "China is explicitly listed as a current Prepay roaming destination. Carrier roaming/TXT availability is established; third-party OTP success is not guaranteed.",
+        "refund": "A 2025 expiry incident documents discretionary one-off credit restoration after expiry, not a guaranteed recovery policy.",
+        "trend": "current-lifecycle-clear-nz-first-activation",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://one.nz/prepay/pay-and-go/",
+        "tariffSummary": "Pay & Go is current. Minimum logged-in website/app top-up is NZD10; top-up credit expires after 360 days and the number is deactivated/recycled if not topped up. China is a current Prepay roaming destination.",
+        "guideSteps": [
+          "Acquire and activate the ordinary Prepay service while within One NZ mobile coverage.",
+          "Top up at least NZD10 before 360 days from the prior top-up.",
+          "Treat China roaming availability and WiFi Calling as carrier capabilities, not a guarantee of every third-party OTP."
+        ],
+        "sourceIds": [
+          "one-nz-prepay-expiry-20261003",
+          "one-nz-mobile-terms-20261003",
+          "one-nz-prepay-activation-20261003",
+          "one-nz-prepay-roaming-20261003",
+          "one-nz-paygo-20261003",
+          "naixi-one-nz-10577-20260301",
+          "geekzone-one-nz-expiry-318647-202502"
         ]
       }
     },
@@ -18425,6 +18775,65 @@
       }
     },
     {
+      "id": "snap-vodafone-nl-prepaid-2026-current-profile-20261003",
+      "routeId": "vodafone-nl-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "vodafone-nl-prepaid-2026",
+        "brandId": "vodafone-nl-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Vodafone Netherlands currently sells prepaid SIM and prepaid eSIM. The official product page lists top-up from EUR5; 2026 community reports show purchase/payment can work with international cards but varies by IP/card context.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-free-sim-order-entry"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.15,
+          "yearCostOriginal": 0.3,
+          "yearCostCny": null,
+          "action": "Make at least one paid call, SMS, mobile-data session or top-up every six months. A standard SMS is currently EUR0.15, so two paid SMS actions per year are the lowest directly priced qualifying usage modeled here; top-up is also valid.",
+          "intervalDays": 180,
+          "state": "current-provider-six-month-qualifying-usage"
+        },
+        "chinaActivation": "Remote purchase/payment from China is not provider-guaranteed. 2026 community reports show successful overseas ordering/payment as well as card/IP failures; treat China-first acquisition as variable.",
+        "kyc": "No identity/KYC requirement was established from the reviewed prepaid pages; account registration may unlock the advertised first-top-up bonus, but this review does not infer a universal KYC exemption.",
+        "payment": "Official online top-up is current. Community reports show international-card purchase/payment can succeed but is not uniformly reproducible.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Vodafone publishes prepaid rates for use abroad, and community reports show SMS/OTP reception in overseas setups. Mainland-China cellular incoming-SMS/third-party OTP reliability was not independently provider-reconciled in this bounded review.",
+        "refund": "Current eSIM/SIM replacement recovery abroad was not fully reconciled.",
+        "trend": "current-lifecycle-clear-acquisition-variable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.vodafone.nl/abonnement/prepaid",
+        "tariffSummary": "Current standard prepaid: EUR0.20/min, EUR0.15/SMS, EUR0.10/MB; top-up from EUR5. One paid use or top-up every six months preserves validity, followed by a three-month recovery window if missed.",
+        "guideSteps": [
+          "Acquire a current Vodafone NL prepaid SIM/eSIM through the official prepaid path.",
+          "Record the first-use date and make one qualifying paid use or top-up before six months elapse.",
+          "Treat China-specific OTP delivery and remote payment as evidence-scoped rather than guaranteed."
+        ],
+        "sourceIds": [
+          "vodafone-nl-prepaid-lifecycle-20261003",
+          "vodafone-nl-prepaid-product-20261003",
+          "vodafone-nl-prepaid-esim-20261003",
+          "naixi-vodafone-nl-11013-20260401",
+          "linuxdo-vodafone-nl-1872386-20260401"
+        ]
+      }
+    },
+    {
       "id": "snap-vodafone-tuti-hu-2026-current-profile-20260929",
       "routeId": "vodafone-tuti-hu-2026",
       "kind": "current-profile",
@@ -19314,6 +19723,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "ctexcel-uk-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
+    },
+    {
       "routeId": "cyta-soeasy-cy-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -19974,6 +20395,18 @@
       "keepIntervalDays": 90
     },
     {
+      "routeId": "one-nz-prepay-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "NZD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "NZD",
+      "keepYearCostOriginal": 10.14,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 360
+    },
+    {
       "routeId": "ooredoo-hala-qa-2026",
       "checkedAt": "2026-10-02",
       "metricState": "current-profile",
@@ -20632,6 +21065,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "vodafone-nl-prepaid-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 0,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": 0.3,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 180
     },
     {
       "routeId": "vodafone-tuti-hu-2026",

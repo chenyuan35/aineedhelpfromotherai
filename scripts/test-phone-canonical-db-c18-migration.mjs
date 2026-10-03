@@ -27,7 +27,7 @@ const omantel = buildCanonicalComparisonRoute(canonical, 'omantel-om-2026');
 assert.equal(omantel.keep.intervalDays, 90); assert.equal(omantel.keep.observedActionCost, 7); assert.equal(omantel.keep.yearCostOriginal, 28); assert.match(omantel.kyc, /passport|residence/i); assert.match(omantel.roamingSms, /free of charge|incoming SMS/i); assert.equal(omantel.holdReason, null);
 const btc = buildCanonicalComparisonRoute(canonical, 'btc-bs-2026');
 assert.equal(btc.keep.intervalDays, null); assert.match(btc.holdReason, /lifecycle|keep-alive|foreigner/i); assert.match(btc.acquisitionSummary, /prepaid|April 2025/i);
-assert.equal(canonical.routes.length, 145); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 142); assert.equal(networks.length, 112); assert.equal(sources.length, 547);
+assert.equal(canonical.routes.length, 148); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 145); assert.equal(networks.length, 114); assert.equal(sources.length, 565);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);
