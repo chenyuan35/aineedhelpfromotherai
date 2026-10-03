@@ -1,0 +1,42 @@
+name: DB-C19 materialize
+
+on:
+  push:
+    branches: ["phone/db-c19"]
+    paths:
+      - ".github/workflows/db-c19-materialize.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phone/db-c19
+          fetch-depth: 0
+      - name: Apply exact reviewed DB-C19 patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .tmp/db-c19.patch.gz.b64 | gzip -d > /tmp/db-c19.patch
+          echo "d043a5073712d549066acf660ff2334c4fe75dc888e16c6550288e1553153717  /tmp/db-c19.patch" | sha256sum -c -
+          git apply --check /tmp/db-c19.patch
+          git apply /tmp/db-c19.patch
+          node scripts/test-phone-canonical-db-c19-migration.mjs
+          npm run phone:data:check
+          git diff --check
+      - name: Commit reviewed branch state and remove bootstrap files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .tmp/db-c19.patch.gz.b64 .github/workflows/db-c19-materialize.yml
+          rmdir .tmp 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Normalize Phone DB-C19 routes"
+          git push origin HEAD:phone/db-c19
