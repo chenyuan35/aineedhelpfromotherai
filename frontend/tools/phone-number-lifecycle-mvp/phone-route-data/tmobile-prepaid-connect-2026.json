@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "tmobile-prepaid-connect-2026",
+    "marketId": "us",
+    "networkId": "tmobile-us",
+    "brandId": "tmobile-prepaid-us",
+    "displayName": "Connect by T-Mobile 5GB",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://prepaid.t-mobile.com/connect/phone-plans",
+    "sourceIds": [
+      "tmobile-connect-plans-20261003",
+      "tmobile-prepaid-esim-20261003",
+      "tmobile-prepaid-lifecycle-20261003",
+      "tmobile-prepaid-roaming-20261003"
+    ]
+  },
+  "market": {
+    "id": "us",
+    "name": "United States",
+    "countryCode": "US"
+  },
+  "network": {
+    "id": "tmobile-us",
+    "name": "T-Mobile US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "tmobile-prepaid-us",
+    "networkId": "tmobile-us",
+    "name": "T-Mobile Prepaid",
+    "marketId": "us"
+  },
+  "metrics": {
+    "routeId": "tmobile-prepaid-connect-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "USD",
+    "acquisitionCostOriginal": 15,
+    "acquisitionCostCny": null,
+    "keepCurrency": "USD",
+    "keepYearCostOriginal": 180,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "tmobile-connect-plans-20261003",
+      "url": "https://prepaid.t-mobile.com/connect/phone-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-esim-20261003",
+      "url": "https://www.t-mobile.com/support/account/prepaid-esim-activation",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-lifecycle-20261003",
+      "url": "https://www.t-mobile.com/support/account/prepaid-suspend-cancel",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-roaming-20261003",
+      "url": "https://www.t-mobile.com/coverage/prepaid-international-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-tmobile-prepaid-connect-2026-db-c16-20261003",
+      "routeId": "tmobile-prepaid-connect-2026",
+      "type": "lifecycle-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Connect remains USD15/month for 5GB. Current prepaid support allows cancellation and number loss after more than 120 days in Not Paid status. Current prepaid roaming publishes USD0.10 incoming SMS outside Canada, includes China in the country table and provides no prepaid data roaming.",
+      "sourceId": "tmobile-prepaid-lifecycle-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-tmobile-prepaid-connect-2026-current-profile-20261003",
+      "routeId": "tmobile-prepaid-connect-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "tmobile-prepaid-connect-2026",
+        "brandId": "tmobile-prepaid-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Connect by T-Mobile remains a current prepaid product. The entry plan is USD15/month with 5GB and unlimited talk/text; T-Mobile states there are no credit checks. Current web eSIM activation supports compatible unlocked devices and collects name, email, ZIP code and a payment method before issuing the eSIM QR code.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 15,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 15,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-entry-plan-connection-fee-not-assumed"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 15,
+          "yearCostOriginal": 180,
+          "yearCostCny": null,
+          "action": "Keep the USD15 Connect plan paid monthly. T-Mobile automatically suspends prepaid accounts in Not Paid status and says accounts in Not Paid for more than 120 days may be cancelled and the mobile number lost. Treat the 120-day period as recovery only.",
+          "intervalDays": 30,
+          "state": "current-provider-monthly-plus-120d-not-paid-recovery"
+        },
+        "chinaActivation": "T-Mobile current web eSIM flow can issue a QR code after online plan/payment setup, but the provider page does not establish a China-first activation or foreign-geolocation path. Treat remote China activation as unverified.",
+        "kyc": "Connect by T-Mobile explicitly states there are no credit checks. The web eSIM flow collects name, email and ZIP code; broader foreign-subscriber identity requirements are not established here.",
+        "payment": "A payment method is required in the current web eSIM flow. Direct acceptance/reliability of foreign-issued cards is not established by the reviewed prepaid pages.",
+        "wifiCalling": "T-Mobile supports Wi-Fi Calling generally, but route-specific overseas setup behavior was not independently reverified in this bounded review.",
+        "roamingSms": "T-Mobile current prepaid roaming page prices SMS in all other countries at USD0.50 to send and USD0.10 to receive, lists China in the prepaid country table, and says prepaid data roaming is unavailable. Third-party OTP delivery remains service-dependent and is not guaranteed.",
+        "refund": "not reconciled",
+        "trend": "current-product-provider-roaming-and-lifecycle-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://prepaid.t-mobile.com/connect/phone-plans",
+        "tariffSummary": "Connect 5GB: USD15/month. More than 120 days Not Paid may cancel the line. Prepaid roaming lists China; incoming SMS USD0.10, outgoing SMS USD0.50, no data roaming.",
+        "guideSteps": [
+          "Use the official Connect plan and supported prepaid/eSIM activation flow.",
+          "Keep the monthly plan paid; do not plan around the 120-day Not Paid recovery window.",
+          "For overseas use, rely only on T-Mobile current prepaid roaming rates and keep third-party OTP compatibility as separate evidence."
+        ],
+        "sourceIds": [
+          "tmobile-connect-plans-20261003",
+          "tmobile-prepaid-lifecycle-20261003",
+          "tmobile-prepaid-esim-20261003",
+          "tmobile-prepaid-roaming-20261003"
+        ]
+      }
+    }
+  ]
+}

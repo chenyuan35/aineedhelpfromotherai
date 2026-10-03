@@ -372,6 +372,12 @@
     "marketId": "ma"
   },
   {
+    "id": "mint-mobile-us",
+    "networkId": "tmobile-us",
+    "name": "Mint Mobile",
+    "marketId": "us"
+  },
+  {
     "id": "mobal-japan-jp",
     "marketId": "jp",
     "networkId": null,
@@ -684,6 +690,12 @@
     "marketId": "it"
   },
   {
+    "id": "tmobile-prepaid-us",
+    "networkId": "tmobile-us",
+    "name": "T-Mobile Prepaid",
+    "marketId": "us"
+  },
+  {
     "id": "trip-com-china-mobile-cmlink-cn",
     "marketId": "cn",
     "networkId": null,
@@ -730,6 +742,12 @@
     "networkId": "vinaphone-vn",
     "name": "VinaPhone",
     "marketId": "vn"
+  },
+  {
+    "id": "visible-us",
+    "networkId": "verizon-us",
+    "name": "Visible",
+    "marketId": "us"
   },
   {
     "id": "vodacom-prepaid",

@@ -1026,6 +1026,30 @@
     "reportedAt": "2026-03-18"
   },
   {
+    "id": "mint-mobile-overseas-activation-community-20260916",
+    "url": "https://www.reddit.com/r/mintmobile/comments/1whnsja/activating_abroad_by_vpn/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-16"
+  },
+  {
+    "id": "mint-mobile-plans-20261003",
+    "url": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "mint-mobile-roaming-checklist-20261003",
+    "url": "https://www.mintmobile.com/help/international-roaming-checklist/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "mint-mobile-terms-20261003",
+    "url": "https://www.mintmobile.com/plan-terms-and-conditions/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "movistar-pe-esim-20261003",
     "url": "https://www.movistar.com.pe/movil/esim",
     "type": "provider-official",
@@ -2796,6 +2820,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "tmobile-connect-plans-20261003",
+    "url": "https://prepaid.t-mobile.com/connect/phone-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "tmobile-prepaid-esim-20261003",
+    "url": "https://www.t-mobile.com/support/account/prepaid-esim-activation",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "tmobile-prepaid-lifecycle-20261003",
+    "url": "https://www.t-mobile.com/support/account/prepaid-suspend-cancel",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "tmobile-prepaid-roaming-20261003",
+    "url": "https://www.t-mobile.com/coverage/prepaid-international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "tokman-hotmobile-66-180d-20260929",
     "url": "https://tokman.co.il/hot-mobile-50-nis-charge-valid-for-a180-days",
     "type": "commercial-reseller",
@@ -2872,6 +2920,42 @@
     "url": "https://digishop.vnpt.vn/tin-tuc-km/tu-van/sim-vinaphone-gia-bao-nhieu",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "visible-annual-plan-20261003",
+    "url": "https://www.visible.com/plans/annual",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "visible-global-pass-20261003",
+    "url": "https://www.visible.com/globalpass",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "visible-overseas-activation-community-20250120",
+    "url": "https://www.reddit.com/r/Visible/comments/1i5r8qk/activating_esim_when_you_are_abroad_outside_us/",
+    "type": "provider-moderated-community",
+    "reportedAt": "2025-01-20"
+  },
+  {
+    "id": "visible-terms-20261003",
+    "url": "https://www.visible.com/legal/terms-and-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "visible-wifi-calling-20261003",
+    "url": "https://www.visible.com/content/value/visible/en/help/about-visible/plan-features.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "visible-wifi-community-20260424",
+    "url": "https://www.reddit.com/r/Visible/comments/1subzfi/wifi_calling_works_abroad_even_without_global_pass/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-24"
   },
   {
     "id": "vodafone-eg-other-services-20261001",
