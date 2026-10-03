@@ -13,6 +13,7 @@ This directory is the reviewed backstage data layer for travel/data eSIM evidenc
 - `offers` — versioned price/allowance/validity snapshots preserving the original offer object and source timestamp.
 
 The source snapshot plus delta model is append-only. Later prices or mechanics are additional evidence versions; they do not overwrite earlier community snapshots.
+`community-outcome-snapshot` entries may capture dated direct-user availability, failure, device-variance or order-state observations when they add operational evidence without defining a new price offer.
 
 ## Evidence rules
 
