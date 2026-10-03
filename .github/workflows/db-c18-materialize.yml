@@ -1,0 +1,44 @@
+name: DB-C18 materialize
+
+on:
+  push:
+    branches: ["phone/db-c18"]
+    paths:
+      - ".github/workflows/db-c18-materialize.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phone/db-c18
+          fetch-depth: 0
+
+      - name: Apply exact reviewed DB-C18 patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .tmp/db-c18.patch.gz.b64 | gzip -d > /tmp/db-c18.patch
+          echo "5ae430636950083727fed55c41ed715a625399c340e23d1acf0d3f7e07cc9f65  /tmp/db-c18.patch" | sha256sum -c -
+          git apply --check /tmp/db-c18.patch
+          git apply /tmp/db-c18.patch
+          node scripts/test-phone-canonical-db-c18-migration.mjs
+          npm run phone:data:check
+          git diff --check
+
+      - name: Commit reviewed branch state and remove bootstrap files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .tmp/db-c18.patch.gz.b64 .github/workflows/db-c18-materialize.yml
+          rmdir .tmp 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Normalize Phone DB-C18 routes"
+          git push origin HEAD:phone/db-c18
