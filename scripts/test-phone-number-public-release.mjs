@@ -129,6 +129,11 @@ search.value = 'CMLink'; search.dispatchEvent(new dom.window.Event('input', { bu
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('CMLink UK'), 'HOLD route search');
 dom.window.document.querySelector('[data-index-route="cmlink-uk-keep-number-2026"]')?.click();
 await waitFor(() => dom.window.document.querySelector('#directory-guide-panel')?.textContent.includes('HOLD — unresolved constraints remain'), 'HOLD warning in lazy detail');
+search.value = ''; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+const japan = dom.window.document.querySelector('#country-filter'); japan.value = 'Japan'; japan.dispatchEvent(new dom.window.Event('change', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Japan comparison view'), 'Japan market view');
+assert.equal(dom.window.document.querySelector('[data-index-route="sakura-japan-voice-data"]'), null, 'canonical Sakura alias must not duplicate the historical comparison row in market view');
+assert.match(dom.window.document.querySelector('#route-list')?.textContent||'', /Sakura Mobile/, 'Japan market must still show the Sakura product once as a route');
 dom.window.document.querySelector('[data-family="data"]')?.click();
 search.value = 'Mobal Japan Tourist Data'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Mobal Japan Tourist Data SIM'), 'data-family canonical search');

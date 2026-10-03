@@ -222,6 +222,7 @@ function viewEntries(){
   return Object.entries(radarView.routes).map(([id,v])=>({id,view:v,route:routeById(id)})).filter(x=>x.route&&x.view.family===state.family).sort((a,b)=>(a.view.order||999)-(b.view.order||999));
 }
 function canonicalRows(){return (canonicalIndex?.routes||[]).filter(r=>r.family===state.family)}
+const canonicalLegacyAliases=new Map([['tello-us','tello-paygo-credit-2026'],['ultra-paygo-us','ultra-mobile-paygo-3-2026'],['h2o-paygo-us','h2o-paygo-10-90d-2026'],['mobal-japan-voice-data','mobal-japan-voice-2026'],['a1-croatia-prepaid-esim','a1-hr-prepaid-2026'],['sakura-japan-voice-data','sakura-mobile-voice-2026']]);
 function render(){
   keepFootnote.hidden=state.family!=='long-term';
   routeSearch.hidden=false;
@@ -371,7 +372,7 @@ function renderDirectory(){
   if(!globalDirectory){routeList.innerHTML='<p class="pr-loading">Loading market evidence…</p>';routeCount.textContent=`Loading ${state.country}`;showMore.hidden=true;ensureGlobalDirectory().then(renderDirectory).catch(err=>{routeList.innerHTML=`<div class="pr-error"><strong>Phone Radar could not load market evidence.</strong><p>${esc(err.message)}</p></div>`});return}
   const canonicalMarket=canonicalRows().filter(r=>r.marketName===state.country);
   let routes=(globalDirectory.routes||[]).filter(r=>r.marketName===state.country);routes=sortedDirRoutes(routes);
-  const globalIds=new Set(routes.map(r=>r.id));const extras=canonicalSort(canonicalMarket.filter(r=>!globalIds.has(r.id)));
+  const globalIds=new Set(routes.map(r=>r.id));const extras=canonicalSort(canonicalMarket.filter(r=>!globalIds.has(r.id)&&!globalIds.has(canonicalLegacyAliases.get(r.id))));
   const visible=state.showAll?routes:routes.slice(0,20);routeCount.textContent=`${canonicalMarket.length} reviewed routes in ${state.country}`;showMore.hidden=visible.length>=routes.length;showMore.textContent=`Show ${routes.length-visible.length} more comparison routes`;
   const groupMap=new Map();for(const r of visible){const b=dirBrand(r.brandId),n=dirNetwork(b?.networkId),key=n?.id||'other';if(!groupMap.has(key))groupMap.set(key,{network:n,routes:[]});groupMap.get(key).routes.push(r)}const groups=[...groupMap.values()];
   const header='<thead><tr><th>Brand / route</th><th>Start cost</th><th>Keep / year</th><th class="pr-col-detail">Keep action</th><th class="pr-col-detail">Plan / data</th><th class="pr-col-detail">China / overseas</th><th class="pr-col-detail">KYC / payment</th><th class="pr-col-detail">Wi-Fi / roaming SMS</th><th>App evidence</th><th class="pr-col-detail">ChatGPT / Codex</th><th class="pr-col-detail">Telegram</th><th class="pr-col-detail">WhatsApp</th><th>Loss / closure history</th><th class="pr-col-detail">Refund / recovery</th><th class="pr-col-detail">Trend</th><th>Checked</th><th>Actions</th></tr></thead>';
