@@ -35,6 +35,13 @@
         "verifiedAt": "2026-10-03",
         "matchBasis": "Public post matches the immutable user-supplied delta, including GG and StellarSecurity updates plus entries 47-59."
       }
+    },
+    {
+      "id": "linuxdo-2923258-usims-outcomes-2026-10-03",
+      "path": "data/phone/inbox/community-usims-linuxdo-2923258-2026-10-03.json",
+      "capturedAt": "2026-10-03",
+      "role": "community-outcome-snapshot",
+      "expectedRecordCount": 1
     }
   ],
   "normalizationPolicy": {
