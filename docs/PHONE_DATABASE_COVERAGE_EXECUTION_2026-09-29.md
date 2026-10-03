@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C18
+## Current verified state after DB-C19
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **143 routes / 84 markets / 140 brands / 110 networks / 537 sources**;
-- comparison↔canonical route-ID overlap: **132**;
-- comparison routes still legacy-only: **3** (`sakura-mobile-voice-2026`, `digicel-jm-2026`, `tigo-tz-2026`);
+- canonical normalized database: **145 routes / 86 markets / 142 brands / 112 networks / 547 sources**;
+- comparison↔canonical route-ID overlap: **134**;
+- comparison route IDs without a same-ID canonical row: **1** (`sakura-mobile-voice-2026`, intentionally excluded as a same-product alias of canonical `sakura-japan-voice-data`);
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -364,4 +364,15 @@ Post-DB-C18 state: **143 canonical routes / 84 markets / 140 brands / 110 networ
 
 Release: PR #354 squash-merged as `02323f3b787a7c11b434a2e495f2739f590d9b58`; CI #222, Eval Gate #1055 and Vercel Preview passed. Production deployment `dpl_HWAt3zxuDBosJ8fFkJyd7nH63qTS` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C18 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
 
-DB-C19 next bounded batch: `digicel-jm-2026`, `tigo-tz-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+## DB-C19 — completed 2026-10-03
+
+The final two non-alias comparison route IDs were independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `digicel-jm-2026` — HOLD. Current Digicel Jamaica terms establish deactivation after four months with no usage and new-number assignment after reactivation. Current visitor acquisition, international top-up and China roaming are active, but the reviewed terms do not define the exact minimum qualifying activity that resets the four-month clock, so no annual keep-alive cost is inferred.
+- `tigo-tz-2026` — HOLD. The stable legacy Tigo route ID maps to the same continuing operator now branded Yas Tanzania rather than creating a duplicate product. Current Yas terms allow suspension/number re-allocation after 90 days of continuous non-use and current roaming lists China. TCRA visitor registration is scoped to non-citizens staying no more than four months, so a durable foreign-user retention route is not established.
+
+Post-DB-C19 state: **145 canonical routes / 86 markets / 142 brands / 112 networks / 547 sources / 134 comparison-overlap route IDs / 1 comparison ID without a same-ID canonical row / 3 explicit indexable routes**. The remaining comparison ID is `sakura-mobile-voice-2026`, intentionally excluded as a same-product alias of canonical `sakura-japan-voice-data`. Review-packet checks, dedicated DB-C19 regression, `npm run phone:data:check`, full frontend build and GitHub release gates passed. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #356 squash-merged as `f9c151b8a33d3edc1160893977a5c6c60d99a361`; CI #224, Eval Gate #1059 and Vercel Preview passed. Production deployment `dpl_CtnXBiZ5cP19ggPFTYDbW1feJ1E8` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and both DB-C19 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
+
+Next bounded task: run a **post-legacy coverage-gap audit** before defining DB-C20. Use community-first evidence to identify genuinely missing low-cost long-term routes outside the current 135-route comparison set, dedupe aliases/rebrands against canonical, sample-audit the strongest candidates, and select at most three evidence-backed candidates for a later DB-C20 batch. The audit itself does not change canonical admission, public URLs, sitemap or indexability.
