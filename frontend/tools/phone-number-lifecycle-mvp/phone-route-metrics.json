@@ -746,6 +746,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "mint-mobile-us-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 180,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 180,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "mobal-japan-data-physical",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -1406,6 +1418,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "tmobile-prepaid-connect-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 15,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 180,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "trip-cmlink-china-data",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -1500,6 +1524,18 @@
       "keepYearCostOriginal": 120000,
       "keepYearCostCny": null,
       "keepIntervalDays": 360
+    },
+    {
+      "routeId": "visible-25-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 25,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 275,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "vodacom-prepaid-83d-2026",

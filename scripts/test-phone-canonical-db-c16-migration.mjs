@@ -10,23 +10,23 @@ const sources = read('data/phone/v1/sources.json'), brands = read('data/phone/v1
 const globalDirectory = read('frontend/tools/phone-number-lifecycle-mvp/global-directory.json');
 const policy = read('frontend/tools/phone-number-lifecycle-mvp/publication-policy.json');
 const expected = {
-  'movistar-pre-pe-2026': ['pe', 'movistar-pre-pe', 'movistar-pe', 'hold'],
-  'talkmobile-uk-payg-closed-2026': ['gb', 'talkmobile-uk', 'vodafone-uk', 'hold'],
-  'smarty-uk-2026': ['gb', 'smarty-uk', 'three-uk', 'admitted'],
+  'mint-mobile-us-2026': ['us', 'mint-mobile-us', 'tmobile-us', 'hold'],
+  'tmobile-prepaid-connect-2026': ['us', 'tmobile-prepaid-us', 'tmobile-us', 'admitted'],
+  'visible-25-2026': ['us', 'visible-us', 'verizon-us', 'hold'],
 };
 for (const [routeId, [marketId, brandId, networkId, evidenceState]] of Object.entries(expected)) {
-  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C15 route missing: ${routeId}`);
+  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C16 route missing: ${routeId}`);
   assert.equal(route.marketId, marketId); assert.equal(route.brandId, brandId); assert.equal(route.networkId, networkId); assert.equal(route.evidenceState, evidenceState); assert.equal(route.surfaceState, 'backstage-only');
   assert(canonical.markets.some((row) => row.id === marketId)); assert(brands.some((row) => row.id === brandId && row.marketId === marketId)); assert(networks.some((row) => row.id === networkId && row.marketId === marketId));
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https?:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   assert.equal(policy.routeStates[routeId], undefined, `${routeId}: must stay non-indexable`);
 }
-const movistar = buildCanonicalComparisonRoute(canonical, 'movistar-pre-pe-2026');
-assert.equal(movistar.keep.intervalDays, 210); assert.equal(movistar.keep.observedActionCost, 5); assert.equal(movistar.keep.yearCostOriginal, 10); assert.match(movistar.kyc, /foreign|biometric|Migraciones/i); assert.match(movistar.roamingSms, /not established|not inferred|unresolved/i); assert.match(movistar.holdReason, /roaming|China|OTP/i);
-const talk = buildCanonicalComparisonRoute(canonical, 'talkmobile-uk-payg-closed-2026');
-assert.equal(talk.keep.intervalDays, null); assert.equal(talk.keep.observedActionCost, null); assert.equal(talk.keep.state, 'discontinued'); assert.equal(talk.avoidRoute, true); assert.match(talk.holdReason, /discontinued|2017/i); assert.match(talk.acquisitionSummary, /DISCONTINUED|31 August 2017/i);
-const smarty = buildCanonicalComparisonRoute(canonical, 'smarty-uk-2026');
-assert.equal(smarty.keep.intervalDays, 220); assert.equal(smarty.keep.observedActionCost, 6); assert.equal(smarty.keep.yearCostOriginal, null); assert.equal(smarty.landedCost.landedOriginal, 6); assert.match(smarty.simType, /eSIM/i); assert.match(smarty.payment, /PayPal|Apple|Google/i); assert.match(smarty.roamingSms, /China|FREE/i); assert.equal(smarty.holdReason, null);
+const mint = buildCanonicalComparisonRoute(canonical, 'mint-mobile-us-2026');
+assert.equal(mint.keep.intervalDays, 365); assert.equal(mint.keep.observedActionCost, 180); assert.equal(mint.keep.yearCostOriginal, 180); assert.match(mint.wifiCalling, /all plans|Wi-Fi/i); assert.match(mint.holdReason, /China-first|payment|OTP/i);
+const tmobile = buildCanonicalComparisonRoute(canonical, 'tmobile-prepaid-connect-2026');
+assert.equal(tmobile.keep.intervalDays, 30); assert.equal(tmobile.keep.observedActionCost, 15); assert.equal(tmobile.keep.yearCostOriginal, 180); assert.match(tmobile.roamingSms, /China|0\.10|prepaid/i); assert.equal(tmobile.holdReason, null);
+const visible = buildCanonicalComparisonRoute(canonical, 'visible-25-2026');
+assert.equal(visible.keep.intervalDays, 365); assert.equal(visible.keep.observedActionCost, 275); assert.equal(visible.keep.yearCostOriginal, 275); assert.match(visible.wifiCalling, /before leaving|outside the U\.S\./i); assert.match(visible.holdReason, /activation|payment|China-first/i);
 assert.equal(canonical.routes.length, 137); assert.equal(canonical.markets.length, 80); assert.equal(brands.length, 134); assert.equal(networks.length, 106); assert.equal(sources.length, 505);
 assert.equal(globalDirectory.routes.length, 135); assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
-console.log('Phone canonical DB-C15 migration passed: Movistar Peru HOLD, Talkmobile PAYG HOLD/discontinued, SMARTY UK ADMITTED; 137 canonical routes, 135 comparison routes and 3-route indexability preserved.');
+console.log('Phone canonical DB-C16 migration passed: Mint HOLD, T-Mobile Connect ADMITTED, Visible HOLD; 137 canonical routes, 135 comparison routes and 3-route indexability preserved.');

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c16",
+  "reviewNotes": "HOLD. Mint Mobile remains a current T-Mobile-network prepaid subscription with a durable 12-month 6GB plan at USD180/year and a provider-defined 60-day suspended-account window after plan expiry before cancellation/reassignment may occur. Current official material supports same-day eSIM delivery and free Wi-Fi Calling abroad, but does not establish a reliable China-first activation/payment path or standalone China cellular incoming-SMS/OTP behavior. A fresh community thread remains contradictory on overseas activation and describes US-address/VPN workarounds, so those are not promoted as a supported acquisition path.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "mint-mobile-us",
+    "networkId": "tmobile-us",
+    "name": "Mint Mobile",
+    "marketId": "us"
+  },
+  "route": {
+    "id": "mint-mobile-us-2026",
+    "marketId": "us",
+    "networkId": "tmobile-us",
+    "brandId": "mint-mobile-us",
+    "displayName": "Mint Mobile 12-month 6GB",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+    "sourceIds": [
+      "mint-mobile-plans-20261003",
+      "mint-mobile-terms-20261003",
+      "mint-mobile-roaming-checklist-20261003",
+      "mint-mobile-overseas-activation-community-20260916"
+    ]
+  },
+  "sources": [
+    {
+      "id": "mint-mobile-plans-20261003",
+      "url": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "mint-mobile-terms-20261003",
+      "url": "https://www.mintmobile.com/plan-terms-and-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "mint-mobile-roaming-checklist-20261003",
+      "url": "https://www.mintmobile.com/help/international-roaming-checklist/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "mint-mobile-overseas-activation-community-20260916",
+      "url": "https://www.reddit.com/r/mintmobile/comments/1whnsja/activating_abroad_by_vpn/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-16"
+    }
+  ],
+  "sourceIds": [
+    "mint-mobile-plans-20261003",
+    "mint-mobile-terms-20261003",
+    "mint-mobile-roaming-checklist-20261003",
+    "mint-mobile-overseas-activation-community-20260916"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-mint-mobile-us-2026-db-c16-20261003",
+      "routeId": "mint-mobile-us-2026",
+      "type": "lifecycle-and-overseas-use-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Mint terms establish suspension at plan expiry and cancellation/reassignment risk after 60 days without successful renewal while suspended. The 12-month 6GB plan remains USD180/year. Official Wi-Fi Calling is usable abroad, while reliable China-first activation/payment and standalone China cellular SMS/OTP remain unresolved.",
+      "sourceId": "mint-mobile-terms-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-mint-mobile-us-2026-current-profile-20261003",
+      "routeId": "mint-mobile-us-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "mint-mobile-us-2026",
+        "brandId": "mint-mobile-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Mint Mobile currently sells prepaid service on the T-Mobile network with same-day eSIM delivery or a shipped physical SIM. The durable 12-month 6GB plan is USD15/month paid as USD180 upfront; temporary new-customer promotions are not treated as the long-term retention baseline.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 180,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 180,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-12-month-6gb"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 180,
+          "yearCostOriginal": 180,
+          "yearCostCny": null,
+          "action": "Renew the 12-month 6GB plan before expiry. Current Mint terms put an expired unpaid account into suspended status; after 60 days without a successful renewal the account may be cancelled and the number reassigned. Treat the 60-day period as recovery only, not as the maintenance interval.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "Official pages support digital eSIM delivery but do not establish a China-first activation path. A September 2026 community thread is contradictory and describes VPN plus U.S.-address/payment workarounds; these are not treated as a supported route.",
+        "kyc": "Mint is prepaid and current plan material does not advertise a credit check. Exact foreign-subscriber identity requirements are not established by the reviewed official pages.",
+        "payment": "Current terms support renewal payments and account auto-renewal. Reliable foreign-issued-card acceptance is not established by the reviewed official material; current community workarounds often depend on a U.S. billing address.",
+        "wifiCalling": "Mint officially provides free Wi-Fi Calling on all plans; calls and texts over Wi-Fi do not consume a Minternational Pass.",
+        "roamingSms": "Mint supports international roaming through Minternational Pass and Wi-Fi Calling. A current standalone pay-per-use China incoming-SMS rule and third-party OTP reliability were not established in this review.",
+        "refund": "not reconciled",
+        "trend": "current-product-lifecycle-resolved-overseas-acquisition-gap",
+        "guideEligible": false,
+        "holdReason": "Reliable China-first activation/payment and standalone China cellular incoming-SMS/OTP behavior remain unresolved; fresh community evidence is contradictory and depends on unsupported VPN/U.S.-billing workarounds.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+        "tariffSummary": "12-month 6GB plan: USD180/year. Expired unpaid service enters suspension; 60 days without renewal can lead to cancellation/number reassignment. Wi-Fi Calling works abroad.",
+        "guideSteps": [
+          "Use a normal supported U.S. acquisition/activation path rather than assuming VPN-based overseas activation.",
+          "Renew before the annual plan expiry; treat the 60-day suspended period as recovery only.",
+          "Enable and verify Wi-Fi Calling before relying on the line abroad, and do not claim China cellular OTP without route-specific evidence."
+        ],
+        "sourceIds": [
+          "mint-mobile-plans-20261003",
+          "mint-mobile-terms-20261003",
+          "mint-mobile-roaming-checklist-20261003",
+          "mint-mobile-overseas-activation-community-20260916"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c16",
+  "reviewNotes": "HOLD. Visible base prepaid plan remains current at USD25/month or USD275/year on Verizon, with a provider-defined 60-day nonpayment suspension window before cancellation/reassignment. Visible officially supports Wi-Fi Calling abroad but requires it to be activated before leaving the U.S.; Global Pass is available for international cellular use. Current independent/provider-moderated evidence confirms long-duration Wi-Fi Calling abroad, while eSIM activation outside the U.S. remains contradictory. Foreign-issued payment execution is also unresolved, so keep the route normalized as HOLD rather than promote it as a China-first acquisition route.",
+  "market": null,
+  "network": {
+    "id": "verizon-us",
+    "name": "Verizon US",
+    "marketId": "us"
+  },
+  "brand": {
+    "id": "visible-us",
+    "networkId": "verizon-us",
+    "name": "Visible",
+    "marketId": "us"
+  },
+  "route": {
+    "id": "visible-25-2026",
+    "marketId": "us",
+    "networkId": "verizon-us",
+    "brandId": "visible-us",
+    "displayName": "Visible base plan",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.visible.com/plans/annual",
+    "sourceIds": [
+      "visible-annual-plan-20261003",
+      "visible-terms-20261003",
+      "visible-wifi-calling-20261003",
+      "visible-global-pass-20261003",
+      "visible-wifi-community-20260424",
+      "visible-overseas-activation-community-20250120"
+    ]
+  },
+  "sources": [
+    {
+      "id": "visible-annual-plan-20261003",
+      "url": "https://www.visible.com/plans/annual",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-terms-20261003",
+      "url": "https://www.visible.com/legal/terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-wifi-calling-20261003",
+      "url": "https://www.visible.com/content/value/visible/en/help/about-visible/plan-features.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-global-pass-20261003",
+      "url": "https://www.visible.com/globalpass",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-wifi-community-20260424",
+      "url": "https://www.reddit.com/r/Visible/comments/1subzfi/wifi_calling_works_abroad_even_without_global_pass/",
+      "type": "independent-community",
+      "reportedAt": "2026-04-24"
+    },
+    {
+      "id": "visible-overseas-activation-community-20250120",
+      "url": "https://www.reddit.com/r/Visible/comments/1i5r8qk/activating_esim_when_you_are_abroad_outside_us/",
+      "type": "provider-moderated-community",
+      "reportedAt": "2025-01-20"
+    }
+  ],
+  "sourceIds": [
+    "visible-annual-plan-20261003",
+    "visible-terms-20261003",
+    "visible-wifi-calling-20261003",
+    "visible-global-pass-20261003",
+    "visible-wifi-community-20260424",
+    "visible-overseas-activation-community-20250120"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-visible-25-2026-db-c16-20261003",
+      "routeId": "visible-25-2026",
+      "type": "lifecycle-and-overseas-use-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Visible base remains USD25/month or USD275/year. Current terms suspend nonpayment-deactivated service for 60 days before cancellation/reassignment. Official Wi-Fi Calling works internationally when enabled before leaving the U.S.; current independent evidence corroborates long-duration use abroad, while overseas first activation remains contradictory.",
+      "sourceId": "visible-terms-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-visible-25-2026-current-profile-20261003",
+      "routeId": "visible-25-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "visible-25-2026",
+        "brandId": "visible-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Visible base prepaid plan remains available on Verizon at USD25/month, with an annual option at USD275/year including taxes and fees. Physical SIM and eSIM paths are supported for compatible devices.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 25,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 25,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-entry"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 275,
+          "yearCostOriginal": 275,
+          "yearCostCny": null,
+          "action": "Use the USD275 annual base plan for the lowest current full-year listed cost, or keep the USD25 monthly plan paid. Visible terms say a nonpayment-deactivated account is suspended for 60 days and then cancelled/reassigned if payment is not made; treat that 60-day period as recovery only.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "Current Visible official material does not establish a China-first paid-account activation path. A provider representative previously said overseas eSIM activation can work over stable Wi-Fi, while the same thread contains a user report that the app required U.S. presence. Preserve the conflict rather than promise remote activation.",
+        "kyc": "Visible is prepaid. The reviewed current provider pages do not establish a separate foreign-subscriber identity-verification path.",
+        "payment": "Visible requires a valid payment method and supports card/PayPal account billing. Reliable foreign-issued-card execution is not established in this review.",
+        "wifiCalling": "Visible officially supports Wi-Fi Calling outside the U.S., but the feature must be activated before leaving the U.S. Current April 2026 community evidence reports four continuous months abroad with Wi-Fi Calling functioning after U.S. setup.",
+        "roamingSms": "The base plan can use Global Pass in more than 140 countries, generally USD10/day outside Canada/Mexico/PR/USVI, with unlimited talk/text and data allowance. For cheaper long-term overseas use, current provider/community evidence supports calls/SMS over pre-enabled Wi-Fi Calling; third-party OTP reliability remains service-specific.",
+        "refund": "not reconciled",
+        "trend": "current-product-overseas-use-proven-activation-conflict",
+        "guideEligible": false,
+        "holdReason": "Paid-account/eSIM activation outside the U.S. remains contradictory, foreign-issued payment reliability is unresolved, and Wi-Fi Calling must be set up before leaving the U.S.; do not present this as a dependable China-first route.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.visible.com/plans/annual",
+        "tariffSummary": "Visible base: USD25/month or USD275/year. Nonpayment has a 60-day suspended recovery window before cancellation. Wi-Fi Calling works abroad if activated before departure; Global Pass is available.",
+        "guideSteps": [
+          "Acquire and activate through a supported U.S. path; do not assume overseas first activation.",
+          "Enable and test Wi-Fi Calling before leaving the U.S.",
+          "Keep annual/monthly service paid; use the 60-day nonpayment window only as recovery, not as a maintenance strategy."
+        ],
+        "sourceIds": [
+          "visible-annual-plan-20261003",
+          "visible-terms-20261003",
+          "visible-wifi-calling-20261003",
+          "visible-global-pass-20261003",
+          "visible-wifi-community-20260424",
+          "visible-overseas-activation-community-20250120"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

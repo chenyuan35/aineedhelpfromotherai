@@ -883,6 +883,11 @@
       "marketId": "tw"
     },
     {
+      "id": "verizon-us",
+      "name": "Verizon US",
+      "marketId": "us"
+    },
+    {
       "id": "viettel-vn",
       "name": "Viettel Vietnam",
       "marketId": "vn"
@@ -1307,6 +1312,12 @@
       "marketId": "ma"
     },
     {
+      "id": "mint-mobile-us",
+      "networkId": "tmobile-us",
+      "name": "Mint Mobile",
+      "marketId": "us"
+    },
+    {
       "id": "mobal-japan-jp",
       "marketId": "jp",
       "networkId": null,
@@ -1619,6 +1630,12 @@
       "marketId": "it"
     },
     {
+      "id": "tmobile-prepaid-us",
+      "networkId": "tmobile-us",
+      "name": "T-Mobile Prepaid",
+      "marketId": "us"
+    },
+    {
       "id": "trip-com-china-mobile-cmlink-cn",
       "marketId": "cn",
       "networkId": null,
@@ -1665,6 +1682,12 @@
       "networkId": "vinaphone-vn",
       "name": "VinaPhone",
       "marketId": "vn"
+    },
+    {
+      "id": "visible-us",
+      "networkId": "verizon-us",
+      "name": "Visible",
+      "marketId": "us"
     },
     {
       "id": "vodacom-prepaid",
@@ -2948,6 +2971,26 @@
       ]
     },
     {
+      "id": "mint-mobile-us-2026",
+      "marketId": "us",
+      "networkId": "tmobile-us",
+      "brandId": "mint-mobile-us",
+      "displayName": "Mint Mobile 12-month 6GB",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+      "sourceIds": [
+        "mint-mobile-overseas-activation-community-20260916",
+        "mint-mobile-plans-20261003",
+        "mint-mobile-roaming-checklist-20261003",
+        "mint-mobile-terms-20261003"
+      ]
+    },
+    {
       "id": "mobal-japan-data-physical",
       "marketId": "jp",
       "networkId": null,
@@ -4025,6 +4068,26 @@
       ]
     },
     {
+      "id": "tmobile-prepaid-connect-2026",
+      "marketId": "us",
+      "networkId": "tmobile-us",
+      "brandId": "tmobile-prepaid-us",
+      "displayName": "Connect by T-Mobile 5GB",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://prepaid.t-mobile.com/connect/phone-plans",
+      "sourceIds": [
+        "tmobile-connect-plans-20261003",
+        "tmobile-prepaid-esim-20261003",
+        "tmobile-prepaid-lifecycle-20261003",
+        "tmobile-prepaid-roaming-20261003"
+      ]
+    },
+    {
       "id": "trip-cmlink-china-data",
       "marketId": "cn",
       "networkId": null,
@@ -4172,6 +4235,28 @@
         "vinaphone-gs2-official-2026-09-29",
         "vinaphone-lifecycle-vnpt-2026-09-29",
         "vinaphone-sim-price-vnpt-2024-04-13"
+      ]
+    },
+    {
+      "id": "visible-25-2026",
+      "marketId": "us",
+      "networkId": "verizon-us",
+      "brandId": "visible-us",
+      "displayName": "Visible base plan",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.visible.com/plans/annual",
+      "sourceIds": [
+        "visible-annual-plan-20261003",
+        "visible-global-pass-20261003",
+        "visible-overseas-activation-community-20250120",
+        "visible-terms-20261003",
+        "visible-wifi-calling-20261003",
+        "visible-wifi-community-20260424"
       ]
     },
     {
@@ -5381,6 +5466,30 @@
       "url": "https://www.reddit.com/r/NoContract/comments/1rxdofr/dont_use_lyca_mobile/",
       "type": "independent-community",
       "reportedAt": "2026-03-18"
+    },
+    {
+      "id": "mint-mobile-overseas-activation-community-20260916",
+      "url": "https://www.reddit.com/r/mintmobile/comments/1whnsja/activating_abroad_by_vpn/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-16"
+    },
+    {
+      "id": "mint-mobile-plans-20261003",
+      "url": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "mint-mobile-roaming-checklist-20261003",
+      "url": "https://www.mintmobile.com/help/international-roaming-checklist/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "mint-mobile-terms-20261003",
+      "url": "https://www.mintmobile.com/plan-terms-and-conditions/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
     },
     {
       "id": "movistar-pe-esim-20261003",
@@ -7153,6 +7262,30 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "tmobile-connect-plans-20261003",
+      "url": "https://prepaid.t-mobile.com/connect/phone-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-esim-20261003",
+      "url": "https://www.t-mobile.com/support/account/prepaid-esim-activation",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-lifecycle-20261003",
+      "url": "https://www.t-mobile.com/support/account/prepaid-suspend-cancel",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "tmobile-prepaid-roaming-20261003",
+      "url": "https://www.t-mobile.com/coverage/prepaid-international-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "tokman-hotmobile-66-180d-20260929",
       "url": "https://tokman.co.il/hot-mobile-50-nis-charge-valid-for-a180-days",
       "type": "commercial-reseller",
@@ -7229,6 +7362,42 @@
       "url": "https://digishop.vnpt.vn/tin-tuc-km/tu-van/sim-vinaphone-gia-bao-nhieu",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "visible-annual-plan-20261003",
+      "url": "https://www.visible.com/plans/annual",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-global-pass-20261003",
+      "url": "https://www.visible.com/globalpass",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-overseas-activation-community-20250120",
+      "url": "https://www.reddit.com/r/Visible/comments/1i5r8qk/activating_esim_when_you_are_abroad_outside_us/",
+      "type": "provider-moderated-community",
+      "reportedAt": "2025-01-20"
+    },
+    {
+      "id": "visible-terms-20261003",
+      "url": "https://www.visible.com/legal/terms-and-conditions",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-wifi-calling-20261003",
+      "url": "https://www.visible.com/content/value/visible/en/help/about-visible/plan-features.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "visible-wifi-community-20260424",
+      "url": "https://www.reddit.com/r/Visible/comments/1subzfi/wifi_calling_works_abroad_even_without_global_pass/",
+      "type": "independent-community",
+      "reportedAt": "2026-04-24"
     },
     {
       "id": "vodafone-eg-other-services-20261001",
@@ -7818,6 +7987,15 @@
       "sourceId": "iam-jawal-terms-20261001"
     },
     {
+      "id": "evt-mint-mobile-us-2026-db-c16-20261003",
+      "routeId": "mint-mobile-us-2026",
+      "type": "lifecycle-and-overseas-use-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Mint terms establish suspension at plan expiry and cancellation/reassignment risk after 60 days without successful renewal while suspended. The 12-month 6GB plan remains USD180/year. Official Wi-Fi Calling is usable abroad, while reliable China-first activation/payment and standalone China cellular SMS/OTP remain unresolved.",
+      "sourceId": "mint-mobile-terms-20261003"
+    },
+    {
       "id": "evt-mobitel-retention-foreigner-eligibility-unresolved-20260929",
       "routeId": "mobitel-lk-retention-2026",
       "type": "eligibility-conflict",
@@ -8097,6 +8275,15 @@
       "sourceId": "tesco-payg-service-terms-2026-09-29"
     },
     {
+      "id": "evt-tmobile-prepaid-connect-2026-db-c16-20261003",
+      "routeId": "tmobile-prepaid-connect-2026",
+      "type": "lifecycle-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Connect remains USD15/month for 5GB. Current prepaid support allows cancellation and number loss after more than 120 days in Not Paid status. Current prepaid roaming publishes USD0.10 incoming SMS outside Canada, includes China in the country table and provides no prepaid data roaming.",
+      "sourceId": "tmobile-prepaid-lifecycle-20261003"
+    },
+    {
       "id": "evt-truemove-validity-pack-th-2026-db-c2-review-20260929",
       "routeId": "truemove-validity-pack-th-2026",
       "type": "evidence-hold",
@@ -8122,6 +8309,15 @@
       "scope": "route",
       "outcome": "Legacy GS2 pricing was community-only; the current VinaPhone GS2 product page directly supports VND120,000 for a 360-day validity extension.",
       "sourceId": "vinaphone-gs2-official-2026-09-29"
+    },
+    {
+      "id": "evt-visible-25-2026-db-c16-20261003",
+      "routeId": "visible-25-2026",
+      "type": "lifecycle-and-overseas-use-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Visible base remains USD25/month or USD275/year. Current terms suspend nonpayment-deactivated service for 60 days before cancellation/reassignment. Official Wi-Fi Calling works internationally when enabled before leaving the U.S.; current independent evidence corroborates long-duration use abroad, while overseas first activation remains contradictory.",
+      "sourceId": "visible-terms-20261003"
     },
     {
       "id": "evt-vodacom-83d-rule-refuted-20260929",
@@ -12278,6 +12474,64 @@
       }
     },
     {
+      "id": "snap-mint-mobile-us-2026-current-profile-20261003",
+      "routeId": "mint-mobile-us-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "mint-mobile-us-2026",
+        "brandId": "mint-mobile-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Mint Mobile currently sells prepaid service on the T-Mobile network with same-day eSIM delivery or a shipped physical SIM. The durable 12-month 6GB plan is USD15/month paid as USD180 upfront; temporary new-customer promotions are not treated as the long-term retention baseline.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 180,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 180,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-12-month-6gb"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 180,
+          "yearCostOriginal": 180,
+          "yearCostCny": null,
+          "action": "Renew the 12-month 6GB plan before expiry. Current Mint terms put an expired unpaid account into suspended status; after 60 days without a successful renewal the account may be cancelled and the number reassigned. Treat the 60-day period as recovery only, not as the maintenance interval.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "Official pages support digital eSIM delivery but do not establish a China-first activation path. A September 2026 community thread is contradictory and describes VPN plus U.S.-address/payment workarounds; these are not treated as a supported route.",
+        "kyc": "Mint is prepaid and current plan material does not advertise a credit check. Exact foreign-subscriber identity requirements are not established by the reviewed official pages.",
+        "payment": "Current terms support renewal payments and account auto-renewal. Reliable foreign-issued-card acceptance is not established by the reviewed official material; current community workarounds often depend on a U.S. billing address.",
+        "wifiCalling": "Mint officially provides free Wi-Fi Calling on all plans; calls and texts over Wi-Fi do not consume a Minternational Pass.",
+        "roamingSms": "Mint supports international roaming through Minternational Pass and Wi-Fi Calling. A current standalone pay-per-use China incoming-SMS rule and third-party OTP reliability were not established in this review.",
+        "refund": "not reconciled",
+        "trend": "current-product-lifecycle-resolved-overseas-acquisition-gap",
+        "guideEligible": false,
+        "holdReason": "Reliable China-first activation/payment and standalone China cellular incoming-SMS/OTP behavior remain unresolved; fresh community evidence is contradictory and depends on unsupported VPN/U.S.-billing workarounds.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.mintmobile.com/phone-plans/12-month-plans/?selected=MINT-SMALL-12",
+        "tariffSummary": "12-month 6GB plan: USD180/year. Expired unpaid service enters suspension; 60 days without renewal can lead to cancellation/number reassignment. Wi-Fi Calling works abroad.",
+        "guideSteps": [
+          "Use a normal supported U.S. acquisition/activation path rather than assuming VPN-based overseas activation.",
+          "Renew before the annual plan expiry; treat the 60-day suspended period as recovery only.",
+          "Enable and verify Wi-Fi Calling before relying on the line abroad, and do not claim China cellular OTP without route-specific evidence."
+        ],
+        "sourceIds": [
+          "mint-mobile-plans-20261003",
+          "mint-mobile-terms-20261003",
+          "mint-mobile-roaming-checklist-20261003",
+          "mint-mobile-overseas-activation-community-20260916"
+        ]
+      }
+    },
+    {
       "id": "snap-mobal-japan-data-physical-commercial-6a2373",
       "routeId": "mobal-japan-data-physical",
       "kind": "commercial",
@@ -16063,6 +16317,64 @@
       }
     },
     {
+      "id": "snap-tmobile-prepaid-connect-2026-current-profile-20261003",
+      "routeId": "tmobile-prepaid-connect-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "tmobile-prepaid-connect-2026",
+        "brandId": "tmobile-prepaid-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Connect by T-Mobile remains a current prepaid product. The entry plan is USD15/month with 5GB and unlimited talk/text; T-Mobile states there are no credit checks. Current web eSIM activation supports compatible unlocked devices and collects name, email, ZIP code and a payment method before issuing the eSIM QR code.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 15,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 15,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-entry-plan-connection-fee-not-assumed"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 15,
+          "yearCostOriginal": 180,
+          "yearCostCny": null,
+          "action": "Keep the USD15 Connect plan paid monthly. T-Mobile automatically suspends prepaid accounts in Not Paid status and says accounts in Not Paid for more than 120 days may be cancelled and the mobile number lost. Treat the 120-day period as recovery only.",
+          "intervalDays": 30,
+          "state": "current-provider-monthly-plus-120d-not-paid-recovery"
+        },
+        "chinaActivation": "T-Mobile current web eSIM flow can issue a QR code after online plan/payment setup, but the provider page does not establish a China-first activation or foreign-geolocation path. Treat remote China activation as unverified.",
+        "kyc": "Connect by T-Mobile explicitly states there are no credit checks. The web eSIM flow collects name, email and ZIP code; broader foreign-subscriber identity requirements are not established here.",
+        "payment": "A payment method is required in the current web eSIM flow. Direct acceptance/reliability of foreign-issued cards is not established by the reviewed prepaid pages.",
+        "wifiCalling": "T-Mobile supports Wi-Fi Calling generally, but route-specific overseas setup behavior was not independently reverified in this bounded review.",
+        "roamingSms": "T-Mobile current prepaid roaming page prices SMS in all other countries at USD0.50 to send and USD0.10 to receive, lists China in the prepaid country table, and says prepaid data roaming is unavailable. Third-party OTP delivery remains service-dependent and is not guaranteed.",
+        "refund": "not reconciled",
+        "trend": "current-product-provider-roaming-and-lifecycle-resolved",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://prepaid.t-mobile.com/connect/phone-plans",
+        "tariffSummary": "Connect 5GB: USD15/month. More than 120 days Not Paid may cancel the line. Prepaid roaming lists China; incoming SMS USD0.10, outgoing SMS USD0.50, no data roaming.",
+        "guideSteps": [
+          "Use the official Connect plan and supported prepaid/eSIM activation flow.",
+          "Keep the monthly plan paid; do not plan around the 120-day Not Paid recovery window.",
+          "For overseas use, rely only on T-Mobile current prepaid roaming rates and keep third-party OTP compatibility as separate evidence."
+        ],
+        "sourceIds": [
+          "tmobile-connect-plans-20261003",
+          "tmobile-prepaid-lifecycle-20261003",
+          "tmobile-prepaid-esim-20261003",
+          "tmobile-prepaid-roaming-20261003"
+        ]
+      }
+    },
+    {
       "id": "snap-trip-cmlink-china-data-frontstage-6d28cb",
       "routeId": "trip-cmlink-china-data",
       "kind": "frontstage",
@@ -16868,6 +17180,66 @@
         ],
         "marketName": "Vietnam",
         "guideSteps": []
+      }
+    },
+    {
+      "id": "snap-visible-25-2026-current-profile-20261003",
+      "routeId": "visible-25-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c16-reviewed-2026-10-03",
+      "data": {
+        "id": "visible-25-2026",
+        "brandId": "visible-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Visible base prepaid plan remains available on Verizon at USD25/month, with an annual option at USD275/year including taxes and fees. Physical SIM and eSIM paths are supported for compatible devices.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 25,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 25,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-entry"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 275,
+          "yearCostOriginal": 275,
+          "yearCostCny": null,
+          "action": "Use the USD275 annual base plan for the lowest current full-year listed cost, or keep the USD25 monthly plan paid. Visible terms say a nonpayment-deactivated account is suspended for 60 days and then cancelled/reassigned if payment is not made; treat that 60-day period as recovery only.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-plan-plus-60d-recovery"
+        },
+        "chinaActivation": "Current Visible official material does not establish a China-first paid-account activation path. A provider representative previously said overseas eSIM activation can work over stable Wi-Fi, while the same thread contains a user report that the app required U.S. presence. Preserve the conflict rather than promise remote activation.",
+        "kyc": "Visible is prepaid. The reviewed current provider pages do not establish a separate foreign-subscriber identity-verification path.",
+        "payment": "Visible requires a valid payment method and supports card/PayPal account billing. Reliable foreign-issued-card execution is not established in this review.",
+        "wifiCalling": "Visible officially supports Wi-Fi Calling outside the U.S., but the feature must be activated before leaving the U.S. Current April 2026 community evidence reports four continuous months abroad with Wi-Fi Calling functioning after U.S. setup.",
+        "roamingSms": "The base plan can use Global Pass in more than 140 countries, generally USD10/day outside Canada/Mexico/PR/USVI, with unlimited talk/text and data allowance. For cheaper long-term overseas use, current provider/community evidence supports calls/SMS over pre-enabled Wi-Fi Calling; third-party OTP reliability remains service-specific.",
+        "refund": "not reconciled",
+        "trend": "current-product-overseas-use-proven-activation-conflict",
+        "guideEligible": false,
+        "holdReason": "Paid-account/eSIM activation outside the U.S. remains contradictory, foreign-issued payment reliability is unresolved, and Wi-Fi Calling must be set up before leaving the U.S.; do not present this as a dependable China-first route.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.visible.com/plans/annual",
+        "tariffSummary": "Visible base: USD25/month or USD275/year. Nonpayment has a 60-day suspended recovery window before cancellation. Wi-Fi Calling works abroad if activated before departure; Global Pass is available.",
+        "guideSteps": [
+          "Acquire and activate through a supported U.S. path; do not assume overseas first activation.",
+          "Enable and test Wi-Fi Calling before leaving the U.S.",
+          "Keep annual/monthly service paid; use the 60-day nonpayment window only as recovery, not as a maintenance strategy."
+        ],
+        "sourceIds": [
+          "visible-annual-plan-20261003",
+          "visible-terms-20261003",
+          "visible-wifi-calling-20261003",
+          "visible-global-pass-20261003",
+          "visible-wifi-community-20260424",
+          "visible-overseas-activation-community-20250120"
+        ]
       }
     },
     {
@@ -18274,6 +18646,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "mint-mobile-us-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 180,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 180,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "mobal-japan-data-physical",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -18934,6 +19318,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "tmobile-prepaid-connect-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 15,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 180,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "trip-cmlink-china-data",
       "checkedAt": "2026-09-15",
       "metricState": "not-normalized",
@@ -19028,6 +19424,18 @@
       "keepYearCostOriginal": 120000,
       "keepYearCostCny": null,
       "keepIntervalDays": 360
+    },
+    {
+      "routeId": "visible-25-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 25,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 275,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "vodacom-prepaid-83d-2026",
