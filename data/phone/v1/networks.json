@@ -130,6 +130,11 @@
     "marketId": "jm"
   },
   {
+    "id": "dito-ph",
+    "name": "DITO Telecommunity",
+    "marketId": "ph"
+  },
+  {
     "id": "docomo-jp",
     "name": "NTT docomo",
     "marketId": "jp"

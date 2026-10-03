@@ -48,6 +48,12 @@
     "marketId": "jp"
   },
   {
+    "id": "ais-local-prepaid",
+    "networkId": "ais-th",
+    "name": "AIS One-2-Call Prepaid",
+    "marketId": "th"
+  },
+  {
     "id": "ais-sim2fly",
     "networkId": "ais-th",
     "name": "AIS SIM2Fly",
@@ -156,6 +162,12 @@
     "name": "CMHK (China Mobile HK)"
   },
   {
+    "id": "cmlink-uk",
+    "networkId": "ee-uk",
+    "name": "CMLink UK",
+    "marketId": "gb"
+  },
+  {
     "id": "cosmote-frog",
     "networkId": "cosmote-gr",
     "name": "FROG Mobile",
@@ -202,6 +214,12 @@
     "networkId": "digicel-jm",
     "name": "Digicel Jamaica Prepaid",
     "marketId": "jm"
+  },
+  {
+    "id": "dito-prepaid",
+    "networkId": "dito-ph",
+    "name": "DITO Prepaid",
+    "marketId": "ph"
   },
   {
     "id": "du-prepaid",

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c22",
+  "reviewNotes": "HOLD. DITO currently sells prepaid/eSIM products and 2026 community users repeatedly report ultra-low-cost annual keep-alive by small regular-load top-ups with mainland roaming/SMS outcomes. However, DITO official SIM-registration rules require foreign tourists to provide Philippine address and return-ticket evidence, and the DITO Traveler SIM is only 30 days unless formally extended. The community PHP5/PHP10 annual keep claim is not provider-confirmed in the reviewed material, so preserve it as evidence rather than a settled tariff.",
+  "market": null,
+  "network": {"id":"dito-ph","name":"DITO Telecommunity","marketId":"ph"},
+  "brand": {"id":"dito-prepaid","networkId":"dito-ph","name":"DITO Prepaid","marketId":"ph"},
+  "route": {
+    "id":"dito-prepaid-ph-2026","marketId":"ph","networkId":"dito-ph","brandId":"dito-prepaid","displayName":"DITO Prepaid / eSIM","family":"long-term","numberClass":"real-mobile","form":"physical + eSIM","surfaceState":"backstage-only","evidenceState":"hold","lastVerifiedAt":"2026-10-03","acquireUrl":"https://dito.ph/prepaid",
+    "sourceIds":["dito-prepaid-20261003","dito-sim-registration-20261003","dito-traveler-sim-20261003","linuxdo-dito-2680580-20260730","linuxdo-esim-recommend-2965721-20260929"]
+  },
+  "sources": [
+    {"id":"dito-prepaid-20261003","url":"https://dito.ph/prepaid","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"dito-sim-registration-20261003","url":"https://dito.ph/sim-registration","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"dito-traveler-sim-20261003","url":"https://dito.ph/traveler-sim","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"linuxdo-dito-2680580-20260730","url":"https://linux.do/t/topic/2680580","type":"independent-community","reportedAt":"2026-07-30"},
+    {"id":"linuxdo-esim-recommend-2965721-20260929","url":"https://linux.do/t/topic/2965721","type":"independent-community","reportedAt":"2026-09-29"}
+  ],
+  "sourceIds":["dito-prepaid-20261003","dito-sim-registration-20261003","dito-traveler-sim-20261003","linuxdo-dito-2680580-20260730","linuxdo-esim-recommend-2965721-20260929"],
+  "observations": [],
+  "events": [{"id":"evt-dito-prepaid-ph-2026-db-c22-20261003","routeId":"dito-prepaid-ph-2026","type":"retention-eligibility-reconciliation","reportedAt":"2026-10-03","scope":"route","outcome":"DITO prepaid/eSIM is current and community users in 2026 report very low annual keep-alive costs, but foreign-tourist registration and the 30-day Traveler SIM lifecycle are binding provider constraints; the claimed PHP5/PHP10 annual regular-load extension was not confirmed by a current provider lifecycle table in this review.","sourceId":"dito-sim-registration-20261003"}],
+  "snapshots": [{
+    "id":"snap-dito-prepaid-ph-2026-current-profile-20261003","routeId":"dito-prepaid-ph-2026","kind":"current-profile","checkedAt":"2026-10-03","sourceDataset":"db-c22-reviewed-2026-10-03",
+    "data": {
+      "id":"dito-prepaid-ph-2026","brandId":"dito-prepaid","publishState":"observation","numberType":"real-mobile","simType":"physical + eSIM",
+      "acquisitionSummary":"DITO currently sells prepaid and eSIM products through its official channels. Foreign nationals must register; tourists must provide passport, Philippine proof of address and a return ticket, while non-tourist foreign residents need the applicable visa/residency documents.",
+      "landedCost":{"currency":"PHP","providerOrCommunityPrice":79,"mandatoryTopup":null,"shipping":null,"adapterCostCny":null,"landedOriginal":79,"landedCny":null,"fxCheckedAt":null,"state":"current-provider-esim-entry-reference"},
+      "keep":{"currency":"PHP","observedActionCost":null,"yearCostOriginal":null,"yearCostCny":null,"action":"2026 community users report that a small PHP5-PHP10 regular-load top-up can preserve the number for about a year, but the reviewed current DITO provider pages do not confirm that lifecycle rule. Treat the amount/interval as community evidence only.","intervalDays":null,"state":"hold-community-annual-topup-provider-unverified"},
+      "chinaActivation":"A durable China-based tourist acquisition path is not established. DITO requires foreign-tourist Philippine address/return-ticket evidence; Traveler SIMs are 30-day lines unless an approved extension is completed.",
+      "kyc":"All foreign nationals must register. DITO lists passport plus Philippine proof of address and return ticket for tourists; non-tourist foreigners need passport, Philippine address and applicable visa/residency/employment/student documents.",
+      "payment":"DITO App/eShop and regular loading channels are current; community users report convenient payment methods, but remote foreign-user payment is not provider-guaranteed here.",
+      "wifiCalling":"unverified","roamingSms":"2026 community users report mainland-China roaming and incoming-SMS use with mixed device/platform outcomes. DITO does not guarantee third-party OTP delivery in the reviewed provider material.",
+      "refund":"not reconciled","trend":"strong-community-demand-regulatory-and-lifecycle-boundary","guideEligible":false,
+      "holdReason":"Tourist foreign-user lines are 30-day/extension-controlled and the community PHP5/PHP10 annual keep mechanic lacks current provider confirmation; mainland OTP reliability is mixed.",
+      "lastVerifiedAt":"2026-10-03","acquireUrl":"https://dito.ph/prepaid","tariffSummary":"Current prepaid/eSIM route with strong 2026 low-cost retention reports, but foreign-tourist eligibility and the exact annual keep mechanic remain unresolved.",
+      "sourceIds":["dito-prepaid-20261003","dito-sim-registration-20261003","dito-traveler-sim-20261003","linuxdo-dito-2680580-20260730","linuxdo-esim-recommend-2965721-20260929"],
+      "guideSteps":["Confirm whether the subscriber qualifies as tourist or non-tourist foreign national before purchase.","Complete DITO SIM registration with the required lawful documents.","Do not rely on the PHP5/PHP10 annual top-up claim until the current line lifecycle is confirmed in-app/provider support."]
+    }
+  }],
+  "numberRanges": []
+}

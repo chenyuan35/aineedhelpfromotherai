@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c22",
+  "reviewNotes": "HOLD. CMLink UK currently advertises a GBP15/year 365-day Keep UK Number plan, but 2026 community evidence says enrollment may require current or prior monthly/annual-plan eligibility or customer-service handling, and that one-time/retention-plan expiry can lead to closure after about 30 days without another plan. Mainland-China call/SMS sending has also had VoLTE-roaming disruption reports. Preserve the live product and lifecycle evidence without presenting it as frictionless remote retention.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "cmlink-uk",
+    "networkId": "ee-uk",
+    "name": "CMLink UK",
+    "marketId": "gb"
+  },
+  "route": {
+    "id": "cmlink-uk-keep-number-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "cmlink-uk",
+    "displayName": "CMLink UK Keep Number",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.cmlink.com/uk/en/",
+    "sourceIds": [
+      "cmlink-uk-promotion-20261003",
+      "cmlink-uk-home-20261003",
+      "naixi-cmlink-11508-20260426",
+      "naixi-cmlink-13659-20260728"
+    ]
+  },
+  "sources": [
+    {"id":"cmlink-uk-promotion-20261003","url":"https://www.cmlink.com/uk/en/promotion/?offset=newc&tabtype=0&type=1","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"cmlink-uk-home-20261003","url":"https://www.cmlink.com/uk/en/","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"naixi-cmlink-11508-20260426","url":"https://forum.naixi.net/forum.php?mod=viewthread&tid=11508","type":"independent-community","reportedAt":"2026-04-26"},
+    {"id":"naixi-cmlink-13659-20260728","url":"https://forum.naixi.net/thread-13659-1-1.html","type":"independent-community","reportedAt":"2026-07-28"}
+  ],
+  "sourceIds": ["cmlink-uk-promotion-20261003","cmlink-uk-home-20261003","naixi-cmlink-11508-20260426","naixi-cmlink-13659-20260728"],
+  "observations": [],
+  "events": [{
+    "id":"evt-cmlink-uk-keep-number-2026-db-c22-20261003","routeId":"cmlink-uk-keep-number-2026","type":"retention-eligibility-reconciliation","reportedAt":"2026-10-03","scope":"route","outcome":"Current CMLink UK promotion explicitly advertises GBP15/year for 365 days of number holding. 2026 community reports preserve material operational constraints: customer-service or plan-history eligibility may be required, and retention/one-time-plan expiry can be followed by a roughly 30-day no-plan closure window.","sourceId":"cmlink-uk-promotion-20261003"
+  }],
+  "snapshots": [{
+    "id":"snap-cmlink-uk-keep-number-2026-current-profile-20261003","routeId":"cmlink-uk-keep-number-2026","kind":"current-profile","checkedAt":"2026-10-03","sourceDataset":"db-c22-reviewed-2026-10-03",
+    "data": {
+      "id":"cmlink-uk-keep-number-2026","brandId":"cmlink-uk","publishState":"observation","numberType":"real-mobile","simType":"physical + eSIM",
+      "acquisitionSummary":"CMLink UK currently offers UK mobile service on a local partner network and promotes physical SIM/eSIM options. The GBP15/year keep-number product is live, but 2026 community reports indicate that access to the retention plan may depend on customer-service handling or current/prior monthly or annual plan history.",
+      "landedCost":{"currency":"GBP","providerOrCommunityPrice":null,"mandatoryTopup":null,"shipping":null,"adapterCostCny":null,"landedOriginal":null,"landedCny":null,"fxCheckedAt":null,"state":"current-provider-entry-cost-not-normalized"},
+      "keep":{"currency":"GBP","observedActionCost":15,"yearCostOriginal":15,"yearCostCny":null,"action":"Use the current CMLink UK Keep UK Number plan. The provider advertises GBP15 for 365 days of number holding; community reports say plan eligibility/order handling and the post-expiry no-plan window must be checked with CMLink before relying on it.","intervalDays":365,"state":"current-provider-365d-plan-eligibility-constrained"},
+      "chinaActivation":"CMLink states UK-number retention in China and roaming support, but activation geography and workarounds are not normalized as a guaranteed remote-China activation path in this review.",
+      "kyc":"Current reviewed materials do not establish a universal KYC-free path. Preserve account/plan eligibility and activation requirements as unresolved rather than inferring them.",
+      "payment":"Current plan purchase/payment path depends on CMLink account and plan eligibility; community evidence indicates customer-service handling may be needed.",
+      "wifiCalling":"Community users report Wi-Fi Calling as an operational workaround during mainland-China VoLTE roaming issues; provider-guaranteed China behavior was not established here.",
+      "roamingSms":"CMLink advertises China roaming/number retention, but 2025-2026 community reports describe mainland-China outgoing call/SMS disruption and do not establish universal third-party OTP reception. Keep as evidence-scoped.",
+      "refund":"not reconciled","trend":"live-retention-product-with-eligibility-and-roaming-caveats","guideEligible":false,
+      "holdReason":"GBP15/365-day retention product is live, but enrollment eligibility/customer-service path, post-expiry closure timing and mainland-China SMS/voice behavior remain material operational constraints.",
+      "lastVerifiedAt":"2026-10-03","acquireUrl":"https://www.cmlink.com/uk/en/","tariffSummary":"Current provider advertises GBP15/year for 365-day number holding; HOLD until eligibility/order and China-side operational behavior are fully reconciled.",
+      "sourceIds":["cmlink-uk-promotion-20261003","cmlink-uk-home-20261003","naixi-cmlink-11508-20260426","naixi-cmlink-13659-20260728"],
+      "guideSteps":["Confirm current eligibility for the GBP15/year keep-number plan with CMLink.","Verify activation and mainland-China roaming/SMS behavior for the intended device before depending on the number.","Renew before expiry and do not rely on ordinary paid activity alone as a keep-number mechanism."]
+    }
+  }],
+  "numberRanges": []
+}

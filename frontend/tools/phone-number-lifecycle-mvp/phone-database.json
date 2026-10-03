@@ -568,6 +568,11 @@
       "marketId": "jm"
     },
     {
+      "id": "dito-ph",
+      "name": "DITO Telecommunity",
+      "marketId": "ph"
+    },
+    {
       "id": "docomo-jp",
       "name": "NTT docomo",
       "marketId": "jp"
@@ -1058,6 +1063,12 @@
       "marketId": "jp"
     },
     {
+      "id": "ais-local-prepaid",
+      "networkId": "ais-th",
+      "name": "AIS One-2-Call Prepaid",
+      "marketId": "th"
+    },
+    {
       "id": "ais-sim2fly",
       "networkId": "ais-th",
       "name": "AIS SIM2Fly",
@@ -1166,6 +1177,12 @@
       "name": "CMHK (China Mobile HK)"
     },
     {
+      "id": "cmlink-uk",
+      "networkId": "ee-uk",
+      "name": "CMLink UK",
+      "marketId": "gb"
+    },
+    {
       "id": "cosmote-frog",
       "networkId": "cosmote-gr",
       "name": "FROG Mobile",
@@ -1212,6 +1229,12 @@
       "networkId": "digicel-jm",
       "name": "Digicel Jamaica Prepaid",
       "marketId": "jm"
+    },
+    {
+      "id": "dito-prepaid",
+      "networkId": "dito-ph",
+      "name": "DITO Prepaid",
+      "marketId": "ph"
     },
     {
       "id": "du-prepaid",
@@ -2053,6 +2076,26 @@
       ]
     },
     {
+      "id": "ais-local-prepaid-th-2026",
+      "marketId": "th",
+      "networkId": "ais-th",
+      "brandId": "ais-local-prepaid",
+      "displayName": "AIS Local Prepaid / eSIM",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.ais.th/en/consumers/package/prepaid",
+      "sourceIds": [
+        "ais-esim-change-20261003",
+        "ais-prepaid-call-addon-20261003",
+        "ais-simtogo-20261003",
+        "linuxdo-esim-recommend-ais-2965721-20260929"
+      ]
+    },
+    {
       "id": "ais-sim2fly-365d-2026",
       "marketId": "th",
       "networkId": "ais-th",
@@ -2409,6 +2452,26 @@
       ]
     },
     {
+      "id": "cmlink-uk-keep-number-2026",
+      "marketId": "gb",
+      "networkId": "ee-uk",
+      "brandId": "cmlink-uk",
+      "displayName": "CMLink UK Keep Number",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.cmlink.com/uk/en/",
+      "sourceIds": [
+        "cmlink-uk-home-20261003",
+        "cmlink-uk-promotion-20261003",
+        "naixi-cmlink-11508-20260426",
+        "naixi-cmlink-13659-20260728"
+      ]
+    },
+    {
       "id": "cosmote-frog-13mo-2026",
       "marketId": "gr",
       "networkId": "cosmote-gr",
@@ -2569,6 +2632,27 @@
         "digicel-jm-prepaid-plans-20261003",
         "digicel-jm-roaming-20261003",
         "digicel-jm-sim-to-go-20261003"
+      ]
+    },
+    {
+      "id": "dito-prepaid-ph-2026",
+      "marketId": "ph",
+      "networkId": "dito-ph",
+      "brandId": "dito-prepaid",
+      "displayName": "DITO Prepaid / eSIM",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://dito.ph/prepaid",
+      "sourceIds": [
+        "dito-prepaid-20261003",
+        "dito-sim-registration-20261003",
+        "dito-traveler-sim-20261003",
+        "linuxdo-dito-2680580-20260730",
+        "linuxdo-esim-recommend-2965721-20260929"
       ]
     },
     {
@@ -4919,6 +5003,24 @@
       "reportedAt": "2026-10-01"
     },
     {
+      "id": "ais-esim-change-20261003",
+      "url": "https://www.ais.th/en/consumers/package/exclusive-plan/esim/esim-change",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ais-prepaid-call-addon-20261003",
+      "url": "https://www.ais.th/consumers/package/addon/call",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ais-simtogo-20261003",
+      "url": "https://www.ais.th/en/consumers/package/prepaid/sim-to-go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "asda-support-20260929",
       "url": "https://mobile.asda.com/support/topping-up",
       "type": "provider-official",
@@ -5225,6 +5327,18 @@
       "reportedAt": "2026-09-27"
     },
     {
+      "id": "cmlink-uk-home-20261003",
+      "url": "https://www.cmlink.com/uk/en/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "cmlink-uk-promotion-20261003",
+      "url": "https://www.cmlink.com/uk/en/promotion/?offset=newc&tabtype=0&type=1",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "community-3hk-diy-recharge-reproduction-2025-10-21",
       "url": "https://www.10100.com/article/28273558",
       "type": "independent-reproduction",
@@ -5419,6 +5533,24 @@
     {
       "id": "digicel-jm-sim-to-go-20261003",
       "url": "https://www.digicelgroup.com/jm/en/sim-to-go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "dito-prepaid-20261003",
+      "url": "https://dito.ph/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "dito-sim-registration-20261003",
+      "url": "https://dito.ph/sim-registration",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "dito-traveler-sim-20261003",
+      "url": "https://dito.ph/traveler-sim",
       "type": "provider-official",
       "reportedAt": "2026-10-03"
     },
@@ -5945,6 +6077,24 @@
       "reportedAt": "2026-09-02"
     },
     {
+      "id": "linuxdo-dito-2680580-20260730",
+      "url": "https://linux.do/t/topic/2680580",
+      "type": "independent-community",
+      "reportedAt": "2026-07-30"
+    },
+    {
+      "id": "linuxdo-esim-recommend-2965721-20260929",
+      "url": "https://linux.do/t/topic/2965721",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "linuxdo-esim-recommend-ais-2965721-20260929",
+      "url": "https://linux.do/t/topic/2965721",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "linuxdo-giffgaff-1615582",
       "url": "https://linux.do/t/topic/1615582",
       "type": "first-hand-community-thread",
@@ -6291,6 +6441,18 @@
       "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
       "type": "community-thread",
       "reportedAt": "2024-12-18"
+    },
+    {
+      "id": "naixi-cmlink-11508-20260426",
+      "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=11508",
+      "type": "independent-community",
+      "reportedAt": "2026-04-26"
+    },
+    {
+      "id": "naixi-cmlink-13659-20260728",
+      "url": "https://forum.naixi.net/thread-13659-1-1.html",
+      "type": "independent-community",
+      "reportedAt": "2026-07-28"
     },
     {
       "id": "naixi-ctexcel-10558-20260301",
@@ -8443,6 +8605,15 @@
       "sourceId": "ahamo-reprice-20261001"
     },
     {
+      "id": "evt-ais-local-prepaid-th-2026-db-c22-20261003",
+      "routeId": "ais-local-prepaid-th-2026",
+      "type": "retention-mechanic-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "AIS local prepaid supports eSIM/passport identity handling and provider prepaid offers can add service-validity days. 2026 community users report low monthly keep costs and fast SMS reception, but stronger multi-year low-cost extension claims remain unverified against current provider rules.",
+      "sourceId": "ais-prepaid-call-addon-20261003"
+    },
+    {
       "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
       "routeId": "asda-mobile-uk-2026",
       "type": "cost-and-lifecycle-correction",
@@ -8569,6 +8740,15 @@
       "sourceId": "claro-co-prepago-lifecycle-20261002"
     },
     {
+      "id": "evt-cmlink-uk-keep-number-2026-db-c22-20261003",
+      "routeId": "cmlink-uk-keep-number-2026",
+      "type": "retention-eligibility-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current CMLink UK promotion explicitly advertises GBP15/year for 365 days of number holding. 2026 community reports preserve material operational constraints: customer-service or plan-history eligibility may be required, and retention/one-time-plan expiry can be followed by a roughly 30-day no-plan closure window.",
+      "sourceId": "cmlink-uk-promotion-20261003"
+    },
+    {
       "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
       "routeId": "cosmote-frog-13mo-2026",
       "type": "cost-and-lifecycle-correction",
@@ -8639,6 +8819,15 @@
       "scope": "route",
       "outcome": "Current Digicel terms establish deactivation after four months with no usage and new-number assignment after reactivation; current visitor acquisition, international top-up and China roaming exist, but the exact clock-resetting keep-alive action is unresolved.",
       "sourceId": "digicel-jm-mobile-terms-20261003"
+    },
+    {
+      "id": "evt-dito-prepaid-ph-2026-db-c22-20261003",
+      "routeId": "dito-prepaid-ph-2026",
+      "type": "retention-eligibility-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "DITO prepaid/eSIM is current and community users in 2026 report very low annual keep-alive costs, but foreign-tourist registration and the 30-day Traveler SIM lifecycle are binding provider constraints; the claimed PHP5/PHP10 annual regular-load extension was not confirmed by a current provider lifecycle table in this review.",
+      "sourceId": "dito-sim-registration-20261003"
     },
     {
       "id": "evt-elisa-prepaid-fi-2026-db-c4d-validity-20260929",
@@ -9893,6 +10082,64 @@
       }
     },
     {
+      "id": "snap-ais-local-prepaid-th-2026-current-profile-20261003",
+      "routeId": "ais-local-prepaid-th-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c22-reviewed-2026-10-03",
+      "data": {
+        "id": "ais-local-prepaid-th-2026",
+        "brandId": "ais-local-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "AIS domestic prepaid is a separate route from SIM2Fly. AIS supports eSIM conversion/transfer with ID-card or passport verification; current foreign-user remote-new-number acquisition details are not fully reconciled in this bounded review.",
+        "landedCost": {
+          "currency": "THB",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-cost-not-normalized"
+        },
+        "keep": {
+          "currency": "THB",
+          "observedActionCost": 30,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current AIS prepaid add-on material includes a THB30 prepaid call package that grants an additional 30 days of service validity. Community users report lower effective keep costs around THB10/month, but a universal cheapest keep mechanism and multi-year extension rule are not provider-reconciled here.",
+          "intervalDays": 30,
+          "state": "hold-provider-validity-increment-community-cost-conflict"
+        },
+        "chinaActivation": "Current provider evidence supports passport-based eSIM handling but does not establish a guaranteed mainland-China-first acquisition/activation path for a new AIS domestic number.",
+        "kyc": "AIS eSIM conversion/transfer flows accept passport-number verification for applicable subscribers. New-number foreign-customer registration/acquisition requirements remain scope-limited here.",
+        "payment": "Current prepaid top-up/package purchase mechanisms exist; remote foreign payment reliability is not established.",
+        "wifiCalling": "not normalized",
+        "roamingSms": "A 2026 community user reports AIS signal and fast SMS reception in the keep-number context, but location and third-party OTP coverage are not sufficiently controlled to make a mainland-China guarantee.",
+        "refund": "not reconciled",
+        "trend": "current-local-prepaid-route-retention-economics-unsettled",
+        "guideEligible": false,
+        "holdReason": "Distinct AIS local-number route is real, but the cheapest durable keep mechanic, foreign remote acquisition and mainland-China OTP behavior are not sufficiently reconciled; reject the unverified multi-year extension claim.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.ais.th/en/consumers/package/prepaid",
+        "tariffSummary": "Provider evidence supports prepaid validity increments and passport-based eSIM handling; HOLD pending a settled low-cost annual keep mechanic and foreign/China operational proof.",
+        "sourceIds": [
+          "ais-esim-change-20261003",
+          "ais-prepaid-call-addon-20261003",
+          "ais-simtogo-20261003",
+          "linuxdo-esim-recommend-ais-2965721-20260929"
+        ],
+        "guideSteps": [
+          "Treat this as AIS domestic prepaid, not SIM2Fly.",
+          "Verify foreign new-number registration/acquisition eligibility before purchase.",
+          "Use only provider-confirmed validity increments; do not rely on unverified multi-year top-up claims."
+        ]
+      }
+    },
+    {
       "id": "snap-ais-sim2fly-365d-2026-current-profile-20260929",
       "routeId": "ais-sim2fly-365d-2026",
       "kind": "current-profile",
@@ -10902,6 +11149,64 @@
       }
     },
     {
+      "id": "snap-cmlink-uk-keep-number-2026-current-profile-20261003",
+      "routeId": "cmlink-uk-keep-number-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c22-reviewed-2026-10-03",
+      "data": {
+        "id": "cmlink-uk-keep-number-2026",
+        "brandId": "cmlink-uk",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "CMLink UK currently offers UK mobile service on a local partner network and promotes physical SIM/eSIM options. The GBP15/year keep-number product is live, but 2026 community reports indicate that access to the retention plan may depend on customer-service handling or current/prior monthly or annual plan history.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-cost-not-normalized"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 15,
+          "yearCostOriginal": 15,
+          "yearCostCny": null,
+          "action": "Use the current CMLink UK Keep UK Number plan. The provider advertises GBP15 for 365 days of number holding; community reports say plan eligibility/order handling and the post-expiry no-plan window must be checked with CMLink before relying on it.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-plan-eligibility-constrained"
+        },
+        "chinaActivation": "CMLink states UK-number retention in China and roaming support, but activation geography and workarounds are not normalized as a guaranteed remote-China activation path in this review.",
+        "kyc": "Current reviewed materials do not establish a universal KYC-free path. Preserve account/plan eligibility and activation requirements as unresolved rather than inferring them.",
+        "payment": "Current plan purchase/payment path depends on CMLink account and plan eligibility; community evidence indicates customer-service handling may be needed.",
+        "wifiCalling": "Community users report Wi-Fi Calling as an operational workaround during mainland-China VoLTE roaming issues; provider-guaranteed China behavior was not established here.",
+        "roamingSms": "CMLink advertises China roaming/number retention, but 2025-2026 community reports describe mainland-China outgoing call/SMS disruption and do not establish universal third-party OTP reception. Keep as evidence-scoped.",
+        "refund": "not reconciled",
+        "trend": "live-retention-product-with-eligibility-and-roaming-caveats",
+        "guideEligible": false,
+        "holdReason": "GBP15/365-day retention product is live, but enrollment eligibility/customer-service path, post-expiry closure timing and mainland-China SMS/voice behavior remain material operational constraints.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.cmlink.com/uk/en/",
+        "tariffSummary": "Current provider advertises GBP15/year for 365-day number holding; HOLD until eligibility/order and China-side operational behavior are fully reconciled.",
+        "sourceIds": [
+          "cmlink-uk-promotion-20261003",
+          "cmlink-uk-home-20261003",
+          "naixi-cmlink-11508-20260426",
+          "naixi-cmlink-13659-20260728"
+        ],
+        "guideSteps": [
+          "Confirm current eligibility for the GBP15/year keep-number plan with CMLink.",
+          "Verify activation and mainland-China roaming/SMS behavior for the intended device before depending on the number.",
+          "Renew before expiry and do not rely on ordinary paid activity alone as a keep-number mechanism."
+        ]
+      }
+    },
+    {
       "id": "snap-cosmote-frog-13mo-2026-current-profile-20260929",
       "routeId": "cosmote-frog-13mo-2026",
       "kind": "current-profile",
@@ -11358,6 +11663,65 @@
           "digicel-jm-sim-to-go-20261003",
           "digicel-jm-international-topup-20261003",
           "digicel-jm-roaming-20261003"
+        ]
+      }
+    },
+    {
+      "id": "snap-dito-prepaid-ph-2026-current-profile-20261003",
+      "routeId": "dito-prepaid-ph-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c22-reviewed-2026-10-03",
+      "data": {
+        "id": "dito-prepaid-ph-2026",
+        "brandId": "dito-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "DITO currently sells prepaid and eSIM products through its official channels. Foreign nationals must register; tourists must provide passport, Philippine proof of address and a return ticket, while non-tourist foreign residents need the applicable visa/residency documents.",
+        "landedCost": {
+          "currency": "PHP",
+          "providerOrCommunityPrice": 79,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 79,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-esim-entry-reference"
+        },
+        "keep": {
+          "currency": "PHP",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "2026 community users report that a small PHP5-PHP10 regular-load top-up can preserve the number for about a year, but the reviewed current DITO provider pages do not confirm that lifecycle rule. Treat the amount/interval as community evidence only.",
+          "intervalDays": null,
+          "state": "hold-community-annual-topup-provider-unverified"
+        },
+        "chinaActivation": "A durable China-based tourist acquisition path is not established. DITO requires foreign-tourist Philippine address/return-ticket evidence; Traveler SIMs are 30-day lines unless an approved extension is completed.",
+        "kyc": "All foreign nationals must register. DITO lists passport plus Philippine proof of address and return ticket for tourists; non-tourist foreigners need passport, Philippine address and applicable visa/residency/employment/student documents.",
+        "payment": "DITO App/eShop and regular loading channels are current; community users report convenient payment methods, but remote foreign-user payment is not provider-guaranteed here.",
+        "wifiCalling": "unverified",
+        "roamingSms": "2026 community users report mainland-China roaming and incoming-SMS use with mixed device/platform outcomes. DITO does not guarantee third-party OTP delivery in the reviewed provider material.",
+        "refund": "not reconciled",
+        "trend": "strong-community-demand-regulatory-and-lifecycle-boundary",
+        "guideEligible": false,
+        "holdReason": "Tourist foreign-user lines are 30-day/extension-controlled and the community PHP5/PHP10 annual keep mechanic lacks current provider confirmation; mainland OTP reliability is mixed.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://dito.ph/prepaid",
+        "tariffSummary": "Current prepaid/eSIM route with strong 2026 low-cost retention reports, but foreign-tourist eligibility and the exact annual keep mechanic remain unresolved.",
+        "sourceIds": [
+          "dito-prepaid-20261003",
+          "dito-sim-registration-20261003",
+          "dito-traveler-sim-20261003",
+          "linuxdo-dito-2680580-20260730",
+          "linuxdo-esim-recommend-2965721-20260929"
+        ],
+        "guideSteps": [
+          "Confirm whether the subscriber qualifies as tourist or non-tourist foreign national before purchase.",
+          "Complete DITO SIM registration with the required lawful documents.",
+          "Do not rely on the PHP5/PHP10 annual top-up claim until the current line lifecycle is confirmed in-app/provider support."
         ]
       }
     },
@@ -19810,6 +20174,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "ais-local-prepaid-th-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "THB",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "THB",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "ais-sim2fly-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -20026,6 +20402,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "cmlink-uk-keep-number-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "cosmote-frog-13mo-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -20120,6 +20508,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 120
+    },
+    {
+      "routeId": "dito-prepaid-ph-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PHP",
+      "acquisitionCostOriginal": 79,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PHP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "du-prepaid-ae-2026",
