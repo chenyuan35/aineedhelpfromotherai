@@ -18,6 +18,15 @@
     "sourceId": "ahamo-reprice-20261001"
   },
   {
+    "id": "evt-ais-local-prepaid-th-2026-db-c22-20261003",
+    "routeId": "ais-local-prepaid-th-2026",
+    "type": "retention-mechanic-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "AIS local prepaid supports eSIM/passport identity handling and provider prepaid offers can add service-validity days. 2026 community users report low monthly keep costs and fast SMS reception, but stronger multi-year low-cost extension claims remain unverified against current provider rules.",
+    "sourceId": "ais-prepaid-call-addon-20261003"
+  },
+  {
     "id": "evt-asda-mobile-uk-2026-db-c3-review-20260929",
     "routeId": "asda-mobile-uk-2026",
     "type": "cost-and-lifecycle-correction",
@@ -144,6 +153,15 @@
     "sourceId": "claro-co-prepago-lifecycle-20261002"
   },
   {
+    "id": "evt-cmlink-uk-keep-number-2026-db-c22-20261003",
+    "routeId": "cmlink-uk-keep-number-2026",
+    "type": "retention-eligibility-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current CMLink UK promotion explicitly advertises GBP15/year for 365 days of number holding. 2026 community reports preserve material operational constraints: customer-service or plan-history eligibility may be required, and retention/one-time-plan expiry can be followed by a roughly 30-day no-plan closure window.",
+    "sourceId": "cmlink-uk-promotion-20261003"
+  },
+  {
     "id": "evt-cosmote-frog-13mo-2026-db-c4-review-20260929",
     "routeId": "cosmote-frog-13mo-2026",
     "type": "cost-and-lifecycle-correction",
@@ -214,6 +232,15 @@
     "scope": "route",
     "outcome": "Current Digicel terms establish deactivation after four months with no usage and new-number assignment after reactivation; current visitor acquisition, international top-up and China roaming exist, but the exact clock-resetting keep-alive action is unresolved.",
     "sourceId": "digicel-jm-mobile-terms-20261003"
+  },
+  {
+    "id": "evt-dito-prepaid-ph-2026-db-c22-20261003",
+    "routeId": "dito-prepaid-ph-2026",
+    "type": "retention-eligibility-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "DITO prepaid/eSIM is current and community users in 2026 report very low annual keep-alive costs, but foreign-tourist registration and the 30-day Traveler SIM lifecycle are binding provider constraints; the claimed PHP5/PHP10 annual regular-load extension was not confirmed by a current provider lifecycle table in this review.",
+    "sourceId": "dito-sim-registration-20261003"
   },
   {
     "id": "evt-elisa-prepaid-fi-2026-db-c4d-validity-20260929",

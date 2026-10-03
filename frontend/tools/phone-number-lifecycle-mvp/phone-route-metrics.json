@@ -98,6 +98,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "ais-local-prepaid-th-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "THB",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "THB",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "ais-sim2fly-365d-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -314,6 +326,18 @@
       "keepIntervalDays": 180
     },
     {
+      "routeId": "cmlink-uk-keep-number-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "GBP",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "GBP",
+      "keepYearCostOriginal": 15,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "cosmote-frog-13mo-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -408,6 +432,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 120
+    },
+    {
+      "routeId": "dito-prepaid-ph-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "PHP",
+      "acquisitionCostOriginal": 79,
+      "acquisitionCostCny": null,
+      "keepCurrency": "PHP",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "du-prepaid-ae-2026",

@@ -30,6 +30,24 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "ais-esim-change-20261003",
+    "url": "https://www.ais.th/en/consumers/package/exclusive-plan/esim/esim-change",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "ais-prepaid-call-addon-20261003",
+    "url": "https://www.ais.th/consumers/package/addon/call",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "ais-simtogo-20261003",
+    "url": "https://www.ais.th/en/consumers/package/prepaid/sim-to-go",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "asda-support-20260929",
     "url": "https://mobile.asda.com/support/topping-up",
     "type": "provider-official",
@@ -336,6 +354,18 @@
     "reportedAt": "2026-09-27"
   },
   {
+    "id": "cmlink-uk-home-20261003",
+    "url": "https://www.cmlink.com/uk/en/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cmlink-uk-promotion-20261003",
+    "url": "https://www.cmlink.com/uk/en/promotion/?offset=newc&tabtype=0&type=1",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "community-3hk-diy-recharge-reproduction-2025-10-21",
     "url": "https://www.10100.com/article/28273558",
     "type": "independent-reproduction",
@@ -530,6 +560,24 @@
   {
     "id": "digicel-jm-sim-to-go-20261003",
     "url": "https://www.digicelgroup.com/jm/en/sim-to-go",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "dito-prepaid-20261003",
+    "url": "https://dito.ph/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "dito-sim-registration-20261003",
+    "url": "https://dito.ph/sim-registration",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "dito-traveler-sim-20261003",
+    "url": "https://dito.ph/traveler-sim",
     "type": "provider-official",
     "reportedAt": "2026-10-03"
   },
@@ -1056,6 +1104,24 @@
     "reportedAt": "2026-09-02"
   },
   {
+    "id": "linuxdo-dito-2680580-20260730",
+    "url": "https://linux.do/t/topic/2680580",
+    "type": "independent-community",
+    "reportedAt": "2026-07-30"
+  },
+  {
+    "id": "linuxdo-esim-recommend-2965721-20260929",
+    "url": "https://linux.do/t/topic/2965721",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "linuxdo-esim-recommend-ais-2965721-20260929",
+    "url": "https://linux.do/t/topic/2965721",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
     "id": "linuxdo-giffgaff-1615582",
     "url": "https://linux.do/t/topic/1615582",
     "type": "first-hand-community-thread",
@@ -1402,6 +1468,18 @@
     "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
     "type": "community-thread",
     "reportedAt": "2024-12-18"
+  },
+  {
+    "id": "naixi-cmlink-11508-20260426",
+    "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=11508",
+    "type": "independent-community",
+    "reportedAt": "2026-04-26"
+  },
+  {
+    "id": "naixi-cmlink-13659-20260728",
+    "url": "https://forum.naixi.net/thread-13659-1-1.html",
+    "type": "independent-community",
+    "reportedAt": "2026-07-28"
   },
   {
     "id": "naixi-ctexcel-10558-20260301",

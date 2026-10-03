@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "ais-local-prepaid-th-2026",
+    "marketId": "th",
+    "networkId": "ais-th",
+    "brandId": "ais-local-prepaid",
+    "displayName": "AIS Local Prepaid / eSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.ais.th/en/consumers/package/prepaid",
+    "sourceIds": [
+      "ais-esim-change-20261003",
+      "ais-prepaid-call-addon-20261003",
+      "ais-simtogo-20261003",
+      "linuxdo-esim-recommend-ais-2965721-20260929"
+    ]
+  },
+  "market": {
+    "id": "th",
+    "name": "Thailand",
+    "countryCode": "TH"
+  },
+  "network": {
+    "id": "ais-th",
+    "name": "AIS Thailand",
+    "marketId": "th"
+  },
+  "brand": {
+    "id": "ais-local-prepaid",
+    "networkId": "ais-th",
+    "name": "AIS One-2-Call Prepaid",
+    "marketId": "th"
+  },
+  "metrics": {
+    "routeId": "ais-local-prepaid-th-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "THB",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "THB",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 30
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "ais-esim-change-20261003",
+      "url": "https://www.ais.th/en/consumers/package/exclusive-plan/esim/esim-change",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ais-prepaid-call-addon-20261003",
+      "url": "https://www.ais.th/consumers/package/addon/call",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "ais-simtogo-20261003",
+      "url": "https://www.ais.th/en/consumers/package/prepaid/sim-to-go",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "linuxdo-esim-recommend-ais-2965721-20260929",
+      "url": "https://linux.do/t/topic/2965721",
+      "type": "independent-community",
+      "reportedAt": "2026-09-29"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-ais-local-prepaid-th-2026-db-c22-20261003",
+      "routeId": "ais-local-prepaid-th-2026",
+      "type": "retention-mechanic-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "AIS local prepaid supports eSIM/passport identity handling and provider prepaid offers can add service-validity days. 2026 community users report low monthly keep costs and fast SMS reception, but stronger multi-year low-cost extension claims remain unverified against current provider rules.",
+      "sourceId": "ais-prepaid-call-addon-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-ais-local-prepaid-th-2026-current-profile-20261003",
+      "routeId": "ais-local-prepaid-th-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c22-reviewed-2026-10-03",
+      "data": {
+        "id": "ais-local-prepaid-th-2026",
+        "brandId": "ais-local-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "AIS domestic prepaid is a separate route from SIM2Fly. AIS supports eSIM conversion/transfer with ID-card or passport verification; current foreign-user remote-new-number acquisition details are not fully reconciled in this bounded review.",
+        "landedCost": {
+          "currency": "THB",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-cost-not-normalized"
+        },
+        "keep": {
+          "currency": "THB",
+          "observedActionCost": 30,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current AIS prepaid add-on material includes a THB30 prepaid call package that grants an additional 30 days of service validity. Community users report lower effective keep costs around THB10/month, but a universal cheapest keep mechanism and multi-year extension rule are not provider-reconciled here.",
+          "intervalDays": 30,
+          "state": "hold-provider-validity-increment-community-cost-conflict"
+        },
+        "chinaActivation": "Current provider evidence supports passport-based eSIM handling but does not establish a guaranteed mainland-China-first acquisition/activation path for a new AIS domestic number.",
+        "kyc": "AIS eSIM conversion/transfer flows accept passport-number verification for applicable subscribers. New-number foreign-customer registration/acquisition requirements remain scope-limited here.",
+        "payment": "Current prepaid top-up/package purchase mechanisms exist; remote foreign payment reliability is not established.",
+        "wifiCalling": "not normalized",
+        "roamingSms": "A 2026 community user reports AIS signal and fast SMS reception in the keep-number context, but location and third-party OTP coverage are not sufficiently controlled to make a mainland-China guarantee.",
+        "refund": "not reconciled",
+        "trend": "current-local-prepaid-route-retention-economics-unsettled",
+        "guideEligible": false,
+        "holdReason": "Distinct AIS local-number route is real, but the cheapest durable keep mechanic, foreign remote acquisition and mainland-China OTP behavior are not sufficiently reconciled; reject the unverified multi-year extension claim.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.ais.th/en/consumers/package/prepaid",
+        "tariffSummary": "Provider evidence supports prepaid validity increments and passport-based eSIM handling; HOLD pending a settled low-cost annual keep mechanic and foreign/China operational proof.",
+        "sourceIds": [
+          "ais-esim-change-20261003",
+          "ais-prepaid-call-addon-20261003",
+          "ais-simtogo-20261003",
+          "linuxdo-esim-recommend-ais-2965721-20260929"
+        ],
+        "guideSteps": [
+          "Treat this as AIS domestic prepaid, not SIM2Fly.",
+          "Verify foreign new-number registration/acquisition eligibility before purchase.",
+          "Use only provider-confirmed validity increments; do not rely on unverified multi-year top-up claims."
+        ]
+      }
+    }
+  ]
+}

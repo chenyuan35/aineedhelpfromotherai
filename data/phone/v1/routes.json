@@ -153,6 +153,26 @@
     ]
   },
   {
+    "id": "ais-local-prepaid-th-2026",
+    "marketId": "th",
+    "networkId": "ais-th",
+    "brandId": "ais-local-prepaid",
+    "displayName": "AIS Local Prepaid / eSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.ais.th/en/consumers/package/prepaid",
+    "sourceIds": [
+      "ais-esim-change-20261003",
+      "ais-prepaid-call-addon-20261003",
+      "ais-simtogo-20261003",
+      "linuxdo-esim-recommend-ais-2965721-20260929"
+    ]
+  },
+  {
     "id": "ais-sim2fly-365d-2026",
     "marketId": "th",
     "networkId": "ais-th",
@@ -509,6 +529,26 @@
     ]
   },
   {
+    "id": "cmlink-uk-keep-number-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "cmlink-uk",
+    "displayName": "CMLink UK Keep Number",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.cmlink.com/uk/en/",
+    "sourceIds": [
+      "cmlink-uk-home-20261003",
+      "cmlink-uk-promotion-20261003",
+      "naixi-cmlink-11508-20260426",
+      "naixi-cmlink-13659-20260728"
+    ]
+  },
+  {
     "id": "cosmote-frog-13mo-2026",
     "marketId": "gr",
     "networkId": "cosmote-gr",
@@ -669,6 +709,27 @@
       "digicel-jm-prepaid-plans-20261003",
       "digicel-jm-roaming-20261003",
       "digicel-jm-sim-to-go-20261003"
+    ]
+  },
+  {
+    "id": "dito-prepaid-ph-2026",
+    "marketId": "ph",
+    "networkId": "dito-ph",
+    "brandId": "dito-prepaid",
+    "displayName": "DITO Prepaid / eSIM",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://dito.ph/prepaid",
+    "sourceIds": [
+      "dito-prepaid-20261003",
+      "dito-sim-registration-20261003",
+      "dito-traveler-sim-20261003",
+      "linuxdo-dito-2680580-20260730",
+      "linuxdo-esim-recommend-2965721-20260929"
     ]
   },
   {
