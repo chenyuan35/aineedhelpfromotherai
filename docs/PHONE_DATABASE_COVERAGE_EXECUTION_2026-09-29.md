@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C16
+## Current verified state after DB-C18
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **137 routes / 80 markets / 134 brands / 106 networks / 505 sources**;
-- comparison↔canonical route-ID overlap: **126**;
-- comparison routes still legacy-only: **9**;
+- canonical normalized database: **143 routes / 84 markets / 140 brands / 110 networks / 537 sources**;
+- comparison↔canonical route-ID overlap: **132**;
+- comparison routes still legacy-only: **3** (`sakura-mobile-voice-2026`, `digicel-jm-2026`, `tigo-tz-2026`);
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -342,3 +342,26 @@ Post-DB-C16 state: **137 canonical routes / 80 markets / 134 brands / 106 networ
 Release: PR #350 squash-merged as `533a6d50f945a6577e0d4776eab7ad1bacb3f955`; CI #217, Eval Gate #1048 and Vercel Preview passed. Production deployment `dpl_A3Dxe7RcwpXpgA3g4PA1EsSUzed5` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C16 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
 
 DB-C17 next bounded batch: `cricket-us-2026`, `google-fi-flexible-2026`, `beeline-uz-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+## DB-C17 — completed 2026-10-03
+
+The bounded U.S./Uzbekistan batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **0 ADMIT-BACKSTAGE / 3 HOLD / 0 REJECT**.
+
+- `cricket-us-2026` — HOLD. Current annual durable pricing and China Passport roaming exist, but U.S.-first setup/activation constraints and reliable foreign-payment execution prevent a clean permanent-abroad route.
+- `google-fi-flexible-2026` — HOLD. Current Flexible service supports international texting/roaming including China, but signup requires a U.S. payments address, activation/use in the U.S. before international use, and continued primarily-U.S. use.
+- `beeline-uz-2026` — HOLD. Current Beeline Uzbekistan evidence establishes restriction after 90 days without a qualifying transaction plus a further 275-day office-recovery window, China roaming and recharge while abroad. The passport-based Hello offer is local-only, so a clean ordinary roaming-capable foreign acquisition path remains unresolved.
+
+Post-DB-C17 state: **140 canonical routes / 81 markets / 137 brands / 107 networks / 525 sources / 129 comparison-overlap route IDs / 6 comparison route IDs still legacy-only / 3 explicit indexable routes**. PR #353 squash-merged as `09041c1fefe7cb534c138e88769fd50cc27fad4e`; CI #220, Eval Gate #1053 and Vercel Preview passed. Production deployment `dpl_7iwuBLiveboQeoPRzdWMydFgLNrY` reached READY and live publication-boundary checks passed.
+
+## DB-C18 — completed 2026-10-03
+
+The bounded Kuwait/Oman/Bahamas batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**.
+
+- `zain-kw-eezee-2026` — ADMIT-BACKSTAGE. Current eeZee evidence establishes a KD5 new voice prepaid line, KD13/365-day validity add-on, eSIM, adult expatriate passport/Civil-ID purchase, recharge while abroad, and prepaid voice/SMS roaming enabled by default. China-specific partner/rate and third-party OTP reliability remain unverified.
+- `omantel-om-2026` — ADMIT-BACKSTAGE. Current Hayyak evidence establishes 90-day prepaid validity from first call/recharge/balance transfer followed by a 90-day number-holding period; current eSIM onboarding accepts passport/ID/residence card, current e-vouchers start at OMR7, and incoming SMS while roaming is free. China-specific partner/OTP reliability remains unverified.
+- `btc-bs-2026` — HOLD. BTC prepaid remains current, but current consumer-prepaid number inactivity/deactivation/recycling timing, minimum keep-alive action, ordinary foreigner onboarding and China-specific prepaid roaming/SMS behavior were not established.
+
+Post-DB-C18 state: **143 canonical routes / 84 markets / 140 brands / 110 networks / 537 sources / 132 comparison-overlap route IDs / 3 comparison route IDs still legacy-only / 3 explicit indexable routes**. Review-packet checks, dedicated DB-C18 regression, `npm run phone:data:check`, full frontend build and GitHub release gates passed. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #354 squash-merged as `02323f3b787a7c11b434a2e495f2739f590d9b58`; CI #222, Eval Gate #1055 and Vercel Preview passed. Production deployment `dpl_HWAt3zxuDBosJ8fFkJyd7nH63qTS` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C18 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
+
+DB-C19 next bounded batch: `digicel-jm-2026`, `tigo-tz-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
