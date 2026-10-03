@@ -47,11 +47,11 @@ assert.equal(ais.keep.observedActionCost, 30);
 assert.match(ais.holdReason, /durable|remote|mainland|multi-year/i);
 assert.notEqual(ais.brandId, 'ais-sim2fly');
 
-assert.equal(canonical.routes.length, 154);
+assert.equal(canonical.routes.length, 156);
 assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 151);
-assert.equal(networks.length, 115);
-assert.equal(sources.length, 587);
+assert.equal(brands.length, 153);
+assert.equal(networks.length, 116);
+assert.equal(sources.length, 593);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

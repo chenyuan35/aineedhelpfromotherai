@@ -240,6 +240,12 @@
     "marketId": "fi"
   },
   {
+    "id": "esimgg-estonia",
+    "networkId": "esimgg-ee",
+    "name": "eSIM.GG +372",
+    "marketId": "ee"
+  },
+  {
     "id": "etisalat-ae",
     "networkId": "etisalat-ae",
     "name": "e& Wasel",
@@ -309,6 +315,12 @@
     "id": "haha-sim-hk",
     "networkId": "three-hk",
     "name": "Fortress haha SIM",
+    "marketId": "hk"
+  },
+  {
+    "id": "hkmobi-hk",
+    "networkId": "csl-hk",
+    "name": "HK Mobi",
     "marketId": "hk"
   },
   {

@@ -468,6 +468,18 @@
     "reportedAt": "2026-10-03"
   },
   {
+    "id": "csl-dealer-rnr-20261003",
+    "url": "https://www.hkcsl.com/en/dealer-prepaid-sim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "csl-hkmobi-365-20261003",
+    "url": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "csl-rnr-20261003",
     "url": "https://www.hkcsl.com/en/real-name-registration/",
     "type": "provider-official",
@@ -618,6 +630,18 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "esimgg-faq-20261003",
+    "url": "https://esim.gg/support/faq",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "esimgg-home-20261003",
+    "url": "https://esim.gg/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "fareastone-tw-official",
     "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "type": "provider-official",
@@ -766,6 +790,12 @@
     "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
     "type": "first-hand-app-review",
     "reportedAt": "2026-08-28"
+  },
+  {
+    "id": "hkepc-hkmobi-thread-20261003",
+    "url": "https://www.hkepc.com/forum/viewthread.php?extra=&fid=44&ordertype=1&tid=2632211",
+    "type": "independent-community",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "hotmobile-hotalk-cards-20260929",
@@ -1120,6 +1150,12 @@
     "url": "https://linux.do/t/topic/2965721",
     "type": "independent-community",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "linuxdo-esimgg-2900517-20260914",
+    "url": "https://linux.do/t/topic/2900517",
+    "type": "independent-community",
+    "reportedAt": "2026-09-14"
   },
   {
     "id": "linuxdo-giffgaff-1615582",

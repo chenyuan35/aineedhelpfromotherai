@@ -252,6 +252,15 @@
     "sourceId": "elisa-prepaid-validity-20260929"
   },
   {
+    "id": "evt-esimgg-estonia-372-2026-db-c23-20261003",
+    "routeId": "esimgg-estonia-372-2026",
+    "type": "retention-and-operational-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Provider currently states that the +372 phone-number eSIM supports calls/SMS, has no monthly bill, balance does not expire, and stays active with at least one use per year. September 2026 community users reproduced China-side signal and several verification SMS outcomes but also reported prefix-dependent failures.",
+    "sourceId": "esimgg-home-20261003"
+  },
+  {
     "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
     "routeId": "etisalat-wasel-ae-2026",
     "type": "legacy-rule-correction",
@@ -349,6 +358,15 @@
     "scope": "route",
     "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
     "sourceId": "official-gp-recharge-validity-2026-09-29"
+  },
+  {
+    "id": "evt-hkmobi-365-hk-2026-db-c23-20261003",
+    "routeId": "hkmobi-365-hk-2026",
+    "type": "retention-and-operational-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current csl HK Mobi page gives 365-day card validity and a promotional HKD20-or-more recharge ladder extending card validity by 365 days through 31 Dec 2026. csl also requires real-name registration; long-running community evidence corroborates the HKD20 annual renewal mechanic and current eSIM/MNP use.",
+    "sourceId": "csl-hkmobi-365-20261003"
   },
   {
     "id": "evt-hotmobile-il-2026-db-c4d-hold-20260929",

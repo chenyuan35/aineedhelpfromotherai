@@ -794,6 +794,25 @@
     ]
   },
   {
+    "id": "esimgg-estonia-372-2026",
+    "marketId": "ee",
+    "networkId": "esimgg-ee",
+    "brandId": "esimgg-estonia",
+    "displayName": "eSIM.GG Estonia +372",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://esim.gg/",
+    "sourceIds": [
+      "esimgg-faq-20261003",
+      "esimgg-home-20261003",
+      "linuxdo-esimgg-2900517-20260914"
+    ]
+  },
+  {
     "id": "etisalat-wasel-ae-2026",
     "marketId": "ae",
     "networkId": "etisalat-ae",
@@ -1030,6 +1049,25 @@
     "acquireUrl": "https://www.h2owireless.com/",
     "sourceIds": [
       "src-d5c503ecd237"
+    ]
+  },
+  {
+    "id": "hkmobi-365-hk-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "hkmobi-hk",
+    "displayName": "HK Mobi 365-day Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+    "sourceIds": [
+      "csl-dealer-rnr-20261003",
+      "csl-hkmobi-365-20261003",
+      "hkepc-hkmobi-thread-20261003"
     ]
   },
   {

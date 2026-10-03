@@ -593,6 +593,11 @@
       "marketId": "fi"
     },
     {
+      "id": "esimgg-ee",
+      "name": "eSIM.GG Estonia phone-number service",
+      "marketId": "ee"
+    },
+    {
       "id": "etisalat-ae",
       "name": "e& (Etisalat)",
       "marketId": "ae"
@@ -1255,6 +1260,12 @@
       "marketId": "fi"
     },
     {
+      "id": "esimgg-estonia",
+      "networkId": "esimgg-ee",
+      "name": "eSIM.GG +372",
+      "marketId": "ee"
+    },
+    {
       "id": "etisalat-ae",
       "networkId": "etisalat-ae",
       "name": "e& Wasel",
@@ -1324,6 +1335,12 @@
       "id": "haha-sim-hk",
       "networkId": "three-hk",
       "name": "Fortress haha SIM",
+      "marketId": "hk"
+    },
+    {
+      "id": "hkmobi-hk",
+      "networkId": "csl-hk",
+      "name": "HK Mobi",
       "marketId": "hk"
     },
     {
@@ -2717,6 +2734,25 @@
       ]
     },
     {
+      "id": "esimgg-estonia-372-2026",
+      "marketId": "ee",
+      "networkId": "esimgg-ee",
+      "brandId": "esimgg-estonia",
+      "displayName": "eSIM.GG Estonia +372",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://esim.gg/",
+      "sourceIds": [
+        "esimgg-faq-20261003",
+        "esimgg-home-20261003",
+        "linuxdo-esimgg-2900517-20260914"
+      ]
+    },
+    {
       "id": "etisalat-wasel-ae-2026",
       "marketId": "ae",
       "networkId": "etisalat-ae",
@@ -2953,6 +2989,25 @@
       "acquireUrl": "https://www.h2owireless.com/",
       "sourceIds": [
         "src-d5c503ecd237"
+      ]
+    },
+    {
+      "id": "hkmobi-365-hk-2026",
+      "marketId": "hk",
+      "networkId": "csl-hk",
+      "brandId": "hkmobi-hk",
+      "displayName": "HK Mobi 365-day Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+      "sourceIds": [
+        "csl-dealer-rnr-20261003",
+        "csl-hkmobi-365-20261003",
+        "hkepc-hkmobi-thread-20261003"
       ]
     },
     {
@@ -5441,6 +5496,18 @@
       "reportedAt": "2026-10-03"
     },
     {
+      "id": "csl-dealer-rnr-20261003",
+      "url": "https://www.hkcsl.com/en/dealer-prepaid-sim/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "csl-hkmobi-365-20261003",
+      "url": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "csl-rnr-20261003",
       "url": "https://www.hkcsl.com/en/real-name-registration/",
       "type": "provider-official",
@@ -5591,6 +5658,18 @@
       "reportedAt": "2026-09-29"
     },
     {
+      "id": "esimgg-faq-20261003",
+      "url": "https://esim.gg/support/faq",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "esimgg-home-20261003",
+      "url": "https://esim.gg/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
       "id": "fareastone-tw-official",
       "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
       "type": "provider-official",
@@ -5739,6 +5818,12 @@
       "url": "https://play.google.com/store/apps/details?id=kz.beeline.odp",
       "type": "first-hand-app-review",
       "reportedAt": "2026-08-28"
+    },
+    {
+      "id": "hkepc-hkmobi-thread-20261003",
+      "url": "https://www.hkepc.com/forum/viewthread.php?extra=&fid=44&ordertype=1&tid=2632211",
+      "type": "independent-community",
+      "reportedAt": "2026-10-03"
     },
     {
       "id": "hotmobile-hotalk-cards-20260929",
@@ -6093,6 +6178,12 @@
       "url": "https://linux.do/t/topic/2965721",
       "type": "independent-community",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "linuxdo-esimgg-2900517-20260914",
+      "url": "https://linux.do/t/topic/2900517",
+      "type": "independent-community",
+      "reportedAt": "2026-09-14"
     },
     {
       "id": "linuxdo-giffgaff-1615582",
@@ -8839,6 +8930,15 @@
       "sourceId": "elisa-prepaid-validity-20260929"
     },
     {
+      "id": "evt-esimgg-estonia-372-2026-db-c23-20261003",
+      "routeId": "esimgg-estonia-372-2026",
+      "type": "retention-and-operational-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Provider currently states that the +372 phone-number eSIM supports calls/SMS, has no monthly bill, balance does not expire, and stays active with at least one use per year. September 2026 community users reproduced China-side signal and several verification SMS outcomes but also reported prefix-dependent failures.",
+      "sourceId": "esimgg-home-20261003"
+    },
+    {
       "id": "evt-etisalat-wasel-ae-2026-db-c2-review-20260929",
       "routeId": "etisalat-wasel-ae-2026",
       "type": "legacy-rule-correction",
@@ -8936,6 +9036,15 @@
       "scope": "route",
       "outcome": "Legacy BDT995/5-year claim is stale. Current first-party surfaces show approximately BDT1497-1498 for five-year account validity, with a BDT1 discrepancy between official pages. Keep BDT300/365-day recharge as the clean current floor until the five-year price conflict is reconciled.",
       "sourceId": "official-gp-recharge-validity-2026-09-29"
+    },
+    {
+      "id": "evt-hkmobi-365-hk-2026-db-c23-20261003",
+      "routeId": "hkmobi-365-hk-2026",
+      "type": "retention-and-operational-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current csl HK Mobi page gives 365-day card validity and a promotional HKD20-or-more recharge ladder extending card validity by 365 days through 31 Dec 2026. csl also requires real-name registration; long-running community evidence corroborates the HKD20 annual renewal mechanic and current eSIM/MNP use.",
+      "sourceId": "csl-hkmobi-365-20261003"
     },
     {
       "id": "evt-hotmobile-il-2026-db-c4d-hold-20260929",
@@ -11900,6 +12009,63 @@
       }
     },
     {
+      "id": "snap-esimgg-estonia-372-2026-current-profile-20261003",
+      "routeId": "esimgg-estonia-372-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c23-reviewed-2026-10-03",
+      "data": {
+        "id": "esimgg-estonia-372-2026",
+        "brandId": "esimgg-estonia",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Provider sells a prepaid Estonian +372 phone-number eSIM online for EUR2.99 and separates phone-number lines from data-only eSIM.TF products. Upstream carrier identity is intentionally not normalized here.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 2.99,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2.99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-line-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is not normalized.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-use-rule"
+        },
+        "chinaActivation": "Provider markets global activation/use and China coverage. September 2026 community users report activation and China-side roaming operation, including use through removable eUICC adapters, but device/adapter compatibility remains user-specific.",
+        "kyc": "Provider public purchase/terms reviewed here do not establish a mandatory identity-document flow; do not market this as guaranteed no-KYC because upstream/legal requirements can change.",
+        "payment": "Provider accepts major cards/digital payment methods; September 2026 community users report Alipay payment.",
+        "wifiCalling": "not normalized",
+        "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persistently fail selected verification messages. No platform acceptance guarantee.",
+        "refund": "Provider refund policy limits refunds after profile download/use and excludes third-party verification-code rejection as a refund basis.",
+        "trend": "current-low-maintenance-global-number-with-prefix-otp-variance",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://esim.gg/",
+        "tariffSummary": "EUR2.99 prepaid +372 phone-number eSIM; no monthly bill; provider says keep active with at least one use per year. OTP reliability is prefix/platform dependent.",
+        "sourceIds": [
+          "esimgg-home-20261003",
+          "esimgg-faq-20261003",
+          "linuxdo-esimgg-2900517-20260914"
+        ],
+        "guideSteps": [
+          "Buy the phone-number eSIM, not the separate data-only product.",
+          "Install on a compatible eSIM device or supported adapter and verify ordinary SMS before binding important accounts.",
+          "Generate at least one line use within each 365-day period and keep an independent reminder; treat OTP acceptance as platform/prefix-specific."
+        ]
+      }
+    },
+    {
       "id": "snap-etisalat-wasel-ae-2026-current-profile-20260929",
       "routeId": "etisalat-wasel-ae-2026",
       "kind": "current-profile",
@@ -12989,6 +13155,63 @@
           "summary": "Recharge H2O PayGo before refill expiry",
           "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
         }
+      }
+    },
+    {
+      "id": "snap-hkmobi-365-hk-2026-current-profile-20261003",
+      "routeId": "hkmobi-365-hk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c23-reviewed-2026-10-03",
+      "data": {
+        "id": "hkmobi-365-hk-2026",
+        "brandId": "hkmobi-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "HK Mobi is a distinct csl prepaid family. Current provider pages list 365-day variants; real-name registration is required before use. Community users document MNP and eSIM handling, but eSIM availability/process can depend on current service channels.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-card-price-varies-by-variant"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 20,
+          "yearCostOriginal": 20,
+          "yearCostCny": null,
+          "action": "Recharge HKD20 or more. Current csl HK Mobi recharge table extends card validity 365 days from the top-up date; the published HKD20/365-day recharge promotion is stated through 31 Dec 2026 and must be reverified after that date.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-hkd20-promo-through-20261231"
+        },
+        "chinaActivation": "Real-name registration is required before use. Provider supports international roaming products including mainland China, but a universal mainland-China-first activation path is not established in this review.",
+        "kyc": "csl states real-name registration is required before use for dealer prepaid SIMs including HK Mobi.",
+        "payment": "csl prepaid top-up supports vouchers and online payment methods; community users also document online/account top-up paths.",
+        "wifiCalling": "not normalized",
+        "roamingSms": "Provider offers roaming functionality and community users use HK Mobi for long-term number retention, but mainland-China incoming-SMS and third-party OTP reliability are not normalized as guarantees here.",
+        "refund": "not reconciled",
+        "trend": "current-365d-low-cost-retention-promotion-needs-post-2026-recheck",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+        "tariffSummary": "Current HK Mobi 365-day prepaid; HKD20 top-up extends card validity 365 days under the published promotion through 31 Dec 2026. Real-name registration required.",
+        "sourceIds": [
+          "csl-hkmobi-365-20261003",
+          "csl-dealer-rnr-20261003",
+          "hkepc-hkmobi-thread-20261003"
+        ],
+        "guideSteps": [
+          "Acquire a current HK Mobi 365-day variant and complete real-name registration.",
+          "Before expiry, recharge at least HKD20 while the current 365-day promotion is live and verify the new expiry date.",
+          "Recheck the provider recharge table after 31 Dec 2026 before relying on HKD20 as the annual keep cost."
+        ]
       }
     },
     {
@@ -20558,6 +20781,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "esimgg-estonia-372-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "EUR",
+      "acquisitionCostOriginal": 2.99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "EUR",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "etisalat-wasel-ae-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -20700,6 +20935,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "hkmobi-365-hk-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 20,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "hotlink-pantas-365-pass-2026",
