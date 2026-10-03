@@ -158,6 +158,18 @@
       "keepIntervalDays": 30
     },
     {
+      "routeId": "beeline-uz-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "UZS",
+      "acquisitionCostOriginal": 12000,
+      "acquisitionCostCny": null,
+      "keepCurrency": "UZS",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
+    },
+    {
       "routeId": "bhtelecom-ba-2026",
       "checkedAt": "2026-09-30",
       "metricState": "current-profile",
@@ -298,6 +310,18 @@
       "acquisitionCostCny": null,
       "keepCurrency": "EUR",
       "keepYearCostOriginal": 13,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
+      "routeId": "cricket-us-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 300,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 300,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
     },
@@ -456,6 +480,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "google-fi-flexible-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 20,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 240,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "grameenphone-validity-pack-2026",

@@ -72,6 +72,54 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "beeline-uz-esim-20261003",
+    "url": "https://beeline.uz/en/products/services/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-hello-20261003",
+    "url": "https://beeline.uz/en/welcome-new",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-international-topup-20261003",
+    "url": "https://beeline.uz/en/payments",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-lifecycle-20261003",
+    "url": "https://beeline.uz/en/events/prekrashcheniye-raboty-platformy-beeline-tv/uvazhaemye-klienty-28042026",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-number-selection-20261003",
+    "url": "https://beeline.uz/en/products/services/vibor-i-bronirovanie-nomera",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-roaming-20261003",
+    "url": "https://beeline.uz/en/zoni-rouminga",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-roaming-85-20261003",
+    "url": "https://beeline.uz/en/events/roaming/obnovlenniye-rouming-paketi",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "beeline-uz-self-register-20261003",
+    "url": "https://beeline.uz/en/sim-karta-s-samostoyatelnoy-registraciey",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "bh-ultra-esim-20260930",
     "url": "https://mojwebshop.bhtelecom.ba/INTERSHOP/web/BOS/BHTelecomWebShop-BHTelecom-Site/bs_BA/-/BAM/ViewProduct-Start?SKU=908992",
     "type": "provider-official",
@@ -324,6 +372,48 @@
     "reportedAt": "2026-04-20"
   },
   {
+    "id": "cricket-autopay-20261003",
+    "url": "https://www.cricketwireless.com/manageautopay",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-multimonth-20261003",
+    "url": "https://www.cricketwireless.com/plans/phone/multi-month",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-passport-countries-20261003",
+    "url": "https://espanol.cricketwireless.com/ayuda/9hghn/lista-de-pa%C3%ADses-de-roaming-internacional",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-passport-terms-20261003",
+    "url": "https://www.cricketwireless.com/why-cricket/business",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-payment-due-20261003",
+    "url": "https://www.cricketwireless.com/support/billing-and-payments/payment-due-dates",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-prepaid-20261003",
+    "url": "https://www.cricketwireless.com/how-cricket-works/what-is-prepaid.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "cricket-wifi-calling-20261003",
+    "url": "https://www.cricketwireless.com/support/mobile-wifi/wifi-calling",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "cyta-soeasy-faq-20260929",
     "url": "https://www.cyta.com.cy/faq-soeasy/en",
     "type": "provider-official",
@@ -508,6 +598,36 @@
     "url": "https://good2gomobile.ca/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "google-fi-abroad-policy-20261003",
+    "url": "https://support.google.com/fi/answer/6157794?hl=en",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "google-fi-flexible-plan-20261003",
+    "url": "https://fi.google.com/about/plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "google-fi-international-20261003",
+    "url": "https://fi.google.com/about/international-rates",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "google-fi-payment-options-20261003",
+    "url": "https://support.google.com/fi/answer/6061907?hl=en",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "google-fi-signup-us-address-20261003",
+    "url": "https://support.google.com/fi/answer/6172582?hl=en",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "googleplay-beeline-sim-safe-incident-2026-08-28",

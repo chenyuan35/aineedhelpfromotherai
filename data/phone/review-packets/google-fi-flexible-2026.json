@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c17",
+  "reviewNotes": "HOLD. Flexible is current at USD20/month + USD10/GB and China is explicitly covered with international texting at no extra charge. However, Fi requires a valid U.S. Payments address plus activation and at least one day of use in the U.S. before any international use. Extended international data is also subject to suspension, and repeated plan pausing is not a permitted long-term keep-alive strategy. Preserve the route as reviewed negative/constraint knowledge.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "google-fi-us",
+    "networkId": "tmobile-us",
+    "name": "Google Fi Wireless",
+    "marketId": "us"
+  },
+  "route": {
+    "id": "google-fi-flexible-2026",
+    "marketId": "us",
+    "networkId": "tmobile-us",
+    "brandId": "google-fi-us",
+    "displayName": "Google Fi Flexible",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM + physical",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://fi.google.com/about/plans",
+    "sourceIds": [
+      "google-fi-flexible-plan-20261003",
+      "google-fi-international-20261003",
+      "google-fi-abroad-policy-20261003",
+      "google-fi-signup-us-address-20261003",
+      "google-fi-payment-options-20261003"
+    ]
+  },
+  "sources": [
+    {
+      "id": "google-fi-flexible-plan-20261003",
+      "url": "https://fi.google.com/about/plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-international-20261003",
+      "url": "https://fi.google.com/about/international-rates",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-abroad-policy-20261003",
+      "url": "https://support.google.com/fi/answer/6157794?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-signup-us-address-20261003",
+      "url": "https://support.google.com/fi/answer/6172582?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "google-fi-payment-options-20261003",
+      "url": "https://support.google.com/fi/answer/6061907?hl=en",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "sourceIds": [
+    "google-fi-flexible-plan-20261003",
+    "google-fi-international-20261003",
+    "google-fi-abroad-policy-20261003",
+    "google-fi-signup-us-address-20261003",
+    "google-fi-payment-options-20261003"
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-google-fi-flexible-2026-db-c17-20261003",
+      "routeId": "google-fi-flexible-2026",
+      "type": "activation-roaming-terms-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Flexible remains USD20/month + USD10/GB, China is in the international destination list with free texts, but Fi requires a valid U.S. payments address and at least one day of U.S. activation/use before international service; extended overseas data remains restricted.",
+      "sourceId": "google-fi-international-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-google-fi-flexible-2026-current-profile-20261003",
+      "routeId": "google-fi-flexible-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c17-reviewed-2026-10-03",
+      "data": {
+        "id": "google-fi-flexible-2026",
+        "brandId": "google-fi-us",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Google Fi Flexible remains USD20/month for one line plus USD10/GB. Sign-up requires a Google account, a valid U.S. home address in the Google Payments profile, and a valid payment method. Google Fi is offered only in the U.S.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 20,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 20,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-base"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 20,
+          "yearCostOriginal": 240,
+          "yearCostCny": null,
+          "action": "Keep Flexible active at USD20/month before data/taxes. A line can be paused for up to three months and auto-resumes; Google explicitly says keeping Fi paused for extended periods/repeated pausing violates the Terms, so pause is not treated as a sustainable free keep-alive method.",
+          "intervalDays": 30,
+          "state": "current-provider-monthly-base"
+        },
+        "chinaActivation": "First activation abroad is not allowed. Current Fi policy requires activation and at least one day of use in the United States before international use, for eSIM and physical SIM alike.",
+        "kyc": "No document KYC is established in the reviewed flow, but Fi is U.S.-only and requires a valid U.S. address in payments.google.com.",
+        "payment": "Automatic monthly billing uses a primary credit/debit card. Visa, Mastercard, American Express and Discover are supported, but the Google Payments profile must have a valid U.S. home address and the card billing address must validate; a dependable foreign-resident payment path is therefore not established.",
+        "wifiCalling": "Supported; calls over Wi-Fi to the U.S., Canada and Mexico are included while abroad, with other destinations billed by destination.",
+        "roamingSms": "China is explicitly in the current 200+ destination list for Flexible. International texts are included at no extra charge and cellular calls are generally USD0.20/min; Flexible data is USD10/GB. Extended overseas use can suspend international data after the provider policy threshold, while calls/texts remain active after data suspension. Third-party OTP delivery remains service-specific.",
+        "refund": "not reconciled",
+        "trend": "current-product-us-first-and-extended-abroad-restrictions-confirmed",
+        "guideEligible": false,
+        "holdReason": "Google Fi requires U.S.-first activation/use and a valid U.S. payments-profile address, costs USD240/year before data/taxes, and enforces limits on extended international data use. It is not a China-first or low-cost permanent-abroad keep route.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://fi.google.com/about/plans",
+        "tariffSummary": "Flexible: USD20/month + USD10/GB. China is covered with free international texts, but first activation must occur in the U.S. and extended overseas data use is restricted.",
+        "guideSteps": [
+          "Only acquire if the U.S. account/address and U.S.-first activation requirements can legitimately be met.",
+          "Keep the line on its normal monthly billing cadence; do not use repeated pausing as a retention workaround.",
+          "Treat China roaming/text support as carrier coverage, while keeping third-party OTP compatibility as a separate evidence question."
+        ],
+        "sourceIds": [
+          "google-fi-flexible-plan-20261003",
+          "google-fi-international-20261003",
+          "google-fi-abroad-policy-20261003",
+          "google-fi-signup-us-address-20261003",
+          "google-fi-payment-options-20261003"
+        ]
+      }
+    }
+  ],
+  "numberRanges": []
+}

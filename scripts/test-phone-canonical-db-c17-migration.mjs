@@ -10,23 +10,26 @@ const sources = read('data/phone/v1/sources.json'), brands = read('data/phone/v1
 const globalDirectory = read('frontend/tools/phone-number-lifecycle-mvp/global-directory.json');
 const policy = read('frontend/tools/phone-number-lifecycle-mvp/publication-policy.json');
 const expected = {
-  'mint-mobile-us-2026': ['us', 'mint-mobile-us', 'tmobile-us', 'hold'],
-  'tmobile-prepaid-connect-2026': ['us', 'tmobile-prepaid-us', 'tmobile-us', 'admitted'],
-  'visible-25-2026': ['us', 'visible-us', 'verizon-us', 'hold'],
+  'cricket-us-2026': ['us', 'cricket-us', 'att-us', 'hold'],
+  'google-fi-flexible-2026': ['us', 'google-fi-us', 'tmobile-us', 'hold'],
+  'beeline-uz-2026': ['uz', 'beeline-uz-prepaid', 'beeline-uz', 'hold'],
 };
 for (const [routeId, [marketId, brandId, networkId, evidenceState]] of Object.entries(expected)) {
-  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C16 route missing: ${routeId}`);
+  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C17 route missing: ${routeId}`);
   assert.equal(route.marketId, marketId); assert.equal(route.brandId, brandId); assert.equal(route.networkId, networkId); assert.equal(route.evidenceState, evidenceState); assert.equal(route.surfaceState, 'backstage-only');
   assert(canonical.markets.some((row) => row.id === marketId)); assert(brands.some((row) => row.id === brandId && row.marketId === marketId)); assert(networks.some((row) => row.id === networkId && row.marketId === marketId));
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https?:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   assert.equal(policy.routeStates[routeId], undefined, `${routeId}: must stay non-indexable`);
 }
-const mint = buildCanonicalComparisonRoute(canonical, 'mint-mobile-us-2026');
-assert.equal(mint.keep.intervalDays, 365); assert.equal(mint.keep.observedActionCost, 180); assert.equal(mint.keep.yearCostOriginal, 180); assert.match(mint.wifiCalling, /all plans|Wi-Fi/i); assert.match(mint.holdReason, /China-first|payment|OTP/i);
-const tmobile = buildCanonicalComparisonRoute(canonical, 'tmobile-prepaid-connect-2026');
-assert.equal(tmobile.keep.intervalDays, 30); assert.equal(tmobile.keep.observedActionCost, 15); assert.equal(tmobile.keep.yearCostOriginal, 180); assert.match(tmobile.roamingSms, /China|0\.10|prepaid/i); assert.equal(tmobile.holdReason, null);
-const visible = buildCanonicalComparisonRoute(canonical, 'visible-25-2026');
-assert.equal(visible.keep.intervalDays, 365); assert.equal(visible.keep.observedActionCost, 275); assert.equal(visible.keep.yearCostOriginal, 275); assert.match(visible.wifiCalling, /before leaving|outside the U\.S\./i); assert.match(visible.holdReason, /activation|payment|China-first/i);
+const cricket = buildCanonicalComparisonRoute(canonical, 'cricket-us-2026');
+assert.equal(cricket.keep.intervalDays, 365); assert.equal(cricket.keep.observedActionCost, 300); assert.equal(cricket.keep.yearCostOriginal, 300); assert.match(cricket.roamingSms, /China|Passport/i); assert.match(cricket.wifiCalling, /previously connected|Cricket network/i); assert.match(cricket.holdReason, /USD300|China-first|foreign/i);
+const fi = buildCanonicalComparisonRoute(canonical, 'google-fi-flexible-2026');
+assert.equal(fi.keep.intervalDays, 30); assert.equal(fi.keep.observedActionCost, 20); assert.equal(fi.keep.yearCostOriginal, 240); assert.match(fi.chinaActivation, /United States|abroad is not allowed/i); assert.match(fi.roamingSms, /China|no extra charge/i); assert.match(fi.holdReason, /U\.S\.-first|payments-profile|USD240/i);
+const beeline = buildCanonicalComparisonRoute(canonical, 'beeline-uz-2026');
+assert.equal(beeline.keep.intervalDays, 90); assert.equal(beeline.landedCost.providerOrCommunityPrice, 12000); assert.match(beeline.payment, /Ding|Visa|UnionPay/i); assert.match(beeline.roamingSms, /China|Hello|ordinary/i); assert.match(beeline.holdReason, /Hello|ordinary|90-day/i);
 assert.equal(canonical.routes.length, 140); assert.equal(canonical.markets.length, 81); assert.equal(brands.length, 137); assert.equal(networks.length, 107); assert.equal(sources.length, 525);
+const canonicalIds = new Set(canonical.routes.map((row) => row.id));
+const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
+assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026','zain-kw-eezee-2026','omantel-om-2026','btc-bs-2026','digicel-jm-2026','tigo-tz-2026']);
 assert.equal(globalDirectory.routes.length, 135); assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
-console.log('Phone canonical DB-C16 migration passed: Mint HOLD, T-Mobile Connect ADMITTED, Visible HOLD; 140 canonical routes, 135 comparison routes and 3-route indexability preserved.');
+console.log('Phone canonical DB-C17 migration passed: Cricket HOLD, Google Fi HOLD, Beeline UZ HOLD; 140 canonical routes, 129 comparison overlaps, 6 legacy-only and 3-route indexability preserved.');
