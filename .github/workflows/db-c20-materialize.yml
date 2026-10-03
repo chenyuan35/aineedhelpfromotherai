@@ -1,0 +1,42 @@
+name: DB-C20 Materialize
+
+on:
+  push:
+    branches:
+      - data/phone-db-c20-20261003
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  materialize:
+    if: github.ref == 'refs/heads/data/phone-db-c20-20261003'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout dedicated branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and apply reviewed DB-C20 patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .db-c20-materialize/part.* > /tmp/db-c20.patch.gz.b64
+          echo 'b2d44d92a1c8f874fb91e836d8c1593ed220a2c669162bcc2fd61c3a8efad273  /tmp/db-c20.patch.gz.b64' | sha256sum -c -
+          base64 -d /tmp/db-c20.patch.gz.b64 | gzip -dc > /tmp/db-c20.patch
+          echo 'aae98da8791d2a15d48a10e532fefa3e0295f9acb0b42d7e7f0e41b176fee0bc  /tmp/db-c20.patch' | sha256sum -c -
+          git config user.name 'aineedhelp-bot'
+          git config user.email 'bot@aineedhelpfromotherai.com'
+          git am /tmp/db-c20.patch
+          node scripts/build-phone-database.mjs --check
+          node scripts/test-phone-canonical-db-c20-migration.mjs
+          rm -rf .db-c20-materialize .github/workflows/db-c20-materialize.yml
+          git add -A
+          git commit -m 'chore: remove DB-C20 materializer'
+          git diff --check origin/main...HEAD
+          git push origin HEAD:data/phone-db-c20-20261003
