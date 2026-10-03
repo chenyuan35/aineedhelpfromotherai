@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "signalId": "linuxdo-2923258-usims-outcomes-2026-10-03",
+  "capturedAt": "2026-10-03",
+  "source": {
+    "type": "independent-community-thread",
+    "url": "https://linux.do/t/topic/2923258",
+    "author": "mimanchi",
+    "title": "ESIMGG快捷选号网更新记录（新手碎碎念）"
+  },
+  "scope": "travel-data-esim-community-intelligence",
+  "publicationState": "backstage-candidate-only",
+  "policy": "Preserve dated community outcomes and conflicts as evidence; do not convert them into provider guarantees.",
+  "records": [
+    {
+      "providerLabel": "USIMS",
+      "identityStatus": "unresolved-or-community-label",
+      "claimStrength": "multi-user-dated-community-outcomes",
+      "observations": [
+        {
+          "observedAt": "2026-09-19",
+          "kind": "availability-and-throttle",
+          "claim": "Community participants described a France unlimited-data path as available/free at the time, with approximately 128Kbps throttled service."
+        },
+        {
+          "observedAt": "2026-09-20",
+          "kind": "price-and-throttle-update",
+          "claim": "New registrations were reported at USD1; a user reported the first 1GB at high speed followed by approximately 128Kbps."
+        },
+        {
+          "observedAt": "2026-09-22",
+          "kind": "split-device-outcome",
+          "claim": "One eUICC/small-card user reported no signal while another SE3 user still had service and later measured approximately 0.01Mbps."
+        },
+        {
+          "observedAt": "2026-09-23",
+          "kind": "failure-cluster",
+          "claim": "A user reported continued no-signal and said many profiles, including some USD1 paid activations, had been closed."
+        },
+        {
+          "observedAt": "2026-09-28",
+          "kind": "order-failure",
+          "claim": "A later commenter reported that an order could no longer be created."
+        }
+      ],
+      "mechanics": [
+        "France unlimited-data path discussed",
+        "first 1GB high speed then approximately 128Kbps reported",
+        "service outcome varied by device/profile",
+        "later no-signal and profile-closure reports",
+        "order creation reportedly failed by 2026-09-28"
+      ],
+      "notes": [
+        "Community outcomes conflict across devices; preserve the conflict rather than generalizing a universal failure state.",
+        "This snapshot adds dated direct-user detail to the earlier USIMS free-mechanism and later price-delta evidence."
+      ]
+    }
+  ],
+  "projectCrossReferences": {
+    "priorInboxSignalIds": [
+      "nodeseek-954805-free-esim-roundup-2026-09-29",
+      "user-supplied-esim-price-later-delta-2026-10-01"
+    ],
+    "exactProviderLabelOverlaps": [
+      "USIMS"
+    ]
+  }
+}
