@@ -1,0 +1,31 @@
+name: tmp-phone-closeout
+on:
+  push:
+    branches:
+      - "docs/phone-finder-integration-closeout-20261004"
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/phone-finder-integration-closeout-20261004
+          fetch-depth: 0
+      - name: Apply reviewed closeout patch once
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -q "CANONICAL FINDER INTEGRATION RELEASED" PROJECT_CONTEXT.md && grep -q "JUST COMPLETED — Canonical finder integration" docs/CURRENT_EXECUTION_QUEUE.md; then
+            echo "Closeout already materialized"
+            exit 0
+          fi
+          base64 -d .github/tmp-phone-closeout.patch.gz.b64 | gzip -d > /tmp/phone-closeout.patch
+          git apply --check /tmp/phone-closeout.patch
+          git apply /tmp/phone-closeout.patch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROJECT_CONTEXT.md docs/CURRENT_EXECUTION_QUEUE.md docs/MASTER_PLAN.md
+          git commit -m "docs: close Phone canonical finder integration"
+          git push origin HEAD:docs/phone-finder-integration-closeout-20261004
