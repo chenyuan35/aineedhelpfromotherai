@@ -375,4 +375,18 @@ Post-DB-C19 state: **145 canonical routes / 86 markets / 142 brands / 112 networ
 
 Release: PR #356 squash-merged as `f9c151b8a33d3edc1160893977a5c6c60d99a361`; CI #224, Eval Gate #1059 and Vercel Preview passed. Production deployment `dpl_CtnXBiZ5cP19ggPFTYDbW1feJ1E8` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and both DB-C19 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
 
-Next bounded task: run a **post-legacy coverage-gap audit** before defining DB-C20. Use community-first evidence to identify genuinely missing low-cost long-term routes outside the current 135-route comparison set, dedupe aliases/rebrands against canonical, sample-audit the strongest candidates, and select at most three evidence-backed candidates for a later DB-C20 batch. The audit itself does not change canonical admission, public URLs, sitemap or indexability.
+The subsequent post-legacy coverage-gap audit selected the DB-C20 batch documented below; its research-only phase did not change canonical admission, public URLs, sitemap or indexability.
+
+## DB-C20 — completed 2026-10-03
+
+The first post-legacy coverage-gap batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **2 ADMIT-BACKSTAGE / 1 HOLD / 0 REJECT**.
+
+- `vodafone-nl-prepaid-2026` — ADMIT-BACKSTAGE. Current Vodafone Netherlands prepaid lifecycle requires at least one paid call, SMS, mobile-data use or top-up every six months, followed by a three-month frozen-credit recovery window. Current prepaid eSIM is supported. Remote acquisition/payment and China-specific OTP reliability remain evidence-scoped rather than guaranteed.
+- `ctexcel-uk-2026` — HOLD. CTExcel UK and its Back to China SIM Retention Plan are current, but provider-visible evidence does not cleanly expose current retention eligibility, price or post-expiry mechanics; community evidence also conflicts between roughly 90-day no-plan activity and plan-dependent retention. No universal lifecycle or annual keep cost is asserted.
+- `one-nz-prepay-2026` — ADMIT-BACKSTAGE. Current One NZ Prepay establishes a 360-day top-up lifecycle and NZD10 minimum logged-in web/app top-up. Ordinary initial activation requires One NZ coverage; China is a current prepaid roaming destination and Wi-Fi Calling abroad is supported, while third-party OTP reliability remains unguaranteed.
+
+Post-DB-C20 state: **148 canonical routes / 86 markets / 145 brands / 114 networks / 565 sources**. The legacy comparison artifact remains **135 routes**, the intentional Sakura same-product alias remains the only legacy same-ID gap, and explicit indexability remains **3 routes**. Review-packet checks, the dedicated DB-C20 regression, `npm run phone:data:check`, `npm run verify`, full frontend build and `git diff --check` passed.
+
+Release: PR #360 squash-merged as `c6f5ec5e34797745b1d6738ae8936a02510601c2`; CI #226 and Eval Gate #1069 passed; Vercel Preview passed. Production deployment `dpl_8dHPdkJX9RybHe9atEKd7bfNDuFT` reached READY for the same merge SHA. Live Phone hub returns HTTP 200; all three DB-C20 standalone route URLs return HTTP 404; sitemap returns HTTP 200 with 31 URLs and none of the DB-C20 routes.
+
+No DB-C21 batch is selected. Continue the authorized community evidence lane and wait for either the Search Console decision trigger (20 settled Phone impressions or finalized data through 2026-10-05) or genuinely new route evidence that resolves a deferred blocker / establishes a distinct low-cost long-term route. Do not manufacture the next batch from provider enumeration.
