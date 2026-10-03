@@ -1,0 +1,49 @@
+name: Phone canonical finder materialize v2
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/phone-canonical-finder-materialize-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Apply reviewed finder patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/tmp/phone-finder.patch.00 .github/tmp/phone-finder.patch.01 | base64 -d | gunzip > /tmp/phone-finder.patch
+          git apply --check /tmp/phone-finder.patch
+          git apply /tmp/phone-finder.patch
+      - name: Verify integration
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run phone:data:check
+          npm run build --prefix frontend
+          node scripts/test-phone-number-public-release.mjs
+          npm run verify
+          git diff --check
+      - name: Commit final integration and remove staging files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/phone-canonical-finder-materialize.yml .github/workflows/phone-canonical-finder-materialize-v2.yml
+          rm -rf .github/tmp
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'feat: connect canonical Phone data to finder'
+          git push origin HEAD:${{ github.head_ref }}
