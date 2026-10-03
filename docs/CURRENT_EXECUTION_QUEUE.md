@@ -7,92 +7,61 @@ Last updated: 2026-10-03
 ## Current decision
 
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
-2. **The user-facing site now has a Phone-first product identity.** PR #340 released task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) makes Phone Radar the homepage first-screen identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` is READY; homepage, Phone hub and the new isolated visual stylesheet returned HTTP 200. Browser QA passed route search, route-family tabs and a live decision shortcut with no reproduced overlap or horizontal overflow.
+2. **Frontend baseline stays stable.** PR #342 remains the released Phone-first homepage/Phone hub identity; do not add another public design layer without measured behavior or a reproduced defect.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current Phone state is **135 comparison routes / 145 canonical normalized routes / 134 comparison↔canonical route-ID overlaps / 1 comparison ID without a same-ID canonical row / 3 indexable routes**. The remaining ID is `sakura-mobile-voice-2026`, intentionally excluded as a same-product alias of canonical `sakura-japan-voice-data`.
-5. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
+4. Current released Phone state is **135 comparison routes / 145 canonical normalized routes / 134 comparison↔canonical route-ID overlaps / 1 intentional same-product alias gap / 3 indexable routes**.
+5. The post-legacy coverage-gap audit is complete on branch `audit/phone-post-legacy-gap-20261003`; it selected exactly three evidence-backed candidates for DB-C20: Vodafone Netherlands Prepaid, CTExcel UK and One NZ Prepay. CMLink UK and DITO Philippines are deferred behind explicit evidence/eligibility re-open conditions.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Database coverage execution: `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`.
+Post-legacy gap audit: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
 Data-eSIM backstage contract: `data/esim/README.md` + `data/esim/v1/manifest.json`.
 
-## JUST COMPLETED — Phone-first homepage + Phone Radar visual identity
+## JUST COMPLETED — Post-legacy Phone coverage-gap audit
 
-PR #342 is a bounded frontend product-identity and visual-quality release. It does not change the database, schema, backend, public URL families, sitemap policy or indexability.
+Purpose: stop extending the backend by old comparison-list migration or provider-directory enumeration and identify genuinely missing low-cost long-term routes from current community evidence.
 
-Released behavior:
+Audit result:
 
-- homepage first screen now immediately identifies the product as **Phone Radar** instead of the older generic AI interruption framing;
-- homepage H1 is **“Choose a phone number you can actually keep.”** and explains acquisition cost, keep cost, overseas SMS/OTP, signup friction and current evidence;
-- first-screen task panel surfaces lowest keep cost, ChatGPT/OpenAI evidence, longest keep window and recently checked routes;
-- Phone Radar H1 is **“Find a real phone route that still works later.”**;
-- Phone hub explains the four decisions explicitly: **Buy / Keep / Verify / Recover**;
-- existing three route families, global search, market filter, sorting, deep evidence, comparison behavior and task-first decision shortcuts remain intact;
-- a separate responsive/dark-mode visual layer gives the homepage and Phone hub a restrained data-product identity without triggering an Astro rewrite or broad redesign.
+- exact canonical dedupe confirmed Vodafone Germany and Skinny NZ are already covered and the Sakura same-product alias is not a missing route;
+- five genuinely distinct missing candidates were bounded and sample-audited: Vodafone NL Prepaid, CTExcel UK, One NZ Prepay, CMLink UK retention and DITO Philippines prepaid/eSIM;
+- **selected for DB-C20:** `vodafone-nl-prepaid-2026`, `ctexcel-uk-2026`, `one-nz-prepay-2026`;
+- **deferred:** CMLink UK because current retention eligibility/post-expiry rules remain materially ambiguous; DITO Philippines because tourist registration/current traveler-SIM rules impose a 30-day/local-address/return-ticket constraint that prevents generalizing community ultra-low-cost retention claims to a durable foreign-user route;
+- all five candidates were sample-audited for source quality, duplication and unsupported inference, exceeding the required sample of three;
+- no canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed.
 
-Verification:
+Full evidence and re-open triggers: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
 
-- PR #342 squash merge: `e5f902250921eaa232779104bdfb4c37c6a0c3ac`;
-- Eval Gate #1032: PASS;
-- Vercel production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB`: READY;
-- apex homepage: HTTP 200 with new Phone-first title/H1;
-- production Phone hub: HTTP 200 with new H1 and Buy / Keep / Verify / Recover panel;
-- production `/media/phone-first-identity.css`: HTTP 200;
-- browser preview QA: homepage layout PASS; Phone route search PASS; three route-family tabs PASS; lowest-keep-cost decision shortcut PASS; no reproduced text overlap/clipping/horizontal overflow at the checked desktop viewport;
-- build/release boundary remains **135 comparison / 128 canonical / 3 indexable / 31 sitemap URLs**.
+## NEXT — Backend database coverage DB-C20
 
-Do not immediately redesign again. Let this baseline gather behavior/search evidence; repair only a reproduced usability or visual defect.
+Bounded batch:
 
-## JUST COMPLETED — Phone Radar task-first decision shortcuts
-
-PR #340 adds a bounded decision layer to the existing Phone canonical without adding pages or changing the data/publication contract.
-
-Released shortcuts:
-
-- **Lowest keep cost** — ranks non-HOLD routes with a known yearly keep cost using the stored CNY comparison value.
-- **Longest keep window** — ranks non-HOLD routes by the documented keep-alive interval.
-- **ChatGPT evidence** — exposes routes with normalized OpenAI/Codex community reports; report counts are evidence samples, not invented OTP success percentages, and HOLD routes remain visibly marked.
-- **Recently checked** — ranks non-HOLD candidate routes by latest stored verification date, then source count.
-
-The cards show market, network, SIM type, acquisition cost, yearly keep cost, keep window, verification date, evidence state/source count and route state, then open the existing deep route evidence flow. Deep global evidence is still loaded progressively rather than embedded into initial HTML.
-
-## JUST COMPLETED — Backend database coverage DB-C19
-
-DB-C19 is released. Final disposition: **0 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
-
-- `digicel-jm-2026` — HOLD; current Digicel Jamaica terms establish a four-month no-usage deactivation rule and new-number assignment after reactivation. Current visitor acquisition, international top-up and China roaming exist, but the exact qualifying activity that resets the four-month clock is not defined, so no minimum annual keep-alive cost is invented.
-- `tigo-tz-2026` — HOLD; the stable legacy Tigo route ID now maps to current Yas Tanzania rather than duplicating the rebranded product. Current Yas terms allow suspension/number re-allocation after 90 days of continuous non-use and current roaming lists China, while TCRA visitor registration is scoped to non-citizens staying no more than four months. A durable foreign-user keep-number path is not established.
-
-Released backend state: **145 routes / 86 markets / 142 brands / 112 networks / 547 sources / 134 comparison overlaps / 1 comparison ID without a same-ID canonical row / 3 indexable**. The remaining ID is the intentional Sakura same-product alias blocker. PR #356 squash-merged as `f9c151b8a33d3edc1160893977a5c6c60d99a361`; CI #224 and Eval Gate #1059 passed. Vercel Preview `dpl_98FfZqhp1Uv4eVQFvRkXQXgEy4VT` and production `dpl_CtnXBiZ5cP19ggPFTYDbW1feJ1E8` are READY. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs and both DB-C19 standalone route URLs return 404.
-
-## NEXT — Post-legacy Phone coverage-gap audit
-
-Purpose: the comparison-to-canonical migration backlog is functionally closed. Before defining DB-C20, identify genuinely missing low-cost long-term number routes outside the existing 135-route comparison set instead of extending the database by provider-directory enumeration.
+1. `vodafone-nl-prepaid-2026`
+2. `ctexcel-uk-2026`
+3. `one-nz-prepay-2026`
 
 Definition of done:
 
-- compare the current 145-route canonical set against current community/watcher evidence and known low-cost long-term number patterns;
-- use community-first research for actual acquisition/retention/overseas-use evidence, then use provider sources only for current commercial/provider-controlled facts;
-- dedupe same-product aliases, rebrands and already-covered acquisition paths against canonical before shortlisting;
-- produce a bounded shortlist of at most five genuinely distinct missing routes with provenance, user-value reason, current product identity and the material unknowns that would affect admission;
-- sample-audit at least three shortlisted candidates for source quality, duplication and unsupported inference;
-- select at most three candidates for a later DB-C20 batch only if the evidence survives the audit;
-- **no canonical admission, public URL, sitemap or indexability change in the audit itself**.
+- independently reconcile current product identity, acquisition/activation, lifecycle/keep action and cost, roaming/China receive-SMS state, payment/KYC constraints, incident/recovery evidence and provenance for all three routes;
+- preserve current community evidence and conflicts rather than forcing a recommendation;
+- sample-audit the batch before acceptance;
+- assign `ADMIT-BACKSTAGE`, `HOLD`, or `REJECT` per route;
+- if accepted, normalize only through the reviewed canonical importer/data path and run the full Phone data/integrity/publication-boundary checks;
+- preserve **135 comparison routes / 3 explicit indexable routes / current sitemap policy** unless an independent publication gate opens;
+- use a fresh branch/PR; no direct `main` writes.
 
 Stop conditions:
 
-- no genuinely distinct candidate has current independent operational evidence;
-- the apparent gap is only provider-directory coverage, stale/copied material or a duplicate/alias;
-- evidence is too weak to justify a bounded follow-on batch;
-- provider/account access would require authorization or payment.
-
-Keep `sakura-mobile-voice-2026` excluded; it remains the known same-product alias of canonical `sakura-japan-voice-data`, not a missing product candidate.
+- current evidence disproves the route identity or reveals it is a duplicate/rebrand of an existing canonical route;
+- a provider/account path requires payment, account-critical changes or unavailable authorization;
+- a material lifecycle/acquisition contradiction cannot be represented without guessing;
+- publication/indexability would be required to call the backend batch successful — it is not required and must remain separate.
 
 ## PARALLEL — Community Data-eSIM evidence intake
 
-The three reviewed snapshots remain normalized only through the explicit `data/esim/v1` manifest. Raw inbox snapshots remain immutable provenance inputs.
+The reviewed snapshots remain normalized only through the explicit `data/esim/v1` manifest. Raw inbox snapshots remain immutable provenance inputs.
 
 Continue to append price/mechanic versions without overwriting history. Preserve community/third-party/referral/promotion, IP/egress, FUP/throttle and voice/SMS/number uncertainty as evidence. Do not auto-publish, auto-rank or force pure data eSIM into Phone-number/retention canonical routes.
 
@@ -107,19 +76,19 @@ Re-read when either:
 - settled Phone impressions reach **20**, or
 - finalized data reaches **2026-10-05**.
 
-This wait does **not** block the post-legacy coverage-gap audit or community evidence acquisition.
+This wait does **not** block DB-C20 or community evidence acquisition.
 
 ## External waits
 
-- TikTok — base application Live; targeted Direct Post remediation and the required genuine `SELF_ONLY` publication proof are complete. The Content Posting API reapplication for app `7686819988157810696` was submitted on 2026-10-02 with the real 28-second demo video; the portal confirmation says review may take approximately 2–4 weeks. Do not claim approval and do not submit again unless TikTok rejects or requests new evidence. See `docs/TIKTOK_DIRECT_POST_AUDIT_2026-10-02.md`.
+- TikTok — base application Live; targeted Direct Post remediation and genuine `SELF_ONLY` publication proof are complete. The Content Posting API reapplication for app `7686819988157810696` was submitted on 2026-10-02 with the real 28-second demo video; do not submit again unless TikTok rejects or requests new evidence.
 - Authority / AI discovery — follow `docs/AUTHORITY_AND_AI_DISCOVERY.md`; verify any claimed citation/link independently.
 - AI-native retrieval — follow `docs/AI_RETRIEVAL_INTEGRATION_TASKS.md` then `docs/AI_RETRIEVAL_BENCHMARK.md`; do not bypass provider quota/auth blockers.
 
 ## Do not do next
 
 - do not trigger another broad frontend redesign without measured behavior or a reproduced UX defect;
-- do not treat backend admission as authorization for SEO/indexable pages;
-- do not bulk-admit the remaining legacy-only route IDs without provenance + QC;
+- do not treat DB-C20 selection or backend admission as authorization for SEO/indexable pages;
+- do not resurrect CMLink UK or DITO Philippines into DB-C20 without satisfying their audit re-open conditions;
 - do not duplicate same-product aliases;
 - do not manufacture ranking/recommendation confidence from sparse evidence;
 - do not auto-publish or rank Data-eSIM community evidence;
