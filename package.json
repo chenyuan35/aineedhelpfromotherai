@@ -72,7 +72,7 @@
     "phone:packet:check": "node scripts/apply-phone-review-packet.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": "20.x"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
