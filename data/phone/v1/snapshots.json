@@ -2357,6 +2357,63 @@
     }
   },
   {
+    "id": "snap-esimgg-estonia-372-2026-current-profile-20261003",
+    "routeId": "esimgg-estonia-372-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c23-reviewed-2026-10-03",
+    "data": {
+      "id": "esimgg-estonia-372-2026",
+      "brandId": "esimgg-estonia",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM",
+      "acquisitionSummary": "Provider sells a prepaid Estonian +372 phone-number eSIM online for EUR2.99 and separates phone-number lines from data-only eSIM.TF products. Upstream carrier identity is intentionally not normalized here.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 2.99,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 2.99,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-line-price"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is not normalized.",
+        "intervalDays": 365,
+        "state": "current-provider-annual-use-rule"
+      },
+      "chinaActivation": "Provider markets global activation/use and China coverage. September 2026 community users report activation and China-side roaming operation, including use through removable eUICC adapters, but device/adapter compatibility remains user-specific.",
+      "kyc": "Provider public purchase/terms reviewed here do not establish a mandatory identity-document flow; do not market this as guaranteed no-KYC because upstream/legal requirements can change.",
+      "payment": "Provider accepts major cards/digital payment methods; September 2026 community users report Alipay payment.",
+      "wifiCalling": "not normalized",
+      "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persistently fail selected verification messages. No platform acceptance guarantee.",
+      "refund": "Provider refund policy limits refunds after profile download/use and excludes third-party verification-code rejection as a refund basis.",
+      "trend": "current-low-maintenance-global-number-with-prefix-otp-variance",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://esim.gg/",
+      "tariffSummary": "EUR2.99 prepaid +372 phone-number eSIM; no monthly bill; provider says keep active with at least one use per year. OTP reliability is prefix/platform dependent.",
+      "sourceIds": [
+        "esimgg-home-20261003",
+        "esimgg-faq-20261003",
+        "linuxdo-esimgg-2900517-20260914"
+      ],
+      "guideSteps": [
+        "Buy the phone-number eSIM, not the separate data-only product.",
+        "Install on a compatible eSIM device or supported adapter and verify ordinary SMS before binding important accounts.",
+        "Generate at least one line use within each 365-day period and keep an independent reminder; treat OTP acceptance as platform/prefix-specific."
+      ]
+    }
+  },
+  {
     "id": "snap-etisalat-wasel-ae-2026-current-profile-20260929",
     "routeId": "etisalat-wasel-ae-2026",
     "kind": "current-profile",
@@ -3446,6 +3503,63 @@
         "summary": "Recharge H2O PayGo before refill expiry",
         "description": "Recharge before the current refill expires and keep the account away from a $0 balance. The calendar event is placed 7 days before the expiration date you enter."
       }
+    }
+  },
+  {
+    "id": "snap-hkmobi-365-hk-2026-current-profile-20261003",
+    "routeId": "hkmobi-365-hk-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-03",
+    "sourceDataset": "db-c23-reviewed-2026-10-03",
+    "data": {
+      "id": "hkmobi-365-hk-2026",
+      "brandId": "hkmobi-hk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "HK Mobi is a distinct csl prepaid family. Current provider pages list 365-day variants; real-name registration is required before use. Community users document MNP and eSIM handling, but eSIM availability/process can depend on current service channels.",
+      "landedCost": {
+        "currency": "HKD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-card-price-varies-by-variant"
+      },
+      "keep": {
+        "currency": "HKD",
+        "observedActionCost": 20,
+        "yearCostOriginal": 20,
+        "yearCostCny": null,
+        "action": "Recharge HKD20 or more. Current csl HK Mobi recharge table extends card validity 365 days from the top-up date; the published HKD20/365-day recharge promotion is stated through 31 Dec 2026 and must be reverified after that date.",
+        "intervalDays": 365,
+        "state": "current-provider-365d-hkd20-promo-through-20261231"
+      },
+      "chinaActivation": "Real-name registration is required before use. Provider supports international roaming products including mainland China, but a universal mainland-China-first activation path is not established in this review.",
+      "kyc": "csl states real-name registration is required before use for dealer prepaid SIMs including HK Mobi.",
+      "payment": "csl prepaid top-up supports vouchers and online payment methods; community users also document online/account top-up paths.",
+      "wifiCalling": "not normalized",
+      "roamingSms": "Provider offers roaming functionality and community users use HK Mobi for long-term number retention, but mainland-China incoming-SMS and third-party OTP reliability are not normalized as guarantees here.",
+      "refund": "not reconciled",
+      "trend": "current-365d-low-cost-retention-promotion-needs-post-2026-recheck",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-03",
+      "acquireUrl": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+      "tariffSummary": "Current HK Mobi 365-day prepaid; HKD20 top-up extends card validity 365 days under the published promotion through 31 Dec 2026. Real-name registration required.",
+      "sourceIds": [
+        "csl-hkmobi-365-20261003",
+        "csl-dealer-rnr-20261003",
+        "hkepc-hkmobi-thread-20261003"
+      ],
+      "guideSteps": [
+        "Acquire a current HK Mobi 365-day variant and complete real-name registration.",
+        "Before expiry, recharge at least HKD20 while the current 365-day promotion is live and verify the new expiry date.",
+        "Recheck the provider recharge table after 31 Dec 2026 before relying on HKD20 as the annual keep cost."
+      ]
     }
   },
   {

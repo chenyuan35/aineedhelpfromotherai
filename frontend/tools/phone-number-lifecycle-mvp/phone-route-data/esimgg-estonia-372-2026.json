@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "esimgg-estonia-372-2026",
+    "marketId": "ee",
+    "networkId": "esimgg-ee",
+    "brandId": "esimgg-estonia",
+    "displayName": "eSIM.GG Estonia +372",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://esim.gg/",
+    "sourceIds": [
+      "esimgg-faq-20261003",
+      "esimgg-home-20261003",
+      "linuxdo-esimgg-2900517-20260914"
+    ]
+  },
+  "market": {
+    "id": "ee",
+    "name": "Estonia",
+    "countryCode": "EE"
+  },
+  "network": {
+    "id": "esimgg-ee",
+    "name": "eSIM.GG Estonia phone-number service",
+    "marketId": "ee"
+  },
+  "brand": {
+    "id": "esimgg-estonia",
+    "networkId": "esimgg-ee",
+    "name": "eSIM.GG +372",
+    "marketId": "ee"
+  },
+  "metrics": {
+    "routeId": "esimgg-estonia-372-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 2.99,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 365
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "esimgg-faq-20261003",
+      "url": "https://esim.gg/support/faq",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "esimgg-home-20261003",
+      "url": "https://esim.gg/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "linuxdo-esimgg-2900517-20260914",
+      "url": "https://linux.do/t/topic/2900517",
+      "type": "independent-community",
+      "reportedAt": "2026-09-14"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-esimgg-estonia-372-2026-db-c23-20261003",
+      "routeId": "esimgg-estonia-372-2026",
+      "type": "retention-and-operational-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Provider currently states that the +372 phone-number eSIM supports calls/SMS, has no monthly bill, balance does not expire, and stays active with at least one use per year. September 2026 community users reproduced China-side signal and several verification SMS outcomes but also reported prefix-dependent failures.",
+      "sourceId": "esimgg-home-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-esimgg-estonia-372-2026-current-profile-20261003",
+      "routeId": "esimgg-estonia-372-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c23-reviewed-2026-10-03",
+      "data": {
+        "id": "esimgg-estonia-372-2026",
+        "brandId": "esimgg-estonia",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM",
+        "acquisitionSummary": "Provider sells a prepaid Estonian +372 phone-number eSIM online for EUR2.99 and separates phone-number lines from data-only eSIM.TF products. Upstream carrier identity is intentionally not normalized here.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 2.99,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 2.99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-line-price"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is not normalized.",
+          "intervalDays": 365,
+          "state": "current-provider-annual-use-rule"
+        },
+        "chinaActivation": "Provider markets global activation/use and China coverage. September 2026 community users report activation and China-side roaming operation, including use through removable eUICC adapters, but device/adapter compatibility remains user-specific.",
+        "kyc": "Provider public purchase/terms reviewed here do not establish a mandatory identity-document flow; do not market this as guaranteed no-KYC because upstream/legal requirements can change.",
+        "payment": "Provider accepts major cards/digital payment methods; September 2026 community users report Alipay payment.",
+        "wifiCalling": "not normalized",
+        "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persistently fail selected verification messages. No platform acceptance guarantee.",
+        "refund": "Provider refund policy limits refunds after profile download/use and excludes third-party verification-code rejection as a refund basis.",
+        "trend": "current-low-maintenance-global-number-with-prefix-otp-variance",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://esim.gg/",
+        "tariffSummary": "EUR2.99 prepaid +372 phone-number eSIM; no monthly bill; provider says keep active with at least one use per year. OTP reliability is prefix/platform dependent.",
+        "sourceIds": [
+          "esimgg-home-20261003",
+          "esimgg-faq-20261003",
+          "linuxdo-esimgg-2900517-20260914"
+        ],
+        "guideSteps": [
+          "Buy the phone-number eSIM, not the separate data-only product.",
+          "Install on a compatible eSIM device or supported adapter and verify ordinary SMS before binding important accounts.",
+          "Generate at least one line use within each 365-day period and keep an independent reminder; treat OTP acceptance as platform/prefix-specific."
+        ]
+      }
+    }
+  ]
+}

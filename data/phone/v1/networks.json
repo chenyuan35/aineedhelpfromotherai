@@ -155,6 +155,11 @@
     "marketId": "fi"
   },
   {
+    "id": "esimgg-ee",
+    "name": "eSIM.GG Estonia phone-number service",
+    "marketId": "ee"
+  },
+  {
     "id": "etisalat-ae",
     "name": "e& (Etisalat)",
     "marketId": "ae"

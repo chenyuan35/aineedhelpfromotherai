@@ -27,7 +27,7 @@ const ctexcel = buildCanonicalComparisonRoute(canonical, 'ctexcel-uk-2026');
 assert.equal(ctexcel.keep.intervalDays, null); assert.equal(ctexcel.keep.yearCostOriginal, null); assert.match(ctexcel.holdReason, /eligibility|90-day|plan/i); assert.match(ctexcel.roamingSms, /China|SMS/i);
 const one = buildCanonicalComparisonRoute(canonical, 'one-nz-prepay-2026');
 assert.equal(one.keep.intervalDays, 360); assert.equal(one.keep.observedActionCost, 10); assert.equal(one.keep.yearCostOriginal, 10.14); assert.match(one.chinaActivation, /coverage|China-first/i); assert.match(one.roamingSms, /China/i);
-assert.equal(canonical.routes.length, 154); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 151); assert.equal(networks.length, 115); assert.equal(sources.length, 587);
+assert.equal(canonical.routes.length, 156); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 153); assert.equal(networks.length, 116); assert.equal(sources.length, 593);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

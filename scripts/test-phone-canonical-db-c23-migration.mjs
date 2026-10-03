@@ -14,38 +14,34 @@ const globalDirectory = read('frontend/tools/phone-number-lifecycle-mvp/global-d
 const policy = read('frontend/tools/phone-number-lifecycle-mvp/publication-policy.json');
 
 const expected = new Map([
-  ['cmlink-uk-keep-number-2026', ['gb', 'cmlink-uk', 'ee-uk']],
-  ['dito-prepaid-ph-2026', ['ph', 'dito-prepaid', 'dito-ph']],
-  ['ais-local-prepaid-th-2026', ['th', 'ais-local-prepaid', 'ais-th']]
+  ['esimgg-estonia-372-2026', ['ee', 'esimgg-estonia', 'esimgg-ee', 'admitted']],
+  ['hkmobi-365-hk-2026', ['hk', 'hkmobi-hk', 'csl-hk', 'admitted']]
 ]);
-for (const [id, [marketId, brandId, networkId]] of expected) {
+for (const [id, [marketId, brandId, networkId, evidenceState]] of expected) {
   const route = canonical.routes.find((row) => row.id === id);
-  assert(route, `missing DB-C22 route ${id}`);
+  assert(route, `missing DB-C23 route ${id}`);
   assert.equal(route.marketId, marketId);
   assert.equal(route.brandId, brandId);
   assert.equal(route.networkId, networkId);
-  assert.equal(route.evidenceState, 'hold');
+  assert.equal(route.evidenceState, evidenceState);
   assert.equal(route.surfaceState, 'backstage-only');
-  assert(route.sourceIds.length >= 3, `${id} should retain multi-source provenance`);
-  assert.equal(policy.routeStates[id], undefined, `${id} must not receive a public publication state`);
+  assert(route.sourceIds.length >= 3);
+  assert.equal(policy.routeStates[id], undefined);
 }
 
-const cmlink = buildCanonicalComparisonRoute(canonical, 'cmlink-uk-keep-number-2026');
-assert.equal(cmlink.keep.intervalDays, 365);
-assert.equal(cmlink.keep.observedActionCost, 15);
-assert.match(cmlink.holdReason, /eligibility|closure|SMS|operational/i);
+const gg = buildCanonicalComparisonRoute(canonical, 'esimgg-estonia-372-2026');
+assert.equal(gg.keep.intervalDays, 365);
+assert.equal(gg.keep.observedActionCost, null);
+assert.match(gg.roamingSms, /GPT|WhatsApp|Telegram|prefix/i);
+assert.equal(gg.holdReason, null);
 
-const dito = buildCanonicalComparisonRoute(canonical, 'dito-prepaid-ph-2026');
-assert.equal(dito.keep.intervalDays, null);
-assert.equal(dito.keep.observedActionCost, null);
-assert.match(dito.kyc, /tourist|passport|address|return ticket/i);
-assert.match(dito.holdReason, /30-day|PHP5|PHP10|provider/i);
-
-const ais = buildCanonicalComparisonRoute(canonical, 'ais-local-prepaid-th-2026');
-assert.equal(ais.keep.intervalDays, 30);
-assert.equal(ais.keep.observedActionCost, 30);
-assert.match(ais.holdReason, /durable|remote|mainland|multi-year/i);
-assert.notEqual(ais.brandId, 'ais-sim2fly');
+const hk = buildCanonicalComparisonRoute(canonical, 'hkmobi-365-hk-2026');
+assert.equal(hk.keep.intervalDays, 365);
+assert.equal(hk.keep.observedActionCost, 20);
+assert.equal(hk.keep.yearCostOriginal, 20);
+assert.match(hk.kyc, /real-name/i);
+assert.match(hk.keep.state, /20261231|promo/i);
+assert.equal(hk.holdReason, null);
 
 assert.equal(canonical.routes.length, 156);
 assert.equal(canonical.markets.length, 86);
@@ -57,4 +53,4 @@ const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !c
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
-console.log('Phone canonical DB-C22 migration passed: CMLink UK, DITO PH and AIS local normalized as HOLD; 135 comparison routes and 3-route indexability preserved.');
+console.log('Phone canonical DB-C23 migration passed: eSIM.GG +372 and HK Mobi 365 admitted backstage; public boundary preserved.');
