@@ -8,12 +8,12 @@ Phone Radar's normalized database is an internal product knowledge base. It is i
 
 Approximately **90%+ coverage of the relevant low-cost phone-route universe**, provided evidence provenance and maintenance remain tractable. This is a database objective, not a page-count objective.
 
-## Current verified state after DB-C15
+## Current verified state after DB-C16
 
 - comparison artifact: **135 routes**;
-- canonical normalized database: **134 routes / 80 markets / 131 brands / 105 networks / 491 sources**;
-- comparison↔canonical route-ID overlap: **123**;
-- comparison routes still legacy-only: **12**;
+- canonical normalized database: **137 routes / 80 markets / 134 brands / 106 networks / 505 sources**;
+- comparison↔canonical route-ID overlap: **126**;
+- comparison routes still legacy-only: **9**;
 - explicit route indexability: **3**.
 
 ## Processing model
@@ -328,3 +328,17 @@ Post-DB-C15 state: **134 canonical routes / 80 markets / 131 brands / 105 networ
 Release: PR #348 squash-merged as `6bd972ffa7c40642de29a4a9a996736601080c5a`; CI #215, Eval Gate #1044 and Vercel Preview passed. Production deployment `dpl_2R2BiBiCEdRKSaBEb4vVRYH96YAH` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C15 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
 
 DB-C16 next bounded batch: `mint-mobile-us-2026`, `tmobile-prepaid-connect-2026`, `visible-25-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.
+
+## DB-C16 — completed 2026-10-03
+
+The bounded U.S. batch was independently reconciled, schema-validated and normalized through reviewed backstage packets. Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+
+- `tmobile-prepaid-connect-2026` — ADMIT-BACKSTAGE. Connect remains current at USD15/month for 5GB with no credit check. Current prepaid lifecycle guidance allows cancellation and number loss after more than 120 days in Not Paid status. Current prepaid roaming explicitly includes China, prices incoming SMS at USD0.10 and outgoing SMS at USD0.50, and provides no prepaid data roaming. China-first activation and foreign-issued-card execution remain unverified, so backstage admission does not imply a public recommendation.
+- `mint-mobile-us-2026` — HOLD. Current durable 12-month 6GB pricing is USD180/year. Current terms put an expired unpaid account into suspension and allow cancellation/reassignment after 60 days without successful renewal. Free Wi-Fi Calling works abroad, but reliable China-first activation/payment and standalone China cellular incoming-SMS/OTP behavior remain unresolved; contradictory community VPN/U.S.-billing workarounds are not promoted as a supported path.
+- `visible-25-2026` — HOLD. Current base pricing is USD25/month or USD275/year. Current terms preserve a 60-day nonpayment suspension/recovery window before cancellation/reassignment. Visible supports Wi-Fi Calling abroad when enabled before leaving the U.S., and independent 2026 evidence corroborates long-duration use abroad; overseas first activation remains contradictory and foreign-issued payment reliability is unresolved.
+
+Post-DB-C16 state: **137 canonical routes / 80 markets / 134 brands / 106 networks / 505 sources / 126 comparison-overlap route IDs / 9 comparison route IDs still legacy-only / 3 explicit indexable routes**. Review-packet checks, canonical data build/QC, `npm run phone:data:check`, dedicated DB-C16 regression and the full frontend build passed. The local generic `npm run verify` on the qwen worker exited during its stop-server step after earlier substeps reported OK; GitHub CI #217 and Eval Gate #1048 both passed and are authoritative. Publication boundaries remain **135 comparison routes / 3 explicit indexable routes / 31 sitemap URLs**.
+
+Release: PR #350 squash-merged as `533a6d50f945a6577e0d4776eab7ad1bacb3f955`; CI #217, Eval Gate #1048 and Vercel Preview passed. Production deployment `dpl_A3Dxe7RcwpXpgA3g4PA1EsSUzed5` reached READY for the same merge SHA. Live apex, Phone canonical and sitemap return HTTP 200; the sitemap remains 31 URLs, and all three DB-C16 standalone route URLs return HTTP 404 as required by the backstage-only publication contract.
+
+DB-C17 next bounded batch: `cricket-us-2026`, `google-fi-flexible-2026`, `beeline-uz-2026`. Keep `sakura-mobile-voice-2026` excluded as the known same-product alias blocker for existing canonical `sakura-japan-voice-data`; public/indexable route count remains 3 unless a separate publication decision passes the full gate.

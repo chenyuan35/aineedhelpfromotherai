@@ -9,7 +9,7 @@ Last updated: 2026-10-03
 1. **Phone Radar — ACTIVE PRIMARY GROWTH PRODUCT.**
 2. **The user-facing site now has a Phone-first product identity.** PR #340 released task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) makes Phone Radar the homepage first-screen identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` is READY; homepage, Phone hub and the new isolated visual stylesheet returned HTTP 200. Browser QA passed route search, route-family tabs and a live decision shortcut with no reproduced overlap or horizontal overflow.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
-4. Current Phone state is **135 comparison routes / 134 canonical normalized routes / 123 comparison↔canonical route-ID overlaps / 12 legacy-only comparison route IDs / 3 indexable routes**.
+4. Current Phone state is **135 comparison routes / 137 canonical normalized routes / 126 comparison↔canonical route-ID overlaps / 9 legacy-only comparison route IDs / 3 indexable routes**.
 5. The backend database is **not complete**. Continue reviewed coverage expansion toward roughly **90%+ of the relevant low-cost route universe** while provenance and maintenance stay tractable.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
@@ -58,19 +58,19 @@ Released shortcuts:
 
 The cards show market, network, SIM type, acquisition cost, yearly keep cost, keep window, verification date, evidence state/source count and route state, then open the existing deep route evidence flow. Deep global evidence is still loaded progressively rather than embedded into initial HTML.
 
-## JUST COMPLETED — Backend database coverage DB-C15
+## JUST COMPLETED — Backend database coverage DB-C16
 
-DB-C15 released in PR #348 (`6bd972ffa7c40642de29a4a9a996736601080c5a`). Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
+DB-C16 released in PR #350 (`533a6d50f945a6577e0d4776eab7ad1bacb3f955`). Final disposition: **1 ADMIT-BACKSTAGE / 2 HOLD / 0 REJECT**.
 
-- `smarty-uk-2026` — ADMIT-BACKSTAGE; current SMARTY evidence establishes a GBP6 rolling voice entry plan, eSIM, no credit search, supported payment methods, paused incoming calls/texts, a 220-day inactive-account closure threshold and free incoming SMS in mainland China. Paused-plus-roaming behavior is not guaranteed, and 60 consecutive days abroad can trigger full-service suspension.
-- `movistar-pre-pe-2026` — HOLD; current Movistar Peru evidence establishes an active prepaid product, S/5 recharge floor, a seven-month no-recharge cancellation threshold and foreign-national in-person biometric requirements. Prepaid-specific overseas incoming SMS / mainland-China / OTP behavior and reliable foreign-card execution remain unresolved.
-- `talkmobile-uk-payg-closed-2026` — HOLD / negative knowledge; PAYG closed on 31 August 2017. Current Talkmobile SIM-only subscriptions are a different product and are not substituted into the dead PAYG route.
+- `tmobile-prepaid-connect-2026` — ADMIT-BACKSTAGE; Connect remains USD15/month for 5GB with no credit check. Current T-Mobile prepaid lifecycle allows cancellation/number loss after more than 120 days in Not Paid status. Current prepaid roaming lists China, prices incoming SMS at USD0.10 and outgoing SMS at USD0.50, and provides no prepaid data roaming. China-first activation and foreign-card execution remain unverified.
+- `mint-mobile-us-2026` — HOLD; current 12-month 6GB pricing is USD180/year and current terms establish a 60-day suspended recovery window after plan expiry before cancellation/reassignment risk. Wi-Fi Calling is supported abroad, but reliable China-first activation/payment and standalone China cellular SMS/OTP behavior remain unresolved.
+- `visible-25-2026` — HOLD; current base pricing is USD25/month or USD275/year, with a 60-day nonpayment suspension/recovery window before cancellation. Wi-Fi Calling works abroad only when enabled before departure; current overseas first-activation evidence remains contradictory and foreign-issued payment reliability is unresolved.
 
-Released backend state: **134 routes / 80 markets / 131 brands / 105 networks / 491 sources / 123 comparison overlaps / 12 legacy-only route IDs / 3 indexable**. CI #215 and Eval Gate #1044 passed. Vercel production deployment `dpl_2R2BiBiCEdRKSaBEb4vVRYH96YAH` is READY on merge `6bd972ffa7c40642de29a4a9a996736601080c5a`. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs and all three DB-C15 standalone route URLs return 404.
+Released backend state: **137 routes / 80 markets / 134 brands / 106 networks / 505 sources / 126 comparison overlaps / 9 legacy-only route IDs / 3 indexable**. CI #217 and Eval Gate #1048 passed. Vercel production deployment `dpl_A3Dxe7RcwpXpgA3g4PA1EsSUzed5` is READY on merge `533a6d50f945a6577e0d4776eab7ad1bacb3f955`. Live apex, Phone canonical and sitemap return HTTP 200; sitemap remains 31 URLs and all three DB-C16 standalone route URLs return 404.
 
-## NEXT — Backend database coverage DB-C16
+## NEXT — Backend database coverage DB-C17
 
-Bounded batch: `mint-mobile-us-2026`, `tmobile-prepaid-connect-2026`, `visible-25-2026`.
+Bounded batch: `cricket-us-2026`, `google-fi-flexible-2026`, `beeline-uz-2026`.
 
 Definition of done:
 
@@ -109,7 +109,7 @@ Re-read when either:
 - settled Phone impressions reach **20**, or
 - finalized data reaches **2026-10-05**.
 
-This wait does **not** block DB-C16 or community evidence acquisition.
+This wait does **not** block DB-C17 or community evidence acquisition.
 
 ## External waits
 
@@ -121,7 +121,7 @@ This wait does **not** block DB-C16 or community evidence acquisition.
 
 - do not trigger another broad frontend redesign without measured behavior or a reproduced UX defect;
 - do not treat backend admission as authorization for SEO/indexable pages;
-- do not bulk-admit the remaining 12 legacy-only route IDs without provenance + QC;
+- do not bulk-admit the remaining 9 legacy-only route IDs without provenance + QC;
 - do not duplicate same-product aliases;
 - do not manufacture ranking/recommendation confidence from sparse evidence;
 - do not auto-publish or rank Data-eSIM community evidence;
