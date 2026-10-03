@@ -9,9 +9,11 @@ const readJson = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 const basePath = 'data/phone/inbox/community-esim-price-nodeseek-935678-2026-10-01.json';
 const deltaPath = 'data/phone/inbox/community-esim-price-user-supplied-later-delta-2026-10-01.json';
 const freePath = 'data/phone/inbox/community-free-esim-nodeseek-954805-2026-09-29.json';
+const outcomePath = 'data/phone/inbox/community-usims-linuxdo-2923258-2026-10-03.json';
 const base = readJson(basePath);
 const delta = readJson(deltaPath);
 const free = readJson(freePath);
+const outcome = readJson(outcomePath);
 
 const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
 
@@ -47,6 +49,12 @@ assert(free.offers.length === 9, 'free-eSIM roundup must preserve all 9 mechanis
 assert(free.offers.some((x) => x.provider === 'Firsty' && x.oldAccountSpeedKbps === 256), 'Firsty throttled ad-funded mechanic missing');
 assert(free.offers.some((x) => x.provider === 'Eskimo' && x.ipHint?.includes('Singapore')), 'Eskimo egress signal missing');
 
+assert(outcome.publicationState === 'backstage-candidate-only', 'USIMS community outcome must stay backstage-only');
+assert(outcome.source?.url === 'https://linux.do/t/topic/2923258', 'unexpected USIMS Linux.do source URL');
+assert(outcome.records.length === 1 && outcome.records[0].providerLabel === 'USIMS', 'USIMS outcome snapshot shape mismatch');
+assert(outcome.records[0].observations.some((x) => x.kind === 'split-device-outcome' && /no signal/i.test(x.claim)), 'USIMS split device outcome missing');
+assert(outcome.records[0].observations.some((x) => x.kind === 'order-failure'), 'USIMS later order-failure observation missing');
+
 const normalized = loadDataEsimCatalog({ root });
 const evidenceFor = (label) => normalized.evidence.filter((x) => x.providerLabel === label);
 const providerFor = (label) => normalized.providers.find((x) => x.labels.includes(label));
@@ -54,25 +62,29 @@ const resolvedDeltaSource = normalized.sourceSnapshots.find((x) => x.id === 'use
 
 assert(normalized.family === 'data-esim', 'normalized family must be data-esim');
 assert(normalized.surfaceState === 'backstage-only' && normalized.indexability === 'none', 'Data-eSIM normalized layer must not publish URLs');
-assert(normalized.sourceSnapshots.length === 3, 'normalized layer must admit exactly the three reviewed source snapshots');
+assert(normalized.sourceSnapshots.length === 4, 'normalized layer must admit exactly the four reviewed source snapshots');
 assert(resolvedDeltaSource?.url === 'https://linux.do/t/topic/2973469', 'reviewed Linux.do source resolution must reach normalized provenance');
 assert(resolvedDeltaSource?.resolution?.resolutionStatus === 'content-matched', 'resolved source must retain review status');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-snapshot-record').length === 46, 'normalized base price snapshot count mismatch');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-delta-new-record').length === 13, 'normalized delta new-record count mismatch');
 assert(normalized.evidence.filter((x) => x.recordType === 'price-delta-update').length === 2, 'normalized delta update count mismatch');
 assert(normalized.evidence.filter((x) => x.recordType === 'free-mechanism').length === 9, 'normalized free-mechanism count mismatch');
+assert(normalized.evidence.filter((x) => x.recordType === 'community-outcome').length === 1, 'normalized community-outcome count mismatch');
 assert(normalized.evidence.every((x) => x.canonicalPhoneRouteId === null), 'pure Data-eSIM evidence must not enter Phone canonical routes');
 assert(normalized.providers.every((x) => x.canonicalPhoneRouteId === null), 'Data-eSIM provider identities must not link to Phone routes by default');
 assert(normalized.evidence.every((x) => x.claimStrength && x.provenance?.sourceSnapshotId && x.provenance?.sourcePath), 'every normalized evidence record needs claim strength and provenance');
 assert(normalized.offers.every((x) => x.versionKey && x.rawOffer && x.sourceSnapshotId && x.capturedAt), 'every normalized offer must keep version/provenance/raw offer data');
+assert(normalized.offers.length === 159, 'dated outcome evidence must not manufacture a price offer');
+assert(normalized.evidence.length === 73, 'normalized evidence count must include one dated USIMS outcome');
 
 assert(providerFor('eSIM.io')?.evidenceIds.length >= 2, 'eSIM.io cross-snapshot evidence must reconcile under one source-label provider identity');
-assert(providerFor('USIMS')?.evidenceIds.length >= 2, 'USIMS free + later-price evidence must reconcile without overwriting history');
+assert(providerFor('USIMS')?.evidenceIds.length >= 3, 'USIMS free + later-price + dated outcome evidence must reconcile without overwriting history');
 assert(providerFor('GG')?.evidenceIds.length === 2, 'GG base unavailable state + later price update must both survive');
 assert(evidenceFor('GG').some((x) => x.recordType === 'price-snapshot-record' && x.raw.offers?.length === 0), 'GG original no-price snapshot must survive');
 assert(evidenceFor('GG').some((x) => x.recordType === 'price-delta-update' && x.raw.offers?.length === 3), 'GG later price version must survive as a delta');
 assert(evidenceFor('StellarSecurity').some((x) => x.recordType === 'price-delta-update' && x.raw.newPriceNote?.includes('EUR20')), 'StellarSecurity price-rise delta must survive normalization');
 assert(evidenceFor('USIMS').some((x) => x.recordType === 'price-delta-new-record' && x.provenance.sourceUrl === 'https://linux.do/t/topic/2973469'), 'delta evidence must inherit the resolved public source URL');
+assert(evidenceFor('USIMS').some((x) => x.recordType === 'community-outcome' && x.provenance.sourceUrl === 'https://linux.do/t/topic/2923258'), 'USIMS dated outcome must preserve direct Linux.do provenance');
 
 assert(evidenceFor('TF').some((x) => x.networkPolicy.ipEgressSignals.some((s) => /selectable|Hong Kong|Singapore/i.test(s))), 'TF selectable egress must survive normalization');
 assert(evidenceFor('CodSIM').some((x) => x.networkPolicy.ipEgressSignals.length > 0 && x.networkPolicy.throttleOrFupSignals.length > 0), 'CodSIM IP + throttle mechanics must survive normalization');
