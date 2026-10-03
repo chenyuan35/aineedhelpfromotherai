@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-10-03
+Last updated: 2026-10-04
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -21,7 +21,7 @@ Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION
 
 ## Phone operating correction — 2026-09-24, architecture enforcement — 2026-09-28
 
-The UK matrix was the first public baseline, and backstage evidence acquisition continues independently of Search Console. After the global data expansion, PR #261 separates broad database coverage from public/indexable page coverage so the database can grow without recreating programmatic SEO families. PR #263 separately makes legacy comparison-database admission explicit: wildcard batch discovery is gone, existing admitted legacy batches are named in a reviewed manifest, and unlisted delegated research stays outside comparison inputs. The Sep 28 compatibility audit found canonical v1 at 15 routes with only four route-ID overlaps; staged reviewed migrations plus backend coverage through DB-C19 raised canonical v1 to 145 routes / 86 markets / 142 brands / 112 networks / 547 sources with 134 route-ID overlaps. The 2026-10-03 post-legacy coverage-gap audit then moved discovery beyond the old comparison list, and DB-C20 (PR #360 / `c6f5ec5e34797745b1d6738ae8936a02510601c2`) normalized Vodafone NL Prepaid and One NZ Prepay as ADMIT-BACKSTAGE plus CTExcel UK as HOLD. Canonical is now 148 routes / 86 markets / 145 brands / 114 networks / 565 sources. The 135-route comparison surface and 3-route explicit publication boundary remain unchanged; CMLink UK and DITO Philippines remain deferred behind explicit evidence/eligibility triggers.
+The UK matrix was the first public baseline, and backstage evidence acquisition continues independently of Search Console. PR #261 separates broad database coverage from public/indexable page coverage; PR #263 makes legacy comparison-database admission explicit. Reviewed migrations through DB-C23 now place canonical v1 at **156 routes / 86 markets / 153 brands / 116 networks / 593 sources**, and `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` measures this as **156/159 = 98.1%** of the known evidence-qualified relevant low-cost/long-term atomic route universe. PR #370 (`46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`) then connects all 156 canonical rows to the existing user finder through generated lightweight summaries plus lazy per-route evidence. The deeper historical comparison artifact remains 135 routes, explicit indexability remains 3 routes, and the sitemap remains 31 URLs. Database admission/user queryability/publication are now enforced as separate layers.
 
 The active operating model is defined in `docs/PHONE_RADAR_OPERATING_PLAN_2026-09-24.md` and `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`:
 
@@ -93,16 +93,13 @@ Keep passing utilities stable. Do not expand merely because a calculator is chea
 
 Historical batch detail remains in Git history, PRs and `docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md`; this section tracks only the active project edge.
 
-1. **DONE — product direction and Phone publication architecture.** Product/competition gates, the UK pilot, explicit admission/publication states, progressive global finder and Phone-first homepage/Phone hub identity are released.
-2. **DONE — legacy comparison-to-canonical coverage through DB-C19.** The legacy migration backlog is closed; only the intentional Sakura same-product alias lacks a same-ID canonical row. Comparison stays 135 routes and explicit indexability stays 3.
-3. **DONE — separate normalized Data-eSIM backstage family.** Community snapshots normalize under `data/esim/v1` without becoming Phone-number canonical rows or public/indexable pages.
-4. **DONE — post-legacy Phone coverage-gap audit.** Five genuinely distinct missing routes were sample-audited. `vodafone-nl-prepaid-2026`, `ctexcel-uk-2026` and `one-nz-prepay-2026` were selected for DB-C20. CMLink UK is deferred pending clear retention eligibility/post-expiry rules; DITO Philippines is deferred pending a legitimate durable foreign-user validity path beyond current tourist constraints. No canonical/publication state changed in the audit.
-5. **DONE — DB-C20.** PR #360 normalized `vodafone-nl-prepaid-2026` and `one-nz-prepay-2026` as ADMIT-BACKSTAGE and `ctexcel-uk-2026` as HOLD. Canonical is 148 routes / 86 markets / 145 brands / 114 networks / 565 sources; comparison remains 135 and explicit indexability remains 3. CI #226, Eval Gate #1069, Preview and production verification passed.
-6. **PARALLEL — community Data-eSIM evidence intake.** Append evidence/mechanic versions without overwriting provenance or auto-linking ambiguous identities. Do not define DB-C21 from directory enumeration; require a fresh distinct route-evidence trigger or resolution of a documented deferred-route blocker.
-7. **WAIT — Phone Search Console publication decision.** Do not launch another public page wave until settled Phone impressions reach 20 or finalized data reaches 2026-10-05, whichever comes first.
-8. **BACKLOG / separate review — second observer/source-change role.** `codex-vps` already has a Relay-history role; do not repurpose it merely to satisfy a two-host topology. The existing trial host already runs the reviewed phone-source timer, so a second machine needs a concrete reliability/value reason before assignment.
-9. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-10. **WAIT — TikTok advanced Direct Post review.** Base app is Live; targeted remediation, genuine `SELF_ONLY` publication proof and the Content Posting API resubmission were completed on 2026-10-02. Do not resubmit unless TikTok rejects or requests new evidence. Authority batch 2 remains waiting.
+1. **DONE — product direction, publication architecture and Phone-first frontend identity.** The product/value gates, layered publication states, global finder, decision shortcuts and Phone-first homepage/hub are released.
+2. **DONE — broad canonical database coverage.** DB-C21 through DB-C23 close the bounded expansion round at **156 routes / 86 markets / 153 brands / 116 networks / 593 sources** and an audited **98.1%** of the known evidence-qualified relevant route universe. Broad directory enumeration is stopped.
+3. **DONE — canonical backend ↔ user finder integration.** PR #370 makes all 156 canonical rows queryable via generated `phone-route-summaries.json`, lazy-loads `phone-route-data/<id>.json` evidence, keeps HOLD/needs-reconciliation visibly uncertain and non-recommended, and preserves **135 comparison / 3 indexable / 31 sitemap**. Eval Gate #1119, Vercel and live production checks passed.
+4. **PARALLEL — evidence maintenance.** Continue append-only Phone/community and separate Data-eSIM evidence intake. Re-open a DB batch only for a genuinely new evidence-qualified atomic route or a cleared residual blocker.
+5. **WAIT — Phone Search Console publication decision.** Do not launch another public page wave until settled Phone impressions reach 20 or finalized data reaches 2026-10-05, whichever comes first.
+6. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+7. **WAIT — TikTok advanced Direct Post review.** Do not resubmit unless TikTok rejects or requests new evidence. Authority batch 2 remains waiting.
 
 ## Phone directory implementation contract
 

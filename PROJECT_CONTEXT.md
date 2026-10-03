@@ -1,6 +1,6 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-10-03
+Last updated: 2026-10-04
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs, Git history and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
@@ -13,7 +13,7 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 | Production | `https://aineedhelpfromotherai.com/` is live. Vercel deploys the static frontend from GitHub `main`; the historical Express/PostgreSQL runtime remains only behind the allowlisted API surface required by Relay Exit Risk. | Use fresh branches/PRs; never reset or overwrite the dirty production worktree. |
 | Product direction | **STRATEGY RESET ACCEPTED 2026-09-23.** Search volume, rankings and technical polish no longer choose the product. Both official-source substitutability and independent-competitor substitutability are mandatory gates. Reset has been removed from primary site/discovery surfaces. | Active growth work stays on Phone Radar. Reset direct URLs remain preserved; Relay remains data-accrual only. |
 | Phone Radar | **ACTIVE PRIMARY GROWTH PRODUCT / PHONE-FIRST SITE IDENTITY RELEASED.** PR #291 shipped the 135-route progressive global finder; PR #340 added task-first decision shortcuts; PR #342 (`e5f902250921eaa232779104bdfb4c37c6a0c3ac`) now makes Phone Radar the homepage first-screen product identity and upgrades the Phone hub first screen into a Buy / Keep / Verify / Recover decision surface. Eval Gate #1032 passed; Vercel production deployment `dpl_DLHuWXRtAJhxc3vPd7gtVaiFxwPB` reached READY; apex homepage, Phone hub and `phone-first-identity.css` returned HTTP 200. Preview browser QA also passed search, route tabs and a live decision shortcut with no reproduced overlap or horizontal overflow. | Keep the released frontend stable and measure behavior/search evidence before another public UX expansion. Continue backend evidence coverage independently. |
-| Phone data / publication foundation | **DB-C23 RELEASED / 90%+ COVERAGE OBJECTIVE MET.** DB-C21 through DB-C23 extended the canonical backend to 156 routes / 86 markets / 153 brands / 116 networks / 593 sources. PR #368 (`2d0d727af1f18844b6c344a9402d62de5366dd61`) added eSIM.GG +372 and HK Mobi 365-day as backstage-only routes after DB-C22 added CMLink UK, DITO Philippines and AIS local as HOLD. `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` reconstructs the known evidence-qualified universe at 159 distinct atomic routes, so current backend coverage is 98.1%. Public state remains 135 comparison routes / 3 indexable routes / 31 sitemap URLs. | Stop broad DB enumeration. Next audit whether all canonical data flows into the user-queryable frontend without making backstage rows indexable or recommendation-ranked. |
+| Phone data / publication foundation | **98.1% COVERAGE + CANONICAL FINDER INTEGRATION RELEASED.** Canonical remains 156 routes / 86 markets / 153 brands / 116 networks / 593 sources, covering 156/159 known evidence-qualified relevant atomic routes. PR #370 (`46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`) connects all 156 canonical rows to the Phone Radar finder through generated `phone-route-summaries.json`, with per-route `phone-route-data/<id>.json` loaded on demand. HOLD/needs-reconciliation rows remain explicit uncertainty and are not recommendation-ranked. Historical deep comparison stays 135 routes; explicit indexability stays 3 routes; sitemap stays 31 URLs. Production hub, 156-row summary index and a canonical lazy-detail bundle returned HTTP 200 after merge. | Broad enumeration remains stopped. Maintain evidence/freshness and measure usage/search signals; open another DB batch only for genuinely new evidence-qualified routes or cleared residual blockers. |
 | Phone evidence acquisition | **COMMUNITY-FIRST / NORMALIZED DATA-ESIM LAYER ACTIVE.** PR #327 captured the reviewed community snapshots; PR #328 (`f0057d6c0c067f42d5817bce7e2c17dc1cdfb3ee`) normalized them into separate backstage `data/esim/v1` tables. PR #362 (`86060c1d5e01f460d168005f74b6e3cd0c820478`) resolved the previously unknown public provenance of the existing 2026-10-01 user-supplied later-delta to Linux.do `ESIM流量漫游合集 4.0` through reviewed manifest-level `resolvedSource` metadata without mutating the immutable raw snapshot. PR #364 (`569849dead592a35178f5fd7f7a13e5f5093aa20`) then added one dated multi-user USIMS availability/failure outcome snapshot from Linux.do without manufacturing a price offer. Counts are now 59 source-label providers / 73 evidence records / 159 versioned offers; pure data eSIM remains outside Phone canonical routes and is backstage-only / not-public / indexability none. | Continue append-only community/forum evidence acquisition. Require separate reviewed identity-linkage/publication decisions before any Phone canonical or public/indexable use. |
 | AI Reset Radar | **FROZEN / PRIMARY SURFACES REMOVED / DIRECT URLS PRESERVED.** Seven-page value classification remains in the reset audit. | No Cursor-first optimization, no Q-015, no new generic reset pages and no generic Codex reset tracker. |
 | Codex opportunity | Real demand exists, but current competitors already cover generic reset/history/countdown/quota jobs. | Competitor-gap research only; future build requires a narrower non-duplicative job. |
@@ -31,7 +31,7 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 Run two tracks in parallel without confusing them:
 
 1. **User-facing Phone value:** the homepage and Phone canonical now present Phone Radar as the primary product. PR #342 is the current production visual/identity baseline; do not add another design layer or public URL merely to create visible activity. Measure real search/interaction behavior and fix only reproduced usability gaps.
-2. **Backend evidence/database coverage:** broad expansion is complete at 156 canonical routes and an audited 98.1% of the known evidence-qualified relevant route universe. Switch to maintenance plus a backend↔frontend integration audit; open another DB batch only on genuinely new evidence-qualified routes or cleared residual blockers.
+2. **Backend evidence/database coverage:** broad expansion is complete at 156 canonical routes and an audited 98.1% of the known evidence-qualified relevant route universe. PR #370 now makes all canonical rows user-queryable through the existing finder while preserving selective publication. Switch to maintenance/evidence refresh; open another DB batch only on genuinely new evidence-qualified routes or cleared residual blockers.
 
 Public publication remains a separate gate. Canonical/database admission does not create a route page, sitemap entry, market page or ranking claim.
 
@@ -39,6 +39,7 @@ Public publication remains a separate gate. Canonical/database admission does no
 
 - Phone comparison surface: **135 routes**.
 - Phone normalized canonical: **156 routes / 86 markets / 153 brands / 116 networks / 593 sources**.
+- Phone user-queryable canonical finder: **156 routes** via generated `phone-route-summaries.json`; route detail evidence is lazy-loaded from `phone-route-data/<id>.json`.
 - Comparison↔canonical same-ID overlap remains **134**; DB-C20 adds three distinct post-legacy routes outside the 135-route comparison artifact.
 - Comparison route IDs without a same-ID canonical row: **1** (`sakura-mobile-voice-2026`, intentionally excluded as a same-product alias of canonical `sakura-japan-voice-data`).
 - Explicit indexable route pages: **3**.
@@ -48,26 +49,16 @@ Public publication remains a separate gate. Canonical/database admission does no
 
 ## Current execution sequence
 
-1. **DONE — Global progressive Phone finder.** PR #291 exposes the admitted 135-route comparison layer on the existing canonical URL while preserving the 3-route SEO allowlist.
-2. **DONE — Canonical backend coverage through DB-C19.** PR #356 leaves only the known Sakura same-product alias without a same-ID canonical row; all other 134 comparison IDs now overlap canonical. Publication boundary remains unchanged.
-3. **DONE — Data-eSIM normalized backstage layer.** PR #328 keeps pure data eSIM separate from Phone-number/retention canonical routes and public/indexable surfaces.
-4. **DONE — Phone task-first decision shortcuts.** PR #340 adds lowest keep cost, longest keep window, OpenAI/Codex evidence and recently checked views.
-5. **DONE — Phone-first frontend identity / visual-quality release.** PR #342 changes the homepage first screen from generic AI interruption framing to Phone Radar, gives the Phone hub an explicit Buy / Keep / Verify / Recover value model, preserves the three route families/search/decision shortcuts, and leaves the public publication boundary unchanged. Eval Gate #1032 and production verification passed.
-6. **DONE — DB-C14.** PR #346 normalized `ooredoo-hala-qa-2026` as ADMIT-BACKSTAGE and `claro-pre-cl-2026` / `claro-pre-co-2026` as HOLD.
-7. **DONE — DB-C15.** PR #348 normalized `smarty-uk-2026` as ADMIT-BACKSTAGE and `movistar-pre-pe-2026` / `talkmobile-uk-payg-closed-2026` as HOLD.
-8. **DONE — DB-C16.** PR #350 normalized `tmobile-prepaid-connect-2026` as ADMIT-BACKSTAGE and `mint-mobile-us-2026` / `visible-25-2026` as HOLD.
-9. **DONE — DB-C17.** PR #353 normalized Cricket, Google Fi Flexible and Beeline Uzbekistan as HOLD.
-10. **DONE — DB-C18.** PR #354 normalized Zain Kuwait eeZee and Omantel Hayyak as ADMIT-BACKSTAGE and BTC Bahamas as HOLD.
-11. **DONE — DB-C19.** PR #356 normalized `digicel-jm-2026` and `tigo-tz-2026` as HOLD. Released canonical coverage is 145 routes / 86 markets / 142 brands / 112 networks / 547 sources with 134 comparison overlaps and the unchanged 3-route publication boundary.
-12. **DONE — post-legacy Phone coverage-gap audit.** Five distinct missing routes were sample-audited. Vodafone NL Prepaid, CTExcel UK and One NZ Prepay were selected for DB-C20; CMLink UK and DITO Philippines were deferred. Audit only; no canonical/publication change.
-13. **DONE — DB-C20.** PR #360 normalized Vodafone NL Prepaid and One NZ Prepay as ADMIT-BACKSTAGE and CTExcel UK as HOLD. Canonical is now 148 routes / 86 markets / 145 brands / 114 networks / 565 sources; publication remains 135 comparison routes / 3 indexable routes / 31 sitemap URLs.
-14. **DONE — DB-C21.** PR #366 normalized Fortress haha SIM as ADMIT-BACKSTAGE and csl 7-Eleven / Tune Talk 365 as HOLD. Post-release state: 151 routes / 86 markets / 148 brands / 114 networks / 574 sources; publication unchanged.
-15. **DONE — DB-C22.** PR #367 (`a7feae58c048afc59af37a086292989cdd47e8fe`) normalized CMLink UK, DITO Philippines and AIS local prepaid as HOLD. Post-release state: 154 routes / 86 markets / 151 brands / 115 networks / 587 sources; CI #234, Eval Gate #1088 and Vercel passed.
-16. **DONE — DB-C23.** PR #368 (`2d0d727af1f18844b6c344a9402d62de5366dd61`) normalized eSIM.GG +372 and HK Mobi 365-day as ADMIT-BACKSTAGE. Current state: 156 routes / 86 markets / 153 brands / 116 networks / 593 sources; CI #237, Eval Gate #1092 and Vercel production passed.
-17. **DONE — Phone database 90%+ coverage audit.** `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` defines the evidence-qualified denominator and records 156 / 159 = 98.1% current coverage. This is not a claim about every carrier/SIM SKU worldwide. Broad enumeration stops; residual candidates are LuckySIM HK, Saily U.S. phone number and China Telecom Macau / Macau blue-card.
-18. **NEXT — backend↔frontend integration audit.** Verify whether all 156 canonical routes are available to the user-triggered finder/search path without manual frontend duplication. Preserve the 3-route SEO allowlist; distinguish not-indexable from not-user-queryable and never turn HOLD into a confident recommendation.
-19. **PARALLEL — community evidence maintenance.** Continue append-only Phone and Data-eSIM evidence intake; no new DB batch without a distinct evidence-qualified route trigger.
-20. **WAIT — Search Console publication decision.** Re-read at 20 settled Phone impressions or finalized data through 2026-10-05. TikTok Direct Post remains a separate review wait.
+1. **DONE — Phone publication architecture + progressive global finder.** Layered database/query/publication boundaries are released; historical deep comparison stays 135 routes and explicit indexability stays 3.
+2. **DONE — Data-eSIM normalized backstage layer.** Pure data eSIM remains separate from Phone-number/retention canonical and public/indexable surfaces.
+3. **DONE — Phone task-first decision shortcuts + Phone-first identity.** PR #340 and PR #342 are the current visual/product baseline.
+4. **DONE — Canonical backend coverage through DB-C23.** Current state is 156 routes / 86 markets / 153 brands / 116 networks / 593 sources.
+5. **DONE — Phone database 90%+ coverage audit.** `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` records 156/159 = 98.1% of the known evidence-qualified relevant atomic route universe. Broad enumeration stops.
+6. **DONE — Canonical backend ↔ finder integration.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` makes all 156 canonical routes user-queryable through generated summaries and lazy per-route evidence, while preserving 135 comparison / 3 indexable / 31 sitemap URLs. Eval Gate #1119, Vercel and live HTTP checks passed.
+7. **PARALLEL — community/provider evidence maintenance.** Continue append-only Phone and separate Data-eSIM evidence intake; no new DB batch without a distinct evidence-qualified route trigger or cleared residual blocker.
+8. **WAIT — Search Console publication decision.** Re-read at 20 settled Phone impressions or finalized data through 2026-10-05, whichever comes first.
+9. **WAIT — TikTok Direct Post review.** Do not resubmit unless TikTok rejects or requests new evidence.
+10. **ONGOING — Relay data accrual / authority pilot.** No search-led Relay expansion without demand evidence; follow the authority ledger for external follow-up.
 
 ## Durable source pointers
 
