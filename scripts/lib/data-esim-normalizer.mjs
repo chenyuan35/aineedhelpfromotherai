@@ -215,7 +215,7 @@ export const loadDataEsimCatalog = ({ root = repoRoot } = {}) => {
 
     if (entry.role === 'version-delta') {
       doc.updates.forEach((raw, index) => pushEvidence(raw, raw.providerLabel, 'price-delta-update', `${raw.ordinal ?? 'x'}:${index + 1}`));
-      doc.newRecords.forEach((raw) => pushEvidence(raw, raw.providerLabel, 'price-delta-new-record', String(raw.ordinal));
+      doc.newRecords.forEach((raw) => pushEvidence(raw, raw.providerLabel, 'price-delta-new-record', String(raw.ordinal)));
       continue;
     }
 
