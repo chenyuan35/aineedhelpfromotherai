@@ -189,6 +189,15 @@
     "sourceId": "celcomdigi-validity-20260929"
   },
   {
+    "id": "evt-digicel-jm-2026-db-c19-20261003",
+    "routeId": "digicel-jm-2026",
+    "type": "lifecycle-acquisition-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Current Digicel terms establish deactivation after four months with no usage and new-number assignment after reactivation; current visitor acquisition, international top-up and China roaming exist, but the exact clock-resetting keep-alive action is unresolved.",
+    "sourceId": "digicel-jm-mobile-terms-20261003"
+  },
+  {
     "id": "evt-elisa-prepaid-fi-2026-db-c4d-validity-20260929",
     "routeId": "elisa-prepaid-fi-2026",
     "type": "retention-rule-resolution",
@@ -754,6 +763,15 @@
     "scope": "route",
     "outcome": "Legacy 4p-text / GBP0.08-year keep estimate belonged to retired PAYG pricing. Current Essentials standard SMS is 10p, so a two-actions-per-year theoretical floor is about GBP0.20 after the required initial top-up.",
     "sourceId": "tesco-payg-service-terms-2026-09-29"
+  },
+  {
+    "id": "evt-tigo-tz-2026-db-c19-20261003",
+    "routeId": "tigo-tz-2026",
+    "type": "identity-lifecycle-roaming-reconciliation",
+    "reportedAt": "2026-10-03",
+    "scope": "route",
+    "outcome": "Tigo Tanzania is now Yas Tanzania with core services/contracts continued; current Yas terms allow suspension/re-allocation after 90 days non-use and current roaming lists China, while TCRA visitor registration is limited to visitors staying no more than four months.",
+    "sourceId": "yas-tz-about-20261003"
   },
   {
     "id": "evt-tmobile-prepaid-connect-2026-db-c16-20261003",

@@ -10,26 +10,23 @@ const sources = read('data/phone/v1/sources.json'), brands = read('data/phone/v1
 const globalDirectory = read('frontend/tools/phone-number-lifecycle-mvp/global-directory.json');
 const policy = read('frontend/tools/phone-number-lifecycle-mvp/publication-policy.json');
 const expected = {
-  'zain-kw-eezee-2026': ['kw', 'zain-eezee', 'zain-kw', 'admitted'],
-  'omantel-om-2026': ['om', 'omantel-prepaid', 'omantel-om', 'admitted'],
-  'btc-bs-2026': ['bs', 'btc-prepaid', 'btc-bs', 'hold'],
+  'digicel-jm-2026': ['jm', 'digicel-jm-prepaid', 'digicel-jm', 'hold'],
+  'tigo-tz-2026': ['tz', 'yas-tz-prepaid', 'yas-tz', 'hold'],
 };
 for (const [routeId, [marketId, brandId, networkId, evidenceState]] of Object.entries(expected)) {
-  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C18 route missing: ${routeId}`);
+  const route = canonical.routes.find((row) => row.id === routeId); assert(route, `DB-C19 route missing: ${routeId}`);
   assert.equal(route.marketId, marketId); assert.equal(route.brandId, brandId); assert.equal(route.networkId, networkId); assert.equal(route.evidenceState, evidenceState); assert.equal(route.surfaceState, 'backstage-only');
   assert(canonical.markets.some((row) => row.id === marketId)); assert(brands.some((row) => row.id === brandId && row.marketId === marketId)); assert(networks.some((row) => row.id === networkId && row.marketId === marketId));
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https?:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   assert.equal(policy.routeStates[routeId], undefined, `${routeId}: must stay non-indexable`);
 }
-const zain = buildCanonicalComparisonRoute(canonical, 'zain-kw-eezee-2026');
-assert.equal(zain.landedCost.providerOrCommunityPrice, 5); assert.equal(zain.keep.intervalDays, 365); assert.equal(zain.keep.observedActionCost, 13); assert.equal(zain.keep.yearCostOriginal, 13); assert.match(zain.roamingSms, /default|prepaid|roaming/i); assert.equal(zain.holdReason, null);
-const omantel = buildCanonicalComparisonRoute(canonical, 'omantel-om-2026');
-assert.equal(omantel.keep.intervalDays, 90); assert.equal(omantel.keep.observedActionCost, 7); assert.equal(omantel.keep.yearCostOriginal, 28); assert.match(omantel.kyc, /passport|residence/i); assert.match(omantel.roamingSms, /free of charge|incoming SMS/i); assert.equal(omantel.holdReason, null);
-const btc = buildCanonicalComparisonRoute(canonical, 'btc-bs-2026');
-assert.equal(btc.keep.intervalDays, null); assert.match(btc.holdReason, /lifecycle|keep-alive|foreigner/i); assert.match(btc.acquisitionSummary, /prepaid|April 2025/i);
+const digicel = buildCanonicalComparisonRoute(canonical, 'digicel-jm-2026');
+assert.equal(digicel.landedCost.providerOrCommunityPrice, 750); assert.equal(digicel.keep.intervalDays, 120); assert.equal(digicel.keep.yearCostOriginal, null); assert.match(digicel.holdReason, /four-month|qualifying activity|OTP/i); assert.match(digicel.roamingSms, /China|Global/i);
+const yas = buildCanonicalComparisonRoute(canonical, 'tigo-tz-2026');
+assert.equal(yas.brandId, 'yas-tz-prepaid'); assert.equal(yas.keep.intervalDays, 90); assert.equal(yas.keep.yearCostOriginal, null); assert.match(yas.holdReason, /90 days|four months|visitor/i); assert.match(yas.roamingSms, /China Unicom|China Telecommunications/i);
 assert.equal(canonical.routes.length, 145); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 142); assert.equal(networks.length, 112); assert.equal(sources.length, 547);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);
 assert.equal(globalDirectory.routes.length, 135); assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
-console.log('Phone canonical DB-C18 migration passed: Zain Kuwait + Omantel ADMITTED, BTC Bahamas HOLD; 143 canonical routes, 132 comparison overlaps, 3 legacy-only and 3-route indexability preserved.');
+console.log('Phone canonical DB-C19 migration passed: Digicel Jamaica HOLD, Yas Tanzania HOLD; all non-alias comparison IDs normalized and 3-route indexability preserved.');

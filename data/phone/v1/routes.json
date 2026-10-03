@@ -610,6 +610,27 @@
     ]
   },
   {
+    "id": "digicel-jm-2026",
+    "marketId": "jm",
+    "networkId": "digicel-jm",
+    "brandId": "digicel-jm-prepaid",
+    "displayName": "Digicel Jamaica Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + tourist eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.digicelgroup.com/jm/en/sim-to-go",
+    "sourceIds": [
+      "digicel-jm-international-topup-20261003",
+      "digicel-jm-mobile-terms-20261003",
+      "digicel-jm-prepaid-plans-20261003",
+      "digicel-jm-roaming-20261003",
+      "digicel-jm-sim-to-go-20261003"
+    ]
+  },
+  {
     "id": "du-prepaid-ae-2026",
     "marketId": "ae",
     "networkId": "du-ae",
@@ -2409,6 +2430,27 @@
       "official-3hk-diy-sales-kit-2024-04",
       "official-3hk-online-recharge-2026-09-26",
       "official-3hk-simworld-recharge-table-2026-09-26"
+    ]
+  },
+  {
+    "id": "tigo-tz-2026",
+    "marketId": "tz",
+    "networkId": "yas-tz",
+    "brandId": "yas-tz-prepaid",
+    "displayName": "Yas Tanzania Prepaid (legacy Tigo ID)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://yas.co.tz/",
+    "sourceIds": [
+      "tcra-tz-visitor-sim-20261003",
+      "yas-tz-about-20261003",
+      "yas-tz-faq-20261003",
+      "yas-tz-roaming-20261003",
+      "yas-tz-terms-20261003"
     ]
   },
   {

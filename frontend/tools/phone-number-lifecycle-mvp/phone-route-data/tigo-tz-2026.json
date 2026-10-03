@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "tigo-tz-2026",
+    "marketId": "tz",
+    "networkId": "yas-tz",
+    "brandId": "yas-tz-prepaid",
+    "displayName": "Yas Tanzania Prepaid (legacy Tigo ID)",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://yas.co.tz/",
+    "sourceIds": [
+      "tcra-tz-visitor-sim-20261003",
+      "yas-tz-about-20261003",
+      "yas-tz-faq-20261003",
+      "yas-tz-roaming-20261003",
+      "yas-tz-terms-20261003"
+    ]
+  },
+  "market": {
+    "id": "tz",
+    "name": "Tanzania",
+    "countryCode": "TZ"
+  },
+  "network": {
+    "id": "yas-tz",
+    "name": "Yas Tanzania",
+    "marketId": "tz"
+  },
+  "brand": {
+    "id": "yas-tz-prepaid",
+    "networkId": "yas-tz",
+    "name": "Yas Tanzania Prepaid",
+    "marketId": "tz"
+  },
+  "metrics": {
+    "routeId": "tigo-tz-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "TZS",
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
+    "keepCurrency": "TZS",
+    "keepYearCostOriginal": null,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 90
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "tcra-tz-visitor-sim-20261003",
+      "url": "https://tcra.go.tz/laws-and-guidelines/guidelines/guidelines-and-procedures-for-sim-card-registrations-for-visitors",
+      "type": "government-regulator",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "yas-tz-about-20261003",
+      "url": "https://yas.co.tz/about/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "yas-tz-faq-20261003",
+      "url": "https://yas.co.tz/consumer-faqs/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "yas-tz-roaming-20261003",
+      "url": "https://yas.co.tz/consumer/mobile-plans/roaming/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "yas-tz-terms-20261003",
+      "url": "https://yas.co.tz/tc-yas-app/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-tigo-tz-2026-db-c19-20261003",
+      "routeId": "tigo-tz-2026",
+      "type": "identity-lifecycle-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Tigo Tanzania is now Yas Tanzania with core services/contracts continued; current Yas terms allow suspension/re-allocation after 90 days non-use and current roaming lists China, while TCRA visitor registration is limited to visitors staying no more than four months.",
+      "sourceId": "yas-tz-about-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-tigo-tz-2026-current-profile-20261003",
+      "routeId": "tigo-tz-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c19-reviewed-2026-10-03",
+      "data": {
+        "id": "tigo-tz-2026",
+        "brandId": "yas-tz-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Tigo Tanzania is now Yas Tanzania; Yas states the rebrand did not alter core services, pricing or contracts. eSIM is available by visiting a Yas Tanzania shop. The stable legacy route ID is retained to avoid creating a duplicate product.",
+        "landedCost": {
+          "currency": "TZS",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-product-price-unresolved"
+        },
+        "keep": {
+          "currency": "TZS",
+          "observedActionCost": null,
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "Current Yas terms say continuous neglect to use the SIM/number for 90 days may lead to suspension and number re-allocation. The exact minimum qualifying use is not defined, so no annual keep-alive cost is inferred.",
+          "intervalDays": 90,
+          "state": "current-provider-lifecycle-action-unresolved"
+        },
+        "chinaActivation": "Current eSIM requires a Yas Tanzania shop visit; China-first remote activation is not established.",
+        "kyc": "TCRA visitor-SIM rules define a visitor as a non-citizen intending to stay in Tanzania for no more than four months and require a dedicated visitor registration procedure. This does not establish a clean long-term visitor retention route beyond that stay category.",
+        "payment": "Yas supports self top-up through Mixx by Yas and airtime transfer. Reliable foreign-card remote top-up from abroad was not established.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current Yas roaming lists China with China Unicom and China Telecommunications Corporation and publishes SMS/call/data rates. The table does not separately prove incoming SMS pricing or third-party OTP reliability.",
+        "refund": "not reconciled",
+        "trend": "rebranded-current-lifecycle-clear-visitor-limit",
+        "guideEligible": false,
+        "holdReason": "Current Yas terms permit number re-allocation after 90 days non-use, but qualifying minimum use is undefined and TCRA visitor registration is scoped to non-citizens staying no more than four months; a durable foreign-user keep-number path is not established.",
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://yas.co.tz/",
+        "tariffSummary": "Legacy Tigo route continues as Yas Tanzania. Current contract exposes a 90-day non-use re-allocation risk; China roaming exists, but visitor registration and long-term foreign retention remain constrained.",
+        "guideSteps": [
+          "Treat `tigo-tz-2026` as the stable legacy ID for current Yas Tanzania, not as a separate old Tigo product.",
+          "Do not infer a cheap 90-day keep-alive action until Yas defines what qualifying use resets the non-use clock.",
+          "Do not present visitor registration as a long-term foreign-user route; current TCRA visitor guidance is explicitly for stays up to four months."
+        ],
+        "sourceIds": [
+          "yas-tz-about-20261003",
+          "yas-tz-terms-20261003",
+          "yas-tz-faq-20261003",
+          "yas-tz-roaming-20261003",
+          "tcra-tz-visitor-sim-20261003"
+        ]
+      }
+    }
+  ]
+}

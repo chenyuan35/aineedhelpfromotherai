@@ -480,6 +480,36 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "digicel-jm-international-topup-20261003",
+    "url": "https://topup.digicelgroup.com/en/faq/mobile-recharge/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "digicel-jm-mobile-terms-20261003",
+    "url": "https://corporate.digicelgroup.com/en/legal/mobile-services-terms-and-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "digicel-jm-prepaid-plans-20261003",
+    "url": "https://www.digicelgroup.com/jm/en/mobile/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "digicel-jm-roaming-20261003",
+    "url": "https://www.digicelgroup.com/jm/en/mobile/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "digicel-jm-sim-to-go-20261003",
+    "url": "https://www.digicelgroup.com/jm/en/sim-to-go",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "eand-wasel-faq-2026-09-29",
     "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
     "type": "provider-official",
@@ -2868,6 +2898,12 @@
     "reportedAt": "2017-06-07"
   },
   {
+    "id": "tcra-tz-visitor-sim-20261003",
+    "url": "https://tcra.go.tz/laws-and-guidelines/guidelines/guidelines-and-procedures-for-sim-card-registrations-for-visitors",
+    "type": "government-regulator",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "telekom-credit-validity-20260929",
     "url": "https://www.telekom.sk/wiki/volania/vyska-a-platnost-kreditu",
     "type": "provider-official",
@@ -3166,6 +3202,30 @@
     "url": "https://www.voxi.co.uk/acquisition/plans",
     "type": "provider-commercial-page",
     "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "yas-tz-about-20261003",
+    "url": "https://yas.co.tz/about/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "yas-tz-faq-20261003",
+    "url": "https://yas.co.tz/consumer-faqs/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "yas-tz-roaming-20261003",
+    "url": "https://yas.co.tz/consumer/mobile-plans/roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "yas-tz-terms-20261003",
+    "url": "https://yas.co.tz/tc-yas-app/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "yettel-bg-esim-20260930",

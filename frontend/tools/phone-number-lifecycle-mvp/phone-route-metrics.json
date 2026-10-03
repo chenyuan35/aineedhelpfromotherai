@@ -374,6 +374,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "digicel-jm-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "JMD",
+      "acquisitionCostOriginal": 750,
+      "acquisitionCostCny": null,
+      "keepCurrency": "JMD",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 120
+    },
+    {
       "routeId": "du-prepaid-ae-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",
@@ -1464,6 +1476,18 @@
       "keepYearCostOriginal": 200,
       "keepYearCostCny": 183,
       "keepIntervalDays": 180
+    },
+    {
+      "routeId": "tigo-tz-2026",
+      "checkedAt": "2026-10-03",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "TZS",
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
+      "keepCurrency": "TZS",
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 90
     },
     {
       "routeId": "tim-prepaid-12mo-2026",

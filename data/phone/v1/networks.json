@@ -125,6 +125,11 @@
     "marketId": "lk"
   },
   {
+    "id": "digicel-jm",
+    "name": "Digicel Jamaica",
+    "marketId": "jm"
+  },
+  {
     "id": "docomo-jp",
     "name": "NTT docomo",
     "marketId": "jp"
@@ -533,6 +538,11 @@
     "id": "vodafone-uk",
     "name": "Vodafone UK",
     "marketId": "gb"
+  },
+  {
+    "id": "yas-tz",
+    "name": "Yas Tanzania",
+    "marketId": "tz"
   },
   {
     "id": "yettel-bg",

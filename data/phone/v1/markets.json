@@ -200,6 +200,11 @@
     "countryCode": "IT"
   },
   {
+    "id": "jm",
+    "name": "Jamaica",
+    "countryCode": "JM"
+  },
+  {
     "id": "jp",
     "name": "Japan",
     "countryCode": "JP"
@@ -388,6 +393,11 @@
     "id": "tw",
     "name": "Taiwan",
     "countryCode": "TW"
+  },
+  {
+    "id": "tz",
+    "name": "Tanzania",
+    "countryCode": "TZ"
   },
   {
     "id": "ua",
