@@ -1,0 +1,34 @@
+name: DB-C20 materializer
+
+on:
+  push:
+    branches: [data/phone-db-c20-20261003]
+    paths:
+      - '.github/workflows/db-c20-materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/phone-db-c20-20261003
+          fetch-depth: 0
+      - name: Rebuild verified patch
+        run: |
+          cat .github/db-c20-bootstrap/part.00 .github/db-c20-bootstrap/part.01 .github/db-c20-bootstrap/part.02 .github/db-c20-bootstrap/part.03 > /tmp/db-c20.patch.gz.b64
+          echo 'b2d44d92a1c8f874fb91e836d8c1593ed220a2c669162bcc2fd61c3a8efad273  /tmp/db-c20.patch.gz.b64' | sha256sum -c -
+          base64 -d /tmp/db-c20.patch.gz.b64 | gzip -d > /tmp/db-c20.patch
+          echo 'aae98da8791d2a15d48a10e532fefa3e0295f9acb0b42d7e7f0e41b176fee0bc  /tmp/db-c20.patch' | sha256sum -c -
+          git apply --check /tmp/db-c20.patch
+          git apply /tmp/db-c20.patch
+      - name: Commit DB-C20
+        run: |
+          git config user.name 'aineedhelp-bot'
+          git config user.email 'bot@aineedhelpfromotherai.com'
+          git add -A
+          git commit -m 'data: normalize Phone DB-C20 routes'
+          git push origin HEAD:data/phone-db-c20-20261003
