@@ -10,7 +10,7 @@ Last updated: 2026-10-03
 2. **Frontend baseline stays stable.** PR #342 remains the released Phone-first homepage/Phone hub identity; do not add another public design layer without measured behavior or a reproduced defect.
 3. **Backend database coverage and public/SEO publication remain separate tracks.** Canonical/database admission never authorizes an indexable URL by itself.
 4. Current released Phone state is **135 comparison routes / 145 canonical normalized routes / 134 comparison↔canonical route-ID overlaps / 1 intentional same-product alias gap / 3 indexable routes**.
-5. The post-legacy coverage-gap audit is complete on branch `audit/phone-post-legacy-gap-20261003`; it selected exactly three evidence-backed candidates for DB-C20: Vodafone Netherlands Prepaid, CTExcel UK and One NZ Prepay. CMLink UK and DITO Philippines are deferred behind explicit evidence/eligibility re-open conditions.
+5. The post-legacy coverage-gap audit is **merged to `main` via PR #358 / `ecec30762a819aea5aba311a6dfd6c6c78921b7d`**. It selected exactly three evidence-backed candidates for DB-C20: Vodafone Netherlands Prepaid, CTExcel UK and One NZ Prepay. CMLink UK and DITO Philippines are deferred behind explicit evidence/eligibility re-open conditions.
 6. **Data-eSIM remains a separate normalized backstage family.** PR #328 preserves **59 source-label providers / 72 evidence records / 159 versioned offers** under `data/esim/v1`; it is not Phone canonical data, not a production frontend input, and has no public/indexable surface.
 7. AI Reset Radar stays frozen; Relay Exit Risk stays data-accrual only.
 
@@ -30,7 +30,8 @@ Audit result:
 - **selected for DB-C20:** `vodafone-nl-prepaid-2026`, `ctexcel-uk-2026`, `one-nz-prepay-2026`;
 - **deferred:** CMLink UK because current retention eligibility/post-expiry rules remain materially ambiguous; DITO Philippines because tourist registration/current traveler-SIM rules impose a 30-day/local-address/return-ticket constraint that prevents generalizing community ultra-low-cost retention claims to a durable foreign-user route;
 - all five candidates were sample-audited for source quality, duplication and unsupported inference, exceeding the required sample of three;
-- no canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed.
+- no canonical row, comparison row, public URL, sitemap entry, ranking or indexability changed;
+- release record: PR #358 squash-merged as `ecec30762a819aea5aba311a6dfd6c6c78921b7d`; Eval Gate #1065 and Vercel status passed.
 
 Full evidence and re-open triggers: `docs/PHONE_POST_LEGACY_COVERAGE_GAP_AUDIT_2026-10-03.md`.
 
