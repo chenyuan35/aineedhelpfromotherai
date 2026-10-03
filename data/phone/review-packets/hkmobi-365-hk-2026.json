@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "operation": "add",
+  "reviewState": "approved-backstage",
+  "reviewedAt": "2026-10-03",
+  "reviewRef": "docs/PHONE_DATABASE_COVERAGE_EXECUTION_2026-09-29.md#db-c23",
+  "reviewNotes": "ADMIT-BACKSTAGE. csl currently lists HK Mobi 365-day prepaid products with no administration fee and a recharge table where HKD20/50/100 extends card validity 365 days; the current HKD20 renewal mechanic is explicitly promotional through 31 Dec 2026. csl requires real-name registration before use. Long-running HKEPC user evidence corroborates HKD20/365-day renewal and 2025-2026 eSIM/MNP operation. Reverify the recharge rule after the promotion date; do not infer universal mainland-China OTP reliability.",
+  "market": null,
+  "network": null,
+  "brand": {
+    "id": "hkmobi-hk",
+    "networkId": "csl-hk",
+    "name": "HK Mobi",
+    "marketId": "hk"
+  },
+  "route": {
+    "id": "hkmobi-365-hk-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "hkmobi-hk",
+    "displayName": "HK Mobi 365-day Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/",
+    "sourceIds": ["csl-hkmobi-365-20261003","csl-dealer-rnr-20261003","hkepc-hkmobi-thread-20261003"]
+  },
+  "sources": [
+    {"id":"csl-hkmobi-365-20261003","url":"https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"csl-dealer-rnr-20261003","url":"https://www.hkcsl.com/en/dealer-prepaid-sim/","type":"provider-official","reportedAt":"2026-10-03"},
+    {"id":"hkepc-hkmobi-thread-20261003","url":"https://www.hkepc.com/forum/viewthread.php?extra=&fid=44&ordertype=1&tid=2632211","type":"independent-community","reportedAt":"2026-10-03"}
+  ],
+  "sourceIds": ["csl-hkmobi-365-20261003","csl-dealer-rnr-20261003","hkepc-hkmobi-thread-20261003"],
+  "observations": [],
+  "events": [{"id":"evt-hkmobi-365-hk-2026-db-c23-20261003","routeId":"hkmobi-365-hk-2026","type":"retention-and-operational-reconciliation","reportedAt":"2026-10-03","scope":"route","outcome":"Current csl HK Mobi page gives 365-day card validity and a promotional HKD20-or-more recharge ladder extending card validity by 365 days through 31 Dec 2026. csl also requires real-name registration; long-running community evidence corroborates the HKD20 annual renewal mechanic and current eSIM/MNP use.","sourceId":"csl-hkmobi-365-20261003"}],
+  "snapshots": [{
+    "id":"snap-hkmobi-365-hk-2026-current-profile-20261003","routeId":"hkmobi-365-hk-2026","kind":"current-profile","checkedAt":"2026-10-03","sourceDataset":"db-c23-reviewed-2026-10-03",
+    "data": {
+      "id":"hkmobi-365-hk-2026","brandId":"hkmobi-hk","publishState":"candidate","numberType":"real-mobile","simType":"physical + eSIM",
+      "acquisitionSummary":"HK Mobi is a distinct csl prepaid family. Current provider pages list 365-day variants; real-name registration is required before use. Community users document MNP and eSIM handling, but eSIM availability/process can depend on current service channels.",
+      "landedCost":{"currency":"HKD","providerOrCommunityPrice":null,"mandatoryTopup":null,"shipping":null,"adapterCostCny":null,"landedOriginal":null,"landedCny":null,"fxCheckedAt":null,"state":"current-provider-card-price-varies-by-variant"},
+      "keep":{"currency":"HKD","observedActionCost":20,"yearCostOriginal":20,"yearCostCny":null,"action":"Recharge HKD20 or more. Current csl HK Mobi recharge table extends card validity 365 days from the top-up date; the published HKD20/365-day recharge promotion is stated through 31 Dec 2026 and must be reverified after that date.","intervalDays":365,"state":"current-provider-365d-hkd20-promo-through-20261231"},
+      "chinaActivation":"Real-name registration is required before use. Provider supports international roaming products including mainland China, but a universal mainland-China-first activation path is not established in this review.",
+      "kyc":"csl states real-name registration is required before use for dealer prepaid SIMs including HK Mobi.",
+      "payment":"csl prepaid top-up supports vouchers and online payment methods; community users also document online/account top-up paths.",
+      "wifiCalling":"not normalized",
+      "roamingSms":"Provider offers roaming functionality and community users use HK Mobi for long-term number retention, but mainland-China incoming-SMS and third-party OTP reliability are not normalized as guarantees here.",
+      "refund":"not reconciled","trend":"current-365d-low-cost-retention-promotion-needs-post-2026-recheck","guideEligible":false,"holdReason":null,
+      "lastVerifiedAt":"2026-10-03","acquireUrl":"https://www.hkcsl.com/en/csl-indonesians-hemat-annual-prepaid-sim/","tariffSummary":"Current HK Mobi 365-day prepaid; HKD20 top-up extends card validity 365 days under the published promotion through 31 Dec 2026. Real-name registration required.",
+      "sourceIds":["csl-hkmobi-365-20261003","csl-dealer-rnr-20261003","hkepc-hkmobi-thread-20261003"],
+      "guideSteps":["Acquire a current HK Mobi 365-day variant and complete real-name registration.","Before expiry, recharge at least HKD20 while the current 365-day promotion is live and verify the new expiry date.","Recheck the provider recharge table after 31 Dec 2026 before relying on HKD20 as the annual keep cost."]
+    }
+  }],
+  "numberRanges": []
+}
