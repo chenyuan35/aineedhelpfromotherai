@@ -552,6 +552,28 @@
     ]
   },
   {
+    "id": "ctexcel-uk-2026",
+    "marketId": "gb",
+    "networkId": "ee-uk",
+    "brandId": "ctexcel-uk",
+    "displayName": "CTExcel UK",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+    "sourceIds": [
+      "ctexcel-uk-current-site-20261003",
+      "ctexcel-uk-retention-landing-20261003",
+      "linuxdo-ctexcel-2844702-20260902",
+      "naixi-ctexcel-10558-20260301",
+      "naixi-ctexcel-14169-20260804",
+      "nodeloc-ctexcel-101793-20260802"
+    ]
+  },
+  {
     "id": "cyta-soeasy-cy-2026",
     "marketId": "cy",
     "networkId": "cyta-cy",
@@ -1646,6 +1668,29 @@
     ]
   },
   {
+    "id": "one-nz-prepay-2026",
+    "marketId": "nz",
+    "networkId": "one-nz",
+    "brandId": "one-nz-prepay",
+    "displayName": "One NZ Prepay / Pay & Go",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://one.nz/prepay/pay-and-go/",
+    "sourceIds": [
+      "geekzone-one-nz-expiry-318647-202502",
+      "naixi-one-nz-10577-20260301",
+      "one-nz-mobile-terms-20261003",
+      "one-nz-paygo-20261003",
+      "one-nz-prepay-activation-20261003",
+      "one-nz-prepay-expiry-20261003",
+      "one-nz-prepay-roaming-20261003"
+    ]
+  },
+  {
     "id": "ooredoo-hala-qa-2026",
     "marketId": "qa",
     "networkId": "ooredoo-qa",
@@ -2719,6 +2764,27 @@
       "vodafone-eg-required-docs-20261001",
       "vodafone-eg-roaming-20261001",
       "vodafone-eg-tourist-line-20261001"
+    ]
+  },
+  {
+    "id": "vodafone-nl-prepaid-2026",
+    "marketId": "nl",
+    "networkId": "vodafone-nl",
+    "brandId": "vodafone-nl-prepaid",
+    "displayName": "Vodafone Netherlands Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.vodafone.nl/abonnement/prepaid",
+    "sourceIds": [
+      "linuxdo-vodafone-nl-1872386-20260401",
+      "naixi-vodafone-nl-11013-20260401",
+      "vodafone-nl-prepaid-esim-20261003",
+      "vodafone-nl-prepaid-lifecycle-20261003",
+      "vodafone-nl-prepaid-product-20261003"
     ]
   },
   {

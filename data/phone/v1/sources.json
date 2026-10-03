@@ -432,6 +432,18 @@
     "reportedAt": "2026-10-03"
   },
   {
+    "id": "ctexcel-uk-current-site-20261003",
+    "url": "https://www.ctexcel.com/uk/trail/index/1?lang=en&recommendCode=IQ",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "ctexcel-uk-retention-landing-20261003",
+    "url": "https://www.ctexcel.com/uk/guaranteeNum",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "cyta-soeasy-faq-20260929",
     "url": "https://www.cyta.com.cy/faq-soeasy/en",
     "type": "provider-official",
@@ -592,6 +604,12 @@
     "url": "https://www.whatsup.gr/api/strapi/uploads/allages_kartokinitis27022026.pdf",
     "type": "provider-official",
     "reportedAt": "2026-03-30"
+  },
+  {
+    "id": "geekzone-one-nz-expiry-318647-202502",
+    "url": "https://www.geekzone.co.nz/forums.asp?forumid=40&page_no=3&topicid=318647",
+    "type": "community-independent",
+    "reportedAt": "2025-02-01"
   },
   {
     "id": "giffgaff-official-credit-2026-09-23",
@@ -1008,6 +1026,12 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "linuxdo-ctexcel-2844702-20260902",
+    "url": "https://linux.do/t/topic/2844702",
+    "type": "community-independent",
+    "reportedAt": "2026-09-02"
+  },
+  {
     "id": "linuxdo-giffgaff-1615582",
     "url": "https://linux.do/t/topic/1615582",
     "type": "first-hand-community-thread",
@@ -1114,6 +1138,12 @@
     "url": "https://linux.do/t/topic/2417339",
     "type": "community-thread",
     "reportedAt": "2026-06-16"
+  },
+  {
+    "id": "linuxdo-vodafone-nl-1872386-20260401",
+    "url": "https://linux.do/t/topic/1872386",
+    "type": "community-independent",
+    "reportedAt": "2026-04-01"
   },
   {
     "id": "linuxdo-voxi-2188975",
@@ -1332,6 +1362,30 @@
     "reportedAt": "2024-12-18"
   },
   {
+    "id": "naixi-ctexcel-10558-20260301",
+    "url": "https://forum.naixi.net/forum.php?mod=viewthread&tid=10558",
+    "type": "community-independent",
+    "reportedAt": "2026-03-01"
+  },
+  {
+    "id": "naixi-ctexcel-14169-20260804",
+    "url": "https://forum.naixi.net/thread-14169-1-1.html",
+    "type": "community-independent",
+    "reportedAt": "2026-08-04"
+  },
+  {
+    "id": "naixi-one-nz-10577-20260301",
+    "url": "https://forum.naixi.net/thread-10577-1-1.html",
+    "type": "community-independent",
+    "reportedAt": "2026-03-01"
+  },
+  {
+    "id": "naixi-vodafone-nl-11013-20260401",
+    "url": "https://forum.naixi.net/thread-11013-1-1.html",
+    "type": "community-independent",
+    "reportedAt": "2026-04-01"
+  },
+  {
     "id": "nca-gh-registration-process-20261001",
     "url": "https://nca.org.gh/registration-process-2/",
     "type": "official",
@@ -1366,6 +1420,12 @@
     "url": "https://www.business.ncell.com.np/en/individual/tourist-sim",
     "type": "provider-official",
     "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "nodeloc-ctexcel-101793-20260802",
+    "url": "https://www.nodeloc.com/t/topic/101793",
+    "type": "community-independent",
+    "reportedAt": "2026-08-02"
   },
   {
     "id": "nodeloc-voxi-102713",
@@ -2322,6 +2382,36 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "one-nz-mobile-terms-20261003",
+    "url": "https://one.nz/legal/terms-conditions/mobile/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "one-nz-paygo-20261003",
+    "url": "https://one.nz/prepay/pay-and-go/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "one-nz-prepay-activation-20261003",
+    "url": "https://one.nz/faq/prepay-activate-a-prepay-sim-using-your-handset",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "one-nz-prepay-expiry-20261003",
+    "url": "https://one.nz/faq/when-does-prepay-credit-expire",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "one-nz-prepay-roaming-20261003",
+    "url": "https://one.nz/prepay-roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
     "id": "ooredoo-qa-buy-hala-20261002",
     "url": "https://www.ooredoo.qa/web/en/prepaid-plans/buy-prepaid-sim/",
     "type": "provider-official",
@@ -3190,6 +3280,24 @@
     "url": "https://web.vodafone.com.eg/en/tourist-line",
     "type": "provider-official",
     "reportedAt": "2026-10-01"
+  },
+  {
+    "id": "vodafone-nl-prepaid-esim-20261003",
+    "url": "https://www.vodafone.nl/support/toestel-en-sim/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "vodafone-nl-prepaid-lifecycle-20261003",
+    "url": "https://www.vodafone.nl/support/prepaid/zo-werkt-prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "vodafone-nl-prepaid-product-20261003",
+    "url": "https://www.vodafone.nl/abonnement/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-03"
   },
   {
     "id": "vodafone-official-network-trial-2026",

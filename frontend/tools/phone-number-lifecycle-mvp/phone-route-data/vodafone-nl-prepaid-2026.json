@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "route": {
+    "id": "vodafone-nl-prepaid-2026",
+    "marketId": "nl",
+    "networkId": "vodafone-nl",
+    "brandId": "vodafone-nl-prepaid",
+    "displayName": "Vodafone Netherlands Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "admitted",
+    "lastVerifiedAt": "2026-10-03",
+    "acquireUrl": "https://www.vodafone.nl/abonnement/prepaid",
+    "sourceIds": [
+      "linuxdo-vodafone-nl-1872386-20260401",
+      "naixi-vodafone-nl-11013-20260401",
+      "vodafone-nl-prepaid-esim-20261003",
+      "vodafone-nl-prepaid-lifecycle-20261003",
+      "vodafone-nl-prepaid-product-20261003"
+    ]
+  },
+  "market": {
+    "id": "nl",
+    "name": "Netherlands",
+    "countryCode": "NL"
+  },
+  "network": {
+    "id": "vodafone-nl",
+    "name": "Vodafone Netherlands",
+    "marketId": "nl"
+  },
+  "brand": {
+    "id": "vodafone-nl-prepaid",
+    "networkId": "vodafone-nl",
+    "name": "Vodafone Netherlands Prepaid",
+    "marketId": "nl"
+  },
+  "metrics": {
+    "routeId": "vodafone-nl-prepaid-2026",
+    "checkedAt": "2026-10-03",
+    "metricState": "current-profile",
+    "acquisitionCurrency": "EUR",
+    "acquisitionCostOriginal": 0,
+    "acquisitionCostCny": null,
+    "keepCurrency": "EUR",
+    "keepYearCostOriginal": 0.3,
+    "keepYearCostCny": null,
+    "keepIntervalDays": 180
+  },
+  "numberRanges": [],
+  "serviceEvidence": [],
+  "sources": [
+    {
+      "id": "linuxdo-vodafone-nl-1872386-20260401",
+      "url": "https://linux.do/t/topic/1872386",
+      "type": "community-independent",
+      "reportedAt": "2026-04-01"
+    },
+    {
+      "id": "naixi-vodafone-nl-11013-20260401",
+      "url": "https://forum.naixi.net/thread-11013-1-1.html",
+      "type": "community-independent",
+      "reportedAt": "2026-04-01"
+    },
+    {
+      "id": "vodafone-nl-prepaid-esim-20261003",
+      "url": "https://www.vodafone.nl/support/toestel-en-sim/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "vodafone-nl-prepaid-lifecycle-20261003",
+      "url": "https://www.vodafone.nl/support/prepaid/zo-werkt-prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    },
+    {
+      "id": "vodafone-nl-prepaid-product-20261003",
+      "url": "https://www.vodafone.nl/abonnement/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-03"
+    }
+  ],
+  "observations": [],
+  "events": [
+    {
+      "id": "evt-vodafone-nl-prepaid-2026-db-c20-20261003",
+      "routeId": "vodafone-nl-prepaid-2026",
+      "type": "lifecycle-acquisition-roaming-reconciliation",
+      "reportedAt": "2026-10-03",
+      "scope": "route",
+      "outcome": "Current Vodafone NL prepaid keeps credit and number active with at least one paid call, SMS, mobile-data session or top-up every six months; after six months of inactivity there is a three-month frozen-credit recovery window. Current community evidence shows overseas acquisition/payment variability and successful SMS/OTP reception, while China-specific cellular OTP reliability remains evidence-scoped.",
+      "sourceId": "vodafone-nl-prepaid-lifecycle-20261003"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-vodafone-nl-prepaid-2026-current-profile-20261003",
+      "routeId": "vodafone-nl-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-03",
+      "sourceDataset": "db-c20-reviewed-2026-10-03",
+      "data": {
+        "id": "vodafone-nl-prepaid-2026",
+        "brandId": "vodafone-nl-prepaid",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Vodafone Netherlands currently sells prepaid SIM and prepaid eSIM. The official product page lists top-up from EUR5; 2026 community reports show purchase/payment can work with international cards but varies by IP/card context.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 0,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-free-sim-order-entry"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.15,
+          "yearCostOriginal": 0.3,
+          "yearCostCny": null,
+          "action": "Make at least one paid call, SMS, mobile-data session or top-up every six months. A standard SMS is currently EUR0.15, so two paid SMS actions per year are the lowest directly priced qualifying usage modeled here; top-up is also valid.",
+          "intervalDays": 180,
+          "state": "current-provider-six-month-qualifying-usage"
+        },
+        "chinaActivation": "Remote purchase/payment from China is not provider-guaranteed. 2026 community reports show successful overseas ordering/payment as well as card/IP failures; treat China-first acquisition as variable.",
+        "kyc": "No identity/KYC requirement was established from the reviewed prepaid pages; account registration may unlock the advertised first-top-up bonus, but this review does not infer a universal KYC exemption.",
+        "payment": "Official online top-up is current. Community reports show international-card purchase/payment can succeed but is not uniformly reproducible.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Vodafone publishes prepaid rates for use abroad, and community reports show SMS/OTP reception in overseas setups. Mainland-China cellular incoming-SMS/third-party OTP reliability was not independently provider-reconciled in this bounded review.",
+        "refund": "Current eSIM/SIM replacement recovery abroad was not fully reconciled.",
+        "trend": "current-lifecycle-clear-acquisition-variable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-03",
+        "acquireUrl": "https://www.vodafone.nl/abonnement/prepaid",
+        "tariffSummary": "Current standard prepaid: EUR0.20/min, EUR0.15/SMS, EUR0.10/MB; top-up from EUR5. One paid use or top-up every six months preserves validity, followed by a three-month recovery window if missed.",
+        "guideSteps": [
+          "Acquire a current Vodafone NL prepaid SIM/eSIM through the official prepaid path.",
+          "Record the first-use date and make one qualifying paid use or top-up before six months elapse.",
+          "Treat China-specific OTP delivery and remote payment as evidence-scoped rather than guaranteed."
+        ],
+        "sourceIds": [
+          "vodafone-nl-prepaid-lifecycle-20261003",
+          "vodafone-nl-prepaid-product-20261003",
+          "vodafone-nl-prepaid-esim-20261003",
+          "naixi-vodafone-nl-11013-20260401",
+          "linuxdo-vodafone-nl-1872386-20260401"
+        ]
+      }
+    }
+  ]
+}
