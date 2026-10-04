@@ -10743,5 +10743,66 @@
         "zain-kw-roaming-20261003"
       ]
     }
+  },
+  {
+    "id": "snap-luckysim-hk-prepaid-2026-sms-maintenance-20261004",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-04",
+    "sourceDataset": "luckysim-hk-sms-maintenance-2026-10-04",
+    "data": {
+      "id": "luckysim-hk-prepaid-2026",
+      "brandId": "luckysim-hk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "LuckySIM currently offers a HKD138 prepaid plan valid 1095 days with 30GB Hong Kong data, 2,000 local minutes and a retained Hong Kong mobile number. The official plan supports physical SIM/eSIM, voice and SMS, and requires real-name registration.",
+      "landedCost": {
+        "currency": "HKD",
+        "providerOrCommunityPrice": 138,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 138,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-1095d-plan"
+      },
+      "keep": {
+        "currency": "HKD",
+        "observedActionCost": 100,
+        "yearCostOriginal": 100,
+        "yearCostCny": null,
+        "action": "Before number expiry, top up HKD100 through the current LuckySIM top-up channel to reset/extend the SIM number expiry by 365 days. Current alternatives are HKD50/180 days and HKD200/540 days; validity is counted from the new top-up transaction rather than stacked onto remaining days.",
+        "intervalDays": 365,
+        "state": "current-provider-topup-ladder"
+      },
+      "chinaActivation": "Real-name registration is required before use. A September 2026 community report says ordinary non-bank SMS was reliable in Hong Kong/mainland China, but a universal mainland-China-first activation path and bank/OTP reliability are not established.",
+      "kyc": "Required. LuckySIM's current plan requires real-name registration before use, and OFCA lists LuckySIM/Amoeba Limited in the prepaid-SIM registration directory.",
+      "payment": "LuckySIM provides online purchase/top-up. Current independent operational guidance reproduces online renewal using card/Alipay/WeChat Pay, but payment-method acceptance can vary by user and region.",
+      "wifiCalling": "not normalized; a 2026 independent guide reports Wi-Fi Calling is not supported, but this review does not treat that as provider-guaranteed fact.",
+      "roamingSms": "HOLD. Independent evidence now includes one user receiving Hong Kong banking-code SMS while in Australia, alongside earlier ordinary-SMS successes in the UK/mainland China. A separate 2026 user reported weeks without receiving Hong Kong SMS until support restarted the connection. The successful report does not name the bank, and delivery reliability remains mixed; do not infer a bank/app OTP guarantee.",
+      "refund": "Official product purchase is non-refundable/non-exchangeable after purchase; broader recovery/refund cases are not reconciled.",
+      "trend": "current-long-validity-hk-number-with-one-overseas-banking-code-success-but-mixed-sms-reliability",
+      "guideEligible": false,
+      "holdReason": "Lifecycle and renewal are verified and one independent user reports receiving banking-code SMS in Australia, but the bank is unspecified and another 2026 user reports multi-week incoming-SMS failure requiring support intervention. Service-specific bank/app OTP reliability remains too thin and inconsistent for recommendation status.",
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+      "tariffSummary": "HKD138 for a 1095-day Hong Kong-number plan; verified ongoing retention via HKD100 top-up for 365 days. Real-name registration required; overseas banking-code reception has one positive report but SMS reliability remains mixed and HOLD.",
+      "guideSteps": [
+        "Acquire a current LuckySIM Hong Kong-number plan and complete real-name registration before relying on the number.",
+        "Test ordinary incoming SMS and every critical bank/app verification flow in the actual destination before binding important accounts.",
+        "Before expiry, top up HKD100 under the current provider ladder and verify that the number expiry resets to 365 days from the transaction date."
+      ],
+      "sourceIds": [
+        "luckysim-hk-3y-number-20261004",
+        "luckysim-hk-topup-20261004",
+        "ofca-luckysim-rnr-20261004",
+        "flyasia-luckysim-field-20260814",
+        "reddit-luckysim-overseas-20260904",
+        "reddit-luckysim-australia-bank-codes-20251018",
+        "reddit-luckysim-overseas-sms-instability-20260430"
+      ]
+    }
   }
 ]

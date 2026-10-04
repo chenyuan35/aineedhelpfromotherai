@@ -1078,5 +1078,14 @@
     "scope": "route",
     "outcome": "Current eeZee supports a KD13 365-day validity extension, KD5 new prepaid voice line, expatriate passport/Civil-ID purchase, eSIM, remote recharge and prepaid voice/SMS roaming by default; China-specific OTP remains unverified.",
     "sourceId": "zain-kw-eezee-plans-20261003"
+  },
+  {
+    "id": "evt-luckysim-hk-service-sms-maintenance-20261004",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "type": "service-specific-sms-evidence-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Independent evidence now includes one user who continued receiving Hong Kong SMS for banking codes while in Australia, plus a separate 2026 report of weeks without receiving Hong Kong SMS until LuckySIM support restarted the connection. This is mixed route-level evidence: it strengthens the existence of overseas banking-code reception but does not establish a specific bank, broad OTP reliability, or stable delivery. Preserve HOLD.",
+    "sourceId": "reddit-luckysim-overseas-sms-instability-20260430"
   }
 ]

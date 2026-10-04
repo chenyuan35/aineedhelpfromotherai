@@ -3694,5 +3694,17 @@
     "url": "https://www.kw.zain.com/en/shop/roaming",
     "type": "provider-official",
     "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "reddit-luckysim-australia-bank-codes-20251018",
+    "url": "https://www.reddit.com/r/HongKong/comments/1o938ay/new_in_hong_kong_for_a_1year_postdoc_sim_card_and/",
+    "type": "independent-community",
+    "reportedAt": "2025-10-18"
+  },
+  {
+    "id": "reddit-luckysim-overseas-sms-instability-20260430",
+    "url": "https://www.reddit.com/r/HongKong/comments/1t01lz1/esim_for_overseas_hker/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-30"
   }
 ]
