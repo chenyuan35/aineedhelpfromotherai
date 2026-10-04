@@ -141,5 +141,82 @@
     "geography": "overseas (country not stated)",
     "sourceId": "reddit-luckysim-overseas-sms-instability-20260430",
     "dedupeKey": "luckysim-reddit-overseas-sms-intermittent-failure-20260430"
+  },
+  {
+    "id": "obs-clubsim-telegram-shuzijumin-20240321",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2024-03-21",
+    "geography": "unspecified",
+    "sourceId": "shuzijumin-clubsim-telegram-success-20240321",
+    "dedupeKey": "clubsim-shuzijumin-235-p7-richardwhite-telegram"
+  },
+  {
+    "id": "obs-clubsim-telegram-v2ex-20240412",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure",
+    "reportedAt": "2024-04-12",
+    "geography": "mainland-China",
+    "sourceId": "v2ex-clubsim-telegram-failure-20240412",
+    "dedupeKey": "clubsim-v2ex-1031998-blackboar-telegram"
+  },
+  {
+    "id": "obs-clubsim-telegram-linuxdo-20250219",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure",
+    "reportedAt": "2025-02-19",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-clubsim-telegram-failure-20250219",
+    "dedupeKey": "clubsim-linuxdo-439461-scckk-telegram"
+  },
+  {
+    "id": "obs-clubsim-telegram-v2ex-20251101",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure",
+    "reportedAt": "2025-11-01",
+    "geography": "unspecified",
+    "sourceId": "v2ex-clubsim-telegram-mnp-failure-20251101",
+    "dedupeKey": "clubsim-v2ex-1168757-mschultz-telegram"
+  },
+  {
+    "id": "obs-clubsim-telegram-naixi-mixed-20260729",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "mixed",
+    "reportedAt": "2026-07-29",
+    "geography": "unspecified",
+    "sourceId": "naixi-clubsim-telegram-conflict-20260729",
+    "dedupeKey": "clubsim-naixi-13360-thread-telegram-mixed"
+  },
+  {
+    "id": "obs-clubsim-telegram-naixi-success-20260918",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-09-18",
+    "geography": "unspecified",
+    "sourceId": "naixi-clubsim-telegram-success-20260918",
+    "dedupeKey": "clubsim-naixi-15515-sing-telegram"
+  },
+  {
+    "id": "obs-clubsim-telegram-v2ex-conditional-20260918",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure-then-success",
+    "reportedAt": "2026-09-18",
+    "geography": "mainland-China",
+    "sourceId": "v2ex-clubsim-telegram-conditional-20260918",
+    "dedupeKey": "clubsim-v2ex-1243080-gaoshang-telegram"
   }
 ]

@@ -522,13 +522,20 @@
     "form": "eSIM + physical",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
+    "lastVerifiedAt": "2026-10-04",
     "acquireUrl": "https://www.clubsim.com.hk/",
     "sourceIds": [
       "community-naixi-clubsim-pack-availability-2026-07",
       "community-vocus-clubsim-6hkd-guide-2026-04",
       "official-clubsim-faq-365-window-2026-09-26",
-      "official-clubsim-sms-pack-6hkd-2026-09-28"
+      "official-clubsim-sms-pack-6hkd-2026-09-28",
+      "shuzijumin-clubsim-telegram-success-20240321",
+      "v2ex-clubsim-telegram-failure-20240412",
+      "linuxdo-clubsim-telegram-failure-20250219",
+      "v2ex-clubsim-telegram-mnp-failure-20251101",
+      "naixi-clubsim-telegram-conflict-20260729",
+      "naixi-clubsim-telegram-success-20260918",
+      "v2ex-clubsim-telegram-conditional-20260918"
     ]
   },
   {

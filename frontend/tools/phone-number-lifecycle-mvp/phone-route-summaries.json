@@ -1080,24 +1080,45 @@
       "form": "eSIM + physical",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-28",
-      "observationCount": 0,
-      "eventCount": 0,
-      "services": [],
-      "operations": [],
-      "serviceEvidence": [],
+      "lastVerifiedAt": "2026-10-04",
+      "observationCount": 7,
+      "eventCount": 1,
+      "services": [
+        "Telegram"
+      ],
+      "operations": [
+        "registration-verification"
+      ],
+      "serviceEvidence": [
+        {
+          "serviceId": "telegram",
+          "serviceName": "Telegram",
+          "operation": "registration-verification",
+          "grade": "C",
+          "label": "Mixed / weak",
+          "confidence": "high",
+          "sampleSize": 7,
+          "independentSourceCount": 7,
+          "successCount": 2,
+          "failureCount": 3,
+          "mixedCount": 2,
+          "percentageEligible": true,
+          "successRatePct": 28.6,
+          "lastObservedAt": "2026-09-18"
+        }
+      ],
       "decisionFacts": {
-        "sourceCount": 4,
+        "sourceCount": 11,
         "kycState": "required",
         "keepAction": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6…",
-        "roamingSms": "Receiving SMS abroad on ClubSIM works without roaming pack (community consensus); sending requires roaming pack — 验证中 for exact rates.",
+        "roamingSms": "Ordinary incoming SMS abroad remains usable, but Telegram registration evidence is mixed. Seven distinct dated community threads now yield 2 success, 3 failure and 2 mixed/conditi…",
         "holdReason": null,
         "continuityRiskSignalCount": 0,
         "lastContinuityRiskSignalAt": null
       },
       "metrics": {
         "routeId": "clubsim-sms-pack-6hkd-2026",
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-04",
         "metricState": "current-profile",
         "acquisitionCurrency": "HKD",
         "acquisitionCostOriginal": 50,

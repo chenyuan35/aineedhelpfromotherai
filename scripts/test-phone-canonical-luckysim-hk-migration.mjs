@@ -71,7 +71,7 @@ assert.equal(canonical.routes.length, 159);
 assert.equal(canonical.markets.length, 87);
 assert.equal(brands.length, 156);
 assert.equal(networks.length, 117);
-assert.equal(sources.length, 618);
+assert.equal(sources.length, 625);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
 

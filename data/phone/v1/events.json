@@ -1087,5 +1087,14 @@
     "scope": "route",
     "outcome": "Independent evidence now includes one user who continued receiving Hong Kong SMS for banking codes while in Australia, plus a separate 2026 report of weeks without receiving Hong Kong SMS until LuckySIM support restarted the connection. This is mixed route-level evidence: it strengthens the existence of overseas banking-code reception but does not establish a specific bank, broad OTP reliability, or stable delivery. Preserve HOLD.",
     "sourceId": "reddit-luckysim-overseas-sms-instability-20260430"
+  },
+  {
+    "id": "evt-clubsim-telegram-evidence-density-20261004",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "type": "service-verification-evidence-density",
+    "reportedAt": "2026-10-04",
+    "scope": "seven-independent-community-threads",
+    "outcome": "Seven distinct dated community threads now support a Telegram registration-verification aggregate for ClubSIM. Outcomes remain mixed across prefix, client, proxy/IP and roaming conditions; this is evidence of variability, not a universal carrier success probability.",
+    "sourceId": "v2ex-clubsim-telegram-conditional-20260918"
   }
 ]
