@@ -1,0 +1,117 @@
+name: Apply China Telecom Macau Easy PASS admission
+
+on:
+  push:
+    branches:
+      - data/ct-macau-easy-pass-20261004
+    paths:
+      - .github/workflows/apply-ct-macau-easy-pass.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update canonical admission sources and facts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python3 - <<'PY'
+          from pathlib import Path
+
+          # Count baselines in existing regressions.
+          for p in Path('scripts').glob('test-phone-*.mjs'):
+              s=p.read_text()
+              ns=(s.replace('canonical.routes.length, 158','canonical.routes.length, 159')
+                   .replace('routes.length, 158','routes.length, 159')
+                   .replace('canonical.markets.length, 86','canonical.markets.length, 87')
+                   .replace('brands.length, 155','brands.length, 156')
+                   .replace('networks.length, 116','networks.length, 117')
+                   .replace('sources.length >= 611','sources.length >= 616')
+                   .replace('sources.length, 611','sources.length, 616')
+                   .replace('canonicalIndex.routes.length, 158','canonicalIndex.routes.length, 159')
+                   .replace("{ 'long-term': 151, temporary: 5, data: 2 }", "{ 'long-term': 152, temporary: 5, data: 2 }")
+                   .replace("includes('151 reviewed routes')", "includes('152 reviewed routes')"))
+              if ns != s: p.write_text(ns)
+
+          p=Path('package.json'); s=p.read_text()
+          needle='node scripts/test-phone-canonical-luckysim-hk-migration.mjs && node scripts/test-phone-community-price-intake.mjs'
+          if needle not in s: raise SystemExit('package anchor missing')
+          p.write_text(s.replace(needle, 'node scripts/test-phone-canonical-luckysim-hk-migration.mjs && node scripts/test-phone-canonical-ct-macau-migration.mjs && node scripts/test-phone-community-price-intake.mjs', 1))
+
+          p=Path('scripts/test-phone-number-public-release.mjs'); s=p.read_text()
+          anchor="assert.match(dom.window.document.querySelector('#directory-guide-panel')?.textContent||'', /HKD100|365 days|LuckySIM/i, 'LuckySIM detail must preserve verified retention rule');\n"
+          insert=anchor+"search.value = 'Easy PASS'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));\nawait waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('China Telecom Macau Easy PASS'), 'Macau Easy PASS HOLD route search');\ndom.window.document.querySelector('[data-index-route=\"china-telecom-macau-easy-pass-2026\"]')?.click();\nawait waitFor(() => dom.window.document.querySelector('#directory-guide-panel')?.textContent.includes('HOLD — unresolved constraints remain'), 'Macau Easy PASS HOLD warning in lazy detail');\nassert.match(dom.window.document.querySelector('#directory-guide-panel')?.textContent||'', /180 days|MOP50|Easy PASS/i, 'Macau Easy PASS detail must preserve verified retention rule');\n"
+          if anchor not in s: raise SystemExit('public test anchor missing')
+          p.write_text(s.replace(anchor, insert, 1))
+
+          # PROJECT_CONTEXT
+          p=Path('PROJECT_CONTEXT.md'); s=p.read_text()
+          old=next(x for x in s.splitlines() if x.startswith('| Phone data / publication foundation |'))
+          new='| Phone data / publication foundation | **100% OF CURRENT KNOWN EVIDENCE-QUALIFIED ATOMIC UNIVERSE + CANONICAL FINDER INTEGRATION RELEASED.** Canonical is now 159 routes / 87 markets / 156 brands / 117 networks / 616 sources, covering 159/159 currently known evidence-qualified relevant atomic routes after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU. PR #370 (`46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`) established the generated finder/lazy-detail path; the current index exposes all 159 canonical rows. Saily is `voip-second-line`; LuckySIM Hong Kong and China Telecom Macau Easy PASS are `real-mobile`; all three residual admissions remain `backstage-only` / `hold` where uncertainty persists. The Macau route now has first-party 180-day lifecycle/recharge-reset evidence, current eSIM support and ordinary incoming-SMS capability, while service-specific bank/app OTP reliability remains unresolved. Historical deep comparison stays 135 routes; explicit indexability stays 3 routes; sitemap stays 31 URLs. | Broad enumeration remains stopped. Maintain evidence/freshness and measure usage/search signals; re-open database expansion only for genuinely new evidence-qualified atomic routes. |'
+          s=s.replace(old,new)
+          s=s.replace('broad expansion is complete at 158 canonical routes and an audited 99.4% of the known evidence-qualified relevant route universe. The PR #370 finder path now carries all canonical rows while preserving selective publication. Switch to maintenance/evidence refresh; open another DB batch only on genuinely new evidence-qualified routes or cleared residual blockers.','broad expansion is complete at 159 canonical routes and 159/159 of the current known evidence-qualified relevant atomic route universe. This is not a census of every global carrier SKU. The PR #370 finder path now carries all canonical rows while preserving selective publication. Switch to maintenance/evidence refresh; open another DB batch only on genuinely new evidence-qualified routes.')
+          s=s.replace('Phone normalized canonical: **158 routes / 86 markets / 155 brands / 116 networks / 611 sources**.','Phone normalized canonical: **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**.')
+          s=s.replace('Phone user-queryable canonical finder: **158 routes**','Phone user-queryable canonical finder: **159 routes**')
+          s=s.replace('4. **DONE — Canonical backend coverage through DB-C23 + bounded Saily/LuckySIM residual admissions.** Current state is 158 routes / 86 markets / 155 brands / 116 networks / 611 sources; Saily remains backstage HOLD as a non-cellular VoIP second line and LuckySIM remains backstage HOLD as a real-mobile Hong Kong route.','4. **DONE — Canonical backend coverage through DB-C23 + bounded Saily/LuckySIM/China Telecom Macau residual admissions.** Current state is 159 routes / 87 markets / 156 brands / 117 networks / 616 sources; the final known Macau residual is normalized as backstage HOLD with first-party lifecycle evidence.')
+          s=s.replace('5. **DONE — Phone database 90%+ coverage audit.** `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` now records 158/159 = 99.4% after the Saily and LuckySIM residual blockers cleared. Broad enumeration stays stopped.','5. **DONE — Phone database coverage audit.** `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` now records 159/159 of the current known evidence-qualified relevant atomic universe after the Macau lifecycle blocker cleared. This is not a global carrier census; broad enumeration stays stopped.')
+          s=s.replace('the current path now carries all 158 canonical routes','the current path now carries all 159 canonical routes')
+          s=s.replace('no new DB batch without a distinct evidence-qualified route trigger or cleared residual blocker.','no new DB batch without a genuinely distinct evidence-qualified route trigger.')
+          p.write_text(s)
+
+          # MASTER_PLAN
+          p=Path('docs/MASTER_PLAN.md'); s=p.read_text()
+          old=next(x for x in s.splitlines() if x.startswith('The UK matrix was the first public baseline'))
+          new='The UK matrix was the first public baseline, and backstage evidence acquisition continues independently of Search Console. PR #261 separates broad database coverage from public/indexable page coverage; PR #263 makes legacy comparison-database admission explicit. Reviewed migrations through DB-C23 plus the bounded 2026-10-04 Saily, LuckySIM and China Telecom Macau residual admissions now place canonical v1 at **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**, and `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` now measures this as **159/159 = 100% of the current known evidence-qualified relevant low-cost/long-term atomic route universe**. This percentage is not a census of every worldwide carrier SKU. PR #370 (`46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`) established the generated lightweight-summary plus lazy-detail finder path; that path now carries all 159 canonical rows. The deeper historical comparison artifact remains 135 routes, explicit indexability remains 3 routes, and the sitemap remains 31 URLs. Database admission/user queryability/publication remain enforced as separate layers.'
+          s=s.replace(old,new)
+          s=s.replace('2. **DONE — broad canonical database coverage.** DB-C21 through DB-C23 plus the bounded Saily and LuckySIM residual admissions leave canonical at **158 routes / 86 markets / 155 brands / 116 networks / 611 sources** and an audited **99.4%** of the known evidence-qualified relevant route universe. Broad directory enumeration remains stopped.','2. **DONE — broad canonical database coverage.** DB-C21 through DB-C23 plus the bounded Saily, LuckySIM and China Telecom Macau residual admissions leave canonical at **159 routes / 87 markets / 156 brands / 117 networks / 616 sources** and **159/159 of the current known evidence-qualified relevant atomic route universe**. This is not a global carrier census; broad directory enumeration remains stopped.')
+          s=s.replace('the same path now carries all 158 canonical rows','the same path now carries all 159 canonical rows')
+          s=s.replace('Re-open a DB batch only for a genuinely new evidence-qualified atomic route or a cleared residual blocker.','Re-open a DB batch only for a genuinely new evidence-qualified atomic route.')
+          p.write_text(s)
+
+          # COVERAGE AUDIT
+          p=Path('docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md'); s=p.read_text()
+          s=s.replace('The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources, so current normalized state is **158 routes / 86 markets / 155 brands / 116 networks / 611 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.','The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources. The final known residual, China Telecom Macau Easy PASS / Greater Bay Area prepaid, subsequently cleared its lifecycle blocker with first-party 180-day validity and recharge-reset evidence and adds one HOLD route, one market, one network, one brand and five reviewed sources. Current normalized state is **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.')
+          a=s.index('## Current residual candidate register'); b=s.index('## Coverage calculation',a)
+          s=s[:a]+'''## Current residual candidate register\n\nNo currently known evidence-qualified distinct atomic residual candidate remains outside canonical.\n\n**Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong cleared its durable renewal blocker and is canonical backstage HOLD as a real-mobile route. China Telecom Macau Easy PASS / Greater Bay Area prepaid then cleared the final lifecycle blocker: current provider material establishes 180-day validity, another 180 days from each recharge, >90-day suspended-number cancellation, real-name registration, ordinary incoming-SMS capability and current eSIM support. It is canonical backstage HOLD because service-specific bank/app OTP reliability remains insufficiently sampled. None of these admissions creates a recommendation or public/indexable route.\n\n'''+s[b:]
+          a=s.index('## Coverage calculation'); b=s.index('## Decision',a)
+          s=s[:a]+'''## Coverage calculation\n\nFor the current known evidence-qualified universe:\n\n- normalized canonical routes: **159**\n- known distinct unresolved atomic candidates: **0**\n- denominator: **159**\n\n**Coverage = 159 / 159 = 100% of the current known evidence-qualified relevant atomic universe.**\n\nThis does **not** mean the database contains every carrier product worldwide. It means every distinct route currently admitted to the project's evidence-qualified universe is normalized. New evidence can enlarge the denominator at any time. As a sensitivity check, ten newly discovered qualifying missing routes would make coverage `159 / 169 = 94.1%`; at least 18 newly discovered qualifying missing routes with no corresponding admissions would be required to move coverage below 90%.\n\n'''+s[b:]
+          s=s.replace('re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or the one remaining residual candidate clears its blocker;','re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears;')
+          p.write_text(s)
+
+          # CURRENT_EXECUTION_QUEUE
+          p=Path('docs/CURRENT_EXECUTION_QUEUE.md'); s=p.read_text()
+          s=s.replace('2. **Backend coverage target is met:** 158 canonical routes / 86 markets / 155 brands / 116 networks / 611 sources; audited known evidence-qualified relevant-route coverage is **158/159 = 99.4%** after the bounded Saily and LuckySIM residual admissions. This is not a census of every worldwide carrier SKU.','2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 616 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.')
+          s=s.replace('the current finder now carries all 158 canonical rows.','the current finder now carries all 159 canonical rows.')
+          s=s.replace('LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.','LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.\nChina Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.')
+          s=s.replace('the Saily residual admission extends the same path to 157/150/5/2 without changing SEO publication.','the later Saily, LuckySIM and Macau residual admissions extend the same path to 159/152/5/2 without changing SEO publication.')
+          anchor='## NEXT — Measurement + maintenance, no invented expansion\n'
+          section='''## JUST COMPLETED — China Telecom Macau Easy PASS residual HOLD admission\n\n- `china-telecom-macau-easy-pass-2026` is normalized as `family=long-term`, `numberClass=real-mobile`, `surfaceState=backstage-only`, `evidenceState=hold` in the new Macau market.\n- Current first-party lifecycle: **180 days from activation**; a recharge resets/extends validity to **180 days from the recharge date**; zero balance/expiry suspends service; **more than 90 days suspended automatically cancels the prepaid card**.\n- Current provider material confirms real-name registration, ordinary incoming SMS free in Macau/mainland China/Hong Kong, current prepaid eSIM support and physical-SIM-to-eSIM conversion.\n- A September 2026 independent report reproduces eSIM conversion and **MOP50 / 180-day** normal retention. MOP50 is kept as community-observed normal recharge, not misrepresented as a provider-published minimum.\n- Service-specific bank/app OTP reliability remains insufficiently sampled, so the route remains HOLD.\n- Canonical becomes **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**; finder family totals become **152 long-term / 5 temporary / 2 data**.\n- Publication remains **135 comparison / 3 indexable / 31 sitemap**; no Macau standalone route URL or publication-policy entry is created.\n\n'''
+          if anchor not in s: raise SystemExit('queue anchor missing')
+          s=s.replace(anchor,section+anchor,1)
+          s=s.replace('3. **Residual route:** China Telecom Macau / Macau blue-card remains outside canonical until its lifecycle/renewal blocker clears. Do not replace the evidence gap with inference.\n4. **Frontend:**','3. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.\n4. **Frontend:**')
+          s=s.replace('- do not create DB-C24 merely to increase counts; Saily and LuckySIM were bounded residual exceptions only because their documented blockers cleared;','- do not create DB-C24 merely to increase counts; Saily, LuckySIM and Macau were bounded residual exceptions only because their documented blockers cleared;')
+          s=s.replace('- do not equate 99.4% with all global carrier products;','- do not equate 159/159 current-known coverage with all global carrier products;')
+          p.write_text(s)
+          PY
+
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/china-telecom-macau-easy-pass-2026.json --check
+          node scripts/apply-phone-review-packet.mjs data/phone/review-packets/china-telecom-macau-easy-pass-2026.json --apply
+          node scripts/build-phone-database.mjs
+          npm run phone:data:check
+          node frontend/bin/build.mjs
+          npm ci --ignore-scripts --no-audit --no-fund
+          node scripts/test-phone-number-public-release.mjs
+          git diff --check
+          git add -A
+          git commit -m "data(phone): admit China Telecom Macau Easy PASS as backstage HOLD"
+          git rm .github/workflows/apply-ct-macau-easy-pass.yml
+          git commit -m "chore: remove temporary Macau admission workflow"
+          git push origin HEAD:${GITHUB_REF_NAME}
