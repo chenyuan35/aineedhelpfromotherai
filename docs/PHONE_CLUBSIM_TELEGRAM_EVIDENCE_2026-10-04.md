@@ -23,3 +23,13 @@ Generated aggregate after dedupe: **n=7 / 7 distinct source records / 2 success 
 ## Product decision
 
 Keep the route `admitted` but `backstage-only`. Do not promote it to a Top recommendation merely because it is cheap. The new evidence materially improves the database because users can now see that the HK$6/year route has weak/mixed Telegram verification behavior. No SEO URL or sitemap state changes.
+
+## Release closeout
+
+- PR #390 squash-merged as `0a2c6a8e9b1529ec227b4a717d37c88cf51109fd`.
+- Branch regression workflow #37191691290 passed.
+- Eval Gate #1160 passed and Vercel Preview passed.
+- Production deployment `dpl_8U971UeoANGmLdu86JfNoPdmD5C4` reached READY.
+- Live `/tools/phone-number-survival-guide/phone-route-data/clubsim-sms-pack-6hkd-2026.json` returned HTTP 200 with n=7 / 7 distinct sources / 2 success / 3 failure / 2 mixed / 28.6% / grade C.
+- Live `phone-route-summaries.json` returned HTTP 200 with the same aggregate and ClubSIM decision facts.
+- Canonical source corpus is now 625; publication remains 135 comparison / 3 indexable / 31 sitemap URLs. No standalone ClubSIM SEO page was created.
