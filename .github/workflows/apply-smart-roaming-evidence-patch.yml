@@ -1,0 +1,30 @@
+name: Apply Smart roaming evidence patch
+
+on:
+  push:
+    branches:
+      - data/smart-roaming-evidence-20261004
+    paths:
+      - .github/workflows/apply-smart-roaming-evidence-patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply verified local patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          base64 -d .github/tmp/smart-roaming-evidence-20261004.patch.gz.b64 | gzip -d > /tmp/smart.patch
+          git am /tmp/smart.patch
+          git rm .github/tmp/smart-roaming-evidence-20261004.patch.gz.b64 .github/workflows/apply-smart-roaming-evidence-patch.yml
+          git commit -m "chore: remove temporary Smart evidence patch transport"
+          git push origin HEAD:${GITHUB_REF_NAME}
