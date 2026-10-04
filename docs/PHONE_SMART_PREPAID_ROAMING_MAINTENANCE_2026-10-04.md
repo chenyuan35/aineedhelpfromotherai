@@ -1,6 +1,6 @@
 # Smart Prepaid Philippines — roaming/SMS evidence maintenance — 2026-10-04
 
-Status: **HOLD PRESERVED / EVIDENCE REFRESHED / NO PUBLICATION CHANGE**
+Status: **RELEASED / HOLD PRESERVED / EVIDENCE REFRESHED / NO PUBLICATION CHANGE**
 
 ## Decision
 
@@ -32,3 +32,15 @@ The existing eligibility blocker remains decisive: foreign-tourist registrations
 - route remains `hold`, `backstage-only`, `guideEligible=false`.
 - canonical route/market/brand/network counts do not change; source corpus becomes 606.
 - public boundary remains 135 comparison / 3 indexable / 31 sitemap.
+
+## Release verification
+
+- PR #381 squash-merged as `730b0ef68fc663b10a5b9de9c31630c76a966961`.
+- Eval Gate #1142: **PASS**.
+- CI #248: **PASS**.
+- Vercel Preview and post-merge production: **SUCCESS**.
+- Live Phone hub: HTTP 200.
+- Live `phone-route-summaries.json`: HTTP 200 with **157 routes**; Smart reports `lastVerifiedAt=2026-10-04`, `surfaceState=backstage-only`, `evidenceState=hold`.
+- Live Smart lazy detail JSON: HTTP 200; all 7 new source IDs, all 5 new event IDs and the 2026-10-04 snapshot are present.
+- Live standalone Smart route URL remains HTTP 404.
+- Live sitemap remains **31 URLs** and contains no Smart standalone route.
