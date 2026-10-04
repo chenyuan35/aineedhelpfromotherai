@@ -1,5 +1,49 @@
 [
   {
+    "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "service": "OpenAI/Codex",
+    "operation": "phone-verification",
+    "outcome": "success",
+    "reportedAt": "2026-06-05",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-giffgaff-2310901",
+    "dedupeKey": "giffgaff-2310901-n70-codex"
+  },
+  {
+    "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure-then-success",
+    "reportedAt": "2026-06-07",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-giffgaff-2322268",
+    "dedupeKey": "giffgaff-2322268-alexxx-telegram"
+  },
+  {
+    "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-06-07",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-giffgaff-2322268-reply14",
+    "dedupeKey": "giffgaff-2322268-1157-telegram"
+  },
+  {
+    "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
+    "routeId": "giffgaff-uk-direct-esim-payg",
+    "service": "WhatsApp",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2026-06-07",
+    "geography": "mainland-China",
+    "sourceId": "linuxdo-giffgaff-2322268",
+    "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+  },
+  {
     "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
     "routeId": "lebara-uk-direct-esim-china",
     "service": "WhatsApp",
@@ -44,47 +88,14 @@
     "dedupeKey": "lebara-2745784-lzd2-telegram"
   },
   {
-    "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
-    "routeId": "giffgaff-uk-direct-esim-payg",
-    "service": "OpenAI/Codex",
-    "operation": "phone-verification",
-    "outcome": "success",
-    "reportedAt": "2026-06-05",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-giffgaff-2310901",
-    "dedupeKey": "giffgaff-2310901-n70-codex"
-  },
-  {
-    "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
-    "routeId": "giffgaff-uk-direct-esim-payg",
-    "service": "Telegram",
-    "operation": "registration-verification",
-    "outcome": "failure-then-success",
-    "reportedAt": "2026-06-07",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-giffgaff-2322268",
-    "dedupeKey": "giffgaff-2322268-alexxx-telegram"
-  },
-  {
-    "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
-    "routeId": "giffgaff-uk-direct-esim-payg",
-    "service": "Telegram",
-    "operation": "registration-verification",
-    "outcome": "success",
-    "reportedAt": "2026-06-07",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-giffgaff-2322268-reply14",
-    "dedupeKey": "giffgaff-2322268-1157-telegram"
-  },
-  {
-    "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
-    "routeId": "giffgaff-uk-direct-esim-payg",
+    "id": "obs-saily-us-phone-number-whatsapp-20260815",
+    "routeId": "saily-us-phone-number-2026",
     "service": "WhatsApp",
     "operation": "registration-verification",
     "outcome": "success",
-    "reportedAt": "2026-06-07",
-    "geography": "mainland-China",
-    "sourceId": "linuxdo-giffgaff-2322268",
-    "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    "reportedAt": "2026-08-15",
+    "geography": "unspecified",
+    "sourceId": "reddit-saily-number-launch-20260610",
+    "dedupeKey": "saily-launch-thread-whatsapp-success-20260815"
   }
 ]

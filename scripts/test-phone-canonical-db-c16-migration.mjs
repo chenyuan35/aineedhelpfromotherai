@@ -27,6 +27,6 @@ const tmobile = buildCanonicalComparisonRoute(canonical, 'tmobile-prepaid-connec
 assert.equal(tmobile.keep.intervalDays, 30); assert.equal(tmobile.keep.observedActionCost, 15); assert.equal(tmobile.keep.yearCostOriginal, 180); assert.match(tmobile.roamingSms, /China|0\.10|prepaid/i); assert.equal(tmobile.holdReason, null);
 const visible = buildCanonicalComparisonRoute(canonical, 'visible-25-2026');
 assert.equal(visible.keep.intervalDays, 365); assert.equal(visible.keep.observedActionCost, 275); assert.equal(visible.keep.yearCostOriginal, 275); assert.match(visible.wifiCalling, /before leaving|outside the U\.S\./i); assert.match(visible.holdReason, /activation|payment|China-first/i);
-assert.equal(canonical.routes.length, 156); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 153); assert.equal(networks.length, 116); assert.equal(sources.length, 593);
+assert.equal(canonical.routes.length, 157); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 154); assert.equal(networks.length, 116); assert.equal(sources.length, 599);
 assert.equal(globalDirectory.routes.length, 135); assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
 console.log('Phone canonical DB-C16 migration passed: Mint HOLD, T-Mobile Connect ADMITTED, Visible HOLD; 140 canonical routes, 135 comparison routes and 3-route indexability preserved.');

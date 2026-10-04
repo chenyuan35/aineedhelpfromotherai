@@ -3357,6 +3357,52 @@
       }
     },
     {
+      "id": "saily-us-phone-number-2026",
+      "displayName": "Saily U.S. Phone Number",
+      "marketId": "us",
+      "marketName": "United States",
+      "countryCode": "US",
+      "networkName": null,
+      "brandName": "Saily Phone Number",
+      "family": "long-term",
+      "numberClass": "voip-second-line",
+      "form": "app-managed U.S. +1 VoIP second-line number paired with Saily connectivity",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-04",
+      "observationCount": 1,
+      "eventCount": 2,
+      "services": [
+        "WhatsApp"
+      ],
+      "operations": [
+        "registration-verification"
+      ],
+      "serviceEvidence": [
+        {
+          "serviceId": "whatsapp",
+          "operation": "registration-verification",
+          "grade": "insufficient",
+          "label": "One positive report",
+          "confidence": "very-low",
+          "sampleSize": 1,
+          "lastObservedAt": "2026-08-15"
+        }
+      ],
+      "metrics": {
+        "routeId": "saily-us-phone-number-2026",
+        "checkedAt": "2026-10-04",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "USD",
+        "acquisitionCostOriginal": 1.99,
+        "acquisitionCostCny": null,
+        "keepCurrency": "USD",
+        "keepYearCostOriginal": 23.88,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 30
+      }
+    },
+    {
       "id": "sakura-japan-voice-data",
       "displayName": "Sakura Mobile Japan Voice+Data (passport route)",
       "marketId": "jp",

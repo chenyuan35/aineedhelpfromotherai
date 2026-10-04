@@ -1,8 +1,8 @@
 # Saily U.S. phone number residual-candidate review — 2026-10-04
 
-Status: **CLASSIFICATION BLOCKER CLEARED / ELIGIBLE FOR BACKSTAGE HOLD ADMISSION**
+Status: **CLASSIFICATION BLOCKER CLEARED / BACKSTAGE HOLD ADMITTED**
 
-Scope: determine whether the Saily U.S. phone-number add-on is a genuine Phone Radar route or should remain excluded as a data-eSIM/temporary-number product. This review does not admit the route, create a public URL, change ranking, or broaden indexability.
+Scope: determine whether the Saily U.S. phone-number add-on is a genuine Phone Radar route or should remain excluded as a data-eSIM/temporary-number product. The original review cleared classification only; the bounded follow-on admission described below adds it backstage without creating a public URL, changing ranking, or broadening indexability.
 
 ## Evidence reviewed
 
@@ -57,3 +57,19 @@ For the later one-route admission task:
 - no public detail URL, sitemap admission, shortcut ranking, or recommendation claim.
 
 The route should remain HOLD until stronger independent operational evidence demonstrates stable overseas incoming SMS/OTP behavior across relevant services. Admission itself is a separate bounded session/release task with normal data checks and publication-boundary regression coverage.
+
+## Admission result — 2026-10-04
+
+The follow-on bounded admission is complete:
+
+- canonical route: `saily-us-phone-number-2026`;
+- family: `long-term`;
+- number class: `voip-second-line`;
+- cellular network mapping: none;
+- surface state: `backstage-only`;
+- evidence state: `hold`;
+- current number subscription/reservation economics: US$1.99/month, annualized to US$23.88 only as a direct 12-month continuation of the current monthly price;
+- KYC required; port-in/port-out unsupported;
+- mixed OTP and operational evidence retained, including WhatsApp activation success, iMessage activation failure and the August 2026 number/SMS failure report.
+
+Canonical totals after admission are **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**. The finder carries **150 long-term / 5 temporary / 2 data** routes. Publication remains **135 comparison / 3 indexable / 31 sitemap** with no standalone Saily route URL or publication-policy entry.

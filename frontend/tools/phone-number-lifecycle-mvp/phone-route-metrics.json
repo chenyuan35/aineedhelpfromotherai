@@ -1238,6 +1238,18 @@
       "keepIntervalDays": 365
     },
     {
+      "routeId": "saily-us-phone-number-2026",
+      "checkedAt": "2026-10-04",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 1.99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 23.88,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
+    },
+    {
       "routeId": "sakura-japan-voice-data",
       "checkedAt": "2026-09-16",
       "metricState": "not-normalized",

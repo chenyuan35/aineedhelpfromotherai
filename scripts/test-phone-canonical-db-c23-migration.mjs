@@ -43,11 +43,11 @@ assert.match(hk.kyc, /real-name/i);
 assert.match(hk.keep.state, /20261231|promo/i);
 assert.equal(hk.holdReason, null);
 
-assert.equal(canonical.routes.length, 156);
+assert.equal(canonical.routes.length, 157);
 assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 153);
+assert.equal(brands.length, 154);
 assert.equal(networks.length, 116);
-assert.equal(sources.length, 593);
+assert.equal(sources.length, 599);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

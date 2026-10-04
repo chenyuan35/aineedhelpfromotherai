@@ -80,6 +80,22 @@
       "mixedCount": 0,
       "firstObservedAt": "2026-08-12",
       "lastObservedAt": "2026-08-13"
+    },
+    {
+      "id": "svcagg-saily-us-phone-number-2026-whatsapp-registration-verification",
+      "routeId": "saily-us-phone-number-2026",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-15",
+      "lastObservedAt": "2026-08-15"
     }
   ]
 }
