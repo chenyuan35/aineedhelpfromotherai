@@ -260,6 +260,11 @@
     "countryCode": "ME"
   },
   {
+    "id": "mo",
+    "name": "Macau",
+    "countryCode": "MO"
+  },
+  {
     "id": "mt",
     "name": "Malta",
     "countryCode": "MT"

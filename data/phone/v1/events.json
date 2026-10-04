@@ -198,6 +198,33 @@
     "sourceId": "ctexcel-uk-current-site-20261003"
   },
   {
+    "id": "evt-ctmacau-easy-pass-esim-20261004",
+    "routeId": "china-telecom-macau-easy-pass-2026",
+    "type": "esim-support-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Current provider eSIM center lists Easy Pass as a prepaid eSIM product and supports designated physical-SIM-to-eSIM conversion for eligible existing customers; a September 2026 independent user report reproduces successful conversion.",
+    "sourceId": "ctmacau-esim-20261004"
+  },
+  {
+    "id": "evt-ctmacau-easy-pass-lifecycle-20261004",
+    "routeId": "china-telecom-macau-easy-pass-2026",
+    "type": "retention-and-lifecycle-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Current provider FAQ states Greater Bay Area prepaid is valid 180 days from activation; a recharge during validity extends/reset validity to 180 days from the recharge date; zero balance or expiry suspends service; more than 90 days continuously suspended causes automatic cancellation.",
+    "sourceId": "ctmacau-prepaid-validity-20261004"
+  },
+  {
+    "id": "evt-ctmacau-easy-pass-sms-caveat-20261004",
+    "routeId": "china-telecom-macau-easy-pass-2026",
+    "type": "sms-capability-and-otp-caveat",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Current Easy PASS brochure states incoming SMS is free in Macau, mainland China and Hong Kong. This proves ordinary incoming-SMS capability only; service-specific bank/app OTP reliability remains unverified in this review.",
+    "sourceId": "ctmacau-easypass-product-20261004"
+  },
+  {
     "id": "evt-cyta-soeasy-cy-2026-db-c4d-validity-20260929",
     "routeId": "cyta-soeasy-cy-2026",
     "type": "retention-rule-resolution",

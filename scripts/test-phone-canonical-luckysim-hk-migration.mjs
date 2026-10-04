@@ -57,11 +57,11 @@ assert.equal(cnSms.outcome, 'success');
 assert(events.some((row) => row.id === 'evt-luckysim-hk-lifecycle-20261004'), 'missing LuckySIM lifecycle event');
 assert(events.some((row) => row.id === 'evt-luckysim-hk-reliability-caveat-20261004'), 'missing LuckySIM reliability event');
 
-assert.equal(canonical.routes.length, 158);
-assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 155);
-assert.equal(networks.length, 116);
-assert.equal(sources.length, 611);
+assert.equal(canonical.routes.length, 159);
+assert.equal(canonical.markets.length, 87);
+assert.equal(brands.length, 156);
+assert.equal(networks.length, 117);
+assert.equal(sources.length, 616);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
 

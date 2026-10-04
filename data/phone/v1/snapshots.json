@@ -1900,6 +1900,65 @@
     }
   },
   {
+    "id": "snap-ctmacau-easy-pass-2026-current-profile-20261004",
+    "routeId": "china-telecom-macau-easy-pass-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-04",
+    "sourceDataset": "ctmacau-easy-pass-reviewed-2026-10-04",
+    "data": {
+      "id": "china-telecom-macau-easy-pass-2026",
+      "brandId": "china-telecom-macau-easy-pass",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "China Telecom (Macau) Easy PASS / Greater Bay Area prepaid is a no-fixed-monthly-fee Macau-number route for mainland China, Macau and Hong Kong. Current provider material requires real-name registration and supports physical/eSIM use; provider FAQ lists China Telecom stores, Macau phone shops and the Aomi app China Telecom section as prepaid purchase channels.",
+      "landedCost": {
+        "currency": "MOP",
+        "providerOrCommunityPrice": 100,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 100,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-brochure-card-face-mop100"
+      },
+      "keep": {
+        "currency": "MOP",
+        "observedActionCost": 50,
+        "yearCostOriginal": 101.39,
+        "yearCostCny": null,
+        "action": "Recharge before the 180-day validity expires. China Telecom (Macau) officially states any recharge during validity resets/extends the prepaid-card validity to 180 days from the recharge date. A September 2026 independent report reproduces MOP50 as the normal recharge/keep action; treat MOP50 as community-observed, not an official minimum guarantee.",
+        "intervalDays": 180,
+        "state": "provider-180d-lifecycle-community-mop50-normal-topup"
+      },
+      "chinaActivation": "Real-name registration is required before use. Current provider material supports mainland-China use and current eSIM conversion, but this review does not claim every device can be activated remotely from mainland China without setup friction.",
+      "kyc": "Required. The current Easy PASS brochure says the phone card must be real-name registered before use and provides the China Telecom Macau real-name flow.",
+      "payment": "Provider brochure documents top-up through the China Telecom Macau WeChat official account plus supported electronic payment methods and Macau recharge cards; payment availability can vary by channel.",
+      "wifiCalling": "not normalized",
+      "roamingSms": "Current provider brochure states incoming SMS is free while in Macau, mainland China and Hong Kong. Bank/app OTP delivery is not guaranteed by that statement and remains HOLD.",
+      "refund": "not reconciled",
+      "trend": "current-180d-lifecycle-and-esim-support-verified-otp-specific-evidence-thin",
+      "guideEligible": false,
+      "holdReason": "Lifecycle, recharge reset, real-name, incoming-SMS capability and current eSIM support are verified, but recent bank/app-specific OTP outcomes are not sufficiently sampled for recommendation status.",
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://www.1888.com.mo/help/detail?tabCode=DXYW04",
+      "tariffSummary": "No fixed monthly fee. Provider-verified 180-day card validity with another 180 days from each recharge; >90 days continuously suspended cancels the card. Community-observed normal keep action is MOP50 per 180 days.",
+      "sourceIds": [
+        "ctmacau-prepaid-validity-20261004",
+        "ctmacau-easypass-product-20261004",
+        "ctmacau-esim-20261004",
+        "ctmacau-prepaid-purchase-20261004",
+        "naixi-ctmacau-esim-20260918"
+      ],
+      "guideSteps": [
+        "Acquire a current Easy PASS / Greater Bay Area prepaid product and complete real-name registration.",
+        "Before day 180, make a recharge and confirm the returned validity date; do not assume a lower recharge floor than your channel accepts.",
+        "Test each critical bank/app verification flow before binding an important account; ordinary incoming SMS capability is not an OTP guarantee."
+      ]
+    }
+  },
+  {
     "id": "snap-cyta-soeasy-cy-2026-current-profile-20260929",
     "routeId": "cyta-soeasy-cy-2026",
     "kind": "current-profile",

@@ -7,8 +7,8 @@ Last updated: 2026-10-04
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 158 canonical routes / 86 markets / 155 brands / 116 networks / 611 sources; audited known evidence-qualified relevant-route coverage is **158/159 = 99.4%** after the bounded Saily and LuckySIM residual admissions. This is not a census of every worldwide carrier SKU.
-3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 158 canonical rows.
+2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 616 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
 6. **Broad DB expansion stops.** Do not create DB-C24 from carrier directories, country-completion pressure, keyword counts or page-count pressure.
@@ -19,6 +19,7 @@ Coverage audit: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
 Saily residual review: `docs/PHONE_SAILY_US_NUMBER_REVIEW_2026-10-04.md`.
 Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-04.md`.
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
+China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
 ## JUST COMPLETED — Canonical finder integration
 
@@ -28,7 +29,7 @@ PR #370 squash-merged as `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`.
 - Eval Gate #1119: **PASS**.
 - Vercel Preview and post-merge production: **SUCCESS**.
 - Live Phone hub: HTTP 200 and contains the canonical finder integration.
-- At the PR #370 release baseline, live `phone-route-summaries.json` was HTTP 200 with **156 routes = 149 long-term / 5 temporary / 2 data**; the Saily residual admission extends the same path to 157/150/5/2 without changing SEO publication.
+- At the PR #370 release baseline, live `phone-route-summaries.json` was HTTP 200 with **156 routes = 149 long-term / 5 temporary / 2 data**; the later Saily, LuckySIM and Macau residual admissions extend the same path to 159/152/5/2 without changing SEO publication.
 - Live eSIM.GG lazy detail JSON: HTTP 200.
 - Local/public regression covers eSIM.GG backstage detail, CMLink HOLD warning, Mobal Data, Turkcell Temporary and Sakura same-product alias dedupe.
 - Public SEO boundary remains **135 comparison / 3 indexable / 31 sitemap**.
@@ -65,13 +66,23 @@ PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
 - Publication remains **135 comparison / 3 indexable / 31 sitemap**; no LuckySIM standalone route URL or publication-policy entry is created.
 - `npm run phone:data:check`, frontend production build, Phone public-release audit and `git diff --check` pass locally.
 
+## JUST COMPLETED — China Telecom Macau Easy PASS residual HOLD admission
+
+- `china-telecom-macau-easy-pass-2026` is normalized as `family=long-term`, `numberClass=real-mobile`, `surfaceState=backstage-only`, `evidenceState=hold` in the new Macau market.
+- Current first-party lifecycle: **180 days from activation**; a recharge resets/extends validity to **180 days from the recharge date**; zero balance/expiry suspends service; **more than 90 days suspended automatically cancels the prepaid card**.
+- Current provider material confirms real-name registration, ordinary incoming SMS free in Macau/mainland China/Hong Kong, current prepaid eSIM support and physical-SIM-to-eSIM conversion.
+- A September 2026 independent report reproduces eSIM conversion and **MOP50 / 180-day** normal retention. MOP50 is kept as community-observed normal recharge, not misrepresented as a provider-published minimum.
+- Service-specific bank/app OTP reliability remains insufficiently sampled, so the route remains HOLD.
+- Canonical becomes **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**; finder family totals become **152 long-term / 5 temporary / 2 data**.
+- Publication remains **135 comparison / 3 indexable / 31 sitemap**; no Macau standalone route URL or publication-policy entry is created.
+
 ## NEXT — Measurement + maintenance, no invented expansion
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
 2. **Evidence maintenance:** continue append-only community/provider evidence acquisition for existing Phone routes and separate Data-eSIM.
-3. **Residual route:** China Telecom Macau / Macau blue-card remains outside canonical until its lifecycle/renewal blocker clears. Do not replace the evidence gap with inference.
+3. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
 4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 
 Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
@@ -86,8 +97,8 @@ Delegated Qwen/Kimi work remains `RESEARCH_CANDIDATE` until coordinator review. 
 
 ## Do not do next
 
-- do not create DB-C24 merely to increase counts; Saily and LuckySIM were bounded residual exceptions only because their documented blockers cleared;
-- do not equate 99.4% with all global carrier products;
+- do not create DB-C24 merely to increase counts; Saily, LuckySIM and Macau were bounded residual exceptions only because their documented blockers cleared;
+- do not equate 159/159 current-known coverage with all global carrier products;
 - do not automatically turn canonical rows into SEO pages;
 - do not auto-rank HOLD/needs-reconciliation as recommendations;
 - do not mix pure data eSIM into Phone-number canonical without reviewed identity linkage;

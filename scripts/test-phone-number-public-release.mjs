@@ -93,8 +93,8 @@ for (const route of ukPilot.routes) {
 
 
 const canonicalIndex = JSON.parse(fs.readFileSync(path.join(publicDir, 'phone-route-summaries.json'), 'utf8'));
-assert.equal(canonicalIndex.routes.length, 158, 'public finder index must expose every canonical route');
-assert.deepEqual(Object.fromEntries([...new Set(canonicalIndex.routes.map(r => r.family))].map(f => [f, canonicalIndex.routes.filter(r => r.family === f).length])), { 'long-term': 151, temporary: 5, data: 2 });
+assert.equal(canonicalIndex.routes.length, 159, 'public finder index must expose every canonical route');
+assert.deepEqual(Object.fromEntries([...new Set(canonicalIndex.routes.map(r => r.family))].map(f => [f, canonicalIndex.routes.filter(r => r.family === f).length])), { 'long-term': 152, temporary: 5, data: 2 });
 for (const route of canonicalIndex.routes) assert(fs.existsSync(path.join(publicDir, 'phone-route-data', `${route.id}.json`)), `${route.id} must have a lazy detail bundle`);
 
 const waitFor = async (fn, message, timeout = 3000) => {
@@ -119,7 +119,7 @@ const dom = new JSDOM(page, {
     };
   }
 });
-await waitFor(() => dom.window.document.querySelector('#route-count')?.textContent.includes('151 reviewed routes'), 'canonical long-term market overview');
+await waitFor(() => dom.window.document.querySelector('#route-count')?.textContent.includes('152 reviewed routes'), 'canonical long-term market overview');
 const search = dom.window.document.querySelector('#route-search');
 search.value = 'eSIM.GG'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('eSIM.GG Estonia +372'), 'eSIM.GG canonical search');
@@ -139,6 +139,11 @@ await waitFor(() => dom.window.document.querySelector('#route-list')?.textConten
 dom.window.document.querySelector('[data-index-route="luckysim-hk-prepaid-2026"]')?.click();
 await waitFor(() => dom.window.document.querySelector('#directory-guide-panel')?.textContent.includes('HOLD — unresolved constraints remain'), 'LuckySIM HOLD warning in lazy detail');
 assert.match(dom.window.document.querySelector('#directory-guide-panel')?.textContent||'', /HKD100|365 days|LuckySIM/i, 'LuckySIM detail must preserve verified retention rule');
+search.value = 'Easy PASS'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('China Telecom Macau Easy PASS'), 'Macau Easy PASS HOLD route search');
+dom.window.document.querySelector('[data-index-route="china-telecom-macau-easy-pass-2026"]')?.click();
+await waitFor(() => dom.window.document.querySelector('#directory-guide-panel')?.textContent.includes('HOLD — unresolved constraints remain'), 'Macau Easy PASS HOLD warning in lazy detail');
+assert.match(dom.window.document.querySelector('#directory-guide-panel')?.textContent||'', /180 days|MOP50|Easy PASS/i, 'Macau Easy PASS detail must preserve verified retention rule');
 search.value = ''; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
 const japan = dom.window.document.querySelector('#country-filter'); japan.value = 'Japan'; japan.dispatchEvent(new dom.window.Event('change', { bubbles:true }));
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Japan comparison view'), 'Japan market view');

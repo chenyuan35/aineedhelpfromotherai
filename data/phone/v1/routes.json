@@ -392,6 +392,27 @@
     ]
   },
   {
+    "id": "china-telecom-macau-easy-pass-2026",
+    "marketId": "mo",
+    "networkId": "china-telecom-macau",
+    "brandId": "china-telecom-macau-easy-pass",
+    "displayName": "China Telecom Macau Easy PASS",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-04",
+    "acquireUrl": "https://www.1888.com.mo/help/detail?tabCode=DXYW04",
+    "sourceIds": [
+      "ctmacau-easypass-product-20261004",
+      "ctmacau-esim-20261004",
+      "ctmacau-prepaid-purchase-20261004",
+      "ctmacau-prepaid-validity-20261004",
+      "naixi-ctmacau-esim-20260918"
+    ]
+  },
+  {
     "id": "cht-ruyi-180d-2026",
     "marketId": "tw",
     "networkId": "chunghwa-tw",

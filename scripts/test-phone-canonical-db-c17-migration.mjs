@@ -27,7 +27,7 @@ const fi = buildCanonicalComparisonRoute(canonical, 'google-fi-flexible-2026');
 assert.equal(fi.keep.intervalDays, 30); assert.equal(fi.keep.observedActionCost, 20); assert.equal(fi.keep.yearCostOriginal, 240); assert.match(fi.chinaActivation, /United States|abroad is not allowed/i); assert.match(fi.roamingSms, /China|no extra charge/i); assert.match(fi.holdReason, /U\.S\.-first|payments-profile|USD240/i);
 const beeline = buildCanonicalComparisonRoute(canonical, 'beeline-uz-2026');
 assert.equal(beeline.keep.intervalDays, 90); assert.equal(beeline.landedCost.providerOrCommunityPrice, 12000); assert.match(beeline.payment, /Ding|Visa|UnionPay/i); assert.match(beeline.roamingSms, /China|Hello|ordinary/i); assert.match(beeline.holdReason, /Hello|ordinary|90-day/i);
-assert.equal(canonical.routes.length, 158); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 155); assert.equal(networks.length, 116); assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
+assert.equal(canonical.routes.length, 159); assert.equal(canonical.markets.length, 87); assert.equal(brands.length, 156); assert.equal(networks.length, 117); assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);
