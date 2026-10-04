@@ -2718,6 +2718,24 @@
     "reportedAt": "2026-09-05"
   },
   {
+    "id": "reddit-smart-esim-acquisition-20260921",
+    "url": "https://www.reddit.com/r/phtravel/comments/1wmms87/can_you_a_smart_esim_before_arriving_in_ph/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-21"
+  },
+  {
+    "id": "reddit-smart-esim-activation-incident-20260929",
+    "url": "https://www.reddit.com/r/InternetPH/comments/1wtaco9/anyone_having_issues_with_smart_esim/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "reddit-smart-esim-roaming-20260215",
+    "url": "https://www.reddit.com/r/Philippines_Expats/comments/1r5jnx3/roaming_with_smart_esim/",
+    "type": "independent-community",
+    "reportedAt": "2026-02-15"
+  },
+  {
     "id": "reddit-srilanka-number-keep-job-2026-08-13",
     "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
     "type": "community-demand-thread",
@@ -2818,6 +2836,30 @@
     "url": "https://smart.com.ph/Pages/esim",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "smart-prepaid-roaming-activation-20261004",
+    "url": "https://help.smart.com.ph/how-to-activate-your-smart-prepaid-and-tnt-roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "smart-prepaid-roaming-call-text-20261004",
+    "url": "https://help.smart.com.ph/how-to-make-and-receive-calls-while-roaming-using-smart-prepaid/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "smart-prepaid-roaming-reload-20261004",
+    "url": "https://help.smart.com.ph/how-to-reload-your-smart-prepaid-while-roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "smart-prepaid-roaming-sms-receive-20261004",
+    "url": "https://help.smart.com.ph/what-to-do-if-you-cannot-receive-an-sms-while-roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
   },
   {
     "id": "smart-prepaid-validity-20260929",

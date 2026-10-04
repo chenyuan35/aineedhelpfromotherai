@@ -41,7 +41,7 @@ DB-C23 normalized state before the later Saily residual admission:
 
 DB-C23 changed backend coverage only. It did not authorize a new public route page, ranking or sitemap entry.
 
-On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`. Current normalized state is **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
+On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route, so current normalized state is **157 routes / 86 markets / 154 brands / 116 networks / 606 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
 
 ## Staging reconciliation
 

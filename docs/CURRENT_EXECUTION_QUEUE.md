@@ -7,7 +7,7 @@ Last updated: 2026-10-04
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 157 canonical routes / 86 markets / 154 brands / 116 networks / 599 sources; audited known evidence-qualified relevant-route coverage is **157/159 = 98.7%** after the bounded Saily residual admission. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 157 canonical routes / 86 markets / 154 brands / 116 networks / 606 sources; audited known evidence-qualified relevant-route coverage is **157/159 = 98.7%** after the bounded Saily residual admission. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 157 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -39,11 +39,20 @@ PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
 - `saily-us-phone-number-2026` is normalized as `family=long-term`, `numberClass=voip-second-line`, `surfaceState=backstage-only`, `evidenceState=hold`; it is not mapped to a cellular network.
 - Current economics: **US$1.99/month** number subscription/reservation; KYC required; port-in/port-out unsupported.
 - Mixed reliability is preserved: provider warns some services reject VoIP OTP; current community evidence includes WhatsApp activation success, iMessage activation failure and an August 2026 phone-number/SMS operational failure report.
-- Canonical is now **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**; finder family totals are **150 long-term / 5 temporary / 2 data**.
+- Canonical immediately after Saily admission was **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**; finder family totals were **150 long-term / 5 temporary / 2 data**.
 - Publication stays **135 comparison / 3 indexable / 31 sitemap**; no Saily standalone route URL or publication-policy entry is created.
 - Eval Gate #1138 and CI #246: **PASS**; Vercel Preview and post-merge production: **SUCCESS**.
 - Live verification after merge: Phone hub HTTP 200; `phone-route-summaries.json` HTTP 200 with **157 routes** and Saily present; Saily lazy detail JSON HTTP 200 with `voip-second-line` / `backstage-only` / `hold`; standalone Saily route URL HTTP 404; sitemap HTTP 200 with **31 URLs** and no Saily entry.
 - `npm run phone:data:check`, the Saily migration regression, frontend build, public-release audit and `git diff --check` pass locally.
+
+## JUST COMPLETED — Smart Prepaid roaming/SMS evidence refresh
+
+- `smart-prepaid-ph-2026` remains `backstage-only` / `hold`; no recommendation or publication state changed.
+- Four current Smart official sources now confirm roaming activation, ordinary roaming SMS send/receive capability, the PHP100 activation-balance requirement, and removal of the old PHP50 maintaining-balance requirement.
+- Three 2026 independent community sources preserve mixed operational reality: one practical roaming report, one PHP99 eSIM activation success report, and one late-September multi-user eSIM activation/conversion incident.
+- Service-specific OTP reliability remains **unverified**; the foreign-tourist 30-day registration cap remains the decisive HOLD blocker.
+- Canonical remains **157 routes / 86 markets / 154 brands / 116 networks**; append-only source corpus becomes **606**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap**.
+- Regression: `npm run phone:data:check`, frontend build, `phone-radar public release audit`, and `git diff --check` pass.
 
 ## NEXT — Measurement + maintenance, no invented expansion
 

@@ -7170,6 +7170,71 @@
     }
   },
   {
+    "id": "snap-smart-prepaid-ph-2026-current-profile-20261004",
+    "routeId": "smart-prepaid-ph-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-04",
+    "sourceDataset": "smart-roaming-evidence-maintenance-2026-10-04",
+    "data": {
+      "id": "smart-prepaid-ph-2026",
+      "brandId": "smart-ph",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Smart currently offers a P99 prepaid eSIM. Registration is mandatory. Foreign tourists receive only 30 days of SIM validity unless they submit an approved visa extension; foreign nationals with other visa types can acquire without that temporary 30-day cap.",
+      "landedCost": {
+        "currency": "PHP",
+        "providerOrCommunityPrice": 99,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 99,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-provider-esim-price"
+      },
+      "keep": {
+        "currency": "PHP",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "Loaded prepaid value must be used within 365 days. If the balance reaches zero, reload within 180 days to avoid disconnection. These are separate lifecycle clocks; no fixed minimum annual retention cost is established here.",
+        "intervalDays": null,
+        "state": "provider-official-dual-lifecycle-no-fixed-cost"
+      },
+      "chinaActivation": "Remote/China-first registration and activation are not established by current provider material.",
+      "kyc": "SIM registration is mandatory. Foreign tourists are capped at 30 days unless an approved visa extension is supplied; foreign nationals holding other visa types are not subject to that temporary 30-day validity period.",
+      "payment": "Smart supports prepaid loading; the minimum universally available reload amount and foreign-card acceptance are not established here.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Provider-confirmed for ordinary SMS while international roaming is active: Smart documents sending and receiving texts while roaming, including SMS availability in countries where prepaid voice roaming is unavailable. Activate before departure with ROAM ON to 333; PHP100 balance is required for activation, while the former PHP50 maintaining balance abroad is no longer required. Service-specific OTP reliability remains unverified.",
+      "refund": "not reconciled",
+      "trend": "hold-foreign-tourist-30d-roaming-confirmed",
+      "guideEligible": false,
+      "holdReason": "Foreign-tourist registrations remain subject to automatic deactivation after 30 days unless an approved visa extension is supplied. Provider roaming/SMS capability is now confirmed and current community evidence shows both successful activation/roaming use and a September 2026 eSIM activation incident, but no strong foreign-user long-term end-to-end reproduction establishes this as a generally reliable keep-number/OTP route.",
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://smart.com.ph/Pages/esim",
+      "tariffSummary": "PHP99 prepaid eSIM; ordinary prepaid value is valid 365 days with a separate 180-day reload grace after balance reaches zero. Roaming SMS is provider-documented; activate roaming with PHP100 balance, with no ongoing PHP50 maintaining-balance requirement.",
+      "sourceIds": [
+        "reddit-smart-esim-acquisition-20260921",
+        "reddit-smart-esim-activation-incident-20260929",
+        "reddit-smart-esim-roaming-20260215",
+        "smart-esim-20260929",
+        "smart-prepaid-roaming-activation-20261004",
+        "smart-prepaid-roaming-call-text-20261004",
+        "smart-prepaid-roaming-reload-20261004",
+        "smart-prepaid-roaming-sms-receive-20261004",
+        "smart-prepaid-validity-20260929",
+        "smart-simreg-foreigners-20260929"
+      ],
+      "guideSteps": [
+        "Register the SIM under the correct foreign-national eligibility category; tourist registrations remain time-limited unless a visa extension is approved.",
+        "Track loaded-value expiry separately from the zero-balance reload grace.",
+        "Before leaving the Philippines, activate roaming by sending ROAM ON to 333 with at least PHP100 balance; do not infer OTP reliability from ordinary roaming SMS support.",
+        "Treat current eSIM activation as operationally variable because a late-September 2026 community incident reported multiple activation/conversion failures."
+      ]
+    }
+  },
+  {
     "id": "snap-smarty-uk-2026-current-profile-20261003",
     "routeId": "smarty-uk-2026",
     "kind": "current-profile",

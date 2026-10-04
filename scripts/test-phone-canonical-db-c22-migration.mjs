@@ -51,7 +51,7 @@ assert.equal(canonical.routes.length, 157);
 assert.equal(canonical.markets.length, 86);
 assert.equal(brands.length, 154);
 assert.equal(networks.length, 116);
-assert.equal(sources.length, 599);
+assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

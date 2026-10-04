@@ -2153,10 +2153,17 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-04",
     "acquireUrl": "https://smart.com.ph/Pages/esim",
     "sourceIds": [
+      "reddit-smart-esim-acquisition-20260921",
+      "reddit-smart-esim-activation-incident-20260929",
+      "reddit-smart-esim-roaming-20260215",
       "smart-esim-20260929",
+      "smart-prepaid-roaming-activation-20261004",
+      "smart-prepaid-roaming-call-text-20261004",
+      "smart-prepaid-roaming-reload-20261004",
+      "smart-prepaid-roaming-sms-receive-20261004",
       "smart-prepaid-validity-20260929",
       "smart-simreg-foreigners-20260929"
     ]
