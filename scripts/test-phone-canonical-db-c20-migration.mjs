@@ -27,7 +27,7 @@ const ctexcel = buildCanonicalComparisonRoute(canonical, 'ctexcel-uk-2026');
 assert.equal(ctexcel.keep.intervalDays, null); assert.equal(ctexcel.keep.yearCostOriginal, null); assert.match(ctexcel.holdReason, /eligibility|90-day|plan/i); assert.match(ctexcel.roamingSms, /China|SMS/i);
 const one = buildCanonicalComparisonRoute(canonical, 'one-nz-prepay-2026');
 assert.equal(one.keep.intervalDays, 360); assert.equal(one.keep.observedActionCost, 10); assert.equal(one.keep.yearCostOriginal, 10.14); assert.match(one.chinaActivation, /coverage|China-first/i); assert.match(one.roamingSms, /China/i);
-assert.equal(canonical.routes.length, 158); assert.equal(canonical.markets.length, 86); assert.equal(brands.length, 155); assert.equal(networks.length, 116); assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
+assert.equal(canonical.routes.length, 159); assert.equal(canonical.markets.length, 87); assert.equal(brands.length, 156); assert.equal(networks.length, 117); assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

@@ -41,7 +41,7 @@ DB-C23 normalized state before the later Saily residual admission:
 
 DB-C23 changed backend coverage only. It did not authorize a new public route page, ranking or sitemap entry.
 
-On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route. The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources, so current normalized state is **158 routes / 86 markets / 155 brands / 116 networks / 611 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
+On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route. The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources. The final known residual, China Telecom Macau Easy PASS / Greater Bay Area prepaid, subsequently cleared its lifecycle blocker with first-party 180-day validity and recharge-reset evidence and adds one HOLD route, one market, one network, one brand and five reviewed sources. Current normalized state is **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
 
 ## Staging reconciliation
 
@@ -57,27 +57,21 @@ The old 59-record staging inventory therefore is not evidence of 59 missing rout
 
 ## Current residual candidate register
 
-One distinct candidate remains outside canonical pending bounded evidence reconciliation:
+No currently known evidence-qualified distinct atomic residual candidate remains outside canonical.
 
-1. **China Telecom Macau / Macau blue-card route** — 2026 community evidence reports a low-cost 180-day keep mechanic and current eSIM conversion capability, while China Telecom Macau currently documents prepaid/eSIM service. The exact current blue-card lifecycle/renewal rule still needs first-party reconciliation before admission.
-
-**Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong later cleared its durable renewal blocker the same day and is canonical backstage HOLD as a real-mobile route with verified HK$100/365-day ongoing retention; bank/third-party OTP reliability remains explicitly unresolved. Neither admission creates a recommendation or public/indexable route.
-
-The one remaining entry is a residual research candidate, not a public recommendation.
+**Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong cleared its durable renewal blocker and is canonical backstage HOLD as a real-mobile route. China Telecom Macau Easy PASS / Greater Bay Area prepaid then cleared the final lifecycle blocker: current provider material establishes 180-day validity, another 180 days from each recharge, >90-day suspended-number cancellation, real-name registration, ordinary incoming-SMS capability and current eSIM support. It is canonical backstage HOLD because service-specific bank/app OTP reliability remains insufficiently sampled. None of these admissions creates a recommendation or public/indexable route.
 
 ## Coverage calculation
 
 For the current known evidence-qualified universe:
 
-- normalized canonical routes: **158**
-- known distinct unresolved atomic candidates: **1**
+- normalized canonical routes: **159**
+- known distinct unresolved atomic candidates: **0**
 - denominator: **159**
 
-**Coverage = 158 / 159 = 99.4%.**
+**Coverage = 159 / 159 = 100% of the current known evidence-qualified relevant atomic universe.**
 
-This clears the project target of approximately 90%+ with margin. As a sensitivity check, even if ten additional qualifying missing routes were discovered immediately, coverage would still be `158 / 169 = 93.5%`. Coverage would fall below 90% only if at least 17 additional qualifying missing atomic routes were discovered without corresponding canonical admission.
-
-The sensitivity calculation is not evidence that unknown routes do not exist. It only shows that the current 90% decision is not dependent on one or two borderline candidates.
+This does **not** mean the database contains every carrier product worldwide. It means every distinct route currently admitted to the project's evidence-qualified universe is normalized. New evidence can enlarge the denominator at any time. As a sensitivity check, ten newly discovered qualifying missing routes would make coverage `159 / 169 = 94.1%`; at least 18 newly discovered qualifying missing routes with no corresponding admissions would be required to move coverage below 90%.
 
 ## Decision
 
@@ -86,7 +80,7 @@ The broad database expansion phase is complete. Do **not** create DB-C24 from ca
 Move Phone database work to maintenance mode:
 
 - append new community/provider evidence to existing routes;
-- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or the one remaining residual candidate clears its blocker;
+- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears;
 - preserve conflicts and negative knowledge instead of forcing recommendation status;
 - keep Data-eSIM evidence separate unless a reviewed phone-number identity link is established;
 - keep backend admission separate from public/indexable publication.

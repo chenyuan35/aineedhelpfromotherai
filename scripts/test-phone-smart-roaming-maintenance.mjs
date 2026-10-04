@@ -51,8 +51,8 @@ for (const eid of [
   'evt-smart-prepaid-ph-2026-esim-activation-incident-20260929'
 ]) assert(events.some((row) => row.id === eid), `missing Smart evidence event ${eid}`);
 
-assert.equal(routes.length, 158);
-assert.ok(sources.length >= 611, `expected append-only source corpus >=611, got ${sources.length}`);
+assert.equal(routes.length, 159);
+assert.ok(sources.length >= 616, `expected append-only source corpus >=611, got ${sources.length}`);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(policy.routeStates[id], undefined, 'Smart HOLD maintenance must not grant a public route state');
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);

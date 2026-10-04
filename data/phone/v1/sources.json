@@ -498,6 +498,30 @@
     "reportedAt": "2026-10-03"
   },
   {
+    "id": "ctmacau-easypass-product-20261004",
+    "url": "https://www.1888.com.mo/help/detail?tabCode=DXYW04",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "ctmacau-esim-20261004",
+    "url": "https://www.1888.com.mo/help/detail?tabCode=ESIM",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "ctmacau-prepaid-purchase-20261004",
+    "url": "https://www.1888.com.mo/question/detail?infoId=25",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "ctmacau-prepaid-validity-20261004",
+    "url": "https://www.1888.com.mo/question/detail?infoId=24",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
     "id": "cyta-soeasy-faq-20260929",
     "url": "https://www.cyta.com.cy/faq-soeasy/en",
     "type": "provider-official",
@@ -1546,6 +1570,12 @@
     "url": "https://forum.naixi.net/thread-14169-1-1.html",
     "type": "community-independent",
     "reportedAt": "2026-08-04"
+  },
+  {
+    "id": "naixi-ctmacau-esim-20260918",
+    "url": "https://forum.naixi.net/forum.php?aid=15302&from=album&mod=viewthread&page=1&tid=15192",
+    "type": "independent-community",
+    "reportedAt": "2026-09-18"
   },
   {
     "id": "naixi-one-nz-10577-20260301",

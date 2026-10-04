@@ -120,6 +120,12 @@
     "marketId": "ge"
   },
   {
+    "id": "china-telecom-macau-easy-pass",
+    "networkId": "china-telecom-macau",
+    "name": "China Telecom Macau Easy PASS",
+    "marketId": "mo"
+  },
+  {
     "id": "cht-ruyi",
     "networkId": "chunghwa-tw",
     "name": "中華電信如意卡",

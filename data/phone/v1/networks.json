@@ -75,6 +75,11 @@
     "marketId": "ge"
   },
   {
+    "id": "china-telecom-macau",
+    "name": "China Telecom (Macau)",
+    "marketId": "mo"
+  },
+  {
     "id": "chunghwa-tw",
     "name": "Chunghwa Telecom TW",
     "marketId": "tw"
