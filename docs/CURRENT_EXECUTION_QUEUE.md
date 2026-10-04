@@ -7,7 +7,7 @@ Last updated: 2026-10-04
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 618 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 625 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -93,14 +93,25 @@ PR #388 squash-merged as `f171726bde05245bc41c284d718ab32a64298f40`.
 - Service aggregates expose success/failure/mixed counts and distinct-source counts. `successRatePct` remains `null` unless an exact route + service + operation group has at least 5 deduplicated observations from 5 distinct source records.
 - No arbitrary 0–100 safety score or unsupported "least likely to be banned/recycled" probability was added; continuity is expressed through verified keep windows, warning events and evidence depth.
 - Eval Gate #1156: **PASS**. Vercel Preview: **READY**. Production deployment `dpl_3HFruLPEyUj7hafRpQAAiBEQxSdL`: **READY**. Apex Phone Radar and live `phone-route-summaries.json`: HTTP 200 with the new fields.
-- Counts and publication boundary are unchanged: **159 routes / 87 markets / 156 brands / 117 networks / 618 sources**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Counts and publication boundary at the PR #388 baseline were **159 routes / 87 markets / 156 brands / 117 networks / 618 sources**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
+## JUST COMPLETED — ClubSIM Telegram evidence-density maintenance
+
+PR #390 squash-merged as `0a2c6a8e9b1529ec227b4a717d37c88cf51109fd`.
+
+- Existing route: `clubsim-sms-pack-6hkd-2026`, one of the lowest-cost real-mobile long-term routes in canonical at normalized HK$50 entry and HK$6 / 365-day keep cost.
+- Added **7 distinct dated community source records** and **7 deduplicated exact route + Telegram + registration-verification observations**.
+- Generated aggregate: **2 success / 3 failure / 2 mixed / n=7 / 7 distinct sources / observed success 28.6% / grade C (Mixed / weak)**. The percentage is a bounded community-observation aggregate, not a universal carrier probability.
+- ClubSIM remains `admitted` but `backstage-only`; cheap keep cost does not override weak/mixed Telegram reliability evidence. No new route URL, indexability rule or sitemap entry was created.
+- Source corpus becomes **625**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Branch regression workflow #37191691290: **PASS**. Eval Gate #1160: **PASS**. Vercel Preview: **PASS**. Production deployment `dpl_8U971UeoANGmLdu86JfNoPdmD5C4`: **READY**. Live ClubSIM detail JSON and live `phone-route-summaries.json`: **HTTP 200** with the 28.6% aggregate.
 
 ## NEXT — Measurement + evidence-density maintenance, no invented expansion
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
-2. **Evidence-density maintenance:** prioritize independent, dated service-specific outcomes for the highest-value low-cost existing Phone routes, especially exact route + app/service + operation observations. The immediate goal is to mature thin qualitative compatibility evidence toward the >=5 deduplicated / >=5 distinct-source threshold where a real success percentage becomes defensible. Preserve failures/mixed outcomes equally; do not manufacture percentages. Continue separate Data-eSIM intake independently.
+2. **Evidence-density maintenance:** ClubSIM Telegram has now crossed the >=5 deduplicated / >=5 distinct-source display threshold but remains weak/mixed. Select another high-value low-cost existing route with thin service evidence and repeat the exact route + app/service + operation acquisition pattern. Preserve failures/mixed outcomes equally; do not manufacture percentages or promote a route solely on low price. Continue separate Data-eSIM intake independently.
 3. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
 4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 
