@@ -57,11 +57,11 @@ assert.equal(tune.keep.yearCostOriginal, 35);
 assert.match(tune.holdReason, /tourist|three months|3 months/i);
 assert.match(tune.kyc, /mandatory|tourist|three-month/i);
 
-assert.equal(canonical.routes.length, 156);
+assert.equal(canonical.routes.length, 157);
 assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 153);
+assert.equal(brands.length, 154);
 assert.equal(networks.length, 116);
-assert.equal(sources.length, 593);
+assert.equal(sources.length, 599);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
 const legacyOnly = globalDirectory.routes.map((row) => row.id).filter((id) => !canonicalIds.has(id));
 assert.deepEqual(legacyOnly, ['sakura-mobile-voice-2026']);

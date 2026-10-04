@@ -2700,6 +2700,24 @@
     "reportedAt": "2026-03-21"
   },
   {
+    "id": "reddit-saily-number-failure-20260813",
+    "url": "https://www.reddit.com/r/best_eSIM_providers/comments/1vn6sr8/problem_using_saily_phone_number/",
+    "type": "independent-community",
+    "reportedAt": "2026-08-13"
+  },
+  {
+    "id": "reddit-saily-number-launch-20260610",
+    "url": "https://www.reddit.com/r/saily/comments/1u1xudl/saily_launches_new_phone_number_feature/",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-06-10"
+  },
+  {
+    "id": "reddit-saily-phone-qna-20260905",
+    "url": "https://www.reddit.com/r/saily/comments/1w884ep/qna_saily_phone_numbers/",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-09-05"
+  },
+  {
     "id": "reddit-srilanka-number-keep-job-2026-08-13",
     "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
     "type": "community-demand-thread",
@@ -2746,6 +2764,24 @@
     "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-the-safaricom-daima-bundles-service",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "saily-phone-number-otp-20261004",
+    "url": "https://support.saily.com/hc/en-us/articles/27948689277596-Can-I-use-Saily-phone-number-for-OTP-and-2FA",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "saily-phone-number-product-20261004",
+    "url": "https://saily.com/esim-phone-number/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "saily-phone-number-terms-20260827",
+    "url": "https://saily.com/legal/terms-of-service/",
+    "type": "provider-commercial-terms",
+    "reportedAt": "2026-08-27"
   },
   {
     "id": "simtalk-hotmobile-66-180d-20260929",

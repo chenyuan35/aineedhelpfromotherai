@@ -1,4 +1,4 @@
-# Phone Radar database coverage audit — 2026-10-03
+# Phone Radar database coverage audit — 2026-10-03 (updated 2026-10-04)
 
 Status: **90%+ BACKEND COVERAGE OBJECTIVE MET FOR THE KNOWN EVIDENCE-QUALIFIED ROUTE UNIVERSE**
 
@@ -24,11 +24,11 @@ The denominator excludes:
 
 A canonical row counts as database coverage whether its evidence state is `admitted` or `hold`. `HOLD` means the database represents the route and its unresolved risks; it does not mean the route is recommendation-ready.
 
-## Released database after DB-C23
+## Released database after DB-C23 — historical baseline
 
 PR #368 (`2d0d727af1f18844b6c344a9402d62de5366dd61`) added `esimgg-estonia-372-2026` and `hkmobi-365-hk-2026` as backstage-only routes.
 
-Current normalized state:
+DB-C23 normalized state before the later Saily residual admission:
 
 - **156 canonical routes**
 - **86 markets**
@@ -40,6 +40,8 @@ Current normalized state:
 - **31 sitemap URLs**
 
 DB-C23 changed backend coverage only. It did not authorize a new public route page, ranking or sitemap entry.
+
+On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`. Current normalized state is **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
 
 ## Staging reconciliation
 
@@ -55,25 +57,26 @@ The old 59-record staging inventory therefore is not evidence of 59 missing rout
 
 ## Current residual candidate register
 
-Three distinct candidates are intentionally kept outside canonical pending a bounded review:
+Two distinct candidates remain outside canonical pending bounded evidence reconciliation:
 
 1. **LuckySIM Hong Kong** — current official surfaces show real-name registration, eSIM support and multi-year prepaid voice/data products. The durable post-term renewal/lifecycle rule and mainland-China SMS/OTP behavior still need reconciliation before canonical admission.
-2. **Saily U.S. phone number** — current official material describes a persistent U.S. +1 number with calls/SMS and identity verification, while also stating that the underlying carrier uses internet-based/VoIP technology and some services may reject OTP. The unresolved issue is product classification and whether this app-based second-line product belongs in the same canonical number class as cellular retention routes.
-3. **China Telecom Macau / Macau blue-card route** — 2026 community evidence reports a low-cost 180-day keep mechanic and current eSIM conversion capability, while China Telecom Macau currently documents prepaid/eSIM service. The exact current blue-card lifecycle/renewal rule still needs first-party reconciliation before admission.
+2. **China Telecom Macau / Macau blue-card route** — 2026 community evidence reports a low-cost 180-day keep mechanic and current eSIM conversion capability, while China Telecom Macau currently documents prepaid/eSIM service. The exact current blue-card lifecycle/renewal rule still needs first-party reconciliation before admission.
 
-These are residual research candidates, not public recommendations.
+**Resolved residual:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is now canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. This does not make it a recommendation or a public/indexable route.
+
+The two remaining entries are residual research candidates, not public recommendations.
 
 ## Coverage calculation
 
 For the current known evidence-qualified universe:
 
-- normalized canonical routes: **156**
-- known distinct unresolved atomic candidates: **3**
+- normalized canonical routes: **157**
+- known distinct unresolved atomic candidates: **2**
 - denominator: **159**
 
-**Coverage = 156 / 159 = 98.1%.**
+**Coverage = 157 / 159 = 98.7%.**
 
-This clears the project target of approximately 90%+ with margin. As a sensitivity check, even if ten additional qualifying missing routes were discovered immediately, coverage would still be `156 / 166 = 94.0%`. Coverage would fall below 90% only if at least 18 additional qualifying missing atomic routes were discovered without corresponding canonical admission.
+This clears the project target of approximately 90%+ with margin. As a sensitivity check, even if ten additional qualifying missing routes were discovered immediately, coverage would still be `157 / 169 = 92.9%`. Coverage would fall below 90% only if at least 16 additional qualifying missing atomic routes were discovered without corresponding canonical admission.
 
 The sensitivity calculation is not evidence that unknown routes do not exist. It only shows that the current 90% decision is not dependent on one or two borderline candidates.
 
@@ -84,7 +87,7 @@ The broad database expansion phase is complete. Do **not** create DB-C24 from ca
 Move Phone database work to maintenance mode:
 
 - append new community/provider evidence to existing routes;
-- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or one of the three residual candidates clears its blocker;
+- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or one of the two remaining residual candidates clears its blocker;
 - preserve conflicts and negative knowledge instead of forcing recommendation status;
 - keep Data-eSIM evidence separate unless a reviewed phone-number identity link is established;
 - keep backend admission separate from public/indexable publication.

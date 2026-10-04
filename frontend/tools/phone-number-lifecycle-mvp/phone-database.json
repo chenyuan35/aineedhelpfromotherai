@@ -1626,6 +1626,12 @@
       "marketId": "ke"
     },
     {
+      "id": "saily-phone-number-us",
+      "networkId": null,
+      "name": "Saily Phone Number",
+      "marketId": "us"
+    },
+    {
       "id": "sakura-mobile-jp",
       "marketId": "jp",
       "networkId": null,
@@ -3980,6 +3986,27 @@
         "safaricom-daima-faq-2026-09-29",
         "safaricom-daima-press-2022-10-26",
         "safaricom-daima-terms-2026-09-29"
+      ]
+    },
+    {
+      "id": "saily-us-phone-number-2026",
+      "marketId": "us",
+      "brandId": "saily-phone-number-us",
+      "displayName": "Saily U.S. Phone Number",
+      "family": "long-term",
+      "numberClass": "voip-second-line",
+      "form": "app-managed U.S. +1 VoIP second-line number paired with Saily connectivity",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://saily.com/esim-phone-number/",
+      "sourceIds": [
+        "reddit-saily-number-failure-20260813",
+        "reddit-saily-number-launch-20260610",
+        "reddit-saily-phone-qna-20260905",
+        "saily-phone-number-otp-20261004",
+        "saily-phone-number-product-20261004",
+        "saily-phone-number-terms-20260827"
       ]
     },
     {
@@ -7728,6 +7755,24 @@
       "reportedAt": "2026-03-21"
     },
     {
+      "id": "reddit-saily-number-failure-20260813",
+      "url": "https://www.reddit.com/r/best_eSIM_providers/comments/1vn6sr8/problem_using_saily_phone_number/",
+      "type": "independent-community",
+      "reportedAt": "2026-08-13"
+    },
+    {
+      "id": "reddit-saily-number-launch-20260610",
+      "url": "https://www.reddit.com/r/saily/comments/1u1xudl/saily_launches_new_phone_number_feature/",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-06-10"
+    },
+    {
+      "id": "reddit-saily-phone-qna-20260905",
+      "url": "https://www.reddit.com/r/saily/comments/1w884ep/qna_saily_phone_numbers/",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-09-05"
+    },
+    {
       "id": "reddit-srilanka-number-keep-job-2026-08-13",
       "url": "https://www.reddit.com/r/srilanka/comments/1vn8blh/best_way_to_keep_your_sl_mobile_numbers_active/",
       "type": "community-demand-thread",
@@ -7774,6 +7819,24 @@
       "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-the-safaricom-daima-bundles-service",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "saily-phone-number-otp-20261004",
+      "url": "https://support.saily.com/hc/en-us/articles/27948689277596-Can-I-use-Saily-phone-number-for-OTP-and-2FA",
+      "type": "provider-official",
+      "reportedAt": "2026-10-04"
+    },
+    {
+      "id": "saily-phone-number-product-20261004",
+      "url": "https://saily.com/esim-phone-number/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-04"
+    },
+    {
+      "id": "saily-phone-number-terms-20260827",
+      "url": "https://saily.com/legal/terms-of-service/",
+      "type": "provider-commercial-terms",
+      "reportedAt": "2026-08-27"
     },
     {
       "id": "simtalk-hotmobile-66-180d-20260929",
@@ -8588,6 +8651,50 @@
   ],
   "observations": [
     {
+      "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "OpenAI/Codex",
+      "operation": "phone-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-05",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2310901",
+      "dedupeKey": "giffgaff-2310901-n70-codex"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268-reply14",
+      "dedupeKey": "giffgaff-2322268-1157-telegram"
+    },
+    {
+      "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
+      "routeId": "giffgaff-uk-direct-esim-payg",
+      "service": "WhatsApp",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-06-07",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-giffgaff-2322268",
+      "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+    },
+    {
       "id": "obs-lebara-uk-direct-esim-china-1-7c5435",
       "routeId": "lebara-uk-direct-esim-china",
       "service": "WhatsApp",
@@ -8632,48 +8739,15 @@
       "dedupeKey": "lebara-2745784-lzd2-telegram"
     },
     {
-      "id": "obs-giffgaff-uk-direct-esim-payg-5-9054fe",
-      "routeId": "giffgaff-uk-direct-esim-payg",
-      "service": "OpenAI/Codex",
-      "operation": "phone-verification",
-      "outcome": "success",
-      "reportedAt": "2026-06-05",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-giffgaff-2310901",
-      "dedupeKey": "giffgaff-2310901-n70-codex"
-    },
-    {
-      "id": "obs-giffgaff-uk-direct-esim-payg-6-b7df6a",
-      "routeId": "giffgaff-uk-direct-esim-payg",
-      "service": "Telegram",
-      "operation": "registration-verification",
-      "outcome": "failure-then-success",
-      "reportedAt": "2026-06-07",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-giffgaff-2322268",
-      "dedupeKey": "giffgaff-2322268-alexxx-telegram"
-    },
-    {
-      "id": "obs-giffgaff-uk-direct-esim-payg-7-3f9018",
-      "routeId": "giffgaff-uk-direct-esim-payg",
-      "service": "Telegram",
-      "operation": "registration-verification",
-      "outcome": "success",
-      "reportedAt": "2026-06-07",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-giffgaff-2322268-reply14",
-      "dedupeKey": "giffgaff-2322268-1157-telegram"
-    },
-    {
-      "id": "obs-giffgaff-uk-direct-esim-payg-8-059959",
-      "routeId": "giffgaff-uk-direct-esim-payg",
+      "id": "obs-saily-us-phone-number-whatsapp-20260815",
+      "routeId": "saily-us-phone-number-2026",
       "service": "WhatsApp",
       "operation": "registration-verification",
       "outcome": "success",
-      "reportedAt": "2026-06-07",
-      "geography": "mainland-China",
-      "sourceId": "linuxdo-giffgaff-2322268",
-      "dedupeKey": "giffgaff-2322268-alexxx-whatsapp"
+      "reportedAt": "2026-08-15",
+      "geography": "unspecified",
+      "sourceId": "reddit-saily-number-launch-20260610",
+      "dedupeKey": "saily-launch-thread-whatsapp-success-20260815"
     }
   ],
   "events": [
@@ -9396,6 +9470,24 @@
       "scope": "route",
       "outcome": "Daima pricing remains directly documented on Safaricom pages: KSh200/6 months, KSh500/1 year and KSh1000/2 years. The product pages are older, so continued live availability remains a monitoring item.",
       "sourceId": "safaricom-daima-faq-2026-09-29"
+    },
+    {
+      "id": "evt-saily-us-phone-number-classification-20261004",
+      "routeId": "saily-us-phone-number-2026",
+      "type": "product-classification-reconciliation",
+      "reportedAt": "2026-10-04",
+      "scope": "route",
+      "outcome": "Current Saily documentation establishes a persistent dedicated U.S. +1 number with calls/SMS, while explicitly identifying the underlying carrier technology as internet-based/VoIP. The route is therefore normalized as a non-cellular VoIP second line rather than a carrier-mobile SIM or a data-only eSIM.",
+      "sourceId": "saily-phone-number-otp-20261004"
+    },
+    {
+      "id": "evt-saily-us-phone-number-operational-failure-20260813",
+      "routeId": "saily-us-phone-number-2026",
+      "type": "operational-reliability-report",
+      "reportedAt": "2026-08-13",
+      "scope": "route",
+      "outcome": "An independent user reported that the purchased Saily phone-number/SMS feature never became operational despite repeated troubleshooting and two installation attempts; another commenter reported a similar failure. Preserve this as HOLD evidence rather than treating provider availability as proof of operational reliability.",
+      "sourceId": "reddit-saily-number-failure-20260813"
     },
     {
       "id": "evt-skt-prepaid-kr-2026-db-c6-20260930",
@@ -16346,6 +16438,66 @@
       }
     },
     {
+      "id": "snap-saily-us-phone-number-2026-current-profile-20261004",
+      "routeId": "saily-us-phone-number-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-04",
+      "sourceDataset": "saily-us-number-reviewed-2026-10-04",
+      "data": {
+        "id": "saily-us-phone-number-2026",
+        "brandId": "saily-phone-number-us",
+        "publishState": "candidate",
+        "numberType": "voip-second-line",
+        "simType": "app-managed VoIP second line paired with Saily eSIM connectivity",
+        "acquisitionSummary": "Saily currently offers a dedicated persistent U.S. +1 phone-number subscription for USD1.99/month inside the Saily app. Identity verification is required after purchase. This is a VoIP/internet-based second-line product, not a traditional mobile-carrier SIM number.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 1.99,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 1.99,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-monthly-number-subscription"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 1.99,
+          "yearCostOriginal": 23.88,
+          "yearCostCny": null,
+          "action": "Maintain the current USD1.99/month number subscription/reservation. September 2026 provider-community guidance says an inactive number remains reserved for 45 days, but the formal terms govern reservation expiry, release and quarantine and do not guarantee future reactivation of a released number.",
+          "intervalDays": 30,
+          "state": "current-provider-monthly-subscription-with-formal-release-terms"
+        },
+        "chinaActivation": "Saily markets the phone-number feature for travelers, but this review does not establish a China-specific activation or reception path. Do not infer mainland-China operational reliability from global travel marketing.",
+        "kyc": "Required. Current product copy requires identity verification after purchase, and the 2026-08-27 consumer terms require successful KYC before the assigned number is disclosed and activated for two-way communications.",
+        "payment": "Current public product evidence establishes the USD1.99/month subscription price; a dependable foreign-issued-card/payment-method path was not separately normalized in this review.",
+        "wifiCalling": "not normalized; the provider describes the underlying carrier technology as internet-based/VoIP, which is not treated as equivalent to carrier Wi-Fi Calling.",
+        "roamingSms": "Service-dependent and HOLD. Saily says most services can send verification codes but some banks, financial/payment apps and strict-security platforms reject VoIP numbers. Community evidence includes WhatsApp activation success, iMessage activation failure, and a separate August report where the phone-number/SMS feature failed to operate at all.",
+        "refund": "not reconciled",
+        "trend": "current-low-cost-voip-second-line-with-mixed-otp-and-operational-evidence",
+        "guideEligible": false,
+        "holdReason": "The number is VoIP/internet-based rather than carrier-mobile; OTP acceptance is explicitly service-dependent, port-in/port-out are unsupported, KYC is mandatory, and August 2026 independent evidence includes complete phone-number/SMS operational failure. Keep backstage until stronger independent overseas SMS/OTP reliability evidence exists.",
+        "lastVerifiedAt": "2026-10-04",
+        "acquireUrl": "https://saily.com/esim-phone-number/",
+        "tariffSummary": "USD1.99/month for a persistent U.S. +1 number reservation/subscription; KYC required; VoIP classification; OTP acceptance and operational reliability remain mixed.",
+        "guideSteps": [
+          "Complete KYC before relying on the assigned number; the formal terms condition number disclosure and two-way activation on verification.",
+          "Test ordinary SMS and each critical verification service before binding important accounts because VoIP acceptance is service-specific.",
+          "Maintain the number subscription if continuity matters and do not rely on porting as an exit path because port-in/port-out are unsupported."
+        ],
+        "sourceIds": [
+          "saily-phone-number-product-20261004",
+          "saily-phone-number-otp-20261004",
+          "saily-phone-number-terms-20260827",
+          "reddit-saily-phone-qna-20260905",
+          "reddit-saily-number-failure-20260813",
+          "reddit-saily-number-launch-20260610"
+        ]
+      }
+    },
+    {
       "id": "snap-sakura-japan-voice-data-commercial-d1a4db",
       "routeId": "sakura-japan-voice-data",
       "kind": "commercial",
@@ -20297,6 +20449,22 @@
       "mixedCount": 0,
       "firstObservedAt": "2026-08-12",
       "lastObservedAt": "2026-08-13"
+    },
+    {
+      "id": "svcagg-saily-us-phone-number-2026-whatsapp-registration-verification",
+      "routeId": "saily-us-phone-number-2026",
+      "serviceId": "whatsapp",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "firstObservedAt": "2026-08-15",
+      "lastObservedAt": "2026-08-15"
     }
   ],
   "routeMetrics": [
@@ -21535,6 +21703,18 @@
       "keepYearCostOriginal": 500,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "saily-us-phone-number-2026",
+      "checkedAt": "2026-10-04",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 1.99,
+      "acquisitionCostCny": null,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 23.88,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 30
     },
     {
       "routeId": "sakura-japan-voice-data",

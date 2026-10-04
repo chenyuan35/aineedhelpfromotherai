@@ -2043,6 +2043,27 @@
     ]
   },
   {
+    "id": "saily-us-phone-number-2026",
+    "marketId": "us",
+    "brandId": "saily-phone-number-us",
+    "displayName": "Saily U.S. Phone Number",
+    "family": "long-term",
+    "numberClass": "voip-second-line",
+    "form": "app-managed U.S. +1 VoIP second-line number paired with Saily connectivity",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-04",
+    "acquireUrl": "https://saily.com/esim-phone-number/",
+    "sourceIds": [
+      "reddit-saily-number-failure-20260813",
+      "reddit-saily-number-launch-20260610",
+      "reddit-saily-phone-qna-20260905",
+      "saily-phone-number-otp-20261004",
+      "saily-phone-number-product-20261004",
+      "saily-phone-number-terms-20260827"
+    ]
+  },
+  {
     "id": "sakura-japan-voice-data",
     "marketId": "jp",
     "networkId": null,

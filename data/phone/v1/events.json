@@ -720,6 +720,24 @@
     "sourceId": "safaricom-daima-faq-2026-09-29"
   },
   {
+    "id": "evt-saily-us-phone-number-classification-20261004",
+    "routeId": "saily-us-phone-number-2026",
+    "type": "product-classification-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Current Saily documentation establishes a persistent dedicated U.S. +1 number with calls/SMS, while explicitly identifying the underlying carrier technology as internet-based/VoIP. The route is therefore normalized as a non-cellular VoIP second line rather than a carrier-mobile SIM or a data-only eSIM.",
+    "sourceId": "saily-phone-number-otp-20261004"
+  },
+  {
+    "id": "evt-saily-us-phone-number-operational-failure-20260813",
+    "routeId": "saily-us-phone-number-2026",
+    "type": "operational-reliability-report",
+    "reportedAt": "2026-08-13",
+    "scope": "route",
+    "outcome": "An independent user reported that the purchased Saily phone-number/SMS feature never became operational despite repeated troubleshooting and two installation attempts; another commenter reported a similar failure. Preserve this as HOLD evidence rather than treating provider availability as proof of operational reliability.",
+    "sourceId": "reddit-saily-number-failure-20260813"
+  },
+  {
     "id": "evt-skt-prepaid-kr-2026-db-c6-20260930",
     "routeId": "skt-prepaid-kr-2026",
     "type": "retention-rule-resolution",
