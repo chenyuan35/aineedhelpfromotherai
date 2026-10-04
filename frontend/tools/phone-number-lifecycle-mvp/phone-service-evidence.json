@@ -2,6 +2,25 @@
   "schemaVersion": 1,
   "aggregates": [
     {
+      "id": "svcagg-clubsim-sms-pack-6hkd-2026-telegram-registration-verification",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "high",
+      "sampleSize": 7,
+      "independentSourceCount": 7,
+      "successCount": 2,
+      "failureCount": 3,
+      "mixedCount": 2,
+      "percentageEligible": true,
+      "successRatePct": 28.6,
+      "firstObservedAt": "2024-03-21",
+      "lastObservedAt": "2026-09-18"
+    },
+    {
       "id": "svcagg-giffgaff-uk-direct-esim-payg-openai-phone-verification",
       "routeId": "giffgaff-uk-direct-esim-payg",
       "serviceId": "openai",

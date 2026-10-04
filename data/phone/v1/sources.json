@@ -3706,5 +3706,47 @@
     "url": "https://www.reddit.com/r/HongKong/comments/1t01lz1/esim_for_overseas_hker/",
     "type": "independent-community",
     "reportedAt": "2026-04-30"
+  },
+  {
+    "id": "shuzijumin-clubsim-telegram-success-20240321",
+    "url": "https://shuzijumin.com/thread-235-7-1.html",
+    "type": "community-report",
+    "reportedAt": "2024-03-21"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-failure-20240412",
+    "url": "https://www.v2ex.com/t/1031998",
+    "type": "community-report",
+    "reportedAt": "2024-04-12"
+  },
+  {
+    "id": "linuxdo-clubsim-telegram-failure-20250219",
+    "url": "https://linux.do/t/topic/439461",
+    "type": "community-report",
+    "reportedAt": "2025-02-19"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-mnp-failure-20251101",
+    "url": "https://www.v2ex.com/t/1168757",
+    "type": "community-report",
+    "reportedAt": "2025-11-01"
+  },
+  {
+    "id": "naixi-clubsim-telegram-conflict-20260729",
+    "url": "https://forum.naixi.net/thread-13360-1-1.html",
+    "type": "community-report",
+    "reportedAt": "2026-07-29"
+  },
+  {
+    "id": "naixi-clubsim-telegram-success-20260918",
+    "url": "https://forum.naixi.net/thread-15515-1-1.html",
+    "type": "community-report",
+    "reportedAt": "2026-09-18"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-conditional-20260918",
+    "url": "https://www.v2ex.com/t/1243080",
+    "type": "community-report",
+    "reportedAt": "2026-09-18"
   }
 ]

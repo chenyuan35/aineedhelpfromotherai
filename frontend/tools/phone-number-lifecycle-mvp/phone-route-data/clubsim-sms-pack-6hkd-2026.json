@@ -11,13 +11,20 @@
     "form": "eSIM + physical",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
+    "lastVerifiedAt": "2026-10-04",
     "acquireUrl": "https://www.clubsim.com.hk/",
     "sourceIds": [
       "community-naixi-clubsim-pack-availability-2026-07",
       "community-vocus-clubsim-6hkd-guide-2026-04",
       "official-clubsim-faq-365-window-2026-09-26",
-      "official-clubsim-sms-pack-6hkd-2026-09-28"
+      "official-clubsim-sms-pack-6hkd-2026-09-28",
+      "shuzijumin-clubsim-telegram-success-20240321",
+      "v2ex-clubsim-telegram-failure-20240412",
+      "linuxdo-clubsim-telegram-failure-20250219",
+      "v2ex-clubsim-telegram-mnp-failure-20251101",
+      "naixi-clubsim-telegram-conflict-20260729",
+      "naixi-clubsim-telegram-success-20260918",
+      "v2ex-clubsim-telegram-conditional-20260918"
     ]
   },
   "market": {
@@ -38,7 +45,7 @@
   },
   "metrics": {
     "routeId": "clubsim-sms-pack-6hkd-2026",
-    "checkedAt": "2026-09-28",
+    "checkedAt": "2026-10-04",
     "metricState": "current-profile",
     "acquisitionCurrency": "HKD",
     "acquisitionCostOriginal": 50,
@@ -49,7 +56,27 @@
     "keepIntervalDays": 365
   },
   "numberRanges": [],
-  "serviceEvidence": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-clubsim-sms-pack-6hkd-2026-telegram-registration-verification",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "high",
+      "sampleSize": 7,
+      "independentSourceCount": 7,
+      "successCount": 2,
+      "failureCount": 3,
+      "mixedCount": 2,
+      "percentageEligible": true,
+      "successRatePct": 28.6,
+      "firstObservedAt": "2024-03-21",
+      "lastObservedAt": "2026-09-18"
+    }
+  ],
   "sources": [
     {
       "id": "community-naixi-clubsim-pack-availability-2026-07",
@@ -74,10 +101,140 @@
       "url": "https://www.clubsim.com.hk/zh/smspack/tnc",
       "type": "provider-official",
       "reportedAt": "2026-09-28"
+    },
+    {
+      "id": "shuzijumin-clubsim-telegram-success-20240321",
+      "url": "https://shuzijumin.com/thread-235-7-1.html",
+      "type": "community-report",
+      "reportedAt": "2024-03-21"
+    },
+    {
+      "id": "v2ex-clubsim-telegram-failure-20240412",
+      "url": "https://www.v2ex.com/t/1031998",
+      "type": "community-report",
+      "reportedAt": "2024-04-12"
+    },
+    {
+      "id": "linuxdo-clubsim-telegram-failure-20250219",
+      "url": "https://linux.do/t/topic/439461",
+      "type": "community-report",
+      "reportedAt": "2025-02-19"
+    },
+    {
+      "id": "v2ex-clubsim-telegram-mnp-failure-20251101",
+      "url": "https://www.v2ex.com/t/1168757",
+      "type": "community-report",
+      "reportedAt": "2025-11-01"
+    },
+    {
+      "id": "naixi-clubsim-telegram-conflict-20260729",
+      "url": "https://forum.naixi.net/thread-13360-1-1.html",
+      "type": "community-report",
+      "reportedAt": "2026-07-29"
+    },
+    {
+      "id": "naixi-clubsim-telegram-success-20260918",
+      "url": "https://forum.naixi.net/thread-15515-1-1.html",
+      "type": "community-report",
+      "reportedAt": "2026-09-18"
+    },
+    {
+      "id": "v2ex-clubsim-telegram-conditional-20260918",
+      "url": "https://www.v2ex.com/t/1243080",
+      "type": "community-report",
+      "reportedAt": "2026-09-18"
     }
   ],
-  "observations": [],
-  "events": [],
+  "observations": [
+    {
+      "id": "obs-clubsim-telegram-shuzijumin-20240321",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2024-03-21",
+      "geography": "unspecified",
+      "sourceId": "shuzijumin-clubsim-telegram-success-20240321",
+      "dedupeKey": "clubsim-shuzijumin-235-p7-richardwhite-telegram"
+    },
+    {
+      "id": "obs-clubsim-telegram-v2ex-20240412",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure",
+      "reportedAt": "2024-04-12",
+      "geography": "mainland-China",
+      "sourceId": "v2ex-clubsim-telegram-failure-20240412",
+      "dedupeKey": "clubsim-v2ex-1031998-blackboar-telegram"
+    },
+    {
+      "id": "obs-clubsim-telegram-linuxdo-20250219",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure",
+      "reportedAt": "2025-02-19",
+      "geography": "mainland-China",
+      "sourceId": "linuxdo-clubsim-telegram-failure-20250219",
+      "dedupeKey": "clubsim-linuxdo-439461-scckk-telegram"
+    },
+    {
+      "id": "obs-clubsim-telegram-v2ex-20251101",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure",
+      "reportedAt": "2025-11-01",
+      "geography": "unspecified",
+      "sourceId": "v2ex-clubsim-telegram-mnp-failure-20251101",
+      "dedupeKey": "clubsim-v2ex-1168757-mschultz-telegram"
+    },
+    {
+      "id": "obs-clubsim-telegram-naixi-mixed-20260729",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "mixed",
+      "reportedAt": "2026-07-29",
+      "geography": "unspecified",
+      "sourceId": "naixi-clubsim-telegram-conflict-20260729",
+      "dedupeKey": "clubsim-naixi-13360-thread-telegram-mixed"
+    },
+    {
+      "id": "obs-clubsim-telegram-naixi-success-20260918",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "success",
+      "reportedAt": "2026-09-18",
+      "geography": "unspecified",
+      "sourceId": "naixi-clubsim-telegram-success-20260918",
+      "dedupeKey": "clubsim-naixi-15515-sing-telegram"
+    },
+    {
+      "id": "obs-clubsim-telegram-v2ex-conditional-20260918",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-09-18",
+      "geography": "mainland-China",
+      "sourceId": "v2ex-clubsim-telegram-conditional-20260918",
+      "dedupeKey": "clubsim-v2ex-1243080-gaoshang-telegram"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-clubsim-telegram-evidence-density-20261004",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "type": "service-verification-evidence-density",
+      "reportedAt": "2026-10-04",
+      "scope": "seven-independent-community-threads",
+      "outcome": "Seven distinct dated community threads now support a Telegram registration-verification aggregate for ClubSIM. Outcomes remain mixed across prefix, client, proxy/IP and roaming conditions; this is evidence of variability, not a universal carrier success probability.",
+      "sourceId": "v2ex-clubsim-telegram-conditional-20260918"
+    }
+  ],
   "snapshots": [
     {
       "id": "snap-clubsim-sms-pack-6hkd-2026-current-profile-20260928",
@@ -129,6 +286,71 @@
           "community-vocus-clubsim-6hkd-guide-2026-04",
           "community-naixi-clubsim-pack-availability-2026-07",
           "official-clubsim-sms-pack-6hkd-2026-09-28"
+        ],
+        "guideSteps": [
+          "Acquire ClubSIM physical SIM or eSIM and complete required real-name registration.",
+          "Before the 365-day service-pack deadline, check the current web/app pack list.",
+          "If the HK$6 SMS pack is available, one purchase resets the service-pack clock; otherwise buy another available service pack rather than assuming HK$6 is guaranteed."
+        ]
+      }
+    },
+    {
+      "id": "snap-clubsim-sms-pack-6hkd-2026-telegram-evidence-20261004",
+      "routeId": "clubsim-sms-pack-6hkd-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-04",
+      "sourceDataset": "hk-directory-batch-c.json",
+      "data": {
+        "id": "clubsim-sms-pack-6hkd-2026",
+        "brandId": "clubsim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "ClubSIM supports physical SIM and eSIM. Current official web surfaces list the HK$6 SMS pack; a 2026 first-hand guide reports HK$50 minimum first-activation spend. Exact checkout minimum can vary by selected service pack.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 50,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 50,
+          "landedCny": 46,
+          "fxCheckedAt": "2026-09-28",
+          "state": "community-2026-entry-cost-current-web-pack"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 6,
+          "yearCostOriginal": 6,
+          "yearCostCny": 5.5,
+          "action": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6 option was temporarily absent in-app. Treat HK$6 as the current web price, not a guaranteed all-channel annual price; buy any available service pack before the 365-day deadline.",
+          "intervalDays": 365,
+          "state": "official-rule-current-web-price-channel-conflict"
+        },
+        "chinaActivation": "eSIM purchasable online from abroad; real-name registration via app (passport accepted for non-HK residents).",
+        "kyc": "Real-name registration mandatory (HK law); passport supported.",
+        "payment": "International cards + Alipay/WeChat Pay HK reportedly accepted.",
+        "wifiCalling": "n/a",
+        "roamingSms": "Ordinary incoming SMS abroad remains usable, but Telegram registration evidence is mixed. Seven distinct dated community threads now yield 2 success, 3 failure and 2 mixed/conditional observations; the generated observed-success figure is 28.6% (n=7), not a universal probability. Prefix, client, proxy/IP and roaming path materially affect outcomes.",
+        "refund": "not reconciled",
+        "trend": "low-cost-but-mixed-telegram-verification",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-04",
+        "acquireUrl": "https://www.clubsim.com.hk/",
+        "tariffSummary": "365-day service-pack clock; HK$6 SMS pack currently listed on web, with 2026 app-availability conflict.",
+        "sourceIds": [
+          "official-clubsim-faq-365-window-2026-09-26",
+          "community-vocus-clubsim-6hkd-guide-2026-04",
+          "community-naixi-clubsim-pack-availability-2026-07",
+          "official-clubsim-sms-pack-6hkd-2026-09-28",
+          "shuzijumin-clubsim-telegram-success-20240321",
+          "v2ex-clubsim-telegram-failure-20240412",
+          "linuxdo-clubsim-telegram-failure-20250219",
+          "v2ex-clubsim-telegram-mnp-failure-20251101",
+          "naixi-clubsim-telegram-conflict-20260729",
+          "naixi-clubsim-telegram-success-20260918",
+          "v2ex-clubsim-telegram-conditional-20260918"
         ],
         "guideSteps": [
           "Acquire ClubSIM physical SIM or eSIM and complete required real-name registration.",

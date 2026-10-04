@@ -10804,5 +10804,70 @@
         "reddit-luckysim-overseas-sms-instability-20260430"
       ]
     }
+  },
+  {
+    "id": "snap-clubsim-sms-pack-6hkd-2026-telegram-evidence-20261004",
+    "routeId": "clubsim-sms-pack-6hkd-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-04",
+    "sourceDataset": "hk-directory-batch-c.json",
+    "data": {
+      "id": "clubsim-sms-pack-6hkd-2026",
+      "brandId": "clubsim-hk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "ClubSIM supports physical SIM and eSIM. Current official web surfaces list the HK$6 SMS pack; a 2026 first-hand guide reports HK$50 minimum first-activation spend. Exact checkout minimum can vary by selected service pack.",
+      "landedCost": {
+        "currency": "HKD",
+        "providerOrCommunityPrice": 50,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 50,
+        "landedCny": 46,
+        "fxCheckedAt": "2026-09-28",
+        "state": "community-2026-entry-cost-current-web-pack"
+      },
+      "keep": {
+        "currency": "HKD",
+        "observedActionCost": 6,
+        "yearCostOriginal": 6,
+        "yearCostCny": 5.5,
+        "action": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6 option was temporarily absent in-app. Treat HK$6 as the current web price, not a guaranteed all-channel annual price; buy any available service pack before the 365-day deadline.",
+        "intervalDays": 365,
+        "state": "official-rule-current-web-price-channel-conflict"
+      },
+      "chinaActivation": "eSIM purchasable online from abroad; real-name registration via app (passport accepted for non-HK residents).",
+      "kyc": "Real-name registration mandatory (HK law); passport supported.",
+      "payment": "International cards + Alipay/WeChat Pay HK reportedly accepted.",
+      "wifiCalling": "n/a",
+      "roamingSms": "Ordinary incoming SMS abroad remains usable, but Telegram registration evidence is mixed. Seven distinct dated community threads now yield 2 success, 3 failure and 2 mixed/conditional observations; the generated observed-success figure is 28.6% (n=7), not a universal probability. Prefix, client, proxy/IP and roaming path materially affect outcomes.",
+      "refund": "not reconciled",
+      "trend": "low-cost-but-mixed-telegram-verification",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://www.clubsim.com.hk/",
+      "tariffSummary": "365-day service-pack clock; HK$6 SMS pack currently listed on web, with 2026 app-availability conflict.",
+      "sourceIds": [
+        "official-clubsim-faq-365-window-2026-09-26",
+        "community-vocus-clubsim-6hkd-guide-2026-04",
+        "community-naixi-clubsim-pack-availability-2026-07",
+        "official-clubsim-sms-pack-6hkd-2026-09-28",
+        "shuzijumin-clubsim-telegram-success-20240321",
+        "v2ex-clubsim-telegram-failure-20240412",
+        "linuxdo-clubsim-telegram-failure-20250219",
+        "v2ex-clubsim-telegram-mnp-failure-20251101",
+        "naixi-clubsim-telegram-conflict-20260729",
+        "naixi-clubsim-telegram-success-20260918",
+        "v2ex-clubsim-telegram-conditional-20260918"
+      ],
+      "guideSteps": [
+        "Acquire ClubSIM physical SIM or eSIM and complete required real-name registration.",
+        "Before the 365-day service-pack deadline, check the current web/app pack list.",
+        "If the HK$6 SMS pack is available, one purchase resets the service-pack clock; otherwise buy another available service pack rather than assuming HK$6 is guaranteed."
+      ]
+    }
   }
 ]
