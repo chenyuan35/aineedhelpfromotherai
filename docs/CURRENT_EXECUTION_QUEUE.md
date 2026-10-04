@@ -83,12 +83,24 @@ PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
 - Route remains `backstage-only` / `hold`; no ranking, route URL, publication-policy or sitemap state changes.
 - Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; append-only source corpus becomes **618**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap**.
 
-## NEXT — Measurement + maintenance, no invented expansion
+## JUST COMPLETED — Evidence-gated Phone Top decision layer
+
+PR #388 squash-merged as `f171726bde05245bc41c284d718ab32a64298f40`.
+
+- Existing Phone Radar canonical now renders five derived decision shortcuts: lowest setup cost, lowest yearly keep, longest verified keep window, best app-verification evidence, and best-documented continuity.
+- Top eligibility is conservative: long-term + real-mobile + admitted + user-visible. HOLD and backstage-only rows cannot win.
+- Route summaries now expose source count, KYC state, keep action, roaming-SMS evidence, HOLD reason, and continuity-warning counts for transparent downstream decisions.
+- Service aggregates expose success/failure/mixed counts and distinct-source counts. `successRatePct` remains `null` unless an exact route + service + operation group has at least 5 deduplicated observations from 5 distinct source records.
+- No arbitrary 0–100 safety score or unsupported "least likely to be banned/recycled" probability was added; continuity is expressed through verified keep windows, warning events and evidence depth.
+- Eval Gate #1156: **PASS**. Vercel Preview: **READY**. Production deployment `dpl_3HFruLPEyUj7hafRpQAAiBEQxSdL`: **READY**. Apex Phone Radar and live `phone-route-summaries.json`: HTTP 200 with the new fields.
+- Counts and publication boundary are unchanged: **159 routes / 87 markets / 156 brands / 117 networks / 618 sources**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
+## NEXT — Measurement + evidence-density maintenance, no invented expansion
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
-2. **Evidence maintenance:** continue append-only community/provider evidence acquisition for existing Phone routes and separate Data-eSIM.
+2. **Evidence-density maintenance:** prioritize independent, dated service-specific outcomes for the highest-value low-cost existing Phone routes, especially exact route + app/service + operation observations. The immediate goal is to mature thin qualitative compatibility evidence toward the >=5 deduplicated / >=5 distinct-source threshold where a real success percentage becomes defensible. Preserve failures/mixed outcomes equally; do not manufacture percentages. Continue separate Data-eSIM intake independently.
 3. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
 4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 

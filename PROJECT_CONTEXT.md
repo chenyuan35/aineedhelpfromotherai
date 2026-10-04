@@ -26,6 +26,12 @@ After reading `AGENTS.md`, read this checkpoint before any deeper project inspec
 | Observer access | Qwen key-only SSH remains the verified observer-control path. The trial observer is disposable; `remote-desktop-commander.service` is not a reliable control channel. `codex-vps` remains a separate Relay-history host. | Do not repurpose `codex-vps`, `yuan` or `hermes`; keep valuable observer summaries off-host. |
 | AI retrieval | Exa extraction works; semantic discovery remains weak. Tavily quota and GitHub metadata-write blockers remain. | Follow AIR docs in order; do not bypass provider blockers. |
 
+## Latest release checkpoint — Phone evidence-gated Top decision layer
+
+PR #388 (`f171726bde05245bc41c284d718ab32a64298f40`) released the first evidence-gated Top decision layer on the existing Phone Radar canonical. The default long-term-number view now derives **Lowest setup cost**, **Lowest yearly keep**, **Longest verified keep window**, **Best app-verification evidence**, and **Best-documented continuity** from normalized canonical data. Top winners are restricted to admitted, user-visible real-mobile long-term routes; HOLD and backstage-only rows cannot win. Service success percentages remain `null` unless the exact route + service + operation aggregate has at least **5 deduplicated observations from 5 distinct source records**. The layer also exposes compact decision facts including source count, KYC state, keep action, roaming-SMS evidence and continuity-warning signals. It does **not** invent a ban/recycle probability or arbitrary 0–100 safety score.
+
+Eval Gate #1156 passed; Vercel Preview passed; production deployment `dpl_3HFruLPEyUj7hafRpQAAiBEQxSdL` reached READY. The apex Phone Radar and live `phone-route-summaries.json` returned HTTP 200 with the new decision fields. Canonical/publication counts remain **159 routes / 87 markets / 156 brands / 117 networks / 618 sources**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## Immediate priority
 
 Run two tracks in parallel without confusing them:
