@@ -1,0 +1,30 @@
+name: Apply Saily phone patch
+
+on:
+  push:
+    branches:
+      - data/saily-us-phone-number-20261004
+    paths:
+      - .github/workflows/apply-saily-phone-patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply verified local patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .github/tmp/saily-us-phone-number-20261004.patch.gz.b64 | gzip -d > /tmp/saily.patch
+          git am /tmp/saily.patch
+          git rm .github/tmp/saily-us-phone-number-20261004.patch.gz.b64 .github/workflows/apply-saily-phone-patch.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: remove temporary Saily patch transport"
+          git push origin HEAD:${GITHUB_REF_NAME}
