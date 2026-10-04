@@ -17,6 +17,7 @@ Last updated: 2026-10-04
 Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Coverage audit: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
 Saily residual review: `docs/PHONE_SAILY_US_NUMBER_REVIEW_2026-10-04.md`.
+Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-04.md`.
 
 ## JUST COMPLETED — Canonical finder integration
 
@@ -33,11 +34,15 @@ PR #370 squash-merged as `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`.
 
 ## JUST COMPLETED — Saily residual HOLD admission
 
+PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
+
 - `saily-us-phone-number-2026` is normalized as `family=long-term`, `numberClass=voip-second-line`, `surfaceState=backstage-only`, `evidenceState=hold`; it is not mapped to a cellular network.
 - Current economics: **US$1.99/month** number subscription/reservation; KYC required; port-in/port-out unsupported.
 - Mixed reliability is preserved: provider warns some services reject VoIP OTP; current community evidence includes WhatsApp activation success, iMessage activation failure and an August 2026 phone-number/SMS operational failure report.
 - Canonical is now **157 routes / 86 markets / 154 brands / 116 networks / 599 sources**; finder family totals are **150 long-term / 5 temporary / 2 data**.
 - Publication stays **135 comparison / 3 indexable / 31 sitemap**; no Saily standalone route URL or publication-policy entry is created.
+- Eval Gate #1138 and CI #246: **PASS**; Vercel Preview and post-merge production: **SUCCESS**.
+- Live verification after merge: Phone hub HTTP 200; `phone-route-summaries.json` HTTP 200 with **157 routes** and Saily present; Saily lazy detail JSON HTTP 200 with `voip-second-line` / `backstage-only` / `hold`; standalone Saily route URL HTTP 404; sitemap HTTP 200 with **31 URLs** and no Saily entry.
 - `npm run phone:data:check`, the Saily migration regression, frontend build, public-release audit and `git diff --check` pass locally.
 
 ## NEXT — Measurement + maintenance, no invented expansion
