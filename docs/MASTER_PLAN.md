@@ -96,10 +96,11 @@ Historical batch detail remains in Git history, PRs and `docs/PHONE_DATABASE_COV
 1. **DONE — product direction, publication architecture and Phone-first frontend identity.** The product/value gates, layered publication states, global finder, decision shortcuts and Phone-first homepage/hub are released.
 2. **DONE — broad canonical database coverage.** DB-C21 through DB-C23 plus the bounded Saily, LuckySIM and China Telecom Macau residual admissions leave canonical at **159 routes / 87 markets / 156 brands / 117 networks / 618 sources** and **159/159 of the current known evidence-qualified relevant atomic route universe**. This is not a global carrier census; broad directory enumeration remains stopped.
 3. **DONE — canonical backend ↔ user finder integration.** PR #370 established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the same path now carries all 159 canonical rows, keeps HOLD/needs-reconciliation visibly uncertain and non-recommended, and preserves **135 comparison / 3 indexable / 31 sitemap**.
-4. **PARALLEL — evidence maintenance.** Continue append-only Phone/community and separate Data-eSIM evidence intake. Re-open a DB batch only for a genuinely new evidence-qualified atomic route.
-5. **WAIT — Phone Search Console publication decision.** Do not launch another public page wave until settled Phone impressions reach 20 or finalized data reaches 2026-10-05, whichever comes first.
-6. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
-7. **WAIT — TikTok advanced Direct Post review.** Do not resubmit unless TikTok rejects or requests new evidence. Authority batch 2 remains waiting.
+4. **DONE — evidence-gated Top decision layer.** PR #388 / `f171726bde05245bc41c284d718ab32a64298f40` derives low-cost/retention/app-evidence decision shortcuts from normalized Phone data on the existing canonical URL. HOLD/backstage rows cannot win; success percentages require >=5 deduplicated observations from >=5 distinct source records; no arbitrary safety score or new SEO URL was introduced.
+5. **PARALLEL — evidence-density maintenance.** Continue append-only Phone/community and separate Data-eSIM evidence intake, with priority on independent service-specific outcomes for the highest-value low-cost routes so thin qualitative app evidence can mature into defensible aggregates. Re-open a DB batch only for a genuinely new evidence-qualified atomic route.
+6. **WAIT — Phone Search Console publication decision.** Do not launch another public page wave until settled Phone impressions reach 20 or finalized data reaches 2026-10-05, whichever comes first.
+7. **ONGOING — Relay data accrual.** No search-led expansion without evidence.
+8. **WAIT — TikTok advanced Direct Post review.** Do not resubmit unless TikTok rejects or requests new evidence. Authority batch 2 remains waiting.
 
 ## Phone directory implementation contract
 

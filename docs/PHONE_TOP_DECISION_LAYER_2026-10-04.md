@@ -63,3 +63,17 @@ Revert the bounded PR. No migration or durable external state is created.
 ## Operating cost
 
 Static build-time derivation and browser-side rendering only; expected incremental runtime cost is negligible.
+
+
+## Release closeout
+
+- PR: #388
+- Merge: `f171726bde05245bc41c284d718ab32a64298f40`
+- Eval Gate #1156: PASS
+- Vercel Preview: READY
+- Production deployment: `dpl_3HFruLPEyUj7hafRpQAAiBEQxSdL` READY
+- Production apex Phone Radar: HTTP 200
+- Production `phone-route-summaries.json`: HTTP 200 with `decisionFacts`, distinct-source service counts and evidence-gated success-rate fields
+- Canonical remains 159 routes / 87 markets / 156 brands / 117 networks / 618 sources
+- Public SEO boundary remains 135 comparison / 3 indexable / 31 sitemap URLs
+- No new route URL, sitemap entry, arbitrary safety score or unsupported success percentage was introduced
