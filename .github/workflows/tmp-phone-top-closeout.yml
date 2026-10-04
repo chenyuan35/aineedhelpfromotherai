@@ -1,0 +1,35 @@
+name: Temporary Phone Top Closeout
+
+on:
+  push:
+    branches:
+      - docs/phone-top-decision-closeout-20261004
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply closeout facts
+        run: python3 .github/tmp/apply_phone_top_closeout.py
+      - name: Verify no whitespace errors
+        run: git diff --check
+      - name: Verify release identifiers
+        run: |
+          grep -q "PR #388" PROJECT_CONTEXT.md
+          grep -q "Eval Gate #1156" docs/CURRENT_EXECUTION_QUEUE.md
+          grep -q "f171726bde05245bc41c284d718ab32a64298f40" docs/PHONE_TOP_DECISION_LAYER_2026-10-04.md
+          grep -q "evidence-density maintenance" docs/MASTER_PLAN.md
+      - name: Remove temporary closeout files
+        run: rm .github/tmp/apply_phone_top_closeout.py .github/workflows/tmp-phone-top-closeout.yml
+      - name: Commit closeout
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "docs(phone): close out Top decision layer"
+          git push origin HEAD:docs/phone-top-decision-closeout-20261004
