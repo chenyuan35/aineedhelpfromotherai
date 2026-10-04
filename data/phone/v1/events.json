@@ -495,6 +495,24 @@
     "sourceId": "lmt-new-number-20260929"
   },
   {
+    "id": "evt-luckysim-hk-lifecycle-20261004",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "type": "retention-and-lifecycle-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Current provider catalog establishes a 1095-day Hong Kong-number plan at HKD138 and a durable top-up ladder where HKD50 extends number expiry 180 days, HKD100 extends 365 days, and HKD200 extends 540 days. The prior lifecycle blocker is cleared; the cheapest simple verified ongoing annual keep action is HKD100 for 365 days.",
+    "sourceId": "luckysim-hk-topup-20261004"
+  },
+  {
+    "id": "evt-luckysim-hk-reliability-caveat-20261004",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "type": "operational-reliability-reconciliation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Recent independent evidence supports overseas incoming SMS and ordinary mainland-China SMS, but bank and third-party OTP reliability remains insufficiently sampled. Preserve HOLD and do not publish an OTP guarantee or success percentage.",
+    "sourceId": "reddit-luckysim-overseas-20260904"
+  },
+  {
     "id": "evt-lycamobile-uk-keep-number-2026-db-c3-review-20260929",
     "routeId": "lycamobile-uk-keep-number-2026",
     "type": "cost-and-lifecycle-correction",

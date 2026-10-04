@@ -41,7 +41,7 @@ DB-C23 normalized state before the later Saily residual admission:
 
 DB-C23 changed backend coverage only. It did not authorize a new public route page, ranking or sitemap entry.
 
-On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route, so current normalized state is **157 routes / 86 markets / 154 brands / 116 networks / 606 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
+On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route. The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources, so current normalized state is **158 routes / 86 markets / 155 brands / 116 networks / 611 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
 
 ## Staging reconciliation
 
@@ -51,32 +51,31 @@ On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-
 - **8** additional records that are aliases, same-product variants or retention mechanisms already represented by an existing canonical route;
 - **9** records that are outside the Phone real-number route universe because they are data-only, temporary-verification or generic archetype records;
 - **4** records that are non-atomic market/provider clusters and therefore cannot be counted as four missing routes;
-- **1** still-distinct atomic staging candidate: LuckySIM Hong Kong.
+- **1** still-distinct atomic staging candidate at the original audit checkpoint: LuckySIM Hong Kong; this candidate was subsequently admitted backstage on 2026-10-04 after its lifecycle blocker cleared.
 
 The old 59-record staging inventory therefore is not evidence of 59 missing routes. Most of it has already been normalized, deduplicated or deliberately excluded by scope.
 
 ## Current residual candidate register
 
-Two distinct candidates remain outside canonical pending bounded evidence reconciliation:
+One distinct candidate remains outside canonical pending bounded evidence reconciliation:
 
-1. **LuckySIM Hong Kong** — current official surfaces show real-name registration, eSIM support and multi-year prepaid voice/data products. The durable post-term renewal/lifecycle rule and mainland-China SMS/OTP behavior still need reconciliation before canonical admission.
-2. **China Telecom Macau / Macau blue-card route** — 2026 community evidence reports a low-cost 180-day keep mechanic and current eSIM conversion capability, while China Telecom Macau currently documents prepaid/eSIM service. The exact current blue-card lifecycle/renewal rule still needs first-party reconciliation before admission.
+1. **China Telecom Macau / Macau blue-card route** — 2026 community evidence reports a low-cost 180-day keep mechanic and current eSIM conversion capability, while China Telecom Macau currently documents prepaid/eSIM service. The exact current blue-card lifecycle/renewal rule still needs first-party reconciliation before admission.
 
-**Resolved residual:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is now canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. This does not make it a recommendation or a public/indexable route.
+**Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong later cleared its durable renewal blocker the same day and is canonical backstage HOLD as a real-mobile route with verified HK$100/365-day ongoing retention; bank/third-party OTP reliability remains explicitly unresolved. Neither admission creates a recommendation or public/indexable route.
 
-The two remaining entries are residual research candidates, not public recommendations.
+The one remaining entry is a residual research candidate, not a public recommendation.
 
 ## Coverage calculation
 
 For the current known evidence-qualified universe:
 
-- normalized canonical routes: **157**
-- known distinct unresolved atomic candidates: **2**
+- normalized canonical routes: **158**
+- known distinct unresolved atomic candidates: **1**
 - denominator: **159**
 
-**Coverage = 157 / 159 = 98.7%.**
+**Coverage = 158 / 159 = 99.4%.**
 
-This clears the project target of approximately 90%+ with margin. As a sensitivity check, even if ten additional qualifying missing routes were discovered immediately, coverage would still be `157 / 169 = 92.9%`. Coverage would fall below 90% only if at least 16 additional qualifying missing atomic routes were discovered without corresponding canonical admission.
+This clears the project target of approximately 90%+ with margin. As a sensitivity check, even if ten additional qualifying missing routes were discovered immediately, coverage would still be `158 / 169 = 93.5%`. Coverage would fall below 90% only if at least 17 additional qualifying missing atomic routes were discovered without corresponding canonical admission.
 
 The sensitivity calculation is not evidence that unknown routes do not exist. It only shows that the current 90% decision is not dependent on one or two borderline candidates.
 
@@ -87,7 +86,7 @@ The broad database expansion phase is complete. Do **not** create DB-C24 from ca
 Move Phone database work to maintenance mode:
 
 - append new community/provider evidence to existing routes;
-- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or one of the two remaining residual candidates clears its blocker;
+- re-open a bounded DB batch only when a genuinely distinct evidence-qualified route appears or the one remaining residual candidate clears its blocker;
 - preserve conflicts and negative knowledge instead of forcing recommendation status;
 - keep Data-eSIM evidence separate unless a reviewed phone-number identity link is established;
 - keep backend admission separate from public/indexable publication.

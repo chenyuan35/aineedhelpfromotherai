@@ -1446,6 +1446,12 @@
       "marketId": "lv"
     },
     {
+      "id": "luckysim-hk",
+      "networkId": "csl-hk",
+      "name": "LuckySIM",
+      "marketId": "hk"
+    },
+    {
       "id": "lycamobile-uk",
       "networkId": "ee-uk",
       "name": "Lyca Mobile UK",
@@ -3352,6 +3358,27 @@
         "lmt-new-number-20260929",
         "lmt-refill-card-20260929",
         "lmt-useby-20260929"
+      ]
+    },
+    {
+      "id": "luckysim-hk-prepaid-2026",
+      "marketId": "hk",
+      "networkId": "csl-hk",
+      "brandId": "luckysim-hk",
+      "displayName": "LuckySIM Hong Kong Prepaid",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+      "sourceIds": [
+        "flyasia-luckysim-field-20260814",
+        "luckysim-hk-3y-number-20261004",
+        "luckysim-hk-topup-20261004",
+        "ofca-luckysim-rnr-20261004",
+        "reddit-luckysim-overseas-20260904"
       ]
     },
     {
@@ -5710,6 +5737,12 @@
       "reportedAt": "2026-09-27"
     },
     {
+      "id": "flyasia-luckysim-field-20260814",
+      "url": "https://www.flyasia.co/2026/luckysim/",
+      "type": "independent-editorial",
+      "reportedAt": "2026-08-14"
+    },
+    {
       "id": "fortress-hahasim-faq-20261003",
       "url": "https://www.fortress.com.hk/en/services/services?category=Order",
       "type": "provider-official",
@@ -6382,6 +6415,18 @@
       "reportedAt": "2025-04-19"
     },
     {
+      "id": "luckysim-hk-3y-number-20261004",
+      "url": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+      "type": "provider-official",
+      "reportedAt": "2026-10-04"
+    },
+    {
+      "id": "luckysim-hk-topup-20261004",
+      "url": "https://shop.luckysim.com.hk/sim-topup",
+      "type": "provider-official",
+      "reportedAt": "2026-10-04"
+    },
+    {
       "id": "lyca-uk-home-20260929",
       "url": "https://www.lycamobile.co.uk/",
       "type": "provider-official",
@@ -6662,6 +6707,12 @@
       "url": "https://shop.norlys.dk/mobil/",
       "type": "provider-official",
       "reportedAt": "2026-10-02"
+    },
+    {
+      "id": "ofca-luckysim-rnr-20261004",
+      "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/reference_guide/index.html",
+      "type": "regulator-official",
+      "reportedAt": "2026-10-04"
     },
     {
       "id": "official-2degrees-prepay-balance-2026-09-29",
@@ -7762,6 +7813,12 @@
       "reportedAt": "2026-03-21"
     },
     {
+      "id": "reddit-luckysim-overseas-20260904",
+      "url": "https://www.reddit.com/r/Hong_Kong/comments/1w6so3j/question_about_luckysim/",
+      "type": "independent-community",
+      "reportedAt": "2026-09-04"
+    },
+    {
       "id": "reddit-saily-number-failure-20260813",
       "url": "https://www.reddit.com/r/best_eSIM_providers/comments/1vn6sr8/problem_using_saily_phone_number/",
       "type": "independent-community",
@@ -8788,6 +8845,28 @@
       "dedupeKey": "lebara-2745784-lzd2-telegram"
     },
     {
+      "id": "obs-luckysim-hk-cn-ordinary-sms-20260904",
+      "routeId": "luckysim-hk-prepaid-2026",
+      "service": "ordinary-sms",
+      "operation": "incoming-roaming",
+      "outcome": "success",
+      "reportedAt": "2026-09-04",
+      "geography": "mainland China",
+      "sourceId": "reddit-luckysim-overseas-20260904",
+      "dedupeKey": "luckysim-reddit-cn-ordinary-sms-20260904"
+    },
+    {
+      "id": "obs-luckysim-hk-uk-incoming-sms-20260814",
+      "routeId": "luckysim-hk-prepaid-2026",
+      "service": "ordinary-sms",
+      "operation": "incoming-roaming",
+      "outcome": "success",
+      "reportedAt": "2026-08-14",
+      "geography": "United Kingdom",
+      "sourceId": "flyasia-luckysim-field-20260814",
+      "dedupeKey": "luckysim-flyasia-uk-incoming-sms-20260814"
+    },
+    {
       "id": "obs-saily-us-phone-number-whatsapp-20260815",
       "routeId": "saily-us-phone-number-2026",
       "service": "WhatsApp",
@@ -9294,6 +9373,24 @@
       "scope": "route",
       "outcome": "LMT confirms a 60-day advance-validity plus 60-day receive-only structure and a €1 online refill minimum, but the old €3 every 60 days / €18-year model does not follow from the current pages.",
       "sourceId": "lmt-new-number-20260929"
+    },
+    {
+      "id": "evt-luckysim-hk-lifecycle-20261004",
+      "routeId": "luckysim-hk-prepaid-2026",
+      "type": "retention-and-lifecycle-reconciliation",
+      "reportedAt": "2026-10-04",
+      "scope": "route",
+      "outcome": "Current provider catalog establishes a 1095-day Hong Kong-number plan at HKD138 and a durable top-up ladder where HKD50 extends number expiry 180 days, HKD100 extends 365 days, and HKD200 extends 540 days. The prior lifecycle blocker is cleared; the cheapest simple verified ongoing annual keep action is HKD100 for 365 days.",
+      "sourceId": "luckysim-hk-topup-20261004"
+    },
+    {
+      "id": "evt-luckysim-hk-reliability-caveat-20261004",
+      "routeId": "luckysim-hk-prepaid-2026",
+      "type": "operational-reliability-reconciliation",
+      "reportedAt": "2026-10-04",
+      "scope": "route",
+      "outcome": "Recent independent evidence supports overseas incoming SMS and ordinary mainland-China SMS, but bank and third-party OTP reliability remains insufficiently sampled. Preserve HOLD and do not publish an OTP guarantee or success percentage.",
+      "sourceId": "reddit-luckysim-overseas-20260904"
     },
     {
       "id": "evt-lycamobile-uk-keep-number-2026-db-c3-review-20260929",
@@ -14472,6 +14569,65 @@
           "Directory card."
         ],
         "marketName": "Latvia"
+      }
+    },
+    {
+      "id": "snap-luckysim-hk-prepaid-2026-current-profile-20261004",
+      "routeId": "luckysim-hk-prepaid-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-04",
+      "sourceDataset": "luckysim-hk-reviewed-2026-10-04",
+      "data": {
+        "id": "luckysim-hk-prepaid-2026",
+        "brandId": "luckysim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "LuckySIM currently offers a HKD138 prepaid plan valid 1095 days with 30GB Hong Kong data, 2,000 local minutes and a retained Hong Kong mobile number. The official plan supports physical SIM/eSIM, voice and SMS, and requires real-name registration.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 138,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 138,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-1095d-plan"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 100,
+          "yearCostOriginal": 100,
+          "yearCostCny": null,
+          "action": "Before number expiry, top up HKD100 through the current LuckySIM top-up channel to reset/extend the SIM number expiry by 365 days. Current alternatives are HKD50/180 days and HKD200/540 days; validity is counted from the new top-up transaction rather than stacked onto remaining days.",
+          "intervalDays": 365,
+          "state": "current-provider-topup-ladder"
+        },
+        "chinaActivation": "Real-name registration is required before use. A September 2026 community report says ordinary non-bank SMS was reliable in Hong Kong/mainland China, but a universal mainland-China-first activation path and bank/OTP reliability are not established.",
+        "kyc": "Required. LuckySIM's current plan requires real-name registration before use, and OFCA lists LuckySIM/Amoeba Limited in the prepaid-SIM registration directory.",
+        "payment": "LuckySIM provides online purchase/top-up. Current independent operational guidance reproduces online renewal using card/Alipay/WeChat Pay, but payment-method acceptance can vary by user and region.",
+        "wifiCalling": "not normalized; a 2026 independent guide reports Wi-Fi Calling is not supported, but this review does not treat that as provider-guaranteed fact.",
+        "roamingSms": "HOLD. Current provider plan supports roaming calls/SMS capability, and 2026 independent evidence reproduces free incoming SMS in the UK plus ordinary SMS in mainland China. Bank and third-party OTP reliability is not sufficiently sampled for a guarantee.",
+        "refund": "Official product purchase is non-refundable/non-exchangeable after purchase; broader recovery/refund cases are not reconciled.",
+        "trend": "current-long-validity-hk-number-with-cleared-renewal-rule-but-thin-otp-evidence",
+        "guideEligible": false,
+        "holdReason": "Lifecycle and renewal are now verified, but service-specific bank/third-party OTP reliability in mainland China/overseas remains too thin for recommendation status, and overseas network attachment can require manual selection. Keep backstage HOLD until stronger independent verification evidence exists.",
+        "lastVerifiedAt": "2026-10-04",
+        "acquireUrl": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+        "tariffSummary": "HKD138 for a 1095-day Hong Kong-number plan; verified ongoing retention via HKD100 top-up for 365 days. Real-name registration required; OTP reliability remains HOLD.",
+        "guideSteps": [
+          "Acquire a current LuckySIM Hong Kong-number plan and complete real-name registration before relying on the number.",
+          "Test ordinary incoming SMS and every critical bank/app verification flow in the actual destination before binding important accounts.",
+          "Before expiry, top up HKD100 under the current provider ladder and verify that the number expiry resets to 365 days from the transaction date."
+        ],
+        "sourceIds": [
+          "luckysim-hk-3y-number-20261004",
+          "luckysim-hk-topup-20261004",
+          "ofca-luckysim-rnr-20261004",
+          "flyasia-luckysim-field-20260814",
+          "reddit-luckysim-overseas-20260904"
+        ]
       }
     },
     {
@@ -21478,6 +21634,18 @@
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null
+    },
+    {
+      "routeId": "luckysim-hk-prepaid-2026",
+      "checkedAt": "2026-10-04",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": 138,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 100,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
     },
     {
       "routeId": "lycamobile-uk-keep-number-2026",

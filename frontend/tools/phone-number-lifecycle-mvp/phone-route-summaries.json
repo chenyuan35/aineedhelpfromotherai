@@ -2333,6 +2333,42 @@
       }
     },
     {
+      "id": "luckysim-hk-prepaid-2026",
+      "displayName": "LuckySIM Hong Kong Prepaid",
+      "marketId": "hk",
+      "marketName": "Hong Kong",
+      "countryCode": "HK",
+      "networkName": "csl (HKT)",
+      "brandName": "LuckySIM",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "hold",
+      "lastVerifiedAt": "2026-10-04",
+      "observationCount": 2,
+      "eventCount": 2,
+      "services": [
+        "ordinary-sms"
+      ],
+      "operations": [
+        "incoming-roaming"
+      ],
+      "serviceEvidence": [],
+      "metrics": {
+        "routeId": "luckysim-hk-prepaid-2026",
+        "checkedAt": "2026-10-04",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "HKD",
+        "acquisitionCostOriginal": 138,
+        "acquisitionCostCny": null,
+        "keepCurrency": "HKD",
+        "keepYearCostOriginal": 100,
+        "keepYearCostCny": null,
+        "keepIntervalDays": 365
+      }
+    },
+    {
       "id": "lycamobile-uk-keep-number-2026",
       "displayName": "Lyca Mobile UK",
       "marketId": "gb",

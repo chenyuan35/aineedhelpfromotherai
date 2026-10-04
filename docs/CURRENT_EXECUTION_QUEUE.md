@@ -7,8 +7,8 @@ Last updated: 2026-10-04
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 157 canonical routes / 86 markets / 154 brands / 116 networks / 606 sources; audited known evidence-qualified relevant-route coverage is **157/159 = 98.7%** after the bounded Saily residual admission. This is not a census of every worldwide carrier SKU.
-3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 157 canonical rows.
+2. **Backend coverage target is met:** 158 canonical routes / 86 markets / 155 brands / 116 networks / 611 sources; audited known evidence-qualified relevant-route coverage is **158/159 = 99.4%** after the bounded Saily and LuckySIM residual admissions. This is not a census of every worldwide carrier SKU.
+3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 158 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
 6. **Broad DB expansion stops.** Do not create DB-C24 from carrier directories, country-completion pressure, keyword counts or page-count pressure.
@@ -18,6 +18,7 @@ Architecture contract: `docs/PHONE_RADAR_SYSTEM_ARCHITECTURE_2026-09-28.md`.
 Coverage audit: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
 Saily residual review: `docs/PHONE_SAILY_US_NUMBER_REVIEW_2026-10-04.md`.
 Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-04.md`.
+LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 
 ## JUST COMPLETED — Canonical finder integration
 
@@ -54,13 +55,23 @@ PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
 - Canonical remains **157 routes / 86 markets / 154 brands / 116 networks**; append-only source corpus becomes **606**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap**.
 - Regression: `npm run phone:data:check`, frontend build, `phone-radar public release audit`, and `git diff --check` pass.
 
+## JUST COMPLETED — LuckySIM Hong Kong residual HOLD admission
+
+- `luckysim-hk-prepaid-2026` is normalized as `family=long-term`, `numberClass=real-mobile`, `surfaceState=backstage-only`, `evidenceState=hold` on `csl-hk`.
+- Current official acquisition baseline: **HK$138 / 1,095 days** with a retained Hong Kong mobile number, physical/eSIM support, voice/SMS and mandatory real-name registration.
+- Current official renewal ladder: **HK$50 / 180 days**, **HK$100 / 365 days**, **HK$200 / 540 days**; the normalized ongoing keep action is HK$100/year.
+- Recent independent evidence supports overseas incoming SMS and ordinary mainland-China SMS, but bank/third-party OTP reliability remains too thin for recommendation status.
+- Canonical becomes **158 routes / 86 markets / 155 brands / 116 networks / 611 sources**; finder family totals become **151 long-term / 5 temporary / 2 data**.
+- Publication remains **135 comparison / 3 indexable / 31 sitemap**; no LuckySIM standalone route URL or publication-policy entry is created.
+- `npm run phone:data:check`, frontend production build, Phone public-release audit and `git diff --check` pass locally.
+
 ## NEXT — Measurement + maintenance, no invented expansion
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
 2. **Evidence maintenance:** continue append-only community/provider evidence acquisition for existing Phone routes and separate Data-eSIM.
-3. **Residual routes:** LuckySIM Hong Kong and China Telecom Macau / Macau blue-card remain outside canonical until their existing lifecycle/renewal blockers clear. Do not replace their evidence gaps with inference.
+3. **Residual route:** China Telecom Macau / Macau blue-card remains outside canonical until its lifecycle/renewal blocker clears. Do not replace the evidence gap with inference.
 4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 
 Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
@@ -75,8 +86,8 @@ Delegated Qwen/Kimi work remains `RESEARCH_CANDIDATE` until coordinator review. 
 
 ## Do not do next
 
-- do not create DB-C24 merely to increase counts; Saily was a one-route exception only because its documented residual classification blocker cleared;
-- do not equate 98.7% with all global carrier products;
+- do not create DB-C24 merely to increase counts; Saily and LuckySIM were bounded residual exceptions only because their documented blockers cleared;
+- do not equate 99.4% with all global carrier products;
 - do not automatically turn canonical rows into SEO pages;
 - do not auto-rank HOLD/needs-reconciliation as recommendations;
 - do not mix pure data eSIM into Phone-number canonical without reviewed identity linkage;

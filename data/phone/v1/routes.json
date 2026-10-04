@@ -1409,6 +1409,27 @@
     ]
   },
   {
+    "id": "luckysim-hk-prepaid-2026",
+    "marketId": "hk",
+    "networkId": "csl-hk",
+    "brandId": "luckysim-hk",
+    "displayName": "LuckySIM Hong Kong Prepaid",
+    "family": "long-term",
+    "numberClass": "real-mobile",
+    "form": "physical + eSIM",
+    "surfaceState": "backstage-only",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-04",
+    "acquireUrl": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+    "sourceIds": [
+      "flyasia-luckysim-field-20260814",
+      "luckysim-hk-3y-number-20261004",
+      "luckysim-hk-topup-20261004",
+      "ofca-luckysim-rnr-20261004",
+      "reddit-luckysim-overseas-20260904"
+    ]
+  },
+  {
     "id": "lycamobile-uk-keep-number-2026",
     "marketId": "gb",
     "networkId": "ee-uk",

@@ -43,9 +43,9 @@ assert.match(hk.kyc, /real-name/i);
 assert.match(hk.keep.state, /20261231|promo/i);
 assert.equal(hk.holdReason, null);
 
-assert.equal(canonical.routes.length, 157);
+assert.equal(canonical.routes.length, 158);
 assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 154);
+assert.equal(brands.length, 155);
 assert.equal(networks.length, 116);
 assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));
