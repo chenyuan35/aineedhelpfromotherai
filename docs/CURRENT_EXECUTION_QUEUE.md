@@ -106,14 +106,28 @@ PR #390 squash-merged as `0a2c6a8e9b1529ec227b4a717d37c88cf51109fd`.
 - Source corpus becomes **625**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 - Branch regression workflow #37191691290: **PASS**. Eval Gate #1160: **PASS**. Vercel Preview: **PASS**. Production deployment `dpl_8U971UeoANGmLdu86JfNoPdmD5C4`: **READY**. Live ClubSIM detail JSON and live `phone-route-summaries.json`: **HTTP 200** with the 28.6% aggregate.
 
-## NEXT — Measurement + evidence-density maintenance, no invented expansion
+## JUST COMPLETED — Ultra Mobile PayGo Telegram evidence packet
+
+PR #392 squash-merged as `051e0caa0eb13a7c26317e3f5aca6dc78c95e7f3`.
+
+- Reviewed packet: `docs/PHONE_ULTRAMOBILE_TELEGRAM_EVIDENCE_2026-10-04.md` for existing route `ultra-mobile-paygo-3-2026`.
+- Five distinct exact-route + Telegram + registration-verification sources passed manual review: Reddit 2025-01-17, Didushan 2025-02-21, Shuzijumin 2025-03-07, LINUX DO 2025-06-03 and V2EX 2026-04-04.
+- Proposed normalized aggregate after canonical application: **3 success / 0 failure / 2 mixed / n=5 / 5 distinct sources / observed success 60.0% / grade C (Mixed / weak)**.
+- A NodeSeek cross-post of the V2EX case is explicitly deduped and must not be counted as another independent observation.
+- This PR staged the audited evidence and deterministic maintenance contract only; **canonical JSON is not yet mutated**, so the source corpus remains **625** until the maintenance is applied and rebuilt.
+- `ultra-mobile-paygo-3-2026` must remain `admitted` + `backstage-only`; no new route URL, publication-policy rule or sitemap entry is justified by this evidence.
+- Eval Gate #1164: **PASS**. Vercel Preview: **PASS**.
+- The isolated CodexPro coding workspace was unavailable during this session. Production worktree was not touched and no direct/manual canonical JSON edit was attempted.
+
+## NEXT — Measurement + Ultra canonical evidence application, no invented expansion
 
 The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
 
 1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
-2. **Evidence-density maintenance:** ClubSIM Telegram has now crossed the >=5 deduplicated / >=5 distinct-source display threshold but remains weak/mixed. Select another high-value low-cost existing route with thin service evidence and repeat the exact route + app/service + operation acquisition pattern. Preserve failures/mixed outcomes equally; do not manufacture percentages or promote a route solely on low price. Continue separate Data-eSIM intake independently.
-3. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
-4. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
+2. **Immediate evidence-maintenance task:** apply `docs/PHONE_ULTRAMOBILE_TELEGRAM_EVIDENCE_2026-10-04.md` to canonical data from a fresh branch/worktree when the isolated coding workspace is available. Add exactly the five reviewed source records and five deduplicated observations, update only the existing Ultra route/event/snapshot fields required by the maintenance contract, rebuild derived Phone artifacts, add a dedicated regression assertion, and run `phone:data:check`, public-release regression and frontend build before PR/merge. Preserve failures/mixed outcomes equally and preserve `backstage-only`.
+3. **After Ultra application:** select another high-value low-cost existing route with thin service evidence and repeat the exact route + app/service + operation acquisition pattern. Do not manufacture percentages or promote a route solely on low price. Continue separate Data-eSIM intake independently.
+4. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
+5. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
 
 Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
 
