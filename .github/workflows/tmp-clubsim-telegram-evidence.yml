@@ -1,0 +1,63 @@
+name: Temporary ClubSIM Telegram Evidence
+
+on:
+  push:
+    branches:
+      - data/clubsim-telegram-evidence-20261004
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: data/clubsim-telegram-evidence-20261004
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install frontend dependencies
+        run: npm --prefix frontend ci
+
+      - name: Apply evidence packet
+        run: node .github/tmp/apply-clubsim-telegram-evidence.cjs
+
+      - name: Build Phone data
+        run: npm run phone:data:build
+
+      - name: Verify Phone data
+        run: npm run phone:data:check
+
+      - name: Build frontend
+        run: npm --prefix frontend run build
+
+      - name: Verify public boundary
+        run: node scripts/test-phone-number-public-release.mjs
+
+      - name: Check whitespace
+        run: git diff --check
+
+      - name: Remove temporary workflow helpers
+        run: |
+          rm -f .github/tmp/apply-clubsim-telegram-evidence.cjs
+          rm -f .github/workflows/tmp-clubsim-telegram-evidence.yml
+
+      - name: Commit generated maintenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && { echo "No changes produced"; exit 1; }
+          git commit -m "data(phone): add ClubSIM Telegram evidence"
+          git push origin HEAD:data/clubsim-telegram-evidence-20261004
