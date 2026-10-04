@@ -33,6 +33,13 @@ jobs:
       - name: Apply evidence packet
         run: node .github/tmp/apply-clubsim-telegram-evidence.cjs
 
+      - name: Refresh source-count regression expectations
+        run: |
+          sed -i 's/assert.equal(sources.length, 618);/assert.equal(sources.length, 625);/' scripts/test-phone-canonical-luckysim-hk-migration.mjs
+          sed -i 's/assert.equal(sources.length, 618);/assert.equal(sources.length, 625);/' scripts/test-phone-canonical-ct-macau-migration.mjs
+          grep -q 'sources.length, 625' scripts/test-phone-canonical-luckysim-hk-migration.mjs
+          grep -q 'sources.length, 625' scripts/test-phone-canonical-ct-macau-migration.mjs
+
       - name: Build Phone data
         run: npm run phone:data:build
 
