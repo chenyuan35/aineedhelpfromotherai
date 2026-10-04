@@ -747,6 +747,15 @@
     "sourceId": "skt-pps-lifecycle-20260930"
   },
   {
+    "id": "evt-smart-prepaid-ph-2026-community-roaming-20260215",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "community-roaming-report",
+    "reportedAt": "2026-02-15",
+    "scope": "route",
+    "outcome": "A February 2026 independent community thread starts from a fully activated Smart prepaid eSIM and includes a user reporting that Smart service worked for them in Australia. Preserve this as weak practical roaming evidence only; it is not a service-specific OTP success record.",
+    "sourceId": "reddit-smart-esim-roaming-20260215"
+  },
+  {
     "id": "evt-smart-prepaid-ph-2026-db-c4b-review-20260929",
     "routeId": "smart-prepaid-ph-2026",
     "type": "eligibility-and-lifecycle-correction",
@@ -754,6 +763,42 @@
     "scope": "route",
     "outcome": "Smart ordinary prepaid lifecycle remains 365 days for loaded value plus a 180-day reload grace after balance reaches zero, but foreign tourists face a separate 30-day SIM-registration validity cap unless an approved visa extension is supplied. The legacy route is therefore not treated as a generally available long-term foreign-user route.",
     "sourceId": "smart-simreg-foreigners-20260929"
+  },
+  {
+    "id": "evt-smart-prepaid-ph-2026-esim-activation-incident-20260929",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "community-esim-activation-incident",
+    "reportedAt": "2026-09-29",
+    "scope": "route",
+    "outcome": "A September 29-October 1, 2026 community thread reports multiple Smart eSIM activation/conversion failures, including no-service and lost OTP/call reception after physical-to-eSIM conversion. Treat this as a dated operational incident signal, not proof of a permanent platform-wide failure.",
+    "sourceId": "reddit-smart-esim-activation-incident-20260929"
+  },
+  {
+    "id": "evt-smart-prepaid-ph-2026-esim-activation-success-20260927",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "community-esim-activation-report",
+    "reportedAt": "2026-09-27",
+    "scope": "route",
+    "outcome": "A September 2026 community report says a PHP99 Smart eSIM bought through the app produced a QR code that activated immediately. This is a single acquisition/activation report and does not override foreign-tourist registration limits.",
+    "sourceId": "reddit-smart-esim-acquisition-20260921"
+  },
+  {
+    "id": "evt-smart-prepaid-ph-2026-roaming-activation-20261004",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "roaming-activation-requirement",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Smart instructs prepaid users to activate roaming before departure by sending ROAM ON to 333. Smart still requires PHP100 balance for roaming activation, but its current reload guidance says the former PHP50 maintaining balance while abroad is no longer required and roaming can remain active without load.",
+    "sourceId": "smart-prepaid-roaming-reload-20261004"
+  },
+  {
+    "id": "evt-smart-prepaid-ph-2026-roaming-capability-20261004",
+    "routeId": "smart-prepaid-ph-2026",
+    "type": "roaming-sms-capability-confirmation",
+    "reportedAt": "2026-10-04",
+    "scope": "route",
+    "outcome": "Smart currently documents prepaid international roaming with text service: in supported voice-roaming countries prepaid users can make and receive calls and texts, and in countries without prepaid voice roaming they may still send and receive SMS. This confirms roaming-SMS capability but does not establish service-specific OTP reliability.",
+    "sourceId": "smart-prepaid-roaming-call-text-20261004"
   },
   {
     "id": "evt-smarty-uk-2026-db-c15-20261003",

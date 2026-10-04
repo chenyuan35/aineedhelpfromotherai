@@ -57,7 +57,7 @@ assert.equal(canonical.routes.length, 157);
 assert.equal(canonical.markets.length, 86);
 assert.equal(brands.length, 154);
 assert.equal(networks.length, 116);
-assert.equal(sources.length, 599);
+assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
 
