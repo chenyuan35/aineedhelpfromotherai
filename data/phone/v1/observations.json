@@ -88,6 +88,28 @@
     "dedupeKey": "lebara-2745784-lzd2-telegram"
   },
   {
+    "id": "obs-luckysim-hk-cn-ordinary-sms-20260904",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "service": "ordinary-sms",
+    "operation": "incoming-roaming",
+    "outcome": "success",
+    "reportedAt": "2026-09-04",
+    "geography": "mainland China",
+    "sourceId": "reddit-luckysim-overseas-20260904",
+    "dedupeKey": "luckysim-reddit-cn-ordinary-sms-20260904"
+  },
+  {
+    "id": "obs-luckysim-hk-uk-incoming-sms-20260814",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "service": "ordinary-sms",
+    "operation": "incoming-roaming",
+    "outcome": "success",
+    "reportedAt": "2026-08-14",
+    "geography": "United Kingdom",
+    "sourceId": "flyasia-luckysim-field-20260814",
+    "dedupeKey": "luckysim-flyasia-uk-incoming-sms-20260814"
+  },
+  {
     "id": "obs-saily-us-phone-number-whatsapp-20260815",
     "routeId": "saily-us-phone-number-2026",
     "service": "WhatsApp",

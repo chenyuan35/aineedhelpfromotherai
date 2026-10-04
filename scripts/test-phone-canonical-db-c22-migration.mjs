@@ -47,9 +47,9 @@ assert.equal(ais.keep.observedActionCost, 30);
 assert.match(ais.holdReason, /durable|remote|mainland|multi-year/i);
 assert.notEqual(ais.brandId, 'ais-sim2fly');
 
-assert.equal(canonical.routes.length, 157);
+assert.equal(canonical.routes.length, 158);
 assert.equal(canonical.markets.length, 86);
-assert.equal(brands.length, 154);
+assert.equal(brands.length, 155);
 assert.equal(networks.length, 116);
 assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));

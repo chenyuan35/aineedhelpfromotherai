@@ -426,6 +426,12 @@
     "marketId": "lv"
   },
   {
+    "id": "luckysim-hk",
+    "networkId": "csl-hk",
+    "name": "LuckySIM",
+    "marketId": "hk"
+  },
+  {
     "id": "lycamobile-uk",
     "networkId": "ee-uk",
     "name": "Lyca Mobile UK",

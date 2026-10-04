@@ -854,6 +854,18 @@
       "keepIntervalDays": null
     },
     {
+      "routeId": "luckysim-hk-prepaid-2026",
+      "checkedAt": "2026-10-04",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "HKD",
+      "acquisitionCostOriginal": 138,
+      "acquisitionCostCny": null,
+      "keepCurrency": "HKD",
+      "keepYearCostOriginal": 100,
+      "keepYearCostCny": null,
+      "keepIntervalDays": 365
+    },
+    {
       "routeId": "lycamobile-uk-keep-number-2026",
       "checkedAt": "2026-09-29",
       "metricState": "current-profile",

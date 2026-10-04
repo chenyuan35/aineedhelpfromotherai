@@ -648,6 +648,12 @@
     "reportedAt": "2026-09-27"
   },
   {
+    "id": "flyasia-luckysim-field-20260814",
+    "url": "https://www.flyasia.co/2026/luckysim/",
+    "type": "independent-editorial",
+    "reportedAt": "2026-08-14"
+  },
+  {
     "id": "fortress-hahasim-faq-20261003",
     "url": "https://www.fortress.com.hk/en/services/services?category=Order",
     "type": "provider-official",
@@ -1320,6 +1326,18 @@
     "reportedAt": "2025-04-19"
   },
   {
+    "id": "luckysim-hk-3y-number-20261004",
+    "url": "https://shop.luckysim.com.hk/luckysim-3years-hk-data-30gb-voice-2000mins",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "luckysim-hk-topup-20261004",
+    "url": "https://shop.luckysim.com.hk/sim-topup",
+    "type": "provider-official",
+    "reportedAt": "2026-10-04"
+  },
+  {
     "id": "lyca-uk-home-20260929",
     "url": "https://www.lycamobile.co.uk/",
     "type": "provider-official",
@@ -1600,6 +1618,12 @@
     "url": "https://shop.norlys.dk/mobil/",
     "type": "provider-official",
     "reportedAt": "2026-10-02"
+  },
+  {
+    "id": "ofca-luckysim-rnr-20261004",
+    "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/reference_guide/index.html",
+    "type": "regulator-official",
+    "reportedAt": "2026-10-04"
   },
   {
     "id": "official-2degrees-prepay-balance-2026-09-29",
@@ -2698,6 +2722,12 @@
     "url": "https://www.reddit.com/r/bangladesh/comments/1rzl9ms/the_biometric_sim_card_registration_at_dhaka/",
     "type": "first-hand-community-thread",
     "reportedAt": "2026-03-21"
+  },
+  {
+    "id": "reddit-luckysim-overseas-20260904",
+    "url": "https://www.reddit.com/r/Hong_Kong/comments/1w6so3j/question_about_luckysim/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-04"
   },
   {
     "id": "reddit-saily-number-failure-20260813",
