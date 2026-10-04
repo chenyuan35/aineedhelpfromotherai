@@ -119,5 +119,27 @@
     "geography": "unspecified",
     "sourceId": "reddit-saily-number-launch-20260610",
     "dedupeKey": "saily-launch-thread-whatsapp-success-20260815"
+  },
+  {
+    "id": "obs-luckysim-hk-au-banking-codes-20251018",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "service": "banking-codes",
+    "operation": "incoming-roaming",
+    "outcome": "success",
+    "reportedAt": "2025-10-18",
+    "geography": "Australia",
+    "sourceId": "reddit-luckysim-australia-bank-codes-20251018",
+    "dedupeKey": "luckysim-reddit-australia-banking-codes-20251018"
+  },
+  {
+    "id": "obs-luckysim-hk-overseas-sms-intermittent-failure-20260430",
+    "routeId": "luckysim-hk-prepaid-2026",
+    "service": "ordinary-sms",
+    "operation": "incoming-roaming",
+    "outcome": "failure",
+    "reportedAt": "2026-04-30",
+    "geography": "overseas (country not stated)",
+    "sourceId": "reddit-luckysim-overseas-sms-instability-20260430",
+    "dedupeKey": "luckysim-reddit-overseas-sms-intermittent-failure-20260430"
   }
 ]

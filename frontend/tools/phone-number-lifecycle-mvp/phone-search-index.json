@@ -9367,9 +9367,10 @@
       "surfaceState": "backstage-only",
       "evidenceState": "hold",
       "lastVerifiedAt": "2026-10-04",
-      "observationCount": 2,
-      "eventCount": 2,
+      "observationCount": 4,
+      "eventCount": 3,
       "services": [
+        "banking-codes",
         "ordinary-sms"
       ],
       "operations": [
@@ -9406,6 +9407,8 @@
         "backstage",
         "only",
         "hold",
+        "banking",
+        "codes",
         "ordinary",
         "sms",
         "incoming",
@@ -9415,6 +9418,12 @@
         "china",
         "united",
         "kingdom",
+        "australia",
+        "failure",
+        "overseas",
+        "country",
+        "not",
+        "stated",
         "evt",
         "lifecycle",
         "20261004",
@@ -9469,7 +9478,6 @@
         "independent",
         "evidence",
         "supports",
-        "overseas",
         "but",
         "bank",
         "third",
@@ -9477,14 +9485,7 @@
         "otp",
         "remains",
         "insufficiently",
-        "sampled",
-        "preserve",
-        "do",
-        "not",
-        "publish",
-        "an",
-        "guarantee",
-        "or"
+        "sampled"
       ]
     },
     {

@@ -29,7 +29,7 @@ assert.equal(route.numberClass, 'real-mobile');
 assert.equal(route.family, 'long-term');
 assert.equal(route.surfaceState, 'backstage-only');
 assert.equal(route.evidenceState, 'hold');
-assert.equal(route.sourceIds.length, 5);
+assert.equal(route.sourceIds.length, 7);
 assert.equal(policy.routeStates[id], undefined, 'LuckySIM HOLD route must not receive a public publication state');
 assert.equal(globalDirectory.routes.some((row) => row.id === id), false, 'LuckySIM must not enter the legacy public comparison directory');
 
@@ -56,12 +56,22 @@ assert.equal(ukSms.outcome, 'success');
 assert.equal(cnSms.outcome, 'success');
 assert(events.some((row) => row.id === 'evt-luckysim-hk-lifecycle-20261004'), 'missing LuckySIM lifecycle event');
 assert(events.some((row) => row.id === 'evt-luckysim-hk-reliability-caveat-20261004'), 'missing LuckySIM reliability event');
+assert(sources.some((row) => row.id === 'reddit-luckysim-australia-bank-codes-20251018'), 'missing LuckySIM Australia banking-code source');
+assert(sources.some((row) => row.id === 'reddit-luckysim-overseas-sms-instability-20260430'), 'missing LuckySIM SMS-instability source');
+const auBank = observations.find((row) => row.id === 'obs-luckysim-hk-au-banking-codes-20251018');
+const smsFailure = observations.find((row) => row.id === 'obs-luckysim-hk-overseas-sms-intermittent-failure-20260430');
+assert(auBank && smsFailure, 'missing LuckySIM maintenance observations');
+assert.equal(auBank.service, 'banking-codes');
+assert.equal(auBank.outcome, 'success');
+assert.equal(smsFailure.outcome, 'failure');
+assert(events.some((row) => row.id === 'evt-luckysim-hk-service-sms-maintenance-20261004'), 'missing LuckySIM SMS maintenance event');
+assert.match(current.roamingSms, /banking-code|Australia|mixed|HOLD/i);
 
 assert.equal(canonical.routes.length, 159);
 assert.equal(canonical.markets.length, 87);
 assert.equal(brands.length, 156);
 assert.equal(networks.length, 117);
-assert.equal(sources.length, 616);
+assert.equal(sources.length, 618);
 assert.equal(globalDirectory.routes.length, 135);
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3);
 

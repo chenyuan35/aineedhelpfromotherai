@@ -7,7 +7,7 @@ Last updated: 2026-10-04
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 616 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 618 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -75,6 +75,13 @@ PR #379 squash-merged as `045a114acb97c11acd1f56f234056d2e9d603efe`.
 - Service-specific bank/app OTP reliability remains insufficiently sampled, so the route remains HOLD.
 - Canonical becomes **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**; finder family totals become **152 long-term / 5 temporary / 2 data**.
 - Publication remains **135 comparison / 3 indexable / 31 sitemap**; no Macau standalone route URL or publication-policy entry is created.
+
+## JUST COMPLETED — LuckySIM service-specific SMS evidence maintenance
+
+- Two independent community sources were appended for `luckysim-hk-prepaid-2026`: one user reports receiving Hong Kong SMS for banking codes while in Australia; another reports multi-week incoming-SMS failure until support restarted the connection.
+- These are mixed route-level outcomes, not a bank/app OTP guarantee. The bank in the positive report is unspecified and the negative report shows delivery can be unstable.
+- Route remains `backstage-only` / `hold`; no ranking, route URL, publication-policy or sitemap state changes.
+- Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; append-only source corpus becomes **618**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap**.
 
 ## NEXT — Measurement + maintenance, no invented expansion
 
