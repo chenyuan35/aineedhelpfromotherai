@@ -57,9 +57,12 @@
       "label": "One positive report",
       "confidence": "very-low",
       "sampleSize": 1,
+      "independentSourceCount": 1,
       "successCount": 1,
       "failureCount": 0,
       "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
       "firstObservedAt": "2026-08-15",
       "lastObservedAt": "2026-08-15"
     }

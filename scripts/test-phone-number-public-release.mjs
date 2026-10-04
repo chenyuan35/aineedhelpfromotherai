@@ -32,6 +32,13 @@ assert.match(page, /<dt>Recover<\/dt>/);
 assert.match(page, /phone-first-identity\.css/);
 assert.match(page, /id="route-search"/);
 assert.match(page, /Global long-term number finder\./);
+assert.match(page, /Top decision shortcuts/);
+assert.match(page, /Lowest setup cost/);
+assert.match(page, /Lowest yearly keep/);
+assert.match(page, /Longest verified keep window/);
+assert.match(page, /Best app-verification evidence/);
+assert.match(page, /Best-documented continuity/);
+assert.match(page, /HOLD\/backstage rows never win/);
 assert.match(page, /phone-route-summaries\.json/);
 assert.match(page, /phone-route-data\//);
 assert.match(page, /phone_canonical_detail_open/);
@@ -95,7 +102,17 @@ for (const route of ukPilot.routes) {
 const canonicalIndex = JSON.parse(fs.readFileSync(path.join(publicDir, 'phone-route-summaries.json'), 'utf8'));
 assert.equal(canonicalIndex.routes.length, 159, 'public finder index must expose every canonical route');
 assert.deepEqual(Object.fromEntries([...new Set(canonicalIndex.routes.map(r => r.family))].map(f => [f, canonicalIndex.routes.filter(r => r.family === f).length])), { 'long-term': 152, temporary: 5, data: 2 });
-for (const route of canonicalIndex.routes) assert(fs.existsSync(path.join(publicDir, 'phone-route-data', `${route.id}.json`)), `${route.id} must have a lazy detail bundle`);
+for (const route of canonicalIndex.routes) {
+  assert(fs.existsSync(path.join(publicDir, 'phone-route-data', `${route.id}.json`)), `${route.id} must have a lazy detail bundle`);
+  assert.equal(typeof route.decisionFacts?.sourceCount, 'number', `${route.id} must expose source count for decision ranking`);
+  for (const evidence of route.serviceEvidence || []) {
+    if (evidence.successRatePct !== null) {
+      assert.equal(evidence.percentageEligible, true, `${route.id} percentage must be explicitly eligible`);
+      assert(evidence.sampleSize >= 5, `${route.id} percentage needs at least five observations`);
+      assert(evidence.independentSourceCount >= 5, `${route.id} percentage needs at least five distinct source records`);
+    }
+  }
+}
 
 const waitFor = async (fn, message, timeout = 3000) => {
   const started = Date.now();
@@ -120,6 +137,17 @@ const dom = new JSDOM(page, {
   }
 });
 await waitFor(() => dom.window.document.querySelector('#route-count')?.textContent.includes('152 reviewed routes'), 'canonical long-term market overview');
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Top decision shortcuts'), 'top decision shortcuts render');
+const leaderButtons = [...dom.window.document.querySelectorAll('.pr-leader-route[data-index-route]')];
+assert(leaderButtons.length > 0, 'at least one evidence-qualified Top route must render');
+for (const button of leaderButtons) {
+  const route = canonicalIndex.routes.find(r => r.id === button.dataset.indexRoute);
+  assert(route, 'Top route must exist in canonical index');
+  assert.equal(route.family, 'long-term', 'Top route must be long-term');
+  assert.equal(route.numberClass, 'real-mobile', 'Top route must be a real mobile number');
+  assert.equal(route.evidenceState, 'admitted', 'Top route must be admitted');
+  assert.notEqual(route.surfaceState, 'backstage-only', 'Top route must not promote backstage-only evidence');
+}
 const search = dom.window.document.querySelector('#route-search');
 search.value = 'eSIM.GG'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('eSIM.GG Estonia +372'), 'eSIM.GG canonical search');

@@ -92,9 +92,12 @@ const gradeServiceEvidence = rows => {
   else if (n >= 2 && (failure > 0 || mixed > 0)) { grade = 'C'; label = 'Mixed / weak'; }
   else if (n === 1 && success === 1) { grade = 'insufficient'; label = 'One positive report'; }
   else if (n === 1) { grade = 'C'; label = 'One negative/mixed report'; }
+  const independentSourceCount = new Set(uniqueRows.map(x => x.sourceId).filter(Boolean)).size;
+  const percentageEligible = n >= 5 && independentSourceCount >= 5;
+  const successRatePct = percentageEligible ? Math.round((success / n) * 1000) / 10 : null;
   const confidence = n >= 5 ? 'high' : n >= 3 ? 'medium' : n >= 2 ? 'low' : 'very-low';
   const dates = uniqueRows.map(x => x.reportedAt).filter(Boolean).sort();
-  return { grade, label, confidence, sampleSize: n, successCount: success, failureCount: failure, mixedCount: mixed, firstObservedAt: dates[0] || null, lastObservedAt: dates.at(-1) || null };
+  return { grade, label, confidence, sampleSize: n, independentSourceCount, successCount: success, failureCount: failure, mixedCount: mixed, percentageEligible, successRatePct, firstObservedAt: dates[0] || null, lastObservedAt: dates.at(-1) || null };
 };
 const serviceAggregates = [];
 for (const route of routes) {
@@ -128,10 +131,26 @@ const routeMetrics = routes.map(route => {
 const metricByRoute = new Map(routeMetrics.map(x => [x.routeId, x]));
 const serviceAggByRoute = new Map();
 for (const x of serviceAggregates) { if (!serviceAggByRoute.has(x.routeId)) serviceAggByRoute.set(x.routeId, []); serviceAggByRoute.get(x.routeId).push(x); }
+const serviceNameById = new Map(services.map(x => [x.id, x.name]));
+const compactText = (value, max = 180) => {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!text) return null;
+  return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
+};
+const classifyKyc = value => {
+  const text = normalize(value);
+  if (!text) return 'unknown';
+  if (/not required|no kyc|without kyc|no identity/.test(text)) return 'not-required';
+  if (/required|real name|passport|identity|kyc/.test(text)) return 'required';
+  return 'unclear';
+};
+const continuityRiskPattern = /(number[- ]?loss|closure|termination|terminated|suspension|cancel(?:lation|led)?|deactivat|recycl|service[- ]activation[- ]friction|operational[- ]failure|incident)/i;
 
 const searchIndex = routes.map(r => {
   const market = byMarket.get(r.marketId); const brand = byBrand.get(r.brandId); const network = r.networkId ? byNetwork.get(r.networkId) : null;
   const ss = snapByRoute.get(r.id) || []; const os = obsByRoute.get(r.id) || []; const es = eventByRoute.get(r.id) || [];
+  const profile = currentProfileByRoute.get(r.id)?.data || {};
+  const riskSignals = es.filter(e => continuityRiskPattern.test(`${e.type || ''} ${e.outcome || ''}`));
   const services = [...new Set(os.map(o => o.service).filter(Boolean))].sort();
   const operations = [...new Set(os.map(o => o.operation).filter(Boolean))].sort();
   const textParts = [r.id, r.displayName, market?.name, market?.countryCode, brand?.name, network?.name, r.family, r.numberClass, r.form, r.surfaceState, r.evidenceState, ...services, ...operations];
@@ -158,7 +177,16 @@ const searchIndex = routes.map(r => {
     eventCount: es.length,
     services,
     operations,
-    serviceEvidence: (serviceAggByRoute.get(r.id) || []).map(x => ({ serviceId: x.serviceId, operation: x.operation, grade: x.grade, label: x.label, confidence: x.confidence, sampleSize: x.sampleSize, lastObservedAt: x.lastObservedAt })),
+    serviceEvidence: (serviceAggByRoute.get(r.id) || []).map(x => ({ serviceId: x.serviceId, serviceName: serviceNameById.get(x.serviceId) || x.serviceId, operation: x.operation, grade: x.grade, label: x.label, confidence: x.confidence, sampleSize: x.sampleSize, independentSourceCount: x.independentSourceCount, successCount: x.successCount, failureCount: x.failureCount, mixedCount: x.mixedCount, percentageEligible: x.percentageEligible, successRatePct: x.successRatePct, lastObservedAt: x.lastObservedAt })),
+    decisionFacts: {
+      sourceCount: (r.sourceIds || []).length,
+      kycState: classifyKyc(profile.kyc),
+      keepAction: compactText(profile.keep?.action),
+      roamingSms: compactText(profile.roamingSms),
+      holdReason: compactText(profile.holdReason),
+      continuityRiskSignalCount: riskSignals.length,
+      lastContinuityRiskSignalAt: riskSignals.map(x => x.reportedAt).filter(Boolean).sort().at(-1) || null,
+    },
     metrics: metricByRoute.get(r.id),
     tokens,
   };
