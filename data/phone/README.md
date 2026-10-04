@@ -35,8 +35,8 @@ Missing data stays missing. A candidate route does not become public merely beca
 
 `scripts/build-phone-database.mjs` validates referential integrity and compiles browser artifacts:
 
-- `phone-route-summaries.json` — lightweight route summaries for first render/filtering.
-- `phone-search-index.json` — normalized text/facet index for browser-side search, including numeric route metrics and service-evidence aggregates.
+- `phone-route-summaries.json` — lightweight route summaries for first render/filtering. It also carries compact decision facts (source count, KYC state, retention action excerpt and continuity-warning count) plus service evidence counts. Observed success percentages are emitted only when the exact route + service + operation aggregate has at least five deduplicated observations from at least five distinct source records; otherwise the percentage stays `null`.
+- `phone-search-index.json` — normalized text/facet index for browser-side search, including numeric route metrics and the same evidence-gated service aggregates.
 - `phone-route-data/<route-id>.json` — lazy-loaded full route detail/evidence bundle.
 - `phone-database.json` — complete compiled bundle for audit/debug/export; not intended as the first-screen payload.
 - `phone-search.mjs` — browser-side query/filter/ranking logic.

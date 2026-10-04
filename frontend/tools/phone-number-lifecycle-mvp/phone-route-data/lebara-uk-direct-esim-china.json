@@ -62,9 +62,12 @@
       "label": "Good",
       "confidence": "low",
       "sampleSize": 2,
+      "independentSourceCount": 1,
       "successCount": 2,
       "failureCount": 0,
       "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
       "firstObservedAt": "2026-08-12",
       "lastObservedAt": "2026-08-13"
     },
@@ -78,9 +81,12 @@
       "label": "Good",
       "confidence": "low",
       "sampleSize": 2,
+      "independentSourceCount": 1,
       "successCount": 2,
       "failureCount": 0,
       "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
       "firstObservedAt": "2026-08-12",
       "lastObservedAt": "2026-08-13"
     }

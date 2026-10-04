@@ -20,6 +20,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unclear",
+        "keepAction": "For customers joining from 1 August 2026, spend/use at least £10 every 90 days. Customers joining 15 Oct 2025–31 Jul 2026 are on £10/120 days; customers joining before 15 Oct 2025…",
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "1pmobile-uk-2026",
         "checkedAt": "2026-09-29",
@@ -150,6 +159,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Top up at least NZ$10 every 365 days to keep the Prepay account active. Current official guidance says unused balance is forfeited and the SIM expires if this is not done.",
+        "roamingSms": "2degrees documents Prepay roaming and text use abroad. Its current Daily Roaming trigger list names sending a text but does not name receiving a text as a trigger; exact inbound-S…",
+        "holdReason": "The stale retention-terms blocker is resolved, but overseas-first activation of a brand-new Prepay line is not established by the reviewed current official material. Keep as HOLD…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "2degrees-prepay-2026",
         "checkedAt": "2026-09-29",
@@ -280,6 +298,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "5sim-temp",
         "checkedAt": "2026-09-15",
@@ -410,6 +437,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "A single top-up of at least EUR 20 extends B.free SIM validity by another 13 months. Two separate EUR 10 top-ups do not qualify for that extension.",
+        "roamingSms": "unverified for long-term non-EU use",
+        "holdReason": "Retention rule is current and clear, but foreign acquisition/first activation and long-term non-EU continuity are not verified.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "a1-bfree-at-2026",
         "checkedAt": "2026-09-29",
@@ -540,6 +576,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "a1-croatia-prepaid-esim",
         "checkedAt": "Apr 2026",
@@ -631,6 +676,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "EUR5 is the lowest currently displayed standard voucher amount, and A1 says standard vouchers extend account validity. The captured current first-party pages do not specify how ma…",
+        "roamingSms": "A1 publishes a prepaid roaming tariff and says prepaid users automatically connect to available networks abroad. The packet does not establish China-specific incoming OTP reliabil…",
+        "holdReason": "Current online acquisition/recharge/KYC/roaming evidence is stronger, but the key standard-voucher validity duration is still absent from captured current first-party material; an…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "a1-hr-prepaid-2026",
         "checkedAt": "2026-09-29",
@@ -761,6 +815,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "activatex-temp",
         "checkedAt": "2026-09-15",
@@ -882,6 +945,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Maintain the monthly ahamo subscription. There is no verified idle/PAYG number-parking mode.",
+        "roamingSms": "Official ahamo support states voice and SMS are available in more than 200 countries/regions. Service-specific OTP success in mainland China is not separately verified.",
+        "holdReason": "Resident-document/address acquisition constraints make this unsuitable as a general nonresident route, and the current JPY2,970/30GB profile is scheduled to change on 2026-12-01 t…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ahamo-jp-2026",
         "checkedAt": "2026-10-01",
@@ -1012,6 +1084,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Current AIS prepaid add-on material includes a THB30 prepaid call package that grants an additional 30 days of service validity. Community users report lower effective keep costs…",
+        "roamingSms": "A 2026 community user reports AIS signal and fast SMS reception in the keep-number context, but location and third-party OTP coverage are not sufficiently controlled to make a mai…",
+        "holdReason": "Distinct AIS local-number route is real, but the cheapest durable keep mechanic, foreign remote acquisition and mainland-China OTP behavior are not sufficiently reconciled; reject…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ais-local-prepaid-th-2026",
         "checkedAt": "2026-10-03",
@@ -1142,6 +1223,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "AIS says topping up can add SIM validity and On-Top packages can add validity days, but the reviewed current sources do not establish the cheapest durable number-retention top-up…",
+        "roamingSms": "AIS SIM2Fly documentation says calls and SMS can be received normally while abroad, and China is a supported destination. However, AIS reserves the right to suspend roaming after…",
+        "holdReason": "HOLD for long-term overseas number-retention/OTP use: exact minimum post-package number-retention economics are unresolved and AIS reserves the right to suspend roaming after more…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ais-sim2fly-365d-2026",
         "checkedAt": "2026-09-29",
@@ -1272,6 +1362,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "€5 top-up every 4 months (official ladder) ≈ €15/yr; or larger top-up for longer window. After window lapse, 2-month passive grace before deactivation.",
+        "roamingSms": "Receiving SMS abroad generally works; EU-roaming focused tariff, China receiving unverified — 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "aldi-talk-activity-window-2026",
         "checkedAt": "2026-09-28",
@@ -1402,6 +1501,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unclear",
+        "keepAction": "Use a chargeable call, text or data event within each 180-day period to keep the line fully active; separately, account credit is restricted after 180 days without a top-up or pla…",
+        "roamingSms": "Receiving SMS abroad generally free on UK networks (unverified for ASDA specifics).",
+        "holdReason": "Official activity and credit-expiry rules are both current, but the exact minimum sustainable retention cost is unresolved.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "asda-mobile-uk-2026",
         "checkedAt": "2026-09-29",
@@ -1532,6 +1640,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "For an existing CIN 1 line, paying the AZN3.99 subscription fee keeps the line open for 30 days. Bakcell also documents an AZN0.99 option that keeps the line active for 6 days fro…",
+        "roamingSms": "Bakcell support documents roaming activation, including contacting customer service from abroad. Current incoming-SMS/OTP behavior for CIN 1 while roaming is not independently rep…",
+        "holdReason": "CIN 1 has clear existing-line lifecycle and low-cost extension rules, but it is now an archived tariff and the current public tariff surface is GO. New acquisition plus current ov…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "bakcell-cin-az-2026",
         "checkedAt": "2026-10-01",
@@ -1662,6 +1779,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Enable SIM in Safe. Connection is free and the provider charges 1 KZT per month until disabled. If balance is below 1 KZT, the service is suspended until the balance is replenishe…",
+        "roamingSms": "unverified",
+        "holdReason": "Retention price is exceptionally strong, but new-line acquisition/payment are unresolved and fresh 2026 reports show remote SIM-in-Safe enablement/status friction.",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-25"
+      },
       "metrics": {
         "routeId": "beeline-kz-simka-v-seyfe-2026",
         "checkedAt": "2026-09-29",
@@ -1792,6 +1918,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 8,
+        "kycState": "required",
+        "keepAction": "Current provider policy says that after 90 days with no transactions all communication services, including incoming/outgoing calls, SMS and data, are restricted. Service can then…",
+        "roamingSms": "Beeline prepaid roaming is current and China is listed among the supported roaming-package countries. Current roaming support describes SMS use abroad and real-time charging; a cu…",
+        "holdReason": "A major product-identity gap remains: the explicitly foreign-passport Hello line is not valid in international roaming, while current China roaming applies to ordinary prepaid ser…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "beeline-uz-2026",
         "checkedAt": "2026-10-03",
@@ -1922,6 +2057,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "A BAM20 top-up gives 180 days of credit validity. After credit expiry the Ultra number has a 150-day retention/recovery period before permanent loss; treat that period as recovery…",
+        "roamingSms": "Ultra supports roaming generally; China-specific incoming SMS/OTP behavior is unverified.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "bhtelecom-ba-2026",
         "checkedAt": "2026-09-30",
@@ -2052,6 +2196,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current BTC public material reviewed here does not state a prepaid number inactivity/deactivation/recycling clock or the minimum transaction needed to preserve a number. Do not in…",
+        "roamingSms": "BTC documents broad international roaming on business mobile and free incoming calls/text for that business roaming context, but this cannot be transferred to ordinary consumer pr…",
+        "holdReason": "Current prepaid service exists, but number lifecycle/recycling, minimum keep-alive action, foreigner onboarding and consumer-prepaid China roaming are not sufficiently established.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "btc-bs-2026",
         "checkedAt": "2026-10-03",
@@ -2182,6 +2335,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Before expiry, purchase the dedicated CALENDAR Rakuten-line extension for the existing assigned MSN/phone number. Current extension listing is ¥5,400.",
+        "roamingSms": "Official listing: overseas SMS receiving supported (海外でのSMS受信も可能). Abuse clause: malicious SMS use can get ALL functions permanently stopped by the carrier. Roaming data 1GB/mo on…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "calendar-rakuten-prepaid-jp-2026",
         "checkedAt": "2026-09-29",
@@ -2312,6 +2474,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Current Cellcard top-up table gives USD50 a 180-day main-balance Active Period; smaller denominations give shorter periods. This supports a conservative roughly two-top-up-per-yea…",
+        "roamingSms": "unverified for long-term foreign OTP use",
+        "holdReason": "Current top-up Active Periods are clear, but provider surfaces conflict on expired-balance recovery (30 vs 180 days) and do not establish the exact number suspension/recycling lif…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "cellcard-kh-2026",
         "checkedAt": "2026-09-29",
@@ -2442,6 +2613,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Perform a qualifying transaction before 90 days of non-use. The official lifecycle page restarts the 90-day clock after calls/service purchases or similar transactions; use an out…",
+        "roamingSms": "eSIM roaming is supported, but inbound SMS pricing/continuity abroad remains unresolved.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "cellfie-ge-90-45d-2026",
         "checkedAt": "2026-09-29",
@@ -2572,6 +2752,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Recharge before the 180-day validity expires. China Telecom (Macau) officially states any recharge during validity resets/extends the prepaid-card validity to 180 days from the re…",
+        "roamingSms": "Current provider brochure states incoming SMS is free while in Macau, mainland China and Hong Kong. Bank/app OTP delivery is not guaranteed by that statement and remains HOLD.",
+        "holdReason": "Lifecycle, recharge reset, real-name, incoming-SMS capability and current eSIM support are verified, but recent bank/app-specific OTP outcomes are not sufficiently sampled for rec…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-04"
+      },
       "metrics": {
         "routeId": "china-telecom-macau-easy-pass-2026",
         "checkedAt": "2026-10-04",
@@ -2702,6 +2891,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Recharge qualifying main-account credit before expiry. Current CHT prepaid guidance states the number is valid for 180 days from activation and that qualifying recharge restarts t…",
+        "roamingSms": "Prepaid mobile data is domestic-only on the reviewed page; voice/SMS roaming details were not fully reconciled.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "cht-ruyi-180d-2026",
         "checkedAt": "2026-09-29",
@@ -2832,6 +3030,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Recharge within 180 days to reset credit validity; Claro current public pages show ARS2000 as the lowest visible recharge promotion tier. The dedicated prepaid contract keeps the…",
+        "roamingSms": "Claro documents prepaid roaming with calls/SMS/data subject to destination coverage and pricing. China-specific SMS/OTP delivery is not verified and should not be inferred.",
+        "holdReason": "Backstage only until remote foreign-card recharge and China-specific OTP reception have independent evidence.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "claro-pre-ar-2026",
         "checkedAt": "2026-09-30",
@@ -2962,6 +3169,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unclear",
+        "keepAction": "Legacy evidence describes a recharge cadence around 90 days and a later recycle window. Current 2026 terms were not reachable in this review; do not present the BRL15/90-day value…",
+        "roamingSms": "Not reverified.",
+        "holdReason": "Current Claro lifecycle/recharge policy was not retrievable in this evidence round. Keep the route normalized as HOLD with the legacy signal clearly marked unverified.",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "claro-pre-br-90d-2026",
         "checkedAt": "2026-09-29",
@@ -3092,6 +3308,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "The current recharge portal lists CLP750-1,999 as the lowest tier: 7 active days plus 173 recovery days, for 180 days total. Higher recharge tiers also total 180 days through diff…",
+        "roamingSms": "Claro’s current generic roaming surface confirms roaming service exists, but the reviewed material does not clearly establish current prepaid roaming/incoming-SMS terms for this r…",
+        "holdReason": "Foreign-passport new-line activation, full number-deactivation lifecycle, prepaid overseas SMS/OTP behavior and foreign-card recharge execution remain unresolved.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "claro-pre-cl-2026",
         "checkedAt": "2026-10-02",
@@ -3222,6 +3447,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Claro states that online recharges from COP1,000 are valid for 60 calendar days, and that a prepaid line with no movements for 60 days could be deactivated. A COP1,000 recharge is…",
+        "roamingSms": "Claro’s current prepaid roaming page explicitly says prepaid users can receive SMS abroad at no cost in supported destinations while sending SMS is unavailable. Mainland China was…",
+        "holdReason": "Initial foreign-user registration and mainland-China prepaid roaming/OTP support remain unresolved; the 60-day no-movement rule is a deactivation risk threshold rather than a guar…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-02"
+      },
       "metrics": {
         "routeId": "claro-pre-co-2026",
         "checkedAt": "2026-10-02",
@@ -3352,6 +3586,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Current ClubSIM terms use a 365-day service-pack purchase clock. The official web surface currently lists the SMS pack at HK$6/30 days, but July 2026 users reported that the HK$6…",
+        "roamingSms": "Receiving SMS abroad on ClubSIM works without roaming pack (community consensus); sending requires roaming pack — 验证中 for exact rates.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "clubsim-sms-pack-6hkd-2026",
         "checkedAt": "2026-09-28",
@@ -3482,6 +3725,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Official MySIM package terms (PDF 2026-04-15): since 2024-12-01, recharging (any top-up) extends SIM validity — other package purchases no longer do. Community wiki rule: recharge…",
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "cmhk-mysim-hk-2026",
         "checkedAt": "2026-09-27",
@@ -3612,6 +3864,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Use the current CMLink UK Keep UK Number plan. The provider advertises GBP15 for 365 days of number holding; community reports say plan eligibility/order handling and the post-exp…",
+        "roamingSms": "CMLink advertises China roaming/number retention, but 2025-2026 community reports describe mainland-China outgoing call/SMS disruption and do not establish universal third-party O…",
+        "holdReason": "GBP15/365-day retention product is live, but enrollment eligibility/customer-service path, post-expiry closure timing and mainland-China SMS/voice behavior remain material operati…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "cmlink-uk-keep-number-2026",
         "checkedAt": "2026-10-03",
@@ -3742,6 +4003,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Renew the monetary balance with at least the current EUR13 electronic minimum before the 13-month line-renewal deadline; use a conservative annual reminder rather than relying on…",
+        "roamingSms": "EU roaming exists; China incoming-SMS/OTP behavior is not verified.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "cosmote-frog-13mo-2026",
         "checkedAt": "2026-09-29",
@@ -3872,6 +4142,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Renew the 12-month multi-month plan at the then-current renewal price; current Auto Pay material supports 12-month renewal cadence. If a payment is missed, service is suspended an…",
+        "roamingSms": "China is on the current Cricket Passport eligible-country list. Current Passport terms say receiving texts does not trigger the Passport service charge, while active voice/text/da…",
+        "holdReason": "USD300/year is not a low-cost keep route, Wi-Fi Calling requires prior Cricket-network attachment, and reliable foreign-resident/China-first activation and foreign-card execution…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "cricket-us-2026",
         "checkedAt": "2026-10-03",
@@ -4002,6 +4281,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current official statements conflict. The promotion table says a HKD20-49.9 top-up extends service validity 365 days through 31 Dec 2026, while nearby terms say HKD50+ extends val…",
+        "roamingSms": "csl supports roaming functions generally, and 2026 community users discuss the 7-Eleven route as a keep-number/SMS option, but mainland-China incoming-SMS and third-party OTP reli…",
+        "holdReason": "Current csl page conflicts on whether the relevant recharge extends 180 or 365 days, and the 365-day table is promotional through 31 Dec 2026. Reverify after the promotion or prov…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "csl-711-prepaid-hk-2026",
         "checkedAt": "2026-10-03",
@@ -4132,6 +4420,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Provider currently exposes a Back to China SIM Retention Plan. Community evidence conflicts: some users report roughly 90-day activity for no-plan accounts while plan users follow…",
+        "roamingSms": "Current community evidence supports China-side signal, SMS/number use and support recovery. Service-specific OTP reliability and long-term roaming enforcement remain evidence-scop…",
+        "holdReason": "The provider confirms a current Back to China retention product, but exact eligibility, price and post-expiry rules are not cleanly extractable; community reports also conflict on…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ctexcel-uk-2026",
         "checkedAt": "2026-10-03",
@@ -4262,6 +4559,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Top up EUR 5 or more before the 365-day validity deadline. Each listed credit top-up value grants 365 days. After expiry, outgoing calls stop, then 7 days incoming-only plus 15 ad…",
+        "roamingSms": "unverified",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "cyta-soeasy-cy-2026",
         "checkedAt": "2026-09-29",
@@ -4392,6 +4698,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Use the recharge-validity ladder. Current official values include LKR400 for 180 days and LKR1000 for 365 days; two LKR400 recharges are the cheaper near-year path if validity ext…",
+        "roamingSms": "Not sourced in this review.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "dialog-lk-365d-2026",
         "checkedAt": "2026-09-29",
@@ -4522,6 +4837,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Use the official RM198 validity extension for 365 days, or maintain validity through qualifying reloads such as Digi RM100 for 120 days.",
+        "roamingSms": "Receiving SMS abroad works while active (community).",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "digi-reload-validity-my-2026",
         "checkedAt": "2026-09-29",
@@ -4652,6 +4976,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Digicel reserves the right to deactivate a prepaid account after four months with no usage. If reactivated after deactivation, the customer is assigned a new number. The reviewed…",
+        "roamingSms": "Current Jamaica Global roaming plans list China. Carrier roaming availability is established, but incoming SMS pricing and third-party OTP reliability in China were not establishe…",
+        "holdReason": "The four-month no-usage deactivation clock is current, but the exact minimum qualifying activity that resets that clock is not defined; China-specific incoming SMS/OTP behavior al…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "digicel-jm-2026",
         "checkedAt": "2026-10-03",
@@ -4782,6 +5115,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "2026 community users report that a small PHP5-PHP10 regular-load top-up can preserve the number for about a year, but the reviewed current DITO provider pages do not confirm that…",
+        "roamingSms": "2026 community users report mainland-China roaming and incoming-SMS use with mixed device/platform outcomes. DITO does not guarantee third-party OTP delivery in the reviewed provi…",
+        "holdReason": "Tourist foreign-user lines are 30-day/extension-controlled and the community PHP5/PHP10 annual keep mechanic lacks current provider confirmation; mainland OTP reliability is mixed.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "dito-prepaid-ph-2026",
         "checkedAt": "2026-10-03",
@@ -4912,6 +5254,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Tourist SIM is valid for 90 days. du support documents an AED5 renewal/extension action during that validity; current evidence does not establish an indefinitely repeatable one-ye…",
+        "roamingSms": "du states international roaming can be activated for the Tourist plan; this packet does not establish free or reliable incoming OTP SMS abroad.",
+        "holdReason": "The documented product is a short-term Tourist SIM with 90-day validity and an extension path, not a verified indefinite low-cost retention product; long-term overseas OTP evidenc…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "du-prepaid-ae-2026",
         "checkedAt": "2026-09-29",
@@ -5042,6 +5393,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "unclear",
+        "keepAction": "Before 180 days elapse, perform any EE-listed usage action. A standard out-of-plan UK SMS is currently £0.20. If the line enters hibernation at day 180, call EE within the next 90…",
+        "roamingSms": "PAYG can roam subject to destination rules; EE community/support evidence says receiving SMS is free while abroad. China OTP reliability remains unverified.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ee-uk-payg-180d-2026",
         "checkedAt": "2026-09-28",
@@ -5172,6 +5532,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Recharge at least EUR 10 before expiry. Every recharge extends the subscription for 12 months; after expiry there is a one-month receive/recharge recovery window before closure.",
+        "roamingSms": "Elisa states that Prepaid works abroad for calls/messages/data, but China-specific incoming SMS and OTP reliability are unverified.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "elisa-prepaid-fi-2026",
         "checkedAt": "2026-09-29",
@@ -5302,6 +5671,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "not-required",
+        "keepAction": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is n…",
+        "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persiste…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "esimgg-estonia-372-2026",
         "checkedAt": "2026-10-03",
@@ -5432,6 +5810,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Keep using the line by recharging, making or receiving calls, or sending SMS. If the line becomes unused, e& says the number is retained for 12 months and can be revived during th…",
+        "roamingSms": "Wasel supports international roaming; current FAQ explicitly says incoming SMS while roaming is free.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "etisalat-wasel-ae-2026",
         "checkedAt": "2026-09-29",
@@ -5562,6 +5949,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "Official FarEasTone prepaid terms: number validity is 6 months from activation and each recharge; communication-credit recharge denominations include NT$100, NT$300, NT$500 and NT…",
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "fareastone-prepaid-tw-2026",
         "checkedAt": "2026-09-27",
@@ -5673,6 +6069,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "not-required",
+        "keepAction": "Top up HKD10 or more before expiry. Current Fortress FAQ says each qualifying top-up automatically extends SIM validity by 365 days; buying a data package does not extend validity.",
+        "roamingSms": "Current provider FAQ supports roaming text/voice subject to account balance and charges. 2026 community users report mainland-China SMS reception, but service-specific OTP success…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "fortress-hahasim-hk-2026",
         "checkedAt": "2026-10-03",
@@ -5803,6 +6208,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unclear",
+        "keepAction": "Maintain the ongoing €2/month subscription. This is a recurring mobile plan, not a low-touch prepaid inactivity rule.",
+        "roamingSms": "EU roaming; receiving SMS abroad generally free.",
+        "holdReason": "Current product is verified, but non-resident eligibility is materially constrained and foreign acquisition/payment viability is not established.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "free-mobile-fr-2026",
         "checkedAt": "2026-09-29",
@@ -5942,32 +6356,62 @@
       "serviceEvidence": [
         {
           "serviceId": "openai",
+          "serviceName": "ChatGPT / OpenAI",
           "operation": "phone-verification",
           "grade": "insufficient",
           "label": "One positive report",
           "confidence": "very-low",
           "sampleSize": 1,
+          "independentSourceCount": 1,
+          "successCount": 1,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-06-05"
         },
         {
           "serviceId": "telegram",
+          "serviceName": "Telegram",
           "operation": "registration-verification",
           "grade": "C",
           "label": "Mixed / weak",
           "confidence": "low",
           "sampleSize": 2,
+          "independentSourceCount": 2,
+          "successCount": 1,
+          "failureCount": 0,
+          "mixedCount": 1,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-06-07"
         },
         {
           "serviceId": "whatsapp",
+          "serviceName": "WhatsApp",
           "operation": "registration-verification",
           "grade": "insufficient",
           "label": "One positive report",
           "confidence": "very-low",
           "sampleSize": 1,
+          "independentSourceCount": 1,
+          "successCount": 1,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-06-07"
         }
       ],
+      "decisionFacts": {
+        "sourceCount": 13,
+        "kycState": "unclear",
+        "keepAction": "Create a balance-changing activity within 180 days; SMS or small data usage are community-reproduced examples.",
+        "roamingSms": "inbound verification SMS widely reported; service-specific behavior varies",
+        "holdReason": null,
+        "continuityRiskSignalCount": 2,
+        "lastContinuityRiskSignalAt": "2026-07-27"
+      },
       "metrics": {
         "routeId": "giffgaff-uk-direct-esim-payg",
         "checkedAt": "2026-09-15",
@@ -6098,6 +6542,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Foreign-tourist registration is the binding rule for this use case: Globe states the tourist SIM/eSIM automatically expires 30 days after registration. The ordinary one-year regul…",
+        "roamingSms": "Official Globe prepaid roaming support says a prepaid line can keep roaming signal with zero load and can receive incoming texts for free while abroad.",
+        "holdReason": "Foreign-tourist SIM/eSIM registration automatically expires after 30 days, so the legacy one-top-up-per-year framing is not valid for the target overseas foreign-user retention jo…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "globe-prepaid-1yr-2026",
         "checkedAt": "2026-09-29",
@@ -6228,6 +6681,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Perform at least one chargeable event or top-up before 90 days of inactivity. An outgoing local SMS on the current PAYG Base tariff is EUR0.10 and qualifies as chargeable activity…",
+        "roamingSms": "PAYG international activity and roaming are enabled upon activation. China is listed in GO's Prepaid Top-up Zone 4. Delivery of specific third-party OTPs remains unverified and is…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "go-payasyougo-mt-2026",
         "checkedAt": "2026-10-01",
@@ -6358,6 +6820,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unclear",
+        "keepAction": "Do not rely on the historical $20/180-day top-up rule until current Good2Go terms confirm it.",
+        "roamingSms": "No roaming on PAYG (Canada-only service historically).",
+        "holdReason": "Current provider-controlled PAYG expiry/top-up rule was not located; historical evidence is too stale for admission as a settled mechanic.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "good2go-payg-ca-2026",
         "checkedAt": "2026-09-29",
@@ -6488,6 +6959,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Keep Flexible active at USD20/month before data/taxes. A line can be paused for up to three months and auto-resumes; Google explicitly says keeping Fi paused for extended periods/…",
+        "roamingSms": "China is explicitly in the current 200+ destination list for Flexible. International texts are included at no extra charge and cellular calls are generally USD0.20/min; Flexible d…",
+        "holdReason": "Google Fi requires U.S.-first activation/use and a valid U.S. payments-profile address, costs USD240/year before data/taxes, and enforces limits on extended international data use…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "google-fi-flexible-2026",
         "checkedAt": "2026-10-03",
@@ -6618,6 +7098,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Recharge BDT300 or more to receive 365 days of main-account validity under the current official matrix. Longer validity extensions exist, but the current five-year price is incons…",
+        "roamingSms": "unverified",
+        "holdReason": "Annual retention rule is strong, but foreigner acquisition is local/KYC-heavy and the current five-year extension price conflicts across first-party surfaces.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "grameenphone-validity-pack-2026",
         "checkedAt": "2026-09-29",
@@ -6748,6 +7237,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Recharge before the PAYG expiration date to roll eligible balance forward. The $10 and $30 options expire after 90 days; $100 expires after 365 days. A zero balance for 30 consecu…",
+        "roamingSms": "Current H2O terms restrict International Roaming to eligible Unlimited Talk & Text plans; the PAYG route is not an eligible roaming route and should not be presented as a China ro…",
+        "holdReason": "Current terms exclude PAYG from International Roaming, and PAYG-specific Wi-Fi Calling/China continuity is not verified. Keep as observation/HOLD rather than recommending it for o…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "h2o-paygo-10-90d-2026",
         "checkedAt": "2026-09-29",
@@ -6878,6 +7376,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "h2o-paygo-us",
         "checkedAt": "2026-09-16",
@@ -7008,6 +7515,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Recharge HKD20 or more. Current csl HK Mobi recharge table extends card validity 365 days from the top-up date; the published HKD20/365-day recharge promotion is stated through 31…",
+        "roamingSms": "Provider offers roaming functionality and community users use HK Mobi for long-term number retention, but mainland-China incoming-SMS and third-party OTP reliability are not norma…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "hkmobi-365-hk-2026",
         "checkedAt": "2026-10-03",
@@ -7138,6 +7654,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "Current Hotlink FAQ: buy the RM30 365-day Active Period Pass in the Hotlink app to keep the account/SIM active for 365 days. The RM2/365-day product is a 1GB data pass and is not…",
+        "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "hotlink-pantas-365-pass-2026",
         "checkedAt": "2026-09-28",
@@ -7268,6 +7793,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "not-required",
+        "keepAction": "Multiple current Israeli recharge retailers list a 66 ILS HOTALK pay-per-use balance load valid for 180 days. Preserve this as balance-validity evidence only; a provider-verified…",
+        "roamingSms": "HOT Mobile offers roaming services generally, but HOTALK China-specific incoming SMS/OTP behavior is unverified.",
+        "holdReason": "The 66 ILS/180-day balance-validity mechanic is corroborated by current local recharge retailers, but a current HOT Mobile first-party number-deactivation/recycling rule and forei…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "hotmobile-il-2026",
         "checkedAt": "2026-09-29",
@@ -7398,6 +7932,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current legal terms allow disconnection after four months without applying credit, buying a bundle or making a chargeable event; unused credit expires after 365 days unless an add…",
+        "roamingSms": "unverified",
+        "holdReason": "Current iD PAYG legal terms use a 120-day/four-month inactivity clock, while current iD marketing and an employee community answer say 180 days. Use the stricter 120-day clock unt…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "id-mobile-uk-2026",
         "checkedAt": "2026-09-29",
@@ -7528,6 +8071,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Maintain the current 1GB voice-SIM subscription at JPY1,408/month. Current evidence does not establish a cheaper idle/PAYG number-retention mode.",
+        "roamingSms": "Independent user evidence documents SMS/call reception in Taiwan on an existing line. Current provider-controlled roaming/SMS pricing and mainland-China OTP delivery are not verif…",
+        "holdReason": "The legacy passport-image/selfie remote KYC claim is obsolete after 2026-03-31. Current JPKI/IC-chip/in-store identity methods are documented, but a current passport-only nonresid…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ifmobile-jp-2026",
         "checkedAt": "2026-09-30",
@@ -7658,6 +8210,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Maintain the 2GB voice subscription at JPY850/month. No verified idle/PAYG retention mode exists for this route.",
+        "roamingSms": "Voice SIM and voice eSIM support overseas voice and SMS; overseas data is not available. Exact app-specific OTP success is unverified.",
+        "holdReason": "The route is current and cheap by Japanese subscription standards, but new voice/SMS signup requires a Japanese current address and resident-compatible identity/payment path; it i…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "iijmio-jp-2026",
         "checkedAt": "2026-10-01",
@@ -7788,6 +8349,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Current final number-deactivation/recycling timing and a minimum keep-alive transaction were not located. SIM Lagao costs PKR0.01 and lasts 60 days for lines unused for the prior…",
+        "roamingSms": "Jazz prepaid international roaming lists incoming SMS as free and includes China in the published roaming tariff. Since 2023 roaming is enabled for newly activated prepaid sales,…",
+        "holdReason": "Current Jazz acquisition and roaming evidence is strong enough for backstage knowledge, but no current authoritative prepaid number-deactivation/recycling or minimum keep-alive ru…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "jazz-pk-2026",
         "checkedAt": "2026-10-01",
@@ -7918,6 +8488,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "After 90 days of continuous non-use, maintain sufficient main-account balance for Automatic Number Retention. Jio deducts Rs.20 per 30-day extension; ten such deductions cover the…",
+        "roamingSms": "Jio prepaid international roaming supports incoming SMS free of charge once IR is enabled. First-time IR preparation should be done while connected to the Jio network; an IR pack…",
+        "holdReason": "Current retention is cheaper/more flexible than the old Rs.199/90-day model, but India-centric SIM activation/POI+POA and first-time IR preparation make overseas-first acquisition…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "jio-prepaid-90d-trai-2026",
         "checkedAt": "2026-09-29",
@@ -8048,6 +8627,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Generate a billable event that deducts from the main prepaid balance, or recharge, before 90 days elapse. kölbi terms say that after 90 days with no such event the service is defi…",
+        "roamingSms": "Current prepaid roaming supports making/receiving calls and sending/receiving SMS; China appears in the prepaid roaming coverage list. Specific OTP-sender delivery remains unverif…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "kolbi-cr-2026",
         "checkedAt": "2026-10-01",
@@ -8178,6 +8766,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "One user-initiated SMS (~€0.07) per 6 months. Credit never expires; receiving doesn't count as usage.",
+        "roamingSms": "Receiving SMS abroad works; China 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "kpn-prepaid-6mo-2026",
         "checkedAt": "2026-09-26",
@@ -8308,6 +8905,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "A KRW50,000 prepaid recharge grants 365 days validity on the standard prepaid recharge table. This does not override immigration/stay-period identity limits; users without foreign…",
+        "roamingSms": "Current KT Welcome Prepaid product terms state roaming is not provided, so this route is not an overseas SMS/OTP route.",
+        "holdReason": "The recharge table supports up to 365-day balance validity, but tourist/passport-only service is time-limited unless identity status is extended and the current prepaid product do…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "kt-prepaid-kr-2026",
         "checkedAt": "2026-10-01",
@@ -8438,6 +9044,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Make a single top-up of at least UAH30 before the 274-day active period expires. After suspension, the same threshold can restore service within the 91-day recovery window.",
+        "roamingSms": "Some tariffs support roaming bundles; inbound-SMS-abroad behavior was not separately sourced.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "kyivstar-prepaid-274-91-2026",
         "checkedAt": "2026-09-29",
@@ -8568,6 +9183,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Top up at least €3 every 90 days. After 90 days without a qualifying top-up the line becomes receive-only; after 120 days the number is cancelled and is not restorable.",
+        "roamingSms": "EU roaming standard; China 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "labas-90-120d-2026",
         "checkedAt": "2026-09-29",
@@ -8698,6 +9322,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Do not rely on recharge validity alone. Lebara says recharges from EUR5 are valid 90 days, while current contract summaries state that 90 consecutive days without use of the servi…",
+        "roamingSms": "Travel passes and roaming are supported, but China incoming-SMS/OTP reliability is not established.",
+        "holdReason": "Current contract language ties termination to 90 days without service use; top-up validity does not by itself prove a keep-number action, so minimum retention cost is unresolved.",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "lebara-fr-2026",
         "checkedAt": "2026-09-29",
@@ -8835,23 +9468,46 @@
       "serviceEvidence": [
         {
           "serviceId": "whatsapp",
+          "serviceName": "WhatsApp",
           "operation": "registration-verification",
           "grade": "B",
           "label": "Good",
           "confidence": "low",
           "sampleSize": 2,
+          "independentSourceCount": 1,
+          "successCount": 2,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-08-13"
         },
         {
           "serviceId": "telegram",
+          "serviceName": "Telegram",
           "operation": "registration-verification",
           "grade": "B",
           "label": "Good",
           "confidence": "low",
           "sampleSize": 2,
+          "independentSourceCount": 1,
+          "successCount": 2,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-08-13"
         }
       ],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "unclear",
+        "keepAction": "Generate confirmed chargeable activity and verify it appears in usage history; one account/support interaction confirmed a 90-day reset.",
+        "roamingSms": "inbound SMS reproduced in mainland China",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "lebara-uk-direct-esim-china",
         "checkedAt": "2026-09-12",
@@ -8982,6 +9638,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Do not derive a long-term keep-alive cost from the LG U+ visitor SIM or from U+ UMobile until the legacy product identity is reconciled.",
+        "roamingSms": "LG U+ visitor SIM supports domestic incoming SMS and app reservation verification, but explicitly does not support banking/government identity verification. The separate U+ UMobil…",
+        "holdReason": "The current evidence splits the legacy label across a short-stay LG U+ visitor product and a separate U+ UMobile MVNO prepaid product. Long-term product identity and overseas SMS…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "lguplus-prepaid-kr-2026",
         "checkedAt": "2026-10-01",
@@ -9112,6 +9777,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Maintain LINEMO Best Plan at the lowest usage tier, JPY990/month through 3GB. No idle PAYG number-retention mode is documented.",
+        "roamingSms": "With World Support enabled, LINEMO supports overseas SMS; receiving is free and sending is JPY100 per message. China is listed in the supported Asia roaming area. New-number contr…",
+        "holdReason": "The JPY990/month plan is current and overseas SMS is documented, but new acquisition requires Japanese resident identity/address information. A new-number contract also has a Worl…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "linemo-jp-2026",
         "checkedAt": "2026-09-30",
@@ -9242,6 +9916,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "If the account is not topped up, LMT states a 60-day advance-validity period followed by 60 days for receiving calls and SMS. Online card refill minimum is €1, but the exact use-b…",
+        "roamingSms": "EU roaming standard.",
+        "holdReason": "Current lifecycle is verified; exact refill-to-validity mapping needed to compute a defensible annual keep cost.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "lmt-karte-60-60d-2026",
         "checkedAt": "2026-09-29",
@@ -9377,6 +10060,15 @@
         "incoming-roaming"
       ],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Before number expiry, top up HKD100 through the current LuckySIM top-up channel to reset/extend the SIM number expiry by 365 days. Current alternatives are HKD50/180 days and HKD2…",
+        "roamingSms": "HOLD. Independent evidence now includes one user receiving Hong Kong banking-code SMS while in Australia, alongside earlier ordinary-SMS successes in the UK/mainland China. A sepa…",
+        "holdReason": "Lifecycle and renewal are verified and one independent user reports receiving banking-code SMS in Australia, but the bank is unspecified and another 2026 user reports multi-week i…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "luckysim-hk-prepaid-2026",
         "checkedAt": "2026-10-04",
@@ -9507,6 +10199,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Fresh 2026 independent evidence quotes Lyca UK as keeping an unused number for 120 days by default, or up to one year after dialing *139*9999# and paying £15 from balance. Treat t…",
+        "roamingSms": null,
+        "holdReason": "Keep-number rule is freshly corroborated but direct current UK provider text was not retrievable; legacy host network corrected from O2 to EE.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "lycamobile-uk-keep-number-2026",
         "checkedAt": "2026-09-29",
@@ -9637,6 +10338,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Official plan terms say the SIM and assigned number expire after 60 days of non-use. Use within that interval is required; exact minimum PAYG/top-up action cost is not established…",
+        "roamingSms": "The current long-term offer includes USD 5 roaming credit, but China-specific incoming-SMS behavior and minimum roaming-credit mechanics are unresolved.",
+        "holdReason": "The 60-day non-use clock is current, but the exact lowest-cost keep-alive action and China-first activation/roaming path remain unresolved. 2026 AT&T migration incidents also lowe…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-03-18"
+      },
       "metrics": {
         "routeId": "lycamobile-us-2026",
         "checkedAt": "2026-09-29",
@@ -9767,6 +10477,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Enable Number Maintenance via *180# or MyMagti. The service protects the number from termination for 180 days and charges 1 GEL; the next charge on a new number occurs on day 181,…",
+        "roamingSms": "Standard roaming can be activated from anywhere through MyMagti; exact inbound-SMS/OTP reliability is not established in this review.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "magticom-number-maintenance-2026",
         "checkedAt": "2026-09-29",
@@ -9897,6 +10616,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Recharge before the 12-month card validity expires; current JAWAL terms state that each recharge renews card validity. Online/app recharge exists, but the reviewed terms do not es…",
+        "roamingSms": "International roaming is an optional JAWAL service activated on request via customer service or an agency before travel. Mainland-China network/OTP delivery was not independently…",
+        "holdReason": "The 12-month recharge lifecycle is clear, but current official material does not resolve foreign-passport/nonresident long-term eligibility and recent visitor-eSIM reports preserv…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "maroc-telecom-prepaid-2026",
         "checkedAt": "2026-10-01",
@@ -10027,6 +10755,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Renew the 12-month 6GB plan before expiry. Current Mint terms put an expired unpaid account into suspended status; after 60 days without a successful renewal the account may be ca…",
+        "roamingSms": "Mint supports international roaming through Minternational Pass and Wi-Fi Calling. A current standalone pay-per-use China incoming-SMS rule and third-party OTP reliability were no…",
+        "holdReason": "Reliable China-first activation/payment and standalone China cellular incoming-SMS/OTP behavior remain unresolved; fresh community evidence is contradictory and depends on unsuppo…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "mint-mobile-us-2026",
         "checkedAt": "2026-10-03",
@@ -10157,6 +10894,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mobal-japan-data-physical",
         "checkedAt": "2026-09-15",
@@ -10287,6 +11033,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Keep the Voice-Only subscription paid at ¥1,430/month. Incoming SMS is free under the current product terms; ordinary usage does not replace the monthly subscription charge.",
+        "roamingSms": "The current Voice-Only product page explicitly supports roaming outside Japan. Voice/SMS roaming can be enabled; data roaming is not part of this Voice-Only route.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mobal-japan-voice-2026",
         "checkedAt": "2026-09-29",
@@ -10417,6 +11172,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mobal-japan-voice-data",
         "checkedAt": "2026-09-16",
@@ -10547,6 +11311,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "For the 1-year Number Retention option, Mobitel lists Rs50 + taxes per month. The retention fee for the selected retaining period is loaded to the account and deducted at once whe…",
+        "roamingSms": "unverified",
+        "holdReason": "Dedicated retention service is current, but foreign-passport eligibility/remote enrollment for Number Retention is not clearly established by the provider page.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mobitel-lk-retention-2026",
         "checkedAt": "2026-09-29",
@@ -10677,6 +11450,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Movistar's current prepaid contract says recharge keeps the mobile line active and the service may be cancelled after seven months without a recharge; unused recharge balance can…",
+        "roamingSms": "Current Movistar pages found for international roaming are postpaid/plan-focused. A current prepaid-specific roaming entitlement, incoming-SMS rule, mainland-China coverage and th…",
+        "holdReason": "Prepaid-specific overseas roaming/incoming-SMS coverage, mainland-China behavior, OTP reliability and reliable foreign-card recharge execution remain unresolved; foreign-national…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "movistar-pre-pe-2026",
         "checkedAt": "2026-10-03",
@@ -10807,6 +11589,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Recharge at least EUR5 before the 6-month boundary to renew validity. If missed, the 54-day tail is a recovery window rather than the normal keep-alive schedule.",
+        "roamingSms": "EU roaming standard; China receive 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "movistar-prepago-6mo-2026",
         "checkedAt": "2026-09-28",
@@ -10937,6 +11728,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Use MTN Number For Life: GHS 15 reserves a prepaid number for 12 months or GHS 25 for 24 months, preventing deactivation/reassignment during the selected reservation period.",
+        "roamingSms": "MTN prepaid roaming supports making/receiving calls and sending/receiving SMS in supported countries; China appears in MTN roaming destination zones. Application-specific OTP deli…",
+        "holdReason": "Current MTN purchase guidance requires Ghana Card while NCA guidance documents a foreign prepaid passport/ECOWAS path; the MTN-specific nonresident onboarding flow is not reconcil…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mtn-gh-prepaid-2026",
         "checkedAt": "2026-10-01",
@@ -11067,6 +11867,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Keep My Number plans are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. The 3-year option has the lowest annualized current provider price. Fund sufficient airtime, then…",
+        "roamingSms": "unverified",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mtn-ng-keepmynumber-2026",
         "checkedAt": "2026-09-29",
@@ -11197,6 +12006,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "MTS states that a number is withdrawn if, after forced blocking, the account is not topped up within 60 days, or if a positive-balance number has no operations for 180 days. The e…",
+        "roamingSms": "For foreign citizens and stateless persons on the current #Гостевой tariff, MTS explicitly states that Roaming and SMS Roaming are unavailable. Therefore an overseas-held guest li…",
+        "holdReason": "The number lifecycle is now well documented, but the relevant foreign-visitor tariff explicitly disables roaming and SMS roaming. That blocks the core overseas OTP use case, while…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "mts-by-2026",
         "checkedAt": "2026-10-01",
@@ -11327,6 +12145,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Use the Сохраняю номер service for eligible non-monthly-fee tariffs. The reviewed product evidence lists RUB349 for six months; current MTS support separately confirms the service…",
+        "roamingSms": "Not used as an admission claim in this packet.",
+        "holdReason": "Product/service is admitted backstage, but cross-border acquisition/payment and exact tariff eligibility remain material constraints.",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "mts-sokhranyayu-nomer-2026",
         "checkedAt": "2026-09-29",
@@ -11457,6 +12284,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Recharge NPR 500-999.99 for 360 days of main-balance validity, or NPR 1,000+ for 730 days. If validity expires, outgoing service is interrupted for 14 days and then incoming/outgo…",
+        "roamingSms": "Ncell roaming is offered by default outside India and current provider pages list dedicated China roaming packs. Specific incoming-SMS pricing and third-party OTP delivery in Chin…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ncell-np-2026",
         "checkedAt": "2026-10-01",
@@ -11587,6 +12423,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Top up at least the current self-service minimum of 300 CZK before 12 months since the last top-up. O2 states the prepaid card itself is valid 12 months from the last top-up. A 30…",
+        "roamingSms": "EU and non-EU roaming pricing exists; long-term incoming-SMS/OTP reliability is unverified.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "o2-cz-prepaid-2026",
         "checkedAt": "2026-09-29",
@@ -11717,6 +12562,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unclear",
+        "keepAction": "Legacy Classic holders: carry out a chargeable activity at least once in every 6-month period; the current Classic page lists a standard text at £0.02. The same page lists a GBP10…",
+        "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
+        "holdReason": "Classic Pay As You Go is a legacy tariff. O2 currently says customers who are not already on it cannot switch to it; keep this as negative/legacy-holder knowledge rather than a re…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "o2-uk-classic-payg-6mo-2026",
         "checkedAt": "2026-09-28",
@@ -11847,6 +12701,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Omantel standard terms give prepaid 90 days of validity from the first call or any recharge/balance transfer, then another 90-day number holding period. Recharging during grace st…",
+        "roamingSms": "Omantel states incoming SMS while roaming is free of charge and Hayyak roaming is available internationally. China-specific roaming partner availability and third-party OTP reliab…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "omantel-om-2026",
         "checkedAt": "2026-10-03",
@@ -11977,6 +12840,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Online top-up minimum is EUR2. Maintain active status by topping up within each 90-day window; the tourist eSIM has a longer post-active recharge grace period before final deactiv…",
+        "roamingSms": "Tourist Package users are excluded from roaming service outside Montenegro; overseas SMS/OTP utility is therefore not established for this route.",
+        "holdReason": "Current Tourist Package terms prohibit roaming outside Montenegro, so retention is documented but overseas SMS/OTP utility is unavailable on this route.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "one-me-2026",
         "checkedAt": "2026-09-30",
@@ -12107,6 +12979,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 7,
+        "kycState": "required",
+        "keepAction": "Add at least NZD10 credit through the logged-in One NZ website or My One NZ app before 360 days since the last top-up. If no credit is added for 360 days, the Prepay service becom…",
+        "roamingSms": "China is explicitly listed as a current Prepay roaming destination. Carrier roaming/TXT availability is established; third-party OTP success is not guaranteed.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "one-nz-prepay-2026",
         "checkedAt": "2026-10-03",
@@ -12237,6 +13118,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "A QAR10-99 recharge gives 30 days of credit/line validity. After expiry Hala remains in grace for 179 days, during which Ooredoo says incoming calls/SMS remain available while out…",
+        "roamingSms": "Ooredoo’s 2026 prepaid roaming tariff includes China. The reviewed current tariff prices sent SMS but does not separately state an incoming-SMS charge; third-party OTP delivery an…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-02"
+      },
       "metrics": {
         "routeId": "ooredoo-hala-qa-2026",
         "checkedAt": "2026-10-02",
@@ -12367,6 +13257,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current official long-expiry choices are A$180 for 186 days or A$350 for 365 days. The 365-day price is scheduled to become A$395 from 2026-09-30, so reverify before relying on a…",
+        "roamingSms": "International roaming behavior and incoming-SMS/OTP reliability are not reconciled for this route.",
+        "holdReason": "Optus has a provider-announced price change effective 2026-09-30; exact post-change long-expiry retention economics must be reverified.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "optus-flex-plus-au-2026",
         "checkedAt": "2026-09-29",
@@ -12497,6 +13396,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Use an eligible EUR10-or-higher recharge before each six-month line-validity period expires. Current Orange recharge tables explicitly show EUR10 recharges extending line validity…",
+        "roamingSms": "Mobicarte can use international mode and current recharges include roaming in Europe on eligible products. Reviewed evidence does not establish the target long-term inbound-SMS/OT…",
+        "holdReason": "Retention economics are now verified, but France residence/stable-link eligibility plus unverified non-Europe inbound OTP behavior keep this route HOLD for the target overseas use…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "orange-mobicarte-2026",
         "checkedAt": "2026-09-29",
@@ -12627,6 +13535,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current Orange prepaid page explicitly offers +365 days of account validity for PLN39. Shorter extensions are +31d/PLN9 and +93d/PLN19. The former PLN5 inactivity fee was abolishe…",
+        "roamingSms": "Orange prepaid supports roaming; current packet does not establish China-specific incoming OTP reliability or whether all desired verification senders deliver consistently abroad.",
+        "holdReason": "Current annual validity economics are clear at PLN39/365 days, but new-number registration/acquisition remains Poland-centered and China/overseas OTP reliability is not independen…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "orange-pl-nakarte-2026",
         "checkedAt": "2026-09-29",
@@ -12757,6 +13674,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "For number retention, current rules give a €5 recharge 30 active days plus 300 grace days. During grace the line can receive calls/SMS but cannot originate normal service; recharg…",
+        "roamingSms": "EU roaming standard; China 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "orange-prepay-ro-ladder-2026",
         "checkedAt": "2026-09-29",
@@ -12887,6 +13813,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Buy Sama Numéro validity: XOF 3,000/6 months, XOF 5,000/12 months or XOF 10,000/24 months. Pay from airtime via #165#/#166# or Orange Money via #144#. Validity starts on the subsc…",
+        "roamingSms": "Sama Numéro preserves the number/account, but current evidence does not establish China-specific incoming SMS or OTP reliability.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "orange-sn-sama-numero-2026",
         "checkedAt": "2026-09-29",
@@ -13017,6 +13952,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Purchase a qualifying paid topping before the applicable 180-day no-paid-topping window expires. The official lifecycle rule is topping-based; do not treat ¥250 as a universal min…",
+        "roamingSms": "Current povo Voice+Data international roaming supports SMS after the required roaming/identity-verification setup; the prior 'overseas SMS unverified' wording is stale.",
+        "holdReason": "The route remains HOLD for typical overseas-only users because acquisition requires an accepted Japan identity credential path even though overseas SMS is officially supported aft…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "povo20-zero-base-2026",
         "checkedAt": "2026-09-29",
@@ -13147,6 +14091,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "A top-up above EUR5 extends formal card validity 12 months; EUR5 extends only one month. Separately, Proximus says a Pay&Go card not used for more than 6 months is automatically d…",
+        "roamingSms": "EU-zone roaming is documented; non-EU long-term incoming-SMS reliability is unverified.",
+        "holdReason": "Formal 12-month top-up validity is constrained by a separate 6-month no-use deactivation rule whose qualifying-use semantics are not fully defined; foreign online KYC also require…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "proximus-paygo-be-2026",
         "checkedAt": "2026-09-29",
@@ -13277,6 +14230,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Keep the Rakuten SAIKYO Plan active; the lowest usage tier is JPY1,078/month through 3GB. No idle PAYG number-parking mode is documented.",
+        "roamingSms": "Rakuten documents international SMS/overseas service for the ordinary SAIKYO Plan. Receiving/sending availability depends on app/OS and destination; service-specific OTP reliabili…",
+        "holdReason": "The plan and overseas service are current, but ordinary acquisition is tied to Japanese resident identity/address documents. It is not a clean nonresident route, and Rakuten Link…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "rakuten-mobile-jp-2026",
         "checkedAt": "2026-09-30",
@@ -13407,6 +14369,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Renew the Essentials annual plan; current official renewal is $110/year after the first-year promotional price.",
+        "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not p…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "redpocket-annual-2026",
         "checkedAt": "2026-09-29",
@@ -13537,6 +14508,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Purchase Daima for KSh500 to keep an active Individual Prepay line covered for one year. Official options also include KSh200/6 months and KSh1000/2 years.",
+        "roamingSms": "Daima resources are not roaming resources; inbound-SMS-abroad behavior was not sourced.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "safaricom-daima-2026",
         "checkedAt": "2026-09-29",
@@ -13673,14 +14653,30 @@
       "serviceEvidence": [
         {
           "serviceId": "whatsapp",
+          "serviceName": "WhatsApp",
           "operation": "registration-verification",
           "grade": "insufficient",
           "label": "One positive report",
           "confidence": "very-low",
           "sampleSize": 1,
+          "independentSourceCount": 1,
+          "successCount": 1,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
           "lastObservedAt": "2026-08-15"
         }
       ],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Maintain the current USD1.99/month number subscription/reservation. September 2026 provider-community guidance says an inactive number remains reserved for 45 days, but the formal…",
+        "roamingSms": "Service-dependent and HOLD. Saily says most services can send verification codes but some banks, financial/payment apps and strict-security platforms reject VoIP numbers. Communit…",
+        "holdReason": "The number is VoIP/internet-based rather than carrier-mobile; OTP acceptance is explicitly service-dependent, port-in/port-out are unsupported, KYC is mandatory, and August 2026 i…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "saily-us-phone-number-2026",
         "checkedAt": "2026-10-04",
@@ -13811,6 +14807,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "sakura-japan-voice-data",
         "checkedAt": "2026-09-16",
@@ -13941,6 +14946,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "BLOCKED for passport-only overseas retention: passport registration is capped at 30 days, and retention beyond that requires Singpass or a Singapore-issued ID/work pass. Passport…",
+        "roamingSms": "Not a viable passport-self-registration OTP/SMS route: current Singtel guidance limits passport self-registration to data-only features.",
+        "holdReason": "Passport-only users face a 30-day registration cap; current self-registration with passport is data-only, and durable retention requires Singpass or a Singapore-issued ID/work pas…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "singtel-hi-prepaid-passport-30d-2026",
         "checkedAt": "2026-09-28",
@@ -14071,6 +15085,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Add credit at least once every 12 months. Current Skinny top-up amounts start at NZ$5, so NZ$5/year is the current minimum direct top-up model; recheck before each renewal because…",
+        "roamingSms": "Skinny Global Roaming supports sending and receiving text messages where the overseas network supports the service. New SIMs must first be activated on New Zealand networks.",
+        "holdReason": "HOLD for typical overseas-only users because a new Skinny SIM/eSIM must first be activated on a New Zealand network before roaming; the retention rule itself is now directly verif…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "skinny-prepay-12mo-2026",
         "checkedAt": "2026-09-29",
@@ -14201,6 +15224,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "A KRW5000 voice/SMS recharge gives 30 days outgoing, 40 days incoming and 120 days number retention. The number-retention floor is roughly three KRW5000 actions per 360 days; cont…",
+        "roamingSms": "SK Telecom current roaming guidance classifies PPS among roaming-unavailable plans. Overseas SMS/OTP reception is therefore not established for this PPS line.",
+        "holdReason": "Passport onboarding is possible, but recharge stops after stay expiry unless identity is re-verified in person, and current SKT roaming guidance classifies PPS as roaming-unavaila…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "skt-prepaid-kr-2026",
         "checkedAt": "2026-09-30",
@@ -14331,6 +15363,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 10,
+        "kycState": "unclear",
+        "keepAction": "Loaded prepaid value must be used within 365 days. If the balance reaches zero, reload within 180 days to avoid disconnection. These are separate lifecycle clocks; no fixed minimu…",
+        "roamingSms": "Provider-confirmed for ordinary SMS while international roaming is active: Smart documents sending and receiving texts while roaming, including SMS availability in countries where…",
+        "holdReason": "Foreign-tourist registrations remain subject to automatic deactivation after 30 days unless an approved visa extension is supplied. Provider roaming/SMS capability is now confirme…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "smart-prepaid-ph-2026",
         "checkedAt": "2026-10-04",
@@ -14461,6 +15502,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 8,
+        "kycState": "required",
+        "keepAction": "Disable auto-renew to pause. SMARTY says it keeps the account open for six months and automatically closes an account if the plan remains inactive for 220 days, with a warning 40…",
+        "roamingSms": "SMARTY's current mainland-China roaming page lists receiving texts from any number as FREE. Its paused-service help also says incoming calls and texts remain available when a plan…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "smarty-uk-2026",
         "checkedAt": "2026-10-03",
@@ -14591,6 +15641,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "smspool-temp",
         "checkedAt": "2026-09-15",
@@ -14721,6 +15780,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Current official recharge ladder: HK$100-HK$199.9 extends SIM validity 180 days; HK$200-HK$499.9 extends 365 days; HK$500+ extends 730 days. Expired numbers may be recoverable thr…",
+        "roamingSms": "Receiving SMS abroad reported working (community); exact roaming arrangement 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "sosim-recharge-ladder-2026",
         "checkedAt": "2026-09-28",
@@ -14851,6 +15919,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "not-required",
+        "keepAction": "Keep an active plan or purchase a new plan before the 90-day no-active-plan cancellation window ends. The cheapest currently listed monthly plan is CA$19/30 days; the old CA$25-pe…",
+        "roamingSms": "Not supported for the target use case. Current SpeakOut help/terms say service does not roam outside Canada and calls cannot be made or received outside Canada.",
+        "holdReason": "Current product no longer supports the legacy CA$25/365-day retention model and does not roam outside Canada, so it cannot serve the overseas SMS/OTP job.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "speakout-711-365voucher-2026",
         "checkedAt": "2026-09-29",
@@ -14981,6 +16058,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Current plan validity is one month. After expiry, StarHub provides a 120-day grace period during which incoming calls and SMS remain available; renew a current prepaid plan before…",
+        "roamingSms": "Current prepaid plans include roaming and China is listed among supported APAC destinations. Community reports in 2026 preserve a real OTP-delay/reliability risk on the StarHub ne…",
+        "holdReason": "Ordinary StarHub Prepaid now has a clear 1-month + 120-day grace lifecycle, but passport-only registration is limited to 30 days unless the line is re-registered with an eligible…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "starhub-prepaid-sg-2026",
         "checkedAt": "2026-10-01",
@@ -15111,6 +16197,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unclear",
+        "keepAction": "Any paid activity can extend prepaid validity, but current STC pages conflict on whether the SIM ceiling is 180 or 360 days. Minimum documented recharge via postpaid-to-Sawa is SA…",
+        "roamingSms": "STC offers roaming generally, but long-term OTP utility after non-citizen final departure is not a stable use case.",
+        "holdReason": "Provider pages conflict on 180 vs 360-day SIM retention, and STC may cancel a non-citizen line after final departure or ID expiry.",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-30"
+      },
       "metrics": {
         "routeId": "stc-sawa-sa-2026",
         "checkedAt": "2026-09-30",
@@ -15241,6 +16336,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "not-required",
+        "keepAction": "Perform any qualifying active use before 17 months elapse. Sunrise explicitly counts a credit top-up, outgoing call, mobile-data use, outgoing SMS, or option/bundle purchase as ac…",
+        "roamingSms": "Sunrise supports prepaid roaming. A current 2026 community troubleshooting thread states ordinary SMS should be receivable while roaming with network signal and roaming enabled, b…",
+        "holdReason": "The old 12-month rule is resolved to a 17-month inactivity rule and foreign-address eSIM registration exists, but current independent China-first activation plus long-term OTP evi…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "sunrise-prepaid-2026",
         "checkedAt": "2026-09-29",
@@ -15371,6 +16475,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "Official promo terms (taiwanmobile.com, effective 2026): 門號效期將自儲值日起重新起算6個月 — number validity resets to 6 months from each recharge. Minimum recharge amount unverified (typical cha…",
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "taiwan-mobile-prepaid-tw-2026",
         "checkedAt": "2026-09-27",
@@ -15494,6 +16607,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Not possible on this route: Talkmobile PAYG ended in 2017. Current Talkmobile SIM-only subscriptions are a different product path.",
+        "roamingSms": "Not applicable to the discontinued PAYG route. Current Talkmobile contract plans have current roaming terms, but that evidence is intentionally not transferred to the closed PAYG…",
+        "holdReason": "Talkmobile PAYG was discontinued in 2017. Preserve this row as negative/legacy knowledge and do not recommend it or silently replace it with current Talkmobile SIM-only subscripti…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "talkmobile-uk-payg-closed-2026",
         "checkedAt": "2026-10-03",
@@ -15624,6 +16746,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Make a Saldo recharge before 365 days without activity. The current contract says the lifecycle restarts with each Saldo recharge, and current Telcel material lists prepaid rechar…",
+        "roamingSms": "Telcel supports SMS while roaming. For U.S./Canada Sin Frontera use, prepaid lines must be active and prior Telcel-network traffic in Mexico is required; the service is not intend…",
+        "holdReason": "The lifecycle economics are attractive, but ordinary Amigo foreign-user remote registration remains ambiguous and route-specific long-term overseas OTP evidence is missing. Keep H…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telcel-amigo-lifecycle-2026",
         "checkedAt": "2026-09-29",
@@ -15754,6 +16885,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Make the first top-up within 90 days of activation. Each later top-up extends SIM/service and nominal credit validity by 180 days, regardless of top-up amount; exact lowest online…",
+        "roamingSms": "EU roaming; check balance free from roaming (*121#).",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telekom-easy-sk-90d-2026",
         "checkedAt": "2026-09-29",
@@ -15884,6 +17024,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "not-required",
+        "keepAction": "Recharge at least EUR 5 every 90 days to preserve continuous incoming and outgoing service. Days 91-180 are incoming-only; days 181-270 lose normal service. A recharge during days…",
+        "roamingSms": "Telemach explicitly directs prepaid users to its roaming country/operator tariff and documents EU/EEA roaming for Free2Go, including a separate registration rule for domestic-pric…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telemach-prepaid-si-2026",
         "checkedAt": "2026-10-02",
@@ -16014,6 +17163,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Recharge before 12 months have elapsed since the previous recharge. If the line is blocked after 12 months, any allowed recharge can automatically reopen it for up to two addition…",
+        "roamingSms": "Telenor Kontant is marketed for use in many countries and follows EU/EEA roaming rules where applicable. Mainland-China SMS/OTP behavior was not independently verified in this rev…",
+        "holdReason": "Lifecycle is clear, but the typical foreign/nonresident acquisition path remains unverified: current Telenor ID/self-service requires BankID and web recharge cards are restricted…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telenor-kontant-no-2026",
         "checkedAt": "2026-10-01",
@@ -16144,6 +17302,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Do not reuse the old SEK 50/365-day Kontantkort price as a 2026 keep-alive rule. Current Telenor support still recognizes prepaid service, but the present recharge floor and curre…",
+        "roamingSms": "Current Telenor roaming pages still explicitly distinguish supported prepaid destinations; for Taiwan, incoming SMS is listed at SEK 0. Prepaid roaming is country-dependent and Ch…",
+        "holdReason": "Current 2026 Kontantkort purchase/recharge economics, inactivity/deactivation rule, and foreign-user registration path remain unresolved; historical SEK 50/365-day material is not…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telenor-kontantkort-se-2026",
         "checkedAt": "2026-10-02",
@@ -16274,6 +17441,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "No current Telia DK prepaid lifecycle or recharge-validity rule was established. Do not infer a keep-alive cost from current Norlys subscription products or old Telia material.",
+        "roamingSms": "Current Norlys subscriptions advertise roaming, but those terms are not mapped onto the unverified legacy Telia prepaid product; overseas SMS/OTP for this route remains unresolved.",
+        "holdReason": "Current Telia DK prepaid product identity and lifecycle were not established. Telia-hosted current supplier information identifies Norlys Mobil A/S, while current Norlys consumer…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telia-dk-prepaid-2026",
         "checkedAt": "2026-10-02",
@@ -16404,6 +17580,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "unclear",
+        "keepAction": "Top up at least EUR3 in a single transaction every 180 days. Splitting EUR3 into smaller top-ups does not extend card validity.",
+        "roamingSms": "EU roaming is supported for relevant allowances; broader non-EU inbound-SMS behavior is unresolved.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telia-ee-180d-2026",
         "checkedAt": "2026-09-29",
@@ -16534,6 +17719,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Current official mechanisms include credit top-up, qualifying credit usage/package purchase and Active Period Extension packages. The dedicated extension menu currently lists 360…",
+        "roamingSms": "Not used for admission. Current long-term overseas continuity is constrained by Telkomsel rule that 90 consecutive days without connection can trigger the lifecycle/grace process.",
+        "holdReason": "Exact cheapest durable annual retention path is unresolved; activation is Indonesia-local and the current 90-day no-network-connection rule creates overseas continuity risk.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telkomsel-simpati-365d-2026",
         "checkedAt": "2026-09-29",
@@ -16664,6 +17858,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "unclear",
+        "keepAction": "Place a new PAYG order before 90 days have elapsed since the last PAYG order when no active monthly plan is keeping the credit valid. Usage such as sending an SMS does not reset t…",
+        "roamingSms": "Standard international roaming in 200+ countries uses PAYG credit and requires prior use of the line in the United States. Destination-specific China rates are not asserted here w…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "tello-paygo-credit-2026",
         "checkedAt": "2026-09-29",
@@ -16794,6 +17997,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "tello-us",
         "checkedAt": "2026-09-16",
@@ -16924,6 +18136,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 1,
+        "kycState": "required",
+        "keepAction": "Recharge-expiry model: $395/yr (12-month tier) or $200/6mo. Expensive vs global alternatives. Post-expiry grace period for number recovery pending capture — 验证中.",
+        "roamingSms": "Receiving SMS abroad works (community); roaming packs for outbound.",
+        "holdReason": "$395/yr is 20-100x pricier than alternatives (Hotlink RM2, ClubSIM HK$6); document as reference unless AU number specifically needed.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "telstra-prepaid-longexpiry-2026",
         "checkedAt": "2026-09-26",
@@ -17054,6 +18275,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Perform chargeable usage at least once every six months. Current PAYG service terms disconnect accounts after six months of non-use; a standard SMS at the current 10p rate is a lo…",
+        "roamingSms": "Official PAYG roaming exists; incoming-SMS-abroad behavior was not separately documented.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "tesco-mobile-payg-uk-2026",
         "checkedAt": "2026-09-29",
@@ -17184,6 +18414,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Three consistently says a top-up or credit-reducing call/text/data resets dormancy, but current provider guidance conflicts on the relevant inactivity threshold (90+180 days, six-…",
+        "roamingSms": "Three provider-moderated support confirms that while abroad the phone can connect automatically to a roaming network and receive calls/texts without enabling mobile-data roaming;…",
+        "holdReason": "Current Three provider guidance conflicts on the dormancy timeline, so the prior €0.30/year / 80-day recommendation is not decision-safe. Keep as HOLD until one current lifecycle…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "three-ie-prepay-lifecycle-2026",
         "checkedAt": "2026-09-29",
@@ -17314,6 +18553,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Before 180 days elapse, perform one qualifying chargeable activity. A standard UK SMS is currently £0.15; buying a top-up also resets the clock. Wi-Fi-only activity does not count…",
+        "roamingSms": "Receiving SMS abroad free (UK operator standard). Sending from China requires roaming — Three roaming add-on structure applies; receiving-only strategy viable.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "three-uk-payg-180d-2026",
         "checkedAt": "2026-09-28",
@@ -17444,6 +18692,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "A 2025-10-21 independent end-to-end DIY recharge reproduction shows HK$100-HK$199.9 extends card validity 180 days and HK$200+ extends 365 days. Official DIY sales material separa…",
+        "roamingSms": "Receiving SMS abroad reported working (community); rates 验证中.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "threehk-diy-recharge-2026",
         "checkedAt": "2026-09-28",
@@ -17574,6 +18831,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "unclear",
+        "keepAction": "Current Yas terms say continuous neglect to use the SIM/number for 90 days may lead to suspension and number re-allocation. The exact minimum qualifying use is not defined, so no…",
+        "roamingSms": "Current Yas roaming lists China with China Unicom and China Telecommunications Corporation and publishes SMS/call/data rates. The table does not separately prove incoming SMS pric…",
+        "holdReason": "Current Yas terms permit number re-allocation after 90 days non-use, but qualifying minimum use is undefined and TCRA visitor registration is scoped to non-citizens staying no mor…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "tigo-tz-2026",
         "checkedAt": "2026-10-03",
@@ -17704,6 +18970,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "A current EUR5 TIM recharge option exists; any recharge resets the 12-month validity clock. Month 13 is receive-only, then deactivation; free number reactivation is available for…",
+        "roamingSms": "Receiving abroad works (EU roaming zone free; China receive 验证中).",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "tim-prepaid-12mo-2026",
         "checkedAt": "2026-09-28",
@@ -17834,6 +19109,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Keep the USD15 Connect plan paid monthly. T-Mobile automatically suspends prepaid accounts in Not Paid status and says accounts in Not Paid for more than 120 days may be cancelled…",
+        "roamingSms": "T-Mobile current prepaid roaming page prices SMS in all other countries at USD0.50 to send and USD0.10 to receive, lists China in the prepaid country table, and says prepaid data…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "tmobile-prepaid-connect-2026",
         "checkedAt": "2026-10-03",
@@ -17964,6 +19248,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "trip-cmlink-china-data",
         "checkedAt": "2026-09-15",
@@ -18056,6 +19349,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Legacy/community evidence describes validity-extension packs around THB35/90d and THB70/180d. Current 2026 terms were not reachable in this review, so do not treat these prices as…",
+        "roamingSms": "Roaming/inbound SMS not reverified.",
+        "holdReason": "Current first-party validity-extension terms and price were not retrievable; preserve the community-discovered mechanism as HOLD pending replication.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "truemove-validity-pack-th-2026",
         "checkedAt": "2026-09-29",
@@ -18186,6 +19488,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "For eligible Tune Talk Pek Epik/Pek Jimat/Hi-Value/Cun Value/Value Prepaid cohorts, subscribe to the RM35 365-day validity service in the app or by supported SMS/USSD flow. It doe…",
+        "roamingSms": "Current evidence does not establish mainland-China incoming-SMS/OTP reliability for this route. Do not treat general roaming support as proof of third-party OTP delivery.",
+        "holdReason": "The RM35/365-day provider mechanism is current, but tourist-registered Malaysian prepaid SIMs are automatically terminated after at most three months under the 2026 mandatory stan…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "tunetalk-365-my-2026",
         "checkedAt": "2026-10-03",
@@ -18316,6 +19627,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Do not use the historical 90-day passport cap as the current retention rule. That technical rule was repealed in 2026; a current long-term Tourist-SIM inactivity/number-retention…",
+        "roamingSms": "Current Turkcell Tourist package page says the package is valid only in Türkiye; this packet does not establish reliable overseas incoming OTP/SMS after departure.",
+        "holdReason": "The old 90-day passport blocker is no longer current, but the route still lacks a verified long-term retention rule and overseas incoming-SMS path; activation/use is Türkiye-cente…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "turkcell-tourist-90d-blocker-2026",
         "checkedAt": "2026-09-29",
@@ -18446,6 +19766,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "Maintain at least $3 in the PayGo wallet for each 30-day renewal. If renewal fails, the account enters suspension; current terms allow cancellation after the documented nonpayment…",
+        "roamingSms": "Official rates 2026-09-26: China receive $0.10/SMS, send $0.50/SMS; voice $3.59/min; no data roaming. Roaming paid from PayGo wallet balance.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ultra-mobile-paygo-3-2026",
         "checkedAt": "2026-09-29",
@@ -18576,6 +19905,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "unknown",
+        "keepAction": null,
+        "roamingSms": null,
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "ultra-paygo-us",
         "checkedAt": "2026-09-16",
@@ -18706,6 +20044,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Use the annual Light subscription for a current USD 96/year service path. No PAYG retention route or post-lapse number-hold interval is established here.",
+        "roamingSms": "Native roaming requires prior domestic U.S. usage; Light-specific China roaming/SMS availability is unresolved.",
+        "holdReason": "USD 96/year is current, but native roaming requires prior domestic U.S. usage and some network choices require U.S.-side Wi-Fi Calling setup. China-first use is not established.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "us-mobile-light-2026",
         "checkedAt": "2026-09-29",
@@ -18836,6 +20183,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Recent February-2026 Viettel-specialist evidence reports VTVANG at 50,000 VND for 12 months of number retention without normal recharge/activity; eligibility exclusions apply.",
+        "roamingSms": "Current Viettel guidance for subscribers abroad states roaming must be active to receive OTP, supporting inbound SMS capability when roaming is active; independent long-term OTP r…",
+        "holdReason": "The 50,000 VND/12-month keep package is current specialist evidence but lacks a located first-party product page, and foreign-user acquisition/KYC plus long-term OTP reliability r…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "viettel-vtvang-keepnumber-2026",
         "checkedAt": "2026-09-29",
@@ -18966,6 +20322,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Register GS2 by SMS to add 360 days of SIM validity. The current GS2 page lists VND120,000 and permits repeated registrations with cumulative validity.",
+        "roamingSms": "Incoming-SMS-abroad behavior was not sourced in this review.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vinaphone-giu-so-vn-2026",
         "checkedAt": "2026-09-29",
@@ -19096,6 +20461,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Use the USD275 annual base plan for the lowest current full-year listed cost, or keep the USD25 monthly plan paid. Visible terms say a nonpayment-deactivated account is suspended…",
+        "roamingSms": "The base plan can use Global Pass in more than 140 countries, generally USD10/day outside Canada/Mexico/PR/USVI, with unlimited talk/text and data allowance. For cheaper long-term…",
+        "holdReason": "Paid-account/eSIM activation outside the U.S. remains contradictory, foreign-issued payment reliability is unresolved, and Wi-Fi Calling must be set up before leaving the U.S.; do…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-10-03"
+      },
       "metrics": {
         "routeId": "visible-25-2026",
         "checkedAt": "2026-10-03",
@@ -19226,6 +20600,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "unclear",
+        "keepAction": "Current Vodacom prepaid terms allow suspension/disconnection when the service has not been used for more than 110 days. Maintain actual service usage inside that window; the exact…",
+        "roamingSms": "Community overseas-use evidence exists, but this review does not convert it into an exact SMS keep-alive cost or OTP-success rate.",
+        "holdReason": "The old 83-day/100-day rule is refuted by current provider terms. Current 110-day inactivity threshold is clear, but exact cheapest qualifying keep action, acquisition path and fi…",
+        "continuityRiskSignalCount": 1,
+        "lastContinuityRiskSignalAt": "2026-09-29"
+      },
       "metrics": {
         "routeId": "vodacom-prepaid-83d-2026",
         "checkedAt": "2026-09-29",
@@ -19356,6 +20739,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 2,
+        "kycState": "required",
+        "keepAction": "Conservative remote keep-alive model: €5 direct online top-up at least every 90 days (≈€20/year). Current specialist guidance says a user-initiated paid call, SMS or mobile-data u…",
+        "roamingSms": "Receiving abroad works; China rates 验证中.",
+        "holdReason": "Strictest major-market window found (90 days) + Germany KYC barrier; document as reference, not recommendation.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-callya-90d-2026",
         "checkedAt": "2026-09-28",
@@ -19486,6 +20878,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "No current generic prepaid line-deactivation/recycling or minimum keep-alive rule was located. Vodafone's Park Your Line offers 1–12 months for EGP10–120, but Vodafone explicitly…",
+        "roamingSms": "Vodafone states prepaid/Control/Easy lines can activate roaming free from day one. Current guidance confirms roaming connectivity and notification SMS, but China-specific OTP reli…",
+        "holdReason": "Current prepaid identity and roaming rules are documented, but final prepaid number lifecycle/minimum retention cost remains unresolved. Park Your Line is postpaid-only and Touris…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-eg-2026",
         "checkedAt": "2026-10-01",
@@ -19616,6 +21017,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "not-required",
+        "keepAction": "Make at least one paid call, SMS, mobile-data session or top-up every six months. A standard SMS is currently EUR0.15, so two paid SMS actions per year are the lowest directly pri…",
+        "roamingSms": "Vodafone publishes prepaid rates for use abroad, and community reports show SMS/OTP reception in overseas setups. Mainland-China cellular incoming-SMS/third-party OTP reliability…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-nl-prepaid-2026",
         "checkedAt": "2026-10-03",
@@ -19746,6 +21156,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 3,
+        "kycState": "required",
+        "keepAction": "The initial service period is 370 days. A successful legally required annual prepaid data validation can create a new 370-day fixed service period even without a top-up. Top-up al…",
+        "roamingSms": "EU roaming use is documented; long-term non-EU incoming-SMS reliability is unverified.",
+        "holdReason": "The number can be renewed through annual data validation, but non-Hungarian users are currently required to visit a One store for that validation; remote long-term foreign use is…",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-tuti-hu-2026",
         "checkedAt": "2026-09-29",
@@ -19876,6 +21295,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "unclear",
+        "keepAction": "Not established",
+        "roamingSms": "not enough current route-specific evidence",
+        "holdReason": "No clean durable retention path. Do not reproduce fabricated-address/identity tactics mentioned in community threads.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-uk-zero-esim-2026",
         "checkedAt": "2026-06-16",
@@ -20006,6 +21434,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Weekly-cost tariff model. If the scheduled tariff charge is not paid within 7 days, Vodafone says incoming calls and SMS are blocked; restoring sufficient balance causes the overd…",
+        "roamingSms": "Vodafone states Yorn works in roaming. In the EEA/UK received communications are free; outside the EEA country-specific roaming charges apply. This does not remove the underlying…",
+        "holdReason": "Weekly recurring tariff cost plus blocking of incoming calls/SMS after 7 days unpaid makes Yorn structurally unsuitable for cheap passive retention.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "vodafone-yorn-pt-2026",
         "checkedAt": "2026-09-29",
@@ -20136,6 +21573,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "unclear",
+        "keepAction": "Send one roaming SMS (~£0.08, community-measured) within each 180-day balance-activity window; Wi-Fi Calling SMS (~£0.24) also qualifies. Plans carry no PAYG balance, so an initia…",
+        "roamingSms": "reported; exact current tariff needs commercial refresh",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "voxi-uk-esim-payg-retention",
         "checkedAt": "2026-09-26",
@@ -20266,6 +21712,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Online top-up minimum is EUR4.09. The current validity table gives 365 days of SIM validity for lower recharge tiers and 395 days from EUR5.11 upward when the remaining validity i…",
+        "roamingSms": "Yettel states incoming SMS in roaming is free; China-specific OTP reliability remains unverified.",
+        "holdReason": "Lifecycle and remote top-up are clear, but a current remote registration path for foreign passport holders was not established.",
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "yettel-prepaid-bg-2026",
         "checkedAt": "2026-09-30",
@@ -20396,6 +21851,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 5,
+        "kycState": "required",
+        "keepAction": "Use a standard prepaid top-up of at least 300 RSD. Yettel states prepaid credit is valid 60 days, followed by an additional 330-day period in which a new top-up can keep/extend th…",
+        "roamingSms": "Prepaid roaming is documented including China in Zone 3; incoming-SMS/OTP reliability is not converted into a service-success claim.",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "yettel-rs-2026",
         "checkedAt": "2026-09-29",
@@ -20526,6 +21990,15 @@
       "services": [],
       "operations": [],
       "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 4,
+        "kycState": "required",
+        "keepAction": "Zain currently lists an eeZee validity add-on of 365 days for KD13 (V4). Buy it while the line has sufficient credit/validity; Zain notes that an already-expired line must first r…",
+        "roamingSms": "Zain states voice and SMS roaming are enabled by default on prepaid SIMs and prepaid lines can be recharged while abroad. The roaming catalogue is current, but China-specific part…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
       "metrics": {
         "routeId": "zain-kw-eezee-2026",
         "checkedAt": "2026-10-03",
