@@ -1,0 +1,30 @@
+name: Bootstrap Ultra Telegram evidence patch
+
+on:
+  push:
+    branches:
+      - phone/ultramobile-telegram-evidence-20261004
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply verified patch and self-clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=_bootstrap/ultra-mobile-telegram-44232b5.patch
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          git rm "$PATCH" .github/workflows/bootstrap-ultra-telegram.yml
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data(phone): add Ultra Telegram evidence density"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
