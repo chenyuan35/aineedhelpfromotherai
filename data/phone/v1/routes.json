@@ -2685,12 +2685,15 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
-    "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+    "lastVerifiedAt": "2026-10-05",
+    "acquireUrl": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
     "sourceIds": [
       "official-three-newpayg-priceguide-2026-04-19",
       "official-three-payg-datapacks-2026-09-28",
-      "official-three-payg-support-2026-09-28"
+      "official-three-payg-support-2026-09-28",
+      "official-three-payg-roaming-20261005",
+      "official-three-payg-esim-20261005",
+      "official-three-payg-activation-20261005"
     ]
   },
   {

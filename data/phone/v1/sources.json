@@ -3946,5 +3946,23 @@
     "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
     "type": "provider-moderated-community",
     "reportedAt": "2026-08-17"
+  },
+  {
+    "id": "official-three-payg-roaming-20261005",
+    "url": "https://www.three.co.uk/support/roaming-and-calling-abroad/roaming-abroad/roaming-abroad-on-payg",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-three-payg-esim-20261005",
+    "url": "https://www.three.co.uk/support/sim-support/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-three-payg-activation-20261005",
+    "url": "https://www.three.co.uk/support/new-pay-as-you-go/activating-your-pay-as-you-go-sim.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   }
 ]

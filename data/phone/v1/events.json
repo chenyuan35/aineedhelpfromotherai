@@ -1213,5 +1213,32 @@
     "scope": "route",
     "outcome": "KPN officially supports prepaid abroad and states incoming SMS abroad is free, including outside the EU at destination-specific outgoing rates. A 2026 provider-community case reports a previously used prepaid line losing network abroad. Preserve this as an unquantified continuity risk rather than treating roaming/SMS reachability as guaranteed.",
     "sourceId": "kpn-community-roaming-network-loss-20260817"
+  },
+  {
+    "id": "evt-three-uk-current-economics-lifecycle-20261005",
+    "routeId": "three-uk-payg-180d-2026",
+    "type": "current-acquisition-and-retention-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current Three first-party pages no longer allow a new PAYG voice SIM to be ordered free on its own: a new SIM must be paired with a Data Pack, with the lowest currently displayed one-month Data Pack at £10. Standard PAYG rates remain 35p/min, 15p/text and 10p/MB. The number remains active only with at least one qualifying chargeable activity every 180 days; Wi-Fi-only activity does not count, and a disconnected number cannot be restored.",
+    "sourceId": "official-three-payg-datapacks-2026-09-28"
+  },
+  {
+    "id": "evt-three-uk-payg-esim-current-20261005",
+    "routeId": "three-uk-payg-180d-2026",
+    "type": "sim-form-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Three currently supports PAYG eSIM as well as physical SIM. Existing PAYG customers can request a replacement eSIM through My3 or the Three app, and new PAYG Data Pack offers can be selected as eSIM.",
+    "sourceId": "official-three-payg-esim-20261005"
+  },
+  {
+    "id": "evt-three-uk-uk-first-roaming-provisioning-20261005",
+    "routeId": "three-uk-payg-180d-2026",
+    "type": "roaming-activation-constraint",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Before PAYG can be used abroad, Three requires the SIM/device to connect to the Three network in the UK and, if no allowance is preloaded, to top up or add a Data Pack in the UK. Three states receiving texts while roaming is free across the published PAYG destination bands, but destination/network availability is not treated as guaranteed.",
+    "sourceId": "official-three-payg-roaming-20261005"
   }
 ]

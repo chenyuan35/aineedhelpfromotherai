@@ -4659,12 +4659,15 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-28",
-      "acquireUrl": "https://www.three.co.uk/pay-as-you-go/free-sim",
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
       "sourceIds": [
         "official-three-newpayg-priceguide-2026-04-19",
         "official-three-payg-datapacks-2026-09-28",
-        "official-three-payg-support-2026-09-28"
+        "official-three-payg-support-2026-09-28",
+        "official-three-payg-roaming-20261005",
+        "official-three-payg-esim-20261005",
+        "official-three-payg-activation-20261005"
       ]
     },
     {
@@ -9140,6 +9143,24 @@
       "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
       "type": "provider-moderated-community",
       "reportedAt": "2026-08-17"
+    },
+    {
+      "id": "official-three-payg-roaming-20261005",
+      "url": "https://www.three.co.uk/support/roaming-and-calling-abroad/roaming-abroad/roaming-abroad-on-payg",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-three-payg-esim-20261005",
+      "url": "https://www.three.co.uk/support/sim-support/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-three-payg-activation-20261005",
+      "url": "https://www.three.co.uk/support/new-pay-as-you-go/activating-your-pay-as-you-go-sim.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
     }
   ],
   "observations": [
@@ -10634,6 +10655,33 @@
       "scope": "route",
       "outcome": "KPN officially supports prepaid abroad and states incoming SMS abroad is free, including outside the EU at destination-specific outgoing rates. A 2026 provider-community case reports a previously used prepaid line losing network abroad. Preserve this as an unquantified continuity risk rather than treating roaming/SMS reachability as guaranteed.",
       "sourceId": "kpn-community-roaming-network-loss-20260817"
+    },
+    {
+      "id": "evt-three-uk-current-economics-lifecycle-20261005",
+      "routeId": "three-uk-payg-180d-2026",
+      "type": "current-acquisition-and-retention-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Current Three first-party pages no longer allow a new PAYG voice SIM to be ordered free on its own: a new SIM must be paired with a Data Pack, with the lowest currently displayed one-month Data Pack at £10. Standard PAYG rates remain 35p/min, 15p/text and 10p/MB. The number remains active only with at least one qualifying chargeable activity every 180 days; Wi-Fi-only activity does not count, and a disconnected number cannot be restored.",
+      "sourceId": "official-three-payg-datapacks-2026-09-28"
+    },
+    {
+      "id": "evt-three-uk-payg-esim-current-20261005",
+      "routeId": "three-uk-payg-180d-2026",
+      "type": "sim-form-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Three currently supports PAYG eSIM as well as physical SIM. Existing PAYG customers can request a replacement eSIM through My3 or the Three app, and new PAYG Data Pack offers can be selected as eSIM.",
+      "sourceId": "official-three-payg-esim-20261005"
+    },
+    {
+      "id": "evt-three-uk-uk-first-roaming-provisioning-20261005",
+      "routeId": "three-uk-payg-180d-2026",
+      "type": "roaming-activation-constraint",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Before PAYG can be used abroad, Three requires the SIM/device to connect to the Three network in the UK and, if no allowance is preloaded, to top up or add a Data Pack in the UK. Three states receiving texts while roaming is free across the published PAYG destination bands, but destination/network availability is not treated as guaranteed.",
+      "sourceId": "official-three-payg-roaming-20261005"
     }
   ],
   "snapshots": [
@@ -21891,6 +21939,68 @@
           "When using the line abroad, treat incoming SMS as officially supported but verify roaming/network reachability before relying on it for critical recovery."
         ]
       }
+    },
+    {
+      "id": "snap-three-uk-payg-180d-2026-current-profile-20261005",
+      "routeId": "three-uk-payg-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-05",
+      "sourceDataset": "three-uk-payg-evidence-maintenance-2026-10-05",
+      "data": {
+        "id": "three-uk-payg-180d-2026",
+        "brandId": "three-uk-payg",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Three no longer lets a new PAYG voice SIM be ordered free on its own. A new SIM must be bought with a Data Pack; the lowest currently displayed one-month Data Pack is £10. PAYG eSIM remains supported.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 0,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 94,
+          "fxCheckedAt": "2026-10-05",
+          "state": "current-official-minimum-published-datapack"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 0.15,
+          "yearCostOriginal": 0.3,
+          "yearCostCny": 2.8,
+          "action": "Before 180 days elapse, perform one qualifying chargeable activity. A standard UK PAYG SMS is 15p; buying a Top-up, Data Pack or Add-on also counts. Calls/texts/data count only on the Three mobile network, not Wi-Fi. Once disconnected, the number cannot be restored.",
+          "intervalDays": 180,
+          "state": "current-official-confirmed"
+        },
+        "chinaActivation": "Not an abroad-first route. Before roaming, connect the SIM/eSIM to the Three network in the UK; if there is no preloaded allowance, top up or add a Data Pack while in the UK.",
+        "kyc": "No universal PAYG identity-document requirement established in the reviewed Three sources.",
+        "payment": "Three app/My3/web top-up by card; top-up is also available while abroad after the UK-first provisioning requirement has been satisfied.",
+        "wifiCalling": "Do not use Wi-Fi-only activity as the keep-alive event; Three explicitly says it does not satisfy the 180-day chargeable-activity rule.",
+        "roamingSms": "Three states receiving texts while roaming is free in its published PAYG destination bands. UK-first provisioning is required before travel; actual roaming reachability remains destination and partner-network dependent.",
+        "refund": "not reconciled",
+        "trend": "stable-with-acquisition-change",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-05",
+        "acquireUrl": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
+        "tariffSummary": "New PAYG SIM requires a Data Pack; lowest currently displayed one-month pack £10. Standard PAYG: 35p/min, 15p/text, 10p/MB. One qualifying chargeable activity every 180 days keeps the number active; disconnection is irreversible.",
+        "sourceIds": [
+          "official-three-newpayg-priceguide-2026-04-19",
+          "official-three-payg-datapacks-2026-09-28",
+          "official-three-payg-support-2026-09-28",
+          "official-three-payg-roaming-20261005",
+          "official-three-payg-esim-20261005",
+          "official-three-payg-activation-20261005"
+        ],
+        "guideSteps": [
+          "Buy a Three PAYG physical SIM or eSIM with a Data Pack; a new SIM can no longer be ordered free by itself.",
+          "Before relying on it abroad, connect it to the Three network in the UK and complete any required UK top-up/Data Pack provisioning.",
+          "Before each 180-day inactivity deadline, make a qualifying chargeable mobile-network action; a standard UK SMS currently costs 15p.",
+          "Do not rely on Wi-Fi-only use to reset the timer. If Three disconnects the PAYG number for inactivity, it cannot be reconnected.",
+          "Treat incoming roaming SMS as officially free, but verify destination/partner-network reachability before depending on the number for critical recovery."
+        ]
+      }
     }
   ],
   "aliases": [
@@ -23709,11 +23819,11 @@
     },
     {
       "routeId": "three-uk-payg-180d-2026",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
-      "acquisitionCostOriginal": 5,
-      "acquisitionCostCny": 47,
+      "acquisitionCostOriginal": 10,
+      "acquisitionCostCny": 94,
       "keepCurrency": "GBP",
       "keepYearCostOriginal": 0.3,
       "keepYearCostCny": 2.8,
