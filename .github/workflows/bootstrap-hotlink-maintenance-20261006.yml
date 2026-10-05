@@ -1,0 +1,68 @@
+name: Bootstrap Hotlink maintenance
+
+on:
+  push:
+    branches:
+      - phone/hotlink-pantas-maintenance-20261006
+
+permissions:
+  contents: write
+
+jobs:
+  apply-validate-clean:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decode and apply reviewed patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d _bootstrap/hotlink-maintenance-20261006.patch.gz.b64 | gzip -d > /tmp/hotlink.patch
+          git apply --check /tmp/hotlink.patch
+          git apply /tmp/hotlink.patch
+
+      - name: Validate Phone data
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run phone:data:check
+
+      - name: Validate frontend and publication boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --prefix frontend
+          npm run build --prefix frontend
+          node scripts/test-phone-number-public-release.mjs
+          git diff --check
+
+      - name: Remove build noise and bootstrap artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in $(git diff --name-only); do
+            case "$f" in
+              PROJECT_CONTEXT.md|data/phone/v1/events.json|data/phone/v1/routes.json|data/phone/v1/snapshots.json|data/phone/v1/sources.json|docs/CURRENT_EXECUTION_QUEUE.md|docs/MASTER_PLAN.md|frontend/tools/phone-number-lifecycle-mvp/phone-database.json|frontend/tools/phone-number-lifecycle-mvp/phone-route-data/hotlink-pantas-365-pass-2026.json|frontend/tools/phone-number-lifecycle-mvp/phone-route-metrics.json|frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json|frontend/tools/phone-number-lifecycle-mvp/phone-search-index.json|package.json) ;;
+              *) git restore --worktree -- "$f" ;;
+            esac
+          done
+          rm -f _bootstrap/hotlink-maintenance-20261006.patch.gz.b64
+          rm -f .github/workflows/bootstrap-hotlink-maintenance-20261006.yml
+          rmdir _bootstrap 2>/dev/null || true
+          git diff --check
+
+      - name: Commit formal Hotlink maintenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --name-only
+          git commit -m 'data(phone): reconcile Hotlink Pantas lifecycle'
+          git push origin HEAD:phone/hotlink-pantas-maintenance-20261006
