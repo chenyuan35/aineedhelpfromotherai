@@ -1321,5 +1321,59 @@
     "scope": "route",
     "outcome": "ALDI TALK officially supports prepaid roaming but warns that technical service restrictions can occur in some countries. The reviewed current first-party pages do not establish China-specific incoming-SMS reachability or app/OTP reliability, so no service-specific success claim or percentage is created.",
     "sourceId": "official-alditalk-roaming-current-20261005"
+  },
+  {
+    "id": "evt-hotlink-pantas-current-acquisition-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "current-acquisition-reconciliation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current 26 August 2026 Pantas terms say the plan is available to customers changing from another prepaid plan and charge RM2 for the successful rate-plan change. Current Hotlink Prepaid starter pricing is RM10. The Pantas FAQ still exposes legacy/direct starter-pack wording, so normalize a conservative current acquisition path as RM10 Hotlink Prepaid starter plus RM2 plan change rather than assuming a directly sold Pantas starter is universally available.",
+    "sourceId": "official-hotlink-pantas-tc-current-20261006"
+  },
+  {
+    "id": "evt-hotlink-pantas-365-lifecycle-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "lifecycle-retention-reconciliation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "For eligible non-tourist Pantas service, Hotlink documents an RM30 365-day Active Period pass. After an ordinary active period ends, a 30-day Credit Grace Period allows incoming calls and SMS only; failing to top up before the grace period ends terminates the plan. The RM2/RM4/RM10 products with 365-day validity are internet passes, not SIM-validity substitutes.",
+    "sourceId": "official-hotlink-pantas-passes-current-20261006"
+  },
+  {
+    "id": "evt-hotlink-pantas-tourist-90d-exclusion-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "eligibility-lifecycle-blocker",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current Hotlink Pantas terms explicitly exclude tourist registrations from the normal Active Period, Credit Grace Period and 365-day SIM-validity clauses. Tourist service validity remains fixed at 90 days from original activation and is not extended, renewed or reset by plan switching, top-up or internet-pass purchase.",
+    "sourceId": "official-hotlink-pantas-tc-current-20261006"
+  },
+  {
+    "id": "evt-hotlink-pantas-registration-esim-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "registration-esim-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Hotlink supports new prepaid eSIM registration in the app and passport-based self-registration for non-Malaysians with ID scan and Face ID. These capabilities do not establish whether every non-Malaysian/passport registration is treated as a tourist under the 90-day lifecycle rule, so passport eligibility must not be equated with 365-day retention eligibility.",
+    "sourceId": "official-hotlink-self-registration-current-20261006"
+  },
+  {
+    "id": "evt-hotlink-pantas-roaming-sms-risk-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "overseas-roaming-continuity-risk",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Hotlink Prepaid roaming is provisioned by default and relies on destination partner networks. A September 2026 Pantas user reported being unable to receive roaming SMS while the line and roaming were active; the user said support cited a minimum-balance requirement that was not published on the website. Other 2026 independent reports describe successful offshore eSIM setup only after adding sufficient prepaid balance. Preserve overseas incoming-SMS reachability as unquantified and balance-sensitive rather than guaranteed.",
+    "sourceId": "lowyat-hotlink-pantas-roaming-sms-failure-20260922"
+  },
+  {
+    "id": "evt-hotlink-pantas-365-current-community-confirmation-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "type": "current-offer-community-confirmation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "September 2026 users report the RM30/365-day validity option remains visible after switching to Pantas, including a reported RM2 plan-switch fee. This independently corroborates continued real-world availability but is not used to override first-party lifecycle or tourist rules.",
+    "sourceId": "reddit-hotlink-pantas-365-switch-20260901"
   }
 ]

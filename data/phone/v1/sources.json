@@ -4024,5 +4024,71 @@
     "url": "https://www.alditalk.de/roaming",
     "type": "provider-official",
     "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-hotlink-pantas-tc-current-20261006",
+    "url": "https://www.hotlink.com.my/en/terms-conditions/products/prepaid/pantas/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-pantas-passes-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-pantas-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-prepaid-esim-current-20261006",
+    "url": "https://www.hotlink.com.my/en/services/esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-self-registration-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/prepaid-self-registration/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-roaming-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/international-roaming/roaming-general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-topup-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/top-up/general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "reddit-hotlink-pantas-365-switch-20260901",
+    "url": "https://www.reddit.com/r/Bolehland/comments/1w4aaei/hotlink_no_more_long_life/",
+    "type": "community-forum",
+    "reportedAt": "2026-09-01"
+  },
+  {
+    "id": "lowyat-hotlink-pantas-roaming-sms-failure-20260922",
+    "url": "https://forum.lowyat.net/topic/5577865",
+    "type": "community-forum",
+    "reportedAt": "2026-09-22"
+  },
+  {
+    "id": "hardwarezone-hotlink-offshore-esim-20260106",
+    "url": "https://forums.hardwarezone.com.sg/threads/malaysia-prepaid-card.1984062/page-493",
+    "type": "community-forum",
+    "reportedAt": "2026-01-06"
+  },
+  {
+    "id": "andrewkim-hotlink-offshore-esim-20260620",
+    "url": "https://andrewkim.me/install-malaysian-esim-from-us/",
+    "type": "independent-report",
+    "reportedAt": "2026-06-20"
   }
 ]

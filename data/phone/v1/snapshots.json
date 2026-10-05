@@ -11444,5 +11444,73 @@
         "For overseas account-recovery use, verify destination roaming and SMS reachability before relying on the number; no China/app OTP guarantee is established."
       ]
     }
+  },
+  {
+    "id": "snap-hotlink-pantas-365-pass-2026-current-profile-20261006",
+    "routeId": "hotlink-pantas-365-pass-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-06",
+    "sourceDataset": "hotlink-pantas-evidence-maintenance-2026-10-06",
+    "data": {
+      "id": "hotlink-pantas-365-pass-2026",
+      "brandId": "hotlink-my",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current conservative first-party path: acquire a Hotlink Prepaid line at the RM10 starter baseline, then change to Pantas in the Hotlink app for RM2. Hotlink supports prepaid eSIM and passport self-registration. The Pantas FAQ still contains direct-starter wording, but the 26 August 2026 Pantas terms now frame Pantas eligibility as a change from another prepaid plan, so the database does not assume universal direct Pantas starter availability.",
+      "landedCost": {
+        "currency": "MYR",
+        "providerOrCommunityPrice": 12,
+        "mandatoryTopup": 0,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 12,
+        "landedCny": 18,
+        "fxCheckedAt": "2026-10-06",
+        "state": "current-official-conservative-path"
+      },
+      "keep": {
+        "currency": "MYR",
+        "observedActionCost": 30,
+        "yearCostOriginal": 30,
+        "yearCostCny": 45,
+        "action": "For an eligible non-tourist Pantas line, buy the RM30 365-day Active Period pass in the Hotlink app. The RM2/RM4/RM10 365-day products are data passes and do not substitute for SIM validity. Tourist registrations are excluded: current Pantas terms fix them at 90 days from original activation and say plan switching, top-ups and internet-pass purchases do not extend or reset that period.",
+        "intervalDays": 365,
+        "state": "current-official-conditional-on-non-tourist-registration"
+      },
+      "chinaActivation": "Hotlink supports app-based prepaid eSIM registration and passport self-registration. Reviewed first-party material does not establish whether a China-based/non-resident passport applicant will be classified as tourist or as an eligible regular Pantas customer, so China-first 365-day retention eligibility is unresolved.",
+      "kyc": "Self-registration requires ID scan plus Face ID. MyKad is supported for Malaysians and passport for non-Malaysians. Registration capability is distinct from tourist/non-tourist lifecycle classification.",
+      "payment": "Hotlink top-up supports online banking, credit/debit card and e-wallet. Current Hotlink FAQ says non-Malaysian prepaid top-ups incur 6% service tax.",
+      "wifiCalling": "Not used as a retention or overseas-reachability guarantee in this profile.",
+      "roamingSms": "Hotlink Prepaid roaming is provisioned by default, but partner-network reachability and balance conditions matter. A September 2026 Pantas report records failure to receive roaming SMS despite an active line and roaming; support allegedly cited an unpublished minimum-balance condition. No China-specific or app/OTP reliability percentage is established.",
+      "refund": "not reconciled",
+      "trend": "stable-offer-with-tourist-and-roaming-risk",
+      "guideEligible": false,
+      "holdReason": "The RM30/365-day rule is current for eligible non-tourist Pantas lines, but current Pantas terms hard-limit tourist registrations to 90 days and reviewed passport-registration material does not define when a non-Malaysian is classified as tourist. Recent roaming-SMS failure reports also leave overseas recovery reliability unresolved.",
+      "lastVerifiedAt": "2026-10-06",
+      "acquireUrl": "https://www.hotlink.com.my/en/products/prepaid/",
+      "tariffSummary": "Conservative setup path RM12 = RM10 Hotlink Prepaid starter baseline + RM2 Pantas plan change. Eligible non-tourist Pantas: RM30/365-day Active Period pass; normal expiry then 30-day incoming-call/SMS-only grace. Tourist registrations: fixed 90 days from original activation and non-extendable by plan switch/top-up/internet pass.",
+      "sourceIds": [
+        "official-hotlink-pantas-passes-faq-2026-09-26",
+        "official-hotlink-pantas-tc-current-20261006",
+        "official-hotlink-pantas-passes-current-20261006",
+        "official-hotlink-pantas-general-current-20261006",
+        "official-hotlink-prepaid-esim-current-20261006",
+        "official-hotlink-self-registration-current-20261006",
+        "official-hotlink-roaming-general-current-20261006",
+        "official-hotlink-topup-general-current-20261006",
+        "reddit-hotlink-pantas-365-switch-20260901",
+        "lowyat-hotlink-pantas-roaming-sms-failure-20260922",
+        "hardwarezone-hotlink-offshore-esim-20260106",
+        "andrewkim-hotlink-offshore-esim-20260620"
+      ],
+      "guideSteps": [
+        "Before relying on the route for long-term retention, establish whether Hotlink will classify the intended registration as tourist; passport self-registration alone does not prove 365-day eligibility.",
+        "For the conservative current path, start with a Hotlink Prepaid line and switch to Pantas in the app for the documented RM2 change fee.",
+        "For an eligible non-tourist Pantas line, buy the RM30 365-day Active Period pass. Do not confuse the RM2/RM4/RM10 365-day data passes with SIM validity.",
+        "Do not use this as a long-term retention route if the line is tourist-classified: current terms fix validity at 90 days and prevent extension by top-up/pass/plan switch.",
+        "For overseas recovery, verify roaming partner coverage and practical SMS receipt before relying on the line for critical OTP."
+      ]
+    }
   }
 ]
