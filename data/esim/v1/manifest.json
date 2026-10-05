@@ -42,6 +42,13 @@
       "capturedAt": "2026-10-03",
       "role": "community-outcome-snapshot",
       "expectedRecordCount": 1
+    },
+    {
+      "id": "nodeseek-965985-free-esim-verified-roundup-2026-10-05",
+      "path": "data/phone/inbox/community-free-esim-nodeseek-965985-2026-10-05.json",
+      "capturedAt": "2026-10-05",
+      "role": "free-mechanism-snapshot",
+      "expectedRecordCount": 8
     }
   ],
   "normalizationPolicy": {
