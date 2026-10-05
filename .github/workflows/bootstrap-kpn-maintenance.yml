@@ -1,0 +1,49 @@
+name: Bootstrap KPN maintenance
+
+on:
+  push:
+    branches:
+      - phone/kpn-maintenance-20261005
+    paths:
+      - '.github/workflows/bootstrap-kpn-maintenance.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: phone/kpn-maintenance-20261005
+      - name: Reconstruct and apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat _bootstrap/kpn-part0.txt _bootstrap/kpn-part1.txt _bootstrap/kpn-part2.txt _bootstrap/kpn-part3.txt > /tmp/kpn.patch.gz.b64
+          base64 -d /tmp/kpn.patch.gz.b64 | gzip -dc > /tmp/kpn.patch
+          git apply --check /tmp/kpn.patch
+          git apply /tmp/kpn.patch
+          rm -rf _bootstrap
+          rm -f .github/workflows/bootstrap-kpn-maintenance.yml
+      - name: Validate Phone data
+        run: |
+          npm ci --ignore-scripts
+          npm run phone:data:check
+      - name: Validate frontend and publication boundary
+        run: |
+          npm ci --prefix frontend
+          npm run build --prefix frontend
+          node scripts/test-phone-number-public-release.mjs
+          git diff --check
+      - name: Commit reviewed KPN maintenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'data(phone): reconcile KPN Prepaid lifecycle'
+          git push origin HEAD:phone/kpn-maintenance-20261005
