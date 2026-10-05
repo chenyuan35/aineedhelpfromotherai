@@ -1276,5 +1276,50 @@
     "scope": "route",
     "outcome": "Super announced the basic standard-rate call and SMS price changing to €0.05 effective 24 September 2025. This does not replace the number-retention rule, which remains a single top-up of at least €3 every 180 days.",
     "sourceId": "official-super-price-update-20250723"
+  },
+  {
+    "id": "evt-aldi-current-price-promo-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "type": "current-price-promotion-boundary",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "ALDI TALK currently advertises the Starter-Set at €2.99 through 2026-10-11, versus the regular €9.99 price, with €10 starting credit. Preserve €9.99 as the durable normalized acquisition baseline and record €2.99 only as a time-bounded promotion so a six-day sale does not become permanent route economics.",
+    "sourceId": "official-alditalk-starter-set-current-20261005"
+  },
+  {
+    "id": "evt-aldi-activity-window-current-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "type": "lifecycle-retention-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current ALDI TALK guidance confirms a 12-month activity window after activation and a new activity window after each top-up. €5 gives 4 months and €30 gives 24 months; the existing official activity-window PDF supplies the full €5/€10/€15/€30 ladder. After the active window ends, the line remains reachable for two months but cannot actively call or use mobile data; without a top-up during that rescue period the SIM is deactivated.",
+    "sourceId": "official-alditalk-activity-window-current-20261005"
+  },
+  {
+    "id": "evt-aldi-esim-documentation-conflict-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "type": "sim-form-documentation-conflict",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "The current dedicated ALDI TALK eSIM page offers a prepaid eSIM directly for online ordering and activation after registration, while the current SIM-service page still says eSIM is available only as an exchange card for an already activated plastic SIM. Preserve physical + eSIM capability but record the provider-documentation conflict instead of claiming one acquisition path is universally available.",
+    "sourceId": "official-alditalk-esim-current-20261005"
+  },
+  {
+    "id": "evt-aldi-identity-activation-current-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "type": "identity-activation-boundary",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "ALDI TALK registration requires personal data and a valid accepted identity document. Online Video-Ident is available with camera, microphone and internet, and in-person identification options also exist. Reviewed first-party material does not establish universal China-first activation or universal acceptance of every foreign passport, so those outcomes remain unverified.",
+    "sourceId": "official-alditalk-registration-current-20261005"
+  },
+  {
+    "id": "evt-aldi-roaming-continuity-boundary-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "type": "overseas-roaming-continuity-boundary",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "ALDI TALK officially supports prepaid roaming but warns that technical service restrictions can occur in some countries. The reviewed current first-party pages do not establish China-specific incoming-SMS reachability or app/OTP reliability, so no service-specific success claim or percentage is created.",
+    "sourceId": "official-alditalk-roaming-current-20261005"
   }
 ]
