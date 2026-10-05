@@ -1,0 +1,49 @@
+name: Bootstrap Three UK maintenance
+
+on:
+  push:
+    branches:
+      - phone/three-uk-maintenance-20261005
+    paths:
+      - '.github/workflows/bootstrap-three-uk-maintenance.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: phone/three-uk-maintenance-20261005
+      - name: Reconstruct and apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat _bootstrap/three-part0.txt _bootstrap/three-part1.txt _bootstrap/three-part2.txt _bootstrap/three-part3.txt > /tmp/three.patch.gz.b64
+          base64 -d /tmp/three.patch.gz.b64 | gzip -dc > /tmp/three.patch
+          git apply --check /tmp/three.patch
+          git apply /tmp/three.patch
+          rm -rf _bootstrap
+          rm -f .github/workflows/bootstrap-three-uk-maintenance.yml
+      - name: Validate Phone data
+        run: |
+          npm ci --ignore-scripts
+          npm run phone:data:check
+      - name: Validate frontend and publication boundary
+        run: |
+          npm ci --prefix frontend
+          npm run build --prefix frontend
+          node scripts/test-phone-number-public-release.mjs
+          git diff --check
+      - name: Commit reviewed Three UK maintenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'data(phone): reconcile Three UK PAYG lifecycle'
+          git push origin HEAD:phone/three-uk-maintenance-20261005
