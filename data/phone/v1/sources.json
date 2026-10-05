@@ -3988,5 +3988,41 @@
     "url": "https://www.super.ee/en/uudised/super-hinnakirja-muudatus",
     "type": "provider-official",
     "reportedAt": "2025-07-23"
+  },
+  {
+    "id": "official-alditalk-starter-set-current-20261005",
+    "url": "https://www.alditalk.de/starter-set",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-activity-window-current-20261005",
+    "url": "https://www.alditalk.de/guthaben-abfragen/handy-guthaben-abfragen",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-esim-current-20261005",
+    "url": "https://www.alditalk.de/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-sim-service-esim-current-20261005",
+    "url": "https://www.alditalk.de/sim-karte-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-registration-current-20261005",
+    "url": "https://www.alditalk.de/registrieren",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-roaming-current-20261005",
+    "url": "https://www.alditalk.de/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   }
 ]

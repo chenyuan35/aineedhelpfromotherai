@@ -203,10 +203,16 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
-    "acquireUrl": "https://www.alditalk.de/starter-set-basis-tarif",
+    "lastVerifiedAt": "2026-10-05",
+    "acquireUrl": "https://www.alditalk.de/starter-set",
     "sourceIds": [
-      "official-alditalk-aktivitaetszeitfenster-pdf-2026-01"
+      "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
+      "official-alditalk-starter-set-current-20261005",
+      "official-alditalk-activity-window-current-20261005",
+      "official-alditalk-esim-current-20261005",
+      "official-alditalk-sim-service-esim-current-20261005",
+      "official-alditalk-registration-current-20261005",
+      "official-alditalk-roaming-current-20261005"
     ]
   },
   {

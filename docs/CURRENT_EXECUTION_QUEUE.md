@@ -165,9 +165,18 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Roaming must be enabled before travel; EU use follows the Estonia price list subject to fair-use rules, while non-EU prices/reachability remain destination-dependent. Current standard-rate call/SMS is **€0.05**, but ordinary usage is not documented as resetting number validity.
 - Source corpus becomes **665**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — ALDI TALK lifecycle / acquisition maintenance
+
+- Existing `aldi-talk-activity-window-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **1 → 7** using current/standing first-party evidence. Regular Starter-Set economics remain **€9.99 with €10 starting credit**; the active **€2.99 promotion ends 2026-10-11** and is recorded separately rather than becoming the durable acquisition metric.
+- Lifecycle remains explicit: **12-month initial window**; official top-up ladder **€5/4mo, €10/8mo, €15/12mo, €30/24mo**; then a **two-month receive-only rescue period** before deactivation. Lowest documented keep path remains about **€15/year**.
+- Current official pages support physical SIM + eSIM but conflict on whether new prepaid eSIM can be ordered directly or only obtained by exchanging an activated plastic SIM; preserve the conflict instead of silently choosing one path.
+- Valid-ID registration is mandatory; online Video-Ident exists, but universal foreign-passport/China-first activation is not established. Roaming is officially supported with a provider warning about country-specific technical restrictions; China incoming-SMS and app/OTP reliability remain unverified.
+- Source corpus becomes **671**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `aldi-talk-activity-window-2026`. It is another admitted/backstage real-mobile route with only one current source record. Reconcile current acquisition cost, activity/lifecycle rule, SIM/eSIM availability and roaming-SMS/activation constraints before any service-specific evidence claim.
+1. **Immediate bounded route:** `hotlink-pantas-365-pass-2026`. It is the next admitted/backstage real-mobile route with only one source record in the current canonical audit and low normalized keep cost. Reconcile current product identity, acquisition/365-day validity economics, SIM/eSIM/activation constraints and roaming/SMS continuity before any service-specific evidence claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

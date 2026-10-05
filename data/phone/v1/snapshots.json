@@ -11376,5 +11376,73 @@
         "Enable roaming before travel; treat non-EU pricing and reachability as destination/network dependent rather than universally guaranteed."
       ]
     }
+  },
+  {
+    "id": "snap-aldi-talk-activity-window-2026-current-profile-20261005",
+    "routeId": "aldi-talk-activity-window-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-05",
+    "sourceDataset": "aldi-talk-evidence-maintenance-2026-10-05",
+    "data": {
+      "id": "aldi-talk-activity-window-2026",
+      "brandId": "aldi-talk",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Regular Starter-Set price is €9.99 with €10 starting credit. A temporary €2.99 promotion is advertised through 2026-10-11; the durable normalized acquisition metric remains €9.99 so the short sale is not treated as permanent economics. Current ALDI TALK pages support both physical SIM and eSIM, but two official eSIM pages conflict on whether new prepaid eSIM can be ordered directly or only obtained by swapping an existing SIM.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 9.99,
+        "mandatoryTopup": 0,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 9.99,
+        "landedCny": 78,
+        "fxCheckedAt": "2026-10-05",
+        "state": "current-official-with-time-bounded-promotion",
+        "promotion": {
+          "price": 2.99,
+          "endsAt": "2026-10-11",
+          "startingCredit": 10
+        }
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 5,
+        "yearCostOriginal": 15,
+        "yearCostCny": 117,
+        "action": "Top up before the activity window expires. The lowest official ladder step is €5 for 4 months, which annualizes to about €15/year; €30 gives 24 months at the same annualized rate. Activation starts with a 12-month window. After expiry there is a two-month receive-only rescue period before deactivation.",
+        "intervalDays": 120,
+        "state": "current-official"
+      },
+      "chinaActivation": "Not established as a China-first route. Registration requires an accepted valid identity document. Online Video-Ident is available, but reviewed first-party evidence does not prove universal foreign-passport acceptance or successful first activation from China.",
+      "kyc": "Mandatory personal registration and identity verification with an accepted valid ID; ALDI TALK offers online Video-Ident and in-person identification paths.",
+      "payment": "Top-up is supported through ALDI TALK account/app and prepaid vouchers; specific foreign-card acceptance is not generalized here.",
+      "wifiCalling": "Not used as a retention or overseas-reachability guarantee in this profile.",
+      "roamingSms": "Prepaid roaming is officially supported, but ALDI TALK warns of technical service restrictions in some countries. Exact incoming-SMS reachability in China and app/OTP reliability remain unverified.",
+      "refund": "Existing official activity-window documentation states remaining credit can be refunded on request after deactivation; not reinterpreted as an automatic refund.",
+      "trend": "stable-with-esim-documentation-conflict-and-promo-watch",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.alditalk.de/starter-set",
+      "tariffSummary": "Regular Starter-Set €9.99 with €10 credit; temporary €2.99 promo through 2026-10-11. Initial activity window 12 months; €5/4mo, €10/8mo, €15/12mo, €30/24mo top-up ladder; two-month receive-only rescue period after active-window expiry.",
+      "sourceIds": [
+        "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
+        "official-alditalk-starter-set-current-20261005",
+        "official-alditalk-activity-window-current-20261005",
+        "official-alditalk-esim-current-20261005",
+        "official-alditalk-sim-service-esim-current-20261005",
+        "official-alditalk-registration-current-20261005",
+        "official-alditalk-roaming-current-20261005"
+      ],
+      "guideSteps": [
+        "Acquire the ALDI TALK Starter-Set or current prepaid eSIM path and complete mandatory identity verification.",
+        "Do not treat the €2.99 promotion ending 2026-10-11 as the permanent acquisition price; regular price is €9.99 with €10 starting credit.",
+        "Before each activity window ends, top up using the official ladder; the lowest documented step is €5 for four months.",
+        "If the active window lapses, top up during the following two-month receive-only rescue period before deactivation.",
+        "For overseas account-recovery use, verify destination roaming and SMS reachability before relying on the number; no China/app OTP guarantee is established."
+      ]
+    }
   }
 ]
