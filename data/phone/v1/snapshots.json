@@ -11063,5 +11063,131 @@
         "Do not use this as a primary irreplaceable number without a recovery/port-out plan because account security checks are an unquantified continuity risk."
       ]
     }
+  },
+  {
+    "id": "snap-redpocket-ebay-30-2026-current-profile-20261005",
+    "routeId": "redpocket-ebay-30-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-05",
+    "sourceDataset": "redpocket-ebay-30-reviewed-2026-10-05",
+    "data": {
+      "id": "redpocket-ebay-30-2026",
+      "brandId": "redpocket-ebay-us",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "RedPocket official eBay Store Starter Plan: US$30 for 360 days, with unlimited U.S. talk/text and 200MB of 5G data every 30 days. The listing offers physical SIM, eSIM and Renewal / Existing SIM options and identifies the starter SIM/eSIM as GSMA (AT&T).",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 30,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 30,
+        "landedCny": 213,
+        "fxCheckedAt": "2026-09-26",
+        "state": "current-official-ebay-listing"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 30,
+        "yearCostOriginal": 30,
+        "yearCostCny": 213,
+        "action": "Before the 360-day term ends, buy the same eBay plan using the Renewal / Existing SIM option and apply the emailed eBay activation/renewal PIN to the existing RedPocket line.",
+        "intervalDays": 360,
+        "state": "current-official-ebay-renewal-path"
+      },
+      "chinaActivation": "Not supported as a China-first route. RedPocket official activation help says SIM/eSIM activation can only be completed from the United States; a 2026 $30-plan user abroad independently reproduced this limitation.",
+      "kyc": "No credit check is advertised for the eBay plan. Separate government-ID KYC is not established by the reviewed sources; normal account, device/IMEI, address and anti-fraud checks can still apply.",
+      "payment": "Purchase and renewal are through the official RedPocket eBay Store. eBay provides the checkout/payment layer; RedPocket delivers the activation or renewal PIN by email.",
+      "wifiCalling": "Supported by RedPocket on GSMA and includes SMS text messaging. Enable/provision it while the line is fully activated in the U.S.; device and account provisioning can block Wi-Fi Calling, and overseas setup after departure is not guaranteed.",
+      "roamingSms": "Do not rely on cellular international roaming for this eBay route. Current RedPocket help explicitly excludes eBay plans, including GSMA eBay plans, from included roaming. Some 2026 users saw changing roaming buckets anyway, but that behavior conflicts with the provider entitlement and is treated as unstable/unpromised.",
+      "refund": "The eBay seller terms offer a refund within 30 days if unactivated, or within 7 days after activation if usage stays below stated thresholds; verify the current listing before purchase.",
+      "trend": "current-high-value-ebay-product-with-us-activation-and-roaming-caveats",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.ebay.com/itm/136840233242",
+      "tariffSummary": "US$30 / 360 days. Unlimited U.S. talk/text + 200MB every 30 days. GSMA/AT&T physical SIM or eSIM; renewal/existing-SIM option is available on the same listing.",
+      "sourceIds": [
+        "redpocket-ebay-30-listing-20261005",
+        "redpocket-annual-help-360d-20261005",
+        "redpocket-wifi-calling-20261005",
+        "redpocket-ebay-pin-20261005",
+        "redpocket-esim-activation-20260929",
+        "redpocket-roaming-20260929",
+        "site2us-redpocket-ebay-20260925",
+        "reddit-redpocket-ebay-lowcost-20260514",
+        "reddit-redpocket-ebay-abroad-activation-20260523",
+        "reddit-redpocket-ebay-roaming-conflict-20260825",
+        "reddit-redpocket-ebay-bangladesh-sms-20260627"
+      ],
+      "guideSteps": [
+        "Buy the $30/360-day plan from RedPocket Store on eBay and choose physical SIM or eSIM.",
+        "Activate the line while physically in the United States; eBay plans use a PIN delivered by email.",
+        "Enable Wi-Fi Calling and register the required U.S. E911 address before depending on the number abroad.",
+        "For renewal, select Renewal / Existing SIM on the eBay listing and apply the emailed PIN before the 360-day service term ends.",
+        "Do not plan around international roaming buckets shown by some accounts; RedPocket currently says eBay plans do not include roaming."
+      ]
+    }
+  },
+  {
+    "id": "snap-redpocket-annual-2026-current-profile-20261005",
+    "routeId": "redpocket-annual-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-05",
+    "sourceDataset": "redpocket-essentials-refresh-2026-10-05",
+    "data": {
+      "id": "redpocket-annual-2026",
+      "brandId": "redpocket-us",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Current RedPocket website Essentials annual product: standard label US$120, current first-year promotion US$80, 3GB high-speed data per month, unlimited talk/text, international calling to 20+ countries and roaming in 60+ countries. The separate eBay $30/360-day 200MB product is normalized under its own route and is not part of these economics.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 80,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 80,
+        "landedCny": 568,
+        "fxCheckedAt": "2026-09-26",
+        "state": "current-official-first-year-promotion"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 110,
+        "yearCostOriginal": 110,
+        "yearCostCny": null,
+        "action": "Renew the website Essentials annual plan at the current published US$110 renewal price. RedPocket official annual-plan help defines annual service as 360 days.",
+        "intervalDays": 360,
+        "state": "current-official-annual-renewal"
+      },
+      "chinaActivation": "SIM/eSIM activation can only be completed from the United States.",
+      "kyc": "No credit check (prepaid); standard account/device/address and anti-fraud checks may still apply.",
+      "payment": "Website plans are sold for U.S. purchase; physical SIM shipping is domestic. RedPocket requires a U.S. card for direct website purchases.",
+      "wifiCalling": "Officially supported on all RedPocket networks and supports SMS text messaging; compatible device and E911 setup are required.",
+      "roamingSms": "Current Essentials includes international roaming in 60+ countries on eligible GSMA service; destination selection must be completed in the United States before departure. Do not transfer this entitlement to the separate eBay route.",
+      "refund": "not reconciled",
+      "trend": "current-official-promo-variable",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.redpocket.com/plans/annual",
+      "tariffSummary": "Essentials annual: US$120 standard label, currently US$80 first year, 3GB/month, renews at US$110 per 360-day annual term.",
+      "sourceIds": [
+        "redpocket-annual-current-20261005",
+        "redpocket-annual-help-360d-20261005",
+        "redpocket-esim-activation-20260929",
+        "redpocket-roaming-20260929",
+        "redpocket-wifi-calling-20261005"
+      ],
+      "guideSteps": [
+        "Use this route only for the RedPocket website Essentials annual product; the $30 eBay Starter Plan is a separate canonical route.",
+        "Activate in the United States, enable Wi-Fi Calling with E911, and if using roaming select the destination in your RedPocket account before leaving the U.S.",
+        "Expect promotional first-year pricing to change; renewal is currently published at US$110 for the annual term."
+      ]
+    }
   }
 ]

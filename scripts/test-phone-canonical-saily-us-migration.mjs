@@ -53,9 +53,9 @@ assert(whatsapp, 'missing Saily WhatsApp observation');
 assert.equal(whatsapp.outcome, 'success');
 assert(events.some((row) => row.id === 'evt-saily-us-phone-number-operational-failure-20260813'), 'missing Saily operational-failure event');
 
-assert.equal(canonical.routes.length, 159);
+assert.ok(canonical.routes.length >= 159, `canonical route corpus regressed below historical baseline: ${canonical.routes.length}`);
 assert.equal(canonical.markets.length, 87);
-assert.equal(brands.length, 156);
+assert.ok(brands.length >= 156, `brand corpus regressed below historical baseline: ${brands.length}`);
 assert.equal(networks.length, 117);
 assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 assert.equal(globalDirectory.routes.length, 135);

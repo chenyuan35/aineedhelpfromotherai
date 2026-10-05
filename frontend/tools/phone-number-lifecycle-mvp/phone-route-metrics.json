@@ -1239,15 +1239,15 @@
     },
     {
       "routeId": "redpocket-annual-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "USD",
       "acquisitionCostOriginal": 80,
-      "acquisitionCostCny": 426,
+      "acquisitionCostCny": 568,
       "keepCurrency": "USD",
       "keepYearCostOriginal": 110,
       "keepYearCostCny": null,
-      "keepIntervalDays": 365
+      "keepIntervalDays": 360
     },
     {
       "routeId": "safaricom-daima-2026",
@@ -1908,6 +1908,18 @@
       "keepYearCostOriginal": 13,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
+    },
+    {
+      "routeId": "redpocket-ebay-30-2026",
+      "checkedAt": "2026-10-05",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
+      "acquisitionCostOriginal": 30,
+      "acquisitionCostCny": 213,
+      "keepCurrency": "USD",
+      "keepYearCostOriginal": 30,
+      "keepYearCostCny": 213,
+      "keepIntervalDays": 360
     }
   ]
 }
