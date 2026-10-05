@@ -2838,12 +2838,17 @@
     "form": "physical SIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-04",
     "acquireUrl": "https://www.ultramobile.com/paygo/",
     "sourceIds": [
       "official-ultramobile-paygo-2026-09-29",
       "official-ultramobile-paygo-roaming-2026-09-29",
-      "official-ultramobile-paygo-terms-2026-09-29"
+      "official-ultramobile-paygo-terms-2026-09-29",
+      "reddit-ultramobile-telegram-signup-20250117",
+      "youtube-didushan-ultramobile-telegram-20250221",
+      "shuzijumin-ultramobile-telegram-20250307",
+      "linuxdo-ultramobile-telegram-mixed-20250603",
+      "v2ex-ultramobile-telegram-mixed-20260404"
     ]
   },
   {
