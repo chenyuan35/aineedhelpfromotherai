@@ -1118,10 +1118,21 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
-    "acquireUrl": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.hotlink.com.my/en/products/prepaid/",
     "sourceIds": [
-      "official-hotlink-pantas-passes-faq-2026-09-26"
+      "official-hotlink-pantas-passes-faq-2026-09-26",
+      "official-hotlink-pantas-tc-current-20261006",
+      "official-hotlink-pantas-passes-current-20261006",
+      "official-hotlink-pantas-general-current-20261006",
+      "official-hotlink-prepaid-esim-current-20261006",
+      "official-hotlink-self-registration-current-20261006",
+      "official-hotlink-roaming-general-current-20261006",
+      "official-hotlink-topup-general-current-20261006",
+      "reddit-hotlink-pantas-365-switch-20260901",
+      "lowyat-hotlink-pantas-roaming-sms-failure-20260922",
+      "hardwarezone-hotlink-offshore-esim-20260106",
+      "andrewkim-hotlink-offshore-esim-20260620"
     ]
   },
   {
