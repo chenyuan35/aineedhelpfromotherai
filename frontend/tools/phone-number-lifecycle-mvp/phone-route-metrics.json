@@ -759,14 +759,14 @@
     },
     {
       "routeId": "kpn-prepaid-6mo-2026",
-      "checkedAt": "2026-09-26",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "EUR",
-      "acquisitionCostOriginal": 15,
-      "acquisitionCostCny": 117,
+      "acquisitionCostOriginal": 4.99,
+      "acquisitionCostCny": 39,
       "keepCurrency": "EUR",
-      "keepYearCostOriginal": 0.14,
-      "keepYearCostCny": 1.1,
+      "keepYearCostOriginal": 0.3,
+      "keepYearCostCny": 2.4,
       "keepIntervalDays": 180
     },
     {

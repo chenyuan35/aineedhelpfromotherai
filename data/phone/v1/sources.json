@@ -3904,5 +3904,47 @@
     "url": "https://www.redpocket.com/plans/annual",
     "type": "provider-official",
     "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-product-20261005",
+    "url": "https://www.kpn.com/shop/mobiel/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-tariffs-20261005",
+    "url": "https://www.kpn.com/prepaid/tarieven",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-basis2021-pdf-20261005",
+    "url": "https://assets.ctfassets.net/zuadwp3l2xby/udq2vxsllH5iS6wySx1j7/490802b92af6223ae567f88780f9d5e8/KPN_M_Prepaid_Bel-SMS_2021_v5.0__3_.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-abroad-20261005",
+    "url": "https://www.kpn.com/prepaid/buitenland?navMethod=header",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "kpn-community-activation-netherlands-20260612",
+    "url": "https://community.kpn.com/prepaid-16/nieuwe-prepaid-simkaart-werkt-nog-niet-in-het-buitenland-649721",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-06-12"
+  },
+  {
+    "id": "kpn-community-prepaid-esim-no-20260807",
+    "url": "https://community.kpn.com/prepaid-16/need-help-to-activate-prepaid-e-sim-from-abroad-653003?postid=2290319",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-08-07"
+  },
+  {
+    "id": "kpn-community-roaming-network-loss-20260817",
+    "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-08-17"
   }
 ]

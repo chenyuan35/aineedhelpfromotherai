@@ -1177,5 +1177,41 @@
     "scope": "route",
     "outcome": "The website Essentials annual route is kept separate from the distinct $30/360-day eBay Starter Plan. Current official Essentials annual page shows a $120 label, $80 first-year promotion, 3GB/month and $110 renewal; stale $60/$30 guide wording is removed from this canonical route.",
     "sourceId": "redpocket-annual-current-20261005"
+  },
+  {
+    "id": "evt-kpn-current-economics-lifecycle-20261005",
+    "routeId": "kpn-prepaid-6mo-2026",
+    "type": "current-price-and-retention-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current KPN first-party pages price the prepaid SIM at €4.99. KPN Basis 2021 lists €0.15 per SMS. Credit has unlimited validity only if the line performs a qualifying action at least once every 6 months; incoming calls/SMS do not count. After 6 months of inactivity credit is frozen for 90 days, and a top-up during that rescue window can restore it; otherwise the number and credit are lost.",
+    "sourceId": "official-kpn-prepaid-product-20261005"
+  },
+  {
+    "id": "evt-kpn-prepaid-physical-only-20261005",
+    "routeId": "kpn-prepaid-6mo-2026",
+    "type": "sim-form-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "KPN moderator guidance in 2026 confirms KPN Prepaid does not support eSIM. Prepaid requires a physical SIM; subscription eSIM behavior must not be carried into this route.",
+    "sourceId": "kpn-community-prepaid-esim-no-20260807"
+  },
+  {
+    "id": "evt-kpn-netherlands-first-activation-20261005",
+    "routeId": "kpn-prepaid-6mo-2026",
+    "type": "activation-location-constraint",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current provider-moderated guidance says a new KPN Prepaid SIM can only be activated in the Netherlands while connected to the KPN network. Abroad-first activation is not supported.",
+    "sourceId": "kpn-community-activation-netherlands-20260612"
+  },
+  {
+    "id": "evt-kpn-overseas-continuity-risk-20261005",
+    "routeId": "kpn-prepaid-6mo-2026",
+    "type": "overseas-roaming-continuity-risk",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "KPN officially supports prepaid abroad and states incoming SMS abroad is free, including outside the EU at destination-specific outgoing rates. A 2026 provider-community case reports a previously used prepaid line losing network abroad. Preserve this as an unquantified continuity risk rather than treating roaming/SMS reachability as guaranteed.",
+    "sourceId": "kpn-community-roaming-network-loss-20260817"
   }
 ]

@@ -1268,13 +1268,20 @@
     "displayName": "KPN Prepaid",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical + eSIM",
+    "form": "physical SIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-26",
-    "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+    "lastVerifiedAt": "2026-10-05",
+    "acquireUrl": "https://www.kpn.com/shop/mobiel/prepaid",
     "sourceIds": [
-      "official-staff-kpn-community-6mo-rule-2026-02"
+      "official-staff-kpn-community-6mo-rule-2026-02",
+      "official-kpn-prepaid-product-20261005",
+      "official-kpn-prepaid-tariffs-20261005",
+      "official-kpn-prepaid-basis2021-pdf-20261005",
+      "official-kpn-prepaid-abroad-20261005",
+      "kpn-community-activation-netherlands-20260612",
+      "kpn-community-prepaid-esim-no-20260807",
+      "kpn-community-roaming-network-loss-20260817"
     ]
   },
   {
