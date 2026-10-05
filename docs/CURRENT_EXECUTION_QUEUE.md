@@ -7,7 +7,7 @@ Last updated: 2026-10-05
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 641 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 651 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -131,11 +131,20 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Community risk is mixed and not plan-isolated enough for an exact app aggregate. Preserve zero service observations/percentages; set `guideEligible=false` while keeping the route admitted/backstage-only.
 - Source corpus becomes **641**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Red Pocket Essentials / eBay $30 atomic split
+
+- Reviewed `redpocket-annual-2026` against current first-party and independent evidence and found two materially different products had been conflated.
+- Existing `redpocket-annual-2026` now cleanly represents website Essentials: **US$80 first year / US$110 renewal / 3GB per month / 360-day annual term**.
+- New canonical `redpocket-ebay-30-2026` represents the official eBay Starter Plan: **US$30 / 360 days / unlimited U.S. talk+text / 200MB every 30 days / GSMA-AT&T / physical SIM or eSIM / renewal-existing-SIM option**.
+- Official boundaries are explicit: activation must occur in the U.S.; Wi-Fi Calling supports SMS; current RedPocket help says eBay plans do not include international roaming. Conflicting 2026 community roaming buckets are recorded as unstable/unpromised.
+- No exact app/service sample meets the percentage gate, so service evidence remains unquantified. New route is `admitted` + `backstage-only`; no SEO/public route is created.
+- Canonical becomes **160 routes / 87 markets / 157 brands / 117 networks / 651 sources**. Historical comparison remains **135**, explicit indexability **3**, sitemap **31**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Next bounded route:** reconcile `redpocket-annual-2026`. It still has zero service observations and its current snapshot contains stale guide/acquisition wording alongside newer US$80 first-year / US$110 renewal metrics. Fix source-backed economics and continuity wording first, then seek exact service evidence.
+1. **Immediate bounded route:** `kpn-prepaid-6mo-2026`. It is an admitted backstage real-mobile route with very low normalized keep cost, only one current source and zero service observations. Reconcile current lifecycle economics first, then add exact overseas/SMS/service evidence only when route identity is explicit.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
-3. **Database expansion:** no currently known evidence-qualified atomic residual remains outside canonical; do not create DB-C24 merely to raise counts.
+3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route, as happened with Red Pocket eBay. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
 5. **Frontend:** no new URL or redesign from this maintenance work.
 
@@ -150,7 +159,7 @@ Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review
 ## Do not do next
 
 - do not create DB-C24 merely to increase counts; Saily, LuckySIM and Macau were bounded residual exceptions only because their documented blockers cleared;
-- do not equate 159/159 current-known coverage with all global carrier products;
+- do not equate 160/160 current-known coverage with all global carrier products;
 - do not automatically turn canonical rows into SEO pages;
 - do not auto-rank HOLD/needs-reconciliation as recommendations;
 - do not mix pure data eSIM into Phone-number canonical without reviewed identity linkage;

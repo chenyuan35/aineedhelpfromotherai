@@ -57,9 +57,9 @@ assert.equal(tune.keep.yearCostOriginal, 35);
 assert.match(tune.holdReason, /tourist|three months|3 months/i);
 assert.match(tune.kyc, /mandatory|tourist|three-month/i);
 
-assert.equal(canonical.routes.length, 159);
+assert.ok(canonical.routes.length >= 159, `canonical route corpus regressed below historical baseline: ${canonical.routes.length}`);
 assert.equal(canonical.markets.length, 87);
-assert.equal(brands.length, 156);
+assert.ok(brands.length >= 156, `brand corpus regressed below historical baseline: ${brands.length}`);
 assert.equal(networks.length, 117);
 assert.ok(sources.length >= 599, `source corpus regressed below Saily baseline: ${sources.length}`);
 const canonicalIds = new Set(canonical.routes.map((row) => row.id));

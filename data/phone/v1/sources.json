@@ -3844,5 +3844,65 @@
     "url": "https://www.nodeseek.com/post-953129-1",
     "type": "independent-community",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "redpocket-ebay-30-listing-20261005",
+    "url": "https://www.ebay.com/itm/136840233242",
+    "type": "provider-commercial-page",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-annual-help-360d-20261005",
+    "url": "https://help.redpocket.com/red-pocket-mobile-offers-annual-12-month-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-wifi-calling-20261005",
+    "url": "https://help.redpocket.com/what-is-wifi-calling-and-can-i-use-it-with-my-red-pocket-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-ebay-pin-20261005",
+    "url": "https://help.redpocket.com/confirmation-code",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "site2us-redpocket-ebay-20260925",
+    "url": "https://site2us.com/en/phone/redpocket-ebay",
+    "type": "independent-editorial",
+    "reportedAt": "2026-09-25"
+  },
+  {
+    "id": "reddit-redpocket-ebay-lowcost-20260514",
+    "url": "https://www.reddit.com/r/NoContract/comments/1tdcc61/psa_if_you_need_a_low_cost_plan_for_callssms/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-14"
+  },
+  {
+    "id": "reddit-redpocket-ebay-abroad-activation-20260523",
+    "url": "https://www.reddit.com/r/redpocket/comments/1tlrlox/new_user_of_30_annual_ebay_plan_should_i_be_able/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-23"
+  },
+  {
+    "id": "reddit-redpocket-ebay-roaming-conflict-20260825",
+    "url": "https://www.reddit.com/r/redpocket/comments/1vxqir6/did_redpocket_change_the_30_ebay_annual_plan/",
+    "type": "independent-community",
+    "reportedAt": "2026-08-25"
+  },
+  {
+    "id": "reddit-redpocket-ebay-bangladesh-sms-20260627",
+    "url": "https://www.reddit.com/r/redpocket/comments/1ugptv9/ebay_30_annual_plan_text_while_in_bangladesh/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-27"
+  },
+  {
+    "id": "redpocket-annual-current-20261005",
+    "url": "https://www.redpocket.com/plans/annual",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   }
 ]

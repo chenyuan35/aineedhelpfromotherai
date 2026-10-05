@@ -100,8 +100,14 @@ for (const route of ukPilot.routes) {
 
 
 const canonicalIndex = JSON.parse(fs.readFileSync(path.join(publicDir, 'phone-route-summaries.json'), 'utf8'));
-assert.equal(canonicalIndex.routes.length, 159, 'public finder index must expose every canonical route');
-assert.deepEqual(Object.fromEntries([...new Set(canonicalIndex.routes.map(r => r.family))].map(f => [f, canonicalIndex.routes.filter(r => r.family === f).length])), { 'long-term': 152, temporary: 5, data: 2 });
+const canonicalRoutes = JSON.parse(fs.readFileSync(path.join(root, 'data', 'phone', 'v1', 'routes.json'), 'utf8'));
+assert.equal(canonicalIndex.routes.length, canonicalRoutes.length, 'public finder index must expose every canonical route');
+assert.deepEqual(canonicalIndex.routes.map(r => r.id).sort(), canonicalRoutes.map(r => r.id).sort(), 'public finder IDs must match canonical route IDs');
+assert.deepEqual(
+  Object.fromEntries([...new Set(canonicalIndex.routes.map(r => r.family))].map(f => [f, canonicalIndex.routes.filter(r => r.family === f).length])),
+  Object.fromEntries([...new Set(canonicalRoutes.map(r => r.family))].map(f => [f, canonicalRoutes.filter(r => r.family === f).length])),
+  'public finder family totals must match canonical data'
+);
 for (const route of canonicalIndex.routes) {
   assert(fs.existsSync(path.join(publicDir, 'phone-route-data', `${route.id}.json`)), `${route.id} must have a lazy detail bundle`);
   assert.equal(typeof route.decisionFacts?.sourceCount, 'number', `${route.id} must expose source count for decision ranking`);
@@ -136,7 +142,8 @@ const dom = new JSDOM(page, {
     };
   }
 });
-await waitFor(() => dom.window.document.querySelector('#route-count')?.textContent.includes('152 reviewed routes'), 'canonical long-term market overview');
+const expectedLongTermCount = canonicalRoutes.filter(r => r.family === 'long-term').length;
+await waitFor(() => dom.window.document.querySelector('#route-count')?.textContent.includes(`${expectedLongTermCount} reviewed routes`), 'canonical long-term market overview');
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Top decision shortcuts'), 'top decision shortcuts render');
 const leaderButtons = [...dom.window.document.querySelectorAll('.pr-leader-route[data-index-route]')];
 assert(leaderButtons.length > 0, 'at least one evidence-qualified Top route must render');

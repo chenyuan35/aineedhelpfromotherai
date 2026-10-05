@@ -43,6 +43,8 @@ DB-C23 changed backend coverage only. It did not authorize a new public route pa
 
 On 2026-10-04 the separately reviewed Saily residual blocker cleared and `saily-us-phone-number-2026` was admitted backstage as `voip-second-line` / `hold`, taking the corpus to 599 sources. A later same-day Smart Prepaid roaming/SMS evidence refresh added seven append-only sources without adding a route. The bounded LuckySIM Hong Kong residual admission then cleared its renewal blocker and added one HOLD route plus five reviewed sources. The final known residual, China Telecom Macau Easy PASS / Greater Bay Area prepaid, subsequently cleared its lifecycle blocker with first-party 180-day validity and recharge-reset evidence and adds one HOLD route, one market, one network, one brand and five reviewed sources. Current normalized state is **159 routes / 87 markets / 156 brands / 117 networks / 616 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
 
+On 2026-10-05, evidence maintenance on the existing Red Pocket annual row found that the official eBay Store $30/360-day Starter Plan had been incorrectly folded into the materially different website Essentials annual product. The reviewed eBay product has distinct price, allowance, channel, renewal method and roaming entitlement, so it qualifies as one genuinely distinct atomic route rather than a keyword/SKU variant. It was admitted backstage as `redpocket-ebay-30-2026`; current normalized state is therefore **160 routes / 87 markets / 157 brands / 117 networks / 651 sources**. Historical comparison remains 135, explicit indexability remains 3 and sitemap remains 31.
+
 ## Staging reconciliation
 
 `data/phone/staging/global-inventory-2026-09-26.jsonl` contains 59 historical candidate records. Reconciliation against the current canonical model gives:
@@ -57,7 +59,7 @@ The old 59-record staging inventory therefore is not evidence of 59 missing rout
 
 ## Current residual candidate register
 
-No currently known evidence-qualified distinct atomic residual candidate remains outside canonical.
+No currently known evidence-qualified distinct atomic residual candidate remains outside canonical. The 2026-10-05 Red Pocket eBay review temporarily re-opened this statement by exposing one conflated atomic product; that route is now admitted, so the residual register returns to zero.
 
 **Resolved residuals:** Saily U.S. phone number cleared its classification blocker on 2026-10-04 and is canonical backstage HOLD as a distinct non-cellular VoIP/second-line route. LuckySIM Hong Kong cleared its durable renewal blocker and is canonical backstage HOLD as a real-mobile route. China Telecom Macau Easy PASS / Greater Bay Area prepaid then cleared the final lifecycle blocker: current provider material establishes 180-day validity, another 180 days from each recharge, >90-day suspended-number cancellation, real-name registration, ordinary incoming-SMS capability and current eSIM support. It is canonical backstage HOLD because service-specific bank/app OTP reliability remains insufficiently sampled. None of these admissions creates a recommendation or public/indexable route.
 
@@ -65,9 +67,9 @@ No currently known evidence-qualified distinct atomic residual candidate remains
 
 For the current known evidence-qualified universe:
 
-- normalized canonical routes: **159**
+- normalized canonical routes: **160**
 - known distinct unresolved atomic candidates: **0**
-- denominator: **159**
+- denominator: **160**
 
 **Coverage = 159 / 159 = 100% of the current known evidence-qualified relevant atomic universe.**
 

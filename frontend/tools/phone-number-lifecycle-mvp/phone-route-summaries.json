@@ -4357,32 +4357,32 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-29",
+      "lastVerifiedAt": "2026-10-05",
       "observationCount": 0,
-      "eventCount": 1,
+      "eventCount": 2,
       "services": [],
       "operations": [],
       "serviceEvidence": [],
       "decisionFacts": {
-        "sourceCount": 3,
+        "sourceCount": 6,
         "kycState": "unclear",
-        "keepAction": "Renew the Essentials annual plan; current official renewal is $110/year after the first-year promotional price.",
-        "roamingSms": "Roaming only on GSMA (AT&T) plans: Essentials/Plus/Premium include 60+ country roaming; destination MUST be selected while in the US before departure. China receive-SMS rate not p…",
+        "keepAction": "Renew the website Essentials annual plan at the current published US$110 renewal price. RedPocket official annual-plan help defines annual service as 360 days.",
+        "roamingSms": "Current Essentials includes international roaming in 60+ countries on eligible GSMA service; destination selection must be completed in the United States before departure. Do not…",
         "holdReason": null,
         "continuityRiskSignalCount": 0,
         "lastContinuityRiskSignalAt": null
       },
       "metrics": {
         "routeId": "redpocket-annual-2026",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-05",
         "metricState": "current-profile",
         "acquisitionCurrency": "USD",
         "acquisitionCostOriginal": 80,
-        "acquisitionCostCny": 426,
+        "acquisitionCostCny": 568,
         "keepCurrency": "USD",
         "keepYearCostOriginal": 110,
         "keepYearCostCny": null,
-        "keepIntervalDays": 365
+        "keepIntervalDays": 360
       }
     },
     {
@@ -6680,6 +6680,47 @@
         "keepYearCostOriginal": 13,
         "keepYearCostCny": null,
         "keepIntervalDays": 365
+      }
+    },
+    {
+      "id": "redpocket-ebay-30-2026",
+      "displayName": "Red Pocket eBay $30 Annual",
+      "marketId": "us",
+      "marketName": "United States",
+      "countryCode": "US",
+      "networkName": "AT&T US",
+      "brandName": "Red Pocket eBay Starter",
+      "family": "long-term",
+      "numberClass": "real-mobile",
+      "form": "physical + eSIM",
+      "surfaceState": "backstage-only",
+      "evidenceState": "admitted",
+      "lastVerifiedAt": "2026-10-05",
+      "observationCount": 0,
+      "eventCount": 3,
+      "services": [],
+      "operations": [],
+      "serviceEvidence": [],
+      "decisionFacts": {
+        "sourceCount": 11,
+        "kycState": "required",
+        "keepAction": "Before the 360-day term ends, buy the same eBay plan using the Renewal / Existing SIM option and apply the emailed eBay activation/renewal PIN to the existing RedPocket line.",
+        "roamingSms": "Do not rely on cellular international roaming for this eBay route. Current RedPocket help explicitly excludes eBay plans, including GSMA eBay plans, from included roaming. Some 20…",
+        "holdReason": null,
+        "continuityRiskSignalCount": 0,
+        "lastContinuityRiskSignalAt": null
+      },
+      "metrics": {
+        "routeId": "redpocket-ebay-30-2026",
+        "checkedAt": "2026-10-05",
+        "metricState": "current-profile",
+        "acquisitionCurrency": "USD",
+        "acquisitionCostOriginal": 30,
+        "acquisitionCostCny": 213,
+        "keepCurrency": "USD",
+        "keepYearCostOriginal": 30,
+        "keepYearCostCny": 213,
+        "keepIntervalDays": 360
       }
     }
   ]

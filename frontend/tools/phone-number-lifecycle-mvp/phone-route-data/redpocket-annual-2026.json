@@ -11,12 +11,15 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-05",
     "acquireUrl": "https://www.redpocket.com/plans/annual",
     "sourceIds": [
       "redpocket-annual-20260929",
       "redpocket-esim-activation-20260929",
-      "redpocket-roaming-20260929"
+      "redpocket-roaming-20260929",
+      "redpocket-annual-current-20261005",
+      "redpocket-annual-help-360d-20261005",
+      "redpocket-wifi-calling-20261005"
     ]
   },
   "market": {
@@ -37,15 +40,15 @@
   },
   "metrics": {
     "routeId": "redpocket-annual-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-05",
     "metricState": "current-profile",
     "acquisitionCurrency": "USD",
     "acquisitionCostOriginal": 80,
-    "acquisitionCostCny": 426,
+    "acquisitionCostCny": 568,
     "keepCurrency": "USD",
     "keepYearCostOriginal": 110,
     "keepYearCostCny": null,
-    "keepIntervalDays": 365
+    "keepIntervalDays": 360
   },
   "numberRanges": [],
   "serviceEvidence": [],
@@ -67,6 +70,24 @@
       "url": "https://help.redpocket.com/does-red-pocket-mobile-allow-roaming",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "redpocket-annual-current-20261005",
+      "url": "https://www.redpocket.com/plans/annual",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "redpocket-annual-help-360d-20261005",
+      "url": "https://help.redpocket.com/red-pocket-mobile-offers-annual-12-month-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "redpocket-wifi-calling-20261005",
+      "url": "https://help.redpocket.com/what-is-wifi-calling-and-can-i-use-it-with-my-red-pocket-service",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
     }
   ],
   "observations": [],
@@ -79,6 +100,15 @@
       "scope": "route",
       "outcome": "The annual product remains current, but the legacy $60/$30 economics are stale. Current Essentials is $80 first year and renews at $110/year; activation must occur in the United States.",
       "sourceId": "redpocket-annual-20260929"
+    },
+    {
+      "id": "evt-redpocket-essentials-ebay-split-20261005",
+      "routeId": "redpocket-annual-2026",
+      "type": "product-identity-split-and-current-price-refresh",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "The website Essentials annual route is kept separate from the distinct $30/360-day eBay Starter Plan. Current official Essentials annual page shows a $120 label, $80 first-year promotion, 3GB/month and $110 renewal; stale $60/$30 guide wording is removed from this canonical route.",
+      "sourceId": "redpocket-annual-current-20261005"
     }
   ],
   "snapshots": [
@@ -137,6 +167,65 @@
           "If you have US access: buy $60 annual (GSMA for roaming option), enable Wi-Fi Calling, renew every 360 days."
         ],
         "marketName": "United States"
+      }
+    },
+    {
+      "id": "snap-redpocket-annual-2026-current-profile-20261005",
+      "routeId": "redpocket-annual-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-05",
+      "sourceDataset": "redpocket-essentials-refresh-2026-10-05",
+      "data": {
+        "id": "redpocket-annual-2026",
+        "brandId": "redpocket-us",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "eSIM + physical",
+        "acquisitionSummary": "Current RedPocket website Essentials annual product: standard label US$120, current first-year promotion US$80, 3GB high-speed data per month, unlimited talk/text, international calling to 20+ countries and roaming in 60+ countries. The separate eBay $30/360-day 200MB product is normalized under its own route and is not part of these economics.",
+        "landedCost": {
+          "currency": "USD",
+          "providerOrCommunityPrice": 80,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 80,
+          "landedCny": 568,
+          "fxCheckedAt": "2026-09-26",
+          "state": "current-official-first-year-promotion"
+        },
+        "keep": {
+          "currency": "USD",
+          "observedActionCost": 110,
+          "yearCostOriginal": 110,
+          "yearCostCny": null,
+          "action": "Renew the website Essentials annual plan at the current published US$110 renewal price. RedPocket official annual-plan help defines annual service as 360 days.",
+          "intervalDays": 360,
+          "state": "current-official-annual-renewal"
+        },
+        "chinaActivation": "SIM/eSIM activation can only be completed from the United States.",
+        "kyc": "No credit check (prepaid); standard account/device/address and anti-fraud checks may still apply.",
+        "payment": "Website plans are sold for U.S. purchase; physical SIM shipping is domestic. RedPocket requires a U.S. card for direct website purchases.",
+        "wifiCalling": "Officially supported on all RedPocket networks and supports SMS text messaging; compatible device and E911 setup are required.",
+        "roamingSms": "Current Essentials includes international roaming in 60+ countries on eligible GSMA service; destination selection must be completed in the United States before departure. Do not transfer this entitlement to the separate eBay route.",
+        "refund": "not reconciled",
+        "trend": "current-official-promo-variable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-05",
+        "acquireUrl": "https://www.redpocket.com/plans/annual",
+        "tariffSummary": "Essentials annual: US$120 standard label, currently US$80 first year, 3GB/month, renews at US$110 per 360-day annual term.",
+        "sourceIds": [
+          "redpocket-annual-current-20261005",
+          "redpocket-annual-help-360d-20261005",
+          "redpocket-esim-activation-20260929",
+          "redpocket-roaming-20260929",
+          "redpocket-wifi-calling-20261005"
+        ],
+        "guideSteps": [
+          "Use this route only for the RedPocket website Essentials annual product; the $30 eBay Starter Plan is a separate canonical route.",
+          "Activate in the United States, enable Wi-Fi Calling with E911, and if using roaming select the destination in your RedPocket account before leaving the U.S.",
+          "Expect promotional first-year pricing to change; renewal is currently published at US$110 for the annual term."
+        ]
       }
     }
   ]

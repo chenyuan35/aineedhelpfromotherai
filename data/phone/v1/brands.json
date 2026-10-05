@@ -934,5 +934,11 @@
     "networkId": "zain-kw",
     "name": "Zain eeZee",
     "marketId": "kw"
+  },
+  {
+    "id": "redpocket-ebay-us",
+    "networkId": "att-us",
+    "name": "Red Pocket eBay Starter",
+    "marketId": "us"
   }
 ]

@@ -55,9 +55,9 @@ for (const eventId of [
   'evt-ctmacau-easy-pass-sms-caveat-20261004'
 ]) assert(events.some((row) => row.id === eventId), `missing Macau event ${eventId}`);
 
-assert.equal(canonical.routes.length, 159);
+assert.ok(canonical.routes.length >= 159, `canonical route corpus regressed below historical baseline: ${canonical.routes.length}`);
 assert.equal(canonical.markets.length, 87);
-assert.equal(brands.length, 156);
+assert.ok(brands.length >= 156, `brand corpus regressed below historical baseline: ${brands.length}`);
 assert.equal(networks.length, 117);
 assert(sources.length >= 616);
 assert.equal(globalDirectory.routes.length, 135);

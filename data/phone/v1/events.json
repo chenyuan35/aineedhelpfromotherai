@@ -1141,5 +1141,41 @@
     "scope": "route",
     "outcome": "Tello publicly acknowledges automated and human fraud-prevention checks can decline orders; community replies in the same provider-moderated thread describe account suspensions and concern about preserving long-held numbers. This is a continuity risk signal, not a quantified suspension probability.",
     "sourceId": "reddit-tello-signup-security-20260702"
+  },
+  {
+    "id": "evt-redpocket-ebay-30-product-20261005",
+    "routeId": "redpocket-ebay-30-2026",
+    "type": "distinct-product-and-lifecycle-admission",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "The official RedPocket eBay store currently lists a distinct $30/360-day Starter Plan with unlimited talk/text and 200MB every 30 days, plus physical SIM, eSIM and renewal/existing-SIM options. This is not the website Essentials annual product and is normalized as a separate atomic route.",
+    "sourceId": "redpocket-ebay-30-listing-20261005"
+  },
+  {
+    "id": "evt-redpocket-ebay-30-overseas-boundary-20261005",
+    "routeId": "redpocket-ebay-30-2026",
+    "type": "activation-wifi-calling-boundary",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "RedPocket requires activation in the United States. Wi-Fi Calling supports calls and SMS once provisioned, but a 2026 $30-plan user attempting setup abroad reported that support could enable the account flag yet full Wi-Fi Calling activation still could not be completed until returning to the U.S. Do not present this as a China-first activation route.",
+    "sourceId": "reddit-redpocket-ebay-abroad-activation-20260523"
+  },
+  {
+    "id": "evt-redpocket-ebay-30-roaming-conflict-20261005",
+    "routeId": "redpocket-ebay-30-2026",
+    "type": "roaming-entitlement-conflict",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current RedPocket help explicitly says eBay plans, including GSMA eBay plans, do not include international roaming. 2026 users nevertheless reported temporary roaming buckets on some $30-plan accounts and changing allowances. Treat those buckets as unstable/unpromised and rely on the provider exclusion for decision guidance.",
+    "sourceId": "reddit-redpocket-ebay-roaming-conflict-20260825"
+  },
+  {
+    "id": "evt-redpocket-essentials-ebay-split-20261005",
+    "routeId": "redpocket-annual-2026",
+    "type": "product-identity-split-and-current-price-refresh",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "The website Essentials annual route is kept separate from the distinct $30/360-day eBay Starter Plan. Current official Essentials annual page shows a $120 label, $80 first-year promotion, 3GB/month and $110 renewal; stale $60/$30 guide wording is removed from this canonical route.",
+    "sourceId": "redpocket-annual-current-20261005"
   }
 ]
