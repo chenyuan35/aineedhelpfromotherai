@@ -7,7 +7,7 @@ Last updated: 2026-10-05
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 661 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 665 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -157,9 +157,17 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - PAYG still supports **physical SIM + eSIM**. Before roaming, the SIM/device must connect to Three in the UK and complete any required UK Top-up/Data Pack provisioning. Incoming roaming texts are officially free; reachability itself is not treated as guaranteed.
 - Source corpus becomes **661**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Telia Estonia Super lifecycle / activation maintenance
+
+- Existing `telia-ee-180d-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **1 → 5** using current first-party Super/Telia evidence. Starter kits remain **from €1** and both physical SIM + eSIM starter kits require **Estonia activation**.
+- Number validity remains one **single ≥€3 top-up every 180 days**; split smaller top-ups do not count. A **30-day rescue window** follows expiry before number/balance loss, so normalized keep cost remains roughly **€6/year**.
+- Roaming must be enabled before travel; EU use follows the Estonia price list subject to fair-use rules, while non-EU prices/reachability remain destination-dependent. Current standard-rate call/SMS is **€0.05**, but ordinary usage is not documented as resetting number validity.
+- Source corpus becomes **665**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `telia-ee-180d-2026`. It is an admitted/backstage real-mobile route with only one current source record. Reconcile the current 180-day activity rule, acquisition/keep economics, eSIM/physical availability and roaming-SMS/activation constraints before seeking exact service samples.
+1. **Immediate bounded route:** `aldi-talk-activity-window-2026`. It is another admitted/backstage real-mobile route with only one current source record. Reconcile current acquisition cost, activity/lifecycle rule, SIM/eSIM availability and roaming-SMS/activation constraints before any service-specific evidence claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

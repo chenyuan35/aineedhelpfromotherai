@@ -3964,5 +3964,29 @@
     "url": "https://www.three.co.uk/support/new-pay-as-you-go/activating-your-pay-as-you-go-sim.html",
     "type": "provider-official",
     "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-esim-20261005",
+    "url": "https://www.super.ee/en/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-topup-20261005",
+    "url": "https://www.super.ee/en/laadimine",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-roaming-20261005",
+    "url": "https://www.super.ee/en/valismaal/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-price-update-20250723",
+    "url": "https://www.super.ee/en/uudised/super-hinnakirja-muudatus",
+    "type": "provider-official",
+    "reportedAt": "2025-07-23"
   }
 ]

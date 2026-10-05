@@ -2541,10 +2541,14 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-05",
     "acquireUrl": "https://www.super.ee/en/stardikas",
     "sourceIds": [
-      "telia-super-starter-2026-09-29"
+      "telia-super-starter-2026-09-29",
+      "official-super-esim-20261005",
+      "official-super-topup-20261005",
+      "official-super-roaming-20261005",
+      "official-super-price-update-20250723"
     ]
   },
   {

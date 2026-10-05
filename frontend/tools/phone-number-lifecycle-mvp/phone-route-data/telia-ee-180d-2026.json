@@ -11,10 +11,14 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-05",
     "acquireUrl": "https://www.super.ee/en/stardikas",
     "sourceIds": [
-      "telia-super-starter-2026-09-29"
+      "telia-super-starter-2026-09-29",
+      "official-super-esim-20261005",
+      "official-super-topup-20261005",
+      "official-super-roaming-20261005",
+      "official-super-price-update-20250723"
     ]
   },
   "market": {
@@ -35,7 +39,7 @@
   },
   "metrics": {
     "routeId": "telia-ee-180d-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-05",
     "metricState": "current-profile",
     "acquisitionCurrency": "EUR",
     "acquisitionCostOriginal": 1,
@@ -53,6 +57,30 @@
       "url": "https://www.super.ee/en/stardikas",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-super-esim-20261005",
+      "url": "https://www.super.ee/en/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-super-topup-20261005",
+      "url": "https://www.super.ee/en/laadimine",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-super-roaming-20261005",
+      "url": "https://www.super.ee/en/valismaal/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-super-price-update-20250723",
+      "url": "https://www.super.ee/en/uudised/super-hinnakirja-muudatus",
+      "type": "provider-official",
+      "reportedAt": "2025-07-23"
     }
   ],
   "observations": [],
@@ -65,6 +93,42 @@
       "scope": "route",
       "outcome": "Current Super guidance directly confirms the 180-day validity rule, EUR3 single-top-up threshold, 30-day receive-only recovery window, and eSIM starter availability.",
       "sourceId": "telia-super-starter-2026-09-29"
+    },
+    {
+      "id": "evt-telia-ee-current-lifecycle-20261005",
+      "routeId": "telia-ee-180d-2026",
+      "type": "lifecycle-and-acquisition-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Current Super first-party guidance still sells starter kits from €1 and confirms that calling-card service validity runs 180 days from activation or the last single top-up of at least €3. Splitting €3 into smaller top-ups does not extend validity. After expiry there is a 30-day receive/read/top-up rescue window; without a qualifying top-up the number and unused prepaid funds are lost.",
+      "sourceId": "telia-super-starter-2026-09-29"
+    },
+    {
+      "id": "evt-telia-ee-esim-activation-20261005",
+      "routeId": "telia-ee-180d-2026",
+      "type": "sim-form-and-activation-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Super continues to support both physical SIM and eSIM starter kits. Both standard SIM and eSIM can only be activated in Estonia; after activation the line can travel abroad with roaming enabled. Existing physical Super SIM cannot currently be converted directly to eSIM.",
+      "sourceId": "official-super-esim-20261005"
+    },
+    {
+      "id": "evt-telia-ee-roaming-boundary-20261005",
+      "routeId": "telia-ee-180d-2026",
+      "type": "roaming-boundary",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Roaming must be enabled before travel. In the EU, Super uses the same basic service price list as Estonia subject to fair-use rules. Outside the EU, operator prices vary and Super directs users to Telia roaming prices; this pass does not generalize non-EU inbound-SMS price or reachability into a reliability claim.",
+      "sourceId": "official-super-roaming-20261005"
+    },
+    {
+      "id": "evt-telia-ee-current-basic-tariff-20261005",
+      "routeId": "telia-ee-180d-2026",
+      "type": "current-basic-tariff-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Super announced the basic standard-rate call and SMS price changing to €0.05 effective 24 September 2025. This does not replace the number-retention rule, which remains a single top-up of at least €3 every 180 days.",
+      "sourceId": "official-super-price-update-20250723"
     }
   ],
   "snapshots": [
@@ -118,6 +182,67 @@
         ],
         "guideSteps": [],
         "marketName": "Estonia"
+      }
+    },
+    {
+      "id": "snap-telia-ee-180d-2026-current-profile-20261005",
+      "routeId": "telia-ee-180d-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-05",
+      "sourceDataset": "telia-ee-evidence-maintenance-2026-10-05",
+      "data": {
+        "id": "telia-ee-180d-2026",
+        "brandId": "telia-konekaart",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current Super 5G starter kits still begin at €1. Physical starter kits can be ordered from the Telia e-store and eSIM starter kits can be bought/downloaded through the Super app.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 1,
+          "mandatoryTopup": null,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 1,
+          "landedCny": null,
+          "fxCheckedAt": "2026-10-05",
+          "state": "current-official-eur1-starter"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 3,
+          "yearCostOriginal": 6,
+          "yearCostCny": null,
+          "action": "Make one top-up of at least €3 in a single transaction before each 180-day validity deadline. Splitting €3 across smaller top-ups does not extend number validity.",
+          "intervalDays": 180,
+          "state": "current-official-180-day-eur3-rule"
+        },
+        "chinaActivation": "Not an abroad-first activation route. Both physical Super SIM and eSIM starter kits can only be activated in Estonia. After activation, roaming can be enabled for travel.",
+        "kyc": "Exact prepaid identity-document requirements remain outside the resolved scope of this maintenance pass.",
+        "payment": "Super app/online top-up supports card, Apple Pay, Google Pay and internet bank; other retail/voucher/Telia-contract-number top-up channels also exist.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Roaming must be enabled before travel. EU service uses the Estonia price list subject to fair-use rules. Outside the EU, operator prices vary; this review does not claim universal free inbound SMS or guaranteed OTP reachability.",
+        "refund": "After the 180-day validity period there is a 30-day receive/read/top-up window. Without one qualifying ≥€3 top-up during that window, the number and unused prepaid funds are lost.",
+        "trend": "stable",
+        "guideEligible": false,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-05",
+        "acquireUrl": "https://www.super.ee/en/stardikas",
+        "tariffSummary": "Starter kits from €1. Number validity: one single ≥€3 top-up every 180 days; then a 30-day receive/read/top-up rescue window. Current basic standard-rate call/SMS price is €0.05, but ordinary usage is not documented as resetting number validity.",
+        "sourceIds": [
+          "telia-super-starter-2026-09-29",
+          "official-super-esim-20261005",
+          "official-super-topup-20261005",
+          "official-super-roaming-20261005",
+          "official-super-price-update-20250723"
+        ],
+        "guideSteps": [
+          "Buy a physical Super starter or eSIM starter while in Estonia.",
+          "Activate the physical SIM/eSIM in Estonia; overseas-first activation is not supported.",
+          "Before each 180-day validity deadline, make one single top-up of at least €3. Do not split it into smaller transactions.",
+          "If the 180-day period expires, use the 30-day receive/read/top-up rescue window before the number and prepaid balance are lost.",
+          "Enable roaming before travel; treat non-EU pricing and reachability as destination/network dependent rather than universally guaranteed."
+        ]
       }
     }
   ]
