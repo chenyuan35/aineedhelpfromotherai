@@ -3242,13 +3242,20 @@
       "displayName": "KPN Prepaid",
       "family": "long-term",
       "numberClass": "real-mobile",
-      "form": "physical + eSIM",
+      "form": "physical SIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.kpn.com/prepaid-simkaart.htm",
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.kpn.com/shop/mobiel/prepaid",
       "sourceIds": [
-        "official-staff-kpn-community-6mo-rule-2026-02"
+        "official-staff-kpn-community-6mo-rule-2026-02",
+        "official-kpn-prepaid-product-20261005",
+        "official-kpn-prepaid-tariffs-20261005",
+        "official-kpn-prepaid-basis2021-pdf-20261005",
+        "official-kpn-prepaid-abroad-20261005",
+        "kpn-community-activation-netherlands-20260612",
+        "kpn-community-prepaid-esim-no-20260807",
+        "kpn-community-roaming-network-loss-20260817"
       ]
     },
     {
@@ -9091,6 +9098,48 @@
       "url": "https://www.redpocket.com/plans/annual",
       "type": "provider-official",
       "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-kpn-prepaid-product-20261005",
+      "url": "https://www.kpn.com/shop/mobiel/prepaid",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-kpn-prepaid-tariffs-20261005",
+      "url": "https://www.kpn.com/prepaid/tarieven",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-kpn-prepaid-basis2021-pdf-20261005",
+      "url": "https://assets.ctfassets.net/zuadwp3l2xby/udq2vxsllH5iS6wySx1j7/490802b92af6223ae567f88780f9d5e8/KPN_M_Prepaid_Bel-SMS_2021_v5.0__3_.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "official-kpn-prepaid-abroad-20261005",
+      "url": "https://www.kpn.com/prepaid/buitenland?navMethod=header",
+      "type": "provider-official",
+      "reportedAt": "2026-10-05"
+    },
+    {
+      "id": "kpn-community-activation-netherlands-20260612",
+      "url": "https://community.kpn.com/prepaid-16/nieuwe-prepaid-simkaart-werkt-nog-niet-in-het-buitenland-649721",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-06-12"
+    },
+    {
+      "id": "kpn-community-prepaid-esim-no-20260807",
+      "url": "https://community.kpn.com/prepaid-16/need-help-to-activate-prepaid-e-sim-from-abroad-653003?postid=2290319",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-08-07"
+    },
+    {
+      "id": "kpn-community-roaming-network-loss-20260817",
+      "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
+      "type": "provider-moderated-community",
+      "reportedAt": "2026-08-17"
     }
   ],
   "observations": [
@@ -10549,6 +10598,42 @@
       "scope": "route",
       "outcome": "The website Essentials annual route is kept separate from the distinct $30/360-day eBay Starter Plan. Current official Essentials annual page shows a $120 label, $80 first-year promotion, 3GB/month and $110 renewal; stale $60/$30 guide wording is removed from this canonical route.",
       "sourceId": "redpocket-annual-current-20261005"
+    },
+    {
+      "id": "evt-kpn-current-economics-lifecycle-20261005",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "type": "current-price-and-retention-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Current KPN first-party pages price the prepaid SIM at €4.99. KPN Basis 2021 lists €0.15 per SMS. Credit has unlimited validity only if the line performs a qualifying action at least once every 6 months; incoming calls/SMS do not count. After 6 months of inactivity credit is frozen for 90 days, and a top-up during that rescue window can restore it; otherwise the number and credit are lost.",
+      "sourceId": "official-kpn-prepaid-product-20261005"
+    },
+    {
+      "id": "evt-kpn-prepaid-physical-only-20261005",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "type": "sim-form-reconciliation",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "KPN moderator guidance in 2026 confirms KPN Prepaid does not support eSIM. Prepaid requires a physical SIM; subscription eSIM behavior must not be carried into this route.",
+      "sourceId": "kpn-community-prepaid-esim-no-20260807"
+    },
+    {
+      "id": "evt-kpn-netherlands-first-activation-20261005",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "type": "activation-location-constraint",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "Current provider-moderated guidance says a new KPN Prepaid SIM can only be activated in the Netherlands while connected to the KPN network. Abroad-first activation is not supported.",
+      "sourceId": "kpn-community-activation-netherlands-20260612"
+    },
+    {
+      "id": "evt-kpn-overseas-continuity-risk-20261005",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "type": "overseas-roaming-continuity-risk",
+      "reportedAt": "2026-10-05",
+      "scope": "route",
+      "outcome": "KPN officially supports prepaid abroad and states incoming SMS abroad is free, including outside the EU at destination-specific outgoing rates. A 2026 provider-community case reports a previously used prepaid line losing network abroad. Preserve this as an unquantified continuity risk rather than treating roaming/SMS reachability as guaranteed.",
+      "sourceId": "kpn-community-roaming-network-loss-20260817"
     }
   ],
   "snapshots": [
@@ -21742,6 +21827,70 @@
           "Expect promotional first-year pricing to change; renewal is currently published at US$110 for the annual term."
         ]
       }
+    },
+    {
+      "id": "snap-kpn-prepaid-6mo-2026-current-profile-20261005",
+      "routeId": "kpn-prepaid-6mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-05",
+      "sourceDataset": "kpn-prepaid-evidence-maintenance-2026-10-05",
+      "data": {
+        "id": "kpn-prepaid-6mo-2026",
+        "brandId": "kpn-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical SIM",
+        "acquisitionSummary": "KPN currently sells the prepaid physical SIM for €4.99. First registration in the KPN Prepaid app advertises €7.50 bonus credit; do not treat bonus credit as a cash discount. KPN Prepaid does not currently support eSIM.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 4.99,
+          "mandatoryTopup": 0,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 4.99,
+          "landedCny": 39,
+          "fxCheckedAt": "2026-10-05",
+          "state": "current-official"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 0.15,
+          "yearCostOriginal": 0.3,
+          "yearCostCny": 2.4,
+          "action": "Perform a qualifying action before each 6-month deadline. Under KPN Basis 2021, a standard SMS in the Netherlands/EU costs €0.15, so two such SMS actions cover roughly a year. Calling, mobile data or topping up also count; receiving calls/SMS does not. Outside-EU outgoing SMS uses destination-specific roaming tariffs, so €0.30/year is a lowest documented NL/EU action path, not a universal abroad cost.",
+          "intervalDays": 180,
+          "state": "current-official-usage-based"
+        },
+        "chinaActivation": "Not supported as a China-first route. A new KPN Prepaid physical SIM must first be activated in the Netherlands while connected to the KPN network.",
+        "kyc": "No universal prepaid identity-document requirement established in the reviewed KPN sources.",
+        "payment": "Online top-up is available while abroad; payment-method acceptance by country/card is not generalized here.",
+        "wifiCalling": "Not used as a retention guarantee in this profile; roaming network availability remains destination/device dependent.",
+        "roamingSms": "KPN states an incoming SMS abroad is free. EU use follows domestic tariffs; outside-EU outgoing usage follows special roaming tariffs. A 2026 community incident reports loss of network abroad, so reachability is not treated as guaranteed.",
+        "refund": "not reconciled",
+        "trend": "stable-with-roaming-watch",
+        "guideEligible": true,
+        "holdReason": null,
+        "lastVerifiedAt": "2026-10-05",
+        "acquireUrl": "https://www.kpn.com/shop/mobiel/prepaid",
+        "tariffSummary": "Physical SIM €4.99. Basis 2021: €0.20/min, €0.15/SMS, €0.10/MB in NL; EU follows domestic tariffs. Credit is unlimited-validity only with one qualifying use/top-up every 6 months; after 6 months inactivity a 90-day top-up rescue window applies.",
+        "sourceIds": [
+          "official-staff-kpn-community-6mo-rule-2026-02",
+          "official-kpn-prepaid-product-20261005",
+          "official-kpn-prepaid-tariffs-20261005",
+          "official-kpn-prepaid-basis2021-pdf-20261005",
+          "official-kpn-prepaid-abroad-20261005",
+          "kpn-community-activation-netherlands-20260612",
+          "kpn-community-prepaid-esim-no-20260807",
+          "kpn-community-roaming-network-loss-20260817"
+        ],
+        "guideSteps": [
+          "Buy the €4.99 KPN Prepaid physical SIM.",
+          "Activate the new SIM in the Netherlands while connected to the KPN network; abroad-first activation is not supported.",
+          "Before each 6-month inactivity deadline, make a qualifying outbound use or top-up. Receiving calls or SMS does not reset the clock.",
+          "If the line is frozen after 6 months of inactivity, top up within the following 90 days to restore it before the number is lost.",
+          "When using the line abroad, treat incoming SMS as officially supported but verify roaming/network reachability before relying on it for critical recovery."
+        ]
+      }
     }
   ],
   "aliases": [
@@ -22720,14 +22869,14 @@
     },
     {
       "routeId": "kpn-prepaid-6mo-2026",
-      "checkedAt": "2026-09-26",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "EUR",
-      "acquisitionCostOriginal": 15,
-      "acquisitionCostCny": 117,
+      "acquisitionCostOriginal": 4.99,
+      "acquisitionCostCny": 39,
       "keepCurrency": "EUR",
-      "keepYearCostOriginal": 0.14,
-      "keepYearCostCny": 1.1,
+      "keepYearCostOriginal": 0.3,
+      "keepYearCostCny": 2.4,
       "keepIntervalDays": 180
     },
     {

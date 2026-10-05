@@ -7,7 +7,7 @@ Last updated: 2026-10-05
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 651 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 658 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -140,11 +140,20 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - No exact app/service sample meets the percentage gate, so service evidence remains unquantified. New route is `admitted` + `backstage-only`; no SEO/public route is created.
 - Canonical becomes **160 routes / 87 markets / 157 brands / 117 networks / 651 sources**. Historical comparison remains **135**, explicit indexability **3**, sitemap **31**.
 
+## JUST COMPLETED — KPN Prepaid lifecycle / activation maintenance
+
+- Existing `kpn-prepaid-6mo-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Corrected current acquisition from stale **€15** to official **€4.99** physical SIM; KPN Prepaid does not support eSIM.
+- Corrected lowest documented NL/EU keep action from stale €0.07/SMS to current Basis 2021 **€0.15/SMS**, about **€0.30/year** for two six-month keep actions. Outside-EU outgoing SMS tariffs vary.
+- Lifecycle is now explicit: qualifying outbound use/top-up once every 6 months; incoming calls/SMS do not count; after 6 months inactivity a **90-day top-up rescue window** applies before number/credit loss.
+- Current provider-moderated evidence confirms new prepaid activation must occur in the Netherlands on the KPN network. Official roaming/incoming-SMS support is preserved alongside a 2026 overseas no-network continuity incident.
+- Source corpus becomes **658**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `kpn-prepaid-6mo-2026`. It is an admitted backstage real-mobile route with very low normalized keep cost, only one current source and zero service observations. Reconcile current lifecycle economics first, then add exact overseas/SMS/service evidence only when route identity is explicit.
+1. **Immediate bounded route:** `three-uk-payg-180d-2026`. It is another very-low-cost admitted/backstage real-mobile route with thin source depth. Reconcile current 180-day inactivity/keep economics and overseas-SMS/activation constraints before seeking exact service samples.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
-3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route, as happened with Red Pocket eBay. Do not create DB-C24 merely to raise counts.
+3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
 5. **Frontend:** no new URL or redesign from this maintenance work.
 

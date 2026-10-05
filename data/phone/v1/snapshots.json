@@ -11189,5 +11189,69 @@
         "Expect promotional first-year pricing to change; renewal is currently published at US$110 for the annual term."
       ]
     }
+  },
+  {
+    "id": "snap-kpn-prepaid-6mo-2026-current-profile-20261005",
+    "routeId": "kpn-prepaid-6mo-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-05",
+    "sourceDataset": "kpn-prepaid-evidence-maintenance-2026-10-05",
+    "data": {
+      "id": "kpn-prepaid-6mo-2026",
+      "brandId": "kpn-prepaid",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "KPN currently sells the prepaid physical SIM for €4.99. First registration in the KPN Prepaid app advertises €7.50 bonus credit; do not treat bonus credit as a cash discount. KPN Prepaid does not currently support eSIM.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 4.99,
+        "mandatoryTopup": 0,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 4.99,
+        "landedCny": 39,
+        "fxCheckedAt": "2026-10-05",
+        "state": "current-official"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": 0.15,
+        "yearCostOriginal": 0.3,
+        "yearCostCny": 2.4,
+        "action": "Perform a qualifying action before each 6-month deadline. Under KPN Basis 2021, a standard SMS in the Netherlands/EU costs €0.15, so two such SMS actions cover roughly a year. Calling, mobile data or topping up also count; receiving calls/SMS does not. Outside-EU outgoing SMS uses destination-specific roaming tariffs, so €0.30/year is a lowest documented NL/EU action path, not a universal abroad cost.",
+        "intervalDays": 180,
+        "state": "current-official-usage-based"
+      },
+      "chinaActivation": "Not supported as a China-first route. A new KPN Prepaid physical SIM must first be activated in the Netherlands while connected to the KPN network.",
+      "kyc": "No universal prepaid identity-document requirement established in the reviewed KPN sources.",
+      "payment": "Online top-up is available while abroad; payment-method acceptance by country/card is not generalized here.",
+      "wifiCalling": "Not used as a retention guarantee in this profile; roaming network availability remains destination/device dependent.",
+      "roamingSms": "KPN states an incoming SMS abroad is free. EU use follows domestic tariffs; outside-EU outgoing usage follows special roaming tariffs. A 2026 community incident reports loss of network abroad, so reachability is not treated as guaranteed.",
+      "refund": "not reconciled",
+      "trend": "stable-with-roaming-watch",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://www.kpn.com/shop/mobiel/prepaid",
+      "tariffSummary": "Physical SIM €4.99. Basis 2021: €0.20/min, €0.15/SMS, €0.10/MB in NL; EU follows domestic tariffs. Credit is unlimited-validity only with one qualifying use/top-up every 6 months; after 6 months inactivity a 90-day top-up rescue window applies.",
+      "sourceIds": [
+        "official-staff-kpn-community-6mo-rule-2026-02",
+        "official-kpn-prepaid-product-20261005",
+        "official-kpn-prepaid-tariffs-20261005",
+        "official-kpn-prepaid-basis2021-pdf-20261005",
+        "official-kpn-prepaid-abroad-20261005",
+        "kpn-community-activation-netherlands-20260612",
+        "kpn-community-prepaid-esim-no-20260807",
+        "kpn-community-roaming-network-loss-20260817"
+      ],
+      "guideSteps": [
+        "Buy the €4.99 KPN Prepaid physical SIM.",
+        "Activate the new SIM in the Netherlands while connected to the KPN network; abroad-first activation is not supported.",
+        "Before each 6-month inactivity deadline, make a qualifying outbound use or top-up. Receiving calls or SMS does not reset the clock.",
+        "If the line is frozen after 6 months of inactivity, top up within the following 90 days to restore it before the number is lost.",
+        "When using the line abroad, treat incoming SMS as officially supported but verify roaming/network reachability before relying on it for critical recovery."
+      ]
+    }
   }
 ]
