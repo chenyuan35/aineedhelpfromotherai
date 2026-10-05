@@ -1,0 +1,27 @@
+import fs from "node:fs";
+import assert from "node:assert/strict";
+const read = p => JSON.parse(fs.readFileSync(p, "utf8"));
+const routes = read("data/phone/v1/routes.json");
+const sources = read("data/phone/v1/sources.json");
+const observations = read("data/phone/v1/observations.json");
+const events = read("data/phone/v1/events.json");
+const detail = read("frontend/tools/phone-number-lifecycle-mvp/phone-route-data/h2o-paygo-10-90d-2026.json");
+const summary = read("frontend/tools/phone-number-lifecycle-mvp/phone-route-summaries.json").routes.find(x => x.id === "h2o-paygo-10-90d-2026");
+const route = routes.find(x => x.id === "h2o-paygo-10-90d-2026");
+assert(route);
+assert.equal(route.surfaceState, "backstage-only");
+assert.equal(route.evidenceState, "hold");
+assert.equal(route.lastVerifiedAt, "2026-10-05");
+const ids = ["prepaidcompare-h2o-paygo-wifi-20261005","reddit-h2o-paygo-wifi-abroad-20240618","weiming-h2o-paygo-wifi-reset-20261005"];
+for (const id of ids) { assert(route.sourceIds.includes(id)); assert(sources.some(x => x.id === id)); }
+assert(events.some(x => x.id === "evt-h2o-paygo-wifi-continuity-conflict-20261005"));
+assert.equal(observations.filter(x => x.routeId === route.id).length, 0);
+assert.equal(detail.serviceEvidence.length, 0);
+assert(summary);
+assert.equal(summary.serviceEvidence.length, 0);
+assert.equal(summary.decisionFacts.sourceCount, 6);
+const latest = detail.snapshots.at(-1);
+assert.equal(latest.id, "snap-h2o-paygo-10-90d-2026-current-profile-20261005");
+assert.match(latest.data.wifiCalling, /Conflicted for PayGo/);
+assert.match(latest.data.holdReason, /Keep HOLD/);
+console.log("H2O PayGo evidence maintenance OK");

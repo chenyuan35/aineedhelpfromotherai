@@ -627,7 +627,7 @@
     },
     {
       "routeId": "h2o-paygo-10-90d-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "USD",
       "acquisitionCostOriginal": 10,

@@ -1105,5 +1105,14 @@
     "scope": "five-distinct-community-sources",
     "outcome": "Five distinct dated public community/demonstration sources now support an Ultra Mobile PayGo Telegram registration-verification aggregate. Three report successful registration and two are mixed; number provenance and subsequent Telegram account state remain variable, so this is bounded evidence rather than a universal carrier probability.",
     "sourceId": "v2ex-ultramobile-telegram-mixed-20260404"
+  },
+  {
+    "id": "evt-h2o-paygo-wifi-continuity-conflict-20261005",
+    "routeId": "h2o-paygo-10-90d-2026",
+    "type": "overseas-wifi-calling-evidence-conflict",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "H2O PayGo overseas continuity remains conflicted. A 2024 community recommendation reports PayGo Wi-Fi Calling and activation outside the United States, while the current PrepaidCompare profile says Wi-Fi Calling is monthly-plan only and a 2026 China-use guide reports recurring support resets may be needed. Current H2O terms still frame service as personal use in the U.S. only. Preserve HOLD and do not claim stable overseas SMS/OTP continuity.",
+    "sourceId": "weiming-h2o-paygo-wifi-reset-20261005"
   }
 ]

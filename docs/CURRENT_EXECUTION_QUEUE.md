@@ -1,13 +1,13 @@
 # Current Execution Queue
 
-Last updated: 2026-10-04
+Last updated: 2026-10-05
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 625 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 633 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -106,32 +106,33 @@ PR #390 squash-merged as `0a2c6a8e9b1529ec227b4a717d37c88cf51109fd`.
 - Source corpus becomes **625**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 - Branch regression workflow #37191691290: **PASS**. Eval Gate #1160: **PASS**. Vercel Preview: **PASS**. Production deployment `dpl_8U971UeoANGmLdu86JfNoPdmD5C4`: **READY**. Live ClubSIM detail JSON and live `phone-route-summaries.json`: **HTTP 200** with the 28.6% aggregate.
 
-## JUST COMPLETED — Ultra Mobile PayGo Telegram evidence packet
+## JUST COMPLETED — Ultra Mobile PayGo Telegram canonical application
 
-PR #392 squash-merged as `051e0caa0eb13a7c26317e3f5aca6dc78c95e7f3`.
+PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 
-- Reviewed packet: `docs/PHONE_ULTRAMOBILE_TELEGRAM_EVIDENCE_2026-10-04.md` for existing route `ultra-mobile-paygo-3-2026`.
-- Five distinct exact-route + Telegram + registration-verification sources passed manual review: Reddit 2025-01-17, Didushan 2025-02-21, Shuzijumin 2025-03-07, LINUX DO 2025-06-03 and V2EX 2026-04-04.
-- Proposed normalized aggregate after canonical application: **3 success / 0 failure / 2 mixed / n=5 / 5 distinct sources / observed success 60.0% / grade C (Mixed / weak)**.
-- A NodeSeek cross-post of the V2EX case is explicitly deduped and must not be counted as another independent observation.
-- This PR staged the audited evidence and deterministic maintenance contract only; **canonical JSON is not yet mutated**, so the source corpus remains **625** until the maintenance is applied and rebuilt.
-- `ultra-mobile-paygo-3-2026` must remain `admitted` + `backstage-only`; no new route URL, publication-policy rule or sitemap entry is justified by this evidence.
-- Eval Gate #1164: **PASS**. Vercel Preview: **PASS**.
-- The isolated CodexPro coding workspace was unavailable during this session. Production worktree was not touched and no direct/manual canonical JSON edit was attempted.
+- Applied the five reviewed exact-route + Telegram + registration-verification sources to canonical data.
+- Aggregate is **3 success / 0 failure / 2 mixed / n=5 / 5 distinct sources / observed success 60.0% / grade C (Mixed / weak)**.
+- `ultra-mobile-paygo-3-2026` remains `admitted` + `backstage-only`; no route URL, indexability rule or sitemap entry was added.
+- Source corpus became **630**. Canonical remained **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remained **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Eval Gate #1168 and CI #256: **PASS**; Vercel Preview and production: **PASS**.
 
-## NEXT — Measurement + Ultra canonical evidence application, no invented expansion
+## JUST COMPLETED — H2O PayGo overseas-continuity evidence maintenance
 
-The next coordinator action is measurement or evidence maintenance, whichever trigger is actually available:
+- Existing route: `h2o-paygo-10-90d-2026`, real-mobile AT&T-route PayGo at **US$10 / 90 days**, already `backstage-only` / `hold`.
+- Added three independent route-level sources: current PrepaidCompare plan profile, a June 2024 community PayGo/Wi-Fi-Calling report, and a 2026 China-use guide.
+- Evidence is materially conflicting: historical community evidence reports PayGo Wi-Fi Calling and activation outside the U.S.; current PrepaidCompare says Wi-Fi Calling is monthly-plan only; the 2026 China-use guide reports recurring support resets. Current H2O terms continue to frame service as personal use in the U.S. only and PayGo is not treated as an international-roaming route.
+- Preserve `hold` + `backstage-only`. Do **not** create an app/service percentage: the reviewed packet contains route-level continuity evidence, not five exact app + operation observations.
+- Source corpus becomes **633**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 
-1. **Search Console gate:** 2026-10-04 Windsor.ai re-read shows settled Phone data through **2026-09-29** with **8 impressions / 0 clicks**. Fresh/non-finalized Phone data through **2026-10-03** adds **10 impressions / 0 clicks**. The publication gate is **not met**: settled Phone impressions remain below 20 and finalized data has not reached 2026-10-05. Re-read when either condition is met; do not expand publication before then.
-2. **Immediate evidence-maintenance task:** apply `docs/PHONE_ULTRAMOBILE_TELEGRAM_EVIDENCE_2026-10-04.md` to canonical data from a fresh branch/worktree when the isolated coding workspace is available. Add exactly the five reviewed source records and five deduplicated observations, update only the existing Ultra route/event/snapshot fields required by the maintenance contract, rebuild derived Phone artifacts, add a dedicated regression assertion, and run `phone:data:check`, public-release regression and frontend build before PR/merge. Preserve failures/mixed outcomes equally and preserve `backstage-only`.
-3. **After Ultra application:** select another high-value low-cost existing route with thin service evidence and repeat the exact route + app/service + operation acquisition pattern. Do not manufacture percentages or promote a route solely on low price. Continue separate Data-eSIM intake independently.
-4. **Database:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for genuinely new evidence-qualified routes.
-5. **Frontend:** keep PR #342 visual baseline and PR #370 finder data path stable; fix only reproduced usability defects or measured weak behavior.
+## NEXT — Measurement + one-route evidence maintenance, no invented expansion
 
-Measurement note: Windsor.ai `force_refresh` was blocked by the current trial plan's hourly-refresh restriction. Standard cached Search Console reads succeeded; treat the refresh restriction as a provider-plan limitation, not a site-data conclusion. Do not upgrade/pay without authorization.
+1. **Search Console gate:** publication remains held until settled Phone impressions reach 20 or finalized data reaches 2026-10-05. Re-read when the gate is actually available; do not expand publication before then.
+2. **Next database task:** review one existing low-cost/high-value route with thin service evidence. Start with `tello-paygo-credit-2026` as the next bounded candidate because it is real-mobile, admitted/backstage-only, has six current route sources but zero normalized service observations. Require exact route + app/service + operation evidence; if the evidence is only route-level, record it as route/event maintenance rather than manufacturing a service percentage.
+3. **Database expansion:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for a genuinely new evidence-qualified route.
+4. **Data-eSIM:** continue append-only community intake separately; do not mix pure data eSIM into Phone-number canonical without reviewed identity linkage.
+5. **Frontend:** keep PR #342 visual baseline and PR #370 finder path stable; no new URL or redesign without measured/reproduced need.
 
-Delegated Qwen/Kimi work remains `RESEARCH_CANDIDATE` until coordinator review. The PR #370 read-only Kimi audit confirmed the then-current canonical↔135 comparison disconnect and existing lazy-detail infrastructure; it did not change canonical/publication state.
+Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review and cannot bypass evidence/admission/publication gates.
 
 ## External waits
 
