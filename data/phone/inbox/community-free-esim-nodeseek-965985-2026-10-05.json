@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "signalId": "nodeseek-965985-free-esim-verified-roundup-2026-10-05",
+  "capturedAt": "2026-10-05",
+  "source": {
+    "type": "independent-community-post",
+    "url": "https://www.nodeseek.com/post-965985-1",
+    "author": "Kaws",
+    "title": "薅羊毛：免费esim流量卡清单（本人已验证）"
+  },
+  "scope": "travel-data-esim-community-intelligence",
+  "publicationState": "backstage-candidate-only",
+  "policy": "Preserve the author's dated firsthand/community claims as evidence, including conditional eligibility, promo/referral codes, activation triggers, FUP/throttle limits and egress warnings. Do not convert them into provider-guaranteed facts without separate corroboration.",
+  "sourceContext": {
+    "authorVerificationClaim": "The author states all eight entries were personally tested and successfully claimed as of 2026-10-05.",
+    "egressWarning": "Travel eSIMs commonly use home-routing/shared carrier egress, so exit IP may differ from the physical country and may be unsuitable for banking, streaming-region checks or account-registration workflows with strict risk controls.",
+    "noReferralRequirementClaim": true
+  },
+  "offers": [
+    {
+      "provider": "Firsty",
+      "mechanism": "ad-funded-data",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "Watching one short ad unlocks 20 MB at up to 1 Mbps; rewards can stack, each unlocked allotment is valid for 7 days, and the author reports ads/data can be renewed repeatedly.",
+      "dataAmount": 20,
+      "dataUnit": "MB-per-ad",
+      "freeDataMBPerAd": 20,
+      "speedMbps": 1,
+      "validityDays": 7,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "not stated",
+      "repeatability": "ad-dependent-repeatable",
+      "coverageClaim": "170+ countries including China",
+      "eligibilityClaim": "Free tier limited to users in North America, Europe and APAC according to the post.",
+      "acquisition": "Download Firsty App, install the eSIM once, then watch ads to unlock data.",
+      "notes": [
+        "Source says one eSIM installation can be reused globally.",
+        "At 1 Mbps this is positioned for messaging, maps, email and ride-hailing rather than video or hotspot use."
+      ]
+    },
+    {
+      "provider": "Holafly",
+      "mechanism": "post-purchase-monthly-backup",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "After any purchased Holafly eSIM package expires, the installed eSIM automatically receives 1 GB of backup data each month; unused monthly data does not roll over.",
+      "dataAmount": 1,
+      "dataUnit": "GB-per-month",
+      "freeDataMBMonthly": 1024,
+      "validityDays": null,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "prior paid Holafly purchase required",
+      "repeatability": "monthly-after-eligible-purchase",
+      "eligibilityClaim": "Conditional benefit for users who previously bought a Holafly eSIM package and keep the eSIM installed.",
+      "acquisition": "No additional action after an eligible paid Holafly package expires, according to the post.",
+      "notes": [
+        "This is not a standalone free-new-user offer.",
+        "Monthly 1 GB does not stack; unused allowance expires."
+      ]
+    },
+    {
+      "provider": "Nomad",
+      "mechanism": "new-user-free-data",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "New users can claim 1 GB valid for 3 days across 81 destinations.",
+      "dataAmount": 1,
+      "dataUnit": "GB",
+      "freeDataMB": 1024,
+      "validityDays": 3,
+      "installDeadlineDays": 15,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "not stated",
+      "repeatability": "new-user-once",
+      "coverageClaim": "81 destinations",
+      "acquisition": "Download Nomad App, register an account and claim the trial.",
+      "notes": [
+        "The post warns the eSIM must be installed within 15 days of claiming; otherwise it auto-activates and the 3-day countdown begins."
+      ]
+    },
+    {
+      "provider": "Gohub",
+      "mechanism": "free-trial",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "A 300 MB / 1 day free eSIM can be claimed without a credit card for 12 Asian destinations.",
+      "dataAmount": 300,
+      "dataUnit": "MB",
+      "freeDataMB": 300,
+      "validityDays": 1,
+      "price": 0,
+      "currency": null,
+      "cardRequired": false,
+      "repeatability": "one-time-or-unknown",
+      "coverageClaim": "12 Asian destinations",
+      "acquisition": "Register through gohub.com/claim-free-esim, then install by QR code.",
+      "activationTrigger": "Validity starts on first data use according to the post.",
+      "notes": [
+        "The source explicitly warns not to connect early because the 1-day window starts with first usage."
+      ]
+    },
+    {
+      "provider": "GigSky",
+      "mechanism": "visa-card-promotion",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "The app promotion gives 3 days of unlimited data in one of seven eligible regions after Visa eligibility verification; the author reports virtual Visa cards can pass the binding check.",
+      "dataAmount": "unlimited",
+      "dataUnit": null,
+      "freeDataMB": "unlimited-fup",
+      "validityDays": 3,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "eligible Visa card verification",
+      "cardEligibilityClaim": "Visa Signature / Infinite; app verifies eligibility.",
+      "repeatability": "promotion-dependent",
+      "coverageClaim": "7 Visa-designated regions; exact regions shown in app",
+      "acquisition": "Register in the GigSky App, bind an eligible Visa card, then redeem one of the seven regional offers.",
+      "fupClaim": "Unlimited data is subject to fair-use limits; the post reports roughly 2.5 GB of high-speed usage per day before throttling.",
+      "highSpeedDailyGBApprox": 2.5,
+      "notes": [
+        "The post says card binding is for eligibility verification and does not itself charge the card."
+      ]
+    },
+    {
+      "provider": "Eskimo",
+      "mechanism": "referral-and-gift-code",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "Registration with referral code KL25629 gives 500 MB of global data without a credit card; limited-time gift code TRIPLE-A gives 1 GB through 2026-11-30.",
+      "dataAmount": 500,
+      "dataUnit": "MB-base-referral",
+      "freeDataMB": 500,
+      "bonusDataMB": 1024,
+      "validityDays": 730,
+      "price": 0,
+      "currency": null,
+      "cardRequired": false,
+      "repeatability": "new-user-referral-plus-limited-promo",
+      "coverageClaim": "109+ countries",
+      "referralCode": "KL25629",
+      "giftCode": "TRIPLE-A",
+      "giftCodeDataMB": 1024,
+      "giftCodeExpiresAt": "2026-11-30",
+      "acquisition": "Download Eskimo App and enter the applicable code during registration/redemption.",
+      "notes": [
+        "The post says the data can remain valid for two years.",
+        "TRIPLE-A is explicitly time-limited and should remain versioned evidence rather than a permanent provider fact."
+      ]
+    },
+    {
+      "provider": "Red Bull MOBILE",
+      "mechanism": "signup-free-data",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "New registration in the Red Bull MOBILE Data App includes an initial 100 MB free allowance.",
+      "dataAmount": 100,
+      "dataUnit": "MB",
+      "freeDataMB": 100,
+      "validityDays": null,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "not stated",
+      "repeatability": "new-user-once",
+      "coverageClaim": "100+ countries including China",
+      "acquisition": "Download Red Bull MOBILE Data App and register.",
+      "notes": [
+        "The author characterizes the allowance as small and mainly worth claiming once."
+      ]
+    },
+    {
+      "provider": "Kolet",
+      "mechanism": "partner-promo-code",
+      "claimStrength": "author-firsthand-current",
+      "communityClaim": "New users can claim 1 GB for 48 hours with Air France/KLM partner code AFKLDATA across 190+ countries.",
+      "dataAmount": 1,
+      "dataUnit": "GB",
+      "freeDataMB": 1024,
+      "validityDays": 2,
+      "validityHours": 48,
+      "price": 0,
+      "currency": null,
+      "cardRequired": "not stated",
+      "repeatability": "new-user-promo",
+      "coverageClaim": "190+ countries",
+      "promoCode": "AFKLDATA",
+      "acquisition": "Download Kolet App, register, enter AFKLDATA and install the eSIM.",
+      "activationTrigger": "The 48-hour period starts after landing and connecting to the local network, according to the post.",
+      "notes": [
+        "The eSIM can be installed before travel and left inactive until arrival."
+      ]
+    }
+  ]
+}
