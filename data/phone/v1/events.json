@@ -1114,5 +1114,32 @@
     "scope": "route",
     "outcome": "H2O PayGo overseas continuity remains conflicted. A 2024 community recommendation reports PayGo Wi-Fi Calling and activation outside the United States, while the current PrepaidCompare profile says Wi-Fi Calling is monthly-plan only and a 2026 China-use guide reports recurring support resets may be needed. Current H2O terms still frame service as personal use in the U.S. only. Preserve HOLD and do not claim stable overseas SMS/OTP continuity.",
     "sourceId": "weiming-h2o-paygo-wifi-reset-20261005"
+  },
+  {
+    "id": "evt-tello-payg-current-rules-20261005",
+    "routeId": "tello-paygo-credit-2026",
+    "type": "payg-lifecycle-and-activation-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current first-party help confirms PAYG-only remains available, web/manual credit starts at $20, SMS top-ups can add $10 with a saved card, standalone PAYG expires 90 days after purchase, and first activation must occur on a U.S. network tower. International roaming also requires prior U.S. line use.",
+    "sourceId": "official-tello-payg-current-20261005"
+  },
+  {
+    "id": "evt-tello-overseas-sms-risk-20261005",
+    "routeId": "tello-paygo-credit-2026",
+    "type": "overseas-sms-and-verification-risk",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "2026 community evidence is mixed for overseas SMS continuity: one Tello tutorial thread reports Codex verification SMS not arriving, while a separate long-running overseas user reports SMS/2FA abruptly stopping after months of Wi-Fi Calling. These reports do not isolate PAYG-only plan state tightly enough for a service aggregate, so preserve them as route-level risk evidence rather than manufacturing an app success rate.",
+    "sourceId": "reddit-tello-sms-cut-abroad-20260925"
+  },
+  {
+    "id": "evt-tello-account-security-risk-20261005",
+    "routeId": "tello-paygo-credit-2026",
+    "type": "account-security-and-number-continuity-risk",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Tello publicly acknowledges automated and human fraud-prevention checks can decline orders; community replies in the same provider-moderated thread describe account suspensions and concern about preserving long-held numbers. This is a continuity risk signal, not a quantified suspension probability.",
+    "sourceId": "reddit-tello-signup-security-20260702"
   }
 ]

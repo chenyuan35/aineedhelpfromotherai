@@ -10993,5 +10993,75 @@
         "Re-open the HOLD only after current PayGo-specific overseas SMS continuity is reproduced independently."
       ]
     }
+  },
+  {
+    "id": "snap-tello-paygo-credit-2026-current-profile-20261005",
+    "routeId": "tello-paygo-credit-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-05",
+    "sourceDataset": "tello-payg-evidence-maintenance-2026-10-05",
+    "data": {
+      "id": "tello-paygo-credit-2026",
+      "brandId": "tello-us",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "eSIM + physical",
+      "acquisitionSummary": "Tello Pay As You Go is a separate credit product from the monthly-plan route. Web PAYG orders start at $20; domestic rates are 1¢/min, 1¢/SMS and 2¢/MB.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": 20,
+        "mandatoryTopup": 20,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 20,
+        "landedCny": 142,
+        "fxCheckedAt": "2026-09-26",
+        "state": "current-official-web-minimum"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 10,
+        "yearCostOriginal": 40,
+        "yearCostCny": 284,
+        "action": "Keep PAYG-only active by purchasing credit before the 90-day expiry. Tello currently allows $10 SMS top-ups (ADD10PAYG) when a card is saved, while the website/manual PAYG purchase floor is $20. Because the SMS path itself depends on a working line, treat $40/year as the lowest documented maintenance path rather than a guaranteed universal checkout floor.",
+        "intervalDays": 90,
+        "state": "official-sms-topup-path-current"
+      },
+      "chinaActivation": "Initial SIM/eSIM activation now explicitly requires physical presence in the United States and a first connection to Tello U.S. network towers. International roaming likewise requires prior U.S. line use. Do not present China-first activation as supported.",
+      "kyc": "No ID verification; email + payment method only.",
+      "payment": "International cards widely reported accepted; PayPal also accepted.",
+      "wifiCalling": "Tello officially supports Wi-Fi Calling & Text abroad after U.S. activation, including OTP/verification SMS in its current help surfaces. 2026 community reports nevertheless show that overseas SMS can fail or stop on some lines, so treat it as useful but not guaranteed continuity.",
+      "roamingSms": "International roaming in 200+ destinations draws from PAYG credit and requires prior U.S. line use. PAYG-only credit can fund roaming, but local partner availability and account/line state still matter.",
+      "refund": "not reconciled",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "The route remains a valid real-mobile PAYG product, but it is not a safe China-first recommendation: first activation and roaming require prior U.S. network use, 2026 community reports include Codex verification-SMS failure and overseas SMS interruption, and account-security checks can disrupt continuity. Keep backstage and treat service-specific success as unquantified until exact PAYG-only app observations are independently reproduced.",
+      "lastVerifiedAt": "2026-10-05",
+      "acquireUrl": "https://tello.com/buy/pay_as_you_go",
+      "tariffSummary": "Initial/manual web PAYG purchase starts at $20. Standalone PAYG expires after 90 days; with a saved card, Tello documents $10 SMS top-ups (ADD10PAYG), yielding a lowest documented maintenance path of about $40 per 360 days. First activation and roaming require prior U.S. network use.",
+      "sourceIds": [
+        "official-tello-payg-purchase-2026-09-29",
+        "official-tello-terms-2026-09-29",
+        "official-tello-activation-abroad-2026-09-29",
+        "official-tello-roaming-2026-09-29",
+        "community-nodeloc-tello-china-2026-09-20",
+        "community-nodeseek-tello-risk-2026-06-19",
+        "official-tello-payg-current-20261005",
+        "official-tello-payg-sms-topup-20261005",
+        "official-tello-activation-us-required-20261005",
+        "official-tello-roaming-us-first-20261005",
+        "linuxdo-tello-codex-sms-failure-20260612",
+        "reddit-tello-sms-cut-abroad-20260925",
+        "reddit-tello-signup-security-20260702",
+        "nodeseek-tello-payg-guide-20260928"
+      ],
+      "guideSteps": [
+        "Buy at least $20 of PAYG credit and complete first activation while physically in the United States on Tello network towers.",
+        "For PAYG-only retention, renew before 90 days. A saved card enables documented $10 SMS top-ups; website/manual purchases still start at $20.",
+        "Before leaving the U.S., verify Wi-Fi Calling & Text and, if needed, enable international roaming after the line has been used on the U.S. network.",
+        "Treat overseas OTP/SMS as non-guaranteed: 2026 community evidence includes Codex verification failure and an abrupt overseas SMS interruption case.",
+        "Do not use this as a primary irreplaceable number without a recovery/port-out plan because account security checks are an unquantified continuity risk."
+      ]
+    }
   }
 ]

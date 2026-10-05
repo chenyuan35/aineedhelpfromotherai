@@ -7,7 +7,7 @@ Last updated: 2026-10-05
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 633 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 159 canonical routes / 87 markets / 156 brands / 117 networks / 641 sources; current known evidence-qualified relevant atomic-route coverage is **159/159** after the bounded Saily, LuckySIM and China Telecom Macau residual admissions. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 159 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -118,19 +118,26 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 
 ## JUST COMPLETED — H2O PayGo overseas-continuity evidence maintenance
 
-- Existing route: `h2o-paygo-10-90d-2026`, real-mobile AT&T-route PayGo at **US$10 / 90 days**, already `backstage-only` / `hold`.
-- Added three independent route-level sources: current PrepaidCompare plan profile, a June 2024 community PayGo/Wi-Fi-Calling report, and a 2026 China-use guide.
-- Evidence is materially conflicting: historical community evidence reports PayGo Wi-Fi Calling and activation outside the U.S.; current PrepaidCompare says Wi-Fi Calling is monthly-plan only; the 2026 China-use guide reports recurring support resets. Current H2O terms continue to frame service as personal use in the U.S. only and PayGo is not treated as an international-roaming route.
-- Preserve `hold` + `backstage-only`. Do **not** create an app/service percentage: the reviewed packet contains route-level continuity evidence, not five exact app + operation observations.
-- Source corpus becomes **633**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Existing route `h2o-paygo-10-90d-2026` gained three independent route-level sources and remains `hold` + `backstage-only`.
+- Conflicting PayGo Wi-Fi Calling evidence is preserved as route-level uncertainty; no app success percentage was created.
+- Source corpus reached **633** with public boundary unchanged.
 
-## NEXT — Measurement + one-route evidence maintenance, no invented expansion
+## JUST COMPLETED — Tello PAYG current-rule + continuity maintenance
 
-1. **Search Console gate:** publication remains held until settled Phone impressions reach 20 or finalized data reaches 2026-10-05. Re-read when the gate is actually available; do not expand publication before then.
-2. **Next database task:** review one existing low-cost/high-value route with thin service evidence. Start with `tello-paygo-credit-2026` as the next bounded candidate because it is real-mobile, admitted/backstage-only, has six current route sources but zero normalized service observations. Require exact route + app/service + operation evidence; if the evidence is only route-level, record it as route/event maintenance rather than manufacturing a service percentage.
-3. **Database expansion:** no currently known evidence-qualified atomic residual remains outside canonical; reopen only for a genuinely new evidence-qualified route.
-4. **Data-eSIM:** continue append-only community intake separately; do not mix pure data eSIM into Phone-number canonical without reviewed identity linkage.
-5. **Frontend:** keep PR #342 visual baseline and PR #370 finder path stable; no new URL or redesign without measured/reproduced need.
+- Existing route: `tello-paygo-credit-2026`, real-mobile, `admitted` + `backstage-only`.
+- Added 8 current/recent sources: 4 first-party Tello help pages plus 4 community/provider-community sources covering PAYG lifecycle, U.S.-first activation/roaming, Codex verification-SMS failure, overseas SMS interruption, account-security risk and a current China-use/retention guide.
+- Corrected economics: initial/manual web PAYG purchase remains **US$20**, but Tello currently documents `ADD10PAYG` SMS top-ups with a saved card; lowest documented PAYG-only keep path is therefore **US$10 / 90 days (~US$40 / 360 days)** instead of the stale US$80/year assumption.
+- Current first-party boundary: initial SIM/eSIM activation must occur physically in the U.S. on Tello towers; international roaming requires prior U.S. line use.
+- Community risk is mixed and not plan-isolated enough for an exact app aggregate. Preserve zero service observations/percentages; set `guideEligible=false` while keeping the route admitted/backstage-only.
+- Source corpus becomes **641**. Canonical remains **159 routes / 87 markets / 156 brands / 117 networks**; public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+
+## NEXT — continue database maintenance, no invented expansion
+
+1. **Next bounded route:** reconcile `redpocket-annual-2026`. It still has zero service observations and its current snapshot contains stale guide/acquisition wording alongside newer US$80 first-year / US$110 renewal metrics. Fix source-backed economics and continuity wording first, then seek exact service evidence.
+2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
+3. **Database expansion:** no currently known evidence-qualified atomic residual remains outside canonical; do not create DB-C24 merely to raise counts.
+4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
+5. **Frontend:** no new URL or redesign from this maintenance work.
 
 Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review and cannot bypass evidence/admission/publication gates.
 
