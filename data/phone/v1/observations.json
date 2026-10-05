@@ -218,5 +218,60 @@
     "geography": "mainland-China",
     "sourceId": "v2ex-clubsim-telegram-conditional-20260918",
     "dedupeKey": "clubsim-v2ex-1243080-gaoshang-telegram"
+  },
+  {
+    "id": "obs-ultramobile-telegram-reddit-20250117",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2025-01-17",
+    "geography": "unspecified",
+    "sourceId": "reddit-ultramobile-telegram-signup-20250117",
+    "dedupeKey": "ultramobile-reddit-1i3tzxb-telegram"
+  },
+  {
+    "id": "obs-ultramobile-telegram-youtube-20250221",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2025-02-21",
+    "geography": "unspecified",
+    "sourceId": "youtube-didushan-ultramobile-telegram-20250221",
+    "dedupeKey": "ultramobile-youtube-rzqlsgxnghk-telegram"
+  },
+  {
+    "id": "obs-ultramobile-telegram-shuzijumin-20250307",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "success",
+    "reportedAt": "2025-03-07",
+    "geography": "unspecified",
+    "sourceId": "shuzijumin-ultramobile-telegram-20250307",
+    "dedupeKey": "ultramobile-shuzijumin-6126-nimrod-telegram"
+  },
+  {
+    "id": "obs-ultramobile-telegram-linuxdo-mixed-20250603",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "mixed",
+    "reportedAt": "2025-06-03",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-ultramobile-telegram-mixed-20250603",
+    "dedupeKey": "ultramobile-linuxdo-695893-thread-telegram-mixed"
+  },
+  {
+    "id": "obs-ultramobile-telegram-v2ex-mixed-20260404",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "mixed",
+    "reportedAt": "2026-04-04",
+    "geography": "unspecified",
+    "sourceId": "v2ex-ultramobile-telegram-mixed-20260404",
+    "dedupeKey": "ultramobile-v2ex-1203564-chenanhe-telegram-mixed"
   }
 ]

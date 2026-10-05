@@ -10869,5 +10869,68 @@
         "If the HK$6 SMS pack is available, one purchase resets the service-pack clock; otherwise buy another available service pack rather than assuming HK$6 is guaranteed."
       ]
     }
+  },
+  {
+    "id": "snap-ultra-mobile-paygo-3-2026-current-profile-20261004",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-04",
+    "sourceDataset": "us-directory-batch-a.json",
+    "data": {
+      "id": "ultra-mobile-paygo-3-2026",
+      "brandId": "ultra-mobile-us",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical SIM",
+      "acquisitionSummary": "Official PayGo service is $3 per 30-day cycle for 100 minutes, 100 texts and 100MB. Ultra says PayGo is purchased through eBay or select T-Mobile stores; current direct SIM-kit price/stock is not guaranteed by the provider page.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": "2026-09-29",
+        "state": "sim-kit-entry-cost-unverified;-service-3-per-30d"
+      },
+      "keep": {
+        "currency": "USD",
+        "observedActionCost": 3,
+        "yearCostOriginal": 36,
+        "yearCostCny": 255.6,
+        "action": "Maintain at least $3 in the PayGo wallet for each 30-day renewal. If renewal fails, the account enters suspension; current terms allow cancellation after the documented nonpayment window.",
+        "intervalDays": 30,
+        "state": "official-confirmed-current"
+      },
+      "chinaActivation": "PayGo terms require activation with the enclosed SIM. First activation from China/abroad is not verified; do not assume remote activation.",
+      "kyc": "No ID verification for prepaid; US card or PayPal typically required for payment.",
+      "payment": "US credit/debit card; international card acceptance varies (community reports mixed).",
+      "wifiCalling": "Not reverified for this PayGo-specific route; do not rely on Wi-Fi Calling as a keep-alive or China-continuity mechanism.",
+      "roamingSms": "Official rates 2026-09-26: China receive $0.10/SMS, send $0.50/SMS; voice $3.59/min; no data roaming. Roaming paid from PayGo wallet balance.",
+      "refund": "not reconciled",
+      "trend": "stable",
+      "guideEligible": true,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-04",
+      "acquireUrl": "https://www.ultramobile.com/paygo/",
+      "tariffSummary": "$3/30 days = 100 min + 100 texts + 100MB. PayGo uses the enclosed physical SIM; official purchase channels are eBay/select T-Mobile stores. China roaming SMS receive $0.10; no data roaming.",
+      "sourceIds": [
+        "official-ultramobile-paygo-2026-09-29",
+        "official-ultramobile-paygo-roaming-2026-09-29",
+        "official-ultramobile-paygo-terms-2026-09-29",
+        "reddit-ultramobile-telegram-signup-20250117",
+        "youtube-didushan-ultramobile-telegram-20250221",
+        "shuzijumin-ultramobile-telegram-20250307",
+        "linuxdo-ultramobile-telegram-mixed-20250603",
+        "v2ex-ultramobile-telegram-mixed-20260404"
+      ],
+      "guideSteps": [
+        "Acquire a PayGo physical SIM through an official listed channel (eBay or a select T-Mobile store); verify current stock and kit price before purchase.",
+        "Activate the enclosed SIM; first activation outside the United States is not verified for this route.",
+        "Keep at least $3 in the PayGo wallet for each 30-day renewal.",
+        "For China roaming, current official PayGo rates list SMS receive at $0.10 and send at $0.50; PayGo has no data roaming."
+      ]
+    }
   }
 ]

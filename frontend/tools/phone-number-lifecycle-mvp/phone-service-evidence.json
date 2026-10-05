@@ -133,6 +133,25 @@
       "successRatePct": null,
       "firstObservedAt": "2026-08-15",
       "lastObservedAt": "2026-08-15"
+    },
+    {
+      "id": "svcagg-ultra-mobile-paygo-3-2026-telegram-registration-verification",
+      "routeId": "ultra-mobile-paygo-3-2026",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "high",
+      "sampleSize": 5,
+      "independentSourceCount": 5,
+      "successCount": 3,
+      "failureCount": 0,
+      "mixedCount": 2,
+      "percentageEligible": true,
+      "successRatePct": 60,
+      "firstObservedAt": "2025-01-17",
+      "lastObservedAt": "2026-04-04"
     }
   ]
 }

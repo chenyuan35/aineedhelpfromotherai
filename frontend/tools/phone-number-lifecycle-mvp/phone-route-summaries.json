@@ -5977,14 +5977,35 @@
       "form": "physical SIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-29",
-      "observationCount": 0,
-      "eventCount": 0,
-      "services": [],
-      "operations": [],
-      "serviceEvidence": [],
+      "lastVerifiedAt": "2026-10-04",
+      "observationCount": 5,
+      "eventCount": 1,
+      "services": [
+        "Telegram"
+      ],
+      "operations": [
+        "registration-verification"
+      ],
+      "serviceEvidence": [
+        {
+          "serviceId": "telegram",
+          "serviceName": "Telegram",
+          "operation": "registration-verification",
+          "grade": "C",
+          "label": "Mixed / weak",
+          "confidence": "high",
+          "sampleSize": 5,
+          "independentSourceCount": 5,
+          "successCount": 3,
+          "failureCount": 0,
+          "mixedCount": 2,
+          "percentageEligible": true,
+          "successRatePct": 60,
+          "lastObservedAt": "2026-04-04"
+        }
+      ],
       "decisionFacts": {
-        "sourceCount": 3,
+        "sourceCount": 8,
         "kycState": "required",
         "keepAction": "Maintain at least $3 in the PayGo wallet for each 30-day renewal. If renewal fails, the account enters suspension; current terms allow cancellation after the documented nonpayment…",
         "roamingSms": "Official rates 2026-09-26: China receive $0.10/SMS, send $0.50/SMS; voice $3.59/min; no data roaming. Roaming paid from PayGo wallet balance.",
@@ -5994,7 +6015,7 @@
       },
       "metrics": {
         "routeId": "ultra-mobile-paygo-3-2026",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-04",
         "metricState": "current-profile",
         "acquisitionCurrency": "USD",
         "acquisitionCostOriginal": null,

@@ -1096,5 +1096,14 @@
     "scope": "seven-independent-community-threads",
     "outcome": "Seven distinct dated community threads now support a Telegram registration-verification aggregate for ClubSIM. Outcomes remain mixed across prefix, client, proxy/IP and roaming conditions; this is evidence of variability, not a universal carrier success probability.",
     "sourceId": "v2ex-clubsim-telegram-conditional-20260918"
+  },
+  {
+    "id": "evt-ultramobile-telegram-evidence-density-20261004",
+    "routeId": "ultra-mobile-paygo-3-2026",
+    "type": "service-verification-evidence-density",
+    "reportedAt": "2026-10-04",
+    "scope": "five-distinct-community-sources",
+    "outcome": "Five distinct dated public community/demonstration sources now support an Ultra Mobile PayGo Telegram registration-verification aggregate. Three report successful registration and two are mixed; number provenance and subsequent Telegram account state remain variable, so this is bounded evidence rather than a universal carrier probability.",
+    "sourceId": "v2ex-ultramobile-telegram-mixed-20260404"
   }
 ]
