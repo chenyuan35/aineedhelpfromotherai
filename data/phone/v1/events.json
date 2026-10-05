@@ -1240,5 +1240,41 @@
     "scope": "route",
     "outcome": "Before PAYG can be used abroad, Three requires the SIM/device to connect to the Three network in the UK and, if no allowance is preloaded, to top up or add a Data Pack in the UK. Three states receiving texts while roaming is free across the published PAYG destination bands, but destination/network availability is not treated as guaranteed.",
     "sourceId": "official-three-payg-roaming-20261005"
+  },
+  {
+    "id": "evt-telia-ee-current-lifecycle-20261005",
+    "routeId": "telia-ee-180d-2026",
+    "type": "lifecycle-and-acquisition-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Current Super first-party guidance still sells starter kits from €1 and confirms that calling-card service validity runs 180 days from activation or the last single top-up of at least €3. Splitting €3 into smaller top-ups does not extend validity. After expiry there is a 30-day receive/read/top-up rescue window; without a qualifying top-up the number and unused prepaid funds are lost.",
+    "sourceId": "telia-super-starter-2026-09-29"
+  },
+  {
+    "id": "evt-telia-ee-esim-activation-20261005",
+    "routeId": "telia-ee-180d-2026",
+    "type": "sim-form-and-activation-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Super continues to support both physical SIM and eSIM starter kits. Both standard SIM and eSIM can only be activated in Estonia; after activation the line can travel abroad with roaming enabled. Existing physical Super SIM cannot currently be converted directly to eSIM.",
+    "sourceId": "official-super-esim-20261005"
+  },
+  {
+    "id": "evt-telia-ee-roaming-boundary-20261005",
+    "routeId": "telia-ee-180d-2026",
+    "type": "roaming-boundary",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Roaming must be enabled before travel. In the EU, Super uses the same basic service price list as Estonia subject to fair-use rules. Outside the EU, operator prices vary and Super directs users to Telia roaming prices; this pass does not generalize non-EU inbound-SMS price or reachability into a reliability claim.",
+    "sourceId": "official-super-roaming-20261005"
+  },
+  {
+    "id": "evt-telia-ee-current-basic-tariff-20261005",
+    "routeId": "telia-ee-180d-2026",
+    "type": "current-basic-tariff-reconciliation",
+    "reportedAt": "2026-10-05",
+    "scope": "route",
+    "outcome": "Super announced the basic standard-rate call and SMS price changing to €0.05 effective 24 September 2025. This does not replace the number-retention rule, which remains a single top-up of at least €3 every 180 days.",
+    "sourceId": "official-super-price-update-20250723"
   }
 ]
