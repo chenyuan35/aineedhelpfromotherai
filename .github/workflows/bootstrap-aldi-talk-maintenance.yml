@@ -1,0 +1,49 @@
+name: Bootstrap ALDI TALK maintenance
+
+on:
+  push:
+    branches:
+      - phone/aldi-maintenance-20261005
+    paths:
+      - '.github/workflows/bootstrap-aldi-talk-maintenance.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: phone/aldi-maintenance-20261005
+      - name: Reconstruct and apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat _bootstrap/aldi-part0.txt _bootstrap/aldi-part1.txt _bootstrap/aldi-part2.txt > /tmp/aldi.patch.gz.b64
+          base64 -d /tmp/aldi.patch.gz.b64 | gzip -dc > /tmp/aldi.patch
+          git apply --check /tmp/aldi.patch
+          git apply /tmp/aldi.patch
+          rm -rf _bootstrap
+          rm -f .github/workflows/bootstrap-aldi-talk-maintenance.yml
+      - name: Validate Phone data
+        run: |
+          npm ci --ignore-scripts
+          npm run phone:data:check
+      - name: Validate frontend and publication boundary
+        run: |
+          npm ci --prefix frontend
+          npm run build --prefix frontend
+          node scripts/test-phone-number-public-release.mjs
+          git diff --check
+      - name: Commit reviewed ALDI TALK maintenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'data(phone): reconcile ALDI TALK lifecycle'
+          git push origin HEAD:phone/aldi-maintenance-20261005
