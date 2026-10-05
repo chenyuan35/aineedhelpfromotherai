@@ -3796,5 +3796,53 @@
     "url": "https://sites.google.com/view/weimingminxingqiu/2026%E5%B9%B4%E8%83%BD%E5%9C%A8%E4%B8%AD%E5%9B%BD%E6%BC%AB%E6%B8%B8%E7%9A%84%E7%BE%8E%E5%9B%BD%E5%AE%9E%E4%BD%93%E7%94%B5%E8%AF%9D%E5%8D%A1%E5%AE%8C%E6%95%B4%E7%9B%98%E7%82%B9",
     "type": "independent-editorial",
     "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-tello-payg-current-20261005",
+    "url": "https://tello.com/help_center/new-to-tello/how-does-pay-as-you-go-work",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-tello-payg-sms-topup-20261005",
+    "url": "https://tello.com/help_center/can-i-top-up-my-pay-as-you-go-balance-via-sms",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-tello-activation-us-required-20261005",
+    "url": "https://tello.com/help_center/activate-port-in/can-i-activate-tello-while-i-m-abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-tello-roaming-us-first-20261005",
+    "url": "https://tello.com/help_center/international-roaming/how-can-i-activate-my-international-roaming-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "linuxdo-tello-codex-sms-failure-20260612",
+    "url": "https://linux.do/t/topic/717137?page=3",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-06-12"
+  },
+  {
+    "id": "reddit-tello-sms-cut-abroad-20260925",
+    "url": "https://www.reddit.com/r/Tello/comments/1wq7lir/tello_abruptly_cut_sms2fa_for_me/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-25"
+  },
+  {
+    "id": "reddit-tello-signup-security-20260702",
+    "url": "https://www.reddit.com/r/Tello/comments/1ulbqqn/a_quick_clarification_about_our_signup/",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-07-02"
+  },
+  {
+    "id": "nodeseek-tello-payg-guide-20260928",
+    "url": "https://www.nodeseek.com/post-953129-1",
+    "type": "independent-community",
+    "reportedAt": "2026-09-28"
   }
 ]

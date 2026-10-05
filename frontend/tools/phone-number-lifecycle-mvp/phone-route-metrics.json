@@ -1539,14 +1539,14 @@
     },
     {
       "routeId": "tello-paygo-credit-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "metricState": "current-profile",
       "acquisitionCurrency": "USD",
       "acquisitionCostOriginal": 20,
       "acquisitionCostCny": 142,
       "keepCurrency": "USD",
-      "keepYearCostOriginal": 80,
-      "keepYearCostCny": 568,
+      "keepYearCostOriginal": 40,
+      "keepYearCostCny": 284,
       "keepIntervalDays": 90
     },
     {

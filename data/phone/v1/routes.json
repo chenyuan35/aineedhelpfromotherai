@@ -2568,7 +2568,7 @@
     "form": "eSIM + physical",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-05",
     "acquireUrl": "https://tello.com/buy/pay_as_you_go",
     "sourceIds": [
       "community-nodeloc-tello-china-2026-09-20",
@@ -2576,7 +2576,15 @@
       "official-tello-activation-abroad-2026-09-29",
       "official-tello-payg-purchase-2026-09-29",
       "official-tello-roaming-2026-09-29",
-      "official-tello-terms-2026-09-29"
+      "official-tello-terms-2026-09-29",
+      "official-tello-payg-current-20261005",
+      "official-tello-payg-sms-topup-20261005",
+      "official-tello-activation-us-required-20261005",
+      "official-tello-roaming-us-first-20261005",
+      "linuxdo-tello-codex-sms-failure-20260612",
+      "reddit-tello-sms-cut-abroad-20260925",
+      "reddit-tello-signup-security-20260702",
+      "nodeseek-tello-payg-guide-20260928"
     ]
   },
   {
