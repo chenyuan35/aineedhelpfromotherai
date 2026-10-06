@@ -11,10 +11,16 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://www.1pmobile.com/tacs",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.1pmobile.com/siminfo?prodid=STD",
     "sourceIds": [
-      "1pmobile-terms-20260929"
+      "1pmobile-terms-20260929",
+      "official-1pmobile-terms-current-20261006",
+      "official-1pmobile-payg-current-20261006",
+      "official-1pmobile-join-current-20261006",
+      "official-1pmobile-esim-current-20261006",
+      "official-1pmobile-overseas-current-20261006",
+      "official-1pmobile-payment-current-20261006"
     ]
   },
   "market": {
@@ -35,7 +41,7 @@
   },
   "metrics": {
     "routeId": "1pmobile-uk-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-06",
     "metricState": "current-profile",
     "acquisitionCurrency": "GBP",
     "acquisitionCostOriginal": 10,
@@ -53,6 +59,42 @@
       "url": "https://www.1pmobile.com/tacs",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "official-1pmobile-terms-current-20261006",
+      "url": "https://www.1pmobile.com/tacs",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-1pmobile-payg-current-20261006",
+      "url": "https://www.1pmobile.com/siminfo?prodid=STD",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-1pmobile-join-current-20261006",
+      "url": "https://www.1pmobile.com/ask-penny?question=How-do-I-join-1pMobile",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-1pmobile-esim-current-20261006",
+      "url": "https://my.1pmobile.com/eSIM",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-1pmobile-overseas-current-20261006",
+      "url": "https://www.1pmobile.com/ask-penny?cprefs=change&question=Can-I-use-my-1pMobile-overseas-indefinitely%3F",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-1pmobile-payment-current-20261006",
+      "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
     }
   ],
   "observations": [],
@@ -65,6 +107,51 @@
       "scope": "route",
       "outcome": "Terms updated 24 July 2026 establish cohort-specific commitment periods; the legacy blanket rule for earlier customers is corrected.",
       "sourceId": "1pmobile-terms-20260929"
+    },
+    {
+      "id": "evt-1pmobile-current-signup-promo-boundary-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "type": "current-acquisition-promo-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "1pMobile current PAYG sales material shows a promotional signup price of £5 while supplying £10 of account credit, with £10 struck through as the ordinary price. A current joining FAQ still describes the normal join flow as paying £10 to add initial credit and receiving the SIM free. Preserve £10 as the durable normalized acquisition baseline and record the £5 offer as a current promotion rather than a permanent route-price rewrite.",
+      "sourceId": "official-1pmobile-payg-current-20261006"
+    },
+    {
+      "id": "evt-1pmobile-new-customer-90d-commitment-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "type": "current-retention-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "For customers joining from 1 August 2026, 1pMobile requires at least £10 of spend/use every 90 days. If actual spend in a commitment period is below £10, the shortfall is deducted from account credit; if the balance is below £10, an automatic top-up is attempted from stored payment details. If the shortfall cannot be collected, service may be suspended immediately and the account may be closed after 10 days. This is a £10/90-day minimum consumption commitment, not a rule that a manual £10 top-up must occur every 90 days.",
+      "sourceId": "official-1pmobile-terms-current-20261006"
+    },
+    {
+      "id": "evt-1pmobile-esim-offshore-activation-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "type": "esim-and-offshore-activation-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "1pMobile supports eSIM for new customers at no eSIM charge, ordered online and activated from a QR code. Current help material states that a 1pMobile eSIM can often be activated while already outside the UK, but successful activation depends on the local roaming partner and is not guaranteed in every territory.",
+      "sourceId": "official-1pmobile-esim-current-20261006"
+    },
+    {
+      "id": "evt-1pmobile-long-term-overseas-sms-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "type": "overseas-roaming-sms-continuity",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "1pMobile current help material explicitly permits long-term use outside the UK in non-EU countries without a periodic UK-return requirement. It states that standard SMS, security verification codes, 2FA texts and banking OTP messages can continue to be received while roaming, subject to local network and roaming arrangements. Preserve this as provider-supported continuity, not a destination/app-specific measured success rate.",
+      "sourceId": "official-1pmobile-overseas-current-20261006"
+    },
+    {
+      "id": "evt-1pmobile-current-payment-methods-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "type": "payment-method-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "1pMobile currently documents Visa, MasterCard and PayPal as accepted payment methods and excludes American Express. The reviewed page does not establish universal acceptance of every non-UK-issued card, so foreign-card acceptance is not generalized beyond the named methods.",
+      "sourceId": "official-1pmobile-payment-current-20261006"
     }
   ],
   "snapshots": [
@@ -117,6 +204,69 @@
           "1pmobile-terms-20260929"
         ],
         "marketName": "United Kingdom"
+      }
+    },
+    {
+      "id": "snap-1pmobile-uk-2026-current-profile-20261006",
+      "routeId": "1pmobile-uk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-06",
+      "sourceDataset": "1pmobile-evidence-maintenance-2026-10-06",
+      "data": {
+        "id": "1pmobile-uk-2026",
+        "brandId": "1pmobile-uk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "1pMobile current joining material supports a durable baseline of a free SIM with £10 initial account credit. The live Classic PAYG sales page currently shows a £5 promotional signup price while supplying £10 of credit; this promotion is recorded separately and is not treated as the permanent route baseline. eSIM is available to new customers with no separate eSIM charge.",
+        "landedCost": {
+          "currency": "GBP",
+          "providerOrCommunityPrice": 0,
+          "mandatoryTopup": 10,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 93,
+          "fxCheckedAt": "2026-09-27",
+          "state": "current-official-standard-baseline-with-5-promo"
+        },
+        "keep": {
+          "currency": "GBP",
+          "observedActionCost": 10,
+          "yearCostOriginal": 40,
+          "yearCostCny": null,
+          "action": "For customers joining from 1 August 2026, maintain at least £10 of spend/use in each 90-day commitment period. If actual spend is below £10, 1pMobile deducts the shortfall from account credit; if the balance is insufficient, it attempts a minimum £10 automatic top-up from stored payment details. Failure to fund the commitment can lead to suspension and closure after 10 days.",
+          "intervalDays": 90,
+          "state": "current-official-new-customer-consumption-commitment"
+        },
+        "chinaActivation": "1pMobile currently says its eSIM can often be activated while already outside the UK, but activation depends on the local roaming partner and is not guaranteed in every territory. The reviewed material does not establish a China-specific first-activation guarantee.",
+        "kyc": "The reviewed current public order/help material describes online account creation, email and payment requirements but does not establish a government-ID KYC requirement. This record does not convert that absence into a universal no-ID guarantee.",
+        "payment": "Current official help lists Visa, MasterCard and PayPal; American Express is not accepted. The reviewed material does not establish universal acceptance of every non-UK-issued card.",
+        "wifiCalling": "Supported by 1pMobile. Current overseas help says Wi-Fi Calling often works abroad but depends on handset compatibility, Wi-Fi/ISP conditions and roaming-network requirements.",
+        "roamingSms": "1pMobile explicitly permits long-term use outside the UK in non-EU countries without a periodic UK-return requirement and says standard SMS, security verification codes, 2FA texts and banking OTP messages can continue to be received while roaming. Delivery still depends on local partner networks and roaming arrangements; no country/app success percentage is inferred.",
+        "refund": "Current Classic PAYG sales material advertises a 14-day money-back guarantee; detailed refund conditions are not normalized here.",
+        "trend": "stable-retention-with-current-signup-promo-and-provider-supported-overseas-continuity",
+        "guideEligible": false,
+        "holdReason": "The current provider evidence strongly supports long-term non-EU use, overseas eSIM activation in many territories and receipt of SMS/verification/banking OTP while roaming, but these are provider statements rather than destination/app-specific independent observations. Keep backstage until independent evidence justifies a stronger reliability recommendation.",
+        "lastVerifiedAt": "2026-10-06",
+        "acquireUrl": "https://www.1pmobile.com/siminfo?prodid=STD",
+        "tariffSummary": "Classic PAYG remains 1p/min, 1p/text and 1p/MB. Durable join baseline is £10 initial credit with a free SIM; a current £5 signup promotion supplies £10 credit. New customers from 1 August 2026 have a £10/90-day minimum spend/use commitment, equivalent to roughly £40/year of required account consumption.",
+        "sourceIds": [
+          "1pmobile-terms-20260929",
+          "official-1pmobile-terms-current-20261006",
+          "official-1pmobile-payg-current-20261006",
+          "official-1pmobile-join-current-20261006",
+          "official-1pmobile-esim-current-20261006",
+          "official-1pmobile-overseas-current-20261006",
+          "official-1pmobile-payment-current-20261006"
+        ],
+        "guideSteps": [
+          "Treat the current £5 signup as a promotion; use the £10 standard initial-credit baseline for durable cost comparisons.",
+          "Choose physical SIM or eSIM. New-customer eSIM has no separate eSIM fee and can often be activated outside the UK, but roaming-partner support can make offshore activation location-dependent.",
+          "For post-1-August-2026 accounts, satisfy at least £10 of spend/use in every 90-day commitment period; this can be real usage or a shortfall deduction from account credit rather than a mandatory manual top-up.",
+          "Keep enough account credit/payment availability to cover any commitment shortfall because failed collection can lead to suspension and account closure after 10 days.",
+          "For long-term non-EU use, 1pMobile permits remaining abroad and says verification/banking OTP SMS can continue, but verify the destination network before depending on a critical account because delivery remains partner-network dependent."
+        ]
       }
     }
   ]

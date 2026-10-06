@@ -4204,5 +4204,41 @@
     "url": "https://www.taiwanmobile.com/mobile/prepaid/roam.html?tab=small-1-3",
     "type": "provider-official",
     "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-terms-current-20261006",
+    "url": "https://www.1pmobile.com/tacs",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-payg-current-20261006",
+    "url": "https://www.1pmobile.com/siminfo?prodid=STD",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-join-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?question=How-do-I-join-1pMobile",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-esim-current-20261006",
+    "url": "https://my.1pmobile.com/eSIM",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-overseas-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?cprefs=change&question=Can-I-use-my-1pMobile-overseas-indefinitely%3F",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-payment-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   }
 ]

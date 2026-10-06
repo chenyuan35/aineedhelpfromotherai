@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 701 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 707 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -215,9 +215,19 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - `guideEligible=false`; no exact app/service aggregate is created.
 - Source corpus becomes **701**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — 1pMobile PAYG retention / eSIM / long-term-overseas maintenance
+
+- Existing `1pmobile-uk-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **1 → 7** using current 1pMobile terms, PAYG sales, joining, eSIM, overseas-use and payment material.
+- Durable acquisition stays **£10 initial credit with a free SIM**. The current **£5 signup** that still supplies £10 credit is recorded as a promotion, not treated as the permanent route price.
+- New customers from **1 August 2026** have a **£10 spend/use commitment every 90 days**. A shortfall is deducted from credit and may trigger an automatic top-up; this is not misrepresented as a mandatory manual £10 recharge every quarter.
+- Physical SIM + eSIM are supported. New-customer eSIM has no separate eSIM fee, and current help says eSIM can often be activated while already overseas, subject to local roaming-partner support.
+- 1pMobile explicitly permits long-term non-EU overseas use without periodic UK return and says standard SMS, verification codes, 2FA and banking OTP messages can continue while roaming. Because this is provider evidence rather than destination/app-specific independent measurement, `guideEligible=false` and no exact service aggregate is created.
+- Source corpus becomes **707**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `1pmobile-uk-2026`. It is the remaining admitted/backstage real-mobile route with only one canonical source in the current evidence-thin audit. Reconcile current acquisition/PAYG economics, inactivity/termination rules, eSIM/activation boundaries and overseas roaming-SMS continuity before any app-specific reliability claim.
+1. **Immediate bounded route:** `mobal-japan-voice-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and high normalized keep cost. Reconcile current Voice SIM/eSIM acquisition, monthly/annual economics, Japan identity/activation constraints and overseas SMS/roaming continuity before any recommendation or app-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

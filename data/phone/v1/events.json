@@ -1510,5 +1510,50 @@
     "scope": "route",
     "outcome": "Taiwan Mobile prepaid roaming explicitly states that in China the prepaid line does not provide roaming voice calling or outgoing SMS, but can receive SMS, excluding paid/premium SMS. Voice roaming must be enabled and device/network VoLTE conditions may apply. This is ordinary incoming-SMS entitlement, not an app/bank OTP delivery guarantee.",
     "sourceId": "official-twm-prepaid-roaming-current-20261006"
+  },
+  {
+    "id": "evt-1pmobile-current-signup-promo-boundary-20261006",
+    "routeId": "1pmobile-uk-2026",
+    "type": "current-acquisition-promo-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "1pMobile current PAYG sales material shows a promotional signup price of £5 while supplying £10 of account credit, with £10 struck through as the ordinary price. A current joining FAQ still describes the normal join flow as paying £10 to add initial credit and receiving the SIM free. Preserve £10 as the durable normalized acquisition baseline and record the £5 offer as a current promotion rather than a permanent route-price rewrite.",
+    "sourceId": "official-1pmobile-payg-current-20261006"
+  },
+  {
+    "id": "evt-1pmobile-new-customer-90d-commitment-20261006",
+    "routeId": "1pmobile-uk-2026",
+    "type": "current-retention-economics",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "For customers joining from 1 August 2026, 1pMobile requires at least £10 of spend/use every 90 days. If actual spend in a commitment period is below £10, the shortfall is deducted from account credit; if the balance is below £10, an automatic top-up is attempted from stored payment details. If the shortfall cannot be collected, service may be suspended immediately and the account may be closed after 10 days. This is a £10/90-day minimum consumption commitment, not a rule that a manual £10 top-up must occur every 90 days.",
+    "sourceId": "official-1pmobile-terms-current-20261006"
+  },
+  {
+    "id": "evt-1pmobile-esim-offshore-activation-20261006",
+    "routeId": "1pmobile-uk-2026",
+    "type": "esim-and-offshore-activation-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "1pMobile supports eSIM for new customers at no eSIM charge, ordered online and activated from a QR code. Current help material states that a 1pMobile eSIM can often be activated while already outside the UK, but successful activation depends on the local roaming partner and is not guaranteed in every territory.",
+    "sourceId": "official-1pmobile-esim-current-20261006"
+  },
+  {
+    "id": "evt-1pmobile-long-term-overseas-sms-20261006",
+    "routeId": "1pmobile-uk-2026",
+    "type": "overseas-roaming-sms-continuity",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "1pMobile current help material explicitly permits long-term use outside the UK in non-EU countries without a periodic UK-return requirement. It states that standard SMS, security verification codes, 2FA texts and banking OTP messages can continue to be received while roaming, subject to local network and roaming arrangements. Preserve this as provider-supported continuity, not a destination/app-specific measured success rate.",
+    "sourceId": "official-1pmobile-overseas-current-20261006"
+  },
+  {
+    "id": "evt-1pmobile-current-payment-methods-20261006",
+    "routeId": "1pmobile-uk-2026",
+    "type": "payment-method-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "1pMobile currently documents Visa, MasterCard and PayPal as accepted payment methods and excludes American Express. The reviewed page does not establish universal acceptance of every non-UK-issued card, so foreign-card acceptance is not generalized beyond the named methods.",
+    "sourceId": "official-1pmobile-payment-current-20261006"
   }
 ]
