@@ -10,10 +10,16 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://www.1pmobile.com/tacs",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.1pmobile.com/siminfo?prodid=STD",
     "sourceIds": [
-      "1pmobile-terms-20260929"
+      "1pmobile-terms-20260929",
+      "official-1pmobile-terms-current-20261006",
+      "official-1pmobile-payg-current-20261006",
+      "official-1pmobile-join-current-20261006",
+      "official-1pmobile-esim-current-20261006",
+      "official-1pmobile-overseas-current-20261006",
+      "official-1pmobile-payment-current-20261006"
     ]
   },
   {
