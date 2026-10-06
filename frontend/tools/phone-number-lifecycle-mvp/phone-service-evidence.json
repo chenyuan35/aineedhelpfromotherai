@@ -21,6 +21,25 @@
       "lastObservedAt": "2026-09-18"
     },
     {
+      "id": "svcagg-fortress-hahasim-hk-2026-telegram-registration-verification",
+      "routeId": "fortress-hahasim-hk-2026",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "low",
+      "sampleSize": 2,
+      "independentSourceCount": 2,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 1,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2025-05-29",
+      "lastObservedAt": "2026-01-05"
+    },
+    {
       "id": "svcagg-giffgaff-uk-direct-esim-payg-openai-phone-verification",
       "routeId": "giffgaff-uk-direct-esim-payg",
       "serviceId": "openai",
