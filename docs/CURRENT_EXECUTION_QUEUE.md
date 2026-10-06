@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 696 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 701 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -204,9 +204,20 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - TIM supports taking the TIM number abroad and offers China roaming products, but exact mainland-China regular-prepaid incoming-SMS/app OTP reliability remains unverified. `guideEligible=false`; no exact app aggregate is created.
 - Source corpus becomes **696**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Taiwan Mobile prepaid lifecycle / foreign-eligibility / China-SMS maintenance
+
+- Existing `taiwan-mobile-prepaid-tw-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **1 → 6** using current Taiwan Mobile first-party tariff, recharge, eSIM, identity and prepaid-roaming material.
+- Current regular-prepaid baseline is **NT$300**. Current communication-credit recharge includes **NT$100**, and each recharge restarts number validity for **six months**, giving a lowest documented retention path of about **NT$200/year**.
+- Physical SIM + prepaid eSIM are supported. Foreign applicants must apply in a Taiwan Mobile myfone store with **two original identity documents**; online application is unavailable to international customers.
+- Taiwan Mobile explicitly assigns foreign prepaid applicants to short-validity versus regular prepaid according to permitted-stay validity, so passport acceptance alone is not treated as long-term eligibility.
+- Current prepaid roaming material explicitly permits **ordinary incoming SMS in China** while prepaid roaming voice and outgoing SMS are unavailable there; paid/premium SMS is excluded. This is not generalized into bank/app OTP reliability.
+- `guideEligible=false`; no exact app/service aggregate is created.
+- Source corpus becomes **701**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `taiwan-mobile-prepaid-tw-2026`. It is an admitted/backstage real-mobile route with only one canonical source and unresolved acquisition/minimum-recharge economics. Reconcile current starter/eSIM identity, exact recharge/180-day number-validity economics, Taiwan-first activation/KYC constraints and overseas incoming-SMS continuity before any app-specific reliability claim.
+1. **Immediate bounded route:** `1pmobile-uk-2026`. It is the remaining admitted/backstage real-mobile route with only one canonical source in the current evidence-thin audit. Reconcile current acquisition/PAYG economics, inactivity/termination rules, eSIM/activation boundaries and overseas roaming-SMS continuity before any app-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

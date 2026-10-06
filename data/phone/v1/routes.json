@@ -2410,13 +2410,18 @@
     "displayName": "Taiwan Mobile",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical",
+    "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-27",
+    "lastVerifiedAt": "2026-10-06",
     "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
     "sourceIds": [
-      "taiwan-mobile-tw-official"
+      "taiwan-mobile-tw-official",
+      "official-twm-regular-prepaid-tariff-current-20261006",
+      "official-twm-prepaid-recharge-current-20261006",
+      "official-twm-esim-current-20261006",
+      "official-twm-identity-faq-current-20261006",
+      "official-twm-prepaid-roaming-current-20261006"
     ]
   },
   {
