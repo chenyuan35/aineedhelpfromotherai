@@ -4324,5 +4324,47 @@
     "url": "https://linux.do/t/topic/1408847?page=2",
     "type": "independent-community",
     "reportedAt": "2026-01-05"
+  },
+  {
+    "id": "official-celcomdigi-prepaid-current-20261006",
+    "url": "https://www.celcomdigi.com/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-kuning-plan-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660911-faq-celcomdigi-prepaid-5g-kuning-plan",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-kuning-pds-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660850-celcomdigi-prepaid-5g-kuning-product-disclosure-sheet",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-activation-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660668-how-to-activate-my-new-sim-",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-esim-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000675400-celcomdigi-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-roaming-pass-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000687394-prepaid-roaming-passes",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "lowyat-digi-prepaid-roaming-otp-20240716",
+    "url": "https://forum.lowyat.net/topic/4211035/+10180",
+    "type": "independent-community",
+    "reportedAt": "2024-07-16"
   }
 ]
