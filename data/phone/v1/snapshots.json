@@ -11641,5 +11641,67 @@
         "Before relying on the number in mainland China, verify current partner-network and incoming-SMS behavior; no exact China/app OTP reliability percentage is established."
       ]
     }
+  },
+  {
+    "id": "snap-taiwan-mobile-prepaid-tw-2026-current-profile-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-06",
+    "sourceDataset": "taiwan-mobile-prepaid-evidence-maintenance-2026-10-06",
+    "data": {
+      "id": "taiwan-mobile-prepaid-tw-2026",
+      "brandId": "taiwan-mobile-tw",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current Taiwan Mobile tariff material supports a standard regular-prepaid acquisition baseline of NT$300 for 4G/5G prepaid number cards. Cheaper child/OK/light-data products and short-term tourist cards are distinct products and are not used as this generic long-term route baseline. New prepaid applications are handled in Taiwan Mobile myfone stores; international customers cannot use the online application flow.",
+      "landedCost": {
+        "currency": "TWD",
+        "providerOrCommunityPrice": 300,
+        "mandatoryTopup": 0,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 300,
+        "landedCny": 69,
+        "fxCheckedAt": "2026-10-06",
+        "state": "current-official-standard-prepaid-baseline"
+      },
+      "keep": {
+        "currency": "TWD",
+        "observedActionCost": 100,
+        "yearCostOriginal": 200,
+        "yearCostCny": 46,
+        "action": "Recharge at least NT$100 before each six-month number-validity deadline. Taiwan Mobile currently lists an NT$100 communication-credit recharge and states that number validity restarts for six months from the recharge date.",
+        "intervalDays": 180,
+        "state": "current-official-minimum-recharge-and-lifecycle"
+      },
+      "chinaActivation": "Not a China-first route. International customers must apply at a Taiwan Mobile myfone store with two original identity documents. Taiwan Mobile states that foreign prepaid applicants receive either a short-validity or regular prepaid card according to the validity of their permitted stay in Taiwan, so passport possession alone does not establish eligibility for the long-term route.",
+      "kyc": "Foreign applicants: first document can be a foreign passport or valid ARC/entry-exit permit depending nationality/status; a second valid identity document is also required. International customers must apply in-store. Regular-vs-short-term prepaid eligibility depends on Taiwan stay-document validity.",
+      "payment": "Taiwan Mobile supports prepaid recharge through its website/app, myfone stores and convenience stores. Tourist-card pages separately document cash, credit card, UnionPay and Alipay; those tourist-payment methods are not generalized as the payment entitlement for this regular long-term route.",
+      "wifiCalling": "Not used as a retention or China-SMS guarantee in this profile.",
+      "roamingSms": "Taiwan Mobile prepaid roaming currently states that China does not support prepaid roaming voice calls or outgoing SMS, but ordinary incoming SMS is supported (excluding paid/premium SMS). Roaming/VoLTE and partner-network conditions still apply; this is not an app/bank OTP success guarantee.",
+      "refund": "not reconciled",
+      "trend": "stable-lifecycle-with-foreign-eligibility-boundary",
+      "guideEligible": false,
+      "holdReason": "Retention economics and China ordinary incoming-SMS entitlement are current and first-party supported, but foreign applicants are assigned short-term versus regular prepaid according to permitted-stay validity. Long-term eligibility therefore cannot be inferred from passport acceptance alone, and no exact app/bank OTP reliability sample exists.",
+      "lastVerifiedAt": "2026-10-06",
+      "acquireUrl": "https://www.taiwanmobile.com/mobile/prepaid/5Gprepaid.html",
+      "tariffSummary": "Standard regular prepaid baseline NT$300. General prepaid validity is six months and each recharge restarts six months; current communication-credit recharge includes NT$100, implying about NT$200/year for retention. Physical SIM + eSIM supported through Taiwan stores. China prepaid roaming permits incoming ordinary SMS but not voice or outgoing SMS.",
+      "sourceIds": [
+        "taiwan-mobile-tw-official",
+        "official-twm-regular-prepaid-tariff-current-20261006",
+        "official-twm-prepaid-recharge-current-20261006",
+        "official-twm-esim-current-20261006",
+        "official-twm-identity-faq-current-20261006",
+        "official-twm-prepaid-roaming-current-20261006"
+      ],
+      "guideSteps": [
+        "Before purchase, confirm your Taiwan stay-document validity qualifies you for a regular general prepaid card rather than a non-extendable short-term tourist card.",
+        "Apply in person at a Taiwan Mobile myfone store with two original identity documents; international customers cannot use the standard online application flow.",
+        "Choose physical SIM or Taiwan Mobile prepaid eSIM where supported; eSIM handling remains a store process for prepaid users.",
+        "Recharge at least NT$100 before each 180-day deadline to restart number validity for six months.",
+        "For China use, enable the required prepaid roaming/VoLTE conditions and rely only on ordinary incoming SMS entitlement; do not assume outgoing SMS, voice roaming or app/bank OTP success."
+      ]
+    }
   }
 ]

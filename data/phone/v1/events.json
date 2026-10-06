@@ -1465,5 +1465,50 @@
     "scope": "route",
     "outcome": "TIM currently markets use of the customer's TIM mobile number abroad and offers international roaming products, including China as a travel destination. The reviewed consumer pages do not provide exact regular-prepaid original-number incoming-SMS or app/OTP delivery guarantees for mainland China, so roaming existence must not be promoted as China OTP reliability.",
     "sourceId": "official-tim-estero-current-20261006"
+  },
+  {
+    "id": "evt-twm-prepaid-standard-acquisition-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "type": "current-acquisition-economics",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Taiwan Mobile current regular 4G/5G prepaid tariff material includes standard NT$300 prepaid number-card products. Cheaper child, OK, light-data and short-term tourist variants are separate named products and are not used as the normalized acquisition baseline for this general long-term route.",
+    "sourceId": "official-twm-regular-prepaid-tariff-current-20261006"
+  },
+  {
+    "id": "evt-twm-prepaid-100-recharge-180d-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "type": "lifecycle-retention-reconciliation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current Taiwan Mobile prepaid communication-credit recharge material includes an NT$100 recharge denomination and states that number validity restarts for six months from the recharge date. This establishes a lowest documented retention action of NT$100 every 180 days, about NT$200/year.",
+    "sourceId": "official-twm-prepaid-recharge-current-20261006"
+  },
+  {
+    "id": "evt-twm-prepaid-esim-support-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "type": "esim-support-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Taiwan Mobile currently supports eSIM for Taiwan Mobile prepaid users through physical stores; prepaid eSIM change/setup fees are deducted from prepaid balance. The page excludes legacy original Taiwan Star prepaid users, which does not change the Taiwan Mobile prepaid route identity.",
+    "sourceId": "official-twm-esim-current-20261006"
+  },
+  {
+    "id": "evt-twm-prepaid-foreign-registration-classification-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "type": "registration-eligibility-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Foreign applicants must use a physical myfone store and provide two original identity documents. Taiwan Mobile states that prepaid applicants are assigned either a short-validity card or a regular prepaid card according to the validity of their permitted stay in Taiwan. Online application is unavailable to international customers. Therefore passport acceptance alone does not guarantee eligibility for the long-term general-prepaid route.",
+    "sourceId": "official-twm-identity-faq-current-20261006"
+  },
+  {
+    "id": "evt-twm-prepaid-china-incoming-sms-20261006",
+    "routeId": "taiwan-mobile-prepaid-tw-2026",
+    "type": "roaming-sms-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Taiwan Mobile prepaid roaming explicitly states that in China the prepaid line does not provide roaming voice calling or outgoing SMS, but can receive SMS, excluding paid/premium SMS. Voice roaming must be enabled and device/network VoLTE conditions may apply. This is ordinary incoming-SMS entitlement, not an app/bank OTP delivery guarantee.",
+    "sourceId": "official-twm-prepaid-roaming-current-20261006"
   }
 ]

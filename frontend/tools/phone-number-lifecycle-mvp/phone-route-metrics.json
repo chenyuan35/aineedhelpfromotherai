@@ -1419,14 +1419,14 @@
     },
     {
       "routeId": "taiwan-mobile-prepaid-tw-2026",
-      "checkedAt": "2026-09-27",
+      "checkedAt": "2026-10-06",
       "metricState": "current-profile",
       "acquisitionCurrency": "TWD",
-      "acquisitionCostOriginal": null,
-      "acquisitionCostCny": null,
+      "acquisitionCostOriginal": 300,
+      "acquisitionCostCny": 69,
       "keepCurrency": "TWD",
-      "keepYearCostOriginal": null,
-      "keepYearCostCny": null,
+      "keepYearCostOriginal": 200,
+      "keepYearCostCny": 46,
       "keepIntervalDays": 180
     },
     {
