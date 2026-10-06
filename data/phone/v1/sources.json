@@ -4270,5 +4270,35 @@
     "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
     "type": "provider-official",
     "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-terms-current-20261006",
+    "url": "https://www.labas.lt/en/terms-and-conditions/en",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-packaging-current-20261006",
+    "url": "https://www.labas.lt/en/packaging",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-registration-current-20261006",
+    "url": "https://www.labas.lt/en/registration",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-topup-current-20261006",
+    "url": "https://www.labas.lt/en/help",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-roaming-current-20261006",
+    "url": "https://www.labas.lt/en/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   }
 ]

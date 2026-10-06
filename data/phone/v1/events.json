@@ -1600,5 +1600,50 @@
     "scope": "route",
     "outcome": "Mobal current Voice Lite documentation explicitly says Wi-Fi Calling is not supported. This route cannot use Wi-Fi Calling as a workaround for its Japan-only service boundary.",
     "sourceId": "official-mobal-voice-lite-esim-current-20261006"
+  },
+  {
+    "id": "evt-labas-current-esim-entry-20261006",
+    "routeId": "labas-90-120d-2026",
+    "type": "current-acquisition-economics",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "LABAS currently advertises direct eSIM entry from €1. The reviewed package page includes a €1 eSIM offer and a €1/month eSIM package with 1 GB, 100 minutes and 100 SMS. The €3 figure in the older profile is a qualifying retention top-up, not the current minimum direct acquisition price.",
+    "sourceId": "official-labas-packaging-current-20261006"
+  },
+  {
+    "id": "evt-labas-lifecycle-reconfirmation-20261006",
+    "routeId": "labas-90-120d-2026",
+    "type": "lifecycle-and-retention-reconfirmation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current LABAS terms reconfirm that the account stays fully valid for 90 days from activation or the last top-up of at least €3. After 90 days without a qualifying top-up the line becomes receive-only for calls/SMS plus emergency outgoing; after 120 days the number is cancelled and cannot be restored.",
+    "sourceId": "official-labas-terms-current-20261006"
+  },
+  {
+    "id": "evt-labas-foreign-registration-kyc-20261006",
+    "routeId": "labas-90-120d-2026",
+    "type": "foreign-registration-and-kyc-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "LABAS currently requires prepaid registration and says citizens of any country can register online through biometric verification. Accepted online identity documents include passport, identity card, driver's licence or Lithuanian residence permit.",
+    "sourceId": "official-labas-registration-current-20261006"
+  },
+  {
+    "id": "evt-labas-offshore-activation-boundary-20261006",
+    "routeId": "labas-90-120d-2026",
+    "type": "offshore-activation-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Remote identity registration does not establish universal offshore first activation. Current LABAS terms explicitly warn that service activation in foreign countries may be restricted under Lithuanian law, so the route must not be presented as guaranteed China-first or foreign-first activation.",
+    "sourceId": "official-labas-terms-current-20261006"
+  },
+  {
+    "id": "evt-labas-roaming-sms-continuity-20261006",
+    "routeId": "labas-90-120d-2026",
+    "type": "roaming-sms-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "LABAS current roaming material states that roaming allows customers to send and receive SMS abroad and lists China among supported non-EU roaming destinations. This supports ordinary roaming-SMS capability when registered on a partner network, but it is not evidence of bank/app OTP success.",
+    "sourceId": "official-labas-roaming-current-20261006"
   }
 ]

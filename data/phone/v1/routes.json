@@ -1369,11 +1369,16 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://www.labas.lt/en/service-rules",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.labas.lt/en/packaging",
     "sourceIds": [
       "labas-help-20260929",
-      "labas-rules-20260929"
+      "labas-rules-20260929",
+      "official-labas-terms-current-20261006",
+      "official-labas-packaging-current-20261006",
+      "official-labas-registration-current-20261006",
+      "official-labas-topup-current-20261006",
+      "official-labas-roaming-current-20261006"
     ]
   },
   {
