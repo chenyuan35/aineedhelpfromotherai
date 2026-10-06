@@ -1375,5 +1375,50 @@
     "scope": "route",
     "outcome": "September 2026 users report the RM30/365-day validity option remains visible after switching to Pantas, including a reported RM2 plan-switch fee. This independently corroborates continued real-world availability but is not used to override first-party lifecycle or tourist rules.",
     "sourceId": "reddit-hotlink-pantas-365-switch-20260901"
+  },
+  {
+    "id": "evt-fareastone-current-economics-lifecycle-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "type": "current-price-and-retention-reconciliation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "FarEasTone's current regular prepaid page still offers NT$300 and NT$500 starter products. The number is valid for 180 days from activation and each qualifying recharge; current communication-credit recharge denominations include NT$100, NT$300, NT$500 and NT$1000. The lowest documented retention path therefore remains one NT$100 recharge per 180 days, approximately NT$200 per year.",
+    "sourceId": "official-fareastone-prepaid-product-current-20261006"
+  },
+  {
+    "id": "evt-fareastone-tourist-product-separation-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "type": "product-family-separation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "FarEasTone maintains tourist prepaid products separately from the regular long-term 易付卡 line. The tourist-card page explicitly describes a short-term Taiwan-use product. Tourist inventory must not be used to infer long-term regular-prepaid lifecycle, roaming or retention economics.",
+    "sourceId": "official-fareastone-tourist-card-current-20261006"
+  },
+  {
+    "id": "evt-fareastone-overseas-sms-scope-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "type": "overseas-roaming-sms-scope",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "FarEasTone currently advertises free incoming SMS abroad via international VoLTE for FarEasTone users when the handset and destination partner network support the service, and it maintains a prepaid-roaming portal. However, the reviewed sources do not explicitly bind the broad VoLTE/OTP claim to this exact regular-prepaid route in mainland China. Preserve overseas original-number SMS as plausible provider-supported capability but not a route-specific China guarantee.",
+    "sourceId": "official-fareastone-volte-overseas-sms-20260824"
+  },
+  {
+    "id": "evt-fareastone-foreigner-identity-continuity-risk-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "type": "identity-compliance-continuity-risk",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "A July 2026 long-term FarEasTone pay-as-you-go user reports repeated mismatches between FarEasTone and immigration records, requiring passport plus ARC updates and causing outgoing calling to be disabled when the update is not completed. Preserve this as an unquantified foreign-user identity-continuity risk rather than a universal failure claim.",
+    "sourceId": "reddit-fareastone-foreigner-identity-continuity-20260713"
+  },
+  {
+    "id": "evt-fareastone-instore-esim-identity-boundary-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "type": "activation-esim-and-identity-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "FarEasTone's current regular-prepaid application remains an in-person Taiwan-store flow with two identity documents and customer-data registration. FarEasTone's current eSIM guide explicitly says prepaid-card users can use eSIM and that first application/change to eSIM is handled at a physical store with two identity documents. This supports physical + eSIM for the regular route, but does not establish offshore first activation.",
+    "sourceId": "official-fareastone-esim-prepaid-guide-current-20261006"
   }
 ]

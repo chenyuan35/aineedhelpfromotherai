@@ -872,13 +872,23 @@
     "displayName": "FarEasTone",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical",
+    "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-27",
+    "lastVerifiedAt": "2026-10-06",
     "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
     "sourceIds": [
-      "fareastone-tw-official"
+      "fareastone-tw-official",
+      "official-fareastone-prepaid-product-current-20261006",
+      "official-fareastone-prepaid-topup-current-20261006",
+      "official-fareastone-prepaid-choice-current-20261006",
+      "official-fareastone-prepaid-english-current-20261006",
+      "official-fareastone-prepaid-home-current-20261006",
+      "official-fareastone-prepaid-roaming-current-20261006",
+      "official-fareastone-volte-overseas-sms-20260824",
+      "official-fareastone-tourist-card-current-20261006",
+      "reddit-fareastone-foreigner-identity-continuity-20260713",
+      "official-fareastone-esim-prepaid-guide-current-20261006"
     ]
   },
   {
