@@ -273,5 +273,27 @@
     "geography": "unspecified",
     "sourceId": "v2ex-ultramobile-telegram-mixed-20260404",
     "dedupeKey": "ultramobile-v2ex-1203564-chenanhe-telegram-mixed"
+  },
+  {
+    "id": "obs-hahasim-telegram-linuxdo-failure-20250529",
+    "routeId": "fortress-hahasim-hk-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure",
+    "reportedAt": "2025-05-29",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-hahasim-telegram-failure-20250529",
+    "dedupeKey": "hahasim-linuxdo-686357-ketal-telegram"
+  },
+  {
+    "id": "obs-hahasim-telegram-linuxdo-conditional-20260105",
+    "routeId": "fortress-hahasim-hk-2026",
+    "service": "Telegram",
+    "operation": "registration-verification",
+    "outcome": "failure-then-success",
+    "reportedAt": "2026-01-05",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-hahasim-telegram-conditional-20260105",
+    "dedupeKey": "hahasim-linuxdo-1408847-soultionlss-telegram"
   }
 ]
