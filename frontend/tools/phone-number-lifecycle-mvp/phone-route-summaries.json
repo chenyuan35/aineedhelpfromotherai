@@ -1839,24 +1839,45 @@
       "form": "physical",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-10-03",
-      "observationCount": 0,
-      "eventCount": 1,
-      "services": [],
-      "operations": [],
-      "serviceEvidence": [],
+      "lastVerifiedAt": "2026-10-06",
+      "observationCount": 2,
+      "eventCount": 7,
+      "services": [
+        "Telegram"
+      ],
+      "operations": [
+        "registration-verification"
+      ],
+      "serviceEvidence": [
+        {
+          "serviceId": "telegram",
+          "serviceName": "Telegram",
+          "operation": "registration-verification",
+          "grade": "C",
+          "label": "Mixed / weak",
+          "confidence": "low",
+          "sampleSize": 2,
+          "independentSourceCount": 2,
+          "successCount": 0,
+          "failureCount": 1,
+          "mixedCount": 1,
+          "percentageEligible": false,
+          "successRatePct": null,
+          "lastObservedAt": "2026-01-05"
+        }
+      ],
       "decisionFacts": {
-        "sourceCount": 2,
-        "kycState": "not-required",
-        "keepAction": "Top up HKD10 or more before expiry. Current Fortress FAQ says each qualifying top-up automatically extends SIM validity by 365 days; buying a data package does not extend validity.",
-        "roamingSms": "Current provider FAQ supports roaming text/voice subject to account balance and charges. 2026 community users report mainland-China SMS reception, but service-specific OTP success…",
-        "holdReason": null,
-        "continuityRiskSignalCount": 1,
-        "lastContinuityRiskSignalAt": "2026-10-03"
+        "sourceCount": 6,
+        "kycState": "required",
+        "keepAction": "Top up HK$10 or more before expiry to extend SIM validity by 365 days. Current Fortress FAQ explicitly says purchasing a data package does not extend validity. After expiry, react…",
+        "roamingSms": "Fortress documents roaming SMS/voice charged from stored balance; insufficient balance can stop related services. Two independent Telegram registration-verification reports are mi…",
+        "holdReason": "Exact mainland bank/app OTP reliability is unverified; the Telegram sample is only two independent mixed/negative observations, and official material does not explicitly guarantee…",
+        "continuityRiskSignalCount": 2,
+        "lastContinuityRiskSignalAt": "2026-10-06"
       },
       "metrics": {
         "routeId": "fortress-hahasim-hk-2026",
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-06",
         "metricState": "current-profile",
         "acquisitionCurrency": "HKD",
         "acquisitionCostOriginal": 50,
