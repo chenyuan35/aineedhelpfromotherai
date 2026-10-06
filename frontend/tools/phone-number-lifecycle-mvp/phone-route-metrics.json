@@ -951,14 +951,14 @@
     },
     {
       "routeId": "mobal-japan-voice-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-06",
       "metricState": "current-profile",
       "acquisitionCurrency": "JPY",
       "acquisitionCostOriginal": 4950,
       "acquisitionCostCny": 238,
       "keepCurrency": "JPY",
-      "keepYearCostOriginal": 17160,
-      "keepYearCostCny": 824,
+      "keepYearCostOriginal": 11880,
+      "keepYearCostCny": 571,
       "keepIntervalDays": 30
     },
     {

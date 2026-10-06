@@ -1626,17 +1626,22 @@
     "marketId": "jp",
     "networkId": null,
     "brandId": "mobal-japan-jp",
-    "displayName": "Mobal Japan Voice-Only",
+    "displayName": "Mobal Japan Voice Lite",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "eSIM + physical",
+    "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-06",
     "acquireUrl": "https://www.mobal.com/japan-sim-card/",
     "sourceIds": [
       "official-mobal-id-requirements-2026-09-29",
-      "official-mobal-japan-sim-2026-09-29"
+      "official-mobal-japan-sim-2026-09-29",
+      "official-mobal-voice-lite-sim-current-20261006",
+      "official-mobal-voice-lite-esim-current-20261006",
+      "official-mobal-id-requirements-current-20261006",
+      "official-mobal-shipping-current-20261006",
+      "official-mobal-roaming-current-20261006"
     ]
   },
   {

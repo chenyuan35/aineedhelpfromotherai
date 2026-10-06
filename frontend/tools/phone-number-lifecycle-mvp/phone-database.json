@@ -3600,17 +3600,22 @@
       "marketId": "jp",
       "networkId": null,
       "brandId": "mobal-japan-jp",
-      "displayName": "Mobal Japan Voice-Only",
+      "displayName": "Mobal Japan Voice Lite",
       "family": "long-term",
       "numberClass": "real-mobile",
-      "form": "eSIM + physical",
+      "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-29",
+      "lastVerifiedAt": "2026-10-06",
       "acquireUrl": "https://www.mobal.com/japan-sim-card/",
       "sourceIds": [
         "official-mobal-id-requirements-2026-09-29",
-        "official-mobal-japan-sim-2026-09-29"
+        "official-mobal-japan-sim-2026-09-29",
+        "official-mobal-voice-lite-sim-current-20261006",
+        "official-mobal-voice-lite-esim-current-20261006",
+        "official-mobal-id-requirements-current-20261006",
+        "official-mobal-shipping-current-20261006",
+        "official-mobal-roaming-current-20261006"
       ]
     },
     {
@@ -9483,6 +9488,36 @@
       "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
       "type": "provider-official",
       "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-mobal-voice-lite-sim-current-20261006",
+      "url": "https://www.mobal.com/japan-sim-card/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-mobal-voice-lite-esim-current-20261006",
+      "url": "https://www.mobal.com/japan-esims/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-mobal-id-requirements-current-20261006",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-mobal-shipping-current-20261006",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041023-shipping-option-delivery-times",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-mobal-roaming-current-20261006",
+      "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
     }
   ],
   "observations": [
@@ -11319,6 +11354,51 @@
       "scope": "route",
       "outcome": "1pMobile currently documents Visa, MasterCard and PayPal as accepted payment methods and excludes American Express. The reviewed page does not establish universal acceptance of every non-UK-issued card, so foreign-card acceptance is not generalized beyond the named methods.",
       "sourceId": "official-1pmobile-payment-current-20261006"
+    },
+    {
+      "id": "evt-mobal-voice-lite-product-successor-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "type": "current-product-successor-reconciliation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Mobal current long-term voice-only-positioned product is now branded Voice Lite rather than the earlier Voice-Only offer preserved in the 2026-09-29 snapshot. The current direct product surface lists ¥4,950 setup and ¥990 per calendar month, includes a real Japanese 070/080/090 number, free incoming calls/SMS and 500MB/month of limited data. The prior ¥1,430/month Voice-Only profile is therefore historical rather than the current route profile.",
+      "sourceId": "official-mobal-voice-lite-sim-current-20261006"
+    },
+    {
+      "id": "evt-mobal-voice-lite-current-economics-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "type": "current-acquisition-and-retention-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "The current canonical Mobal Voice Lite SIM and eSIM surfaces show a ¥4,950 purchase price and ¥990 monthly fee, with the first calendar month prorated and no minimum contract. The current direct pages no longer show the earlier ¥4,455 setup promotion as the durable price. The normalized annual service cost is therefore ¥11,880 before chargeable outgoing usage or excess limited-data charges.",
+      "sourceId": "official-mobal-voice-lite-sim-current-20261006"
+    },
+    {
+      "id": "evt-mobal-voice-lite-japan-only-boundary-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "type": "roaming-continuity-reconciliation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current Mobal Voice Lite SIM and eSIM FAQs explicitly state that Voice Lite only works in Japan and will not work in other countries. Mobal current roaming help separately states that international roaming is limited to the latest Voice+Data 5G SIM/eSIM products. The older Voice-Only roaming claim must therefore not be carried forward to the current Voice Lite route.",
+      "sourceId": "official-mobal-roaming-current-20261006"
+    },
+    {
+      "id": "evt-mobal-voice-lite-esim-delivery-id-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "type": "esim-delivery-and-identity-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Mobal Voice Lite eSIM is not delivered by email. Because voice products require identity verification under Mobal current Japanese-law process, the customer receives a physical eSIM access code by shipping to the verified ID address or collects it in Japan after showing a physical passport and order confirmation. Worldwide delivery is available where the destination-specific ID requirements can be met.",
+      "sourceId": "official-mobal-voice-lite-esim-current-20261006"
+    },
+    {
+      "id": "evt-mobal-voice-lite-wifi-calling-boundary-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "type": "wifi-calling-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Mobal current Voice Lite documentation explicitly says Wi-Fi Calling is not supported. This route cannot use Wi-Fi Calling as a workaround for its Japan-only service boundary.",
+      "sourceId": "official-mobal-voice-lite-esim-current-20261006"
     }
   ],
   "snapshots": [
@@ -23089,6 +23169,69 @@
           "For long-term non-EU use, 1pMobile permits remaining abroad and says verification/banking OTP SMS can continue, but verify the destination network before depending on a critical account because delivery remains partner-network dependent."
         ]
       }
+    },
+    {
+      "id": "snap-mobal-japan-voice-2026-current-profile-20261006",
+      "routeId": "mobal-japan-voice-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-06",
+      "sourceDataset": "mobal-voice-lite-evidence-maintenance-2026-10-06",
+      "data": {
+        "id": "mobal-japan-voice-2026",
+        "brandId": "mobal-japan-jp",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Mobal current long-term low-cost voice product is Voice Lite. Physical SIM and eSIM each use a ¥4,950 purchase baseline; the current direct product surfaces list ¥990 per calendar month after activation, with the first month prorated. Voice Lite provides a real Japanese 070/080/090 number, free incoming calls/SMS and 500MB/month of limited data.",
+        "landedCost": {
+          "currency": "JPY",
+          "providerOrCommunityPrice": 4950,
+          "mandatoryTopup": 0,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 4950,
+          "landedCny": 238,
+          "fxCheckedAt": "2026-09-29",
+          "state": "current-official-voice-lite"
+        },
+        "keep": {
+          "currency": "JPY",
+          "observedActionCost": 990,
+          "yearCostOriginal": 11880,
+          "yearCostCny": 571,
+          "action": "Keep the Voice Lite subscription active at ¥990 per calendar month. The first month is prorated. There is no minimum contract, but the monthly subscription is the service-retention cost; ordinary incoming SMS does not replace the monthly fee.",
+          "intervalDays": 30,
+          "state": "current-official-voice-lite-monthly"
+        },
+        "chinaActivation": "Not a China-use route. Mobal can ship the physical SIM or Voice Lite eSIM access code internationally where destination-specific identity requirements can be met, but the current Voice Lite SIM/eSIM service explicitly works only in Japan. eSIM is not delivered by email.",
+        "kyc": "Voice-capable SIM/eSIM products require identity verification. For delivery, the required ID depends on shipping destination and the SIM/eSIM access code is sent to the address shown on accepted ID. For Japan pickup, the customer must show a physical unexpired passport and matching order confirmation; purchaser must be at least 18.",
+        "payment": "Current product flow accepts debit/credit card or PayPal and bills in Japanese yen. Universal card-issuer acceptance is not generalized.",
+        "wifiCalling": "Not supported by Mobal Voice Lite.",
+        "roamingSms": "Current Voice Lite SIM/eSIM FAQs say the product only works in Japan and will not work in other countries. Current Mobal roaming help limits international roaming to the latest Voice+Data 5G products. Do not use Voice Lite as an overseas SMS/OTP retention route.",
+        "refund": "not reconciled",
+        "trend": "material-product-successor-correction",
+        "guideEligible": false,
+        "holdReason": "The current Voice Lite successor is a Japan-only product with no Wi-Fi Calling. It no longer satisfies the overseas-number-survival task represented by the older Voice-Only profile; retain it backstage as a current Japan-local-number reference rather than an overseas SMS/OTP recommendation.",
+        "lastVerifiedAt": "2026-10-06",
+        "acquireUrl": "https://www.mobal.com/japan-sim-card/",
+        "tariffSummary": "Current Voice Lite: ¥4,950 setup + ¥990/month, real Japanese 070/080/090 number, free incoming calls/SMS, 500MB/month limited data, physical SIM + eSIM. Voice Lite is Japan-only; no international roaming or Wi-Fi Calling.",
+        "sourceIds": [
+          "official-mobal-id-requirements-2026-09-29",
+          "official-mobal-japan-sim-2026-09-29",
+          "official-mobal-voice-lite-sim-current-20261006",
+          "official-mobal-voice-lite-esim-current-20261006",
+          "official-mobal-id-requirements-current-20261006",
+          "official-mobal-shipping-current-20261006",
+          "official-mobal-roaming-current-20261006"
+        ],
+        "guideSteps": [
+          "Use the current Voice Lite product profile rather than the historical ¥1,430/month Voice-Only profile.",
+          "Choose physical SIM or eSIM. For eSIM, expect a physical access code to be shipped or collected; Mobal does not email the Voice Lite eSIM profile directly.",
+          "Complete the required voice-product identity verification or show the required physical passport at a Japan pickup point.",
+          "Keep the ¥990 monthly subscription paid if you need to retain the Japanese number while in Japan.",
+          "Do not depend on Voice Lite for overseas SMS/OTP or Wi-Fi Calling: current Mobal documentation says Voice Lite only works in Japan."
+        ]
+      }
     }
   ],
   "aliases": [
@@ -24259,14 +24402,14 @@
     },
     {
       "routeId": "mobal-japan-voice-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-06",
       "metricState": "current-profile",
       "acquisitionCurrency": "JPY",
       "acquisitionCostOriginal": 4950,
       "acquisitionCostCny": 238,
       "keepCurrency": "JPY",
-      "keepYearCostOriginal": 17160,
-      "keepYearCostCny": 824,
+      "keepYearCostOriginal": 11880,
+      "keepYearCostCny": 571,
       "keepIntervalDays": 30
     },
     {

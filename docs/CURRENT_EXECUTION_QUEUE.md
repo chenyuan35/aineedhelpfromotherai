@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 707 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 712 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -225,9 +225,20 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - 1pMobile explicitly permits long-term non-EU overseas use without periodic UK return and says standard SMS, verification codes, 2FA and banking OTP messages can continue while roaming. Because this is provider evidence rather than destination/app-specific independent measurement, `guideEligible=false` and no exact service aggregate is created.
 - Source corpus becomes **707**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Mobal Voice Lite product-successor / Japan-only maintenance
+
+- Existing `mobal-japan-voice-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **2 → 7** using current Mobal Voice Lite SIM/eSIM, identity, shipping and roaming material while preserving the earlier 2026-09-29 records as history.
+- Current product is **Voice Lite**, not the earlier Voice-Only profile: **¥4,950 setup + ¥990/month**, real Japanese 070/080/090 number, free incoming calls/SMS and 500MB/month limited data.
+- Annual normalized service cost falls **¥17,160 → ¥11,880**. The previous ¥1,430/month Voice-Only and temporary setup-promotion profile is not carried forward as current.
+- Voice Lite physical SIM + eSIM are supported, but the voice eSIM is not sent by email. Mobal ships a physical access code to an accepted-ID address or requires Japan pickup with a physical passport/order confirmation.
+- Current Voice Lite SIM/eSIM FAQs say the product **only works in Japan**; current roaming help limits international roaming to latest Voice+Data 5G products. Voice Lite also lacks Wi-Fi Calling. The previous overseas-SMS/OTP continuity assumption is removed.
+- `guideEligible=false`; no exact app/service aggregate is created.
+- Source corpus becomes **712**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `mobal-japan-voice-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and high normalized keep cost. Reconcile current Voice SIM/eSIM acquisition, monthly/annual economics, Japan identity/activation constraints and overseas SMS/roaming continuity before any recommendation or app-specific reliability claim.
+1. **Immediate bounded route:** `labas-90-120d-2026`. It is an admitted/backstage real-mobile route with only two canonical sources, a low normalized annual keep cost and a stale 2026-09-29 profile. Reconcile current starter/recharge economics, exact lifecycle window, eSIM/activation/KYC boundaries and overseas incoming-SMS continuity before any recommendation or app-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

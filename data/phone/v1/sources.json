@@ -4240,5 +4240,35 @@
     "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
     "type": "provider-official",
     "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-voice-lite-sim-current-20261006",
+    "url": "https://www.mobal.com/japan-sim-card/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-voice-lite-esim-current-20261006",
+    "url": "https://www.mobal.com/japan-esims/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-id-requirements-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-shipping-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041023-shipping-option-delivery-times",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-roaming-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   }
 ]
