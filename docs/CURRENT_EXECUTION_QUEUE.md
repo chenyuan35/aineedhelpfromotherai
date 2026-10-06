@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 692 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 696 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -192,11 +192,21 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Current regular-prepaid application remains Taiwan in-store with **two identity documents** and customer-data registration. FarEasTone currently supports **prepaid eSIM as well as physical SIM**, but no offshore first-activation path was established.
 - Tourist prepaid is a separate product family and is not used to infer the long-term 易付卡 lifecycle.
 - FarEasTone broadly advertises free incoming SMS/OTP abroad through international VoLTE and maintains prepaid roaming, but reviewed material does not explicitly prove this exact regular-prepaid route's original-number SMS entitlement in mainland China. A July 2026 long-term PAYG report also records passport/ARC data mismatch causing calling suspension until records were updated. `guideEligible=false`; no app/OTP aggregate is created.
-- Source corpus becomes **691**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Source corpus becomes **692**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
+## JUST COMPLETED — TIM Prepaid lifecycle / eSIM / foreign-onboarding maintenance
+
+- Existing `tim-prepaid-12mo-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **2 → 6** using current TIM first-party lifecycle, recharge, SIM/eSIM, activation and roaming material.
+- Lifecycle remains **12 months full service + month 13 receive-calls-and-SMS only**. After expiry, TIM currently allows free number reactivation for up to **11 months**.
+- Current **Ricarica 5+ costs €5** and TIM says the last recharge resets card validity, preserving a lowest currently documented paid retention action of roughly **€5/year**. Ricarica 5+ includes €4 prepaid credit plus a temporary bundle; the record does not misstate it as €5 of ordinary credit.
+- Current new-customer SIM baseline remains **€10**. Physical SIM + eSIM are supported. Online identity can use passport, but the reviewed flow also requires Italian **Codice Fiscale** and documents Italy-issued cards for online payment, so offshore/non-resident activation is not assumed.
+- TIM supports taking the TIM number abroad and offers China roaming products, but exact mainland-China regular-prepaid incoming-SMS/app OTP reliability remains unverified. `guideEligible=false`; no exact app aggregate is created.
+- Source corpus becomes **696**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `tim-prepaid-12mo-2026`. It is an admitted/backstage real-mobile route with only two current canonical sources and one of the lowest normalized keep costs among the remaining evidence-thin routes. Reconcile current starter/recharge economics, 12-month lifecycle, eSIM/activation/KYC boundaries and overseas SMS/roaming continuity before any app-specific reliability claim.
+1. **Immediate bounded route:** `taiwan-mobile-prepaid-tw-2026`. It is an admitted/backstage real-mobile route with only one canonical source and unresolved acquisition/minimum-recharge economics. Reconcile current starter/eSIM identity, exact recharge/180-day number-validity economics, Taiwan-first activation/KYC constraints and overseas incoming-SMS continuity before any app-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

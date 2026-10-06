@@ -4753,11 +4753,15 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-28",
-      "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+      "lastVerifiedAt": "2026-10-06",
+      "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
       "sourceIds": [
         "official-tim-riattivare-sim-2026-09-26",
-        "official-tim-ricarica-5-2026-09-28"
+        "official-tim-ricarica-5-2026-09-28",
+        "official-tim-mobile-sim-cost-current-20261006",
+        "official-tim-passa-esim-id-current-20261006",
+        "official-tim-estero-current-20261006",
+        "official-tim-video-identification-current-20261006"
       ]
     },
     {
@@ -9378,6 +9382,30 @@
       "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/08/esim.html",
       "type": "provider-official",
       "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-tim-mobile-sim-cost-current-20261006",
+      "url": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-tim-passa-esim-id-current-20261006",
+      "url": "https://www.tim.it/fisso-e-mobile/mobile/passa-a-tim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-tim-estero-current-20261006",
+      "url": "https://www.tim.it/fisso-e-mobile/estero",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-tim-video-identification-current-20261006",
+      "url": "https://www.tim.it/content/dam/flytoco-areapubblica-aemfe/tim_it/pdf/assistenza/altro/TIM_Guida_Video-identificazione_2911.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
     }
   ],
   "observations": [
@@ -11079,6 +11107,51 @@
       "scope": "route",
       "outcome": "FarEasTone's current regular-prepaid application remains an in-person Taiwan-store flow with two identity documents and customer-data registration. FarEasTone's current eSIM guide explicitly says prepaid-card users can use eSIM and that first application/change to eSIM is handled at a physical store with two identity documents. This supports physical + eSIM for the regular route, but does not establish offshore first activation.",
       "sourceId": "official-fareastone-esim-prepaid-guide-current-20261006"
+    },
+    {
+      "id": "evt-tim-prepaid-lifecycle-rescue-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "type": "lifecycle-retention-reconciliation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current TIM support states that a TIM Card is valid for 12 months from activation, the last recharge or another qualifying customer-requested commercial event. If none occurs, month 13 is receive-calls-and-SMS only, then the SIM/number is deactivated. TIM currently allows free number reactivation within a maximum 11 months after expiry.",
+      "sourceId": "official-tim-riattivare-sim-2026-09-26"
+    },
+    {
+      "id": "evt-tim-prepaid-five-euro-keep-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "type": "current-retention-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "TIM still sells Ricarica 5+ for EUR5. It includes EUR4 prepaid credit plus a temporary bundle. Because TIM explicitly resets card validity from the last recharge, EUR5 remains the lowest currently documented paid recharge action found in the reviewed first-party material for resetting the lifecycle clock. This is an annual retention action, not a claim that EUR5 of ordinary credit is added.",
+      "sourceId": "official-tim-ricarica-5-2026-09-28"
+    },
+    {
+      "id": "evt-tim-prepaid-current-sim-cost-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "type": "current-acquisition-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current TIM mobile pages list a EUR10 one-time SIM cost for new prepaid customers. Online, EUR5 is prepaid credit and EUR5 is SIM activation; in TIM stores, EUR0.01 is residual credit and EUR9.99 is SIM activation. Offer-specific monthly charges are separate from this normalized SIM acquisition baseline.",
+      "sourceId": "official-tim-mobile-sim-cost-current-20261006"
+    },
+    {
+      "id": "evt-tim-prepaid-esim-identity-payment-boundary-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "type": "activation-esim-and-identity-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "TIM currently supports physical SIM and eSIM for new prepaid mobile customers, with online identification via SPID or video selfie. The online flow requires an Italian Codice Fiscale and a valid identity document; TIM explicitly lists passport among accepted identity documents for the switch-to-TIM flow. Card payment for that online flow is documented for cards issued in Italy, while courier identification can use cash. These requirements do not establish a frictionless offshore/non-resident first-activation path.",
+      "sourceId": "official-tim-passa-esim-id-current-20261006"
+    },
+    {
+      "id": "evt-tim-prepaid-roaming-sms-boundary-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "type": "roaming-continuity-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "TIM currently markets use of the customer's TIM mobile number abroad and offers international roaming products, including China as a travel destination. The reviewed consumer pages do not provide exact regular-prepaid original-number incoming-SMS or app/OTP delivery guarantees for mainland China, so roaming existence must not be promoted as China OTP reliability.",
+      "sourceId": "official-tim-estero-current-20261006"
     }
   ],
   "snapshots": [
@@ -22662,6 +22735,68 @@
           "Foreign residents should keep carrier identity records aligned with current passport/ARC data because 2026 community evidence shows service continuity can be affected by record mismatches."
         ]
       }
+    },
+    {
+      "id": "snap-tim-prepaid-12mo-2026-current-profile-20261006",
+      "routeId": "tim-prepaid-12mo-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-06",
+      "sourceDataset": "tim-prepaid-evidence-maintenance-2026-10-06",
+      "data": {
+        "id": "tim-prepaid-12mo-2026",
+        "brandId": "tim-prepaid",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current TIM mobile pages list a EUR10 one-time SIM cost for new prepaid customers. TIM supports physical SIM and eSIM, including online identification, but the reviewed online path requires an Italian Codice Fiscale and documents Italian-issued card payment; passport is an accepted identity document in the switch flow. This supports eSIM and passport identity use, not a universal offshore/non-resident activation claim.",
+        "landedCost": {
+          "currency": "EUR",
+          "providerOrCommunityPrice": 10,
+          "mandatoryTopup": 0,
+          "shipping": 0,
+          "adapterCostCny": null,
+          "landedOriginal": 10,
+          "landedCny": 78,
+          "fxCheckedAt": "2026-10-06",
+          "state": "current-official-sim-cost"
+        },
+        "keep": {
+          "currency": "EUR",
+          "observedActionCost": 5,
+          "yearCostOriginal": 5,
+          "yearCostCny": 39,
+          "action": "Before the 12-month full-service validity expires, perform a current EUR5 Ricarica 5+ recharge. TIM states that the last recharge resets TIM Card validity. Month 13 is receive-calls-and-SMS only; after deactivation, free number reactivation is available for up to 11 months. Ricarica 5+ costs EUR5 but includes EUR4 prepaid credit plus a temporary bundle.",
+          "intervalDays": 365,
+          "state": "current-official-recharge-and-lifecycle"
+        },
+        "chinaActivation": "Not established as a China-first route. TIM supports online physical SIM/eSIM activation with SPID or video identification, but the reviewed flow requires an Italian Codice Fiscale; online card payment is documented for cards issued in Italy. Passport can be an accepted identity document, but this does not remove the tax-code/payment/onboarding constraints.",
+        "kyc": "Current online activation requires a valid identity document plus Codice Fiscale and SPID or video identification. TIM explicitly lists passport among accepted identity documents in the switch-to-TIM flow. Non-resident eligibility depends on being able to satisfy the Italian tax-code and payment/delivery requirements.",
+        "payment": "Current online switch/new-customer flow documents credit cards issued in Italy for online identification/payment; courier identification can use cash. TIM also has ordinary prepaid recharge channels, but universal foreign-card acceptance is not established.",
+        "wifiCalling": "Not used as a retention or overseas-SMS guarantee in this profile.",
+        "roamingSms": "TIM currently supports taking the TIM mobile number abroad and sells roaming products including for China. The reviewed consumer material does not establish exact regular-prepaid original-number incoming-SMS or app/OTP delivery reliability in mainland China, so China SMS/OTP remains unquantified.",
+        "refund": "not reconciled",
+        "trend": "stable-lifecycle-with-foreign-onboarding-and-china-sms-boundaries",
+        "guideEligible": false,
+        "holdReason": "Lifecycle and the EUR5 annual recharge path are current and first-party supported, but non-resident/offshore onboarding still depends on Italian Codice Fiscale/payment requirements and the reviewed sources do not establish mainland-China incoming-SMS/app OTP reliability for this exact regular-prepaid route.",
+        "lastVerifiedAt": "2026-10-06",
+        "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
+        "tariffSummary": "EUR10 current one-time SIM baseline. TIM Card has 12 months full-service validity from activation/last recharge/qualifying event, followed by month 13 receive-calls-and-SMS only; EUR5 Ricarica 5+ remains a current paid recharge action, and expired numbers can be reactivated free within 11 months.",
+        "sourceIds": [
+          "official-tim-riattivare-sim-2026-09-26",
+          "official-tim-ricarica-5-2026-09-28",
+          "official-tim-mobile-sim-cost-current-20261006",
+          "official-tim-passa-esim-id-current-20261006",
+          "official-tim-estero-current-20261006",
+          "official-tim-video-identification-current-20261006"
+        ],
+        "guideSteps": [
+          "Confirm you can satisfy TIM onboarding requirements, including Codice Fiscale and the chosen identification/payment flow; do not assume passport alone makes offshore activation frictionless.",
+          "Choose physical SIM or eSIM; TIM currently supports both for new prepaid mobile customers.",
+          "Use a current EUR5 Ricarica 5+ recharge before the 12-month full-service deadline to reset the TIM Card lifecycle clock.",
+          "If the SIM expires, request free number reactivation within TIM's documented maximum 11-month recovery window.",
+          "Before relying on the number in mainland China, verify current partner-network and incoming-SMS behavior; no exact China/app OTP reliability percentage is established."
+        ]
+      }
     }
   ],
   "aliases": [
@@ -24516,7 +24651,7 @@
     },
     {
       "routeId": "tim-prepaid-12mo-2026",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-10-06",
       "metricState": "current-profile",
       "acquisitionCurrency": "EUR",
       "acquisitionCostOriginal": 10,

@@ -4150,5 +4150,29 @@
     "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/08/esim.html",
     "type": "provider-official",
     "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-mobile-sim-cost-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-passa-esim-id-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/mobile/passa-a-tim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-estero-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/estero",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-video-identification-current-20261006",
+    "url": "https://www.tim.it/content/dam/flytoco-areapubblica-aemfe/tim_it/pdf/assistenza/altro/TIM_Guida_Video-identificazione_2911.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   }
 ]

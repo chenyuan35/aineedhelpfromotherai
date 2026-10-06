@@ -2779,11 +2779,15 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-28",
-    "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/prepagate",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
     "sourceIds": [
       "official-tim-riattivare-sim-2026-09-26",
-      "official-tim-ricarica-5-2026-09-28"
+      "official-tim-ricarica-5-2026-09-28",
+      "official-tim-mobile-sim-cost-current-20261006",
+      "official-tim-passa-esim-id-current-20261006",
+      "official-tim-estero-current-20261006",
+      "official-tim-video-identification-current-20261006"
     ]
   },
   {
