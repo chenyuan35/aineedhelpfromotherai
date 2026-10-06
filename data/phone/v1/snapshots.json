@@ -11512,5 +11512,72 @@
         "For overseas recovery, verify roaming partner coverage and practical SMS receipt before relying on the line for critical OTP."
       ]
     }
+  },
+  {
+    "id": "snap-fareastone-prepaid-tw-2026-current-profile-20261006",
+    "routeId": "fareastone-prepaid-tw-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-06",
+    "sourceDataset": "fareastone-prepaid-evidence-maintenance-2026-10-06",
+    "data": {
+      "id": "fareastone-prepaid-tw-2026",
+      "brandId": "fareastone-tw",
+      "publishState": "candidate",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "FarEasTone currently sells regular 易付卡 prepaid starters from NT$300. Current public application remains in-person at a FarEasTone/ARCOA store with two identity documents and customer-data registration. FarEasTone's current eSIM guide explicitly says prepaid-card users can use eSIM and that first eSIM application/change is handled at a physical store with two identity documents; the reviewed material still does not establish offshore first activation.",
+      "landedCost": {
+        "currency": "TWD",
+        "providerOrCommunityPrice": 300,
+        "mandatoryTopup": 0,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 300,
+        "landedCny": 69,
+        "fxCheckedAt": "2026-10-06",
+        "state": "current-official"
+      },
+      "keep": {
+        "currency": "TWD",
+        "observedActionCost": 100,
+        "yearCostOriginal": 200,
+        "yearCostCny": 46,
+        "action": "Recharge at least NT$100 before each 180-day number-validity deadline. FarEasTone's current Chinese prepaid page explicitly lists NT$100 communication-credit recharge and states the number is valid for 180 days from activation and can be kept by recharging within validity.",
+        "intervalDays": 180,
+        "state": "current-official-minimum-recharge"
+      },
+      "chinaActivation": "Not established as a China-first route. Current regular-prepaid application material requires an in-person Taiwan store visit with two identity documents; physical SIM and prepaid eSIM are supported, but first activation remains tied to the Taiwan in-store registration flow.",
+      "kyc": "Current public regular-prepaid material requires two identity documents and in-person registration. The reviewed pages do not enumerate a complete current second-document rule for every non-Taiwan applicant. A July 2026 long-term PAYG user reports repeated passport/ARC immigration-record mismatch checks that could suspend outgoing calling until records were updated.",
+      "payment": "FarEasTone documents prepaid recharge through stores, web/app and other domestic channels. Payment-method acceptance from overseas cards is not generalized here.",
+      "wifiCalling": "Not used as a retention guarantee in this profile. FarEasTone's current eSIM guide confirms prepaid eSIM support, while overseas SMS still depends on supported roaming/VoLTE conditions rather than eSIM form alone.",
+      "roamingSms": "FarEasTone currently says users on supported devices and partner networks can receive SMS abroad free through international VoLTE without buying a roaming-data plan, and a prepaid-roaming portal exists. The reviewed material does not explicitly prove this exact regular 易付卡 route's original-number SMS entitlement in mainland China, so China OTP/SMS reachability remains unquantified.",
+      "refund": "not reconciled",
+      "trend": "stable-with-overseas-and-identity-watch",
+      "guideEligible": false,
+      "holdReason": "The 180-day retention rule and NT$100 minimum recharge are current and first-party confirmed, but the reviewed sources do not explicitly establish mainland-China original-number SMS/OTP behavior for this exact regular-prepaid route; foreign identity-record continuity can also require in-person remediation.",
+      "lastVerifiedAt": "2026-10-06",
+      "acquireUrl": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+      "tariffSummary": "Regular prepaid starter from NT$300. Number valid 180 days from activation/recharge; communication-credit recharge includes NT$100, making the documented minimum retention path about NT$200/year. Current public application is in-store with two IDs; FarEasTone currently supports prepaid eSIM as well as physical SIM.",
+      "sourceIds": [
+        "fareastone-tw-official",
+        "official-fareastone-prepaid-product-current-20261006",
+        "official-fareastone-prepaid-topup-current-20261006",
+        "official-fareastone-prepaid-choice-current-20261006",
+        "official-fareastone-prepaid-english-current-20261006",
+        "official-fareastone-prepaid-home-current-20261006",
+        "official-fareastone-prepaid-roaming-current-20261006",
+        "official-fareastone-volte-overseas-sms-20260824",
+        "official-fareastone-tourist-card-current-20261006",
+        "reddit-fareastone-foreigner-identity-continuity-20260713",
+        "official-fareastone-esim-prepaid-guide-current-20261006"
+      ],
+      "guideSteps": [
+        "Buy a regular FarEasTone 易付卡 in Taiwan; do not substitute a short-term tourist card for this long-term route.",
+        "Complete the current in-store registration flow with two identity documents. Physical SIM and prepaid eSIM are both supported; first eSIM application/change is handled at a physical store.",
+        "Recharge at least NT$100 before each 180-day number-validity deadline.",
+        "If relying on the number abroad, verify the exact destination partner network and VoLTE/SMS behavior before using it for critical OTP; the reviewed sources do not establish a mainland-China guarantee for this exact regular-prepaid route.",
+        "Foreign residents should keep carrier identity records aligned with current passport/ARC data because 2026 community evidence shows service continuity can be affected by record mismatches."
+      ]
+    }
   }
 ]

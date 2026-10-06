@@ -4090,5 +4090,65 @@
     "url": "https://andrewkim.me/install-malaysian-esim-from-us/",
     "type": "independent-report",
     "reportedAt": "2026-06-20"
+  },
+  {
+    "id": "official-fareastone-prepaid-product-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-topup-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/top-up/introduction.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-choice-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/apply/choice-package.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-english-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/prepaid-card-en.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-home-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/home.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-roaming-current-20261006",
+    "url": "https://www.fetnet.net/content/cbu/tw/roaming/prepaidRoaming/prepaidrRoaming-tips.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-volte-overseas-sms-20260824",
+    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2026/08/fetvolte.html",
+    "type": "provider-official",
+    "reportedAt": "2026-08-24"
+  },
+  {
+    "id": "official-fareastone-tourist-card-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/tourist-card-en.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "reddit-fareastone-foreigner-identity-continuity-20260713",
+    "url": "https://www.reddit.com/r/taiwan/comments/1uuvwfk/problems_with_cell_phone_and_immigration_records/",
+    "type": "community-forum",
+    "reportedAt": "2026-07-13"
+  },
+  {
+    "id": "official-fareastone-esim-prepaid-guide-current-20261006",
+    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/08/esim.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   }
 ]
