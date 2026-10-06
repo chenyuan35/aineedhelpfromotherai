@@ -4860,7 +4860,7 @@
       "serviceEvidence": [],
       "decisionFacts": {
         "sourceCount": 10,
-        "kycState": "unclear",
+        "kycState": "required",
         "keepAction": "CelcomDigi's current general Digi reload-validity page documents RM198 for a 365-day validity extension and RM100 reload = 120 days. The current Kuning-specific reload page confir…",
         "roamingSms": "Current CelcomDigi prepaid roaming material explicitly supports using the existing number for WhatsApp and OTPs overseas and lists China among Asia destinations. One historical in…",
         "holdReason": "The RM198/365-day extension is still documented on the general Digi validity page but is not repeated in the current Kuning-specific reload FAQ; new foreign prepaid registration a…",
