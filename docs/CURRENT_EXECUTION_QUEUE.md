@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 712 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 717 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -236,9 +236,19 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - `guideEligible=false`; no exact app/service aggregate is created.
 - Source corpus becomes **712**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — LABAS acquisition / lifecycle / foreign-registration / roaming-SMS maintenance
+
+- Existing `labas-90-120d-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **2 → 7** using current LABAS first-party terms, packaging, registration, top-up and roaming material.
+- Corrected acquisition economics: current direct eSIM entry is **from €1**; the old normalized €3 value was the qualifying retention top-up, not the minimum acquisition price.
+- Lifecycle is reconfirmed: **≥€3 top-up / 90 days** for full service; after 90 days the line is receive-only for calls/SMS, and after **120 days** the number is cancelled and not restorable. Normalized keep cost remains about **€12/year**.
+- LABAS says citizens of any country can use online biometric registration with accepted identity documents including passport, but current terms warn that activation in foreign countries may be restricted. Remote KYC is therefore not treated as guaranteed offshore first activation.
+- Current roaming material supports ordinary send/receive SMS abroad and lists China among supported non-EU roaming destinations. No bank/app OTP percentage is created; `guideEligible=false`.
+- Source corpus becomes **717**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `labas-90-120d-2026`. It is an admitted/backstage real-mobile route with only two canonical sources, a low normalized annual keep cost and a stale 2026-09-29 profile. Reconcile current starter/recharge economics, exact lifecycle window, eSIM/activation/KYC boundaries and overseas incoming-SMS continuity before any recommendation or app-specific reliability claim.
+1. **Immediate bounded route:** `fortress-hahasim-hk-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and a very low normalized HK$10/year keep cost. Reconcile current acquisition/renewal economics, exact lifecycle, eSIM/activation/KYC boundaries and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
