@@ -1645,5 +1645,59 @@
     "scope": "route",
     "outcome": "LABAS current roaming material states that roaming allows customers to send and receive SMS abroad and lists China among supported non-EU roaming destinations. This supports ordinary roaming-SMS capability when registered on a partner network, but it is not evidence of bank/app OTP success.",
     "sourceId": "official-labas-roaming-current-20261006"
+  },
+  {
+    "id": "evt-hahasim-current-acquisition-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "current-acquisition-economics",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Fortress currently lists the reusable physical haha SIM at HK$50 with HK$50 stored balance. The reviewed product page shows current direct Fortress availability with store pickup; the retained August 2026 independent thread also reports HK$50 Fortress online/store acquisition.",
+    "sourceId": "official-fortress-hahasim-product-current-20261006"
+  },
+  {
+    "id": "evt-hahasim-lifecycle-reconfirmation-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "lifecycle-and-retention-reconfirmation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current Fortress FAQ states that the SIM is valid for 365 days after activation and that each top-up of HK$10 or more extends validity by another 365 days. Purchasing a data package does not extend validity. An expired SIM may be considered for reactivation within 14 days, without guarantee; after more than 14 days it cannot be reactivated.",
+    "sourceId": "fortress-hahasim-faq-20261003"
+  },
+  {
+    "id": "evt-hahasim-physical-only-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "form-factor-reconfirmation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Fortress currently says haha SIM does not support eSIM and an existing physical haha SIM cannot be transferred to eSIM. The route remains physical-SIM-only.",
+    "sourceId": "fortress-hahasim-faq-20261003"
+  },
+  {
+    "id": "evt-hahasim-kyc-activation-boundary-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "kyc-and-activation-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Fortress requires real-name registration for Hong Kong local service and accepts HKID or applicable travel-document details for individual registration. The linked 3HK prepaid registration flow relies on the SIM obtaining network service and an SMS/OTP step. Reviewed official material does not establish a guaranteed mainland-China-first activation path.",
+    "sourceId": "official-three-hk-prepaid-rnr-current-20261006"
+  },
+  {
+    "id": "evt-hahasim-roaming-sms-balance-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "roaming-sms-boundary",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current Fortress FAQ supports roaming voice and SMS charged from stored balance and warns that related services cannot be used when balance is insufficient. This establishes ordinary roaming-SMS capability subject to service/balance conditions, not bank/app OTP reliability.",
+    "sourceId": "fortress-hahasim-faq-20261003"
+  },
+  {
+    "id": "evt-hahasim-rnr-recycle-risk-20261006",
+    "routeId": "fortress-hahasim-hk-2026",
+    "type": "continuity-risk-reconfirmation",
+    "reportedAt": "2026-10-06",
+    "scope": "route",
+    "outcome": "Current Fortress FAQ warns that random real-name-registration verification can suspend call/SMS service if required verification is not completed, and that recycled Hong Kong numbers can retain third-party platform history that may block social-app registration. These are material continuity risks independent of the low annual keep cost.",
+    "sourceId": "fortress-hahasim-faq-20261003"
   }
 ]

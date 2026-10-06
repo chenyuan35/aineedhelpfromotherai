@@ -908,11 +908,15 @@
     "form": "physical",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-10-03",
-    "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
     "sourceIds": [
       "fortress-hahasim-faq-20261003",
-      "linuxdo-hahasim-2511282-20260824"
+      "linuxdo-hahasim-2511282-20260824",
+      "official-fortress-hahasim-product-current-20261006",
+      "official-three-hk-prepaid-rnr-current-20261006",
+      "linuxdo-hahasim-telegram-failure-20250529",
+      "linuxdo-hahasim-telegram-conditional-20260105"
     ]
   },
   {

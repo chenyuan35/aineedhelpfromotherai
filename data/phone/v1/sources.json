@@ -4300,5 +4300,29 @@
     "url": "https://www.labas.lt/en/roaming",
     "type": "provider-official",
     "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fortress-hahasim-product-current-20261006",
+    "url": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-three-hk-prepaid-rnr-current-20261006",
+    "url": "https://web.three.com.hk/prepaid/realnameregistration/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "linuxdo-hahasim-telegram-failure-20250529",
+    "url": "https://linux.do/t/topic/686357",
+    "type": "independent-community",
+    "reportedAt": "2025-05-29"
+  },
+  {
+    "id": "linuxdo-hahasim-telegram-conditional-20260105",
+    "url": "https://linux.do/t/topic/1408847?page=2",
+    "type": "independent-community",
+    "reportedAt": "2026-01-05"
   }
 ]

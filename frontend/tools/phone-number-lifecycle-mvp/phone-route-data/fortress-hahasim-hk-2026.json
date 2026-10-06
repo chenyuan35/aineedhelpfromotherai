@@ -11,11 +11,15 @@
     "form": "physical",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-10-03",
-    "acquireUrl": "https://www.fortress.com.hk/en/hahasim",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
     "sourceIds": [
       "fortress-hahasim-faq-20261003",
-      "linuxdo-hahasim-2511282-20260824"
+      "linuxdo-hahasim-2511282-20260824",
+      "official-fortress-hahasim-product-current-20261006",
+      "official-three-hk-prepaid-rnr-current-20261006",
+      "linuxdo-hahasim-telegram-failure-20250529",
+      "linuxdo-hahasim-telegram-conditional-20260105"
     ]
   },
   "market": {
@@ -36,7 +40,7 @@
   },
   "metrics": {
     "routeId": "fortress-hahasim-hk-2026",
-    "checkedAt": "2026-10-03",
+    "checkedAt": "2026-10-06",
     "metricState": "current-profile",
     "acquisitionCurrency": "HKD",
     "acquisitionCostOriginal": 50,
@@ -47,7 +51,27 @@
     "keepIntervalDays": 365
   },
   "numberRanges": [],
-  "serviceEvidence": [],
+  "serviceEvidence": [
+    {
+      "id": "svcagg-fortress-hahasim-hk-2026-telegram-registration-verification",
+      "routeId": "fortress-hahasim-hk-2026",
+      "serviceId": "telegram",
+      "operation": "registration-verification",
+      "numberRangeId": null,
+      "grade": "C",
+      "label": "Mixed / weak",
+      "confidence": "low",
+      "sampleSize": 2,
+      "independentSourceCount": 2,
+      "successCount": 0,
+      "failureCount": 1,
+      "mixedCount": 1,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2025-05-29",
+      "lastObservedAt": "2026-01-05"
+    }
+  ],
   "sources": [
     {
       "id": "fortress-hahasim-faq-20261003",
@@ -60,9 +84,56 @@
       "url": "https://linux.do/t/topic/2511282",
       "type": "independent-community",
       "reportedAt": "2026-08-24"
+    },
+    {
+      "id": "official-fortress-hahasim-product-current-20261006",
+      "url": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-three-hk-prepaid-rnr-current-20261006",
+      "url": "https://web.three.com.hk/prepaid/realnameregistration/index.html",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "linuxdo-hahasim-telegram-failure-20250529",
+      "url": "https://linux.do/t/topic/686357",
+      "type": "independent-community",
+      "reportedAt": "2025-05-29"
+    },
+    {
+      "id": "linuxdo-hahasim-telegram-conditional-20260105",
+      "url": "https://linux.do/t/topic/1408847?page=2",
+      "type": "independent-community",
+      "reportedAt": "2026-01-05"
     }
   ],
-  "observations": [],
+  "observations": [
+    {
+      "id": "obs-hahasim-telegram-linuxdo-failure-20250529",
+      "routeId": "fortress-hahasim-hk-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure",
+      "reportedAt": "2025-05-29",
+      "geography": "unspecified",
+      "sourceId": "linuxdo-hahasim-telegram-failure-20250529",
+      "dedupeKey": "hahasim-linuxdo-686357-ketal-telegram"
+    },
+    {
+      "id": "obs-hahasim-telegram-linuxdo-conditional-20260105",
+      "routeId": "fortress-hahasim-hk-2026",
+      "service": "Telegram",
+      "operation": "registration-verification",
+      "outcome": "failure-then-success",
+      "reportedAt": "2026-01-05",
+      "geography": "unspecified",
+      "sourceId": "linuxdo-hahasim-telegram-conditional-20260105",
+      "dedupeKey": "hahasim-linuxdo-1408847-soultionlss-telegram"
+    }
+  ],
   "events": [
     {
       "id": "evt-fortress-hahasim-hk-2026-db-c21-20261003",
@@ -71,6 +142,60 @@
       "reportedAt": "2026-10-03",
       "scope": "route",
       "outcome": "Current Fortress FAQ establishes 365-day validity after activation and another 365 days after a top-up of at least HKD10. Current FAQ also documents real-name registration, physical-SIM-only service, voice/SMS behavior and number-recycling caveats; 2026 community users continue to report HK retail availability and HKD10 annual maintenance.",
+      "sourceId": "fortress-hahasim-faq-20261003"
+    },
+    {
+      "id": "evt-hahasim-current-acquisition-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "current-acquisition-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Fortress currently lists the reusable physical haha SIM at HK$50 with HK$50 stored balance. The reviewed product page shows current direct Fortress availability with store pickup; the retained August 2026 independent thread also reports HK$50 Fortress online/store acquisition.",
+      "sourceId": "official-fortress-hahasim-product-current-20261006"
+    },
+    {
+      "id": "evt-hahasim-lifecycle-reconfirmation-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "lifecycle-and-retention-reconfirmation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current Fortress FAQ states that the SIM is valid for 365 days after activation and that each top-up of HK$10 or more extends validity by another 365 days. Purchasing a data package does not extend validity. An expired SIM may be considered for reactivation within 14 days, without guarantee; after more than 14 days it cannot be reactivated.",
+      "sourceId": "fortress-hahasim-faq-20261003"
+    },
+    {
+      "id": "evt-hahasim-physical-only-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "form-factor-reconfirmation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Fortress currently says haha SIM does not support eSIM and an existing physical haha SIM cannot be transferred to eSIM. The route remains physical-SIM-only.",
+      "sourceId": "fortress-hahasim-faq-20261003"
+    },
+    {
+      "id": "evt-hahasim-kyc-activation-boundary-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "kyc-and-activation-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Fortress requires real-name registration for Hong Kong local service and accepts HKID or applicable travel-document details for individual registration. The linked 3HK prepaid registration flow relies on the SIM obtaining network service and an SMS/OTP step. Reviewed official material does not establish a guaranteed mainland-China-first activation path.",
+      "sourceId": "official-three-hk-prepaid-rnr-current-20261006"
+    },
+    {
+      "id": "evt-hahasim-roaming-sms-balance-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "roaming-sms-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current Fortress FAQ supports roaming voice and SMS charged from stored balance and warns that related services cannot be used when balance is insufficient. This establishes ordinary roaming-SMS capability subject to service/balance conditions, not bank/app OTP reliability.",
+      "sourceId": "fortress-hahasim-faq-20261003"
+    },
+    {
+      "id": "evt-hahasim-rnr-recycle-risk-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "type": "continuity-risk-reconfirmation",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current Fortress FAQ warns that random real-name-registration verification can suspend call/SMS service if required verification is not completed, and that recycled Hong Kong numbers can retain third-party platform history that may block social-app registration. These are material continuity risks independent of the low annual keep cost.",
       "sourceId": "fortress-hahasim-faq-20261003"
     }
   ],
@@ -128,6 +253,68 @@
           "Acquire a current physical haha SIM from Fortress.",
           "Complete the applicable real-name registration flow; do not rely on no-KYC workarounds.",
           "Top up at least HKD10 before the 365-day deadline and treat platform OTP acceptance as evidence-scoped."
+        ]
+      }
+    },
+    {
+      "id": "snap-fortress-hahasim-hk-2026-current-profile-20261006",
+      "routeId": "fortress-hahasim-hk-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-06",
+      "sourceDataset": "hahasim-evidence-maintenance-2026-10-06",
+      "data": {
+        "id": "fortress-hahasim-hk-2026",
+        "brandId": "haha-sim-hk",
+        "publishState": "candidate",
+        "numberType": "real-mobile",
+        "simType": "physical",
+        "acquisitionSummary": "Fortress currently lists the reusable physical haha SIM at HK$50 with HK$50 stored balance. The product is currently sold directly by Fortress with store pickup; a retained August 2026 independent thread also reports HK$50 Fortress online/store acquisition.",
+        "landedCost": {
+          "currency": "HKD",
+          "providerOrCommunityPrice": 50,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": 50,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-official-product-price"
+        },
+        "keep": {
+          "currency": "HKD",
+          "observedActionCost": 10,
+          "yearCostOriginal": 10,
+          "yearCostCny": null,
+          "action": "Top up HK$10 or more before expiry to extend SIM validity by 365 days. Current Fortress FAQ explicitly says purchasing a data package does not extend validity. After expiry, reactivation may be considered within 14 days but is not guaranteed; after more than 14 days the SIM cannot be reactivated.",
+          "intervalDays": 365,
+          "state": "current-provider-365d-hkd10-topup"
+        },
+        "chinaActivation": "Current Fortress instructions describe activation by inserting the physical SIM and receiving an activation SMS/number with WiFi disabled. The linked 3HK registration path also relies on network/SMS steps. Reviewed official material does not explicitly guarantee first activation from mainland China, so do not present this as a guaranteed China-first route.",
+        "kyc": "Real-name registration is compulsory for Hong Kong local service. Fortress lists HKID or applicable travel-document details for individual registration, while the linked 3HK prepaid flow uses identity-document capture plus network/SMS verification. The product-page wording that registration is compulsory for Hong Kong service only is not treated as authorization to promote an unregistered overseas OTP workaround.",
+        "payment": "Top-up is handled through the haha TRAVEL App. The reviewed current material does not establish universal acceptance of mainland-China-issued payment cards or a provider-guaranteed mainland payment path.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Fortress documents roaming SMS/voice charged from stored balance; insufficient balance can stop related services. Two independent Telegram registration-verification reports are mixed/negative (one failure and one failure-then-success), so they do not establish dependable Telegram or bank/app OTP reliability.",
+        "refund": "If the SIM has expired for 14 days or less, Fortress may consider reactivation but does not guarantee approval and real-name registration may need to be completed again. After more than 14 days, reactivation is unavailable.",
+        "trend": "stable-low-cost-retention-with-mixed-telegram-and-recycled-number-risk",
+        "guideEligible": false,
+        "holdReason": "Exact mainland bank/app OTP reliability is unverified; the Telegram sample is only two independent mixed/negative observations, and official material does not explicitly guarantee mainland-China first activation. Keep this route backstage.",
+        "lastVerifiedAt": "2026-10-06",
+        "acquireUrl": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
+        "tariffSummary": "HK$50 reusable physical SIM with HK$50 stored balance; top up at least HK$10 to extend validity by 365 days. Current FAQ says buying a data package does not extend SIM validity.",
+        "sourceIds": [
+          "fortress-hahasim-faq-20261003",
+          "linuxdo-hahasim-2511282-20260824",
+          "official-fortress-hahasim-product-current-20261006",
+          "official-three-hk-prepaid-rnr-current-20261006",
+          "linuxdo-hahasim-telegram-failure-20250529",
+          "linuxdo-hahasim-telegram-conditional-20260105"
+        ],
+        "guideSteps": [
+          "Acquire the current reusable physical haha SIM from Fortress; the reviewed direct product is HK$50 with HK$50 stored balance.",
+          "Follow the current physical-SIM activation flow and complete applicable real-name registration for Hong Kong local service; do not assume mainland-China first activation is guaranteed.",
+          "Top up at least HK$10 before the 365-day validity deadline. Do not rely on buying a data package to extend SIM validity.",
+          "Keep enough stored balance for roaming SMS/voice because Fortress states insufficient balance can stop related services.",
+          "Verify any critical Telegram, bank or app OTP separately; current independent Telegram evidence is only two mixed/negative samples, and recycled-number history can affect third-party registration."
         ]
       }
     }
