@@ -7,7 +7,7 @@ Last updated: 2026-10-06
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 721 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 728 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -256,9 +256,21 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Current Fortress material also warns that RNR verification failures can suspend call/SMS service and recycled numbers can retain third-party platform history. `guideEligible=false`.
 - Source corpus becomes **721**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Digi / CelcomDigi prepaid retention / foreign-registration / roaming maintenance
+
+- Existing `digi-reload-validity-my-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.
+- Source depth increases **2 → 10** using current CelcomDigi prepaid/Kuning/activation/eSIM/roaming material, the Malaysian mandatory-registration source, and one historical independent Digi roaming-SMS report.
+- The stale **RM10 starter** metric is removed. Current Kuning documentation confirms a **RM5 one-time activation charge**, but no current first-party source establishes a universal lowest complete starter cost, so acquisition remains unnormalized.
+- The current general Digi reload page still documents **RM100 = 120 days** and **RM198 = 365-day validity extension**. The Kuning-specific reload FAQ does not repeat RM198/365, so that annual extension is retained as eligibility-sensitive rather than universal.
+- Current Kuning lifecycle has a **60-day receive-only grace period** before termination/recycling; legacy Digi lifecycle documents differ and are not flattened into the new Kuning profile.
+- From **26 August 2026**, foreign Non-MyKad prepaid customers require authorized-dealer registration, original ID and valid student-visa/work-permit information. Tourist SIMs are capped at **three months** by Malaysia's mandatory standard.
+- eSIM remains supported, but fully remote new prepaid eSIM signup for foreign Non-MyKad users is not established.
+- Current provider roaming material explicitly supports existing-number OTP use overseas and lists China; one historical independent Digi Prepaid report supports roaming SMS/banking-OTP continuity in Singapore. No mainland-China app/bank success rate is invented. `guideEligible=false`.
+- Source corpus becomes **728**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `digi-reload-validity-my-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and has not had a current maintenance pass since 2026-09-29. Reconcile current starter/acquisition economics, reload-validity ladder, SIM/eSIM/activation/KYC boundaries and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
+1. **Immediate bounded route:** `etisalat-wasel-ae-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and has not had a current maintenance pass since 2026-09-29. Reconcile current acquisition/renewal economics, exact lifecycle, eSIM/activation/KYC boundaries and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

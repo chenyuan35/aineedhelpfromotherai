@@ -723,11 +723,19 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.celcomdigi.com/prepaid",
     "sourceIds": [
+      "celcomdigi-validity-20260929",
       "celcomdigi-kuning-20260929",
-      "celcomdigi-validity-20260929"
+      "official-celcomdigi-prepaid-current-20261006",
+      "official-celcomdigi-kuning-plan-current-20261006",
+      "official-celcomdigi-kuning-pds-current-20261006",
+      "official-celcomdigi-activation-current-20261006",
+      "official-celcomdigi-esim-current-20261006",
+      "official-celcomdigi-roaming-pass-current-20261006",
+      "mcmc-prepaid-mandatory-standard-20260226",
+      "lowyat-digi-prepaid-roaming-otp-20240716"
     ]
   },
   {
