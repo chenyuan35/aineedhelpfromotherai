@@ -11,11 +11,19 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+    "lastVerifiedAt": "2026-10-06",
+    "acquireUrl": "https://www.celcomdigi.com/prepaid",
     "sourceIds": [
+      "celcomdigi-validity-20260929",
       "celcomdigi-kuning-20260929",
-      "celcomdigi-validity-20260929"
+      "official-celcomdigi-prepaid-current-20261006",
+      "official-celcomdigi-kuning-plan-current-20261006",
+      "official-celcomdigi-kuning-pds-current-20261006",
+      "official-celcomdigi-activation-current-20261006",
+      "official-celcomdigi-esim-current-20261006",
+      "official-celcomdigi-roaming-pass-current-20261006",
+      "mcmc-prepaid-mandatory-standard-20260226",
+      "lowyat-digi-prepaid-roaming-otp-20240716"
     ]
   },
   "market": {
@@ -36,11 +44,11 @@
   },
   "metrics": {
     "routeId": "digi-reload-validity-my-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-06",
     "metricState": "current-profile",
     "acquisitionCurrency": "MYR",
-    "acquisitionCostOriginal": 10,
-    "acquisitionCostCny": 17,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
     "keepCurrency": "MYR",
     "keepYearCostOriginal": 198,
     "keepYearCostCny": null,
@@ -50,16 +58,64 @@
   "serviceEvidence": [],
   "sources": [
     {
+      "id": "celcomdigi-validity-20260929",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+      "type": "provider-official",
+      "reportedAt": "2026-09-29"
+    },
+    {
       "id": "celcomdigi-kuning-20260929",
       "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660913-faq-celcomdigi-prepaid-5g-kuning-reload-and-validity",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
     },
     {
-      "id": "celcomdigi-validity-20260929",
-      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660369-what-is-my-reload-validity-",
+      "id": "official-celcomdigi-prepaid-current-20261006",
+      "url": "https://www.celcomdigi.com/prepaid",
       "type": "provider-official",
-      "reportedAt": "2026-09-29"
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-celcomdigi-kuning-plan-current-20261006",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660911-faq-celcomdigi-prepaid-5g-kuning-plan",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-celcomdigi-kuning-pds-current-20261006",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660850-celcomdigi-prepaid-5g-kuning-product-disclosure-sheet",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-celcomdigi-activation-current-20261006",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660668-how-to-activate-my-new-sim-",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-celcomdigi-esim-current-20261006",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000675400-celcomdigi-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "official-celcomdigi-roaming-pass-current-20261006",
+      "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000687394-prepaid-roaming-passes",
+      "type": "provider-official",
+      "reportedAt": "2026-10-06"
+    },
+    {
+      "id": "mcmc-prepaid-mandatory-standard-20260226",
+      "url": "https://mcmc.bernama.com/news.php?id=2528106",
+      "type": "government-regulator",
+      "reportedAt": "2026-02-26"
+    },
+    {
+      "id": "lowyat-digi-prepaid-roaming-otp-20240716",
+      "url": "https://forum.lowyat.net/topic/4211035/+10180",
+      "type": "independent-community",
+      "reportedAt": "2024-07-16"
     }
   ],
   "observations": [],
@@ -72,6 +128,69 @@
       "scope": "route",
       "outcome": "Current CelcomDigi documentation directly confirms Digi RM100=120-day reload validity and an explicit RM198/365-day validity extension.",
       "sourceId": "celcomdigi-validity-20260929"
+    },
+    {
+      "id": "evt-digi-acquisition-reprice-boundary-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "current-acquisition-economics",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current CelcomDigi prepaid acquisition surfaces support both physical SIM and Kuning eSIM entry, while the Kuning FAQ identifies a one-time RM5 SIM activation charge. No current first-party source reviewed here establishes RM10 as the complete lowest starter cost, so the prior RM10 acquisition metric is retired rather than treating the RM5 activation charge as a full SIM price.",
+      "sourceId": "official-celcomdigi-prepaid-current-20261006"
+    },
+    {
+      "id": "evt-digi-rm198-validity-extension-boundary-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "retention-eligibility-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "CelcomDigi's current general reload-validity page still documents a RM198 validity extension for 365 days and Digi RM100 reload validity of 120 days. However, the current Kuning-specific reload FAQ lists only the RM5-RM100 reload ladder and does not repeat the RM198 extension. Treat RM198/365 as a current documented Digi prepaid mechanism whose eligibility should be verified on the actual account, not as a universal promise for every newly activated Kuning line.",
+      "sourceId": "celcomdigi-validity-20260929"
+    },
+    {
+      "id": "evt-digi-kuning-lifecycle-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "current-plan-lifecycle-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current CelcomDigi Prepaid 5G Kuning documentation gives a 60-day grace period after account validity expires, with incoming calls and SMS still available but originating calls, outgoing SMS and mobile data unavailable; termination and number recycling follow if the line is not reactivated. This differs from legacy Digi NEXT/Raja Kombo lifecycle documents and must not be flattened into one universal Digi grace period.",
+      "sourceId": "official-celcomdigi-kuning-pds-current-20261006"
+    },
+    {
+      "id": "evt-digi-foreign-registration-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "foreign-registration-and-tourist-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "For new prepaid activations from 26 August 2026, CelcomDigi requires Non-MyKad customers to register at an authorized dealer with original identification; foreign citizens must also provide valid student-visa or work-permit information. Malaysia's mandatory prepaid-registration standard separately limits tourist SIMs to a maximum of three months before automatic termination. Passport-only tourist acquisition must not be modeled as a durable long-term route.",
+      "sourceId": "official-celcomdigi-activation-current-20261006"
+    },
+    {
+      "id": "evt-digi-esim-boundary-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "esim-acquisition-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "CelcomDigi's current prepaid page advertises new Kuning eSIM packs, while the generic eSIM help page lists prepaid under conversion/replacement and restricts online-store eSIM sign-up to Malaysian citizens. Combined with the new Non-MyKad dealer-registration rule, eSIM remains technically supported but a fully remote foreign prepaid eSIM signup is not established.",
+      "sourceId": "official-celcomdigi-esim-current-20261006"
+    },
+    {
+      "id": "evt-digi-roaming-otp-current-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "roaming-sms-and-otp-provider-boundary",
+      "reportedAt": "2026-10-06",
+      "scope": "route",
+      "outcome": "Current CelcomDigi prepaid roaming material explicitly says customers can keep using their existing prepaid number for WhatsApp and OTPs overseas and lists China among the Asia roaming destinations. This is provider evidence for roaming-number continuity, not independent proof of any specific bank/app OTP path in mainland China.",
+      "sourceId": "official-celcomdigi-roaming-pass-current-20261006"
+    },
+    {
+      "id": "evt-digi-independent-roaming-sms-20240716",
+      "routeId": "digi-reload-validity-my-2026",
+      "type": "independent-roaming-sms-continuity",
+      "reportedAt": "2024-07-16",
+      "scope": "route",
+      "outcome": "A long-term Digi Prepaid user reported receiving SMS, including banking OTP use cases, while roaming in Singapore without buying a roaming plan, provided the SIM attached to the local network and mobile data roaming remained off. This is one historical independent operational report and is not generalized to all destinations or services.",
+      "sourceId": "lowyat-digi-prepaid-roaming-otp-20240716"
     }
   ],
   "snapshots": [
@@ -125,6 +244,72 @@
           "celcomdigi-kuning-20260929"
         ],
         "marketName": "Malaysia"
+      }
+    },
+    {
+      "id": "snap-digi-reload-validity-my-2026-current-profile-20261006",
+      "routeId": "digi-reload-validity-my-2026",
+      "kind": "current-profile",
+      "checkedAt": "2026-10-06",
+      "sourceDataset": "digi-evidence-maintenance-2026-10-06",
+      "data": {
+        "id": "digi-reload-validity-my-2026",
+        "brandId": "digi-my",
+        "publishState": "observation",
+        "numberType": "real-mobile",
+        "simType": "physical + eSIM",
+        "acquisitionSummary": "Current CelcomDigi prepaid acquisition supports physical starter packs and Kuning eSIM packs. Kuning documents a one-time RM5 SIM activation charge, but the reviewed first-party material does not establish RM5 or the older RM10 figure as the complete lowest current starter cost, so no exact acquisition total is normalized.",
+        "landedCost": {
+          "currency": "MYR",
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
+          "adapterCostCny": null,
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-entry-price-not-normalized"
+        },
+        "keep": {
+          "currency": "MYR",
+          "observedActionCost": 198,
+          "yearCostOriginal": 198,
+          "yearCostCny": null,
+          "action": "CelcomDigi's current general Digi reload-validity page documents RM198 for a 365-day validity extension and RM100 reload = 120 days. The current Kuning-specific reload page confirms the RM5-RM100 ladder but does not repeat RM198/365, so verify eligibility on the actual Digi/Kuning account before relying on the annual extension.",
+          "intervalDays": 365,
+          "state": "current-provider-general-extension-eligibility-sensitive"
+        },
+        "chinaActivation": "Do not assume offshore activation. From 26 August 2026, Non-MyKad prepaid activation must be completed at an authorized dealer with original identification; foreign citizens need valid student-visa or work-permit information. Tourist prepaid registration is capped by the Malaysian mandatory standard at a maximum three-month lifetime.",
+        "kyc": "Enhanced prepaid registration applies from 26 August 2026. MyKad self-service requires MyDigital ID and biometric verification. Non-MyKad customers must register at an authorized dealer with original identification; foreign citizens must additionally provide a valid student visa or work permit. Tourist SIMs are not a durable workaround because the mandatory standard limits them to three months.",
+        "payment": "Kuning reloads are available via CelcomDigi app/website, e-commerce or e-wallets, kiosks, ATMs and online banking. Auto Reload specifically requires a locally issued Visa or MasterCard debit/credit card, so foreign-card remote retention is not treated as guaranteed.",
+        "wifiCalling": "unverified",
+        "roamingSms": "Current CelcomDigi prepaid roaming material explicitly supports using the existing number for WhatsApp and OTPs overseas and lists China among Asia destinations. One historical independent Digi Prepaid user also reported long-term roaming SMS/banking-OTP receipt in Singapore. Exact mainland-China bank/app OTP reliability remains unverified.",
+        "refund": "not reconciled",
+        "trend": "current-foreign-acquisition-restricted-retention-eligibility-split",
+        "guideEligible": false,
+        "holdReason": "The RM198/365-day extension is still documented on the general Digi validity page but is not repeated in the current Kuning-specific reload FAQ; new foreign prepaid registration also requires a qualifying student/work status rather than passport-only tourist registration. Exact mainland-China bank/app OTP evidence is still missing.",
+        "lastVerifiedAt": "2026-10-06",
+        "acquireUrl": "https://www.celcomdigi.com/prepaid",
+        "tariffSummary": "Current Digi reload documentation: RM100 = 120 days and RM198 validity extension = 365 days; current Kuning-specific lifecycle has a 60-day grace period and stricter 2026 foreign-registration rules.",
+        "sourceIds": [
+          "celcomdigi-validity-20260929",
+          "celcomdigi-kuning-20260929",
+          "official-celcomdigi-prepaid-current-20261006",
+          "official-celcomdigi-kuning-plan-current-20261006",
+          "official-celcomdigi-kuning-pds-current-20261006",
+          "official-celcomdigi-activation-current-20261006",
+          "official-celcomdigi-esim-current-20261006",
+          "official-celcomdigi-roaming-pass-current-20261006",
+          "mcmc-prepaid-mandatory-standard-20260226",
+          "lowyat-digi-prepaid-roaming-otp-20240716"
+        ],
+        "guideSteps": [
+          "For a new foreign registration, first confirm you have a qualifying student visa or work permit; passport-only tourist registration cannot be treated as a long-term route.",
+          "Acquire through a current CelcomDigi channel. Treat the RM5 Kuning SIM-activation charge as a fee, not the full current starter price.",
+          "If using eSIM, verify the exact signup/conversion path for your registration cohort; current documentation does not establish fully remote new prepaid eSIM signup for Non-MyKad users.",
+          "For retention, check whether the RM198/365-day validity extension is offered on the actual account. Otherwise use the current Kuning reload/pass validity rules rather than assuming the legacy annual extension.",
+          "Roaming materials support OTP use and China roaming at provider level, but verify any critical bank/app OTP independently before relying on it for account recovery."
+        ]
       }
     }
   ]
