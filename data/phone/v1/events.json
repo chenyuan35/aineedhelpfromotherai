@@ -1834,5 +1834,32 @@
     "scope": "route",
     "outcome": "An independent Wasel discussion describes free roaming SMS/verification reception abroad and maintaining the line with periodic activity. It is retained as historical community corroboration only; exact destination, bank and app reliability are not inferred.",
     "sourceId": "reddit-etisalat-wasel-roaming-otp-20231119"
+  },
+  {
+    "id": "evt-mtn-ng-keepmynumber-2026-regulatory-lifecycle-20261008",
+    "routeId": "mtn-ng-keepmynumber-2026",
+    "type": "regulatory-lifecycle-reconciliation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The August 2026 NCC Quality of Service Business Rules say a prepaid line may be deactivated after six months without a Revenue Generating Event and may lose the number after another six months. The same rules count parked numbers as an RGE, exclude bare recharge without follow-up qualifying activity, and require alternative-means notice at least 14 days before churn. MTN's current prepaid terms separately state a 365-day no-RGE disconnection rule, so the conflict is preserved instead of collapsed into one inactivity clock.",
+    "sourceId": "ncc-qos-business-rules-2026-mtn-ng"
+  },
+  {
+    "id": "evt-mtn-ng-keepmynumber-2026-esim-boundary-20261008",
+    "routeId": "mtn-ng-keepmynumber-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "MTN currently supports eSIM, but first eSIM setup requires visiting an MTN store for device eligibility checks and a QR code. This does not establish remote China-first activation.",
+    "sourceId": "mtn-ng-esim-current-20261008"
+  },
+  {
+    "id": "evt-mtn-ng-keepmynumber-2026-continuity-incident-20260831",
+    "routeId": "mtn-ng-keepmynumber-2026",
+    "type": "number-reassignment-incident",
+    "reportedAt": "2026-08-31",
+    "scope": "route",
+    "outcome": "A 2026 independent Nairaland report says an MTN Nigeria number was reassigned despite the user reporting an active Keep My Number subscription and ongoing recharge. Treat this as a single-user continuity incident, not proof that KMN generally fails.",
+    "sourceId": "community-nairaland-mtn-kmn-reassigned-20260831"
   }
 ]
