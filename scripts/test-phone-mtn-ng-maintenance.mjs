@@ -50,7 +50,7 @@ assert.equal(observations.filter(x => x.routeId === routeId).length, 0);
 const legacy = globalDirectory.routes.find(x => x.id === routeId);
 assert.deepEqual(buildCanonicalComparisonRoute({ routes, markets, snapshots }, routeId), legacy);
 assert.equal(globalDirectory.routes.length, 135);
-assert.equal(policy.routeStates[routeId], 'comparison-visible');
+assert.equal(policy.routeStates[routeId] ?? policy.defaultRouteState, 'comparison-visible');
 assert.equal(Object.values(policy.routeStates).filter(x => x === 'indexable').length, 3);
 
 const summary = summaries.routes.find(x => x.id === routeId);
