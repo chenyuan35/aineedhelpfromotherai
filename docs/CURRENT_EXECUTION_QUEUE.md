@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 747 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 754 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -309,9 +309,20 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - PR **#415** squash-merged as `4ab3dc5ea8100a60100ae097716b29a867b3c242`; CI **#306 PASS**, Eval Gate **#1224 PASS**, Vercel Preview PASS, production deployment `dpl_8FRi8vfn5vMUasGf1BeaFvjha8oV` **READY**.
 - Production verification: CMHK lazy detail JSON HTTP 200 with 12 sources / HK$38 acquisition / HK$100 yearly keep / 180-day interval; summary JSON HTTP 200 with **160 routes**; standalone CMHK route remains HTTP 404; sitemap remains **31 URLs** and contains no CMHK route.
 
+## JUST COMPLETED — MTN Nigeria Keep My Number maintenance
+
+- `mtn-ng-keepmynumber-2026` remains `admitted` + `backstage-only`; its existing comparison-visible row remains and no standalone/indexable route is added.
+- Current Keep My Number pricing remains **NGN3,500/1y, NGN5,000/2y, NGN7,500/3y**; the 3-year term annualizes to **NGN2,500/year**.
+- NCC Quality of Service Business Rules 2026 add a separate ordinary-prepaid lifecycle: six months without RGE may trigger deactivation, another six months may lead to number loss; parked numbers count as RGE, bare recharge alone does not, and 14-day alternative-means pre-churn notice is required. MTN's current prepaid terms separately state a 365-day no-RGE rule; preserve the conflict.
+- Current eSIM setup requires an MTN-store eligibility check and QR provisioning. Visitors staying under 24 months can use a valid visa plus international passport/travel document instead of NIN.
+- Current roaming material supports prepaid roaming and lists China but does not establish exact incoming-SMS/bank-app OTP reliability.
+- A 2026-08-31 independent Nairaland report records number reassignment despite the user's reported KMN subscription and recharge. Keep it as one continuity incident; do not manufacture a failure probability.
+- Source depth increases **2 → 9**; Phone source corpus becomes **754**. Canonical remains **160 routes / 87 markets / 157 brands / 117 networks**; publication remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+- Maintenance record: `docs/PHONE_MTN_NG_MAINTENANCE_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `mtn-ng-keepmynumber-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and has not had a current maintenance pass since 2026-09-29. Reconcile the current Keep My Number product/eligibility, acquisition and retention economics, exact inactivity/number-reservation lifecycle, SIM/eSIM/KYC/activation boundaries, and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
+1. **Immediate bounded route:** `mts-sokhranyayu-nomer-2026`. It remains an admitted/backstage route with only two canonical sources. Reconcile the current retention product and pricing, inactivity/recycling lifecycle, acquisition/SIM/KYC/activation boundaries, payment path and overseas SMS/OTP evidence before any recommendation or service-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -328,8 +339,8 @@ Work this backlog **one bounded route per session**. It is maintenance, not coun
 
 After the immediate MTN task, deepen the remaining admitted routes with only two canonical sources:
 
-1. `mtn-ng-keepmynumber-2026` — current immediate task.
-2. `mts-sokhranyayu-nomer-2026`.
+1. `mtn-ng-keepmynumber-2026` — **DONE 2026-10-08**; 2 → 9 sources, current lifecycle/eSIM/KYC/continuity reconciled.
+2. `mts-sokhranyayu-nomer-2026` — current immediate task.
 3. `o2-cz-prepaid-2026`.
 
 Done condition per route: current provider-controlled economics/lifecycle/eligibility reconciled; activation/KYC/eSIM/payment/roaming-SMS boundaries explicit; independent operational evidence added when making real-world continuity/OTP claims; generated artifacts and regression checks pass.

@@ -1794,11 +1794,18 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
     "sourceIds": [
       "mtn-ng-kmn-20260929",
-      "mtn-ng-prepaid-terms-20260929"
+      "mtn-ng-prepaid-terms-20260929",
+      "mtn-ng-kmn-current-20261008",
+      "mtn-ng-prepaid-terms-current-20261008",
+      "mtn-ng-esim-current-20261008",
+      "mtn-ng-roaming-current-20261008",
+      "mtn-ng-xtrabuy-current-20261008",
+      "ncc-qos-business-rules-2026-mtn-ng",
+      "community-nairaland-mtn-kmn-reassigned-20260831"
     ]
   },
   {

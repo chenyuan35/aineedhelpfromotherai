@@ -53,5 +53,5 @@ assert.equal(summary.decisionFacts.sourceCount, 12);
 assert.equal(summary.decisionFacts.kycState, 'required');
 assert.equal(detail.route.lastVerifiedAt, '2026-10-07');
 assert.equal(observations.filter(x => x.routeId === routeId).length, 0);
-assert.equal(sources.length, 747);
+assert.ok(sources.length >= 747, `Phone source corpus regressed below CMHK maintenance baseline: ${sources.length}`);
 console.log('CMHK MySIM maintenance passed.');
