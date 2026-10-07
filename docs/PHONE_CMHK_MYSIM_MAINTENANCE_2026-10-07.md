@@ -18,4 +18,12 @@ Canonical after this pass: **160 routes / 87 markets / 157 brands / 117 networks
 
 Publication boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+Release verification:
+
+- PR **#415** squash-merged as `4ab3dc5ea8100a60100ae097716b29a867b3c242`.
+- CI **#306 PASS**; Eval Gate **#1224 PASS**; Vercel Preview PASS.
+- Production deployment `dpl_8FRi8vfn5vMUasGf1BeaFvjha8oV` is **READY** and owns the apex alias.
+- Production CMHK lazy detail JSON is HTTP 200 with 12 sources, HK$38 acquisition, HK$100 yearly keep and a 180-day keep interval.
+- Production summary JSON is HTTP 200 with **160 routes**; standalone CMHK route remains HTTP 404; sitemap remains **31 URLs** and contains no CMHK route.
+
 Next bounded maintenance candidate: `mtn-ng-keepmynumber-2026`.
