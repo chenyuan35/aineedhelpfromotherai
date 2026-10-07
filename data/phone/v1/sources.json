@@ -4481,5 +4481,47 @@
     "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
     "type": "independent-community",
     "reportedAt": "2024-12-12"
+  },
+  {
+    "id": "mtn-ng-kmn-current-20261008",
+    "url": "https://www.mtn.ng/sim/keep-my-number/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-prepaid-terms-current-20261008",
+    "url": "https://www.mtn.ng/legal/prepaid/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-esim-current-20261008",
+    "url": "https://www.mtn.ng/sim/esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-roaming-current-20261008",
+    "url": "https://www.mtn.ng/personal/roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-xtrabuy-current-20261008",
+    "url": "https://www.mtn.ng/personal/xtrabuy/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "ncc-qos-business-rules-2026-mtn-ng",
+    "url": "https://www.ncc.gov.ng/sites/default/files/2026-08/Quality-of-Service-Business-Rules-2026.pdf",
+    "type": "government-regulator",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "community-nairaland-mtn-kmn-reassigned-20260831",
+    "url": "https://www.nairaland.com/8738633/what-happens-bank-account-when",
+    "type": "community-incident-thread",
+    "reportedAt": "2026-08-31"
   }
 ]
