@@ -318,6 +318,7 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Current roaming material supports prepaid roaming and lists China but does not establish exact incoming-SMS/bank-app OTP reliability.
 - A 2026-08-31 independent Nairaland report records number reassignment despite the user's reported KMN subscription and recharge. Keep it as one continuity incident; do not manufacture a failure probability.
 - Source depth increases **2 → 9**; Phone source corpus becomes **754**. Canonical remains **160 routes / 87 markets / 157 brands / 117 networks**; publication remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+- PR **#418** squash-merged as `1c0e44d7b90e8924306286ee58b75d8d63f77e2d`; CI **#310 PASS**, Eval Gate **#1232 PASS**, Vercel Preview PASS, and post-merge Vercel production status **success**.
 - Maintenance record: `docs/PHONE_MTN_NG_MAINTENANCE_2026-10-08.md`.
 
 ## NEXT — continue database maintenance, no invented expansion
