@@ -306,6 +306,8 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - From **2026-06-17**, CMHK prepaid cannot first-activate in Mainland China; OFCA RNR still applies and valid travel document/passport is supported for users without HKID.
 - Overseas evidence stays bounded: one historical exact-4G Shenzhen ordinary/account-SMS success plus one adjacent MySIM-5G OTP/e-banking success report. No exact 4G bank/app success percentage is created. Current MySIM roaming data also carries a HK$15 daily-connection charge risk.
 - `guideEligible=false`; source depth increases **2 → 12**; canonical becomes **160 routes / 87 markets / 157 brands / 117 networks / 747 sources**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+- PR **#415** squash-merged as `4ab3dc5ea8100a60100ae097716b29a867b3c242`; CI **#306 PASS**, Eval Gate **#1224 PASS**, Vercel Preview PASS, production deployment `dpl_8FRi8vfn5vMUasGf1BeaFvjha8oV` **READY**.
+- Production verification: CMHK lazy detail JSON HTTP 200 with 12 sources / HK$38 acquisition / HK$100 yearly keep / 180-day interval; summary JSON HTTP 200 with **160 routes**; standalone CMHK route remains HTTP 404; sitemap remains **31 URLs** and contains no CMHK route.
 
 ## NEXT — continue database maintenance, no invented expansion
 
