@@ -1,9 +1,13 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 Allow: /api/docs/
 Allow: /api/docs
+Allow: /api/mcp/
+Allow: /api/mcp
+Allow: /api/tiktok/
 Disallow: /api/
-Disallow: /mcp
+
+Sitemap: https://aineedhelpfromotherai.com/sitemap.xml
 
 # AI crawlers explicitly allowed
 User-agent: OAI-SearchBot
@@ -41,5 +45,3 @@ Allow: /
 
 User-agent: Perplexity-User
 Allow: /
-
-Sitemap: https://aineedhelpfromotherai.com/sitemap.xml

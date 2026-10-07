@@ -30,7 +30,7 @@
   <section class="tt-card" aria-labelledby="connect-title">
     <h2 id="connect-title">1. Connect TikTok</h2>
     <div class="tt-status"><span id="connection-dot" class="tt-dot"></span><strong id="connection-label">Checking connection…</strong><span id="creator-name" class="tt-help"></span></div>
-    <div class="tt-actions"><a id="connect-button" class="tt-primary" href="/api/tiktok/auth">Connect TikTok</a><button id="refresh-button" class="tt-secondary" type="button">Refresh connection</button></div>
+    <div class="tt-actions"><button id="connect-button" class="tt-primary" type="button">Connect TikTok</button><button id="refresh-button" class="tt-secondary" type="button">Refresh connection</button></div>
     <p class="tt-note">OAuth uses TikTok Login Kit. Credentials and OAuth tokens stay server-side, and posting options are loaded from TikTok for the connected account.</p>
   </section>
 
@@ -130,6 +130,7 @@
     try{const res=await fetch('/api/tiktok/status',{credentials:'same-origin',cache:'no-store'});const data=await res.json();renderStatus(data);if(receipt&&!receiptBelongsToCurrentCreator()){setResult('bad','This pending task creator is unknown or does not match the connected TikTok account. Reconnect the original creator account to continue checking it.',{publish_id:receipt.publish_id});setProgress(100,'Pending task creator is unknown or mismatched; no new post can be started.')}else if(receipt){setResult('','A TikTok task is still pending. Continue checking the same task; do not post again.',{publish_id:receipt.publish_id});setProgress(100,'Pending TikTok task found. Continue checking this same task.')}}
     catch(error){renderStatus({connected:false});setResult('bad','Connection check failed',{code:error.code||null,message:error.message})}
   }
+  $('connect-button').addEventListener('click',()=>{window.location.assign('/api/tiktok/auth/')});
   $('refresh-button').addEventListener('click',loadStatus);
   $('video-file').addEventListener('change',()=>{$('consent').checked=false;state.file=$('video-file').files&&$('video-file').files[0]||null;state.duration=null;if(state.fileUrl)URL.revokeObjectURL(state.fileUrl);state.fileUrl=null;$('file-name').textContent=state.file?`${state.file.name} — ${(state.file.size/1024/1024).toFixed(2)} MB`:'No file selected.';const preview=$('video-preview');if(state.file){state.fileUrl=URL.createObjectURL(state.file);preview.src=state.fileUrl;preview.classList.add('on');preview.onloadedmetadata=()=>{state.duration=Number(preview.duration||0);const max=Number(state.status&&state.status.creator&&state.status.creator.max_video_post_duration_sec||0);$('duration-note').textContent=`Duration: ${state.duration.toFixed(1)}s`+(max?` · TikTok limit for this creator: ${max}s`:'');if(max&&state.duration>max)setResult('bad','This video is longer than TikTok allows for the connected creator.',{duration_sec:state.duration,max_video_post_duration_sec:max});updateButton()}}else{preview.removeAttribute('src');preview.classList.remove('on');$('duration-note').textContent=''};setProgress(0,state.file?'Ready to publish.':'Waiting for a connected account and video.');updateButton()});
   async function uploadChunks(file,uploadUrl,chunkSize,totalChunkCount){

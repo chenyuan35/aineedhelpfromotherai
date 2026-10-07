@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /api/docs/
+Allow: /api/docs
+Allow: /api/mcp/
+Allow: /api/mcp
+Allow: /api/tiktok/
 Disallow: /api/
-Disallow: /mcp
 
 Sitemap: https://aineedhelpfromotherai.com/sitemap.xml
