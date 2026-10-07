@@ -4420,5 +4420,65 @@
     "url": "https://www.reddit.com/r/dubai/comments/17you9n/cheap_uae_phone_plan_for_receiving_sms_messages/",
     "type": "independent-community",
     "reportedAt": "2023-11-19"
+  },
+  {
+    "id": "retail-7eleven-cmhk-4g-mysim-current-20261007",
+    "url": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
+    "type": "retailer",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-cmhk-mysim-local-package-current-20260415",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-local-package-tc.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-04-15"
+  },
+  {
+    "id": "official-cmhk-prepaid-esim-exchange-current-20260105",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-01-05/Prepaid_change_eSIM_cardtype_20260105_en.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-01-05"
+  },
+  {
+    "id": "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
+    "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/mobile-duck-mainland-china-macau-3gb-3-day",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-ofca-sim-rnr-faq-current-20261007",
+    "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/faq/index.html",
+    "type": "regulator-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-cmhk-prepaid-refill-ladder-standing-20231017",
+    "url": "https://omniapi.hk.chinamobile.com/upload/images/omni-channel-service-console/preferential/2023-10-17/ORIGINAL_20231017165139_P1omCPtU_0x0.pdf",
+    "type": "provider-official",
+    "reportedAt": "2023-10-17"
+  },
+  {
+    "id": "official-cmhk-mysim-roaming-current-20260415",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-roaming-package-en.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-04-15"
+  },
+  {
+    "id": "flyert-cmhk-4g-mysim-retention-20240604",
+    "url": "https://www.flyert.com.cn/forum.php?extra=page%3D1%26orderby%3Dviews&mobile=no&mod=viewthread&page=3&tid=4623311",
+    "type": "independent-community",
+    "reportedAt": "2024-06-04"
+  },
+  {
+    "id": "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
+    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=1&tid=2707614",
+    "type": "independent-community",
+    "reportedAt": "2023-10-05"
+  },
+  {
+    "id": "hkepc-mysim-roaming-otp-charge-risk-20241212",
+    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
+    "type": "independent-community",
+    "reportedAt": "2024-12-12"
   }
 ]

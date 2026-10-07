@@ -7,7 +7,7 @@ Last updated: 2026-10-07
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 737 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 747 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -297,9 +297,19 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - `guideEligible=false`; service observations remain empty. Source corpus becomes **737**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 - `npm run phone:data:check`, full frontend build, Phone public-release audit and `git diff --check` pass.
 
+## JUST COMPLETED — CMHK 4G MySIM current maintenance
+
+- Existing `cmhk-mysim-hk-2026` remains `admitted` + `backstage-only`; its historical comparison row remains present and no standalone route URL/indexability/sitemap entry is added.
+- Current acquisition is corrected **HK$33 → HK$38** using the current 7-Eleven Hong Kong listing.
+- Current MySIM terms confirm recharge-based validity extension. The standing CMHK official refill table plus exact-route independent corroboration preserve **HK$50 / 180 days (~HK$100/year)** with an explicit verify-at-refill caveat.
+- **4G MySIM is eligible for physical-prepaid-to-eSIM exchange**; direct new-line eSIM purchase for this exact product remains unverified.
+- From **2026-06-17**, CMHK prepaid cannot first-activate in Mainland China; OFCA RNR still applies and valid travel document/passport is supported for users without HKID.
+- Overseas evidence stays bounded: one historical exact-4G Shenzhen ordinary/account-SMS success plus one adjacent MySIM-5G OTP/e-banking success report. No exact 4G bank/app success percentage is created. Current MySIM roaming data also carries a HK$15 daily-connection charge risk.
+- `guideEligible=false`; source depth increases **2 → 12**; canonical becomes **160 routes / 87 markets / 157 brands / 117 networks / 747 sources**. Public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `cmhk-mysim-hk-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and has not had a current maintenance pass since 2026-09-27. Reconcile current acquisition/renewal economics, exact lifecycle/recharge rules, eSIM/activation/KYC boundaries and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
+1. **Immediate bounded route:** `mtn-ng-keepmynumber-2026`. It is an admitted/backstage real-mobile route with only two canonical sources and has not had a current maintenance pass since 2026-09-29. Reconcile the current Keep My Number product/eligibility, acquisition and retention economics, exact inactivity/number-reservation lifecycle, SIM/eSIM/KYC/activation boundaries, and overseas incoming-SMS/OTP evidence before any recommendation or service-specific reliability claim.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.

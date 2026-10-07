@@ -2150,43 +2150,60 @@
    "brandId": "cmhk-hk-direct",
    "publishState": "candidate",
    "numberType": "real-mobile",
-   "simType": "physical",
-   "acquisitionSummary": "MySIM 4G costs HK$33 (includes 50GB 30-day local package + 5000 local minutes); sold at 7-Eleven, Circle K and CMHK online shop. Real-name registration required (OFCA rule since 2022-03): passport accepted for foreigners.",
+   "simType": "physical + eSIM conversion",
+   "acquisitionSummary": "Current 7-Eleven Hong Kong retail listing shows CMHK 4G MySIM at a HK$38 standard price with 30 days of unlimited local data (first 60GB up to 42Mbps), 5,000 local minutes and 50 on-net SMS. This replaces the stale HK$33 acquisition baseline; direct overseas purchase for this exact product is not established.",
    "landedCost": {
     "currency": "HKD",
-    "providerOrCommunityPrice": 33,
+    "providerOrCommunityPrice": 38,
     "mandatoryTopup": null,
     "shipping": 0,
     "adapterCostCny": null,
-    "landedOriginal": 33,
-    "landedCny": 30.4,
-    "fxCheckedAt": "2026-09-27",
-    "state": "official-and-community"
+    "landedOriginal": 38,
+    "landedCny": null,
+    "fxCheckedAt": null,
+    "state": "current-hk-retail-standard-price"
    },
    "keep": {
     "currency": "HKD",
     "observedActionCost": 50,
     "yearCostOriginal": 100,
-    "yearCostCny": 92,
-    "action": "Official MySIM package terms (PDF 2026-04-15): since 2024-12-01, recharging (any top-up) extends SIM validity — other package purchases no longer do. Community wiki rule: recharge >=HK$50 extends validity 180 days from recharge date; <HK$50 extends 30 days. So retention = 2 x HK$50 top-ups per year = HK$100/yr.",
+    "yearCostCny": null,
+    "action": "Current MySIM terms say recharge extends prepaid-SIM validity. A standing CMHK official refill guide documents HK$50-HK$199 = 180 days and HK$200+ = 365 days, and a 2024 exact 4G MySIM community retention report independently reproduces HK$50 for 180 days. The lowest documented keep path remains two HK$50 recharges per year (HK$100/year), but confirm the displayed post-refill expiry date because the exact denomination ladder is not restated in the 2026 MySIM package PDF.",
     "intervalDays": 180,
-    "state": "official-plus-community"
+    "state": "current-mysim-recharge-rule-plus-standing-official-ladder"
    },
-   "chinaActivation": "Activation requires inserting SIM on CMHK network in Hong Kong (official guide: activate in HK); mainland-first activation unverified.",
-   "kyc": "Real-name registration mandatory (OFCA since 2022-03-01); passport accepted.",
-   "payment": "Recharge vouchers (HK$30/50/100/200/300) sold in HK stores; online refill via CMHK website/app; Octopus self-service; credit card auto-fill. Overseas card acceptance unverified.",
-   "wifiCalling": null,
-   "roamingSms": null,
+   "chinaActivation": "From 17 June 2026, CMHK states that all prepaid SIM cards cannot be activated in Mainland China; activation is allowed in Hong Kong or an applicable roaming destination other than Mainland China. The reviewed material does not separately prove a fully remote new-line 4G MySIM onboarding path outside Hong Kong.",
+   "kyc": "Hong Kong prepaid SIM cards used for person-to-person communications require real-name registration before activation. OFCA says a user without HKID may use another valid identity document such as a valid travel document or passport, subject to the regulation and provider flow.",
+   "payment": "MySIM recharge is available through MyLink and the CMHK website. The standing CMHK refill guide lists Visa, MasterCard, JCB, UnionPay, qualifying Alipay and Octopus online payment and a HK$50 online minimum; universal foreign-issued-card acceptance remains unverified.",
+   "wifiCalling": "unverified",
+   "roamingSms": "Exact-route evidence is limited. A 2023 4G MySIM user reported receiving the CMHK account/status SMS while in Shenzhen with mobile data off. A separate 2024 MySIM 5G user reported OTP/e-banking SMS success in Japan and South Korea, but that is adjacent-product evidence rather than an exact 4G result. Current MySIM roaming documentation also warns that a data connection can trigger a HK$15 daily charge. No current exact-4G bank/app success rate is created.",
    "refund": "not reconciled",
-   "trend": "stable",
-   "guideEligible": true,
+   "trend": "watch",
+   "guideEligible": false,
    "holdReason": null,
-   "lastVerifiedAt": "2026-09-27",
-   "acquireUrl": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
-   "tariffSummary": "MySIM HK$33 starter; HK$50 recharge = +180 days validity = HK$100/yr retention.",
+   "lastVerifiedAt": "2026-10-07",
+   "acquireUrl": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
+   "tariffSummary": "Current 4G MySIM retail baseline HK$38; lowest documented retention path remains HK$50/180 days (~HK$100/year) with current recharge-extension rules plus the standing official refill ladder; physical card is eligible for eSIM conversion; Mainland-China first activation is prohibited.",
    "sourceIds": [
     "cmhk-mysim-hk-official",
-    "cmhk-mysim-hk-community"
+    "cmhk-mysim-hk-community",
+    "retail-7eleven-cmhk-4g-mysim-current-20261007",
+    "official-cmhk-mysim-local-package-current-20260415",
+    "official-cmhk-prepaid-esim-exchange-current-20260105",
+    "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
+    "official-ofca-sim-rnr-faq-current-20261007",
+    "official-cmhk-prepaid-refill-ladder-standing-20231017",
+    "official-cmhk-mysim-roaming-current-20260415",
+    "flyert-cmhk-4g-mysim-retention-20240604",
+    "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
+    "hkepc-mysim-roaming-otp-charge-risk-20241212"
+   ],
+   "guideSteps": [
+    "Buy the current 4G MySIM physical starter through a current Hong Kong retail channel and complete required real-name registration.",
+    "Do not attempt first activation in Mainland China. CMHK's current prepaid rule allows activation in Hong Kong or an applicable roaming destination other than Mainland China.",
+    "If eSIM is needed, 4G MySIM is officially eligible for physical-prepaid-to-eSIM exchange; do not assume the exact product has a direct new-line eSIM purchase path.",
+    "For low-cost retention, the documented path is HK$50 recharge for about 180 days; verify the new expiry shown after each recharge before relying on it for account recovery.",
+    "Treat historical overseas SMS/OTP reports as operational signals only. Keep roaming data disabled unless needed because MySIM roaming data can trigger a HK$15 daily charge."
    ],
    "marketName": "Hong Kong"
   },
@@ -9014,6 +9031,66 @@
    "url": "https://www.tigo.co.tz/",
    "type": "community-report",
    "reportedAt": "2026-09-26"
+  },
+  {
+   "id": "retail-7eleven-cmhk-4g-mysim-current-20261007",
+   "url": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
+   "type": "retailer",
+   "reportedAt": "2026-10-07"
+  },
+  {
+   "id": "official-cmhk-mysim-local-package-current-20260415",
+   "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-local-package-tc.pdf",
+   "type": "provider-official",
+   "reportedAt": "2026-04-15"
+  },
+  {
+   "id": "official-cmhk-prepaid-esim-exchange-current-20260105",
+   "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-01-05/Prepaid_change_eSIM_cardtype_20260105_en.pdf",
+   "type": "provider-official",
+   "reportedAt": "2026-01-05"
+  },
+  {
+   "id": "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
+   "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/mobile-duck-mainland-china-macau-3gb-3-day",
+   "type": "provider-official",
+   "reportedAt": "2026-10-07"
+  },
+  {
+   "id": "official-ofca-sim-rnr-faq-current-20261007",
+   "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/faq/index.html",
+   "type": "regulator-official",
+   "reportedAt": "2026-10-07"
+  },
+  {
+   "id": "official-cmhk-prepaid-refill-ladder-standing-20231017",
+   "url": "https://omniapi.hk.chinamobile.com/upload/images/omni-channel-service-console/preferential/2023-10-17/ORIGINAL_20231017165139_P1omCPtU_0x0.pdf",
+   "type": "provider-official",
+   "reportedAt": "2023-10-17"
+  },
+  {
+   "id": "official-cmhk-mysim-roaming-current-20260415",
+   "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-roaming-package-en.pdf",
+   "type": "provider-official",
+   "reportedAt": "2026-04-15"
+  },
+  {
+   "id": "flyert-cmhk-4g-mysim-retention-20240604",
+   "url": "https://www.flyert.com.cn/forum.php?extra=page%3D1%26orderby%3Dviews&mobile=no&mod=viewthread&page=3&tid=4623311",
+   "type": "independent-community",
+   "reportedAt": "2024-06-04"
+  },
+  {
+   "id": "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
+   "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=1&tid=2707614",
+   "type": "independent-community",
+   "reportedAt": "2023-10-05"
+  },
+  {
+   "id": "hkepc-mysim-roaming-otp-charge-risk-20241212",
+   "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
+   "type": "independent-community",
+   "reportedAt": "2024-12-12"
   }
  ],
  "fxSnapshot": {

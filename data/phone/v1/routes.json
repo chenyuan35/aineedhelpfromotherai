@@ -558,14 +558,24 @@
     "displayName": "CMHK MySIM 4G prepaid",
     "family": "long-term",
     "numberClass": "carrier-mobile",
-    "form": "physical prepaid SIM",
+    "form": "physical + eSIM conversion",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-27",
-    "acquireUrl": "https://www.hk.chinamobile.com/en/home/prepaid-card/prepaid-services",
+    "lastVerifiedAt": "2026-10-07",
+    "acquireUrl": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
     "sourceIds": [
+      "cmhk-mysim-hk-official",
       "cmhk-mysim-hk-community",
-      "cmhk-mysim-hk-official"
+      "retail-7eleven-cmhk-4g-mysim-current-20261007",
+      "official-cmhk-mysim-local-package-current-20260415",
+      "official-cmhk-prepaid-esim-exchange-current-20260105",
+      "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
+      "official-ofca-sim-rnr-faq-current-20261007",
+      "official-cmhk-prepaid-refill-ladder-standing-20231017",
+      "official-cmhk-mysim-roaming-current-20260415",
+      "flyert-cmhk-4g-mysim-retention-20240604",
+      "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
+      "hkepc-mysim-roaming-otp-charge-risk-20241212"
     ]
   },
   {
