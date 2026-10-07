@@ -2066,7 +2066,7 @@
       "form": "prepaid eSIM with a Croatian +385 mobile number",
       "surfaceState": "public-legacy",
       "evidenceState": "needs-reconciliation",
-      "lastVerifiedAt": "Apr 2026",
+      "lastVerifiedAt": "2026-04-02",
       "acquireUrl": "https://www.a1.hr/privatni/mobiteli/sim-promo",
       "sourceIds": [
         "src-61020a30c0ff",
@@ -8359,7 +8359,8 @@
       "id": "src-61020a30c0ff",
       "url": "https://www.nodeloc.com/t/topic/81137",
       "type": "community",
-      "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough"
+      "label": "NodeLoc — A1 Croatia eSIM activation, roaming and retention walkthrough",
+      "reportedAt": "2026-04-02"
     },
     {
       "id": "src-6acad0e79070",
@@ -12249,7 +12250,7 @@
       "id": "snap-a1-croatia-prepaid-esim-frontstage-fc8ec3",
       "routeId": "a1-croatia-prepaid-esim",
       "kind": "frontstage",
-      "checkedAt": "Apr 2026",
+      "checkedAt": "2026-04-02",
       "sourceDataset": "radar-view.json",
       "data": {
         "family": "long-term",
@@ -24294,7 +24295,7 @@
     },
     {
       "routeId": "a1-croatia-prepaid-esim",
-      "checkedAt": "Apr 2026",
+      "checkedAt": "2026-04-02",
       "metricState": "not-normalized",
       "acquisitionCurrency": null,
       "acquisitionCostOriginal": null,
