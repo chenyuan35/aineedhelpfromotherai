@@ -4366,5 +4366,59 @@
     "url": "https://forum.lowyat.net/topic/4211035/+10180",
     "type": "independent-community",
     "reportedAt": "2024-07-16"
+  },
+  {
+    "id": "official-eand-wasel-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-wasel-terms-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/wasel-prepaid-line/terms-and-conditions.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-wasel-faq-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-esim-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/postpaid/esim/overview-and-benefits.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-roaming-rates-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/standard-roaming-rates.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-roaming-faq-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/roaming/roaming-services-faqs.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-visitor-line-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/visitor-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "reddit-etisalat-wasel-uaepass-otp-20240216",
+    "url": "https://www.reddit.com/r/dubai/comments/1asdkqo/keeping_dubai_sim_alive_with_low_cost_while/",
+    "type": "independent-community",
+    "reportedAt": "2024-02-16"
+  },
+  {
+    "id": "reddit-etisalat-wasel-roaming-otp-20231119",
+    "url": "https://www.reddit.com/r/dubai/comments/17you9n/cheap_uae_phone_plan_for_receiving_sms_messages/",
+    "type": "independent-community",
+    "reportedAt": "2023-11-19"
   }
 ]

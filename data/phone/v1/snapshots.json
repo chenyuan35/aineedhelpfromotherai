@@ -12021,5 +12021,67 @@
         "Roaming materials support OTP use and China roaming at provider level, but verify any critical bank/app OTP independently before relying on it for account recovery."
       ]
     }
+  },
+  {
+    "id": "snap-etisalat-wasel-ae-2026-current-profile-20261007",
+    "routeId": "etisalat-wasel-ae-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-07",
+    "sourceDataset": "etisalat-wasel-maintenance-reviewed-2026-10-07",
+    "data": {
+      "id": "etisalat-wasel-ae-2026",
+      "brandId": "etisalat-ae",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current e& prepaid surfaces advertise Wasel prepaid SIM/eSIM entry at AED40 with AED40 pre-loaded credit. Treat this as the current online acquisition offer rather than a permanent historic connection-fee baseline.",
+      "landedCost": {
+        "currency": "AED",
+        "providerOrCommunityPrice": 40,
+        "mandatoryTopup": null,
+        "shipping": null,
+        "adapterCostCny": null,
+        "landedOriginal": 40,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "current-online-aed40-with-aed40-credit"
+      },
+      "keep": {
+        "currency": "AED",
+        "observedActionCost": 0.19,
+        "yearCostOriginal": 0.76,
+        "yearCostCny": null,
+        "action": "Create qualifying activity before 90 consecutive days of inactivity. Current terms count recharge, calls and non-promotional SMS; the lowest published local action is an AED0.19 SMS, about AED0.76/year for four 90-day keep actions. Rest-of-world roaming SMS is AED2, about AED8/year for an abroad-controlled SMS path. If no qualifying activity occurs and sufficient balance exists, e& debits AED10 per 90-day period; suspension then starts a one-year number-retention window.",
+        "intervalDays": 90,
+        "state": "current-official-90d-activity-aed10-fallback-12mo-retention"
+      },
+      "chinaActivation": "Regular Wasel requires a valid Emirates ID; visitors use a separate Visitor Line and need a new Emirates ID to migrate to Wasel. e& also requires physical UAE presence to request or activate eSIM, so China-first/offshore first activation is not supported by the reviewed official material.",
+      "kyc": "Valid Emirates ID required for regular Wasel purchase by UAE nationals/residents. Passport/visa visitor registration belongs to the separate temporary Visitor Line and is not treated as durable Wasel eligibility.",
+      "payment": "e& UAE app/self-care and recharge channels are supported. Current roaming FAQ says prepaid users can recharge abroad through the e& UAE app or a voucher/recharge card; universal foreign-card acceptance is not established.",
+      "wifiCalling": "unverified",
+      "roamingSms": "Current Wasel support says incoming SMS while roaming is free, and standard roaming rates also list incoming SMS as free. One 2024 exact Wasel report describes UAEPass OTP success overseas; a 2023 discussion corroborates verification/banking SMS use abroad. These are thin historical community signals, so exact mainland-China bank/app OTP reliability remains unverified and no success percentage is created.",
+      "refund": "After qualifying inactivity causes suspension, e& retains the assigned mobile number for one year; if the service is not reactivated within that period, permanent disconnection follows and the number cannot be reclaimed if reassigned.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": null,
+      "lastVerifiedAt": "2026-10-07",
+      "acquireUrl": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+      "tariffSummary": "Current online entry AED40 with AED40 credit; 90-day qualifying-activity rule; AED10/90-day inactivity fallback; one-year number-retention window after suspension.",
+      "sourceIds": [
+        "eand-wasel-faq-2026-09-29",
+        "eand-wasel-line-2026-09-29",
+        "official-eand-esim-current-20261007",
+        "official-eand-roaming-faq-current-20261007",
+        "official-eand-roaming-rates-current-20261007",
+        "official-eand-visitor-line-current-20261007",
+        "official-eand-wasel-current-20261007",
+        "official-eand-wasel-faq-current-20261007",
+        "official-eand-wasel-terms-current-20261007",
+        "reddit-etisalat-wasel-roaming-otp-20231119",
+        "reddit-etisalat-wasel-uaepass-otp-20240216"
+      ],
+      "marketName": "UAE",
+      "guideSteps": []
+    }
   }
 ]
