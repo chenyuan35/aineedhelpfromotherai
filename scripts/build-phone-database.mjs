@@ -58,6 +58,12 @@ for (const row of [...observations, ...events]) if (row.sourceId && !sourceIds.h
 for (const a of aliases) if (!routeIds.has(a.routeId)) throw new Error(`alias ${a.aliasId}: missing route ${a.routeId}`);
 for (const r of numberRanges) { if (!marketIds.has(r.marketId)) throw new Error(`number range ${r.id}: missing market ${r.marketId}`); if (r.networkId && !networkIds.has(r.networkId)) throw new Error(`number range ${r.id}: missing network ${r.networkId}`); if (r.sourceId && !sourceIds.has(r.sourceId)) throw new Error(`number range ${r.id}: missing source ${r.sourceId}`); }
 
+const isoDate = /^\d{4}-\d{2}-\d{2}$/;
+for (const r of routes) if (r.lastVerifiedAt && !isoDate.test(r.lastVerifiedAt)) throw new Error(`route ${r.id}: lastVerifiedAt must be YYYY-MM-DD, got ${r.lastVerifiedAt}`);
+for (const s of snapshots) if (s.checkedAt && !isoDate.test(s.checkedAt)) throw new Error(`snapshot ${s.id}: checkedAt must be YYYY-MM-DD, got ${s.checkedAt}`);
+for (const s of sources) if (s.reportedAt && !isoDate.test(s.reportedAt)) throw new Error(`source ${s.id}: reportedAt must be YYYY-MM-DD, got ${s.reportedAt}`);
+for (const row of [...observations, ...events]) if (row.reportedAt && !isoDate.test(row.reportedAt)) throw new Error(`${row.id}: reportedAt must be YYYY-MM-DD, got ${row.reportedAt}`);
+
 
 const byMarket = new Map(markets.map(x => [x.id, x]));
 const byNetwork = new Map(networks.map(x => [x.id, x]));

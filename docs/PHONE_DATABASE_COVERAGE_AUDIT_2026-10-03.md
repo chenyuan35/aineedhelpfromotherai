@@ -71,9 +71,9 @@ For the current known evidence-qualified universe:
 - known distinct unresolved atomic candidates: **0**
 - denominator: **160**
 
-**Coverage = 159 / 159 = 100% of the current known evidence-qualified relevant atomic universe.**
+**Coverage = 160 / 160 = 100% of the current known evidence-qualified relevant atomic universe.**
 
-This does **not** mean the database contains every carrier product worldwide. It means every distinct route currently admitted to the project's evidence-qualified universe is normalized. New evidence can enlarge the denominator at any time. As a sensitivity check, ten newly discovered qualifying missing routes would make coverage `159 / 169 = 94.1%`; at least 18 newly discovered qualifying missing routes with no corresponding admissions would be required to move coverage below 90%.
+This does **not** mean the database contains every carrier product worldwide. It means every distinct route currently admitted to the project's evidence-qualified universe is normalized. New evidence can enlarge the denominator at any time. As a sensitivity check, ten newly discovered qualifying missing routes would make coverage `160 / 170 = 94.1%`; at least 18 newly discovered qualifying missing routes with no corresponding admissions would be required to move coverage below 90%.
 
 ## Decision
 

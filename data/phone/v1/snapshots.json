@@ -344,7 +344,7 @@
     "id": "snap-a1-croatia-prepaid-esim-frontstage-fc8ec3",
     "routeId": "a1-croatia-prepaid-esim",
     "kind": "frontstage",
-    "checkedAt": "Apr 2026",
+    "checkedAt": "2026-04-02",
     "sourceDataset": "radar-view.json",
     "data": {
       "family": "long-term",

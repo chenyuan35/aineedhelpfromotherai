@@ -570,7 +570,7 @@
       "form": "prepaid eSIM with a Croatian +385 mobile number",
       "surfaceState": "public-legacy",
       "evidenceState": "needs-reconciliation",
-      "lastVerifiedAt": "Apr 2026",
+      "lastVerifiedAt": "2026-04-02",
       "observationCount": 0,
       "eventCount": 0,
       "services": [],
@@ -587,7 +587,7 @@
       },
       "metrics": {
         "routeId": "a1-croatia-prepaid-esim",
-        "checkedAt": "Apr 2026",
+        "checkedAt": "2026-04-02",
         "metricState": "not-normalized",
         "acquisitionCurrency": null,
         "acquisitionCostOriginal": null,
