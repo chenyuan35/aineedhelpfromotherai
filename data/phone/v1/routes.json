@@ -871,11 +871,20 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-07",
     "acquireUrl": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
     "sourceIds": [
       "eand-wasel-faq-2026-09-29",
-      "eand-wasel-line-2026-09-29"
+      "eand-wasel-line-2026-09-29",
+      "official-eand-esim-current-20261007",
+      "official-eand-roaming-faq-current-20261007",
+      "official-eand-roaming-rates-current-20261007",
+      "official-eand-visitor-line-current-20261007",
+      "official-eand-wasel-current-20261007",
+      "official-eand-wasel-faq-current-20261007",
+      "official-eand-wasel-terms-current-20261007",
+      "reddit-etisalat-wasel-roaming-otp-20231119",
+      "reddit-etisalat-wasel-uaepass-otp-20240216"
     ]
   },
   {
