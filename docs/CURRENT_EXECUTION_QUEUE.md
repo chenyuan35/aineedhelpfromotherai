@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-10-07
+Last updated: 2026-10-08
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
@@ -318,6 +318,63 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 5. **Frontend:** no new URL or redesign from this maintenance work.
 
 Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review and cannot bypass evidence/admission/publication gates.
+
+
+## PLANNED — Phone database evidence-hardening backlog
+
+Work this backlog **one bounded route per session**. It is maintenance, not count expansion. Preserve HOLD/needs-reconciliation when evidence is still insufficient; no item below authorizes a public URL, ranking promotion or sitemap change.
+
+### Wave A — admitted but thin evidence
+
+After the immediate MTN task, deepen the remaining admitted routes with only two canonical sources:
+
+1. `mtn-ng-keepmynumber-2026` — current immediate task.
+2. `mts-sokhranyayu-nomer-2026`.
+3. `o2-cz-prepaid-2026`.
+
+Done condition per route: current provider-controlled economics/lifecycle/eligibility reconciled; activation/KYC/eSIM/payment/roaming-SMS boundaries explicit; independent operational evidence added when making real-world continuity/OTP claims; generated artifacts and regression checks pass.
+
+### Wave B — HOLD routes with only 1–2 sources
+
+Maintain in evidence-value order rather than country-completion order:
+
+- `telstra-prepaid-longexpiry-2026`
+- `claro-pre-br-90d-2026`
+- `asda-mobile-uk-2026`
+- `free-mobile-fr-2026`
+- `good2go-payg-ca-2026`
+- `o2-uk-classic-payg-6mo-2026`
+- `singtel-hi-prepaid-passport-30d-2026`
+- `truemove-validity-pack-th-2026`
+- `turkcell-tourist-90d-blocker-2026`
+- `viettel-vtvang-keepnumber-2026`
+- `vodafone-callya-90d-2026`
+
+These remain HOLD unless the blocker is actually resolved. Source-count growth alone is not promotion evidence.
+
+### Wave C — legacy needs-reconciliation cleanup
+
+Eleven canonical legacy rows still lack normalized current-profile snapshots and must be reconciled, aliased/suppressed, reclassified or explicitly retained:
+
+- `5sim-temp`
+- `a1-croatia-prepaid-esim`
+- `activatex-temp`
+- `h2o-paygo-us`
+- `mobal-japan-data-physical`
+- `mobal-japan-voice-data`
+- `sakura-japan-voice-data`
+- `smspool-temp`
+- `tello-us`
+- `trip-cmlink-china-data`
+- `ultra-paygo-us`
+
+Do not count same-product aliases as new atomic routes. Prefer explicit alias/reconciliation cleanup over keeping duplicate legacy identities indefinitely.
+
+### Cross-cutting field debt
+
+Audit baseline before this queue update: 149/160 routes have current-profile snapshots; 11 do not. Among normalized profiles, unresolved states remain in roughly 18 acquisition/landed-cost records, 9 keep/retention records and 47 roaming-SMS records. These counts are maintenance indicators, not a mandate to manufacture answers. Resolve only with evidence; otherwise preserve explicit unknown/uncertain state.
+
+Re-run the thin-route/field-debt audit after each small maintenance wave and update this queue from actual canonical data. Broad DB expansion remains closed unless genuinely new evidence-qualified atomic routes appear.
 
 ## External waits
 
