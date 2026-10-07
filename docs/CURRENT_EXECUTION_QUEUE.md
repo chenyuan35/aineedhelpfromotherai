@@ -268,6 +268,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Current provider roaming material explicitly supports existing-number OTP use overseas and lists China; one historical independent Digi Prepaid report supports roaming SMS/banking-OTP continuity in Singapore. No mainland-China app/bank success rate is invented. `guideEligible=false`.
 - Source corpus becomes **728**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — homepage Phone hero proportion repair
+
+- User screenshot exposed a desktop balance regression: five-line H1, oversized left visual weight and a vertically sunken decision panel.
+- Root cause was the 1080px shell combined with a near-even two-column split, 64px gap and H1 scaling up to 5.55rem.
+- Desktop hero now uses a flexible left column + fixed 480px panel, 52px gap, 720px copy ceiling and a lower H1 scale ceiling.
+- Measured at an effective 1252px CSS viewport after build: H1 is **3 lines** at ~62.6px and the panel top is ~155px.
+- Existing ≤980px single-column/mobile behavior is preserved.
+- `scripts/test-home-hero-balance.mjs` is wired into Eval Gate so the old proportions cannot silently return.
+
 ## JUST COMPLETED — Search Console indexing hygiene repair
 
 - Gmail reported two new 2026-10-07 Search Console issues: sitemap-discovered `404` and `Indexed, though blocked by robots.txt`.
