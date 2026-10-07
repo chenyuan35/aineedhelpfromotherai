@@ -59,7 +59,7 @@ jobs:
         run: node scripts/test-phone-number-supply-intelligence.mjs
 
       - name: Build and audit public Phone Survival release
-        run: node frontend/bin/build.mjs && node scripts/test-phone-number-public-release.mjs
+        run: node frontend/bin/build.mjs && node scripts/test-phone-number-public-release.mjs && node scripts/test-indexing-contract.mjs
 
       - name: Audit TikTok Direct Post UX and public data disclosures
         run: node scripts/test-tiktok-content-posting.mjs && node scripts/test-tiktok-public-surface.mjs

@@ -268,6 +268,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Current provider roaming material explicitly supports existing-number OTP use overseas and lists China; one historical independent Digi Prepaid report supports roaming SMS/banking-OTP continuity in Singapore. No mainland-China app/bank success rate is invented. `guideEligible=false`.
 - Source corpus becomes **728**; canonical/publication counts remain **160 routes / 87 markets / 157 brands / 117 networks**, **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## JUST COMPLETED — Search Console indexing hygiene repair
+
+- Gmail reported two new 2026-10-07 Search Console issues: sitemap-discovered `404` and `Indexed, though blocked by robots.txt`.
+- Production audit proves the current sitemap itself is healthy: **31/31 URLs return 200**.
+- Robots/discovery mismatch found: TikTok exposed `/api/tiktok/auth` as a normal link while `/api/` blocked Google from observing its existing `X-Robots-Tag: noindex`; legacy `/api/mcp` and `/mcp` return 404 but were also hidden from crawlers.
+- Repair keeps generic `/api/` blocked while allowing the specific noindex/terminal paths to be crawled; TikTok Connect becomes a click-only button rather than an API href.
+- New `scripts/test-indexing-contract.mjs` is wired into Eval Gate after the production build and fails on sitemap URLs without built HTML, API/MCP sitemap leakage, robots-rule regression, or a crawlable TikTok OAuth anchor.
+- No new public URL, Phone page, or sitemap entry is created; publication remains **31 sitemap URLs**.
+
 ## JUST COMPLETED — e& UAE Wasel acquisition / lifecycle / KYC / roaming maintenance
 
 - Existing `etisalat-wasel-ae-2026` stays `admitted` + `backstage-only`; no public URL or service percentage is added.

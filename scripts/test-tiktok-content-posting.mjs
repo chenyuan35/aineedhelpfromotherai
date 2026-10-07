@@ -44,7 +44,8 @@ await tick(); await tick();
 assert.equal($('connection-label').textContent,'TikTok connected');
 assert.equal($('allow-comment').checked,false); assert.equal($('allow-duet').checked,false); assert.equal($('allow-stitch').checked,false);
 assert.equal($('allow-comment').disabled,true,'Creator-disabled interaction must be visibly disabled');
-assert.equal($('connect-button').target,'','Connect must stay same-tab');
+assert.equal($('connect-button').tagName,'BUTTON','Connect control must not expose the OAuth endpoint as a crawlable anchor');
+assert.equal($('connect-button').getAttribute('href'),null,'Connect control must not publish /api/tiktok/auth as an href');
 
 // Policy links and declaration reset are tested against official URLs from official-1.txt.
 $('commercial-toggle').checked=true; change('commercial-toggle');
