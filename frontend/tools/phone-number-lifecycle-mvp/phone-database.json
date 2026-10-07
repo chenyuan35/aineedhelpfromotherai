@@ -3768,11 +3768,18 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-29",
+      "lastVerifiedAt": "2026-10-08",
       "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
       "sourceIds": [
         "mtn-ng-kmn-20260929",
-        "mtn-ng-prepaid-terms-20260929"
+        "mtn-ng-prepaid-terms-20260929",
+        "mtn-ng-kmn-current-20261008",
+        "mtn-ng-prepaid-terms-current-20261008",
+        "mtn-ng-esim-current-20261008",
+        "mtn-ng-roaming-current-20261008",
+        "mtn-ng-xtrabuy-current-20261008",
+        "ncc-qos-business-rules-2026-mtn-ng",
+        "community-nairaland-mtn-kmn-reassigned-20260831"
       ]
     },
     {
@@ -9765,6 +9772,48 @@
       "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
       "type": "independent-community",
       "reportedAt": "2024-12-12"
+    },
+    {
+      "id": "mtn-ng-kmn-current-20261008",
+      "url": "https://www.mtn.ng/sim/keep-my-number/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mtn-ng-prepaid-terms-current-20261008",
+      "url": "https://www.mtn.ng/legal/prepaid/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mtn-ng-esim-current-20261008",
+      "url": "https://www.mtn.ng/sim/esim/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mtn-ng-roaming-current-20261008",
+      "url": "https://www.mtn.ng/personal/roaming/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mtn-ng-xtrabuy-current-20261008",
+      "url": "https://www.mtn.ng/personal/xtrabuy/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "ncc-qos-business-rules-2026-mtn-ng",
+      "url": "https://www.ncc.gov.ng/sites/default/files/2026-08/Quality-of-Service-Business-Rules-2026.pdf",
+      "type": "government-regulator",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "community-nairaland-mtn-kmn-reassigned-20260831",
+      "url": "https://www.nairaland.com/8738633/what-happens-bank-account-when",
+      "type": "community-incident-thread",
+      "reportedAt": "2026-08-31"
     }
   ],
   "observations": [
@@ -11902,6 +11951,33 @@
       "scope": "route",
       "outcome": "An independent Wasel discussion describes free roaming SMS/verification reception abroad and maintaining the line with periodic activity. It is retained as historical community corroboration only; exact destination, bank and app reliability are not inferred.",
       "sourceId": "reddit-etisalat-wasel-roaming-otp-20231119"
+    },
+    {
+      "id": "evt-mtn-ng-keepmynumber-2026-regulatory-lifecycle-20261008",
+      "routeId": "mtn-ng-keepmynumber-2026",
+      "type": "regulatory-lifecycle-reconciliation",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "The August 2026 NCC Quality of Service Business Rules say a prepaid line may be deactivated after six months without a Revenue Generating Event and may lose the number after another six months. The same rules count parked numbers as an RGE, exclude bare recharge without follow-up qualifying activity, and require alternative-means notice at least 14 days before churn. MTN's current prepaid terms separately state a 365-day no-RGE disconnection rule, so the conflict is preserved instead of collapsed into one inactivity clock.",
+      "sourceId": "ncc-qos-business-rules-2026-mtn-ng"
+    },
+    {
+      "id": "evt-mtn-ng-keepmynumber-2026-esim-boundary-20261008",
+      "routeId": "mtn-ng-keepmynumber-2026",
+      "type": "activation-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "MTN currently supports eSIM, but first eSIM setup requires visiting an MTN store for device eligibility checks and a QR code. This does not establish remote China-first activation.",
+      "sourceId": "mtn-ng-esim-current-20261008"
+    },
+    {
+      "id": "evt-mtn-ng-keepmynumber-2026-continuity-incident-20260831",
+      "routeId": "mtn-ng-keepmynumber-2026",
+      "type": "number-reassignment-incident",
+      "reportedAt": "2026-08-31",
+      "scope": "route",
+      "outcome": "A 2026 independent Nairaland report says an MTN Nigeria number was reassigned despite the user reporting an active Keep My Number subscription and ongoing recharge. Treat this as a single-user continuity incident, not proof that KMN generally fails.",
+      "sourceId": "community-nairaland-mtn-kmn-reassigned-20260831"
     }
   ],
   "snapshots": [
@@ -17620,15 +17696,15 @@
       "id": "snap-mtn-ng-keepmynumber-2026-current-profile-20260929",
       "routeId": "mtn-ng-keepmynumber-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-29",
-      "sourceDataset": "db-c4b-reviewed-2026-09-29",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "mtn-ng-maintenance-2026-10-08",
       "data": {
         "id": "mtn-ng-keepmynumber-2026",
         "brandId": "mtn-ng-prepaid",
         "publishState": "candidate",
         "numberType": "real-mobile",
         "simType": "physical + eSIM",
-        "acquisitionSummary": "MTN prepaid lines can use the dedicated Keep My Number service. SIM registration is required; visitors staying under 24 months do not need a NIN for purchase but do need a valid visa and international passport/travel document. A revenue-generating event is required within 48 hours after registration.",
+        "acquisitionSummary": "MTN Nigeria prepaid supports the Keep My Number retention service. Regular SIM registration is Nigeria-side; NIN is normally required, while visitors staying under 24 months may register with a valid visa plus international passport/travel document. MTN also supports eSIM, but current eSIM setup requires an MTN-store eligibility check and QR-code provisioning. The reviewed official sources do not establish a universal starter-SIM acquisition price.",
         "landedCost": {
           "currency": "NGN",
           "providerOrCommunityPrice": null,
@@ -17645,30 +17721,39 @@
           "observedActionCost": 7500,
           "yearCostOriginal": 2500,
           "yearCostCny": null,
-          "action": "Keep My Number plans are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. The 3-year option has the lowest annualized current provider price. Fund sufficient airtime, then subscribe with *365# / *365*3# or the corresponding SMS keyword.",
+          "action": "Current MTN Keep My Number plans are NGN3,500/1 year, NGN5,000/2 years and NGN7,500/3 years. The 3-year option is the lowest annualized provider price. Fund sufficient airtime, dial *365# or use the matching SMS keyword, and deliberately select one-off or auto-renew; closing that selection without choosing means the purchase does not complete. NCC's 2026 rules separately treat parked numbers as a Revenue Generating Event.",
           "intervalDays": 1095,
-          "state": "current-provider-official"
+          "state": "current-provider-official-with-regulatory-context"
         },
-        "chinaActivation": "Initial SIM registration/activation is a Nigeria-side process in current provider terms; remote China-first acquisition is not established.",
-        "kyc": "NIN is generally required, but visitors staying less than 24 months are expressly exempt from the NIN purchase requirement if they provide a valid visa and international passport/travel document.",
-        "payment": "Keep My Number subscription is deducted from sufficient airtime balance; remote foreign-card/top-up reliability is not established.",
+        "chinaActivation": "Initial SIM registration is a Nigeria-side process. Current MTN eSIM setup also requires visiting an MTN store for device eligibility and QR provisioning; remote China-first activation is not established.",
+        "kyc": "A valid NIN is normally required. Visitors staying less than 24 months are expressly exempt from the NIN purchase requirement if they provide a valid visa and international passport/travel document. Registration must still be completed before full service.",
+        "payment": "Keep My Number is paid from sufficient airtime balance. MTN currently offers online/card/bank-transfer airtime purchase channels, including Xtrabuy; reliable use of a foreign-issued card from abroad is not established.",
         "wifiCalling": "unverified",
-        "roamingSms": "unverified",
+        "roamingSms": "MTN currently offers roaming to prepaid customers and lists China among TravelPass destinations with SMS capability. The reviewed provider material does not establish free incoming SMS or bank/app OTP delivery for this exact route, so overseas verification reliability remains unquantified.",
         "refund": "not reconciled",
-        "trend": "stable-current-kmn",
+        "trend": "current-kmn-with-regulatory-and-continuity-risk",
         "guideEligible": false,
         "holdReason": null,
-        "lastVerifiedAt": "2026-09-29",
+        "lastVerifiedAt": "2026-10-08",
         "acquireUrl": "https://www.mtn.ng/sim/keep-my-number/",
-        "tariffSummary": "Keep My Number: NGN3,500/1y, NGN5,000/2y, NGN7,500/3y; 3y = NGN2,500/year annualized.",
+        "tariffSummary": "Keep My Number: NGN3,500/1y, NGN5,000/2y, NGN7,500/3y; 3y annualizes to NGN2,500/year. Current NCC rules preserve a separate six-month RGE/line-parking framework.",
         "sourceIds": [
           "mtn-ng-kmn-20260929",
-          "mtn-ng-prepaid-terms-20260929"
+          "mtn-ng-prepaid-terms-20260929",
+          "mtn-ng-kmn-current-20261008",
+          "mtn-ng-prepaid-terms-current-20261008",
+          "mtn-ng-esim-current-20261008",
+          "mtn-ng-roaming-current-20261008",
+          "mtn-ng-xtrabuy-current-20261008",
+          "ncc-qos-business-rules-2026-mtn-ng",
+          "community-nairaland-mtn-kmn-reassigned-20260831"
         ],
         "guideSteps": [
-          "Register and activate the prepaid line with the applicable identity documents.",
-          "Perform the required revenue-generating event after registration.",
-          "Fund sufficient airtime and subscribe to the chosen Keep My Number duration using the official *365# flow."
+          "Register and activate the prepaid line in Nigeria with the applicable identity documents.",
+          "If using eSIM, complete the current MTN store eligibility and QR-provisioning process.",
+          "Fund sufficient airtime and subscribe to the chosen Keep My Number duration via *365# or the matching SMS keyword.",
+          "Choose one-off or auto-renew explicitly and verify the confirmation message.",
+          "Keep registration/contact details current and monitor the line; a 2026 independent reassignment incident means KMN should not be treated as an absolute continuity guarantee."
         ]
       }
     },
@@ -25267,7 +25352,7 @@
     },
     {
       "routeId": "mtn-ng-keepmynumber-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "NGN",
       "acquisitionCostOriginal": null,
