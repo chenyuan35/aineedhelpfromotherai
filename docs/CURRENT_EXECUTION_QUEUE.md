@@ -337,14 +337,14 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Route stays admitted/backstage-only; **160 canonical, 771 sources, 135 comparison, 3 indexable, 31 sitemap**. No application success percentage and no new SEO URL. Ledger: `docs/PHONE_O2_CZ_MAINTENANCE_2026-10-08.md`.
 - Verified release: PR **#422** squash-merged as `0f5e4a9d4dd398772ccf11eb86d46c1909dc57ad`; CI run **#37717592877 PASS**, Eval Gate **#37717592832 PASS**, Vercel Preview **PASS**, production deployment `dpl_GEnUj4uj8uFSQmJAbpCbUkAyL4Ry` **READY** at the merged SHA. Live Phone hub **HTTP 200**, O2 lazy detail **HTTP 200 / 9 sources / CZK300 normalized yearly top-up / physical+eSIM**, route summaries **HTTP 200 / 160 routes**, live sitemap **HTTP 200 / 31 URLs and no O2 independent entry**. Standalone O2 route HTTP status was not independently measured.
 
-## JUST COMPLETED — Telstra Australia Pre-Paid Casual HOLD maintenance (release pending)
+## JUST COMPLETED — Telstra Australia Pre-Paid Casual HOLD maintenance (released)
 
 - Existing `telstra-prepaid-longexpiry-2026` changes no canonical identity, HOLD/admission state or publication boundary.
 - Corrected 12-month retention from **AUD395 data-rich Mobile plan** to the separate **AUD74/12-month Casual** option; current AUD44/6-month Casual exists, while AUD200/6-month and AUD395/12-month Mobile are more expensive data-oriented products.
 - Telstra documents **six months recharge-only rescue** after a prepaid recharge expires, then service deactivation/number loss. Only incoming calls are explicit in this rescue wording; do not claim incoming rescue-period OTP.
 - Prepaid physical SIM/eSIM and international-passport form option are documented. China-first activation, foreign payment and exact China bank/app incoming-SMS reliability are unproven. Independent 2026 roaming reports are mixed and a 2025 pack-purchase failure is recorded as one operational incident.
 - **1 → 9 sources**, 5 new events, zero exact service observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 779 sources**. Public boundary stays **135 comparison / 3 indexable / 31 sitemap**.
-- Ledger: `docs/PHONE_TELSTRA_AU_MAINTENANCE_2026-10-08.md`. Generated artifacts and test are prepared on a fresh branch; CI/Eval/Preview, merge and live checks remain release gates.
+- Ledger: `docs/PHONE_TELSTRA_AU_MAINTENANCE_2026-10-08.md`. PR #424 squash-merged as `45a493ef3d298d93e83c8be1b4b6645e3da83461`; CI #317 / run #37727084961 **PASS**; Eval Gate #1246 / run #37727084894 **PASS**; Vercel Preview `dpl_AnZaszg9z5XQ82tyW3H68t65jXSr` **READY**; production `dpl_28YFSRi1iy2LSmnwEQf8QzhFt5kh` **READY** at merged SHA with `aineedhelpfromotherai.com` assigned as alias. Public JSON HTTP response was not independently read, so no direct live-route/content/sitemap HTTP check is claimed.
 
 ## NEXT — continue database maintenance, no invented expansion
 
@@ -373,11 +373,11 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `claro-pre-br-90d-2026` (one bounded route per session, after the Telstra PR is released and production-verified).
+First eligible: `claro-pre-br-90d-2026` (one bounded route per session; Telstra PR #424 is merged and production deployment is READY).
 
 Maintain in evidence-value order rather than country-completion order:
 
-- `telstra-prepaid-longexpiry-2026` — **DONE RESEARCH / RELEASE PENDING 2026-10-08**, 1 → 9 sources, AUD74/12-month Casual path, 6-month rescue, still HOLD.
+- `telstra-prepaid-longexpiry-2026` — **DONE / RELEASED 2026-10-08**, 1 → 9 sources, AUD74/12-month Casual path, 6-month rescue, still HOLD.
 - `claro-pre-br-90d-2026`
 - `asda-mobile-uk-2026`
 - `free-mobile-fr-2026`
