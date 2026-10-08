@@ -12388,5 +12388,70 @@
       ],
       "avoidRoute": true
     }
+  },
+  {
+    "id": "snap-5sim-temp-current-profile-20261008",
+    "routeId": "5sim-temp",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-08",
+    "sourceDataset": "5sim-community-marketplace-reconciliation-2026-10-08",
+    "data": {
+      "id": "5sim-temp",
+      "brandId": "5sim-global",
+      "publishState": "observation",
+      "numberType": "temporary-activation",
+      "simType": "digital order; no owned SIM or phone line",
+      "acquisitionSummary": "5SIM is an SMS activation marketplace. One-time activations are selected by service, country and operator; separate hosting/rental products exist but do not imply perpetual access to a real mobile number. Final inventory and price are dynamic.",
+      "landedCost": {
+        "currency": "USD",
+        "providerOrCommunityPrice": null,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": null,
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "dynamic-no-reproducible-checkout"
+      },
+      "keep": {
+        "currency": null,
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": null,
+        "intervalDays": null,
+        "state": "not-applicable-one-time-activation"
+      },
+      "chinaActivation": "Online marketplace order, not SIM/eSIM activation. Choosing a number country does not establish physical-location rights, carrier subscriber identity, or dependable mainland-China app receipt.",
+      "kyc": "varies by funding method and order; universal requirements not verified",
+      "payment": "Account funding precedes orders. Buyer-specific payment method, funding floor, screening and withdrawal conditions were not verified.",
+      "wifiCalling": "not applicable: no owned voice line",
+      "roamingSms": "not applicable: the purchased SMS inbox is not a roaming phone-number line",
+      "refund": "Provider says no-SMS timed-out activations normally return cost to marketplace balance; completed orders with SMS are not refundable. Used or 2FA-protected number disputes require evidence/screenshots or video; support FAQ says API-purchased numbers are ineligible for its used-number refund route. No unconditional cash-back promise.",
+      "trend": "mixed-inconsistent-2026-anecdotal",
+      "guideEligible": false,
+      "holdReason": "Temporary one-time marketplace product, not a long-term mobile-number route. Current prices vary by service/country/operator, and independent 2026 reports describe failed codes/reused or blocked numbers. No reproducible exact-app sample or verified success rate. HOLD, not a recommended durable route.",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://5sim.net/prices",
+      "tariffSummary": "Dynamic one-time SMS activation price by service/country/operator; hosting/rental separate. No durable ownership, retention interval or annual keep fee.",
+      "sourceIds": [
+        "src-3545efe8deb4",
+        "src-6acad0e79070",
+        "src-a19054e9d137",
+        "5sim-api-docs-20261008",
+        "5sim-refund-policy-20261008",
+        "5sim-existing-number-faq-20261008",
+        "5sim-trustpilot-2026",
+        "5sim-reddit-nocontract-20260511"
+      ],
+      "guideSteps": [
+        "Check the selected service, country and operator in the live marketplace before funding a number order.",
+        "Treat an ordinary activation as temporary message receipt, not a physical SIM, owned mobile number or recoverable long-term identity.",
+        "Confirm current order expiry and refund eligibility; completed SMS orders and used-number disputes have different treatment.",
+        "Do not equate separate hosting/rental options with a durable account-recovery line.",
+        "Keep important accounts on a durable number rather than an ordinary temporary activation."
+      ],
+      "marketName": "Global"
+    }
   }
 ]
