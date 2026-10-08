@@ -473,7 +473,7 @@
       "serviceEvidence": [],
       "decisionFacts": {
         "sourceCount": 13,
-        "kycState": "required",
+        "kycState": "unclear",
         "keepAction": "ASDA's credit rule requires a top-up or bundle within 180 days of the prior one; minimum top-up £5 gives a £10 two-action funding illustration over 360 days, not a nonrefundable a…",
         "roamingSms": "Sept 2025 ASDA PAYG retail price book lists China under international roaming World Group 1 with £0.20/text sent to UK; this confirms published China roaming coverage, not actual…",
         "holdReason": "HOLD: material conflict between two official 180-day triggers (chargeable use vs top-up/plan), overseas-first activation unproven, online top-up requires UK-registered card addres…",
