@@ -2993,11 +2993,22 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://www.true.th/",
+    "lastVerifiedAt": "2026-10-08",
+    "acquireUrl": "https://www.true.th/prepaid",
     "sourceIds": [
       "truemove-community-signal-2026-09-27",
-      "truemove-provider-root-2026-09-27"
+      "truemove-provider-root-2026-09-27",
+      "truemove-jaidee-ussd-20261008",
+      "truemove-number-retention-20261008",
+      "truemove-tourist-terms-20261008",
+      "truemove-prepaid-roaming-20261008",
+      "truemove-prepaid-registration-20261008",
+      "truemove-document-update-20261008",
+      "truemove-prepaid-catalog-20261008",
+      "truemove-specphone-validity-20260114",
+      "truemove-reddit-roaming-outage-20260303",
+      "truemove-reddit-otp-us-20250411",
+      "truemove-reddit-number-retention-20260618"
     ]
   },
   {
