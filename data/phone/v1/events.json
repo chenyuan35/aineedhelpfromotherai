@@ -2545,5 +2545,86 @@
     "scope": "route",
     "outcome": "Firsthand U.S.-based user of a TrueMove Thai number could not receive OTP to top up while abroad; a different commenter says a paid preserve-number service enabled U.S. banking OTP. Plan details differ and this does not establish a success percentage.",
     "sourceId": "truemove-reddit-otp-us-20250411"
+  },
+  {
+    "id": "evt-turkcell-btk-repeal-reaffirmed-20261008",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "passport-legacy-rule-repealed",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "BTK Decision 2026/IK-THD/125 struck out the former passport→YKN 90-day conversion procedure, 91st-day outbound restriction and 181st-day shutdown with effect 2026-06-25. The current 90-day tourist advance-application allowance is a different clock; neither proves open-ended service.",
+    "sourceId": "turkcell-btk-2026-ik-thd-125-text-20260511"
+  },
+  {
+    "id": "evt-turkcell-tourist-application-20261008",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "tourist-application-and-activation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Turkcell Tourist official flow: order no more than 90 days before intended Türkiye arrival; valid passport for Tourist line; app eSIM activation needs chipped passport, NFC/eSIM phone, liveness/video contract; service becomes usable upon Türkiye entry. Package allowance applies only within Türkiye.",
+    "sourceId": "official-turkcell-tourist-sim-2026-09-29"
+  },
+  {
+    "id": "evt-turkcell-generic-lifecycle-boundary-20261008",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "adjacent-regular-prepaid-lifecycle",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Current ordinary Turkcell prepaid FAQ specifies one TRY200 or higher top-up/transfer yields 185 active days plus up to 180 semi-active days. Earlier mirrored provider pages still show TRY10 minimum, creating first-party page divergence; none establishes that the ordinary 185/180-day rule or minimum applies to foreign Tourist SIM.",
+    "sourceId": "turkcell-prepaid-lifecycle-200tl-20261008"
+  },
+  {
+    "id": "evt-turkcell-generic-radio-tax-20261008",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "adjacent-regulatory-fee",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Turkcell's standard mobile prepaid support lists the 2026 annual radio-use levy as TRY323.81, collected in installments subject to any arrears. This is generic tax context, not evidence that Tourist SIM incurs a specific yearly renewal fee or that paying it preserves its number.",
+    "sourceId": "turkcell-prepaid-radio-tax-20261008"
+  },
+  {
+    "id": "evt-turkcell-tourist-shop-reports-20260519",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "tourist-acquisition-mixed-outcome",
+    "reportedAt": "2026-05-21",
+    "scope": "route",
+    "outcome": "May 2026 thread: tourist reported repeated local prepaid SIM sales refusals by several shops; a separate visitor reports obtaining and activating a Turkcell tourist SIM at a store for around EUR25. Mixed seller reports, not a measured eligibility denial rate.",
+    "sourceId": "turkcell-tourist-shops-mixed-20260519"
+  },
+  {
+    "id": "evt-turkcell-tourist-one-price-20260921",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "tourist-observed-sale-price",
+    "reportedAt": "2026-09-21",
+    "scope": "route",
+    "outcome": "September 2026 visitor reports paying TRY1,800 for a Turkcell Tourist SIM in a store. One independent localized purchase anecdote; actual currently selectable official Tourist package/checkout total and tax composition remain unknown.",
+    "sourceId": "turkcell-tourist-recent-price-20260921"
+  },
+  {
+    "id": "evt-turkcell-adjacent-overseas-sms-20260131",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "adjacent-overseas-sms-recovery",
+    "reportedAt": "2026-01-31",
+    "scope": "route",
+    "outcome": "Former Türkiye resident with Turkcell banking-number reported loss of reception in Lebanon despite enabled roaming; later said Wi-Fi Calling restored access. Tourist plan identity unspecified, geography Lebanon not China, and app bank OTP delivery itself not quantified.",
+    "sourceId": "turkcell-overseas-sms-wificalling-20260131"
+  },
+  {
+    "id": "evt-turkcell-adjacent-paygo-no-signal-20260224",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "adjacent-prepaid-roaming-failure",
+    "reportedAt": "2026-02-24",
+    "scope": "route",
+    "outcome": "A former Türkiye resident abroad with a PAYG Turkcell line reports no service and inability to receive SMS needed for Turkcell login; replies discuss unpaid radio tax, recharge and roaming as possibilities, not confirmed cause or tourist-specific failure.",
+    "sourceId": "turkcell-overseas-paygo-no-signal-20260224"
+  },
+  {
+    "id": "evt-turkcell-imei-vs-sim-distinction-20260818",
+    "routeId": "turkcell-tourist-90d-blocker-2026",
+    "type": "adjacent-device-imei-blocker",
+    "reportedAt": "2026-08-18",
+    "scope": "route",
+    "outcome": "2026 foreign-device Turkcell customer reported locally blocked phone/IMEI while their SIM functioned in another phone. Distinguish device registration/IMEI restriction from SIM-number expiry or passport service shutdown; individual incident, not proof of Tourist rule.",
+    "sourceId": "turkcell-foreign-imei-restriction-20260818"
   }
 ]

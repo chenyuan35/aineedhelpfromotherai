@@ -3042,11 +3042,20 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
     "sourceIds": [
       "official-btk-7571-rule-change-2026-09-29",
-      "official-turkcell-tourist-sim-2026-09-29"
+      "official-turkcell-tourist-sim-2026-09-29",
+      "turkcell-btk-2026-ik-thd-125-text-20260511",
+      "turkcell-prepaid-lifecycle-200tl-20261008",
+      "turkcell-prepaid-radio-tax-20261008",
+      "turkcell-roaming-packets-20261008",
+      "turkcell-tourist-shops-mixed-20260519",
+      "turkcell-tourist-recent-price-20260921",
+      "turkcell-overseas-sms-wificalling-20260131",
+      "turkcell-overseas-paygo-no-signal-20260224",
+      "turkcell-foreign-imei-restriction-20260818"
     ]
   },
   {

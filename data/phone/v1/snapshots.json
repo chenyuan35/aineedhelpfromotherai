@@ -9470,18 +9470,18 @@
     }
   },
   {
-    "id": "snap-turkcell-tourist-90d-blocker-2026-current-profile-20260929",
+    "id": "snap-turkcell-tourist-90d-blocker-2026-current-profile-20261008",
     "routeId": "turkcell-tourist-90d-blocker-2026",
     "kind": "current-profile",
-    "checkedAt": "2026-09-29",
-    "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+    "checkedAt": "2026-10-08",
+    "sourceDataset": "phone-turkcell-tourist-maintenance-2026-10-08",
     "data": {
       "id": "turkcell-tourist-90d-blocker-2026",
       "brandId": "turkcell-tourist",
       "publishState": "observation",
       "numberType": "real-mobile",
       "simType": "physical + eSIM",
-      "acquisitionSummary": "The legacy fixed 90-day passport/YKN blocker is stale. BTK Decision 2026/IK-THD/125 removed the old technical clauses that forced passport-registered foreign lines into the 90-day YKN-conversion shutdown path, effective 25 June 2026. Turkcell now offers a current Tourist SIM/eSIM flow using passport identity checks and Türkiye-arrival activation.",
+      "acquisitionSummary": "Turkcell Tourist SIM with a real Turkish mobile number and a Türkiye-only bundled tourist package: apply within 90 days of planned arrival, pay using an internationally enabled debit/credit card, complete digital biometric-passport eSIM/NFC/liveness/video onboarding or in-person passport/store activation; line use begins only after entry into Türkiye. The 90-day application window is NOT a 90-day lifetime. Current official checkout landed price not independently captured; Sep-2026 one-user TRY1,800 store price is anecdotal, not a normalized current offer.",
       "landedCost": {
         "currency": "TRY",
         "providerOrCommunityPrice": null,
@@ -9491,36 +9491,47 @@
         "landedOriginal": null,
         "landedCny": null,
         "fxCheckedAt": null,
-        "state": "current-price-not-captured"
+        "state": "official-tourist-current-checkout-not-confirmed-anecdotal-price-excluded"
       },
       "keep": {
         "currency": "TRY",
         "observedActionCost": null,
         "yearCostOriginal": null,
         "yearCostCny": null,
-        "action": "Do not use the historical 90-day passport cap as the current retention rule. That technical rule was repealed in 2026; a current long-term Tourist-SIM inactivity/number-retention rule has not been established in this packet.",
+        "action": "Former BTK passport/YKN shutdown at 90/181 days was repealed effective 2026-06-25. The 90-day Turkcell Tourist online pre-arrival application window is not a SIM-validity or renewal rule. Turkcell ordinary domestic Hazir Kart currently describes a single TRY200-or-more top-up/transfer that establishes 185 full-use days followed by up to 180 semi-active days, but it is a DIFFERENT tariff cohort and NOT proven applicable to tourist subscriptions. Tourist number-retention and overseas renewal cost/conditions remain UNKNOWN.",
         "intervalDays": null,
-        "state": "legacy-blocker-repealed-current-retention-unverified"
+        "state": "passport-90d-repealed-tourist-retention-not-proven-generic-prepaid-excluded"
       },
-      "chinaActivation": "Application can start online, but Turkcell states the Tourist line becomes usable after arrival in Türkiye. App self-activation for eSIM requires an eSIM/NFC phone, biometric passport scan, NFC passport read, liveness check and video contract confirmation.",
-      "kyc": "Current Tourist flow accepts a valid passport; in-app activation requires a biometric passport. Türkiye strengthened electronic/biometric subscriber identity rules in 2026, while the old fixed 90-day YKN conversion clause was removed.",
-      "payment": "Current Tourist application accepts debit/credit cards supporting international and online transactions.",
-      "wifiCalling": "Not relied on for this route decision.",
-      "roamingSms": "Current Turkcell Tourist package page says the package is valid only in Türkiye; this packet does not establish reliable overseas incoming OTP/SMS after departure.",
-      "refund": "Turkcell states Tourist SIM refunds go back to the same credit card after cancellation through customer service.",
-      "trend": "changed",
+      "chinaActivation": "You may apply before arrival but service begins only after entering Türkiye; online eSIM self-activation requires biometric/chipped passport, NFC-capable eSIM device, face liveness check and video agreement, with Türkiye entry verification. Alternatively complete physical/eSIM activation in a Turkcell store in Türkiye. China-first actual service or remote SMS activation is not established.",
+      "kyc": "Only valid passport for Tourist SIM; biometric/chipped passport mandatory for Turkcell App NFC eSIM self-activation; store activation accepts a passport for physical/eSIM. 2026 BTK Decision 2026/IK-THD/125 removed the former compulsory 90-day passport-to-YKN conversion shutdown procedure effective June 25, not the normal identity-verification requirements.",
+      "payment": "Turkcell Tourist official flow requires a debit/credit card supporting online and international transactions for digital order; approval for any particular foreign bank/card unverified. Store collection of approved online order has no additional pickup charge per Turkcell.",
+      "wifiCalling": "January-2026 non-tourist former-Türkiye-resident Turkcell subscriber reported Lebanese roaming signal/SMS failure resolved by Wi-Fi Calling. Plan, handset and eligibility do not identify Tourist SIM; do not recommend foreign Wi-Fi Calling as a verified Tourist OTP fix.",
+      "roamingSms": "Tourist bundled data/minutes/SMS are officially valid only inside Türkiye; do not treat the package as an overseas roaming entitlement or as evidence that incoming SMS is impossible. Generic Turkcell prepaid international-roaming offerings exist, including listed China coverage, but no current Tourist SIM entitlement, incoming roaming-SMS delivery, mainland-China bank/app OTP test, or overseas long-term retention path was verified. Independent overseas failures/recovery concern older/regular lines, not route-specific Tourist observations.",
+      "refund": "Turkcell Tourist official FAQ: cancel via customer care; refund returns to original payment card, and an unactivated order missing store pickup deadline is canceled/refunded. Refund processing time and edge cases unverified.",
+      "trend": "watch",
       "guideEligible": false,
-      "holdReason": "The old 90-day passport blocker is no longer current, but the route still lacks a verified long-term retention rule and overseas incoming-SMS path; activation/use is Türkiye-centered.",
-      "lastVerifiedAt": "2026-09-29",
+      "holdReason": "2026 repeal of former fixed 90-day passport shutdown is real but not evidence of indefinite Tourist SIM service. No verified Tourist-line keep lifecycle, foreign renewal cost, China receiving SMS/OTP or post-travel roaming availability. Generic Hazir Kart 185-day top-up/TRY200 and 2026 TRY323.81 annual radio-use tax are adjacent-class facts, not verified Tourist annual keep fees. Retain temporary-only HOLD; one-off tourist package isn't a long-term SMS route.",
+      "lastVerifiedAt": "2026-10-08",
       "acquireUrl": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
-      "tariffSummary": "Legacy 90-day YKN blocker repealed in 2026; current Tourist SIM supports passport-based online application/eSIM flow, but long-term retention and overseas OTP remain unverified.",
+      "tariffSummary": "Tourist real-mobile line: 90-day application window NOT a service lifespan; previous mandatory 90-day YKN cutoff repealed 2026-06-25. Tourist official first-use in Türkiye; new SIM price, post-trip number retention and overseas OTP remain unverified.",
       "sourceIds": [
+        "official-btk-7571-rule-change-2026-09-29",
         "official-turkcell-tourist-sim-2026-09-29",
-        "official-btk-7571-rule-change-2026-09-29"
+        "turkcell-btk-2026-ik-thd-125-text-20260511",
+        "turkcell-prepaid-lifecycle-200tl-20261008",
+        "turkcell-prepaid-radio-tax-20261008",
+        "turkcell-roaming-packets-20261008",
+        "turkcell-tourist-shops-mixed-20260519",
+        "turkcell-tourist-recent-price-20260921",
+        "turkcell-overseas-sms-wificalling-20260131",
+        "turkcell-overseas-paygo-no-signal-20260224",
+        "turkcell-foreign-imei-restriction-20260818"
       ],
       "guideSteps": [
-        "HOLD: do not repeat the pre-June-2026 fixed 90-day passport-cap claim.",
-        "Treat as Türkiye tourist connectivity until current long-term retention and overseas OTP evidence exists."
+        "Order before arrival within the official 90-day arrival window; verify the actual provider checkout.",
+        "Biometric passport + NFC/eSIM + liveness/video for app setup, or passport-based store activation once in Türkiye.",
+        "Do not use a 90-day application window or generic Hazir Kart recharge rule as a Tourist SIM lifetime guarantee.",
+        "No verified mainland-China incoming bank/app OTP; treat as short-stay local number only."
       ],
       "avoidRoute": true
     }
