@@ -27,4 +27,8 @@ Good2Go's current contractual [roaming clause](https://good2gomobile.ca/pdfs/ser
 
 Good2Go moves from **2 → 12 route sources**, **1 → 10 events**, zero app-specific observations. The total source corpus rises **814 → 824**, canonical rows remain **160**, markets **87**, brands **157**, networks **117** (the old `rogers-ca` dimension is still used elsewhere but no longer attached to this route), historical public comparison **135**, explicit indexable **3** and sitemap **31**. Evidence state **HOLD** and `guideEligible=false` remain. The reviewed branch generates current data bundle/search summaries/metrics/lazy detail with **null** acquisition and keep cost, no indexed route, and dedicated regression in `phone:data:check`.
 
-**Release pending:** CI, Eval Gate, Vercel Preview, squash merge and exact main SHA production verification. Independent public HTTP check must not be claimed without access. Next separate Wave B route after release: `o2-uk-classic-payg-6mo-2026`.
+## Verified release
+
+PR #432 squash-merged as `72584505dc2beb59d4059c68ad73bbf587fc5dcb`; CI #326 / run `37733111841` **PASS**, Eval Gate #1263 / run `37733111177` **PASS**, Vercel Preview `dpl_5hsRx8fpPNzntxYwNzCdVpemd1dZ` **READY**, production `dpl_Gp3A6b458Apb7dqtqxrF2Bntf7yh` **READY** at the exact merged SHA with both apex `aineedhelpfromotherai.com` and www aliases verified. Direct live JSON/sitemap HTTP reading remains blocked by the external reader and is not claimed verified.
+
+The route remains backstage-only and HOLD after release, and no route-specific China OTP or current signup cost becomes evidence simply because deployment is READY. Next separate Wave B route after release: `o2-uk-classic-payg-6mo-2026`.
