@@ -25,4 +25,8 @@ Neither establishes China-specific application OTP reliability. **Zero exact-app
 
 12 new sources + 8 events; route source depth 2 → 14, events 1 → 9. Canonical **160 routes / 87 markets / 157 brands / 117 networks / 814 sources**, publication **135 comparison / 3 explicit indexable / 31 sitemap URLs** unchanged. Stale acquisition CNY approximation cleared, amount remains €10 card-only. Whole Phone database/index/summaries/lazy detail regenerated and Free FR regression added; ASDA source-count regression made monotonic so later maintenance does not break historical evidence.
 
-**Release verification pending:** GitHub CI, Eval Gate, Vercel Preview, merge and production. No unverified deployed status asserted.
+## Release verification
+
+PR #430 squash-merged as `d3d488b9f4456934e2ec2b244f56d0973604f5b9`; CI #324 / run `37732262068` **PASS**, Eval Gate #1259 / run `37732261900` **PASS**, Vercel Preview `dpl_FgFLKbHchqBJZg9yZcvJbZGY4QHe` **READY**, production `dpl_3DBBPXggDvouQ3LqR8MTBLEbgHGj` **READY** on exact merged main SHA and `aineedhelpfromotherai.com` alias assigned. Independent direct live HTTP reading of JSON/sitemap was blocked by external reader; it is not claimed as verified.
+
+The Free Mobile line remains backstage-only and HOLD; production readiness is not evidence that China bank/app OTP or foreign-IBAN/new eSIM signup works.
