@@ -2068,5 +2068,68 @@
     "scope": "route",
     "outcome": "A June 2026 self-identified Claro prepaid user outside Brazil reported no international roaming and inability to switch their line to postpaid remotely. Independently corroborates provider restriction without an app-specific success percentage.",
     "sourceId": "community-claro-br-prepaid-roaming-denial-20260615"
+  },
+  {
+    "id": "evt-asda-uk-activity-180d-conflict-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "lifecycle-rule-conflict",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The provider says a chargeable call or SMS every 180 days keeps the number active, while a separate top-up/plan-credit rule demands a recharge or bundle within 180 days to avoid restricted outgoing service. Both clocks need attention; a lone SMS cannot be guaranteed to reset top-up credit.",
+    "sourceId": "asda-payg-emergency-reactivation-faq-20261008"
+  },
+  {
+    "id": "evt-asda-uk-credit-expiry-270d-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "credit-expiry-and-number-loss",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "After 180 days without top-up/plan purchase the account restricts outbound service but explicitly allows inbound calls/texts; after a further 90 days without contacting support and paying, the number and balance can be irretrievably lost.",
+    "sourceId": "asda-payg-expiry-faq-20261008"
+  },
+  {
+    "id": "evt-asda-uk-minimum-5-ukcard-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "funding-restriction",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Official PAYG terms give £5 minimum top-up. Current online card payment explicitly accepts Visa/Mastercard only with UK-registered billing address; foreign-issued cards/addresses cannot be assumed accepted.",
+    "sourceId": "asda-payg-uk-card-restriction-20261008"
+  },
+  {
+    "id": "evt-asda-uk-china-roaming-zone-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "roaming-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Provider Sept 2025 PAYG rate book lists China in World Group 1 and outgoing SMS to UK at £0.20, but does not quantify receiving SMS abroad or prove any Chinese bank/OTP reception. A UK-only credit/card requirement raises continuity risk.",
+    "sourceId": "asda-payg-price-book-sep2025"
+  },
+  {
+    "id": "evt-asda-uk-esim-not-offshore-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Official physical PAYG SIM activates on supported UK network when first used and online account links via inbound verification SMS; provider offers physical-to-eSIM conversion but no proven foreign first activation flow or same onboarding for a new PAYG eSIM.",
+    "sourceId": "asda-payg-activation-uk-network-20261008"
+  },
+  {
+    "id": "evt-asda-uk-independent-2026-text-only-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "independent-conflicting-experience",
+    "reportedAt": "2026-03-22",
+    "scope": "route",
+    "outcome": "One March 2026 ASDA subscriber describes setting a reminder to send a text around 5.5 months. This is a single lived usage report, not evidence that text-only waives the different official 180-day top-up-credit expiry rule.",
+    "sourceId": "asda-ukfrugal-2026-active-text-20260322"
+  },
+  {
+    "id": "evt-asda-uk-independent-2022-grace-20261008",
+    "routeId": "asda-mobile-uk-2026",
+    "type": "independent-continuity",
+    "reportedAt": "2022-06-07",
+    "scope": "route",
+    "outcome": "One June 2022 PAYG customer reports no received 180-day warning or disconnection shortly after the 180-day mark. Historical anecdote, not a guaranteed cancellation window.",
+    "sourceId": "asda-askuk-2022-grace-report-20220607"
   }
 ]
