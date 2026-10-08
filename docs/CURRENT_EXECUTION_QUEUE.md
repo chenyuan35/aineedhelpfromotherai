@@ -335,6 +335,7 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Baseline **CZK99 starter + CZK100 credit**; **CZK29/day** only after outbound call/data, not passive ordinary SMS. Minimum **CZK300 top-up / 12 months** preserves number but CZK300–499 credit expires in **6 months**. This is prepaid funding, not a fixed service fee.
 - Prepaid eSIM conversion needs O2 shop/ID/PUK (standard CZK99 exchange); overseas-first new eSIM remains unverified. Online top-up requires a Europe-issued internet-enabled card; store cash/card accepted. Incoming roaming SMS free but Wi-Fi Calling cannot carry SMS; no exact China bank/OTP sample.
 - Route stays admitted/backstage-only; **160 canonical, 771 sources, 135 comparison, 3 indexable, 31 sitemap**. No application success percentage and no new SEO URL. Ledger: `docs/PHONE_O2_CZ_MAINTENANCE_2026-10-08.md`.
+- Verified release: PR **#422** squash-merged as `0f5e4a9d4dd398772ccf11eb86d46c1909dc57ad`; CI run **#37717592877 PASS**, Eval Gate **#37717592832 PASS**, Vercel Preview **PASS**, production deployment `dpl_GEnUj4uj8uFSQmJAbpCbUkAyL4Ry` **READY** at the merged SHA. Live Phone hub **HTTP 200**, O2 lazy detail **HTTP 200 / 9 sources / CZK300 normalized yearly top-up / physical+eSIM**, route summaries **HTTP 200 / 160 routes**, live sitemap **HTTP 200 / 31 URLs and no O2 independent entry**. Standalone O2 route HTTP status was not independently measured.
 
 ## NEXT — continue database maintenance, no invented expansion
 

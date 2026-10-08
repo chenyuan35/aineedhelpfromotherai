@@ -25,3 +25,9 @@ O2 top-up support confirms **CZK300–9,999 online** by compatible Visa/MasterCa
 - Independent Prague O2 acquisition (2024-08-17): https://www.reddit.com/r/Prague/comments/1eube3t
 
 Existing 2 official sources retained. Seven new sources and six new route events, no app observations. Canonical remains 160 routes / 87 markets / 157 brands / 117 networks / **771 sources**; publication **135 comparison / 3 indexable / 31 sitemap URLs**. Verify data-generation and release gates before merge; next route `telstra-prepaid-longexpiry-2026`.
+
+## Released and verified
+
+PR **#422** squash-merged as `0f5e4a9d4dd398772ccf11eb86d46c1909dc57ad`; CI run **#37717592877 PASS**, Eval Gate **#37717592832 PASS**, Vercel Preview **PASS**, production deployment `dpl_GEnUj4uj8uFSQmJAbpCbUkAyL4Ry` **READY** at the merged SHA. Live Phone hub **HTTP 200**, O2 lazy detail **HTTP 200 / 9 sources / CZK300 normalized yearly top-up / physical+eSIM**, route summaries **HTTP 200 / 160 routes**, live sitemap **HTTP 200 / 31 URLs and no O2 independent entry**. Standalone O2 route HTTP status was not independently measured.
+
+No change to the approved publication boundary or application-specific OTP conclusions.
