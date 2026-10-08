@@ -354,17 +354,17 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - **1 → 13 sources**, six new events, zero app-level observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 791 sources**, no publication expansion (**135 comparison / 3 indexable / 31 sitemap**).
 - Ledger `docs/PHONE_CLARO_BR_MAINTENANCE_2026-10-08.md`. PR #426 squash-merged as `1d2fefb61e0c72672f209497541e3b99768ae9f9`; CI #320 / run #37728500364 **PASS**; Eval Gate #1251 / run #37728500198 **PASS**; Vercel Preview `dpl_B6CtBF1sgcfVfyTMNx8tpRyPGeda` **READY**; production `dpl_5aHCsnEvLwqBKkCDWac2X6E5D9i5` **READY** at that merged SHA and assigned `aineedhelpfromotherai.com` alias. Independent direct HTTP retrieval of the public JSON/sitemap was blocked by the external reader and is not claimed as verified.
 
-## JUST COMPLETED — ASDA Mobile UK dual-rule maintenance (release pending)
+## JUST COMPLETED — ASDA Mobile UK dual-rule maintenance (released)
 
 - Existing `asda-mobile-uk-2026` remains **HOLD / backstage-only**. The provider's two distinct 180-day triggers are **recharge/plan purchase** for credit vs **chargeable call/SMS** for active line status; a text alone cannot be guaranteed to reset the recharge clock. 180-day credit restriction retains incoming calls/texts; after another 90 days, number/credit may become unrecoverable.
 - Physical free UK-delivered SIM + **£5 minimum top-up**; **£10/360 days** is a twice-£5 recharge credit-funding illustration, *not* a guaranteed annual service fee. Optional £5/month bundle is a separate plan. ASDA online-card top-up requires **UK-registered Visa/Mastercard**; ordinary foreign-address cards have no evidenced path.
 - Existing-customer physical→eSIM conversion documented, but new PAYG eSIM/China-first activation not established. Sept-2025 PAYG tariffs include China in World Group 1; receipt pricing and exact bank/app OTP outcomes remain unknown. Community single-user text-only account does not resolve official conflict.
 - **2 → 13 sources**, seven new events, zero service observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 802 sources**; publication unchanged **135 comparison / 3 indexable / 31 sitemap**.
-- Ledger: `docs/PHONE_ASDA_UK_MAINTENANCE_2026-10-08.md`; generated indexes/bundle and CI regression updated; CI/Eval/Preview/production release gates pending.
+- Ledger: `docs/PHONE_ASDA_UK_MAINTENANCE_2026-10-08.md`; PR #428 squash-merged as `811a056f937e3b395b9431bb52cb31f2f0654b6c`, CI #322 **PASS**, Eval Gate #1255 **PASS**, Vercel Preview `dpl_BJ62bfRcTRvokfW6GRvw4VUsSGqW` **READY**. Automated post-merge production deployment was not visible, so production was manually built from verified main SHA as `dpl_5FUc8YupzsvaTKGtpcdvfHLN5ziN` **READY**, domain alias assigned. Direct public JSON/sitemap HTTP read not independently available.
 
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `free-mobile-fr-2026` (Wave B HOLD), after ASDA release verification: reconcile France prepaid product identity, current lifecycle/retention, purchase/eSIM/KYC, international card/recharge, China SMS and independent operational evidence.
+1. **Immediate bounded route:** `free-mobile-fr-2026` (Wave B HOLD), ASDA deployment is READY; reconcile France prepaid product identity, current lifecycle/retention, purchase/eSIM/KYC, international card/recharge, China SMS and independent operational evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -389,13 +389,13 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `free-mobile-fr-2026` (one bounded route per session after ASDA maintenance production release succeeds).
+First eligible: `free-mobile-fr-2026` (one bounded route per session; ASDA PR #428 merged and exact-SHA production READY).
 
 Maintain in evidence-value order rather than country-completion order:
 
 - `telstra-prepaid-longexpiry-2026` — **DONE / RELEASED 2026-10-08**, 1 → 9 sources, AUD74/12-month Casual path, 6-month rescue, still HOLD.
 - `claro-pre-br-90d-2026` — **DONE / RELEASED 2026-10-08**, 1 → 13 sources, R$35/90-day and prepaid roaming unavailable, remains HOLD.
-- `asda-mobile-uk-2026` — **DONE EVIDENCE / RELEASE PENDING 2026-10-08**, 2 → 13 sources, dual 180-day trigger, UK-only card funding restriction, still HOLD.
+- `asda-mobile-uk-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, dual 180-day trigger, UK-only card funding restriction, still HOLD.
 - `free-mobile-fr-2026`
 - `good2go-payg-ca-2026`
 - `o2-uk-classic-payg-6mo-2026`
