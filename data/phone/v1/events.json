@@ -2626,5 +2626,104 @@
     "scope": "route",
     "outcome": "2026 foreign-device Turkcell customer reported locally blocked phone/IMEI while their SIM functioned in another phone. Distinguish device registration/IMEI restriction from SIM-number expiry or passport service shutdown; individual incident, not proof of Tourist rule.",
     "sourceId": "turkcell-foreign-imei-restriction-20260818"
+  },
+  {
+    "id": "evt-viettel-vtvang-specialist-20260210",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-retention-plan",
+    "reportedAt": "2026-02-10",
+    "scope": "route",
+    "outcome": "Local telecom specialist reports VTVANG 50,000 VND/12 months for active prepaid over 30 days, with restricted tariffs; SMS VTVANG to 109. First-party terms and repeat renewal not found.",
+    "sourceId": "specialist-3gviettel-vtvang-2026-09-29"
+  },
+  {
+    "id": "evt-viettel-vtvang-overseas-user-20260620",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-vtvang-support-reported",
+    "reportedAt": "2026-06-22",
+    "scope": "route",
+    "outcome": "Expats in June 2026 thread report VTVANG 50,000 VND/12 months and enrollment through a Viettel app audio/video customer support call; one foreign passport user could not perform remote SIM→eSIM conversion because of chip-CCCD-only identity scanning. User testimony, not official plan policy.",
+    "sourceId": "viettel-community-vtvang-foreign-esim-20260620"
+  },
+  {
+    "id": "evt-viettel-viettel-offshore-prepaid-sms-20260214",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-overseas-sms-trouble",
+    "reportedAt": "2026-02-14",
+    "scope": "route",
+    "outcome": "Viettel V160B subscriber abroad cannot send SMS from one physical SIM although a parallel eSIM works. Community suggests VTVANG or usage/top-ups to retain number; no direct VTVANG receiving OTP or China success was established.",
+    "sourceId": "viettel-community-roaming-keep-sms-20260214"
+  },
+  {
+    "id": "evt-viettel-viettel-official-unverified-block-20260618",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "provider-identity-verification-block",
+    "reportedAt": "2026-06-18",
+    "scope": "route",
+    "outcome": "Viettel states unverified lines, domestic or abroad, lost outgoing calls/SMS from June 15, 2026. Active roaming needed for SMS OTP, and chipped Vietnamese CCCD/level-2 identity required by documented My Viettel/Tammi remote remediation, not necessarily workable for passport users.",
+    "sourceId": "official-viettel-kyc-roaming-otp-2026-09-29"
+  },
+  {
+    "id": "evt-viettel-viettel-official-phone-transfer-20260615",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "provider-device-reverification-clock",
+    "reportedAt": "2026-06-15",
+    "scope": "route",
+    "outcome": "Viettel new device rule: facial identity re-verification within two hours after SIM insertion in another handset; otherwise outgoing block, 30 more days until two-way block, then five days until number recovery/contract termination. Not repaired by number retention package alone.",
+    "sourceId": "viettel-official-device-change-2h-20260615"
+  },
+  {
+    "id": "evt-viettel-viettel-passport-compliance-20260618",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-passport-compliance-trouble",
+    "reportedAt": "2026-07-01",
+    "scope": "route",
+    "outcome": "June/July 2026 first-hand foreign passport users report outgoing service interruption, repeated prompts despite store visits, difficulty receiving banking login texts, and accidental SIM number replacement later corrected. Not incidence rate or proof every passport user fails.",
+    "sourceId": "viettel-community-passport-kyc-failures-20260618"
+  },
+  {
+    "id": "evt-viettel-viettel-dre20-separate-roaming-20260617",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "provider-adjacent-roaming-option",
+    "reportedAt": "2026-06-17",
+    "scope": "route",
+    "outcome": "Viettel first party publishes DRE20 VND20,000/30 days 50 MB roaming auto-renewal (June article 171 territories; February older copy 158). It is not VTVANG and cannot prove a specific China partner or incoming bank OTP; 12 cycles VND240,000 covers 360 days only.",
+    "sourceId": "viettel-official-offshore-biometric-and-dre-20260617"
+  },
+  {
+    "id": "evt-viettel-viettel-passport-esim-online-20260729",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-passport-esim-onboarding-failure",
+    "reportedAt": "2026-07-29",
+    "scope": "route",
+    "outcome": "Visitor reports repeated official-web online foreign passport/selfie identity check failure buying tourist eSIM. Adjacent new sale issue, not an exact VTVANG application or proof store purchase impossible.",
+    "sourceId": "viettel-community-passport-esim-web-failure-20260729"
+  },
+  {
+    "id": "evt-viettel-viettel-us-prepaid-active-20260811",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-overseas-prepaid-use",
+    "reportedAt": "2026-08-11",
+    "scope": "route",
+    "outcome": "Existing Viettel US-based traveller reports retaining number and sending occasional SMS since February; no claim of VTVANG subscription or verified China bank app OTP. Other discussion suggests occasional balance/action, not universal validity rules.",
+    "sourceId": "viettel-community-overseas-existing-sim-20260811"
+  },
+  {
+    "id": "evt-viettel-viettel-tammi-oct-rebrand-20261001",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "provider-application-transition",
+    "reportedAt": "2026-10-01",
+    "scope": "route",
+    "outcome": "Viettel September 2026 announcement says former My Viettel app would be replaced by Viettel Tammi from October 1; June first-party app eSIM conversion flow requires Vietnamese chip CCCD NFC. Do not rely on legacy app labels as proof of current foreign passport workflow.",
+    "sourceId": "viettel-official-tammi-transition-20260917"
+  },
+  {
+    "id": "evt-viettel-viettel-unregistered-airport-sim-20260815",
+    "routeId": "viettel-vtvang-keepnumber-2026",
+    "type": "independent-adjacent-sim-registration-loss",
+    "reportedAt": "2026-08-15",
+    "scope": "route",
+    "outcome": "Tourist reports an airport SIM purchased and activated but ceased working in about 24 hours; an authorized retailer reportedly diagnosed incomplete ownership registration. Adjacent acquisition channel, not proof VTVANG or all Viettel SIMs expire in one day.",
+    "sourceId": "viettel-community-airport-registration-20260815"
   }
 ]
