@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 764 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 771 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -329,9 +329,16 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Ledger: `docs/PHONE_MTS_RU_MAINTENANCE_2026-10-08.md`.
 - Release verification: PR **#420** squash-merged as `2b798504c5e89487e98a756be8cbf48355400c51`; CI run **#37714829212 PASS**, Eval Gate **#37714829243 PASS**, Vercel Preview **PASS**, production deployment `dpl_3tyvVTauFvvpk2ebEwNfKq6Qg6km` **READY** at the merged SHA. Live MTS detail **HTTP 200 / 12 sources / RUB698 annual keep**, summaries **HTTP 200 / 160 routes**, Phone hub **HTTP 200**, and standalone MTS route **HTTP 404**. Production remained non-indexable.
 
+## JUST COMPLETED — O2 Czech GO prepaid route maintenance
+
+- `o2-cz-prepaid-2026`: source depth **2 → 9**, using effective 2026-10-05 official tariff, retail and recharge policies, prepaid eSIM/store replacement, roaming facts, generic regulator KYC context and an independent Prague shop report.
+- Baseline **CZK99 starter + CZK100 credit**; **CZK29/day** only after outbound call/data, not passive ordinary SMS. Minimum **CZK300 top-up / 12 months** preserves number but CZK300–499 credit expires in **6 months**. This is prepaid funding, not a fixed service fee.
+- Prepaid eSIM conversion needs O2 shop/ID/PUK (standard CZK99 exchange); overseas-first new eSIM remains unverified. Online top-up requires a Europe-issued internet-enabled card; store cash/card accepted. Incoming roaming SMS free but Wi-Fi Calling cannot carry SMS; no exact China bank/OTP sample.
+- Route stays admitted/backstage-only; **160 canonical, 771 sources, 135 comparison, 3 indexable, 31 sitemap**. No application success percentage and no new SEO URL. Ledger: `docs/PHONE_O2_CZ_MAINTENANCE_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `o2-cz-prepaid-2026`. Reconcile current O2 Czech prepaid cost, validity/renewal, KYC, SIM/eSIM, activation, overseas SMS and independent service evidence.
+1. **Immediate bounded route:** `telstra-prepaid-longexpiry-2026` (Wave B HOLD): reconcile exact Australian prepaid product, current long-expiry validity/recharge, activation/KYC/eSIM, overseas payments/roaming SMS and independent continuity without promoting unresolved state.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -350,11 +357,13 @@ After the immediate MTN task, deepen the remaining admitted routes with only two
 
 1. `mtn-ng-keepmynumber-2026` — **DONE 2026-10-08**; 2 → 9 sources, current lifecycle/eSIM/KYC/continuity reconciled.
 2. `mts-sokhranyayu-nomer-2026` — **DONE 2026-10-08**; 2 → 12 sources.
-3. `o2-cz-prepaid-2026` — next immediate task.
+3. `o2-cz-prepaid-2026` — **DONE 2026-10-08**; 2 → 9 sources, current economy/activation/eSIM/payment/roaming boundaries reconciled.
 
 Done condition per route: current provider-controlled economics/lifecycle/eligibility reconciled; activation/KYC/eSIM/payment/roaming-SMS boundaries explicit; independent operational evidence added when making real-world continuity/OTP claims; generated artifacts and regression checks pass.
 
 ### Wave B — HOLD routes with only 1–2 sources
+
+First eligible: `telstra-prepaid-longexpiry-2026` (one bounded route per session).
 
 Maintain in evidence-value order rather than country-completion order:
 
