@@ -401,7 +401,7 @@ function taskCandidates(opts){
   if(opts.job==='keep'||opts.service==='bank')return [];
   let rows=(canonicalIndex?.routes||[]).filter(taskEligible);
   if(opts.market!=='any')rows=rows.filter(r=>r.marketName===opts.market);
-  if(opts.form==='esim')rows=rows.filter(r=>/\\besim\\b/i.test(r.form||'')&&!/unverified|must be rechecked|data-only/i.test(r.form||''));
+  if(opts.form==='esim')rows=rows.filter(r=>/\besim\b/i.test(r.form||'')&&!/unverified|must be rechecked|data-only/i.test(r.form||''));
   if(opts.service!=='any')rows=rows.filter(r=>taskServiceEvidence(r,opts.service));
   for(const [key,metric] of [['start','acquisitionCostCny'],['keep','keepYearCostCny']]){
     if(opts[key]!=='any'){const cap=Number(opts[key]);rows=rows.filter(r=>Number.isFinite(indexMetric(r,metric))&&indexMetric(r,metric)<=cap)}
