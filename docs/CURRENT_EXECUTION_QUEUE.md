@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 867 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 878 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -401,9 +401,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Independent acquisition and former-resident offshore SMS/IMEI incidents have clear applicability limits; exact Tourist China/bank-app OTP remains unknown. **9 new sources + 9 route events**, route 2→11 sources / 0→9 events. Canonical **160 routes / 867 sources**, unchanged **135 comparison / 3 indexable / 31 sitemap**. Route temporary / real-mobile **HOLD / backstage-only**, no new public URL, zero exact OTP observations.
 - PR #440 squash-merged `7793e6cdab0b916a87f819f28a2eb7dcb924d740`; CI #336 **PASS**, Eval Gate #1281 **PASS** (earlier #1280 failure from obsolete fixed whole-corpus TrueMove assertion corrected); Vercel Preview `dpl_2hFHCRqHpf3Z6W9uYSizBA94XXUP` **READY**; production `dpl_4EmyLHDBKet4NYsXfb6fwcpCfbUq` **READY**, apex/www aliases verified, live Phone hub, Turkcell lazy JSON, route summaries and sitemap **HTTP 200**, 31 sitemap locs. Ledger: `docs/PHONE_TURKCELL_TOURIST_MAINTENANCE_2026-10-08.md`.
 
+## JUST COMPLETED — Viettel VTVANG prepaid keeping number / foreign KYC / roaming maintenance (released)
+
+- The VND50,000/12-month specialist claim is corroborated in a June-2026 expatriate discussion, but **not** in an accessible current Viettel product contract; retained as observed action cost only, new SIM acquisition and verified annual keep total null. Existing eligible prepaid service / >=30-day account-age restriction must be verified before any user action. Optional operator **DRE20 VND20,000/30-day** data roaming is not VTVANG and does not establish Chinese bank SMS reception.
+- Provider June-2026 biometric compliance imposes outgoing call/SMS restrictions and separate handset-change 2-hour/30-day/5-day escalating identity/number recovery boundaries. Foreign passport online CCCD/NFC eSIM onboarding and real offshore roaming/SMS remain uncertain. Zero confirmed named-bank/app OTP or China outcome. Added 11 sources and 11 events: Viettel 2→13 route sources, 0→11 events; **160 routes / 878 sources**, **135 comparison / 3 indexable / 31 sitemap** unchanged; HOLD/backstage-only, no public URL.
+- PR **#442** squash-merged `cf58a48a6c1aac5ba7efe61e0f20ede0f99f6735`; CI **#339 PASS**, Eval Gate **#1291 PASS**, exact-head Preview `dpl_HnXmEYR4VC9hGCCndvjBNqjpDQg8` **READY**, production `dpl_3wcpvuKBrw2PbeL3a5PRtH8SW4rt` **READY** on exact SHA, apex/www assigned. Live Phone hub, Viettel lazy JSON (13 sources/11 events), summaries (160 routes), and sitemap (31 URLs) all **HTTP 200**. Ledger `docs/PHONE_VIETTEL_VTVANG_MAINTENANCE_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `viettel-vtvang-keepnumber-2026` (Wave B HOLD). Verify current Vietnam VTVANG-number-retention availability, price and true eligibility against first-party rules, separate SIM identity/liveness/foreigner onboarding from local-only acquisition, reconcile offshore incoming SMS/China bank-app OTP and independent actual continuity incidents. Preserve null/unknown when unsupported, and keep HOLD until a real blocker clears.
+1. **Immediate bounded route:** `vodafone-callya-90d-2026` (Wave B HOLD). Reconcile current German CallYa prepaid 90-day/12-month validity/top-up minimum and number-reclaim triggers with first-party policy; separate existing legacy/available SIM offers, foreign eSIM and ID registration, payment, roaming/inbound SMS/China OTP and independent operational failures. Preserve unresolved annual fee and eligibility as unknown. One route only; no new URL or ranking promotion.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -428,7 +434,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `viettel-vtvang-keepnumber-2026` (one bounded route per session; Turkcell PR #440 exact-SHA production and live JSON HTTP verified).
+First eligible: `vodafone-callya-90d-2026` (one bounded route per session; Viettel PR #442 exact-SHA production and live JSON HTTP verified).
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -441,7 +447,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `singtel-hi-prepaid-passport-30d-2026` — **DONE / RELEASED 2026-10-08**, 2 → 14 sources, S$15/30-day tourist, passport data-only and independent 30-day registration cutoff; HOLD.
 - `truemove-validity-pack-th-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, 8 new events, conditional THB15/180d validity, separate THB3/30d post-expiry retention (max 180d), Tourist SIM 60d cap; remains HOLD.
 - `turkcell-tourist-90d-blocker-2026` — **DONE / RELEASED 2026-10-08**, 2 → 11 sources, 9 route events; old 90d passport/YKN blocker repealed, Tourist renewal/China OTP unverified; HOLD.
-- `viettel-vtvang-keepnumber-2026`
+- `viettel-vtvang-keepnumber-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources and 11 route events; VND50k/12m independent only, 2026 biometric/foreign-KYC risk and China OTP unknown; remains HOLD.
 - `vodafone-callya-90d-2026`
 
 These remain HOLD unless the blocker is actually resolved. Source-count growth alone is not promotion evidence.
