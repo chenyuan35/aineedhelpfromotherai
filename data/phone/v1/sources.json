@@ -4943,5 +4943,71 @@
     "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
     "type": "community",
     "reportedAt": "2025-08-04"
+  },
+  {
+    "id": "o2-classic-tariff-terms-20261008",
+    "url": "https://www.o2.co.uk/termsandconditions/mobile/our-pay-as-you-go-tariff-terms",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-classic-rates-20261008",
+    "url": "https://www.o2.co.uk/termsandconditions/mobile/pay-as-you-go-classic-tariff-standard-rates",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-current-plans-20261008",
+    "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/pay-as-you-go-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-topup-uk-bank-20261008",
+    "url": "https://www.o2.co.uk/help/account/billing-and-usage/topping-up-pay-as-you-go-balance",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-esim-eligibility-20261008",
+    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-sim-activation-20261008",
+    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/your-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-wifi-calling-geofence-20261008",
+    "url": "https://www.o2.co.uk/help/international-and-network/wifi/wifi-4g-and-5g-calling",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-roaming-20261008",
+    "url": "https://www.o2.co.uk/help/international-and-network/using-your-phone-abroad/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-forum-disconnected-20241111",
+    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/PAYG-sim-disconnected/td-p/1762471",
+    "type": "community-report",
+    "reportedAt": "2024-11-11"
+  },
+  {
+    "id": "o2-classic-forum-legacy-user-20250216",
+    "url": "https://community.o2.co.uk/t5/Discussions-Feedback/O2-SENT-ME-A-TEXT-ON-07-02-2025-WARNING-ME-ABOUT-UPCOMING-3G-AND/td-p/1781447",
+    "type": "community-report",
+    "reportedAt": "2025-02-16"
+  },
+  {
+    "id": "o2-classic-forum-bpi-disruption-20251202",
+    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Pay-As-You-Go-BPI-Subscription/td-p/1820257",
+    "type": "community-report",
+    "reportedAt": "2025-12-02"
   }
 ]

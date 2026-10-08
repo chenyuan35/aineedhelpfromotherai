@@ -2284,5 +2284,95 @@
     "scope": "route",
     "outcome": "July 2025 users reported they were being removed from old $25/120-day PAYG credit plan. Historic Petro-style $20/180-day or $25/120-day credit expiry must not be represented as active current Good2Go offer.",
     "sourceId": "good2go-ca-reddit-old-payg-20250731"
+  },
+  {
+    "id": "evt-o2-classic-no-public-signup-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "legacy-acquisition-not-generally-available",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Classic is an officially discontinued legacy tariff. Generic terms mention narrow indirect-channel legacy SIM activations but do not provide a current available channel; 2026 ordinary Big Bundles/Rolling plans are not Classic.",
+    "sourceId": "o2-classic-tariff-terms-20261008"
+  },
+  {
+    "id": "evt-o2-classic-six-month-rule-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "legacy-inactivity-disconnection",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "O2's current Classic page states top-up OR add a Bolt On OR chargeable activity at least once in any six calendar months; otherwise SIM disconnects and remaining credit is lost. Do not interpret six months as exactly 180 days or require £10 top-up every six months.",
+    "sourceId": "official-o2-classic-payg-help-2026-09-28"
+  },
+  {
+    "id": "evt-o2-classic-uk-rates-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "domestic-text-cost-only",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Current Classic standard UK text cost is 2p, call 3p/min, data 1p/MB; £0.04/year is not a validated total keep-alive cost, and UK domestic text tariffs do not establish overseas roaming SMS rates.",
+    "sourceId": "o2-classic-classic-rates-20261008"
+  },
+  {
+    "id": "evt-o2-classic-uk-funding-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "online-payment-eligibility",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "O2 online credit-card top-ups require a UK-bank card with UK-registered billing address, from £10 in pounds; vouchers/cash machine alternatives are not evidence of foreign signup funding.",
+    "sourceId": "o2-classic-topup-uk-bank-20261008"
+  },
+  {
+    "id": "evt-o2-classic-esim-unproven-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "generic-payg-esim-vs-classic",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "O2 offers eSIM for eligible current PAYG and existing SIM swaps, but this is not evidence that a legacy Classic line is entitled to a Classic-specific eSIM exchange or offshore first activation.",
+    "sourceId": "o2-classic-esim-eligibility-20261008"
+  },
+  {
+    "id": "evt-o2-classic-uk-wifi-only-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "foreign-wifi-calling-blocker",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "General O2 PAYG Wi-Fi Calling exists but is currently unsupported outside the UK; do not present international Wi-Fi Calling as an OTP workaround.",
+    "sourceId": "o2-classic-wifi-calling-geofence-20261008"
+  },
+  {
+    "id": "evt-o2-classic-abroad-unknown-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "china-roaming-and-otp-unknown",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Official O2 roaming pages do not verify Classic-specific China incoming SMS entitlement or exact bank/app OTP success; avoid blanket claims of free global incoming SMS.",
+    "sourceId": "o2-classic-roaming-20261008"
+  },
+  {
+    "id": "evt-o2-classic-lost-line-incident-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "community-number-access-loss",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "One 2024 Classic customer reported disconnection despite claimed chargeable calls inside six months and required four support contacts to regain account access; anecdotal, not a line-loss percentage.",
+    "sourceId": "o2-classic-forum-disconnected-20241111"
+  },
+  {
+    "id": "evt-o2-classic-legacy-usage-2025-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "community-legacy-user-evidence",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "A self-described 2025 Classic holder reports continued 3p calling/2p SMS use and worries about 3G/2G device connectivity; the report establishes legacy active users, not new-sale availability.",
+    "sourceId": "o2-classic-forum-legacy-user-20250216"
+  },
+  {
+    "id": "evt-o2-classic-2025-bpi-20261008",
+    "routeId": "o2-uk-classic-payg-6mo-2026",
+    "type": "community-account-and-international-incident",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "A November-December 2025 O2 forum thread contains two existing Classic lines still shown as Classic and other users reporting account relabeling, auto-top-up loss and calls abroad failing; mixed tariffs, not proof Classic-wide roaming failure.",
+    "sourceId": "o2-classic-forum-bpi-disruption-20251202"
   }
 ]

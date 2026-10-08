@@ -1083,15 +1083,15 @@
     },
     {
       "routeId": "o2-uk-classic-payg-6mo-2026",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
-      "acquisitionCostOriginal": 10,
-      "acquisitionCostCny": 93,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
       "keepCurrency": "GBP",
-      "keepYearCostOriginal": 0.04,
-      "keepYearCostCny": 0.4,
-      "keepIntervalDays": 180
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "omantel-om-2026",
