@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 771 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 779 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -337,9 +337,18 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Route stays admitted/backstage-only; **160 canonical, 771 sources, 135 comparison, 3 indexable, 31 sitemap**. No application success percentage and no new SEO URL. Ledger: `docs/PHONE_O2_CZ_MAINTENANCE_2026-10-08.md`.
 - Verified release: PR **#422** squash-merged as `0f5e4a9d4dd398772ccf11eb86d46c1909dc57ad`; CI run **#37717592877 PASS**, Eval Gate **#37717592832 PASS**, Vercel Preview **PASS**, production deployment `dpl_GEnUj4uj8uFSQmJAbpCbUkAyL4Ry` **READY** at the merged SHA. Live Phone hub **HTTP 200**, O2 lazy detail **HTTP 200 / 9 sources / CZK300 normalized yearly top-up / physical+eSIM**, route summaries **HTTP 200 / 160 routes**, live sitemap **HTTP 200 / 31 URLs and no O2 independent entry**. Standalone O2 route HTTP status was not independently measured.
 
+## JUST COMPLETED — Telstra Australia Pre-Paid Casual HOLD maintenance (release pending)
+
+- Existing `telstra-prepaid-longexpiry-2026` changes no canonical identity, HOLD/admission state or publication boundary.
+- Corrected 12-month retention from **AUD395 data-rich Mobile plan** to the separate **AUD74/12-month Casual** option; current AUD44/6-month Casual exists, while AUD200/6-month and AUD395/12-month Mobile are more expensive data-oriented products.
+- Telstra documents **six months recharge-only rescue** after a prepaid recharge expires, then service deactivation/number loss. Only incoming calls are explicit in this rescue wording; do not claim incoming rescue-period OTP.
+- Prepaid physical SIM/eSIM and international-passport form option are documented. China-first activation, foreign payment and exact China bank/app incoming-SMS reliability are unproven. Independent 2026 roaming reports are mixed and a 2025 pack-purchase failure is recorded as one operational incident.
+- **1 → 9 sources**, 5 new events, zero exact service observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 779 sources**. Public boundary stays **135 comparison / 3 indexable / 31 sitemap**.
+- Ledger: `docs/PHONE_TELSTRA_AU_MAINTENANCE_2026-10-08.md`. Generated artifacts and test are prepared on a fresh branch; CI/Eval/Preview, merge and live checks remain release gates.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `telstra-prepaid-longexpiry-2026` (Wave B HOLD): reconcile exact Australian prepaid product, current long-expiry validity/recharge, activation/KYC/eSIM, overseas payments/roaming SMS and independent continuity without promoting unresolved state.
+1. **Immediate bounded route:** `claro-pre-br-90d-2026` (Wave B HOLD): reconcile exact Brazilian prepaid lifecycle, acquisition/KYC/eSIM, recharge/payment, overseas SMS and independent continuity; retain HOLD without sufficient evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -364,11 +373,11 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `telstra-prepaid-longexpiry-2026` (one bounded route per session).
+First eligible: `claro-pre-br-90d-2026` (one bounded route per session, after the Telstra PR is released and production-verified).
 
 Maintain in evidence-value order rather than country-completion order:
 
-- `telstra-prepaid-longexpiry-2026`
+- `telstra-prepaid-longexpiry-2026` — **DONE RESEARCH / RELEASE PENDING 2026-10-08**, 1 → 9 sources, AUD74/12-month Casual path, 6-month rescue, still HOLD.
 - `claro-pre-br-90d-2026`
 - `asda-mobile-uk-2026`
 - `free-mobile-fr-2026`

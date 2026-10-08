@@ -2729,16 +2729,24 @@
     "marketId": "au",
     "networkId": "telstra-au",
     "brandId": "telstra-prepaid",
-    "displayName": "Telstra Pre-Paid",
+    "displayName": "Telstra Pre-Paid Casual (12-month)",
     "family": "long-term",
     "numberClass": "real-mobile",
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-26",
-    "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+    "lastVerifiedAt": "2026-10-08",
+    "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
     "sourceIds": [
-      "official-telstra-prepaid-compare-2026-09-26"
+      "official-telstra-prepaid-compare-2026-09-26",
+      "official-telstra-casual-price-2026-10-08",
+      "official-telstra-2026-current-offers-2026-10-08",
+      "official-telstra-traveller-keep-number-2026-10-08",
+      "official-telstra-6mo-recharge-rescue-2026-10-08",
+      "official-telstra-prepaid-travel-roaming-2026-10-08",
+      "community-telstra-casual-roaming-2026-09-23",
+      "community-telstra-prepaid-bank-sms-2026-05-05",
+      "community-telstra-365day-roaming-pack-friction-2025-02-03"
     ]
   },
   {

@@ -1563,14 +1563,14 @@
     },
     {
       "routeId": "telstra-prepaid-longexpiry-2026",
-      "checkedAt": "2026-09-26",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "AUD",
-      "acquisitionCostOriginal": 2,
-      "acquisitionCostCny": 9.4,
+      "acquisitionCostOriginal": 74,
+      "acquisitionCostCny": null,
       "keepCurrency": "AUD",
-      "keepYearCostOriginal": 395,
-      "keepYearCostCny": 1860,
+      "keepYearCostOriginal": 74,
+      "keepYearCostCny": null,
       "keepIntervalDays": 365
     },
     {
