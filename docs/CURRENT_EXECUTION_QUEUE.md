@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 824 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 858 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -389,9 +389,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - 12 new sources, eleven events, route source depth 2 → 14; canonical **160 routes / 87 markets / 157 brands / 117 networks / 847 sources**, zero exact bank/app OTP observations and unchanged **135 comparison / 3 indexable / 31 sitemap**. Ledger `docs/PHONE_SINGTEL_HI_PASSPORT_MAINTENANCE_2026-10-08.md`.
 - PR #436 squash-merged as `55d33d374ab056a9bccb3c60aa748a57d3cbacf0`; CI #331 **PASS**, Eval Gate #1272 **PASS**, Vercel Preview `dpl_F646wMfwyxt7WWUQGSghye6Lcvo5` **READY**, production `dpl_G5z2a6zwQWzTMRpBoot2GSpyBHKC` **READY** on exact merged main SHA, apex `aineedhelpfromotherai.com` and www aliases both verified. Direct independent public JSON/sitemap HTTP reading was not performed and HTTP 200 is not claimed.
 
+## JUST COMPLETED — TrueMove Thailand validity/roaming maintenance (released)
+
+- Existing `truemove-validity-pack-th-2026` remains **HOLD/backstage-only**; new-sale landing price and reliable annual retention fee are **null**. First-party `*934*30/90/180#` extension codes now separated from secondary-reported THB15/180-day conditional price, NBTC post-expiry retention THB3/30d for max 180 days with positive balance, and max-60-day Tourist SIM restrictions.
+- Thailand-first roaming activation, foreign passport long-term regular line eligibility, payment/China-first activation and real China bank/app SMS/OTP remain unresolved. No fabricated annual fee or app success rate. **11 new sources, 8 events**, route 2→13 sources / 1→9 events; canonical **160 routes / 858 sources**; public boundary unchanged **135 comparison / 3 indexable / 31 sitemap**.
+- PR #438 squash-merged `4c8049862488b4067bae715fe287108eb2aafb27`; CI #333 **PASS**, Eval Gate #1276 **PASS**, Vercel Preview `dpl_B9TjUw3E9b1qhm68HsTNPAkhVxey` **READY**; production `dpl_4vk228Zqevh8Cfki5TkxG4Z8Kcfm` **READY** on exact main SHA, apex/www aliases assigned. Independent direct live public JSON/sitemap HTTP was unavailable and not claimed. Ledger: `docs/PHONE_TRUEMOVE_TH_MAINTENANCE_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `truemove-validity-pack-th-2026` (Wave B HOLD). Reconcile actual Thailand validity add-on, top-up cost, tourist vs regular entitlement, KYC/eSIM, overseas SMS/OTP and independent operational evidence. Start as a separate one-route session.
+1. **Immediate bounded route:** `turkcell-tourist-90d-blocker-2026` (Wave B HOLD). Reconcile the current Turkish tourist/foreign-registration deadline, actual activation and retention economics, KYC/eSIM, roaming/OTP and independent operational incidents. Start as a separate one-route session; keep unknown terms unknown.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -416,7 +422,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `truemove-validity-pack-th-2026` (one bounded route per session; Singtel exact-SHA production verified).
+First eligible: `turkcell-tourist-90d-blocker-2026` (one bounded route per session; TrueMove exact-SHA production verified).
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -427,7 +433,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `good2go-payg-ca-2026` — **DONE / RELEASED 2026-10-08**, 2 → 12 sources, historical PAYG superseded by paid active-plan/90-day loss, current host/price unknown; remains HOLD.
 - `o2-uk-classic-payg-6mo-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, Classic legacy holders only, calendar-six-month and payment/China boundaries corrected; HOLD.
 - `singtel-hi-prepaid-passport-30d-2026` — **DONE / RELEASED 2026-10-08**, 2 → 14 sources, S$15/30-day tourist, passport data-only and independent 30-day registration cutoff; HOLD.
-- `truemove-validity-pack-th-2026`
+- `truemove-validity-pack-th-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, 8 new events, conditional THB15/180d validity, separate THB3/30d post-expiry retention (max 180d), Tourist SIM 60d cap; remains HOLD.
 - `turkcell-tourist-90d-blocker-2026`
 - `viettel-vtvang-keepnumber-2026`
 - `vodafone-callya-90d-2026`
