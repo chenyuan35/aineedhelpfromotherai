@@ -2869,5 +2869,23 @@
     "outcome": "Older CallYa Smartphone Special / Talk & SMS user reports approximately EUR30 credit depletion in China while attempting inbound-SMS-only dual-SIM use. Cause and modern tariff applicability unverified.",
     "sourceId": "callya-computerbase-china-legacy-billing-20200204",
     "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-5sim-reused-number-20260616",
+    "routeId": "5sim-temp",
+    "type": "independent-reused-number-incident",
+    "reportedAt": "2026-06-16",
+    "scope": "marketplace-review-sample",
+    "outcome": "Several self-selected 2026 reviews report numbers already used, service blocking or SMS failures on Telegram, WhatsApp, Instagram and Google, while other reviews report eventual code receipt after retrying. Service/country/operator/order details cannot support exact-app success-rate estimates.",
+    "sourceId": "5sim-trustpilot-2026"
+  },
+  {
+    "id": "evt-5sim-inconsistent-20260511",
+    "routeId": "5sim-temp",
+    "type": "independent-marketplace-availability-report",
+    "reportedAt": "2026-05-11",
+    "scope": "marketplace-comparison-single-author",
+    "outcome": "A community comparison author reports 5SIM one-time activation inventory as low-cost but inconsistent in 2026, without an exact service/country/operator reproduction or statistical denominator. One author report, not a platform-wide failure rate.",
+    "sourceId": "5sim-reddit-nocontract-20260511"
   }
 ]
