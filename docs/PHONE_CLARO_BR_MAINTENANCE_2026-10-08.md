@@ -33,8 +33,12 @@ Claro's official international roaming pages explicitly state **prepaid and Cont
 
 The one historical source is retained. **12 added sources and six added route events**; zero app-level observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 791 sources**. Publication remains **135 historical comparison / 3 route indexable / 31 sitemap URLs**.
 
+## Released and verified
+
+PR #426 squash-merged as `1d2fefb61e0c72672f209497541e3b99768ae9f9`; CI #320 / run #37728500364 **PASS**; Eval Gate #1251 / run #37728500198 **PASS**; Vercel Preview `dpl_B6CtBF1sgcfVfyTMNx8tpRyPGeda` **READY**; production `dpl_5aHCsnEvLwqBKkCDWac2X6E5D9i5` **READY** at that merged SHA and assigned `aineedhelpfromotherai.com` alias. Independent direct HTTP retrieval of the public JSON/sitemap was blocked by the external reader and is not claimed as verified. The first Eval Gate #1250 failed because the previous Telstra maintenance regression hardcoded its historical 779-source total. That assertion was repaired to a monotonic historical minimum; CI #320 / Eval Gate #1251 passed with the Claro addition.
+
 ## Verification contract and follow-up
 
-`scripts/test-phone-claro-br-maintenance.mjs` enforces R$35/90 days, R$140/360 days, no invented acquisition price, unsupported roaming, HOLD, source/event evidence, no service observations and unchanged publication boundary. Generated finder summary/search/metrics/detail/database artifacts must pass the exact `phone:data:check` and CI/Eval Gate/Preview before merge. Release and public verification are pending.
+`scripts/test-phone-claro-br-maintenance.mjs` enforces R$35/90 days, R$140/360 days, no invented acquisition price, unsupported roaming, HOLD, source/event evidence, no service observations and unchanged publication boundary. Generated finder summary/search/metrics/detail/database artifacts must pass the exact `phone:data:check` and CI/Eval Gate/Preview before merge. Release is complete under the observed CI/Eval/Preview and Vercel production-ready gates; direct public JSON HTTP content was not independently retrievable.
 
 Next bounded Wave B route: `asda-mobile-uk-2026`.
