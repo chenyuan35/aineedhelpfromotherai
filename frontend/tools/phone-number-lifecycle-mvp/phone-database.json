@@ -3814,11 +3814,21 @@
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
-      "lastVerifiedAt": "2026-09-29",
-      "acquireUrl": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
       "sourceIds": [
         "mts-keep-number-product-2026-09-29",
-        "mts-long-inactivity-support-2026-09-29"
+        "mts-long-inactivity-support-2026-09-29",
+        "mts-keep-current-20261008",
+        "mts-foreign-kyc-20260206",
+        "mts-esim-new-20261008",
+        "mts-esim-activate-20261008",
+        "mts-roaming-20261008",
+        "mts-sms-quarantine-20261007",
+        "mts-topup-20260806",
+        "mts-number-forever-archive-20261008",
+        "mts-forum-30day-20260613",
+        "mts-forum-roaming-sms-20240820"
       ]
     },
     {
@@ -9814,6 +9824,66 @@
       "url": "https://www.nairaland.com/8738633/what-happens-bank-account-when",
       "type": "community-incident-thread",
       "reportedAt": "2026-08-31"
+    },
+    {
+      "id": "mts-keep-current-20261008",
+      "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mts-foreign-kyc-20260206",
+      "url": "https://support.mts.ru/mts_mobilnaya_svyaz/oformlenie-novoi-sim-karti/kak-inostrannomu-grazhdaninu-oformit-sim-kartu",
+      "type": "provider-official",
+      "reportedAt": "2026-02-06"
+    },
+    {
+      "id": "mts-esim-new-20261008",
+      "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-oformit-novuyu-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mts-esim-activate-20261008",
+      "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-aktivirovat-esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mts-roaming-20261008",
+      "url": "https://support.mts.ru/mts_rouming_i_mezhgorod/poezdki-po-miru/kak-podklyuchit-uslugi-dlya-dostupa-k-svyazi-i-internetu-v-rouminge",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mts-sms-quarantine-20261007",
+      "url": "https://support.mts.ru/mts_mobilnaya_svyaz/blokirovka-nomera-problemi-so-svyazyu/kak-vosstanovit-dostup-k-internetu-i-sms-posle-poezdki-za-granitsu-ili-pereriva-v-ispolzovanii-nomera",
+      "type": "provider-official",
+      "reportedAt": "2026-10-07"
+    },
+    {
+      "id": "mts-topup-20260806",
+      "url": "https://support.mts.ru/mts_mobilnaya_svyaz/popolnenie-schyota/kak-popolnit-balans-telefona",
+      "type": "provider-official",
+      "reportedAt": "2026-08-06"
+    },
+    {
+      "id": "mts-number-forever-archive-20261008",
+      "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/archive/nomer-navsegda",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "mts-forum-30day-20260613",
+      "url": "https://4pda.to/forum/index.php?showtopic=954353&st=46300",
+      "type": "independent-community",
+      "reportedAt": "2026-06-13"
+    },
+    {
+      "id": "mts-forum-roaming-sms-20240820",
+      "url": "https://4pda.to/forum/index.php?showtopic=954353&st=30680",
+      "type": "independent-community",
+      "reportedAt": "2024-08-20"
     }
   ],
   "observations": [
@@ -11978,6 +12048,60 @@
       "scope": "route",
       "outcome": "A 2026 independent Nairaland report says an MTN Nigeria number was reassigned despite the user reporting an active Keep My Number subscription and ongoing recharge. Treat this as a single-user continuity incident, not proof that KMN generally fails.",
       "sourceId": "community-nairaland-mtn-kmn-reassigned-20260831"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-price-renewal-20261008",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "provider-price-confirmation",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "RUB349/6 months, initial immediate debit and renewal from sufficient balance on eligible tariffs; this is not an acquisition price.",
+      "sourceId": "mts-keep-current-20261008"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-default-inactivity-20261008",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "lifecycle-reconciliation",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Ordinary no-monthly-fee inactivity is distinct from subscribed number-retention. MTS says 30 inactive days may trigger RUB1.5/day until available balance runs out, then possible contract termination after six months.",
+      "sourceId": "mts-long-inactivity-support-2026-09-29"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-foreign-esim-boundary-20261008",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "activation-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Foreign citizens need passport/Gosuslugi/biometrics in Russia. A new eSIM first activates only on Russia's own MTS network; offshore/China-first activation is not demonstrated.",
+      "sourceId": "mts-esim-activate-20261008"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-sms-24h-restriction-20261008",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "sms-continuity-warning",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "MTS documents a conditional 24-hour SMS/data restriction after returning from abroad or >72 hours offline, with early lifting after device verification. It is not a universal overseas OTP rate.",
+      "sourceId": "mts-sms-quarantine-20261007"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-roaming-adjacent-incident-20240820",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "operational-failure-adjacent",
+      "reportedAt": "2024-08-20",
+      "scope": "route",
+      "outcome": "An independent MTS user reported incoming roaming-SMS failure until roaming was enabled; this report is general MTS roaming and not tested on this retention add-on or a specific app.",
+      "sourceId": "mts-forum-roaming-sms-20240820"
+    },
+    {
+      "id": "evt-mts-sokhranyayu-nomer-2026-alternate-naming-20261008",
+      "routeId": "mts-sokhranyayu-nomer-2026",
+      "type": "product-identity-watch",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Archived Номер навсегда RUB1,500 one-time may be a distinct historical product. Availability and scope are unverified; do not conflate with current Сохраняю номер RUB349/6 months.",
+      "sourceId": "mts-number-forever-archive-20261008"
     }
   ],
   "snapshots": [
@@ -17810,15 +17934,15 @@
       "id": "snap-mts-sokhranyayu-nomer-2026-current-profile-20260929",
       "routeId": "mts-sokhranyayu-nomer-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-29",
-      "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "mts-ru-retention-maintenance-2026-10-08",
       "data": {
         "id": "mts-sokhranyayu-nomer-2026",
         "brandId": "mts-prepaid",
         "publishState": "observation",
         "numberType": "real-mobile",
         "simType": "physical + eSIM",
-        "acquisitionSummary": "MTS \"Сохраняю номер\" is a keep-number add-on for eligible tariffs without a monthly fee. It is managed through My MTS / personal account; this is a retention service on an existing MTS line, not a starter tariff.",
+        "acquisitionSummary": "Сохраняю номер is an optional retention add-on for an existing eligible MTS Russia mobile line, not a new starter tariff. The selected tariff and all existing paid subscriptions remain separately chargeable; confirm eligibility in My MTS.",
         "landedCost": {
           "currency": "RUB",
           "providerOrCommunityPrice": null,
@@ -17835,25 +17959,35 @@
           "observedActionCost": 349,
           "yearCostOriginal": 698,
           "yearCostCny": null,
-          "action": "Use the Сохраняю номер service for eligible non-monthly-fee tariffs. The reviewed product evidence lists RUB349 for six months; current MTS support separately confirms the service and the default long-inactivity blocking logic.",
+          "action": "Current MTS product terms charge RUB349 immediately for six months, then automatically renew for another six months only if sufficient account funds remain. The service extends the no-paid-use/no-top-up period; suitable for eligible individual plans without subscription/monthly charges or other paid services. Combined home internet and TV packages are excluded. Verify eligibility in My MTS.",
           "intervalDays": 180,
-          "state": "current-provider-service-price-captured-product-page-geo-fragile"
+          "state": "current-provider-official-eligibility-sensitive"
         },
-        "chinaActivation": "Russian SIM/KYC and payment constraints apply; foreign acquisition and payment from abroad can be difficult.",
-        "kyc": "Subscriber identity registration is required; foreign-citizen rules are more restrictive and should be checked at acquisition.",
-        "payment": "My MTS/personal-account payment; cross-border card/payment reliability is not assumed.",
+        "chinaActivation": "Foreign-citizen new SIMs require in-person Russian MTS identity registration, Gosuslugi and biometrics. A new MTS eSIM can first activate only on MTS's own Russian network, not in China or other roaming networks.",
+        "kyc": "Foreign citizens need in-person MTS/passport onboarding, Gosuslugi confirmation, biometrics and registered device IMEI. Online new-eSIM purchase is limited to eligible Russian citizens.",
+        "payment": "The six-month fee and renewal draw down adequate existing MTS account balance. App/website top-ups by supported bank card/SBP/SberPay are documented; reliable foreign-issued-card top-ups from abroad are unverified.",
         "wifiCalling": "unverified",
-        "roamingSms": "Not used as an admission claim in this packet.",
-        "refund": "If a number is blocked for non-use, MTS says recovery may be possible if it has not been reassigned.",
+        "roamingSms": "Current MTS roaming help confirms ordinary send/receive SMS on partner networks when suitable roaming facilities are enabled. Exact China bank/app OTP delivery for this add-on remains unverified. MTS imposes a 24-hour SMS/data security restriction on returning from abroad or after >72 hours offline, with an early verification flow. One older independent MTS roaming report of incoming SMS failure until roaming was enabled is generic, not exact add-on evidence.",
+        "refund": "After non-use disconnection, MTS says number recovery may be possible only before reassignment; retaining a number does not remove KYC, roaming or anti-fraud SMS controls.",
         "trend": "watch",
         "guideEligible": false,
-        "holdReason": "Product/service is admitted backstage, but cross-border acquisition/payment and exact tariff eligibility remain material constraints.",
-        "lastVerifiedAt": "2026-09-29",
-        "acquireUrl": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
-        "tariffSummary": "Сохраняю номер: reviewed product evidence RUB349/6 months; current MTS support confirms service availability and ~6-month default non-use termination patterns.",
+        "holdReason": "Existing-line-only add-on; exact tariff eligibility, foreign registration, Russia-only first eSIM activation, offshore payment and exact China bank/app OTP are meaningful constraints.",
+        "lastVerifiedAt": "2026-10-08",
+        "acquireUrl": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+        "tariffSummary": "Сохраняю номер: current RUB349/6mo, approximately RUB698/12mo on eligible existing lines; funded automatic renewal required. The separate ordinary no-fee lifecycle may charge RUB1.5/day after 30 days without activity and terminate six months after the balance runs out. Archived Номер навсегда RUB1,500 one-time remains unverified as a current purchasable alternative.",
         "sourceIds": [
+          "mts-keep-number-product-2026-09-29",
           "mts-long-inactivity-support-2026-09-29",
-          "mts-keep-number-product-2026-09-29"
+          "mts-keep-current-20261008",
+          "mts-foreign-kyc-20260206",
+          "mts-esim-new-20261008",
+          "mts-esim-activate-20261008",
+          "mts-roaming-20261008",
+          "mts-sms-quarantine-20261007",
+          "mts-topup-20260806",
+          "mts-number-forever-archive-20261008",
+          "mts-forum-30day-20260613",
+          "mts-forum-roaming-sms-20240820"
         ],
         "guideSteps": [],
         "marketName": "Russia"
@@ -25376,7 +25510,7 @@
     },
     {
       "routeId": "mts-sokhranyayu-nomer-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "RUB",
       "acquisitionCostOriginal": null,

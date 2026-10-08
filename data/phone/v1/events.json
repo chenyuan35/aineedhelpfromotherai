@@ -1861,5 +1861,59 @@
     "scope": "route",
     "outcome": "A 2026 independent Nairaland report says an MTN Nigeria number was reassigned despite the user reporting an active Keep My Number subscription and ongoing recharge. Treat this as a single-user continuity incident, not proof that KMN generally fails.",
     "sourceId": "community-nairaland-mtn-kmn-reassigned-20260831"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-price-renewal-20261008",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "provider-price-confirmation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "RUB349/6 months, initial immediate debit and renewal from sufficient balance on eligible tariffs; this is not an acquisition price.",
+    "sourceId": "mts-keep-current-20261008"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-default-inactivity-20261008",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "lifecycle-reconciliation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Ordinary no-monthly-fee inactivity is distinct from subscribed number-retention. MTS says 30 inactive days may trigger RUB1.5/day until available balance runs out, then possible contract termination after six months.",
+    "sourceId": "mts-long-inactivity-support-2026-09-29"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-foreign-esim-boundary-20261008",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Foreign citizens need passport/Gosuslugi/biometrics in Russia. A new eSIM first activates only on Russia's own MTS network; offshore/China-first activation is not demonstrated.",
+    "sourceId": "mts-esim-activate-20261008"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-sms-24h-restriction-20261008",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "sms-continuity-warning",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "MTS documents a conditional 24-hour SMS/data restriction after returning from abroad or >72 hours offline, with early lifting after device verification. It is not a universal overseas OTP rate.",
+    "sourceId": "mts-sms-quarantine-20261007"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-roaming-adjacent-incident-20240820",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "operational-failure-adjacent",
+    "reportedAt": "2024-08-20",
+    "scope": "route",
+    "outcome": "An independent MTS user reported incoming roaming-SMS failure until roaming was enabled; this report is general MTS roaming and not tested on this retention add-on or a specific app.",
+    "sourceId": "mts-forum-roaming-sms-20240820"
+  },
+  {
+    "id": "evt-mts-sokhranyayu-nomer-2026-alternate-naming-20261008",
+    "routeId": "mts-sokhranyayu-nomer-2026",
+    "type": "product-identity-watch",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Archived Номер навсегда RUB1,500 one-time may be a distinct historical product. Availability and scope are unverified; do not conflate with current Сохраняю номер RUB349/6 months.",
+    "sourceId": "mts-number-forever-archive-20261008"
   }
 ]
