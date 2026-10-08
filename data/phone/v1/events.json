@@ -1969,5 +1969,50 @@
     "scope": "route",
     "outcome": "One independent r/Prague user described buying an O2 physical prepaid SIM in a Prague retail service point. This supports local acquisition only; the reported bundle is not proven to be the present GO na den CZK99 SKU, and no China/OTP claim is inferred.",
     "sourceId": "o2cz-reddit-prague-store-20240817"
+  },
+  {
+    "id": "evt-telstra-casual-cost-20261008",
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "type": "cost-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The exact lowest official 12-month Telstra Pre-Paid Casual recharge is AUD74; the separate data-rich Pre-Paid Mobile 12-month offer is AUD395 and does not define the lowest number-retention cost.",
+    "sourceId": "official-telstra-casual-price-2026-10-08"
+  },
+  {
+    "id": "evt-telstra-casual-expiry-20261008",
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "type": "lifecycle-clarification",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Telstra documents 6 months of recharge-only recovery following recharge expiry, then prepaid line deactivation and number loss. Receiving calls is supported in that window, but the support text does not affirm inbound SMS.",
+    "sourceId": "official-telstra-6mo-recharge-rescue-2026-10-08"
+  },
+  {
+    "id": "evt-telstra-casual-kyc-esim-20261008",
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Current checkout offers prepaid Casual eSIM or a AUD2 physical SIM starter plus recharge; an international passport appears on the accepted-ID selection but successful offshore-first eSIM activation is not confirmed.",
+    "sourceId": "official-telstra-2026-current-offers-2026-10-08"
+  },
+  {
+    "id": "evt-telstra-prepaid-roaming-conflict-20261008",
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "type": "roaming-sms-uncertainty",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Current Telstra roaming copy describes pack allowances; independent 2026 prepaid reports disagree over needing a roaming pack for incoming SMS. No China/OTP app-level conclusion or exact service observation follows.",
+    "sourceId": "official-telstra-prepaid-travel-roaming-2026-10-08"
+  },
+  {
+    "id": "evt-telstra-prepaid-roaming-pack-incident-20250203",
+    "routeId": "telstra-prepaid-longexpiry-2026",
+    "type": "operational-failure",
+    "reportedAt": "2025-02-03",
+    "scope": "route",
+    "outcome": "One independent long-validity Telstra prepaid user reported being unable to purchase an international roaming pack while already overseas; retain as one incident, not a universal failure rate.",
+    "sourceId": "community-telstra-365day-roaming-pack-friction-2025-02-03"
   }
 ]
