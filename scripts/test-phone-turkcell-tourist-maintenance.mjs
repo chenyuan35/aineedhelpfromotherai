@@ -17,7 +17,8 @@ const detail = read(root + 'phone-route-data/' + id + '.json');
 const historic = read('data/phone/review-packets/' + id + '.json');
 assert(route && snapshot && metrics && index && summary && detail && historic);
 assert.equal(routes.length, 160);
-assert.equal(sources.length, 867);
+// Whole-corpus sources grow during subsequent route maintenance; Turkcell's own 11-source contract is asserted below.
+assert(sources.length >= 867, `canonical sources regressed below Turkcell release baseline: ${sources.length}`);
 assert.equal(route.sourceIds.length, 11);
 assert.equal(route.family, 'temporary');
 assert.equal(route.numberClass, 'real-mobile');
