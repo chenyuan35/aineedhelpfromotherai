@@ -4703,16 +4703,24 @@
       "marketId": "au",
       "networkId": "telstra-au",
       "brandId": "telstra-prepaid",
-      "displayName": "Telstra Pre-Paid",
+      "displayName": "Telstra Pre-Paid Casual (12-month)",
       "family": "long-term",
       "numberClass": "real-mobile",
       "form": "physical + eSIM",
       "surfaceState": "backstage-only",
       "evidenceState": "hold",
-      "lastVerifiedAt": "2026-09-26",
-      "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
       "sourceIds": [
-        "official-telstra-prepaid-compare-2026-09-26"
+        "official-telstra-prepaid-compare-2026-09-26",
+        "official-telstra-casual-price-2026-10-08",
+        "official-telstra-2026-current-offers-2026-10-08",
+        "official-telstra-traveller-keep-number-2026-10-08",
+        "official-telstra-6mo-recharge-rescue-2026-10-08",
+        "official-telstra-prepaid-travel-roaming-2026-10-08",
+        "community-telstra-casual-roaming-2026-09-23",
+        "community-telstra-prepaid-bank-sms-2026-05-05",
+        "community-telstra-365day-roaming-pack-friction-2025-02-03"
       ]
     },
     {
@@ -9933,6 +9941,54 @@
       "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
       "type": "independent-community",
       "reportedAt": "2024-08-17"
+    },
+    {
+      "id": "official-telstra-casual-price-2026-10-08",
+      "url": "https://www.telstra.com.au/help/critical-information-summaries/personal/pre-paid/prepaid-mobile/telstra-pre-paid-mobile-offers-from-may-5-2026",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "official-telstra-2026-current-offers-2026-10-08",
+      "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "official-telstra-traveller-keep-number-2026-10-08",
+      "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/traveller-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "official-telstra-6mo-recharge-rescue-2026-10-08",
+      "url": "https://www.telstra.com.au/support/pre-paid/recharge-my-pre-paid-service",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "official-telstra-prepaid-travel-roaming-2026-10-08",
+      "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/international-roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "community-telstra-casual-roaming-2026-09-23",
+      "url": "https://www.reddit.com/r/TelstraAustralia/comments/1wntvdh/receive_both_sms_and_phone_calls_on_her/",
+      "type": "community",
+      "reportedAt": "2026-09-23"
+    },
+    {
+      "id": "community-telstra-prepaid-bank-sms-2026-05-05",
+      "url": "https://www.reddit.com/r/AusFinance/comments/1t4ell5/whats_the_cheapest_way_to_keep_my_aussie_number/",
+      "type": "community",
+      "reportedAt": "2026-05-05"
+    },
+    {
+      "id": "community-telstra-365day-roaming-pack-friction-2025-02-03",
+      "url": "https://www.reddit.com/r/TelstraAustralia/comments/1hls0t2",
+      "type": "community",
+      "reportedAt": "2025-02-03"
     }
   ],
   "observations": [
@@ -12205,6 +12261,51 @@
       "scope": "route",
       "outcome": "One independent r/Prague user described buying an O2 physical prepaid SIM in a Prague retail service point. This supports local acquisition only; the reported bundle is not proven to be the present GO na den CZK99 SKU, and no China/OTP claim is inferred.",
       "sourceId": "o2cz-reddit-prague-store-20240817"
+    },
+    {
+      "id": "evt-telstra-casual-cost-20261008",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "type": "cost-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "The exact lowest official 12-month Telstra Pre-Paid Casual recharge is AUD74; the separate data-rich Pre-Paid Mobile 12-month offer is AUD395 and does not define the lowest number-retention cost.",
+      "sourceId": "official-telstra-casual-price-2026-10-08"
+    },
+    {
+      "id": "evt-telstra-casual-expiry-20261008",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "type": "lifecycle-clarification",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Telstra documents 6 months of recharge-only recovery following recharge expiry, then prepaid line deactivation and number loss. Receiving calls is supported in that window, but the support text does not affirm inbound SMS.",
+      "sourceId": "official-telstra-6mo-recharge-rescue-2026-10-08"
+    },
+    {
+      "id": "evt-telstra-casual-kyc-esim-20261008",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "type": "activation-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Current checkout offers prepaid Casual eSIM or a AUD2 physical SIM starter plus recharge; an international passport appears on the accepted-ID selection but successful offshore-first eSIM activation is not confirmed.",
+      "sourceId": "official-telstra-2026-current-offers-2026-10-08"
+    },
+    {
+      "id": "evt-telstra-prepaid-roaming-conflict-20261008",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "type": "roaming-sms-uncertainty",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Current Telstra roaming copy describes pack allowances; independent 2026 prepaid reports disagree over needing a roaming pack for incoming SMS. No China/OTP app-level conclusion or exact service observation follows.",
+      "sourceId": "official-telstra-prepaid-travel-roaming-2026-10-08"
+    },
+    {
+      "id": "evt-telstra-prepaid-roaming-pack-incident-20250203",
+      "routeId": "telstra-prepaid-longexpiry-2026",
+      "type": "operational-failure",
+      "reportedAt": "2025-02-03",
+      "scope": "route",
+      "outcome": "One independent long-validity Telstra prepaid user reported being unable to purchase an international roaming pack while already overseas; retain as one incident, not a universal failure rate.",
+      "sourceId": "community-telstra-365day-roaming-pack-friction-2025-02-03"
     }
   ],
   "snapshots": [
@@ -20993,52 +21094,63 @@
       "id": "snap-telstra-prepaid-longexpiry-2026-current-profile-20260926",
       "routeId": "telstra-prepaid-longexpiry-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-26",
-      "sourceDataset": "nl-au-directory-batch-g.json",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "telstra-casual-maintenance-2026-10-08",
       "data": {
         "id": "telstra-prepaid-longexpiry-2026",
         "brandId": "telstra-prepaid",
         "publishState": "observation",
         "numberType": "real-mobile",
         "simType": "physical + eSIM",
-        "acquisitionSummary": "Official plan table (2026-09-26): recharge $200 → 6-month expiry, $395 → 12-month expiry; lower tiers 7-28 days. Data for use in Australia only.",
+        "acquisitionSummary": "Telstra Pre-Paid Mobile Casual is a distinct low-usage offer: AUD74 recharge keeps the same number active for 12 months (1GB domestic data and capped calls/texts), versus AUD44 for six months; the mainstream Pre-Paid Mobile AUD200/6mo and AUD395/12mo are data-rich alternatives, not the cheapest number-retention path. Current Telstra checkout offers eSIM or a AUD2 physical SIM starter plus the chosen recharge.",
         "landedCost": {
           "currency": "AUD",
-          "providerOrCommunityPrice": 2,
+          "providerOrCommunityPrice": 74,
           "mandatoryTopup": null,
-          "shipping": 0,
+          "shipping": null,
           "adapterCostCny": null,
-          "landedOriginal": 2,
-          "landedCny": 9.4,
-          "fxCheckedAt": "2026-09-26",
-          "state": "community-reported-sim-price"
+          "landedOriginal": 74,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-provider-casual-esim-recharge"
         },
         "keep": {
           "currency": "AUD",
-          "observedActionCost": 200,
-          "yearCostOriginal": 395,
-          "yearCostCny": 1860,
-          "action": "Recharge-expiry model: $395/yr (12-month tier) or $200/6mo. Expensive vs global alternatives. Post-expiry grace period for number recovery pending capture — 验证中.",
+          "observedActionCost": 74,
+          "yearCostOriginal": 74,
+          "yearCostCny": null,
+          "action": "Recharge Pre-Paid Mobile Casual AUD74 for 12-month expiry; AUD44 gives 6 months and is more expensive for a full year. After recharge expiry, Telstra documents a 6-month recharge-only rescue window before deactivation/number loss. Incoming calls remain available during that period; incoming SMS during rescue is not guaranteed by this support page.",
           "intervalDays": 365,
-          "state": "official-recharge-ladder-number-grace-pending"
+          "state": "current-provider-casual-12mo-plus-6mo-rescue"
         },
-        "chinaActivation": "Telstra prepaid activation requires Australia network typically; eSIM available; China-first unverified.",
-        "kyc": "AU prepaid ID check (name/DOB, light-touch; passport OK).",
-        "payment": "Card/PayPal online; international cards generally accepted.",
-        "wifiCalling": "Supported (device-dependent).",
-        "roamingSms": "Receiving SMS abroad works (community); roaming packs for outbound.",
-        "refund": "not reconciled",
+        "chinaActivation": "New prepaid eSIM or physical activation is offered with Telstra ID and identity verification. China-first signup/eSIM provisioning and foreign-network first activation are not established; do not presume overseas-first success.",
+        "kyc": "Pre-Paid checkout requests identity verification and lists Australian passport, driver licence, Medicare card or international passport/Immicard. Acceptance of each foreign document and remote applicant is not universal.",
+        "payment": "Recharge is available in My Telstra app/browser. Overseas account access, non-Australian card/PayPal acceptance and the ability to buy a roaming pack after leaving Australia are not confirmed for every user.",
+        "wifiCalling": "Telstra Wi-Fi Calling support varies by handset/service; not treated as a guaranteed overseas SMS or OTP recovery path.",
+        "roamingSms": "Telstra Pre-Paid Roaming Packs support selected destinations and cost AUD10/3d, AUD15/7d or AUD25/14d. Provider copy/terms differ on whether incoming SMS draws from the pack allowance; 2026 independent prepaid users report ordinary incoming SMS overseas without a pack, while another user reports inability to purchase a pack while abroad. Do not assume reachability, mainland-China bank OTP or outbound SMS without a valid pack.",
+        "refund": "Post-expiry included allowances/credit and refund/transfer rules are not reconciled.",
         "trend": "stable",
         "guideEligible": false,
-        "holdReason": "$395/yr is 20-100x pricier than alternatives (Hotlink RM2, ClubSIM HK$6); document as reference unless AU number specifically needed.",
-        "lastVerifiedAt": "2026-09-26",
-        "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
-        "tariffSummary": "$200/6mo or $395/12mo recharge-expiry model.",
+        "holdReason": "HOLD: the cheapest long-life Telstra number product is the AUD74/12mo Casual recharge, but offshore-first activation, foreign payment, no-pack roaming-SMS entitlement and exact China bank/app OTP continuity remain unverified. No universal guarantee or service success rate.",
+        "lastVerifiedAt": "2026-10-08",
+        "acquireUrl": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
+        "tariffSummary": "Casual AUD74/12 months (cheapest documented annual keep); Casual AUD44/6 months; Mobile AUD200/6 months and AUD395/12 months. Rescue: six months after recharge expiry.",
         "sourceIds": [
-          "official-telstra-prepaid-compare-2026-09-26"
+          "official-telstra-prepaid-compare-2026-09-26",
+          "official-telstra-casual-price-2026-10-08",
+          "official-telstra-2026-current-offers-2026-10-08",
+          "official-telstra-traveller-keep-number-2026-10-08",
+          "official-telstra-6mo-recharge-rescue-2026-10-08",
+          "official-telstra-prepaid-travel-roaming-2026-10-08",
+          "community-telstra-casual-roaming-2026-09-23",
+          "community-telstra-prepaid-bank-sms-2026-05-05",
+          "community-telstra-365day-roaming-pack-friction-2025-02-03"
         ],
         "guideSteps": [
-          "Directory card only — premium pricing documented for reference."
+          "Choose the Telstra Pre-Paid Mobile Casual 12-month offer, not the data-rich 12-month Mobile Plan.",
+          "Complete identity verification and first activation, ordinarily in Australia; overseas-first eligibility is not established.",
+          "Recharge AUD74 before expiry; a further six-month recharge-only rescue period precedes cancellation.",
+          "Independently verify destination roaming and service-specific incoming OTP before relying on the number overseas."
         ]
       }
     },
@@ -26137,14 +26249,14 @@
     },
     {
       "routeId": "telstra-prepaid-longexpiry-2026",
-      "checkedAt": "2026-09-26",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "AUD",
-      "acquisitionCostOriginal": 2,
-      "acquisitionCostCny": 9.4,
+      "acquisitionCostOriginal": 74,
+      "acquisitionCostCny": null,
       "keepCurrency": "AUD",
-      "keepYearCostOriginal": 395,
-      "keepYearCostCny": 1860,
+      "keepYearCostOriginal": 74,
+      "keepYearCostCny": null,
       "keepIntervalDays": 365
     },
     {
