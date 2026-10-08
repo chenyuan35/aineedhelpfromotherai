@@ -70,5 +70,5 @@ assert.equal(comparisonRow.sourceCount, 9);
 assert.equal(detail.route.lastVerifiedAt, '2026-10-08');
 assert.equal(detail.sources.length, 9);
 assert.equal(detail.events.length, 4);
-assert.equal(sources.length, 754);
+assert(sources.length >= 754, 'MTN maintenance source baseline must remain covered by later route refreshes');
 console.log('MTN Nigeria Keep My Number maintenance passed.');
