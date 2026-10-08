@@ -375,16 +375,16 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Added 10 reviewed sources and nine events, canonical **160 routes / 87 markets / 157 brands / 117 networks / 824 sources**, public **135 comparison / 3 indexable / 31 sitemap** unchanged. No app success rate or new SEO URL. Ledger `docs/PHONE_GOOD2GO_CA_MAINTENANCE_2026-10-08.md`.
 - PR #432 squash-merged as `72584505dc2beb59d4059c68ad73bbf587fc5dcb`; CI #326 / run `37733111841` **PASS**, Eval Gate #1263 / run `37733111177` **PASS**, Vercel Preview `dpl_5hsRx8fpPNzntxYwNzCdVpemd1dZ` **READY**, production `dpl_Gp3A6b458Apb7dqtqxrF2Bntf7yh` **READY** at the exact merged SHA with both apex `aineedhelpfromotherai.com` and www aliases verified. Direct live JSON/sitemap HTTP reading remains blocked by the external reader and is not claimed verified.
 
-## RELEASE PENDING — O2 UK Classic PAYG legacy-holder maintenance
+## JUST COMPLETED — O2 UK Classic PAYG legacy-holder maintenance (released)
 
 - `o2-uk-classic-payg-6mo-2026` remains **HOLD / backstage-only**. Classic is not generally available to new users or new tariff switches. O2's terms leave an exceptional indirect legacy SIM pathway without a verified current checkout; ordinary PAYG products cannot be treated as Classic.
 - A top-up **OR** Bolt On **OR** chargeable activity in each six calendar months may preserve an existing Classic line. Standard UK Classic SMS **2p** and £10 minimum top-up are distinct costs; old `£0.04/year` and `£10 landed` values removed as unproven general acquisition/retention costs. UK-bank-and-address card requirement, uncertain Classic-specific eSIM, foreign Wi-Fi Calling exclusion, unknown China SMS/OTP and bounded disconnected-subscriber incident explicitly recorded.
 - 11 sources and ten events newly admitted: canonical **160 routes / 87 markets / 157 brands / 117 networks / 835 sources**, route 2 → 13 sources, zero exact-app observations. Publication stays 135 comparison / 3 indexable / 31 sitemap. Ledger `docs/PHONE_O2_UK_CLASSIC_MAINTENANCE_2026-10-08.md`.
-- CI, Eval, Vercel preview, merge and exact-SHA production verification pending.
+- PR #434 squash-merged as `c8391f0679a783ee09175155164c0953fcb8cec6`; CI #329 / run `37734342327` **PASS**, Eval Gate #1268 / run `37734342351` **PASS** after replacing a brittle historical-parity-only test (initial Eval #1267 failed), Vercel Preview `dpl_21HkABQnr8BSroMi5QGjGDnPE54C` **READY**, production `dpl_hHQFoMwvKxJfp3Lax9PmXUPSCugz` **READY** at exact merged main SHA with apex and www aliases assigned. Direct independent public JSON/sitemap HTTP retrieval not performed; no HTTP-200 claim.
 
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate action:** finish O2 UK Classic PR/CI/Eval/Preview, merge and production validation. **Then next independent route:** `singtel-hi-prepaid-passport-30d-2026` (Wave B HOLD), review foreign prepaid eligibility/validity and overseas SMS without inventing OTP success.
+1. **Immediate bounded route:** `singtel-hi-prepaid-passport-30d-2026` (Wave B HOLD). Review foreign prepaid eligibility and original acquisition, validity and reload, overseas SMS and OTP evidence while keeping unknowns explicitly unknown. Start as a separate one-route session.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -409,7 +409,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible after O2 UK Classic release: `singtel-hi-prepaid-passport-30d-2026` (one bounded route per session).
+First eligible: `singtel-hi-prepaid-passport-30d-2026` (one bounded route per session; O2 exact-SHA production verified).
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -418,7 +418,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `asda-mobile-uk-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, dual 180-day trigger, UK-only card funding restriction, still HOLD.
 - `free-mobile-fr-2026` — **DONE / RELEASED 2026-10-08**, 2 → 14 sources, €2 recurring and one-time Voyage advance reconciled; remains HOLD.
 - `good2go-payg-ca-2026` — **DONE / RELEASED 2026-10-08**, 2 → 12 sources, historical PAYG superseded by paid active-plan/90-day loss, current host/price unknown; remains HOLD.
-- `o2-uk-classic-payg-6mo-2026` — **DATA UPDATED 2026-10-08 / RELEASE PENDING**, 2 → 13 sources; now explicitly legacy-only, six-calendar-month alternatives and unverified current purchase/foreign OTP; remains HOLD.
+- `o2-uk-classic-payg-6mo-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, Classic legacy holders only, calendar-six-month and payment/China boundaries corrected; HOLD.
 - `singtel-hi-prepaid-passport-30d-2026`
 - `truemove-validity-pack-th-2026`
 - `turkcell-tourist-90d-blocker-2026`
