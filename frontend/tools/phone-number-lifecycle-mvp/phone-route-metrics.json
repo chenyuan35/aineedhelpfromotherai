@@ -27,12 +27,12 @@
     },
     {
       "routeId": "5sim-temp",
-      "checkedAt": "2026-09-15",
-      "metricState": "not-normalized",
-      "acquisitionCurrency": null,
+      "checkedAt": "2026-10-08",
+      "metricState": "current-profile",
+      "acquisitionCurrency": "USD",
       "acquisitionCostOriginal": null,
       "acquisitionCostCny": null,
-      "keepCurrency": null,
+      "keepCurrency": "USD",
       "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": null

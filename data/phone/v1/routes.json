@@ -53,13 +53,18 @@
     "numberClass": "temporary-activation",
     "form": "temporary SMS verification number",
     "surfaceState": "public-legacy",
-    "evidenceState": "needs-reconciliation",
-    "lastVerifiedAt": "2026-09-15",
+    "evidenceState": "hold",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://5sim.net/prices",
     "sourceIds": [
       "src-3545efe8deb4",
       "src-6acad0e79070",
-      "src-a19054e9d137"
+      "src-a19054e9d137",
+      "5sim-api-docs-20261008",
+      "5sim-refund-policy-20261008",
+      "5sim-existing-number-faq-20261008",
+      "5sim-trustpilot-2026",
+      "5sim-reddit-nocontract-20260511"
     ]
   },
   {

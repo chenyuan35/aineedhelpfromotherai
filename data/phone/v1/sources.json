@@ -6,6 +6,41 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "5sim-api-docs-20261008",
+    "url": "https://5sim.net/docs",
+    "type": "marketplace-official",
+    "reportedAt": "2026-10-08",
+    "label": "5SIM API purchase: distinct activation versus hosting product"
+  },
+  {
+    "id": "5sim-existing-number-faq-20261008",
+    "url": "https://5sim.net/faq/sms-verification-codes/%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%B7%B2%E6%9C%89%E8%B4%A6%E5%8F%B7",
+    "type": "marketplace-official",
+    "reportedAt": "2026-10-08",
+    "label": "5SIM support: used and 2FA-locked number dispute evidence"
+  },
+  {
+    "id": "5sim-reddit-nocontract-20260511",
+    "url": "https://www.reddit.com/r/NoContract/comments/1ta4lc8/list_of_sms_verification_providers_that_still/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-11",
+    "label": "r/NoContract: first-person comparative 5SIM consistency note"
+  },
+  {
+    "id": "5sim-refund-policy-20261008",
+    "url": "https://5sim.net/docs2/return.html",
+    "type": "marketplace-official",
+    "reportedAt": "2026-10-08",
+    "label": "5SIM refunds and return rules"
+  },
+  {
+    "id": "5sim-trustpilot-2026",
+    "url": "https://www.trustpilot.com/review/5sim.net",
+    "type": "independent-review",
+    "reportedAt": "2026-06-16",
+    "label": "Dated 2026 individual 5SIM reviews: reused numbers, failures and mixed outcomes"
+  },
+  {
     "id": "ahamo-kyc-20261001",
     "url": "https://ahamo.com/support/procedure/other/requirements/index.html",
     "type": "provider-official",
