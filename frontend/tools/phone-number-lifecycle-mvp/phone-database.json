@@ -3930,13 +3930,24 @@
       "displayName": "O2 Classic PAYG",
       "family": "long-term",
       "numberClass": "real-mobile",
-      "form": "physical + eSIM",
+      "form": "physical; Classic eSIM eligibility unverified",
       "surfaceState": "backstage-only",
       "evidenceState": "hold",
-      "lastVerifiedAt": "2026-09-28",
-      "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
       "sourceIds": [
         "community-o2-inactivity-criteria-2024",
+        "o2-classic-classic-rates-20261008",
+        "o2-classic-current-plans-20261008",
+        "o2-classic-esim-eligibility-20261008",
+        "o2-classic-forum-bpi-disruption-20251202",
+        "o2-classic-forum-disconnected-20241111",
+        "o2-classic-forum-legacy-user-20250216",
+        "o2-classic-roaming-20261008",
+        "o2-classic-sim-activation-20261008",
+        "o2-classic-tariff-terms-20261008",
+        "o2-classic-topup-uk-bank-20261008",
+        "o2-classic-wifi-calling-geofence-20261008",
         "official-o2-classic-payg-help-2026-09-28"
       ]
     },
@@ -10304,6 +10315,72 @@
       "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
       "type": "community",
       "reportedAt": "2025-08-04"
+    },
+    {
+      "id": "o2-classic-tariff-terms-20261008",
+      "url": "https://www.o2.co.uk/termsandconditions/mobile/our-pay-as-you-go-tariff-terms",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-classic-rates-20261008",
+      "url": "https://www.o2.co.uk/termsandconditions/mobile/pay-as-you-go-classic-tariff-standard-rates",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-current-plans-20261008",
+      "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/pay-as-you-go-plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-topup-uk-bank-20261008",
+      "url": "https://www.o2.co.uk/help/account/billing-and-usage/topping-up-pay-as-you-go-balance",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-esim-eligibility-20261008",
+      "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-sim-activation-20261008",
+      "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/your-sim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-wifi-calling-geofence-20261008",
+      "url": "https://www.o2.co.uk/help/international-and-network/wifi/wifi-4g-and-5g-calling",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-roaming-20261008",
+      "url": "https://www.o2.co.uk/help/international-and-network/using-your-phone-abroad/roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2-classic-forum-disconnected-20241111",
+      "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/PAYG-sim-disconnected/td-p/1762471",
+      "type": "community-report",
+      "reportedAt": "2024-11-11"
+    },
+    {
+      "id": "o2-classic-forum-legacy-user-20250216",
+      "url": "https://community.o2.co.uk/t5/Discussions-Feedback/O2-SENT-ME-A-TEXT-ON-07-02-2025-WARNING-ME-ABOUT-UPCOMING-3G-AND/td-p/1781447",
+      "type": "community-report",
+      "reportedAt": "2025-02-16"
+    },
+    {
+      "id": "o2-classic-forum-bpi-disruption-20251202",
+      "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Pay-As-You-Go-BPI-Subscription/td-p/1820257",
+      "type": "community-report",
+      "reportedAt": "2025-12-02"
     }
   ],
   "observations": [
@@ -12891,6 +12968,96 @@
       "scope": "route",
       "outcome": "July 2025 users reported they were being removed from old $25/120-day PAYG credit plan. Historic Petro-style $20/180-day or $25/120-day credit expiry must not be represented as active current Good2Go offer.",
       "sourceId": "good2go-ca-reddit-old-payg-20250731"
+    },
+    {
+      "id": "evt-o2-classic-no-public-signup-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "legacy-acquisition-not-generally-available",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Classic is an officially discontinued legacy tariff. Generic terms mention narrow indirect-channel legacy SIM activations but do not provide a current available channel; 2026 ordinary Big Bundles/Rolling plans are not Classic.",
+      "sourceId": "o2-classic-tariff-terms-20261008"
+    },
+    {
+      "id": "evt-o2-classic-six-month-rule-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "legacy-inactivity-disconnection",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "O2's current Classic page states top-up OR add a Bolt On OR chargeable activity at least once in any six calendar months; otherwise SIM disconnects and remaining credit is lost. Do not interpret six months as exactly 180 days or require £10 top-up every six months.",
+      "sourceId": "official-o2-classic-payg-help-2026-09-28"
+    },
+    {
+      "id": "evt-o2-classic-uk-rates-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "domestic-text-cost-only",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Current Classic standard UK text cost is 2p, call 3p/min, data 1p/MB; £0.04/year is not a validated total keep-alive cost, and UK domestic text tariffs do not establish overseas roaming SMS rates.",
+      "sourceId": "o2-classic-classic-rates-20261008"
+    },
+    {
+      "id": "evt-o2-classic-uk-funding-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "online-payment-eligibility",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "O2 online credit-card top-ups require a UK-bank card with UK-registered billing address, from £10 in pounds; vouchers/cash machine alternatives are not evidence of foreign signup funding.",
+      "sourceId": "o2-classic-topup-uk-bank-20261008"
+    },
+    {
+      "id": "evt-o2-classic-esim-unproven-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "generic-payg-esim-vs-classic",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "O2 offers eSIM for eligible current PAYG and existing SIM swaps, but this is not evidence that a legacy Classic line is entitled to a Classic-specific eSIM exchange or offshore first activation.",
+      "sourceId": "o2-classic-esim-eligibility-20261008"
+    },
+    {
+      "id": "evt-o2-classic-uk-wifi-only-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "foreign-wifi-calling-blocker",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "General O2 PAYG Wi-Fi Calling exists but is currently unsupported outside the UK; do not present international Wi-Fi Calling as an OTP workaround.",
+      "sourceId": "o2-classic-wifi-calling-geofence-20261008"
+    },
+    {
+      "id": "evt-o2-classic-abroad-unknown-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "china-roaming-and-otp-unknown",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Official O2 roaming pages do not verify Classic-specific China incoming SMS entitlement or exact bank/app OTP success; avoid blanket claims of free global incoming SMS.",
+      "sourceId": "o2-classic-roaming-20261008"
+    },
+    {
+      "id": "evt-o2-classic-lost-line-incident-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "community-number-access-loss",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "One 2024 Classic customer reported disconnection despite claimed chargeable calls inside six months and required four support contacts to regain account access; anecdotal, not a line-loss percentage.",
+      "sourceId": "o2-classic-forum-disconnected-20241111"
+    },
+    {
+      "id": "evt-o2-classic-legacy-usage-2025-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "community-legacy-user-evidence",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "A self-described 2025 Classic holder reports continued 3p calling/2p SMS use and worries about 3G/2G device connectivity; the report establishes legacy active users, not new-sale availability.",
+      "sourceId": "o2-classic-forum-legacy-user-20250216"
+    },
+    {
+      "id": "evt-o2-classic-2025-bpi-20261008",
+      "routeId": "o2-uk-classic-payg-6mo-2026",
+      "type": "community-account-and-international-incident",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "A November-December 2025 O2 forum thread contains two existing Classic lines still shown as Classic and other users reporting account relabeling, auto-top-up loss and calls abroad failing; mixed tariffs, not proof Classic-wide roaming failure.",
+      "sourceId": "o2-classic-forum-bpi-disruption-20251202"
     }
   ],
   "snapshots": [
@@ -18963,54 +19130,67 @@
       "id": "snap-o2-uk-classic-payg-6mo-2026-current-profile-20260928",
       "routeId": "o2-uk-classic-payg-6mo-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-28",
-      "sourceDataset": "uk-mno-directory-batch-e.json",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "o2-classic-uk-legacy-maintenance-20261008",
       "data": {
         "id": "o2-uk-classic-payg-6mo-2026",
         "brandId": "o2-uk-classic",
         "publishState": "observation-hold",
         "numberType": "real-mobile",
-        "simType": "eSIM + physical",
-        "acquisitionSummary": "NOT A GENERAL NEW-USER ROUTE. O2 currently labels Classic Pay As You Go an older/legacy tariff and says customers who are not already on it cannot switch to it. Existing Classic lines remain subject to the six-month activity rule and £10 minimum top-up.",
+        "simType": "Legacy physical; Classic-specific eSIM conversion eligibility unverified",
+        "acquisitionSummary": "Classic Pay As You Go is an O2 legacy tariff unavailable for direct new-user selection or switches. O2's general 2023 terms allow rare indirect legacy-SIM activations, but no available verified Classic checkout/seller channel today. Do not treat current Big Bundles, Rolling Plan free SIMs or generic PAYG eSIMs as Classic acquisition.",
         "landedCost": {
           "currency": "GBP",
-          "providerOrCommunityPrice": 0,
-          "mandatoryTopup": 10,
-          "shipping": 0,
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
           "adapterCostCny": null,
-          "landedOriginal": 10,
-          "landedCny": 93,
-          "fxCheckedAt": "2026-09-26",
-          "state": "official-min-topup-10"
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "legacy-no-current-new-sale"
         },
         "keep": {
           "currency": "GBP",
           "observedActionCost": 0.02,
-          "yearCostOriginal": 0.04,
-          "yearCostCny": 0.4,
-          "action": "Legacy Classic holders: carry out a chargeable activity at least once in every 6-month period; the current Classic page lists a standard text at £0.02. The same page lists a GBP10 minimum top-up. This is retention guidance for existing holders, not a route for new users.",
-          "intervalDays": 180,
-          "state": "official-confirmed-legacy-only"
+          "yearCostOriginal": null,
+          "yearCostCny": null,
+          "action": "EXISTING CLASSIC HOLDERS ONLY: before every rolling six-calendar-month deadline, top up, add a Bolt On OR make a chargeable activity; 2p is the current domestic text charge, not a general roaming-SMS rate or guaranteed annual retention cost. Minimum £10 is a top-up funding denomination (UK-bank/UK-address card needed online), not a forced £10 every six months. A disconnected SIM loses remaining credit; reactivation/number recovery is not guaranteed. Maintain funded credit and confirm account state directly.",
+          "intervalDays": null,
+          "state": "legacy-holder-six-calendar-month-activity-topup-or-bolton"
         },
-        "chinaActivation": "UK-network first activation standard; China-first unverified.",
-        "kyc": "No ID check for PAYG.",
-        "payment": "UK card standard; international varies.",
-        "wifiCalling": "O2 Wi-Fi Calling PAYG support limited — 验证中.",
-        "roamingSms": "Receiving SMS abroad free. O2 PAYG roaming outside Europe limited — receiving-only strategy standard.",
-        "refund": "not reconciled",
-        "trend": "stable",
+        "chinaActivation": "No verified new-user Classic SIM issuance path. Generic O2 new PAYG SIM is activated by first top-up; an existing Classic SIM/eSIM may require an O2-network connection for replacement. China-first new activation and legacy eSIM abroad are unverified.",
+        "kyc": "Generic UK PAYG signup is not presented as a postpaid credit-check flow. However, O2 may require security code, account confirmation or photographic ID for swaps/replacements; do not claim zero ID checks for all Classic operations.",
+        "payment": "O2 says card top-ups require a UK-bank-issued debit/credit card registered at a UK address; only whole-pound top-ups from £10. Other official routes include vouchers and selected cash machines, availability abroad/unregistered foreign buyer unverified.",
+        "wifiCalling": "O2 confirms general PAYG supports Wi-Fi Calling on suitable devices but says Wi-Fi Calling is NOT supported outside the UK. Classic-specific device/service eligibility and SMS over Wi-Fi are unverified; cannot treat as foreign OTP fallback.",
+        "roamingSms": "O2's current PAYG roaming information covers European allowances and conditional non-European destinations, not proven Classic-specific attachment/SMS receipt in mainland China. No evidence here proves incoming Chinese roaming SMS free, continuity, or any bank/app OTP success; a 2p UK domestic text is NOT a Chinese roaming outgoing-text cost.",
+        "refund": "O2 Classic says disconnection after more than six months without qualifying action loses the remaining credit; refund/recovery after deactivation not guaranteed.",
+        "trend": "watch",
         "guideEligible": false,
-        "holdReason": "Classic Pay As You Go is a legacy tariff. O2 currently says customers who are not already on it cannot switch to it; keep this as negative/legacy-holder knowledge rather than a recommendation.",
-        "lastVerifiedAt": "2026-09-28",
-        "acquireUrl": "https://www.o2.co.uk/shop/sim-cards/pay-as-you-go",
-        "tariffSummary": "Legacy-only Classic PAYG: six-month activity rule, 2p text, GBP10 minimum top-up; not generally available to new users.",
+        "holdReason": "Classic is a legacy tariff unavailable to ordinary new customers. Indirect legacy SIM exceptions in terms do not establish a current purchasable route. Six-month inactivity criterion is known, but exact sustainable offshore cost, international payment, Classic eSIM eligibility and China SMS/OTP continuity lack evidence; known loss-of-number incident adds risk.",
+        "lastVerifiedAt": "2026-10-08",
+        "acquireUrl": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/classic-pay-as-you-go",
+        "tariffSummary": "Legacy-only: no verified current new-user purchase; existing-holder inactivity rule is any qualifying top-up/Bolt On/chargeable activity within six calendar months; UK domestic 2p/SMS; top-ups start £10, not every six months.",
         "sourceIds": [
-          "official-o2-classic-payg-help-2026-09-28",
-          "community-o2-inactivity-criteria-2024"
+          "community-o2-inactivity-criteria-2024",
+          "o2-classic-classic-rates-20261008",
+          "o2-classic-current-plans-20261008",
+          "o2-classic-esim-eligibility-20261008",
+          "o2-classic-forum-bpi-disruption-20251202",
+          "o2-classic-forum-disconnected-20241111",
+          "o2-classic-forum-legacy-user-20250216",
+          "o2-classic-roaming-20261008",
+          "o2-classic-sim-activation-20261008",
+          "o2-classic-tariff-terms-20261008",
+          "o2-classic-topup-uk-bank-20261008",
+          "o2-classic-wifi-calling-geofence-20261008",
+          "official-o2-classic-payg-help-2026-09-28"
         ],
         "guideSteps": [
-          "If you already hold Classic PAYG, perform a chargeable activity before six months elapse.",
-          "Do not buy or recommend this as a current new-user route; O2 marks Classic as an older legacy tariff and says non-holders cannot switch to it."
+          "Existing Classic line only: check My O2 for the actual tariff and active status; do not mistake a Big Bundle or Rolling Plan SIM for Classic.",
+          "Before six calendar months elapse, perform and confirm one qualifying top-up, purchased Bolt On or chargeable activity. Make sure credit is usable; don't treat 2p UK domestic SMS as the cost of texting from abroad.",
+          "If maintaining abroad, check foreign attachment and roaming rates for the exact destination; Wi-Fi Calling isn't available outside the UK, and bank OTP reliability is not demonstrated.",
+          "Do not buy an ordinary O2 PAYG SIM expecting Classic; O2 no longer offers a general switch and unusual indirect-activation exceptions lack a verified acquisition path."
         ],
         "avoidRoute": true
       }
@@ -26408,15 +26588,15 @@
     },
     {
       "routeId": "o2-uk-classic-payg-6mo-2026",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
-      "acquisitionCostOriginal": 10,
-      "acquisitionCostCny": 93,
+      "acquisitionCostOriginal": null,
+      "acquisitionCostCny": null,
       "keepCurrency": "GBP",
-      "keepYearCostOriginal": 0.04,
-      "keepYearCostCny": 0.4,
-      "keepIntervalDays": 180
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
+      "keepIntervalDays": null
     },
     {
       "routeId": "omantel-om-2026",
