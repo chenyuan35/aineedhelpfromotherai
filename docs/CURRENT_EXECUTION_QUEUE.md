@@ -382,9 +382,16 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - 11 sources and ten events newly admitted: canonical **160 routes / 87 markets / 157 brands / 117 networks / 835 sources**, route 2 → 13 sources, zero exact-app observations. Publication stays 135 comparison / 3 indexable / 31 sitemap. Ledger `docs/PHONE_O2_UK_CLASSIC_MAINTENANCE_2026-10-08.md`.
 - PR #434 squash-merged as `c8391f0679a783ee09175155164c0953fcb8cec6`; CI #329 / run `37734342327` **PASS**, Eval Gate #1268 / run `37734342351` **PASS** after replacing a brittle historical-parity-only test (initial Eval #1267 failed), Vercel Preview `dpl_21HkABQnr8BSroMi5QGjGDnPE54C` **READY**, production `dpl_hHQFoMwvKxJfp3Lax9PmXUPSCugz` **READY** at exact merged main SHA with apex and www aliases assigned. Direct independent public JSON/sitemap HTTP retrieval not performed; no HTTP-200 claim.
 
+## RELEASE PENDING — Singtel hi! Tourist passport-only route maintenance
+
+- `singtel-hi-prepaid-passport-30d-2026` remains **HOLD/backstage-only**, not a viable long-term SMS/OTP number for passport-only holders. Current provider direct/authorised sale **S$15/30 days** (rather than stale S$12). A separate S$10/7-day and S$30/30-day product exist. Passport registration is limited to data-only functionality, with an independent 30-day identity validity cap; adding data/plan value cannot waive it. Retention requires Singpass/SG-issued ID or valid work pass and changes the product contract, described as postpaid by Singtel.
+- Current paid tourist plan does not prove Chinese incoming SMS/OTP. Singtel's generic regular-prepaid 3G/roaming SMS is a different cohort and does not override passport data-only restriction. Community eSIM/hi!App OTP failures and eKYC/recycled-number issues remain bounded signals. Current acquisition S$15, yearly number retention null, legacy CNY FX dropped.
+- 12 new sources, eleven events, route source depth 2 → 14; canonical **160 routes / 87 markets / 157 brands / 117 networks / 847 sources**, zero exact bank/app OTP observations and unchanged **135 comparison / 3 indexable / 31 sitemap**. Ledger `docs/PHONE_SINGTEL_HI_PASSPORT_MAINTENANCE_2026-10-08.md`.
+- CI, Eval Gate, Vercel Preview, merge, exact-SHA production verification pending.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `singtel-hi-prepaid-passport-30d-2026` (Wave B HOLD). Review foreign prepaid eligibility and original acquisition, validity and reload, overseas SMS and OTP evidence while keeping unknowns explicitly unknown. Start as a separate one-route session.
+1. **Immediate action:** finish Singtel hi! passport route PR/CI/Eval/Preview, merge and production checks. **Next separate route:** `truemove-validity-pack-th-2026` (Wave B HOLD) after Singtel release.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -409,7 +416,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `singtel-hi-prepaid-passport-30d-2026` (one bounded route per session; O2 exact-SHA production verified).
+First eligible after Singtel hi! release: `truemove-validity-pack-th-2026` (one bounded route per session).
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -419,7 +426,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `free-mobile-fr-2026` — **DONE / RELEASED 2026-10-08**, 2 → 14 sources, €2 recurring and one-time Voyage advance reconciled; remains HOLD.
 - `good2go-payg-ca-2026` — **DONE / RELEASED 2026-10-08**, 2 → 12 sources, historical PAYG superseded by paid active-plan/90-day loss, current host/price unknown; remains HOLD.
 - `o2-uk-classic-payg-6mo-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, Classic legacy holders only, calendar-six-month and payment/China boundaries corrected; HOLD.
-- `singtel-hi-prepaid-passport-30d-2026`
+- `singtel-hi-prepaid-passport-30d-2026` — **DATA UPDATED 2026-10-08 / RELEASE PENDING**, 2 → 14 sources, S$15/30d data-only tourist, independent passport cutoff; remains HOLD.
 - `truemove-validity-pack-th-2026`
 - `turkcell-tourist-90d-blocker-2026`
 - `viettel-vtvang-keepnumber-2026`

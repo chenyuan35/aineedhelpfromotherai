@@ -30,7 +30,26 @@ for (const routeId of routeIds) {
   assert(brands.some((row) => row.id === route.brandId && row.marketId === route.marketId && row.networkId === route.networkId));
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   const legacy = globalDirectory.routes.find((row) => row.id === routeId); assert(legacy, `legacy row missing: ${routeId}`);
-  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  if (routeId === 'singtel-hi-prepaid-passport-30d-2026') {
+    // Verify frozen 2026-09 admission using its immutable review packet;
+    // separately enforce the 2026-10 current-price and identity correction.
+    const packet = read('data/phone/review-packets/singtel-hi-prepaid-passport-30d-2026.json');
+    assert.deepEqual(
+      buildCanonicalComparisonRoute({ routes:[packet.route], markets:[packet.market], snapshots:packet.snapshots },routeId),
+      legacy,
+      'Singtel immutable historic admission must reproduce legacy row exactly',
+    );
+    const current = buildCanonicalComparisonRoute(canonical,routeId);
+    assert.equal(current.landedCost.landedOriginal,15);
+    assert.equal(current.keep.yearCostOriginal,null);
+    assert.equal(current.keep.intervalDays,30);
+    assert.match(current.roamingSms,/data-only/);
+    assert.match(current.keep.action,/postpaid/);
+    assert.equal(current.guideEligible,false);
+    assert.equal(current.avoidRoute,true);
+  } else {
+    assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  }
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must stay non-indexable`);
 }
 const sourceUrl=(id)=>sources.find((row)=>row.id===id)?.url;
