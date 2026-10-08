@@ -543,11 +543,11 @@
     },
     {
       "routeId": "free-mobile-fr-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "EUR",
       "acquisitionCostOriginal": 10,
-      "acquisitionCostCny": 78,
+      "acquisitionCostCny": null,
       "keepCurrency": "EUR",
       "keepYearCostOriginal": 24,
       "keepYearCostCny": null,

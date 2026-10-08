@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 791 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 814 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -362,9 +362,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - **2 → 13 sources**, seven new events, zero service observations; canonical **160 routes / 87 markets / 157 brands / 117 networks / 802 sources**; publication unchanged **135 comparison / 3 indexable / 31 sitemap**.
 - Ledger: `docs/PHONE_ASDA_UK_MAINTENANCE_2026-10-08.md`; PR #428 squash-merged as `811a056f937e3b395b9431bb52cb31f2f0654b6c`, CI #322 **PASS**, Eval Gate #1255 **PASS**, Vercel Preview `dpl_BJ62bfRcTRvokfW6GRvw4VUsSGqW` **READY**. Automated post-merge production deployment was not visible, so production was manually built from verified main SHA as `dpl_5FUc8YupzsvaTKGtpcdvfHLN5ziN` **READY**, domain alias assigned. Direct public JSON/sitemap HTTP read not independently available.
 
+## RELEASE PENDING — Free Mobile France Forfait 2€ maintenance
+
+- `free-mobile-fr-2026` corrected to a recurring €2/month subscription (€24/12 months) with €10 SIM/eSIM signup fee and a separate one-time €10 Option Voyage consumption advance for non-EU/DOM roaming. Free says incoming roaming SMS are free where attached; China bank/app OTP, foreign signup/eSIM activation and roaming continuity remain unverified.
+- Added 12 sources and eight route events; route source depth 2 → 14. Canonical 160 routes / 87 markets / 157 brands / 117 networks / 814 sources; public 135 comparison / 3 indexable / 31 sitemap unchanged. Remains HOLD/backstage-only. Ledger `docs/PHONE_FREE_MOBILE_FR_MAINTENANCE_2026-10-08.md`.
+- Release gate: finish GitHub CI, Eval Gate, Vercel Preview, merge, production verification; do not call this complete or start next route before verified.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `free-mobile-fr-2026` (Wave B HOLD), ASDA deployment is READY; reconcile France prepaid product identity, current lifecycle/retention, purchase/eSIM/KYC, international card/recharge, China SMS and independent operational evidence.
+1. **Immediate action:** finish Free Mobile France maintenance CI/Eval/Preview/merge/production verification. **Then next separate route:** `good2go-payg-ca-2026` (Wave B HOLD), reconcile current Canadian PAYG economics/lifecycle, purchase/payment/eSIM and foreign SMS evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -389,14 +395,14 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `free-mobile-fr-2026` (one bounded route per session; ASDA PR #428 merged and exact-SHA production READY).
+First eligible after Free Mobile France release verification: `good2go-payg-ca-2026` (one bounded route per session).
 
 Maintain in evidence-value order rather than country-completion order:
 
 - `telstra-prepaid-longexpiry-2026` — **DONE / RELEASED 2026-10-08**, 1 → 9 sources, AUD74/12-month Casual path, 6-month rescue, still HOLD.
 - `claro-pre-br-90d-2026` — **DONE / RELEASED 2026-10-08**, 1 → 13 sources, R$35/90-day and prepaid roaming unavailable, remains HOLD.
 - `asda-mobile-uk-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, dual 180-day trigger, UK-only card funding restriction, still HOLD.
-- `free-mobile-fr-2026`
+- `free-mobile-fr-2026` — **DATA PREPARED 2026-10-08 / release pending**, 2 → 14 sources, €2 recurring and one-time Voyage advance reconciled; remains HOLD.
 - `good2go-payg-ca-2026`
 - `o2-uk-classic-payg-6mo-2026`
 - `singtel-hi-prepaid-passport-30d-2026`

@@ -4811,5 +4811,77 @@
     "url": "https://www.reddit.com/r/AskUK/comments/v6dtlo",
     "type": "community",
     "reportedAt": "2022-06-07"
+  },
+  {
+    "id": "free-fr-official-sim-20261008",
+    "url": "https://assistance.free.fr/articles/900",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-voyage-20261008",
+    "url": "https://assistance.free.fr/articles/905",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-receive-20261008",
+    "url": "https://assistance.free.fr/articles/953",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-subscribe-20261008",
+    "url": "https://assistance.free.fr/articles/887",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-shop-20261008",
+    "url": "https://assistance.free.fr/articles/1739",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-esim-20261008",
+    "url": "https://assistance.free.fr/articles/968",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-vowifi-20261008",
+    "url": "https://assistance.free.fr/articles/1236",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-recover-20261008",
+    "url": "https://assistance.free.fr/articles/1730",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-borne-20261008",
+    "url": "https://assistance.free.fr/articles/888",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-travel-20261008",
+    "url": "https://mobile.free.fr/communications-a-l-etranger",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-community-asia-20261008",
+    "url": "https://www.reddit.com/r/france/comments/11ru9ar",
+    "type": "community",
+    "reportedAt": "2023-03-15"
+  },
+  {
+    "id": "free-fr-community-africa-20261008",
+    "url": "https://www.reddit.com/r/AskFrance/comments/1p082sk/free_mobile_comment_contacter_lassistance/",
+    "type": "community",
+    "reportedAt": "2025-11-18"
   }
 ]
