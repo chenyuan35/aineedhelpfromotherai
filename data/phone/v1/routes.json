@@ -980,11 +980,23 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://mobile.free.fr/fiche-forfait-2-euros",
     "sourceIds": [
       "free-2eur-20260929",
-      "free-contract-20260929"
+      "free-contract-20260929",
+      "free-fr-official-sim-20261008",
+      "free-fr-official-voyage-20261008",
+      "free-fr-official-receive-20261008",
+      "free-fr-official-subscribe-20261008",
+      "free-fr-official-shop-20261008",
+      "free-fr-official-esim-20261008",
+      "free-fr-official-vowifi-20261008",
+      "free-fr-official-recover-20261008",
+      "free-fr-official-borne-20261008",
+      "free-fr-official-travel-20261008",
+      "free-fr-community-asia-20261008",
+      "free-fr-community-africa-20261008"
     ]
   },
   {

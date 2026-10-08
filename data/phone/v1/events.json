@@ -2131,5 +2131,77 @@
     "scope": "route",
     "outcome": "One June 2022 PAYG customer reports no received 180-day warning or disconnection shortly after the 180-day mark. Historical anecdote, not a guaranteed cancellation window.",
     "sourceId": "asda-askuk-2022-grace-report-20220607"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-subscription-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "recurring-contract-cost",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "July 2026 Forfait 2€ is €2/month recurring plus a €10 SIM/eSIM fee; eligible Freebox users may have one €0/month line. No prepaid inactivity renewal clock.",
+    "sourceId": "free-contract-20260929"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-eligibility-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "subscriber-eligibility-and-payment",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "France residence/stable link required; Free store asks for RIB and 3D Secure card; foreign-only subscription unverified.",
+    "sourceId": "free-fr-official-shop-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-esim-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "service-activation-friction",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Free eSIM QR/app installation and France physical terminals documented; exact new €2 first eSIM activation while in China unverified.",
+    "sourceId": "free-fr-official-esim-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-voyage-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "roaming-prepayment-condition",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Outside Europe/DOM Forfait 2€ requires prior Option Voyage and a one-time €10 usage advance; not another recurring fee.",
+    "sourceId": "free-fr-official-voyage-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-china-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "roaming-sms-pricing-otp-uncertainty",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Provider inbound roaming SMS free if attached; current China outgoing SMS €0.27 and data €9.70/MB do not prove bank/OTP delivery.",
+    "sourceId": "free-fr-official-receive-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-vowifi-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "wifi-calling-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "SMS sent while overseas continue over cellular despite VoWiFi support.",
+    "sourceId": "free-fr-official-vowifi-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-asia-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "community-operational-success",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "2023 first-hand Free €2 SMS 2FA receipt in unspecified Asian country; app/bank and China not identified.",
+    "sourceId": "free-fr-community-asia-20261008"
+  },
+  {
+    "id": "evt-free-mobile-fr-2026-africa-20261008",
+    "routeId": "free-mobile-fr-2026",
+    "type": "community-operational-failure",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "2025 first-hand Free €2 paying user in unspecified African country reported received SMS stopping after formerly working; cause unknown.",
+    "sourceId": "free-fr-community-africa-20261008"
   }
 ]

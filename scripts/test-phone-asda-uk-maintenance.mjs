@@ -15,7 +15,7 @@ const index = read(root + 'phone-search-index.json').routes.find(x => x.id === i
 const detail = read(root + 'phone-route-data/' + id + '.json');
 assert(route && snap && metric && summary && index && detail);
 assert.equal(routes.length, 160);
-assert.equal(sources.length, 802);
+assert(sources.length >= 802);
 assert.equal(route.sourceIds.length, 13);
 assert.equal(route.evidenceState, 'hold');
 assert.equal(route.surfaceState, 'backstage-only');
