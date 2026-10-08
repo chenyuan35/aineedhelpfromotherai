@@ -1886,14 +1886,21 @@
     "displayName": "O2 CZ Prepaid GO",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical SIM",
+    "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
     "sourceIds": [
       "official-o2cz-prepaid-current-2026-09-29",
-      "official-o2cz-prepaid-documents-2026-09-29"
+      "official-o2cz-prepaid-documents-2026-09-29",
+      "o2cz-tariff-20261005",
+      "o2cz-topup-20261008",
+      "o2cz-prepaid-sim-exchange-20261008",
+      "o2cz-sim-types-20261008",
+      "o2cz-roaming-20261008",
+      "o2cz-cz-regulator-anonymous-2024",
+      "o2cz-reddit-prague-store-20240817"
     ]
   },
   {

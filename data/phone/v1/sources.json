@@ -4583,5 +4583,47 @@
     "url": "https://4pda.to/forum/index.php?showtopic=954353&st=30680",
     "type": "independent-community",
     "reportedAt": "2024-08-20"
+  },
+  {
+    "id": "o2cz-tariff-20261005",
+    "url": "https://www.o2.cz/osobni/podpora/ceniky-a-dokumenty/cenik-predplacenych-sluzeb/platnost-od-5.-10.-2026/Cenik_predplacenych_sluzeb_05_10_2026.pdf?_linka=a1595235",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-topup-20261008",
+    "url": "https://www.o2.cz/osobni/dobijeni",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-prepaid-sim-exchange-20261008",
+    "url": "https://www.o2.cz/podpora/volani-z-mobilu/kdy-a-jak-si-vymenit-sim-kartu",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-sim-types-20261008",
+    "url": "https://www.o2.cz/podpora/volani-z-mobilu/druhy-sim-karet",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-roaming-20261008",
+    "url": "https://www.o2.cz/osobni/volani/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-cz-regulator-anonymous-2024",
+    "url": "https://ctu.gov.cz/sites/default/files/obsah/ctu/telekomunikacni-vestnik-castka-4-z-26.-dubna-2024/obrazky/TV-2024-04_1.pdf",
+    "type": "government-regulator",
+    "reportedAt": "2024-04-26"
+  },
+  {
+    "id": "o2cz-reddit-prague-store-20240817",
+    "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
+    "type": "independent-community",
+    "reportedAt": "2024-08-17"
   }
 ]

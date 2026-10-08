@@ -8,14 +8,21 @@
     "displayName": "O2 CZ Prepaid GO",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical SIM",
+    "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
     "sourceIds": [
       "official-o2cz-prepaid-current-2026-09-29",
-      "official-o2cz-prepaid-documents-2026-09-29"
+      "official-o2cz-prepaid-documents-2026-09-29",
+      "o2cz-tariff-20261005",
+      "o2cz-topup-20261008",
+      "o2cz-prepaid-sim-exchange-20261008",
+      "o2cz-sim-types-20261008",
+      "o2cz-roaming-20261008",
+      "o2cz-cz-regulator-anonymous-2024",
+      "o2cz-reddit-prague-store-20240817"
     ]
   },
   "market": {
@@ -36,7 +43,7 @@
   },
   "metrics": {
     "routeId": "o2-cz-prepaid-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-08",
     "metricState": "current-profile",
     "acquisitionCurrency": "CZK",
     "acquisitionCostOriginal": 99,
@@ -60,6 +67,48 @@
       "url": "https://www.o2.cz/osobni/ceniky-a-dokumenty",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "o2cz-tariff-20261005",
+      "url": "https://www.o2.cz/osobni/podpora/ceniky-a-dokumenty/cenik-predplacenych-sluzeb/platnost-od-5.-10.-2026/Cenik_predplacenych_sluzeb_05_10_2026.pdf?_linka=a1595235",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2cz-topup-20261008",
+      "url": "https://www.o2.cz/osobni/dobijeni",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2cz-prepaid-sim-exchange-20261008",
+      "url": "https://www.o2.cz/podpora/volani-z-mobilu/kdy-a-jak-si-vymenit-sim-kartu",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2cz-sim-types-20261008",
+      "url": "https://www.o2.cz/podpora/volani-z-mobilu/druhy-sim-karet",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2cz-roaming-20261008",
+      "url": "https://www.o2.cz/osobni/volani/roaming",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "o2cz-cz-regulator-anonymous-2024",
+      "url": "https://ctu.gov.cz/sites/default/files/obsah/ctu/telekomunikacni-vestnik-castka-4-z-26.-dubna-2024/obrazky/TV-2024-04_1.pdf",
+      "type": "government-regulator",
+      "reportedAt": "2024-04-26"
+    },
+    {
+      "id": "o2cz-reddit-prague-store-20240817",
+      "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
+      "type": "independent-community",
+      "reportedAt": "2024-08-17"
     }
   ],
   "observations": [],
@@ -72,6 +121,60 @@
       "scope": "route",
       "outcome": "A 300–499 CZK top-up gives only six months of credit validity, but O2 separately states the prepaid SIM/card itself remains valid for 12 months from the last top-up. Do not confuse credit expiry with number/SIM expiry.",
       "sourceId": "official-o2cz-prepaid-current-2026-09-29"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-terms-20261008",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "price-and-lifecycle-reconciliation",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "The effective Oct 5 2026 O2 prepaid price list confirms SIM lifetime 12 months from last recharge, CZK300–499 credit usable 6 months and CZK500+ credit 12 months. This is a prepaid funding commitment and not a CZK300 standalone line rental fee.",
+      "sourceId": "o2cz-tariff-20261005"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-daily-charge-20261008",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "cost-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "GO na den CZK29 daily rate starts on first outbound call or mobile data connection. SMS is charged separately; incoming SMS alone is not listed as a trigger. Unintended mobile data can create extra spend.",
+      "sourceId": "o2cz-tariff-20261005"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-prepaid-esim-20261008",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "activation-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "The current official O2 SIM replacement support says postpaid online replacement is available but prepaid SIM/eSIM replacements require an O2 store visit with SIM PUK/identity; standard exchange costs CZK99.",
+      "sourceId": "o2cz-prepaid-sim-exchange-20261008"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-recharge-card-20261008",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "payment-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "O2 online CZK300–9,999 card top-up requires internet-payments-enabled card issued in Europe. Retail cash/card top-up is offered. Non-European payment acceptance is not established.",
+      "sourceId": "o2cz-topup-20261008"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-roaming-sms-20261008",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "sms-continuity-scope",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Current prepaid tariff confirms free incoming roaming SMS/MMS; the provider listing of China as a roaming destination does not verify GO na den mainland-China bank/app OTP. Prepaid Wi-Fi Calling does not transport SMS/MMS.",
+      "sourceId": "o2cz-tariff-20261005"
+    },
+    {
+      "id": "evt-o2-cz-prepaid-2026-community-instore-acquisition-20240817",
+      "routeId": "o2-cz-prepaid-2026",
+      "type": "independent-acquisition-adjacent",
+      "reportedAt": "2024-08-17",
+      "scope": "route",
+      "outcome": "One independent r/Prague user described buying an O2 physical prepaid SIM in a Prague retail service point. This supports local acquisition only; the reported bundle is not proven to be the present GO na den CZK99 SKU, and no China/OTP claim is inferred.",
+      "sourceId": "o2cz-reddit-prague-store-20240817"
     }
   ],
   "snapshots": [
@@ -79,15 +182,15 @@
       "id": "snap-o2-cz-prepaid-2026-current-profile-20260929",
       "routeId": "o2-cz-prepaid-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-29",
-      "sourceDataset": "global-directory.json",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "o2-cz-go-maintenance-2026-10-08",
       "data": {
         "id": "o2-cz-prepaid-2026",
         "brandId": "o2-cz-prepaid",
         "publishState": "candidate",
         "numberType": "real-mobile",
-        "simType": "physical SIM",
-        "acquisitionSummary": "Current O2 GO na den prepaid starter is listed at 99 CZK with 100 CZK preloaded credit. O2 sells additional prepaid variants; this route uses the current low-entry GO prepaid baseline.",
+        "simType": "physical + eSIM (prepaid conversion requires store)",
+        "acquisitionSummary": "O2's current GO na den starter is CZK99 with CZK100 preloaded credit. The current prepaid tariff charges CZK29 daily only after the first outbound call or mobile-data connection; mere ordinary incoming SMS does not by itself trigger that daily charge. Other GO prepaid products with 30-day package fees are separate acquisition choices.",
         "landedCost": {
           "currency": "CZK",
           "providerOrCommunityPrice": 99,
@@ -97,37 +200,45 @@
           "landedOriginal": 99,
           "landedCny": null,
           "fxCheckedAt": null,
-          "state": "current-provider-official-go-na-den"
+          "state": "current-provider-official-go-na-den-not-total-annual-keep-spend"
         },
         "keep": {
           "currency": "CZK",
           "observedActionCost": 300,
           "yearCostOriginal": 300,
           "yearCostCny": null,
-          "action": "Top up at least the current self-service minimum of 300 CZK before 12 months since the last top-up. O2 states the prepaid card itself is valid 12 months from the last top-up. A 300–499 CZK top-up credit balance expires after six months, but that shorter credit-validity period is not the SIM-validity period.",
+          "action": "Use a standard O2 top-up of at least CZK300 within 12 months of the previous top-up to preserve the prepaid SIM/number. The CZK300 is prepaid credit funded, not a separate retention fee. The Oct 5 2026 price list states the SIM itself stays valid for 12 months after any top-up, while credit from CZK300–499 expires after 6 months; CZK500+ standard credit expires after 12 months. Unused credit can lapse independently.",
           "intervalDays": 365,
-          "state": "current-provider-official-sim-validity"
+          "state": "current-provider-official-sim-12-month-vs-credit-expiry"
         },
-        "chinaActivation": "Overseas-first acquisition/activation is not established in this review.",
-        "kyc": "A mandatory identity/KYC requirement was not established from the reviewed current O2 prepaid surface; do not infer either KYC-free or foreign-passport support from absence of a notice.",
-        "payment": "O2 supports online top-up; exact foreign-card acceptance is not reconciled.",
-        "wifiCalling": "unverified",
-        "roamingSms": "EU and non-EU roaming pricing exists; long-term incoming-SMS/OTP reliability is unverified.",
-        "refund": "O2 documents prepaid credit rules; refund conditions are not reconciled here.",
+        "chinaActivation": "Physical O2 GO prepaid starter is sold locally in Czechia. An independent O2 shop purchase report exists for Prague, but O2 has not established a guaranteed China-first new physical SIM activation path. For a prepaid plastic-SIM-to-eSIM replacement O2 instructs customers to visit a Czech O2 store.",
+        "kyc": "Czech regulator material recognizes anonymous prepaid SIM cards generally; this does not prove every O2 prepaid starter is KYC-free. O2's prepaid SIM/eSIM replacement procedure requires a passport/identity document together with SIM PUK and number, and route-specific new-line identity/foreign passport requirements remain unverified.",
+        "payment": "Current O2 online top-up is CZK300–9,999 and supports Visa, MasterCard and Maestro, but O2's FAQ says an online card should have internet payments enabled and be issued in Europe. The shop path allows cash or card. Reliable non-European or China-issued cards cannot be presumed.",
+        "wifiCalling": "O2's Oct 2026 prepaid price list describes Wi-Fi Calling for supported devices inside Czechia, but explicitly says Wi-Fi Calling does not support sending or receiving SMS/MMS; do not treat it as an offshore SMS/OTP workaround.",
+        "roamingSms": "Ordinary inbound SMS/MMS while roaming is free under O2's current Oct 2026 prepaid price list, provided partner-network availability and roaming entitlement. O2's prepaid GO Svět Basic roaming applies outside EU (some Datamanie data products are excluded). China appears in O2's broader roaming destination list, but this is not independently verified bank/app OTP reliability for exact GO na den while in mainland China.",
+        "refund": "Unused ordinary credit expires under the 6/12-month recharge denomination rules and O2 states it does not reimburse remaining credit on expiry. Refund of purchase/unused starter is not separately normalized.",
         "trend": "stable",
         "guideEligible": false,
-        "holdReason": null,
-        "lastVerifiedAt": "2026-09-29",
+        "holdReason": "New-line foreign identity/China-first activation and exact China bank/app OTP outcomes remain unverified. O2's online recharge FAQ limits issued-in-Europe cards; prepaid eSIM replacement requires store visit.",
+        "lastVerifiedAt": "2026-10-08",
         "acquireUrl": "https://www.o2.cz/osobni/volani/predplacena-karta",
-        "tariffSummary": "99 CZK GO starter; 300 CZK minimum self top-up; SIM validity is 12 months from last top-up.",
+        "tariffSummary": "GO na den: CZK99 starter with CZK100 credit; CZK29 on days with first outbound voice call or mobile data use, ordinary SMS charged separately. Fund CZK300 per up-to-12-month SIM validity reset (cash credited, not annual service fee); top-up credit lasts only 6 months at CZK300–499 or 12 months at CZK500+. Replacement prepaid eSIM requires store visit, standard CZK99 SIM exchange.",
         "sourceIds": [
           "official-o2cz-prepaid-current-2026-09-29",
-          "official-o2cz-prepaid-documents-2026-09-29"
+          "official-o2cz-prepaid-documents-2026-09-29",
+          "o2cz-tariff-20261005",
+          "o2cz-topup-20261008",
+          "o2cz-prepaid-sim-exchange-20261008",
+          "o2cz-sim-types-20261008",
+          "o2cz-roaming-20261008",
+          "o2cz-cz-regulator-anonymous-2024",
+          "o2cz-reddit-prague-store-20240817"
         ],
         "guideSteps": [
-          "Acquire a current O2 GO prepaid SIM.",
-          "Before 12 months from the last top-up, top up at least 300 CZK.",
-          "Treat the six-month validity of 300–499 CZK credit as credit expiry, not as the SIM/number expiry date."
+          "Buy a current GO na den physical prepaid kit from an O2 outlet or authorized seller in Czechia.",
+          "Verify activation and remaining credit; avoid accidental outbound calling/mobile-data use if trying not to trigger the CZK29 daily fee.",
+          "For a current prepaid line converting to eSIM, visit an O2 store with the SIM/PUK/number and acceptable ID; budget the normal CZK99 SIM exchange fee.",
+          "Top up at least CZK300 before 12 months since the last credit refill, and track credit expiration separately from SIM validity."
         ]
       }
     }

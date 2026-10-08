@@ -1915,5 +1915,59 @@
     "scope": "route",
     "outcome": "Archived Номер навсегда RUB1,500 one-time may be a distinct historical product. Availability and scope are unverified; do not conflate with current Сохраняю номер RUB349/6 months.",
     "sourceId": "mts-number-forever-archive-20261008"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-terms-20261008",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "price-and-lifecycle-reconciliation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The effective Oct 5 2026 O2 prepaid price list confirms SIM lifetime 12 months from last recharge, CZK300–499 credit usable 6 months and CZK500+ credit 12 months. This is a prepaid funding commitment and not a CZK300 standalone line rental fee.",
+    "sourceId": "o2cz-tariff-20261005"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-daily-charge-20261008",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "cost-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "GO na den CZK29 daily rate starts on first outbound call or mobile data connection. SMS is charged separately; incoming SMS alone is not listed as a trigger. Unintended mobile data can create extra spend.",
+    "sourceId": "o2cz-tariff-20261005"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-prepaid-esim-20261008",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The current official O2 SIM replacement support says postpaid online replacement is available but prepaid SIM/eSIM replacements require an O2 store visit with SIM PUK/identity; standard exchange costs CZK99.",
+    "sourceId": "o2cz-prepaid-sim-exchange-20261008"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-recharge-card-20261008",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "payment-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "O2 online CZK300–9,999 card top-up requires internet-payments-enabled card issued in Europe. Retail cash/card top-up is offered. Non-European payment acceptance is not established.",
+    "sourceId": "o2cz-topup-20261008"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-roaming-sms-20261008",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "sms-continuity-scope",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Current prepaid tariff confirms free incoming roaming SMS/MMS; the provider listing of China as a roaming destination does not verify GO na den mainland-China bank/app OTP. Prepaid Wi-Fi Calling does not transport SMS/MMS.",
+    "sourceId": "o2cz-tariff-20261005"
+  },
+  {
+    "id": "evt-o2-cz-prepaid-2026-community-instore-acquisition-20240817",
+    "routeId": "o2-cz-prepaid-2026",
+    "type": "independent-acquisition-adjacent",
+    "reportedAt": "2024-08-17",
+    "scope": "route",
+    "outcome": "One independent r/Prague user described buying an O2 physical prepaid SIM in a Prague retail service point. This supports local acquisition only; the reported bundle is not proven to be the present GO na den CZK99 SKU, and no China/OTP claim is inferred.",
+    "sourceId": "o2cz-reddit-prague-store-20240817"
   }
 ]
