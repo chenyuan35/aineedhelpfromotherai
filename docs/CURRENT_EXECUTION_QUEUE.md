@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 878 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 routes / 87 markets / 157 brands / 117 networks / 891 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -407,9 +407,13 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Provider June-2026 biometric compliance imposes outgoing call/SMS restrictions and separate handset-change 2-hour/30-day/5-day escalating identity/number recovery boundaries. Foreign passport online CCCD/NFC eSIM onboarding and real offshore roaming/SMS remain uncertain. Zero confirmed named-bank/app OTP or China outcome. Added 11 sources and 11 events: Viettel 2→13 route sources, 0→11 events; **160 routes / 878 sources**, **135 comparison / 3 indexable / 31 sitemap** unchanged; HOLD/backstage-only, no public URL.
 - PR **#442** squash-merged `cf58a48a6c1aac5ba7efe61e0f20ede0f99f6735`; CI **#339 PASS**, Eval Gate **#1291 PASS**, exact-head Preview `dpl_HnXmEYR4VC9hGCCndvjBNqjpDQg8` **READY**, production `dpl_3wcpvuKBrw2PbeL3a5PRtH8SW4rt` **READY** on exact SHA, apex/www assigned. Live Phone hub, Viettel lazy JSON (13 sources/11 events), summaries (160 routes), and sitemap (31 URLs) all **HTTP 200**. Ledger `docs/PHONE_VIETTEL_VTVANG_MAINTENANCE_2026-10-08.md`.
 
+## JUST COMPLETED — Vodafone CallYa Classic maintenance
+
+PR #444 squash-merged as `8a296d09619a3d41897b0c1e965e8f2a292ed646` (2026-10-08). CI #342 and Eval Gate #1296 PASS. Preview `dpl_BrNxGxR3RQF73phhNa55gZB2X8kt` READY; exact-merge production `dpl_4LQSQthfgRv6RArNraPAR2aWRbcm` READY with apex/www aliases. Canonical remains 160 routes, now 891 source records and 319 events. CallYa Classic: 15 sources, 16 events, 3 append-only current profiles; HOLD/backstage-only. August 2026 China-based current Classic eSIM case records inactivity disconnection, failed post-lock EUR5 top-up recovery and offshore account/SMS/support difficulties. Three events share one report/user, not three independent outcomes. German 22922 account-server anecdote is not a proven free China keep method. Annual keep fee remains null; no verified named-app OTP, no new SEO URL, no page promotion. Independent direct public JSON HTTP retrieval was unavailable; Vercel READY/aliases are confirmed, not HTTP 200.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `vodafone-callya-90d-2026` (Wave B HOLD). Reconcile current German CallYa prepaid 90-day/12-month validity/top-up minimum and number-reclaim triggers with first-party policy; separate existing legacy/available SIM offers, foreign eSIM and ID registration, payment, roaming/inbound SMS/China OTP and independent operational failures. Preserve unresolved annual fee and eligibility as unknown. One route only; no new URL or ranking promotion.
+1. **NEXT SESSION — Wave C `5sim-temp`:** reconcile current product/temporary-number identity, alias/same-product duplication, current-profile freshness and evidence. Preserve unknown acquisition/retention/OTP values; no new SEO URL, no public recommendation from unresolved evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -434,7 +438,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `vodafone-callya-90d-2026` (one bounded route per session; Viettel PR #442 exact-SHA production and live JSON HTTP verified).
+Wave B completed through CallYa on 2026-10-08; next Wave C starts with `5sim-temp`.
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -448,7 +452,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `truemove-validity-pack-th-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, 8 new events, conditional THB15/180d validity, separate THB3/30d post-expiry retention (max 180d), Tourist SIM 60d cap; remains HOLD.
 - `turkcell-tourist-90d-blocker-2026` — **DONE / RELEASED 2026-10-08**, 2 → 11 sources, 9 route events; old 90d passport/YKN blocker repealed, Tourist renewal/China OTP unverified; HOLD.
 - `viettel-vtvang-keepnumber-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources and 11 route events; VND50k/12m independent only, 2026 biometric/foreign-KYC risk and China OTP unknown; remains HOLD.
-- `vodafone-callya-90d-2026`
+- `vodafone-callya-90d-2026` — **DONE / RELEASED 2026-10-08**, 15 sources / 16 events / 3 current-profile snapshots, HOLD; 90-day discretionary warning distinguished from user-reported China Classic disconnection/recovery failure.
 
 These remain HOLD unless the blocker is actually resolved. Source-count growth alone is not promotion evidence.
 
