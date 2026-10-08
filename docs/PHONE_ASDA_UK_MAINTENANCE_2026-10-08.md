@@ -28,8 +28,12 @@ The September 2025 PAYG pricebook lists **China under World Group 1**, with 20p 
 
 Current 2026 first-person evidence proving that a £0.10 text alone indefinitely preserves remaining credit or a Chinese bank OTP on ASDA is **not present**. One route-only audit, **11 new sources and seven new events**; canonical 160 routes / 87 markets / 157 brands / 117 networks / **802 sources**. Route source depth **2 → 13**, eight total route events, zero application observations. Public boundary remains **135 comparison / 3 indexable / 31 sitemap URLs**.
 
+## Release and observed production verification
+
+PR #428 squash-merged as `811a056f937e3b395b9431bb52cb31f2f0654b6c`; CI #322 / run #37729998478 **PASS**; Eval Gate #1255 / run #37729998454 **PASS**; Vercel Preview `dpl_BJ62bfRcTRvokfW6GRvw4VUsSGqW` **READY**. GitHub auto-release did **not** immediately produce a main production deployment, so the coordinator triggered the existing Git-linked Vercel project production build explicitly at this exact merged main SHA. Production `dpl_5FUc8YupzsvaTKGtpcdvfHLN5ziN` is **READY**, with `aineedhelpfromotherai.com` alias and `aliasError=null`. Independent direct HTTP response inspection of the live lazy JSON or sitemap was unavailable; do not claim direct HTTP 200 / fresh counts measured.
+
 ## Engineering and release contract
 
-The updated `scripts/test-phone-asda-uk-maintenance.mjs` checks the dual clock, £5 funding unit and £10/360 days, UK-registered-card exclusion, China roaming qualification, explicit unknown KYC/OTP, HOLD and 160/135/3 boundaries. It is included in `phone:data:check`. The historical Claro source-count regression was made monotonic for future evidence waves. The whole Phone search index, route summaries, route detail and database bundle were regenerated; CI / Eval Gate / Vercel Preview and merged production checks must still pass.
+The updated `scripts/test-phone-asda-uk-maintenance.mjs` checks the dual clock, £5 funding unit and £10/360 days, UK-registered-card exclusion, China roaming qualification, explicit unknown KYC/OTP, HOLD and 160/135/3 boundaries. It is included in `phone:data:check`. The historical Claro source-count regression was made monotonic for future evidence waves. The whole Phone search index, route summaries, route detail and database bundle were regenerated; CI / Eval Gate / Vercel Preview and merged production gates passed as documented above; the direct public JSON HTTP content gap remains explicit.
 
 Next eligible bounded Wave B route: `free-mobile-fr-2026`.
