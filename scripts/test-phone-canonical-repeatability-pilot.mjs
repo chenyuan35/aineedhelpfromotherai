@@ -44,11 +44,28 @@ for (const routeId of routeIds) {
   }
   const legacy = globalDirectory.routes.find((row) => row.id === routeId);
   assert(legacy, `legacy comparison row missing: ${routeId}`);
-  assert.deepEqual(
-    buildCanonicalComparisonRoute(canonical, routeId),
-    legacy,
-    `${routeId}: canonical adapter must reproduce legacy comparison row exactly`,
-  );
+  if (routeId === 'telstra-prepaid-longexpiry-2026') {
+    // Preserve the historical admission parity against the immutable intake,
+    // while allowing a reviewed current-price correction in canonical data.
+    const historicalPacket = read('data/phone/review-packets/telstra-prepaid-longexpiry-2026.json');
+    assert.deepEqual(
+      buildCanonicalComparisonRoute(
+        { routes: [historicalPacket.route], markets: [historicalPacket.market], snapshots: historicalPacket.snapshots },
+        routeId,
+      ),
+      legacy,
+      'Telstra historical intake must still reproduce the frozen legacy comparison row',
+    );
+    const revised = buildCanonicalComparisonRoute(canonical, routeId);
+    assert.equal(revised.keep.yearCostOriginal, 74, 'Telstra Casual annual keep must use the revised current rate');
+    assert.equal(revised.guideEligible, false);
+  } else {
+    assert.deepEqual(
+      buildCanonicalComparisonRoute(canonical, routeId),
+      legacy,
+      `${routeId}: canonical adapter must reproduce legacy comparison row exactly`,
+    );
+  }
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must not become detail-eligible/indexable`);
 }
 
@@ -60,4 +77,4 @@ assert.equal(
 assert(manifest.admittedBatches.includes('nl-au-directory-batch-g.json'));
 assert.equal(globalDirectory.routes.length, 135, 'must preserve 135-route comparison coverage');
 assert.equal(Object.values(policy.routeStates).filter((state) => state === 'indexable').length, 3, 'must preserve 3 indexable routes');
-console.log('Phone canonical repeatability pilot passed: KPN + Telstra parity exact; 135 comparison routes and 3 indexable routes preserved.');
+console.log('Phone canonical repeatability passed: KPN current parity exact, Telstra historical parity intact and reviewed current correction accepted; 135 comparison routes and 3 indexable routes preserved.');
