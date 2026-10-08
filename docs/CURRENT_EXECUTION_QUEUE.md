@@ -464,7 +464,7 @@ These remain HOLD unless the blocker is actually resolved. Source-count growth a
 
 ### Wave C — legacy needs-reconciliation cleanup
 
-Ten canonical legacy rows still lack normalized current-profile snapshots and must be reconciled, aliased/suppressed, reclassified or explicitly retained:
+Wave C began with eleven legacy rows; after the released 5SIM reconciliation, ten still lack normalized current-profile snapshots and must be reconciled, aliased/suppressed, reclassified or explicitly retained:
 
 - `5sim-temp` — **DONE / RELEASED 2026-10-08**, 8 sources, 2 independent scoped events, current profile HOLD; marketplace not a durable phone number.
 - `a1-croatia-prepaid-esim`
