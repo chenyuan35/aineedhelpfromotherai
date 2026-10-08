@@ -1,6 +1,6 @@
 # 5SIM temporary activation — Wave C reconciliation (2026-10-08)
 
-Status: normalized data prepared on a dedicated branch; release gated on CI/Eval/Preview/production verification.
+Status: RELEASED on 2026-10-08 through PR #446, squash merge `011a3b6944c967abe1b1f39033ddfcb68ef44331`.
 
 ## Decision
 
@@ -27,6 +27,6 @@ No alias entry, no new standalone route URL, no sitemap/indexability change, no 
 
 ## Verification / follow-up
 
-Regression assertions in `scripts/test-phone-database.mjs` cover null costs, HOLD state, one normalized profile, unique marketplace identity and generated lazy detail. `npm run phone:data:check`, frontend production build, public-release checks, CI, Eval and production release must all pass before marking this completed. Any missing detail in funding/identity/refund behavior remains unknown, not to be filled from generic marketing copy.
+Regression assertions in `scripts/test-phone-database.mjs` cover null costs, HOLD state, one normalized profile, unique marketplace identity and generated lazy detail. Eval Gate #1300 PASS includes Phone data/public build and release-boundary steps. Vercel preview `dpl_C59ieWdoLYh4HYsTZixYfDcRb48t` READY; production `dpl_6LeKzZtxWyF6c4YHTDBSDQ2Lecgy` READY on merged commit, with apex/www aliases. Independent public JSON HTTP reading was not available and HTTP 200 is not claimed. Any missing detail in funding/identity/refund behavior remains unknown, not to be filled from generic marketing copy.
 
 Next independent Wave C record after this release: `a1-croatia-prepaid-esim`, one route only.

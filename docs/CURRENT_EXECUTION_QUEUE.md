@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 routes / 87 markets / 157 brands / 117 networks / 891 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 routes / 87 markets / 157 brands / 117 networks / 896 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -411,9 +411,15 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 
 PR #444 squash-merged as `8a296d09619a3d41897b0c1e965e8f2a292ed646` (2026-10-08). CI #342 and Eval Gate #1296 PASS. Preview `dpl_BrNxGxR3RQF73phhNa55gZB2X8kt` READY; exact-merge production `dpl_4LQSQthfgRv6RArNraPAR2aWRbcm` READY with apex/www aliases. Canonical remains 160 routes, now 891 source records and 319 events. CallYa Classic: 15 sources, 16 events, 3 append-only current profiles; HOLD/backstage-only. August 2026 China-based current Classic eSIM case records inactivity disconnection, failed post-lock EUR5 top-up recovery and offshore account/SMS/support difficulties. Three events share one report/user, not three independent outcomes. German 22922 account-server anecdote is not a proven free China keep method. Annual keep fee remains null; no verified named-app OTP, no new SEO URL, no page promotion. Independent direct public JSON HTTP retrieval was unavailable; Vercel READY/aliases are confirmed, not HTTP 200.
 
+## JUST COMPLETED — 5SIM Wave C marketplace reconciliation (released)
+
+PR #446 squash-merged as `011a3b6944c967abe1b1f39033ddfcb68ef44331` (2026-10-08). Eval Gate #1300 PASS (including Phone release build and boundaries); exact-head Vercel Preview `dpl_C59ieWdoLYh4HYsTZixYfDcRb48t` READY and exact-merge production `dpl_6LeKzZtxWyF6c4YHTDBSDQ2Lecgy` READY on main with apex/www aliases. Canonical **160 routes / 87 markets / 157 brands / 117 networks / 896 sources / 321 events**; `5sim-temp` has 8 sources / 2 scoped community events / 1 normalized current profile. It is a one-time SMS activation marketplace, not an owned SIM; separate hosting/rental orders are not long-term real-mobile products. Dynamic acquisition cost and annual keep amount remain null; exact-app OTP success percentages remain unknown. HOLD with `guideEligible=false`, no alias/duplicate admission, no new SEO URL or publication expansion (**135 comparison / 3 indexable / 31 sitemap**). Direct independent live JSON HTTP retrieval was unavailable; Vercel READY/aliases are confirmed, not HTTP 200.
+
+Ledger: `docs/PHONE_5SIM_TEMP_RECONCILIATION_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **NEXT SESSION — Wave C `5sim-temp`:** reconcile current product/temporary-number identity, alias/same-product duplication, current-profile freshness and evidence. Preserve unknown acquisition/retention/OTP values; no new SEO URL, no public recommendation from unresolved evidence.
+1. **NEXT SESSION — Wave C `a1-croatia-prepaid-esim`:** reconcile legacy product identity/current profile, same-product alias/duplicate state, price/lifecycle/foreign activation evidence. Preserve unsupported acquisition/retention/OTP values as unknown; no public URL or recommendation without verified evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -458,9 +464,9 @@ These remain HOLD unless the blocker is actually resolved. Source-count growth a
 
 ### Wave C — legacy needs-reconciliation cleanup
 
-Eleven canonical legacy rows still lack normalized current-profile snapshots and must be reconciled, aliased/suppressed, reclassified or explicitly retained:
+Wave C began with eleven legacy rows; after the released 5SIM reconciliation, ten still lack normalized current-profile snapshots and must be reconciled, aliased/suppressed, reclassified or explicitly retained:
 
-- `5sim-temp`
+- `5sim-temp` — **DONE / RELEASED 2026-10-08**, 8 sources, 2 independent scoped events, current profile HOLD; marketplace not a durable phone number.
 - `a1-croatia-prepaid-esim`
 - `activatex-temp`
 - `h2o-paygo-us`
@@ -476,7 +482,7 @@ Do not count same-product aliases as new atomic routes. Prefer explicit alias/re
 
 ### Cross-cutting field debt
 
-Audit baseline before this queue update: 149/160 routes have current-profile snapshots; 11 do not. Among normalized profiles, unresolved states remain in roughly 18 acquisition/landed-cost records, 9 keep/retention records and 47 roaming-SMS records. These counts are maintenance indicators, not a mandate to manufacture answers. Resolve only with evidence; otherwise preserve explicit unknown/uncertain state.
+Audit baseline before this queue update: 150/160 routes have current-profile snapshots; 10 do not. Among normalized profiles, unresolved states remain in roughly 18 acquisition/landed-cost records, 9 keep/retention records and 47 roaming-SMS records. These counts are maintenance indicators, not a mandate to manufacture answers. Resolve only with evidence; otherwise preserve explicit unknown/uncertain state.
 
 Re-run the thin-route/field-debt audit after each small maintenance wave and update this queue from actual canonical data. Broad DB expansion remains closed unless genuinely new evidence-qualified atomic routes appear.
 
