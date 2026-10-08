@@ -24,4 +24,8 @@ An [April-2026 newly purchased tourist SIM account case](https://www.reddit.com/
 
 Current 30-day tourist acquisition **S$15** and no viable passport-only number-retention price (`null`). Passport KYC expiry **30 days** independent of paid allowance, China roaming data != SMS, self-registration data-only restriction, no evidence for exact bank/app OTP service. **12 new sources / 11 events**; route sources **2 → 14**; corpus **835 → 847**, with **160 routes / 87 markets / 157 brands / 117 networks**. Existing **135 historical comparison / 3 indexable / 31 sitemap URLs** unchanged; route remains HOLD/backstage with guideEligible=false and avoidRoute=true. Dedicated test extends `phone:data:check`; immutable 2026-09 historical comparison parity retained while checking reviewed current state.
 
-**Release pending:** CI, Eval Gate, Preview, merged-SHA production/alias verification. Next separate Wave B task: `truemove-validity-pack-th-2026`.
+## Release verified
+
+PR #436 squash-merged as `55d33d374ab056a9bccb3c60aa748a57d3cbacf0`; CI #331 **PASS**, Eval Gate #1272 **PASS**, Vercel Preview `dpl_F646wMfwyxt7WWUQGSghye6Lcvo5` **READY**, production `dpl_G5z2a6zwQWzTMRpBoot2GSpyBHKC` **READY** on exact merged main SHA, apex `aineedhelpfromotherai.com` and www aliases both verified. Direct independent public JSON/sitemap HTTP reading was not performed and HTTP 200 is not claimed.
+
+The 2026-09 intake packet remains immutable. Its historical comparison row is checked separately from this dated correction. Long-term passport-only number use remains blocked. Next separate Wave B task: `truemove-validity-pack-th-2026`.
