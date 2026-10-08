@@ -3130,11 +3130,22 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.vietteltelecom.vn/",
     "sourceIds": [
       "official-viettel-kyc-roaming-otp-2026-09-29",
-      "specialist-3gviettel-vtvang-2026-09-29"
+      "specialist-3gviettel-vtvang-2026-09-29",
+      "viettel-official-offshore-biometric-and-dre-20260617",
+      "viettel-official-device-change-2h-20260615",
+      "viettel-official-tammi-esim-cccd-20260630",
+      "viettel-official-tammi-transition-20260917",
+      "viettel-official-dre-lowcost-roaming-20260211",
+      "viettel-community-vtvang-foreign-esim-20260620",
+      "viettel-community-roaming-keep-sms-20260214",
+      "viettel-community-passport-kyc-failures-20260618",
+      "viettel-community-passport-esim-web-failure-20260729",
+      "viettel-community-overseas-existing-sim-20260811",
+      "viettel-community-airport-registration-20260815"
     ]
   },
   {

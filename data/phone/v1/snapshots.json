@@ -10106,18 +10106,18 @@
     }
   },
   {
-    "id": "snap-viettel-vtvang-keepnumber-2026-current-profile-20260929",
+    "id": "snap-viettel-vtvang-keepnumber-2026-current-profile-20261008",
     "routeId": "viettel-vtvang-keepnumber-2026",
     "kind": "current-profile",
-    "checkedAt": "2026-09-29",
-    "sourceDataset": "ph-tr-ae-vn-directory-batch-j.json",
+    "checkedAt": "2026-10-08",
+    "sourceDataset": "phone-viettel-vtvang-maintenance-2026-10-08",
     "data": {
       "id": "viettel-vtvang-keepnumber-2026",
       "brandId": "viettel-prepaid",
       "publishState": "observation",
       "numberType": "real-mobile",
       "simType": "physical + eSIM",
-      "acquisitionSummary": "Recent Viettel-specialist reporting dated February 2026 describes VTVANG as a 12-month keep-number service for eligible prepaid lines. The same current report gives a 50,000 VND registration fee. A first-party Viettel product page for VTVANG was not located in this review, so the keep product remains specialist-reported rather than provider-official.",
+      "acquisitionSummary": "VTVANG is a keep-number add-on for an EXISTING eligible Viettel voice/SMS prepaid line, not a VND50,000 new-SIM sale. February 2026 specialist reporting requires an active prepaid line aged at least 30 days, excluding some restricted/blocked tariffs. A June 2026 overseas customer independently confirms VND50,000 per 12 months and describes support-assisted enrollment, but no first-party VTVANG tariff/eligibility/renewal page was verified. Viettel new number physical SIM/eSIM needs real-name registration; some foreign-passport users can visit official stores, but self-service remote eSIM identity verification often relies on a Vietnamese chip CCCD and individual travellers report failed passport scans.",
       "landedCost": {
         "currency": "VND",
         "providerOrCommunityPrice": null,
@@ -10127,37 +10127,51 @@
         "landedOriginal": null,
         "landedCny": null,
         "fxCheckedAt": null,
-        "state": "acquisition-cost-not-established"
+        "state": "verified-new-line-checkout-and-foreign-payment-unknown"
       },
       "keep": {
         "currency": "VND",
         "observedActionCost": 50000,
-        "yearCostOriginal": 50000,
+        "yearCostOriginal": null,
         "yearCostCny": null,
-        "action": "Recent February-2026 Viettel-specialist evidence reports VTVANG at 50,000 VND for 12 months of number retention without normal recharge/activity; eligibility exclusions apply.",
         "intervalDays": 365,
-        "state": "current-specialist-reported"
+        "state": "specialist-and-user-corroborated-50k-12mo-not-firstparty-annual",
+        "action": "VTVANG: February 2026 independent specialist describes VND50,000 per 12 MONTHS, send VTVANG to 109, eligible active prepaid line aged >=30 days with tariff exclusions. June 2026 independent expat replies corroborate VND50,000/year and suggest support audio/video call; provider current VTVANG contract, overseas enrollment, yearly renewal and foreign identity entitlement remain unverified. Normalized confirmed annual cost therefore UNKNOWN. Separate Viettel official DRE20 is VND20,000/30 days auto-renewing data roaming (12 cycles = VND240,000/360 days illustrative, NOT VTVANG pricing). Number retention, actual roaming service and OTP reception are distinct."
       },
-      "chinaActivation": "Viettel requires real-name subscriber verification. Current first-party 2026 guidance shows unverified subscribers can have outgoing calls/SMS blocked and overseas subscribers may need My Viettel/Tammi identity remediation. A reliable foreigner-acquisition path is not established here.",
-      "kyc": "Mandatory subscriber identity verification. Current 2026 Viettel notice emphasizes chip-ID/VNeID-based remediation for affected subscribers; foreign-user onboarding eligibility is not established by first-party evidence in this packet.",
-      "payment": "VTVANG is reported as an account/SMS service for eligible prepaid lines; foreign payment/onboarding is not established.",
-      "wifiCalling": "Not relied on for this route decision.",
-      "roamingSms": "Current Viettel guidance for subscribers abroad states roaming must be active to receive OTP, supporting inbound SMS capability when roaming is active; independent long-term OTP reliability is still unverified.",
-      "refund": "Not established.",
-      "trend": "stable",
+      "chinaActivation": "No proven China-first Viettel voice-number activation or passport-based remote eSIM conversion. New lines require subscriber verification; some travelers report official store passport registration while a July 2026 applicant repeatedly failed passport/selfie online eSIM checks. Official Tammi physical→eSIM workflow scans Vietnamese chip CCCD by NFC; June expat reports inability to convert abroad with a foreign passport. Moving an existing SIM to a new handset triggers biometric re-verification; do not assume overseas handset changes safe.",
+      "kyc": "Viettel officially began restricting outgoing voice and SMS from 2026-06-15 for lines lacking required subscriber identity verification (including abroad). App remediation currently assumes valid chipped Vietnamese CCCD and VNeID level-2 identity. The official handset/SIM-change rule additionally requires face re-verification within TWO HOURS after installing a SIM in a different phone, with one-way block, then after 30 days two-way block and after 5 further days number recovery/contract termination if left unresolved. Several June-July 2026 passport holders independently reported repeated store re-verification prompts, temporary SMS disconnection and a mistaken SIM number swap. In-store or support escalation may be required; foreign-passport app eligibility unverified.",
+      "payment": "Independent VTVANG specialist claims activation by sending VTVANG to 109, VND50,000 from eligible existing prepaid balance; independent US-based user mentions enrolling by a Viettel customer-service audio/video call. Working overseas shortcode, recurring yearly debit, accepted foreign card and topping-up while blocked are not confirmed. DRE20 is a separate operator-published VND20,000/30-day auto-renewing international DATA roaming package, not VTVANG enrollment, not an obligatory incoming-SMS fee.",
+      "wifiCalling": "No verified Viettel VTVANG-specific Wi-Fi Calling fallback for foreign SMS/OTP; Wi-Fi app access is not the same as cellular SMS roaming.",
+      "roamingSms": "First-party Viettel June 2026 notices say effective international roaming is REQUIRED to receive SMS/OTP overseas, and account KYC restrictions can disrupt outgoing SMS even on a retained number. Optional operator DRE20 data roaming costs VND20,000/30 days with auto-renewal and is advertised for keeping connectivity abroad; this does NOT independently prove a roaming add-on is required for incoming SMS, Tourist/foreign-passport eligibility or China partner/bank-app OTP delivery. February 2026 US-based prepaid owner reports one physical SIM cannot send SMS though eSIM works; August user reports occasional text and balance on an existing line. None tests exact VTVANG or a mainland China named app.",
+      "refund": "VTVANG refund, failed renewal, SIM recovery, and port-out terms not established.",
+      "trend": "changed",
       "guideEligible": false,
-      "holdReason": "The 50,000 VND/12-month keep package is current specialist evidence but lacks a located first-party product page, and foreign-user acquisition/KYC plus long-term OTP reliability remain unresolved.",
-      "lastVerifiedAt": "2026-09-29",
+      "holdReason": "VTVANG VND50,000/12-month retention and account-age/tariff criteria are specialist+community corroborated, not a current published Viettel contract, so confirmed annual cost null. Independent 2026 passport users experienced blocked SMS and difficult re-verification following June-15 rules; overseas phone change can trigger biometric lockout/number recovery. No verified foreign eligible VTVANG subscription, remote physical→eSIM passport conversion, reliable China inbound bank/app OTP or renewal. Separate DRE20 optional monthly roaming is NOT annual keep product. Remains HOLD.",
+      "lastVerifiedAt": "2026-10-08",
       "acquireUrl": "https://www.vietteltelecom.vn/",
-      "tariffSummary": "VTVANG reported at 50,000 VND/12 months for eligible prepaid lines; keep as HOLD until first-party product/eligibility and foreign acquisition are verified.",
+      "tariffSummary": "Viettel eligible existing prepaid; VTVANG independently reported VND50,000/12 months, current official annual keep and purchase cost unverified. 2026 foreign biometric/KYC and phone-switch controls; overseas roaming/China OTP not guaranteed. DRE20 optional VND20,000/30d roaming is separate.",
       "sourceIds": [
+        "official-viettel-kyc-roaming-otp-2026-09-29",
         "specialist-3gviettel-vtvang-2026-09-29",
-        "official-viettel-kyc-roaming-otp-2026-09-29"
+        "viettel-official-offshore-biometric-and-dre-20260617",
+        "viettel-official-device-change-2h-20260615",
+        "viettel-official-tammi-esim-cccd-20260630",
+        "viettel-official-tammi-transition-20260917",
+        "viettel-official-dre-lowcost-roaming-20260211",
+        "viettel-community-vtvang-foreign-esim-20260620",
+        "viettel-community-roaming-keep-sms-20260214",
+        "viettel-community-passport-kyc-failures-20260618",
+        "viettel-community-passport-esim-web-failure-20260729",
+        "viettel-community-overseas-existing-sim-20260811",
+        "viettel-community-airport-registration-20260815"
       ],
       "guideSteps": [
-        "HOLD: treat 50,000 VND/12-month VTVANG as current specialist evidence, not provider-official fact.",
-        "Require first-party package/eligibility and foreign-acquisition verification before promotion."
-      ]
+        "HOLD: VTVANG is only a reported add-on for an existing eligible Viettel prepaid voice number; do not treat VND50,000 as new-line acquisition or provider-confirmed yearly cost.",
+        "Confirm exact product, tariff, >=30-day account age and foreign owner eligibility directly with Viettel before planning retention or sending shortcode 109 overseas.",
+        "Complete identity verification and any planned SIM/device/eSIM change while still in Vietnam; Tammi CCCD/NFC online flow is not verified for foreign passports.",
+        "Pre-enable roaming and confirm country partner/SMS support; DRE20 is optional separate roaming service, not VTVANG nor evidence of mainland China bank OTP."
+      ],
+      "avoidRoute": true
     }
   },
   {
