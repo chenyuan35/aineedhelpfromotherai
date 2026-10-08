@@ -4673,5 +4673,77 @@
     "url": "https://www.reddit.com/r/TelstraAustralia/comments/1hls0t2",
     "type": "community",
     "reportedAt": "2025-02-03"
+  },
+  {
+    "id": "claro-br-recharge-ladder-20261008",
+    "url": "https://www.claro.com.br/celular/planos-pre/claro-recarga",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-recharge-regulation-terms-20261008",
+    "url": "https://www.claro.com.br/produtosclaro/documentos_pre/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-prepaid-cancellation-faq-20261008",
+    "url": "https://www.claro.com.br/faq/pre-pago/em-quanto-tempo-a-minha-linha-podera-ser-cancelada",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-esim-foreign-passport-20261008",
+    "url": "https://www.claro.com.br/celular/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-prepaid-activation-selfie-20261008",
+    "url": "https://www.claro.com.br/celular/planos-pre/como-ativar-seu-chip",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-international-roaming-prepaid-restriction-20261008",
+    "url": "https://www.claro.com.br/celular/roaming-internacional/como-usar-celular-no-exterior",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-roaming-faq-postpaid-only-20261008",
+    "url": "https://www.claro.com.br/faq/ligacoes-e-sms/como-usar-celular-em-viagens-internacionais",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "community-claro-br-prepaid-roaming-japan-20250109",
+    "url": "https://www.reddit.com/r/InternetBrasil/comments/1hx2i9b",
+    "type": "community",
+    "reportedAt": "2025-01-09"
+  },
+  {
+    "id": "community-claro-br-prepaid-foreign-store-20260117",
+    "url": "https://www.reddit.com/r/Brazil/comments/1qfhs7i/my_battle_to_get_a_local_sim_card_as_a_tourist_in/",
+    "type": "community",
+    "reportedAt": "2026-01-17"
+  },
+  {
+    "id": "community-claro-br-prepaid-esim-overseas-failure-20260219",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativar-e-sim-da-claro-no-exterior-e-falta-de-informacao-clara-no-momento-da-compra_5hzKfiuITPUp1TYU/",
+    "type": "community",
+    "reportedAt": "2026-02-19"
+  },
+  {
+    "id": "community-claro-br-prepaid-roaming-denial-20260615",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativacao-de-roaming-internacional-e-solicitacao-de-mudanca-de-plano-para-pre-pago-fora-do-pais_lsgawoSJG--Mci2J/",
+    "type": "community",
+    "reportedAt": "2026-06-15"
+  },
+  {
+    "id": "community-claro-br-prepaid-no-sms-portability-20251226",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-migrar-para-esim-e-receber-sms-no-exterior-impede-uso-do-numero-e-portabilidade_ncxnUcD3gEaaHDq5/",
+    "type": "community",
+    "reportedAt": "2025-12-26"
   }
 ]

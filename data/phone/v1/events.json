@@ -2014,5 +2014,59 @@
     "scope": "route",
     "outcome": "One independent long-validity Telstra prepaid user reported being unable to purchase an international roaming pack while already overseas; retain as one incident, not a universal failure rate.",
     "sourceId": "community-telstra-365day-roaming-pack-friction-2025-02-03"
+  },
+  {
+    "id": "evt-claro-br-cost-corrected-20261008",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "cost-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "The old BRL15/90 days and BRL60/year normalization is not the currently listed recharge product. Current provider table specifies BRL35/90 days; four recharges are BRL140 for 360 days, with no verified total acquisition cost.",
+    "sourceId": "claro-br-recharge-ladder-20261008"
+  },
+  {
+    "id": "evt-claro-br-credit-vs-line-clocks-20261008",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "lifecycle-clarification",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Claro cancellation FAQ uses both '90 days after the last recharge' and '90 days of validity of the last recharge' language; a later 180-day reassignment risk is a separate after-deactivation event, NOT a guaranteed credit-validity or usable-service period.",
+    "sourceId": "claro-br-prepaid-cancellation-faq-20261008"
+  },
+  {
+    "id": "evt-claro-br-prepaid-roaming-exclusion-20261008",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "roaming-restriction",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Claro explicitly states prepaid and Controle subscribers do not have international roaming and must change to a postpaid product. Free inbound international SMS stated on postpaid roaming terms does not apply to this prepaid route.",
+    "sourceId": "claro-br-international-roaming-prepaid-restriction-20261008"
+  },
+  {
+    "id": "evt-claro-br-foreign-passport-store-only-20261008",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "activation-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Claro's current eSIM FAQ supports a foreign passport for prepaid eSIM but only at physical stores; online access is not proof of foreign offshore-first onboarding. Independent January 2026 tourist reports a Claro shop refusing passport activation.",
+    "sourceId": "claro-br-esim-foreign-passport-20261008"
+  },
+  {
+    "id": "evt-claro-br-overseas-esim-activation-failed-20260219",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "operational-failure",
+    "reportedAt": "2026-02-19",
+    "scope": "route",
+    "outcome": "One user complained on 2026-02-19 of buying Claro prepaid eSIM but being unable to first-activate from Portugal, with support indicating physical Brazil presence was needed. One report, not a universal probability.",
+    "sourceId": "community-claro-br-prepaid-esim-overseas-failure-20260219"
+  },
+  {
+    "id": "evt-claro-br-overseas-sms-roaming-failed-20260615",
+    "routeId": "claro-pre-br-90d-2026",
+    "type": "operational-failure",
+    "reportedAt": "2026-06-15",
+    "scope": "route",
+    "outcome": "A June 2026 self-identified Claro prepaid user outside Brazil reported no international roaming and inability to switch their line to postpaid remotely. Independently corroborates provider restriction without an app-specific success percentage.",
+    "sourceId": "community-claro-br-prepaid-roaming-denial-20260615"
   }
 ]

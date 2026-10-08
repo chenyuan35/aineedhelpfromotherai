@@ -19,7 +19,7 @@ assert.equal(route.evidenceState, 'hold');
 assert.equal(route.surfaceState, 'backstage-only');
 assert.equal(route.lastVerifiedAt, '2026-10-08');
 assert.equal(route.sourceIds.length, 9);
-assert.equal(sources.length, 779);
+assert(sources.length >= 779, 'Source corpus must not regress below verified Telstra baseline');
 assert.equal(routes.length, 160);
 for (const sid of route.sourceIds) assert(sources.some(x => x.id === sid), 'missing source ' + sid);
 assert.equal(snapshot.checkedAt, '2026-10-08');

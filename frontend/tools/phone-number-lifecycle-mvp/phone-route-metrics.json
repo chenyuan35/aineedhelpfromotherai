@@ -279,13 +279,13 @@
     },
     {
       "routeId": "claro-pre-br-90d-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "BRL",
-      "acquisitionCostOriginal": 10,
+      "acquisitionCostOriginal": null,
       "acquisitionCostCny": null,
       "keepCurrency": "BRL",
-      "keepYearCostOriginal": 60,
+      "keepYearCostOriginal": 140,
       "keepYearCostCny": null,
       "keepIntervalDays": 90
     },

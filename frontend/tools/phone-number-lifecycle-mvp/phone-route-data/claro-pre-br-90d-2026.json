@@ -5,16 +5,28 @@
     "marketId": "br",
     "networkId": "claro-br",
     "brandId": "claro-pre-br",
-    "displayName": "Claro Pré Brazil",
+    "displayName": "Claro Pré (Brazil)",
     "family": "long-term",
     "numberClass": "real-mobile",
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.claro.com.br/celular/planos-pre",
     "sourceIds": [
-      "claro-prepaid-plan-legacy-2026-09-26"
+      "claro-prepaid-plan-legacy-2026-09-26",
+      "claro-br-recharge-ladder-20261008",
+      "claro-br-recharge-regulation-terms-20261008",
+      "claro-br-prepaid-cancellation-faq-20261008",
+      "claro-br-esim-foreign-passport-20261008",
+      "claro-br-prepaid-activation-selfie-20261008",
+      "claro-br-international-roaming-prepaid-restriction-20261008",
+      "claro-br-roaming-faq-postpaid-only-20261008",
+      "community-claro-br-prepaid-roaming-japan-20250109",
+      "community-claro-br-prepaid-foreign-store-20260117",
+      "community-claro-br-prepaid-esim-overseas-failure-20260219",
+      "community-claro-br-prepaid-roaming-denial-20260615",
+      "community-claro-br-prepaid-no-sms-portability-20251226"
     ]
   },
   "market": {
@@ -35,13 +47,13 @@
   },
   "metrics": {
     "routeId": "claro-pre-br-90d-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-08",
     "metricState": "current-profile",
     "acquisitionCurrency": "BRL",
-    "acquisitionCostOriginal": 10,
+    "acquisitionCostOriginal": null,
     "acquisitionCostCny": null,
     "keepCurrency": "BRL",
-    "keepYearCostOriginal": 60,
+    "keepYearCostOriginal": 140,
     "keepYearCostCny": null,
     "keepIntervalDays": 90
   },
@@ -53,6 +65,78 @@
       "url": "https://www.claro.com.br/celular/planos-pre",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "claro-br-recharge-ladder-20261008",
+      "url": "https://www.claro.com.br/celular/planos-pre/claro-recarga",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-recharge-regulation-terms-20261008",
+      "url": "https://www.claro.com.br/produtosclaro/documentos_pre/",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-prepaid-cancellation-faq-20261008",
+      "url": "https://www.claro.com.br/faq/pre-pago/em-quanto-tempo-a-minha-linha-podera-ser-cancelada",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-esim-foreign-passport-20261008",
+      "url": "https://www.claro.com.br/celular/esim",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-prepaid-activation-selfie-20261008",
+      "url": "https://www.claro.com.br/celular/planos-pre/como-ativar-seu-chip",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-international-roaming-prepaid-restriction-20261008",
+      "url": "https://www.claro.com.br/celular/roaming-internacional/como-usar-celular-no-exterior",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "claro-br-roaming-faq-postpaid-only-20261008",
+      "url": "https://www.claro.com.br/faq/ligacoes-e-sms/como-usar-celular-em-viagens-internacionais",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "community-claro-br-prepaid-roaming-japan-20250109",
+      "url": "https://www.reddit.com/r/InternetBrasil/comments/1hx2i9b",
+      "type": "community",
+      "reportedAt": "2025-01-09"
+    },
+    {
+      "id": "community-claro-br-prepaid-foreign-store-20260117",
+      "url": "https://www.reddit.com/r/Brazil/comments/1qfhs7i/my_battle_to_get_a_local_sim_card_as_a_tourist_in/",
+      "type": "community",
+      "reportedAt": "2026-01-17"
+    },
+    {
+      "id": "community-claro-br-prepaid-esim-overseas-failure-20260219",
+      "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativar-e-sim-da-claro-no-exterior-e-falta-de-informacao-clara-no-momento-da-compra_5hzKfiuITPUp1TYU/",
+      "type": "community",
+      "reportedAt": "2026-02-19"
+    },
+    {
+      "id": "community-claro-br-prepaid-roaming-denial-20260615",
+      "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativacao-de-roaming-internacional-e-solicitacao-de-mudanca-de-plano-para-pre-pago-fora-do-pais_lsgawoSJG--Mci2J/",
+      "type": "community",
+      "reportedAt": "2026-06-15"
+    },
+    {
+      "id": "community-claro-br-prepaid-no-sms-portability-20251226",
+      "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-migrar-para-esim-e-receber-sms-no-exterior-impede-uso-do-numero-e-portabilidade_ncxnUcD3gEaaHDq5/",
+      "type": "community",
+      "reportedAt": "2025-12-26"
     }
   ],
   "observations": [],
@@ -65,6 +149,60 @@
       "scope": "route",
       "outcome": "The legacy 90-day recharge and recycle timing could not be independently reverified against current 2026 Claro pages in this round. Preserve it only as a HOLD signal, not a current-guaranteed rule.",
       "sourceId": "claro-prepaid-plan-legacy-2026-09-26"
+    },
+    {
+      "id": "evt-claro-br-cost-corrected-20261008",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "cost-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "The old BRL15/90 days and BRL60/year normalization is not the currently listed recharge product. Current provider table specifies BRL35/90 days; four recharges are BRL140 for 360 days, with no verified total acquisition cost.",
+      "sourceId": "claro-br-recharge-ladder-20261008"
+    },
+    {
+      "id": "evt-claro-br-credit-vs-line-clocks-20261008",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "lifecycle-clarification",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Claro cancellation FAQ uses both '90 days after the last recharge' and '90 days of validity of the last recharge' language; a later 180-day reassignment risk is a separate after-deactivation event, NOT a guaranteed credit-validity or usable-service period.",
+      "sourceId": "claro-br-prepaid-cancellation-faq-20261008"
+    },
+    {
+      "id": "evt-claro-br-prepaid-roaming-exclusion-20261008",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "roaming-restriction",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Claro explicitly states prepaid and Controle subscribers do not have international roaming and must change to a postpaid product. Free inbound international SMS stated on postpaid roaming terms does not apply to this prepaid route.",
+      "sourceId": "claro-br-international-roaming-prepaid-restriction-20261008"
+    },
+    {
+      "id": "evt-claro-br-foreign-passport-store-only-20261008",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "activation-boundary",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Claro's current eSIM FAQ supports a foreign passport for prepaid eSIM but only at physical stores; online access is not proof of foreign offshore-first onboarding. Independent January 2026 tourist reports a Claro shop refusing passport activation.",
+      "sourceId": "claro-br-esim-foreign-passport-20261008"
+    },
+    {
+      "id": "evt-claro-br-overseas-esim-activation-failed-20260219",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "operational-failure",
+      "reportedAt": "2026-02-19",
+      "scope": "route",
+      "outcome": "One user complained on 2026-02-19 of buying Claro prepaid eSIM but being unable to first-activate from Portugal, with support indicating physical Brazil presence was needed. One report, not a universal probability.",
+      "sourceId": "community-claro-br-prepaid-esim-overseas-failure-20260219"
+    },
+    {
+      "id": "evt-claro-br-overseas-sms-roaming-failed-20260615",
+      "routeId": "claro-pre-br-90d-2026",
+      "type": "operational-failure",
+      "reportedAt": "2026-06-15",
+      "scope": "route",
+      "outcome": "A June 2026 self-identified Claro prepaid user outside Brazil reported no international roaming and inability to switch their line to postpaid remotely. Independently corroborates provider restriction without an app-specific success percentage.",
+      "sourceId": "community-claro-br-prepaid-roaming-denial-20260615"
     }
   ],
   "snapshots": [
@@ -72,51 +210,67 @@
       "id": "snap-claro-pre-br-90d-2026-current-profile-20260929",
       "routeId": "claro-pre-br-90d-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-29",
-      "sourceDataset": "db-c2-lane-b-reviewed-2026-09-29",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "claro-br-prepaid-maintenance-2026-10-08",
       "data": {
         "id": "claro-pre-br-90d-2026",
         "brandId": "claro-pre-br",
         "publishState": "observation",
         "numberType": "real-mobile",
         "simType": "physical + eSIM",
-        "acquisitionSummary": "Claro Pré is a real Brazilian prepaid product, but current 2026 lifecycle/recharge details could not be re-captured reliably in this review. Preserve the existing route as a HOLD candidate instead of deleting it.",
+        "acquisitionSummary": "Claro Prezão is a real Brazilian prepaid plan with physical SIM and eSIM. Current lowest total new-number price is unverified; older BRL10 SIM baseline is not suitable for a current quote. Plan package term and recharge credit validity differ.",
         "landedCost": {
           "currency": "BRL",
-          "providerOrCommunityPrice": 10,
+          "providerOrCommunityPrice": null,
           "mandatoryTopup": null,
           "shipping": null,
           "adapterCostCny": null,
-          "landedOriginal": 10,
+          "landedOriginal": null,
           "landedCny": null,
           "fxCheckedAt": null,
-          "state": "legacy-price-not-currently-reverified"
+          "state": "current-new-line-price-unverified"
         },
         "keep": {
           "currency": "BRL",
-          "observedActionCost": 15,
-          "yearCostOriginal": 60,
+          "observedActionCost": 35,
+          "yearCostOriginal": 140,
           "yearCostCny": null,
-          "action": "Legacy evidence describes a recharge cadence around 90 days and a later recycle window. Current 2026 terms were not reachable in this review; do not present the BRL15/90-day value as guaranteed current.",
+          "action": "Official prepaid recharge BRL35 is valid 90 days; also BRL50/120 days and BRL100/180 days. Four BRL35 refills cost BRL140 over 360 days, not an exact 365-day guarantee. Refill within 90 days conservatively. Claro's cancellation FAQ ambiguously states both 90 days from last recharge and 90 days after its credit expiry; do not assume an extra recoverable grace interval. Later reassignment after disconnection is a separate risk.",
           "intervalDays": 90,
-          "state": "hold-legacy-lifecycle-current-terms-unavailable"
+          "state": "current-official-90d-recharge-cancellation-grace-ambiguous"
         },
-        "chinaActivation": "Brazil prepaid registration/payment constraints apply; overseas-first activation not established.",
-        "kyc": "Brazil subscriber registration applies; exact current non-resident flow unresolved.",
-        "payment": "Local Claro/recharge channels; foreign-payment support unresolved.",
-        "wifiCalling": "unverified",
-        "roamingSms": "Not reverified.",
-        "refund": "not reconciled",
-        "trend": "watch",
+        "chinaActivation": "Claro prepaid activates with digital identity checks after receiving SMS/*552; foreign users without CPF must activate via a physical Brazilian Claro store using a passport or RNE. New eSIM first activation from outside Brazil is not established and a Portugal user reported failure.",
+        "kyc": "Claro requires subscriber identity verification. Its prepaid eSIM FAQ permits foreign passport or RNE at physical stores, while independent travelers report store-level refusals.",
+        "payment": "Claro provides app/site, *555#, banks and physical recharge channels. Foreign-issued card acceptance and ongoing account access from overseas are unverified.",
+        "wifiCalling": "Not validated as an overseas prepaid SMS alternative.",
+        "roamingSms": "Claro states international roaming is unavailable for PREPAID or Controle subscriptions; only eligible postpaid customers have roaming. Free roaming inbound SMS described for postpaid cannot be inferred for prepaid. Independent users reported no overseas prepaid SMS/roaming. Not suitable for overseas OTP.",
+        "refund": "No verified prepaid credit refund or recovery guarantee after cancellation.",
+        "trend": "roaming-unavailable",
         "guideEligible": false,
-        "holdReason": "Current Claro lifecycle/recharge policy was not retrievable in this evidence round. Keep the route normalized as HOLD with the legacy signal clearly marked unverified.",
-        "lastVerifiedAt": "2026-09-29",
+        "holdReason": "HOLD: no international roaming on Claro Prepaid, foreign passport activation requires a Brazil store, offshore-first eSIM failed in one report; exact lifecycle grace and foreign payments remain uncertain.",
+        "lastVerifiedAt": "2026-10-08",
         "acquireUrl": "https://www.claro.com.br/celular/planos-pre",
-        "tariffSummary": "HOLD: legacy ~90-day recharge cadence / later recycle signal; current price and lifecycle need fresh replication.",
+        "tariffSummary": "BRL35/90-day recharge (BRL140 per 360 days); BRL50/120 days; BRL100/180 days. International prepaid roaming unavailable.",
         "sourceIds": [
-          "claro-prepaid-plan-legacy-2026-09-26"
+          "claro-prepaid-plan-legacy-2026-09-26",
+          "claro-br-recharge-ladder-20261008",
+          "claro-br-recharge-regulation-terms-20261008",
+          "claro-br-prepaid-cancellation-faq-20261008",
+          "claro-br-esim-foreign-passport-20261008",
+          "claro-br-prepaid-activation-selfie-20261008",
+          "claro-br-international-roaming-prepaid-restriction-20261008",
+          "claro-br-roaming-faq-postpaid-only-20261008",
+          "community-claro-br-prepaid-roaming-japan-20250109",
+          "community-claro-br-prepaid-foreign-store-20260117",
+          "community-claro-br-prepaid-esim-overseas-failure-20260219",
+          "community-claro-br-prepaid-roaming-denial-20260615",
+          "community-claro-br-prepaid-no-sms-portability-20251226"
         ],
-        "guideSteps": [],
+        "guideSteps": [
+          "Activate in Brazil with approved identity verification; foreigners should use Claro store with passport/RNE.",
+          "Recharge by the provider's current 90-day conservative deadline; verify line status and top-up before any lapse.",
+          "Do not depend on Claro prepaid for overseas SMS or bank verification: Claro says prepaid has no international roaming."
+        ],
         "marketName": "Brazil"
       }
     }
