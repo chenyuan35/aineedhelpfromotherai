@@ -29,9 +29,9 @@ for (const [routeId, [marketId, brandId, networkId]] of Object.entries(expected)
   assert(networks.some((row) => row.id === networkId && row.marketId === marketId), `${routeId}: network missing`);
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https:\/\//.test(row.url)), `${routeId}: source missing ${id}`);
   const legacy = globalDirectory.routes.find((row) => row.id === routeId); assert(legacy, `${routeId}: comparison row missing`);
-  if (routeId === 'turkcell-tourist-90d-blocker-2026') {
-    // The 2026-09 intake/comparison baseline stays immutable while current canonical maintenance advances.
-    const packet = read('data/phone/review-packets/turkcell-tourist-90d-blocker-2026.json');
+  if (routeId === 'turkcell-tourist-90d-blocker-2026' || routeId === 'viettel-vtvang-keepnumber-2026') {
+    // The 2026-09 intake/comparison baseline stays immutable for maintained Turkcell and Viettel current-state evidence.
+    const packet = read(`data/phone/review-packets/${routeId}.json`);
     const historical = {
       ...canonical,
       routes: canonical.routes.map((r) => r.id === routeId ? packet.route : r),
