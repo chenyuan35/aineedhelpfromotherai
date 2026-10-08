@@ -5201,5 +5201,71 @@
     "url": "https://www.reddit.com/r/AskTurkey/comments/1vrmg45/turkcell_sim_card_foreign_phone/",
     "type": "independent-community-adjacent-hardware",
     "reportedAt": "2026-08-18"
+  },
+  {
+    "id": "viettel-official-offshore-biometric-and-dre-20260617",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/cung-viettel-roaming-xac-thuc-sim-chinh-chu-tai-nuoc-ngoai/16655608",
+    "type": "provider-official",
+    "reportedAt": "2026-06-17"
+  },
+  {
+    "id": "viettel-official-device-change-2h-20260615",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-quan-trong-quy-dinh-bat-buoc-xac-thuc-lai-khuon-mat-khi-thay-doi-dien-thoai-ap-dung-tu-15062026/19138832",
+    "type": "provider-official",
+    "reportedAt": "2026-06-15"
+  },
+  {
+    "id": "viettel-official-tammi-esim-cccd-20260630",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/huong-dan-chi-tiet-5-buoc-doi-esim-tren-viettel-tammi-cuc-don-gian/18477972",
+    "type": "provider-official",
+    "reportedAt": "2026-06-30"
+  },
+  {
+    "id": "viettel-official-tammi-transition-20260917",
+    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/tam-biet-my-viettel-bat-dau-hanh-trinh-moi-cung-viettel-tammi/12026648",
+    "type": "provider-official",
+    "reportedAt": "2026-09-17"
+  },
+  {
+    "id": "viettel-official-dre-lowcost-roaming-20260211",
+    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/giu-so-dien-thoai-duy-tri-nhan-otp-khi-ra-nuoc-ngoai-voi-goi-roaming-dre-viettel/10001728",
+    "type": "provider-official-adjacent-package",
+    "reportedAt": "2026-02-11"
+  },
+  {
+    "id": "viettel-community-vtvang-foreign-esim-20260620",
+    "url": "https://www.reddit.com/r/VietNam/comments/1uanyyb/can_you_transfer_a_physical_viettel_sim_on_iphone/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-20"
+  },
+  {
+    "id": "viettel-community-roaming-keep-sms-20260214",
+    "url": "https://www.reddit.com/r/VietNam/comments/1r4ahsb/how_to_keep_viettel_sim_card_active_while_overseas/",
+    "type": "independent-community",
+    "reportedAt": "2026-02-14"
+  },
+  {
+    "id": "viettel-community-passport-kyc-failures-20260618",
+    "url": "https://www.reddit.com/r/VietNam/comments/1u9bou0/anyone_experience_this_with_viettel/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-18"
+  },
+  {
+    "id": "viettel-community-passport-esim-web-failure-20260729",
+    "url": "https://www.reddit.com/r/VietNam/comments/1v9mal4/cant_buy_a_viettel_tourist_esim_because_passport/",
+    "type": "independent-community-adjacent-tourist",
+    "reportedAt": "2026-07-29"
+  },
+  {
+    "id": "viettel-community-overseas-existing-sim-20260811",
+    "url": "https://www.reddit.com/r/VietNam/comments/1vldy7m/viettel_esim_active_for_future_trips/",
+    "type": "independent-community",
+    "reportedAt": "2026-08-11"
+  },
+  {
+    "id": "viettel-community-airport-registration-20260815",
+    "url": "https://www.reddit.com/r/VietNam/comments/1vorgc8/warning_for_people_travelling_to_vietnam/",
+    "type": "independent-community-adjacent-tourist",
+    "reportedAt": "2026-08-15"
   }
 ]
