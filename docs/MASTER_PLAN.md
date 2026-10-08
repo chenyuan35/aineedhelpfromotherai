@@ -51,6 +51,14 @@ The user-requested audit `docs/PHONE_RADAR_UX_AUDIENCE_AUDIT_2026-10-09.md` dist
 
 **Updated by the 2026-10-09 operator decision above:** the immediate product work is S1 canonical evidence/filter readiness and deterministic no-match tests, followed by separately gated S2 on the same URL. GA4 linkage/consent work remains a separate blocked fact/privacy lane (see PR #449); current final build DOES inject GA4, though its actual data is unverified. Croatia A1 remains deferred one-route maintenance. Search Console's 26/0 baseline does not authorize broad publication.
 
+## MOST RECENT RELEASE EDGE — PHONE TASK FINDER CODE MERGED / PRODUCTION WAIT (2026-10-09)
+
+The user's one-pass execution request advanced S1 and S2 together. **PR #451 was merged as GitHub main `60ea6e1da2c5336ac301e3578ea2e6fa2b2ee416`**. One existing-URL task-first UI supports evidence-screened real-number options, optional origin/eSIM/app/known-budget/location controls, clear unknown/no-match behavior, lazy detail, and browser-local saved IDs. Ten scenario assertions were added to the existing Phone release test. Due to admissions/surface gates, the strict shortlist currently has **only 3 UK public candidates**, not 160. Existing compare and publication separation are preserved; no backend/paid service added.
+
+**QA evidence:** exact source head `d5e353059264061a7128eee0a9f2e614ba209e80` GitHub Eval Gate #1311 and #1315 PASS and Vercel Preview `dpl_4kojyvsX8ErXLNvJg62sdfrtbdHQ` READY with independent preview HTTP 200 (mobile + desktop content check). Six changed file blob SHAs in preview/merge match.
+
+**HARD PROD BLOCKER:** current merge SHA has Vercel failure due `api-deployments-free-per-day` 402, including manual production create attempt. Official preview promotion returned 422. Real www production Phone HTML still lacks task finder; latest READY production is older SHA `011a3b6944c967abe1b1f39033ddfcb68ef44331`. Do NOT claim a user-visible release or alter billing. **NEXT TASK:** once the free Vercel quota recovers, deploy current main SHA through regular Vercel production and inspect apex/www task UI and public release invariants. No rerun of already-green S1/S2 development solely to consume time. The separate GA4 doc correction and release status are carried by PR #450 pending normal preview/merge and source-of-truth cleanup. Authentic volunteer scenario testing/organic adoption measurements remain unverified and take place only after live release.
+
 ## OPERATOR SPRINT DECISION — Phone evidence-first MVP (2026-10-09)
 
 Current operator plan: `docs/PHONE_RADAR_OPERATOR_PLAN_2026-10-09.md` (research/product decision, **not yet an implemented UI**). This explicit user-requested decision takes operational priority over the older 'GA4 measurement first' recommendation and over Wave C Croatia A1 evidence maintenance; these older items remain separately queued/blocked, not erased.
