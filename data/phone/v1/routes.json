@@ -470,16 +470,28 @@
     "marketId": "br",
     "networkId": "claro-br",
     "brandId": "claro-pre-br",
-    "displayName": "Claro Pré Brazil",
+    "displayName": "Claro Pré (Brazil)",
     "family": "long-term",
     "numberClass": "real-mobile",
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.claro.com.br/celular/planos-pre",
     "sourceIds": [
-      "claro-prepaid-plan-legacy-2026-09-26"
+      "claro-prepaid-plan-legacy-2026-09-26",
+      "claro-br-recharge-ladder-20261008",
+      "claro-br-recharge-regulation-terms-20261008",
+      "claro-br-prepaid-cancellation-faq-20261008",
+      "claro-br-esim-foreign-passport-20261008",
+      "claro-br-prepaid-activation-selfie-20261008",
+      "claro-br-international-roaming-prepaid-restriction-20261008",
+      "claro-br-roaming-faq-postpaid-only-20261008",
+      "community-claro-br-prepaid-roaming-japan-20250109",
+      "community-claro-br-prepaid-foreign-store-20260117",
+      "community-claro-br-prepaid-esim-overseas-failure-20260219",
+      "community-claro-br-prepaid-roaming-denial-20260615",
+      "community-claro-br-prepaid-no-sms-portability-20251226"
     ]
   },
   {
