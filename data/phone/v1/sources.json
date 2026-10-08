@@ -4625,5 +4625,53 @@
     "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
     "type": "independent-community",
     "reportedAt": "2024-08-17"
+  },
+  {
+    "id": "official-telstra-casual-price-2026-10-08",
+    "url": "https://www.telstra.com.au/help/critical-information-summaries/personal/pre-paid/prepaid-mobile/telstra-pre-paid-mobile-offers-from-may-5-2026",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-2026-current-offers-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-traveller-keep-number-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/traveller-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-6mo-recharge-rescue-2026-10-08",
+    "url": "https://www.telstra.com.au/support/pre-paid/recharge-my-pre-paid-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-prepaid-travel-roaming-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "community-telstra-casual-roaming-2026-09-23",
+    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1wntvdh/receive_both_sms_and_phone_calls_on_her/",
+    "type": "community",
+    "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "community-telstra-prepaid-bank-sms-2026-05-05",
+    "url": "https://www.reddit.com/r/AusFinance/comments/1t4ell5/whats_the_cheapest_way_to_keep_my_aussie_number/",
+    "type": "community",
+    "reportedAt": "2026-05-05"
+  },
+  {
+    "id": "community-telstra-365day-roaming-pack-friction-2025-02-03",
+    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1hls0t2",
+    "type": "community",
+    "reportedAt": "2025-02-03"
   }
 ]
