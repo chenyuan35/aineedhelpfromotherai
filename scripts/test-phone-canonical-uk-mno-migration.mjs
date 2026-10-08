@@ -31,7 +31,30 @@ for (const routeId of routeIds) {
   assert(brands.some((row) => row.id === route.brandId && row.marketId === 'gb' && row.networkId === route.networkId));
   for (const id of route.sourceIds) assert(sources.some((row) => row.id === id && /^https:\/\//.test(row.url)), `${routeId}: missing source ${id}`);
   const legacy = globalDirectory.routes.find((row) => row.id === routeId); assert(legacy, `legacy row missing: ${routeId}`);
-  assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  if (routeId === 'o2-uk-classic-payg-6mo-2026') {
+    // Preserve the accepted 2026-09 historical admission comparison, but audit
+    // the 2026-10 reviewed Classic legacy-holder correction as a distinct layer.
+    const packet = read('data/phone/review-packets/o2-uk-classic-payg-6mo-2026.json');
+    assert.deepEqual(
+      buildCanonicalComparisonRoute(
+        { routes: [packet.route], markets: [packet.market], snapshots: packet.snapshots },
+        routeId,
+      ),
+      legacy,
+      'O2 Classic historical intake must still reproduce the frozen legacy comparison row',
+    );
+    const revised = buildCanonicalComparisonRoute(canonical, routeId);
+    assert.equal(revised.landedCost.landedOriginal, null, 'Classic has no verified new-user acquisition');
+    assert.equal(revised.keep.yearCostOriginal, null, '2p domestic text is not the annual retention cost');
+    assert.equal(revised.keep.intervalDays, null, 'six calendar months is not a fixed 180-day count');
+    assert.equal(revised.keep.observedActionCost, 0.02);
+    assert.match(revised.payment, /UK-bank-issued/);
+    assert.match(revised.wifiCalling, /NOT supported outside the UK/);
+    assert.equal(revised.guideEligible, false);
+    assert.equal(revised.avoidRoute, true);
+  } else {
+    assert.deepEqual(buildCanonicalComparisonRoute(canonical, routeId), legacy, `${routeId}: canonical adapter parity must be exact`);
+  }
   assert.equal(policy.routeStates[routeId], undefined, `${routeId} must stay non-indexable`);
 }
 const sourceUrl=(id)=>sources.find((row)=>row.id===id)?.url;
