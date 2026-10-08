@@ -4745,5 +4745,71 @@
     "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-migrar-para-esim-e-receber-sms-no-exterior-impede-uso-do-numero-e-portabilidade_ncxnUcD3gEaaHDq5/",
     "type": "community",
     "reportedAt": "2025-12-26"
+  },
+  {
+    "id": "asda-payg-price-book-sep2025",
+    "url": "https://mobile.asda.com/pdf/Asda-Mobile-Retail-Price-Book-PAYG-Sept-25.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-expiry-faq-20261008",
+    "url": "https://mobile.asda.com/help/topping-up/topup-expire",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-emergency-reactivation-faq-20261008",
+    "url": "https://mobile.asda.com/help/topping-up/topup-reactivate",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-uk-card-restriction-20261008",
+    "url": "https://mobile.asda.com/support/topping-up",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-activation-uk-network-20261008",
+    "url": "https://mobile.asda.com/activate-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-esim-change-faq-20261008",
+    "url": "https://mobile.asda.com/help/managing-your-account/switchphysicalsim-toesim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-roaming-price-china-20261008",
+    "url": "https://mobile.asda.com/roaming-calling-abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-free-sim-order-20261008",
+    "url": "https://mobile.asda.com/order-free-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-ukfrugal-2026-active-text-20260322",
+    "url": "https://www.reddit.com/r/AskUK/comments/1s0j3xe/what_caused_the_decline_and_death_of_pay_as_you/",
+    "type": "community",
+    "reportedAt": "2026-03-22"
+  },
+  {
+    "id": "asda-ukfrugal-2025-topup-experience-20250608",
+    "url": "https://www.reddit.com/r/UKFrugal/comments/1l6jyuv",
+    "type": "community",
+    "reportedAt": "2025-06-08"
+  },
+  {
+    "id": "asda-askuk-2022-grace-report-20220607",
+    "url": "https://www.reddit.com/r/AskUK/comments/v6dtlo",
+    "type": "community",
+    "reportedAt": "2022-06-07"
   }
 ]
