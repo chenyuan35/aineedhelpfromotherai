@@ -1,6 +1,6 @@
 # Current Execution Queue
 
-Last updated: 2026-10-08
+Last updated: 2026-10-09
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
@@ -417,16 +417,19 @@ PR #446 squash-merged as `011a3b6944c967abe1b1f39033ddfcb68ef44331` (2026-10-08)
 
 Ledger: `docs/PHONE_5SIM_TEMP_RECONCILIATION_2026-10-08.md`.
 
-## NEXT — continue database maintenance, no invented expansion
+## JUST AUDITED — UX is not database deployment (2026-10-09)
 
-1. **NEXT SESSION — Wave C `a1-croatia-prepaid-esim`:** reconcile legacy product identity/current profile, same-product alias/duplicate state, price/lifecycle/foreign activation evidence. Preserve unsupported acquisition/retention/OTP values as unknown; no public URL or recommendation without verified evidence.
-2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
-3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
-4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
-5. **Frontend:** no new URL or redesign from this maintenance work.
+See `docs/PHONE_RADAR_UX_AUDIENCE_AUDIT_2026-10-09.md` for the live Phone interface and first-party measurement review. **26 settled Phone impressions / 0 clicks through 2026-10-05** passes the old recheck trigger but not an SEO publication gate. Current live Phone interface displays **135 deep comparison routes** and a **153-long-term-route/83-market finder**; the canonical DB contains **160 routes**, including HOLD/backstage and temporary/data families. Existing 2–4-way pin comparison works in page state, but no persisted saved-list and no structured multi-constraint task filters exist. GA4 connected account produced no analyzable locale/session/page rows; reviewed homepage and Phone markup lack a visible GA4 loader, so **Chinese/English audience ratio is unknown**. No user experience release was made.
+
+## NEXT — one bounded frontstage measurement task
+
+1. **NEXT SESSION — Phone GA4 capture / privacy fact audit:** verify whether the production Phone canonical really loads a telemetry tag and emits any non-PII page/view/search/filter/compare/guide/outbound/locale evidence, and whether privacy/consent policy permits a minimal browser-side implementation. Deliver a reversible single-URL instrumentation contract, actionable test and no-PII event inventory; do not silently start tracking, introduce cookies or pay for providers. If existing collection is unavailable, leave language majority **UNKNOWN**.
+2. **NEXT AFTER MEASUREMENT — existing URL task-first UX pilot:** validate job/location/OTP service/real-mobile/eSIM/start + annual keep/foreign eligibility filtering and optional local-only saved shortlists with small-screen usability tests. Keep current compare functionality, HOLD/unknown gates, and 135/3/31 public boundary. One task, one later session.
+3. **BACKSTAGE QUEUED — Wave C `a1-croatia-prepaid-esim`:** one-route legacy identity/current-profile evidence maintenance after the frontstage question has a measured outcome or an explicit blocker. No unsupported pricing, OTP claims or new SEO URL.
+4. **GSC gate RECHECKED:** 26 settled Phone-path impressions and 0 clicks through 2026-10-05; title/query/first-screen match takes precedence over new indexable pages. GA4 returned no audience rows. Separate Google organic, social/referral, direct and AI referral.
+5. **No DB-C24 / bulk pages / paid upgrade / production redesign:** 160/160 only describes the current evidence-qualified universe; pure data-eSIM continues separately as append-only backstage intake.
 
 Delegated Qwen/Kimi output remains `RESEARCH_CANDIDATE` until coordinator review and cannot bypass evidence/admission/publication gates.
-
 
 ## PLANNED — Phone database evidence-hardening backlog
 
