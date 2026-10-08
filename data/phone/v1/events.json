@@ -2473,5 +2473,77 @@
     "scope": "route",
     "outcome": "April 2026 tourist airport SIM buyer reports a newly assigned number was already linked to another person's WhatsApp and could not complete code login. Anecdotal number-recycling/account-conflict evidence, not proof of original owner or carrier failure rate.",
     "sourceId": "singtel-hi-passport-reddit-reassigned-20260423"
+  },
+  {
+    "id": "evt-truemove-ussd-validity-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "validity-ussd-update",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Official True Jaidee confirms *934*30/90/180# validity-extension USSD format effective July 1, 2026, replacing prior IVR. Official accessible page does not independently show the price or eligibility ladder.",
+    "sourceId": "truemove-jaidee-ussd-20261008"
+  },
+  {
+    "id": "evt-truemove-validity-price-report-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "secondary-validity-price",
+    "reportedAt": "2026-01-14",
+    "scope": "route",
+    "outcome": "Independent Jan-2026 Thai guide reports THB3/30d, THB9/90d and THB15/180d, conditional on at least 90 days SIM age or cumulative THB200 usage; price is not provider-checkout verified. Two 180-day buys imply THB30/360d only if eligibility and repeat purchases hold.",
+    "sourceId": "truemove-specphone-validity-20260114"
+  },
+  {
+    "id": "evt-truemove-number-retention-rescue-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "expiry-number-retention",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Since May 14, 2026, standard prepaid with expired active validity and remaining balance may enter automatic THB3 per 30-day number-retention billing for at most 180 days. This is a limited post-expiry rescue, not an active-usage/roaming-OTP guarantee; further suspension is possible.",
+    "sourceId": "truemove-number-retention-20261008"
+  },
+  {
+    "id": "evt-truemove-tourist-60-day-cap-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "tourist-ineligibility",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "First-party Thailand Tourist SIM terms cap tourist-SIM validity at 60 days; after expiry, top-ups cannot extend it and passport re-identification is required. Short-term Tourist SIMs are expressly excluded from the automatic number-retention program.",
+    "sourceId": "truemove-tourist-terms-20261008"
+  },
+  {
+    "id": "evt-truemove-thai-roaming-prereq-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "roaming-preactivation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "True international roaming FAQ says prepaid customers may enable overseas voice/SMS-related roaming by dialing *118*001# free while still in Thailand. This is not proof of mainland China OTP connectivity or of first activation abroad.",
+    "sourceId": "truemove-prepaid-roaming-20261008"
+  },
+  {
+    "id": "evt-truemove-passport-ekyc-20261008",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "identity-registration-boundary",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "First-party True App prepaid registration supports identity-document/passport entry and face eKYC; eligibility for a non-tourist long-lived number under foreign passport is not established by generic registration guidance.",
+    "sourceId": "truemove-prepaid-registration-20261008"
+  },
+  {
+    "id": "evt-truemove-roaming-outage-20260303",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "roaming-sms-operational-failure",
+    "reportedAt": "2026-03-08",
+    "scope": "route",
+    "outcome": "March 2026 user reported prepaid line valid and topped up yet no foreign network; same thread later reports support-enabled incoming SMS after roaming-package purchase, while another commenter still failed after package purchase. This is mixed anecdotal evidence, not a failure rate or China sample.",
+    "sourceId": "truemove-reddit-roaming-outage-20260303"
+  },
+  {
+    "id": "evt-truemove-us-otp-failure-20250411",
+    "routeId": "truemove-validity-pack-th-2026",
+    "type": "overseas-otp-failure",
+    "reportedAt": "2025-04-11",
+    "scope": "route",
+    "outcome": "Firsthand U.S.-based user of a TrueMove Thai number could not receive OTP to top up while abroad; a different commenter says a paid preserve-number service enabled U.S. banking OTP. Plan details differ and this does not establish a success percentage.",
+    "sourceId": "truemove-reddit-otp-us-20250411"
   }
 ]

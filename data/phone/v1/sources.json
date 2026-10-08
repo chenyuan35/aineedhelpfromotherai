@@ -5081,5 +5081,71 @@
     "url": "https://www.reddit.com/r/asksg/comments/1stwz62/singtel_sim_bought_at_the_airport_is_registered/",
     "type": "independent-community",
     "reportedAt": "2026-04-23"
+  },
+  {
+    "id": "truemove-jaidee-ussd-20261008",
+    "url": "https://www.true.th/en/services/true-jaidee",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-number-retention-20261008",
+    "url": "https://www.true.th/en/help/mobile/network/prepaid-number-retention-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-tourist-terms-20261008",
+    "url": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-roaming-20261008",
+    "url": "https://www.true.th/en/international/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-registration-20261008",
+    "url": "https://www.true.th/en/help/mobile/settings/how-to-register-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-document-update-20261008",
+    "url": "https://www.true.th/help/update-sim-registration",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-catalog-20261008",
+    "url": "https://www.true.th/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-specphone-validity-20260114",
+    "url": "https://specphone.com/web/how-to-buy-day-from-truemove-h-2026/363617",
+    "type": "independent-publication",
+    "reportedAt": "2026-01-14"
+  },
+  {
+    "id": "truemove-reddit-roaming-outage-20260303",
+    "url": "https://www.reddit.com/r/ThailandTourism/comments/1rjiftt/true_move_sim_abroad_no_signal/",
+    "type": "independent-community",
+    "reportedAt": "2026-03-03"
+  },
+  {
+    "id": "truemove-reddit-otp-us-20250411",
+    "url": "https://www.reddit.com/r/Thailand/comments/1jwea8u",
+    "type": "independent-community",
+    "reportedAt": "2025-04-11"
+  },
+  {
+    "id": "truemove-reddit-number-retention-20260618",
+    "url": "https://www.reddit.com/r/Thailand/comments/1u91vya/the_cheapest_way_to_keep_your_thai_phone_number/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-18"
   }
 ]
