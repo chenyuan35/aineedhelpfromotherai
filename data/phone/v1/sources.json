@@ -48,6 +48,66 @@
     "reportedAt": "2026-10-03"
   },
   {
+    "id": "andrewkim-hotlink-offshore-esim-20260620",
+    "url": "https://andrewkim.me/install-malaysian-esim-from-us/",
+    "type": "independent-report",
+    "reportedAt": "2026-06-20"
+  },
+  {
+    "id": "asda-askuk-2022-grace-report-20220607",
+    "url": "https://www.reddit.com/r/AskUK/comments/v6dtlo",
+    "type": "community",
+    "reportedAt": "2022-06-07"
+  },
+  {
+    "id": "asda-payg-activation-uk-network-20261008",
+    "url": "https://mobile.asda.com/activate-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-emergency-reactivation-faq-20261008",
+    "url": "https://mobile.asda.com/help/topping-up/topup-reactivate",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-esim-change-faq-20261008",
+    "url": "https://mobile.asda.com/help/managing-your-account/switchphysicalsim-toesim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-expiry-faq-20261008",
+    "url": "https://mobile.asda.com/help/topping-up/topup-expire",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-free-sim-order-20261008",
+    "url": "https://mobile.asda.com/order-free-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-price-book-sep2025",
+    "url": "https://mobile.asda.com/pdf/Asda-Mobile-Retail-Price-Book-PAYG-Sept-25.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-roaming-price-china-20261008",
+    "url": "https://mobile.asda.com/roaming-calling-abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "asda-payg-uk-card-restriction-20261008",
+    "url": "https://mobile.asda.com/support/topping-up",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "asda-support-20260929",
     "url": "https://mobile.asda.com/support/topping-up",
     "type": "provider-official",
@@ -58,6 +118,18 @@
     "url": "https://mobile.asda.com/pdf/Asda-Mobile-Terms-and-Conditions.pdf",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "asda-ukfrugal-2025-topup-experience-20250608",
+    "url": "https://www.reddit.com/r/UKFrugal/comments/1l6jyuv",
+    "type": "community",
+    "reportedAt": "2025-06-08"
+  },
+  {
+    "id": "asda-ukfrugal-2026-active-text-20260322",
+    "url": "https://www.reddit.com/r/AskUK/comments/1s0j3xe/what_caused_the_decline_and_death_of_pay_as_you/",
+    "type": "community",
+    "reportedAt": "2026-03-22"
   },
   {
     "id": "bakcell-active-period-20261001",
@@ -192,6 +264,48 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "callya-computerbase-china-legacy-billing-20200204",
+    "url": "https://www.computerbase.de/forum/threads/vodafone-callya-fast-30-euro-kosten-im-ausland-wo-liegt-der-fehler.1922562/",
+    "type": "community-report",
+    "reportedAt": "2020-02-04"
+  },
+  {
+    "id": "callya-tt-22922-parking-20260311",
+    "url": "https://www.telefon-treff.de/forum/thread/532195-vodafone-callya-thread-digital-15gb-light-7-5gb-11-21-03-22-12-21-5g-07-22-neue/?postID=10291557",
+    "type": "community-report",
+    "reportedAt": "2026-03-11"
+  },
+  {
+    "id": "callya-tt-legacy-long-lived-20250902",
+    "url": "https://www.telefon-treff.de/forum/thread/532195-vodafone-callya-thread-digital-15gb-light-7-5gb-11-21-03-22-12-21-5g-07-22-neue/?pageNo=824",
+    "type": "community-report",
+    "reportedAt": "2025-09-02"
+  },
+  {
+    "id": "callya-vf-22922-overseas-cost-20260203",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Buchungs-Code-f%C3%BCr-Option-w%C3%A4hrend-im-ausl-Roaming/td-p/3307283",
+    "type": "community-report",
+    "reportedAt": "2026-02-03"
+  },
+  {
+    "id": "callya-vf-classic-china-deactivated-20260820",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/CallYa-eSIM-wegen-Inaktivit%C3%A4t-deaktiviert-Reaktivierung-aus-dem/m-p/3351301/highlight/true",
+    "type": "community-report",
+    "reportedAt": "2026-08-20"
+  },
+  {
+    "id": "callya-vf-classic-esim-account-link-20260827",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Wie-verkn%C3%BCpfe-ich-meine-Callya-eSIM-mit-meinem-Konto/m-p/3352445",
+    "type": "community-report",
+    "reportedAt": "2026-08-27"
+  },
+  {
+    "id": "callya-vf-legacy-deactivation-20240312",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Callya-Karte-deaktiviert/td-p/3152892",
+    "type": "community-report",
+    "reportedAt": "2024-03-12"
+  },
+  {
     "id": "celcomdigi-kuning-20260929",
     "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660913-faq-celcomdigi-prepaid-5g-kuning-reload-and-validity",
     "type": "provider-official",
@@ -280,6 +394,48 @@
     "url": "https://www.claro.com.ar/personas/planes-prepago-pospago/turistas",
     "type": "provider-official",
     "reportedAt": "2026-09-30"
+  },
+  {
+    "id": "claro-br-esim-foreign-passport-20261008",
+    "url": "https://www.claro.com.br/celular/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-international-roaming-prepaid-restriction-20261008",
+    "url": "https://www.claro.com.br/celular/roaming-internacional/como-usar-celular-no-exterior",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-prepaid-activation-selfie-20261008",
+    "url": "https://www.claro.com.br/celular/planos-pre/como-ativar-seu-chip",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-prepaid-cancellation-faq-20261008",
+    "url": "https://www.claro.com.br/faq/pre-pago/em-quanto-tempo-a-minha-linha-podera-ser-cancelada",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-recharge-ladder-20261008",
+    "url": "https://www.claro.com.br/celular/planos-pre/claro-recarga",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-recharge-regulation-terms-20261008",
+    "url": "https://www.claro.com.br/produtosclaro/documentos_pre/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "claro-br-roaming-faq-postpaid-only-20261008",
+    "url": "https://www.claro.com.br/faq/ligacoes-e-sms/como-usar-celular-em-viagens-internacionais",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
   },
   {
     "id": "claro-cl-prepago-20261002",
@@ -372,10 +528,58 @@
     "reportedAt": "2025-10-21"
   },
   {
+    "id": "community-callya-classic-charges-20260318",
+    "url": "https://www.reddit.com/r/germany/comments/1rx6chv/vodafone_callya_prepaid_classic_charge_amounts/",
+    "type": "community-report",
+    "reportedAt": "2026-03-18"
+  },
+  {
+    "id": "community-callya-prearrival-20260715",
+    "url": "https://www.reddit.com/r/NoContract/comments/1uxlzsa/review_of_vodafonede_callya_esim/",
+    "type": "community-report",
+    "reportedAt": "2026-07-15"
+  },
+  {
+    "id": "community-claro-br-prepaid-esim-overseas-failure-20260219",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativar-e-sim-da-claro-no-exterior-e-falta-de-informacao-clara-no-momento-da-compra_5hzKfiuITPUp1TYU/",
+    "type": "community",
+    "reportedAt": "2026-02-19"
+  },
+  {
+    "id": "community-claro-br-prepaid-foreign-store-20260117",
+    "url": "https://www.reddit.com/r/Brazil/comments/1qfhs7i/my_battle_to_get_a_local_sim_card_as_a_tourist_in/",
+    "type": "community",
+    "reportedAt": "2026-01-17"
+  },
+  {
+    "id": "community-claro-br-prepaid-no-sms-portability-20251226",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-migrar-para-esim-e-receber-sms-no-exterior-impede-uso-do-numero-e-portabilidade_ncxnUcD3gEaaHDq5/",
+    "type": "community",
+    "reportedAt": "2025-12-26"
+  },
+  {
+    "id": "community-claro-br-prepaid-roaming-denial-20260615",
+    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativacao-de-roaming-internacional-e-solicitacao-de-mudanca-de-plano-para-pre-pago-fora-do-pais_lsgawoSJG--Mci2J/",
+    "type": "community",
+    "reportedAt": "2026-06-15"
+  },
+  {
+    "id": "community-claro-br-prepaid-roaming-japan-20250109",
+    "url": "https://www.reddit.com/r/InternetBrasil/comments/1hx2i9b",
+    "type": "community",
+    "reportedAt": "2025-01-09"
+  },
+  {
     "id": "community-ee-payg-no-esim-2025-06-30",
     "url": "https://community.ee.co.uk/t5/Pay-as-you-go/E-sim/td-p/1544801",
     "type": "provider-moderated-community",
     "reportedAt": "2025-06-30"
+  },
+  {
+    "id": "community-nairaland-mtn-kmn-reassigned-20260831",
+    "url": "https://www.nairaland.com/8738633/what-happens-bank-account-when",
+    "type": "community-incident-thread",
+    "reportedAt": "2026-08-31"
   },
   {
     "id": "community-naixi-clubsim-pack-availability-2026-07",
@@ -412,6 +616,24 @@
     "url": "https://community.sunrise.ch/d/47446-cannot-receive-sms-whilst-roaming-in-new-zealand",
     "type": "community-report",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "community-telstra-365day-roaming-pack-friction-2025-02-03",
+    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1hls0t2",
+    "type": "community",
+    "reportedAt": "2025-02-03"
+  },
+  {
+    "id": "community-telstra-casual-roaming-2026-09-23",
+    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1wntvdh/receive_both_sms_and_phone_calls_on_her/",
+    "type": "community",
+    "reportedAt": "2026-09-23"
+  },
+  {
+    "id": "community-telstra-prepaid-bank-sms-2026-05-05",
+    "url": "https://www.reddit.com/r/AusFinance/comments/1t4ell5/whats_the_cheapest_way_to_keep_my_aussie_number/",
+    "type": "community",
+    "reportedAt": "2026-05-05"
   },
   {
     "id": "community-vocus-clubsim-6hkd-guide-2026-04",
@@ -678,6 +900,12 @@
     "reportedAt": "2026-08-14"
   },
   {
+    "id": "flyert-cmhk-4g-mysim-retention-20240604",
+    "url": "https://www.flyert.com.cn/forum.php?extra=page%3D1%26orderby%3Dviews&mobile=no&mod=viewthread&page=3&tid=4623311",
+    "type": "independent-community",
+    "reportedAt": "2024-06-04"
+  },
+  {
     "id": "fortress-hahasim-faq-20261003",
     "url": "https://www.fortress.com.hk/en/services/services?category=Order",
     "type": "provider-official",
@@ -700,6 +928,78 @@
     "url": "https://mobile.free.fr/docs/bt/tarifs.pdf",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "free-fr-community-africa-20261008",
+    "url": "https://www.reddit.com/r/AskFrance/comments/1p082sk/free_mobile_comment_contacter_lassistance/",
+    "type": "community",
+    "reportedAt": "2025-11-18"
+  },
+  {
+    "id": "free-fr-community-asia-20261008",
+    "url": "https://www.reddit.com/r/france/comments/11ru9ar",
+    "type": "community",
+    "reportedAt": "2023-03-15"
+  },
+  {
+    "id": "free-fr-official-borne-20261008",
+    "url": "https://assistance.free.fr/articles/888",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-esim-20261008",
+    "url": "https://assistance.free.fr/articles/968",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-receive-20261008",
+    "url": "https://assistance.free.fr/articles/953",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-recover-20261008",
+    "url": "https://assistance.free.fr/articles/1730",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-shop-20261008",
+    "url": "https://assistance.free.fr/articles/1739",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-sim-20261008",
+    "url": "https://assistance.free.fr/articles/900",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-subscribe-20261008",
+    "url": "https://assistance.free.fr/articles/887",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-travel-20261008",
+    "url": "https://mobile.free.fr/communications-a-l-etranger",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-vowifi-20261008",
+    "url": "https://assistance.free.fr/articles/1236",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "free-fr-official-voyage-20261008",
+    "url": "https://assistance.free.fr/articles/905",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
   },
   {
     "id": "frog-general-terms-20260929",
@@ -780,6 +1080,66 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "good2go-ca-crtc-rogers-port-20260818",
+    "url": "https://crtc.gc.ca/eng/archive/2026/2026-211.htm",
+    "type": "regulator-official",
+    "reportedAt": "2026-08-18"
+  },
+  {
+    "id": "good2go-ca-provider-activation-20261008",
+    "url": "https://good2gomobile.ca/support/activation-account-support",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-catalog-20261008",
+    "url": "https://good2gomobile.ca/support/plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-data-settings-20261008",
+    "url": "https://good2gomobile.ca/support/data-settings",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-porting-20261008",
+    "url": "https://good2gomobile.ca/support/number-portability",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-terms-20261008",
+    "url": "https://good2gomobile.ca/pdfs/service-terms-and-conditions-good2go.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-reddit-january-20260109",
+    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1q8a63i/anyone_still_with_good2go_mobile_in_2026/",
+    "type": "community",
+    "reportedAt": "2026-01-09"
+  },
+  {
+    "id": "good2go-ca-reddit-march-20260303",
+    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1rjxf91/whats_going_on_with_good2go/",
+    "type": "community",
+    "reportedAt": "2026-03-03"
+  },
+  {
+    "id": "good2go-ca-reddit-migration-20250804",
+    "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
+    "type": "community",
+    "reportedAt": "2025-08-04"
+  },
+  {
+    "id": "good2go-ca-reddit-old-payg-20250731",
+    "url": "https://www.reddit.com/r/askTO/comments/1mdmoms/cheapest_possible_payasyougo_cell_plan/",
+    "type": "community",
+    "reportedAt": "2025-07-31"
+  },
+  {
     "id": "good2go-home-20260929",
     "url": "https://good2gomobile.ca/",
     "type": "provider-official",
@@ -822,10 +1182,28 @@
     "reportedAt": "2026-08-28"
   },
   {
+    "id": "hardwarezone-hotlink-offshore-esim-20260106",
+    "url": "https://forums.hardwarezone.com.sg/threads/malaysia-prepaid-card.1984062/page-493",
+    "type": "community-forum",
+    "reportedAt": "2026-01-06"
+  },
+  {
+    "id": "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
+    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=1&tid=2707614",
+    "type": "independent-community",
+    "reportedAt": "2023-10-05"
+  },
+  {
     "id": "hkepc-hkmobi-thread-20261003",
     "url": "https://www.hkepc.com/forum/viewthread.php?extra=&fid=44&ordertype=1&tid=2632211",
     "type": "independent-community",
     "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "hkepc-mysim-roaming-otp-charge-risk-20241212",
+    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
+    "type": "independent-community",
+    "reportedAt": "2024-12-12"
   },
   {
     "id": "hotmobile-hotalk-cards-20260929",
@@ -1020,6 +1398,24 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "kpn-community-activation-netherlands-20260612",
+    "url": "https://community.kpn.com/prepaid-16/nieuwe-prepaid-simkaart-werkt-nog-niet-in-het-buitenland-649721",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-06-12"
+  },
+  {
+    "id": "kpn-community-prepaid-esim-no-20260807",
+    "url": "https://community.kpn.com/prepaid-16/need-help-to-activate-prepaid-e-sim-from-abroad-653003?postid=2290319",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-08-07"
+  },
+  {
+    "id": "kpn-community-roaming-network-loss-20260817",
+    "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-08-17"
+  },
+  {
     "id": "kt-prepaid-plan-20261001",
     "url": "https://globalshop.kt.com/mobile/mobileLteWelcomePrepaid.do",
     "type": "provider-official",
@@ -1152,6 +1548,12 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "linuxdo-clubsim-telegram-failure-20250219",
+    "url": "https://linux.do/t/topic/439461",
+    "type": "community-report",
+    "reportedAt": "2025-02-19"
+  },
+  {
     "id": "linuxdo-csl711-2758634-20260815",
     "url": "https://linux.do/t/topic/2758634",
     "type": "independent-community",
@@ -1266,6 +1668,18 @@
     "reportedAt": "2026-08-24"
   },
   {
+    "id": "linuxdo-hahasim-telegram-conditional-20260105",
+    "url": "https://linux.do/t/topic/1408847?page=2",
+    "type": "independent-community",
+    "reportedAt": "2026-01-05"
+  },
+  {
+    "id": "linuxdo-hahasim-telegram-failure-20250529",
+    "url": "https://linux.do/t/topic/686357",
+    "type": "independent-community",
+    "reportedAt": "2025-05-29"
+  },
+  {
     "id": "linuxdo-lebara-2745784-op",
     "url": "https://linux.do/t/topic/2745784",
     "type": "first-hand-community-thread",
@@ -1282,6 +1696,18 @@
     "url": "https://linux.do/t/topic/2894665",
     "type": "first-hand-community-thread",
     "reportedAt": "2026-09-12"
+  },
+  {
+    "id": "linuxdo-tello-codex-sms-failure-20260612",
+    "url": "https://linux.do/t/topic/717137?page=3",
+    "type": "first-hand-community-thread",
+    "reportedAt": "2026-06-12"
+  },
+  {
+    "id": "linuxdo-ultramobile-telegram-mixed-20250603",
+    "url": "https://linux.do/t/topic/695893",
+    "type": "community-report",
+    "reportedAt": "2025-06-03"
   },
   {
     "id": "linuxdo-vodafone-2401952",
@@ -1342,6 +1768,18 @@
     "url": "https://www.lmt.lv/en/helpdesk/lmt-karte/lmt-karte-time-limits/use-by-date",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "lowyat-digi-prepaid-roaming-otp-20240716",
+    "url": "https://forum.lowyat.net/topic/4211035/+10180",
+    "type": "independent-community",
+    "reportedAt": "2024-07-16"
+  },
+  {
+    "id": "lowyat-hotlink-pantas-roaming-sms-failure-20260922",
+    "url": "https://forum.lowyat.net/topic/5577865",
+    "type": "community-forum",
+    "reportedAt": "2026-09-22"
   },
   {
     "id": "lowyat-tunetalk-365-20250419",
@@ -1488,16 +1926,46 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "mtn-ng-esim-current-20261008",
+    "url": "https://www.mtn.ng/sim/esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "mtn-ng-kmn-20260929",
     "url": "https://www.mtn.ng/sim/keep-my-number/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "mtn-ng-kmn-current-20261008",
+    "url": "https://www.mtn.ng/sim/keep-my-number/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "mtn-ng-prepaid-terms-20260929",
     "url": "https://www.mtn.ng/legal/prepaid/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "mtn-ng-prepaid-terms-current-20261008",
+    "url": "https://www.mtn.ng/legal/prepaid/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-roaming-current-20261008",
+    "url": "https://www.mtn.ng/personal/roaming/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mtn-ng-xtrabuy-current-20261008",
+    "url": "https://www.mtn.ng/personal/xtrabuy/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
   },
   {
     "id": "mts-by-guest-tariff-20261001",
@@ -1530,6 +1998,42 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "mts-esim-activate-20261008",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-aktivirovat-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mts-esim-new-20261008",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-oformit-novuyu-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mts-foreign-kyc-20260206",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/oformlenie-novoi-sim-karti/kak-inostrannomu-grazhdaninu-oformit-sim-kartu",
+    "type": "provider-official",
+    "reportedAt": "2026-02-06"
+  },
+  {
+    "id": "mts-forum-30day-20260613",
+    "url": "https://4pda.to/forum/index.php?showtopic=954353&st=46300",
+    "type": "independent-community",
+    "reportedAt": "2026-06-13"
+  },
+  {
+    "id": "mts-forum-roaming-sms-20240820",
+    "url": "https://4pda.to/forum/index.php?showtopic=954353&st=30680",
+    "type": "independent-community",
+    "reportedAt": "2024-08-20"
+  },
+  {
+    "id": "mts-keep-current-20261008",
+    "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "mts-keep-number-product-2026-09-29",
     "url": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
     "type": "provider-official",
@@ -1542,10 +2046,46 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "mts-number-forever-archive-20261008",
+    "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/archive/nomer-navsegda",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mts-roaming-20261008",
+    "url": "https://support.mts.ru/mts_rouming_i_mezhgorod/poezdki-po-miru/kak-podklyuchit-uslugi-dlya-dostupa-k-svyazi-i-internetu-v-rouminge",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "mts-sms-quarantine-20261007",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/blokirovka-nomera-problemi-so-svyazyu/kak-vosstanovit-dostup-k-internetu-i-sms-posle-poezdki-za-granitsu-ili-pereriva-v-ispolzovanii-nomera",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "mts-topup-20260806",
+    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/popolnenie-schyota/kak-popolnit-balans-telefona",
+    "type": "provider-official",
+    "reportedAt": "2026-08-06"
+  },
+  {
     "id": "mybroadband-vodacom-overseas-2024-12-18",
     "url": "https://mybroadband.co.za/forum/threads/if-you-go-overseas-on-vodacom-prepaid-or-top-up-how-often-do-you-need-to-sms-to-sa-to-avoid-permanent-sim-deactivation.1307593/",
     "type": "community-thread",
     "reportedAt": "2024-12-18"
+  },
+  {
+    "id": "naixi-clubsim-telegram-conflict-20260729",
+    "url": "https://forum.naixi.net/thread-13360-1-1.html",
+    "type": "community-report",
+    "reportedAt": "2026-07-29"
+  },
+  {
+    "id": "naixi-clubsim-telegram-success-20260918",
+    "url": "https://forum.naixi.net/thread-15515-1-1.html",
+    "type": "community-report",
+    "reportedAt": "2026-09-18"
   },
   {
     "id": "naixi-cmlink-11508-20260426",
@@ -1596,6 +2136,12 @@
     "reportedAt": "2026-10-01"
   },
   {
+    "id": "ncc-qos-business-rules-2026-mtn-ng",
+    "url": "https://www.ncc.gov.ng/sites/default/files/2026-08/Quality-of-Service-Business-Rules-2026.pdf",
+    "type": "government-regulator",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "ncell-china-roaming-20261001",
     "url": "https://www.business.ncell.com.np/en/individual/roaming/28-day-china-combo-pack",
     "type": "provider-official",
@@ -1638,6 +2184,12 @@
     "reportedAt": "2026-08-09"
   },
   {
+    "id": "nodeseek-tello-payg-guide-20260928",
+    "url": "https://www.nodeseek.com/post-953129-1",
+    "type": "independent-community",
+    "reportedAt": "2026-09-28"
+  },
+  {
     "id": "norlys-dk-login-transition-20261002",
     "url": "https://norlys.dk/login/",
     "type": "provider-official",
@@ -1650,10 +2202,154 @@
     "reportedAt": "2026-10-02"
   },
   {
+    "id": "o2-classic-classic-rates-20261008",
+    "url": "https://www.o2.co.uk/termsandconditions/mobile/pay-as-you-go-classic-tariff-standard-rates",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-current-plans-20261008",
+    "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/pay-as-you-go-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-esim-eligibility-20261008",
+    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-forum-bpi-disruption-20251202",
+    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Pay-As-You-Go-BPI-Subscription/td-p/1820257",
+    "type": "community-report",
+    "reportedAt": "2025-12-02"
+  },
+  {
+    "id": "o2-classic-forum-disconnected-20241111",
+    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/PAYG-sim-disconnected/td-p/1762471",
+    "type": "community-report",
+    "reportedAt": "2024-11-11"
+  },
+  {
+    "id": "o2-classic-forum-legacy-user-20250216",
+    "url": "https://community.o2.co.uk/t5/Discussions-Feedback/O2-SENT-ME-A-TEXT-ON-07-02-2025-WARNING-ME-ABOUT-UPCOMING-3G-AND/td-p/1781447",
+    "type": "community-report",
+    "reportedAt": "2025-02-16"
+  },
+  {
+    "id": "o2-classic-roaming-20261008",
+    "url": "https://www.o2.co.uk/help/international-and-network/using-your-phone-abroad/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-sim-activation-20261008",
+    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/your-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-tariff-terms-20261008",
+    "url": "https://www.o2.co.uk/termsandconditions/mobile/our-pay-as-you-go-tariff-terms",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-topup-uk-bank-20261008",
+    "url": "https://www.o2.co.uk/help/account/billing-and-usage/topping-up-pay-as-you-go-balance",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2-classic-wifi-calling-geofence-20261008",
+    "url": "https://www.o2.co.uk/help/international-and-network/wifi/wifi-4g-and-5g-calling",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-cz-regulator-anonymous-2024",
+    "url": "https://ctu.gov.cz/sites/default/files/obsah/ctu/telekomunikacni-vestnik-castka-4-z-26.-dubna-2024/obrazky/TV-2024-04_1.pdf",
+    "type": "government-regulator",
+    "reportedAt": "2024-04-26"
+  },
+  {
+    "id": "o2cz-prepaid-sim-exchange-20261008",
+    "url": "https://www.o2.cz/podpora/volani-z-mobilu/kdy-a-jak-si-vymenit-sim-kartu",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-reddit-prague-store-20240817",
+    "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
+    "type": "independent-community",
+    "reportedAt": "2024-08-17"
+  },
+  {
+    "id": "o2cz-roaming-20261008",
+    "url": "https://www.o2.cz/osobni/volani/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-sim-types-20261008",
+    "url": "https://www.o2.cz/podpora/volani-z-mobilu/druhy-sim-karet",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-tariff-20261005",
+    "url": "https://www.o2.cz/osobni/podpora/ceniky-a-dokumenty/cenik-predplacenych-sluzeb/platnost-od-5.-10.-2026/Cenik_predplacenych_sluzeb_05_10_2026.pdf?_linka=a1595235",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "o2cz-topup-20261008",
+    "url": "https://www.o2.cz/osobni/dobijeni",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "ofca-luckysim-rnr-20261004",
     "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/reference_guide/index.html",
     "type": "regulator-official",
     "reportedAt": "2026-10-04"
+  },
+  {
+    "id": "official-1pmobile-esim-current-20261006",
+    "url": "https://my.1pmobile.com/eSIM",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-join-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?question=How-do-I-join-1pMobile",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-overseas-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?cprefs=change&question=Can-I-use-my-1pMobile-overseas-indefinitely%3F",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-payg-current-20261006",
+    "url": "https://www.1pmobile.com/siminfo?prodid=STD",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-payment-current-20261006",
+    "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-1pmobile-terms-current-20261006",
+    "url": "https://www.1pmobile.com/tacs",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-2degrees-prepay-balance-2026-09-29",
@@ -1770,10 +2466,46 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-alditalk-activity-window-current-20261005",
+    "url": "https://www.alditalk.de/guthaben-abfragen/handy-guthaben-abfragen",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-alditalk-aktivitaetszeitfenster-pdf-2026-01",
     "url": "https://media.medion.com/cms/medion/alditalkde/ALDI-TALK-Aktivitaetszeitfenster-der-SIM-Karte.pdf?v=0426",
     "type": "provider-official",
     "reportedAt": "2026-04-01"
+  },
+  {
+    "id": "official-alditalk-esim-current-20261005",
+    "url": "https://www.alditalk.de/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-registration-current-20261005",
+    "url": "https://www.alditalk.de/registrieren",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-roaming-current-20261005",
+    "url": "https://www.alditalk.de/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-sim-service-esim-current-20261005",
+    "url": "https://www.alditalk.de/sim-karte-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-alditalk-starter-set-current-20261005",
+    "url": "https://www.alditalk.de/starter-set",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   },
   {
     "id": "official-beeline-kz-registration-2026-09-29",
@@ -1798,6 +2530,42 @@
     "url": "https://www.prepaid-deutschland.de/sim-aktiv-halten-was-bedeutet-nutzen-bei-der-callya-prepaid-karte/",
     "type": "specialist-media",
     "reportedAt": "2025-08-20"
+  },
+  {
+    "id": "official-celcomdigi-activation-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660668-how-to-activate-my-new-sim-",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-esim-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000675400-celcomdigi-esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-kuning-pds-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660850-celcomdigi-prepaid-5g-kuning-product-disclosure-sheet",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-kuning-plan-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660911-faq-celcomdigi-prepaid-5g-kuning-plan",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-prepaid-current-20261006",
+    "url": "https://www.celcomdigi.com/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-celcomdigi-roaming-pass-current-20261006",
+    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000687394-prepaid-roaming-passes",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-cellcard-esim-earrival-2026-06-10",
@@ -1842,6 +2610,36 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-cmhk-mysim-local-package-current-20260415",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-local-package-tc.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-04-15"
+  },
+  {
+    "id": "official-cmhk-mysim-roaming-current-20260415",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-roaming-package-en.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-04-15"
+  },
+  {
+    "id": "official-cmhk-prepaid-esim-exchange-current-20260105",
+    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-01-05/Prepaid_change_eSIM_cardtype_20260105_en.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-01-05"
+  },
+  {
+    "id": "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
+    "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/mobile-duck-mainland-china-macau-3gb-3-day",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-cmhk-prepaid-refill-ladder-standing-20231017",
+    "url": "https://omniapi.hk.chinamobile.com/upload/images/omni-channel-service-console/preferential/2023-10-17/ORIGINAL_20231017165139_P1omCPtU_0x0.pdf",
+    "type": "provider-official",
+    "reportedAt": "2023-10-17"
+  },
+  {
     "id": "official-du-prepaid-lifecycle-2026-09-29",
     "url": "https://www.du.ae/support-articledetail?artid=PROD-89276&lang=en-GB&userType=business&version=2.0",
     "type": "provider-official",
@@ -1858,6 +2656,48 @@
     "url": "https://www.du.ae/personal/mobile/prepaid-plans/tourist-sim/plan-details/plan-information",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-eand-esim-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/postpaid/esim/overview-and-benefits.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-roaming-faq-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/roaming/roaming-services-faqs.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-roaming-rates-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/standard-roaming-rates.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-visitor-line-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/visitor-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-wasel-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-wasel-faq-current-20261007",
+    "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
+  },
+  {
+    "id": "official-eand-wasel-terms-current-20261007",
+    "url": "https://www.eand.ae/en/c/mobile/plans/wasel-prepaid-line/terms-and-conditions.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-07"
   },
   {
     "id": "official-ee-free-sim-2026-09-28",
@@ -1888,6 +2728,66 @@
     "url": "https://ee.co.uk/help/mobile/manage-use/pay-as-you-go/top-up-my-phone",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-fareastone-esim-prepaid-guide-current-20261006",
+    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/08/esim.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-choice-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/apply/choice-package.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-english-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/prepaid-card-en.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-home-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/home.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-product-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-roaming-current-20261006",
+    "url": "https://www.fetnet.net/content/cbu/tw/roaming/prepaidRoaming/prepaidrRoaming-tips.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-prepaid-topup-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/top-up/introduction.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-tourist-card-current-20261006",
+    "url": "https://service.fetnet.net/prepaid/product/tourist-card-en.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-fareastone-volte-overseas-sms-20260824",
+    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2026/08/fetvolte.html",
+    "type": "provider-official",
+    "reportedAt": "2026-08-24"
+  },
+  {
+    "id": "official-fortress-hahasim-product-current-20261006",
+    "url": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-globe-esim-terms-2026-09-29",
@@ -1956,10 +2856,52 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-hotlink-pantas-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-pantas-passes-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
     "id": "official-hotlink-pantas-passes-faq-2026-09-26",
     "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-hotlink-pantas-tc-current-20261006",
+    "url": "https://www.hotlink.com.my/en/terms-conditions/products/prepaid/pantas/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-prepaid-esim-current-20261006",
+    "url": "https://www.hotlink.com.my/en/services/esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-roaming-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/international-roaming/roaming-general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-self-registration-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/prepaid-self-registration/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-hotlink-topup-general-current-20261006",
+    "url": "https://www.hotlink.com.my/en/faq/services/top-up/general/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-jio-prepaid-documents-2026-09-29",
@@ -1984,6 +2926,60 @@
     "url": "https://www.jio.com/jcms/en-in/regulatory/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-kpn-prepaid-abroad-20261005",
+    "url": "https://www.kpn.com/prepaid/buitenland?navMethod=header",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-basis2021-pdf-20261005",
+    "url": "https://assets.ctfassets.net/zuadwp3l2xby/udq2vxsllH5iS6wySx1j7/490802b92af6223ae567f88780f9d5e8/KPN_M_Prepaid_Bel-SMS_2021_v5.0__3_.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-product-20261005",
+    "url": "https://www.kpn.com/shop/mobiel/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-kpn-prepaid-tariffs-20261005",
+    "url": "https://www.kpn.com/prepaid/tarieven",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-labas-packaging-current-20261006",
+    "url": "https://www.labas.lt/en/packaging",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-registration-current-20261006",
+    "url": "https://www.labas.lt/en/registration",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-roaming-current-20261006",
+    "url": "https://www.labas.lt/en/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-terms-current-20261006",
+    "url": "https://www.labas.lt/en/terms-and-conditions/en",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-labas-topup-current-20261006",
+    "url": "https://www.labas.lt/en/help",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-magti-esim-2026-09-29",
@@ -2016,10 +3012,40 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-mobal-id-requirements-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
     "id": "official-mobal-japan-sim-2026-09-29",
     "url": "https://www.mobal.com/japan-sim-card/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-mobal-roaming-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-shipping-current-20261006",
+    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041023-shipping-option-delivery-times",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-voice-lite-esim-current-20261006",
+    "url": "https://www.mobal.com/japan-esims/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-mobal-voice-lite-sim-current-20261006",
+    "url": "https://www.mobal.com/japan-sim-card/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-mobitel-new-connection-2026-09-29",
@@ -2080,6 +3106,12 @@
     "url": "https://www.o2.cz/osobni/ceniky-a-dokumenty",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-ofca-sim-rnr-faq-current-20261007",
+    "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/faq/index.html",
+    "type": "regulator-official",
+    "reportedAt": "2026-10-07"
   },
   {
     "id": "official-one-prepaid-data-validation-2026-09-29",
@@ -2298,6 +3330,30 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-super-esim-20261005",
+    "url": "https://www.super.ee/en/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-price-update-20250723",
+    "url": "https://www.super.ee/en/uudised/super-hinnakirja-muudatus",
+    "type": "provider-official",
+    "reportedAt": "2025-07-23"
+  },
+  {
+    "id": "official-super-roaming-20261005",
+    "url": "https://www.super.ee/en/valismaal/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-super-topup-20261005",
+    "url": "https://www.super.ee/en/laadimine",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-telcel-amigo-contract-2026-09-29",
     "url": "https://www.telcel.com/personas/politicas-y-codigos/contrato-prestacion-servicios",
     "type": "provider-official",
@@ -2358,10 +3414,28 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-tello-activation-us-required-20261005",
+    "url": "https://tello.com/help_center/activate-port-in/can-i-activate-tello-while-i-m-abroad",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-tello-payg-current-20261005",
+    "url": "https://tello.com/help_center/new-to-tello/how-does-pay-as-you-go-work",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-tello-payg-purchase-2026-09-29",
     "url": "https://tello.com/buy/pay_as_you_go",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-tello-payg-sms-topup-20261005",
+    "url": "https://tello.com/help_center/can-i-top-up-my-pay-as-you-go-balance-via-sms",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   },
   {
     "id": "official-tello-roaming-2026-09-29",
@@ -2370,16 +3444,58 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-tello-roaming-us-first-20261005",
+    "url": "https://tello.com/help_center/international-roaming/how-can-i-activate-my-international-roaming-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-tello-terms-2026-09-29",
     "url": "https://tello.com/terms",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "official-telstra-2026-current-offers-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-6mo-recharge-rescue-2026-10-08",
+    "url": "https://www.telstra.com.au/support/pre-paid/recharge-my-pre-paid-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-casual-price-2026-10-08",
+    "url": "https://www.telstra.com.au/help/critical-information-summaries/personal/pre-paid/prepaid-mobile/telstra-pre-paid-mobile-offers-from-may-5-2026",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "official-telstra-prepaid-compare-2026-09-26",
     "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles",
     "type": "provider-official",
     "reportedAt": "2026-09-26"
+  },
+  {
+    "id": "official-telstra-prepaid-travel-roaming-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/international-roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-telstra-traveller-keep-number-2026-10-08",
+    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/traveller-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "official-three-hk-prepaid-rnr-current-20261006",
+    "url": "https://web.three.com.hk/prepaid/realnameregistration/index.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-three-ie-keeping-active-2026-09-29",
@@ -2412,16 +3528,52 @@
     "reportedAt": "2026-04-19"
   },
   {
+    "id": "official-three-payg-activation-20261005",
+    "url": "https://www.three.co.uk/support/new-pay-as-you-go/activating-your-pay-as-you-go-sim.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-three-payg-datapacks-2026-09-28",
     "url": "https://www.three.co.uk/pay-as-you-go/payg-data-packs",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-three-payg-esim-20261005",
+    "url": "https://www.three.co.uk/support/sim-support/esim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "official-three-payg-roaming-20261005",
+    "url": "https://www.three.co.uk/support/roaming-and-calling-abroad/roaming-abroad/roaming-abroad-on-payg",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "official-three-payg-support-2026-09-28",
     "url": "https://www.three.co.uk/support/pay-as-you-go",
     "type": "provider-official",
     "reportedAt": "2026-09-28"
+  },
+  {
+    "id": "official-tim-estero-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/estero",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-mobile-sim-cost-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-tim-passa-esim-id-current-20261006",
+    "url": "https://www.tim.it/fisso-e-mobile/mobile/passa-a-tim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-tim-riattivare-sim-2026-09-26",
@@ -2436,10 +3588,46 @@
     "reportedAt": "2026-09-28"
   },
   {
+    "id": "official-tim-video-identification-current-20261006",
+    "url": "https://www.tim.it/content/dam/flytoco-areapubblica-aemfe/tim_it/pdf/assistenza/altro/TIM_Guida_Video-identificazione_2911.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
     "id": "official-turkcell-tourist-sim-2026-09-29",
     "url": "https://www.turkcell.com.tr/prepaid-tourist-sim-turkey",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "official-twm-esim-current-20261006",
+    "url": "https://www.taiwanmobile.com/mobile/products/eSIMservice.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-twm-identity-faq-current-20261006",
+    "url": "https://www.taiwanmobile.com/cs/public/faqAction.do?method=queryFaqDefault",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-twm-prepaid-recharge-current-20261006",
+    "url": "https://service.taiwanmobile.com/csonline/service/normal/normal_20220701_101318.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-twm-prepaid-roaming-current-20261006",
+    "url": "https://www.taiwanmobile.com/mobile/prepaid/roam.html?tab=small-1-3",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
+  },
+  {
+    "id": "official-twm-regular-prepaid-tariff-current-20261006",
+    "url": "https://www.taiwanmobile.com/csonline/service/normal/normal_20220630_213507.html",
+    "type": "provider-official",
+    "reportedAt": "2026-10-06"
   },
   {
     "id": "official-ultramobile-paygo-2026-09-29",
@@ -2718,6 +3906,12 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "prepaidcompare-h2o-paygo-wifi-20261005",
+    "url": "https://prepaidcompare.net/profiles/h2o-wireless.html",
+    "type": "independent-editorial",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "proximus-forum-foreign-id-friction-2026-07-03",
     "url": "https://fr.forum.proximus.be/telephonie-mobile-13/carte-sim-pay-and-go-non-identifie-identite-francaise-malgres-2-deplacements-en-shop-76182",
     "type": "provider-community-support-thread",
@@ -2748,16 +3942,82 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "reddit-etisalat-wasel-roaming-otp-20231119",
+    "url": "https://www.reddit.com/r/dubai/comments/17you9n/cheap_uae_phone_plan_for_receiving_sms_messages/",
+    "type": "independent-community",
+    "reportedAt": "2023-11-19"
+  },
+  {
+    "id": "reddit-etisalat-wasel-uaepass-otp-20240216",
+    "url": "https://www.reddit.com/r/dubai/comments/1asdkqo/keeping_dubai_sim_alive_with_low_cost_while/",
+    "type": "independent-community",
+    "reportedAt": "2024-02-16"
+  },
+  {
+    "id": "reddit-fareastone-foreigner-identity-continuity-20260713",
+    "url": "https://www.reddit.com/r/taiwan/comments/1uuvwfk/problems_with_cell_phone_and_immigration_records/",
+    "type": "community-forum",
+    "reportedAt": "2026-07-13"
+  },
+  {
     "id": "reddit-gp-visitor-biometric-2026-03-21",
     "url": "https://www.reddit.com/r/bangladesh/comments/1rzl9ms/the_biometric_sim_card_registration_at_dhaka/",
     "type": "first-hand-community-thread",
     "reportedAt": "2026-03-21"
   },
   {
+    "id": "reddit-h2o-paygo-wifi-abroad-20240618",
+    "url": "https://www.reddit.com/r/NoContract/comments/1diwx9b",
+    "type": "independent-community",
+    "reportedAt": "2024-06-18"
+  },
+  {
+    "id": "reddit-hotlink-pantas-365-switch-20260901",
+    "url": "https://www.reddit.com/r/Bolehland/comments/1w4aaei/hotlink_no_more_long_life/",
+    "type": "community-forum",
+    "reportedAt": "2026-09-01"
+  },
+  {
+    "id": "reddit-luckysim-australia-bank-codes-20251018",
+    "url": "https://www.reddit.com/r/HongKong/comments/1o938ay/new_in_hong_kong_for_a_1year_postdoc_sim_card_and/",
+    "type": "independent-community",
+    "reportedAt": "2025-10-18"
+  },
+  {
     "id": "reddit-luckysim-overseas-20260904",
     "url": "https://www.reddit.com/r/Hong_Kong/comments/1w6so3j/question_about_luckysim/",
     "type": "independent-community",
     "reportedAt": "2026-09-04"
+  },
+  {
+    "id": "reddit-luckysim-overseas-sms-instability-20260430",
+    "url": "https://www.reddit.com/r/HongKong/comments/1t01lz1/esim_for_overseas_hker/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-30"
+  },
+  {
+    "id": "reddit-redpocket-ebay-abroad-activation-20260523",
+    "url": "https://www.reddit.com/r/redpocket/comments/1tlrlox/new_user_of_30_annual_ebay_plan_should_i_be_able/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-23"
+  },
+  {
+    "id": "reddit-redpocket-ebay-bangladesh-sms-20260627",
+    "url": "https://www.reddit.com/r/redpocket/comments/1ugptv9/ebay_30_annual_plan_text_while_in_bangladesh/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-27"
+  },
+  {
+    "id": "reddit-redpocket-ebay-lowcost-20260514",
+    "url": "https://www.reddit.com/r/NoContract/comments/1tdcc61/psa_if_you_need_a_low_cost_plan_for_callssms/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-14"
+  },
+  {
+    "id": "reddit-redpocket-ebay-roaming-conflict-20260825",
+    "url": "https://www.reddit.com/r/redpocket/comments/1vxqir6/did_redpocket_change_the_30_ebay_annual_plan/",
+    "type": "independent-community",
+    "reportedAt": "2026-08-25"
   },
   {
     "id": "reddit-saily-number-failure-20260813",
@@ -2808,10 +4068,52 @@
     "reportedAt": "2026-08-05"
   },
   {
+    "id": "reddit-tello-signup-security-20260702",
+    "url": "https://www.reddit.com/r/Tello/comments/1ulbqqn/a_quick_clarification_about_our_signup/",
+    "type": "provider-moderated-community",
+    "reportedAt": "2026-07-02"
+  },
+  {
+    "id": "reddit-tello-sms-cut-abroad-20260925",
+    "url": "https://www.reddit.com/r/Tello/comments/1wq7lir/tello_abruptly_cut_sms2fa_for_me/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-25"
+  },
+  {
+    "id": "reddit-ultramobile-telegram-signup-20250117",
+    "url": "https://www.reddit.com/r/NoContract/comments/1i3tzxb/ultra_mobile_is_a_scam/",
+    "type": "community-report",
+    "reportedAt": "2025-01-17"
+  },
+  {
     "id": "redpocket-annual-20260929",
     "url": "https://www.redpocket.com/plans/annual",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "redpocket-annual-current-20261005",
+    "url": "https://www.redpocket.com/plans/annual",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-annual-help-360d-20261005",
+    "url": "https://help.redpocket.com/red-pocket-mobile-offers-annual-12-month-plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-ebay-30-listing-20261005",
+    "url": "https://www.ebay.com/itm/136840233242",
+    "type": "provider-commercial-page",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "redpocket-ebay-pin-20261005",
+    "url": "https://help.redpocket.com/confirmation-code",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
   },
   {
     "id": "redpocket-esim-activation-20260929",
@@ -2824,6 +4126,18 @@
     "url": "https://help.redpocket.com/does-red-pocket-mobile-allow-roaming",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "redpocket-wifi-calling-20261005",
+    "url": "https://help.redpocket.com/what-is-wifi-calling-and-can-i-use-it-with-my-red-pocket-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-05"
+  },
+  {
+    "id": "retail-7eleven-cmhk-4g-mysim-current-20261007",
+    "url": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
+    "type": "retailer",
+    "reportedAt": "2026-10-07"
   },
   {
     "id": "safaricom-daima-faq-2026-09-29",
@@ -2862,10 +4176,100 @@
     "reportedAt": "2026-08-27"
   },
   {
+    "id": "shuzijumin-clubsim-telegram-success-20240321",
+    "url": "https://shuzijumin.com/thread-235-7-1.html",
+    "type": "community-report",
+    "reportedAt": "2024-03-21"
+  },
+  {
+    "id": "shuzijumin-ultramobile-telegram-20250307",
+    "url": "https://shuzijumin.com/thread-6126-1-1.html",
+    "type": "community-report",
+    "reportedAt": "2025-03-07"
+  },
+  {
     "id": "simtalk-hotmobile-66-180d-20260929",
     "url": "https://simtalk.co.il/en/product-category/%D7%9E%D7%95%D7%A7%D7%93-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%A1%D7%9C%D7%95%D7%9C%D7%A8%D7%99-%D7%90%D7%95%D7%9F-%D7%9C%D7%99%D7%99%D7%9F-%D7%9E%D7%99%D7%93%D7%99%D7%AA-%D7%9C%D7%A0%D7%99%D7%99%D7%93/%D7%94%D7%95%D7%98-%D7%9E%D7%95%D7%91%D7%99%D7%99%D7%9C-%D7%98%D7%A2%D7%99%D7%A0%D7%94-%D7%9E%D7%99%D7%99%D7%93%D7%99%D7%AA-%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F/",
     "type": "commercial-reseller",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "singtel-hi-passport-hi-current-terms-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/hi-terms-and-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-hi-faq-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/faq",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-hi-roaming-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-prepaid-support-20261008",
+    "url": "https://www.singtel.com/personal/support/prepaid-cards",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-foreign-activation-20260724",
+    "url": "https://www.reddit.com/r/eSIMs/comments/1v5fnoy/singtel_tourist_esim_activation_outside_singapore/",
+    "type": "independent-community",
+    "reportedAt": "2026-07-24"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-overseas-3g-20250401",
+    "url": "https://www.reddit.com/r/askSingapore/comments/1joy1y0/overseas_singaporeans_who_kept_singapore_number/",
+    "type": "independent-community",
+    "reportedAt": "2025-04-01"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-passport-verification-20250115",
+    "url": "https://www.reddit.com/r/askSingapore/comments/1i1lqxn/help_with_a_singtel_tourist_esim/",
+    "type": "independent-community",
+    "reportedAt": "2025-01-15"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-reassigned-20260423",
+    "url": "https://www.reddit.com/r/asksg/comments/1stwz62/singtel_sim_bought_at_the_airport_is_registered/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-23"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-tourist-20241113",
+    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1gqebkd/psa_singtel_tourist_esim_100gb_no_longer_offers/",
+    "type": "independent-community",
+    "reportedAt": "2024-11-13"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-tourist-20251210",
+    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1piymzz/question_about_singtel_tourist_sim_card/",
+    "type": "independent-community",
+    "reportedAt": "2025-12-10"
+  },
+  {
+    "id": "singtel-hi-passport-tourist-product-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-tourist-tnc-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist/tnc",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "site2us-redpocket-ebay-20260925",
+    "url": "https://site2us.com/en/phone/redpocket-ebay",
+    "type": "independent-editorial",
+    "reportedAt": "2026-09-25"
   },
   {
     "id": "skt-pps-foreigner-20260930",
@@ -3451,10 +4855,76 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "truemove-document-update-20261008",
+    "url": "https://www.true.th/help/update-sim-registration",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-jaidee-ussd-20261008",
+    "url": "https://www.true.th/en/services/true-jaidee",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-number-retention-20261008",
+    "url": "https://www.true.th/en/help/mobile/network/prepaid-number-retention-service",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-catalog-20261008",
+    "url": "https://www.true.th/prepaid",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-registration-20261008",
+    "url": "https://www.true.th/en/help/mobile/settings/how-to-register-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "truemove-prepaid-roaming-20261008",
+    "url": "https://www.true.th/en/international/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "truemove-provider-root-2026-09-27",
     "url": "https://www.true.th/",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "truemove-reddit-number-retention-20260618",
+    "url": "https://www.reddit.com/r/Thailand/comments/1u91vya/the_cheapest_way_to_keep_your_thai_phone_number/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-18"
+  },
+  {
+    "id": "truemove-reddit-otp-us-20250411",
+    "url": "https://www.reddit.com/r/Thailand/comments/1jwea8u",
+    "type": "independent-community",
+    "reportedAt": "2025-04-11"
+  },
+  {
+    "id": "truemove-reddit-roaming-outage-20260303",
+    "url": "https://www.reddit.com/r/ThailandTourism/comments/1rjiftt/true_move_sim_abroad_no_signal/",
+    "type": "independent-community",
+    "reportedAt": "2026-03-03"
+  },
+  {
+    "id": "truemove-specphone-validity-20260114",
+    "url": "https://specphone.com/web/how-to-buy-day-from-truemove-h-2026/363617",
+    "type": "independent-publication",
+    "reportedAt": "2026-01-14"
+  },
+  {
+    "id": "truemove-tourist-terms-20261008",
+    "url": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
   },
   {
     "id": "tunetalk-network-20261003",
@@ -3467,6 +4937,60 @@
     "url": "https://www.tunetalk.com/prepaid/services/one-year-validity/",
     "type": "provider-official",
     "reportedAt": "2026-10-03"
+  },
+  {
+    "id": "turkcell-btk-2026-ik-thd-125-text-20260511",
+    "url": "https://www.lexpera.com.tr/resmi-gazete/metin/7571-sayili-kanun-ehk-50-8-9-10-ve-gecici-8-inci-madde-kapsaminda-ikincil-duzenleme-tadili",
+    "type": "regulatory-republication",
+    "reportedAt": "2026-05-11"
+  },
+  {
+    "id": "turkcell-foreign-imei-restriction-20260818",
+    "url": "https://www.reddit.com/r/AskTurkey/comments/1vrmg45/turkcell_sim_card_foreign_phone/",
+    "type": "independent-community-adjacent-hardware",
+    "reportedAt": "2026-08-18"
+  },
+  {
+    "id": "turkcell-overseas-paygo-no-signal-20260224",
+    "url": "https://www.reddit.com/r/AskTurkey/comments/1rdtf9b/turkcell_sim/",
+    "type": "independent-community-adjacent-product",
+    "reportedAt": "2026-02-24"
+  },
+  {
+    "id": "turkcell-overseas-sms-wificalling-20260131",
+    "url": "https://www.reddit.com/r/AskTurkey/comments/1qs98tv/my_turkcell_sim_is_no_longer_receiving_sms_abroad/",
+    "type": "independent-community-adjacent-product",
+    "reportedAt": "2026-01-31"
+  },
+  {
+    "id": "turkcell-prepaid-lifecycle-200tl-20261008",
+    "url": "https://www.turkcell.com.tr/destek/hattiniz/hazirkart/en-son-hangi-tarihe-kadar-tl-yuklersem-hatttimi-kullanmaya-devam-edebilirim",
+    "type": "provider-official-adjacent-product",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "turkcell-prepaid-radio-tax-20261008",
+    "url": "https://www.turkcell.com.tr/destek/hattiniz/hazirkart/telsiz-kullanim-ucreti",
+    "type": "provider-official-adjacent-product",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "turkcell-roaming-packets-20261008",
+    "url": "https://www.turkcell.com.tr/paket-ve-tarifeler/yurt-disinda-kullanim",
+    "type": "provider-official-adjacent-product",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "turkcell-tourist-recent-price-20260921",
+    "url": "https://www.reddit.com/r/AskTurkey/comments/1wlx819/visiting_for_holiday/",
+    "type": "independent-community",
+    "reportedAt": "2026-09-21"
+  },
+  {
+    "id": "turkcell-tourist-shops-mixed-20260519",
+    "url": "https://www.reddit.com/r/AskTurkey/comments/1ti3yxb/local_sim_card_for_tourist/",
+    "type": "independent-community",
+    "reportedAt": "2026-05-19"
   },
   {
     "id": "uplus-umobile-prepaid-faq-20261001",
@@ -3497,6 +5021,96 @@
     "url": "https://www.usmobile.com/help/docs/troubleshooting-and-setup/setting-up-device/wifi-calling",
     "type": "provider-official",
     "reportedAt": "2026-09-29"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-conditional-20260918",
+    "url": "https://www.v2ex.com/t/1243080",
+    "type": "community-report",
+    "reportedAt": "2026-09-18"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-failure-20240412",
+    "url": "https://www.v2ex.com/t/1031998",
+    "type": "community-report",
+    "reportedAt": "2024-04-12"
+  },
+  {
+    "id": "v2ex-clubsim-telegram-mnp-failure-20251101",
+    "url": "https://www.v2ex.com/t/1168757",
+    "type": "community-report",
+    "reportedAt": "2025-11-01"
+  },
+  {
+    "id": "v2ex-ultramobile-telegram-mixed-20260404",
+    "url": "https://www.v2ex.com/t/1203564",
+    "type": "community-report",
+    "reportedAt": "2026-04-04"
+  },
+  {
+    "id": "viettel-community-airport-registration-20260815",
+    "url": "https://www.reddit.com/r/VietNam/comments/1vorgc8/warning_for_people_travelling_to_vietnam/",
+    "type": "independent-community-adjacent-tourist",
+    "reportedAt": "2026-08-15"
+  },
+  {
+    "id": "viettel-community-overseas-existing-sim-20260811",
+    "url": "https://www.reddit.com/r/VietNam/comments/1vldy7m/viettel_esim_active_for_future_trips/",
+    "type": "independent-community",
+    "reportedAt": "2026-08-11"
+  },
+  {
+    "id": "viettel-community-passport-esim-web-failure-20260729",
+    "url": "https://www.reddit.com/r/VietNam/comments/1v9mal4/cant_buy_a_viettel_tourist_esim_because_passport/",
+    "type": "independent-community-adjacent-tourist",
+    "reportedAt": "2026-07-29"
+  },
+  {
+    "id": "viettel-community-passport-kyc-failures-20260618",
+    "url": "https://www.reddit.com/r/VietNam/comments/1u9bou0/anyone_experience_this_with_viettel/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-18"
+  },
+  {
+    "id": "viettel-community-roaming-keep-sms-20260214",
+    "url": "https://www.reddit.com/r/VietNam/comments/1r4ahsb/how_to_keep_viettel_sim_card_active_while_overseas/",
+    "type": "independent-community",
+    "reportedAt": "2026-02-14"
+  },
+  {
+    "id": "viettel-community-vtvang-foreign-esim-20260620",
+    "url": "https://www.reddit.com/r/VietNam/comments/1uanyyb/can_you_transfer_a_physical_viettel_sim_on_iphone/",
+    "type": "independent-community",
+    "reportedAt": "2026-06-20"
+  },
+  {
+    "id": "viettel-official-device-change-2h-20260615",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-quan-trong-quy-dinh-bat-buoc-xac-thuc-lai-khuon-mat-khi-thay-doi-dien-thoai-ap-dung-tu-15062026/19138832",
+    "type": "provider-official",
+    "reportedAt": "2026-06-15"
+  },
+  {
+    "id": "viettel-official-dre-lowcost-roaming-20260211",
+    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/giu-so-dien-thoai-duy-tri-nhan-otp-khi-ra-nuoc-ngoai-voi-goi-roaming-dre-viettel/10001728",
+    "type": "provider-official-adjacent-package",
+    "reportedAt": "2026-02-11"
+  },
+  {
+    "id": "viettel-official-offshore-biometric-and-dre-20260617",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/cung-viettel-roaming-xac-thuc-sim-chinh-chu-tai-nuoc-ngoai/16655608",
+    "type": "provider-official",
+    "reportedAt": "2026-06-17"
+  },
+  {
+    "id": "viettel-official-tammi-esim-cccd-20260630",
+    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/huong-dan-chi-tiet-5-buoc-doi-esim-tren-viettel-tammi-cuc-don-gian/18477972",
+    "type": "provider-official",
+    "reportedAt": "2026-06-30"
+  },
+  {
+    "id": "viettel-official-tammi-transition-20260917",
+    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/tam-biet-my-viettel-bat-dau-hanh-trinh-moi-cung-viettel-tammi/12026648",
+    "type": "provider-official",
+    "reportedAt": "2026-09-17"
   },
   {
     "id": "vinaphone-gs-community-channel-2024-05-23",
@@ -3559,6 +5173,30 @@
     "reportedAt": "2026-04-24"
   },
   {
+    "id": "vodafone-callya-classic-20261008",
+    "url": "https://www.vodafone.de/freikarten/callya-classic/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "vodafone-callya-registration-20261008",
+    "url": "https://www.vodafone.de/freikarten/callya-selbstregistrierung/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "vodafone-callya-roaming397-20261008",
+    "url": "https://www.vodafone.de/infofaxe/397.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "vodafone-callya-travel-esim-20261008",
+    "url": "https://www.vodafone.de/freikarten/travel-germany-esim/",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
     "id": "vodafone-eg-other-services-20261001",
     "url": "https://web.vodafone.com.eg/en/other-services",
     "type": "provider-official",
@@ -3619,6 +5257,12 @@
     "reportedAt": "2026-09-23"
   },
   {
+    "id": "weiming-h2o-paygo-wifi-reset-20261005",
+    "url": "https://sites.google.com/view/weimingminxingqiu/2026%E5%B9%B4%E8%83%BD%E5%9C%A8%E4%B8%AD%E5%9B%BD%E6%BC%AB%E6%B8%B8%E7%9A%84%E7%BE%8E%E5%9B%BD%E5%AE%9E%E4%BD%93%E7%94%B5%E8%AF%9D%E5%8D%A1%E5%AE%8C%E6%95%B4%E7%9B%98%E7%82%B9",
+    "type": "independent-editorial",
+    "reportedAt": "2026-10-05"
+  },
+  {
     "id": "yas-tz-about-20261003",
     "url": "https://yas.co.tz/about/",
     "type": "provider-official",
@@ -3673,6 +5317,12 @@
     "reportedAt": "2026-09-30"
   },
   {
+    "id": "youtube-didushan-ultramobile-telegram-20250221",
+    "url": "https://www.youtube.com/watch?v=RZqLsGXnghk",
+    "type": "community-report",
+    "reportedAt": "2025-02-21"
+  },
+  {
     "id": "zain-kw-eezee-plans-20261003",
     "url": "https://www.kw.zain.com/en/shop/wiyanaeezeeplans",
     "type": "provider-official",
@@ -3695,1577 +5345,5 @@
     "url": "https://www.kw.zain.com/en/shop/roaming",
     "type": "provider-official",
     "reportedAt": "2026-10-03"
-  },
-  {
-    "id": "reddit-luckysim-australia-bank-codes-20251018",
-    "url": "https://www.reddit.com/r/HongKong/comments/1o938ay/new_in_hong_kong_for_a_1year_postdoc_sim_card_and/",
-    "type": "independent-community",
-    "reportedAt": "2025-10-18"
-  },
-  {
-    "id": "reddit-luckysim-overseas-sms-instability-20260430",
-    "url": "https://www.reddit.com/r/HongKong/comments/1t01lz1/esim_for_overseas_hker/",
-    "type": "independent-community",
-    "reportedAt": "2026-04-30"
-  },
-  {
-    "id": "shuzijumin-clubsim-telegram-success-20240321",
-    "url": "https://shuzijumin.com/thread-235-7-1.html",
-    "type": "community-report",
-    "reportedAt": "2024-03-21"
-  },
-  {
-    "id": "v2ex-clubsim-telegram-failure-20240412",
-    "url": "https://www.v2ex.com/t/1031998",
-    "type": "community-report",
-    "reportedAt": "2024-04-12"
-  },
-  {
-    "id": "linuxdo-clubsim-telegram-failure-20250219",
-    "url": "https://linux.do/t/topic/439461",
-    "type": "community-report",
-    "reportedAt": "2025-02-19"
-  },
-  {
-    "id": "v2ex-clubsim-telegram-mnp-failure-20251101",
-    "url": "https://www.v2ex.com/t/1168757",
-    "type": "community-report",
-    "reportedAt": "2025-11-01"
-  },
-  {
-    "id": "naixi-clubsim-telegram-conflict-20260729",
-    "url": "https://forum.naixi.net/thread-13360-1-1.html",
-    "type": "community-report",
-    "reportedAt": "2026-07-29"
-  },
-  {
-    "id": "naixi-clubsim-telegram-success-20260918",
-    "url": "https://forum.naixi.net/thread-15515-1-1.html",
-    "type": "community-report",
-    "reportedAt": "2026-09-18"
-  },
-  {
-    "id": "v2ex-clubsim-telegram-conditional-20260918",
-    "url": "https://www.v2ex.com/t/1243080",
-    "type": "community-report",
-    "reportedAt": "2026-09-18"
-  },
-  {
-    "id": "reddit-ultramobile-telegram-signup-20250117",
-    "url": "https://www.reddit.com/r/NoContract/comments/1i3tzxb/ultra_mobile_is_a_scam/",
-    "type": "community-report",
-    "reportedAt": "2025-01-17"
-  },
-  {
-    "id": "youtube-didushan-ultramobile-telegram-20250221",
-    "url": "https://www.youtube.com/watch?v=RZqLsGXnghk",
-    "type": "community-report",
-    "reportedAt": "2025-02-21"
-  },
-  {
-    "id": "shuzijumin-ultramobile-telegram-20250307",
-    "url": "https://shuzijumin.com/thread-6126-1-1.html",
-    "type": "community-report",
-    "reportedAt": "2025-03-07"
-  },
-  {
-    "id": "linuxdo-ultramobile-telegram-mixed-20250603",
-    "url": "https://linux.do/t/topic/695893",
-    "type": "community-report",
-    "reportedAt": "2025-06-03"
-  },
-  {
-    "id": "v2ex-ultramobile-telegram-mixed-20260404",
-    "url": "https://www.v2ex.com/t/1203564",
-    "type": "community-report",
-    "reportedAt": "2026-04-04"
-  },
-  {
-    "id": "prepaidcompare-h2o-paygo-wifi-20261005",
-    "url": "https://prepaidcompare.net/profiles/h2o-wireless.html",
-    "type": "independent-editorial",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "reddit-h2o-paygo-wifi-abroad-20240618",
-    "url": "https://www.reddit.com/r/NoContract/comments/1diwx9b",
-    "type": "independent-community",
-    "reportedAt": "2024-06-18"
-  },
-  {
-    "id": "weiming-h2o-paygo-wifi-reset-20261005",
-    "url": "https://sites.google.com/view/weimingminxingqiu/2026%E5%B9%B4%E8%83%BD%E5%9C%A8%E4%B8%AD%E5%9B%BD%E6%BC%AB%E6%B8%B8%E7%9A%84%E7%BE%8E%E5%9B%BD%E5%AE%9E%E4%BD%93%E7%94%B5%E8%AF%9D%E5%8D%A1%E5%AE%8C%E6%95%B4%E7%9B%98%E7%82%B9",
-    "type": "independent-editorial",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-tello-payg-current-20261005",
-    "url": "https://tello.com/help_center/new-to-tello/how-does-pay-as-you-go-work",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-tello-payg-sms-topup-20261005",
-    "url": "https://tello.com/help_center/can-i-top-up-my-pay-as-you-go-balance-via-sms",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-tello-activation-us-required-20261005",
-    "url": "https://tello.com/help_center/activate-port-in/can-i-activate-tello-while-i-m-abroad",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-tello-roaming-us-first-20261005",
-    "url": "https://tello.com/help_center/international-roaming/how-can-i-activate-my-international-roaming-service",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "linuxdo-tello-codex-sms-failure-20260612",
-    "url": "https://linux.do/t/topic/717137?page=3",
-    "type": "first-hand-community-thread",
-    "reportedAt": "2026-06-12"
-  },
-  {
-    "id": "reddit-tello-sms-cut-abroad-20260925",
-    "url": "https://www.reddit.com/r/Tello/comments/1wq7lir/tello_abruptly_cut_sms2fa_for_me/",
-    "type": "independent-community",
-    "reportedAt": "2026-09-25"
-  },
-  {
-    "id": "reddit-tello-signup-security-20260702",
-    "url": "https://www.reddit.com/r/Tello/comments/1ulbqqn/a_quick_clarification_about_our_signup/",
-    "type": "provider-moderated-community",
-    "reportedAt": "2026-07-02"
-  },
-  {
-    "id": "nodeseek-tello-payg-guide-20260928",
-    "url": "https://www.nodeseek.com/post-953129-1",
-    "type": "independent-community",
-    "reportedAt": "2026-09-28"
-  },
-  {
-    "id": "redpocket-ebay-30-listing-20261005",
-    "url": "https://www.ebay.com/itm/136840233242",
-    "type": "provider-commercial-page",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "redpocket-annual-help-360d-20261005",
-    "url": "https://help.redpocket.com/red-pocket-mobile-offers-annual-12-month-plans",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "redpocket-wifi-calling-20261005",
-    "url": "https://help.redpocket.com/what-is-wifi-calling-and-can-i-use-it-with-my-red-pocket-service",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "redpocket-ebay-pin-20261005",
-    "url": "https://help.redpocket.com/confirmation-code",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "site2us-redpocket-ebay-20260925",
-    "url": "https://site2us.com/en/phone/redpocket-ebay",
-    "type": "independent-editorial",
-    "reportedAt": "2026-09-25"
-  },
-  {
-    "id": "reddit-redpocket-ebay-lowcost-20260514",
-    "url": "https://www.reddit.com/r/NoContract/comments/1tdcc61/psa_if_you_need_a_low_cost_plan_for_callssms/",
-    "type": "independent-community",
-    "reportedAt": "2026-05-14"
-  },
-  {
-    "id": "reddit-redpocket-ebay-abroad-activation-20260523",
-    "url": "https://www.reddit.com/r/redpocket/comments/1tlrlox/new_user_of_30_annual_ebay_plan_should_i_be_able/",
-    "type": "independent-community",
-    "reportedAt": "2026-05-23"
-  },
-  {
-    "id": "reddit-redpocket-ebay-roaming-conflict-20260825",
-    "url": "https://www.reddit.com/r/redpocket/comments/1vxqir6/did_redpocket_change_the_30_ebay_annual_plan/",
-    "type": "independent-community",
-    "reportedAt": "2026-08-25"
-  },
-  {
-    "id": "reddit-redpocket-ebay-bangladesh-sms-20260627",
-    "url": "https://www.reddit.com/r/redpocket/comments/1ugptv9/ebay_30_annual_plan_text_while_in_bangladesh/",
-    "type": "independent-community",
-    "reportedAt": "2026-06-27"
-  },
-  {
-    "id": "redpocket-annual-current-20261005",
-    "url": "https://www.redpocket.com/plans/annual",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-kpn-prepaid-product-20261005",
-    "url": "https://www.kpn.com/shop/mobiel/prepaid",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-kpn-prepaid-tariffs-20261005",
-    "url": "https://www.kpn.com/prepaid/tarieven",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-kpn-prepaid-basis2021-pdf-20261005",
-    "url": "https://assets.ctfassets.net/zuadwp3l2xby/udq2vxsllH5iS6wySx1j7/490802b92af6223ae567f88780f9d5e8/KPN_M_Prepaid_Bel-SMS_2021_v5.0__3_.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-kpn-prepaid-abroad-20261005",
-    "url": "https://www.kpn.com/prepaid/buitenland?navMethod=header",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "kpn-community-activation-netherlands-20260612",
-    "url": "https://community.kpn.com/prepaid-16/nieuwe-prepaid-simkaart-werkt-nog-niet-in-het-buitenland-649721",
-    "type": "provider-moderated-community",
-    "reportedAt": "2026-06-12"
-  },
-  {
-    "id": "kpn-community-prepaid-esim-no-20260807",
-    "url": "https://community.kpn.com/prepaid-16/need-help-to-activate-prepaid-e-sim-from-abroad-653003?postid=2290319",
-    "type": "provider-moderated-community",
-    "reportedAt": "2026-08-07"
-  },
-  {
-    "id": "kpn-community-roaming-network-loss-20260817",
-    "url": "https://community.kpn.com/prepaid-16/prepaid-simkaart-heeft-geen-netwerk-meer-in-het-buitenland-654102?postid=2293720",
-    "type": "provider-moderated-community",
-    "reportedAt": "2026-08-17"
-  },
-  {
-    "id": "official-three-payg-roaming-20261005",
-    "url": "https://www.three.co.uk/support/roaming-and-calling-abroad/roaming-abroad/roaming-abroad-on-payg",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-three-payg-esim-20261005",
-    "url": "https://www.three.co.uk/support/sim-support/esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-three-payg-activation-20261005",
-    "url": "https://www.three.co.uk/support/new-pay-as-you-go/activating-your-pay-as-you-go-sim.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-super-esim-20261005",
-    "url": "https://www.super.ee/en/esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-super-topup-20261005",
-    "url": "https://www.super.ee/en/laadimine",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-super-roaming-20261005",
-    "url": "https://www.super.ee/en/valismaal/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-super-price-update-20250723",
-    "url": "https://www.super.ee/en/uudised/super-hinnakirja-muudatus",
-    "type": "provider-official",
-    "reportedAt": "2025-07-23"
-  },
-  {
-    "id": "official-alditalk-starter-set-current-20261005",
-    "url": "https://www.alditalk.de/starter-set",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-alditalk-activity-window-current-20261005",
-    "url": "https://www.alditalk.de/guthaben-abfragen/handy-guthaben-abfragen",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-alditalk-esim-current-20261005",
-    "url": "https://www.alditalk.de/esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-alditalk-sim-service-esim-current-20261005",
-    "url": "https://www.alditalk.de/sim-karte-service",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-alditalk-registration-current-20261005",
-    "url": "https://www.alditalk.de/registrieren",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-alditalk-roaming-current-20261005",
-    "url": "https://www.alditalk.de/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-05"
-  },
-  {
-    "id": "official-hotlink-pantas-tc-current-20261006",
-    "url": "https://www.hotlink.com.my/en/terms-conditions/products/prepaid/pantas/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-pantas-passes-current-20261006",
-    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/passes/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-pantas-general-current-20261006",
-    "url": "https://www.hotlink.com.my/en/faq/products/prepaid-pantas/general/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-prepaid-esim-current-20261006",
-    "url": "https://www.hotlink.com.my/en/services/esim/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-self-registration-current-20261006",
-    "url": "https://www.hotlink.com.my/en/faq/services/prepaid-self-registration/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-roaming-general-current-20261006",
-    "url": "https://www.hotlink.com.my/en/faq/services/international-roaming/roaming-general/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-hotlink-topup-general-current-20261006",
-    "url": "https://www.hotlink.com.my/en/faq/services/top-up/general/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "reddit-hotlink-pantas-365-switch-20260901",
-    "url": "https://www.reddit.com/r/Bolehland/comments/1w4aaei/hotlink_no_more_long_life/",
-    "type": "community-forum",
-    "reportedAt": "2026-09-01"
-  },
-  {
-    "id": "lowyat-hotlink-pantas-roaming-sms-failure-20260922",
-    "url": "https://forum.lowyat.net/topic/5577865",
-    "type": "community-forum",
-    "reportedAt": "2026-09-22"
-  },
-  {
-    "id": "hardwarezone-hotlink-offshore-esim-20260106",
-    "url": "https://forums.hardwarezone.com.sg/threads/malaysia-prepaid-card.1984062/page-493",
-    "type": "community-forum",
-    "reportedAt": "2026-01-06"
-  },
-  {
-    "id": "andrewkim-hotlink-offshore-esim-20260620",
-    "url": "https://andrewkim.me/install-malaysian-esim-from-us/",
-    "type": "independent-report",
-    "reportedAt": "2026-06-20"
-  },
-  {
-    "id": "official-fareastone-prepaid-product-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/product/prepaid-card.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-prepaid-topup-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/top-up/introduction.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-prepaid-choice-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/apply/choice-package.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-prepaid-english-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/product/prepaid-card-en.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-prepaid-home-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/home.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-prepaid-roaming-current-20261006",
-    "url": "https://www.fetnet.net/content/cbu/tw/roaming/prepaidRoaming/prepaidrRoaming-tips.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fareastone-volte-overseas-sms-20260824",
-    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2026/08/fetvolte.html",
-    "type": "provider-official",
-    "reportedAt": "2026-08-24"
-  },
-  {
-    "id": "official-fareastone-tourist-card-current-20261006",
-    "url": "https://service.fetnet.net/prepaid/product/tourist-card-en.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "reddit-fareastone-foreigner-identity-continuity-20260713",
-    "url": "https://www.reddit.com/r/taiwan/comments/1uuvwfk/problems_with_cell_phone_and_immigration_records/",
-    "type": "community-forum",
-    "reportedAt": "2026-07-13"
-  },
-  {
-    "id": "official-fareastone-esim-prepaid-guide-current-20261006",
-    "url": "https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/08/esim.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-tim-mobile-sim-cost-current-20261006",
-    "url": "https://www.tim.it/fisso-e-mobile/mobile/offerte-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-tim-passa-esim-id-current-20261006",
-    "url": "https://www.tim.it/fisso-e-mobile/mobile/passa-a-tim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-tim-estero-current-20261006",
-    "url": "https://www.tim.it/fisso-e-mobile/estero",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-tim-video-identification-current-20261006",
-    "url": "https://www.tim.it/content/dam/flytoco-areapubblica-aemfe/tim_it/pdf/assistenza/altro/TIM_Guida_Video-identificazione_2911.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-twm-regular-prepaid-tariff-current-20261006",
-    "url": "https://www.taiwanmobile.com/csonline/service/normal/normal_20220630_213507.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-twm-prepaid-recharge-current-20261006",
-    "url": "https://service.taiwanmobile.com/csonline/service/normal/normal_20220701_101318.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-twm-esim-current-20261006",
-    "url": "https://www.taiwanmobile.com/mobile/products/eSIMservice.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-twm-identity-faq-current-20261006",
-    "url": "https://www.taiwanmobile.com/cs/public/faqAction.do?method=queryFaqDefault",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-twm-prepaid-roaming-current-20261006",
-    "url": "https://www.taiwanmobile.com/mobile/prepaid/roam.html?tab=small-1-3",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-terms-current-20261006",
-    "url": "https://www.1pmobile.com/tacs",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-payg-current-20261006",
-    "url": "https://www.1pmobile.com/siminfo?prodid=STD",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-join-current-20261006",
-    "url": "https://www.1pmobile.com/ask-penny?question=How-do-I-join-1pMobile",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-esim-current-20261006",
-    "url": "https://my.1pmobile.com/eSIM",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-overseas-current-20261006",
-    "url": "https://www.1pmobile.com/ask-penny?cprefs=change&question=Can-I-use-my-1pMobile-overseas-indefinitely%3F",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-1pmobile-payment-current-20261006",
-    "url": "https://www.1pmobile.com/ask-penny?cprefs=agree&question=What-payment-methods-do-you-accept%3F",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-mobal-voice-lite-sim-current-20261006",
-    "url": "https://www.mobal.com/japan-sim-card/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-mobal-voice-lite-esim-current-20261006",
-    "url": "https://www.mobal.com/japan-esims/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-mobal-id-requirements-current-20261006",
-    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000051089-i-d-requirements-voice-products-",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-mobal-shipping-current-20261006",
-    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000041023-shipping-option-delivery-times",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-mobal-roaming-current-20261006",
-    "url": "https://helpdesk.mobal.com/support/solutions/articles/205000045457-international-roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-labas-terms-current-20261006",
-    "url": "https://www.labas.lt/en/terms-and-conditions/en",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-labas-packaging-current-20261006",
-    "url": "https://www.labas.lt/en/packaging",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-labas-registration-current-20261006",
-    "url": "https://www.labas.lt/en/registration",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-labas-topup-current-20261006",
-    "url": "https://www.labas.lt/en/help",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-labas-roaming-current-20261006",
-    "url": "https://www.labas.lt/en/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-fortress-hahasim-product-current-20261006",
-    "url": "https://www.fortress.com.hk/en/product/roaming-data-haha-sim-card-reusable-with-50-balance/p/BP_11953923",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-three-hk-prepaid-rnr-current-20261006",
-    "url": "https://web.three.com.hk/prepaid/realnameregistration/index.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "linuxdo-hahasim-telegram-failure-20250529",
-    "url": "https://linux.do/t/topic/686357",
-    "type": "independent-community",
-    "reportedAt": "2025-05-29"
-  },
-  {
-    "id": "linuxdo-hahasim-telegram-conditional-20260105",
-    "url": "https://linux.do/t/topic/1408847?page=2",
-    "type": "independent-community",
-    "reportedAt": "2026-01-05"
-  },
-  {
-    "id": "official-celcomdigi-prepaid-current-20261006",
-    "url": "https://www.celcomdigi.com/prepaid",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-celcomdigi-kuning-plan-current-20261006",
-    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660911-faq-celcomdigi-prepaid-5g-kuning-plan",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-celcomdigi-kuning-pds-current-20261006",
-    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660850-celcomdigi-prepaid-5g-kuning-product-disclosure-sheet",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-celcomdigi-activation-current-20261006",
-    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660668-how-to-activate-my-new-sim-",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-celcomdigi-esim-current-20261006",
-    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000675400-celcomdigi-esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "official-celcomdigi-roaming-pass-current-20261006",
-    "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000687394-prepaid-roaming-passes",
-    "type": "provider-official",
-    "reportedAt": "2026-10-06"
-  },
-  {
-    "id": "lowyat-digi-prepaid-roaming-otp-20240716",
-    "url": "https://forum.lowyat.net/topic/4211035/+10180",
-    "type": "independent-community",
-    "reportedAt": "2024-07-16"
-  },
-  {
-    "id": "official-eand-wasel-current-20261007",
-    "url": "https://www.eand.ae/en/c/mobile/plans/rmp/wasel-prepaid-line.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-wasel-terms-current-20261007",
-    "url": "https://www.eand.ae/en/c/mobile/plans/wasel-prepaid-line/terms-and-conditions.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-wasel-faq-current-20261007",
-    "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-prepaid-line/overview-and-benefits.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-esim-current-20261007",
-    "url": "https://www.eand.ae/en/c/support/mobile/postpaid/esim/overview-and-benefits.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-roaming-rates-current-20261007",
-    "url": "https://www.eand.ae/en/c/mobile/standard-roaming-rates.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-roaming-faq-current-20261007",
-    "url": "https://www.eand.ae/en/c/support/mobile/roaming/roaming-services-faqs.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-eand-visitor-line-current-20261007",
-    "url": "https://www.eand.ae/en/c/mobile/plans/visitor-line.html",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "reddit-etisalat-wasel-uaepass-otp-20240216",
-    "url": "https://www.reddit.com/r/dubai/comments/1asdkqo/keeping_dubai_sim_alive_with_low_cost_while/",
-    "type": "independent-community",
-    "reportedAt": "2024-02-16"
-  },
-  {
-    "id": "reddit-etisalat-wasel-roaming-otp-20231119",
-    "url": "https://www.reddit.com/r/dubai/comments/17you9n/cheap_uae_phone_plan_for_receiving_sms_messages/",
-    "type": "independent-community",
-    "reportedAt": "2023-11-19"
-  },
-  {
-    "id": "retail-7eleven-cmhk-4g-mysim-current-20261007",
-    "url": "https://www.7-eleven.hk/en/service/prepaid-sim/for-local-residents",
-    "type": "retailer",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-cmhk-mysim-local-package-current-20260415",
-    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-local-package-tc.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-04-15"
-  },
-  {
-    "id": "official-cmhk-prepaid-esim-exchange-current-20260105",
-    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-01-05/Prepaid_change_eSIM_cardtype_20260105_en.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-01-05"
-  },
-  {
-    "id": "official-cmhk-prepaid-mainland-activation-rule-current-20261007",
-    "url": "https://www.hk.chinamobile.com/en/home/prepaid-card/mobile-duck-mainland-china-macau-3gb-3-day",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-ofca-sim-rnr-faq-current-20261007",
-    "url": "https://www.ofca.gov.hk/en/consumer_focus/guide/hot_topics/sim_registration/faq/index.html",
-    "type": "regulator-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "official-cmhk-prepaid-refill-ladder-standing-20231017",
-    "url": "https://omniapi.hk.chinamobile.com/upload/images/omni-channel-service-console/preferential/2023-10-17/ORIGINAL_20231017165139_P1omCPtU_0x0.pdf",
-    "type": "provider-official",
-    "reportedAt": "2023-10-17"
-  },
-  {
-    "id": "official-cmhk-mysim-roaming-current-20260415",
-    "url": "https://www.hk.chinamobile.com/upload/onlineshop/2026-04-15/5g-mysim-roaming-package-en.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-04-15"
-  },
-  {
-    "id": "flyert-cmhk-4g-mysim-retention-20240604",
-    "url": "https://www.flyert.com.cn/forum.php?extra=page%3D1%26orderby%3Dviews&mobile=no&mod=viewthread&page=3&tid=4623311",
-    "type": "independent-community",
-    "reportedAt": "2024-06-04"
-  },
-  {
-    "id": "hkepc-cmhk-4g-mysim-mainland-sms-20231005",
-    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=1&tid=2707614",
-    "type": "independent-community",
-    "reportedAt": "2023-10-05"
-  },
-  {
-    "id": "hkepc-mysim-roaming-otp-charge-risk-20241212",
-    "url": "https://www.hkepc.com/forum/viewthread.php?fid=44&page=2&tid=2737782",
-    "type": "independent-community",
-    "reportedAt": "2024-12-12"
-  },
-  {
-    "id": "mtn-ng-kmn-current-20261008",
-    "url": "https://www.mtn.ng/sim/keep-my-number/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mtn-ng-prepaid-terms-current-20261008",
-    "url": "https://www.mtn.ng/legal/prepaid/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mtn-ng-esim-current-20261008",
-    "url": "https://www.mtn.ng/sim/esim/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mtn-ng-roaming-current-20261008",
-    "url": "https://www.mtn.ng/personal/roaming/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mtn-ng-xtrabuy-current-20261008",
-    "url": "https://www.mtn.ng/personal/xtrabuy/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "ncc-qos-business-rules-2026-mtn-ng",
-    "url": "https://www.ncc.gov.ng/sites/default/files/2026-08/Quality-of-Service-Business-Rules-2026.pdf",
-    "type": "government-regulator",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "community-nairaland-mtn-kmn-reassigned-20260831",
-    "url": "https://www.nairaland.com/8738633/what-happens-bank-account-when",
-    "type": "community-incident-thread",
-    "reportedAt": "2026-08-31"
-  },
-  {
-    "id": "mts-keep-current-20261008",
-    "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mts-foreign-kyc-20260206",
-    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/oformlenie-novoi-sim-karti/kak-inostrannomu-grazhdaninu-oformit-sim-kartu",
-    "type": "provider-official",
-    "reportedAt": "2026-02-06"
-  },
-  {
-    "id": "mts-esim-new-20261008",
-    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-oformit-novuyu-esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mts-esim-activate-20261008",
-    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/esim/kak-aktivirovat-esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mts-roaming-20261008",
-    "url": "https://support.mts.ru/mts_rouming_i_mezhgorod/poezdki-po-miru/kak-podklyuchit-uslugi-dlya-dostupa-k-svyazi-i-internetu-v-rouminge",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mts-sms-quarantine-20261007",
-    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/blokirovka-nomera-problemi-so-svyazyu/kak-vosstanovit-dostup-k-internetu-i-sms-posle-poezdki-za-granitsu-ili-pereriva-v-ispolzovanii-nomera",
-    "type": "provider-official",
-    "reportedAt": "2026-10-07"
-  },
-  {
-    "id": "mts-topup-20260806",
-    "url": "https://support.mts.ru/mts_mobilnaya_svyaz/popolnenie-schyota/kak-popolnit-balans-telefona",
-    "type": "provider-official",
-    "reportedAt": "2026-08-06"
-  },
-  {
-    "id": "mts-number-forever-archive-20261008",
-    "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/archive/nomer-navsegda",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "mts-forum-30day-20260613",
-    "url": "https://4pda.to/forum/index.php?showtopic=954353&st=46300",
-    "type": "independent-community",
-    "reportedAt": "2026-06-13"
-  },
-  {
-    "id": "mts-forum-roaming-sms-20240820",
-    "url": "https://4pda.to/forum/index.php?showtopic=954353&st=30680",
-    "type": "independent-community",
-    "reportedAt": "2024-08-20"
-  },
-  {
-    "id": "o2cz-tariff-20261005",
-    "url": "https://www.o2.cz/osobni/podpora/ceniky-a-dokumenty/cenik-predplacenych-sluzeb/platnost-od-5.-10.-2026/Cenik_predplacenych_sluzeb_05_10_2026.pdf?_linka=a1595235",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2cz-topup-20261008",
-    "url": "https://www.o2.cz/osobni/dobijeni",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2cz-prepaid-sim-exchange-20261008",
-    "url": "https://www.o2.cz/podpora/volani-z-mobilu/kdy-a-jak-si-vymenit-sim-kartu",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2cz-sim-types-20261008",
-    "url": "https://www.o2.cz/podpora/volani-z-mobilu/druhy-sim-karet",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2cz-roaming-20261008",
-    "url": "https://www.o2.cz/osobni/volani/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2cz-cz-regulator-anonymous-2024",
-    "url": "https://ctu.gov.cz/sites/default/files/obsah/ctu/telekomunikacni-vestnik-castka-4-z-26.-dubna-2024/obrazky/TV-2024-04_1.pdf",
-    "type": "government-regulator",
-    "reportedAt": "2024-04-26"
-  },
-  {
-    "id": "o2cz-reddit-prague-store-20240817",
-    "url": "https://www.reddit.com/r/Prague/comments/1eube3t",
-    "type": "independent-community",
-    "reportedAt": "2024-08-17"
-  },
-  {
-    "id": "official-telstra-casual-price-2026-10-08",
-    "url": "https://www.telstra.com.au/help/critical-information-summaries/personal/pre-paid/prepaid-mobile/telstra-pre-paid-mobile-offers-from-may-5-2026",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "official-telstra-2026-current-offers-2026-10-08",
-    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/offers-and-rates/index",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "official-telstra-traveller-keep-number-2026-10-08",
-    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/traveller-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "official-telstra-6mo-recharge-rescue-2026-10-08",
-    "url": "https://www.telstra.com.au/support/pre-paid/recharge-my-pre-paid-service",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "official-telstra-prepaid-travel-roaming-2026-10-08",
-    "url": "https://www.telstra.com.au/mobile-phones/prepaid-mobiles/international-roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "community-telstra-casual-roaming-2026-09-23",
-    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1wntvdh/receive_both_sms_and_phone_calls_on_her/",
-    "type": "community",
-    "reportedAt": "2026-09-23"
-  },
-  {
-    "id": "community-telstra-prepaid-bank-sms-2026-05-05",
-    "url": "https://www.reddit.com/r/AusFinance/comments/1t4ell5/whats_the_cheapest_way_to_keep_my_aussie_number/",
-    "type": "community",
-    "reportedAt": "2026-05-05"
-  },
-  {
-    "id": "community-telstra-365day-roaming-pack-friction-2025-02-03",
-    "url": "https://www.reddit.com/r/TelstraAustralia/comments/1hls0t2",
-    "type": "community",
-    "reportedAt": "2025-02-03"
-  },
-  {
-    "id": "claro-br-recharge-ladder-20261008",
-    "url": "https://www.claro.com.br/celular/planos-pre/claro-recarga",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-recharge-regulation-terms-20261008",
-    "url": "https://www.claro.com.br/produtosclaro/documentos_pre/",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-prepaid-cancellation-faq-20261008",
-    "url": "https://www.claro.com.br/faq/pre-pago/em-quanto-tempo-a-minha-linha-podera-ser-cancelada",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-esim-foreign-passport-20261008",
-    "url": "https://www.claro.com.br/celular/esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-prepaid-activation-selfie-20261008",
-    "url": "https://www.claro.com.br/celular/planos-pre/como-ativar-seu-chip",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-international-roaming-prepaid-restriction-20261008",
-    "url": "https://www.claro.com.br/celular/roaming-internacional/como-usar-celular-no-exterior",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "claro-br-roaming-faq-postpaid-only-20261008",
-    "url": "https://www.claro.com.br/faq/ligacoes-e-sms/como-usar-celular-em-viagens-internacionais",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "community-claro-br-prepaid-roaming-japan-20250109",
-    "url": "https://www.reddit.com/r/InternetBrasil/comments/1hx2i9b",
-    "type": "community",
-    "reportedAt": "2025-01-09"
-  },
-  {
-    "id": "community-claro-br-prepaid-foreign-store-20260117",
-    "url": "https://www.reddit.com/r/Brazil/comments/1qfhs7i/my_battle_to_get_a_local_sim_card_as_a_tourist_in/",
-    "type": "community",
-    "reportedAt": "2026-01-17"
-  },
-  {
-    "id": "community-claro-br-prepaid-esim-overseas-failure-20260219",
-    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativar-e-sim-da-claro-no-exterior-e-falta-de-informacao-clara-no-momento-da-compra_5hzKfiuITPUp1TYU/",
-    "type": "community",
-    "reportedAt": "2026-02-19"
-  },
-  {
-    "id": "community-claro-br-prepaid-roaming-denial-20260615",
-    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-ativacao-de-roaming-internacional-e-solicitacao-de-mudanca-de-plano-para-pre-pago-fora-do-pais_lsgawoSJG--Mci2J/",
-    "type": "community",
-    "reportedAt": "2026-06-15"
-  },
-  {
-    "id": "community-claro-br-prepaid-no-sms-portability-20251226",
-    "url": "https://www.reclameaqui.com.br/claro/impossibilidade-de-migrar-para-esim-e-receber-sms-no-exterior-impede-uso-do-numero-e-portabilidade_ncxnUcD3gEaaHDq5/",
-    "type": "community",
-    "reportedAt": "2025-12-26"
-  },
-  {
-    "id": "asda-payg-price-book-sep2025",
-    "url": "https://mobile.asda.com/pdf/Asda-Mobile-Retail-Price-Book-PAYG-Sept-25.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-expiry-faq-20261008",
-    "url": "https://mobile.asda.com/help/topping-up/topup-expire",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-emergency-reactivation-faq-20261008",
-    "url": "https://mobile.asda.com/help/topping-up/topup-reactivate",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-uk-card-restriction-20261008",
-    "url": "https://mobile.asda.com/support/topping-up",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-activation-uk-network-20261008",
-    "url": "https://mobile.asda.com/activate-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-esim-change-faq-20261008",
-    "url": "https://mobile.asda.com/help/managing-your-account/switchphysicalsim-toesim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-roaming-price-china-20261008",
-    "url": "https://mobile.asda.com/roaming-calling-abroad",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-payg-free-sim-order-20261008",
-    "url": "https://mobile.asda.com/order-free-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "asda-ukfrugal-2026-active-text-20260322",
-    "url": "https://www.reddit.com/r/AskUK/comments/1s0j3xe/what_caused_the_decline_and_death_of_pay_as_you/",
-    "type": "community",
-    "reportedAt": "2026-03-22"
-  },
-  {
-    "id": "asda-ukfrugal-2025-topup-experience-20250608",
-    "url": "https://www.reddit.com/r/UKFrugal/comments/1l6jyuv",
-    "type": "community",
-    "reportedAt": "2025-06-08"
-  },
-  {
-    "id": "asda-askuk-2022-grace-report-20220607",
-    "url": "https://www.reddit.com/r/AskUK/comments/v6dtlo",
-    "type": "community",
-    "reportedAt": "2022-06-07"
-  },
-  {
-    "id": "free-fr-official-sim-20261008",
-    "url": "https://assistance.free.fr/articles/900",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-voyage-20261008",
-    "url": "https://assistance.free.fr/articles/905",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-receive-20261008",
-    "url": "https://assistance.free.fr/articles/953",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-subscribe-20261008",
-    "url": "https://assistance.free.fr/articles/887",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-shop-20261008",
-    "url": "https://assistance.free.fr/articles/1739",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-esim-20261008",
-    "url": "https://assistance.free.fr/articles/968",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-vowifi-20261008",
-    "url": "https://assistance.free.fr/articles/1236",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-recover-20261008",
-    "url": "https://assistance.free.fr/articles/1730",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-borne-20261008",
-    "url": "https://assistance.free.fr/articles/888",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-official-travel-20261008",
-    "url": "https://mobile.free.fr/communications-a-l-etranger",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "free-fr-community-asia-20261008",
-    "url": "https://www.reddit.com/r/france/comments/11ru9ar",
-    "type": "community",
-    "reportedAt": "2023-03-15"
-  },
-  {
-    "id": "free-fr-community-africa-20261008",
-    "url": "https://www.reddit.com/r/AskFrance/comments/1p082sk/free_mobile_comment_contacter_lassistance/",
-    "type": "community",
-    "reportedAt": "2025-11-18"
-  },
-  {
-    "id": "good2go-ca-crtc-rogers-port-20260818",
-    "url": "https://crtc.gc.ca/eng/archive/2026/2026-211.htm",
-    "type": "regulator-official",
-    "reportedAt": "2026-08-18"
-  },
-  {
-    "id": "good2go-ca-provider-terms-20261008",
-    "url": "https://good2gomobile.ca/pdfs/service-terms-and-conditions-good2go.pdf",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "good2go-ca-provider-activation-20261008",
-    "url": "https://good2gomobile.ca/support/activation-account-support",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "good2go-ca-provider-data-settings-20261008",
-    "url": "https://good2gomobile.ca/support/data-settings",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "good2go-ca-provider-catalog-20261008",
-    "url": "https://good2gomobile.ca/support/plans",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "good2go-ca-provider-porting-20261008",
-    "url": "https://good2gomobile.ca/support/number-portability",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "good2go-ca-reddit-january-20260109",
-    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1q8a63i/anyone_still_with_good2go_mobile_in_2026/",
-    "type": "community",
-    "reportedAt": "2026-01-09"
-  },
-  {
-    "id": "good2go-ca-reddit-march-20260303",
-    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1rjxf91/whats_going_on_with_good2go/",
-    "type": "community",
-    "reportedAt": "2026-03-03"
-  },
-  {
-    "id": "good2go-ca-reddit-old-payg-20250731",
-    "url": "https://www.reddit.com/r/askTO/comments/1mdmoms/cheapest_possible_payasyougo_cell_plan/",
-    "type": "community",
-    "reportedAt": "2025-07-31"
-  },
-  {
-    "id": "good2go-ca-reddit-migration-20250804",
-    "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
-    "type": "community",
-    "reportedAt": "2025-08-04"
-  },
-  {
-    "id": "o2-classic-tariff-terms-20261008",
-    "url": "https://www.o2.co.uk/termsandconditions/mobile/our-pay-as-you-go-tariff-terms",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-classic-rates-20261008",
-    "url": "https://www.o2.co.uk/termsandconditions/mobile/pay-as-you-go-classic-tariff-standard-rates",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-current-plans-20261008",
-    "url": "https://www.o2.co.uk/help/products-and-services/pay-as-you-go/pay-as-you-go-plans",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-topup-uk-bank-20261008",
-    "url": "https://www.o2.co.uk/help/account/billing-and-usage/topping-up-pay-as-you-go-balance",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-esim-eligibility-20261008",
-    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/esim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-sim-activation-20261008",
-    "url": "https://www.o2.co.uk/help/phones-and-devices/sims-and-numbers/your-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-wifi-calling-geofence-20261008",
-    "url": "https://www.o2.co.uk/help/international-and-network/wifi/wifi-4g-and-5g-calling",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-roaming-20261008",
-    "url": "https://www.o2.co.uk/help/international-and-network/using-your-phone-abroad/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "o2-classic-forum-disconnected-20241111",
-    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/PAYG-sim-disconnected/td-p/1762471",
-    "type": "community-report",
-    "reportedAt": "2024-11-11"
-  },
-  {
-    "id": "o2-classic-forum-legacy-user-20250216",
-    "url": "https://community.o2.co.uk/t5/Discussions-Feedback/O2-SENT-ME-A-TEXT-ON-07-02-2025-WARNING-ME-ABOUT-UPCOMING-3G-AND/td-p/1781447",
-    "type": "community-report",
-    "reportedAt": "2025-02-16"
-  },
-  {
-    "id": "o2-classic-forum-bpi-disruption-20251202",
-    "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Pay-As-You-Go-BPI-Subscription/td-p/1820257",
-    "type": "community-report",
-    "reportedAt": "2025-12-02"
-  },
-  {
-    "id": "singtel-hi-passport-tourist-tnc-20261008",
-    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist/tnc",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-tourist-product-20261008",
-    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-hi-faq-20261008",
-    "url": "https://www.singtel.com/personal/products-services/mobile/hi/faq",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-prepaid-support-20261008",
-    "url": "https://www.singtel.com/personal/support/prepaid-cards",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-hi-current-terms-20261008",
-    "url": "https://www.singtel.com/personal/products-services/mobile/hi/hi-terms-and-conditions",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-hi-roaming-20261008",
-    "url": "https://www.singtel.com/personal/products-services/mobile/hi/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-tourist-20241113",
-    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1gqebkd/psa_singtel_tourist_esim_100gb_no_longer_offers/",
-    "type": "independent-community",
-    "reportedAt": "2024-11-13"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-tourist-20251210",
-    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1piymzz/question_about_singtel_tourist_sim_card/",
-    "type": "independent-community",
-    "reportedAt": "2025-12-10"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-foreign-activation-20260724",
-    "url": "https://www.reddit.com/r/eSIMs/comments/1v5fnoy/singtel_tourist_esim_activation_outside_singapore/",
-    "type": "independent-community",
-    "reportedAt": "2026-07-24"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-passport-verification-20250115",
-    "url": "https://www.reddit.com/r/askSingapore/comments/1i1lqxn/help_with_a_singtel_tourist_esim/",
-    "type": "independent-community",
-    "reportedAt": "2025-01-15"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-overseas-3g-20250401",
-    "url": "https://www.reddit.com/r/askSingapore/comments/1joy1y0/overseas_singaporeans_who_kept_singapore_number/",
-    "type": "independent-community",
-    "reportedAt": "2025-04-01"
-  },
-  {
-    "id": "singtel-hi-passport-reddit-reassigned-20260423",
-    "url": "https://www.reddit.com/r/asksg/comments/1stwz62/singtel_sim_bought_at_the_airport_is_registered/",
-    "type": "independent-community",
-    "reportedAt": "2026-04-23"
-  },
-  {
-    "id": "truemove-jaidee-ussd-20261008",
-    "url": "https://www.true.th/en/services/true-jaidee",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-number-retention-20261008",
-    "url": "https://www.true.th/en/help/mobile/network/prepaid-number-retention-service",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-tourist-terms-20261008",
-    "url": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-prepaid-roaming-20261008",
-    "url": "https://www.true.th/en/international/roaming",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-prepaid-registration-20261008",
-    "url": "https://www.true.th/en/help/mobile/settings/how-to-register-sim",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-document-update-20261008",
-    "url": "https://www.true.th/help/update-sim-registration",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-prepaid-catalog-20261008",
-    "url": "https://www.true.th/prepaid",
-    "type": "provider-official",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "truemove-specphone-validity-20260114",
-    "url": "https://specphone.com/web/how-to-buy-day-from-truemove-h-2026/363617",
-    "type": "independent-publication",
-    "reportedAt": "2026-01-14"
-  },
-  {
-    "id": "truemove-reddit-roaming-outage-20260303",
-    "url": "https://www.reddit.com/r/ThailandTourism/comments/1rjiftt/true_move_sim_abroad_no_signal/",
-    "type": "independent-community",
-    "reportedAt": "2026-03-03"
-  },
-  {
-    "id": "truemove-reddit-otp-us-20250411",
-    "url": "https://www.reddit.com/r/Thailand/comments/1jwea8u",
-    "type": "independent-community",
-    "reportedAt": "2025-04-11"
-  },
-  {
-    "id": "truemove-reddit-number-retention-20260618",
-    "url": "https://www.reddit.com/r/Thailand/comments/1u91vya/the_cheapest_way_to_keep_your_thai_phone_number/",
-    "type": "independent-community",
-    "reportedAt": "2026-06-18"
-  },
-  {
-    "id": "turkcell-btk-2026-ik-thd-125-text-20260511",
-    "url": "https://www.lexpera.com.tr/resmi-gazete/metin/7571-sayili-kanun-ehk-50-8-9-10-ve-gecici-8-inci-madde-kapsaminda-ikincil-duzenleme-tadili",
-    "type": "regulatory-republication",
-    "reportedAt": "2026-05-11"
-  },
-  {
-    "id": "turkcell-prepaid-lifecycle-200tl-20261008",
-    "url": "https://www.turkcell.com.tr/destek/hattiniz/hazirkart/en-son-hangi-tarihe-kadar-tl-yuklersem-hatttimi-kullanmaya-devam-edebilirim",
-    "type": "provider-official-adjacent-product",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "turkcell-prepaid-radio-tax-20261008",
-    "url": "https://www.turkcell.com.tr/destek/hattiniz/hazirkart/telsiz-kullanim-ucreti",
-    "type": "provider-official-adjacent-product",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "turkcell-roaming-packets-20261008",
-    "url": "https://www.turkcell.com.tr/paket-ve-tarifeler/yurt-disinda-kullanim",
-    "type": "provider-official-adjacent-product",
-    "reportedAt": "2026-10-08"
-  },
-  {
-    "id": "turkcell-tourist-shops-mixed-20260519",
-    "url": "https://www.reddit.com/r/AskTurkey/comments/1ti3yxb/local_sim_card_for_tourist/",
-    "type": "independent-community",
-    "reportedAt": "2026-05-19"
-  },
-  {
-    "id": "turkcell-tourist-recent-price-20260921",
-    "url": "https://www.reddit.com/r/AskTurkey/comments/1wlx819/visiting_for_holiday/",
-    "type": "independent-community",
-    "reportedAt": "2026-09-21"
-  },
-  {
-    "id": "turkcell-overseas-sms-wificalling-20260131",
-    "url": "https://www.reddit.com/r/AskTurkey/comments/1qs98tv/my_turkcell_sim_is_no_longer_receiving_sms_abroad/",
-    "type": "independent-community-adjacent-product",
-    "reportedAt": "2026-01-31"
-  },
-  {
-    "id": "turkcell-overseas-paygo-no-signal-20260224",
-    "url": "https://www.reddit.com/r/AskTurkey/comments/1rdtf9b/turkcell_sim/",
-    "type": "independent-community-adjacent-product",
-    "reportedAt": "2026-02-24"
-  },
-  {
-    "id": "turkcell-foreign-imei-restriction-20260818",
-    "url": "https://www.reddit.com/r/AskTurkey/comments/1vrmg45/turkcell_sim_card_foreign_phone/",
-    "type": "independent-community-adjacent-hardware",
-    "reportedAt": "2026-08-18"
-  },
-  {
-    "id": "viettel-official-offshore-biometric-and-dre-20260617",
-    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/cung-viettel-roaming-xac-thuc-sim-chinh-chu-tai-nuoc-ngoai/16655608",
-    "type": "provider-official",
-    "reportedAt": "2026-06-17"
-  },
-  {
-    "id": "viettel-official-device-change-2h-20260615",
-    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/thong-bao-quan-trong-quy-dinh-bat-buoc-xac-thuc-lai-khuon-mat-khi-thay-doi-dien-thoai-ap-dung-tu-15062026/19138832",
-    "type": "provider-official",
-    "reportedAt": "2026-06-15"
-  },
-  {
-    "id": "viettel-official-tammi-esim-cccd-20260630",
-    "url": "https://www.vietteltelecom.vn/tin-tuc/chi-tiet/huong-dan-chi-tiet-5-buoc-doi-esim-tren-viettel-tammi-cuc-don-gian/18477972",
-    "type": "provider-official",
-    "reportedAt": "2026-06-30"
-  },
-  {
-    "id": "viettel-official-tammi-transition-20260917",
-    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/tam-biet-my-viettel-bat-dau-hanh-trinh-moi-cung-viettel-tammi/12026648",
-    "type": "provider-official",
-    "reportedAt": "2026-09-17"
-  },
-  {
-    "id": "viettel-official-dre-lowcost-roaming-20260211",
-    "url": "https://www.vietteltelecom.vn/index.php/tin-tuc/chi-tiet/giu-so-dien-thoai-duy-tri-nhan-otp-khi-ra-nuoc-ngoai-voi-goi-roaming-dre-viettel/10001728",
-    "type": "provider-official-adjacent-package",
-    "reportedAt": "2026-02-11"
-  },
-  {
-    "id": "viettel-community-vtvang-foreign-esim-20260620",
-    "url": "https://www.reddit.com/r/VietNam/comments/1uanyyb/can_you_transfer_a_physical_viettel_sim_on_iphone/",
-    "type": "independent-community",
-    "reportedAt": "2026-06-20"
-  },
-  {
-    "id": "viettel-community-roaming-keep-sms-20260214",
-    "url": "https://www.reddit.com/r/VietNam/comments/1r4ahsb/how_to_keep_viettel_sim_card_active_while_overseas/",
-    "type": "independent-community",
-    "reportedAt": "2026-02-14"
-  },
-  {
-    "id": "viettel-community-passport-kyc-failures-20260618",
-    "url": "https://www.reddit.com/r/VietNam/comments/1u9bou0/anyone_experience_this_with_viettel/",
-    "type": "independent-community",
-    "reportedAt": "2026-06-18"
-  },
-  {
-    "id": "viettel-community-passport-esim-web-failure-20260729",
-    "url": "https://www.reddit.com/r/VietNam/comments/1v9mal4/cant_buy_a_viettel_tourist_esim_because_passport/",
-    "type": "independent-community-adjacent-tourist",
-    "reportedAt": "2026-07-29"
-  },
-  {
-    "id": "viettel-community-overseas-existing-sim-20260811",
-    "url": "https://www.reddit.com/r/VietNam/comments/1vldy7m/viettel_esim_active_for_future_trips/",
-    "type": "independent-community",
-    "reportedAt": "2026-08-11"
-  },
-  {
-    "id": "viettel-community-airport-registration-20260815",
-    "url": "https://www.reddit.com/r/VietNam/comments/1vorgc8/warning_for_people_travelling_to_vietnam/",
-    "type": "independent-community-adjacent-tourist",
-    "reportedAt": "2026-08-15"
   }
 ]
