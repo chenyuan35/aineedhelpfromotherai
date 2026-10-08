@@ -1743,13 +1743,13 @@
     },
     {
       "routeId": "viettel-vtvang-keepnumber-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "VND",
       "acquisitionCostOriginal": null,
       "acquisitionCostCny": null,
       "keepCurrency": "VND",
-      "keepYearCostOriginal": 50000,
+      "keepYearCostOriginal": null,
       "keepYearCostCny": null,
       "keepIntervalDays": 365
     },
