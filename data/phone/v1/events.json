@@ -2374,5 +2374,104 @@
     "scope": "route",
     "outcome": "A November-December 2025 O2 forum thread contains two existing Classic lines still shown as Classic and other users reporting account relabeling, auto-top-up loss and calls abroad failing; mixed tariffs, not proof Classic-wide roaming failure.",
     "sourceId": "o2-classic-forum-bpi-disruption-20251202"
+  },
+  {
+    "id": "evt-singtel-passport-current-price-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "current-tourist-pricing",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Singtel-authorised Tourist tariff shows S$15/30-day and S$30/30-day variants; S$10/7-day is separate. The former S$12 offer is not the currently verified public 30-day baseline.",
+    "sourceId": "singtel-hi-passport-tourist-tnc-20261008"
+  },
+  {
+    "id": "evt-singtel-passport-data-only-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "passport-data-only-registration",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Singtel tourist page explicitly limits passport-registered SIMs of all forms to data-only, and tourist eSIM likewise data-only. Headline bundled calls/SMS in a plan table do not override registration-specific policy.",
+    "sourceId": "singtel-hi-passport-tourist-product-20261008"
+  },
+  {
+    "id": "evt-singtel-passport-30day-re-registration-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "passport-identity-expiry",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "After 30 days passport registration suspends, regardless of plan topups/addons; must re-register in 30 days with Singapore-issued identity/work pass. Tourist page says re-registration can convert to postpaid. Do not model 30-day bundle renewal as number-preserving.",
+    "sourceId": "singtel-hi-passport-tourist-tnc-20261008"
+  },
+  {
+    "id": "evt-singtel-passport-china-roaming-not-otp-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "data-roaming-not-sms",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "China is a data-roaming destination in S$15 and higher tourist plans. Terms expressly separate data bundles from SMS/voice availability; no China inbound bank/app OTP promise.",
+    "sourceId": "singtel-hi-passport-tourist-tnc-20261008"
+  },
+  {
+    "id": "evt-singtel-passport-general-prepaid-sms-3g-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "regular-prepaid-3g-dependency",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "For generic Singtel prepaid (NOT tourist passport SIM), help says incoming overseas SMS still depends on 3G availability, and outgoing roaming SMS is unsupported. Do not transfer to passport tourist data-only service.",
+    "sourceId": "singtel-hi-passport-prepaid-support-20261008"
+  },
+  {
+    "id": "evt-singtel-passport-reddit-esim-no-sms-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-tourist-esim-failure",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Nov 2024 tourist eSIM user reports visible +65 number but no calls/SMS or hi!App OTP; 2025 follow-up likewise reports lack of voice/text, corroborating restriction, not all future variants.",
+    "sourceId": "singtel-hi-passport-reddit-tourist-20241113"
+  },
+  {
+    "id": "evt-singtel-passport-reddit-app-otp-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-app-login-failure",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Jan 2026 follow-up on a Dec 2025 tourist eSIM reports hi!App unusable because login demands SMS OTP unavailable on data-only eSIM. Specific hi!App failure, not an invented bank OTP success percentage.",
+    "sourceId": "singtel-hi-passport-reddit-tourist-20251210"
+  },
+  {
+    "id": "evt-singtel-passport-reddit-foreign-esim-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-remote-activation-claim",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "July 2026 Reddit author quotes Singtel support email suggesting eKYC passport-only data activation in Malaysia before entering Singapore; seller attribution remains unverified and does not prove China-first voice/SMS.",
+    "sourceId": "singtel-hi-passport-reddit-foreign-activation-20260724"
+  },
+  {
+    "id": "evt-singtel-passport-reddit-kyc-failure-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-passport-verification-friction",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "January 2025 tourist eSIM buyer reports passport recognition/eKYC failure and difficult support; reply recommends in-person Singtel store. One incident, no aggregate rejection rate.",
+    "sourceId": "singtel-hi-passport-reddit-passport-verification-20250115"
+  },
+  {
+    "id": "evt-singtel-passport-reddit-3g-sms-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-regular-prepaid-3g-limitation",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "April 2025 non-tourist Singtel prepaid holder says support confirmed UK incoming SMS requires 3G; second-user Australia claim. Adjacent regular-prepaid continuity concern; does not establish China tourist-SIM OTP.",
+    "sourceId": "singtel-hi-passport-reddit-overseas-3g-20250401"
+  },
+  {
+    "id": "evt-singtel-passport-number-reuse-20261008",
+    "routeId": "singtel-hi-prepaid-passport-30d-2026",
+    "type": "independent-assigned-number-risk",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "April 2026 tourist airport SIM buyer reports a newly assigned number was already linked to another person's WhatsApp and could not complete code login. Anecdotal number-recycling/account-conflict evidence, not proof of original owner or carrier failure rate.",
+    "sourceId": "singtel-hi-passport-reddit-reassigned-20260423"
   }
 ]

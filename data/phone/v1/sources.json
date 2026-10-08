@@ -5009,5 +5009,77 @@
     "url": "https://community.o2.co.uk/t5/Pay-As-You-Go/Pay-As-You-Go-BPI-Subscription/td-p/1820257",
     "type": "community-report",
     "reportedAt": "2025-12-02"
+  },
+  {
+    "id": "singtel-hi-passport-tourist-tnc-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist/tnc",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-tourist-product-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/prepaid-plans/hi-tourist",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-hi-faq-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/faq",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-prepaid-support-20261008",
+    "url": "https://www.singtel.com/personal/support/prepaid-cards",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-hi-current-terms-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/hi-terms-and-conditions",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-hi-roaming-20261008",
+    "url": "https://www.singtel.com/personal/products-services/mobile/hi/roaming",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-tourist-20241113",
+    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1gqebkd/psa_singtel_tourist_esim_100gb_no_longer_offers/",
+    "type": "independent-community",
+    "reportedAt": "2024-11-13"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-tourist-20251210",
+    "url": "https://www.reddit.com/r/SingaporeTravel/comments/1piymzz/question_about_singtel_tourist_sim_card/",
+    "type": "independent-community",
+    "reportedAt": "2025-12-10"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-foreign-activation-20260724",
+    "url": "https://www.reddit.com/r/eSIMs/comments/1v5fnoy/singtel_tourist_esim_activation_outside_singapore/",
+    "type": "independent-community",
+    "reportedAt": "2026-07-24"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-passport-verification-20250115",
+    "url": "https://www.reddit.com/r/askSingapore/comments/1i1lqxn/help_with_a_singtel_tourist_esim/",
+    "type": "independent-community",
+    "reportedAt": "2025-01-15"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-overseas-3g-20250401",
+    "url": "https://www.reddit.com/r/askSingapore/comments/1joy1y0/overseas_singaporeans_who_kept_singapore_number/",
+    "type": "independent-community",
+    "reportedAt": "2025-04-01"
+  },
+  {
+    "id": "singtel-hi-passport-reddit-reassigned-20260423",
+    "url": "https://www.reddit.com/r/asksg/comments/1stwz62/singtel_sim_bought_at_the_airport_is_registered/",
+    "type": "independent-community",
+    "reportedAt": "2026-04-23"
   }
 ]
