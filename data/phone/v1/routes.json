@@ -3220,11 +3220,17 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-28",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
     "sourceIds": [
       "official-callya-faq-via-prepaid-deutschland-2025-08",
-      "official-vodafone-prepaid-hilfe-2026-09-26"
+      "official-vodafone-prepaid-hilfe-2026-09-26",
+      "vodafone-callya-classic-20261008",
+      "vodafone-callya-registration-20261008",
+      "vodafone-callya-roaming397-20261008",
+      "vodafone-callya-travel-esim-20261008",
+      "community-callya-prearrival-20260715",
+      "community-callya-classic-charges-20260318"
     ]
   },
   {
