@@ -229,14 +229,25 @@
     "displayName": "ASDA Mobile PAYG",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical",
+    "form": "physical; existing-number eSIM conversion documented",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://mobile.asda.com/support/topping-up",
+    "lastVerifiedAt": "2026-10-08",
+    "acquireUrl": "https://mobile.asda.com/order-free-sim",
     "sourceIds": [
       "asda-support-20260929",
-      "asda-terms-20260929"
+      "asda-terms-20260929",
+      "asda-payg-price-book-sep2025",
+      "asda-payg-expiry-faq-20261008",
+      "asda-payg-emergency-reactivation-faq-20261008",
+      "asda-payg-uk-card-restriction-20261008",
+      "asda-payg-activation-uk-network-20261008",
+      "asda-payg-esim-change-faq-20261008",
+      "asda-payg-roaming-price-china-20261008",
+      "asda-payg-free-sim-order-20261008",
+      "asda-ukfrugal-2026-active-text-20260322",
+      "asda-ukfrugal-2025-topup-experience-20250608",
+      "asda-askuk-2022-grace-report-20220607"
     ]
   },
   {
