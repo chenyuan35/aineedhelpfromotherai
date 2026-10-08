@@ -1840,11 +1840,21 @@
     "form": "physical + eSIM",
     "surfaceState": "backstage-only",
     "evidenceState": "admitted",
-    "lastVerifiedAt": "2026-09-29",
-    "acquireUrl": "https://mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
+    "lastVerifiedAt": "2026-10-08",
+    "acquireUrl": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/sohranyayu-nomer",
     "sourceIds": [
       "mts-keep-number-product-2026-09-29",
-      "mts-long-inactivity-support-2026-09-29"
+      "mts-long-inactivity-support-2026-09-29",
+      "mts-keep-current-20261008",
+      "mts-foreign-kyc-20260206",
+      "mts-esim-new-20261008",
+      "mts-esim-activate-20261008",
+      "mts-roaming-20261008",
+      "mts-sms-quarantine-20261007",
+      "mts-topup-20260806",
+      "mts-number-forever-archive-20261008",
+      "mts-forum-30day-20260613",
+      "mts-forum-roaming-sms-20240820"
     ]
   },
   {

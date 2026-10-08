@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 754 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 764 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -321,9 +321,16 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - PR **#418** squash-merged as `1c0e44d7b90e8924306286ee58b75d8d63f77e2d`; CI **#310 PASS**, Eval Gate **#1232 PASS**, Vercel Preview PASS, and post-merge Vercel production status **success**.
 - Maintenance record: `docs/PHONE_MTN_NG_MAINTENANCE_2026-10-08.md`.
 
+## JUST COMPLETED — MTS Russia retention maintenance
+
+- `mts-sokhranyayu-nomer-2026` remains `admitted` + `backstage-only`: 2 → 12 sources, no public page or OTP percentage. The current RUB349/6-month add-on auto-renews if funded; the ordinary no-fee RUB1.5/day/30-day inactivity clock is separate.
+- Foreign KYC/Gosuslugi/biometrics, Russia-only first eSIM activation, payment limitations, conditional 24-hour SMS restrictions and adjacent independent roaming complaints are explicit. Archived one-time Номер навсегда remains unverified for current sale.
+- Phone corpus: **754 → 764 sources**; **160 canonical routes / 135 comparison / 3 indexable / 31 sitemap** unchanged.
+- Ledger: `docs/PHONE_MTS_RU_MAINTENANCE_2026-10-08.md`.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate bounded route:** `mts-sokhranyayu-nomer-2026`. It remains an admitted/backstage route with only two canonical sources. Reconcile the current retention product and pricing, inactivity/recycling lifecycle, acquisition/SIM/KYC/activation boundaries, payment path and overseas SMS/OTP evidence before any recommendation or service-specific reliability claim.
+1. **Immediate bounded route:** `o2-cz-prepaid-2026`. Reconcile current O2 Czech prepaid cost, validity/renewal, KYC, SIM/eSIM, activation, overseas SMS and independent service evidence.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -341,8 +348,8 @@ Work this backlog **one bounded route per session**. It is maintenance, not coun
 After the immediate MTN task, deepen the remaining admitted routes with only two canonical sources:
 
 1. `mtn-ng-keepmynumber-2026` — **DONE 2026-10-08**; 2 → 9 sources, current lifecycle/eSIM/KYC/continuity reconciled.
-2. `mts-sokhranyayu-nomer-2026` — current immediate task.
-3. `o2-cz-prepaid-2026`.
+2. `mts-sokhranyayu-nomer-2026` — **DONE 2026-10-08**; 2 → 12 sources.
+3. `o2-cz-prepaid-2026` — next immediate task.
 
 Done condition per route: current provider-controlled economics/lifecycle/eligibility reconciled; activation/KYC/eSIM/payment/roaming-SMS boundaries explicit; independent operational evidence added when making real-world continuity/OTP claims; generated artifacts and regression checks pass.
 
