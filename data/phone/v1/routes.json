@@ -1074,19 +1074,29 @@
   {
     "id": "good2go-payg-ca-2026",
     "marketId": "ca",
-    "networkId": "rogers-ca",
+    "networkId": null,
     "brandId": "good2go-ca",
-    "displayName": "Good2Go Mobile Canada",
+    "displayName": "Good2Go Mobile Canada (post-2025 migration)",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical",
+    "form": "physical; eSIM availability unverified",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://good2gomobile.ca/",
     "sourceIds": [
       "good2go-home-20260929",
-      "petro-legacy-expiry-history-20120401"
+      "petro-legacy-expiry-history-20120401",
+      "good2go-ca-crtc-rogers-port-20260818",
+      "good2go-ca-provider-terms-20261008",
+      "good2go-ca-provider-activation-20261008",
+      "good2go-ca-provider-data-settings-20261008",
+      "good2go-ca-provider-catalog-20261008",
+      "good2go-ca-provider-porting-20261008",
+      "good2go-ca-reddit-january-20260109",
+      "good2go-ca-reddit-march-20260303",
+      "good2go-ca-reddit-old-payg-20250731",
+      "good2go-ca-reddit-migration-20250804"
     ]
   },
   {

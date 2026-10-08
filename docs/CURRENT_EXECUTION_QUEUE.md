@@ -7,7 +7,7 @@ Last updated: 2026-10-08
 ## Current decision
 
 1. **Phone Radar remains the active primary growth product.**
-2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 814 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
+2. **Backend coverage target is met:** 160 canonical routes / 87 markets / 157 brands / 117 networks / 824 sources; current known evidence-qualified relevant atomic-route coverage is **160/160** after the reviewed Red Pocket eBay product split exposed one previously conflated distinct atomic route. This is not a census of every worldwide carrier SKU.
 3. **Backend ↔ frontend integration is released.** PR #370 / `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a` established generated `phone-route-summaries.json` plus lazy `phone-route-data/<id>.json`; the current finder now carries all 160 canonical rows.
 4. **Uncertainty remains explicit.** HOLD and needs-reconciliation rows are queryable evidence, not confident recommendations; admitted rows rank ahead of unresolved states. Known same-product legacy aliases are suppressed from duplicate market rendering.
 5. **Publication remains separate:** 135 historical comparison routes / 3 explicit indexable route pages / 31 sitemap URLs. PR #370 created no new SEO URL or sitemap entry.
@@ -368,9 +368,16 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Added 12 sources and eight route events; route source depth 2 → 14. Canonical 160 routes / 87 markets / 157 brands / 117 networks / 814 sources; public 135 comparison / 3 indexable / 31 sitemap unchanged. Remains HOLD/backstage-only. Ledger `docs/PHONE_FREE_MOBILE_FR_MAINTENANCE_2026-10-08.md`.
 - PR #430 squash-merged as `d3d488b9f4456934e2ec2b244f56d0973604f5b9`; CI #324 / run `37732262068` **PASS**, Eval Gate #1259 / run `37732261900` **PASS**, Vercel Preview `dpl_FgFLKbHchqBJZg9yZcvJbZGY4QHe` **READY**, production `dpl_3DBBPXggDvouQ3LqR8MTBLEbgHGj` **READY** on exact merged main SHA and `aineedhelpfromotherai.com` alias assigned. Independent direct live HTTP reading of JSON/sitemap was blocked by external reader; it is not claimed as verified.
 
+## RELEASE PENDING — Good2Go Canada post-migration maintenance
+
+- `good2go-payg-ca-2026` remains **HOLD/backstage-only**. Historical CAD20/180-day Petro-style PAYG is not a current plan. Official terms require an active paid plan, allow 30-day to annual plan lengths depending on selection, and cancel/deactivate after 90 days without an active plan; exact current signup/renewal price unknown because Good2Go's catalog is still updating.
+- CRTC 2026-211 documents termination of the former Rogers reseller arrangement. Current Telus APN does not safely determine the current underlying network, so the old Rogers mapping is explicitly unlinked. Provider says overseas-first activation is unavailable; eSIM new sale, China roaming SMS and bank OTP remain unverified. Independent Jan/Mar 2026 reports document service, balance and number access failures after migration.
+- Added 10 reviewed sources and nine events, canonical **160 routes / 87 markets / 157 brands / 117 networks / 824 sources**, public **135 comparison / 3 indexable / 31 sitemap** unchanged. No app success rate or new SEO URL. Ledger `docs/PHONE_GOOD2GO_CA_MAINTENANCE_2026-10-08.md`.
+- CI, Eval Gate, Vercel Preview, merge and exact-SHA production verification pending.
+
 ## NEXT — continue database maintenance, no invented expansion
 
-1. **Immediate next bounded route:** `good2go-payg-ca-2026` (Wave B HOLD), reconcile current Canadian PAYG economics/lifecycle, purchase/payment/eSIM and foreign SMS evidence. Keep unproven areas unknown; one route, one session.
+1. **Immediate action:** finish Good2Go Canada PR/CI/Eval/Preview, merge and production checks. **Then next separate route:** `o2-uk-classic-payg-6mo-2026` (Wave B HOLD); validate current availability and retention without assuming historical PAYG remains for sale.
 2. **Search Console gate:** publication remains held until the explicit measurement gate is met; database maintenance continues independently.
 3. **Database expansion:** current known evidence-qualified atomic universe is 160/160; reopen only when review exposes another genuinely distinct product/route. Do not create DB-C24 merely to raise counts.
 4. **Data-eSIM:** keep append-only community intake separate from Phone-number canonical.
@@ -395,7 +402,7 @@ Done condition per route: current provider-controlled economics/lifecycle/eligib
 
 ### Wave B — HOLD routes with only 1–2 sources
 
-First eligible: `good2go-payg-ca-2026` (one bounded route per session; Free FR production READY).
+First eligible after Good2Go Canada release: `o2-uk-classic-payg-6mo-2026` (one bounded route per session).
 
 Maintain in evidence-value order rather than country-completion order:
 
@@ -403,7 +410,7 @@ Maintain in evidence-value order rather than country-completion order:
 - `claro-pre-br-90d-2026` — **DONE / RELEASED 2026-10-08**, 1 → 13 sources, R$35/90-day and prepaid roaming unavailable, remains HOLD.
 - `asda-mobile-uk-2026` — **DONE / RELEASED 2026-10-08**, 2 → 13 sources, dual 180-day trigger, UK-only card funding restriction, still HOLD.
 - `free-mobile-fr-2026` — **DONE / RELEASED 2026-10-08**, 2 → 14 sources, €2 recurring and one-time Voyage advance reconciled; remains HOLD.
-- `good2go-payg-ca-2026`
+- `good2go-payg-ca-2026` — **DATA UPDATED 2026-10-08 / RELEASE PENDING**, 2 → 12 sources, PAYG discontinuity/current plan and 90-day loss reconciled, network host unknown, remains HOLD.
 - `o2-uk-classic-payg-6mo-2026`
 - `singtel-hi-prepaid-passport-30d-2026`
 - `truemove-validity-pack-th-2026`

@@ -289,7 +289,7 @@
   },
   {
     "id": "good2go-ca",
-    "networkId": "rogers-ca",
+    "networkId": null,
     "name": "Good2Go Mobile Canada",
     "marketId": "ca"
   },

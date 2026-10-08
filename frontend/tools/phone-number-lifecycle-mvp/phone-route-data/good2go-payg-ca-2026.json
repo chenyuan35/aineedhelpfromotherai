@@ -3,19 +3,29 @@
   "route": {
     "id": "good2go-payg-ca-2026",
     "marketId": "ca",
-    "networkId": "rogers-ca",
+    "networkId": null,
     "brandId": "good2go-ca",
-    "displayName": "Good2Go Mobile Canada",
+    "displayName": "Good2Go Mobile Canada (post-2025 migration)",
     "family": "long-term",
     "numberClass": "real-mobile",
-    "form": "physical",
+    "form": "physical; eSIM availability unverified",
     "surfaceState": "backstage-only",
     "evidenceState": "hold",
-    "lastVerifiedAt": "2026-09-29",
+    "lastVerifiedAt": "2026-10-08",
     "acquireUrl": "https://good2gomobile.ca/",
     "sourceIds": [
       "good2go-home-20260929",
-      "petro-legacy-expiry-history-20120401"
+      "petro-legacy-expiry-history-20120401",
+      "good2go-ca-crtc-rogers-port-20260818",
+      "good2go-ca-provider-terms-20261008",
+      "good2go-ca-provider-activation-20261008",
+      "good2go-ca-provider-data-settings-20261008",
+      "good2go-ca-provider-catalog-20261008",
+      "good2go-ca-provider-porting-20261008",
+      "good2go-ca-reddit-january-20260109",
+      "good2go-ca-reddit-march-20260303",
+      "good2go-ca-reddit-old-payg-20250731",
+      "good2go-ca-reddit-migration-20250804"
     ]
   },
   "market": {
@@ -23,24 +33,20 @@
     "name": "Canada",
     "countryCode": "CA"
   },
-  "network": {
-    "id": "rogers-ca",
-    "name": "Rogers Canada",
-    "marketId": "ca"
-  },
+  "network": null,
   "brand": {
     "id": "good2go-ca",
-    "networkId": "rogers-ca",
+    "networkId": null,
     "name": "Good2Go Mobile Canada",
     "marketId": "ca"
   },
   "metrics": {
     "routeId": "good2go-payg-ca-2026",
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-08",
     "metricState": "current-profile",
     "acquisitionCurrency": "CAD",
-    "acquisitionCostOriginal": 30,
-    "acquisitionCostCny": 159,
+    "acquisitionCostOriginal": null,
+    "acquisitionCostCny": null,
     "keepCurrency": "CAD",
     "keepYearCostOriginal": null,
     "keepYearCostCny": null,
@@ -60,6 +66,66 @@
       "url": "https://www.howardforums.com/threads/recommend-a-good-pay-as-you-go-service-with-long-expiration-period.1742764/",
       "type": "independent-community",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "good2go-ca-crtc-rogers-port-20260818",
+      "url": "https://crtc.gc.ca/eng/archive/2026/2026-211.htm",
+      "type": "regulator-official",
+      "reportedAt": "2026-08-18"
+    },
+    {
+      "id": "good2go-ca-provider-terms-20261008",
+      "url": "https://good2gomobile.ca/pdfs/service-terms-and-conditions-good2go.pdf",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "good2go-ca-provider-activation-20261008",
+      "url": "https://good2gomobile.ca/support/activation-account-support",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "good2go-ca-provider-data-settings-20261008",
+      "url": "https://good2gomobile.ca/support/data-settings",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "good2go-ca-provider-catalog-20261008",
+      "url": "https://good2gomobile.ca/support/plans",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "good2go-ca-provider-porting-20261008",
+      "url": "https://good2gomobile.ca/support/number-portability",
+      "type": "provider-official",
+      "reportedAt": "2026-10-08"
+    },
+    {
+      "id": "good2go-ca-reddit-january-20260109",
+      "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1q8a63i/anyone_still_with_good2go_mobile_in_2026/",
+      "type": "community",
+      "reportedAt": "2026-01-09"
+    },
+    {
+      "id": "good2go-ca-reddit-march-20260303",
+      "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1rjxf91/whats_going_on_with_good2go/",
+      "type": "community",
+      "reportedAt": "2026-03-03"
+    },
+    {
+      "id": "good2go-ca-reddit-old-payg-20250731",
+      "url": "https://www.reddit.com/r/askTO/comments/1mdmoms/cheapest_possible_payasyougo_cell_plan/",
+      "type": "community",
+      "reportedAt": "2025-07-31"
+    },
+    {
+      "id": "good2go-ca-reddit-migration-20250804",
+      "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
+      "type": "community",
+      "reportedAt": "2025-08-04"
     }
   ],
   "observations": [],
@@ -72,6 +138,87 @@
       "scope": "route",
       "outcome": "The legacy $20/180-day mechanism traces to old Petro-Canada-era evidence and is not supported by a current Good2Go provider rule in this audit; post-network-transition structure remains unresolved.",
       "sourceId": "good2go-home-20260929"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-regulator-transition-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "network-migration-and-porting",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "CRTC Decision 2026-211 documents Ztar's Rogers resale discontinuation/porting access dispute. Historical Rogers host mapping is not proof of the active post-2025 SIM network; current Good2Go APN uses Telus SP.",
+      "sourceId": "good2go-ca-crtc-rogers-port-20260818"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-plan-lifecycle-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "prepaid-plan-and-number-loss",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Official current terms require active prepaid plan; 30-day to one-year plan terms depend on selected plan, renewal requires enough balance, and 90 days without any active plan leads to deactivation/number loss. This is not an old $20/180-day cash voucher expiry mechanism.",
+      "sourceId": "good2go-ca-provider-terms-20261008"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-price-unverified-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "current-price-catalog-gap",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Provider plan catalog explicitly says it is updating; a current new-activation plan price and SIM fee cannot be confirmed, despite migrated users mentioning CAD19 monthly.",
+      "sourceId": "good2go-ca-provider-catalog-20261008"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-remote-activation-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "service-activation-friction",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Free/remote China-first activation is not established: Good2Go FAQ specifically says a customer abroad must return to Canada to activate the SIM.",
+      "sourceId": "good2go-ca-provider-activation-20261008"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-topup-not-expiry-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "prepaid-voucher-vs-plan-renewal",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Provider lists voucher values $15-$100, a $150/rolling-30-day online top-up limit and $900 cap; voucher value does not encode prepaid plan lifecycle or make older PAYG validity current.",
+      "sourceId": "good2go-ca-provider-activation-20261008"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-roaming-condition-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "conditional-roaming-unknown-china",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "Provider allows roaming on prepaid only subject to active underlying-network agreements and compatibility; no exact China partner or incoming-SMS/app OTP entitlement proven.",
+      "sourceId": "good2go-ca-provider-terms-20261008"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-january-outage-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "community-operational-failure",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "January 2026 Canadian users reported Christmas-period service/account access failures after migration, and support calls ending without resolution. This is a bounded user report, not a universal outage rate.",
+      "sourceId": "good2go-ca-reddit-january-20260109"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-march-balance-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "community-credit-and-number-loss-incident",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "March 2026 migrated users reported legacy CAD350-500 balances suddenly displayed as zero after CAD19 monthly renewals, customer service unreachable and one reported number going out of service; unverified individually and not universal.",
+      "sourceId": "good2go-ca-reddit-march-20260303"
+    },
+    {
+      "id": "evt-good2go-payg-ca-2026-historical-payg-20261008",
+      "routeId": "good2go-payg-ca-2026",
+      "type": "legacy-product-discontinuity",
+      "reportedAt": "2026-10-08",
+      "scope": "route",
+      "outcome": "July 2025 users reported they were being removed from old $25/120-day PAYG credit plan. Historic Petro-style $20/180-day or $25/120-day credit expiry must not be represented as active current Good2Go offer.",
+      "sourceId": "good2go-ca-reddit-old-payg-20250731"
     }
   ],
   "snapshots": [
@@ -79,50 +226,60 @@
       "id": "snap-good2go-payg-ca-2026-current-profile-20260929",
       "routeId": "good2go-payg-ca-2026",
       "kind": "current-profile",
-      "checkedAt": "2026-09-29",
-      "sourceDataset": "db-c3-reviewed-2026-09-29",
+      "checkedAt": "2026-10-08",
+      "sourceDataset": "good2go-post-2025-migration-reviewed-20261008",
       "data": {
         "id": "good2go-payg-ca-2026",
         "brandId": "good2go-ca",
         "publishState": "observation",
         "numberType": "real-mobile",
-        "simType": "physical",
-        "acquisitionSummary": "Good2Go Mobile (formerly Petro-Canada Mobility / Ztar), Rogers network. PAYG vouchers sold at Petro-Canada stations; SIM kits online. Long-standing PAYG tradition: $20 voucher = 180 days validity.",
+        "simType": "Physical SIM; eSIM mentioned in terms but current issuance unverified",
+        "acquisitionSummary": "Current Good2Go Canada is a post-2025 network-migrated prepaid-plan product. Historical Petro-Canada/Good2Go pay-per-use $20/180-day vouchers are discontinued or non-applicable to current signup; no verified new-line checkout/SIM fee or mandatory initial plan price in the provider's updating catalog. Current carrier cannot be assigned from the stale Rogers label; official APN says sp.telus.com, but host mapping and active SIM cohort require further verification.",
         "landedCost": {
           "currency": "CAD",
-          "providerOrCommunityPrice": 10,
-          "mandatoryTopup": 20,
-          "shipping": 0,
+          "providerOrCommunityPrice": null,
+          "mandatoryTopup": null,
+          "shipping": null,
           "adapterCostCny": null,
-          "landedOriginal": 30,
-          "landedCny": 159,
-          "fxCheckedAt": "2026-09-27",
-          "state": "community-estimated"
+          "landedOriginal": null,
+          "landedCny": null,
+          "fxCheckedAt": null,
+          "state": "current-acquisition-price-not-published"
         },
         "keep": {
           "currency": "CAD",
           "observedActionCost": null,
           "yearCostOriginal": null,
           "yearCostCny": null,
-          "action": "Do not rely on the historical $20/180-day top-up rule until current Good2Go terms confirm it.",
+          "action": "An active paid plan is required. Official terms describe prepaid plans generally lasting 30 days or up to 1 year depending on plan selected, renewing with enough funded credit; loss of active plan suspends service and 90 further days without an active plan results in deactivation/number loss. A 2026 migrated customer reported CAD19 per 30-day plan, but current new-sale plan price is absent from provider catalog; do not model $20/180-day vouchers.",
           "intervalDays": null,
-          "state": "historical-mechanic-unverified-current"
+          "state": "active-plan-required-price-and-eligible-term-unverified"
         },
-        "chinaActivation": "Canada activation required; China-first activation unverified.",
-        "kyc": "No ID check for PAYG.",
-        "payment": "Vouchers (cash-friendly) at Petro-Canada; online top-up via good2gomobile.ca.",
-        "wifiCalling": null,
-        "roamingSms": "No roaming on PAYG (Canada-only service historically).",
-        "refund": "not reconciled",
+        "chinaActivation": "Provider's activation FAQ expressly says activation while outside Canada is unavailable; return to Canada to activate. eSIM support in terms does not establish remote China-first issuance or activation.",
+        "kyc": "Activation can require subscriber name and contact details, while current verification documents, foreign-applicant eligibility and Canadian-address requirements were not independently established.",
+        "payment": "Good2Go's new site offers online account top-up; official account FAQ lists $15/$25/$30/$40/$50/$100 vouchers, online card funding limit CAD150 per rolling 30 days and max balance CAD900. Those are funding units, not a 180-day renewal promise. Foreign-issued-card/foreign billing address acceptance and legacy balance migration reliability are unverified.",
+        "wifiCalling": "No current route-specific confirmation that Wi-Fi Calling or SMS over Wi-Fi is provisioned on the migrated Canadian SIM; do not assume it works abroad.",
+        "roamingSms": "New provider terms describe conditional prepaid roaming only where the underlying carrier has compatible roaming agreements, but no confirmed China/overseas partner, incoming SMS entitlement or exact bank/app OTP performance is evidenced. Do not reuse historical Canada-only assertion as definitive current roaming policy.",
+        "refund": "Current Good2Go terms say prepaid service credits are non-refundable; CRTC 2026 decision and independent users document transition/porting disputes. Do not promise old balance refund or successful port rescue.",
         "trend": "watch",
         "guideEligible": false,
-        "holdReason": "Current provider-controlled PAYG expiry/top-up rule was not located; historical evidence is too stale for admission as a settled mechanic.",
-        "lastVerifiedAt": "2026-09-29",
+        "holdReason": "Legacy Petro/PAYG mechanics superseded by 2025 network migration and paid-plan conversion. Provider catalog is under revision, exact new-sale plan/SIM price and host network not confirmed; 2026 account/porting/balance loss complaints create material continuity risk. First activation abroad unavailable; China SMS/OTP unverified.",
+        "lastVerifiedAt": "2026-10-08",
         "acquireUrl": "https://good2gomobile.ca/",
-        "tariffSummary": "PAYG $20/180d voucher tradition (community); needs current re-verification.",
+        "tariffSummary": "Historical $20/180-day PAYG no longer supported as a current product. Current provider terms require an active paid plan (30-day or other eligible term) and deactivation after 90 days without one; new acquisition and exact current plan price unknown. Migrated users report CAD19/month but it is not a verified new-sale tariff.",
         "sourceIds": [
           "good2go-home-20260929",
-          "petro-legacy-expiry-history-20120401"
+          "petro-legacy-expiry-history-20120401",
+          "good2go-ca-crtc-rogers-port-20260818",
+          "good2go-ca-provider-terms-20261008",
+          "good2go-ca-provider-activation-20261008",
+          "good2go-ca-provider-data-settings-20261008",
+          "good2go-ca-provider-catalog-20261008",
+          "good2go-ca-provider-porting-20261008",
+          "good2go-ca-reddit-january-20260109",
+          "good2go-ca-reddit-march-20260303",
+          "good2go-ca-reddit-old-payg-20250731",
+          "good2go-ca-reddit-migration-20250804"
         ],
         "marketName": "Canada"
       }
