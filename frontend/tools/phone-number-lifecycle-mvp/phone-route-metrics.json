@@ -135,13 +135,13 @@
     },
     {
       "routeId": "asda-mobile-uk-2026",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "GBP",
       "acquisitionCostOriginal": 5,
-      "acquisitionCostCny": 46.5,
+      "acquisitionCostCny": null,
       "keepCurrency": "GBP",
-      "keepYearCostOriginal": null,
+      "keepYearCostOriginal": 10,
       "keepYearCostCny": null,
       "keepIntervalDays": 180
     },

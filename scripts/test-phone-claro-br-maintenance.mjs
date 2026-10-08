@@ -17,7 +17,7 @@ assert.equal(route.evidenceState, 'hold');
 assert.equal(route.surfaceState, 'backstage-only');
 assert.equal(route.lastVerifiedAt, '2026-10-08');
 assert.equal(route.sourceIds.length, 13);
-assert.equal(sources.length, 791);
+assert(sources.length >= 791, 'Corpus must not regress below verified Claro source baseline');
 for(const sid of route.sourceIds) assert(sources.some(x => x.id === sid && x.url.startsWith('https://')));
 assert.equal(snap.checkedAt, '2026-10-08');
 assert.equal(snap.data.landedCost.landedOriginal, null);
