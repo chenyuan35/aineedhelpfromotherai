@@ -264,6 +264,48 @@
     "reportedAt": "2026-09-29"
   },
   {
+    "id": "callya-computerbase-china-legacy-billing-20200204",
+    "url": "https://www.computerbase.de/forum/threads/vodafone-callya-fast-30-euro-kosten-im-ausland-wo-liegt-der-fehler.1922562/",
+    "type": "community-report",
+    "reportedAt": "2020-02-04"
+  },
+  {
+    "id": "callya-tt-22922-parking-20260311",
+    "url": "https://www.telefon-treff.de/forum/thread/532195-vodafone-callya-thread-digital-15gb-light-7-5gb-11-21-03-22-12-21-5g-07-22-neue/?postID=10291557",
+    "type": "community-report",
+    "reportedAt": "2026-03-11"
+  },
+  {
+    "id": "callya-tt-legacy-long-lived-20250902",
+    "url": "https://www.telefon-treff.de/forum/thread/532195-vodafone-callya-thread-digital-15gb-light-7-5gb-11-21-03-22-12-21-5g-07-22-neue/?pageNo=824",
+    "type": "community-report",
+    "reportedAt": "2025-09-02"
+  },
+  {
+    "id": "callya-vf-22922-overseas-cost-20260203",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Buchungs-Code-f%C3%BCr-Option-w%C3%A4hrend-im-ausl-Roaming/td-p/3307283",
+    "type": "community-report",
+    "reportedAt": "2026-02-03"
+  },
+  {
+    "id": "callya-vf-classic-china-deactivated-20260820",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/CallYa-eSIM-wegen-Inaktivit%C3%A4t-deaktiviert-Reaktivierung-aus-dem/m-p/3351301/highlight/true",
+    "type": "community-report",
+    "reportedAt": "2026-08-20"
+  },
+  {
+    "id": "callya-vf-classic-esim-account-link-20260827",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Wie-verkn%C3%BCpfe-ich-meine-Callya-eSIM-mit-meinem-Konto/m-p/3352445",
+    "type": "community-report",
+    "reportedAt": "2026-08-27"
+  },
+  {
+    "id": "callya-vf-legacy-deactivation-20240312",
+    "url": "https://forum.vodafone.de/t5/Ohne-Vertrag-Prepaid-Tarife/Callya-Karte-deaktiviert/td-p/3152892",
+    "type": "community-report",
+    "reportedAt": "2024-03-12"
+  },
+  {
     "id": "celcomdigi-kuning-20260929",
     "url": "https://help.celcomdigi.com/en/support/solutions/articles/70000660913-faq-celcomdigi-prepaid-5g-kuning-reload-and-validity",
     "type": "provider-official",

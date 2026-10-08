@@ -12319,5 +12319,74 @@
       ],
       "avoidRoute": true
     }
+  },
+  {
+    "id": "snap-vodafone-callya-current-community-20261008",
+    "routeId": "vodafone-callya-90d-2026",
+    "kind": "current-profile",
+    "checkedAt": "2026-10-08",
+    "sourceDataset": "callya-community-reviewed-2026-10-08",
+    "data": {
+      "id": "vodafone-callya-90d-2026",
+      "brandId": "vodafone-callya",
+      "publishState": "observation",
+      "numberType": "real-mobile",
+      "simType": "physical + eSIM",
+      "acquisitionSummary": "Current CallYa Classic remains an advertised no-basic-fee PAYG real-mobile SIM/eSIM: physical SIM and shipping free, eSIM issuance free, domestic 9c/min or standard SMS and 3c/MB. German identity verification mandatory. The provider may terminate after >90 days without use, but gives warning SMS and four weeks to object; this is NOT an obligatory EUR5 top-up every 90 days.",
+      "landedCost": {
+        "currency": "EUR",
+        "providerOrCommunityPrice": 0,
+        "mandatoryTopup": null,
+        "shipping": 0,
+        "adapterCostCny": null,
+        "landedOriginal": 0,
+        "landedCny": 0,
+        "fxCheckedAt": null,
+        "state": "official-free-sim-esim-and-shipping-conditional-on-successful-id-and-checkout"
+      },
+      "keep": {
+        "currency": "EUR",
+        "observedActionCost": null,
+        "yearCostOriginal": null,
+        "yearCostCny": null,
+        "action": "CallYa is indefinite in principle; Vodafone MAY terminate after more than 90 days without USE. Warning SMS starts a FOUR-WEEK objection opportunity before the line is blocked; customer may request remaining credit. Official Classic domestic outgoing standard SMS is EUR0.09 and usage can incur fees, but neither that domestic price nor a suggested EUR5 refill proves a guaranteed quarterly retention action for a line in China. No provider-mandated EUR20/year top-up exists in the reviewed rule. Check line status and respond to any warning rather than assuming automatic renewal. Independent German users report 22922 domestic account-server calls may preserve some parked CallYa SIMs, but overseas 22922 calls are reportedly chargeable and neither China roaming recognition nor official qualification is established. A distinct 2026 China-based CallYa Classic eSIM user actually reports inactivity deactivation: a successful EUR5 top-up AFTER suspension did not restore SMS or number service. No verified guaranteed annual keep action exists.",
+        "intervalDays": 90,
+        "state": "provider-possible-inactivity-termination-no-proven-fixed-keep-spend"
+      },
+      "chinaActivation": "CallYa eSIM can be ordered and emailed after provider identity verification, which offers passport Video-Ident and Auto-ID; a Germany address is requested. One July 2026 traveller reported US pre-arrival CallYa M eSIM provisioning, but this adjacent tariff report does NOT establish universal passport eligibility, every payment method, or China-first activation of CallYa Classic.",
+      "kyc": "Required: German prepaid identity registration, including name, address, date of birth and accepted passport/ID identification via Video-Ident, Auto-ID, eID or Postident. Foreign-passport/document-method outcome is provider/identity-partner dependent; one prearrival CallYa M success is not universal.",
+      "payment": "Vodafone lists online prepaid refill, MeinVodafone, voucher/CallNow, bank transfer and some bank-machine methods. Autopay can require eligible European bank payment per one July 2026 traveller. An exact minimum per direct top-up, foreign-card eligibility and a compulsory quarterly recharge are NOT established.",
+      "wifiCalling": "CallYa Classic lists Wi-Fi Calling. Availability/use outside Germany and ability to preserve an inactive line through Wi-Fi Calling alone are not established.",
+      "roamingSms": "Vodafone 2026 InfoDok 397 lists China in zone 3 and standard incoming SMS abroad free for roaming-registered CallYa service, subject to network/device attachment. No independently confirmed CallYa Classic mainland-China bank/app OTP receipt or reliability, and free incoming texts are NOT confirmed to count as billable anti-inactivity use. One China-based 2026 CallYa Classic eSIM subscriber reports NO SMS reception AFTER inactivity deactivation, despite a later top-up. This is evidence of number-disconnection/recovery failure, NOT evidence that normal active-line inbound roaming SMS is unavailable. No exact China bank-app OTP observation is established.",
+      "refund": "Vodafone says remaining CallYa credit may be paid back after expiry of the four-week objection window and block; no guarantee of number recovery after block.",
+      "trend": "watch",
+      "guideEligible": false,
+      "holdReason": "No validated fixed annual keep-number spend or guaranteed overseas qualifying-use action; foreign identity/China-first activation and named bank/app OTP remain unverified. Provider right to terminate after >90 days inactivity with SMS/four-week objection is not a hard automatic day-90 shutdown. One exact-plan China-based user reports inactivity cutoff, failed post-cutoff EUR5 recharge reactivation, and bot/SMS/German callback loop preventing recovery. Domestic 22922 anecdotes and legacy multiyear survival cannot guarantee safe China retention.",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://www.vodafone.de/freikarten/callya/?tariff=classic",
+      "tariffSummary": "CallYa Classic has EUR0 basic fee and domestic 9c SMS/min; >90d inactivity MAY trigger provider termination, with warning SMS and 4-week objection; no validated EUR20/year mandatory recharge.",
+      "sourceIds": [
+        "official-callya-faq-via-prepaid-deutschland-2025-08",
+        "official-vodafone-prepaid-hilfe-2026-09-26",
+        "vodafone-callya-classic-20261008",
+        "vodafone-callya-registration-20261008",
+        "vodafone-callya-roaming397-20261008",
+        "vodafone-callya-travel-esim-20261008",
+        "community-callya-prearrival-20260715",
+        "community-callya-classic-charges-20260318",
+        "callya-tt-22922-parking-20260311",
+        "callya-vf-22922-overseas-cost-20260203",
+        "callya-tt-legacy-long-lived-20250902",
+        "callya-vf-legacy-deactivation-20240312",
+        "callya-vf-classic-china-deactivated-20260820",
+        "callya-vf-classic-esim-account-link-20260827",
+        "callya-computerbase-china-legacy-billing-20200204"
+      ],
+      "guideSteps": [
+        "Choose the advertised free CallYa Classic SIM/eSIM and complete identity verification; check that the intended document and payment path is accepted.",
+        "For number retention, check actual line activity/status before the 90-day provider inactivity trigger and object to a warning SMS within four weeks. Do not rely on an unverified EUR5/quarter rule or treat free inbound SMS as qualifying activity."
+      ],
+      "avoidRoute": true
+    }
   }
 ]

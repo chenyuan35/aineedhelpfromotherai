@@ -2788,5 +2788,86 @@
     "scope": "route",
     "outcome": "Vodafone's standing official CallYa help says service is unlimited-duration, but it MAY terminate after more than 90 days without use; warning SMS plus FOUR WEEKS to object before suspension, with refundable remaining balance. The policy does not impose EUR5/90d or EUR20/year mandatory recharges.",
     "sourceId": "official-vodafone-prepaid-hilfe-2026-09-26"
+  },
+  {
+    "id": "evt-callya-domestic-22922-parking-20260311",
+    "type": "independent-domestic-keep-action-report",
+    "reportedAt": "2026-03-11",
+    "scope": "route",
+    "outcome": "One experienced domestic CallYa holder reports keeping a parked SIM active by calling account server 22922 approximately every two months without recharging. Unverified qualifying-usage rule, not evidence of China roaming or a free overseas action.",
+    "sourceId": "callya-tt-22922-parking-20260311",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-overseas-22922-charge-20260203",
+    "type": "independent-foreign-calling-cost-warning",
+    "reportedAt": "2026-02-03",
+    "scope": "route",
+    "outcome": "Vodafone user-community participant says 22922 calls from abroad are charged, unlike domestic access. Exact China special-service rate and qualification as anti-inactivity usage unknown.",
+    "sourceId": "callya-vf-22922-overseas-cost-20260203",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-old-talk-sms-years-active-20250902",
+    "type": "independent-legacy-long-retention-report",
+    "reportedAt": "2025-09-02",
+    "scope": "adjacent-legacy-tariff",
+    "outcome": "An old CallYa Talk & SMS customer reports over two years without top-up or outgoing chargeable calls/SMS and no threatened shutdown; second participant separately reports long parked line. Not an entitlement for new CallYa Classic.",
+    "sourceId": "callya-tt-legacy-long-lived-20250902",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-older-number-lost-20240312",
+    "type": "independent-termination-incident",
+    "reportedAt": "2024-03-12",
+    "scope": "adjacent-older-callya",
+    "outcome": "One legacy CallYa user reports SIM/number deactivated following inactivity, inbound caller hears invalid number, and no warning SMS noticed. Exact duration, whether SMS sent and recovery outcome remain unknown.",
+    "sourceId": "callya-vf-legacy-deactivation-20240312",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-classic-esim-china-inactivity-lock-20260820",
+    "type": "independent-exact-tariff-number-deactivation",
+    "reportedAt": "2026-08-20",
+    "scope": "route",
+    "outcome": "A China-resident owner of CallYa Classic eSIM activated in Germany February 2026 reports inactivity deactivation and loss of inbound/outbound service after return to China. One user report, not an estimated provider-wide failure rate.",
+    "sourceId": "callya-vf-classic-china-deactivated-20260820",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-classic-china-postlock-topup-20260819",
+    "type": "independent-failed-postlock-recharge-recovery",
+    "reportedAt": "2026-08-20",
+    "scope": "route",
+    "outcome": "Same exact-tariff China-based user reports a EUR5 Google Pay top-up accepted on 19 Aug after line deactivation; the line remained unusable. Payment success does not establish restored validity/number reachability.",
+    "sourceId": "callya-vf-classic-china-deactivated-20260820",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-classic-china-remote-recovery-loop-20260821",
+    "type": "independent-offshore-recovery-friction",
+    "reportedAt": "2026-08-21",
+    "scope": "route",
+    "outcome": "Same CallYa Classic China-resident user reports bot/WhatsApp recovery requiring a reachable German callback number, line SMS or postal code; all unavailable after suspension and outside Germany. Outcome of support escalation unverified.",
+    "sourceId": "callya-vf-classic-china-deactivated-20260820",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-classic-esim-account-code-20260827",
+    "type": "independent-account-onboarding-friction",
+    "reportedAt": "2026-08-27",
+    "scope": "route",
+    "outcome": "An exact CallYa Classic eSIM holder reports confusing 15-character account-link activation code vs long eSIM QR setup credential. Forum workaround uses SMS/mobile-data login or postal activation code, difficult if eSIM already inactive abroad.",
+    "sourceId": "callya-vf-classic-esim-account-link-20260827",
+    "routeId": "vodafone-callya-90d-2026"
+  },
+  {
+    "id": "evt-callya-china-legacy-unexpected-charge-20200204",
+    "type": "independent-adjacent-foreign-billing-dispute",
+    "reportedAt": "2020-02-04",
+    "scope": "adjacent-legacy-tariff",
+    "outcome": "Older CallYa Smartphone Special / Talk & SMS user reports approximately EUR30 credit depletion in China while attempting inbound-SMS-only dual-SIM use. Cause and modern tariff applicability unverified.",
+    "sourceId": "callya-computerbase-china-legacy-billing-20200204",
+    "routeId": "vodafone-callya-90d-2026"
   }
 ]
