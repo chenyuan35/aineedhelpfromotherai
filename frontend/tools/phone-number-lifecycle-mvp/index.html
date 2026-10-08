@@ -92,6 +92,31 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
     @media(max-width:900px){.pr-card-main{grid-template-columns:1fr}.pr-actions{display:flex;justify-content:flex-start;min-width:0}.pr-actions a,.pr-actions button{min-width:105px}}
     @media(max-width:760px){.pr-matrix-wrap{display:none}.pr-dir-mobile{display:grid;gap:8px;padding:9px}.pr-directory-note{display:grid}.pr-directory-fx{white-space:normal}.pr-network-head{padding:9px}.pr-network-group{overflow:visible}}
     @media(max-width:620px){.pr-wrap{padding-top:18px}.pr-hero{grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "copy";gap:4px;margin-bottom:10px}.pr-hero h1{font-size:1.75rem;max-width:none}.pr-hero>p:last-child{font-size:.88rem;max-width:none}.pr-prompt{margin-top:12px}.pr-family{display:flex;overflow-x:auto;gap:8px;padding:0 0 4px;scroll-snap-type:x mandatory;scrollbar-width:none}.pr-family::-webkit-scrollbar{display:none}.pr-family button{flex:0 0 82%;min-height:68px;scroll-snap-align:start;padding:10px 11px}.pr-family-title{font-size:.9rem}.pr-family-purpose{font-size:.76rem}.pr-tools{justify-content:flex-start}.pr-filter{width:100%;justify-content:space-between}.pr-filter select{max-width:62%;min-width:0}.pr-card-main{padding:12px;gap:12px}.pr-id-head{align-items:center}.pr-status{max-width:125px}.pr-meta{margin-top:6px}.pr-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.pr-metric{padding:7px 6px}.pr-metric small{font-size:.58rem}.pr-metric strong{font-size:.78rem}.pr-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.pr-actions a,.pr-actions button{width:100%;min-width:0}.pr-warning{padding:8px 12px}.pr-guide{padding:14px 12px}.pr-guide-grid{grid-template-columns:1fr;gap:15px}.pr-guide-section.wide{grid-column:auto}}
+
+    /* Task-first shortlist: the canonical evidence index remains the only data source. */
+    .pr-task-finder{padding:15px;border:1px solid var(--line);background:var(--panel);border-radius:16px;margin:0 0 14px}
+    .pr-task-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+    .pr-task-head h2{font-size:1.07rem;margin:0 0 3px}.pr-task-head p{color:var(--muted);font-size:.78rem;line-height:1.45;margin:0;max-width:750px}
+    .pr-task-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 10px}
+    .pr-task-form label{font-size:.7rem;font-weight:800;color:var(--muted);display:grid;gap:4px;min-width:0}
+    .pr-task-form select{width:100%;min-width:0;height:36px;padding:0 9px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:inherit;font-size:.82rem}
+    .pr-task-summary{font-size:.79rem;line-height:1.5;padding:10px;border-radius:10px;background:var(--soft);margin:0 0 10px}
+    .pr-task-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr));gap:9px}
+    .pr-task-card{border:1px solid var(--line);border-radius:12px;padding:11px;min-width:0;background:var(--bg)}
+    .pr-task-card h3{font-size:.91rem;margin:0 0 4px}.pr-task-card p{font-size:.74rem;line-height:1.45;margin:5px 0;color:var(--muted)}
+    .pr-task-pill{display:inline-block;padding:3px 7px;margin-bottom:5px;border-radius:999px;background:var(--soft);font-size:.67rem;color:var(--ink);font-weight:800}
+    .pr-task-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin-top:7px}
+    .pr-task-metrics div{border:1px solid var(--line);border-radius:8px;padding:6px;font-size:.74rem;overflow-wrap:anywhere}
+    .pr-task-metrics small{display:block;font-size:.61rem;color:var(--muted);margin-bottom:2px}
+    .pr-task-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .pr-task-actions button,.pr-task-saved-controls button{border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font:inherit;font-size:.75rem;font-weight:800;min-height:34px;padding:5px 9px;cursor:pointer}
+    .pr-task-actions button:first-child{background:var(--ink);color:var(--bg)}
+    .pr-task-actions button[aria-pressed="true"]{border-color:var(--accent2)}
+    .pr-task-saved-controls{display:flex;gap:6px;flex-wrap:wrap}.pr-task-saved-controls button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+    .pr-task-note{color:var(--muted);font-size:.71rem;line-height:1.4;margin:9px 0 0}
+    .pr-task-finder[hidden]{display:none}
+    @media(max-width:720px){.pr-task-form{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-task-finder{padding:11px}.pr-task-results{grid-template-columns:1fr}}
+    @media(max-width:375px){.pr-task-form{grid-template-columns:1fr}}
   </style>
   <script id="theme-init">(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;const resolved=saved==='system'?(dark?'dark':'light'):saved;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=saved;}catch{}})();</script>
 </head>
@@ -119,6 +144,24 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
       <span class="pr-family-copy"><span class="pr-family-title">Receive a one-time code</span><span class="pr-family-purpose">Temporary SMS</span></span>
     </button>
   </div>
+
+
+  <section class="pr-task-finder" id="pr-task-finder" aria-labelledby="pr-task-title">
+    <div class="pr-task-head"><div><h2 id="pr-task-title">Find a number for your situation</h2><p>Compare a small evidence-screened shortlist. Unknown activation and SMS requirements remain unverified; this is not a guaranteed compatibility checker.</p></div><div class="pr-task-saved-controls"><button type="button" id="pr-task-saved" aria-pressed="false">Saved (0)</button><button type="button" id="pr-task-clear">Clear saved</button></div></div>
+    <div class="pr-task-form" role="group" aria-label="Optional number requirements">
+      <label for="pr-task-job">What is your task?<select id="pr-task-job"><option value="buy">Get a new real number</option><option value="verify">Get a number for app SMS</option><option value="keep">Keep / port my existing number</option></select></label>
+      <label for="pr-task-location">Where will you use it?<select id="pr-task-location"><option value="any">Location not specified</option><option value="china">Mainland China</option><option value="abroad">Outside number's country</option></select></label>
+      <label for="pr-task-market">Number's country / region<select id="pr-task-market"><option value="any">Any number origin</option></select></label>
+      <label for="pr-task-form">Form factor<select id="pr-task-form"><option value="any">SIM or eSIM</option><option value="esim">eSIM supported</option></select></label>
+      <label for="pr-task-service">Required verification<select id="pr-task-service"><option value="any">No specific app</option><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="openai">ChatGPT / OpenAI</option><option value="bank">Specific bank SMS (unverified)</option></select></label>
+      <label for="pr-task-start">Maximum known startup cost<select id="pr-task-start"><option value="any">No budget limit</option><option value="100">CNY 100</option><option value="300">CNY 300</option><option value="600">CNY 600</option></select></label>
+      <label for="pr-task-keep">Maximum known yearly keep cost<select id="pr-task-keep"><option value="any">No budget limit</option><option value="10">CNY 10</option><option value="25">CNY 25</option><option value="100">CNY 100</option><option value="300">CNY 300</option></select></label>
+    </div>
+    <p class="pr-task-summary" id="pr-task-summary" aria-live="polite">Checking verified number options…</p>
+    <div class="pr-task-results" id="pr-task-results" aria-live="polite"></div>
+    <section class="pr-guide pr-directory-guide" id="pr-task-detail" hidden aria-live="polite"></section>
+    <p class="pr-task-note">Prices are not a full first-year total unless explicitly modeled. A reported app SMS success does not prove that it will work for your account. Saved routes stay only in this browser; no account is required.</p>
+  </section>
 
   <div class="pr-tools">
     <input class="pr-search" id="route-search" type="search" autocomplete="off" placeholder="Search country, carrier or route" aria-label="Search phone routes">
@@ -153,7 +196,7 @@ const routeSearch=document.getElementById('route-search');
 const showMore=document.getElementById('show-more');
 const routeCount=document.getElementById('route-count');
 const keepFootnote=document.getElementById('keep-footnote');
-const state={family:'long-term',showAll:false,country:'all',query:'',dirSort:'evidence',details:false,pins:new Set()};
+const state={family:'long-term',showAll:false,country:'all',query:'',dirSort:'evidence',details:false,pins:new Set(),saved:new Set(),showSaved:false};
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
 function trackPhone(name,params={}){try{if(typeof globalThis.gtag==='function')globalThis.gtag('event',name,{source_path:'/tools/phone-number-survival-guide/',...params})}catch{}}
@@ -168,6 +211,7 @@ async function init(){
     for(const [id,patch] of Object.entries(source.additionalCapabilities||{})){routeCapabilities.routes[id]={...(routeCapabilities.routes[id]||{}),...patch}}
     for(const [id,patch] of Object.entries(source.routeInsights||source.routeInsightOverrides||{})){routeCapabilities.routes[id]={...(routeCapabilities.routes[id]||{}),...patch}}
   }
+  loadTaskSaved();
   bindControls();
   render();
 }
@@ -178,6 +222,7 @@ function bindControls(){
     document.querySelectorAll('[data-family]').forEach(x=>x.setAttribute('aria-selected',String(x===btn)));
     trackPhone('phone_family_select',{family:state.family});render();
   }));
+  bindTaskControls();
   countryFilter.addEventListener('change',()=>{state.country=countryFilter.value;state.showAll=false;trackPhone('phone_filter_change',{family:state.family,country:state.country});renderRoutes()});
   routeSearch.addEventListener('input',()=>{state.query=routeSearch.value.trim().toLowerCase();state.showAll=false;trackPhone('phone_search',{family:state.family,query_length:state.query.length});renderRoutes()});
   showMore.addEventListener('click',()=>{trackPhone('phone_show_more',{family:state.family,country:state.country});state.showAll=true;renderRoutes()});
@@ -231,7 +276,7 @@ function render(){
   const countries=[...new Set([...canonicalRows().map(x=>x.marketName),...viewEntries().map(x=>x.route.country)].filter(Boolean))].sort();
   countryFilter.innerHTML='<option value="all">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
   if(!countries.includes(state.country))state.country='all';
-  countryFilter.value=state.country;document.body.classList.toggle('is-directory',state.family==='long-term');renderRoutes();
+  countryFilter.value=state.country;document.body.classList.toggle('is-directory',state.family==='long-term');renderRoutes();renderTaskFinder();
 }
 function legacyEntryMatches(item,q){if(!q)return true;const text=[item.id,item.route?.name,item.route?.country,item.view?.coverage,item.view?.numberType,item.view?.caveat].filter(Boolean).join(' ').toLowerCase();return q.split(/\s+/).filter(Boolean).every(term=>text.includes(term))}
 function renderCuratedFamily(){
@@ -345,6 +390,59 @@ function canonicalStateLabel(r){if(r.evidenceState==='hold')return'Observation /
 function canonicalStateRank(r){return r.evidenceState==='admitted'?0:r.evidenceState==='hold'?1:r.evidenceState==='needs-reconciliation'?2:3}
 function canonicalSort(rows){const arr=[...rows];arr.sort((a,b)=>{const stateCmp=canonicalStateRank(a)-canonicalStateRank(b);if(stateCmp)return stateCmp;if(state.dirSort==='start-cost')return dirSortVal(indexMetric(a,'acquisitionCostCny'))-dirSortVal(indexMetric(b,'acquisitionCostCny'))||dirSortVal(indexMetric(a,'acquisitionCostOriginal'))-dirSortVal(indexMetric(b,'acquisitionCostOriginal'));if(state.dirSort==='keep-cost')return dirSortVal(indexMetric(a,'keepYearCostCny'))-dirSortVal(indexMetric(b,'keepYearCostCny'))||dirSortVal(indexMetric(a,'keepYearCostOriginal'))-dirSortVal(indexMetric(b,'keepYearCostOriginal'));return String(b.lastVerifiedAt||'').localeCompare(String(a.lastVerifiedAt||''))||String(a.displayName||a.id).localeCompare(String(b.displayName||b.id))});return arr}
 function indexCard(r){const m=r.metrics||{};const hold=r.evidenceState==='hold'||r.evidenceState==='needs-reconciliation';return `<article class="pr-dir-card"><div class="pr-dir-card-head"><div><h3>${esc(r.displayName||r.brandName||r.id)}</h3><span class="pr-route-sub">${esc(r.marketName||'')} · ${esc(r.networkName||'')} · ${esc(r.form||r.numberClass||'')}</span><div>${r.lastVerifiedAt?`<span class="pr-fresh fresh-mid">Checked ${esc(fmtDay(r.lastVerifiedAt))}</span>`:''}</div></div><span class="pr-dir-status" data-state="${hold?'hold':'candidate'}">${esc(canonicalStateLabel(r))}</span></div><div class="pr-dir-mobile-grid"><div class="pr-dir-mobile-metric"><small>Start</small><strong>${esc(indexCost(r))}</strong>${Number.isFinite(m.acquisitionCostCny)?`<span class="pr-cost-sub">${esc(cny(m.acquisitionCostCny))}</span>`:''}</div><div class="pr-dir-mobile-metric"><small>Keep / year</small><strong>${esc(indexKeep(r))}</strong>${Number.isFinite(m.keepIntervalDays)?`<span class="pr-cost-sub">act within ${m.keepIntervalDays}d</span>`:''}</div><div class="pr-dir-mobile-metric"><small>Evidence state</small><strong>${esc(r.evidenceState||'unknown')}</strong></div><div class="pr-dir-mobile-metric"><small>Surface</small><strong>${esc(r.surfaceState||'database')}</strong></div></div><div class="pr-dir-actions"><button type="button" data-index-route="${esc(r.id)}">Open evidence</button>${r.marketName?`<button type="button" data-market-open="${esc(r.marketName)}">Explore market</button>`:''}</div></article>`}
+
+const TASK_SAVED_KEY='phone-radar-shortlist-v1';
+const taskGet=id=>document.getElementById(id);
+const taskSelectIds=['pr-task-job','pr-task-location','pr-task-market','pr-task-form','pr-task-service','pr-task-start','pr-task-keep'];
+function taskEligible(r){return r.family==='long-term'&&r.numberClass==='real-mobile'&&r.evidenceState==='admitted'&&['public-legacy','public-pilot'].includes(r.surfaceState)}
+function taskServiceEvidence(r,service){return (r.serviceEvidence||[]).find(e=>String(e.serviceId||'').toLowerCase()===service&&Number(e.successCount)>0)||null}
+function taskMoney(r,key,cnKey){const original=indexMetric(r,key),currency=indexMetric(r,key==='acquisitionCostOriginal'?'acquisitionCurrency':'keepCurrency'),cn=indexMetric(r,cnKey);return Number.isFinite(original)?`${money(original,currency)}${Number.isFinite(cn)?` · ${cny(cn)}`:''}`:'Not established'}
+function taskCandidates(opts){
+  if(opts.job==='keep'||opts.service==='bank')return [];
+  let rows=(canonicalIndex?.routes||[]).filter(taskEligible);
+  if(opts.market!=='any')rows=rows.filter(r=>r.marketName===opts.market);
+  if(opts.form==='esim')rows=rows.filter(r=>/\besim\b/i.test(r.form||'')&&!/unverified|must be rechecked|data-only/i.test(r.form||''));
+  if(opts.service!=='any')rows=rows.filter(r=>taskServiceEvidence(r,opts.service));
+  for(const [key,metric] of [['start','acquisitionCostCny'],['keep','keepYearCostCny']]){
+    if(opts[key]!=='any'){const cap=Number(opts[key]);rows=rows.filter(r=>Number.isFinite(indexMetric(r,metric))&&indexMetric(r,metric)<=cap)}
+  }
+  if(state.showSaved)rows=rows.filter(r=>state.saved.has(r.id));
+  return canonicalSort(rows);
+}
+function taskOptions(){return Object.fromEntries(taskSelectIds.map(id=>[id.replace('pr-task-',''),taskGet(id).value]))}
+function loadTaskSaved(){try{const raw=JSON.parse(localStorage.getItem(TASK_SAVED_KEY)||'[]');if(Array.isArray(raw))state.saved=new Set(raw.filter(id=>typeof id==='string'&&(canonicalIndex?.routes||[]).some(r=>r.id===id&&taskEligible(r))))}catch{state.saved=new Set()}}
+function persistTaskSaved(){try{localStorage.setItem(TASK_SAVED_KEY,JSON.stringify([...state.saved]))}catch{}}
+function bindTaskControls(){
+  const origin=taskGet('pr-task-market');
+  const markets=[...new Set((canonicalIndex?.routes||[]).filter(r=>r.family==='long-term').map(r=>r.marketName).filter(Boolean))].sort();
+  origin.innerHTML='<option value="any">Any number origin</option>'+markets.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  for(const id of taskSelectIds)taskGet(id).addEventListener('change',renderTaskFinder);
+  taskGet('pr-task-saved').addEventListener('click',()=>{state.showSaved=!state.showSaved;renderTaskFinder()});
+  taskGet('pr-task-clear').addEventListener('click',()=>{state.saved.clear();persistTaskSaved();renderTaskFinder()});
+  taskGet('pr-task-results').addEventListener('click',event=>{
+    const saved=event.target.closest('[data-task-save]');if(saved){const id=saved.dataset.taskSave;const route=(canonicalIndex?.routes||[]).find(r=>r.id===id);if(!route||!taskEligible(route))return;if(state.saved.has(id))state.saved.delete(id);else state.saved.add(id);persistTaskSaved();renderTaskFinder();return}
+    const opened=event.target.closest('[data-task-open]');if(opened){openIndexedRoute(opened.dataset.taskOpen,'task')}
+  });
+}
+function renderTaskFinder(){
+  const panel=taskGet('pr-task-finder');panel.hidden=state.family!=='long-term';if(panel.hidden)return;
+  const opts=taskOptions(),matches=taskCandidates(opts),shown=matches.slice(0,5),out=taskGet('pr-task-results'),summary=taskGet('pr-task-summary');
+  taskGet('pr-task-saved').textContent=`Saved (${state.saved.size})`;
+  taskGet('pr-task-saved').setAttribute('aria-pressed',String(state.showSaved));
+  if(opts.job==='keep'){summary.textContent='Existing-number portability and retention cannot be validated from new-SIM offers. No verified port-in recommendation is available; browse route evidence below instead.'}
+  else if(opts.service==='bank'){summary.textContent='No bank-specific number/range, first-activation and SMS-delivery proof is normalized. No verified bank SMS match is available.'}
+  else if(!matches.length){summary.textContent='No evidence-eligible matches for these constraints. Unknown costs, unverified app outcomes and HOLD/backstage records are excluded; adjust your requirements or inspect the research directory below.'}
+  else{const loc=opts.location==='china'?'Mainland-China acquisition, first activation and roaming SMS are NOT established for these offers. ':opts.location==='abroad'?'Foreign first activation, KYC/payment and roaming SMS are NOT established for these offers. ':'';summary.textContent=`${matches.length} evidence-screened real-mobile option${matches.length===1?'':'s'} (${shown.length} shown). ${loc}An observed service success does not guarantee your future OTP; check detailed route evidence before buying.`}
+  out.innerHTML=shown.map(r=>{
+    const ev=opts.service==='any'?null:taskServiceEvidence(r,opts.service);
+    const kyc=r.decisionFacts?.kycState||'unknown';
+    const note=ev?`${esc(ev.serviceName||opts.service)}: ${esc(ev.label||ev.grade||'limited evidence')} · ${ev.sampleSize||0} reports, ${ev.independentSourceCount||0} distinct sources`:'App-specific verification: not selected / unverified';
+    const loc=opts.location==='any'?'Remote activation: not checked':'Remote first activation and SMS: unverified for your location';
+    return `<article class="pr-task-card" data-task-route="${esc(r.id)}"><span class="pr-task-pill">Evidence-screened · check setup</span><h3>${esc(r.displayName||r.brandName||r.id)}</h3><p>${esc(r.marketName||'Unknown market')} · ${esc(r.numberClass)} · ${esc(r.form||'Form unknown')}</p><div class="pr-task-metrics"><div><small>Start</small><strong>${esc(taskMoney(r,'acquisitionCostOriginal','acquisitionCostCny'))}</strong></div><div><small>Keep / year</small><strong>${esc(taskMoney(r,'keepYearCostOriginal','keepYearCostCny'))}</strong></div></div><p>${loc}; KYC: ${esc(kyc)}. Payment eligibility: unverified.</p><p>${note}</p><p>Continuity risk signals: ${r.decisionFacts?.continuityRiskSignalCount||0} · last checked ${esc(r.lastVerifiedAt||'unknown')}</p><div class="pr-task-actions"><button type="button" data-task-open="${esc(r.id)}">Inspect evidence</button><button type="button" data-task-save="${esc(r.id)}" aria-pressed="${state.saved.has(r.id)}">${state.saved.has(r.id)?'Saved ✓':'Save for later'}</button></div></article>`;
+  }).join('');
+  if(!matches.length)out.innerHTML='<div class="pr-empty">No verified matches. The research directory below includes routes that are not eligible for a recommendation.</div>';
+}
+
 function topEligibleRows(){return canonicalRows().filter(r=>r.family==='long-term'&&r.numberClass==='real-mobile'&&r.evidenceState==='admitted'&&r.surfaceState!=='backstage-only')}
 function leaderKyc(r){const state=r.decisionFacts?.kycState||'unknown';return state==='not-required'?'KYC not required':state==='required'?'KYC required':state==='unclear'?'KYC unclear':'KYC unknown'}
 function bestServiceEvidence(r){const rank={A:0,B:1,C:2,insufficient:3};return [...(r.serviceEvidence||[])].filter(x=>x.sampleSize>0).sort((a,b)=>Number(b.percentageEligible)-Number(a.percentageEligible)||(rank[a.grade]??9)-(rank[b.grade]??9)||(b.sampleSize||0)-(a.sampleSize||0)||String(b.lastObservedAt||'').localeCompare(String(a.lastObservedAt||'')))[0]||null}
@@ -366,9 +464,9 @@ function renderIndexSearch(){
 }
 function currentProfile(detail){return [...(detail.snapshots||[])].filter(x=>x.kind==='current-profile').sort((a,b)=>String(b.checkedAt||'').localeCompare(String(a.checkedAt||'')))[0]?.data||{}}
 function renderCanonicalDetail(detail,panel){const r=detail.route||{},d=currentProfile(detail),m=detail.metrics||{},brand=detail.brand?.name||r.displayName||r.id,network=detail.network?.name||'',market=detail.market?.name||'',hold=r.evidenceState==='hold'||r.evidenceState==='needs-reconciliation';const boundary=hold?`HOLD — unresolved constraints remain. This record is queryable evidence, not a recommendation.`:(r.surfaceState==='backstage-only'?`Backstage reviewed — useful for decision support, but not a recommendation or standalone SEO publication.`:`Reviewed route — publication remains governed separately.`);const start=Number.isFinite(m.acquisitionCostOriginal)?money(m.acquisitionCostOriginal,m.acquisitionCurrency):'Not established';const keep=Number.isFinite(m.keepYearCostOriginal)?`${money(m.keepYearCostOriginal,m.keepCurrency)} / yr`:'Not established';const steps=d.guideSteps||[];const events=detail.events||[];const sources=(detail.sources||[]).slice(0,8);const svc=(detail.serviceEvidence||[]).slice(0,8);panel.innerHTML=`<div class="pr-guide-head"><div><h2>${esc(brand)} — ${esc(market||'route')} evidence</h2><p>${esc(network)} · ${esc(r.form||'')} · ${esc(canonicalStateLabel(r))}</p></div><button class="pr-close" type="button" data-close-directory-guide aria-label="Close evidence">×</button></div><div class="pr-warning"><strong>Evidence boundary</strong>${esc(boundary)}${d.holdReason?` ${esc(d.holdReason)}`:''}</div><div class="pr-guide-grid"><section class="pr-guide-section"><h3>What it costs</h3><p>${esc(start)}. ${esc(d.tariffSummary||d.acquisitionSummary||'Current cost details are incomplete.')}</p></section><section class="pr-guide-section"><h3>Keep / validity</h3><p>${esc(keep)}. ${esc(d.keep?.action||'No settled keep-alive action is normalized.')}</p></section><section class="pr-guide-section"><h3>Requirements</h3><p>${esc(d.kyc||'Unknown')} ${esc(d.payment||'')}</p></section><section class="pr-guide-section"><h3>Use abroad / SMS</h3><p>${esc(d.chinaActivation||'Unknown')} ${esc(d.roamingSms||'')}</p></section><section class="pr-guide-section wide"><h3>Step by step</h3>${steps.length?`<ol>${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`:'<p>No execution guide is published for this record yet.</p>'}</section><section class="pr-guide-section wide"><h3>Service evidence</h3>${svc.length?`<ul>${svc.map(x=>`<li><strong>${esc(x.serviceId||'service')}</strong> · ${esc(x.label||x.grade||'evidence')} · n=${esc(x.sampleSize??0)}${x.lastObservedAt?` · ${esc(x.lastObservedAt)}`:''}</li>`).join('')}</ul>`:'<p>No normalized service-specific aggregate yet.</p>'}</section><section class="pr-guide-section wide"><h3>Continuity history</h3>${events.length?`<ul>${events.map(e=>`<li>${esc(e.reportedAt||'')} — ${esc(e.outcome||e.type||'')}</li>`).join('')}</ul>`:'<p>No normalized continuity event in the current packet.</p>'}</section><section class="pr-guide-section wide"><h3>Strongest current sources</h3>${sources.length?`<ul class="pr-source-list">${sources.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.reportedAt||'')} · ${esc(x.type||'source')}</a></li>`).join('')}</ul>`:'<p>No source link is available in this detail bundle.</p>'}</section></div>`;panel.dataset.route=r.id;panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'nearest'});trackPhone('phone_canonical_detail_open',{family:r.family||state.family,route:r.id,evidence_state:r.evidenceState||'unknown'})}
-async function openIndexedRoute(id){
+async function openIndexedRoute(id,source='directory'){
   const hit=(canonicalIndex?.routes||[]).find(r=>r.id===id);if(!hit)return;
-  let panel=document.getElementById('directory-guide-panel');if(!panel){routeList.insertAdjacentHTML('beforeend','<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>');panel=document.getElementById('directory-guide-panel')}
+  let panel=source==='task'?document.getElementById('pr-task-detail'):document.getElementById('directory-guide-panel');if(!panel){routeList.insertAdjacentHTML('beforeend','<section class="pr-guide pr-directory-guide" id="directory-guide-panel" hidden aria-live="polite"></section>');panel=document.getElementById('directory-guide-panel')}
   panel.hidden=false;panel.innerHTML='<p class="pr-loading">Loading route evidence…</p>';panel.scrollIntoView({behavior:'smooth',block:'nearest'});
   try{let detail=canonicalDetailCache.get(id);if(!detail){const response=await fetch(`./phone-route-data/${encodeURIComponent(id)}.json`,{cache:'no-store'});if(!response.ok)throw new Error('Route detail is temporarily unavailable.');detail=await response.json();canonicalDetailCache.set(id,detail)}renderCanonicalDetail(detail,panel)}catch(err){panel.innerHTML=`<div class="pr-error"><strong>Phone Radar could not load route evidence.</strong><p>${esc(err.message)}</p></div>`}
 }
