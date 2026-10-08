@@ -33,8 +33,12 @@ Telstra currently offers Pre-Paid roaming packs **AUD10/3 days, AUD15/7 days and
 
 Retained original source plus **8 new source records** and **5 route-level events**; **0 exact service observations**, `HOLD/backstage-only`. Canonical: **160 routes / 87 markets / 157 brands / 117 networks / 779 sources**. Public boundary remains **135 historical comparison / 3 indexable routes / 31 sitemap URLs**.
 
+## Released and verified
+
+PR #424 squash-merged as `45a493ef3d298d93e83c8be1b4b6645e3da83461`; CI #317 / run #37727084961 **PASS**; Eval Gate #1246 / run #37727084894 **PASS**; Vercel Preview `dpl_AnZaszg9z5XQ82tyW3H68t65jXSr` **READY**; production `dpl_28YFSRi1iy2LSmnwEQf8QzhFt5kh` **READY** at merged SHA with `aineedhelpfromotherai.com` assigned as alias. Public JSON HTTP response was not independently read, so no direct live-route/content/sitemap HTTP check is claimed.
+
 ## Verification / release gate
 
-Bounded regression `scripts/test-phone-telstra-casual-maintenance.mjs` is included in `npm run phone:data:check`; its acceptance conditions cover AUD74, 12 months, six-month rescue, source/event provenance, HOLD state, empty service observations, 160-route and 135/3 public boundary. Generated canonical search, summary, metric, detail and database bundle artifacts are committed together. Mark release complete only after CI/Eval Gate/Preview pass, merge and production check.
+Bounded regression `scripts/test-phone-telstra-casual-maintenance.mjs` is included in `npm run phone:data:check`; its acceptance conditions cover AUD74, 12 months, six-month rescue, source/event provenance, HOLD state, empty service observations, 160-route and 135/3 public boundary. Generated canonical search, summary, metric, detail and database bundle artifacts are committed together. Release was completed with CI/Eval Gate/Preview and production deployment readiness; direct public JSON HTTP audit remains unverified. The initial Eval Gate #1245 failed due to frozen legacy/current-profile parity conflict; regression now compares the unchanged historical review packet to the frozen legacy row and separately checks the corrected current canonical profile.
 
 Next independent Wave B HOLD route: `claro-pre-br-90d-2026`.
