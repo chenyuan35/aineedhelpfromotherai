@@ -327,6 +327,7 @@ PR #394 squash-merged as `459be509372d214a8f8cb4143eafa1be49664f37`.
 - Foreign KYC/Gosuslugi/biometrics, Russia-only first eSIM activation, payment limitations, conditional 24-hour SMS restrictions and adjacent independent roaming complaints are explicit. Archived one-time Номер навсегда remains unverified for current sale.
 - Phone corpus: **754 → 764 sources**; **160 canonical routes / 135 comparison / 3 indexable / 31 sitemap** unchanged.
 - Ledger: `docs/PHONE_MTS_RU_MAINTENANCE_2026-10-08.md`.
+- Release verification: PR **#420** squash-merged as `2b798504c5e89487e98a756be8cbf48355400c51`; CI run **#37714829212 PASS**, Eval Gate **#37714829243 PASS**, Vercel Preview **PASS**, production deployment `dpl_3tyvVTauFvvpk2ebEwNfKq6Qg6km` **READY** at the merged SHA. Live MTS detail **HTTP 200 / 12 sources / RUB698 annual keep**, summaries **HTTP 200 / 160 routes**, Phone hub **HTTP 200**, and standalone MTS route **HTTP 404**. Production remained non-indexable.
 
 ## NEXT — continue database maintenance, no invented expansion
 

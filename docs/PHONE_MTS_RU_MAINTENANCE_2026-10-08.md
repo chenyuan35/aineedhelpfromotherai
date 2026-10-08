@@ -34,3 +34,10 @@ Two earlier sources remain retained. Six newly appended route events distinguish
 ## Database and publication invariants
 
 Canonical **160 routes / 87 markets / 157 brands / 117 networks / 764 sources**, MTS route sources **2 → 12**. No service observations. Publication remains **135 comparison / 3 indexable / 31 sitemap URLs**. Check `npm run phone:data:check`, frontend build, Phone release audit, CI/Eval and Vercel Preview before merge. Next: `o2-cz-prepaid-2026`.
+
+## Release verification
+
+PR **#420** squash-merged as `2b798504c5e89487e98a756be8cbf48355400c51`; CI run **#37714829212 PASS**, Eval Gate **#37714829243 PASS**, Vercel Preview **PASS**, production deployment `dpl_3tyvVTauFvvpk2ebEwNfKq6Qg6km` **READY** at the merged SHA. Live MTS detail **HTTP 200 / 12 sources / RUB698 annual keep**, summaries **HTTP 200 / 160 routes**, Phone hub **HTTP 200**, and standalone MTS route **HTTP 404**. Production remained non-indexable.
+
+- The first Eval attempt failed because the prior MTN route-specific regression required the *global* source corpus to remain exactly 754. The bounded fix made that historical baseline monotonic and added a dedicated MTS regression test; the new head passed CI and Eval. No release was merged on the failing head.
+- No additional public pages, sitemap URLs, payment or account settings were changed.
