@@ -713,15 +713,15 @@
     "id": "snap-asda-mobile-uk-2026-current-profile-20260929",
     "routeId": "asda-mobile-uk-2026",
     "kind": "current-profile",
-    "checkedAt": "2026-09-29",
-    "sourceDataset": "db-c3-reviewed-2026-09-29",
+    "checkedAt": "2026-10-08",
+    "sourceDataset": "asda-uk-payg-maintenance-2026-10-08",
     "data": {
       "id": "asda-mobile-uk-2026",
       "brandId": "asda-mobile-uk",
       "publishState": "observation",
       "numberType": "real-mobile",
-      "simType": "physical",
-      "acquisitionSummary": "Free SIM from mobile.asda.com (UK delivery). PAYG rates 15p/min, 10p/text, 10p/MB on Vodafone network. 4G only unless spending >=£10/mo.",
+      "simType": "physical; eSIM conversion documented for existing customers",
+      "acquisitionSummary": "ASDA Mobile offers a UK-delivered free PAYG physical SIM; its current minimum standalone top-up is £5. £5/month bundles are distinct optional 1-month products and must not be treated as 180-day line retention. ASDA's physical PAYG SIM activates on first chargeable use on a supported UK network, and account linking requires an SMS activation code. Physical-to-eSIM conversion is advertised for existing customers; current first-sale PAYG eSIM and offshore-first activation are not established.",
       "landedCost": {
         "currency": "GBP",
         "providerOrCommunityPrice": 0,
@@ -729,36 +729,52 @@
         "shipping": 0,
         "adapterCostCny": null,
         "landedOriginal": 5,
-        "landedCny": 46.5,
-        "fxCheckedAt": "2026-09-27",
-        "state": "official-min-topup-5"
+        "landedCny": null,
+        "fxCheckedAt": null,
+        "state": "provider-free-uk-shipped-sim-and-minimum-5-topup-uk-card-or-retail"
       },
       "keep": {
         "currency": "GBP",
-        "observedActionCost": null,
-        "yearCostOriginal": null,
+        "observedActionCost": 5,
+        "yearCostOriginal": 10,
         "yearCostCny": null,
-        "action": "Use a chargeable call, text or data event within each 180-day period to keep the line fully active; separately, account credit is restricted after 180 days without a top-up or plan purchase and expires after a further 90 days. Exact cheapest sustainable cost remains unreconciled.",
+        "action": "ASDA's credit rule requires a top-up or bundle within 180 days of the prior one; minimum top-up £5 gives a £10 two-action funding illustration over 360 days, not a nonrefundable annual fee or guaranteed 365-day total. Another official reactivation FAQ requires a chargeable call or SMS every 180 days for active outbound service. There is no provider confirmation a text alone resets the recharge clock: safest assumption is BOTH timely recharge and chargeable activity. After 180 days without top-up, incoming calls/SMS may still work but outgoing is restricted; 90 further days without contacting ASDA and top-up may irretrievably lose number and balance.",
         "intervalDays": 180,
-        "state": "official-rules-conflict-needs-reconciliation"
+        "state": "official-two-180d-triggers-credit-and-chargeable-use-not-equivalent"
       },
-      "chinaActivation": "UK network activation expected; China-first activation unverified.",
-      "kyc": "No ID check for PAYG.",
-      "payment": "UK card / ASDA top-up card; international card acceptance unverified.",
-      "wifiCalling": null,
-      "roamingSms": "Receiving SMS abroad generally free on UK networks (unverified for ASDA specifics).",
-      "refund": "not reconciled",
-      "trend": "watch",
+      "chinaActivation": "Official physical PAYG activation requires first chargeable SIM use on the ASDA network in coverage and a received SMS code to link online account; UK-first setup should be assumed. China-first new-SIM and first eSIM activation have not been independently demonstrated.",
+      "kyc": "No general mandatory identity-document check described for ordinary UK physical PAYG activation in reviewed ASDA materials; online-account linkage requires an SMS code. International purchaser eligibility and any additional anti-fraud checks are unverified.",
+      "payment": "PAYG top-up via online/app, in-store credit, linked top-up card, phone or SMS. Official online card restriction: UK-address-registered Visa/Mastercard only. The existence of a foreign-issued UK-billing-address card path is unproven; ordinary foreign-address cards cannot be assumed eligible. UK retail top-up requires local access.",
+      "wifiCalling": "ASDA advertises Wi-Fi Calling, but activation, SMS-over-Wi-Fi and foreign location entitlement for this exact PAYG route have not been verified.",
+      "roamingSms": "Sept 2025 ASDA PAYG retail price book lists China under international roaming World Group 1 with £0.20/text sent to UK; this confirms published China roaming coverage, not actual SMS reception, bank OTP delivery, or cost of receiving SMS. Asda's terms state inbound SMS is free in the UK; overseas SMS charges may apply. Do not assume free incoming China SMS or exact bank/OTP reliability. Incoming calls and texts are documented only for the 180-day restricted state, conditional on network service.",
+      "refund": "Top-up credit and number may both be lost after 270 days of recharge inactivity; no refund guarantee established.",
+      "trend": "watch-dual-clock-and-uk-card",
       "guideEligible": false,
-      "holdReason": "Official activity and credit-expiry rules are both current, but the exact minimum sustainable retention cost is unresolved.",
-      "lastVerifiedAt": "2026-09-29",
-      "acquireUrl": "https://mobile.asda.com/",
-      "tariffSummary": "15p/min, 10p/text, 10p/MB. £5 top-up per 180 days = £10/yr retention.",
+      "holdReason": "HOLD: material conflict between two official 180-day triggers (chargeable use vs top-up/plan), overseas-first activation unproven, online top-up requires UK-registered card address, exact receiving SMS/OTP in China unobserved. Preserve £10/360 days only as funding illustration, not guaranteed yearly service spend.",
+      "lastVerifiedAt": "2026-10-08",
+      "acquireUrl": "https://mobile.asda.com/order-free-sim",
+      "tariffSummary": "Standard PAYG UK rates 15p/min, 10p/SMS, 10p/MB (Sept 2025 pricebook); minimum £5 recharge. 180-day recharge/plan AND 180-day chargeable-use warnings; £10 funding for two £5 actions over 360 days, not a proven annual fee.",
       "sourceIds": [
         "asda-support-20260929",
-        "asda-terms-20260929"
+        "asda-terms-20260929",
+        "asda-payg-price-book-sep2025",
+        "asda-payg-expiry-faq-20261008",
+        "asda-payg-emergency-reactivation-faq-20261008",
+        "asda-payg-uk-card-restriction-20261008",
+        "asda-payg-activation-uk-network-20261008",
+        "asda-payg-esim-change-faq-20261008",
+        "asda-payg-roaming-price-china-20261008",
+        "asda-payg-free-sim-order-20261008",
+        "asda-ukfrugal-2026-active-text-20260322",
+        "asda-ukfrugal-2025-topup-experience-20250608",
+        "asda-askuk-2022-grace-report-20220607"
       ],
-      "marketName": "United Kingdom"
+      "marketName": "United Kingdom",
+      "guideSteps": [
+        "Request a free UK-delivered physical PAYG SIM, activate with chargeable use in a supported UK-network area, and link My Account using received SMS.",
+        "Keep BOTH 180-day risk clocks in view: complete a £5-or-higher recharge or plan purchase and make a chargeable call/SMS; neither alone is proven to substitute for the other.",
+        "Before leaving the UK, establish a suitable UK-registered Visa/Mastercard or lawful local top-up channel and verify your actual destination's roaming service; do not depend on unobserved China banking OTP."
+      ]
     }
   },
   {
