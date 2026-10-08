@@ -1791,14 +1791,14 @@
     },
     {
       "routeId": "vodafone-callya-90d-2026",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-10-08",
       "metricState": "current-profile",
       "acquisitionCurrency": "EUR",
       "acquisitionCostOriginal": 0,
       "acquisitionCostCny": 0,
       "keepCurrency": "EUR",
-      "keepYearCostOriginal": 20,
-      "keepYearCostCny": 156,
+      "keepYearCostOriginal": null,
+      "keepYearCostCny": null,
       "keepIntervalDays": 90
     },
     {
