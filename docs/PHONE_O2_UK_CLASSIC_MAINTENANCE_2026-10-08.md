@@ -30,4 +30,8 @@ Current [O2 Wi-Fi Calling guidance](https://www.o2.co.uk/help/international-and-
 
 Adds **11 canonical source records** and **10 route events**: O2 source depth **2 → 13**, observations **0**. Overall **160 routes / 87 markets / 157 brands / 117 networks / 835 sources**. No new route/market/brand/network; public comparison **135**, explicitly indexable **3**, sitemap **31** unchanged. Route remains **HOLD/backstage-only**, with `guideEligible=false`, `avoidRoute=true`. Generated finder/search/metrics/lazy detail have null new-user/annual retention amounts and retain current domestic charge separately; dedicated regression wired into `phone:data:check`.
 
-**Release pending:** branch/PR, CI, Eval Gate, Vercel Preview and exact merged-SHA production checks. Next separate Wave B task after release: `singtel-hi-prepaid-passport-30d-2026`.
+## Release verified
+
+PR #434 squash-merged as `c8391f0679a783ee09175155164c0953fcb8cec6`; CI #329 / run `37734342327` **PASS**, Eval Gate #1268 / run `37734342351` **PASS** after replacing a brittle historical-parity-only test (initial Eval #1267 failed), Vercel Preview `dpl_21HkABQnr8BSroMi5QGjGDnPE54C` **READY**, production `dpl_hHQFoMwvKxJfp3Lax9PmXUPSCugz` **READY** at exact merged main SHA with apex and www aliases assigned. Direct independent public JSON/sitemap HTTP retrieval not performed; no HTTP-200 claim.
+
+The original UK MNO migration Eval Gate asserted exact current-vs-historical O2 parity. Its revised test retains the immutable 2026-09 historical review-packet comparator while explicitly checking this reviewed modern correction; it does not weaken baseline admission parity for other UK operators. Next separate Wave B task after release: `singtel-hi-prepaid-passport-30d-2026`.
