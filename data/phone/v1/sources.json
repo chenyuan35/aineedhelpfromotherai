@@ -4883,5 +4883,65 @@
     "url": "https://www.reddit.com/r/AskFrance/comments/1p082sk/free_mobile_comment_contacter_lassistance/",
     "type": "community",
     "reportedAt": "2025-11-18"
+  },
+  {
+    "id": "good2go-ca-crtc-rogers-port-20260818",
+    "url": "https://crtc.gc.ca/eng/archive/2026/2026-211.htm",
+    "type": "regulator-official",
+    "reportedAt": "2026-08-18"
+  },
+  {
+    "id": "good2go-ca-provider-terms-20261008",
+    "url": "https://good2gomobile.ca/pdfs/service-terms-and-conditions-good2go.pdf",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-activation-20261008",
+    "url": "https://good2gomobile.ca/support/activation-account-support",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-data-settings-20261008",
+    "url": "https://good2gomobile.ca/support/data-settings",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-catalog-20261008",
+    "url": "https://good2gomobile.ca/support/plans",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-provider-porting-20261008",
+    "url": "https://good2gomobile.ca/support/number-portability",
+    "type": "provider-official",
+    "reportedAt": "2026-10-08"
+  },
+  {
+    "id": "good2go-ca-reddit-january-20260109",
+    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1q8a63i/anyone_still_with_good2go_mobile_in_2026/",
+    "type": "community",
+    "reportedAt": "2026-01-09"
+  },
+  {
+    "id": "good2go-ca-reddit-march-20260303",
+    "url": "https://www.reddit.com/r/CellPhoneCanada/comments/1rjxf91/whats_going_on_with_good2go/",
+    "type": "community",
+    "reportedAt": "2026-03-03"
+  },
+  {
+    "id": "good2go-ca-reddit-old-payg-20250731",
+    "url": "https://www.reddit.com/r/askTO/comments/1mdmoms/cheapest_possible_payasyougo_cell_plan/",
+    "type": "community",
+    "reportedAt": "2025-07-31"
+  },
+  {
+    "id": "good2go-ca-reddit-migration-20250804",
+    "url": "https://www.reddit.com/r/askTO/comments/1mhqum9/anyone_else_here_on_good2go_mobile/",
+    "type": "community",
+    "reportedAt": "2025-08-04"
   }
 ]

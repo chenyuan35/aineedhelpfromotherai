@@ -2203,5 +2203,86 @@
     "scope": "route",
     "outcome": "2025 first-hand Free €2 paying user in unspecified African country reported received SMS stopping after formerly working; cause unknown.",
     "sourceId": "free-fr-community-africa-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-regulator-transition-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "network-migration-and-porting",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "CRTC Decision 2026-211 documents Ztar's Rogers resale discontinuation/porting access dispute. Historical Rogers host mapping is not proof of the active post-2025 SIM network; current Good2Go APN uses Telus SP.",
+    "sourceId": "good2go-ca-crtc-rogers-port-20260818"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-plan-lifecycle-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "prepaid-plan-and-number-loss",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Official current terms require active prepaid plan; 30-day to one-year plan terms depend on selected plan, renewal requires enough balance, and 90 days without any active plan leads to deactivation/number loss. This is not an old $20/180-day cash voucher expiry mechanism.",
+    "sourceId": "good2go-ca-provider-terms-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-price-unverified-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "current-price-catalog-gap",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Provider plan catalog explicitly says it is updating; a current new-activation plan price and SIM fee cannot be confirmed, despite migrated users mentioning CAD19 monthly.",
+    "sourceId": "good2go-ca-provider-catalog-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-remote-activation-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "service-activation-friction",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Free/remote China-first activation is not established: Good2Go FAQ specifically says a customer abroad must return to Canada to activate the SIM.",
+    "sourceId": "good2go-ca-provider-activation-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-topup-not-expiry-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "prepaid-voucher-vs-plan-renewal",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Provider lists voucher values $15-$100, a $150/rolling-30-day online top-up limit and $900 cap; voucher value does not encode prepaid plan lifecycle or make older PAYG validity current.",
+    "sourceId": "good2go-ca-provider-activation-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-roaming-condition-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "conditional-roaming-unknown-china",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "Provider allows roaming on prepaid only subject to active underlying-network agreements and compatibility; no exact China partner or incoming-SMS/app OTP entitlement proven.",
+    "sourceId": "good2go-ca-provider-terms-20261008"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-january-outage-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "community-operational-failure",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "January 2026 Canadian users reported Christmas-period service/account access failures after migration, and support calls ending without resolution. This is a bounded user report, not a universal outage rate.",
+    "sourceId": "good2go-ca-reddit-january-20260109"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-march-balance-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "community-credit-and-number-loss-incident",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "March 2026 migrated users reported legacy CAD350-500 balances suddenly displayed as zero after CAD19 monthly renewals, customer service unreachable and one reported number going out of service; unverified individually and not universal.",
+    "sourceId": "good2go-ca-reddit-march-20260303"
+  },
+  {
+    "id": "evt-good2go-payg-ca-2026-historical-payg-20261008",
+    "routeId": "good2go-payg-ca-2026",
+    "type": "legacy-product-discontinuity",
+    "reportedAt": "2026-10-08",
+    "scope": "route",
+    "outcome": "July 2025 users reported they were being removed from old $25/120-day PAYG credit plan. Historic Petro-style $20/180-day or $25/120-day credit expiry must not be represented as active current Good2Go offer.",
+    "sourceId": "good2go-ca-reddit-old-payg-20250731"
   }
 ]
