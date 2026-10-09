@@ -1,6 +1,6 @@
 # Master Plan — Traffic Utility Site
 
-Last updated: 2026-10-09
+Last updated: 2026-10-10
 
 This is the project-wide progress board. `PROJECT_CONTEXT.md` answers what is true now; this file answers where the project is going and what comes next. `docs/OPERATING_WORKFLOW.md` defines execution.
 
@@ -20,6 +20,8 @@ A candidate advances only when the project can state a concrete durable advantag
 Evidence and decisions: `docs/PRODUCT_VALUE_GATE.md` and `docs/PRODUCT_DIRECTION_RESET_2026-09-23.md`.
 
 ## Phone operating correction — 2026-09-24, architecture enforcement — 2026-09-28
+
+**2026-10-10 P0 SERVICE EVIDENCE GRADING / PRODUCTION VERIFIED:** [PR #473](https://github.com/chenyuan35/aineedhelpfromotherai/pull/473) merged as `459a288b93362273c89971d2022cdc1f08ca5058` after exact-head GitHub Eval Gate SUCCESS and Vercel Preview READY. Exact-main Vercel production `dpl_B8UHsUFeAwgQXEw73uUrHBeLbx6H` READY; independent Phone hub, service evidence JSON, 160-row route summaries and 31-URL sitemap HTTP 200. Lebara Telegram and WhatsApp are each **insufficient / 2 success reports / 1 original source** rather than B/Good; personal reports and provenance remain. Canonical **160 routes / 897 sources / 322 events / 27 app observations / 9 service aggregates**, publication **135 comparison / 3 indexable / 31 sitemap**, unchanged. Source ID independence is necessary, not sufficient; reviewer must reject same-author crossposts. #472 resolved in production. #462 and #469–#471 are separate open PRs, not automatically applied or published.
 
 **2026-10-09 COMMUNITY-FIRST CORRECTION:** Internal `160/160` was a circular frozen candidate inventory, not a sampled market universe. External 90% coverage remains **UNMEASURED**. Existing 160 / 897 / 322 structural corpus has 27 service outcomes on 7 routes; 89 HOLD + 10 reconciliation. Forum source audit and missing-route candidates are tracked in [#467](https://github.com/chenyuan35/aineedhelpfromotherai/issues/467); verified database field gaps in #465. Prioritize original buyer accounts, current payment/KYC and operation-specific SMS/OTP; keep no-match for unsupported China first activation. Public RSS Linux.do coverage work pending observer code gate. No generic new SEO URLs or official-page clone.
 

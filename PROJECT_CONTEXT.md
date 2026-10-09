@@ -1,10 +1,12 @@
 # aineedhelpfromotherai.com — Durable Project Context
 
-Last updated: 2026-10-09
+Last updated: 2026-10-10
 
 This file is the compact current-facts source for the project. Historical execution detail belongs in task-specific docs, PRs, Git history and the Google Docs journal. If anything here conflicts with GitHub `main` plus verified production, GitHub `main` and verified production win.
 
 ## Current progress checkpoint
+
+**2026-10-10 P0 SERVICE EVIDENCE GRADING / PRODUCTION VERIFIED:** [PR #473](https://github.com/chenyuan35/aineedhelpfromotherai/pull/473) merged as `459a288b93362273c89971d2022cdc1f08ca5058` after exact-head GitHub Eval Gate SUCCESS and Vercel Preview READY. Exact-main Vercel production `dpl_B8UHsUFeAwgQXEw73uUrHBeLbx6H` READY; independent Phone hub, service evidence JSON, 160-row route summaries and 31-URL sitemap HTTP 200. Lebara Telegram and WhatsApp are each **insufficient / 2 success reports / 1 original source** rather than B/Good; personal reports and provenance remain. Canonical **160 routes / 897 sources / 322 events / 27 app observations / 9 service aggregates**, publication **135 comparison / 3 indexable / 31 sitemap**, unchanged. Source ID independence is necessary, not sufficient; reviewer must reject same-author crossposts. #472 resolved in production. #462 and #469–#471 are separate open PRs, not automatically applied or published.
 
 **2026-10-09 EXTERNAL COVERAGE CORRECTION:** The former 160/160=100% described closure of a self-selected internal candidate list, NOT independently measured external user-product coverage. **90%/100% real task coverage UNMEASURED.** Current main: 160 routes / 897 sources / 322 events; 61 admitted / 89 HOLD / 10 reconciliation; just 27 service-operation reports across 7 routes; 72 unknown acquisition costs, 66 unknown annual retention costs. New original community threads/candidate gap ledger [GitHub #467](https://github.com/chenyuan35/aineedhelpfromotherai/issues/467), structural audit #465, and revised `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md` identify eSIM.gg app/prefix conflicts, US Mobile 2FA lockout, Simyo NL, Cuniq HK and Beijing China Mobile as review leads—not automatic routes. Linux.do RSS missing from existing observer; code fix separately tested, **not yet deployed**. External deployment hold #463 / PR #462 remains; no ready mainland-first number has been verified.
 

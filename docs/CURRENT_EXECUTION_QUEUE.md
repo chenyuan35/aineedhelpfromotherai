@@ -1,14 +1,16 @@
 # Current Execution Queue
 
-Last updated: 2026-10-09
+Last updated: 2026-10-10
 
 `PROJECT_CONTEXT.md` and `docs/MASTER_PLAN.md` remain canonical for current facts/phase. GitHub `main` + verified production wins on conflict. This file is the short atomic queue.
 
 ## Current decision
 
+**2026-10-10 P0 SERVICE EVIDENCE GRADING / PRODUCTION VERIFIED:** [PR #473](https://github.com/chenyuan35/aineedhelpfromotherai/pull/473) merged as `459a288b93362273c89971d2022cdc1f08ca5058` after exact-head GitHub Eval Gate SUCCESS and Vercel Preview READY. Exact-main Vercel production `dpl_B8UHsUFeAwgQXEw73uUrHBeLbx6H` READY; independent Phone hub, service evidence JSON, 160-row route summaries and 31-URL sitemap HTTP 200. Lebara Telegram and WhatsApp are each **insufficient / 2 success reports / 1 original source** rather than B/Good; personal reports and provenance remain. Canonical **160 routes / 897 sources / 322 events / 27 app observations / 9 service aggregates**, publication **135 comparison / 3 indexable / 31 sitemap**, unchanged. Source ID independence is necessary, not sufficient; reviewer must reject same-author crossposts. #472 resolved in production. #462 and #469–#471 are separate open PRs, not automatically applied or published.
+
 **2026-10-09 COMMUNITY-FIRST COVERAGE CORRECTION:** Historical `160/160 = 100%` was closure of the internally selected review queue, **NOT independent coverage of 90% of real user-demand routes**. External discovery/task coverage is **UNMEASURED**. Main canonical data remains 160 routes / 897 sources / 322 events, but just 27 service-specific observations spanning 7 routes, 61 admitted / 89 HOLD / 10 needs-reconciliation; 72 routes lack numeric acquisition cost and 66 lack annual keep cost. Source-first original-thread and competitor evidence ledger [#467](https://github.com/chenyuan35/aineedhelpfromotherai/issues/467), integrity audit [#465](https://github.com/chenyuan35/aineedhelpfromotherai/issues/465). Corrected coverage method: `docs/PHONE_DATABASE_COVERAGE_AUDIT_2026-10-03.md`.
 
-**ELIGIBLE WORK QUEUE DURING PROVIDER DEPLOY LIMIT:**
+**ELIGIBLE COMMUNITY-FIRST WORK QUEUE:**
 1. Source-first original-community intake: eSIM.gg +372 prefixes and Telegram/WhatsApp/Codex contradictory outcomes, dated individual firsthand evidence with same-thread/author dedupe; US Mobile expat lockout/recovery and bank OTP; classify outcome vs mere demand and do not invent rates.
 2. Audit truly distinct missing products exposed by real user cases: Simyo Netherlands payment/KYC route, Cuniq Hong Kong dual-number keep plan, Beijing China Mobile CNY8 retention plan availability. Review one at a time; no directory stuffing.
 3. Improve low-cost forum discovery: existing watcher lacks Linux.do public RSS; tested bounded Linux RSS parser/crossfeed dedupe code, not deployed. Keep observer non-production and require real runner health+timer verification; do not bypass access controls.
