@@ -78,6 +78,25 @@
       "lastObservedAt": "2026-09-19"
     },
     {
+      "id": "svcagg-esimgg-estonia-372-2026-openai-sms-verification",
+      "routeId": "esimgg-estonia-372-2026",
+      "serviceId": "openai",
+      "operation": "sms-verification",
+      "numberRangeId": null,
+      "grade": "insufficient",
+      "label": "One positive report",
+      "confidence": "very-low",
+      "sampleSize": 1,
+      "independentSourceCount": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "mixedCount": 0,
+      "percentageEligible": false,
+      "successRatePct": null,
+      "firstObservedAt": "2026-10-08",
+      "lastObservedAt": "2026-10-08"
+    },
+    {
       "id": "svcagg-fortress-hahasim-hk-2026-telegram-registration-verification",
       "routeId": "fortress-hahasim-hk-2026",
       "serviceId": "telegram",

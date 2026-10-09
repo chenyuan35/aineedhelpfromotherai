@@ -464,5 +464,22 @@
     "originalPostNumber": 1,
     "prefixBands": [],
     "reviewNote": "One original author: newly purchased eSIM.gg number did not receive WhatsApp code on first day but worked next day. Provider test SMS may have helped (unproven). One temporal mixed account outcome, NOT independent failure+success samples; network location, payment/KYC and prefix unverified."
+  },
+  {
+    "id": "obs-esimgg-2992813-kbyxlin-codex-5317",
+    "routeId": "esimgg-estonia-372-2026",
+    "service": "OpenAI/Codex",
+    "operation": "sms-verification",
+    "outcome": "success",
+    "reportedAt": "2026-10-08",
+    "geography": "unspecified",
+    "sourceId": "linuxdo-esimgg-2992813-20261008",
+    "dedupeKey": "esimgg-2992813-kbyxlin-codex-sms",
+    "authorHandle": "kbyxlin",
+    "originalPostNumber": 3,
+    "prefixBands": [
+      "5317"
+    ],
+    "reviewNote": "Author reports their 5317 eSIM.gg (乌龟卡) receives Codex and similar verification codes. Not proof of signup completion, buyer eligibility, KYC, location, first activation, or all 5317 lines. Later this author reports unspecified eSIM numbers rejected by Discord; do NOT infer the specific provider/prefix or map that to an eSIM.gg Discord failure."
   }
 ]
