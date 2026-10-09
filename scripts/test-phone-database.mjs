@@ -78,6 +78,23 @@ assert.ok(comparisonIdx.routes.some(r => r.marketName === 'United Kingdom'));
 assert.ok(comparisonIdx.routes.some(r => r.marketName !== 'United Kingdom'));
 assert.ok(comparisonIdx.routes.every(r => ['comparison-visible','detail-eligible','indexable'].includes(r.publicationState)));
 
+// One original 2025 Reddit firsthand case improves SMARTY operational provenance,
+// not service-specific signup reliability or a China-first acquisition result.
+const smartyRoute = db.routes.find(r=>r.id==='smarty-uk-2026');
+const smartySource = db.sources.find(s=>s.id==='reddit-smarty-overseas-periodic-sms-1i0c96q-20250116');
+const smartyEvent = db.events.find(e=>e.id==='evt-smarty-uk-1i0c96q-periodic-overseas-sms');
+assert(smartyRoute && smartySource && smartyEvent);
+assert.equal(smartyRoute.sourceIds.filter(x=>x===smartySource.id).length,1);
+assert.equal(smartySource.url,'https://www.reddit.com/r/SmartyMobile/comments/1i0c96q');
+assert.equal(smartySource.type,'first-hand-community-thread');
+assert.equal(smartyEvent.sourceId,smartySource.id);
+assert.equal(smartyEvent.routeId,smartyRoute.id);
+assert.match(smartyEvent.outcome,/device off for weeks|device off/);
+assert.match(smartyEvent.outcome,/NOT establish/);
+assert.equal(db.observations.filter(o=>o.sourceId===smartySource.id).length,0,'unspecified SMS reception is not a bank, Telegram or app signup observation');
+assert.equal(idx.routes.find(r=>r.id===smartyRoute.id)?.serviceEvidence.length,0,'new firsthand event must not invent verified named-app results');
+assert.equal(idx.routes.find(r=>r.id===smartyRoute.id)?.decisionFacts.sourceCount,9);
+
 console.log(`Phone DB tests passed: ${db.routes.length} routes, ${db.markets.length} markets, ${idx.routes.length} searchable records.`);
 
 // S7: one primary failure discussion, two accounts, no invented named-app OTP.
