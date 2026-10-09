@@ -19,7 +19,7 @@ const tick = String.fromCharCode(96);
 const rows = [
   '# Phone Radar: reproducible evidence gap audit',
   '',
-  'Snapshot: 2026-10-10, GitHub main 163fd5c. Regenerate using: node scripts/audit-phone-evidence-gaps.mjs --write. Counts cover the current self-selected canonical inventory, **not** externally sampled 90%/100% user-demand coverage.',
+  'Snapshot: generated from the checked-out canonical JSON data using: node scripts/audit-phone-evidence-gaps.mjs --write. This report does **not** verify a production deployment, externally sampled coverage, or 90%/100% real user-demand coverage.',
   '',
   '## Measured canonical gaps',
   '',

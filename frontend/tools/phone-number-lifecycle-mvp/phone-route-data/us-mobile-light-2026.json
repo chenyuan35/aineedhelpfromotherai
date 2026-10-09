@@ -16,7 +16,8 @@
     "sourceIds": [
       "us-mobile-light-plan-20260929",
       "us-mobile-roaming-provisioning-20260929",
-      "us-mobile-wifi-calling-20260929"
+      "us-mobile-wifi-calling-20260929",
+      "reddit-usmobile-light-uzbekistan-20250118"
     ]
   },
   "market": {
@@ -67,6 +68,13 @@
       "url": "https://www.usmobile.com/help/docs/troubleshooting-and-setup/setting-up-device/wifi-calling",
       "type": "provider-official",
       "reportedAt": "2026-09-29"
+    },
+    {
+      "id": "reddit-usmobile-light-uzbekistan-20250118",
+      "url": "https://www.reddit.com/r/USMobile/comments/1i4hksg",
+      "type": "first-hand-community-thread",
+      "reportedAt": "2025-01-18",
+      "label": "US Mobile Light user on Warp in Uzbekistan: intermittent ordinary SMS, Wi-Fi call failure and overseas eSIM switch friction"
     }
   ],
   "observations": [],
@@ -79,6 +87,15 @@
       "scope": "route",
       "outcome": "Light remains USD 10 monthly or USD 96/year. Native roaming cannot work until the line has domestic U.S. usage; Warp/Dark Star Wi-Fi Calling setup also requires U.S. coverage.",
       "sourceId": "us-mobile-roaming-provisioning-20260929"
+    },
+    {
+      "id": "evt-usmobile-light-uzbekistan-wifi-sms-esim-20250118",
+      "routeId": "us-mobile-light-2026",
+      "type": "independent-overseas-wifi-sms-reprovisioning-friction",
+      "reportedAt": "2025-01-18",
+      "scope": "one first-person Warp/Verizon Light-plan user in Uzbekistan; Wi-Fi and handset details unknown; no named bank/app OTP",
+      "outcome": "The original Light Plan user reports Wi-Fi calls failing, ordinary SMS briefly sending and receiving before stopping, and a failed attempt to install an eSIM after switching from Warp to Light Speed while already in Uzbekistan. In the same original thread, a US Mobile representative suggests weak Wi-Fi and advises arranging Wi-Fi Calling/network provisioning before departure; no successful resolution is shown. One January 2025 account, not a general activation ban, universal SMS failure or any named-app OTP result.",
+      "sourceId": "reddit-usmobile-light-uzbekistan-20250118"
     }
   ],
   "snapshots": [

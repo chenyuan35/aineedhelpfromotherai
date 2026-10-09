@@ -1,18 +1,18 @@
 # Phone Radar: reproducible evidence gap audit
 
-Snapshot: 2026-10-10, GitHub main 163fd5c. Regenerate using: node scripts/audit-phone-evidence-gaps.mjs --write. Counts cover the current self-selected canonical inventory, **not** externally sampled 90%/100% user-demand coverage.
+Snapshot: generated from the checked-out canonical JSON data using: node scripts/audit-phone-evidence-gaps.mjs --write. This report does **not** verify a production deployment, externally sampled coverage, or 90%/100% real user-demand coverage.
 
 ## Measured canonical gaps
 
 | Field | Count | Notes |
 | --- | ---: | --- |
 | Canonical routes | 160 | Internal model, not real-world demand denominator |
-| Sources | 899 | Source record count, not count of real-world buyers |
-| Lifecycle/incident events | 324 | Not equivalent to app OTP outcomes |
-| App-specific observations | 36 | Author-and-operation evidence, not independent original URLs |
+| Sources | 904 | Source record count, not count of real-world buyers |
+| Lifecycle/incident events | 330 | Not equivalent to app OTP outcomes |
+| App-specific observations | 38 | Author-and-operation evidence, not independent original URLs |
 | Routes with any app observation | 8 | Might be positive, negative or mixed |
 | Routes without any app observation | 152 | App reliability unknown |
-| Routes without linked community-tagged source | 86 | Only a source-label proxy; review types before claiming missing testimony |
+| Routes without linked community-tagged source | 83 | Only a source-label proxy; review types before claiming missing testimony |
 | Acquisition price unknown in native currency | 72 | Missing numeric acquisition costs |
 | Annual keep cost unknown in native currency | 66 | Missing numeric annual costs |
 | Acquisition price missing comparable CNY figure | 131 | Native price may exist but vetted conversion missing |
@@ -26,7 +26,6 @@ Each row below is admitted, has at least six source records, lacks a community-t
 
 | Route | Linked sources |
 | --- | ---: |
-| `smarty-uk-2026` | 8 |
 | `1pmobile-uk-2026` | 7 |
 | `aldi-talk-activity-window-2026` | 7 |
 | `go-payasyougo-mt-2026` | 7 |
