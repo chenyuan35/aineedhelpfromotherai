@@ -110,9 +110,7 @@ cat > "$TMP/linuxdo-feed.xml" <<'XML'
 XML
 LD_ROWS=$(perl "$PARSER" linuxdo_gossip "$TMP/linuxdo-feed.xml")
 [ "$(printf '%s\n' "$LD_ROWS" | wc -l | tr -d ' ')" = 1 ]
-IFS=
-echo 'phone demand watcher audit: PASS'
-\t' read -r ldsrc ldcat ldintent ldactivity ldpub ldtitle ldurl ldexcerpt ldservices ldcommerce ldhosts <<< "$LD_ROWS"
+IFS=$'\t' read -r ldsrc ldcat ldintent ldactivity ldpub ldtitle ldurl ldexcerpt ldservices ldcommerce ldhosts <<< "$LD_ROWS"
 [ "$ldsrc" = linuxdo_gossip ]
 [ "$ldactivity" = 18 ]
 [ "$ldurl" = "$LD_ROOT" ]
