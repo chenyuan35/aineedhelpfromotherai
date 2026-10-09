@@ -21,6 +21,12 @@ Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-0
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
+## S6 MOBILE LIVE QA + LEBARA EVIDENCE RELEASE — 2026-10-09
+
+**Shipped and verified:** PR #457 head `9291ca1c`, GitHub Eval Gate #1328 PASS, Vercel Preview READY, squash-merge `1a3611520cc0fa49e19cdf6f0ee402dc7168e04e`, Vercel production `dpl_9KvLXkBkv9eGeQKiXjHyJAEJQzjF` READY and apex/www aliases. Real browser visual screenshots independently viewed at 375/390 CSS px. Document horizontal width 360/375, finder top now 585px instead of 850px, all Buy/Keep/Verify/Recover explanation cells retained. Mainland China / UK / Telegram remains **No verified matches** / 0 purchase-ready / 2 separate optional research leads. Browser fetched 160 summaries and sitemap 31 (HTTP 200). Lebara Aug 26 China no-signal/refund firsthand counterexample now directly linked next to positive Aug 12 inbound-only case and official UK activation policy; **not normalized into canonical**. Source/event counts unchanged **160/896/321**, publication **135/3/31**.
+
+**NEXT ELIGIBLE DATA QUALITY TASK:** bounded review of *one* Lebara Aug 26 original source to append to the canonical source/event ledger (one unique primary thread, two reported people, 0 sampled Telegram/WhatsApp failures), regenerate **all** matching static artifacts, enforce repeatability/Phone release CI/Eval/Preview, then exact-SHA production verification. Do not turn one thread into two independent sources or invent activation success-rate/failure-rate. If generated-artifact workflow is blocked, keep live no-match and document exact gate; do not mutate the DB half way. Product viability still needs truly separate repeatable mainland purchase/payment/KYC/UK rule reconciliation plus fresh app SMS accounts. Recruited 5-person studies and real SIM checkout/OTP are NOT TESTED.
+
 ## S5 PRIMARY EVIDENCE RECONCILIATION — 2026-10-09
 
 **Reviewed:** Giffgaff UK and Lebara UK mainland-China acquisition/activation, eSIM setup, payment/KYC gaps, Telegram/WhatsApp SMS and Giffgaff continuity (including independent Sep 12–Oct 8 first-hand closure, functioning-service, PAC, port-out and refund outcomes). Ledger: `docs/PHONE_RADAR_S5_CHINA_ACTIVATION_CONTINUITY_EVIDENCE_2026-10-09.md`.
