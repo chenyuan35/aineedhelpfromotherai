@@ -114,9 +114,20 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
     .pr-task-actions button[aria-pressed="true"]{border-color:var(--accent2)}
     .pr-task-saved-controls{display:flex;gap:6px;flex-wrap:wrap}.pr-task-saved-controls button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
     .pr-task-note{color:var(--muted);font-size:.71rem;line-height:1.4;margin:9px 0 0}
-    .pr-task-finder[hidden]{display:none}
+    .pr-task-advanced{margin:0 0 10px}
+    .pr-task-advanced>summary,.pr-task-research>summary{cursor:pointer;font-size:.79rem;font-weight:750;line-height:1.5;padding:9px 11px;border:1px solid var(--line);border-radius:10px}
+    .pr-task-advanced[open]>summary{margin-bottom:9px}
+    .pr-task-extra{margin-bottom:0}
+    .pr-task-research{margin-top:10px}
+    .pr-task-research>summary{background:var(--soft)}
+    .pr-task-research>.pr-task-results{margin-top:9px}
+    .pr-task-research-card{border-style:dashed}
+    .pr-task-research-card .pr-task-pill{font-weight:850}
+    .pr-task-incident{font-size:.71rem;line-height:1.45}
+    .pr-task-incident a{color:var(--accent2);text-decoration:underline}
+    .pr-task-finder[hidden],.pr-task-research[hidden]{display:none}
     @media(max-width:720px){.pr-task-form{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-task-finder{padding:11px}.pr-task-results{grid-template-columns:1fr}}
-    @media(max-width:375px){.pr-task-form{grid-template-columns:1fr}}
+    @media(max-width:345px){.pr-task-form{grid-template-columns:1fr}}
   </style>
   <script id="theme-init">(()=>{try{const saved=localStorage.getItem('site-theme')||'system';const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;const resolved=saved==='system'?(dark?'dark':'light'):saved;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=saved;}catch{}})();</script>
 </head>
@@ -148,17 +159,26 @@ a.pr-guide-link{background:var(--ink)!important;color:var(--bg)!important;border
 
   <section class="pr-task-finder" id="pr-task-finder" aria-labelledby="pr-task-title">
     <div class="pr-task-head"><div><h2 id="pr-task-title">Find a number for your situation</h2><p>Compare a small evidence-screened shortlist. Unknown activation and SMS requirements remain unverified; this is not a guaranteed compatibility checker.</p></div><div class="pr-task-saved-controls"><button type="button" id="pr-task-saved" aria-pressed="false">Saved (0)</button><button type="button" id="pr-task-clear">Clear saved</button></div></div>
-    <div class="pr-task-form" role="group" aria-label="Optional number requirements">
+    <div class="pr-task-form" role="group" aria-label="Primary number requirements">
       <label for="pr-task-job">What is your task?<select id="pr-task-job"><option value="buy">Get a new real number</option><option value="verify">Get a number for app SMS</option><option value="keep">Keep / port my existing number</option></select></label>
       <label for="pr-task-location">Where will you use it?<select id="pr-task-location"><option value="any">Location not specified</option><option value="china">Mainland China</option><option value="abroad">Outside number's country</option></select></label>
       <label for="pr-task-market">Number's country / region<select id="pr-task-market"><option value="any">Any number origin</option></select></label>
-      <label for="pr-task-form">Form factor<select id="pr-task-form"><option value="any">SIM or eSIM</option><option value="esim">eSIM supported</option></select></label>
-      <label for="pr-task-service">Required verification<select id="pr-task-service"><option value="any">No specific app</option><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="openai">ChatGPT / OpenAI</option><option value="bank">Specific bank SMS (unverified)</option></select></label>
-      <label for="pr-task-start">Maximum known startup cost<select id="pr-task-start"><option value="any">No budget limit</option><option value="100">CNY 100</option><option value="300">CNY 300</option><option value="600">CNY 600</option></select></label>
-      <label for="pr-task-keep">Maximum known yearly keep cost<select id="pr-task-keep"><option value="any">No budget limit</option><option value="10">CNY 10</option><option value="25">CNY 25</option><option value="100">CNY 100</option><option value="300">CNY 300</option></select></label>
     </div>
+    <details class="pr-task-advanced" id="pr-task-advanced">
+      <summary>More filters: eSIM, specific app, and budget</summary>
+      <div class="pr-task-form pr-task-extra" role="group" aria-label="Additional optional number requirements">
+        <label for="pr-task-form">Form factor<select id="pr-task-form"><option value="any">SIM or eSIM</option><option value="esim">eSIM supported</option></select></label>
+        <label for="pr-task-service">Required verification<select id="pr-task-service"><option value="any">No specific app</option><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="openai">ChatGPT / OpenAI</option><option value="bank">Specific bank SMS (unverified)</option></select></label>
+        <label for="pr-task-start">Maximum known startup cost<select id="pr-task-start"><option value="any">No budget limit</option><option value="100">CNY 100</option><option value="300">CNY 300</option><option value="600">CNY 600</option></select></label>
+        <label for="pr-task-keep">Maximum known yearly keep cost<select id="pr-task-keep"><option value="any">No budget limit</option><option value="10">CNY 10</option><option value="25">CNY 25</option><option value="100">CNY 100</option><option value="300">CNY 300</option></select></label>
+      </div>
+    </details>
     <p class="pr-task-summary" id="pr-task-summary" aria-live="polite">Checking verified number options…</p>
     <div class="pr-task-results" id="pr-task-results" aria-live="polite"></div>
+    <details class="pr-task-research" id="pr-task-research" hidden>
+      <summary id="pr-task-research-summary">Research candidates — activation and SMS suitability unverified</summary>
+      <div class="pr-task-results" id="pr-task-research-results"></div>
+    </details>
     <section class="pr-guide pr-directory-guide" id="pr-task-detail" hidden aria-live="polite"></section>
     <p class="pr-task-note">Prices are not a full first-year total unless explicitly modeled. A reported app SMS success does not prove that it will work for your account. Saved routes stay only in this browser; no account is required.</p>
   </section>
@@ -419,30 +439,57 @@ function bindTaskControls(){
   for(const id of taskSelectIds)taskGet(id).addEventListener('change',renderTaskFinder);
   taskGet('pr-task-saved').addEventListener('click',()=>{state.showSaved=!state.showSaved;renderTaskFinder()});
   taskGet('pr-task-clear').addEventListener('click',()=>{state.saved.clear();persistTaskSaved();renderTaskFinder()});
-  taskGet('pr-task-results').addEventListener('click',event=>{
+  for(const id of ['pr-task-results','pr-task-research-results'])taskGet(id).addEventListener('click',event=>{
     const saved=event.target.closest('[data-task-save]');if(saved){const id=saved.dataset.taskSave;const route=(canonicalIndex?.routes||[]).find(r=>r.id===id);if(!route||!taskEligible(route))return;if(state.saved.has(id))state.saved.delete(id);else state.saved.add(id);persistTaskSaved();renderTaskFinder();return}
     const opened=event.target.closest('[data-task-open]');if(opened){openIndexedRoute(opened.dataset.taskOpen,'task')}
   });
 }
-function renderTaskFinder(){
-  const panel=taskGet('pr-task-finder');panel.hidden=state.family!=='long-term';if(panel.hidden)return;
-  const opts=taskOptions(),matches=taskCandidates(opts),shown=matches.slice(0,5),out=taskGet('pr-task-results'),summary=taskGet('pr-task-summary');
-  taskGet('pr-task-saved').textContent=`Saved (${state.saved.size})`;
-  taskGet('pr-task-saved').setAttribute('aria-pressed',String(state.showSaved));
-  if(opts.job==='keep'){summary.textContent='Existing-number portability and retention cannot be validated from new-SIM offers. No verified port-in recommendation is available; browse route evidence below instead.'}
-  else if(opts.service==='bank'){summary.textContent='No bank-specific number/range, first-activation and SMS-delivery proof is normalized. No verified bank SMS match is available.'}
-  else if(!matches.length){summary.textContent='No evidence-eligible matches for these constraints. Unknown costs, unverified app outcomes and HOLD/backstage records are excluded; adjust your requirements or inspect the research directory below.'}
-  else{const loc=opts.location==='china'?'Mainland-China acquisition, first activation and roaming SMS are NOT established for these offers. ':opts.location==='abroad'?'Foreign first activation, KYC/payment and roaming SMS are NOT established for these offers. ':'';summary.textContent=`${matches.length} evidence-screened real-mobile option${matches.length===1?'':'s'} (${shown.length} shown). ${loc}An observed service success does not guarantee your future OTP; check detailed route evidence before buying.`}
-  out.innerHTML=shown.map(r=>{
-    const ev=opts.service==='any'?null:taskServiceEvidence(r,opts.service);
-    const kyc=r.decisionFacts?.kycState||'unknown';
-    const note=ev?`${esc(ev.serviceName||opts.service)}: ${esc(ev.label||ev.grade||'limited evidence')} · ${ev.sampleSize||0} reports, ${ev.independentSourceCount||0} distinct sources`:'App-specific verification: not selected / unverified';
-    const loc=opts.location==='any'?'Remote activation: not checked':'Remote first activation and SMS: unverified for your location';
-    return `<article class="pr-task-card" data-task-route="${esc(r.id)}"><span class="pr-task-pill">Evidence-screened · check setup</span><h3>${esc(r.displayName||r.brandName||r.id)}</h3><p>${esc(r.marketName||'Unknown market')} · ${esc(r.numberClass)} · ${esc(r.form||'Form unknown')}</p><div class="pr-task-metrics"><div><small>Start</small><strong>${esc(taskMoney(r,'acquisitionCostOriginal','acquisitionCostCny'))}</strong></div><div><small>Keep / year</small><strong>${esc(taskMoney(r,'keepYearCostOriginal','keepYearCostCny'))}</strong></div></div><p>${loc}; KYC: ${esc(kyc)}. Payment eligibility: unverified.</p><p>${note}</p><p>Continuity risk signals: ${r.decisionFacts?.continuityRiskSignalCount||0} · last checked ${esc(r.lastVerifiedAt||'unknown')}</p><div class="pr-task-actions"><button type="button" data-task-open="${esc(r.id)}">Inspect evidence</button><button type="button" data-task-save="${esc(r.id)}" aria-pressed="${state.saved.has(r.id)}">${state.saved.has(r.id)?'Saved ✓':'Save for later'}</button></div></article>`;
-  }).join('');
-  if(!matches.length)out.innerHTML='<div class="pr-empty">No verified matches. The research directory below includes routes that are not eligible for a recommendation.</div>';
+function taskIsRemote(opts){return opts.location==='china'||opts.location==='abroad'}
+
+function taskOperationProof(r,service){
+  const e=service==='any'?null:taskServiceEvidence(r,service);
+  if(!e)return 'Named-app outcome: not checked; ordinary SMS capability alone is not an app OTP guarantee.';
+  const n=Number(e.sampleSize)||0, distinct=Number(e.independentSourceCount)||0;
+  const name=esc(e.serviceName||service),operation=esc(e.operation||'operation unclassified');
+  return `${name} (${operation}): ${n} observed reports from ${distinct} independent source${distinct===1?'':'s'}; last observed ${esc(e.lastObservedAt||'unknown')}. Reported outcomes do not establish your activation location or guarantee delivery.`;
 }
 
+function taskRouteCard(r,opts,research){
+  const kyc=esc(r.decisionFacts?.kycState||'unknown');
+  const location=opts.location==='china'?'Mainland-China':opts.location==='abroad'?'foreign':'unspecified';
+  const incident=r.id==='giffgaff-uk-direct-esim-payg'
+    ? `<p class="pr-task-incident">Newer independent alert (2026-10-07): a comparator reports long-roaming closure, refund and portability outcomes after this route's last review; these leads are not independently reconciled here. <a href="https://haiwaibiaoju.com/compare/keep-number/" target="_blank" rel="noopener noreferrer">Read dated comparison</a>.</p>`:'';
+  const label=research?'Research only · first activation NOT verified':'Evidence-screened · setup not guaranteed';
+  const attr=research?'data-task-research-route':'data-task-route';
+  return `<article class="pr-task-card${research?' pr-task-research-card':''}" ${attr}="${esc(r.id)}"><span class="pr-task-pill">${label}</span><h3>${esc(r.displayName||r.brandName||r.id)}</h3><p>${esc(r.marketName||'Unknown market')} · ${esc(r.numberClass)} · ${esc(r.form||'Form unknown')}</p><div class="pr-task-metrics"><div><small>Start</small><strong>${esc(taskMoney(r,'acquisitionCostOriginal','acquisitionCostCny'))}</strong></div><div><small>Keep / year</small><strong>${esc(taskMoney(r,'keepYearCostOriginal','keepYearCostCny'))}</strong></div></div><p>${location==='unspecified'?'Remote activation not checked':`First activation and receipt of SMS from ${location} are UNVERIFIED`}; KYC: ${kyc}; foreign payment: unverified.</p><p>${taskOperationProof(r,opts.service)}</p><p>Continuity risk signals in canonical data: ${r.decisionFacts?.continuityRiskSignalCount||0} · route checked ${esc(r.lastVerifiedAt||'unknown')}</p>${incident}<div class="pr-task-actions"><button type="button" data-task-open="${esc(r.id)}">Inspect sources / feasibility</button><button type="button" data-task-save="${esc(r.id)}" aria-pressed="${state.saved.has(r.id)}">${state.saved.has(r.id)?'Saved':'Save for later'}</button></div></article>`;
+}
+
+function renderTaskFinder(){
+  const panel=taskGet('pr-task-finder');panel.hidden=state.family!=='long-term';if(panel.hidden)return;
+  const opts=taskOptions(),candidates=taskCandidates(opts),remote=taskIsRemote(opts);
+  const matched=remote?[]:candidates,shown=matched.slice(0,5);
+  const summary=taskGet('pr-task-summary'),out=taskGet('pr-task-results');
+  const research=taskGet('pr-task-research'),researchOut=taskGet('pr-task-research-results');
+  taskGet('pr-task-saved').textContent=`Saved (${state.saved.size})`;
+  taskGet('pr-task-saved').setAttribute('aria-pressed',String(state.showSaved));
+  if(opts.job==='keep'){
+    summary.textContent='No verified matches for keeping or porting an existing number. New-SIM acquisition is not evidence of port-in eligibility or bank SMS.';
+  }else if(opts.service==='bank'){
+    summary.textContent='No verified matches for bank-specific SMS. A reported generic OTP result cannot prove a specific bank, number range or delivery abroad.';
+  }else if(remote){
+    const where=opts.location==='china'?'mainland-China':'outside the number country';
+    summary.textContent=`No verified matches for first activation and SMS use from ${where}. ${candidates.length?`${candidates.length} research candidate${candidates.length===1?'':'s'} available below; setup and payment eligibility have not been verified.`:'No evidence-eligible research candidates meet the remaining filters.'} Do not purchase assuming remote activation or app OTP will work.`;
+  }else if(!matched.length){
+    summary.textContent='No verified matches for the selected requirements. Unknown costs, missing app outcomes and HOLD/backstage research are not treated as approved options.';
+  }else{
+    summary.textContent=`${matched.length} evidence-screened real-mobile option${matched.length===1?'':'s'} (${shown.length} shown). First activation, exact location, payment and future app OTP are NOT verified. Inspect route evidence before buying.`;
+  }
+  out.innerHTML=shown.length?shown.map(r=>taskRouteCard(r,opts,false)).join(''):'<div class="pr-empty">No verified matches for this task. Review evidence and change requirements only if acceptable.</div>';
+  const researchItems=remote&&opts.job!=='keep'&&opts.service!=='bank'?candidates.slice(0,5):[];
+  research.hidden=!researchItems.length;
+  researchOut.innerHTML=researchItems.map(r=>taskRouteCard(r,opts,true)).join('');
+  taskGet('pr-task-research-summary').textContent=`Research candidates (${candidates.length}) — remote activation, KYC/payment and app SMS suitability unverified`;
+}
 function topEligibleRows(){return canonicalRows().filter(r=>r.family==='long-term'&&r.numberClass==='real-mobile'&&r.evidenceState==='admitted'&&r.surfaceState!=='backstage-only')}
 function leaderKyc(r){const state=r.decisionFacts?.kycState||'unknown';return state==='not-required'?'KYC not required':state==='required'?'KYC required':state==='unclear'?'KYC unclear':'KYC unknown'}
 function bestServiceEvidence(r){const rank={A:0,B:1,C:2,insufficient:3};return [...(r.serviceEvidence||[])].filter(x=>x.sampleSize>0).sort((a,b)=>Number(b.percentageEligible)-Number(a.percentageEligible)||(rank[a.grade]??9)-(rank[b.grade]??9)||(b.sampleSize||0)-(a.sampleSize||0)||String(b.lastObservedAt||'').localeCompare(String(a.lastObservedAt||'')))[0]||null}
