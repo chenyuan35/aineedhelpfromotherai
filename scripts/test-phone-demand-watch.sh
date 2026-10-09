@@ -74,4 +74,49 @@ IFS=$'\t' read -r vsrc vcategory vintent vactivity vpublished vtitle vurl vexcer
 [[ "$vservices" == *whatsapp* ]]
 grep -Fq 'Priority target: VOXI app verification evidence' "$WATCHER"
 
+# Linux.do public RSS has a genuinely useful, historically missing intake lane.
+grep -Fq "fetch_feed linuxdo_gossip 'https://linux.do/c/gossip/11.rss'" "$WATCHER"
+grep -Fq "fetch_feed linuxdo_latest 'https://linux.do/latest.rss'" "$WATCHER"
+DEDUP_SOURCE_FN=$(sed -n '/^dedupe_source()/,/^}/p' "$WATCHER")
+eval "$DEDUP_SOURCE_FN"
+LD_ROOT='https://linux.do/t/topic/2919304'
+[ "$(dedupe_source linuxdo_gossip)" = linuxdo ]
+[ "$(dedupe_source linuxdo_latest)" = linuxdo ]
+[ "$(normalize_dedupe_link linuxdo_latest "$LD_ROOT?tl=en#post_1")" = "$LD_ROOT" ]
+[ "$(normalize_dedupe_link linuxdo_gossip "$LD_ROOT?tl=zh_CN#post_9")" = "$LD_ROOT" ]
+LD_HASH_A=$(printf '%s\t%s' "$(dedupe_source linuxdo_gossip)" "$(normalize_dedupe_link linuxdo_gossip "$LD_ROOT?tl=en")" | sha256sum | cut -d' ' -f1)
+LD_HASH_B=$(printf '%s\t%s' "$(dedupe_source linuxdo_latest)" "$(normalize_dedupe_link linuxdo_latest "$LD_ROOT#reply3")" | sha256sum | cut -d' ' -f1)
+[ "$LD_HASH_A" = "$LD_HASH_B" ]
+[ "$(dedupe_source nodeseek)" = nodeseek ]
+
+cat > "$TMP/linuxdo-feed.xml" <<'XML'
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/">
+<channel>
+<item>
+<title>eSIM.gg 5405 号段 Telegram/WhatsApp 验证码收不到</title>
+<link>https://linux.do/t/topic/2919304</link>
+<description><![CDATA[我有 5405 卡，Telegram 和 WhatsApp 都失败。<a href="https://esim.gg/">运营商</a>]]></description>
+<pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+<discourse:posts_count>18</discourse:posts_count>
+</item>
+<item>
+<title>今晚电影推荐</title>
+<link>https://linux.do/t/topic/3000000</link>
+<description><![CDATA[电影列表]]></description>
+<pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+</item>
+</channel>
+</rss>
+XML
+LD_ROWS=$(perl "$PARSER" linuxdo_gossip "$TMP/linuxdo-feed.xml")
+[ "$(printf '%s\n' "$LD_ROWS" | wc -l | tr -d ' ')" = 1 ]
+IFS=$'\t' read -r ldsrc ldcat ldintent ldactivity ldpub ldtitle ldurl ldexcerpt ldservices ldcommerce ldhosts <<< "$LD_ROWS"
+[ "$ldsrc" = linuxdo_gossip ]
+[ "$ldactivity" = 18 ]
+[ "$ldurl" = "$LD_ROOT" ]
+[[ "$ldcat" == *verification* ]]
+[[ "$ldservices" == *telegram* ]]
+[[ "$ldservices" == *whatsapp* ]]
+[ "$ldhosts" = esim.gg ]
+
 echo 'phone demand watcher audit: PASS'
