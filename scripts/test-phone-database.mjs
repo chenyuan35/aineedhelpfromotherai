@@ -23,6 +23,38 @@ assert.ok(japan.some(x => x.id === 'mobal-japan-voice-data'));
 assert.ok(japan.some(x => x.id === 'sakura-japan-voice-data'));
 const croatia = searchPhoneRoutes(idx.routes, 'Croatia esim');
 assert.equal(croatia[0]?.id, 'a1-croatia-prepaid-esim');
+
+// Search must be useful for actual queries, including conservative, evidence-grounded aliases.
+// An unknown Unicode-only query must NEVER become an empty query showing all 160 routes.
+const turtle = searchPhoneRoutes(idx.routes, '乌龟卡');
+assert.deepEqual(turtle.map(x => x.id), ['esimgg-estonia-372-2026']);
+assert.deepEqual(searchPhoneRoutes(idx.routes, '爱沙尼亚 +372').map(x => x.id), ['esimgg-estonia-372-2026']);
+assert.equal(searchPhoneRoutes(idx.routes, '不存在的卡').length, 0);
+assert.equal(searchPhoneRoutes(idx.routes, '😀').length, 0);
+const hkAlias = searchPhoneRoutes(idx.routes, '香港');
+assert(hkAlias.length > 0 && hkAlias.every(x => x.marketId === 'hk'));
+const ukAlias = searchPhoneRoutes(idx.routes, '英国');
+assert(ukAlias.some(x => x.id === 'lebara-uk-direct-esim-china'));
+assert(searchPhoneRoutes(idx.routes, '英国 Lebara').every(x => x.marketId === 'gb'));
+assert.deepEqual(searchPhoneRoutes(idx.routes, 'eSIM.GG').map(x => x.id), ['esimgg-estonia-372-2026']);
+assert.deepEqual(searchPhoneRoutes(idx.routes, '+372').map(x => x.id), ['esimgg-estonia-372-2026']);
+assert.equal(searchPhoneRoutes(idx.routes, '乌龟卡', {marketId:'gb'}).length,0,'country filter must not leak other countries');
+assert(searchPhoneRoutes(idx.routes,'Tello')[0].displayName.toLowerCase().includes('tello'));
+const fixtureRank = [
+  {id:'mention-only',displayName:'Random Phone',brandName:'Other',marketName:'United Kingdom',networkName:'Example',tokens:['lebara'],evidenceState:'admitted',lastVerifiedAt:'2026-10-10'},
+  {id:'brand-direct',displayName:'Lebara Mobile',brandName:'Lebara',marketName:'United Kingdom',tokens:['lebara'],evidenceState:'hold',lastVerifiedAt:'2026-09-10'}
+];
+assert.equal(searchPhoneRoutes(fixtureRank,'Lebara')[0].id,'brand-direct','direct name match outranks an evidence keyword mention');
+const uiRows = JSON.parse(fs.readFileSync(new URL('phone-route-summaries.json', root), 'utf8')).routes;
+assert.deepEqual(searchPhoneRoutes(uiRows,'eSIM.GG').map(x=>x.id),['esimgg-estonia-372-2026'], 'real UI uses slim summaries, not the full token index');
+assert.deepEqual(searchPhoneRoutes(uiRows,'乌龟卡').map(x=>x.id),['esimgg-estonia-372-2026']);
+assert.equal(searchPhoneRoutes(uiRows,'不存在的卡').length,0);
+assert(searchPhoneRoutes(uiRows,'Easy PASS').some(x=>x.id==='china-telecom-macau-easy-pass-2026'));
+const frontendSource = fs.readFileSync(new URL('index.html', root), 'utf8');
+assert.match(frontendSource, /<script src="\.\/phone-search-core\.js"><\/script>/, 'real page must load tested search core before inline UI');
+assert.match(frontendSource, /rows=queryCanonical\(rows,state\.query\)/);
+assert(!frontendSource.includes('function indexMatches('), 'do not keep a second naive substring search path');
+
 const temp = searchPhoneRoutes(idx.routes, '', { family: 'temporary' });
 assert.ok(temp.length >= 3);
 const fiveSim = db.routes.find(x => x.id === '5sim-temp');

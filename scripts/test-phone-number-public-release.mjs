@@ -36,6 +36,9 @@ assert.match(phoneIdentityCss,/\.pr-product-answers dl\{display:grid!important;g
 assert.match(phoneIdentityCss,/\.pr-product-hero h1\{font-size:1\.86rem!important/,'mobile title sizing must remain bounded');
 
 assert.match(page, /id="route-search"/);
+assert.match(page, /<script src="\.\/phone-search-core\.js"><\/script>/, 'browser search script must precede Phone initialization');
+const shippedSearch=fs.readFileSync(path.join(publicDir,'phone-search-core.js'),'utf8');
+assert.match(shippedSearch,/globalThis\.PhoneSearch = Object\.freeze\(\{ searchPhoneRoutes \}\)/);
 assert.match(page, /Global long-term number finder\./);
 assert.match(page, /Top decision shortcuts/);
 assert.match(page, /Lowest setup cost/);
@@ -139,6 +142,8 @@ const dom = new JSDOM(page, {
   pretendToBeVisual: true,
   beforeParse(window) {
     window.matchMedia = () => ({ matches:false, addEventListener(){}, removeEventListener(){} });
+    // JSDOM does not load external classic scripts by default; evaluate the actual shipped browser core.
+    window.eval(shippedSearch);
     window.HTMLElement.prototype.scrollIntoView = () => {};
     window.fetch = async (input) => {
       const rel = String(input).replace(/^\.\//, '').split('?')[0];
@@ -309,6 +314,18 @@ assert.match(taskDoc.querySelector('#pr-task-detail').textContent,/Evidence boun
 const search = dom.window.document.querySelector('#route-search');
 search.value = 'eSIM.GG'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
 await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('eSIM.GG Estonia +372'), 'eSIM.GG canonical search');
+// Verify the actual browser input, not only the standalone Node search function.
+search.value = '乌龟卡'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('eSIM.GG Estonia +372'), 'known real-number nickname search');
+assert.equal(dom.window.document.querySelectorAll('[data-index-route="esimgg-estonia-372-2026"]').length,1);
+search.value = '不存在的卡'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('No matching reviewed route.'), 'unknown CJK query must fail closed');
+assert.equal(dom.window.document.querySelectorAll('[data-index-route]').length,0,'never surface unrelated purchases for unknown script searches');
+search.value = '香港'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('Hong Kong'), 'market-origin Chinese alias');
+assert.equal(dom.window.document.querySelector('[data-index-route="china-telecom-macau-easy-pass-2026"]'),null,'Macau context mentioning HK does not make it an HK number');
+search.value = 'eSIM.GG'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
+await waitFor(() => dom.window.document.querySelector('#route-list')?.textContent.includes('eSIM.GG Estonia +372'), 'restore canonical eSIM.GG search');
 dom.window.document.querySelector('[data-index-route="esimgg-estonia-372-2026"]')?.click();
 await waitFor(() => dom.window.document.querySelector('#directory-guide-panel')?.textContent.includes('Backstage reviewed'), 'lazy canonical detail');
 search.value = 'CMLink'; search.dispatchEvent(new dom.window.Event('input', { bubbles:true }));
