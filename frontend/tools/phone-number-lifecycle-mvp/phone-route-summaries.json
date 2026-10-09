@@ -1717,15 +1717,16 @@
       "surfaceState": "backstage-only",
       "evidenceState": "admitted",
       "lastVerifiedAt": "2026-10-03",
-      "observationCount": 9,
-      "eventCount": 2,
+      "observationCount": 11,
+      "eventCount": 3,
       "services": [
         "OpenAI/Codex",
         "Telegram",
         "WhatsApp"
       ],
       "operations": [
-        "new-account-registration"
+        "new-account-registration",
+        "sms-verification"
       ],
       "serviceEvidence": [
         {
@@ -1750,12 +1751,12 @@
           "operation": "new-account-registration",
           "grade": "C",
           "label": "Mixed / weak",
-          "confidence": "very-low",
-          "sampleSize": 3,
-          "independentSourceCount": 1,
+          "confidence": "low",
+          "sampleSize": 4,
+          "independentSourceCount": 2,
           "successCount": 1,
           "failureCount": 2,
-          "mixedCount": 0,
+          "mixedCount": 1,
           "percentageEligible": false,
           "successRatePct": null,
           "lastObservedAt": "2026-09-19"
@@ -1775,10 +1776,26 @@
           "percentageEligible": false,
           "successRatePct": null,
           "lastObservedAt": "2026-09-19"
+        },
+        {
+          "serviceId": "openai",
+          "serviceName": "ChatGPT / OpenAI",
+          "operation": "sms-verification",
+          "grade": "insufficient",
+          "label": "One positive report",
+          "confidence": "very-low",
+          "sampleSize": 1,
+          "independentSourceCount": 1,
+          "successCount": 1,
+          "failureCount": 0,
+          "mixedCount": 0,
+          "percentageEligible": false,
+          "successRatePct": null,
+          "lastObservedAt": "2026-10-08"
         }
       ],
       "decisionFacts": {
-        "sourceCount": 4,
+        "sourceCount": 6,
         "kycState": "unknown",
         "keepAction": "Use the phone-number line at least once per year. Provider states line balance does not expire and the number remains active with annual use; exact cheapest chargeable action is n…",
         "roamingSms": "September 2026 Linux.do users report successful GPT, WhatsApp and Telegram SMS reception on some +372 prefixes in China, alongside reports that some prefixes initially or persiste…",
@@ -2096,12 +2113,12 @@
       "evidenceState": "hold",
       "lastVerifiedAt": "2026-09-29",
       "observationCount": 0,
-      "eventCount": 0,
+      "eventCount": 3,
       "services": [],
       "operations": [],
       "serviceEvidence": [],
       "decisionFacts": {
-        "sourceCount": 4,
+        "sourceCount": 5,
         "kycState": "required",
         "keepAction": "Foreign-tourist registration is the binding rule for this use case: Globe states the tourist SIM/eSIM automatically expires 30 days after registration. The ordinary one-year regul…",
         "roamingSms": "Official Globe prepaid roaming support says a prepaid line can keep roaming signal with zero load and can receive incoming texts for free while abroad.",
@@ -4784,12 +4801,12 @@
       "evidenceState": "admitted",
       "lastVerifiedAt": "2026-10-03",
       "observationCount": 0,
-      "eventCount": 1,
+      "eventCount": 2,
       "services": [],
       "operations": [],
       "serviceEvidence": [],
       "decisionFacts": {
-        "sourceCount": 8,
+        "sourceCount": 9,
         "kycState": "required",
         "keepAction": "Disable auto-renew to pause. SMARTY says it keeps the account open for six months and automatically closes an account if the plan remains inactive for 220 days, with a warning 40…",
         "roamingSms": "SMARTY's current mainland-China roaming page lists receiving texts from any number as FREE. Its paused-service help also says incoming calls and texts remain available when a plan…",
@@ -6158,12 +6175,12 @@
       "evidenceState": "hold",
       "lastVerifiedAt": "2026-09-29",
       "observationCount": 0,
-      "eventCount": 1,
+      "eventCount": 2,
       "services": [],
       "operations": [],
       "serviceEvidence": [],
       "decisionFacts": {
-        "sourceCount": 3,
+        "sourceCount": 4,
         "kycState": "unclear",
         "keepAction": "Use the annual Light subscription for a current USD 96/year service path. No PAYG retention route or post-lapse number-hold interval is established here.",
         "roamingSms": "Native roaming requires prior domestic U.S. usage; Light-specific China roaming/SMS availability is unresolved.",
