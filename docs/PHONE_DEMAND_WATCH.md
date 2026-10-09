@@ -22,12 +22,26 @@ Community evidence is allowed to establish operational reality when it is specif
 
 The hourly cadence is still deliberately light: each enabled feed is requested at most roughly 24 times per day, with inter-source sleeps and randomized timer delay. This is intended to reduce missed posts on shallow/high-turnover feeds without turning the observer into a crawler.
 
+## 2026-10-09 discovery-gap correction — Linux.do public RSS (reviewed code, not VPS-deployed)
+
+**Problem found from original community posts:** the v1.1 observer only reads Reddit, NodeLoc, NodeSeek and V2EX. It has no Linux.do intake, even though publicly readable Linux.do firsthand reports describe same-prefix conflicting Telegram/WhatsApp/Codex behavior for eSIM.gg (+372 5405), overseas number losses, KYC/payment friction and other concrete real-number user tasks. Main's 160 candidate routes and 897 source records therefore cannot be treated as 90% external community/product coverage. Exact examples and outside-competitor differences: [GitHub original-thread ledger #467](https://github.com/chenyuan35/aineedhelpfromotherai/issues/467).
+
+**Low-cost bounded proposed v1.2 code change** (branch `phone-community-linuxdo-rss-20261009`):
+- Add two **public/anonymous RSS** endpoints `https://linux.do/c/gossip/11.rss` and `https://linux.do/latest.rss`, each requested once per hourly watcher run with sequential sleeps, current user-agent and existing request timeout. No login, browser automation, full-forum crawl or rate-limit bypass.
+- Normalize URL hash fragments and optional query components for these Linux.do feed candidates and use one `linuxdo` dedupe namespace across both feeds, so the same discussion from Latest and Gossip is **one original source thread**, not two independent corroborations. Preserve source-specific success/HTTP health lines. Different firsthand commenters inside one thread require separate manual provenance review and **do not automatically become multiple source records or success percentages**.
+- Exclude the host `linux.do` when extracting *external* mentioned hosts from that RSS, while retaining actual candidate provider/seller domains for independent review.
+- Fixture tests cover 5405 OTP failure candidate detection, Telegram/WhatsApp category, unrelated-topic exclusion and crossfeed/query/hash dedupe. **2026-10-09 ephemeral cloud test passed:** `bash scripts/test-phone-demand-watch.sh`; Perl syntax PASS; anonymous live Gossip RSS HTTP 200 returned 25 items, 3 broad matching keyword candidates. This verifies parser and feed availability, **not** that the VPS observer is running/has been updated.
+- **Deployment gate:** GitHub PR/Eval, then examine the actual disposable observer's free disk, newest timer/source status, copy/safety of current state, install a reviewed version only when permitted and verify real `sources.tsv` and `candidates.tsv` entries. Never depend on this temporary observer as the sole source of truth, never reset its dirty state or extend it into a production dependency.
+
+**Content quality:** RSS contains titles/excerpts, **not** complete 92-post eSIM.gg histories. Manually read original public thread and comments only for high-scoring user jobs. Classify `demand/question` vs `firsthand-success` vs `firsthand-failure` vs `unconfirmed-secondary`, preserve author/date/device/location/service/prefix and any contradictory evidence. Raw watcher output is not canonical route evidence or authorization to add pages. Do not interpret a success-only poll as a success rate.
+
 ## Current public feeds
 
 - Reddit combined feed: r/eSIMs + r/NoContract.
 - NodeLoc latest RSS.
 - NodeSeek RSS.
 - V2EX Atom feed.
+- Linux.do latest + Gossip public RSS — **v1.2 code proposal/tested; production observer activation NOT VERIFIED until deployed**.
 
 The watcher intentionally reads public feed endpoints rather than crawling whole forums. Sources that rate-limit or block the observer are recorded as source-health failures and are not bypassed.
 

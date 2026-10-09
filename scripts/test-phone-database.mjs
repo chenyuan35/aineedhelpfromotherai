@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { gradeServiceEvidence } from './phone-evidence-grading.mjs';
 import { searchPhoneRoutes } from '../frontend/tools/phone-number-lifecycle-mvp/phone-search.mjs';
 import { lookupNumberRange } from '../frontend/tools/phone-number-lifecycle-mvp/phone-number-lookup.mjs';
 
@@ -95,16 +96,55 @@ const lebaraWhatsappEvidence=lebaraIndex.serviceEvidence.find(x=>/WhatsApp/i.tes
 assert.equal(lebaraTelegramEvidence?.independentSourceCount,1);
 assert.equal(lebaraWhatsappEvidence?.independentSourceCount,1);
 
-// S8: independent post-port China roaming signal evidence, NOT new-number or OTP success.
-const lebaraPortinSource=db.sources.find(x=>x.id==='nodeseek-lebara-869053-20260811');
-const lebaraPortinEvent=db.events.find(x=>x.id==='evt-lebara-portin-mainland-signal-20260811');
-assert(lebaraPortinSource && lebaraPortinEvent,'Lebara post-port field report normalized');
-assert.equal(lebaraPortinEvent.sourceId,lebaraPortinSource.id);
-assert.equal(lebaraPortinEvent.routeId,'lebara-uk-direct-esim-china');
-assert.equal(lebaraRoute.sourceIds.filter(x=>x===lebaraPortinSource.id).length,1);
-assert.match(lebaraPortinEvent.outcome,/post-port roaming-attach observation/i);
-assert(!db.observations.some(x=>x.sourceId===lebaraPortinSource.id),'post-port network attach not an app OTP observation');
-assert.equal(lebaraIndex.decisionFacts.sourceCount,8);
-assert.equal(lebaraIndex.eventCount,3);
-assert.equal(lebaraTelegramEvidence?.independentSourceCount,1);
-assert.equal(lebaraWhatsappEvidence?.independentSourceCount,1);
+// P0 #472: reports within one discussion remain person-level observations
+// but cannot establish independent service reliability.
+for (const evidence of [lebaraTelegramEvidence, lebaraWhatsappEvidence]) {
+  assert.equal(evidence?.sampleSize, 2);
+  assert.equal(evidence?.successCount, 2);
+  assert.equal(evidence?.grade, 'insufficient');
+  assert.equal(evidence?.label, 'Multiple reports in one original source');
+  assert.equal(evidence?.confidence, 'very-low');
+  assert.equal(evidence?.percentageEligible, false);
+  assert.equal(evidence?.successRatePct, null);
+}
+for (const app of ['Telegram', 'WhatsApp']) {
+  const reports = db.observations.filter(x => x.routeId === lebaraRoute.id && x.service === app && x.outcome === 'success');
+  assert.equal(reports.length, 2, `${app}: preserve two user reports`);
+  assert.equal(new Set(reports.map(x => x.sourceId)).size, 1, `${app}: one original discussion`);
+}
+const testReport = (i, sourceId) => ({
+  dedupeKey: `distinct-author-${i}`, sourceId, outcome: 'success', reportedAt: '2026-10-01'
+});
+const sameThread = gradeServiceEvidence(Array.from({ length: 5 }, (_, i) => testReport(i, 'one-original-thread')));
+assert.equal(sameThread.sampleSize, 5);
+assert.equal(sameThread.independentSourceCount, 1);
+assert.equal(sameThread.grade, 'insufficient');
+assert.equal(sameThread.confidence, 'very-low');
+assert.equal(sameThread.percentageEligible, false);
+assert.equal(sameThread.successRatePct, null);
+const twoOriginals = gradeServiceEvidence([testReport(1, 'original-a'), testReport(2, 'original-b')]);
+assert.equal(twoOriginals.grade, 'B');
+assert.equal(twoOriginals.confidence, 'low');
+const fiveOriginals = gradeServiceEvidence(Array.from({ length: 5 }, (_, i) => testReport(i, `original-${i}`)));
+assert.equal(fiveOriginals.grade, 'A');
+assert.equal(fiveOriginals.confidence, 'high');
+assert.equal(fiveOriginals.percentageEligible, true);
+const negativeThread = gradeServiceEvidence([
+  testReport(1, 'thread-a'), { ...testReport(2, 'thread-a'), outcome: 'failure' }
+]);
+assert.equal(negativeThread.grade, 'C', 'negative and mixed reports remain visible');
+assert.equal(negativeThread.confidence, 'very-low');
+
+// S8: ported-number China roaming signal is a separate operational event,
+// never a new China-first acquisition or app OTP success.
+const lebaraPortinSource = db.sources.find(x => x.id === 'nodeseek-lebara-869053-20260811');
+const lebaraPortinEvent = db.events.find(x => x.id === 'evt-lebara-portin-mainland-signal-20260811');
+assert(lebaraPortinSource && lebaraPortinEvent, 'port-in field report must be normalized');
+assert.equal(lebaraPortinEvent.sourceId, lebaraPortinSource.id);
+assert.equal(lebaraPortinEvent.routeId, 'lebara-uk-direct-esim-china');
+assert.equal(lebaraRoute.sourceIds.filter(x => x === lebaraPortinSource.id).length, 1);
+assert.match(lebaraPortinEvent.outcome, /post-port roaming-attach observation/i);
+assert(!db.observations.some(x => x.sourceId === lebaraPortinSource.id),
+  'port-in network signal is not an app verification observation');
+assert.equal(lebaraTelegramEvidence?.grade, 'insufficient');
+assert.equal(lebaraWhatsappEvidence?.grade, 'insufficient');

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "signalId": "independent-real-number-missing-atomic-candidates-20261009",
+  "capturedAt": "2026-10-09",
+  "scope": "phone-real-number-acquisition-and-existing-line-retention",
+  "publicationState": "backstage-candidate-only",
+  "canonicalRouteCountChange": 0,
+  "sourceCountChange": 0,
+  "mission": "Fill true distinct user-relevant acquisition/retention routes discovered from independent firsthand threads, not enumerate operators and official marketing pages.",
+  "policy": {
+    "uniqueAtomicIdentityMustBeIndependentlyReviewed": true,
+    "firsthandSuccessIsNotGuaranteedGlobalEligibility": true,
+    "providerCountrySeparation": true,
+    "namedServiceProofRequiresExplicitReporter": true,
+    "currencyAndOfferDatesNotAssumedCurrent": true,
+    "avoidUserIdentifyingInfo": "No bank account numbers, IBAN, phone numbers, OTP, card credentials, referral tokens, private messages, or exact home addresses are stored.",
+    "publication": "None until canonical data packet/review, tests, Eval/Preview and explicit publication gate."
+  },
+  "candidates": [
+    {
+      "candidateId": "simyo-nl-prepaid-esim-2026",
+      "identity": "Simyo Netherlands prepaid +31 eSIM / KPN network",
+      "country": "nl",
+      "numberClass": "real-mobile",
+      "task": "Acquire new Netherlands eSIM while physically outside the Netherlands and obtain named-app inbound SMS without unusable payments or first activation.",
+      "canonicalMatches": [],
+      "needsDistinctRouteReview": true,
+      "priority": "high",
+      "claimStrength": "conflicting independent original firsthand",
+      "firsthandSources": [
+        {
+          "url": "https://www.nodeseek.com/post-884095-1",
+          "author": "ahyeeakx",
+          "postDate": "2026-08",
+          "operation": "new-number-checkout-first-install-and-new-app-otp",
+          "reportedOutcome": "success-after-failed-first-order",
+          "facts": [
+            "First order/payment completed but provisioning failed after inconsistent account/payment names; refund reportedly required manual WhatsApp support and roughly five days.",
+            "Second attempt produced an eSIM email within minutes; author reports Android/eSTK install and fast 4G network attachment.",
+            "Author says Telegram, WhatsApp, LINE and GPT codes arrived on this +31 number.",
+            "Author paid through iDEAL using a KYC-requiring bank account; precise issuer eligibility, location and lawful address/residency requirements cannot be independently reconstructed."
+          ],
+          "uncertain": [
+            "Actual physical activation location and current 2026 provider permission to activate abroad",
+            "Exact per-app new-account vs number-change verification",
+            "Whether current €5 promotion and referral balance still apply",
+            "Whether later source and fresh outcome corroborate this anecdote independently",
+            "Potential author referral incentive"
+          ]
+        },
+        {
+          "url": "https://www.nodeseek.com/post-908519-1",
+          "author": "demonfaith",
+          "postDate": "2026-09",
+          "operation": "iDEAL-payment-precondition",
+          "reportedOutcome": "failed-before-provider-purchase",
+          "facts": [
+            "Applicant reports intended Netherlands Simyo payment path blocked when their Yoursafe KYC/account was closed.",
+            "A reply claiming foreign-card success was retracted by the replying author because they confused Vodafone NL with Simyo Spain; it is NOT successful NL Simyo foreign payment proof."
+          ],
+          "uncertain": [
+            "Alternative compliant payment acceptance for foreign buyers",
+            "Any successful number activation or named-app SMS on this applicant's line"
+          ]
+        }
+      ],
+      "economicHintsUnverified": {
+        "initialPriceEUR": 5,
+        "creditEUR": 7.5,
+        "retentionDaysClaimed": 180,
+        "reportSource": "one dated independent participant; not a current official quote",
+        "annualRetentionCost": null
+      },
+      "gates": [
+        "At least two separate original buyer sources including one without referral incentive",
+        "Current original offer, number validity and legally accepted KYC/payment",
+        "Geolocated first network registration and plan compatibility",
+        "Service+operation evidence with dated independent recipients",
+        "Explicit HOLD until verified; no fabricated conversion rate"
+      ]
+    },
+    {
+      "candidateId": "cuniq-hk-dual-number-go-2026",
+      "identity": "China Unicom Hong Kong Cuniq GO dual Hong Kong / mainland-China number post-bundle state",
+      "country": "hk",
+      "numberClass": "real-mobile",
+      "task": "Keep an existing legally registered dual-number SIM/eSIM for long-term inbound SMS after cancelling expensive data bundle.",
+      "canonicalMatches": [],
+      "needsDistinctRouteReview": true,
+      "priority": "medium",
+      "claimStrength": "older firsthand subscribers and unverified 2026 availability",
+      "firsthandSources": [
+        {
+          "url": "https://www.nodeseek.com/post-477688-1",
+          "author": "lihansir",
+          "postDate": "2025-10",
+          "operation": "existing-subscriber-retention-and-inbound-SMS",
+          "reportedOutcome": "conditional-success",
+          "facts": [
+            "Commenter explicitly says they use the dual-number plan, can cancel data subscription, retain SIM at HK$9 administrative charge per 30 days, and still receive incoming SMS while outgoing usage/data is extra.",
+            "Other participants challenge details of promotional data allowance, so treat bundled plan contents as disputed."
+          ],
+          "uncertain": [
+            "Subscriber cohort and ability for new foreign buyer to obtain same condition in Oct 2026",
+            "Current KYC and plan continuity",
+            "Which incoming app OTP and physical roaming jurisdiction"
+          ]
+        },
+        {
+          "url": "https://www.nodeseek.com/post-550806-1",
+          "author": "致远",
+          "postDate": "2025-12",
+          "operation": "initial-application-and-proposed-admin-fee-transition",
+          "reportedOutcome": "application-awaiting-approval",
+          "facts": [
+            "Poster states application awaiting review for Cuniq +852 and mainland dual-number service.",
+            "Poster describes HK$9/30d administrative-fee mode when bundle is canceled after initial period; **not** a personally verified long-term live account."
+          ],
+          "uncertain": [
+            "Full KYC approval actually obtained",
+            "Service still marketed and legally available",
+            "Current HK$9 fee unchanged"
+          ]
+        }
+      ],
+      "economicHintsUnverified": {
+        "administrativeFeeHKD": 9,
+        "validityDaysClaimed": 30,
+        "reportSource": "dated 2025 community subscribers; NEVER treat as confirmed Oct 2026 fee"
+      },
+      "gates": [
+        "Identity separate from existing CMHK/CMLink UK route",
+        "2026 acquisition and official administrative fee/roaming constraints",
+        "At least one recent independent subscriber confirming usable SMS and location",
+        "Explicit proof of second mainland-number entitlement and real-name registration"
+      ]
+    },
+    {
+      "candidateId": "china-mobile-beijing-cny8-4g-fly-2026",
+      "identity": "China Mobile Beijing existing local number CNY8 4G 飞享 retention tariff",
+      "country": "cn",
+      "numberClass": "real-mobile",
+      "task": "Keep an existing Mainland Chinese registered number when leaving China, before a legacy tariff closes to new switches.",
+      "canonicalMatches": [],
+      "needsDistinctRouteReview": true,
+      "priority": "medium-deadline-research",
+      "claimStrength": "firsthand public announcement screenshot but not verified direct operator notice",
+      "firsthandSources": [
+        {
+          "url": "https://www.nodeseek.com/post-952557-1",
+          "author": "riverflow",
+          "postDate": "2026-09-28",
+          "operation": "legacy-tariff-discontinuation-warning",
+          "reportedOutcome": "announced-pending-cutoff",
+          "facts": [
+            "Community poster photographed/quoted purported Beijing China Mobile tariff notice stating CNY8 monthly 4G Fly entry closes to new enrollments on 2026-10-19.",
+            "Mentions current users retaining CN phone numbers while studying/working abroad."
+          ],
+          "uncertain": [
+            "Official regional announcement authenticity and exception cohorts",
+            "Whether existing subscribers are grandfathered",
+            "Remote switching/calling vs number portability, real-name account status and SMS from abroad",
+            "Any newly eligible customer can still switch before Oct 19"
+          ]
+        }
+      ],
+      "economicHintsUnverified": {
+        "monthlyFeeCNY": 8,
+        "cutoffDateClaim": "2026-10-19",
+        "reportSource": "not yet direct operator-reviewed; never recommend changing a phone plan on forum screenshot alone"
+      },
+      "gates": [
+        "Confirm provincial offer identity and remaining eligibility",
+        "Separately validate legal remote continued use/roaming SMS and annual cost",
+        "Keep task not foreign-new-number task",
+        "Do not conflate with +86 bulk carrier catalog"
+      ]
+    }
+  ],
+  "disposition": "Three distinct user tasks discovered externally; none currently admitted, no change to 160 corpus, historical 100% completion claim retracted. Admit at most one distinct route per reviewed PR only after required market/provider/current eligibility and independent direct case evidence."
+}

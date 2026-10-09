@@ -26,11 +26,22 @@ parse_feed() {
 
 normalize_dedupe_link() {
   local source_name="$1" candidate_link="$2"
-  if [ "$source_name" = v2ex ]; then
-    printf '%s' "${candidate_link%%#*}"
-  else
-    printf '%s' "$candidate_link"
-  fi
+  case "$source_name" in
+    v2ex) printf '%s' "${candidate_link%%#*}" ;;
+    linuxdo_*)
+      # Same original thread may occur in both RSS feeds. Do not split it by
+      # browser anchors or ordinary query parameters.
+      candidate_link="${candidate_link%%#*}"
+      printf '%s' "${candidate_link%%\?*}" ;;
+    *) printf '%s' "$candidate_link" ;;
+  esac
+}
+
+dedupe_source() {
+  case "$1" in
+    linuxdo_*) printf '%s' linuxdo ;;
+    *) printf '%s' "$1" ;;
+  esac
 }
 
 v2ex_root_seen() {
@@ -55,7 +66,8 @@ fetch_feed() {
     while IFS=$'\t' read -r src catg intent activity pub title link excerpt services commerce mentioned_hosts; do
       [ -n "${link:-}" ] || continue
       dedupe_link=$(normalize_dedupe_link "$src" "$link")
-      h=$(printf '%s\t%s' "$src" "$dedupe_link" | sha256sum | cut -d' ' -f1)
+      dedupe_namespace=$(dedupe_source "$src")
+      h=$(printf '%s\t%s' "$dedupe_namespace" "$dedupe_link" | sha256sum | cut -d' ' -f1)
       if ! grep -Fqx "$h" "$SEEN"; then
         if [ "$src" = v2ex ] && v2ex_root_seen "$dedupe_link"; then
           printf '%s\n' "$h" >> "$SEEN"
@@ -77,6 +89,10 @@ fetch_feed reddit_phone 'https://www.reddit.com/r/eSIMs+NoContract/new/.rss' 6
 fetch_feed nodeloc 'https://www.nodeloc.com/latest.rss' 3
 fetch_feed nodeseek 'https://www.nodeseek.com/rss.xml' 3
 fetch_feed v2ex 'https://www.v2ex.com/index.xml' 1
+# Public Discourse RSS, no login or private/hidden endpoints; each feed is capped
+# by its own public item window. Dedupe same root topic across the two feeds.
+fetch_feed linuxdo_gossip 'https://linux.do/c/gossip/11.rss' 4
+fetch_feed linuxdo_latest 'https://linux.do/latest.rss' 1
 
 [ "$(wc -l < "$SEEN")" -gt 6000 ] && { tail -n 5000 "$SEEN" > "$SEEN.tmp"; mv "$SEEN.tmp" "$SEEN"; }
 [ "$(wc -l < "$SIGNALS")" -gt 5000 ] && { tail -n 4000 "$SIGNALS" > "$SIGNALS.tmp"; mv "$SIGNALS.tmp" "$SIGNALS"; }

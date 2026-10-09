@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gradeServiceEvidence } from './phone-evidence-grading.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const src = path.join(repo, 'data/phone/v1');
@@ -86,25 +87,7 @@ const slug = value => normalize(value).replace(/[^a-z0-9]+/g, '-').replace(/^-|-
 const serviceAlias = new Map();
 for (const service of services) for (const alias of [service.name, ...(service.aliases || [])]) serviceAlias.set(normalize(alias), service.id);
 const observationServiceId = observation => serviceAlias.get(normalize(observation.service)) || null;
-const gradeServiceEvidence = rows => {
-  const uniqueRows = [...new Map(rows.map(x => [x.dedupeKey || `${x.sourceId || ''}:${x.reportedAt || ''}:${x.outcome || ''}`, x])).values()];
-  const success = uniqueRows.filter(x => x.outcome === 'success').length;
-  const failure = uniqueRows.filter(x => x.outcome === 'failure' || x.outcome === 'non-success').length;
-  const mixed = uniqueRows.length - success - failure;
-  const n = uniqueRows.length;
-  let grade = 'insufficient', label = 'Not enough recent data';
-  if (n >= 5 && success / n >= 0.8 && failure <= 1 && mixed === 0) { grade = 'A'; label = 'Strong'; }
-  else if (n >= 2 && success >= 2 && failure === 0 && mixed === 0) { grade = 'B'; label = 'Good'; }
-  else if (n >= 2 && (failure > 0 || mixed > 0)) { grade = 'C'; label = 'Mixed / weak'; }
-  else if (n === 1 && success === 1) { grade = 'insufficient'; label = 'One positive report'; }
-  else if (n === 1) { grade = 'C'; label = 'One negative/mixed report'; }
-  const independentSourceCount = new Set(uniqueRows.map(x => x.sourceId).filter(Boolean)).size;
-  const percentageEligible = n >= 5 && independentSourceCount >= 5;
-  const successRatePct = percentageEligible ? Math.round((success / n) * 1000) / 10 : null;
-  const confidence = n >= 5 ? 'high' : n >= 3 ? 'medium' : n >= 2 ? 'low' : 'very-low';
-  const dates = uniqueRows.map(x => x.reportedAt).filter(Boolean).sort();
-  return { grade, label, confidence, sampleSize: n, independentSourceCount, successCount: success, failureCount: failure, mixedCount: mixed, percentageEligible, successRatePct, firstObservedAt: dates[0] || null, lastObservedAt: dates.at(-1) || null };
-};
+
 const serviceAggregates = [];
 for (const route of routes) {
   const os = obsByRoute.get(route.id) || [];
