@@ -21,6 +21,10 @@ Saily release closeout: `docs/PHONE_SAILY_US_NUMBER_ADMISSION_CLOSEOUT_2026-10-0
 LuckySIM residual review: `docs/PHONE_LUCKYSIM_HK_REVIEW_2026-10-04.md`.
 China Telecom Macau residual review: `docs/PHONE_CT_MACAU_EASY_PASS_REVIEW_2026-10-04.md`.
 
+## LATEST RELEASE CHECKPOINT — 2026-10-09
+
+Phone task-first user interface is **LIVE** (PR #451/main SHA `60ea6e1d`, Vercel `dpl_FSo2hKC2b5YTdDyHddWuwhCjy8W3` READY, Phone apex/www HTTP 200). The old S1 and S2 "next" claims later in this historical queue are superseded by the **S3 scenario/competitor/mobile-validation** task below. Canonical/public boundaries unchanged.
+
 ## JUST COMPLETED — Canonical finder integration
 
 PR #370 squash-merged as `46ac86e04e97f67d7a6fb3f9e1cf700fa237197a`.
@@ -421,17 +425,15 @@ Ledger: `docs/PHONE_5SIM_TEMP_RECONCILIATION_2026-10-08.md`.
 
 See `docs/PHONE_RADAR_UX_AUDIENCE_AUDIT_2026-10-09.md` for the live Phone interface and first-party measurement review. **26 settled Phone impressions / 0 clicks through 2026-10-05** passes the old recheck trigger but not an SEO publication gate. Current live Phone interface displays **135 deep comparison routes** and a **153-long-term-route/83-market finder**; the canonical DB contains **160 routes**, including HOLD/backstage and temporary/data families. Existing 2–4-way pin comparison works in page state, but no persisted saved-list and no structured multi-constraint task filters exist. GA4 connected account produced no analyzable locale/session/page rows; reviewed homepage and Phone markup lack a visible GA4 loader, so **Chinese/English audience ratio is unknown**. No user experience release was made.
 
-## OPERATOR DECISION — 2026-10-09: Frontstage user job and explicit next task
+## JUST RELEASED — S1/S2 evidence-first Phone task finder (2026-10-09)
 
-Plan: `docs/PHONE_RADAR_OPERATOR_PLAN_2026-10-09.md`. User explicitly prioritized market-driven product/operational leadership over further provider enumeration or GA4-only diagnosis. This plan PR makes **no frontend/user-visible change**.
+- **Code:** PR #451 merged as `60ea6e1da2c5336ac301e3578ea2e6fa2b2ee416`, GitHub Eval Gate #1311 PASS, exact-head Preview `dpl_4kojyvsX8ErXLNvJg62sdfrtbdHQ` READY.
+- **Production:** the prior Vercel free-daily-quota blocker **cleared**. Exact-SHA deployment `dpl_FSo2hKC2b5YTdDyHddWuwhCjy8W3` READY 2026-10-09 with apex, www and normal production aliases. Independent 2026-10-09 fetch: apex Phone HTTP 200, www Phone HTTP 200, `phone-route-summaries.json` HTTP 200, sitemap HTTP 200 with **31 locations**. HTML contains `pr-task-finder`, `pr-task-results`, local saved controls and existing 2–4 compare. Rendered page extraction shows 3 starter routes.
+- **Recommendation contract:** among 160 canonical research rows, strictly eligible public long-term real-mobile choices are **Giffgaff, Lebara, VOXI (3)**. No HOLD/backstage/VoIP/temp/data winner; China-first activation, foreign payment, bank-specific OTP and existing US-number port remain unverified/no-match until route-specific reviewed proof. No signup, new API, new indexable SEO URLs, or private OTP collection.
+- **NEXT atomic session: S3 product-value validation.** Execute a fresh 10-scenario user-job audit using current public evidence, with >=5 mainland-China acquisition/use scenarios, >=3 overseas-existing-US-number portability scenarios and >=2 negative/unknown scenarios; score correct evidence-backed fit/conditional/no-match (target >=8/10, zero invented guarantees), inspect mobile 375/390px and compare directly with esim.ren and haiwaibiaoju.com. Use voluntary usability sessions only if actually available; do not claim conversions or real-user testing from passing code tests.
+- **GA4 / documentation:** PR #449 and #450 remain separate/open, with stale pre-release language and GA4 corrections to reconcile. GA4 tag verified in final markup; property/collection/consent remain UNKNOWN. No new analytics or privacy change without gate. Keep Wave C Croatia A1 non-public maintenance deferred, no broad DB-C24. There is no newly authorized delegated Qwen/Kimi lane.
 
-1. **NEXT SESSION / S1 (one bounded task):** build a validated readiness inventory and deterministic 10-scenario/no-match test contract from actual canonical Phone route summaries. P0: user in mainland China acquiring and using an overseas real-mobile SMS/OTP number (first activation, KYC, payment, phone origin and app observations clearly separated). P1: owner abroad retaining a US number (must NOT confuse new-number shopping with port-in/keep). Enumerate real filterable fields; choose a handful of eligible candidates only if confirmed. Output fail-closed rules, unit fixtures and exact expected unknown/blocked states. Stop/narrow if current evidence cannot safely yield 3 ready choices; don't invent.
-2. **S2 LATER / conditional on S1:** implement a compact optional task-first filter/result-card pilot on /tools/phone-number-survival-guide/ with open Browse, preserve compare 2–4, maintain HOLD/backstage separation. Real price/keep costs in original currency; no false first-year sum, no raw-OTP guessing, no new SEO URL or backend/registration. New dedicated PR, CI/Eval Gate/Preview/live verify, no paid bypass.
-3. **S3 LATER / conditional on S2 release:** review 10 scenario outcomes (target >=8 correct evidence-backed or explicit no-match, zero unsupported guarantees), test mobile flows with real voluntary participants when available, compare directly against esim.ren / 海外镖局 on decision value; hold expansion if unclear.
-4. **GA4 PRIVACY / BLOCKED separate lane:** PR #449 has documentation corrections noting final build already injects GA4; Windsor reader returns no usable sessions/locale, stream/property match and consent not validated. PR #449 exact-head Eval Gate passed but Vercel Preview rate limit blocked release; do not merge it without its own Preview or enable new tracking. This operator plan does not depend on resolving GA4 before S1/non-tracking user tasks. The old statement that live GA4 loader is absent is superseded.
-5. **BACKSTAGE MAINTENANCE DEFERRED:** Wave C Croatia A1 remains one-route non-public evidence reconciliation. No DB-C24, bulk pages, wholesale translation, synthetic links, new paid provider or GA4 plan upgrade. Current SEO boundary still 135 comparison / 3 route indexable / 31 sitemap.
-
-**Release dependency:** this operator plan is a new PR against main while #449 remains unmerged. Reconcile any master/context/queue conflicts with #449 after Vercel preview quota recovery. Neither plan nor PR #449 is a product feature release. There is no newly authorized delegated Qwen/Kimi worker lane in this current queue; research remains candidate-only.
+Release ledger: `docs/PHONE_RADAR_MVP_PRODUCTION_RELEASE_2026-10-09.md`.
 
 ## PLANNED — Phone database evidence-hardening backlog
 
